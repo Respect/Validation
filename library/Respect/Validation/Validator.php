@@ -55,6 +55,8 @@ class Validator implements Validatable
 
     public function hasValidator($validator)
     {
+        if (empty($this->validators))
+            return false;
         if ($validator instanceof Valitatable)
             return isset($this->validators[spl_object_hash($validator)]);
         else
@@ -64,11 +66,12 @@ class Validator implements Validatable
                 });
     }
 
-    public function addValidators(array $validators)
+    public function addValidators(array $validators, $prefix='')
     {
         foreach ($validators as $k => $v) {
             if (is_object($v)) {
                 $this->addValidator($v);
+                continue;
             } elseif (is_numeric($k)) {
                 $validatorName = $v;
                 $validatorArgs = array();
@@ -82,6 +85,8 @@ class Validator implements Validatable
                     );
                 $validatorArgs = empty($v) ? array() : $v;
             }
+            if (!empty($prefix))
+                $validatorName = $prefix . '\\' . $validatorName;
             $this->addValidator($validatorName, $validatorArgs);
         }
     }
