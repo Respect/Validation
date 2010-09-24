@@ -73,13 +73,13 @@ abstract class ValidatorTestCase extends \PHPUnit_Framework_TestCase
     public function providerForMockValidators()
     {
         $firstValidator = $this->buildMockValidator(
-                'Bar', array('Bar_1' => 'fga', 'Bar_2' => 'dfgb'), false
+                'Bara', array('Bara_1' => 'fga', 'Bara_2' => 'dfgb'), false
         );
         $secondValidator = $this->buildMockValidator(
-                'Baz', array('Baz_1' => 'gedg', 'Baz_2' => 'rihg49'), false
+                'Baza', array('Baza_1' => 'gedg', 'Baza_2' => 'rihg49'), false
         );
         $thirdValidator = $this->buildMockValidator(
-                'Bat', array('Bat_1' => 'dfdsgdgfgb'), false
+                'Bata', array('Bata_1' => 'dfdsgdgfgb'), false
         );
         return array(
             array($firstValidator, $secondValidator, $thirdValidator),

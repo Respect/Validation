@@ -4,7 +4,7 @@ namespace Respect\Validation;
 
 use LogicException;
 
-class Chain extends Validator
+class Chain extends CompositeValidator
 {
 
     protected $input;
