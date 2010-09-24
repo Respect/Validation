@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Date;
 
-class OutOfBoundsException extends \OutOfBoundsException
+class OutOfBoundsException extends AbstractDateException
 {
     
 }

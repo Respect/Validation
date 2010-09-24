@@ -2,7 +2,8 @@
 
 namespace Respect\Validation;
 
-class CompositeValidator extends AbstractNode implements Validatable
+abstract class AbstractCompositeValidator extends AbstractNode
+    implements Validatable
 {
 
     protected $validators = array();
@@ -76,44 +77,6 @@ class CompositeValidator extends AbstractNode implements Validatable
                 $exceptions[] = $e;
             }
         return $exceptions;
-    }
-
-    public function validate($input)
-    {
-        $exceptions = $this->iterateValidation($input);
-        if (!empty($exceptions))
-            throw new InvalidException($exceptions);
-        return true;
-    }
-
-    public function validateOne($input)
-    {
-        $validators = $this->getValidators();
-        $exceptions = $this->iterateValidation($input);
-        if (count($exceptions) === count($validators))
-            throw new InvalidException($exceptions);
-        return true;
-    }
-
-    public function isValid($input)
-    {
-        $validators = $this->getValidators();
-        return count($validators) === count(array_filter(
-                $validators,
-                function($v) use($input) {
-                    return $v->isValid($input);
-                }
-            ));
-    }
-
-    public function isOneValid($input)
-    {
-        return (boolean) array_filter(
-            $this->getValidators(),
-            function($v) use($input) {
-                return $v->isValid($input);
-            }
-        );
     }
 
 }
