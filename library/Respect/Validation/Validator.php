@@ -4,7 +4,7 @@ namespace Respect\Validation;
 
 use ReflectionClass;
 
-class Validator implements Validatable
+class Validator extends AbstractValidator implements Validatable
 {
 
     protected $validators = array();
@@ -26,7 +26,8 @@ class Validator implements Validatable
         }
         if (is_object($validator))
             throw new ComponentException(
-                sprintf('%s does not implement the Respect\Validator\Validatable interface required for validators', get_class($validator))
+                sprintf('%s does not implement the Respect\Validator\Validatable interface required for validators',
+                    get_class($validator))
             );
         $validatorFqn = explode('\\', get_called_class());
         array_pop($validatorFqn);
@@ -38,7 +39,8 @@ class Validator implements Validatable
         );
         if (!$implementedInterface)
             throw new ComponentException(
-                sprintf('%s does not implement the Respect\Validator\Validatable interface required for validators', $validatorFqn)
+                sprintf('%s does not implement the Respect\Validator\Validatable interface required for validators',
+                    $validatorFqn)
             );
         if ($validatorClass->hasMethod('__construct')) {
             $validatorInstance = $validatorClass->newInstanceArgs(
@@ -58,7 +60,8 @@ class Validator implements Validatable
             return isset($this->validators[spl_object_hash($validator)]);
         else
             return (boolean) array_filter(
-                $this->validators, function($v) use ($validator) {
+                $this->validators,
+                function($v) use ($validator) {
                     return (integer) ($v instanceof $validator);
                 });
     }
@@ -77,7 +80,8 @@ class Validator implements Validatable
                 if (!empty($v) && !is_array($v))
                     throw new ComponentException(
                         sprintf(
-                            'Arguments for array-specified validators must be an array, you provided %s', $v
+                            'Arguments for array-specified validators must be an array, you provided %s',
+                            $v
                         )
                     );
                 $validatorArgs = empty($v) ? array() : $v;
@@ -127,7 +131,8 @@ class Validator implements Validatable
     {
         $validators = $this->getValidators();
         return count($validators) === count(array_filter(
-                $validators, function($v) use($input) {
+                $validators,
+                function($v) use($input) {
                     return $v->isValid($input);
                 }
             ));
@@ -136,13 +141,14 @@ class Validator implements Validatable
     public function isOneValid($input)
     {
         return (boolean) array_filter(
-            $this->getValidators(), function($v) use($input) {
+            $this->getValidators(),
+            function($v) use($input) {
                 return $v->isValid($input);
             }
         );
     }
 
-    public function getMessages()
+    /*public function getMessages()
     {
         return $this->messages;
     }
@@ -154,6 +160,6 @@ class Validator implements Validatable
                 'You must set exactly the same amount of messages currently present in the validator'
             );
         $this->messages = $messages;
-    }
+    }*/
 
 }

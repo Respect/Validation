@@ -2,12 +2,13 @@
 
 namespace Respect\Validation\Date;
 
+use Respect\Validation\AbstractValidator;
 use DateTime;
 
-abstract class AbstractDateValidator
+abstract class AbstractDateValidator extends AbstractValidator
 {
 
-    protected $format=DateTime::RFC1036;
+    protected $format = DateTime::RFC1036;
 
     protected function setFormat($format=DateTime::RFC1036)
     {

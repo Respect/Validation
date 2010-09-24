@@ -42,7 +42,8 @@ abstract class ValidatorTestCase extends \PHPUnit_Framework_TestCase
                     public function isValid(\$input) {}
                     public function setMessages(array \$messages) {}
                     public function getMessages() {
-                        return " . var_export($messages, true) . ";
+                        return " . var_export($messages,
+                    true) . ";
                     }
                 } 
                 ");
@@ -54,13 +55,13 @@ abstract class ValidatorTestCase extends \PHPUnit_Framework_TestCase
     public function providerForMockImpossibleValidators()
     {
         $firstValidator = $this->buildMockValidator(
-                'Bar', array('sfga', 'dfgb'), true
+                'Bar', array('Bar_1' => 'fga', 'Bar_2' => 'dfgb'), true
         );
         $secondValidator = $this->buildMockValidator(
-                'Baz', array('dgd', 'dfgE', 'dfgf'), true
+                'Baz', array('Baz_1' => 'gedg', 'Baz_2' => 'rihg49'), true
         );
         $thirdValidator = $this->buildMockValidator(
-                'Bat', array('a34t'), true
+                'Bat', array('Bat_1' => 'dfdsgdgfgb'), true
         );
         return array(
             array($firstValidator, $secondValidator, $thirdValidator),
@@ -72,13 +73,13 @@ abstract class ValidatorTestCase extends \PHPUnit_Framework_TestCase
     public function providerForMockValidators()
     {
         $firstValidator = $this->buildMockValidator(
-                'Bar', array('a435', 'b345'), false
+                'Bar', array('Bar_1' => 'fga', 'Bar_2' => 'dfgb'), false
         );
         $secondValidator = $this->buildMockValidator(
-                'Baz', array('345d', '435E', 'f345'), false
+                'Baz', array('Baz_1' => 'gedg', 'Baz_2' => 'rihg49'), false
         );
         $thirdValidator = $this->buildMockValidator(
-                'Bat', array('345324a'), false
+                'Bat', array('Bat_1' => 'dfdsgdgfgb'), false
         );
         return array(
             array($firstValidator, $secondValidator, $thirdValidator),

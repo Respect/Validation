@@ -119,7 +119,7 @@ class ValidatorTest extends ValidatorTestCase
     {
         $this->object->addValidators(func_get_args());
         $this->object->addValidator(
-            $this->buildMockValidator('Aids', array('ergera'))
+            $this->buildMockValidator('Aids', array('Aids_1' => 'aesfg'))
         );
         $this->assertFalse($this->object->isValid('any'));
     }
@@ -142,7 +142,7 @@ class ValidatorTest extends ValidatorTestCase
      */
     public function testValidateOneValid($invalidA, $invalidB, $invalidC)
     {
-        $valid = $this->buildMockValidator('Darth', array('o54n'));
+        $valid = $this->buildMockValidator('Darth', array('Darth_1' => 'o54n'));
         $this->object->addValidators(func_get_args());
         $this->object->addValidator($valid);
         $this->assertTrue($this->object->validateOne('any'));
@@ -166,7 +166,7 @@ class ValidatorTest extends ValidatorTestCase
      */
     public function testIsValidOneValid($invalidA, $invalidB, $invalidC)
     {
-        $valid = $this->buildMockValidator('Darth', array('o54n'));
+        $valid = $this->buildMockValidator('Darth', array('Darth_1' => 'o54n'));
         $this->object->addValidators(func_get_args());
         $this->object->addValidator($valid);
         $this->assertTrue($this->object->isOneValid('any'));
@@ -199,20 +199,6 @@ class ValidatorTest extends ValidatorTestCase
         foreach ($messagesB as $m) {
             $this->assertContains(strrev($m), $messagesObject);
         }
-    }
-
-    /**
-     * @dataProvider providerForMockImpossibleValidators
-     * @expectedException Respect\Validation\ComponentException
-     */
-    public function testSetInvalidMessages($invalidA, $invalidB, $invalidC)
-    {
-        $this->object->addValidators(func_get_args());
-        $messages = $this->object->getMessages();
-        $messages = array_map('strrev', $messages);
-        array_pop($messages);
-        $this->object->setMessages($messages);
-        $this->assertEquals($messages, $this->object->getMessages());
     }
 
 }

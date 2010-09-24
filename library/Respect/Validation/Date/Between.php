@@ -7,9 +7,13 @@ use Respect\Validation\ComponentException;
 
 class Between extends AbstractDateValidator implements Validatable
 {
+    const MSG_OUT_OF_BOUNDS = 'Date_Between_1';
 
     protected $min;
     protected $max;
+    protected $messages = array(
+        self::MSG_OUT_OF_BOUNDS => '%s is not between %s and %s.'
+    );
 
     public function __construct($min, $max, $format=null)
     {
@@ -18,7 +22,8 @@ class Between extends AbstractDateValidator implements Validatable
         $this->max = $this->getDateObject($max);
         if ($this->min > $this->max)
             throw new ComponentException(
-                sprintf('%s cannot be less than  %s for validation', $this->formatDate($this->min), $this->formatDate($this->max))
+                sprintf('%s cannot be less than  %s for validation',
+                    $this->formatDate($this->min), $this->formatDate($this->max))
             );
         if (!is_null($format))
             $this->setFormat($format);
@@ -30,7 +35,9 @@ class Between extends AbstractDateValidator implements Validatable
         if (!$this->isValid($target))
             throw new OutOfBoundsException(
                 sprintf(
-                    '%s is not between %s and %s.', $this->formatDate($target), $this->formatDate($this->min), $this->formatDate($this->max)
+                    $this->getMessage(self::MSG_OUT_OF_BOUNDS),
+                    $this->formatDate($target), $this->formatDate($this->min),
+                    $this->formatDate($this->max)
                 )
             );
         return true;
@@ -40,16 +47,6 @@ class Between extends AbstractDateValidator implements Validatable
     {
         $target = $this->getDateObject($input);
         return $target >= $this->min and $target <= $this->max;
-    }
-
-    public function getMessages()
-    {
-        
-    }
-
-    public function setMessages(array $messages)
-    {
-        
     }
 
 }
