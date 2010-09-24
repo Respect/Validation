@@ -1,0 +1,4 @@
+== About
+
+Respect\Validation aims to be the most awesome validation toolkit ever created
+.

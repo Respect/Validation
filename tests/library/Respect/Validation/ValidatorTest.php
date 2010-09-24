@@ -27,7 +27,7 @@ class ValidatorTest extends ValidatorTestCase
     }
 
     /**
-     * @expectedException InvalidArgumentException
+     * @expectedException Respect\Validation\ComponentException
      */
     public function testAddNonValidator()
     {
@@ -35,7 +35,7 @@ class ValidatorTest extends ValidatorTestCase
     }
 
     /**
-     * @expectedException InvalidArgumentException
+     * @expectedException Respect\Validation\ComponentException
      */
     public function testAddNonValidator2()
     {
@@ -75,7 +75,7 @@ class ValidatorTest extends ValidatorTestCase
     }
 
     /**
-     * @expectedException LogicException
+     * @expectedException Respect\Validation\ComponentException
      */
     public function testBuildValidatorsInvalid()
     {
@@ -203,7 +203,7 @@ class ValidatorTest extends ValidatorTestCase
 
     /**
      * @dataProvider providerForMockImpossibleValidators
-     * @expectedException OutOfRangeException
+     * @expectedException Respect\Validation\ComponentException
      */
     public function testSetInvalidMessages($invalidA, $invalidB, $invalidC)
     {

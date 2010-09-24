@@ -2,10 +2,7 @@
 
 namespace Respect\Validation;
 
-use OutOfRangeException;
-use LogicException;
 use ReflectionClass;
-use InvalidArgumentException;
 
 class Validator implements Validatable
 {
@@ -28,7 +25,7 @@ class Validator implements Validatable
             return;
         }
         if (is_object($validator))
-            throw new InvalidArgumentException(
+            throw new ComponentException(
                 sprintf('%s does not implement the Respect\Validator\Validatable interface required for validators', get_class($validator))
             );
         $validatorFqn = explode('\\', get_called_class());
@@ -40,7 +37,7 @@ class Validator implements Validatable
                 'Respect\Validation\Validatable'
         );
         if (!$implementedInterface)
-            throw new InvalidArgumentException(
+            throw new ComponentException(
                 sprintf('%s does not implement the Respect\Validator\Validatable interface required for validators', $validatorFqn)
             );
         if ($validatorClass->hasMethod('__construct')) {
@@ -78,7 +75,7 @@ class Validator implements Validatable
             } else {
                 $validatorName = $k;
                 if (!empty($v) && !is_array($v))
-                    throw new LogicException(
+                    throw new ComponentException(
                         sprintf(
                             'Arguments for array-specified validators must be an array, you provided %s', $v
                         )
@@ -153,7 +150,7 @@ class Validator implements Validatable
     public function setMessages(array $messages)
     {
         if (count($this->messages) != count($messages))
-            throw new OutOfRangeException(
+            throw new ComponentException(
                 'You must set exactly the same amount of messages currently present in the validator'
             );
         $this->messages = $messages;
