@@ -7,30 +7,19 @@ use ReflectionClass;
 class Validator
 {
 
-    protected $input;
     protected $subject;
-    protected $validator;
-    protected $arguments;
-    protected $operation;
-
-    public function getOperation()
-    {
-        return $this->operation;
-    }
-
-    public function getInput()
-    {
-        return $this->input;
-    }
+    protected $rule;
+    protected $arguments = array();
+    protected $validators = array();
 
     public function getSubject()
     {
         return $this->subject;
     }
 
-    public function getValidator()
+    public function getRule()
     {
-        return $this->validator;
+        return $this->rule;
     }
 
     public function getArguments()
@@ -38,19 +27,14 @@ class Validator
         return $this->arguments;
     }
 
-    public function setInput($input)
-    {
-        $this->input = $input;
-    }
-
     public function setSubject($subject)
     {
         $this->subject = $subject;
     }
 
-    public function setValidator($validator)
+    public function setRule($rule)
     {
-        $this->validator = $validator;
+        $this->rule = $rule;
     }
 
     public function setArguments(array $arguments)
@@ -63,106 +47,81 @@ class Validator
         $this->arguments[] = $argument;
     }
 
-    public function setOperation($operation)
+    public function addValidator(Validatable $validator)
     {
-        $this->operation = $operation;
+        $this->validators[spl_object_hash($validator)] = $validator;
     }
 
-    public function isComplete()
+    public function getValidators()
     {
-        return isset($this->operation, $this->input, $this->subject,
-            $this->validator);
-    }
-
-    protected function applySteps(array $stepData)
-    {
-        foreach ($stepData as $p) {
-            if (!isset($this->operation)) {
-                $this->setOperation($p);
-                continue;
-            }
-            if (!isset($this->input)) {
-                $this->setInput($p);
-                continue;
-            }
-            if (!isset($this->subject)) {
-                $this->setSubject($p);
-                continue;
-            }
-            if (!isset($this->validator)) {
-                $this->setValidator($p);
-                continue;
-            }
-            $this->addArgument($p);
-        }
-        if ($this->isComplete())
-            return $this->execute();
-        else
-            return $this;
+        return $this->validators;
     }
 
     public function __call($method, $arguments)
     {
         array_unshift($arguments, $method);
-        return $this->applySteps($arguments);
-    }
-
-    public function __get($property)
-    {
-        return $this->applySteps(array($property));
-    }
-
-    public function execute()
-    {
-        if (!$this->isComplete())
-            throw new ComponentException('Validator not complete');
-        $validatorSpec = array($this->subject, $this->validator);
-        $validatorInstance = static::buildValidator($validatorSpec,
-                $this->arguments);
-        $operationSpec = array($validatorInstance, $this->operation);
-        return call_user_func($operationSpec, $this->input);
-    }
-
-    public function __construct($operation=null, $input=null, $subject=null,
-        $validator=null, $arguments=array())
-    {
-        $this->operation = $operation;
-        $this->input = $input;
-        $this->subject = $subject;
-        $this->validator = $validator;
-        $this->arguments = $arguments;
-    }
-
-    public static function __callStatic($method, $arguments)
-    {
-        preg_match('#^(is|assert)([[:alnum:]]+)?$#', $method, $matches);
-        array_shift($matches);
-        $input = array_shift($arguments);
-        $operation = array_shift($matches);
-        $subject = array_shift($matches) ? : array_shift($arguments);
-        $validator = array_shift($arguments);
-        $v = new static($operation, $input, $subject, $validator, $arguments);
-        if ($v->isComplete())
-            return $v->execute();
-        else
-            return $v;
-    }
-
-    public static function buildValidator($validator, $arguments=array())
-    {
-        if ($validator instanceof Validatable) {
-            return $validator;
+        foreach ($arguments as $a) {
+            if (!isset($this->subject)) {
+                $this->setSubject($a);
+                continue;
+            }
+            if (!isset($this->rule)) {
+                $this->setRule($a);
+                continue;
+            }
+            $this->addArgument($a);
         }
-        if (is_object($validator))
+        $this->checkForCompleteRule();
+        return $this;
+    }
+
+    public function validates($input)
+    {
+        $v = new Composite\All();
+        $v->addRules($this->validators);
+        return $v->validate($input);
+    }
+
+    public function checkForCompleteRule()
+    {
+        if (!isset($this->subject, $this->rule))
+            return;
+        $this->addValidator(
+            static::buildRule(
+                array($this->subject, $this->rule), $this->arguments
+            )
+        );
+        $this->subject = null;
+        $this->rule = null;
+        $this->arguments = array();
+    }
+
+    public static function __callStatic($subject, $arguments)
+    {
+        $rule = array_shift($arguments);
+        $validator = new static;
+        $validator->setSubject($subject);
+        $validator->setRule($rule);
+        $validator->setArguments($arguments);
+        $validator->checkForCompleteRule();
+        return $validator;
+    }
+
+    public static function buildRule($ruleSpec, $arguments=array())
+    {
+        if ($ruleSpec instanceof Validatable) {
+            return $ruleSpec;
+        }
+        if (is_object($ruleSpec))
             throw new ComponentException(
                 sprintf('%s does not implement the Respect\Validator\Validatable interface required for validators',
-                    get_class($validator))
+                    get_class($ruleSpec))
             );
         $validatorFqn = explode('\\', get_called_class());
         array_pop($validatorFqn);
-        if (!is_array($validator))
-            $validator = explode('\\', $validator);
-        $validatorFqn = array_merge($validatorFqn, $validator);
+        if (!is_array($ruleSpec))
+            $ruleSpec = explode('\\', $ruleSpec);
+        $validatorFqn = array_merge($validatorFqn, $ruleSpec);
         $validatorFqn = array_map('ucfirst', $validatorFqn);
         $validatorFqn = implode('\\', $validatorFqn);
         $validatorClass = new ReflectionClass($validatorFqn);

@@ -21,8 +21,8 @@ class OneTest extends ValidatorTestCase
     public function testValidateOneValid($invalidA, $invalidB, $invalidC)
     {
         $valid = $this->buildMockValidator('Darth', array('Darth_1' => 'o54n'));
-        $this->object->addValidators(func_get_args());
-        $this->object->addValidator($valid);
+        $this->object->addRules(func_get_args());
+        $this->object->addRule($valid);
         $this->assertTrue($this->object->assert('any'));
     }
 
@@ -31,7 +31,7 @@ class OneTest extends ValidatorTestCase
      */
     public function testValidateOneAllRotten($invalidA, $invalidB, $invalidC)
     {
-        $this->object->addValidators(func_get_args());
+        $this->object->addRules(func_get_args());
         try {
             $this->object->assert('any');
         } catch (InvalidException $e) {
@@ -45,9 +45,9 @@ class OneTest extends ValidatorTestCase
     public function testIsValidOneValid($invalidA, $invalidB, $invalidC)
     {
         $valid = $this->buildMockValidator('Darth', array('Darth_1' => 'o54n'));
-        $this->object->addValidators(func_get_args());
-        $this->object->addValidator($valid);
-        $this->assertTrue($this->object->is('any'));
+        $this->object->addRules(func_get_args());
+        $this->object->addRule($valid);
+        $this->assertTrue($this->object->validate('any'));
     }
 
     /**
@@ -55,8 +55,8 @@ class OneTest extends ValidatorTestCase
      */
     public function testIsValidOneAllRotten($invalidA, $invalidB, $invalidC)
     {
-        $this->object->addValidators(func_get_args());
-        $this->assertFalse($this->object->is('any'));
+        $this->object->addRules(func_get_args());
+        $this->assertFalse($this->object->validate('any'));
     }
 
 }

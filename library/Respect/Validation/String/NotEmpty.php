@@ -3,12 +3,12 @@
 namespace Respect\Validation\String;
 
 use Respect\Validation\Validatable;
-use Respect\Validation\AbstractNode;
+use Respect\Validation\AbstractRule;
 
-class NotEmpty extends AbstractNode implements Validatable
+class NotEmpty extends AbstractRule implements Validatable
 {
 
-    public function is($input)
+    public function validate($input)
     {
         $trimmed = trim($input);
         return!empty($trimmed);

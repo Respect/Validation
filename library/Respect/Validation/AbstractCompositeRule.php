@@ -2,46 +2,45 @@
 
 namespace Respect\Validation;
 
-abstract class AbstractCompositeValidator extends AbstractNode
-    implements Validatable
+abstract class AbstractCompositeRule extends AbstractRule implements Validatable
 {
 
-    protected $validators = array();
+    protected $rules = array();
 
-    protected function appendValidator(Validatable $validator)
+    protected function appendRule(Validatable $validator)
     {
-        $this->validators[spl_object_hash($validator)] = $validator;
+        $this->rules[spl_object_hash($validator)] = $validator;
         $this->messages = array_merge(
             $this->messages, $validator->getMessages()
         );
     }
 
-    public function addValidator($validator, $arguments=array())
+    public function addRule($validator, $arguments=array())
     {
-        $this->appendValidator(
-            Validator::buildValidator($validator, $arguments)
+        $this->appendRule(
+            Validator::buildRule($validator, $arguments)
         );
     }
 
-    public function hasValidator($validator)
+    public function hasRule($validator)
     {
-        if (empty($this->validators))
+        if (empty($this->rules))
             return false;
         if ($validator instanceof Valitatable)
-            return isset($this->validators[spl_object_hash($validator)]);
+            return isset($this->rules[spl_object_hash($validator)]);
         else
             return (boolean) array_filter(
-                $this->validators,
+                $this->rules,
                 function($v) use ($validator) {
                     return (integer) ($v instanceof $validator);
                 });
     }
 
-    public function addValidators(array $validators, $prefix='')
+    public function addRules(array $validators, $prefix='')
     {
         foreach ($validators as $k => $v) {
             if (is_object($v)) {
-                $this->addValidator($v);
+                $this->addRule($v);
                 continue;
             } elseif (is_numeric($k)) {
                 $validatorName = $v;
@@ -59,18 +58,18 @@ abstract class AbstractCompositeValidator extends AbstractNode
             }
             if (!empty($prefix))
                 $validatorName = $prefix . '\\' . $validatorName;
-            $this->addValidator($validatorName, $validatorArgs);
+            $this->addRule($validatorName, $validatorArgs);
         }
     }
 
-    public function getValidators()
+    public function getRules()
     {
-        return $this->validators;
+        return $this->rules;
     }
 
-    protected function iterateValidation($input)
+    protected function iterateRules($input)
     {
-        $validators = $this->getValidators();
+        $validators = $this->getRules();
         $exceptions = array();
         foreach ($validators as $v)
             try {

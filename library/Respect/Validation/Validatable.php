@@ -7,7 +7,7 @@ interface Validatable
 
     public function assert($input);
 
-    public function is($input);
+    public function validate($input);
 
     public function getMessages();
 

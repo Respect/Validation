@@ -13,7 +13,7 @@ abstract class ValidatorTestCase extends \PHPUnit_Framework_TestCase
         array_shift($args);
         foreach ($args as $req) {
             $this->assertTrue(
-                $validator->hasValidator('Respect\Validation\Foo\\' . $req)
+                $validator->hasRule('Respect\Validation\Foo\\' . $req)
             );
         }
     }
@@ -25,9 +25,9 @@ abstract class ValidatorTestCase extends \PHPUnit_Framework_TestCase
             $validator->shouldReceive('assert')->andThrow(
                 new InvalidException('Always invalid, man.')
             );
-            $validator->shouldReceive('is')->andReturn(false);
+            $validator->shouldReceive('validate')->andReturn(false);
         } else {
-            $validator->shouldReceive('is')->andReturn(true);
+            $validator->shouldReceive('validate')->andReturn(true);
             $validator->shouldReceive('assert')->andReturn(true);
         }
         $validator->shouldReceive('getMessages')->andReturn(
@@ -39,7 +39,7 @@ abstract class ValidatorTestCase extends \PHPUnit_Framework_TestCase
                 namespace Respect\Validation\Foo; 
                 class $name implements \Respect\Validation\Validatable {
                     public function assert(\$input) {}
-                    public function is(\$input) {}
+                    public function validate(\$input) {}
                     public function setMessages(array \$messages) {}
                     public function getMessages() {
                         return " . var_export($messages,

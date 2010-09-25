@@ -2,7 +2,7 @@
 
 namespace Respect\Validation;
 
-abstract class AbstractNode
+abstract class AbstractRule
 {
 
     protected $messages = array();

@@ -32,7 +32,7 @@ class Between extends AbstractDateValidator implements Validatable
     public function assert($input)
     {
         $target = $this->getDateObject($input);
-        if (!$this->is($target))
+        if (!$this->validate($target))
             throw new OutOfBoundsException(
                 sprintf(
                     $this->getMessage(self::MSG_OUT_OF_BOUNDS),
@@ -43,7 +43,7 @@ class Between extends AbstractDateValidator implements Validatable
         return true;
     }
 
-    public function is($input)
+    public function validate($input)
     {
         $target = $this->getDateObject($input);
         return $target >= $this->min and $target <= $this->max;

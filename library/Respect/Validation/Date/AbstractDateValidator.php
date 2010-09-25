@@ -2,10 +2,10 @@
 
 namespace Respect\Validation\Date;
 
-use Respect\Validation\AbstractNode;
+use Respect\Validation\AbstractRule;
 use DateTime;
 
-abstract class AbstractDateValidator extends AbstractNode
+abstract class AbstractDateValidator extends AbstractRule
 {
 
     protected $format = DateTime::RFC1036;

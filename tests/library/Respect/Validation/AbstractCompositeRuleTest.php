@@ -2,7 +2,7 @@
 
 namespace Respect\Validation;
 
-class AbstractCompositeValidatorTest extends ValidatorTestCase
+class AbstractCompositeRuleTest extends ValidatorTestCase
 {
 
     protected $object;
@@ -10,7 +10,7 @@ class AbstractCompositeValidatorTest extends ValidatorTestCase
     protected function setUp()
     {
         $this->object = $this->getMockForAbstractClass(
-                'Respect\Validation\AbstractCompositeValidator'
+                'Respect\Validation\AbstractCompositeRule'
         );
     }
 
@@ -24,8 +24,8 @@ class AbstractCompositeValidatorTest extends ValidatorTestCase
      */
     public function testAddExistentValidator($validator)
     {
-        $this->object->addValidator($validator);
-        $this->assertContains($validator, $this->object->getValidators());
+        $this->object->addRule($validator);
+        $this->assertContains($validator, $this->object->getRules());
     }
 
     /**
@@ -33,7 +33,7 @@ class AbstractCompositeValidatorTest extends ValidatorTestCase
      */
     public function testAddNonValidator()
     {
-        $this->object->addValidator(new \stdClass);
+        $this->object->addRule(new \stdClass);
     }
 
     /**
@@ -47,7 +47,7 @@ class AbstractCompositeValidatorTest extends ValidatorTestCase
                 class Freak{}
                 ");
         }
-        $this->object->addValidator('Foo\Freak');
+        $this->object->addRule('Foo\Freak');
     }
 
     /**
@@ -57,7 +57,7 @@ class AbstractCompositeValidatorTest extends ValidatorTestCase
     {
         $messagesA = $a->getMessages();
         $messagesB = $b->getMessages();
-        $this->object->addValidators(func_get_args());
+        $this->object->addRules(func_get_args());
         $messagesObject = $this->object->getMessages();
         foreach ($messagesA as $m) {
             $this->assertContains($m, $messagesObject);
@@ -70,7 +70,7 @@ class AbstractCompositeValidatorTest extends ValidatorTestCase
     public function testBuildValidators()
     {
         $this->providerForMockImpossibleValidators();
-        $this->object->addValidators(array(
+        $this->object->addRules(array(
             'Foo\Bar', 'Foo\Baz', 'Foo\Bat' => array(1, 2, 3)
         ));
         $this->assertValidatorPresence($this->object, 'Bar', 'Baz', 'Bat');
@@ -82,7 +82,7 @@ class AbstractCompositeValidatorTest extends ValidatorTestCase
     public function testBuildValidatorsInvalid()
     {
         $this->providerForMockImpossibleValidators();
-        $this->object->addValidators(array(
+        $this->object->addRules(array(
             'Foo\Bar', 'Foo\Baz', 'Foo\Bat' => 'balkbal'
         ));
     }
@@ -94,7 +94,7 @@ class AbstractCompositeValidatorTest extends ValidatorTestCase
     {
         $messagesA = $a->getMessages();
         $messagesB = $b->getMessages();
-        $this->object->addValidators(func_get_args());
+        $this->object->addRules(func_get_args());
         $this->object->setMessages(
             array_map('strrev', $this->object->getMessages())
         );

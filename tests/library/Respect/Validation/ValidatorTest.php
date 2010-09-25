@@ -7,73 +7,55 @@ class ValidatorTest extends ValidatorTestCase
 
     public function testPartialEmpty()
     {
-        $v = Validator::is();
+        $v = Validator::date();
         $this->assertType('Respect\Validation\Validator', $v);
-        $this->assertSame('is', $v->getOperation());
-    }
-
-    public function testPartialInputOnly()
-    {
-        $v = Validator::is('something');
-        $this->assertType('Respect\Validation\Validator', $v);
-        $this->assertSame('is', $v->getOperation());
-        $this->assertSame('something', $v->getInput());
+        $this->assertSame('date', $v->getSubject());
     }
 
     public function testPartialInputSubject()
     {
-        $v = Validator::is('now', 'date');
+        $v = Validator::date('between', 'yesterday', 'tomorrow');
         $this->assertType('Respect\Validation\Validator', $v);
-        $this->assertSame('is', $v->getOperation());
-        $this->assertSame('now', $v->getInput());
-        $this->assertSame('date', $v->getSubject());
+        $this->assertEquals(1, count($v->getValidators()));
+        $this->assertNull($v->getSubject());
+        $this->assertNull($v->getRule());
+        $this->assertEquals(array(), $v->getArguments());
+    }
+
+    public function testPartialInputChain()
+    {
+        $v = Validator::date()->between('yesterday', 'tomorrow')->string('notEmpty');
+        $this->assertType('Respect\Validation\Validator', $v);
+        $this->assertEquals(2, count($v->getValidators()));
+        $this->assertNull($v->getSubject());
+        $this->assertNull($v->getRule());
+        $this->assertEquals(array(), $v->getArguments());
     }
 
     public function testValidateSimple()
     {
-        $v = Validator::is('foo', 'string', 'notEmpty');
+        $v = Validator::string('notEmpty')->validates('foo');
         $this->assertTrue($v);
     }
 
     public function testValidateArguments()
     {
-        $v = Validator::is('now', 'date', 'between', 'yesterday', 'tomorrow');
+        $v = Validator::date('between', 'yesterday', 'tomorrow')->validates('now');
         $this->assertTrue($v);
     }
 
-    public function testFluentSubjectGetter()
+    public function testValidateFluent()
     {
-        $v = Validator::is('now')->date;
-        $this->assertType('Respect\Validation\Validator', $v);
-        $this->assertSame('is', $v->getOperation());
-        $this->assertSame('now', $v->getInput());
-        $this->assertSame('date', $v->getSubject());
-    }
-
-    public function testFluentSubjectCall()
-    {
-        $v = Validator::is('now')->date();
-        $this->assertType('Respect\Validation\Validator', $v);
-        $this->assertSame('is', $v->getOperation());
-        $this->assertSame('now', $v->getInput());
-        $this->assertSame('date', $v->getSubject());
-    }
-
-    public function testFluentSubjectGetterMixed()
-    {
-        $v = Validator::is('now')->date->between('yesterday', 'tomorrow');
+        $v = Validator::date()->between('yesterday', 'tomorrow')->validates('now');
         $this->assertTrue($v);
     }
 
-    public function testFluentSubjectCallMixed()
+    public function testValidateFluentChain()
     {
-        $v = Validator::is('now', 'date')->between('yesterday', 'tomorrow');
-        $this->assertTrue($v);
-    }
-
-    public function testFluentSubjectCallMixed2()
-    {
-        $v = Validator::is('now')->date('between', 'yesterday', 'tomorrow');
+        $v = Validator::date()
+                ->between('yesterday', 'tomorrow')
+                ->string('notEmpty')
+                ->validates('now');
         $this->assertTrue($v);
     }
 

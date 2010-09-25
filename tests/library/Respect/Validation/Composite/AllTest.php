@@ -20,7 +20,7 @@ class AllTest extends ValidatorTestCase
      */
     public function testValidateManyValid($a, $b, $c)
     {
-        $this->object->addValidators(func_get_args());
+        $this->object->addRules(func_get_args());
         $this->assertTrue($this->object->assert('any'));
     }
 
@@ -29,8 +29,8 @@ class AllTest extends ValidatorTestCase
      */
     public function testManyIsValid($a, $b, $c)
     {
-        $this->object->addValidators(func_get_args());
-        $this->assertTrue($this->object->is('any'));
+        $this->object->addRules(func_get_args());
+        $this->assertTrue($this->object->validate('any'));
     }
 
     /**
@@ -38,8 +38,8 @@ class AllTest extends ValidatorTestCase
      */
     public function testManyIsInvalid($a, $b, $c)
     {
-        $this->object->addValidators(func_get_args());
-        $this->assertFalse($this->object->is('any'));
+        $this->object->addRules(func_get_args());
+        $this->assertFalse($this->object->validate('any'));
     }
 
     /**
@@ -47,11 +47,11 @@ class AllTest extends ValidatorTestCase
      */
     public function testManyIsInvalid2($a, $b, $c)
     {
-        $this->object->addValidators(func_get_args());
-        $this->object->addValidator(
+        $this->object->addRules(func_get_args());
+        $this->object->addRule(
             $this->buildMockValidator('Aids', array('Aids_1' => 'aesfg'))
         );
-        $this->assertFalse($this->object->is('any'));
+        $this->assertFalse($this->object->validate('any'));
     }
 
     /**
@@ -59,7 +59,7 @@ class AllTest extends ValidatorTestCase
      */
     public function testValidateAllInvalid($a, $b, $c)
     {
-        $this->object->addValidators(func_get_args());
+        $this->object->addRules(func_get_args());
         try {
             $this->object->assert('any');
         } catch (InvalidException $e) {
