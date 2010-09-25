@@ -7,6 +7,7 @@ use Respect\Validation\InvalidException;
 
 class AllTest extends ValidatorTestCase
 {
+
     protected $object;
 
     protected function setUp()
