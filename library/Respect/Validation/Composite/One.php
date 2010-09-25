@@ -8,7 +8,7 @@ use Respect\Validation\InvalidException;
 class One extends AbstractCompositeValidator
 {
 
-    public function validate($input)
+    public function assert($input)
     {
         $validators = $this->getValidators();
         $exceptions = $this->iterateValidation($input);
@@ -17,12 +17,12 @@ class One extends AbstractCompositeValidator
         return true;
     }
 
-    public function isValid($input)
+    public function is($input)
     {
         return (boolean) array_filter(
             $this->getValidators(),
             function($v) use($input) {
-                return $v->isValid($input);
+                return $v->is($input);
             }
         );
     }

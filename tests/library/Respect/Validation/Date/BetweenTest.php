@@ -13,8 +13,8 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
     public function testBetweenValid($input, $min, $max)
     {
         $between = new Between($min, $max);
-        $this->assertTrue($between->isValid($input));
-        $this->assertTrue($between->validate($input));
+        $this->assertTrue($between->is($input));
+        $this->assertTrue($between->assert($input));
     }
 
     /**
@@ -25,8 +25,8 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
     {
 
         $between = new Between($min, $max);
-        $this->assertFalse($between->isValid($input));
-        $this->assertFalse($between->validate($input));
+        $this->assertFalse($between->is($input));
+        $this->assertFalse($between->assert($input));
     }
 
     /**

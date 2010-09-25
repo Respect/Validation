@@ -20,7 +20,7 @@ class AllTest extends ValidatorTestCase
     public function testValidateManyValid($a, $b, $c)
     {
         $this->object->addValidators(func_get_args());
-        $this->assertTrue($this->object->validate('any'));
+        $this->assertTrue($this->object->assert('any'));
     }
 
     /**
@@ -29,7 +29,7 @@ class AllTest extends ValidatorTestCase
     public function testManyIsValid($a, $b, $c)
     {
         $this->object->addValidators(func_get_args());
-        $this->assertTrue($this->object->isValid('any'));
+        $this->assertTrue($this->object->is('any'));
     }
 
     /**
@@ -38,7 +38,7 @@ class AllTest extends ValidatorTestCase
     public function testManyIsInvalid($a, $b, $c)
     {
         $this->object->addValidators(func_get_args());
-        $this->assertFalse($this->object->isValid('any'));
+        $this->assertFalse($this->object->is('any'));
     }
 
     /**
@@ -50,7 +50,7 @@ class AllTest extends ValidatorTestCase
         $this->object->addValidator(
             $this->buildMockValidator('Aids', array('Aids_1' => 'aesfg'))
         );
-        $this->assertFalse($this->object->isValid('any'));
+        $this->assertFalse($this->object->is('any'));
     }
 
     /**
@@ -60,7 +60,7 @@ class AllTest extends ValidatorTestCase
     {
         $this->object->addValidators(func_get_args());
         try {
-            $this->object->validate('any');
+            $this->object->assert('any');
         } catch (InvalidException $e) {
             $this->assertEquals(3, count($e->getExceptions()));
         }

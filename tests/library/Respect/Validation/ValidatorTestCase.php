@@ -22,13 +22,13 @@ abstract class ValidatorTestCase extends \PHPUnit_Framework_TestCase
     {
         $validator = Mockery::mock('Respect\Validation\Validatable');
         if ($invalid) {
-            $validator->shouldReceive('validate')->andThrow(
+            $validator->shouldReceive('assert')->andThrow(
                 new InvalidException('Always invalid, man.')
             );
-            $validator->shouldReceive('isValid')->andReturn(false);
+            $validator->shouldReceive('is')->andReturn(false);
         } else {
-            $validator->shouldReceive('isValid')->andReturn(true);
-            $validator->shouldReceive('validate')->andReturn(true);
+            $validator->shouldReceive('is')->andReturn(true);
+            $validator->shouldReceive('assert')->andReturn(true);
         }
         $validator->shouldReceive('getMessages')->andReturn(
             $messages
@@ -38,8 +38,8 @@ abstract class ValidatorTestCase extends \PHPUnit_Framework_TestCase
             eval("
                 namespace Respect\Validation\Foo; 
                 class $name implements \Respect\Validation\Validatable {
-                    public function validate(\$input) {}
-                    public function isValid(\$input) {}
+                    public function assert(\$input) {}
+                    public function is(\$input) {}
                     public function setMessages(array \$messages) {}
                     public function getMessages() {
                         return " . var_export($messages,

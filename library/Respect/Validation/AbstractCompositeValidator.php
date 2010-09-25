@@ -18,7 +18,9 @@ abstract class AbstractCompositeValidator extends AbstractNode
 
     public function addValidator($validator, $arguments=array())
     {
-        $this->appendValidator(Validator::buildValidator($validator, $arguments));
+        $this->appendValidator(
+            Validator::buildValidator($validator, $arguments)
+        );
     }
 
     public function hasValidator($validator)
@@ -72,7 +74,7 @@ abstract class AbstractCompositeValidator extends AbstractNode
         $exceptions = array();
         foreach ($validators as $v)
             try {
-                $v->validate($input);
+                $v->assert($input);
             } catch (InvalidException $e) {
                 $exceptions[] = $e;
             }

@@ -5,9 +5,9 @@ namespace Respect\Validation;
 interface Validatable
 {
 
-    public function validate($input);
+    public function assert($input);
 
-    public function isValid($input);
+    public function is($input);
 
     public function getMessages();
 

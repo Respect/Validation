@@ -8,18 +8,18 @@ use Respect\Validation\InvalidException;
 class All extends AbstractCompositeValidator
 {
 
-    public function isValid($input)
+    public function is($input)
     {
         $validators = $this->getValidators();
         return count($validators) === count(array_filter(
                 $validators,
                 function($v) use($input) {
-                    return $v->isValid($input);
+                    return $v->is($input);
                 }
             ));
     }
 
-    public function validate($input)
+    public function assert($input)
     {
         $exceptions = $this->iterateValidation($input);
         if (!empty($exceptions))
@@ -27,5 +27,4 @@ class All extends AbstractCompositeValidator
         return true;
     }
 
-    
 }
