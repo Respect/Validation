@@ -2,24 +2,24 @@
 
 namespace Respect\Validation;
 
+use Respect\Validation\Composite\All;
 use ReflectionClass;
 
-class Validator
+class Validator extends All
 {
 
     protected $subject;
-    protected $rule;
+    protected $ruleName;
     protected $arguments = array();
-    protected $validators = array();
 
     public function getSubject()
     {
         return $this->subject;
     }
 
-    public function getRule()
+    public function getRuleName()
     {
-        return $this->rule;
+        return $this->ruleName;
     }
 
     public function getArguments()
@@ -32,9 +32,9 @@ class Validator
         $this->subject = $subject;
     }
 
-    public function setRule($rule)
+    public function setRuleName($ruleName)
     {
-        $this->rule = $rule;
+        $this->ruleName = $ruleName;
     }
 
     public function setArguments(array $arguments)
@@ -47,61 +47,55 @@ class Validator
         $this->arguments[] = $argument;
     }
 
-    public function addValidator(Validatable $validator)
+    public function __get($property)
     {
-        $this->validators[spl_object_hash($validator)] = $validator;
+        $this->applyParts(func_get_args());
+        return $this;
     }
 
-    public function getValidators()
+    protected function applyParts($parts)
     {
-        return $this->validators;
-    }
-
-    public function __call($method, $arguments)
-    {
-        array_unshift($arguments, $method);
-        foreach ($arguments as $a) {
+        foreach ($parts as $a) {
             if (!isset($this->subject)) {
                 $this->setSubject($a);
                 continue;
             }
-            if (!isset($this->rule)) {
-                $this->setRule($a);
+            if (!isset($this->ruleName)) {
+                $this->setRuleName($a);
                 continue;
             }
             $this->addArgument($a);
         }
         $this->checkForCompleteRule();
+    }
+
+    public function __call($method, $arguments)
+    {
+        array_unshift($arguments, $method);
+        $this->applyParts($arguments);
         return $this;
     }
 
-    public function validates($input)
+    protected function checkForCompleteRule()
     {
-        $v = new Composite\All();
-        $v->addRules($this->validators);
-        return $v->validate($input);
-    }
-
-    public function checkForCompleteRule()
-    {
-        if (!isset($this->subject, $this->rule))
+        if (!isset($this->subject, $this->ruleName))
             return;
-        $this->addValidator(
+        $this->addRule(
             static::buildRule(
-                array($this->subject, $this->rule), $this->arguments
+                array($this->subject, $this->ruleName), $this->arguments
             )
         );
         $this->subject = null;
-        $this->rule = null;
+        $this->ruleName = null;
         $this->arguments = array();
     }
 
     public static function __callStatic($subject, $arguments)
     {
-        $rule = array_shift($arguments);
+        $ruleName = array_shift($arguments);
         $validator = new static;
         $validator->setSubject($subject);
-        $validator->setRule($rule);
+        $validator->setRuleName($ruleName);
         $validator->setArguments($arguments);
         $validator->checkForCompleteRule();
         return $validator;

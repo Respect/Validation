@@ -16,7 +16,7 @@ class NotEmpty extends AbstractRule implements Validatable
 
     public function assert($input)
     {
-        if (!$this->is($input))
+        if (!$this->validate($input))
             throw new Exception();
     }
 
