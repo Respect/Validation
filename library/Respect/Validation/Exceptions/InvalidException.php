@@ -2,8 +2,8 @@
 
 namespace Respect\Validation\Exceptions;
 
-use InvalidArgumentException;
 use Exception;
+use InvalidArgumentException;
 
 class InvalidException extends InvalidArgumentException
 {

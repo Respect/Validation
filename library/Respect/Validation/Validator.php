@@ -46,11 +46,10 @@ class Validator extends All
     protected function applyParts($parts)
     {
         foreach ($parts as $a) {
-            if (!isset($this->ruleName)) {
+            if (!isset($this->ruleName))
                 $this->setRuleName($a);
-                continue;
-            }
-            $this->addArgument($a);
+            else
+                $this->addArgument($a);
         }
         $this->checkForCompleteRule();
     }
