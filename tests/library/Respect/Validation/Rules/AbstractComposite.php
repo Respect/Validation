@@ -2,7 +2,7 @@
 
 namespace Respect\Validation;
 
-class AbstractCompositeRuleTest extends ValidatorTestCase
+class AbstractCompositeTest extends ValidatorTestCase
 {
 
     protected $object;
@@ -10,7 +10,7 @@ class AbstractCompositeRuleTest extends ValidatorTestCase
     protected function setUp()
     {
         $this->object = $this->getMockForAbstractClass(
-                'Respect\Validation\AbstractCompositeRule'
+                'Respect\Validation\Rules\AbstractComposite'
         );
     }
 
@@ -29,7 +29,7 @@ class AbstractCompositeRuleTest extends ValidatorTestCase
     }
 
     /**
-     * @expectedException Respect\Validation\ComponentException
+     * @expectedException Respect\Validation\Exceptions\ComponentException
      */
     public function testAddNonValidator()
     {
@@ -37,17 +37,17 @@ class AbstractCompositeRuleTest extends ValidatorTestCase
     }
 
     /**
-     * @expectedException Respect\Validation\ComponentException
+     * @expectedException Respect\Validation\Exceptions\ComponentException
      */
     public function testAddNonValidator2()
     {
-        if (!class_exists('Respect\Validation\Foo\Freak', false)) {
+        if (!class_exists('Respect\Validation\FooFreak', false)) {
             eval("
-                namespace Respect\Validation\Foo; 
-                class Freak{}
+                namespace Respect\Validation\Rules; 
+                class FooFreak{}
                 ");
         }
-        $this->object->addRule('Foo\Freak');
+        $this->object->addRule('FooFreak');
     }
 
     /**
@@ -71,19 +71,20 @@ class AbstractCompositeRuleTest extends ValidatorTestCase
     {
         $this->providerForMockImpossibleValidators();
         $this->object->addRules(array(
-            'Foo\Bar', 'Foo\Baz', 'Foo\Bat' => array(1, 2, 3)
+            'FooBar', 'FooBaz', 'FooBat' => array(1, 2, 3)
         ));
-        $this->assertValidatorPresence($this->object, 'Bar', 'Baz', 'Bat');
+        $this->assertValidatorPresence($this->object, 'FooBar', 'FooBaz',
+            'FooBat');
     }
 
     /**
-     * @expectedException Respect\Validation\ComponentException
+     * @expectedException Respect\Validation\Exceptions\ComponentException
      */
     public function testBuildValidatorsInvalid()
     {
         $this->providerForMockImpossibleValidators();
         $this->object->addRules(array(
-            'Foo\Bar', 'Foo\Baz', 'Foo\Bat' => 'balkbal'
+            'FooBar', 'FooBaz', 'FooBat' => 'balkbal'
         ));
     }
 

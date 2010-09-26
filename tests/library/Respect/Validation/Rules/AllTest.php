@@ -1,9 +1,9 @@
 <?php
 
-namespace Respect\Validation\Composite;
+namespace Respect\Validation\Rules;
 
 use Respect\Validation\ValidatorTestCase;
-use Respect\Validation\InvalidException;
+use Respect\Validation\Exceptions\InvalidException;
 
 class AllTest extends ValidatorTestCase
 {

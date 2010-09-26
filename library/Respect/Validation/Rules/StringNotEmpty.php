@@ -1,11 +1,12 @@
 <?php
 
-namespace Respect\Validation\String;
+namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validatable;
-use Respect\Validation\AbstractRule;
+use Respect\Validation\Exceptions\EmptyStringException;
+use Respect\Validation\Rules\AbstractRule;
 
-class NotEmpty extends AbstractRule implements Validatable
+class StringNotEmpty extends AbstractRule implements Validatable
 {
     const MSG_EMPTY_STRING = 'String_NotEmpty_1';
 

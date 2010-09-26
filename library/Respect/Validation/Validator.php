@@ -2,20 +2,15 @@
 
 namespace Respect\Validation;
 
-use Respect\Validation\Composite\All;
+use Respect\Validation\Rules\All;
 use ReflectionClass;
+use Respect\Validation\ComponentException;
 
 class Validator extends All
 {
 
-    protected $subject;
     protected $ruleName;
     protected $arguments = array();
-
-    public function getSubject()
-    {
-        return $this->subject;
-    }
 
     public function getRuleName()
     {
@@ -25,11 +20,6 @@ class Validator extends All
     public function getArguments()
     {
         return $this->arguments;
-    }
-
-    public function setSubject($subject)
-    {
-        $this->subject = $subject;
     }
 
     public function setRuleName($ruleName)
@@ -56,10 +46,6 @@ class Validator extends All
     protected function applyParts($parts)
     {
         foreach ($parts as $a) {
-            if (!isset($this->subject)) {
-                $this->setSubject($a);
-                continue;
-            }
             if (!isset($this->ruleName)) {
                 $this->setRuleName($a);
                 continue;
@@ -78,23 +64,18 @@ class Validator extends All
 
     protected function checkForCompleteRule()
     {
-        if (!isset($this->subject, $this->ruleName))
+        if (!isset($this->ruleName))
             return;
         $this->addRule(
-            static::buildRule(
-                array($this->subject, $this->ruleName), $this->arguments
-            )
+            static::buildRule($this->ruleName, $this->arguments)
         );
-        $this->subject = null;
         $this->ruleName = null;
         $this->arguments = array();
     }
 
-    public static function __callStatic($subject, $arguments)
+    public static function __callStatic($ruleName, $arguments)
     {
-        $ruleName = array_shift($arguments);
         $validator = new static;
-        $validator->setSubject($subject);
         $validator->setRuleName($ruleName);
         $validator->setArguments($arguments);
         $validator->checkForCompleteRule();
@@ -113,9 +94,8 @@ class Validator extends All
             );
         $validatorFqn = explode('\\', get_called_class());
         array_pop($validatorFqn);
-        if (!is_array($ruleSpec))
-            $ruleSpec = explode('\\', $ruleSpec);
-        $validatorFqn = array_merge($validatorFqn, $ruleSpec);
+        $validatorFqn[] = 'Rules';
+        $validatorFqn[] = $ruleSpec;
         $validatorFqn = array_map('ucfirst', $validatorFqn);
         $validatorFqn = implode('\\', $validatorFqn);
         $validatorClass = new ReflectionClass($validatorFqn);

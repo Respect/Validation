@@ -1,8 +1,14 @@
 <?php
 
-namespace Respect\Validation;
+namespace Respect\Validation\Rules;
 
-abstract class AbstractCompositeRule extends AbstractRule implements Validatable
+use Respect\Validation\Validatable;
+use Respect\Validation\Validator;
+use Respect\Validation\Rules\AbstractRule;
+use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidException;
+
+abstract class AbstractComposite extends AbstractRule implements Validatable
 {
 
     protected $rules = array();

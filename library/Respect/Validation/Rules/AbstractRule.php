@@ -1,6 +1,6 @@
 <?php
 
-namespace Respect\Validation;
+namespace Respect\Validation\Rules;
 
 abstract class AbstractRule
 {

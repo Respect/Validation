@@ -1,12 +1,11 @@
 <?php
 
-namespace Respect\Validation\Composite;
+namespace Respect\Validation\Rules;
 
-use Respect\Validation\AbstractCompositeRule;
-use Respect\Validation\InvalidException;
+use Respect\Validation\Exceptions\InvalidException;
 use Respect\Validation\Validatable;
 
-class One extends AbstractCompositeRule implements Validatable
+class One extends AbstractComposite implements Validatable
 {
 
     public function assert($input)

@@ -1,11 +1,13 @@
 <?php
 
-namespace Respect\Validation\Date;
+namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validatable;
-use Respect\Validation\ComponentException;
+use Respect\Validation\Rules\AbstractDate;
+use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\DateOutOfBoundsException;
 
-class Between extends AbstractDateValidator implements Validatable
+class DateBetween extends AbstractDate implements Validatable
 {
     const MSG_OUT_OF_BOUNDS = 'Date_Between_1';
 
@@ -33,7 +35,7 @@ class Between extends AbstractDateValidator implements Validatable
     {
         $target = $this->getDateObject($input);
         if (!$this->validate($target))
-            throw new OutOfBoundsException(
+            throw new DateOutOfBoundsException(
                 sprintf(
                     $this->getMessage(self::MSG_OUT_OF_BOUNDS),
                     $this->formatDate($target), $this->formatDate($this->min),

@@ -1,10 +1,10 @@
 <?php
 
-namespace Respect\Validation\Date;
+namespace Respect\Validation\Rules;
 
 use DateTime;
 
-class BetweenTest extends \PHPUnit_Framework_TestCase
+class DateBetweenTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -12,31 +12,31 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
      */
     public function testBetweenValid($input, $min, $max)
     {
-        $between = new Between($min, $max);
+        $between = new DateBetween($min, $max);
         $this->assertTrue($between->validate($input));
         $this->assertTrue($between->assert($input));
     }
 
     /**
      * @dataProvider providerForInvalidDates
-     * @expectedException Respect\Validation\Date\OutOfBoundsException
+     * @expectedException Respect\Validation\Exceptions\DateOutOfBoundsException
      */
     public function testBetweenInvalid($input, $min, $max)
     {
 
-        $between = new Between($min, $max);
+        $between = new DateBetween($min, $max);
         $this->assertFalse($between->validate($input));
         $this->assertFalse($between->assert($input));
     }
 
     /**
      * @dataProvider providerForInvalidConfigs
-     * @expectedException Respect\Validation\ComponentException
+     * @expectedException Respect\Validation\Exceptions\ComponentException
      */
     public function testInvalidConfigs($min, $max)
     {
 
-        $between = new Between($min, $max);
+        $between = new DateBetween($min, $max);
     }
 
     public function providerForValidDates()

@@ -3,6 +3,7 @@
 namespace Respect\Validation;
 
 use Mockery;
+use Respect\Validation\Exceptions\InvalidException;
 
 abstract class ValidatorTestCase extends \PHPUnit_Framework_TestCase
 {
@@ -13,7 +14,7 @@ abstract class ValidatorTestCase extends \PHPUnit_Framework_TestCase
         array_shift($args);
         foreach ($args as $req) {
             $this->assertTrue(
-                $validator->hasRule('Respect\Validation\Foo\\' . $req)
+                $validator->hasRule('Respect\Validation\Rules\\' . $req)
             );
         }
     }
@@ -33,10 +34,10 @@ abstract class ValidatorTestCase extends \PHPUnit_Framework_TestCase
         $validator->shouldReceive('getMessages')->andReturn(
             $messages
         );
-        $className = 'Respect\Validation\Foo\\' . $name;
+        $className = 'Respect\Validation\Rules\\' . $name;
         if (!class_exists($className, false)) {
             eval("
-                namespace Respect\Validation\Foo; 
+                namespace Respect\Validation\Rules; 
                 class $name implements \Respect\Validation\Validatable {
                     public function assert(\$input) {}
                     public function validate(\$input) {}
@@ -55,13 +56,13 @@ abstract class ValidatorTestCase extends \PHPUnit_Framework_TestCase
     public function providerForMockImpossibleValidators()
     {
         $firstValidator = $this->buildMockValidator(
-                'Bar', array('Bar_1' => 'fga', 'Bar_2' => 'dfgb'), true
+                'FooBar', array('Bar_1' => 'fga', 'Bar_2' => 'dfgb'), true
         );
         $secondValidator = $this->buildMockValidator(
-                'Baz', array('Baz_1' => 'gedg', 'Baz_2' => 'rihg49'), true
+                'FooBaz', array('Baz_1' => 'gedg', 'Baz_2' => 'rihg49'), true
         );
         $thirdValidator = $this->buildMockValidator(
-                'Bat', array('Bat_1' => 'dfdsgdgfgb'), true
+                'FooBat', array('Bat_1' => 'dfdsgdgfgb'), true
         );
         return array(
             array($firstValidator, $secondValidator, $thirdValidator),
@@ -73,13 +74,14 @@ abstract class ValidatorTestCase extends \PHPUnit_Framework_TestCase
     public function providerForMockValidators()
     {
         $firstValidator = $this->buildMockValidator(
-                'Bara', array('Bara_1' => 'fga', 'Bara_2' => 'dfgb'), false
+                'FooBara', array('Bara_1' => 'fga', 'Bara_2' => 'dfgb'), false
         );
         $secondValidator = $this->buildMockValidator(
-                'Baza', array('Baza_1' => 'gedg', 'Baza_2' => 'rihg49'), false
+                'FooBaza', array('Baza_1' => 'gedg', 'Baza_2' => 'rihg49'),
+                false
         );
         $thirdValidator = $this->buildMockValidator(
-                'Bata', array('Bata_1' => 'dfdsgdgfgb'), false
+                'FooBata', array('Bata_1' => 'dfdsgdgfgb'), false
         );
         return array(
             array($firstValidator, $secondValidator, $thirdValidator),

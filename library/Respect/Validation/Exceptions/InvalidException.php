@@ -1,6 +1,6 @@
 <?php
 
-namespace Respect\Validation;
+namespace Respect\Validation\Exceptions;
 
 use InvalidArgumentException;
 use Exception;

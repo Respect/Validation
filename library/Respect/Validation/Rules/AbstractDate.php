@@ -1,11 +1,11 @@
 <?php
 
-namespace Respect\Validation\Date;
+namespace Respect\Validation\Rules;
 
-use Respect\Validation\AbstractRule;
 use DateTime;
+use Respect\Validation\Rules\AbstractRule;
 
-abstract class AbstractDateValidator extends AbstractRule
+abstract class AbstractDate extends AbstractRule
 {
 
     protected $format = DateTime::RFC1036;
