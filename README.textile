@@ -70,7 +70,7 @@ h3. Cool, informative exceptions:
 
 <pre>try {
     $username = '#$%  #odjfubgihdbfgihbdfighb';
-    $validUsername = v::alnum()
+    $validUsername = v::alnum('_')
                       ->noWhitespace()
                       ->stringLength(1,15)
                       ->assert($username);
