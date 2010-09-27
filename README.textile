@@ -1,6 +1,14 @@
 h2. About
 
-Respect\Validation aims to be the most awesome validation toolkit ever created.
+Respect\Validation aims to be the most awesome validation toolkit ever created. Featuring:
+
+* Fluent Interfaces
+* Chain Validation
+* Composite validation (one of, all of, most of, at least N of, none of, etc...)
+* Extensibility (create your own validators using the same engine)
+* Solid objects for raw instantiation (tests, dependency injection, etc...)
+* Informative, usable exceptions
+* IDE autocomplete-readiness
 
 Here some nice little things you can do using it:
 
@@ -20,6 +28,8 @@ $validUsername = v::alnum()
                   ->noWhitespace()
                   ->stringLength(1,15)
                   ->validate($username);
+</pre>
+<pre>
 //Date between two ranges using a specific format
 $someDate = '2010-10-15';
 $validDate = v::date('Y-m-d')
@@ -79,6 +89,6 @@ h3. Non-fluent interface for Dependency Injection maniacs
 <pre>$validator = new v\Rules\Numeric();
 $validator->validate(123);</pre>
  
-.p Cool, isn't it?
+Cool, isn't it?
 
 
