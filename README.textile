@@ -4,25 +4,29 @@ Respect\Validation aims to be the most awesome validation toolkit ever created.
 
 Here some nice little things you can do using it:
 
-bc.. <?php
- 
- use Respect\Validation\Validator as v;
+h3. Namespace import:
+bc. use Respect\Validation\Validator as v;
 
- //From 1 to 15 alphanumeric characters, no whitespace allowed
+h3. Simple validation
+bc. v::numeric()->validate($someNumber);
+
+h3. Chained validation
+bc. //From 1 to 15 non-whitespace alphanumeric characters 
  $username = 'alganet';
  $validUsername = v::alnum()
                    ->noWhitespace()
                    ->stringLength(1,15)
                    ->validate($username);
 
+bc.
  //Date between two ranges using a specific format
  $someDate = '2010-10-15';
  $validDate = v::date('Y-m-d')
                ->dateBetween('2009-01-01', 2011-01-01')
                ->validate($someDate);
 
- //Validating objects attributes
- $user = new \stdClass;
+h3. Validating object attributes
+bc..$user = new \stdClass;
  $user->name = 'Alexandre';
  $user->birthdate = '1987-07-01';
 
@@ -31,13 +35,15 @@ bc.. <?php
      v::hasAttribute('birthdate, v::date('Y-m-d'))
  );
 
- //Combinating rules, at least one rule must pass
- $validDate = v::one(
+h3.Combining rules (v::one, v::all, v::atLeast, v::most)
+bc.$validDate = v::one(
      v::date('Y-m-d'),
      v::date('y-m-d'), //two-digit year
      v::date('d/m/Y')  
  );
 
+h3.Compositing rules
+bc..
  //Must satisfy at least two of the three conditions:
  //a) A numeric or alphanumeric value
  //b) A date in the format Ymd (20091009)
@@ -48,8 +54,8 @@ bc.. <?php
     v::stringLength(3,12)->noWhitespace()
  ));
 
- //Cool, informative exceptions:
- try {
+h3. Cool, informative exceptions:
+bc.. try {
      $username = '#$%  #odjfubgihdbfgihbdfighb';
      $validUsername = v::alnum()
                        ->noWhitespace()
@@ -65,10 +71,10 @@ bc.. <?php
     echo $e->getMessage();
  }
  
- //Non-fluent interface for Dependency Injection maniacs
- $validator = new v\Rules\Numeric();
+h3.Non-fluent interface for Dependency Injection maniacs
+bc.. $validator = new v\Rules\Numeric();
  $validator->validate(123);
  
-.p 
+.p Cool, isn't it?
 
 
