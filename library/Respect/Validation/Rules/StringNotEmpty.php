@@ -8,7 +8,7 @@ use Respect\Validation\Rules\AbstractRule;
 
 class StringNotEmpty extends AbstractRule implements Validatable
 {
-    const MSG_EMPTY_STRING = 'String_NotEmpty_1';
+    const MSG_EMPTY_STRING = 'StringNotEmpty_1';
 
     protected $messages = array(
         self::MSG_EMPTY_STRING => 'You provided an empty string'
@@ -26,6 +26,7 @@ class StringNotEmpty extends AbstractRule implements Validatable
             throw new EmptyStringException(
                 $this->getMessage(self::MSG_EMPTY_STRING)
             );
+        return true;
     }
 
 }

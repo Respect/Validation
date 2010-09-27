@@ -6,10 +6,12 @@ use Respect\Validation\Validatable;
 use Respect\Validation\Rules\AbstractDate;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\DateOutOfBoundsException;
+use Respect\Validation\Exceptions\InvalidDate;
+use Respect\Validation\Validator;
 
 class DateBetween extends AbstractDate implements Validatable
 {
-    const MSG_OUT_OF_BOUNDS = 'Date_Between_1';
+    const MSG_OUT_OF_BOUNDS = 'DateBetween_1';
 
     protected $min;
     protected $max;
@@ -19,9 +21,18 @@ class DateBetween extends AbstractDate implements Validatable
 
     public function __construct($min, $max, $format=null)
     {
-
         $this->min = $this->getDateObject($min);
         $this->max = $this->getDateObject($max);
+        try {
+            Validator::date($min);
+        } catch (InvalidDate $e) {
+            throw new ComponentException(sprintf('Invalid Date: %s', $min));
+        }
+        try {
+            Validator::date($max);
+        } catch (InvalidDate $e) {
+            throw new ComponentException(sprintf('Invalid Date: %s', $max));
+        }
         if ($this->min > $this->max)
             throw new ComponentException(
                 sprintf('%s cannot be less than  %s for validation',

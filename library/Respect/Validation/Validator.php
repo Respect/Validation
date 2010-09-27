@@ -4,7 +4,7 @@ namespace Respect\Validation;
 
 use Respect\Validation\Rules\All;
 use ReflectionClass;
-use Respect\Validation\ComponentException;
+use Respect\Validation\Exceptions\ComponentException;
 
 class Validator extends All
 {

@@ -7,10 +7,10 @@ use Respect\Validation\Rules\AbstractRule;
 
 abstract class AbstractDate extends AbstractRule
 {
+    const FORMAT_DEFAULT = DateTime::RFC1036;
+    protected $format = self::FORMAT_DEFAULT;
 
-    protected $format = DateTime::RFC1036;
-
-    protected function setFormat($format=DateTime::RFC1036)
+    protected function setFormat($format=self::FORMAT_DEFAULT)
     {
         $this->format = $format;
     }
