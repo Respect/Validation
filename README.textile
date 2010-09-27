@@ -5,75 +5,79 @@ Respect\Validation aims to be the most awesome validation toolkit ever created.
 Here some nice little things you can do using it:
 
 h3. Namespace import:
-bc. use Respect\Validation\Validator as v;
+
+<pre> use Respect\Validation\Validator as v;</pre>
 
 h3. Simple validation
-bc. v::numeric()->validate($someNumber);
+
+<pre> v::numeric()->validate($someNumber); </pre>
 
 h3. Chained validation
-bc. //From 1 to 15 non-whitespace alphanumeric characters 
- $username = 'alganet';
- $validUsername = v::alnum()
-                   ->noWhitespace()
-                   ->stringLength(1,15)
-                   ->validate($username);
 
-bc.
- //Date between two ranges using a specific format
- $someDate = '2010-10-15';
- $validDate = v::date('Y-m-d')
-               ->dateBetween('2009-01-01', 2011-01-01')
-               ->validate($someDate);
+<pre>//From 1 to 15 non-whitespace alphanumeric characters 
+$username = 'alganet';
+$validUsername = v::alnum()
+                  ->noWhitespace()
+                  ->stringLength(1,15)
+                  ->validate($username);
+//Date between two ranges using a specific format
+$someDate = '2010-10-15';
+$validDate = v::date('Y-m-d')
+              ->dateBetween('2009-01-01', 2011-01-01')
+              ->validate($someDate);</pre>
 
 h3. Validating object attributes
-bc..$user = new \stdClass;
- $user->name = 'Alexandre';
- $user->birthdate = '1987-07-01';
 
- $validUser = v::all(
-     v::hasAttribute('name', v::stringNotEmpty()),
-     v::hasAttribute('birthdate, v::date('Y-m-d'))
- );
+<pre>$user = new \stdClass;
+$user->name = 'Alexandre';
+$user->birthdate = '1987-07-01';
+$validUser = v::all(
+    v::hasAttribute('name', v::stringNotEmpty()),
+    v::hasAttribute('birthdate, v::date('Y-m-d'))
+);</pre>
 
-h3.Combining rules (v::one, v::all, v::atLeast, v::most)
-bc.$validDate = v::one(
-     v::date('Y-m-d'),
-     v::date('y-m-d'), //two-digit year
-     v::date('d/m/Y')  
- );
+h3. Combining rules (v::one, v::all, v::atLeast, v::most)
 
-h3.Compositing rules
-bc..
- //Must satisfy at least two of the three conditions:
- //a) A numeric or alphanumeric value
- //b) A date in the format Ymd (20091009)
- //c) A string between 3 and 12 characters without whitespace
- $valid = v::atLeast(2, array(
-    v::one(v::numeric(), v::alnum()),
-    v::date('Ymd'),
-    v::stringLength(3,12)->noWhitespace()
- ));
+<pre>$validDate = v::one(
+    v::date('Y-m-d'),
+    v::date('y-m-d'), //two-digit year
+    v::date('d/m/Y')  
+);</pre>
+
+h3. Compositing rules
+
+<pre>//Must satisfy at least two of the three conditions:
+//a) A numeric or alphanumeric value
+//b) A date in the format Ymd (20091009)
+//c) A string between 3 and 12 characters without whitespace
+$valid = v::atLeast(2, array(
+   v::one(v::numeric(), v::alnum()),
+   v::date('Ymd'),
+   v::stringLength(3,12)->noWhitespace()
+));</pre>
 
 h3. Cool, informative exceptions:
-bc.. try {
-     $username = '#$%  #odjfubgihdbfgihbdfighb';
-     $validUsername = v::alnum()
-                       ->noWhitespace()
-                       ->stringLength(1,15)
-                       ->assert($username);
- } catch(v\Exceptions\InvalidException $e) {
-    /*
-        Respect\Validation\Exceptions\InvalidException: 
-        #$%  #odjfubgihdbfgihbdfighb does not contains only letters and digits (including _)
-        #$%  #odjfubgihdbfgihbdfighb contains spaces, tabs, line breaks or other not allowed charaters.
-        #$%  #odjfubgihdbfgihbdfighb exceeds the maximum of 15 characters
-    */
-    echo $e->getMessage();
- }
+
+<pre>try {
+    $username = '#$%  #odjfubgihdbfgihbdfighb';
+    $validUsername = v::alnum()
+                      ->noWhitespace()
+                      ->stringLength(1,15)
+                      ->assert($username);
+} catch(v\Exceptions\InvalidException $e) {
+   /*
+       Respect\Validation\Exceptions\InvalidException: 
+       #$%  #odjfubgihdbfgihbdfighb does not contains only letters and digits (including _)
+       #$%  #odjfubgihdbfgihbdfighb contains spaces, tabs, line breaks or other not allowed charaters.
+       #$%  #odjfubgihdbfgihbdfighb exceeds the maximum of 15 characters
+   */
+   echo $e->getMessage();
+}</pre>
  
-h3.Non-fluent interface for Dependency Injection maniacs
-bc.. $validator = new v\Rules\Numeric();
- $validator->validate(123);
+h3. Non-fluent interface for Dependency Injection maniacs
+
+<pre>$validator = new v\Rules\Numeric();
+$validator->validate(123);</pre>
  
 .p Cool, isn't it?
 
