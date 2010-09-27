@@ -57,4 +57,25 @@ class ValidatorTest extends ValidatorTestCase
         $this->assertTrue($v);
     }
 
+    public function testValidatorCompositeTwitterUsername()
+    {
+        $v = Validator::alnum('_')
+                ->noWhitespace()
+                ->stringLength(1, 15)
+                ->assert('alganet');
+        $this->assertTrue($v);
+    }
+
+    /**
+     * @expectedException Respect\Validation\Exceptions\InvalidException
+     */
+    public function testValidatorCompositeTwitterUsernameInvalid()
+    {
+        $v = Validator::alnum('_')
+                ->noWhitespace()
+                ->stringLength(1, 15)
+                ->assert('#$%  #odjfubgihdbfgihbdfighb');
+        $this->assertTrue($v);
+    }
+
 }

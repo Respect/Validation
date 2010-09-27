@@ -60,11 +60,11 @@ class StringLength extends AbstractRule implements Validatable
     {
         if (!$this->validateMin($input))
             throw new StringLengthException(
-                $this->getMessage(self::MSG_LENGTH_MIN, $input, $this->min)
+                sprintf($this->getMessage(self::MSG_LENGTH_MIN), $input, $this->min)
             );
         if (!$this->validateMax($input))
             throw new StringLengthException(
-                $this->getMessage(self::MSG_LENGTH_MAX, $input, $this->max)
+                sprintf($this->getMessage(self::MSG_LENGTH_MAX), $input, $this->max)
             );
         return true;
     }

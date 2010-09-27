@@ -1,3 +1,74 @@
 h2. About
 
-Respect\Validation aims to be the most awesome validation toolkit ever created
+Respect\Validation aims to be the most awesome validation toolkit ever created.
+
+Here some nice little things you can do using it:
+
+ <?php
+ 
+ use Respect\Validation\Validator as v;
+
+ //From 1 to 15 alphanumeric characters, no whitespace allowed
+ $username = 'alganet';
+ $validUsername = v::alnum()
+                   ->noWhitespace()
+                   ->stringLength(1,15)
+                   ->validate($username);
+
+ //Date between two ranges using a specific format
+ $someDate = '2010-10-15';
+ $validDate = v::date('Y-m-d')
+               ->dateBetween('2009-01-01', 2011-01-01')
+               ->validate($someDate);
+
+ //Validating objects attributes
+ $user = new \stdClass;
+ $user->name = 'Alexandre';
+ $user->birthdate = '1987-07-01';
+
+ $validUser = v::all(
+     v::hasAttribute('name', v::stringNotEmpty()),
+     v::hasAttribute('birthdate, v::date('Y-m-d'))
+ );
+
+ //Combinating rules, at least one rule must pass
+ $validDate = v::one(
+     v::date('Y-m-d'),
+     v::date('y-m-d'), //two-digit year
+     v::date('d/m/Y')  
+ );
+
+ //Must satisfy at least two of the three conditions:
+ //a) A numeric or alphanumeric value
+ //b) A date in the format Ymd (20091009)
+ //c) A string between 3 and 12 characters without whitespace
+ $valid = v::atLeast(2, array(
+    v::one(v::numeric(), v::alnum()),
+    v::date('Ymd'),
+    v::stringLength(3,12)->noWhitespace()
+ ));
+
+ //Cool, informative exceptions:
+ try {
+     $username = '#$%  #odjfubgihdbfgihbdfighb';
+     $validUsername = v::alnum()
+                       ->noWhitespace()
+                       ->stringLength(1,15)
+                       ->assert($username);
+ } catch(v\Exceptions\InvalidException $e) {
+    /*
+        Respect\Validation\Exceptions\InvalidException: 
+        #$%  #odjfubgihdbfgihbdfighb does not contains only letters and digits (including _)
+        #$%  #odjfubgihdbfgihbdfighb contains spaces, tabs, line breaks or other not allowed charaters.
+        #$%  #odjfubgihdbfgihbdfighb exceeds the maximum of 15 characters
+    */
+    echo $e->getMessage();
+ }
+ 
+ //Non-fluent interface for Dependency Injection maniacs
+ $validator = new v\Rules\Numeric();
+ $validator->validate(123);
+ 
+
+
+
