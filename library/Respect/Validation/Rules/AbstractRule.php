@@ -28,4 +28,12 @@ abstract class AbstractRule
         return $this->messages;
     }
 
+    protected function getStringRepresentation($mixed)
+    {
+        if (is_object($mixed))
+            return get_class($mixed);
+        else
+            return strval($mixed);
+    }
+
 }
