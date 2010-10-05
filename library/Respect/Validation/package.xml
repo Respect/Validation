@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+    http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0
+    http://pear.php.net/dtd/package-2.0.xsd">
+ <name>Validation</name>
+ <uri>http://github.com/Respect/Validation</uri>
+ <summary>Multi-purpouse validation library</summary>
+ <description>Multi-purpouse validation library</description>
+ <lead>
+  <name>Alexandre Gaigalas</name>
+  <user>alganet</user>
+  <email>alexandre@gaigalas.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2010-10-05</date>
+ <time>11:09:16</time>
+ <version>
+  <release>0.1.0</release>
+  <api>0.1.0</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+ <notes>
+First Version
+ </notes>
+ <contents>
+  <dir baseinstalldir="Respect/Validation" name="/">
+   <file baseinstalldir="Respect/Validation" md5sum="e7b99eaefbcd1c5db289414255bafc85" name="Exceptions/AttributeNotPresentException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="b22f51d15eb7d8fffceadcaf237948f0" name="Exceptions/ComponentException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="af3c004d8529137cfcab447ec5b4ae78" name="Exceptions/DateOutOfBoundsException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="6ba7166ae89b56b566e0bba9c133ba74" name="Exceptions/EmptyStringException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="b92c002cf80605808cc847fe91ce696e" name="Exceptions/InvalidDate.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="f2ed5882ddb66d642ad01c431778729c" name="Exceptions/InvalidException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="60c6344b9c362bf3bfb69b4711ca3307" name="Exceptions/NotAlphanumericException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="00205f87cde75facd2dedc7a117adc12" name="Exceptions/NotNullException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="dc2e5736a75a74064c6bd4aa43389cb1" name="Exceptions/NotNumericException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="57c8f4989fb01876edf8b7333a2be680" name="Exceptions/StringLengthException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="8decdddba56aa9d14a8739bcf29f494e" name="Exceptions/WhitespaceFoundException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="bff35179fbe732db5fc77075eab8c3c2" name="Rules/AbstractComposite.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="63d6808a8e387281aeb6ab09440f3031" name="Rules/AbstractDate.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="41aba3b3ca4ad26393c105bd6f5ef929" name="Rules/AbstractRule.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="511b1e65c34ab3ffef4bc28c06578202" name="Rules/All.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="624bb64236957a334e1776c1228c4e1b" name="Rules/Alnum.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="7168f3d9a3596b099d5d48bceaf7d47d" name="Rules/AtLeast.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="629e6f21d399538586dcc53ac9a3d714" name="Rules/Date.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="157e44708f4dcad7e20cc88bd17b62e4" name="Rules/DateBetween.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="afbc380ade44f0d93b78f7189badd214" name="Rules/HasAttribute.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="7469afba4e918d7ab0d89558f6d2e202" name="Rules/Most.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="4d016dd693915203410c2b9ef385c2c7" name="Rules/None.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="28759d8e938c69d0932f6669ec4a191a" name="Rules/NoWhitespace.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="f132bcde03716531ec7993566980db5c" name="Rules/NullValue.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="9312bfda1fb9edbadfa24ef78d8c2857" name="Rules/Numeric.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="177138c0b2fc7577f24fd841e806bc37" name="Rules/One.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="e75ee4328a6e04d7b6be822096329e77" name="Rules/StringLength.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="345bfdbc2677f2eaa5843e2de2d41126" name="Rules/StringNotEmpty.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="e381d656fee020154a13ba6f291783c9" name="Validatable.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="369fdf25bfef72739084c0a2d55058af" name="Validator.php" role="php" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.3</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <phprelease />
+ <changelog>
+  <release>
+   <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2010-10-05</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+   <notes>
+First Version
+   </notes>
+  </release>
+ </changelog>
+</package>
