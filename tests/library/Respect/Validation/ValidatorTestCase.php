@@ -31,18 +31,19 @@ abstract class ValidatorTestCase extends \PHPUnit_Framework_TestCase
             $validator->shouldReceive('validate')->andReturn(true);
             $validator->shouldReceive('assert')->andReturn(true);
         }
-        $validator->shouldReceive('getMessages')->andReturn(
+        $validator->shouldReceive('getMessageTemplates')->andReturn(
             $messages
         );
         $className = 'Respect\Validation\Rules\\' . $name;
         if (!class_exists($className, false)) {
             eval("
                 namespace Respect\Validation\Rules; 
-                class $name implements \Respect\Validation\Validatable {
+                class $name
+                extends \Respect\Validation\Rules\AbstractRule
+                implements \Respect\Validation\Validatable  {
                     public function assert(\$input) {}
                     public function validate(\$input) {}
-                    public function setMessages(array \$messages) {}
-                    public function getMessages() {
+                    public function getMessageTemplates() {
                         return " . var_export($messages,
                     true) . ";
                     }

@@ -9,7 +9,7 @@ use Respect\Validation\Exceptions\NotNullException;
 class NullValue extends AbstractRule implements Validatable
 {
     const MSG_NOT_NULL = 'NullValue_1';
-    protected $messages = array(
+    protected $messageTemplates = array(
         self::MSG_NOT_NULL => '%s is not null'
     );
 
@@ -22,7 +22,7 @@ class NullValue extends AbstractRule implements Validatable
     {
         if (!$this->validate($input))
             throw new NotNullException(
-                sprintf($this->getMessage(self::MSG_NOT_NULL), $input)
+                sprintf($this->getMessageTemplate(self::MSG_NOT_NULL), $input)
             );
         return true;
     }

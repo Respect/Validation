@@ -9,7 +9,7 @@ use Respect\Validation\Exceptions\CallbackException;
 class Callback extends AbstractRule implements Validatable
 {
     const MSG_CALLBACK = 'Callback_1';
-    protected $messages = array(
+    protected $messageTemplates = array(
         self::MSG_CALLBACK => '%s does not validate against the provided callback.'
     );
     protected $callback;
@@ -28,7 +28,7 @@ class Callback extends AbstractRule implements Validatable
     {
         if (!$this->validate($input))
             throw new CallbackException(
-                sprintf($this->getMessage(self::MSG_CALLBACK),
+                sprintf($this->getMessageTemplate(self::MSG_CALLBACK),
                     $this->getStringRepresentation($input)
                 )
             );

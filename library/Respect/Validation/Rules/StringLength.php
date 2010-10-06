@@ -14,7 +14,7 @@ class StringLength extends AbstractRule implements Validatable
     const MSG_LENGTH_MIN = 'StringLength_1';
     const MSG_LENGTH_MAX = 'StringLength_2';
 
-    protected $messages = array(
+    protected $messageTemplates = array(
         self::MSG_LENGTH_MIN => '%s does not have at least %s characters',
         self::MSG_LENGTH_MAX => '%s exceeds the maximum of %s characters'
     );
@@ -60,11 +60,13 @@ class StringLength extends AbstractRule implements Validatable
     {
         if (!$this->validateMin($input))
             throw new StringLengthException(
-                sprintf($this->getMessage(self::MSG_LENGTH_MIN), $input, $this->min)
+                sprintf($this->getMessageTemplate(self::MSG_LENGTH_MIN), $input,
+                    $this->min)
             );
         if (!$this->validateMax($input))
             throw new StringLengthException(
-                sprintf($this->getMessage(self::MSG_LENGTH_MAX), $input, $this->max)
+                sprintf($this->getMessageTemplate(self::MSG_LENGTH_MAX), $input,
+                    $this->max)
             );
         return true;
     }

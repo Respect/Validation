@@ -9,7 +9,7 @@ use Respect\Validation\Exceptions\WhitespaceFoundException;
 class NoWhitespace extends AbstractRule implements Validatable
 {
     const MSG_WHITESPACE_FOUND = 'NoWhitespace_1';
-    protected $messages = array(
+    protected $messageTemplates = array(
         self::MSG_WHITESPACE_FOUND => '%s contains spaces, tabs, line breaks or other not allowed charaters.'
     );
 
@@ -22,7 +22,7 @@ class NoWhitespace extends AbstractRule implements Validatable
     {
         if (!$this->validate($input))
             throw new WhitespaceFoundException(
-                sprintf($this->getMessage(self::MSG_WHITESPACE_FOUND), $input)
+                sprintf($this->getMessageTemplate(self::MSG_WHITESPACE_FOUND), $input)
             );
         return true;
     }

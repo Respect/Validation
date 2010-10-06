@@ -22,9 +22,9 @@ abstract class AbstractComposite extends AbstractRule implements Validatable
     protected function appendRule(Validatable $validator)
     {
         $this->rules[spl_object_hash($validator)] = $validator;
-        $this->messages = array_merge(
-            $this->messages, $validator->getMessages()
-        );
+        $this->setMessageTemplates(array_merge(
+            $this->getMessageTemplates(), $validator->getMessageTemplates()
+        ));
     }
 
     public function addRule($validator, $arguments=array())

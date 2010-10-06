@@ -5,27 +5,27 @@ namespace Respect\Validation\Rules;
 abstract class AbstractRule
 {
 
-    protected $messages = array();
+    protected $messageTemplates = array();
 
-    public function setMessage($code, $message)
+    public function setMessageTemplate($code, $template)
     {
-        $this->messages[$code] = $message;
+        $this->messageTemplates[$code] = $template;
     }
 
-    public function getMessage($code)
+    public function getMessageTemplate($code)
     {
-        return $this->messages[$code];
+        return $this->messageTemplates[$code];
     }
 
-    public function setMessages(array $messages)
+    public function setMessageTemplates(array $templates)
     {
-        foreach ($messages as $code => $message)
-            $this->setMessage($code, $message);
+        foreach ($templates as $code => $message)
+            $this->setMessageTemplate($code, $message);
     }
 
-    public function getMessages()
+    public function getMessageTemplates()
     {
-        return $this->messages;
+        return $this->messageTemplates;
     }
 
     protected function getStringRepresentation($mixed)

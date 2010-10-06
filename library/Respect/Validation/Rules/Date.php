@@ -10,7 +10,7 @@ class Date extends AbstractDate implements Validatable
 {
     const MSG_INVALID_DATE = 'Date_1';
     const MSG_INVALID_FORMAT = 'Date_2';
-    protected $messages = array(
+    protected $messageTemplates = array(
         self::MSG_INVALID_DATE => '%s is not a valid date reference',
         self::MSG_INVALID_FORMAT => '%s is not a valid date in the %s format',
     );
@@ -33,12 +33,13 @@ class Date extends AbstractDate implements Validatable
         if (!$this->validate($input))
             if (is_null($this->format))
                 throw new InvalidDate(
-                    sprintf($this->getMessage(static::MSG_INVALID_DATE), $input)
+                    sprintf($this->getMessageTemplate(static::MSG_INVALID_DATE),
+                        $input)
                 );
             else
                 throw new InvalidDate(
                     sprintf(
-                        $this->getMessage(static::MSG_INVALID_FORMAT), $input,
+                        $this->getMessageTemplate(static::MSG_INVALID_FORMAT), $input,
                         $this->format
                     )
                 );

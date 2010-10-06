@@ -15,7 +15,7 @@ class DateBetween extends AbstractDate implements Validatable
 
     protected $min;
     protected $max;
-    protected $messages = array(
+    protected $messageTemplates = array(
         self::MSG_OUT_OF_BOUNDS => '%s is not between %s and %s.'
     );
 
@@ -48,7 +48,7 @@ class DateBetween extends AbstractDate implements Validatable
         if (!$this->validate($target))
             throw new DateOutOfBoundsException(
                 sprintf(
-                    $this->getMessage(self::MSG_OUT_OF_BOUNDS),
+                    $this->getMessageTemplate(self::MSG_OUT_OF_BOUNDS),
                     $this->formatDate($target), $this->formatDate($this->min),
                     $this->formatDate($this->max)
                 )

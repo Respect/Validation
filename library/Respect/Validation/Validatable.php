@@ -9,7 +9,11 @@ interface Validatable
 
     public function validate($input);
 
-    public function getMessages();
+    public function getMessageTemplates();
 
-    public function setMessages(array $messages);
+    public function setMessageTemplates(array $templates);
+
+    public function setMessageTemplate($code, $templage);
+
+    public function getMessageTemplate($code);
 }

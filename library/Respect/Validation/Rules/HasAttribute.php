@@ -10,7 +10,7 @@ use Respect\Validation\Rules\All;
 class HasAttribute extends All implements Validatable
 {
     const MSG_ATTRIBUTE_NOT_PRESENT = 'NullValue_1';
-    protected $messages = array(
+    protected $messageTemplates = array(
         self::MSG_ATTRIBUTE_NOT_PRESENT => 'Object does not have the attribute %s'
     );
     protected $attribute = '';
@@ -33,7 +33,7 @@ class HasAttribute extends All implements Validatable
         if (!$this->validate($input))
             throw new AttributeNotPresentException(
                 sprintf(
-                    $this->getMessage(self::MSG_ATTRIBUTE_NOT_PRESENT),
+                    $this->getMessageTemplate(self::MSG_ATTRIBUTE_NOT_PRESENT),
                     $this->attribute
                 )
             );

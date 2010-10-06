@@ -9,7 +9,7 @@ use Respect\Validation\Exceptions\NotNumericException;
 class Numeric extends AbstractRule implements Validatable
 {
     const MSG_NOT_NUMERIC = 'Numeric_1';
-    protected $messages = array(
+    protected $messageTemplates = array(
         self::MSG_NOT_NUMERIC => '%s is not a numeric value'
     );
 
@@ -22,7 +22,7 @@ class Numeric extends AbstractRule implements Validatable
     {
         if (!$this->validate($input))
             throw new NotNumericException(
-                sprintf($this->getMessage(self::MSG_NOT_NUMERIC), $input)
+                sprintf($this->getMessageTemplate(self::MSG_NOT_NUMERIC), $input)
             );
         return true;
     }

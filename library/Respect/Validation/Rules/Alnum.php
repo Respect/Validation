@@ -10,7 +10,7 @@ class Alnum extends AbstractRule implements Validatable
 {
     const MSG_NOT_ALPHANUMERIC = 'Alnum_1';
     const MSG_NOT_ALPHANUMERIC_ADDITIONAL = 'Alnum_2';
-    protected $messages = array(
+    protected $messageTemplates = array(
         self::MSG_NOT_ALPHANUMERIC => '%s does not contains only letters and digits',
         self::MSG_NOT_ALPHANUMERIC_ADDITIONAL => '%s does not contains only letters and digits (including %s)'
     );
@@ -33,13 +33,13 @@ class Alnum extends AbstractRule implements Validatable
         if (!$this->validate($input))
             if (empty($this->additionalChars))
                 throw new NotAlphanumericException(
-                    sprintf($this->getMessage(self::MSG_NOT_ALPHANUMERIC),
+                    sprintf($this->getMessageTemplate(self::MSG_NOT_ALPHANUMERIC),
                         $input)
                 );
             else
                 throw new NotAlphanumericException(
                     sprintf(
-                        $this->getMessage(self::MSG_NOT_ALPHANUMERIC_ADDITIONAL),
+                        $this->getMessageTemplate(self::MSG_NOT_ALPHANUMERIC_ADDITIONAL),
                         $input, $this->additionalChars
                     )
                 );
