@@ -2,7 +2,9 @@
 
 namespace Respect\Validation\Rules;
 
-abstract class AbstractRule
+use Respect\Validation\Validatable;
+
+abstract class AbstractRule implements Validatable
 {
 
     protected $messageTemplates = array();
@@ -34,6 +36,11 @@ abstract class AbstractRule
             return get_class($mixed);
         else
             return strval($mixed);
+    }
+
+    public function __invoke($input)
+    {
+        return $this->validate($input);
     }
 
 }

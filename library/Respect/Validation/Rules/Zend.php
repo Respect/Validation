@@ -3,12 +3,11 @@
 namespace Respect\Validation\Rules;
 
 use ReflectionClass;
-use Respect\Validation\Validatable;
 use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Exceptions\CallbackException;
 use Respect\Validation\Exceptions\InvalidException;
 
-class Zend extends AbstractRule implements Validatable
+class Zend extends AbstractRule
 {
 
     protected $messages = array();

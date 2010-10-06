@@ -3,13 +3,12 @@
 namespace Respect\Validation\Rules;
 
 use ReflectionClass;
-use Respect\Validation\Validatable;
 use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Exceptions\CallbackException;
 use Respect\Validation\Exceptions\InvalidException;
 use Symfony\Component\Validator\ConstraintViolation;
 
-class Sf extends AbstractRule implements Validatable
+class Sf extends AbstractRule
 {
 
     protected $messages = array();

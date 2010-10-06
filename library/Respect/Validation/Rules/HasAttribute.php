@@ -3,11 +3,10 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\AttributeNotPresentException;
 use Respect\Validation\Rules\All;
 
-class HasAttribute extends All implements Validatable
+class HasAttribute extends All
 {
     const MSG_ATTRIBUTE_NOT_PRESENT = 'NullValue_1';
     protected $messageTemplates = array(

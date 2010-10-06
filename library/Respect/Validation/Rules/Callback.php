@@ -2,11 +2,10 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validatable;
 use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Exceptions\CallbackException;
 
-class Callback extends AbstractRule implements Validatable
+class Callback extends AbstractRule 
 {
     const MSG_CALLBACK = 'Callback_1';
     protected $messageTemplates = array(

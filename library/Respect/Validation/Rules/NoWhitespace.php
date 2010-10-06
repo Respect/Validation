@@ -2,11 +2,10 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validatable;
 use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Exceptions\WhitespaceFoundException;
 
-class NoWhitespace extends AbstractRule implements Validatable
+class NoWhitespace extends AbstractRule 
 {
     const MSG_WHITESPACE_FOUND = 'NoWhitespace_1';
     protected $messageTemplates = array(

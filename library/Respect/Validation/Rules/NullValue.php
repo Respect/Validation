@@ -3,10 +3,9 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\NotNullException;
 
-class NullValue extends AbstractRule implements Validatable
+class NullValue extends AbstractRule
 {
     const MSG_NOT_NULL = 'NullValue_1';
     protected $messageTemplates = array(

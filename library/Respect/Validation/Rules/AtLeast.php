@@ -3,9 +3,8 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\InvalidException;
-use Respect\Validation\Validatable;
 
-class AtLeast extends AbstractComposite implements Validatable
+class AtLeast extends AbstractComposite 
 {
 
     protected $howMany = 1;

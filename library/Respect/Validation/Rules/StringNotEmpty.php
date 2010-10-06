@@ -2,11 +2,10 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\EmptyStringException;
 use Respect\Validation\Rules\AbstractRule;
 
-class StringNotEmpty extends AbstractRule implements Validatable
+class StringNotEmpty extends AbstractRule
 {
     const MSG_EMPTY_STRING = 'StringNotEmpty_1';
 

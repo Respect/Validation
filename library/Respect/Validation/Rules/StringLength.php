@@ -4,12 +4,11 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Exceptions\StringLengthException;
-use Respect\Validation\Validatable;
 use Respect\Validation\Validator;
 use Respect\Validation\Exceptions\NotNumericException;
 use Respect\Validation\Exceptions\ComponentException;
 
-class StringLength extends AbstractRule implements Validatable
+class StringLength extends AbstractRule
 {
     const MSG_LENGTH_MIN = 'StringLength_1';
     const MSG_LENGTH_MAX = 'StringLength_2';
@@ -25,15 +24,16 @@ class StringLength extends AbstractRule implements Validatable
     {
         $this->min = $min;
         $this->max = $max;
+        $nullValue = Validator::NullValue();
         try {
-            Validator::one(Validator::numeric($min), Validator::NullValue());
+            Validator::one(Validator::numeric($min), $nullValue);
         } catch (NotNumericException $e) {
             throw new ComponentException(
                 sprintf('%s is not a valid numeric length', $min)
             );
         }
         try {
-            Validator::one(Validator::numeric($max), Validator::NullValue());
+            Validator::one(Validator::numeric($max), $nullValue);
         } catch (NotNumericException $e) {
             throw new ComponentException(
                 sprintf('%s is not a valid numeric length', $max)

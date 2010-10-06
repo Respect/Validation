@@ -3,9 +3,8 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\InvalidException;
-use Respect\Validation\Validatable;
 
-class Most extends AbstractComposite implements Validatable
+class Most extends AbstractComposite
 {
 
     public function assert($input)

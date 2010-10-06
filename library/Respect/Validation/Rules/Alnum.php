@@ -2,11 +2,10 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validatable;
 use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Exceptions\NotAlphanumericException;
 
-class Alnum extends AbstractRule implements Validatable
+class Alnum extends AbstractRule 
 {
     const MSG_NOT_ALPHANUMERIC = 'Alnum_1';
     const MSG_NOT_ALPHANUMERIC_ADDITIONAL = 'Alnum_2';

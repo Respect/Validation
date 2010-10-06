@@ -4,9 +4,8 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractDate;
 use Respect\Validation\Exceptions\InvalidDate;
-use Respect\Validation\Validatable;
 
-class Date extends AbstractDate implements Validatable
+class Date extends AbstractDate 
 {
     const MSG_INVALID_DATE = 'Date_1';
     const MSG_INVALID_FORMAT = 'Date_2';

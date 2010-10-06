@@ -2,14 +2,13 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validatable;
 use Respect\Validation\Rules\AbstractDate;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\DateOutOfBoundsException;
 use Respect\Validation\Exceptions\InvalidDate;
 use Respect\Validation\Validator;
 
-class DateBetween extends AbstractDate implements Validatable
+class DateBetween extends AbstractDate
 {
     const MSG_OUT_OF_BOUNDS = 'DateBetween_1';
 
