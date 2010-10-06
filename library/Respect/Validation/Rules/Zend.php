@@ -16,7 +16,7 @@ class Zend extends AbstractRule implements Validatable
 
     public function __construct($name, $params=array())
     {
-        $zendMirror = new ReflectionClass('Zend_Validate_' . ucfirst($name));
+        $zendMirror = new ReflectionClass('Zend\Validator\\' . ucfirst($name));
         $this->zendValidator = $zendMirror->newInstanceArgs($params);
     }
 

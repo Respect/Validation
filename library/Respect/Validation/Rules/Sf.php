@@ -1,0 +1,52 @@
+<?php
+
+namespace Respect\Validation\Rules;
+
+use ReflectionClass;
+use Respect\Validation\Validatable;
+use Respect\Validation\Rules\AbstractRule;
+use Respect\Validation\Exceptions\CallbackException;
+use Respect\Validation\Exceptions\InvalidException;
+use Symfony\Component\Validator\ConstraintViolation;
+
+class Sf extends AbstractRule implements Validatable
+{
+
+    protected $messages = array();
+    protected $constraint;
+    protected $validator;
+    protected $name;
+
+    public function __construct($name, $params=array())
+    {
+        $this->name = ucfirst($name);
+        $sfMirrorConstraint = new ReflectionClass(
+                'Symfony\Component\Validator\Constraints\\' . $this->name
+        );
+        $this->constraint = $sfMirrorConstraint->newInstanceArgs($params);
+    }
+
+    public function validate($input)
+    {
+        $validatorName = 'Symfony\Component\Validator\Constraints\\'
+            . $this->name . 'Validator';
+        $this->validator = new $validatorName;
+        return $this->validator->isValid($input, $this->constraint);
+    }
+
+    public function assert($input)
+    {
+        if (!$this->validate($input)) {
+            $violation = new ConstraintViolation(
+                    $this->validator->getMessageTemplate(),
+                    $this->validator->getMessageParameters(),
+                    '',
+                    '',
+                    $input
+            );
+            throw new InvalidException($violation->getMessage());
+        }
+        return true;
+    }
+
+}
