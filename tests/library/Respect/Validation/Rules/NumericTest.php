@@ -18,11 +18,23 @@ class NumericTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider providerForNotNumeric
      * @expectedException Respect\Validation\Exceptions\NotNumericException
      */
-    public function testNotNumeric()
+    public function testNotNumeric($input)
     {
-        $this->assertTrue($this->object->assert('w poiur'));
+        $this->assertTrue($this->object->assert($input));
+    }
+    
+    public function providerForNotNumeric()
+    {
+        return array(
+            array(null),
+            array('a'),
+            array(' '),
+            array('Foo'),
+            array(''),
+        );
     }
 
 }

@@ -23,6 +23,16 @@ class StringLengthTest extends \PHPUnit_Framework_TestCase
         $validator = new StringLength($min, $max);
         $this->assertFalse($validator->assert($string));
     }
+    
+    /**
+     * @dataProvider providerForComponentException
+     * @expectedException Respect\Validation\Exceptions\ComponentException
+     */
+    public function testStringLengthComponentException($string,$min,$max)
+    {
+        $validator = new StringLength($min, $max);
+        $this->assertFalse($validator->assert($string));
+    }
 
     public function providerForValidLenght()
     {
@@ -34,7 +44,15 @@ class StringLengthTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidLenght()
     {
         return array(
-            array('alganet', 1, 3)
+            array('alganet', 1, 3),
+        );
+    }
+    
+    public function providerForComponentException()
+    {
+        return array(
+            array('alganet','a',15),
+            array('alganet',1,null),
         );
     }
 

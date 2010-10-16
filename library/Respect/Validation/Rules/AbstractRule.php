@@ -18,6 +18,10 @@ abstract class AbstractRule implements Validatable
     {
         return $this->messageTemplates[$code];
     }
+    
+    public static function getMessage($code) {
+        return self::$messageTemplates[$code];
+    }
 
     public function setMessageTemplates(array $templates)
     {
