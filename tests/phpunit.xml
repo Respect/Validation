@@ -9,4 +9,8 @@
          stopOnFailure="false"
          syntaxCheck="false"
          testSuiteLoaderClass="PHPUnit_Runner_StandardTestSuiteLoader">
+         
+    <testsuite name="PHPWars - Test Suite">
+        <directory>./</directory>
+    </testsuite>
 </phpunit>

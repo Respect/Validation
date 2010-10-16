@@ -4,6 +4,13 @@ namespace Respect\Validation\Rules;
 
 class SfTest extends \PHPUnit_Framework_TestCase
 {
+    
+    public function setUp()
+    {
+        if ( ! class_exists('Sf') ) {
+            $this->markTestSkipped('No Symfony installed');
+        }
+    }
 
     public function testParamsOk()
     {

@@ -5,6 +5,13 @@ namespace Respect\Validation\Rules;
 class ZendTest extends \PHPUnit_Framework_TestCase
 {
 
+    public function setUp()
+    {
+        if ( ! class_exists('Zend') ) {
+            $this->markTestSkipped('No ZendFramework installed');
+        }
+    }
+
     public function testSimpleOk()
     {
         $v = new Zend('alnum');
