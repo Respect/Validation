@@ -7,7 +7,7 @@ class SfTest extends \PHPUnit_Framework_TestCase
     
     public function setUp()
     {
-        if ( ! class_exists('Sf') ) {
+        if ( ! class_exists('Symfony\Component\Validator\ConstraintViolation') ) {
             $this->markTestSkipped('No Symfony installed');
         }
     }

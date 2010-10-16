@@ -55,6 +55,11 @@ class DateBetween extends AbstractDate
         return true;
     }
 
+    public function explain($input)
+    {
+        
+    }
+
     public function validate($input)
     {
         $target = $this->getDateObject($input);

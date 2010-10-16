@@ -7,7 +7,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        if ( ! class_exists('Zend') ) {
+        if ( ! class_exists('Zend\Version') ) {
             $this->markTestSkipped('No ZendFramework installed');
         }
     }

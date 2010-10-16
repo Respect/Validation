@@ -7,6 +7,7 @@ use Respect\Validation\Exceptions\StringLengthException;
 use Respect\Validation\Validator;
 use Respect\Validation\Exceptions\NotNumericException;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidException;
 
 class StringLength extends AbstractRule
 {
@@ -24,19 +25,23 @@ class StringLength extends AbstractRule
     {
         $this->min = $min;
         $this->max = $max;
-        $nullValue = Validator::NullValue();
-        try {
-            Validator::one(Validator::numeric($min), $nullValue);
-        } catch (NotNumericException $e) {
+        $paramValidator = Validator::one(
+                Validator::numeric(), Validator::nullValue()
+        );
+        if (!$paramValidator->validate($min))
             throw new ComponentException(
                 sprintf('%s is not a valid numeric length', $min)
             );
-        }
-        try {
-            Validator::one(Validator::numeric($max), $nullValue);
-        } catch (NotNumericException $e) {
+
+        if (!$paramValidator->validate($max))
             throw new ComponentException(
                 sprintf('%s is not a valid numeric length', $max)
+            );
+
+        if (!is_null($min) && !is_null($max) && $min > $max) {
+            throw new ComponentException(
+                sprintf('%s cannot be less than %s for validation', $this->min,
+                    $this->max)
             );
         }
     }

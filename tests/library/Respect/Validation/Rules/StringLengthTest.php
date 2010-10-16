@@ -37,7 +37,9 @@ class StringLengthTest extends \PHPUnit_Framework_TestCase
     public function providerForValidLenght()
     {
         return array(
-            array('alganet', 1, 15)
+            array('alganet', 1, 15),
+            array('alganet',1,null), //null is a valid max length, means "no maximum",
+            array('alganet',null,15) //null is a valid min length, means "no minimum"
         );
     }
 
@@ -52,7 +54,7 @@ class StringLengthTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array('alganet','a',15),
-            array('alganet',1,null),
+            array('alganet',1,'abc d'),
         );
     }
 

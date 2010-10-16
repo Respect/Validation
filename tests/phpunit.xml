@@ -10,16 +10,4 @@
          syntaxCheck="false"
          testSuiteLoaderClass="PHPUnit_Runner_StandardTestSuiteLoader">
          
-    <testsuite name="Respect\Validation - Test Suite">
-        <directory>./</directory>
-    </testsuite>
-    
-    <logging>
-         <log type="coverage-html" target="./log/coverage" charset="utf-8" yui="true" highlight="true" lowUpperBound="50" highLowerBound="80" />
-         <log type="coverage-clover" target="./log/xunit-coverage.clover.xml" />
-         <log type="coverage-xml" target="./log/xunit-coverage.xml" />
-         <log type="testdox-html" target="./log/xunit-results.testdox.html" />
-         <log type="tap" target="./log/xunit-results.tap" />
-         <log type="junit" target="./log/xunit-results.junit.xml" />
-     </logging>
 </phpunit>
