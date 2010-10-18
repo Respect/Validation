@@ -24,15 +24,33 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
         $validator->assert($invalidAlpha);
     }
 
+    /**
+     * @dataProvider providerForInvalidParams
+     * @expectedException Respect\Validation\Exceptions\ComponentException
+     */
+    public function testInvalidParameters($aditional)
+    {
+        $validator = new Alpha($aditional);
+    }
+
+    public function providerForInvalidParams()
+    {
+        return array(
+            array(new \stdClass),
+            array(array()),
+            array(0x2)
+        );
+    }
+
     public function providerForValidAlpha()
     {
         return array(
             array('alganet', ''),
+            array('0alg-anet0', '0-9'),
             array('a', ''),
             array('foobar', ''),
             array('rubinho_', '_'),
             array('google.com', '.'),
-            array('al ganet', ' '),
         );
     }
 
@@ -43,10 +61,15 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
             array('_', ''),
             array('', ''),
             array('dgç', ''),
-            array('1abc', ''),
+            array('122al', ''),
+            array('122', ''),
+            array(11123, ''),
             array('alganet alganet', ''),
-            array('123', ''),
-            array(123, ''),
+            array(1e21, ''),
+            array(0, ''),
+            array(null, ''),
+            array(new \stdClass, ''),
+            array(array(), ''),
         );
     }
 

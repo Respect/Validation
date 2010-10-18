@@ -24,10 +24,29 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
         $validator->assert($invalidAlnum);
     }
 
+    /**
+     * @dataProvider providerForInvalidParams
+     * @expectedException Respect\Validation\Exceptions\ComponentException
+     */
+    public function testInvalidParameters($aditional)
+    {
+        $validator = new Alnum($aditional);
+    }
+
+    public function providerForInvalidParams()
+    {
+        return array(
+            array(new \stdClass),
+            array(array()),
+            array(0x2)
+        );
+    }
+
     public function providerForValidAlnum()
     {
         return array(
             array('alganet', ''),
+            array('0alg-anet0', '0-9'),
             array('1', ''),
             array('a', ''),
             array('foobar', ''),
@@ -44,6 +63,11 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
             array('', ''),
             array('dgç', ''),
             array('alganet alganet', ''),
+            array(1e21, ''),
+            array(0, ''),
+            array(null, ''),
+            array(new \stdClass, ''),
+            array(array(), ''),
         );
     }
 
