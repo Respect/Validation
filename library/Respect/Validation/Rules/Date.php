@@ -8,12 +8,6 @@ use Respect\Validation\Exceptions\InvalidDate;
 
 class Date extends AbstractDate
 {
-    const MSG_INVALID_DATE = 'Date_1';
-    const MSG_INVALID_FORMAT = 'Date_2';
-    protected $messageTemplates = array(
-        self::MSG_INVALID_DATE => '%s is not a valid date reference',
-        self::MSG_INVALID_FORMAT => '%s is not a valid date in the %s format',
-    );
 
     public function __construct($format=null)
     {
@@ -35,20 +29,7 @@ class Date extends AbstractDate
     public function assert($input)
     {
         if (!$this->validate($input))
-            if (is_null($this->format))
-                throw new InvalidDate(
-                    sprintf($this->getMessageTemplate(static::MSG_INVALID_DATE),
-                        $input)
-                );
-            else
-                throw new InvalidDate(
-                    sprintf(
-                        $this->getMessageTemplate(static::MSG_INVALID_FORMAT),
-                        $input, $this->format
-                    )
-                );
-
-
+            throw new InvalidDate($input, $this->format);
         return true;
     }
 

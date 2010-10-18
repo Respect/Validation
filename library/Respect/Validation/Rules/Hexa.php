@@ -7,10 +7,6 @@ use Respect\Validation\Exceptions\NotHexadecimalException;
 
 class Hexa extends AbstractRule
 {
-    const MSG_NOT_HEXADECIMAL = 'Hexa_1';
-    protected $messageTemplates = array(
-        self::MSG_NOT_HEXADECIMAL => '%s is not a valid hexadecimal number'
-    );
 
     public function validate($input)
     {
@@ -20,10 +16,7 @@ class Hexa extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new NotHexadecimalException(
-                sprintf($this->getMessageTemplate(self::MSG_NOT_HEXADECIMAL),
-                    $input)
-            );
+            throw new NotHexadecimalException($input);
         return true;
     }
 

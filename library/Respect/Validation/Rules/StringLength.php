@@ -11,13 +11,6 @@ use Respect\Validation\Exceptions\InvalidException;
 
 class StringLength extends AbstractRule
 {
-    const MSG_LENGTH_MIN = 'StringLength_1';
-    const MSG_LENGTH_MAX = 'StringLength_2';
-
-    protected $messageTemplates = array(
-        self::MSG_LENGTH_MIN => '%s does not have at least %s characters',
-        self::MSG_LENGTH_MAX => '%s exceeds the maximum of %s characters'
-    );
     protected $min;
     protected $max;
 
@@ -65,15 +58,15 @@ class StringLength extends AbstractRule
 
     public function assert($input)
     {
-        if (!$this->validateMin($input))
+        $validMin = $this->validateMin($input);
+        $validMax = $this->validateMax($input);
+        if (!$validMin || !$validMax)
             throw new StringLengthException(
-                sprintf($this->getMessageTemplate(self::MSG_LENGTH_MIN), $input,
-                    $this->min)
-            );
-        if (!$this->validateMax($input))
-            throw new StringLengthException(
-                sprintf($this->getMessageTemplate(self::MSG_LENGTH_MAX), $input,
-                    $this->max)
+                $input,
+                $validMin,
+                $validMax,
+                $this->min,
+                $this->max
             );
         return true;
     }

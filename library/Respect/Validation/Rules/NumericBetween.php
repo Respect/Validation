@@ -13,15 +13,6 @@ use Respect\Validation\Exceptions\ComponentException;
 class NumericBetween extends AbstractRule
 {
 
-    protected $min;
-    protected $max;
-    const MSG_NUMBER_LESS = 'NumberBetween_1';
-    const MSG_NUMBER_MORE = 'NumberBetween_2';
-    protected $messageTemplates = array(
-        self::MSG_NUMBER_LESS => '%s is less than the specified minimum (%s)',
-        self::MSG_NUMBER_MORE => '%s is more than the specified maximum (%s)',
-    );
-
     public function __construct($min=null, $max=null)
     {
         $this->min = $min;
@@ -68,15 +59,15 @@ class NumericBetween extends AbstractRule
     {
         $validNumeric = new Numeric();
         $validNumeric->assert($input);
-        if (!$this->validateMin($input))
+        $validMin = $this->validateMin($input);
+        $validMax = $this->validateMax($input);
+        if (!$validMin || !$validMax)
             throw new NumberOutOfBoundsException(
-                sprintf($this->getMessageTemplate(self::MSG_NUMBER_LESS),
-                    $input, $this->min)
-            );
-        if (!$this->validateMax($input))
-            throw new NumberOutOfBoundsException(
-                sprintf($this->getMessageTemplate(self::MSG_NUMBER_MORE),
-                    $input, $this->max)
+                $input,
+                $validMin,
+                $validMax,
+                $this->min,
+                $this->max
             );
         return true;
     }

@@ -10,27 +10,19 @@ use Respect\Validation\Validator;
 
 class DateBetween extends AbstractDate
 {
-    const MSG_OUT_OF_BOUNDS = 'DateBetween_1';
 
     protected $min;
     protected $max;
-    protected $messageTemplates = array(
-        self::MSG_OUT_OF_BOUNDS => '%s is not between %s and %s.'
-    );
 
     public function __construct($min, $max, $format=null)
     {
         if (!Validator::date()->validate($min))
             throw new ComponentException(
-                sprintf(
-                    'Invalid Date: %s', $this->getStringRepresentation($min)
-                )
+                'Invalid min date'
             );
         if (!Validator::date()->validate($max))
             throw new ComponentException(
-                sprintf(
-                    'Invalid Date: %s', $this->getStringRepresentation($max)
-                )
+                'Invalid max date'
             );
         $this->min = $this->getDateObject($min);
         $this->max = $this->getDateObject($max);
@@ -48,11 +40,9 @@ class DateBetween extends AbstractDate
         $target = $this->getDateObject($input);
         if (!$this->validate($target))
             throw new DateOutOfBoundsException(
-                sprintf(
-                    $this->getMessageTemplate(self::MSG_OUT_OF_BOUNDS),
-                    $this->formatDate($target), $this->formatDate($this->min),
-                    $this->formatDate($this->max)
-                )
+                $this->formatDate($target),
+                $this->formatDate($this->min),
+                $this->formatDate($this->max)
             );
         return true;
     }

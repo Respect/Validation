@@ -9,7 +9,7 @@ use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidException;
 use Exception;
 
-abstract class AbstractComposite extends AbstractRule 
+abstract class AbstractComposite extends AbstractRule
 {
 
     protected $rules = array();
@@ -22,9 +22,6 @@ abstract class AbstractComposite extends AbstractRule
     protected function appendRule(Validatable $validator)
     {
         $this->rules[spl_object_hash($validator)] = $validator;
-        $this->setMessageTemplates(array_merge(
-            $this->getMessageTemplates(), $validator->getMessageTemplates()
-        ));
     }
 
     public function addRule($validator, $arguments=array())
@@ -86,7 +83,7 @@ abstract class AbstractComposite extends AbstractRule
         foreach ($validators as $v)
             try {
                 $v->assert($input);
-            } catch (Exception $e) {
+            } catch (InvalidException $e) {
                 $exceptions[] = $e;
             }
         return $exceptions;

@@ -10,20 +10,14 @@ use Respect\Validation\Validator;
 
 class HasKey extends All
 {
-    const MSG_KEY_NOT_PRESENT = 'HasKey_1';
-    protected $messageTemplates = array(
-        self::MSG_KEY_NOT_PRESENT => 'Array does not have the key %s'
-    );
+
     protected $key = '';
 
     public function __construct($key, $valueValidator=null)
     {
         if (!Validator::alnum()->validate($key))
             throw new ComponentException(
-                sprintf(
-                    '"%s" is not a valid key name',
-                    $this->getStringRepresentation($key)
-                )
+                'Invalid key name'
             );
         $this->key = $key;
         if (!is_null($valueValidator))
@@ -39,12 +33,7 @@ class HasKey extends All
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new KeyNotPresentException(
-                sprintf(
-                    $this->getMessageTemplate(self::MSG_KEY_NOT_PRESENT),
-                    $this->key
-                )
-            );
+            throw new KeyNotPresentException($input, $this->key);
         return parent::validate($input[$this->key]);
     }
 

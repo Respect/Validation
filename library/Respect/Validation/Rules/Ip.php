@@ -7,11 +7,6 @@ use Respect\Validation\Exceptions\InvalidIpException;
 
 class Ip extends AbstractRule
 {
-    const MSG_NOT_IP = 'Ip_1';
-    public $options;
-    protected $messageTemplates = array(
-        self::MSG_NOT_IP => '%s is not a valid IP address'
-    );
 
     public function __construct($options=null)
     {
@@ -28,9 +23,7 @@ class Ip extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new InvalidIpException(
-                sprintf($this->getMessageTemplate(self::MSG_NOT_IP), $input)
-            );
+            throw new InvalidIpException($input);
         return true;
     }
 

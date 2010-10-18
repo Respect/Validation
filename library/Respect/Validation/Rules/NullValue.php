@@ -7,10 +7,6 @@ use Respect\Validation\Exceptions\NotNullException;
 
 class NullValue extends AbstractRule
 {
-    const MSG_NOT_NULL = 'NullValue_1';
-    protected $messageTemplates = array(
-        self::MSG_NOT_NULL => '%s is not null'
-    );
 
     public function validate($input)
     {
@@ -20,9 +16,7 @@ class NullValue extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new NotNullException(
-                sprintf($this->getMessageTemplate(self::MSG_NOT_NULL), $input)
-            );
+            throw new NotNullException($input);
         return true;
     }
 

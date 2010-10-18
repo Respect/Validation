@@ -50,23 +50,6 @@ class AbstractCompositeTest extends ValidatorTestCase
         $this->object->addRule('FooFreak');
     }
 
-    /**
-     * @dataProvider providerForMockImpossibleValidators
-     */
-    public function testAddValidatorsMessages($a, $b)
-    {
-        $messagesA = $a->getMessages();
-        $messagesB = $b->getMessages();
-        $this->object->addRules(func_get_args());
-        $messagesObject = $this->object->getMessages();
-        foreach ($messagesA as $m) {
-            $this->assertContains($m, $messagesObject);
-        }
-        foreach ($messagesB as $m) {
-            $this->assertContains($m, $messagesObject);
-        }
-    }
-
     public function testBuildValidators()
     {
         $this->providerForMockImpossibleValidators();
@@ -86,26 +69,6 @@ class AbstractCompositeTest extends ValidatorTestCase
         $this->object->addRules(array(
             'FooBar', 'FooBaz', 'FooBat' => 'balkbal'
         ));
-    }
-
-    /**
-     * @dataProvider providerForMockImpossibleValidators
-     */
-    public function testSetMessages($a, $b)
-    {
-        $messagesA = $a->getMessages();
-        $messagesB = $b->getMessages();
-        $this->object->addRules(func_get_args());
-        $this->object->setMessages(
-            array_map('strrev', $this->object->getMessages())
-        );
-        $messagesObject = $this->object->getMessages();
-        foreach ($messagesA as $m) {
-            $this->assertContains(strrev($m), $messagesObject);
-        }
-        foreach ($messagesB as $m) {
-            $this->assertContains(strrev($m), $messagesObject);
-        }
     }
 
 }

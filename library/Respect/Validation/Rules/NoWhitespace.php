@@ -5,13 +5,8 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Exceptions\WhitespaceFoundException;
 
-class NoWhitespace extends AbstractRule 
+class NoWhitespace extends AbstractRule
 {
-    const MSG_WHITESPACE_FOUND = 'NoWhitespace_1';
-    protected $messageTemplates = array(
-        self::MSG_WHITESPACE_FOUND => '%s contains spaces, tabs, line breaks or other not allowed charaters.'
-    );
-
     public function validate($input)
     {
         return preg_match('#^\S+$#', $input);
@@ -20,9 +15,7 @@ class NoWhitespace extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new WhitespaceFoundException(
-                sprintf($this->getMessageTemplate(self::MSG_WHITESPACE_FOUND), $input)
-            );
+            throw new WhitespaceFoundException($input);
         return true;
     }
 
