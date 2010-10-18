@@ -1,14 +1,15 @@
 h2. About
 
-Respect\Validation aims to be the most awesome validation toolkit ever created. Featuring:
+Respect\Validation is the most awesome validation engine ever created for PHP. Featuring:
 
-* Fluent Interfaces
-* Chain Validation
+* Fluent/Chained Interfaces (the "jquery" interface)
+* Consistent API
 * Composite validation (one of, all of, most of, at least N of, none of, etc...)
 * Extensibility (create your own validators using the same engine)
 * Solid objects for raw instantiation (tests, dependency injection, etc...)
 * Informative, usable exceptions
 * IDE autocomplete-readiness
+* Integration with Zend 2.0 and Symfony 2.0 validators
 
 Here some nice little things you can do using it:
 
@@ -88,6 +89,11 @@ h3. Non-fluent interface for Dependency Injection maniacs
 
 <pre>$validator = new v\Rules\Numeric();
 $validator->validate(123);</pre>
+
+h3. Using Zend and/or Symfony validators
+
+<pre>$valid = v::zend('hostname')->assert('google.com');</pre>
+<pre>$valid = v::sf('time')->assert('22:00:01');</pre>
  
 Cool, isn't it?
 
