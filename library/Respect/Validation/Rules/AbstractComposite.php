@@ -76,7 +76,7 @@ abstract class AbstractComposite extends AbstractRule
         return $this->rules;
     }
 
-    protected function iterateRules($input)
+    protected function validateRules($input)
     {
         $validators = $this->getRules();
         $exceptions = array();
@@ -87,6 +87,12 @@ abstract class AbstractComposite extends AbstractRule
                 $exceptions[] = $e;
             }
         return $exceptions;
+    }
+
+    protected function explainRules($input)
+    {
+        foreach ($this->getRules() as $v)
+            $v->assert($input);
     }
 
 }

@@ -18,7 +18,7 @@ class AtLeast extends AbstractComposite
     public function assert($input)
     {
         $validators = $this->getRules();
-        $exceptions = $this->iterateRules($input);
+        $exceptions = $this->validateRules($input);
         if ($this->howMany > (count($validators) - count($exceptions)))
             throw new InvalidException($exceptions);
         return true;
@@ -27,7 +27,7 @@ class AtLeast extends AbstractComposite
     public function validate($input)
     {
         $validators = $this->getRules();
-        $exceptions = $this->iterateRules($input);
+        $exceptions = $this->validateRules($input);
         return $this->howMany <= (count($validators) - count($exceptions));
     }
 

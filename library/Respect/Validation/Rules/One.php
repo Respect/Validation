@@ -10,7 +10,7 @@ class One extends AbstractComposite
     public function assert($input)
     {
         $validators = $this->getRules();
-        $exceptions = $this->iterateRules($input);
+        $exceptions = $this->validateRules($input);
         if (count($exceptions) === count($validators))
             throw new InvalidException($exceptions);
         return true;

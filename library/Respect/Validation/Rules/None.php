@@ -20,7 +20,7 @@ class None extends AbstractComposite
 
     public function assert($input)
     {
-        $exceptions = $this->iterateRules($input);
+        $exceptions = $this->validateRules($input);
         if (count($this->getRules()) !== count($exceptions))
             throw new InvalidException($exceptions);
         return true;

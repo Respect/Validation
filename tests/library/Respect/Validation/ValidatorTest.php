@@ -2,7 +2,7 @@
 
 namespace Respect\Validation;
 
-class ValidatorTest extends ValidatorTestCase
+class ValidatorTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testValidateSimple()

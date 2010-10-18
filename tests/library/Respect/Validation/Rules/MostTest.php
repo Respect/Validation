@@ -5,57 +5,40 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\ValidatorTestCase;
 use Respect\Validation\Exceptions\InvalidException;
 
-class MostTest extends ValidatorTestCase
+class MostTest extends \PHPUnit_Framework_TestCase
 {
 
-    protected $object;
-
-    protected function setUp()
+    public function testValid()
     {
-        $this->object = new Most;
+        $valid1 = new Callback(function() {
+                    return true;
+                });
+        $valid2 = new Callback(function() {
+                    return true;
+                });
+        $valid3 = new Callback(function() {
+                    return false;
+                });
+        $o = new Most($valid1, $valid2, $valid3);
+        $this->assertTrue($o->assert('any'));
     }
 
     /**
-     * @dataProvider providerForMockImpossibleValidators
+     * @expectedException Respect\Validation\Exceptions\InvalidException
      */
-    public function testValidateOneValid($invalidA, $invalidB, $invalidC)
+    public function testInvalid()
     {
-        $this->object->addRules(func_get_args());
-        $valid = $this->buildMockValidator('Darth', array('Darth_1' => 'o54n'));
-        $this->object->addRule($valid);
-        $valid = $this->buildMockValidator('Dart2', array('Dart2_1' => 'sfg44'));
-        $this->object->addRule($valid);
-        $valid = $this->buildMockValidator('Dart3', array('Dart3_1' => 'sfg44'));
-        $this->object->addRule($valid);
-        $valid = $this->buildMockValidator('Dart4', array('Dart4_1' => 'sfg44'));
-        $this->object->addRule($valid);
-        $this->assertTrue($this->object->assert('any'));
-    }
-
-    /**
-     * @dataProvider providerForMockImpossibleValidators
-     */
-    public function testIsValidOneValid($invalidA, $invalidB, $invalidC)
-    {
-        $this->object->addRules(func_get_args());
-        $valid = $this->buildMockValidator('Darth', array('Darth_1' => 'o54n'));
-        $this->object->addRule($valid);
-        $valid = $this->buildMockValidator('Dart2', array('Dart2_1' => 'sfg44'));
-        $this->object->addRule($valid);
-        $valid = $this->buildMockValidator('Dart2', array('Dart3_1' => 'sfg44'));
-        $this->object->addRule($valid);
-        $valid = $this->buildMockValidator('Dart4', array('Dart4_1' => 'sfg44'));
-        $this->object->addRule($valid);
-        $this->assertTrue($this->object->validate('any'));
-    }
-
-    /**
-     * @dataProvider providerForMockImpossibleValidators
-     */
-    public function testIsValidOneAllRotten($invalidA, $invalidB, $invalidC)
-    {
-        $this->object->addRules(func_get_args());
-        $this->assertFalse($this->object->validate('any'));
+        $valid1 = new Callback(function() {
+                    return false;
+                });
+        $valid2 = new Callback(function() {
+                    return false;
+                });
+        $valid3 = new Callback(function() {
+                    return true;
+                });
+        $o = new Most($valid1, $valid2, $valid3);
+        $this->assertFalse($o->assert('any'));
     }
 
 }

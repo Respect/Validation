@@ -5,66 +5,40 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\ValidatorTestCase;
 use Respect\Validation\Exceptions\InvalidException;
 
-class AllTest extends ValidatorTestCase
+class AllTest extends \PHPUnit_Framework_TestCase
 {
 
-    protected $object;
-
-    protected function setUp()
+    public function testValid()
     {
-        $this->object = new All;
+        $valid1 = new Callback(function() {
+                    return true;
+                });
+        $valid2 = new Callback(function() {
+                    return true;
+                });
+        $valid3 = new Callback(function() {
+                    return true;
+                });
+        $o = new All($valid1, $valid2, $valid3);
+        $this->assertTrue($o->assert('any'));
     }
 
     /**
-     * @dataProvider providerForMockValidators
+     * @expectedException Respect\Validation\Exceptions\InvalidException
      */
-    public function testValidateManyValid($a, $b, $c)
+    public function testInvalid()
     {
-        $this->object->addRules(func_get_args());
-        $this->assertTrue($this->object->assert('any'));
-    }
-
-    /**
-     * @dataProvider providerForMockValidators
-     */
-    public function testManyIsValid($a, $b, $c)
-    {
-        $this->object->addRules(func_get_args());
-        $this->assertTrue($this->object->validate('any'));
-    }
-
-    /**
-     * @dataProvider providerForMockImpossibleValidators
-     */
-    public function testManyIsInvalid($a, $b, $c)
-    {
-        $this->object->addRules(func_get_args());
-        $this->assertFalse($this->object->validate('any'));
-    }
-
-    /**
-     * @dataProvider providerForMockImpossibleValidators
-     */
-    public function testManyIsInvalid2($a, $b, $c)
-    {
-        $this->object->addRules(func_get_args());
-        $this->object->addRule(
-            $this->buildMockValidator('Aids', array('Aids_1' => 'aesfg'))
-        );
-        $this->assertFalse($this->object->validate('any'));
-    }
-
-    /**
-     * @dataProvider providerForMockImpossibleValidators
-     */
-    public function testValidateAllInvalid($a, $b, $c)
-    {
-        $this->object->addRules(func_get_args());
-        try {
-            $this->object->assert('any');
-        } catch (InvalidException $e) {
-            $this->assertEquals(3, count($e->getExceptions()));
-        }
+        $valid1 = new Callback(function() {
+                    return false;
+                });
+        $valid2 = new Callback(function() {
+                    return true;
+                });
+        $valid3 = new Callback(function() {
+                    return true;
+                });
+        $o = new All($valid1, $valid2, $valid3);
+        $this->assertFalse($o->assert('any'));
     }
 
 }

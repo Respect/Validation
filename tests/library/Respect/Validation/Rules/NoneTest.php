@@ -5,58 +5,40 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\ValidatorTestCase;
 use Respect\Validation\Exceptions\InvalidException;
 
-class NoneTest extends ValidatorTestCase
+class NoneTest extends \PHPUnit_Framework_TestCase
 {
 
-    protected $object;
-
-    protected function setUp()
+    public function testValid()
     {
-        $this->object = new None;
+        $valid1 = new Callback(function() {
+                    return false;
+                });
+        $valid2 = new Callback(function() {
+                    return false;
+                });
+        $valid3 = new Callback(function() {
+                    return false;
+                });
+        $o = new None($valid1, $valid2, $valid3);
+        $this->assertTrue($o->assert('any'));
     }
 
     /**
-     * @dataProvider providerForMockImpossibleValidators
+     * @expectedException Respect\Validation\Exceptions\InvalidException
      */
-    public function testValidateOneValid($invalidA, $invalidB, $invalidC)
+    public function testInvalid()
     {
-        $this->object->addRules(func_get_args());
-        $this->assertTrue($this->object->assert('any'));
-    }
-
-    /**
-     * @dataProvider providerForMockImpossibleValidators
-     */
-    public function testValidateOneAllRotten($invalidA, $invalidB, $invalidC)
-    {
-        $valid = $this->buildMockValidator('Darth', array('Darth_1' => 'o54n'));
-        $this->object->addRule($valid);
-        $this->object->addRules(func_get_args());
-        try {
-            $this->object->assert('any');
-        } catch (InvalidException $e) {
-            $this->assertEquals(3, count($e->getExceptions()));
-        }
-    }
-
-    /**
-     * @dataProvider providerForMockImpossibleValidators
-     */
-    public function testIsValidOneValid($invalidA, $invalidB, $invalidC)
-    {
-        $this->object->addRules(func_get_args());
-        $this->assertTrue($this->object->validate('any'));
-    }
-
-    /**
-     * @dataProvider providerForMockImpossibleValidators
-     */
-    public function testIsValidOneAllRotten($invalidA, $invalidB, $invalidC)
-    {
-        $valid = $this->buildMockValidator('Darth', array('Darth_1' => 'o54n'));
-        $this->object->addRule($valid);
-        $this->object->addRules(func_get_args());
-        $this->assertFalse($this->object->validate('any'));
+        $valid1 = new Callback(function() {
+                    return false;
+                });
+        $valid2 = new Callback(function() {
+                    return false;
+                });
+        $valid3 = new Callback(function() {
+                    return true;
+                });
+        $o = new None($valid1, $valid2, $valid3);
+        $this->assertFalse($o->assert('any'));
     }
 
 }

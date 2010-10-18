@@ -20,10 +20,15 @@ class All extends AbstractComposite
 
     public function assert($input)
     {
-        $exceptions = $this->iterateRules($input);
+        $exceptions = $this->validateRules($input);
         if (!empty($exceptions))
             throw new InvalidException($exceptions);
         return true;
+    }
+
+    public function explain($input)
+    {
+        $this::explainRules($input);
     }
 
 }

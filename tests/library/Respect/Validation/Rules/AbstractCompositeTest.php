@@ -2,7 +2,7 @@
 
 namespace Respect\Validation;
 
-class AbstractCompositeTest extends ValidatorTestCase
+class AbstractCompositeTest extends \PHPUnit_Framework_TestCase
 {
 
     protected $object;
@@ -19,11 +19,11 @@ class AbstractCompositeTest extends ValidatorTestCase
         unset($this->object);
     }
 
-    /**
-     * @dataProvider providerForMockImpossibleValidators
-     */
-    public function testAddExistentValidator($validator)
+    public function testAddExistentValidator()
     {
+        $validator = new Rules\Callback(function() {
+                    return true;
+                });
         $this->object->addRule($validator);
         $this->assertContains($validator, $this->object->getRules());
     }
@@ -41,33 +41,33 @@ class AbstractCompositeTest extends ValidatorTestCase
      */
     public function testAddNonValidator2()
     {
-        if (!class_exists('Respect\Validation\FooFreak', false)) {
-            eval("
-                namespace Respect\Validation\Rules; 
-                class FooFreak{}
-                ");
-        }
-        $this->object->addRule('FooFreak');
+        $this->object->addRule('CompletelyNonExistant');
     }
 
     public function testBuildValidators()
     {
-        $this->providerForMockImpossibleValidators();
         $this->object->addRules(array(
-            'FooBar', 'FooBaz', 'FooBat' => array(1, 2, 3)
+            'noWhitespace', 'StringNotEmpty', 'Alnum' => array('__')
         ));
-        $this->assertValidatorPresence($this->object, 'FooBar', 'FooBaz',
-            'FooBat');
     }
 
     /**
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function testBuildValidatorsInvalid()
+    public function testBuildValidatorsArrayParams()
     {
-        $this->providerForMockImpossibleValidators();
         $this->object->addRules(array(
-            'FooBar', 'FooBaz', 'FooBat' => 'balkbal'
+            'noWhitespace', 'Alnum' => 'aiods'
+        ));
+    }
+
+    /**
+     * @expectedException Respect\Validation\Exceptions\ComponentException
+     */
+    public function testBuildValidatorsNonExistant()
+    {
+        $this->object->addRules(array(
+            'noWhitespace', 'FooBaz'
         ));
     }
 

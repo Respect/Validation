@@ -5,6 +5,7 @@ namespace Respect\Validation;
 use Respect\Validation\Rules\All;
 use ReflectionClass;
 use Respect\Validation\Exceptions\ComponentException;
+use ReflectionException;
 
 class Validator extends All
 {
@@ -97,7 +98,11 @@ class Validator extends All
         $validatorFqn[] = $ruleSpec;
         $validatorFqn = array_map('ucfirst', $validatorFqn);
         $validatorFqn = implode('\\', $validatorFqn);
-        $validatorClass = new ReflectionClass($validatorFqn);
+        try {
+            $validatorClass = new ReflectionClass($validatorFqn);
+        } catch (ReflectionException $e) {
+            throw new ComponentException($e->getMessage());
+        }
         $implementedInterface = $validatorClass->implementsInterface(
                 'Respect\Validation\Validatable'
         );

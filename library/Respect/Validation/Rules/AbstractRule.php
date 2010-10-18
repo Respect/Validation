@@ -12,4 +12,9 @@ abstract class AbstractRule implements Validatable
         return $this->validate($input);
     }
 
+    public function explain($input)
+    {
+        return $this->assert($input);
+    }
+
 }
