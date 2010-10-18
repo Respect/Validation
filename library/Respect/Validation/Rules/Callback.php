@@ -4,8 +4,9 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Exceptions\CallbackException;
+use Respect\Validation\Exceptions\ComponentException;
 
-class Callback extends AbstractRule 
+class Callback extends AbstractRule
 {
     const MSG_CALLBACK = 'Callback_1';
     protected $messageTemplates = array(
@@ -15,6 +16,13 @@ class Callback extends AbstractRule
 
     public function __construct($callback)
     {
+        if (!is_callable($callback))
+            throw new ComponentException(
+                sprintf(
+                    '"%s is not a valid callback',
+                    $this->getStringRepresentation($callback)
+                )
+            );
         $this->callback = $callback;
     }
 
