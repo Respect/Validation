@@ -26,9 +26,10 @@ class All extends AbstractComposite
         return true;
     }
 
-    public function explain($input)
+    public function check($input)
     {
-        $this::explainRules($input);
+        foreach ($this->getRules() as $v)
+            $v->assert($input);
     }
 
 }

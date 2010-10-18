@@ -53,4 +53,9 @@ class DateBetween extends AbstractDate
         return $target >= $this->min and $target <= $this->max;
     }
 
+    public function check($input)
+    {
+        return $this->assert($input);
+    }
+
 }

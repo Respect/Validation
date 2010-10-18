@@ -9,5 +9,5 @@ interface Validatable
 
     public function validate($input);
 
-    public function explain($input);
+    public function check($input);
 }

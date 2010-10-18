@@ -89,10 +89,4 @@ abstract class AbstractComposite extends AbstractRule
         return $exceptions;
     }
 
-    protected function explainRules($input)
-    {
-        foreach ($this->getRules() as $v)
-            $v->assert($input);
-    }
-
 }

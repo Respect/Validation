@@ -37,4 +37,9 @@ class HasKey extends All
         return parent::validate($input[$this->key]);
     }
 
+    public function check($input)
+    {
+        return $this->assert($input);
+    }
+
 }

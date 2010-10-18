@@ -18,12 +18,15 @@ class One extends AbstractComposite
 
     public function validate($input)
     {
-        return (boolean) array_filter(
-            $this->getRules(),
-            function($v) use($input) {
-                return $v->validate($input);
-            }
-        );
+        foreach ($this->getRules() as $v)
+            if ($v->validate($input))
+                return true;
+        return false;
+    }
+
+    public function check($input)
+    {
+        return $this->assert($input);
     }
 
 }

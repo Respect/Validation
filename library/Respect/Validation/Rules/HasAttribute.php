@@ -36,4 +36,9 @@ class HasAttribute extends All
         return parent::validate($input->{$this->attribute});
     }
 
+    public function check($input)
+    {
+        return $this->assert($input);
+    }
+
 }

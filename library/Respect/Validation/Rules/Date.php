@@ -33,4 +33,9 @@ class Date extends AbstractDate
         return true;
     }
 
+    public function check($input)
+    {
+        return $this->assert($input);
+    }
+
 }

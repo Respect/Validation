@@ -4,7 +4,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\InvalidException;
 
-class AtLeast extends AbstractComposite 
+class AtLeast extends AbstractComposite
 {
 
     protected $howMany = 1;
@@ -12,7 +12,7 @@ class AtLeast extends AbstractComposite
     public function __construct($howMany, $rules=array())
     {
         $this->howMany = $howMany;
-        call_user_func_array(array($this, 'parent::__construct'), $rules);
+        $this->addRules($rules);
     }
 
     public function assert($input)
@@ -27,8 +27,38 @@ class AtLeast extends AbstractComposite
     public function validate($input)
     {
         $validators = $this->getRules();
-        $exceptions = $this->validateRules($input);
-        return $this->howMany <= (count($validators) - count($exceptions));
+        $pass = 0;
+        foreach ($validators as $v) {
+            try {
+                $v->assert($input);
+                $pass++;
+            } catch (InvalidException $e) {
+                
+            }
+            if ($pass >= $this->howMany)
+                return true;
+        }
+        return false;
+    }
+
+    public function check($input)
+    {
+        $validators = $this->getRules();
+        $pass = 0;
+        $exceptions = array();
+        foreach ($validators as $v) {
+            try {
+                $v->assert($input);
+                $pass++;
+            } catch (InvalidException $e) {
+                $exceptions[] = $e;
+            }
+            if ($pass >= $this->howMany)
+                return true;
+            if (count($exceptions) > (count($validators) - $this->howMany))
+                throw new InvalidException($e);
+        }
+        return false;
     }
 
 }

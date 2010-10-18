@@ -11,6 +11,7 @@ use Respect\Validation\Exceptions\InvalidException;
 
 class StringLength extends AbstractRule
 {
+
     protected $min;
     protected $max;
 
@@ -69,6 +70,11 @@ class StringLength extends AbstractRule
                 $this->max
             );
         return true;
+    }
+
+    public function check($input)
+    {
+        return $this->assert($input);
     }
 
 }

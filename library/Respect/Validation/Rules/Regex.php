@@ -27,4 +27,9 @@ class Regex extends AbstractRule
         return true;
     }
 
+    public function check($input)
+    {
+        return $this->assert($input);
+    }
+
 }
