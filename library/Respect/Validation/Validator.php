@@ -12,27 +12,27 @@ class Validator extends All
     protected $ruleName;
     protected $arguments = array();
 
-    public function getRuleName()
+    protected function getRuleName()
     {
         return $this->ruleName;
     }
 
-    public function getArguments()
+    protected function getArguments()
     {
         return $this->arguments;
     }
 
-    public function setRuleName($ruleName)
+    protected function setRuleName($ruleName)
     {
         $this->ruleName = $ruleName;
     }
 
-    public function setArguments(array $arguments)
+    protected function setArguments(array $arguments)
     {
         $this->arguments = $arguments;
     }
 
-    public function addArgument($argument)
+    protected function addArgument($argument)
     {
         $this->arguments[] = $argument;
     }

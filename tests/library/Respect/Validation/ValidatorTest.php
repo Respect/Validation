@@ -5,24 +5,6 @@ namespace Respect\Validation;
 class ValidatorTest extends ValidatorTestCase
 {
 
-    public function testPartialInputSubject()
-    {
-        $v = Validator::dateBetween('yesterday', 'tomorrow');
-        $this->assertType('Respect\Validation\Validator', $v);
-        $this->assertEquals(1, count($v->getRules()));
-        $this->assertNull($v->getRuleName());
-        $this->assertEquals(array(), $v->getArguments());
-    }
-
-    public function testPartialInputChain()
-    {
-        $v = Validator::dateBetween('yesterday', 'tomorrow')->stringNotEmpty();
-        $this->assertType('Respect\Validation\Validator', $v);
-        $this->assertEquals(2, count($v->getRules()));
-        $this->assertNull($v->getRuleName());
-        $this->assertEquals(array(), $v->getArguments());
-    }
-
     public function testValidateSimple()
     {
         $v = Validator::stringNotEmpty()->validate('foo');
