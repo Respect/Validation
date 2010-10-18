@@ -62,6 +62,10 @@ class DateBetweenTest extends \PHPUnit_Framework_TestCase
 
         return array(
             array('tomorrow', 'yesterday'),
+            array(new \stdClass, 'now'),
+            array(array(), 'now'),
+            array('now', array()),
+            array(array(), new \stdClass),
         );
     }
 

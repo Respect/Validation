@@ -24,6 +24,8 @@ class Date extends AbstractDate
     {
         if ($input instanceof DateTime)
             return true;
+        if (!is_string($input))
+            return false;
         if (is_null($this->format))
             return (boolean) strtotime($input);
         else

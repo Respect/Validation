@@ -20,18 +20,20 @@ class DateBetween extends AbstractDate
 
     public function __construct($min, $max, $format=null)
     {
+        if (!Validator::date()->validate($min))
+            throw new ComponentException(
+                sprintf(
+                    'Invalid Date: %s', $this->getStringRepresentation($min)
+                )
+            );
+        if (!Validator::date()->validate($max))
+            throw new ComponentException(
+                sprintf(
+                    'Invalid Date: %s', $this->getStringRepresentation($max)
+                )
+            );
         $this->min = $this->getDateObject($min);
         $this->max = $this->getDateObject($max);
-        try {
-            Validator::date($min);
-        } catch (InvalidDate $e) {
-            throw new ComponentException(sprintf('Invalid Date: %s', $min));
-        }
-        try {
-            Validator::date($max);
-        } catch (InvalidDate $e) {
-            throw new ComponentException(sprintf('Invalid Date: %s', $max));
-        }
         if ($this->min > $this->max)
             throw new ComponentException(
                 sprintf('%s cannot be less than  %s for validation',
