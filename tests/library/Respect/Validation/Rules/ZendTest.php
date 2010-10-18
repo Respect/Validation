@@ -7,7 +7,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        if ( ! class_exists('Zend\Version') ) {
+        if (!class_exists('Zend\Version')) {
             $this->markTestSkipped('No ZendFramework installed');
         }
     }
@@ -16,6 +16,11 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     {
         $v = new Zend('alnum');
         $this->assertTrue($v->assert('wp2oiur'));
+    }
+
+    public function testNamespaceOk()
+    {
+        $v = new Zend('sitemap_lastmod');
     }
 
     /**

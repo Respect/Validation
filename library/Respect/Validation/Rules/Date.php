@@ -2,10 +2,11 @@
 
 namespace Respect\Validation\Rules;
 
+use DateTime;
 use Respect\Validation\Rules\AbstractDate;
 use Respect\Validation\Exceptions\InvalidDate;
 
-class Date extends AbstractDate 
+class Date extends AbstractDate
 {
     const MSG_INVALID_DATE = 'Date_1';
     const MSG_INVALID_FORMAT = 'Date_2';
@@ -21,6 +22,8 @@ class Date extends AbstractDate
 
     public function validate($input)
     {
+        if ($input instanceof DateTime)
+            return true;
         if (is_null($this->format))
             return (boolean) strtotime($input);
         else
@@ -38,8 +41,8 @@ class Date extends AbstractDate
             else
                 throw new InvalidDate(
                     sprintf(
-                        $this->getMessageTemplate(static::MSG_INVALID_FORMAT), $input,
-                        $this->format
+                        $this->getMessageTemplate(static::MSG_INVALID_FORMAT),
+                        $input, $this->format
                     )
                 );
 

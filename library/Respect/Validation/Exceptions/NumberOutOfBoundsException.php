@@ -2,8 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-use OutOfBoundsException;
-
-class NumberOutOfBoundsException extends OutOfBoundsException
+class NumberOutOfBoundsException extends InvalidException
 {
+    
 }

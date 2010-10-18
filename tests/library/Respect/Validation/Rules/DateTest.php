@@ -2,6 +2,8 @@
 
 namespace Respect\Validation\Rules;
 
+use DateTime;
+
 class DateTest extends \PHPUnit_Framework_TestCase
 {
 
@@ -20,6 +22,11 @@ class DateTest extends \PHPUnit_Framework_TestCase
     public function testDateWithoutFormat()
     {
         $this->assertTrue($this->object->validate('today'));
+    }
+
+    public function testDateInstance()
+    {
+        $this->assertTrue($this->object->validate(new DateTime('today')));
     }
 
     public function testInvalidDateWithoutFormat()

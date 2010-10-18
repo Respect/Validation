@@ -4,7 +4,7 @@ namespace Respect\Validation\Exceptions;
 
 use Exception;
 
-class CallbackException extends InvalidException
+class RegexException extends InvalidException
 {
     
 }

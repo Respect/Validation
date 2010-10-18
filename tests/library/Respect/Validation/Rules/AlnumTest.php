@@ -43,6 +43,7 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
             array('_', ''),
             array('', ''),
             array('dgç', ''),
+            array('alganet alganet', ''),
         );
     }
 

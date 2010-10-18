@@ -15,8 +15,14 @@ class Zend extends AbstractRule
 
     public function __construct($name, $params=array())
     {
-        $zendMirror = new ReflectionClass('Zend\Validator\\' . ucfirst($name));
-        $this->zendValidator = $zendMirror->newInstanceArgs($params);
+        $validatorName = explode('_', $name);
+        $validatorName = array_map('ucfirst', $validatorName);
+        $validatorName = implode('\\', $validatorName);
+        $zendMirror = new ReflectionClass('Zend\Validator\\' . $validatorName);
+        if ($zendMirror->hasMethod('__construct'))
+            $this->zendValidator = $zendMirror->newInstanceArgs($params);
+        else
+            $this->zendValidator = $zendMirror->newInstance();
     }
 
     public function validate($input)

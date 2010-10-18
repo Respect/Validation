@@ -3,15 +3,15 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\NotAlphanumericException;
+use Respect\Validation\Exceptions\NotAlphaException;
 
-class Alnum extends AbstractRule
+class Alpha extends AbstractRule
 {
-    const MSG_NOT_ALPHANUMERIC = 'Alnum_1';
-    const MSG_NOT_ALPHANUMERIC_ADDITIONAL = 'Alnum_2';
+    const MSG_NOT_ALPHA = 'Alpha_1';
+    const MSG_NOT_ALPHA_ADDITIONAL = 'Alpha_2';
     protected $messageTemplates = array(
-        self::MSG_NOT_ALPHANUMERIC => '%s does not contains only letters and digits',
-        self::MSG_NOT_ALPHANUMERIC_ADDITIONAL => '%s does not contains only letters and digits (including %s)'
+        self::MSG_NOT_ALPHA => '%s does not contains only letters',
+        self::MSG_NOT_ALPHA_ADDITIONAL => '%s does not contains only letters (including %s)'
     );
     protected $additionalChars = '';
 
@@ -23,7 +23,7 @@ class Alnum extends AbstractRule
     public function validate($input)
     {
         return (boolean) preg_match(
-            "#^[a-zA-Z0-9{$this->additionalChars}]+$#", $input
+            "#^[a-zA-Z{$this->additionalChars}]+$#", $input
         );
     }
 
@@ -31,14 +31,14 @@ class Alnum extends AbstractRule
     {
         if (!$this->validate($input))
             if (empty($this->additionalChars))
-                throw new NotAlphanumericException(
-                    sprintf($this->getMessageTemplate(self::MSG_NOT_ALPHANUMERIC),
+                throw new NotAlphaException(
+                    sprintf($this->getMessageTemplate(self::MSG_NOT_ALPHA),
                         $input)
                 );
             else
-                throw new NotAlphanumericException(
+                throw new NotAlphaException(
                     sprintf(
-                        $this->getMessageTemplate(self::MSG_NOT_ALPHANUMERIC_ADDITIONAL),
+                        $this->getMessageTemplate(self::MSG_NOT_ALPHA_ADDITIONAL),
                         $input, $this->additionalChars
                     )
                 );

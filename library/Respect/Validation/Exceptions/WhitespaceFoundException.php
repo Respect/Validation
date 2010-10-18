@@ -2,9 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-use InvalidArgumentException;
-
-class WhitespaceFoundException extends InvalidArgumentException
+class WhitespaceFoundException extends InvalidException
 {
     
 }

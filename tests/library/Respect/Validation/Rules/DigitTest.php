@@ -2,47 +2,45 @@
 
 namespace Respect\Validation\Rules;
 
-class NumericTest extends \PHPUnit_Framework_TestCase
+class DigitsTest extends \PHPUnit_Framework_TestCase
 {
 
     protected $object;
 
     protected function setUp()
     {
-        $this->object = new Numeric;
+        $this->object = new Digits;
     }
 
     /**
-     * @dataProvider providerForNumeric
+     * @dataProvider providerForDigits
      *
      */
-    public function testNumeric($input)
+    public function testDigits($input)
     {
         $this->assertTrue($this->object->assert($input));
     }
 
     /**
-     * @dataProvider providerForNotNumeric
-     * @expectedException Respect\Validation\Exceptions\NotNumericException
+     * @dataProvider providerForNotDigits
+     * @expectedException Respect\Validation\Exceptions\NotDigitsException
      */
-    public function testNotNumeric($input)
+    public function testNotDigits($input)
     {
         $this->assertTrue($this->object->assert($input));
     }
 
-    public function providerForNumeric()
+    public function providerForDigits()
     {
         return array(
             array(165),
-            array(165.0),
-            array(-165),
+            array(1650),
             array('165'),
-            array('165.0'),
-            array('+165.0'),
+            array('1650'),
         );
     }
 
-    public function providerForNotNumeric()
+    public function providerForNotDigits()
     {
         return array(
             array(null),
@@ -50,6 +48,9 @@ class NumericTest extends \PHPUnit_Framework_TestCase
             array(' '),
             array('Foo'),
             array(''),
+            array('12.1'),
+            array('-12'),
+            array(-12),
         );
     }
 

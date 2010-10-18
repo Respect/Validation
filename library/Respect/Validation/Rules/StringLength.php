@@ -48,12 +48,14 @@ class StringLength extends AbstractRule
 
     public function validateMin($input)
     {
-        return is_null($this->min) || mb_strlen($input) >= $this->min;
+        $input = mb_strlen($input);
+        return is_null($this->min) || $input >= $this->min;
     }
 
     public function validateMax($input)
     {
-        return is_null($this->max) || mb_strlen($input) <= $this->max;
+        $input = mb_strlen($input);
+        return is_null($this->max) || $input <= $this->max;
     }
 
     public function validate($input)

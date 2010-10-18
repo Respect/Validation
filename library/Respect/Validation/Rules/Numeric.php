@@ -5,7 +5,7 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Exceptions\NotNumericException;
 
-class Numeric extends AbstractRule 
+class Numeric extends AbstractRule
 {
     const MSG_NOT_NUMERIC = 'Numeric_1';
     protected $messageTemplates = array(

@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class NotNumericException extends InvalidException
+class InvalidIpException extends InvalidException
 {
     
 }

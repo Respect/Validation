@@ -22,7 +22,10 @@ class Sf extends AbstractRule
         $sfMirrorConstraint = new ReflectionClass(
                 'Symfony\Component\Validator\Constraints\\' . $this->name
         );
-        $this->constraint = $sfMirrorConstraint->newInstanceArgs($params);
+        if ($sfMirrorConstraint->hasMethod('__construct'))
+            $this->constraint = $sfMirrorConstraint->newInstanceArgs($params);
+        else
+            $this->constraint = $sfMirrorConstraint->newInstance();
     }
 
     public function validate($input)

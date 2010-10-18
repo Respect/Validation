@@ -2,9 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-use LengthException;
-
-class EmptyStringException extends LengthException
+class EmptyStringException extends InvalidException
 {
     
 }
