@@ -8,7 +8,7 @@ use Respect\Validation\Rules\All;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Validator;
 
-class HasKey extends All
+class HasKey extends AllOf
 {
 
     protected $key = '';

@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AttributeNotPresentException;
 use Respect\Validation\Rules\All;
 use Respect\Validation\Exceptions\ComponentException;
 
-class HasAttribute extends All
+class HasAttribute extends AllOf
 {
 
     protected $attribute = '';

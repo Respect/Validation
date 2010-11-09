@@ -17,7 +17,7 @@ class NumericBetween extends AbstractRule
     {
         $this->min = $min;
         $this->max = $max;
-        $paramValidator = Validator::one(
+        $paramValidator = Validator::oneOf(
                 Validator::numeric(), Validator::nullValue()
         );
         if (!$paramValidator->validate($min))

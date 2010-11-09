@@ -32,7 +32,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 
     public function testValidatorComposite()
     {
-        $v = Validator::one(
+        $v = Validator::oneOf(
                 Validator::stringNotEmpty(),
                 Validator::dateBetween('+2 years', '+3 years')
             )->validate('now');
@@ -69,7 +69,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $target->name = 'Alexandre';
 
         $validator = Validator::object()
-                ->one(
+                ->oneOf(
                     Validator::hasAttribute('screen_name',
                         Validator::alnum('_')->noWhitespace()),
                     Validator::hasAttribute('id', Validator::numeric())

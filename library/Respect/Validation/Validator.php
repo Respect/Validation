@@ -2,12 +2,12 @@
 
 namespace Respect\Validation;
 
-use Respect\Validation\Rules\All;
+use Respect\Validation\Rules\AllOf;
 use ReflectionClass;
 use Respect\Validation\Exceptions\ComponentException;
 use ReflectionException;
 
-class Validator extends All
+class Validator extends AllOf
 {
 
     protected $ruleName;
