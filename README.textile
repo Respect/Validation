@@ -47,9 +47,9 @@ $validUser = v::all(
     v::hasAttribute('birthdate, v::date('Y-m-d'))
 );</pre>
 
-h3. Combining rules (v::one, v::all, v::atLeast, v::most)
+h3. Combining rules (v::oneOf, v::allOf, v::atLeast, v::mostOf, v::noneOf)
 
-<pre>$validDate = v::one(
+<pre>$validDate = v::oneOf(
     v::date('Y-m-d'),
     v::date('y-m-d'), //two-digit year
     v::date('d/m/Y')  
@@ -62,7 +62,7 @@ h3. Compositing rules
 //b) A date in the format Ymd (20091009)
 //c) A string between 3 and 12 characters without whitespace
 $valid = v::atLeast(2, array(
-   v::one(v::numeric(), v::alnum()),
+   v::oneOf(v::numeric(), v::alnum()),
    v::date('Ymd'),
    v::stringLength(3,12)->noWhitespace()
 ));</pre>
