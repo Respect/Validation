@@ -34,7 +34,7 @@ class HasKey extends All
     {
         if (!$this->validate($input))
             throw new KeyNotPresentException($input, $this->key);
-        return parent::validate($input[$this->key]);
+        return parent::validate(@$input[$this->key]);
     }
 
     public function check($input)

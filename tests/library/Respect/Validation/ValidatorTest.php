@@ -60,4 +60,29 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($v);
     }
 
+    public function testSample()
+    {
+
+        $target = new \stdClass;
+        $target->id = 13;
+        $target->created_at = '2009-10-10';
+        $target->name = 'Alexandre';
+
+        $validator = Validator::object()
+                ->one(
+                    Validator::hasAttribute('screen_name',
+                        Validator::alnum('_')->noWhitespace()),
+                    Validator::hasAttribute('id', Validator::numeric())
+                )
+                ->hasAttribute('created_at', Validator::date())
+                ->hasAttribute('name', $v160 = Validator::stringLength(1, 160))
+                ->hasOptionalAttribute('description', $v160)
+                ->hasOptionalAttribute('location', $v160);
+        try {
+            $validator->assert($target);
+        } catch (InvalidException $e) {
+            echo $e->message();
+        }
+    }
+
 }

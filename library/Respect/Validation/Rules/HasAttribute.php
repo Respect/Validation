@@ -33,7 +33,7 @@ class HasAttribute extends All
     {
         if (!$this->validate($input))
             throw new AttributeNotPresentException($input, $this->attribute);
-        return parent::validate($input->{$this->attribute});
+        return parent::validate(@$input->{$this->attribute});
     }
 
     public function check($input)
