@@ -1,2 +1,5 @@
 library/Zend/
 library/Symfony/
+.buildpath
+.project
+.settings/
