@@ -2,9 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-use InvalidArgumentException;
-
-class KeyNotPresentException extends InvalidException
+class HasKeyException extends InvalidException
 {
     const MSG_KEY_NOT_PRESENT = 'HasKey_1';
     protected $messageTemplates = array(

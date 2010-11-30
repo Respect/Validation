@@ -3,7 +3,7 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\NotAlphanumericException;
+use Respect\Validation\Exceptions\AlnumException;
 use Respect\Validation\Exceptions\ComponentException;
 
 class Alnum extends AbstractRule
@@ -31,7 +31,7 @@ class Alnum extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new NotAlphanumericException($input, $this->additionalChars);
+            throw new AlnumException($input, $this->additionalChars);
         return true;
     }
 

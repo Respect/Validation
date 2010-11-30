@@ -3,7 +3,7 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\NotAlphaException;
+use Respect\Validation\Exceptions\AlphaException;
 use Respect\Validation\Exceptions\ComponentException;
 
 class Alpha extends AbstractRule
@@ -31,7 +31,7 @@ class Alpha extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new NotAlphaException($input, $this->additionalChars);
+            throw new AlphaException($input, $this->additionalChars);
         return true;
     }
 

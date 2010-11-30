@@ -2,14 +2,14 @@
 
 namespace Respect\Validation\Rules;
 
-class StringNotEmptyTest extends \PHPUnit_Framework_TestCase
+class NotEmptyTest extends \PHPUnit_Framework_TestCase
 {
 
     protected $object;
 
     protected function setUp()
     {
-        $this->object = new StringNotEmpty;
+        $this->object = new NotEmpty;
     }
 
     public function testStringNotEmpty()
@@ -18,7 +18,7 @@ class StringNotEmptyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\EmptyStringException
+     * @expectedException Respect\Validation\Exceptions\NotEmptyException
      */
     public function testStringEmpty()
     {

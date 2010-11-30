@@ -18,7 +18,7 @@ class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\WhitespaceFoundException
+     * @expectedException Respect\Validation\Exceptions\NoWhitespaceException
      */
     public function testWhitespace()
     {

@@ -3,7 +3,7 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\NotHexadecimalException;
+use Respect\Validation\Exceptions\HexaException;
 
 class Hexa extends AbstractRule
 {
@@ -16,7 +16,7 @@ class Hexa extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new NotHexadecimalException($input);
+            throw new HexaException($input);
         return true;
     }
 

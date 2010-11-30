@@ -3,7 +3,7 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\NotObjectException;
+use Respect\Validation\Exceptions\ObjectException;
 
 class Object extends AbstractRule
 {
@@ -16,7 +16,7 @@ class Object extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new NotObjectException($input);
+            throw new ObjectException($input);
         return true;
     }
 

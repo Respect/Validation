@@ -3,7 +3,7 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\KeyNotPresentException;
+use Respect\Validation\Exceptions\HasKeyException;
 use Respect\Validation\Rules\All;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Validator;
@@ -33,7 +33,7 @@ class HasKey extends AllOf
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new KeyNotPresentException($input, $this->key);
+            throw new HasKeyException($input, $this->key);
         return parent::validate(@$input[$this->key]);
     }
 

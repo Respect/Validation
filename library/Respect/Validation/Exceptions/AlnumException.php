@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class NotAlphanumericException extends InvalidException
+class AlnumException extends InvalidException
 {
     const MSG_NOT_ALPHANUMERIC = 'Alnum_1';
     const MSG_NOT_ALPHANUMERIC_ADDITIONAL = 'Alnum_2';

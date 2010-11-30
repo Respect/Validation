@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class NotInstanceException extends InvalidException
+class InstanceException extends InvalidException
 {
     const MSG_NOT_INSTANCE = 'Instance_1';
     protected $messageTemplates = array(

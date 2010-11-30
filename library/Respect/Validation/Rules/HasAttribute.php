@@ -3,7 +3,7 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\AttributeNotPresentException;
+use Respect\Validation\Exceptions\HasAttributeException;
 use Respect\Validation\Rules\All;
 use Respect\Validation\Exceptions\ComponentException;
 
@@ -32,7 +32,7 @@ class HasAttribute extends AllOf
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new AttributeNotPresentException($input, $this->attribute);
+            throw new HasAttributeException($input, $this->attribute);
         return parent::validate(@$input->{$this->attribute});
     }
 

@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class NotArrayException extends InvalidException
+class ArrException extends InvalidException
 {
     const MSG_NOT_ARRAY = 'Array_1';
     protected $messageTemplates = array(

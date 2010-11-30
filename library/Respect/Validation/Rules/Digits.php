@@ -3,7 +3,7 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\NotDigitsException;
+use Respect\Validation\Exceptions\DigitsException;
 
 class Digits extends AbstractRule
 {
@@ -16,7 +16,7 @@ class Digits extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new NotDigitsException($input);
+            throw new DigitsException($input);
         return true;
     }
 

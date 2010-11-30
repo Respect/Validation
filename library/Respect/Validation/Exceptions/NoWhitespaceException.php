@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class WhitespaceFoundException extends InvalidException
+class NoWhitespaceException extends InvalidException
 {
     const MSG_WHITESPACE_FOUND = 'NoWhitespace_1';
     protected $messageTemplates = array(

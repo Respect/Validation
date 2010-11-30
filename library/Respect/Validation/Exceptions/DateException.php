@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class InvalidDate extends InvalidException
+class DateException extends InvalidException
 {
     const MSG_INVALID_DATE = 'Date_1';
     const MSG_INVALID_FORMAT = 'Date_2';

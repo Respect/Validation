@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class NotObjectException extends InvalidException
+class ObjectException extends InvalidException
 {
     const MSG_NOT_OBJECT = 'Object_1';
     protected $messageTemplates = array(

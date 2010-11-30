@@ -47,7 +47,7 @@ class AbstractCompositeTest extends \PHPUnit_Framework_TestCase
     public function testBuildValidators()
     {
         $this->object->addRules(array(
-            'noWhitespace', 'StringNotEmpty', 'Alnum' => array('__')
+            'noWhitespace', 'NotEmpty', 'Alnum' => array('__')
         ));
     }
 

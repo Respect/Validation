@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class NotFloatException extends InvalidException
+class FloatException extends InvalidException
 {
     const MSG_NOT_FLOAT = 'Float_1';
     protected $messageTemplates = array(

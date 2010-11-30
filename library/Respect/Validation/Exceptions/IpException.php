@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class InvalidIpException extends InvalidException
+class IpException extends InvalidException
 {
     const MSG_NOT_IP = 'Ip_1';
     public $options;

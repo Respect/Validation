@@ -16,7 +16,7 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidAlpha
-     * @expectedException Respect\Validation\Exceptions\NotAlphaException
+     * @expectedException Respect\Validation\Exceptions\AlphaException
      */
     public function testAlphaInvalid($invalidAlpha, $aditional)
     {

@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class NotDigitsException extends InvalidException
+class DigitsException extends InvalidException
 {
     const MSG_NOT_DIGITS = 'Digits_1';
     protected $messageTemplates = array(

@@ -2,22 +2,23 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\EmptyStringException;
+use Respect\Validation\Exceptions\NotEmptyException;
 use Respect\Validation\Rules\AbstractRule;
 
-class StringNotEmpty extends AbstractRule
+class NotEmpty extends AbstractRule
 {
 
     public function validate($input)
     {
-        $trimmed = trim($input);
-        return!empty($trimmed);
+        if (is_string($input))
+            $input = trim($input);
+        return!empty($input);
     }
 
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new EmptyStringException();
+            throw new NotEmptyException();
         return true;
     }
 

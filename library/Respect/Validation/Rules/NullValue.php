@@ -3,7 +3,7 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\NotNullException;
+use Respect\Validation\Exceptions\NullValueException;
 
 class NullValue extends AbstractRule
 {
@@ -16,7 +16,7 @@ class NullValue extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new NotNullException($input);
+            throw new NullValueException($input);
         return true;
     }
 

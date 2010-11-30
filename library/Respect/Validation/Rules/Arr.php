@@ -3,7 +3,7 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\NotArrayException;
+use Respect\Validation\Exceptions\ArrException;
 
 class Arr extends AbstractRule
 {
@@ -16,7 +16,7 @@ class Arr extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new NotArrayException($input);
+            throw new ArrException($input);
         return true;
     }
 

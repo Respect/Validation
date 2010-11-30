@@ -3,7 +3,7 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\NotInstanceException;
+use Respect\Validation\Exceptions\InstanceException;
 
 class Instance extends AbstractRule
 {
@@ -23,7 +23,7 @@ class Instance extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new NotInstanceException($input, $this->instance);
+            throw new InstanceException($input, $this->instance);
         return true;
     }
 

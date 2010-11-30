@@ -3,7 +3,7 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\WhitespaceFoundException;
+use Respect\Validation\Exceptions\NoWhitespaceException;
 
 class NoWhitespace extends AbstractRule
 {
@@ -16,7 +16,7 @@ class NoWhitespace extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new WhitespaceFoundException($input);
+            throw new NoWhitespaceException($input);
         return true;
     }
 

@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class NotNullException extends InvalidException
+class NullValueException extends InvalidException
 {
     const MSG_NOT_NULL = 'NullValue_1';
     protected $messageTemplates = array(

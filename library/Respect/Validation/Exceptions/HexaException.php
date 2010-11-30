@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class NotHexadecimalException extends InvalidException
+class HexaException extends InvalidException
 {
     const MSG_NOT_HEXADECIMAL = 'Hexa_1';
     protected $messageTemplates = array(

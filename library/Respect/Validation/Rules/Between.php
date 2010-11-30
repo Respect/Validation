@@ -5,7 +5,7 @@ namespace Respect\Validation\Rules;
 use \Exception;
 use Respect\Validation\Validator;
 use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\NotBetweenException;
+use Respect\Validation\Exceptions\BetweenException;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Validatable;
 
@@ -60,7 +60,7 @@ class Between extends AbstractRule
         $validMin = $this->validateMin($input);
         $validMax = $this->validateMax($input);
         if (!$validMin || !$validMax)
-            throw new NotBetweenException(
+            throw new BetweenException(
                 $input,
                 $validMin,
                 $validMax,

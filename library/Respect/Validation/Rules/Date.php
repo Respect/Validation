@@ -4,7 +4,7 @@ namespace Respect\Validation\Rules;
 
 use DateTime;
 use Respect\Validation\Rules\AbstractDate;
-use Respect\Validation\Exceptions\InvalidDate;
+use Respect\Validation\Exceptions\DateException;
 
 class Date extends AbstractDate
 {
@@ -29,7 +29,7 @@ class Date extends AbstractDate
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new InvalidDate($input, $this->format);
+            throw new DateException($input, $this->format);
         return true;
     }
 

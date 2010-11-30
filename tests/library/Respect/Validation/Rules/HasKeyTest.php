@@ -14,7 +14,7 @@ class HasKeyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeyNotPresentException
+     * @expectedException Respect\Validation\Exceptions\HasKeyException
      */
     public function testNotNull()
     {

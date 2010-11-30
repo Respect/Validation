@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class NotAlphaException extends InvalidException
+class AlphaException extends InvalidException
 {
     const MSG_NOT_ALPHA = 'Alpha_1';
     const MSG_NOT_ALPHA_ADDITIONAL = 'Alpha_2';

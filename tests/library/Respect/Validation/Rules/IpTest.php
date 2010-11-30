@@ -24,7 +24,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotIp
-     * @expectedException Respect\Validation\Exceptions\InvalidIpException
+     * @expectedException Respect\Validation\Exceptions\IpException
      */
     public function testNotIp($input, $options=null)
     {

@@ -3,7 +3,7 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\InvalidIpException;
+use Respect\Validation\Exceptions\IpException;
 
 class Ip extends AbstractRule
 {
@@ -23,7 +23,7 @@ class Ip extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new InvalidIpException($input);
+            throw new IpException($input);
         return true;
     }
 

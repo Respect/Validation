@@ -3,7 +3,7 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\NotFloatException;
+use Respect\Validation\Exceptions\FloatException;
 
 class Float extends AbstractRule
 {
@@ -16,7 +16,7 @@ class Float extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new NotFloatException($input);
+            throw new FloatException($input);
         return true;
     }
 

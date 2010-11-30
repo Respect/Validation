@@ -23,7 +23,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotArr
-     * @expectedException Respect\Validation\Exceptions\NotArrayException
+     * @expectedException Respect\Validation\Exceptions\ArrException
      */
     public function testNotArr($input)
     {

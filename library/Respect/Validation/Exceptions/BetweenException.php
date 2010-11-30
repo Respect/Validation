@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class NotBetweenException extends InvalidException
+class BetweenException extends InvalidException
 {
 
     protected $min;

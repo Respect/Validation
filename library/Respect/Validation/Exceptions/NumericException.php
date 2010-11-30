@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class NotNumericException extends InvalidException
+class NumericException extends InvalidException
 {
     
     const MSG_NOT_NUMERIC = 'Numeric_1';
