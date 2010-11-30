@@ -11,7 +11,7 @@
   <active>yes</active>
  </lead>
  <date>2010-11-30</date>
- <time>14:24:35</time>
+ <time>17:53:14</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -48,6 +48,7 @@ First Version
    <file baseinstalldir="Respect/Validation" md5sum="970dbd772b9ca1313926565789ebce40" name="Exceptions/ObjectException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="b03ccce508c67786a9a204cb0079dc49" name="Exceptions/RegexException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="dfde1d4766350bf657c492cff8e759bc" name="Exceptions/StringLengthException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="bd8940b36013ca926d1805f8ab18479c" name="Exceptions/TraversableException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="5693643da69c0f66822a1c7baf93be62" name="Rules/AbstractComposite.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="63d6808a8e387281aeb6ab09440f3031" name="Rules/AbstractDate.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="83fd3c49fbc10a04764096a984e2085a" name="Rules/AbstractRule.php" role="php" />
@@ -79,6 +80,7 @@ First Version
    <file baseinstalldir="Respect/Validation" md5sum="acba8599cb024751e51337a1211dd082" name="Rules/Regex.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="3fcd2d83507b2b03cbd45dd63db068c6" name="Rules/Sf.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="c25c184df18e7d20843c0b7d2eb9f68e" name="Rules/StringLength.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="d7cae01caf795f71785d0643884fdad9" name="Rules/Traversable.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="2b0f271b8ea0e870c937663be56e5bd4" name="Rules/Zend.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="ff9ba258245ed557bf3487b3270780cb" name="Validatable.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="f58eaf419950d54b71f14222ca284530" name="Validator.php" role="php" />
