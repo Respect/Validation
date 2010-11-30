@@ -29,9 +29,7 @@ class HasAttribute extends AllOf
     {
         $propertyMirror = new ReflectionProperty($input, $this->attribute);
         $propertyMirror->setAccessible(true);
-        $value = $propertyMirror->getValue($input);
-        $propertyMirror->setAccessible(false);
-        return $value;
+        return $propertyMirror->getValue($input);
     }
 
     public function validate($input)
