@@ -6,6 +6,8 @@ use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Exceptions\HasAttributeException;
 use Respect\Validation\Rules\All;
 use Respect\Validation\Exceptions\ComponentException;
+use \ReflectionProperty;
+use \ReflectionException;
 
 class HasAttribute extends AllOf
 {
@@ -23,17 +25,31 @@ class HasAttribute extends AllOf
             $this->addRule($attributeValidator);
     }
 
+    protected function getAttributeValue($input)
+    {
+        $propertyMirror = new ReflectionProperty($input, $this->attribute);
+        $propertyMirror->setAccessible(true);
+        $value = $propertyMirror->getValue($input);
+        $propertyMirror->setAccessible(false);
+        return $value;
+    }
+
     public function validate($input)
     {
-        return @property_exists($input, $this->attribute)
-        && parent::validate($input->{$this->attribute});
+        try {
+            return parent::validate(
+                $this->getAttributeValue($input)
+            );
+        } catch (ReflectionException $e) {
+            return false;
+        }
     }
 
     public function assert($input)
     {
         if (!$this->validate($input))
             throw new HasAttributeException($input, $this->attribute);
-        return parent::validate(@$input->{$this->attribute});
+        return true;
     }
 
     public function check($input)

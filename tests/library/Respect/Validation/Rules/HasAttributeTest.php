@@ -2,6 +2,13 @@
 
 namespace Respect\Validation\Rules;
 
+class PrivClass
+{
+
+    private $bar = 'foo';
+
+}
+
 class HasAttributeTest extends \PHPUnit_Framework_TestCase
 {
 
@@ -38,6 +45,14 @@ class HasAttributeTest extends \PHPUnit_Framework_TestCase
         $validator = new HasAttribute('bar', $subValidator);
         $obj = new \stdClass;
         $obj->bar = 'foo';
+        $this->assertTrue($validator->assert($obj));
+    }
+
+    public function testValidatorPrivateAttribute()
+    {
+        $subValidator = new StringLength(1, 3);
+        $validator = new HasAttribute('bar', $subValidator);
+        $obj = new PrivClass;
         $this->assertTrue($validator->assert($obj));
     }
 

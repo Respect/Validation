@@ -11,7 +11,7 @@
   <active>yes</active>
  </lead>
  <date>2010-11-30</date>
- <time>13:37:27</time>
+ <time>14:21:25</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -61,10 +61,10 @@ First Version
    <file baseinstalldir="Respect/Validation" md5sum="72fc8b1df1b769d70451f3048a2cec39" name="Rules/Date.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="f6fb904763f6b00d7899dd994e226159" name="Rules/Digits.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="a7408cba21b34fe579b86f31b2945da9" name="Rules/Float.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="b9ca2b05ca1d58638c86c1388033669f" name="Rules/HasAttribute.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="0ccc661145f01f46deac7b3b4540340a" name="Rules/HasKey.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="9034f4c1f69241ed53461de52a94cc7a" name="Rules/HasOptionalAttribute.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="409bd3ef97ec1e4d80fe237b45215ee1" name="Rules/HasOptionalKey.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="edbe39ca0d2deed6b787b9690bc63dfe" name="Rules/HasAttribute.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="13989dea5d499f5ff011d8282dc71816" name="Rules/HasKey.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="b31e08b8169315283b5f5a8cc29e060c" name="Rules/HasOptionalAttribute.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="7866c852b26b09b962d3fb5d1aa5e5ca" name="Rules/HasOptionalKey.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="08678034eb2645d386779db9f77930cf" name="Rules/Hexa.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="34b03954f534b4d37272a8617f9fda2b" name="Rules/Instance.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="25c9ecf3469a588287f750d716f00dc3" name="Rules/Ip.php" role="php" />

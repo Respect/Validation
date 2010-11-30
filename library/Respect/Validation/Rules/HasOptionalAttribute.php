@@ -3,14 +3,21 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\HasAttribute;
+use \ReflectionProperty;
+use \ReflectionException;
 
 class HasOptionalAttribute extends HasAttribute
 {
 
     public function validate($input)
     {
-        return @!property_exists($input, $this->attribute)
-        || parent::validate($input->{$this->attribute});
+        try {
+            return parent::validate(
+                $this->getAttributeValue($input)
+            );
+        } catch (ReflectionException $e) {
+            return true;
+        }
     }
 
 }

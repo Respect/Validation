@@ -26,7 +26,7 @@ class HasKey extends AllOf
 
     public function validate($input)
     {
-        return @array_key_exists($this->key, $input)
+        return array_key_exists($this->key, $input)
         && parent::validate($input[$this->key]);
     }
 
