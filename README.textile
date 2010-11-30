@@ -34,8 +34,10 @@ $validUsername = v::alnum()
 //Date between two ranges using a specific format
 $someDate = '2010-10-15';
 $validDate = v::date('Y-m-d')
-              ->dateBetween('2009-01-01', 2011-01-01')
-              ->validate($someDate);</pre>
+              ->between(
+                    new DateTime('2009-01-01'), 
+                    new DateTime('2011-01-01')
+              )->validate($someDate);</pre>
 
 h3. Validating object attributes
 
@@ -43,7 +45,7 @@ h3. Validating object attributes
 $user->name = 'Alexandre';
 $user->birthdate = '1987-07-01';
 $validUser = v::all(
-    v::hasAttribute('name', v::stringNotEmpty()),
+    v::hasAttribute('name', v::notEmpty()),
     v::hasAttribute('birthdate, v::date('Y-m-d'))
 );</pre>
 
