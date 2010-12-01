@@ -2,10 +2,10 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Exceptions\HasAttributeException;
-use Respect\Validation\Rules\All;
+use Respect\Validation\Rules\AllOf;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Validatable;
 use \ReflectionProperty;
 use \ReflectionException;
 
@@ -14,7 +14,7 @@ class HasAttribute extends AllOf
 
     protected $attribute = '';
 
-    public function __construct($attribute, $attributeValidator=null)
+    public function __construct($attribute, Validatable $attributeValidator=null)
     {
         if (!is_string($attribute))
             throw new ComponentException(

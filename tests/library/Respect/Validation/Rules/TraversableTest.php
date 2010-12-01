@@ -5,20 +5,14 @@ namespace Respect\Validation\Rules;
 class TraversableTest extends \PHPUnit_Framework_TestCase
 {
 
-    protected $object;
-
-    protected function setUp()
-    {
-        $this->object = new Traversable;
-    }
-
     /**
      * @dataProvider providerForTraversable
      *
      */
     public function testTraversable($input)
     {
-        $this->assertTrue($this->object->assert($input));
+        $v = new Traversable;
+        $this->assertTrue($v->assert($input));
     }
 
     /**
@@ -27,7 +21,32 @@ class TraversableTest extends \PHPUnit_Framework_TestCase
      */
     public function testNotTraversable($input)
     {
-        $this->assertTrue($this->object->assert($input));
+        $v = new Traversable;
+        $this->assertTrue($v->assert($input));
+    }
+
+    public function testTraversableItemValidator()
+    {
+        $v = new Traversable(new StringLength(5, 10));
+        $this->assertTrue(
+            $v->assert(
+                array('alganet'), array('kingolabs'), array('respect')
+            )
+        );
+    }
+
+    /**
+     * @dataProvider providerForNotTraversable
+     * @expectedException Respect\Validation\Exceptions\TraversableException
+     */
+    public function testTraversableItemValidatorFalse()
+    {
+        $v = new Traversable(new StringLength(15, 30));
+        $this->assertFalse(
+            $v->assert(
+                array('alganet'), array('kingolabs'), array('respect')
+            )
+        );
     }
 
     public function providerForTraversable()

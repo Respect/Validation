@@ -5,24 +5,17 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Exceptions\ArrException;
 
-class Arr extends AbstractRule
+class Arr extends Traversable
 {
 
-    public function validate($input)
+    protected function isTraversable($input)
     {
         return is_array($input);
     }
 
-    public function assert($input)
+    protected function buildException($input)
     {
-        if (!$this->validate($input))
-            throw new ArrException($input);
-        return true;
-    }
-
-    public function check($input)
-    {
-        return $this->assert($input);
+        return new ArrException($input);
     }
 
 }
