@@ -18,7 +18,7 @@ class InstanceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\InstanceException
+     * @expectedException Respect\Validation\Exceptions\ValidationException
      */
     public function testNotInstance()
     {

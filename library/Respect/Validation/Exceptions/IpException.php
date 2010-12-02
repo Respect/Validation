@@ -2,21 +2,11 @@
 
 namespace Respect\Validation\Exceptions;
 
-class IpException extends InvalidException
+class IpException extends ValidationException
 {
-    const MSG_NOT_IP = 'Ip_1';
-    public $options;
-    protected $messageTemplates = array(
-        self::MSG_NOT_IP => '%s is not a valid IP address'
+    const INVALID_IP= 'Ip_1';
+    public static $defaultTemplates = array(
+        self::INVALID_IP => '"%s" is not a valid IP address',
     );
-
-    public function __construct($input)
-    {
-        parent::__construct(
-                sprintf(
-                    $this->getMessageTemplate(self::MSG_NOT_IP), $input
-                )
-        );
-    }
 
 }

@@ -2,17 +2,25 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\InvalidException;
+use Respect\Validation\Exceptions\OneOfException;
 
 class OneOf extends AbstractComposite
 {
+
+    public function createException()
+    {
+        return new OneOfException(OneOfException::INVALID_ONE_OF);
+    }
 
     public function assert($input)
     {
         $validators = $this->getRules();
         $exceptions = $this->validateRules($input);
         if (count($exceptions) === count($validators))
-            throw new InvalidException($exceptions);
+            throw $this
+                ->getException()
+                ->setParams(count($validators))
+                ->setRelated($exceptions);
         return true;
     }
 

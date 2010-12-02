@@ -16,7 +16,7 @@ class StringLengthTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidLenght
-     * @expectedException Respect\Validation\Exceptions\StringLengthException
+     * @expectedException Respect\Validation\Exceptions\ValidationException
      */
     public function testStringLengthInvalid($string, $min, $max)
     {

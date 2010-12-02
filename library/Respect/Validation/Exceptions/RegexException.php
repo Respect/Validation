@@ -2,23 +2,11 @@
 
 namespace Respect\Validation\Exceptions;
 
-use Exception;
-
-class RegexException extends InvalidException
+class RegexException extends ValidationException
 {
-    const MSG_REGEX = 'Regex_1';
-    protected $messageTemplates = array(
-        self::MSG_REGEX => '%s does not validate against the provided regular expression: %s.'
+    const INVALID_REGEX= 'Regex_1';
+    public static $defaultTemplates = array(
+        self::INVALID_REGEX => '"%s" did not validated against the "%s" expression',
     );
-
-    public function __construct($input, $regex)
-    {
-        parent::__construct(
-                sprintf(
-                    $this->getMessageTemplate(self::MSG_REGEX),
-                    $this->getStringRepresentation($input), $regex
-                )
-        );
-    }
 
 }

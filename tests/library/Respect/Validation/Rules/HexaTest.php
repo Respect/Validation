@@ -23,7 +23,7 @@ class HexaTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotHexa
-     * @expectedException Respect\Validation\Exceptions\HexaException
+     * @expectedException Respect\Validation\Exceptions\ValidationException
      */
     public function testNotHexa($input)
     {

@@ -23,7 +23,7 @@ class FloatTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotFloat
-     * @expectedException Respect\Validation\Exceptions\FloatException
+     * @expectedException Respect\Validation\Exceptions\ValidationException
      */
     public function testNotFloat($input)
     {

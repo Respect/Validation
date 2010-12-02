@@ -2,23 +2,11 @@
 
 namespace Respect\Validation\Exceptions;
 
-class DateException extends InvalidException
+class DateException extends ValidationException
 {
-    const MSG_INVALID_DATE = 'Date_1';
-    const MSG_INVALID_FORMAT = 'Date_2';
-    protected $messageTemplates = array(
-        self::MSG_INVALID_DATE => '%s is not a valid date reference',
-        self::MSG_INVALID_FORMAT => '%s is not a valid date in the %s format',
+    const INVALID_DATE= 'Date_1';
+    public static $defaultTemplates = array(
+        self::INVALID_DATE => '"%s" is not a valid date (format: %s)',
     );
-
-    public function __construct($input, $format)
-    {
-        $code = is_null($format) ? static::MSG_INVALID_DATE : static::MSG_INVALID_FORMAT;
-        parent::__construct(
-                sprintf(
-                    $this->getMessageTemplate($code), $input, $format
-                )
-        );
-    }
 
 }

@@ -18,7 +18,7 @@ class NotEmptyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\NotEmptyException
+     * @expectedException Respect\Validation\Exceptions\ValidationException
      */
     public function testStringEmpty()
     {

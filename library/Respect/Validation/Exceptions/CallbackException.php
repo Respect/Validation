@@ -2,26 +2,11 @@
 
 namespace Respect\Validation\Exceptions;
 
-use Exception;
-
-class CallbackException extends InvalidException
+class CallbackException extends ValidationException
 {
-    const MSG_CALLBACK = 'Callback_1';
-    protected $messageTemplates = array(
-        self::MSG_CALLBACK => '%s does not validate against the provided callback %s.'
+    const INVALID_CALLBACK= 'Callback_1';
+    public static $defaultTemplates = array(
+        self::INVALID_CALLBACK => '"%s" is invalid',
     );
-
-    public function __construct($input, $callback)
-    {
-        parent::__construct(
-                $this->getMessageTemplate(
-                    sprintf(
-                        self::MSG_CALLBACK,
-                        $this->getStringRepresentation($input),
-                        $this->getStringRepresentation($callback)
-                    )
-                )
-        );
-    }
 
 }

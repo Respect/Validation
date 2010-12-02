@@ -5,7 +5,7 @@ namespace Respect\Validation\Rules;
 use ReflectionClass;
 use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Exceptions\CallbackException;
-use Respect\Validation\Exceptions\InvalidException;
+use Respect\Validation\Exceptions\SfException;
 use Symfony\Component\Validator\ConstraintViolation;
 
 class Sf extends AbstractRule
@@ -28,6 +28,11 @@ class Sf extends AbstractRule
             $this->constraint = $sfMirrorConstraint->newInstance();
     }
 
+    public function createException()
+    {
+        return new SfException;
+    }
+
     public function validate($input)
     {
         $validatorName = 'Symfony\Component\Validator\Constraints\\'
@@ -46,7 +51,9 @@ class Sf extends AbstractRule
                     '',
                     $input
             );
-            throw new InvalidException($violation->getMessage());
+            throw $this
+                ->getException()
+                ->setParams($violation->getMessage());
         }
         return true;
     }

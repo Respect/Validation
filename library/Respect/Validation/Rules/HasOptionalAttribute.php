@@ -3,6 +3,7 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\HasAttribute;
+use Respect\Validation\Exceptions\HasOptionalAttributeException;
 use \ReflectionProperty;
 use \ReflectionException;
 
@@ -18,6 +19,27 @@ class HasOptionalAttribute extends HasAttribute
         } catch (ReflectionException $e) {
             return true;
         }
+    }
+
+    public function assert($input)
+    {
+        try {
+            parent::assert(
+                    $this->getAttributeValue($input)
+            );
+        } catch (ReflectionException $e) {
+            return true;
+        } catch (ValidationException $e) {
+            throw $this
+                ->getException()
+                ->setParams($input, $this->attribute);
+        }
+        return true;
+    }
+
+    public function createException()
+    {
+        return new HasOptionalAttributeException;
     }
 
 }

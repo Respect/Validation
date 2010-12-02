@@ -48,7 +48,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\InvalidException
+     * @expectedException Respect\Validation\Exceptions\ValidationException
      */
     public function testValidatorCompositeTwitterUsernameInvalid()
     {
@@ -63,18 +63,23 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     {
 
         $target = new \stdClass;
-        $target->id = 13;
-        $target->created_at = '2009-10-10';
-        $target->name = 'Alexandre';
+        $target->sex = 'foo';
+        $target->id = 49549;
 
         $validator = Validator::object()
             ->oneOf(
                 Validator::hasAttribute('screen_name',
                     Validator::alnum('_')->noWhitespace()),
-                Validator::hasAttribute('id', Validator::numeric())
+                Validator::hasAttribute('id',
+                    Validator::numeric()
+                    ->between(1, 15))
             )
             ->hasAttribute('created_at', Validator::date())
             ->hasAttribute('name', $v160 = Validator::stringLength(1, 160))
+            ->hasAttribute('sex',
+                Validator::allOf(
+                    Validator::hexa(), Validator::float(), Validator::numeric()
+                ))
             ->hasOptionalAttribute('description', $v160)
             ->hasOptionalAttribute('location', $v160);
         try {

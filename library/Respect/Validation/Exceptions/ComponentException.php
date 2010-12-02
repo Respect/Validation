@@ -2,9 +2,9 @@
 
 namespace Respect\Validation\Exceptions;
 
-use InvalidArgumentException;
+use \Exception;
 
-class ComponentException extends InvalidArgumentException
+class ComponentException extends Exception
 {
     
 }

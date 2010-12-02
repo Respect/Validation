@@ -70,7 +70,7 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerInvalid
-     * @expectedException Respect\Validation\Exceptions\BetweenException
+     * @expectedException Respect\Validation\Exceptions\ValidationException
      */
     public function testNotBetweenBounds($min, $max, $input, $type)
     {
@@ -90,7 +90,7 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerInvalidInput
-     * @expectedException Respect\Validation\Exceptions\InvalidException
+     * @expectedException Respect\Validation\Exceptions\ValidationException
      */
     public function testInvalidInput($min, $max, $input, $type)
     {

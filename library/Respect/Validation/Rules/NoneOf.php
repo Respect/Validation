@@ -2,10 +2,14 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\InvalidException;
+use Respect\Validation\Exceptions\NoneOfException;
 
 class NoneOf extends AbstractComposite
 {
+    public function createException()
+    {
+        return new NoneOfException;
+    }
 
     public function validate($input)
     {
@@ -22,7 +26,9 @@ class NoneOf extends AbstractComposite
     {
         $exceptions = $this->validateRules($input);
         if (count($this->getRules()) !== count($exceptions))
-            throw new InvalidException($exceptions);
+            throw $this
+                ->getException()
+                ->setRelated($exceptions);
         return true;
     }
 

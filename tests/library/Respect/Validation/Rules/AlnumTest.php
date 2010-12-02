@@ -16,7 +16,7 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidAlnum
-     * @expectedException Respect\Validation\Exceptions\AlnumException
+     * @expectedException Respect\Validation\Exceptions\ValidationException
      */
     public function testAlnumInvalid($invalidAlnum, $aditional)
     {

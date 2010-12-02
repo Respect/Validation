@@ -2,17 +2,11 @@
 
 namespace Respect\Validation\Exceptions;
 
-class NotEmptyException extends InvalidException
+class NotEmptyException extends ValidationException
 {
-    const MSG_NOT_EMPTY = 'NotEmpty_1';
-
-    protected $messageTemplates = array(
-        self::MSG_NOT_EMPTY => 'You provided an empty value'
+    const INVALID_NOT_EMPTY= 'NotEmpty_1';
+    public static $defaultTemplates = array(
+        self::INVALID_NOT_EMPTY => 'The provided value is empty',
     );
-
-    public function __construct()
-    {
-        parent::__construct($this->getMessageTemplate(self::MSG_NOT_EMPTY));
-    }
 
 }

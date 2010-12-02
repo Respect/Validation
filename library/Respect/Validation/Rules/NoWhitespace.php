@@ -8,6 +8,11 @@ use Respect\Validation\Exceptions\NoWhitespaceException;
 class NoWhitespace extends AbstractRule
 {
 
+    public function createException()
+    {
+        return new NoWhitespaceException;
+    }
+
     public function validate($input)
     {
         return preg_match('#^\S+$#', $input);
@@ -16,7 +21,9 @@ class NoWhitespace extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new NoWhitespaceException($input);
+            throw $this
+                ->getException()
+                ->setParams($input);
         return true;
     }
 

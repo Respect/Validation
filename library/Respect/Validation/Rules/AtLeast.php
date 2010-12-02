@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\InvalidException;
+use Respect\Validation\Exceptions\AtLeastException;
 
 class AtLeast extends AbstractComposite
 {
@@ -20,8 +20,16 @@ class AtLeast extends AbstractComposite
         $validators = $this->getRules();
         $exceptions = $this->validateRules($input);
         if ($this->howMany > (count($validators) - count($exceptions)))
-            throw new InvalidException($exceptions);
+            throw $this
+                ->getException()
+                ->setParams(count($exceptions), $this->howMany)
+                ->setRelated($exceptions);
         return true;
+    }
+
+    public function createException()
+    {
+        return new AtLeastException(AtLeastException::INVALID_ATLEAST);
     }
 
     public function validate($input)
@@ -30,9 +38,9 @@ class AtLeast extends AbstractComposite
         $pass = 0;
         foreach ($validators as $v) {
             try {
-                $v->assert($input);
+                $v->check($input);
                 $pass++;
-            } catch (InvalidException $e) {
+            } catch (ValidationException $e) {
                 
             }
             if ($pass >= $this->howMany)
@@ -48,15 +56,18 @@ class AtLeast extends AbstractComposite
         $exceptions = array();
         foreach ($validators as $v) {
             try {
-                $v->assert($input);
+                $v->check($input);
                 $pass++;
-            } catch (InvalidException $e) {
+            } catch (ValidationException $e) {
                 $exceptions[] = $e;
             }
             if ($pass >= $this->howMany)
                 return true;
             if (count($exceptions) > (count($validators) - $this->howMany))
-                throw new InvalidException($e);
+                throw $this
+                    ->getException()
+                    ->setParams(count($exceptions), $this->howMany)
+                    ->setRelated($exceptions);
         }
         return false;
     }

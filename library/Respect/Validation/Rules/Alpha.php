@@ -20,6 +20,11 @@ class Alpha extends AbstractRule
         $this->additionalChars = $additionalChars;
     }
 
+    public function createException()
+    {
+        return new AlphaException;
+    }
+
     public function validate($input)
     {
         return is_string($input) && preg_match(
@@ -30,8 +35,12 @@ class Alpha extends AbstractRule
 
     public function assert($input)
     {
+        $templateCode = empty($this->additionalChars) ? AlphaException::INVALID_ALPHA : AlnumException::INVALID_ALPHA_CHARS;
         if (!$this->validate($input))
-            throw new AlphaException($input, $this->additionalChars);
+            throw $this
+                ->getException()
+                ->setMessageTemplateFromCode($templateCode)
+                ->setParams($input, $this->additionalChars);
         return true;
     }
 

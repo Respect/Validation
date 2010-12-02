@@ -2,18 +2,11 @@
 
 namespace Respect\Validation\Exceptions;
 
-class FloatException extends InvalidException
+class FloatException extends ValidationException
 {
-    const MSG_NOT_FLOAT = 'Float_1';
-    protected $messageTemplates = array(
-        self::MSG_NOT_FLOAT => '%s is not a valid float number'
+    const INVALID_= 'Float_1';
+    public static $defaultTemplates = array(
+        self::INVALID_ => '"%s" is not a valid float',
     );
-
-    public function __construct($input)
-    {
-        parent::__construct(
-                sprintf($this->getMessageTemplate(self::MSG_NOT_FLOAT), $input)
-        );
-    }
-
+    
 }

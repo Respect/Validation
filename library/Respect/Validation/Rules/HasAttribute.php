@@ -5,6 +5,7 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\HasAttributeException;
 use Respect\Validation\Rules\AllOf;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
 use \ReflectionProperty;
 use \ReflectionException;
@@ -23,6 +24,11 @@ class HasAttribute extends AllOf
         $this->attribute = $attribute;
         if (!is_null($attributeValidator))
             $this->addRule($attributeValidator);
+    }
+
+    public function createException()
+    {
+        return new HasAttributeException(HasAttributeException::INVALID_HAS_ATTRIBUTE);
     }
 
     protected function getAttributeValue($input)
@@ -45,8 +51,20 @@ class HasAttribute extends AllOf
 
     public function assert($input)
     {
-        if (!$this->validate($input))
-            throw new HasAttributeException($input, $this->attribute);
+        try {
+            parent::assert(
+                    $this->getAttributeValue($input)
+            );
+        } catch (ReflectionException $e) {
+            throw $this
+                ->getException()
+                ->setParams($this->attribute);
+        } catch (ValidationException $e) {
+            throw $this
+                ->getException()
+                ->setMessageTemplateFromCode(HasAttributeException::INVALID_HAS_ATTRIBUTE_RELATED)
+                ->setParams($this->attribute);
+        }
         return true;
     }
 

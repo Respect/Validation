@@ -25,11 +25,18 @@ class Date extends AbstractDate
         else
             return date($this->format, strtotime($input)) == $input;
     }
+    public function createException()
+    {
+        return new DateException;
+    }
+
 
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new DateException($input, $this->format);
+            throw $this
+                ->getException()
+                ->setParams($input, $this->format);
         return true;
     }
 

@@ -7,6 +7,10 @@ use Respect\Validation\Exceptions\HexaException;
 
 class Hexa extends AbstractRule
 {
+    public function createException()
+    {
+        return new HexaException;
+    }
 
     public function validate($input)
     {
@@ -16,7 +20,9 @@ class Hexa extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new HexaException($input);
+            throw $this
+                ->getException()
+                ->setParams($input);
         return true;
     }
 

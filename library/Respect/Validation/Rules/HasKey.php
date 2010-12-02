@@ -23,6 +23,11 @@ class HasKey extends AllOf
         if (!is_null($valueValidator))
             $this->addRule($valueValidator);
     }
+    public function createException()
+    {
+        return new HasKeyException;
+    }
+
 
     public function validate($input)
     {
@@ -33,7 +38,9 @@ class HasKey extends AllOf
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new HasKeyException($input, $this->key);
+            throw $this
+                ->getException()
+                ->setParams($input, $this->key);
         return parent::validate(@$input[$this->key]);
     }
 

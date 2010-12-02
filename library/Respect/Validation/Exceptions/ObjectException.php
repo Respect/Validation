@@ -2,21 +2,11 @@
 
 namespace Respect\Validation\Exceptions;
 
-class ObjectException extends InvalidException
+class ObjectException extends ValidationException
 {
-    const MSG_NOT_OBJECT = 'Object_1';
-    protected $messageTemplates = array(
-        self::MSG_NOT_OBJECT => '%s is not an object'
+    const INVALID_OBJECT= 'Object_1';
+    public static $defaultTemplates = array(
+        self::INVALID_OBJECT => '"%s" is not an object',
     );
-
-    public function __construct($input)
-    {
-        parent::__construct(
-                sprintf(
-                    $this->getMessageTemplate(self::MSG_NOT_OBJECT),
-                    $this->getStringRepresentation($input)
-                )
-        );
-    }
 
 }

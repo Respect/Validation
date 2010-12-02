@@ -2,18 +2,11 @@
 
 namespace Respect\Validation\Exceptions;
 
-class NullValueException extends InvalidException
+class NullValueException extends ValidationException
 {
-    const MSG_NOT_NULL = 'NullValue_1';
-    protected $messageTemplates = array(
-        self::MSG_NOT_NULL => '%s is not null'
+    const INVALID_NULL_VALUE= 'NullValue_1';
+    public static $defaultTemplates = array(
+        self::INVALID_NULL_VALUE => '"%s" is not a null value',
     );
-
-    public function __construct($input)
-    {
-        parent::__construct(
-                sprintf($this->getMessageTemplate(self::MSG_NOT_NULL), $input)
-        );
-    }
-
+    
 }

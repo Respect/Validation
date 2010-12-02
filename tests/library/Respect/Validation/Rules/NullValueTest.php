@@ -18,7 +18,7 @@ class NullValueTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\NullValueException
+     * @expectedException Respect\Validation\Exceptions\ValidationException
      */
     public function testNotNull()
     {

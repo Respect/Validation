@@ -6,7 +6,7 @@ use Respect\Validation\Validatable;
 use Respect\Validation\Validator;
 use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Exceptions\InvalidException;
+use Respect\Validation\Exceptions\ValidationException;
 use Exception;
 
 abstract class AbstractComposite extends AbstractRule
@@ -83,7 +83,7 @@ abstract class AbstractComposite extends AbstractRule
         foreach ($validators as $v)
             try {
                 $v->assert($input);
-            } catch (InvalidException $e) {
+            } catch (ValidationException $e) {
                 $exceptions[] = $e;
             }
         return $exceptions;

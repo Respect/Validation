@@ -20,6 +20,11 @@ class Alnum extends AbstractRule
         $this->additionalChars = $additionalChars;
     }
 
+    public function createException()
+    {
+        return new AlnumException;
+    }
+
     public function validate($input)
     {
         return is_string($input) && preg_match(
@@ -30,8 +35,12 @@ class Alnum extends AbstractRule
 
     public function assert($input)
     {
+        $templateCode = empty($this->additionalChars) ? AlnumException::INVALID_ALNUM : AlnumException::INVALID_ALNUM_CHARS;
         if (!$this->validate($input))
-            throw new AlnumException($input, $this->additionalChars);
+            throw $this
+                ->getException()
+                ->setMessageTemplateFromCode($templateCode)
+                ->setParams($input, $this->additionalChars);
         return true;
     }
 

@@ -35,7 +35,7 @@ class DateTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\DateException
+     * @expectedException Respect\Validation\Exceptions\ValidationException
      */
     public function testDateFormat()
     {
@@ -44,7 +44,7 @@ class DateTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\DateException
+     * @expectedException Respect\Validation\Exceptions\ValidationException
      */
     public function testInvalidDateFormat()
     {

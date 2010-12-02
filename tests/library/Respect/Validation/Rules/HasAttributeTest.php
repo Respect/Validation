@@ -21,7 +21,7 @@ class HasAttributeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\HasAttributeException
+     * @expectedException Respect\Validation\Exceptions\ValidationException
      */
     public function testNotNull()
     {

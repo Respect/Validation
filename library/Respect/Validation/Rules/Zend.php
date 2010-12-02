@@ -5,7 +5,7 @@ namespace Respect\Validation\Rules;
 use ReflectionClass;
 use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Exceptions\CallbackException;
-use Respect\Validation\Exceptions\InvalidException;
+use Respect\Validation\Exceptions\ZendException;
 
 class Zend extends AbstractRule
 {
@@ -25,6 +25,11 @@ class Zend extends AbstractRule
             $this->zendValidator = $zendMirror->newInstance();
     }
 
+    public function createException()
+    {
+        return new ZendException;
+    }
+
     public function validate($input)
     {
         return $this->zendValidator->isValid($input);
@@ -35,9 +40,11 @@ class Zend extends AbstractRule
         if (!$this->validate($input)) {
             $exceptions = array();
             foreach ($this->zendValidator->getMessages() as $m) {
-                $exceptions[] = new InvalidException($m);
+                $exceptions[] = $this->getException()->setParams($m);
             }
-            throw new InvalidException($exceptions);
+            throw $this
+                ->getException()
+                ->setParams($exceptions);
         }
         return true;
     }

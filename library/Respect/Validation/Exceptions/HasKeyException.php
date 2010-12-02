@@ -2,21 +2,13 @@
 
 namespace Respect\Validation\Exceptions;
 
-class HasKeyException extends InvalidException
+class HasKeyException extends ValidationException
 {
-    const MSG_KEY_NOT_PRESENT = 'HasKey_1';
-    protected $messageTemplates = array(
-        self::MSG_KEY_NOT_PRESENT => 'Array %s does not have the key %s'
+    const INVALID_HAS_KEY= 'HasKey_1';
+    const INVALID_HAS_KEY_RELATED = 'HasKey_2';
+    public static $defaultTemplates = array(
+        self::INVALID_HAS_KEY => '"%s" is not present',
+        self::INVALID_HAS_KEY_RELATED => '"%s" is invalid',
     );
-
-    public function __construct($input, $keyName)
-    {
-        parent::__construct(
-                sprintf(
-                    $this->getMessageTemplate(self::MSG_KEY_NOT_PRESENT),
-                    $this->getStringRepresentation($input), $keyName
-                )
-        );
-    }
 
 }

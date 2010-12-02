@@ -40,6 +40,11 @@ class StringLength extends AbstractRule
         }
     }
 
+    public function createException()
+    {
+        return new StringLengthException;
+    }
+
     public function validateMin($input)
     {
         $input = mb_strlen($input);
@@ -62,12 +67,10 @@ class StringLength extends AbstractRule
         $validMin = $this->validateMin($input);
         $validMax = $this->validateMax($input);
         if (!$validMin || !$validMax)
-            throw new StringLengthException(
-                $input,
-                $validMin,
-                $validMax,
-                $this->min,
-                $this->max
+            throw $this
+                ->getException()
+                ->setParams(
+                    $input, $validMin, $validMax, $this->min, $this->max
             );
         return true;
     }

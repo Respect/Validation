@@ -2,24 +2,13 @@
 
 namespace Respect\Validation\Exceptions;
 
-class AlphaException extends InvalidException
+class AlphaException extends ValidationException
 {
-    const MSG_NOT_ALPHA = 'Alpha_1';
-    const MSG_NOT_ALPHA_ADDITIONAL = 'Alpha_2';
-    protected $messageTemplates = array(
-        self::MSG_NOT_ALPHA => '"%s" does not contains only letters',
-        self::MSG_NOT_ALPHA_ADDITIONAL => '"%s" does not contains only letters (including "%s")'
+    const INVALID_ALPHA = 'Alpha_1';
+    const INVALID_ALPHA_CHARS = 'Alpha_2';
+    public static $defaultTemplates = array(
+        self::INVALID_ALPHA => '"%s" does not contain only letters',
+        self::INVALID_ALPHA_CHARS => '"%s" does not contain only letters and "%s"'
     );
-
-    public function __construct($input, $additionalChars='')
-    {
-        $code = empty($additionalChars) ? self::MSG_NOT_ALPHA : self::MSG_NOT_ALPHA_ADDITIONAL;
-        parent::__construct(
-                sprintf(
-                    $this->getMessageTemplate($code),
-                    $this->getStringRepresentation($input), $additionalChars
-                )
-        );
-    }
 
 }

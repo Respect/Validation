@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class HasAttributeException extends ValidationException
+class HasOptionalAttributeException extends ValidationException
 {
     const INVALID_HAS_ATTRIBUTE= 'HasAttribute_1';
     const INVALID_HAS_ATTRIBUTE_RELATED = 'HasAttribute_2';

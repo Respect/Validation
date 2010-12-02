@@ -10,6 +10,11 @@ class Instance extends AbstractRule
 
     public $instance;
 
+    public function createException()
+    {
+        return new InstanceException;
+    }
+
     public function __construct($instance)
     {
         $this->instance = $instance;
@@ -23,7 +28,9 @@ class Instance extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new InstanceException($input, $this->instance);
+            throw $this
+                ->getException()
+                ->setParams($input, $this->instance);
         return true;
     }
 

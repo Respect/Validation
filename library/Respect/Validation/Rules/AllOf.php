@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\InvalidException;
+use Respect\Validation\Exceptions\AllOfException;
 
 class AllOf extends AbstractComposite
 {
@@ -18,18 +18,26 @@ class AllOf extends AbstractComposite
             ));
     }
 
+    public function createException()
+    {
+        return new AllOfException(AllOfException::INVALID_ALLOF);
+    }
+
     public function assert($input)
     {
         $exceptions = $this->validateRules($input);
         if (!empty($exceptions))
-            throw new InvalidException($exceptions);
+            throw $this
+                ->getException()
+                ->setParams(count($exceptions), count($this->rules))
+                ->setRelated($exceptions);
         return true;
     }
 
     public function check($input)
     {
         foreach ($this->getRules() as $v)
-            $v->assert($input);
+            $v->check($input);
     }
 
 }

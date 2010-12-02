@@ -24,7 +24,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\InvalidException
+     * @expectedException Respect\Validation\Exceptions\ValidationException
      */
     public function testSimpleNot()
     {
@@ -39,7 +39,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\InvalidException
+     * @expectedException Respect\Validation\Exceptions\ValidationException
      */
     public function testParamsNot()
     {

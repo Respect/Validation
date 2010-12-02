@@ -2,12 +2,12 @@
 
 namespace Respect\Validation\Rules;
 
-use \Exception;
 use Respect\Validation\Validator;
 use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Exceptions\BetweenException;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Validatable;
+use Respect\Validation\Exceptions\ValidationException;
 
 class Between extends AbstractRule
 {
@@ -29,11 +29,16 @@ class Between extends AbstractRule
         try {
             $type->assert($min);
             $type->assert($max);
-        } catch (Exception $e) {
+        } catch (ValidationException $e) {
             throw new ComponentException(
                 $e->getMessage()
             );
         }
+    }
+
+    public function createException()
+    {
+        return new BetweenException;
     }
 
     public function validateMin($input)
@@ -57,16 +62,23 @@ class Between extends AbstractRule
     {
         if (!is_null($this->type))
             $this->type->assert($input);
-        $validMin = $this->validateMin($input);
-        $validMax = $this->validateMax($input);
-        if (!$validMin || !$validMax)
-            throw new BetweenException(
-                $input,
-                $validMin,
-                $validMax,
-                $this->min,
-                $this->max
-            );
+        $exceptions = array();
+        if (!$this->validateMin($input))
+            $exceptions[] = $this
+                ->createException()
+                ->setMessageTemplateFromCode(BetweenException::INVALID_LESS)
+                ->setParams($input, $this->min);
+        if (!$this->validateMax($input))
+            $exceptions[] = $this
+                ->createException()
+                ->setMessageTemplateFromCode(BetweenException::INVALID_MORE)
+                ->setParams($input, $this->max);
+        if (!empty($exceptions))
+            throw $this
+                ->createException()
+                ->setMessageTemplateFromCode(BetweenException::INVALID_BOUNDS)
+                ->setParams($input)
+                ->setRelated($exceptions);
         return true;
     }
 

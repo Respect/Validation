@@ -13,6 +13,11 @@ class Ip extends AbstractRule
         $this->options = $options;
     }
 
+    public function createException()
+    {
+        return new IpException;
+    }
+
     public function validate($input)
     {
         return filter_var(
@@ -23,7 +28,9 @@ class Ip extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw new IpException($input);
+            throw $this
+                ->getException()
+                ->setParams($input);
         return true;
     }
 
