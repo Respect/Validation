@@ -20,16 +20,10 @@ class AtLeast extends AbstractComposite
         $validators = $this->getRules();
         $exceptions = $this->validateRules($input);
         if ($this->howMany > (count($validators) - count($exceptions)))
-            throw $this
-                ->getException()
-                ->configure($input, count($exceptions), $this->howMany)
-                ->setRelated($exceptions);
+            throw $this->getException() ? : AtLeastException::create()
+                    ->configure($input, count($exceptions), $this->howMany)
+                    ->setRelated($exceptions);
         return true;
-    }
-
-    public function createException()
-    {
-        return new AtLeastException;
     }
 
     public function validate($input)
@@ -41,7 +35,8 @@ class AtLeast extends AbstractComposite
                 $v->check($input);
                 $pass++;
             } catch (ValidationException $e) {
-                
+                //no need to do anything here. We just wanna count 
+                //how many rules passed
             }
             if ($pass >= $this->howMany)
                 return true;
@@ -64,10 +59,9 @@ class AtLeast extends AbstractComposite
             if ($pass >= $this->howMany)
                 return true;
             if (count($exceptions) > (count($validators) - $this->howMany))
-                throw $this
-                    ->getException()
-                    ->configure($input, count($exceptions), $this->howMany)
-                    ->setRelated($exceptions);
+                throw $this->getException() ? : AtLeastException::create()
+                        ->setRelated($exceptions)
+                        ->configure($input, count($exceptions), $this->howMany);
         }
         return false;
     }

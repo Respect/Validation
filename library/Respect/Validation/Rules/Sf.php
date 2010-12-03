@@ -28,11 +28,6 @@ class Sf extends AbstractRule
             $this->constraint = $sfMirrorConstraint->newInstance();
     }
 
-    public function createException()
-    {
-        return new SfException;
-    }
-
     public function validate($input)
     {
         $validatorName = 'Symfony\Component\Validator\Constraints\\'
@@ -51,8 +46,7 @@ class Sf extends AbstractRule
                     '',
                     $input
             );
-            throw $this
-                ->getException()
+            throw $this->getException() ? :  SfException::create()
                 ->configure($violation->getMessage());
         }
         return true;

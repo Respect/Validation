@@ -68,24 +68,25 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 
         $validator = Validator::object()
             ->oneOf(
-                Validator::hasAttribute('screen_name',
-                    Validator::alnum('_')->noWhitespace()),
-                Validator::hasAttribute('id',
-                    Validator::numeric()
-                    ->between(1, 15))
+                Validator::hasAttribute(
+                    'screen_name', Validator::alnum('_')->noWhitespace()
+                ),
+                Validator::hasAttribute(
+                    'id', Validator::numeric()->between(1, 15)
+                )
             )
             ->hasAttribute('created_at', Validator::date())
             ->hasAttribute('name', $v160 = Validator::stringLength(1, 160))
             ->hasAttribute('sex',
-                Validator::allOf(
+                Validator::oneOf(
                     Validator::hexa(), Validator::float(), Validator::numeric()
                 ))
             ->hasOptionalAttribute('description', $v160)
             ->hasOptionalAttribute('location', $v160);
         try {
             $validator->assert($target);
-        } catch (InvalidException $e) {
-            echo $e->message();
+        } catch (Exceptions\ValidationException $e) {
+            echo $e->getMessage();
         }
     }
 

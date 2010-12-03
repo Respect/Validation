@@ -7,6 +7,7 @@ use Respect\Validation\Exceptions\ObjectException;
 
 class Object extends AbstractRule
 {
+
     public function createException()
     {
         return new ObjectException;
@@ -20,8 +21,7 @@ class Object extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this
-                ->getException()
+            throw $this->getException() ? :  ObjectException::create()
                 ->configure($input);
         return true;
     }

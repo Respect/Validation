@@ -17,10 +17,9 @@ class OneOf extends AbstractComposite
         $validators = $this->getRules();
         $exceptions = $this->validateRules($input);
         if (count($exceptions) === count($validators))
-            throw $this
-                ->getException()
-                ->configure(count($validators))
-                ->setRelated($exceptions);
+            throw $this->getException() ? : OneOfException::create()
+                    ->configure($input, count($exceptions), count($validators))
+                    ->setRelated($exceptions);
         return true;
     }
 

@@ -30,16 +30,10 @@ class HasOptionalAttribute extends HasAttribute
         } catch (ReflectionException $e) {
             return true;
         } catch (ValidationException $e) {
-            throw $this
-                ->getException()
-                ->configure($input, $this->attribute);
+            throw $this->getException() ? : HasOptionalAttributeException::create()
+                    ->configure($input, $this->attribute);
         }
         return true;
-    }
-
-    public function createException()
-    {
-        return new HasOptionalAttributeException;
     }
 
 }

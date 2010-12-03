@@ -7,11 +7,6 @@ use Respect\Validation\Exceptions\FloatException;
 
 class Float extends AbstractRule
 {
-    public function createException()
-    {
-        return new FloatException;
-    }
-
 
     public function validate($input)
     {
@@ -21,8 +16,7 @@ class Float extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this
-                ->getException()
+            throw $this->getException() ? :  FloatException::create()
                 ->configure($input);
         return true;
     }

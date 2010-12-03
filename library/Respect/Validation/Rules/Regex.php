@@ -28,8 +28,7 @@ class Regex extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this
-                ->getException()
+            throw $this->getException() ? :  RegexException::create()
                 ->configure($input, $this->regex);
         return true;
     }

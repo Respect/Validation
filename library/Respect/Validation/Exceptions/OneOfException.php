@@ -2,11 +2,12 @@
 
 namespace Respect\Validation\Exceptions;
 
-class OneOfException extends ValidationException
+class OneOfException extends AbstractCompositeException
 {
-    const INVALID_ONE_OF= 'OneOf_1';
+
     public static $defaultTemplates = array(
-        self::INVALID_ONE_OF => 'None of the %d rules passed',
+        self::INVALID_NONE => 'None of the %3$d rules passed',
+        self::INVALID_SOME => '%2$d of the %3$d rules did not passed',
     );
 
 }

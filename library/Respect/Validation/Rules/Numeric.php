@@ -21,8 +21,7 @@ class Numeric extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this
-                ->getException()
+            throw $this->getException() ? :  NumericException::create()
                 ->configure($input);
         return true;
     }

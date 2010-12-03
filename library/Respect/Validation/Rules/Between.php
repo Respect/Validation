@@ -36,11 +36,6 @@ class Between extends AbstractRule
         }
     }
 
-    public function createException()
-    {
-        return new BetweenException;
-    }
-
     public function validateMin($input)
     {
         return is_null($this->min) || $input >= $this->min;
@@ -65,9 +60,10 @@ class Between extends AbstractRule
         $validMin = $this->validateMin($input);
         $validMax = $this->validateMax($input);
         if (!$validMin || !$validMax)
-            throw $this
-                ->getException()
-                ->configure($input, $this->min, $this->max, $validMin, $validMax);
+            throw $this->getException() ? : BetweenException::create()
+                    ->configure(
+                        $input, $this->min, $this->max, $validMin, $validMax
+                    );
         return true;
     }
 

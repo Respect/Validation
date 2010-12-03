@@ -8,11 +8,6 @@ use Respect\Validation\Exceptions\DigitsException;
 class Digits extends AbstractRule
 {
 
-    public function createException()
-    {
-        return new DigitsException;
-    }
-
     public function validate($input)
     {
         return ctype_digit((string) $input);
@@ -21,9 +16,7 @@ class Digits extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this
-                ->getException()
-                ->configure($input);
+            throw $this->getException() ? : DigitsException::create($input);
         return true;
     }
 

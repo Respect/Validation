@@ -33,16 +33,10 @@ class Date extends AbstractRule
             return date($this->format, strtotime($input)) == $input;
     }
 
-    public function createException()
-    {
-        return new DateException;
-    }
-
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this
-                ->getException()
+            throw $this->getException() ? :  DateException::create()
                 ->configure($input, $this->format);
         return true;
     }

@@ -4,9 +4,9 @@ namespace Respect\Validation\Exceptions;
 
 class SfException extends ValidationException
 {
-    const INVALID_DF= 'DF_1';
+    const INVALID_SF= 'Sf_1';
     public static $defaultTemplates = array(
-        self::INVALID_DF => '%s',
+        self::INVALID_SF => '%s',
     );
 
 }

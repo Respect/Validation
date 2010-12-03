@@ -28,8 +28,7 @@ class Instance extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this
-                ->getException()
+            throw $this->getException() ? :  InstanceException::create()
                 ->configure($input, $this->instance);
         return true;
     }

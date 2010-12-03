@@ -7,6 +7,7 @@ use Respect\Validation\Exceptions\HasKeyException;
 use Respect\Validation\Rules\All;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Validator;
+use Respect\Validation\Exceptions\ValidationException;
 
 class HasKey extends AllOf
 {
@@ -23,11 +24,6 @@ class HasKey extends AllOf
         if (!is_null($valueValidator))
             $this->addRule($valueValidator);
     }
-    public function createException()
-    {
-        return new HasKeyException;
-    }
-
 
     public function validate($input)
     {
@@ -37,11 +33,18 @@ class HasKey extends AllOf
 
     public function assert($input)
     {
-        if (!$this->validate($input))
-            throw $this
-                ->getException()
-                ->configure($input, $this->key);
-        return parent::validate(@$input[$this->key]);
+        $keyExists = array_key_exists($this->key, $input);
+        try {
+            parent::assert(@$input[$this->key]);
+        } catch (ValidationException $e) {
+            throw $this->exception ? : HasKeyException::create()
+                    ->configure($input, $this->key, $keyExists)
+                    ->addRelated($e);
+        }
+        if (!$keyExists)
+            throw $this->exception ? : HasKeyException::create()
+                    ->configure($input, $this->key, false);
+        return true;
     }
 
     public function check($input)

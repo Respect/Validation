@@ -21,8 +21,7 @@ class NoWhitespace extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this
-                ->getException()
+            throw $this->getException() ? :  NoWhitespaceException::create()
                 ->configure($input);
         return true;
     }

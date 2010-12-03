@@ -11,4 +11,12 @@ class AlphaException extends ValidationException
         self::INVALID_ALPHA_CHARS => '"%s" does not contain only letters and "%s"'
     );
 
+    public function chooseTemplate($input, $additionalCharacters=null)
+    {
+        if (empty($additionalCharacters))
+            return self::INVALID_ALPHA;
+        else
+            return self::INVALID_ALPHA_CHARS;
+    }
+
 }

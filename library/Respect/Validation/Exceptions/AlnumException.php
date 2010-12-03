@@ -11,4 +11,12 @@ class AlnumException extends ValidationException
         self::INVALID_ALNUM_CHARS => '"%s" does not contain only letters, digits and "%s"'
     );
 
+    public function chooseTemplate($input, $additionalCharacters=null)
+    {
+        if (empty($additionalCharacters))
+            return self::INVALID_ALNUM;
+        else
+            return self::INVALID_ALNUM_CHARS;
+    }
+
 }

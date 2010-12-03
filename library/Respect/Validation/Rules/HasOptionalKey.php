@@ -14,9 +14,4 @@ class HasOptionalKey extends HasKey
         || parent::validate($input[$this->key]);
     }
 
-    public function createException()
-    {
-        return new HasOptionalKeyException;
-    }
-
 }

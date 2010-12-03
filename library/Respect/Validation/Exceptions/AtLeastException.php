@@ -2,11 +2,12 @@
 
 namespace Respect\Validation\Exceptions;
 
-class AtLeastException extends ValidationException
+class AtLeastException extends AbstractCompositeException
 {
-    const INVALID_ATLEAST = 'AtLeast_1';
+
     public static $defaultTemplates = array(
-        self::INVALID_ATLEAST => '%d of the %d mandatory rules are invalid',
+        self::INVALID_NONE => 'None of %3$d required rules passed',
+        self::INVALID_SOME => '%2$d of %3$d required rules did not passed',
     );
 
 }

@@ -26,11 +26,6 @@ class HasAttribute extends AllOf
             $this->addRule($attributeValidator);
     }
 
-    public function createException()
-    {
-        return new HasAttributeException(HasAttributeException::INVALID_HAS_ATTRIBUTE);
-    }
-
     protected function getAttributeValue($input)
     {
         $propertyMirror = new ReflectionProperty($input, $this->attribute);
@@ -56,13 +51,12 @@ class HasAttribute extends AllOf
                     $this->getAttributeValue($input)
             );
         } catch (ReflectionException $e) {
-            throw $this
-                ->getException()
-                ->configure($input, $this->attribute);
+            throw $this->getException() ? : HasAttributeException::create()
+                    ->configure($input, $this->attribute, false);
         } catch (ValidationException $e) {
-            throw $this
-                ->getException()
-                ->configure($input, $this->attribute);
+            throw $this->getException() ? : HasAttributeException::create()
+                    ->addRelated($e)
+                    ->configure($input, $this->attribute, true);
         }
         return true;
     }

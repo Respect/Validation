@@ -18,19 +18,15 @@ class AllOf extends AbstractComposite
             ));
     }
 
-    public function createException()
-    {
-        return new AllOfException;
-    }
-
     public function assert($input)
     {
         $exceptions = $this->validateRules($input);
         if (!empty($exceptions))
-            throw $this
-                ->getException()
-                ->configure($input, count($exceptions), count($this->rules))
-                ->setRelated($exceptions);
+            throw $this->getException() ? : AllOfException::create()
+                    ->setRelated($exceptions)
+                    ->configure(
+                        $input, count($exceptions), count($this->rules)
+                    );
         return true;
     }
 

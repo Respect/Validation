@@ -28,8 +28,7 @@ class Ip extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this
-                ->getException()
+            throw $this->getException() ? :  IpException::create()
                 ->configure($input);
         return true;
     }

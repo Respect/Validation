@@ -15,16 +15,14 @@ abstract class AbstractRule implements Validatable
         return $this->validate($input);
     }
 
-    public function createException()
-    {
-        return new ValidationException;
-    }
-
     public function getException()
     {
-        if (is_null($this->exception))
-            $this->exception = $this->createException();
         return $this->exception;
+    }
+
+    public function setException()
+    {
+        
     }
 
 }

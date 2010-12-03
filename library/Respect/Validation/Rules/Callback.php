@@ -20,11 +20,6 @@ class Callback extends AbstractRule
         $this->callback = $callback;
     }
 
-    public function createException()
-    {
-        return new CallbackException;
-    }
-
     public function validate($input)
     {
         return call_user_func($this->callback, $input);
@@ -33,8 +28,7 @@ class Callback extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this
-                ->getException()
+            throw $this->getException() ? :  CallbackException::create()
                 ->configure($input, $this->callback);
         return true;
     }

@@ -40,11 +40,10 @@ class Zend extends AbstractRule
         if (!$this->validate($input)) {
             $exceptions = array();
             foreach ($this->zendValidator->getMessages() as $m) {
-                $exceptions[] = $this->getException()->configure($m);
+                $exceptions[] = ZendException::create()->configure($m);
             }
-            throw $this
-                ->getException()
-                ->configure($exceptions);
+            throw $this->getException() ? : ZendException::create()
+                    ->configure($exceptions);
         }
         return true;
     }

@@ -2,11 +2,12 @@
 
 namespace Respect\Validation\Exceptions;
 
-class MostOfException extends ValidationException
+class MostOfException extends AbstractCompositeException
 {
-    const INVALID_MOST= 'Most_1';
+
     public static $defaultTemplates = array(
-        self::INVALID_MOST => '%d of the %d required rules did not passed',
+        self::INVALID_NONE => 'None of %3$d required rules passed',
+        self::INVALID_SOME => '%2$d of %3$d required rules did not passed',
     );
 
 }

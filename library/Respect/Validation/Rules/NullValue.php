@@ -21,8 +21,7 @@ class NullValue extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this
-                ->getException()
+            throw $this->getException() ? :  NullValueException::create()
                 ->configure($input);
         return true;
     }
