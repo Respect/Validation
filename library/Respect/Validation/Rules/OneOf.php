@@ -19,7 +19,7 @@ class OneOf extends AbstractComposite
         if (count($exceptions) === count($validators))
             throw $this
                 ->getException()
-                ->setParams(count($validators))
+                ->configure(count($validators))
                 ->setRelated($exceptions);
         return true;
     }

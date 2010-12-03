@@ -8,93 +8,56 @@ class ValidationException extends InvalidArgumentException
 {
     const INVALID = 'Validation_1';
     public static $defaultTemplates = array(
-        self::INVALID => 'Data validation failed'
+        self::INVALID => 'Data validation failed: "%s"'
     );
-    protected $messageTemplate = 'Data validation failed';
+    protected $messageTemplate;
     protected $related = array();
     protected $params = array();
 
-    public function __construct($code=null)
+    public function configure()
     {
-        if (!is_null($code))
-            $this->setMessageTemplateFromCode($code);
-    }
-
-    public function getMessageTemplate()
-    {
-        return $this->messageTemplate;
-    }
-
-    public function setMessageTemplate($messageTemplate)
-    {
-        $this->messageTemplate = $messageTemplate;
-        return $this;
-    }
-
-    public function setMessageTemplateFromCode($code)
-    {
-        $this->setMessageTemplate($this->getTemplate($code));
-        return $this;
-    }
-
-    public function getTemplate($code)
-    {
-        return @static::$defaultTemplates[$code];
-    }
-
-    public function setParams()
-    {
-        $messageParameters = func_get_args();
-        foreach ($messageParameters as &$par)
-            $par = static::stringify($par);
-        $this->params = $messageParameters;
+        $this->params = array_map(
+            function($mixed) {
+                return is_object($mixed) ? get_class($mixed) : strval($mixed);
+            }, func_get_args()
+        );
+        $this->useTemplate($this->chooseTemplate($this->params));
         $this->renderMessage();
         return $this;
+    }
+
+    public function chooseTemplate()
+    {
+        return array_shift(array_keys(static::$defaultTemplates));
+    }
+
+    public function renderMessage()
+    {
+        $sprintfParams = $this->params;
+        array_unshift($sprintfParams, $this->messageTemplate);
+        $this->message = call_user_func_array('sprintf', $sprintfParams);
     }
 
     public function setRelated(array $relatedExceptions)
     {
-        foreach ($relatedExceptions as $e)
-            $this->addRelated($e, false);
-        $this->renderMessage();
+        foreach ($relatedExceptions as $related)
+            $this->addRelated($related);
         return $this;
     }
 
-    public function getRelated()
+    public function addRelated(ValidationException $related)
     {
-        return $this->related;
+        $this->related[] = $related;
     }
 
-    public function addRelated(ValidationException $relatedException,
-        $render=true)
+    public function useTemplate($code)
     {
-        $this->related[] = $relatedException;
-        if ($render)
-            $this->renderMessage();
-        return $this;
+        $this->messageTemplate = @static::$defaultTemplates[$code];
     }
 
-    protected function renderMessage()
+    public function useParams($params)
     {
-        $relatedMessages = array();
-        $params = $this->params;
-        array_unshift($params, $this->messageTemplate);
-        $this->message = @call_user_func_array('sprintf', $params);
-        foreach ($this->related as $n => $related) {
-            $relatedMessage = "-" . $related->getMessage();
-            $relatedMessage = str_replace("\n", "\n    ", $relatedMessage);
-            $relatedMessages[] = $relatedMessage;
-        }
-        if (!empty($relatedMessages))
-            $this->message .= "\n" . implode("\n", $relatedMessages);
-    }
-
-    protected static function stringify($mixed)
-    {
-        if (is_object($mixed))
-            return get_class($mixed);
-        else
-            return strval($mixed);
+        
     }
 
 }

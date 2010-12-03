@@ -53,7 +53,7 @@ class Sf extends AbstractRule
             );
             throw $this
                 ->getException()
-                ->setParams($violation->getMessage());
+                ->configure($violation->getMessage());
         }
         return true;
     }

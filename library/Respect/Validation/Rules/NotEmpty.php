@@ -25,7 +25,7 @@ class NotEmpty extends AbstractRule
         if (!$this->validate($input))
             throw $this
                 ->getException()
-                ->setParams();
+                ->configure($input);
         return true;
     }
 

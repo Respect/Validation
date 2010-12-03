@@ -40,7 +40,7 @@ class HasKey extends AllOf
         if (!$this->validate($input))
             throw $this
                 ->getException()
-                ->setParams($input, $this->key);
+                ->configure($input, $this->key);
         return parent::validate(@$input[$this->key]);
     }
 

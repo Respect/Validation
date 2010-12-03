@@ -30,7 +30,7 @@ class Instance extends AbstractRule
         if (!$this->validate($input))
             throw $this
                 ->getException()
-                ->setParams($input, $this->instance);
+                ->configure($input, $this->instance);
         return true;
     }
 

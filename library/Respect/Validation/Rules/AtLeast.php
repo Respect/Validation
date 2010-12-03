@@ -22,14 +22,14 @@ class AtLeast extends AbstractComposite
         if ($this->howMany > (count($validators) - count($exceptions)))
             throw $this
                 ->getException()
-                ->setParams(count($exceptions), $this->howMany)
+                ->configure($input, count($exceptions), $this->howMany)
                 ->setRelated($exceptions);
         return true;
     }
 
     public function createException()
     {
-        return new AtLeastException(AtLeastException::INVALID_ATLEAST);
+        return new AtLeastException;
     }
 
     public function validate($input)
@@ -66,7 +66,7 @@ class AtLeast extends AbstractComposite
             if (count($exceptions) > (count($validators) - $this->howMany))
                 throw $this
                     ->getException()
-                    ->setParams(count($exceptions), $this->howMany)
+                    ->configure($input, count($exceptions), $this->howMany)
                     ->setRelated($exceptions);
         }
         return false;

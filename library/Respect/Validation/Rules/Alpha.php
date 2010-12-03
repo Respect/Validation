@@ -35,12 +35,10 @@ class Alpha extends AbstractRule
 
     public function assert($input)
     {
-        $templateCode = empty($this->additionalChars) ? AlphaException::INVALID_ALPHA : AlnumException::INVALID_ALPHA_CHARS;
         if (!$this->validate($input))
             throw $this
                 ->getException()
-                ->setMessageTemplateFromCode($templateCode)
-                ->setParams($input, $this->additionalChars);
+                ->configure($input, $this->additionalChars);
         return true;
     }
 

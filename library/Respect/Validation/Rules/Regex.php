@@ -30,7 +30,7 @@ class Regex extends AbstractRule
         if (!$this->validate($input))
             throw $this
                 ->getException()
-                ->setParams($input, $this->regex);
+                ->configure($input, $this->regex);
         return true;
     }
 

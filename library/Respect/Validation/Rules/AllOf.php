@@ -20,7 +20,7 @@ class AllOf extends AbstractComposite
 
     public function createException()
     {
-        return new AllOfException(AllOfException::INVALID_ALLOF);
+        return new AllOfException;
     }
 
     public function assert($input)
@@ -29,7 +29,7 @@ class AllOf extends AbstractComposite
         if (!empty($exceptions))
             throw $this
                 ->getException()
-                ->setParams(count($exceptions), count($this->rules))
+                ->configure($input, count($exceptions), count($this->rules))
                 ->setRelated($exceptions);
         return true;
     }

@@ -2,12 +2,19 @@
 
 namespace Respect\Validation\Rules;
 
-use DateTime;
-use Respect\Validation\Rules\AbstractDate;
 use Respect\Validation\Exceptions\DateException;
+use DateTime;
+use Respect\Validation\Rules\AbstractRule;
 
-class Date extends AbstractDate
+class Date extends AbstractRule
 {
+    const FORMAT_DEFAULT = DateTime::RFC1036;
+    protected $format = self::FORMAT_DEFAULT;
+
+    protected function formatDate(DateTime $date)
+    {
+        return $date->format($this->format);
+    }
 
     public function __construct($format=null)
     {
@@ -25,18 +32,18 @@ class Date extends AbstractDate
         else
             return date($this->format, strtotime($input)) == $input;
     }
+
     public function createException()
     {
         return new DateException;
     }
-
 
     public function assert($input)
     {
         if (!$this->validate($input))
             throw $this
                 ->getException()
-                ->setParams($input, $this->format);
+                ->configure($input, $this->format);
         return true;
     }
 

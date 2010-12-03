@@ -23,7 +23,7 @@ class Float extends AbstractRule
         if (!$this->validate($input))
             throw $this
                 ->getException()
-                ->setParams($input);
+                ->configure($input);
         return true;
     }
 

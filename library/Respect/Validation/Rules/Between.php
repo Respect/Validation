@@ -62,23 +62,12 @@ class Between extends AbstractRule
     {
         if (!is_null($this->type))
             $this->type->assert($input);
-        $exceptions = array();
-        if (!$this->validateMin($input))
-            $exceptions[] = $this
-                ->createException()
-                ->setMessageTemplateFromCode(BetweenException::INVALID_LESS)
-                ->setParams($input, $this->min);
-        if (!$this->validateMax($input))
-            $exceptions[] = $this
-                ->createException()
-                ->setMessageTemplateFromCode(BetweenException::INVALID_MORE)
-                ->setParams($input, $this->max);
-        if (!empty($exceptions))
+        $validMin = $this->validateMin($input);
+        $validMax = $this->validateMax($input);
+        if (!$validMin || !$validMax)
             throw $this
-                ->createException()
-                ->setMessageTemplateFromCode(BetweenException::INVALID_BOUNDS)
-                ->setParams($input)
-                ->setRelated($exceptions);
+                ->getException()
+                ->configure($input, $this->min, $this->max, $validMin, $validMax);
         return true;
     }
 

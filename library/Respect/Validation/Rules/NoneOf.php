@@ -6,6 +6,7 @@ use Respect\Validation\Exceptions\NoneOfException;
 
 class NoneOf extends AbstractComposite
 {
+
     public function createException()
     {
         return new NoneOfException;
@@ -25,9 +26,12 @@ class NoneOf extends AbstractComposite
     public function assert($input)
     {
         $exceptions = $this->validateRules($input);
-        if (count($this->getRules()) !== count($exceptions))
+        $numRules = count($this->getRules());
+        $numExceptions = count($exceptions);
+        if ($numRules !== $numExceptions)
             throw $this
                 ->getException()
+                ->configure($input, $numRules, $numExceptions)
                 ->setRelated($exceptions);
         return true;
     }

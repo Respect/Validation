@@ -69,7 +69,7 @@ class StringLength extends AbstractRule
         if (!$validMin || !$validMax)
             throw $this
                 ->getException()
-                ->setParams(
+                ->configure(
                     $input, $validMin, $validMax, $this->min, $this->max
             );
         return true;

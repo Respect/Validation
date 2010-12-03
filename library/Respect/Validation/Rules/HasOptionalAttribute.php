@@ -32,7 +32,7 @@ class HasOptionalAttribute extends HasAttribute
         } catch (ValidationException $e) {
             throw $this
                 ->getException()
-                ->setParams($input, $this->attribute);
+                ->configure($input, $this->attribute);
         }
         return true;
     }

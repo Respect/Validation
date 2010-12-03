@@ -58,12 +58,11 @@ class HasAttribute extends AllOf
         } catch (ReflectionException $e) {
             throw $this
                 ->getException()
-                ->setParams($this->attribute);
+                ->configure($input, $this->attribute);
         } catch (ValidationException $e) {
             throw $this
                 ->getException()
-                ->setMessageTemplateFromCode(HasAttributeException::INVALID_HAS_ATTRIBUTE_RELATED)
-                ->setParams($this->attribute);
+                ->configure($input, $this->attribute);
         }
         return true;
     }
