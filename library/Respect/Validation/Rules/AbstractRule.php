@@ -2,8 +2,8 @@
 
 namespace Respect\Validation\Rules;
 
+use Exception;
 use Respect\Validation\Validatable;
-use Respect\Validation\Exceptions\ValidationException;
 
 abstract class AbstractRule implements Validatable
 {
@@ -20,9 +20,9 @@ abstract class AbstractRule implements Validatable
         return $this->exception;
     }
 
-    public function setException()
+    public function setException(Exception $e)
     {
-        
+        $this->exception = $e;
     }
 
 }

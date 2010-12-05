@@ -2,12 +2,11 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validatable;
+use Exception;
 use Respect\Validation\Validator;
-use Respect\Validation\Rules\AbstractRule;
+use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
-use Exception;
 
 abstract class AbstractComposite extends AbstractRule
 {

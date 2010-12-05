@@ -2,21 +2,16 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validator;
-use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Exceptions\BetweenException;
 use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\ValidationException;
 
-class Between extends AbstractRule
+class Between extends AllOf
 {
 
-    public function __construct($min=null, $max=null, Validatable $type=null)
+    public function __construct($min=null, $max=null)
     {
         $this->min = $min;
-        $this->max = $max;
-        $this->type = $type;
         if (!is_null($min) && !is_null($max) && $min > $max)
             throw new ComponentException(
                 sprintf(
@@ -24,46 +19,21 @@ class Between extends AbstractRule
                     $this->max
                 )
             );
-        if (is_null($type))
-            return;
-        try {
-            $type->assert($min);
-            $type->assert($max);
-        } catch (ValidationException $e) {
-            throw new ComponentException(
-                $e->getMessage()
-            );
-        }
-    }
-
-    public function validateMin($input)
-    {
-        return is_null($this->min) || $input >= $this->min;
-    }
-
-    public function validateMax($input)
-    {
-        return is_null($this->max) || $input <= $this->max;
-    }
-
-    public function validate($input)
-    {
-        return (is_null($this->type) || $this->type->validate($input))
-        && $this->validateMin($input)
-        && $this->validateMax($input);
+        if (!is_null($min))
+            $this->addRule(new Min($min));
+        if (!is_null($max))
+            $this->addRule(new Max($max));
     }
 
     public function assert($input)
     {
-        if (!is_null($this->type))
-            $this->type->assert($input);
-        $validMin = $this->validateMin($input);
-        $validMax = $this->validateMax($input);
-        if (!$validMin || !$validMax)
+        try {
+            parent::assert($input);
+        } catch (ValidationException $e) {
             throw $this->getException() ? : BetweenException::create()
-                    ->configure(
-                        $input, $this->min, $this->max, $validMin, $validMax
-                    );
+                    ->addRelated($e)
+                    ->configure($input);
+        }
         return true;
     }
 

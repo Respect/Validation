@@ -30,7 +30,7 @@ class NoneOf extends AbstractComposite
         $numExceptions = count($exceptions);
         if ($numRules !== $numExceptions)
             throw $this->getException() ? : NoneOfException::create()
-                    ->configure($input, $numExceptions, $numRules)
+                    ->configure($input, $numExceptions, 0, $numRules)
                     ->setRelated($exceptions);
         return true;
     }

@@ -16,8 +16,8 @@ class Float extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this->getException() ? :  FloatException::create()
-                ->configure($input);
+            throw $this->getException() ? : FloatException::create()
+                    ->configure($input);
         return true;
     }
 

@@ -17,7 +17,7 @@ class HasAttribute extends AllOf
 
     public function __construct($attribute, Validatable $attributeValidator=null)
     {
-        if (!is_string($attribute))
+        if (!is_string($attribute) || empty($attribute))
             throw new ComponentException(
                 'Invalid attribute name'
             );

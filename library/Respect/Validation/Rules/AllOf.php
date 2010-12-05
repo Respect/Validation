@@ -10,22 +10,24 @@ class AllOf extends AbstractComposite
     public function validate($input)
     {
         $validators = $this->getRules();
-        return count($validators) === count(array_filter(
-                $validators,
-                function($v) use($input) {
-                    return $v->validate($input);
-                }
-            ));
+        $passedValidators = array_filter(
+            $validators,
+            function($v) use($input) {
+                return $v->validate($input);
+            }
+        );
+        return count($validators) === count($passedValidators);
     }
 
     public function assert($input)
     {
         $exceptions = $this->validateRules($input);
+        $numRules = count($this->rules);
         if (!empty($exceptions))
             throw $this->getException() ? : AllOfException::create()
                     ->setRelated($exceptions)
                     ->configure(
-                        $input, count($exceptions), count($this->rules)
+                        $input, count($exceptions), $numRules, $numRules
                     );
         return true;
     }

@@ -10,6 +10,7 @@ class Alpha extends AbstractRule
 {
 
     protected $additionalChars = '';
+    protected $stringFormat = '#^[a-zA-Z]+$#';
 
     public function __construct($additionalChars='')
     {
@@ -23,7 +24,7 @@ class Alpha extends AbstractRule
     public function validate($input)
     {
         return is_string($input) && preg_match(
-            "#^[a-zA-Z]+$#",
+            $this->stringFormat,
             str_replace(str_split($this->additionalChars), '', $input)
         );
     }
@@ -31,8 +32,8 @@ class Alpha extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this->getException() ? :  AlphaException::create()
-                ->configure($input, $this->additionalChars);
+            throw $this->getException() ? : AlphaException::create()
+                    ->configure($input, $this->additionalChars);
         return true;
     }
 

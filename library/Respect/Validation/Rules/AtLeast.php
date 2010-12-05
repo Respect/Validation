@@ -19,10 +19,13 @@ class AtLeast extends AbstractComposite
     {
         $validators = $this->getRules();
         $exceptions = $this->validateRules($input);
-        if ($this->howMany > (count($validators) - count($exceptions)))
+        $numRules = count($validators);
+        $numExceptions = count($exceptions);
+        if ($this->howMany > ($numRules - $numExceptions))
             throw $this->getException() ? : AtLeastException::create()
-                    ->configure($input, count($exceptions), $this->howMany)
-                    ->setRelated($exceptions);
+                    ->configure(
+                        $input, count($exceptions), $this->howMany, $numRules
+                    )->setRelated($exceptions);
         return true;
     }
 

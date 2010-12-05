@@ -32,11 +32,21 @@ class HasAttributeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider providerForInvalidAtrributeNames
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidParameters()
+    public function testInvalidParameters($attributeName)
     {
-        $validator = new HasAttribute(array('invalid'));
+        $validator = new HasAttribute($attributeName);
+    }
+
+    public function providerForInvalidAtrributeNames()
+    {
+        return array(
+            array(new \stdClass),
+            array(123),
+            array('')
+        );
     }
 
     public function testValidatorAttribute()

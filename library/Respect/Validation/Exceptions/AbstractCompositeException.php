@@ -11,9 +11,9 @@ class AbstractCompositeException extends ValidationException
         self::INVALID_SOME => '%2$d rules did not passed',
     );
 
-    public function chooseTemplate($input, $numFailed, $numRules)
+    public function chooseTemplate($input, $numFailed, $numRequired, $numTotal)
     {
-        if ($numFailed === $numRules)
+        if ($numFailed === $numTotal)
             return static::INVALID_NONE;
         else
             return static::INVALID_SOME;
