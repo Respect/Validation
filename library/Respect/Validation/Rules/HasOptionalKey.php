@@ -2,16 +2,15 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Rules\HasKey;
 use Respect\Validation\Exceptions\HasOptionalKeyException;
 
 class HasOptionalKey extends HasKey
 {
+    const IS_OPTIONAL = true;
 
-    public function validate($input)
+    protected function createException()
     {
-        return!array_key_exists($this->key, $input)
-        || parent::validate($input[$this->key]);
+        return HasOptionalKeyException::create();
     }
 
 }
