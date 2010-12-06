@@ -38,8 +38,6 @@ abstract class AbstractVector extends AbstractRule
         return $e;
     }
 
-    abstract protected function createException();
-
     public function assert($input)
     {
         if (!is_array($input) || $input instanceof Traversable)

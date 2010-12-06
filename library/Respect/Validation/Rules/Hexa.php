@@ -13,12 +13,4 @@ class Hexa extends AbstractRule
         return ctype_xdigit($input);
     }
 
-    public function assert($input)
-    {
-        if (!$this->validate($input))
-            throw $this->getException() ? : HexaException::create()
-                    ->configure($input);
-        return true;
-    }
-
 }

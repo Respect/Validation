@@ -13,11 +13,4 @@ class Digits extends AbstractRule
         return ctype_digit((string) $input);
     }
 
-    public function assert($input)
-    {
-        if (!$this->validate($input))
-            throw $this->getException() ? : DigitsException::create($input);
-        return true;
-    }
-
 }

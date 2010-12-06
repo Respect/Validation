@@ -30,7 +30,7 @@ class Between extends AllOf
         try {
             parent::assert($input);
         } catch (ValidationException $e) {
-            throw $this->getException() ? : BetweenException::create()
+            throw $this->getException() ? : $this->createException()
                     ->addRelated($e)
                     ->configure($input);
         }

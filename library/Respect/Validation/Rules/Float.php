@@ -13,12 +13,4 @@ class Float extends AbstractRule
         return filter_var($input, FILTER_VALIDATE_FLOAT);
     }
 
-    public function assert($input)
-    {
-        if (!$this->validate($input))
-            throw $this->getException() ? : FloatException::create()
-                    ->configure($input);
-        return true;
-    }
-
 }

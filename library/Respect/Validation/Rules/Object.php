@@ -13,12 +13,4 @@ class Object extends AbstractRule
         return is_object($input);
     }
 
-    public function assert($input)
-    {
-        if (!$this->validate($input))
-            throw $this->getException() ? : ObjectException::create()
-                    ->configure($input);
-        return true;
-    }
-
 }

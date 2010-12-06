@@ -15,7 +15,7 @@ class Alnum extends Alpha
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this->getException() ? : AlnumException::create()
+            throw $this->getException() ? : $this->createException()
                     ->configure($input, $this->additionalChars);
         return true;
     }

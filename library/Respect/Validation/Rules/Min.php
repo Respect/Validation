@@ -23,7 +23,7 @@ class Min extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this->getException() ? : MinException::create()
+            throw $this->getException() ? : $this->createException()
                     ->configure($input, $this->min);
         return true;
     }

@@ -21,9 +21,4 @@ class Attribute extends AbstractRelated
         return $propertyMirror->getValue($input);
     }
 
-    protected function createException()
-    {
-        return AttributeException::create();
-    }
-
 }

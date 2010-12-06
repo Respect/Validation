@@ -22,7 +22,7 @@ class AtLeast extends AbstractComposite
         $numRules = count($validators);
         $numExceptions = count($exceptions);
         if ($this->howMany > ($numRules - $numExceptions))
-            throw $this->getException() ? : AtLeastException::create()
+            throw $this->getException() ? : $this->createException()
                     ->configure(
                         $input, count($exceptions), $this->howMany, $numRules
                     )->setRelated($exceptions);
@@ -62,7 +62,7 @@ class AtLeast extends AbstractComposite
             if ($pass >= $this->howMany)
                 return true;
             if (count($exceptions) > (count($validators) - $this->howMany))
-                throw $this->getException() ? : AtLeastException::create()
+                throw $this->getException() ? : $this->createException()
                         ->setRelated($exceptions)
                         ->configure($input, count($exceptions), $this->howMany);
         }

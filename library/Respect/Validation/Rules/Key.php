@@ -19,9 +19,4 @@ class Key extends AbstractRelated
         return @$input[$this->reference];
     }
 
-    protected function createException()
-    {
-        return KeyException::create();
-    }
-
 }

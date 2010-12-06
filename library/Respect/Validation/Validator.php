@@ -5,6 +5,7 @@ namespace Respect\Validation;
 use Respect\Validation\Rules\AllOf;
 use ReflectionClass;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\AllOfException;
 use ReflectionException;
 
 class Validator extends AllOf
@@ -119,6 +120,11 @@ class Validator extends AllOf
             $validatorInstance = new $validatorFqn;
         }
         return $validatorInstance;
+    }
+
+    protected function createException()
+    {
+        return new AllOfException;
     }
 
 }

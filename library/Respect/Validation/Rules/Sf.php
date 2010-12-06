@@ -46,7 +46,7 @@ class Sf extends AbstractRule
                     '',
                     $input
             );
-            throw $this->getException() ? : SfException::create()
+            throw $this->getException() ? : $this->createException()
                     ->configure($violation->getMessage());
         }
         return true;

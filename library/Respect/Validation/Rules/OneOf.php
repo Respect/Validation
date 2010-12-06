@@ -14,7 +14,7 @@ class OneOf extends AbstractComposite
         $numRules = count($validators);
         $numExceptions = count($exceptions);
         if ($numExceptions === $numRules)
-            throw $this->getException() ? : OneOfException::create()
+            throw $this->getException() ? : $this->createException()
                     ->configure($input, $numExceptions, 1, $numRules)
                     ->setRelated($exceptions);
         return true;

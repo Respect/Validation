@@ -14,12 +14,4 @@ class Arr extends AbstractRule
         return is_array($input) || $input instanceof ArrayObject;
     }
 
-    public function assert($input)
-    {
-        if (!$this->validate($input))
-            throw $this->getException() ? : ArrException::create()
-                    ->configure($input);
-        return true;
-    }
-
 }

@@ -32,8 +32,6 @@ abstract class AbstractRelated extends AbstractRule implements Validatable
 
     abstract protected function getReferenceValue($input);
 
-    abstract protected function createException();
-
     protected function reportError($input, ValidationException $related=null)
     {
         $e = $this->getException();

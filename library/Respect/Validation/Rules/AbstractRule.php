@@ -15,6 +15,14 @@ abstract class AbstractRule implements Validatable
         return $this->validate($input);
     }
 
+    protected function createException()
+    {
+        $currentFQN = get_called_class();
+        $exceptionFQN = str_replace('\\Rules\\', '\\Exceptions\\', $currentFQN);
+        $exceptionFQN .= 'Exception';
+        return new $exceptionFQN;
+    }
+
     public function getException()
     {
         return $this->exception;
@@ -23,6 +31,14 @@ abstract class AbstractRule implements Validatable
     public function setException(Exception $e)
     {
         $this->exception = $e;
+    }
+
+    public function assert($input)
+    {
+        if (!$this->validate($input))
+            throw $this->getException() ? : $this->createException()
+                    ->configure($input);
+        return true;
     }
 
     public function check($input)

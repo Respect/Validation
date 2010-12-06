@@ -15,12 +15,4 @@ class NotEmpty extends AbstractRule
         return!empty($input);
     }
 
-    public function assert($input)
-    {
-        if (!$this->validate($input))
-            throw $this->getException() ? : NotEmptyException::create()
-                    ->configure($input);
-        return true;
-    }
-
 }

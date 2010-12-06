@@ -23,7 +23,7 @@ class Max extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this->getException() ? : MaxException::create()
+            throw $this->getException() ? : $this->createException()
                     ->configure($input, $this->max);
         return true;
     }

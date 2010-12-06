@@ -24,7 +24,7 @@ class AllOf extends AbstractComposite
         $exceptions = $this->validateRules($input);
         $numRules = count($this->rules);
         if (!empty($exceptions))
-            throw $this->getException() ? : AllOfException::create()
+            throw $this->getException() ? : $this->createException()
                     ->setRelated($exceptions)
                     ->configure(
                         $input, count($exceptions), $numRules, $numRules

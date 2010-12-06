@@ -32,7 +32,7 @@ class Alpha extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this->getException() ? : AlphaException::create()
+            throw $this->getException() ? : $this->createException()
                     ->configure($input, $this->additionalChars);
         return true;
     }
