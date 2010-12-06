@@ -2,12 +2,11 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Rules\AllOf;
+use ReflectionProperty;
+use ReflectionException;
+use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Validatable;
-use \ReflectionProperty;
-use \ReflectionException;
 
 abstract class AbstractRelated extends AbstractRule implements Validatable
 {

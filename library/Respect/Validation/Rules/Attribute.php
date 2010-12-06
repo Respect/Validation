@@ -2,9 +2,7 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\AttributeException;
-use Respect\Validation\Exceptions\ValidationException;
-use \ReflectionProperty;
+use ReflectionProperty;
 
 class Attribute extends AbstractRelated
 {

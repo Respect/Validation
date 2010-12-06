@@ -2,10 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\KeyException;
-use Respect\Validation\Exceptions\ValidationException;
-use \ReflectionProperty;
-
 class Key extends AbstractRelated
 {
 

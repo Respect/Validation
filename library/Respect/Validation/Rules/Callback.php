@@ -2,8 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\CallbackException;
 use Respect\Validation\Exceptions\ComponentException;
 
 class Callback extends AbstractRule

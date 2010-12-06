@@ -2,9 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\NotEmptyException;
-use Respect\Validation\Rules\AbstractRule;
-
 class NotEmpty extends AbstractRule
 {
 

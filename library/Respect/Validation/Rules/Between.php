@@ -2,7 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\BetweenException;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 

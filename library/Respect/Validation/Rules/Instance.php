@@ -2,9 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\InstanceException;
-
 class Instance extends AbstractRule
 {
 

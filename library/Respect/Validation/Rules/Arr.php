@@ -2,16 +2,16 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\ArrException;
-use \ArrayObject;
+use ArrayAccess;
+use Traversable;
 
 class Arr extends AbstractRule
 {
 
     public function validate($input)
     {
-        return is_array($input) || $input instanceof ArrayObject;
+        return is_array($input)
+        || ($input instanceof ArrayAccess && $input instanceof Traversable);
     }
 
 }

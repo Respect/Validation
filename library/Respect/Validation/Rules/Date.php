@@ -2,9 +2,7 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\DateException;
 use DateTime;
-use Respect\Validation\Rules\AbstractRule;
 
 class Date extends AbstractRule
 {

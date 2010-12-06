@@ -2,10 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\AlnumException;
-use Respect\Validation\Exceptions\ComponentException;
-
 class Alnum extends Alpha
 {
 

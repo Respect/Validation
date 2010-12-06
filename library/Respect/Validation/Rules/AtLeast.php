@@ -2,8 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\AtLeastException;
-
 class AtLeast extends AbstractComposite
 {
 

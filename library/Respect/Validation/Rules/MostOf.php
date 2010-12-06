@@ -2,8 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\MostOfException;
-
 class MostOf extends AtLeast
 {
 

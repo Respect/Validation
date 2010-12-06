@@ -2,9 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\RegexException;
-
 class Regex extends AbstractRule
 {
 
@@ -27,6 +24,5 @@ class Regex extends AbstractRule
                     ->configure($input, $this->regex);
         return true;
     }
-
 
 }

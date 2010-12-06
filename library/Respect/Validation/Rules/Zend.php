@@ -3,9 +3,6 @@
 namespace Respect\Validation\Rules;
 
 use ReflectionClass;
-use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\CallbackException;
-use Respect\Validation\Exceptions\ZendException;
 
 class Zend extends AbstractRule
 {

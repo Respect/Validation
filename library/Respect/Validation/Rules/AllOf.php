@@ -2,8 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\AllOfException;
-
 class AllOf extends AbstractComposite
 {
 

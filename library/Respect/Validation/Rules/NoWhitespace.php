@@ -2,9 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\NoWhitespaceException;
-
 class NoWhitespace extends AbstractRule
 {
 

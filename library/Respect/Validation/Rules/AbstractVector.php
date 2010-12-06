@@ -2,9 +2,9 @@
 
 namespace Respect\Validation\Rules;
 
+use Traversable;
 use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\ValidationException;
-use Traversable;
 
 abstract class AbstractVector extends AbstractRule
 {
