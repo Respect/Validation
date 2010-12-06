@@ -5,7 +5,6 @@ namespace Respect\Validation\Rules;
 use ReflectionProperty;
 use ReflectionException;
 use Respect\Validation\Validatable;
-use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 
 abstract class AbstractRelated extends AbstractRule implements Validatable
@@ -18,10 +17,6 @@ abstract class AbstractRelated extends AbstractRule implements Validatable
     public function __construct($reference,
         Validatable $referenceValidator=null, $mandatory=true)
     {
-        if (!is_string($reference) || empty($reference))
-            throw new ComponentException(
-                'Invalid reference name'
-            );
         $this->reference = $reference;
         $this->referenceValidator = $referenceValidator;
         $this->mandatory = $mandatory;

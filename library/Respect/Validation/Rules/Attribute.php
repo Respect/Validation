@@ -3,9 +3,21 @@
 namespace Respect\Validation\Rules;
 
 use ReflectionProperty;
+use Respect\Validation\Validatable;
+use Respect\Validation\Exceptions\ComponentException;
 
 class Attribute extends AbstractRelated
 {
+
+    public function __construct($reference,
+        Validatable $referenceValidator=null, $mandatory=true)
+    {
+        if (!is_string($reference) || empty($reference))
+            throw new ComponentException(
+                'Invalid attribute/property name'
+            );
+        parent::__construct($reference, $referenceValidator, $mandatory);
+    }
 
     protected function hasReference($input)
     {

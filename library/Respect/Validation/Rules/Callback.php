@@ -23,12 +23,4 @@ class Callback extends AbstractRule
         return call_user_func($this->callback, $input);
     }
 
-    public function assert($input)
-    {
-        if (!$this->validate($input))
-            throw $this->getException() ? : $this->createException()
-                    ->configure($input, $this->callback);
-        return true;
-    }
-
 }
