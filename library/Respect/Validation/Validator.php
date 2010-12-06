@@ -10,19 +10,10 @@ use ReflectionException;
 
 class Validator extends AllOf
 {
+    const ERR_INTERFACE = '%s does not implement the Respect\Validator\Validatable interface required for validators';
 
     protected $ruleName;
     protected $arguments = array();
-
-    protected function getRuleName()
-    {
-        return $this->ruleName;
-    }
-
-    protected function getArguments()
-    {
-        return $this->arguments;
-    }
 
     protected function setRuleName($ruleName)
     {
@@ -83,6 +74,17 @@ class Validator extends AllOf
         return $validator;
     }
 
+    protected static function getRuleClassname($ruleName)
+    {
+        $ruleFqn = explode('\\', get_called_class());
+        array_pop($ruleFqn);
+        $ruleFqn[] = 'Rules';
+        $ruleFqn[] = $ruleName;
+        $ruleFqn = array_map('ucfirst', $ruleFqn);
+        $ruleFqn = implode('\\', $ruleFqn);
+        return $ruleFqn;
+    }
+
     public static function buildRule($ruleSpec, $arguments=array())
     {
         if ($ruleSpec instanceof Validatable) {
@@ -90,15 +92,9 @@ class Validator extends AllOf
         }
         if (is_object($ruleSpec))
             throw new ComponentException(
-                sprintf('%s does not implement the Respect\Validator\Validatable interface required for validators',
-                    get_class($ruleSpec))
+                sprintf(static::ERR_INTERFACE, get_class($ruleSpec))
             );
-        $validatorFqn = explode('\\', get_called_class());
-        array_pop($validatorFqn);
-        $validatorFqn[] = 'Rules';
-        $validatorFqn[] = $ruleSpec;
-        $validatorFqn = array_map('ucfirst', $validatorFqn);
-        $validatorFqn = implode('\\', $validatorFqn);
+        $validatorFqn = static::getRuleClassname($ruleSpec);
         try {
             $validatorClass = new ReflectionClass($validatorFqn);
         } catch (ReflectionException $e) {
@@ -109,8 +105,7 @@ class Validator extends AllOf
         );
         if (!$implementedInterface)
             throw new ComponentException(
-                sprintf('%s does not implement the Respect\Validator\Validatable interface required for validators',
-                    $validatorFqn)
+                sprintf(static::ERR_INTERFACE, $validatorFqn)
             );
         if ($validatorClass->hasMethod('__construct')) {
             $validatorInstance = $validatorClass->newInstanceArgs(
