@@ -25,11 +25,6 @@ class Zend extends AbstractRule
             $this->zendValidator = $zendMirror->newInstance();
     }
 
-    public function createException()
-    {
-        return new ZendException;
-    }
-
     public function validate($input)
     {
         return $this->zendValidator->isValid($input);
@@ -46,11 +41,6 @@ class Zend extends AbstractRule
                     ->configure($exceptions);
         }
         return true;
-    }
-
-    public function check($input)
-    {
-        return $this->assert($input);
     }
 
 }

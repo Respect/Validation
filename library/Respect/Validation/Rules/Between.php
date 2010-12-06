@@ -37,9 +37,4 @@ class Between extends AllOf
         return true;
     }
 
-    public function check($input)
-    {
-        return $this->assert($input);
-    }
-
 }

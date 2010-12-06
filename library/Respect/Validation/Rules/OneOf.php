@@ -7,11 +7,6 @@ use Respect\Validation\Exceptions\OneOfException;
 class OneOf extends AbstractComposite
 {
 
-    public function createException()
-    {
-        return new OneOfException(OneOfException::INVALID_ONE_OF);
-    }
-
     public function assert($input)
     {
         $validators = $this->getRules();
@@ -31,11 +26,6 @@ class OneOf extends AbstractComposite
             if ($v->validate($input))
                 return true;
         return false;
-    }
-
-    public function check($input)
-    {
-        return $this->assert($input);
     }
 
 }

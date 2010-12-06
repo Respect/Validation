@@ -8,11 +8,6 @@ use Respect\Validation\Exceptions\NullValueException;
 class NullValue extends AbstractRule
 {
 
-    public function createException()
-    {
-        return new NullValueException;
-    }
-
     public function validate($input)
     {
         return is_null($input);
@@ -21,14 +16,9 @@ class NullValue extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this->getException() ? :  NullValueException::create()
-                ->configure($input);
+            throw $this->getException() ? : NullValueException::create()
+                    ->configure($input);
         return true;
-    }
-
-    public function check($input)
-    {
-        return $this->assert($input);
     }
 
 }

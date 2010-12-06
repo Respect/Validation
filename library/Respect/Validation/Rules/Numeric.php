@@ -8,11 +8,6 @@ use Respect\Validation\Exceptions\NumericException;
 class Numeric extends AbstractRule
 {
 
-    public function createException()
-    {
-        return new NumericException;
-    }
-
     public function validate($input)
     {
         return is_numeric($input);
@@ -21,14 +16,9 @@ class Numeric extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this->getException() ? :  NumericException::create()
-                ->configure($input);
+            throw $this->getException() ? : NumericException::create()
+                    ->configure($input);
         return true;
-    }
-
-    public function check($input)
-    {
-        return $this->assert($input);
     }
 
 }

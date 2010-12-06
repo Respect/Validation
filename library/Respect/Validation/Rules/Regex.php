@@ -15,11 +15,6 @@ class Regex extends AbstractRule
         $this->regex = $regex;
     }
 
-    public function createException()
-    {
-        return new RegexException;
-    }
-
     public function validate($input)
     {
         return preg_match("/{$this->regex}/", $input);
@@ -28,14 +23,10 @@ class Regex extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this->getException() ? :  RegexException::create()
-                ->configure($input, $this->regex);
+            throw $this->getException() ? : RegexException::create()
+                    ->configure($input, $this->regex);
         return true;
     }
 
-    public function check($input)
-    {
-        return $this->assert($input);
-    }
 
 }

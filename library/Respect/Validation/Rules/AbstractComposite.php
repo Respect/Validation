@@ -8,7 +8,7 @@ use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 
-abstract class AbstractComposite extends AbstractRule
+abstract class AbstractComposite extends AbstractRule implements Validatable
 {
 
     protected $rules = array();

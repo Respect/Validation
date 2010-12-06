@@ -25,4 +25,9 @@ abstract class AbstractRule implements Validatable
         $this->exception = $e;
     }
 
+    public function check($input)
+    {
+        return $this->assert($input);
+    }
+
 }

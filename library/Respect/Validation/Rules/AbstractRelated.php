@@ -9,7 +9,7 @@ use Respect\Validation\Validatable;
 use \ReflectionProperty;
 use \ReflectionException;
 
-abstract class AbstractRelated extends AbstractRule
+abstract class AbstractRelated extends AbstractRule implements Validatable
 {
 
     protected $mandatory = true;
@@ -32,6 +32,8 @@ abstract class AbstractRelated extends AbstractRule
 
     abstract protected function getReferenceValue($input);
 
+    abstract protected function createException();
+
     protected function reportError($input, ValidationException $related=null)
     {
         $e = $this->getException();
@@ -49,7 +51,8 @@ abstract class AbstractRelated extends AbstractRule
         if ($this->mandatory && !$this->hasReference($input))
             return false;
         if (!is_null($this->referenceValidator))
-            return $this->referenceValidator->validate($this->getReferenceValue($input));
+            return $this->referenceValidator
+                ->validate($this->getReferenceValue($input));
         return true;
     }
 
@@ -59,7 +62,9 @@ abstract class AbstractRelated extends AbstractRule
             throw $this->reportError($input);
         try {
             if (!is_null($this->referenceValidator))
-                $this->referenceValidator->assert($this->getReferenceValue($input));
+                $this->referenceValidator->assert(
+                    $this->getReferenceValue($input)
+                );
         } catch (ValidationException $e) {
             throw $this->reportError($input, $e);
         } catch (ReflectionException $e) {
@@ -70,7 +75,13 @@ abstract class AbstractRelated extends AbstractRule
 
     public function check($input)
     {
-        return $this->assert($input);
+        if ($this->mandatory && !$this->hasReference($input))
+            throw $this->reportError($input);
+        if (!is_null($this->referenceValidator))
+            $this->referenceValidator->check(
+                $this->getReferenceValue($input)
+            );
+        return true;
     }
 
 }
