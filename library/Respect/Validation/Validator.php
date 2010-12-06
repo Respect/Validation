@@ -122,7 +122,7 @@ class Validator extends AllOf
         return $validatorInstance;
     }
 
-    protected function createException()
+    public function createException()
     {
         return new AllOfException;
     }

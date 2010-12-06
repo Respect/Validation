@@ -15,7 +15,7 @@ abstract class AbstractRule implements Validatable
         return $this->validate($input);
     }
 
-    protected function createException()
+    public function createException()
     {
         $currentFQN = get_called_class();
         $exceptionFQN = str_replace('\\Rules\\', '\\Exceptions\\', $currentFQN);

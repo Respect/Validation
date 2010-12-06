@@ -2,6 +2,8 @@
 
 namespace Respect\Validation;
 
+use \Exception;
+
 interface Validatable
 {
 
@@ -10,4 +12,10 @@ interface Validatable
     public function validate($input);
 
     public function check($input);
+
+    public function createException();
+
+    public function getException();
+
+    public function setException(Exception $e);
 }
