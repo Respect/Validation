@@ -2,13 +2,12 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\HasKeyException;
+use Respect\Validation\Exceptions\KeyException;
 use Respect\Validation\Exceptions\ValidationException;
 use \ReflectionProperty;
 
-class HasKey extends AbstractRelated
+class Key extends AbstractRelated
 {
-    const IS_OPTIONAL = false;
 
     protected function hasReference($input)
     {
@@ -22,7 +21,7 @@ class HasKey extends AbstractRelated
 
     protected function createException()
     {
-        return HasKeyException::create();
+        return KeyException::create();
     }
 
 }

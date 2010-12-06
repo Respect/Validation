@@ -2,13 +2,12 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\HasAttributeException;
+use Respect\Validation\Exceptions\AttributeException;
 use Respect\Validation\Exceptions\ValidationException;
 use \ReflectionProperty;
 
-class HasAttribute extends AbstractRelated
+class Attribute extends AbstractRelated
 {
-    const IS_OPTIONAL = false;
 
     protected function hasReference($input)
     {
@@ -24,7 +23,7 @@ class HasAttribute extends AbstractRelated
 
     protected function createException()
     {
-        return HasAttributeException::create();
+        return AttributeException::create();
     }
 
 }

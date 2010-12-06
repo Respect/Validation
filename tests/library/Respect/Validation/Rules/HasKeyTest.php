@@ -2,12 +2,12 @@
 
 namespace Respect\Validation\Rules;
 
-class HasKeyTest extends \PHPUnit_Framework_TestCase
+class KeyTest extends \PHPUnit_Framework_TestCase
 {
 
-    public function testHasKey()
+    public function testKey()
     {
-        $validator = new HasKey('bar');
+        $validator = new Key('bar');
         $obj = array();
         $obj['bar'] = 'foo';
         $this->assertTrue($validator->assert($obj));
@@ -18,7 +18,7 @@ class HasKeyTest extends \PHPUnit_Framework_TestCase
      */
     public function testNotNull()
     {
-        $validator = new HasKey('bar');
+        $validator = new Key('bar');
         $obj = array();
         $obj['baraaaaaa'] = 'foo';
         $this->assertTrue($validator->assert($obj));
@@ -29,13 +29,13 @@ class HasKeyTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidParameters()
     {
-        $validator = new HasKey(array('invalid'));
+        $validator = new Key(array('invalid'));
     }
 
     public function testValidatorAttribute()
     {
         $subValidator = new StringLength(1, 3);
-        $validator = new HasKey('bar', $subValidator);
+        $validator = new Key('bar', $subValidator);
         $obj = array();
         $obj['bar'] = 'foo';
         $this->assertTrue($validator->assert($obj));

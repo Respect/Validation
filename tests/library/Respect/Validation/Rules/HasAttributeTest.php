@@ -9,12 +9,12 @@ class PrivClass
 
 }
 
-class HasAttributeTest extends \PHPUnit_Framework_TestCase
+class AttributeTest extends \PHPUnit_Framework_TestCase
 {
 
-    public function testHasAttribute()
+    public function testAttribute()
     {
-        $validator = new HasAttribute('bar');
+        $validator = new Attribute('bar');
         $obj = new \stdClass;
         $obj->bar = 'foo';
         $this->assertTrue($validator->assert($obj));
@@ -25,7 +25,7 @@ class HasAttributeTest extends \PHPUnit_Framework_TestCase
      */
     public function testNotNull()
     {
-        $validator = new HasAttribute('bar');
+        $validator = new Attribute('bar');
         $obj = new \stdClass;
         $obj->baraaaaa = 'foo';
         $this->assertTrue($validator->assert($obj));
@@ -37,7 +37,7 @@ class HasAttributeTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidParameters($attributeName)
     {
-        $validator = new HasAttribute($attributeName);
+        $validator = new Attribute($attributeName);
     }
 
     public function providerForInvalidAtrributeNames()
@@ -52,7 +52,7 @@ class HasAttributeTest extends \PHPUnit_Framework_TestCase
     public function testValidatorAttribute()
     {
         $subValidator = new StringLength(1, 3);
-        $validator = new HasAttribute('bar', $subValidator);
+        $validator = new Attribute('bar', $subValidator);
         $obj = new \stdClass;
         $obj->bar = 'foo';
         $this->assertTrue($validator->assert($obj));
@@ -61,7 +61,7 @@ class HasAttributeTest extends \PHPUnit_Framework_TestCase
     public function testValidatorPrivateAttribute()
     {
         $subValidator = new StringLength(1, 3);
-        $validator = new HasAttribute('bar', $subValidator);
+        $validator = new Attribute('bar', $subValidator);
         $obj = new PrivClass;
         $this->assertTrue($validator->assert($obj));
     }

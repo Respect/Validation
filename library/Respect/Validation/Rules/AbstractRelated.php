@@ -9,20 +9,23 @@ use Respect\Validation\Validatable;
 use \ReflectionProperty;
 use \ReflectionException;
 
-abstract class AbstractRelated extends AllOf
+abstract class AbstractRelated extends AbstractRule
 {
-    const IS_OPTIONAL = false;
-    protected $reference = '';
 
-    public function __construct($reference, Validatable $referenceValidator=null)
+    protected $mandatory = true;
+    protected $reference = '';
+    protected $referenceValidator;
+
+    public function __construct($reference,
+        Validatable $referenceValidator=null, $mandatory=true)
     {
         if (!is_string($reference) || empty($reference))
             throw new ComponentException(
                 'Invalid reference name'
             );
         $this->reference = $reference;
-        if (!is_null($referenceValidator))
-            $this->addRule($referenceValidator);
+        $this->referenceValidator = $referenceValidator;
+        $this->mandatory = $mandatory;
     }
 
     abstract protected function hasReference($input);
@@ -43,17 +46,20 @@ abstract class AbstractRelated extends AllOf
 
     public function validate($input)
     {
-        if (!static::IS_OPTIONAL && !$this->hasReference($input))
+        if ($this->mandatory && !$this->hasReference($input))
             return false;
-        return parent::validate($this->getReferenceValue($input));
+        if (!is_null($this->referenceValidator))
+            return $this->referenceValidator->validate($this->getReferenceValue($input));
+        return true;
     }
 
     public function assert($input)
     {
-        if (!static::IS_OPTIONAL && !$this->hasReference($input))
+        if ($this->mandatory && !$this->hasReference($input))
             throw $this->reportError($input);
         try {
-            parent::assert($this->getReferenceValue($input));
+            if (!is_null($this->referenceValidator))
+                $this->referenceValidator->assert($this->getReferenceValue($input));
         } catch (ValidationException $e) {
             throw $this->reportError($input, $e);
         } catch (ReflectionException $e) {
