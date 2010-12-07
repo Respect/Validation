@@ -21,7 +21,7 @@ class Attribute extends AbstractRelated
 
     protected function hasReference($input)
     {
-        return property_exists($input, $this->reference);
+        return @property_exists($input, $this->reference);
     }
 
     protected function getReferenceValue($input)

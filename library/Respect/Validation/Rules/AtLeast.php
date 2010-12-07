@@ -22,7 +22,7 @@ class AtLeast extends AbstractComposite
         if ($this->howMany > ($numRules - $numExceptions))
             throw $this->getException() ? : $this->createException()
                     ->configure(
-                        $input, count($exceptions), $this->howMany, $numRules
+                        $input, $numExceptions, $this->howMany, $numRules
                     )->setRelated($exceptions);
         return true;
     }

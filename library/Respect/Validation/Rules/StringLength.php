@@ -20,12 +20,16 @@ class StringLength extends Between
             throw new ComponentException(
                 sprintf('%s is not a valid numeric length', $max)
             );
-        parent::__construct($min, $max);
-    }
-
-    protected function appendRule(Validatable $validator)
-    {
-        parent::appendRule(new Call('strlen', $validator));
+        if (!is_null($min) && !is_null($max) && $min > $max)
+            throw new ComponentException(
+                sprintf(
+                    '%s cannot be less than  %s for validation', $min, $max
+                )
+            );
+        if (!is_null($min))
+            $this->addRule(new Call('strlen', new Min($min)));
+        if (!is_null($max))
+            $this->addRule(new Call('strlen', new Max($max)));
     }
 
 }

@@ -19,7 +19,14 @@ class Equals extends AbstractRule
         if ($this->identical)
             return $input === $this->param;
         else
-            return $inptu == $this->param;
+            return $input == $this->param;
+    }
+
+    public function assert($input)
+    {
+        if (!$this->validate($input))
+            throw $this->getException() ? : $this->createException()
+                    ->configure($input, $this->param, $this->identical);
     }
 
 }
