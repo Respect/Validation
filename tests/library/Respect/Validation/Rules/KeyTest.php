@@ -14,7 +14,7 @@ class KeyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException Respect\Validation\Exceptions\KeyException
      */
     public function testNotNull()
     {
@@ -34,7 +34,7 @@ class KeyTest extends \PHPUnit_Framework_TestCase
 
     public function testValidatorAttribute()
     {
-        $subValidator = new StringLength(1, 3);
+        $subValidator = new Length(1, 3);
         $validator = new Key('bar', $subValidator);
         $obj = array();
         $obj['bar'] = 'foo';

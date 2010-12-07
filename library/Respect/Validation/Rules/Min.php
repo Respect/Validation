@@ -6,22 +6,27 @@ class Min extends AbstractRule
 {
 
     protected $min;
+    protected $inclusive;
 
-    public function __construct($minValue)
+    public function __construct($minValue, $inclusive=false)
     {
         $this->min = $minValue;
+        $this->inclusive = $inclusive;
     }
 
     public function validate($input)
     {
-        return $input >= $this->min;
+        if ($this->inclusive)
+            return $input >= $this->min;
+        else
+            return $input > $this->min;
     }
 
     public function assert($input)
     {
         if (!$this->validate($input))
             throw $this->getException() ? : $this->createException()
-                    ->configure($input, $this->min);
+                    ->configure($input, $this->min, $this->inclusive);
         return true;
     }
 

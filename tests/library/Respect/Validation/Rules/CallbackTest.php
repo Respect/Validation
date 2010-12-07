@@ -5,6 +5,11 @@ namespace Respect\Validation\Rules;
 class CallbackTest extends \PHPUnit_Framework_TestCase
 {
 
+    public function callbackThis()
+    {
+        return true;
+    }
+
     public function testCallbackOk()
     {
         $v = new Callback(function() {
@@ -14,7 +19,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException Respect\Validation\Exceptions\CallbackException
      */
     public function testCallbackNot()
     {
@@ -22,6 +27,18 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
                     return false;
                 });
         $this->assertTrue($v->assert('w poiur'));
+    }
+
+    public function testCallbackObject()
+    {
+        $v = new Callback(array($this, 'callbackThis'));
+        $this->assertTrue($v->assert('test'));
+    }
+
+    public function testCallbackString()
+    {
+        $v = new Callback('is_string');
+        $this->assertTrue($v->assert('test'));
     }
 
     /**

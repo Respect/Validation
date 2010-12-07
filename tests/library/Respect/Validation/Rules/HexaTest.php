@@ -23,7 +23,7 @@ class HexaTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotHexa
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException Respect\Validation\Exceptions\HexaException
      */
     public function testNotHexa($input)
     {
@@ -36,6 +36,8 @@ class HexaTest extends \PHPUnit_Framework_TestCase
             array('FFF'),
             array('15'),
             array('DE12FA'),
+            array('1234567890abcdef'),
+            array(0x123),
         );
     }
 
@@ -47,6 +49,7 @@ class HexaTest extends \PHPUnit_Framework_TestCase
             array(' '),
             array('Foo'),
             array(''),
+            array('1.5'),
         );
     }
 

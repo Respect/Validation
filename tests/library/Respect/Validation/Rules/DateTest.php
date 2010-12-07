@@ -34,17 +34,14 @@ class DateTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->object->validate('aids'));
     }
 
-    /**
-     * @expectedException Respect\Validation\Exceptions\ValidationException
-     */
     public function testDateFormat()
     {
-        $this->object = new Date('Y-m-');
+        $this->object = new Date('Y-m-d');
         $this->assertTrue($this->object->assert('2009-09-09'));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException Respect\Validation\Exceptions\DateException
      */
     public function testInvalidDateFormat()
     {

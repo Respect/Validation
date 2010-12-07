@@ -23,7 +23,7 @@ class DigitsTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotDigits
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException Respect\Validation\Exceptions\DigitsException
      */
     public function testNotDigits($input)
     {
@@ -35,6 +35,7 @@ class DigitsTest extends \PHPUnit_Framework_TestCase
         return array(
             array(165),
             array(1650),
+            array('01650'),
             array('165'),
             array('1650'),
         );

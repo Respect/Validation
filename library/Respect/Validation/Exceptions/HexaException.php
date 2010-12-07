@@ -8,5 +8,5 @@ class HexaException extends ValidationException
     public static $defaultTemplates = array(
         self::INVALID_HEXA => '"%s" is not a valid hexadecimal number',
     );
-    
+
 }

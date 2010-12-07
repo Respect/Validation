@@ -28,6 +28,7 @@ class EachTest extends \PHPUnit_Framework_TestCase
         $result = $v->assert(array('', 2, 3, 4, 5));
         $this->assertFalse($result);
     }
+
     /**
      * @expectedException Respect\Validation\Exceptions\EachException
      */

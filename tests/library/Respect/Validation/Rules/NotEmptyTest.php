@@ -12,17 +12,44 @@ class NotEmptyTest extends \PHPUnit_Framework_TestCase
         $this->object = new NotEmpty;
     }
 
-    public function testStringNotEmpty()
+    /**
+     * @dataProvider providerForNotEmpty
+     */
+    public function testStringNotEmpty($input)
     {
-        $this->assertTrue($this->object->assert('xsdfgf'));
+        $this->assertTrue($this->object->assert($input));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @dataProvider providerForEmpty
+     * @expectedException Respect\Validation\Exceptions\NotEmptyException
      */
-    public function testStringEmpty()
+    public function testStringEmpty($input)
     {
-        $this->assertTrue($this->object->assert(' '));
+        $this->assertTrue($this->object->assert($input));
+    }
+
+    public function providerForNotEmpty()
+    {
+        return array(
+            array(1),
+            array(' oi'),
+            array(array(5)),
+            array(array(0)),
+            array(new \stdClass)
+        );
+    }
+
+    public function providerForEmpty()
+    {
+        return array(
+            array(''),
+            array('    '),
+            array("\n"),
+            array(false),
+            array(null),
+            array(array())
+        );
     }
 
 }

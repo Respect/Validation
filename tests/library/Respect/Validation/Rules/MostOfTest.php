@@ -24,7 +24,7 @@ class MostOfTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException Respect\Validation\Exceptions\MostOfException
      */
     public function testInvalid()
     {

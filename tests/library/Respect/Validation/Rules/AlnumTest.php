@@ -16,7 +16,7 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidAlnum
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException Respect\Validation\Exceptions\AlnumException
      */
     public function testAlnumInvalid($invalidAlnum, $aditional)
     {
@@ -52,6 +52,9 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
             array('foobar', ''),
             array('rubinho_', '_'),
             array('google.com', '.'),
+            array('alganet alganet', ''),
+            array("\n", ''),
+            array("\t", ''),
         );
     }
 
@@ -62,7 +65,6 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
             array('_', ''),
             array('', ''),
             array('dgç', ''),
-            array('alganet alganet', ''),
             array(1e21, ''),
             array(0, ''),
             array(null, ''),

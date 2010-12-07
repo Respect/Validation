@@ -16,7 +16,7 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidAlpha
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException Respect\Validation\Exceptions\AlphaException
      */
     public function testAlphaInvalid($invalidAlpha, $aditional)
     {
@@ -51,6 +51,9 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
             array('foobar', ''),
             array('rubinho_', '_'),
             array('google.com', '.'),
+            array('alganet alganet', ''),
+            array("\n", ''),
+            array("\t", ''),
         );
     }
 
@@ -64,7 +67,6 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
             array('122al', ''),
             array('122', ''),
             array(11123, ''),
-            array('alganet alganet', ''),
             array(1e21, ''),
             array(0, ''),
             array(null, ''),

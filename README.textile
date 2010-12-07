@@ -27,12 +27,12 @@ h3. Chained validation
 $username = 'alganet';
 $validUsername = v::alnum()
                   ->noWhitespace()
-                  ->stringLength(1,15)
+                  ->length(1,15)
                   ->validate($username);
 </pre>
 <pre>
 //Date between two ranges using a specific format
-$someDate = '2010-10-15';
+$someDate = new DateTime('2010-10-15');
 $validDate = v::date('Y-m-d')
               ->between(
                     new DateTime('2009-01-01'), 
@@ -45,15 +45,15 @@ h3. Validating object attributes
 $user->name = 'Alexandre';
 $user->birthdate = '1987-07-01';
 $validUser = v::all(
-    v::hasAttribute('name', v::notEmpty()),
-    v::hasAttribute('birthdate, v::date('Y-m-d'))
+    v::attribute('name', v::notEmpty()),
+    v::attribute('birthdate, v::date('Y-m-d'))
 );</pre>
 
 h3. Combining rules (v::oneOf, v::allOf, v::atLeast, v::mostOf, v::noneOf)
 
 <pre>$validDate = v::oneOf(
     v::date('Y-m-d'),
-    v::date('y-m-d'), //two-digit year
+    v::date('y m d'), 
     v::date('d/m/Y')  
 );</pre>
 
@@ -66,7 +66,7 @@ h3. Compositing rules
 $valid = v::atLeast(2, array(
    v::oneOf(v::numeric(), v::alnum()),
    v::date('Ymd'),
-   v::stringLength(3,12)->noWhitespace()
+   v::string()->length(3,12)->noWhitespace()
 ));</pre>
 
 h3. Cool, informative exceptions:
@@ -75,14 +75,14 @@ h3. Cool, informative exceptions:
     $username = '#$%  #odjfubgihdbfgihbdfighb';
     $validUsername = v::alnum('_')
                       ->noWhitespace()
-                      ->stringLength(1,15)
+                      ->length(1,15)
                       ->assert($username);
 } catch(v\Exceptions\InvalidException $e) {
    /*
-       Respect\Validation\Exceptions\InvalidException: 
-       #$%  #odjfubgihdbfgihbdfighb does not contains only letters and digits (including _)
-       #$%  #odjfubgihdbfgihbdfighb contains spaces, tabs, line breaks or other not allowed charaters.
-       #$%  #odjfubgihdbfgihbdfighb exceeds the maximum of 15 characters
+    Respect\Validation\Exceptions\AllOfException: None of 3 required rules passed
+    -"#$%  #odjfubgihdbfgihbdfighb" does not contain only letters, digits and "_"
+    -"#$%  #odjfubgihdbfgihbdfighb" contains whitespace
+    -"#$%  #odjfubgihdbfgihbdfighb" length is not between 1 and 15
    */
    echo $e->getMessage();
 }</pre>

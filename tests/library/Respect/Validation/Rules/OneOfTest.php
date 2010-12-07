@@ -24,7 +24,7 @@ class OneOfTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException Respect\Validation\Exceptions\OneOfException
      */
     public function testInvalid()
     {

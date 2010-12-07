@@ -23,7 +23,7 @@ class NumericTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotNumeric
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException Respect\Validation\Exceptions\NumericException
      */
     public function testNotNumeric($input)
     {

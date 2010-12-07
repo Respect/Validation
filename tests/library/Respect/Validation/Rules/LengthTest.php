@@ -2,35 +2,35 @@
 
 namespace Respect\Validation\Rules;
 
-class StringLengthTest extends \PHPUnit_Framework_TestCase
+class LengthTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
      * @dataProvider providerForValidLenght
      */
-    public function testStringLengthValid($string, $min, $max)
+    public function testLengthValid($string, $min, $max)
     {
-        $validator = new StringLength($min, $max);
+        $validator = new Length($min, $max);
         $this->assertTrue($validator->assert($string));
     }
 
     /**
      * @dataProvider providerForInvalidLenght
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException Respect\Validation\Exceptions\LengthException
      */
-    public function testStringLengthInvalid($string, $min, $max)
+    public function testLengthInvalid($string, $min, $max)
     {
-        $validator = new StringLength($min, $max);
+        $validator = new Length($min, $max);
         $this->assertFalse($validator->assert($string));
     }
-    
+
     /**
      * @dataProvider providerForComponentException
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function testStringLengthComponentException($string,$min,$max)
+    public function testLengthComponentException($string, $min, $max)
     {
-        $validator = new StringLength($min, $max);
+        $validator = new Length($min, $max);
         $this->assertFalse($validator->assert($string));
     }
 
@@ -38,8 +38,9 @@ class StringLengthTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array('alganet', 1, 15),
-            array('alganet',1,null), //null is a valid max length, means "no maximum",
-            array('alganet',null,15) //null is a valid min length, means "no minimum"
+            array(range(1, 20), 1, 30),
+            array('alganet', 1, null), //null is a valid max length, means "no maximum",
+            array('alganet', null, 15) //null is a valid min length, means "no minimum"
         );
     }
 
@@ -47,14 +48,15 @@ class StringLengthTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array('alganet', 1, 3),
+            array(range(1, 50), 1, 30),
         );
     }
-    
+
     public function providerForComponentException()
     {
         return array(
-            array('alganet','a',15),
-            array('alganet',1,'abc d'),
+            array('alganet', 'a', 15),
+            array('alganet', 1, 'abc d'),
         );
     }
 

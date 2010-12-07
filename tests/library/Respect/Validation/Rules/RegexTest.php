@@ -12,7 +12,7 @@ class RegexTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException Respect\Validation\Exceptions\RegexException
      */
     public function testRegexNot()
     {

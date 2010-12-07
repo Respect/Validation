@@ -23,7 +23,7 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotObject
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException Respect\Validation\Exceptions\ObjectException
      */
     public function testNotObject($input)
     {

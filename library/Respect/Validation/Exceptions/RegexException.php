@@ -6,7 +6,7 @@ class RegexException extends ValidationException
 {
     const INVALID_REGEX= 'Regex_1';
     public static $defaultTemplates = array(
-        self::INVALID_REGEX => '"%s" did not validated against the "%s" expression',
+        self::INVALID_REGEX => '"%s" is invalid',
     );
 
 }

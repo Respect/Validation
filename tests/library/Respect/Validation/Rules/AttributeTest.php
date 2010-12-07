@@ -21,7 +21,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException Respect\Validation\Exceptions\AttributeException
      */
     public function testNotNull()
     {
@@ -51,7 +51,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
 
     public function testValidatorAttribute()
     {
-        $subValidator = new StringLength(1, 3);
+        $subValidator = new Length(1, 3);
         $validator = new Attribute('bar', $subValidator);
         $obj = new \stdClass;
         $obj->bar = 'foo';
@@ -60,7 +60,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
 
     public function testValidatorPrivateAttribute()
     {
-        $subValidator = new StringLength(1, 3);
+        $subValidator = new Length(1, 3);
         $validator = new Attribute('bar', $subValidator);
         $obj = new PrivClass;
         $this->assertTrue($validator->assert($obj));
