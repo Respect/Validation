@@ -107,13 +107,9 @@ class Validator extends AllOf
             throw new ComponentException(
                 sprintf(static::ERR_INTERFACE, $validatorFqn)
             );
-        if ($validatorClass->hasMethod('__construct')) {
-            $validatorInstance = $validatorClass->newInstanceArgs(
-                    $arguments
-            );
-        } else {
-            $validatorInstance = new $validatorFqn;
-        }
+        $validatorInstance = $validatorClass->newInstanceArgs(
+                $arguments
+        );
         return $validatorInstance;
     }
 

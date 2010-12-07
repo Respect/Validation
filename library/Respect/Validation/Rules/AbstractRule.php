@@ -10,6 +10,11 @@ abstract class AbstractRule implements Validatable
 
     protected $exception;
 
+    public function __construct()
+    {
+        
+    }
+
     public function __invoke($input)
     {
         return $this->validate($input);

@@ -25,11 +25,11 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException Respect\Validation\Exceptions\AllOfException
      */
     public function testInvalid()
     {
-        $valid1 = new Callback(function() {
+        $theInvalidOne = new Callback(function() {
                     return false;
                 });
         $valid2 = new Callback(function() {
@@ -38,8 +38,35 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
         $valid3 = new Callback(function() {
                     return true;
                 });
-        $o = new AllOf($valid1, $valid2, $valid3);
+        $o = new AllOf($theInvalidOne, $valid2, $valid3);
         $this->assertFalse($o->assert('any'));
+        $o = new AllOf($valid2, $theInvalidOne, $valid3);
+        $this->assertFalse($o->assert('any'));
+        $o = new AllOf($valid2, $valid3, $theInvalidOne);
+        $this->assertFalse($o->assert('any'));
+    }
+
+    /**
+     * @expectedException OutOfBoundsException
+     */
+    public function testCheck()
+    {
+        $valid1 = new Callback(function() {
+                    return true;
+                });
+        $theInvalidOne = new Callback(function() {
+                    return false;
+                });
+        $valid3 = new Callback(function() {
+                    return true;
+                });
+        $theInvalidOne->setException(new \OutOfBoundsException(''));
+        $o = new AllOf($valid1, $theInvalidOne, $valid3);
+        $this->assertFalse($o->check('any'));
+        $o = new AllOf($theInvalidOne, $valid3, $valid1);
+        $this->assertFalse($o->check('any'));
+        $o = new AllOf($valid3, $valid1, $theInvalidOne);
+        $this->assertFalse($o->check('any'));
     }
 
 }

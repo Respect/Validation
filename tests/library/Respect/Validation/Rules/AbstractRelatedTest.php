@@ -62,7 +62,7 @@ class AbstractRelatedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException InvalidArgumentException
+     * @expectedException OutOfBoundsException
      */
     public function testAssertHasReference()
     {
@@ -70,7 +70,7 @@ class AbstractRelatedTest extends \PHPUnit_Framework_TestCase
                 '', null, true, false
         );
         //overriding exception cause mocks cant handle createException properly
-        $mock->setException(new \InvalidArgumentException(''));
+        $mock->setException(new \OutOfBoundsException(''));
         $this->assertFalse($mock->assert('bla'));
     }
 
