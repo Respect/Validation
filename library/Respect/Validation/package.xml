@@ -10,8 +10,8 @@
   <email>alexandre@gaigalas.net</email>
   <active>yes</active>
  </lead>
- <date>2010-12-07</date>
- <time>17:17:32</time>
+ <date>2010-12-23</date>
+ <time>18:15:47</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -72,7 +72,7 @@ First Version
    <file baseinstalldir="Respect/Validation" md5sum="77a90010ca6ea9c687426b1b870770ec" name="Rules/AllOf.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="698c5305baff4a40d732a0f2f9f9066c" name="Rules/Alnum.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="dc721027b68ebd939a50147ddf4e7ee0" name="Rules/Alpha.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="e20e974875347cf7c9b0ba76061138e2" name="Rules/Arr.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="ea3e92cc6b0f2cc18eb66bf2506ecd88" name="Rules/Arr.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="46b15803d4f90d1d7b1462b1aa2c9951" name="Rules/AtLeast.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="90a42cc5da8ea72e1ca54137482c432c" name="Rules/Attribute.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="0e5a580ff3090d106df1e02c5882ef57" name="Rules/Between.php" role="php" />
@@ -89,7 +89,7 @@ First Version
    <file baseinstalldir="Respect/Validation" md5sum="fbeec7c032013e067e72c9704ba8537f" name="Rules/Int.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="3a083becb83c264973b097207d6e4c7a" name="Rules/Ip.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="9ab0c98ff2b5c373ab408f72a168bb0e" name="Rules/Key.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="45c2e39ae885b3f31e7c795bac227c33" name="Rules/Length.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="da3b9154eff6a4d01df566d9fdcfc837" name="Rules/Length.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="72e9a94595f32bf43ea19a53609f4d3a" name="Rules/Max.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="2b92961085bcea290ed15dab67e0064b" name="Rules/Min.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="1e7ba06c790b75a168a98e3972d38aa6" name="Rules/MostOf.php" role="php" />
@@ -131,7 +131,7 @@ First Version
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2010-12-07</date>
+   <date>2010-12-23</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
    <notes>
 First Version

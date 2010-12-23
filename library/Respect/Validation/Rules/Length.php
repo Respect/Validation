@@ -2,6 +2,7 @@
 
 namespace Respect\Validation\Rules;
 
+use Countable;
 use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Exceptions\LengthException;
 use Respect\Validation\Validator;
@@ -43,7 +44,7 @@ class Length extends AbstractRule
     {
         if (is_string($input))
             return mb_strlen($input);
-        elseif (is_array($input))
+        elseif (is_array($input) || $input instanceof Countable)
             return count($input);
         else
             return false;
