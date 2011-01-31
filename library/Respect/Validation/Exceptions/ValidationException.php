@@ -4,14 +4,15 @@ namespace Respect\Validation\Exceptions;
 
 use \InvalidArgumentException;
 use \Exception;
+use \RecursiveTreeIterator;
+use Respect\Validation\ExceptionIterator;
 
 class ValidationException extends InvalidArgumentException
 {
-    const INVALID = 'Validation_1';
+
     public static $defaultTemplates = array(
-        self::INVALID => 'Data validation failed: "%s"'
+        'Data validation failed: "%s"'
     );
-    protected $messageTemplate;
     protected $related = array();
     protected $params = array();
 
@@ -31,10 +32,7 @@ class ValidationException extends InvalidArgumentException
                 return is_object($mixed) ? get_class($mixed) : strval($mixed);
             }, func_get_args()
         );
-        $this->useTemplate(
-            call_user_func_array(array($this, 'chooseTemplate'), $this->params)
-        );
-        $this->renderMessage();
+        $this->message = $this->getMainMessage();
         return $this;
     }
 
@@ -43,40 +41,50 @@ class ValidationException extends InvalidArgumentException
         return array_shift(array_keys(static::$defaultTemplates));
     }
 
-    public function renderMessage()
+    public function getFullMessage()
+    {
+        $message = array();
+        foreach (new RecursiveTreeIterator(new ExceptionIterator($this)) as $m)
+            $message[] = $m;
+        return implode(PHP_EOL, $message);
+    }
+
+    public function getMainMessage()
     {
         $sprintfParams = $this->params;
-        array_unshift($sprintfParams, $this->messageTemplate);
-        $this->message = call_user_func_array('sprintf', $sprintfParams);
-        $relatedMessages = array();
-        foreach ($this->related as $n => $related) {
-            $relatedMessage = "-" . $related->getMessage();
-            $relatedMessage = str_replace("\n", "\n    ", $relatedMessage);
-            $relatedMessages[] = $relatedMessage;
-        }
-        if (!empty($relatedMessages))
-            $this->message .= "\n" . implode("\n", $relatedMessages);
+        array_unshift($sprintfParams, $this->getTemplate());
+        return call_user_func_array('sprintf', $sprintfParams);
+    }
+
+    public function getRelated()
+    {
+        return $this->related;
     }
 
     public function setRelated(array $relatedExceptions)
     {
         foreach ($relatedExceptions as $related)
-            $this->addRelated($related, false);
-        $this->renderMessage();
+            $this->addRelated($related);
         return $this;
     }
 
-    public function addRelated(Exception $related, $render=true)
+    public function addRelated(Exception $related)
     {
         $this->related[] = $related;
-        if ($render)
-            $this->renderMessage();
         return $this;
     }
 
-    public function useTemplate($code)
+    public function getTemplate()
     {
-        $this->messageTemplate = @static::$defaultTemplates[$code];
+        $templateKey = call_user_func_array(
+            array($this, 'chooseTemplate'), $this->params
+        );
+        return static::$defaultTemplates[$templateKey];
+    }
+
+    public function __toString()
+    {
+        return $this->getMainMessage();
     }
 
 }

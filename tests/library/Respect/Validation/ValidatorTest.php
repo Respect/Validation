@@ -160,7 +160,43 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         );
         $v->assert(null);
         $v->assert(12);
-        $v->assert(-12.5);
+        $v->assert(-1.1);
+    }
+
+    public function testSomething()
+    {
+        $v = Validator::noneOf(
+                Validator::int()->positive(), //positive integer or;
+                Validator::float()->negative(), //negative float or; 
+                Validator::nullValue() //null
+        );
+        try {
+            $v->assert(null);
+        } catch (\Exception $e) {
+            //echo $e->getFullMessage();
+        }
+    }
+
+    public function testAbc()
+    {
+        //Must have 
+        $v = Validator::allOf(
+                Validator::attribute('user',
+                    Validator::allOf(
+                        Validator::attribute('screen_name',
+                            Validator::alnum('_')->noWhitespace()->length(1, 15)
+                        ),
+                        Validator::attribute('id', Validator::int()->positive())
+                    )
+                ),
+                Validator::attribute('text', Validator::string()->length(1, 140)),
+                Validator::attribute('created_at', Validator::date())
+        );
+        try {
+            $v->assert((object) array("user" => (object) array("screen_name" => null), "text" => null));
+        } catch (\Exception $e) {
+            echo PHP_EOL . $e->getFullMessage() . PHP_EOL;
+        }
     }
 
 }

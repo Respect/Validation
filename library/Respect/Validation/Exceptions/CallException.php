@@ -2,12 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class CallException extends ValidationException
+class CallException extends AbstractRelatedException
 {
-
-    public function renderMessage()
-    {
-        $this->message = $this->related[0]->getMessage();
-    }
-
+    
 }

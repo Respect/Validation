@@ -2,21 +2,19 @@
 
 namespace Respect\Validation\Exceptions;
 
-class KeyException extends ValidationException
+class KeyException extends AbstractRelatedException
 {
-    const INVALID_KEY= 'Key_1';
-    const INVALID_KEY_RELATED = 'Key_2';
     public static $defaultTemplates = array(
-        self::INVALID_KEY => '"%2$s" is not present',
-        self::INVALID_KEY_RELATED => '"%2$s" is invalid',
+        '"%2$s" is not present',
+        '"%2$s" is invalid',
     );
 
-    public function chooseTemplate($input, $attributeName, $TheAttribute)
+    public function chooseTemplate($input, $attributeName, $theAttribute)
     {
-        if (!$TheAttribute)
-            return self::INVALID_KEY;
+        if (!$theAttribute)
+            return 0;
         else
-            return self::INVALID_KEY_RELATED;
+            return 1;
     }
 
 }
