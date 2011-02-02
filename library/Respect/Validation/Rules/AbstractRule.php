@@ -4,11 +4,13 @@ namespace Respect\Validation\Rules;
 
 use Exception;
 use Respect\Validation\Validatable;
+use Respect\Validation\Exceptions\ValidationException;
 
 abstract class AbstractRule implements Validatable
 {
 
     protected $exception;
+    protected $id;
 
     public function __construct()
     {
@@ -33,9 +35,10 @@ abstract class AbstractRule implements Validatable
         return $this->exception;
     }
 
-    public function setException(Exception $e)
+    public function setException(ValidationException $e)
     {
         $this->exception = $e;
+        return $this;
     }
 
     public function assert($input)

@@ -12,6 +12,27 @@ class EachTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($result);
     }
 
+    public function testEachKey()
+    {
+        $v = new Each(new Alpha(), new Int());
+        $result = $v->validate(array('a', 'b', 'c', 'd', 'e'));
+        $this->assertTrue($result);
+    }
+
+    public function testEachKeyOnly()
+    {
+        $v = new Each(null, new Int());
+        $result = $v->validate(array('a', 'b', 'c', 'd', 'e'));
+        $this->assertTrue($result);
+    }
+
+    public function testEachNotTraversable()
+    {
+        $v = new Each(new NotEmpty());
+        $result = $v->validate(null);
+        $this->assertTrue($result);
+    }
+
     public function testEachOneInvalid()
     {
         $v = new Each(new NotEmpty());

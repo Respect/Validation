@@ -163,40 +163,56 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $v->assert(-1.1);
     }
 
-    public function testSomething()
+    public function testFullCase()
     {
-        $v = Validator::noneOf(
-                Validator::int()->positive(), //positive integer or;
-                Validator::float()->negative(), //negative float or; 
-                Validator::nullValue() //null
+        $target = array(
+            "id" => 10,
+            "text" => "wow, Respect rocks!!!",
+            "created_at" => '2011-01-01',
+            "user" => array(
+                "id" => 20,
+                "screen_name" => "respect",
+                "bio" => "great validation tool",
+                "created_at" => '2010-01-01',
+                "lists" => array(
+                    "php" => array(
+                        "created_at" => '2010-01-02',
+                        "description" => "PHP users"
+                    ),
+                    "rest" => array(
+                        "created_at" => '2010-01-02',
+                        "description" => "RESTfarians"
+                    ),
+                )
+            ),
         );
-        try {
-            $v->assert(null);
-        } catch (\Exception $e) {
-            //echo $e->getFullMessage();
-        }
-    }
-
-    public function testAbc()
-    {
-        //Must have 
+        //quick nice hack to turn an array into an object
+        $target = json_decode(json_encode($target));
         $v = Validator::allOf(
-                Validator::attribute('user',
+                Validator::attribute("id", $idVal = Validator::int()->positive()),
+                Validator::attribute("text",
+                    $textVal = Validator::string()->length(1, 140)),
+                Validator::attribute("created_at",
+                    $dateVal = Validator::date()->between(null, new \DateTime())),
+                Validator::attribute("user",
                     Validator::allOf(
-                        Validator::attribute('screen_name',
-                            Validator::alnum('_')->noWhitespace()->length(1, 15)
-                        ),
-                        Validator::attribute('id', Validator::int()->positive())
+                        Validator::attribute("id", $idVal),
+                        Validator::attribute("screen_name",
+                            Validator::alnum("_")->noWhitespace()->length(1, 15)),
+                        Validator::attribute("bio", $textVal),
+                        Validator::attribute("created_at", $dateVal),
+                        Validator::attribute("lists",
+                            Validator::each(
+                                Validator::allOf(
+                                    Validator::attribute("created_at", $dateVal),
+                                    Validator::attribute("description", $textVal)
+                                )
+                            )
+                        )
                     )
-                ),
-                Validator::attribute('text', Validator::string()->length(1, 140)),
-                Validator::attribute('created_at', Validator::date())
+                )
         );
-        try {
-            $v->assert((object) array("user" => (object) array("screen_name" => null), "text" => null));
-        } catch (\Exception $e) {
-            echo PHP_EOL . $e->getFullMessage() . PHP_EOL;
-        }
+        $v->assert($target);
     }
 
 }

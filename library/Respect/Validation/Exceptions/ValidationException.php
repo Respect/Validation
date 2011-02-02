@@ -4,8 +4,10 @@ namespace Respect\Validation\Exceptions;
 
 use \InvalidArgumentException;
 use \Exception;
+use \RecursiveIteratorIterator;
 use \RecursiveTreeIterator;
 use Respect\Validation\ExceptionIterator;
+use Respect\Validation\Reportable;
 
 class ValidationException extends InvalidArgumentException
 {
@@ -15,6 +17,7 @@ class ValidationException extends InvalidArgumentException
     );
     protected $related = array();
     protected $params = array();
+    protected $name = '';
 
     public static function create()
     {
@@ -33,6 +36,11 @@ class ValidationException extends InvalidArgumentException
             }, func_get_args()
         );
         $this->message = $this->getMainMessage();
+        if (empty($this->name)) {
+            $name = end(explode('\\', get_called_class()));
+            $name = lcfirst(str_replace('Exception', '', $name));
+            $this->setName($name);
+        }
         return $this;
     }
 
@@ -49,9 +57,37 @@ class ValidationException extends InvalidArgumentException
         return implode(PHP_EOL, $message);
     }
 
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function __get($name)
+    {
+        return $this->getRelatedByName($name) ?: $this;
+    }
+
+    public function getRelatedByName($name)
+    {
+        $iter = new RecursiveIteratorIterator(
+                new ExceptionIterator($this, true),
+                RecursiveIteratorIterator::SELF_FIRST
+        );
+        foreach ($iter as $e)
+            if ($e->getName() === $name)
+                return $e;
+    }
+
     public function getMainMessage()
     {
         $sprintfParams = $this->params;
+        if (empty($sprintfParams))
+            return $this->message;
         array_unshift($sprintfParams, $this->getTemplate());
         return call_user_func_array('sprintf', $sprintfParams);
     }
@@ -68,7 +104,7 @@ class ValidationException extends InvalidArgumentException
         return $this;
     }
 
-    public function addRelated(Exception $related)
+    public function addRelated(ValidationException $related)
     {
         $this->related[] = $related;
         return $this;

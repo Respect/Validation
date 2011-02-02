@@ -35,6 +35,7 @@ abstract class AbstractRelated extends AbstractRule implements Validatable
         if (!is_null($related))
             $e->addRelated($related);
         $e->configure($input, $this->reference, !is_null($related));
+        $e->setName($this->reference);
         return $e;
     }
 

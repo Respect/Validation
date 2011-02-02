@@ -6,7 +6,7 @@ class EachException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        '%3$d invalid itens found',
+        '%4$d invalid itens found (%3$s)',
     );
 
 }
