@@ -212,7 +212,12 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
                     )
                 )
         );
-        $v->assert($target);
+        $target->user->lists->php = null;
+        try {
+            $v->assert($target);
+        } catch (\Exception $e) {
+            echo $e->findRelated('user', 'lists')->getFullMessage();
+        }
     }
 
 }

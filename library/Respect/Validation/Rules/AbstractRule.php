@@ -44,8 +44,7 @@ abstract class AbstractRule implements Validatable
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this->getException() ? : $this->createException()
-                    ->configure($input);
+            throw $this->getException() ? : $this->createException()->configure($input);
         return true;
     }
 

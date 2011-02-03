@@ -67,11 +67,6 @@ class ValidationException extends InvalidArgumentException
         return $this->name;
     }
 
-    public function __get($name)
-    {
-        return $this->getRelatedByName($name) ?: $this;
-    }
-
     public function getRelatedByName($name)
     {
         $iter = new RecursiveIteratorIterator(
@@ -81,6 +76,16 @@ class ValidationException extends InvalidArgumentException
         foreach ($iter as $e)
             if ($e->getName() === $name)
                 return $e;
+        return false;
+    }
+
+    public function findRelated()
+    {
+        $target = $this;
+        $path = func_get_args();
+        while (!empty($path) && $target !== false)
+            $target = $this->getRelatedByName(array_shift($path));
+        return $target;
     }
 
     public function getMainMessage()

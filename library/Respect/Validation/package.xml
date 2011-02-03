@@ -10,8 +10,8 @@
   <email>alexandre@gaigalas.net</email>
   <active>yes</active>
  </lead>
- <date>2011-02-02</date>
- <time>00:27:51</time>
+ <date>2011-02-03</date>
+ <time>20:16:47</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -65,11 +65,11 @@ First Version
    <file baseinstalldir="Respect/Validation" md5sum="5f88f980867180b6895accf2bbf56304" name="Exceptions/RegexException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="9a62c0bb8723bed9b9f7cb9f5b10d1d2" name="Exceptions/SfException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="022f47b77de6317e6fff032a75c4cf46" name="Exceptions/StringException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="eac61602024f9f0072f314c9a6376490" name="Exceptions/ValidationException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="8a49fa9f3765c47c8503c5dc952b3393" name="Exceptions/ValidationException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="ea6baf29fd0d22ae11ffc24fc8b63426" name="Exceptions/ZendException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="afb715ca150a699600581cf0662e3ea8" name="Rules/AbstractComposite.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="975c7c86ae1c1348c4b502ebb3cb4b1d" name="Rules/AbstractRelated.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="58ad1a586df1a5f7bdaf128635d47cb1" name="Rules/AbstractRule.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="cfb62c0837f2109310a38142bf0261d3" name="Rules/AbstractRule.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="77a90010ca6ea9c687426b1b870770ec" name="Rules/AllOf.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="698c5305baff4a40d732a0f2f9f9066c" name="Rules/Alnum.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="dc721027b68ebd939a50147ddf4e7ee0" name="Rules/Alpha.php" role="php" />
@@ -133,7 +133,7 @@ First Version
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2011-02-02</date>
+   <date>2011-02-03</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
    <notes>
 First Version
