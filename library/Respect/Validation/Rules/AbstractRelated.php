@@ -14,11 +14,11 @@ abstract class AbstractRelated extends AbstractRule implements Validatable
     protected $reference = '';
     protected $referenceValidator;
 
-    public function __construct($reference,
-        Validatable $referenceValidator=null, $mandatory=true)
+    public function __construct($reference, Validatable $validator=null,
+        $mandatory=true)
     {
         $this->reference = $reference;
-        $this->referenceValidator = $referenceValidator;
+        $this->referenceValidator = $validator;
         $this->mandatory = $mandatory;
     }
 

@@ -12,10 +12,7 @@ class AttributeException extends AbstractRelatedException
 
     public function chooseTemplate($input, $attributeName, $hasTheAttribute)
     {
-        if (!$hasTheAttribute)
-            return 0;
-        else
-            return 1;
+        return $hasTheAttribute ? 1 : 0;
     }
 
 }

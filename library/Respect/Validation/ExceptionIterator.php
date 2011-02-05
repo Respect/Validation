@@ -6,7 +6,7 @@ use \RecursiveArrayIterator;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Exceptions\AbstractCompositeException;
 
-class ExceptionIterator extends RecursiveArrayIterator
+class ExceptionIterator extends RecursiveArrayIterator 
 {
 
     protected $fullRelated;

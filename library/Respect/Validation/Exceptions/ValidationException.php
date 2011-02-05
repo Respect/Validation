@@ -11,7 +11,8 @@ use Respect\Validation\Reportable;
 
 class ValidationException extends InvalidArgumentException
 {
-
+    const ITERATE_TREE = 1;
+    const ITERATE_ALL = 2;
     public static $defaultTemplates = array(
         'Data validation failed: "%s"'
     );
@@ -22,37 +23,45 @@ class ValidationException extends InvalidArgumentException
     public static function create()
     {
         $instance = new static;
-        $params = func_get_args();
-        if (!empty($params))
-            $instance->configure($params);
-        return $instance;
+        return func_num_args() > 0 ? $instance : $instance->configure(func_get_args());
     }
 
     public function configure()
     {
-        $this->params = array_map(
-            function($mixed) {
-                return is_object($mixed) ? get_class($mixed) : strval($mixed);
-            }, func_get_args()
-        );
         $this->message = $this->getMainMessage();
-        if (empty($this->name)) {
-            $name = end(explode('\\', get_called_class()));
-            $name = lcfirst(str_replace('Exception', '', $name));
-            $this->setName($name);
-        }
+        $this->params = func_get_args();
+        $this->stringifyParams();
+        $this->guessName();
         return $this;
+    }
+
+    protected function guessName()
+    {
+        if (!empty($this->name))
+            return;
+        $name = end(explode('\\', get_called_class()));
+        $name = lcfirst(str_replace('Exception', '', $name));
+        $this->setName($name);
+    }
+
+    protected function stringifyParams()
+    {
+        foreach ($this->params as &$param)
+            if (!is_object($param) || method_exists($param, '__toString'))
+                $param = (string) $param;
+            else
+                $param = get_class($param);
     }
 
     public function chooseTemplate()
     {
-        return array_shift(array_keys(static::$defaultTemplates));
+        return key(static::$defaultTemplates);
     }
 
     public function getFullMessage()
     {
         $message = array();
-        foreach (new RecursiveTreeIterator(new ExceptionIterator($this)) as $m)
+        foreach ($this->iterate(false, self::ITERATE_TREE) as $m)
             $message[] = $m;
         return implode(PHP_EOL, $message);
     }
@@ -69,14 +78,19 @@ class ValidationException extends InvalidArgumentException
 
     public function getRelatedByName($name)
     {
-        $iter = new RecursiveIteratorIterator(
-                new ExceptionIterator($this, true),
-                RecursiveIteratorIterator::SELF_FIRST
-        );
-        foreach ($iter as $e)
+        foreach ($this->iterate(true) as $e)
             if ($e->getName() === $name)
                 return $e;
         return false;
+    }
+
+    public function iterate($full=false, $mode=self::ITERATE_ALL)
+    {
+        $exceptionIterator = new ExceptionIterator($this, $full);
+        if ($mode == self::ITERATE_ALL)
+            return new RecursiveIteratorIterator($exceptionIterator, 1);
+        else
+            return new RecursiveTreeIterator($exceptionIterator);
     }
 
     public function findRelated()

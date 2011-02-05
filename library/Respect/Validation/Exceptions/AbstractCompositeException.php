@@ -12,10 +12,7 @@ class AbstractCompositeException extends AbstractRelatedException
 
     public function chooseTemplate($input, $numFailed, $numRequired, $numTotal)
     {
-        if ($numFailed === $numTotal)
-            return 0;
-        else
-            return 1;
+        return $numFailed === $numTotal ? 0 : 1;
     }
 
     public function getMainMessage()

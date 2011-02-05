@@ -12,10 +12,7 @@ class AlnumException extends ValidationException
 
     public function chooseTemplate($input, $additionalCharacters=null)
     {
-        if (empty($additionalCharacters))
-            return 0;
-        else
-            return 1;
+        return empty($additionalCharacters) ? 0 : 1;
     }
 
 }

@@ -12,10 +12,7 @@ class MaxException extends ValidationException
 
     public function chooseTemplate($input, $inclusive)
     {
-        if ($inclusive)
-            return 0;
-        else
-            return 1;
+        return $inclusive ? 0 : 1 ;
     }
 
 }

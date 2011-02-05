@@ -11,10 +11,7 @@ class KeyException extends AbstractRelatedException
 
     public function chooseTemplate($input, $attributeName, $theAttribute)
     {
-        if (!$theAttribute)
-            return 0;
-        else
-            return 1;
+        return $theAttribute ? 0 : 1;
     }
 
 }

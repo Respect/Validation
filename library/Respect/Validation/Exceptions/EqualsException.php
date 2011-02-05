@@ -12,10 +12,7 @@ class EqualsException extends ValidationException
 
     public function chooseTemplate($input, $equals, $identical)
     {
-        if ($identical)
-            return 1;
-        else
-            return 0;
+        return ($identical) ? 1 : 0;
     }
 
 }

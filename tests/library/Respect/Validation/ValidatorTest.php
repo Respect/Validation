@@ -22,10 +22,25 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         Validator::arr()->assert(array());
     }
 
+    public function testAttribute()
+    {
+        Validator::attribute("foo", Validator::string())->assert((object) array("foo" => "bar"));
+    }
+
     public function testBetween()
     {
         Validator::between(5, 15)->assert(10);
         Validator::between('a', 'f')->assert('b');
+    }
+
+    public function testCall()
+    {
+        Validator::call('implode', Validator::int())->assert(array(1, 2, 3, 4));
+    }
+
+    public function testCallback()
+    {
+        Validator::callback('is_string')->assert('something');
     }
 
     public function testDate()
@@ -37,6 +52,11 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     public function testDigits()
     {
         Validator::digits()->assert('02384');
+    }
+
+    public function testEach()
+    {
+        Validator::each(Validator::hexa())->assert(array('AF', 'D1', '09'));
     }
 
     public function testEquals()
@@ -161,63 +181,6 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $v->assert(null);
         $v->assert(12);
         $v->assert(-1.1);
-    }
-
-    public function testFullCase()
-    {
-        $target = array(
-            "id" => 10,
-            "text" => "wow, Respect rocks!!!",
-            "created_at" => '2011-01-01',
-            "user" => array(
-                "id" => 20,
-                "screen_name" => "respect",
-                "bio" => "great validation tool",
-                "created_at" => '2010-01-01',
-                "lists" => array(
-                    "php" => array(
-                        "created_at" => '2010-01-02',
-                        "description" => "PHP users"
-                    ),
-                    "rest" => array(
-                        "created_at" => '2010-01-02',
-                        "description" => "RESTfarians"
-                    ),
-                )
-            ),
-        );
-        //quick nice hack to turn an array into an object
-        $target = json_decode(json_encode($target));
-        $v = Validator::allOf(
-                Validator::attribute("id", $idVal = Validator::int()->positive()),
-                Validator::attribute("text",
-                    $textVal = Validator::string()->length(1, 140)),
-                Validator::attribute("created_at",
-                    $dateVal = Validator::date()->between(null, new \DateTime())),
-                Validator::attribute("user",
-                    Validator::allOf(
-                        Validator::attribute("id", $idVal),
-                        Validator::attribute("screen_name",
-                            Validator::alnum("_")->noWhitespace()->length(1, 15)),
-                        Validator::attribute("bio", $textVal),
-                        Validator::attribute("created_at", $dateVal),
-                        Validator::attribute("lists",
-                            Validator::each(
-                                Validator::allOf(
-                                    Validator::attribute("created_at", $dateVal),
-                                    Validator::attribute("description", $textVal)
-                                )
-                            )
-                        )
-                    )
-                )
-        );
-        $target->user->lists->php = null;
-        try {
-            $v->assert($target);
-        } catch (\Exception $e) {
-            echo $e->findRelated('user', 'lists')->getFullMessage();
-        }
     }
 
 }

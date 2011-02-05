@@ -46,23 +46,23 @@ abstract class AbstractComposite extends AbstractRule implements Validatable
 
     public function addRules(array $validators, $prefix='')
     {
-        foreach ($validators as $k => $v) {
-            if (is_object($v)) {
-                $this->addRule($v);
+        foreach ($validators as $validatorKey => $validatorSpec) {
+            if (is_object($validatorSpec)) {
+                $this->addRule($validatorSpec);
                 continue;
-            } elseif (is_numeric($k)) {
-                $validatorName = $v;
+            } elseif (is_numeric($validatorKey)) {
+                $validatorName = $validatorSpec;
                 $validatorArgs = array();
             } else {
-                $validatorName = $k;
-                if (!empty($v) && !is_array($v))
+                $validatorName = $validatorKey;
+                if (!empty($validatorSpec) && !is_array($validatorSpec))
                     throw new ComponentException(
                         sprintf(
                             'Arguments for array-specified validators must be an array, you provided %s',
-                            $v
+                            $validatorSpec
                         )
                     );
-                $validatorArgs = empty($v) ? array() : $v;
+                $validatorArgs = empty($validatorSpec) ? array() : $validatorSpec;
             }
             if (!empty($prefix))
                 $validatorName = $prefix . '\\' . $validatorName;
