@@ -1,6 +1,6 @@
 
 <phpunit backupGlobals="false"
-         backupStaticAttributes="true"
+         backupStaticAttributes="false" 
          bootstrap="bootstrap.php"
          colors="false"
          convertErrorsToExceptions="true"

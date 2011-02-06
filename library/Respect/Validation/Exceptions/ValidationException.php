@@ -18,39 +18,53 @@ class ValidationException extends InvalidArgumentException
     );
     protected $related = array();
     protected $params = array();
-    protected $name = '';
+    protected $id = '';
+    protected $template = '';
 
-    public static function create()
+    public function getParams()
     {
-        $instance = new static;
-        return func_num_args() > 0 ? $instance : $instance->configure(func_get_args());
+        return $this->params;
     }
 
-    public function configure()
+    public function setTemplate($template)
+    {
+        $this->template = $template;
+    }
+
+    public static function create($input=null)
+    {
+        $i = new static;
+        if (func_get_args() > 0)
+            return call_user_func_array(array($i, 'configure'), func_get_args());
+        else
+            return $i;
+    }
+
+    public function configure($input=null)
     {
         $this->message = $this->getMainMessage();
         $this->params = func_get_args();
-        $this->stringifyParams();
-        $this->guessName();
+        $this->stringifyInput();
+        $this->guessId();
         return $this;
     }
 
-    protected function guessName()
+    protected function guessId()
     {
-        if (!empty($this->name))
+        if (!empty($this->id))
             return;
-        $name = end(explode('\\', get_called_class()));
-        $name = lcfirst(str_replace('Exception', '', $name));
-        $this->setName($name);
+        $id = end(explode('\\', get_called_class()));
+        $id = lcfirst(str_replace('Exception', '', $id));
+        $this->setId($id);
     }
 
-    protected function stringifyParams()
+    protected function stringifyInput()
     {
-        foreach ($this->params as &$param)
-            if (!is_object($param) || method_exists($param, '__toString'))
-                $param = (string) $param;
-            else
-                $param = get_class($param);
+        $param = &$this->params[0];
+        if (!is_object($param) || method_exists($param, '__toString'))
+            $param = (string) $param;
+        else
+            $param = get_class($param);
     }
 
     public function chooseTemplate()
@@ -61,30 +75,31 @@ class ValidationException extends InvalidArgumentException
     public function getFullMessage()
     {
         $message = array();
-        foreach ($this->iterate(false, self::ITERATE_TREE) as $m)
+        foreach ($this->getIterator(false, self::ITERATE_TREE) as $m)
             $message[] = $m;
         return implode(PHP_EOL, $message);
     }
 
-    public function setName($name)
+    public function setId($id)
     {
-        $this->name = $name;
+        $this->id = $id;
+        return $this;
     }
 
-    public function getName()
+    public function getId()
     {
-        return $this->name;
+        return $this->id;
     }
 
     public function getRelatedByName($name)
     {
-        foreach ($this->iterate(true) as $e)
-            if ($e->getName() === $name)
+        foreach ($this->getIterator(true) as $e)
+            if ($e->getId() === $name)
                 return $e;
         return false;
     }
 
-    public function iterate($full=false, $mode=self::ITERATE_ALL)
+    public function getIterator($full=false, $mode=self::ITERATE_ALL)
     {
         $exceptionIterator = new ExceptionIterator($this, $full);
         if ($mode == self::ITERATE_ALL)
@@ -131,10 +146,12 @@ class ValidationException extends InvalidArgumentException
 
     public function getTemplate()
     {
+        if (!empty($this->template))
+            return $this->template;
         $templateKey = call_user_func_array(
             array($this, 'chooseTemplate'), $this->params
         );
-        return static::$defaultTemplates[$templateKey];
+        return $this->template = static::$defaultTemplates[$templateKey];
     }
 
     public function __toString()

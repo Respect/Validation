@@ -26,17 +26,10 @@ abstract class AbstractRelated extends AbstractRule implements Validatable
 
     abstract protected function getReferenceValue($input);
 
-    protected function reportError($input, ValidationException $related=null)
+    public function reportError($input, array $relatedExceptions=array())
     {
-        $e = $this->getException();
-        if ($e)
-            return $e;
-        $e = $this->createException();
-        if (!is_null($related))
-            $e->addRelated($related);
-        $e->configure($input, $this->reference, !is_null($related));
-        $e->setName($this->reference);
-        return $e;
+        return parent::reportError($input, $relatedExceptions, $this->reference,
+            !is_null($relatedExceptions))->setId($this->reference);
     }
 
     public function validate($input)
@@ -59,7 +52,7 @@ abstract class AbstractRelated extends AbstractRule implements Validatable
                     $this->getReferenceValue($input)
                 );
         } catch (ValidationException $e) {
-            throw $this->reportError($input, $e);
+            throw $this->reportError($input, array($e));
         } catch (ReflectionException $e) {
             throw $this->reportError($input);
         }

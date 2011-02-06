@@ -20,8 +20,7 @@ class Regex extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this->getException() ? : $this->createException()
-                    ->configure($input, $this->regex);
+            throw $this->reportError($input, array(), $this->regex);
         return true;
     }
 

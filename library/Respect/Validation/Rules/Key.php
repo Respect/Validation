@@ -16,6 +16,7 @@ class Key extends AbstractRelated
                 'Invalid array key name'
             );
         parent::__construct($reference, $referenceValidator, $mandatory);
+        $this->setName($reference);
     }
 
     protected function hasReference($input)

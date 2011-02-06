@@ -7,14 +7,10 @@ class AllOf extends AbstractComposite
 
     public function validate($input)
     {
-        $validators = $this->getRules();
-        $passedValidators = array_filter(
-            $validators,
-            function($v) use($input) {
-                return $v->validate($input);
-            }
-        );
-        return count($validators) === count($passedValidators);
+        foreach ($this->getRules() as $rule)
+            if (!$rule->validate())
+                return false;
+        return true;
     }
 
     public function assert($input)
@@ -22,11 +18,8 @@ class AllOf extends AbstractComposite
         $exceptions = $this->validateRules($input);
         $numRules = count($this->rules);
         if (!empty($exceptions))
-            throw $this->getException() ? : $this->createException()
-                    ->setRelated($exceptions)
-                    ->configure(
-                        $input, count($exceptions), $numRules, $numRules
-                    );
+            throw $this->reportError($input, $exceptions, count($exceptions),
+                $numRules, $numRules);
         return true;
     }
 

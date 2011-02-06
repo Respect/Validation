@@ -10,11 +10,22 @@ abstract class AbstractRule implements Validatable
 {
 
     protected $exception;
-    protected $id;
+    protected $name;
 
     public function __construct()
     {
         
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    public function getName()
+    {
+        return $this->name;
     }
 
     public function __invoke($input)
@@ -35,6 +46,11 @@ abstract class AbstractRule implements Validatable
         return $this->exception;
     }
 
+    public function hasException()
+    {
+        return!empty($this->exception);
+    }
+
     public function setException(ValidationException $e)
     {
         $this->exception = $e;
@@ -44,13 +60,27 @@ abstract class AbstractRule implements Validatable
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this->getException() ? : $this->createException()->configure($input);
+            throw $this->reportError($input);
         return true;
     }
 
     public function check($input)
     {
         return $this->assert($input);
+    }
+
+    public function reportError($input, array $relatedExceptions=array())
+    {
+        if ($this->hasException())
+            return $this->getException();
+
+        $exception = $this->createException()->setRelated($relatedExceptions);
+        $parameters = array();
+        if (func_num_args() > 2)
+            $parameters = array_slice(func_get_args(), 2);
+        array_unshift($parameters, $this->getName() ? : $input);
+        call_user_func_array(array($exception, 'configure'), $parameters);
+        return $exception;
     }
 
 }

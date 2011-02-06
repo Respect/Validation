@@ -30,10 +30,8 @@ class In extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this->getException() ? : $this->createException()
-                    ->configure(
-                        $input, print_r($this->options, true), $this->strict
-                    );
+            throw $this->reportError($input, array(),
+                print_r($this->options, true), $this->strict);
         return true;
     }
 

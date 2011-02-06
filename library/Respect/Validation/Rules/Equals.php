@@ -25,8 +25,8 @@ class Equals extends AbstractRule
     public function assert($input)
     {
         if (!$this->validate($input))
-            throw $this->getException() ? : $this->createException()
-                    ->configure($input, $this->param, $this->identical);
+            throw $this->reportError($input, array(), $this->param,
+                $this->identical);
     }
 
 }

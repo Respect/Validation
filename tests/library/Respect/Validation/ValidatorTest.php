@@ -2,170 +2,171 @@
 
 namespace Respect\Validation;
 
+use Respect\Validation\Validator as v;
+
 class ValidatorTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testAlnum()
     {
-        Validator::alnum()->assert('abc 123');
-        Validator::alnum('_')->assert('a_bc _123');
+        v::alnum()->assert('abc 123');
+        v::alnum('_')->assert('a_bc _123');
     }
 
     public function testAlpha()
     {
-        Validator::alpha()->assert('ab c');
-        Validator::alpha('.')->assert('a. b.c');
+        v::alpha()->assert('ab c');
+        v::alpha('.')->assert('a. b.c');
     }
 
     public function testArr()
     {
-        Validator::arr()->assert(array());
+        v::arr()->assert(array());
     }
 
     public function testAttribute()
     {
-        Validator::attribute("foo", Validator::string())->assert((object) array("foo" => "bar"));
+        v::attribute("foo", v::string())->assert((object) array("foo" => "bar"));
     }
 
     public function testBetween()
     {
-        Validator::between(5, 15)->assert(10);
-        Validator::between('a', 'f')->assert('b');
+        v::between(5, 15)->assert(10);
+        v::between('a', 'f')->assert('b');
     }
 
     public function testCall()
     {
-        Validator::call('implode', Validator::int())->assert(array(1, 2, 3, 4));
+        v::call('implode', v::int())->assert(array(1, 2, 3, 4));
     }
 
     public function testCallback()
     {
-        Validator::callback('is_string')->assert('something');
+        v::callback('is_string')->assert('something');
     }
 
     public function testDate()
     {
-        Validator::date('Y-m-d')->assert('2010-10-10');
-        Validator::date()->assert('Jan 10 2008');
+        v::date('Y-m-d')->assert('2010-10-10');
+        v::date()->assert('Jan 10 2008');
     }
 
     public function testDigits()
     {
-        Validator::digits()->assert('02384');
+        v::digits()->assert('02384');
     }
 
     public function testEach()
     {
-        Validator::each(Validator::hexa())->assert(array('AF', 'D1', '09'));
+        v::each(v::hexa())->assert(array('AF', 'D1', '09'));
     }
 
     public function testEquals()
     {
-        Validator::equals('foobar')->assert('foobar');
+        v::equals('foobar')->assert('foobar');
     }
 
     public function testFloat()
     {
-        Validator::float()->assert(1.5);
+        v::float()->assert(1.5);
     }
 
     public function testHexa()
     {
-        Validator::hexa()->assert('FAFAF');
+        v::hexa()->assert('FAFAF');
     }
 
     public function testIn()
     {
-        Validator::in(array(1, 1, 2, 3, 5, 8))->assert(5);
+        v::in(array(1, 1, 2, 3, 5, 8))->assert(5);
     }
 
     public function testInstance()
     {
-        Validator::instance('\stdClass')->assert(new \stdClass);
+        v::instance('\stdClass')->assert(new \stdClass);
     }
 
     public function testInt()
     {
-        Validator::int()->assert(1548);
+        v::int()->assert(1548);
     }
 
     public function testIp()
     {
-        Validator::ip()->assert('200.226.220.222');
+        v::ip()->assert('200.226.220.222');
     }
 
     public function testLength()
     {
-        Validator::length(5, 10)->assert('foobar');
-        Validator::length(5, 10)->assert(array(1, 2, 3, 4, 5));
+        v::length(5, 10)->assert('foobar');
+        v::length(5, 10)->assert(array(1, 2, 3, 4, 5));
     }
 
     public function testMax()
     {
-        Validator::max(5)->assert(3);
+        v::max(5)->assert(3);
     }
 
     public function testMin()
     {
-        Validator::min(5)->assert(7);
+        v::min(5)->assert(7);
     }
 
     public function testNegative()
     {
-        Validator::negative()->assert(-5);
+        v::negative()->assert(-5);
     }
 
     public function testPositive()
     {
-        Validator::positive()->assert(3);
+        v::positive()->assert(3);
     }
 
     public function testNoWhitespace()
     {
-        Validator::noWhitespace()->assert('abc');
+        v::noWhitespace()->assert('abc');
     }
 
     public function testNotEmpty()
     {
-        Validator::notEmpty()->assert('aaa');
+        v::notEmpty()->assert('aaa');
     }
 
     public function testNullValue()
     {
-        Validator::nullValue()->assert(null);
+        v::nullValue()->assert(null);
     }
 
     public function testNumeric()
     {
-        Validator::numeric()->assert(1.56e-5);
+        v::numeric()->assert(1.56e-5);
     }
 
     public function testObject()
     {
-        Validator::object()->assert(new \DateTime());
+        v::object()->assert(new \DateTime());
     }
 
     public function testRegex()
     {
-        Validator::regex('[a-f]+')->assert('abcdef');
+        v::regex('^[a-f]+$')->assert('abcdef');
     }
 
     public function testString()
     {
-        Validator::string()->assert('Hello World');
+        v::string()->assert('Hello World');
     }
 
     public function testAllOf()
     {
-        Validator::allOf(
-            Validator::string(), //any string
-            Validator::length(5, 20), //between 5 and 20 chars
-            Validator::noWhitespace()   //no whitespace allowed
+        v::allOf(
+            v::string(), //any string v::length(5, 20), //between 5 and 20 chars
+            v::noWhitespace()   //no whitespace allowed
         )->assert('alganet');
 
         //same as
 
-        Validator::string()
+        v::string()
             ->length(5, 20)
             ->noWhitespace()
             ->assert('alganet');
@@ -173,14 +174,47 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 
     public function testOneOf()
     {
-        $v = Validator::oneOf(
-                Validator::int()->positive(), //positive integer or;
-                Validator::float()->negative(), //negative float or; 
-                Validator::nullValue() //null
+        $v = v::oneOf(
+                v::int()->positive(), //positive integer or;
+                v::float()->negative(), //negative float or; 
+                v::nullValue() //null
         );
         $v->assert(null);
         $v->assert(12);
         $v->assert(-1.1);
+    }
+
+    public function testGmailSignInValidation()
+    {
+        $stringMax256 = v::string()->length(1, 256);
+        $alnumDot = v::alnum('.');
+        $stringMin8 = v::string()->length(8, null);
+        $v = v::allOf(
+                v::attribute('first_name', $stringMax256)->setName('First Name'),
+                v::attribute('last_name', $stringMax256)->setName('Last Name'),
+                v::attribute('desired_login', $alnumDot)->setName('Desired Login'),
+                v::attribute('password', $stringMin8)->setName('Password'),
+                v::attribute('password_confirmation', $stringMin8)->setName('Password Confirmation'),
+                v::attribute('stay_signedin', v::notEmpty())->setName('Stay signed in'),
+                v::attribute('enable_webhistory', v::notEmpty())->setName('Enabled Web History'),
+                v::attribute('security_question', $stringMax256)->setName('Security Question')
+        );
+        try {
+            $v->assert(
+                (object) array(
+                    'first_name' => null,
+                    'last_name' => null,
+                    'desired_login' => null,
+                    'password' => null,
+                    'password_confirmation' => null,
+                    'stay_signedin' => null,
+                    'enable_webhistory' => null,
+                    'security_question' => null,
+                )
+            );
+        } catch (Exceptions\ValidationException $e) {
+            $e->getFullMessage();
+        }
     }
 
 }

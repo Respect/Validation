@@ -34,8 +34,7 @@ class Zend extends AbstractRule
             foreach ($this->zendValidator->getMessages() as $m) {
                 $exceptions[] = $this->createException()->configure($m);
             }
-            throw $this->getException() ? : $this->createException()
-                    ->configure($exceptions);
+            throw $this->reportError($input, $exceptions);
         }
         return true;
     }

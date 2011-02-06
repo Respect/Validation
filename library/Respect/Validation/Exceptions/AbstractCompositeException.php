@@ -26,7 +26,7 @@ class AbstractCompositeException extends AbstractRelatedException
     public function getRelated($full=false)
     {
         if (!$full && 1 === count($this->related))
-            return $this->related[0]->getRelated();
+            return $this->related[0]->getRelated(false);
         else
             return parent::getRelated($full);
     }

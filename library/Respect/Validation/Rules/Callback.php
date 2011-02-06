@@ -23,9 +23,4 @@ class Callback extends AbstractRule
         return call_user_func($this->callback, $input);
     }
 
-    public function getId()
-    {
-        return spl_object_hash($this);
-    }
-
 }

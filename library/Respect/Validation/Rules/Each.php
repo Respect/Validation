@@ -33,18 +33,6 @@ class Each extends AbstractRule
         return true;
     }
 
-    protected function reportError($input, $item=null, array $keys=array(),
-        array $related = array())
-    {
-        $e = $this->getException();
-        if ($e)
-            return $e;
-        $e = $this->createException();
-        $e->setRelated($related);
-        $e->configure($input, $item, implode(', ', $keys), count($related));
-        return $e;
-    }
-
     public function assert($input)
     {
         if (empty($input))
@@ -72,7 +60,8 @@ class Each extends AbstractRule
                 }
         }
         if (!empty($exceptions))
-            throw $this->reportError($input, $item, $keys, $exceptions);
+            throw $this->reportError($input, array(), $item,
+                implode(', ', $keys), count($exceptions));
         return true;
     }
 

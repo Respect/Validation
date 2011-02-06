@@ -18,4 +18,9 @@ interface Validatable
     public function getException();
 
     public function setException(ValidationException $e);
-}   
+
+    public function setName($name);
+
+    public function getName();
+}
+
