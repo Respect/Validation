@@ -6,7 +6,7 @@ class NegativeException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        '"%d" is not a negative number',
+        '"%s" is not a negative number',
     );
 
 }

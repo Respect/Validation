@@ -164,7 +164,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
             v::noWhitespace()   //no whitespace allowed
         )->assert('alganet');
 
-        //same as
+//same as
 
         v::string()
             ->length(5, 20)
@@ -214,6 +214,26 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
             );
         } catch (Exceptions\ValidationException $e) {
             $e->getFullMessage();
+        }
+    }
+
+    public function testReadme()
+    {
+        $username = 'really messed up screen#name';
+        $validUsername = v::alnum('_')
+            ->noWhitespace()
+            ->length(1, 15);
+        try {
+            $validUsername->assert($username);
+        } catch (\Exception $e) {
+            //echo $e->getFullMessage();
+        }
+        $user = array("id" => "some %% invalid %% id");
+        $post = array("user" => $user);
+        try {
+            v::key("user", v::key("id", v::int()->positive()))->assert($post);
+        } catch (\InvalidArgumentException $e) {
+            //echo $e->findRelated('user', 'id', 'positive')->getMainMessage();
         }
     }
 
