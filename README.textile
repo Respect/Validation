@@ -9,7 +9,7 @@ Respect\Validation is the most awesome validation engine ever created for PHP. F
 * PHP 5.3 only
 * Possible integration with Zend 2.0 and Symfony 2.0 validators
 
-Quick Reference:
+h2. Quick Reference:
 
 h3. Namespace import:
 
