@@ -112,7 +112,7 @@ class SplClassLoader
     {
         spl_autoload_unregister(array($this, 'loadClass'));
     }
-    
+
     /**
      * Checks if the given class file really exists.
      *
@@ -121,13 +121,15 @@ class SplClassLoader
      */
     public function classFileExists($classFile)
     {
-        if ( file_exists($classFile) ) {
+        if (file_exists($classFile)) {
             return true;
         }
-        
-        foreach (explode(PATH_SEPARATOR,get_include_path()) as $path) {
-            if ( $path === '.' ) { continue; }
-            if ( file_exists($path.DIRECTORY_SEPARATOR.$classFile) ) {
+
+        foreach (explode(PATH_SEPARATOR, get_include_path()) as $path) {
+            if ($path === '.') {
+                continue;
+            }
+            if (file_exists($path . DIRECTORY_SEPARATOR . $classFile)) {
                 return true;
             }
         }
@@ -156,7 +158,7 @@ class SplClassLoader
             $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . $this->_fileExtension;
 
             $classFile = ($this->_includePath !== null ? $this->_includePath . DIRECTORY_SEPARATOR : '') . $fileName;
-            if ( $this->classFileExists($classFile) ) {
+            if ($this->classFileExists($classFile)) {
                 require $classFile;
             }
         }

@@ -16,79 +16,88 @@ Quick Reference
 Namespace import
 ----------------
 
+    <?php
     use Respect\Validation\Validator as v;
 
 Simple validation
 -----------------
 
-    v::numeric()->validate($someNumber); //returns true or false
+    $number = 123;
+    v::numeric()->validate($number); //true
 
 Chained validation
 ------------------
 
     //From 1 to 15 non-whitespace alphanumeric characters 
-    $username = 'alganet';
     $validUsername = v::alnum()
                       ->noWhitespace()
-                      ->length(1,15)
-                      ->validate($username);
+                      ->length(1,15);
 
-    //Date between two ranges using a specific format
-    $someDate = new DateTime('2010-10-15');
-    $validDate = v::date('Y-m-d')
-                  ->between(new DateTime('2009-01-01'), new DateTime('2011-01-01'))
-                  ->validate($someDate);
+    $validUsername->validate('alganet'); //true
 
 Validating object attributes
 ----------------------------
+    
+    $validUser = v::attribute('username', $validUsername)    //reusing!
+                  ->attribute('birthdate', v::date('Y-m-d'));
 
     $user = new \stdClass;
-    $user->name = 'Alexandre';
+    $user->username = 'alganet';
     $user->birthdate = '1987-07-01';
-    $validUser = v::attribute('name', v::notEmpty())
-               ->v::attribute('birthdate, v::date('Y-m-d'));
+
+    $validUser->validate($user); //true
 
 Validator reuse (works on nested, big validators too!)
 ------------------------------------------------------
 
-    $idValidator = v::int()->positive();
-    $idValidator->validate(123); //true
-    $idValidator->validate(456); //true
-    $idValidator->validate('foo'); //false
-    $idValidator->validate(178); //true
+    $validUsername->validate('respect');            //true
+    $validUsername->validate('alexandre gaigalas'); //false 
+    $validUsername->validate('#$%');                //false 
 
 Cool, informative exceptions
 ----------------------------
 
+The following code:
+
     try {
-        $username = '#some%really*bad screen name';
-        $validUsername = v::alnum('_')
-                          ->noWhitespace()
-                          ->length(1,15)
-                          ->assert($username);
+        $validUsername->assert('really messed up screen#name');
     } catch(\InvalidArgumentException $e) {
-       /* prints:
-            \-None of 3 required rules passed
-              |-"really messed up screen#name" does not contain only letters, digits and "_"
-              |-"really messed up screen#name" contains whitespace
-              \-"really messed up screen#name" length is not between 1 and 15
-       */
        echo $e->getFullMessage();
     }
+
+Produces this message:
+
+    \-None of 3 required rules passed
+      |-"really messed up screen#name" does not contain only letters, digits and "_"
+      |-"really messed up screen#name" contains whitespace
+      \-"really messed up screen#name" length is not between 1 and 15
 
 Message finding on nested Exceptions
 ------------------------------------
 
-    $user = array("id" => "some %% invalid %% id");
-    $post = array("user" => $user);
+Consider the following scenario:
+
+    $validBlogPost = v::object()
+                      ->attribute('title',  v::string()->length(1,32))
+                      ->attribute('author', $validUser)                 //reuse!
+                      ->attribute('date',   v::date())
+                      ->attribute('text',   v::string());
+
+    $blogPost = new \stdClass;
+    $blogPost->author = clone $validUser;
+    $blogPost->author->username = '# invalid #';
+
+The following code:
+
     try {
-        v::key("user", v::key("id", v::int()->positive()))->assert($post);
+        $validBlogPost->assert($blogPost);
     } catch (\InvalidArgumentException $e) {
-        /* prints:
-            "some %% invalid %% id" is not a positive number
-        */
-        echo $e->findRelated('user', 'id', 'positive')->getMainMessage();
+        echo $e->findRelated('author', 'username', 'noWhitespace')->getMainMessage();
     }
+
+Finds the specific noWhitespace message inside author->username and prints it:
+
+>"# invalid #" contains whitespace
 
 Using Zend and/or Symfony validators
 ------------------------------------

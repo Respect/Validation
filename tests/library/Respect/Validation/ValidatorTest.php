@@ -219,22 +219,53 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 
     public function testReadme()
     {
-        $username = 'really messed up screen#name';
-        $validUsername = v::alnum('_')
+        $number = 123;
+        v::numeric()->validate($number); //true
+        //From 1 to 15 non-whitespace alphanumeric characters 
+        $validUsername = v::alnum()
             ->noWhitespace()
             ->length(1, 15);
+
+        $validUsername->validate('alganet'); //true
+        $validUser = v::attribute('username', $validUsername)    //reusing!
+            ->attribute('birthdate', v::date('Y-m-d'));
+
+        $user = new \stdClass;
+        $user->username = 'alganet';
+        $user->birthdate = '1987-07-01';
+
+        $validUser->validate($user); //true
+
+
+        $validUsername->validate('respect');            //true
+        $validUsername->validate('alexandre gaigalas'); //false 
+        $validUsername->validate('#$%');                //false 
+
+
         try {
-            $validUsername->assert($username);
-        } catch (\Exception $e) {
-            //echo $e->getFullMessage();
-        }
-        $user = array("id" => "some %% invalid %% id");
-        $post = array("user" => $user);
-        try {
-            v::key("user", v::key("id", v::int()->positive()))->assert($post);
+            $validUsername->assert('really messed up screen#name');
         } catch (\InvalidArgumentException $e) {
-            //echo $e->findRelated('user', 'id', 'positive')->getMainMessage();
+            echo $e->getFullMessage();
         }
+
+        $validBlogPost = v::object()
+            ->attribute('title', v::string()->length(1, 32))
+            ->attribute('author', $validUser)                 //reuse!
+            ->attribute('date', v::date())
+            ->attribute('text', v::string());
+
+        $blogPost = new \stdClass;
+        $blogPost->author = clone $validUser;
+        $blogPost->author->username = '# invalid #';
+
+        try {
+            $validBlogPost->assert($blogPost);
+        } catch (\InvalidArgumentException $e) {
+            echo $e->findRelated('author', 'username', 'noWhitespace')->getMainMessage();
+        }
+
+        $validHostName = v::zend('hostname')->assert('google.com');
+        $validTime = v::sf('time')->assert('22:00:01');
     }
 
 }

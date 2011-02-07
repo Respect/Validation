@@ -13,7 +13,7 @@ class AlphaException extends ValidationException
 
     public function chooseTemplate($input, $additionalCharacters=null)
     {
-        return empty($additionalCharacters) ? static::NORMAL : static::EXTRA;
+        return empty($additionalCharacters) ? static::STANDARD : static::EXTRA;
     }
 
 }

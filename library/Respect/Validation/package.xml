@@ -11,7 +11,7 @@
   <active>yes</active>
  </lead>
  <date>2011-02-07</date>
- <time>08:52:08</time>
+ <time>12:22:20</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -30,7 +30,7 @@ First Version
    <file baseinstalldir="Respect/Validation" md5sum="0224a04fb381c031061f45f181210d2a" name="Exceptions/AbstractRelatedException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="880d68d6eaebb1c83959059d8670ae6e" name="Exceptions/AllOfException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="66e980dca43faa593338b7201eacd585" name="Exceptions/AlnumException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="84fd2eb26a09ec7fe5e89922b8ee37f9" name="Exceptions/AlphaException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="ef45bc934e3a6577b98e5afcc737cca9" name="Exceptions/AlphaException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="ce14ae85b017b59c0e2bd095e94d92db" name="Exceptions/ArrException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="f251baefd5069adf990a9846b0b1a896" name="Exceptions/AtLeastException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="bb280e31c71ca0d24577d85bc7c17af2" name="Exceptions/AttributeException.php" role="php" />
@@ -70,7 +70,7 @@ First Version
    <file baseinstalldir="Respect/Validation" md5sum="2753b5b068425432e786c4e30df464fe" name="Rules/AbstractComposite.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="07aa083d1394817149cf4a6db5ea629f" name="Rules/AbstractRelated.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="cc6a9b9c7c6c43ab1daef9a8f67f67ca" name="Rules/AbstractRule.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="1ac46f8a36089242442a4a82799716b8" name="Rules/AllOf.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="6a1e115625f44ff71bfe39fa198e40e3" name="Rules/AllOf.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="a431d0ef3c154cb2c5fe7a07bbd56acf" name="Rules/Alnum.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="c74366a999c22fa514abd1a5d8ace61c" name="Rules/Alpha.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="25f54c2c1f3d756afb759261c164f8b6" name="Rules/Arr.php" role="php" />

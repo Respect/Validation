@@ -24,7 +24,7 @@ class AllOf extends AbstractComposite
     public function validate($input)
     {
         foreach ($this->getRules() as $rule)
-            if (!$rule->validate())
+            if (!$rule->validate($input))
                 return false;
         return true;
     }
