@@ -11,7 +11,7 @@
   <active>yes</active>
  </lead>
  <date>2011-02-07</date>
- <time>12:46:01</time>
+ <time>15:21:49</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -26,6 +26,8 @@ First Version
  </notes>
  <contents>
   <dir baseinstalldir="Respect/Validation" name="/">
+   <file baseinstalldir="Respect/Validation" md5sum="4ef5c6ff21a7382ac26d74354a9c2ece" name="Contexts/AbstractContext.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="a99e9fcc3f89d82a4b6dfd0fbe487014" name="Contexts/Form.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="15dbe58437cf49f2f8508f1758ed969b" name="Exceptions/AbstractCompositeException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="0224a04fb381c031061f45f181210d2a" name="Exceptions/AbstractRelatedException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="880d68d6eaebb1c83959059d8670ae6e" name="Exceptions/AllOfException.php" role="php" />
@@ -65,7 +67,7 @@ First Version
    <file baseinstalldir="Respect/Validation" md5sum="79c0e89e0cf71e98e2f88c8b4c7d8025" name="Exceptions/RegexException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="9d312b877f954696df3059eaa7c567b3" name="Exceptions/SfException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="fa46f1c072118cd86349fde9f18b3306" name="Exceptions/StringException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="1d121dab0e182946acc7749b1d5aba78" name="Exceptions/ValidationException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="8f44bfe4bd0fdef7ae0be4b2e2dc5aba" name="Exceptions/ValidationException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="f82ca20630380b0b9d6335a2942d1c84" name="Exceptions/ZendException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="2753b5b068425432e786c4e30df464fe" name="Rules/AbstractComposite.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="07aa083d1394817149cf4a6db5ea629f" name="Rules/AbstractRelated.php" role="php" />

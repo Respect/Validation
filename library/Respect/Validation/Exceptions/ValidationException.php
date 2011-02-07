@@ -15,8 +15,9 @@ class ValidationException extends InvalidArgumentException
     const ITERATE_TREE = 1;
     const ITERATE_ALL = 2;
     public static $defaultTemplates = array(
-        'Data validation failed: "%s"'
+        self::STANDARD => 'Data validation failed: "%s"'
     );
+    protected $context = null;
     protected $id = '';
     protected $params = array();
     protected $related = array();
@@ -121,7 +122,18 @@ class ValidationException extends InvalidArgumentException
         $templateKey = call_user_func_array(
             array($this, 'chooseTemplate'), $this->params
         );
-        return $this->template = static::$defaultTemplates[$templateKey];
+        if (is_null($this->context))
+            $this->template = static::$defaultTemplates[$templateKey];
+        else
+            $this->template = $this->context->getTemplate($this, $templateKey);
+        return $this->template;
+    }
+
+    public function setContext($context)
+    {
+        $this->context = $context;
+        foreach ($this->related as $r)
+            $r->setContext($context);
     }
 
     public function setId($id)
