@@ -245,7 +245,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         try {
             $validUsername->assert('really messed up screen#name');
         } catch (\InvalidArgumentException $e) {
-            echo $e->getFullMessage();
+            //echo $e->getFullMessage();
         }
 
         $validBlogPost = v::object()
@@ -261,7 +261,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         try {
             $validBlogPost->assert($blogPost);
         } catch (\InvalidArgumentException $e) {
-            echo $e->findRelated('author', 'username', 'noWhitespace')->getMainMessage();
+            //echo $e->findRelated('author', 'username', 'noWhitespace')->getMainMessage();
         }
 
         $validHostName = v::zend('hostname')->assert('google.com');
