@@ -1,3 +1,5 @@
+There's nothing stable in the master branch yet. Check out the "develop branch":https://github.com/Respect/Validation/tree/develop
+
 h2. About
 
 Respect\Validation is the most awesome validation engine ever created for PHP. Featuring:
