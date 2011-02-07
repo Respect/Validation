@@ -2,11 +2,11 @@
 
 namespace Respect\Validation;
 
-use \RecursiveArrayIterator;
-use Respect\Validation\Exceptions\ValidationException;
+use RecursiveArrayIterator;
 use Respect\Validation\Exceptions\AbstractCompositeException;
+use Respect\Validation\Exceptions\ValidationException;
 
-class ExceptionIterator extends RecursiveArrayIterator 
+class ExceptionIterator extends RecursiveArrayIterator
 {
 
     protected $fullRelated;

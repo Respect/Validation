@@ -19,6 +19,13 @@ class Date extends AbstractRule
         $this->format = $format;
     }
 
+    public function assert($input)
+    {
+        if (!$this->validate($input))
+            throw $this->reportError($input, array(), $this->format);
+        return true;
+    }
+
     public function validate($input)
     {
         if ($input instanceof DateTime)
@@ -29,13 +36,6 @@ class Date extends AbstractRule
             return (boolean) strtotime($input);
         else
             return date($this->format, strtotime($input)) == $input;
-    }
-
-    public function assert($input)
-    {
-        if (!$this->validate($input))
-            throw $this->reportError($input, array(), $this->format);
-        return true;
     }
 
 }

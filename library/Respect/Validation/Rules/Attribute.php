@@ -3,8 +3,8 @@
 namespace Respect\Validation\Rules;
 
 use ReflectionProperty;
-use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Validatable;
 
 class Attribute extends AbstractRelated
 {
@@ -20,16 +20,16 @@ class Attribute extends AbstractRelated
         $this->setName($reference);
     }
 
-    protected function hasReference($input)
-    {
-        return @property_exists($input, $this->reference);
-    }
-
     protected function getReferenceValue($input)
     {
         $propertyMirror = new ReflectionProperty($input, $this->reference);
         $propertyMirror->setAccessible(true);
         return $propertyMirror->getValue($input);
+    }
+
+    protected function hasReference($input)
+    {
+        return @property_exists($input, $this->reference);
     }
 
 }

@@ -12,16 +12,16 @@ class Regex extends AbstractRule
         $this->regex = $regex;
     }
 
-    public function validate($input)
-    {
-        return preg_match("/{$this->regex}/", $input);
-    }
-
     public function assert($input)
     {
         if (!$this->validate($input))
             throw $this->reportError($input, array(), $this->regex);
         return true;
+    }
+
+    public function validate($input)
+    {
+        return preg_match("/{$this->regex}/", $input);
     }
 
 }

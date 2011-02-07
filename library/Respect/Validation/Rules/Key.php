@@ -2,8 +2,8 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Validatable;
 
 class Key extends AbstractRelated
 {
@@ -19,14 +19,14 @@ class Key extends AbstractRelated
         $this->setName($reference);
     }
 
-    protected function hasReference($input)
-    {
-        return array_key_exists($this->reference, $input);
-    }
-
     protected function getReferenceValue($input)
     {
         return @$input[$this->reference];
+    }
+
+    protected function hasReference($input)
+    {
+        return array_key_exists($this->reference, $input);
     }
 
 }

@@ -14,23 +14,24 @@ abstract class AbstractRule implements Validatable
 
     public function __construct()
     {
-        
-    }
-
-    public function setName($name)
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    public function getName()
-    {
-        return $this->name;
+        //a constructor is required for ReflectionClass
     }
 
     public function __invoke($input)
     {
         return $this->validate($input);
+    }
+
+    public function assert($input)
+    {
+        if (!$this->validate($input))
+            throw $this->reportError($input);
+        return true;
+    }
+
+    public function check($input)
+    {
+        return $this->assert($input);
     }
 
     public function createException()
@@ -46,27 +47,14 @@ abstract class AbstractRule implements Validatable
         return $this->exception;
     }
 
+    public function getName()
+    {
+        return $this->name;
+    }
+
     public function hasException()
     {
         return!empty($this->exception);
-    }
-
-    public function setException(ValidationException $e)
-    {
-        $this->exception = $e;
-        return $this;
-    }
-
-    public function assert($input)
-    {
-        if (!$this->validate($input))
-            throw $this->reportError($input);
-        return true;
-    }
-
-    public function check($input)
-    {
-        return $this->assert($input);
     }
 
     public function reportError($input, array $relatedExceptions=array())
@@ -81,6 +69,18 @@ abstract class AbstractRule implements Validatable
         array_unshift($parameters, $this->getName() ? : $input);
         call_user_func_array(array($exception, 'configure'), $parameters);
         return $exception;
+    }
+
+    public function setException(ValidationException $e)
+    {
+        $this->exception = $e;
+        return $this;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
     }
 
 }

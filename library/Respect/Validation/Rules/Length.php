@@ -3,12 +3,12 @@
 namespace Respect\Validation\Rules;
 
 use Countable;
-use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Exceptions\LengthException;
-use Respect\Validation\Validator;
-use Respect\Validation\Exceptions\NotNumericException;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidException;
+use Respect\Validation\Exceptions\LengthException;
+use Respect\Validation\Exceptions\NotNumericException;
+use Respect\Validation\Rules\AbstractRule;
+use Respect\Validation\Validator;
 
 class Length extends AbstractRule
 {
@@ -40,6 +40,18 @@ class Length extends AbstractRule
         }
     }
 
+    public function assert($input)
+    {
+        if (!$this->validate($input))
+            throw $this->reportError($input, array(), $this->min, $this->max);
+        return true;
+    }
+
+    public function validate($input)
+    {
+        return $this->validateMin($input) && $this->validateMax($input);
+    }
+
     protected function extractLength($input)
     {
         if (is_string($input))
@@ -50,7 +62,7 @@ class Length extends AbstractRule
             return false;
     }
 
-    public function validateMin($input)
+    protected function validateMin($input)
     {
         $length = $this->extractLength($input);
         if (is_null($this->min))
@@ -61,7 +73,7 @@ class Length extends AbstractRule
             return $length > $this->min;
     }
 
-    public function validateMax($input)
+    protected function validateMax($input)
     {
         $length = $this->extractLength($input);
         if (is_null($this->max))
@@ -70,18 +82,6 @@ class Length extends AbstractRule
             return $length <= $this->max;
         else
             return $length < $this->max;
-    }
-
-    public function validate($input)
-    {
-        return $this->validateMin($input) && $this->validateMax($input);
-    }
-
-    public function assert($input)
-    {
-        if (!$this->validate($input))
-            throw $this->reportError($input, array(), $this->min, $this->max);
-        return true;
     }
 
 }

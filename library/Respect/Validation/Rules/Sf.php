@@ -8,10 +8,10 @@ use Symfony\Component\Validator\ConstraintViolation;
 class Sf extends AbstractRule
 {
 
-    protected $messages = array();
     protected $constraint;
-    protected $validator;
     protected $name;
+    protected $messages = array();
+    protected $validator;
 
     public function __construct($name, $params=array())
     {
@@ -23,14 +23,6 @@ class Sf extends AbstractRule
             $this->constraint = $sfMirrorConstraint->newInstanceArgs($params);
         else
             $this->constraint = $sfMirrorConstraint->newInstance();
-    }
-
-    public function validate($input)
-    {
-        $validatorName = 'Symfony\Component\Validator\Constraints\\'
-            . $this->name . 'Validator';
-        $this->validator = new $validatorName;
-        return $this->validator->isValid($input, $this->constraint);
     }
 
     public function assert($input)
@@ -46,6 +38,14 @@ class Sf extends AbstractRule
             throw $this->reportError($violation->getMessage());
         }
         return true;
+    }
+
+    public function validate($input)
+    {
+        $validatorName = 'Symfony\Component\Validator\Constraints\\'
+            . $this->name . 'Validator';
+        $this->validator = new $validatorName;
+        return $this->validator->isValid($input, $this->constraint);
     }
 
 }

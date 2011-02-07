@@ -14,6 +14,14 @@ class In extends AbstractRule
         $this->strict = $strict;
     }
 
+    public function assert($input)
+    {
+        if (!$this->validate($input))
+            throw $this->reportError($input, array(),
+                print_r($this->options, true), $this->strict);
+        return true;
+    }
+
     public function validate($input)
     {
         if (is_array($this->options))
@@ -25,14 +33,6 @@ class In extends AbstractRule
                 return mb_stripos($this->options, $input) !== false;
         else
             return false;
-    }
-
-    public function assert($input)
-    {
-        if (!$this->validate($input))
-            throw $this->reportError($input, array(),
-                print_r($this->options, true), $this->strict);
-        return true;
     }
 
 }

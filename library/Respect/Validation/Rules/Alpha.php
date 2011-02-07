@@ -19,19 +19,19 @@ class Alpha extends AbstractRule
         $this->additionalChars = $additionalChars;
     }
 
+    public function assert($input)
+    {
+        if (!$this->validate($input))
+            throw $this->reportError($input, array(), $this->additionalChars);
+        return true;
+    }
+
     public function validate($input)
     {
         return is_string($input) && preg_match(
             $this->stringFormat,
             str_replace(str_split($this->additionalChars), '', $input)
         );
-    }
-
-    public function assert($input)
-    {
-        if (!$this->validate($input))
-            throw $this->reportError($input, array(), $this->additionalChars);
-        return true;
     }
 
 }

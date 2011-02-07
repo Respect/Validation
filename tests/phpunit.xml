@@ -9,6 +9,7 @@
          processIsolation="false"
          stopOnFailure="false"
          syntaxCheck="false"
+         verbose="true"
          testSuiteLoaderClass="PHPUnit_Runner_StandardTestSuiteLoader">
          
 </phpunit>

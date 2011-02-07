@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-use \Exception;
+use Exception;
 
 class ComponentException extends Exception
 {

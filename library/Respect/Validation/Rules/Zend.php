@@ -22,11 +22,6 @@ class Zend extends AbstractRule
             $this->zendValidator = $zendMirror->newInstance();
     }
 
-    public function validate($input)
-    {
-        return $this->zendValidator->isValid($input);
-    }
-
     public function assert($input)
     {
         if (!$this->validate($input)) {
@@ -37,6 +32,11 @@ class Zend extends AbstractRule
             throw $this->reportError($input, $exceptions);
         }
         return true;
+    }
+
+    public function validate($input)
+    {
+        return $this->zendValidator->isValid($input);
     }
 
 }

@@ -2,8 +2,8 @@
 
 namespace Respect\Validation\Rules;
 
-use Countable;
 use ArrayAccess;
+use Countable;
 use Traversable;
 
 class Arr extends AbstractRule
