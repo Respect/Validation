@@ -4,15 +4,15 @@ namespace Respect\Validation\Exceptions;
 
 class MinException extends ValidationException
 {
-
+    const INCLUSIVE = 1;
     public static $defaultTemplates = array(
-        '%s is lower than %s',
-        '%s is lower than %s (inclusive)',
+        self::STANDARD => '%s is lower than %s',
+        self::INCLUSIVE => '%s is lower than %s (inclusive)',
     );
 
     public function chooseTemplate($input, $inclusive)
     {
-        return $inclusive ? 0: 1;
+        return $inclusive ? static::INCLUSIVE : static::STANDARD;
     }
 
 }

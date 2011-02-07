@@ -6,7 +6,7 @@ class ZendException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        '%s',
+        self::STANDARD => '%s',
     );
 
 }

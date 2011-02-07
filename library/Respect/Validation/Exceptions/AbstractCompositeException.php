@@ -4,15 +4,16 @@ namespace Respect\Validation\Exceptions;
 
 class AbstractCompositeException extends AbstractRelatedException
 {
-
+    const NONE = 0;
+    const SOME = 1;
     public static $defaultTemplates = array(
-        'None of the rules passed',
-        '%2$d rules did not passed',
+        self::NONE => 'None of the rules passed',
+        self::SOME => '%2$d rules did not passed',
     );
 
     public function chooseTemplate($input, $numFailed, $numRequired, $numTotal)
     {
-        return $numFailed === $numTotal ? 0 : 1;
+        return $numFailed === $numTotal ? static::NONE : static::SOME;
     }
 
     public function getMainMessage()

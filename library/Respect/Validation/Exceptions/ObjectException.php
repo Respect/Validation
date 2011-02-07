@@ -6,7 +6,7 @@ class ObjectException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        '"%s" is not an object',
+        self::STANDARD => '"%s" is not an object',
     );
 
 }

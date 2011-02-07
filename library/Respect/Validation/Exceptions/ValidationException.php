@@ -11,6 +11,7 @@ use Respect\Validation\Reportable;
 
 class ValidationException extends InvalidArgumentException
 {
+    const STANDARD = 0;
     const ITERATE_TREE = 1;
     const ITERATE_ALL = 2;
     public static $defaultTemplates = array(

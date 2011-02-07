@@ -4,15 +4,16 @@ namespace Respect\Validation\Exceptions;
 
 class MaxException extends ValidationException
 {
+    const INCLUSIVE =1;
 
     public static $defaultTemplates = array(
-        '%s is greater than %s',
-        '%s is greater than %s (inclusive)',
+        self::STANDARD => '%s is greater than %s',
+        self::INCLUSIVE => '%s is greater than %s (inclusive)',
     );
 
     public function chooseTemplate($input, $inclusive)
     {
-        return $inclusive ? 0 : 1 ;
+        return $inclusive ? static::INCLUSIVE : static::STANDARD;
     }
 
 }

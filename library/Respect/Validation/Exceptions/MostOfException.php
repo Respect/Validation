@@ -6,8 +6,8 @@ class MostOfException extends AbstractCompositeException
 {
 
     public static $defaultTemplates = array(
-        'None of %3$d required rules passed',
-        '%2$d of %3$d required rules did not passed',
+        self::NONE => 'None of %3$d required rules passed',
+        self::SOME => '%2$d of %3$d required rules did not passed',
     );
 
 }

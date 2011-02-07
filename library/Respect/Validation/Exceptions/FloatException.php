@@ -6,7 +6,7 @@ class FloatException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        '"%s" is not a valid float',
+        self::STANDARD => '"%s" is not a valid float',
     );
 
 }

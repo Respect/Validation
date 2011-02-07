@@ -6,7 +6,7 @@ class NoWhitespaceException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        '"%s" contains whitespace',
+        self::STANDARD => '"%s" contains whitespace',
     );
 
 }

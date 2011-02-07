@@ -6,7 +6,7 @@ class BetweenException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        '"%s" is out of bounds',
+        self::STANDARD => '"%s" is out of bounds',
     );
 
 }

@@ -6,7 +6,7 @@ class CallbackException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        '"%s" is invalid',
+        self::STANDARD => '"%s" is invalid',
     );
 
 }

@@ -2,17 +2,12 @@
 
 namespace Respect\Validation\Exceptions;
 
-class AlnumException extends ValidationException
+class AlnumException extends AlphaException
 {
 
     public static $defaultTemplates = array(
-        '"%s" does not contain only letters and digits',
-        '"%s" does not contain only letters, digits and "%s"'
+        self::STANDARD => '"%s" does not contain only letters and digits',
+        self::EXTRA => '"%s" does not contain only letters, digits and "%s"'
     );
-
-    public function chooseTemplate($input, $additionalCharacters=null)
-    {
-        return empty($additionalCharacters) ? 0 : 1;
-    }
 
 }

@@ -6,8 +6,8 @@ class OneOfException extends AbstractCompositeException
 {
 
     public static $defaultTemplates = array(
-        'None of the %4$d rules passed',
-        '%2$d of the %4$d rules did not passed',
+        self::NONE => 'None of the %4$d rules passed',
+        self::SOME => '%2$d of the %4$d rules did not passed',
     );
 
 }

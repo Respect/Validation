@@ -6,7 +6,7 @@ class NotEmptyException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        'The provided value is empty',
+        self::STANDARD => 'The provided value is empty',
     );
 
 }

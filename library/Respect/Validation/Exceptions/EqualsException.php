@@ -4,15 +4,17 @@ namespace Respect\Validation\Exceptions;
 
 class EqualsException extends ValidationException
 {
+    const EQUALS = 0;
+    const IDENTICAL = 0;
 
     public static $defaultTemplates = array(
-        '"%s" is not equals "%s"',
-        '"%s" is not identical to "%s"',
+        self::EQUALS => '"%s" is not equals "%s"',
+        self::IDENTICAL => '"%s" is not identical to "%s"',
     );
 
     public function chooseTemplate($input, $equals, $identical)
     {
-        return ($identical) ? 1 : 0;
+        return ($identical) ? static::IDENTICAL : static::EQUALS;
     }
 
 }
