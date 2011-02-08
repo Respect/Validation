@@ -13,9 +13,10 @@ Respect\Validation is the most awesome validation engine ever created for PHP. F
 Roadmap
 -------
 
-- Custom validators (create your own validation rules and exceptions)
-- Validation message improvements (translation, contextualization)
-
+1. Custom validators (create your own validation rules and exceptions)
+2. Validation message improvements (translation, contextualization)
+3. PHPDocs for all classes, methods and files
+4. End user complete docs
 
 Feature Guide
 =============
