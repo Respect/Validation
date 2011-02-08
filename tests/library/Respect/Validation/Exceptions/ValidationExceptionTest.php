@@ -7,19 +7,21 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
 
     public function testCreate()
     {
-        $e = ValidationException::create(new \stdClass, 'bar', array(),
-                new \stdClass);
-        $this->assertEquals(array('stdClass', 'bar', array(), new \stdClass),
-            $e->getParams());
+        $e = ValidationException::create(new \stdClass, 'bar');
+        $this->assertEquals(
+            array('Object of class stdClass', 'bar'),
+            $e->getParams()
+        );
         $this->assertEquals('validation', $e->getId());
     }
 
     public function testConfigure()
     {
         $e = new ValidationException;
-        $e->configure(new \stdClass, 'bar', array(), new \stdClass);
+        $e->configure(new \stdClass, 'bar');
         $this->assertEquals(
-            array('stdClass', 'bar', array(), new \stdClass), $e->getParams()
+            array('Object of class stdClass', 'bar'),
+            $e->getParams()
         );
         $this->assertEquals('validation', $e->getId());
     }

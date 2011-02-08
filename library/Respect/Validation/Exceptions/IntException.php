@@ -6,7 +6,7 @@ class IntException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        self::STANDARD => '"%s" is not a valid integer number',
+        self::STANDARD => '%s must be an integer number',
     );
 
 }

@@ -17,7 +17,6 @@ class Attribute extends AbstractRelated
                 'Invalid attribute/property name'
             );
         parent::__construct($reference, $referenceValidator, $mandatory);
-        $this->setName($reference);
     }
 
     protected function getReferenceValue($input)

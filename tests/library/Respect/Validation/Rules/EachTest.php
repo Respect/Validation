@@ -45,8 +45,8 @@ class EachTest extends \PHPUnit_Framework_TestCase
      */
     public function testEachOneInvalidAssertion()
     {
-        $v = new Each(new NotEmpty());
-        $result = $v->assert(array('', 2, 3, 4, 5));
+        $v = new Each(new Int());
+        $result = $v->assert(array('a', 2, 3, 4, 5));
         $this->assertFalse($result);
     }
 

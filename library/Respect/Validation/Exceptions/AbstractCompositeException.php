@@ -7,11 +7,11 @@ class AbstractCompositeException extends AbstractRelatedException
     const NONE = 0;
     const SOME = 1;
     public static $defaultTemplates = array(
-        self::NONE => 'None of the rules passed',
-        self::SOME => '%2$d rules did not passed',
+        self::NONE => 'All of the %3$d required rules must pass for %1$s',
+        self::SOME => 'These %2$d rules must pass for %1$s',
     );
 
-    public function chooseTemplate($input, $numFailed, $numRequired, $numTotal)
+    public function chooseTemplate($name, $numFailed, $numRequired, $numTotal)
     {
         return $numFailed === $numTotal ? static::NONE : static::SOME;
     }
@@ -19,7 +19,9 @@ class AbstractCompositeException extends AbstractRelatedException
     public function getMainMessage()
     {
         if (1 === count($this->related))
-            return $this->related[0]->getMainMessage();
+            return $this->related[0]
+                ->setName($this->getName())
+                ->getMainMessage();
         else
             return parent::getMainMessage();
     }

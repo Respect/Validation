@@ -263,9 +263,6 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         } catch (\InvalidArgumentException $e) {
             //echo $e->findRelated('author', 'username', 'noWhitespace')->getMainMessage();
         }
-
-        $validHostName = v::zend('hostname')->assert('google.com');
-        $validTime = v::sf('time')->assert('22:00:01');
     }
 
 }

@@ -12,13 +12,10 @@ class Regex extends AbstractRule
         $this->regex = $regex;
     }
 
-    public function assert($input)
+    public function reportError($input, array $related=array())
     {
-        if (!$this->validate($input))
-            throw $this->reportError($input, array(), $this->regex);
-        return true;
+        return parent::reportError($input, $related, $this->regex);
     }
-
     public function validate($input)
     {
         return preg_match("/{$this->regex}/", $input);

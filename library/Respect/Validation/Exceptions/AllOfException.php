@@ -6,8 +6,8 @@ class AllOfException extends AbstractCompositeException
 {
 
     public static $defaultTemplates = array(
-        self::NONE => 'None of %3$d required rules passed',
-        self::SOME => '%2$d of %3$d required rules did not passed',
+        self::NONE => 'All of the %3$d required rules must pass for %1$s',
+        self::SOME => 'These %2$d rules must pass for %1$s',
     );
 
 }

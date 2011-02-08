@@ -14,11 +14,10 @@ class Equals extends AbstractRule
         $this->identical = $identical;
     }
 
-    public function assert($input)
+    public function reportError($input, array $related=array())
     {
-        if (!$this->validate($input))
-            throw $this->reportError($input, array(), $this->param,
-                $this->identical);
+        return parent::reportError($input, $related, $this->param,
+            $this->identical);
     }
 
     public function validate($input)

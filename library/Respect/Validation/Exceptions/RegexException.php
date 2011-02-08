@@ -6,7 +6,7 @@ class RegexException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        self::STANDARD => '"%s" is invalid',
+        self::STANDARD => '%s must validate against %s',
     );
 
 }

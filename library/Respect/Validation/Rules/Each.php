@@ -27,26 +27,22 @@ class Each extends AbstractRule
         if (!is_array($input) || $input instanceof Traversable)
             throw $this->reportError($input);
         $exceptions = array();
-        $keys = array();
         foreach ($input as $key => $item) {
             if (isset($this->itemValidator))
                 try {
                     $this->itemValidator->assert($item);
                 } catch (ValidationException $e) {
                     $exceptions[] = $e;
-                    $keys[$key] = $key;
                 }
             if (isset($this->keyValidator))
                 try {
                     $this->keyValidator->assert($item);
                 } catch (ValidationException $e) {
                     $exceptions[] = $e;
-                    $keys[$key] = $key;
                 }
         }
         if (!empty($exceptions))
-            throw $this->reportError($input, array(), $item,
-                implode(', ', $keys), count($exceptions));
+            throw $this->reportError($input, $exceptions, count($exceptions));
         return true;
     }
 

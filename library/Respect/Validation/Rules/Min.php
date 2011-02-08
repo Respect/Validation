@@ -14,12 +14,10 @@ class Min extends AbstractRule
         $this->inclusive = $inclusive;
     }
 
-    public function assert($input)
+    public function reportError($input, array $related=array())
     {
-        if (!$this->validate($input))
-            throw $this->reportError($input, array(), $this->min,
-                $this->inclusive);
-        return true;
+        return parent::reportError($input, $related, $this->min,
+            $this->inclusive);
     }
 
     public function validate($input)

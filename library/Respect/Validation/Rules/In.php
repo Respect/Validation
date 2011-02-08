@@ -14,12 +14,14 @@ class In extends AbstractRule
         $this->strict = $strict;
     }
 
-    public function assert($input)
+    public function reportError($input, array $related=array())
     {
-        if (!$this->validate($input))
-            throw $this->reportError($input, array(),
-                print_r($this->options, true), $this->strict);
-        return true;
+        if (is_array($this->options))
+            $options = implode(',', $this->options);
+        else
+            $options = $this->options;
+        return parent::reportError($input, $related,
+            $options, $this->strict);
     }
 
     public function validate($input)

@@ -6,7 +6,7 @@ class StringException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        self::STANDARD => '"%s" is not a valid string',
+        self::STANDARD => '%s must be a string',
     );
 
 }

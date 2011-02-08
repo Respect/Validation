@@ -6,7 +6,7 @@ class HexaException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        self::STANDARD => '"%s" is not a valid hexadecimal number',
+        self::STANDARD => '%s must be a hexadecimal number',
     );
 
 }

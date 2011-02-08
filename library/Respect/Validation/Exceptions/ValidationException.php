@@ -2,6 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
+use DateTime;
 use Exception;
 use InvalidArgumentException;
 use RecursiveIteratorIterator;
@@ -15,7 +16,7 @@ class ValidationException extends InvalidArgumentException
     const ITERATE_TREE = 1;
     const ITERATE_ALL = 2;
     public static $defaultTemplates = array(
-        self::STANDARD => 'Data validation failed: "%s"'
+        self::STANDARD => 'Data validation failed for %s'
     );
     protected $context = null;
     protected $id = '';
@@ -23,13 +24,28 @@ class ValidationException extends InvalidArgumentException
     protected $related = array();
     protected $template = '';
 
-    public static function create($input=null)
+    public static function create($name=null)
     {
         $i = new static;
         if (func_get_args() > 0)
             return call_user_func_array(array($i, 'configure'), func_get_args());
         else
             return $i;
+    }
+
+    public static function stringify($value)
+    {
+        if (is_string($value))
+            return $value;
+        elseif (is_object($value))
+            if (method_exists($value, '__toString'))
+                return (string) $value;
+            elseif ($value instanceof DateTime)
+                return $value->format('Y-m-d H:i:s');
+            else
+                return "Object of class " . get_class($value);
+        else
+            return (string) $value;
     }
 
     public function __toString()
@@ -48,11 +64,12 @@ class ValidationException extends InvalidArgumentException
         return key(static::$defaultTemplates);
     }
 
-    public function configure($input=null)
+    public function configure($name)
     {
-        $this->message = $this->getMainMessage();
         $this->params = func_get_args();
-        $this->stringifyInput();
+        foreach ($this->params as &$p) 
+            $p = static::stringify($p);
+        $this->message = $this->getMainMessage();
         $this->guessId();
         return $this;
     }
@@ -74,6 +91,11 @@ class ValidationException extends InvalidArgumentException
         return implode(PHP_EOL, $message);
     }
 
+    public function getName()
+    {
+        return $this->params[0];
+    }
+
     public function getId()
     {
         return $this->id;
@@ -90,7 +112,7 @@ class ValidationException extends InvalidArgumentException
 
     public function getMainMessage()
     {
-        $sprintfParams = $this->params;
+        $sprintfParams = $this->getParams();
         if (empty($sprintfParams))
             return $this->message;
         array_unshift($sprintfParams, $this->getTemplate());
@@ -99,7 +121,10 @@ class ValidationException extends InvalidArgumentException
 
     public function getParams()
     {
-        return $this->params;
+        $params = array_slice($this->params, 1);
+        array_unshift($params, $this->getName());
+        return $params;
+        
     }
 
     public function getRelated()
@@ -120,7 +145,7 @@ class ValidationException extends InvalidArgumentException
         if (!empty($this->template))
             return $this->template;
         $templateKey = call_user_func_array(
-            array($this, 'chooseTemplate'), $this->params
+            array($this, 'chooseTemplate'), $this->getParams()
         );
         if (is_null($this->context))
             $this->template = static::$defaultTemplates[$templateKey];
@@ -139,6 +164,12 @@ class ValidationException extends InvalidArgumentException
     public function setId($id)
     {
         $this->id = $id;
+        return $this;
+    }
+
+    public function setName($name)
+    {
+        $this->params[0] = static::stringify($name);
         return $this;
     }
 
@@ -161,15 +192,6 @@ class ValidationException extends InvalidArgumentException
         $id = end(explode('\\', get_called_class()));
         $id = lcfirst(str_replace('Exception', '', $id));
         $this->setId($id);
-    }
-
-    protected function stringifyInput()
-    {
-        $param = &$this->params[0];
-        if (!is_object($param) || method_exists($param, '__toString'))
-            $param = (string) $param;
-        else
-            $param = get_class($param);
     }
 
 }

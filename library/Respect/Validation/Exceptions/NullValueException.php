@@ -6,7 +6,7 @@ class NullValueException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        self::STANDARD => '"%s" is not a null value',
+        self::STANDARD => '%s must be null',
     );
 
 }

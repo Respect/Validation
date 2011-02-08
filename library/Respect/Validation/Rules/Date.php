@@ -19,13 +19,10 @@ class Date extends AbstractRule
         $this->format = $format;
     }
 
-    public function assert($input)
+    public function reportError($input, array $related=array())
     {
-        if (!$this->validate($input))
-            throw $this->reportError($input, array(), $this->format);
-        return true;
+        return parent::reportError($input, $related, $this->format);
     }
-
     public function validate($input)
     {
         if ($input instanceof DateTime)

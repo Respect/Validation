@@ -15,4 +15,5 @@ class Call extends AbstractRelated
         return is_callable($this->reference);
     }
 
+
 }

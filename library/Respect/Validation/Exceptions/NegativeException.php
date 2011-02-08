@@ -6,7 +6,7 @@ class NegativeException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        self::STANDARD => '"%s" is not a negative number',
+        self::STANDARD => '%s must be negative',
     );
 
 }

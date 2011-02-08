@@ -6,8 +6,8 @@ class AtLeastException extends AbstractCompositeException
 {
 
     public static $defaultTemplates = array(
-        self::NONE => 'None of %4$d rules passed (%3$d required)',
-        self::SOME => '%2$d of %4$d rules did not passed (%3$d required)',
+        self::NONE => 'At least %3$d of %4$d rules must pass for %1$s',
+        self::SOME => 'At least %3$d of %4$d rules must pass for %1$s, only %2$d passed',
     );
 
 }

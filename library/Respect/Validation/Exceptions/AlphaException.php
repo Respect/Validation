@@ -7,11 +7,11 @@ class AlphaException extends ValidationException
     const EXTRA = 1;
 
     public static $defaultTemplates = array(
-        self::STANDARD => '"%s" does not contain only letters',
-        self::EXTRA => '"%s" does not contain only letters and "%s"'
+        self::STANDARD => '%s must contain only letters (a-z)',
+        self::EXTRA => '%s must contain only letters (a-z) and "%s"'
     );
 
-    public function chooseTemplate($input, $additionalCharacters=null)
+    public function chooseTemplate($name, $additionalCharacters=null)
     {
         return empty($additionalCharacters) ? static::STANDARD : static::EXTRA;
     }

@@ -6,7 +6,7 @@ class NumericException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        self::STANDARD => '"%s" is not a numeric value',
+        self::STANDARD => '%s must be numeric',
     );
 
 }

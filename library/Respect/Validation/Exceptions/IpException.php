@@ -6,7 +6,7 @@ class IpException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        self::STANDARD => '"%s" is not a valid IP address',
+        self::STANDARD => '%s must be an IP address',
     );
 
 }

@@ -12,11 +12,9 @@ class Instance extends AbstractRule
         $this->instance = $instance;
     }
 
-    public function assert($input)
+    public function reportError($input, array $related=array())
     {
-        if (!$this->validate($input))
-            throw $this->reportError($input, array(), $this->instance);
-        return true;
+        return parent::reportError($input, $related, $this->instance);
     }
 
     public function validate($input)

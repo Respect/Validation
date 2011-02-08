@@ -18,6 +18,11 @@ class Callback extends AbstractRule
         $this->callback = $callback;
     }
 
+    public function reportError($input, array $related=array())
+    {
+        return parent::reportError($input, $related, $this->callback);
+    }
+
     public function validate($input)
     {
         return call_user_func($this->callback, $input);

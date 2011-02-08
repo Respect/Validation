@@ -6,7 +6,7 @@ class InException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        self::STANDARD => '"%s" is not in %s',
+        self::STANDARD => '%s must be in (%s)',
     );
 
 }

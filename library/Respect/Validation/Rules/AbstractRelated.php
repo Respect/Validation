@@ -38,7 +38,8 @@ abstract class AbstractRelated extends AbstractRule implements Validatable
         } catch (ValidationException $e) {
             throw $this->reportError($input, array($e));
         } catch (ReflectionException $e) {
-            throw $this->reportError($input);
+            if ($this->mandatory)
+                throw $this->reportError($input);
         }
         return true;
     }
@@ -57,7 +58,7 @@ abstract class AbstractRelated extends AbstractRule implements Validatable
     public function reportError($input, array $relatedExceptions=array())
     {
         return parent::reportError($input, $relatedExceptions, $this->reference,
-            !is_null($relatedExceptions))->setId($this->reference);
+            !empty($relatedExceptions))->setId($this->reference);
     }
 
     public function validate($input)

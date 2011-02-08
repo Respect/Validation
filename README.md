@@ -3,7 +3,7 @@ Respect Validation
 
 Respect\Validation is the most awesome validation engine ever created for PHP. Featuring:
 
-- Fluent/Chained builders
+- Fluent/Chained builders like `v::numeric()->positive()->between(1, 256)->validate($myNumber)` (more samples below)
 - Composite validation (nested, grouped and related rules)
 - Informative, awesome exceptions
 - More than 30 fully tested validators
@@ -13,10 +13,57 @@ Respect\Validation is the most awesome validation engine ever created for PHP. F
 Roadmap
 -------
 
-1. Custom validators (create your own validation rules and exceptions)
-2. Validation message improvements (translation, contextualization)
+1. Validation message improvements (translation, contextualization)
+2. Custom validators (create your own validation rules and exceptions)
 3. PHPDocs for all classes, methods and files
 4. End user complete docs
+
+Installation
+============
+
+**CAUTION**, this is not ready for production! Use it just for fun until a 
+stable version comes out.
+
+1. PEAR Package
+
+   Respect\Validation is available under a downloadable PEAR Package. To use it, 
+   type the following commands in your terminal:
+
+        git clone git://github.com/Respect/Validation.git RespectValidation
+        cd RespectValidation/library/Respect/Validation/
+        sudo pear install package.xml 
+
+   On Ubuntu, this will install it under `/usr/share/php`, make sure you add
+   that to your include_path.
+
+2. Direct Download
+
+   Just click "Download" up there, in GitHub and use the library folder.
+
+Autoloading
+-----------
+
+You can set up Respect\Validation for autoloading. We recommend using the 
+SplClassLoader. Here's a nice sample:
+
+
+    set_include_path('/my/library' . PATH_SEPARATOR . get_include_path());
+    require_once 'SplClassLoader.php';
+    $respectLoader = new \SplClassLoader();
+    $respectLoader->register();
+
+
+Running Tests
+-------------
+
+We didn't created hundreds of tests just for us to apreciate. To run them, 
+you'll need phpunit 3.5 or greater. Then, just chdir into the `/tests` folder 
+we distribute and run them like this:
+
+    cd /my/RespectValidation/tests
+    phpunit .
+
+You can tweak the phpunit.xml under that `/tests` folder to your needs.
 
 Feature Guide
 =============
@@ -87,10 +134,10 @@ the groups, nests and composite validators you declared. The following code:
 
 Produces this message:
 
-    \-None of 3 required rules passed
-      |-"really messed up screen#name" does not contain only letters, digits and "_"
-      |-"really messed up screen#name" contains whitespace
-      \-"really messed up screen#name" length is not between 1 and 15
+    \-All of the 3 required rules must pass
+      |-"really messed up screen#name" must contain only letters (a-z), digits (0-9) and "_"
+      |-"really messed up screen#name" must not contain whitespace
+      \-"really messed up screen#name" must have a length between 1 and 15
 
 Validation Methods
 ------------------
@@ -128,7 +175,7 @@ Then, the following validation code:
 
 Finds the specific noWhitespace message inside author->username and prints it:
 
->"# invalid #" contains whitespace
+>"# invalid #" must not contain whitespace
 
 Using Zend and/or Symfony validators
 ------------------------------------

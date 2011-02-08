@@ -70,13 +70,6 @@ abstract class AbstractComposite extends AbstractRule implements Validatable
                 });
     }
 
-    public function setName($name)
-    {
-        foreach ($this->getRules() as $r)
-            $r->setName($name);
-        return parent::setName($name);
-    }
-
     protected function appendRule(Validatable $validator)
     {
         $this->rules[spl_object_hash($validator)] = $validator;

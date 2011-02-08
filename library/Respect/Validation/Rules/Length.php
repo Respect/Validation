@@ -40,11 +40,9 @@ class Length extends AbstractRule
         }
     }
 
-    public function assert($input)
+    public function reportError($input, array $related=array())
     {
-        if (!$this->validate($input))
-            throw $this->reportError($input, array(), $this->min, $this->max);
-        return true;
+        return parent::reportError($input, $related, $this->min, $this->max);
     }
 
     public function validate($input)

@@ -6,7 +6,7 @@ class DigitsException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        self::STANDARD => '"%s" does not contain only digits',
+        self::STANDARD => '%s must contain only digits (0-9)',
     );
 
 }
