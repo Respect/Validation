@@ -12,7 +12,7 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
      * messages on the PHPUnit console.
      */
 
-    protected $showMessages = true;
+    protected $showMessages = false;
     protected $targetName = 'My Field';
 
     protected function genMessage($validator, $invalidValue)

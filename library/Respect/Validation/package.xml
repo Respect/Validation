@@ -10,8 +10,8 @@
   <email>alexandre@gaigalas.net</email>
   <active>yes</active>
  </lead>
- <date>2011-02-07</date>
- <time>15:21:49</time>
+ <date>2011-02-09</date>
+ <time>18:39:22</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -28,73 +28,73 @@ First Version
   <dir baseinstalldir="Respect/Validation" name="/">
    <file baseinstalldir="Respect/Validation" md5sum="4ef5c6ff21a7382ac26d74354a9c2ece" name="Contexts/AbstractContext.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="a99e9fcc3f89d82a4b6dfd0fbe487014" name="Contexts/Form.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="15dbe58437cf49f2f8508f1758ed969b" name="Exceptions/AbstractCompositeException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="d86abeebb741799bfb2aa26aa7bd0983" name="Exceptions/AbstractCompositeException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="0224a04fb381c031061f45f181210d2a" name="Exceptions/AbstractRelatedException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="880d68d6eaebb1c83959059d8670ae6e" name="Exceptions/AllOfException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="66e980dca43faa593338b7201eacd585" name="Exceptions/AlnumException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="ef45bc934e3a6577b98e5afcc737cca9" name="Exceptions/AlphaException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="ce14ae85b017b59c0e2bd095e94d92db" name="Exceptions/ArrException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="f251baefd5069adf990a9846b0b1a896" name="Exceptions/AtLeastException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="bb280e31c71ca0d24577d85bc7c17af2" name="Exceptions/AttributeException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="901b1589c84ceb4fe459ac6a71ba510b" name="Exceptions/BetweenException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="1524106b844fc93a52e1d826f1c7515a" name="Exceptions/CallbackException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="85cfc4028d19470a3ea4a6c2d619c1ad" name="Exceptions/CallException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="52c3d7d8bc943a2f1c4b9278cc5a1fd4" name="Exceptions/AllOfException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="8fc898cfc51fc4c30449a3c6bf8fe9c0" name="Exceptions/AlnumException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="6bab373131ee34cb3a15819532f91866" name="Exceptions/AlphaException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="fb77e1abb84699cae2b66794081223af" name="Exceptions/ArrException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="b1040c95c20d0ddaf1338be5756825de" name="Exceptions/AtLeastException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="8cca21f2184ddeb22baa9793f9039ad5" name="Exceptions/AttributeException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="614fc76aeb66b6ff877278e5b2e3cbd7" name="Exceptions/BetweenException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="96af569a01acf55649f85bdc09c92d9b" name="Exceptions/CallbackException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="061a1ee3b851b2e309a8c4fc02f9a5a0" name="Exceptions/CallException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="b22f51d15eb7d8fffceadcaf237948f0" name="Exceptions/ComponentException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="fcaf859fc01b157181d2386aec2a997d" name="Exceptions/DateException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="b835e4fee3c6361b8b6738beced252b8" name="Exceptions/DigitsException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="81b44bb5999ecc906a282742db267453" name="Exceptions/EachException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="5fa780ec87879ae5f98e2e94e71fedcc" name="Exceptions/EqualsException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="5e2bc011a85b841c8ee7f7c77c62ad49" name="Exceptions/FloatException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="9e262325689a71dd30c7216778e80f40" name="Exceptions/HexaException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="b690addaacf3075ca0b25ce4abe9c29a" name="Exceptions/InException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="9716cb9a2c9e80d30331cddf68d57a5d" name="Exceptions/InstanceException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="f8793bdc538cce6304e740ef5d099191" name="Exceptions/IntException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="1dc14be48082adc8f25d80f1d617aa1f" name="Exceptions/IpException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="f6bccb65c28a994dd168c3147c53650c" name="Exceptions/KeyException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="cb5f566ffa99b271eb5a201a78f171fe" name="Exceptions/LengthException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="5f99d7801ebaf535ebea2d483bfd575a" name="Exceptions/MaxException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="5493e44d3f017a4a609cf22ffb91938e" name="Exceptions/MinException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="00878f58a0cf27a5a4db3f6d9e1231a5" name="Exceptions/MostOfException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="b9da6eec644c0eace04de3ba1b29f4ed" name="Exceptions/NegativeException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="fa42ce1dd670ea56550e5687c6311746" name="Exceptions/NoneOfException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="8ec645ce81071a0f51deaf85faabc761" name="Exceptions/NotEmptyException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="28eb5e54ab0c8737f2418e25f11e470c" name="Exceptions/NoWhitespaceException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="82908442809a4440846a52ed12b1c22d" name="Exceptions/NullValueException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="fced3165d2311b6fb25119ae3a9ae6e9" name="Exceptions/NumericException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="7294085b86b786f57f8d620e1dfc5431" name="Exceptions/ObjectException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="bcf74721630a414c57db174f1d63fcb2" name="Exceptions/OneOfException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="4e7455078bc0f954ebe4fc177902220e" name="Exceptions/PositiveException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="79c0e89e0cf71e98e2f88c8b4c7d8025" name="Exceptions/RegexException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="a5583e9a0a33a45921414eaed396a358" name="Exceptions/DateException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="b21b7329839a035e35e1afbd27a87d86" name="Exceptions/DigitsException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="091f09cdd40ebc8ac0a8aac4b428e07d" name="Exceptions/EachException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="144469b1c08ae3dc12ecbc5d94291718" name="Exceptions/EqualsException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="c2c37b3e56ebdccba8672f0d5ac0e17a" name="Exceptions/FloatException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="bd2948e8cd79ef47329fca9396ab20a6" name="Exceptions/HexaException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="f146b4cac6921fb9dabb28c3324067b3" name="Exceptions/InException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="9d12aefab2090fca90fce40bea3ec127" name="Exceptions/InstanceException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="237124f983d278b3637bf3a8ac516820" name="Exceptions/IntException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="de32b207559aa2140c5e3b096bbbbc9b" name="Exceptions/IpException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="ebabd22dc2bcabc8b754d1459fc71dab" name="Exceptions/KeyException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="bcc2af9930e9515c4485be6eca13b131" name="Exceptions/LengthException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="2981e6b50997656f22d7f260b7e9d9d9" name="Exceptions/MaxException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="bc021ee31447285489b99e09e9f72156" name="Exceptions/MinException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="720c138a0d4386382788f61f41bccfa8" name="Exceptions/MostOfException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="54671f8ad89de8fc3d339541624ae86f" name="Exceptions/NegativeException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="732304a26e500e94b6061af9618f2d8b" name="Exceptions/NoneOfException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="fcd41203ecb8cabc63f8b519f407fc29" name="Exceptions/NotEmptyException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="9b888276cb2109cd6974f49255cf3102" name="Exceptions/NoWhitespaceException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="955a2ce58b344c019873ecc6083318c4" name="Exceptions/NullValueException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="771d29cdf00cb91af4e642a6567ccd0c" name="Exceptions/NumericException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="1a1b6ceec43a4a4ba0d8ab014c3dbca3" name="Exceptions/ObjectException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="899e998ea7908f3856ba388895db0ccf" name="Exceptions/OneOfException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="2d39834ef0aa8213f78cf2911c997a6b" name="Exceptions/PositiveException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="ab412d1b4edc9c2e05ca1a736de307fd" name="Exceptions/RegexException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="9d312b877f954696df3059eaa7c567b3" name="Exceptions/SfException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="fa46f1c072118cd86349fde9f18b3306" name="Exceptions/StringException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="8f44bfe4bd0fdef7ae0be4b2e2dc5aba" name="Exceptions/ValidationException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="ee7ab5470e9cee15c5b0f0e5549d4828" name="Exceptions/StringException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="6c3a342838ed6937a7166ce7ec048b6b" name="Exceptions/ValidationException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="f82ca20630380b0b9d6335a2942d1c84" name="Exceptions/ZendException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="2753b5b068425432e786c4e30df464fe" name="Rules/AbstractComposite.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="07aa083d1394817149cf4a6db5ea629f" name="Rules/AbstractRelated.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="cc6a9b9c7c6c43ab1daef9a8f67f67ca" name="Rules/AbstractRule.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="0a6ce27c93ef4f062973c3faa1c1dd2a" name="Rules/AbstractComposite.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="780c5a7a20ab65b5ff8e3d1647c1f90b" name="Rules/AbstractRelated.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="901437e9f6a4610242c042d93fc44285" name="Rules/AbstractRule.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="6a1e115625f44ff71bfe39fa198e40e3" name="Rules/AllOf.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="a431d0ef3c154cb2c5fe7a07bbd56acf" name="Rules/Alnum.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="c74366a999c22fa514abd1a5d8ace61c" name="Rules/Alpha.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="5cb583f88d4bfb66cf87223947d39cb8" name="Rules/Alpha.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="25f54c2c1f3d756afb759261c164f8b6" name="Rules/Arr.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="1a03ead07f42b92f344e0fef3bd0ca9b" name="Rules/AtLeast.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="2e41115c4fdbae34471d2bc325111807" name="Rules/Attribute.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="0e5a580ff3090d106df1e02c5882ef57" name="Rules/Between.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="3df410c62d6cf08f39536431651baf04" name="Rules/Call.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="b6837ae1fd632cedab0a460fd0ed8ea2" name="Rules/Callback.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="83640edc58e55a503834de0fad9fa2f1" name="Rules/Date.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="fe981422ba021c8ddd6b0f9803077d01" name="Rules/Attribute.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="c834993e3f8b03ad149034a174a726fd" name="Rules/Between.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="e62cc6a2ae6f1e5b4477668a5ef80cf7" name="Rules/Call.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="a25aa021f8c5d59a1eabae3f2d02182e" name="Rules/Callback.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="88aa7cf2b186bf9386f5391135d1ae0b" name="Rules/Date.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="f6cee7a9c23415c07318af3dbcdba94b" name="Rules/Digits.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="6610a5d8ae836534280d161c59dc2f97" name="Rules/Each.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="37988625634f04ef761c865ee7c9d266" name="Rules/Equals.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="2af88453b285b88079469b3e1dfd939b" name="Rules/Each.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="274db8c9bb7cf03afc154a2c981a846e" name="Rules/Equals.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="3374c2cf568efc7326468193878792bd" name="Rules/Float.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="cf8c4770ebb3021bd1737b677c7270c9" name="Rules/Hexa.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="7a18b24d454962cdf562c16379fd78a7" name="Rules/In.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="ee1ad7f5bb96ea3006c282a952064333" name="Rules/Instance.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="bf7ac2561935bbc53e83c68cc806a222" name="Rules/In.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="dd45a88cd46b43fadc38ab81cd26dd48" name="Rules/Instance.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="fbeec7c032013e067e72c9704ba8537f" name="Rules/Int.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="3a083becb83c264973b097207d6e4c7a" name="Rules/Ip.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="6e092aa8436eeecea533b8627bf8792f" name="Rules/Key.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="c5606ad837364c7154fda7e81fea67f6" name="Rules/Length.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="ef8ab55b74bb62a4cd223ac5d142b1ed" name="Rules/Max.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="9ee612680c890ca6bf972683beebb1c0" name="Rules/Min.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="a8ad631deef46684e5a72a00d6611567" name="Rules/Key.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="61b609da7a2c2ec6a6ecf5705bc2460a" name="Rules/Length.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="e83796652f6f382d0359b4fc73c6979c" name="Rules/Max.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="bb1f452f39700db064bed02ab0121c66" name="Rules/Min.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="1e7ba06c790b75a168a98e3972d38aa6" name="Rules/MostOf.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="ecf7ebf9af5c2c963dbde65efc5cfad2" name="Rules/Negative.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="4f9f5feb5c72b0d436a5c02ffddd8465" name="Rules/NoneOf.php" role="php" />
@@ -105,7 +105,7 @@ First Version
    <file baseinstalldir="Respect/Validation" md5sum="8a6462204bffbb3eead42a1b92b7d17e" name="Rules/Object.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="05dd2d2108851f2ba1237ffb9be51ec7" name="Rules/OneOf.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="2b9e4d588eefda35f48b2360dcf5b36d" name="Rules/Positive.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="006fe4fa5620a00fca02b03603a1da05" name="Rules/Regex.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="507bfc98d795bc1035bb453f522b3e57" name="Rules/Regex.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="e67ee6162bbf07e28ddb0f6f3cc55047" name="Rules/Sf.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="d3cf890b95664760156f902207242250" name="Rules/String.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="8f8b0eb1acf16eb5e07f4391218340b1" name="Rules/Zend.php" role="php" />
@@ -135,7 +135,7 @@ First Version
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2011-02-07</date>
+   <date>2011-02-09</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
    <notes>
 First Version
