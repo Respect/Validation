@@ -57,7 +57,7 @@ class AbstractRelatedTest extends \PHPUnit_Framework_TestCase
                 '', new NotEmpty, false, false
         );
         //overriding exception cause mocks cant handle createException properly
-        $mock->setException(new \Respect\Validation\Exceptions\ValidationException(''));
+        $mock->setException(new \Respect\Validation\Exceptions\AbstractRelatedException(''));
         $this->assertFalse($mock->assert('bla'));
     }
 
@@ -70,7 +70,7 @@ class AbstractRelatedTest extends \PHPUnit_Framework_TestCase
                 '', null, true, false
         );
         //overriding exception cause mocks cant handle createException properly
-        $mock->setException(new \Respect\Validation\Exceptions\ValidationException(''));
+        $mock->setException(new \Respect\Validation\Exceptions\AbstractRelatedException(''));
         $this->assertFalse($mock->assert('bla'));
     }
 

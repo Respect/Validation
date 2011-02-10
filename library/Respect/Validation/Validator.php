@@ -59,12 +59,6 @@ class Validator extends AllOf
         return $this;
     }
 
-    public function __get($property)
-    {
-        $this->applyParts(func_get_args());
-        return $this;
-    }
-
     public function createException()
     {
         return new AllOfException;

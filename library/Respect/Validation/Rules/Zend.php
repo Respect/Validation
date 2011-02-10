@@ -7,11 +7,13 @@ use ReflectionClass;
 class Zend extends AbstractRule
 {
 
+    public $name;
     protected $messages = array();
     protected $zendValidator;
 
     public function __construct($name, $params=array())
     {
+        $this->name = $name;
         $validatorName = explode('_', $name);
         $validatorName = array_map('ucfirst', $validatorName);
         $validatorName = implode('\\', $validatorName);
@@ -27,9 +29,9 @@ class Zend extends AbstractRule
         if (!$this->validate($input)) {
             $exceptions = array();
             foreach ($this->zendValidator->getMessages() as $m) {
-                $exceptions[] = $this->createException()->configure($m);
+                $exceptions[] = $this->createException()->configure($m, get_object_vars($this));
             }
-            throw $this->reportError($input, $exceptions);
+            throw $this->reportError($input)->setRelated($exceptions);
         }
         return true;
     }

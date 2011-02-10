@@ -11,9 +11,9 @@ class OneOf extends AbstractComposite
         $exceptions = $this->validateRules($input);
         $numRules = count($validators);
         $numExceptions = count($exceptions);
+        $numPassed = $numRules - $numExceptions;
         if ($numExceptions === $numRules)
-            throw $this->reportError($input, $exceptions, $numExceptions, 1,
-                $numRules);
+            throw $this->reportError($input)->setRelated($exceptions);
         return true;
     }
 

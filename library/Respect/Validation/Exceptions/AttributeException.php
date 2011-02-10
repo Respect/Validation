@@ -2,18 +2,18 @@
 
 namespace Respect\Validation\Exceptions;
 
-class AttributeException extends AbstractRelatedException
+class AttributeException extends AbstractCompositeException
 {
     const NOT_PRESENT = 0;
     const INVALID = 1;
     public static $defaultTemplates = array(
-        self::NOT_PRESENT => '%1$s must be present',
-        self::INVALID => 'Attribute %2$s must be valid on %1$s',
+        self::NOT_PRESENT => 'Attribute {{reference}} must be present on {{name}}',
+        self::INVALID => 'Attribute {{reference}} must be valid on {{name}}',
     );
 
-    public function chooseTemplate($name, $attributeName, $hasTheAttribute)
+    public function chooseTemplate()
     {
-        return $hasTheAttribute ? static::INVALID : static::NOT_PRESENT;
+        return $this->getParam('hasReference') ? static::INVALID : static::NOT_PRESENT;
     }
 
 }

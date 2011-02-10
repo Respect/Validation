@@ -2,12 +2,10 @@
 
 namespace Respect\Validation\Rules;
 
-class Digits extends AbstractRule
+class Digits extends Alpha
 {
 
-    public function validate($input)
-    {
-        return ctype_digit((string) $input);
-    }
+    public $additionalChars = '';
+    public $stringFormat = '/^\s*[0-9]+([0-9]|\s)*$/';
 
 }

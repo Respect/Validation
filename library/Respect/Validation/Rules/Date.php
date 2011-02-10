@@ -6,8 +6,8 @@ use DateTime;
 
 class Date extends AbstractRule
 {
-    const FORMAT_DEFAULT = DateTime::RFC1036;
-    protected $format = self::FORMAT_DEFAULT;
+
+    public $format = null;
 
     protected function formatDate(DateTime $date)
     {
@@ -19,10 +19,6 @@ class Date extends AbstractRule
         $this->format = $format;
     }
 
-    public function reportError($input, array $related=array())
-    {
-        return parent::reportError($input, $related, $this->format);
-    }
     public function validate($input)
     {
         if ($input instanceof DateTime)

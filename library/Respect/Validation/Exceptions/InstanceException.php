@@ -6,7 +6,7 @@ class InstanceException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        self::STANDARD => '%s must be an instance of %s',
+        self::STANDARD => '{{name}} must be an instance of {{instanceName}}',
     );
 
 }

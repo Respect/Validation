@@ -5,7 +5,7 @@ namespace Respect\Validation\Rules;
 class AtLeast extends AbstractComposite
 {
 
-    protected $howMany = 1;
+    public $howMany = 1;
 
     public function __construct($howMany, $rules=array())
     {
@@ -19,9 +19,14 @@ class AtLeast extends AbstractComposite
         $exceptions = $this->validateRules($input);
         $numRules = count($validators);
         $numExceptions = count($exceptions);
-        if ($this->howMany > ($numRules - $numExceptions))
-            throw $this->reportError($input, $exceptions, $numExceptions,
-                $this->howMany, $numRules);
+        $numPassed = $numRules - $numExceptions;
+        $summary = array(
+            'total' => $numRules,
+            'failed' => $numExceptions,
+            'passed' => $numPassed
+        );
+        if ($this->howMany > $numPassed)
+            throw $this->reportError($input, $summary)->setRelated($exceptions);
         return true;
     }
 
@@ -39,9 +44,9 @@ class AtLeast extends AbstractComposite
             }
             if ($pass >= $this->howMany)
                 return true;
-            if (count($exceptions) > (count($validators) - $this->howMany))
-                throw $this->reportError($input, $exceptions,
-                    count($exceptions), $this->howMany);
+            if (count($exceptions) > ($numPassed = count($validators) - $this->howMany))
+                throw $this->reportError($input, array('passed' => $numPassed))
+                    ->setRelated($exceptions);
         }
         return false;
     }

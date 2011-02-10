@@ -6,7 +6,7 @@ class SfException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        self::STANDARD => '%s',
+        self::STANDARD => '{{name}}',
     );
 
 }

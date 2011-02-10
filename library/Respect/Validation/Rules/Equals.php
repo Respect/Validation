@@ -5,27 +5,26 @@ namespace Respect\Validation\Rules;
 class Equals extends AbstractRule
 {
 
-    protected $identical = false;
-    protected $param = null;
+    public $compareIdentical = false;
+    public $compareTo = null;
 
-    public function __construct($param, $identical=false)
+    public function __construct($compareTo, $compareIdentical=false)
     {
-        $this->param = $param;
-        $this->identical = $identical;
+        $this->compareTo = $compareTo;
+        $this->compareIdentical = $compareIdentical;
     }
 
-    public function reportError($input, array $related=array())
+    public function reportError($input, array $extraParams=array())
     {
-        return parent::reportError($input, $related, $this->param,
-            $this->identical);
+        return parent::reportError($input, $extraParams);
     }
 
     public function validate($input)
     {
-        if ($this->identical)
-            return $input === $this->param;
+        if ($this->compareIdentical)
+            return $input === $this->compareTo;
         else
-            return $input == $this->param;
+            return $input == $this->compareTo;
     }
 
 }

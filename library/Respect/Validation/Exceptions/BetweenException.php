@@ -2,31 +2,30 @@
 
 namespace Respect\Validation\Exceptions;
 
-class BetweenException extends ValidationException
+class BetweenException extends AbstractCompositeException
 {
     const BOTH = 0;
     const LOWER = 1;
     const GREATER = 2;
 
     public static $defaultTemplates = array(
-        self::BOTH => '%s must be between %s and %s',
-        self::LOWER => '%s must be greater than %2$s',
-        self::GREATER => '%s must be lower than %3$s',
+        self::BOTH => '{{name}} must be between {{minValue}} and {{maxValue}}',
+        self::LOWER => '{{name}}  must be greater than {{minValue}}',
+        self::GREATER => '{{name}} must be lower than {{maxValue}}',
     );
 
-    public function configure($name, $min, $max)
+    public function configure($name, array $params=array())
     {
-        return parent::configure(
-            $name, ValidationException::stringify($min), //TODO find a better way
-            ValidationException::stringify($max)
-        );
+        $params['minValue'] = static::stringify($params['minValue']);
+        $params['maxValue'] = static::stringify($params['maxValue']);
+        return parent::configure($name, $params);
     }
 
-    public function chooseTemplate($name, $min, $max)
+    public function chooseTemplate()
     {
-        if (is_null($min))
+        if (!$this->getParam('minValue'))
             return static::GREATER;
-        elseif (is_null($max))
+        elseif (!$this->getParam('maxValue'))
             return static::LOWER;
         else
             return static::BOTH;

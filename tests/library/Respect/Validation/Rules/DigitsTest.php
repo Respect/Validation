@@ -5,32 +5,44 @@ namespace Respect\Validation\Rules;
 class DigitsTest extends \PHPUnit_Framework_TestCase
 {
 
-    protected $object;
-
-    protected function setUp()
-    {
-        $this->object = new Digits;
-    }
-
     /**
-     * @dataProvider providerForDigits
-     *
+     * @dataProvider providerForValidDigits
      */
-    public function testDigits($input)
+    public function testDigitsValid($validDigits, $aditional='')
     {
-        $this->assertTrue($this->object->assert($input));
+        $validator = new Digits($aditional);
+        $this->assertTrue($validator->validate($validDigits));
     }
 
     /**
-     * @dataProvider providerForNotDigits
+     * @dataProvider providerForInvalidDigits
      * @expectedException Respect\Validation\Exceptions\DigitsException
      */
-    public function testNotDigits($input)
+    public function testDigitsInvalid($invalidDigits, $aditional='')
     {
-        $this->assertTrue($this->object->assert($input));
+        $validator = new Digits($aditional);
+        $validator->assert($invalidDigits);
     }
 
-    public function providerForDigits()
+    /**
+     * @dataProvider providerForInvalidParams
+     * @expectedException Respect\Validation\Exceptions\ComponentException
+     */
+    public function testInvalidParameters($aditional)
+    {
+        $validator = new Digits($aditional);
+    }
+
+    public function providerForInvalidParams()
+    {
+        return array(
+            array(new \stdClass),
+            array(array()),
+            array(0x2)
+        );
+    }
+
+    public function providerForValidDigits()
     {
         return array(
             array(165),
@@ -38,17 +50,22 @@ class DigitsTest extends \PHPUnit_Framework_TestCase
             array('01650'),
             array('165'),
             array('1650'),
+            array('16 50'),
+            array("\n5\t"),
+            array('16-50', '-'),
         );
     }
 
-    public function providerForNotDigits()
+    public function providerForInvalidDigits()
     {
         return array(
             array(null),
+            array('16-50'),
             array('a'),
             array(' '),
             array('Foo'),
             array(''),
+            array("\n\t"),
             array('12.1'),
             array('-12'),
             array(-12),

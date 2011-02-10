@@ -4,23 +4,20 @@ namespace Respect\Validation\Rules;
 
 use Countable;
 use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Exceptions\InvalidException;
-use Respect\Validation\Exceptions\LengthException;
-use Respect\Validation\Exceptions\NotNumericException;
 use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Validator;
 
 class Length extends AbstractRule
 {
 
-    protected $min;
-    protected $max;
-    protected $inclusive;
+    public $minValue;
+    public $maxValue;
+    public $inclusive;
 
     public function __construct($min=null, $max=null, $inclusive=true)
     {
-        $this->min = $min;
-        $this->max = $max;
+        $this->minValue = $min;
+        $this->maxValue = $max;
         $this->inclusive = $inclusive;
         $paramValidator = new OneOf(new Numeric, new NullValue);
         if (!$paramValidator->validate($min))
@@ -38,11 +35,6 @@ class Length extends AbstractRule
                 sprintf('%s cannot be less than %s for validation', $min, $max)
             );
         }
-    }
-
-    public function reportError($input, array $related=array())
-    {
-        return parent::reportError($input, $related, $this->min, $this->max);
     }
 
     public function validate($input)
@@ -63,23 +55,23 @@ class Length extends AbstractRule
     protected function validateMin($input)
     {
         $length = $this->extractLength($input);
-        if (is_null($this->min))
+        if (is_null($this->minValue))
             return true;
         if ($this->inclusive)
-            return $length >= $this->min;
+            return $length >= $this->minValue;
         else
-            return $length > $this->min;
+            return $length > $this->minValue;
     }
 
     protected function validateMax($input)
     {
         $length = $this->extractLength($input);
-        if (is_null($this->max))
+        if (is_null($this->maxValue))
             return true;
         if ($this->inclusive)
-            return $length <= $this->max;
+            return $length <= $this->maxValue;
         else
-            return $length < $this->max;
+            return $length < $this->maxValue;
     }
 
 }

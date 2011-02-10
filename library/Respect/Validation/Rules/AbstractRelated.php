@@ -10,13 +10,13 @@ use Respect\Validation\Exceptions\ValidationException;
 abstract class AbstractRelated extends AbstractRule implements Validatable
 {
 
-    protected $mandatory = true;
-    protected $reference = '';
-    protected $referenceValidator;
+    public $mandatory = true;
+    public $reference = '';
+    public $referenceValidator;
 
-    abstract protected function hasReference($input);
+    abstract public function hasReference($input);
 
-    abstract protected function getReferenceValue($input);
+    abstract public function getReferenceValue($input);
 
     public function __construct($reference, Validatable $validator=null,
         $mandatory=true)
@@ -36,10 +36,14 @@ abstract class AbstractRelated extends AbstractRule implements Validatable
                     $this->getReferenceValue($input)
                 );
         } catch (ValidationException $e) {
-            throw $this->reportError($input, array($e));
+            throw $this->reportError(
+                $input, array('hasReference' => true)
+            )->addRelated($e);
         } catch (ReflectionException $e) {
             if ($this->mandatory)
-                throw $this->reportError($input);
+                throw $this->reportError(
+                    $input, array('hasReference' => false)
+                );
         }
         return true;
     }
@@ -47,18 +51,14 @@ abstract class AbstractRelated extends AbstractRule implements Validatable
     public function check($input)
     {
         if ($this->mandatory && !$this->hasReference($input))
-            throw $this->reportError($input);
+            throw $this->reportError(
+                $input,  array('hasReference' => false)
+            );
         if (!is_null($this->referenceValidator))
             $this->referenceValidator->check(
                 $this->getReferenceValue($input)
             );
         return true;
-    }
-
-    public function reportError($input, array $relatedExceptions=array())
-    {
-        return parent::reportError($input, $relatedExceptions, $this->reference,
-            !empty($relatedExceptions))->setId($this->reference);
     }
 
     public function validate($input)

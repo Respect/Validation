@@ -2,11 +2,11 @@
 
 namespace Respect\Validation\Exceptions;
 
-class CallbackException extends ValidationException
+class CallbackException extends AbstractRelatedException
 {
 
     public static $defaultTemplates = array(
-        self::STANDARD => '%s must be valid',
+        self::STANDARD => '{{name}} must be valid',
     );
 
 }

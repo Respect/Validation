@@ -5,20 +5,15 @@ namespace Respect\Validation\Exceptions;
 class MinException extends ValidationException
 {
     const INCLUSIVE = 1;
+
     public static $defaultTemplates = array(
-        self::STANDARD => '%s must be greater than %s',
-        self::INCLUSIVE => '%s must be greater than %s (inclusive)',
+        self::STANDARD => '{{name}} must be greater than {{minValue}}',
+        self::INCLUSIVE => '{{name}} must be greater than or equals {{minValue}}',
     );
 
-    public function cnofigure($name, $min, $inclusive)
+    public function chooseTemplate()
     {
-        return parent::configure($name, ValidationException::stringify($min),
-            $inclusive);//TODO find a better way
-    }
-
-    public function chooseTemplate($name, $min, $inclusive)
-    {
-        return $inclusive ? static::INCLUSIVE : static::STANDARD;
+        return $this->getParam('inclusive') ? static::INCLUSIVE : static::STANDARD;
     }
 
 }

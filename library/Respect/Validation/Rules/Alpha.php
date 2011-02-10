@@ -7,8 +7,8 @@ use Respect\Validation\Exceptions\ComponentException;
 class Alpha extends AbstractRule
 {
 
-    protected $additionalChars = '';
-    protected $stringFormat = '#^([a-zA-Z]|\s)+$#';
+    public $additionalChars = '';
+    public $stringFormat = '/^\s*[a-zA-Z]+([a-zA-Z]|\s)*$/';
 
     public function __construct($additionalChars='')
     {
@@ -19,17 +19,13 @@ class Alpha extends AbstractRule
         $this->additionalChars = $additionalChars;
     }
 
-    public function reportError($input, array $related=array())
-    {
-        return parent::reportError($input, $related, $this->additionalChars);
-    }
-
     public function validate($input)
     {
-        return is_string($input) && preg_match(
-            $this->stringFormat,
-            str_replace(str_split($this->additionalChars), '', $input)
-        );
+        if (!is_scalar($input))
+            return false;
+        $cleanInput = str_replace(str_split($this->additionalChars), '', $input);
+        return ($cleanInput !== $input && $cleanInput === '')
+        || preg_match($this->stringFormat, $cleanInput);
     }
 
 }

@@ -46,14 +46,16 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array('alganet', ''),
+            array('alganet', 'alganet'),
             array('0alg-anet0', '0-9'),
             array('a', ''),
             array('foobar', ''),
             array('rubinho_', '_'),
             array('google.com', '.'),
             array('alganet alganet', ''),
-            array("\n", ''),
-            array("\t", ''),
+            array("\nabc", ''),
+            array("\tdef", ''),
+            array("\nabc \t", ''),
         );
     }
 
@@ -63,6 +65,8 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
             array('@#$', ''),
             array('_', ''),
             array('', ''),
+            array("\t", ''),
+            array("\n", ''),
             array('dgç', ''),
             array('122al', ''),
             array('122', ''),

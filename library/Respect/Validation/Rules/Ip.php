@@ -5,15 +5,17 @@ namespace Respect\Validation\Rules;
 class Ip extends AbstractRule
 {
 
-    public function __construct($options=null)
+    public $ipOptions;
+
+    public function __construct($ipOptions=null)
     {
-        $this->options = $options;
+        $this->ipOptions = $ipOptions;
     }
 
     public function validate($input)
     {
         return filter_var(
-            $input, FILTER_VALIDATE_IP, array('flags' => $this->options)
+            $input, FILTER_VALIDATE_IP, array('flags' => $this->ipOptions)
         );
     }
 

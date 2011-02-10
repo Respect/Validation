@@ -8,8 +8,8 @@ use Symfony\Component\Validator\ConstraintViolation;
 class Sf extends AbstractRule
 {
 
+    public $name;
     protected $constraint;
-    protected $name;
     protected $messages = array();
     protected $validator;
 

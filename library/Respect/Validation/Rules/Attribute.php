@@ -19,14 +19,14 @@ class Attribute extends AbstractRelated
         parent::__construct($reference, $referenceValidator, $mandatory);
     }
 
-    protected function getReferenceValue($input)
+    public function getReferenceValue($input)
     {
         $propertyMirror = new ReflectionProperty($input, $this->reference);
         $propertyMirror->setAccessible(true);
         return $propertyMirror->getValue($input);
     }
 
-    protected function hasReference($input)
+    public function hasReference($input)
     {
         return @property_exists($input, $this->reference);
     }

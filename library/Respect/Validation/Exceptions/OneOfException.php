@@ -2,12 +2,11 @@
 
 namespace Respect\Validation\Exceptions;
 
-class OneOfException extends AbstractCompositeException
+class OneOfException extends AbstractRelatedException
 {
 
     public static $defaultTemplates = array(
-        self::NONE => 'At least one of %4$d rules must pass for %1$s',
-        self::SOME => 'At least one of %4$d rules must pass for %1$s, only %2$d passed',
+        self::STANDARD => 'At least one of these rules must pass for {{name}}',
     );
 
 }

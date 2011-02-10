@@ -8,13 +8,13 @@ class EqualsException extends ValidationException
     const IDENTICAL = 0;
 
     public static $defaultTemplates = array(
-        self::EQUALS => '%s must be equals %s',
-        self::IDENTICAL => '%s must be identical as %s',
+        self::EQUALS => '{{name}} must be equals {{compareTo}}',
+        self::IDENTICAL => '{{name}} must be identical as {{compareTo}}',
     );
 
-    public function chooseTemplate($name, $equals, $identical)
+    public function chooseTemplate()
     {
-        return ($identical) ? static::IDENTICAL : static::EQUALS;
+        return $this->getParam('identical') ? static::IDENTICAL : static::EQUALS;
     }
 
 }

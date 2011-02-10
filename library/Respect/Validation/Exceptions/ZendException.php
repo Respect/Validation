@@ -2,11 +2,11 @@
 
 namespace Respect\Validation\Exceptions;
 
-class ZendException extends ValidationException
+class ZendException extends AbstractRelatedException
 {
 
     public static $defaultTemplates = array(
-        self::STANDARD => '%s',
+        self::STANDARD => '{{name}}',
     );
 
 }

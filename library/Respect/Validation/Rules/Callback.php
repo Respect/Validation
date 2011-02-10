@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\ComponentException;
 class Callback extends AbstractRule
 {
 
-    protected $callback;
+    public $callback;
 
     public function __construct($callback)
     {
@@ -16,11 +16,6 @@ class Callback extends AbstractRule
                 'Invalid callback'
             );
         $this->callback = $callback;
-    }
-
-    public function reportError($input, array $related=array())
-    {
-        return parent::reportError($input, $related, $this->callback);
     }
 
     public function validate($input)

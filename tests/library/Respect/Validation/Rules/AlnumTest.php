@@ -46,6 +46,7 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array('alganet', ''),
+            array('alganet', 'alganet'),
             array('0alg-anet0', '0-9'),
             array('1', ''),
             array('a', ''),
@@ -53,8 +54,10 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
             array('rubinho_', '_'),
             array('google.com', '.'),
             array('alganet alganet', ''),
-            array("\n", ''),
-            array("\t", ''),
+            array("\nabc", ''),
+            array("\tdef", ''),
+            array("\nabc \t", ''),
+            array(0, ''),
         );
     }
 
@@ -63,10 +66,11 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
         return array(
             array('@#$', ''),
             array('_', ''),
+            array("\t", ''),
+            array("\n", ''),
             array('', ''),
             array('dgç', ''),
-            array(1e21, ''),
-            array(0, ''),
+            array(1e21, ''), //evaluates to "1.0E+21"
             array(null, ''),
             array(new \stdClass, ''),
             array(array(), ''),

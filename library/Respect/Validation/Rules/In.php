@@ -5,34 +5,33 @@ namespace Respect\Validation\Rules;
 class In extends AbstractRule
 {
 
-    protected $options;
-    protected $strict;
+    public $haystack;
+    public $compareIdentical;
 
-    public function __construct($options, $strict=false)
+    public function __construct($haystack, $compareIdentical=false)
     {
-        $this->options = $options;
-        $this->strict = $strict;
+        $this->haystack = $haystack;
+        $this->compareIdentical = $compareIdentical;
     }
 
-    public function reportError($input, array $related=array())
+    public function reportError($input, array $extraParams=array())
     {
-        if (is_array($this->options))
-            $options = implode(',', $this->options);
+        if (is_array($this->haystack))
+            $haystack = implode(',', $this->haystack);
         else
-            $options = $this->options;
-        return parent::reportError($input, $related,
-            $options, $this->strict);
+            $haystack = $this->haystack;
+        return parent::reportError($input, $extraParams);
     }
 
     public function validate($input)
     {
-        if (is_array($this->options))
-            return in_array($input, $this->options, $this->strict);
-        elseif (is_string($this->options))
-            if ($this->strict)
-                return mb_strpos($this->options, $input) !== false;
+        if (is_array($this->haystack))
+            return in_array($input, $this->haystack, $this->compareIdentical);
+        elseif (is_string($this->haystack))
+            if ($this->haystack)
+                return mb_strpos($this->haystack, $input) !== false;
             else
-                return mb_stripos($this->options, $input) !== false;
+                return mb_stripos($this->haystacko, $input) !== false;
         else
             return false;
     }

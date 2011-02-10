@@ -5,10 +5,7 @@ namespace Respect\Validation\Exceptions;
 use DateTime;
 use Exception;
 use InvalidArgumentException;
-use RecursiveIteratorIterator;
-use RecursiveTreeIterator;
-use Respect\Validation\ExceptionIterator;
-use Respect\Validation\Reportable;
+use Respect\Validation\Validatable;
 
 class ValidationException extends InvalidArgumentException
 {
@@ -20,17 +17,18 @@ class ValidationException extends InvalidArgumentException
     );
     protected $context = null;
     protected $id = '';
-    protected $params = array();
-    protected $related = array();
+    protected $name = 'validation';
     protected $template = '';
+    protected $validator = null;
 
-    public static function create($name=null)
+    public static function format($template, array $vars=array())
     {
-        $i = new static;
-        if (func_get_args() > 0)
-            return call_user_func_array(array($i, 'configure'), func_get_args());
-        else
-            return $i;
+        return preg_replace_callback(
+            '/{{(\w+)}}/',
+            function($match) use($vars) {
+                return $vars[$match[1]];
+            }, $template
+        );
     }
 
     public static function stringify($value)
@@ -53,35 +51,20 @@ class ValidationException extends InvalidArgumentException
         return $this->getMainMessage();
     }
 
-    public function addRelated(ValidationException $related)
-    {
-        $this->related[] = $related;
-        return $this;
-    }
-
     public function chooseTemplate()
     {
         return key(static::$defaultTemplates);
     }
 
-    public function configure($name)
+    public function configure($name, array $params = array())
     {
-        $this->params = func_get_args();
-        foreach ($this->params as &$p) 
-            $p = static::stringify($p);
+        $this->setName($name);
+        $this->setParams($params);
         $this->message = $this->getMainMessage();
         $this->guessId();
         return $this;
     }
 
-    public function findRelated()
-    {
-        $target = $this;
-        $path = func_get_args();
-        while (!empty($path) && $target !== false)
-            $target = $this->getRelatedByName(array_shift($path));
-        return $target;
-    }
 
     public function getFullMessage()
     {
@@ -93,60 +76,41 @@ class ValidationException extends InvalidArgumentException
 
     public function getName()
     {
-        return $this->params[0];
+        return $this->name;
     }
 
     public function getId()
     {
         return $this->id;
     }
-
-    public function getIterator($full=false, $mode=self::ITERATE_ALL)
-    {
-        $exceptionIterator = new ExceptionIterator($this, $full);
-        if ($mode == self::ITERATE_ALL)
-            return new RecursiveIteratorIterator($exceptionIterator, 1);
-        else
-            return new RecursiveTreeIterator($exceptionIterator);
-    }
-
     public function getMainMessage()
     {
-        $sprintfParams = $this->getParams();
-        if (empty($sprintfParams))
-            return $this->message;
-        array_unshift($sprintfParams, $this->getTemplate());
-        return call_user_func_array('sprintf', $sprintfParams);
+        $vars = $this->getParams();
+        $vars['name'] = $this->getName();
+        return static::format($this->getTemplate(), $vars);
+    }
+
+    public function getParam($name)
+    {
+        return $this->hasParam($name) ? $this->params[$name] : false;
+    }
+
+    public function hasParam($name)
+    {
+        return isset($this->params[$name]);
     }
 
     public function getParams()
     {
-        $params = array_slice($this->params, 1);
-        array_unshift($params, $this->getName());
-        return $params;
-        
+        return $this->params;
     }
 
-    public function getRelated()
-    {
-        return $this->related;
-    }
-
-    public function getRelatedByName($name)
-    {
-        foreach ($this->getIterator(true) as $e)
-            if ($e->getId() === $name)
-                return $e;
-        return false;
-    }
 
     public function getTemplate()
     {
         if (!empty($this->template))
             return $this->template;
-        $templateKey = call_user_func_array(
-            array($this, 'chooseTemplate'), $this->getParams()
-        );
+        $templateKey = $this->chooseTemplate();
         if (is_null($this->context))
             $this->template = static::$defaultTemplates[$templateKey];
         else
@@ -157,8 +121,6 @@ class ValidationException extends InvalidArgumentException
     public function setContext($context)
     {
         $this->context = $context;
-        foreach ($this->related as $r)
-            $r->setContext($context);
     }
 
     public function setId($id)
@@ -169,16 +131,16 @@ class ValidationException extends InvalidArgumentException
 
     public function setName($name)
     {
-        $this->params[0] = static::stringify($name);
+        $this->name = static::stringify($name);
         return $this;
     }
 
-    public function setRelated(array $relatedExceptions)
+    public function setParams(array $params)
     {
-        foreach ($relatedExceptions as $related)
-            $this->addRelated($related);
-        return $this;
+        $this->params = array_map(array(get_called_class(), 'stringify'),
+            $params);
     }
+
 
     public function setTemplate($template)
     {

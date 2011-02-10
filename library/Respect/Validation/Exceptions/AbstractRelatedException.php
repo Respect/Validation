@@ -2,15 +2,23 @@
 
 namespace Respect\Validation\Exceptions;
 
-abstract class AbstractRelatedException extends ValidationException
+class AbstractRelatedException extends AbstractCompositeException
 {
+    public function getMainMessage()
+    {
+        $vars = $this->getParams();
+        $vars['name'] = $this->getName();
+        return static::format($this->getTemplate(), $vars);
+    }
 
     public function getRelated($full=false)
     {
-        if (!$full && 1 === count($this->related))
-            return $this->related[0]->getRelated(true);
-        else
-            return parent::getRelated($full);
+        return $this->related;
+    }
+    
+    public function chooseTemplate()
+    {
+        return 0;
     }
 
 }

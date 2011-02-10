@@ -7,14 +7,20 @@ class DateException extends ValidationException
     const FORMAT = 1;
 
     public static $defaultTemplates = array(
-        self::STANDARD => '%s must be a valid date',
-        //TODO reformat to reflect number of digits, so Y-m-d becomes YYYY-mm-dd
-        self::FORMAT => '%s must be a valid date in the format %s'
+        self::STANDARD => '{{name}} must be a valid date',
+        self::FORMAT => '{{name}} must be a valid date. Sample format: {{format}}'
     );
 
-    public function chooseTemplate($name, $format)
+    public function configure($name, array $params=array())
     {
-        return empty($format) ? static::STANDARD : static::FORMAT;
+        $params['format'] = date($params['format'],
+            strtotime('2005-12-30 01:02:03'));
+        return parent::configure($name, $params);
+    }
+
+    public function chooseTemplate()
+    {
+        return $this->getParam('format') ? static::FORMAT : static::STANDARD;
     }
 
 }

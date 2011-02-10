@@ -18,12 +18,12 @@ class Key extends AbstractRelated
         parent::__construct($reference, $referenceValidator, $mandatory);
     }
 
-    protected function getReferenceValue($input)
+    public function getReferenceValue($input)
     {
         return @$input[$this->reference];
     }
 
-    protected function hasReference($input)
+    public function hasReference($input)
     {
         return array_key_exists($this->reference, $input);
     }

@@ -9,7 +9,8 @@ use Respect\Validation\Exceptions\ValidationException;
 class Each extends AbstractRule
 {
 
-    protected $itemValidator;
+    public $itemValidator;
+    public $keyValidator;
 
     public function __construct(Validatable $itemValidator = null,
         Validatable $keyValidator=null)
@@ -42,7 +43,7 @@ class Each extends AbstractRule
                 }
         }
         if (!empty($exceptions))
-            throw $this->reportError($input, $exceptions, count($exceptions));
+            throw $this->reportError($input)->setRelated($exceptions);
         return true;
     }
 

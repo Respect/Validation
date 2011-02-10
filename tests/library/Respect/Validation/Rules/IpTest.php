@@ -18,7 +18,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
      */
     public function testIp($input, $options=null)
     {
-        $this->object->options = $options;
+        $this->object->ipOptions = $options;
         $this->assertTrue($this->object->assert($input));
     }
 
@@ -28,7 +28,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
      */
     public function testNotIp($input, $options=null)
     {
-        $this->object->options = $options;
+        $this->object->ipOptions = $options;
         $this->assertTrue($this->object->assert($input));
     }
 

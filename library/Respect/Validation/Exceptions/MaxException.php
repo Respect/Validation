@@ -7,19 +7,13 @@ class MaxException extends ValidationException
     const INCLUSIVE = 1;
 
     public static $defaultTemplates = array(
-        self::STANDARD => '%s must be lower than %s',
-        self::INCLUSIVE => '%s must be lower than %s (inclusive)',
+        self::STANDARD => '{{name}} must be lower than {{maxValue}}',
+        self::INCLUSIVE => '{{name}} must be lower than or equals {{maxValue}}',
     );
 
-    public function cnofigure($name, $max, $inclusive)
+    public function chooseTemplate()
     {
-        return parent::configure($name, ValidationException::stringify($max),
-            $inclusive);//TODO find a better way
-    }
-
-    public function chooseTemplate($name, $max, $inclusive)
-    {
-        return $inclusive ? static::INCLUSIVE : static::STANDARD;
+        return $this->getParam('inclusive') ? static::INCLUSIVE : static::STANDARD;
     }
 
 }

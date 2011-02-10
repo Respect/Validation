@@ -20,37 +20,25 @@ abstract class AbstractComposite extends AbstractRule implements Validatable
 
     public function addRule($validator, $arguments=array())
     {
-        $this->appendRule(
-            Validator::buildRule($validator, $arguments)
-        );
+        if (!$validator instanceof Validatable)
+            $validator = Validator::buildRule($validator, $arguments);
+        $this->appendRule($validator);
     }
 
-    public function addRules(array $validators, $prefix='')
+    public function addRules(array $validators)
     {
-        foreach ($validators as $validatorKey => $validatorSpec) {
-            if (is_object($validatorSpec)) {
-                $this->addRule($validatorSpec);
-                continue;
-            } elseif (is_numeric($validatorKey)) {
-                $validatorName = $validatorSpec;
-                $validatorArgs = array();
-            } else {
-                $validatorName = $validatorKey;
-                if (!empty($validatorSpec) && !is_array($validatorSpec))
-                    throw new ComponentException(
-                        sprintf(
-                            'Arguments for array-specified validators must be an array, you provided %s',
-                            $validatorSpec
-                        )
-                    );
-                $validatorArgs = empty($validatorSpec) ? array() : $validatorSpec;
-            }
-            if (!empty($prefix))
-                $validatorName = $prefix . '\\' . $validatorName;
-            $this->addRule($validatorName, $validatorArgs);
+        foreach ($validators as $key => $spec) {
+            if ($spec instanceof Validatable)
+                $this->appendRule($spec);
+            if (is_numeric($key) && is_array($spec))
+                $this->addRules($spec);
+            elseif (is_array($spec))
+                $this->addRule($key, $spec);
+            else
+                $this->addRule($spec);
         }
     }
-
+    
     public function getRules()
     {
         return $this->rules;

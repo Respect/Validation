@@ -2,11 +2,11 @@
 
 namespace Respect\Validation\Exceptions;
 
-class EachException extends ValidationException
+class EachException extends AbstractRelatedException
 {
 
     public static $defaultTemplates = array(
-       self::STANDARD =>  'Each item in %s must be valid',
+        self::STANDARD => 'Each item in {{name}} must be valid',
     );
 
 }

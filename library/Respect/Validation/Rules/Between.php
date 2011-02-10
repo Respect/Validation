@@ -8,13 +8,13 @@ use Respect\Validation\Exceptions\ValidationException;
 class Between extends AllOf
 {
 
-    protected $min;
-    protected $max;
+    public $minValue;
+    public $maxValue;
 
     public function __construct($min=null, $max=null, $inclusive=false)
     {
-        $this->min = $min;
-        $this->max = $max;
+        $this->minValue = $min;
+        $this->maxValue = $max;
         if (!is_null($min) && !is_null($max) && $min > $max)
             throw new ComponentException(
                 sprintf(
@@ -25,11 +25,6 @@ class Between extends AllOf
             $this->addRule(new Min($min, $inclusive));
         if (!is_null($max))
             $this->addRule(new Max($max, $inclusive));
-    }
-
-    public function reportError($input, array $relatedExceptions=array())
-    {
-        return parent::reportError($input, array(), $this->min, $this->max);
     }
 
 }

@@ -19,6 +19,7 @@ class ExceptionIterator extends RecursiveArrayIterator
 
     public function hasChildren()
     {
+        if (!$this->current() instanceof AbstractCompositeException) return false;
         return (bool) $this->current()->getRelated($this->fullRelated);
     }
 

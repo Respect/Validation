@@ -6,7 +6,7 @@ class ArrException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        self::STANDARD => '%s must be an array',
+        self::STANDARD => '{{name}} must be an array',
     );
 
 }

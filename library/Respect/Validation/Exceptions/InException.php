@@ -6,7 +6,7 @@ class InException extends ValidationException
 {
 
     public static $defaultTemplates = array(
-        self::STANDARD => '%s must be in (%s)',
+        self::STANDARD => '{{name}} must be in ({{haystack}})',
     );
 
 }

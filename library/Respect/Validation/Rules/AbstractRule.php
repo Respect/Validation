@@ -57,19 +57,16 @@ abstract class AbstractRule implements Validatable
         return!empty($this->exception);
     }
 
-    public function reportError($input, array $related=array())
+    public function reportError($input, array $extraParams=array())
     {
         if ($this->hasException())
             return $this->getException();
 
-        $exception = $this->createException()->setRelated($related);
-        $parameters = array();
-        if (func_num_args() > 2)
-            $parameters = array_slice(func_get_args(), 2);
+        $exception = $this->createException();
         $input = ValidationException::stringify($input);
-        $exceptionInput = $this->getName() ? : "\"$input\"";
-        array_unshift($parameters, $exceptionInput);
-        call_user_func_array(array($exception, 'configure'), $parameters);
+        $name = $this->getName() ? : "\"$input\"";
+        $params = array_merge($extraParams, get_object_vars($this));
+        $exception->configure($name, $params);
         return $exception;
     }
 
