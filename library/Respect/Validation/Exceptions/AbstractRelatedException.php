@@ -4,6 +4,12 @@ namespace Respect\Validation\Exceptions;
 
 class AbstractRelatedException extends AbstractCompositeException
 {
+
+    public function chooseTemplate()
+    {
+        return 0;
+    }
+
     public function getMainMessage()
     {
         $vars = $this->getParams();
@@ -11,14 +17,9 @@ class AbstractRelatedException extends AbstractCompositeException
         return static::format($this->getTemplate(), $vars);
     }
 
-    public function getRelated($full=false)
+    public function getRelated()
     {
         return $this->related;
-    }
-    
-    public function chooseTemplate()
-    {
-        return 0;
     }
 
 }

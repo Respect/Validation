@@ -10,16 +10,13 @@ use Respect\Validation\Validatable;
 class ValidationException extends InvalidArgumentException
 {
     const STANDARD = 0;
-    const ITERATE_TREE = 1;
-    const ITERATE_ALL = 2;
     public static $defaultTemplates = array(
         self::STANDARD => 'Data validation failed for %s'
     );
     protected $context = null;
-    protected $id = '';
-    protected $name = 'validation';
+    protected $id = 'validation';
+    protected $name = '';
     protected $template = '';
-    protected $validator = null;
 
     public static function format($template, array $vars=array())
     {
@@ -36,14 +33,19 @@ class ValidationException extends InvalidArgumentException
         if (is_string($value))
             return $value;
         elseif (is_object($value))
-            if (method_exists($value, '__toString'))
-                return (string) $value;
-            elseif ($value instanceof DateTime)
-                return $value->format('Y-m-d H:i:s');
-            else
-                return "Object of class " . get_class($value);
+            return static::stringifyObject($value);
         else
             return (string) $value;
+    }
+
+    public static function stringifyObject($value)
+    {
+        if (method_exists($value, '__toString'))
+            return (string) $value;
+        elseif ($value instanceof DateTime)
+            return $value->format('Y-m-d H:i:s');
+        else
+            return "Object of class " . get_class($value);
     }
 
     public function __toString()
@@ -65,15 +67,6 @@ class ValidationException extends InvalidArgumentException
         return $this;
     }
 
-
-    public function getFullMessage()
-    {
-        $message = array();
-        foreach ($this->getIterator(false, self::ITERATE_TREE) as $m)
-            $message[] = $m;
-        return implode(PHP_EOL, $message);
-    }
-
     public function getName()
     {
         return $this->name;
@@ -83,6 +76,7 @@ class ValidationException extends InvalidArgumentException
     {
         return $this->id;
     }
+
     public function getMainMessage()
     {
         $vars = $this->getParams();
@@ -104,7 +98,6 @@ class ValidationException extends InvalidArgumentException
     {
         return $this->params;
     }
-
 
     public function getTemplate()
     {
@@ -138,9 +131,8 @@ class ValidationException extends InvalidArgumentException
     public function setParams(array $params)
     {
         $this->params = array_map(array(get_called_class(), 'stringify'),
-            $params);
+                $params);
     }
-
 
     public function setTemplate($template)
     {

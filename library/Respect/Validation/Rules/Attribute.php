@@ -9,14 +9,13 @@ use Respect\Validation\Validatable;
 class Attribute extends AbstractRelated
 {
 
-    public function __construct($reference,
-        Validatable $referenceValidator=null, $mandatory=true)
+    public function __construct($reference, Validatable $validator=null, $mandatory=true)
     {
         if (!is_string($reference) || empty($reference))
             throw new ComponentException(
                 'Invalid attribute/property name'
             );
-        parent::__construct($reference, $referenceValidator, $mandatory);
+        parent::__construct($reference, $validator, $mandatory);
     }
 
     public function getReferenceValue($input)

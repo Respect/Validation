@@ -59,9 +59,14 @@ class Validator extends AllOf
         return $this;
     }
 
-    public function createException()
+    public function reportError($input, array $extraParams=array())
     {
-        return new AllOfException;
+        $exception = new AllOfException;
+        $input = AllOfException::stringify($input);
+        $name = $this->getName() ? : "\"$input\"";
+        $params = array_merge($extraParams, get_object_vars($this));
+        $exception->configure($name, $params);
+        return $exception;
     }
 
     protected static function getRuleClassname($ruleName)

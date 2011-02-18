@@ -29,7 +29,7 @@ class Zend extends AbstractRule
         if (!$this->validate($input)) {
             $exceptions = array();
             foreach ($this->zendValidator->getMessages() as $m) {
-                $exceptions[] = $this->createException()->configure($m, get_object_vars($this));
+                $exceptions[] = $this->reportError($m, get_object_vars($this));
             }
             throw $this->reportError($input)->setRelated($exceptions);
         }

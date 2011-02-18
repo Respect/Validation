@@ -12,8 +12,7 @@ class Each extends AbstractRule
     public $itemValidator;
     public $keyValidator;
 
-    public function __construct(Validatable $itemValidator = null,
-        Validatable $keyValidator=null)
+    public function __construct(Validatable $itemValidator = null, Validatable $keyValidator=null)
     {
         $this->itemValidator = $itemValidator;
         $this->keyValidator = $keyValidator;

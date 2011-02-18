@@ -223,12 +223,13 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         v::numeric()->validate($number); //true
         //From 1 to 15 non-whitespace alphanumeric characters 
         $validUsername = v::alnum()
-            ->noWhitespace()
-            ->length(1, 15);
+                ->noWhitespace()
+                ->length(1, 15);
 
         $validUsername->validate('alganet'); //true
         $validUser = v::attribute('username', $validUsername)    //reusing!
-            ->attribute('birthdate', v::date('Y-m-d'));
+                ->attribute('birthdate', v::date('Y-m-d'))
+                ->attribute('birthdat', v::date('Y-m-d'));
 
         $user = new \stdClass;
         $user->username = 'alganet';
@@ -248,20 +249,21 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
             //echo $e->getFullMessage();
         }
 
-        $validBlogPost = v::object()
-            ->attribute('title', v::string()->length(1, 32))
-            ->attribute('author', $validUser)                 //reuse!
-            ->attribute('date', v::date())
-            ->attribute('text', v::string());
+        $validBlogPost = v::allOf(v::allOf(v::object()
+                ->attribute('title', v::string()->length(1, 32))
+                ->attribute('author', $validUser)                 //reuse!
+                ->attribute('date', v::date())
+                ->attribute('text', v::string())))->setName('Blog Post');
 
         $blogPost = new \stdClass;
-        $blogPost->author = clone $validUser;
+        $blogPost->author = clone $user;
         $blogPost->author->username = '# invalid #';
 
         try {
             $validBlogPost->assert($blogPost);
         } catch (\InvalidArgumentException $e) {
-            //echo $e->findRelated('author', 'username', 'noWhitespace')->getMainMessage();
+            //echo $e->getFullMessage();
+            //echo $e->findRelated('author')->getMainMessage();
         }
     }
 

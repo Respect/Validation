@@ -60,7 +60,6 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
         $valid3 = new Callback(function() {
                     return true;
                 });
-        $theInvalidOne->setException(new \Respect\Validation\Exceptions\ValidationException(''));
         $o = new AllOf($valid1, $theInvalidOne, $valid3);
         $this->assertFalse($o->check('any'));
         $o = new AllOf($theInvalidOne, $valid3, $valid1);

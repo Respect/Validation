@@ -11,15 +11,9 @@ interface Validatable
 
     public function check($input);
 
-    public function createException();
-
-    public function getException();
-
     public function getName();
 
     public function reportError($input, array $relatedExceptions=array());
-
-    public function setException(ValidationException $e);
 
     public function setName($name);
 

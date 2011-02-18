@@ -3,6 +3,7 @@
 namespace Respect\Validation\Rules;
 
 use Exception;
+use Respect\Validation\Exceptions\AbstractCompositeException;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
@@ -21,24 +22,24 @@ abstract class AbstractComposite extends AbstractRule implements Validatable
     public function addRule($validator, $arguments=array())
     {
         if (!$validator instanceof Validatable)
-            $validator = Validator::buildRule($validator, $arguments);
-        $this->appendRule($validator);
+            $this->appendRule(Validator::buildRule($validator, $arguments));
+        else
+            $this->appendRule($validator);
     }
 
     public function addRules(array $validators)
     {
-        foreach ($validators as $key => $spec) {
+        foreach ($validators as $key => $spec)
             if ($spec instanceof Validatable)
                 $this->appendRule($spec);
-            if (is_numeric($key) && is_array($spec))
+            elseif (is_numeric($key) && is_array($spec))
                 $this->addRules($spec);
             elseif (is_array($spec))
                 $this->addRule($key, $spec);
             else
                 $this->addRule($spec);
-        }
     }
-    
+
     public function getRules()
     {
         return $this->rules;
@@ -48,14 +49,13 @@ abstract class AbstractComposite extends AbstractRule implements Validatable
     {
         if (empty($this->rules))
             return false;
-        if ($validator instanceof Valitatable)
+        elseif ($validator instanceof Valitatable)
             return isset($this->rules[spl_object_hash($validator)]);
         else
-            return (boolean) array_filter(
-                $this->rules,
-                function($v) use ($validator) {
-                    return (integer) ($v instanceof $validator);
-                });
+            foreach ($this->rules as $rule)
+                if ($rule instanceof $validator)
+                    return true;
+        return false;
     }
 
     protected function appendRule(Validatable $validator)

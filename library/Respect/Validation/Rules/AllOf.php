@@ -13,7 +13,7 @@ class AllOf extends AbstractComposite
         $summary = array(
             'total' => $numRules,
             'failed' => $numExceptions,
-            'passed' => $numRules-$numExceptions
+            'passed' => $numRules - $numExceptions
         );
         if (!empty($exceptions))
             throw $this->reportError($input, $summary)->setRelated($exceptions);
