@@ -36,7 +36,7 @@ class IntTest extends \PHPUnit_Framework_TestCase
             array(16),
             array('165'),
             array(123456),
-            array(1e10),
+            array(PHP_INT_MAX),
         );
     }
 
