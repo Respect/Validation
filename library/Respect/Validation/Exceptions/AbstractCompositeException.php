@@ -92,19 +92,17 @@ class AbstractCompositeException extends ValidationException
 
     public function getRelated($full=false)
     {
-        if ($full || 1 !== count($this->related))
-            return $this->related;
-        elseif ($this->related[0] instanceof self)
+        if (!$full
+            && 1 === count($this->related)
+            && $this->related[0] instanceof self)
             return $this->related[0]->getRelated();
         else
-            return array();
+            return $this->related;
     }
 
     public function getMainMessage()
     {
-        if (1 === count($this->related) &&
-            ($this->related[0] instanceof static
-            || !$this->related[0] instanceof self ))
+        if (1 === count($this->related))
             return $this->related[0]->getMainMessage();
         else
             return parent::getMainMessage();

@@ -213,7 +213,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
                 )
             );
         } catch (Exceptions\ValidationException $e) {
-            $e->getFullMessage();
+            echo $e->getFullMessage().PHP_EOL;
         }
     }
 
@@ -262,7 +262,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         try {
             $validBlogPost->assert($blogPost);
         } catch (\InvalidArgumentException $e) {
-            //echo $e->getFullMessage();
+            echo $e->getFullMessage().PHP_EOL;
             //echo $e->findRelated('author')->getMainMessage();
         }
     }

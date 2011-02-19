@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class AttributeException extends AbstractCompositeException
+class AttributeException extends AbstractRelatedException
 {
     const NOT_PRESENT = 0;
     const INVALID = 1;

@@ -17,9 +17,5 @@ class AbstractRelatedException extends AbstractCompositeException
         return static::format($this->getTemplate(), $vars);
     }
 
-    public function getRelated()
-    {
-        return $this->related;
-    }
 
 }
