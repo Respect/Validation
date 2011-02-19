@@ -69,17 +69,12 @@ class AbstractCompositeException extends ValidationException
 
     public function addRelated(ValidationException $related)
     {
-        if ($related instanceof static)
-            $related->setName($this->getName());
         $this->related[] = $related;
         return $this;
     }
 
     public function setName($name)
     {
-        foreach ($this->related as $r)
-            if ($r instanceof static)
-                $r->setName($name);
         return parent::setName($name);
     }
 
@@ -92,20 +87,28 @@ class AbstractCompositeException extends ValidationException
 
     public function getRelated($full=false)
     {
-        if (!$full
-            && 1 === count($this->related)
-            && $this->related[0] instanceof self)
+        if ($full || 1 !== count($this->related))
+            return $this->related;
+        elseif ($this->related[0] instanceof self)
             return $this->related[0]->getRelated();
         else
-            return $this->related;
+            return array();
     }
 
-    public function getMainMessage()
+    public function getTemplate()
     {
         if (1 === count($this->related))
-            return $this->related[0]->getMainMessage();
+            return $this->related[0]->getTemplate();
         else
-            return parent::getMainMessage();
+            return parent::getTemplate();
+    }
+
+    public function getParams()
+    {
+        if (1 === count($this->related))
+            return $this->related[0]->getParams();
+        else
+            return parent::getParams();
     }
 
 }

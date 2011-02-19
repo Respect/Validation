@@ -186,7 +186,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 
     public function testGmailSignInValidation()
     {
-        $stringMax256 = v::string()->length(1, 256);
+        $stringMax256 = v::string()->length(5, 256);
         $alnumDot = v::alnum('.');
         $stringMin8 = v::string()->length(8, null);
         $v = v::allOf(
@@ -198,11 +198,11 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
                 v::attribute('stay_signedin', v::notEmpty())->setName('Stay signed in'),
                 v::attribute('enable_webhistory', v::notEmpty())->setName('Enabled Web History'),
                 v::attribute('security_question', $stringMax256)->setName('Security Question')
-        );
+        )->setName('Validation Form');
         try {
             $v->assert(
                 (object) array(
-                    'first_name' => null,
+                    'first_name' => 'fiif',
                     'last_name' => null,
                     'desired_login' => null,
                     'password' => null,
@@ -213,7 +213,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
                 )
             );
         } catch (Exceptions\ValidationException $e) {
-            echo $e->getFullMessage().PHP_EOL;
+            //echo $e->getFullMessage().PHP_EOL;
         }
     }
 
@@ -262,7 +262,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         try {
             $validBlogPost->assert($blogPost);
         } catch (\InvalidArgumentException $e) {
-            echo $e->getFullMessage().PHP_EOL;
+            //echo $e->getFullMessage().PHP_EOL;
             //echo $e->findRelated('author')->getMainMessage();
         }
     }

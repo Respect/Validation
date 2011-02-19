@@ -10,12 +10,29 @@ class AbstractRelatedException extends AbstractCompositeException
         return 0;
     }
 
-    public function getMainMessage()
+    //TODO cleanup this inheritances
+    public function getRelated($full=false)
     {
-        $vars = $this->getParams();
-        $vars['name'] = $this->getName();
-        return static::format($this->getTemplate(), $vars);
+        return $this->related;
     }
 
+    //TODO cleanup this inheritances
+    public function getParams()
+    {
+        return $this->params;
+    }
+
+    //TODO cleanup this inheritances
+    public function getTemplate()
+    {
+        if (!empty($this->template))
+            return $this->template;
+        $templateKey = $this->chooseTemplate();
+        if (is_null($this->context))
+            $this->template = static::$defaultTemplates[$templateKey];
+        else
+            $this->template = $this->context->getTemplate($this, $templateKey);
+        return $this->template;
+    }
 
 }

@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class BetweenException extends AbstractCompositeException
+class BetweenException extends AbstractRelatedException
 {
     const BOTH = 0;
     const LOWER = 1;

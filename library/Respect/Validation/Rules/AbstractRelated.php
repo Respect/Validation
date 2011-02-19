@@ -19,6 +19,7 @@ abstract class AbstractRelated extends AbstractRule implements Validatable
 
     public function __construct($reference, Validatable $validator=null, $mandatory=true)
     {
+        $this->setName($reference);
         $this->reference = $reference;
         $this->validator = $validator;
         $this->mandatory = $mandatory;
@@ -36,7 +37,6 @@ abstract class AbstractRelated extends AbstractRule implements Validatable
             } catch (ValidationException $e) {
                 throw $this
                     ->reportError($this->reference, array('hasReference' => true))
-                    ->setName($this->reference)
                     ->addRelated($e);
             }
     }
