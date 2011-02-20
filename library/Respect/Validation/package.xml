@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
- <name>Validation</name>
+<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+    http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0
+    http://pear.php.net/dtd/package-2.0.xsd">
+ <name>RespectValidation</name>
  <uri>http://github.com/Respect/Validation</uri>
- <summary>Multi-purpouse validation library</summary>
- <description>Multi-purpouse validation library</description>
+ <summary>The most awesome validation engine ever created for PHP</summary>
+ <description>The most awesome validation engine ever created for PHP</description>
  <lead>
-  <name>Alexandre Gaigalas</name>
+  <name>Alexandre Gomes Gaigalas</name>
   <user>alganet</user>
   <email>alexandre@gaigalas.net</email>
   <active>yes</active>
  </lead>
  <date>2011-02-20</date>
- <time>13:59:44</time>
+ <time>14:06:50</time>
  <version>
-  <release>0.1.0</release>
-  <api>0.1.0</api>
+  <release>0.2</release>
+  <api>0.2</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -22,7 +25,7 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
  <notes>
-First Version
+.
  </notes>
  <contents>
   <dir baseinstalldir="Respect/Validation" name="/">
@@ -128,8 +131,8 @@ First Version
  <changelog>
   <release>
    <version>
-    <release>0.1.0</release>
-    <api>0.1.0</api>
+    <release>0.2</release>
+    <api>0.2</api>
    </version>
    <stability>
     <release>alpha</release>
@@ -138,7 +141,7 @@ First Version
    <date>2011-02-20</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
    <notes>
-First Version
+.
    </notes>
   </release>
  </changelog>
