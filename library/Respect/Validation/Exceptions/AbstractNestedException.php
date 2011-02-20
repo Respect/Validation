@@ -15,7 +15,7 @@ class AbstractNestedException extends ValidationException
 
     public function addRelated(ValidationException $related)
     {
-        $this->related[] = $related;
+        $this->related[spl_object_hash($related)] = $related;
         return $this;
     }
 

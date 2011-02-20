@@ -17,13 +17,14 @@ class ValidationException extends InvalidArgumentException
     protected $id = 'validation';
     protected $name = '';
     protected $template = '';
+    protected $params=array();
 
     public static function format($template, array $vars=array())
     {
         return preg_replace_callback(
             '/{{(\w+)}}/',
             function($match) use($vars) {
-                return $vars[$match[1]];
+                return isset($vars[$match[1]]) ? $vars[$match[1]] : $match[0];
             }, $template
         );
     }
@@ -99,7 +100,7 @@ class ValidationException extends InvalidArgumentException
         if (!empty($this->template))
             return $this->template;
         else
-            return $this->buildTemplate();
+            return $this->template = $this->buildTemplate();
     }
 
     public function hasParam($name)
@@ -124,10 +125,15 @@ class ValidationException extends InvalidArgumentException
         return $this;
     }
 
+    public function setParam($key, $value)
+    {
+        $this->params[$key] = static::stringify($value);
+    }
+
     public function setParams(array $params)
     {
-        $this->params = array_map(array(get_called_class(), 'stringify'),
-                $params);
+        foreach ($params as $key => $value)
+            $this->setParam($key, $value);
     }
 
     public function setTemplate($template)
@@ -139,9 +145,9 @@ class ValidationException extends InvalidArgumentException
     {
         $templateKey = $this->chooseTemplate();
         if (is_null($this->context))
-            $this->template = static::$defaultTemplates[$templateKey];
+            return static::$defaultTemplates[$templateKey];
         else
-            $this->template = $this->context->getTemplate($this, $templateKey);
+            return $this->context->getTemplate($this, $templateKey);
     }
 
     protected function guessId()

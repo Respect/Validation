@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
-    http://pear.php.net/dtd/tasks-1.0.xsd
-    http://pear.php.net/dtd/package-2.0
-    http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
  <name>RespectValidation</name>
  <uri>http://github.com/Respect/Validation</uri>
  <summary>The most awesome validation engine ever created for PHP</summary>
@@ -14,7 +11,7 @@
   <active>yes</active>
  </lead>
  <date>2011-02-20</date>
- <time>14:06:50</time>
+ <time>15:02:52</time>
  <version>
   <release>0.2</release>
   <api>0.2</api>
@@ -32,7 +29,7 @@
    <file baseinstalldir="Respect/Validation" md5sum="4ef5c6ff21a7382ac26d74354a9c2ece" name="Contexts/AbstractContext.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="a99e9fcc3f89d82a4b6dfd0fbe487014" name="Contexts/Form.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="ef1b18cf77f1806f777f0600abde19c1" name="Exceptions/AbstractGroupedException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="040df90f709ce6780c8c4be2f5b708f8" name="Exceptions/AbstractNestedException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="19c0319d71edea33dee50be75e973185" name="Exceptions/AbstractNestedException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="3e4da4e7b629a4889f87517506664bf3" name="Exceptions/AllOfException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="ae818fe09029e856ed02ce70273da0f5" name="Exceptions/AlnumException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="a4e7f3830a04d92bf48ae2e88bb8d488" name="Exceptions/AlphaException.php" role="php" />
@@ -70,7 +67,7 @@
    <file baseinstalldir="Respect/Validation" md5sum="cb0971a4379482977ddf22a675581255" name="Exceptions/RegexException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="d0498462a420d57ca74fa47e3c8c6194" name="Exceptions/SfException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="a9d0825a244e0b7d6412777c01367650" name="Exceptions/StringException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="a5b6a3c68b826aef74b6fe19c696b2c0" name="Exceptions/ValidationException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="29a4034c405fab7925927a2f9ebc72a9" name="Exceptions/ValidationException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="f7294294fd18031fd9ad746ca4945369" name="Exceptions/ZendException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="67eecfc191e3e8d2b7137ba7bac0c574" name="Rules/AbstractComposite.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="a2e9210c6722fa39592ee89d9719df3f" name="Rules/AbstractRelated.php" role="php" />
