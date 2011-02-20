@@ -25,4 +25,12 @@ class OneOf extends AbstractComposite
         return false;
     }
 
+    public function check($input)
+    {
+        foreach ($this->getRules() as $v)
+            if ($v->check($input))
+                return true;
+        return false;
+    }
+
 }

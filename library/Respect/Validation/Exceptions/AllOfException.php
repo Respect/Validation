@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class AllOfException extends AbstractCompositeException
+class AllOfException extends AbstractGroupedException
 {
 
     public static $defaultTemplates = array(

@@ -14,7 +14,7 @@ abstract class AbstractRule implements Validatable
 
     public function __construct()
     {
-        //a constructor is required for ReflectionClass
+        //a constructor is required for ReflectionClass::newInstance()
     }
 
     public function __invoke($input)
@@ -42,10 +42,7 @@ abstract class AbstractRule implements Validatable
 
     public function reportError($input, array $extraParams=array())
     {
-        $currentFQN = get_called_class();
-        $exceptionFQN = str_replace('\\Rules\\', '\\Exceptions\\', $currentFQN);
-        $exceptionFQN .= 'Exception';
-        $exception = new $exceptionFQN;
+        $exception = $this->createException();
         $input = ValidationException::stringify($input);
         $name = $this->getName() ? : "\"$input\"";
         $params = array_merge($extraParams, get_object_vars($this));
@@ -57,6 +54,14 @@ abstract class AbstractRule implements Validatable
     {
         $this->name = $name;
         return $this;
+    }
+
+    protected function createException()
+    {
+        $currentFQN = get_called_class();
+        $exceptionFQN = str_replace('\\Rules\\', '\\Exceptions\\', $currentFQN);
+        $exceptionFQN .= 'Exception';
+        return new $exceptionFQN;
     }
 
 }

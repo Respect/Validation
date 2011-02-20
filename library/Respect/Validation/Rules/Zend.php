@@ -26,19 +26,22 @@ class Zend extends AbstractRule
 
     public function assert($input)
     {
-        if (!$this->validate($input)) {
-            $exceptions = array();
-            foreach ($this->zendValidator->getMessages() as $m) {
+        $exceptions = array();
+        $validator = clone $this->zendValidator;
+        
+        if ($validator->isValid($input))
+            return true;
+        else
+            foreach ($validator->getMessages() as $m)
                 $exceptions[] = $this->reportError($m, get_object_vars($this));
-            }
-            throw $this->reportError($input)->setRelated($exceptions);
-        }
-        return true;
+        
+        throw $this->reportError($input)->setRelated($exceptions);
     }
 
     public function validate($input)
     {
-        return $this->zendValidator->isValid($input);
+        $validator = clone $this->zendValidator;
+        return $validator->isValid($input);
     }
 
 }

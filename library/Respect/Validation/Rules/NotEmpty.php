@@ -9,7 +9,7 @@ class NotEmpty extends AbstractRule
     {
         if (is_string($input))
             $input = trim($input);
-        return!empty($input);
+        return !empty($input);
     }
 
 }

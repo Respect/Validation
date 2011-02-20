@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class CallException extends AbstractCompositeException
+class CallException extends AbstractGroupedException
 {
     
 }

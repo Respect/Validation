@@ -23,9 +23,12 @@ class Alpha extends AbstractRule
     {
         if (!is_scalar($input))
             return false;
+        
+        $input = (string) $input;
         $cleanInput = str_replace(str_split($this->additionalChars), '', $input);
+        
         return ($cleanInput !== $input && $cleanInput === '')
-        || preg_match($this->stringFormat, $cleanInput);
+               || preg_match($this->stringFormat, $cleanInput);
     }
 
 }

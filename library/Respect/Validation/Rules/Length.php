@@ -39,7 +39,8 @@ class Length extends AbstractRule
 
     public function validate($input)
     {
-        return $this->validateMin($input) && $this->validateMax($input);
+        $length = $this->extractLength($input);
+        return $this->validateMin($length) && $this->validateMax($length);
     }
 
     protected function extractLength($input)
@@ -52,23 +53,21 @@ class Length extends AbstractRule
             return false;
     }
 
-    protected function validateMin($input)
+    protected function validateMin($length)
     {
-        $length = $this->extractLength($input);
         if (is_null($this->minValue))
             return true;
-        if ($this->inclusive)
+        elseif ($this->inclusive)
             return $length >= $this->minValue;
         else
             return $length > $this->minValue;
     }
 
-    protected function validateMax($input)
+    protected function validateMax($length)
     {
-        $length = $this->extractLength($input);
         if (is_null($this->maxValue))
             return true;
-        if ($this->inclusive)
+        elseif ($this->inclusive)
             return $length <= $this->maxValue;
         else
             return $length < $this->maxValue;

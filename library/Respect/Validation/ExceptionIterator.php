@@ -3,8 +3,7 @@
 namespace Respect\Validation;
 
 use RecursiveArrayIterator;
-use Respect\Validation\Exceptions\AbstractCompositeException;
-use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Exceptions\AbstractNestedException;
 
 class ExceptionIterator extends RecursiveArrayIterator
 {
@@ -19,7 +18,7 @@ class ExceptionIterator extends RecursiveArrayIterator
 
     public function hasChildren()
     {
-        if (!$this->current() instanceof AbstractCompositeException)
+        if (!$this->current() instanceof AbstractNestedException)
             return false;
         else
             return (boolean) $this->current()->getRelated($this->fullRelated);

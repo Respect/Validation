@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class OneOfException extends AbstractRelatedException
+class OneOfException extends AbstractNestedException
 {
 
     public static $defaultTemplates = array(

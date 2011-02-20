@@ -11,11 +11,10 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
      * Toggle this to show an example of all validation
      * messages on the PHPUnit console.
      */
-
     protected $showMessages = false;
     protected $targetName = 'My Field';
 
-    protected function genMessage($validator, $invalidValue)
+    protected function doTestValidator($validator, $invalidValue)
     {
         try {
             $validator->assert($invalidValue);
@@ -34,165 +33,165 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
 
     public function testAlnum()
     {
-        $this->genMessage(v::alnum(), '#');
-        $this->genMessage(v::alnum('_'), '#');
+        $this->doTestValidator(v::alnum(), '#');
+        $this->doTestValidator(v::alnum('_'), '#');
     }
 
     public function testAlpha()
     {
-        $this->genMessage(v::alpha(), '#');
-        $this->genMessage(v::alpha('.'), '#');
+        $this->doTestValidator(v::alpha(), '#');
+        $this->doTestValidator(v::alpha('.'), '#');
     }
 
     public function testArr()
     {
-        $this->genMessage(v::arr(), '#');
+        $this->doTestValidator(v::arr(), '#');
     }
 
     public function testAttribute()
     {
-        $this->genMessage(v::attribute("foo", v::int()),
+        $this->doTestValidator(v::attribute("foo", v::int()),
             (object) array("foo" => "bar"));
-        $this->genMessage(v::attribute("foo", v::string()), null);
+        $this->doTestValidator(v::attribute("foo", v::string()), null);
     }
 
     public function testBetween()
     {
-        $this->genMessage(v::between(5, 15), 999);
-        $this->genMessage(v::between('a', 'f'), 15951);
-        $this->genMessage(v::between(new \DateTime('now'),
+        $this->doTestValidator(v::between(5, 15), 999);
+        $this->doTestValidator(v::between('a', 'f'), 15951);
+        $this->doTestValidator(v::between(new \DateTime('now'),
                 new \DateTime('tomorrow')), new \DateTime('yesterday'));
     }
 
     public function testCall()
     {
-        $this->genMessage(v::call('implode', v::int()), array('x', 2, 3, 4));
+        $this->doTestValidator(v::call('implode', v::int()), array('x', 2, 3, 4));
     }
 
     public function testCallback()
     {
-        $this->genMessage(v::callback('is_string'), 123);
+        $this->doTestValidator(v::callback('is_string'), 123);
     }
 
     public function testDate()
     {
-        $this->genMessage(v::date('Y-m-d'), '2010-30-10');
-        $this->genMessage(v::date(), 'Jan 310 2008');
+        $this->doTestValidator(v::date('Y-m-d'), '2010-30-10');
+        $this->doTestValidator(v::date(), 'Jan 310 2008');
     }
 
     public function testDigits()
     {
-        $this->genMessage(v::digits(), 'x02384');
+        $this->doTestValidator(v::digits(), 'x02384');
     }
 
     public function testEach()
     {
-        $this->genMessage(v::each(v::hexa()), array('AF', 'P1', '09'));
+        $this->doTestValidator(v::each(v::hexa()), array('AF', 'P1', '09'));
     }
 
     public function testEquals()
     {
-        $this->genMessage(v::equals('foobar'), 'aaar');
+        $this->doTestValidator(v::equals('foobar'), 'aaar');
     }
 
     public function testFloat()
     {
-        $this->genMessage(v::float(), 'dance');
+        $this->doTestValidator(v::float(), 'dance');
     }
 
     public function testHexa()
     {
-        $this->genMessage(v::hexa(), 'PPAFAF');
+        $this->doTestValidator(v::hexa(), 'PPAFAF');
     }
 
     public function testIn()
     {
-        $this->genMessage(v::in(array(1, 1, 2, 3, 5, 8)), 9845984);
+        $this->doTestValidator(v::in(array(1, 1, 2, 3, 5, 8)), 9845984);
     }
 
     public function testInstance()
     {
-        $this->genMessage(v::instance('\ss'), new \stdClass);
+        $this->doTestValidator(v::instance('\ss'), new \stdClass);
     }
 
     public function testInt()
     {
-        $this->genMessage(v::int(), 15.48);
+        $this->doTestValidator(v::int(), 15.48);
     }
 
     public function testIp()
     {
-        $this->genMessage(v::ip(), '200.999.220.222');
+        $this->doTestValidator(v::ip(), '200.999.220.222');
     }
 
     public function testLength()
     {
-        $this->genMessage(v::length(5, 10), 'foobarbalzobihbiy');
-        $this->genMessage(v::length(2, 3), array(1, 2, 3, 4, 5));
-        $this->genMessage(v::length(null, 3), array(1, 2, 3, 4, 5));
-        $this->genMessage(v::length(15, null), array(1, 2, 3, 4, 5));
+        $this->doTestValidator(v::length(5, 10), 'foobarbalzobihbiy');
+        $this->doTestValidator(v::length(2, 3), array(1, 2, 3, 4, 5));
+        $this->doTestValidator(v::length(null, 3), array(1, 2, 3, 4, 5));
+        $this->doTestValidator(v::length(15, null), array(1, 2, 3, 4, 5));
     }
 
     public function testMax()
     {
-        $this->genMessage(v::max(5), 9854);
-        $this->genMessage(v::max(5, true), 9854);
+        $this->doTestValidator(v::max(5), 9854);
+        $this->doTestValidator(v::max(5, true), 9854);
     }
 
     public function testMin()
     {
-        $this->genMessage(v::min(5), -9514);
-        $this->genMessage(v::min(5, true), -9514);
+        $this->doTestValidator(v::min(5), -9514);
+        $this->doTestValidator(v::min(5, true), -9514);
     }
 
     public function testNegative()
     {
-        $this->genMessage(v::negative(), 5);
+        $this->doTestValidator(v::negative(), 5);
     }
 
     public function testPositive()
     {
-        $this->genMessage(v::positive(), -3);
+        $this->doTestValidator(v::positive(), -3);
     }
 
     public function testNoWhitespace()
     {
-        $this->genMessage(v::noWhitespace(), 'a bc');
+        $this->doTestValidator(v::noWhitespace(), 'a bc');
     }
 
     public function testNotEmpty()
     {
-        $this->genMessage(v::notEmpty(), '');
+        $this->doTestValidator(v::notEmpty(), '');
     }
 
     public function testNullValue()
     {
-        $this->genMessage(v::nullValue(), true);
+        $this->doTestValidator(v::nullValue(), true);
     }
 
     public function testNumeric()
     {
-        $this->genMessage(v::numeric(), null);
+        $this->doTestValidator(v::numeric(), null);
     }
 
     public function testObject()
     {
-        $this->genMessage(v::object(), null);
+        $this->doTestValidator(v::object(), null);
     }
 
     public function testRegex()
     {
-        $this->genMessage(v::regex('^[a-f]+$'), 'abcdxxxef');
+        $this->doTestValidator(v::regex('^[a-f]+$'), 'abcdxxxef');
     }
 
     public function testString()
     {
-        $this->genMessage(v::string(), null);
+        $this->doTestValidator(v::string(), null);
     }
 
     public function testAllOf()
     {
-        $this->genMessage(v::allOf(
+        $this->doTestValidator(v::allOf(
                 v::string(), //any string 
                 v::length(5, 20), //between 5 and 20 chars
                 v::noWhitespace()   //no whitespace allowed
@@ -200,7 +199,7 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
 
 //same as
 
-        $this->genMessage(v::string()
+        $this->doTestValidator(v::string()
                 ->length(5, 20)
                 ->noWhitespace(), '# #');
     }
@@ -212,9 +211,9 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
                 v::float()->negative(), //negative float or; 
                 v::nullValue() //null
         );
-        $this->genMessage($v, '');
-        $this->genMessage($v, '');
-        $this->genMessage($v, '');
+        $this->doTestValidator($v, '');
+        $this->doTestValidator($v, '');
+        $this->doTestValidator($v, '');
     }
 
 }

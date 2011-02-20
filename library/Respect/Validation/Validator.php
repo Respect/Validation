@@ -10,7 +10,6 @@ use Respect\Validation\Rules\AllOf;
 
 class Validator extends AllOf
 {
-    const ERR_INTERFACE = '%s does not implement the Respect\Validator\Validatable interface required for validators';
 
     protected $arguments = array();
     protected $ruleName;
@@ -26,30 +25,19 @@ class Validator extends AllOf
 
     public static function buildRule($ruleSpec, $arguments=array())
     {
-        if ($ruleSpec instanceof Validatable) {
+        if ($ruleSpec instanceof Validatable)
             return $ruleSpec;
-        }
-        if (is_object($ruleSpec))
-            throw new ComponentException(
-                sprintf(static::ERR_INTERFACE, get_class($ruleSpec))
-            );
-        $validatorFqn = static::getRuleClassname($ruleSpec);
-        try {
-            $validatorClass = new ReflectionClass($validatorFqn);
-        } catch (ReflectionException $e) {
-            throw new ComponentException($e->getMessage());
-        }
-        $implementedInterface = $validatorClass->implementsInterface(
-                'Respect\Validation\Validatable'
-        );
-        if (!$implementedInterface)
-            throw new ComponentException(
-                sprintf(static::ERR_INTERFACE, $validatorFqn)
-            );
-        $validatorInstance = $validatorClass->newInstanceArgs(
-                $arguments
-        );
-        return $validatorInstance;
+        else
+            try {
+                $validatorFqn = static::getRuleClassname($ruleSpec);
+                $validatorClass = new ReflectionClass($validatorFqn);
+                $validatorInstance = $validatorClass->newInstanceArgs(
+                        $arguments
+                );
+                return $validatorInstance;
+            } catch (ReflectionException $e) {
+                throw new ComponentException($e->getMessage());
+            }
     }
 
     public function __call($method, $arguments)

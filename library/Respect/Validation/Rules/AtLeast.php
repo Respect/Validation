@@ -33,20 +33,22 @@ class AtLeast extends AbstractComposite
     public function check($input)
     {
         $validators = $this->getRules();
-        $pass = 0;
         $exceptions = array();
+        $numRules = count($validators);
+        $numPassed = 0;
+        $maxExceptions = $numRules - $this->howMany;
         foreach ($validators as $v) {
             try {
                 $v->check($input);
-                $pass++;
+                if (++$numPassed >= $this->howMany)
+                    return true;
+                if (count($exceptions) > $maxExceptions)
+                    throw $this->reportError(
+                        $input,
+                        array('passed' => $numPassed))->setRelated($exceptions);
             } catch (ValidationException $e) {
                 $exceptions[] = $e;
             }
-            if ($pass >= $this->howMany)
-                return true;
-            if (count($exceptions) > ($numPassed = count($validators) - $this->howMany))
-                throw $this->reportError($input, array('passed' => $numPassed))
-                    ->setRelated($exceptions);
         }
         return false;
     }
@@ -54,18 +56,17 @@ class AtLeast extends AbstractComposite
     public function validate($input)
     {
         $validators = $this->getRules();
-        $pass = 0;
-        foreach ($validators as $v) {
+        $numPassed = 0;
+        foreach ($validators as $v)
             try {
                 $v->check($input);
-                $pass++;
+                if (++$numPassed >= $this->howMany)
+                    return true;
             } catch (ValidationException $e) {
-                //no need to do anything here. We just wanna count 
-                //how many rules passed
+                //empty catch block is nasty, i know, but no need to do
+                //anything here. We just wanna count how many rules passed
             }
-            if ($pass >= $this->howMany)
-                return true;
-        }
+
         return false;
     }
 

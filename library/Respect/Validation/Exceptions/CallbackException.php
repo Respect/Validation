@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class CallbackException extends AbstractRelatedException
+class CallbackException extends AbstractNestedException
 {
 
     public static $defaultTemplates = array(

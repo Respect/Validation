@@ -3,7 +3,6 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validatable;
-use Respect\Validation\Exceptions\AbstractCompositeException;
 use Respect\Validation\Exceptions\ValidationException;
 
 abstract class AbstractRelated extends AbstractRule implements Validatable

@@ -23,12 +23,12 @@ class Date extends AbstractRule
     {
         if ($input instanceof DateTime)
             return true;
-        if (!is_string($input))
+        elseif (!is_string($input))
             return false;
-        if (is_null($this->format))
-            return (boolean) strtotime($input);
+        elseif (is_null($this->format))
+            return false !== strtotime($input);
         else
-            return date($this->format, strtotime($input)) == $input;
+            return $input === date($this->format, strtotime($input));
     }
 
 }

@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class AtLeastException extends AbstractCompositeException
+class AtLeastException extends AbstractGroupedException
 {
 
     public static $defaultTemplates = array(

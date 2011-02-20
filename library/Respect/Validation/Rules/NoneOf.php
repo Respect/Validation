@@ -17,13 +17,10 @@ class NoneOf extends AbstractComposite
 
     public function validate($input)
     {
-        $validators = $this->getRules();
-        return count($validators) === count(array_filter(
-                $validators,
-                function($v) use($input) {
-                    return!$v->validate($input);
-                }
-            ));
+        foreach ($this->getRules() as $rule)
+            if ($rule->validate($input))
+                return false;
+        return true;
     }
 
 }

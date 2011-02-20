@@ -63,7 +63,7 @@ class ValidationException extends InvalidArgumentException
         $this->setName($name);
         $this->setParams($params);
         $this->message = $this->getMainMessage();
-        $this->guessId();
+        $this->setId($this->guessId());
         return $this;
     }
 
@@ -89,11 +89,6 @@ class ValidationException extends InvalidArgumentException
         return $this->hasParam($name) ? $this->params[$name] : false;
     }
 
-    public function hasParam($name)
-    {
-        return isset($this->params[$name]);
-    }
-
     public function getParams()
     {
         return $this->params;
@@ -103,12 +98,13 @@ class ValidationException extends InvalidArgumentException
     {
         if (!empty($this->template))
             return $this->template;
-        $templateKey = $this->chooseTemplate();
-        if (is_null($this->context))
-            $this->template = static::$defaultTemplates[$templateKey];
         else
-            $this->template = $this->context->getTemplate($this, $templateKey);
-        return $this->template;
+            return $this->buildTemplate();
+    }
+
+    public function hasParam($name)
+    {
+        return isset($this->params[$name]);
     }
 
     public function setContext($context)
@@ -139,13 +135,22 @@ class ValidationException extends InvalidArgumentException
         $this->template = $template;
     }
 
+    protected function buildTemplate()
+    {
+        $templateKey = $this->chooseTemplate();
+        if (is_null($this->context))
+            $this->template = static::$defaultTemplates[$templateKey];
+        else
+            $this->template = $this->context->getTemplate($this, $templateKey);
+    }
+
     protected function guessId()
     {
         if (!empty($this->id))
             return;
         $id = end(explode('\\', get_called_class()));
         $id = lcfirst(str_replace('Exception', '', $id));
-        $this->setId($id);
+        return $id;
     }
 
 }

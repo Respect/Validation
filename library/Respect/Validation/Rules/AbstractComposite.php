@@ -2,9 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Exception;
-use Respect\Validation\Exceptions\AbstractCompositeException;
-use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
 use Respect\Validation\Validator;

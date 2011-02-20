@@ -20,40 +20,43 @@ class Each extends AbstractRule
 
     public function assert($input)
     {
+        $exceptions = array();
+
         if (empty($input))
             return true;
-        if (is_object($input))
+        elseif (is_object($input))
             $input = get_object_vars($input);
-        if (!is_array($input) || $input instanceof Traversable)
+        elseif (!is_array($input) || $input instanceof Traversable)
             throw $this->reportError($input);
-        $exceptions = array();
-        foreach ($input as $key => $item) {
-            if (isset($this->itemValidator))
-                try {
-                    $this->itemValidator->assert($item);
-                } catch (ValidationException $e) {
-                    $exceptions[] = $e;
-                }
-            if (isset($this->keyValidator))
-                try {
-                    $this->keyValidator->assert($item);
-                } catch (ValidationException $e) {
-                    $exceptions[] = $e;
-                }
-        }
+        else
+            foreach ($input as $key => $item)
+                if (isset($this->itemValidator))
+                    try {
+                        $this->itemValidator->assert($item);
+                    } catch (ValidationException $e) {
+                        $exceptions[] = $e;
+                    }
+                elseif (isset($this->keyValidator))
+                    try {
+                        $this->keyValidator->assert($item);
+                    } catch (ValidationException $e) {
+                        $exceptions[] = $e;
+                    }
+
         if (!empty($exceptions))
             throw $this->reportError($input)->setRelated($exceptions);
+
         return true;
     }
 
     public function check($input)
     {
-        foreach ($input as $item) {
+        foreach ($input as $item)
             if (isset($this->itemValidator))
                 $this->itemValidator->check($item);
-            if (isset($this->keyValidator))
+            elseif (isset($this->keyValidator))
                 $this->keyValidator->check($item);
-        }
+
         return true;
     }
 
@@ -61,14 +64,15 @@ class Each extends AbstractRule
     {
         if (empty($input))
             return true;
-        if (!is_array($input) || $input instanceof Traversable)
+        elseif (!is_array($input) || $input instanceof Traversable)
             return false;
-        foreach ($input as $key => $item) {
-            if (isset($this->itemValidator) && !$this->itemValidator->validate($item))
-                return false;
-            if (isset($this->keyValidator) && !$this->keyValidator->validate($key))
-                return false;
-        }
+        else
+            foreach ($input as $key => $item)
+                if (isset($this->itemValidator) && !$this->itemValidator->validate($item))
+                    return false;
+                elseif (isset($this->keyValidator) && !$this->keyValidator->validate($key))
+                    return false;
+
         return true;
     }
 

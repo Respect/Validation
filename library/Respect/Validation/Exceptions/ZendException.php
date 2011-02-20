@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class ZendException extends AbstractRelatedException
+class ZendException extends AbstractNestedException
 {
 
     public static $defaultTemplates = array(
