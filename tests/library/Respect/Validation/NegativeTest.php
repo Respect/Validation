@@ -11,6 +11,7 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
      * Toggle this to show an example of all validation
      * messages on the PHPUnit console.
      */
+
     protected $showMessages = false;
     protected $targetName = 'My Field';
 
@@ -18,6 +19,7 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
     {
         try {
             $validator->assert($invalidValue);
+            $this->fail();
         } catch (ValidationException $e) {
             if ($this->showMessages)
                 echo 'Default: ' . $e->getFullMessage() . PHP_EOL;
@@ -25,6 +27,7 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
         $validator->setName($this->targetName);
         try {
             $validator->assert($invalidValue);
+            $this->fail();
         } catch (ValidationException $e) {
             if ($this->showMessages)
                 echo 'Named:   ' . $e->getFullMessage() . PHP_EOL . PHP_EOL;
@@ -187,6 +190,16 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
     public function testString()
     {
         $this->doTestValidator(v::string(), null);
+    }
+
+    public function testSartsWith()
+    {
+        $this->doTestValidator(v::startsWith('Xello'), 'Hello World');
+    }
+
+    public function testEndsWith()
+    {
+        $this->doTestValidator(v::endsWith('Yorld'), 'Hello World');
     }
 
     public function testAllOf()

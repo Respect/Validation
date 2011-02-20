@@ -157,6 +157,15 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         v::string()->assert('Hello World');
     }
 
+    public function testSartsWith()
+    {
+        v::startsWith('Hello')->assert('Hello World');
+    }
+    public function testEndsWith()
+    {
+        v::endsWith('World')->assert('Hello World');
+    }
+
     public function testAllOf()
     {
         v::allOf(
