@@ -44,6 +44,8 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         return array(
             array(null),
             array('domain.local'),
+            array('example--invalid.com'),
+            array('-example-invalid.com'),
             array('1.2.3.256'),
         );
     }

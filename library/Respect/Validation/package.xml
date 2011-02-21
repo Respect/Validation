@@ -10,8 +10,8 @@
   <email>alexandre@gaigalas.net</email>
   <active>yes</active>
  </lead>
- <date>2011-02-20</date>
- <time>21:53:10</time>
+ <date>2011-02-21</date>
+ <time>00:42:22</time>
  <version>
   <release>0.2</release>
   <api>0.2</api>
@@ -61,6 +61,7 @@
    <file baseinstalldir="Respect/Validation" md5sum="d6892816424411abf0f873c11d13c28f" name="Exceptions/NegativeException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="70cd4c73328d82880a1624d3567900bf" name="Exceptions/NoneOfException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="372a75be4ae60271e882674190e94a3b" name="Exceptions/NotEmptyException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="1469f380a345eb58789878295286a002" name="Exceptions/NotException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="700f78b12af170fd83a7828019a7e501" name="Exceptions/NoWhitespaceException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="dee4d709a8359d8afb6b4fed4d1def65" name="Exceptions/NullValueException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="4b8c8c6a3ce99d706e9e7040872f1f48" name="Exceptions/NumericException.php" role="php" />
@@ -89,7 +90,7 @@
    <file baseinstalldir="Respect/Validation" md5sum="0350c0f5f0d26f1463dfc7efd74fae29" name="Rules/Contains.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="94f6e04b93cbc45c04207b0ab32e4d98" name="Rules/Date.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="9f72c097ae08a41b0b612799b01d7465" name="Rules/Digits.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="0855f2bd37ccfd6eef022834fbade6d2" name="Rules/Domain.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="f33697b88ed5b9cf2d4e6e06c8019335" name="Rules/Domain.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="9a20af2507bce58028134aa45d2c375d" name="Rules/Each.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="52a853d45b508aa6c11b56bca98ae303" name="Rules/EndsWith.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="01d224d7f90af4df2ff2eacb6b1c64b4" name="Rules/Equals.php" role="php" />
@@ -106,6 +107,7 @@
    <file baseinstalldir="Respect/Validation" md5sum="1e7ba06c790b75a168a98e3972d38aa6" name="Rules/MostOf.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="ecf7ebf9af5c2c963dbde65efc5cfad2" name="Rules/Negative.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="27c5207a71b9bfabc8baf2c60e701889" name="Rules/NoneOf.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="f674f7846949b0441178420afa9d7e33" name="Rules/Not.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="e6f25a27e2bda69903d501fe94b17ffe" name="Rules/NotEmpty.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="59425c3d12731bb2ba6a713ba5468c10" name="Rules/NoWhitespace.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="c5d8a9ee171e6acf3bdab26ef08350c2" name="Rules/NullValue.php" role="php" />
@@ -145,7 +147,7 @@
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2011-02-20</date>
+   <date>2011-02-21</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
    <notes>
 .

@@ -10,6 +10,7 @@ class Domain extends AbstractComposite
     protected $ip;
     protected $whitespace;
     protected $dot;
+    protected $doubleHyphen;
     protected $start;
     protected $end;
     protected $otherParts;
@@ -20,9 +21,13 @@ class Domain extends AbstractComposite
         $this->ip = new Ip();
         $this->whitespace = new NoWhitespace();
         $this->dot = new Contains('.');
+        $this->doubleHyphen = new Not(new Contains('--'));
         $this->domainLength = new Length(3, null);
         $this->end = new Tld();
-        $this->otherParts = new Alnum('-');
+        $this->otherParts = new AllOf(
+                new Alnum('-'),
+                new Not(new StartsWith('-'))
+        );
     }
 
     public function validate($input)
@@ -54,6 +59,7 @@ class Domain extends AbstractComposite
 
         $this->collectAssertException($e, $this->whitespace, $input);
         $this->collectAssertException($e, $this->dot, $input);
+        $this->collectAssertException($e, $this->doubleHyphen, $input);
         $this->collectAssertException($e, $this->domainLength, $input);
 
         $parts = explode('.', $input);
