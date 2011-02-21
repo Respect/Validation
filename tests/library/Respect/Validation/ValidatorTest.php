@@ -56,6 +56,11 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         v::digits()->assert('02384');
     }
 
+    public function testDomain()
+    {
+        v::domain()->assert('google.com');
+    }
+
     public function testEach()
     {
         v::each(v::hexa())->assert(array('AF', 'D1', '09'));
@@ -161,6 +166,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     {
         v::startsWith('Hello')->assert('Hello World');
     }
+
     public function testEndsWith()
     {
         v::endsWith('World')->assert('Hello World');
@@ -207,7 +213,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
                 v::attribute('stay_signedin', v::notEmpty())->setName('Stay signed in'),
                 v::attribute('enable_webhistory', v::notEmpty())->setName('Enabled Web History'),
                 v::attribute('security_question', $stringMax256)->setName('Security Question')
-        )->setName('Validation Form');
+            )->setName('Validation Form');
         try {
             $v->assert(
                 (object) array(
@@ -259,10 +265,10 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         }
 
         $validBlogPost = v::allOf(v::allOf(v::object()
-                ->attribute('title', v::string()->length(1, 32))
-                ->attribute('author', $validUser)                 //reuse!
-                ->attribute('date', v::date())
-                ->attribute('text', v::string())))->setName('Blog Post');
+                        ->attribute('title', v::string()->length(1, 32))
+                        ->attribute('author', $validUser)                 //reuse!
+                        ->attribute('date', v::date())
+                        ->attribute('text', v::string())))->setName('Blog Post');
 
         $blogPost = new \stdClass;
         $blogPost->author = clone $user;

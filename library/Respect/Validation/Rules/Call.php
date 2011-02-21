@@ -7,7 +7,7 @@ class Call extends AbstractRelated
 
     public function getReferenceValue($input)
     {
-        return call_user_func($this->reference, $input);
+        return call_user_func($this->reference, &$input);
     }
 
     public function hasReference($input)

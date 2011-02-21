@@ -281,6 +281,11 @@ Positive and Negative:
     v::negative()->assert(-5);
     v::positive()->assert(3);
 
+Starts with and Ends with:
+
+    v::startsWith('Hello')->assert('Hello World');
+    v::endsWith('World')->assert('Hello World');
+
 Whitespace, empty and null
 
     v::noWhitespace()->assert('abc');

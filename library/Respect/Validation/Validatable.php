@@ -4,6 +4,9 @@ namespace Respect\Validation;
 
 use Respect\Validation\Exceptions\ValidationException;
 
+/**
+ * @method Validator int() int() integer
+ */
 interface Validatable
 {
 
