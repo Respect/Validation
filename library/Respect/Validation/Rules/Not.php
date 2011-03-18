@@ -33,19 +33,6 @@ class Not extends AbstractRule
         throw $e;
     }
 
-    public function check($input)
-    {
-        try {
-            $this->rule->check($input);
-        } catch (ValidationException $e) {
-            return true;
-        }
-        $e = $this->rule->reportError($input);
-        //TODO very very very nasty hack. Need to think of a better solution
-        $e->setTemplate(str_replace('must', 'must not', $e->getTemplate()));
-        throw $e;
-    }
-
 }
 /**
  * LICENSE
