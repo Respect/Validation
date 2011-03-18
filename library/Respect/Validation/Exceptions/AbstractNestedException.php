@@ -62,14 +62,6 @@ class AbstractNestedException extends ValidationException
         return false;
     }
 
-    public function setContext($context)
-    {
-        parent::setContext($context);
-
-        foreach ($this->related as $r)
-            $r->setContext($context);
-    }
-
     public function setRelated(array $relatedExceptions)
     {
         foreach ($relatedExceptions as $related)

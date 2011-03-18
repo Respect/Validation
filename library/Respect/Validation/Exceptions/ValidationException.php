@@ -13,11 +13,10 @@ class ValidationException extends InvalidArgumentException
     public static $defaultTemplates = array(
         self::STANDARD => 'Data validation failed for %s'
     );
-    protected $context = null;
     protected $id = 'validation';
     protected $name = '';
     protected $template = '';
-    protected $params=array();
+    protected $params = array();
 
     public static function format($template, array $vars=array())
     {
@@ -108,11 +107,6 @@ class ValidationException extends InvalidArgumentException
         return isset($this->params[$name]);
     }
 
-    public function setContext($context)
-    {
-        $this->context = $context;
-    }
-
     public function setId($id)
     {
         $this->id = $id;
@@ -144,10 +138,7 @@ class ValidationException extends InvalidArgumentException
     protected function buildTemplate()
     {
         $templateKey = $this->chooseTemplate();
-        if (is_null($this->context))
-            return static::$defaultTemplates[$templateKey];
-        else
-            return $this->context->getTemplate($this, $templateKey);
+        return static::$defaultTemplates[$templateKey];
     }
 
     protected function guessId()
