@@ -59,13 +59,7 @@ class Validator extends AllOf
 
     protected static function getRuleClassname($ruleName)
     {
-        $ruleFqn = explode('\\', get_called_class());
-        array_pop($ruleFqn);
-        $ruleFqn[] = 'Rules';
-        $ruleFqn[] = $ruleName;
-        $ruleFqn = array_map('ucfirst', $ruleFqn);
-        $ruleFqn = implode('\\', $ruleFqn);
-        return $ruleFqn;
+        return 'Respect\\Validation\\Rules\\'.ucfirst($ruleName);
     }
 
     protected function addArgument($argument)
