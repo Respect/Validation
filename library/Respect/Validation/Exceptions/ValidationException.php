@@ -143,7 +143,7 @@ class ValidationException extends InvalidArgumentException
 
     protected function guessId()
     {
-        if (!empty($this->id))
+        if (!empty($this->id) && $this->id != 'validation')
             return;
         $id = end(explode('\\', get_called_class()));
         $id = lcfirst(str_replace('Exception', '', $id));

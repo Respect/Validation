@@ -102,6 +102,7 @@ class Domain extends AbstractComposite
     }
 
 }
+
 /**
  * LICENSE
  *

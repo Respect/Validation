@@ -177,6 +177,15 @@ Finds the specific noWhitespace message inside author->username and prints it:
 
 >"# invalid #" must not contain whitespace
 
+You can export the messages as a plain array to use in template engines for example:
+
+    try {
+        $validBlogPost->assert($blogPost);
+    } catch (\InvalidArgumentException $e) {
+        $messages = $e->findMessages('author.username.noWhitespace', 'title');
+    }
+
+
 Using Zend and/or Symfony validators
 ------------------------------------
 
