@@ -46,12 +46,14 @@ abstract class AbstractComposite extends AbstractRule implements Validatable
     {
         if (empty($this->rules))
             return false;
-        elseif ($validator instanceof Valitatable)
+        
+        if ($validator instanceof Valitatable)
             return isset($this->rules[spl_object_hash($validator)]);
-        else
-            foreach ($this->rules as $rule)
-                if ($rule instanceof $validator)
-                    return true;
+       
+        foreach ($this->rules as $rule)
+            if ($rule instanceof $validator)
+                return true;
+
         return false;
     }
 

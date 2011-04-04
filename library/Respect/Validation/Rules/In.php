@@ -23,12 +23,14 @@ class In extends AbstractRule
     {
         if (is_array($this->haystack))
             return in_array($input, $this->haystack, $this->compareIdentical);
-        elseif (!is_string($this->haystack))
+       
+        if (!is_string($this->haystack))
             return false;
-        elseif ($this->compareIdentical)
+        
+        if ($this->compareIdentical)
             return mb_strpos($this->haystack, $input) !== false;
-        else
-            return mb_stripos($this->haystack, $input) !== false;
+        
+        return mb_stripos($this->haystack, $input) !== false;
     }
 
 }
