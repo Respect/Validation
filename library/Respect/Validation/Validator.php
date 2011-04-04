@@ -25,25 +25,20 @@ class Validator extends AllOf
 
     public static function buildRule($ruleSpec, $arguments=array())
     {
-        if ($ruleSpec instanceof Validatable) {
+        if ($ruleSpec instanceof Validatable)
             return $ruleSpec;
-        }
-   
+
         try {
-                $validatorFqn = static::getRuleClassname($ruleSpec);
-                $validatorClass = new ReflectionClass($validatorFqn);
-                $validatorInstance = $validatorClass->newInstanceArgs(
-                        $arguments
-                );          
-            
-                return $validatorInstance;        
-        } 
-        catch (ReflectionException $e) {
-                throw new ComponentException($e->getMessage());
+            $validatorFqn = static::getRuleClassname($ruleSpec);
+            $validatorClass = new ReflectionClass($validatorFqn);
+            $validatorInstance = $validatorClass->newInstanceArgs(
+                    $arguments
+            );
+
+            return $validatorInstance;
+        } catch (ReflectionException $e) {
+            throw new ComponentException($e->getMessage());
         }
-
-        
-
     }
 
     public function __call($method, $arguments)
@@ -65,7 +60,7 @@ class Validator extends AllOf
 
     protected static function getRuleClassname($ruleName)
     {
-        return 'Respect\\Validation\\Rules\\'.ucfirst($ruleName);
+        return 'Respect\\Validation\\Rules\\' . ucfirst($ruleName);
     }
 
     protected function addArgument($argument)
