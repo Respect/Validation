@@ -55,22 +55,28 @@ class Length extends AbstractRule
 
     protected function validateMin($length)
     {
-        if (is_null($this->minValue))
+        if (is_null($this->minValue)) {
             return true;
-        elseif ($this->inclusive)
+        }
+        
+        if ($this->inclusive) {
             return $length >= $this->minValue;
-        else
-            return $length > $this->minValue;
+        }        
+     
+        return $length > $this->minValue;
     }
 
     protected function validateMax($length)
     {
-        if (is_null($this->maxValue))
+        if (is_null($this->maxValue)) {
             return true;
-        elseif ($this->inclusive)
-            return $length <= $this->maxValue;
-        else
-            return $length < $this->maxValue;
+        }
+
+        if ($this->inclusive) {
+            return $length <= $this->maxValue;        
+        }
+        
+        return $length < $this->maxValue;
     }
 
 }
