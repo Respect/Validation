@@ -18,24 +18,24 @@ class Contains extends AbstractRule
     {
         if ($this->identical)
             return $this->validateIdentical($input);
-        else
-            return $this->validateEquals($input);
+        
+        return $this->validateEquals($input);
     }
 
     protected function validateEquals($input)
     {
         if (is_array($input))
             return in_array($this->containsValue, $input);
-        else
-            return false !== mb_stripos($input, $this->containsValue);
+        
+        return false !== mb_stripos($input, $this->containsValue);
     }
 
     protected function validateIdentical($input)
     {
         if (is_array($input))
             return in_array($this->containsValue, $input, true);
-        else
-            return false !== mb_strpos($input, $this->containsValue);
+        
+        return false !== mb_strpos($input, $this->containsValue);
     }
 
 }
