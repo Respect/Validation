@@ -18,24 +18,24 @@ class StartsWith extends AbstractRule
     {
         if ($this->identical)
             return $this->validateIdentical($input);
-        else
-            return $this->validateEquals($input);
+     
+        return $this->validateEquals($input);
     }
 
     protected function validateEquals($input)
     {
         if (is_array($input))
             return reset($input) == $this->startValue;
-        else
-            return 0 === mb_stripos($input, $this->startValue);
+       
+        return 0 === mb_stripos($input, $this->startValue);
     }
 
     protected function validateIdentical($input)
     {
         if (is_array($input))
             return reset($input) === $this->startValue;
-        else
-            return 0 === mb_strpos($input, $this->startValue);
+       
+        return 0 === mb_strpos($input, $this->startValue);
     }
 
 }
