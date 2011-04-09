@@ -9,16 +9,9 @@ class BetweenException extends AbstractNestedException
     const GREATER = 2;
 
     public static $defaultTemplates = array(
-        self::MODE_DEFAULT => array(
-            self::BOTH => '{{name}} must be between {{minValue}} and {{maxValue}}',
-            self::LOWER => '{{name}}  must be greater than {{minValue}}',
-            self::GREATER => '{{name}} must be lower than {{maxValue}}',
-        ),
-        self::MODE_NEGATIVE => array(
-            self::BOTH => '{{name}} must not be between {{minValue}} and {{maxValue}}',
-            self::LOWER => '{{name}}  must not be greater than {{minValue}}',
-            self::GREATER => '{{name}} must not be lower than {{maxValue}}',
-        )
+        self::BOTH => '{{name}} must be between {{minValue}} and {{maxValue}}',
+        self::LOWER => '{{name}}  must be greater than {{minValue}}',
+        self::GREATER => '{{name}} must be lower than {{maxValue}}',
     );
 
     public function configure($name, array $params=array())

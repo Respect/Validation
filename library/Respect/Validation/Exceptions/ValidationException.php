@@ -9,19 +9,11 @@ use Respect\Validation\Validatable;
 
 class ValidationException extends InvalidArgumentException
 {
-    const MODE_DEFAULT = 1;
-    const MODE_NEGATIVE = 2;
     const STANDARD = 0;
     public static $defaultTemplates = array(
-        self::MODE_DEFAULT => array(
-            self::STANDARD => 'Data validation failed for %s'
-        ),
-        self::MODE_NEGATIVE => array(
-            self::STANDARD => 'Data validation failed for %s'
-        )
+        self::STANDARD => 'Data validation failed for %s'
     );
     protected $id = 'validation';
-    protected $mode = self::MODE_DEFAULT;
     protected $name = '';
     protected $template = '';
     protected $params = array();
@@ -63,7 +55,7 @@ class ValidationException extends InvalidArgumentException
 
     public function chooseTemplate()
     {
-        return key(static::$defaultTemplates[$this->mode]);
+        return key(static::$defaultTemplates);
     }
 
     public function configure($name, array $params = array())
@@ -127,36 +119,26 @@ class ValidationException extends InvalidArgumentException
         return $this;
     }
 
-    public function setMode($mode)
-    {
-        $this->mode = $mode;
-        $this->template = $this->buildTemplate();
-        return $this;
-    }
-
     public function setParam($key, $value)
     {
         $this->params[$key] = static::stringify($value);
-        return $this;
     }
 
     public function setParams(array $params)
     {
         foreach ($params as $key => $value)
             $this->setParam($key, $value);
-        return $this;
     }
 
     public function setTemplate($template)
     {
         $this->template = $template;
-        return $this;
     }
 
     protected function buildTemplate()
     {
         $templateKey = $this->chooseTemplate();
-        return static::$defaultTemplates[$this->mode][$templateKey];
+        return static::$defaultTemplates[$templateKey];
     }
 
     protected function guessId()

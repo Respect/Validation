@@ -137,15 +137,6 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         v::notEmpty()->assert('aaa');
     }
 
-    public function testNot()
-    {
-        try {
-            v::not(v::ip())->assert('192.168.0.1');
-        } catch (\Exception $e) {
-            echo $e->getFullMessage();
-        }
-    }
-
     public function testNullValue()
     {
         v::nullValue()->assert(null);

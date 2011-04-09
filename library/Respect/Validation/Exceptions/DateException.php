@@ -7,14 +7,8 @@ class DateException extends ValidationException
     const FORMAT = 1;
 
     public static $defaultTemplates = array(
-        self::MODE_DEFAULT => array(
-            self::STANDARD => '{{name}} must be a valid date',
-            self::FORMAT => '{{name}} must be a valid date. Sample format: {{format}}'
-        ),
-        self::MODE_NEGATIVE => array(
-            self::STANDARD => '{{name}} must not be a valid date',
-            self::FORMAT => '{{name}} must not be a valid date in the format {{format}}'
-        )
+        self::STANDARD => '{{name}} must be a valid date',
+        self::FORMAT => '{{name}} must be a valid date. Sample format: {{format}}'
     );
 
     public function configure($name, array $params=array())
