@@ -27,13 +27,13 @@ class Not extends AbstractRule
         } catch (ValidationException $e) {
             return true;
         }
-        $e = $this->rule->reportError($input);
-        //TODO very very very nasty hack. Need to think of a better solution
-        $e->setTemplate(str_replace('must', 'must not', $e->getTemplate()));
-        throw $e;
+        throw $this->rule
+            ->reportError($input)
+            ->setMode(ValidationException::MODE_NEGATIVE);
     }
 
 }
+
 /**
  * LICENSE
  *

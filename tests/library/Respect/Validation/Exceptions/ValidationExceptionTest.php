@@ -46,16 +46,6 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('foo', $x->getTemplate());
     }
 
-    public function testGetTemplateChosen()
-    {
-        $x = new ValidationException();
-        $x->configure('bar');
-        $this->assertEquals(
-            ValidationException::$defaultTemplates[0],
-            $x->getTemplate()
-        );
-    }
-
     /**
      * @dataProvider providerForStringify
      */
