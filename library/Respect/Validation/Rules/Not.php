@@ -3,6 +3,7 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validatable;
+use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 
 class Not extends AbstractRule
@@ -12,24 +13,48 @@ class Not extends AbstractRule
 
     public function __construct(Validatable $rule)
     {
+        if ($rule instanceof AbstractComposite)
+            $rule = $this->absorbComposite($rule);
+
         $this->rule = $rule;
     }
 
     public function validate($input)
     {
+        if ($rule instanceof AbstractComposite)
+            return $this->rule->validate($input);
+
         return!$this->rule->validate($input);
     }
 
     public function assert($input)
     {
+        if ($this->rule instanceof AbstractComposite)
+            return $this->rule->assert($input);
+
         try {
             $this->rule->assert($input);
         } catch (ValidationException $e) {
             return true;
         }
+
         throw $this->rule
             ->reportError($input)
             ->setMode(ValidationException::MODE_NEGATIVE);
+    }
+
+    protected function absorbComposite(AbstractComposite $rule)
+    {
+        $rules = $rule->getRules();
+        $rule->removeRules();
+
+        foreach ($rules as &$r)
+            if ($r instanceof AbstractComposite)
+                $rule->addRule($this->absorbComposite($r));
+            else
+                $rule->addRule(new static($r));
+
+        return $rule;
     }
 
 }

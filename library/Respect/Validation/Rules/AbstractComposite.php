@@ -24,6 +24,11 @@ abstract class AbstractComposite extends AbstractRule implements Validatable
             $this->appendRule($validator);
     }
 
+    public function removeRules()
+    {
+        $this->rules = array();
+    }
+
     public function addRules(array $validators)
     {
         foreach ($validators as $key => $spec)
@@ -46,10 +51,10 @@ abstract class AbstractComposite extends AbstractRule implements Validatable
     {
         if (empty($this->rules))
             return false;
-        
+
         if ($validator instanceof Valitatable)
             return isset($this->rules[spl_object_hash($validator)]);
-       
+
         foreach ($this->rules as $rule)
             if ($rule instanceof $validator)
                 return true;

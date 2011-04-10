@@ -10,7 +10,7 @@ class PositiveException extends ValidationException
             self::STANDARD => '{{name}} must be positive',
         ),
         self::MODE_NEGATIVE => array(
-            self::STANDARD => '{{name}} must not MODE_be positive',
+            self::STANDARD => '{{name}} must not be positive',
         )
     );
 
