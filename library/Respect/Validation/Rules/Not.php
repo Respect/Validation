@@ -45,16 +45,17 @@ class Not extends AbstractRule
 
     protected function absorbComposite(AbstractComposite $rule)
     {
-        $rules = $rule->getRules();
-        $rule->removeRules();
+        $clone = clone $rule;
+        $rules = $clone->getRules();
+        $clone->removeRules();
 
         foreach ($rules as &$r)
             if ($r instanceof AbstractComposite)
-                $rule->addRule($this->absorbComposite($r));
+                $clone->addRule($this->absorbComposite($r));
             else
-                $rule->addRule(new static($r));
+                $clone->addRule(new static($r));
 
-        return $rule;
+        return $clone;
     }
 
 }

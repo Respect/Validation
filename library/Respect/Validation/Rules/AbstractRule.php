@@ -8,7 +8,6 @@ use Respect\Validation\Exceptions\ValidationException;
 abstract class AbstractRule implements Validatable
 {
 
-    protected $exception;
     protected $name;
 
     public function __construct()
