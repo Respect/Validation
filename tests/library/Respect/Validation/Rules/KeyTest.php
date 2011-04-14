@@ -40,5 +40,4 @@ class KeyTest extends \PHPUnit_Framework_TestCase
         $obj['bar'] = 'foo';
         $this->assertTrue($validator->assert($obj));
     }
-
 }

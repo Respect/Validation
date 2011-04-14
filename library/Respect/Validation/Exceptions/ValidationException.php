@@ -163,7 +163,8 @@ class ValidationException extends InvalidArgumentException
     {
         if (!empty($this->id) && $this->id != 'validation')
             return $this->id;
-        $id = end(explode('\\', get_called_class()));
+        $classParts = explode('\\', get_called_class());
+        $id = end($classParts);
         $id = lcfirst(str_replace('Exception', '', $id));
         return $id;
     }
