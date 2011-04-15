@@ -49,6 +49,8 @@ class Length extends AbstractRule
             return mb_strlen($input);
         elseif (is_array($input) || $input instanceof Countable)
             return count($input);
+        elseif (is_object($input))
+            return count(get_object_vars($input));
         else
             return false;
     }
