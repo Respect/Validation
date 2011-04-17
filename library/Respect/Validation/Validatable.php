@@ -19,6 +19,8 @@ interface Validatable
 
     public function setName($name);
 
+    public function setTemplate($template);
+
     public function validate($input);
 }
 

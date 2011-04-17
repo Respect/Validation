@@ -9,6 +9,7 @@ abstract class AbstractRule implements Validatable
 {
 
     protected $name;
+    protected $template = null;
 
     public function __construct()
     {
@@ -45,12 +46,20 @@ abstract class AbstractRule implements Validatable
         $name = $this->getName() ? : "\"$input\"";
         $params = array_merge($extraParams, get_object_vars($this));
         $exception->configure($name, $params);
+        if (!is_null($this->template))
+            $exception->setTemplate($this->template);
         return $exception;
     }
 
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
+    }
+
+    public function setTemplate($template)
+    {
+        $this->template = $template;
         return $this;
     }
 

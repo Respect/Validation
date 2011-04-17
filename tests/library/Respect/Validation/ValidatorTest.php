@@ -199,6 +199,17 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $v->assert(-1.1);
     }
 
+    public function testCallbackCustomMessage()
+    {
+        try {
+            v::callback('is_int')
+                ->setTemplate('{{name}} is not tasty')
+                ->assert('something');
+        } catch (\Exception $e) {
+            //echo $e->getFullMessage();
+        }
+    }
+
     public function testGmailSignInValidation()
     {
         $stringMax256 = v::string()->length(5, 256);
@@ -268,7 +279,9 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
                         ->attribute('title', v::string()->length(1, 32))
                         ->attribute('author', $validUser)                 //reuse!
                         ->attribute('date', v::date())
-                        ->attribute('text', v::string())))->setName('Blog Post');
+                        ->attribute('text', v::string())))
+                ->setName('Blog Post')
+                ->setTemplate("Not nice {{name}}");
 
         $blogPost = new \stdClass;
         $blogPost->author = clone $user;
@@ -277,7 +290,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         try {
             $validBlogPost->assert($blogPost);
         } catch (\InvalidArgumentException $e) {
-            //echo $e->getFullMessage().PHP_EOL;
+            //echo $e->getFullMessage() . PHP_EOL;
             //echo $e->findRelated('author')->getMainMessage();
         }
     }

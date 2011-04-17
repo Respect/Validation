@@ -55,6 +55,8 @@ class Validator extends AllOf
         $name = $this->getName() ? : "\"$input\"";
         $params = array_merge($extraParams, get_object_vars($this));
         $exception->configure($name, $params);
+        if (!is_null($this->template))
+            $exception->setTemplate($this->template);
         return $exception;
     }
 

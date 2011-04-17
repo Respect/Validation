@@ -10,8 +10,8 @@
   <email>alexandre@gaigalas.net</email>
   <active>yes</active>
  </lead>
- <date>2011-04-15</date>
- <time>18:13:31</time>
+ <date>2011-04-17</date>
+ <time>12:29:42</time>
  <version>
   <release>0.2</release>
   <api>0.2</api>
@@ -26,7 +26,7 @@
  </notes>
  <contents>
   <dir baseinstalldir="Respect/Validation" name="/">
-   <file baseinstalldir="Respect/Validation" md5sum="4f976c9c0c4547eb5969586f9f8ad089" name="Exceptions/AbstractGroupedException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="1f0a6acb3e14603fa75a6dc96052947e" name="Exceptions/AbstractGroupedException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="0f7ede91c65a22b2f10c095a96a383d7" name="Exceptions/AbstractNestedException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="8a4dd9c923407917701a243e5b8cbe98" name="Exceptions/AllOfException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="d895b3896ffa43b932c790662c7502c0" name="Exceptions/AlnumException.php" role="php" />
@@ -75,7 +75,7 @@
    <file baseinstalldir="Respect/Validation" md5sum="59ffa243ffc76998c041121a67910e49" name="Exceptions/ZendException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="69c3486f35b2144149d34bfa15ad5b82" name="Rules/AbstractComposite.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="4f5dbde6198921823a199ccf09b63770" name="Rules/AbstractRelated.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="962b53e47dae10cf8c24a766a9edbb8f" name="Rules/AbstractRule.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="538ed692251e1a2593c1cd96534b075a" name="Rules/AbstractRule.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="3b6e284d165b2934650214b9af3422dc" name="Rules/AllOf.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="ba19b564226ca821e5ad20a094d46ae7" name="Rules/Alnum.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="8d75ac998a6f9565d336414773137588" name="Rules/Alpha.php" role="php" />
@@ -120,8 +120,8 @@
    <file baseinstalldir="Respect/Validation" md5sum="f6aeceea5d7b4522cd9f97b27088e351" name="Rules/Tld.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="afa7d33bee75d08ac2302eb5491b590b" name="Rules/Zend.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="904f06fb7ae379ec7f5a8af65a30e365" name="ExceptionIterator.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="42028a45da0514aed346f3053282d10e" name="Validatable.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="d92b92b8570df44d967c950a2bf684f4" name="Validator.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="a19a2b951bb4aa67531fb6dc5a161e46" name="Validatable.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="a93bff0ce964b9954ecd3e8ade26e347" name="Validator.php" role="php" />
   </dir>
  </contents>
  <dependencies>
@@ -145,7 +145,7 @@
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2011-04-15</date>
+   <date>2011-04-17</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
    <notes>
 .
