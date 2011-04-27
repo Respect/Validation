@@ -21,7 +21,8 @@ class DigitsTest extends \PHPUnit_Framework_TestCase
     public function testDigitsInvalid($invalidDigits, $aditional='')
     {
         $validator = new Digits($aditional);
-        $validator->assert($invalidDigits);
+        $this->assertFalse($validator->validate($invalidDigits));
+        $this->assertFalse($validator->assert($invalidDigits));
     }
 
     /**

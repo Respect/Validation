@@ -3,6 +3,7 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Validatable;
 use Respect\Validation\Validator;
 
@@ -22,7 +23,7 @@ abstract class AbstractComposite extends AbstractRule implements Validatable
             $this->appendRule(Validator::buildRule($validator, $arguments));
         else
             $this->appendRule($validator);
-        
+
         return $this;
     }
 
@@ -56,12 +57,13 @@ abstract class AbstractComposite extends AbstractRule implements Validatable
         if (empty($this->rules))
             return false;
 
-        if ($validator instanceof Valitatable)
+        if ($validator instanceof Validatable)
             return isset($this->rules[spl_object_hash($validator)]);
 
-        foreach ($this->rules as $rule)
-            if ($rule instanceof $validator)
-                return true;
+        if (is_string($validator))
+            foreach ($this->rules as $rule)
+                if (get_class($rule) == __NAMESPACE__ . '\\' . $validator)
+                    return true;
 
         return false;
     }

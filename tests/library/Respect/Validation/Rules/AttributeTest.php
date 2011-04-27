@@ -17,6 +17,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $validator = new Attribute('bar');
         $obj = new \stdClass;
         $obj->bar = 'foo';
+        $this->assertTrue($validator->validate($obj));
         $this->assertTrue($validator->assert($obj));
     }
 
@@ -28,7 +29,19 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $validator = new Attribute('bar');
         $obj = new \stdClass;
         $obj->baraaaaa = 'foo';
-        $this->assertTrue($validator->assert($obj));
+        $this->assertFalse($validator->validate($obj));
+        $this->assertFalse($validator->assert($obj));
+    }
+    /**
+     * @expectedException Respect\Validation\Exceptions\ValidationException
+     */
+    public function testNotNullCheck()
+    {
+        $validator = new Attribute('bar');
+        $obj = new \stdClass;
+        $obj->baraaaaa = 'foo';
+        $this->assertFalse($validator->validate($obj));
+        $this->assertFalse($validator->check($obj));
     }
 
     /**
@@ -55,7 +68,9 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $validator = new Attribute('bar', $subValidator);
         $obj = new \stdClass;
         $obj->bar = 'foo';
+        $this->assertTrue($validator->validate($obj));
         $this->assertTrue($validator->assert($obj));
+        $this->assertTrue($validator->check($obj));
     }
 
     public function testNotMandatory()

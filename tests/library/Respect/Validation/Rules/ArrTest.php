@@ -18,6 +18,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
      */
     public function testArray($input)
     {
+        $this->assertTrue($this->object->validate($input));
         $this->assertTrue($this->object->assert($input));
     }
 
@@ -27,7 +28,8 @@ class ArrTest extends \PHPUnit_Framework_TestCase
      */
     public function testNotArray($input)
     {
-        $this->assertTrue($this->object->assert($input));
+        $this->assertFalse($this->object->validate($input));
+        $this->assertFalse($this->object->assert($input));
     }
 
     public function providerForArray()

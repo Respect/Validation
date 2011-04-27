@@ -21,7 +21,8 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
     public function testAlnumInvalid($invalidAlnum, $aditional)
     {
         $validator = new Alnum($aditional);
-        $validator->assert($invalidAlnum);
+        $this->assertFalse($validator->validate($invalidAlnum));
+        $this->assertFalse($validator->assert($invalidAlnum));
     }
 
     /**

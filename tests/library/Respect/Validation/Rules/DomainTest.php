@@ -18,16 +18,27 @@ class DomainTest extends \PHPUnit_Framework_TestCase
      */
     public function testDomain($input)
     {
+        $this->assertTrue($this->object->validate($input));
         $this->assertTrue($this->object->assert($input));
+        $this->assertTrue($this->object->check($input));
+    }
+
+    /**
+     * @dataProvider providerForNotDomain
+     * @expectedException Respect\Validation\Exceptions\ValidationException
+     */
+    public function testNotDomain($input)
+    {
+        $this->assertFalse($this->object->check($input));
     }
 
     /**
      * @dataProvider providerForNotDomain
      * @expectedException Respect\Validation\Exceptions\DomainException
      */
-    public function testNotDomain($input)
+    public function testNotDomainCheck($input)
     {
-        $this->assertTrue($this->object->assert($input));
+        $this->assertFalse($this->object->assert($input));
     }
 
     public function providerForDomain()

@@ -41,4 +41,13 @@ class OneOfTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($o->assert('any'));
     }
 
+    /**
+     * @expectedException Respect\Validation\Exceptions\StringException
+     */
+    public function testInvalidCheck()
+    {
+        $o = new OneOf(new String, new Alnum);
+        $this->assertFalse($o->check(-10));
+    }
+
 }

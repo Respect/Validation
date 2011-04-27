@@ -64,7 +64,8 @@ abstract class AbstractRelated extends AbstractRule implements Validatable
         elseif (!$this->mandatory && !$hasReference)
             return true;
 
-        return $this->validator->validate($this->getReferenceValue($input));
+        return is_null($this->validator)
+        || $this->validator->validate($this->getReferenceValue($input));
     }
 
 }

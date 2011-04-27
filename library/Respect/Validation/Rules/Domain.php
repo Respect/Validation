@@ -90,6 +90,7 @@ class Domain extends AbstractComposite
         $this->whitespace->check($input);
         $this->dot->check($input);
         $this->domainLength->check($input);
+        $this->doubleHyphen->check($input);
 
         $parts = explode('.', $input);
 

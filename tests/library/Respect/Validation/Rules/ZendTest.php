@@ -15,6 +15,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     public function testSimpleOk()
     {
         $v = new Zend('alnum');
+        $this->assertTrue($v->validate('wp2oiur'));
         $this->assertTrue($v->assert('wp2oiur'));
     }
 
@@ -29,7 +30,8 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     public function testSimpleNot()
     {
         $v = new Zend('alnum');
-        $this->assertTrue($v->assert('#$%#$%'));
+        $this->assertFalse($v->validate('#$%#$%'));
+        $this->assertFalse($v->assert('#$%#$%'));
     }
 
     public function testParamsOk()
@@ -44,7 +46,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     public function testParamsNot()
     {
         $v = new Zend('stringLength', array('min' => 10, 'max' => 25));
-        $this->assertTrue($v->assert('aw'));
+        $this->assertFalse($v->assert('aw'));
     }
 
 }

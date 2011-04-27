@@ -36,7 +36,8 @@ class CallTest extends \PHPUnit_Framework_TestCase
     public function testCallbackNot()
     {
         $v = new Call('strrev', new Arr);
-        $this->assertTrue($v->assert('test'));
+        $this->assertFalse($v->validate('test'));
+        $this->assertFalse($v->assert('test'));
     }
 
 }

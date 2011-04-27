@@ -11,5 +11,11 @@
          syntaxCheck="false"
          verbose="true"
          testSuiteLoaderClass="PHPUnit_Runner_StandardTestSuiteLoader">
-         
+    <filter>
+        <blacklist>
+            <directory>../library/Zend/</directory>
+            <directory>../library/Symfony/</directory>
+        </blacklist>
+    </filter>
+
 </phpunit>

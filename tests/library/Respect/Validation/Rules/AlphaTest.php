@@ -21,7 +21,8 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
     public function testAlphaInvalid($invalidAlpha, $aditional)
     {
         $validator = new Alpha($aditional);
-        $validator->assert($invalidAlpha);
+        $this->assertFalse($validator->validate($invalidAlpha));
+        $this->assertFalse($validator->assert($invalidAlpha));
     }
 
     /**

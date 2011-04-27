@@ -9,6 +9,32 @@ use Respect\Validation\Validator;
 class AllOfTest extends \PHPUnit_Framework_TestCase
 {
 
+    public function testRemoveRules()
+    {
+        $o = new AllOf(new Int, new Positive);
+        $o->removeRules();
+        $this->assertEquals(0, count($o->getRules()));
+    }
+
+    public function testAddRulesArrayMulti()
+    {
+        $o = new AllOf();
+        $o->addRules(
+            array(
+                array($x = new Int, new Positive)
+            )
+        );
+        $this->assertTrue($o->hasRule($x));
+        $this->assertTrue($o->hasRule('Positive'));
+    }
+
+    public function testAddRulesSpec()
+    {
+        $o = new AllOf();
+        $o->addRules(array("Between" => array(1, 2)));
+        $this->assertTrue($o->hasRule('Between'));
+    }
+
     public function testValid()
     {
         $valid1 = new Callback(function() {

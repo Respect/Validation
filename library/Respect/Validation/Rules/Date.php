@@ -9,11 +9,6 @@ class Date extends AbstractRule
 
     public $format = null;
 
-    protected function formatDate(DateTime $date)
-    {
-        return $date->format($this->format);
-    }
-
     public function __construct($format=null)
     {
         $this->format = $format;
