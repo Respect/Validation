@@ -16,7 +16,8 @@ abstract class AbstractRelated extends AbstractRule implements Validatable
 
     abstract public function getReferenceValue($input);
 
-    public function __construct($reference, Validatable $validator=null, $mandatory=true)
+    public function __construct($reference, Validatable $validator=null,
+                                $mandatory=true)
     {
         $this->setName($reference);
         $this->reference = $reference;
@@ -26,39 +27,44 @@ abstract class AbstractRelated extends AbstractRule implements Validatable
 
     public function assert($input)
     {
-        if (!$this->verifyMandatory($input))
+        $hasReference = $this->hasReference($input);
+
+        if ($this->mandatory && !$hasReference)
             throw $this->reportError($input, array('hasReference' => false));
-        elseif (!$this->validator)
+        elseif ((!$this->mandatory && !$hasReference) || !$this->validator)
             return true;
-        else
-            try {
-                return $this->validator->assert($this->getReferenceValue($input));
-            } catch (ValidationException $e) {
-                throw $this
-                    ->reportError($this->reference, array('hasReference' => true))
-                    ->addRelated($e);
-            }
+
+        try {
+            return $this->validator->assert($this->getReferenceValue($input));
+        } catch (ValidationException $e) {
+            throw $this
+                ->reportError($this->reference, array('hasReference' => true))
+                ->addRelated($e);
+        }
     }
 
     public function check($input)
     {
-        if (!$this->verifyMandatory($input))
+        $hasReference = $this->hasReference($input);
+
+        if ($this->mandatory && !$hasReference)
             throw $this->reportError($input, array('hasReference' => false));
-        else
-            return $this->validator->check($this->getReferenceValue($input));
+        elseif (!$this->mandatory && !$hasReference)
+            return true;
+
+        return $this->validator->check($this->getReferenceValue($input));
     }
 
     public function validate($input)
     {
-        if (!$this->verifyMandatory($input))
-            return false;
-        else
-            return $this->validator->validate($this->getReferenceValue($input));
-    }
+        $hasReference = $this->hasReference($input);
 
-    protected function verifyMandatory($input)
-    {
-        return!$this->mandatory || $this->hasReference($input);
+        if ($this->mandatory && !$hasReference)
+            return false;
+        elseif (!$this->mandatory && !$hasReference)
+            return true;
+
+        return $this->validator->validate($this->getReferenceValue($input));
     }
 
 }

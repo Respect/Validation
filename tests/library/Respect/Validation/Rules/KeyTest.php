@@ -40,4 +40,13 @@ class KeyTest extends \PHPUnit_Framework_TestCase
         $obj['bar'] = 'foo';
         $this->assertTrue($validator->assert($obj));
     }
+
+    public function testNotMandatory()
+    {
+        $subValidator = new Length(1, 3);
+        $validator = new Key('bar', $subValidator, false);
+        $obj = array();
+        $this->assertTrue($validator->validate($obj));
+    }
+
 }

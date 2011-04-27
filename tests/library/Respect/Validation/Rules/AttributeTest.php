@@ -58,6 +58,14 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($validator->assert($obj));
     }
 
+    public function testNotMandatory()
+    {
+        $subValidator = new Length(1, 3);
+        $validator = new Attribute('bar', $subValidator, false);
+        $obj = new \stdClass;
+        $this->assertTrue($validator->validate($obj));
+    }
+
     public function testValidatorPrivateAttribute()
     {
         $subValidator = new Length(1, 3);
