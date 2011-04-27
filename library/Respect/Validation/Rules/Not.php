@@ -21,7 +21,7 @@ class Not extends AbstractRule
 
     public function validate($input)
     {
-        if ($rule instanceof AbstractComposite)
+        if ($this->rule instanceof AbstractComposite)
             return $this->rule->validate($input);
 
         return!$this->rule->validate($input);
