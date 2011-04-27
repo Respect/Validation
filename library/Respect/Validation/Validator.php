@@ -11,25 +11,21 @@ use Respect\Validation\Rules\AllOf;
 class Validator extends AllOf
 {
 
-    protected $arguments = array();
-    protected $ruleName;
-
     public static function __callStatic($ruleName, $arguments)
     {
+        if ('allOf' === $ruleName)
+            return static::buildRule($ruleName, $arguments);
+
         $validator = new static;
-        $validator->setRuleName($ruleName);
-        $validator->setArguments($arguments);
-        $validator->checkForCompleteRule();
-        return $validator;
+        return $validator->__call($ruleName, $arguments);
     }
 
     public static function buildRule($ruleSpec, $arguments=array())
     {
         if ($ruleSpec instanceof Validatable)
             return $ruleSpec;
-
         try {
-            $validatorFqn = static::getRuleClassname($ruleSpec);
+            $validatorFqn = 'Respect\\Validation\\Rules\\' . ucfirst($ruleSpec);
             $validatorClass = new ReflectionClass($validatorFqn);
             $validatorInstance = $validatorClass->newInstanceArgs(
                     $arguments
@@ -43,8 +39,7 @@ class Validator extends AllOf
 
     public function __call($method, $arguments)
     {
-        array_unshift($arguments, $method);
-        $this->applyParts($arguments);
+        $this->addRule(static::buildRule($method, $arguments));
         return $this;
     }
 
@@ -58,48 +53,6 @@ class Validator extends AllOf
         if (!is_null($this->template))
             $exception->setTemplate($this->template);
         return $exception;
-    }
-
-    protected static function getRuleClassname($ruleName)
-    {
-        return 'Respect\\Validation\\Rules\\' . ucfirst($ruleName);
-    }
-
-    protected function addArgument($argument)
-    {
-        $this->arguments[] = $argument;
-    }
-
-    protected function applyParts($parts)
-    {
-        foreach ($parts as $a) {
-            if (!isset($this->ruleName))
-                $this->setRuleName($a);
-            else
-                $this->addArgument($a);
-        }
-        $this->checkForCompleteRule();
-    }
-
-    protected function checkForCompleteRule()
-    {
-        if (!isset($this->ruleName))
-            return;
-        $this->addRule(
-            static::buildRule($this->ruleName, $this->arguments)
-        );
-        $this->ruleName = null;
-        $this->arguments = array();
-    }
-
-    protected function setArguments(array $arguments)
-    {
-        $this->arguments = $arguments;
-    }
-
-    protected function setRuleName($ruleName)
-    {
-        $this->ruleName = $ruleName;
     }
 
 }

@@ -25,7 +25,7 @@ class AbstractNestedException extends ValidationException
 
         foreach (func_get_args() as $finder) {
             $e = call_user_func_array(
-                    array($this, 'findRelated'), explode('.', $finder)
+                array($this, 'findRelated'), explode('.', $finder)
             );
             $finder = str_replace('.', '_', $finder);
             $messages[$finder] = $e ? $e->getMainMessage() : '';
@@ -39,7 +39,7 @@ class AbstractNestedException extends ValidationException
         $path = func_get_args();
 
         while (!empty($path) && $target !== false)
-            $target = $this->getRelatedByName(array_shift($path));
+            $target = $target->getRelatedByName(array_shift($path));
         return $target;
     }
 

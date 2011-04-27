@@ -22,6 +22,8 @@ abstract class AbstractComposite extends AbstractRule implements Validatable
             $this->appendRule(Validator::buildRule($validator, $arguments));
         else
             $this->appendRule($validator);
+        
+        return $this;
     }
 
     public function removeRules()
@@ -40,6 +42,8 @@ abstract class AbstractComposite extends AbstractRule implements Validatable
                 $this->addRule($key, $spec);
             else
                 $this->addRule($spec);
+
+        return $this;
     }
 
     public function getRules()
