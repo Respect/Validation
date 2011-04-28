@@ -48,6 +48,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
             array(121),
             array(new \stdClass),
             array(false),
+            array('aaa'),
         );
     }
 

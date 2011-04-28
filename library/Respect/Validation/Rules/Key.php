@@ -24,7 +24,7 @@ class Key extends AbstractRelated
 
     public function hasReference($input)
     {
-        return array_key_exists($this->reference, $input);
+        return is_array($input) && array_key_exists($this->reference, $input);
     }
 
 }

@@ -23,6 +23,15 @@ class KeyTest extends \PHPUnit_Framework_TestCase
         $obj['baraaaaaa'] = 'foo';
         $this->assertTrue($validator->assert($obj));
     }
+    /**
+     * @expectedException Respect\Validation\Exceptions\KeyException
+     */
+    public function testNotArray()
+    {
+        $validator = new Key('bar');
+        $obj = 123;
+        $this->assertFalse($validator->assert($obj));
+    }
 
     /**
      * @expectedException Respect\Validation\Exceptions\ComponentException
