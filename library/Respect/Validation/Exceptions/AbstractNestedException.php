@@ -19,24 +19,29 @@ class AbstractNestedException extends ValidationException
         return $this;
     }
 
-    public function findMessages()
+    public function findMessages(array $paths)
     {
         $messages = array();
 
-        foreach (func_get_args() as $finder) {
-            $e = call_user_func_array(
-                array($this, 'findRelated'), explode('.', $finder)
-            );
-            $finder = str_replace('.', '_', $finder);
-            $messages[$finder] = $e ? $e->getMainMessage() : '';
+        foreach ($paths as $key => $value) {
+            $numericKey = is_numeric($key);
+            $path = $numericKey ? $value : $key;
+
+            $e = $this->findRelated($path);
+
+            if (!$numericKey)
+                $e->setTemplate($value);
+
+            $path = str_replace('.', '_', $path);
+            $messages[$path] = $e ? $e->getMainMessage() : '';
         }
         return $messages;
     }
 
-    public function findRelated()
+    public function findRelated($path)
     {
         $target = $this;
-        $path = func_get_args();
+        $path = explode('.', $path);
 
         while (!empty($path) && $target !== false)
             $target = $target->getRelatedByName(array_shift($path));

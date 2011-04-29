@@ -170,7 +170,7 @@ Then, the following validation code:
     try {
         $validBlogPost->assert($blogPost);
     } catch (\InvalidArgumentException $e) {
-        echo $e->findRelated('author', 'username', 'noWhitespace')->getMainMessage();
+        echo $e->findRelated('author.username.noWhitespace')->getMainMessage();
     }
 
 Finds the specific noWhitespace message inside author->username and prints it:
@@ -185,6 +185,16 @@ You can export the messages as a plain array to use in template engines for exam
         $messages = $e->findMessages('author.username.noWhitespace', 'title');
     }
 
+You can also set runtime templates for those found messages:
+
+    try {
+        $validBlogPost->assert($blogPost);
+    } catch (\InvalidArgumentException $e) {
+        $messages = $e->findMessages(
+            'author.username.noWhitespace' => 'Author username must not have any whitespace', 
+            'title' => 'Article title is invalid.'
+        );
+    }
 
 Using Zend and/or Symfony validators
 ------------------------------------

@@ -10,8 +10,8 @@
   <email>alexandre@gaigalas.net</email>
   <active>yes</active>
  </lead>
- <date>2011-04-27</date>
- <time>20:40:59</time>
+ <date>2011-04-29</date>
+ <time>16:00:26</time>
  <version>
   <release>0.2</release>
   <api>0.2</api>
@@ -27,7 +27,7 @@
  <contents>
   <dir baseinstalldir="Respect/Validation" name="/">
    <file baseinstalldir="Respect/Validation" md5sum="1f0a6acb3e14603fa75a6dc96052947e" name="Exceptions/AbstractGroupedException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="d1bf3c5bd8867251770188f303433742" name="Exceptions/AbstractNestedException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="254187f37942c9bdba5315659e5ee0c1" name="Exceptions/AbstractNestedException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="8a4dd9c923407917701a243e5b8cbe98" name="Exceptions/AllOfException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="d895b3896ffa43b932c790662c7502c0" name="Exceptions/AlnumException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="d86f455852a42aba71393c2f643481b3" name="Exceptions/AlphaException.php" role="php" />
@@ -97,7 +97,7 @@
    <file baseinstalldir="Respect/Validation" md5sum="c77fa0fa5313cfd858330ac920955da2" name="Rules/Instance.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="4c8ea7aa820f838eeb9ceb4ab844f54e" name="Rules/Int.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="bb206fe3c0f6bad27b750fc7757eec83" name="Rules/Ip.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="550026d0c64f0a4f85cfe2ae5f452073" name="Rules/Key.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="3a4b37844977b01e20d271ee5a2b0182" name="Rules/Key.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="f67d417f8067c8e547ae0486dc67d7e4" name="Rules/Length.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="998ade345898447919a43730c1334282" name="Rules/Max.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="492fd7483a84888f37de24f25ade58a3" name="Rules/Min.php" role="php" />
@@ -143,7 +143,7 @@
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2011-04-27</date>
+   <date>2011-04-29</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
    <notes>
 .
