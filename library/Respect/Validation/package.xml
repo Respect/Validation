@@ -11,7 +11,7 @@
   <active>yes</active>
  </lead>
  <date>2011-04-29</date>
- <time>16:00:26</time>
+ <time>16:17:13</time>
  <version>
   <release>0.2</release>
   <api>0.2</api>
@@ -75,7 +75,7 @@
    <file baseinstalldir="Respect/Validation" md5sum="59ffa243ffc76998c041121a67910e49" name="Exceptions/ZendException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="e66388c3d06a5ae83d30fa03552b0bcc" name="Rules/AbstractComposite.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="0b4dbaf3ec8a99992122776ab0cbaf04" name="Rules/AbstractRelated.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="538ed692251e1a2593c1cd96534b075a" name="Rules/AbstractRule.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="ded7033264e9e3ff74cd5cf22704dc28" name="Rules/AbstractRule.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="3b6e284d165b2934650214b9af3422dc" name="Rules/AllOf.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="ba19b564226ca821e5ad20a094d46ae7" name="Rules/Alnum.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="8d75ac998a6f9565d336414773137588" name="Rules/Alpha.php" role="php" />

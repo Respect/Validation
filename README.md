@@ -192,7 +192,7 @@ You can also set runtime templates for those found messages:
     } catch (\InvalidArgumentException $e) {
         $messages = $e->findMessages(
             'author.username.noWhitespace' => 'Author username must not have any whitespace', 
-            'title' => 'Article title is invalid.'
+            'title' => 'Article title is invalid. You provided {{input}}'
         );
     }
 

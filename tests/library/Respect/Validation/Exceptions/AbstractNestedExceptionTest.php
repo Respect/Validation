@@ -118,13 +118,12 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
             $messages = $e->findMessages(
                     array(
                         'allOf' => 'Invalid {{name}}',
-                        'first_name.length' => 'Invalid length for {{name}}'
+                        'first_name.length' => 'Invalid length for {{name}} {{input}}'
                     )
             );
-            $this->assertEquals($messages['allOf'],
-                'Invalid Validation Form');
+            $this->assertEquals($messages['allOf'], 'Invalid Validation Form');
             $this->assertEquals($messages['first_name_length'],
-                'Invalid length for "fiif"');
+                'Invalid length for "fiif" fiif');
         }
     }
 
