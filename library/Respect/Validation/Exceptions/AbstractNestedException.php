@@ -29,7 +29,7 @@ class AbstractNestedException extends ValidationException
 
             $e = $this->findRelated($path);
 
-            if (!$numericKey)
+            if (is_object($e) && !$numericKey)
                 $e->setTemplate($value);
 
             $path = str_replace('.', '_', $path);

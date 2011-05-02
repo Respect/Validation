@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.9.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
  <name>RespectValidation</name>
  <uri>http://github.com/Respect/Validation</uri>
  <summary>The most awesome validation engine ever created for PHP</summary>
@@ -10,8 +10,8 @@
   <email>alexandre@gaigalas.net</email>
   <active>yes</active>
  </lead>
- <date>2011-04-29</date>
- <time>16:17:13</time>
+ <date>2011-05-02</date>
+ <time>19:35:02</time>
  <version>
   <release>0.2</release>
   <api>0.2</api>
@@ -27,7 +27,7 @@
  <contents>
   <dir baseinstalldir="Respect/Validation" name="/">
    <file baseinstalldir="Respect/Validation" md5sum="1f0a6acb3e14603fa75a6dc96052947e" name="Exceptions/AbstractGroupedException.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="254187f37942c9bdba5315659e5ee0c1" name="Exceptions/AbstractNestedException.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="0c84e534d70f15c3479bb2209576d96d" name="Exceptions/AbstractNestedException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="8a4dd9c923407917701a243e5b8cbe98" name="Exceptions/AllOfException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="d895b3896ffa43b932c790662c7502c0" name="Exceptions/AlnumException.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="d86f455852a42aba71393c2f643481b3" name="Exceptions/AlphaException.php" role="php" />
@@ -143,7 +143,7 @@
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2011-04-29</date>
+   <date>2011-05-02</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
    <notes>
 .
