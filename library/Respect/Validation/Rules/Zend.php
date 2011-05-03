@@ -7,21 +7,27 @@ use ReflectionClass;
 class Zend extends AbstractRule
 {
 
-    public $name;
     protected $messages = array();
     protected $zendValidator;
 
     public function __construct($name, $params=array())
     {
-        $this->name = $name;
-        $validatorName = explode('_', $name);
-        $validatorName = array_map('ucfirst', $validatorName);
-        $validatorName = implode('\\', $validatorName);
-        $zendMirror = new ReflectionClass('Zend\Validator\\' . $validatorName);
-        if ($zendMirror->hasMethod('__construct'))
-            $this->zendValidator = $zendMirror->newInstanceArgs($params);
-        else
-            $this->zendValidator = $zendMirror->newInstance();
+        if (is_object($validatorName)) {
+            $this->zendValidator = $validatorName;
+        } else {
+            if (mb_substr($validatorName, 0, 4) != 'Zend') {
+                $validatorName = 'Zend\Validator\\' . $validatorName;
+            } else {
+                $validatorName = '\\'. $validatorName;
+            }
+            
+            $zendMirror = new ReflectionClass($validatorName);
+            if ($zendMirror->hasMethod('__construct')) {
+                $this->zendValidator = $zendMirror->newInstanceArgs($params);
+            } else {
+                $this->zendValidator = $zendMirror->newInstance();
+            }
+        }
     }
 
     public function assert($input)
