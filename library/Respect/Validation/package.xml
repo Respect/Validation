@@ -10,8 +10,8 @@
   <email>alexandre@gaigalas.net</email>
   <active>yes</active>
  </lead>
- <date>2011-05-02</date>
- <time>19:35:02</time>
+ <date>2011-05-03</date>
+ <time>10:31:25</time>
  <version>
   <release>0.2</release>
   <api>0.2</api>
@@ -116,7 +116,7 @@
    <file baseinstalldir="Respect/Validation" md5sum="74c428b8fc8430cd731b9078f72f030b" name="Rules/StartsWith.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="52fa7bda9b8ab3fceb20868468771392" name="Rules/String.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="f6aeceea5d7b4522cd9f97b27088e351" name="Rules/Tld.php" role="php" />
-   <file baseinstalldir="Respect/Validation" md5sum="afa7d33bee75d08ac2302eb5491b590b" name="Rules/Zend.php" role="php" />
+   <file baseinstalldir="Respect/Validation" md5sum="d92cd85514acce6870bc3c7abd3a82d3" name="Rules/Zend.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="904f06fb7ae379ec7f5a8af65a30e365" name="ExceptionIterator.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="a19a2b951bb4aa67531fb6dc5a161e46" name="Validatable.php" role="php" />
    <file baseinstalldir="Respect/Validation" md5sum="03f21c4b124a2e64f3b0548564549172" name="Validator.php" role="php" />
@@ -143,7 +143,7 @@
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2011-05-02</date>
+   <date>2011-05-03</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
    <notes>
 .

@@ -14,14 +14,35 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 
     public function testSimpleOk()
     {
-        $v = new Zend('alnum');
+        $v = new Zend('Alnum');
+        $this->assertTrue($v->validate('wp2oiur'));
+        $this->assertTrue($v->assert('wp2oiur'));
+    }
+
+    public function testFullNsOk()
+    {
+        $v = new Zend('Zend\\Validator\\Alnum');
+        $this->assertTrue($v->validate('wp2oiur'));
+        $this->assertTrue($v->assert('wp2oiur'));
+    }
+
+    public function testExtended()
+    {
+        $v = new Zend(new MyValidator);
+        $this->assertTrue($v->validate('wp2oiur'));
+        $this->assertTrue($v->assert('wp2oiur'));
+    }
+
+    public function testInstanceOk()
+    {
+        $v = new Zend(new \Zend\Validator\Alnum);
         $this->assertTrue($v->validate('wp2oiur'));
         $this->assertTrue($v->assert('wp2oiur'));
     }
 
     public function testNamespaceOk()
     {
-        $v = new Zend('sitemap_lastmod');
+        $v = new Zend('Sitemap\\Lastmod');
     }
 
     /**
@@ -36,7 +57,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 
     public function testParamsOk()
     {
-        $v = new Zend('stringLength', array('min' => 10, 'max' => 25));
+        $v = new Zend('StringLength', array('min' => 10, 'max' => 25));
         $this->assertTrue($v->assert('owurhfojgboerjng'));
     }
 
@@ -45,8 +66,13 @@ class ZendTest extends \PHPUnit_Framework_TestCase
      */
     public function testParamsNot()
     {
-        $v = new Zend('stringLength', array('min' => 10, 'max' => 25));
+        $v = new Zend('StringLength', array('min' => 10, 'max' => 25));
         $this->assertFalse($v->assert('aw'));
     }
 
+}
+
+class MyValidator extends \Zend\Validator\Alnum
+{
+    
 }
