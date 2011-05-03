@@ -202,8 +202,8 @@ Using Zend and/or Symfony validators
 It is also possible to reuse validators from other frameworks (you need to put them
 in your autoload routines):
 
-    $validHostName = v::zend('hostname')->assert('google.com');
-    $validTime     = v::sf('time')->assert('22:00:01');
+    $validHostName = v::zend('Hostname')->assert('google.com');
+    $validTime     = v::sf('Time')->assert('22:00:01');
 
 Quick Reference
 ==============
