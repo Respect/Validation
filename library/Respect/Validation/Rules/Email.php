@@ -11,6 +11,6 @@ class Email extends AbstractRule
            return false;
        }
 
-        return filter_var($input, FILTER_VALIDATE_EMAIL);
+        return (bool) filter_var($input, FILTER_VALIDATE_EMAIL);
     }
 }
