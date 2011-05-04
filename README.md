@@ -26,15 +26,7 @@ stable version comes out.
 
 1. PEAR Package
 
-   Respect\Validation is available under a downloadable PEAR Package. To use it, 
-   type the following commands in your terminal:
-
-        git clone git://github.com/Respect/Validation.git RespectValidation
-        cd RespectValidation/library/Respect/Validation/
-        sudo pear install package.xml 
-
-   On Ubuntu, this will install it under `/usr/share/php`, make sure you add
-   that to your include_path.
+   Instructions on [our PEAR Channel](http://respect.github.com/pear)
 
 2. Direct Download
 
