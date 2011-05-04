@@ -184,7 +184,7 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
 
     public function testRegex()
     {
-        $this->doTestValidator(v::regex('^[a-f]+$'), 'abcdxxxef');
+        $this->doTestValidator(v::regex('/^[a-f]+$/'), 'abcdxxxef');
     }
 
     public function testString()
