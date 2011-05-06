@@ -7,10 +7,7 @@ class Email extends AbstractRule
 
     public function validate($input)
     {
-       if (!is_string($input)) {
-           return false;
-       }
-
-        return (bool) filter_var($input, FILTER_VALIDATE_EMAIL);
+        return is_string($input) && filter_var($input, FILTER_VALIDATE_EMAIL);
     }
+
 }

@@ -10,7 +10,7 @@ class EmailException extends ValidationException
             self::STANDARD => '{{name}} must be valid email',
         ),
         self::MODE_NEGATIVE => array(
-            self::STANDARD => '{{name}} must not be email',
+            self::STANDARD => '{{name}} must not be an email',
         )
     );
 
