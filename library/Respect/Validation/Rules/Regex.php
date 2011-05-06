@@ -14,7 +14,7 @@ class Regex extends AbstractRule
 
     public function validate($input)
     {
-        return preg_match("/{$this->regex}/", $input);
+        return (bool) preg_match($this->regex, $input);
     }
 
 }

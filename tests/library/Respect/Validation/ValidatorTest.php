@@ -154,7 +154,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 
     public function testRegex()
     {
-        v::regex('^[a-f]+$')->assert('abcdef');
+        v::regex('/^[a-f]+$/')->assert('abcdef');
     }
 
     public function testString()
