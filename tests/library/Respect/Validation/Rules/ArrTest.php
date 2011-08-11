@@ -39,6 +39,16 @@ class ArrTest extends \PHPUnit_Framework_TestCase
             array(array(1, 2, 3)),
             array(new \ArrayObject),
         );
+
+
+
+        $validator = v::alnum()->length(1,10);
+
+        $validator = new \Respect\Validation\Rules\AllOf(
+            new Respect\Validation\Rules\Alnum(),
+            new Respect\Validation\Rules\Length(1,10)
+        );
+
     }
 
     public function providerForNotArray()
