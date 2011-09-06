@@ -5,10 +5,16 @@ namespace Respect\Validation\Rules;
 class JSONTest extends \PHPUnit_Framework_TestCase
 {
 
+    protected $json;
+    
+    protected function setUp()
+    {
+        $this->json = new JSON;
+    }
+    
     public function testValidJSON()
     {
-        $object = new JSON('{"foo": "bar", "number":1}');
-        $this->assertTrue($object->assert($object->json));
+        $this->assertTrue($this->json->assert('{"foo": "bar", "number":1}'));
     }
 
     /**
@@ -16,7 +22,6 @@ class JSONTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidJSON()
     {
-        $object = new JSON("{foo:bar}");
-        $this->assertFalse($object->assert($object->json));
+        $this->assertFalse($this->json->assert("{foo:bar}"));
     }
 }
