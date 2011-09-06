@@ -2,22 +2,114 @@
 
 namespace Respect\Validation\Rules;
 
-class CPFTest extends \PHPUnit_Framework_TestCase
-{
+class CPFTest extends \PHPUnit_Framework_TestCase {
 
-    
-    public function testValidCPF()
+    protected $cpf;
+
+    protected function setUp() 
     {
-        $cpf = new CPF('342.444.198-88');
-        $this->assertTrue($cpf->assert($cpf->cpf));
+        $this->cpf = new CPF;
     }
     
     /**
-    * @expectedException Respect\Validation\Exceptions\CPFException
-    */
-    public function testInvalidCPF()
+     * @dataProvider providerValidFormattedCPF
+     */
+    public function testValidFormattedCPF($input) 
     {
-        $cpf = new CPF('111.111.111-51');
-        $this->assertFalse($cpf->assert($cpf->cpf));
+        $this->assertTrue($this->cpf->assert($input));
     }
+
+    /**
+     * @dataProvider providerValidUnformattedCPF
+     */
+    public function testValidUnformattedCPF($input) 
+    {
+        $this->assertTrue($this->cpf->assert($input));
+    }
+
+    /**
+     * @dataProvider providerInvalidFormattedCPF
+     * @expectedException Respect\Validation\Exceptions\CPFException
+     */
+    public function testInvalidFormattedCPF($input) 
+    {
+        $this->assertFalse($this->cpf->assert($input));
+    }
+
+    /**
+     * @dataProvider providerInvalidUnformattedCPF
+     * @expectedException Respect\Validation\Exceptions\CPFException
+     */
+    public function testInvalidUnformattedCPF($input) 
+    {
+        $this->assertFalse($this->cpf->assert($input));
+    }
+
+    
+    /**
+     * @dataProvider providerInvalidFormattedAndUnformattedCPFLength
+     * @expectedException Respect\Validation\Exceptions\LengthException
+     */
+    public function testInvalidFormattedAndUnformattedCPFLength($input) 
+    {
+        $this->assertFalse($this->cpf->assert($input));
+    }
+    
+    public function providerValidFormattedCPF() 
+    {
+        return array(
+            array('342.444.198-88'),
+            array('342.444.198.88'),
+            array('350.45261819'),
+            array('693-319-118-40'),
+            array('3.6.8.8.9.2.5.5.4.8.8')
+        );
+    }
+
+    public function providerValidUnformattedCPF() 
+    {
+        return array(
+            array('11598647644'),
+            array('86734718697'),
+            array('86223423284'),
+            array('24845408333'),
+            array('95574461102'),
+        );
+    }
+
+    public function providerInvalidFormattedCPF() 
+    {
+        return array(
+            array('000.000.000-00'),
+            array('111.222.444-05'),
+            array('999999999.99'),
+            array('8.8.8.8.8.8.8.8.8.8.8'),
+            array('693-319-110-40'),
+            array('698.111-111.00')
+        );
+    }
+
+    public function providerInvalidUnformattedCPF() 
+    {
+        return array(
+            array('11111111111'),
+            array('22222222222'),
+            array('12345678900'),
+            array('99299929384'),
+            array('84434895894'),
+            array('44242340000')
+        );
+    }
+    
+    public function providerInvalidFormattedAndUnformattedCPFLength()
+    {
+        return array(
+            array('1'),
+            array('22'),
+            array('123'),
+            array('992999999999929384'),
+            array('')
+        );
+    }
+
 }

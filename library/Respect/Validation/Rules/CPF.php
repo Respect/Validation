@@ -4,22 +4,18 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\Length;
 
-class CPF extends AbstractRule {
+class CPF extends AbstractRule 
+{
 
-    public $cpf;
-
-    public function __construct($cpf=null) {
-        $this->cpf = $cpf;
-    }
-
-    public function validate($input) {
+    public function validate($input) 
+    {
 
         $input = $this->clean($input);
 
-        if ($this->isSequenceOfNumber($input))
+        if ($this->hasInvalidLength($input))
             return false;
         
-        if ($this->hasInvalidLength($input))
+        if ($this->isSequenceOfNumber($input))
             return false;
         
         if ($this->processNumber($input))
@@ -70,7 +66,7 @@ class CPF extends AbstractRule {
     }
 
     private function isSequenceOfNumber($input=null) 
-    {
+    {   
         for ($i = 0; $i <= 9; $i++)
             if (strcmp($input, str_pad('', strlen($input), $i)) === 0)
                 return true;

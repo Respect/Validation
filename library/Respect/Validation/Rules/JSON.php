@@ -2,14 +2,8 @@
 
 namespace Respect\Validation\Rules;
 
-class JSON extends AbstractRule {
-
-    public $json;
-
-    public function __construct($json=null) 
-    {
-        $this->json = $json;
-    }
+class JSON extends AbstractRule 
+{
 
     public function validate($input) 
     {
