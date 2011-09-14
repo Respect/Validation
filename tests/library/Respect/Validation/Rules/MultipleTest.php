@@ -9,9 +9,9 @@ class MultipleTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForMultiple
      *
      */
-    public function testMultiple($number, $input)
+    public function testMultiple($multipleOf, $input)
     {
-        $multiple = new Multiple($number);
+        $multiple = new Multiple($multipleOf);
         $this->assertTrue($multiple->assert($input));
     }
 
@@ -19,9 +19,9 @@ class MultipleTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotMultiple
      * @expectedException Respect\Validation\Exceptions\MultipleException
      */
-    public function testNotMultiple($number, $input)
+    public function testNotMultiple($multipleOf, $input)
     {
-        $multiple = new Multiple($number);
+        $multiple = new Multiple($multipleOf);
         $this->assertTrue($multiple->assert($input));
     }
 

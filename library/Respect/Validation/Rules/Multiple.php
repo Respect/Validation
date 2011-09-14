@@ -5,19 +5,19 @@ namespace Respect\Validation\Rules;
 class Multiple extends AbstractRule
 {
 
-    public $number;
+    public $multipleOf;
 
-    public function __construct($number)
+    public function __construct($multipleOf)
     {
-        $this->number = $number;
+        $this->multipleOf = $multipleOf;
     }
         
     public function validate($input)
     {
-        if ($this->number == 0)
+        if ($this->multipleOf == 0)
             return ($input == 0);
 
-        return ($input % $this->number == 0);
+        return ($input % $this->multipleOf == 0);
     }
 
 }
