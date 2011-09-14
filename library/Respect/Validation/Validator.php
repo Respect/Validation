@@ -35,6 +35,7 @@ use Respect\Validation\Rules\AllOf;
  * @method \Respect\Validation\Validator length(int $min=null, int $max=null, bool $inclusive = true)
  * @method \Respect\Validation\Validator max(int $maxValue, bool $inclusive = false)
  * @method \Respect\Validation\Validator min(int $minValue, bool $inclusive = false)
+ * @method \Respect\Validation\Validator multiple(int $multipleOf)
  * @method \Respect\Validation\Validator negative()
  * @method \Respect\Validation\Validator noneOf()
  * @method \Respect\Validation\Validator not(Validatable $rule)
