@@ -7,10 +7,7 @@ class JSON extends AbstractRule
 
     public function validate($input) 
     {
-        if (json_decode($input))
-            return true;
-
-        return false;
+        return (json_decode($input));
     }
 
 }
@@ -18,7 +15,7 @@ class JSON extends AbstractRule
 /**
  * LICENSE
  *
- * Copyright (c) 2009-2011, Jair Henrique.
+ * Copyright (c) 2011, Jair Henrique, Emerson Carvalho
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
