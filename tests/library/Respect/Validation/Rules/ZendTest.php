@@ -72,7 +72,8 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 
 }
 
-class MyValidator extends \Zend\Validator\Alnum
-{
-    
+if (class_exists('Zend\Version')) {
+    class MyValidator extends \Zend\Validator\Alnum
+    {
+    }
 }
