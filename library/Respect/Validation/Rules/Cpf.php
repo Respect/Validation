@@ -4,7 +4,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Rules\Length;
 
-class CPF extends AbstractRule 
+class Cpf extends AbstractRule 
 {
 
     public function validate($input) 
@@ -26,9 +26,7 @@ class CPF extends AbstractRule
     
     private function processNumber($input)
     {
-        $verify = array('firstDigit' => 0,
-                        'secondDigit' => 0,
-        );
+        $verify = array('firstDigit' => 0, 'secondDigit' => 0);
 
         $multiple = 10;
 
@@ -65,7 +63,7 @@ class CPF extends AbstractRule
         return !$vl->assert($input);
     }
 
-    private function isSequenceOfNumber($input=null) 
+    private function isSequenceOfNumber($input) 
     {   
         for ($i = 0; $i <= 9; $i++)
             if (strcmp($input, str_pad('', strlen($input), $i)) === 0)
@@ -74,7 +72,7 @@ class CPF extends AbstractRule
         return false;
     }
 
-    private function clean($input=null) 
+    private function clean($input) 
     {
         return preg_replace("/\.|-/", "", $input);
     }
