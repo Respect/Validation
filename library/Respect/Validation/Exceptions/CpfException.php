@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class CPFException extends ValidationException
+class CpfException extends ValidationException
 {
 
     public static $defaultTemplates = array(
