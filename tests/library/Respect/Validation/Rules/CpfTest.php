@@ -2,60 +2,60 @@
 
 namespace Respect\Validation\Rules;
 
-class CPFTest extends \PHPUnit_Framework_TestCase {
+class CpfTest extends \PHPUnit_Framework_TestCase {
 
     protected $cpf;
 
     protected function setUp() 
     {
-        $this->cpf = new CPF;
+        $this->cpf = new Cpf;
     }
     
     /**
-     * @dataProvider providerValidFormattedCPF
+     * @dataProvider providerValidFormattedCpf
      */
-    public function testValidFormattedCPF($input) 
+    public function testValidFormattedCpf($input) 
     {
         $this->assertTrue($this->cpf->assert($input));
     }
 
     /**
-     * @dataProvider providerValidUnformattedCPF
+     * @dataProvider providerValidUnformattedCpf
      */
-    public function testValidUnformattedCPF($input) 
+    public function testValidUnformattedCpf($input) 
     {
         $this->assertTrue($this->cpf->assert($input));
     }
 
     /**
-     * @dataProvider providerInvalidFormattedCPF
-     * @expectedException Respect\Validation\Exceptions\CPFException
+     * @dataProvider providerInvalidFormattedCpf
+     * @expectedException Respect\Validation\Exceptions\CpfException
      */
-    public function testInvalidFormattedCPF($input) 
+    public function testInvalidFormattedCpf($input) 
     {
         $this->assertFalse($this->cpf->assert($input));
     }
 
     /**
-     * @dataProvider providerInvalidUnformattedCPF
-     * @expectedException Respect\Validation\Exceptions\CPFException
+     * @dataProvider providerInvalidUnformattedCpf
+     * @expectedException Respect\Validation\Exceptions\CpfException
      */
-    public function testInvalidUnformattedCPF($input) 
+    public function testInvalidUnformattedCpf($input) 
     {
         $this->assertFalse($this->cpf->assert($input));
     }
 
     
     /**
-     * @dataProvider providerInvalidFormattedAndUnformattedCPFLength
+     * @dataProvider providerInvalidFormattedAndUnformattedCpfLength
      * @expectedException Respect\Validation\Exceptions\LengthException
      */
-    public function testInvalidFormattedAndUnformattedCPFLength($input) 
+    public function testInvalidFormattedAndUnformattedCpfLength($input) 
     {
         $this->assertFalse($this->cpf->assert($input));
     }
     
-    public function providerValidFormattedCPF() 
+    public function providerValidFormattedCpf() 
     {
         return array(
             array('342.444.198-88'),
@@ -66,7 +66,7 @@ class CPFTest extends \PHPUnit_Framework_TestCase {
         );
     }
 
-    public function providerValidUnformattedCPF() 
+    public function providerValidUnformattedCpf() 
     {
         return array(
             array('11598647644'),
@@ -77,7 +77,7 @@ class CPFTest extends \PHPUnit_Framework_TestCase {
         );
     }
 
-    public function providerInvalidFormattedCPF() 
+    public function providerInvalidFormattedCpf() 
     {
         return array(
             array('000.000.000-00'),
@@ -89,7 +89,7 @@ class CPFTest extends \PHPUnit_Framework_TestCase {
         );
     }
 
-    public function providerInvalidUnformattedCPF() 
+    public function providerInvalidUnformattedCpf() 
     {
         return array(
             array('11111111111'),
@@ -101,7 +101,7 @@ class CPFTest extends \PHPUnit_Framework_TestCase {
         );
     }
     
-    public function providerInvalidFormattedAndUnformattedCPFLength()
+    public function providerInvalidFormattedAndUnformattedCpfLength()
     {
         return array(
             array('1'),
