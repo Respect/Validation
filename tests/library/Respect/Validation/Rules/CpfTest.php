@@ -48,7 +48,7 @@ class CpfTest extends \PHPUnit_Framework_TestCase {
     
     /**
      * @dataProvider providerInvalidFormattedAndUnformattedCpfLength
-     * @expectedException Respect\Validation\Exceptions\LengthException
+     * @expectedException Respect\Validation\Exceptions\CpfException
      */
     public function testInvalidFormattedAndUnformattedCpfLength($input) 
     {
