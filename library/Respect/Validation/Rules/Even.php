@@ -9,9 +9,7 @@ class Even extends AbstractRule
 
     public function validate($input)
     {
-        $int = new Int();
-        $int->assert($input);
-        
+        $input = (int) $input;
         return ($input % 2 == 0);
     }
 

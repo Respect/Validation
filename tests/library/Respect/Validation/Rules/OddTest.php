@@ -30,15 +30,6 @@ class OddTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->object->assert($input));
     }
     
-    /**
-     * @dataProvider providerForNotInt
-     * @expectedException Respect\Validation\Exceptions\IntException
-     */
-    public function testNotInt($input)
-    {
-        $this->assertTrue($this->object->assert($input));
-    }
-
     public function providerForOdd()
     {
         return array(
@@ -59,17 +50,4 @@ class OddTest extends \PHPUnit_Framework_TestCase
         );
     }
     
-    public function providerForNotInt()
-    {
-        return array(
-            array(null),
-            array('a'),
-            array(' '),
-            array('Foo'),
-            array(''),
-            array('1.44'),
-            array(1e-5),
-        );
-    }
-
 }
