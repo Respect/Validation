@@ -2,17 +2,15 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Rules\Length;
-
 class Cpf extends AbstractRule 
 {
 
     public function validate($input) 
     {
 
-        $input = $this->clean($input);
+        $input = preg_replace("/\.|-/", "", $input);
 
-        if ($this->hasInvalidLength($input))
+        if (strlen($input) != 11)
             return false;
         
         if ($this->isSequenceOfNumber($input))
@@ -56,13 +54,7 @@ class Cpf extends AbstractRule
 
         return false;
     }
-    
-    private function hasInvalidLength($input)
-    {
-        $vl = new Length(11,11);
-        return !$vl->assert($input);
-    }
-
+   
     private function isSequenceOfNumber($input) 
     {   
         for ($i = 0; $i <= 9; $i++)
@@ -70,11 +62,6 @@ class Cpf extends AbstractRule
                 return true;
         
         return false;
-    }
-
-    private function clean($input) 
-    {
-        return preg_replace("/\.|-/", "", $input);
     }
 
 }
