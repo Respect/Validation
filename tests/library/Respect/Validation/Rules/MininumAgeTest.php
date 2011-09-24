@@ -29,7 +29,7 @@ class MinimumAgeTest extends \PHPUnit_Framework_TestCase
     
     /**
      * @dataProvider providerForInvalidDate
-     * @expectedException Respect\Validation\Exceptions\DateException
+     * @expectedException Respect\Validation\Exceptions\MinimumAgeException
      */
     public function testInvalidDate($age, $format, $input)
     {

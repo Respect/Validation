@@ -2,7 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Rules\Date;
 use DateTime;
 
 class MinimumAge extends AbstractRule
@@ -19,16 +18,15 @@ class MinimumAge extends AbstractRule
 
     public function validate($input)
     {
-        if(!is_int($this->age)) 
+        if (!is_int($this->age)) 
             return false;
-        
-        $date = new Date($this->format);
-        $date->assert($input);
         
         if ($input instanceof DateTime) {
             $birthday = new \DateTime('now - '.$this->age.' year');
             return $birthday > $input;
         }
+        elseif (!is_string($input) || (is_null($this->format) && false === strtotime($input)))
+            return false;
         else {
             $age = ((date('Ymd') - date('Ymd', strtotime($input))) / 10000);
             return $age >= $this->age;
