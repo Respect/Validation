@@ -43,7 +43,7 @@ abstract class AbstractRule implements Validatable
     {
         $exception = $this->createException();
         $input = ValidationException::stringify($input);
-        $name = $this->getName() ? : "\"$input\"";
+        $name = $this->getName() ? $this->getName() : "\"$input\"";
         $params = array_merge(
             $extraParams, get_object_vars($this), compact('input')
         );
