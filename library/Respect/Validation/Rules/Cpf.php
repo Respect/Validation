@@ -7,7 +7,7 @@ class Cpf extends AbstractRule
 
     public function validate($input) 
     {
-        $input = preg_replace('[^0-9]', '', $input);
+        $input = preg_replace('([^0-9])', '', $input);
         if (strlen($input) != 11)
             return false;
         if ($this->isSequenceOfNumber($input))
