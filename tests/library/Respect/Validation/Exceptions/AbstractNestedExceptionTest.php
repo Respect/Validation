@@ -7,25 +7,27 @@ use Respect\Validation\Validator as v;
 class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
 {
 
-    public function testAddRelated()
+    public function test_getRelated_should_return_exception_added_by_addRelated()
     {
-        $x = new AttributeException;
-        $int = new IntException;
-        $x->addRelated($int);
-        $this->assertEquals(1, count($x->getRelated(true)));
+        $composite = new AttributeException;
+        $node = new IntException;
+        $composite->addRelated($node);
+        $this->assertEquals(1, count($composite->getRelated(true)));
+        $this->assertContainsOnly($node, $composite->getRelated());
     }
 
-    public function testAddRelatedIdentity()
+    public function test_adding_the_same_instance_should_add_just_a_single_reference()
     {
-        $x = new AttributeException;
-        $int = new IntException;
-        $x->addRelated($int);
-        $x->addRelated($int);
-        $x->addRelated($int);
-        $this->assertEquals(1, count($x->getRelated(true)));
+        $composite = new AttributeException;
+        $node = new IntException;
+        $composite->addRelated($node);
+        $composite->addRelated($node);
+        $composite->addRelated($node);
+        $this->assertEquals(1, count($composite->getRelated(true)));
+        $this->assertContainsOnly($node, $composite->getRelated());
     }
 
-    public function testFindRelated()
+    public function test_find_related_should_find_composite_exceptions()
     {
         $foo = new AttributeException;
         $bar = new AttributeException;
@@ -47,7 +49,7 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(false, $foo->findRelated('bar.none'));
     }
 
-    public function testFindMessages()
+    public function test_findMessages_should_return_composite_validation_messages_flattened()
     {
         $stringMax256 = v::string()->length(5, 256);
         $alnumDot = v::alnum('.');
@@ -86,7 +88,7 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function testFindMessagesTemplates()
+    public function test_findMessages_should_apply_templates_to_flattened_messages()
     {
         $stringMax256 = v::string()->length(5, 256);
         $alnumDot = v::alnum('.');

@@ -9,7 +9,7 @@
          processIsolation="false"
          stopOnFailure="false"
          syntaxCheck="false"
-         verbose="true"
+         verbose="false"
          testSuiteLoaderClass="PHPUnit_Runner_StandardTestSuiteLoader">
     <filter>
         <blacklist>

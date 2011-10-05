@@ -8,17 +8,19 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidAlnum
      */
-    public function testAlnumValid($validAlnum, $aditional)
+    public function test_valid_alnum_chars_should_return_true($validAlnum, $aditional)
     {
         $validator = new Alnum($aditional);
         $this->assertTrue($validator->validate($validAlnum));
+        $this->assertTrue($validator->check($validAlnum));
+        $this->assertTrue($validator->assert($validAlnum));
     }
 
     /**
      * @dataProvider providerForInvalidAlnum
      * @expectedException Respect\Validation\Exceptions\AlnumException
      */
-    public function testAlnumInvalid($invalidAlnum, $aditional)
+    public function test_invalid_alnum_chars_should_throw_AlnumException_and_return_false($invalidAlnum, $aditional)
     {
         $validator = new Alnum($aditional);
         $this->assertFalse($validator->validate($invalidAlnum));
@@ -29,7 +31,7 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidParameters($aditional)
+    public function test_invalid_constructor_params_should_throw_ComponentException_upon_instantiation($aditional)
     {
         $validator = new Alnum($aditional);
     }

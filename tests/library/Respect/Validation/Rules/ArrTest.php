@@ -14,19 +14,19 @@ class ArrTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForArray
-     *
      */
-    public function testArray($input)
+    public function test_valid_array_or_ArrayObject_should_return_true($input)
     {
         $this->assertTrue($this->object->validate($input));
         $this->assertTrue($this->object->assert($input));
+        $this->assertTrue($this->object->check($input));
     }
 
     /**
      * @dataProvider providerForNotArray
      * @expectedException Respect\Validation\Exceptions\ArrException
      */
-    public function testNotArray($input)
+    public function test_not_arrays_should_throw_ArrException($input)
     {
         $this->assertFalse($this->object->validate($input));
         $this->assertFalse($this->object->assert($input));

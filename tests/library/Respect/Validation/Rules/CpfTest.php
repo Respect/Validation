@@ -4,45 +4,45 @@ namespace Respect\Validation\Rules;
 
 class CpfTest extends \PHPUnit_Framework_TestCase {
 
-    protected $cpf;
+    protected $cpfValidator;
 
     protected function setUp() 
     {
-        $this->cpf = new Cpf;
+        $this->cpfValidator = new Cpf;
     }
     
     /**
      * @dataProvider providerValidFormattedCpf
      */
-    public function testValidFormattedCpf($input) 
+    public function test_formatted_cpfs_should_validate($input) 
     {
-        $this->assertTrue($this->cpf->assert($input));
+        $this->assertTrue($this->cpfValidator->assert($input));
     }
 
     /**
      * @dataProvider providerValidUnformattedCpf
      */
-    public function testValidUnformattedCpf($input) 
+    public function test_unformatted_cpfs_should_validates($input) 
     {
-        $this->assertTrue($this->cpf->assert($input));
+        $this->assertTrue($this->cpfValidator->assert($input));
     }
 
     /**
      * @dataProvider providerInvalidFormattedCpf
      * @expectedException Respect\Validation\Exceptions\CpfException
      */
-    public function testInvalidFormattedCpf($input) 
+    public function test_invalid_cpf_should_fail_when_formatted($input) 
     {
-        $this->assertFalse($this->cpf->assert($input));
+        $this->assertFalse($this->cpfValidator->assert($input));
     }
 
     /**
      * @dataProvider providerInvalidUnformattedCpf
      * @expectedException Respect\Validation\Exceptions\CpfException
      */
-    public function testInvalidUnformattedCpf($input) 
+    public function test_invalid_cpf_should_fail_when_not_formatted($input) 
     {
-        $this->assertFalse($this->cpf->assert($input));
+        $this->assertFalse($this->cpfValidator->assert($input));
     }
 
     
@@ -50,9 +50,9 @@ class CpfTest extends \PHPUnit_Framework_TestCase {
      * @dataProvider providerInvalidFormattedAndUnformattedCpfLength
      * @expectedException Respect\Validation\Exceptions\CpfException
      */
-    public function testInvalidFormattedAndUnformattedCpfLength($input) 
+    public function test_cpfs_with_incorrect_length_should_fail($input) 
     {
-        $this->assertFalse($this->cpf->assert($input));
+        $this->assertFalse($this->cpfValidator->assert($input));
     }
     
     public function providerValidFormattedCpf() 
