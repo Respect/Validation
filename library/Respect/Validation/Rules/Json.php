@@ -2,22 +2,20 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Rules\Int;
-
-class Even extends AbstractRule
+class Json extends AbstractRule
 {
 
-    public function validate($input)
+    public function validate($input) 
     {
-        $input = (int) $input;
-        return ($input % 2 === 0);
+        return (bool) (json_decode($input));
     }
 
 }
+
 /**
  * LICENSE
  *
- * Copyright (c) 2011, Jean Pimentel.
+ * Copyright (c) 2011, Jair Henrique, Emerson Carvalho
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,

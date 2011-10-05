@@ -15,7 +15,7 @@ class Cpf extends AbstractRule
         return $this->processNumber($input);
     }
 
-    private function processNumber($input)
+    protected function processNumber($input)
     {
         $multiple = 10;
         $firstDigit = $secondDigit = 0;
@@ -40,7 +40,7 @@ class Cpf extends AbstractRule
         return ("{$firstDigit}{$secondDigit}" === $digits);
     }
 
-    private function isSequenceOfNumber($input) 
+    protected function isSequenceOfNumber($input)
     {   
         for ($i = 0; $i <= 9; $i++)
             if ($input === str_repeat($i, 11))

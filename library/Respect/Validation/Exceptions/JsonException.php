@@ -1,23 +1,25 @@
 <?php
 
-namespace Respect\Validation\Rules;
+namespace Respect\Validation\Exceptions;
 
-use Respect\Validation\Rules\Int;
-
-class Even extends AbstractRule
+class JsonException extends ValidationException
 {
 
-    public function validate($input)
-    {
-        $input = (int) $input;
-        return ($input % 2 === 0);
-    }
+    public static $defaultTemplates = array(
+        self::MODE_DEFAULT => array(
+            self::STANDARD => '{{name}} must be a valid JSON string',
+        ),
+        self::MODE_NEGATIVE => array(
+            self::STANDARD => '{{name}} must not be a valid JSON string',
+        )
+    );
 
 }
+
 /**
  * LICENSE
  *
- * Copyright (c) 2011, Jean Pimentel.
+ * Copyright (c) 2009-2011, Jair Henrique.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,

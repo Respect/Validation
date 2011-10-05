@@ -46,6 +46,7 @@ class SlugTest extends \PHPUnit_Framework_TestCase {
             array('-assim-nao-pode'),
             array('assim-tambem-nao-'),
             array('nem--assim'),
+            array('--nem-assim'),
             array('Nem mesmo Assim'),
             array('Ou-ate-assim'),
             array('-Se juntar-tudo-Então-')
