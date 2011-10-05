@@ -2,9 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validatable;
-use Respect\Validation\Filterable;
-
 class AllOf extends AbstractComposite
 {
 
@@ -26,23 +23,15 @@ class AllOf extends AbstractComposite
     public function check($input)
     {
         foreach ($this->getRules() as $v)
-            if ($v instanceof Validatable && !$v->check($input))
+            if (!$v->check($input))
                 return false;
         return true;
-    }
-
-    public function filter($input)
-    {
-        foreach ($this->getRules() as $f)
-            if ($f instanceof Filterable)
-                $input = $f->filter($input);
-        return $input;
     }
 
     public function validate($input)
     {
         foreach ($this->getRules() as $v)
-            if ($v instanceof Validatable && !$v->validate($input))
+            if (!$v->validate($input))
                 return false;
         return true;
     }
