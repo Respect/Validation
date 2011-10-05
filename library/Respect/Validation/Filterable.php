@@ -1,52 +1,15 @@
 <?php
 
-namespace Respect\Validation\Rules;
+namespace Respect\Validation;
 
-use Respect\Validation\Validatable;
-use Respect\Validation\Filterable;
-
-class AllOf extends AbstractComposite
+/**
+ * Interface for filtering rules
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ */
+interface Filterable
 {
-
-    public function assert($input)
-    {
-        $exceptions = $this->validateRules($input);
-        $numRules = count($this->rules);
-        $numExceptions = count($exceptions);
-        $summary = array(
-            'total' => $numRules,
-            'failed' => $numExceptions,
-            'passed' => $numRules - $numExceptions
-        );
-        if (!empty($exceptions))
-            throw $this->reportError($input, $summary)->setRelated($exceptions);
-        return true;
-    }
-
-    public function check($input)
-    {
-        foreach ($this->getRules() as $v)
-            if ($v instanceof Validatable && !$v->check($input))
-                return false;
-        return true;
-    }
-
-    public function filter($input)
-    {
-        foreach ($this->getRules() as $f)
-            if ($f instanceof Filterable)
-                $input = $f->filter($input);
-        return $input;
-    }
-
-    public function validate($input)
-    {
-        foreach ($this->getRules() as $v)
-            if ($v instanceof Validatable && !$v->validate($input))
-                return false;
-        return true;
-    }
-
+    public function filter($input);
 }
 
 /**

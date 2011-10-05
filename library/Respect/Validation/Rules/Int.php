@@ -2,12 +2,19 @@
 
 namespace Respect\Validation\Rules;
 
-class Int extends AbstractRule
+use Respect\Validation\Filterable;
+
+class Int extends AbstractRule implements Filterable
 {
 
     public function validate($input)
     {
         return is_numeric($input) && (int) $input == $input;
+    }
+
+    public function filter($input)
+    {
+        return (int) $input;
     }
 
 }

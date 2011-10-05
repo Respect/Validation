@@ -49,6 +49,14 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
         $o = new AllOf($valid1, $valid2, $valid3);
         $this->assertTrue($o->assert('any'));
     }
+    public function testFilter()
+    {
+        $valid = new Digits();
+        $filter = new Int();
+        $o = new AllOf($valid, $filter);
+        $this->assertTrue($o->validate(12));
+        $this->assertSame(12, $o->filter('12 monkeys'));
+    }
 
     /**
      * @expectedException Respect\Validation\Exceptions\AllOfException

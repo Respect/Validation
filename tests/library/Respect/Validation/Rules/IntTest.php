@@ -30,6 +30,15 @@ class IntTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->object->assert($input));
     }
 
+
+    /**
+     * @dataProvider providerForFilterInt
+     */
+    public function testIntFiltering($unfiltered, $expected)
+    {
+        $this->assertSame($expected, $this->object->filter($unfiltered));
+    }
+
     public function providerForInt()
     {
         return array(
@@ -50,6 +59,16 @@ class IntTest extends \PHPUnit_Framework_TestCase
             array(''),
             array('1.44'),
             array(1e-5),
+        );
+    }
+
+    public function providerForFilterInt()
+    {
+        return array(
+            array(12, 12),
+            array('12 rabbits', 12),
+            array('1.44', 1),
+            array(1e-5, 0),
         );
     }
 
