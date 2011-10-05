@@ -9,182 +9,182 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 
     public function testAlnum()
     {
-        v::alnum()->assert('abc 123');
-        v::alnum('_')->assert('a_bc _123');
+        $this->assertTrue(v::alnum()->assert('abc 123'));
+        $this->assertTrue(v::alnum('_')->assert('a_bc _123'));
     }
 
     public function testAlpha()
     {
-        v::alpha()->assert('ab c');
-        v::alpha('.')->assert('a. b.c');
+        $this->assertTrue(v::alpha()->assert('ab c'));
+        $this->assertTrue(v::alpha('.')->assert('a. b.c'));
     }
 
     public function testArr()
     {
-        v::arr()->assert(array());
+        $this->assertTrue(v::arr()->assert(array()));
     }
 
     public function testAttribute()
     {
-        v::attribute("foo", v::string())->assert((object) array("foo" => "bar"));
+        $this->assertTrue(v::attribute("foo", v::string())->assert((object) array("foo" => "bar")));
     }
 
     public function testBetween()
     {
-        v::between(5, 15)->assert(10);
-        v::between('a', 'f')->assert('b');
+        $this->assertTrue(v::between(5, 15)->assert(10));
+        $this->assertTrue(v::between('a', 'f')->assert('b'));
     }
 
     public function testCall()
     {
-        v::call('implode', v::int())->assert(array(1, 2, 3, 4));
+        $this->assertTrue(v::call('implode', v::int())->assert(array(1, 2, 3, 4)));
     }
 
     public function testCallback()
     {
-        v::callback('is_string')->assert('something');
+        $this->assertTrue(v::callback('is_string')->assert('something'));
     }
 
     public function testDate()
     {
-        v::date('Y-m-d')->assert('2010-10-10');
-        v::date()->assert('Jan 10 2008');
+        $this->assertTrue(v::date('Y-m-d')->assert('2010-10-10'));
+        $this->assertTrue(v::date()->assert('Jan 10 2008'));
     }
 
     public function testDigits()
     {
-        v::digits()->assert('02384');
+        $this->assertTrue(v::digits()->assert('02384'));
     }
 
     public function testDomain()
     {
-        v::domain()->assert('google.com');
+        $this->assertTrue(v::domain()->assert('google.com'));
     }
 
     public function testEach()
     {
-        v::each(v::hexa())->assert(array('AF', 'D1', '09'));
+        $this->assertTrue(v::each(v::hexa())->assert(array('AF', 'D1', '09')));
     }
 
     public function testEquals()
     {
-        v::equals('foobar')->assert('foobar');
+        $this->assertTrue(v::equals('foobar')->assert('foobar'));
     }
 
     public function testFloat()
     {
-        v::float()->assert(1.5);
+        $this->assertTrue(v::float()->assert(1.5));
     }
 
     public function testHexa()
     {
-        v::hexa()->assert('FAFAF');
+        $this->assertTrue(v::hexa()->assert('FAFAF'));
     }
 
     public function testIn()
     {
-        v::in(array(1, 1, 2, 3, 5, 8))->assert(5);
+        $this->assertTrue(v::in(array(1, 1, 2, 3, 5, 8))->assert(5));
     }
 
     public function testInstance()
     {
-        v::instance('\stdClass')->assert(new \stdClass);
+        $this->assertTrue(v::instance('\stdClass')->assert(new \stdClass));
     }
 
     public function testInt()
     {
-        v::int()->assert(1548);
+        $this->assertTrue(v::int()->assert(1548));
     }
 
     public function testIp()
     {
-        v::ip()->assert('200.226.220.222');
+        $this->assertTrue(v::ip()->assert('200.226.220.222'));
     }
 
     public function testLength()
     {
-        v::length(5, 10)->assert('foobar');
-        v::length(5, 10)->assert(array(1, 2, 3, 4, 5));
+        $this->assertTrue(v::length(5, 10)->assert('foobar'));
+        $this->assertTrue(v::length(5, 10)->assert(array(1, 2, 3, 4, 5)));
     }
 
     public function testMax()
     {
-        v::max(5)->assert(3);
+        $this->assertTrue(v::max(5)->assert(3));
     }
 
     public function testMin()
     {
-        v::min(5)->assert(7);
+        $this->assertTrue(v::min(5)->assert(7));
     }
 
     public function testNegative()
     {
-        v::negative()->assert(-5);
+        $this->assertTrue(v::negative()->assert(-5));
     }
 
     public function testPositive()
     {
-        v::positive()->assert(3);
+        $this->assertTrue(v::positive()->assert(3));
     }
 
     public function testNoWhitespace()
     {
-        v::noWhitespace()->assert('abc');
+        $this->assertTrue(v::noWhitespace()->assert('abc'));
     }
 
     public function testNotEmpty()
     {
-        v::notEmpty()->assert('aaa');
+        $this->assertTrue(v::notEmpty()->assert('aaa'));
     }
 
     public function testNullValue()
     {
-        v::nullValue()->assert(null);
+        $this->assertTrue(v::nullValue()->assert(null));
     }
 
     public function testNumeric()
     {
-        v::numeric()->assert(1.56e-5);
+        $this->assertTrue(v::numeric()->assert(1.56e-5));
     }
 
     public function testObject()
     {
-        v::object()->assert(new \DateTime());
+        $this->assertTrue(v::object()->assert(new \DateTime()));
     }
 
     public function testRegex()
     {
-        v::regex('/^[a-f]+$/')->assert('abcdef');
+        $this->assertTrue(v::regex('/^[a-f]+$/')->assert('abcdef'));
     }
 
     public function testString()
     {
-        v::string()->assert('Hello World');
+        $this->assertTrue(v::string()->assert('Hello World'));
     }
 
     public function testSartsWith()
     {
-        v::startsWith('Hello')->assert('Hello World');
+        $this->assertTrue(v::startsWith('Hello')->assert('Hello World'));
     }
 
     public function testEndsWith()
     {
-        v::endsWith('World')->assert('Hello World');
+        $this->assertTrue(v::endsWith('World')->assert('Hello World'));
     }
 
     public function testAllOf()
     {
-        v::allOf(
+        $this->assertTrue(v::allOf(
             v::string(), //any string v::length(5, 20), //between 5 and 20 chars
             v::noWhitespace()   //no whitespace allowed
-        )->assert('alganet');
+        )->assert('alganet'));
 
 //same as
 
-        v::string()
+        $this->assertTrue(v::string()
             ->length(5, 20)
             ->noWhitespace()
-            ->assert('alganet');
+            ->assert('alganet'));
     }
 
     public function testOneOf()
@@ -194,9 +194,9 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
                 v::float()->negative(), //negative float or; 
                 v::nullValue() //null
         );
-        $v->assert(null);
-        $v->assert(12);
-        $v->assert(-1.1);
+        $this->assertTrue($v->assert(null));
+        $this->assertTrue($v->assert(12));
+        $this->assertTrue($v->assert(-1.1));
     }
 
     public function testCallbackCustomMessage()
