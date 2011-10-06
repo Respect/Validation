@@ -36,6 +36,7 @@ class LowercaseTest extends \PHPUnit_Framework_TestCase
             array('lowercase with numbers 123'),
             array('lowercase with specials characters like ã ç ê'),            
             array('with specials characters like # $ % & * +'),            
+            array('τάχιστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός'),            
         );
     }
     
