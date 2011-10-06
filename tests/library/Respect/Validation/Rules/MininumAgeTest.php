@@ -9,32 +9,35 @@ class MinimumAgeTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForValidDateValidMinimumAge
-     *
      */
-    public function testForValidDateValidMinimumAge($age, $format, $input)
+    public function test_valid_minimum_age_inside_bounds_should_pass($age, $format, $input)
     {
         $minimumAge = new MinimumAge($age, $format);
+        $this->assertTrue($minimumAge->validate($input));
         $this->assertTrue($minimumAge->assert($input));
+        $this->assertTrue($minimumAge->check($input));
     }
     
     /**
      * @dataProvider providerForValidDateInvalidMinimumAge
      * @expectedException Respect\Validation\Exceptions\MinimumAgeException
      */
-    public function testForValidDateInvalidMinimumAge($age, $format, $input)
+    public function test_invalid_minimum_age_should_throw_exception($age, $format, $input)
     {
         $minimumAge = new MinimumAge($age, $format);
-        $this->assertTrue($minimumAge->assert($input));
+        $this->assertFalse($minimumAge->validate($input));
+        $this->assertFalse($minimumAge->assert($input));
     }
     
     /**
      * @dataProvider providerForInvalidDate
      * @expectedException Respect\Validation\Exceptions\MinimumAgeException
      */
-    public function testInvalidDate($age, $format, $input)
+    public function test_invalid_date_should_not_pass($age, $format, $input)
     {
         $minimumAge = new MinimumAge($age, $format);
-        $this->assertTrue($minimumAge->assert($input));
+        $this->assertFalse($minimumAge->validate($input));
+        $this->assertFalse($minimumAge->assert($input));
     }
     
     public function providerForValidDateValidMinimumAge()

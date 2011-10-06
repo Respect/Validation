@@ -16,6 +16,8 @@ class SlugTest extends \PHPUnit_Framework_TestCase {
      */
     public function testValidSlug($input) 
     {
+        $this->assertTrue($this->slug->validate($input));
+        $this->assertTrue($this->slug->check($input));
         $this->assertTrue($this->slug->assert($input));
     }
 
@@ -25,6 +27,7 @@ class SlugTest extends \PHPUnit_Framework_TestCase {
      */
     public function testInvalidFormattedCpf($input) 
     {
+        $this->assertFalse($this->slug->validate($input));
         $this->assertFalse($this->slug->assert($input));
     }
     

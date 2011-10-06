@@ -12,6 +12,8 @@ class EachTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($result);
         $result = $v->check(array(1, 2, 3, 4, 5));
         $this->assertTrue($result);
+        $result = $v->assert(array(1, 2, 3, 4, 5));
+        $this->assertTrue($result);
     }
 
     public function test_validator_should_pass_if_every_array_item_and_key_pass()
@@ -21,6 +23,8 @@ class EachTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($result);
         $result = $v->check(array('a', 'b', 'c', 'd', 'e'));
         $this->assertTrue($result);
+        $result = $v->assert(array('a', 'b', 'c', 'd', 'e'));
+        $this->assertTrue($result);
     }
 
     public function test_validator_should_pass_with_only_key_validation()
@@ -29,6 +33,8 @@ class EachTest extends \PHPUnit_Framework_TestCase
         $result = $v->validate(array('a', 'b', 'c', 'd', 'e'));
         $this->assertTrue($result);
         $result = $v->check(array('a', 'b', 'c', 'd', 'e'));
+        $this->assertTrue($result);
+        $result = $v->assert(array('a', 'b', 'c', 'd', 'e'));
         $this->assertTrue($result);
     }
 

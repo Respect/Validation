@@ -9,20 +9,23 @@ class MultipleTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForMultiple
      *
      */
-    public function testMultiple($multipleOf, $input)
+    public function test_valid_number_multiple_of($multipleOf, $input)
     {
         $multiple = new Multiple($multipleOf);
+        $this->assertTrue($multiple->validate($input));
         $this->assertTrue($multiple->assert($input));
+        $this->assertTrue($multiple->check($input));
     }
 
     /**
      * @dataProvider providerForNotMultiple
      * @expectedException Respect\Validation\Exceptions\MultipleException
      */
-    public function testNotMultiple($multipleOf, $input)
+    public function test_not_multiple_should_throw_MultipleException($multipleOf, $input)
     {
         $multiple = new Multiple($multipleOf);
-        $this->assertTrue($multiple->assert($input));
+        $this->assertFalse($multiple->validate($input));
+        $this->assertFalse($multiple->assert($input));
     }
 
     public function providerForMultiple()

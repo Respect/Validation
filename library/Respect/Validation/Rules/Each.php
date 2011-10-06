@@ -23,11 +23,11 @@ class Each extends AbstractRule
     {
         $exceptions = array();
 
-        if (empty($input))
-            return true;
-
         if (!is_array($input) || $input instanceof Traversable)
             throw $this->reportError($input);
+
+        if (empty($input))
+            return true;
 
         foreach ($input as $key => $item)
             if (isset($this->itemValidator))
@@ -37,7 +37,7 @@ class Each extends AbstractRule
                     $exceptions[] = $e;
                 } elseif (isset($this->keyValidator))
                 try {
-                    $this->keyValidator->assert($item);
+                    $this->keyValidator->assert($key);
                 } catch (ValidationException $e) {
                     $exceptions[] = $e;
                 }
@@ -67,11 +67,11 @@ class Each extends AbstractRule
 
     public function validate($input)
     {
+        if (!is_array($input) || $input instanceof Traversable)
+            return false;
+        
         if (empty($input))
             return true;
-
-        elseif (!is_array($input) || $input instanceof Traversable)
-            return false;
 
         foreach ($input as $key => $item)
             if (isset($this->itemValidator) && !$this->itemValidator->validate($item))

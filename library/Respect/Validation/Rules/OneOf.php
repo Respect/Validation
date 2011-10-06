@@ -2,6 +2,8 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ValidationException;
+
 class OneOf extends AbstractComposite
 {
 
@@ -28,8 +30,17 @@ class OneOf extends AbstractComposite
     public function check($input)
     {
         foreach ($this->getRules() as $v)
-            if ($v->check($input))
-                return true;
+            try {
+                if ($v->check($input))
+                    return true;
+            } catch (ValidationException $e) {
+                if (!isset($firstException))
+                    $firstException = $e;
+            }
+        
+        if (isset($firstException))
+            throw $firstException;
+        
         return false;
     }
 

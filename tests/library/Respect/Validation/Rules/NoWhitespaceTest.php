@@ -5,24 +5,35 @@ namespace Respect\Validation\Rules;
 class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
 {
 
-    protected $object;
+    protected $noWhitespaceValidator;
 
     protected function setUp()
     {
-        $this->object = new NoWhitespace;
+        $this->noWhitespaceValidator = new NoWhitespace;
     }
 
-    public function testNoWhitespace()
+    public function test_string_with_no_whitespace_should_pass()
     {
-        $this->assertTrue($this->object->assert('wpoiur'));
+        $this->assertTrue($this->noWhitespaceValidator->validate('wpoiur'));
+        $this->assertTrue($this->noWhitespaceValidator->check('wpoiur'));
+        $this->assertTrue($this->noWhitespaceValidator->assert('wpoiur'));
     }
 
     /**
      * @expectedException Respect\Validation\Exceptions\NoWhitespaceException
      */
-    public function testWhitespace()
+    public function test_string_with_whitespace_should_fail()
     {
-        $this->assertTrue($this->object->assert('w poiur'));
+        $this->assertFalse($this->noWhitespaceValidator->validate('w poiur'));
+        $this->assertFalse($this->noWhitespaceValidator->assert('w poiur'));
+    }
+    /**
+     * @expectedException Respect\Validation\Exceptions\NoWhitespaceException
+     */
+    public function test_string_with_line_breaks_should_fail()
+    {
+        $this->assertFalse($this->noWhitespaceValidator->validate("w\npoiur"));
+        $this->assertFalse($this->noWhitespaceValidator->assert("w\npoiur"));
     }
 
 }

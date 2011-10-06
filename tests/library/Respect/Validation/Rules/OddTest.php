@@ -19,6 +19,8 @@ class OddTest extends \PHPUnit_Framework_TestCase
     public function testOdd($input)
     {
         $this->assertTrue($this->object->assert($input));
+        $this->assertTrue($this->object->validate($input));
+        $this->assertTrue($this->object->check($input));
     }
 
     /**
@@ -27,7 +29,8 @@ class OddTest extends \PHPUnit_Framework_TestCase
      */
     public function testNotOdd($input)
     {
-        $this->assertTrue($this->object->assert($input));
+        $this->assertFalse($this->object->validate($input));
+        $this->assertFalse($this->object->assert($input));
     }
     
     public function providerForOdd()

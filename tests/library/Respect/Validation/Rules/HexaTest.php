@@ -5,29 +5,31 @@ namespace Respect\Validation\Rules;
 class HexaTest extends \PHPUnit_Framework_TestCase
 {
 
-    protected $object;
+    protected $hexaValidator;
 
     protected function setUp()
     {
-        $this->object = new Hexa;
+        $this->hexaValidator = new Hexa;
     }
 
     /**
      * @dataProvider providerForHexa
-     *
      */
-    public function testHexa($input)
+    public function test_validate_valid_hexadecimal_numbers($input)
     {
-        $this->assertTrue($this->object->assert($input));
+        $this->assertTrue($this->hexaValidator->assert($input));
+        $this->assertTrue($this->hexaValidator->check($input));
+        $this->assertTrue($this->hexaValidator->validate($input));
     }
 
     /**
      * @dataProvider providerForNotHexa
      * @expectedException Respect\Validation\Exceptions\HexaException
      */
-    public function testNotHexa($input)
+    public function test_invalid_hexadecimal_numbers_should_throw_HexaException($input)
     {
-        $this->assertTrue($this->object->assert($input));
+        $this->assertFalse($this->hexaValidator->validate($input));
+        $this->assertFalse($this->hexaValidator->assert($input));
     }
 
     public function providerForHexa()

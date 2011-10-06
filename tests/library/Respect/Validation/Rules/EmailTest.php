@@ -8,17 +8,19 @@ class EmailTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidEmail
      */
-    public function testEmailValid($validEmail)
+    public function test_valid_email_should_pass($validEmail)
     {
         $validator = new Email();
         $this->assertTrue($validator->validate($validEmail));
+        $this->assertTrue($validator->check($validEmail));
+        $this->assertTrue($validator->assert($validEmail));
     }
 
     /**
      * @dataProvider providerForInvalidEmail
      * @expectedException Respect\Validation\Exceptions\EmailException
      */
-    public function testEmailInvalid($invalidEmail)
+    public function test_invalid_emails_should_fail_validation($invalidEmail)
     {
         $validator = new Email();
         $this->assertFalse($validator->validate($invalidEmail));

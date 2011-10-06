@@ -20,7 +20,7 @@ class Callback extends AbstractRule
 
     public function validate($input)
     {
-        return call_user_func($this->callback, $input);
+        return (bool) call_user_func($this->callback, $input);
     }
 
 }

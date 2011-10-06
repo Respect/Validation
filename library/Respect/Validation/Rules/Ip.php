@@ -14,7 +14,7 @@ class Ip extends AbstractRule
 
     public function validate($input)
     {
-        return filter_var(
+        return (boolean) filter_var(
             $input, FILTER_VALIDATE_IP, array('flags' => $this->ipOptions)
         );
     }

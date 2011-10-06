@@ -20,7 +20,9 @@ class OneOfTest extends \PHPUnit_Framework_TestCase
                     return false;
                 });
         $o = new OneOf($valid1, $valid2, $valid3);
+        $this->assertTrue($o->validate('any'));
         $this->assertTrue($o->assert('any'));
+        $this->assertTrue($o->check('any'));
     }
 
     /**
@@ -38,15 +40,17 @@ class OneOfTest extends \PHPUnit_Framework_TestCase
                     return false;
                 });
         $o = new OneOf($valid1, $valid2, $valid3);
+        $this->assertFalse($o->validate('any'));
         $this->assertFalse($o->assert('any'));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\StringException
+     * @expectedException Respect\Validation\Exceptions\HexaException
      */
     public function testInvalidCheck()
     {
-        $o = new OneOf(new String, new Alnum);
+        $o = new OneOf(new Hexa, new Alnum);
+        $this->assertFalse($o->validate(-10));
         $this->assertFalse($o->check(-10));
     }
 

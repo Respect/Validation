@@ -22,6 +22,7 @@ class NoneOfTest extends \PHPUnit_Framework_TestCase
         $o = new NoneOf($valid1, $valid2, $valid3);
         $this->assertTrue($o->validate('any'));
         $this->assertTrue($o->assert('any'));
+        $this->assertTrue($o->check('any'));
     }
 
     /**

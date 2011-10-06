@@ -5,29 +5,32 @@ namespace Respect\Validation\Rules;
 class NegativeTest extends \PHPUnit_Framework_TestCase
 {
 
-    protected $object;
+    protected $negativeValidator;
 
     protected function setUp()
     {
-        $this->object = new Negative;
+        $this->negativeValidator = new Negative;
     }
 
     /**
      * @dataProvider providerForNegative
      *
      */
-    public function testNegative($input)
+    public function test_negative_should_pass($input)
     {
-        $this->assertTrue($this->object->assert($input));
+        $this->assertTrue($this->negativeValidator->assert($input));
+        $this->assertTrue($this->negativeValidator->validate($input));
+        $this->assertTrue($this->negativeValidator->check($input));
     }
 
     /**
      * @dataProvider providerForNotNegative
      * @expectedException Respect\Validation\Exceptions\NegativeException
      */
-    public function testNotNegative($input)
+    public function test_NOT_negative_numbers_should_throw_NegativeException($input)
     {
-        $this->assertTrue($this->object->assert($input));
+        $this->assertFalse($this->negativeValidator->validate($input));
+        $this->assertFalse($this->negativeValidator->assert($input));
     }
 
     public function providerForNegative()

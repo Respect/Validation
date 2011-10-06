@@ -9,9 +9,11 @@ class InTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForIn
      *
      */
-    public function testIn($input, $options=null)
+    public function test_success_in_validator_cases($input, $options=null)
     {
         $v = new In($options);
+        $this->assertTrue($v->validate($input));
+        $this->assertTrue($v->check($input));
         $this->assertTrue($v->assert($input));
     }
 
@@ -19,9 +21,10 @@ class InTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotIn
      * @expectedException Respect\Validation\Exceptions\InException
      */
-    public function testNotIn($input, $options, $strict=false)
+    public function test_invalid_in_checks_should_throw_InException($input, $options, $strict=false)
     {
         $v = new In($options, $strict);
+        $this->assertFalse($v->validate($input));
         $this->assertFalse($v->assert($input));
     }
 
