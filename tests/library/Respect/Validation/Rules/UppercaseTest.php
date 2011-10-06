@@ -36,6 +36,7 @@ class UppercaseTest extends \PHPUnit_Framework_TestCase
             array('UPPERCASE WITH NUMBERS 123'),
             array('UPPERCASE WITH SPECIALS CHARACTERS LIKE Ã Ç Ê'),            
             array('WITH SPECIALS CHARACTERS LIKE # $ % & * +'),            
+            array('ΤΆΧΙΣΤΗ ΑΛΏΠΗΞ ΒΑΦΉΣ ΨΗΜΈΝΗ ΓΗ, ΔΡΑΣΚΕΛΊΖΕΙ ΥΠΈΡ ΝΩΘΡΟΎ ΚΥΝΌΣ'),            
         );
     }
     
