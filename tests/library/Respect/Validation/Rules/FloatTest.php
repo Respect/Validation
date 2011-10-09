@@ -37,6 +37,8 @@ class FloatTest extends \PHPUnit_Framework_TestCase
         return array(
             array(165),
             array(1),
+            array(0),
+            array(0.0),
             array('1'),
             array('19347e12'),
             array(165.0),

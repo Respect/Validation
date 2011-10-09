@@ -7,7 +7,7 @@ class Float extends AbstractRule
 
     public function validate($input)
     {
-        return (boolean) filter_var($input, FILTER_VALIDATE_FLOAT);
+        return (boolean) is_float(filter_var($input, FILTER_VALIDATE_FLOAT));
     }
 
 }
