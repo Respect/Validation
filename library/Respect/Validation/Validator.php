@@ -54,6 +54,7 @@ use Respect\Validation\Rules\AllOf;
  * @method \Respect\Validation\Validator startsWith(mixed $startValue, bool $identical = false)
  * @method \Respect\Validation\Validator string()
  * @method \Respect\Validation\Validator tld()
+ * @method \Respect\Validation\Validator twitter()
  * @method \Respect\Validation\Validator zend(mixed $validator, array $params = null)
  */
 class Validator extends AllOf
