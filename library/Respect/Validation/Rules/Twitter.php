@@ -1,32 +1,29 @@
 <?php
 	
 namespace Respect\Validation\Rules;
+use Respect\Validation\Exceptions\ComponentException;
 	
 class Twitter extends AbstractRule
 {
 	private $pattern = '/^@[a-zA-Z0-9]/';
-	private $account = NULL;
+	private $curl = NULL;
 	
 	public function validate($input){
-		if(!preg_match('#^\S+$#', $input)) 	   return false;	
-		if(!preg_match($this->pattern,$input)) return false;
+		if(!preg_match('#^\S+$#', $input)) 	
+			return false;	
+		if(!preg_match($this->pattern,$input)) 
+			return false;
 		
-		$curl = curl_init('http://api.twitter.com/1/users/show.json?screen_name='.substr($input,1));
-		curl_setopt($curl,CURLOPT_HTTPGET,1);
-		curl_setopt($curl, CURLOPT_HEADER, 0);
-		curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
-		$this->account  = json_decode(curl_exec($curl)); 
-		if(property_exists($this->account,'id')) return true;	
+		$this->curl = curl_init('http://api.twitter.com/1/users/show.json?screen_name='.substr($input,1));
 		
-		return false;
+		curl_setopt($this->curl,CURLOPT_HTTPGET,1);
+		curl_setopt($this->curl, CURLOPT_HEADER, 0);
+		curl_setopt($this->curl,CURLOPT_RETURNTRANSFER,1);
+		$account  = json_decode(curl_exec($this->curl)); 
+		
+		return (property_exists($account,'id')); 	
+		
 	}	
-	
-	public function hasUrl(){
-		if(!property_exists($this->account,'url')) return false;
-		
-		return true;	
-	}
-
 }
 
 /**

@@ -4,14 +4,23 @@ namespace Respect\Validation\Exceptions;
 
 class TwitterException extends ValidationException
 {
+	const CONNECTION = 0;
 	public static $defaultTemplates = array(
 		self::MODE_DEFAULT => array(
             self::STANDARD => '{{name}} must be a Twitter account',
+            self::CONNECTION => 'Failed connection with account {{name}}',
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => '{{name}} must be a Twitter account',
+            self::CONNECTION => 'Failed connection with account {{name}}',
         )
 	);
+	
+	public function chooseTemplate(){
+		if(is_null($this->getParam('account')))
+			return self::CONNECTION;
+		return self::STANDARD;
+	}
 }
 
 /**
