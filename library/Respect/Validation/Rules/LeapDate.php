@@ -2,13 +2,44 @@
 
 namespace Respect\Validation\Rules;
 
-class Float extends AbstractRule
+use DateTime;
+
+class LeapDate extends AbstractRule
 {
 
-    public function validate($input)
+    public $format = null;
+
+    public function __construct($format = null)
     {
-        return is_float(filter_var($input, FILTER_VALIDATE_FLOAT));
+        $this->format = $format;
     }
+
+    public function validate($originalDate, $format = null)
+    {
+        if (is_null($format)) {
+            $format = $this->format;
+            if (is_null($format)) {
+                return false;
+            }
+        }
+
+        if (!is_string($originalDate)) {
+            return false;
+        }
+    
+        $date = DateTime::createFromFormat($format, $originalDate);
+    
+        if (!$date->format($format) == $originalDate) {
+            return false;
+        }
+
+        if ($date->format('m-d') == '02-29') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+ 
 
 }
 
