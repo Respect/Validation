@@ -4,11 +4,11 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Filterable;
+use Respect\Validation\Sanitizable;
 use Respect\Validation\Validatable;
 use Respect\Validation\Validator;
 
-abstract class AbstractComposite extends AbstractRule implements Validatable, \Respect\Validation\Filterable
+abstract class AbstractComposite extends AbstractRule
 {
 
     protected $rules = array();
@@ -28,11 +28,19 @@ abstract class AbstractComposite extends AbstractRule implements Validatable, \R
         return $this;
     }
 
+    public function sanitize($input)
+    {
+        foreach ($this->getRules() as $f)
+            if ($f instanceof Sanitizable)
+                $input = $f->sanitize($input);
+        return $input;
+    }
+
+    
     public function filter($input)
     {
         foreach ($this->getRules() as $f)
-            if ($f instanceof Filterable)
-                $input = $f->filter($input);
+            $input = $f->filter($input);
         return $input;
     }
 

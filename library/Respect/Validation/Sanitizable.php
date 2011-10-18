@@ -3,13 +3,13 @@
 namespace Respect\Validation;
 
 /**
- * Interface for filtering rules
+ * Interface for sanitizing rules
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  */
-interface Filterable
+interface Sanitizable
 {
-    public function filter($input);
+    public function sanitize($input);
 }
 
 /**
