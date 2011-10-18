@@ -7,7 +7,7 @@ use DateTime;
 class LeapDateTest extends \PHPUnit_Framework_TestCase
 {
 
-    protected $dateValidator;
+    protected $leapDateValidator;
 
     protected function setUp()
     {
