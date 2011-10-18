@@ -4,27 +4,28 @@ namespace Respect\Validation\Rules;
 
 use DateTime;
 
-class LeapDate extends AbstractRule
+class LeapYear extends AbstractRule
 {
-
-    public $format = null;
-
-    public function __construct($format = null)
+    public function validate($year)
     {
-        $this->format = $format;
-    }
+        if (is_string($year))
+            if (is_numeric($year))
+                $year = (int) $year;
+            else {
+                try {
+                    $date = new DateTime($year);
+                    $year = (int) $date->format('Y');
+                } catch (Exception $e) {
+                    return false;
+                }
+            }
+        elseif ($year instanceof DateTime)
+            $year = (int) $year->format('Y');
+        elseif (!is_integer($year))
+            return false;
 
-    public function validate($input)
-    {
-        if (is_string($input))
-            $date = DateTime::createFromFormat($this->format, $input);
-        elseif ($input instanceof DateTime)
-            $date = $input;
-        else
-            return false;         
-
-        // Dates that aren't leap will aways be rounded
-        return $date->format('m-d') == '02-29';
+        $date = strtotime(sprintf('%d-02-29', $year));
+        return (bool) date('L', $date);
     }
  
 
