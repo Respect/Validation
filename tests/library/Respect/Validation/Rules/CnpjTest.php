@@ -16,7 +16,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase {
      */
     public function test_formatted_cnpjs_should_validate($input) 
     {
-        $this->assertTrue($this->cnpjValidator->assert($input));
+        $this->assertTrue($this->cnpjValidator->validate($input));
     }
 
     /**
@@ -24,7 +24,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase {
      */
     public function test_unformatted_cnpjs_should_validates($input) 
     {
-        $this->assertTrue($this->cpfValidator->assert($input));
+        $this->assertTrue($this->cpfValidator->validate($input));
     }
 
     /**
@@ -32,7 +32,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase {
      */
     public function test_invalid_cnpj_should_fail_when_formatted($input) 
     {
-        $this->assertFalse($this->cnpjValidator->assert($input));
+        $this->assertFalse($this->cnpjValidator->validate($input));
     }
 
     /**
@@ -40,7 +40,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase {
      */
     public function test_invalid_cnpj_should_fail_when_not_formatted($input) 
     {
-        $this->assertFalse($this->cnpjValidator->assert($input));
+        $this->assertFalse($this->cnpjValidator->validate($input));
     }
 
     
@@ -49,17 +49,17 @@ class CnpjTest extends \PHPUnit_Framework_TestCase {
      */
     public function test_cnpjs_with_incorrect_length_should_fail($input) 
     {
-        $this->assertFalse($this->cnpjValidator->assert($input));
+        $this->assertFalse($this->cnpjValidator->validate($input));
     }
     
     public function providerValidFormattedCnpj() 
     {
         return array(
-            array('342.444.198-88'),
-            array('342.444.198.88'),
-            array('350.45261819'),
-            array('693-319-118-40'),
-            array('3.6.8.8.9.2.5.5.4.8.8')
+            array('32.063.364/0001-07'),
+            array('24.663.454/0001-00'),
+            array('57.535.083/0001-30'),
+            array('24.760.428/0001-09'),
+            array('27.355.204/0001-00')
         );
     }
 
@@ -68,21 +68,17 @@ class CnpjTest extends \PHPUnit_Framework_TestCase {
         return array(
             array('11598647644'),
             array('86734718697'),
-            array('86223423284'),
-            array('24845408333'),
-            array('95574461102'),
+            array('12774546000189'),
+            array('77456211000168'),
+            array('02023077000102'),
         );
     }
 
     public function providerInvalidFormattedCnpj() 
     {
         return array(
-            array('000.000.000-00'),
-            array('111.222.444-05'),
-            array('999999999.99'),
-            array('8.8.8.8.8.8.8.8.8.8.8'),
-            array('693-319-110-40'),
-            array('698.111-111.00')
+            array('00.000.000/0000-00'),
+            array('11.111.111/1111-11'),
         );
     }
 
@@ -105,7 +101,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase {
             array('22'),
             array('123'),
             array('992999999999929384'),
-            array('')
+            array('99-010-0.')
         );
     }
 }
