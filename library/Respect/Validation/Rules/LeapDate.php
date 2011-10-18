@@ -14,30 +14,14 @@ class LeapDate extends AbstractRule
         $this->format = $format;
     }
 
-    public function validate($originalDate, $format = null)
+    public function validate($input)
     {
-        if (is_null($format)) {
-            $format = $this->format;
-            if (is_null($format)) {
-                return false;
-            }
-        }
-
-        if (!is_string($originalDate)) {
+        if (!is_string($input)) 
             return false;
-        }
     
-        $date = DateTime::createFromFormat($format, $originalDate);
+        $date = DateTime::createFromFormat($this->format, $input);
     
-        if (!$date->format($format) == $originalDate) {
-            return false;
-        }
-
-        if ($date->format('m-d') == '02-29') {
-            return true;
-        } else {
-            return false;
-        }
+        return $date->format($this->format) === $input;
     }
  
 
