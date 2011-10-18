@@ -23,3 +23,5 @@ nbproject
 *.deb
 *.rpm
 *.tgz
+
+index.php

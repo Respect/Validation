@@ -14,9 +14,26 @@ class Int extends AbstractRule implements Sanitizable
 
     public function sanitize($input)
     {
-        return (int) $input;
+        if(is_string($input)){
+		    $input =  $this->clearString($input);
+		}
+		    
+	    return (int) $input;
     }
 
+    public function filter($input){
+	    if(is_string($input)){
+	        $input = $this->clearString($input);
+	        return ($input != "") ? (int) $input : null;           
+	    }elseif(is_numeric($input)){
+		    return (int) $input;
+	    }
+    }
+    
+   protected function clearString($input){
+        preg_match_all("/[0-9]/",$input, $matches);
+        return implode($matches[0]);
+   }
 }
 /**
  * LICENSE
