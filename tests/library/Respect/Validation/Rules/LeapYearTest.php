@@ -17,6 +17,7 @@ class LeapYearTest extends \PHPUnit_Framework_TestCase
     public function test_valid_leap_date()
     {
         $this->assertTrue($this->leapYearValidator->validate('2008'));
+        $this->assertTrue($this->leapYearValidator->validate('2008-02-29'));
         $this->assertTrue($this->leapYearValidator->validate(2008));
         $this->assertTrue($this->leapYearValidator->validate(
             new DateTime('2008-02-29')));
@@ -25,6 +26,7 @@ class LeapYearTest extends \PHPUnit_Framework_TestCase
     public function test_invalid_leap_date()
     {
         $this->assertFalse($this->leapYearValidator->validate('2009'));
+        $this->assertFalse($this->leapYearValidator->validate('2009-02-29'));
         $this->assertFalse($this->leapYearValidator->validate(2009));
         $this->assertFalse($this->leapYearValidator->validate(
             new DateTime('2009-02-29')));
