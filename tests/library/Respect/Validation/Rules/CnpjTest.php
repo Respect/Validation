@@ -60,7 +60,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase {
             array('57.535.083/0001-30'),
             array('24.760.428/0001-09'),
             array('27.355.204/0001-00'),
-	    array('36.310.327/0001-07'),
+            array('36.310.327/0001-07'),
         );
     }
 
@@ -78,7 +78,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase {
     public function providerInvalidFormattedCnpj() 
     {
         return array(
-	    array('12.345.678/9012-34'),
+            array('12.345.678/9012-34'),
             array('11.111.111/1111-11'),
         );
     }
