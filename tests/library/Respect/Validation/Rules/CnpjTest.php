@@ -24,7 +24,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase {
      */
     public function test_unformatted_cnpjs_should_validates($input) 
     {
-        $this->assertTrue($this->cpfValidator->validate($input));
+        $this->assertTrue($this->cnpjValidator->validate($input));
     }
 
     /**
@@ -59,15 +59,16 @@ class CnpjTest extends \PHPUnit_Framework_TestCase {
             array('24.663.454/0001-00'),
             array('57.535.083/0001-30'),
             array('24.760.428/0001-09'),
-            array('27.355.204/0001-00')
+            array('27.355.204/0001-00'),
+	    array('36.310.327/0001-07'),
         );
     }
 
     public function providerValidUnformattedCnpj() 
     {
         return array(
-            array('11598647644'),
-            array('86734718697'),
+            array('38175021000110'),
+            array('37550610000179'),
             array('12774546000189'),
             array('77456211000168'),
             array('02023077000102'),
@@ -77,7 +78,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase {
     public function providerInvalidFormattedCnpj() 
     {
         return array(
-            array('00.000.000/0000-00'),
+	    array('12.345.678/9012-34'),
             array('11.111.111/1111-11'),
         );
     }
