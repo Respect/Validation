@@ -4,48 +4,16 @@ namespace Respect\Validation\Rules;
 
 class Cpf extends AbstractRule 
 {
-
     public function validate($input) 
     {
-        $input = preg_replace('([^0-9])', '', $input);
-        if (strlen($input) != 11)
-            return false;
-        if ($this->isSequenceOfNumber($input))
-            return false;
-        return $this->processNumber($input);
+        // Ported from JSFromHell
+        $c = preg_replace('/\D/', '', $input);
+        if (strlen($c) != 11) return false;
+        if (preg_match("/^{$c[0]}{11}$/", $c)) return false;
+        for ($s = 10, $n = 0, $i = 0; $s >= 2; $n += $c[$i++] * $s--);
+        if ($c[9] != ((($n %= 11) < 2) ? 0 : 11 - $n)) return false;
+        for ($s = 11, $n = 0, $i = 0; $s >= 2; $n += $c[$i++] * $s--);
+        if ($c[10] != ((($n %= 11) < 2) ? 0 : 11 - $n)) return false;
+        return true;
     }
-
-    protected function processNumber($input)
-    {
-        $multiple = 10;
-        $firstDigit = $secondDigit = 0;
-
-        for ($i = 0; $i < 9; $i++)
-            $firstDigit += ($multiple-- * (int) $input[$i]);
-
-        $firstDigit = 11 - ($firstDigit % 11);
-        $firstDigit >= 10 && $firstDigit = 0;
-
-        $multiple = 11;
-
-        for ($i = 0; $i < 9; $i++)
-            $secondDigit += ($multiple-- * (int) $input[$i]);
-
-        $secondDigit += (2 * $firstDigit);
-        $secondDigit = 11 - ($secondDigit % 11);
-
-        $secondDigit >= 10 && $secondDigit = 0;
-        $digits = substr($input, -2);
-
-        return ("{$firstDigit}{$secondDigit}" === $digits);
-    }
-
-    protected function isSequenceOfNumber($input)
-    {   
-        for ($i = 0; $i <= 9; $i++)
-            if ($input === str_repeat($i, 11))
-                return true;
-        return false;
-    }
-
 }
