@@ -1,32 +1,23 @@
-<?php 
+<?php
 
 namespace Respect\Validation\Exceptions;
 
-class TwitterException extends ValidationException
+class FileException extends ValidationException
 {
-	const CONNECTION = 0;
 	public static $defaultTemplates = array(
-		self::MODE_DEFAULT => array(
-            self::STANDARD => '{{name}} must be a Twitter account',
-            self::CONNECTION => 'Failed connection with account {{name}}',
+        self::MODE_DEFAULT => array(
+            self::STANDARD => '{{name}} must be a file',
         ),
         self::MODE_NEGATIVE => array(
-            self::STANDARD => '{{name}} must be a Twitter account',
-            self::CONNECTION => 'Failed connection with account {{name}}',
+            self::STANDARD => '{{name}} must not be file',
         )
-	);
-	
-	public function chooseTemplate(){
-		if(is_null($this->getParam('account')))
-			return self::CONNECTION;
-		return self::STANDARD;
-	}
+    );
 }
 
 /**
  * LICENSE
  *
- * Copyright (c) 2009-2011, Alexandre Gomes Gaigalas.
+ * Copyright (c) 2011, Claudson Oliveira.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
