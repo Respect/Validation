@@ -3,27 +3,13 @@
 namespace Respect\Validation;
 
 /**
- * Interface for validation rules
+ * Interface for sanitizing rules
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  */
-interface Validatable
+interface Sanitizable
 {
-    public function assert($input);
-
-    public function check($input);
-    
-    public function filter($input);
-
-    public function getName();
-
-    public function reportError($input, array $relatedExceptions=array());
-
-    public function setName($name);
-
-    public function setTemplate($template);
-
-    public function validate($input);
+    public function sanitize($input);
 }
 
 /**

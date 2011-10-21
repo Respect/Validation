@@ -28,6 +28,11 @@ class DateTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertFalse($this->dateValidator->validate('aids'));
     }
+    public function test_invalid_date_should_fail_on_invalid_convertions()
+    {
+        $this->dateValidator->format = 'Y-m-d';
+        $this->assertFalse($this->dateValidator->validate('2009-12-00'));
+    }
 
     public function test_any_object_except_DateTime_instances_should_fail()
     {

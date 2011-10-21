@@ -35,11 +35,12 @@ class IntTest extends \PHPUnit_Framework_TestCase
 
 
     /**
-     * @dataProvider providerForFilterInt
+     * @dataProvider providerForSanitizeInt
      */
-    public function test_integer_filter_should_return_filtered_value($unfiltered, $expected)
+    public function test_integer_filter_should_return_filtered_value($unfiltered, $expected, $filtered)
     {
-        $this->assertSame($expected, $this->intValidator->filter($unfiltered));
+        $this->assertSame($expected, $this->intValidator->sanitize($unfiltered));
+        $this->assertSame($filtered, $this->intValidator->filter($unfiltered));
     }
 
     public function providerForInt()
@@ -65,13 +66,14 @@ class IntTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForFilterInt()
+    public function providerForSanitizeInt()
     {
         return array(
-            array(12, 12),
-            array('12 rabbits', 12),
-            array('1.44', 1),
-            array(1e-5, 0),
+            array(12, 12, 12),
+            array('12 rabbits', 12, null),
+            array('1.44', 1, null),
+            array(1e-5, 0, null),
+            array('ksdhbf', 0, null),
         );
     }
 

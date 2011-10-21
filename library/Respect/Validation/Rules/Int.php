@@ -2,9 +2,9 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Filterable;
+use Respect\Validation\Sanitizable;
 
-class Int extends AbstractRule implements Filterable
+class Int extends AbstractRule implements Sanitizable
 {
 
     public function validate($input)
@@ -12,7 +12,7 @@ class Int extends AbstractRule implements Filterable
         return is_numeric($input) && (int) $input == $input;
     }
 
-    public function filter($input)
+    public function sanitize($input)
     {
         return (int) $input;
     }

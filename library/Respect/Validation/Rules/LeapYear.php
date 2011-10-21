@@ -1,29 +1,34 @@
 <?php
 
-namespace Respect\Validation;
+namespace Respect\Validation\Rules;
 
-/**
- * Interface for validation rules
- *
- * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
- */
-interface Validatable
+use DateTime;
+
+class LeapYear extends AbstractRule
 {
-    public function assert($input);
+    public function validate($year)
+    {
+        if (is_string($year))
+            if (is_numeric($year))
+                $year = (int) $year;
+            else {
+                try {
+                    $date = new DateTime($year);
+                    $year = (int) $date->format('Y');
+                } catch (Exception $e) {
+                    return false;
+                }
+            }
+        elseif ($year instanceof DateTime)
+            $year = (int) $year->format('Y');
+        elseif (!is_integer($year))
+            return false;
 
-    public function check($input);
-    
-    public function filter($input);
+        $date = strtotime(sprintf('%d-02-29', $year));
+        return (bool) date('L', $date);
+    }
+ 
 
-    public function getName();
-
-    public function reportError($input, array $relatedExceptions=array());
-
-    public function setName($name);
-
-    public function setTemplate($template);
-
-    public function validate($input);
 }
 
 /**
