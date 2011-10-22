@@ -5,11 +5,11 @@ namespace Respect\Validation\Rules;
 class FileTest extends \PHPUnit_Framework_TestCase
 {
 
-    protected $file;
+    protected $fileValidator;
     
     protected function setUp()
     {
-        $this->file = new File;
+        $this->fileValidator = new File;
     }
     
     /**
@@ -18,15 +18,22 @@ class FileTest extends \PHPUnit_Framework_TestCase
      */
     public function test_invalid_file($input)
     {
-        $this->assertTrue($this->file->Validate($input));
+        $this->assertFalse($this->fileValidator->Validate($input));
     }
     
     /**
-     * @dataProvider providerForFile
      * @expectedException Respect\Validation\Exceptions\FileException
      */
     public function test_valid_file($input)
     {
-        $this->assertTrue($this->file->Validate($input));
+        $this->assertTrue($this->fileValidator->Validate($input));
     } 
+    
+    public function providerForFile()
+    {
+        return array(
+            array(__FILE__);
+        );
+    }
+    
 }
