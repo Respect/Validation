@@ -63,6 +63,7 @@ class FileTest extends \PHPUnit_Framework_TestCase
                 array(__FILE__),
                 array($this->temp.'foo'),
                 array($this->temp.'bar'),
+                 array(array($this->temp.'foo',$this->temp.'bar',__FILE__))
             );
         } 
     }
@@ -72,6 +73,7 @@ class FileTest extends \PHPUnit_Framework_TestCase
         return array(
             array($this->temp.'cloud'),
             array($this->temp.'son'),
+            array(array($this->temp.'cloud',$this->temp.'son'))
         );
     }
     
