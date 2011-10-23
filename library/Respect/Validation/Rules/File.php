@@ -6,8 +6,9 @@ class File extends AbstractRule
 {
 	public function validate($input)
 	{
-		if(is_string($input))
+		if(is_string($input)){
 			return is_file($input);
+        }
 		elseif(is_array($input))
 		{
 			foreach($input as $file)
