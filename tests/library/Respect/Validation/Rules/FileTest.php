@@ -7,6 +7,9 @@ class FileTest extends \PHPUnit_Framework_TestCase
 
     protected $fileValidator;
     private $temp;
+    /**
+     * @expectedException PHPUnit_Framework_Warning
+     */
     protected function setUp()
     {
         $this->fileValidator = new File;
@@ -15,8 +18,9 @@ class FileTest extends \PHPUnit_Framework_TestCase
             $this->temp = __DIR__.'/.tmp_filetest_'.rand(0,2048).'/';
         }
         while(is_dir($this->temp));
-        if(!mkdir($this->temp)) 
-            $this->temp = null;
+        if(!@mkdir($this->temp)){
+            $this->markTestIncomplete('No permission to write on '.__DIR__);
+        }
         else
         {
             fopen($this->temp.'foo','x');
