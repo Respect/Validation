@@ -14,26 +14,14 @@ class Int extends AbstractRule implements Sanitizable
 
     public function sanitize($input)
     {
-        if(is_string($input)){
-		    $input =  $this->clearString($input);
-		}
-		    
-	    return (int) $input;
+		return (int) filter_var($input, FILTER_SANITIZE_NUMBER_INT);
     }
 
     public function filter($input){
-	    if(is_string($input)){
-	        $input = $this->clearString($input);
+	        $input = filter_var($input, FILTER_SANITIZE_NUMBER_INT); 
 	        return ($input != "") ? (int) $input : null;           
-	    }elseif(is_numeric($input)){
-		    return (int) $input;
-	    }
     }
     
-   protected function clearString($input){
-        preg_match_all("/[0-9]/",$input, $matches);
-        return implode($matches[0]);
-   }
 }
 /**
  * LICENSE

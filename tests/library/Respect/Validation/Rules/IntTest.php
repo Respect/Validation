@@ -72,7 +72,7 @@ class IntTest extends \PHPUnit_Framework_TestCase
             array(12, 12, 12),
             array('12 rabbits', 12, 12),
             array('1.44', 144, 144),
-            array(1e-5, 0, 0),
+            array(1e-5, 10, 10),
             array('ksdhbf', 0, null),
             array('0', 0, 0),
             array('bucks 5', 5, 5),
