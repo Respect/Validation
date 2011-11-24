@@ -4,6 +4,8 @@ library/Symfony/
 .project
 .settings/
 nbproject
+tests/reports
+pirum
 /library/.fr-6ayG1u/
 /library/.fr-n9BajN/
 *.7z
