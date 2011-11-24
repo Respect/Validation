@@ -27,7 +27,7 @@ project-info:
 .PHONY: test
 test: project-info
 test: 
-	@phpunit .
+	@cd tests;phpunit .
 
 .PHONY: coverage
 coverage: project-info
