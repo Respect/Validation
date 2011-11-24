@@ -66,7 +66,7 @@ pirum: project-info
 	@echo "Cloning channel"
 	rm -Rf pirum;git clone git@github.com:Respect/pear.git pirum
 	pirum add pirum ${PKG};pirum build pirum;
-	cd pirum;git add .;git commit -m "$Added {PKG}";git push
+	cd pirum;git add .;git commit -m "Added ${PKG}";git push
 	@echo "Success! Pushed ${PKG} to http://respect.li/pear"
 		
 .PHONY: fix-legacy

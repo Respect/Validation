@@ -10,23 +10,23 @@ $package_xml_file = '../package.xml';
 if (!file_exists($package_xml_file))
     die("package.xml does not exists");
 
-$package_data = simplexml_load_file($package_xml_file);
-$dir_name=  (string) $package_data->contents->dir['name'];
-$target = realpath("../$dir_name");
-$base_install_dir = (string) $package_data->contents->dir['baseinstalldir'];
+$package_data               = simplexml_load_file($package_xml_file);
+$dir_name                   = (string) $package_data->contents->dir['name'];
+$target                     = realpath("../$dir_name");
+$base_install_dir           = (string) $package_data->contents->dir['baseinstalldir'];
 unset($package_data->contents->dir);
-$main_dir = $package_data->contents->addChild('dir');
-$main_dir['name'] = $dir_name;
+$main_dir                   = $package_data->contents->addChild('dir');
+$main_dir['name']           = $dir_name;
 $main_dir['baseinstalldir'] = $base_install_dir;
 
 foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($target), RecursiveIteratorIterator::LEAVES_ONLY) as $php_file) {
-    $file = $main_dir->addChild('file');
-    $file['role'] = 'php';
+    $file                   = $main_dir->addChild('file');
+    $file['role']           = 'php';
     $file['baseinstalldir'] = $base_install_dir;
-    $file['install-as'] = str_replace($target, '', $php_file);
-    $file['name'] = $dir_name.$file['install-as'];
+    $file['install-as']     = str_replace($target, '', $php_file);
+    $file['name']           = $dir_name . $file['install-as'];
 }
-            
+
 $package_data->date = date('Y-m-d');
 $package_data->time = date('H:i:s');
 $current_version = $package_data->version->release;
@@ -36,6 +36,13 @@ if (isset($$version_type))
     $$version_type++;
 else
     $patch_version++;
+
+switch ($version_type) {
+    case 'major_version':
+        $minor_version = 0;
+    case 'minor_version':
+        $patch_version = 0;
+}
 
 $changelog = $package_data->changelog->addChild('release');
 
