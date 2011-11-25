@@ -44,6 +44,9 @@ dev:
 	pear install pear.phpunit.de/PHPUnit 
 	pear install pear.pirum-project.org/Pirum
 	pear install pear.symfony.com/Validator
+	pear install --force --alldeps packages.zendframework.com/Zend_Validator-beta
+	pear install --force --alldeps packages.zendframework.com/Zend_Filter-beta
+	pear install --force --alldeps packages.zendframework.com/Zend_Registry-beta
 	pear channel-discover respect.li/pear
 
 .PHONY: pear-patch
