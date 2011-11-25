@@ -3,4 +3,7 @@ language: php
 php:
   - 5.3
 
+before_script: 
+  - "sudo apt-get install php-pear"
+  - make dev
 script: make test
