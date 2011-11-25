@@ -43,6 +43,7 @@ dev:
 	pear config-set auto_discover 1
 	pear install pear.phpunit.de/PHPUnit 
 	pear install pear.pirum-project.org/Pirum
+	pear install pear.symfony.com/Validator
 	pear channel-discover respect.li/pear
 
 .PHONY: pear-patch
