@@ -1,85 +1,53 @@
-#! /usr/bin/make
-
-.PHONY: default
-default: project-info
 default:
+	@echo "Respect Foundation"
 	@echo 'Please see "make help" for instructions'
 
-.PHONY: help
-help: project-info
 help:
-	@echo "Usage: make <target>"
-	@echo "\nAvailable targets"
-	@echo "\thelp\t\t This message"
-	@echo "\ttest\t\t Run all tests"
-	@echo "\tcoverage\t Run all tests and write HTML coverage reports"
-	@echo "\tdev\t\t Install the necessary packages to develop this project"
-	@echo "\tpear-patch\t Creates a PEAR package incrementing the patch revision number (1.1.x)"
-	@echo "\tpear-minor\t Creates a PEAR package incrementing the minor revision number (1.x.0)"
-	@echo "\tpear-major\t Creates a PEAR package incrementing the major revision number (x.0.0)"
-	@echo "\tpirum\t\t Send all tgz pear packages to Respect Pirum repository (requires git write access)"
-	@echo "\tfix-legacy\t\t Remove old respect.github.com/pear channel, adds new respect.li/pear channel"
+	@echo "Respect Foundation\n"
+	@echo "Available targets:"
+	@echo "help\t\t This message"
+	@echo "test\t\t Run all tests"
+	@echo "coverage\t Run all tests and write HTML coverage reports"
+	@echo "dev\t\t Install the necessary packages to develop this project"
+	@echo "pear-patch\t Creates a PEAR package incrementing the patch revision number (1.1.x)"
+	@echo "pear-minor\t Creates a PEAR package incrementing the minor revision number (1.x.0)"
+	@echo "pear-major\t Creates a PEAR package incrementing the major revision number (x.0.0)"
+	@echo "pirum\t\t PKG=FooPackage.tgz REPO=GitHubFooUser/GitHubFooRepo Send all tgz pear packages to Pirum repository (requires git write access)"
 
-.PHONY: project-info
-project-info: 
-	@echo "Respect Project"
-
-.PHONY: test
-test: project-info
 test: 
 	@cd tests;phpunit .
 
-.PHONY: coverage
-coverage: project-info
 coverage: 
 	@cd tests;phpunit --coverage-html=reports/coverage .
-	@echo "Done. Reports available on /tests/reports/coverage/index.html"
+	@echo "Done. Reports available on tests/reports/coverage/index.html"
 
-.PHONY: dev
-dev: project-info
 dev: 
-	@echo "Installing PEAR packages... (please run as administrator if needed)"
+	@echo "Installing PEAR packages... (please run as root if needed)"
 	pear upgrade
 	pear config-set auto_discover 1
-	pear install pear.phpunit.de/PHPUnit 
-	pear install pear.pirum-project.org/Pirum
-	pear install pear.symfony.com/Validator
-	pear install --force --alldeps packages.zendframework.com/Zend_Validator-beta
-	pear install --force --alldeps packages.zendframework.com/Zend_Filter-beta
-	pear install --force --alldeps packages.zendframework.com/Zend_Registry-beta
-	pear channel-discover respect.li/pear
+	-pear channel-discover respect.li/pear
+	pear install --soft --force pear.phpunit.de/PHPUnit 
+	pear install --soft --force pear.pirum-project.org/Pirum
+	pear install --soft --force --alldeps -o package.xml 
 
-.PHONY: pear-patch
-pear-patch: project-info
+pear-patch: 
 	@echo "Generating package.xml"
-	php bin/pear-package.php patch
+	php bin/pear-package.php patch ${STABILITY}
 	pear package package.xml
 
-.PHONY: pear-minor
-pear-minor: project-info
+pear-minor: 
 	@echo "Generating package.xml"
-	php bin/pear-package.php minor
+	php bin/pear-package.php minor ${STABILITY}
 	pear package package.xml
 
-.PHONY: pear-major
-pear-major: project-info
+pear-major: 
 	@echo "Generating package.xml"
-	php bin/pear-package.php major
+	php bin/pear-package.php major ${STABILITY}
 	pear package package.xml
 
-.PHONY: pirum
-pirum: project-info
-	@echo "Cloning channel"
-	rm -Rf pirum;git clone git@github.com:Respect/pear.git pirum
+pirum: 
+	@echo "Cloning channel from git ${REPO}"
+	rm -Rf pirum;git clone git@github.com:${REPO}.git pirum
 	pirum add pirum ${PKG};pirum build pirum;
 	cd pirum;git add .;git commit -m "Added ${PKG}";git push
-	@echo "Success! Pushed ${PKG} to http://respect.li/pear"
-		
-.PHONY: fix-legacy
-fix-legacy: project-info
-	@echo "Making PEAR magic (please run as administrator if needed)"
-	pear uninstall respect.github.com/pear/Relational
-	pear uninstall respect.github.com/pear/Config
-	pear uninstall respect.github.com/pear/Validation
-	pear uninstall respect.github.com/pear/Loader
-	pear channel-delete respect.github.com/pear
+	@echo "Success! Pushed ${PKG}"
