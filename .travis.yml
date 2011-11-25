@@ -7,5 +7,4 @@ before_script:
   - "sudo apt-get install -y php-pear"
   - "sudo make dev"
 
-script: 
-  - "make test"
+script: make test
