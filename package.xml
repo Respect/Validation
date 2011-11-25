@@ -1,204 +1,215 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packagerversion="1.9.4" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
-    <name>Validation</name>
-    <channel>respect.li/pear</channel>
-    <summary>The most awesome validation engine ever created for PHP</summary>
-    <description>The most awesome validation engine ever created for PHP</description>
-    <lead>
-        <name>Alexandre Gomes Gaigalas</name>
-        <user>alganet</user>
-        <email>alexandre@gaigalas.net</email>
-        <active>yes</active>
-    </lead>
-    <date>2011-11-24</date>
-    <time>21:39:33</time>
-    <version>
-        <release>0.3.2</release>
-        <api>0.3.2</api>
-    </version>
-    <stability>
+  <name>Validation</name>
+  <channel>respect.li/pear</channel>
+  <summary>The most awesome validation engine ever created for PHP</summary>
+  <description>The most awesome validation engine ever created for PHP</description>
+  <lead>
+    <name>Alexandre Gomes Gaigalas</name>
+    <user>alganet</user>
+    <email>alexandre@gaigalas.net</email>
+    <active>yes</active>
+  </lead>
+  <date>2011-11-25</date>
+  <time>20:56:17</time>
+  <version>
+    <release>0.3.3</release>
+    <api>0.3.3</api>
+  </version>
+  <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+  </stability>
+  <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+  <notes>-</notes>
+  <contents>
+    <dir name="library/Respect/Validation" baseinstalldir="Respect/Validation">
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/ExceptionIterator.php" name="library/Respect/Validation/ExceptionIterator.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/AbstractGroupedException.php" name="library/Respect/Validation/Exceptions/AbstractGroupedException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/AbstractNestedException.php" name="library/Respect/Validation/Exceptions/AbstractNestedException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/AllOfException.php" name="library/Respect/Validation/Exceptions/AllOfException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/AlnumException.php" name="library/Respect/Validation/Exceptions/AlnumException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/AlphaException.php" name="library/Respect/Validation/Exceptions/AlphaException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/ArrException.php" name="library/Respect/Validation/Exceptions/ArrException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/AtLeastException.php" name="library/Respect/Validation/Exceptions/AtLeastException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/AttributeException.php" name="library/Respect/Validation/Exceptions/AttributeException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/BetweenException.php" name="library/Respect/Validation/Exceptions/BetweenException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/BoolException.php" name="library/Respect/Validation/Exceptions/BoolException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/CallException.php" name="library/Respect/Validation/Exceptions/CallException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/CallbackException.php" name="library/Respect/Validation/Exceptions/CallbackException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/ComponentException.php" name="library/Respect/Validation/Exceptions/ComponentException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/ContainsException.php" name="library/Respect/Validation/Exceptions/ContainsException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/CpfException.php" name="library/Respect/Validation/Exceptions/CpfException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/CreditCardException.php" name="library/Respect/Validation/Exceptions/CreditCardException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/DateException.php" name="library/Respect/Validation/Exceptions/DateException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/DigitsException.php" name="library/Respect/Validation/Exceptions/DigitsException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/DomainException.php" name="library/Respect/Validation/Exceptions/DomainException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/EachException.php" name="library/Respect/Validation/Exceptions/EachException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/EmailException.php" name="library/Respect/Validation/Exceptions/EmailException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/EndsWithException.php" name="library/Respect/Validation/Exceptions/EndsWithException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/EqualsException.php" name="library/Respect/Validation/Exceptions/EqualsException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/EvenException.php" name="library/Respect/Validation/Exceptions/EvenException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/FloatException.php" name="library/Respect/Validation/Exceptions/FloatException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/HexaException.php" name="library/Respect/Validation/Exceptions/HexaException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/InException.php" name="library/Respect/Validation/Exceptions/InException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/InstanceException.php" name="library/Respect/Validation/Exceptions/InstanceException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/IntException.php" name="library/Respect/Validation/Exceptions/IntException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/IpException.php" name="library/Respect/Validation/Exceptions/IpException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/JsonException.php" name="library/Respect/Validation/Exceptions/JsonException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/KeyException.php" name="library/Respect/Validation/Exceptions/KeyException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/LengthException.php" name="library/Respect/Validation/Exceptions/LengthException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/LowercaseException.php" name="library/Respect/Validation/Exceptions/LowercaseException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/MaxException.php" name="library/Respect/Validation/Exceptions/MaxException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/MinException.php" name="library/Respect/Validation/Exceptions/MinException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/MinimumAgeException.php" name="library/Respect/Validation/Exceptions/MinimumAgeException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/MostOfException.php" name="library/Respect/Validation/Exceptions/MostOfException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/MultipleException.php" name="library/Respect/Validation/Exceptions/MultipleException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/NegativeException.php" name="library/Respect/Validation/Exceptions/NegativeException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/NoWhitespaceException.php" name="library/Respect/Validation/Exceptions/NoWhitespaceException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/NoneOfException.php" name="library/Respect/Validation/Exceptions/NoneOfException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/NotEmptyException.php" name="library/Respect/Validation/Exceptions/NotEmptyException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/NotException.php" name="library/Respect/Validation/Exceptions/NotException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/NullValueException.php" name="library/Respect/Validation/Exceptions/NullValueException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/NumericException.php" name="library/Respect/Validation/Exceptions/NumericException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/ObjectException.php" name="library/Respect/Validation/Exceptions/ObjectException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/OddException.php" name="library/Respect/Validation/Exceptions/OddException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/OneOfException.php" name="library/Respect/Validation/Exceptions/OneOfException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/PositiveException.php" name="library/Respect/Validation/Exceptions/PositiveException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/RegexException.php" name="library/Respect/Validation/Exceptions/RegexException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/RomanException.php" name="library/Respect/Validation/Exceptions/RomanException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/SfException.php" name="library/Respect/Validation/Exceptions/SfException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/SlugException.php" name="library/Respect/Validation/Exceptions/SlugException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/StartsWithException.php" name="library/Respect/Validation/Exceptions/StartsWithException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/StringException.php" name="library/Respect/Validation/Exceptions/StringException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/TldException.php" name="library/Respect/Validation/Exceptions/TldException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/UppercaseException.php" name="library/Respect/Validation/Exceptions/UppercaseException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/ValidationException.php" name="library/Respect/Validation/Exceptions/ValidationException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/ZendException.php" name="library/Respect/Validation/Exceptions/ZendException.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/AbstractComposite.php" name="library/Respect/Validation/Rules/AbstractComposite.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/AbstractRelated.php" name="library/Respect/Validation/Rules/AbstractRelated.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/AbstractRule.php" name="library/Respect/Validation/Rules/AbstractRule.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/AllOf.php" name="library/Respect/Validation/Rules/AllOf.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Alnum.php" name="library/Respect/Validation/Rules/Alnum.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Alpha.php" name="library/Respect/Validation/Rules/Alpha.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Arr.php" name="library/Respect/Validation/Rules/Arr.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Attribute.php" name="library/Respect/Validation/Rules/Attribute.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Between.php" name="library/Respect/Validation/Rules/Between.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Bool.php" name="library/Respect/Validation/Rules/Bool.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Call.php" name="library/Respect/Validation/Rules/Call.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Callback.php" name="library/Respect/Validation/Rules/Callback.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Cnpj.php" name="library/Respect/Validation/Rules/Cnpj.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Contains.php" name="library/Respect/Validation/Rules/Contains.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Cpf.php" name="library/Respect/Validation/Rules/Cpf.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/CreditCard.php" name="library/Respect/Validation/Rules/CreditCard.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Date.php" name="library/Respect/Validation/Rules/Date.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Digits.php" name="library/Respect/Validation/Rules/Digits.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Domain.php" name="library/Respect/Validation/Rules/Domain.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Each.php" name="library/Respect/Validation/Rules/Each.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Email.php" name="library/Respect/Validation/Rules/Email.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/EndsWith.php" name="library/Respect/Validation/Rules/EndsWith.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Equals.php" name="library/Respect/Validation/Rules/Equals.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Even.php" name="library/Respect/Validation/Rules/Even.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Float.php" name="library/Respect/Validation/Rules/Float.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Hexa.php" name="library/Respect/Validation/Rules/Hexa.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/In.php" name="library/Respect/Validation/Rules/In.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Instance.php" name="library/Respect/Validation/Rules/Instance.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Int.php" name="library/Respect/Validation/Rules/Int.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Ip.php" name="library/Respect/Validation/Rules/Ip.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Json.php" name="library/Respect/Validation/Rules/Json.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Key.php" name="library/Respect/Validation/Rules/Key.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/LeapDate.php" name="library/Respect/Validation/Rules/LeapDate.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/LeapYear.php" name="library/Respect/Validation/Rules/LeapYear.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Length.php" name="library/Respect/Validation/Rules/Length.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Lowercase.php" name="library/Respect/Validation/Rules/Lowercase.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Max.php" name="library/Respect/Validation/Rules/Max.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Min.php" name="library/Respect/Validation/Rules/Min.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/MinimumAge.php" name="library/Respect/Validation/Rules/MinimumAge.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Multiple.php" name="library/Respect/Validation/Rules/Multiple.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Negative.php" name="library/Respect/Validation/Rules/Negative.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/NoWhitespace.php" name="library/Respect/Validation/Rules/NoWhitespace.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/NoneOf.php" name="library/Respect/Validation/Rules/NoneOf.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Not.php" name="library/Respect/Validation/Rules/Not.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/NotEmpty.php" name="library/Respect/Validation/Rules/NotEmpty.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/NullValue.php" name="library/Respect/Validation/Rules/NullValue.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Numeric.php" name="library/Respect/Validation/Rules/Numeric.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Object.php" name="library/Respect/Validation/Rules/Object.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Odd.php" name="library/Respect/Validation/Rules/Odd.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/OneOf.php" name="library/Respect/Validation/Rules/OneOf.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Positive.php" name="library/Respect/Validation/Rules/Positive.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Regex.php" name="library/Respect/Validation/Rules/Regex.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Roman.php" name="library/Respect/Validation/Rules/Roman.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Sf.php" name="library/Respect/Validation/Rules/Sf.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Slug.php" name="library/Respect/Validation/Rules/Slug.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/StartsWith.php" name="library/Respect/Validation/Rules/StartsWith.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/String.php" name="library/Respect/Validation/Rules/String.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Tld.php" name="library/Respect/Validation/Rules/Tld.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Uppercase.php" name="library/Respect/Validation/Rules/Uppercase.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Zend.php" name="library/Respect/Validation/Rules/Zend.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Sanitizable.php" name="library/Respect/Validation/Sanitizable.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Validatable.php" name="library/Respect/Validation/Validatable.php"/>
+      <file role="php" baseinstalldir="Respect/Validation" install-as="/Validator.php" name="library/Respect/Validation/Validator.php"/>
+    </dir>
+  </contents>
+  <dependencies>
+    <required>
+      <php>
+        <min>5.3</min>
+      </php>
+      <pearinstaller>
+        <min>1.4.0</min>
+      </pearinstaller>
+      <package>
+        <name>Validator</name>
+        <channel>pear.symfony.com</channel>
+      </package>
+      <package>
+        <name>Zend_Validator</name>
+        <channel>packages.zendframework.com</channel>
+      </package>
+      <package>
+        <name>Zend_Filter</name>
+        <channel>packages.zendframework.com</channel>
+      </package>
+      <package>
+        <name>Zend_Registry</name>
+        <channel>packages.zendframework.com</channel>
+      </package>
+    </required>
+  </dependencies>
+  <phprelease/>
+  <changelog>
+    <release>
+      <version>
+        <release>0.2.2</release>
+        <api>0.2.2</api>
+      </version>
+      <stability>
         <release>alpha</release>
         <api>alpha</api>
-    </stability>
-    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
-    <notes>-</notes>
-    <contents>
-        <dir name="library/Respect/Validation" baseinstalldir="Respect/Validation">
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/ExceptionIterator.php" name="library/Respect/Validation/ExceptionIterator.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/AbstractGroupedException.php" name="library/Respect/Validation/Exceptions/AbstractGroupedException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/AbstractNestedException.php" name="library/Respect/Validation/Exceptions/AbstractNestedException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/AllOfException.php" name="library/Respect/Validation/Exceptions/AllOfException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/AlnumException.php" name="library/Respect/Validation/Exceptions/AlnumException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/AlphaException.php" name="library/Respect/Validation/Exceptions/AlphaException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/ArrException.php" name="library/Respect/Validation/Exceptions/ArrException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/AtLeastException.php" name="library/Respect/Validation/Exceptions/AtLeastException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/AttributeException.php" name="library/Respect/Validation/Exceptions/AttributeException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/BetweenException.php" name="library/Respect/Validation/Exceptions/BetweenException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/BoolException.php" name="library/Respect/Validation/Exceptions/BoolException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/CallException.php" name="library/Respect/Validation/Exceptions/CallException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/CallbackException.php" name="library/Respect/Validation/Exceptions/CallbackException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/ComponentException.php" name="library/Respect/Validation/Exceptions/ComponentException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/ContainsException.php" name="library/Respect/Validation/Exceptions/ContainsException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/CpfException.php" name="library/Respect/Validation/Exceptions/CpfException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/CreditCardException.php" name="library/Respect/Validation/Exceptions/CreditCardException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/DateException.php" name="library/Respect/Validation/Exceptions/DateException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/DigitsException.php" name="library/Respect/Validation/Exceptions/DigitsException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/DomainException.php" name="library/Respect/Validation/Exceptions/DomainException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/EachException.php" name="library/Respect/Validation/Exceptions/EachException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/EmailException.php" name="library/Respect/Validation/Exceptions/EmailException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/EndsWithException.php" name="library/Respect/Validation/Exceptions/EndsWithException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/EqualsException.php" name="library/Respect/Validation/Exceptions/EqualsException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/EvenException.php" name="library/Respect/Validation/Exceptions/EvenException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/FloatException.php" name="library/Respect/Validation/Exceptions/FloatException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/HexaException.php" name="library/Respect/Validation/Exceptions/HexaException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/InException.php" name="library/Respect/Validation/Exceptions/InException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/InstanceException.php" name="library/Respect/Validation/Exceptions/InstanceException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/IntException.php" name="library/Respect/Validation/Exceptions/IntException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/IpException.php" name="library/Respect/Validation/Exceptions/IpException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/JsonException.php" name="library/Respect/Validation/Exceptions/JsonException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/KeyException.php" name="library/Respect/Validation/Exceptions/KeyException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/LengthException.php" name="library/Respect/Validation/Exceptions/LengthException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/LowercaseException.php" name="library/Respect/Validation/Exceptions/LowercaseException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/MaxException.php" name="library/Respect/Validation/Exceptions/MaxException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/MinException.php" name="library/Respect/Validation/Exceptions/MinException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/MinimumAgeException.php" name="library/Respect/Validation/Exceptions/MinimumAgeException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/MostOfException.php" name="library/Respect/Validation/Exceptions/MostOfException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/MultipleException.php" name="library/Respect/Validation/Exceptions/MultipleException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/NegativeException.php" name="library/Respect/Validation/Exceptions/NegativeException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/NoWhitespaceException.php" name="library/Respect/Validation/Exceptions/NoWhitespaceException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/NoneOfException.php" name="library/Respect/Validation/Exceptions/NoneOfException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/NotEmptyException.php" name="library/Respect/Validation/Exceptions/NotEmptyException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/NotException.php" name="library/Respect/Validation/Exceptions/NotException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/NullValueException.php" name="library/Respect/Validation/Exceptions/NullValueException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/NumericException.php" name="library/Respect/Validation/Exceptions/NumericException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/ObjectException.php" name="library/Respect/Validation/Exceptions/ObjectException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/OddException.php" name="library/Respect/Validation/Exceptions/OddException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/OneOfException.php" name="library/Respect/Validation/Exceptions/OneOfException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/PositiveException.php" name="library/Respect/Validation/Exceptions/PositiveException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/RegexException.php" name="library/Respect/Validation/Exceptions/RegexException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/RomanException.php" name="library/Respect/Validation/Exceptions/RomanException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/SfException.php" name="library/Respect/Validation/Exceptions/SfException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/SlugException.php" name="library/Respect/Validation/Exceptions/SlugException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/StartsWithException.php" name="library/Respect/Validation/Exceptions/StartsWithException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/StringException.php" name="library/Respect/Validation/Exceptions/StringException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/TldException.php" name="library/Respect/Validation/Exceptions/TldException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/UppercaseException.php" name="library/Respect/Validation/Exceptions/UppercaseException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/ValidationException.php" name="library/Respect/Validation/Exceptions/ValidationException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Exceptions/ZendException.php" name="library/Respect/Validation/Exceptions/ZendException.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/AbstractComposite.php" name="library/Respect/Validation/Rules/AbstractComposite.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/AbstractRelated.php" name="library/Respect/Validation/Rules/AbstractRelated.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/AbstractRule.php" name="library/Respect/Validation/Rules/AbstractRule.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/AllOf.php" name="library/Respect/Validation/Rules/AllOf.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Alnum.php" name="library/Respect/Validation/Rules/Alnum.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Alpha.php" name="library/Respect/Validation/Rules/Alpha.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Arr.php" name="library/Respect/Validation/Rules/Arr.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Attribute.php" name="library/Respect/Validation/Rules/Attribute.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Between.php" name="library/Respect/Validation/Rules/Between.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Bool.php" name="library/Respect/Validation/Rules/Bool.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Call.php" name="library/Respect/Validation/Rules/Call.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Callback.php" name="library/Respect/Validation/Rules/Callback.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Cnpj.php" name="library/Respect/Validation/Rules/Cnpj.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Contains.php" name="library/Respect/Validation/Rules/Contains.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Cpf.php" name="library/Respect/Validation/Rules/Cpf.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/CreditCard.php" name="library/Respect/Validation/Rules/CreditCard.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Date.php" name="library/Respect/Validation/Rules/Date.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Digits.php" name="library/Respect/Validation/Rules/Digits.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Domain.php" name="library/Respect/Validation/Rules/Domain.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Each.php" name="library/Respect/Validation/Rules/Each.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Email.php" name="library/Respect/Validation/Rules/Email.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/EndsWith.php" name="library/Respect/Validation/Rules/EndsWith.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Equals.php" name="library/Respect/Validation/Rules/Equals.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Even.php" name="library/Respect/Validation/Rules/Even.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Float.php" name="library/Respect/Validation/Rules/Float.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Hexa.php" name="library/Respect/Validation/Rules/Hexa.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/In.php" name="library/Respect/Validation/Rules/In.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Instance.php" name="library/Respect/Validation/Rules/Instance.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Int.php" name="library/Respect/Validation/Rules/Int.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Ip.php" name="library/Respect/Validation/Rules/Ip.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Json.php" name="library/Respect/Validation/Rules/Json.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Key.php" name="library/Respect/Validation/Rules/Key.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/LeapDate.php" name="library/Respect/Validation/Rules/LeapDate.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/LeapYear.php" name="library/Respect/Validation/Rules/LeapYear.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Length.php" name="library/Respect/Validation/Rules/Length.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Lowercase.php" name="library/Respect/Validation/Rules/Lowercase.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Max.php" name="library/Respect/Validation/Rules/Max.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Min.php" name="library/Respect/Validation/Rules/Min.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/MinimumAge.php" name="library/Respect/Validation/Rules/MinimumAge.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Multiple.php" name="library/Respect/Validation/Rules/Multiple.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Negative.php" name="library/Respect/Validation/Rules/Negative.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/NoWhitespace.php" name="library/Respect/Validation/Rules/NoWhitespace.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/NoneOf.php" name="library/Respect/Validation/Rules/NoneOf.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Not.php" name="library/Respect/Validation/Rules/Not.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/NotEmpty.php" name="library/Respect/Validation/Rules/NotEmpty.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/NullValue.php" name="library/Respect/Validation/Rules/NullValue.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Numeric.php" name="library/Respect/Validation/Rules/Numeric.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Object.php" name="library/Respect/Validation/Rules/Object.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Odd.php" name="library/Respect/Validation/Rules/Odd.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/OneOf.php" name="library/Respect/Validation/Rules/OneOf.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Positive.php" name="library/Respect/Validation/Rules/Positive.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Regex.php" name="library/Respect/Validation/Rules/Regex.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Roman.php" name="library/Respect/Validation/Rules/Roman.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Sf.php" name="library/Respect/Validation/Rules/Sf.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Slug.php" name="library/Respect/Validation/Rules/Slug.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/StartsWith.php" name="library/Respect/Validation/Rules/StartsWith.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/String.php" name="library/Respect/Validation/Rules/String.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Tld.php" name="library/Respect/Validation/Rules/Tld.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Uppercase.php" name="library/Respect/Validation/Rules/Uppercase.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Rules/Zend.php" name="library/Respect/Validation/Rules/Zend.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Sanitizable.php" name="library/Respect/Validation/Sanitizable.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Validatable.php" name="library/Respect/Validation/Validatable.php"/>
-            <file role="php" baseinstalldir="Respect/Validation" install-as="/Validator.php" name="library/Respect/Validation/Validator.php"/>
-        </dir>
-    </contents>
-    <dependencies>
-        <required>
-            <php>
-                <min>5.3</min>
-            </php>
-            <pearinstaller>
-                <min>1.4.0</min>
-            </pearinstaller>
-            <package>
-                <name>Validator</name>
-                <channel>pear.symfony.com</channel>
-            </package>
-            <package>
-                <name>Zend_Validator</name>
-                <channel>packages.zendframework.com</channel>
-            </package>
-            <package>
-                <name>Zend_Filter</name>
-                <channel>packages.zendframework.com</channel>
-            </package>
-            <package>
-                <name>Zend_Registry</name>
-                <channel>packages.zendframework.com</channel>
-            </package>
-        </required>
-    </dependencies>
-    <phprelease/>
-    <changelog>
-        <release>
-            <version>
-                <release>0.2.2</release>
-                <api>0.2.2</api>
-            </version>
-            <stability>
-                <release>alpha</release>
-                <api>alpha</api>
-            </stability>
-            <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
-        </release>
-        <release>
-            <version>
-                <release>0.3.2</release>
-                <api>0.3.2</api>
-            </version>
-            <stability>
-                <release>alpha</release>
-                <api>alpha</api>
-            </stability>
-            <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
-        </release>
-    </changelog>
+      </stability>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+    </release>
+    <release>
+      <version>
+        <release>0.3.2</release>
+        <api>0.3.2</api>
+      </version>
+      <stability>
+        <release>alpha</release>
+        <api>alpha</api>
+      </stability>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+    </release>
+    <release>
+      <version>
+        <release>0.3.3</release>
+        <api>0.3.3</api>
+      </version>
+      <stability>
+        <release>alpha</release>
+        <api>alpha</api>
+      </stability>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+    </release>
+  </changelog>
 </package>
