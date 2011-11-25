@@ -39,8 +39,10 @@ coverage:
 dev: project-info
 dev: 
 	@echo "Installing PEAR packages... (please run as administrator if needed)"
+	pear upgrade
 	pear config-set auto_discover 1
-	pear install pear.phpunit.de/PHPUnit pear.pirum-project.org/Pirum
+	pear install pear.phpunit.de/PHPUnit 
+	pear install pear.pirum-project.org/Pirum
 	pear channel-discover respect.li/pear
 
 .PHONY: pear-patch
