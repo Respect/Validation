@@ -40,6 +40,8 @@ class ValidationException extends InvalidArgumentException
     {
         if (is_string($value))
             return $value;
+        elseif (is_array($value))
+            return 'Array'; //FIXME
         elseif (is_object($value))
             return static::stringifyObject($value);
         else
