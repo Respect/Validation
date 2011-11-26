@@ -20,6 +20,8 @@ $main_dir['name']           = $dir_name;
 $main_dir['baseinstalldir'] = $base_install_dir;
 
 foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($target), RecursiveIteratorIterator::LEAVES_ONLY) as $php_file) {
+    if (!$php_file->isFile())
+        continue;
     $file                   = $main_dir->addChild('file');
     $file['role']           = 'php';
     $file['baseinstalldir'] = $base_install_dir;

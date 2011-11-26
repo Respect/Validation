@@ -158,6 +158,8 @@
       <pearinstaller>
         <min>1.4.0</min>
       </pearinstaller>
+    </required>
+    <optional>
       <package>
         <name>Validator</name>
         <channel>pear.symfony.com</channel>
@@ -174,7 +176,7 @@
         <name>Zend_Registry</name>
         <channel>packages.zendframework.com</channel>
       </package>
-    </required>
+    </optional>
   </dependencies>
   <phprelease/>
   <changelog>
