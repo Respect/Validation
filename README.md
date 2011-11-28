@@ -1,4 +1,4 @@
-Respect Validation [![Build Status](https://secure.travis-ci.org/Respect/Validation.png)](http://travis-ci.org/Respect/Validation)
+Respect\Validation [![Build Status](https://secure.travis-ci.org/Respect/Validation.png)](http://travis-ci.org/Respect/Validation)
 ==================
 
 Respect\Validation is the most awesome validation engine ever created for PHP. Featuring:
