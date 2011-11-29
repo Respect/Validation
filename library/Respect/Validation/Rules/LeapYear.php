@@ -8,20 +8,13 @@ class LeapYear extends AbstractRule
 {
     public function validate($year)
     {
-        if (is_string($year))
-            if (is_numeric($year))
+        if (is_numeric($year))
                 $year = (int) $year;
-            else {
-                try {
-                    $date = new DateTime($year);
-                    $year = (int) $date->format('Y');
-                } catch (Exception $e) {
-                    return false;
-                }
-            }
+        elseif (is_string($year)) 
+            $year = (int) date('Y', strtotime($year));
         elseif ($year instanceof DateTime)
             $year = (int) $year->format('Y');
-        elseif (!is_integer($year))
+        else
             return false;
 
         $date = strtotime(sprintf('%d-02-29', $year));

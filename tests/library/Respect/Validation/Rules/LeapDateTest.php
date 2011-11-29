@@ -35,4 +35,8 @@ class LeapDateTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->leapDateValidator->validate(
             new DateTime('1989-02-29')));
     }
+    public function test_invalid_leap_date_input()
+    {
+        $this->assertFalse($this->leapDateValidator->validate(array()));
+    }
 }

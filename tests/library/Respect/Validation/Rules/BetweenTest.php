@@ -68,5 +68,13 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($o->validate($input));
         $this->assertFalse($o->assert($input));
     }
+    
+    /**
+     * @expectedException Respect\Validation\Exceptions\ComponentException
+     */
+    public function test_invalid_construction_params_should_raise_exception()
+    {
+        $o = new Between(10, 5);
+    }
 
 }

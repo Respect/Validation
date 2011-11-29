@@ -38,6 +38,16 @@ class EachTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($result);
     }
 
+    /**
+     * @expectedException Respect\Validation\Exceptions\EachException
+     */
+    public function test_validator_should_NOT_pass_with_only_key_validation()
+    {
+        $v = new Each(null, new String());
+        $result = $v->assert(array('a', 'b', 'c', 'd', 'e'));
+        $this->assertTrue($result);
+    }
+
     public function test_not_traversable_validator_should_fail()
     {
         $v = new Each(new NotEmpty());

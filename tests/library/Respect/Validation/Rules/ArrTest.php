@@ -2,6 +2,11 @@
 
 namespace Respect\Validation\Rules;
 
+class TestAccess extends \ArrayObject implements \ArrayAccess, \Countable, \Traversable
+{
+    
+}
+
 class ArrTest extends \PHPUnit_Framework_TestCase
 {
 
@@ -37,7 +42,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
         return array(
             array(array()),
             array(array(1, 2, 3)),
-            array(new \ArrayObject),
+            array(new TestAccess),
         );
 
 
