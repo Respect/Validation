@@ -10,11 +10,11 @@
     <email>alexandre@gaigalas.net</email>
     <active>yes</active>
   </lead>
-  <date>2011-11-25</date>
-  <time>20:56:17</time>
+  <date>2011-11-29</date>
+  <time>21:20:14</time>
   <version>
-    <release>0.3.3</release>
-    <api>0.3.3</api>
+    <release>0.3.4</release>
+    <api>0.3.4</api>
   </version>
   <stability>
     <release>alpha</release>
@@ -206,6 +206,17 @@
       <version>
         <release>0.3.3</release>
         <api>0.3.3</api>
+      </version>
+      <stability>
+        <release>alpha</release>
+        <api>alpha</api>
+      </stability>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+    </release>
+    <release>
+      <version>
+        <release>0.3.4</release>
+        <api>0.3.4</api>
       </version>
       <stability>
         <release>alpha</release>
