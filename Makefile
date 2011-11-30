@@ -13,7 +13,9 @@ help:
 	@echo "minor\t\t Updates the package.xml and increments the minor revision number (1.x.0)"
 	@echo "major\t\t Updates the package.xml and increments the major revision number (x.0.0)"
 	@echo "pear\t\t Creates a PEAR package from the current package.xml"
-	@echo "pirum-push\t PKG=FooPackage.tgz REPO=GitHubFooUser/GitHubFooRepo Send all tgz pear packages to Pirum repository (requires git write access)"
+	@echo "phar\t\t Creates a Phar package from the current package.xml"
+	@echo "pirum-push\t PKG=FooPackage.tgz REPO=GitHubFooUser/GitHubFooRepo Send a tgz pear package to Pirum repository (requires git write access)"
+	@echo "phar-push\t PKG=FooPackage.phar REPO=GitHubFooUser/GitHubFooRepo Send a phar packages to phar repository (requires git write access)"
 
 test: 
 	@cd tests;phpunit .
@@ -47,12 +49,24 @@ pear:
 	@echo "Generating package tgz"
 	pear package package.xml
 
+phar:
+	@echo "Generating package phar"
+	php -dphar.readonly=0 bin/phar-package.php 
+
 pirum-push:
 	@echo "Cloning channel from git ${REPO}"
 	-rm -Rf pirum
 	git clone git@github.com:${REPO}.git pirum
 	pirum add pirum ${PKG};pirum build pirum;
 	cd pirum;git add .;git commit -m "Added ${PKG}";git push
+	@echo "Success! Pushed ${PKG}"
+
+phar-push:
+	@echo "Cloning channel from git ${REPO}"
+	-rm -Rf phar
+	git clone git@github.com:${REPO}.git phar
+	cp ${PKG} phar
+	cd phar;git add .;git commit -m "Added ${PKG}";git push
 	@echo "Success! Pushed ${PKG}"
 
 foundation:
@@ -63,9 +77,19 @@ foundation:
 	rm .foundation-tmp/README.md
 	rm .foundation-tmp/LICENSE
 	mv .foundation-tmp/README.md.dist .foundation-tmp/README.md
-	mv .foundation-tmp/package.xml.dist package.xml
-	@echo "Copying files without overwrite"
-	cp -an .foundation-tmp/* .
+	mv .foundation-tmp/LICENSE.dist .foundation-tmp/LICENSE
+	mv .foundation-tmp/package.xml.dist .foundation-tmp/package.xml
+	-mkdir bin
+	-mkdir tests
+	-mkdir library
+	-cp -f .foundation-tmp/bin/pear-package.php bin
+	-cp -f .foundation-tmp/bin/phar-package.php bin
+	-cp -f .foundation-tmp/tests/bootstrap.php tests
+	-cp -f .foundation-tmp/tests/phpunit.xml tests
+	-cp -f .foundation-tmp/.travis.yml .
+	-cp -n .foundation-tmp/LICENSE .
+	-cp -n .foundation-tmp/README.md .
+	-cp -n .foundation-tmp/package.xml .
 	echo "Removing temp files"
 	rm -Rf .foundation-tmp
 	@echo "Done!"
