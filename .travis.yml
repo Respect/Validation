@@ -8,5 +8,8 @@ php:
 before_script:
   - "pyrus channel-discover pear.symfony.com"
   - "pyrus channel-discover packages.zendframework.com"
-  - "sudo make dev-travis"
+  - "pyrus install pear.symfony.com/Validator"
+  - "pyrus install packages.zendframework.com/Zend_Validator"
+  - "pyrus install packages.zendframework.com/Zend_Filter"
+  - "pyrus install packages.zendframework.com/Zend_Registry"
   - "phpenv rehash" 

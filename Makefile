@@ -36,7 +36,7 @@ dev:
 
 dev-travis: 
 	@echo "Installing Pyrus packages... (please run as root if needed)"
-	pyrus install -f -o package.xml 
+	pyrus install -f package.xml 
 
 patch:
 	@echo "Generating package.xml patch version"
