@@ -6,5 +6,5 @@ php:
   - 5.4
 
 before_script:
-  - "sudo make dev-travis "
+  - "sudo make dev-travis"
   - "phpenv rehash" 

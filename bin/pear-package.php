@@ -16,6 +16,7 @@ $target                     = realpath("../$dir_name");
 $base_install_dir           = (string) $package_data->contents->dir['baseinstalldir'];
 unset($package_data->contents->dir);
 $main_dir                   = $package_data->contents->addChild('dir');
+$filelist                   = $package_data->phprelease->filelist ?: $package_data->phprelease->addChild('filelist');
 $main_dir['name']           = $dir_name;
 $main_dir['baseinstalldir'] = $base_install_dir;
 
@@ -23,10 +24,12 @@ foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($target), 
     if (!$php_file->isFile())
         continue;
     $file                   = $main_dir->addChild('file');
+    $install                = $filelist->addChild('install');
+    $install['as']          = str_replace($target, '', $php_file);
     $file['role']           = 'php';
     $file['baseinstalldir'] = $base_install_dir;
-    $file['install-as']     = str_replace($target, '', $php_file);
-    $file['name']           = $dir_name . $file['install-as'];
+    $file['name']           = $dir_name . $install['as'];
+    $install['name']        = $file['name'];
 }
 
 $package_data->date = date('Y-m-d');
