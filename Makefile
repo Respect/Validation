@@ -36,7 +36,6 @@ dev:
 
 dev-travis: 
 	@echo "Installing Pyrus packages... (please run as root if needed)"
-	pyrus set auto_discover 1
 	pyrus install -f -o package.xml 
 
 patch:

@@ -7,4 +7,6 @@ php:
 
 before_script:
   - "sudo make dev-travis"
+  - "pyrus channel-discover pear.symfony.com"
+  - "pyrus channel-discover packages.zendframework.com"
   - "phpenv rehash" 
