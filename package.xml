@@ -11,10 +11,10 @@
     <active>yes</active>
   </lead>
   <date>2011-12-22</date>
-  <time>18:45:52</time>
+  <time>19:16:15</time>
   <version>
-    <release>0.3.6</release>
-    <api>0.3.6</api>
+    <release>0.3.7</release>
+    <api>0.3.7</api>
   </version>
   <stability>
     <release>alpha</release>
@@ -321,6 +321,9 @@
         <api>alpha</api>
       </stability>
       <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <date>2009-09-09</date>
+      <time>09:09:09</time>
+      <notes>This release date and time might be innacurate.</notes>
     </release>
     <release>
       <version>
@@ -332,6 +335,9 @@
         <api>alpha</api>
       </stability>
       <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <date>2009-09-09</date>
+      <time>09:09:09</time>
+      <notes>This release date and time might be innacurate.</notes>
     </release>
     <release>
       <version>
@@ -343,6 +349,9 @@
         <api>alpha</api>
       </stability>
       <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <date>2009-09-09</date>
+      <time>09:09:09</time>
+      <notes>This release date and time might be innacurate.</notes>
     </release>
     <release>
       <version>
@@ -354,6 +363,9 @@
         <api>alpha</api>
       </stability>
       <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <date>2009-09-09</date>
+      <time>09:09:09</time>
+      <notes>This release date and time might be innacurate.</notes>
     </release>
     <release>
       <version>
@@ -365,6 +377,9 @@
         <api>alpha</api>
       </stability>
       <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <date>2009-09-09</date>
+      <time>09:09:09</time>
+      <notes>This release date and time might be innacurate.</notes>
     </release>
     <release>
       <version>
@@ -376,6 +391,23 @@
         <api>alpha</api>
       </stability>
       <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <date>2009-09-09</date>
+      <time>09:09:09</time>
+      <notes>This release date and time might be innacurate.</notes>
+    </release>
+    <release>
+      <version>
+        <release>0.3.7</release>
+        <api>0.3.7</api>
+      </version>
+      <stability>
+        <release>alpha</release>
+        <api>alpha</api>
+      </stability>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <date>2011-12-22</date>
+      <time>19:16:15</time>
+      <notes>-</notes>
     </release>
   </changelog>
 </package>

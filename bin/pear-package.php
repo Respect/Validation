@@ -15,8 +15,9 @@ $dir_name                   = (string) $package_data->contents->dir['name'];
 $target                     = realpath("../$dir_name");
 $base_install_dir           = (string) $package_data->contents->dir['baseinstalldir'];
 unset($package_data->contents->dir);
+unset($package_data->phprelease->filelist);
 $main_dir                   = $package_data->contents->addChild('dir');
-$filelist                   = $package_data->phprelease->filelist ?: $package_data->phprelease->addChild('filelist');
+$filelist                   = $package_data->phprelease->addChild('filelist');
 $main_dir['name']           = $dir_name;
 $main_dir['baseinstalldir'] = $base_install_dir;
 
@@ -49,6 +50,16 @@ switch ($version_type) {
         $patch_version = 0;
 }
 
+
+foreach ($package_data->changelog->release as $old_release) {
+    if (!$old_release->date)
+        $old_release->addChild('date', '2009-09-09');
+    if (!$old_release->time)
+        $old_release->addChild('time', '09:09:09');
+    if (!$old_release->notes)
+        $old_release->addChild('notes', 'This release date and time might be innacurate.');
+}
+
 $changelog = $package_data->changelog->addChild('release');
 
 $package_version = "$major_version.$minor_version.$patch_version";
@@ -66,6 +77,9 @@ $changelog->stability->api
         = (string) $stability;
 $changelog->license = $package_data->license;
 $changelog->license['uri'] = $package_data->license['uri'];
+$changelog->date = (string) $package_data->date;
+$changelog->time = (string) $package_data->time;
+$changelog->notes = '-';
 
 $dom = new DOMDocument('1.0');
 $dom->preserveWhiteSpace = false;
