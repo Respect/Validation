@@ -8,7 +8,7 @@ php:
 before_script:
   - "pyrus channel-discover pear.symfony.com"
   - "pyrus channel-discover packages.zendframework.com"
-  - "pyrus install pear.symfony.com/Validator"
+  - "pyrus install -f pear.symfony.com/Validator"
   - "pyrus install -f packages.zendframework.com/Zend_Validator"
   - "pyrus install -f packages.zendframework.com/Zend_Filter"
   - "pyrus install -f packages.zendframework.com/Zend_Registry"
