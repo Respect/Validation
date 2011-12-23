@@ -1,3 +1,4 @@
+
 <?php
 
 chdir(__DIR__);
@@ -11,7 +12,8 @@ if (!file_exists($package_xml_file))
     die("package.xml does not exists");
 
 $package_data               = simplexml_load_file($package_xml_file);
-$dir_name                   = (string) $package_data->contents->dir['name'];
+$dir_name                   = (string) $package_data->contents->dir->file['name'];
+$dir_name                   = implode('/', array_slice(explode('/', $dir_name), 0, 3)); //not proud of this
 $target                     = realpath("../$dir_name");
 $base_install_dir           = (string) $package_data->contents->dir['baseinstalldir'];
 unset($package_data->contents->dir);
