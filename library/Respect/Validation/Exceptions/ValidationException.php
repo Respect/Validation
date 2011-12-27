@@ -91,7 +91,10 @@ class ValidationException extends InvalidArgumentException
     {
         $vars = $this->getParams();
         $vars['name'] = $this->getName();
-        return static::format($this->getTemplate(), $vars);
+        $template = $this->getTemplate();
+        if(isset($vars['translator']) && is_callable($vars['translator']))
+            $template = call_user_func($vars['translator'], $template);
+        return static::format($template, $vars);
     }
 
     public function getParam($name)
@@ -138,7 +141,7 @@ class ValidationException extends InvalidArgumentException
 
     public function setParam($key, $value)
     {
-        $this->params[$key] = static::stringify($value);
+        $this->params[$key] = ($key == 'translator') ? $value : static::stringify($value);
         return $this;
     }
 

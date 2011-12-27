@@ -11,6 +11,8 @@ abstract class AbstractRule implements Validatable
     protected $name;
     protected $template = null;
 
+    public static $translator = null;
+
     public function __construct()
     {
         //a constructor is required for ReflectionClass::newInstance()
@@ -50,7 +52,8 @@ abstract class AbstractRule implements Validatable
         $input = ValidationException::stringify($input);
         $name = $this->getName() ? : "\"$input\"";
         $params = array_merge(
-            $extraParams, get_object_vars($this), compact('input')
+            $extraParams, get_object_vars($this), get_class_vars(__CLASS__),
+            compact('input')
         );
         $exception->configure($name, $params);
         if (!is_null($this->template))
