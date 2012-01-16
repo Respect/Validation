@@ -1,6 +1,6 @@
 {
     "name": "Respect/Validation",
-    "version": "1.0.0",
+    "version": "0.3.5",
     "type": "library",
     "description": "The most awesome validation engine ever created for PHP.",
     "keywords": ["respect", "validation"],
