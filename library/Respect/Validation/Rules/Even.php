@@ -2,7 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Rules\Int;
 
 class Even extends AbstractRule
 {
