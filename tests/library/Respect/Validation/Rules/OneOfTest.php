@@ -2,8 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\ValidatorTestCase;
-use Respect\Validation\Exceptions\InvalidException;
 
 class OneOfTest extends \PHPUnit_Framework_TestCase
 {

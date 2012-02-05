@@ -2,7 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validator;
 use \DateTime;
 
 class BetweenTest extends \PHPUnit_Framework_TestCase

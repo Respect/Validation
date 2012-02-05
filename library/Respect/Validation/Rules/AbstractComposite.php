@@ -3,7 +3,6 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Sanitizable;
 use Respect\Validation\Validatable;
 use Respect\Validation\Validator;

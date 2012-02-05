@@ -3,7 +3,6 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Exceptions\ValidationException;
 
 class Between extends AllOf
 {
