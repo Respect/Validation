@@ -2,7 +2,6 @@
 
 namespace Respect\Validation\Exceptions;
 
-use Respect\Validation\Validator as v;
 
 class AbstractGroupedExceptionTest extends \PHPUnit_Framework_TestCase
 {

@@ -5,7 +5,6 @@ namespace Respect\Validation\Exceptions;
 use DateTime;
 use Exception;
 use InvalidArgumentException;
-use Respect\Validation\Validatable;
 
 class ValidationException extends InvalidArgumentException
 {
