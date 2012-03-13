@@ -7,34 +7,25 @@ class PrimeNumber extends AbstractRule
 
     public function validate($input)
     {
-        if (is_numeric($input))
-        {
+               if (is_numeric($input))
+        
           $cont = 0;
-            
-          for($i=1;$i<=$input;$i++)
-          {           
+        
+       
+        for($i=1;$i<=$input;$i++)
+       
             if (($input % $i)==0)
-            {
-              $cont = $cont + 1;  
-            }
-          }
+       
+                $cont = $cont + 1;
+       
           
        if ($cont<=2)
-       {
-         $input=1;        
-       }
-       else
-       {
-         $input=0;
-       }   
+         $input=1;
       
-       }
-       
        else
-       {
          $input=0;
-       } 
-        
+       
+      
         return $input;
     }
 
