@@ -1,46 +1,25 @@
 <?php
 
-namespace Respect\Validation\Rules;
+namespace Respect\Validation\Exceptions;
 
-class PrimeNumber extends AbstractRule
+class NumericException extends ValidationException
 {
 
-    public function validate($input)
-    {
-
-       if (is_numeric($input)&&$input>0):
-        
-          $cont = 0;
-    
-       
-       for($i=1;$i<=$input;$i++):
-       
-            if (($input % $i)==0)
-       
-                $cont = $cont + 1;
-       endfor;
-          
-       
-       if ($cont<=2):
-         $input=1;
-      
-       else:
-         $input=0;
-       endif;
-       
-       
-       else:
-        $input=0;
-       endif;
-       
-      return $input;
-    }
+    public static $defaultTemplates = array(
+        self::MODE_DEFAULT => array(
+            self::STANDARD => '{{name}} must be numeric and must be over zero',
+        ),
+        self::MODE_NEGATIVE => array(
+            self::STANDARD => '{{name}} must not be numeric and must not be zero ou under',
+        )
+    );
 
 }
+
 /**
  * LICENSE
  *
- * Copyright (c) 2009-2012, Alexandre Gomes Gaigalas.
+ * Copyright (c) 2009-2011, Alexandre Gomes Gaigalas.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
