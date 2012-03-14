@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class NumericException extends ValidationException
+class PrimeNumberException extends ValidationException
 {
 
     public static $defaultTemplates = array(
@@ -19,7 +19,7 @@ class NumericException extends ValidationException
 /**
  * LICENSE
  *
- * Copyright (c) 2009-2011, Alexandre Gomes Gaigalas.
+ * Copyright (c) 2009-2012, Alexandre Gomes Gaigalas.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
