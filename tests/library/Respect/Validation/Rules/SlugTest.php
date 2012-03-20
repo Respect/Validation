@@ -25,7 +25,7 @@ class SlugTest extends \PHPUnit_Framework_TestCase {
      * @dataProvider providerInvalidSlug
      * @expectedException Respect\Validation\Exceptions\SlugException
      */
-    public function testInvalidFormattedCpf($input) 
+    public function testInvalidSlug($input) 
     {
         $this->assertFalse($this->slug->validate($input));
         $this->assertFalse($this->slug->assert($input));
