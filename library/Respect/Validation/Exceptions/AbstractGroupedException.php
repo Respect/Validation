@@ -45,10 +45,11 @@ class AbstractGroupedException extends AbstractNestedException
     public function getTemplate()
     {
         $parentTemplate = parent::getTemplate();
-        
-        if (!empty($this->template) && $this->template != $parentTemplate)
+        $isEmpty = empty($this->template);
+
+        if (!$isEmpty && $this->template != $parentTemplate)
             return $this->template;
-        if (1 === count($this->related))
+        if ($isEmpty && 1 === count($this->related))
             return current($this->related)->getTemplate();
         else
             return $parentTemplate;
