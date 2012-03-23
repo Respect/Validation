@@ -14,4 +14,11 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException('Respect\Validation\Exceptions\ComponentException');
         Validator::iDoNotExistSoIShouldThrowException();
     }
+    function test_set_template() {
+        try {
+            Validator::callback('is_int')->setTemplate('{{name}} is not tasty')->assert('something');
+        } catch (\Exception $e) {
+            $this->assertEquals('"something" is not tasty', $e->getMainMessage());
+        }   
+    }
 }
