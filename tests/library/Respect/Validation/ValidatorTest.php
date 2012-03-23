@@ -18,6 +18,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         try {
             Validator::callback('is_int')->setTemplate('{{name}} is not tasty')->assert('something');
         } catch (\Exception $e) {
+        	var_dump($e);
             $this->assertEquals('"something" is not tasty', $e->getMainMessage());
         }   
     }
