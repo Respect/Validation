@@ -26,23 +26,7 @@ abstract class AbstractComposite extends AbstractRule
 
         return $this;
     }
-
-    public function sanitize($input)
-    {
-        foreach ($this->getRules() as $f)
-            if ($f instanceof Sanitizable)
-                $input = $f->sanitize($input);
-        return $input;
-    }
-
     
-    public function filter($input)
-    {
-        foreach ($this->getRules() as $f)
-            $input = $f->filter($input);
-        return $input;
-    }
-
     public function removeRules()
     {
         $this->rules = array();

@@ -2,19 +2,12 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Sanitizable;
-
-class Int extends AbstractRule implements Sanitizable
+class Int extends AbstractRule
 {
 
     public function validate($input)
     {
         return is_numeric($input) && (int) $input == $input;
-    }
-
-    public function sanitize($input)
-    {
-        return (int) $input;
     }
 
 }

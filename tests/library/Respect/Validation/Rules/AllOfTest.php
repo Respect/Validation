@@ -49,27 +49,6 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($o->assert('any'));
     }
     
-    public function test_sanitizing_should_work_for_composite_rules()
-    {
-        $valid = new Digits();
-        $filter = new Int();
-        $o = new AllOf($valid, $filter);
-        $this->assertTrue($o->validate(12));
-        $this->assertTrue($o->check(12));
-        $this->assertTrue($o->assert(12));
-        $this->assertSame(12, $o->sanitize('12 monkeys'));
-    }
-
-    public function test_filter_should_work_for_composite_rules()
-    {
-        $valid = new Digits();
-        $filter = new Int();
-        $o = new AllOf($valid, $filter);
-        $this->assertTrue($o->validate(12));
-        $this->assertTrue($o->check(12));
-        $this->assertTrue($o->assert(12));
-        $this->assertSame(null, $o->filter('12 monkeys'));
-    }
 
     /**
      * @dataProvider providerStaticDummyRules
