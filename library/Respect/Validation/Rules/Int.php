@@ -14,9 +14,14 @@ class Int extends AbstractRule implements Sanitizable
 
     public function sanitize($input)
     {
-        return (int) $input;
+		return (int) filter_var($input, FILTER_SANITIZE_NUMBER_INT);
     }
 
+    public function filter($input){
+	        $input = filter_var($input, FILTER_SANITIZE_NUMBER_INT); 
+	        return ($input != "") ? (int) $input : null;           
+    }
+    
 }
 /**
  * LICENSE

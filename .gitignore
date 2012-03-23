@@ -27,3 +27,5 @@ pirum
 *.deb
 *.rpm
 *.tgz
+
+index.php
