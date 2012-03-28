@@ -11,7 +11,7 @@ class VowelsException extends AlphaException
             self::EXTRA => '{{name}} must contain only vowels and "{{additionalChars}}"'
         ),
         self::MODE_NEGATIVE => array(
-            self::STANDARD => '{{name}} must not contain digits vowels',
+            self::STANDARD => '{{name}} must not contain vowels',
             self::EXTRA => '{{name}} must not contain vowels or "{{additionalChars}}"'
         )
     );
