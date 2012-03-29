@@ -1,0 +1,50 @@
+<?php
+
+namespace Respect\Validation\Rules;
+
+class MaxTest extends \PHPUnit_Framework_TestCase
+{
+
+    /**
+     * @dataProvider providerForValidMax
+     */
+    public function test_valid_max_input_should_return_true($maxValue, $inclusive, $input)
+    {
+        $max = new Max($maxValue, $inclusive);
+        $this->assertTrue($max->validate($input));
+        $this->assertTrue($max->check($input));
+        $this->assertTrue($max->assert($input));
+    }
+
+    /**
+     * @dataProvider providerForInvalidMax
+     * @expectedException Respect\Validation\Exceptions\MaxException
+     */
+    public function test_invalid_max_value_should_throw_MaxException($maxValue, $inclusive, $input)
+    {
+        $max = new Max($maxValue, $inclusive);
+        $this->assertFalse($max->validate($input));
+        $this->assertFalse($max->assert($input));
+    }
+
+    public function providerForValidMax()
+    {
+        return array(
+            array(200, false, 165.0),
+            array(200, false, -200),
+            array(200, true, 200),
+            array(200, false, 0),
+        );
+    }
+
+    public function providerForInvalidMax()
+    {
+        return array(
+            array(200, false, 300),
+            array(200, false, 250),
+            array(200, false, 1500),
+            array(200, false, 200),
+        );
+    }
+
+}
