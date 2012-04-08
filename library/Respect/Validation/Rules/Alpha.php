@@ -8,7 +8,7 @@ class Alpha extends AbstractRule
 {
 
     public $additionalChars = '';
-    public $stringFormat = '/^\s*[a-zA-Z]+([a-zA-Z]|\s)*$/';
+    public $stringFormat = '/^(\s|[a-zA-Z])*$/';
 
     public function __construct($additionalChars='')
     {

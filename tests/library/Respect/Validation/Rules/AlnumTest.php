@@ -52,6 +52,9 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
             array('alganet', 'alganet'),
             array('0alg-anet0', '0-9'),
             array('1', ''),
+            array('', ''),
+            array("\t", ''),
+            array("\n", ''),
             array('a', ''),
             array('foobar', ''),
             array('rubinho_', '_'),
@@ -69,9 +72,6 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
         return array(
             array('@#$', ''),
             array('_', ''),
-            array("\t", ''),
-            array("\n", ''),
-            array('', ''),
             array('dgç', ''),
             array(1e21, ''), //evaluates to "1.0E+21"
             array(null, ''),

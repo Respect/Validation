@@ -6,6 +6,6 @@ class Alnum extends Alpha
 {
 
     public $additionalChars = '';
-    public $stringFormat = '/^\s*[a-zA-Z0-9]+([a-zA-Z0-9]|\s)*$/';
+    public $stringFormat = '/^(\s|[a-zA-Z0-9])*$/';
 
 }

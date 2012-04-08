@@ -46,6 +46,7 @@ class ConsonantsTest extends \PHPUnit_Framework_TestCase
     public function providerForValidConsonants()
     {
         return array(
+            array(''),
             array('b'),
             array('c'),
             array('d'),
@@ -53,6 +54,7 @@ class ConsonantsTest extends \PHPUnit_Framework_TestCase
             array('y'),
             array('y',''),
             array('bcdfghklmnp'),
+            array('bcdfghklm np'),
             array('qrst'),
             array("\nz\t"),
             array('zbcxwyrspq'),
