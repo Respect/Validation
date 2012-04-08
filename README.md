@@ -168,47 +168,75 @@ Reference
 Type validators
 ---------------
 
+  * v::arr()
   * v::bool()
   * v::date()
-  * v::arr()
   * v::float()
   * v::hexa()
   * v::instance()
   * v::int()
+  * v::nullValue()
+  * v::numeric()
+  * v::object()
+  * v::string()
+
+Building Blocks
+---------------
+
+  * v::call()
+  * v::callback()
+  * v::not()
+  * v::when()
 
 Comparison validators
 ---------------------
 
-  * v::equals()
   * v::between()
-  * v::min()
+  * v::equals()
   * v::max()
+  * v::min()
 
 Numeric related
 ---------------
 
   * v::between()
   * v::bool()
-  * v::float()
   * v::even()
+  * v::float()
   * v::hexa()
   * v::int()
+  * v::multiple()
+  * v::negative()
+  * v::notEmpty()
+  * v::numeric()
+  * v::odd()
+  * v::perfectSquare()
+  * v::positive()
+  * v::primeNumber()
+  * v::roman()
 
 String related
 --------------
 
-  * v::alpha()
   * v::alnum()
-  * v::digits()
+  * v::alpha()
   * v::between()
   * v::consonants()
   * v::contains()
+  * v::digits()
   * v::endsWith()
-  * v::startsWith()
   * v::in()
-  * v::lowercase()
-  * v::uppercase()
   * v::length()
+  * v::lowercase()
+  * v::notEmpty()
+  * v::noWhitespace()
+  * v::regex()
+  * v::slug()
+  * v::startsWith()
+  * v::uppercase()
+  * v::uppercase()
+  * v::version()
+  * v::vowels()
 
 Array/Object related
 --------------------
@@ -218,17 +246,18 @@ Array/Object related
   * v::contains()
   * v::each()
   * v::endsWith()
-  * v::startsWith()
   * v::in()
   * v::instance()
   * v::key()
   * v::length()
+  * v::notEmpty()
+  * v::startsWith()
 
 Date related
 ------------
 
-  * v::date()
   * v::between()
+  * v::date()
   * v::leapDate()
   * v::leapYear()
 
@@ -236,12 +265,12 @@ Group related
 -------------
 
   * v::allOf()
+  * v::noneOf()
+  * v::oneOf()
 
 Other
 -----
 
-  * v::call()
-  * v::callback()
   * v::cnpj()
   * v::cpf()
   * v::domain()
@@ -249,6 +278,9 @@ Other
   * v::ip()
   * v::json()
   * v::macAddress()
+  * v::sf()
+  * v::tld()
+  * v::zend()
 
 Alphabetically
 --------------
@@ -275,6 +307,7 @@ See also:
 
   * v::oneOf()  - Validates if at least one inner rule pass
   * v::noneOf() - Validates if no inner rules pass
+  * v::when()   - A Ternary validator
 
 ### v::alnum()
 ### v::alnum(string $additionalChars)
@@ -1053,11 +1086,33 @@ See also
   * v::even()
   * v::multiple()
 
-### v::oneOf()
+### v::oneOf($v1, $v2, $v3...)
 
+This is a group validator that acts as an OR operator.
 
+    v::oneOf(
+        v::int(),
+        v::float()
+    )->validate(15.5); //true
+
+In the sample above, `v::int()` doesn't validates, but
+`v::float()` validates, so oneOf returns true.
+
+`v::oneOf` returns true if at least one inner validator
+passes.
+
+See also:
+
+  * v::allOf()  - Similar to oneOf, but act as an AND operator
+  * v::noneOf() - Validates if NONE of the inner rules validates
+  * v::when()   - A ternary validator
 
 ### v::perfectSquare()
+
+Validates a perfect square.
+
+    v::perfectSquare()->validate(25); //true (5*5)
+    v::perfectSquare()->validate(9); //true (3*3)
 
 ### v::positive()
 
@@ -1071,13 +1126,47 @@ See also:
 
 ### v::primeNumber()
 
-### v::regex()
+Validates a prime number
+
+    v::primeNumber()->validate(7); //true
+
+### v::regex($regex)
+
+Evaluates a regex on the input and validates if matches
+
+    v::regex('/[a-z]/')->validate('a'); //true
+
+Message template for this validator includes `{{regex}}`
 
 ### v::roman()
 
-### v::sf()
+Validates roman numbers
+
+    v::roman()->validate('IV'); //true
+
+This validator ignores empty values, use `notEmpty()` when
+appropriate.
+
+### v::sf($sfValidator)
+
+Use Symfony2 validators inside Respect\Validation flow. Messages
+are preserved.
+
+    v::sf('Time')->validate('15:00:00');
+
+You must add Symfony2 to your autoloading routines.
+
+See also:
+
+  * v::zend()
 
 ### v::slug()
+
+Validates slug-like strings:
+
+    v::slug()->validate('my-wordpress-title'); //true
+    v::slug()->validate('my-wordpress--title'); //false
+    v::slug()->validate('my-wordpress-title-'); //false
 
 ### v::startsWith($value)
 ### v::startsWith($value, boolean $identical=false)
@@ -1104,22 +1193,87 @@ See also:
   * v::contains()
   * v::in()
 
-
 ### v::string()
+
+Validates a string.
+
+    v::string()->validate('hi'); //true
+
+See also:
+
+  * v::alnum()
 
 ### v::tld()
 
+Validates a top-level domain
+
+    v::tld()->validate('com'); //true
+    v::tld()->validate('ly'); //true
+    v::tld()->validate('org'); //true
+
+See also
+
+ * v::domain()
+
 ### v::uppercase()
+
+Validates if string characters are uppercase in the input:
+
+    v::string()->uppercase()->validate('W3C'); //true
+
+See also:
+
+  * v::lowercase()
 
 ### v::version()
 
+Validates version numbers using Semantic Versioning.
+
+    v::version()->validate('1.0.0');
+
 ### v::vowels()
 
-### v::when()
+Similar to `v::alnum()`. Validates strings that contain only vowels:
 
-### v::zend()
+    v::vowels()->validate('aei'); //true
 
+See also:
 
+  * v::alnum()  - a-z0-9, empty or whitespace only
+  * v::digits() - 0-9, empty or whitespace only
+  * v::alpha()  - a-Z, empty or whitespace only
+  * v::consonants()
+
+### v::when(v $if, v $then, v $else)
+
+A ternary validator that accepts three parameters. 
+
+When the $if validates, returns validation for $then.
+When the $if doesnt' validate, returns validation for $else.
+
+    v::when(v::int(), v::positive(), v::notEmpty())->validate($input);
+
+In the sample above, if `$input` is an integer, then it must be positive.
+If `$input` is not an integer, then it must not me empty.
+
+See also:
+
+  * v::allOf()
+  * v::oneOf()
+  * v::noneOf()
+
+### v::zend($zendValidator)
+
+Use Zend validators inside Respect\Validation flow. Messages
+are preserved.
+
+    v::zend('Hostname')->validate('google.com');
+
+You need to put Zend Framework in your autoload routines.
+
+See also:
+
+  * v::sf()
 
 
 

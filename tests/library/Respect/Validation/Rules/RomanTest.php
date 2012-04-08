@@ -54,7 +54,6 @@ class RomanTest extends \PHPUnit_Framework_TestCase
     public function providerForNotRoman()
     {
         return array(
-            array(null),
             array('IIII'),
             array('IVVVX'),
             array('CCDC'), //
