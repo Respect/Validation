@@ -154,11 +154,11 @@
     <email>kolyshkin@.sqlmaze.local</email>
     <active>yes</active>
   </lead>
-  <date>2012-04-07</date>
-  <time>23:06:21</time>
+  <date>2012-04-08</date>
+  <time>19:55:16</time>
   <version>
-    <release>0.3.9</release>
-    <api>0.3.9</api>
+    <release>0.4.0</release>
+    <api>0.4.0</api>
   </version>
   <stability>
     <release>alpha</release>
@@ -169,14 +169,14 @@
   <contents>
     <dir name="/">
       <file name="tests/phpunit.xml" role="test" md5sum="03642477f5a201be9c3161eb64dde993"/>
-      <file name="tests/bootstrap.php" role="test" md5sum="ffb90e53f1cbb127fa5b2c70f5e42ae2"/>
+      <file name="tests/bootstrap.php" role="test" md5sum="50801951d158662430b24aeedfea6bf6"/>
       <file name="tests/library/Respect/Validation/Rules/WhenTest.php" role="test" md5sum="536a74d6f6398c4de36d301e09aeb15c"/>
       <file name="tests/library/Respect/Validation/Rules/StringTest.php" role="test" md5sum="a7ff99da8f1263f5709948a7544a8cec"/>
       <file name="tests/library/Respect/Validation/Rules/EachTest.php" role="test" md5sum="36a166a90245cd1c8c09059fb8de528e"/>
       <file name="tests/library/Respect/Validation/Rules/UppercaseTest.php" role="test" md5sum="bb25dcd064e3794979f7f1ee0d919dd8"/>
       <file name="tests/library/Respect/Validation/Rules/BetweenTest.php" role="test" md5sum="a40b650b0eb39cdc531966c68acbd6c0"/>
       <file name="tests/library/Respect/Validation/Rules/PositiveTest.php" role="test" md5sum="227bfe4e89b52a014ebd4fbbb8932659"/>
-      <file name="tests/library/Respect/Validation/Rules/RomanTest.php" role="test" md5sum="0f12cbf4e75d2a41d55d8d3a38adec95"/>
+      <file name="tests/library/Respect/Validation/Rules/RomanTest.php" role="test" md5sum="fab3634fed89232f51eb17b2d2384760"/>
       <file name="tests/library/Respect/Validation/Rules/EvenTest.php" role="test" md5sum="ce440868b3a696a9318e192159c71dd2"/>
       <file name="tests/library/Respect/Validation/Rules/IpTest.php" role="test" md5sum="ddf38ac355d183bfe82588a66e82e37a"/>
       <file name="tests/library/Respect/Validation/Rules/LeapDateTest.php" role="test" md5sum="7311b3728007a74c64911cd8e00da665"/>
@@ -184,7 +184,7 @@
       <file name="tests/library/Respect/Validation/Rules/IntTest.php" role="test" md5sum="79ac336813b8ebbd5e4be16e8d6151f3"/>
       <file name="tests/library/Respect/Validation/Rules/ContainsTest.php" role="test" md5sum="aa9fa3eedaf6fadce0a9972dac287fc7"/>
       <file name="tests/library/Respect/Validation/Rules/AllOfTest.php" role="test" md5sum="b2caceb14f9b74fa4bf7f4365baa9f9e"/>
-      <file name="tests/library/Respect/Validation/Rules/AlnumTest.php" role="test" md5sum="54de868b6fcfa76d796e51f152f75057"/>
+      <file name="tests/library/Respect/Validation/Rules/AlnumTest.php" role="test" md5sum="dd1e92761937e1d405e8339ceb831332"/>
       <file name="tests/library/Respect/Validation/Rules/InstanceTest.php" role="test" md5sum="34df1669947c79f12bf463669912689a"/>
       <file name="tests/library/Respect/Validation/Rules/RegexTest.php" role="test" md5sum="2155343a0b20132646e796e4cb0c39e2"/>
       <file name="tests/library/Respect/Validation/Rules/PerfectSquareTest.php" role="test" md5sum="50585013f23fba18dbdd092174779283"/>
@@ -197,12 +197,12 @@
       <file name="tests/library/Respect/Validation/Rules/NoneOfTest.php" role="test" md5sum="63e2522e2b20dff32df1424a20472428"/>
       <file name="tests/library/Respect/Validation/Rules/NotEmptyTest.php" role="test" md5sum="d56de36f0026a9351feec11c8295186e"/>
       <file name="tests/library/Respect/Validation/Rules/CallTest.php" role="test" md5sum="9e1905fd4871384022c013d4cca30723"/>
-      <file name="tests/library/Respect/Validation/Rules/ConsonantsTest.php" role="test" md5sum="e024926d764065e8f5d4a89e05a546fe"/>
+      <file name="tests/library/Respect/Validation/Rules/ConsonantsTest.php" role="test" md5sum="e53ceb73f48868f5910ccae489027b98"/>
       <file name="tests/library/Respect/Validation/Rules/JsonTest.php" role="test" md5sum="045cbb2f84012fd3b06cd3ac413bd2bd"/>
       <file name="tests/library/Respect/Validation/Rules/MaxTest.php" role="test" md5sum="4fc94fa70ec97a9be8fda3cc0df7dc8b"/>
       <file name="tests/library/Respect/Validation/Rules/EmailTest.php" role="test" md5sum="51922dcfc14f9c4f9b6ee6d6461b8b14"/>
       <file name="tests/library/Respect/Validation/Rules/FloatTest.php" role="test" md5sum="e07f6ae22f65db619a66a159ef8586dc"/>
-      <file name="tests/library/Respect/Validation/Rules/VowelsTest.php" role="test" md5sum="37e27f9d87141538c0b29347a02f8f61"/>
+      <file name="tests/library/Respect/Validation/Rules/VowelsTest.php" role="test" md5sum="c34206ae1f3add157237285afe2d77b0"/>
       <file name="tests/library/Respect/Validation/Rules/BoolTest.php" role="test" md5sum="daccb2a9844206e558a5a8ab6a65b956"/>
       <file name="tests/library/Respect/Validation/Rules/SlugTest.php" role="test" md5sum="e9793e27b34caeca2ab9930dd809ae79"/>
       <file name="tests/library/Respect/Validation/Rules/LowercaseTest.php" role="test" md5sum="5dd33dbda2a79e1cfc953bd48ad00460"/>
@@ -227,20 +227,20 @@
       <file name="tests/library/Respect/Validation/Rules/EqualsTest.php" role="test" md5sum="c283f7f680482070cb73cda3fe55dd6c"/>
       <file name="tests/library/Respect/Validation/Rules/EndsWithTest.php" role="test" md5sum="c3290ccd4dd42a655bf8c2eca759fcfa"/>
       <file name="tests/library/Respect/Validation/Rules/NotTest.php" role="test" md5sum="04f141d2db356aa1b20f21a021c331dc"/>
-      <file name="tests/library/Respect/Validation/Rules/AlphaTest.php" role="test" md5sum="cb89a9fc575730e2df0c04e0ce0a4e61"/>
+      <file name="tests/library/Respect/Validation/Rules/AlphaTest.php" role="test" md5sum="0f03bceb417889961707722414e5dce4"/>
       <file name="tests/library/Respect/Validation/Rules/ObjectTest.php" role="test" md5sum="c3985c050622283ceee9af7f8be55496"/>
       <file name="tests/library/Respect/Validation/Rules/OddTest.php" role="test" md5sum="0cc3b7f7530822ef7942a73f731a2525"/>
       <file name="tests/library/Respect/Validation/Rules/MultipleTest.php" role="test" md5sum="d952dc82b60dc872659c70917f14874a"/>
       <file name="tests/library/Respect/Validation/Rules/PrimeNumberTest.php" role="test" md5sum="bdccfb88961e2f7eb7f2a1e160abd00b"/>
       <file name="tests/library/Respect/Validation/Rules/ArrTest.php" role="test" md5sum="be17bdca3c9a9d703da3a50287593462"/>
-      <file name="tests/library/Respect/Validation/ValidatorTest.php" role="test" md5sum="feb11408e26a908b6d4110fb40c1c116"/>
+      <file name="tests/library/Respect/Validation/ValidatorTest.php" role="test" md5sum="88b8ef8aece325edde023bc2186895bd"/>
       <file name="tests/library/Respect/Validation/Exceptions/AbstractNestedExceptionTest.php" role="test" md5sum="7f66389cab604071338c63b52b6f7063"/>
       <file name="tests/library/Respect/Validation/Exceptions/AbstractGroupedExceptionTest.php" role="test" md5sum="16512f8eeb2b80ea792a8630b5f6dd26"/>
       <file name="tests/library/Respect/Validation/Exceptions/ValidationExceptionTest.php" role="test" md5sum="9b6eafce7b2274c5c812bd628cceb39b"/>
       <file name="library/Respect/Validation/ExceptionIterator.php" role="php" md5sum="9e9b17148a1f18f3e14f1dc4e6390162"/>
       <file name="library/Respect/Validation/Rules/Odd.php" role="php" md5sum="2f019722fa52b0263a4e2ab1e4ce62ce"/>
       <file name="library/Respect/Validation/Rules/Between.php" role="php" md5sum="a0468697e78e0c32849a240b1d38919c"/>
-      <file name="library/Respect/Validation/Rules/Roman.php" role="php" md5sum="087cde81f3297d23f08774ef428a4c13"/>
+      <file name="library/Respect/Validation/Rules/Roman.php" role="php" md5sum="06b57eb411f3a50b5e5bc9836dbdd3e5"/>
       <file name="library/Respect/Validation/Rules/Regex.php" role="php" md5sum="75e118883c85752622de29db58977711"/>
       <file name="library/Respect/Validation/Rules/Hexa.php" role="php" md5sum="39cc11a4155fe5cf1c9ce28e2340f6eb"/>
       <file name="library/Respect/Validation/Rules/CreditCard.php" role="php" md5sum="36d3bd1cb046f0325db125c56ba1a6fa"/>
@@ -251,14 +251,14 @@
       <file name="library/Respect/Validation/Rules/Digits.php" role="php" md5sum="6123b1d57a96b526c20602cc5d499e42"/>
       <file name="library/Respect/Validation/Rules/Arr.php" role="php" md5sum="12756760cc9c77a4724bc51cf0a9fbee"/>
       <file name="library/Respect/Validation/Rules/NotEmpty.php" role="php" md5sum="906daf6dd64f7163077cc51fe0f60caa"/>
-      <file name="library/Respect/Validation/Rules/Consonants.php" role="php" md5sum="1b47c90b12e50855dbc86fda3e5e4aaf"/>
+      <file name="library/Respect/Validation/Rules/Consonants.php" role="php" md5sum="29e2283f7df5f7ccd950ab00bcc69b66"/>
       <file name="library/Respect/Validation/Rules/Key.php" role="php" md5sum="6a1756533353b12a37515a0aebb57058"/>
       <file name="library/Respect/Validation/Rules/Numeric.php" role="php" md5sum="b0ef9b30d4faf15b94908a1ca096822b"/>
       <file name="library/Respect/Validation/Rules/Callback.php" role="php" md5sum="afa413988b7deb986fce99ead83eafa7"/>
       <file name="library/Respect/Validation/Rules/AbstractRule.php" role="php" md5sum="8c7d616158b571d719c3eb6b5834bd15"/>
-      <file name="library/Respect/Validation/Rules/Alpha.php" role="php" md5sum="552fdfc619b936d8bdf88f1446fef92c"/>
+      <file name="library/Respect/Validation/Rules/Alpha.php" role="php" md5sum="2ccd73e339debaa6f0b1beb2e14e28d1"/>
       <file name="library/Respect/Validation/Rules/MinimumAge.php" role="php" md5sum="b982af15ea6eba6de51f2fcf48ebc4a8"/>
-      <file name="library/Respect/Validation/Rules/LeapDate.php" role="php" md5sum="06729582444458238999da1b2ac1bf26"/>
+      <file name="library/Respect/Validation/Rules/LeapDate.php" role="php" md5sum="17d2cd40ac343c13a6060d98993f47d8"/>
       <file name="library/Respect/Validation/Rules/Lowercase.php" role="php" md5sum="2fe986501d60a48357f3bfdd2284b810"/>
       <file name="library/Respect/Validation/Rules/Uppercase.php" role="php" md5sum="1dc03cf48a1024cef9a8aca1b91aba32"/>
       <file name="library/Respect/Validation/Rules/Multiple.php" role="php" md5sum="4e341c24d131c462b11d92049fdb79ae"/>
@@ -269,7 +269,7 @@
       <file name="library/Respect/Validation/Rules/AbstractRelated.php" role="php" md5sum="5678020226af307ee0f0c6500d6ffcec"/>
       <file name="library/Respect/Validation/Rules/PerfectSquare.php" role="php" md5sum="4de8c2d352f391e5f75d772f8b5dbb86"/>
       <file name="library/Respect/Validation/Rules/StartsWith.php" role="php" md5sum="ec6b0310ec22c8e102f661eb2018ad68"/>
-      <file name="library/Respect/Validation/Rules/Vowels.php" role="php" md5sum="5e318c1c16910552c6ae8eaf47b2505d"/>
+      <file name="library/Respect/Validation/Rules/Vowels.php" role="php" md5sum="44b9f955061dfce9d4b744edf3c2fa89"/>
       <file name="library/Respect/Validation/Rules/Int.php" role="php" md5sum="ecaa9849dc45a87c0704e997163ef0e9"/>
       <file name="library/Respect/Validation/Rules/Cpf.php" role="php" md5sum="9ecf0141afe77e0961ad34ca2bedac04"/>
       <file name="library/Respect/Validation/Rules/Instance.php" role="php" md5sum="34c42f6e0ca06eea6549f0e02e222604"/>
@@ -299,7 +299,7 @@
       <file name="library/Respect/Validation/Rules/Slug.php" role="php" md5sum="c3b59258bc49c445e2ef1780c4f528e6"/>
       <file name="library/Respect/Validation/Rules/Negative.php" role="php" md5sum="88b7c4060c13e548aac3f27f982cdc45"/>
       <file name="library/Respect/Validation/Rules/Contains.php" role="php" md5sum="8bce3cb9b4c1e90f0d2d01b8d0afed9a"/>
-      <file name="library/Respect/Validation/Rules/Alnum.php" role="php" md5sum="7b002c1fab94b46f85c5cb79c50a3c2d"/>
+      <file name="library/Respect/Validation/Rules/Alnum.php" role="php" md5sum="61aff315f9432dc581a6166515ca4bcb"/>
       <file name="library/Respect/Validation/Rules/Max.php" role="php" md5sum="bae9afe4982f0f8234de4cee675c84da"/>
       <file name="library/Respect/Validation/Rules/PrimeNumber.php" role="php" md5sum="f770d3ff24a5f1a93ba4f7e0c5856e9f"/>
       <file name="library/Respect/Validation/Rules/MacAddress.php" role="php" md5sum="55bf2cb231d22cdc1619bf54ed399768"/>
@@ -331,7 +331,7 @@
       <file name="library/Respect/Validation/Exceptions/EndsWithException.php" role="php" md5sum="ecb57076af5cf4f9465e220804daca4a"/>
       <file name="library/Respect/Validation/Exceptions/OneOfException.php" role="php" md5sum="12b7451f253c51e6ad8f96bbc792c1d7"/>
       <file name="library/Respect/Validation/Exceptions/NegativeException.php" role="php" md5sum="b43ee0a92ade08d03395fd481afbde35"/>
-      <file name="library/Respect/Validation/Exceptions/AbstractGroupedException.php" role="php" md5sum="25945f306282d96e97876f73dca26f16"/>
+      <file name="library/Respect/Validation/Exceptions/AbstractGroupedException.php" role="php" md5sum="c61d72114aacb4e804d601bfa1623acc"/>
       <file name="library/Respect/Validation/Exceptions/AlnumException.php" role="php" md5sum="46df549b92b480b0b79fd3ac0779b1e4"/>
       <file name="library/Respect/Validation/Exceptions/VowelsException.php" role="php" md5sum="0d3b310ed0e10c8c75e4d0a9f353f2da"/>
       <file name="library/Respect/Validation/Exceptions/MinimumAgeException.php" role="php" md5sum="b822fbadb9df724cd57bd4e0be815458"/>
