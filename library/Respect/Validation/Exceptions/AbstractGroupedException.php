@@ -34,12 +34,11 @@ class AbstractGroupedException extends AbstractNestedException
 
     public function getRelated($full=false)
     {
-        if ($full || 1 !== count($this->related))
-            return $this->related;
-        elseif (current($this->related) instanceof AbstractNestedException)
+        if (!$full && 1 === count($this->related) 
+            && current($this->related) instanceof AbstractNestedException)
             return current($this->related)->getRelated();
         else
-            return array();
+            return $this->related;
     }
 
     public function getTemplate()
