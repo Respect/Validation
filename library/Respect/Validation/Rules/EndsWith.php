@@ -27,8 +27,8 @@ class EndsWith extends AbstractRule
         if (is_array($input))
             return end($input) == $this->endValue;
         else
-            return mb_strripos($input, $this->endValue, -1)
-            === mb_strlen($input) - mb_strlen($this->endValue) ;
+            return mb_strripos($input, $this->endValue, -1, $enc = mb_detect_encoding($input))
+            === mb_strlen($input, $enc) - mb_strlen($this->endValue, $enc) ;
     }
 
     protected function validateIdentical($input)
@@ -36,8 +36,8 @@ class EndsWith extends AbstractRule
         if (is_array($input))
             return end($input) === $this->endValue;
         else
-            return mb_strrpos($input, $this->endValue)
-            === mb_strlen($input) - mb_strlen($this->endValue);
+            return mb_strrpos($input, $this->endValue, 0, $enc = mb_detect_encoding($input))
+            === mb_strlen($input, $enc) - mb_strlen($this->endValue, $enc);
     }
 
 }
