@@ -9,7 +9,7 @@ class LeapDate extends AbstractRule
 
     public $format = null;
 
-    public function __construct($format = null)
+    public function __construct($format)
     {
         $this->format = $format;
     }

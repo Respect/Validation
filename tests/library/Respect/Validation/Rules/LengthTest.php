@@ -53,6 +53,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array('alganet', 1, 15),
+            array('ççççç', 4, 6),
             array(range(1, 20), 1, 30),
             array((object) array('foo'=>'bar', 'bar'=>'baz'), 1, 2),
             array('alganet', 1, null), //null is a valid max length, means "no maximum",

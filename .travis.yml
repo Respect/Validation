@@ -13,4 +13,5 @@ before_script:
   - "pyrus install -f packages.zendframework.com/Zend_Validator-beta"
   - "pyrus install -f packages.zendframework.com/Zend_Filter-beta"
   - "pyrus install -f packages.zendframework.com/Zend_Registry-beta"
+  - "make foundation"
   - "phpenv rehash" 

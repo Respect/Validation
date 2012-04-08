@@ -26,11 +26,13 @@ class In extends AbstractRule
        
         if (!is_string($this->haystack))
             return false;
+
+        $enc = mb_detect_encoding($input);
         
         if ($this->compareIdentical)
-            return mb_strpos($this->haystack, $input) !== false;
+            return mb_strpos($this->haystack, $input, 0, $enc) !== false;
         
-        return mb_stripos($this->haystack, $input) !== false;
+        return mb_stripos($this->haystack, $input, 0, $enc) !== false;
     }
 
 }

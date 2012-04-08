@@ -6,7 +6,7 @@ class Consonants extends Alpha
 {
 
     public $additionalChars = '';
-    public $stringFormat = '/^\s*[b-d|f-h|j-n|p-t|v-z]+([B-D|F-H|J-N|P-T|V-Z]|\s)*$/';
+    public $stringFormat = '/^(\s|[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z])*$/';
 
 }
 

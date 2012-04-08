@@ -7,8 +7,7 @@ class Odd extends AbstractRule
 
     public function validate($input)
     {
-        $input = (int) $input;
-        return ($input % 2 !== 0);
+        return ((int) $input % 2 !== 0);
     }
 
 }

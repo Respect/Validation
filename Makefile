@@ -1,100 +1,163 @@
+CONFIG_TOOL   = php .foundation/repo/bin/project-config.php
+GENERATE_TOOL = php .foundation/repo/bin/project-generate.php
+
+# Help is not the default target cause its mainly used as the main
+# build command. We're reserving it.
 default:
-	@echo "Respect Foundation"
-	@echo 'Please see "make help" for instructions'
+	@echo "Foundation. See 'make help' for instructions."
 
 help:
-	@echo "Respect Foundation\n"
-	@echo "Available targets:"
-	@echo "help\t\t This message"
-	@echo "test\t\t Run all tests"
-	@echo "coverage\t Run all tests and write HTML coverage reports"
-	@echo "dev\t\t Install the necessary packages to develop this project"
-	@echo "dev-travis\t Install the necessary packages to run this on Travis CI"
-	@echo "patch\t\t Updates the package.xml and increments the patch revision number (1.1.x)"
-	@echo "minor\t\t Updates the package.xml and increments the minor revision number (1.x.0)"
-	@echo "major\t\t Updates the package.xml and increments the major revision number (x.0.0)"
-	@echo "pear\t\t Creates a PEAR package from the current package.xml"
-	@echo "phar\t\t Creates a Phar package from the current package.xml"
-	@echo "pirum-push\t PKG=FooPackage.tgz REPO=GitHubFooUser/GitHubFooRepo Send a tgz pear package to Pirum repository (requires git write access)"
-	@echo "phar-push\t PKG=FooPackage.phar REPO=GitHubFooUser/GitHubFooRepo Send a phar packages to phar repository (requires git write access)"
+	@echo "\nFoundation Help\n"
+	@echo "            help: Shows this message"
+	@echo "      foundation: Installs and updates Foundation"
+	@echo "    project-info: Shows project configuration"
+	@echo "            test: Run project tests"
+	@echo "        coverage: Run project tests and reports coverage status"
+	@echo "           clean: Removes code coverage reports"
+	@echo "           patch: Increases the patch version of the project (X.X.++)"
+	@echo "           minor: Increases the minor version of the project (X.++.0)"
+	@echo "           major: Increases the major version of the project (++.0.0)"
+	@echo "           alpha: Changes the stability of the current version to alpha"
+	@echo "            beta: Changes the stability of the current version to beta"
+	@echo "          stable: Changes the stability of the current version to stable"
+	@echo "             tag: Makes a git tag of the current project version/stability"
+	@echo "     package-ini: Creates the basic package.ini file"
+	@echo "     package-xml: Propagates changes from package.ini to package.xml"
+	@echo "   composer-json: Propagates changes from package.ini to composer.json"
+	@echo "         package: Generates package.ini, package.xml and composer.json files"
+	@echo "            pear: Generates a PEAR package"
+	@echo "         install: Install this project and its dependencies in the local PEAR"
+	@echo "       pear-push: Pushes the latest PEAR package. Custom pear_repo='' and \n\
+	                  pear_package='' available."
+	@echo "         release: Runs tests, coverage reports, tag the build and pushes\n\
+	                  to package repositories" 
+	@echo "" 
 
-test: 
-	@cd tests;phpunit .
+# Foundation puts its files into .foundation inside your project folder.
+# You can delete .foundation anytime and then run make foundation again if you need
+foundation:
+	@echo "Updating Makefile"
+	curl -LO git.io/Makefile
+	@echo "Creating .foundation folder"
+	-rm -Rf .foundation
+	-mkdir .foundation
+	git clone git://github.com/Respect/Foundation.git .foundation/repo
+	@echo "Downloading Onion"
+	-curl -L https://github.com/c9s/Onion/raw/master/onion > .foundation/onion;chmod +x .foundation/onion
+	@echo "Done."
 
-coverage: 
-	@cd tests;phpunit --coverage-html=reports/coverage .
-	@echo "Done. Reports available on tests/reports/coverage/index.html"
+project-info:
+	@echo "\nFoundation Project Information\n"
+	@echo "             php-version:" `$(CONFIG_TOOL) php-version`
+	@echo "      project-repository:" `$(CONFIG_TOOL) project-repository`
+	@echo "          library-folder:" `$(CONFIG_TOOL) library-folder `
+	@echo "             test-folder:" `$(CONFIG_TOOL) test-folder `
+	@echo "           config-folder:" `$(CONFIG_TOOL) config-folder `
+	@echo "           public-folder:" `$(CONFIG_TOOL) public-folder `
+	@echo "      executables-folder:" `$(CONFIG_TOOL) executables-folder `
+	@echo "             vendor-name:" `$(CONFIG_TOOL) vendor-name `
+	@echo "            package-name:" `$(CONFIG_TOOL) package-name `
+	@echo "            project-name:" `$(CONFIG_TOOL) project-name `
+	@echo "        one-line-summary:" `$(CONFIG_TOOL) one-line-summary `
+	@echo "     package-description:" `$(CONFIG_TOOL) package-description `
+	@echo "         package-version:" `$(CONFIG_TOOL) package-version `
+	@echo "       package-stability:" `$(CONFIG_TOOL) package-stability `
+	@echo "\r         project-authors: "`$(CONFIG_TOOL) package-authors ` \
+		| tr -t ',' '\n' \
+		| awk -F' <' '{ printf "                         %-10-s \t<%15-s \n",$$1,$$2 }' 
+	@echo "\r    project-contributors: "`$(CONFIG_TOOL) package-contributors ` \
+		| tr -t ',' '\n' \
+		| awk -F' <' '{ printf "                         %-10-s \t<%15-s \n",$$1,$$2 }' 
 
-dev: 
-	@echo "Installing PEAR packages... (please run as root if needed)"
-	pear upgrade
-	pear config-set auto_discover 1
-	-pear channel-discover respect.li/pear
-	pear install --soft --force pear.phpunit.de/PHPUnit 
-	pear install --soft --force pear.pirum-project.org/Pirum
-	pear install --soft --force --alldeps -o package.xml 
+	@echo "       package-date-time:" `$(CONFIG_TOOL) package-date-time `
+	@echo "            pear-channel:" `$(CONFIG_TOOL) pear-channel `
+	@echo "         pear-repository:" `$(CONFIG_TOOL) pear-repository `
+	@echo "         phar-repository:" `$(CONFIG_TOOL) phar-repository `
+	@echo "       pear-dependencies:" `$(CONFIG_TOOL) pear-dependencies `
+	@echo "  extension-dependencies:" `$(CONFIG_TOOL) extension-dependencies `
+	@echo "             readme-file:" `$(CONFIG_TOOL) readme-file `
+	@echo "         project-license:" `$(CONFIG_TOOL) project-license `
+	@echo "        project-homepage:" `$(CONFIG_TOOL) project-homepage `
+	@echo ""
 
-dev-travis: 
-	@echo "Installing Pyrus packages... (please run as root if needed)"
-	pyrus install -f package.xml 
+# Two-step generation including a tmp file to avoid streaming problems
+package-ini:
+	@$(GENERATE_TOOL) package-ini > package.ini.tmp && mv -f package.ini.tmp package.ini
 
-patch:
-	@echo "Generating package.xml patch version"
-	php bin/pear-package.php patch ${STABILITY}
+# Generates a package.xml from the package.ini
+package-xml:
+	@.foundation/onion build
 
-minor: 
-	@echo "Generating package.xml minor version"
-	php bin/pear-package.php minor ${STABILITY}
+composer-json:
+	@$(GENERATE_TOOL) composer-json > composer.json.tmp && mv -f composer.json.tmp composer.json
+
+# Generates all package files
+package: package-ini package-xml composer-json
+
+# Phony target so the test folder don't conflict
+.PHONY: test
+test:
+	@cd `$(CONFIG_TOOL) test-folder`;phpunit .
+
+coverage:
+	@cd `$(CONFIG_TOOL) test-folder`;phpunit  --coverage-html=reports/coverage --coverage-text .
+	@echo "Done. Reports also available on `$(CONFIG_TOOL) test-folder`/reports/coverage/index.html"
+
+# Any cleaning mechanism should be here
+clean:
+	@rm -Rf `$(CONFIG_TOOL) test-folder`/reports
+
+# Targets below use the same rationale. They change the package.ini file, so you'll need a
+# package-sync after them
+patch:  
+	@$(GENERATE_TOOL) package-ini patch > package.ini.tmp && mv -f package.ini.tmp package.ini
+
+minor:
+	@$(GENERATE_TOOL) package-ini minor > package.ini.tmp && mv -f package.ini.tmp package.ini
 
 major:
-	@echo "Generating package.xml major version"
-	php bin/pear-package.php major ${STABILITY}
+	@$(GENERATE_TOOL) package-ini major > package.ini.tmp && mv -f package.ini.tmp package.ini
 
+alpha:
+	@$(GENERATE_TOOL) package-ini alpha > package.ini.tmp && mv -f package.ini.tmp package.ini
+
+beta:
+	@$(GENERATE_TOOL) package-ini beta > package.ini.tmp && mv -f package.ini.tmp package.ini
+
+stable:
+	@$(GENERATE_TOOL) package-ini stable > package.ini.tmp && mv -f package.ini.tmp package.ini
+
+tag:
+	-git tag `$(CONFIG_TOOL) package-version ` -m 'Tagging.'
+
+# Runs on the current package.xml file
 pear:
-	@echo "Generating package tgz"
-	pear package package.xml
+	@pear package
 
-phar:
-	@echo "Generating package phar"
-	php -dphar.readonly=0 bin/phar-package.php 
+# On root PEAR installarions, this need to run as sudo
+install:
+	@echo "You may need to run this as sudo."
+	@echo "Discovering channel"
+	-@pear channel-discover `$(CONFIG_TOOL) pear-channel`
+	@pear install package.xml
 
-pirum-push:
-	@echo "Cloning channel from git ${REPO}"
-	-rm -Rf pirum
-	git clone git@github.com:${REPO}.git pirum
-	pirum add pirum ${PKG};pirum build pirum;
-	cd pirum;git add .;git commit -m "Added ${PKG}";git push
-	@echo "Success! Pushed ${PKG}"
+# Install pirum, clones the PEAR Repository, make changes there and push them.
+pear-push:
+	@echo "Installing Pirum"
+	@sudo pear install --soft --force pear.pirum-project.org/Pirum
+	@echo "Cloning channel from git" `$(CONFIG_TOOL) pear-repository`
+	-rm -Rf .foundation/pirum
+	git clone `$(CONFIG_TOOL) pear-repository`.git .foundation/pirum
+	pirum add .foundation/pirum `$(CONFIG_TOOL) package-name`-`$(CONFIG_TOOL) package-version`.tgz;pirum build .foundation/pirum;
+	cd .foundation/pirum;git add .;git commit -m "Added " `$(CONFIG_TOOL) package-version`;git push
 
-phar-push:
-	@echo "Cloning channel from git ${REPO}"
-	-rm -Rf phar
-	git clone git@github.com:${REPO}.git phar
-	cp ${PKG} phar
-	cd phar;git add .;git commit -m "Added ${PKG}";git push
-	@echo "Success! Pushed ${PKG}"
+packagecommit:
+	@git add package.ini package.xml composer.json
+	@git commit -m "Updated package files"
 
-foundation:
-	@echo "Cloning Foundation from GitHub"
-	-rm -Rf .foundation-tmp
-	git clone git://github.com/Respect/Foundation.git .foundation-tmp
-	@echo "Renaming .dist files and removing repo metadata"
-	rm .foundation-tmp/README.md
-	rm .foundation-tmp/LICENSE
-	mv .foundation-tmp/README.md.dist .foundation-tmp/README.md
-	mv .foundation-tmp/LICENSE.dist .foundation-tmp/LICENSE
-	mv .foundation-tmp/package.xml.dist .foundation-tmp/package.xml
-	-mkdir bin
-	-mkdir tests
-	-mkdir library
-	-cp -f .foundation-tmp/bin/pear-package.php bin
-	-cp -f .foundation-tmp/bin/phar-package.php bin
-	-cp -f .foundation-tmp/tests/bootstrap.php tests
-	-cp -f .foundation-tmp/tests/phpunit.xml tests
-	-cp -f .foundation-tmp/.travis.yml .
-	-cp -n .foundation-tmp/LICENSE .
-	-cp -n .foundation-tmp/README.md .
-	-cp -n .foundation-tmp/package.xml .
-	echo "Removing temp files"
-	rm -Rf .foundation-tmp
-	@echo "Done!"
+# Uses other targets to complete the build
+release: test package packagecommit pear pear-push tag
+	@echo "Release done. Pushing to GitHub"
+	@git push
+	@git push --tags
+	@echo "Done. " `$(CONFIG_TOOL) package-name`-`$(CONFIG_TOOL) package-version` 

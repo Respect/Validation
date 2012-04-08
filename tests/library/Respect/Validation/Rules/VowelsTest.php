@@ -46,12 +46,14 @@ class VowelsTest extends \PHPUnit_Framework_TestCase
     public function providerForValidVowels()
     {
         return array(
+            array(''),
             array('a'),
             array('e'),
             array('i'),
             array('o'),
             array('u'),
             array('aeiou'),
+            array('aei ou'),
             array("\na\t"),
             array('uoiea'),
         );
