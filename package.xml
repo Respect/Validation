@@ -155,10 +155,10 @@
     <active>yes</active>
   </lead>
   <date>2012-04-07</date>
-  <time>23:05:21</time>
+  <time>23:06:21</time>
   <version>
-    <release>0.3.7</release>
-    <api>0.3.7</api>
+    <release>0.3.9</release>
+    <api>0.3.9</api>
   </version>
   <stability>
     <release>alpha</release>
