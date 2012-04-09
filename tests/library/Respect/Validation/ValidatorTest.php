@@ -38,7 +38,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     }
     function test_getFullMessage_should_include_all_validation_messages_in_a_chain() {
         try {
-            Validator::string()->alnum()->assert('%%%invalid');
+            Validator::string()->length(1,15)->assert('');
         } catch (\Exception $e) {
             $this->assertEquals('\-These rules must pass for ""
   \-"" must have a length between 1 and 15', $e->getFullMessage());
