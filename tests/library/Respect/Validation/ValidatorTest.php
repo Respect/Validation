@@ -40,7 +40,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         try {
             Validator::string()->length(1,15)->assert('');
         } catch (\Exception $e) {
-            $this->assertEquals('\-These {{failed}} rules must pass for ""
+            $this->assertEquals('\-These rules must pass for ""
   \-"" must have a length between 1 and 15', $e->getFullMessage());
         }
     }

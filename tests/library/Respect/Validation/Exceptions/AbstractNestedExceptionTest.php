@@ -82,7 +82,7 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
                     array('allOf', 'first_name.length')
             );
             $this->assertEquals($messages['allOf'],
-                'These 8 rules must pass for Validation Form');
+                'These rules must pass for Validation Form');
             $this->assertEquals($messages['first_name_length'],
                 '"fiif" must have a length between 5 and 256');
         }

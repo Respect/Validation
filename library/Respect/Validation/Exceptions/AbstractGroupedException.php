@@ -53,5 +53,4 @@ class AbstractGroupedException extends AbstractNestedException
         else
             return $parentTemplate;
     }
-
 }
