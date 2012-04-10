@@ -1,9 +1,9 @@
 {
     "name": "Respect\/Validation",
     "description": "The most awesome validation engine ever created for PHP",
-    "version": "0.4.2",
+    "version": "0.4.3",
     "type": "library",
-    "time": "2012-04-10 00:51:55",
+    "time": "2012-04-10 01:16:24",
     "homepage": "",
     "license": "BSD Style",
     "authors": [
@@ -110,8 +110,7 @@
     ],
     "autoload": {
         "psr-0": {
-            "Respect\\Validation": "library\/Respect\/"
+            "Respect\\Validation": "library\/"
         }
-    },
-    "target-dir": "Respect\/Validation"
+    }
 }
