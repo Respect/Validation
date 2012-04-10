@@ -144,7 +144,7 @@ install:
 # Install pirum, clones the PEAR Repository, make changes there and push them.
 pear-push:
 	@echo "Installing Pirum"
-	@sudo pear install --soft --force pear.pirum-project.org/Pirum
+	@sudo pear install --soft --force pear.pirum-project.org/Pirum-1.1.1
 	@echo "Cloning channel from git" `$(CONFIG_TOOL) pear-repository`
 	-rm -Rf .foundation/pirum
 	git clone `$(CONFIG_TOOL) pear-repository`.git .foundation/pirum
