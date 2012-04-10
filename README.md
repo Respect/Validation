@@ -10,14 +10,12 @@ The most awesome validation engine ever created for PHP.
 Installation
 ------------
 
-Packages available on [PEAR](http://respect.li/pear) and [Composer](http://packagist.org/packages/Respect/Validation)
-
-Autoloading is [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md) compatible.
+Packages available on [PEAR](http://respect.li/pear) and [Composer](http://packagist.org/packages/Respect/Validation). Autoloading is [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md) compatible.
 
 Feature Guide
 -------------
 
-### Namespace import
+### Namespace Import
 
 Respect\Validation is namespaced, but you can make your life easier by importing
 a single class into your context:
@@ -25,14 +23,14 @@ a single class into your context:
     <?php
     use Respect\Validation\Validator as v;
 
-### Simple validation
+### Simple Validation
 
 The Hello World validator is something like this:
 
     $number = 123;
     v::numeric()->validate($number); //true
 
-### Chained validation
+### Chained Validation
 
 It is possible to use validators in a chain. Sample below validates a string
 containing numbers and letters, no whitspace and length between 1 and 15.
@@ -40,7 +38,7 @@ containing numbers and letters, no whitspace and length between 1 and 15.
     $usernameValidator = v::alnum()->noWhitespace()->length(1,15);
     $usernameValidator->validate('alganet'); //true
 
-### Validating object attributes
+### Validating Object Attributes
 
 Given this simple object:
 
@@ -61,13 +59,13 @@ Note that we used `v::string()` and `v::date()` in the beginning of the validato
 Although is not mandatory, it is a good practice to use the type of the
 validated object as the first node in the chain.
 
-### Negating rules
+### Negating Rules
 
 You can use the `v::not()` to negate any rule:
 
-    v::not(v::int())->validate(10); //false, input must not be integer
+    v::not(v::int())-validate(10); //false, input must not be integer
 
-### Validator reuse 
+### Validator Reuse 
 
 Once created, you can reuse your validator anywhere. Remember $usernameValidator?
 
@@ -75,7 +73,7 @@ Once created, you can reuse your validator anywhere. Remember $usernameValidator
     $usernameValidator->validate('alexandre gaigalas'); //false 
     $usernameValidator->validate('#$%');                //false 
 
-### Cool, informative exceptions
+### Informative Exceptions
 
 When something goes wrong, Validation can tell you exacty what's going on. For this, 
 we use the `assert()` method instead of `validate()`:
@@ -93,7 +91,7 @@ The printed message is exactly this, as a text tree:
       |-"really messed up screen#name" must not contain whitespace
       \-"really messed up screen#name" must have a length between 1 and 15
 
-### Getting specific messages
+### Getting Messages
 
 The text tree is fine, but unusable on a HTML form or something more custom. You can use
 `findMessages()` for that:
@@ -106,7 +104,7 @@ The text tree is fine, but unusable on a HTML form or something more custom. You
 
 `findMessages()` returns an array with messages from the requested validators.
 
-### Customizing messages
+### Custom Messages
 
 Getting messages as an array is fine, but sometimes you need to customize them in order
 to present them to the user. This is possible using the `findMessages()` method as well:
@@ -119,7 +117,7 @@ to present them to the user. This is possible using the `findMessages()` method 
 
 For all messages, the `{{name}}` and `{{input}}` variable is available for templates.
 
-### Validator name
+### Validator Name
 
 On `v::attribute()` and `v::key()`, `{{name}}` is the attribute/key name. For others, 
 is the same as the input. You can customize a validator name using:
@@ -127,14 +125,14 @@ is the same as the input. You can customize a validator name using:
     v::date('Y-m-d')->between('1980-02-02', 'now')->setName('Member Since');
 
 
-### Using Zend and/or Symfony validators
+### Zend/Symfony Validators
 
 It is also possible to reuse validators from other frameworks if they are installed:
 
     $hostnameValidator = v::zend('Hostname')->assert('google.com');
     $timeValidator     = v::sf('Time')->assert('22:00:01');
 
-### Validation methods
+### Validation Methods
 
 We've seen `validate()` that returns true or false and `assert()` that throws a complete
 validation report. There is also a `check()` method that returns an Exception
@@ -153,7 +151,7 @@ Message:
 Reference
 ---------
 
-### Type validators
+### Types
 
   * v::arr()
   * v::bool()
@@ -167,21 +165,21 @@ Reference
   * v::object()
   * v::string()
 
-### Building Blocks
+### Generics
 
   * v::call()
   * v::callback()
   * v::not()
   * v::when()
 
-### Comparison validators
+### Comparing Values
 
   * v::between()
   * v::equals()
   * v::max()
   * v::min()
 
-### Numeric related
+### Numeric
 
   * v::between()
   * v::bool()
@@ -199,7 +197,7 @@ Reference
   * v::primeNumber()
   * v::roman()
 
-### String related
+### String 
 
   * v::alnum()
   * v::alpha()
@@ -221,28 +219,32 @@ Reference
   * v::version()
   * v::vowels()
 
-### Array/Object related
+### Arrays
 
   * v::arr()
-  * v::attribute()
   * v::contains()
   * v::each()
   * v::endsWith()
   * v::in()
-  * v::instance()
   * v::key()
   * v::length()
   * v::notEmpty()
   * v::startsWith()
 
-### Date related
+### Objects
+
+  * v::attribute()
+  * v::instance()
+  * v::length()
+
+### Date and Time
 
   * v::between()
   * v::date()
   * v::leapDate()
   * v::leapYear()
 
-### Group related
+### Group Validators
 
   * v::allOf()
   * v::noneOf()
