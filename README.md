@@ -8,17 +8,16 @@ The most awesome validation engine ever created for PHP.
 - More than 30 fully tested validators
 
 Installation
-============
+------------
 
 Packages available on [PEAR](http://respect.li/pear) and [Composer](http://packagist.org/packages/Respect/Validation)
 
 Autoloading is [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md) compatible.
 
 Feature Guide
-=============
+-------------
 
-Namespace import
-----------------
+### Namespace import
 
 Respect\Validation is namespaced, but you can make your life easier by importing
 a single class into your context:
@@ -26,16 +25,14 @@ a single class into your context:
     <?php
     use Respect\Validation\Validator as v;
 
-Simple validation
------------------
+### Simple validation
 
 The Hello World validator is something like this:
 
     $number = 123;
     v::numeric()->validate($number); //true
 
-Chained validation
-------------------
+### Chained validation
 
 It is possible to use validators in a chain. Sample below validates a string
 containing numbers and letters, no whitspace and length between 1 and 15.
@@ -43,8 +40,7 @@ containing numbers and letters, no whitspace and length between 1 and 15.
     $usernameValidator = v::alnum()->noWhitespace()->length(1,15);
     $usernameValidator->validate('alganet'); //true
 
-Validating object attributes
-----------------------------
+### Validating object attributes
 
 Given this simple object:
 
@@ -65,15 +61,13 @@ Note that we used `v::string()` and `v::date()` in the beginning of the validato
 Although is not mandatory, it is a good practice to use the type of the
 validated object as the first node in the chain.
 
-Negating rules
---------------
+### Negating rules
 
 You can use the `v::not()` to negate any rule:
 
     v::not(v::int())->validate(10); //false, input must not be integer
 
-Validator reuse 
----------------
+### Validator reuse 
 
 Once created, you can reuse your validator anywhere. Remember $usernameValidator?
 
@@ -81,8 +75,7 @@ Once created, you can reuse your validator anywhere. Remember $usernameValidator
     $usernameValidator->validate('alexandre gaigalas'); //false 
     $usernameValidator->validate('#$%');                //false 
 
-Cool, informative exceptions
-----------------------------
+### Cool, informative exceptions
 
 When something goes wrong, Validation can tell you exacty what's going on. For this, 
 we use the `assert()` method instead of `validate()`:
@@ -100,8 +93,7 @@ The printed message is exactly this, as a text tree:
       |-"really messed up screen#name" must not contain whitespace
       \-"really messed up screen#name" must have a length between 1 and 15
 
-Getting specific messages
--------------------------
+### Getting specific messages
 
 The text tree is fine, but unusable on a HTML form or something more custom. You can use
 `findMessages()` for that:
@@ -114,8 +106,7 @@ The text tree is fine, but unusable on a HTML form or something more custom. You
 
 `findMessages()` returns an array with messages from the requested validators.
 
-Customizing messages
---------------------
+### Customizing messages
 
 Getting messages as an array is fine, but sometimes you need to customize them in order
 to present them to the user. This is possible using the `findMessages()` method as well:
@@ -128,8 +119,7 @@ to present them to the user. This is possible using the `findMessages()` method 
 
 For all messages, the `{{name}}` and `{{input}}` variable is available for templates.
 
-Validator name
---------------
+### Validator name
 
 On `v::attribute()` and `v::key()`, `{{name}}` is the attribute/key name. For others, 
 is the same as the input. You can customize a validator name using:
@@ -137,16 +127,14 @@ is the same as the input. You can customize a validator name using:
     v::date('Y-m-d')->between('1980-02-02', 'now')->setName('Member Since');
 
 
-Using Zend and/or Symfony validators
-------------------------------------
+### Using Zend and/or Symfony validators
 
 It is also possible to reuse validators from other frameworks if they are installed:
 
     $hostnameValidator = v::zend('Hostname')->assert('google.com');
     $timeValidator     = v::sf('Time')->assert('22:00:01');
 
-Validation methods
-------------------
+### Validation methods
 
 We've seen `validate()` that returns true or false and `assert()` that throws a complete
 validation report. There is also a `check()` method that returns an Exception
@@ -163,10 +151,9 @@ Message:
     "really messed up screen#name" must contain only letters (a-z) and digits (0-9)
 
 Reference
-=========
+---------
 
-Type validators
----------------
+### Type validators
 
   * v::arr()
   * v::bool()
@@ -180,24 +167,21 @@ Type validators
   * v::object()
   * v::string()
 
-Building Blocks
----------------
+### Building Blocks
 
   * v::call()
   * v::callback()
   * v::not()
   * v::when()
 
-Comparison validators
----------------------
+### Comparison validators
 
   * v::between()
   * v::equals()
   * v::max()
   * v::min()
 
-Numeric related
----------------
+### Numeric related
 
   * v::between()
   * v::bool()
@@ -215,8 +199,7 @@ Numeric related
   * v::primeNumber()
   * v::roman()
 
-String related
---------------
+### String related
 
   * v::alnum()
   * v::alpha()
@@ -238,8 +221,7 @@ String related
   * v::version()
   * v::vowels()
 
-Array/Object related
---------------------
+### Array/Object related
 
   * v::arr()
   * v::attribute()
@@ -253,23 +235,20 @@ Array/Object related
   * v::notEmpty()
   * v::startsWith()
 
-Date related
-------------
+### Date related
 
   * v::between()
   * v::date()
   * v::leapDate()
   * v::leapYear()
 
-Group related
--------------
+### Group related
 
   * v::allOf()
   * v::noneOf()
   * v::oneOf()
 
-Other
------
+### Other
 
   * v::cnpj()
   * v::cpf()
@@ -282,10 +261,9 @@ Other
   * v::tld()
   * v::zend()
 
-Alphabetically
---------------
+### Alphabetically
 
-### v::allOf($v1, $v2, $v3...)
+#### v::allOf($v1, $v2, $v3...)
 
 Will validate if all inner validators validates.
 
@@ -309,8 +287,8 @@ See also:
   * v::noneOf() - Validates if no inner rules pass
   * v::when()   - A Ternary validator
 
-### v::alnum()
-### v::alnum(string $additionalChars)
+#### v::alnum()
+#### v::alnum(string $additionalChars)
 
 Validates alphanumeric characters from a-Z and 0-9. 
 
@@ -345,8 +323,8 @@ See also:
   * v::consonants()
   * v::vowels()
 
-### v::alpha()
-### v::alpha(string $additionalChars)
+#### v::alpha()
+#### v::alpha(string $additionalChars)
 
 This is similar to v::alnum(), but it doesn't allow numbers. It also
 accepts empty values and whitespace, so use `v::notEmpty()` and
@@ -359,7 +337,7 @@ See also:
   * v::consonants()
   * v::vowels()
 
-### v::arr()
+#### v::arr()
 
 Validates if the input is an array or traversable object.
 
@@ -371,9 +349,9 @@ See also:
   * v::each() - Validates each member of an array
   * v::key()  - Validates a specific key of an array
 
-### v::attribute($name)
-### v::attribute($name, v $validator)
-### v::attribute($name, v $validator, boolean $mandatory=true)
+#### v::attribute($name)
+#### v::attribute($name, v $validator)
+#### v::attribute($name, v $validator, boolean $mandatory=true)
 
 Validates an object attribute.
 
@@ -396,8 +374,8 @@ See also:
 
   * v::key() - Validates a specific key of an array
 
-### v::between($start, $end)
-### v::between($start, $end, boolean $inclusive=false)
+#### v::between($start, $end)
+#### v::between($start, $end, boolean $inclusive=false)
 
 Validates ranges. Most simple example:
 
@@ -428,14 +406,14 @@ See also:
   * v::min()
   * v::max()
 
-### v::bool()
+#### v::bool()
 
 Validates if the input is a boolean value:
 
     v::bool()->validate(true); //true
     v::bool()->validate(false); //true
 
-### v::call(callable $callback)
+#### v::call(callable $callback)
 
 This is a very low level validator. It calls a function, method or closure
 for the input and then validates it. Consider the following variable:
@@ -474,7 +452,7 @@ See also:
 
   * v::callback() - Similar, but a different workflow.
 
-### v::callback(callable $callback)
+#### v::callback(callable $callback)
 
 This is a wildcard validator, it uses a function name, method or closure
 to validate something:
@@ -489,7 +467,7 @@ See also:
 
   * v::call() - A more elaborated building block validator
 
-### v::cnpj()
+#### v::cnpj()
 
 Validates the Brazillian CNPJ number. Ignores non-digit chars, so
 use `->digits()` if needed.
@@ -498,8 +476,8 @@ See also:
 
   * v::cpf() - Validates the Brazillian CPF number.
 
-### v::consonants()
-### v::consonants(string $additionalChars)
+#### v::consonants()
+#### v::consonants(string $additionalChars)
 
 Similar to `v::alnum()`. Validates strings that contain only consonants:
 
@@ -512,8 +490,8 @@ See also:
   * v::alpha()  - a-Z, empty or whitespace only
   * v::vowels()
 
-### v::contains($value)
-### v::contains($value, boolean $identical=false)
+#### v::contains($value)
+#### v::contains($value, boolean $identical=false)
 
 For strings:
 
@@ -534,7 +512,7 @@ See also:
   * v::endsWith()
   * v::in()
 
-### v::cpf()
+#### v::cpf()
 
 Validates a Brazillian CPF number.
 
@@ -553,7 +531,7 @@ See also:
 
   * v::cnpj()
 
-### v::creditCard()
+#### v::creditCard()
 
 Validates a credit card number. 
 
@@ -563,8 +541,8 @@ It ignores any non-digit chars, so use `->digits()` when appropriate.
 
     v::digits()->creditCard()->validate($myCredCardNumber);
 
-### v::date()
-### v::date($format)
+#### v::date()
+#### v::date($format)
 
 Validates if input is a date:
 
@@ -593,7 +571,7 @@ See also:
   * v::leapDate()
   * v::leapYear()
 
-### v::digits()
+#### v::digits()
 
 This is similar to v::alnum(), but it doesn't allow a-Z. It also
 accepts empty values and whitespace, so use `v::notEmpty()` and
@@ -604,7 +582,7 @@ accepts empty values and whitespace, so use `v::notEmpty()` and
   * v::vowels()
   * v::consonants()
 
-### v::domain()
+#### v::domain()
 
 Validates domain names. 
 
@@ -627,9 +605,9 @@ See also:
   * v::tld()
   * v::ip()
 
-### v::each(v $validatorForValue)
-### v::each(null, v $validatorForKey)
-### v::each(v $validatorForValue, v $validatorForKey)
+#### v::each(v $validatorForValue)
+#### v::each(null, v $validatorForKey)
+#### v::each(v $validatorForValue, v $validatorForKey)
 
 Iterates over an array or Iterator and validates the value or key
 of each entry:
@@ -650,14 +628,14 @@ See also:
   * v::key()
   * v::arr()
 
-### v::email()
+#### v::email()
 
 Validates an email address.
 
     v::email()->validate('alexandre@gaigalas.net'); //true
 
-### v::endsWith($value)
-### v::endsWith($value, boolean $identical=false)
+#### v::endsWith($value)
+#### v::endsWith($value, boolean $identical=false)
 
 This validator is similar to `v::contains()`, but validates
 only if the value is at the end of the input.
@@ -681,8 +659,8 @@ See also:
   * v::contains()
   * v::in()
 
-### v::equals($value)
-### v::equals($value, boolean $identical=false)
+#### v::equals($value)
+#### v::equals($value, boolean $identical=false)
 
 Validates if the input is equal some value.
 
@@ -699,7 +677,7 @@ See also:
 
   * v::contains()
 
-### v::even()
+#### v::even()
 
 Validates an even number.
 
@@ -712,21 +690,21 @@ See also
   * v::odd()
   * v::multiple()
 
-### v::float()
+#### v::float()
 
 Validates a floating point number.
 
     v::float()->validate(1.5); //true
     v::float()->validate('1e5'); //true
 
-### v::hexa()
+#### v::hexa()
 
 Validates an hexadecimal number
 
     v::hexa()->validate('AF12'); //true
 
-### v::in($haystack)
-### v::in($haystack, boolean $identical=false)
+#### v::in($haystack)
+#### v::in($haystack, boolean $identical=false)
 
 Validates if the input is contained in a specific haystack.
 
@@ -749,7 +727,7 @@ See also:
   * v::endsWith()
   * v::contains()
 
-### v::instance($instanceName)
+#### v::instance($instanceName)
 
 Validates if the input is an instance of the given class or interface.
 
@@ -762,7 +740,7 @@ See also:
 
   * v::object()
 
-### v::int()
+#### v::int()
 
 Validates if the input is an integer.
 
@@ -774,8 +752,8 @@ See also:
   * v::numeric()
   * v::digits()
 
-### v::ip()
-### v::ip($options)
+#### v::ip()
+#### v::ip($options)
 
 Validates IP Addresses. This validator uses the native filter_var()
 PHP function.
@@ -786,15 +764,15 @@ You can pass a parameter with filter_var flags for IP.
 
     v::ip(FILTER_FLAG_NO_PRIV_RANGE)->validate('127.0.0.1'); //false
 
-### v::json()
+#### v::json()
 
 Validates if the given input is a valid JSON.
 
     v::json->validate('{"foo":"bar"}'); //true
 
-### v::key($name)
-### v::key($name, v $validator)
-### v::key($name, v $validator, boolean $mandatory=true)
+#### v::key($name)
+#### v::key($name, v $validator)
+#### v::key($name, v $validator, boolean $mandatory=true)
 
 Validates an array key.
 
@@ -818,7 +796,7 @@ See also:
 
   * v::attribute() - Validates a specific attribute of an object
 
-### v::leapDate($format)
+#### v::leapDate($format)
 
 Validates if a date is leap.
 
@@ -832,7 +810,7 @@ See also:
   * v::date()
   * v::leapYear()
 
-### v::leapYear()
+#### v::leapYear()
 
 Validates if a year is leap.
 
@@ -845,10 +823,10 @@ See also:
   * v::date()
   * v::leapDate()
 
-### v::length($min, $max)
-### v::length($min, null)
-### v::length(null, $max)
-### v::length($min, $max, boolean $inclusive=false)
+#### v::length($min, $max)
+#### v::length($min, null)
+#### v::length(null, $max)
+#### v::length($min, $max, boolean $inclusive=false)
 
 Validates lengths. Most simple example:
 
@@ -877,7 +855,7 @@ See also:
 
   * v::between() - Validates ranges
 
-### v::lowercase()
+#### v::lowercase()
 
 Validates if string characters are lowercase in the input:
 
@@ -887,14 +865,14 @@ See also:
 
   * v::uppercase()
 
-### v::macAddress()
+#### v::macAddress()
 
 Validates a Mac Address.
 
     v::macAddress()->validate('00:11:22:33:44:55'); //true
 
-### v::max()
-### v::max(boolean $inclusive=false)
+#### v::max()
+#### v::max(boolean $inclusive=false)
 
 Validates if the input doesn't exceed the maximum value.
 
@@ -914,8 +892,8 @@ See also:
   * v::min()
   * v::between()
 
-### v::min()
-### v::min(boolean $inclusive=false)
+#### v::min()
+#### v::min(boolean $inclusive=false)
 
 Validates if the input doesn't exceed the minimum value.
 
@@ -935,7 +913,7 @@ See also:
   * v::max()
   * v::between()
 
-### v::minimumAge($age)
+#### v::minimumAge($age)
 
 Validates a minimum age for a given date.
 
@@ -949,7 +927,7 @@ See also:
 
   * v::date()
 
-### v::multiple($multipleOf)
+#### v::multiple($multipleOf)
 
 Validates if the input is a multiple of the given parameter
 
@@ -959,7 +937,7 @@ See also:
 
   * v::primeNumber()
 
-### v::negative()
+#### v::negative()
 
 Validates if a number is lower than zero
 
@@ -969,7 +947,7 @@ See also:
 
   * v::positive()
 
-### v::noWhitespace()
+#### v::noWhitespace()
 
 Validates if a string contains no whitespace (spaces, tabs and line breaks);
 
@@ -977,7 +955,7 @@ Validates if a string contains no whitespace (spaces, tabs and line breaks);
 
 This is most useful when chaining with other validators such as `v::alnum()`
 
-### v::noneOf($v1, $v2, $v3...)
+#### v::noneOf($v1, $v2, $v3...)
 
 Validates if NONE of the given validators validate:
 
@@ -994,7 +972,7 @@ See also:
   * v::allOf()
   * v::oneOf()
 
-### v::not(v $negatedValidator)
+#### v::not(v $negatedValidator)
 
 Negates any rule.
 
@@ -1012,7 +990,7 @@ See also:
 
   * v::noneOf()
 
-### v::notEmpty()
+#### v::notEmpty()
 
 Validates if the given input is not empty. This function ignores whitespace, so
 use `noWhitespace()` when appropriate.
@@ -1040,7 +1018,7 @@ See also:
   * v::noWhitespace()
   * v::nullValue()
 
-### v::nullValue()
+#### v::nullValue()
 
 Validates if the input is null.
 
@@ -1050,7 +1028,7 @@ See also:
 
   * v::notEmpty()
 
-### v::numeric()
+#### v::numeric()
 
 Validates on any numeric value.
 
@@ -1062,7 +1040,7 @@ See also:
   * v::int()
   * v::digits()
 
-### v::object()
+#### v::object()
 
 Validates if the input is an object.
 
@@ -1073,7 +1051,7 @@ See also:
   * v::instance()
   * v::attribute()
 
-### v::odd()
+#### v::odd()
 
 Validates an odd number.
 
@@ -1086,7 +1064,7 @@ See also
   * v::even()
   * v::multiple()
 
-### v::oneOf($v1, $v2, $v3...)
+#### v::oneOf($v1, $v2, $v3...)
 
 This is a group validator that acts as an OR operator.
 
@@ -1107,14 +1085,14 @@ See also:
   * v::noneOf() - Validates if NONE of the inner rules validates
   * v::when()   - A ternary validator
 
-### v::perfectSquare()
+#### v::perfectSquare()
 
 Validates a perfect square.
 
     v::perfectSquare()->validate(25); //true (5*5)
     v::perfectSquare()->validate(9); //true (3*3)
 
-### v::positive()
+#### v::positive()
 
 Validates if a number is higher than zero
 
@@ -1124,13 +1102,13 @@ See also:
 
   * v::negative()
 
-### v::primeNumber()
+#### v::primeNumber()
 
 Validates a prime number
 
     v::primeNumber()->validate(7); //true
 
-### v::regex($regex)
+#### v::regex($regex)
 
 Evaluates a regex on the input and validates if matches
 
@@ -1138,7 +1116,7 @@ Evaluates a regex on the input and validates if matches
 
 Message template for this validator includes `{{regex}}`
 
-### v::roman()
+#### v::roman()
 
 Validates roman numbers
 
@@ -1147,7 +1125,7 @@ Validates roman numbers
 This validator ignores empty values, use `notEmpty()` when
 appropriate.
 
-### v::sf($sfValidator)
+#### v::sf($sfValidator)
 
 Use Symfony2 validators inside Respect\Validation flow. Messages
 are preserved.
@@ -1160,7 +1138,7 @@ See also:
 
   * v::zend()
 
-### v::slug()
+#### v::slug()
 
 Validates slug-like strings:
 
@@ -1168,8 +1146,8 @@ Validates slug-like strings:
     v::slug()->validate('my-wordpress--title'); //false
     v::slug()->validate('my-wordpress-title-'); //false
 
-### v::startsWith($value)
-### v::startsWith($value, boolean $identical=false)
+#### v::startsWith($value)
+#### v::startsWith($value, boolean $identical=false)
 
 This validator is similar to `v::contains()`, but validates
 only if the value is at the end of the.
@@ -1193,7 +1171,7 @@ See also:
   * v::contains()
   * v::in()
 
-### v::string()
+#### v::string()
 
 Validates a string.
 
@@ -1203,7 +1181,7 @@ See also:
 
   * v::alnum()
 
-### v::tld()
+#### v::tld()
 
 Validates a top-level domain
 
@@ -1215,7 +1193,7 @@ See also
 
  * v::domain()
 
-### v::uppercase()
+#### v::uppercase()
 
 Validates if string characters are uppercase in the input:
 
@@ -1225,13 +1203,13 @@ See also:
 
   * v::lowercase()
 
-### v::version()
+#### v::version()
 
 Validates version numbers using Semantic Versioning.
 
     v::version()->validate('1.0.0');
 
-### v::vowels()
+#### v::vowels()
 
 Similar to `v::alnum()`. Validates strings that contain only vowels:
 
@@ -1244,7 +1222,7 @@ See also:
   * v::alpha()  - a-Z, empty or whitespace only
   * v::consonants()
 
-### v::when(v $if, v $then, v $else)
+#### v::when(v $if, v $then, v $else)
 
 A ternary validator that accepts three parameters. 
 
@@ -1262,7 +1240,7 @@ See also:
   * v::oneOf()
   * v::noneOf()
 
-### v::zend($zendValidator)
+#### v::zend($zendValidator)
 
 Use Zend validators inside Respect\Validation flow. Messages
 are preserved.
