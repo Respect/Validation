@@ -1,9 +1,9 @@
 {
     "name": "Respect\/Validation",
     "description": "The most awesome validation engine ever created for PHP",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "type": "library",
-    "time": "2012-04-08 22:27:42",
+    "time": "2012-04-09 23:42:56",
     "homepage": "",
     "license": "BSD Style",
     "authors": [
