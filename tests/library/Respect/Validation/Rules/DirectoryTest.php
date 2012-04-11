@@ -42,7 +42,10 @@ class DirectoryTest extends \PHPUnit_Framework_TestCase
         return array(
             array(new \SplFileInfo(__DIR__), true),
             array(new \SplFileInfo(__FILE__), false),
-            array(new \SplFileObject(__DIR__), true),
+            /**
+             * PHP 5.4 does not allows to use SplFileObject with directories.
+             * array(new \SplFileObject(__DIR__), true),
+             */
             array(new \SplFileObject(__FILE__), false),
         );
     }
