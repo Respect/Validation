@@ -614,7 +614,7 @@ Validates directories.
 
     v::directory()->validate(__DIR__); //true
 
-This validator will consider SplFileInfo instances, so you do something like:
+This validator will consider SplFileInfo instances, so you can do something like:
 
     v::directory()->validate(new \SplFileInfo($directory));
 
