@@ -41,7 +41,7 @@ foundation:
 	@echo "Creating .foundation folder"
 	-rm -Rf .foundation
 	-mkdir .foundation
-	git clone git://github.com/Respect/Foundation.git .foundation/repo
+	git clone --depth 1 git://github.com/Respect/Foundation.git .foundation/repo
 	@echo "Downloading Onion"
 	-curl -L https://github.com/c9s/Onion/raw/master/onion > .foundation/onion;chmod +x .foundation/onion
 	@echo "Done."
@@ -147,7 +147,7 @@ pear-push:
 	@sudo pear install --soft --force pear.pirum-project.org/Pirum
 	@echo "Cloning channel from git" `$(CONFIG_TOOL) pear-repository`
 	-rm -Rf .foundation/pirum
-	git clone `$(CONFIG_TOOL) pear-repository`.git .foundation/pirum
+	git clone --depth 1 `$(CONFIG_TOOL) pear-repository`.git .foundation/pirum
 	pirum add .foundation/pirum `$(CONFIG_TOOL) package-name`-`$(CONFIG_TOOL) package-version`.tgz;pirum build .foundation/pirum;
 	cd .foundation/pirum;git add .;git commit -m "Added " `$(CONFIG_TOOL) package-version`;git push
 

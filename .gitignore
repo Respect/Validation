@@ -6,9 +6,7 @@ library/Symfony/
 .settings/
 nbproject
 tests/reports
-phar
 *.phar
-pirum
 /library/.fr-6ayG1u/
 /library/.fr-n9BajN/
 *.7z

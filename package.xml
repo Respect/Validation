@@ -154,11 +154,11 @@
     <email>kolyshkin@.sqlmaze.local</email>
     <active>yes</active>
   </lead>
-  <date>2012-04-08</date>
-  <time>22:27:42</time>
+  <date>2012-04-10</date>
+  <time>01:16:24</time>
   <version>
-    <release>0.4.1</release>
-    <api>0.4.1</api>
+    <release>0.4.3</release>
+    <api>0.4.3</api>
   </version>
   <stability>
     <release>alpha</release>
@@ -169,6 +169,156 @@
   <contents>
     <dir name="/">
       <file name="tests/phpunit.xml" role="test" md5sum="03642477f5a201be9c3161eb64dde993"/>
+      <file name="tests/reports/coverage/Rules_Uppercase.php.html" role="test" md5sum="9df902ce5e95b9d0599bbd9aaed71375"/>
+      <file name="tests/reports/coverage/Exceptions_AlphaException.php.html" role="test" md5sum="f887801bbfc7bdafffbd6c12282036e9"/>
+      <file name="tests/reports/coverage/Rules.html" role="test" md5sum="c7a58ea67ad68d8fc9450ff38243351d"/>
+      <file name="tests/reports/coverage/Exceptions_StringException.php.html" role="test" md5sum="b4300c4c43c1e07260d68e09965d01a2"/>
+      <file name="tests/reports/coverage/Rules_Odd.php.html" role="test" md5sum="683795fee9b2c6f71eb293922fe867f6"/>
+      <file name="tests/reports/coverage/Rules_AbstractComposite.php.html" role="test" md5sum="d55cac77f90d574a9b2a290b96622523"/>
+      <file name="tests/reports/coverage/Exceptions_MaxException.php.html" role="test" md5sum="4d1c0df57e913ccba5a84572138c549a"/>
+      <file name="tests/reports/coverage/Rules_Consonants.php.html" role="test" md5sum="d2c75d06e9ad1f804c09b7b05eb8f1a8"/>
+      <file name="tests/reports/coverage/Validator.php.html" role="test" md5sum="907ec038969d7d4b0dcd8fc569e44110"/>
+      <file name="tests/reports/coverage/Exceptions_SfException.php.html" role="test" md5sum="706e966d2861ea77e8768e8c39178d2e"/>
+      <file name="tests/reports/coverage/Exceptions_AbstractGroupedException.php.html" role="test" md5sum="6a6ff992a6c59eb67138e9f2c9203819"/>
+      <file name="tests/reports/coverage/Rules_Between.php.html" role="test" md5sum="02636babe40fd8d8e86aaf7ce252a9bd"/>
+      <file name="tests/reports/coverage/Exceptions_NegativeException.php.html" role="test" md5sum="6e187566344a1c35a0dc88e7859e5115"/>
+      <file name="tests/reports/coverage/Exceptions_DigitsException.php.html" role="test" md5sum="55bb51a5f37ba64f7fc6548ce8271f93"/>
+      <file name="tests/reports/coverage/Rules_In.php.html" role="test" md5sum="484dbb09a74e471d797e8466f443c5ab"/>
+      <file name="tests/reports/coverage/Exceptions_MinException.php.html" role="test" md5sum="6301434faf613b425e54405ab874248c"/>
+      <file name="tests/reports/coverage/Rules_PerfectSquare.php.html" role="test" md5sum="12e6429073816daa8a1be4c31bf0396d"/>
+      <file name="tests/reports/coverage/Rules_Attribute.php.html" role="test" md5sum="f758372e218abb9cc5083cd61277c6be"/>
+      <file name="tests/reports/coverage/Rules_Roman.php.html" role="test" md5sum="c31caec07c1a2c04499f65fee94a6952"/>
+      <file name="tests/reports/coverage/Rules_Min.php.html" role="test" md5sum="6a37581941dd5c6b824eb2b0b965f7ac"/>
+      <file name="tests/reports/coverage/Exceptions_MinimumAgeException.php.html" role="test" md5sum="9365a5166fd2c570e616fe915e80ace6"/>
+      <file name="tests/reports/coverage/Exceptions_MacAddressException.php.html" role="test" md5sum="03d234235554fa8d90c44b85a12cc82b"/>
+      <file name="tests/reports/coverage/Exceptions_ValidationException.php.html" role="test" md5sum="a099a7545d6d8cebae06e65dec26e949"/>
+      <file name="tests/reports/coverage/glass.png" role="test" md5sum="d0bcded9081d6a0efda48c495867da73"/>
+      <file name="tests/reports/coverage/Rules_Arr.php.html" role="test" md5sum="71eb2fb0b6b7ab476b644b8c6bda38dc"/>
+      <file name="tests/reports/coverage/style.css" role="test" md5sum="6720298ca22a5214a2e9f8fdb279fbd3"/>
+      <file name="tests/reports/coverage/Exceptions_LengthException.php.html" role="test" md5sum="e01a8a3cd4ac9f4418e555e7083a46a4"/>
+      <file name="tests/reports/coverage/Exceptions_ArrException.php.html" role="test" md5sum="d41314e94388de614a507afacfa1cfa4"/>
+      <file name="tests/reports/coverage/Rules_Lowercase.php.html" role="test" md5sum="bb143037582adbc2fcf83dac36759435"/>
+      <file name="tests/reports/coverage/Rules_AbstractRelated.php.html" role="test" md5sum="3d07c37f8bbd027a66982b118bddc8fd"/>
+      <file name="tests/reports/coverage/Exceptions_HexaException.php.html" role="test" md5sum="7559fcce1f6c6d21870fcfd65d5e1792"/>
+      <file name="tests/reports/coverage/Rules_Hexa.php.html" role="test" md5sum="f5efa33336d9c6b3a02f5db2d268e417"/>
+      <file name="tests/reports/coverage/Rules_MacAddress.php.html" role="test" md5sum="fa3726b9ce9be2732e5b1f6aa1e2b73c"/>
+      <file name="tests/reports/coverage/Rules_Float.php.html" role="test" md5sum="7a9144898a8c067135d9fe9f71102121"/>
+      <file name="tests/reports/coverage/Exceptions_ComponentException.php.html" role="test" md5sum="9d6bd579ca7c007d2b18301aaea92507"/>
+      <file name="tests/reports/coverage/Exceptions_DateException.php.html" role="test" md5sum="be1d6c874094131df24b8a2c1b316b92"/>
+      <file name="tests/reports/coverage/index.html" role="test" md5sum="c1e39a90d470f97329c2ea3876aeecca"/>
+      <file name="tests/reports/coverage/Exceptions_ConsonantsException.php.html" role="test" md5sum="5854922f5d448050b44306d7f869e953"/>
+      <file name="tests/reports/coverage/Rules_NotEmpty.php.html" role="test" md5sum="3928ead0f100b5050c51b4463a5729f5"/>
+      <file name="tests/reports/coverage/Exceptions_FloatException.php.html" role="test" md5sum="b1d93629f4135bb8082b2b510c0207fa"/>
+      <file name="tests/reports/coverage/Exceptions_JsonException.php.html" role="test" md5sum="b10f2539251f2f4d91b5f44d81957391"/>
+      <file name="tests/reports/coverage/Rules_AllOf.php.html" role="test" md5sum="2bff2933cfee52f61efd4097388da85e"/>
+      <file name="tests/reports/coverage/Exceptions_AtLeastException.php.html" role="test" md5sum="c1f6eb42868f1f1af9a1f049ff82caeb"/>
+      <file name="tests/reports/coverage/ExceptionIterator.php.html" role="test" md5sum="c3753f6d5d9004c3791388173e38dd85"/>
+      <file name="tests/reports/coverage/Rules_LeapYear.php.html" role="test" md5sum="ede8b9da3adbdf1f69bca36b6c331ab7"/>
+      <file name="tests/reports/coverage/Exceptions_NumericException.php.html" role="test" md5sum="266930ff89a311215644f500327f83d2"/>
+      <file name="tests/reports/coverage/Exceptions_LowercaseException.php.html" role="test" md5sum="aa44f2e60520064107d30658a0b2e30e"/>
+      <file name="tests/reports/coverage/Rules_Key.php.html" role="test" md5sum="dc151c3b9b8325c934b7aee08ca74484"/>
+      <file name="tests/reports/coverage/Rules_Sf.php.html" role="test" md5sum="1d769d65df858725bf3dbb4a7b913a41"/>
+      <file name="tests/reports/coverage/Rules_Date.php.html" role="test" md5sum="861b2bda5a1328e1ec8f4b0f21780877"/>
+      <file name="tests/reports/coverage/Exceptions_RegexException.php.html" role="test" md5sum="a0c1464ea3d365be82f125e0893b9765"/>
+      <file name="tests/reports/coverage/Rules_StartsWith.php.html" role="test" md5sum="536bcc1dd38ea4ff52a01561588e37ca"/>
+      <file name="tests/reports/coverage/Exceptions.dashboard.html" role="test" md5sum="8c43e9e50973d2adc069c0501e0b36d1"/>
+      <file name="tests/reports/coverage/Exceptions_BetweenException.php.html" role="test" md5sum="680f82d5000a8d810d29ff1b5cdb6c59"/>
+      <file name="tests/reports/coverage/Rules_Contains.php.html" role="test" md5sum="5a77fe9bb43b59267860f1bcc0fec564"/>
+      <file name="tests/reports/coverage/Rules_Ip.php.html" role="test" md5sum="25df5144b0e616c812b900c408e3d914"/>
+      <file name="tests/reports/coverage/Exceptions_NotException.php.html" role="test" md5sum="0473ed6603bd890ae0958bc85dee06e0"/>
+      <file name="tests/reports/coverage/Rules_Email.php.html" role="test" md5sum="4a6856ea0f1d3608adc8dae340160f56"/>
+      <file name="tests/reports/coverage/Exceptions_EvenException.php.html" role="test" md5sum="66f0edabde7134a535780b56c1ba75eb"/>
+      <file name="tests/reports/coverage/Exceptions_MultipleException.php.html" role="test" md5sum="8b73cda0aa50a8e666977f2d2fcacc2a"/>
+      <file name="tests/reports/coverage/Exceptions_PrimeNumberException.php.html" role="test" md5sum="d8d0679cdaf0764e9b1a5ff1c27b8b9f"/>
+      <file name="tests/reports/coverage/Rules_Multiple.php.html" role="test" md5sum="2b0d4cffeb7299ceb1c5fcbddb167d85"/>
+      <file name="tests/reports/coverage/Rules_NullValue.php.html" role="test" md5sum="59f5436f628ac79b89ecc7c75909a21b"/>
+      <file name="tests/reports/coverage/Rules_OneOf.php.html" role="test" md5sum="a0e7b0d722cf76072ccd5dd9174f7c21"/>
+      <file name="tests/reports/coverage/Exceptions_VowelsException.php.html" role="test" md5sum="cb459d6bb20bd264d77b111cd31e0224"/>
+      <file name="tests/reports/coverage/Exceptions_InstanceException.php.html" role="test" md5sum="a5583261765abd889af2da124eac80c9"/>
+      <file name="tests/reports/coverage/Rules_Bool.php.html" role="test" md5sum="5287a57f24645d7a070ebc3daeada11f"/>
+      <file name="tests/reports/coverage/Rules_Call.php.html" role="test" md5sum="a6d3f181787ff6311323d889421f79dd"/>
+      <file name="tests/reports/coverage/container-min.js" role="test" md5sum="5511b676a4961a0dfb52e1f64ce65a7a"/>
+      <file name="tests/reports/coverage/Exceptions_IntException.php.html" role="test" md5sum="ff46ffcf2fd81bfd4d5123ada5fd705a"/>
+      <file name="tests/reports/coverage/Rules_Json.php.html" role="test" md5sum="7dc137dcc175f6b638443dfb5b698f09"/>
+      <file name="tests/reports/coverage/highcharts.js" role="test" md5sum="08cdf43b4ba8ce789f86a30a09071ca8"/>
+      <file name="tests/reports/coverage/Rules_MinimumAge.php.html" role="test" md5sum="d9c9b8d997805fb40b7861bdd45ecc7b"/>
+      <file name="tests/reports/coverage/Exceptions_UppercaseException.php.html" role="test" md5sum="2771e2ac61ebd96ce7356bede183c362"/>
+      <file name="tests/reports/coverage/Rules.dashboard.html" role="test" md5sum="1cf9a60b4ae37a8dc0b39afdf0d98164"/>
+      <file name="tests/reports/coverage/Exceptions_EqualsException.php.html" role="test" md5sum="eb8c5cebc5225aa547efa8c05c51090e"/>
+      <file name="tests/reports/coverage/Rules_Zend.php.html" role="test" md5sum="358f5e3898c49d932f77cf6ace5182a2"/>
+      <file name="tests/reports/coverage/jquery.min.js" role="test" md5sum="0efa3b9aa0f509043308e7c6e23538f8"/>
+      <file name="tests/reports/coverage/Rules_NoWhitespace.php.html" role="test" md5sum="ee41098dfbe4da83f5dfbb019d484595"/>
+      <file name="tests/reports/coverage/Exceptions_SlugException.php.html" role="test" md5sum="85ed08b4133bde9d5d355cbb7a6fc063"/>
+      <file name="tests/reports/coverage/Exceptions_AlnumException.php.html" role="test" md5sum="6cf10ceab29c2a608923d254442a90db"/>
+      <file name="tests/reports/coverage/Exceptions_EachException.php.html" role="test" md5sum="959ea99c57e463214de4e98f18431805"/>
+      <file name="tests/reports/coverage/Rules_Max.php.html" role="test" md5sum="5f8763920ebfaba9319bf89e56be5df9"/>
+      <file name="tests/reports/coverage/Exceptions_EmailException.php.html" role="test" md5sum="46d399e8457550a770c5e812c88626d3"/>
+      <file name="tests/reports/coverage/Rules_Domain.php.html" role="test" md5sum="09f9fa815fbe35d345c4d3ec734ba74e"/>
+      <file name="tests/reports/coverage/Rules_Positive.php.html" role="test" md5sum="c1b522d0ef574f485063b90ecca1d46a"/>
+      <file name="tests/reports/coverage/Exceptions_CreditCardException.php.html" role="test" md5sum="4d041495e7c614484f70ee0ca5bf4bc1"/>
+      <file name="tests/reports/coverage/file.png" role="test" md5sum="6983bd4ac09f5135eb128cbdf0ceadfe"/>
+      <file name="tests/reports/coverage/Rules_Numeric.php.html" role="test" md5sum="24438ff75488b7a98ee832979d7a8d29"/>
+      <file name="tests/reports/coverage/Rules_Negative.php.html" role="test" md5sum="8e0420c5230c3190c74e904d28bd00ec"/>
+      <file name="tests/reports/coverage/Rules_Length.php.html" role="test" md5sum="4805d58645dd6859abdda93419e5f8e7"/>
+      <file name="tests/reports/coverage/Rules_Alpha.php.html" role="test" md5sum="20c2900c1732c741f0dbe2ff70f4d212"/>
+      <file name="tests/reports/coverage/Exceptions_CallbackException.php.html" role="test" md5sum="c426ca1691ad0c3138199af637c94257"/>
+      <file name="tests/reports/coverage/Exceptions_PositiveException.php.html" role="test" md5sum="c7d47874c4799eb200b9a46c40512b2c"/>
+      <file name="tests/reports/coverage/Exceptions_AttributeException.php.html" role="test" md5sum="8ad54db3915cbaa3ca935b6016c69069"/>
+      <file name="tests/reports/coverage/Exceptions_VersionException.php.html" role="test" md5sum="4ede90330c18bca96ec64c4b890307d6"/>
+      <file name="tests/reports/coverage/Exceptions_ObjectException.php.html" role="test" md5sum="558d58f202f32b55e8a2fb36e257c697"/>
+      <file name="tests/reports/coverage/Exceptions_RomanException.php.html" role="test" md5sum="8e1d625c933cb0bae6aae45b4ebc9fd4"/>
+      <file name="tests/reports/coverage/Exceptions_CpfException.php.html" role="test" md5sum="2f3f9bf4b3b8661d87ad771bc95ce886"/>
+      <file name="tests/reports/coverage/container.css" role="test" md5sum="495d2ec9631eb89063bdd9d70bd731dc"/>
+      <file name="tests/reports/coverage/Exceptions_KeyException.php.html" role="test" md5sum="1b2aa67a7aa078349ca1a3e4431404fe"/>
+      <file name="tests/reports/coverage/Rules_Object.php.html" role="test" md5sum="83ceb763d5c5d87dff24f11a38ef4867"/>
+      <file name="tests/reports/coverage/directory.png" role="test" md5sum="0c2ea106ded3a3b443ad39e3eddcd7a6"/>
+      <file name="tests/reports/coverage/Rules_Even.php.html" role="test" md5sum="53c509790136f23dea8eceaf5824f6d9"/>
+      <file name="tests/reports/coverage/Exceptions_DomainException.php.html" role="test" md5sum="e8b3a0c267fe217748a156e7481c5be1"/>
+      <file name="tests/reports/coverage/Exceptions_NoWhitespaceException.php.html" role="test" md5sum="27ccce86d1119c411a0c33118015c391"/>
+      <file name="tests/reports/coverage/Rules_Equals.php.html" role="test" md5sum="34478c5df3c01c74979e01726218e49a"/>
+      <file name="tests/reports/coverage/Exceptions_ContainsException.php.html" role="test" md5sum="8a08db0d4dafab110865aa6e40ac85b1"/>
+      <file name="tests/reports/coverage/Rules_EndsWith.php.html" role="test" md5sum="4005de53762df5e428d9293c7af78d76"/>
+      <file name="tests/reports/coverage/Rules_Slug.php.html" role="test" md5sum="2a0129df5aa6a07b23855d5bce0af2ad"/>
+      <file name="tests/reports/coverage/Rules_Alnum.php.html" role="test" md5sum="a2b85ba3660484d887945c81affbe2b6"/>
+      <file name="tests/reports/coverage/Rules_Regex.php.html" role="test" md5sum="c03efbf2dd302e469c8e833ed22428f2"/>
+      <file name="tests/reports/coverage/Exceptions_PerfectSquareException.php.html" role="test" md5sum="691b8625fda2124660c0ecfbac576250"/>
+      <file name="tests/reports/coverage/Exceptions_IpException.php.html" role="test" md5sum="adf2bc0342201d7f6273497a5689386a"/>
+      <file name="tests/reports/coverage/Exceptions_NullValueException.php.html" role="test" md5sum="5d6516c5cf28f533d1930c339f09d914"/>
+      <file name="tests/reports/coverage/Rules_Not.php.html" role="test" md5sum="737b00b622f3c68d65cdbda8e2f52fc0"/>
+      <file name="tests/reports/coverage/Rules_Version.php.html" role="test" md5sum="375cb1c50c01822a09bb5af780beed58"/>
+      <file name="tests/reports/coverage/close12_1.gif" role="test" md5sum="770d9c592b4300457ae025448c4c6816"/>
+      <file name="tests/reports/coverage/Exceptions_ZendException.php.html" role="test" md5sum="ef602794878512fecc6adf8fe7c5782d"/>
+      <file name="tests/reports/coverage/Rules_CreditCard.php.html" role="test" md5sum="ea2c39a599fb2b5105f237f6d78c2e5c"/>
+      <file name="tests/reports/coverage/Exceptions_NotEmptyException.php.html" role="test" md5sum="437378d20d0488318930d157f2825b19"/>
+      <file name="tests/reports/coverage/Rules_Callback.php.html" role="test" md5sum="c5f38b2687c8f6f4382d39a0b0e0572d"/>
+      <file name="tests/reports/coverage/Rules_Int.php.html" role="test" md5sum="6200f22dd4c2ab02374a2a24ea730051"/>
+      <file name="tests/reports/coverage/Exceptions_BoolException.php.html" role="test" md5sum="e2797f6483052115949d6e39172f2b54"/>
+      <file name="tests/reports/coverage/Rules_String.php.html" role="test" md5sum="d2e849354d8f4d299e1f4f94eab0984e"/>
+      <file name="tests/reports/coverage/Rules_NoneOf.php.html" role="test" md5sum="f208e5a326a482581e8b7444f9d1a8ac"/>
+      <file name="tests/reports/coverage/Exceptions_NoneOfException.php.html" role="test" md5sum="c37da7c00d050d89ea88ddc7d86c655d"/>
+      <file name="tests/reports/coverage/Exceptions_AllOfException.php.html" role="test" md5sum="9c4f36b2b82ec78cdba6a838841f862f"/>
+      <file name="tests/reports/coverage/Exceptions_MostOfException.php.html" role="test" md5sum="3936fdec3e32879f7a95e234002206b7"/>
+      <file name="tests/reports/coverage/Exceptions_StartsWithException.php.html" role="test" md5sum="ec8a9bf348497974fadd51fac39a8327"/>
+      <file name="tests/reports/coverage/Rules_LeapDate.php.html" role="test" md5sum="2ab7ccf23ac6ca72f2e073df1bcd6fca"/>
+      <file name="tests/reports/coverage/yahoo-dom-event.js" role="test" md5sum="366eac96e298168d2c923fcb556fa259"/>
+      <file name="tests/reports/coverage/Exceptions_OneOfException.php.html" role="test" md5sum="7ccf7af7d867ba42d881a9266e9ff8ee"/>
+      <file name="tests/reports/coverage/Rules_Instance.php.html" role="test" md5sum="730c02d7878317de555eeacd6a1cda7d"/>
+      <file name="tests/reports/coverage/Rules_Vowels.php.html" role="test" md5sum="1010f8a7a3f75471fd1a77cc525a70fa"/>
+      <file name="tests/reports/coverage/Exceptions_TldException.php.html" role="test" md5sum="b9098c2e697ca9473201963194af1c6b"/>
+      <file name="tests/reports/coverage/Rules_Tld.php.html" role="test" md5sum="0efdd7474cf1d87ed42f2bec4c7b7c5a"/>
+      <file name="tests/reports/coverage/Rules_Each.php.html" role="test" md5sum="3f7f368a709b1f83bba26ca2f912400f"/>
+      <file name="tests/reports/coverage/Exceptions_OddException.php.html" role="test" md5sum="d652f3d61cb090758c5a04471a3acd7b"/>
+      <file name="tests/reports/coverage/Exceptions_AbstractNestedException.php.html" role="test" md5sum="dff9e4c37d7d7169b9879eb5ede88718"/>
+      <file name="tests/reports/coverage/Exceptions.html" role="test" md5sum="14f1063acd87300fdce38662bb5ccab0"/>
+      <file name="tests/reports/coverage/Rules_Cpf.php.html" role="test" md5sum="0c0ad85ae94341e240345180afcd5b0e"/>
+      <file name="tests/reports/coverage/Exceptions_EndsWithException.php.html" role="test" md5sum="676c4ab0ba796553910ca783ee854248"/>
+      <file name="tests/reports/coverage/Exceptions_InException.php.html" role="test" md5sum="dd8643518e65f793aabf7ae2adbc7fe3"/>
+      <file name="tests/reports/coverage/Exceptions_CallException.php.html" role="test" md5sum="95d5bcaec9e3fdaf3a2bef36d1d4ecdd"/>
+      <file name="tests/reports/coverage/Rules_PrimeNumber.php.html" role="test" md5sum="68bf681de22fa0e2115cbe25f6389773"/>
+      <file name="tests/reports/coverage/index.dashboard.html" role="test" md5sum="161869a4ed2a666755319641e07b2479"/>
+      <file name="tests/reports/coverage/Rules_When.php.html" role="test" md5sum="8df7d9ec182fc073f83584bb4fca3327"/>
+      <file name="tests/reports/coverage/Rules_AbstractRule.php.html" role="test" md5sum="ab5574e999c476a8bf62ca3471efd05e"/>
+      <file name="tests/reports/coverage/Rules_Cnpj.php.html" role="test" md5sum="943dde072aee066ae9e79de94abaac3f"/>
       <file name="tests/bootstrap.php" role="test" md5sum="50801951d158662430b24aeedfea6bf6"/>
       <file name="tests/library/Respect/Validation/Rules/WhenTest.php" role="test" md5sum="536a74d6f6398c4de36d301e09aeb15c"/>
       <file name="tests/library/Respect/Validation/Rules/StringTest.php" role="test" md5sum="a7ff99da8f1263f5709948a7544a8cec"/>
@@ -254,7 +404,7 @@
       <file name="library/Respect/Validation/Rules/Key.php" role="php" md5sum="6a1756533353b12a37515a0aebb57058"/>
       <file name="library/Respect/Validation/Rules/Numeric.php" role="php" md5sum="b0ef9b30d4faf15b94908a1ca096822b"/>
       <file name="library/Respect/Validation/Rules/Callback.php" role="php" md5sum="afa413988b7deb986fce99ead83eafa7"/>
-      <file name="library/Respect/Validation/Rules/AbstractRule.php" role="php" md5sum="8c7d616158b571d719c3eb6b5834bd15"/>
+      <file name="library/Respect/Validation/Rules/AbstractRule.php" role="php" md5sum="49585f25dc76dd9689f168f716053526"/>
       <file name="library/Respect/Validation/Rules/Alpha.php" role="php" md5sum="2ccd73e339debaa6f0b1beb2e14e28d1"/>
       <file name="library/Respect/Validation/Rules/MinimumAge.php" role="php" md5sum="b982af15ea6eba6de51f2fcf48ebc4a8"/>
       <file name="library/Respect/Validation/Rules/LeapDate.php" role="php" md5sum="17d2cd40ac343c13a6060d98993f47d8"/>
@@ -323,7 +473,7 @@
       <file name="library/Respect/Validation/Exceptions/LowercaseException.php" role="php" md5sum="951215139be55b78f61eba6cae6f436c"/>
       <file name="library/Respect/Validation/Exceptions/ArrException.php" role="php" md5sum="b90a3c2a42d128d67cdbb58eeb5e98c5"/>
       <file name="library/Respect/Validation/Exceptions/AtLeastException.php" role="php" md5sum="4aaae659e30d528568b56c6364ba8c3a"/>
-      <file name="library/Respect/Validation/Exceptions/AlphaException.php" role="php" md5sum="33503ed77beaeacbdc7803c1977b0448"/>
+      <file name="library/Respect/Validation/Exceptions/AlphaException.php" role="php" md5sum="bf0d8f2ed6f4a221cb05165299f13794"/>
       <file name="library/Respect/Validation/Exceptions/ValidationException.php" role="php" md5sum="d353691949fc46bf42be6682b4635378"/>
       <file name="library/Respect/Validation/Exceptions/ZendException.php" role="php" md5sum="d0f7b58ec9ad2e28a35db90fc79f7309"/>
       <file name="library/Respect/Validation/Exceptions/SlugException.php" role="php" md5sum="e4052c9daaf23c4f4c0219f407f53005"/>
@@ -387,6 +537,156 @@
   <phprelease>
     <filelist>
       <install name="tests/phpunit.xml" as="phpunit.xml"/>
+      <install name="tests/reports/coverage/Rules_Uppercase.php.html" as="reports/coverage/Rules_Uppercase.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_AlphaException.php.html" as="reports/coverage/Exceptions_AlphaException.php.html"/>
+      <install name="tests/reports/coverage/Rules.html" as="reports/coverage/Rules.html"/>
+      <install name="tests/reports/coverage/Exceptions_StringException.php.html" as="reports/coverage/Exceptions_StringException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Odd.php.html" as="reports/coverage/Rules_Odd.php.html"/>
+      <install name="tests/reports/coverage/Rules_AbstractComposite.php.html" as="reports/coverage/Rules_AbstractComposite.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_MaxException.php.html" as="reports/coverage/Exceptions_MaxException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Consonants.php.html" as="reports/coverage/Rules_Consonants.php.html"/>
+      <install name="tests/reports/coverage/Validator.php.html" as="reports/coverage/Validator.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_SfException.php.html" as="reports/coverage/Exceptions_SfException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_AbstractGroupedException.php.html" as="reports/coverage/Exceptions_AbstractGroupedException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Between.php.html" as="reports/coverage/Rules_Between.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_NegativeException.php.html" as="reports/coverage/Exceptions_NegativeException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_DigitsException.php.html" as="reports/coverage/Exceptions_DigitsException.php.html"/>
+      <install name="tests/reports/coverage/Rules_In.php.html" as="reports/coverage/Rules_In.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_MinException.php.html" as="reports/coverage/Exceptions_MinException.php.html"/>
+      <install name="tests/reports/coverage/Rules_PerfectSquare.php.html" as="reports/coverage/Rules_PerfectSquare.php.html"/>
+      <install name="tests/reports/coverage/Rules_Attribute.php.html" as="reports/coverage/Rules_Attribute.php.html"/>
+      <install name="tests/reports/coverage/Rules_Roman.php.html" as="reports/coverage/Rules_Roman.php.html"/>
+      <install name="tests/reports/coverage/Rules_Min.php.html" as="reports/coverage/Rules_Min.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_MinimumAgeException.php.html" as="reports/coverage/Exceptions_MinimumAgeException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_MacAddressException.php.html" as="reports/coverage/Exceptions_MacAddressException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_ValidationException.php.html" as="reports/coverage/Exceptions_ValidationException.php.html"/>
+      <install name="tests/reports/coverage/glass.png" as="reports/coverage/glass.png"/>
+      <install name="tests/reports/coverage/Rules_Arr.php.html" as="reports/coverage/Rules_Arr.php.html"/>
+      <install name="tests/reports/coverage/style.css" as="reports/coverage/style.css"/>
+      <install name="tests/reports/coverage/Exceptions_LengthException.php.html" as="reports/coverage/Exceptions_LengthException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_ArrException.php.html" as="reports/coverage/Exceptions_ArrException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Lowercase.php.html" as="reports/coverage/Rules_Lowercase.php.html"/>
+      <install name="tests/reports/coverage/Rules_AbstractRelated.php.html" as="reports/coverage/Rules_AbstractRelated.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_HexaException.php.html" as="reports/coverage/Exceptions_HexaException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Hexa.php.html" as="reports/coverage/Rules_Hexa.php.html"/>
+      <install name="tests/reports/coverage/Rules_MacAddress.php.html" as="reports/coverage/Rules_MacAddress.php.html"/>
+      <install name="tests/reports/coverage/Rules_Float.php.html" as="reports/coverage/Rules_Float.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_ComponentException.php.html" as="reports/coverage/Exceptions_ComponentException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_DateException.php.html" as="reports/coverage/Exceptions_DateException.php.html"/>
+      <install name="tests/reports/coverage/index.html" as="reports/coverage/index.html"/>
+      <install name="tests/reports/coverage/Exceptions_ConsonantsException.php.html" as="reports/coverage/Exceptions_ConsonantsException.php.html"/>
+      <install name="tests/reports/coverage/Rules_NotEmpty.php.html" as="reports/coverage/Rules_NotEmpty.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_FloatException.php.html" as="reports/coverage/Exceptions_FloatException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_JsonException.php.html" as="reports/coverage/Exceptions_JsonException.php.html"/>
+      <install name="tests/reports/coverage/Rules_AllOf.php.html" as="reports/coverage/Rules_AllOf.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_AtLeastException.php.html" as="reports/coverage/Exceptions_AtLeastException.php.html"/>
+      <install name="tests/reports/coverage/ExceptionIterator.php.html" as="reports/coverage/ExceptionIterator.php.html"/>
+      <install name="tests/reports/coverage/Rules_LeapYear.php.html" as="reports/coverage/Rules_LeapYear.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_NumericException.php.html" as="reports/coverage/Exceptions_NumericException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_LowercaseException.php.html" as="reports/coverage/Exceptions_LowercaseException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Key.php.html" as="reports/coverage/Rules_Key.php.html"/>
+      <install name="tests/reports/coverage/Rules_Sf.php.html" as="reports/coverage/Rules_Sf.php.html"/>
+      <install name="tests/reports/coverage/Rules_Date.php.html" as="reports/coverage/Rules_Date.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_RegexException.php.html" as="reports/coverage/Exceptions_RegexException.php.html"/>
+      <install name="tests/reports/coverage/Rules_StartsWith.php.html" as="reports/coverage/Rules_StartsWith.php.html"/>
+      <install name="tests/reports/coverage/Exceptions.dashboard.html" as="reports/coverage/Exceptions.dashboard.html"/>
+      <install name="tests/reports/coverage/Exceptions_BetweenException.php.html" as="reports/coverage/Exceptions_BetweenException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Contains.php.html" as="reports/coverage/Rules_Contains.php.html"/>
+      <install name="tests/reports/coverage/Rules_Ip.php.html" as="reports/coverage/Rules_Ip.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_NotException.php.html" as="reports/coverage/Exceptions_NotException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Email.php.html" as="reports/coverage/Rules_Email.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_EvenException.php.html" as="reports/coverage/Exceptions_EvenException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_MultipleException.php.html" as="reports/coverage/Exceptions_MultipleException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_PrimeNumberException.php.html" as="reports/coverage/Exceptions_PrimeNumberException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Multiple.php.html" as="reports/coverage/Rules_Multiple.php.html"/>
+      <install name="tests/reports/coverage/Rules_NullValue.php.html" as="reports/coverage/Rules_NullValue.php.html"/>
+      <install name="tests/reports/coverage/Rules_OneOf.php.html" as="reports/coverage/Rules_OneOf.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_VowelsException.php.html" as="reports/coverage/Exceptions_VowelsException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_InstanceException.php.html" as="reports/coverage/Exceptions_InstanceException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Bool.php.html" as="reports/coverage/Rules_Bool.php.html"/>
+      <install name="tests/reports/coverage/Rules_Call.php.html" as="reports/coverage/Rules_Call.php.html"/>
+      <install name="tests/reports/coverage/container-min.js" as="reports/coverage/container-min.js"/>
+      <install name="tests/reports/coverage/Exceptions_IntException.php.html" as="reports/coverage/Exceptions_IntException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Json.php.html" as="reports/coverage/Rules_Json.php.html"/>
+      <install name="tests/reports/coverage/highcharts.js" as="reports/coverage/highcharts.js"/>
+      <install name="tests/reports/coverage/Rules_MinimumAge.php.html" as="reports/coverage/Rules_MinimumAge.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_UppercaseException.php.html" as="reports/coverage/Exceptions_UppercaseException.php.html"/>
+      <install name="tests/reports/coverage/Rules.dashboard.html" as="reports/coverage/Rules.dashboard.html"/>
+      <install name="tests/reports/coverage/Exceptions_EqualsException.php.html" as="reports/coverage/Exceptions_EqualsException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Zend.php.html" as="reports/coverage/Rules_Zend.php.html"/>
+      <install name="tests/reports/coverage/jquery.min.js" as="reports/coverage/jquery.min.js"/>
+      <install name="tests/reports/coverage/Rules_NoWhitespace.php.html" as="reports/coverage/Rules_NoWhitespace.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_SlugException.php.html" as="reports/coverage/Exceptions_SlugException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_AlnumException.php.html" as="reports/coverage/Exceptions_AlnumException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_EachException.php.html" as="reports/coverage/Exceptions_EachException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Max.php.html" as="reports/coverage/Rules_Max.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_EmailException.php.html" as="reports/coverage/Exceptions_EmailException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Domain.php.html" as="reports/coverage/Rules_Domain.php.html"/>
+      <install name="tests/reports/coverage/Rules_Positive.php.html" as="reports/coverage/Rules_Positive.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_CreditCardException.php.html" as="reports/coverage/Exceptions_CreditCardException.php.html"/>
+      <install name="tests/reports/coverage/file.png" as="reports/coverage/file.png"/>
+      <install name="tests/reports/coverage/Rules_Numeric.php.html" as="reports/coverage/Rules_Numeric.php.html"/>
+      <install name="tests/reports/coverage/Rules_Negative.php.html" as="reports/coverage/Rules_Negative.php.html"/>
+      <install name="tests/reports/coverage/Rules_Length.php.html" as="reports/coverage/Rules_Length.php.html"/>
+      <install name="tests/reports/coverage/Rules_Alpha.php.html" as="reports/coverage/Rules_Alpha.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_CallbackException.php.html" as="reports/coverage/Exceptions_CallbackException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_PositiveException.php.html" as="reports/coverage/Exceptions_PositiveException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_AttributeException.php.html" as="reports/coverage/Exceptions_AttributeException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_VersionException.php.html" as="reports/coverage/Exceptions_VersionException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_ObjectException.php.html" as="reports/coverage/Exceptions_ObjectException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_RomanException.php.html" as="reports/coverage/Exceptions_RomanException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_CpfException.php.html" as="reports/coverage/Exceptions_CpfException.php.html"/>
+      <install name="tests/reports/coverage/container.css" as="reports/coverage/container.css"/>
+      <install name="tests/reports/coverage/Exceptions_KeyException.php.html" as="reports/coverage/Exceptions_KeyException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Object.php.html" as="reports/coverage/Rules_Object.php.html"/>
+      <install name="tests/reports/coverage/directory.png" as="reports/coverage/directory.png"/>
+      <install name="tests/reports/coverage/Rules_Even.php.html" as="reports/coverage/Rules_Even.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_DomainException.php.html" as="reports/coverage/Exceptions_DomainException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_NoWhitespaceException.php.html" as="reports/coverage/Exceptions_NoWhitespaceException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Equals.php.html" as="reports/coverage/Rules_Equals.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_ContainsException.php.html" as="reports/coverage/Exceptions_ContainsException.php.html"/>
+      <install name="tests/reports/coverage/Rules_EndsWith.php.html" as="reports/coverage/Rules_EndsWith.php.html"/>
+      <install name="tests/reports/coverage/Rules_Slug.php.html" as="reports/coverage/Rules_Slug.php.html"/>
+      <install name="tests/reports/coverage/Rules_Alnum.php.html" as="reports/coverage/Rules_Alnum.php.html"/>
+      <install name="tests/reports/coverage/Rules_Regex.php.html" as="reports/coverage/Rules_Regex.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_PerfectSquareException.php.html" as="reports/coverage/Exceptions_PerfectSquareException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_IpException.php.html" as="reports/coverage/Exceptions_IpException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_NullValueException.php.html" as="reports/coverage/Exceptions_NullValueException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Not.php.html" as="reports/coverage/Rules_Not.php.html"/>
+      <install name="tests/reports/coverage/Rules_Version.php.html" as="reports/coverage/Rules_Version.php.html"/>
+      <install name="tests/reports/coverage/close12_1.gif" as="reports/coverage/close12_1.gif"/>
+      <install name="tests/reports/coverage/Exceptions_ZendException.php.html" as="reports/coverage/Exceptions_ZendException.php.html"/>
+      <install name="tests/reports/coverage/Rules_CreditCard.php.html" as="reports/coverage/Rules_CreditCard.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_NotEmptyException.php.html" as="reports/coverage/Exceptions_NotEmptyException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Callback.php.html" as="reports/coverage/Rules_Callback.php.html"/>
+      <install name="tests/reports/coverage/Rules_Int.php.html" as="reports/coverage/Rules_Int.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_BoolException.php.html" as="reports/coverage/Exceptions_BoolException.php.html"/>
+      <install name="tests/reports/coverage/Rules_String.php.html" as="reports/coverage/Rules_String.php.html"/>
+      <install name="tests/reports/coverage/Rules_NoneOf.php.html" as="reports/coverage/Rules_NoneOf.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_NoneOfException.php.html" as="reports/coverage/Exceptions_NoneOfException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_AllOfException.php.html" as="reports/coverage/Exceptions_AllOfException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_MostOfException.php.html" as="reports/coverage/Exceptions_MostOfException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_StartsWithException.php.html" as="reports/coverage/Exceptions_StartsWithException.php.html"/>
+      <install name="tests/reports/coverage/Rules_LeapDate.php.html" as="reports/coverage/Rules_LeapDate.php.html"/>
+      <install name="tests/reports/coverage/yahoo-dom-event.js" as="reports/coverage/yahoo-dom-event.js"/>
+      <install name="tests/reports/coverage/Exceptions_OneOfException.php.html" as="reports/coverage/Exceptions_OneOfException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Instance.php.html" as="reports/coverage/Rules_Instance.php.html"/>
+      <install name="tests/reports/coverage/Rules_Vowels.php.html" as="reports/coverage/Rules_Vowels.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_TldException.php.html" as="reports/coverage/Exceptions_TldException.php.html"/>
+      <install name="tests/reports/coverage/Rules_Tld.php.html" as="reports/coverage/Rules_Tld.php.html"/>
+      <install name="tests/reports/coverage/Rules_Each.php.html" as="reports/coverage/Rules_Each.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_OddException.php.html" as="reports/coverage/Exceptions_OddException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_AbstractNestedException.php.html" as="reports/coverage/Exceptions_AbstractNestedException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions.html" as="reports/coverage/Exceptions.html"/>
+      <install name="tests/reports/coverage/Rules_Cpf.php.html" as="reports/coverage/Rules_Cpf.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_EndsWithException.php.html" as="reports/coverage/Exceptions_EndsWithException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_InException.php.html" as="reports/coverage/Exceptions_InException.php.html"/>
+      <install name="tests/reports/coverage/Exceptions_CallException.php.html" as="reports/coverage/Exceptions_CallException.php.html"/>
+      <install name="tests/reports/coverage/Rules_PrimeNumber.php.html" as="reports/coverage/Rules_PrimeNumber.php.html"/>
+      <install name="tests/reports/coverage/index.dashboard.html" as="reports/coverage/index.dashboard.html"/>
+      <install name="tests/reports/coverage/Rules_When.php.html" as="reports/coverage/Rules_When.php.html"/>
+      <install name="tests/reports/coverage/Rules_AbstractRule.php.html" as="reports/coverage/Rules_AbstractRule.php.html"/>
+      <install name="tests/reports/coverage/Rules_Cnpj.php.html" as="reports/coverage/Rules_Cnpj.php.html"/>
       <install name="tests/bootstrap.php" as="bootstrap.php"/>
       <install name="tests/library/Respect/Validation/Rules/WhenTest.php" as="library/Respect/Validation/Rules/WhenTest.php"/>
       <install name="tests/library/Respect/Validation/Rules/StringTest.php" as="library/Respect/Validation/Rules/StringTest.php"/>
