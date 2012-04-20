@@ -255,6 +255,7 @@ Reference
   * v::cnpj()
   * v::cpf()
   * v::domain()
+  * v::directory()
   * v::email()
   * v::ip()
   * v::json()
@@ -606,6 +607,16 @@ See also:
 
   * v::tld()
   * v::ip()
+  
+#### v::directory()
+
+Validates directories.
+
+    v::directory()->validate(__DIR__); //true
+
+This validator will consider SplFileInfo instances, so you do something like:
+
+    v::directory()->validate(new \SplFileInfo($directory));
 
 #### v::each(v $validatorForValue)
 #### v::each(null, v $validatorForKey)
