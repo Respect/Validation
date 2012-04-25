@@ -22,8 +22,11 @@ class Date extends AbstractRule
             return false;
         elseif (is_null($this->format))
             return false !== strtotime($input);
-        else
-            return $input === date($this->format, strtotime($input));
+
+        $dateFromFormat = DateTime::createFromFormat($this->format, $input);
+
+        return $dateFromFormat
+               && $input === date($this->format, $dateFromFormat->getTimestamp());
     }
 
 }
