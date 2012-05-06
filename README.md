@@ -990,12 +990,20 @@ See also:
 Negates any rule.
 
     v::not(v::ip())->validate('foo'); //true
+    
+using a shorcut 
+
+    v::ip()->not()->validate('foo'); //true
 
 In the sample above, validator returns true because 'foo' isn't an IP Address.
 
 You can negate complex, grouped or chained validators as well:
 
     v::not(v::int()->positive())->validate(-1.5); //true
+    
+using a shorcut 
+
+    v::int()->positive()->not()->validate(-1.5); //true
 
 Each other validation has custom messages for negated rules.
 
@@ -1091,6 +1099,10 @@ In the sample above, `v::int()` doesn't validates, but
 
 `v::oneOf` returns true if at least one inner validator
 passes.
+
+Using a shortcut
+
+    v::int()->addOr(v::float())->validate(15.5); //true
 
 See also:
 

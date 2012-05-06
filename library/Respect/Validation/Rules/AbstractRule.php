@@ -23,6 +23,16 @@ abstract class AbstractRule implements Validatable
         return $this->validate($input);
     }
 
+    public function not(){
+        return new Not($this);
+    }
+
+    public function addOr(){
+        $rules = func_get_args();
+        array_unshift($rules, $this);
+        return new OneOf($rules);
+    }
+
     public function assert($input)
     {
         if ($this->validate($input))
@@ -35,7 +45,7 @@ abstract class AbstractRule implements Validatable
     {
         return $this->assert($input);
     }
-    
+
     public function getName()
     {
         return $this->name;
