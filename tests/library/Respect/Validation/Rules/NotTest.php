@@ -16,6 +16,15 @@ class NotTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider providerForValidNot
+     *
+     */
+    public function testShortcutNot($v, $input)
+    {
+        $this->assertTrue($v->not()->assert($input));
+    }
+
+    /**
      * @dataProvider providerForInvalidNot
      * @expectedException Respect\Validation\Exceptions\ValidationException
      */
@@ -23,6 +32,15 @@ class NotTest extends \PHPUnit_Framework_TestCase
     {
         $not = new Not($v);
         $this->assertFalse($not->assert($input));
+    }
+
+    /**
+     * @dataProvider providerForInvalidNot
+     * @expectedException Respect\Validation\Exceptions\ValidationException
+     */
+    public function testShortcutNotNotHaha($v, $input)
+    {
+        $this->assertFalse($v->not()->assert($input));
     }
 
     public function providerForValidNot()
