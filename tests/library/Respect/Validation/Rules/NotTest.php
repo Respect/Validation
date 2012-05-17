@@ -2,6 +2,8 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Validator;
+
 class NotTest extends \PHPUnit_Framework_TestCase
 {
 
@@ -15,13 +17,9 @@ class NotTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($not->assert($input));
     }
 
-    /**
-     * @dataProvider providerForValidNot
-     *
-     */
-    public function testShortcutNot($v, $input)
+    public function testShortcutNot()
     {
-        $this->assertTrue($v->not()->assert($input));
+        $this->assertTrue(Validator::int()->not()->assert('afg'));
     }
 
     /**
@@ -35,12 +33,11 @@ class NotTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerForInvalidNot
      * @expectedException Respect\Validation\Exceptions\ValidationException
      */
-    public function testShortcutNotNotHaha($v, $input)
+    public function testShortcutNotNotHaha()
     {
-        $this->assertFalse($v->not()->assert($input));
+        $this->assertFalse(Validator::int()->not()->assert(10));
     }
 
     public function providerForValidNot()
