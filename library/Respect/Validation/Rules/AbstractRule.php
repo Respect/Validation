@@ -19,6 +19,11 @@ abstract class AbstractRule implements Validatable
         //a constructor is required for ReflectionClass::newInstance()
     }
 
+    public static function __callStatic($ruleName, $arguments)
+    {
+        return Validator::__callStatic($ruleName, $arguments);
+    }
+
     public function __invoke($input)
     {
         return $this->validate($input);
