@@ -3,6 +3,7 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validatable;
+use Respect\Validation\Validator;
 use Respect\Validation\Exceptions\ValidationException;
 
 abstract class AbstractRule implements Validatable
@@ -23,11 +24,12 @@ abstract class AbstractRule implements Validatable
         return $this->validate($input);
     }
 
-    public function not(){
-        return new Not($this);
+    public function not(Validatable $rule = null)
+    {
+        return new Not($rule ?: $this);
     }
 
-    public function addOr(){
+    public function addOr() {
         $rules = func_get_args();
         array_unshift($rules, $this);
         return new OneOf($rules);

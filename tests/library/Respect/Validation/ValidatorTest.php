@@ -4,11 +4,11 @@ namespace Respect\Validation;
 
 class ValidatorTest extends \PHPUnit_Framework_TestCase
 {
-    function test_static_create_should_return_new_validator() 
+    function test_static_create_should_return_new_validator()
     {
         $this->assertInstanceOf('Respect\Validation\Validator', Validator::create());
     }
-    
+
     function test_invalid_rule_class_should_throw_component_exception()
     {
         $this->setExpectedException('Respect\Validation\Exceptions\ComponentException');
@@ -43,5 +43,10 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals('\-These rules must pass for ""
   \-"" must have a length between 1 and 15', $e->getFullMessage());
         }
+    }
+
+    function test_not_should_work_by_builder()
+    {
+        $this->assertFalse(Validator::not(Validator::int())->validate(10));
     }
 }

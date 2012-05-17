@@ -26,7 +26,7 @@ abstract class AbstractComposite extends AbstractRule
 
         return $this;
     }
-    
+
     public function removeRules()
     {
         $this->rules = array();
