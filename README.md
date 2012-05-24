@@ -171,6 +171,8 @@ Reference
   * v::callback()
   * v::not()
   * v::when()
+  * v::alwaysValid()
+  * v::alwaysInvalid()
 
 ### Comparing Values
 
@@ -250,6 +252,11 @@ Reference
   * v::noneOf()
   * v::oneOf()
 
+### Regional
+
+  * v::tld()
+  * v::coutryCode()
+
 ### Other
 
   * v::cnpj()
@@ -261,7 +268,6 @@ Reference
   * v::json()
   * v::macAddress()
   * v::sf()
-  * v::tld()
   * v::zend()
 
 ### Alphabetically
@@ -351,6 +357,14 @@ See also:
 
   * v::each() - Validates each member of an array
   * v::key()  - Validates a specific key of an array
+
+### v::alwaysValid
+
+Always returns true.
+
+### v::alwaysInvalid
+
+Always return false.
 
 #### v::attribute($name)
 #### v::attribute($name, v $validator)
@@ -469,6 +483,16 @@ As in `v::call()`, you can pass a method or closure to it.
 See also:
 
   * v::call() - A more elaborated building block validator
+
+#### v::countryCode
+
+Validates an ISO country code like US or BR.
+
+    v::countryCode('BR'); //true
+
+See also:
+
+  * v::tld() - Validates a top level domain
 
 #### v::cnpj()
 
@@ -1216,7 +1240,8 @@ Validates a top-level domain
 
 See also
 
- * v::domain()
+ * v::domain() - Validates domain names
+ * v::countryCode() - Validates ISO country codes
 
 #### v::uppercase()
 
