@@ -56,6 +56,7 @@ use Respect\Validation\Rules\AllOf;
  * @method \Respect\Validation\Validator tld()
  * @method \Respect\Validation\Validator version()
  * @method \Respect\Validation\Validator zend(mixed $validator, array $params = null)
+ * @method \Respect\Validation\Validator today(string $format = null)
  */
 class Validator extends AllOf
 {

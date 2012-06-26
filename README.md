@@ -245,7 +245,8 @@ Reference
   * v::date()
   * v::leapDate()
   * v::leapYear()
-
+  * v::today()
+  
 ### Group Validators
 
   * v::allOf()
@@ -597,7 +598,8 @@ See also:
   * v::minimumAge()
   * v::leapDate()
   * v::leapYear()
-
+  * v::today()
+  
 #### v::digits()
 
 This is similar to v::alnum(), but it doesn't allow a-Z. It also
@@ -1303,6 +1305,31 @@ See also:
 
   * v::sf()
 
+#### v::today()
+#### v::today($format)
+
+Validates if input is a date and is today:
+
+    v::today()->validate('2009-01-01'); //false, only true if today is 2009-01-01
+
+    v::today()->validate(date('Y-m-d')); //true
+
+And DateTime instances:
+
+    v::today()->validate(new DateTime); //true
+
+You can pass a format when validating strings (default format is 'Y-m-d'):
+
+    v::today('d/m/Y')->validate('01/01/2009'); //false, only true if today is 2009-01-01
+
+Message template for this validator includes `{{format}}`.
+
+See also:
+
+  * v::between()
+  * v::minimumAge()
+  * v::leapDate()
+  * v::leapYear()
 
 
 
