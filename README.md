@@ -63,7 +63,7 @@ validated object as the first node in the chain.
 
 You can use the `v::not()` to negate any rule:
 
-    v::not(v::int())-validate(10); //false, input must not be integer
+    v::not(v::int())->validate(10); //false, input must not be integer
 
 ### Validator Reuse 
 
