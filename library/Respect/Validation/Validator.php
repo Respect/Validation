@@ -49,6 +49,7 @@ use Respect\Validation\Rules\AllOf;
  * @method \Respect\Validation\Validator object()
  * @method \Respect\Validation\Validator oneOf()
  * @method \Respect\Validation\Validator positive()
+ * @method \Respect\Validation\Validator postalCode(string $locale)
  * @method \Respect\Validation\Validator regex($regex)
  * @method \Respect\Validation\Validator sf(string $name, array $params = null)
  * @method \Respect\Validation\Validator startsWith(mixed $startValue, bool $identical = false)
@@ -88,9 +89,6 @@ class Validator extends AllOf
 
     public function __call($method, $arguments)
     {
-        if ('not' === $method)
-            return $arguments ? static::buildRule($method, $arguments) : new Rules\Not($this);
-
         $this->addRule(static::buildRule($method, $arguments));
         return $this;
     }
