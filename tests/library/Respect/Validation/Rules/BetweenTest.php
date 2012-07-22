@@ -2,7 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validator;
 use \DateTime;
 
 class BetweenTest extends \PHPUnit_Framework_TestCase
@@ -50,22 +49,31 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerValid
      */
-    public function testBetweenBounds($min, $max, $inclusive, $input)
+    public function test_values_between_bounds_should_pass($min, $max, $inclusive, $input)
     {
         $o = new Between($min, $max, $inclusive);
         $this->assertTrue($o->validate($input));
         $this->assertTrue($o->assert($input));
+        $this->assertTrue($o->check($input));
     }
 
     /**
      * @dataProvider providerInvalid
      * @expectedException Respect\Validation\Exceptions\BetweenException
      */
-    public function testNotBetweenBounds($min, $max, $inclusive, $input)
+    public function test_values_out_bounds_should_raise_exception($min, $max, $inclusive, $input)
     {
         $o = new Between($min, $max, $inclusive);
         $this->assertFalse($o->validate($input));
         $this->assertFalse($o->assert($input));
+    }
+    
+    /**
+     * @expectedException Respect\Validation\Exceptions\ComponentException
+     */
+    public function test_invalid_construction_params_should_raise_exception()
+    {
+        $o = new Between(10, 5);
     }
 
 }

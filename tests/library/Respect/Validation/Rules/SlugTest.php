@@ -16,6 +16,8 @@ class SlugTest extends \PHPUnit_Framework_TestCase {
      */
     public function testValidSlug($input) 
     {
+        $this->assertTrue($this->slug->validate($input));
+        $this->assertTrue($this->slug->check($input));
         $this->assertTrue($this->slug->assert($input));
     }
 
@@ -23,8 +25,9 @@ class SlugTest extends \PHPUnit_Framework_TestCase {
      * @dataProvider providerInvalidSlug
      * @expectedException Respect\Validation\Exceptions\SlugException
      */
-    public function testInvalidFormattedCpf($input) 
+    public function testInvalidSlug($input) 
     {
+        $this->assertFalse($this->slug->validate($input));
         $this->assertFalse($this->slug->assert($input));
     }
     
@@ -46,6 +49,7 @@ class SlugTest extends \PHPUnit_Framework_TestCase {
             array('-assim-nao-pode'),
             array('assim-tambem-nao-'),
             array('nem--assim'),
+            array('--nem-assim'),
             array('Nem mesmo Assim'),
             array('Ou-ate-assim'),
             array('-Se juntar-tudo-Então-')

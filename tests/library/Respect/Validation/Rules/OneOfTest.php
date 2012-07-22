@@ -2,8 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\ValidatorTestCase;
-use Respect\Validation\Exceptions\InvalidException;
 
 class OneOfTest extends \PHPUnit_Framework_TestCase
 {
@@ -20,7 +18,28 @@ class OneOfTest extends \PHPUnit_Framework_TestCase
                     return false;
                 });
         $o = new OneOf($valid1, $valid2, $valid3);
+        $this->assertTrue($o->validate('any'));
         $this->assertTrue($o->assert('any'));
+        $this->assertTrue($o->check('any'));
+    }
+
+    public function testShorcutValid()
+    {
+        $valid1 = new Callback(function() {
+            return false;
+        });
+        $valid2 = new Callback(function() {
+            return true;
+        });
+        $valid3 = new Callback(function() {
+            return false;
+        });
+
+        $o = $valid1->addOr($valid2, $valid3);
+
+        $this->assertTrue($o->validate('any'));
+        $this->assertTrue($o->assert('any'));
+        $this->assertTrue($o->check('any'));
     }
 
     /**
@@ -38,15 +57,47 @@ class OneOfTest extends \PHPUnit_Framework_TestCase
                     return false;
                 });
         $o = new OneOf($valid1, $valid2, $valid3);
+        $this->assertFalse($o->validate('any'));
         $this->assertFalse($o->assert('any'));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\StringException
+     * @expectedException Respect\Validation\Exceptions\OneOfException
+     */
+    public function testShorcutInvalid()
+    {
+        $valid1 = new Callback(function() {
+            return false;
+        });
+        $valid2 = new Callback(function() {
+            return false;
+        });
+        $valid3 = new Callback(function() {
+            return false;
+        });
+        $o = $valid1->addOr($valid2, $valid3);
+        $this->assertFalse($o->validate('any'));
+        $this->assertFalse($o->assert('any'));
+    }
+
+    /**
+     * @expectedException Respect\Validation\Exceptions\HexaException
      */
     public function testInvalidCheck()
     {
-        $o = new OneOf(new String, new Alnum);
+        $o = new OneOf(new Hexa, new Alnum);
+        $this->assertFalse($o->validate(-10));
+        $this->assertFalse($o->check(-10));
+    }
+
+    /**
+     * @expectedException Respect\Validation\Exceptions\HexaException
+     */
+    public function testShorcutInvalidCheck()
+    {
+        $hexa = new Hexa;
+        $o = $hexa->addOr(new Alnum);
+        $this->assertFalse($o->validate(-10));
         $this->assertFalse($o->check(-10));
     }
 

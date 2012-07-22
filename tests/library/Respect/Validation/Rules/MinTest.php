@@ -9,9 +9,11 @@ class MinTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForValidMin
      *
      */
-    public function testMin($minValue, $inclusive, $input)
+    public function test_valid_min_should_return_true($minValue, $inclusive, $input)
     {
         $min = new Min($minValue, $inclusive);
+        $this->assertTrue($min->validate($input));
+        $this->assertTrue($min->check($input));
         $this->assertTrue($min->assert($input));
     }
 
@@ -19,10 +21,11 @@ class MinTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidMin
      * @expectedException Respect\Validation\Exceptions\MinException
      */
-    public function testNotMin($minValue, $inclusive, $input)
+    public function test_invalid_min_should_throw_MinException($minValue, $inclusive, $input)
     {
         $min = new Min($minValue, $inclusive);
-        $this->assertTrue($min->assert($input));
+        $this->assertFalse($min->validate($input));
+        $this->assertFalse($min->assert($input));
     }
 
     public function providerForValidMin()

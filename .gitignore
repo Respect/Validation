@@ -1,9 +1,12 @@
+.foundation
 library/Zend/
 library/Symfony/
 .buildpath
 .project
 .settings/
 nbproject
+tests/reports
+*.phar
 /library/.fr-6ayG1u/
 /library/.fr-n9BajN/
 *.7z

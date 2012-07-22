@@ -5,18 +5,20 @@ namespace Respect\Validation\Rules;
 class KeyTest extends \PHPUnit_Framework_TestCase
 {
 
-    public function testKey()
+    public function test_array_with_present_key_should_return_true()
     {
         $validator = new Key('bar');
         $obj = array();
         $obj['bar'] = 'foo';
         $this->assertTrue($validator->assert($obj));
+        $this->assertTrue($validator->check($obj));
+        $this->assertTrue($validator->validate($obj));
     }
 
     /**
      * @expectedException Respect\Validation\Exceptions\KeyException
      */
-    public function testNotNull()
+    public function test_array_with_absent_key_should_throw_KeyException()
     {
         $validator = new Key('bar');
         $obj = array();
@@ -26,7 +28,7 @@ class KeyTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Respect\Validation\Exceptions\KeyException
      */
-    public function testNotArray()
+    public function test_not_array_should_throw_KeyException()
     {
         $validator = new Key('bar');
         $obj = 123;
@@ -36,12 +38,12 @@ class KeyTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidParameters()
+    public function test_invalid_constructor_parameters_should_throw_ComponentException_upon_instantiation()
     {
         $validator = new Key(array('invalid'));
     }
 
-    public function testValidatorAttribute()
+    public function test_extra_validator_should_validate_key()
     {
         $subValidator = new Length(1, 3);
         $validator = new Key('bar', $subValidator);
@@ -50,7 +52,7 @@ class KeyTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($validator->assert($obj));
     }
 
-    public function testNotMandatory()
+    public function test_not_mandatory_extra_validator_should_pass_with_absent_key()
     {
         $subValidator = new Length(1, 3);
         $validator = new Key('bar', $subValidator, false);

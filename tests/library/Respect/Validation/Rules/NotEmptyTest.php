@@ -26,7 +26,7 @@ class NotEmptyTest extends \PHPUnit_Framework_TestCase
      */
     public function testStringEmpty($input)
     {
-        $this->assertTrue($this->object->assert($input));
+        $this->assertFalse($this->object->assert($input));
     }
 
     public function providerForNotEmpty()

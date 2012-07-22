@@ -1,0 +1,17 @@
+language: php
+script: make test
+
+php:
+  - 5.3
+  - 5.4
+
+before_script:
+  - "pyrus channel-discover pear.symfony.com"
+  - "pyrus channel-discover packages.zendframework.com"
+  - "pyrus install -f pear.symfony.com/Validator"
+  - "pyrus install -f packages.zendframework.com/Zend_Locale-beta"
+  - "pyrus install -f packages.zendframework.com/Zend_Validator-beta"
+  - "pyrus install -f packages.zendframework.com/Zend_Filter-beta"
+  - "pyrus install -f packages.zendframework.com/Zend_Registry-beta"
+  - "make foundation"
+  - "phpenv rehash" 

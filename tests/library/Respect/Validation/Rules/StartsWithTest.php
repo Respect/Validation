@@ -12,6 +12,8 @@ class StartsWithTest extends \PHPUnit_Framework_TestCase
     public function testStartsWith($start, $input)
     {
         $v = new StartsWith($start);
+        $this->assertTrue($v->validate($input));
+        $this->assertTrue($v->check($input));
         $this->assertTrue($v->assert($input));
     }
 
@@ -22,6 +24,7 @@ class StartsWithTest extends \PHPUnit_Framework_TestCase
     public function testNotStartsWith($start, $input, $caseSensitive=false)
     {
         $v = new StartsWith($start, $caseSensitive);
+        $this->assertFalse($v->validate($input));
         $this->assertFalse($v->assert($input));
     }
 

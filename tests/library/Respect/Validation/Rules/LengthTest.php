@@ -8,9 +8,11 @@ class LengthTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidLenght
      */
-    public function testLengthValid($string, $min, $max)
+    public function test_lenght_inside_bounds_should_return_true($string, $min, $max)
     {
         $validator = new Length($min, $max);
+        $this->assertTrue($validator->validate($string));
+        $this->assertTrue($validator->check($string));
         $this->assertTrue($validator->assert($string));
     }
 
@@ -18,7 +20,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidLenghtInclusive
      * @expectedException Respect\Validation\Exceptions\LengthException
      */
-    public function testLengthInvalidInclusive($string, $min, $max)
+    public function test_length_outside_bounds_should_throw_LengthException($string, $min, $max)
     {
         $validator = new Length($min, $max, false);
         $this->assertfalse($validator->validate($string));
@@ -29,7 +31,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidLenght
      * @expectedException Respect\Validation\Exceptions\LengthException
      */
-    public function testLengthInvalid($string, $min, $max)
+    public function test_length_outside_valid_bounds_should_throw_LengthException($string, $min, $max)
     {
         $validator = new Length($min, $max);
         $this->assertFalse($validator->validate($string));
@@ -40,7 +42,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForComponentException
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function testLengthComponentException($string, $min, $max)
+    public function test_invalid_constructor_parameters_should_throw_ComponentException_upon_instantiation($string, $min, $max)
     {
         $validator = new Length($min, $max);
         $this->assertFalse($validator->validate($string));
@@ -51,6 +53,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array('alganet', 1, 15),
+            array('ççççç', 4, 6),
             array(range(1, 20), 1, 30),
             array((object) array('foo'=>'bar', 'bar'=>'baz'), 1, 2),
             array('alganet', 1, null), //null is a valid max length, means "no maximum",

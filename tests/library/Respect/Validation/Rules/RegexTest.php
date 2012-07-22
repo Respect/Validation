@@ -13,6 +13,8 @@ class RegexTest extends \PHPUnit_Framework_TestCase
 
         $v = new Regex('/^[a-z]+$/i');
         $this->assertTrue($v->validate('wPoiur'));
+        $this->assertTrue($v->check('wPoiur'));
+        $this->assertTrue($v->assert('wPoiur'));
     }
 
     /**
@@ -21,7 +23,8 @@ class RegexTest extends \PHPUnit_Framework_TestCase
     public function testRegexNot()
     {
         $v = new Regex('/^w+$/');
-        $this->assertTrue($v->assert('w poiur'));
+        $this->assertFalse($v->validate('w poiur'));
+        $this->assertFalse($v->assert('w poiur'));
     }
 
 }

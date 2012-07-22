@@ -8,7 +8,7 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForFormat
      */
-    public function testFormat($template, $result, $vars)
+    public function test_format_should_replace_placeholders_properly($template, $result, $vars)
     {
         $this->assertEquals(
             $result,
@@ -19,7 +19,7 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForStringify
      */
-    public function testStringify($input, $result)
+    public function test_stringify_should_convert_strings_properly($input, $result)
     {
         $this->assertEquals(
             $result,
@@ -27,18 +27,18 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testGetMainMessage()
+    public function test_getMainMessage_should_apply_template_placeholders()
     {
-        $x = new ValidationException();
-        $x->configure('foo', array('bar' => 1, 'baz' => 2));
-        $x->setTemplate('{{name}} {{bar}} {{baz}}');
+        $sampleValidationException = new ValidationException();
+        $sampleValidationException->configure('foo', array('bar' => 1, 'baz' => 2));
+        $sampleValidationException->setTemplate('{{name}} {{bar}} {{baz}}');
         $this->assertEquals(
             'foo 1 2',
-            $x->getMainMessage()
+            $sampleValidationException->getMainMessage()
         );
     }
 
-    public function testGetTemplateSet()
+    public function test_setting_templates()
     {
         $x = new ValidationException();
         $x->configure('bar');
@@ -49,7 +49,7 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForStringify
      */
-    public function testSetParam($input, $expected)
+    public function test_setting_exception_params_makes_them_available($input, $expected)
     {
         $x = new ValidationException;
         $x->setParam('foo', $input);

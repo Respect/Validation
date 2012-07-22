@@ -5,31 +5,34 @@ namespace Respect\Validation\Rules;
 class IpTest extends \PHPUnit_Framework_TestCase
 {
 
-    protected $object;
+    protected $ipValidator;
 
     protected function setUp()
     {
-        $this->object = new Ip;
+        $this->ipValidator = new Ip;
     }
 
     /**
      * @dataProvider providerForIp
      *
      */
-    public function testIp($input, $options=null)
+    public function test_valid_ips_should_return_True($input, $options=null)
     {
-        $this->object->ipOptions = $options;
-        $this->assertTrue($this->object->assert($input));
+        $this->ipValidator->ipOptions = $options;
+        $this->assertTrue($this->ipValidator->validate($input));
+        $this->assertTrue($this->ipValidator->assert($input));
+        $this->assertTrue($this->ipValidator->check($input));
     }
 
     /**
      * @dataProvider providerForNotIp
      * @expectedException Respect\Validation\Exceptions\IpException
      */
-    public function testNotIp($input, $options=null)
+    public function test_invalid_ips_should_throw_IpException($input, $options=null)
     {
-        $this->object->ipOptions = $options;
-        $this->assertTrue($this->object->assert($input));
+        $this->ipValidator->ipOptions = $options;
+        $this->assertFalse($this->ipValidator->validate($input));
+        $this->assertFalse($this->ipValidator->assert($input));
     }
 
     public function providerForIp()

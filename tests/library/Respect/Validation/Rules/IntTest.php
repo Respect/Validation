@@ -5,30 +5,34 @@ namespace Respect\Validation\Rules;
 class IntTest extends \PHPUnit_Framework_TestCase
 {
 
-    protected $object;
+    protected $intValidator;
 
     protected function setUp()
     {
-        $this->object = new Int;
+        $this->intValidator = new Int;
     }
 
     /**
      * @dataProvider providerForInt
      *
      */
-    public function testInt($input)
+    public function test_valid_integers_should_return_true($input)
     {
-        $this->assertTrue($this->object->assert($input));
+        $this->assertTrue($this->intValidator->validate($input));
+        $this->assertTrue($this->intValidator->check($input));
+        $this->assertTrue($this->intValidator->assert($input));
     }
 
     /**
      * @dataProvider providerForNotInt
      * @expectedException Respect\Validation\Exceptions\IntException
      */
-    public function testNotInt($input)
+    public function test_invalid_integers_should_throw_IntException($input)
     {
-        $this->assertTrue($this->object->assert($input));
+        $this->assertFalse($this->intValidator->validate($input));
+        $this->assertFalse($this->intValidator->assert($input));
     }
+
 
     public function providerForInt()
     {
