@@ -61,8 +61,8 @@ class AbstractNestedException extends ValidationException
     public function getFullMessage()
     {
         $message = array();
-
-        foreach ($this->getIterator(false, self::ITERATE_TREE) as $m)
+        $iterator = $this->getIterator(false, self::ITERATE_TREE);
+        foreach ($iterator as $m)
             $message[] = $m;
         return implode(PHP_EOL, $message);
     }
