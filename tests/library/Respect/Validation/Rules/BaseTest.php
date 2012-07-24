@@ -122,7 +122,11 @@ class BaseTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(63, '01210103001'),
-            array(125, '0120125f2001')
+            array(125, '0120125f2001'),
+            array('asd', '0120125f2001'),
+            array(null, null),
+            array(-10, 'asd'),
+            array('', '')
         );
     }
 
