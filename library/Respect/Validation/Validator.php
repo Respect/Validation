@@ -90,12 +90,12 @@ class Validator extends AllOf
     {
         if ('not' === $method)
             return $arguments ? static::buildRule($method, $arguments) : new Rules\Not($this);
-            
-        if (isset($method{4}) && 
+
+        if (isset($method{4}) &&
             substr($method, 0, 4) == 'base' && preg_match('@^base([0-9]{1,2})$@', $method, $match))
             return $this->addRule(static::buildRule('base', array($match[1])));
-        
-                
+
+
         return $this->addRule(static::buildRule($method, $arguments));
     }
 
