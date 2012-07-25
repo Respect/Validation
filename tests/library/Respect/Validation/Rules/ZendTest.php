@@ -7,7 +7,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        if (!class_exists('Zend\Validator\AbstractValidator')) {
+        if (!class_exists('\Zend\Validator\Alnum')) {
             $this->markTestSkipped('No ZendFramework installed');
         }
     }
@@ -72,7 +72,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 
 }
 
-if (class_exists('Zend\Validator\AbstractValidator')) {
+if (class_exists('Zend\Validator\Alnum')) {
     class MyValidator extends \Zend\Validator\Alnum
     {
     }
