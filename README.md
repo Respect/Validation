@@ -99,7 +99,7 @@ The text tree is fine, but unusable on a HTML form or something more custom. You
     try {
         $usernameValidator->assert('really messed up screen#name');
     } catch(\InvalidArgumentException $e) {
-       var_dump($e->findMessages('alnum', 'length', 'noWhitespace'));
+       var_dump($e->findMessages(array('alnum', 'length', 'noWhitespace')));
     }
 
 `findMessages()` returns an array with messages from the requested validators.
@@ -109,11 +109,11 @@ The text tree is fine, but unusable on a HTML form or something more custom. You
 Getting messages as an array is fine, but sometimes you need to customize them in order
 to present them to the user. This is possible using the `findMessages()` method as well:
 
-       $errors = $e->findMessages(
+       $errors = $e->findMessages(array(
             'alnum'        => '{{name}} must contain only letters and digits', 
             'length'       => '{{name}} must not have more than 15 chars', 
             'noWhitespace' => '{{name}} cannot contain spaces'
-        );
+        ));
 
 For all messages, the `{{name}}` and `{{input}}` variable is available for templates.
 
