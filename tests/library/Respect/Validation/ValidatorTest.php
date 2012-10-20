@@ -1,9 +1,11 @@
 <?php
-
-namespace Respect\Validation;
-
+namespace Respect\Validation {
 class ValidatorTest extends \PHPUnit_Framework_TestCase
 {
+    function setUp()
+    {
+        Validator::$rulesNamespaces = array('Respect\\Validation\\Rules\\');
+    }
     function test_static_create_should_return_new_validator()
     {
         $this->assertInstanceOf('Respect\Validation\Validator', Validator::create());
@@ -60,5 +62,47 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     function test_alwaysInvalid()
     {
         $this->assertFalse(Validator::alwaysInvalid()->validate('sojdnfjsdnfojsdnfos dfsdofj sodjf '));
+    }
+
+    /**
+     * @dataProvider validNamespaces
+     */
+    function test_addRulesNamespace($ns)
+    {
+        Validator::addRulesNamespace($ns);
+        // Make sure the namespace ends with the namespace separator
+        $nsFqn = preg_match('/\\\\$/', $ns)===0 ? $ns.'\\' : $ns ;
+        $this->assertContains(
+            $nsFqn,
+            Validator::$rulesNamespaces,
+            'Added namespace of rules was not correctly added.'
+        );
+    }
+
+    function validNamespaces()
+    {
+        return array(
+            array('This\Can\Be\Anything\Really\\'),
+            array('Without\The\Separator\At\The\End')
+        );
+    }
+
+    function test_buildRule_with_rule_in_different_namespace()
+    {
+        Validator::addRulesNamespace('My\App\Rules');
+        $this->assertTrue(
+            Validator::happyPanda()->validate('=D')
+        );
+    }
+}
+}
+
+namespace My\App\Rules {
+    class HappyPanda extends \Respect\Validation\Rules\AbstractRule
+    {
+        public function validate($input)
+        {
+            return (boolean) (strcmp('=D',$input) === 0);
+        }
     }
 }

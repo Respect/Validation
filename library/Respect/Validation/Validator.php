@@ -4,6 +4,7 @@ namespace Respect\Validation;
 
 use ReflectionClass;
 use ReflectionException;
+use InvalidArgumentException as Argument;
 use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Rules\AllOf;
@@ -59,6 +60,7 @@ use Respect\Validation\Rules\AllOf;
  */
 class Validator extends AllOf
 {
+    public static $rulesNamespaces = array('Respect\\Validation\\Rules\\');
 
     public static function __callStatic($ruleName, $arguments)
     {
@@ -69,12 +71,25 @@ class Validator extends AllOf
         return $validator->__call($ruleName, $arguments);
     }
 
+    public static function addRulesNamespace($namespace)
+    {
+        if (0 === preg_match('/\\\\$/', $namespace))
+            $namespace = $namespace.'\\';
+
+        static::$rulesNamespaces[] = $namespace;
+    }
+
     public static function buildRule($ruleSpec, $arguments=array())
     {
         if ($ruleSpec instanceof Validatable)
             return $ruleSpec;
         try {
-            $validatorFqn = 'Respect\\Validation\\Rules\\' . ucfirst($ruleSpec);
+            $validatorFqn = null;
+            $ruleSpec     = ucfirst($ruleSpec);
+            foreach (static::$rulesNamespaces as $namespace)
+                if (true == class_exists($className = $namespace.$ruleSpec))
+                    $validatorFqn = $className;
+
             $validatorClass = new ReflectionClass($validatorFqn);
             $validatorInstance = $validatorClass->newInstanceArgs(
                     $arguments
