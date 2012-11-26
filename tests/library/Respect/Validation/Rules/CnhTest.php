@@ -15,34 +15,37 @@ class CnhTest extends \PHPUnit_Framework_TestCase {
      */
     public function test_valid_cnh($cnh)
     {
-        $expectedValid = $this->cnhValidator->validate($cnh);
+        $expectedValid = $this->cnhValidator->assert($cnh);
         $this->assertTrue($expectedValid);
     }
 
     /**
      * @dataProvider invalidCnhProvider
+     * @expectedException Respect\Validation\Exceptions\CnhException
      */
     public function test_invalid_cnh($cnh)
     {
-        $expectedInvalid = $this->cnhValidator->validate($cnh);
+        $expectedInvalid = $this->cnhValidator->assert($cnh);
         $this->assertFalse($expectedInvalid);
     }
 
     /**
      * @dataProvider notIntegerCnhProvider
+     * @expectedException Respect\Validation\Exceptions\CnhException
      */
     public function test_not_integer_cnh($cnh)
     {
-        $expectedInvalid = $this->cnhValidator->validate($cnh);
+        $expectedInvalid = $this->cnhValidator->assert($cnh);
         $this->assertFalse($expectedInvalid);
     }
 
     /**
      * @dataProvider invalidCnhLenghtProvider
+     * @expectedException Respect\Validation\Exceptions\CnhException
      */
     public function test_invalid_length_cnh($cnh)
     {
-        $expectedInvalid = $this->cnhValidator->validate($cnh);
+        $expectedInvalid = $this->cnhValidator->assert($cnh);
         $this->assertFalse($expectedInvalid);
     }
 

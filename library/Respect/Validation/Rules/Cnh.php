@@ -22,10 +22,9 @@ class Cnh extends AbstractRule
 
             for ( $i = 0 , $j = 1 , $v = 0 ; $i < 9 ; ++$i , ++$j ) {
                 $v += (int) $input[$i] * $j;
-
-                $vl2 = ( $x = ( $v % 11 ) ) >= 10 ? 0 : $x - $dsc;
-                $ret = sprintf( '%d%d' , $vl1 , $vl2 ) == substr( $input , -2 );
             }
+            $vl2 = ( $x = ( $v % 11 ) ) >= 10 ? 0 : $x - $dsc;
+            $ret = sprintf( '%d%d' , $vl1 , $vl2 ) == substr( $input , -2 );
         }
         return $ret;
     }
