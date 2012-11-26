@@ -259,6 +259,7 @@ Reference
 
 ### Other
 
+  * v::cnh()
   * v::cnpj()
   * v::cpf()
   * v::domain()
@@ -494,6 +495,17 @@ See also:
 
   * v::tld() - Validates a top level domain
 
+#### v::cnh()
+
+Validates a Brazillian driver's license.
+
+    v::cnh()->validate('02650306461');
+
+See also:
+
+  * v::cnpj()
+  * v::cpf()
+
 #### v::cnpj()
 
 Validates the Brazillian CNPJ number. Ignores non-digit chars, so
@@ -502,6 +514,7 @@ use `->digits()` if needed.
 See also:
 
   * v::cpf() - Validates the Brazillian CPF number.
+  * v::cnh() - Validates the Brazillian driver's license.
 
 #### v::consonants()
 #### v::consonants(string $additionalChars)
@@ -557,6 +570,7 @@ the chain:
 See also:
 
   * v::cnpj()
+  * v::cnh()
 
 #### v::creditCard()
 
