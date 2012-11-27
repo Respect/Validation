@@ -3,7 +3,7 @@
     "description": "The most awesome validation engine ever created for PHP",
     "version": "0.4.4",
     "type": "library",
-    "time": "2012-04-24 23:52:45",
+    "time": "2012-11-25 21:20:18",
     "homepage": "",
     "license": "BSD Style",
     "authors": [
@@ -70,6 +70,10 @@
         {
             "name": "Jean Pimentel",
             "email": "jeanfap@gmail.com"
+        },
+        {
+            "name": "Kinn Coelho Juli\u00e3o",
+            "email": "kinncj@gmail.com"
         },
         {
             "name": "Kleber Hamada Sato",
