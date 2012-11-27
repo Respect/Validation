@@ -61,4 +61,14 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertFalse(Validator::alwaysInvalid()->validate('sojdnfjsdnfojsdnfos dfsdofj sodjf '));
     }
+
+    function test_issue_85_findMessages_should_not_trigger_catchable_fatal_error()
+    {
+        $usernameValidator = Validator::alnum('_')->length(1,15)->noWhitespace();
+        try {
+            $usernameValidator->assert('really messed up screen#name');
+        } catch(\InvalidArgumentException $e) {
+            var_dump($e->findMessages(array('alnum', 'length', 'noWhitespace')));
+        }
+    }
 }
