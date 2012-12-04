@@ -69,7 +69,11 @@ class AbstractNestedException extends ValidationException
 
     public function getRelated($full=false)
     {
-        return $this->related;
+        if (!$full && 1 === count($this->related) 
+            && current($this->related) instanceof AbstractNestedException)
+            return current($this->related)->getRelated();
+        else
+            return $this->related;
     }
 
     public function getRelatedByName($name)

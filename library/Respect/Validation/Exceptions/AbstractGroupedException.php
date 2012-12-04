@@ -32,15 +32,6 @@ class AbstractGroupedException extends AbstractNestedException
             return parent::getParams();
     }
 
-    public function getRelated($full=false)
-    {
-        if (!$full && 1 === count($this->related) 
-            && current($this->related) instanceof AbstractNestedException)
-            return current($this->related)->getRelated();
-        else
-            return $this->related;
-    }
-
     public function getTemplate()
     {
         $parentTemplate = parent::getTemplate();
