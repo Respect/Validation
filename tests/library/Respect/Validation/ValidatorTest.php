@@ -68,7 +68,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         try {
             $usernameValidator->assert('really messed up screen#name');
         } catch(\InvalidArgumentException $e) {
-            var_dump($e->findMessages(array('alnum', 'length', 'noWhitespace')));
+            $e->findMessages(array('alnum', 'length', 'noWhitespace'));
         }
     }
 }
