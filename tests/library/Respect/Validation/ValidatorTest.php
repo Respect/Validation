@@ -71,4 +71,20 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
             $e->findMessages(array('alnum', 'length', 'noWhitespace'));
         }
     }
+
+    function test_keys_as_validator_names()
+    {
+        try {
+            Validator::key('username', Validator::length(1,32))
+                     ->key('birthdate', Validator::date())
+                     ->setName("User Subscription Form")
+                     ->assert(array('username' => '', 'birthdate' => ''));
+        } catch (\InvalidArgumentException $e) {
+            $this->assertEquals('\-These rules must pass for User Subscription Form
+  |-Key username must be valid
+  | \-"" must have a length between 1 and 32
+  \-Key birthdate must be valid
+    \-"" must be a valid date', $e->getFullMessage());
+        }
+    }
 }
