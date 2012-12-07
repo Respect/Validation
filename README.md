@@ -204,6 +204,7 @@ Reference
   * v::alnum()
   * v::alpha()
   * v::between()
+  * v::charset()
   * v::consonants()
   * v::contains()
   * v::digits()
@@ -484,6 +485,17 @@ As in `v::call()`, you can pass a method or closure to it.
 See also:
 
   * v::call() - A more elaborated building block validator
+
+#### v::charset()
+
+Validates if a string is in a specific charset.
+
+
+    v::charset('ASCII', 'açúcar'); //false
+    v::charset('ASCII', 'sugar');  //true
+    v::charset(array('ISO-8859-1', 'EUC-JP'), '日本国'); // true
+
+The array format is a logic OR, not AND.
 
 #### v::countryCode
 

@@ -1,0 +1,73 @@
+<?php
+
+namespace Respect\Validation\Rules;
+
+class CharsetTest extends \PHPUnit_Framework_TestCase
+{
+
+    /**
+     * @dataProvider providerForValidCharset
+     */
+    public function test_valid_data_with_charset_should_return_true($charset, $input)
+    {
+        $validator = new Charset($charset);
+        $this->assertTrue($validator->validate($input));
+    }
+
+    /**
+     * @dataProvider providerForInvalidCharset
+     * @expectedException Respect\Validation\Exceptions\CharsetException
+     */
+    public function test_invalid_charset_should_fail_and_throw_CharsetException($charset, $input)
+    {
+        $validator = new Charset($charset);
+        $this->assertFalse($validator->validate($input));
+        $this->assertFalse($validator->assert($input));
+    }
+
+    /**
+     * @dataProvider providerForInvalidParams
+     * @expectedException Respect\Validation\Exceptions\ComponentException
+     */
+    public function test_invalid_constructor_params_should_throw_ComponentException_upon_instantiation($charset)
+    {
+        $validator = new Charset($charset);
+    }
+
+    public function providerForInvalidParams()
+    {
+        return array(
+            array(new \stdClass),
+            array(array()),
+            array(null),
+            array('16'),
+            array('aeiou'),
+            array('a'),
+            array('Foo'),
+            array('basic'),
+            array(10)
+        );
+    }
+
+    public function providerForValidCharset()
+    {
+        return array(
+            array('ISO-8859-1', mb_convert_encoding('açaí', 'ISO-8859-1')),
+            array(array('UTF-8', 'ASCII'), 'strawberry'),
+            array('ASCII', mb_convert_encoding('strawberry', 'ASCII')),
+            array('UTF-8', '日本国'),
+            array(array('ISO-8859-1', 'EUC-JP'), '日本国'),
+            array('UTF-8', 'açaí'),
+            array('ISO-8859-1', 'açaí'),
+        );
+    }
+
+    public function providerForInvalidCharset()
+    {
+        return array(
+            array('ASCII', '日本国'),
+            array('ASCII', 'açaí')
+        );
+    }
+
+}
