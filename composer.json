@@ -8,32 +8,12 @@
     "license": "BSD Style",
     "authors": [
         {
-            "name": "Alexandre",
-            "email": "alexandre@gaigalas.net"
-        },
-        {
-            "name": "Alexandre (@alganet)",
-            "email": "alganet@alganet-laptop.(none)"
-        },
-        {
             "name": "Alexandre Gaigalas",
-            "email": "alexandre@gaigalas.net"
-        },
-        {
-            "name": "Alexandre Gaigalas",
-            "email": "alganet@alganet-workstation.(none)"
-        },
-        {
-            "name": "Alexandre Gomes Gaigalas",
             "email": "alexandre@gaigalas.net"
         },
         {
             "name": "Augusto Pascutti",
             "email": "contato@augustopascutti.com"
-        },
-        {
-            "name": "Carlos Andr\u00e9 Ferrari",
-            "email": "andre@andre.(none)"
         },
         {
             "name": "Carlos Andr\u00e9 Ferrari",
@@ -61,10 +41,6 @@
         },
         {
             "name": "Jayson Reis",
-            "email": "jayson.reis@sabbre.com.br"
-        },
-        {
-            "name": "Jayson Reis",
             "email": "santosdosreis@gmail.com"
         },
         {
@@ -73,10 +49,6 @@
         },
         {
             "name": "Kleber Hamada Sato",
-            "email": "kleberhs007@yahoo.com"
-        },
-        {
-            "name": "kleberhs007",
             "email": "kleberhs007@yahoo.com"
         },
         {
@@ -102,10 +74,6 @@
         {
             "name": "Torben Brodt",
             "email": "t.brodt@gmail.com"
-        },
-        {
-            "name": "unknown",
-            "email": "kolyshkin@.sqlmaze.local"
         }
     ],
     "autoload": {
