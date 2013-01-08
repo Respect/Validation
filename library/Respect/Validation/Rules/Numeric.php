@@ -7,7 +7,7 @@ class Numeric extends AbstractRule
 
     public function validate($input)
     {
-        return is_numeric($input);
+        return (string)$input === preg_replace('/[^0-9]/','',(string)$input);
     }
 
 }
