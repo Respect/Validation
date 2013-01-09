@@ -27,7 +27,7 @@ class IpException extends ValidationException
             if (isset($range['max']))
                 $message .= '-' . $range['max'];
             else
-                $message .= '/' . $range['mask'];
+                $message .= '/' . long2ip($range['mask']);
 
             $params['range'] = $message;
         }
