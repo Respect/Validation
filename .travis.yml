@@ -1,11 +1,14 @@
-language: php
-script: make test
+language:
+  php
 
 php:
   - 5.3
   - 5.4
 
 before_script:
-  - "composer install --dev"
-  - "make foundation"
-  - "phpenv rehash" 
+  - composer install --dev
+  - phpenv rehash
+
+script:
+  - cd tests
+  - phpunit --colors --coverage-text .
