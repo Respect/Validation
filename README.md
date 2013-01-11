@@ -287,6 +287,7 @@ Reference
   * v::directory()
   * v::domain()
   * v::email()
+  * v::exists()
   * v::file()
   * v::ip()
   * v::json()
@@ -719,10 +720,16 @@ See also:
 Validates directories.
 
     v::directory()->validate(__DIR__); //true
+    v::directory()->validate(__FILE__); //false
 
 This validator will consider SplFileInfo instances, so you can do something like:
 
     v::directory()->validate(new \SplFileInfo($directory));
+
+See also
+
+  * v::exists()
+  * v::file()
 
 #### v::each(v $validatorForValue)
 #### v::each(null, v $validatorForKey)
@@ -752,6 +759,22 @@ See also:
 Validates an email address.
 
     v::email()->validate('alexandre@gaigalas.net'); //true
+
+#### v::exists()
+
+Validates files or directories.
+
+    v::exists()->validate(__FILE__); //true
+    v::exists()->validate(__DIR__); //true
+
+This validator will consider SplFileInfo instances, so you can do something like:
+
+    v::exists()->validate(new \SplFileInfo($file));
+
+See also
+
+  * v::directory()
+  * v::file()
 
 #### v::endsWith($value)
 #### v::endsWith($value, boolean $identical=false)
@@ -814,10 +837,16 @@ See also
 Validates files.
 
     v::file()->validate(__FILE__); //true
+    v::file()->validate(__DIR__); //false
 
 This validator will consider SplFileInfo instances, so you can do something like:
 
     v::file()->validate(new \SplFileInfo($file));
+
+See also
+
+  * v::directory()
+  * v::exists()
 
 #### v::float()
 
