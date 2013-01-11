@@ -2,27 +2,27 @@
 
 namespace Respect\Validation\Rules;
 
-class VowelsTest extends \PHPUnit_Framework_TestCase
+class VowelTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * @dataProvider providerForValidVowels
+     * @dataProvider providerForValidVowel
      */
-    public function testValidDataWithVowelsShouldReturnTrue($validVowels, $aditional='')
+    public function testValidDataWithVowelsShouldReturnTrue($validVowel, $aditional='')
     {
-        $validator = new Vowels($aditional);
-        $this->assertTrue($validator->validate($validVowels));
+        $validator = new Vowel($aditional);
+        $this->assertTrue($validator->validate($validVowel));
     }
 
     /**
-     * @dataProvider providerForInvalidVowels
-     * @expectedException Respect\Validation\Exceptions\VowelsException
+     * @dataProvider providerForInvalidVowel
+     * @expectedException Respect\Validation\Exceptions\VowelException
      */
-    public function testInvalidVowelsShouldFailAndThrowVowelsException($invalidVowels, $aditional='')
+    public function testInvalidVowelsShouldFailAndThrowVowelsException($invalidVowel, $aditional='')
     {
-        $validator = new Vowels($aditional);
-        $this->assertFalse($validator->validate($invalidVowels));
-        $this->assertFalse($validator->assert($invalidVowels));
+        $validator = new Vowel($aditional);
+        $this->assertFalse($validator->validate($invalidVowel));
+        $this->assertFalse($validator->assert($invalidVowel));
     }
 
     /**
@@ -31,7 +31,7 @@ class VowelsTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
     {
-        $validator = new Vowels($aditional);
+        $validator = new Vowel($aditional);
     }
 
     public function providerForInvalidParams()
@@ -43,7 +43,7 @@ class VowelsTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForValidVowels()
+    public function providerForValidVowel()
     {
         return array(
             array(''),
@@ -59,7 +59,7 @@ class VowelsTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForInvalidVowels()
+    public function providerForInvalidVowel()
     {
         return array(
             array(null),

@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class VowelsException extends AlphaException
+class VowelException extends AlphaException
 {
 
     public static $defaultTemplates = array(

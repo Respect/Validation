@@ -2,27 +2,27 @@
 
 namespace Respect\Validation\Rules;
 
-class ConsonantsTest extends \PHPUnit_Framework_TestCase
+class ConsonantTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * @dataProvider providerForValidConsonants
+     * @dataProvider providerForValidConsonant
      */
-    public function testValidDataWithConsonantsShouldReturnTrue($validConsonants, $aditional='')
+    public function testValidDataWithConsonantsShouldReturnTrue($validConsonant, $aditional='')
     {
-        $validator = new Consonants($aditional);
-        $this->assertTrue($validator->validate($validConsonants));
+        $validator = new Consonant($aditional);
+        $this->assertTrue($validator->validate($validConsonant));
     }
 
     /**
-     * @dataProvider providerForInvalidConsonants
-     * @expectedException Respect\Validation\Exceptions\ConsonantsException
+     * @dataProvider providerForInvalidConsonant
+     * @expectedException Respect\Validation\Exceptions\ConsonantException
      */
-    public function testInvalidConsonantsShouldFailAndThrowConsonantsException($invalidConsonants, $aditional='')
+    public function testInvalidConsonantsShouldFailAndThrowConsonantException($invalidConsonant, $aditional='')
     {
-        $validator = new Consonants($aditional);
-        $this->assertFalse($validator->validate($invalidConsonants));
-        $this->assertFalse($validator->assert($invalidConsonants));
+        $validator = new Consonant($aditional);
+        $this->assertFalse($validator->validate($invalidConsonant));
+        $this->assertFalse($validator->assert($invalidConsonant));
     }
 
     /**
@@ -31,7 +31,7 @@ class ConsonantsTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
     {
-        $validator = new Consonants($aditional);
+        $validator = new Consonant($aditional);
     }
 
     public function providerForInvalidParams()
@@ -43,7 +43,7 @@ class ConsonantsTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForValidConsonants()
+    public function providerForValidConsonant()
     {
         return array(
             array(''),
@@ -61,7 +61,7 @@ class ConsonantsTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForInvalidConsonants()
+    public function providerForInvalidConsonant()
     {
         return array(
             array(null),

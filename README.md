@@ -205,9 +205,9 @@ Reference
   * v::alpha()
   * v::between()
   * v::charset()
-  * v::consonants()
+  * v::consonant()
   * v::contains()
-  * v::digits()
+  * v::digit()
   * v::endsWith()
   * v::in()
   * v::length()
@@ -220,7 +220,7 @@ Reference
   * v::uppercase()
   * v::uppercase()
   * v::version()
-  * v::vowels()
+  * v::vowel()
 
 ### Arrays
 
@@ -330,9 +330,9 @@ the string of extra chars passed as the parameter.
 See also:
 
   * v::alpha()  - a-Z, empty or whitespace only
-  * v::digits() - 0-9, empty or whitespace only
-  * v::consonants()
-  * v::vowels()
+  * v::digit() - 0-9, empty or whitespace only
+  * v::consonant()
+  * v::vowel()
 
 #### v::alpha()
 #### v::alpha(string $additionalChars)
@@ -344,9 +344,9 @@ accepts empty values and whitespace, so use `v::notEmpty()` and
 See also:
 
   * v::alnum()  - a-z0-9, empty or whitespace only
-  * v::digits() - 0-9, empty or whitespace only
-  * v::consonants()
-  * v::vowels()
+  * v::digit() - 0-9, empty or whitespace only
+  * v::consonant()
+  * v::vowel()
 
 #### v::arr()
 
@@ -521,26 +521,26 @@ See also:
 #### v::cnpj()
 
 Validates the Brazillian CNPJ number. Ignores non-digit chars, so
-use `->digits()` if needed.
+use `->digit()` if needed.
 
 See also:
 
   * v::cpf() - Validates the Brazillian CPF number.
   * v::cnh() - Validates the Brazillian driver's license.
 
-#### v::consonants()
-#### v::consonants(string $additionalChars)
+#### v::consonant()
+#### v::consonant(string $additionalChars)
 
 Similar to `v::alnum()`. Validates strings that contain only consonants:
 
-    v::consonants()->validate('xkcd'); //true
+    v::consonant()->validate('xkcd'); //true
 
 See also:
 
   * v::alnum()  - a-z0-9, empty or whitespace only
-  * v::digits() - 0-9, empty or whitespace only
+  * v::digit() - 0-9, empty or whitespace only
   * v::alpha()  - a-Z, empty or whitespace only
-  * v::vowels()
+  * v::vowel()
 
 #### v::contains($value)
 #### v::contains($value, boolean $identical=false)
@@ -574,10 +574,10 @@ It ignores any non-digit char:
 
     v::cpf()->validate('444.555.668-20');
 
-If you need to validate digits only, add `->digits()` to
+If you need to validate digits only, add `->digit()` to
 the chain:
 
-    v::digits()->cpf()->validate('44455566820');
+    v::digit()->cpf()->validate('44455566820');
 
 See also:
 
@@ -590,9 +590,9 @@ Validates a credit card number.
 
     v::creditCard()->validate($myCredCardNumber);
 
-It ignores any non-digit chars, so use `->digits()` when appropriate.
+It ignores any non-digit chars, so use `->digit()` when appropriate.
 
-    v::digits()->creditCard()->validate($myCredCardNumber);
+    v::digit()->creditCard()->validate($myCredCardNumber);
 
 #### v::date()
 #### v::date($format)
@@ -624,7 +624,7 @@ See also:
   * v::leapDate()
   * v::leapYear()
 
-#### v::digits()
+#### v::digit()
 
 This is similar to v::alnum(), but it doesn't allow a-Z. It also
 accepts empty values and whitespace, so use `v::notEmpty()` and
@@ -632,8 +632,8 @@ accepts empty values and whitespace, so use `v::notEmpty()` and
 
   * v::alnum()  - a-z0-9, empty or whitespace only
   * v::alpha()  - a-Z, empty or whitespace only
-  * v::vowels()
-  * v::consonants()
+  * v::vowel()
+  * v::consonant()
 
 #### v::domain()
 
@@ -813,7 +813,7 @@ Validates if the input is an integer.
 See also:
 
   * v::numeric()
-  * v::digits()
+  * v::digit()
 
 #### v::ip()
 #### v::ip($options)
@@ -1109,7 +1109,7 @@ Validates on any numeric value.
 See also:
 
   * v::int()
-  * v::digits()
+  * v::digit()
 
 #### v::object()
 
@@ -1285,18 +1285,18 @@ Validates version numbers using Semantic Versioning.
 
     v::version()->validate('1.0.0');
 
-#### v::vowels()
+#### v::vowel()
 
 Similar to `v::alnum()`. Validates strings that contain only vowels:
 
-    v::vowels()->validate('aei'); //true
+    v::vowel()->validate('aei'); //true
 
 See also:
 
   * v::alnum()  - a-z0-9, empty or whitespace only
-  * v::digits() - 0-9, empty or whitespace only
+  * v::digit() - 0-9, empty or whitespace only
   * v::alpha()  - a-Z, empty or whitespace only
-  * v::consonants()
+  * v::consonant()
 
 #### v::when(v $if, v $then, v $else)
 

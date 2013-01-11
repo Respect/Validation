@@ -2,10 +2,10 @@
 
 namespace Respect\Validation\Rules;
 
-class Digits extends Alpha
+class Vowel extends Alpha
 {
 
     public $additionalChars = '';
-    public $stringFormat = '/^\s*[0-9]+([0-9]|\s)*$/';
+    public $stringFormat = '/^(\s|[aeiouAEIOU])*$/';
 
 }
