@@ -37,6 +37,7 @@ use Respect\Validation\Rules\AllOf;
  * @method \Respect\Validation\Validator endsWith(mixed $endValue, bool $identical = false)
  * @method \Respect\Validation\Validator equals(mixed $compareTo, bool $compareIdentical=false)
  * @method \Respect\Validation\Validator even()
+ * @method \Respect\Validation\Validator file()
  * @method \Respect\Validation\Validator float()
  * @method \Respect\Validation\Validator graph(string $additionalChars = null)
  * @method \Respect\Validation\Validator in(array $haystack, bool $compareIdentical = false)
