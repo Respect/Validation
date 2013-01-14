@@ -107,7 +107,7 @@ class Ip extends AbstractRule
             return true;
 
         if (isset($this->networkRange['mask'])) {
-            return $this->compareRange($input);
+            return $this->bellongsToSubnet($input);
         }
 
         $input = sprintf('%u', ip2long($input));
@@ -116,7 +116,7 @@ class Ip extends AbstractRule
                && bccomp($input, sprintf('%u', ip2long($this->networkRange['max']))) <= 0;
     }
 
-    protected function compareRange($input)
+    protected function bellongsToSubnet($input)
     {
         $range = $this->networkRange;
         $min = sprintf('%032b', ip2long($range['min']));
