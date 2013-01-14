@@ -27,7 +27,7 @@ class Ip extends AbstractRule
             || $input == '0.0.0.0-255.255.255.255')
             return null;
 
-        $range = array('min' => null, 'max' => null);
+        $range = array('min' => null, 'max' => null, 'mask' => null);
 
         if (strpos($input, '-') !== false)
             list($range['min'], $range['max']) = explode('-', $input);
@@ -73,7 +73,7 @@ class Ip extends AbstractRule
         $isAddressMask = strpos($input[1], '.') !== false;
 
         if ($isAddressMask && $this->verifyAddress($input[1])) {
-            $range['mask'] = ip2long($input[1]);
+            $range['mask'] = sprintf('%032b', ip2long($input[1]));
 
             return ;
         }
@@ -82,7 +82,7 @@ class Ip extends AbstractRule
             throw new ComponentException('Invalid network mask');
         }
 
-        $range['mask'] = ~ (pow(2, (32 - $input[1])) - 1);
+        $range['mask'] = sprintf('%032b', ip2long(long2ip(~(pow(2, (32 - $input[1])) - 1))));
     }
 
     public function validate($input)
@@ -106,15 +106,23 @@ class Ip extends AbstractRule
         if ($this->networkRange === null)
             return true;
 
-        $input = ip2long($input);
-        $range = $this->networkRange;
-
-        if (isset($range['mask'])) {
-            return ($input & $range['mask']) == (ip2long($range['min']) & $range['mask']);
+        if (isset($this->networkRange['mask'])) {
+            return $this->belongsToSubnet($input);
         }
 
-        return $input >= ip2long($range['min'])
-                && $input <= ip2long($range['max']);
+        $input = sprintf('%u', ip2long($input));
+
+        return bccomp($input, sprintf('%u', ip2long($this->networkRange['min']))) >= 0
+               && bccomp($input, sprintf('%u', ip2long($this->networkRange['max']))) <= 0;
+    }
+
+    protected function belongsToSubnet($input)
+    {
+        $range = $this->networkRange;
+        $min = sprintf('%032b', ip2long($range['min']));
+        $input = sprintf('%032b', ip2long($input));
+
+        return ($input & $range['mask']) === ($min & $range['mask']);
     }
 
 }
