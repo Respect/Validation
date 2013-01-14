@@ -25,35 +25,46 @@ class Domain extends AbstractComposite
         $this->domainLength = new Length(3, null);
         $this->end = new Tld();
         $this->otherParts = new AllOf(
-                new Alnum('-'),
-                new Not(new StartsWith('-'))
+            new Alnum('-'),
+            new Not(new StartsWith('-'))
         );
     }
 
     public function validate($input)
     {
-        if ($this->ip->validate($input))
+        if ($this->ip->validate($input)) {
             return true;
+        }
+            
         if (!$this->whitespace->validate($input)
             || !$this->dot->validate($input)
-            || !$this->domainLength->validate($input))
+            || !$this->domainLength->validate($input)) {
             return false;
+        }
 
         $parts = explode('.', $input);
-        if (count($parts) < 2)
+        if (count($parts) < 2) {
             return false;
-        if (!$this->end->validate(array_pop($parts)))
+        }
+            
+        if (!$this->end->validate(array_pop($parts))) {
             return false;
-        foreach ($parts as $p)
-            if (!$this->otherParts->validate($p))
+        }
+            
+        foreach ($parts as $p) {
+            if (!$this->otherParts->validate($p)) {
                 return false;
+            }
+        }
+
         return true;
     }
 
     public function assert($input)
     {
-        if ($this->ip->validate($input))
+        if ($this->ip->validate($input)) {
             return true;
+        }
 
         $e = array();
 
@@ -64,13 +75,18 @@ class Domain extends AbstractComposite
 
         $parts = explode('.', $input);
 
-        if (count($parts) >= 2)
+        if (count($parts) >= 2) {
             $this->collectAssertException($e, $this->end, array_pop($parts));
-        foreach ($parts as $p)
+        }
+            
+        foreach ($parts as $p) {
             $this->collectAssertException($e, $this->otherParts, $p);
+        }
 
-        if (count($e))
+        if (count($e)) {
             throw $this->reportError($input)->setRelated($e);
+        }
+
         return true;
     }
 
@@ -85,8 +101,10 @@ class Domain extends AbstractComposite
 
     public function check($input)
     {
-        if ($this->ip->validate($input))
+        if ($this->ip->validate($input)) {
             return true;
+        }
+
         $this->whitespace->check($input);
         $this->dot->check($input);
         $this->domainLength->check($input);
@@ -94,13 +112,15 @@ class Domain extends AbstractComposite
 
         $parts = explode('.', $input);
 
-        if (count($parts) >= 2)
+        if (count($parts) >= 2) {
             $this->end->check(array_pop($parts));
-        foreach ($parts as $p)
+        }
+            
+        foreach ($parts as $p) {
             $this->otherParts->check($p);
+        }
 
         return true;
     }
 
 }
-

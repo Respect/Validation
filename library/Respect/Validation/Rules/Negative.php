@@ -11,4 +11,3 @@ class Negative extends AbstractRule
     }
 
 }
-

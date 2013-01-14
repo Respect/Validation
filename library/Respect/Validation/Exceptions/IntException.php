@@ -15,4 +15,3 @@ class IntException extends ValidationException
     );
 
 }
-

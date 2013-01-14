@@ -7,5 +7,5 @@ class PerfectSquare extends AbstractRule
     {
         return is_numeric($input) && sqrt($input) * sqrt($input) == $input;
     }
-    
+
 }

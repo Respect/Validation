@@ -29,10 +29,11 @@ abstract class AbstractRelated extends AbstractRule implements Validatable
     {
         $hasReference = $this->hasReference($input);
 
-        if ($this->mandatory && !$hasReference)
+        if ($this->mandatory && !$hasReference) {
             throw $this->reportError($input, array('hasReference' => false));
-        elseif ((!$this->mandatory && !$hasReference) || !$this->validator)
+        } elseif ((!$this->mandatory && !$hasReference) || !$this->validator) {
             return true;
+        }
 
         try {
             return $this->validator->assert($this->getReferenceValue($input));
@@ -47,10 +48,11 @@ abstract class AbstractRelated extends AbstractRule implements Validatable
     {
         $hasReference = $this->hasReference($input);
 
-        if ($this->mandatory && !$hasReference)
+        if ($this->mandatory && !$hasReference) {
             throw $this->reportError($input, array('hasReference' => false));
-        elseif ((!$this->mandatory && !$hasReference) || !$this->validator)
+        } elseif ((!$this->mandatory && !$hasReference) || !$this->validator) {
             return true;
+        }
 
         return $this->validator->check($this->getReferenceValue($input));
     }
@@ -59,13 +61,13 @@ abstract class AbstractRelated extends AbstractRule implements Validatable
     {
         $hasReference = $this->hasReference($input);
 
-        if ($this->mandatory && !$hasReference)
+        if ($this->mandatory && !$hasReference) {
             return false;
-        elseif (!$this->mandatory && !$hasReference)
+        } elseif (!$this->mandatory && !$hasReference) {
             return true;
+        }
 
-        return is_null($this->validator)
-        || $this->validator->validate($this->getReferenceValue($input));
+        return (is_null($this->validator) || $this->validator->validate($this->getReferenceValue($input)));
     }
 
 }

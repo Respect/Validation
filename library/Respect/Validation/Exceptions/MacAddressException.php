@@ -15,4 +15,3 @@ class MacAddressException extends ValidationException
     );
 
 }
-

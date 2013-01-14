@@ -17,4 +17,3 @@ class AlnumException extends AlphaException
     );
 
 }
-

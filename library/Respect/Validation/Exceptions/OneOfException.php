@@ -15,4 +15,3 @@ class OneOfException extends AbstractNestedException
     );
 
 }
-

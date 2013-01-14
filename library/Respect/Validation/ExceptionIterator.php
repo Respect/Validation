@@ -18,10 +18,11 @@ class ExceptionIterator extends RecursiveArrayIterator
 
     public function hasChildren()
     {
-        if (!$this->current() instanceof AbstractNestedException)
+        if (!$this->current() instanceof AbstractNestedException) {
             return false;
-        else
+        } else {
             return (boolean) $this->current()->getRelated($this->fullRelated);
+        }
     }
 
     public function getChildren()
@@ -30,4 +31,3 @@ class ExceptionIterator extends RecursiveArrayIterator
     }
 
 }
-
