@@ -2,19 +2,19 @@
 
 namespace Respect\Validation\Rules;
 
-class CnpjTest extends \PHPUnit_Framework_TestCase {
-
+class CnpjTest extends \PHPUnit_Framework_TestCase
+{
     protected $cnpjValidator;
 
-    protected function setUp() 
+    protected function setUp()
     {
         $this->cnpjValidator = new Cnpj;
     }
-    
+
     /**
      * @dataProvider providerValidFormattedCnpj
      */
-    public function test_formatted_cnpjs_should_validate($input) 
+    public function testFormattedCnpjsShouldValidate($input)
     {
         $this->assertTrue($this->cnpjValidator->validate($input));
     }
@@ -22,7 +22,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase {
     /**
      * @dataProvider providerValidUnformattedCnpj
      */
-    public function test_unformatted_cnpjs_should_validates($input) 
+    public function testUnformattedCnpjsShouldValidates($input)
     {
         $this->assertTrue($this->cnpjValidator->validate($input));
     }
@@ -30,7 +30,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase {
     /**
      * @dataProvider providerInvalidFormattedCnpj
      */
-    public function test_invalid_cnpj_should_fail_when_formatted($input) 
+    public function testInvalidCnpjShouldFailWhenFormatted($input)
     {
         $this->assertFalse($this->cnpjValidator->validate($input));
     }
@@ -38,21 +38,20 @@ class CnpjTest extends \PHPUnit_Framework_TestCase {
     /**
      * @dataProvider providerInvalidUnformattedCnpj
      */
-    public function test_invalid_cnpj_should_fail_when_not_formatted($input) 
+    public function testInvalidCnpjShouldFailWhenNotFormatted($input)
     {
         $this->assertFalse($this->cnpjValidator->validate($input));
     }
 
-    
     /**
      * @dataProvider providerInvalidFormattedAndUnformattedCnpjLength
      */
-    public function test_cnpjs_with_incorrect_length_should_fail($input) 
+    public function testCnpjsWithIncorrectLengthShouldFail($input)
     {
         $this->assertFalse($this->cnpjValidator->validate($input));
     }
-    
-    public function providerValidFormattedCnpj() 
+
+    public function providerValidFormattedCnpj()
     {
         return array(
             array('32.063.364/0001-07'),
@@ -64,7 +63,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase {
         );
     }
 
-    public function providerValidUnformattedCnpj() 
+    public function providerValidUnformattedCnpj()
     {
         return array(
             array('38175021000110'),
@@ -75,7 +74,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase {
         );
     }
 
-    public function providerInvalidFormattedCnpj() 
+    public function providerInvalidFormattedCnpj()
     {
         return array(
             array('12.345.678/9012-34'),
@@ -94,7 +93,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase {
             array('44242340000')
         );
     }
-    
+
     public function providerInvalidFormattedAndUnformattedCnpjLength()
     {
         return array(

@@ -7,7 +7,7 @@ use DateTime;
 class ZendTest extends \PHPUnit_Framework_TestCase
 {
 
-    public function test_zend_dependency()
+    public function testZendDependency()
     {
         $this->assertTrue(
             class_exists('\Zend\Validator\Date'),
@@ -16,9 +16,9 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends test_zend_dependency
+     * @depends testZendDependency
      */
-    public function test_constructor_with_validator_name()
+    public function testConstructorWithValidatorName()
     {
         $v = new Zend('Date');
         $this->assertAttributeInstanceOf(
@@ -29,9 +29,9 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends test_constructor_with_validator_name
+     * @depends testConstructorWithValidatorName
      */
-    public function test_constructor_with_validator_class_name()
+    public function testConstructorWithValidatorClassName()
     {
         $v = new Zend('Zend\Validator\Date');
         $this->assertAttributeInstanceOf(
@@ -42,9 +42,9 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends test_zend_dependency
+     * @depends testZendDependency
      */
-    public function test_constructor_with_zend_validator_instance()
+    public function testConstructorWithZendValidatorInstance()
     {
         $zendInstance = new \Zend\Validator\Date;
         $v            = new Zend($zendInstance);
@@ -56,10 +56,10 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends test_zend_dependency
-     * @depends test_constructor_with_zend_validator_instance
+     * @depends testZendDependency
+     * @depends testConstructorWithZendValidatorInstance
      */
-    public function test_userland_validator_extending_zend_interface()
+    public function testUserlandValidatorExtendingZendInterface()
     {
         $v = new Zend(new MyValidator);
         $this->assertAttributeInstanceOf(
@@ -70,9 +70,9 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends test_zend_dependency
+     * @depends testZendDependency
      */
-    public function test_constructor_with_zend_validator_partial_namespace()
+    public function testConstructorWithZendValidatorPartialNamespace()
     {
         $v = new Zend('Sitemap\Lastmod');
         $this->assertAttributeInstanceOf(
@@ -83,10 +83,10 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends test_constructor_with_validator_name
-     * @depends test_constructor_with_zend_validator_partial_namespace
+     * @depends testConstructorWithValidatorName
+     * @depends testConstructorWithZendValidatorPartialNamespace
      */
-    public function test_constructor_with_validator_name_and_params()
+    public function testConstructorWithValidatorName_and_params()
     {
         $zendValidatorName   = 'StringLength';
         $zendValidatorParams = array('min' => 10, 'max' => 25);
@@ -98,9 +98,9 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends test_constructor_with_validator_name
+     * @depends testConstructorWithValidatorName
      */
-    public function test_zend_date_validator_with_respect_methods()
+    public function testZendDateValidatorWithRespectMethods()
     {
         $v    = new Zend('Date');
         $date = new DateTime;
@@ -109,11 +109,11 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends test_constructor_with_validator_name
-     * @depends test_zend_date_validator_with_respect_methods
+     * @depends testConstructorWithValidatorName
+     * @depends testZendDateValidatorWithRespectMethods
      * @expectedException Respect\Validation\Exceptions\ZendException
      */
-    public function test_respect_exception_for_failed_validation()
+    public function testRespectExceptionForFailedValidation()
     {
         $v = new Zend('Date');
         $notValid = 'a';
@@ -127,9 +127,9 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends test_constructor_with_validator_name
-     * @depends test_constructor_with_validator_name_and_params
-     * @depends test_zend_date_validator_with_respect_methods
+     * @depends testConstructorWithValidatorName
+     * @depends testConstructorWithValidatorName_and_params
+     * @depends testZendDateValidatorWithRespectMethods
      * @expectedException Respect\Validation\Exceptions\ZendException
      */
     public function testParamsNot()

@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class AlwaysInalidException extends ValidationException
+class AlwaysInvalidException extends ValidationException
 {
 
     public static $defaultTemplates = array(
@@ -15,4 +15,3 @@ class AlwaysInalidException extends ValidationException
     );
 
 }
-

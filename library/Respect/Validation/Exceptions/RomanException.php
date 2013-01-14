@@ -15,4 +15,3 @@ class RomanException extends ValidationException
     );
 
 }
-

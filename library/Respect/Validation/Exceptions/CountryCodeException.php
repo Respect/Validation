@@ -15,4 +15,3 @@ class CountryCodeException extends ValidationException
     );
 
 }
-

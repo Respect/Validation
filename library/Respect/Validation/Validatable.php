@@ -19,4 +19,3 @@ interface Validatable
 
     public function validate($input);
 }
-

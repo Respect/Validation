@@ -2,19 +2,19 @@
 
 namespace Respect\Validation\Rules;
 
-class SlugTest extends \PHPUnit_Framework_TestCase {
-
+class SlugTest extends \PHPUnit_Framework_TestCase
+{
     protected $slug;
 
-    protected function setUp() 
+    protected function setUp()
     {
         $this->slug = new Slug;
     }
-    
+
     /**
      * @dataProvider providerValidSlug
      */
-    public function testValidSlug($input) 
+    public function testValidSlug($input)
     {
         $this->assertTrue($this->slug->validate($input));
         $this->assertTrue($this->slug->check($input));
@@ -25,13 +25,13 @@ class SlugTest extends \PHPUnit_Framework_TestCase {
      * @dataProvider providerInvalidSlug
      * @expectedException Respect\Validation\Exceptions\SlugException
      */
-    public function testInvalidSlug($input) 
+    public function testInvalidSlug($input)
     {
         $this->assertFalse($this->slug->validate($input));
         $this->assertFalse($this->slug->assert($input));
     }
-    
-    public function providerValidSlug() 
+
+    public function providerValidSlug()
     {
         return array(
             array('o-rato-roeu-o-rei-de-roma'),
@@ -41,7 +41,7 @@ class SlugTest extends \PHPUnit_Framework_TestCase {
         );
     }
 
-    public function providerInvalidSlug() 
+    public function providerInvalidSlug()
     {
         return array(
             array('o-alganet-é-um-feio'),

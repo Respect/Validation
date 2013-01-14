@@ -23,4 +23,3 @@ class AlphaException extends ValidationException
     }
 
 }
-

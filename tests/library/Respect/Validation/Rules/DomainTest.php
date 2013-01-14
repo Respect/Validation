@@ -16,7 +16,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForDomain
      *
      */
-    public function test_valid_domains_should_return_true($input)
+    public function testValidDomainsShouldReturnTrue($input)
     {
         $this->assertTrue($this->object->validate($input));
         $this->assertTrue($this->object->assert($input));

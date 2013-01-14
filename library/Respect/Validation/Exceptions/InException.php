@@ -15,4 +15,3 @@ class InException extends ValidationException
     );
 
 }
-

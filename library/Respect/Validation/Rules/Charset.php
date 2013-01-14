@@ -33,4 +33,3 @@ class Charset extends AbstractRule
     }
 
 }
-

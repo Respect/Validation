@@ -2,7 +2,6 @@
 
 namespace Respect\Validation\Rules;
 
-
 class NoneOfTest extends \PHPUnit_Framework_TestCase
 {
 

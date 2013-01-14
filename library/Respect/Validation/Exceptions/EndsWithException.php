@@ -15,4 +15,3 @@ class EndsWithException extends ValidationException
     );
 
 }
-

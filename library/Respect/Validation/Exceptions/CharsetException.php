@@ -15,4 +15,3 @@ class CharsetException extends ValidationException
     );
 
 }
-

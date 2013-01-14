@@ -15,4 +15,3 @@ class AlwaysValidException extends ValidationException
     );
 
 }
-

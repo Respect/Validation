@@ -15,4 +15,3 @@ class NumericException extends ValidationException
     );
 
 }
-

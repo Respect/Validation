@@ -3,7 +3,6 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validatable;
-use Respect\Validation\Validator;
 use Respect\Validation\Exceptions\ValidationException;
 
 abstract class AbstractRule implements Validatable
@@ -24,18 +23,21 @@ abstract class AbstractRule implements Validatable
         return $this->validate($input);
     }
 
-    public function addOr() {
+    public function addOr()
+    {
         $rules = func_get_args();
         array_unshift($rules, $this);
+
         return new OneOf($rules);
     }
 
     public function assert($input)
     {
-        if ($this->validate($input))
+        if ($this->validate($input)) {
             return true;
-        else
+        } else {
             throw $this->reportError($input);
+        }
     }
 
     public function check($input)
@@ -58,20 +60,24 @@ abstract class AbstractRule implements Validatable
             compact('input')
         );
         $exception->configure($name, $params);
-        if (!is_null($this->template))
+        if (!is_null($this->template)) {
             $exception->setTemplate($this->template);
+        }
+
         return $exception;
     }
 
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
     public function setTemplate($template)
     {
         $this->template = $template;
+
         return $this;
     }
 
@@ -80,8 +86,8 @@ abstract class AbstractRule implements Validatable
         $currentFQN = get_called_class();
         $exceptionFQN = str_replace('\\Rules\\', '\\Exceptions\\', $currentFQN);
         $exceptionFQN .= 'Exception';
+
         return new $exceptionFQN;
     }
 
 }
-

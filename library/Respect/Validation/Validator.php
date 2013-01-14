@@ -85,17 +85,21 @@ class Validator extends AllOf
 
     public static function __callStatic($ruleName, $arguments)
     {
-        if ('allOf' === $ruleName)
+        if ('allOf' === $ruleName) {
             return static::buildRule($ruleName, $arguments);
+        }
 
         $validator = new static;
+
         return $validator->__call($ruleName, $arguments);
     }
 
     public static function buildRule($ruleSpec, $arguments=array())
     {
-        if ($ruleSpec instanceof Validatable)
+        if ($ruleSpec instanceof Validatable) {
             return $ruleSpec;
+        }
+
         try {
             $validatorFqn = 'Respect\\Validation\\Rules\\' . ucfirst($ruleSpec);
             $validatorClass = new ReflectionClass($validatorFqn);
@@ -111,13 +115,14 @@ class Validator extends AllOf
 
     public function __call($method, $arguments)
     {
-        if ('not' === $method)
+        if ('not' === $method) {
             return $arguments ? static::buildRule($method, $arguments) : new Rules\Not($this);
+        }
 
         if (isset($method{4}) &&
-            substr($method, 0, 4) == 'base' && preg_match('@^base([0-9]{1,2})$@', $method, $match))
+            substr($method, 0, 4) == 'base' && preg_match('@^base([0-9]{1,2})$@', $method, $match)) {
             return $this->addRule(static::buildRule('base', array($match[1])));
-
+        }
 
         return $this->addRule(static::buildRule($method, $arguments));
     }
@@ -131,8 +136,10 @@ class Validator extends AllOf
             $extraParams, get_object_vars($this), get_class_vars(__CLASS__)
         );
         $exception->configure($name, $params);
-        if (!is_null($this->template))
+        if (!is_null($this->template)) {
             $exception->setTemplate($this->template);
+        }
+
         return $exception;
     }
 
@@ -142,8 +149,10 @@ class Validator extends AllOf
      * @static
      * @return \Respect\Validation\Validator
      */
-    public static function create() {
+    public static function create()
+    {
         $ref = new ReflectionClass(__CLASS__);
+
         return $ref->newInstanceArgs(func_get_args());
     }
 }

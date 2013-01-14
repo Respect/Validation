@@ -24,10 +24,11 @@ class IpException extends ValidationException
             $range = $params['networkRange'];
             $message = $range['min'];
 
-            if (isset($range['max']))
+            if (isset($range['max'])) {
                 $message .= '-' . $range['max'];
-            else
+            } else {
                 $message .= '/' . long2ip($range['mask']);
+            }
 
             $params['range'] = $message;
         }
@@ -37,11 +38,11 @@ class IpException extends ValidationException
 
     public function chooseTemplate()
     {
-        if (!$this->getParam('networkRange'))
+        if (!$this->getParam('networkRange')) {
             return static::STANDARD;
-        else
+        } else {
             return static::NETWORK_RANGE;
+        }
     }
 
 }
-

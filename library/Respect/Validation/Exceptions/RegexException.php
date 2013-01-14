@@ -15,4 +15,3 @@ class RegexException extends ValidationException
     );
 
 }
-

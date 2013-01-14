@@ -15,4 +15,3 @@ class UppercaseException extends ValidationException
     );
 
 }
-

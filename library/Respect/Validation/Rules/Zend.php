@@ -13,23 +13,27 @@ class Zend extends AbstractRule
 
     public function __construct($validator, $params=array())
     {
-        if (is_object($validator))
+        if (is_object($validator)) {
             return $this->zendValidator = $validator;
+        }
 
-        if (!is_string($validator))
+        if (!is_string($validator)) {
             throw new ComponentException('Invalid Validator Construct');
+        }
 
-        if (false === stripos($validator, 'Zend'))
+        if (false === stripos($validator, 'Zend')) {
             $validator = "Zend\Validator\\{$validator}";
-        else
+        } else {
             $validator = "\\{$validator}";
+        }
 
         $zendMirror = new ReflectionClass($validator);
 
-        if ($zendMirror->hasMethod('__construct'))
+        if ($zendMirror->hasMethod('__construct')) {
             $this->zendValidator = $zendMirror->newInstanceArgs($params);
-        else
+        } else {
             $this->zendValidator = $zendMirror->newInstance();
+        }
     }
 
     public function assert($input)
@@ -37,11 +41,13 @@ class Zend extends AbstractRule
         $exceptions = array();
         $validator = clone $this->zendValidator;
 
-        if ($validator->isValid($input))
+        if ($validator->isValid($input)) {
             return true;
-        else
-            foreach ($validator->getMessages() as $m)
+        } else {
+            foreach ($validator->getMessages() as $m) {
                 $exceptions[] = $this->reportError($m, get_object_vars($this));
+            }
+        }
 
         throw $this->reportError($input)->setRelated($exceptions);
     }
@@ -49,8 +55,8 @@ class Zend extends AbstractRule
     public function validate($input)
     {
         $validator = clone $this->zendValidator;
+
         return $validator->isValid($input);
     }
 
 }
-

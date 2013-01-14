@@ -8,7 +8,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForIp
      *
      */
-    public function test_valid_ips_should_return_True($input, $options=null)
+    public function testValidIpsShouldReturnTrue($input, $options=null)
     {
         $ipValidator = new Ip($options);
         $this->assertTrue($ipValidator->validate($input));
@@ -19,7 +19,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForIpBetweenRange
      */
-    public function test_ips_between_range_should_return_True($input, $networkRange)
+    public function testIpsBetweenRangeShouldReturnTrue($input, $networkRange)
     {
         $ipValidator = new Ip($networkRange);
         $this->assertTrue($ipValidator->validate($input));
@@ -31,7 +31,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotIp
      * @expectedException Respect\Validation\Exceptions\IpException
      */
-    public function test_invalid_ips_should_throw_IpException($input, $options=null)
+    public function testInvalidIpsShouldThrowIpException($input, $options=null)
     {
         $ipValidator = new Ip($options);
         $this->assertFalse($ipValidator->validate($input));
@@ -42,7 +42,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForIpOutsideRange
      * @expectedException Respect\Validation\Exceptions\IpException
      */
-    public function test_ips_outside_range_should_return_False($input, $networkRange)
+    public function testIpsOutsideRangeShouldReturnFalse($input, $networkRange)
     {
         $ipValidator = new Ip($networkRange);
         $this->assertFalse($ipValidator->validate($input));
@@ -110,7 +110,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidRanges
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function test_invalid_range_should_raise_exception($range)
+    public function testInvalidRangeShouldRaiseException($range)
     {
         $o = new Ip($range);
     }

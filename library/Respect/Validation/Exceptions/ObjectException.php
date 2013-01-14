@@ -15,4 +15,3 @@ class ObjectException extends ValidationException
     );
 
 }
-

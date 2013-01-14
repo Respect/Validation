@@ -16,11 +16,11 @@ class Min extends AbstractRule
 
     public function validate($input)
     {
-        if ($this->inclusive)
+        if ($this->inclusive) {
             return $input >= $this->minValue;
-        else
+        } else {
             return $input > $this->minValue;
+        }
     }
 
 }
-

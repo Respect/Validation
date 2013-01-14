@@ -12,7 +12,7 @@ class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
         $this->noWhitespaceValidator = new NoWhitespace;
     }
 
-    public function test_string_with_no_whitespace_should_pass()
+    public function testStringWithNoWhitespaceShouldPass()
     {
         $this->assertTrue($this->noWhitespaceValidator->validate('wpoiur'));
         $this->assertTrue($this->noWhitespaceValidator->check('wpoiur'));
@@ -22,7 +22,7 @@ class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Respect\Validation\Exceptions\NoWhitespaceException
      */
-    public function test_string_with_whitespace_should_fail()
+    public function testStringWithWhitespaceShouldFail()
     {
         $this->assertFalse($this->noWhitespaceValidator->validate('w poiur'));
         $this->assertFalse($this->noWhitespaceValidator->assert('w poiur'));
@@ -30,7 +30,7 @@ class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Respect\Validation\Exceptions\NoWhitespaceException
      */
-    public function test_string_with_line_breaks_should_fail()
+    public function testStringWithLineBreaksShouldFail()
     {
         $this->assertFalse($this->noWhitespaceValidator->validate("w\npoiur"));
         $this->assertFalse($this->noWhitespaceValidator->assert("w\npoiur"));
