@@ -15,4 +15,3 @@ class EachException extends AbstractNestedException
     );
 
 }
-

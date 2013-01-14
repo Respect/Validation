@@ -16,7 +16,7 @@ class RomanTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForRoman
      *
      */
-    public function test_valid_romans_should_return_True($input)
+    public function testValidRomansShouldReturnTrue($input)
     {
         $this->assertTrue($this->romanValidator->validate($input));
         $this->assertTrue($this->romanValidator->assert($input));
@@ -27,7 +27,7 @@ class RomanTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotRoman
      * @expectedException Respect\Validation\Exceptions\RomanException
      */
-    public function test_invalid_romans_should_throw_RomanException($input)
+    public function testInvalidRomansShouldThrowRomanException($input)
     {
         $this->assertFalse($this->romanValidator->validate($input));
         $this->assertFalse($this->romanValidator->assert($input));

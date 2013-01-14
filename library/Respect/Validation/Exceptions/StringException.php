@@ -15,4 +15,3 @@ class StringException extends ValidationException
     );
 
 }
-

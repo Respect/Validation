@@ -15,7 +15,7 @@ class HexaTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForHexa
      */
-    public function test_validate_valid_hexadecimal_numbers($input)
+    public function testValidateValidHexadecimalNumbers($input)
     {
         $this->assertTrue($this->hexaValidator->assert($input));
         $this->assertTrue($this->hexaValidator->check($input));
@@ -26,7 +26,7 @@ class HexaTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotHexa
      * @expectedException Respect\Validation\Exceptions\HexaException
      */
-    public function test_invalid_hexadecimal_numbers_should_throw_HexaException($input)
+    public function testInvalidHexadecimalNumbersShouldThrowHexaException($input)
     {
         $this->assertFalse($this->hexaValidator->validate($input));
         $this->assertFalse($this->hexaValidator->assert($input));

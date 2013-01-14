@@ -10,10 +10,9 @@ class Key extends AbstractRelated
 
     public function __construct($reference, Validatable $referenceValidator=null, $mandatory=true)
     {
-        if (!is_string($reference) || empty($reference))
-            throw new ComponentException(
-                'Invalid array key name'
-            );
+        if (!is_string($reference) || empty($reference)) {
+            throw new ComponentException('Invalid array key name');
+        }
         parent::__construct($reference, $referenceValidator, $mandatory);
     }
 

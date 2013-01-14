@@ -18,4 +18,3 @@ class Regex extends AbstractRule
     }
 
 }
-

@@ -15,4 +15,3 @@ class ContainsException extends ValidationException
     );
 
 }
-

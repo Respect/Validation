@@ -8,7 +8,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidLenght
      */
-    public function test_lenght_inside_bounds_should_return_true($string, $min, $max)
+    public function testLenghtInsideBoundsShouldReturnTrue($string, $min, $max)
     {
         $validator = new Length($min, $max);
         $this->assertTrue($validator->validate($string));
@@ -20,7 +20,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidLenghtInclusive
      * @expectedException Respect\Validation\Exceptions\LengthException
      */
-    public function test_length_outside_bounds_should_throw_LengthException($string, $min, $max)
+    public function testLengthOutsideBoundsShouldThrowLengthException($string, $min, $max)
     {
         $validator = new Length($min, $max, false);
         $this->assertfalse($validator->validate($string));
@@ -31,7 +31,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidLenght
      * @expectedException Respect\Validation\Exceptions\LengthException
      */
-    public function test_length_outside_valid_bounds_should_throw_LengthException($string, $min, $max)
+    public function testLengthOutsideValidBoundsShouldThrowLengthException($string, $min, $max)
     {
         $validator = new Length($min, $max);
         $this->assertFalse($validator->validate($string));
@@ -42,7 +42,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForComponentException
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function test_invalid_constructor_parameters_should_throw_ComponentException_upon_instantiation($string, $min, $max)
+    public function testInvalidConstructorParametersShouldThrowComponentExceptionUponInstantiation($string, $min, $max)
     {
         $validator = new Length($min, $max);
         $this->assertFalse($validator->validate($string));

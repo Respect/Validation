@@ -15,4 +15,3 @@ class NoWhitespaceException extends ValidationException
     );
 
 }
-

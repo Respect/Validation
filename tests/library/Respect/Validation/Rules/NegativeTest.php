@@ -16,7 +16,7 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNegative
      *
      */
-    public function test_negative_should_pass($input)
+    public function testNegativeShouldPass($input)
     {
         $this->assertTrue($this->negativeValidator->assert($input));
         $this->assertTrue($this->negativeValidator->validate($input));
@@ -27,7 +27,7 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotNegative
      * @expectedException Respect\Validation\Exceptions\NegativeException
      */
-    public function test_NOT_negative_numbers_should_throw_NegativeException($input)
+    public function testNotNegativeNumbersShouldThrowNegativeException($input)
     {
         $this->assertFalse($this->negativeValidator->validate($input));
         $this->assertFalse($this->negativeValidator->assert($input));

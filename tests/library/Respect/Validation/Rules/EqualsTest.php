@@ -8,7 +8,7 @@ class EqualsTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForEquals
      */
-    public function test_strings_containing_expected_value_should_pass($start, $input)
+    public function testStringsContainingExpectedValueShouldPass($start, $input)
     {
         $v = new Equals($start);
         $this->assertTrue($v->validate($input));
@@ -20,7 +20,7 @@ class EqualsTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotEquals
      * @expectedException Respect\Validation\Exceptions\EqualsException
      */
-    public function test_strings_NOT_equals_expected_value_shoud_NOT_pass($start, $input, $identical=false)
+    public function testStringsNotEqualsExpectedValueShoudNotPass($start, $input, $identical=false)
     {
         $v = new Equals($start, $identical);
         $this->assertFalse($v->validate($input));

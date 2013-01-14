@@ -23,4 +23,3 @@ class AttributeException extends AbstractNestedException
     }
 
 }
-

@@ -8,7 +8,7 @@ class VersionTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidVersion
      */
-    public function test_valid_version_should_return_true($input)
+    public function testValidVersionShouldReturnTrue($input)
     {
         $rule = new Version();
         $this->assertTrue($rule->validate($input));
@@ -20,7 +20,7 @@ class VersionTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidVersion
      * @expectedException Respect\Validation\Exceptions\VersionException
      */
-    public function test_invalid_version_should_throw_exception($input)
+    public function testInvalidVersionShouldThrowException($input)
     {
         $rule = new Version();
         $this->assertFalse($rule->validate($input));

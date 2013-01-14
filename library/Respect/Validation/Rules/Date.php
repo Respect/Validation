@@ -16,12 +16,13 @@ class Date extends AbstractRule
 
     public function validate($input)
     {
-        if ($input instanceof DateTime)
+        if ($input instanceof DateTime) {
             return true;
-        elseif (!is_string($input))
+        } elseif (!is_string($input)) {
             return false;
-        elseif (is_null($this->format))
+        } elseif (is_null($this->format)) {
             return false !== strtotime($input);
+        }
 
         $dateFromFormat = DateTime::createFromFormat($this->format, $input);
 
@@ -30,4 +31,3 @@ class Date extends AbstractRule
     }
 
 }
-

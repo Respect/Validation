@@ -15,4 +15,3 @@ class PerfectSquareException extends ValidationException
     );
 
 }
-

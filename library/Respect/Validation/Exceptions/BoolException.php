@@ -15,4 +15,3 @@ class BoolException extends ValidationException
     );
 
 }
-

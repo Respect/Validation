@@ -15,6 +15,7 @@ class Ip extends AbstractRule
     {
         if (is_int($ipOptions)) {
             $this->ipOptions = $ipOptions;
+
             return ;
         }
 
@@ -24,19 +25,21 @@ class Ip extends AbstractRule
     protected function parseRange($input)
     {
         if ($input === null || $input == '*' || $input == '*.*.*.*'
-            || $input == '0.0.0.0-255.255.255.255')
+            || $input == '0.0.0.0-255.255.255.255') {
             return null;
+        }
 
         $range = array('min' => null, 'max' => null, 'mask' => null);
 
-        if (strpos($input, '-') !== false)
+        if (strpos($input, '-') !== false) {
             list($range['min'], $range['max']) = explode('-', $input);
-        elseif (strpos($input, '*') !== false) {
+        } elseif (strpos($input, '*') !== false) {
             $this->parseRangeUsingWildcards($input, $range);
         } elseif (strpos($input, '/') !== false) {
             $this->parseRangeUsingCidr($input, $range);
-        } else
+        } else {
             throw new ComponentException('Invalid network range');
+        }
 
         if (!$this->verifyAddress($range['min'])) {
             throw new ComponentException('Invalid network range');
@@ -103,8 +106,9 @@ class Ip extends AbstractRule
 
     protected function verifyNetwork($input)
     {
-        if ($this->networkRange === null)
+        if ($this->networkRange === null) {
             return true;
+        }
 
         if (isset($this->networkRange['mask'])) {
             return $this->belongsToSubnet($input);

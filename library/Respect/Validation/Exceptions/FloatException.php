@@ -15,4 +15,3 @@ class FloatException extends ValidationException
     );
 
 }
-

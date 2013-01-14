@@ -9,4 +9,3 @@ class Consonants extends Alpha
     public $stringFormat = '/^(\s|[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z])*$/';
 
 }
-

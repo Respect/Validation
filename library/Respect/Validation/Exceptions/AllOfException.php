@@ -17,4 +17,3 @@ class AllOfException extends AbstractGroupedException
     );
 
 }
-

@@ -15,4 +15,3 @@ class EvenException extends ValidationException
     );
 
 }
-

@@ -15,4 +15,3 @@ class ArrException extends ValidationException
     );
 
 }
-
