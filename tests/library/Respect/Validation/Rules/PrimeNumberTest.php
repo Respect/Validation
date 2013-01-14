@@ -26,7 +26,7 @@ class PrimeNumberTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForNotPrimeNumber
      * @expectedException Respect\Validation\Exceptions\PrimeNumberException
-     * 
+     *
      */
     public function testNotPrimeNumber($input)
     {
@@ -66,4 +66,3 @@ class PrimeNumberTest extends \PHPUnit_Framework_TestCase
     }
 
 }
-

@@ -6,13 +6,13 @@ class JsonTest extends \PHPUnit_Framework_TestCase
 {
 
     protected $json;
-    
+
     protected function setUp()
     {
         $this->json = new Json;
     }
-    
-    public function test_valid_jsons_should_return_true()
+
+    public function testValidJsonsShouldReturnTrue()
     {
         $this->assertTrue($this->json->validate('{"foo": "bar", "number":1}'));
         $this->assertTrue($this->json->check('{"foo": "bar", "number":1}'));
@@ -22,7 +22,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Respect\Validation\Exceptions\JSonException
      */
-    public function test_invalid_jsons_should_throw_JsonException()
+    public function testInvalidJsonsShouldThrowJsonException()
     {
         $this->assertFalse($this->json->validate("{foo:bar}"));
         $this->assertFalse($this->json->assert("{foo:bar}"));

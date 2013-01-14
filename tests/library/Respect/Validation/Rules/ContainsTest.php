@@ -8,7 +8,7 @@ class ContainsTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForContains
      */
-    public function test_strings_containing_expected_value_should_pass($start, $input)
+    public function testStringsContainingExpectedValueShouldPass($start, $input)
     {
         $v = new Contains($start);
         $this->assertTrue($v->validate($input));
@@ -20,7 +20,7 @@ class ContainsTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotContains
      * @expectedException Respect\Validation\Exceptions\ContainsException
      */
-    public function test_strings_NOT_contains_expected_value_shoud_NOT_pass($start, $input, $identical=false)
+    public function testStringsNotContainsExpectedValueShoudNotPass($start, $input, $identical=false)
     {
         $v = new Contains($start, $identical);
         $this->assertFalse($v->validate($input));

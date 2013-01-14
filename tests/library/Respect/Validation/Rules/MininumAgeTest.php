@@ -10,36 +10,36 @@ class MinimumAgeTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidDateValidMinimumAge
      */
-    public function test_valid_minimum_age_inside_bounds_should_pass($age, $format, $input)
+    public function testValidMinimumAgeInsideBoundsShouldPass($age, $format, $input)
     {
         $minimumAge = new MinimumAge($age, $format);
         $this->assertTrue($minimumAge->validate($input));
         $this->assertTrue($minimumAge->assert($input));
         $this->assertTrue($minimumAge->check($input));
     }
-    
+
     /**
      * @dataProvider providerForValidDateInvalidMinimumAge
      * @expectedException Respect\Validation\Exceptions\MinimumAgeException
      */
-    public function test_invalid_minimum_age_should_throw_exception($age, $format, $input)
+    public function testInvalidMinimumAgeShouldThrowException($age, $format, $input)
     {
         $minimumAge = new MinimumAge($age, $format);
         $this->assertFalse($minimumAge->validate($input));
         $this->assertFalse($minimumAge->assert($input));
     }
-    
+
     /**
      * @dataProvider providerForInvalidDate
      * @expectedException Respect\Validation\Exceptions\MinimumAgeException
      */
-    public function test_invalid_date_should_not_pass($age, $format, $input)
+    public function testInvalidDateShouldNotPass($age, $format, $input)
     {
         $minimumAge = new MinimumAge($age, $format);
         $this->assertFalse($minimumAge->validate($input));
         $this->assertFalse($minimumAge->assert($input));
     }
-    
+
     public function providerForValidDateValidMinimumAge()
     {
         return array(
@@ -48,7 +48,7 @@ class MinimumAgeTest extends \PHPUnit_Framework_TestCase
             array(18, 'Y-m-d', new \DateTime('1969-07-20')),
         );
     }
-    
+
     public function providerForValidDateInvalidMinimumAge()
     {
         return array(
@@ -57,7 +57,7 @@ class MinimumAgeTest extends \PHPUnit_Framework_TestCase
             array(18, 'Y-m-d', new \DateTime('2002-06-30')),
         );
     }
-    
+
     public function providerForInvalidDate()
     {
         return array(

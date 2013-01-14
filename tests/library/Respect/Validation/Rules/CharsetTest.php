@@ -8,7 +8,7 @@ class CharsetTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidCharset
      */
-    public function test_valid_data_with_charset_should_return_true($charset, $input)
+    public function testValidDataWithCharsetShouldReturnTrue($charset, $input)
     {
         $validator = new Charset($charset);
         $this->assertTrue($validator->validate($input));
@@ -18,7 +18,7 @@ class CharsetTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidCharset
      * @expectedException Respect\Validation\Exceptions\CharsetException
      */
-    public function test_invalid_charset_should_fail_and_throw_CharsetException($charset, $input)
+    public function testInvalidCharsetShouldFailAndThrowCharsetException($charset, $input)
     {
         $validator = new Charset($charset);
         $this->assertFalse($validator->validate($input));
@@ -29,7 +29,7 @@ class CharsetTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function test_invalid_constructor_params_should_throw_ComponentException_upon_instantiation($charset)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($charset)
     {
         $validator = new Charset($charset);
     }

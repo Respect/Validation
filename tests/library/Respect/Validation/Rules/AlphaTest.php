@@ -8,7 +8,7 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidAlpha
      */
-    public function test_valid_alphanumeric_chars_should_return_true($validAlpha, $aditional)
+    public function testValidAlphanumericCharsShouldReturnTrue($validAlpha, $aditional)
     {
         $validator = new Alpha($aditional);
         $this->assertTrue($validator->validate($validAlpha));
@@ -20,7 +20,7 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidAlpha
      * @expectedException Respect\Validation\Exceptions\AlphaException
      */
-    public function test_invalid_alphanumeric_chars_should_throw_AlphaException($invalidAlpha, $aditional)
+    public function testInvalidAlphanumericCharsShouldThrowAlphaException($invalidAlpha, $aditional)
     {
         $validator = new Alpha($aditional);
         $this->assertFalse($validator->validate($invalidAlpha));
@@ -31,7 +31,7 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function test_invalid_constructor_params_should_throw_ComponentExeption($aditional)
+    public function testInvalidConstructorParamsShouldThrowComponentExeption($aditional)
     {
         $validator = new Alpha($aditional);
     }

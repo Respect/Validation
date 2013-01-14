@@ -16,7 +16,7 @@ class CreditCardTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForCreditCard
      *
      */
-    public function test_valid_creditCards_should_return_True($input)
+    public function testValidCreditCardsShouldReturnTrue($input)
     {
         $this->assertTrue($this->creditCardValidator->validate($input));
         $this->assertTrue($this->creditCardValidator->assert($input));
@@ -27,7 +27,7 @@ class CreditCardTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotCreditCard
      * @expectedException Respect\Validation\Exceptions\CreditCardException
      */
-    public function test_invalid_creditCards_should_throw_CreditCardException($input)
+    public function testInvalidCreditCardsShouldThrowCreditCardException($input)
     {
         $this->assertFalse($this->creditCardValidator->validate($input));
         $this->assertFalse($this->creditCardValidator->assert($input));

@@ -26,7 +26,7 @@ class PerfectSquareTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForNotPerfectSquare
      * @expectedException Respect\Validation\Exceptions\PerfectSquareException
-     * 
+     *
      */
     public function testNotPerfectSquare($input)
     {
@@ -67,4 +67,3 @@ class PerfectSquareTest extends \PHPUnit_Framework_TestCase
     }
 
 }
-

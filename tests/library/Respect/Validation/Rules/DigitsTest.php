@@ -8,7 +8,7 @@ class DigitsTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidDigits
      */
-    public function test_valid_data_with_digits_should_return_true($validDigits, $aditional='')
+    public function testValidDataWithDigitsShouldReturnTrue($validDigits, $aditional='')
     {
         $validator = new Digits($aditional);
         $this->assertTrue($validator->validate($validDigits));
@@ -18,7 +18,7 @@ class DigitsTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidDigits
      * @expectedException Respect\Validation\Exceptions\DigitsException
      */
-    public function test_invalid_digits_should_fail_and_throw_DigitsException($invalidDigits, $aditional='')
+    public function testInvalidDigitsShouldFailAndThrowDigitsException($invalidDigits, $aditional='')
     {
         $validator = new Digits($aditional);
         $this->assertFalse($validator->validate($invalidDigits));
@@ -29,7 +29,7 @@ class DigitsTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function test_invalid_constructor_params_should_throw_ComponentException_upon_instantiation($aditional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
     {
         $validator = new Digits($aditional);
     }

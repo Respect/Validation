@@ -16,7 +16,7 @@ class MacAddressTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForMacAddress
      *
      */
-    public function test_valid_macaddresses_should_return_True($input)
+    public function testValidMacaddressesShouldReturnTrue($input)
     {
         $this->assertTrue($this->macaddressValidator->validate($input));
         $this->assertTrue($this->macaddressValidator->assert($input));
@@ -27,7 +27,7 @@ class MacAddressTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotMacAddress
      * @expectedException Respect\Validation\Exceptions\MacAddressException
      */
-    public function test_invalid_macaddress_should_throw_MacAddressException($input)
+    public function testInvalidMacaddressShouldThrowMacAddressException($input)
     {
         $this->assertFalse($this->macaddressValidator->validate($input));
         $this->assertFalse($this->macaddressValidator->assert($input));

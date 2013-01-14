@@ -32,7 +32,7 @@ class OddTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->object->validate($input));
         $this->assertFalse($this->object->assert($input));
     }
-    
+
     public function providerForOdd()
     {
         return array(
@@ -49,8 +49,8 @@ class OddTest extends \PHPUnit_Framework_TestCase
             array(-2),
             array(-0),
             array(0),
-            array(32),            
+            array(32),
         );
     }
-    
+
 }
