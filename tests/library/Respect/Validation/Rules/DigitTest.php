@@ -2,27 +2,27 @@
 
 namespace Respect\Validation\Rules;
 
-class DigitsTest extends \PHPUnit_Framework_TestCase
+class DigitTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * @dataProvider providerForValidDigits
+     * @dataProvider providerForValidDigit
      */
-    public function testValidDataWithDigitsShouldReturnTrue($validDigits, $aditional='')
+    public function testValidDataWithDigitsShouldReturnTrue($validDigit, $aditional='')
     {
-        $validator = new Digits($aditional);
-        $this->assertTrue($validator->validate($validDigits));
+        $validator = new Digit($aditional);
+        $this->assertTrue($validator->validate($validDigit));
     }
 
     /**
-     * @dataProvider providerForInvalidDigits
-     * @expectedException Respect\Validation\Exceptions\DigitsException
+     * @dataProvider providerForInvalidDigit
+     * @expectedException Respect\Validation\Exceptions\DigitException
      */
-    public function testInvalidDigitsShouldFailAndThrowDigitsException($invalidDigits, $aditional='')
+    public function testInvalidDigitsShouldFailAndHhrowDigitException($invalidDigit, $aditional='')
     {
-        $validator = new Digits($aditional);
-        $this->assertFalse($validator->validate($invalidDigits));
-        $this->assertFalse($validator->assert($invalidDigits));
+        $validator = new Digit($aditional);
+        $this->assertFalse($validator->validate($invalidDigit));
+        $this->assertFalse($validator->assert($invalidDigit));
     }
 
     /**
@@ -31,7 +31,7 @@ class DigitsTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
     {
-        $validator = new Digits($aditional);
+        $validator = new Digit($aditional);
     }
 
     public function providerForInvalidParams()
@@ -43,7 +43,7 @@ class DigitsTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForValidDigits()
+    public function providerForValidDigit()
     {
         return array(
             array(165),
@@ -57,7 +57,7 @@ class DigitsTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForInvalidDigits()
+    public function providerForInvalidDigit()
     {
         return array(
             array(null),
