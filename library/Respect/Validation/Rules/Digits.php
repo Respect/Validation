@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Rules;
 
-class Digits extends Alpha
+class Digits extends AbstractCharGroup
 {
 
     public $additionalChars = '';
