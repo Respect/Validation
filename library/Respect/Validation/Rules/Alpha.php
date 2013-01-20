@@ -7,15 +7,14 @@ use Respect\Validation\Exceptions\ComponentException;
 class Alpha extends AbstractRule
 {
 
-    public $additionalChars = '';
-    public $stringFormat = '/^(\s|[a-zA-Z])*$/';
+    public $additionalChars = "\n\r\t ";
 
     public function __construct($additionalChars='')
     {
         if (!is_string($additionalChars)) {
             throw new ComponentException('Invalid list of additional characters to be loaded');
         }
-        $this->additionalChars = $additionalChars;
+        $this->additionalChars .= $additionalChars;
     }
 
     public function validate($input)
@@ -28,7 +27,8 @@ class Alpha extends AbstractRule
         $cleanInput = str_replace(str_split($this->additionalChars), '', $input);
 
         return ($cleanInput !== $input && $cleanInput === '')
-               || preg_match($this->stringFormat, $cleanInput);
+               || ctype_alpha($cleanInput)
+               || $cleanInput === '';
     }
 
 }
