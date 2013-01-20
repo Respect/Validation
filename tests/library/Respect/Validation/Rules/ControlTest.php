@@ -18,7 +18,7 @@ class ControlTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidControl
      * @expectedException Respect\Validation\Exceptions\ControlException
      */
-    public function testInvalidControlShouldFailAndThrowDigitsException($invalidControl, $aditional='')
+    public function testInvalidControlShouldFailAndThrowControlException($invalidControl, $aditional='')
     {
         $validator = new Control($aditional);
         $this->assertFalse($validator->validate($invalidControl));
