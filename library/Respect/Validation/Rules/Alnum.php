@@ -2,10 +2,10 @@
 
 namespace Respect\Validation\Rules;
 
-class Alnum extends Alpha
+class Alnum extends AbstractCtypeRule
 {
 
-    public $additionalChars = '';
-    public $stringFormat = '/^(\s|[a-zA-Z0-9])*$/';
+    protected $ctypeFunc = 'ctype_alnum';
+    protected $acceptEmptyString = true;
 
 }

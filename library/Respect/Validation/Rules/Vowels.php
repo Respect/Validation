@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Rules;
 
-class Vowels extends Alpha
+class Vowels extends AbstractCharGroup
 {
 
     public $additionalChars = '';
