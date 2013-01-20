@@ -46,7 +46,6 @@ class ControlTest extends \PHPUnit_Framework_TestCase
     public function providerForValidControl()
     {
         return array(
-            array(''),
             array("\n"),
             array("\r"),
             array("\t"),
@@ -58,6 +57,7 @@ class ControlTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidControl()
     {
         return array(
+            array(''),
             array('16-50'),
             array('a'),
             array(' '),

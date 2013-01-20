@@ -8,7 +8,8 @@ class AbstractCtypeRule extends AbstractRule
 {
 
     public $additionalChars = "\n\r\t ";
-    protected $ctype_func = '';
+    protected $ctypeFunc = '';
+    protected $acceptEmptyString = false;
 
     public function __construct($additionalChars='')
     {
@@ -27,9 +28,9 @@ class AbstractCtypeRule extends AbstractRule
         $input = (string) $input;
         $cleanInput = str_replace(str_split($this->additionalChars), '', $input);
 
-        return ($cleanInput !== $input && $cleanInput === '')
-               || call_user_func($this->ctype_func, $cleanInput)
-               || $cleanInput === '';
+        return ($cleanInput !== $input && $cleanInput === '' && $this->acceptEmptyString)
+               || ($this->acceptEmptyString && $cleanInput === '')
+               || call_user_func($this->ctypeFunc, $cleanInput);
     }
 
 }
