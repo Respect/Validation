@@ -8,6 +8,7 @@ class Alpha extends AbstractRule
 {
 
     public $additionalChars = "\n\r\t ";
+    protected $ctype_func = 'ctype_alpha';
 
     public function __construct($additionalChars='')
     {
@@ -27,7 +28,7 @@ class Alpha extends AbstractRule
         $cleanInput = str_replace(str_split($this->additionalChars), '', $input);
 
         return ($cleanInput !== $input && $cleanInput === '')
-               || ctype_alpha($cleanInput)
+               || call_user_func($this->ctype_func, $cleanInput)
                || $cleanInput === '';
     }
 
