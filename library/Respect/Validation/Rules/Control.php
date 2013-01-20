@@ -6,6 +6,6 @@ class Control extends AbstractCtypeRule
 {
 
     public $additionalChars = '';
-    protected $ctype_func = 'ctype_cntrl';
+    protected $ctypeFunc = 'ctype_cntrl';
 
 }

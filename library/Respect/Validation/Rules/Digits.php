@@ -2,10 +2,10 @@
 
 namespace Respect\Validation\Rules;
 
-class Digits extends AbstractCharGroup
+class Digits extends AbstractCtypeRule
 {
 
-    public $additionalChars = '';
-    public $stringFormat = '/^\s*[0-9]+([0-9]|\s)*$/';
+    public $additionalChars = "\n\r\t ";
+    protected $ctypeFunc = 'ctype_digit';
 
 }
