@@ -181,7 +181,7 @@ composer-validate: .check-foundation
 	php composer.phar validate -v
 
 composer-install: .check-foundation
-	@echo "Running composer install, this will create a vendor folder and congigure autoloader."
+	@echo "Running composer install, this will create a vendor folder and configure autoloader."
 	php composer.phar install -v
 
 composer-update: .check-foundation
