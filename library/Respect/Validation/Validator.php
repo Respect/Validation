@@ -79,6 +79,7 @@ use Respect\Validation\Rules\AllOf;
  * @method \Respect\Validation\Validator vowels()
  * @method \Respect\Validation\Validator when(Validatable $if, Validatable $then, Validatable $when)
  * @method \Respect\Validation\Validator zend(mixed $validator, array $params = null)
+ * @method \Respect\Validation\Validator today(string $format = null)
  */
 class Validator extends AllOf
 {
