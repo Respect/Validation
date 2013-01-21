@@ -26,8 +26,7 @@ class AbstractCharGroup extends AbstractRule
         $input = (string) $input;
         $cleanInput = str_replace(str_split($this->additionalChars), '', $input);
 
-        return ($cleanInput !== $input && $cleanInput === '')
-               || preg_match($this->stringFormat, $cleanInput);
+        return $cleanInput === '' || preg_match($this->stringFormat, $cleanInput);
     }
 
 }
