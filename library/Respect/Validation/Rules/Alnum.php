@@ -6,6 +6,5 @@ class Alnum extends AbstractCtypeRule
 {
 
     protected $ctypeFunc = 'ctype_alnum';
-    protected $acceptEmptyString = true;
 
 }

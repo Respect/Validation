@@ -46,6 +46,7 @@ class PunctuationTest extends \PHPUnit_Framework_TestCase
     public function providerForValidPunctuation()
     {
         return array(
+            array(''),
             array('.'),
             array(',;:'),
             array('-@#$*'),
@@ -56,7 +57,6 @@ class PunctuationTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidPunctuation()
     {
         return array(
-            array(''),
             array('16-50'),
             array('a'),
             array(' '),

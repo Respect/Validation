@@ -80,22 +80,22 @@ class OneOfTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\HexaException
+     * @expectedException Respect\Validation\Exceptions\XdigitsException
      */
     public function testInvalidCheck()
     {
-        $o = new OneOf(new Hexa, new Alnum);
+        $o = new OneOf(new Xdigits, new Alnum);
         $this->assertFalse($o->validate(-10));
         $this->assertFalse($o->check(-10));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\HexaException
+     * @expectedException Respect\Validation\Exceptions\XdigitsException
      */
     public function testShorcutInvalidCheck()
     {
-        $hexa = new Hexa;
-        $o = $hexa->addOr(new Alnum);
+        $xdigits = new Xdigits;
+        $o = $xdigits->addOr(new Alnum);
         $this->assertFalse($o->validate(-10));
         $this->assertFalse($o->check(-10));
     }

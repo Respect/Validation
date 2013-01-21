@@ -2,10 +2,12 @@
 
 namespace Respect\Validation\Rules;
 
-class Vowels extends AbstractCharGroup
+class Vowels extends AbstractRegexRule
 {
 
-    public $additionalChars = '';
-    public $stringFormat = '/^(\s|[aeiouAEIOU])*$/';
+    protected function getPregFormat()
+    {
+        return '/^(\s|[aeiouAEIOU])*$/';
+    }
 
 }

@@ -5,74 +5,53 @@ namespace Respect\Validation\Rules;
 class XdigitsTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * @dataProvider providerForValidXdigits
-     */
-    public function testValidDataWithXdigitsShouldReturnTrue($validXdigits, $aditional='')
+    protected $xdigitsValidator;
+
+    protected function setUp()
     {
-        $validator = new Xdigits($aditional);
-        $this->assertTrue($validator->validate($validXdigits));
+        $this->xdigitsValidator = new Xdigits;
     }
 
     /**
-     * @dataProvider providerForInvalidXdigits
+     * @dataProvider providerForXdigits
+     */
+    public function testValidateValidHexasdecimalDigits($input)
+    {
+        $this->assertTrue($this->xdigitsValidator->assert($input));
+        $this->assertTrue($this->xdigitsValidator->check($input));
+        $this->assertTrue($this->xdigitsValidator->validate($input));
+    }
+
+    /**
+     * @dataProvider providerForNotXdigits
      * @expectedException Respect\Validation\Exceptions\XdigitsException
      */
-    public function testInvalidXdigitsShouldFailAndThrowXdigitsException($invalidXdigits, $aditional='')
+    public function testInvalidHexadecimalDigitsShouldThrowXdigitsException($input)
     {
-        $validator = new Xdigits($aditional);
-        $this->assertFalse($validator->validate($invalidXdigits));
-        $this->assertFalse($validator->assert($invalidXdigits));
+        $this->assertFalse($this->xdigitsValidator->validate($input));
+        $this->assertFalse($this->xdigitsValidator->assert($input));
     }
 
-    /**
-     * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
-     */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
-    {
-        $validator = new Xdigits($aditional);
-    }
-
-    public function providerForInvalidParams()
+    public function providerForXdigits()
     {
         return array(
-            array(new \stdClass),
-            array(array()),
-            array(0x2)
+            array('FFF'),
+            array('15'),
+            array('DE12FA'),
+            array('1234567890abcdef'),
+            array(0x123),
         );
     }
 
-    public function providerForValidXdigits()
-    {
-        return array(
-            array(165),
-            array(1650),
-            array('01650'),
-            array('165'),
-            array('1650'),
-            array('16 50'),
-            array('deadbeef'),
-            array('DEADBEEF'),
-            array("\n5\t"),
-            array('a'),
-            array('16-50', '-'),
-        );
-    }
-
-    public function providerForInvalidXdigits()
+    public function providerForNotXdigits()
     {
         return array(
             array(null),
-            array('16-50'),
+            array('j'),
             array(' '),
             array('Foo'),
             array(''),
-            array('g'),
-            array("\n\t"),
-            array('12.1'),
-            array('-12'),
-            array(-12),
+            array('1.5'),
         );
     }
 
