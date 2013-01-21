@@ -46,10 +46,12 @@ class GraphicalTest extends \PHPUnit_Framework_TestCase
     public function providerForValidGraphical()
     {
         return array(
+            array(''),
             array('LKA#@%.54'),
             array('foobar'),
             array('16-50'),
-            array('foobar'),
+            array('123'),
+            array('#$%&*_'),
         );
     }
 
@@ -57,10 +59,10 @@ class GraphicalTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(null),
-            array(''),
             array("foo\nbar"),
             array("foo\tbar"),
             array('foo bar'),
+            array(' '),
         );
     }
 
