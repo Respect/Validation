@@ -4,11 +4,12 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 
-class AbstractCharGroup extends AbstractRule
+abstract class AbstractRegexRule extends AbstractRule
 {
 
     public $additionalChars = '';
-    public $stringFormat = '';
+
+    abstract protected function getPregFormat();
 
     public function __construct($additionalChars='')
     {
@@ -26,7 +27,7 @@ class AbstractCharGroup extends AbstractRule
         $input = (string) $input;
         $cleanInput = str_replace(str_split($this->additionalChars), '', $input);
 
-        return $cleanInput === '' || preg_match($this->stringFormat, $cleanInput);
+        return $cleanInput === '' || preg_match($this->getPregFormat(), $cleanInput);
     }
 
 }
