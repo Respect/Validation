@@ -9,7 +9,13 @@ class HexaTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
+        set_error_handler(function () { }, E_USER_DEPRECATED);
         $this->hexaValidator = new Hexa;
+    }
+
+    protected function tearDown()
+    {
+        restore_error_handler();
     }
 
     /**
