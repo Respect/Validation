@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Rules;
 
-class Consonants extends Alpha
+class Consonants extends AbstractCharGroup
 {
 
     public $additionalChars = '';
