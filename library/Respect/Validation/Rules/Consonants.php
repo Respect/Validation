@@ -2,10 +2,12 @@
 
 namespace Respect\Validation\Rules;
 
-class Consonants extends AbstractCharGroup
+class Consonants extends AbstractRegexRule
 {
 
-    public $additionalChars = '';
-    public $stringFormat = '/^(\s|[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z])*$/';
+    protected function getPregFormat()
+    {
+        return '/^(\s|[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z])*$/';
+    }
 
 }

@@ -2,17 +2,15 @@
 
 namespace Respect\Validation\Exceptions;
 
-class XdigitsException extends AlphaException
+class XdigitsException extends ValidationException
 {
 
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
-            self::STANDARD => '{{name}} must contain only hexadecimal digits (0-9a-fA-F)',
-            self::EXTRA => '{{name}} must contain only hexadecimal digits (0-9a-fA-F) and "{{additionalChars}}"'
+            self::STANDARD => '{{name}} must be a hexadecimal number',
         ),
         self::MODE_NEGATIVE => array(
-            self::STANDARD => '{{name}} must not contain hexadecimal digits (0-9a-fA-F)',
-            self::EXTRA => '{{name}} must not contain digits (0-9a-fA-F) or "{{additionalChars}}"'
+            self::STANDARD => '{{name}} must not be a hexadecimal number',
         )
     );
 

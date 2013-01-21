@@ -2,10 +2,12 @@
 
 namespace Respect\Validation\Rules;
 
-class Xdigits extends AbstractCtypeRule
+class Xdigits extends AbstractRule
 {
 
-    public $additionalChars = "\n\r\t ";
-    protected $ctypeFunc = 'ctype_xdigit';
+    public function validate($input)
+    {
+        return ctype_xdigit($input);
+    }
 
 }
