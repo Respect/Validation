@@ -157,13 +157,14 @@ Reference
   * v::bool()
   * v::date()
   * v::float()
-  * v::hexa()
+  * v::hexa() *(deprecated)*
   * v::instance()
   * v::int()
   * v::nullValue()
   * v::numeric()
   * v::object()
   * v::string()
+  * v::xdigits()
 
 ### Generics
 
@@ -187,7 +188,7 @@ Reference
   * v::bool()
   * v::even()
   * v::float()
-  * v::hexa()
+  * v::hexa() *(deprecated)*
   * v::int()
   * v::multiple()
   * v::negative()
@@ -198,6 +199,7 @@ Reference
   * v::positive()
   * v::primeNumber()
   * v::roman()
+  * v::xdigits()
 
 ### String 
 
@@ -207,20 +209,26 @@ Reference
   * v::charset()
   * v::consonants()
   * v::contains()
+  * v::control()
   * v::digits()
   * v::endsWith()
   * v::in()
+  * v::graphical()
   * v::length()
   * v::lowercase()
   * v::notEmpty()
   * v::noWhitespace()
+  * v::printable()
+  * v::punctuation()
   * v::regex()
   * v::slug()
+  * v::space()
   * v::startsWith()
   * v::uppercase()
   * v::uppercase()
   * v::version()
   * v::vowels()
+  * v::xdigits()
 
 ### Arrays
 
@@ -497,27 +505,6 @@ Validates if a string is in a specific charset.
 
 The array format is a logic OR, not AND.
 
-#### v::countryCode
-
-Validates an ISO country code like US or BR.
-
-    v::countryCode('BR'); //true
-
-See also:
-
-  * v::tld() - Validates a top level domain
-
-#### v::cnh()
-
-Validates a Brazillian driver's license.
-
-    v::cnh()->validate('02650306461');
-
-See also:
-
-  * v::cnpj()
-  * v::cpf()
-
 #### v::cnpj()
 
 Validates the Brazillian CNPJ number. Ignores non-digit chars, so
@@ -563,6 +550,40 @@ See also:
   * v::startsWith()
   * v::endsWith()
   * v::in()
+
+#### v::control
+#### v::control(string $additionalChars)
+
+This is similar to `v::alnum()`, but only accepts control characters:
+
+    v::control()->validate("\n\r\t"); //true
+
+See also:
+
+  * v::alnum()     - a-z0-9, empty or whitespace only
+  * v::printable() - all printable characters
+  * v::space()     - empty or whitespace only
+
+#### v::countryCode
+
+Validates an ISO country code like US or BR.
+
+    v::countryCode('BR'); //true
+
+See also:
+
+  * v::tld() - Validates a top level domain
+
+#### v::cnh()
+
+Validates a Brazillian driver's license.
+
+    v::cnh()->validate('02650306461');
+
+See also:
+
+  * v::cnpj()
+  * v::cpf()
 
 #### v::cpf()
 
@@ -760,11 +781,27 @@ Validates a floating point number.
     v::float()->validate(1.5); //true
     v::float()->validate('1e5'); //true
 
-#### v::hexa()
+#### v::graphical()
+#### v::graphical(string $additionalChars)
 
-Validates an hexadecimal number
+Validates all characters that are graphically represented.
+
+    v::graphical()->validate('LKM@#$%4;'); //true
+
+See also:
+
+  * v::printable()
+
+#### v::hexa() *(deprecated)*
+
+Validates an hexadecimal number. It's now deprecated, xdigits should be used
+instead.
 
     v::hexa()->validate('AF12'); //true
+
+See also:
+
+  * v::xdigits()
 
 #### v::in($haystack)
 #### v::in($haystack, boolean $identical=false)
@@ -1182,6 +1219,30 @@ See also:
 Validates a prime number
 
     v::primeNumber()->validate(7); //true
+    
+#### v::printable()
+#### v::printable(string $additionalChars)
+
+Similar to `v::graphical` but accepts whitespace.
+
+    v::graphical()->validate('LMKA0$% _123'); //true
+
+See also:
+
+  * v::graphical()
+  
+#### v::punctuation()
+#### v::punctuation(string $additionalChars)
+
+Accepts only punctuation characters:
+
+    v::punctuation()->validate('&,.;[]'); //true
+
+See also:
+
+  * v::control()
+  * v::graphical()
+  * v::printable()
 
 #### v::regex($regex)
 
@@ -1220,6 +1281,17 @@ Validates slug-like strings:
     v::slug()->validate('my-wordpress-title'); //true
     v::slug()->validate('my-wordpress--title'); //false
     v::slug()->validate('my-wordpress-title-'); //false
+
+#### v::space()
+#### v::space(string $additionalChars)
+
+Accepts only whitespace:
+
+    v::space()->validate('    '); //true
+
+See also:
+
+  * v::control()
 
 #### v::startsWith($value)
 #### v::startsWith($value, boolean $identical=false)
@@ -1315,6 +1387,21 @@ See also:
   * v::allOf()
   * v::oneOf()
   * v::noneOf()
+
+#### v::xdigits()
+
+Accepts an hexadecimal number:
+
+    v::xdigits()->validate('abc123'); //true
+
+Notice, however, that it doesn't accept numbers starting with 0x:
+
+    v::xdigits()->validate('0x1f'); //false
+
+See also:
+
+  * v::digits()
+  * v::alnum()
 
 #### v::zend($zendValidator)
 
