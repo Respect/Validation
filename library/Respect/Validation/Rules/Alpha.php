@@ -4,7 +4,7 @@ namespace Respect\Validation\Rules;
 
 class Alpha extends AbstractCtypeRule
 {
-
-    protected $ctypeFunc = 'ctype_alpha';
-
+    protected function ctypeFunction($input) {
+        return ctype_alpha($input);
+    }
 }
