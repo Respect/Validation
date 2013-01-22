@@ -1,7 +1,7 @@
 <?php
 namespace Respect\Validation\Rules;
 
-class Digits extends AbstractCtypeRule
+class Digit extends AbstractCtypeRule
 {
     public $additionalChars = "\n\r\t ";
     protected function ctypeFunction($input)
