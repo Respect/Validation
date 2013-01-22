@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class PositiveTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $object;
 
     protected function setUp()
@@ -58,5 +56,5 @@ class PositiveTest extends \PHPUnit_Framework_TestCase
             array(-10),
         );
     }
-
 }
+

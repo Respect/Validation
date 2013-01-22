@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class ControlTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidControl
      */
@@ -68,5 +66,5 @@ class ControlTest extends \PHPUnit_Framework_TestCase
             array('alganet'),
         );
     }
-
 }
+

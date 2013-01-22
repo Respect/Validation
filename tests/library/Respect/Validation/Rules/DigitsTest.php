@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class DigitsTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidDigits
      */
@@ -72,5 +70,5 @@ class DigitsTest extends \PHPUnit_Framework_TestCase
             array(-12),
         );
     }
-
 }
+

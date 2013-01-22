@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class ConsonantsTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidConsonants
      */
@@ -73,5 +71,5 @@ class ConsonantsTest extends \PHPUnit_Framework_TestCase
             array('basic'),
         );
     }
-
 }
+

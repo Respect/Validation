@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class VowelsTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidVowels
      */
@@ -71,5 +69,5 @@ class VowelsTest extends \PHPUnit_Framework_TestCase
             array('basic'),
         );
     }
-
 }
+

@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class JsonTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $json;
 
     protected function setUp()
@@ -28,3 +26,4 @@ class JsonTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->json->assert("{foo:bar}"));
     }
 }
+

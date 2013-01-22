@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class Hexa extends AbstractRule
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -16,5 +14,5 @@ class Hexa extends AbstractRule
     {
         return ctype_xdigit($input);
     }
-
 }
+

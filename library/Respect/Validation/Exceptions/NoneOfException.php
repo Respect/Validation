@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class NoneOfException extends AbstractNestedException
 {
-
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => 'None of these rules must pass for {{name}}',
@@ -13,5 +11,5 @@ class NoneOfException extends AbstractNestedException
             self::STANDARD => 'All of these rules must pass for {{name}}',
         )
     );
-
 }
+

@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class Graphical extends AbstractCtypeRule
@@ -12,3 +11,4 @@ class Graphical extends AbstractCtypeRule
         return ctype_graph($input);
     }
 }
+

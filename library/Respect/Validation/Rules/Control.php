@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class Control extends AbstractCtypeRule
@@ -12,3 +11,4 @@ class Control extends AbstractCtypeRule
         return ctype_cntrl($input);
     }
 }
+

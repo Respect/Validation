@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class SpaceTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidSpace
      */
@@ -67,5 +65,5 @@ class SpaceTest extends \PHPUnit_Framework_TestCase
             array('_'),
         );
     }
-
 }
+

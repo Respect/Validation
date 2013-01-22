@@ -1,12 +1,10 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use DateTime;
 
 class MinimumAgeTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidDateValidMinimumAge
      */
@@ -66,5 +64,5 @@ class MinimumAgeTest extends \PHPUnit_Framework_TestCase
             array(18, 'y-m-d', '2002-06-30'),
         );
     }
-
 }
+

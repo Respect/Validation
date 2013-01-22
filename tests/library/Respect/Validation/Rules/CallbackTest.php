@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class CallbackTest extends \PHPUnit_Framework_TestCase
 {
-
     public function thisIsASampleCallbackUsedInsideThisTest()
     {
         return true;
@@ -49,5 +47,5 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
         $v = new Callback(new \stdClass);
         $this->assertTrue($v->assert('w poiur'));
     }
-
 }
+

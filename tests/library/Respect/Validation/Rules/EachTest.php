@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class EachTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testValidatorShouldPassIfEveryArrayItemPass()
     {
         $v = new Each(new NotEmpty());
@@ -81,5 +79,5 @@ class EachTest extends \PHPUnit_Framework_TestCase
         $result = $v->assert(123);
         $this->assertFalse($result);
     }
-
 }
+

@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class GraphicalException extends AlphaException
 {
-
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => '{{name}} must contain only graphical characters',
@@ -15,5 +13,5 @@ class GraphicalException extends AlphaException
             self::EXTRA => '{{name}} must not contain graphical characters or "{{additionalChars}}"'
         )
     );
-
 }
+

@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class Punctuation extends AbstractCtypeRule
@@ -12,3 +11,4 @@ class Punctuation extends AbstractCtypeRule
         return ctype_punct($input);
     }
 }
+

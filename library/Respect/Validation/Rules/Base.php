@@ -1,12 +1,10 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\BaseException;
 
 class Base extends AbstractRule
 {
-
     public $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     public $base;
 
@@ -29,5 +27,5 @@ class Base extends AbstractRule
 
         return (boolean) preg_match("@^[$valid]+$@", (string) $input);
     }
-
 }
+

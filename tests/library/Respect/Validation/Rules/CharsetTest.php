@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class CharsetTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidCharset
      */
@@ -69,5 +67,5 @@ class CharsetTest extends \PHPUnit_Framework_TestCase
             array('ASCII', 'açaí')
         );
     }
-
 }
+

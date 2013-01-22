@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use ReflectionClass;
@@ -7,7 +6,6 @@ use Symfony\Component\Validator\ConstraintViolation;
 
 class Sf extends AbstractRule
 {
-
     public $name;
     protected $constraint;
     protected $messages = array();
@@ -50,5 +48,5 @@ class Sf extends AbstractRule
 
         return $this->validator->isValid($input, $this->constraint);
     }
-
 }
+

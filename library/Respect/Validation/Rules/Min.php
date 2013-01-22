@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class Min extends AbstractRule
 {
-
     public $inclusive;
     public $minValue;
 
@@ -22,5 +20,5 @@ class Min extends AbstractRule
             return $input > $this->minValue;
         }
     }
-
 }
+

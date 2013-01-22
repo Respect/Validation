@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use DateTime;
@@ -22,5 +21,5 @@ class LeapYear extends AbstractRule
 
         return (bool) date('L', $date);
     }
-
 }
+

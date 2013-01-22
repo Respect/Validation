@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class Printable extends AbstractCtypeRule
@@ -12,3 +11,4 @@ class Printable extends AbstractCtypeRule
         return ctype_print($input);
     }
 }
+

@@ -1,12 +1,10 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use DateTime;
 
 class LeapYearTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $leapYearValidator;
 
     protected function setUp()
@@ -33,3 +31,4 @@ class LeapYearTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->leapYearValidator->validate(array()));
     }
 }
+

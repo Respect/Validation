@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class BetweenException extends AbstractNestedException
@@ -39,5 +38,5 @@ class BetweenException extends AbstractNestedException
             return static::BOTH;
         }
     }
-
 }
+

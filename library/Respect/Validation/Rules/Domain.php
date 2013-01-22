@@ -1,12 +1,10 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
 
 class Domain extends AbstractComposite
 {
-
     protected $ip;
     protected $whitespace;
     protected $dot;
@@ -35,7 +33,7 @@ class Domain extends AbstractComposite
         if ($this->ip->validate($input)) {
             return true;
         }
-            
+
         if (!$this->whitespace->validate($input)
             || !$this->dot->validate($input)
             || !$this->domainLength->validate($input)) {
@@ -46,11 +44,11 @@ class Domain extends AbstractComposite
         if (count($parts) < 2) {
             return false;
         }
-            
+
         if (!$this->end->validate(array_pop($parts))) {
             return false;
         }
-            
+
         foreach ($parts as $p) {
             if (!$this->otherParts->validate($p)) {
                 return false;
@@ -78,7 +76,7 @@ class Domain extends AbstractComposite
         if (count($parts) >= 2) {
             $this->collectAssertException($e, $this->end, array_pop($parts));
         }
-            
+
         foreach ($parts as $p) {
             $this->collectAssertException($e, $this->otherParts, $p);
         }
@@ -115,12 +113,12 @@ class Domain extends AbstractComposite
         if (count($parts) >= 2) {
             $this->end->check(array_pop($parts));
         }
-            
+
         foreach ($parts as $p) {
             $this->otherParts->check($p);
         }
 
         return true;
     }
-
 }
+

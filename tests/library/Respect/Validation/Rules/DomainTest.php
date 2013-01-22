@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class DomainTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $object;
 
     protected function setUp()
@@ -60,5 +58,5 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             array('1.2.3.256'),
         );
     }
-
 }
+

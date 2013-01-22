@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class InTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForIn
      *
@@ -50,5 +48,5 @@ class InTest extends \PHPUnit_Framework_TestCase
             array('1', array(1, 2, 3), true),
         );
     }
-
 }
+

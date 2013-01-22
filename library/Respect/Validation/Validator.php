@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation;
 
 use ReflectionClass;
@@ -156,3 +155,4 @@ class Validator extends AllOf
         return $ref->newInstanceArgs(func_get_args());
     }
 }
+

@@ -1,12 +1,10 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 
 class Callback extends AbstractRule
 {
-
     public $callback;
 
     public function __construct($callback)
@@ -22,5 +20,5 @@ class Callback extends AbstractRule
     {
         return (bool) call_user_func($this->callback, $input);
     }
-
 }
+

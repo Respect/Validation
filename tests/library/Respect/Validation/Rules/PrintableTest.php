@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class PrintableTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidPrintable
      */
@@ -65,5 +63,5 @@ class PrintableTest extends \PHPUnit_Framework_TestCase
             array("foo\tbar"),
         );
     }
-
 }
+

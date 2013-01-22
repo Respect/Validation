@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class EmailTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidEmail
      */
@@ -53,5 +51,5 @@ class EmailTest extends \PHPUnit_Framework_TestCase
             array('.test@test.com')
         );
     }
-
 }
+

@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class KeyTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testArrayWithPresentKeyShouldReturnTrue()
     {
         $validator = new Key('bar');
@@ -59,5 +57,5 @@ class KeyTest extends \PHPUnit_Framework_TestCase
         $obj = array();
         $this->assertTrue($validator->validate($obj));
     }
-
 }
+

@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validatable;
@@ -7,7 +6,6 @@ use Respect\Validation\Exceptions\ValidationException;
 
 abstract class AbstractRule implements Validatable
 {
-
     protected $name;
     protected $template = null;
 
@@ -89,5 +87,5 @@ abstract class AbstractRule implements Validatable
 
         return new $exceptionFQN;
     }
-
 }
+

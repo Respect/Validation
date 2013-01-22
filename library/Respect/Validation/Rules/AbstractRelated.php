@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validatable;
@@ -7,7 +6,6 @@ use Respect\Validation\Exceptions\ValidationException;
 
 abstract class AbstractRelated extends AbstractRule implements Validatable
 {
-
     public $mandatory = true;
     public $reference = '';
     public $validator;
@@ -69,5 +67,5 @@ abstract class AbstractRelated extends AbstractRule implements Validatable
 
         return (is_null($this->validator) || $this->validator->validate($this->getReferenceValue($input)));
     }
-
 }
+

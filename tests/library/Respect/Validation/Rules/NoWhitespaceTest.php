@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $noWhitespaceValidator;
 
     protected function setUp()
@@ -35,7 +33,6 @@ class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->noWhitespaceValidator->validate("w\npoiur"));
         $this->assertFalse($this->noWhitespaceValidator->assert("w\npoiur"));
     }
-
 }
 /**
  * LICENSE
@@ -69,3 +66,4 @@ class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
+

@@ -1,12 +1,10 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 
 class Charset extends AbstractRule
 {
-
     public $charset = null;
 
     public function __construct($charset)
@@ -31,5 +29,5 @@ class Charset extends AbstractRule
 
         return in_array($detectedEncoding, $this->charset, true);
     }
-
 }
+

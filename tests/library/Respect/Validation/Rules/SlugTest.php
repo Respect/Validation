@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class SlugTest extends \PHPUnit_Framework_TestCase
@@ -56,3 +55,4 @@ class SlugTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
+

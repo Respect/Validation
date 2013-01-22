@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class EqualsException extends ValidationException
@@ -22,5 +21,5 @@ class EqualsException extends ValidationException
     {
         return $this->getParam('identical') ? static::IDENTICAL : static::EQUALS;
     }
-
 }
+

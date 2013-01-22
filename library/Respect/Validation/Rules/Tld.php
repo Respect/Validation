@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class Tld extends AbstractRule
 {
-
     protected $tldList = array(
         //generic
         'aero', 'asia', 'biz', 'cat', 'com', 'coop', 'edu', 'gov', 'info',
@@ -38,5 +36,5 @@ class Tld extends AbstractRule
     {
         return in_array(strtolower($input), $this->tldList);
     }
-
 }
+

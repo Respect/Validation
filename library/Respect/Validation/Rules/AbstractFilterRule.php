@@ -1,12 +1,10 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 
 abstract class AbstractFilterRule extends AbstractRule
 {
-
     protected $additionalChars = "";
 
     abstract protected function validateClean($input);
@@ -32,5 +30,5 @@ abstract class AbstractFilterRule extends AbstractRule
 
         return $cleanInput === '' || $this->validateClean($cleanInput);
     }
-
 }
+

@@ -1,12 +1,10 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use DateTime;
 
 class ZendTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testZendDependency()
     {
         $this->assertTrue(
@@ -137,7 +135,6 @@ class ZendTest extends \PHPUnit_Framework_TestCase
         $v = new Zend('StringLength', array('min' => 10, 'max' => 25));
         $this->assertFalse($v->assert('aw'));
     }
-
 }
 
 // Stubs
@@ -146,3 +143,4 @@ if (class_exists('\Zend\Validator\Date')) {
     {
     }
 }
+

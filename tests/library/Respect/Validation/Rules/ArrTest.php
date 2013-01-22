@@ -1,15 +1,12 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class TestAccess extends \ArrayObject implements \ArrayAccess, \Countable, \Traversable
 {
-
 }
 
 class ArrTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $object;
 
     protected function setUp()
@@ -64,5 +61,5 @@ class ArrTest extends \PHPUnit_Framework_TestCase
             array('aaa'),
         );
     }
-
 }
+

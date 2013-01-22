@@ -26,7 +26,7 @@ spl_autoload_register(
         if (isset($composerClassmap[$className]))
             return require $composerClassmap[$className];
 
-	$fileParts = explode('\\', ltrim($className, '\\'));
+    $fileParts = explode('\\', ltrim($className, '\\'));
 
         if (false !== strpos(end($fileParts), '_'))
             array_splice($fileParts, -1, 1, explode('_', current($fileParts)));
@@ -39,3 +39,4 @@ spl_autoload_register(
         }
     }
 );
+

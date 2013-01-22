@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 use DateTime;
@@ -190,5 +189,5 @@ class ValidationException extends InvalidArgumentException
 
         return $id;
     }
-
 }
+

@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class MaxTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidMax
      */
@@ -46,5 +44,5 @@ class MaxTest extends \PHPUnit_Framework_TestCase
             array(200, false, 200),
         );
     }
-
 }
+
