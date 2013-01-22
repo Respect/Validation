@@ -210,7 +210,8 @@ Reference
   * v::consonants()
   * v::contains()
   * v::control()
-  * v::digits()
+  * v::digits() *(deprecated)*
+  * v::digit()
   * v::endsWith()
   * v::in()
   * v::graphical()
@@ -338,7 +339,7 @@ the string of extra chars passed as the parameter.
 See also:
 
   * v::alpha()  - a-Z, empty or whitespace only
-  * v::digits() - 0-9, empty or whitespace only
+  * v::digit() - 0-9, empty or whitespace only
   * v::consonants()
   * v::vowels()
 
@@ -352,7 +353,7 @@ accepts empty values and whitespace, so use `v::notEmpty()` and
 See also:
 
   * v::alnum()  - a-z0-9, empty or whitespace only
-  * v::digits() - 0-9, empty or whitespace only
+  * v::digit() - 0-9, empty or whitespace only
   * v::consonants()
   * v::vowels()
 
@@ -508,7 +509,7 @@ The array format is a logic OR, not AND.
 #### v::cnpj()
 
 Validates the Brazillian CNPJ number. Ignores non-digit chars, so
-use `->digits()` if needed.
+use `->digit()` if needed.
 
 See also:
 
@@ -525,7 +526,7 @@ Similar to `v::alnum()`. Validates strings that contain only consonants:
 See also:
 
   * v::alnum()  - a-z0-9, empty or whitespace only
-  * v::digits() - 0-9, empty or whitespace only
+  * v::digit() - 0-9, empty or whitespace only
   * v::alpha()  - a-Z, empty or whitespace only
   * v::vowels()
 
@@ -595,10 +596,10 @@ It ignores any non-digit char:
 
     v::cpf()->validate('444.555.668-20');
 
-If you need to validate digits only, add `->digits()` to
+If you need to validate digits only, add `->digit()` to
 the chain:
 
-    v::digits()->cpf()->validate('44455566820');
+    v::digit()->cpf()->validate('44455566820');
 
 See also:
 
@@ -611,9 +612,9 @@ Validates a credit card number.
 
     v::creditCard()->validate($myCredCardNumber);
 
-It ignores any non-digit chars, so use `->digits()` when appropriate.
+It ignores any non-digit chars, so use `->digit()` when appropriate.
 
-    v::digits()->creditCard()->validate($myCredCardNumber);
+    v::digit()->creditCard()->validate($myCredCardNumber);
 
 #### v::date()
 #### v::date($format)
@@ -645,11 +646,22 @@ See also:
   * v::leapDate()
   * v::leapYear()
 
-#### v::digits()
+#### v::digits() *(deprecated)*
+
+Validates 0-9, empty or whitespace only. It's now deprecated, digit should be used
+instead.
+
+See also:
+
+  * v::digit()
+
+#### v::digit()
 
 This is similar to v::alnum(), but it doesn't allow a-Z. It also
 accepts empty values and whitespace, so use `v::notEmpty()` and
 `v::noWhitespace()` when appropriate.
+
+See also:
 
   * v::alnum()  - a-z0-9, empty or whitespace only
   * v::alpha()  - a-Z, empty or whitespace only
@@ -850,7 +862,7 @@ Validates if the input is an integer.
 See also:
 
   * v::numeric()
-  * v::digits()
+  * v::digit()
 
 #### v::ip()
 #### v::ip($options)
@@ -1146,7 +1158,7 @@ Validates on any numeric value.
 See also:
 
   * v::int()
-  * v::digits()
+  * v::digit()
 
 #### v::object()
 
@@ -1366,7 +1378,7 @@ Similar to `v::alnum()`. Validates strings that contain only vowels:
 See also:
 
   * v::alnum()  - a-z0-9, empty or whitespace only
-  * v::digits() - 0-9, empty or whitespace only
+  * v::digit() - 0-9, empty or whitespace only
   * v::alpha()  - a-Z, empty or whitespace only
   * v::consonants()
 
@@ -1400,7 +1412,7 @@ Notice, however, that it doesn't accept numbers starting with 0x:
 
 See also:
 
-  * v::digits()
+  * v::digit()
   * v::alnum()
 
 #### v::zend($zendValidator)
