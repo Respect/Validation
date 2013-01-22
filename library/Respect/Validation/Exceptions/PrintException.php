@@ -1,7 +1,7 @@
 <?php
 namespace Respect\Validation\Exceptions;
 
-class PrintableException extends AlphaException
+class PrintException extends AlphaException
 {
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
