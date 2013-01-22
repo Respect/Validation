@@ -4,30 +4,15 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 
-abstract class AbstractRegexRule extends AbstractRule
+abstract class AbstractRegexRule extends AbstractFilterRule
 {
-
-    public $additionalChars = '';
 
     abstract protected function getPregFormat();
 
-    public function __construct($additionalChars='')
+
+    public function validateClean($input)
     {
-        if (!is_string($additionalChars))
-            throw new ComponentException('Invalid list of additional characters to be loaded');
-
-        $this->additionalChars = $additionalChars;
-    }
-
-    public function validate($input)
-    {
-        if (!is_scalar($input))
-            return false;
-
-        $input = (string) $input;
-        $cleanInput = str_replace(str_split($this->additionalChars), '', $input);
-
-        return $cleanInput === '' || preg_match($this->getPregFormat(), $cleanInput);
+        return preg_match($this->getPregFormat(), $input);
     }
 
 }
