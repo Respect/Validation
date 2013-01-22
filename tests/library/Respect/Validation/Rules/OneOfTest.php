@@ -78,21 +78,21 @@ class OneOfTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\XdigitsException
+     * @expectedException Respect\Validation\Exceptions\XdigitException
      */
     public function testInvalidCheck()
     {
-        $o = new OneOf(new Xdigits, new Alnum);
+        $o = new OneOf(new Xdigit, new Alnum);
         $this->assertFalse($o->validate(-10));
         $this->assertFalse($o->check(-10));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\XdigitsException
+     * @expectedException Respect\Validation\Exceptions\XdigitException
      */
     public function testShorcutInvalidCheck()
     {
-        $xdigits = new Xdigits;
+        $xdigits = new Xdigit;
         $o = $xdigits->addOr(new Alnum);
         $this->assertFalse($o->validate(-10));
         $this->assertFalse($o->check(-10));
