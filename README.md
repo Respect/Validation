@@ -229,7 +229,8 @@ Reference
   * v::uppercase()
   * v::uppercase()
   * v::version()
-  * v::vowels()
+  * v::vowels() *(deprecated)*
+  * v::vowel()
   * v::xdigits()
 
 ### Arrays
@@ -342,7 +343,7 @@ See also:
   * v::alpha()  - a-Z, empty or whitespace only
   * v::digit() - 0-9, empty or whitespace only
   * v::consonant()
-  * v::vowels()
+  * v::vowel()
 
 #### v::alpha()
 #### v::alpha(string $additionalChars)
@@ -356,7 +357,7 @@ See also:
   * v::alnum()  - a-z0-9, empty or whitespace only
   * v::digit() - 0-9, empty or whitespace only
   * v::consonant()
-  * v::vowels()
+  * v::vowel()
 
 #### v::arr()
 
@@ -539,7 +540,7 @@ See also:
   * v::alnum()  - a-z0-9, empty or whitespace only
   * v::digit() - 0-9, empty or whitespace only
   * v::alpha()  - a-Z, empty or whitespace only
-  * v::vowels()
+  * v::vowel()
 
 #### v::contains($value)
 #### v::contains($value, boolean $identical=false)
@@ -676,7 +677,7 @@ See also:
 
   * v::alnum()  - a-z0-9, empty or whitespace only
   * v::alpha()  - a-Z, empty or whitespace only
-  * v::vowels()
+  * v::vowel()
   * v::consonant()
 
 #### v::domain()
@@ -1380,11 +1381,21 @@ Validates version numbers using Semantic Versioning.
 
     v::version()->validate('1.0.0');
 
-#### v::vowels()
+#### v::vowels() *(deprecated)*
 
-Similar to `v::alnum()`. Validates strings that contain only vowels:
+Validates strings that contains only vowels. It's now deprecated, vowel should be used
+instead.
 
-    v::vowels()->validate('aei'); //true
+See also:
+
+  * v::vowel()
+
+
+#### v::vowel()
+
+Similar to `v::alnum()`. Validates strings that contains only vowels:
+
+    v::vowel()->validate('aei'); //true
 
 See also:
 
