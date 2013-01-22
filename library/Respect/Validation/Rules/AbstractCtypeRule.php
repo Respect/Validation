@@ -1,8 +1,6 @@
 <?php
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ComponentException;
-
 abstract class AbstractCtypeRule extends AbstractFilterRule
 {
     abstract protected function ctypeFunction($input);
