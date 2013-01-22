@@ -1,7 +1,7 @@
 <?php
 namespace Respect\Validation\Rules;
 
-class Graphical extends AbstractCtypeRule
+class Graph extends AbstractCtypeRule
 {
     protected function filter($input)
     {

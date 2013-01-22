@@ -1,7 +1,7 @@
 <?php
 namespace Respect\Validation\Exceptions;
 
-class GraphicalException extends AlphaException
+class GraphException extends AlphaException
 {
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
