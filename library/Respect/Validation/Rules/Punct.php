@@ -1,7 +1,7 @@
 <?php
 namespace Respect\Validation\Rules;
 
-class Punctuation extends AbstractCtypeRule
+class Punct extends AbstractCtypeRule
 {
     protected function filter($input)
     {
