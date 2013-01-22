@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class Space extends AbstractCtypeRule
@@ -9,3 +8,4 @@ class Space extends AbstractCtypeRule
         return ctype_space($input);
     }
 }
+

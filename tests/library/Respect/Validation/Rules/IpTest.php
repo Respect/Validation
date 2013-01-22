@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class IpTest extends \PHPUnit_Framework_TestCase
@@ -127,5 +126,5 @@ class IpTest extends \PHPUnit_Framework_TestCase
             array('192.168.2.0/8.256.256.256'),
         );
     }
-
 }
+

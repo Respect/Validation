@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class VersionTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidVersion
      */
@@ -51,5 +49,5 @@ class VersionTest extends \PHPUnit_Framework_TestCase
             array('beta'),
         );
     }
-
 }
+

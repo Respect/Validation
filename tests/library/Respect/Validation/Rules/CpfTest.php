@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class CpfTest extends \PHPUnit_Framework_TestCase
@@ -110,5 +109,5 @@ class CpfTest extends \PHPUnit_Framework_TestCase
             array('')
         );
     }
-
 }
+

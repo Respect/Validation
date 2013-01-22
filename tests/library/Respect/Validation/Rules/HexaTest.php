@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class HexaTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $hexaValidator;
 
     protected function setUp()
@@ -60,5 +58,5 @@ class HexaTest extends \PHPUnit_Framework_TestCase
             array('1.5'),
         );
     }
-
 }
+

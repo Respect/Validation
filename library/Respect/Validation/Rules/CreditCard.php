@@ -1,17 +1,15 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class CreditCard extends AbstractRule
 {
-
     public function validate($input)
     {
         $input = preg_replace('([^0-9])', '', $input);
         if (!empty($input)) {
             return $this->verifyMod10($input);
         }
-            
+
         return false;
     }
 
@@ -34,5 +32,5 @@ class CreditCard extends AbstractRule
 
         return ($sum % 10 == 0);
     }
-
 }
+

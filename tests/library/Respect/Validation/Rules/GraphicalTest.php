@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class GraphicalTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidGraphical
      */
@@ -65,5 +63,5 @@ class GraphicalTest extends \PHPUnit_Framework_TestCase
             array(' '),
         );
     }
-
 }
+

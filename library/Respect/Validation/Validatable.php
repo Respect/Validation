@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation;
 
 /** Interface for validation rules */
@@ -19,3 +18,4 @@ interface Validatable
 
     public function validate($input);
 }
+

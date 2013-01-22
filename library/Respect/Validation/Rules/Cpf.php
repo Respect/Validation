@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class Cpf extends AbstractRule
@@ -32,3 +31,4 @@ class Cpf extends AbstractRule
         return true;
     }
 }
+

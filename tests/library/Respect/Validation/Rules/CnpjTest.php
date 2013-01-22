@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class CnpjTest extends \PHPUnit_Framework_TestCase
@@ -105,3 +104,4 @@ class CnpjTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
+

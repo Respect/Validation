@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class ContainsTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForContains
      */
@@ -48,5 +46,5 @@ class ContainsTest extends \PHPUnit_Framework_TestCase
             array('foo', 'faabarbaz'),
         );
     }
-
 }
+

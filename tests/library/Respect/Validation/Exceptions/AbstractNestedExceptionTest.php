@@ -1,12 +1,10 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 use Respect\Validation\Validator as v;
 
 class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testGetRelatedShouldReturnExceptionAddedByAddRelated()
     {
         $composite = new AttributeException;
@@ -128,5 +126,5 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
                 'Invalid length for "fiif" fiif');
         }
     }
-
 }
+

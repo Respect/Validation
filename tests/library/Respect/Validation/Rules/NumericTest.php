@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class NumericTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $object;
 
     protected function setUp()
@@ -55,5 +53,5 @@ class NumericTest extends \PHPUnit_Framework_TestCase
             array(''),
         );
     }
-
 }
+

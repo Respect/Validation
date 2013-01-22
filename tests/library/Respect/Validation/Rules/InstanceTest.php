@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class InstanceTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $instanceValidator;
 
     protected function setUp()
@@ -27,5 +25,5 @@ class InstanceTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->instanceValidator->validate(new \stdClass));
         $this->assertFalse($this->instanceValidator->assert(new \stdClass));
     }
-
 }
+

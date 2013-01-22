@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class DirectoryTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidDirectory
      */
@@ -85,5 +83,5 @@ class DirectoryTest extends \PHPUnit_Framework_TestCase
             1
         );
     }
-
 }
+

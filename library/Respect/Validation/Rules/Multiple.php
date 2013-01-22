@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class Multiple extends AbstractRule
 {
-
     public $multipleOf;
 
     public function __construct($multipleOf)
@@ -20,5 +18,5 @@ class Multiple extends AbstractRule
 
         return ($input % $this->multipleOf == 0);
     }
-
 }
+

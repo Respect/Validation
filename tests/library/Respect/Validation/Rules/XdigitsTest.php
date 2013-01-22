@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class XdigitsTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $xdigitsValidator;
 
     protected function setUp()
@@ -54,5 +52,5 @@ class XdigitsTest extends \PHPUnit_Framework_TestCase
             array('1.5'),
         );
     }
-
 }
+

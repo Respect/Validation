@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class MacAddressTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $macaddressValidator;
 
     protected function setUp()
@@ -52,5 +50,5 @@ class MacAddressTest extends \PHPUnit_Framework_TestCase
             array('90-bc-nk:1a-dd-cc'),
         );
     }
-
 }
+

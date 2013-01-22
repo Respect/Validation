@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class BoolTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testBooleanValuesONLYShouldReturnTrue()
     {
         $validator = new Bool();
@@ -37,5 +35,5 @@ class BoolTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($validator->validate(null));
         $this->assertFalse($validator->validate(''));
     }
-
 }
+

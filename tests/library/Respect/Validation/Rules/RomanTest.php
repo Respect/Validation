@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class RomanTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $romanValidator;
 
     protected function setUp()
@@ -62,5 +60,5 @@ class RomanTest extends \PHPUnit_Framework_TestCase
             array('MIMIMI'),
         );
     }
-
 }
+

@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class AbstractGroupedExceptionTest extends \PHPUnit_Framework_TestCase
@@ -14,5 +13,5 @@ class AbstractGroupedExceptionTest extends \PHPUnit_Framework_TestCase
         $result = $e->getRelated();
         $this->assertSame($int, current($result));
     }
-
 }
+

@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class CreditCardTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $creditCardValidator;
 
     protected function setUp()
@@ -55,5 +53,5 @@ class CreditCardTest extends \PHPUnit_Framework_TestCase
             array('1234.1234.1234.1234'),
         );
     }
-
 }
+

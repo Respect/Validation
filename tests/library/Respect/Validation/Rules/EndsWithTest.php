@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class EndsWithTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForEndsWith
      */
@@ -51,5 +49,5 @@ class EndsWithTest extends \PHPUnit_Framework_TestCase
             array('1', array(1, '1', 3), true),
         );
     }
-
 }
+

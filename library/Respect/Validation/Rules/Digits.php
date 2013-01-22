@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class Digits extends AbstractCtypeRule
@@ -9,3 +8,4 @@ class Digits extends AbstractCtypeRule
         return ctype_digit($input);
     }
 }
+

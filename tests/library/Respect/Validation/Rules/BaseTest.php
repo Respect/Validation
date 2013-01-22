@@ -1,12 +1,10 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use \Respect\Validation\Validator as v;
 
 class BaseTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $object;
 
     protected function setUp()
@@ -125,5 +123,5 @@ class BaseTest extends \PHPUnit_Framework_TestCase
             array(125, '0120125f2001')
         );
     }
-
 }
+

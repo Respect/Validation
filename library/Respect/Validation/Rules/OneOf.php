@@ -1,12 +1,10 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
 
 class OneOf extends AbstractComposite
 {
-
     public function assert($input)
     {
         $validators = $this->getRules();
@@ -52,5 +50,5 @@ class OneOf extends AbstractComposite
 
         return false;
     }
-
 }
+

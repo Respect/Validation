@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class SpaceException extends AlphaException
 {
-
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => '{{name}} must contain only space characters',
@@ -15,5 +13,5 @@ class SpaceException extends AlphaException
             self::EXTRA => '{{name}} must not contain space characters or "{{additionalChars}}"'
         )
     );
-
 }
+

@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class CallTest extends \PHPUnit_Framework_TestCase
 {
-
     public function thisIsASampleCallbackUsedInsideThisTest()
     {
         return array();
@@ -39,5 +37,5 @@ class CallTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($v->validate('test'));
         $this->assertFalse($v->assert('test'));
     }
-
 }
+

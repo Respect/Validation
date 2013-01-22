@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class MinTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidMin
      *
@@ -47,5 +45,5 @@ class MinTest extends \PHPUnit_Framework_TestCase
             array(50, false, 50),
         );
     }
-
 }
+

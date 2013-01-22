@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class AllOf extends AbstractComposite
 {
-
     public function assert($input)
     {
         $exceptions = $this->validateRules($input);
@@ -43,5 +41,5 @@ class AllOf extends AbstractComposite
 
         return true;
     }
-
 }
+

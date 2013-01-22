@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class LengthException extends ValidationException
@@ -39,5 +38,5 @@ class LengthException extends ValidationException
             return static::BOTH;
         }
     }
-
 }
+

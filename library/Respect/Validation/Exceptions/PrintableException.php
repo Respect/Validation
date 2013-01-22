@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class PrintableException extends AlphaException
 {
-
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => '{{name}} must contain only printable characters',
@@ -15,5 +13,5 @@ class PrintableException extends AlphaException
             self::EXTRA => '{{name}} must not contain printable characters or "{{additionalChars}}"'
         )
     );
-
 }
+

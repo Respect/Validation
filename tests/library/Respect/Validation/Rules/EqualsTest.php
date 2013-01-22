@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class EqualsTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForEquals
      */
@@ -42,5 +40,5 @@ class EqualsTest extends \PHPUnit_Framework_TestCase
             array(10, "10", true),
         );
     }
-
 }
+

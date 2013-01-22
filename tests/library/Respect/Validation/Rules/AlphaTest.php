@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class AlphaTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidAlpha
      */
@@ -81,5 +79,5 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
             array(array(), ''),
         );
     }
-
 }
+

@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validatable;
@@ -7,7 +6,6 @@ use Respect\Validation\Exceptions\ValidationException;
 
 class Not extends AbstractRule
 {
-
     public $rule;
 
     public function __construct(Validatable $rule)
@@ -61,5 +59,5 @@ class Not extends AbstractRule
 
         return $clone;
     }
-
 }
+

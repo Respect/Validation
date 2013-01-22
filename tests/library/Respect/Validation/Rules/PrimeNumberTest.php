@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class PrimeNumberTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $object;
 
     protected function setUp()
@@ -64,5 +62,5 @@ class PrimeNumberTest extends \PHPUnit_Framework_TestCase
             array(''),
         );
     }
-
 }
+

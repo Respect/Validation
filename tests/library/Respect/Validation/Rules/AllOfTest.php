@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class AllOfTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testRemoveRulesShouldRemoveAllRules()
     {
         $o = new AllOf(new Int, new Positive);
@@ -99,5 +97,5 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
             array($valid1, $theInvalidOne, $valid2)
         );
     }
-
 }
+

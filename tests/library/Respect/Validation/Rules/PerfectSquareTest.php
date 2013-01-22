@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class PerfectSquareTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $object;
 
     protected function setUp()
@@ -65,5 +63,5 @@ class PerfectSquareTest extends \PHPUnit_Framework_TestCase
             array(''),
         );
     }
-
 }
+

@@ -1,12 +1,10 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use DateTime;
 
 class DateTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $dateValidator;
 
     protected function setUp()
@@ -58,5 +56,5 @@ class DateTest extends \PHPUnit_Framework_TestCase
         $this->dateValidator = new Date('y-m-d');
         $this->assertFalse($this->dateValidator->assert('2009-09-09'));
     }
-
 }
+

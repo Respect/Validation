@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class OneOfTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testValid()
     {
         $valid1 = new Callback(function() {
@@ -99,5 +97,5 @@ class OneOfTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($o->validate(-10));
         $this->assertFalse($o->check(-10));
     }
-
 }
+

@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class PunctuationException extends AlphaException
 {
-
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => '{{name}} must contain only punctuation characters',
@@ -15,5 +13,5 @@ class PunctuationException extends AlphaException
             self::EXTRA => '{{name}} must not contain punctuation characters or "{{additionalChars}}"'
         )
     );
-
 }
+

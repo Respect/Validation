@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class NegativeTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $negativeValidator;
 
     protected function setUp()
@@ -58,5 +56,5 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
             array(1e10),
         );
     }
-
 }
+

@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class LengthTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidLenght
      */
@@ -88,5 +86,5 @@ class LengthTest extends \PHPUnit_Framework_TestCase
             array('alganet', 10, 1),
         );
     }
-
 }
+

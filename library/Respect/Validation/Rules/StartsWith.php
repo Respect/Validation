@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class StartsWith extends AbstractRule
 {
-
     public $startValue;
     public $identical;
 
@@ -40,5 +38,5 @@ class StartsWith extends AbstractRule
 
         return 0 === mb_strpos($input, $this->startValue, 0, mb_detect_encoding($input));
     }
-
 }
+

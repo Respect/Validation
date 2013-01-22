@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class Alnum extends AbstractCtypeRule
@@ -8,3 +7,4 @@ class Alnum extends AbstractCtypeRule
         return ctype_alnum($input);
     }
 }
+

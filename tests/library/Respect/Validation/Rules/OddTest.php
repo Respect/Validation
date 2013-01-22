@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class OddTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $object;
 
     protected function setUp()
@@ -52,5 +50,5 @@ class OddTest extends \PHPUnit_Framework_TestCase
             array(32),
         );
     }
-
 }
+

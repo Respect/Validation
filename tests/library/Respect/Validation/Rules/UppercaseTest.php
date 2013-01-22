@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class UppercaseTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidUppercase
      */
@@ -49,5 +47,5 @@ class UppercaseTest extends \PHPUnit_Framework_TestCase
             array('With Numbers 1 2 3'),
         );
     }
-
 }
+

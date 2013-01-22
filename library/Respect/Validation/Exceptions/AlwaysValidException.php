@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class AlwaysValidException extends ValidationException
 {
-
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => '{{name}} is always valid',
@@ -13,5 +11,5 @@ class AlwaysValidException extends ValidationException
             self::STANDARD => '{{name}} is always invalid',
         )
     );
-
 }
+

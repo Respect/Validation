@@ -1,12 +1,10 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use \DateTime;
 
 class BetweenTest extends \PHPUnit_Framework_TestCase
 {
-
     public function providerValid()
     {
         return array(
@@ -75,5 +73,5 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
     {
         $o = new Between(10, 5);
     }
-
 }
+

@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class RegexTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testRegexOk()
     {
         $v = new Regex('/^[a-z]+$/');
@@ -26,5 +24,5 @@ class RegexTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($v->validate('w poiur'));
         $this->assertFalse($v->assert('w poiur'));
     }
-
 }
+

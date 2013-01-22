@@ -1,17 +1,13 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class PrivClass
 {
-
     private $bar = 'foo';
-
 }
 
 class AttributeTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testAttributeWithNoExtraValidationShouldCheckItsPresence()
     {
         $validator = new Attribute('bar');
@@ -136,5 +132,5 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $obj = new PrivClass;
         $this->assertFalse($validator->validate($obj));
     }
-
 }
+

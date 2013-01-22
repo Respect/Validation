@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class IntTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $intValidator;
 
     protected function setUp()
@@ -55,5 +53,5 @@ class IntTest extends \PHPUnit_Framework_TestCase
             array(1e-5),
         );
     }
-
 }
+

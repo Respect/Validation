@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class Alpha extends AbstractCtypeRule
@@ -8,3 +7,4 @@ class Alpha extends AbstractCtypeRule
         return ctype_alpha($input);
     }
 }
+

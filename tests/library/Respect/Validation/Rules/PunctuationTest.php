@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class PunctuationTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidPunctuation
      */
@@ -67,5 +65,5 @@ class PunctuationTest extends \PHPUnit_Framework_TestCase
             array('( )_{}'),
         );
     }
-
 }
+

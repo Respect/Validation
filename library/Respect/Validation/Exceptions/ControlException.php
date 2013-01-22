@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class ControlException extends AlphaException
 {
-
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => '{{name}} must contain only control characters',
@@ -15,5 +13,5 @@ class ControlException extends AlphaException
             self::EXTRA => '{{name}} must not contain control characters or "{{additionalChars}}"'
         )
     );
-
 }
+
