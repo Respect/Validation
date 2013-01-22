@@ -1,6 +1,6 @@
 Respect\Validation [![Build Status](https://secure.travis-ci.org/Respect/Validation.png)](http://travis-ci.org/Respect/Validation)
 ==================
- 
+
 The most awesome validation engine ever created for PHP.
 
 - Fluent/Chained builders like `v::numeric()->positive()->between(1, 256)->validate($myNumber)` (more samples below)
@@ -65,17 +65,17 @@ You can use the `v::not()` to negate any rule:
 
     v::not(v::int())->validate(10); //false, input must not be integer
 
-### Validator Reuse 
+### Validator Reuse
 
 Once created, you can reuse your validator anywhere. Remember $usernameValidator?
 
     $usernameValidator->validate('respect');            //true
-    $usernameValidator->validate('alexandre gaigalas'); //false 
-    $usernameValidator->validate('#$%');                //false 
+    $usernameValidator->validate('alexandre gaigalas'); //false
+    $usernameValidator->validate('#$%');                //false
 
 ### Informative Exceptions
 
-When something goes wrong, Validation can tell you exacty what's going on. For this, 
+When something goes wrong, Validation can tell you exacty what's going on. For this,
 we use the `assert()` method instead of `validate()`:
 
     try {
@@ -110,8 +110,8 @@ Getting messages as an array is fine, but sometimes you need to customize them i
 to present them to the user. This is possible using the `findMessages()` method as well:
 
        $errors = $e->findMessages(array(
-            'alnum'        => '{{name}} must contain only letters and digits', 
-            'length'       => '{{name}} must not have more than 15 chars', 
+            'alnum'        => '{{name}} must contain only letters and digits',
+            'length'       => '{{name}} must not have more than 15 chars',
             'noWhitespace' => '{{name}} cannot contain spaces'
         ));
 
@@ -119,7 +119,7 @@ For all messages, the `{{name}}` and `{{input}}` variable is available for templ
 
 ### Validator Name
 
-On `v::attribute()` and `v::key()`, `{{name}}` is the attribute/key name. For others, 
+On `v::attribute()` and `v::key()`, `{{name}}` is the attribute/key name. For others,
 is the same as the input. You can customize a validator name using:
 
     v::date('Y-m-d')->between('1980-02-02', 'now')->setName('Member Since');
@@ -201,7 +201,7 @@ Reference
   * v::roman()
   * v::xdigits()
 
-### String 
+### String
 
   * v::alnum()
   * v::alpha()
@@ -310,7 +310,7 @@ See also:
 #### v::alnum()
 #### v::alnum(string $additionalChars)
 
-Validates alphanumeric characters from a-Z and 0-9. 
+Validates alphanumeric characters from a-Z and 0-9.
 
     v::alnum()->validate('foo 123'); //true
 
@@ -318,7 +318,7 @@ A parameter for extra characters can be used:
 
     v::alnum('-')->validate('foo - 123'); //true
 
-This validator allows whitespace, if you want to 
+This validator allows whitespace, if you want to
 remove them add `->noWhitespace()` to the chain:
 
     v::alnum()->noWhitespace->validate('foo 123'); //false
@@ -409,7 +409,7 @@ Validates ranges. Most simple example:
 
     v::int()->between(10, 20)->validate(15); //true
 
-The type as the first validator in a chain is a good practice, 
+The type as the first validator in a chain is a good practice,
 since between accepts many types:
 
     v::string()->between('a', 'f')->validate('c'); //true
@@ -448,7 +448,7 @@ for the input and then validates it. Consider the following variable:
 
     $url = 'http://www.google.com/search?q=respect.github.com'
 
-To validate every part of this URL we could use the native `parse_url` 
+To validate every part of this URL we could use the native `parse_url`
 function to break its parts:
 
     $parts = parse_url($url);
@@ -464,7 +464,7 @@ We can validate them this way:
 Using `v::call()` you can do this in a single chain:
 
     v::call(
-        'parse_url', 
+        'parse_url',
          v::arr()->key('scheme', v::startsWith('http'))
             ->key('host',   v::domain())
             ->key('path',   v::string())
@@ -608,7 +608,7 @@ See also:
 
 #### v::creditCard()
 
-Validates a credit card number. 
+Validates a credit card number.
 
     v::creditCard()->validate($myCredCardNumber);
 
@@ -670,7 +670,7 @@ See also:
 
 #### v::domain()
 
-Validates domain names. 
+Validates domain names.
 
     v::domain()->validate('google.com');
 
@@ -690,7 +690,7 @@ See also:
 
   * v::tld()
   * v::ip()
-  
+
 #### v::directory()
 
 Validates directories.
@@ -952,7 +952,7 @@ Only maximum length:
 
     v::string()->length(null, 5)->validate('abc'); // true
 
-The type as the first validator in a chain is a good practice, 
+The type as the first validator in a chain is a good practice,
 since length accepts many types:
 
     v::arr()->length(1, 5)->validate(array('foo', 'bar')); //true
@@ -994,7 +994,7 @@ Also accepts dates:
 
     v::date()->max('2012-01-01')->validate('2010-01-01'); //true
 
-`true` may be passed as a parameter to indicate that inclusive 
+`true` may be passed as a parameter to indicate that inclusive
 values must be used.
 
 Message template for this validator includes `{{maxValue}}`.
@@ -1015,7 +1015,7 @@ Also accepts dates:
 
     v::date()->min('2012-01-01')->validate('2015-01-01'); //true
 
-`true` may be passed as a parameter to indicate that inclusive 
+`true` may be passed as a parameter to indicate that inclusive
 values must be used.
 
 Message template for this validator includes `{{minValue}}`.
@@ -1033,7 +1033,7 @@ Validates a minimum age for a given date.
 
 Using `date()` before is a best-practice.
 
-Message template for this validator includes `{{age}}`. 
+Message template for this validator includes `{{age}}`.
 
 See also:
 
@@ -1089,8 +1089,8 @@ See also:
 Negates any rule.
 
     v::not(v::ip())->validate('foo'); //true
-    
-using a shorcut 
+
+using a shorcut
 
     v::ip()->not()->validate('foo'); //true
 
@@ -1099,8 +1099,8 @@ In the sample above, validator returns true because 'foo' isn't an IP Address.
 You can negate complex, grouped or chained validators as well:
 
     v::not(v::int()->positive())->validate(-1.5); //true
-    
-using a shorcut 
+
+using a shorcut
 
     v::int()->positive()->not()->validate(-1.5); //true
 
@@ -1231,7 +1231,7 @@ See also:
 Validates a prime number
 
     v::primeNumber()->validate(7); //true
-    
+
 #### v::printable()
 #### v::printable(string $additionalChars)
 
@@ -1242,7 +1242,7 @@ Similar to `v::graphical` but accepts whitespace.
 See also:
 
   * v::graphical()
-  
+
 #### v::punctuation()
 #### v::punctuation(string $additionalChars)
 
@@ -1384,7 +1384,7 @@ See also:
 
 #### v::when(v $if, v $then, v $else)
 
-A ternary validator that accepts three parameters. 
+A ternary validator that accepts three parameters.
 
 When the $if validates, returns validation for $then.
 When the $if doesnt' validate, returns validation for $else.
