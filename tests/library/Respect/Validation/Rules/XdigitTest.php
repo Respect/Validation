@@ -1,17 +1,17 @@
 <?php
 namespace Respect\Validation\Rules;
 
-class XdigitsTest extends \PHPUnit_Framework_TestCase
+class XdigitTest extends \PHPUnit_Framework_TestCase
 {
     protected $xdigitsValidator;
 
     protected function setUp()
     {
-        $this->xdigitsValidator = new Xdigits;
+        $this->xdigitsValidator = new Xdigit;
     }
 
     /**
-     * @dataProvider providerForXdigits
+     * @dataProvider providerForXdigit
      */
     public function testValidateValidHexasdecimalDigits($input)
     {
@@ -21,16 +21,16 @@ class XdigitsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerForNotXdigits
-     * @expectedException Respect\Validation\Exceptions\XdigitsException
+     * @dataProvider providerForNotXdigit
+     * @expectedException Respect\Validation\Exceptions\XdigitException
      */
-    public function testInvalidHexadecimalDigitsShouldThrowXdigitsException($input)
+    public function testInvalidHexadecimalDigitsShouldThrowXdigitException($input)
     {
         $this->assertFalse($this->xdigitsValidator->validate($input));
         $this->assertFalse($this->xdigitsValidator->assert($input));
     }
 
-    public function providerForXdigits()
+    public function providerForXdigit()
     {
         return array(
             array('FFF'),
@@ -41,7 +41,7 @@ class XdigitsTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForNotXdigits()
+    public function providerForNotXdigit()
     {
         return array(
             array(null),

@@ -1,7 +1,7 @@
 <?php
 namespace Respect\Validation\Rules;
 
-class Xdigits extends AbstractRule
+class Xdigit extends AbstractRule
 {
     public function validate($input)
     {
