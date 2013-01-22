@@ -1,26 +1,26 @@
 <?php
 namespace Respect\Validation\Rules;
 
-class PunctuationTest extends \PHPUnit_Framework_TestCase
+class PunctTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @dataProvider providerForValidPunctuation
+     * @dataProvider providerForValidPunct
      */
-    public function testValidDataWithPunctuationShouldReturnTrue($validPunctuation, $aditional='')
+    public function testValidDataWithPunctShouldReturnTrue($validPunct, $aditional='')
     {
-        $validator = new Punctuation($aditional);
-        $this->assertTrue($validator->validate($validPunctuation));
+        $validator = new Punct($aditional);
+        $this->assertTrue($validator->validate($validPunct));
     }
 
     /**
-     * @dataProvider providerForInvalidPunctuation
-     * @expectedException Respect\Validation\Exceptions\PunctuationException
+     * @dataProvider providerForInvalidPunct
+     * @expectedException Respect\Validation\Exceptions\PunctException
      */
-    public function testInvalidPunctuationShouldFailAndThrowPunctuationException($invalidPunctuation, $aditional='')
+    public function testInvalidPunctShouldFailAndThrowPunctException($invalidPunct, $aditional='')
     {
-        $validator = new Punctuation($aditional);
-        $this->assertFalse($validator->validate($invalidPunctuation));
-        $this->assertFalse($validator->assert($invalidPunctuation));
+        $validator = new Punct($aditional);
+        $this->assertFalse($validator->validate($invalidPunct));
+        $this->assertFalse($validator->assert($invalidPunct));
     }
 
     /**
@@ -29,7 +29,7 @@ class PunctuationTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
     {
-        $validator = new Punctuation($aditional);
+        $validator = new Punct($aditional);
     }
 
     public function providerForInvalidParams()
@@ -41,7 +41,7 @@ class PunctuationTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForValidPunctuation()
+    public function providerForValidPunct()
     {
         return array(
             array(''),
@@ -52,7 +52,7 @@ class PunctuationTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForInvalidPunctuation()
+    public function providerForInvalidPunct()
     {
         return array(
             array('16-50'),
