@@ -1,7 +1,7 @@
 <?php
 namespace Respect\Validation\Exceptions;
 
-class ControlException extends AlphaException
+class CntrlException extends AlphaException
 {
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
