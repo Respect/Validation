@@ -207,7 +207,8 @@ Reference
   * v::alpha()
   * v::between()
   * v::charset()
-  * v::consonants()
+  * v::consonants() *(deprecated)*
+  * v::consonant()
   * v::contains()
   * v::control()
   * v::digits() *(deprecated)*
@@ -340,7 +341,7 @@ See also:
 
   * v::alpha()  - a-Z, empty or whitespace only
   * v::digit() - 0-9, empty or whitespace only
-  * v::consonants()
+  * v::consonant()
   * v::vowels()
 
 #### v::alpha()
@@ -354,7 +355,7 @@ See also:
 
   * v::alnum()  - a-z0-9, empty or whitespace only
   * v::digit() - 0-9, empty or whitespace only
-  * v::consonants()
+  * v::consonant()
   * v::vowels()
 
 #### v::arr()
@@ -516,12 +517,22 @@ See also:
   * v::cpf() - Validates the Brazillian CPF number.
   * v::cnh() - Validates the Brazillian driver's license.
 
-#### v::consonants()
-#### v::consonants(string $additionalChars)
+#### v::consonants() *(deprecated)*
+
+Validates strings that contain only consonants. It's now deprecated, consonant should be used
+instead.
+
+See also:
+
+  * v::consonant()
+
+
+#### v::consonant()
+#### v::consonant(string $additionalChars)
 
 Similar to `v::alnum()`. Validates strings that contain only consonants:
 
-    v::consonants()->validate('xkcd'); //true
+    v::consonant()->validate('xkcd'); //true
 
 See also:
 
@@ -666,7 +677,7 @@ See also:
   * v::alnum()  - a-z0-9, empty or whitespace only
   * v::alpha()  - a-Z, empty or whitespace only
   * v::vowels()
-  * v::consonants()
+  * v::consonant()
 
 #### v::domain()
 
@@ -1380,7 +1391,7 @@ See also:
   * v::alnum()  - a-z0-9, empty or whitespace only
   * v::digit() - 0-9, empty or whitespace only
   * v::alpha()  - a-Z, empty or whitespace only
-  * v::consonants()
+  * v::consonant()
 
 #### v::when(v $if, v $then, v $else)
 

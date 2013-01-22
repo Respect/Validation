@@ -1,7 +1,7 @@
 <?php
 namespace Respect\Validation\Exceptions;
 
-class ConsonantsException extends AlphaException
+class ConsonantException extends AlphaException
 {
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
