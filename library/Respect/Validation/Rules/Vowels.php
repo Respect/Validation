@@ -1,11 +1,12 @@
 <?php
 namespace Respect\Validation\Rules;
 
-class Vowels extends AbstractRegexRule
+class Vowels extends Vowel
 {
-    protected function getPregFormat()
+    public function __construct()
     {
-        return '/^(\s|[aeiouAEIOU])*$/';
+        parent::__construct();
+        trigger_error("Use consonant instead.",
+            E_USER_DEPRECATED);
     }
 }
-
