@@ -4,7 +4,7 @@ namespace Respect\Validation\Rules;
 
 class Alnum extends AbstractCtypeRule
 {
-
-    protected $ctypeFunc = 'ctype_alnum';
-
+    protected function ctypeFunction($input) {
+        return ctype_alnum($input);
+    }
 }

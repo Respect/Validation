@@ -4,11 +4,12 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 
-class AbstractCtypeRule extends AbstractRule
+abstract class AbstractCtypeRule extends AbstractRule
 {
 
     public $additionalChars = "\n\r\t ";
-    protected $ctypeFunc = '';
+
+    abstract protected function ctypeFunction($input);
 
     public function __construct($additionalChars='')
     {
@@ -26,7 +27,7 @@ class AbstractCtypeRule extends AbstractRule
         $input = (string) $input;
         $cleanInput = str_replace(str_split($this->additionalChars), '', $input);
 
-        return $cleanInput === '' || call_user_func($this->ctypeFunc, $cleanInput);
+        return $cleanInput === '' || $this->ctypeFunction($cleanInput);
     }
 
 }

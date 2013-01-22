@@ -4,8 +4,8 @@ namespace Respect\Validation\Rules;
 
 class Punctuation extends AbstractCtypeRule
 {
-
     public $additionalChars = '';
-    protected $ctypeFunc = 'ctype_punct';
-
+    protected function ctypeFunction($input) {
+        return ctype_punct($input);
+    }
 }

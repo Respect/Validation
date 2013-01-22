@@ -4,8 +4,8 @@ namespace Respect\Validation\Rules;
 
 class Graphical extends AbstractCtypeRule
 {
-
     public $additionalChars = '';
-    protected $ctypeFunc = 'ctype_graph';
-
+    protected function ctypeFunction($input) {
+        return ctype_graph($input);
+    }
 }
