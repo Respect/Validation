@@ -1,7 +1,7 @@
 <?php
 namespace Respect\Validation\Exceptions;
 
-class XdigitsException extends ValidationException
+class XdigitException extends ValidationException
 {
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
