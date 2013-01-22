@@ -1,11 +1,12 @@
 <?php
 namespace Respect\Validation\Rules;
 
-class Consonants extends AbstractRegexRule
+class Consonants extends Consonant
 {
-    protected function getPregFormat()
+    public function __construct()
     {
-        return '/^(\s|[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z])*$/';
+        parent::__construct();
+        trigger_error("Use consonant instead.",
+            E_USER_DEPRECATED);
     }
 }
-
