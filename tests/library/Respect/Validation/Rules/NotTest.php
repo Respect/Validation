@@ -42,7 +42,7 @@ class NotTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(new Int, 'aaa'),
-            array(new AllOf(new NoWhitespace, new Digits), 'as df')
+            array(new AllOf(new NoWhitespace, new Digit), 'as df')
         );
     }
 
@@ -50,7 +50,7 @@ class NotTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(new Int, 123),
-            array(new AllOf(new NoWhitespace, new Digits), '12 34')
+            array(new AllOf(new NoWhitespace, new Digit), '12 34')
         );
     }
 }

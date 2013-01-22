@@ -1,7 +1,7 @@
 <?php
 namespace Respect\Validation\Exceptions;
 
-class DigitsException extends AlphaException
+class DigitException extends AlphaException
 {
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(

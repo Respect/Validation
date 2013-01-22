@@ -1,24 +1,24 @@
 <?php
 namespace Respect\Validation\Rules;
 
-class DigitsTest extends \PHPUnit_Framework_TestCase
+class DigitTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider providerForValidDigits
      */
     public function testValidDataWithDigitsShouldReturnTrue($validDigits, $aditional='')
     {
-        $validator = new Digits($aditional);
+        $validator = new Digit($aditional);
         $this->assertTrue($validator->validate($validDigits));
     }
 
     /**
      * @dataProvider providerForInvalidDigits
-     * @expectedException Respect\Validation\Exceptions\DigitsException
+     * @expectedException Respect\Validation\Exceptions\DigitException
      */
-    public function testInvalidDigitsShouldFailAndThrowDigitsException($invalidDigits, $aditional='')
+    public function testInvalidDigitsShouldFailAndThrowDigitException($invalidDigits, $aditional='')
     {
-        $validator = new Digits($aditional);
+        $validator = new Digit($aditional);
         $this->assertFalse($validator->validate($invalidDigits));
         $this->assertFalse($validator->assert($invalidDigits));
     }
@@ -29,7 +29,7 @@ class DigitsTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
     {
-        $validator = new Digits($aditional);
+        $validator = new Digit($aditional);
     }
 
     public function providerForInvalidParams()
