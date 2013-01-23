@@ -5,7 +5,7 @@ abstract class AbstractCtypeRule extends AbstractFilterRule
 {
     abstract protected function ctypeFunction($input);
 
-    protected function filter($input)
+    protected function filterWhiteSpaceOption($input)
     {
         if (empty($this->additionalChars))
             return preg_replace('/\s/', '', $input);
