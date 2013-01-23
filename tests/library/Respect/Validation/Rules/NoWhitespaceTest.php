@@ -10,20 +10,24 @@ class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
         $this->noWhitespaceValidator = new NoWhitespace;
     }
 
-    public function testStringWithNoWhitespaceShouldPass()
+    /**
+     * @dataProvider providerForPass
+     */
+    public function testStringWithNoWhitespaceShouldPass($input)
     {
-        $this->assertTrue($this->noWhitespaceValidator->validate('wpoiur'));
-        $this->assertTrue($this->noWhitespaceValidator->check('wpoiur'));
-        $this->assertTrue($this->noWhitespaceValidator->assert('wpoiur'));
+        $this->assertTrue($this->noWhitespaceValidator->validate($input));
+        $this->assertTrue($this->noWhitespaceValidator->check($input));
+        $this->assertTrue($this->noWhitespaceValidator->assert($input));
     }
 
     /**
+     * @dataProvider providerForFail
      * @expectedException Respect\Validation\Exceptions\NoWhitespaceException
      */
-    public function testStringWithWhitespaceShouldFail()
+    public function testStringWithWhitespaceShouldFail($input)
     {
-        $this->assertFalse($this->noWhitespaceValidator->validate('w poiur'));
-        $this->assertFalse($this->noWhitespaceValidator->assert('w poiur'));
+        $this->assertFalse($this->noWhitespaceValidator->validate($input));
+        $this->assertFalse($this->noWhitespaceValidator->assert($input));
     }
     /**
      * @expectedException Respect\Validation\Exceptions\NoWhitespaceException
@@ -33,5 +37,24 @@ class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->noWhitespaceValidator->validate("w\npoiur"));
         $this->assertFalse($this->noWhitespaceValidator->assert("w\npoiur"));
     }
-}
 
+    public function providerForPass()
+    {
+        return array(
+            array(0),
+            array('wpoiur'),
+            array('Foo'),
+        );
+    }
+
+    public function providerForFail()
+    {
+        return array(
+            array(' '),
+            array('w poiur'),
+            array('      '),
+            array("Foo\nBar"),
+            array("Foo\tBar"),
+        );
+    }
+}
