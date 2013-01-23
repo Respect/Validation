@@ -59,6 +59,16 @@ Note that we used `v::string()` and `v::date()` in the beginning of the validato
 Although is not mandatory, it is a good practice to use the type of the
 validated object as the first node in the chain.
 
+### Input optional
+
+All validators treat input as optional and will accept empty string input as valid,
+unless otherwies stated in the documentation.
+
+We us the `v:notEmpty()` validator prefixed to disallow empty input and effectively
+define the field as mandatory as input will be required or validation will fail.
+
+    v::string()->notEmpty()->validate(''); //false input required
+
 ### Negating Rules
 
 You can use the `v::not()` to negate any rule:
@@ -325,7 +335,7 @@ remove them add `->noWhitespace()` to the chain:
 
     v::alnum()->noWhitespace->validate('foo 123'); //false
 
-This validator also allows empty values, if you want
+By default empty values are allowed, if you want
 to invalidate them, add `->notEmpty()` to the chain:
 
     v::alnum()->notEmpty()->validate(''); //false
@@ -1075,7 +1085,13 @@ See also:
 
 Validates if a string contains no whitespace (spaces, tabs and line breaks);
 
-    v::noWhitespace()->validate('foo bar'); //false
+    v::noWhitespace()->validate('foo bar');  //false
+    v::noWhitespace()->validate("foo\nbar"); //false
+
+Like other rules the input is still optional.
+
+    v::string()->noWhitespace()->validate('');  //true
+    v::string()->noWhitespace()->validate(' '); //false
 
 This is most useful when chaining with other validators such as `v::alnum()`
 
@@ -1124,8 +1140,9 @@ See also:
 
 #### v::notEmpty()
 
-Validates if the given input is not empty. This function ignores whitespace, so
-use `noWhitespace()` when appropriate.
+Validates if the given input is not empty or in other words is input mandatory and
+roequired. This function also takes whitespace into account, use `noWhitespace()`
+if no spaces or linebreaks and other whitespace anywhere in the input is desired.
 
     v::string()->notEmpty()->validate(''); //false
 
@@ -1143,7 +1160,8 @@ Empty arrays:
 
 Whitespace:
 
-    v::string()->noWhitespace()->validate('   '); //false
+    v::string()->notEmpty()->validate('        ');  //false
+    v::string()->notEmpty()->validate("\t \n \r");  //false
 
 See also:
 
@@ -1152,7 +1170,7 @@ See also:
 
 #### v::nullValue()
 
-Validates if the input is null.
+Validates if the input is null. This rule does not allow empty strings to avoid ambiguity.
 
     v::nullValue()->validate(null); //true
 
