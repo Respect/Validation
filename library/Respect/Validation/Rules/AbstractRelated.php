@@ -51,14 +51,9 @@ abstract class AbstractRelated extends AbstractRule
     public function check($input)
     {
         $hasReference = $this->hasReference($input);
-
-        if ($this->mandatory && !$hasReference) {
+        if ($this->mandatory && !$hasReference)
             throw $this->reportError($input, array('hasReference' => false));
-        } elseif ((!$this->mandatory && !$hasReference) || !$this->validator) {
-            return true;
-        }
-
-        return $this->validator->check($this->getReferenceValue($input));
+        return $this->decision('check', $hasReference, $input);
     }
 
     public function validate($input)
