@@ -18,7 +18,8 @@ abstract class AbstractRule implements Validatable
 
     public function __invoke($input)
     {
-        return $this->validate($input);
+        return !is_a($this, __NAMESPACE__.'\\NotEmpty')
+            && $input === '' || $this->validate($input);
     }
 
     public function addOr()
@@ -31,11 +32,9 @@ abstract class AbstractRule implements Validatable
 
     public function assert($input)
     {
-        if ($this->validate($input)) {
+        if ($this->__invoke($input))
             return true;
-        } else {
-            throw $this->reportError($input);
-        }
+        throw $this->reportError($input);
     }
 
     public function check($input)
