@@ -1,7 +1,7 @@
 <?php
 namespace Respect\Validation\Rules;
 
-class Print extends AbstractCtypeRule
+class Prnt extends AbstractCtypeRule
 {
     protected function filter($input)
     {

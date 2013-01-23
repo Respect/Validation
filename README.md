@@ -220,7 +220,7 @@ Reference
   * v::lowercase()
   * v::notEmpty()
   * v::noWhitespace()
-  * v::printable()
+  * v::prnt()
   * v::punct()
   * v::regex()
   * v::slug()
@@ -574,7 +574,7 @@ This is similar to `v::alnum()`, but only accepts control characters:
 See also:
 
   * v::alnum()     - a-z0-9, empty or whitespace only
-  * v::printable() - all printable characters
+  * v::prnt()      - all printable characters
   * v::space()     - empty or whitespace only
 
 #### v::countryCode
@@ -814,7 +814,7 @@ Validates all characters that are graphically represented.
 
 See also:
 
-  * v::printable()
+  * v::prnt()
 
 #### v::hexa() *(deprecated)*
 
@@ -1244,12 +1244,12 @@ Validates a prime number
 
     v::primeNumber()->validate(7); //true
 
-#### v::printable()
-#### v::printable(string $additionalChars)
+#### v::prnt()
+#### v::prnt(string $additionalChars)
 
 Similar to `v::graph` but accepts whitespace.
 
-    v::printable()->validate('LMKA0$% _123'); //true
+    v::prnt()->validate('LMKA0$% _123'); //true
 
 See also:
 
@@ -1266,7 +1266,7 @@ See also:
 
   * v::cntrl()
   * v::graph()
-  * v::printable()
+  * v::prnt()
 
 #### v::regex($regex)
 
