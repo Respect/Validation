@@ -1,7 +1,7 @@
 <?php
 namespace Respect\Validation\Rules;
 
-class Control extends AbstractCtypeRule
+class Punct extends AbstractCtypeRule
 {
     protected function filter($input)
     {
@@ -10,7 +10,7 @@ class Control extends AbstractCtypeRule
 
     protected function ctypeFunction($input)
     {
-        return ctype_cntrl($input);
+        return ctype_punct($input);
     }
 }
 

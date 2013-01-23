@@ -164,7 +164,7 @@ Reference
   * v::numeric()
   * v::object()
   * v::string()
-  * v::xdigits()
+  * v::xdigit()
 
 ### Generics
 
@@ -199,7 +199,7 @@ Reference
   * v::positive()
   * v::primeNumber()
   * v::roman()
-  * v::xdigits()
+  * v::xdigit()
 
 ### String
 
@@ -210,18 +210,18 @@ Reference
   * v::consonants() *(deprecated)*
   * v::consonant()
   * v::contains()
-  * v::control()
+  * v::cntrl()
   * v::digits() *(deprecated)*
   * v::digit()
   * v::endsWith()
   * v::in()
-  * v::graphical()
+  * v::graph()
   * v::length()
   * v::lowercase()
   * v::notEmpty()
   * v::noWhitespace()
   * v::printable()
-  * v::punctuation()
+  * v::punct()
   * v::regex()
   * v::slug()
   * v::space()
@@ -231,7 +231,7 @@ Reference
   * v::version()
   * v::vowels() *(deprecated)*
   * v::vowel()
-  * v::xdigits()
+  * v::xdigit()
 
 ### Arrays
 
@@ -564,12 +564,12 @@ See also:
   * v::endsWith()
   * v::in()
 
-#### v::control
-#### v::control(string $additionalChars)
+#### v::cntrl
+#### v::cntrl(string $additionalChars)
 
 This is similar to `v::alnum()`, but only accepts control characters:
 
-    v::control()->validate("\n\r\t"); //true
+    v::cntrl()->validate("\n\r\t"); //true
 
 See also:
 
@@ -805,12 +805,12 @@ Validates a floating point number.
     v::float()->validate(1.5); //true
     v::float()->validate('1e5'); //true
 
-#### v::graphical()
-#### v::graphical(string $additionalChars)
+#### v::graph()
+#### v::graph(string $additionalChars)
 
 Validates all characters that are graphically represented.
 
-    v::graphical()->validate('LKM@#$%4;'); //true
+    v::graph()->validate('LKM@#$%4;'); //true
 
 See also:
 
@@ -818,14 +818,14 @@ See also:
 
 #### v::hexa() *(deprecated)*
 
-Validates an hexadecimal number. It's now deprecated, xdigits should be used
+Validates an hexadecimal number. It's now deprecated, xdigit should be used
 instead.
 
     v::hexa()->validate('AF12'); //true
 
 See also:
 
-  * v::xdigits()
+  * v::xdigit()
 
 #### v::in($haystack)
 #### v::in($haystack, boolean $identical=false)
@@ -1247,25 +1247,25 @@ Validates a prime number
 #### v::printable()
 #### v::printable(string $additionalChars)
 
-Similar to `v::graphical` but accepts whitespace.
+Similar to `v::graph` but accepts whitespace.
 
-    v::graphical()->validate('LMKA0$% _123'); //true
+    v::printable()->validate('LMKA0$% _123'); //true
 
 See also:
 
-  * v::graphical()
+  * v::graph()
 
-#### v::punctuation()
-#### v::punctuation(string $additionalChars)
+#### v::punct()
+#### v::punct(string $additionalChars)
 
 Accepts only punctuation characters:
 
-    v::punctuation()->validate('&,.;[]'); //true
+    v::punct()->validate('&,.;[]'); //true
 
 See also:
 
-  * v::control()
-  * v::graphical()
+  * v::cntrl()
+  * v::graph()
   * v::printable()
 
 #### v::regex($regex)
@@ -1315,7 +1315,7 @@ Accepts only whitespace:
 
 See also:
 
-  * v::control()
+  * v::cntrl()
 
 #### v::startsWith($value)
 #### v::startsWith($value, boolean $identical=false)
@@ -1422,15 +1422,15 @@ See also:
   * v::oneOf()
   * v::noneOf()
 
-#### v::xdigits()
+#### v::xdigit()
 
 Accepts an hexadecimal number:
 
-    v::xdigits()->validate('abc123'); //true
+    v::xdigit()->validate('abc123'); //true
 
-Notice, however, that it doesn't accept numbers starting with 0x:
+Notice, however, that it doesn't accept strings starting with 0x:
 
-    v::xdigits()->validate('0x1f'); //false
+    v::xdigit()->validate('0x1f'); //false
 
 See also:
 

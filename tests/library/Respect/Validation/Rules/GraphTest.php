@@ -1,26 +1,26 @@
 <?php
 namespace Respect\Validation\Rules;
 
-class GraphicalTest extends \PHPUnit_Framework_TestCase
+class GraphTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @dataProvider providerForValidGraphical
+     * @dataProvider providerForValidGraph
      */
-    public function testValidDataWithGraphicalCharsShouldReturnTrue($validGraphical, $aditional='')
+    public function testValidDataWithGraphCharsShouldReturnTrue($validGraph, $aditional='')
     {
-        $validator = new Graphical($aditional);
-        $this->assertTrue($validator->validate($validGraphical));
+        $validator = new Graph($aditional);
+        $this->assertTrue($validator->validate($validGraph));
     }
 
     /**
-     * @dataProvider providerForInvalidGraphical
-     * @expectedException Respect\Validation\Exceptions\GraphicalException
+     * @dataProvider providerForInvalidGraph
+     * @expectedException Respect\Validation\Exceptions\GraphException
      */
-    public function testInvalidGraphicalShouldFailAndThrowGraphicalException($invalidGraphical, $aditional='')
+    public function testInvalidGraphShouldFailAndThrowGraphException($invalidGraph, $aditional='')
     {
-        $validator = new Graphical($aditional);
-        $this->assertFalse($validator->validate($invalidGraphical));
-        $this->assertFalse($validator->assert($invalidGraphical));
+        $validator = new Graph($aditional);
+        $this->assertFalse($validator->validate($invalidGraph));
+        $this->assertFalse($validator->assert($invalidGraph));
     }
 
     /**
@@ -29,7 +29,7 @@ class GraphicalTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
     {
-        $validator = new Graphical($aditional);
+        $validator = new Graph($aditional);
     }
 
     public function providerForInvalidParams()
@@ -41,7 +41,7 @@ class GraphicalTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForValidGraphical()
+    public function providerForValidGraph()
     {
         return array(
             array(''),
@@ -53,7 +53,7 @@ class GraphicalTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForInvalidGraphical()
+    public function providerForInvalidGraph()
     {
         return array(
             array(null),

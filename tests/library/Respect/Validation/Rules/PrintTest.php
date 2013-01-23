@@ -1,26 +1,26 @@
 <?php
 namespace Respect\Validation\Rules;
 
-class PrintableTest extends \PHPUnit_Framework_TestCase
+class PrintTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @dataProvider providerForValidPrintable
+     * @dataProvider providerForValidPrint
      */
-    public function testValidDataWithPrintableCharsShouldReturnTrue($validPrintable, $aditional='')
+    public function testValidDataWithPrintCharsShouldReturnTrue($validPrint, $aditional='')
     {
-        $validator = new Printable($aditional);
-        $this->assertTrue($validator->validate($validPrintable));
+        $validator = new Print($aditional);
+        $this->assertTrue($validator->validate($validPrint));
     }
 
     /**
-     * @dataProvider providerForInvalidPrintable
-     * @expectedException Respect\Validation\Exceptions\PrintableException
+     * @dataProvider providerForInvalidPrint
+     * @expectedException Respect\Validation\Exceptions\PrintException
      */
-    public function testInvalidPrintableShouldFailAndThrowPrintableException($invalidPrintable, $aditional='')
+    public function testInvalidPrintShouldFailAndThrowPrintException($invalidPrint, $aditional='')
     {
-        $validator = new Printable($aditional);
-        $this->assertFalse($validator->validate($invalidPrintable));
-        $this->assertFalse($validator->assert($invalidPrintable));
+        $validator = new Print($aditional);
+        $this->assertFalse($validator->validate($invalidPrint));
+        $this->assertFalse($validator->assert($invalidPrint));
     }
 
     /**
@@ -29,7 +29,7 @@ class PrintableTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
     {
-        $validator = new Printable($aditional);
+        $validator = new Print($aditional);
     }
 
     public function providerForInvalidParams()
@@ -41,7 +41,7 @@ class PrintableTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForValidPrintable()
+    public function providerForValidPrint()
     {
         return array(
             array(''),
@@ -55,7 +55,7 @@ class PrintableTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForInvalidPrintable()
+    public function providerForInvalidPrint()
     {
         return array(
             array(null),

@@ -1,26 +1,26 @@
 <?php
 namespace Respect\Validation\Rules;
 
-class ControlTest extends \PHPUnit_Framework_TestCase
+class CntrlTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @dataProvider providerForValidControl
+     * @dataProvider providerForValidCntrl
      */
-    public function testValidDataWithControlShouldReturnTrue($validControl, $aditional='')
+    public function testValidDataWithCntrlShouldReturnTrue($validCntrl, $aditional='')
     {
-        $validator = new Control($aditional);
-        $this->assertTrue($validator->validate($validControl));
+        $validator = new Cntrl($aditional);
+        $this->assertTrue($validator->validate($validCntrl));
     }
 
     /**
-     * @dataProvider providerForInvalidControl
-     * @expectedException Respect\Validation\Exceptions\ControlException
+     * @dataProvider providerForInvalidCntrl
+     * @expectedException Respect\Validation\Exceptions\CntrlException
      */
-    public function testInvalidControlShouldFailAndThrowControlException($invalidControl, $aditional='')
+    public function testInvalidCntrlShouldFailAndThrowCntrlException($invalidCntrl, $aditional='')
     {
-        $validator = new Control($aditional);
-        $this->assertFalse($validator->validate($invalidControl));
-        $this->assertFalse($validator->assert($invalidControl));
+        $validator = new Cntrl($aditional);
+        $this->assertFalse($validator->validate($invalidCntrl));
+        $this->assertFalse($validator->assert($invalidCntrl));
     }
 
     /**
@@ -29,7 +29,7 @@ class ControlTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
     {
-        $validator = new Control($aditional);
+        $validator = new Cntrl($aditional);
     }
 
     public function providerForInvalidParams()
@@ -41,7 +41,7 @@ class ControlTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForValidControl()
+    public function providerForValidCntrl()
     {
         return array(
             array(''),
@@ -53,7 +53,7 @@ class ControlTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForInvalidControl()
+    public function providerForInvalidCntrl()
     {
         return array(
             array('16-50'),

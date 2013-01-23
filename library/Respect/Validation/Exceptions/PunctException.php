@@ -1,7 +1,7 @@
 <?php
 namespace Respect\Validation\Exceptions;
 
-class PunctuationException extends AlphaException
+class PunctException extends AlphaException
 {
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(

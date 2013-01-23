@@ -1,7 +1,7 @@
 <?php
 namespace Respect\Validation\Rules;
 
-class Printable extends AbstractCtypeRule
+class Cntrl extends AbstractCtypeRule
 {
     protected function filter($input)
     {
@@ -10,7 +10,7 @@ class Printable extends AbstractCtypeRule
 
     protected function ctypeFunction($input)
     {
-        return ctype_print($input);
+        return ctype_cntrl($input);
     }
 }
 
