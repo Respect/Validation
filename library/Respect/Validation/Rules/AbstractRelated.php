@@ -31,16 +31,13 @@ abstract class AbstractRelated extends AbstractRule
 
     public function assert($input)
     {
-        $hasReference = $this->hasReference($input);
 
-        if ($this->mandatory && !$hasReference) {
+        $hasReference = $this->hasReference($input);
+        if ($this->mandatory && !$hasReference)
             throw $this->reportError($input, array('hasReference' => false));
-        } elseif ((!$this->mandatory && !$hasReference) || !$this->validator) {
-            return true;
-        }
 
         try {
-            return $this->validator->assert($this->getReferenceValue($input));
+            return $this->decision('assert', $hasReference, $input);
         } catch (ValidationException $e) {
             throw $this
                 ->reportError($this->reference, array('hasReference' => true))
