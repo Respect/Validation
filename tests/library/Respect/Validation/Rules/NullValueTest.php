@@ -18,12 +18,25 @@ class NullValueTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider providerForNotNull
      * @expectedException Respect\Validation\Exceptions\NullValueException
      */
-    public function testNotNull()
+    public function testNotNull($input)
     {
-        $this->assertFalse($this->object->validate('w poiur'));
-        $this->assertFalse($this->object->assert('w poiur'));
+        $this->assertFalse($this->object->validate($input));
+        $this->assertFalse($this->object->assert($input));
     }
+
+    public function providerForNotNull()
+    {
+        return array(
+            array(''),
+            array(0),
+            array('w poiur'),
+            array(' '),
+            array('Foo'),
+        );
+    }
+
 }
 
