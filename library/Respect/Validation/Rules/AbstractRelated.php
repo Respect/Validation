@@ -23,6 +23,12 @@ abstract class AbstractRelated extends AbstractRule
         $this->mandatory = $mandatory;
     }
 
+    private function decision($type, $hasReference, $input) {
+        return (!$this->mandatory && !$hasReference)
+            || (is_null($this->validator)
+                || $this->validator->$type($this->getReferenceValue($input)));
+    }
+
     public function assert($input)
     {
         $hasReference = $this->hasReference($input);
