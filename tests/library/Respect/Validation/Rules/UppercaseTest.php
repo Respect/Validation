@@ -28,6 +28,7 @@ class UppercaseTest extends \PHPUnit_Framework_TestCase
     public function providerForValidUppercase()
     {
         return array(
+            array(''),
             array('UPPERCASE'),
             array('UPPERCASE-WITH-DASHES'),
             array('UPPERCASE WITH SPACES'),

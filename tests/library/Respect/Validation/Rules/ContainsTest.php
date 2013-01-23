@@ -9,7 +9,7 @@ class ContainsTest extends \PHPUnit_Framework_TestCase
     public function testStringsContainingExpectedValueShouldPass($start, $input)
     {
         $v = new Contains($start);
-        $this->assertTrue($v->validate($input));
+        $this->assertTrue($v->__invoke($input));
         $this->assertTrue($v->check($input));
         $this->assertTrue($v->assert($input));
     }
@@ -21,13 +21,14 @@ class ContainsTest extends \PHPUnit_Framework_TestCase
     public function testStringsNotContainsExpectedValueShoudNotPass($start, $input, $identical=false)
     {
         $v = new Contains($start, $identical);
-        $this->assertFalse($v->validate($input));
+        $this->assertFalse($v->__invoke($input));
         $this->assertFalse($v->assert($input));
     }
 
     public function providerForContains()
     {
         return array(
+            array('foo', ''),
             array('foo', array('bar', 'foo')),
             array('foo', 'barbazFOO'),
             array('foo', 'barbazfoo'),

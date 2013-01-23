@@ -16,7 +16,7 @@ class FloatTest extends \PHPUnit_Framework_TestCase
     public function testFloatNumbersShouldPass($input)
     {
         $this->assertTrue($this->floatValidator->assert($input));
-        $this->assertTrue($this->floatValidator->validate($input));
+        $this->assertTrue($this->floatValidator->__invoke($input));
         $this->assertTrue($this->floatValidator->check($input));
     }
 
@@ -26,13 +26,14 @@ class FloatTest extends \PHPUnit_Framework_TestCase
      */
     public function testNotFloatNumbersShouldFail($input)
     {
-        $this->assertFalse($this->floatValidator->validate($input));
+        $this->assertFalse($this->floatValidator->__invoke($input));
         $this->assertFalse($this->floatValidator->assert($input));
     }
 
     public function providerForFloat()
     {
         return array(
+            array(''),
             array(165),
             array(1),
             array(0),
@@ -52,7 +53,6 @@ class FloatTest extends \PHPUnit_Framework_TestCase
             array('a'),
             array(' '),
             array('Foo'),
-            array(''),
         );
     }
 }

@@ -16,7 +16,7 @@ class PrimeNumberTest extends \PHPUnit_Framework_TestCase
      */
     public function testPrimeNumber($input)
     {
-        $this->assertTrue($this->object->validate($input));
+        $this->assertTrue($this->object->__invoke($input));
         $this->assertTrue($this->object->check($input));
         $this->assertTrue($this->object->assert($input));
     }
@@ -28,13 +28,14 @@ class PrimeNumberTest extends \PHPUnit_Framework_TestCase
      */
     public function testNotPrimeNumber($input)
     {
-        $this->assertFalse($this->object->validate($input));
+        $this->assertFalse($this->object->__invoke($input));
         $this->assertFalse($this->object->assert($input));
     }
 
     public function providerForPrimeNumber()
     {
         return array(
+            array(''),
             array(3),
             array(5),
             array(7),
@@ -59,7 +60,6 @@ class PrimeNumberTest extends \PHPUnit_Framework_TestCase
             array('a'),
             array(' '),
             array('Foo'),
-            array(''),
         );
     }
 }

@@ -29,6 +29,7 @@ class MultipleTest extends \PHPUnit_Framework_TestCase
     public function providerForMultiple()
     {
         return array(
+            array('', ''),
             array(5, 20),
             array(5, 5),
             array(5, 0),

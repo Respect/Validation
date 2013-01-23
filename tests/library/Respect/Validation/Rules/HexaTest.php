@@ -23,7 +23,7 @@ class HexaTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertTrue($this->hexaValidator->assert($input));
         $this->assertTrue($this->hexaValidator->check($input));
-        $this->assertTrue($this->hexaValidator->validate($input));
+        $this->assertTrue($this->hexaValidator->__invoke($input));
     }
 
     /**
@@ -32,13 +32,14 @@ class HexaTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidHexadecimalNumbersShouldThrowHexaException($input)
     {
-        $this->assertFalse($this->hexaValidator->validate($input));
+        $this->assertFalse($this->hexaValidator->__invoke($input));
         $this->assertFalse($this->hexaValidator->assert($input));
     }
 
     public function providerForHexa()
     {
         return array(
+            array(''),
             array('FFF'),
             array('15'),
             array('DE12FA'),
@@ -54,7 +55,6 @@ class HexaTest extends \PHPUnit_Framework_TestCase
             array('j'),
             array(' '),
             array('Foo'),
-            array(''),
             array('1.5'),
         );
     }

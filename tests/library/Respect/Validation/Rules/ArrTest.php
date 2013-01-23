@@ -19,7 +19,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidArrayOrArrayObjectShouldReturnTrue($input)
     {
-        $this->assertTrue($this->object->validate($input));
+        $this->assertTrue($this->object->__invoke($input));
         $this->assertTrue($this->object->assert($input));
         $this->assertTrue($this->object->check($input));
     }
@@ -30,13 +30,14 @@ class ArrTest extends \PHPUnit_Framework_TestCase
      */
     public function testNotArraysShouldThrowArrException($input)
     {
-        $this->assertFalse($this->object->validate($input));
+        $this->assertFalse($this->object->__invoke($input));
         $this->assertFalse($this->object->assert($input));
     }
 
     public function providerForArray()
     {
         return array(
+            array(''),
             array(array()),
             array(array(1, 2, 3)),
             array(new TestAccess),

@@ -46,11 +46,11 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
     public function providerForValidAlpha()
     {
         return array(
+            array('', ''),
             array('alganet', ''),
             array('alganet', 'alganet'),
             array('0alg-anet0', '0-9'),
             array('a', ''),
-            array('', ''),
             array("\t", ''),
             array("\n", ''),
             array('foobar', ''),

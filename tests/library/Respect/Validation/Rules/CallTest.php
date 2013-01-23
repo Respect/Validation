@@ -8,6 +8,12 @@ class CallTest extends \PHPUnit_Framework_TestCase
         return array();
     }
 
+    public function testCallbackValidatorShouldAcceptEmptyString()
+    {
+        $v = new Call('str_split', new Arr);
+        $this->assertTrue($v->assert(''));
+    }
+
     public function testCallbackValidatorShouldAcceptStringWithFunctionName()
     {
         $v = new Call('str_split', new Arr);

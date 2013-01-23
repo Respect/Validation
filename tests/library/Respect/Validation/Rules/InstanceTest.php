@@ -12,7 +12,10 @@ class InstanceTest extends \PHPUnit_Framework_TestCase
 
     public function testInstanceValidationShouldReturnTrueForValidInstances()
     {
-        $this->assertTrue($this->instanceValidator->validate(new \ArrayObject));
+        $this->assertTrue($this->instanceValidator->__invoke(''));
+        $this->assertTrue($this->instanceValidator->assert(''));
+        $this->assertTrue($this->instanceValidator->check(''));
+        $this->assertTrue($this->instanceValidator->__invoke(new \ArrayObject));
         $this->assertTrue($this->instanceValidator->assert(new \ArrayObject));
         $this->assertTrue($this->instanceValidator->check(new \ArrayObject));
     }

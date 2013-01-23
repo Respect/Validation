@@ -9,7 +9,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
     public function testLenghtInsideBoundsShouldReturnTrue($string, $min, $max)
     {
         $validator = new Length($min, $max);
-        $this->assertTrue($validator->validate($string));
+        $this->assertTrue($validator->__invoke($string));
         $this->assertTrue($validator->check($string));
         $this->assertTrue($validator->assert($string));
     }
@@ -21,7 +21,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
     public function testLengthOutsideBoundsShouldThrowLengthException($string, $min, $max)
     {
         $validator = new Length($min, $max, false);
-        $this->assertfalse($validator->validate($string));
+        $this->assertfalse($validator->__invoke($string));
         $this->assertfalse($validator->assert($string));
     }
 
@@ -32,7 +32,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
     public function testLengthOutsideValidBoundsShouldThrowLengthException($string, $min, $max)
     {
         $validator = new Length($min, $max);
-        $this->assertFalse($validator->validate($string));
+        $this->assertFalse($validator->__invoke($string));
         $this->assertFalse($validator->assert($string));
     }
 
@@ -43,13 +43,14 @@ class LengthTest extends \PHPUnit_Framework_TestCase
     public function testInvalidConstructorParametersShouldThrowComponentExceptionUponInstantiation($string, $min, $max)
     {
         $validator = new Length($min, $max);
-        $this->assertFalse($validator->validate($string));
+        $this->assertFalse($validator->__invoke($string));
         $this->assertFalse($validator->assert($string));
     }
 
     public function providerForValidLenght()
     {
         return array(
+            array('', 1, 15),
             array('alganet', 1, 15),
             array('ççççç', 4, 6),
             array(range(1, 20), 1, 30),

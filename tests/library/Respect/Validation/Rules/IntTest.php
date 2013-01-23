@@ -16,7 +16,7 @@ class IntTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidIntegersShouldReturnTrue($input)
     {
-        $this->assertTrue($this->intValidator->validate($input));
+        $this->assertTrue($this->intValidator->__invoke($input));
         $this->assertTrue($this->intValidator->check($input));
         $this->assertTrue($this->intValidator->assert($input));
     }
@@ -27,13 +27,14 @@ class IntTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidIntegersShouldThrowIntException($input)
     {
-        $this->assertFalse($this->intValidator->validate($input));
+        $this->assertFalse($this->intValidator->__invoke($input));
         $this->assertFalse($this->intValidator->assert($input));
     }
 
     public function providerForInt()
     {
         return array(
+            array(''),
             array(16),
             array('165'),
             array(123456),
@@ -48,7 +49,6 @@ class IntTest extends \PHPUnit_Framework_TestCase
             array('a'),
             array(' '),
             array('Foo'),
-            array(''),
             array('1.44'),
             array(1e-5),
         );
