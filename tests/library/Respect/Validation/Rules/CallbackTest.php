@@ -19,6 +19,12 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
         return true;
     }
 
+    public function testCallbackValidatorShouldReturnTrueForEmptyString()
+    {
+        $this->assertTrue($this->truthy->assert(''));
+        $this->assertTrue($this->falsy->assert(''));
+    }
+
     public function testCallbackValidatorShouldReturnTrueIfCallbackReturnsTrue()
     {
         $this->assertTrue($this->truthy->assert('wpoiur'));

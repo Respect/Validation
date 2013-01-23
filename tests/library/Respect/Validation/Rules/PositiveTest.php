@@ -16,7 +16,7 @@ class PositiveTest extends \PHPUnit_Framework_TestCase
      */
     public function testPositive($input)
     {
-        $this->assertTrue($this->object->validate($input));
+        $this->assertTrue($this->object->__invoke($input));
         $this->assertTrue($this->object->check($input));
         $this->assertTrue($this->object->assert($input));
     }
@@ -27,13 +27,14 @@ class PositiveTest extends \PHPUnit_Framework_TestCase
      */
     public function testNotPositive($input)
     {
-        $this->assertFalse($this->object->validate($input));
+        $this->assertFalse($this->object->__invoke($input));
         $this->assertFalse($this->object->assert($input));
     }
 
     public function providerForPositive()
     {
         return array(
+            array(''),
             array(16),
             array('165'),
             array(123456),
@@ -48,7 +49,6 @@ class PositiveTest extends \PHPUnit_Framework_TestCase
             array('a'),
             array(' '),
             array('Foo'),
-            array(''),
             array('-1.44'),
             array(-1e-5),
             array(0),

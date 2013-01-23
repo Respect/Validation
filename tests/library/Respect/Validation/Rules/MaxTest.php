@@ -28,6 +28,7 @@ class MaxTest extends \PHPUnit_Framework_TestCase
     public function providerForValidMax()
     {
         return array(
+            array(200, false, ''),
             array(200, false, 165.0),
             array(200, false, -200),
             array(200, true, 200),

@@ -16,7 +16,7 @@ class CreditCardTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidCreditCardsShouldReturnTrue($input)
     {
-        $this->assertTrue($this->creditCardValidator->validate($input));
+        $this->assertTrue($this->creditCardValidator->__invoke($input));
         $this->assertTrue($this->creditCardValidator->assert($input));
         $this->assertTrue($this->creditCardValidator->check($input));
     }
@@ -27,13 +27,14 @@ class CreditCardTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidCreditCardsShouldThrowCreditCardException($input)
     {
-        $this->assertFalse($this->creditCardValidator->validate($input));
+        $this->assertFalse($this->creditCardValidator->__invoke($input));
         $this->assertFalse($this->creditCardValidator->assert($input));
     }
 
     public function providerForCreditCard()
     {
         return array(
+            array(''),
             array('5376 7473 9720 8720'), // MasterCard
             array('4024.0071.5336.1885'), // Visa 16
             array('4024 007 193 879'), // Visa 13
@@ -48,7 +49,6 @@ class CreditCardTest extends \PHPUnit_Framework_TestCase
             array(null),
             array('it isnt my credit card number'),
             array('&stR@ng3|) (|-|@r$'),
-            array(''),
             array('1234 1234 1234 1234'),
             array('1234.1234.1234.1234'),
         );

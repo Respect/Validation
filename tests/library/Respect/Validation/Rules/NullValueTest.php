@@ -13,7 +13,7 @@ class NullValueTest extends \PHPUnit_Framework_TestCase
     public function testNullValue()
     {
         $this->assertTrue($this->object->assert(null));
-        $this->assertTrue($this->object->validate(null));
+        $this->assertTrue($this->object->__invoke(null));
         $this->assertTrue($this->object->check(null));
     }
 
@@ -23,7 +23,7 @@ class NullValueTest extends \PHPUnit_Framework_TestCase
      */
     public function testNotNull($input)
     {
-        $this->assertFalse($this->object->validate($input));
+        $this->assertFalse($this->object->__invoke($input));
         $this->assertFalse($this->object->assert($input));
     }
 

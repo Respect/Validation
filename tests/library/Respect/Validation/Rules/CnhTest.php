@@ -15,8 +15,9 @@ class CnhTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidCnh($cnh)
     {
-        $expectedValid = $this->cnhValidator->assert($cnh);
-        $this->assertTrue($expectedValid);
+        $this->assertTrue($this->cnhValidator->assert($cnh));
+        $this->assertTrue($this->cnhValidator->__invoke($cnh));
+        $this->assertTrue($this->cnhValidator->check($cnh));
     }
 
     /**
@@ -52,6 +53,7 @@ class CnhTest extends \PHPUnit_Framework_TestCase
     public function validCnhProvider()
     {
         return array(
+               array(''),
                array('02650306461'),
                array('04397322870'),
                array('04375701302'),

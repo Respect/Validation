@@ -10,7 +10,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
     public function testValidIpsShouldReturnTrue($input, $options=null)
     {
         $ipValidator = new Ip($options);
-        $this->assertTrue($ipValidator->validate($input));
+        $this->assertTrue($ipValidator->__invoke($input));
         $this->assertTrue($ipValidator->assert($input));
         $this->assertTrue($ipValidator->check($input));
     }
@@ -21,7 +21,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
     public function testIpsBetweenRangeShouldReturnTrue($input, $networkRange)
     {
         $ipValidator = new Ip($networkRange);
-        $this->assertTrue($ipValidator->validate($input));
+        $this->assertTrue($ipValidator->__invoke($input));
         $this->assertTrue($ipValidator->assert($input));
         $this->assertTrue($ipValidator->check($input));
     }
@@ -33,7 +33,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
     public function testInvalidIpsShouldThrowIpException($input, $options=null)
     {
         $ipValidator = new Ip($options);
-        $this->assertFalse($ipValidator->validate($input));
+        $this->assertFalse($ipValidator->__invoke($input));
         $this->assertFalse($ipValidator->assert($input));
     }
 
@@ -44,13 +44,14 @@ class IpTest extends \PHPUnit_Framework_TestCase
     public function testIpsOutsideRangeShouldReturnFalse($input, $networkRange)
     {
         $ipValidator = new Ip($networkRange);
-        $this->assertFalse($ipValidator->validate($input));
+        $this->assertFalse($ipValidator->__invoke($input));
         $this->assertFalse($ipValidator->assert($input));
     }
 
     public function providerForIp()
     {
         return array(
+            array(''),
             array('127.0.0.1'),
         );
     }
@@ -85,7 +86,6 @@ class IpTest extends \PHPUnit_Framework_TestCase
             array('j'),
             array(' '),
             array('Foo'),
-            array(''),
             array('192.168.0.1', FILTER_FLAG_NO_PRIV_RANGE),
         );
     }

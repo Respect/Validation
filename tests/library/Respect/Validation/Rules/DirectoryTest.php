@@ -9,7 +9,7 @@ class DirectoryTest extends \PHPUnit_Framework_TestCase
     public function testValidDirectoryShouldReturnTrue($input)
     {
         $rule = new Directory();
-        $this->assertTrue($rule->validate($input));
+        $this->assertTrue($rule->__invoke($input));
         $this->assertTrue($rule->assert($input));
         $this->assertTrue($rule->check($input));
     }
@@ -21,7 +21,7 @@ class DirectoryTest extends \PHPUnit_Framework_TestCase
     public function testInvalidDirectoryShouldThrowException($input)
     {
         $rule = new Directory();
-        $this->assertFalse($rule->validate($input));
+        $this->assertFalse($rule->__invoke($input));
         $this->assertFalse($rule->assert($input));
         $this->assertFalse($rule->check($input));
     }
@@ -58,7 +58,7 @@ class DirectoryTest extends \PHPUnit_Framework_TestCase
             sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'dataprovider-5',
         );
 
-        return array_map(
+        return array(array('')) + array_map(
             function ($directory) {
                 if (!is_dir($directory)) {
                     mkdir($directory, 0766, true);

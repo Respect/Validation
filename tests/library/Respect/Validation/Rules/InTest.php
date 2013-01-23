@@ -10,7 +10,7 @@ class InTest extends \PHPUnit_Framework_TestCase
     public function testSuccessInValidatorCases($input, $options=null)
     {
         $v = new In($options);
-        $this->assertTrue($v->validate($input));
+        $this->assertTrue($v->__invoke($input));
         $this->assertTrue($v->check($input));
         $this->assertTrue($v->assert($input));
     }
@@ -22,13 +22,14 @@ class InTest extends \PHPUnit_Framework_TestCase
     public function testInvalidInChecksShouldThrowInException($input, $options, $strict=false)
     {
         $v = new In($options, $strict);
-        $this->assertFalse($v->validate($input));
+        $this->assertFalse($v->__invoke($input));
         $this->assertFalse($v->assert($input));
     }
 
     public function providerForIn()
     {
         return array(
+            array('', 'barfoobaz'),
             array('foo', array('foo', 'bar')),
             array('foo', 'barfoobaz'),
             array('foo', 'foobarbaz'),

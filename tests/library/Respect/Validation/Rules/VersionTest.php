@@ -9,7 +9,7 @@ class VersionTest extends \PHPUnit_Framework_TestCase
     public function testValidVersionShouldReturnTrue($input)
     {
         $rule = new Version();
-        $this->assertTrue($rule->validate($input));
+        $this->assertTrue($rule->__invoke($input));
         $this->assertTrue($rule->assert($input));
         $this->assertTrue($rule->check($input));
     }
@@ -21,13 +21,14 @@ class VersionTest extends \PHPUnit_Framework_TestCase
     public function testInvalidVersionShouldThrowException($input)
     {
         $rule = new Version();
-        $this->assertFalse($rule->validate($input));
+        $this->assertFalse($rule->__invoke($input));
         $this->assertFalse($rule->assert($input));
     }
 
     public function providerForValidVersion()
     {
         return array(
+            array(''),
             array('1.0.0'),
             array('1.0.0-alpha'),
             array('1.0.0-alpha.1'),

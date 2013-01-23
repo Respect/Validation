@@ -16,7 +16,7 @@ class RomanTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidRomansShouldReturnTrue($input)
     {
-        $this->assertTrue($this->romanValidator->validate($input));
+        $this->assertTrue($this->romanValidator->__invoke($input));
         $this->assertTrue($this->romanValidator->assert($input));
         $this->assertTrue($this->romanValidator->check($input));
     }
@@ -27,13 +27,14 @@ class RomanTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidRomansShouldThrowRomanException($input)
     {
-        $this->assertFalse($this->romanValidator->validate($input));
+        $this->assertFalse($this->romanValidator->__invoke($input));
         $this->assertFalse($this->romanValidator->assert($input));
     }
 
     public function providerForRoman()
     {
         return array(
+            array(''),
             array('III'),
             array('IV'),
             array('VI'),
@@ -52,6 +53,7 @@ class RomanTest extends \PHPUnit_Framework_TestCase
     public function providerForNotRoman()
     {
         return array(
+            array(' '),
             array('IIII'),
             array('IVVVX'),
             array('CCDC'), //

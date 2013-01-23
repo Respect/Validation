@@ -41,9 +41,12 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
                     return true;
                 });
         $o = new AllOf($valid1, $valid2, $valid3);
-        $this->assertTrue($o->validate('any'));
+        $this->assertTrue($o->__invoke('any'));
         $this->assertTrue($o->check('any'));
         $this->assertTrue($o->assert('any'));
+        $this->assertTrue($o->__invoke(''));
+        $this->assertTrue($o->check(''));
+        $this->assertTrue($o->assert(''));
     }
 
     /**
@@ -53,7 +56,7 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
     public function testValidationAssertShouldFailIfAnyRuleFailsAndReturnAllExceptionsFailed($v1, $v2, $v3)
     {
         $o = new AllOf($v1, $v2, $v3);
-        $this->assertFalse($o->validate('any'));
+        $this->assertFalse($o->__invoke('any'));
         $this->assertFalse($o->assert('any'));
     }
 
@@ -64,8 +67,19 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
     public function testValidationCheckShouldFailIfAnyRuleFailsAndThrowTheFirstExceptionOnly($v1, $v2, $v3)
     {
         $o = new AllOf($v1, $v2, $v3);
-        $this->assertFalse($o->validate('any'));
+        $this->assertFalse($o->__invoke('any'));
         $this->assertFalse($o->check('any'));
+    }
+
+    /**
+     * @dataProvider providerStaticDummyRules
+     */
+    public function testValidationCheckShouldNotFailOnEmptyInput($v1, $v2, $v3)
+    {
+        $o = new AllOf($v1, $v2, $v3);
+        $this->assertTrue($o->__invoke(''));
+        $this->assertTrue($o->check(''));
+        $this->assertTrue($o->assert(''));
     }
 
     /**
@@ -74,7 +88,7 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
     public function testValidationShouldFailIfAnyRuleFails($v1, $v2, $v3)
     {
         $o = new AllOf($v1, $v2, $v3);
-        $this->assertFalse($o->validate('any'));
+        $this->assertFalse($o->__invoke('any'));
     }
 
     public function providerStaticDummyRules()

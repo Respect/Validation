@@ -49,6 +49,7 @@ class NotTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidNot()
     {
         return array(
+            array(new Int, ''),
             array(new Int, 123),
             array(new AllOf(new NoWhitespace, new Digit), '12 34')
         );
