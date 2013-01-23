@@ -3,6 +3,17 @@ namespace Respect\Validation\Rules;
 
 class CallbackTest extends \PHPUnit_Framework_TestCase
 {
+    private $truthy, $falsy;
+
+    function setUp() {
+        $this->truthy = new Callback(function() {
+            return true;
+        });
+        $this->falsy = new Callback(function() {
+            return false;
+        });
+    }
+
     public function thisIsASampleCallbackUsedInsideThisTest()
     {
         return true;
@@ -10,10 +21,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
 
     public function testCallbackValidatorShouldReturnTrueIfCallbackReturnsTrue()
     {
-        $v = new Callback(function() {
-                    return true;
-                });
-        $this->assertTrue($v->assert('wpoiur'));
+        $this->assertTrue($this->truthy->assert('wpoiur'));
     }
 
     /**
@@ -21,10 +29,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
      */
     public function testCallbackValidatorShouldReturnFalseIfCallbackReturnsFalse()
     {
-        $v = new Callback(function() {
-                    return false;
-                });
-        $this->assertTrue($v->assert('w poiur'));
+        $this->assertTrue($this->falsy->assert('w poiur'));
     }
 
     public function testCallbackValidatorShouldAcceptArrayCallbackDefinitions()
