@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use Countable;
@@ -8,7 +7,6 @@ use Respect\Validation\Rules\AbstractRule;
 
 class Length extends AbstractRule
 {
-
     public $minValue;
     public $maxValue;
     public $inclusive;
@@ -83,5 +81,5 @@ class Length extends AbstractRule
 
         return $length < $this->maxValue;
     }
-
 }
+

@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class OneOfTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testValid()
     {
         $valid1 = new Callback(function() {
@@ -80,24 +78,24 @@ class OneOfTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\HexaException
+     * @expectedException Respect\Validation\Exceptions\XdigitException
      */
     public function testInvalidCheck()
     {
-        $o = new OneOf(new Hexa, new Alnum);
+        $o = new OneOf(new Xdigit, new Alnum);
         $this->assertFalse($o->validate(-10));
         $this->assertFalse($o->check(-10));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\HexaException
+     * @expectedException Respect\Validation\Exceptions\XdigitException
      */
     public function testShorcutInvalidCheck()
     {
-        $hexa = new Hexa;
-        $o = $hexa->addOr(new Alnum);
+        $xdigits = new Xdigit;
+        $o = $xdigits->addOr(new Alnum);
         $this->assertFalse($o->validate(-10));
         $this->assertFalse($o->check(-10));
     }
-
 }
+

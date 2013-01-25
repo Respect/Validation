@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
@@ -8,7 +7,6 @@ use Respect\Validation\Validator;
 
 abstract class AbstractComposite extends AbstractRule
 {
-
     protected $rules = array();
 
     public function __construct()
@@ -94,5 +92,5 @@ abstract class AbstractComposite extends AbstractRule
 
         return $exceptions;
     }
-
 }
+

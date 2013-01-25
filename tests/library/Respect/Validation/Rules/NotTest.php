@@ -1,12 +1,10 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validator;
 
 class NotTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidNot
      *
@@ -44,16 +42,17 @@ class NotTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(new Int, 'aaa'),
-            array(new AllOf(new NoWhitespace, new Digits), 'as df')
+            array(new AllOf(new NoWhitespace, new Digit), 'as df')
         );
     }
 
     public function providerForInvalidNot()
     {
         return array(
+            array(new Int, ''),
             array(new Int, 123),
-            array(new AllOf(new NoWhitespace, new Digits), '12 34')
+            array(new AllOf(new NoWhitespace, new Digit), '12 34')
         );
     }
-
 }
+

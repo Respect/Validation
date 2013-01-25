@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class AbstractGroupedException extends AbstractNestedException
@@ -48,3 +47,4 @@ class AbstractGroupedException extends AbstractNestedException
         }
     }
 }
+

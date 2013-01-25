@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class UppercaseTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidUppercase
      */
@@ -30,6 +28,7 @@ class UppercaseTest extends \PHPUnit_Framework_TestCase
     public function providerForValidUppercase()
     {
         return array(
+            array(''),
             array('UPPERCASE'),
             array('UPPERCASE-WITH-DASHES'),
             array('UPPERCASE WITH SPACES'),
@@ -49,5 +48,5 @@ class UppercaseTest extends \PHPUnit_Framework_TestCase
             array('With Numbers 1 2 3'),
         );
     }
-
 }
+

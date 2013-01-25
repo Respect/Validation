@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 use DateTime;
@@ -180,15 +179,10 @@ class ValidationException extends InvalidArgumentException
 
     protected function guessId()
     {
-        if (!empty($this->id) && $this->id != 'validation') {
+        if (!empty($this->id) && $this->id != 'validation')
             return $this->id;
-        }
-
-        $classParts = explode('\\', get_called_class());
-        $id = end($classParts);
-        $id = lcfirst(str_replace('Exception', '', $id));
-
-        return $id;
+        return lcfirst(str_replace('Exception', '',
+            end((explode('\\', get_called_class())))));
     }
-
 }
+

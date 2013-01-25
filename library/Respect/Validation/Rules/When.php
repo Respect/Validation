@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validatable;
@@ -21,7 +20,7 @@ class When extends AbstractRule
     {
         if ($this->when->validate($input)) {
             return $this->then->validate($input);
-        } else {            
+        } else {
             return $this->else->validate($input);
         }
     }
@@ -43,5 +42,5 @@ class When extends AbstractRule
             return $this->else->check($input);
         }
     }
-
 }
+

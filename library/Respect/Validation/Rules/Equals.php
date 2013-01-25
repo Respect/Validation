@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class Equals extends AbstractRule
 {
-
     public $compareIdentical = false;
     public $compareTo = null;
 
@@ -27,5 +25,5 @@ class Equals extends AbstractRule
             return $input == $this->compareTo;
         }
     }
-
 }
+

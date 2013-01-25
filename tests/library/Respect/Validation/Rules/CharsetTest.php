@@ -1,17 +1,15 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class CharsetTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidCharset
      */
     public function testValidDataWithCharsetShouldReturnTrue($charset, $input)
     {
         $validator = new Charset($charset);
-        $this->assertTrue($validator->validate($input));
+        $this->assertTrue($validator->__invoke($input));
     }
 
     /**
@@ -21,7 +19,7 @@ class CharsetTest extends \PHPUnit_Framework_TestCase
     public function testInvalidCharsetShouldFailAndThrowCharsetException($charset, $input)
     {
         $validator = new Charset($charset);
-        $this->assertFalse($validator->validate($input));
+        $this->assertFalse($validator->__invoke($input));
         $this->assertFalse($validator->assert($input));
     }
 
@@ -52,6 +50,7 @@ class CharsetTest extends \PHPUnit_Framework_TestCase
     public function providerForValidCharset()
     {
         return array(
+            array('UTF-8', ''),
             array('ISO-8859-1', mb_convert_encoding('açaí', 'ISO-8859-1')),
             array(array('UTF-8', 'ASCII'), 'strawberry'),
             array('ASCII', mb_convert_encoding('strawberry', 'ASCII')),
@@ -69,5 +68,5 @@ class CharsetTest extends \PHPUnit_Framework_TestCase
             array('ASCII', 'açaí')
         );
     }
-
 }
+

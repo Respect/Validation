@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class PrimeNumber extends AbstractRule
 {
-
     public function validate($input)
     {
         if (is_numeric($input) && $input > 0) {
@@ -15,7 +13,7 @@ class PrimeNumber extends AbstractRule
                     $cont = $cont + 1;
                 }
             }
-                
+
             if ($cont <= 2) {
                 $input = 1;
             } else {
@@ -28,5 +26,5 @@ class PrimeNumber extends AbstractRule
 
         return (boolean) $input;
     }
-
 }
+

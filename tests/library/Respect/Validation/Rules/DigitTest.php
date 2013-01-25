@@ -1,26 +1,24 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
-class DigitsTest extends \PHPUnit_Framework_TestCase
+class DigitTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidDigits
      */
     public function testValidDataWithDigitsShouldReturnTrue($validDigits, $aditional='')
     {
-        $validator = new Digits($aditional);
+        $validator = new Digit($aditional);
         $this->assertTrue($validator->validate($validDigits));
     }
 
     /**
      * @dataProvider providerForInvalidDigits
-     * @expectedException Respect\Validation\Exceptions\DigitsException
+     * @expectedException Respect\Validation\Exceptions\DigitException
      */
-    public function testInvalidDigitsShouldFailAndThrowDigitsException($invalidDigits, $aditional='')
+    public function testInvalidDigitsShouldFailAndThrowDigitException($invalidDigits, $aditional='')
     {
-        $validator = new Digits($aditional);
+        $validator = new Digit($aditional);
         $this->assertFalse($validator->validate($invalidDigits));
         $this->assertFalse($validator->assert($invalidDigits));
     }
@@ -31,7 +29,7 @@ class DigitsTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
     {
-        $validator = new Digits($aditional);
+        $validator = new Digit($aditional);
     }
 
     public function providerForInvalidParams()
@@ -46,6 +44,9 @@ class DigitsTest extends \PHPUnit_Framework_TestCase
     public function providerForValidDigits()
     {
         return array(
+            array(''),
+            array("\n\t"),
+            array(' '),
             array(165),
             array(1650),
             array('01650'),
@@ -63,14 +64,11 @@ class DigitsTest extends \PHPUnit_Framework_TestCase
             array(null),
             array('16-50'),
             array('a'),
-            array(' '),
             array('Foo'),
-            array(''),
-            array("\n\t"),
             array('12.1'),
             array('-12'),
             array(-12),
         );
     }
-
 }
+

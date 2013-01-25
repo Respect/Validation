@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class WhenTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testWhenHappypath()
     {
         $v = new When(new Int(), new Between(1,5), new NotEmpty());
@@ -49,3 +47,4 @@ class WhenTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($v->check(''));
     }
 }
+

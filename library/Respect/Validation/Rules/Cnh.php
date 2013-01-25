@@ -3,7 +3,6 @@ namespace Respect\Validation\Rules;
 
 class Cnh extends AbstractRule
 {
-
     public function validate($input)
     {
         $ret = false;
@@ -31,5 +30,5 @@ class Cnh extends AbstractRule
 
         return $ret;
     }
-
 }
+

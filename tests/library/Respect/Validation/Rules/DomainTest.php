@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class DomainTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $object;
 
     protected function setUp()
@@ -18,7 +16,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidDomainsShouldReturnTrue($input)
     {
-        $this->assertTrue($this->object->validate($input));
+        $this->assertTrue($this->object->__invoke($input));
         $this->assertTrue($this->object->assert($input));
         $this->assertTrue($this->object->check($input));
     }
@@ -44,6 +42,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
     public function providerForDomain()
     {
         return array(
+            array(''),
             array('example.com'),
             array('example-hyphen.com'),
             array('1.2.3.4'),
@@ -60,5 +59,5 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             array('1.2.3.256'),
         );
     }
-
 }
+

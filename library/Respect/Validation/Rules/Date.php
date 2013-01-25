@@ -1,12 +1,10 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use DateTime;
 
 class Date extends AbstractRule
 {
-
     public $format = null;
 
     public function __construct($format=null)
@@ -29,5 +27,5 @@ class Date extends AbstractRule
         return $dateFromFormat
                && $input === date($this->format, $dateFromFormat->getTimestamp());
     }
-
 }
+

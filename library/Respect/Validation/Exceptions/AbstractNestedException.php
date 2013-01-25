@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 use RecursiveIteratorIterator;
@@ -104,5 +103,5 @@ class AbstractNestedException extends ValidationException
 
         return $this;
     }
-
 }
+

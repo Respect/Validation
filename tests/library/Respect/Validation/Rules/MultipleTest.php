@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class MultipleTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForMultiple
      *
@@ -31,6 +29,7 @@ class MultipleTest extends \PHPUnit_Framework_TestCase
     public function providerForMultiple()
     {
         return array(
+            array('', ''),
             array(5, 20),
             array(5, 5),
             array(5, 0),
@@ -57,5 +56,5 @@ class MultipleTest extends \PHPUnit_Framework_TestCase
             array(0, 2),
         );
     }
-
 }
+

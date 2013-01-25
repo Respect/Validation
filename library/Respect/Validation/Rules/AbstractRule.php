@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validatable;
@@ -7,7 +6,6 @@ use Respect\Validation\Exceptions\ValidationException;
 
 abstract class AbstractRule implements Validatable
 {
-
     protected $name;
     protected $template = null;
 
@@ -20,7 +18,8 @@ abstract class AbstractRule implements Validatable
 
     public function __invoke($input)
     {
-        return $this->validate($input);
+        return !is_a($this, __NAMESPACE__.'\\NotEmpty')
+            && $input === '' || $this->validate($input);
     }
 
     public function addOr()
@@ -33,11 +32,9 @@ abstract class AbstractRule implements Validatable
 
     public function assert($input)
     {
-        if ($this->validate($input)) {
+        if ($this->__invoke($input))
             return true;
-        } else {
-            throw $this->reportError($input);
-        }
+        throw $this->reportError($input);
     }
 
     public function check($input)
@@ -47,6 +44,8 @@ abstract class AbstractRule implements Validatable
 
     public function getName()
     {
+        if (empty($this->name))
+            preg_replace('/.*\\\/', '', get_class($this));
         return $this->name;
     }
 
@@ -54,16 +53,14 @@ abstract class AbstractRule implements Validatable
     {
         $exception = $this->createException();
         $input = ValidationException::stringify($input);
-        $name = $this->getName() ? : "\"$input\"";
+        $name = $this->name ?: "\"$input\"";
         $params = array_merge(
             get_class_vars(__CLASS__), get_object_vars($this), $extraParams,
             compact('input')
         );
         $exception->configure($name, $params);
-        if (!is_null($this->template)) {
+        if (!is_null($this->template))
             $exception->setTemplate($this->template);
-        }
-
         return $exception;
     }
 
@@ -89,5 +86,5 @@ abstract class AbstractRule implements Validatable
 
         return new $exceptionFQN;
     }
-
 }
+

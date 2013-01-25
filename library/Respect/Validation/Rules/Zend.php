@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use ReflectionClass;
@@ -7,7 +6,6 @@ use Respect\Validation\Exceptions\ComponentException;
 
 class Zend extends AbstractRule
 {
-
     protected $messages = array();
     protected $zendValidator;
 
@@ -58,5 +56,5 @@ class Zend extends AbstractRule
 
         return $validator->isValid($input);
     }
-
 }
+

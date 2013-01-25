@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class EvenTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $evenValidator;
 
     protected function setUp()
@@ -35,6 +33,7 @@ class EvenTest extends \PHPUnit_Framework_TestCase
     public function providerForEven()
     {
         return array(
+            array(''),
             array(-2),
             array(-0),
             array(0),
@@ -51,5 +50,5 @@ class EvenTest extends \PHPUnit_Framework_TestCase
             array(13),
         );
     }
-
 }
+

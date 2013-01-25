@@ -1,17 +1,15 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class EndsWithTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForEndsWith
      */
     public function testStringsEndingWithExpectedValueShouldPass($start, $input)
     {
         $v = new EndsWith($start);
-        $this->assertTrue($v->validate($input));
+        $this->assertTrue($v->__invoke($input));
         $this->assertTrue($v->check($input));
         $this->assertTrue($v->assert($input));
     }
@@ -23,13 +21,14 @@ class EndsWithTest extends \PHPUnit_Framework_TestCase
     public function testStringsNotEndingWithExpectedValueShoudNotPass($start, $input, $caseSensitive=false)
     {
         $v = new EndsWith($start, $caseSensitive);
-        $this->assertFalse($v->validate($input));
+        $this->assertFalse($v->__invoke($input));
         $this->assertFalse($v->assert($input));
     }
 
     public function providerForEndsWith()
     {
         return array(
+            array('foo', ''),
             array('foo', array('bar', 'foo')),
             array('foo', 'barbazFOO'),
             array('foo', 'barbazfoo'),
@@ -51,5 +50,5 @@ class EndsWithTest extends \PHPUnit_Framework_TestCase
             array('1', array(1, '1', 3), true),
         );
     }
-
 }
+

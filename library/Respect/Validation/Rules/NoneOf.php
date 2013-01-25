@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class NoneOf extends AbstractComposite
 {
-
     public function assert($input)
     {
         $exceptions = $this->validateRules($input);
@@ -27,5 +25,5 @@ class NoneOf extends AbstractComposite
         }
         return true;
     }
-
 }
+

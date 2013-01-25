@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation;
 
 use RecursiveArrayIterator;
@@ -7,7 +6,6 @@ use Respect\Validation\Exceptions\AbstractNestedException;
 
 class ExceptionIterator extends RecursiveArrayIterator
 {
-
     protected $fullRelated;
 
     public function __construct($target, $fullRelated = false)
@@ -29,5 +27,5 @@ class ExceptionIterator extends RecursiveArrayIterator
     {
         return new static($this->current()->getRelated($this->fullRelated), $this->fullRelated);
     }
-
 }
+

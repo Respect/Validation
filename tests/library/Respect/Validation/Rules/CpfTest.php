@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class CpfTest extends \PHPUnit_Framework_TestCase
@@ -57,6 +56,7 @@ class CpfTest extends \PHPUnit_Framework_TestCase
     public function providerValidFormattedCpf()
     {
         return array(
+            array(''),
             array('342.444.198-88'),
             array('342.444.198.88'),
             array('350.45261819'),
@@ -68,6 +68,7 @@ class CpfTest extends \PHPUnit_Framework_TestCase
     public function providerValidUnformattedCpf()
     {
         return array(
+            array(''),
             array('11598647644'),
             array('86734718697'),
             array('86223423284'),
@@ -107,8 +108,7 @@ class CpfTest extends \PHPUnit_Framework_TestCase
             array('22'),
             array('123'),
             array('992999999999929384'),
-            array('')
         );
     }
-
 }
+

@@ -5,10 +5,11 @@ php:
   - 5.3
   - 5.4
 
+env: FOUNDATION_NO_WAIT=1
+
 before_script:
-  - "composer install --dev"
+  - "make composer-install-dev"
   - "phpenv rehash"
 
 script:
-  - "cd tests"
-  - "phpunit --colors --coverage-text ."
+  - "make testdox"

@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class CountryCode extends AbstractRule
 {
-
     protected $countryCodeList = array(
         'AD', 'AE', 'AF', 'AG', 'AI', 'AL', 'AM', 'AO', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AW',
         'AX', 'AZ', 'BA', 'BB', 'BD', 'BE', 'BF', 'BG', 'BH', 'BI', 'BJ', 'BL', 'BM', 'BN',
@@ -30,5 +28,5 @@ class CountryCode extends AbstractRule
     {
         return in_array(strtoupper($input), $this->countryCodeList);
     }
-
 }
+
