@@ -1,5 +1,5 @@
 VERSION       = 0.1.13
-FOUNDATION_HOME = .foundation
+FOUNDATION_HOME = $(shell pwd)/.foundation
 CONFIG_TOOL   = ${FOUNDATION_HOME}/repo/bin/project-config.php
 GENERATE_TOOL = ${FOUNDATION_HOME}/repo/bin/project-generate.php
 PACKAGES_PEAR = pear config-get php_dir
@@ -12,7 +12,6 @@ SHELL        := $(shell which bash)
 .EXPORT_ALL_VARIABLES: ; # send all vars to shell
 default: help-default;   # default target
 Makefile: ;              # skip prerequisite discovery
-
 
 .title:
 	@echo -e "Respect/Foundation: $(VERSION)\n"
@@ -214,7 +213,7 @@ foundation-develop:
 
 .gitignore-foundation:
 	@test -f .gitignore || make -f Makefile .gen-gitignore
-	@grep -q ${FOUNDATION_HOME} .gitignore || echo ${FOUNDATION_HOME} >> .gitignore
+	@grep -q .foundation .gitignore || echo .foundation >> .gitignore
 
 .gen-gitignore:
 	@echo "(Re)create .gitignore"
@@ -223,7 +222,7 @@ foundation-develop:
 gitignore: .title .gen-gitignore
 
 project-info: .check-foundation
-	@echo "\nProject Information\n"
+	@echo -e "\nProject Information\n"
 	@echo "             php-version:" `$(CONFIG_TOOL) php-version `
 	@echo "      project-repository:" `$(CONFIG_TOOL) project-repository `
 	@echo "          library-folder:" `$(CONFIG_TOOL) library-folder `
@@ -241,13 +240,10 @@ project-info: .check-foundation
 	@echo "     package-description:" `$(CONFIG_TOOL) package-description `
 	@echo "         package-version:" `$(CONFIG_TOOL) package-version `
 	@echo "       package-stability:" `$(CONFIG_TOOL) package-stability `
-	@echo "\r         project-authors: "`$(CONFIG_TOOL) package-authors ` \
-		| tr ',' '\n' \
-		| awk -F' <' '{ printf "                         %-10-s \t<%15-s \n",$$1,$$2 }'
-	@echo "\r    project-contributors: "`$(CONFIG_TOOL) package-contributors ` \
-		| tr ',' '\n' \
-		| awk -F' <' '{ printf "                         %-10-s \t<%15-s \n",$$1,$$2 }'
-
+	@echo -e "\r         project-authors: "`$(CONFIG_TOOL) package-authors` \
+	|tr ',' "\n"| awk -F' <' '{printf "%25s%-25s <%15s \n","",$$1,$$2}'
+	@echo -e "\r    project-contributors: "`$(CONFIG_TOOL) package-contributors ` \
+	|tr ',' "\n"| awk -F' <' '{printf "%25s%-25s <%15s \n","",$$1,$$2}'
 	@echo "       package-date-time:" `$(CONFIG_TOOL) package-date-time `
 	@echo "               pear-path:" `$(CONFIG_TOOL) pear-path `
 	@echo "            pear-channel:" `$(CONFIG_TOOL) pear-channel `
@@ -269,7 +265,7 @@ test-skelgen:	.check-foundation
 	@test -f $(shell $(CONFIG_TOOL) test-folder)/bootstrap.php || make bootstrap-php > /dev/null
 	@$(eval source-folder=$(shell $(CONFIG_TOOL) library-folder))
 	-@if test "$(class)"; then \
-		cd $(shell $(CONFIG_TOOL) test-folder) && ../${FOUNDATION_HOME}/repo/bin/phpunit-skelgen-classname "${class}" $(source-folder); \
+		cd $(shell $(CONFIG_TOOL) test-folder) && ${FOUNDATION_HOME}/repo/bin/phpunit-skelgen-classname "${class}" $(source-folder); \
 	else \
 		echo "Usage:"; \
 		echo "     make test-skelgen class=\"My\\Awesome\\Class\""; \
@@ -288,18 +284,13 @@ test-skelgen-all:
 .prompt-yesno:
 	@exec 9<&0 0</dev/tty
 	echo "$(message) [Y]:"
-	read -rs -t5 -n 1 yn;
+	[[ -z $$FOUNDATION_NO_WAIT ]] && read -rs -t5 -n 1 yn;
 	exec 0<&9 9<&-
 	[[ -z $$yn ]] || [[ $$yn == [yY] ]] && echo Y >&2 || (echo N >&2 && exit 1)
 
-.from-stdin:
-	while IFS= read -r; do \
-	  lines="$${lines}\n$${REPLY}"; \
-	done <&0;
-
 info-phantomjs: .check-foundation
 	@echo "This is what I know about your phantomjs."
-	@/usr/bin/env PATH=$$PATH:./${FOUNDATION_HOME} phantomjs -v  2> /dev/null || (echo "No phantomjs installed." && false)
+	@/usr/bin/env PATH=$$PATH:${FOUNDATION_HOME} phantomjs -v  2> /dev/null || (echo "No phantomjs installed." && false)
 
 install-phantomjs: .check-foundation
 	@echo -e "Phantomjs Installation,\ndue to frequent releases (based on webkit) we are not able to install this package for you at this time."
@@ -403,87 +394,6 @@ phpdoc: .check-foundation
 	@echo generating documentation with PhpDocumentor2.
 	phpdoc -d `$(CONFIG_TOOL) library-folder ` -t `$(CONFIG_TOOL) documentation-folder ` -p
 
-install-pandoc-templates:
-	https://github.com/wcaleb/pandoc-templates.git
-
-bashcompletion-pandoc:
-	https://github.com/dsanson/pandoc-completion.git
-
-pandoc-media-wiki:
-	pandoc -s -S -w mediawiki --toc README -o example22.wiki
-
-pandoc-md2epub:
-	pandoc -S README -o README.epub
-
-pandoc-md2pdf:
-	pandoc README -o example13.pdf
-
-pandoc-html2md:
-	pandoc -s -r html http://www.gnu.org/software/make/ -o example12.tex
-
-pandoc-md2man:
-	pandoc -s -w man pandoc.1.md -o example10.1
-
-pandoc-md2docbook:
-	pandoc -s -S -w docbook README -o example9.db
-
-pandoc-md2rtf:
-	pandoc -s README -o example7.rtf
-
-pandoc-md2latex:
-	pandoc -s README -o example4.tex
-
-pandoc-md2html-frag:
-	pandoc README -o example1.html
-
-pandoc-md2html-single:
-	pandoc -s README -o example2.html
-
-pandoc-md2html-5:
-	pandoc -s README -5 -o example2.html
-
-pandoc-md2html-full:
-	pandoc -s -S --toc -c pandoc.css -A footer.html README -o example3.html
-
-pandoc-latex2md:
-	pandoc -s example4.tex -o example5.text
-
-pandoc-docbook2md:
-	pandoc -f docbook -t markdown -s howto.xml -o example31.text
-
-pandoc-slides-dz:
-	pandoc -s --mathml -i -t dzslides SLIDES -o example16a.html
-
-pandoc-slides-slidy:
-	pandoc -s --webtex -i -t slidy SLIDES -o example16b.html
-
-pandoc-slides-s5:
-	pandoc -s --self-contained --webtex -i -t s5 SLIDES -o example16c.html
-
-pandoc-slideous:
-	pandoc -s --self-contained --mathjax -i -t slideous SLIDES -o example16d.html
-
-pandoc-highlight-pygments:
-	pandoc code.text -s --highlight-style pygments -o example18a.html
-
-pandoc-highlight-kate:
-	pandoc code.text -s --highlight-style kate -o example18b.html
-
-pandoc-highlight-mono:
-	pandoc code.text -s --highlight-style monochrome -o example18c.html
-
-pandoc-highlight-espresso:
-	pandoc code.text -s --highlight-style espresso -o example18d.html
-
-pandoc-highlight-haddock:
-	pandoc code.text -s --highlight-style haddock -o example18e.html
-
-pandoc-highlight-tango:
-	pandoc code.text -s --highlight-style tango -o example18f.html
-
-pandoc-highlight-zenburn:
-	pandoc code.text -s --highlight-style zenburn -o example18g.html
-
 phpunit-xml: .check-foundation
 	@$(GENERATE_TOOL) config-template phpunit.xml > phpunit.xml.tmp && mkdir -p $(shell $(CONFIG_TOOL) test-folder) && mv -f phpunit.xml.tmp $(shell $(CONFIG_TOOL) test-folder)/phpunit.xml
 
@@ -517,19 +427,20 @@ package: .check-foundation package-ini package-xml composer-json
 # Phony target so the test folder don't conflict
 .PHONY: test
 test: .check-foundation
-	@cd `$(CONFIG_TOOL) test-folder`;phpunit .
+	@cd `$(CONFIG_TOOL) test-folder`;phpunit $$([[ -n "$(filter)" ]] && echo "-v --debug --filter $(filter)") .
 
 testdox: .check-foundation
 	@cd `$(CONFIG_TOOL) test-folder`;phpunit --testdox .
 
 coverage: .check-foundation
-	@cd `$(CONFIG_TOOL) test-folder`;phpunit  --coverage-html=reports/coverage --coverage-text .
+	@cd `$(CONFIG_TOOL) test-folder`;phpunit --testdox --coverage-html=reports/coverage --coverage-text .
 	@echo "Done. Reports also available on `$(CONFIG_TOOL) test-folder`/reports/coverage/index.html"
+	which open &> /dev/null && open reports/coverage/index.html
 
 cs-fixer: .check-foundation
-	@cd `$(CONFIG_TOOL) library-folder`;../${FOUNDATION_HOME}/php-cs-fixer -v fix --level=all --fixers=indentation,linefeed,trailing_spaces,unused_use,return,php_closing_tag,short_tag,visibility,braces,extra_empty_lines,phpdoc_params,eof_ending,include,controls_spaces,elseif .
+	@cd `$(CONFIG_TOOL) library-folder`;${FOUNDATION_HOME}/php-cs-fixer -v fix --level=all --fixers=indentation,linefeed,trailing_spaces,unused_use,return,php_closing_tag,short_tag,visibility,braces,extra_empty_lines,phpdoc_params,eof_ending,include,controls_spaces,elseif .
 	@echo "Library folder done. `$(CONFIG_TOOL) library-folder`"
-	@cd `$(CONFIG_TOOL) test-folder`;../${FOUNDATION_HOME}/php-cs-fixer -v fix --level=all --fixers=indentation,linefeed,trailing_spaces,unused_use,return,php_closing_tag,short_tag,visibility,braces,extra_empty_lines,phpdoc_params,eof_ending,include,controls_spaces,elseif .
+	@cd `$(CONFIG_TOOL) test-folder`;${FOUNDATION_HOME}/php-cs-fixer -v fix --level=all --fixers=indentation,linefeed,trailing_spaces,unused_use,return,php_closing_tag,short_tag,visibility,braces,extra_empty_lines,phpdoc_params,eof_ending,include,controls_spaces,elseif .
 	@echo "Test folder done. `$(CONFIG_TOOL) test-folder` "
 	@echo "Done. You may verify the changes and commit if you are happy."
 
@@ -663,7 +574,7 @@ travis-lint: .check-foundation
 
 info-composer: .check-foundation
 	@echo "This is what I know about your composer."
-	@/usr/bin/env PATH=$$PATH:./${FOUNDATION_HOME} composer about 2> /dev/null || (echo "No composer installed." && false)
+	@/usr/bin/env PATH=$$PATH:${FOUNDATION_HOME} composer about 2> /dev/null || (echo "No composer installed." && false)
 
 install-composer: .check-foundation
 	@echo "Attempting to download and install composer packager."
@@ -675,29 +586,29 @@ install-composer: .check-foundation
 
 composer-validate: .check-foundation .check-composer
 	@echo "Running composer validate, be brave."
-	@/usr/bin/env PATH=$$PATH:./${FOUNDATION_HOME} composer validate -v
+	@/usr/bin/env PATH=$$PATH:${FOUNDATION_HOME} composer validate -v
 
 composer-install: .check-foundation .check-composer
 	@echo "Running composer install, this will create a vendor folder and configure autoloader."
-	@/usr/bin/env PATH=$$PATH:./${FOUNDATION_HOME} composer install -v
+	@/usr/bin/env PATH=$$PATH:${FOUNDATION_HOME} composer install -v
 
 composer-install-dev: .check-foundation .check-composer
 	@echo "Running composer install --dev, this will create a vendor folder and configure autoloader."
-	@/usr/bin/env PATH=$$PATH:./${FOUNDATION_HOME} composer install -v --dev
+	@/usr/bin/env PATH=$$PATH:${FOUNDATION_HOME} composer install -v --dev
 
 composer-update: .check-foundation .check-composer
 	@echo "Running composer update, which updates your existing installation."
-	@/usr/bin/env PATH=$$PATH:./${FOUNDATION_HOME} composer update -v
+	@/usr/bin/env PATH=$$PATH:${FOUNDATION_HOME} composer update -v
 
 composer-create-project: .check-foundation .check-composer
 	@[[ -z "$(package)" ]] && echo -e "Usage: make composer-require package=vendor/package\n" && exit 11 || true
 	@echo "Running composer create project for package: $(package)"
-	@/usr/bin/env PATH=$$PATH:./${FOUNDATION_HOME} composer -v create-project "$(package)"
+	@/usr/bin/env PATH=$$PATH:${FOUNDATION_HOME} composer -v create-project "$(package)"
 
 composer-require: .check-foundation .check-composer
 	@[[ -z "$(package)" ]] && echo -e "Usage: make composer-require package=vendor/package\n" && exit 1 || true
 	@echo "Running composer require, adding and installing as required package: $(package)"
-	@/usr/bin/env PATH=$$PATH:./${FOUNDATION_HOME} composer -v require "$(package)"
+	@/usr/bin/env PATH=$$PATH:${FOUNDATION_HOME} composer -v require "$(package)"
 
 info-pyrus: .check-foundation
 	@echo "This is what I know about your PEAR2_Pyrus."
@@ -830,30 +741,6 @@ install-uri-template: .check-foundation
 	@echo If all went well and you saw no errors or FAILs then congratulations!
 	@echo all that is left is to ensure that extension=uri_template.so is in your php.ini
 	@echo
-
-install-bootstrap: .check-foundation
-	@echo "Attempting to download and install twitter bootstrap."
-	git clone --progress -v git://github.com/twitter/bootstrap.git ${FOUNDATION_HOME}/bootstrap
-
-build-bootstrap: .check-foundation
-	@cd $(FOUNDATION_HOME)/bootstrap && \
-		/usr/bin/env PATH=$(FOUNDATION_HOME)/node_modules/.bin/:$$PATH make -s -f Makefile 2> /dev/null;
-
-test-bootstrap: .check-foundation
-	@cd $(FOUNDATION_HOME)/bootstrap && \
-		/usr/bin/env PATH=$(FOUNDATION_HOME)/node_modules/.bin/:$$PATH make test -s -f Makefile;
-
-iconify-bootstrap: .check-foundation
-	@cd $(FOUNDATION_HOME)/bootstrap;
-
-install-font-awesome-more: .check-foundation
-	@echo "Attempting to download and install font awesome more icon set."
-	git clone --progress -v git://github.com/gregoryloucas/Font-Awesome-More.git $(FOUNDATION_HOME)/font-awesome-more
-
-install-bootstrap-deps: .check-foundation
-	@echo Installing global packages may require sudo.
-	@npm config set strict-ssl false
-	@npm -gf install less jshint recess uglify-js phantomjs connect
 
 # Clean up utils
 
