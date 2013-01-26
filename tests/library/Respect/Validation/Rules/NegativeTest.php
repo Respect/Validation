@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class NegativeTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $negativeValidator;
 
     protected function setUp()
@@ -19,7 +17,7 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
     public function testNegativeShouldPass($input)
     {
         $this->assertTrue($this->negativeValidator->assert($input));
-        $this->assertTrue($this->negativeValidator->validate($input));
+        $this->assertTrue($this->negativeValidator->__invoke($input));
         $this->assertTrue($this->negativeValidator->check($input));
     }
 
@@ -29,13 +27,14 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
      */
     public function testNotNegativeNumbersShouldThrowNegativeException($input)
     {
-        $this->assertFalse($this->negativeValidator->validate($input));
+        $this->assertFalse($this->negativeValidator->__invoke($input));
         $this->assertFalse($this->negativeValidator->assert($input));
     }
 
     public function providerForNegative()
     {
         return array(
+            array(''),
             array('-1.44'),
             array(-1e-5),
             array(-10),
@@ -51,12 +50,11 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
             array('a'),
             array(' '),
             array('Foo'),
-            array(''),
             array(16),
             array('165'),
             array(123456),
             array(1e10),
         );
     }
-
 }
+

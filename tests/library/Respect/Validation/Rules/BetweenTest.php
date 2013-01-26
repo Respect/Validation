@@ -1,15 +1,15 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use \DateTime;
 
 class BetweenTest extends \PHPUnit_Framework_TestCase
 {
-
     public function providerValid()
     {
         return array(
+            array(10, 20, false, ''),
+            array(10, 20, true, ''),
             array(0, 1, true, 0),
             array(0, 1, true, 1),
             array(10, 20, false, 15),
@@ -52,7 +52,7 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
     public function testValuesBetweenBoundsShouldPass($min, $max, $inclusive, $input)
     {
         $o = new Between($min, $max, $inclusive);
-        $this->assertTrue($o->validate($input));
+        $this->assertTrue($o->__invoke($input));
         $this->assertTrue($o->assert($input));
         $this->assertTrue($o->check($input));
     }
@@ -64,7 +64,7 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
     public function testValuesOutBoundsShouldRaiseException($min, $max, $inclusive, $input)
     {
         $o = new Between($min, $max, $inclusive);
-        $this->assertFalse($o->validate($input));
+        $this->assertFalse($o->__invoke($input));
         $this->assertFalse($o->assert($input));
     }
 
@@ -75,5 +75,5 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
     {
         $o = new Between(10, 5);
     }
-
 }
+

@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use Traversable;
@@ -8,7 +7,6 @@ use Respect\Validation\Exceptions\ValidationException;
 
 class Each extends AbstractRule
 {
-
     public $itemValidator;
     public $keyValidator;
 
@@ -70,7 +68,7 @@ class Each extends AbstractRule
             if (isset($this->itemValidator)) {
                 $this->itemValidator->check($item);
             }
-                
+
             if (isset($this->keyValidator)) {
                 $this->keyValidator->check($key);
             }
@@ -93,7 +91,7 @@ class Each extends AbstractRule
             if (isset($this->itemValidator) && !$this->itemValidator->validate($item)) {
                 return false;
             }
-                
+
             if (isset($this->keyValidator) && !$this->keyValidator->validate($key)) {
                 return false;
             }
@@ -101,5 +99,5 @@ class Each extends AbstractRule
 
         return true;
     }
-
 }
+

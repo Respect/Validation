@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class Cnpj extends AbstractRule
 {
-
     public function validate($input)
     {
         //Code ported from jsfromhell.com
@@ -14,7 +12,7 @@ class Cnpj extends AbstractRule
         if (strlen($c) != 14) {
             return false;
         }
-            
+
         for ($i = 0, $n = 0; $i < 12; $n += $c[$i] * $b[++$i]);
 
         if ($c[12] != ((($n %= 11) < 2) ? 0 : 11 - $n)) {
@@ -29,5 +27,5 @@ class Cnpj extends AbstractRule
 
         return true;
     }
-
 }
+

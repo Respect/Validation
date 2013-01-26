@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class AlnumTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidAlnum
      */
@@ -48,11 +46,11 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
     public function providerForValidAlnum()
     {
         return array(
+            array('', ''),
             array('alganet', ''),
             array('alganet', 'alganet'),
             array('0alg-anet0', '0-9'),
             array('1', ''),
-            array('', ''),
             array("\t", ''),
             array("\n", ''),
             array('a', ''),
@@ -79,5 +77,5 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
             array(array(), ''),
         );
     }
-
 }
+

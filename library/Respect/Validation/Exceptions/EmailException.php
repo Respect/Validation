@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class EmailException extends ValidationException
 {
-
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => '{{name}} must be valid email',
@@ -13,5 +11,5 @@ class EmailException extends ValidationException
             self::STANDARD => '{{name}} must not be an email',
         )
     );
-
 }
+

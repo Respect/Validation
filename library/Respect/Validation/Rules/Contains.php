@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class Contains extends AbstractRule
 {
-
     public $containsValue;
     public $identical;
 
@@ -40,5 +38,5 @@ class Contains extends AbstractRule
 
         return false !== mb_strpos($input, $this->containsValue, 0, mb_detect_encoding($input));
     }
-
 }
+

@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class IpException extends ValidationException
@@ -44,5 +43,5 @@ class IpException extends ValidationException
             return static::NETWORK_RANGE;
         }
     }
-
 }
+

@@ -1,12 +1,10 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use DateTime;
 
 class LeapDate extends AbstractRule
 {
-
     public $format = null;
 
     public function __construct($format)
@@ -27,5 +25,5 @@ class LeapDate extends AbstractRule
         // Dates that aren't leap will aways be rounded
         return $date->format('m-d') == '02-29';
     }
-
 }
+

@@ -1,12 +1,10 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 
 class Between extends AllOf
 {
-
     public $minValue;
     public $maxValue;
 
@@ -26,5 +24,5 @@ class Between extends AllOf
             $this->addRule(new Max($max, $inclusive));
         }
     }
-
 }
+

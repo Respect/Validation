@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use ReflectionProperty;
@@ -8,7 +7,6 @@ use Respect\Validation\Validatable;
 
 class Attribute extends AbstractRelated
 {
-
     public function __construct($reference, Validatable $validator=null, $mandatory=true)
     {
         if (!is_string($reference) || empty($reference)) {
@@ -30,5 +28,5 @@ class Attribute extends AbstractRelated
     {
         return is_object($input) && property_exists($input, $this->reference);
     }
-
 }
+

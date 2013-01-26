@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class CharsetException extends ValidationException
 {
-
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => '{{name}} must be in the {{charset}} charset'
@@ -13,5 +11,5 @@ class CharsetException extends ValidationException
             self::STANDARD => '{{name}} must not be in the {{charset}} charset'
         )
     );
-
 }
+

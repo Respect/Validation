@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForFormat
      */
@@ -90,5 +88,5 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
             )
         );
     }
-
 }
+

@@ -1,19 +1,17 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use DateTime;
 
 class MinimumAgeTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidDateValidMinimumAge
      */
     public function testValidMinimumAgeInsideBoundsShouldPass($age, $format, $input)
     {
         $minimumAge = new MinimumAge($age, $format);
-        $this->assertTrue($minimumAge->validate($input));
+        $this->assertTrue($minimumAge->__invoke($input));
         $this->assertTrue($minimumAge->assert($input));
         $this->assertTrue($minimumAge->check($input));
     }
@@ -25,7 +23,7 @@ class MinimumAgeTest extends \PHPUnit_Framework_TestCase
     public function testInvalidMinimumAgeShouldThrowException($age, $format, $input)
     {
         $minimumAge = new MinimumAge($age, $format);
-        $this->assertFalse($minimumAge->validate($input));
+        $this->assertFalse($minimumAge->__invoke($input));
         $this->assertFalse($minimumAge->assert($input));
     }
 
@@ -36,13 +34,14 @@ class MinimumAgeTest extends \PHPUnit_Framework_TestCase
     public function testInvalidDateShouldNotPass($age, $format, $input)
     {
         $minimumAge = new MinimumAge($age, $format);
-        $this->assertFalse($minimumAge->validate($input));
+        $this->assertFalse($minimumAge->__invoke($input));
         $this->assertFalse($minimumAge->assert($input));
     }
 
     public function providerForValidDateValidMinimumAge()
     {
         return array(
+            array(18, 'Y-m-d', ''),
             array(18, 'Y-m-d', '1969-07-20'),
             array(18, null, new \DateTime('1969-07-20')),
             array(18, 'Y-m-d', new \DateTime('1969-07-20')),
@@ -66,5 +65,5 @@ class MinimumAgeTest extends \PHPUnit_Framework_TestCase
             array(18, 'y-m-d', '2002-06-30'),
         );
     }
-
 }
+

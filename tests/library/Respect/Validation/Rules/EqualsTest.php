@@ -1,17 +1,15 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class EqualsTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForEquals
      */
     public function testStringsContainingExpectedValueShouldPass($start, $input)
     {
         $v = new Equals($start);
-        $this->assertTrue($v->validate($input));
+        $this->assertTrue($v->__invoke($input));
         $this->assertTrue($v->check($input));
         $this->assertTrue($v->assert($input));
     }
@@ -23,13 +21,14 @@ class EqualsTest extends \PHPUnit_Framework_TestCase
     public function testStringsNotEqualsExpectedValueShoudNotPass($start, $input, $identical=false)
     {
         $v = new Equals($start, $identical);
-        $this->assertFalse($v->validate($input));
+        $this->assertFalse($v->__invoke($input));
         $this->assertFalse($v->assert($input));
     }
 
     public function providerForEquals()
     {
         return array(
+            array('foo', ''),
             array('foo', 'foo'),
             array(10, "10"),
         );
@@ -42,5 +41,5 @@ class EqualsTest extends \PHPUnit_Framework_TestCase
             array(10, "10", true),
         );
     }
-
 }
+

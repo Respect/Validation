@@ -1,12 +1,10 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use DateTime;
 
 class MinimumAge extends AbstractRule
 {
-
     public $age = null;
     public $format = null;
 
@@ -34,5 +32,5 @@ class MinimumAge extends AbstractRule
             return $age >= $this->age;
         }
     }
-
 }
+

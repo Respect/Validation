@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class EndsWith extends AbstractRule
 {
-
     public $endValue;
     public $identical;
 
@@ -42,5 +40,5 @@ class EndsWith extends AbstractRule
             === mb_strlen($input, $enc) - mb_strlen($this->endValue, $enc);
         }
     }
-
 }
+

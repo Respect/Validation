@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 abstract class AbstractCountryInfo extends AbstractRule
@@ -37,5 +36,5 @@ abstract class AbstractCountryInfo extends AbstractRule
     {
         return in_array(strtolower($input), $this->tldList);
     }
-
 }
+

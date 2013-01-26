@@ -1,13 +1,17 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class CallTest extends \PHPUnit_Framework_TestCase
 {
-
     public function thisIsASampleCallbackUsedInsideThisTest()
     {
         return array();
+    }
+
+    public function testCallbackValidatorShouldAcceptEmptyString()
+    {
+        $v = new Call('str_split', new Arr);
+        $this->assertTrue($v->assert(''));
     }
 
     public function testCallbackValidatorShouldAcceptStringWithFunctionName()
@@ -39,5 +43,5 @@ class CallTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($v->validate('test'));
         $this->assertFalse($v->assert('test'));
     }
-
 }
+

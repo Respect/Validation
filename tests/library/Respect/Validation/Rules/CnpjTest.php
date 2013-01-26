@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class CnpjTest extends \PHPUnit_Framework_TestCase
@@ -16,7 +15,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase
      */
     public function testFormattedCnpjsShouldValidate($input)
     {
-        $this->assertTrue($this->cnpjValidator->validate($input));
+        $this->assertTrue($this->cnpjValidator->__invoke($input));
     }
 
     /**
@@ -24,7 +23,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase
      */
     public function testUnformattedCnpjsShouldValidates($input)
     {
-        $this->assertTrue($this->cnpjValidator->validate($input));
+        $this->assertTrue($this->cnpjValidator->__invoke($input));
     }
 
     /**
@@ -32,7 +31,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidCnpjShouldFailWhenFormatted($input)
     {
-        $this->assertFalse($this->cnpjValidator->validate($input));
+        $this->assertFalse($this->cnpjValidator->__invoke($input));
     }
 
     /**
@@ -40,7 +39,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidCnpjShouldFailWhenNotFormatted($input)
     {
-        $this->assertFalse($this->cnpjValidator->validate($input));
+        $this->assertFalse($this->cnpjValidator->__invoke($input));
     }
 
     /**
@@ -48,12 +47,13 @@ class CnpjTest extends \PHPUnit_Framework_TestCase
      */
     public function testCnpjsWithIncorrectLengthShouldFail($input)
     {
-        $this->assertFalse($this->cnpjValidator->validate($input));
+        $this->assertFalse($this->cnpjValidator->__invoke($input));
     }
 
     public function providerValidFormattedCnpj()
     {
         return array(
+            array(''),
             array('32.063.364/0001-07'),
             array('24.663.454/0001-00'),
             array('57.535.083/0001-30'),
@@ -105,3 +105,4 @@ class CnpjTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
+

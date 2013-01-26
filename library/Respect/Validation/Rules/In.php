@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class In extends AbstractRule
 {
-
     public $haystack;
     public $compareIdentical;
 
@@ -37,5 +35,5 @@ class In extends AbstractRule
 
         return mb_stripos($this->haystack, $input, 0, $enc) !== false;
     }
-
 }
+

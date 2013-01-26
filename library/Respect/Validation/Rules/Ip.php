@@ -1,12 +1,10 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 
 class Ip extends AbstractRule
 {
-
     public $ipOptions;
 
     public $networkRange;
@@ -128,5 +126,5 @@ class Ip extends AbstractRule
 
         return ($input & $range['mask']) === ($min & $range['mask']);
     }
-
 }
+
