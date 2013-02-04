@@ -279,16 +279,20 @@ Reference
   * v::tld()
   * v::coutryCode()
 
+### Files
+
+  * v::directory()
+  * v::exists()
+  * v::file()
+  * v::symbolicLink()
+
 ### Other
 
   * v::cnh()
   * v::cnpj()
   * v::cpf()
-  * v::directory()
   * v::domain()
   * v::email()
-  * v::exists()
-  * v::file()
   * v::ip()
   * v::json()
   * v::macAddress()
@@ -1409,6 +1413,12 @@ Validates a string.
 See also:
 
   * v::alnum()
+
+#### v::symbolicLink()
+
+Validates if the given data is a path of a valid symbolic link.
+
+    v::symbolicLink()->validate('/path/of/valid/symbolic/link'); //true
 
 #### v::tld()
 
