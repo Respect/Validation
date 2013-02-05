@@ -71,6 +71,7 @@ use Respect\Validation\Rules\AllOf;
  * @method \Respect\Validation\Validator primeNumber()
  * @method \Respect\Validation\Validator prnt(string $additionalChars = null)
  * @method \Respect\Validation\Validator punct(string $additionalChars = null)
+ * @method \Respect\Validation\Validator readable()
  * @method \Respect\Validation\Validator regex($regex)
  * @method \Respect\Validation\Validator roman()
  * @method \Respect\Validation\Validator sf(string $name, array $params = null)

@@ -284,6 +284,7 @@ Reference
   * v::directory()
   * v::exists()
   * v::file()
+  * v::readable()
   * v::symbolicLink()
 
 ### Other
@@ -1329,6 +1330,12 @@ See also:
   * v::cntrl()
   * v::graph()
   * v::prnt()
+
+#### v::readable()
+
+Validates if the given data is a file exists and is readable.
+
+    v::readable()->validate('/path/of/a/readable/file'); //true
 
 #### v::regex($regex)
 
