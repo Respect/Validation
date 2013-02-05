@@ -81,6 +81,7 @@ use Respect\Validation\Rules\AllOf;
  * @method \Respect\Validation\Validator string()
  * @method \Respect\Validation\Validator symbolicLink()
  * @method \Respect\Validation\Validator tld()
+ * @method \Respect\Validation\Validator uploaded()
  * @method \Respect\Validation\Validator uppercase()
  * @method \Respect\Validation\Validator version()
  * @method \Respect\Validation\Validator vowel()

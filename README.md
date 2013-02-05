@@ -286,6 +286,7 @@ Reference
   * v::file()
   * v::readable()
   * v::symbolicLink()
+  * v::uploaded()
   * v::writable()
 
 ### Other
@@ -1440,6 +1441,12 @@ See also
 
  * v::domain() - Validates domain names
  * v::countryCode() - Validates ISO country codes
+
+#### v::uploaded()
+
+Validates if the given data is a file was uploaded via HTTP POST.
+
+    v::uploaded()->validate('/path/of/an/uploaded/file'); //true
 
 #### v::uppercase()
 
