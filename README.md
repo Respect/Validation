@@ -279,13 +279,22 @@ Reference
   * v::tld()
   * v::coutryCode()
 
+### Files
+
+  * v::directory()
+  * v::exists()
+  * v::file()
+  * v::readable()
+  * v::symbolicLink()
+  * v::uploaded()
+  * v::writable()
+
 ### Other
 
   * v::cnh()
   * v::cnpj()
   * v::cpf()
   * v::domain()
-  * v::directory()
   * v::email()
   * v::ip()
   * v::json()
@@ -718,10 +727,16 @@ See also:
 Validates directories.
 
     v::directory()->validate(__DIR__); //true
+    v::directory()->validate(__FILE__); //false
 
 This validator will consider SplFileInfo instances, so you can do something like:
 
     v::directory()->validate(new \SplFileInfo($directory));
+
+See also
+
+  * v::exists()
+  * v::file()
 
 #### v::each(v $validatorForValue)
 #### v::each(null, v $validatorForKey)
@@ -751,6 +766,22 @@ See also:
 Validates an email address.
 
     v::email()->validate('alexandre@gaigalas.net'); //true
+
+#### v::exists()
+
+Validates files or directories.
+
+    v::exists()->validate(__FILE__); //true
+    v::exists()->validate(__DIR__); //true
+
+This validator will consider SplFileInfo instances, so you can do something like:
+
+    v::exists()->validate(new \SplFileInfo($file));
+
+See also
+
+  * v::directory()
+  * v::file()
 
 #### v::endsWith($value)
 #### v::endsWith($value, boolean $identical=false)
@@ -807,6 +838,22 @@ See also
 
   * v::odd()
   * v::multiple()
+
+#### v::file()
+
+Validates files.
+
+    v::file()->validate(__FILE__); //true
+    v::file()->validate(__DIR__); //false
+
+This validator will consider SplFileInfo instances, so you can do something like:
+
+    v::file()->validate(new \SplFileInfo($file));
+
+See also
+
+  * v::directory()
+  * v::exists()
 
 #### v::float()
 
@@ -1286,6 +1333,12 @@ See also:
   * v::graph()
   * v::prnt()
 
+#### v::readable()
+
+Validates if the given data is a file exists and is readable.
+
+    v::readable()->validate('/path/of/a/readable/file'); //true
+
 #### v::regex($regex)
 
 Evaluates a regex on the input and validates if matches
@@ -1370,6 +1423,12 @@ See also:
 
   * v::alnum()
 
+#### v::symbolicLink()
+
+Validates if the given data is a path of a valid symbolic link.
+
+    v::symbolicLink()->validate('/path/of/valid/symbolic/link'); //true
+
 #### v::tld()
 
 Validates a top-level domain
@@ -1382,6 +1441,12 @@ See also
 
  * v::domain() - Validates domain names
  * v::countryCode() - Validates ISO country codes
+
+#### v::uploaded()
+
+Validates if the given data is a file was uploaded via HTTP POST.
+
+    v::uploaded()->validate('/path/of/an/uploaded/file'); //true
 
 #### v::uppercase()
 
@@ -1454,6 +1519,12 @@ See also:
 
   * v::digit()
   * v::alnum()
+
+#### v::writable()
+
+Validates if the given data is a file exists and is writable.
+
+    v::writable()->validate('/path/of/a/writable/file'); //true
 
 #### v::zend($zendValidator)
 
