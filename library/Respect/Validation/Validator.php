@@ -85,6 +85,7 @@ use Respect\Validation\Rules\AllOf;
  * @method \Respect\Validation\Validator version()
  * @method \Respect\Validation\Validator vowel()
  * @method \Respect\Validation\Validator when(Validatable $if, Validatable $then, Validatable $when)
+ * @method \Respect\Validation\Validator writable()
  * @method \Respect\Validation\Validator xdigit(string $additionalChars = null)
  * @method \Respect\Validation\Validator zend(mixed $validator, array $params = null)
  */

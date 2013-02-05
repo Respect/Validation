@@ -286,6 +286,7 @@ Reference
   * v::file()
   * v::readable()
   * v::symbolicLink()
+  * v::writable()
 
 ### Other
 
@@ -1511,6 +1512,12 @@ See also:
 
   * v::digit()
   * v::alnum()
+
+#### v::writable()
+
+Validates if the given data is a file exists and is writable.
+
+    v::writable()->validate('/path/of/a/writable/file'); //true
 
 #### v::zend($zendValidator)
 
