@@ -34,6 +34,23 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
         $validator = new Alnum($aditional);
     }
 
+    /**
+     * @dataProvider providerAdditionalChars
+     */
+    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    {
+        $validator = new Alnum($aditional);
+        $this->assertTrue($validator->validate($query));
+    }
+
+    public function providerAdditionalChars()
+    {
+        return array(
+            array('!@#$%^&*(){}', '!@#$%^&*(){} abc 123'),
+            array('[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n abc 123"),
+        );
+    }
+
     public function providerForInvalidParams()
     {
         return array(

@@ -32,6 +32,23 @@ class CntrlTest extends \PHPUnit_Framework_TestCase
         $validator = new Cntrl($aditional);
     }
 
+    /**
+     * @dataProvider providerAdditionalChars
+     */
+    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    {
+        $validator = new Cntrl($aditional);
+        $this->assertTrue($validator->validate($query));
+    }
+
+    public function providerAdditionalChars()
+    {
+        return array(
+            array('!@#$%^&*(){} ', '!@#$%^&*(){} '),
+            array('[]?+=/\\-_|"\',<>. ', "[]?+=/\\-_|\"',<>. \t \n"),
+        );
+    }
+
     public function providerForInvalidParams()
     {
         return array(

@@ -32,6 +32,23 @@ class SpaceTest extends \PHPUnit_Framework_TestCase
         $validator = new Space($aditional);
     }
 
+    /**
+     * @dataProvider providerAdditionalChars
+     */
+    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    {
+        $validator = new Space($aditional);
+        $this->assertTrue($validator->validate($query));
+    }
+
+    public function providerAdditionalChars()
+    {
+        return array(
+            array('!@#$%^&*(){}', '!@#$%^&*(){} '),
+            array('[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n "),
+        );
+    }
+
     public function providerForInvalidParams()
     {
         return array(

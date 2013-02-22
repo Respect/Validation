@@ -30,6 +30,23 @@ class XdigitTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->xdigitsValidator->assert($input));
     }
 
+    /**
+     * @dataProvider providerAdditionalChars
+     */
+    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    {
+        $validator = new Xdigit($aditional);
+        $this->assertTrue($validator->validate($query));
+    }
+
+    public function providerAdditionalChars()
+    {
+        return array(
+            array('!@#$%^&*(){} ', '!@#$%^&*(){} abc 123'),
+            array("[]?+=/\\-_|\"',<>. \t\n", "[]?+=/\\-_|\"',<>. \t \n abc 123"),
+        );
+    }
+
     public function providerForXdigit()
     {
         return array(

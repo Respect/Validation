@@ -32,6 +32,23 @@ class ConsonantTest extends \PHPUnit_Framework_TestCase
         $validator = new Consonant($aditional);
     }
 
+    /**
+     * @dataProvider providerAdditionalChars
+     */
+    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    {
+        $validator = new Consonant($aditional);
+        $this->assertTrue($validator->validate($query));
+    }
+
+    public function providerAdditionalChars()
+    {
+        return array(
+            array('!@#$%^&*(){}', '!@#$%^&*(){} bc dfg'),
+            array('[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n bc dfg"),
+        );
+    }
+
     public function providerForInvalidParams()
     {
         return array(

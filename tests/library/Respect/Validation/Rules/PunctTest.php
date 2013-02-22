@@ -32,6 +32,23 @@ class PunctTest extends \PHPUnit_Framework_TestCase
         $validator = new Punct($aditional);
     }
 
+    /**
+     * @dataProvider providerAdditionalChars
+     */
+    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    {
+        $validator = new Punct($aditional);
+        $this->assertTrue($validator->validate($query));
+    }
+
+    public function providerAdditionalChars()
+    {
+        return array(
+            array('abc123 ', '!@#$%^&*(){} abc 123'),
+            array("abc123 \t\n", "[]?+=/\\-_|\"',<>. \t \n abc 123"),
+        );
+    }
+
     public function providerForInvalidParams()
     {
         return array(

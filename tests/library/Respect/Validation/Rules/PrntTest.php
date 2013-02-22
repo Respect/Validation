@@ -32,6 +32,23 @@ class PrntTest extends \PHPUnit_Framework_TestCase
         $validator = new Prnt($aditional);
     }
 
+    /**
+     * @dataProvider providerAdditionalChars
+     */
+    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    {
+        $validator = new Prnt($aditional);
+        $this->assertTrue($validator->validate($query));
+    }
+
+    public function providerAdditionalChars()
+    {
+        return array(
+            array("\t\n", "\t\n "),
+            array("\v\r", "\v\r "),
+        );
+    }
+
     public function providerForInvalidParams()
     {
         return array(

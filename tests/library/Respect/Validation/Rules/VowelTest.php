@@ -32,6 +32,23 @@ class VowelTest extends \PHPUnit_Framework_TestCase
         $validator = new Vowel($aditional);
     }
 
+    /**
+     * @dataProvider providerAdditionalChars
+     */
+    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    {
+        $validator = new Vowel($aditional);
+        $this->assertTrue($validator->validate($query));
+    }
+
+    public function providerAdditionalChars()
+    {
+        return array(
+            array('!@#$%^&*(){}', '!@#$%^&*(){} aeo iu'),
+            array('[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n aeo iu"),
+        );
+    }
+
     public function providerForInvalidParams()
     {
         return array(

@@ -32,6 +32,23 @@ class DigitTest extends \PHPUnit_Framework_TestCase
         $validator = new Digit($aditional);
     }
 
+    /**
+     * @dataProvider providerAdditionalChars
+     */
+    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    {
+        $validator = new Digit($aditional);
+        $this->assertTrue($validator->validate($query));
+    }
+
+    public function providerAdditionalChars()
+    {
+        return array(
+            array('!@#$%^&*(){}', '!@#$%^&*(){} 123'),
+            array('[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n 123"),
+        );
+    }
+
     public function providerForInvalidParams()
     {
         return array(
