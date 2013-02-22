@@ -5,7 +5,7 @@ use Respect\Validation\Exceptions\ComponentException;
 
 abstract class AbstractFilterRule extends AbstractRule
 {
-    protected $additionalChars = "";
+    public $additionalChars = "";
 
     abstract protected function validateClean($input);
 
