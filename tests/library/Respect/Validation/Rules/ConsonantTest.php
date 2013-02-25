@@ -6,9 +6,9 @@ class ConsonantTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidConsonants
      */
-    public function testValidDataWithConsonantsShouldReturnTrue($validConsonants, $aditional='')
+    public function testValidDataWithConsonantsShouldReturnTrue($validConsonants, $additional='')
     {
-        $validator = new Consonant($aditional);
+        $validator = new Consonant($additional);
         $this->assertTrue($validator->validate($validConsonants));
     }
 
@@ -16,9 +16,9 @@ class ConsonantTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidConsonants
      * @expectedException Respect\Validation\Exceptions\ConsonantException
      */
-    public function testInvalidConsonantsShouldFailAndThrowConsonantException($invalidConsonants, $aditional='')
+    public function testInvalidConsonantsShouldFailAndThrowConsonantException($invalidConsonants, $additional='')
     {
-        $validator = new Consonant($aditional);
+        $validator = new Consonant($additional);
         $this->assertFalse($validator->validate($invalidConsonants));
         $this->assertFalse($validator->assert($invalidConsonants));
     }
@@ -27,17 +27,17 @@ class ConsonantTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
     {
-        $validator = new Consonant($aditional);
+        $validator = new Consonant($additional);
     }
 
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query)
     {
-        $validator = new Consonant($aditional);
+        $validator = new Consonant($additional);
         $this->assertTrue($validator->validate($query));
     }
 

@@ -6,9 +6,9 @@ class PunctTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidPunct
      */
-    public function testValidDataWithPunctShouldReturnTrue($validPunct, $aditional='')
+    public function testValidDataWithPunctShouldReturnTrue($validPunct, $additional='')
     {
-        $validator = new Punct($aditional);
+        $validator = new Punct($additional);
         $this->assertTrue($validator->validate($validPunct));
     }
 
@@ -16,9 +16,9 @@ class PunctTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidPunct
      * @expectedException Respect\Validation\Exceptions\PunctException
      */
-    public function testInvalidPunctShouldFailAndThrowPunctException($invalidPunct, $aditional='')
+    public function testInvalidPunctShouldFailAndThrowPunctException($invalidPunct, $additional='')
     {
-        $validator = new Punct($aditional);
+        $validator = new Punct($additional);
         $this->assertFalse($validator->validate($invalidPunct));
         $this->assertFalse($validator->assert($invalidPunct));
     }
@@ -27,17 +27,17 @@ class PunctTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
     {
-        $validator = new Punct($aditional);
+        $validator = new Punct($additional);
     }
 
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query)
     {
-        $validator = new Punct($aditional);
+        $validator = new Punct($additional);
         $this->assertTrue($validator->validate($query));
     }
 

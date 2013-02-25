@@ -41,7 +41,7 @@ class CnhTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider invalidCnhLenghtProvider
+     * @dataProvider invalidCnhLengthProvider
      * @expectedException Respect\Validation\Exceptions\CnhException
      */
     public function testInvalidLengthCnh($cnh)
@@ -141,7 +141,7 @@ class CnhTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function invalidCnhLenghtProvider()
+    public function invalidCnhLengthProvider()
     {
         return array(
                array('00265003006461'),
