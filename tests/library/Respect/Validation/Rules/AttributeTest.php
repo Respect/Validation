@@ -42,7 +42,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerForInvalidAtrributeNames
+     * @dataProvider providerForInvalidAttributeNames
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
     public function testInvalidConstructorArgumentsShouldThrowComponentException($attributeName)
@@ -50,7 +50,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $validator = new Attribute($attributeName);
     }
 
-    public function providerForInvalidAtrributeNames()
+    public function providerForInvalidAttributeNames()
     {
         return array(
             array(new \stdClass),

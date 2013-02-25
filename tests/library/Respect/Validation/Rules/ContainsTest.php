@@ -18,7 +18,7 @@ class ContainsTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotContains
      * @expectedException Respect\Validation\Exceptions\ContainsException
      */
-    public function testStringsNotContainsExpectedValueShoudNotPass($start, $input, $identical=false)
+    public function testStringsNotContainsExpectedValueShouldNotPass($start, $input, $identical=false)
     {
         $v = new Contains($start, $identical);
         $this->assertFalse($v->__invoke($input));

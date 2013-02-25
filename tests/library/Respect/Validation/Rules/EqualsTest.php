@@ -18,7 +18,7 @@ class EqualsTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotEquals
      * @expectedException Respect\Validation\Exceptions\EqualsException
      */
-    public function testStringsNotEqualsExpectedValueShoudNotPass($start, $input, $identical=false)
+    public function testStringsNotEqualsExpectedValueShouldNotPass($start, $input, $identical=false)
     {
         $v = new Equals($start, $identical);
         $this->assertFalse($v->__invoke($input));

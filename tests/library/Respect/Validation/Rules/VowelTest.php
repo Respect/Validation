@@ -6,9 +6,9 @@ class VowelTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidVowels
      */
-    public function testValidDataWithVowelsShouldReturnTrue($validVowels, $aditional='')
+    public function testValidDataWithVowelsShouldReturnTrue($validVowels, $additional='')
     {
-        $validator = new Vowel($aditional);
+        $validator = new Vowel($additional);
         $this->assertTrue($validator->validate($validVowels));
     }
 
@@ -16,9 +16,9 @@ class VowelTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidVowels
      * @expectedException Respect\Validation\Exceptions\VowelException
      */
-    public function testInvalidVowelsShouldFailAndThrowVowelException($invalidVowels, $aditional='')
+    public function testInvalidVowelsShouldFailAndThrowVowelException($invalidVowels, $additional='')
     {
-        $validator = new Vowel($aditional);
+        $validator = new Vowel($additional);
         $this->assertFalse($validator->validate($invalidVowels));
         $this->assertFalse($validator->assert($invalidVowels));
     }
@@ -27,17 +27,17 @@ class VowelTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
     {
-        $validator = new Vowel($aditional);
+        $validator = new Vowel($additional);
     }
 
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query)
     {
-        $validator = new Vowel($aditional);
+        $validator = new Vowel($additional);
         $this->assertTrue($validator->validate($query));
     }
 

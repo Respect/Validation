@@ -6,9 +6,9 @@ class SpaceTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidSpace
      */
-    public function testValidDataWithSpaceShouldReturnTrue($validSpace, $aditional='')
+    public function testValidDataWithSpaceShouldReturnTrue($validSpace, $additional='')
     {
-        $validator = new Space($aditional);
+        $validator = new Space($additional);
         $this->assertTrue($validator->validate($validSpace));
     }
 
@@ -16,9 +16,9 @@ class SpaceTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidSpace
      * @expectedException Respect\Validation\Exceptions\SpaceException
      */
-    public function testInvalidSpaceShouldFailAndThrowSpaceException($invalidSpace, $aditional='')
+    public function testInvalidSpaceShouldFailAndThrowSpaceException($invalidSpace, $additional='')
     {
-        $validator = new Space($aditional);
+        $validator = new Space($additional);
         $this->assertFalse($validator->validate($invalidSpace));
         $this->assertFalse($validator->assert($invalidSpace));
     }
@@ -27,17 +27,17 @@ class SpaceTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
     {
-        $validator = new Space($aditional);
+        $validator = new Space($additional);
     }
 
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query)
     {
-        $validator = new Space($aditional);
+        $validator = new Space($additional);
         $this->assertTrue($validator->validate($query));
     }
 

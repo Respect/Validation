@@ -33,7 +33,7 @@ The Hello World validator is something like this:
 ### Chained Validation
 
 It is possible to use validators in a chain. Sample below validates a string
-containing numbers and letters, no whitspace and length between 1 and 15.
+containing numbers and letters, no whitespace and length between 1 and 15.
 
     $usernameValidator = v::alnum()->noWhitespace()->length(1,15);
     $usernameValidator->validate('alganet'); //true
@@ -62,7 +62,7 @@ validated object as the first node in the chain.
 ### Input optional
 
 All validators treat input as optional and will accept empty string input as valid,
-unless otherwies stated in the documentation.
+unless otherwise stated in the documentation.
 
 We us the `v:notEmpty()` validator prefixed to disallow empty input and effectively
 define the field as mandatory as input will be required or validation will fail.
@@ -85,7 +85,7 @@ Once created, you can reuse your validator anywhere. Remember $usernameValidator
 
 ### Informative Exceptions
 
-When something goes wrong, Validation can tell you exacty what's going on. For this,
+When something goes wrong, Validation can tell you exactly what's going on. For this,
 we use the `assert()` method instead of `validate()`:
 
     try {
@@ -277,7 +277,7 @@ Reference
 ### Regional
 
   * v::tld()
-  * v::coutryCode()
+  * v::countryCode()
 
 ### Files
 
@@ -913,7 +913,7 @@ See also:
 Validates if the input is an instance of the given class or interface.
 
     v::instance('DateTime')->validate(new DateTime); //true
-    v::instance('Traversable')->validate(new ArrayObjet); //true
+    v::instance('Traversable')->validate(new ArrayObject); //true
 
 Message template for this validator includes `{{instanceName}}`.
 
@@ -1165,7 +1165,7 @@ Negates any rule.
 
     v::not(v::ip())->validate('foo'); //true
 
-using a shorcut
+using a shortcut
 
     v::ip()->not()->validate('foo'); //true
 
@@ -1175,7 +1175,7 @@ You can negate complex, grouped or chained validators as well:
 
     v::not(v::int()->positive())->validate(-1.5); //true
 
-using a shorcut
+using a shortcut
 
     v::int()->positive()->not()->validate(-1.5); //true
 
@@ -1188,7 +1188,7 @@ See also:
 #### v::notEmpty()
 
 Validates if the given input is not empty or in other words is input mandatory and
-roequired. This function also takes whitespace into account, use `noWhitespace()`
+required. This function also takes whitespace into account, use `noWhitespace()`
 if no spaces or linebreaks and other whitespace anywhere in the input is desired.
 
     v::string()->notEmpty()->validate(''); //false
@@ -1402,7 +1402,7 @@ For arrays:
 
     v::startsWith('lorem')->validate(array('lorem', 'ipsum')); //true
 
-`true` may be passed as a parameter to indicate idetical comparison
+`true` may be passed as a parameter to indicate identical comparison
 instead of equal.
 
 Message template for this validator includes `{{startValue}}`.
@@ -1492,7 +1492,7 @@ See also:
 A ternary validator that accepts three parameters.
 
 When the $if validates, returns validation for $then.
-When the $if doesnt' validate, returns validation for $else.
+When the $if doesn't validate, returns validation for $else.
 
     v::when(v::int(), v::positive(), v::notEmpty())->validate($input);
 

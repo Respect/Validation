@@ -6,9 +6,9 @@ class DigitTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidDigits
      */
-    public function testValidDataWithDigitsShouldReturnTrue($validDigits, $aditional='')
+    public function testValidDataWithDigitsShouldReturnTrue($validDigits, $additional='')
     {
-        $validator = new Digit($aditional);
+        $validator = new Digit($additional);
         $this->assertTrue($validator->validate($validDigits));
     }
 
@@ -16,9 +16,9 @@ class DigitTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidDigits
      * @expectedException Respect\Validation\Exceptions\DigitException
      */
-    public function testInvalidDigitsShouldFailAndThrowDigitException($invalidDigits, $aditional='')
+    public function testInvalidDigitsShouldFailAndThrowDigitException($invalidDigits, $additional='')
     {
-        $validator = new Digit($aditional);
+        $validator = new Digit($additional);
         $this->assertFalse($validator->validate($invalidDigits));
         $this->assertFalse($validator->assert($invalidDigits));
     }
@@ -27,17 +27,17 @@ class DigitTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
     {
-        $validator = new Digit($aditional);
+        $validator = new Digit($additional);
     }
 
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query)
     {
-        $validator = new Digit($aditional);
+        $validator = new Digit($additional);
         $this->assertTrue($validator->validate($query));
     }
 
