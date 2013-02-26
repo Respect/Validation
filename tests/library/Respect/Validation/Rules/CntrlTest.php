@@ -6,9 +6,9 @@ class CntrlTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidCntrl
      */
-    public function testValidDataWithCntrlShouldReturnTrue($validCntrl, $aditional='')
+    public function testValidDataWithCntrlShouldReturnTrue($validCntrl, $additional='')
     {
-        $validator = new Cntrl($aditional);
+        $validator = new Cntrl($additional);
         $this->assertTrue($validator->validate($validCntrl));
     }
 
@@ -16,9 +16,9 @@ class CntrlTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidCntrl
      * @expectedException Respect\Validation\Exceptions\CntrlException
      */
-    public function testInvalidCntrlShouldFailAndThrowCntrlException($invalidCntrl, $aditional='')
+    public function testInvalidCntrlShouldFailAndThrowCntrlException($invalidCntrl, $additional='')
     {
-        $validator = new Cntrl($aditional);
+        $validator = new Cntrl($additional);
         $this->assertFalse($validator->validate($invalidCntrl));
         $this->assertFalse($validator->assert($invalidCntrl));
     }
@@ -27,17 +27,17 @@ class CntrlTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
     {
-        $validator = new Cntrl($aditional);
+        $validator = new Cntrl($additional);
     }
 
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query)
     {
-        $validator = new Cntrl($aditional);
+        $validator = new Cntrl($additional);
         $this->assertTrue($validator->validate($query));
     }
 

@@ -20,7 +20,7 @@ class OneOfTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($o->check('any'));
     }
 
-    public function testShorcutValid()
+    public function testShortcutValid()
     {
         $valid1 = new Callback(function() {
             return false;
@@ -61,7 +61,7 @@ class OneOfTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Respect\Validation\Exceptions\OneOfException
      */
-    public function testShorcutInvalid()
+    public function testShortcutInvalid()
     {
         $valid1 = new Callback(function() {
             return false;
@@ -90,7 +90,7 @@ class OneOfTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Respect\Validation\Exceptions\XdigitException
      */
-    public function testShorcutInvalidCheck()
+    public function testShortcutInvalidCheck()
     {
         $xdigits = new Xdigit;
         $o = $xdigits->addOr(new Alnum);

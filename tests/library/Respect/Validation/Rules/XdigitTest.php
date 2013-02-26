@@ -33,9 +33,9 @@ class XdigitTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query)
     {
-        $validator = new Xdigit($aditional);
+        $validator = new Xdigit($additional);
         $this->assertTrue($validator->validate($query));
     }
 

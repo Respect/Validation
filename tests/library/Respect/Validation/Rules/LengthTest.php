@@ -4,9 +4,9 @@ namespace Respect\Validation\Rules;
 class LengthTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @dataProvider providerForValidLenght
+     * @dataProvider providerForValidLength
      */
-    public function testLenghtInsideBoundsShouldReturnTrue($string, $min, $max)
+    public function testLengthInsideBoundsShouldReturnTrue($string, $min, $max)
     {
         $validator = new Length($min, $max);
         $this->assertTrue($validator->__invoke($string));
@@ -15,7 +15,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerForInvalidLenghtInclusive
+     * @dataProvider providerForInvalidLengthInclusive
      * @expectedException Respect\Validation\Exceptions\LengthException
      */
     public function testLengthOutsideBoundsShouldThrowLengthException($string, $min, $max)
@@ -26,7 +26,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerForInvalidLenght
+     * @dataProvider providerForInvalidLength
      * @expectedException Respect\Validation\Exceptions\LengthException
      */
     public function testLengthOutsideValidBoundsShouldThrowLengthException($string, $min, $max)
@@ -47,7 +47,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($validator->assert($string));
     }
 
-    public function providerForValidLenght()
+    public function providerForValidLength()
     {
         return array(
             array('', 1, 15),
@@ -60,7 +60,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForInvalidLenghtInclusive()
+    public function providerForInvalidLengthInclusive()
     {
         return array(
             array('alganet', 1, 7),
@@ -70,7 +70,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForInvalidLenght()
+    public function providerForInvalidLength()
     {
         return array(
             array('alganet', 1, 3),

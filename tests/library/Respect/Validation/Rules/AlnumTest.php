@@ -6,9 +6,9 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidAlnum
      */
-    public function testValidAlnumCharsShouldReturnTrue($validAlnum, $aditional)
+    public function testValidAlnumCharsShouldReturnTrue($validAlnum, $additional)
     {
-        $validator = new Alnum($aditional);
+        $validator = new Alnum($additional);
         $this->assertTrue($validator->validate($validAlnum));
         $this->assertTrue($validator->check($validAlnum));
         $this->assertTrue($validator->assert($validAlnum));
@@ -18,9 +18,9 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidAlnum
      * @expectedException Respect\Validation\Exceptions\AlnumException
      */
-    public function testInvalidAlnumCharsShouldThrowAlnumExceptionAndReturnFalse($invalidAlnum, $aditional)
+    public function testInvalidAlnumCharsShouldThrowAlnumExceptionAndReturnFalse($invalidAlnum, $additional)
     {
-        $validator = new Alnum($aditional);
+        $validator = new Alnum($additional);
         $this->assertFalse($validator->validate($invalidAlnum));
         $this->assertFalse($validator->assert($invalidAlnum));
     }
@@ -29,17 +29,17 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
     {
-        $validator = new Alnum($aditional);
+        $validator = new Alnum($additional);
     }
 
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query)
     {
-        $validator = new Alnum($aditional);
+        $validator = new Alnum($additional);
         $this->assertTrue($validator->validate($query));
     }
 

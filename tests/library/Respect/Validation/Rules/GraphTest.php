@@ -6,9 +6,9 @@ class GraphTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidGraph
      */
-    public function testValidDataWithGraphCharsShouldReturnTrue($validGraph, $aditional='')
+    public function testValidDataWithGraphCharsShouldReturnTrue($validGraph, $additional='')
     {
-        $validator = new Graph($aditional);
+        $validator = new Graph($additional);
         $this->assertTrue($validator->validate($validGraph));
     }
 
@@ -16,9 +16,9 @@ class GraphTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidGraph
      * @expectedException Respect\Validation\Exceptions\GraphException
      */
-    public function testInvalidGraphShouldFailAndThrowGraphException($invalidGraph, $aditional='')
+    public function testInvalidGraphShouldFailAndThrowGraphException($invalidGraph, $additional='')
     {
-        $validator = new Graph($aditional);
+        $validator = new Graph($additional);
         $this->assertFalse($validator->validate($invalidGraph));
         $this->assertFalse($validator->assert($invalidGraph));
     }
@@ -27,17 +27,17 @@ class GraphTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
     {
-        $validator = new Graph($aditional);
+        $validator = new Graph($additional);
     }
 
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query)
     {
-        $validator = new Graph($aditional);
+        $validator = new Graph($additional);
         $this->assertTrue($validator->validate($query));
     }
 

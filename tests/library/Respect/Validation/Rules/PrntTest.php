@@ -6,9 +6,9 @@ class PrntTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidPrint
      */
-    public function testValidDataWithPrintCharsShouldReturnTrue($validPrint, $aditional='')
+    public function testValidDataWithPrintCharsShouldReturnTrue($validPrint, $additional='')
     {
-        $validator = new Prnt($aditional);
+        $validator = new Prnt($additional);
         $this->assertTrue($validator->validate($validPrint));
     }
 
@@ -16,9 +16,9 @@ class PrntTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidPrint
      * @expectedException Respect\Validation\Exceptions\PrntException
      */
-    public function testInvalidPrintShouldFailAndThrowPrntException($invalidPrint, $aditional='')
+    public function testInvalidPrintShouldFailAndThrowPrntException($invalidPrint, $additional='')
     {
-        $validator = new Prnt($aditional);
+        $validator = new Prnt($additional);
         $this->assertFalse($validator->validate($invalidPrint));
         $this->assertFalse($validator->assert($invalidPrint));
     }
@@ -27,17 +27,17 @@ class PrntTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
     {
-        $validator = new Prnt($aditional);
+        $validator = new Prnt($additional);
     }
 
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query)
     {
-        $validator = new Prnt($aditional);
+        $validator = new Prnt($additional);
         $this->assertTrue($validator->validate($query));
     }
 

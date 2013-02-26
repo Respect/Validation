@@ -6,9 +6,9 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidAlpha
      */
-    public function testValidAlphanumericCharsShouldReturnTrue($validAlpha, $aditional)
+    public function testValidAlphanumericCharsShouldReturnTrue($validAlpha, $additional)
     {
-        $validator = new Alpha($aditional);
+        $validator = new Alpha($additional);
         $this->assertTrue($validator->validate($validAlpha));
         $this->assertTrue($validator->check($validAlpha));
         $this->assertTrue($validator->assert($validAlpha));
@@ -18,9 +18,9 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidAlpha
      * @expectedException Respect\Validation\Exceptions\AlphaException
      */
-    public function testInvalidAlphanumericCharsShouldThrowAlphaException($invalidAlpha, $aditional)
+    public function testInvalidAlphanumericCharsShouldThrowAlphaException($invalidAlpha, $additional)
     {
-        $validator = new Alpha($aditional);
+        $validator = new Alpha($additional);
         $this->assertFalse($validator->validate($invalidAlpha));
         $this->assertFalse($validator->assert($invalidAlpha));
     }
@@ -29,17 +29,17 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExeption($aditional)
+    public function testInvalidConstructorParamsShouldThrowComponentException($additional)
     {
-        $validator = new Alpha($aditional);
+        $validator = new Alpha($additional);
     }
 
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($aditional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query)
     {
-        $validator = new Alpha($aditional);
+        $validator = new Alpha($additional);
         $this->assertTrue($validator->validate($query));
     }
 
