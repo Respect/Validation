@@ -84,6 +84,10 @@
         "type": "composer",
         "url": "https://packages.zendframework.com/"
     }],
+    "require": {
+        "ext-bcmath": "*",
+        "ext-mbstring": "*"
+    },
     "require-dev": {
         "zendframework/zend-validator": "2.*",
         "symfony/validator": "2.*"
