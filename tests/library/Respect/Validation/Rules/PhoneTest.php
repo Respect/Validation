@@ -54,6 +54,14 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
             array('(555)555.5555'),
             array('(555)555-5555'),
             array('(555) 555 5555'),
+            array('(55)555555555'),
+            array('(55)55555.5555'),
+            array('(55)55555-5555'),
+            array('(55) 55555 5555'),
+            array('(55)55555555'),
+            array('(55)5555.5555'),
+            array('(55)5555-5555'),
+            array('(55) 5555 5555'),
             array('55555555555'),
             array('5555555555'),
             array('+33(1)2222222'),
@@ -70,7 +78,7 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
             array('+33(020)7777 7777'),
             array('03-6106666'),
             array('036106666'),
-            
+
         );
     }
 
