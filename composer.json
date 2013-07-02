@@ -84,10 +84,6 @@
             "email": "me@andersonfraga.net"
         }
     ],
-    "repositories": [{
-        "type": "composer",
-        "url": "https://packages.zendframework.com/"
-    }],
     "require-dev": {
         "zendframework/zend-validator": "2.*",
         "symfony/validator": "2.*"
