@@ -1,9 +1,9 @@
 {
-    "name": "Respect\/Validation",
+    "name": "Anderson\/Validation",
     "description": "The most awesome validation engine ever created for PHP",
-    "version": "0.4.4",
+    "version": "0.4.5",
     "type": "library",
-    "time": "2012-11-25 21:20:18",
+    "time": "2013-07-02 18:26:40",
     "homepage": "",
     "license": "BSD Style",
     "authors": [
@@ -78,6 +78,10 @@
         {
             "name": "Torben Brodt",
             "email": "t.brodt@gmail.com"
+        },
+        {
+            "name": "Anderson Fraga",
+            "email": "me@andersonfraga.net"
         }
     ],
     "repositories": [{
