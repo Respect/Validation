@@ -11,7 +11,7 @@ if (file_exists(dirname(__DIR__).'/vendor/composer')) {
     foreach ($map as $path)
         $paths[] = $path;
 }
-
+print_r($paths);
 natsort($paths);
 array_unshift($paths, dirname(__DIR__) .'/library');
 set_include_path(implode(PATH_SEPARATOR, array_unique($paths)));

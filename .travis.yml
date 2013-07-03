@@ -13,4 +13,4 @@ before_script:
   - "phpenv rehash"
 
 script:
-  - "make testdox"
+  - "make test"
