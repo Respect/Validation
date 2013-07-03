@@ -13,4 +13,5 @@ before_script:
   - "phpenv rehash"
 
 script:
+  - "make bootstrap-php"
   - "make test"
