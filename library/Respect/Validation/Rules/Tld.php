@@ -7,7 +7,7 @@ class Tld extends AbstractRule
         //generic
         'aero', 'asia', 'biz', 'cat', 'com', 'coop', 'edu', 'gov', 'info',
         'int', 'jobs', 'mil', 'mobi', 'museum', 'name', 'net', 'org', 'pro',
-        'tel', 'travel',
+        'tel', 'travel', 'xxx',
         //country
         'ac', 'ad', 'ae', 'af', 'ag', 'ai', 'al', 'am', 'ao', 'aq', 'ar', 'as',
         'at', 'au', 'aw', 'ax', 'az', 'ba', 'bb', 'bd', 'be', 'bf', 'bg', 'bh',
