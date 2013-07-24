@@ -21,3 +21,4 @@ notifications:
     channels:
       - "irc.freenode.org#php-respect"
     use_notice: true
+
