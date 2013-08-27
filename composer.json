@@ -88,6 +88,10 @@
         "zendframework/zend-validator": "2.*",
         "symfony/validator": "2.*"
     },
+    "suggest": {
+        "ext-bcmath": "*",
+        "ext-mbstring": "*"
+    },
     "autoload": {
         "psr-0": {
             "Respect\\Validation": "library\/"
