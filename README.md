@@ -703,20 +703,27 @@ See also:
   * v::consonant()
 
 #### v::domain()
+#### v::domain($checkTLD=true)
 
 Validates domain names.
 
     v::domain()->validate('google.com');
 
+You can skip *top level domain* (TLD) checks to validate internal
+domain names:
+
+    v::domain(false)->validate('dev.machine.local')
+
 This is a composite validator, it validates several rules
 internally:
 
-  * If input is an IP address, it validates
-  * If input contains whitespace, it fails
-  * If input not contains any dot, it fails
-  * If input has less than two parts, it fails
-  * Input must end with a top-level-domain to pass
-  * Each part must be alphanumeric and not start with an hyphen
+  * If input is an IP address, it validates.
+  * If input contains whitespace, it fails.
+  * If input not contains any dot, it fails.
+  * If input has less than two parts, it fails.
+  * Input must end with a top-level-domain to pass (if not skipped).
+  * Each part must be alphanumeric and not start with an hyphen.
+  * [PunnyCode][] is accepted for [Internationalizing Domain Names in Applications][IDNA].
 
 Messages for this validator will reflect rules above.
 
@@ -1556,29 +1563,5 @@ See also:
 
   * v::sf()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+[PunnyCode]: http://en.wikipedia.org/wiki/Punycode "Wikipedia: Punnycode"
+[IDNA]: http://en.wikipedia.org/wiki/Internationalized_domain_name#Internationalizing_Domain_Names_in_Applications "Wikipedia: Internationalized domain name"
