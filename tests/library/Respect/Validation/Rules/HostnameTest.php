@@ -1,20 +1,20 @@
 <?php
 namespace Respect\Validation\Rules;
 
-class DomainTest extends \PHPUnit_Framework_TestCase
+class HostnameTest extends \PHPUnit_Framework_TestCase
 {
     protected $object;
 
     protected function setUp()
     {
-        $this->object = new Domain;
+        $this->object = new Hostname();
     }
 
     /**
-     * @dataProvider providerForDomain
+     * @dataProvider providerForHostname
      *
      */
-    public function testValidDomainsShouldReturnTrue($input, $tldcheck=true)
+    public function testValidHostnamesShouldReturnTrue($input, $tldcheck=true)
     {
         if($tldcheck === false) {
             $this->object->skipTldCheck();
@@ -26,10 +26,10 @@ class DomainTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerForNotDomain
+     * @dataProvider providerForNotHostname
      * @expectedException Respect\Validation\Exceptions\ValidationException
      */
-    public function testNotDomain($input, $tldcheck=true)
+    public function testNotHostname($input, $tldcheck=true)
     {
         if($tldcheck === false) {
             $this->object->skipTldCheck();
@@ -39,8 +39,8 @@ class DomainTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerForNotDomain
-     * @expectedException Respect\Validation\Exceptions\DomainException
+     * @dataProvider providerForNotHostname
+     * @expectedException Respect\Validation\Exceptions\HostnameException
      */
     public function testNotDomainCheck($input, $tldcheck=true)
     {
@@ -51,25 +51,27 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $this->object->skipTldCheck(false);
     }
 
-    public function providerForDomain()
+    public function providerForHostname()
     {
         return array(
             array(''),
-            array('111111111111domain.local', false),
+            array('domain.local', false),
             array('example.com'),
-            array('example-hyphen.com'),
-            array('1.2.3.4'),
+            array('example-hyphen.com')
         );
     }
 
-    public function providerForNotDomain()
+    public function providerForNotHostname()
     {
         return array(
             array(null),
-            array('2222222domain.local'),
+            array('domain.local'),
+            array('example.srv-'),
             array('example--invalid.com'),
             array('-example-invalid.com'),
             array('1.2.3.256'),
+            array('1.2.3.4'),
+            array('8.8.8.8')
         );
     }
 }

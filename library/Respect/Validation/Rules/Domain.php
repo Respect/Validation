@@ -5,7 +5,7 @@ use Respect\Validation\Exceptions\ValidationException;
 
 class Domain extends AbstractComposite
 {
-    private $ip,
+    protected $ip,
             $tld,
             $checks = array(),
             $otherParts;
@@ -22,6 +22,19 @@ class Domain extends AbstractComposite
             new Alnum('-'),
             new Not(new StartsWith('-'))
         );
+    }
+
+    public function skipTldCheck($do=true)
+    {
+        if($do === false) {
+            $this->tld = new Tld();
+        } else{
+            $this->tld = new AllOf(
+                    new Not(new Contains('-')),
+                    new NoWhitespace(),
+                    new Length(2, null)
+                );
+        }
     }
 
     public function validate($input)
