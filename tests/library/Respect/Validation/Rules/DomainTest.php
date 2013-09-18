@@ -16,13 +16,10 @@ class DomainTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidDomainsShouldReturnTrue($input, $tldcheck=true)
     {
-        if($tldcheck === false) {
-            $this->object->skipTldCheck();
-        }
+        $this->object->tldCheck($tldcheck);
         $this->assertTrue($this->object->__invoke($input));
         $this->assertTrue($this->object->assert($input));
         $this->assertTrue($this->object->check($input));
-        $this->object->skipTldCheck(false);
     }
 
     /**
@@ -31,11 +28,8 @@ class DomainTest extends \PHPUnit_Framework_TestCase
      */
     public function testNotDomain($input, $tldcheck=true)
     {
-        if($tldcheck === false) {
-            $this->object->skipTldCheck();
-        }
+        $this->object->tldCheck($tldcheck);
         $this->assertFalse($this->object->check($input));
-        $this->object->skipTldCheck(false);
     }
 
     /**
@@ -44,21 +38,17 @@ class DomainTest extends \PHPUnit_Framework_TestCase
      */
     public function testNotDomainCheck($input, $tldcheck=true)
     {
-        if($tldcheck === false) {
-            $this->object->skipTldCheck();
-        }
+        $this->object->tldCheck($tldcheck);
         $this->assertFalse($this->object->assert($input));
-        $this->object->skipTldCheck(false);
     }
 
     public function providerForDomain()
     {
         return array(
-            array(''),
             array('111111111111domain.local', false),
+            array('111111111111.domain.local', false),
             array('example.com'),
             array('example-hyphen.com'),
-            array('1.2.3.4'),
         );
     }
 
@@ -66,10 +56,13 @@ class DomainTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(null),
+            array(''),
             array('2222222domain.local'),
             array('example--invalid.com'),
             array('-example-invalid.com'),
+            array('example.invalid.-com'),
             array('1.2.3.256'),
+            array('1.2.3.4'),
         );
     }
 }

@@ -5,42 +5,40 @@ use Respect\Validation\Exceptions\ValidationException;
 
 class Domain extends AbstractComposite
 {
-    protected $ip,
-            $tld,
-            $checks = array(),
-            $otherParts;
+    protected $tld;
+    protected $checks = array();
+    protected $otherParts;
 
-    public function __construct()
+    public function __construct($tldCheck=true)
     {
-        $this->ip = new Ip();
         $this->checks[] = new NoWhitespace();
         $this->checks[] = new Contains('.');
         $this->checks[] = new Not(new Contains('--'));
         $this->checks[] = new Length(3, null);
-        $this->tld = new Tld();
+        $this->TldCheck($tldCheck);
         $this->otherParts = new AllOf(
             new Alnum('-'),
             new Not(new StartsWith('-'))
         );
     }
 
-    public function skipTldCheck($do=true)
+    public function tldCheck($do=true)
     {
-        if($do === false) {
+        if($do === true) {
             $this->tld = new Tld();
-        } else{
+        } else {
             $this->tld = new AllOf(
-                    new Not(new Contains('-')),
+                    new Not(new StartsWith('-')),
                     new NoWhitespace(),
                     new Length(2, null)
                 );
         }
+
+        return true;
     }
 
     public function validate($input)
     {
-        if ($input === '' || $this->ip->validate($input))
-            return true;
 
         foreach ($this->checks as $chk)
             if (!$chk->validate($input))
@@ -59,8 +57,6 @@ class Domain extends AbstractComposite
 
     public function assert($input)
     {
-        if ($input === '' || $this->ip->validate($input))
-            return true;
 
         $e = array();
         foreach ($this->checks as $chk)
@@ -89,8 +85,6 @@ class Domain extends AbstractComposite
 
     public function check($input)
     {
-        if ($input === '' || $this->ip->validate($input))
-            return true;
 
         foreach ($this->checks as $chk)
             $chk->check($input);
