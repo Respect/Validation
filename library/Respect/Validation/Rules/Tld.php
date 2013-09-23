@@ -4,10 +4,10 @@ namespace Respect\Validation\Rules;
 class Tld extends AbstractRule
 {
     protected $tldList = array(
-        //generic
+        //generic - http://en.wikipedia.org/wiki/Generic_top-level_domain
         'aero', 'asia', 'biz', 'cat', 'com', 'coop', 'edu', 'gov', 'info',
-        'int', 'jobs', 'mil', 'mobi', 'museum', 'name', 'net', 'org', 'pro',
-        'tel', 'travel',
+        'int', 'jobs', 'mil', 'mobi', 'museum', 'name', 'net', 'org', 'post', 'pro',
+        'tel', 'travel', 'xxx',
         //country
         'ac', 'ad', 'ae', 'af', 'ag', 'ai', 'al', 'am', 'ao', 'aq', 'ar', 'as',
         'at', 'au', 'aw', 'ax', 'az', 'ba', 'bb', 'bd', 'be', 'bf', 'bg', 'bh',
