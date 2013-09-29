@@ -13,7 +13,11 @@ class Domain extends AbstractComposite
     {
         $this->checks[] = new NoWhitespace();
         $this->checks[] = new Contains('.');
-        $this->checks[] = new Not(new Contains('--'));
+        $this->checks[] = new OneOf(new Not(new Contains('--')),
+                                    new AllOf(new StartsWith('xn--'),
+                                              new Callback(function ($str) {
+                                                  return substr_count($str, "--") == 1;
+                                              })));
         $this->checks[] = new Length(3, null);
         $this->TldCheck($tldCheck);
         $this->otherParts = new AllOf(

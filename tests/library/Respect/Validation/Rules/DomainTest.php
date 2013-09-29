@@ -48,6 +48,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             array('111111111111domain.local', false),
             array('111111111111.domain.local', false),
             array('example.com'),
+            array('xn--bcher-kva.ch'),
             array('example-hyphen.com'),
         );
     }
@@ -61,6 +62,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             array('example--invalid.com'),
             array('-example-invalid.com'),
             array('example.invalid.-com'),
+            array('xn--bcher--kva.ch'),
             array('1.2.3.256'),
             array('1.2.3.4'),
         );
