@@ -302,6 +302,7 @@ Reference
   * v::phone()
   * v::sf()
   * v::zend()
+  * v::nfe()
 
 ### Alphabetically
 
@@ -537,6 +538,10 @@ See also:
 
   * v::cpf() - Validates the Brazillian CPF number.
   * v::cnh() - Validates the Brazillian driver's license.
+
+#### v::nfe()
+
+Validates the access key of the Brazilian electronic invoice.
 
 #### v::consonants() *(deprecated)*
 
