@@ -33,7 +33,7 @@ class NFeTest extends \PHPUnit_Framework_TestCase
      * @dataProvider invalidAccessKeyLengthProvider
      * @expectedException Respect\Validation\Exceptions\NFeException
      */
-    public function testInvalidLengthCnh($aK)
+    public function testInvalidLength($aK)
     {
         $this->assertFalse($this->nfeValidator->assert($aK));
     }
