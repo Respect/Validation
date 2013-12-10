@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 use DateTime;
@@ -29,32 +28,35 @@ class ValidationException extends InvalidArgumentException
     {
         return preg_replace_callback(
             '/{{(\w+)}}/',
-            function($match) use($vars) {
+            function($match) use ($vars) {
                 return isset($vars[$match[1]]) ? $vars[$match[1]] : $match[0];
-            }, $template
+            },
+            $template
         );
     }
 
     public static function stringify($value)
     {
-        if (is_string($value))
+        if (is_string($value)) {
             return $value;
-        elseif (is_array($value))
+        } elseif (is_array($value)) {
             return 'Array'; //FIXME
-        elseif (is_object($value))
+        } elseif (is_object($value)) {
             return static::stringifyObject($value);
-        else
+        } else {
             return (string) $value;
+        }
     }
 
     public static function stringifyObject($value)
     {
-        if (method_exists($value, '__toString'))
+        if (method_exists($value, '__toString')) {
             return (string) $value;
-        elseif ($value instanceof DateTime)
+        } elseif ($value instanceof DateTime) {
             return $value->format('Y-m-d H:i:s');
-        else
+        } else {
             return "Object of class " . get_class($value);
+        }
     }
 
     public function __toString()
@@ -73,6 +75,7 @@ class ValidationException extends InvalidArgumentException
         $this->setParams($params);
         $this->message = $this->getMainMessage();
         $this->setId($this->guessId());
+
         return $this;
     }
 
@@ -91,8 +94,10 @@ class ValidationException extends InvalidArgumentException
         $vars = $this->getParams();
         $vars['name'] = $this->getName();
         $template = $this->getTemplate();
-        if(isset($vars['translator']) && is_callable($vars['translator']))
+        if (isset($vars['translator']) && is_callable($vars['translator'])) {
             $template = call_user_func($vars['translator'], $template);
+        }
+
         return static::format($template, $vars);
     }
 
@@ -108,10 +113,11 @@ class ValidationException extends InvalidArgumentException
 
     public function getTemplate()
     {
-        if (!empty($this->template))
+        if (!empty($this->template)) {
             return $this->template;
-        else
+        } else {
             return $this->template = $this->buildTemplate();
+        }
     }
 
     public function hasParam($name)
@@ -122,12 +128,14 @@ class ValidationException extends InvalidArgumentException
     public function setId($id)
     {
         $this->id = $id;
+
         return $this;
     }
 
     public function setName($name)
     {
         $this->name = static::stringify($name);
+
         return $this;
     }
 
@@ -135,31 +143,37 @@ class ValidationException extends InvalidArgumentException
     {
         $this->mode = $mode;
         $this->template = $this->buildTemplate();
+
         return $this;
     }
 
     public function setParam($key, $value)
     {
         $this->params[$key] = ($key == 'translator') ? $value : static::stringify($value);
+
         return $this;
     }
 
     public function setParams(array $params)
     {
-        foreach ($params as $key => $value)
+        foreach ($params as $key => $value) {
             $this->setParam($key, $value);
+        }
+
         return $this;
     }
 
     public function setTemplate($template)
     {
         $this->template = $template;
+
         return $this;
     }
 
     protected function buildTemplate()
     {
         $templateKey = $this->chooseTemplate();
+
         return static::$defaultTemplates[$this->mode][$templateKey];
     }
 
@@ -167,11 +181,8 @@ class ValidationException extends InvalidArgumentException
     {
         if (!empty($this->id) && $this->id != 'validation')
             return $this->id;
-        $classParts = explode('\\', get_called_class());
-        $id = end($classParts);
-        $id = lcfirst(str_replace('Exception', '', $id));
-        return $id;
+        return lcfirst(str_replace('Exception', '',
+            end((explode('\\', get_called_class())))));
     }
-
 }
 

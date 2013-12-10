@@ -1,40 +1,45 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class HexaTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $hexaValidator;
 
     protected function setUp()
     {
+        set_error_handler(function () { }, E_USER_DEPRECATED);
         $this->hexaValidator = new Hexa;
+    }
+
+    protected function tearDown()
+    {
+        restore_error_handler();
     }
 
     /**
      * @dataProvider providerForHexa
      */
-    public function test_validate_valid_hexadecimal_numbers($input)
+    public function testValidateValidHexadecimalNumbers($input)
     {
         $this->assertTrue($this->hexaValidator->assert($input));
         $this->assertTrue($this->hexaValidator->check($input));
-        $this->assertTrue($this->hexaValidator->validate($input));
+        $this->assertTrue($this->hexaValidator->__invoke($input));
     }
 
     /**
      * @dataProvider providerForNotHexa
      * @expectedException Respect\Validation\Exceptions\HexaException
      */
-    public function test_invalid_hexadecimal_numbers_should_throw_HexaException($input)
+    public function testInvalidHexadecimalNumbersShouldThrowHexaException($input)
     {
-        $this->assertFalse($this->hexaValidator->validate($input));
+        $this->assertFalse($this->hexaValidator->__invoke($input));
         $this->assertFalse($this->hexaValidator->assert($input));
     }
 
     public function providerForHexa()
     {
         return array(
+            array(''),
             array('FFF'),
             array('15'),
             array('DE12FA'),
@@ -50,9 +55,8 @@ class HexaTest extends \PHPUnit_Framework_TestCase
             array('j'),
             array(' '),
             array('Foo'),
-            array(''),
             array('1.5'),
         );
     }
-
 }
+

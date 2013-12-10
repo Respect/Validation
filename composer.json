@@ -3,7 +3,7 @@
     "description": "The most awesome validation engine ever created for PHP",
     "version": "0.4.4",
     "type": "library",
-    "time": "2012-04-24 23:52:45",
+    "time": "2012-11-25 21:20:18",
     "homepage": "",
     "license": "BSD Style",
     "authors": [
@@ -13,7 +13,7 @@
         },
         {
             "name": "Augusto Pascutti",
-            "email": "contato@augustopascutti.com"
+            "email": "augusto@phpsp.org.br"
         },
         {
             "name": "Carlos Andr\u00e9 Ferrari",
@@ -48,6 +48,10 @@
             "email": "jeanfap@gmail.com"
         },
         {
+            "name": "Kinn Coelho Juli\u00e3o",
+            "email": "kinncj@gmail.com"
+        },
+        {
             "name": "Kleber Hamada Sato",
             "email": "kleberhs007@yahoo.com"
         },
@@ -76,6 +80,18 @@
             "email": "t.brodt@gmail.com"
         }
     ],
+    "repositories": [{
+        "type": "composer",
+        "url": "https://packages.zendframework.com/"
+    }],
+    "require-dev": {
+        "zendframework/zend-validator": "2.*",
+        "symfony/validator": "2.*"
+    },
+    "suggest": {
+        "ext-bcmath": "*",
+        "ext-mbstring": "*"
+    },
     "autoload": {
         "psr-0": {
             "Respect\\Validation": "library\/"

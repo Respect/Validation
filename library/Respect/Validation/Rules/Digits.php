@@ -1,12 +1,12 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
-class Digits extends Alpha
+class Digits extends Digit
 {
-
-    public $additionalChars = '';
-    public $stringFormat = '/^\s*[0-9]+([0-9]|\s)*$/';
-
+    public function __construct()
+    {
+        parent::__construct();
+        trigger_error("Use digit instead.",
+            E_USER_DEPRECATED);
+    }
 }
-

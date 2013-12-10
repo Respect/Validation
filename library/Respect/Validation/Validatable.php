@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation;
 
 /** Interface for validation rules */

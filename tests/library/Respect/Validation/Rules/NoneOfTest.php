@@ -1,11 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
-
 
 class NoneOfTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testValid()
     {
         $valid1 = new Callback(function() {
@@ -41,5 +38,5 @@ class NoneOfTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($o->validate('any'));
         $this->assertFalse($o->assert('any'));
     }
-
 }
+

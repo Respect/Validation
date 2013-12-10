@@ -1,17 +1,15 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class EmailTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidEmail
      */
-    public function test_valid_email_should_pass($validEmail)
+    public function testValidEmailShouldPass($validEmail)
     {
         $validator = new Email();
-        $this->assertTrue($validator->validate($validEmail));
+        $this->assertTrue($validator->__invoke($validEmail));
         $this->assertTrue($validator->check($validEmail));
         $this->assertTrue($validator->assert($validEmail));
     }
@@ -20,16 +18,17 @@ class EmailTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidEmail
      * @expectedException Respect\Validation\Exceptions\EmailException
      */
-    public function test_invalid_emails_should_fail_validation($invalidEmail)
+    public function testInvalidEmailsShouldFailValidation($invalidEmail)
     {
         $validator = new Email();
-        $this->assertFalse($validator->validate($invalidEmail));
+        $this->assertFalse($validator->__invoke($invalidEmail));
         $this->assertFalse($validator->assert($invalidEmail));
     }
 
     public function providerForValidEmail()
     {
         return array(
+            array(''),
             array('test@test.com'),
             array('mail+mail@gmail.com'),
             array('mail.email@e.test.com'),
@@ -53,5 +52,5 @@ class EmailTest extends \PHPUnit_Framework_TestCase
             array('.test@test.com')
         );
     }
-
 }
+

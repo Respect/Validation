@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class LowercaseException extends ValidationException
 {
-
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => '{{name}} must be lowercase',
@@ -13,6 +11,5 @@ class LowercaseException extends ValidationException
             self::STANDARD => '{{name}} must not be lowercase',
         )
     );
-
 }
 

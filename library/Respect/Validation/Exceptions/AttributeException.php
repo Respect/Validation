@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class AttributeException extends AbstractNestedException
@@ -21,6 +20,5 @@ class AttributeException extends AbstractNestedException
     {
         return $this->getParam('hasReference') ? static::INVALID : static::NOT_PRESENT;
     }
-
 }
 

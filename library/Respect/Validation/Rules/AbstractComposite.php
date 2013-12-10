@@ -1,15 +1,12 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Sanitizable;
 use Respect\Validation\Validatable;
 use Respect\Validation\Validator;
 
 abstract class AbstractComposite extends AbstractRule
 {
-
     protected $rules = array();
 
     public function __construct()
@@ -19,14 +16,15 @@ abstract class AbstractComposite extends AbstractRule
 
     public function addRule($validator, $arguments=array())
     {
-        if (!$validator instanceof Validatable)
+        if (!$validator instanceof Validatable) {
             $this->appendRule(Validator::buildRule($validator, $arguments));
-        else
+        } else {
             $this->appendRule($validator);
+        }
 
         return $this;
     }
-    
+
     public function removeRules()
     {
         $this->rules = array();
@@ -34,15 +32,17 @@ abstract class AbstractComposite extends AbstractRule
 
     public function addRules(array $validators)
     {
-        foreach ($validators as $key => $spec)
-            if ($spec instanceof Validatable)
+        foreach ($validators as $key => $spec) {
+            if ($spec instanceof Validatable) {
                 $this->appendRule($spec);
-            elseif (is_numeric($key) && is_array($spec))
+            } elseif (is_numeric($key) && is_array($spec)) {
                 $this->addRules($spec);
-            elseif (is_array($spec))
+            } elseif (is_array($spec)) {
                 $this->addRule($key, $spec);
-            else
+            } else {
                 $this->addRule($spec);
+            }
+        }
 
         return $this;
     }
@@ -54,16 +54,21 @@ abstract class AbstractComposite extends AbstractRule
 
     public function hasRule($validator)
     {
-        if (empty($this->rules))
+        if (empty($this->rules)) {
             return false;
+        }
 
-        if ($validator instanceof Validatable)
+        if ($validator instanceof Validatable) {
             return isset($this->rules[spl_object_hash($validator)]);
+        }
 
-        if (is_string($validator))
-            foreach ($this->rules as $rule)
-                if (get_class($rule) == __NAMESPACE__ . '\\' . $validator)
+        if (is_string($validator)) {
+            foreach ($this->rules as $rule) {
+                if (get_class($rule) == __NAMESPACE__ . '\\' . $validator) {
                     return true;
+                }
+            }
+        }
 
         return false;
     }
@@ -77,13 +82,15 @@ abstract class AbstractComposite extends AbstractRule
     {
         $validators = $this->getRules();
         $exceptions = array();
-        foreach ($validators as $v)
+        foreach ($validators as $v) {
             try {
                 $v->assert($input);
             } catch (ValidationException $e) {
                 $exceptions[] = $e;
             }
+        }
+
         return $exceptions;
     }
-
 }
+

@@ -1,11 +1,9 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class EachTest extends \PHPUnit_Framework_TestCase
 {
-
-    public function test_validator_should_pass_if_every_array_item_pass()
+    public function testValidatorShouldPassIfEveryArrayItemPass()
     {
         $v = new Each(new NotEmpty());
         $result = $v->validate(array(1, 2, 3, 4, 5));
@@ -16,7 +14,7 @@ class EachTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($result);
     }
 
-    public function test_validator_should_pass_if_every_array_item_and_key_pass()
+    public function testValidatorShouldPassIfEveryArrayItemAndKeyPass()
     {
         $v = new Each(new Alpha(), new Int());
         $result = $v->validate(array('a', 'b', 'c', 'd', 'e'));
@@ -27,7 +25,7 @@ class EachTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($result);
     }
 
-    public function test_validator_should_pass_with_only_key_validation()
+    public function testValidatorShouldPassWithOnlyKeyValidation()
     {
         $v = new Each(null, new Int());
         $result = $v->validate(array('a', 'b', 'c', 'd', 'e'));
@@ -41,21 +39,21 @@ class EachTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Respect\Validation\Exceptions\EachException
      */
-    public function test_validator_should_NOT_pass_with_only_key_validation()
+    public function testValidatorShouldNotPassWithOnlyKeyValidation()
     {
         $v = new Each(null, new String());
         $result = $v->assert(array('a', 'b', 'c', 'd', 'e'));
         $this->assertTrue($result);
     }
 
-    public function test_not_traversable_validator_should_fail()
+    public function testNotTraversableValidatorShouldFail()
     {
         $v = new Each(new NotEmpty());
         $result = $v->validate(null);
         $this->assertFalse($result);
     }
 
-    public function test_validator_should_fail_on_invalid_item()
+    public function testValidatorShouldFailOnInvalidItem()
     {
         $v = new Each(new NotEmpty());
         $result = $v->validate(array('', 2, 3, 4, 5));
@@ -65,7 +63,7 @@ class EachTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Respect\Validation\Exceptions\EachException
      */
-    public function test_assert_should_fail_on_invalid_item()
+    public function testAssertShouldFailOnInvalidItem()
     {
         $v = new Each(new Int());
         $result = $v->assert(array('a', 2, 3, 4, 5));
@@ -75,11 +73,11 @@ class EachTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Respect\Validation\Exceptions\EachException
      */
-    public function test_assert_should_fail_on_non_traversable()
+    public function testAssertShouldFailOnNonTraversable()
     {
         $v = new Each(new NotEmpty());
         $result = $v->assert(123);
         $this->assertFalse($result);
     }
-
 }
+

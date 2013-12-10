@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
-class VowelsException extends AlphaException
+class VowelException extends AlphaException
 {
-
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => '{{name}} must contain only vowels',
@@ -15,5 +13,5 @@ class VowelsException extends AlphaException
             self::EXTRA => '{{name}} must not contain vowels or "{{additionalChars}}"'
         )
     );
-
 }
+

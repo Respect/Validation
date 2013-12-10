@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class PerfectSquareTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $object;
 
     protected function setUp()
@@ -18,7 +16,7 @@ class PerfectSquareTest extends \PHPUnit_Framework_TestCase
      */
     public function testPerfectSquare($input)
     {
-        $this->assertTrue($this->object->validate($input));
+        $this->assertTrue($this->object->__invoke($input));
         $this->assertTrue($this->object->check($input));
         $this->assertTrue($this->object->assert($input));
     }
@@ -26,17 +24,18 @@ class PerfectSquareTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForNotPerfectSquare
      * @expectedException Respect\Validation\Exceptions\PerfectSquareException
-     * 
+     *
      */
     public function testNotPerfectSquare($input)
     {
-        $this->assertFalse($this->object->validate($input));
+        $this->assertFalse($this->object->__invoke($input));
         $this->assertFalse($this->object->assert($input));
     }
 
     public function providerForPerfectSquare()
     {
         return array(
+            array(''),
             array(1),
             array(9),
             array(25),
@@ -62,9 +61,7 @@ class PerfectSquareTest extends \PHPUnit_Framework_TestCase
             array('a'),
             array(' '),
             array('Foo'),
-            array(''),
         );
     }
-
 }
 

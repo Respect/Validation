@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class LengthException extends ValidationException
@@ -25,18 +24,19 @@ class LengthException extends ValidationException
     {
         $params['minValue'] = static::stringify($params['minValue']);
         $params['maxValue'] = static::stringify($params['maxValue']);
+
         return parent::configure($name, $params);
     }
 
     public function chooseTemplate()
     {
-        if (!$this->getParam('minValue'))
+        if (!$this->getParam('minValue')) {
             return static::GREATER;
-        elseif (!$this->getParam('maxValue'))
+        } elseif (!$this->getParam('maxValue')) {
             return static::LOWER;
-        else
+        } else {
             return static::BOTH;
+        }
     }
-
 }
 

@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class CallbackException extends AbstractNestedException
 {
-
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => '{{name}} must be valid',
@@ -13,5 +11,5 @@ class CallbackException extends AbstractNestedException
             self::STANDARD => '{{name}} must not be valid',
         )
     );
-
 }
+

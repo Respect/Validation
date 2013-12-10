@@ -1,67 +1,133 @@
 <?php
-
 namespace Respect\Validation\Rules;
+
+use DateTime;
 
 class ZendTest extends \PHPUnit_Framework_TestCase
 {
-
-    public function setUp()
+    public function testZendDependency()
     {
-        if (!class_exists('Zend\Validator\AbstractValidator')) {
-            $this->markTestSkipped('No ZendFramework installed');
-        }
+        $this->assertTrue(
+            class_exists('\Zend\Validator\Date'),
+            'Zend Framework 2 Validator not installed.'
+        );
     }
 
-    public function testSimpleOk()
+    /**
+     * @depends testZendDependency
+     */
+    public function testConstructorWithValidatorName()
     {
-        $v = new Zend('Alnum');
-        $this->assertTrue($v->validate('wp2oiur'));
-        $this->assertTrue($v->assert('wp2oiur'));
+        $v = new Zend('Date');
+        $this->assertAttributeInstanceOf(
+            $instanceOf = 'Zend\Validator\ValidatorInterface',
+            $attribute  = 'zendValidator',
+            $instance   = $v
+        );
     }
 
-    public function testFullNsOk()
+    /**
+     * @depends testConstructorWithValidatorName
+     */
+    public function testConstructorWithValidatorClassName()
     {
-        $v = new Zend('Zend\\Validator\\Alnum');
-        $this->assertTrue($v->validate('wp2oiur'));
-        $this->assertTrue($v->assert('wp2oiur'));
+        $v = new Zend('Zend\Validator\Date');
+        $this->assertAttributeInstanceOf(
+            $instanceOf = 'Zend\Validator\ValidatorInterface',
+            $attribute  = 'zendValidator',
+            $instance   = $v
+        );
     }
 
-    public function testExtended()
+    /**
+     * @depends testZendDependency
+     */
+    public function testConstructorWithZendValidatorInstance()
+    {
+        $zendInstance = new \Zend\Validator\Date;
+        $v            = new Zend($zendInstance);
+        $this->assertAttributeSame(
+            $expected   = $zendInstance,
+            $attribute  = 'zendValidator',
+            $instance   = $v
+        );
+    }
+
+    /**
+     * @depends testZendDependency
+     * @depends testConstructorWithZendValidatorInstance
+     */
+    public function testUserlandValidatorExtendingZendInterface()
     {
         $v = new Zend(new MyValidator);
-        $this->assertTrue($v->validate('wp2oiur'));
-        $this->assertTrue($v->assert('wp2oiur'));
-    }
-
-    public function testInstanceOk()
-    {
-        $v = new Zend(new \Zend\Validator\Alnum);
-        $this->assertTrue($v->validate('wp2oiur'));
-        $this->assertTrue($v->assert('wp2oiur'));
-    }
-
-    public function testNamespaceOk()
-    {
-        $v = new Zend('Sitemap\\Lastmod');
+        $this->assertAttributeInstanceOf(
+            $instanceOf = 'Zend\Validator\ValidatorInterface',
+            $attribute  = 'zendValidator',
+            $instance   = $v
+        );
     }
 
     /**
+     * @depends testZendDependency
+     */
+    public function testConstructorWithZendValidatorPartialNamespace()
+    {
+        $v = new Zend('Sitemap\Lastmod');
+        $this->assertAttributeInstanceOf(
+            $instanceOf = 'Zend\Validator\ValidatorInterface',
+            $attribute  = 'zendValidator',
+            $instance   = $v
+        );
+    }
+
+    /**
+     * @depends testConstructorWithValidatorName
+     * @depends testConstructorWithZendValidatorPartialNamespace
+     */
+    public function testConstructorWithValidatorName_and_params()
+    {
+        $zendValidatorName   = 'StringLength';
+        $zendValidatorParams = array('min' => 10, 'max' => 25);
+        $v = new Zend($zendValidatorName, $zendValidatorParams);
+        $this->assertTrue(
+            $v->validate('12345678901'),
+            'The value should be valid for Zend\'s validator'
+        );
+    }
+
+    /**
+     * @depends testConstructorWithValidatorName
+     */
+    public function testZendDateValidatorWithRespectMethods()
+    {
+        $v    = new Zend('Date');
+        $date = new DateTime;
+        $this->assertTrue($v->validate($date));
+        $this->assertTrue($v->assert($date));
+    }
+
+    /**
+     * @depends testConstructorWithValidatorName
+     * @depends testZendDateValidatorWithRespectMethods
      * @expectedException Respect\Validation\Exceptions\ZendException
      */
-    public function testSimpleNot()
+    public function testRespectExceptionForFailedValidation()
     {
-        $v = new Zend('alnum');
-        $this->assertFalse($v->validate('#$%#$%'));
-        $this->assertFalse($v->assert('#$%#$%'));
-    }
-
-    public function testParamsOk()
-    {
-        $v = new Zend('StringLength', array('min' => 10, 'max' => 25));
-        $this->assertTrue($v->assert('owurhfojgboerjng'));
+        $v = new Zend('Date');
+        $notValid = 'a';
+        $this->assertFalse(
+            $v->validate($notValid),
+            'The validator returned true for an invalid value, this won\'t cause an exception later on.'
+        );
+        $this->assertFalse(
+            $v->assert($notValid)
+        );
     }
 
     /**
+     * @depends testConstructorWithValidatorName
+     * @depends testConstructorWithValidatorName_and_params
+     * @depends testZendDateValidatorWithRespectMethods
      * @expectedException Respect\Validation\Exceptions\ZendException
      */
     public function testParamsNot()
@@ -69,11 +135,12 @@ class ZendTest extends \PHPUnit_Framework_TestCase
         $v = new Zend('StringLength', array('min' => 10, 'max' => 25));
         $this->assertFalse($v->assert('aw'));
     }
-
 }
 
-if (class_exists('Zend\Validator\AbstractValidator')) {
-    class MyValidator extends \Zend\Validator\Alnum
+// Stubs
+if (class_exists('\Zend\Validator\Date')) {
+    class MyValidator extends \Zend\Validator\Date
     {
     }
 }
+

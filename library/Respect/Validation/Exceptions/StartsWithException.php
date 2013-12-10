@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class StartsWithException extends ValidationException
 {
-
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => '{{name}} must start with ({{startValue}})',
@@ -13,6 +11,5 @@ class StartsWithException extends ValidationException
             self::STANDARD => '{{name}} must not start with ({{startValue}})',
         )
     );
-
 }
 

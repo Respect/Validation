@@ -1,28 +1,32 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class CallTest extends \PHPUnit_Framework_TestCase
 {
-
     public function thisIsASampleCallbackUsedInsideThisTest()
     {
         return array();
     }
 
-    public function test_callback_validator_should_accept_string_with_function_name()
+    public function testCallbackValidatorShouldAcceptEmptyString()
+    {
+        $v = new Call('str_split', new Arr);
+        $this->assertTrue($v->assert(''));
+    }
+
+    public function testCallbackValidatorShouldAcceptStringWithFunctionName()
     {
         $v = new Call('str_split', new Arr);
         $this->assertTrue($v->assert('test'));
     }
 
-    public function test_callback_validator_should_accept_array_callback_definition()
+    public function testCallbackValidatorShouldAcceptArrayCallbackDefinition()
     {
         $v = new Call(array($this, 'thisIsASampleCallbackUsedInsideThisTest'), new Arr);
         $this->assertTrue($v->assert('test'));
     }
 
-    public function test_callback_validator_should_accept_closures()
+    public function testCallbackValidatorShouldAcceptClosures()
     {
         $v = new Call(function() {
                     return array();
@@ -33,11 +37,11 @@ class CallTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Respect\Validation\Exceptions\CallException
      */
-    public function test_callback_failed_should_throw_CallException()
+    public function testCallbackFailedShouldThrowCallException()
     {
         $v = new Call('strrev', new Arr);
         $this->assertFalse($v->validate('test'));
         $this->assertFalse($v->assert('test'));
     }
-
 }
+

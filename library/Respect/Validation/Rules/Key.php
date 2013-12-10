@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
@@ -7,13 +6,11 @@ use Respect\Validation\Validatable;
 
 class Key extends AbstractRelated
 {
-
     public function __construct($reference, Validatable $referenceValidator=null, $mandatory=true)
     {
-        if (!is_string($reference) || empty($reference))
-            throw new ComponentException(
-                'Invalid array key name'
-            );
+        if (!is_string($reference) || empty($reference)) {
+            throw new ComponentException('Invalid array key name');
+        }
         parent::__construct($reference, $referenceValidator, $mandatory);
     }
 
@@ -26,5 +23,5 @@ class Key extends AbstractRelated
     {
         return is_array($input) && array_key_exists($this->reference, $input);
     }
-
 }
+

@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class NullValueTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $object;
 
     protected function setUp()
@@ -15,17 +13,30 @@ class NullValueTest extends \PHPUnit_Framework_TestCase
     public function testNullValue()
     {
         $this->assertTrue($this->object->assert(null));
-        $this->assertTrue($this->object->validate(null));
+        $this->assertTrue($this->object->__invoke(null));
         $this->assertTrue($this->object->check(null));
     }
 
     /**
+     * @dataProvider providerForNotNull
      * @expectedException Respect\Validation\Exceptions\NullValueException
      */
-    public function testNotNull()
+    public function testNotNull($input)
     {
-        $this->assertFalse($this->object->validate('w poiur'));
-        $this->assertFalse($this->object->assert('w poiur'));
+        $this->assertFalse($this->object->__invoke($input));
+        $this->assertFalse($this->object->assert($input));
+    }
+
+    public function providerForNotNull()
+    {
+        return array(
+            array(''),
+            array(0),
+            array('w poiur'),
+            array(' '),
+            array('Foo'),
+        );
     }
 
 }
+

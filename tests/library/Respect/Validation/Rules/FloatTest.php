@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class FloatTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $floatValidator;
 
     protected function setUp()
@@ -15,10 +13,10 @@ class FloatTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForFloat
      */
-    public function test_float_numbers_should_pass($input)
+    public function testFloatNumbersShouldPass($input)
     {
         $this->assertTrue($this->floatValidator->assert($input));
-        $this->assertTrue($this->floatValidator->validate($input));
+        $this->assertTrue($this->floatValidator->__invoke($input));
         $this->assertTrue($this->floatValidator->check($input));
     }
 
@@ -26,15 +24,16 @@ class FloatTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotFloat
      * @expectedException Respect\Validation\Exceptions\FloatException
      */
-    public function test_not_float_numbers_should_fail($input)
+    public function testNotFloatNumbersShouldFail($input)
     {
-        $this->assertFalse($this->floatValidator->validate($input));
+        $this->assertFalse($this->floatValidator->__invoke($input));
         $this->assertFalse($this->floatValidator->assert($input));
     }
 
     public function providerForFloat()
     {
         return array(
+            array(''),
             array(165),
             array(1),
             array(0),
@@ -54,8 +53,7 @@ class FloatTest extends \PHPUnit_Framework_TestCase
             array('a'),
             array(' '),
             array('Foo'),
-            array(''),
         );
     }
-
 }
+

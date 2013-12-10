@@ -1,26 +1,24 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
-class DigitsTest extends \PHPUnit_Framework_TestCase
+class DigitTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidDigits
      */
-    public function test_valid_data_with_digits_should_return_true($validDigits, $aditional='')
+    public function testValidDataWithDigitsShouldReturnTrue($validDigits, $additional='')
     {
-        $validator = new Digits($aditional);
+        $validator = new Digit($additional);
         $this->assertTrue($validator->validate($validDigits));
     }
 
     /**
      * @dataProvider providerForInvalidDigits
-     * @expectedException Respect\Validation\Exceptions\DigitsException
+     * @expectedException Respect\Validation\Exceptions\DigitException
      */
-    public function test_invalid_digits_should_fail_and_throw_DigitsException($invalidDigits, $aditional='')
+    public function testInvalidDigitsShouldFailAndThrowDigitException($invalidDigits, $additional='')
     {
-        $validator = new Digits($aditional);
+        $validator = new Digit($additional);
         $this->assertFalse($validator->validate($invalidDigits));
         $this->assertFalse($validator->assert($invalidDigits));
     }
@@ -29,9 +27,26 @@ class DigitsTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function test_invalid_constructor_params_should_throw_ComponentException_upon_instantiation($aditional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
     {
-        $validator = new Digits($aditional);
+        $validator = new Digit($additional);
+    }
+
+    /**
+     * @dataProvider providerAdditionalChars
+     */
+    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    {
+        $validator = new Digit($additional);
+        $this->assertTrue($validator->validate($query));
+    }
+
+    public function providerAdditionalChars()
+    {
+        return array(
+            array('!@#$%^&*(){}', '!@#$%^&*(){} 123'),
+            array('[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n 123"),
+        );
     }
 
     public function providerForInvalidParams()
@@ -46,6 +61,9 @@ class DigitsTest extends \PHPUnit_Framework_TestCase
     public function providerForValidDigits()
     {
         return array(
+            array(''),
+            array("\n\t"),
+            array(' '),
             array(165),
             array(1650),
             array('01650'),
@@ -63,14 +81,11 @@ class DigitsTest extends \PHPUnit_Framework_TestCase
             array(null),
             array('16-50'),
             array('a'),
-            array(' '),
             array('Foo'),
-            array(''),
-            array("\n\t"),
             array('12.1'),
             array('-12'),
             array(-12),
         );
     }
-
 }
+

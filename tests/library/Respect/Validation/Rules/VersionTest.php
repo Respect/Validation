@@ -1,17 +1,15 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class VersionTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidVersion
      */
-    public function test_valid_version_should_return_true($input)
+    public function testValidVersionShouldReturnTrue($input)
     {
         $rule = new Version();
-        $this->assertTrue($rule->validate($input));
+        $this->assertTrue($rule->__invoke($input));
         $this->assertTrue($rule->assert($input));
         $this->assertTrue($rule->check($input));
     }
@@ -20,16 +18,17 @@ class VersionTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidVersion
      * @expectedException Respect\Validation\Exceptions\VersionException
      */
-    public function test_invalid_version_should_throw_exception($input)
+    public function testInvalidVersionShouldThrowException($input)
     {
         $rule = new Version();
-        $this->assertFalse($rule->validate($input));
+        $this->assertFalse($rule->__invoke($input));
         $this->assertFalse($rule->assert($input));
     }
 
     public function providerForValidVersion()
     {
         return array(
+            array(''),
             array('1.0.0'),
             array('1.0.0-alpha'),
             array('1.0.0-alpha.1'),
@@ -51,5 +50,5 @@ class VersionTest extends \PHPUnit_Framework_TestCase
             array('beta'),
         );
     }
-
 }
+

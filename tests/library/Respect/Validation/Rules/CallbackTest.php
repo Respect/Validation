@@ -1,41 +1,50 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class CallbackTest extends \PHPUnit_Framework_TestCase
 {
+    private $truthy, $falsy;
+
+    function setUp() {
+        $this->truthy = new Callback(function() {
+            return true;
+        });
+        $this->falsy = new Callback(function() {
+            return false;
+        });
+    }
 
     public function thisIsASampleCallbackUsedInsideThisTest()
     {
         return true;
     }
 
-    public function test_callback_validator_should_return_true_if_callback_returns_true()
+    public function testCallbackValidatorShouldReturnTrueForEmptyString()
     {
-        $v = new Callback(function() {
-                    return true;
-                });
-        $this->assertTrue($v->assert('wpoiur'));
+        $this->assertTrue($this->truthy->assert(''));
+        $this->assertTrue($this->falsy->assert(''));
+    }
+
+    public function testCallbackValidatorShouldReturnTrueIfCallbackReturnsTrue()
+    {
+        $this->assertTrue($this->truthy->assert('wpoiur'));
     }
 
     /**
      * @expectedException Respect\Validation\Exceptions\CallbackException
      */
-    public function test_callback_validator_should_return_false_if_callback_returns_false()
+    public function testCallbackValidatorShouldReturnFalseIfCallbackReturnsFalse()
     {
-        $v = new Callback(function() {
-                    return false;
-                });
-        $this->assertTrue($v->assert('w poiur'));
+        $this->assertTrue($this->falsy->assert('w poiur'));
     }
 
-    public function test_callback_validator_should_accept_array_callback_definitions()
+    public function testCallbackValidatorShouldAcceptArrayCallbackDefinitions()
     {
         $v = new Callback(array($this, 'thisIsASampleCallbackUsedInsideThisTest'));
         $this->assertTrue($v->assert('test'));
     }
 
-    public function test_callback_validator_should_accept_function_names_as_string()
+    public function testCallbackValidatorShouldAcceptFunctionNamesAsString()
     {
         $v = new Callback('is_string');
         $this->assertTrue($v->assert('test'));
@@ -44,10 +53,10 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function test_invalid_callbacks_should_raise_ComponentException_upon_instantiation()
+    public function testInvalidCallbacksShouldRaiseComponentExceptionUponInstantiation()
     {
         $v = new Callback(new \stdClass);
         $this->assertTrue($v->assert('w poiur'));
     }
-
 }
+

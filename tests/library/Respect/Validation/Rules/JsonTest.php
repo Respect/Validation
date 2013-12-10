@@ -1,30 +1,45 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class JsonTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $json;
-    
+
     protected function setUp()
     {
         $this->json = new Json;
     }
-    
-    public function test_valid_jsons_should_return_true()
+
+    /**
+     * @dataProvider providerForPass
+     */
+    public function testValidJsonsShouldReturnTrue($input)
     {
-        $this->assertTrue($this->json->validate('{"foo": "bar", "number":1}'));
-        $this->assertTrue($this->json->check('{"foo": "bar", "number":1}'));
-        $this->assertTrue($this->json->assert('{"foo": "bar", "number":1}'));
+        $this->assertTrue($this->json->__invoke($input));
+        $this->assertTrue($this->json->check($input));
+        $this->assertTrue($this->json->assert($input));
     }
 
     /**
      * @expectedException Respect\Validation\Exceptions\JSonException
      */
-    public function test_invalid_jsons_should_throw_JsonException()
+    public function testInvalidJsonsShouldThrowJsonException()
     {
-        $this->assertFalse($this->json->validate("{foo:bar}"));
+        $this->assertFalse($this->json->__invoke("{foo:bar}"));
         $this->assertFalse($this->json->assert("{foo:bar}"));
     }
+
+    public function providerForPass()
+    {
+        return array(
+            array(''),
+            array('2'),
+            array('"abc"'),
+            array('[1,2,3]'),
+            array('["foo", "bar", "number", 1]'),
+            array('{"foo": "bar", "number":1}'),
+        );
+    }
+
 }
+

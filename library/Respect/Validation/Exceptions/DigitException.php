@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
-class DigitsException extends AlphaException
+class DigitException extends AlphaException
 {
-
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => '{{name}} must contain only digits (0-9)',
@@ -15,6 +13,5 @@ class DigitsException extends AlphaException
             self::EXTRA => '{{name}} must not contain digits (0-9) or "{{additionalChars}}"'
         )
     );
-
 }
 

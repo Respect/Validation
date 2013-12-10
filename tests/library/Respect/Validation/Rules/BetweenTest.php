@@ -1,15 +1,15 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use \DateTime;
 
 class BetweenTest extends \PHPUnit_Framework_TestCase
 {
-
     public function providerValid()
     {
         return array(
+            array(10, 20, false, ''),
+            array(10, 20, true, ''),
             array(0, 1, true, 0),
             array(0, 1, true, 1),
             array(10, 20, false, 15),
@@ -49,10 +49,10 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerValid
      */
-    public function test_values_between_bounds_should_pass($min, $max, $inclusive, $input)
+    public function testValuesBetweenBoundsShouldPass($min, $max, $inclusive, $input)
     {
         $o = new Between($min, $max, $inclusive);
-        $this->assertTrue($o->validate($input));
+        $this->assertTrue($o->__invoke($input));
         $this->assertTrue($o->assert($input));
         $this->assertTrue($o->check($input));
     }
@@ -61,19 +61,19 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerInvalid
      * @expectedException Respect\Validation\Exceptions\BetweenException
      */
-    public function test_values_out_bounds_should_raise_exception($min, $max, $inclusive, $input)
+    public function testValuesOutBoundsShouldRaiseException($min, $max, $inclusive, $input)
     {
         $o = new Between($min, $max, $inclusive);
-        $this->assertFalse($o->validate($input));
+        $this->assertFalse($o->__invoke($input));
         $this->assertFalse($o->assert($input));
     }
-    
+
     /**
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function test_invalid_construction_params_should_raise_exception()
+    public function testInvalidConstructionParamsShouldRaiseException()
     {
         $o = new Between(10, 5);
     }
-
 }
+

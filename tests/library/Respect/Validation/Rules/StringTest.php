@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class StringTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $object;
 
     protected function setUp()
@@ -50,5 +48,5 @@ class StringTest extends \PHPUnit_Framework_TestCase
             array(150)
         );
     }
-
 }
+

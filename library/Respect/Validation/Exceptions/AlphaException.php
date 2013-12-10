@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class AlphaException extends ValidationException
@@ -21,6 +20,5 @@ class AlphaException extends ValidationException
     {
         return $this->getParam('additionalChars') ? static::EXTRA : static::STANDARD;
     }
-
 }
 

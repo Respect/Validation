@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 use RecursiveIteratorIterator;
@@ -16,6 +15,7 @@ class AbstractNestedException extends ValidationException
     public function addRelated(ValidationException $related)
     {
         $this->related[spl_object_hash($related)] = $related;
+
         return $this;
     }
 
@@ -29,12 +29,14 @@ class AbstractNestedException extends ValidationException
 
             $e = $this->findRelated($path);
 
-            if (is_object($e) && !$numericKey)
+            if (is_object($e) && !$numericKey) {
                 $e->setTemplate($value);
+            }
 
             $path = str_replace('.', '_', $path);
             $messages[$path] = $e ? $e->getMainMessage() : '';
         }
+
         return $messages;
     }
 
@@ -43,8 +45,10 @@ class AbstractNestedException extends ValidationException
         $target = $this;
         $path = explode('.', $path);
 
-        while (!empty($path) && $target !== false)
+        while (!empty($path) && $target !== false) {
             $target = $target->getRelatedByName(array_shift($path));
+        }
+
         return $target;
     }
 
@@ -52,41 +56,52 @@ class AbstractNestedException extends ValidationException
     {
         $exceptionIterator = new ExceptionIterator($this, $full);
 
-        if ($mode == self::ITERATE_ALL)
+        if ($mode == self::ITERATE_ALL) {
             return new RecursiveIteratorIterator($exceptionIterator, 1);
-        else
+        } else {
             return new RecursiveTreeIterator($exceptionIterator);
+        }
     }
 
     public function getFullMessage()
     {
         $message = array();
-
-        foreach ($this->getIterator(false, self::ITERATE_TREE) as $m)
+        $iterator = $this->getIterator(false, self::ITERATE_TREE);
+        foreach ($iterator as $m) {
             $message[] = $m;
+        }
+
         return implode(PHP_EOL, $message);
     }
 
     public function getRelated($full=false)
     {
-        return $this->related;
+        if (!$full && 1 === count($this->related)
+            && current($this->related) instanceof AbstractNestedException) {
+            return current($this->related)->getRelated();
+        } else {
+            return $this->related;
+        }
     }
 
     public function getRelatedByName($name)
     {
-        foreach ($this->getIterator(true) as $e)
-            if ($e->getId() === $name || $e->getName() === $name)
+        foreach ($this->getIterator(true) as $e) {
+            if ($e->getId() === $name || $e->getName() === $name) {
                 return $e;
+            }
+        }
 
         return false;
     }
 
     public function setRelated(array $relatedExceptions)
     {
-        foreach ($relatedExceptions as $related)
+        foreach ($relatedExceptions as $related) {
             $this->addRelated($related);
+        }
 
         return $this;
     }
-
 }
+

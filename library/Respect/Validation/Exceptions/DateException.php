@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class DateException extends ValidationException
@@ -22,6 +21,7 @@ class DateException extends ValidationException
         $params['format'] = date(
                 $params['format'], strtotime('2005-12-30 01:02:03')
         );
+
         return parent::configure($name, $params);
     }
 
@@ -29,5 +29,5 @@ class DateException extends ValidationException
     {
         return $this->getParam('format') ? static::FORMAT : static::STANDARD;
     }
-
 }
+

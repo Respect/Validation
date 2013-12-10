@@ -1,13 +1,11 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 use Respect\Validation\Validator as v;
 
 class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
 {
-
-    public function test_getRelated_should_return_exception_added_by_addRelated()
+    public function testGetRelatedShouldReturnExceptionAddedByAddRelated()
     {
         $composite = new AttributeException;
         $node = new IntException;
@@ -16,7 +14,7 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
         $this->assertContainsOnly($node, $composite->getRelated());
     }
 
-    public function test_adding_the_same_instance_should_add_just_a_single_reference()
+    public function testAddingTheSameInstanceShouldAddJustASingleReference()
     {
         $composite = new AttributeException;
         $node = new IntException;
@@ -27,7 +25,7 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
         $this->assertContainsOnly($node, $composite->getRelated());
     }
 
-    public function test_find_related_should_find_composite_exceptions()
+    public function testFindRelatedShouldFindCompositeExceptions()
     {
         $foo = new AttributeException;
         $bar = new AttributeException;
@@ -49,7 +47,7 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(false, $foo->findRelated('bar.none'));
     }
 
-    public function test_findMessages_should_return_composite_validation_messages_flattened()
+    public function testFindMessagesShouldReturnCompositeValidationMessagesFlattened()
     {
         $stringMax256 = v::string()->length(5, 256);
         $alnumDot = v::alnum('.');
@@ -88,7 +86,7 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function test_findMessages_should_apply_templates_to_flattened_messages()
+    public function testFindMessagesShouldApplyTemplatesToFlattenedMessages()
     {
         $stringMax256 = v::string()->length(5, 256);
         $alnumDot = v::alnum('.');
@@ -128,5 +126,5 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
                 'Invalid length for "fiif" fiif');
         }
     }
-
 }
+

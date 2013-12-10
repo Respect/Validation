@@ -1,11 +1,9 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
-
 
 class AbstractGroupedExceptionTest extends \PHPUnit_Framework_TestCase
 {
-    function test_one_or_more_grouped_exceptions_should_be_condensed_by_getRelated()
+    public function testOneOrMoreGroupedExceptionsShouldBeCondensedByGetRelated()
     {
         $int =new IntException();
         $e = new AbstractGroupedException;
@@ -15,5 +13,5 @@ class AbstractGroupedExceptionTest extends \PHPUnit_Framework_TestCase
         $result = $e->getRelated();
         $this->assertSame($int, current($result));
     }
-    
 }
+

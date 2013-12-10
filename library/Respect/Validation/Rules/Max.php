@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class Max extends AbstractRule
 {
-
     public $maxValue;
     public $inclusive;
 
@@ -16,10 +14,11 @@ class Max extends AbstractRule
 
     public function validate($input)
     {
-        if ($this->inclusive)
+        if ($this->inclusive) {
             return $input <= $this->maxValue;
-        else
+        } else {
             return $input < $this->maxValue;
+        }
     }
-
 }
+

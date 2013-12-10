@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class BoolException extends ValidationException
 {
-
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => '{{name}} must be a boolean',
@@ -13,6 +11,5 @@ class BoolException extends ValidationException
             self::STANDARD => '{{name}} must not be a boolean',
         )
     );
-
 }
 

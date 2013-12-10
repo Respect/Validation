@@ -1,17 +1,15 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class WhenTest extends \PHPUnit_Framework_TestCase
 {
-
-    public function test_when_happypath()
+    public function testWhenHappypath()
     {
         $v = new When(new Int(), new Between(1,5), new NotEmpty());
         $this->assertTrue($v->validate(3));
         $this->assertTrue($v->validate('aaa'));
     }
-    public function test_when_error()
+    public function testWhenError()
     {
         $v = new When(new Int(), new Between(1,5), new NotEmpty());
         $this->assertFalse($v->validate(15));
@@ -19,7 +17,7 @@ class WhenTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Respect\Validation\Exceptions\BetweenException
      */
-    public function test_when_exception()
+    public function testWhenException()
     {
         $v = new When(new Int(), new Between(1,5), new NotEmpty());
         $this->assertFalse($v->assert(15));
@@ -27,7 +25,7 @@ class WhenTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Respect\Validation\Exceptions\NotEmptyException
      */
-    public function test_when_exception_on_else()
+    public function testWhenException_on_else()
     {
         $v = new When(new Int(), new Between(1,5), new NotEmpty());
         $this->assertFalse($v->assert(''));
@@ -35,7 +33,7 @@ class WhenTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Respect\Validation\Exceptions\MaxException
      */
-    public function test_when_exception_failfast()
+    public function testWhenException_failfast()
     {
         $v = new When(new Int(), new Between(1,5), new NotEmpty());
         $this->assertFalse($v->check(15));
@@ -43,9 +41,10 @@ class WhenTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Respect\Validation\Exceptions\NotEmptyException
      */
-    public function test_when_exception_on_else_failfast()
+    public function testWhenException_on_else_failfast()
     {
         $v = new When(new Int(), new Between(1,5), new NotEmpty());
         $this->assertFalse($v->check(''));
     }
 }
+

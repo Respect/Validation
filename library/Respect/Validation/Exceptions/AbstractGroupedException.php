@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class AbstractGroupedException extends AbstractNestedException
@@ -21,24 +20,17 @@ class AbstractGroupedException extends AbstractNestedException
     {
         $numRules = $this->getParam('passed');
         $numFailed = count($this->getRelated());
+
         return $numRules === $numFailed ? static::NONE : static::SOME;
     }
 
     public function getParams()
     {
-        if (1 === count($this->related))
+        if (1 === count($this->related)) {
             return current($this->related)->getParams();
-        else
+        } else {
             return parent::getParams();
-    }
-
-    public function getRelated($full=false)
-    {
-        if (!$full && 1 === count($this->related) 
-            && current($this->related) instanceof AbstractNestedException)
-            return current($this->related)->getRelated();
-        else
-            return $this->related;
+        }
     }
 
     public function getTemplate()
@@ -46,11 +38,13 @@ class AbstractGroupedException extends AbstractNestedException
         $parentTemplate = parent::getTemplate();
         $isEmpty = empty($this->template);
 
-        if (!$isEmpty && $this->template != $parentTemplate)
+        if (!$isEmpty && $this->template != $parentTemplate) {
             return $this->template;
-        if ($isEmpty && 1 === count($this->related))
+        } if ($isEmpty && 1 === count($this->related)) {
             return current($this->related)->getTemplate();
-        else
+        } else {
             return $parentTemplate;
+        }
     }
 }
+

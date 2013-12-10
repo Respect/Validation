@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class NotEmptyException extends ValidationException
@@ -21,6 +20,5 @@ class NotEmptyException extends ValidationException
     {
         return $this->getName() == "" ? static::STANDARD : static::NAMED;
     }
-
 }
 

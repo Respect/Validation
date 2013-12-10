@@ -1,18 +1,16 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class InTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForIn
      *
      */
-    public function test_success_in_validator_cases($input, $options=null)
+    public function testSuccessInValidatorCases($input, $options=null)
     {
         $v = new In($options);
-        $this->assertTrue($v->validate($input));
+        $this->assertTrue($v->__invoke($input));
         $this->assertTrue($v->check($input));
         $this->assertTrue($v->assert($input));
     }
@@ -21,16 +19,17 @@ class InTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotIn
      * @expectedException Respect\Validation\Exceptions\InException
      */
-    public function test_invalid_in_checks_should_throw_InException($input, $options, $strict=false)
+    public function testInvalidInChecksShouldThrowInException($input, $options, $strict=false)
     {
         $v = new In($options, $strict);
-        $this->assertFalse($v->validate($input));
+        $this->assertFalse($v->__invoke($input));
         $this->assertFalse($v->assert($input));
     }
 
     public function providerForIn()
     {
         return array(
+            array('', 'barfoobaz'),
             array('foo', array('foo', 'bar')),
             array('foo', 'barfoobaz'),
             array('foo', 'foobarbaz'),
@@ -50,5 +49,5 @@ class InTest extends \PHPUnit_Framework_TestCase
             array('1', array(1, 2, 3), true),
         );
     }
-
 }
+

@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class InException extends ValidationException
 {
-
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => '{{name}} must be in ({{haystack}})',
@@ -13,6 +11,5 @@ class InException extends ValidationException
             self::STANDARD => '{{name}} must not be in ({{haystack}})',
         )
     );
-
 }
 

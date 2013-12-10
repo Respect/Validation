@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class EvenTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $evenValidator;
 
     protected function setUp()
@@ -15,7 +13,7 @@ class EvenTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForEven
      */
-    public function test_even_numbers_should_pass($input)
+    public function testEvenNumbersShouldPass($input)
     {
         $this->assertTrue($this->evenValidator->validate($input));
         $this->assertTrue($this->evenValidator->check($input));
@@ -26,19 +24,20 @@ class EvenTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotEven
      * @expectedException Respect\Validation\Exceptions\EvenException
      */
-    public function test_not_even_numbers_should_fail($input)
+    public function testNotEvenNumbersShouldFail($input)
     {
         $this->assertFalse($this->evenValidator->validate($input));
         $this->assertFalse($this->evenValidator->assert($input));
     }
-  
+
     public function providerForEven()
     {
         return array(
+            array(''),
             array(-2),
             array(-0),
             array(0),
-            array(32),            
+            array(32),
         );
     }
 
@@ -51,5 +50,5 @@ class EvenTest extends \PHPUnit_Framework_TestCase
             array(13),
         );
     }
-    
 }
+

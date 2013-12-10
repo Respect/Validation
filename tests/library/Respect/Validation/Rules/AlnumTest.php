@@ -1,16 +1,14 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class AlnumTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidAlnum
      */
-    public function test_valid_alnum_chars_should_return_true($validAlnum, $aditional)
+    public function testValidAlnumCharsShouldReturnTrue($validAlnum, $additional)
     {
-        $validator = new Alnum($aditional);
+        $validator = new Alnum($additional);
         $this->assertTrue($validator->validate($validAlnum));
         $this->assertTrue($validator->check($validAlnum));
         $this->assertTrue($validator->assert($validAlnum));
@@ -20,9 +18,9 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidAlnum
      * @expectedException Respect\Validation\Exceptions\AlnumException
      */
-    public function test_invalid_alnum_chars_should_throw_AlnumException_and_return_false($invalidAlnum, $aditional)
+    public function testInvalidAlnumCharsShouldThrowAlnumExceptionAndReturnFalse($invalidAlnum, $additional)
     {
-        $validator = new Alnum($aditional);
+        $validator = new Alnum($additional);
         $this->assertFalse($validator->validate($invalidAlnum));
         $this->assertFalse($validator->assert($invalidAlnum));
     }
@@ -31,9 +29,26 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function test_invalid_constructor_params_should_throw_ComponentException_upon_instantiation($aditional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
     {
-        $validator = new Alnum($aditional);
+        $validator = new Alnum($additional);
+    }
+
+    /**
+     * @dataProvider providerAdditionalChars
+     */
+    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    {
+        $validator = new Alnum($additional);
+        $this->assertTrue($validator->validate($query));
+    }
+
+    public function providerAdditionalChars()
+    {
+        return array(
+            array('!@#$%^&*(){}', '!@#$%^&*(){} abc 123'),
+            array('[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n abc 123"),
+        );
     }
 
     public function providerForInvalidParams()
@@ -48,11 +63,11 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
     public function providerForValidAlnum()
     {
         return array(
+            array('', ''),
             array('alganet', ''),
             array('alganet', 'alganet'),
             array('0alg-anet0', '0-9'),
             array('1', ''),
-            array('', ''),
             array("\t", ''),
             array("\n", ''),
             array('a', ''),
@@ -79,5 +94,5 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
             array(array(), ''),
         );
     }
-
 }
+

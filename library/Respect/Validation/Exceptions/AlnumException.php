@@ -1,10 +1,8 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class AlnumException extends AlphaException
 {
-
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => '{{name}} must contain only letters (a-z) and digits (0-9)',
@@ -15,6 +13,5 @@ class AlnumException extends AlphaException
             self::EXTRA => '{{name}} must not contain letters (a-z), digits (0-9) or "{{additionalChars}}"'
         )
     );
-
 }
 

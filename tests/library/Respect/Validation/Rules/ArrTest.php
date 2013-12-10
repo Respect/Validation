@@ -1,15 +1,12 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 class TestAccess extends \ArrayObject implements \ArrayAccess, \Countable, \Traversable
 {
-    
 }
 
 class ArrTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $object;
 
     protected function setUp()
@@ -20,9 +17,9 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForArray
      */
-    public function test_valid_array_or_ArrayObject_should_return_true($input)
+    public function testValidArrayOrArrayObjectShouldReturnTrue($input)
     {
-        $this->assertTrue($this->object->validate($input));
+        $this->assertTrue($this->object->__invoke($input));
         $this->assertTrue($this->object->assert($input));
         $this->assertTrue($this->object->check($input));
     }
@@ -31,21 +28,20 @@ class ArrTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotArray
      * @expectedException Respect\Validation\Exceptions\ArrException
      */
-    public function test_not_arrays_should_throw_ArrException($input)
+    public function testNotArraysShouldThrowArrException($input)
     {
-        $this->assertFalse($this->object->validate($input));
+        $this->assertFalse($this->object->__invoke($input));
         $this->assertFalse($this->object->assert($input));
     }
 
     public function providerForArray()
     {
         return array(
+            array(''),
             array(array()),
             array(array(1, 2, 3)),
             array(new TestAccess),
         );
-
-
 
         $validator = v::alnum()->length(1,10);
 
@@ -66,5 +62,5 @@ class ArrTest extends \PHPUnit_Framework_TestCase
             array('aaa'),
         );
     }
-
 }
+

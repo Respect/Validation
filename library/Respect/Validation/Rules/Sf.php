@@ -1,5 +1,4 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
 use ReflectionClass;
@@ -7,7 +6,6 @@ use Symfony\Component\Validator\ConstraintViolation;
 
 class Sf extends AbstractRule
 {
-
     public $name;
     protected $constraint;
     protected $messages = array();
@@ -19,10 +17,11 @@ class Sf extends AbstractRule
         $sfMirrorConstraint = new ReflectionClass(
                 'Symfony\Component\Validator\Constraints\\' . $this->name
         );
-        if ($sfMirrorConstraint->hasMethod('__construct'))
+        if ($sfMirrorConstraint->hasMethod('__construct')) {
             $this->constraint = $sfMirrorConstraint->newInstanceArgs($params);
-        else
+        } else {
             $this->constraint = $sfMirrorConstraint->newInstance();
+        }
     }
 
     public function assert($input)
@@ -37,6 +36,7 @@ class Sf extends AbstractRule
             );
             throw $this->reportError($violation->getMessage());
         }
+
         return true;
     }
 
@@ -45,8 +45,8 @@ class Sf extends AbstractRule
         $validatorName = 'Symfony\Component\Validator\Constraints\\'
             . $this->name . 'Validator';
         $this->validator = new $validatorName;
+
         return $this->validator->isValid($input, $this->constraint);
     }
-
 }
 

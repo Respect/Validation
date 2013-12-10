@@ -1,14 +1,12 @@
 <?php
-
 namespace Respect\Validation\Exceptions;
 
 class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForFormat
      */
-    public function test_format_should_replace_placeholders_properly($template, $result, $vars)
+    public function testFormatShouldReplacePlaceholdersProperly($template, $result, $vars)
     {
         $this->assertEquals(
             $result,
@@ -19,7 +17,7 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForStringify
      */
-    public function test_stringify_should_convert_strings_properly($input, $result)
+    public function testStringifyShouldConvertStringsProperly($input, $result)
     {
         $this->assertEquals(
             $result,
@@ -27,7 +25,7 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function test_getMainMessage_should_apply_template_placeholders()
+    public function testGetMainMessageShouldApplyTemplatePlaceholders()
     {
         $sampleValidationException = new ValidationException();
         $sampleValidationException->configure('foo', array('bar' => 1, 'baz' => 2));
@@ -38,7 +36,7 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function test_setting_templates()
+    public function testSettingTemplates()
     {
         $x = new ValidationException();
         $x->configure('bar');
@@ -49,7 +47,7 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForStringify
      */
-    public function test_setting_exception_params_makes_them_available($input, $expected)
+    public function testSettingExceptionParamsMakesThemAvailable($input, $expected)
     {
         $x = new ValidationException;
         $x->setParam('foo', $input);
@@ -90,5 +88,5 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
             )
         );
     }
-
 }
+
