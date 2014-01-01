@@ -14,8 +14,9 @@ class DomainTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForDomain
      *
      */
-    public function testValidDomainsShouldReturnTrue($input)
+    public function testValidDomainsShouldReturnTrue($input, $tldcheck=true)
     {
+        $this->object->tldCheck($tldcheck);
         $this->assertTrue($this->object->__invoke($input));
         $this->assertTrue($this->object->assert($input));
         $this->assertTrue($this->object->check($input));
@@ -25,8 +26,9 @@ class DomainTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotDomain
      * @expectedException Respect\Validation\Exceptions\ValidationException
      */
-    public function testNotDomain($input)
+    public function testNotDomain($input, $tldcheck=true)
     {
+        $this->object->tldCheck($tldcheck);
         $this->assertFalse($this->object->check($input));
     }
 
@@ -34,18 +36,20 @@ class DomainTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotDomain
      * @expectedException Respect\Validation\Exceptions\DomainException
      */
-    public function testNotDomainCheck($input)
+    public function testNotDomainCheck($input, $tldcheck=true)
     {
+        $this->object->tldCheck($tldcheck);
         $this->assertFalse($this->object->assert($input));
     }
 
     public function providerForDomain()
     {
         return array(
-            array(''),
+            array('111111111111domain.local', false),
+            array('111111111111.domain.local', false),
             array('example.com'),
+            array('xn--bcher-kva.ch'),
             array('example-hyphen.com'),
-            array('1.2.3.4'),
         );
     }
 
@@ -53,10 +57,14 @@ class DomainTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(null),
-            array('domain.local'),
+            array(''),
+            array('2222222domain.local'),
             array('example--invalid.com'),
             array('-example-invalid.com'),
+            array('example.invalid.-com'),
+            array('xn--bcher--kva.ch'),
             array('1.2.3.256'),
+            array('1.2.3.4'),
         );
     }
 }
