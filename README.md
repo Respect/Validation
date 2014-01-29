@@ -1,4 +1,4 @@
-Respect\Validation [![Build Status](https://secure.travis-ci.org/Respect/Validation.png)](http://travis-ci.org/Respect/Validation)
+Respect\Validation [![Build Status](https://secure.travis-ci.org/Respect/Validation.png)](http://travis-ci.org/Respect/Validation) [![Latest Stable Version](https://poser.pugx.org/respect/validation/v/stable.png)](https://packagist.org/packages/respect/validation) [![Total Downloads](https://poser.pugx.org/respect/validation/downloads.png)](https://packagist.org/packages/respect/validation) [![Latest Unstable Version](https://poser.pugx.org/respect/validation/v/unstable.png)](https://packagist.org/packages/respect/validation) [![License](https://poser.pugx.org/respect/validation/license.png)](https://packagist.org/packages/respect/validation)
 ==================
 
 The most awesome validation engine ever created for PHP.
