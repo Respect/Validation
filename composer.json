@@ -7,76 +7,8 @@
     "license": "BSD Style",
     "authors": [
         {
-            "name": "Alexandre Gaigalas",
-            "email": "alexandre@gaigalas.net"
-        },
-        {
-            "name": "Augusto Pascutti",
-            "email": "augusto@phpsp.org.br"
-        },
-        {
-            "name": "Carlos Andr\u00e9 Ferrari",
-            "email": "caferrari@gmail.com"
-        },
-        {
-            "name": "Devin Torres",
-            "email": "devin@devintorres.com"
-        },
-        {
-            "name": "Emerson Carvalho",
-            "email": "emerson.broga@gmail.com"
-        },
-        {
-            "name": "Fa\u0301bio da Silva Ribeiro",
-            "email": "fabiorphp@gmail.com"
-        },
-        {
-            "name": "Henrique Moody",
-            "email": "henriquemoody@gmail.com"
-        },
-        {
-            "name": "Jair Henrique",
-            "email": "jair.henrique@gmail.com"
-        },
-        {
-            "name": "Jayson Reis",
-            "email": "santosdosreis@gmail.com"
-        },
-        {
-            "name": "Jean Pimentel",
-            "email": "jeanfap@gmail.com"
-        },
-        {
-            "name": "Kinn Coelho Juli\u00e3o",
-            "email": "kinncj@gmail.com"
-        },
-        {
-            "name": "Kleber Hamada Sato",
-            "email": "kleberhs007@yahoo.com"
-        },
-        {
-            "name": "Leandro",
-            "email": "lleitep3@gmail.com"
-        },
-        {
-            "name": "Marcelo Araujo",
-            "email": "msaraujo@php.net"
-        },
-        {
-            "name": "Michael Klishin",
-            "email": "michaelklishin@me.com"
-        },
-        {
-            "name": "Morf",
-            "email": "i@morfi.ru"
-        },
-        {
-            "name": "Rogerio Prado de Jesus",
-            "email": "rogeriopradoj@gmail.com"
-        },
-        {
-            "name": "Torben Brodt",
-            "email": "t.brodt@gmail.com"
+            "name": "Respect/Validation Contributors",
+            "homepage": "https://github.com/Respect/Validation/graphs/contributors"
         }
     ],
     "repositories": [{
