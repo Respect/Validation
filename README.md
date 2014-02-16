@@ -3,11 +3,11 @@ Respect\Validation
 
 [![Build Status](https://secure.travis-ci.org/Respect/Validation.png)](http://travis-ci.org/Respect/Validation) [![Latest Stable Version](https://poser.pugx.org/respect/validation/v/stable.png)](https://packagist.org/packages/respect/validation) [![Total Downloads](https://poser.pugx.org/respect/validation/downloads.png)](https://packagist.org/packages/respect/validation) [![Latest Unstable Version](https://poser.pugx.org/respect/validation/v/unstable.png)](https://packagist.org/packages/respect/validation) [![License](https://poser.pugx.org/respect/validation/license.png)](https://packagist.org/packages/respect/validation)
 
-The most awesome validation engine ever created for PHP.
+[The most awesome validation engine ever created for PHP.](http://bit.ly/1a1oeQv)
 
-- Fluent/Chained builders like `v::numeric()->positive()->between(1, 256)->validate($myNumber)` (more samples below)
-- Informative, awesome exceptions
-- More than 30 fully tested validators
+- Complex (custom) rules made simple: `v::numeric()->positive()->between(1, 256)->validate($myNumber)`.
+- Awesome (customizable, iterable) exceptions.
+- >80 (fully tested) validators.
 
 Installation
 ------------
