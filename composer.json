@@ -17,7 +17,7 @@
     }],
     "require-dev": {
         "zendframework/zend-validator": "2.*",
-        "symfony/validator": "2.*",
+        "symfony/validator": ">=2.1.0",
         "phpunit/phpunit": "3.7.*"
     },
     "suggest": {
