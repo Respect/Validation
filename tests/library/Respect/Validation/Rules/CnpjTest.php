@@ -15,7 +15,9 @@ class CnpjTest extends \PHPUnit_Framework_TestCase
      */
     public function testFormattedCnpjsShouldValidate($input)
     {
-        $this->assertTrue($this->cnpjValidator->__invoke($input));
+        $this->assertTrue($this->cnpjValidator->validate($input));
+        $this->assertTrue($this->cnpjValidator->check($input));
+        $this->assertTrue($this->cnpjValidator->assert($input));
     }
 
     /**
@@ -23,37 +25,44 @@ class CnpjTest extends \PHPUnit_Framework_TestCase
      */
     public function testUnformattedCnpjsShouldValidates($input)
     {
-        $this->assertTrue($this->cnpjValidator->__invoke($input));
+        $this->assertTrue($this->cnpjValidator->validate($input));
+        $this->assertTrue($this->cnpjValidator->check($input));
+        $this->assertTrue($this->cnpjValidator->assert($input));
     }
 
     /**
      * @dataProvider providerInvalidFormattedCnpj
+     * @expectedException Respect\Validation\Exceptions\CnpjException
      */
-    public function testInvalidCnpjShouldFailWhenFormatted($input)
+    public function testInvalidCnpjShouldThrowCnpjExceptionAndReturnFalseWhenFormatted($input)
     {
-        $this->assertFalse($this->cnpjValidator->__invoke($input));
+        $this->assertFalse($this->cnpjValidator->validate($input));
+        $this->assertFalse($this->cnpjValidator->assert($input));
     }
 
     /**
      * @dataProvider providerInvalidUnformattedCnpj
+     * @expectedException Respect\Validation\Exceptions\CnpjException
      */
-    public function testInvalidCnpjShouldFailWhenNotFormatted($input)
+    public function testInvalidCnpjShouldThrowCnpjExceptionAndReturnFalseWhenNotFormatted($input)
     {
-        $this->assertFalse($this->cnpjValidator->__invoke($input));
+        $this->assertFalse($this->cnpjValidator->validate($input));
+        $this->assertFalse($this->cnpjValidator->assert($input));
     }
 
     /**
      * @dataProvider providerInvalidFormattedAndUnformattedCnpjLength
+     * @expectedException Respect\Validation\Exceptions\CnpjException
      */
-    public function testCnpjsWithIncorrectLengthShouldFail($input)
+    public function testCnpjsWithIncorrectLengthShouldThrowCnpjExceptionAndReturnFalse($input)
     {
-        $this->assertFalse($this->cnpjValidator->__invoke($input));
+        $this->assertFalse($this->cnpjValidator->validate($input));
+        $this->assertFalse($this->cnpjValidator->assert($input));
     }
 
     public function providerValidFormattedCnpj()
     {
         return array(
-            array(''),
             array('32.063.364/0001-07'),
             array('24.663.454/0001-00'),
             array('57.535.083/0001-30'),
