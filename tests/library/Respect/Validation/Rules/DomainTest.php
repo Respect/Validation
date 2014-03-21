@@ -51,6 +51,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             array('111111111111.domain.local', false),
             array('example.com'),
             array('xn--bcher-kva.ch'),
+            array('mail.xn--bcher-kva.ch'),
             array('example-hyphen.com'),
         );
     }
