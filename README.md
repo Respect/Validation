@@ -66,7 +66,7 @@ validated object as the first node in the chain.
 All validators treat input as optional and will accept empty string input as valid,
 unless otherwise stated in the documentation.
 
-We us the `v:notEmpty()` validator prefixed to disallow empty input and effectively
+We use the `v:notEmpty()` validator prefixed to disallow empty input and effectively
 define the field as mandatory as input will be required or validation will fail.
 
     v::string()->notEmpty()->validate(''); //false input required
