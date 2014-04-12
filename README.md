@@ -22,38 +22,48 @@ Feature Guide
 Respect\Validation is namespaced, but you can make your life easier by importing
 a single class into your context:
 
-    <?php
-    use Respect\Validation\Validator as v;
+```php
+<?php
+use Respect\Validation\Validator as v;
+```
 
 ### Simple Validation
 
 The Hello World validator is something like this:
 
-    $number = 123;
-    v::numeric()->validate($number); //true
+```php
+$number = 123;
+v::numeric()->validate($number); //true
+```
 
 ### Chained Validation
 
 It is possible to use validators in a chain. Sample below validates a string
 containing numbers and letters, no whitespace and length between 1 and 15.
 
-    $usernameValidator = v::alnum()->noWhitespace()->length(1,15);
-    $usernameValidator->validate('alganet'); //true
+```php
+$usernameValidator = v::alnum()->noWhitespace()->length(1,15);
+$usernameValidator->validate('alganet'); //true
+```
 
 ### Validating Object Attributes
 
 Given this simple object:
 
-    $user = new stdClass;
-    $user->name = 'Alexandre';
-    $user->birthdate = '1987-07-01';
+```php
+$user = new stdClass;
+$user->name = 'Alexandre';
+$user->birthdate = '1987-07-01';
+```
 
 Is possible to validate its attributes in a single chain:
 
-    $userValidator = v::attribute('name', v::string()->length(1,32))
-                      ->attribute('birthdate', v::date()->minimumAge(18));
+```php
+$userValidator = v::attribute('name', v::string()->length(1,32))
+                  ->attribute('birthdate', v::date()->minimumAge(18));
 
-    $userValidator->validate($user); //true
+$userValidator->validate($user); //true
+```
 
 Validating array keys is also possible using `v::key()`
 
@@ -69,32 +79,40 @@ unless otherwise stated in the documentation.
 We us the `v:notEmpty()` validator prefixed to disallow empty input and effectively
 define the field as mandatory as input will be required or validation will fail.
 
-    v::string()->notEmpty()->validate(''); //false input required
+```php
+v::string()->notEmpty()->validate(''); //false input required
+```
 
 ### Negating Rules
 
 You can use the `v::not()` to negate any rule:
 
-    v::not(v::int())->validate(10); //false, input must not be integer
+```php
+v::not(v::int())->validate(10); //false, input must not be integer
+```
 
 ### Validator Reuse
 
 Once created, you can reuse your validator anywhere. Remember $usernameValidator?
 
-    $usernameValidator->validate('respect');            //true
-    $usernameValidator->validate('alexandre gaigalas'); //false
-    $usernameValidator->validate('#$%');                //false
+```php
+$usernameValidator->validate('respect');            //true
+$usernameValidator->validate('alexandre gaigalas'); //false
+$usernameValidator->validate('#$%');                //false
+```
 
 ### Informative Exceptions
 
 When something goes wrong, Validation can tell you exactly what's going on. For this,
 we use the `assert()` method instead of `validate()`:
 
-    try {
-        $usernameValidator->assert('really messed up screen#name');
-    } catch(\InvalidArgumentException $e) {
-       echo $e->getFullMessage();
-    }
+```php
+try {
+    $usernameValidator->assert('really messed up screen#name');
+} catch(\InvalidArgumentException $e) {
+   echo $e->getFullMessage();
+}
+```
 
 The printed message is exactly this, as a text tree:
 
@@ -108,11 +126,13 @@ The printed message is exactly this, as a text tree:
 The text tree is fine, but unusable on a HTML form or something more custom. You can use
 `findMessages()` for that:
 
-    try {
-        $usernameValidator->assert('really messed up screen#name');
-    } catch(\InvalidArgumentException $e) {
-       var_dump($e->findMessages(array('alnum', 'length', 'noWhitespace')));
-    }
+```php
+try {
+    $usernameValidator->assert('really messed up screen#name');
+} catch(\InvalidArgumentException $e) {
+    var_dump($e->findMessages(array('alnum', 'length', 'noWhitespace')));
+}
+```
 
 `findMessages()` returns an array with messages from the requested validators.
 
@@ -121,11 +141,13 @@ The text tree is fine, but unusable on a HTML form or something more custom. You
 Getting messages as an array is fine, but sometimes you need to customize them in order
 to present them to the user. This is possible using the `findMessages()` method as well:
 
-       $errors = $e->findMessages(array(
-            'alnum'        => '{{name}} must contain only letters and digits',
-            'length'       => '{{name}} must not have more than 15 chars',
-            'noWhitespace' => '{{name}} cannot contain spaces'
-        ));
+```php
+$errors = $e->findMessages(array(
+    'alnum'        => '{{name}} must contain only letters and digits',
+    'length'       => '{{name}} must not have more than 15 chars',
+    'noWhitespace' => '{{name}} cannot contain spaces'
+));
+```
 
 For all messages, the `{{name}}` and `{{input}}` variable is available for templates.
 
@@ -134,15 +156,18 @@ For all messages, the `{{name}}` and `{{input}}` variable is available for templ
 On `v::attribute()` and `v::key()`, `{{name}}` is the attribute/key name. For others,
 is the same as the input. You can customize a validator name using:
 
-    v::date('Y-m-d')->between('1980-02-02', 'now')->setName('Member Since');
-
+```php
+v::date('Y-m-d')->between('1980-02-02', 'now')->setName('Member Since');
+```
 
 ### Zend/Symfony Validators
 
 It is also possible to reuse validators from other frameworks if they are installed:
 
-    $hostnameValidator = v::zend('Hostname')->assert('google.com');
-    $timeValidator     = v::sf('Time')->assert('22:00:01');
+```php
+$hostnameValidator = v::zend('Hostname')->assert('google.com');
+$timeValidator     = v::sf('Time')->assert('22:00:01');
+```
 
 ### Validation Methods
 
@@ -150,11 +175,13 @@ We've seen `validate()` that returns true or false and `assert()` that throws a 
 validation report. There is also a `check()` method that returns an Exception
 only with the first error found:
 
-    try {
-        $usernameValidator->check('really messed up screen#name');
-    } catch(\InvalidArgumentException $e) {
-       echo $e->getMainMessage();
-    }
+```php
+try {
+    $usernameValidator->check('really messed up screen#name');
+} catch(\InvalidArgumentException $e) {
+    echo $e->getMainMessage();
+}
+```
 
 Message:
 
@@ -312,19 +339,23 @@ Reference
 
 Will validate if all inner validators validates.
 
-    v::allOf(
-        v::int(),
-        v::positive()
-    )->validate(15); //true
+```php
+v::allOf(
+    v::int(),
+    v::positive()
+)->validate(15); //true
+```
 
 This is similar to the chain (which is an allOf already), but
 its syntax allows you to set custom names for every node:
 
-    v::allOf(
-        v::int()->setName('Account Number'),
-        v::positive()->setName('Higher Than Zero')
-    )->setName('Positive integer')
-     ->validate(15); //true
+```php
+v::allOf(
+    v::int()->setName('Account Number'),
+    v::positive()->setName('Higher Than Zero')
+)->setName('Positive integer')
+ ->validate(15); //true
+```
 
 See also:
 
@@ -337,26 +368,36 @@ See also:
 
 Validates alphanumeric characters from a-Z and 0-9.
 
-    v::alnum()->validate('foo 123'); //true
+```php
+v::alnum()->validate('foo 123'); //true
+```
 
 A parameter for extra characters can be used:
 
-    v::alnum('-')->validate('foo - 123'); //true
+```php
+v::alnum('-')->validate('foo - 123'); //true
+```
 
 This validator allows whitespace, if you want to
 remove them add `->noWhitespace()` to the chain:
 
-    v::alnum()->noWhitespace->validate('foo 123'); //false
+```php
+v::alnum()->noWhitespace->validate('foo 123'); //false
+```
 
 By default empty values are allowed, if you want
 to invalidate them, add `->notEmpty()` to the chain:
 
-    v::alnum()->notEmpty()->validate(''); //false
+```php
+v::alnum()->notEmpty()->validate(''); //false
+```
 
 You can restrict case using the `->lowercase()` and
 `->uppercase()` validators:
 
-    v::alnum()->uppercase()->validate('aaa'); //false
+```php
+v::alnum()->uppercase()->validate('aaa'); //false
+```
 
 Message template for this validator includes `{{additionalChars}}` as
 the string of extra chars passed as the parameter.
@@ -386,8 +427,10 @@ See also:
 
 Validates if the input is an array or traversable object.
 
-    v::arr()->validate(array()); //true
-    v::arr()->validate(new ArrayObject); //true
+```php
+v::arr()->validate(array()); //true
+v::arr()->validate(new ArrayObject); //true
+```
 
 See also:
 
@@ -408,18 +451,24 @@ Always return false.
 
 Validates an object attribute.
 
-    $obj = new stdClass;
-    $obj->foo = 'bar';
+```php
+$obj = new stdClass;
+$obj->foo = 'bar';
 
-    v::attribute('foo')->validate($obj); //true
+v::attribute('foo')->validate($obj); //true
+```
 
 You can also validate the attribute itself:
 
-    v::attribute('foo', v::equals('bar'))->validate($obj); //true
+```php
+v::attribute('foo', v::equals('bar'))->validate($obj); //true
+```
 
 Third parameter makes the attribute presence optional:
 
-    v::attribute('lorem', v::string(), false)->validate($obj); // true
+```php
+v::attribute('lorem', v::string(), false)->validate($obj); // true
+```
 
 The name of this validator is automatically set to the attribute name.
 
@@ -432,24 +481,34 @@ See also:
 
 Validates ranges. Most simple example:
 
-    v::int()->between(10, 20)->validate(15); //true
+```php
+v::int()->between(10, 20)->validate(15); //true
+```
 
 The type as the first validator in a chain is a good practice,
 since between accepts many types:
 
-    v::string()->between('a', 'f')->validate('c'); //true
+```php
+v::string()->between('a', 'f')->validate('c'); //true
+```
 
 Also very powerful with dates:
 
-    v::date()->between('2009-01-01', '2013-01-01')->validate('2010-01-01'); //true
+```php
+v::date()->between('2009-01-01', '2013-01-01')->validate('2010-01-01'); //true
+```
 
 Date ranges accept strtotime values:
 
-    v::date()->between('yesterday', 'tomorrow')->validate('now'); //true
+```php
+v::date()->between('yesterday', 'tomorrow')->validate('now'); //true
+```
 
 A third parameter may be passed to validate the passed values inclusive:
 
-    v::date()->between(10, 20, true)->validate(20); //true
+```php
+v::date()->between(10, 20, true)->validate(20); //true
+```
 
 Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.
 
@@ -463,43 +522,55 @@ See also:
 
 Validates if the input is a boolean value:
 
-    v::bool()->validate(true); //true
-    v::bool()->validate(false); //true
+```php
+v::bool()->validate(true); //true
+v::bool()->validate(false); //true
+```
 
 #### v::call(callable $callback)
 
 This is a very low level validator. It calls a function, method or closure
 for the input and then validates it. Consider the following variable:
 
-    $url = 'http://www.google.com/search?q=respect.github.com'
+```php
+$url = 'http://www.google.com/search?q=respect.github.com'
+```
 
 To validate every part of this URL we could use the native `parse_url`
 function to break its parts:
 
-    $parts = parse_url($url);
+```php
+$parts = parse_url($url);
+```
 
 This function returns an array containing `scheme`, `host`, `path` and `query`.
 We can validate them this way:
 
-    v::arr()->key('scheme', v::startsWith('http'))
-            ->key('host',   v::domain())
-            ->key('path',   v::string())
-            ->key('query',  v::notEmpty());
+```php
+v::arr()->key('scheme', v::startsWith('http'))
+        ->key('host',   v::domain())
+        ->key('path',   v::string())
+        ->key('query',  v::notEmpty());
+```
 
 Using `v::call()` you can do this in a single chain:
 
-    v::call(
-        'parse_url',
-         v::arr()->key('scheme', v::startsWith('http'))
-            ->key('host',   v::domain())
-            ->key('path',   v::string())
-            ->key('query',  v::notEmpty())
-    )->validate($url);
+```php
+v::call(
+    'parse_url',
+     v::arr()->key('scheme', v::startsWith('http'))
+        ->key('host',   v::domain())
+        ->key('path',   v::string())
+        ->key('query',  v::notEmpty())
+)->validate($url);
+```
 
 It is possible to call methods and closures as the first parameter:
 
-    v::call(array($myObj, 'methodName'), v::int())->validate($myInput);
-    v::call(function($input) {}, v::int())->validate($myInput);
+```php
+v::call(array($myObj, 'methodName'), v::int())->validate($myInput);
+v::call(function($input) {}, v::int())->validate($myInput);
+```
 
 See also:
 
@@ -510,7 +581,9 @@ See also:
 This is a wildcard validator, it uses a function name, method or closure
 to validate something:
 
-    v::callback('is_int')->validate(10); //true
+```php
+v::callback('is_int')->validate(10); //true
+```
 
 (Please note that this is a sample, the `v::int()` validator is much better).
 
@@ -524,10 +597,11 @@ See also:
 
 Validates if a string is in a specific charset.
 
-
-    v::charset('ASCII', 'açúcar'); //false
-    v::charset('ASCII', 'sugar');  //true
-    v::charset(array('ISO-8859-1', 'EUC-JP'), '日本国'); // true
+```php
+v::charset('ASCII', 'açúcar'); //false
+v::charset('ASCII', 'sugar');  //true
+v::charset(array('ISO-8859-1', 'EUC-JP'), '日本国'); // true
+```
 
 The array format is a logic OR, not AND.
 
@@ -560,7 +634,9 @@ See also:
 
 Similar to `v::alnum()`. Validates strings that contain only consonants:
 
-    v::consonant()->validate('xkcd'); //true
+```php
+v::consonant()->validate('xkcd'); //true
+```
 
 See also:
 
@@ -574,11 +650,15 @@ See also:
 
 For strings:
 
-    v::contains('ipsum')->validate('lorem ipsum'); //true
+```php
+v::contains('ipsum')->validate('lorem ipsum'); //true
+```
 
 For arrays:
 
-    v::contains('ipsum')->validate(array('ipsum', 'lorem')); //true
+```php
+v::contains('ipsum')->validate(array('ipsum', 'lorem')); //true
+```
 
 A second parameter may be passed for identical comparison instead
 of equal comparison.
@@ -596,7 +676,9 @@ See also:
 
 This is similar to `v::alnum()`, but only accepts control characters:
 
-    v::cntrl()->validate("\n\r\t"); //true
+```php
+v::cntrl()->validate("\n\r\t"); //true
+```
 
 See also:
 
@@ -608,7 +690,9 @@ See also:
 
 Validates an ISO country code like US or BR.
 
-    v::countryCode('BR'); //true
+```php
+v::countryCode('BR'); //true
+```
 
 See also:
 
@@ -618,7 +702,9 @@ See also:
 
 Validates a Brazillian driver's license.
 
-    v::cnh()->validate('02650306461');
+```php
+v::cnh()->validate('02650306461');
+```
 
 See also:
 
@@ -629,16 +715,22 @@ See also:
 
 Validates a Brazillian CPF number.
 
-    v::cpf()->validate('44455566820');
+```php
+v::cpf()->validate('44455566820');
+```
 
 It ignores any non-digit char:
 
-    v::cpf()->validate('444.555.668-20');
+```php
+v::cpf()->validate('444.555.668-20');
+```
 
 If you need to validate digits only, add `->digit()` to
 the chain:
 
-    v::digit()->cpf()->validate('44455566820');
+```php
+v::digit()->cpf()->validate('44455566820');
+```
 
 See also:
 
@@ -649,30 +741,42 @@ See also:
 
 Validates a credit card number.
 
-    v::creditCard()->validate($myCredCardNumber);
+```php
+v::creditCard()->validate($myCredCardNumber);
+```
 
 It ignores any non-digit chars, so use `->digit()` when appropriate.
 
-    v::digit()->creditCard()->validate($myCredCardNumber);
+```php
+v::digit()->creditCard()->validate($myCredCardNumber);
+```
 
 #### v::date()
 #### v::date($format)
 
 Validates if input is a date:
 
-    v::date()->validate('2009-01-01'); //true
+```php
+v::date()->validate('2009-01-01'); //true
+```
 
 Also accepts strtotime values:
 
-    v::date()->validate('now'); //true
+```php
+v::date()->validate('now'); //true
+```
 
 And DateTime instances:
 
-    v::date()->validate(new DateTime); //true
+```php
+v::date()->validate(new DateTime); //true
+```
 
 You can pass a format when validating strings:
 
-    v::date('Y-m-d')->validate('01-01-2009'); //false
+```php
+v::date('Y-m-d')->validate('01-01-2009'); //false
+```
 
 Format has no effect when validating DateTime instances.
 
@@ -712,12 +816,16 @@ See also:
 
 Validates domain names.
 
-    v::domain()->validate('google.com');
+```php
+v::domain()->validate('google.com');
+```
 
 You can skip *top level domain* (TLD) checks to validate internal
 domain names:
 
-    v::domain(false)->validate('dev.machine.local')
+```php
+v::domain(false)->validate('dev.machine.local');
+```
 
 This is a composite validator, it validates several rules
 internally:
@@ -741,12 +849,16 @@ See also:
 
 Validates directories.
 
-    v::directory()->validate(__DIR__); //true
-    v::directory()->validate(__FILE__); //false
+```php
+v::directory()->validate(__DIR__); //true
+v::directory()->validate(__FILE__); //false
+```
 
 This validator will consider SplFileInfo instances, so you can do something like:
 
-    v::directory()->validate(new \SplFileInfo($directory));
+```php
+v::directory()->validate(new \SplFileInfo($directory));
+```
 
 See also
 
@@ -760,14 +872,16 @@ See also
 Iterates over an array or Iterator and validates the value or key
 of each entry:
 
-    $releaseDates = array(
-        'validation' => '2010-01-01',
-        'template'   => '2011-01-01',
-        'relational' => '2011-02-05',
-    );
+```php
+$releaseDates = array(
+    'validation' => '2010-01-01',
+    'template'   => '2011-01-01',
+    'relational' => '2011-02-05',
+);
 
-    v::arr()->each(v::date())->validate($releaseDates); //true
-    v::arr()->each(v::date(), v::string()->lowercase())->validate($releaseDates); //true
+v::arr()->each(v::date())->validate($releaseDates); //true
+v::arr()->each(v::date(), v::string()->lowercase())->validate($releaseDates); //true
+```
 
 Using `arr()` before `each()` is a best practice.
 
@@ -780,18 +894,24 @@ See also:
 
 Validates an email address.
 
-    v::email()->validate('alexandre@gaigalas.net'); //true
+```php
+v::email()->validate('alexandre@gaigalas.net'); //true
+```
 
 #### v::exists()
 
 Validates files or directories.
 
-    v::exists()->validate(__FILE__); //true
-    v::exists()->validate(__DIR__); //true
+```php
+v::exists()->validate(__FILE__); //true
+v::exists()->validate(__DIR__); //true
+```
 
 This validator will consider SplFileInfo instances, so you can do something like:
 
-    v::exists()->validate(new \SplFileInfo($file));
+```php
+v::exists()->validate(new \SplFileInfo($file));
+```
 
 See also
 
@@ -806,11 +926,15 @@ only if the value is at the end of the input.
 
 For strings:
 
-    v::endsWith('ipsum')->validate('lorem ipsum'); //true
+```php
+v::endsWith('ipsum')->validate('lorem ipsum'); //true
+```
 
 For arrays:
 
-    v::endsWith('ipsum')->validate(array('lorem', 'ipsum')); //true
+```php
+v::endsWith('ipsum')->validate(array('lorem', 'ipsum')); //true
+```
 
 A second parameter may be passed for identical comparison instead
 of equal comparison.
@@ -828,12 +952,16 @@ See also:
 
 Validates if the input is equal some value.
 
-    v::equals('alganet')->validate('alganet'); //true
+```php
+v::equals('alganet')->validate('alganet'); //true
+```
 
 Identical validation (===) is possible:
 
-    v::equals(10)->validate('10'); //true
-    v::equals(10, true)->validate('10'); //false
+```php
+v::equals(10)->validate('10'); //true
+v::equals(10, true)->validate('10'); //false
+```
 
 Message template for this validator includes `{{compareTo}}`.
 
@@ -845,7 +973,9 @@ See also:
 
 Validates an even number.
 
-    v::int()->even()->validate(2); //true
+```php
+v::int()->even()->validate(2); //true
+```
 
 Using `int()` before `even()` is a best practice.
 
@@ -858,12 +988,16 @@ See also
 
 Validates files.
 
-    v::file()->validate(__FILE__); //true
-    v::file()->validate(__DIR__); //false
+```php
+v::file()->validate(__FILE__); //true
+v::file()->validate(__DIR__); //false
+```
 
 This validator will consider SplFileInfo instances, so you can do something like:
 
-    v::file()->validate(new \SplFileInfo($file));
+```php
+v::file()->validate(new \SplFileInfo($file));
+```
 
 See also
 
@@ -874,15 +1008,19 @@ See also
 
 Validates a floating point number.
 
-    v::float()->validate(1.5); //true
-    v::float()->validate('1e5'); //true
+```php
+v::float()->validate(1.5); //true
+v::float()->validate('1e5'); //true
+```
 
 #### v::graph()
 #### v::graph(string $additionalChars)
 
 Validates all characters that are graphically represented.
 
-    v::graph()->validate('LKM@#$%4;'); //true
+```php
+v::graph()->validate('LKM@#$%4;'); //true
+```
 
 See also:
 
@@ -893,7 +1031,9 @@ See also:
 Validates an hexadecimal number. It's now deprecated, xdigit should be used
 instead.
 
-    v::hexa()->validate('AF12'); //true
+```php
+v::hexa()->validate('AF12'); //true
+```
 
 See also:
 
@@ -906,11 +1046,15 @@ Validates if the input is contained in a specific haystack.
 
 For strings:
 
-    v::in('lorem ipsum')->validate('ipsum'); //true
+```php
+v::in('lorem ipsum')->validate('ipsum'); //true
+```
 
 For arrays:
 
-    v::in(array('lorem', 'ipsum'))->validate('lorem'); //true
+```php
+v::in(array('lorem', 'ipsum'))->validate('lorem'); //true
+```
 
 A second parameter may be passed for identical comparison instead
 of equal comparison.
@@ -927,8 +1071,10 @@ See also:
 
 Validates if the input is an instance of the given class or interface.
 
-    v::instance('DateTime')->validate(new DateTime); //true
-    v::instance('Traversable')->validate(new ArrayObject); //true
+```php
+v::instance('DateTime')->validate(new DateTime); //true
+v::instance('Traversable')->validate(new ArrayObject); //true
+```
 
 Message template for this validator includes `{{instanceName}}`.
 
@@ -940,8 +1086,10 @@ See also:
 
 Validates if the input is an integer.
 
-    v::int()->validate('10'); //true
-    v::int()->validate(10); //true
+```php
+v::int()->validate('10'); //true
+v::int()->validate(10); //true
+```
 
 See also:
 
@@ -954,17 +1102,23 @@ See also:
 Validates IP Addresses. This validator uses the native filter_var()
 PHP function.
 
-    v::ip()->validate('192.168.0.1');
+```php
+v::ip()->validate('192.168.0.1');
+```
 
 You can pass a parameter with filter_var flags for IP.
 
-    v::ip(FILTER_FLAG_NO_PRIV_RANGE)->validate('127.0.0.1'); //false
+```php
+v::ip(FILTER_FLAG_NO_PRIV_RANGE)->validate('127.0.0.1'); //false
+```
 
 #### v::json()
 
 Validates if the given input is a valid JSON.
 
-    v::json->validate('{"foo":"bar"}'); //true
+```php
+v::json->validate('{"foo":"bar"}'); //true
+```
 
 #### v::key($name)
 #### v::key($name, v $validator)
@@ -972,19 +1126,25 @@ Validates if the given input is a valid JSON.
 
 Validates an array key.
 
-    $dict = array(
-        'foo' => 'bar'
-    );
+```php
+$dict = array(
+    'foo' => 'bar'
+);
 
-    v::key('foo')->validate($dict); //true
+v::key('foo')->validate($dict); //true
+```
 
 You can also validate the key value itself:
 
-    v::key('foo', v::equals('bar'))->validate($dict); //true
+```php
+v::key('foo', v::equals('bar'))->validate($dict); //true
+```
 
 Third parameter makes the key presence optional:
 
-    v::key('lorem', v::string(), false)->validate($dict); // true
+```php
+v::key('lorem', v::string(), false)->validate($dict); // true
+```
 
 The name of this validator is automatically set to the key name.
 
@@ -996,7 +1156,9 @@ See also:
 
 Validates if a date is leap.
 
-    v::leapDate('Y-m-d')->validate('1988-02-29'); //true
+```php
+v::leapDate('Y-m-d')->validate('1988-02-29'); //true
+```
 
 This validator accepts DateTime instances as well. The $format
 parameter is mandatory.
@@ -1010,7 +1172,9 @@ See also:
 
 Validates if a year is leap.
 
-    v::leapYear()->validate('1988'); //true
+```php
+v::leapYear()->validate('1988'); //true
+```
 
 This validator accepts DateTime instances as well.
 
@@ -1026,24 +1190,34 @@ See also:
 
 Validates lengths. Most simple example:
 
-    v::string()->length(1, 5)->validate('abc'); //true
+```php
+v::string()->length(1, 5)->validate('abc'); //true
+```
 
 You can also validate only minimum length:
 
-    v::string()->length(5, null)->validate('abcdef'); // true
+```php
+v::string()->length(5, null)->validate('abcdef'); // true
+```
 
 Only maximum length:
 
-    v::string()->length(null, 5)->validate('abc'); // true
+```php
+v::string()->length(null, 5)->validate('abc'); // true
+```
 
 The type as the first validator in a chain is a good practice,
 since length accepts many types:
 
-    v::arr()->length(1, 5)->validate(array('foo', 'bar')); //true
+```php
+v::arr()->length(1, 5)->validate(array('foo', 'bar')); //true
+```
 
 A third parameter may be passed to validate the passed values inclusive:
 
-    v::string()->length(1, 5, true)->validate('a'); //true
+```php
+v::string()->length(1, 5, true)->validate('a'); //true
+```
 
 Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.
 
@@ -1055,7 +1229,9 @@ See also:
 
 Validates if string characters are lowercase in the input:
 
-    v::string()->lowercase()->validate('xkcd'); //true
+```php
+v::string()->lowercase()->validate('xkcd'); //true
+```
 
 See also:
 
@@ -1065,18 +1241,24 @@ See also:
 
 Validates a Mac Address.
 
-    v::macAddress()->validate('00:11:22:33:44:55'); //true
+```php
+v::macAddress()->validate('00:11:22:33:44:55'); //true
+```
 
 #### v::max()
 #### v::max(boolean $inclusive=false)
 
 Validates if the input doesn't exceed the maximum value.
 
-    v::int()->max(15)->validate(20); //false
+```php
+v::int()->max(15)->validate(20); //false
+```
 
 Also accepts dates:
 
-    v::date()->max('2012-01-01')->validate('2010-01-01'); //true
+```php
+v::date()->max('2012-01-01')->validate('2010-01-01'); //true
+```
 
 `true` may be passed as a parameter to indicate that inclusive
 values must be used.
@@ -1093,11 +1275,15 @@ See also:
 
 Validates if the input doesn't exceed the minimum value.
 
-    v::int()->min(15)->validate(5); //false
+```php
+v::int()->min(15)->validate(5); //false
+```
 
 Also accepts dates:
 
-    v::date()->min('2012-01-01')->validate('2015-01-01'); //true
+```php
+v::date()->min('2012-01-01')->validate('2015-01-01'); //true
+```
 
 `true` may be passed as a parameter to indicate that inclusive
 values must be used.
@@ -1113,7 +1299,9 @@ See also:
 
 Validates a minimum age for a given date.
 
-    v::date()->minimumAge(18)->validate('1987-01-01'); //true
+```php
+v::date()->minimumAge(18)->validate('1987-01-01'); //true
+```
 
 Using `date()` before is a best-practice.
 
@@ -1127,7 +1315,9 @@ See also:
 
 Validates if the input is a multiple of the given parameter
 
-    v::int()->multiple(3)->validate(9); //true
+```php
+v::int()->multiple(3)->validate(9); //true
+```
 
 See also:
 
@@ -1137,7 +1327,9 @@ See also:
 
 Validates if a number is lower than zero
 
-    v::numeric()->negative()->validate(-15); //true
+```php
+v::numeric()->negative()->validate(-15); //true
+```
 
 See also:
 
@@ -1147,13 +1339,17 @@ See also:
 
 Validates if a string contains no whitespace (spaces, tabs and line breaks);
 
-    v::noWhitespace()->validate('foo bar');  //false
-    v::noWhitespace()->validate("foo\nbar"); //false
+```php
+v::noWhitespace()->validate('foo bar');  //false
+v::noWhitespace()->validate("foo\nbar"); //false
+```
 
 Like other rules the input is still optional.
 
-    v::string()->noWhitespace()->validate('');  //true
-    v::string()->noWhitespace()->validate(' '); //false
+```php
+v::string()->noWhitespace()->validate('');  //true
+v::string()->noWhitespace()->validate(' '); //false
+```
 
 This is most useful when chaining with other validators such as `v::alnum()`
 
@@ -1161,10 +1357,12 @@ This is most useful when chaining with other validators such as `v::alnum()`
 
 Validates if NONE of the given validators validate:
 
-    v::noneOf(
-        v::int(),
-        v::float()
-    )->validate('foo'); //true
+```php
+v::noneOf(
+    v::int(),
+    v::float()
+)->validate('foo'); //true
+```
 
 In the sample above, 'foo' isn't a integer nor a float, so noneOf returns true.
 
@@ -1178,21 +1376,29 @@ See also:
 
 Negates any rule.
 
-    v::not(v::ip())->validate('foo'); //true
+```php
+v::not(v::ip())->validate('foo'); //true
+```
 
 using a shortcut
 
-    v::ip()->not()->validate('foo'); //true
+```php
+v::ip()->not()->validate('foo'); //true
+```
 
 In the sample above, validator returns true because 'foo' isn't an IP Address.
 
 You can negate complex, grouped or chained validators as well:
 
-    v::not(v::int()->positive())->validate(-1.5); //true
+```php
+v::not(v::int()->positive())->validate(-1.5); //true
+```
 
 using a shortcut
 
-    v::int()->positive()->not()->validate(-1.5); //true
+```php
+v::int()->positive()->not()->validate(-1.5); //true
+```
 
 Each other validation has custom messages for negated rules.
 
@@ -1206,24 +1412,34 @@ Validates if the given input is not empty or in other words is input mandatory a
 required. This function also takes whitespace into account, use `noWhitespace()`
 if no spaces or linebreaks and other whitespace anywhere in the input is desired.
 
-    v::string()->notEmpty()->validate(''); //false
+```php
+v::string()->notEmpty()->validate(''); //false
+```
 
 Null values are empty:
 
-    v::notEmpty()->validate(null); //false
+```php
+v::notEmpty()->validate(null); //false
+```
 
 Numbers:
 
-    v::int()->notEmpty()->validate(0); //false
+```php
+v::int()->notEmpty()->validate(0); //false
+```
 
 Empty arrays:
 
-    v::arr()->notEmpty()->validate(array()); //false
+```php
+v::arr()->notEmpty()->validate(array()); //false
+```
 
 Whitespace:
 
-    v::string()->notEmpty()->validate('        ');  //false
-    v::string()->notEmpty()->validate("\t \n \r");  //false
+```php
+v::string()->notEmpty()->validate('        ');  //false
+v::string()->notEmpty()->validate("\t \n \r");  //false
+```
 
 See also:
 
@@ -1234,7 +1450,9 @@ See also:
 
 Validates if the input is null. This rule does not allow empty strings to avoid ambiguity.
 
-    v::nullValue()->validate(null); //true
+```php
+v::nullValue()->validate(null); //true
+```
 
 See also:
 
@@ -1244,8 +1462,10 @@ See also:
 
 Validates on any numeric value.
 
-    v::numeric()->validate(-12); //true
-    v::numeric()->validate('135.0'); //true
+```php
+v::numeric()->validate(-12); //true
+v::numeric()->validate('135.0'); //true
+```
 
 See also:
 
@@ -1256,7 +1476,9 @@ See also:
 
 Validates if the input is an object.
 
-    v::object()->validate(new stdClass); //true
+```php
+v::object()->validate(new stdClass); //true
+```
 
 See also:
 
@@ -1267,7 +1489,9 @@ See also:
 
 Validates an odd number.
 
-    v::int()->odd()->validate(3); //true
+```php
+v::int()->odd()->validate(3); //true
+```
 
 Using `int()` before `odd()` is a best practice.
 
@@ -1280,10 +1504,12 @@ See also
 
 This is a group validator that acts as an OR operator.
 
-    v::oneOf(
-        v::int(),
-        v::float()
-    )->validate(15.5); //true
+```php
+v::oneOf(
+    v::int(),
+    v::float()
+)->validate(15.5); //true
+```
 
 In the sample above, `v::int()` doesn't validates, but
 `v::float()` validates, so oneOf returns true.
@@ -1293,7 +1519,9 @@ passes.
 
 Using a shortcut
 
-    v::int()->addOr(v::float())->validate(15.5); //true
+```php
+v::int()->addOr(v::float())->validate(15.5); //true
+```
 
 See also:
 
@@ -1305,9 +1533,10 @@ See also:
 
 Validates a perfect square.
 
-    v::perfectSquare()->validate(25); //true (5*5)
-    v::perfectSquare()->validate(9); //true (3*3)
-
+```php
+v::perfectSquare()->validate(25); //true (5*5)
+v::perfectSquare()->validate(9); //true (3*3)
+```
 #### v::phone()
 
 Validates a valid 7, 10, 11 digit phone number (North America, Europe and most 
@@ -1326,7 +1555,9 @@ space or dashed notations) such as:
 
 Validates if a number is higher than zero
 
-    v::numeric()->positive()->validate(-15); //false
+```php
+v::numeric()->positive()->validate(-15); //false
+```
 
 See also:
 
@@ -1336,14 +1567,18 @@ See also:
 
 Validates a prime number
 
-    v::primeNumber()->validate(7); //true
+```php
+v::primeNumber()->validate(7); //true
+```
 
 #### v::prnt()
 #### v::prnt(string $additionalChars)
 
 Similar to `v::graph` but accepts whitespace.
 
-    v::prnt()->validate('LMKA0$% _123'); //true
+```php
+v::prnt()->validate('LMKA0$% _123'); //true
+```
 
 See also:
 
@@ -1354,7 +1589,9 @@ See also:
 
 Accepts only punctuation characters:
 
-    v::punct()->validate('&,.;[]'); //true
+```php
+v::punct()->validate('&,.;[]'); //true
+```
 
 See also:
 
@@ -1366,13 +1603,17 @@ See also:
 
 Validates if the given data is a file exists and is readable.
 
-    v::readable()->validate('/path/of/a/readable/file'); //true
+```php
+v::readable()->validate('/path/of/a/readable/file'); //true
+```
 
 #### v::regex($regex)
 
 Evaluates a regex on the input and validates if matches
 
-    v::regex('/[a-z]/')->validate('a'); //true
+```php
+v::regex('/[a-z]/')->validate('a'); //true
+```
 
 Message template for this validator includes `{{regex}}`
 
@@ -1380,7 +1621,9 @@ Message template for this validator includes `{{regex}}`
 
 Validates roman numbers
 
-    v::roman()->validate('IV'); //true
+```php
+v::roman()->validate('IV'); //true
+```
 
 This validator ignores empty values, use `notEmpty()` when
 appropriate.
@@ -1390,7 +1633,9 @@ appropriate.
 Use Symfony2 validators inside Respect\Validation flow. Messages
 are preserved.
 
-    v::sf('Time')->validate('15:00:00');
+```php
+v::sf('Time')->validate('15:00:00');
+```
 
 You must add Symfony2 to your autoloading routines.
 
@@ -1402,16 +1647,20 @@ See also:
 
 Validates slug-like strings:
 
-    v::slug()->validate('my-wordpress-title'); //true
-    v::slug()->validate('my-wordpress--title'); //false
-    v::slug()->validate('my-wordpress-title-'); //false
+```php
+v::slug()->validate('my-wordpress-title'); //true
+v::slug()->validate('my-wordpress--title'); //false
+v::slug()->validate('my-wordpress-title-'); //false
+```
 
 #### v::space()
 #### v::space(string $additionalChars)
 
 Accepts only whitespace:
 
-    v::space()->validate('    '); //true
+```php
+v::space()->validate('    '); //true
+```
 
 See also:
 
@@ -1425,11 +1674,15 @@ only if the value is at the end of the.
 
 For strings:
 
-    v::startsWith('lorem')->validate('lorem ipsum'); //true
+```php
+v::startsWith('lorem')->validate('lorem ipsum'); //true
+```
 
 For arrays:
 
-    v::startsWith('lorem')->validate(array('lorem', 'ipsum')); //true
+```php
+v::startsWith('lorem')->validate(array('lorem', 'ipsum')); //true
+```
 
 `true` may be passed as a parameter to indicate identical comparison
 instead of equal.
@@ -1446,7 +1699,9 @@ See also:
 
 Validates a string.
 
-    v::string()->validate('hi'); //true
+```php
+v::string()->validate('hi'); //true
+```
 
 See also:
 
@@ -1456,15 +1711,19 @@ See also:
 
 Validates if the given data is a path of a valid symbolic link.
 
-    v::symbolicLink()->validate('/path/of/valid/symbolic/link'); //true
+```php
+v::symbolicLink()->validate('/path/of/valid/symbolic/link'); //true
+```
 
 #### v::tld()
 
 Validates a top-level domain
 
-    v::tld()->validate('com'); //true
-    v::tld()->validate('ly'); //true
-    v::tld()->validate('org'); //true
+```php
+v::tld()->validate('com'); //true
+v::tld()->validate('ly'); //true
+v::tld()->validate('org'); //true
+```
 
 See also
 
@@ -1475,13 +1734,17 @@ See also
 
 Validates if the given data is a file that was uploaded via HTTP POST.
 
-    v::uploaded()->validate('/path/of/an/uploaded/file'); //true
+```php
+v::uploaded()->validate('/path/of/an/uploaded/file'); //true
+```
 
 #### v::uppercase()
 
 Validates if string characters are uppercase in the input:
 
-    v::string()->uppercase()->validate('W3C'); //true
+```php
+v::string()->uppercase()->validate('W3C'); //true
+```
 
 See also:
 
@@ -1491,7 +1754,9 @@ See also:
 
 Validates version numbers using Semantic Versioning.
 
-    v::version()->validate('1.0.0');
+```php
+v::version()->validate('1.0.0');
+```
 
 #### v::vowels() *(deprecated)*
 
@@ -1507,7 +1772,9 @@ See also:
 
 Similar to `v::alnum()`. Validates strings that contains only vowels:
 
-    v::vowel()->validate('aei'); //true
+```php
+v::vowel()->validate('aei'); //true
+```
 
 See also:
 
@@ -1523,7 +1790,9 @@ A ternary validator that accepts three parameters.
 When the $if validates, returns validation for $then.
 When the $if doesn't validate, returns validation for $else.
 
-    v::when(v::int(), v::positive(), v::notEmpty())->validate($input);
+```php
+v::when(v::int(), v::positive(), v::notEmpty())->validate($input);
+```
 
 In the sample above, if `$input` is an integer, then it must be positive.
 If `$input` is not an integer, then it must not me empty.
@@ -1538,11 +1807,15 @@ See also:
 
 Accepts an hexadecimal number:
 
-    v::xdigit()->validate('abc123'); //true
+```php
+v::xdigit()->validate('abc123'); //true
+```
 
 Notice, however, that it doesn't accept strings starting with 0x:
 
-    v::xdigit()->validate('0x1f'); //false
+```php
+v::xdigit()->validate('0x1f'); //false
+```
 
 See also:
 
@@ -1553,14 +1826,18 @@ See also:
 
 Validates if the given data is a file exists and is writable.
 
-    v::writable()->validate('/path/of/a/writable/file'); //true
+```php
+v::writable()->validate('/path/of/a/writable/file'); //true
+```
 
 #### v::zend($zendValidator)
 
 Use Zend validators inside Respect\Validation flow. Messages
 are preserved.
 
-    v::zend('Hostname')->validate('google.com');
+```php
+v::zend('Hostname')->validate('google.com');
+```
 
 You need to put Zend Framework in your autoload routines.
 
