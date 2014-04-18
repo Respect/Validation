@@ -23,7 +23,6 @@ Respect\Validation is namespaced, but you can make your life easier by importing
 a single class into your context:
 
 ```php
-<?php
 use Respect\Validation\Validator as v;
 ```
 
