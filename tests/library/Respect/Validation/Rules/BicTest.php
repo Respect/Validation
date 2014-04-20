@@ -49,7 +49,6 @@ class BicTest extends \PHPUnit_Framework_TestCase
             array(null),
             array('it isnt a BIC code'),
             array('&stR@ng3|) (|-|@r$'),
-            array(''),
             array('1234'),
         );
     }
