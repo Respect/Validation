@@ -16,13 +16,13 @@
         "url": "https://packages.zendframework.com/"
     }],
     "require-dev": {
-        "zendframework/zend-validator": "2.*",
-        "symfony/validator": ">=2.1.0",
-        "phpunit/phpunit": "3.7.*"
+        "zendframework/zend-validator": "~2.0",
+        "symfony/validator": "~2.1",
+        "phpunit/phpunit": "~4.0"
     },
     "suggest": {
-        "ext-bcmath": "*",
-        "ext-mbstring": "*"
+        "ext-bcmath": "Arbitrary Precision Mathematics",
+        "ext-mbstring": "Multibyte String Functions"
     },
     "autoload": {
         "psr-0": {
