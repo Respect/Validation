@@ -70,7 +70,12 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
             array('+33(020)7777 7777'),
             array('03-6106666'),
             array('036106666'),
-            
+            array('+33(11) 97777 7777'),
+            array('+3311977777777'),
+            array('11977777777'),
+            array('11 97777 7777'),
+            array('(11) 97777 7777'),
+            array('(11) 97777-7777'),
         );
     }
 
