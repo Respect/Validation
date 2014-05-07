@@ -174,6 +174,23 @@ $errors = $exception->findMessages(array(
 
 For all messages, the `{{name}}` and `{{input}}` variable is available for templates.
 
+### Custom Rules
+
+You also can use your own rules:
+
+```php
+v::with('My\\Validation\\Rules\\');
+v::myRule(); // Try to load "My\Validation\Rules\MyRule" if any
+```
+
+By default `with()` appends the given prefix, but you can change this behavior
+in order to overwrite default rules:
+
+```php
+v::with('My\\Validation\\Rules\\', true);
+v::alnum(); // Try to use "My\Validation\Rules\Alnum" if any
+```
+
 ### Validator Name
 
 On `v::attribute()` and `v::key()`, `{{name}}` is the attribute/key name. For others,
