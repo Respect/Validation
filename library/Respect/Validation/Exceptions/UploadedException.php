@@ -2,7 +2,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class WritableException extends ValidationException
+class UploadedException extends ValidationException
 {
 
     public static $defaultTemplates = array(
