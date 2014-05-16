@@ -252,7 +252,7 @@ foundation: .title
 	@make -f $(THIS) -s .foundation-backup-makefile
 	@echo -e "    > $(.BOLD)Downloading most recent Makefile$(.CLEAR)"
 	#@-rm [[ -f $(THIS) ]] "$(THIS)"
-	@-curl -L -o $(THIS) --progress-bar git.io/Makefile
+	@-curl -L -o $(THIS) --progress-bar https://raw.githubusercontent.com/Respect/Foundation/master/Makefile
 	#@make -f $(THIS) -s .needs-file file="$(THIS)" text="$(THIS) could not be retrieved."
 
 	@ #.foundation
