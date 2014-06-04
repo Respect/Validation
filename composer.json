@@ -1,4 +1,9 @@
 {
     "name": "s-bhojani/validation",
-    "description": "Fork of https://github.com/Respect/Validation"
+    "description": "Fork of https://github.com/Respect/Validation",
+    "autoload": {
+        "psr-0": {
+            "Respect\\Validation": "library\/"
+        }
+    }
 }
