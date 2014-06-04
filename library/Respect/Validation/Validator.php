@@ -127,15 +127,31 @@ class Validator extends AllOf
     public function __call($method, $arguments)
     {
         if ('not' === $method) {
-            return $arguments ? static::buildRule($method, $arguments) : new Rules\Not($this);
+            if ($arguments) {
+                $rule = static::buildRule($method, $arguments);
+                if ($this->getName() && !$rule->getName()) {
+                    $rule->setName($this->getName());
+                }
+                return $rule;
+            } else {
+                return new Rules\Not($this);
+            }
         }
 
         if (isset($method{4}) &&
             substr($method, 0, 4) == 'base' && preg_match('@^base([0-9]{1,2})$@', $method, $match)) {
-            return $this->addRule(static::buildRule('base', array($match[1])));
+            $rule = static::buildRule('base', array($match[1]));
+            if ($this->getName() && !$rule->getName()) {
+                $rule->setName($this->getName());
+            }
+            return $this->addRule($rule);
         }
 
-        return $this->addRule(static::buildRule($method, $arguments));
+        $rule = static::buildRule($method, $arguments);
+        if ($this->getName() && !$rule->getName()) {
+            $rule->setName($this->getName());
+        }
+        return $this->addRule($rule);
     }
 
     public function reportError($input, array $extraParams=array())
