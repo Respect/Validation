@@ -25,7 +25,9 @@ class ExceptionIterator extends RecursiveArrayIterator
 
     public function getChildren()
     {
-        return new static($this->current()->getRelated($this->fullRelated), $this->fullRelated);
+        if ($this->current()) {
+            return new static($this->current()->getRelated($this->fullRelated), $this->fullRelated);
+        }
     }
 }
 
