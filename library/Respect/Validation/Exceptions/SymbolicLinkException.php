@@ -1,4 +1,3 @@
-
 <?php
 
 namespace Respect\Validation\Exceptions;
