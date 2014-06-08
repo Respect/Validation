@@ -22,7 +22,7 @@
  * @version 1.1
  * @since   PHP 5.3
  */
-class RecursiveTreeIterator extends RecursiveIteratorIterator
+class NonSplRecursiveTreeIterator extends RecursiveIteratorIterator
 {
     const BYPASS_CURRENT = 0x00000004;
     const BYPASS_KEY     = 0x00000008;

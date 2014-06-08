@@ -2,7 +2,7 @@
 namespace Respect\Validation\Exceptions;
 
 use RecursiveIteratorIterator;
-use RecursiveTreeIterator;
+use NonSplRecursiveTreeIterator;
 use Respect\Validation\ExceptionIterator;
 
 class AbstractNestedException extends ValidationException
@@ -59,7 +59,8 @@ class AbstractNestedException extends ValidationException
         if ($mode == self::ITERATE_ALL) {
             return new RecursiveIteratorIterator($exceptionIterator, 1);
         } else {
-            return new RecursiveTreeIterator($exceptionIterator);
+            require_once dirname(__FILE__).'/../../../RecursiveTreeIterator.php';
+            return new NonSplRecursiveTreeIterator($exceptionIterator);
         }
     }
 

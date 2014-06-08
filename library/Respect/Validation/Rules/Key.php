@@ -8,7 +8,7 @@ class Key extends AbstractRelated
 {
     public function __construct($reference, Validatable $referenceValidator=null, $mandatory=true)
     {
-        if (!is_string($reference) || empty($reference)) {
+        if (!is_string($reference) && !is_int($reference)) {
             throw new ComponentException('Invalid array key name');
         }
         parent::__construct($reference, $referenceValidator, $mandatory);
