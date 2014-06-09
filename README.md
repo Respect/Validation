@@ -3,7 +3,7 @@ Respect\Validation [![Build Status](https://secure.travis-ci.org/Respect/Validat
 
 The most awesome validation engine ever created for PHP.
 
-- Fluent/Chained builders like `v::numeric()->positive()->between(1, 256)->validate($myNumber)` (more samples below)
+- Fluent/Chained builders like `v::numeric()->between(1, 256)->validate($myNumber)` (more samples below)
 - Informative, awesome exceptions
 - More than 30 fully tested validators
 
