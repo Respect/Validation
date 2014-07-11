@@ -1,0 +1,11 @@
+filter:
+        paths: [library/*]
+tools:
+    external_code_coverage:
+        runs: 4
+    php_cpd:
+        excluded_dirs: [vendor]
+    php_pdepend:
+        excluded_dirs: [vendor]
+    sensiolabs_security_checker: true
+    php_changetracking: true

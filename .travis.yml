@@ -17,6 +17,7 @@ before_script:
 
 script:
   - make testdox
+  - make scrutinizer-coverage
 
 matrix:
   allow_failures:
