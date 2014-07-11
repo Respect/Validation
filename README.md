@@ -1,7 +1,12 @@
 Respect\Validation
 ==================
 
-[![Build Status](https://secure.travis-ci.org/Respect/Validation.png)](http://travis-ci.org/Respect/Validation) [![Latest Stable Version](https://poser.pugx.org/respect/validation/v/stable.png)](https://packagist.org/packages/respect/validation) [![Total Downloads](https://poser.pugx.org/respect/validation/downloads.png)](https://packagist.org/packages/respect/validation) [![Latest Unstable Version](https://poser.pugx.org/respect/validation/v/unstable.png)](https://packagist.org/packages/respect/validation) [![License](https://poser.pugx.org/respect/validation/license.png)](https://packagist.org/packages/respect/validation)
+[![Build Status](https://secure.travis-ci.org/Respect/Validation.png)](http://travis-ci.org/Respect/Validation)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Respect/Validation/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Respect/Validation/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/Respect/Validation/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Respect/Validation/?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/respect/validation/v/stable.png)](https://packagist.org/packages/respect/validation)
+[![Total Downloads](https://poser.pugx.org/respect/validation/downloads.png)](https://packagist.org/packages/respect/validation)
+[![License](https://poser.pugx.org/respect/validation/license.png)](https://packagist.org/packages/respect/validation)
 
 [The most awesome validation engine ever created for PHP.](http://bit.ly/1a1oeQv)
 
@@ -1538,8 +1543,8 @@ v::perfectSquare()->validate(9); //true (3*3)
 ```
 #### v::phone()
 
-Validates a valid 7, 10, 11 digit phone number (North America, Europe and most 
-Asian and Middle East countries), supporting country and area codes (in dot, 
+Validates a valid 7, 10, 11 digit phone number (North America, Europe and most
+Asian and Middle East countries), supporting country and area codes (in dot,
 space or dashed notations) such as:
 
     (555)555-5555
@@ -1549,7 +1554,7 @@ space or dashed notations) such as:
     +33(1)22 22 22 22
     +33(020)7777 7777
     03-6106666
-    
+
 #### v::positive()
 
 Validates if a number is higher than zero
