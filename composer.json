@@ -28,5 +28,10 @@
         "psr-0": {
             "Respect\\Validation": "library\/"
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.7-dev"
+        }
     }
 }
