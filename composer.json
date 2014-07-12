@@ -25,8 +25,8 @@
         "ext-mbstring": "Multibyte String Functions"
     },
     "autoload": {
-        "psr-0": {
-            "Respect\\Validation": "library\/"
+        "psr-4": {
+            "Respect\\Validation\\": "library/"
         }
     }
 }
