@@ -6,39 +6,40 @@ use DateTime;
 class MinimumAgeTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @dataProvider providerForValidDateValidMinimumAge
+     * @dataProvider providerForValidDateValidAge
      */
-    public function testValidMinimumAgeInsideBoundsShouldPass($age, $format, $input)
+    public function testValidAgeInsideBoundsShouldPass($age, $format, $input)
     {
-        $minimumAge = new MinimumAge($age, $format);
+	$maximumAge = null;
+        $minimumAge = new Age($age, $maximumAge, $format);
         $this->assertTrue($minimumAge->__invoke($input));
         $this->assertTrue($minimumAge->assert($input));
         $this->assertTrue($minimumAge->check($input));
     }
 
     /**
-     * @dataProvider providerForValidDateInvalidMinimumAge
-     * @expectedException Respect\Validation\Exceptions\MinimumAgeException
+     * @dataProvider providerForValidDateInvalidAge
+     * @expectedException Respect\Validation\Exceptions\AgeException
      */
-    public function testInvalidMinimumAgeShouldThrowException($age, $format, $input)
+    public function testInvalidAgeShouldThrowException($age, $format, $input)
     {
-        $minimumAge = new MinimumAge($age, $format);
+        $minimumAge = new Age($age, $format);
         $this->assertFalse($minimumAge->__invoke($input));
         $this->assertFalse($minimumAge->assert($input));
     }
 
     /**
      * @dataProvider providerForInvalidDate
-     * @expectedException Respect\Validation\Exceptions\MinimumAgeException
+     * @expectedException Respect\Validation\Exceptions\AgeException
      */
     public function testInvalidDateShouldNotPass($age, $format, $input)
     {
-        $minimumAge = new MinimumAge($age, $format);
+        $minimumAge = new Age($age, $format);
         $this->assertFalse($minimumAge->__invoke($input));
         $this->assertFalse($minimumAge->assert($input));
     }
 
-    public function providerForValidDateValidMinimumAge()
+    public function providerForValidDateValidAge()
     {
         return array(
             array(18, 'Y-m-d', ''),
@@ -48,7 +49,7 @@ class MinimumAgeTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForValidDateInvalidMinimumAge()
+    public function providerForValidDateInvalidAge()
     {
         return array(
             array(18, 'Y-m-d', '2002-06-30'),
