@@ -332,6 +332,7 @@ Reference
   * [v::json()](#vjson)
   * [v::macAddress()](#vmacaddress)
   * [v::phone()](#vphone)
+  * [v::RGBColor()](#vrgbcolor)
   * [v::sf()](#vsfsfvalidator)
   * [v::zend()](#vzendzendvalidator)
   * [v::nfeAccessKey()](#vnfeaccesskey)
@@ -1620,6 +1621,18 @@ v::regex('/[a-z]/')->validate('a'); //true
 
 Message template for this validator includes `{{regex}}`
 
+#### v::RGBColor()
+
+Validates a RGB color
+
+```php
+v::RGBColor()->validate('#FFFAAA'); //true
+```
+
+See also:
+
+  * [v::vxdigit()](#vxdigit)
+
 #### v::roman()
 
 Validates roman numbers
@@ -1824,6 +1837,7 @@ See also:
 
   * [v::digit()](#vdigit)
   * [v::alnum()](#valnum)
+  * [v::RGBColor()](#vrgbcolor)
 
 #### v::writable()
 
