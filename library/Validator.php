@@ -105,6 +105,14 @@ class Validator extends AllOf
         return $validator->__call($ruleName, $arguments);
     }
 
+    /**
+     * @param string $ruleSpec
+     * @param array  $arguments
+     *
+     * @throws Exceptions\ComponentException
+     *
+     * @return mixed
+     */
     public static function buildRule($ruleSpec, $arguments=array())
     {
         if ($ruleSpec instanceof Validatable) {
