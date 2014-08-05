@@ -19,6 +19,29 @@ Installation
 
 Packages available on [PEAR](http://respect.li/pear) and [Composer](http://packagist.org/packages/Respect/Validation). Autoloading is [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md) compatible.
 
+Test
+----
+
+### Linux
+
+You can test the project using the commands:
+```sh
+$ cd <project folder>
+$ curl -sS https://getcomposer.org/installer | php
+$ composer.phar install
+$ vendor/bin/phpunit tests
+```
+
+### Windows
+
+You can test the project using the commands:
+```sh
+$ cd <project folder>
+$ curl -sS https://getcomposer.org/installer | php
+$ composer.phar install
+$ vendor\bin\phpunit tests
+```
+
 Feature Guide
 -------------
 
