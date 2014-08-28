@@ -337,6 +337,7 @@ Reference
 ### Files
 
   * [v::directory()](#vdirectory)
+  * [v::executable()](#vexecutable)
   * [v::exists()](#vexists)
   * [v::file()](#vfile)
   * [v::readable()](#vreadable)
@@ -923,6 +924,19 @@ Validates an email address.
 ```php
 v::email()->validate('alexandre@gaigalas.net'); //true
 ```
+
+#### v::executable()
+
+Validates if a file is an executable.
+
+```php
+v::email()->executable('script.sh'); //true
+```
+
+See also
+
+  * [v::readable()](#vreadable)
+  * [v::writable()](#vwritable)
 
 #### v::exists()
 
