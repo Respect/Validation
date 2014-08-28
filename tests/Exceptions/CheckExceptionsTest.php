@@ -7,9 +7,10 @@ use DirectoryIterator;
 
 class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
 {
-    protected $deprecateds = array(
+    protected $blacklist = array(
         'Consonants',
         'Digits',
+        'Factory',
         'Vowels',
     );
 
@@ -23,7 +24,7 @@ class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
                 continue;
             }
             $ruleName = substr($fileInfo->getBasename(), 0, -4);
-            if (in_array($ruleName, $this->deprecateds)) {
+            if (in_array($ruleName, $this->blacklist)) {
                 continue;
             }
 
