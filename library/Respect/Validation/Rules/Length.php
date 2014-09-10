@@ -46,7 +46,11 @@ class Length extends AbstractRule
     protected function extractLength($input)
     {
         if (is_string($input)) {
-            return mb_strlen($input, mb_detect_encoding($input));
+            if (extension_loaded('mbstring')) {
+                return mb_strlen($input, mb_detect_encoding($input));
+            } else {
+                return strlen(utf8_decode($input));
+            }
         } elseif (is_array($input) || $input instanceof Countable) {
             return count($input);
         } elseif (is_object($input)) {
