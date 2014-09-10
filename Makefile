@@ -17,7 +17,7 @@ Makefile: ;              # skip prerequisite discovery
 	@echo -e "Respect/Foundation: $(VERSION)\n"
 
 .check-foundation: .title
-	@test -d ${FOUNDATION_HOME} || make -f Makefile foundation-develop
+	@test -d ${FOUNDATION_HOME} || make -f Makefile foundation
 	@make -v|grep -qi GNU || echo -e "\nWARNING: Foundation Makefile was developed for use with GNU Make, \
 	using other flavoured binaries may have unwanted consequences.\n"
 	@make -v|grep -q 'built for .*apple' && echo -e "\nWARNING: The apple built edition of GNU Make have several \
@@ -67,12 +67,13 @@ menu-project: .title
 	@echo "        phantomjs-inject: Inject javascript/jquery into pages for output to stdout."
 	@echo "phantomjs-inject-verbose: Verbose output of script injection to help see whats going on."
 	@echo "                        :   CLEANUP UTILITIES"
-	@echo "        clean-whitespace: All in one does tabs2spaces, unix-line-ends and trailing_spaces"
-	@echo "             tabs2spaces: Turns tabs into 4 spaces properly handling mixed tab/spaces"
-	@echo "          unix-line-ends: Fixes unix line endings"
-	@echo "         trailing_spaces: Removes trailing whitespace"
-	@echo "      single-blank-lines: Removes multiple blank lines adds blank line at end of file"
-	@echo "      remove-eof-php-tag: Removes php tag at the end of a file if exists"
+	@echo "    clean-all-whitespace: All in one does tabs2spaces, unix-line-ends and trailing_spaces"
+	@echo "       clean-tabs2spaces: Turns tabs into 4 spaces properly handling mixed tab/spaces"
+	@echo "    clean-unix-line-ends: Fixes unix line endings"
+	@echo "   clean-trailing_spaces: Removes trailing whitespace"
+	@echo "clean-single-blank-lines: Removes multiple blank lines adds blank line at end of file"
+	@echo "clean-remove-eof-php-tag: Removes php tag at the end of a file if exists"
+	@echo "  clean-up-makefile-baks: Delete all Makefile.bak files"
 	@echo "                        :   CODE CONTENT UTILITIES"
 	@echo "                cs-fixer: Run PHP Coding Standards Fixer to ensure your cs-style is correct"
 	@echo "               codesniff: Run PHP Code Sniffer to generate a report of code analysis"
@@ -103,6 +104,7 @@ menu-package: .title
 	@echo "                        :    COMPOSER & PACKAGES: use argument ex. package=vendor/package"
 	@echo " composer-create-project: Create a project from a package into its default directory"
 	@echo "        composer-require: Add required package to composer.json and install it"
+	@echo "         composer-search: Search for a package ksown to composer"
 	@echo "                 install: Install this project and its dependencies in the local PEAR"
 	@echo "                info-php: Show information about your PHP"
 	@echo "              config-php: Locate your PHP configuration file aka. php.ini"
@@ -184,7 +186,7 @@ menu-deploy: .title
 # Foundation puts its files into .foundation inside your project folder.
 # You can delete .foundation anytime and then run make foundation again if you need
 foundation: .title
-	@echo "Updating Makefile"
+	make .foundation-backup-makefile
 	curl -LO git.io/Makefile
 	@echo "Creating ${FOUNDATION_HOME} folder"
 	-rm -Rf ${FOUNDATION_HOME}
@@ -195,10 +197,21 @@ foundation: .title
 	-curl -L https://github.com/c9s/Onion/raw/master/onion > ${FOUNDATION_HOME}/onion;chmod +x ${FOUNDATION_HOME}/onion
 	@echo "Done."
 
+.foundation-backup-makefile:
+	@echo "Updating Makefile"
+	[[ -f "Makefile.bak" ]] && { export list=( $$(ls Makefile.bak*) ); \
+	    cp Makefile "Makefile.bak.$${#list[@]}"; } || \
+	    cp Makefile Makefile.bak
+
+clean-up-makefile-baks:
+	@if make .prompt-yesno message="Do you want to delete Makefile backups?" 2> /dev/null; then \
+	  rm -f Makefile.bak*; \
+	fi
+
 # Target for Respect/Foundation development and internal use only. This target will not appear on the menus.
 foundation-develop:
 	@if make .prompt-yesno message="Do you want to update your Makefile?" 2> /dev/null; then \
-	  echo "Updating Makefile"; \
+	  make .foundation-backup-makefile; \
 	  curl -LO https://raw.github.com/Respect/Foundation/develop/Makefile; \
 	fi
 	@echo "Creating ${FOUNDATION_HOME} folder"
@@ -346,6 +359,9 @@ project-init: .check-foundation
 	fi; \
 	make -f Makefile .project-init
 
+.open-document:
+	@[[ -n "$(url)" ]] && which open &> /dev/null && open "$(url)"
+
 .project-init: git-init project-folders phpunit-xml bootstrap-php package git-add-all
 	sleep 1
 	git add -A
@@ -377,6 +393,27 @@ codesniff: .check-foundation
 phpunit-codesniff: .check-foundation
 	@echo "Running PHP Codesniffer to assess PHPUnit compliancy"
 	phpcs -p --extensions=PHPUnit --report-full=`$(CONFIG_TOOL) documentation-folder `/full2.out `$(CONFIG_TOOL) library-folder `
+
+phpcb: .check-foundation
+	@echo Running PHP Code Browser on library folder
+	@phpcb -s `$(CONFIG_TOOL) library-folder ` -o `$(CONFIG_TOOL) documentation-folder `
+	@make .open-document url=`$(CONFIG_TOOL) documentation-folder `/index.html
+
+phpmd: .check-foundation
+	@echo Running PHP Mess Detector on library folder
+	@phpmd `$(CONFIG_TOOL) library-folder ` html codesize,unusedcode,naming,design,controversial > url=`$(CONFIG_TOOL) documentation-folder `/phpmd.html
+	@make .open-document url=`$(CONFIG_TOOL) documentation-folder `/phpmd.html
+
+phpdepend:
+	@echo Running PHP_Depend for on library folder
+	@pdepend --coderank-mode=inheritance,property,method \
+        --jdepend-chart=`$(CONFIG_TOOL) documentation-folder `/jdepend-chart \
+        --jdepend-xml=`$(CONFIG_TOOL) documentation-folder `/jdepend-xml \
+        --overview-pyramid=`$(CONFIG_TOOL) documentation-folder `/overview-pyramid \
+        --summary-xml=`$(CONFIG_TOOL) documentation-folder `/summary-xml \
+        `$(CONFIG_TOOL) library-folder `
+
+
 
 phpcpd: .check-foundation
 	@echo Running PHP Copy paste detection on library folder
@@ -435,7 +472,7 @@ testdox: .check-foundation
 coverage: .check-foundation
 	@cd `$(CONFIG_TOOL) test-folder`;phpunit --testdox --coverage-html=reports/coverage --coverage-text .
 	@echo "Done. Reports also available on `$(CONFIG_TOOL) test-folder`/reports/coverage/index.html"
-	which open &> /dev/null && open reports/coverage/index.html
+	@make .open-document url=reports/coverage/index.html
 
 cs-fixer: .check-foundation
 	@cd `$(CONFIG_TOOL) library-folder`;${FOUNDATION_HOME}/php-cs-fixer -v fix --level=all --fixers=indentation,linefeed,trailing_spaces,unused_use,return,php_closing_tag,short_tag,visibility,braces,extra_empty_lines,phpdoc_params,eof_ending,include,controls_spaces,elseif .
@@ -610,6 +647,11 @@ composer-require: .check-foundation .check-composer
 	@echo "Running composer require, adding and installing as required package: $(package)"
 	@/usr/bin/env PATH=$$PATH:${FOUNDATION_HOME} composer -v require "$(package)"
 
+composer-search: .check-foundation .check-composer
+	@[[ -z "$(package)" ]] && echo -e "Usage: make composer-search package=search-package\n" && exit 1 || true
+	@echo "Running composer search, seeing if we can find a package called: $(package)"
+	@/usr/bin/env PATH=$$PATH:${FOUNDATION_HOME} composer -v search "$(package)"
+
 info-pyrus: .check-foundation
 	@echo "This is what I know about your PEAR2_Pyrus."
 	${FOUNDATION_HOME}/pyrus --version
@@ -628,10 +670,30 @@ info-codesniff: .check-foundation
 	@echo "The following PHP_CodeSniffer coding standard sniffs are installed."
 	phpcs -i
 
-install-codesniff: .check-foundation
-	@echo "Attempting to download and install PHP_CodeSniffer. This will likely require sudo."
-	pear install --alldeps PHP_CodeSniffer
-	https://github.com/elblinkin/PHPUnit-CodeSniffer.git
+install-codesniff: install-phpqatools
+install-phpunit: install-phpqatools
+install-phpcpd: install-phpqatools
+install-phpdcd: install-phpqatools
+install-phploc: install-phpqatools
+install-skelgen: install-phpqatools
+
+install-phpcb: install-phpqatools
+install-phpmd: install-phpqatools
+
+install-vfsstreams: install-phpqatools
+install-bytekit-cli: install-phpqatools
+install-hphpa: install-phpqatools
+install-behat: install-phpqatools
+
+install-pdepend: install-phpqatools
+install-jenkins: install-phpqatools
+
+install-phpqatools: .check-foundation
+	@echo "Attempting to download and install the PHP Quality Assurance Toolchain. http://phpqatools.org/"
+	@pear config-set auto_discover 1
+	@pear channel-info pear.phpqatools.org > /dev/null || pear channel-discover pear.phpqatools.org || pear channel-update pear.phpqatools.org
+	@pear install --alldeps --soft phpqatools/phpqatools  PHP_CodeSniffer
+	@pear install --alldeps --soft phpqatools/PHP_CodeBrowser
 
 install-psr-sniff: .check-foundation
 	@echo "Attempting to download and install PHP_CodeSniffer sniffs for PSR's. This will likely require sudo."
@@ -646,53 +708,26 @@ info-phpunit: .check-foundation
 	@echo "This is what I know about your PHPUnit."
 	@phpunit --version
 
-install-phpunit: .check-foundation
-	@echo "Attempting to download and install PHPUnit. This will likely require sudo."
-	@pear channel-info pear.phpunit.de > /dev/null || pear channel-discover pear.phpunit.de
-	@pear channel-info pear.symfony.com > /dev/null || pear channel-discover pear.symfony.com
-	@pear install --alldeps pear.phpunit.de/PHPUnit
-
 info-phpcpd: .check-foundation
 	@echo "This is what I know about your PHPcpd."
 	@phpcpd --version
-
-install-phpcpd: .check-foundation
-	@echo "Attempting to download and install PHPcpd. This will likely require sudo."
-	@pear channel-info pear.phpunit.de > /dev/null || pear channel-discover pear.phpunit.de
-	@pear install --alldeps pear.phpunit.de/phpcpd
 
 info-phpdcd: .check-foundation
 	@echo "This is what I know about your PHPdcd."
 	@phpdcd --version
 
-install-phpdcd: .check-foundation
-	@echo "Attempting to download and install PHPdcd. This will likely require sudo."
-	@pear channel-info pear.phpunit.de > /dev/null || pear channel-discover pear.phpunit.de
-	@pear install --alldeps pear.phpunit.de/phpdcd-beta
-
 info-phploc: .check-foundation
 	@echo "This is what I know about your PHPloc."
 	@phploc --version
 
-install-phploc: .check-foundation
-	@echo "Attempting to download and install PHPloc. This will likely require sudo."
-	@pear channel-info pear.phpunit.de > /dev/null || pear channel-discover pear.phpunit.de
-	@pear install --alldeps pear.phpunit.de/phploc
-
 install-phpcov: .check-foundation
 	@echo "Attempting to download and install PHPcov. This will likely require sudo."
-	@pear channel-info pear.phpunit.de > /dev/null || pear channel-discover pear.phpunit.de
-	@pear install --alldeps pear.phpunit.de/phpcov
+	@pear channel-info pear.phpunit.de > /dev/null || pear channel-discover pear.phpunit.de || pear channel-update pear.phpunit.de
+	@pear install --alldeps --soft pear.phpunit.de/phpcov
 
 info-skelgen:
 	@echo "This is what I know about your PHPUnit_SkeletonGenerator.\n"
 	@phpunit-skelgen --version
-
-install-skelgen: .check-foundation
-	@echo "Attempting to download and install PHPUnit Skeleton Generator. This will likely require sudo."
-	@pear channel-info pear.phpunit.de > /dev/null || pear channel-discover pear.phpunit.de
-	@pear channel-info components.ez.no > /dev/null || pear channel-discover components.ez.no
-	@pear install --alldeps pear.phpunit.de/PHPUnit_SkeletonGenerator
 
 info-test-helpers: .check-foundation
 	@pecl info phpunit/test_helpers|egrep 'Version|Name|Summary|Description|-'
@@ -702,8 +737,8 @@ install-test-helpers:
 	  exit; \
 	fi; \
 	echo "Attempting to download and install PHPUnit Test Helpers. This will likely require sudo." \
-	pear channel-info pear.phpunit.de > /dev/null || pear channel-discover pear.phpunit.de; \
-	pecl install  --alldeps phpunit/test_helpers
+	pear channel-info pear.phpunit.de > /dev/null || pear channel-discover pear.phpunit.de || pear channel-update pear.phpunit.de; \
+	pecl install --alldeps --soft phpunit/test_helpers
 
 info-phpdoc: .check-foundation
 	@echo "This is what I know about your PhpDocumentor."
@@ -712,8 +747,8 @@ info-phpdoc: .check-foundation
 
 install-phpdoc: .check-foundation
 	@echo "Attempting to download and install PhpDocumentor2. This will likely require sudo."
-	@pear channel-info pear.phpdoc.org > /dev/null || pear channel-discover pear.phpdoc.org
-	@pear install --alldeps phpdoc/phpDocumentor-alpha
+	@pear channel-info pear.phpdoc.org > /dev/null || pear channel-discover pear.phpdoc.org || pear channel-update pear.phpdoc.org
+	@pear install --alldeps --soft phpdoc/phpDocumentor-alpha
 
 info-phd: .check-foundation
 	@echo "This is what I know about your PhD."
@@ -721,8 +756,8 @@ info-phd: .check-foundation
 
 install-phd: .check-foundation
 	@echo "Attempting to download and install PhD. This will likely require sudo."
-	@pear channel-info doc.php.net > /dev/null || pear channel-discover doc.php.net
-	@pear install --alldeps doc.php.net/phd-beta
+	@pear channel-info doc.php.net > /dev/null || pear channel-discover doc.php.net || pear channel-update doc.php.net
+	@pear install --alldeps --soft doc.php.net/phd-beta
 
 info-phpsh: .check-foundation
 	@echo "This is what I know about your phpsh."
@@ -744,61 +779,60 @@ install-uri-template: .check-foundation
 
 # Clean up utils
 
-tabs2spaces:
+clean-tabs2spaces:
 	@printf "."
 	@if test "$(file)"; then \
 	  expand -t 4 "$(file)" > "$(file).tmp" && cp -f "$(file).tmp" "$(file)"; rm -f "$(file).tmp"; \
 	else \
-		find . -type f -name "*.php" -exec make tabs2spaces file="{}" \;; \
+		find . -type f -name "*.php" -exec make clean-tabs2spaces file="{}" \;; \
 		echo; echo "Done converting tabs to spaces."; \
 	fi;
 
-trailing-spaces:
+clean-trailing-spaces:
 	@printf "."
 	@if test "$(file)"; then \
 	  awk '{sub(/[ \t]+$$/, "")};1' "$(file)" > "$(file).tmp" && cp -f "$(file).tmp" "$(file)"; rm -f "$(file).tmp"; \
 	else \
-		find . -type f -name "*.php" -exec make trailing-spaces file="{}" \;; \
+		find . -type f -name "*.php" -exec make clean-trailing-spaces file="{}" \;; \
 		echo; echo "Done removing trailing spaces."; \
 	fi;
 
-unix-line-ends:
+clean-unix-line-ends:
 	@printf "."
 	@if test "$(file)"; then \
 	  awk '{sub(/\r$$/,"")};1' "$(file)" > "$(file).tmp" && cp -f "$(file).tmp" "$(file)"; rm -f "$(file).tmp"; \
 	else \
-		find . -type f -name "*.php" -exec make unix-line-ends file="{}" \;; \
+		find . -type f -name "*.php" -exec make clean-unix-line-ends file="{}" \;; \
 		echo; echo "Done converting line endings."; \
 	fi;
 
-single-blank-lines:
+clean-single-blank-lines:
 	@printf "."
 	@if test "$(file)"; then \
 	  awk '!NF{x="\n"};NF{print x $$0;x=""};END{print EOF}' "$(file)" > "$(file).tmp" && cp -f "$(file).tmp" "$(file)"; rm -f "$(file).tmp"; \
 	else \
-		find . -type f -name "*.php" -exec make single-blank-lines file="{}" \;; \
+		find . -type f -name "*.php" -exec make clean-single-blank-lines file="{}" \;; \
 		echo; echo "Done converting to single blank lines."; \
 	fi;
 
-clean-whitespace: .check-foundation
+clean-all-whitespace: .check-foundation
 	@if test "$(file)"; then \
-		make tabs2spaces file="$(file)"; \
-		make unix-line-ends file="$(file)"; \
-		make trailing-spaces file="$(file)"; \
-		make single-blank-lines file="$(file)"; \
+		make clean-tabs2spaces file="$(file)"; \
+		make clean-unix-line-ends file="$(file)"; \
+		make clean-trailing-spaces file="$(file)"; \
+		make clean-single-blank-lines file="$(file)"; \
 	else \
-		make tabs2spaces; make unix-line-ends; make trailing-spaces; make single-blank-lines; \
+		make clean-tabs2spaces; make clean-unix-line-ends; make clean-trailing-spaces; make clean-single-blank-lines; \
 	fi;
 
-remove-eof-php-tag:
+clean-remove-eof-php-tag:
 	@printf "."
 	@if test "$(file)"; then \
 	  awk '{c=c $$0 "\n"};END{sub(/\n$$/,"",c); sub(/[[:space:]]*\n\?\>[[:space:]]*$$/,"\n",c); print c}' "$(file)" > "$(file).tmp" && cp -f "$(file).tmp" "$(file)"; rm -f "$(file).tmp"; \
 	else \
-	        find . -type f -name "*.php" -exec make remove-eof-php-tag file="{}" \;; \
+	        find . -type f -name "*.php" -exec make clean-remove-eof-php-tag file="{}" \;; \
 	        echo; echo "Done removing php closing tags ?> at end of file."; \
 	fi;
-
 
 # Install pirum, clones the PEAR Repository, make changes there and push them.
 pear-push: .check-foundation

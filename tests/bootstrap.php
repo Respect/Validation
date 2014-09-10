@@ -9,7 +9,7 @@ $paths[] = trim(`pear config-get php_dir`);
 if (file_exists(dirname(__DIR__).'/vendor/composer')) {
     $map = require dirname(__DIR__).'/vendor/composer/autoload_namespaces.php';
     foreach ($map as $path)
-        $paths[] = $path;
+        $paths = array_merge($paths, $path);
 }
 
 natsort($paths);
@@ -26,7 +26,7 @@ spl_autoload_register(
         if (isset($composerClassmap[$className]))
             return require $composerClassmap[$className];
 
-    $fileParts = explode('\\', ltrim($className, '\\'));
+        $fileParts = explode('\\', ltrim($className, '\\'));
 
         if (false !== strpos(end($fileParts), '_'))
             array_splice($fileParts, -1, 1, explode('_', current($fileParts)));
@@ -39,4 +39,3 @@ spl_autoload_register(
         }
     }
 );
-

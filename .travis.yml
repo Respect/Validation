@@ -1,15 +1,23 @@
-language:
-  php
+# a Courtesy of Respect/Foundation
+
+language: php
+
+env: FOUNDATION_NO_WAIT=1
 
 php:
   - 5.3
   - 5.4
-
-env: FOUNDATION_NO_WAIT=1
+  - 5.5
 
 before_script:
-  - "make composer-install-dev"
-  - "phpenv rehash"
+  - make composer-install-dev
+  - phpenv rehash
 
 script:
-  - "make testdox"
+  - make testdox
+
+notifications:
+  irc:
+    channels:
+      - "irc.freenode.org#php-respect"
+    use_notice: true
