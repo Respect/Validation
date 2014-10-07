@@ -136,7 +136,7 @@ we use the `assert()` method instead of `validate()`:
 ```php
 try {
     $usernameValidator->assert('really messed up screen#name');
-} catch(\InvalidArgumentException $e) {
+} catch(DomainException $e) {
    echo $e->getFullMessage();
 }
 ```
