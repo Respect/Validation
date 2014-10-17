@@ -57,6 +57,14 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    /**
+     * @link https://github.com/Respect/Validation/pull/214
+     */
+    public function testFixedConstEqualsException()
+    {
+        $this->assertTrue(EqualsException::EQUALS !== EqualsException::IDENTICAL);
+    }
+
     public function providerForStringify()
     {
         return array(
