@@ -62,7 +62,9 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testFixedConstEqualsException()
     {
-        $this->assertTrue(EqualsException::EQUALS !== EqualsException::IDENTICAL);
+        $condition = EqualsException::$defaultTemplates[EqualsException::MODE_DEFAULT][EqualsException::EQUALS] !==
+            EqualsException::$defaultTemplates[EqualsException::MODE_DEFAULT][EqualsException::IDENTICAL];
+        $this->assertTrue($condition);
     }
 
     public function providerForStringify()
