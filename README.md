@@ -245,8 +245,8 @@ Reference
 
   * [v::between()](#vbetweenstart-end)
   * [v::equals()](#vequalsvalue)
-  * [v::max()](#vmax)
-  * [v::min()](#vmin)
+  * [v::max()](#vmaxmax)
+  * [v::min()](#vminmin)
 
 ### Numeric
 
@@ -541,8 +541,8 @@ Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.
 See also:
 
   * [v::length()](#vlengthmin-max) - Validates the length of a input
-  * [v::min()](#vmin)
-  * [v::max()](#vmax)
+  * [v::min()](#vminmin)
+  * [v::max()](#vmaxmax)
 
 #### v::bool()
 
@@ -1278,6 +1278,8 @@ Validates if the input doesn't exceed the maximum value.
 
 ```php
 v::int()->max(15)->validate(20); //false
+v::int()->max(20)->validate(20); //false
+v::int()->max(20, true)->validate(20); //true
 ```
 
 Also accepts dates:
@@ -1293,7 +1295,7 @@ Message template for this validator includes `{{maxValue}}`.
 
 See also:
 
-  * [v::min()](#vmin)
+  * [v::min()](#vminmin)
   * [v::between()](#vbetweenstart-end)
 
 #### v::min($min)
@@ -1320,7 +1322,7 @@ Message template for this validator includes `{{minValue}}`.
 
 See also:
 
-  * [v::max()](#vmax)
+  * [v::max()](#vmaxmax)
   * [v::between()](#vbetweenstart-end)
 
 #### v::minimumAge($age)
