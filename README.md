@@ -1271,8 +1271,8 @@ Validates a Mac Address.
 v::macAddress()->validate('00:11:22:33:44:55'); //true
 ```
 
-#### v::max()
-#### v::max(boolean $inclusive=false)
+#### v::max($max)
+#### v::max($max, boolean $inclusive=false)
 
 Validates if the input doesn't exceed the maximum value.
 
@@ -1296,13 +1296,15 @@ See also:
   * [v::min()](#vmin)
   * [v::between()](#vbetweenstart-end)
 
-#### v::min()
-#### v::min(boolean $inclusive=false)
+#### v::min($min)
+#### v::min($min, boolean $inclusive=false)
 
-Validates if the input doesn't exceed the minimum value.
+Validates if the input is greater than the minimum value.
 
 ```php
 v::int()->min(15)->validate(5); //false
+v::int()->min(5)->validate(5); //false
+v::int()->min(5, true)->validate(5); //true
 ```
 
 Also accepts dates:
