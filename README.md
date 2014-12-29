@@ -1212,7 +1212,7 @@ See also:
 #### v::length($min, $max)
 #### v::length($min, null)
 #### v::length(null, $max)
-#### v::length($min, $max, boolean $inclusive=false)
+#### v::length($min, $max, boolean $inclusive=true)
 
 Validates lengths. Most simple example:
 
