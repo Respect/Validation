@@ -1,8 +1,5 @@
-# a Courtesy of Respect/Foundation
-
-language: php
-
-env: FOUNDATION_NO_WAIT=1
+language:
+  php
 
 php:
   - 5.3
@@ -12,12 +9,11 @@ php:
   - hhvm
 
 before_script:
-  - make composer-install-dev
+  - composer install --dev --no-interaction --prefer-source
   - phpenv rehash
 
 script:
-  - make testdox
-  - make scrutinizer-coverage
+  - vendor/bin/phpunit --configuration tests/phpunit.xml --testdox tests/
 
 matrix:
   allow_failures:
