@@ -1157,7 +1157,7 @@ v::ip(FILTER_FLAG_NO_PRIV_RANGE)->validate('127.0.0.1'); //false
 Validates if the given input is a valid JSON.
 
 ```php
-v::json->validate('{"foo":"bar"}'); //true
+v::json()->validate('{"foo":"bar"}'); //true
 ```
 
 #### v::key($name)
