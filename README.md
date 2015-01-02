@@ -1696,7 +1696,7 @@ See also:
 #### v::startsWith($value, boolean $identical=false)
 
 This validator is similar to `v::contains()`, but validates
-only if the value is at the end of the.
+only if the value is at the beginning of the input.
 
 For strings:
 
