@@ -19,6 +19,13 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
         return true;
     }
 
+    public function testShouldBeAbleToDefineLatestArgumentsOnConstructor()
+    {
+        $rule = new Callback('is_a', 'stdClass');
+
+        $this->assertTrue($rule->validate(new \stdClass()));
+    }
+
     public function testCallbackValidatorShouldReturnTrueForEmptyString()
     {
         $this->assertTrue($this->truthy->assert(''));
