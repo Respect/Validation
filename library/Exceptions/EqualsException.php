@@ -4,7 +4,7 @@ namespace Respect\Validation\Exceptions;
 class EqualsException extends ValidationException
 {
     const EQUALS = 0;
-    const IDENTICAL = 0;
+    const IDENTICAL = 1;
 
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
