@@ -856,9 +856,9 @@ v::domain(false)->validate('dev.machine.local');
 This is a composite validator, it validates several rules
 internally:
 
-  * If input is an IP address, it validates.
+  * If input is an IP address, it fails.
   * If input contains whitespace, it fails.
-  * If input not contains any dot, it fails.
+  * If input does not contain any dots, it fails.
   * If input has less than two parts, it fails.
   * Input must end with a top-level-domain to pass (if not skipped).
   * Each part must be alphanumeric and not start with an hyphen.
@@ -1269,6 +1269,7 @@ Validates a Mac Address.
 
 ```php
 v::macAddress()->validate('00:11:22:33:44:55'); //true
+v::macAddress()->validate('af-AA-22-33-44-55'); //true
 ```
 
 #### v::max($max)
