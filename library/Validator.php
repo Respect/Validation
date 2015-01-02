@@ -70,6 +70,7 @@ use Respect\Validation\Rules\AllOf;
  * @method \Respect\Validation\Validator perfectSquare()
  * @method \Respect\Validation\Validator phone()
  * @method \Respect\Validation\Validator positive()
+ * @method \Respect\Validation\Validator postalCode($countryCode)
  * @method \Respect\Validation\Validator primeNumber()
  * @method \Respect\Validation\Validator prnt(string $additionalChars = null)
  * @method \Respect\Validation\Validator punct(string $additionalChars = null)
