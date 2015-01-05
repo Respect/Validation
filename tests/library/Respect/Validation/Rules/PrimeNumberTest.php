@@ -35,7 +35,7 @@ class PrimeNumberTest extends \PHPUnit_Framework_TestCase
     public function providerForPrimeNumber()
     {
         return array(
-            array(''),
+            array(2),
             array(3),
             array(5),
             array(7),
