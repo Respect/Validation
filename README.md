@@ -19,6 +19,29 @@ Installation
 
 Packages available on [PEAR](http://respect.li/pear) and [Composer](http://packagist.org/packages/Respect/Validation). Autoloading is [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md) compatible.
 
+Test
+----
+
+### Linux
+
+You can test the project using the commands:
+```sh
+$ cd <project folder>
+$ curl -sS https://getcomposer.org/installer | php
+$ composer.phar install
+$ vendor/bin/phpunit tests
+```
+
+### Windows
+
+You can test the project using the commands:
+```sh
+$ cd <project folder>
+$ curl -sS https://getcomposer.org/installer | php
+$ composer.phar install
+$ vendor\bin\phpunit tests
+```
+
 Feature Guide
 -------------
 
@@ -113,7 +136,7 @@ we use the `assert()` method instead of `validate()`:
 ```php
 try {
     $usernameValidator->assert('really messed up screen#name');
-} catch(\InvalidArgumentException $e) {
+} catch(DomainException $e) {
    echo $e->getFullMessage();
 }
 ```
@@ -222,8 +245,8 @@ Reference
 
   * [v::between()](#vbetweenstart-end)
   * [v::equals()](#vequalsvalue)
-  * [v::max()](#vmax)
-  * [v::min()](#vmin)
+  * [v::max()](#vmaxmax)
+  * [v::min()](#vminmin)
 
 ### Numeric
 
@@ -310,10 +333,12 @@ Reference
 
   * [v::tld()](#vtld)
   * [v::countryCode()](#vcountrycode)
+  * [v::postalCode()](#vpostalcode)
 
 ### Files
 
   * [v::directory()](#vdirectory)
+  * [v::executable()](#vexecutable)
   * [v::exists()](#vexists)
   * [v::file()](#vfile)
   * [v::readable()](#vreadable)
@@ -519,8 +544,8 @@ Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.
 See also:
 
   * [v::length()](#vlengthmin-max) - Validates the length of a input
-  * [v::min()](#vmin)
-  * [v::max()](#vmax)
+  * [v::min()](#vminmin)
+  * [v::max()](#vmaxmax)
 
 #### v::bool()
 
@@ -834,9 +859,9 @@ v::domain(false)->validate('dev.machine.local');
 This is a composite validator, it validates several rules
 internally:
 
-  * If input is an IP address, it validates.
+  * If input is an IP address, it fails.
   * If input contains whitespace, it fails.
-  * If input not contains any dot, it fails.
+  * If input does not contain any dots, it fails.
   * If input has less than two parts, it fails.
   * Input must end with a top-level-domain to pass (if not skipped).
   * Each part must be alphanumeric and not start with an hyphen.
@@ -901,6 +926,19 @@ Validates an email address.
 ```php
 v::email()->validate('alexandre@gaigalas.net'); //true
 ```
+
+#### v::executable()
+
+Validates if a file is an executable.
+
+```php
+v::email()->executable('script.sh'); //true
+```
+
+See also
+
+  * [v::readable()](#vreadable)
+  * [v::writable()](#vwritable)
 
 #### v::exists()
 
@@ -1135,7 +1173,7 @@ v::ip(FILTER_FLAG_NO_PRIV_RANGE)->validate('127.0.0.1'); //false
 Validates if the given input is a valid JSON.
 
 ```php
-v::json->validate('{"foo":"bar"}'); //true
+v::json()->validate('{"foo":"bar"}'); //true
 ```
 
 #### v::key($name)
@@ -1204,7 +1242,7 @@ See also:
 #### v::length($min, $max)
 #### v::length($min, null)
 #### v::length(null, $max)
-#### v::length($min, $max, boolean $inclusive=false)
+#### v::length($min, $max, boolean $inclusive=true)
 
 Validates lengths. Most simple example:
 
@@ -1261,15 +1299,18 @@ Validates a Mac Address.
 
 ```php
 v::macAddress()->validate('00:11:22:33:44:55'); //true
+v::macAddress()->validate('af-AA-22-33-44-55'); //true
 ```
 
-#### v::max()
-#### v::max(boolean $inclusive=false)
+#### v::max($max)
+#### v::max($max, boolean $inclusive=false)
 
 Validates if the input doesn't exceed the maximum value.
 
 ```php
 v::int()->max(15)->validate(20); //false
+v::int()->max(20)->validate(20); //false
+v::int()->max(20, true)->validate(20); //true
 ```
 
 Also accepts dates:
@@ -1285,16 +1326,18 @@ Message template for this validator includes `{{maxValue}}`.
 
 See also:
 
-  * [v::min()](#vmin)
+  * [v::min()](#vminmin)
   * [v::between()](#vbetweenstart-end)
 
-#### v::min()
-#### v::min(boolean $inclusive=false)
+#### v::min($min)
+#### v::min($min, boolean $inclusive=false)
 
-Validates if the input doesn't exceed the minimum value.
+Validates if the input is greater than the minimum value.
 
 ```php
 v::int()->min(15)->validate(5); //false
+v::int()->min(5)->validate(5); //false
+v::int()->min(5, true)->validate(5); //true
 ```
 
 Also accepts dates:
@@ -1310,7 +1353,7 @@ Message template for this validator includes `{{minValue}}`.
 
 See also:
 
-  * [v::max()](#vmax)
+  * [v::max()](#vmaxmax)
   * [v::between()](#vbetweenstart-end)
 
 #### v::minimumAge($age)
@@ -1581,6 +1624,22 @@ See also:
 
   * [v::negative()](#vnegative)
 
+#### v::postalCode($countryCode)
+
+Validates a postal code according to the given country code.
+
+```php
+v::numeric()->postalCode('BR')->validate('02179000'); //true
+v::numeric()->postalCode('BR')->validate('02179-000'); //true
+v::numeric()->postalCode('US')->validate('02179-000'); //false
+```
+
+Extracted from [GeoNames](http://www.geonames.org/).
+
+See also:
+
+  * [v::countryCode()](#vcountrycode)
+
 #### v::primeNumber()
 
 Validates a prime number
@@ -1688,7 +1747,7 @@ See also:
 #### v::startsWith($value, boolean $identical=false)
 
 This validator is similar to `v::contains()`, but validates
-only if the value is at the end of the.
+only if the value is at the beginning of the input.
 
 For strings:
 
