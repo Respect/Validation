@@ -15,8 +15,8 @@ class HexRgbColor extends AbstractRule
             $input = '#' . $input;
         }
         
-        return v::xdigit()->validate(mb_substr($input, 1))
-                        && hexdec(mb_substr($input, 1)) < 16777216;
+        return v::xdigit()->validate(substr($input, 1))
+                        && hexdec(substr($input, 1)) < 16777216;
     }
 }
 
