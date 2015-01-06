@@ -353,6 +353,7 @@ Reference
   * [v::cpf()](#vcpf)
   * [v::domain()](#vdomain)
   * [v::email()](#vemail)
+  * [v::hexRgbColor()](#vhexrgbcolor)
   * [v::ip()](#vip)
   * [v::json()](#vjson)
   * [v::macAddress()](#vmacaddress)
@@ -1079,6 +1080,20 @@ v::hexa()->validate('AF12'); //true
 See also:
 
   * [v::xdigit()](#vxdigit)
+  
+#### v::hexRgbColor()
+
+Validates a hex RGB color
+
+```php
+v::hexRgbColor()->validate('#FFFAAA'); //true
+v::hexRgbColor()->validate('123123'); //true
+v::hexRgbColor()->validate('FCD'); //true
+```
+
+See also:
+
+  * [v::vxdigit()](#vxdigit)
 
 #### v::in($haystack)
 #### v::in($haystack, boolean $identical=false)
@@ -1883,6 +1898,7 @@ See also:
 
   * [v::digit()](#vdigit)
   * [v::alnum()](#valnum)
+  * [v::hexRgbColor()](#vhexrgbcolor)
 
 #### v::writable()
 

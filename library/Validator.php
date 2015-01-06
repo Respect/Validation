@@ -42,6 +42,7 @@ use Respect\Validation\Rules\AllOf;
  * @method static \Respect\Validation\Validator file()
  * @method static \Respect\Validation\Validator float()
  * @method static \Respect\Validation\Validator graph(string $additionalChars = null)
+ * @method static \Respect\Validation\Validator hexRgbColor()
  * @method static \Respect\Validation\Validator in(array $haystack, bool $compareIdentical = false)
  * @method static \Respect\Validation\Validator instance(string $instanceName)
  * @method static \Respect\Validation\Validator int()
