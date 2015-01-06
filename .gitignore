@@ -1,4 +1,2 @@
-*.phar
-.foundation
-tests/reports
+Makefile
 vendor/
