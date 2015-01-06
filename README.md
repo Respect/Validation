@@ -17,7 +17,12 @@ Respect\Validation
 Installation
 ------------
 
-Packages available on [PEAR](http://respect.li/pear) and [Composer](http://packagist.org/packages/Respect/Validation). Autoloading is [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md) compatible.
+The package is available on [Packagist](http://packagist.org/packages/respect/validation).
+Autoloading is [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md) compatible.
+
+```shell
+composer require respect/validation
+```
 
 Test
 ----
