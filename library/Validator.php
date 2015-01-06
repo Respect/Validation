@@ -59,6 +59,7 @@ use Respect\Validation\Rules\AllOf;
  * @method static \Respect\Validation\Validator minimumAge(int $age)
  * @method static \Respect\Validation\Validator multiple(int $multipleOf)
  * @method static \Respect\Validation\Validator negative()
+ * @method static \Respect\Validation\Validator no($useLocale = false)
  * @method static \Respect\Validation\Validator noneOf()
  * @method static \Respect\Validation\Validator not(Validatable $rule)
  * @method static \Respect\Validation\Validator notEmpty()
@@ -92,6 +93,7 @@ use Respect\Validation\Rules\AllOf;
  * @method static \Respect\Validation\Validator when(Validatable $if, Validatable $then, Validatable $when)
  * @method static \Respect\Validation\Validator writable()
  * @method static \Respect\Validation\Validator xdigit(string $additionalChars = null)
+ * @method static \Respect\Validation\Validator yes($useLocale = false)
  * @method static \Respect\Validation\Validator zend(mixed $validator, array $params = null)
  */
 class Validator extends AllOf

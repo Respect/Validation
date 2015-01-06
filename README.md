@@ -362,6 +362,11 @@ Reference
   * [v::zend()](#vzendzendvalidator)
   * [v::nfeAccessKey()](#vnfeaccesskey)
 
+### Yes/No
+
+  * [v::yes()](#vyesuselocale--false)
+  * [v::no()](#vnouselocale--false)
+
 ### Alphabetically
 
 #### v::allOf($v1, $v2, $v3...)
@@ -1396,6 +1401,27 @@ See also:
 
   * [v::positive()](#vpositive)
 
+#### v::no($useLocale = false)
+
+Validates if value is considered as "No".
+
+```php
+v::no()->validate('N'); //true
+v::no()->validate('Nay'); //true
+v::no()->validate('Nix'); //true
+v::no()->validate('No'); //true
+v::no()->validate('Nope'); //true
+v::no()->validate('Not'); //true
+```
+
+This rule is case insensitive.
+
+If `$useLocale` is TRUE, uses the value of [nl_langinfo()](http://php.net/nl_langinfo) with `NOEXPR` constant.
+
+See also:
+
+  * [v::yes()](#vyesuselocale--false)
+
 #### v::noWhitespace()
 
 Validates if a string contains no whitespace (spaces, tabs and line breaks);
@@ -1899,6 +1925,26 @@ See also:
   * [v::digit()](#vdigit)
   * [v::alnum()](#valnum)
   * [v::hexRgbColor()](#vhexrgbcolor)
+
+#### v::yes($useLocale = false)
+
+Validates if value is considered as "Yes".
+
+```php
+v::yes()->validate('Y');//true
+v::yes()->validate('Yea');//true
+v::yes()->validate('Yeah');//true
+v::yes()->validate('Yep');//true
+v::yes()->validate('Yes');//true
+```
+
+This rule is case insensitive.
+
+If `$useLocale` is TRUE, uses the value of [nl_langinfo()](http://php.net/nl_langinfo) with `YESEXPR` constant.
+
+See also:
+
+  * [v::no()](#vnouselocale--false)
 
 #### v::writable()
 
