@@ -328,11 +328,11 @@ Reference
   * [v::cpf()](#vcpf)
   * [v::domain()](#vdomain)
   * [v::email()](#vemail)
+  * [v::hexRgbColor()](#vhexrgbcolor)
   * [v::ip()](#vip)
   * [v::json()](#vjson)
   * [v::macAddress()](#vmacaddress)
   * [v::phone()](#vphone)
-  * [v::RGBColor()](#vrgbcolor)
   * [v::sf()](#vsfsfvalidator)
   * [v::zend()](#vzendzendvalidator)
   * [v::nfeAccessKey()](#vnfeaccesskey)
@@ -1042,6 +1042,19 @@ v::hexa()->validate('AF12'); //true
 See also:
 
   * [v::xdigit()](#vxdigit)
+  
+#### v::hexRgbColor()
+
+Validates a hex RGB color
+
+```php
+v::hexRgbColor()->validate('#FFFAAA'); //true
+v::hexRgbColor()->validate('123123'); //true
+```
+
+See also:
+
+  * [v::vxdigit()](#vxdigit)
 
 #### v::in($haystack)
 #### v::in($haystack, boolean $identical=false)
@@ -1621,18 +1634,6 @@ v::regex('/[a-z]/')->validate('a'); //true
 
 Message template for this validator includes `{{regex}}`
 
-#### v::RGBColor()
-
-Validates a RGB color
-
-```php
-v::RGBColor()->validate('#FFFAAA'); //true
-```
-
-See also:
-
-  * [v::vxdigit()](#vxdigit)
-
 #### v::roman()
 
 Validates roman numbers
@@ -1837,7 +1838,7 @@ See also:
 
   * [v::digit()](#vdigit)
   * [v::alnum()](#valnum)
-  * [v::RGBColor()](#vrgbcolor)
+  * [v::hexRgbColor()](#vhexrgbcolor)
 
 #### v::writable()
 
