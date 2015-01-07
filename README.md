@@ -24,29 +24,6 @@ Autoloading is [PSR-4](https://github.com/php-fig/fig-standards/blob/master/acce
 composer require respect/validation
 ```
 
-Test
-----
-
-### Linux
-
-You can test the project using the commands:
-```sh
-$ cd <project folder>
-$ curl -sS https://getcomposer.org/installer | php
-$ composer.phar install
-$ vendor/bin/phpunit tests
-```
-
-### Windows
-
-You can test the project using the commands:
-```sh
-$ cd <project folder>
-$ curl -sS https://getcomposer.org/installer | php
-$ composer.phar install
-$ vendor\bin\phpunit tests
-```
-
 Feature Guide
 -------------
 
