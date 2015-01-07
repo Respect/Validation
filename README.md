@@ -1,12 +1,12 @@
 Respect\Validation
 ==================
 
-[![Build Status](https://secure.travis-ci.org/Respect/Validation.png)](http://travis-ci.org/Respect/Validation)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Respect/Validation/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Respect/Validation/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/Respect/Validation/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Respect/Validation/?branch=master)
-[![Latest Stable Version](https://poser.pugx.org/respect/validation/v/stable.png)](https://packagist.org/packages/respect/validation)
-[![Total Downloads](https://poser.pugx.org/respect/validation/downloads.png)](https://packagist.org/packages/respect/validation)
-[![License](https://poser.pugx.org/respect/validation/license.png)](https://packagist.org/packages/respect/validation)
+[![Build Status](https://img.shields.io/travis/Respect/Validation.svg?style=flat-square)](http://travis-ci.org/Respect/Validation)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/Respect/Validation.svg?style=flat-square)](https://scrutinizer-ci.com/g/Respect/Validation/?branch=master)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/Respect/Validation.svg?style=flat-square)](https://scrutinizer-ci.com/g/Respect/Validation/?branch=master)
+[![Latest Stable Version](https://img.shields.io/packagist/v/respect/validation.svg?style=flat-square&label=stable)](https://packagist.org/packages/respect/validation)
+[![Total Downloads](https://img.shields.io/packagist/dt/respect/validation.svg?style=flat-square)](https://packagist.org/packages/respect/validation)
+[![License](https://img.shields.io/packagist/l/respect/validation.svg?style=flat-square)](https://packagist.org/packages/respect/validation)
 
 [The most awesome validation engine ever created for PHP.](http://bit.ly/1a1oeQv)
 
@@ -17,29 +17,11 @@ Respect\Validation
 Installation
 ------------
 
-Packages available on [PEAR](http://respect.li/pear) and [Composer](http://packagist.org/packages/Respect/Validation). Autoloading is [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md) compatible.
+The package is available on [Packagist](http://packagist.org/packages/respect/validation).
+Autoloading is [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md) compatible.
 
-Test
-----
-
-### Linux
-
-You can test the project using the commands:
-```sh
-$ cd <project folder>
-$ curl -sS https://getcomposer.org/installer | php
-$ composer.phar install
-$ vendor/bin/phpunit tests
-```
-
-### Windows
-
-You can test the project using the commands:
-```sh
-$ cd <project folder>
-$ curl -sS https://getcomposer.org/installer | php
-$ composer.phar install
-$ vendor\bin\phpunit tests
+```shell
+composer require respect/validation
 ```
 
 Feature Guide

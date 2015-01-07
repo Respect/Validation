@@ -18,10 +18,9 @@ cache:
 
 before_script:
   - composer install --dev --no-interaction --prefer-source
-  - phpenv rehash
 
 script:
-  - vendor/bin/phpunit --configuration tests/phpunit.xml --coverage-clover=coverage.clover --testdox tests/
+  - vendor/bin/phpunit --configuration phpunit.xml.dist --colors --coverage-clover=coverage.clover
 
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar

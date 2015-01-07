@@ -113,8 +113,23 @@ and will natively have support for chaining and everything else.
 
 ## Running Tests
 
-Make sure you have PHPUnit installed. Instructions can be found on http://phpunit.de.
-Then, go to the `tests` folder on your terminal and type `phpunit .`. No test should fail.
+After run `composer install` on the library's root directory you must run PHPUnit.
+
+### Linux
+
+You can test the project using the commands:
+```sh
+$ vendor/bin/phpunit
+```
+
+### Windows
+
+You can test the project using the commands:
+```sh
+$ vendor\bin\phpunit
+```
+
+No test should fail.
 
 ## Sending your code to us
 
