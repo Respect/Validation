@@ -9,7 +9,6 @@ class SfException extends ValidationException
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => '{{name}}',
-        )
+        ),
     );
 }
-

@@ -8,4 +8,3 @@ class Punct extends AbstractCtypeRule
         return ctype_punct($input);
     }
 }
-

@@ -13,7 +13,7 @@ class MinException extends ValidationException
         self::MODE_NEGATIVE => array(
             self::STANDARD => '{{name}} must not be greater than {{minValue}}',
             self::INCLUSIVE => '{{name}} must not be greater than or equals {{minValue}}',
-        )
+        ),
     );
 
     public function chooseTemplate()
@@ -21,4 +21,3 @@ class MinException extends ValidationException
         return $this->getParam('inclusive') ? static::INCLUSIVE : static::STANDARD;
     }
 }
-

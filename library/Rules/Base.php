@@ -8,7 +8,7 @@ class Base extends AbstractRule
     public $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     public $base;
 
-    public function __construct($base=null, $chars=null)
+    public function __construct($base = null, $chars = null)
     {
         if (!is_null($chars)) {
             $this->chars = $chars;
@@ -28,4 +28,3 @@ class Base extends AbstractRule
         return (boolean) preg_match("@^[$valid]+$@", (string) $input);
     }
 }
-

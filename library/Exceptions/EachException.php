@@ -9,7 +9,6 @@ class EachException extends AbstractNestedException
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => 'Each item in {{name}} must not validate',
-        )
+        ),
     );
 }
-

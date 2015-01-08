@@ -8,4 +8,3 @@ class NoWhitespace extends AbstractRule
         return is_null($input) || !preg_match('#\s#', $input);
     }
 }
-

@@ -6,13 +6,13 @@ class In extends AbstractRule
     public $haystack;
     public $compareIdentical;
 
-    public function __construct($haystack, $compareIdentical=false)
+    public function __construct($haystack, $compareIdentical = false)
     {
         $this->haystack = $haystack;
         $this->compareIdentical = $compareIdentical;
     }
 
-    public function reportError($input, array $extraParams=array())
+    public function reportError($input, array $extraParams = array())
     {
         return parent::reportError($input, $extraParams);
     }
@@ -36,4 +36,3 @@ class In extends AbstractRule
         return mb_stripos($this->haystack, $input, 0, $enc) !== false;
     }
 }
-

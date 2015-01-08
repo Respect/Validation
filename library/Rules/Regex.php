@@ -15,4 +15,3 @@ class Regex extends AbstractRule
         return (bool) preg_match($this->regex, $input);
     }
 }
-

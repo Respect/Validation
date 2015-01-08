@@ -6,13 +6,13 @@ class Equals extends AbstractRule
     public $compareIdentical = false;
     public $compareTo = null;
 
-    public function __construct($compareTo, $compareIdentical=false)
+    public function __construct($compareTo, $compareIdentical = false)
     {
         $this->compareTo = $compareTo;
         $this->compareIdentical = $compareIdentical;
     }
 
-    public function reportError($input, array $extraParams=array())
+    public function reportError($input, array $extraParams = array())
     {
         return parent::reportError($input, $extraParams);
     }
@@ -26,4 +26,3 @@ class Equals extends AbstractRule
         }
     }
 }
-

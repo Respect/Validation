@@ -10,4 +10,3 @@ abstract class AbstractRegexRule extends AbstractFilterRule
         return preg_match($this->getPregFormat(), $input);
     }
 }
-

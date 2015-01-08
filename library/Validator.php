@@ -98,30 +98,27 @@ use Respect\Validation\Rules\AllOf;
  */
 class Validator extends AllOf
 {
-
     public static function __callStatic($ruleName, $arguments)
     {
         if ('allOf' === $ruleName) {
             return static::buildRule($ruleName, $arguments);
         }
 
-        $validator = new static;
+        $validator = new static();
 
         return $validator->__call($ruleName, $arguments);
     }
 
-    public static function buildRule($ruleSpec, $arguments=array())
+    public static function buildRule($ruleSpec, $arguments = array())
     {
         if ($ruleSpec instanceof Validatable) {
             return $ruleSpec;
         }
 
         try {
-            $validatorFqn = 'Respect\\Validation\\Rules\\' . ucfirst($ruleSpec);
+            $validatorFqn = 'Respect\\Validation\\Rules\\'.ucfirst($ruleSpec);
             $validatorClass = new ReflectionClass($validatorFqn);
-            $validatorInstance = $validatorClass->newInstanceArgs(
-                    $arguments
-            );
+            $validatorInstance = $validatorClass->newInstanceArgs($arguments);
 
             return $validatorInstance;
         } catch (ReflectionException $e) {
@@ -143,13 +140,15 @@ class Validator extends AllOf
         return $this->addRule(static::buildRule($method, $arguments));
     }
 
-    public function reportError($input, array $extraParams=array())
+    public function reportError($input, array $extraParams = array())
     {
-        $exception = new AllOfException;
+        $exception = new AllOfException();
         $input = AllOfException::stringify($input);
-        $name = $this->getName() ? : "\"$input\"";
+        $name = $this->getName() ?: "\"$input\"";
         $params = array_merge(
-            $extraParams, get_object_vars($this), get_class_vars(__CLASS__)
+            $extraParams,
+            get_object_vars($this),
+            get_class_vars(__CLASS__)
         );
         $exception->configure($name, $params);
         if (!is_null($this->template)) {
@@ -172,4 +171,3 @@ class Validator extends AllOf
         return $ref->newInstanceArgs(func_get_args());
     }
 }
-

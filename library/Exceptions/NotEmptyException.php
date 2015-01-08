@@ -13,7 +13,7 @@ class NotEmptyException extends ValidationException
         self::MODE_NEGATIVE => array(
             self::STANDARD => 'The value must be empty',
             self::NAMED => '{{name}} must be empty',
-        )
+        ),
     );
 
     public function chooseTemplate()
@@ -21,4 +21,3 @@ class NotEmptyException extends ValidationException
         return $this->getName() == "" ? static::STANDARD : static::NAMED;
     }
 }
-

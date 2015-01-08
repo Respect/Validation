@@ -13,4 +13,3 @@ class Digit extends AbstractCtypeRule
         return ctype_digit($input);
     }
 }
-

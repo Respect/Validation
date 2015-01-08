@@ -6,7 +6,7 @@ class StartsWith extends AbstractRule
     public $startValue;
     public $identical;
 
-    public function __construct($startValue, $identical=false)
+    public function __construct($startValue, $identical = false)
     {
         $this->startValue = $startValue;
         $this->identical = $identical;
@@ -39,4 +39,3 @@ class StartsWith extends AbstractRule
         return 0 === mb_strpos($input, $this->startValue, 0, mb_detect_encoding($input));
     }
 }
-

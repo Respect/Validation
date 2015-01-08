@@ -20,4 +20,3 @@ class Slug extends AbstractRule
         return true;
     }
 }
-

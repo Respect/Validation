@@ -3,7 +3,6 @@ namespace Respect\Validation\Rules;
 
 use Countable;
 use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Rules\AbstractRule;
 
 class Length extends AbstractRule
 {
@@ -11,12 +10,12 @@ class Length extends AbstractRule
     public $maxValue;
     public $inclusive;
 
-    public function __construct($min=null, $max=null, $inclusive=true)
+    public function __construct($min = null, $max = null, $inclusive = true)
     {
         $this->minValue = $min;
         $this->maxValue = $max;
         $this->inclusive = $inclusive;
-        $paramValidator = new OneOf(new Numeric, new NullValue);
+        $paramValidator = new OneOf(new Numeric(), new NullValue());
         if (!$paramValidator->validate($min)) {
             throw new ComponentException(
                 sprintf('%s is not a valid numeric length', $min)
@@ -82,4 +81,3 @@ class Length extends AbstractRule
         return $length < $this->maxValue;
     }
 }
-

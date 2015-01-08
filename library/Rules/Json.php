@@ -8,4 +8,3 @@ class Json extends AbstractRule
         return (bool) (json_decode($input));
     }
 }
-

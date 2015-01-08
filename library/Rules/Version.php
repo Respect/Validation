@@ -13,4 +13,3 @@ class Version extends AbstractRule
         return (bool) preg_match($pattern, $input);
     }
 }
-

@@ -28,4 +28,3 @@ class Cnpj extends AbstractRule
         return true;
     }
 }
-

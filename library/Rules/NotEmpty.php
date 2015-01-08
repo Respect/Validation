@@ -12,4 +12,3 @@ class NotEmpty extends AbstractRule
         return !empty($input);
     }
 }
-

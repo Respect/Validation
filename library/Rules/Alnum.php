@@ -13,4 +13,3 @@ class Alnum extends AbstractCtypeRule
         return ctype_alnum($input);
     }
 }
-

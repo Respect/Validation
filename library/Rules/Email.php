@@ -8,4 +8,3 @@ class Email extends AbstractRule
         return is_string($input) && filter_var($input, FILTER_VALIDATE_EMAIL);
     }
 }
-

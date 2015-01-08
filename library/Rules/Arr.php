@@ -14,4 +14,3 @@ class Arr extends AbstractRule
             && $input instanceof Countable);
     }
 }
-

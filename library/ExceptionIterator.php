@@ -28,4 +28,3 @@ class ExceptionIterator extends RecursiveArrayIterator
         return new static($this->current()->getRelated($this->fullRelated), $this->fullRelated);
     }
 }
-

@@ -8,7 +8,7 @@ class PrimeNumber extends AbstractRule
         if (is_numeric($input) && $input > 0) {
             $cont = 0;
 
-            for ($i=1; $i<=$input; $i++) {
+            for ($i = 1; $i <= $input; $i++) {
                 if (($input % $i) == 0) {
                     $cont = $cont + 1;
                 }
@@ -19,7 +19,6 @@ class PrimeNumber extends AbstractRule
             } else {
                 $input = 0;
             }
-
         } else {
             $input = 0;
         }
@@ -27,4 +26,3 @@ class PrimeNumber extends AbstractRule
         return (boolean) $input;
     }
 }
-

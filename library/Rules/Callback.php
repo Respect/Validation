@@ -29,4 +29,3 @@ class Callback extends AbstractRule
         return (bool) call_user_func_array($this->callback, $params);
     }
 }
-

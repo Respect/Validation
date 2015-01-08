@@ -8,4 +8,3 @@ class Odd extends AbstractRule
         return ((int) $input % 2 !== 0);
     }
 }
-

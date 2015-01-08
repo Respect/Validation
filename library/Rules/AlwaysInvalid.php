@@ -8,4 +8,3 @@ class AlwaysInvalid extends AbstractRule
         return false;
     }
 }
-

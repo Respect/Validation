@@ -6,7 +6,7 @@ class EndsWith extends AbstractRule
     public $endValue;
     public $identical;
 
-    public function __construct($endValue, $identical=false)
+    public function __construct($endValue, $identical = false)
     {
         $this->endValue = $endValue;
         $this->identical = $identical;
@@ -27,7 +27,7 @@ class EndsWith extends AbstractRule
             return end($input) == $this->endValue;
         } else {
             return mb_strripos($input, $this->endValue, -1, $enc = mb_detect_encoding($input))
-            === mb_strlen($input, $enc) - mb_strlen($this->endValue, $enc) ;
+            === mb_strlen($input, $enc) - mb_strlen($this->endValue, $enc);
         }
     }
 
@@ -41,4 +41,3 @@ class EndsWith extends AbstractRule
         }
     }
 }
-

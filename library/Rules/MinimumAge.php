@@ -8,7 +8,7 @@ class MinimumAge extends AbstractRule
     public $age = null;
     public $format = null;
 
-    public function __construct($age, $format=null)
+    public function __construct($age, $format = null)
     {
         $this->age = $age;
         $this->format = $format;
@@ -33,4 +33,3 @@ class MinimumAge extends AbstractRule
         }
     }
 }
-

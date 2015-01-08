@@ -11,7 +11,6 @@ class KeyException extends AttributeException
         self::MODE_NEGATIVE => array(
             self::NOT_PRESENT => 'Key {{name}} must not be present',
             self::INVALID => 'Key {{name}} must not be valid',
-        )
+        ),
     );
 }
-

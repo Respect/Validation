@@ -9,7 +9,6 @@ class ContainsException extends ValidationException
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => '{{name}} must not contain the value "{{containsValue}}"',
-        )
+        ),
     );
 }
-

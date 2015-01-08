@@ -14,7 +14,7 @@ class EqualsException extends ValidationException
         self::MODE_NEGATIVE => array(
             self::EQUALS => '{{name}} must not be equals {{compareTo}}',
             self::IDENTICAL => '{{name}} must not be identical as {{compareTo}}',
-        )
+        ),
     );
 
     public function chooseTemplate()
@@ -22,4 +22,3 @@ class EqualsException extends ValidationException
         return $this->getParam('identical') ? static::IDENTICAL : static::EQUALS;
     }
 }
-

@@ -30,4 +30,3 @@ class Charset extends AbstractRule
         return in_array($detectedEncoding, $this->charset, true);
     }
 }
-

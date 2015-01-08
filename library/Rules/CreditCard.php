@@ -33,4 +33,3 @@ class CreditCard extends AbstractRule
         return ($sum % 10 == 0);
     }
 }
-

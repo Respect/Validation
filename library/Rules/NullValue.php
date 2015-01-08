@@ -8,4 +8,3 @@ class NullValue extends NotEmpty
         return is_null($input);
     }
 }
-

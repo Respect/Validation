@@ -8,4 +8,3 @@ class Graph extends AbstractCtypeRule
         return ctype_graph($input);
     }
 }
-

@@ -17,10 +17,10 @@ class BetweenException extends AbstractNestedException
             self::BOTH => '{{name}} must not be between {{minValue}} and {{maxValue}}',
             self::LOWER => '{{name}}  must not be greater than {{minValue}}',
             self::GREATER => '{{name}} must not be lower than {{maxValue}}',
-        )
+        ),
     );
 
-    public function configure($name, array $params=array())
+    public function configure($name, array $params = array())
     {
         $params['minValue'] = static::stringify($params['minValue']);
         $params['maxValue'] = static::stringify($params['maxValue']);
@@ -39,4 +39,3 @@ class BetweenException extends AbstractNestedException
         }
     }
 }
-

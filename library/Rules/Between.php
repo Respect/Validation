@@ -8,7 +8,7 @@ class Between extends AllOf
     public $minValue;
     public $maxValue;
 
-    public function __construct($min=null, $max=null, $inclusive=false)
+    public function __construct($min = null, $max = null, $inclusive = false)
     {
         $this->minValue = $min;
         $this->maxValue = $max;
@@ -25,4 +25,3 @@ class Between extends AllOf
         }
     }
 }
-

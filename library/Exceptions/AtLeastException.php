@@ -11,7 +11,6 @@ class AtLeastException extends AbstractGroupedException
         self::MODE_NEGATIVE => array(
             self::NONE => 'At least {{howMany}} of the {{failed}} required rules must not pass for {{name}}',
             self::SOME => 'At least {{howMany}} of the {{failed}} required rules must not pass for {{name}}, only {{passed}} passed.',
-        )
+        ),
     );
 }
-

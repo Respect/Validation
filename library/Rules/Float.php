@@ -8,4 +8,3 @@ class Float extends AbstractRule
         return is_float(filter_var($input, FILTER_VALIDATE_FLOAT));
     }
 }
-

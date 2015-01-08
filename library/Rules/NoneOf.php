@@ -21,9 +21,8 @@ class NoneOf extends AbstractComposite
             if ($rule->validate($input)) {
                 return false;
             }
-
         }
+
         return true;
     }
 }
-

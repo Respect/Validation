@@ -26,4 +26,3 @@ class LeapDate extends AbstractRule
         return $date->format('m-d') == '02-29';
     }
 }
-

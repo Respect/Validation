@@ -52,7 +52,7 @@ class AbstractNestedException extends ValidationException
         return $target;
     }
 
-    public function getIterator($full=false, $mode=self::ITERATE_ALL)
+    public function getIterator($full = false, $mode = self::ITERATE_ALL)
     {
         $exceptionIterator = new ExceptionIterator($this, $full);
 
@@ -74,7 +74,7 @@ class AbstractNestedException extends ValidationException
         return implode(PHP_EOL, $message);
     }
 
-    public function getRelated($full=false)
+    public function getRelated($full = false)
     {
         if (!$full && 1 === count($this->related)
             && current($this->related) instanceof AbstractNestedException) {
@@ -104,4 +104,3 @@ class AbstractNestedException extends ValidationException
         return $this;
     }
 }
-

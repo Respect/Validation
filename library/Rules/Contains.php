@@ -6,7 +6,7 @@ class Contains extends AbstractRule
     public $containsValue;
     public $identical;
 
-    public function __construct($containsValue, $identical=false)
+    public function __construct($containsValue, $identical = false)
     {
         $this->containsValue = $containsValue;
         $this->identical = $identical;
@@ -39,4 +39,3 @@ class Contains extends AbstractRule
         return false !== mb_strpos($input, $this->containsValue, 0, mb_detect_encoding($input));
     }
 }
-

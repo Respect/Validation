@@ -9,10 +9,11 @@ abstract class AbstractFilterRule extends AbstractRule
 
     abstract protected function validateClean($input);
 
-    public function __construct($additionalChars='')
+    public function __construct($additionalChars = '')
     {
-        if (!is_string($additionalChars))
+        if (!is_string($additionalChars)) {
             throw new ComponentException('Invalid list of additional characters to be loaded');
+        }
 
         $this->additionalChars .= $additionalChars;
     }
@@ -24,12 +25,12 @@ abstract class AbstractFilterRule extends AbstractRule
 
     public function validate($input)
     {
-        if (!is_scalar($input))
+        if (!is_scalar($input)) {
             return false;
+        }
 
         $cleanInput = $this->filter((string) $input);
 
         return $cleanInput === '' || $this->validateClean($cleanInput);
     }
 }
-

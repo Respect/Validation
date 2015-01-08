@@ -32,8 +32,9 @@ abstract class AbstractRule implements Validatable
 
     public function assert($input)
     {
-        if ($this->__invoke($input))
+        if ($this->__invoke($input)) {
             return true;
+        }
         throw $this->reportError($input);
     }
 
@@ -44,23 +45,29 @@ abstract class AbstractRule implements Validatable
 
     public function getName()
     {
-        if (empty($this->name))
+        if (empty($this->name)) {
             preg_replace('/.*\\\/', '', get_class($this));
+        }
+
         return $this->name;
     }
 
-    public function reportError($input, array $extraParams=array())
+    public function reportError($input, array $extraParams = array())
     {
         $exception = $this->createException();
         $input = ValidationException::stringify($input);
         $name = $this->name ?: "\"$input\"";
         $params = array_merge(
-            get_class_vars(__CLASS__), get_object_vars($this), $extraParams,
+            get_class_vars(__CLASS__),
+            get_object_vars($this),
+            $extraParams,
             compact('input')
         );
         $exception->configure($name, $params);
-        if (!is_null($this->template))
+        if (!is_null($this->template)) {
             $exception->setTemplate($this->template);
+        }
+
         return $exception;
     }
 
@@ -84,7 +91,6 @@ abstract class AbstractRule implements Validatable
         $exceptionFQN = str_replace('\\Rules\\', '\\Exceptions\\', $currentFQN);
         $exceptionFQN .= 'Exception';
 
-        return new $exceptionFQN;
+        return new $exceptionFQN();
     }
 }
-

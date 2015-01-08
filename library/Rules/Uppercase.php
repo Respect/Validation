@@ -8,4 +8,3 @@ class Uppercase extends AbstractRule
         return $input === mb_strtoupper($input, mb_detect_encoding($input));
     }
 }
-
