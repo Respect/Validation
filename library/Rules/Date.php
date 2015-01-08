@@ -7,7 +7,7 @@ class Date extends AbstractRule
 {
     public $format = null;
 
-    public function __construct($format=null)
+    public function __construct($format = null)
     {
         $this->format = $format;
     }
@@ -27,7 +27,7 @@ class Date extends AbstractRule
             'r'     =>  'D, d M Y H:i:s O',
         );
 
-        if ( in_array($this->format, array_keys($exceptionalFormats)) ) {
+        if (in_array($this->format, array_keys($exceptionalFormats))) {
             $this->format = $exceptionalFormats[ $this->format ];
         }
 
@@ -37,4 +37,3 @@ class Date extends AbstractRule
                && $input === date($this->format, $dateFromFormat->getTimestamp());
     }
 }
-

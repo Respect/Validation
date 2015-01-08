@@ -9,7 +9,6 @@ class AlwaysInvalidException extends ValidationException
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => '{{name}} is always valid',
-        )
+        ),
     );
 }
-

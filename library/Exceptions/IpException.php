@@ -14,19 +14,19 @@ class IpException extends ValidationException
         self::MODE_NEGATIVE => array(
             self::STANDARD => '{{name}} must not be an IP address',
             self::NETWORK_RANGE => '{{name}} must not be an IP address in the {{range}} range',
-        )
+        ),
     );
 
-    public function configure($name, array $params=array())
+    public function configure($name, array $params = array())
     {
         if ($params['networkRange']) {
             $range = $params['networkRange'];
             $message = $range['min'];
 
             if (isset($range['max'])) {
-                $message .= '-' . $range['max'];
+                $message .= '-'.$range['max'];
             } else {
-                $message .= '/' . long2ip($range['mask']);
+                $message .= '/'.long2ip($range['mask']);
             }
 
             $params['range'] = $message;
@@ -44,4 +44,3 @@ class IpException extends ValidationException
         }
     }
 }
-

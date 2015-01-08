@@ -43,4 +43,3 @@ class When extends AbstractRule
         }
     }
 }
-

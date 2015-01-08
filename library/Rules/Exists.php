@@ -4,7 +4,6 @@ namespace Respect\Validation\Rules;
 
 class Exists extends AbstractRule
 {
-
     public function validate($input)
     {
         if ($input instanceof \SplFileInfo) {
@@ -13,6 +12,4 @@ class Exists extends AbstractRule
 
         return (is_string($input) && file_exists($input));
     }
-
 }
-

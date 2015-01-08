@@ -13,7 +13,7 @@ class MaxException extends ValidationException
         self::MODE_NEGATIVE => array(
             self::STANDARD => '{{name}} must not be lower than {{maxValue}}',
             self::INCLUSIVE => '{{name}} must not be lower than or equals {{maxValue}}',
-        )
+        ),
     );
 
     public function chooseTemplate()
@@ -21,4 +21,3 @@ class MaxException extends ValidationException
         return $this->getParam('inclusive') ? static::INCLUSIVE : static::STANDARD;
     }
 }
-

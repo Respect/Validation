@@ -10,7 +10,7 @@ class Instance extends AbstractRule
         $this->instanceName = $instanceName;
     }
 
-    public function reportError($input, array $extraParams=array())
+    public function reportError($input, array $extraParams = array())
     {
         return parent::reportError($input, $extraParams);
     }
@@ -20,4 +20,3 @@ class Instance extends AbstractRule
         return $input instanceof $this->instanceName;
     }
 }
-

@@ -8,4 +8,3 @@ class Negative extends AbstractRule
         return $input < 0;
     }
 }
-

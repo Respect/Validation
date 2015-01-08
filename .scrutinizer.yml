@@ -10,6 +10,9 @@ tools:
     external_code_coverage: true
     php_analyzer: true
     php_changetracking: true
+    php_code_sniffer:
+        config:
+            standard: "PSR2"
     php_cpd: true
     php_mess_detector: true
     php_pdepend: true

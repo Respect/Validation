@@ -4,7 +4,6 @@ namespace Respect\Validation\Rules;
 
 class Uploaded extends AbstractRule
 {
-
     public function validate($input)
     {
         if ($input instanceof \SplFileInfo) {
@@ -13,6 +12,4 @@ class Uploaded extends AbstractRule
 
         return (is_string($input) && is_uploaded_file($input));
     }
-
 }
-

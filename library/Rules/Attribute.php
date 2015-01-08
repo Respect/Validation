@@ -7,7 +7,7 @@ use Respect\Validation\Validatable;
 
 class Attribute extends AbstractRelated
 {
-    public function __construct($reference, Validatable $validator=null, $mandatory=true)
+    public function __construct($reference, Validatable $validator = null, $mandatory = true)
     {
         if (!is_string($reference) || empty($reference)) {
             throw new ComponentException('Invalid attribute/property name');
@@ -29,4 +29,3 @@ class Attribute extends AbstractRelated
         return is_object($input) && property_exists($input, $this->reference);
     }
 }
-

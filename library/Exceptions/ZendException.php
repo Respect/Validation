@@ -9,7 +9,6 @@ class ZendException extends AbstractNestedException
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => '{{name}}',
-        )
+        ),
     );
 }
-

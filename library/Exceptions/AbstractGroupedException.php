@@ -13,7 +13,7 @@ class AbstractGroupedException extends AbstractNestedException
         self::MODE_NEGATIVE => array(
             self::NONE => 'None of there rules must pass for {{name}}',
             self::SOME => 'These rules must not pass for {{name}}',
-        )
+        ),
     );
 
     public function chooseTemplate()
@@ -40,11 +40,11 @@ class AbstractGroupedException extends AbstractNestedException
 
         if (!$isEmpty && $this->template != $parentTemplate) {
             return $this->template;
-        } if ($isEmpty && 1 === count($this->related)) {
+        }
+        if ($isEmpty && 1 === count($this->related)) {
             return current($this->related)->getTemplate();
         } else {
             return $parentTemplate;
         }
     }
 }
-

@@ -8,4 +8,3 @@ class Positive extends AbstractRule
         return $input > 0;
     }
 }
-

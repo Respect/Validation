@@ -8,4 +8,3 @@ class Prnt extends AbstractCtypeRule
         return ctype_print($input);
     }
 }
-

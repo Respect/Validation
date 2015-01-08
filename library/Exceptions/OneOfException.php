@@ -9,7 +9,6 @@ class OneOfException extends AbstractNestedException
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => 'At least one of these rules must not pass for {{name}}',
-        )
+        ),
     );
 }
-

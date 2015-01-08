@@ -8,4 +8,3 @@ class MacAddress extends AbstractRule
         return !empty($input) && preg_match('/^(([0-9a-fA-F]{2}-){5}|([0-9a-fA-F]{2}:){5})[0-9a-fA-F]{2}$/', $input);
     }
 }
-

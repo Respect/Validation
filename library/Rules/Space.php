@@ -8,4 +8,3 @@ class Space extends AbstractCtypeRule
         return ctype_space($input);
     }
 }
-

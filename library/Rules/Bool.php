@@ -8,4 +8,3 @@ class Bool extends AbstractRule
         return is_bool($input);
     }
 }
-

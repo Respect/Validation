@@ -8,4 +8,3 @@ class Object extends AbstractRule
         return is_object($input);
     }
 }
-

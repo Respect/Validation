@@ -6,8 +6,7 @@ class Hexa extends AbstractRule
     public function __construct()
     {
         parent::__construct();
-        trigger_error("Use xdigits instead.",
-            E_USER_DEPRECATED);
+        trigger_error("Use xdigits instead.", E_USER_DEPRECATED);
     }
 
     public function validate($input)
@@ -15,4 +14,3 @@ class Hexa extends AbstractRule
         return ctype_xdigit($input);
     }
 }
-

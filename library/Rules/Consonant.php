@@ -8,4 +8,3 @@ class Consonant extends AbstractRegexRule
         return '/^(\s|[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z])*$/';
     }
 }
-

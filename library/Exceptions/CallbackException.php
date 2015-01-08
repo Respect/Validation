@@ -9,7 +9,6 @@ class CallbackException extends AbstractNestedException
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => '{{name}} must not be valid',
-        )
+        ),
     );
 }
-

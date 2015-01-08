@@ -9,7 +9,6 @@ class NoneOfException extends AbstractNestedException
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => 'All of these rules must pass for {{name}}',
-        )
+        ),
     );
 }
-

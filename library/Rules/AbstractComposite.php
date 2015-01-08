@@ -29,7 +29,7 @@ abstract class AbstractComposite extends AbstractRule
         return parent::setName($name);
     }
 
-    public function addRule($validator, $arguments=array())
+    public function addRule($validator, $arguments = array())
     {
         if (!$validator instanceof Validatable) {
             $this->appendRule(Validator::buildRule($validator, $arguments));
@@ -79,7 +79,7 @@ abstract class AbstractComposite extends AbstractRule
 
         if (is_string($validator)) {
             foreach ($this->rules as $rule) {
-                if (get_class($rule) == __NAMESPACE__ . '\\' . $validator) {
+                if (get_class($rule) == __NAMESPACE__.'\\'.$validator) {
                     return true;
                 }
             }
@@ -112,4 +112,3 @@ abstract class AbstractComposite extends AbstractRule
         return $exceptions;
     }
 }
-

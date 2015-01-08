@@ -9,7 +9,6 @@ class MinimumAgeException extends ValidationException
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => 'The age must not be {{age}} years or more.',
-        )
+        ),
     );
 }
-

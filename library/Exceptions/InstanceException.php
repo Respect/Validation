@@ -9,7 +9,6 @@ class InstanceException extends ValidationException
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => '{{name}} must not be an instance of {{instanceName}}',
-        )
+        ),
     );
 }
-

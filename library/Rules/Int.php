@@ -8,4 +8,3 @@ class Int extends AbstractRule
         return is_numeric($input) && (int) $input == $input;
     }
 }
-

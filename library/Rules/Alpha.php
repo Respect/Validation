@@ -13,4 +13,3 @@ class Alpha extends AbstractCtypeRule
         return ctype_alpha($input);
     }
 }
-

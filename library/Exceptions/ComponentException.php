@@ -6,4 +6,3 @@ use Exception;
 class ComponentException extends Exception
 {
 }
-

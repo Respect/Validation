@@ -11,7 +11,6 @@ class AllOfException extends AbstractGroupedException
         self::MODE_NEGATIVE => array(
             self::NONE => 'None of these rules must pass for {{name}}',
             self::SOME => 'These rules must not pass for {{name}}',
-        )
+        ),
     );
 }
-

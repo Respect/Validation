@@ -13,7 +13,7 @@ class AttributeException extends AbstractNestedException
         self::MODE_NEGATIVE => array(
             self::NOT_PRESENT => 'Attribute {{name}} must not be present',
             self::INVALID => 'Attribute {{name}} must not validate',
-        )
+        ),
     );
 
     public function chooseTemplate()
@@ -21,4 +21,3 @@ class AttributeException extends AbstractNestedException
         return $this->getParam('hasReference') ? static::INVALID : static::NOT_PRESENT;
     }
 }
-

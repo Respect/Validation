@@ -17,10 +17,10 @@ class LengthException extends ValidationException
             self::BOTH => '{{name}} must not have a length between {{minValue}} and {{maxValue}}',
             self::LOWER => '{{name}} must not have a length greater than {{minValue}}',
             self::GREATER => '{{name}} must not have a length lower than {{maxValue}}',
-        )
+        ),
     );
 
-    public function configure($name, array $params=array())
+    public function configure($name, array $params = array())
     {
         $params['minValue'] = static::stringify($params['minValue']);
         $params['maxValue'] = static::stringify($params['maxValue']);
@@ -39,4 +39,3 @@ class LengthException extends ValidationException
         }
     }
 }
-

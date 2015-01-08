@@ -9,7 +9,7 @@ class Zend extends AbstractRule
     protected $messages = array();
     protected $zendValidator;
 
-    public function __construct($validator, $params=array())
+    public function __construct($validator, $params = array())
     {
         if (is_object($validator)) {
             return $this->zendValidator = $validator;
@@ -57,4 +57,3 @@ class Zend extends AbstractRule
         return $validator->isValid($input);
     }
 }
-

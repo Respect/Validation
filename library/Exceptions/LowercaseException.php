@@ -9,7 +9,6 @@ class LowercaseException extends ValidationException
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => '{{name}} must not be lowercase',
-        )
+        ),
     );
 }
-

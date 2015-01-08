@@ -8,4 +8,3 @@ class Xdigit extends AbstractCtypeRule
         return ctype_xdigit($input);
     }
 }
-

@@ -9,7 +9,6 @@ class EmailException extends ValidationException
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => '{{name}} must not be an email',
-        )
+        ),
     );
 }
-

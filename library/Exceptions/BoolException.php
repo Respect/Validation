@@ -9,7 +9,6 @@ class BoolException extends ValidationException
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => '{{name}} must not be a boolean',
-        )
+        ),
     );
 }
-

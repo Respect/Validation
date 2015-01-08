@@ -12,4 +12,3 @@ class Directory extends AbstractRule
         return (is_string($input) && is_dir($input));
     }
 }
-

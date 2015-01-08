@@ -8,4 +8,3 @@ class Numeric extends AbstractRule
         return is_numeric($input);
     }
 }
-

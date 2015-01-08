@@ -12,11 +12,11 @@ class ValidationException extends InvalidArgumentException
     const STANDARD = 0;
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
-            self::STANDARD => 'Data validation failed for %s'
+            self::STANDARD => 'Data validation failed for %s',
         ),
         self::MODE_NEGATIVE => array(
-            self::STANDARD => 'Data validation failed for %s'
-        )
+            self::STANDARD => 'Data validation failed for %s',
+        ),
     );
     protected $id = 'validation';
     protected $mode = self::MODE_DEFAULT;
@@ -24,11 +24,11 @@ class ValidationException extends InvalidArgumentException
     protected $template = '';
     protected $params = array();
 
-    public static function format($template, array $vars=array())
+    public static function format($template, array $vars = array())
     {
         return preg_replace_callback(
             '/{{(\w+)}}/',
-            function($match) use ($vars) {
+            function ($match) use ($vars) {
                 return isset($vars[$match[1]]) ? $vars[$match[1]] : $match[0];
             },
             $template
@@ -55,7 +55,7 @@ class ValidationException extends InvalidArgumentException
         } elseif ($value instanceof DateTime) {
             return $value->format('Y-m-d H:i:s');
         } else {
-            return "Object of class " . get_class($value);
+            return "Object of class ".get_class($value);
         }
     }
 
@@ -179,10 +179,15 @@ class ValidationException extends InvalidArgumentException
 
     protected function guessId()
     {
-        if (!empty($this->id) && $this->id != 'validation')
+        if (!empty($this->id) && $this->id != 'validation') {
             return $this->id;
-        return lcfirst(str_replace('Exception', '',
-            end((explode('\\', get_called_class())))));
+        }
+
+        $pieces = explode('\\', get_called_class());
+        $exceptionClassShortName = end($pieces);
+        $ruleClassShortName = str_replace('Exception', '', $exceptionClassShortName);
+        $ruleName = lcfirst($ruleClassShortName);
+
+        return $ruleName;
     }
 }
-

@@ -7,15 +7,14 @@ class Cnh extends AbstractRule
     {
         $ret = false;
 
-        if ((strlen($input = preg_replace('/[^\d]/', '', $input)) == 11 )
+        if ((strlen($input = preg_replace('/[^\d]/', '', $input)) == 11)
             && (str_repeat($input[1], 11) != $input)) {
-
             $dsc = 0;
-            for ($i = 0 , $j = 9, $v = 0; $i < 9; ++$i, --$j) {
+            for ($i = 0, $j = 9, $v = 0; $i < 9; ++$i, --$j) {
                 $v += (int) $input[$i] * $j;
             }
 
-            if (($vl1 = $v % 11) >= 10 ) {
+            if (($vl1 = $v % 11) >= 10) {
                 $vl1 = 0;
                 $dsc = 2;
             }
@@ -31,4 +30,3 @@ class Cnh extends AbstractRule
         return $ret;
     }
 }
-

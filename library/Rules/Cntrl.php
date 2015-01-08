@@ -8,4 +8,3 @@ class Cntrl extends AbstractCtypeRule
         return ctype_cntrl($input);
     }
 }
-

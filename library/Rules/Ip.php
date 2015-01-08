@@ -9,12 +9,12 @@ class Ip extends AbstractRule
 
     public $networkRange;
 
-    public function __construct($ipOptions=null)
+    public function __construct($ipOptions = null)
     {
         if (is_int($ipOptions)) {
             $this->ipOptions = $ipOptions;
 
-            return ;
+            return;
         }
 
         $this->networkRange = $this->parseRange($ipOptions);
@@ -24,7 +24,7 @@ class Ip extends AbstractRule
     {
         if ($input === null || $input == '*' || $input == '*.*.*.*'
             || $input == '0.0.0.0-255.255.255.255') {
-            return null;
+            return;
         }
 
         $range = array('min' => null, 'max' => null, 'mask' => null);
@@ -53,7 +53,7 @@ class Ip extends AbstractRule
     protected function fillAddress(&$input, $char = '*')
     {
         while (substr_count($input, '.') < 3) {
-            $input .= '.' . $char;
+            $input .= '.'.$char;
         }
     }
 
@@ -76,7 +76,7 @@ class Ip extends AbstractRule
         if ($isAddressMask && $this->verifyAddress($input[1])) {
             $range['mask'] = sprintf('%032b', ip2long($input[1]));
 
-            return ;
+            return;
         }
 
         if ($isAddressMask || $input[1] < 8 || $input[1] > 30) {
@@ -97,7 +97,7 @@ class Ip extends AbstractRule
             $address,
             FILTER_VALIDATE_IP,
             array(
-                'flags' => $this->ipOptions
+                'flags' => $this->ipOptions,
             )
         );
     }
@@ -127,4 +127,3 @@ class Ip extends AbstractRule
         return ($input & $range['mask']) === ($min & $range['mask']);
     }
 }
-

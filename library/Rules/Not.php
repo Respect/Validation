@@ -60,4 +60,3 @@ class Not extends AbstractRule
         return $clone;
     }
 }
-

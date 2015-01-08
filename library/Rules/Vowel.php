@@ -8,4 +8,3 @@ class Vowel extends AbstractRegexRule
         return '/^(\s|[aeiouAEIOU])*$/';
     }
 }
-

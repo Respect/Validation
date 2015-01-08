@@ -8,4 +8,3 @@ class String extends AbstractRule
         return is_string($input);
     }
 }
-

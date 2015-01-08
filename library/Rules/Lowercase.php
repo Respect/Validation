@@ -8,4 +8,3 @@ class Lowercase extends AbstractRule
         return $input === mb_strtolower($input, mb_detect_encoding($input));
     }
 }
-

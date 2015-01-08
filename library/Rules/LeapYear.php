@@ -22,4 +22,3 @@ class LeapYear extends AbstractRule
         return (bool) date('L', $date);
     }
 }
-

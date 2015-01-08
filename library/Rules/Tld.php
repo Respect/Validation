@@ -29,7 +29,7 @@ class Tld extends AbstractRule
         'sr', 'st', 'su', 'sv', 'sy', 'sz', 'tc', 'td', 'tf', 'tg', 'th', 'tj',
         'tk', 'tl', 'tm', 'tn', 'to', 'tp', 'tr', 'tt', 'tv', 'tw', 'tz', 'ua',
         'ug', 'uk', 'us', 'uy', 'uz', 'va', 'vc', 've', 'vg', 'vi', 'vn', 'vu',
-        'wf', 'ws', 'ye', 'yt', 'za', 'zm', 'zw'
+        'wf', 'ws', 'ye', 'yt', 'za', 'zm', 'zw',
     );
 
     public function validate($input)
@@ -37,4 +37,3 @@ class Tld extends AbstractRule
         return in_array(strtolower($input), $this->tldList);
     }
 }
-

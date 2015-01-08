@@ -6,7 +6,7 @@ use Respect\Validation\Validatable;
 
 class Key extends AbstractRelated
 {
-    public function __construct($reference, Validatable $referenceValidator=null, $mandatory=true)
+    public function __construct($reference, Validatable $referenceValidator = null, $mandatory = true)
     {
         if (!is_string($reference) || empty($reference)) {
             throw new ComponentException('Invalid array key name');
@@ -24,4 +24,3 @@ class Key extends AbstractRelated
         return is_array($input) && array_key_exists($this->reference, $input);
     }
 }
-
