@@ -46,7 +46,7 @@ abstract class AbstractRule implements Validatable
     public function getName()
     {
         if (empty($this->name)) {
-            preg_replace('/.*\\\/', '', get_class($this));
+            return null;
         }
 
         return $this->name;
