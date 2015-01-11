@@ -10,9 +10,10 @@ Respect\Validation
 
 [The most awesome validation engine ever created for PHP.](http://bit.ly/1a1oeQv)
 
-- Complex (custom) rules made simple: `v::numeric()->positive()->between(1, 256)->validate($myNumber)`.
-- Awesome (customizable, iterable) exceptions.
+- Complex rules made simple: `v::numeric()->positive()->between(1, 256)->validate($myNumber)`.
+- [Granularity control](https://github.com/Respect/Validation#validation-methods) for advanced reporting.
 - >80 (fully tested) validators.
+- [A concrete API](https://gist.github.com/alganet/b66bc8281672ca3d3b42) for non fluent usage.
 
 Installation
 ------------
