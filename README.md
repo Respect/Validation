@@ -329,6 +329,12 @@ Reference
   * [v::uploaded()](#vuploaded)
   * [v::writable()](#vwritable)
 
+### Banking
+
+ * [v::bank()](#vbankstring-countrycode)
+ * [v::bankAccount()](#vbankaccountstring-countrycode-string-bank)
+ * [v::bic()](#vbicstring-countrycode)
+
 ### Other
 
   * [v::cnh()](#vcnh)
@@ -493,6 +499,42 @@ See also:
 
   * [v::key()](#vkeyname) - Validates a specific key of an array
 
+#### v::bank(string $countryCode)
+
+Validates a bank.
+
+```php
+v::bank("de")->validate("70169464"); //true
+v::bank("de")->validate("12345"); //false
+```
+
+These country codes are supported:
+
+ * "de" (Germany) - This validator needs `malkusch/bav` as dependency.
+
+See also
+
+  * [v::bankAccount()](#vbankaccountstring-countrycode-string-bank)
+  * [v::bic()](#vbicstring-countrycode)
+
+#### v::bankAccount(string $countryCode, string $bank)
+
+Validates a bank account for a given bank.
+
+```php
+v::bankAccount("de", "70169464")->validate("1112"); //true
+v::bankAccount("de", "70169464")->validate("1234"); //false
+```
+
+These country codes are supported:
+
+ * "de" (Germany) - This validator needs `malkusch/bav` as dependency.
+
+See also
+
+  * [v::bank()](#vbankstring-countrycode)
+  * [v::bic()](#vbicstring-countrycode)
+
 #### v::between($start, $end)
 #### v::between($start, $end, boolean $inclusive=false)
 
@@ -534,6 +576,24 @@ See also:
   * [v::length()](#vlengthmin-max) - Validates the length of a input
   * [v::min()](#vminmin)
   * [v::max()](#vmaxmax)
+
+#### v::bic(string $countryCode)
+
+Validates a BIC (Bank Identifier Code) for a given country.
+
+```php
+v::bic("de")->validate("VZVDDED1XXX"); //true
+v::bic("de")->validate("VZVDDED1"); //true
+```
+
+Theses country codes are supported:
+
+ * "de" (Germany) - This validator needs `malkusch/bav` as dependency.
+
+See also
+
+  * [v::bank()](#vbankstring-countrycode)
+  * [v::bankAccount()](#vbankaccountstring-countrycode-string-bank)
 
 #### v::bool()
 
