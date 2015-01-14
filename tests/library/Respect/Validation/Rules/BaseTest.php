@@ -7,11 +7,6 @@ class BaseTest extends \PHPUnit_Framework_TestCase
 {
     protected $object;
 
-    protected function setUp()
-    {
-
-    }
-
     /**
      * @dataProvider providerForBase
      *
@@ -25,37 +20,12 @@ class BaseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerForBase
-     *
-     */
-    public function testBaseShortcut($base, $input)
-    {
-        $method = 'base' . $base;
-        $object = v::$method();
-
-        $this->assertTrue($object->__invoke($input));
-        $this->assertTrue($object->check($input));
-        $this->assertTrue($object->assert($input));
-    }
-
-    /**
      * @dataProvider providerForInvalidBase
      *
      */
     public function testInvalidBase($base, $input)
     {
         $object = new Base($base);
-        $this->assertFalse($object->__invoke($input));
-    }
-
-    /**
-     * @dataProvider providerForInvalidBase
-     *
-     */
-    public function testInvalidBaseShortcut($base, $input)
-    {
-        $method = 'base' . $base;
-        $object = v::$method();
         $this->assertFalse($object->__invoke($input));
     }
 
