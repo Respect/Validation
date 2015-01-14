@@ -76,8 +76,8 @@ class PrntTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(null),
-            array("foo\nbar"),
-            array("foo\tbar"),
+            array("foo" . chr(7) . "bar"),
+            array("foo" . chr(10) . "bar"),
         );
     }
 }
