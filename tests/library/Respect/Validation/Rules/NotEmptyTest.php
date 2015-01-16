@@ -23,7 +23,7 @@ class NotEmptyTest extends \PHPUnit_Framework_TestCase
      */
     public function testStringNotEmptyNoJuggle($input)
     {
-        $this->object = new NotEmpty(false);
+        $this->object = new NotEmpty(true);
         $this->assertTrue($this->object->assert($input));
     }
 
@@ -42,7 +42,7 @@ class NotEmptyTest extends \PHPUnit_Framework_TestCase
      */
     public function testStringEmptyNoJuggle($input)
     {
-        $this->object = new NotEmpty(false);
+        $this->object = new NotEmpty(true);
         $this->assertFalse($this->object->assert($input));
     }
 

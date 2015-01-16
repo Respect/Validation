@@ -4,11 +4,11 @@ namespace Respect\Validation\Rules;
 class NotEmpty extends AbstractRule
 {
     /** Wheter to juggle PHP types **/
-    public $jugglesTypes = true;
+    public $strict = false;
 
-    public function __construct($jugglesTypes = true)
+    public function __construct($strict = false)
     {
-        $this->jugglesTypes = $jugglesTypes;
+        $this->strict = $strict;
     }
 
     public function validate($input)
@@ -19,7 +19,7 @@ class NotEmpty extends AbstractRule
 
         $input = trim($input);
 
-        if ($this->jugglesTypes) {
+        if (!$this->strict) {
             return !empty($input);
         }
 
