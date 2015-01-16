@@ -72,7 +72,7 @@ use Respect\Validation\Rules\AllOf;
  * @method static Validator perfectSquare()
  * @method static Validator phone()
  * @method static Validator positive()
- * @method static Validator postalCode($countryCode)
+ * @method static Validator postalCode(string $countryCode)
  * @method static Validator primeNumber()
  * @method static Validator prnt(string $additionalChars = null)
  * @method static Validator punct(string $additionalChars = null)

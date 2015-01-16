@@ -315,7 +315,7 @@ Reference
 
   * [v::tld()](#vtld)
   * [v::countryCode()](#vcountrycode)
-  * [v::postalCode()](#vpostalcode)
+  * [v::postalCode()](#vpostalcodestring-countrycode)
 
 ### Files
 
@@ -1632,7 +1632,7 @@ See also:
 
   * [v::negative()](#vnegative)
 
-#### v::postalCode($countryCode)
+#### v::postalCode(string $countryCode)
 
 Validates a postal code according to the given country code.
 
