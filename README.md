@@ -1475,14 +1475,19 @@ See also:
 
   * [v::noneOf()](#vnoneofv1-v2-v3)
 
-#### v::notEmpty()
+#### v::notEmpty($jugglesTypes = true)
 
 Validates if the given input is not empty or in other words is input mandatory and
 required. This function also takes whitespace into account, use `noWhitespace()`
 if no spaces or linebreaks and other whitespace anywhere in the input is desired.
 
+
 ```php
 v::string()->notEmpty()->validate(''); //false
+v::string()->notEmpty()->validate('0'); //false
+
+// Disable type juggling
+v::string()->notEmpty(false)->validate('0'); //true
 ```
 
 Null values are empty:

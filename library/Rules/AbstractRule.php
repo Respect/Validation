@@ -18,8 +18,7 @@ abstract class AbstractRule implements Validatable
 
     public function __invoke($input)
     {
-        return !is_a($this, __NAMESPACE__.'\\NotEmpty')
-            && $input === '' || $this->validate($input);
+        return '' === $input || $this->validate($input);
     }
 
     public function addOr()

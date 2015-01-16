@@ -6,6 +6,7 @@ use ReflectionException;
 use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Rules\AllOf;
+use Respect\Validation\Rules\NotEmpty;
 
 /**
  * @method static Validator allOf()
@@ -113,6 +114,13 @@ class Validator extends AllOf
         $validator = new static();
 
         return $validator->__call($ruleName, $arguments);
+    }
+
+
+    public function __invoke($input)
+    {
+        return ( ! $this instanceof NotEmpty && $input === '' ) ||
+            $this->validate($input);
     }
 
     /**
