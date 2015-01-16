@@ -2,6 +2,7 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validatable;
+use Respect\Validation\Exceptions\AlwaysInvalidException;
 
 class When extends AbstractRule
 {
@@ -9,10 +10,15 @@ class When extends AbstractRule
     public $then;
     public $else;
 
-    public function __construct(Validatable $when, Validatable $then, Validatable $else)
+    public function __construct(Validatable $when, Validatable $then, Validatable $else = null)
     {
         $this->when = $when;
         $this->then = $then;
+        if (null === $else) {
+            $else = new AlwaysInvalid();
+            $else->setTemplate(AlwaysInvalidException::SIMPLE);
+        }
+
         $this->else = $else;
     }
 
