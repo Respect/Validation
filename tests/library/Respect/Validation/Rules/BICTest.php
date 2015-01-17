@@ -6,83 +6,105 @@ use malkusch\bav\DefaultConfiguration;
 use malkusch\bav\PDODataBackendContainer;
 
 /**
- * @large
+ * @covers Respect\Validation\Rules\BIC
  */
 class BICTest extends \PHPUnit_Framework_TestCase
 {
-    
+    protected static function isAvailable()
+    {
+        return class_exists('malkusch\\bav\\BAV');
+    }
+
+    protected function setUp()
+    {
+        if (false === self::isAvailable()) {
+            $this->markTestSkipped('"malkusch/bav" is not installed.');
+        }
+    }
+
     public static function setUpBeforeClass()
     {
+        if (false === self::isAvailable()) {
+            return;
+        }
+
         $configuration = new DefaultConfiguration();
-        
+
         $pdo = new \PDO('sqlite::memory:');
         $configuration->setDataBackendContainer(new PDODataBackendContainer($pdo));
-        
+
         ConfigurationRegistry::setConfiguration($configuration);
     }
-    
+
     public static function tearDownAfterClass()
     {
+        if (false === self::isAvailable()) {
+            return;
+        }
+
         ConfigurationRegistry::setConfiguration(new DefaultConfiguration());
     }
-            
+
     /**
      * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedExceptionMessage Cannot validate BIC for country 'xx'.
      */
     public function testUnsupportedCountryCodeRaisesException()
     {
-        $validator = new BIC("xx");
+        new BIC('xx');
     }
-    
+
     public function testCountryCodeIsCaseUnsensitive()
     {
-        $validator1 = new BIC("de");
-        $validator1->validate("foo");
-        
-        $validator2 = new BIC("DE");
-        $validator2->validate("foo");
+        $rule1 = new BIC('de');
+        $rule2 = new BIC('DE');
+
+        $this->assertSame($rule1->validate('foo'), $rule2->validate('foo'));
     }
-    
+
     /**
      * @dataProvider providerForValidBIC
      */
-    public function testValidBICShouldReturnTrue(BIC $validator, $bic)
+    public function testValidBICShouldReturnTrue($countryCode, $bic)
     {
-        $this->assertTrue($validator->__invoke($bic));
-        $this->assertTrue($validator->assert($bic));
-        $this->assertTrue($validator->check($bic));
+        $rule = new BIC($countryCode);
+
+        $this->assertTrue($rule->validate($bic));
     }
 
     /**
      * @dataProvider providerForNotBIC
      * @expectedException Respect\Validation\Exceptions\BICException
+     * @expectedExceptionMessageRegExp /^"[^"]+" must be a BIC$/
      */
-    public function testInvalidBICShouldRaiseException(BIC $validator, $bic)
+    public function testInvalidBICShouldRaiseException($countryCode, $bic)
     {
-        $this->assertFalse($validator->check($bic));
+        $rule = new BIC($countryCode);
+        $rule->check($bic);
     }
 
     /**
      * @dataProvider providerForNotBIC
      */
-    public function testInvalidBICShouldReturnFalse(BIC $validator, $bic)
+    public function testInvalidBICShouldReturnFalse($countryCode, $bic)
     {
-        $this->assertFalse($validator->__invoke($bic));
+        $rule = new BIC($countryCode);
+
+        $this->assertFalse($rule->validate($bic));
     }
-    
+
     public function providerForValidBIC()
     {
         return array(
-            array(new BIC("de"), "VZVDDED1XXX"),
-            array(new BIC("de"), "VZVDDED1")
+            array('de', 'VZVDDED1XXX'),
+            array('de', 'VZVDDED1'),
         );
     }
-    
+
     public function providerForNotBIC()
     {
         return array(
-            array(new BIC("de"), "VZVDDED1~~~")
+            array('de', 'VZVDDED1~~~'),
         );
     }
 }
-
