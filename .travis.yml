@@ -18,6 +18,9 @@ cache:
 
 before_script:
   - composer install --dev --no-interaction --prefer-source
+  - composer require --dev --no-interaction --prefer-source malkusch/bav=~1.0
+  - composer require --dev --no-interaction --prefer-source symfony/validator=~2.6
+  - composer require --dev --no-interaction --prefer-source zendframework/zend-validator=~2.3
 
 script:
   - vendor/bin/phpunit --configuration phpunit.xml.dist --colors --coverage-clover=coverage.clover
