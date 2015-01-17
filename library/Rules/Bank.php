@@ -15,7 +15,6 @@ use Respect\Validation\Exceptions\ComponentException;
  */
 class Bank extends Callback
 {
-    
     /**
      * Sets the country code.
      *
@@ -25,24 +24,16 @@ class Bank extends Callback
      */
     public function __construct($countryCode)
     {
-        $callback = null;
-
-        switch (strtolower($countryCode)) {
-            case "de":
-                $bav = new BAV();
-                $callback = function ($bank) use ($bav) {
-                    return $bav->isValidBank($bank);
-                };
+        $lowerCountryCode = strtolower($countryCode);
+        switch ($lowerCountryCode) {
+            case 'de':
+                $callback = array(new BAV(), 'isValidBank');
                 break;
-                
+
             default:
-                $message = sprintf(
-                    "Cannot validate bank for country '%s'.",
-                    $countryCode
-                );
-                throw new ComponentException($message);
+                throw new ComponentException(sprintf('Cannot validate bank for country "%s"', $countryCode));
         }
-        
+
         parent::__construct($callback);
     }
 }

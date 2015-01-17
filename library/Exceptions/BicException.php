@@ -1,7 +1,7 @@
 <?php
 namespace Respect\Validation\Exceptions;
 
-class BICException extends ValidationException
+class BicException extends ValidationException
 {
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(

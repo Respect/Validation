@@ -15,35 +15,29 @@ use Respect\Validation\Exceptions\ComponentException;
  */
 class BankAccount extends Callback
 {
-
     /**
      * Sets the country code and bank.
      *
      * The country code is not case sensitive.
      *
      * @param string $countryCode The ISO 639-1 country code.
-     * @param string $bank The bank.
+     * @param string $bank        The bank.
      */
     public function __construct($countryCode, $bank)
     {
-        $callback = null;
-
-        switch (strtolower($countryCode)) {
-            case "de":
+        $lowerCountryCode = strtolower($countryCode);
+        switch ($lowerCountryCode) {
+            case 'de':
                 $bav = new BAV();
                 $callback = function ($account) use ($bank, $bav) {
                     return $bav->isValidBankAccount($bank, $account);
                 };
                 break;
-                
+
             default:
-                $message = sprintf(
-                    "Cannot validate BIC for country '%s'.",
-                    $countryCode
-                );
-                throw new ComponentException($message);
+                throw new ComponentException(sprintf('Cannot validate bank account for country "%s"', $countryCode));
         }
-        
+
         parent::__construct($callback);
     }
 }
