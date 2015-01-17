@@ -15,6 +15,7 @@ class BankAccountTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedExceptionMessage Cannot validate bank account for country "xx"
      */
     public function testUnsupportedCountryCodeRaisesException()
     {

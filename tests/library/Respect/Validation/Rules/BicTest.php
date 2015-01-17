@@ -6,9 +6,9 @@ use malkusch\bav\DefaultConfiguration;
 use malkusch\bav\PDODataBackendContainer;
 
 /**
- * @covers Respect\Validation\Rules\BIC
+ * @covers Respect\Validation\Rules\Bic
  */
-class BICTest extends \PHPUnit_Framework_TestCase
+class BicTest extends \PHPUnit_Framework_TestCase
 {
     protected static function isAvailable()
     {
@@ -47,17 +47,17 @@ class BICTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage Cannot validate BIC for country 'xx'.
+     * @expectedExceptionMessage Cannot validate BIC for country "xx"
      */
     public function testUnsupportedCountryCodeRaisesException()
     {
-        new BIC('xx');
+        new Bic('xx');
     }
 
     public function testCountryCodeIsCaseUnsensitive()
     {
-        $rule1 = new BIC('de');
-        $rule2 = new BIC('DE');
+        $rule1 = new Bic('de');
+        $rule2 = new Bic('DE');
 
         $this->assertSame($rule1->validate('foo'), $rule2->validate('foo'));
     }
@@ -67,19 +67,19 @@ class BICTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidBICShouldReturnTrue($countryCode, $bic)
     {
-        $rule = new BIC($countryCode);
+        $rule = new Bic($countryCode);
 
         $this->assertTrue($rule->validate($bic));
     }
 
     /**
      * @dataProvider providerForNotBIC
-     * @expectedException Respect\Validation\Exceptions\BICException
+     * @expectedException Respect\Validation\Exceptions\BicException
      * @expectedExceptionMessageRegExp /^"[^"]+" must be a BIC$/
      */
     public function testInvalidBICShouldRaiseException($countryCode, $bic)
     {
-        $rule = new BIC($countryCode);
+        $rule = new Bic($countryCode);
         $rule->check($bic);
     }
 
@@ -88,12 +88,12 @@ class BICTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidBICShouldReturnFalse($countryCode, $bic)
     {
-        $rule = new BIC($countryCode);
+        $rule = new Bic($countryCode);
 
         $this->assertFalse($rule->validate($bic));
     }
 
-    public function providerForValidBIC()
+    public function providerForValidBic()
     {
         return array(
             array('de', 'VZVDDED1XXX'),
@@ -101,7 +101,7 @@ class BICTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function providerForNotBIC()
+    public function providerForNotBic()
     {
         return array(
             array('de', 'VZVDDED1~~~'),

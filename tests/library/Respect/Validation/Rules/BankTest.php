@@ -15,7 +15,7 @@ class BankTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage Cannot validate bank for country 'xx'.
+     * @expectedExceptionMessage Cannot validate bank for country "xx"
      */
     public function testUnsupportedCountryCodeRaisesException()
     {
@@ -43,7 +43,7 @@ class BankTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForNotBank
      * @expectedException Respect\Validation\Exceptions\BankException
-     * @expectedExceptionMessageRegExp /^"[^"]+" must be a bank\.$/
+     * @expectedExceptionMessageRegExp /^"[^"]+" must be a bank$/
      */
     public function testInvalidBankShouldRaiseException($countryCode, $bank)
     {
