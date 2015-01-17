@@ -1,66 +1,78 @@
 <?php
 namespace Respect\Validation\Rules;
 
+/**
+ * @covers Respect\Validation\Rules\BankAccount
+ */
 class BankAccountTest extends \PHPUnit_Framework_TestCase
 {
+    protected function setUp()
+    {
+        if (false === class_exists('malkusch\\bav\\BAV')) {
+            $this->markTestSkipped('"malkusch/bav" is not installed.');
+        }
+    }
+
     /**
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
     public function testUnsupportedCountryCodeRaisesException()
     {
-        $validator = new BankAccount("xx", "bank");
+        new BankAccount('xx', 'bank');
     }
-    
+
     public function testCountryCodeIsCaseUnsensitive()
     {
-        $validator1 = new BankAccount("de", "bank");
-        $validator1->validate("foo");
-        
-        $validator2 = new BankAccount("DE", "bank");
-        $validator2->validate("foo");
+        $rule1 = new BankAccount('de', 'bank');
+        $rule2 = new BankAccount('DE', 'bank');
+
+        $this->assertSame($rule1->validate('foo'), $rule2->validate('foo'));
     }
-    
+
     /**
      * @dataProvider providerForBankAccount
      */
-    public function testValidAccountShouldReturnTrue(BankAccount $validator, $account)
+    public function testValidAccountShouldReturnTrue($countryCode, $bank, $account)
     {
-        $this->assertTrue($validator->__invoke($account));
-        $this->assertTrue($validator->assert($account));
-        $this->assertTrue($validator->check($account));
+        $rule = new BankAccount($countryCode, $bank);
+
+        $this->assertTrue($rule->validate($account));
     }
 
     /**
      * @dataProvider providerForNotBankAccount
      * @expectedException Respect\Validation\Exceptions\BankAccountException
+     * @expectedExceptionMessageRegExp /^"[^"]+" must be a bank account$/
      */
-    public function testInvalidAccountShouldRaiseException(BankAccount $validator, $account)
+    public function testInvalidAccountShouldRaiseException($countryCode, $bank, $account)
     {
-        $this->assertFalse($validator->check($account));
+        $rule = new BankAccount($countryCode, $bank);
+        $rule->check($account);
     }
 
     /**
      * @dataProvider providerForNotBankAccount
      */
-    public function testInvalidAccountShouldReturnFalse(BankAccount $validator, $account)
+    public function testInvalidAccountShouldReturnFalse($countryCode, $bank, $account)
     {
-        $this->assertFalse($validator->__invoke($account));
+        $rule = new BankAccount($countryCode, $bank);
+
+        $this->assertFalse($rule->validate($account));
     }
-    
+
     public function providerForBankAccount()
     {
         return array(
-            array(new BankAccount("de", "70169464"), "1112"),
-            array(new BankAccount("de", "70169464"), "67067"),
+            array('de', '70169464', '1112'),
+            array('de', '70169464', '67067'),
         );
     }
-    
+
     public function providerForNotBankAccount()
     {
         return array(
-            array(new BankAccount("de", "70169464"), "1234"),
-            array(new BankAccount("de", "1234"), "1234")
+            array('de', '70169464', '1234'),
+            array('de', '1234', '1234'),
         );
     }
 }
-

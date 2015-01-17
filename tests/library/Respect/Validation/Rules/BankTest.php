@@ -1,64 +1,77 @@
 <?php
 namespace Respect\Validation\Rules;
 
-class GermanBankTest extends \PHPUnit_Framework_TestCase
+/**
+ * @covers Respect\Validation\Rules\Bank
+ */
+class BankTest extends \PHPUnit_Framework_TestCase
 {
+    protected function setUp()
+    {
+        if (false === class_exists('malkusch\\bav\\BAV')) {
+            $this->markTestSkipped('"malkusch/bav" is not installed.');
+        }
+    }
+
     /**
      * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedExceptionMessage Cannot validate bank for country 'xx'.
      */
     public function testUnsupportedCountryCodeRaisesException()
     {
-        new Bank("xx");
+        new Bank('xx');
     }
-    
+
     public function testCountryCodeIsCaseUnsensitive()
     {
-        $validator1 = new Bank("de");
-        $validator1->validate("foo");
-        
-        $validator2 = new Bank("DE");
-        $validator2->validate("foo");
+        $rule1 = new Bank('de');
+        $rule2 = new Bank('DE');
+
+        $this->assertSame($rule1->validate('foo'), $rule2->validate('foo'));
     }
-    
+
     /**
      * @dataProvider providerForBank
      */
-    public function testValidBankShouldReturnTrue(Bank $validator, $bank)
+    public function testValidBankShouldReturnTrue($countryCode, $bank)
     {
-        $this->assertTrue($validator->__invoke($bank));
-        $this->assertTrue($validator->assert($bank));
-        $this->assertTrue($validator->check($bank));
+        $rule = new Bank($countryCode);
+
+        $this->assertTrue($rule->validate($bank));
     }
 
     /**
      * @dataProvider providerForNotBank
      * @expectedException Respect\Validation\Exceptions\BankException
+     * @expectedExceptionMessageRegExp /^"[^"]+" must be a bank\.$/
      */
-    public function testInvalidBankShouldRaiseException(Bank $validator, $bank)
+    public function testInvalidBankShouldRaiseException($countryCode, $bank)
     {
-        $this->assertFalse($validator->check($bank));
+        $rule = new Bank($countryCode);
+        $rule->check($bank);
     }
 
     /**
      * @dataProvider providerForNotBank
      */
-    public function testInvalidBankShouldReturnFalse(Bank $validator, $bank)
+    public function testInvalidBankShouldReturnFalse($countryCode, $bank)
     {
-        $this->assertFalse($validator->__invoke($bank));
+        $rule = new Bank($countryCode);
+
+        $this->assertFalse($rule->validate($bank));
     }
-    
+
     public function providerForNotBank()
     {
         return array(
-            array(new Bank("de"), "1234")
+            array('de', '1234'),
         );
     }
-    
+
     public function providerForBank()
     {
         return array(
-            array(new Bank("de"), "10000000")
+            array('de', '10000000'),
         );
     }
 }
-
