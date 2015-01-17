@@ -6,13 +6,6 @@ use Respect\Validation\Validator as v;
 
 class SfTest extends \PHPUnit_Framework_TestCase
 {
-    public function assertPreConditions()
-    {
-        if (false === class_exists('Symfony\Component\Validator\Constraints\Time')) {
-            $this->markTestSkipped('Expected Symfony\Validator installed.');
-        }
-    }
-
     public function testValidationWithAnExistingValidationConstraint()
     {
         $constraintName = 'Time';
@@ -38,7 +31,7 @@ class SfTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(
             v::sf($constraintName)->assert($validConstraintValue),
             sprintf('"%s" should be valid under "%s" constraint.', $validConstraintValue, $constraintName)
-        );        
+        );
     }
 
     /**

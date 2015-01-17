@@ -22,8 +22,10 @@
     },
     "suggest": {
         "ext-bcmath": "Arbitrary Precision Mathematics",
+        "ext-mbstring": "Multibyte String Functions",
         "malkusch/bav": "German bank account validation",
-        "ext-mbstring": "Multibyte String Functions"
+        "symfony/validator": "Use Symfony validator through Respect\\Validation",
+        "zendframework/zend-validator": "Use Zend Framework validator through Respect\\Validation"
     },
     "autoload": {
         "psr-4": {

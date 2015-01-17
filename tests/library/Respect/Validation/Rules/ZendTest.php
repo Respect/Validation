@@ -5,16 +5,6 @@ use DateTime;
 
 class ZendTest extends \PHPUnit_Framework_TestCase
 {
-    public function testZendDependency()
-    {
-        if (false === class_exists('\Zend\Validator\Date')) {
-            $this->markTestSkipped('Zend Framework 2 Validator not installed.');
-        }
-    }
-
-    /**
-     * @depends testZendDependency
-     */
     public function testConstructorWithValidatorName()
     {
         $v = new Zend('Date');
@@ -38,9 +28,6 @@ class ZendTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @depends testZendDependency
-     */
     public function testConstructorWithZendValidatorInstance()
     {
         $zendInstance = new \Zend\Validator\Date;
@@ -53,7 +40,6 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends testZendDependency
      * @depends testConstructorWithZendValidatorInstance
      */
     public function testUserlandValidatorExtendingZendInterface()
@@ -66,9 +52,6 @@ class ZendTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @depends testZendDependency
-     */
     public function testConstructorWithZendValidatorPartialNamespace()
     {
         $v = new Zend('Sitemap\Lastmod');

@@ -10,24 +10,8 @@ use malkusch\bav\PDODataBackendContainer;
  */
 class BicTest extends \PHPUnit_Framework_TestCase
 {
-    protected static function isAvailable()
-    {
-        return class_exists('malkusch\\bav\\BAV');
-    }
-
-    protected function setUp()
-    {
-        if (false === self::isAvailable()) {
-            $this->markTestSkipped('"malkusch/bav" is not installed.');
-        }
-    }
-
     public static function setUpBeforeClass()
     {
-        if (false === self::isAvailable()) {
-            return;
-        }
-
         $configuration = new DefaultConfiguration();
 
         $pdo = new \PDO('sqlite::memory:');
@@ -38,10 +22,6 @@ class BicTest extends \PHPUnit_Framework_TestCase
 
     public static function tearDownAfterClass()
     {
-        if (false === self::isAvailable()) {
-            return;
-        }
-
         ConfigurationRegistry::setConfiguration(new DefaultConfiguration());
     }
 

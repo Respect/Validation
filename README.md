@@ -510,7 +510,7 @@ v::bank("de")->validate("12345"); //false
 
 These country codes are supported:
 
- * "de" (Germany) - This validator needs `malkusch/bav` as dependency.
+ * "de" (Germany) - You must add `"malkusch/bav": "~1.0"` to your `require` property on composer.json file.
 
 See also
 
@@ -528,7 +528,7 @@ v::bankAccount("de", "70169464")->validate("1234"); //false
 
 These country codes are supported:
 
- * "de" (Germany) - This validator needs `malkusch/bav` as dependency.
+ * "de" (Germany) - You must add `"malkusch/bav": "~1.0"` to your `require` property on composer.json file.
 
 See also
 
@@ -588,7 +588,7 @@ v::bic("de")->validate("VZVDDED1"); //true
 
 Theses country codes are supported:
 
- * "de" (Germany) - This validator needs `malkusch/bav` as dependency.
+ * "de" (Germany) - You must add `"malkusch/bav": "~1.0"` to your `require` property on composer.json file.
 
 See also
 
@@ -1783,7 +1783,9 @@ are preserved.
 v::sf('Time')->validate('15:00:00');
 ```
 
-You must add Symfony2 to your autoloading routines.
+
+You must add `"symfony/validator": "~2.6"` to your `require` property on composer.json file.
+
 
 See also:
 
@@ -2006,7 +2008,7 @@ are preserved.
 v::zend('Hostname')->validate('google.com');
 ```
 
-You need to put Zend Framework in your autoload routines.
+You must add `"zendframework/zend-validator": "~2.3"` to your `require` property on composer.json file.
 
 See also:
 
