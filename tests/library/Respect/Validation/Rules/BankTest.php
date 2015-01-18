@@ -6,65 +6,28 @@ namespace Respect\Validation\Rules;
  */
 class BankTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage Cannot validate bank for country "xx"
-     */
-    public function testUnsupportedCountryCodeRaisesException()
+    public function testShouldUseDefinedFactoryToCreateInternalRuleBasedOnGivenCountryCode()
     {
-        new Bank('xx');
+        $countryCode    = 'XX';
+
+        $validatable    = $this->getMock('Respect\Validation\Validatable');
+        $factory        = $this->getMock('Respect\Validation\Rules\Locale\Factory');
+        $factory
+            ->expects($this->once())
+            ->method('bank')
+            ->with($countryCode)
+            ->will($this->returnValue($validatable));
+
+        $rule           = new Bank($countryCode, $factory);
+
+        $this->assertSame($validatable, $rule->getValidatable());
     }
 
-    public function testCountryCodeIsCaseUnsensitive()
+    public function testShouldUseDefaultFactoryToCreateInternalRuleBasedOnGivenCountryCodeWhenFactoryIsNotDefined()
     {
-        $rule1 = new Bank('de');
-        $rule2 = new Bank('DE');
+        $countryCode    = 'DE';
+        $rule           = new Bank($countryCode);
 
-        $this->assertSame($rule1->validate('foo'), $rule2->validate('foo'));
-    }
-
-    /**
-     * @dataProvider providerForBank
-     */
-    public function testValidBankShouldReturnTrue($countryCode, $bank)
-    {
-        $rule = new Bank($countryCode);
-
-        $this->assertTrue($rule->validate($bank));
-    }
-
-    /**
-     * @dataProvider providerForNotBank
-     * @expectedException Respect\Validation\Exceptions\BankException
-     * @expectedExceptionMessageRegExp /^"[^"]+" must be a bank$/
-     */
-    public function testInvalidBankShouldRaiseException($countryCode, $bank)
-    {
-        $rule = new Bank($countryCode);
-        $rule->check($bank);
-    }
-
-    /**
-     * @dataProvider providerForNotBank
-     */
-    public function testInvalidBankShouldReturnFalse($countryCode, $bank)
-    {
-        $rule = new Bank($countryCode);
-
-        $this->assertFalse($rule->validate($bank));
-    }
-
-    public function providerForNotBank()
-    {
-        return array(
-            array('de', '1234'),
-        );
-    }
-
-    public function providerForBank()
-    {
-        return array(
-            array('de', '10000000'),
-        );
+        $this->assertInstanceOf('Respect\Validation\Rules\Locale\GermanBank', $rule->getValidatable());
     }
 }
