@@ -3,27 +3,23 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validator as v;
 
-class HexRgbColor extends AbstractRule
+class HexRgbColor extends Xdigit
 {
     public function validate($input)
     {
-        if (v::oneOf(v::object(), v::arr(), v::nullValue(), v::not(v::string()))->validate($input)) {
+        if (!is_string($input)) {
             return false;
         }
 
-        if (!v::startsWith('#')->validate($input)) {
-            $input = '#'.$input;
+        if (0 === strpos($input, '#')) {
+            $input = substr($input, 1);
         }
 
-        $length = strlen($input) - 1;
-
+        $length = strlen($input);
         if ($length != 3 && $length != 6) {
             return false;
         }
 
-        $hexdec = hexdec(substr($input, 1));
-
-        return v::xdigit()->validate(substr($input, 1))
-                        && $hexdec < 16777216 && $hexdec >= 0;
+        return parent::validate($input);
     }
 }
