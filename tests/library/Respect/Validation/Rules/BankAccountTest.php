@@ -6,13 +6,6 @@ namespace Respect\Validation\Rules;
  */
 class BankAccountTest extends \PHPUnit_Framework_TestCase
 {
-    protected function setUp()
-    {
-        if (false === class_exists('malkusch\\bav\\BAV')) {
-            $this->markTestSkipped('"malkusch/bav" is not installed.');
-        }
-    }
-
     /**
      * @expectedException Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Cannot validate bank account for country "xx"
