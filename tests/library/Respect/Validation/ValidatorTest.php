@@ -90,5 +90,24 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     \-"" must be a valid date', $e->getFullMessage());
         }
     }
-}
 
+    /**
+     * Regression test #174.
+     */
+    public function testShouldReturnANewValidatorInstanceWhenTheNotRuleIsCalledWithoutAnyArgument()
+    {
+        $validator = new Validator();
+
+        $this->assertInstanceOf('Respect\Validation\Validator', $validator->not());
+    }
+
+    /**
+     * Regression test #174.
+     */
+    public function testShouldReturnValidatorInstanceWhenTheNotRuleIsCalledWithArguments()
+    {
+        $validator = new Validator();
+
+        $this->assertSame($validator, $validator->not($validator->notEmpty()));
+    }
+}
