@@ -1,7 +1,7 @@
 <?php
 namespace Respect\Validation;
 
-class ValidatorTest extends \PHPUnit_Framework_TestCase
+class MiscTest extends \PHPUnit_Framework_TestCase
 {
     public function testStaticCreateShouldReturnNewValidator()
     {

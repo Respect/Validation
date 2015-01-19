@@ -18,12 +18,13 @@ class SfTest extends \PHPUnit_Framework_TestCase
         $constraintName = 'Time';
         $validConstraintValue = '04:20:00';
         $invalidConstraintValue = 'yada';
+        $rule = new Sf($constraintName);
         $this->assertTrue(
-            v::sf($constraintName)->validate($validConstraintValue),
+            $rule->validate($validConstraintValue),
             sprintf('"%s" should be valid under "%s" constraint.', $validConstraintValue, $constraintName)
         );
         $this->assertFalse(
-            v::sf($constraintName)->validate($invalidConstraintValue),
+            $rule->validate($invalidConstraintValue),
             sprintf('"%s" should be invalid under "%s" constraint.', $invalidConstraintValue, $constraintName)
         );
     }
@@ -35,10 +36,11 @@ class SfTest extends \PHPUnit_Framework_TestCase
     {
         $constraintName = 'Time';
         $validConstraintValue = '04:20:00';
+        $rule = new Sf($constraintName);
         $this->assertTrue(
-            v::sf($constraintName)->assert($validConstraintValue),
+            $rule->assert($validConstraintValue),
             sprintf('"%s" should be valid under "%s" constraint.', $validConstraintValue, $constraintName)
-        );        
+        );
     }
 
     /**
@@ -48,8 +50,9 @@ class SfTest extends \PHPUnit_Framework_TestCase
     {
         $constraintName = 'Time';
         $invalidConstraintValue = '34:90:70';
+        $rule = new AllOf(new Sf($constraintName));
         try {
-            v::sf($constraintName)->assert($invalidConstraintValue);
+            $rule->assert($invalidConstraintValue);
         } catch (\Respect\Validation\Exceptions\AllOfException $exception) {
             $fullValidationMessage = $exception->getFullMessage();
             $expectedValidationException = <<<EOF
@@ -72,7 +75,8 @@ EOF;
     public function testValidationWithNonExistingConstraint()
     {
         $fantasyConstraintName = 'FluxCapacitor';
+        $rule = new Sf($fantasyConstraintName);
         $fantasyValue = '8GW';
-        v::sf($fantasyConstraintName)->validate($fantasyValue);
+        $rule->validate($fantasyValue);
     }
 }

@@ -13,6 +13,16 @@ class KeyTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($validator->validate($obj));
     }
 
+    public function testArrayWithEmptyKeyShouldReturnTrue()
+    {
+        $validator = new Key('someEmptyKey');
+        $obj = array();
+        $obj['someEmptyKey'] = '';
+        $this->assertTrue($validator->assert($obj));
+        $this->assertTrue($validator->check($obj));
+        $this->assertTrue($validator->validate($obj));
+    }
+
     /**
      * @expectedException Respect\Validation\Exceptions\KeyException
      */
