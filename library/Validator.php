@@ -149,8 +149,8 @@ class Validator extends AllOf
      */
     public function __call($method, $arguments)
     {
-        if ('not' === $method) {
-            return $arguments ? static::buildRule($method, $arguments) : new Rules\Not($this);
+        if ('not' === $method && empty($arguments)) {
+            return new static(new Rules\Not($this));
         }
 
         return $this->addRule(static::buildRule($method, $arguments));
