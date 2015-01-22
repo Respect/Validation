@@ -213,6 +213,7 @@ Reference
   * [v::numeric()](#vnumeric)
   * [v::object()](#vobject)
   * [v::string()](#vstring)
+  * [v::true()](#vtrue)
   * [v::xdigit()](#vxdigit)
 
 ### Generics
@@ -1877,6 +1878,19 @@ See also
 
  * [v::domain()](#vdomain) - Validates domain names
  * [v::countryCode()](#vcountrycode) - Validates ISO country codes
+
+#### v::true()
+
+Validates if a value is considered as `true`.
+
+```php
+v::true()->validate(true); //true
+v::true()->validate(1); //true
+v::true()->validate('1'); //true
+v::true()->validate('true'); //true
+v::true()->validate('on'); //true
+v::true()->validate('yes'); //true
+```
 
 #### v::uploaded()
 

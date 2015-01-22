@@ -89,6 +89,7 @@ use Respect\Validation\Rules\AllOf;
  * @method static Validator string()
  * @method static Validator symbolicLink()
  * @method static Validator tld()
+ * @method static Validator true()
  * @method static Validator uploaded()
  * @method static Validator uppercase()
  * @method static Validator version()
