@@ -13,7 +13,7 @@ class PrimeNumber extends AbstractRule
         
         for($i=2; $i < $input; $i++){
             if($input % $i == 0)
-            return false;
+             return false;
         }
         
         return true;
