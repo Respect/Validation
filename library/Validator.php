@@ -95,7 +95,7 @@ use Respect\Validation\Rules\AllOf;
  * @method static Validator uppercase()
  * @method static Validator version()
  * @method static Validator vowel()
- * @method static Validator when(Validatable $if, Validatable $then, Validatable $when)
+ * @method static Validator when(Validatable $if, Validatable $then, Validatable $when = null)
  * @method static Validator writable()
  * @method static Validator xdigit(string $additionalChars = null)
  * @method static Validator yes($useLocale = false)
