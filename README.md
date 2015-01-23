@@ -205,6 +205,7 @@ Reference
   * [v::arr()](#varr)
   * [v::bool()](#vbool)
   * [v::date()](#vdate)
+  * [v::false()](#vfalse)
   * [v::float()](#vfloat)
   * [v::hexa()](#vhexa-deprecated) *(deprecated)*
   * [v::instance()](#vinstanceinstancename)
@@ -213,6 +214,7 @@ Reference
   * [v::numeric()](#vnumeric)
   * [v::object()](#vobject)
   * [v::string()](#vstring)
+  * [v::true()](#vtrue)
   * [v::xdigit()](#vxdigit)
 
 ### Generics
@@ -1007,6 +1009,23 @@ See also
 
   * [v::directory()](#vdirectory)
   * [v::file()](#vfile)
+
+#### v::false()
+
+Validates if a value is considered as `false`.
+
+```php
+v::false()->validate(false); //true
+v::false()->validate(0); //true
+v::false()->validate('0'); //true
+v::false()->validate('false'); //true
+v::false()->validate('off'); //true
+v::false()->validate('no'); //true
+```
+
+See also
+
+  * [v::true()](#vtrue)
 
 #### v::endsWith($value)
 #### v::endsWith($value, boolean $identical=false)
@@ -1877,6 +1896,23 @@ See also
 
  * [v::domain()](#vdomain) - Validates domain names
  * [v::countryCode()](#vcountrycode) - Validates ISO country codes
+
+#### v::true()
+
+Validates if a value is considered as `true`.
+
+```php
+v::true()->validate(true); //true
+v::true()->validate(1); //true
+v::true()->validate('1'); //true
+v::true()->validate('true'); //true
+v::true()->validate('on'); //true
+v::true()->validate('yes'); //true
+```
+
+See also
+
+  * [v::false()](#vfalse)
 
 #### v::uploaded()
 
