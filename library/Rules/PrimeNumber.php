@@ -3,20 +3,19 @@ namespace Respect\Validation\Rules;
 
 class PrimeNumber extends AbstractRule
 {
-    function validate($input){
+    public function validate($input){
 
-        if(!is_numeric($input) || $input <= 0)
+        if(!is_numeric($input) || $input <= 1)
             return false;
-
-        if($input % 2 ==  0)
+        
+        if($input!= 2 && $input % 2 ==  0)
             return false;
-
-        for($i=2; $i < $input - 1; $i++){
+        
+        for($i=2; $i < $input; $i++){
             if($input % $i == 0)
-                return false;
+            return false;
         }
-
+        
         return true;
-
     }
 }
