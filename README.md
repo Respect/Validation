@@ -221,6 +221,7 @@ Reference
 
   * [v::call()](#vcallcallable-callback)
   * [v::callback()](#vcallbackcallable-callback)
+  * [v::filterVar()](#vfiltervarint-filter)
   * [v::not()](#vnotv-negatedvalidator)
   * [v::when()](#vwhenv-if-v-then-v-else)
   * [v::alwaysValid()](#valwaysvalid)
@@ -671,6 +672,7 @@ As in `v::call()`, you can pass a method or closure to it.
 See also:
 
   * [v::call()](#vcallcallable-callback) - A more elaborated building block validator
+  * [v::filterVar()](#vfiltervarint-filter)
 
 #### v::charset()
 
@@ -1112,6 +1114,20 @@ See also
 
   * [v::directory()](#vdirectory)
   * [v::exists()](#vexists)
+
+#### v::filterVar(int $filter)
+#### v::filterVar(int $filter, mixed $options)
+
+A wrapper for PHP's [filter_var()](http://php.net/filter_var) function.
+
+```php
+v::filterVar(FILTER_VALIDATE_EMAIL)->validate('bob@example.com'); //true
+v::filterVar(FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)->validate('http://example.com'); //true
+```
+
+See also
+
+  * [v::callback()](#vcallbackcallable-callback)
 
 #### v::float()
 
