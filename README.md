@@ -1,5 +1,4 @@
-Respect\Validation
-==================
+# Respect\Validation
 
 [![Build Status](https://img.shields.io/travis/Respect/Validation/master.svg?style=flat-square)](http://travis-ci.org/Respect/Validation)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/Respect/Validation/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/Respect/Validation/?branch=master)
@@ -12,11 +11,10 @@ Respect\Validation
 
 - Complex rules made simple: `v::numeric()->positive()->between(1, 256)->validate($myNumber)`.
 - [Granularity control](https://github.com/Respect/Validation#validation-methods) for advanced reporting.
-- >80 (fully tested) validators.
+- More than 90 (fully tested) validators.
 - [A concrete API](https://gist.github.com/alganet/b66bc8281672ca3d3b42) for non fluent usage.
 
-Installation
-------------
+## Installation
 
 The package is available on [Packagist](http://packagist.org/packages/respect/validation).
 Autoloading is [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md) compatible.
@@ -25,8 +23,7 @@ Autoloading is [PSR-4](https://github.com/php-fig/fig-standards/blob/master/acce
 composer require respect/validation
 ```
 
-Feature Guide
--------------
+## Feature Guide
 
 ### Namespace Import
 
@@ -197,8 +194,7 @@ Message:
 
     "really messed up screen#name" must contain only letters (a-z) and digits (0-9)
 
-Reference
----------
+## Reference
 
 ### Types
 
@@ -207,7 +203,6 @@ Reference
   * [v::date()](#vdate)
   * [v::false()](#vfalse)
   * [v::float()](#vfloat)
-  * [v::hexa()](#vhexa-deprecated) *(deprecated)*
   * [v::instance()](#vinstanceinstancename)
   * [v::int()](#vint)
   * [v::nullValue()](#vnullvalue)
@@ -219,13 +214,13 @@ Reference
 
 ### Generics
 
+  * [v::alwaysInvalid()](#valwaysinvalid)
+  * [v::alwaysValid()](#valwaysvalid)
   * [v::call()](#vcallcallable-callback)
   * [v::callback()](#vcallbackcallable-callback)
   * [v::filterVar()](#vfiltervarint-filter)
   * [v::not()](#vnotv-negatedvalidator)
   * [v::when()](#vwhenv-if-v-then-v-else)
-  * [v::alwaysValid()](#valwaysvalid)
-  * [v::alwaysInvalid()](#valwaysinvalid)
 
 ### Comparing Values
 
@@ -240,7 +235,6 @@ Reference
   * [v::bool()](#vbool)
   * [v::even()](#veven)
   * [v::float()](#vfloat)
-  * [v::hexa()](#vhexa-deprecated) *(deprecated)*
   * [v::int()](#vint)
   * [v::multiple()](#vmultiplemultipleof)
   * [v::negative()](#vnegative)
@@ -259,15 +253,13 @@ Reference
   * [v::alpha()](#valpha)
   * [v::between()](#vbetweenstart-end)
   * [v::charset()](#vcharset)
-  * [v::consonants()](#vconsonants-deprecated) *(deprecated)*
+  * [v::cntrl()](#vcntrl)
   * [v::consonant()](#vconsonant)
   * [v::contains()](#vcontainsvalue)
-  * [v::cntrl()](#vcntrl)
-  * [v::digits()](#vdigits-deprecated) *(deprecated)*
   * [v::digit()](#vdigit)
   * [v::endsWith()](#vendswithvalue)
-  * [v::in()](#vinhaystack)
   * [v::graph()](#vgraph)
+  * [v::in()](#vinhaystack)
   * [v::length()](#vlengthmin-max)
   * [v::lowercase()](#vlowercase)
   * [v::notEmpty()](#vnotempty)
@@ -280,7 +272,6 @@ Reference
   * [v::startsWith()](#vstartswithvalue)
   * [v::uppercase()](#vuppercase)
   * [v::version()](#vversion)
-  * [v::vowels()](#vvowels-deprecated) *(deprecated)*
   * [v::vowel()](#vvowel)
   * [v::xdigit()](#vxdigit)
 
@@ -317,9 +308,9 @@ Reference
 
 ### Regional
 
-  * [v::tld()](#vtld)
   * [v::countryCode()](#vcountrycode)
   * [v::postalCode()](#vpostalcodestring-countrycode)
+  * [v::tld()](#vtld)
 
 ### Files
 
@@ -334,9 +325,9 @@ Reference
 
 ### Banking
 
- * [v::bank()](#vbankstring-countrycode)
- * [v::bankAccount()](#vbankaccountstring-countrycode-string-bank)
- * [v::bic()](#vbicstring-countrycode)
+  * [v::bank()](#vbankstring-countrycode)
+  * [v::bankAccount()](#vbankaccountstring-countrycode-string-bank)
+  * [v::bic()](#vbicstring-countrycode)
 
 ### Other
 
@@ -349,16 +340,16 @@ Reference
   * [v::ip()](#vip)
   * [v::json()](#vjson)
   * [v::macAddress()](#vmacaddress)
+  * [v::nfeAccessKey()](#vnfeaccesskey)
   * [v::phone()](#vphone)
   * [v::sf()](#vsfsfvalidator)
   * [v::url()](#vurl)
   * [v::zend()](#vzendzendvalidator)
-  * [v::nfeAccessKey()](#vnfeaccesskey)
 
 ### Yes/No
 
-  * [v::yes()](#vyesuselocale--false)
   * [v::no()](#vnouselocale--false)
+  * [v::yes()](#vyesuselocale--false)
 
 ### Alphabetically
 
@@ -464,11 +455,11 @@ See also:
   * [v::each()](#veachv-validatorforvalue) - Validates each member of an array
   * [v::key()](#vkeyname)  - Validates a specific key of an array
 
-### v::alwaysValid
+#### v::alwaysValid()
 
 Always returns true.
 
-### v::alwaysInvalid
+#### v::alwaysInvalid()
 
 Always return false.
 
@@ -701,16 +692,6 @@ See also:
 
 Validates the access key of the Brazilian electronic invoice (NFe).
 
-#### v::consonants() *(deprecated)*
-
-Validates strings that contain only consonants. It's now deprecated, consonant should be used
-instead.
-
-See also:
-
-  * [v::consonant()](#vconsonant)
-
-
 #### v::consonant()
 #### v::consonant(string $additionalChars)
 
@@ -753,7 +734,7 @@ See also:
   * [v::endsWith()](#vendswithvalue)
   * [v::in()](#vinhaystack)
 
-#### v::cntrl
+#### v::cntrl()
 #### v::cntrl(string $additionalChars)
 
 This is similar to `v::alnum()`, but only accepts control characters:
@@ -768,7 +749,7 @@ See also:
   * [v::prnt()](#vprnt)      - all printable characters
   * [v::space()](#vspace)     - empty or whitespace only
 
-#### v::countryCode
+#### v::countryCode()
 
 Validates an ISO country code like US or BR.
 
@@ -870,15 +851,6 @@ See also:
   * [v::minimumAge()](#vminimumageage)
   * [v::leapDate()](#vleapdateformat)
   * [v::leapYear()](#vleapyear)
-
-#### v::digits() *(deprecated)*
-
-Validates 0-9, empty or whitespace only. It's now deprecated, digit should be used
-instead.
-
-See also:
-
-  * [v::digit()](#vdigit)
 
 #### v::digit()
 
@@ -1151,19 +1123,6 @@ v::graph()->validate('LKM@#$%4;'); //true
 See also:
 
   * [v::prnt()](#vprnt)
-
-#### v::hexa() *(deprecated)*
-
-Validates an hexadecimal number. It's now deprecated, xdigit should be used
-instead.
-
-```php
-v::hexa()->validate('AF12'); //true
-```
-
-See also:
-
-  * [v::xdigit()](#vxdigit)
 
 #### v::hexRgbColor()
 
@@ -1977,16 +1936,6 @@ Validates version numbers using Semantic Versioning.
 ```php
 v::version()->validate('1.0.0');
 ```
-
-#### v::vowels() *(deprecated)*
-
-Validates strings that contains only vowels. It's now deprecated, vowel should be used
-instead.
-
-See also:
-
-  * [v::vowel()](#vvowel)
-
 
 #### v::vowel()
 
