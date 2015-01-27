@@ -351,6 +351,7 @@ Reference
   * [v::macAddress()](#vmacaddress)
   * [v::phone()](#vphone)
   * [v::sf()](#vsfsfvalidator)
+  * [v::url()](#vurl)
   * [v::zend()](#vzendzendvalidator)
   * [v::nfeAccessKey()](#vnfeaccesskey)
 
@@ -1949,6 +1950,25 @@ v::string()->uppercase()->validate('W3C'); //true
 See also:
 
   * [v::lowercase()](#vlowercase)
+
+#### v::url()
+
+Validates if input is an URL:
+
+```php
+v::url()->validate('http://example.com'); //true
+v::url()->validate('https://www.youtube.com/watch?v=6FOUqQt3Kg0'); //true
+v::url()->validate('ldap://[::1]'); //true
+v::url()->validate('mailto:john.doe@example.com'); //true
+v::url()->validate('news:new.example.com'); //true
+```
+
+This rule uses [v::filterVar()](#vfiltervarint-filter) rule with `FILTER_VALIDATE_URL` flag.
+
+See also:
+
+  * [v::domain()](#vdomain)
+  * [v::filterVar()](#vfiltervarint-filter)
 
 #### v::version()
 
