@@ -94,6 +94,7 @@ use Respect\Validation\Rules\AllOf;
  * @method static Validator true()
  * @method static Validator uploaded()
  * @method static Validator uppercase()
+ * @method static Validator url()
  * @method static Validator version()
  * @method static Validator vowel()
  * @method static Validator when(Validatable $if, Validatable $then, Validatable $when = null)
