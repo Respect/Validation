@@ -1,6 +1,9 @@
 <?php
 namespace Respect\Validation;
 
+use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
+use Respect\Validation\Exceptions\ValidationExceptionInterface;
+
 class ValidatorTest extends \PHPUnit_Framework_TestCase
 {
     public function testStaticCreateShouldReturnNewValidator()
@@ -17,7 +20,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     {
         try {
             Validator::callback('is_int')->setTemplate('{{name}} is not tasty')->assert('something');
-        } catch (\Exception $e) {
+        } catch (NestedValidationExceptionInterface $e) {
             $this->assertEquals('"something" is not tasty', $e->getMainMessage());
         }
     }
@@ -25,7 +28,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     {
         try {
             Validator::callback('is_int')->between(1,2)->setTemplate('{{name}} is not tasty')->assert('something');
-        } catch (\Exception $e) {
+        } catch (NestedValidationExceptionInterface $e) {
             $this->assertEquals('"something" is not tasty', $e->getMainMessage());
         }
     }
@@ -33,7 +36,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     {
         try {
             Validator::callback('is_string')->between(1,2)->setTemplate('{{name}} is not tasty')->assert('something');
-        } catch (\Exception $e) {
+        } catch (NestedValidationExceptionInterface $e) {
             $this->assertEquals('\-"something" is not tasty
   \-"something" must be greater than 1', $e->getFullMessage());
         }
@@ -42,7 +45,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     {
         try {
             Validator::string()->length(1,15)->assert('');
-        } catch (\Exception $e) {
+        } catch (NestedValidationExceptionInterface $e) {
             $this->assertEquals('\-These rules must pass for ""
   \-"" must have a length between 1 and 15', $e->getFullMessage());
         }
@@ -70,7 +73,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $usernameValidator = Validator::alnum('_')->length(1,15)->noWhitespace();
         try {
             $usernameValidator->assert('really messed up screen#name');
-        } catch (\InvalidArgumentException $e) {
+        } catch (NestedValidationExceptionInterface $e) {
             $e->findMessages(array('alnum', 'length', 'noWhitespace'));
         }
     }
@@ -82,7 +85,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
                      ->key('birthdate', Validator::date())
                      ->setName("User Subscription Form")
                      ->assert(array('username' => '', 'birthdate' => ''));
-        } catch (\InvalidArgumentException $e) {
+        } catch (NestedValidationExceptionInterface $e) {
             $this->assertEquals('\-These rules must pass for User Subscription Form
   |-Key username must be valid
   | \-"" must have a length between 1 and 32
@@ -109,5 +112,17 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $validator = new Validator();
 
         $this->assertSame($validator, $validator->not($validator->notEmpty()));
+    }
+
+    public function testDoNotRelyOnNestedValidationExceptionInterfaceForCheck()
+    {
+        $usernameValidator = Validator::alnum('_')->length(1, 15)->noWhitespace();
+        try {
+            $usernameValidator->check('really messed up screen#name');
+        } catch (NestedValidationExceptionInterface $e) {
+            $this->fail('Check used NestedValidationException');
+        } catch (ValidationExceptionInterface $e) {
+            $this->assertTrue(true);
+        }
     }
 }

@@ -2,10 +2,9 @@
 namespace Respect\Validation\Exceptions;
 
 use DateTime;
-use Exception;
 use InvalidArgumentException;
 
-class ValidationException extends InvalidArgumentException
+class ValidationException extends InvalidArgumentException implements ValidationExceptionInterface
 {
     const MODE_DEFAULT = 1;
     const MODE_NEGATIVE = 2;

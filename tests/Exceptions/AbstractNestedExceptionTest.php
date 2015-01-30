@@ -5,6 +5,13 @@ use Respect\Validation\Validator as v;
 
 class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
 {
+    public function testItImplementsNestedValidationExceptionInterface()
+    {
+        $abstractNestedException = $this->getMock('Respect\Validation\Exceptions\AbstractNestedException');
+        $this->assertInstanceOf('Respect\Validation\Exceptions\NestedValidationExceptionInterface',
+            $abstractNestedException);
+    }
+
     public function testGetRelatedShouldReturnExceptionAddedByAddRelated()
     {
         $composite = new AttributeException;
@@ -75,7 +82,7 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
                     'security_question' => null,
                 )
             );
-        } catch (ValidationException $e) {
+        } catch (NestedValidationExceptionInterface $e) {
             $messages = $e->findMessages(
                     array('allOf', 'first_name.length')
             );
@@ -114,7 +121,7 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
                     'security_question' => null,
                 )
             );
-        } catch (ValidationException $e) {
+        } catch (NestedValidationExceptionInterface $e) {
             $messages = $e->findMessages(
                     array(
                         'allOf' => 'Invalid {{name}}',
@@ -127,4 +134,3 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
         }
     }
 }
-
