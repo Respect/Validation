@@ -1,0 +1,47 @@
+# Alnum
+
+- `v::alnum()`
+- `v::alnum(string $additionalChars)`
+
+Validates alphanumeric characters from a-Z and 0-9.
+
+```php
+v::alnum()->validate('foo 123'); //true
+```
+
+A parameter for extra characters can be used:
+
+```php
+v::alnum('-')->validate('foo - 123'); //true
+```
+
+This validator allows whitespace, if you want to
+remove them add `->noWhitespace()` to the chain:
+
+```php
+v::alnum()->noWhitespace->validate('foo 123'); //false
+```
+
+By default empty values are allowed, if you want
+to invalidate them, add `->notEmpty()` to the chain:
+
+```php
+v::alnum()->notEmpty()->validate(''); //false
+```
+
+You can restrict case using the `->lowercase()` and
+`->uppercase()` validators:
+
+```php
+v::alnum()->uppercase()->validate('aaa'); //false
+```
+
+Message template for this validator includes `{{additionalChars}}` as
+the string of extra chars passed as the parameter.
+
+See also:
+
+  * [Alpha](Alpha.md)
+  * [Digit](Digit.md)
+  * [Consonant](Consonant.md)
+  * [Vowel](Vowel.md)

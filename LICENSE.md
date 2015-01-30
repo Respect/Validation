@@ -1,4 +1,7 @@
-Copyright (c) 2009-2015, Alexandre Gomes Gaigalas.
+# License
+
+Copyright (c) 2009-2015, [Alexandre Gomes Gaigalas](http://github.com/alganet).
+
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
