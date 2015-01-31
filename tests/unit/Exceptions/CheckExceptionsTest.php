@@ -16,11 +16,7 @@ use DirectoryIterator;
 
 class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
 {
-    protected $deprecateds = array(
-        'Consonants',
-        'Digits',
-        'Vowels',
-    );
+    protected $deprecateds = array();
 
     public function provideListOfRuleNames()
     {
