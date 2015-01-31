@@ -47,7 +47,7 @@ class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
         $missingExceptions = array();
 
         foreach ($this->getAllRuleNames() as $ruleName) {
-            $exceptionClass = 'Respect\\Validation\\Exceptions\\'.$ruleName.'Exception';
+            $exceptionClass = $this->buildExceptionClass($ruleName);
             if (class_exists($exceptionClass)) {
                 continue;
             }
@@ -55,6 +55,44 @@ class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
             $missingExceptions[] = $ruleName;
         }
 
-        $this->assertEmpty($missingExceptions, 'No exceptions for: '.implode(', ', $missingExceptions));
+        $this->assertEmpty($missingExceptions, 'No exceptions for: ' . $this->formatArrayAsString($missingExceptions));
+    }
+
+    public function testEveryRuleExceptionImplementsValidationExceptionInterface()
+    {
+        $exceptionsNotImplementingInterface = array();
+
+        foreach ($this->getAllRuleNames() as $ruleName) {
+            $exceptionClass = $this->buildExceptionClass($ruleName);
+            $exceptionClassMock = $this->getMock($exceptionClass);
+            if ($exceptionClassMock instanceof ValidationExceptionInterface) {
+                continue;
+            }
+
+            $exceptionsNotImplementingInterface[] = $ruleName;
+        }
+
+        $this->assertEmpty($exceptionsNotImplementingInterface,
+            'ValidationExceptionInterface not implemented in: ' .
+            $this->formatArrayAsString($exceptionsNotImplementingInterface));
+    }
+
+    /**
+     * @param string $ruleName
+     * @return string
+     */
+    private function buildExceptionClass($ruleName)
+    {
+        $exceptionClass = 'Respect\\Validation\\Exceptions\\' . $ruleName . 'Exception';
+        return $exceptionClass;
+    }
+
+    /**
+     * @param array $array
+     * @return string
+     */
+    private function formatArrayAsString(array $array)
+    {
+        return implode(', ', $array);
     }
 }

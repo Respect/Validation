@@ -5,7 +5,7 @@ use RecursiveIteratorIterator;
 use RecursiveTreeIterator;
 use Respect\Validation\ExceptionIterator;
 
-class AbstractNestedException extends ValidationException
+class AbstractNestedException extends ValidationException implements NestedValidationExceptionInterface
 {
     const ITERATE_TREE = 1;
     const ITERATE_ALL = 2;
