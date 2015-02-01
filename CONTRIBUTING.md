@@ -1,41 +1,51 @@
-# Respect\Validation - How to Contribute
+# Contributing
 
-This is a guide for anyone willing to contribute with Respect\Validation. Anyone
-can contribute!
+Contributions to Respect\Validation are always welcome. You make our lives
+easier by sending us your contributions through
+[GitHub pull requests](http://help.github.com/pull-requests).
+
+Pull requests for bug fixes must be based on the current stable branch whereas
+pull requests for new features must be based on `master`.
+
+Due to time constraints, we are not always able to respond as quickly as we
+would like. Please do not take delays personal and feel free to remind us here,
+on IRC, or on Gitter if you feel that we forgot to respond.
 
 Please see the [project documentation](http://documentup.com/Respect/Validation)
-before proceeding. You should also know about PSR-0 and basic unit testing, but
-I'm sure you can learn that just by looking at other rules. Pick the simple ones
-like `Int` to begin.
+before proceeding. You should also know about [PHP-FIG](http://www.php-fig.org)'s
+standards and basic unit testing, but we're sure you can learn that just by
+looking at other rules. Pick the simple ones like `Int` to begin.
 
 Before writing anything, make sure there is no validator that already does what
 you need. Also, it would be awesome if you
 [open an issue](http://github.com/Respect/Validation/issues) before starting,
 so if anyone has the same idea the guy will see that you're already doing that.
 
-## Adding a new Validator
+## Adding a new validator
 
-A common validator on Respect is composed of three classes:
+A common validator (rule) on Respect\Validation is composed of three classes:
 
-  * library/Respect/Validation/Rules/YourRuleName.php - The rule itself
-  * library/Respect/Validation/Exceptions/YourRuleNameException.php - The exception thrown by the rule
-  * tests/library/Respect/Validation/Exceptions/YourRuleNameTest.php - Tests for the validator
+  * `library/Rules/YourRuleName.php`: the rule itself
+  * `library/Exceptions/YourRuleNameException.php`: the exception thrown by the rule
+  * `tests/Rules/YourRuleNameTest.php`: tests for the rule
 
 Classes are pretty straightforward. In the sample below, we're going to create a
 validator that validates if a string is equal "Hello World".
 
 ## Samples
 
-The rule itself needs to implement the Validatable interface. Also, it is convenient
-to extend the AbstractRule. Doing that, you'll only need to declare one method:
-`validate($input)`. This method must return true or false.
+The rule itself needs to implement the `Validatable` interface.
+Also, it is convenient to extend the `AbstractRule`.
+Doing that, you'll only need to declare one method: `validate($input)`.
+This method must return `true` or `false`.
+
+If your validator class is `HelloWorld`, it will be available as `v::helloWorld()`
+and will natively have support for chaining and everything else.
 
 ```php
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validatable;
-
-class HelloWorld extends AbstractRule implements Validatable
+class HelloWorld extends AbstractRule
 {
     public function validate($input)
     {
@@ -44,10 +54,10 @@ class HelloWorld extends AbstractRule implements Validatable
 }
 ```
 
-Just that and we're done with the rule code. The Exception requires you to declare
-messages used by `assert()` and `check()`. Messages are declared in affirmative
-and negative moods, so if anyone calls `v::not(v::helloWorld())` Respect will show
-the appropriate message.
+Just that and we're done with the rule code. The Exception requires you to
+declare messages used by `assert()` and `check()`. Messages are declared in
+affirmative and negative moods, so if anyone calls `v::not(v::helloWorld())` the
+library will show the appropriate message.
 
 ```php
 namespace Respect\Validation\Exceptions;
@@ -72,44 +82,40 @@ namespace Respect\Validation\Rules;
 
 class HelloWorldTest extends \PHPUnit_Framework_TestCase
 {
-    protected $validator;
-
-    protected function setUp()
+    public function testShouldValidateAValidHelloWorld()
     {
-        $this->validator = new HelloWorld;
+        $rule = new HelloWorld();
+
+        $this->assertTrue($rule->validate('Hello World'));
     }
 
-    public function testOk($input)
+    public function testNotValidateAnInvalidHelloWorld()
     {
-        $this->assertTrue($this->validator->validate('Hello World'));
-        $this->assertTrue($this->validator->check('Hello World'));
-        $this->assertTrue($this->validator->assert('Hello World'));
+        $rule = new HelloWorld();
+
+        $this->assertFalse($rule->validate('Hello Moon'));
     }
 
-    /** @expectedException Respect\Validation\Exceptions\HelloWorldException */
-    public function testFailAssert($input)
+    /**
+     * @expectedException Respect\Validation\Exceptions\HelloWorldException
+     * @expectedExceptionMessage "Hello Mars" must be a Hello World
+     */
+    public function testShouldThowsTheRightExceptionWhenChecking()
     {
-        $this->assertFalse($this->validator->validate('Lorem Ipsum'));
-        $this->assertFalse($this->validator->assert('Lorem Ipsum'));
-    }
+        $rule = new HelloWorld();
 
-    /** @expectedException Respect\Validation\Exceptions\HelloWorldException */
-    public function testFailCheck($input)
-    {
-        $this->assertFalse($this->validator->validate('Lorem Ipsum'));
-        $this->assertFalse($this->validator->check('Lorem Ipsum'));
+        $rule->check('Hello Mars');
     }
 }
 ```
 
+PS.: We strongly recommend you use [Data Providers](https://phpunit.de/manual/current/en/writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers).
+
 ## Documentation
 
-Our docs at http://documentup.com/Respect/Validation are generated by our
-README.md on the project root. Add your brand new rule there and everything will
-update automatically =)
-
-If your validator class is `HelloWorld`, it will be available as `v::helloWorld()`
-and will natively have support for chaining and everything else.
+Our docs at http://documentup.com/Respect/Validation are generated from our
+Markdown files. Add your brand new rule there and everything will be updated as
+soon as possible.
 
 ## Running Tests
 
@@ -126,11 +132,10 @@ $ vendor/bin/phpunit
 
 You can test the project using the commands:
 ```sh
-$ vendor\bin\phpunit
+> vendor\bin\phpunit
 ```
 
 No test should fail.
 
-## Sending your code to us
-
-Please see http://help.github.com/pull-requests/.
+You can tweak the PHPUnit's settings by copying `phpunit.xml.dist` to `phpunit.xml`
+and changing it according to your needs.
