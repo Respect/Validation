@@ -113,13 +113,13 @@ $usernameValidator->validate('#$%');                //false
 * `Respect\Validation\Exceptions\NestedValidationExceptionInterface`:
     * Use when calling `assert()`.
     * Interface has three methods: `getFullMessage()`, `findMessages()`, and `getMainMessage()`.
-* `Respect\Validation\Exceptions\ValidationExceptionInterface`: 
+* `Respect\Validation\Exceptions\ValidationExceptionInterface`:
     * Use when calling `::check()`.
-    * All `Respect\Validation` validation exceptions implement this interface.  
+    * All `Respect\Validation` validation exceptions implement this interface.
     * Interface has one method: `getMainMessage()`;
-* `Repect\Validation\Exceptions\ExceptionInterface`: 
-    * All `Respect\Validation\Exceptions` implement this interface.  
- 
+* `Repect\Validation\Exceptions\ExceptionInterface`:
+    * All `Respect\Validation\Exceptions` implement this interface.
+
 ### Informative Exceptions
 
 When something goes wrong, Validation can tell you exactly what's going on. For this,
@@ -228,6 +228,7 @@ Message:
   * [v::object()](#vobject)
   * [v::string()](#vstring)
   * [v::true()](#vtrue)
+  * [v::type()](#vtypestring-type)
   * [v::xdigit()](#vxdigit)
 
 ### Generics
@@ -238,6 +239,7 @@ Message:
   * [v::callback()](#vcallbackcallable-callback)
   * [v::filterVar()](#vfiltervarint-filter)
   * [v::not()](#vnotv-negatedvalidator)
+  * [v::type()](#vtypestring-type)
   * [v::when()](#vwhenv-if-v-then-v-else)
 
 ### Comparing Values
@@ -1934,6 +1936,26 @@ v::true()->validate('yes'); //true
 See also
 
   * [v::false()](#vfalse)
+
+#### v::type(string $type)
+
+Validates the type of input.
+
+```php
+v::type('bool')->validate(true); //true
+v::type('callable')->validate(function (){}); //true
+v::type('object')->validate(new stdClass()); //true
+```
+
+See also
+
+  * [v::arr()](#varr)
+  * [v::bool()](#vbool)
+  * [v::float()](#vfloat)
+  * [v::instance()](#vinstancestring-instancename)
+  * [v::int()](#vint)
+  * [v::object()](#vobject)
+  * [v::string()](#vstring)
 
 #### v::uploaded()
 
