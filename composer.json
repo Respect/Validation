@@ -32,6 +32,11 @@
             "Respect\\Validation\\": "library/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Respect\\Validation\\Test\\": "tests/library/"
+        }
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "0.8-dev"

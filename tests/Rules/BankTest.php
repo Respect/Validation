@@ -1,10 +1,12 @@
 <?php
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Test\LocaleTestCase;
+
 /**
  * @covers Respect\Validation\Rules\Bank
  */
-class BankTest extends \PHPUnit_Framework_TestCase
+class BankTest extends LocaleTestCase
 {
     public function testShouldUseDefinedFactoryToCreateInternalRuleBasedOnGivenCountryCode()
     {

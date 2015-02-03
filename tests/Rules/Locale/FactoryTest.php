@@ -1,10 +1,12 @@
 <?php
 namespace Respect\Validation\Rules\Locale;
 
+use Respect\Validation\Test\LocaleTestCase;
+
 /**
  * @covers Respect\Validation\Rules\Locale\Factory
  */
-class FactoryTest extends \PHPUnit_Framework_TestCase
+class FactoryTest extends LocaleTestCase
 {
     /**
      * @expectedException Respect\Validation\Exceptions\ComponentException
