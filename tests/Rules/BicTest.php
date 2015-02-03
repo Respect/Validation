@@ -1,10 +1,12 @@
 <?php
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Test\LocaleTestCase;
+
 /**
  * @covers Respect\Validation\Rules\Bic
  */
-class BicTest extends \PHPUnit_Framework_TestCase
+class BicTest extends LocaleTestCase
 {
     public function testShouldUseDefinedFactoryToCreateInternalRuleBasedOnGivenCountryCode()
     {

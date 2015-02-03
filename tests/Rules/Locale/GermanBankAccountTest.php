@@ -1,13 +1,13 @@
 <?php
 namespace Respect\Validation\Rules\Locale;
 
-use malkusch\bav\BAV;
+use Respect\Validation\Test\LocaleTestCase;
 
 /**
  * @covers Respect\Validation\Rules\Locale\GermanBankAccount
  * @covers Respect\Validation\Exceptions\Locale\GermanBankAccountException
  */
-class GermanBankAccountTest extends \PHPUnit_Framework_TestCase
+class GermanBankAccountTest extends LocaleTestCase
 {
     public function testShouldAcceptBankOnConstructor()
     {
@@ -20,7 +20,7 @@ class GermanBankAccountTest extends \PHPUnit_Framework_TestCase
     public function testShouldAcceptBAVInstanceOnConstructor()
     {
         $bank = '10000000';
-        $bav  = new BAV();
+        $bav  = $this->getBavMock();
         $rule = new GermanBankAccount($bank, $bav);
 
         $this->assertSame($bav, $rule->bav);
@@ -38,7 +38,7 @@ class GermanBankAccountTest extends \PHPUnit_Framework_TestCase
     {
         $bank   = '10000000';
         $input  = '67067';
-        $bav    = $this->getMock('malkusch\bav\BAV');
+        $bav    = $this->getBavMock();
         $rule   = new GermanBankAccount($bank, $bav);
 
         $bav->expects($this->once())
@@ -53,7 +53,7 @@ class GermanBankAccountTest extends \PHPUnit_Framework_TestCase
     {
         $bank   = '10000000';
         $input  = '67067';
-        $bav    = $this->getMock('malkusch\bav\BAV');
+        $bav    = $this->getBavMock();
         $rule   = new GermanBankAccount($bank, $bav);
 
         $bav->expects($this->any())
@@ -72,7 +72,7 @@ class GermanBankAccountTest extends \PHPUnit_Framework_TestCase
     {
         $bank   = '10000000';
         $input  = '67067';
-        $bav    = $this->getMock('malkusch\bav\BAV');
+        $bav    = $this->getBavMock();
         $rule   = new GermanBankAccount($bank, $bav);
 
         $bav->expects($this->any())
