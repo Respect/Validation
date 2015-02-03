@@ -64,7 +64,7 @@ class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
 
         foreach ($this->getAllRuleNames() as $ruleName) {
             $exceptionClass = $this->buildExceptionClass($ruleName);
-            $exceptionClassMock = $this->getMock($exceptionClass);
+            $exceptionClassMock = new $exceptionClass();
             if ($exceptionClassMock instanceof ValidationExceptionInterface) {
                 continue;
             }
