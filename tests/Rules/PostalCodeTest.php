@@ -1,25 +1,60 @@
 <?php
 namespace Respect\Validation\Rules;
 
+/**
+ * @covers Respect\Validation\Rules\PostalCode
+ */
 class PostalCodeTest extends \PHPUnit_Framework_TestCase
 {
-    public function testShouldUsePatternAccordingToLocale()
+    public function testShouldUsePatternAccordingToCountryCode()
     {
-        $locale = 'BR';
+        $countryCode = 'BR';
 
-        $rule = new PostalCode($locale);
+        $rule = new PostalCode($countryCode);
 
         $actualPattern = $rule->regex;
-        $expectedPattern = $rule->postalCodes[$locale];
+        $expectedPattern = $rule->postalCodes[$countryCode];
 
         $this->assertEquals($expectedPattern, $actualPattern);
+    }
+
+    public function testShouldNotBeCaseSensitiveWhenChoosingPatternAccordingToCountryCode()
+    {
+        $rule1 = new PostalCode('BR');
+        $rule2 = new PostalCode('br');
+
+        $this->assertEquals($rule1->regex, $rule2->regex);
+    }
+
+    public function testShouldUseDefaultPatternWhenCountryCodeDoesNotHavePostalCode()
+    {
+        $rule = new PostalCode('ZW');
+
+        $actualPattern = $rule->regex;
+        $expectedPattern = PostalCode::DEFAULT_PATTERN;
+
+        $this->assertEquals($expectedPattern, $actualPattern);
+    }
+
+    public function testShouldValidateEmptyStringsWhenUsingDefaultPattern()
+    {
+        $rule = new PostalCode('ZW');
+
+        $this->assertTrue($rule->validate(''));
+    }
+
+    public function testShouldNotValidateNonEmptyStringsWhenUsingDefaultPattern()
+    {
+        $rule = new PostalCode('ZW');
+
+        $this->assertFalse($rule->validate(' '));
     }
 
     /**
      * @expectedException Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Cannot validate postal code from "Whatever" country
      */
-    public function testShouldThrowsExceptionWhenCannotFindLocalePattern()
+    public function testShouldThrowsExceptionWhenCountryCodeIsNotValid()
     {
         new PostalCode('Whatever');
     }
@@ -27,9 +62,9 @@ class PostalCodeTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider validPostalCodesProvider
      */
-    public function testShouldValidatePatternAccordingToTheDefinedLocale($locale, $postalCode)
+    public function testShouldValidatePatternAccordingToTheDefinedCountryCode($countryCode, $postalCode)
     {
-        $rule = new PostalCode($locale);
+        $rule = new PostalCode($countryCode);
 
         $this->assertTrue($rule->validate($postalCode));
     }
@@ -37,18 +72,19 @@ class PostalCodeTest extends \PHPUnit_Framework_TestCase
     public function validPostalCodesProvider()
     {
         return array(
-            array('BR', '02179000'),
             array('BR', '02179-000'),
+            array('BR', '02179000'),
             array('US', '02179'),
+            array('YE', ''),
         );
     }
 
     /**
      * @dataProvider invalidPostalCodesProvider
      */
-    public function testShouldNotValidatePatternAccordingToTheDefinedLocale($locale, $postalCode)
+    public function testShouldNotValidatePatternAccordingToTheDefinedCountryCode($countryCode, $postalCode)
     {
-        $rule = new PostalCode($locale);
+        $rule = new PostalCode($countryCode);
 
         $this->assertFalse($rule->validate($postalCode));
     }
@@ -59,6 +95,7 @@ class PostalCodeTest extends \PHPUnit_Framework_TestCase
             array('BR', '02179'),
             array('BR', '02179.000'),
             array('US', '021 79'),
+            array('YE', '02179'),
         );
     }
 }
