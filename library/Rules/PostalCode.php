@@ -6,6 +6,8 @@ use Respect\Validation\Exceptions\ComponentException;
 
 class PostalCode extends Regex
 {
+    const DEFAULT_PATTERN = '/^$/';
+
     /**
      * @link http://download.geonames.org/export/dump/countryInfo.txt
      */
@@ -32,6 +34,7 @@ class PostalCode extends Regex
         "CL" => "/^(\d{7})$/",
         "CN" => "/^(\d{6})$/",
         "CR" => "/^(\d{4})$/",
+        "CS" => "/^(\d{5})$/",
         "CU" => "/^(?:CP)*(\d{5})$/",
         "CV" => "/^(\d{4})$/",
         "CX" => "/^(\d{4})$/",
@@ -160,15 +163,21 @@ class PostalCode extends Regex
         "YT" => "/^(\d{5})$/",
         "ZA" => "/^(\d{4})$/",
         "ZM" => "/^(\d{5})$/",
-        "CS" => "/^(\d{5})$/",
     );
 
-    public function __construct($countryCode)
+    public function __construct($countryCode, CountryCode $countryCodeRule = null)
     {
-        if (!isset($this->postalCodes[$countryCode])) {
+        $countryCodeRule = $countryCodeRule ?: new CountryCode();
+        if (! $countryCodeRule->validate($countryCode)) {
             throw new ComponentException(sprintf('Cannot validate postal code from "%s" country', $countryCode));
         }
 
-        parent::__construct($this->postalCodes[$countryCode]);
+        $regex = self::DEFAULT_PATTERN;
+        $upperCountryCode = strtoupper($countryCode);
+        if (isset($this->postalCodes[$upperCountryCode])) {
+            $regex = $this->postalCodes[$upperCountryCode];
+        }
+
+        parent::__construct($regex);
     }
 }
