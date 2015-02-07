@@ -14,7 +14,7 @@ php:
 
 cache:
   directories:
-  - vendor
+    - vendor
 
 before_script:
   - composer install --dev --no-interaction --prefer-source
@@ -28,7 +28,6 @@ after_script:
 
 matrix:
   allow_failures:
-    - php: hhvm
     - php: hhvm-nightly
 
 notifications:
