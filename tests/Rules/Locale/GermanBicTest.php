@@ -1,17 +1,17 @@
 <?php
 namespace Respect\Validation\Rules\Locale;
 
-use malkusch\bav\BAV;
+use Respect\Validation\Test\LocaleTestCase;
 
 /**
  * @covers Respect\Validation\Rules\Locale\GermanBic
  * @covers Respect\Validation\Exceptions\Locale\GermanBicException
  */
-class GermanBicTest extends \PHPUnit_Framework_TestCase
+class GermanBicTest extends LocaleTestCase
 {
     public function testShouldAcceptBAVInstanceOnConstrutor()
     {
-        $bav  = new BAV();
+        $bav  = $this->getBavMock();
         $rule = new GermanBic($bav);
 
         $this->assertSame($bav, $rule->bav);
@@ -27,7 +27,7 @@ class GermanBicTest extends \PHPUnit_Framework_TestCase
     public function testShouldUseBAVInstanceToValidate()
     {
         $input  = '10000000';
-        $bav    = $this->getMock('malkusch\bav\BAV');
+        $bav    = $this->getBavMock();
         $rule   = new GermanBic($bav);
 
         $bav->expects($this->once())
@@ -41,7 +41,7 @@ class GermanBicTest extends \PHPUnit_Framework_TestCase
     public function testShouldReturnBAVInstanceResulteWhenValidating()
     {
         $input  = '10000000';
-        $bav    = $this->getMock('malkusch\bav\BAV');
+        $bav    = $this->getBavMock();
         $rule   = new GermanBic($bav);
 
         $bav->expects($this->any())
@@ -59,7 +59,7 @@ class GermanBicTest extends \PHPUnit_Framework_TestCase
     public function testShouldThowsTheRightExceptionWhenChecking()
     {
         $input  = '10000000';
-        $bav    = $this->getMock('malkusch\bav\BAV');
+        $bav    = $this->getBavMock();
         $rule   = new GermanBic($bav);
 
         $bav->expects($this->any())

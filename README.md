@@ -108,16 +108,30 @@ $usernameValidator->validate('alexandre gaigalas'); //false
 $usernameValidator->validate('#$%');                //false
 ```
 
+### Exception Types
+
+* `Respect\Validation\Exceptions\NestedValidationExceptionInterface`:
+    * Use when calling `assert()`.
+    * Interface has three methods: `getFullMessage()`, `findMessages()`, and `getMainMessage()`.
+* `Respect\Validation\Exceptions\ValidationExceptionInterface`:
+    * Use when calling `::check()`.
+    * All `Respect\Validation` validation exceptions implement this interface.
+    * Interface has one method: `getMainMessage()`;
+* `Repect\Validation\Exceptions\ExceptionInterface`:
+    * All `Respect\Validation\Exceptions` implement this interface.
+
 ### Informative Exceptions
 
 When something goes wrong, Validation can tell you exactly what's going on. For this,
 we use the `assert()` method instead of `validate()`:
 
 ```php
+use Respect\Validation\Exceptions\NestedValidationExceptionInterface
+
 try {
     $usernameValidator->assert('really messed up screen#name');
-} catch(DomainException $e) {
-   echo $e->getFullMessage();
+} catch(NestedValidationExceptionInterface $exception) {
+   echo $exception->getFullMessage();
 }
 ```
 
@@ -134,10 +148,12 @@ The text tree is fine, but unusable on a HTML form or something more custom. You
 `findMessages()` for that:
 
 ```php
+use Respect\Validation\Exceptions\NestedValidationExceptionInterface
+
 try {
     $usernameValidator->assert('really messed up screen#name');
-} catch(\InvalidArgumentException $e) {
-    var_dump($e->findMessages(array('alnum', 'length', 'noWhitespace')));
+} catch(NestedValidationExceptionInterface $exception) {
+    var_dump($exception->findMessages(array('alnum', 'length', 'noWhitespace')));
 }
 ```
 
@@ -149,7 +165,7 @@ Getting messages as an array is fine, but sometimes you need to customize them i
 to present them to the user. This is possible using the `findMessages()` method as well:
 
 ```php
-$errors = $e->findMessages(array(
+$errors = $exception->findMessages(array(
     'alnum'        => '{{name}} must contain only letters and digits',
     'length'       => '{{name}} must not have more than 15 chars',
     'noWhitespace' => '{{name}} cannot contain spaces'
@@ -183,10 +199,12 @@ validation report. There is also a `check()` method that returns an Exception
 only with the first error found:
 
 ```php
+use Respect\Validation\Exceptions\ValidationExceptionInterface
+
 try {
     $usernameValidator->check('really messed up screen#name');
-} catch(\InvalidArgumentException $e) {
-    echo $e->getMainMessage();
+} catch(ValidationExceptionInterface $exception) {
+    echo $exception->getMainMessage();
 }
 ```
 
@@ -210,6 +228,7 @@ Message:
   * [v::object()](#vobject)
   * [v::string()](#vstring)
   * [v::true()](#vtrue)
+  * [v::type()](#vtypestring-type)
   * [v::xdigit()](#vxdigit)
 
 ### Generics
@@ -220,6 +239,7 @@ Message:
   * [v::callback()](#vcallbackcallable-callback)
   * [v::filterVar()](#vfiltervarint-filter)
   * [v::not()](#vnotv-negatedvalidator)
+  * [v::type()](#vtypestring-type)
   * [v::when()](#vwhenv-if-v-then-v-else)
 
 ### Comparing Values
@@ -1902,6 +1922,26 @@ v::true()->validate('yes'); //true
 See also
 
   * [v::false()](#vfalse)
+
+#### v::type(string $type)
+
+Validates the type of input.
+
+```php
+v::type('bool')->validate(true); //true
+v::type('callable')->validate(function (){}); //true
+v::type('object')->validate(new stdClass()); //true
+```
+
+See also
+
+  * [v::arr()](#varr)
+  * [v::bool()](#vbool)
+  * [v::float()](#vfloat)
+  * [v::instance()](#vinstancestring-instancename)
+  * [v::int()](#vint)
+  * [v::object()](#vobject)
+  * [v::string()](#vstring)
 
 #### v::uploaded()
 

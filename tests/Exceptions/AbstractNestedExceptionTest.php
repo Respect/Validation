@@ -3,8 +3,25 @@ namespace Respect\Validation\Exceptions;
 
 use Respect\Validation\Validator as v;
 
+/**
+ * Class PrivateAbstractNestedException
+ * @package Respect\Validation\Exceptions
+ * phpunit has an issue with mocking exceptions when in HHVM:
+ * https://github.com/sebastianbergmann/phpunit-mock-objects/issues/207
+ */
+class PrivateAbstractNestedException extends AbstractNestedException
+{
+}
+
 class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
 {
+    public function testItImplementsNestedValidationExceptionInterface()
+    {
+        $abstractNestedException = new PrivateAbstractNestedException();
+        $this->assertInstanceOf('Respect\Validation\Exceptions\NestedValidationExceptionInterface',
+            $abstractNestedException);
+    }
+
     public function testGetRelatedShouldReturnExceptionAddedByAddRelated()
     {
         $composite = new AttributeException;
@@ -75,7 +92,7 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
                     'security_question' => null,
                 )
             );
-        } catch (ValidationException $e) {
+        } catch (NestedValidationExceptionInterface $e) {
             $messages = $e->findMessages(
                     array('allOf', 'first_name.length')
             );
@@ -114,7 +131,7 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
                     'security_question' => null,
                 )
             );
-        } catch (ValidationException $e) {
+        } catch (NestedValidationExceptionInterface $e) {
             $messages = $e->findMessages(
                     array(
                         'allOf' => 'Invalid {{name}}',
@@ -127,4 +144,3 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
         }
     }
 }
-

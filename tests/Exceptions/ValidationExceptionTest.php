@@ -3,6 +3,19 @@ namespace Respect\Validation\Exceptions;
 
 class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
 {
+    public function testItImplementsValidationExceptionInterface()
+    {
+        $validationException = new ValidationException();
+        $this->assertInstanceOf('Respect\Validation\Exceptions\ValidationExceptionInterface', $validationException);
+    }
+
+    public function testItDoesNotImplementNestedValidationExceptionInterface()
+    {
+        $validationException = new ValidationException();
+        $this->assertNotInstanceOf('Respect\Validation\Exceptions\NestedValidationExceptionInterface',
+            $validationException);
+    }
+
     /**
      * @dataProvider providerForFormat
      */
@@ -98,4 +111,3 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-
