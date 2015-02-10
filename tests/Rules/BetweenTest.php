@@ -75,5 +75,12 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
     {
         $o = new Between(10, 5);
     }
+
+    public function testShouldBeInclusiveByDefault()
+    {
+        $rule = new Between(1, 3);
+
+        $this->assertTrue($rule->validate(1));
+    }
 }
 

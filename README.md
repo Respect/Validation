@@ -568,12 +568,14 @@ See also
   * [v::bic()](#vbicstring-countrycode)
 
 #### v::between(mixed $start, mixed $end)
-#### v::between(mixed $start, mixed $end, boolean $inclusive = false)
+#### v::between(mixed $start, mixed $end, boolean $inclusive = true)
 
 Validates ranges. Most simple example:
 
 ```php
+v::int()->between(10, 20)->validate(10); //true
 v::int()->between(10, 20)->validate(15); //true
+v::int()->between(10, 20)->validate(20); //true
 ```
 
 The type as the first validator in a chain is a good practice,
@@ -1390,14 +1392,14 @@ v::macAddress()->validate('af-AA-22-33-44-55'); //true
 ```
 
 #### v::max(mixed $maxValue)
-#### v::max(mixed $maxValue, boolean $inclusive = false)
+#### v::max(mixed $maxValue, boolean $inclusive = true)
 
 Validates if the input doesn't exceed the maximum value.
 
 ```php
 v::int()->max(15)->validate(20); //false
-v::int()->max(20)->validate(20); //false
-v::int()->max(20, true)->validate(20); //true
+v::int()->max(20)->validate(20); //true
+v::int()->max(20, false)->validate(20); //false
 ```
 
 Also accepts dates:
@@ -1417,14 +1419,14 @@ See also:
   * [v::between()](#vbetweenmixed-start-mixed-end)
 
 #### v::min(mixed $minValue)
-#### v::min(mixed $minValue, boolean $inclusive = false)
+#### v::min(mixed $minValue, boolean $inclusive = true)
 
 Validates if the input is greater than the minimum value.
 
 ```php
 v::int()->min(15)->validate(5); //false
-v::int()->min(5)->validate(5); //false
-v::int()->min(5, true)->validate(5); //true
+v::int()->min(5)->validate(5); //true
+v::int()->min(5, false)->validate(5); //false
 ```
 
 Also accepts dates:

@@ -6,7 +6,7 @@ class Min extends AbstractRule
     public $inclusive;
     public $minValue;
 
-    public function __construct($minValue, $inclusive = false)
+    public function __construct($minValue, $inclusive = true)
     {
         $this->minValue = $minValue;
         $this->inclusive = $inclusive;
