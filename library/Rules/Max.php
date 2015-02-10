@@ -6,7 +6,7 @@ class Max extends AbstractRule
     public $maxValue;
     public $inclusive;
 
-    public function __construct($maxValue, $inclusive = false)
+    public function __construct($maxValue, $inclusive = true)
     {
         $this->maxValue = $maxValue;
         $this->inclusive = $inclusive;

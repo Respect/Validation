@@ -1392,14 +1392,14 @@ v::macAddress()->validate('af-AA-22-33-44-55'); //true
 ```
 
 #### v::max(mixed $maxValue)
-#### v::max(mixed $maxValue, boolean $inclusive = false)
+#### v::max(mixed $maxValue, boolean $inclusive = true)
 
 Validates if the input doesn't exceed the maximum value.
 
 ```php
 v::int()->max(15)->validate(20); //false
-v::int()->max(20)->validate(20); //false
-v::int()->max(20, true)->validate(20); //true
+v::int()->max(20)->validate(20); //true
+v::int()->max(20, false)->validate(20); //false
 ```
 
 Also accepts dates:

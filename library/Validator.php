@@ -59,7 +59,7 @@ use Respect\Validation\Rules\AllOf;
  * @method static Validator length(int $min = null, int $max = null, bool $inclusive = true)
  * @method static Validator lowercase()
  * @method static Validator macAddress()
- * @method static Validator max(mixed $maxValue, bool $inclusive = false)
+ * @method static Validator max(mixed $maxValue, bool $inclusive = true)
  * @method static Validator min(mixed $minValue, bool $inclusive = true)
  * @method static Validator minimumAge(int $age)
  * @method static Validator multiple(int $multipleOf)
