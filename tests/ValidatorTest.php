@@ -38,7 +38,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
             Validator::callback('is_string')->between(1,2)->setTemplate('{{name}} is not tasty')->assert('something');
         } catch (NestedValidationExceptionInterface $e) {
             $this->assertEquals('\-"something" is not tasty
-  \-"something" must be greater than 1', $e->getFullMessage());
+  \-"something" must be greater than or equals 1', $e->getFullMessage());
         }
     }
     public function testGetFullMessageShouldIncludeAllValidationMessagesInAChain()

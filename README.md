@@ -568,12 +568,14 @@ See also
   * [v::bic()](#vbicstring-countrycode)
 
 #### v::between(mixed $start, mixed $end)
-#### v::between(mixed $start, mixed $end, boolean $inclusive = false)
+#### v::between(mixed $start, mixed $end, boolean $inclusive = true)
 
 Validates ranges. Most simple example:
 
 ```php
+v::int()->between(10, 20)->validate(10); //true
 v::int()->between(10, 20)->validate(15); //true
+v::int()->between(10, 20)->validate(20); //true
 ```
 
 The type as the first validator in a chain is a good practice,

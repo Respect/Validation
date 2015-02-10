@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AllOf;
  * @method static Validator bank(string $countryCode)
  * @method static Validator bankAccount(string $countryCode)
  * @method static Validator base()
- * @method static Validator between(mixed $min = null, mixed $max = null, bool $inclusive = false)
+ * @method static Validator between(mixed $min = null, mixed $max = null, bool $inclusive = true)
  * @method static Validator bic(string $countryCode)
  * @method static Validator bool()
  * @method static Validator call()
