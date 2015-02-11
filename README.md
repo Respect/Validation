@@ -374,6 +374,7 @@ Message:
   * [v::cpf()](#vcpf)
   * [v::domain()](#vdomain)
   * [v::email()](#vemail)
+  * [v::factory()](#vfactoryrulename-array-constructorargs--null)
   * [v::hexRgbColor()](#vhexrgbcolor)
   * [v::ip()](#vip)
   * [v::json()](#vjson)
@@ -1128,6 +1129,22 @@ See also
 
   * [v::odd()](#vodd)
   * [v::multiple()](#vmultipleint-multipleof)
+
+#### v::factory($ruleName, array $constructorArgs = null)
+
+Create rules by its name.
+
+```php
+v::factory('int')->validate(42); //true
+```
+
+The best think on this rule if that you also can append or prepend custom prefixes
+to use your own rules:
+
+```php
+Respect\Validation\Rules\Factory::prependPrefix('My\\Priority\\Rules\\');
+Respect\Validation\Rules\Factory::appendPrefix('My\\Other\\Rules\\');
+```
 
 #### v::file()
 
