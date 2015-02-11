@@ -1,6 +1,8 @@
 <?php
 namespace Respect\Validation\Rules;
 
+use DateTime;
+
 class MinTest extends \PHPUnit_Framework_TestCase
 {
     /**
@@ -35,6 +37,15 @@ class MinTest extends \PHPUnit_Framework_TestCase
             array(-100, false, 200),
             array(200, true, 200),
             array(200, false, 300),
+            array('a', true, 'a'),
+            array('a', true, 'c'),
+            array('yesterday', true, 'now'),
+
+            // Samples from issue #178
+            array('13-05-2014 03:16', true, '20-05-2014 03:16'),
+            array(new DateTime('13-05-2014 03:16'), true, new DateTime('20-05-2014 03:16')),
+            array('13-05-2014 03:16', true, new DateTime('20-05-2014 03:16')),
+            array(new DateTime('13-05-2014 03:16'), true, '20-05-2014 03:16'),
         );
     }
 
