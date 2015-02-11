@@ -106,6 +106,45 @@ use Respect\Validation\Rules\AllOf;
  */
 class Validator extends AllOf
 {
+    protected static $factory;
+
+    /**
+     * @return Factory
+     */
+    protected static function getFactory()
+    {
+        if (! static::$factory instanceof Factory) {
+            static::$factory = new Factory();
+        }
+
+        return static::$factory;
+    }
+
+    /**
+     * @param Factory $factory
+     *
+     * @return null
+     */
+    public static function setFactory($factory)
+    {
+        static::$factory = $factory;
+    }
+
+    /**
+     * @param string $rulePrefix
+     * @param bool   $prepend
+     *
+     * @return null
+     */
+    public static function with($rulePrefix, $prepend = false)
+    {
+        if (false === $prepend) {
+            self::getFactory()->appendRulePrefix($rulePrefix);
+        } else {
+            self::getFactory()->prependRulePrefix($rulePrefix);
+        }
+    }
+
     /**
      * @param string $ruleName
      * @param array  $arguments
@@ -131,18 +170,10 @@ class Validator extends AllOf
      */
     public static function buildRule($ruleSpec, $arguments = array())
     {
-        if ($ruleSpec instanceof Validatable) {
-            return $ruleSpec;
-        }
-
         try {
-            $validatorFqn = 'Respect\\Validation\\Rules\\'.ucfirst($ruleSpec);
-            $validatorClass = new ReflectionClass($validatorFqn);
-            $validatorInstance = $validatorClass->newInstanceArgs($arguments);
-
-            return $validatorInstance;
-        } catch (ReflectionException $e) {
-            throw new ComponentException($e->getMessage());
+            return static::getFactory()->rule($ruleSpec, $arguments);
+        } catch (\Exception $exception) {
+            throw new ComponentException($exception->getMessage(), $exception->getCode(), $exception);
         }
     }
 
