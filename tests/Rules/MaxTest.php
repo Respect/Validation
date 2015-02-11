@@ -33,6 +33,10 @@ class MaxTest extends \PHPUnit_Framework_TestCase
             array(200, false, -200),
             array(200, true, 200),
             array(200, false, 0),
+            array('-18 years', true, '1988-09-09'),
+            array('z', true, 'z'),
+            array('z', false, 'y'),
+            array('tomorrow', true, 'now'),
         );
     }
 

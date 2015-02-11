@@ -1,23 +1,14 @@
 <?php
 namespace Respect\Validation\Rules;
 
-class Max extends AbstractRule
+class Max extends AbstractInterval
 {
-    public $maxValue;
-    public $inclusive;
-
-    public function __construct($maxValue, $inclusive = false)
-    {
-        $this->maxValue = $maxValue;
-        $this->inclusive = $inclusive;
-    }
-
     public function validate($input)
     {
         if ($this->inclusive) {
-            return $input <= $this->maxValue;
-        } else {
-            return $input < $this->maxValue;
+            return $this->filterInterval($input) <= $this->filterInterval($this->interval);
         }
+
+        return $this->filterInterval($input) < $this->filterInterval($this->interval);
     }
 }
