@@ -9,15 +9,15 @@
 
 [The most awesome validation engine ever created for PHP.](http://bit.ly/1a1oeQv)
 
-- Complex rules made simple: `v::numeric()->positive()->between(1, 256)->validate($myNumber)`.
-- [Granularity control](https://github.com/Respect/Validation#validation-methods) for advanced reporting.
-- More than 90 (fully tested) validators.
-- [A concrete API](https://gist.github.com/alganet/b66bc8281672ca3d3b42) for non fluent usage.
+* Complex rules made simple: `v::numeric()->positive()->between(1, 256)->validate($myNumber)`.
+* [Granularity control](https://github.com/Respect/Validation#validation-methods) for advanced reporting.
+* Almost 100 (fully tested) validators.
+* [A concrete API](https://gist.github.com/alganet/b66bc8281672ca3d3b42) for non fluent usage.
 
 ## Installation
 
-The package is available on [Packagist](http://packagist.org/packages/respect/validation).
-Autoloading is [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md) compatible.
+Package is available on [Packagist](http://packagist.org/packages/respect/validation),
+you can install it using [Composer](http://getcomposer.org).
 
 ```shell
 composer require respect/validation
@@ -110,15 +110,17 @@ $usernameValidator->validate('#$%');                //false
 
 ### Exception Types
 
-* `Respect\Validation\Exceptions\NestedValidationExceptionInterface`:
-    * Use when calling `assert()`.
-    * Interface has three methods: `getFullMessage()`, `findMessages()`, and `getMainMessage()`.
-* `Respect\Validation\Exceptions\ValidationExceptionInterface`:
-    * Use when calling `::check()`.
-    * All `Respect\Validation` validation exceptions implement this interface.
-    * Interface has one method: `getMainMessage()`;
 * `Repect\Validation\Exceptions\ExceptionInterface`:
-    * All `Respect\Validation\Exceptions` implement this interface.
+    * All exceptions implement this interface;
+* `Respect\Validation\Exceptions\ValidationExceptionInterface`:
+    * Extends the `Repect\Validation\Exceptions\ExceptionInterface` interface
+    * Use when calling `check()`
+    * All validation exceptions implement this interface
+    * Interface has one method: `getMainMessage()`
+* `Respect\Validation\Exceptions\NestedValidationExceptionInterface`:
+    * Extends the `Respect\Validation\Exceptions\ValidationExceptionInterface` interface
+    * Use when calling `assert()`
+    * Interface has three methods: `getFullMessage()`, `findMessages()`, and `getMainMessage()`.
 
 ### Informative Exceptions
 
@@ -233,165 +235,167 @@ Message:
 
 ### Types
 
-  * [v::arr()](#varr)
-  * [v::bool()](#vbool)
-  * [v::date()](#vdate)
-  * [v::false()](#vfalse)
-  * [v::float()](#vfloat)
-  * [v::instance()](#vinstancestring-instancename)
-  * [v::int()](#vint)
-  * [v::nullValue()](#vnullvalue)
-  * [v::numeric()](#vnumeric)
-  * [v::object()](#vobject)
-  * [v::string()](#vstring)
-  * [v::true()](#vtrue)
-  * [v::type()](#vtypestring-type)
-  * [v::xdigit()](#vxdigit)
+  * [arr](#arr)
+  * [bool](#bool)
+  * [date](#date)
+  * [false](#false)
+  * [float](#float)
+  * [instance](#instance)
+  * [int](#int)
+  * [nullValue](#nullvalue)
+  * [numeric](#numeric)
+  * [object](#object)
+  * [string](#string)
+  * [true](#true)
+  * [type](#type)
+  * [xdigit](#xdigit)
 
 ### Generics
 
-  * [v::alwaysInvalid()](#valwaysinvalid)
-  * [v::alwaysValid()](#valwaysvalid)
-  * [v::call()](#vcallcallable-callback)
-  * [v::callback()](#vcallbackcallable-callback)
-  * [v::filterVar()](#vfiltervarint-filter)
-  * [v::not()](#vnotv-negatedvalidator)
-  * [v::type()](#vtypestring-type)
-  * [v::when()](#vwhenv-if-v-then-v-else)
+  * [alwaysInvalid](#alwaysinvalid)
+  * [alwaysValid](#alwaysvalid)
+  * [call](#call)
+  * [callback](#callback)
+  * [filterVar](#filtervar)
+  * [not](#not)
+  * [type](#type)
+  * [when](#when)
 
 ### Comparing Values
 
-  * [v::between()](#vbetweenmixed-start-mixed-end)
-  * [v::equals()](#vequalsmixed-value)
-  * [v::max()](#vmaxmixed-maxvalue)
-  * [v::min()](#vminmixed-minvalue)
+  * [between](#between)
+  * [equals](#equals)
+  * [max](#max)
+  * [min](#min)
 
 ### Numeric
 
-  * [v::between()](#vbetweenmixed-start-mixed-end)
-  * [v::bool()](#vbool)
-  * [v::even()](#veven)
-  * [v::float()](#vfloat)
-  * [v::int()](#vint)
-  * [v::multiple()](#vmultipleint-multipleof)
-  * [v::negative()](#vnegative)
-  * [v::notEmpty()](#vnotempty)
-  * [v::numeric()](#vnumeric)
-  * [v::odd()](#vodd)
-  * [v::perfectSquare()](#vperfectsquare)
-  * [v::positive()](#vpositive)
-  * [v::primeNumber()](#vprimenumber)
-  * [v::roman()](#vroman)
-  * [v::xdigit()](#vxdigit)
+  * [between](#between)
+  * [bool](#bool)
+  * [even](#even)
+  * [float](#float)
+  * [int](#int)
+  * [multiple](#multiple)
+  * [negative](#negative)
+  * [notEmpty](#notempty)
+  * [numeric](#numeric)
+  * [odd](#odd)
+  * [perfectSquare](#perfectsquare)
+  * [positive](#positive)
+  * [primeNumber](#primenumber)
+  * [roman](#roman)
+  * [xdigit](#xdigit)
 
 ### String
 
-  * [v::alnum()](#valnum)
-  * [v::alpha()](#valpha)
-  * [v::between()](#vbetweenmixed-start-mixed-end)
-  * [v::charset()](#vcharsetmixed-charset)
-  * [v::cntrl()](#vcntrl)
-  * [v::consonant()](#vconsonant)
-  * [v::contains()](#vcontainsmixed-value)
-  * [v::digit()](#vdigit)
-  * [v::endsWith()](#vendswithmixed-value)
-  * [v::graph()](#vgraph)
-  * [v::in()](#vinmixed-haystack)
-  * [v::length()](#vlengthint-min-int-max)
-  * [v::lowercase()](#vlowercase)
-  * [v::notEmpty()](#vnotempty)
-  * [v::noWhitespace()](#vnowhitespace)
-  * [v::prnt()](#vprnt)
-  * [v::punct()](#vpunct)
-  * [v::regex()](#vregexstring-regex)
-  * [v::slug()](#vslug)
-  * [v::space()](#vspace)
-  * [v::startsWith()](#vstartswithmixed-value)
-  * [v::uppercase()](#vuppercase)
-  * [v::version()](#vversion)
-  * [v::vowel()](#vvowel)
-  * [v::xdigit()](#vxdigit)
+  * [alnum](#alnum)
+  * [alpha](#alpha)
+  * [between](#between)
+  * [charset](#charset)
+  * [cntrl](#cntrl)
+  * [consonant](#consonant)
+  * [contains](#contains)
+  * [digit](#digit)
+  * [endsWith](#endswith)
+  * [graph](#graph)
+  * [in](#in)
+  * [length](#length)
+  * [lowercase](#lowercase)
+  * [notEmpty](#notempty)
+  * [noWhitespace](#nowhitespace)
+  * [prnt](#prnt)
+  * [punct](#punct)
+  * [regex](#regex)
+  * [slug](#slug)
+  * [space](#space)
+  * [startsWith](#startswith)
+  * [uppercase](#uppercase)
+  * [version](#version)
+  * [vowel](#vowel)
+  * [xdigit](#xdigit)
 
 ### Arrays
 
-  * [v::arr()](#varr)
-  * [v::contains()](#vcontainsmixed-value)
-  * [v::each()](#veachv-validatorforvalue)
-  * [v::endsWith()](#vendswithmixed-value)
-  * [v::in()](#vinmixed-haystack)
-  * [v::key()](#vkeystring-name)
-  * [v::length()](#vlengthint-min-int-max)
-  * [v::notEmpty()](#vnotempty)
-  * [v::startsWith()](#vstartswithmixed-value)
+  * [arr](#arr)
+  * [contains](#contains)
+  * [each](#each)
+  * [endsWith](#endswith)
+  * [in](#in)
+  * [key](#key)
+  * [length](#length)
+  * [notEmpty](#notempty)
+  * [startsWith](#startswith)
 
 ### Objects
 
-  * [v::attribute()](#vattributestring-name)
-  * [v::instance()](#vinstancestring-instancename)
-  * [v::length()](#vlengthint-min-int-max)
+  * [attribute](#attribute)
+  * [instance](#instance)
+  * [length](#length)
 
 ### Date and Time
 
-  * [v::between()](#vbetweenmixed-start-mixed-end)
-  * [v::date()](#vdate)
-  * [v::leapDate()](#vleapdatestring-format)
-  * [v::leapYear()](#vleapyear)
-  * [v::minimumAge()](#vminimumageint-age)
+  * [between](#between)
+  * [date](#date)
+  * [leapDate](#leapdate)
+  * [leapYear](#leapyear)
+  * [minimumAge](#minimumage)
 
 ### Group Validators
 
-  * [v::allOf()](#vallofv-v1-v-v2-v-v3)
-  * [v::noneOf()](#vnoneofv-v1-v-v2-v-v3)
-  * [v::oneOf()](#voneofv-v1-v-v2-v-v3)
+  * [allOf](#allof)
+  * [noneOf](#noneof)
+  * [oneOf](#oneof)
 
 ### Regional
 
-  * [v::countryCode()](#vcountrycode)
-  * [v::postalCode()](#vpostalcodestring-countrycode)
-  * [v::tld()](#vtld)
+  * [countryCode](#countrycode)
+  * [postalCode](#postalcode)
+  * [tld](#tld)
 
 ### Files
 
-  * [v::directory()](#vdirectory)
-  * [v::executable()](#vexecutable)
-  * [v::exists()](#vexists)
-  * [v::file()](#vfile)
-  * [v::readable()](#vreadable)
-  * [v::symbolicLink()](#vsymboliclink)
-  * [v::uploaded()](#vuploaded)
-  * [v::writable()](#vwritable)
+  * [directory](#directory)
+  * [executable](#executable)
+  * [exists](#exists)
+  * [file](#file)
+  * [readable](#readable)
+  * [symbolicLink](#symboliclink)
+  * [uploaded](#uploaded)
+  * [writable](#writable)
 
 ### Banking
 
-  * [v::bank()](#vbankstring-countrycode)
-  * [v::bankAccount()](#vbankaccountstring-countrycode-string-bank)
-  * [v::bic()](#vbicstring-countrycode)
+  * [bank](#bank)
+  * [bankAccount](#bankaccount)
+  * [bic](#bic)
 
 ### Other
 
-  * [v::cnh()](#vcnh)
-  * [v::cnpj()](#vcnpj)
-  * [v::cpf()](#vcpf)
-  * [v::domain()](#vdomain)
-  * [v::email()](#vemail)
-  * [v::hexRgbColor()](#vhexrgbcolor)
-  * [v::ip()](#vip)
-  * [v::json()](#vjson)
-  * [v::macAddress()](#vmacaddress)
-  * [v::nfeAccessKey()](#vnfeaccesskeystring-accesskey)
-  * [v::phone()](#vphone)
-  * [v::sf()](#vsfstring-validator)
-  * [v::url()](#vurl)
-  * [v::zend()](#vzendmixed-validator)
+  * [cnh](#cnh)
+  * [cnpj](#cnpj)
+  * [cpf](#cpf)
+  * [domain](#domain)
+  * [email](#email)
+  * [hexRgbColor](#hexrgbcolor)
+  * [ip](#ip)
+  * [json](#json)
+  * [macAddress](#macaddress)
+  * [nfeAccessKey](#nfeaccesskey)
+  * [phone](#phone)
+  * [sf](#sf)
+  * [url](#url)
+  * [zend](#zend)
 
 ### Yes/No
 
-  * [v::no()](#vno)
-  * [v::yes()](#vyes)
+  * [no](#no)
+  * [yes](#yes)
 
 ### Alphabetically
 
-#### v::allOf(v $v1, v $v2, v $v3...)
+#### allOf
+
+- `v::allOf(v $v1, v $v2, v $v3...)`
 
 Will validate if all inner validators validates.
 
@@ -415,12 +419,14 @@ v::allOf(
 
 See also:
 
-  * [v::oneOf()](#voneofv-v1-v-v2-v-v3)  - Validates if at least one inner rule pass
-  * [v::noneOf()](#vnoneofv-v1-v-v2-v-v3) - Validates if no inner rules pass
-  * [v::when()](#vwhenv-if-v-then-v-else)   - A Ternary validator
+  * [oneOf](#oneof)
+  * [noneOf](#noneof)
+  * [when](#when)
 
-#### v::alnum()
-#### v::alnum(string $additionalChars)
+#### alnum
+
+- `v::alnum()`
+- `v::alnum(string $additionalChars)`
 
 Validates alphanumeric characters from a-Z and 0-9.
 
@@ -460,13 +466,15 @@ the string of extra chars passed as the parameter.
 
 See also:
 
-  * [v::alpha()](#valpha)  - a-Z, empty or whitespace only
-  * [v::digit()](#vdigit) - 0-9, empty or whitespace only
-  * [v::consonant()](#vconsonant)
-  * [v::vowel()](#vvowel)
+  * [alpha](#alpha)
+  * [digit](#digit)
+  * [consonant](#consonant)
+  * [vowel](#vowel)
 
-#### v::alpha()
-#### v::alpha(string $additionalChars)
+#### alpha
+
+- `v::alpha()`
+- `v::alpha(string $additionalChars)`
 
 This is similar to v::alnum(), but it doesn't allow numbers. It also
 accepts empty values and whitespace, so use `v::notEmpty()` and
@@ -474,12 +482,42 @@ accepts empty values and whitespace, so use `v::notEmpty()` and
 
 See also:
 
-  * [v::alnum()](#valnum)  - a-z0-9, empty or whitespace only
-  * [v::digit()](#vdigit) - 0-9, empty or whitespace only
-  * [v::consonant()](#vconsonant)
-  * [v::vowel()](#vvowel)
+  * [alnum](#alnum)
+  * [digit](#digit)
+  * [consonant](#consonant)
+  * [vowel](#vowel)
 
-#### v::arr()
+#### alwaysInvalid
+
+- `v::alwaysInvalid()`
+
+Always return false.
+
+```php
+v::alwaysInvalid()->validate($whatever); //false
+```
+
+See also:
+
+  * [alwaysValid](#alwaysvalid)
+
+#### alwaysValid
+
+- `v::alwaysValid()`
+
+Always returns true.
+
+```php
+v::alwaysValid()->validate($whatever); //true
+```
+
+See also:
+
+  * [alwaysInvalid](#alwaysinvalid)
+
+#### arr
+
+- `v::arr()`
 
 Validates if the input is an array or traversable object.
 
@@ -490,36 +528,14 @@ v::arr()->validate(new ArrayObject); //true
 
 See also:
 
-  * [v::each()](#veachv-validatorforvalue) - Validates each member of an array
-  * [v::key()](#vkeystring-name)  - Validates a specific key of an array
+  * [each](#each)
+  * [key](#key)
 
-#### v::alwaysValid()
+#### attribute
 
-Always returns true.
-
-```php
-v::alwaysValid()->validate($whatever); //true
-```
-
-See also:
-
-  * [v::alwaysInvalid()](#valwaysinvalid)
-
-#### v::alwaysInvalid()
-
-Always return false.
-
-```php
-v::alwaysInvalid()->validate($whatever); //false
-```
-
-See also:
-
-  * [v::alwaysValid()](#valwaysvalid)
-
-#### v::attribute(string $name)
-#### v::attribute(string $name, v $validator)
-#### v::attribute(string $name, v $validator, boolean $mandatory = true)
+- `v::attribute(string $name)`
+- `v::attribute(string $name, v $validator)`
+- `v::attribute(string $name, v $validator, boolean $mandatory = true)`
 
 Validates an object attribute.
 
@@ -546,9 +562,11 @@ The name of this validator is automatically set to the attribute name.
 
 See also:
 
-  * [v::key()](#vkeystring-name) - Validates a specific key of an array
+  * [key](#key)
 
-#### v::bank(string $countryCode)
+#### bank
+
+- `v::bank(string $countryCode)`
 
 Validates a bank.
 
@@ -563,10 +581,12 @@ These country codes are supported:
 
 See also
 
-  * [v::bankAccount()](#vbankaccountstring-countrycode-string-bank)
-  * [v::bic()](#vbicstring-countrycode)
+  * [bankAccount](#bankaccount)
+  * [bic](#bic)
 
-#### v::bankAccount(string $countryCode, string $bank)
+#### bankAccount
+
+- `v::bankAccount(string $countryCode, string $bank)`
 
 Validates a bank account for a given bank.
 
@@ -581,11 +601,13 @@ These country codes are supported:
 
 See also
 
-  * [v::bank()](#vbankstring-countrycode)
-  * [v::bic()](#vbicstring-countrycode)
+  * [bank](#bank)
+  * [bic](#bic)
 
-#### v::between(mixed $start, mixed $end)
-#### v::between(mixed $start, mixed $end, boolean $inclusive = false)
+#### between
+
+- `v::between(mixed $start, mixed $end)`
+- `v::between(mixed $start, mixed $end, boolean $inclusive = false)`
 
 Validates ranges. Most simple example:
 
@@ -622,11 +644,13 @@ Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.
 
 See also:
 
-  * [v::length()](#vlengthint-min-int-max) - Validates the length of a input
-  * [v::min()](#vminmixed-minvalue)
-  * [v::max()](#vmaxmixed-maxvalue)
+  * [length](#length)
+  * [min](#min)
+  * [max](#max)
 
-#### v::bic(string $countryCode)
+#### bic
+
+- `v::bic(string $countryCode)`
 
 Validates a BIC (Bank Identifier Code) for a given country.
 
@@ -641,10 +665,12 @@ Theses country codes are supported:
 
 See also
 
-  * [v::bank()](#vbankstring-countrycode)
-  * [v::bankAccount()](#vbankaccountstring-countrycode-string-bank)
+  * [bank](#bank)
+  * [bankAccount](#bankaccount)
 
-#### v::bool()
+#### bool
+
+- `v::bool()`
 
 Validates if the input is a boolean value:
 
@@ -653,7 +679,9 @@ v::bool()->validate(true); //true
 v::bool()->validate(false); //true
 ```
 
-#### v::call(callable $callback)
+#### call
+
+- `v::call(callable $callback)`
 
 This is a very low level validator. It calls a function, method or closure
 for the input and then validates it. Consider the following variable:
@@ -700,9 +728,11 @@ v::call(function($input) {}, v::int())->validate($myInput);
 
 See also:
 
-  * [v::callback()](#vcallbackcallable-callback) - Similar, but a different workflow.
+  * [callback](#callback)
 
-#### v::callback(callable $callback)
+#### callback
+
+- `v::callback(callable $callback)`
 
 This is a wildcard validator, it uses a function name, method or closure
 to validate something:
@@ -717,10 +747,12 @@ As in `v::call()`, you can pass a method or closure to it.
 
 See also:
 
-  * [v::call()](#vcallcallable-callback) - A more elaborated building block validator
-  * [v::filterVar()](#vfiltervarint-filter)
+  * [call](#call)
+  * [filterVar](#filtervar)
 
-#### v::charset(mixed $charset)
+#### charset
+
+- `v::charset(mixed $charset)`
 
 Validates if a string is in a specific charset.
 
@@ -732,26 +764,54 @@ v::charset(array('ISO-8859-1', 'EUC-JP'))->validate('日本国'); // true
 
 The array format is a logic OR, not AND.
 
-#### v::cnpj()
+#### cnh
+
+- `v::cnh()`
+
+Validates a Brazillian driver's license.
+
+```php
+v::cnh()->validate('02650306461'); //true
+```
+
+See also:
+
+  * [cnpj](#cnpj)
+  * [cpf](#cpf)
+
+#### cnpj
+
+- `v::cnpj()`
 
 Validates the Brazillian CNPJ number. Ignores non-digit chars, so
 use `->digit()` if needed.
 
 See also:
 
-  * [v::cpf()](#vcpf) - Validates the Brazillian CPF number.
-  * [v::cnh()](#vcnh) - Validates the Brazillian driver's license.
+  * [cpf](#cpf)
+  * [cnh](#cnh)
 
-#### v::nfeAccessKey(string $accessKey)
+#### cntrl
 
-Validates the access key of the Brazilian electronic invoice (NFe).
+- `v::cntrl()`
+- `v::cntrl(string $additionalChars)`
+
+This is similar to `v::alnum()`, but only accepts control characters:
 
 ```php
-v::nfeAccessKey()->validate('31841136830118868211870485416765268625116906'); //true
+v::cntrl()->validate("\n\r\t"); //true
 ```
 
-#### v::consonant()
-#### v::consonant(string $additionalChars)
+See also:
+
+  * [alnum](#alnum)
+  * [prnt](#prnt)
+  * [space](#space)
+
+#### consonant
+
+- `v::consonant()`
+- `v::consonant(string $additionalChars)`
 
 Similar to `v::alnum()`. Validates strings that contain only consonants:
 
@@ -761,13 +821,15 @@ v::consonant()->validate('xkcd'); //true
 
 See also:
 
-  * [v::alnum()](#valnum)  - a-z0-9, empty or whitespace only
-  * [v::digit()](#vdigit) - 0-9, empty or whitespace only
-  * [v::alpha()](#valpha)  - a-Z, empty or whitespace only
-  * [v::vowel()](#vvowel)
+  * [alnum](#alnum)
+  * [digit](#digit)
+  * [alpha](#alpha)
+  * [vowel](#vowel)
 
-#### v::contains(mixed $value)
-#### v::contains(mixed $value, boolean $identical = false)
+#### contains
+
+- `v::contains(mixed $value)`
+- `v::contains(mixed $value, boolean $identical = false)`
 
 For strings:
 
@@ -788,26 +850,13 @@ Message template for this validator includes `{{containsValue}}`.
 
 See also:
 
-  * [v::startsWith()](#vstartswithmixed-value)
-  * [v::endsWith()](#vendswithmixed-value)
-  * [v::in()](#vinmixed-haystack)
+  * [startsWith](#startswith)
+  * [endsWith](#endswith)
+  * [in](#in)
 
-#### v::cntrl()
-#### v::cntrl(string $additionalChars)
+#### countryCode
 
-This is similar to `v::alnum()`, but only accepts control characters:
-
-```php
-v::cntrl()->validate("\n\r\t"); //true
-```
-
-See also:
-
-  * [v::alnum()](#valnum)     - a-z0-9, empty or whitespace only
-  * [v::prnt()](#vprnt)      - all printable characters
-  * [v::space()](#vspace)     - empty or whitespace only
-
-#### v::countryCode()
+- `v::countryCode()`
 
 Validates an ISO country code like US or BR.
 
@@ -817,22 +866,11 @@ v::countryCode()->validate('BR'); //true
 
 See also:
 
-  * [v::tld()](#vtld) - Validates a top level domain
+  * [tld](#tld)
 
-#### v::cnh()
+#### cpf
 
-Validates a Brazillian driver's license.
-
-```php
-v::cnh()->validate('02650306461'); //true
-```
-
-See also:
-
-  * [v::cnpj()](#vcnpj)
-  * [v::cpf()](#vcpf)
-
-#### v::cpf()
+- `v::cpf()`
 
 Validates a Brazillian CPF number.
 
@@ -855,10 +893,12 @@ v::digit()->cpf()->validate('44455566820'); //true
 
 See also:
 
-  * [v::cnpj()](#vcnpj)
-  * [v::cnh()](#vcnh)
+  * [cnpj](#cnpj)
+  * [cnh](#cnh)
 
-#### v::creditCard()
+#### creditCard
+
+- `v::creditCard()`
 
 Validates a credit card number.
 
@@ -872,8 +912,10 @@ It ignores any non-digit chars, so use `->digit()` when appropriate.
 v::digit()->creditCard()->validate('5376747397208720'); //true
 ```
 
-#### v::date()
-#### v::date(string $format)
+#### date
+
+- `v::date()`
+- `v::date(string $format)`
 
 Validates if input is a date:
 
@@ -905,12 +947,14 @@ Message template for this validator includes `{{format}}`.
 
 See also:
 
-  * [v::between()](#vbetweenmixed-start-mixed-end)
-  * [v::minimumAge()](#vminimumageint-age)
-  * [v::leapDate()](#vleapdatestring-format)
-  * [v::leapYear()](#vleapyear)
+  * [between](#between)
+  * [minimumAge](#minimumage)
+  * [leapDate](#leapdate)
+  * [leapYear](#leapyear)
 
-#### v::digit()
+#### digit
+
+- `v::digit()`
 
 This is similar to v::alnum(), but it doesn't allow a-Z. It also
 accepts empty values and whitespace, so use `v::notEmpty()` and
@@ -918,13 +962,37 @@ accepts empty values and whitespace, so use `v::notEmpty()` and
 
 See also:
 
-  * [v::alnum()](#valnum)  - a-z0-9, empty or whitespace only
-  * [v::alpha()](#valpha)  - a-Z, empty or whitespace only
-  * [v::vowel()](#vvowel)
-  * [v::consonant()](#vconsonant)
+  * [alnum](#alnum)
+  * [alpha](#alpha)
+  * [vowel](#vowel)
+  * [consonant](#consonant)
 
-#### v::domain()
-#### v::domain(boolean $tldCheck = true)
+#### directory
+
+- `v::directory()`
+
+Validates directories.
+
+```php
+v::directory()->validate(__DIR__); //true
+v::directory()->validate(__FILE__); //false
+```
+
+This validator will consider SplFileInfo instances, so you can do something like:
+
+```php
+v::directory()->validate(new \SplFileInfo($directory));
+```
+
+See also
+
+  * [exists](#exists)
+  * [file](#file)
+
+#### domain
+
+- `v::domain()`
+- `v::domain(boolean $tldCheck = true)`
 
 Validates domain names.
 
@@ -954,35 +1022,17 @@ Messages for this validator will reflect rules above.
 
 See also:
 
-  * [v::tld()](#vtld)
-  * [v::ip()](#vip)
+  * [tld](#tld)
+  * [ip](#ip)
 
 [PunnyCode]: http://en.wikipedia.org/wiki/Punycode "Wikipedia: Punnycode"
 [IDNA]: http://en.wikipedia.org/wiki/Internationalized_domain_name#Internationalizing_Domain_Names_in_Applications "Wikipedia: Internationalized domain name"
 
-#### v::directory()
+#### each
 
-Validates directories.
-
-```php
-v::directory()->validate(__DIR__); //true
-v::directory()->validate(__FILE__); //false
-```
-
-This validator will consider SplFileInfo instances, so you can do something like:
-
-```php
-v::directory()->validate(new \SplFileInfo($directory));
-```
-
-See also
-
-  * [v::exists()](#vexists)
-  * [v::file()](#vfile)
-
-#### v::each(v $validatorForValue)
-#### v::each(null, v $validatorForKey)
-#### v::each(v $validatorForValue, v $validatorForKey)
+- `v::each(v $validatorForValue)`
+- `v::each(null, v $validatorForKey)`
+- `v::each(v $validatorForValue, v $validatorForKey)`
 
 Iterates over an array or Iterator and validates the value or key
 of each entry:
@@ -1002,10 +1052,12 @@ Using `arr()` before `each()` is a best practice.
 
 See also:
 
-  * [v::key()](#vkeystring-name)
-  * [v::arr()](#varr)
+  * [key](#key)
+  * [arr](#arr)
 
-#### v::email()
+#### email
+
+- `v::email()`
 
 Validates an email address.
 
@@ -1013,58 +1065,10 @@ Validates an email address.
 v::email()->validate('alexandre@gaigalas.net'); //true
 ```
 
-#### v::executable()
+#### endsWith
 
-Validates if a file is an executable.
-
-```php
-v::email()->executable('script.sh'); //true
-```
-
-See also
-
-  * [v::readable()](#vreadable)
-  * [v::writable()](#vwritable)
-
-#### v::exists()
-
-Validates files or directories.
-
-```php
-v::exists()->validate(__FILE__); //true
-v::exists()->validate(__DIR__); //true
-```
-
-This validator will consider SplFileInfo instances, so you can do something like:
-
-```php
-v::exists()->validate(new \SplFileInfo($file));
-```
-
-See also
-
-  * [v::directory()](#vdirectory)
-  * [v::file()](#vfile)
-
-#### v::false()
-
-Validates if a value is considered as `false`.
-
-```php
-v::false()->validate(false); //true
-v::false()->validate(0); //true
-v::false()->validate('0'); //true
-v::false()->validate('false'); //true
-v::false()->validate('off'); //true
-v::false()->validate('no'); //true
-```
-
-See also
-
-  * [v::true()](#vtrue)
-
-#### v::endsWith(mixed $value)
-#### v::endsWith(mixed $value, boolean $identical = false)
+- `v::endsWith(mixed $value)`
+- `v::endsWith(mixed $value, boolean $identical = false)`
 
 This validator is similar to `v::contains()`, but validates
 only if the value is at the end of the input.
@@ -1088,12 +1092,14 @@ Message template for this validator includes `{{endValue}}`.
 
 See also:
 
-  * [v::startsWith()](#vstartswithmixed-value)
-  * [v::contains()](#vcontainsmixed-value)
-  * [v::in()](#vinmixed-haystack)
+  * [startsWith](#startswith)
+  * [contains](#contains)
+  * [in](#in)
 
-#### v::equals(mixed $value)
-#### v::equals(mixed $value, boolean $identical = false)
+#### equals
+
+- `v::equals(mixed $value)`
+- `v::equals(mixed $value, boolean $identical = false)`
 
 Validates if the input is equal some value.
 
@@ -1112,9 +1118,11 @@ Message template for this validator includes `{{compareTo}}`.
 
 See also:
 
-  * [v::contains()](#vcontainsmixed-value)
+  * [contains](#contains)
 
-#### v::even()
+#### even
+
+- `v::even()`
 
 Validates an even number.
 
@@ -1126,10 +1134,68 @@ Using `int()` before `even()` is a best practice.
 
 See also
 
-  * [v::odd()](#vodd)
-  * [v::multiple()](#vmultipleint-multipleof)
+  * [odd](#odd)
+  * [multiple](#multiple)
 
-#### v::file()
+#### executable
+
+- `v::executable()`
+
+Validates if a file is an executable.
+
+```php
+v::email()->executable('script.sh'); //true
+```
+
+See also
+
+  * [readable](#readable)
+  * [writable](#writable)
+
+#### exists
+
+- `v::exists()`
+
+Validates files or directories.
+
+```php
+v::exists()->validate(__FILE__); //true
+v::exists()->validate(__DIR__); //true
+```
+
+This validator will consider SplFileInfo instances, so you can do something like:
+
+```php
+v::exists()->validate(new \SplFileInfo($file));
+```
+
+See also
+
+  * [directory](#directory)
+  * [file](#file)
+
+#### false
+
+- `v::false()`
+
+Validates if a value is considered as `false`.
+
+```php
+v::false()->validate(false); //true
+v::false()->validate(0); //true
+v::false()->validate('0'); //true
+v::false()->validate('false'); //true
+v::false()->validate('off'); //true
+v::false()->validate('no'); //true
+```
+
+See also
+
+  * [true](#true)
+
+#### file
+
+- `v::file()`
 
 Validates files.
 
@@ -1146,11 +1212,13 @@ v::file()->validate(new \SplFileInfo($file));
 
 See also
 
-  * [v::directory()](#vdirectory)
-  * [v::exists()](#vexists)
+  * [directory](#directory)
+  * [exists](#exists)
 
-#### v::filterVar(int $filter)
-#### v::filterVar(int $filter, mixed $options)
+#### filterVar
+
+- `v::filterVar(int $filter)`
+- `v::filterVar(int $filter, mixed $options)`
 
 A wrapper for PHP's [filter_var()](http://php.net/filter_var) function.
 
@@ -1161,9 +1229,11 @@ v::filterVar(FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)->validate('http://e
 
 See also
 
-  * [v::callback()](#vcallbackcallable-callback)
+  * [callback](#callback)
 
-#### v::float()
+#### float
+
+- `v::float()`
 
 Validates a floating point number.
 
@@ -1172,8 +1242,10 @@ v::float()->validate(1.5); //true
 v::float()->validate('1e5'); //true
 ```
 
-#### v::graph()
-#### v::graph(string $additionalChars)
+#### graph
+
+- `v::graph()`
+- `v::graph(string $additionalChars)`
 
 Validates all characters that are graphically represented.
 
@@ -1183,9 +1255,11 @@ v::graph()->validate('LKM@#$%4;'); //true
 
 See also:
 
-  * [v::prnt()](#vprnt)
+  * [prnt](#prnt)
 
-#### v::hexRgbColor()
+#### hexRgbColor
+
+- `v::hexRgbColor()`
 
 Validates a hex RGB color
 
@@ -1197,10 +1271,12 @@ v::hexRgbColor()->validate('FCD'); //true
 
 See also:
 
-  * [v::vxdigit()](#vxdigit)
+  * [vxdigit](#vxdigit)
 
-#### v::in(mixed $haystack)
-#### v::in(mixed $haystack, boolean $identical = false)
+#### in
+
+- `v::in(mixed $haystack)`
+- `v::in(mixed $haystack, boolean $identical = false)`
 
 Validates if the input is contained in a specific haystack.
 
@@ -1223,11 +1299,13 @@ Message template for this validator includes `{{haystack}}`.
 
 See also:
 
-  * [v::startsWith()](#vstartswithmixed-value)
-  * [v::endsWith()](#vendswithmixed-value)
-  * [v::contains()](#vcontainsmixed-value)
+  * [startsWith](#startswith)
+  * [endsWith](#endswith)
+  * [contains](#contains)
 
-#### v::instance(string $instanceName)
+#### instance
+
+- `v::instance(string $instanceName)`
 
 Validates if the input is an instance of the given class or interface.
 
@@ -1240,9 +1318,11 @@ Message template for this validator includes `{{instanceName}}`.
 
 See also:
 
-  * [v::object()](#vobject)
+  * [object](#object)
 
-#### v::int()
+#### int
+
+- `v::int()`
 
 Validates if the input is an integer.
 
@@ -1253,11 +1333,13 @@ v::int()->validate(10); //true
 
 See also:
 
-  * [v::numeric()](#vnumeric)
-  * [v::digit()](#vdigit)
+  * [numeric](#numeric)
+  * [digit](#digit)
 
-#### v::ip()
-#### v::ip(mixed $options)
+#### ip
+
+- `v::ip()`
+- `v::ip(mixed $options)`
 
 Validates IP Addresses. This validator uses the native filter_var()
 PHP function.
@@ -1272,7 +1354,9 @@ You can pass a parameter with filter_var flags for IP.
 v::ip(FILTER_FLAG_NO_PRIV_RANGE)->validate('127.0.0.1'); //false
 ```
 
-#### v::json()
+#### json
+
+- `v::json()`
 
 Validates if the given input is a valid JSON.
 
@@ -1280,9 +1364,11 @@ Validates if the given input is a valid JSON.
 v::json()->validate('{"foo":"bar"}'); //true
 ```
 
-#### v::key(string $name)
-#### v::key(string $name, v $validator)
-#### v::key(string $name, v $validator, boolean $mandatory = true)
+#### key
+
+- `v::key(string $name)`
+- `v::key(string $name, v $validator)`
+- `v::key(string $name, v $validator, boolean $mandatory = true)`
 
 Validates an array key.
 
@@ -1310,9 +1396,11 @@ The name of this validator is automatically set to the key name.
 
 See also:
 
-  * [v::attribute()](#vattributestring-name) - Validates a specific attribute of an object
+  * [attribute](#attribute)
 
-#### v::leapDate(string $format)
+#### leapDate
+
+- `v::leapDate(string $format)`
 
 Validates if a date is leap.
 
@@ -1325,10 +1413,12 @@ parameter is mandatory.
 
 See also:
 
-  * [v::date()](#vdate)
-  * [v::leapYear()](#vleapyear)
+  * [date](#date)
+  * [leapYear](#leapyear)
 
-#### v::leapYear()
+#### leapYear
+
+- `v::leapYear()`
 
 Validates if a year is leap.
 
@@ -1340,13 +1430,15 @@ This validator accepts DateTime instances as well.
 
 See also:
 
-  * [v::date()](#vdate)
-  * [v::leapDate()](#vleapdatestring-format)
+  * [date](#date)
+  * [leapDate](#leapdate)
 
-#### v::length(int $min, int $max)
-#### v::length(int $min, null)
-#### v::length(null, int $max)
-#### v::length(int $min, int $max, boolean $inclusive = true)
+#### length
+
+- `v::length(int $min, int $max)`
+- `v::length(int $min, null)`
+- `v::length(null, int $max)`
+- `v::length(int $min, int $max, boolean $inclusive = true)`
 
 Validates lengths. Most simple example:
 
@@ -1383,9 +1475,11 @@ Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.
 
 See also:
 
-  * [v::between()](#vbetweenmixed-start-mixed-end) - Validates ranges
+  * [between](#between)
 
-#### v::lowercase()
+#### lowercase
+
+- `v::lowercase()`
 
 Validates if string characters are lowercase in the input:
 
@@ -1395,9 +1489,11 @@ v::string()->lowercase()->validate('xkcd'); //true
 
 See also:
 
-  * [v::uppercase()](#vuppercase)
+  * [uppercase](#uppercase)
 
-#### v::macAddress()
+#### macAddress
+
+- `v::macAddress()`
 
 Validates a Mac Address.
 
@@ -1406,8 +1502,10 @@ v::macAddress()->validate('00:11:22:33:44:55'); //true
 v::macAddress()->validate('af-AA-22-33-44-55'); //true
 ```
 
-#### v::max(mixed $maxValue)
-#### v::max(mixed $maxValue, boolean $inclusive = false)
+#### max
+
+- `v::max(mixed $maxValue)`
+- `v::max(mixed $maxValue, boolean $inclusive = false)`
 
 Validates if the input doesn't exceed the maximum value.
 
@@ -1437,11 +1535,13 @@ Message template for this validator includes `{{maxValue}}`.
 
 See also:
 
-  * [v::min()](#vminmixed-minvalue)
-  * [v::between()](#vbetweenmixed-start-mixed-end)
+  * [min](#min)
+  * [between](#between)
 
-#### v::min(mixed $minValue)
-#### v::min(mixed $minValue, boolean $inclusive = false)
+#### min
+
+- `v::min(mixed $minValue)`
+- `v::min(mixed $minValue, boolean $inclusive = false)`
 
 Validates if the input is greater than the minimum value.
 
@@ -1464,11 +1564,13 @@ Message template for this validator includes `{{minValue}}`.
 
 See also:
 
-  * [v::max()](#vmaxmixed-maxvalue)
-  * [v::between()](#vbetweenmixed-start-mixed-end)
+  * [max](#max)
+  * [between](#between)
 
-#### v::minimumAge(int $age)
-#### v::minimumAge(int $age, string $format)
+#### minimumAge
+
+- `v::minimumAge(int $age)`
+- `v::minimumAge(int $age, string $format)`
 
 Validates a minimum age for a given date.
 
@@ -1483,9 +1585,11 @@ Message template for this validator includes `{{age}}`.
 
 See also:
 
-  * [v::date()](#vdate)
+  * [date](#date)
 
-#### v::multiple(int $multipleOf)
+#### multiple
+
+- `v::multiple(int $multipleOf)`
 
 Validates if the input is a multiple of the given parameter
 
@@ -1495,9 +1599,11 @@ v::int()->multiple(3)->validate(9); //true
 
 See also:
 
-  * [v::primeNumber()](#vprimenumber)
+  * [primeNumber](#primenumber)
 
-#### v::negative()
+#### negative
+
+- `v::negative()`
 
 Validates if a number is lower than zero
 
@@ -1507,10 +1613,22 @@ v::numeric()->negative()->validate(-15); //true
 
 See also:
 
-  * [v::positive()](#vpositive)
+  * [positive](#positive)
 
-#### v::no()
-#### v::no(boolean $locale)
+#### nfeAccessKey
+
+- `v::nfeAccessKey(string $accessKey)`
+
+Validates the access key of the Brazilian electronic invoice (NFe).
+
+```php
+v::nfeAccessKey()->validate('31841136830118868211870485416765268625116906'); //true
+```
+
+#### no
+
+- `v::no()`
+- `v::no(boolean $locale)`
 
 Validates if value is considered as "No".
 
@@ -1529,27 +1647,11 @@ If `$locale` is TRUE, uses the value of [nl_langinfo()](http://php.net/nl_langin
 
 See also:
 
-  * [v::yes()](#vyes)
+  * [yes](#yes)
 
-#### v::noWhitespace()
+#### noneOf
 
-Validates if a string contains no whitespace (spaces, tabs and line breaks);
-
-```php
-v::noWhitespace()->validate('foo bar');  //false
-v::noWhitespace()->validate("foo\nbar"); //false
-```
-
-Like other rules the input is still optional.
-
-```php
-v::string()->noWhitespace()->validate('');  //true
-v::string()->noWhitespace()->validate(' '); //false
-```
-
-This is most useful when chaining with other validators such as `v::alnum()`
-
-#### v::noneOf(v $v1, v $v2, v $v3...)
+- `v::noneOf(v $v1, v $v2, v $v3...)`
 
 Validates if NONE of the given validators validate:
 
@@ -1564,11 +1666,13 @@ In the sample above, 'foo' isn't a integer nor a float, so noneOf returns true.
 
 See also:
 
-  * [v::not()](#vnotv-negatedvalidator)
-  * [v::allOf()](#vallofv-v1-v-v2-v-v3)
-  * [v::oneOf()](#voneofv-v1-v-v2-v-v3)
+  * [not](#not)
+  * [allOf](#allof)
+  * [oneOf](#oneof)
 
-#### v::not(v $negatedValidator)
+#### not
+
+- `v::not(v $negatedValidator)`
 
 Negates any rule.
 
@@ -1600,9 +1704,11 @@ Each other validation has custom messages for negated rules.
 
 See also:
 
-  * [v::noneOf()](#vnoneofv-v1-v-v2-v-v3)
+  * [noneOf](#noneof)
 
-#### v::notEmpty()
+#### notEmpty
+
+- `v::notEmpty()`
 
 Validates if the given input is not empty or in other words is input mandatory and
 required. This function also takes whitespace into account, use `noWhitespace()`
@@ -1639,10 +1745,32 @@ v::string()->notEmpty()->validate("\t \n \r");  //false
 
 See also:
 
-  * [v::noWhitespace()](#noWhitespace)
-  * [v::nullValue()](#vnullvalue)
+  * [noWhitespace](#nowhitespace)
+  * [nullValue](#nullvalue)
 
-#### v::nullValue()
+#### noWhitespace
+
+- `v::noWhitespace()`
+
+Validates if a string contains no whitespace (spaces, tabs and line breaks);
+
+```php
+v::noWhitespace()->validate('foo bar');  //false
+v::noWhitespace()->validate("foo\nbar"); //false
+```
+
+Like other rules the input is still optional.
+
+```php
+v::string()->noWhitespace()->validate('');  //true
+v::string()->noWhitespace()->validate(' '); //false
+```
+
+This is most useful when chaining with other validators such as `v::alnum()`
+
+#### nullValue
+
+- `v::nullValue()`
 
 Validates if the input is null. This rule does not allow empty strings to avoid ambiguity.
 
@@ -1652,9 +1780,11 @@ v::nullValue()->validate(null); //true
 
 See also:
 
-  * [v::notEmpty()](#vnotempty)
+  * [notEmpty](#notempty)
 
-#### v::numeric()
+#### numeric
+
+- `v::numeric()`
 
 Validates on any numeric value.
 
@@ -1665,10 +1795,12 @@ v::numeric()->validate('135.0'); //true
 
 See also:
 
-  * [v::int()](#vint)
-  * [v::digit()](#vdigit)
+  * [int](#int)
+  * [digit](#digit)
 
-#### v::object()
+#### object
+
+- `v::object()`
 
 Validates if the input is an object.
 
@@ -1678,10 +1810,12 @@ v::object()->validate(new stdClass); //true
 
 See also:
 
-  * [v::instance()](#vinstancestring-instancename)
-  * [v::attribute()](#vattributestring-name)
+  * [instance](#instance)
+  * [attribute](#attribute)
 
-#### v::odd()
+#### odd
+
+- `v::odd()`
 
 Validates an odd number.
 
@@ -1693,10 +1827,12 @@ Using `int()` before `odd()` is a best practice.
 
 See also
 
-  * [v::even()](#veven)
-  * [v::multiple()](#vmultipleint-multipleof)
+  * [even](#even)
+  * [multiple](#multiple)
 
-#### v::oneOf(v $v1, v $v2, v $v3...)
+#### oneOf
+
+- `v::oneOf(v $v1, v $v2, v $v3...)`
 
 This is a group validator that acts as an OR operator.
 
@@ -1721,11 +1857,13 @@ v::int()->addOr(v::float())->validate(15.5); //true
 
 See also:
 
-  * [v::allOf()](#vallofv-v1-v-v2-v-v3)  - Similar to oneOf, but act as an AND operator
-  * [v::noneOf()](#vnoneofv-v1-v-v2-v-v3) - Validates if NONE of the inner rules validates
-  * [v::when()](#vwhenv-if-v-then-v-else)   - A ternary validator
+  * [allOf](#allof)
+  * [noneOf](#noneof)
+  * [when](#when)
 
-#### v::perfectSquare()
+#### perfectSquare
+
+- `v::perfectSquare()`
 
 Validates a perfect square.
 
@@ -1733,7 +1871,10 @@ Validates a perfect square.
 v::perfectSquare()->validate(25); //true (5*5)
 v::perfectSquare()->validate(9); //true (3*3)
 ```
-#### v::phone()
+
+#### phone
+
+- `v::phone()`
 
 Validates a valid 7, 10, 11 digit phone number (North America, Europe and most
 Asian and Middle East countries), supporting country and area codes (in dot,
@@ -1747,7 +1888,9 @@ space or dashed notations) such as:
     +33(020)7777 7777
     03-6106666
 
-#### v::positive()
+#### positive
+
+- `v::positive()`
 
 Validates if a number is higher than zero
 
@@ -1757,9 +1900,11 @@ v::numeric()->positive()->validate(-15); //false
 
 See also:
 
-  * [v::negative()](#vnegative)
+  * [negative](#negative)
 
-#### v::postalCode(string $countryCode)
+#### postalCode
+
+- `v::postalCode(string $countryCode)`
 
 Validates a postal code according to the given country code.
 
@@ -1773,9 +1918,11 @@ Extracted from [GeoNames](http://www.geonames.org/).
 
 See also:
 
-  * [v::countryCode()](#vcountrycode)
+  * [countryCode](#countrycode)
 
-#### v::primeNumber()
+#### primeNumber
+
+- `v::primeNumber()`
 
 Validates a prime number
 
@@ -1783,8 +1930,10 @@ Validates a prime number
 v::primeNumber()->validate(7); //true
 ```
 
-#### v::prnt()
-#### v::prnt(string $additionalChars)
+#### prnt
+
+- `v::prnt()`
+- `v::prnt(string $additionalChars)`
 
 Similar to `v::graph` but accepts whitespace.
 
@@ -1794,10 +1943,12 @@ v::prnt()->validate('LMKA0$% _123'); //true
 
 See also:
 
-  * [v::graph()](#vgraph)
+  * [graph](#graph)
 
-#### v::punct()
-#### v::punct(string $additionalChars)
+#### punct
+
+- `v::punct()`
+- `v::punct(string $additionalChars)`
 
 Accepts only punctuation characters:
 
@@ -1807,11 +1958,13 @@ v::punct()->validate('&,.;[]'); //true
 
 See also:
 
-  * [v::cntrl()](#vcntrl)
-  * [v::graph()](#vgraph)
-  * [v::prnt()](#vprnt)
+  * [cntrl](#cntrl)
+  * [graph](#graph)
+  * [prnt](#prnt)
 
-#### v::readable()
+#### readable
+
+- `v::readable()`
 
 Validates if the given data is a file exists and is readable.
 
@@ -1819,7 +1972,9 @@ Validates if the given data is a file exists and is readable.
 v::readable()->validate('/path/of/a/readable/file'); //true
 ```
 
-#### v::regex(string $regex)
+#### regex
+
+- `v::regex(string $regex)`
 
 Evaluates a regex on the input and validates if matches
 
@@ -1829,7 +1984,9 @@ v::regex('/[a-z]/')->validate('a'); //true
 
 Message template for this validator includes `{{regex}}`
 
-#### v::roman()
+#### roman
+
+- `v::roman()`
 
 Validates roman numbers
 
@@ -1840,7 +1997,9 @@ v::roman()->validate('IV'); //true
 This validator ignores empty values, use `notEmpty()` when
 appropriate.
 
-#### v::sf(string $validator)
+#### sf
+
+- `v::sf(string $validator)`
 
 Use Symfony2 validators inside Respect\Validation flow. Messages
 are preserved.
@@ -1855,9 +2014,11 @@ You must add `"symfony/validator": "~2.6"` to your `require` property on compose
 
 See also:
 
-  * [v::zend()](#vzendmixed-validator)
+  * [zend](#zend)
 
-#### v::slug()
+#### slug
+
+- `v::slug()`
 
 Validates slug-like strings:
 
@@ -1867,8 +2028,10 @@ v::slug()->validate('my-wordpress--title'); //false
 v::slug()->validate('my-wordpress-title-'); //false
 ```
 
-#### v::space()
-#### v::space(string $additionalChars)
+#### space
+
+- `v::space()`
+- `v::space(string $additionalChars)`
 
 Accepts only whitespace:
 
@@ -1878,10 +2041,12 @@ v::space()->validate('    '); //true
 
 See also:
 
-  * [v::cntrl()](#vcntrl)
+  * [cntrl](#cntrl)
 
-#### v::startsWith(mixed $value)
-#### v::startsWith(mixed $value, boolean $identical = false)
+#### startsWith
+
+- `v::startsWith(mixed $value)`
+- `v::startsWith(mixed $value, boolean $identical = false)`
 
 This validator is similar to `v::contains()`, but validates
 only if the value is at the beginning of the input.
@@ -1905,11 +2070,13 @@ Message template for this validator includes `{{startValue}}`.
 
 See also:
 
-  * [v::endsWith()](#vendswithmixed-value)
-  * [v::contains()](#vcontainsmixed-value)
-  * [v::in()](#vin)
+  * [endsWith](#endswith)
+  * [contains](#contains)
+  * [in](#in)
 
-#### v::string()
+#### string
+
+- `v::string()`
 
 Validates a string.
 
@@ -1919,9 +2086,11 @@ v::string()->validate('hi'); //true
 
 See also:
 
-  * [v::alnum()](#valnum)
+  * [alnum](#alnum)
 
-#### v::symbolicLink()
+#### symbolicLink
+
+- `v::symbolicLink()`
 
 Validates if the given data is a path of a valid symbolic link.
 
@@ -1929,7 +2098,9 @@ Validates if the given data is a path of a valid symbolic link.
 v::symbolicLink()->validate('/path/of/valid/symbolic/link'); //true
 ```
 
-#### v::tld()
+#### tld
+
+- `v::tld()`
 
 Validates a top-level domain
 
@@ -1941,10 +2112,12 @@ v::tld()->validate('org'); //true
 
 See also
 
- * [v::domain()](#vdomain) - Validates domain names
- * [v::countryCode()](#vcountrycode) - Validates ISO country codes
+ * [domain](#domain)
+ * [countryCode](#countrycode)
 
-#### v::true()
+#### true
+
+- `v::true()`
 
 Validates if a value is considered as `true`.
 
@@ -1959,9 +2132,11 @@ v::true()->validate('yes'); //true
 
 See also
 
-  * [v::false()](#vfalse)
+  * [false](#false)
 
-#### v::type(string $type)
+#### type
+
+- `v::type(string $type)`
 
 Validates the type of input.
 
@@ -1973,15 +2148,17 @@ v::type('object')->validate(new stdClass()); //true
 
 See also
 
-  * [v::arr()](#varr)
-  * [v::bool()](#vbool)
-  * [v::float()](#vfloat)
-  * [v::instance()](#vinstancestring-instancename)
-  * [v::int()](#vint)
-  * [v::object()](#vobject)
-  * [v::string()](#vstring)
+  * [arr](#arr)
+  * [bool](#bool)
+  * [float](#float)
+  * [instance](#instance)
+  * [int](#int)
+  * [object](#object)
+  * [string](#string)
 
-#### v::uploaded()
+#### uploaded
+
+- `v::uploaded()`
 
 Validates if the given data is a file that was uploaded via HTTP POST.
 
@@ -1989,7 +2166,9 @@ Validates if the given data is a file that was uploaded via HTTP POST.
 v::uploaded()->validate('/path/of/an/uploaded/file'); //true
 ```
 
-#### v::uppercase()
+#### uppercase
+
+- `v::uppercase()`
 
 Validates if string characters are uppercase in the input:
 
@@ -1999,9 +2178,11 @@ v::string()->uppercase()->validate('W3C'); //true
 
 See also:
 
-  * [v::lowercase()](#vlowercase)
+  * [lowercase](#lowercase)
 
-#### v::url()
+#### url
+
+- `v::url()`
 
 Validates if input is an URL:
 
@@ -2013,14 +2194,16 @@ v::url()->validate('mailto:john.doe@example.com'); //true
 v::url()->validate('news:new.example.com'); //true
 ```
 
-This rule uses [v::filterVar()](#vfiltervarint-filter) rule with `FILTER_VALIDATE_URL` flag.
+This rule uses [filterVar](#filtervar)
 
 See also:
 
-  * [v::domain()](#vdomain)
-  * [v::filterVar()](#vfiltervarint-filter)
+  * [domain](#domain)
+  * [filterVar](#filtervar)
 
-#### v::version()
+#### version
+
+- `v::version()`
 
 Validates version numbers using Semantic Versioning.
 
@@ -2028,7 +2211,9 @@ Validates version numbers using Semantic Versioning.
 v::version()->validate('1.0.0');
 ```
 
-#### v::vowel()
+#### vowel
+
+- `v::vowel()`
 
 Similar to `v::alnum()`. Validates strings that contains only vowels:
 
@@ -2038,13 +2223,15 @@ v::vowel()->validate('aei'); //true
 
 See also:
 
-  * [v::alnum()](#valnum)  - a-z0-9, empty or whitespace only
-  * [v::digit()](#vdigit) - 0-9, empty or whitespace only
-  * [v::alpha()](#valpha)  - a-Z, empty or whitespace only
-  * [v::consonant()](#vconsonant)
+  * [alnum](#alnum)
+  * [digit](#digit)
+  * [alpha](#alpha)
+  * [consonant](#consonant)
 
-#### v::when(v $if, v $then, v $else)
-#### v::when(v $if, v $then)
+#### when
+
+- `v::when(v $if, v $then, v $else)`
+- `v::when(v $if, v $then)`
 
 A ternary validator that accepts three parameters.
 
@@ -2057,15 +2244,27 @@ v::when(v::int(), v::positive(), v::notEmpty())->validate($input);
 
 In the sample above, if `$input` is an integer, then it must be positive.
 If `$input` is not an integer, then it must not me empty.
-When `$else` is not defined use [v::alwaysInvalid()](#valwaysinvalid) as default.
+When `$else` is not defined use [alwaysInvalid](#alwaysinvalid)
 
 See also:
 
-  * [v::allOf()](#vallofv-v1-v-v2-v-v3)
-  * [v::oneOf()](#voneofv-v1-v-v2-v-v3)
-  * [v::noneOf()](#vnoneofv-v1-v-v2-v-v3)
+  * [allOf](#allof)
+  * [oneOf](#oneof)
+  * [noneOf](#noneof)
 
-#### v::xdigit()
+#### writable
+
+- `v::writable()`
+
+Validates if the given input is writable file.
+
+```php
+v::writable()->validate('/path/of/a/writable/file'); //true
+```
+
+#### xdigit
+
+- `v::xdigit()`
 
 Accepts an hexadecimal number:
 
@@ -2081,12 +2280,14 @@ v::xdigit()->validate('0x1f'); //false
 
 See also:
 
-  * [v::digit()](#vdigit)
-  * [v::alnum()](#valnum)
-  * [v::hexRgbColor()](#vhexrgbcolor)
+  * [digit](#digit)
+  * [alnum](#alnum)
+  * [hexRgbColor](#hexrgbcolor)
 
-#### v::yes()
-#### v::yes(boolean $locale)
+#### yes
+
+- `v::yes()`
+- `v::yes(boolean $locale)`
 
 Validates if value is considered as "Yes".
 
@@ -2104,17 +2305,11 @@ If `$locale` is TRUE, uses the value of [nl_langinfo()](http://php.net/nl_langin
 
 See also:
 
-  * [v::no()](#vno)
+  * [no](#no)
 
-#### v::writable()
+#### zend
 
-Validates if the given input is writable file.
-
-```php
-v::writable()->validate('/path/of/a/writable/file'); //true
-```
-
-#### v::zend(mixed $validator)
+- `v::zend(mixed $validator)`
 
 Use Zend validators inside Respect\Validation flow. Messages
 are preserved.
@@ -2127,4 +2322,4 @@ You must add `"zendframework/zend-validator": "~2.3"` to your `require` property
 
 See also:
 
-  * [v::sf()](#vsfstring-validator)
+  * [sf](#sf)
