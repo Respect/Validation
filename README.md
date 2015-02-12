@@ -12,7 +12,7 @@
 - Complex rules made simple: `v::numeric()->positive()->between(1, 256)->validate($myNumber)`.
 - [Granularity control](docs/README.md#validation-methods) for advanced reporting.
 - Almost 100 (fully tested) validators.
-- [A concrete API](https://gist.github.com/alganet/b66bc8281672ca3d3b42) for non fluent usage.
+- [A concrete API](docs/CONCRETE_API.md) for non fluent usage.
 
 
 ## Table of contents
