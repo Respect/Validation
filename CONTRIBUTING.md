@@ -11,7 +11,7 @@ Due to time constraints, we are not always able to respond as quickly as we
 would like. Please do not take delays personal and feel free to remind us here,
 on IRC, or on Gitter if you feel that we forgot to respond.
 
-Please see the [project documentation](http://documentup.com/Respect/Validation)
+Please see the [project documentation](http://respect.github.io/Validation)
 before proceeding. You should also know about [PHP-FIG](http://www.php-fig.org)'s
 standards and basic unit testing, but we're sure you can learn that just by
 looking at other rules. Pick the simple ones like `Int` to begin.
@@ -113,9 +113,9 @@ PS.: We strongly recommend you use [Data Providers](https://phpunit.de/manual/cu
 
 ## Documentation
 
-Our docs at http://documentup.com/Respect/Validation are generated from our
-Markdown files. Add your brand new rule there and everything will be updated as
-soon as possible.
+Our docs at http://respect.github.io/Validation are generated from our Markdown
+files using [Couscous](http://couscous.io/). Add your brand new rule there and
+everything will be updated as soon as possible.
 
 ## Running Tests
 

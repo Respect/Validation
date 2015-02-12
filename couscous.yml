@@ -1,0 +1,40 @@
+template:
+    url: https://github.com/CouscousPHP/Template-Dark
+
+exclude:
+    - library
+    - tests
+    - vendor
+
+baseUrl: http://respect.github.io/Validation
+
+github:
+    user: Respect
+    repo: Validation
+
+title: Respect\Validation
+subTitle: The most awesome validation engine ever created for PHP
+
+menu:
+    sections:
+        main:
+            name: Table of contents
+            items:
+                home:
+                    text: Home
+                    relativeUrl: /
+                contributing:
+                    text: Contributing
+                    relativeUrl: contributing.html
+                featureguide:
+                    text: Feature Guide
+                    relativeUrl: docs/index.html
+                installation:
+                    text: Installation
+                    relativeUrl: docs/install.html
+                license:
+                    text: License
+                    relativeUrl: license.html
+                validators:
+                    text: Validators
+                    relativeUrl: docs/validators.html
