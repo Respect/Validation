@@ -1,5 +1,5 @@
 template:
-    url: https://github.com/CouscousPHP/Template-Dark
+    url: https://github.com/Respect/RespectCouscous
 
 exclude:
     - library
@@ -18,23 +18,22 @@ subTitle: The most awesome validation engine ever created for PHP
 menu:
     sections:
         main:
-            name: Table of contents
             items:
                 home:
                     text: Home
                     relativeUrl: /
                 contributing:
                     text: Contributing
-                    relativeUrl: contributing.html
+                    relativeUrl: /contributing.html
                 featureguide:
                     text: Feature Guide
-                    relativeUrl: docs/index.html
+                    relativeUrl: /docs/
                 installation:
                     text: Installation
-                    relativeUrl: docs/install.html
+                    relativeUrl: /docs/install.html
                 license:
                     text: License
-                    relativeUrl: license.html
+                    relativeUrl: /license.html
                 validators:
                     text: Validators
-                    relativeUrl: docs/validators.html
+                    relativeUrl: /docs/validators.html
