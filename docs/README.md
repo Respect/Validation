@@ -75,7 +75,7 @@ v::not(v::int())->validate(10); //false, input must not be integer
 
 ## Validator Reuse
 
-Once created, you can reuse your validator anywhere. Remember $usernameValidator?
+Once created, you can reuse your validator anywhere. Remember `$usernameValidator`?
 
 ```php
 $usernameValidator->validate('respect');            //true
@@ -103,7 +103,7 @@ When something goes wrong, Validation can tell you exactly what's going on. For 
 we use the `assert()` method instead of `validate()`:
 
 ```php
-use Respect\Validation\Exceptions\NestedValidationExceptionInterface
+use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
 
 try {
     $usernameValidator->assert('really messed up screen#name');
@@ -114,10 +114,12 @@ try {
 
 The printed message is exactly this, as a text tree:
 
-    \-All of the 3 required rules must pass
-      |-"really messed up screen#name" must contain only letters (a-z) and digits (0-9)
-      |-"really messed up screen#name" must not contain whitespace
-      \-"really messed up screen#name" must have a length between 1 and 15
+```no-highlight
+\-All of the 3 required rules must pass
+  |-"really messed up screen#name" must contain only letters (a-z) and digits (0-9)
+  |-"really messed up screen#name" must not contain whitespace
+  \-"really messed up screen#name" must have a length between 1 and 15
+```
 
 ## Getting Messages
 
@@ -125,7 +127,7 @@ The text tree is fine, but unusable on a HTML form or something more custom. You
 `findMessages()` for that:
 
 ```php
-use Respect\Validation\Exceptions\NestedValidationExceptionInterface
+use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
 
 try {
     $usernameValidator->assert('really messed up screen#name');
@@ -193,7 +195,7 @@ validation report. There is also a `check()` method that returns an Exception
 only with the first error found:
 
 ```php
-use Respect\Validation\Exceptions\ValidationExceptionInterface
+use Respect\Validation\Exceptions\ValidationExceptionInterface;
 
 try {
     $usernameValidator->check('really messed up screen#name');
@@ -204,7 +206,9 @@ try {
 
 Message:
 
-    "really messed up screen#name" must contain only letters (a-z) and digits (0-9)
+```no-highlight
+"really messed up screen#name" must contain only letters (a-z) and digits (0-9)
+```
 
 See also:
 
