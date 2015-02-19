@@ -8,6 +8,7 @@ use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Rules\AllOf;
 
 /**
+ * @method static Validator age(int $minAge = null, int $maxAge = null)
  * @method static Validator allOf()
  * @method static Validator alnum(string $additionalChars = null)
  * @method static Validator alpha(string $additionalChars = null)
