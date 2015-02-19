@@ -3,15 +3,14 @@ namespace Respect\Validation\Rules;
 
 use DateTime;
 
-class MinimumAgeTest extends \PHPUnit_Framework_TestCase
+class AgeTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider providerForValidDateValidAge
      */
-    public function testValidAgeInsideBoundsShouldPass($age, $format, $input)
+    public function testValidMinimumAgeInsideBoundsShouldPass($minAge, $maxAge, $input)
     {
-	$maximumAge = null;
-        $minimumAge = new Age($age, $maximumAge, $format);
+        $minimumAge = new Age($minAge, $maxAge);
         $this->assertTrue($minimumAge->__invoke($input));
         $this->assertTrue($minimumAge->assert($input));
         $this->assertTrue($minimumAge->check($input));
@@ -21,9 +20,9 @@ class MinimumAgeTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForValidDateInvalidAge
      * @expectedException Respect\Validation\Exceptions\AgeException
      */
-    public function testInvalidAgeShouldThrowException($age, $format, $input)
+    public function testInvalidMinimumAgeShouldThrowException($minAge, $maxAge, $input)
     {
-        $minimumAge = new Age($age, $format);
+        $minimumAge = new Age($minAge, $maxAge);
         $this->assertFalse($minimumAge->__invoke($input));
         $this->assertFalse($minimumAge->assert($input));
     }
@@ -32,9 +31,9 @@ class MinimumAgeTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidDate
      * @expectedException Respect\Validation\Exceptions\AgeException
      */
-    public function testInvalidDateShouldNotPass($age, $format, $input)
+    public function testInvalidDateShouldNotPass($minAge, $maxAge, $input)
     {
-        $minimumAge = new Age($age, $format);
+        $minimumAge = new Age($minAge, $maxAge);
         $this->assertFalse($minimumAge->__invoke($input));
         $this->assertFalse($minimumAge->assert($input));
     }
@@ -42,19 +41,19 @@ class MinimumAgeTest extends \PHPUnit_Framework_TestCase
     public function providerForValidDateValidAge()
     {
         return array(
-            array(18, 'Y-m-d', ''),
-            array(18, 'Y-m-d', '1969-07-20'),
+            array(18, 25, ''),
+            array(18, 25, '1969-07-20'),
             array(18, null, new \DateTime('1969-07-20')),
-            array(18, 'Y-m-d', new \DateTime('1969-07-20')),
+            array(18, 25, new \DateTime('1969-07-20')),
         );
     }
 
     public function providerForValidDateInvalidAge()
     {
         return array(
-            array(18, 'Y-m-d', '2002-06-30'),
+            array(18, 25, '2002-06-30'),
             array(18, null, new \DateTime('2002-06-30')),
-            array(18, 'Y-m-d', new \DateTime('2002-06-30')),
+            array(18, 35, new \DateTime('2002-06-30')),
         );
     }
 
@@ -62,8 +61,8 @@ class MinimumAgeTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(18, null, 'invalid-input'),
-            array(18, null, new \stdClass),
-            array(18, 'y-m-d', '2002-06-30'),
+            array(18, 25, new \stdClass),
+            array(18, 25, '2002-06-30'),
         );
     }
 }

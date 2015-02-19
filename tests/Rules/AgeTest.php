@@ -3,14 +3,14 @@ namespace Respect\Validation\Rules;
 
 use DateTime;
 
-class MinimumAgeTest extends \PHPUnit_Framework_TestCase
+class AgeTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider providerForValidDateValidAge
      */
     public function testValidAgeInsideBoundsShouldPass($age, $format, $input)
     {
-	$maximumAge = null;
+       $maximumAge = null;
         $minimumAge = new Age($age, $maximumAge, $format);
         $this->assertTrue($minimumAge->__invoke($input));
         $this->assertTrue($minimumAge->assert($input));
@@ -67,4 +67,3 @@ class MinimumAgeTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-
