@@ -30,6 +30,7 @@
 
 ## Comparing Values
 
+  * [Age](Age.md)
   * [Between](Between.md)
   * [Equals](Equals.md)
   * [Max](Max.md)
@@ -101,6 +102,7 @@
 
 ## Date and Time
 
+  * [Age](Age.md)
   * [Between](Between.md)
   * [Date](Date.md)
   * [LeapDate](LeapDate.md)
@@ -160,6 +162,7 @@
 
 ## Alphabetically
 
+  * [Age](Age.md)
   * [AllOf](AllOf.md)
   * [Alnum](Alnum.md)
   * [Alpha](Alpha.md)

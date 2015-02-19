@@ -1,5 +1,7 @@
 # MinimumAge
 
+This is going to be deprecated, please use [Age](Age.md) instead.
+
 - `v::minimumAge(int $age)`
 - `v::minimumAge(int $age, string $format)`
 
@@ -16,4 +18,5 @@ Message template for this validator includes `{{age}}`.
 
 See also:
 
+  * [Age](Age.md)
   * [Date](Date.md)
