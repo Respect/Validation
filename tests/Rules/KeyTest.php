@@ -13,14 +13,43 @@ class KeyTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($validator->validate($obj));
     }
 
+    public function testEmptyInputMustReturnTrue()
+    {
+        $validator = new Key('someEmptyKey');
+        $input = '';
+
+        $this->assertTrue($validator->assert($input));
+        $this->assertTrue($validator->check($input));
+        $this->assertTrue($validator->validate($input));
+    }
+
     public function testArrayWithEmptyKeyShouldReturnTrue()
     {
         $validator = new Key('someEmptyKey');
-        $obj = array();
-        $obj['someEmptyKey'] = '';
-        $this->assertTrue($validator->assert($obj));
-        $this->assertTrue($validator->check($obj));
-        $this->assertTrue($validator->validate($obj));
+        $input = array();
+        $input['someEmptyKey'] = '';
+
+        $this->assertTrue($validator->assert($input));
+        $this->assertTrue($validator->check($input));
+        $this->assertTrue($validator->validate($input));
+    }
+
+    public function testShouldHaveTheSameReturnValueForAllValidators()
+    {
+        $rule   = new Key('key', new NotEmpty());
+        $input  = array('key' => '');
+
+        try {
+            $rule->assert($input);
+            $this->fail('`assert()` must throws exception');
+        } catch (\Exception $e) {}
+
+        try {
+            $rule->check($input);
+            $this->fail('`check()` must throws exception');
+        } catch (\Exception $e) {}
+
+        $this->assertFalse($rule->validate($input));
     }
 
     /**
