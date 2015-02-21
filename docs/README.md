@@ -210,6 +210,8 @@ Message:
 "really messed up screen#name" must contain only letters (a-z) and digits (0-9)
 ```
 
+***
+
 See also:
 
 - [Contributing](../CONTRIBUTING.md)
