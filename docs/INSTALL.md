@@ -7,6 +7,8 @@ you can install it using [Composer](http://getcomposer.org).
 composer require respect/validation
 ```
 
+***
+
 See also:
 
 - [Contributing](../CONTRIBUTING.md)

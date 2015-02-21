@@ -139,3 +139,12 @@ No test should fail.
 
 You can tweak the PHPUnit's settings by copying `phpunit.xml.dist` to `phpunit.xml`
 and changing it according to your needs.
+
+***
+
+See also:
+
+- [Feature Guide](docs/README.md)
+- [Installation](docs/INSTALL.md)
+- [License](LICENSE.md)
+- [Validators](docs/VALIDATORS.md)
