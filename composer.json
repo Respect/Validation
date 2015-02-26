@@ -25,7 +25,8 @@
         "ext-mbstring": "Multibyte String Functions",
         "malkusch/bav": "German bank account validation",
         "symfony/validator": "Use Symfony validator through Respect\\Validation",
-        "zendframework/zend-validator": "Use Zend Framework validator through Respect\\Validation"
+        "zendframework/zend-validator": "Use Zend Framework validator through Respect\\Validation",
+        "egulias/email-validator": "Strict (RFC compliant) email validation"
     },
     "autoload": {
         "psr-4": {
