@@ -74,6 +74,8 @@ class PostalCodeTest extends \PHPUnit_Framework_TestCase
         return array(
             array('BR', '02179-000'),
             array('BR', '02179000'),
+            array('GB', 'GIR 0AA'),
+            array('GB', 'PR1 9LY'),
             array('US', '02179'),
             array('YE', ''),
         );
@@ -94,6 +96,7 @@ class PostalCodeTest extends \PHPUnit_Framework_TestCase
         return array(
             array('BR', '02179'),
             array('BR', '02179.000'),
+            array('GB', 'PR19LY'),
             array('US', '021 79'),
             array('YE', '02179'),
         );
