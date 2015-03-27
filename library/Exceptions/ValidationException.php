@@ -9,14 +9,7 @@ class ValidationException extends InvalidArgumentException implements Validation
     const MODE_DEFAULT = 1;
     const MODE_NEGATIVE = 2;
     const STANDARD = 0;
-    public static $defaultTemplates = array(
-        self::MODE_DEFAULT => array(
-            self::STANDARD => 'Data validation failed for %s',
-        ),
-        self::MODE_NEGATIVE => array(
-            self::STANDARD => 'Data validation failed for %s',
-        ),
-    );
+
     protected $id = 'validation';
     protected $mode = self::MODE_DEFAULT;
     protected $name = '';
