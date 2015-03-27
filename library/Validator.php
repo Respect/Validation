@@ -249,6 +249,7 @@ class Validator extends AllOf
             require $localeFile;
 
             self::$messages = $messages;
+            self::$locale = $locale;
         }
     }
 }
