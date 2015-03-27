@@ -108,6 +108,9 @@ class Validator extends AllOf
 {
     protected static $factory;
 
+    protected static $locale = 'en_US';
+    public static $messages = array();
+
     /**
      * @return Factory
      */
@@ -227,5 +230,25 @@ class Validator extends AllOf
         $ref = new ReflectionClass(__CLASS__);
 
         return $ref->newInstanceArgs(func_get_args());
+    }
+
+    /**
+     * Set locale for error messages.
+     *
+     * @return null
+     */
+    public static function setLocale($locale)
+    {
+        if (self::$locale == $locale && self::$messages) {
+            return;
+        }
+
+        $localeFile = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Messages' . DIRECTORY_SEPARATOR . $locale . '.php';
+
+        if (file_exists($localeFile)) {
+            require $localeFile;
+
+            self::$messages = $messages;
+        }
     }
 }
