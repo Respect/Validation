@@ -243,6 +243,9 @@ class Validator extends AllOf
             return;
         }
 
+        // sanitize
+        $locale = preg_replace('%\W%', '', $locale);
+
         $localeFile = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Messages' . DIRECTORY_SEPARATOR . $locale . '.php';
 
         if (file_exists($localeFile)) {
