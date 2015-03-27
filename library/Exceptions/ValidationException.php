@@ -3,20 +3,14 @@ namespace Respect\Validation\Exceptions;
 
 use DateTime;
 use InvalidArgumentException;
+use Respect\Validation\Validator;
 
 class ValidationException extends InvalidArgumentException implements ValidationExceptionInterface
 {
     const MODE_DEFAULT = 1;
     const MODE_NEGATIVE = 2;
     const STANDARD = 0;
-    public static $defaultTemplates = array(
-        self::MODE_DEFAULT => array(
-            self::STANDARD => 'Data validation failed for %s',
-        ),
-        self::MODE_NEGATIVE => array(
-            self::STANDARD => 'Data validation failed for %s',
-        ),
-    );
+
     protected $id = 'validation';
     protected $mode = self::MODE_DEFAULT;
     protected $name = '';
@@ -65,7 +59,7 @@ class ValidationException extends InvalidArgumentException implements Validation
 
     public function chooseTemplate()
     {
-        return key(static::$defaultTemplates[$this->mode]);
+        return key(Validator::$messages[basename(get_called_class())][$this->mode]);
     }
 
     public function configure($name, array $params = array())
@@ -173,7 +167,7 @@ class ValidationException extends InvalidArgumentException implements Validation
     {
         $templateKey = $this->chooseTemplate();
 
-        return static::$defaultTemplates[$this->mode][$templateKey];
+        return Validator::$messages[basename(get_called_class())][$this->mode][$templateKey];
     }
 
     protected function guessId()

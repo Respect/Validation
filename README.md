@@ -159,6 +159,22 @@ try {
 
 `findMessages()` returns an array with messages from the requested validators.
 
+### Localized Messages
+
+You can define the locale of the validation library. Supported locales are under
+`Messages/` directory. Example usage:
+
+```php
+v::setLocale('en_US');
+
+try {
+    v::int()->check("hello");
+
+} catch ($exception) {
+    echo $exception->getMainMessage(); // automatically localized message
+}
+```
+
 ### Custom Messages
 
 Getting messages as an array is fine, but sometimes you need to customize them in order
