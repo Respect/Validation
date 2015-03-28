@@ -26,26 +26,26 @@ class When extends AbstractRule
     {
         if ($this->when->validate($input)) {
             return $this->then->validate($input);
-        } else {
-            return $this->else->validate($input);
         }
+
+        return $this->else->validate($input);
     }
 
     public function assert($input)
     {
         if ($this->when->validate($input)) {
             return $this->then->assert($input);
-        } else {
-            return $this->else->assert($input);
         }
+
+        return $this->else->assert($input);
     }
 
     public function check($input)
     {
         if ($this->when->validate($input)) {
             return $this->then->check($input);
-        } else {
-            return $this->else->check($input);
         }
+
+        return $this->else->check($input);
     }
 }
