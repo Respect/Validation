@@ -46,13 +46,17 @@ class Length extends AbstractRule
     {
         if (is_string($input)) {
             return mb_strlen($input, mb_detect_encoding($input));
-        } elseif (is_array($input) || $input instanceof Countable) {
-            return count($input);
-        } elseif (is_object($input)) {
-            return count(get_object_vars($input));
-        } else {
-            return false;
         }
+
+        if (is_array($input) || $input instanceof Countable) {
+            return count($input);
+        }
+
+        if (is_object($input)) {
+            return count(get_object_vars($input));
+        }
+
+        return false;
     }
 
     protected function validateMin($length)

@@ -20,7 +20,7 @@ class Zend extends AbstractRule
         }
 
         if (false === stripos($validator, 'Zend')) {
-            $validator = "Zend\Validator\\{$validator}";
+            $validator = "Zend\\Validator\\{$validator}";
         } else {
             $validator = "\\{$validator}";
         }
@@ -36,15 +36,15 @@ class Zend extends AbstractRule
 
     public function assert($input)
     {
-        $exceptions = array();
         $validator = clone $this->zendValidator;
 
         if ($validator->isValid($input)) {
             return true;
-        } else {
-            foreach ($validator->getMessages() as $m) {
-                $exceptions[] = $this->reportError($m, get_object_vars($this));
-            }
+        }
+
+        $exceptions = array();
+        foreach ($validator->getMessages() as $m) {
+            $exceptions[] = $this->reportError($m, get_object_vars($this));
         }
 
         throw $this->reportError($input)->setRelated($exceptions);
