@@ -21,8 +21,8 @@ class Equals extends AbstractRule
     {
         if ($this->compareIdentical) {
             return $input === $this->compareTo;
-        } else {
-            return $input == $this->compareTo;
         }
+
+        return $input == $this->compareTo;
     }
 }
