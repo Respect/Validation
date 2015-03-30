@@ -131,14 +131,14 @@ $messages = array(
 
     'BetweenException' => array(
         ValidationException::MODE_DEFAULT => array(
-            BetweenException::BOTH      => '{{name}} must be between {{minValue}} and {{maxValue}}',
-            BetweenException::LOWER     => '{{name}}  must be greater than {{minValue}}',
-            BetweenException::GREATER   => '{{name}} must be lower than {{maxValue}}',
+            BetweenException::BOTH      => '{{name}} şu aralıkta olmalı: {{minValue}} - {{maxValue}}',
+            BetweenException::LOWER     => '{{name}} en az {{minValue}} olabilir',
+            BetweenException::GREATER   => '{{name}} en fazla {{maxValue}} olabilir',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            BetweenException::BOTH      => '{{name}} must not be between {{minValue}} and {{maxValue}}',
-            BetweenException::LOWER     => '{{name}}  must not be greater than {{minValue}}',
-            BetweenException::GREATER   => '{{name}} must not be lower than {{maxValue}}',
+            BetweenException::BOTH      => '{{name}} şu aralıkta olmamalı: {{minValue}} - {{maxValue}}',
+            BetweenException::LOWER     => '{{name}} şundan küçük olmalı: {{minValue}}',
+            BetweenException::GREATER   => '{{name}} şundan büyük olmalı: {{maxValue}}',
         ),
     ),
 
@@ -484,14 +484,14 @@ $messages = array(
 
     'LengthException' => array(
         ValidationException::MODE_DEFAULT => array(
-            LengthException::BOTH       => '{{name}} must have a length between {{minValue}} and {{maxValue}}',
-            LengthException::LOWER      => '{{name}} must have a length greater than {{minValue}}',
-            LengthException::GREATER    => '{{name}} must have a length lower than {{maxValue}}',
+            LengthException::BOTH       => '{{name}} şu aralıkta bir uzunluğa sahip olmalı: {{minValue}} - {{maxValue}}',
+            LengthException::LOWER      => '{{name}} en az şu uzunlukta olmalı: {{minValue}}',
+            LengthException::GREATER    => '{{name}} en fazla şu uzunlukta olmalı: {{maxValue}}',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            LengthException::BOTH       => '{{name}} must not have a length between {{minValue}} and {{maxValue}}',
-            LengthException::LOWER      => '{{name}} must not have a length greater than {{minValue}}',
-            LengthException::GREATER    => '{{name}} must not have a length lower than {{maxValue}}',
+            LengthException::BOTH       => '{{name}} şu aralıkta bir uzunluğa sahip olmamalı: {{minValue}} - {{maxValue}}',
+            LengthException::LOWER      => '{{name}} şundan daha kısa olmalı: {{minValue}}',
+            LengthException::GREATER    => '{{name}} şundan daha uzun olmalı: {{maxValue}}',
         ),
     ),
 
@@ -515,23 +515,23 @@ $messages = array(
 
     'MaxException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be lower than {{interval}}',
-            MaxException::INCLUSIVE => '{{name}} must be lower than or equals {{interval}}',
+            ValidationException::STANDARD => '{{name}} şundan küçük olmalı: {{interval}}',
+            MaxException::INCLUSIVE => '{{name}} en fazla {{interval}} olabilir',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be lower than {{interval}}',
-            MaxException::INCLUSIVE => '{{name}} must not be lower than or equals {{interval}}',
+            ValidationException::STANDARD => '{{name}} şundan küçük olmamalı: {{interval}}',
+            MaxException::INCLUSIVE => '{{name}} şundan büyük olmalı: {{interval}}',
         ),
     ),
 
     'MinException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be greater than {{interval}}',
-            MinException::INCLUSIVE => '{{name}} must be greater than or equals {{interval}}',
+            ValidationException::STANDARD => '{{name}} şundan büyük olmalı: {{interval}}',
+            MinException::INCLUSIVE => '{{name}} en az {{interval}} olabilir',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be greater than {{interval}}',
-            MinException::INCLUSIVE => '{{name}} must not be greater than or equals {{interval}}',
+            ValidationException::STANDARD => '{{name}} şundan büyük olmamalı: {{interval}}',
+            MinException::INCLUSIVE => '{{name}} şundan küçük olmalı: {{interval}}',
         ),
     ),
 
