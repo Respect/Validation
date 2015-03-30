@@ -46,10 +46,10 @@ v::numeric()->validate($number); //true
 ### Chained Validation
 
 It is possible to use validators in a chain. Sample below validates a string
-containing numbers and letters, no whitespace and length between 1 and 15.
+containing numbers and letters and length between 1 and 15.
 
 ```php
-$usernameValidator = v::alnum()->noWhitespace()->length(1,15);
+$usernameValidator = v::alnum()->length(1,15);
 $usernameValidator->validate('alganet'); //true
 ```
 
@@ -438,23 +438,16 @@ See also:
 #### v::alnum()
 #### v::alnum(string $additionalChars)
 
-Validates alphanumeric characters from a-Z and 0-9.
+Validates alphanumeric characters from a-z and 0-9.
 
 ```php
-v::alnum()->validate('foo 123'); //true
+v::alnum()->validate('foo123'); //true
 ```
 
 A parameter for extra characters can be used:
 
 ```php
-v::alnum('-')->validate('foo - 123'); //true
-```
-
-This validator allows whitespace, if you want to
-remove them add `->noWhitespace()` to the chain:
-
-```php
-v::alnum()->noWhitespace->validate('foo 123'); //false
+v::alnum('-')->validate('foo-123'); //true
 ```
 
 By default empty values are allowed, if you want
@@ -476,8 +469,8 @@ the string of extra chars passed as the parameter.
 
 See also:
 
-  * [v::alpha()](#valpha)  - a-Z, empty or whitespace only
-  * [v::digit()](#vdigit) - 0-9, empty or whitespace only
+  * [v::alpha()](#valpha)  - a-z or empty
+  * [v::digit()](#vdigit) - 0-9 or empty
   * [v::consonant()](#vconsonant)
   * [v::vowel()](#vvowel)
 
@@ -485,13 +478,12 @@ See also:
 #### v::alpha(string $additionalChars)
 
 This is similar to v::alnum(), but it doesn't allow numbers. It also
-accepts empty values and whitespace, so use `v::notEmpty()` and
-`v::noWhitespace()` when appropriate.
+accepts empty values, so use `v::notEmpty()` when appropriate.
 
 See also:
 
-  * [v::alnum()](#valnum)  - a-z0-9, empty or whitespace only
-  * [v::digit()](#vdigit) - 0-9, empty or whitespace only
+  * [v::alnum()](#valnum)  - a-z0-9 or empty
+  * [v::digit()](#vdigit) - 0-9 or empty
   * [v::consonant()](#vconsonant)
   * [v::vowel()](#vvowel)
 
@@ -777,9 +769,9 @@ v::consonant()->validate('xkcd'); //true
 
 See also:
 
-  * [v::alnum()](#valnum)  - a-z0-9, empty or whitespace only
-  * [v::digit()](#vdigit) - 0-9, empty or whitespace only
-  * [v::alpha()](#valpha)  - a-Z, empty or whitespace only
+  * [v::alnum()](#valnum)  - a-z0-9 or empty
+  * [v::digit()](#vdigit) - 0-9 or empty
+  * [v::alpha()](#valpha)  - a-z or empty
   * [v::vowel()](#vvowel)
 
 #### v::contains(mixed $value)
@@ -819,9 +811,9 @@ v::cntrl()->validate("\n\r\t"); //true
 
 See also:
 
-  * [v::alnum()](#valnum)     - a-z0-9, empty or whitespace only
+  * [v::alnum()](#valnum)    - a-z0-9 or empty
   * [v::prnt()](#vprnt)      - all printable characters
-  * [v::space()](#vspace)     - empty or whitespace only
+  * [v::space()](#vspace)    - empty or whitespace only
 
 #### v::countryCode()
 
@@ -928,14 +920,13 @@ See also:
 
 #### v::digit()
 
-This is similar to v::alnum(), but it doesn't allow a-Z. It also
-accepts empty values and whitespace, so use `v::notEmpty()` and
-`v::noWhitespace()` when appropriate.
+This is similar to v::alnum(), but it doesn't allow a-z. It also
+accepts empty values, so use `v::notEmpty()` when appropriate.
 
 See also:
 
-  * [v::alnum()](#valnum)  - a-z0-9, empty or whitespace only
-  * [v::alpha()](#valpha)  - a-Z, empty or whitespace only
+  * [v::alnum()](#valnum)  - a-z0-9 or empty
+  * [v::alpha()](#valpha)  - a-z or empty
   * [v::vowel()](#vvowel)
   * [v::consonant()](#vconsonant)
 
@@ -1563,8 +1554,6 @@ v::string()->noWhitespace()->validate('');  //true
 v::string()->noWhitespace()->validate(' '); //false
 ```
 
-This is most useful when chaining with other validators such as `v::alnum()`
-
 #### v::noneOf(v $v1, v $v2, v $v3...)
 
 Validates if NONE of the given validators validate:
@@ -2054,9 +2043,9 @@ v::vowel()->validate('aei'); //true
 
 See also:
 
-  * [v::alnum()](#valnum)  - a-z0-9, empty or whitespace only
-  * [v::digit()](#vdigit) - 0-9, empty or whitespace only
-  * [v::alpha()](#valpha)  - a-Z, empty or whitespace only
+  * [v::alnum()](#valnum)  - a-z0-9 or empty
+  * [v::digit()](#vdigit) - 0-9 or empty
+  * [v::alpha()](#valpha)  - a-z or empty
   * [v::consonant()](#vconsonant)
 
 #### v::when(v $if, v $then, v $else)
