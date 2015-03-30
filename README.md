@@ -593,7 +593,7 @@ See also
   * [v::bic()](#vbicstring-countrycode)
 
 #### v::between(mixed $start, mixed $end)
-#### v::between(mixed $start, mixed $end, boolean $inclusive = false)
+#### v::between(mixed $start, mixed $end, boolean $inclusive = true)
 
 Validates ranges. Most simple example:
 
@@ -620,10 +620,10 @@ Date ranges accept strtotime values:
 v::date()->between('yesterday', 'tomorrow')->validate('now'); //true
 ```
 
-A third parameter may be passed to validate the passed values inclusive:
+A third parameter may be passed to validate the passed values exclusive:
 
 ```php
-v::date()->between(10, 20, true)->validate(20); //true
+v::int()->between(10, 20, false)->validate(20); //false
 ```
 
 Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.

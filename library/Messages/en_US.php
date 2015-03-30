@@ -132,13 +132,13 @@ $messages = array(
     'BetweenException' => array(
         ValidationException::MODE_DEFAULT => array(
             BetweenException::BOTH      => '{{name}} must be between {{minValue}} and {{maxValue}}',
-            BetweenException::LOWER     => '{{name}}  must be greater than {{minValue}}',
-            BetweenException::GREATER   => '{{name}} must be lower than {{maxValue}}',
+            BetweenException::LOWER     => '{{name}} must be greater than or equal to {{minValue}}',
+            BetweenException::GREATER   => '{{name}} must be lower than or equal to {{maxValue}}',
         ),
         ValidationException::MODE_NEGATIVE => array(
             BetweenException::BOTH      => '{{name}} must not be between {{minValue}} and {{maxValue}}',
-            BetweenException::LOWER     => '{{name}}  must not be greater than {{minValue}}',
-            BetweenException::GREATER   => '{{name}} must not be lower than {{maxValue}}',
+            BetweenException::LOWER     => '{{name}} must be lower than {{minValue}}',
+            BetweenException::GREATER   => '{{name}} must be greater than {{maxValue}}',
         ),
     ),
 
