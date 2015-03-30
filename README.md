@@ -1414,14 +1414,14 @@ v::macAddress()->validate('af-AA-22-33-44-55'); //true
 ```
 
 #### v::max(mixed $maxValue)
-#### v::max(mixed $maxValue, boolean $inclusive = false)
+#### v::max(mixed $maxValue, boolean $inclusive = true)
 
 Validates if the input doesn't exceed the maximum value.
 
 ```php
 v::int()->max(15)->validate(20); //false
-v::int()->max(20)->validate(20); //false
-v::int()->max(20, true)->validate(20); //true
+v::int()->max(20)->validate(20); //true
+v::int()->max(20, false)->validate(20); //false
 ```
 
 Also accepts dates:
@@ -1437,8 +1437,8 @@ Also date intervals:
 v::date()->max('-18 years')->validate('1988-09-09'); //true
 ```
 
-`true` may be passed as a parameter to indicate that inclusive
-values must be used.
+`false` may be passed as a parameter to indicate that the max
+value is not inclusive.
 
 Message template for this validator includes `{{maxValue}}`.
 
@@ -1448,14 +1448,14 @@ See also:
   * [v::between()](#vbetweenmixed-start-mixed-end)
 
 #### v::min(mixed $minValue)
-#### v::min(mixed $minValue, boolean $inclusive = false)
+#### v::min(mixed $minValue, boolean $inclusive = true)
 
-Validates if the input is greater than the minimum value.
+Validates if the input is not less than the minimum value.
 
 ```php
 v::int()->min(15)->validate(5); //false
-v::int()->min(5)->validate(5); //false
-v::int()->min(5, true)->validate(5); //true
+v::int()->min(5)->validate(5); //true
+v::int()->min(5, false)->validate(5); //false
 ```
 
 Also accepts dates:
@@ -1464,8 +1464,8 @@ Also accepts dates:
 v::date()->min('2012-01-01')->validate('2015-01-01'); //true
 ```
 
-`true` may be passed as a parameter to indicate that inclusive
-values must be used.
+`false` may be passed as a parameter to indicate that the min
+value is not inclusive.
 
 Message template for this validator includes `{{minValue}}`.
 
