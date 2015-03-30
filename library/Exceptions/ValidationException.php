@@ -59,6 +59,11 @@ class ValidationException extends InvalidArgumentException implements Validation
 
     public function chooseTemplate()
     {
+        // If no locale is loaded, load the default one
+        if (! Validator::$messages) {
+            Validator::setLocale(Validator::$locale);
+        }
+
         return key(Validator::$messages[basename(get_called_class())][$this->mode]);
     }
 

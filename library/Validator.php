@@ -108,7 +108,7 @@ class Validator extends AllOf
 {
     protected static $factory;
 
-    protected static $locale = 'en_US';
+    public static $locale = 'en_US';
     public static $messages = array();
 
     /**
