@@ -64,7 +64,7 @@ class ValidationException extends InvalidArgumentException implements Validation
             Validator::setLocale(Validator::$locale);
         }
 
-        return key(Validator::$messages[basename(get_called_class())][$this->mode]);
+        return key(@ Validator::$messages[basename(get_called_class())][$this->mode]);
     }
 
     public function configure($name, array $params = array())
@@ -172,7 +172,7 @@ class ValidationException extends InvalidArgumentException implements Validation
     {
         $templateKey = $this->chooseTemplate();
 
-        return Validator::$messages[basename(get_called_class())][$this->mode][$templateKey];
+        return @ Validator::$messages[basename(get_called_class())][$this->mode][$templateKey];
     }
 
     protected function guessId()
