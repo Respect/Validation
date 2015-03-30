@@ -1380,10 +1380,10 @@ since length accepts many types:
 v::arr()->length(1, 5)->validate(array('foo', 'bar')); //true
 ```
 
-A third parameter may be passed to validate the passed values inclusive:
+A third parameter may be passed to validate the passed values exclusive:
 
 ```php
-v::string()->length(1, 5, true)->validate('a'); //true
+v::string()->length(1, 5, false)->validate('a'); //false
 ```
 
 Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.
