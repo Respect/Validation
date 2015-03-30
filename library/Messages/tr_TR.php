@@ -29,34 +29,34 @@ $messages = array(
 
     'AllOfException' => array(
         ValidationException::MODE_DEFAULT => array(
-            AbstractGroupedException::NONE => 'All of the required rules must pass for {{name}}',
-            AbstractGroupedException::SOME => 'These rules must pass for {{name}}',
+            AbstractGroupedException::NONE => '{{name}} tüm zorunlu kurallara uymalıdır',
+            AbstractGroupedException::SOME => '{{name}} şu kurallara uymalıdır',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            AbstractGroupedException::NONE => 'None of these rules must pass for {{name}}',
-            AbstractGroupedException::SOME => 'These rules must not pass for {{name}}',
+            AbstractGroupedException::NONE => '{{name}} bu kuralların hiçbirine uymamalıdır',
+            AbstractGroupedException::SOME => '{{name}} şu kurallara uymamalıdır',
         ),
     ),
 
     'AlnumException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must contain only letters (a-z) and digits (0-9)',
-            AlphaException::EXTRA => '{{name}} must contain only letters (a-z), digits (0-9) and "{{additionalChars}}"',
+            ValidationException::STANDARD => '{{name}} sadece harf (a-z) ve rakamlardan (0-9) oluşmalı',
+            AlphaException::EXTRA => '{{name}} sadece harflerden (a-z), rakamlardan (0-9) ve şunlardan oluşmalı: "{{additionalChars}}"',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not contain letters (a-z) or digits (0-9)',
-            AlphaException::EXTRA => '{{name}} must not contain letters (a-z), digits (0-9) or "{{additionalChars}}"',
+            ValidationException::STANDARD => '{{name}} tamamen harf (a-z) ve rakamlardan (0-9) oluşmamalı',
+            AlphaException::EXTRA => '{{name}} tamamen harflerden (a-z), rakamlardan (0-9) ve şunlardan oluşmamalı: "{{additionalChars}}"',
         ),
     ),
 
     'AlphaException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must contain only letters (a-z)',
-            AlphaException::EXTRA => '{{name}} must contain only letters (a-z) and "{{additionalChars}}"',
+            ValidationException::STANDARD => '{{name}} sadece harflerden oluşmalı (a-z)',
+            AlphaException::EXTRA => '{{name}} sadece harflerden (a-z) ve şunlardan oluşmalı: "{{additionalChars}}"',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not contain letters (a-z)',
-            AlphaException::EXTRA => '{{name}} must not contain letters (a-z) or "{{additionalChars}}"',
+            ValidationException::STANDARD => '{{name}} tamamen harflerden oluşmamalı (a-z)',
+            AlphaException::EXTRA => '{{name}} tamamen harflerden (a-z) ve şunlardan oluşmamalı: "{{additionalChars}}"',
         ),
     ),
 
@@ -82,10 +82,10 @@ $messages = array(
 
     'ArrException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be an array',
+            ValidationException::STANDARD => '{{name}} bir dizi olmalı',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be an array',
+            ValidationException::STANDARD => '{{name}} dizi olmamalı',
         ),
     ),
 
@@ -153,10 +153,10 @@ $messages = array(
 
     'BoolException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be a boolean',
+            ValidationException::STANDARD => '{{name}} bir boolean olmalı',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be a boolean',
+            ValidationException::STANDARD => '{{name}} boolean olmamalı',
         ),
     ),
 
@@ -220,10 +220,10 @@ $messages = array(
 
     'ContainsException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must contain the value "{{containsValue}}"',
+            ValidationException::STANDARD => '{{name}} şunu içermeli: "{{containsValue}}"',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not contain the value "{{containsValue}}"',
+            ValidationException::STANDARD => '{{name}} şunu içermemeli: "{{containsValue}}"',
         ),
     ),
 
@@ -247,41 +247,41 @@ $messages = array(
 
     'CreditCardException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be a valid Credit Card number',
+            ValidationException::STANDARD => '{{name}} geçersiz',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be a valid Credit Card number',
+            ValidationException::STANDARD => '{{name}} geçerli bir numara olmamalı',
         ),
     ),
 
     'DateException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be a valid date',
-            DateException::FORMAT => '{{name}} must be a valid date. Sample format: {{format}}',
+            ValidationException::STANDARD => '{{name}} geçerli bir tarih olmalı',
+            DateException::FORMAT => '{{name}} geçerli bir tarih olmalı. Örnek format: {{format}}',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be a valid date',
-            DateException::FORMAT => '{{name}} must not be a valid date in the format {{format}}',
+            ValidationException::STANDARD => '{{name}} geçerli bir tarih olmamalı',
+            DateException::FORMAT => '{{name}} şu tarih formatında olmamalı: {{format}}',
         ),
     ),
 
     'DigitException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must contain only digits (0-9)',
-            AlphaException::EXTRA => '{{name}} must contain only digits (0-9) and "{{additionalChars}}"',
+            ValidationException::STANDARD => '{{name}} sadece rakamlardan oluşmalı (0-9)',
+            AlphaException::EXTRA => '{{name}} sadece rakamlardan (0-9) ve şunlardan oluşmalı: "{{additionalChars}}"',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not contain digits (0-9)',
-            AlphaException::EXTRA => '{{name}} must not contain digits (0-9) or "{{additionalChars}}"',
+            ValidationException::STANDARD => '{{name}} tamamen rakamlardan (0-9) oluşmamalı',
+            AlphaException::EXTRA => '{{name}} tamamen rakamlardan (0-9) ve şunlardan oluşmamalı: "{{additionalChars}}"',
         ),
     ),
 
     'DirectoryException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be a directory',
+            ValidationException::STANDARD => '{{name}} var olan bir klasör olmalı',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be a directory',
+            ValidationException::STANDARD => '{{name}} var olan bir klasör olmamalı',
         ),
     ),
 
@@ -305,19 +305,19 @@ $messages = array(
 
     'EmailException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be valid email',
+            ValidationException::STANDARD => '{{name}} geçerli bir eposta olmalı',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be an email',
+            ValidationException::STANDARD => '{{name}} geçerli bir eposta olmamalı',
         ),
     ),
 
     'EndsWithException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must end with ({{endValue}})',
+            ValidationException::STANDARD => '{{name}} şununla bitmeli: "{{endValue}}"',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not end with ({{endValue}})',
+            ValidationException::STANDARD => '{{name}} şununla bitmemeli: "{{endValue}}"',
         ),
     ),
 
@@ -334,10 +334,10 @@ $messages = array(
 
     'EvenException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be an even number',
+            ValidationException::STANDARD => '{{name}} çift sayı olmalı',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be an even number',
+            ValidationException::STANDARD => '{{name}} çift sayı olmamalı',
         ),
     ),
 
@@ -370,10 +370,10 @@ $messages = array(
 
     'FileException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be a file',
+            ValidationException::STANDARD => '{{name}} var olan bir dosya olmalı',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be a file',
+            ValidationException::STANDARD => '{{name}} var olan bir dosya olmamalı',
         ),
     ),
 
@@ -388,10 +388,10 @@ $messages = array(
 
     'FloatException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be a float number',
+            ValidationException::STANDARD => '{{name}} bir float olmalı',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be a float number',
+            ValidationException::STANDARD => '{{name}} float olmamalı',
         ),
     ),
 
@@ -444,10 +444,10 @@ $messages = array(
 
     'IntException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be an integer number',
+            ValidationException::STANDARD => '{{name}} bir sayı olmalı',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be an integer number',
+            ValidationException::STANDARD => '{{name}} bir sayı olmamalı',
         ),
     ),
 
@@ -497,10 +497,10 @@ $messages = array(
 
     'LowercaseException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be lowercase',
+            ValidationException::STANDARD => '{{name}} yalnızca küçük harflerden oluşmalı',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be lowercase',
+            ValidationException::STANDARD => '{{name}} tamamen küçük harflerden oluşmamalı',
         ),
     ),
 
@@ -555,10 +555,10 @@ $messages = array(
 
     'NegativeException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be negative',
+            ValidationException::STANDARD => '{{name}} sıfırdan küçük olmalı',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be negative',
+            ValidationException::STANDARD => '{{name}} sıfırdan küçük olmamalı',
         ),
     ),
 
@@ -591,57 +591,57 @@ $messages = array(
 
     'NotEmptyException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => 'The value must not be empty',
-            NotEmptyException::NAMED => '{{name}} must not be empty',
+            ValidationException::STANDARD => 'Değer boş bırakılamaz',
+            NotEmptyException::NAMED => '{{name}} boş bırakılamaz',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => 'The value must be empty',
-            NotEmptyException::NAMED => '{{name}} must be empty',
+            ValidationException::STANDARD => 'Değer boş olmalı',
+            NotEmptyException::NAMED => '{{name}} boş olmalı',
         ),
     ),
 
     'NoWhitespaceException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must not contain whitespace',
+            ValidationException::STANDARD => '{{name}} boşluk karakterleri içermemeli',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not not contain whitespace',
+            ValidationException::STANDARD => '{{name}} boşluk karakterleri içermeli',
         ),
     ),
 
     'NullValueException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be null',
+            ValidationException::STANDARD => '{{name}} null olmalı',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be null',
+            ValidationException::STANDARD => '{{name}} null olmamalı',
         ),
     ),
 
     'NumericException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be numeric',
+            ValidationException::STANDARD => '{{name}} sayısal bir ifade olmalı',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be numeric',
+            ValidationException::STANDARD => '{{name}} sayısal bir ifade olmamalı',
         ),
     ),
 
     'ObjectException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be an object',
+            ValidationException::STANDARD => '{{name}} bir nesne olmalı',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be an object',
+            ValidationException::STANDARD => '{{name}} bir nesne olmamalı',
         ),
     ),
 
     'OddException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be an odd number',
+            ValidationException::STANDARD => '{{name}} tek sayı olmalı',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be an odd number',
+            ValidationException::STANDARD => '{{name}} tek sayı olmamalı',
         ),
     ),
 
@@ -674,10 +674,10 @@ $messages = array(
 
     'PositiveException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be positive',
+            ValidationException::STANDARD => '{{name}} sıfırdan büyük olmalı',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be positive',
+            ValidationException::STANDARD => '{{name}} sıfırdan büyük olmamalı',
         ),
     ),
 
@@ -732,10 +732,10 @@ $messages = array(
 
     'RegexException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must validate against {{regex}}',
+            ValidationException::STANDARD => '{{name}} şu düzenli ifadeyle eşleşmeli: {{regex}}',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not validate against {{regex}}',
+            ValidationException::STANDARD => '{{name}} şu düzenli ifadeyle eşleşmemeli: {{regex}}',
         ),
     ),
 
@@ -768,30 +768,30 @@ $messages = array(
 
     'SpaceException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must contain only space characters',
-            AlphaException::EXTRA => '{{name}} must contain only space characters and "{{additionalChars}}"',
+            ValidationException::STANDARD => '{{name}} sadece boşluk karakterleri içermeli',
+            AlphaException::EXTRA => '{{name}} sadece boşluk karakterleri ve şunları içermeli: "{{additionalChars}}"',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not contain space characters',
-            AlphaException::EXTRA => '{{name}} must not contain space characters or "{{additionalChars}}"',
+            ValidationException::STANDARD => '{{name}} tamamen boşluk karakterlerinden oluşmamalı',
+            AlphaException::EXTRA => '{{name}} tamamen boşluk karakterlerinden ve şunlardan oluşmamalı: "{{additionalChars}}"',
         ),
     ),
 
     'StartsWithException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must start with ({{startValue}})',
+            ValidationException::STANDARD => '{{name}} şununla başlamalı: "{{startValue}}"',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not start with ({{startValue}})',
+            ValidationException::STANDARD => '{{name}} şununla başlamamalı: "{{startValue}}"',
         ),
     ),
 
     'StringException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be a string',
+            ValidationException::STANDARD => '{{name}} bir metin olmalı',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be string',
+            ValidationException::STANDARD => '{{name}} bir metin olmamalı',
         ),
     ),
 
@@ -833,28 +833,28 @@ $messages = array(
 
     'UploadedException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be an uploaded file',
+            ValidationException::STANDARD => '{{name}}, yüklenmiş bir dosya olmalı',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be an uploaded file',
+            ValidationException::STANDARD => '{{name}}, yüklenmiş bir dosya olmamalı',
         ),
     ),
 
     'UppercaseException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be uppercase',
+            ValidationException::STANDARD => '{{name}} yalnızca büyük harflerden oluşmalı',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be uppercase',
+            ValidationException::STANDARD => '{{name}} tamamen büyük harflerden oluşmamalı',
         ),
     ),
 
     'UrlException' => array(
         ValidationException::MODE_DEFAULT => array(
-            ValidationException::STANDARD => '{{name}} must be an URL',
+            ValidationException::STANDARD => '{{name}} geçerli bir URL olmalı',
         ),
         ValidationException::MODE_NEGATIVE => array(
-            ValidationException::STANDARD => '{{name}} must not be an URL',
+            ValidationException::STANDARD => '{{name}} geçerli bir URL olmamalı',
         ),
     ),
 
