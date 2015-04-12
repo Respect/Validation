@@ -83,11 +83,11 @@ validated object as the first node in the chain.
 All validators treat input as optional and will accept empty string input as valid,
 unless otherwise stated in the documentation.
 
-We use the `v:notEmpty()` validator prefixed to disallow empty input and effectively
-define the field as mandatory as input will be required or validation will fail.
+We use the `v:notOptional()` validator prefixed to disallow an empty string as input and effectively
+define the field as mandatory as a non-empty string will be required or validation will fail.
 
 ```php
-v::string()->notEmpty()->validate(''); //false input required
+v::string()->notOptional()->validate(''); //false input required
 ```
 
 ### Negating Rules

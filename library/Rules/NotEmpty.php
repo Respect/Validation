@@ -1,7 +1,9 @@
 <?php
 namespace Respect\Validation\Rules;
 
-class NotEmpty extends AbstractRule
+use \Respect\Validation\RequiredValidatable;
+
+class NotEmpty extends AbstractRule implements RequiredValidatable
 {
     public function validate($input)
     {
