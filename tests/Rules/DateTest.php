@@ -72,5 +72,22 @@ class DateTest extends \PHPUnit_Framework_TestCase
         $this->dateValidator = new Date('r');
         $this->assertTrue($this->dateValidator->assert('Thu, 29 Dec 2005 01:02:03 +0000'));
     }
+
+    public function testDateTimeSystemTimezoneIndependent()
+    {
+        date_default_timezone_set('UTC');
+        $this->dateValidator = new Date('c');
+        $this->assertTrue($this->dateValidator->assert('2004-02-12T15:19:21+00:00'));
+
+        $this->dateValidator = new Date('c');
+        $this->assertTrue($this->dateValidator->assert('2004-02-12T16:19:21+01:00'));
+
+        date_default_timezone_set('Europe/Amsterdam');
+        $this->dateValidator = new Date('c');
+        $this->assertTrue($this->dateValidator->assert('2004-02-12T15:19:21+00:00'));
+
+        $this->dateValidator = new Date('c');
+        $this->assertTrue($this->dateValidator->assert('2004-02-12T16:19:21+01:00'));
+    }
 }
 
