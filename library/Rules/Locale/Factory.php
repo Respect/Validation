@@ -66,4 +66,26 @@ class Factory
                 );
         }
     }
+
+    /**
+     * @param $countryCode
+     * @return TurkishCharacter
+     * @throws ComponentException
+     */
+    public function character($countryCode)
+    {
+        $filteredCountryCode = strtoupper($countryCode);
+        switch ($filteredCountryCode) {
+            case 'TR':
+                return new TurkishCharacter();
+
+            default:
+                throw new ComponentException(
+                    sprintf(
+                        'Cannot provide character validation for country "%s"',
+                        $countryCode
+                    )
+                );
+        }
+    }
 }
