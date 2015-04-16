@@ -39,6 +39,7 @@ class Sf extends AbstractRule
     private function returnViolationsForConstraint($valueToValidate, Constraint $symfonyConstraint)
     {
         $validator = Validation::createValidator(); // You gotta love those Symfony namings
+
         return $validator->validateValue($valueToValidate, $symfonyConstraint);
     }
 

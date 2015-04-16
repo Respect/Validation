@@ -24,12 +24,14 @@ class MinimumAge extends AbstractRule
             $birthday = new \DateTime('now - '.$this->age.' year');
 
             return $birthday > $input;
-        } elseif (!is_string($input) || (is_null($this->format) && false === strtotime($input))) {
-            return false;
-        } else {
-            $age = ((date('Ymd') - date('Ymd', strtotime($input))) / 10000);
-
-            return $age >= $this->age;
         }
+
+        if (!is_string($input) || (is_null($this->format) && false === strtotime($input))) {
+            return false;
+        }
+
+        $age = ((date('Ymd') - date('Ymd', strtotime($input))) / 10000);
+
+        return $age >= $this->age;
     }
 }
