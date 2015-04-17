@@ -10,7 +10,7 @@ class Not extends AbstractRule
 
     public function __construct(Validatable $rule)
     {
-        if ($rule instanceof AbstractComposite) {
+        if ($rule instanceof AllOff) {
             $rule = $this->absorbComposite($rule);
         }
 
@@ -19,7 +19,7 @@ class Not extends AbstractRule
 
     public function validate($input)
     {
-        if ($this->rule instanceof AbstractComposite) {
+        if ($this->rule instanceof AllOff) {
             return $this->rule->validate($input);
         }
 
@@ -28,7 +28,7 @@ class Not extends AbstractRule
 
     public function assert($input)
     {
-        if ($this->rule instanceof AbstractComposite) {
+        if ($this->rule instanceof AllOff) {
             return $this->rule->assert($input);
         }
 
@@ -43,20 +43,23 @@ class Not extends AbstractRule
             ->setMode(ValidationException::MODE_NEGATIVE);
     }
 
-    protected function absorbComposite(AbstractComposite $rule)
+    protected function absorbComposite(AbstractComposite $compositeRule)
     {
-        $clone = clone $rule;
-        $rules = $clone->getRules();
-        $clone->removeRules();
+        if (!$compositeRule instanceof AllOff) {
+            return $compositeRule;
+        }
 
-        foreach ($rules as &$r) {
-            if ($r instanceof AbstractComposite) {
-                $clone->addRule($this->absorbComposite($r));
+        $compositeRuleClone = clone $compositeRule;
+        $compositeRuleClone->removeRules();
+
+        foreach ($compositeRule->getRules() as $rule) {
+            if ($rule instanceof AbstractComposite) {
+                $compositeRuleClone->addRule($this->absorbComposite($rule));
             } else {
-                $clone->addRule(new static($r));
+                $compositeRuleClone->addRule(new static($rule));
             }
         }
 
-        return $clone;
+        return $compositeRuleClone;
     }
 }
