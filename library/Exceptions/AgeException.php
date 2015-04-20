@@ -9,14 +9,14 @@ class AgeException extends AbstractNestedException
 
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
-            self::BOTH => '{{name}} must be between {{minAge}} and {{maxAge}} years ago',
-            self::LOWER => '{{name}} must be lower than {{minAge}} years ago',
-            self::GREATER => '{{name}} must be greater than {{maxAge}} years ago',
+            self::BOTH => '{{name}} must be between {{minAge}} and {{maxAge}} years',
+            self::LOWER => '{{name}} must be greater than {{minAge}} years',
+            self::GREATER => '{{name}} must be lower than {{maxAge}} years',
         ),
         self::MODE_NEGATIVE => array(
-            self::BOTH => '{{name}} must not be between {{minAge}} and {{maxAge}} years ago',
-            self::LOWER => '{{name}} must not be lower than {{minAge}} years ago',
-            self::GREATER => '{{name}} must not be greater than {{maxAge}} years ago',
+            self::BOTH => '{{name}} must not be between {{minAge}} and {{maxAge}} years',
+            self::LOWER => '{{name}} must not be greater than {{minAge}} years',
+            self::GREATER => '{{name}} must not be lower than {{maxAge}} years',
         ),
     );
 
