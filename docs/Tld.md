@@ -13,4 +13,4 @@ v::tld()->validate('org'); //true
 See also
 
  * [Domain](Domain.md)
- * [CountryCode](CountryCode.md)
+ * [Country](Country.md)

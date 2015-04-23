@@ -117,6 +117,7 @@
 
 ## Regional
 
+  * [Country](Country.md)
   * [CountryCode](CountryCode.md)
   * [PostalCode](PostalCode.md)
   * [Tld](Tld.md)
