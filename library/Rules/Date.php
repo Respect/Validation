@@ -34,6 +34,6 @@ class Date extends AbstractRule
         $dateFromFormat = DateTime::createFromFormat($this->format, $input);
 
         return $dateFromFormat
-               && $input === date($this->format, $dateFromFormat->getTimestamp());
+               && $input === $dateFromFormat->format($this->format);
     }
 }
