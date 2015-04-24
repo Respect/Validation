@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\ComponentException;
 /**
  * Validates countries in ISO 3166-1.
  */
-class Country extends AbstractRule
+class Country extends AbstractSearcher
 {
     const ALPHA2  = 'alpha-2';
     const ALPHA3  = 'alpha-3';
@@ -284,8 +284,6 @@ class Country extends AbstractRule
 
     public $set;
 
-    private $index;
-
     public function __construct($set = self::ALPHA2)
     {
         $index = array_search($set, self::getAvailableSets(), true);
@@ -293,8 +291,9 @@ class Country extends AbstractRule
             throw new ComponentException(sprintf('"%s" is not a valid country set for ISO 3166-1', $set));
         }
 
-        $this->set   = $set;
-        $this->index = $index;
+        $this->set              = $set;
+        $this->haystack         = $this->getCountryList($index);
+        $this->compareIdentical = true;
     }
 
     public static function getAvailableSets()
@@ -314,10 +313,5 @@ class Country extends AbstractRule
         }
 
         return $countryList;
-    }
-
-    public function validate($input)
-    {
-        return in_array($input, $this->getCountryList($this->index), true);
     }
 }
