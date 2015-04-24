@@ -119,6 +119,7 @@
 
   * [Country](Country.md)
   * [CountryCode](CountryCode.md)
+  * [CountrySubdivision](CountrySubdivision.md)
   * [PostalCode](PostalCode.md)
   * [Tld](Tld.md)
 
