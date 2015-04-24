@@ -31,6 +31,7 @@ use Respect\Validation\Rules\AllOf;
  * @method static Validator contains(mixed $containsValue, bool $identical = false)
  * @method static Validator country(string $set = 'alpha-2')
  * @method static Validator countryCode()
+ * @method static Validator countrySubdivision(string $entry)
  * @method static Validator cpf()
  * @method static Validator creditCard()
  * @method static Validator date(string $format = null)
