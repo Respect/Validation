@@ -29,7 +29,6 @@ use Respect\Validation\Rules\AllOf;
  * @method static Validator cnpj()
  * @method static Validator consonant(string $additionalChars = null)
  * @method static Validator contains(mixed $containsValue, bool $identical = false)
- * @method static Validator country(string $set = 'alpha-2')
  * @method static Validator countryCode()
  * @method static Validator cpf()
  * @method static Validator creditCard()
