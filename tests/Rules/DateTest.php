@@ -72,5 +72,35 @@ class DateTest extends \PHPUnit_Framework_TestCase
         $this->dateValidator = new Date('r');
         $this->assertTrue($this->dateValidator->assert('Thu, 29 Dec 2005 01:02:03 +0000'));
     }
+
+    /**
+     * Test that datetime strings with timezone information are valid independent on the system's timezone setting.
+     *
+     * @param string $systemTimezone
+     * @param string $input
+     * @dataProvider providerForDateTimeTimezoneStrings
+     */
+    public function testDateTimeSystemTimezoneIndependent($systemTimezone, $format, $input)
+    {
+        date_default_timezone_set($systemTimezone);
+        $this->dateValidator = new Date($format);
+        $this->assertTrue($this->dateValidator->assert($input));
+    }
+
+    /**
+     *
+     * @return array
+     */
+    public function providerForDateTimeTimezoneStrings(){
+        return array(
+                array('UTC', 'c', '2005-12-30T01:02:03+01:00',),
+                array('UTC', 'c', '2004-02-12T15:19:21+00:00',),
+                array('UTC', 'r', 'Thu, 29 Dec 2005 01:02:03 +0000',),
+                array('Europe/Amsterdam', 'c', '2005-12-30T01:02:03+01:00',),
+                array('Europe/Amsterdam', 'c', '2004-02-12T15:19:21+00:00',),
+                array('Europe/Amsterdam', 'r', 'Thu, 29 Dec 2005 01:02:03 +0000',),
+        );
+    }
+
 }
 
