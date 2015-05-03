@@ -42,6 +42,7 @@ class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(''),
+            array(null),
             array(0),
             array('wpoiur'),
             array('Foo'),
@@ -57,5 +58,14 @@ class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
             array("Foo\nBar"),
             array("Foo\tBar"),
         );
+    }
+
+    /**
+     * @issue 346
+     * @expectedException Respect\Validation\Exceptions\NoWhitespaceException
+     */
+    public function testArrayDoesNotThrowAWarning()
+    {
+        $this->noWhitespaceValidator->assert(array());
     }
 }
