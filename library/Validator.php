@@ -35,7 +35,7 @@ use Respect\Validation\Rules\AllOf;
  * @method static Validator date(string $format = null)
  * @method static Validator digit(string $additionalChars = null)
  * @method static Validator directory()
- * @method static Validator domain()
+ * @method static Validator domain(bool $tldCheck = true)
  * @method static Validator each(Validatable $itemValidator = null, Validatable $keyValidator = null)
  * @method static Validator email()
  * @method static Validator endsWith(mixed $endValue, bool $identical = false)
