@@ -38,6 +38,10 @@ class JsonTest extends \PHPUnit_Framework_TestCase
             array('[1,2,3]'),
             array('["foo", "bar", "number", 1]'),
             array('{"foo": "bar", "number":1}'),
+            array('[]'),
+            array('{}'),
+            array('false'),
+            array('null'),
         );
     }
 
