@@ -5,6 +5,11 @@ class Json extends AbstractRule
 {
     public function validate($input)
     {
-        return (bool) (json_decode($input));
+        if (is_string($input)
+            && strtolower($input) == 'null') {
+            return true;
+        }
+
+        return (null !== json_decode($input));
     }
 }
