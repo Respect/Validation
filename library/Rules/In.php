@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class In extends AbstractSearcher
@@ -8,7 +9,7 @@ class In extends AbstractSearcher
 
     public function __construct($haystack, $compareIdentical = false)
     {
-        $this->haystack         = $haystack;
+        $this->haystack = $haystack;
         $this->compareIdentical = $compareIdentical;
     }
 }

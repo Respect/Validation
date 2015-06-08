@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 use DateTime;
@@ -10,8 +11,8 @@ class ZendTest extends \PHPUnit_Framework_TestCase
         $v = new Zend('Date');
         $this->assertAttributeInstanceOf(
             $instanceOf = 'Zend\Validator\ValidatorInterface',
-            $attribute  = 'zendValidator',
-            $instance   = $v
+            $attribute = 'zendValidator',
+            $instance = $v
         );
     }
 
@@ -23,19 +24,19 @@ class ZendTest extends \PHPUnit_Framework_TestCase
         $v = new Zend('Zend\Validator\Date');
         $this->assertAttributeInstanceOf(
             $instanceOf = 'Zend\Validator\ValidatorInterface',
-            $attribute  = 'zendValidator',
-            $instance   = $v
+            $attribute = 'zendValidator',
+            $instance = $v
         );
     }
 
     public function testConstructorWithZendValidatorInstance()
     {
-        $zendInstance = new \Zend\Validator\Date;
-        $v            = new Zend($zendInstance);
+        $zendInstance = new \Zend\Validator\Date();
+        $v = new Zend($zendInstance);
         $this->assertAttributeSame(
-            $expected   = $zendInstance,
-            $attribute  = 'zendValidator',
-            $instance   = $v
+            $expected = $zendInstance,
+            $attribute = 'zendValidator',
+            $instance = $v
         );
     }
 
@@ -44,11 +45,11 @@ class ZendTest extends \PHPUnit_Framework_TestCase
      */
     public function testUserlandValidatorExtendingZendInterface()
     {
-        $v = new Zend(new MyValidator);
+        $v = new Zend(new MyValidator());
         $this->assertAttributeInstanceOf(
             $instanceOf = 'Zend\Validator\ValidatorInterface',
-            $attribute  = 'zendValidator',
-            $instance   = $v
+            $attribute = 'zendValidator',
+            $instance = $v
         );
     }
 
@@ -57,8 +58,8 @@ class ZendTest extends \PHPUnit_Framework_TestCase
         $v = new Zend('Sitemap\Lastmod');
         $this->assertAttributeInstanceOf(
             $instanceOf = 'Zend\Validator\ValidatorInterface',
-            $attribute  = 'zendValidator',
-            $instance   = $v
+            $attribute = 'zendValidator',
+            $instance = $v
         );
     }
 
@@ -68,7 +69,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorWithValidatorName_and_params()
     {
-        $zendValidatorName   = 'StringLength';
+        $zendValidatorName = 'StringLength';
         $zendValidatorParams = array('min' => 10, 'max' => 25);
         $v = new Zend($zendValidatorName, $zendValidatorParams);
         $this->assertTrue(
@@ -82,8 +83,8 @@ class ZendTest extends \PHPUnit_Framework_TestCase
      */
     public function testZendDateValidatorWithRespectMethods()
     {
-        $v    = new Zend('Date');
-        $date = new DateTime;
+        $v = new Zend('Date');
+        $date = new DateTime();
         $this->assertTrue($v->validate($date));
         $this->assertTrue($v->assert($date));
     }
@@ -125,4 +126,3 @@ if (class_exists('\Zend\Validator\Date')) {
     {
     }
 }
-

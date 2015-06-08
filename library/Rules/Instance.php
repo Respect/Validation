@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class Instance extends AbstractRule

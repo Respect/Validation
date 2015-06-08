@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class Uppercase extends AbstractRule

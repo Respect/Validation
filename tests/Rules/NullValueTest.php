@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class NullValueTest extends \PHPUnit_Framework_TestCase
@@ -7,7 +8,7 @@ class NullValueTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->object = new NullValue;
+        $this->object = new NullValue();
     }
 
     public function testNullValue()
@@ -37,6 +38,4 @@ class NullValueTest extends \PHPUnit_Framework_TestCase
             array('Foo'),
         );
     }
-
 }
-

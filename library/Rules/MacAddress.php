@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class MacAddress extends AbstractRule

@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class NotEmptyTest extends \PHPUnit_Framework_TestCase
@@ -7,7 +8,7 @@ class NotEmptyTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->object = new NotEmpty;
+        $this->object = new NotEmpty();
     }
 
     /**
@@ -34,7 +35,7 @@ class NotEmptyTest extends \PHPUnit_Framework_TestCase
             array(' oi'),
             array(array(5)),
             array(array(0)),
-            array(new \stdClass)
+            array(new \stdClass()),
         );
     }
 
@@ -46,8 +47,7 @@ class NotEmptyTest extends \PHPUnit_Framework_TestCase
             array("\n"),
             array(false),
             array(null),
-            array(array())
+            array(array()),
         );
     }
 }
-

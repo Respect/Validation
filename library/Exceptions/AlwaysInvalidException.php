@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Exceptions;
 
 class AlwaysInvalidException extends ValidationException
@@ -8,11 +9,11 @@ class AlwaysInvalidException extends ValidationException
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => '{{name}} is always invalid',
-            self::SIMPLE   => '{{name}} is not valid',
+            self::SIMPLE => '{{name}} is not valid',
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => '{{name}} is always valid',
-            self::SIMPLE   => '{{name}} is valid',
+            self::SIMPLE => '{{name}} is valid',
         ),
     );
 }

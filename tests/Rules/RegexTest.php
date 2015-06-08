@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class RegexTest extends \PHPUnit_Framework_TestCase
@@ -25,4 +26,3 @@ class RegexTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($v->assert('w poiur'));
     }
 }
-

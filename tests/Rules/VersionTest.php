@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class VersionTest extends \PHPUnit_Framework_TestCase
@@ -51,4 +52,3 @@ class VersionTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

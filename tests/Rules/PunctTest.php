@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class PunctTest extends \PHPUnit_Framework_TestCase
@@ -6,7 +7,7 @@ class PunctTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidPunct
      */
-    public function testValidDataWithPunctShouldReturnTrue($validPunct, $additional='')
+    public function testValidDataWithPunctShouldReturnTrue($validPunct, $additional = '')
     {
         $validator = new Punct($additional);
         $this->assertTrue($validator->validate($validPunct));
@@ -16,7 +17,7 @@ class PunctTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidPunct
      * @expectedException Respect\Validation\Exceptions\PunctException
      */
-    public function testInvalidPunctShouldFailAndThrowPunctException($invalidPunct, $additional='')
+    public function testInvalidPunctShouldFailAndThrowPunctException($invalidPunct, $additional = '')
     {
         $validator = new Punct($additional);
         $this->assertFalse($validator->validate($invalidPunct));
@@ -52,9 +53,9 @@ class PunctTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidParams()
     {
         return array(
-            array(new \stdClass),
+            array(new \stdClass()),
             array(array()),
-            array(0x2)
+            array(0x2),
         );
     }
 
@@ -83,4 +84,3 @@ class PunctTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

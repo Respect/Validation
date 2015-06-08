@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class AlnumTest extends \PHPUnit_Framework_TestCase
@@ -54,9 +55,9 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidParams()
     {
         return array(
-            array(new \stdClass),
+            array(new \stdClass()),
             array(array()),
-            array(0x2)
+            array(0x2),
         );
     }
 
@@ -90,9 +91,8 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
             array('dgç', ''),
             array(1e21, ''), //evaluates to "1.0E+21"
             array(null, ''),
-            array(new \stdClass, ''),
+            array(new \stdClass(), ''),
             array(array(), ''),
         );
     }
 }
-

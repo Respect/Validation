@@ -8,7 +8,7 @@ function is_writable($writable)
 {
     $return = \is_writable($writable); // Running the real function
     if (null !== $GLOBALS['is_writable']) {
-        $return             = $GLOBALS['is_writable'];
+        $return = $GLOBALS['is_writable'];
         $GLOBALS['is_writable'] = null;
     }
 
@@ -17,7 +17,6 @@ function is_writable($writable)
 
 class WritableTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @covers Respect\Validation\Rules\Writable::validate
      */
@@ -55,5 +54,4 @@ class WritableTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($rule->validate($object));
     }
-
 }

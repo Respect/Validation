@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Exceptions;
 
 class AgeException extends AbstractNestedException

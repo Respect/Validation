@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class LowercaseTest extends \PHPUnit_Framework_TestCase
@@ -49,4 +50,3 @@ class LowercaseTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

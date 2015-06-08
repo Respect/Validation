@@ -1,9 +1,8 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
-use DateTime;
-
-class MinimumAgeTest extends \PHPUnit_Framework_TestCase
+class MininumAgeTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider providerForValidDateValidMinimumAge
@@ -61,9 +60,8 @@ class MinimumAgeTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(18, null, 'invalid-input'),
-            array(18, null, new \stdClass),
+            array(18, null, new \stdClass()),
             array(18, 'y-m-d', '2002-06-30'),
         );
     }
 }
-

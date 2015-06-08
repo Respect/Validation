@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class SpaceTest extends \PHPUnit_Framework_TestCase
@@ -6,7 +7,7 @@ class SpaceTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidSpace
      */
-    public function testValidDataWithSpaceShouldReturnTrue($validSpace, $additional='')
+    public function testValidDataWithSpaceShouldReturnTrue($validSpace, $additional = '')
     {
         $validator = new Space($additional);
         $this->assertTrue($validator->validate($validSpace));
@@ -16,7 +17,7 @@ class SpaceTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidSpace
      * @expectedException Respect\Validation\Exceptions\SpaceException
      */
-    public function testInvalidSpaceShouldFailAndThrowSpaceException($invalidSpace, $additional='')
+    public function testInvalidSpaceShouldFailAndThrowSpaceException($invalidSpace, $additional = '')
     {
         $validator = new Space($additional);
         $this->assertFalse($validator->validate($invalidSpace));
@@ -52,9 +53,9 @@ class SpaceTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidParams()
     {
         return array(
-            array(new \stdClass),
+            array(new \stdClass()),
             array(array()),
-            array(0x2)
+            array(0x2),
         );
     }
 
@@ -63,10 +64,10 @@ class SpaceTest extends \PHPUnit_Framework_TestCase
         return array(
             array(''),
             array("\n"),
-            array(" "),
-            array("    "),
+            array(' '),
+            array('    '),
             array("\t"),
-            array("	"),
+            array('	'),
         );
     }
 
@@ -83,4 +84,3 @@ class SpaceTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 use DateTime;
@@ -9,7 +10,7 @@ class LeapYearTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->leapYearValidator = new LeapYear;
+        $this->leapYearValidator = new LeapYear();
     }
 
     public function testValidLeapDate()
@@ -32,4 +33,3 @@ class LeapYearTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->leapYearValidator->__invoke(array()));
     }
 }
-

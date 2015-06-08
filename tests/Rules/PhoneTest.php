@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class PhoneTest extends \PHPUnit_Framework_TestCase
@@ -7,12 +8,11 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->phoneValidator = new Phone;
+        $this->phoneValidator = new Phone();
     }
 
     /**
      * @dataProvider providerForPhone
-     *
      */
     public function testValidPhoneShouldReturnTrue($input)
     {
@@ -113,4 +113,3 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

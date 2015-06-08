@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class CharsetTest extends \PHPUnit_Framework_TestCase
@@ -35,7 +36,7 @@ class CharsetTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidParams()
     {
         return array(
-            array(new \stdClass),
+            array(new \stdClass()),
             array(array()),
             array(null),
             array('16'),
@@ -43,7 +44,7 @@ class CharsetTest extends \PHPUnit_Framework_TestCase
             array('a'),
             array('Foo'),
             array('basic'),
-            array(10)
+            array(10),
         );
     }
 
@@ -65,8 +66,7 @@ class CharsetTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array('ASCII', '日本国'),
-            array('ASCII', 'açaí')
+            array('ASCII', 'açaí'),
         );
     }
 }
-

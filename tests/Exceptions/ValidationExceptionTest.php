@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Exceptions;
 
 class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
@@ -62,7 +63,7 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testSettingExceptionParamsMakesThemAvailable($input, $expected)
     {
-        $x = new ValidationException;
+        $x = new ValidationException();
         $x->setParam('foo', $input);
         $this->assertEquals(
             $expected,
@@ -84,9 +85,9 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
         return array(
             array('foo', 'foo'),
             array(123, '123'),
-            array(array(), "Array"),
-            array(new \stdClass, "Object of class stdClass"),
-            array($x = new \DateTime, $x->format('Y-m-d H:i:s')),
+            array(array(), 'Array'),
+            array(new \stdClass(), 'Object of class stdClass'),
+            array($x = new \DateTime(), $x->format('Y-m-d H:i:s')),
         );
     }
 
@@ -96,18 +97,18 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
             array(
                 '{{foo}} {{bar}} {{baz}}',
                 'hello world respect',
-                array('foo' => 'hello', 'bar' => 'world', 'baz' => 'respect')
+                array('foo' => 'hello', 'bar' => 'world', 'baz' => 'respect'),
             ),
             array(
                 '{{foo}} {{bar}} {{baz}}',
                 'hello {{bar}} respect',
-                array('foo' => 'hello', 'baz' => 'respect')
+                array('foo' => 'hello', 'baz' => 'respect'),
             ),
             array(
                 '{{foo}} {{bar}} {{baz}}',
                 'hello {{bar}} respect',
-                array('foo' => 'hello', 'bot' => 111, 'baz' => 'respect')
-            )
+                array('foo' => 'hello', 'bot' => 111, 'baz' => 'respect'),
+            ),
         );
     }
 }

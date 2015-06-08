@@ -1,11 +1,11 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class StartsWithTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider providerForStartsWith
-     *
      */
     public function testStartsWith($start, $input)
     {
@@ -19,7 +19,7 @@ class StartsWithTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotStartsWith
      * @expectedException Respect\Validation\Exceptions\StartsWithException
      */
-    public function testNotStartsWith($start, $input, $caseSensitive=false)
+    public function testNotStartsWith($start, $input, $caseSensitive = false)
     {
         $v = new StartsWith($start, $caseSensitive);
         $this->assertFalse($v->__invoke($input));
@@ -52,4 +52,3 @@ class StartsWithTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

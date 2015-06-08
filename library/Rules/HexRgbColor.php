@@ -1,7 +1,6 @@
 <?php
-namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validator as v;
+namespace Respect\Validation\Rules;
 
 class HexRgbColor extends Xdigit
 {

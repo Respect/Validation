@@ -1,13 +1,13 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class IpTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider providerForIp
-     *
      */
-    public function testValidIpsShouldReturnTrue($input, $options=null)
+    public function testValidIpsShouldReturnTrue($input, $options = null)
     {
         $ipValidator = new Ip($options);
         $this->assertTrue($ipValidator->__invoke($input));
@@ -30,7 +30,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotIp
      * @expectedException Respect\Validation\Exceptions\IpException
      */
-    public function testInvalidIpsShouldThrowIpException($input, $options=null)
+    public function testInvalidIpsShouldThrowIpException($input, $options = null)
     {
         $ipValidator = new Ip($options);
         $this->assertFalse($ipValidator->__invoke($input));
@@ -127,4 +127,3 @@ class IpTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

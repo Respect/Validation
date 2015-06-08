@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class XdigitTest extends \PHPUnit_Framework_TestCase
@@ -7,7 +8,7 @@ class XdigitTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->xdigitsValidator = new Xdigit;
+        $this->xdigitsValidator = new Xdigit();
     }
 
     /**
@@ -70,4 +71,3 @@ class XdigitTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

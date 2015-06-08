@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class JsonTest extends \PHPUnit_Framework_TestCase
@@ -7,7 +8,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->json = new Json;
+        $this->json = new Json();
     }
 
     /**
@@ -25,8 +26,8 @@ class JsonTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidJsonsShouldThrowJsonException()
     {
-        $this->assertFalse($this->json->__invoke("{foo:bar}"));
-        $this->assertFalse($this->json->assert("{foo:bar}"));
+        $this->assertFalse($this->json->__invoke('{foo:bar}'));
+        $this->assertFalse($this->json->assert('{foo:bar}'));
     }
 
     public function providerForPass()
@@ -44,6 +45,4 @@ class JsonTest extends \PHPUnit_Framework_TestCase
             array('null'),
         );
     }
-
 }
-

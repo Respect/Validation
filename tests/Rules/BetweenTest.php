@@ -1,7 +1,8 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
-use \DateTime;
+use DateTime;
 
 class BetweenTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,7 +22,7 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
                 new DateTime('yesterday'),
                 new DateTime('tomorrow'),
                 false,
-                new DateTime('now')
+                new DateTime('now'),
             ),
         );
     }
@@ -41,7 +42,7 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
                 new DateTime('yesterday'),
                 new DateTime('now'),
                 false,
-                new DateTime('tomorrow')
+                new DateTime('tomorrow'),
             ),
         );
     }
@@ -76,4 +77,3 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
         $o = new Between(10, 5);
     }
 }
-

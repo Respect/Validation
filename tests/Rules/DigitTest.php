@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class DigitTest extends \PHPUnit_Framework_TestCase
@@ -6,7 +7,7 @@ class DigitTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidDigits
      */
-    public function testValidDataWithDigitsShouldReturnTrue($validDigits, $additional='')
+    public function testValidDataWithDigitsShouldReturnTrue($validDigits, $additional = '')
     {
         $validator = new Digit($additional);
         $this->assertTrue($validator->validate($validDigits));
@@ -16,7 +17,7 @@ class DigitTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidDigits
      * @expectedException Respect\Validation\Exceptions\DigitException
      */
-    public function testInvalidDigitsShouldFailAndThrowDigitException($invalidDigits, $additional='')
+    public function testInvalidDigitsShouldFailAndThrowDigitException($invalidDigits, $additional = '')
     {
         $validator = new Digit($additional);
         $this->assertFalse($validator->validate($invalidDigits));
@@ -52,9 +53,9 @@ class DigitTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidParams()
     {
         return array(
-            array(new \stdClass),
+            array(new \stdClass()),
             array(array()),
-            array(0x2)
+            array(0x2),
         );
     }
 
@@ -88,4 +89,3 @@ class DigitTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

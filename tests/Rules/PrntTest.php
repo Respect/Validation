@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class PrntTest extends \PHPUnit_Framework_TestCase
@@ -6,7 +7,7 @@ class PrntTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidPrint
      */
-    public function testValidDataWithPrintCharsShouldReturnTrue($validPrint, $additional='')
+    public function testValidDataWithPrintCharsShouldReturnTrue($validPrint, $additional = '')
     {
         $validator = new Prnt($additional);
         $this->assertTrue($validator->validate($validPrint));
@@ -16,7 +17,7 @@ class PrntTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidPrint
      * @expectedException Respect\Validation\Exceptions\PrntException
      */
-    public function testInvalidPrintShouldFailAndThrowPrntException($invalidPrint, $additional='')
+    public function testInvalidPrintShouldFailAndThrowPrntException($invalidPrint, $additional = '')
     {
         $validator = new Prnt($additional);
         $this->assertFalse($validator->validate($invalidPrint));
@@ -52,9 +53,9 @@ class PrntTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidParams()
     {
         return array(
-            array(new \stdClass),
+            array(new \stdClass()),
             array(array()),
-            array(0x2)
+            array(0x2),
         );
     }
 
@@ -76,9 +77,8 @@ class PrntTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(null),
-            array("foo" . chr(7) . "bar"),
-            array("foo" . chr(10) . "bar"),
+            array('foo'.chr(7).'bar'),
+            array('foo'.chr(10).'bar'),
         );
     }
 }
-

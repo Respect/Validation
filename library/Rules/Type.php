@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
@@ -7,18 +8,18 @@ class Type extends AbstractRule
 {
     public $type;
     public $availableTypes = array(
-        'array'     => 'array',
-        'bool'      => 'boolean',
-        'boolean'   => 'boolean',
-        'callable'  => 'callable',
-        'double'    => 'double',
-        'float'     => 'double',
-        'int'       => 'integer',
-        'integer'   => 'integer',
-        'null'      => 'NULL',
-        'object'    => 'object',
-        'resource'  => 'resource',
-        'string'    => 'string',
+        'array' => 'array',
+        'bool' => 'boolean',
+        'boolean' => 'boolean',
+        'callable' => 'callable',
+        'double' => 'double',
+        'float' => 'double',
+        'int' => 'integer',
+        'integer' => 'integer',
+        'null' => 'NULL',
+        'object' => 'object',
+        'resource' => 'resource',
+        'string' => 'string',
     );
 
     public function __construct($type)

@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class HexaTest extends \PHPUnit_Framework_TestCase
@@ -8,7 +9,7 @@ class HexaTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         set_error_handler(function () { }, E_USER_DEPRECATED);
-        $this->hexaValidator = new Hexa;
+        $this->hexaValidator = new Hexa();
     }
 
     protected function tearDown()
@@ -59,4 +60,3 @@ class HexaTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

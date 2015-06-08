@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Exceptions;
 
 class NotEmptyException extends ValidationException
@@ -18,6 +19,6 @@ class NotEmptyException extends ValidationException
 
     public function chooseTemplate()
     {
-        return $this->getName() == "" ? static::STANDARD : static::NAMED;
+        return $this->getName() == '' ? static::STANDARD : static::NAMED;
     }
 }

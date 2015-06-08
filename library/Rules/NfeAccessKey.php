@@ -12,8 +12,10 @@ class NfeAccessKey extends AbstractRule
 {
     /**
      * @see Manual de Integração do Contribuinte v4.0.1 (http://www.nfe.fazenda.gov.br)
-     * @param  string  $aK access key
-     * @return boolean
+     *
+     * @param string $aK access key
+     *
+     * @return bool
      */
     public function validate($aK)
     {

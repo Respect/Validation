@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class ContainsTest extends \PHPUnit_Framework_TestCase
@@ -18,7 +19,7 @@ class ContainsTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotContains
      * @expectedException Respect\Validation\Exceptions\ContainsException
      */
-    public function testStringsNotContainsExpectedValueShouldNotPass($start, $input, $identical=false)
+    public function testStringsNotContainsExpectedValueShouldNotPass($start, $input, $identical = false)
     {
         $v = new Contains($start, $identical);
         $this->assertFalse($v->__invoke($input));
@@ -48,4 +49,3 @@ class ContainsTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

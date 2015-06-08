@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules\Locale;
 
 use malkusch\bav\BAV;
@@ -10,6 +11,7 @@ use Respect\Validation\Rules\AbstractRule;
  * This validator depends on the composer package "malkusch/bav".
  *
  * @author Markus Malkusch <markus@malkusch.de>
+ *
  * @see    BAV::isValidBank()
  */
 class GermanBank extends AbstractRule
@@ -31,7 +33,7 @@ class GermanBank extends AbstractRule
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function validate($input)
     {

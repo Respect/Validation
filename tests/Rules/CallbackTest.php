@@ -1,15 +1,17 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class CallbackTest extends \PHPUnit_Framework_TestCase
 {
     private $truthy, $falsy;
 
-    function setUp() {
-        $this->truthy = new Callback(function() {
+    public function setUp()
+    {
+        $this->truthy = new Callback(function () {
             return true;
         });
-        $this->falsy = new Callback(function() {
+        $this->falsy = new Callback(function () {
             return false;
         });
     }
@@ -62,8 +64,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidCallbacksShouldRaiseComponentExceptionUponInstantiation()
     {
-        $v = new Callback(new \stdClass);
+        $v = new Callback(new \stdClass());
         $this->assertTrue($v->assert('w poiur'));
     }
 }
-

@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 use stdClass;
@@ -7,15 +8,15 @@ class TypeTest extends \PHPUnit_Framework_TestCase
 {
     public function testShouldDefineTypeOnConstructor()
     {
-        $type   = 'int';
-        $rule   = new Type($type);
+        $type = 'int';
+        $rule = new Type($type);
 
         $this->assertSame($type, $rule->type);
     }
 
     public function testShouldNotBeCaseSensitive()
     {
-        $rule   = new Type('InTeGeR');
+        $rule = new Type('InTeGeR');
 
         $this->assertTrue($rule->validate(42));
     }

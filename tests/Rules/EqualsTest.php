@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class EqualsTest extends \PHPUnit_Framework_TestCase
@@ -18,7 +19,7 @@ class EqualsTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotEquals
      * @expectedException Respect\Validation\Exceptions\EqualsException
      */
-    public function testStringsNotEqualsExpectedValueShouldNotPass($start, $input, $identical=false)
+    public function testStringsNotEqualsExpectedValueShouldNotPass($start, $input, $identical = false)
     {
         $v = new Equals($start, $identical);
         $this->assertFalse($v->__invoke($input));
@@ -30,7 +31,7 @@ class EqualsTest extends \PHPUnit_Framework_TestCase
         return array(
             array('foo', ''),
             array('foo', 'foo'),
-            array(10, "10"),
+            array(10, '10'),
         );
     }
 
@@ -38,8 +39,7 @@ class EqualsTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array('foo', 'bar'),
-            array(10, "10", true),
+            array(10, '10', true),
         );
     }
 }
-

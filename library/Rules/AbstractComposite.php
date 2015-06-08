@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
@@ -90,7 +91,7 @@ abstract class AbstractComposite extends AbstractRule
 
     protected function appendRule(Validatable $validator)
     {
-        if (! $validator->getName() && $this->getName()) {
+        if (!$validator->getName() && $this->getName()) {
             $validator->setName($this->getName());
         }
 

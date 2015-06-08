@@ -1,11 +1,12 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class AllOfTest extends \PHPUnit_Framework_TestCase
 {
     public function testRemoveRulesShouldRemoveAllRules()
     {
-        $o = new AllOf(new Int, new Positive);
+        $o = new AllOf(new Int(), new Positive());
         $o->removeRules();
         $this->assertEquals(0, count($o->getRules()));
     }
@@ -15,7 +16,7 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
         $o = new AllOf();
         $o->addRules(
             array(
-                array($x = new Int, new Positive)
+                array($x = new Int(), new Positive()),
             )
         );
         $this->assertTrue($o->hasRule($x));
@@ -25,19 +26,19 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
     public function testAddRulesUsingSpecificationArray()
     {
         $o = new AllOf();
-        $o->addRules(array("Between" => array(1, 2)));
+        $o->addRules(array('Between' => array(1, 2)));
         $this->assertTrue($o->hasRule('Between'));
     }
 
     public function testValidationShouldWorkIfAllRulesReturnTrue()
     {
-        $valid1 = new Callback(function() {
+        $valid1 = new Callback(function () {
                     return true;
                 });
-        $valid2 = new Callback(function() {
+        $valid2 = new Callback(function () {
                     return true;
                 });
-        $valid3 = new Callback(function() {
+        $valid3 = new Callback(function () {
                     return true;
                 });
         $o = new AllOf($valid1, $valid2, $valid3);
@@ -93,13 +94,13 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
 
     public function providerStaticDummyRules()
     {
-        $theInvalidOne = new Callback(function() {
+        $theInvalidOne = new Callback(function () {
                     return false;
                 });
-        $valid1 = new Callback(function() {
+        $valid1 = new Callback(function () {
                     return true;
                 });
-        $valid2 = new Callback(function() {
+        $valid2 = new Callback(function () {
                     return true;
                 });
 
@@ -108,8 +109,7 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
             array($valid2, $valid1, $theInvalidOne),
             array($valid2, $theInvalidOne, $valid1),
             array($valid1, $valid2, $theInvalidOne),
-            array($valid1, $theInvalidOne, $valid2)
+            array($valid1, $theInvalidOne, $valid2),
         );
     }
 }
-

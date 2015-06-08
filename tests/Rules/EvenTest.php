@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class EvenTest extends \PHPUnit_Framework_TestCase
@@ -7,7 +8,7 @@ class EvenTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->evenValidator = new Even;
+        $this->evenValidator = new Even();
     }
 
     /**
@@ -51,4 +52,3 @@ class EvenTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

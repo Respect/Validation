@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class YesTest extends \PHPUnit_Framework_TestCase

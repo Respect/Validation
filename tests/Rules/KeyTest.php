@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class KeyTest extends \PHPUnit_Framework_TestCase
@@ -36,18 +37,20 @@ class KeyTest extends \PHPUnit_Framework_TestCase
 
     public function testShouldHaveTheSameReturnValueForAllValidators()
     {
-        $rule   = new Key('key', new NotEmpty());
-        $input  = array('key' => '');
+        $rule = new Key('key', new NotEmpty());
+        $input = array('key' => '');
 
         try {
             $rule->assert($input);
             $this->fail('`assert()` must throws exception');
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+        }
 
         try {
             $rule->check($input);
             $this->fail('`check()` must throws exception');
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+        }
 
         $this->assertFalse($rule->validate($input));
     }
@@ -97,4 +100,3 @@ class KeyTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($validator->validate($obj));
     }
 }
-

@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class UppercaseTest extends \PHPUnit_Framework_TestCase
@@ -49,4 +50,3 @@ class UppercaseTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

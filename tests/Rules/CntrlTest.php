@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class CntrlTest extends \PHPUnit_Framework_TestCase
@@ -6,7 +7,7 @@ class CntrlTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidCntrl
      */
-    public function testValidDataWithCntrlShouldReturnTrue($validCntrl, $additional='')
+    public function testValidDataWithCntrlShouldReturnTrue($validCntrl, $additional = '')
     {
         $validator = new Cntrl($additional);
         $this->assertTrue($validator->validate($validCntrl));
@@ -16,7 +17,7 @@ class CntrlTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidCntrl
      * @expectedException Respect\Validation\Exceptions\CntrlException
      */
-    public function testInvalidCntrlShouldFailAndThrowCntrlException($invalidCntrl, $additional='')
+    public function testInvalidCntrlShouldFailAndThrowCntrlException($invalidCntrl, $additional = '')
     {
         $validator = new Cntrl($additional);
         $this->assertFalse($validator->validate($invalidCntrl));
@@ -52,9 +53,9 @@ class CntrlTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidParams()
     {
         return array(
-            array(new \stdClass),
+            array(new \stdClass()),
             array(array()),
-            array(0x2)
+            array(0x2),
         );
     }
 
@@ -84,4 +85,3 @@ class CntrlTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

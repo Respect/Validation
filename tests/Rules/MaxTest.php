@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class MaxTest extends \PHPUnit_Framework_TestCase
@@ -50,4 +51,3 @@ class MaxTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

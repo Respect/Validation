@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 use Exception;
@@ -11,7 +12,7 @@ abstract class AbstractInterval extends AbstractRule
 
     public function __construct($interval, $inclusive = false)
     {
-        $this->interval  = $interval;
+        $this->interval = $interval;
         $this->inclusive = $inclusive;
     }
 

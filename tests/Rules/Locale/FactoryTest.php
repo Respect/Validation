@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules\Locale;
 
 use Respect\Validation\Test\LocaleTestCase;

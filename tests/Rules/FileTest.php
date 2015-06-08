@@ -8,7 +8,7 @@ function is_file($file)
 {
     $return = \is_file($file); // Running the real function
     if (null !== $GLOBALS['is_file']) {
-        $return             = $GLOBALS['is_file'];
+        $return = $GLOBALS['is_file'];
         $GLOBALS['is_file'] = null;
     }
 
@@ -17,7 +17,6 @@ function is_file($file)
 
 class FileTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @covers Respect\Validation\Rules\File::validate
      */
@@ -55,5 +54,4 @@ class FileTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($rule->validate($object));
     }
-
 }

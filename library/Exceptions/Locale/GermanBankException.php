@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Exceptions\Locale;
 
 use Respect\Validation\Exceptions\BankException;
@@ -11,6 +12,6 @@ class GermanBankException extends BankException
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => '{{name}} must not be a german bank',
-        )
+        ),
     );
 }

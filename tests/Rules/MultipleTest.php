@@ -1,11 +1,11 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class MultipleTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider providerForMultiple
-     *
      */
     public function testValidNumberMultipleOf($multipleOf, $input)
     {
@@ -57,4 +57,3 @@ class MultipleTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

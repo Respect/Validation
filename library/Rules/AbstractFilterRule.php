@@ -1,11 +1,12 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 
 abstract class AbstractFilterRule extends AbstractRule
 {
-    public $additionalChars = "";
+    public $additionalChars = '';
 
     abstract protected function validateClean($input);
 

@@ -8,7 +8,7 @@ function file_exists($file)
 {
     $return = \file_exists($file); // Running the real function
     if (null !== $GLOBALS['file_exists']) {
-        $return                 = $GLOBALS['file_exists'];
+        $return = $GLOBALS['file_exists'];
         $GLOBALS['file_exists'] = null;
     }
 
@@ -17,7 +17,6 @@ function file_exists($file)
 
 class ExistsTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @covers Respect\Validation\Rules\Exists::validate
      */
@@ -54,5 +53,4 @@ class ExistsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($rule->validate($object));
     }
-
 }

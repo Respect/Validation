@@ -8,7 +8,7 @@ function is_readable($readable)
 {
     $return = \is_readable($readable); // Running the real function
     if (null !== $GLOBALS['is_readable']) {
-        $return             = $GLOBALS['is_readable'];
+        $return = $GLOBALS['is_readable'];
         $GLOBALS['is_readable'] = null;
     }
 
@@ -17,7 +17,6 @@ function is_readable($readable)
 
 class ReadableTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @covers Respect\Validation\Rules\Readable::validate
      */
@@ -55,5 +54,4 @@ class ReadableTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($rule->validate($object));
     }
-
 }

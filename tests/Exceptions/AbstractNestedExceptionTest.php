@@ -1,11 +1,10 @@
 <?php
+
 namespace Respect\Validation\Exceptions;
 
 use Respect\Validation\Validator as v;
 
 /**
- * Class PrivateAbstractNestedException
- * @package Respect\Validation\Exceptions
  * phpunit has an issue with mocking exceptions when in HHVM:
  * https://github.com/sebastianbergmann/phpunit-mock-objects/issues/207
  */
@@ -24,8 +23,8 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
 
     public function testGetRelatedShouldReturnExceptionAddedByAddRelated()
     {
-        $composite = new AttributeException;
-        $node = new IntException;
+        $composite = new AttributeException();
+        $node = new IntException();
         $composite->addRelated($node);
         $this->assertEquals(1, count($composite->getRelated(true)));
         $this->assertContainsOnly($node, $composite->getRelated());
@@ -33,8 +32,8 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
 
     public function testAddingTheSameInstanceShouldAddJustASingleReference()
     {
-        $composite = new AttributeException;
-        $node = new IntException;
+        $composite = new AttributeException();
+        $node = new IntException();
         $composite->addRelated($node);
         $composite->addRelated($node);
         $composite->addRelated($node);
@@ -44,10 +43,10 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
 
     public function testFindRelatedShouldFindCompositeExceptions()
     {
-        $foo = new AttributeException;
-        $bar = new AttributeException;
-        $baz = new AttributeException;
-        $bat = new AttributeException;
+        $foo = new AttributeException();
+        $bar = new AttributeException();
+        $baz = new AttributeException();
+        $bat = new AttributeException();
         $foo->configure('foo');
         $bar->configure('bar');
         $baz->configure('baz');
@@ -135,7 +134,7 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
             $messages = $e->findMessages(
                     array(
                         'allOf' => 'Invalid {{name}}',
-                        'first_name.length' => 'Invalid length for {{name}} {{input}}'
+                        'first_name.length' => 'Invalid length for {{name}} {{input}}',
                     )
             );
             $this->assertEquals($messages['allOf'], 'Invalid Validation Form');

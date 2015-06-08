@@ -1,13 +1,13 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class InTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider providerForIn
-     *
      */
-    public function testSuccessInValidatorCases($input, $options=null)
+    public function testSuccessInValidatorCases($input, $options = null)
     {
         $v = new In($options);
         $this->assertTrue($v->__invoke($input));
@@ -19,7 +19,7 @@ class InTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotIn
      * @expectedException Respect\Validation\Exceptions\InException
      */
-    public function testInvalidInChecksShouldThrowInException($input, $options, $strict=false)
+    public function testInvalidInChecksShouldThrowInException($input, $options, $strict = false)
     {
         $v = new In($options, $strict);
         $this->assertFalse($v->__invoke($input));
@@ -50,4 +50,3 @@ class InTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

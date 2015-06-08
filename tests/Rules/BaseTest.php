@@ -1,7 +1,6 @@
 <?php
-namespace Respect\Validation\Rules;
 
-use \Respect\Validation\Validator as v;
+namespace Respect\Validation\Rules;
 
 class BaseTest extends \PHPUnit_Framework_TestCase
 {
@@ -9,7 +8,6 @@ class BaseTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForBase
-     *
      */
     public function testBase($base, $input)
     {
@@ -21,7 +19,6 @@ class BaseTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidBase
-     *
      */
     public function testInvalidBase($base, $input)
     {
@@ -42,7 +39,6 @@ class BaseTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForCustomBase
-     *
      */
     public function testCustomBase($base, $custom, $input)
     {
@@ -89,7 +85,7 @@ class BaseTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(2, 'xy', 'xyyxyxxy'),
-            array(3, 'pfg', 'gfpffp')
+            array(3, 'pfg', 'gfpffp'),
         );
     }
 
@@ -97,8 +93,7 @@ class BaseTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(63, '01210103001'),
-            array(125, '0120125f2001')
+            array(125, '0120125f2001'),
         );
     }
 }
-

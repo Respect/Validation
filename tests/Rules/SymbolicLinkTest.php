@@ -8,7 +8,7 @@ function is_link($link)
 {
     $return = \is_link($link);
     if (null !== $GLOBALS['is_link']) {
-        $return             = $GLOBALS['is_link'];
+        $return = $GLOBALS['is_link'];
         $GLOBALS['is_link'] = null;
     }
 
@@ -17,7 +17,6 @@ function is_link($link)
 
 class SymbolicLinkTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @covers Respect\Validation\Rules\SymbolicLink::validate
      */
@@ -55,5 +54,4 @@ class SymbolicLinkTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($rule->validate($object));
     }
-
 }

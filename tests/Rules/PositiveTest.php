@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class PositiveTest extends \PHPUnit_Framework_TestCase
@@ -7,12 +8,11 @@ class PositiveTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->object = new Positive;
+        $this->object = new Positive();
     }
 
     /**
      * @dataProvider providerForPositive
-     *
      */
     public function testPositive($input)
     {
@@ -57,4 +57,3 @@ class PositiveTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 abstract class AbstractSearcher extends AbstractRule

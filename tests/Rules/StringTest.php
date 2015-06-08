@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class StringTest extends \PHPUnit_Framework_TestCase
@@ -7,12 +8,11 @@ class StringTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->object = new String;
+        $this->object = new String();
     }
 
     /**
      * @dataProvider providerForString
-     *
      */
     public function testString($input)
     {
@@ -44,9 +44,8 @@ class StringTest extends \PHPUnit_Framework_TestCase
         return array(
             array(null),
             array(array()),
-            array(new \stdClass),
-            array(150)
+            array(new \stdClass()),
+            array(150),
         );
     }
 }
-

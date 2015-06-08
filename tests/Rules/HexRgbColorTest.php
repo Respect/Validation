@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class HexRgbColorTest extends \PHPUnit_Framework_TestCase
@@ -57,4 +58,3 @@ class HexRgbColorTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

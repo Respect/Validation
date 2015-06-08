@@ -38,11 +38,11 @@ class NfeAccessKeyTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertFalse($this->nfeValidator->assert($aK));
     }
-    
+
     public function validAccessKeyProvider()
     {
         return array(
-            array('52060433009911002506550120000007800267301615')
+            array('52060433009911002506550120000007800267301615'),
         );
     }
 
@@ -57,7 +57,7 @@ class NfeAccessKeyTest extends \PHPUnit_Framework_TestCase
             array('90157126614010548506235171976891004177042525'),
             array('78457064241662300187501877048374851128754067'),
             array('39950148079977322431982386613620895568235903'),
-            array('90820939577654114875253907311677136672761216')
+            array('90820939577654114875253907311677136672761216'),
         );
     }
 
@@ -73,8 +73,7 @@ class NfeAccessKeyTest extends \PHPUnit_Framework_TestCase
             array('67229454773008929675906894698'),
             array('5858836670181917762140106857095788313119136'),
             array('6098412281885524361833754087461339281130'),
-            array('9025299113310221')
+            array('9025299113310221'),
         );
     }
 }
-

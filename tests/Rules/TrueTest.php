@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class TrueTest extends \PHPUnit_Framework_TestCase

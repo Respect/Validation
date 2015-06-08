@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validator as v;
@@ -9,14 +10,13 @@ class DomainTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->object = new Domain;
+        $this->object = new Domain();
     }
 
     /**
      * @dataProvider providerForDomain
-     *
      */
-    public function testValidDomainsShouldReturnTrue($input, $tldcheck=true)
+    public function testValidDomainsShouldReturnTrue($input, $tldcheck = true)
     {
         $this->object->tldCheck($tldcheck);
         $this->assertTrue($this->object->__invoke($input));
@@ -28,7 +28,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotDomain
      * @expectedException Respect\Validation\Exceptions\ValidationException
      */
-    public function testNotDomain($input, $tldcheck=true)
+    public function testNotDomain($input, $tldcheck = true)
     {
         $this->object->tldCheck($tldcheck);
         $this->assertFalse($this->object->check($input));
@@ -38,7 +38,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotDomain
      * @expectedException Respect\Validation\Exceptions\DomainException
      */
-    public function testNotDomainCheck($input, $tldcheck=true)
+    public function testNotDomainCheck($input, $tldcheck = true)
     {
         $this->object->tldCheck($tldcheck);
         $this->assertFalse($this->object->assert($input));
@@ -74,7 +74,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForDomain
      */
-    public function testBuilder($validDomain, $checkTLD=true)
+    public function testBuilder($validDomain, $checkTLD = true)
     {
         $this->assertTrue(
             v::domain($checkTLD)->validate($validDomain),
@@ -82,4 +82,3 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

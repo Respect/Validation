@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class FloatTest extends \PHPUnit_Framework_TestCase
@@ -7,7 +8,7 @@ class FloatTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->floatValidator = new Float;
+        $this->floatValidator = new Float();
     }
 
     /**
@@ -56,4 +57,3 @@ class FloatTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class PrimeNumber extends AbstractRule
@@ -13,7 +14,7 @@ class PrimeNumber extends AbstractRule
             return false;
         }
 
-        for ($i = 3; $i <= ceil(sqrt($input)); $i+=2) {
+        for ($i = 3; $i <= ceil(sqrt($input)); $i += 2) {
             if (($input % $i) == 0) {
                 return false;
             }

@@ -8,8 +8,8 @@ function is_uploaded_file($uploaded)
 {
     $return = \is_uploaded_file($uploaded); // Running the real function
     if (null !== $GLOBALS['is_uploaded_file']) {
-        $return                         = $GLOBALS['is_uploaded_file'];
-        $GLOBALS['is_uploaded_file']    = null;
+        $return = $GLOBALS['is_uploaded_file'];
+        $GLOBALS['is_uploaded_file'] = null;
     }
 
     return $return;
@@ -17,7 +17,6 @@ function is_uploaded_file($uploaded)
 
 class UploadedTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @covers Respect\Validation\Rules\Uploaded::validate
      */
@@ -54,5 +53,4 @@ class UploadedTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($rule->validate($object));
     }
-
 }

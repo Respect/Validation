@@ -1,6 +1,6 @@
 <?php
-namespace Respect\Validation\Rules;
 
+namespace Respect\Validation\Rules;
 
 class Url extends FilterVar
 {

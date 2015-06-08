@@ -32,12 +32,12 @@ class Factory
 
         foreach ($this->getRulePrefixes() as $prefix) {
             $className = $prefix.ucfirst($ruleName);
-            if (! class_exists($className)) {
+            if (!class_exists($className)) {
                 continue;
             }
 
             $reflection = new ReflectionClass($className);
-            if (! $reflection->isSubclassOf('Respect\\Validation\\Validatable')) {
+            if (!$reflection->isSubclassOf('Respect\\Validation\\Validatable')) {
                 throw new ComponentException(sprintf('"%s" is not a valid respect rule', $className));
             }
 

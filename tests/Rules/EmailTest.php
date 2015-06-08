@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 function class_exists($className)
@@ -109,7 +110,7 @@ class EmailTest extends \PHPUnit_Framework_TestCase
             array('test@test.com'),
             array('mail+mail@gmail.com'),
             array('mail.email@e.test.com'),
-            array('a@a.a')
+            array('a@a.a'),
         );
     }
 
@@ -126,8 +127,7 @@ class EmailTest extends \PHPUnit_Framework_TestCase
             array('test@.test.com'),
             array('test@test..com'),
             array('test@test.com.'),
-            array('.test@test.com')
+            array('.test@test.com'),
         );
     }
 }
-

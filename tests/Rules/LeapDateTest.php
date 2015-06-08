@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 use DateTime;
@@ -38,4 +39,3 @@ class LeapDateTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->leapDateValidator->validate(array()));
     }
 }
-

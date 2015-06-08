@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class BoolTest extends \PHPUnit_Framework_TestCase
@@ -36,4 +37,3 @@ class BoolTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($validator->__invoke(null));
     }
 }
-

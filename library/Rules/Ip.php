@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;

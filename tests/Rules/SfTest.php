@@ -49,6 +49,7 @@ class SfTest extends \PHPUnit_Framework_TestCase
 \-These rules must pass for "34:90:70"
   \-Time
 EOF;
+
             return $this->assertEquals(
                 $expectedValidationException,
                 $fullValidationMessage,

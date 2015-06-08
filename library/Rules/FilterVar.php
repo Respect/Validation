@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
@@ -8,15 +9,15 @@ class FilterVar extends Callback
     public function __construct()
     {
         $arguments = func_get_args();
-        if (! isset($arguments[0])) {
+        if (!isset($arguments[0])) {
             throw new ComponentException('Cannot validate without filter flag');
         }
 
-        if (! $this->isValidFilter($arguments[0])) {
+        if (!$this->isValidFilter($arguments[0])) {
             throw new ComponentException('Cannot accept the given filter');
         }
 
-        $this->callback  = 'filter_var';
+        $this->callback = 'filter_var';
         $this->arguments = $arguments;
     }
 
@@ -31,7 +32,7 @@ class FilterVar extends Callback
                 FILTER_VALIDATE_INT,
                 FILTER_VALIDATE_IP,
                 FILTER_VALIDATE_REGEXP,
-                FILTER_VALIDATE_URL
+                FILTER_VALIDATE_URL,
             )
         );
     }

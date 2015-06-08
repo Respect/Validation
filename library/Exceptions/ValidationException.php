@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Exceptions;
 
 use DateTime;
@@ -54,7 +55,7 @@ class ValidationException extends InvalidArgumentException implements Validation
         } elseif ($value instanceof DateTime) {
             return $value->format('Y-m-d H:i:s');
         } else {
-            return "Object of class ".get_class($value);
+            return 'Object of class '.get_class($value);
         }
     }
 

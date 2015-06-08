@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 use DateTime;
@@ -23,8 +24,8 @@ class Date extends AbstractRule
         }
 
         $exceptionalFormats = array(
-            'c'     =>  'Y-m-d\TH:i:sP',
-            'r'     =>  'D, d M Y H:i:s O',
+            'c' => 'Y-m-d\TH:i:sP',
+            'r' => 'D, d M Y H:i:s O',
         );
 
         if (in_array($this->format, array_keys($exceptionalFormats))) {

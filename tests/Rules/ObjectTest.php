@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class ObjectTest extends \PHPUnit_Framework_TestCase
@@ -7,12 +8,11 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->object = new Object;
+        $this->object = new Object();
     }
 
     /**
      * @dataProvider providerForObject
-     *
      */
     public function testObject($input)
     {
@@ -35,8 +35,8 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(''),
-            array(new \stdClass),
-            array(new \ArrayObject),
+            array(new \stdClass()),
+            array(new \ArrayObject()),
         );
     }
 
@@ -51,4 +51,3 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

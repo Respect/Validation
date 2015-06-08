@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
@@ -7,7 +8,7 @@ class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->noWhitespaceValidator = new NoWhitespace;
+        $this->noWhitespaceValidator = new NoWhitespace();
     }
 
     /**

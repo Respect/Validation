@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class RomanTest extends \PHPUnit_Framework_TestCase
@@ -7,12 +8,11 @@ class RomanTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->romanValidator = new Roman;
+        $this->romanValidator = new Roman();
     }
 
     /**
      * @dataProvider providerForRoman
-     *
      */
     public function testValidRomansShouldReturnTrue($input)
     {
@@ -63,4 +63,3 @@ class RomanTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

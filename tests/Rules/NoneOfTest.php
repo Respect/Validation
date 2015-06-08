@@ -1,17 +1,18 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class NoneOfTest extends \PHPUnit_Framework_TestCase
 {
     public function testValid()
     {
-        $valid1 = new Callback(function() {
+        $valid1 = new Callback(function () {
                     return false;
                 });
-        $valid2 = new Callback(function() {
+        $valid2 = new Callback(function () {
                     return false;
                 });
-        $valid3 = new Callback(function() {
+        $valid3 = new Callback(function () {
                     return false;
                 });
         $o = new NoneOf($valid1, $valid2, $valid3);
@@ -25,13 +26,13 @@ class NoneOfTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalid()
     {
-        $valid1 = new Callback(function() {
+        $valid1 = new Callback(function () {
                     return false;
                 });
-        $valid2 = new Callback(function() {
+        $valid2 = new Callback(function () {
                     return false;
                 });
-        $valid3 = new Callback(function() {
+        $valid3 = new Callback(function () {
                     return true;
                 });
         $o = new NoneOf($valid1, $valid2, $valid3);
@@ -39,4 +40,3 @@ class NoneOfTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($o->assert('any'));
     }
 }
-

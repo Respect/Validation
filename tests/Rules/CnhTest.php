@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class CnhTest extends \PHPUnit_Framework_TestCase
@@ -7,7 +8,7 @@ class CnhTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->cnhValidator = new Cnh;
+        $this->cnhValidator = new Cnh();
     }
 
     /**
@@ -171,4 +172,3 @@ class CnhTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

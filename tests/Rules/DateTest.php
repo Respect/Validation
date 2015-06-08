@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 use DateTime;
@@ -9,7 +10,7 @@ class DateTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->dateValidator = new Date;
+        $this->dateValidator = new Date();
     }
 
     public function testDateEmptyShouldValidate()
@@ -41,7 +42,7 @@ class DateTest extends \PHPUnit_Framework_TestCase
 
     public function testAnyObjectExceptDateTimeInstancesShouldFail()
     {
-        $this->assertFalse($this->dateValidator->__invoke(new \stdClass));
+        $this->assertFalse($this->dateValidator->__invoke(new \stdClass()));
     }
 
     public function testFormatsShouldValidateDateStrings()
@@ -88,19 +89,17 @@ class DateTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     *
      * @return array
      */
-    public function providerForDateTimeTimezoneStrings(){
+    public function providerForDateTimeTimezoneStrings()
+    {
         return array(
-                array('UTC', 'c', '2005-12-30T01:02:03+01:00',),
-                array('UTC', 'c', '2004-02-12T15:19:21+00:00',),
-                array('UTC', 'r', 'Thu, 29 Dec 2005 01:02:03 +0000',),
-                array('Europe/Amsterdam', 'c', '2005-12-30T01:02:03+01:00',),
-                array('Europe/Amsterdam', 'c', '2004-02-12T15:19:21+00:00',),
-                array('Europe/Amsterdam', 'r', 'Thu, 29 Dec 2005 01:02:03 +0000',),
+                array('UTC', 'c', '2005-12-30T01:02:03+01:00'),
+                array('UTC', 'c', '2004-02-12T15:19:21+00:00'),
+                array('UTC', 'r', 'Thu, 29 Dec 2005 01:02:03 +0000'),
+                array('Europe/Amsterdam', 'c', '2005-12-30T01:02:03+01:00'),
+                array('Europe/Amsterdam', 'c', '2004-02-12T15:19:21+00:00'),
+                array('Europe/Amsterdam', 'r', 'Thu, 29 Dec 2005 01:02:03 +0000'),
         );
     }
-
 }
-

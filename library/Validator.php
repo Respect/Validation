@@ -1,8 +1,8 @@
 <?php
+
 namespace Respect\Validation;
 
 use ReflectionClass;
-use ReflectionException;
 use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Rules\AllOf;
@@ -114,7 +114,7 @@ class Validator extends AllOf
      */
     protected static function getFactory()
     {
-        if (! static::$factory instanceof Factory) {
+        if (!static::$factory instanceof Factory) {
             static::$factory = new Factory();
         }
 
@@ -123,8 +123,6 @@ class Validator extends AllOf
 
     /**
      * @param Factory $factory
-     *
-     * @return null
      */
     public static function setFactory($factory)
     {
@@ -134,8 +132,6 @@ class Validator extends AllOf
     /**
      * @param string $rulePrefix
      * @param bool   $prepend
-     *
-     * @return null
      */
     public static function with($rulePrefix, $prepend = false)
     {
@@ -193,7 +189,6 @@ class Validator extends AllOf
         return $this->addRule(static::buildRule($method, $arguments));
     }
 
-
     /**
      * @param mixed $input
      * @param array $extraParams
@@ -219,7 +214,7 @@ class Validator extends AllOf
     }
 
     /**
-     * Create instance validator
+     * Create instance validator.
      *
      * @return Validator
      */

@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Exceptions;
 
 interface NestedValidationExceptionInterface extends ValidationExceptionInterface

@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
@@ -25,7 +26,7 @@ class Domain extends AbstractComposite
                 new AllOf(
                     new StartsWith('xn--'),
                     new Callback(function ($str) {
-                        return substr_count($str, "--") == 1;
+                        return substr_count($str, '--') == 1;
                     })
                 )
             )

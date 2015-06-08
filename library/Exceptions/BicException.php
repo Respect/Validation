@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Exceptions;
 
 class BicException extends ValidationException
@@ -9,6 +10,6 @@ class BicException extends ValidationException
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => '{{name}} must not be a BIC',
-        )
+        ),
     );
 }

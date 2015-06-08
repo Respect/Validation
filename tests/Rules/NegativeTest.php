@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class NegativeTest extends \PHPUnit_Framework_TestCase
@@ -7,12 +8,11 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->negativeValidator = new Negative;
+        $this->negativeValidator = new Negative();
     }
 
     /**
      * @dataProvider providerForNegative
-     *
      */
     public function testNegativeShouldPass($input)
     {
@@ -57,4 +57,3 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

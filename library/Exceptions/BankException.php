@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Exceptions;
 
 class BankException extends ValidationException
@@ -9,6 +10,6 @@ class BankException extends ValidationException
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => '{{name}} must not be a bank',
-        )
+        ),
     );
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class MacAddressTest extends \PHPUnit_Framework_TestCase
@@ -7,12 +8,11 @@ class MacAddressTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->macaddressValidator = new MacAddress;
+        $this->macaddressValidator = new MacAddress();
     }
 
     /**
      * @dataProvider providerForMacAddress
-     *
      */
     public function testValidMacaddressesShouldReturnTrue($input)
     {
@@ -52,4 +52,3 @@ class MacAddressTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

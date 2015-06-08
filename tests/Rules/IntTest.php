@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class IntTest extends \PHPUnit_Framework_TestCase
@@ -7,12 +8,11 @@ class IntTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->intValidator = new Int;
+        $this->intValidator = new Int();
     }
 
     /**
      * @dataProvider providerForInt
-     *
      */
     public function testValidIntegersShouldReturnTrue($input)
     {
@@ -54,4 +54,3 @@ class IntTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

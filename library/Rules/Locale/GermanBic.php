@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules\Locale;
 
 use malkusch\bav\BAV;
@@ -15,6 +16,7 @@ use Respect\Validation\Rules\AbstractRule;
  * PDODataBackendContainer or DoctrineBackendContainer.
  *
  * @author Markus Malkusch <markus@malkusch.de>
+ *
  * @see    BAV::isValidBIC()
  * @see    \malkusch\bav\Configuration
  * @see    \malkusch\bav\ConfigurationRegistry::setConfiguration()
@@ -38,7 +40,7 @@ class GermanBic extends AbstractRule
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function validate($input)
     {

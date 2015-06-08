@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class AlphaTest extends \PHPUnit_Framework_TestCase
@@ -54,9 +55,9 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidParams()
     {
         return array(
-            array(new \stdClass),
+            array(new \stdClass()),
             array(array()),
-            array(0x2)
+            array(0x2),
         );
     }
 
@@ -92,9 +93,8 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
             array(1e21, ''),
             array(0, ''),
             array(null, ''),
-            array(new \stdClass, ''),
+            array(new \stdClass(), ''),
             array(array(), ''),
         );
     }
 }
-

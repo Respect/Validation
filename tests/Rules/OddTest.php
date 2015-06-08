@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class OddTest extends \PHPUnit_Framework_TestCase
@@ -7,12 +8,11 @@ class OddTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->object = new Odd;
+        $this->object = new Odd();
     }
 
     /**
      * @dataProvider providerForOdd
-     *
      */
     public function testOdd($input)
     {
@@ -52,4 +52,3 @@ class OddTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

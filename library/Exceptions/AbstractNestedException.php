@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Exceptions;
 
 use RecursiveIteratorIterator;
@@ -77,7 +78,7 @@ class AbstractNestedException extends ValidationException implements NestedValid
     public function getRelated($full = false)
     {
         if (!$full && 1 === count($this->related)
-            && current($this->related) instanceof AbstractNestedException) {
+            && current($this->related) instanceof self) {
             return current($this->related)->getRelated();
         } else {
             return $this->related;

@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules\Locale;
 
 use Respect\Validation\Test\LocaleTestCase;
@@ -20,7 +21,7 @@ class GermanBankAccountTest extends LocaleTestCase
     public function testShouldAcceptBAVInstanceOnConstructor()
     {
         $bank = '10000000';
-        $bav  = $this->getBavMock();
+        $bav = $this->getBavMock();
         $rule = new GermanBankAccount($bank, $bav);
 
         $this->assertSame($bav, $rule->bav);
@@ -36,10 +37,10 @@ class GermanBankAccountTest extends LocaleTestCase
 
     public function testShouldUseBAVInstanceToValidate()
     {
-        $bank   = '10000000';
-        $input  = '67067';
-        $bav    = $this->getBavMock();
-        $rule   = new GermanBankAccount($bank, $bav);
+        $bank = '10000000';
+        $input = '67067';
+        $bav = $this->getBavMock();
+        $rule = new GermanBankAccount($bank, $bav);
 
         $bav->expects($this->once())
             ->method('isValidBankAccount')
@@ -51,10 +52,10 @@ class GermanBankAccountTest extends LocaleTestCase
 
     public function testShouldReturnBAVInstanceResulteWhenValidating()
     {
-        $bank   = '10000000';
-        $input  = '67067';
-        $bav    = $this->getBavMock();
-        $rule   = new GermanBankAccount($bank, $bav);
+        $bank = '10000000';
+        $input = '67067';
+        $bav = $this->getBavMock();
+        $rule = new GermanBankAccount($bank, $bav);
 
         $bav->expects($this->any())
             ->method('isValidBankAccount')
@@ -70,10 +71,10 @@ class GermanBankAccountTest extends LocaleTestCase
      */
     public function testShouldThowsTheRightExceptionWhenChecking()
     {
-        $bank   = '10000000';
-        $input  = '67067';
-        $bav    = $this->getBavMock();
-        $rule   = new GermanBankAccount($bank, $bav);
+        $bank = '10000000';
+        $input = '67067';
+        $bav = $this->getBavMock();
+        $rule = new GermanBankAccount($bank, $bav);
 
         $bav->expects($this->any())
             ->method('isValidBankAccount')

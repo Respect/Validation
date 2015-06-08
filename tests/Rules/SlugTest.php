@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class SlugTest extends \PHPUnit_Framework_TestCase
@@ -7,7 +8,7 @@ class SlugTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->slug = new Slug;
+        $this->slug = new Slug();
     }
 
     /**
@@ -37,7 +38,7 @@ class SlugTest extends \PHPUnit_Framework_TestCase
             array('o-rato-roeu-o-rei-de-roma'),
             array('o-alganet-e-um-feio'),
             array('a-e-i-o-u'),
-            array('anticonstitucionalissimamente')
+            array('anticonstitucionalissimamente'),
         );
     }
 
@@ -52,8 +53,7 @@ class SlugTest extends \PHPUnit_Framework_TestCase
             array('--nem-assim'),
             array('Nem mesmo Assim'),
             array('Ou-ate-assim'),
-            array('-Se juntar-tudo-Então-')
+            array('-Se juntar-tudo-Então-'),
         );
     }
 }
-

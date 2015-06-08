@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class InstanceTest extends \PHPUnit_Framework_TestCase
@@ -15,9 +16,9 @@ class InstanceTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->instanceValidator->__invoke(''));
         $this->assertTrue($this->instanceValidator->assert(''));
         $this->assertTrue($this->instanceValidator->check(''));
-        $this->assertTrue($this->instanceValidator->__invoke(new \ArrayObject));
-        $this->assertTrue($this->instanceValidator->assert(new \ArrayObject));
-        $this->assertTrue($this->instanceValidator->check(new \ArrayObject));
+        $this->assertTrue($this->instanceValidator->__invoke(new \ArrayObject()));
+        $this->assertTrue($this->instanceValidator->assert(new \ArrayObject()));
+        $this->assertTrue($this->instanceValidator->check(new \ArrayObject()));
     }
 
     /**
@@ -25,8 +26,7 @@ class InstanceTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidInstancesShouldThrowInstanceException()
     {
-        $this->assertFalse($this->instanceValidator->validate(new \stdClass));
-        $this->assertFalse($this->instanceValidator->assert(new \stdClass));
+        $this->assertFalse($this->instanceValidator->validate(new \stdClass()));
+        $this->assertFalse($this->instanceValidator->assert(new \stdClass()));
     }
 }
-

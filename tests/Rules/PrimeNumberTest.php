@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class PrimeNumberTest extends \PHPUnit_Framework_TestCase
@@ -7,12 +8,11 @@ class PrimeNumberTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->object = new PrimeNumber;
+        $this->object = new PrimeNumber();
     }
 
     /**
      * @dataProvider providerForPrimeNumber
-     *
      */
     public function testPrimeNumber($input)
     {
@@ -24,7 +24,6 @@ class PrimeNumberTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForNotPrimeNumber
      * @expectedException Respect\Validation\Exceptions\PrimeNumberException
-     *
      */
     public function testNotPrimeNumber($input)
     {
@@ -63,4 +62,3 @@ class PrimeNumberTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

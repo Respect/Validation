@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class CpfTest extends \PHPUnit_Framework_TestCase
@@ -7,7 +8,7 @@ class CpfTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->cpfValidator = new Cpf;
+        $this->cpfValidator = new Cpf();
     }
 
     /**
@@ -61,7 +62,7 @@ class CpfTest extends \PHPUnit_Framework_TestCase
             array('342.444.198.88'),
             array('350.45261819'),
             array('693-319-118-40'),
-            array('3.6.8.8.9.2.5.5.4.8.8')
+            array('3.6.8.8.9.2.5.5.4.8.8'),
         );
     }
 
@@ -85,7 +86,7 @@ class CpfTest extends \PHPUnit_Framework_TestCase
             array('999999999.99'),
             array('8.8.8.8.8.8.8.8.8.8.8'),
             array('693-319-110-40'),
-            array('698.111-111.00')
+            array('698.111-111.00'),
         );
     }
 
@@ -97,7 +98,7 @@ class CpfTest extends \PHPUnit_Framework_TestCase
             array('12345678900'),
             array('99299929384'),
             array('84434895894'),
-            array('44242340000')
+            array('44242340000'),
         );
     }
 
@@ -111,4 +112,3 @@ class CpfTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

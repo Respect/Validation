@@ -32,7 +32,7 @@ class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
             $reflectionClass = new ReflectionClass($className);
             if ($reflectionClass->isAbstract()
             || $reflectionClass->isInterface()
-            || ! $reflectionClass->implementsInterface('Respect\\Validation\\Validatable')) {
+            || !$reflectionClass->implementsInterface('Respect\\Validation\\Validatable')) {
                 continue;
             }
 
@@ -55,7 +55,7 @@ class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
             $missingExceptions[] = $ruleName;
         }
 
-        $this->assertEmpty($missingExceptions, 'No exceptions for: ' . $this->formatArrayAsString($missingExceptions));
+        $this->assertEmpty($missingExceptions, 'No exceptions for: '.$this->formatArrayAsString($missingExceptions));
     }
 
     public function testEveryRuleExceptionImplementsValidationExceptionInterface()
@@ -73,22 +73,25 @@ class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
         }
 
         $this->assertEmpty($exceptionsNotImplementingInterface,
-            'ValidationExceptionInterface not implemented in: ' .
+            'ValidationExceptionInterface not implemented in: '.
             $this->formatArrayAsString($exceptionsNotImplementingInterface));
     }
 
     /**
      * @param string $ruleName
+     *
      * @return string
      */
     private function buildExceptionClass($ruleName)
     {
-        $exceptionClass = 'Respect\\Validation\\Exceptions\\' . $ruleName . 'Exception';
+        $exceptionClass = 'Respect\\Validation\\Exceptions\\'.$ruleName.'Exception';
+
         return $exceptionClass;
     }
 
     /**
      * @param array $array
+     *
      * @return string
      */
     private function formatArrayAsString(array $array)

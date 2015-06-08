@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class CnpjTest extends \PHPUnit_Framework_TestCase
@@ -7,7 +8,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->cnpjValidator = new Cnpj;
+        $this->cnpjValidator = new Cnpj();
     }
 
     /**
@@ -99,7 +100,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase
             array('12345678900'),
             array('99299929384'),
             array('84434895894'),
-            array('44242340000')
+            array('44242340000'),
         );
     }
 
@@ -110,8 +111,7 @@ class CnpjTest extends \PHPUnit_Framework_TestCase
             array('22'),
             array('123'),
             array('992999999999929384'),
-            array('99-010-0.')
+            array('99-010-0.'),
         );
     }
 }
-

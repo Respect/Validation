@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class EachTest extends \PHPUnit_Framework_TestCase
@@ -80,4 +81,3 @@ class EachTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($result);
     }
 }
-

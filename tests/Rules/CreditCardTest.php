@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class CreditCardTest extends \PHPUnit_Framework_TestCase
@@ -7,12 +8,11 @@ class CreditCardTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->creditCardValidator = new CreditCard;
+        $this->creditCardValidator = new CreditCard();
     }
 
     /**
      * @dataProvider providerForCreditCard
-     *
      */
     public function testValidCreditCardsShouldReturnTrue($input)
     {
@@ -54,4 +54,3 @@ class CreditCardTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

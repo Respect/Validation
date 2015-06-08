@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class VowelTest extends \PHPUnit_Framework_TestCase
@@ -6,7 +7,7 @@ class VowelTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidVowels
      */
-    public function testValidDataWithVowelsShouldReturnTrue($validVowels, $additional='')
+    public function testValidDataWithVowelsShouldReturnTrue($validVowels, $additional = '')
     {
         $validator = new Vowel($additional);
         $this->assertTrue($validator->validate($validVowels));
@@ -16,7 +17,7 @@ class VowelTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidVowels
      * @expectedException Respect\Validation\Exceptions\VowelException
      */
-    public function testInvalidVowelsShouldFailAndThrowVowelException($invalidVowels, $additional='')
+    public function testInvalidVowelsShouldFailAndThrowVowelException($invalidVowels, $additional = '')
     {
         $validator = new Vowel($additional);
         $this->assertFalse($validator->validate($invalidVowels));
@@ -52,9 +53,9 @@ class VowelTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidParams()
     {
         return array(
-            array(new \stdClass),
+            array(new \stdClass()),
             array(array()),
-            array(0x2)
+            array(0x2),
         );
     }
 
@@ -87,4 +88,3 @@ class VowelTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

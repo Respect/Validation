@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class GraphTest extends \PHPUnit_Framework_TestCase
@@ -6,7 +7,7 @@ class GraphTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidGraph
      */
-    public function testValidDataWithGraphCharsShouldReturnTrue($validGraph, $additional='')
+    public function testValidDataWithGraphCharsShouldReturnTrue($validGraph, $additional = '')
     {
         $validator = new Graph($additional);
         $this->assertTrue($validator->validate($validGraph));
@@ -16,7 +17,7 @@ class GraphTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidGraph
      * @expectedException Respect\Validation\Exceptions\GraphException
      */
-    public function testInvalidGraphShouldFailAndThrowGraphException($invalidGraph, $additional='')
+    public function testInvalidGraphShouldFailAndThrowGraphException($invalidGraph, $additional = '')
     {
         $validator = new Graph($additional);
         $this->assertFalse($validator->validate($invalidGraph));
@@ -52,9 +53,9 @@ class GraphTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidParams()
     {
         return array(
-            array(new \stdClass),
+            array(new \stdClass()),
             array(array()),
-            array(0x2)
+            array(0x2),
         );
     }
 
@@ -81,4 +82,3 @@ class GraphTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

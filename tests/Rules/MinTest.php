@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 use DateTime;
@@ -7,7 +8,6 @@ class MinTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider providerForValidMin
-     *
      */
     public function testValidMinShouldReturnTrue($minValue, $inclusive, $input)
     {
@@ -59,4 +59,3 @@ class MinTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Test;
 
 use malkusch\bav\ConfigurationRegistry;

@@ -1,4 +1,5 @@
 <?php
+
 namespace Respect\Validation\Rules;
 
 class EndsWithTest extends \PHPUnit_Framework_TestCase
@@ -18,7 +19,7 @@ class EndsWithTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForNotEndsWith
      * @expectedException Respect\Validation\Exceptions\EndsWithException
      */
-    public function testStringsNotEndingWithExpectedValueShouldNotPass($start, $input, $caseSensitive=false)
+    public function testStringsNotEndingWithExpectedValueShouldNotPass($start, $input, $caseSensitive = false)
     {
         $v = new EndsWith($start, $caseSensitive);
         $this->assertFalse($v->__invoke($input));
@@ -51,4 +52,3 @@ class EndsWithTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-
