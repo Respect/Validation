@@ -70,6 +70,7 @@ use Respect\Validation\Rules\AllOf;
  * @method static Validator lowercase()
  * @method static Validator macAddress()
  * @method static Validator max(mixed $maxValue, bool $inclusive = false)
+ * @method static Validator mimetype(string $mimetype)
  * @method static Validator min(mixed $minValue, bool $inclusive = false)
  * @method static Validator minimumAge(int $age)
  * @method static Validator multiple(int $multipleOf)
