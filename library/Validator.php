@@ -52,6 +52,7 @@ use Respect\Validation\Rules\AllOf;
  * @method static Validator even()
  * @method static Validator executable()
  * @method static Validator exists()
+ * @method static Validator extension(string $extension)
  * @method static Validator false()
  * @method static Validator file()
  * @method static Validator filterVar(int $filter, mixed $options = null)
