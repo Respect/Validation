@@ -95,6 +95,7 @@ use Respect\Validation\Rules\AllOf;
  * @method static Validator regex(string $regex)
  * @method static Validator roman()
  * @method static Validator sf(string $name, array $params = null)
+ * @method static Validator size(string $minSize = null, string $maxSize = null)
  * @method static Validator slug()
  * @method static Validator space(string $additionalChars = null)
  * @method static Validator startsWith(mixed $startValue, bool $identical = false)

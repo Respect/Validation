@@ -17,6 +17,7 @@
     "require-dev": {
         "egulias/email-validator": "~1.2",
         "malkusch/bav": "~1.0",
+        "mikey179/vfsStream": "^1.5",
         "phpunit/phpunit": "~4.0",
         "symfony/validator": "~2.6.9",
         "zendframework/zend-validator": "~2.3"
