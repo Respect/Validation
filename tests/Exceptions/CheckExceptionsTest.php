@@ -22,7 +22,7 @@ class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
         'Vowels',
     );
 
-    private function getAllRuleNames()
+    public function provideListOfRuleNames()
     {
         $rulesDirectory = __DIR__.'/../../library/Rules';
         $rulesDirectoryIterator = new DirectoryIterator($rulesDirectory);
@@ -31,80 +31,48 @@ class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
             if ($fileInfo->isDir()) {
                 continue;
             }
+
             $ruleName = substr($fileInfo->getBasename(), 0, -4);
-            if (in_array($ruleName, $this->deprecateds)) {
+            $ruleIsDeprecated = in_array($ruleName, $this->deprecateds);
+            $isRuleClassFile = (bool) ($fileInfo->getExtension() !== 'php');
+            if ($ruleIsDeprecated || $isRuleClassFile) {
                 continue;
             }
 
             $className = 'Respect\\Validation\\Rules\\'.$ruleName;
-
             $reflectionClass = new ReflectionClass($className);
-            if ($reflectionClass->isAbstract()
-            || $reflectionClass->isInterface()
-            || !$reflectionClass->implementsInterface('Respect\\Validation\\Validatable')) {
+            if ($reflectionClass->isAbstract() || $reflectionClass->isInterface()) {
                 continue;
             }
 
-            $ruleNames[] = $ruleName;
+            $ruleNames[] = array($ruleName);
         }
 
         return $ruleNames;
     }
 
-    public function testEveryRuleMustBeItsOwnException()
-    {
-        $missingExceptions = array();
-
-        foreach ($this->getAllRuleNames() as $ruleName) {
-            $exceptionClass = $this->buildExceptionClass($ruleName);
-            if (class_exists($exceptionClass)) {
-                continue;
-            }
-
-            $missingExceptions[] = $ruleName;
-        }
-
-        $this->assertEmpty($missingExceptions, 'No exceptions for: '.$this->formatArrayAsString($missingExceptions));
-    }
-
-    public function testEveryRuleExceptionImplementsValidationExceptionInterface()
-    {
-        $exceptionsNotImplementingInterface = array();
-
-        foreach ($this->getAllRuleNames() as $ruleName) {
-            $exceptionClass = $this->buildExceptionClass($ruleName);
-            $exceptionClassMock = new $exceptionClass();
-            if ($exceptionClassMock instanceof ValidationExceptionInterface) {
-                continue;
-            }
-
-            $exceptionsNotImplementingInterface[] = $ruleName;
-        }
-
-        $this->assertEmpty($exceptionsNotImplementingInterface,
-            'ValidationExceptionInterface not implemented in: '.
-            $this->formatArrayAsString($exceptionsNotImplementingInterface));
-    }
-
     /**
-     * @param string $ruleName
-     *
-     * @return string
+     * @dataProvider provideListOfRuleNames
      */
-    private function buildExceptionClass($ruleName)
+    public function testRuleHasAnExceptionWhichHasValidApi($ruleName)
     {
         $exceptionClass = 'Respect\\Validation\\Exceptions\\'.$ruleName.'Exception';
+        $this->assertTrue(
+            class_exists($exceptionClass),
+            sprintf('Expected exception class to exist: %s.', $ruleName)
+        );
 
-        return $exceptionClass;
-    }
-
-    /**
-     * @param array $array
-     *
-     * @return string
-     */
-    private function formatArrayAsString(array $array)
-    {
-        return implode(', ', $array);
+        $expectedMessage = 'Test exception message.';
+        $exceptionObject = new $exceptionClass($expectedMessage);
+        $this->assertInstanceOf(
+            'Exception',
+            $exceptionObject,
+            'Every exception should extend an Exception class.'
+        );
+        $this->assertInstanceOf(
+            'Respect\Validation\Exceptions\ValidationExceptionInterface',
+            $exceptionObject,
+            'Every Respect/Validation exception must implement out interface.'
+        );
     }
 }
