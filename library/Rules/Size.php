@@ -19,7 +19,7 @@ use SplFileInfo;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class Size extends Between
+class Size extends AbstractRule
 {
     /**
      * @var string
@@ -37,19 +37,10 @@ class Size extends Between
      */
     public function __construct($minSize = null, $maxSize = null)
     {
-        $minSizeBytes = $minSize;
-        if (null !== $minSizeBytes) {
-            $minSizeBytes = $this->toBytes($minSize);
-        }
         $this->minSize = $minSize;
-
-        $maxSizeBytes = $maxSize;
-        if (null !== $maxSizeBytes) {
-            $maxSizeBytes = $this->toBytes($maxSize);
-        }
+        $this->minValue = $minSize ? $this->toBytes($minSize) : null;
         $this->maxSize = $maxSize;
-
-        parent::__construct($minSizeBytes, $maxSizeBytes, true);
+        $this->maxValue = $maxSize ? $this->toBytes($maxSize) : null;
     }
 
     /**
@@ -79,18 +70,36 @@ class Size extends Between
     }
 
     /**
+     * @param int $size
+     *
+     * @return bool
+     */
+    private function isValidSize($size)
+    {
+        if (null !== $this->minValue && null !== $this->maxValue) {
+            return ($size >= $this->minValue && $size <= $this->maxValue);
+        }
+
+        if (null !== $this->minValue) {
+            return ($size >= $this->minValue);
+        }
+
+        return ($size <= $this->maxValue);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function validate($input)
     {
         if ($input instanceof SplFileInfo) {
-            return parent::validate($input->getSize());
+            return $this->isValidSize($input->getSize());
         }
 
-        if (!is_string($input)) {
-            return false;
+        if (is_string($input)) {
+            return $this->isValidSize(filesize($input));
         }
 
-        return parent::validate(filesize($input));
+        return false;
     }
 }
