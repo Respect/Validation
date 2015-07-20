@@ -27,9 +27,19 @@ class Size extends AbstractRule
     public $minSize;
 
     /**
+     * @var int
+     */
+    public $minValue;
+
+    /**
      * @var string
      */
     public $maxSize;
+
+    /**
+     * @var int
+     */
+    public $maxValue;
 
     /**
      * @param string $minSize
