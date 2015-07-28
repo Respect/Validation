@@ -10,7 +10,6 @@ php:
   - 5.5
   - 5.6
   - hhvm
-  - hhvm-nightly
 
 before_script:
   - composer self-update
@@ -22,10 +21,6 @@ script:
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-
-matrix:
-  allow_failures:
-    - php: hhvm-nightly
 
 notifications:
   irc:
