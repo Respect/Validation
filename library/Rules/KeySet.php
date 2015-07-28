@@ -40,7 +40,7 @@ class KeySet extends AllOf
     /**
      * {@inheritdoc}
      */
-    public function addRule($rule)
+    public function addRule($rule, $arguments = array())
     {
         if ($rule instanceof AllOf) {
             $rule = $this->filterAllOf($rule);
