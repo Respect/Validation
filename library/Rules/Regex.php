@@ -20,7 +20,7 @@ class Regex extends AbstractRule
         $this->regex = $regex;
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         return (bool) preg_match($this->regex, $input);
     }

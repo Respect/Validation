@@ -25,7 +25,7 @@ class Instance extends AbstractRule
         return parent::reportError($input, $extraParams);
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         return $input instanceof $this->instanceName;
     }

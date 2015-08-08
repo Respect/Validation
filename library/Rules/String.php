@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 class String extends AbstractRule
 {
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         return is_string($input);
     }

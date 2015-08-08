@@ -30,7 +30,7 @@ abstract class AbstractRule implements Validatable
     /**
      * Should perform the validation on child classes.
      *
-     * This method is called by `validate()` right after it checks if the value
+     * This method is called by `validate()` right after checking if the value
      * is optional or not.
      *
      * @param mixed $input

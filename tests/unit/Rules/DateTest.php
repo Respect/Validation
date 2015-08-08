@@ -25,6 +25,7 @@ class DateTest extends \PHPUnit_Framework_TestCase
     public function testDateEmptyShouldValidate()
     {
         $this->assertTrue($this->dateValidator->__invoke(''));
+        $this->assertTrue($this->dateValidator->validate(''));
         $this->assertTrue($this->dateValidator->check(''));
         $this->assertTrue($this->dateValidator->assert(''));
     }
@@ -32,26 +33,31 @@ class DateTest extends \PHPUnit_Framework_TestCase
     public function testDateWithoutFormatShouldValidate()
     {
         $this->assertTrue($this->dateValidator->__invoke('today'));
+        $this->assertTrue($this->dateValidator->validate('today'));
     }
 
     public function testDateTimeInstancesShouldAlwaysValidate()
     {
         $this->assertTrue($this->dateValidator->__invoke(new DateTime('today')));
+        $this->assertTrue($this->dateValidator->validate(new DateTime('today')));
     }
 
     public function testInvalidDateShouldFail()
     {
         $this->assertFalse($this->dateValidator->__invoke('aids'));
+        $this->assertFalse($this->dateValidator->validate('aids'));
     }
     public function testInvalidDateShouldFail_on_invalid_conversions()
     {
         $this->dateValidator->format = 'Y-m-d';
         $this->assertFalse($this->dateValidator->__invoke('2009-12-00'));
+        $this->assertFalse($this->dateValidator->validate('2009-12-00'));
     }
 
     public function testAnyObjectExceptDateTimeInstancesShouldFail()
     {
         $this->assertFalse($this->dateValidator->__invoke(new \stdClass()));
+        $this->assertFalse($this->dateValidator->validate(new \stdClass()));
     }
 
     public function testFormatsShouldValidateDateStrings()

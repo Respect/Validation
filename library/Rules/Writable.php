@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 class Writable extends AbstractRule
 {
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         if ($input instanceof \SplFileInfo) {
             return $input->isWritable();

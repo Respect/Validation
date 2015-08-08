@@ -34,7 +34,7 @@ abstract class AbstractSearcher extends AbstractRule
         return (false !== mb_strpos($this->haystack, $input, 0, mb_detect_encoding($input)));
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         if ($this->compareIdentical) {
             return $this->validateIdentical($input);

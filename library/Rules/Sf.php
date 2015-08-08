@@ -63,7 +63,7 @@ class Sf extends AbstractRule
         throw $this->reportError((string) $violations);
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         $violations = $this->returnViolationsForConstraint($input, $this->constraint);
         if (count($violations)) {

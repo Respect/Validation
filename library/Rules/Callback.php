@@ -31,7 +31,7 @@ class Callback extends AbstractRule
         $this->arguments = $arguments;
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         $params = $this->arguments;
         array_unshift($params, $input);

@@ -20,6 +20,7 @@ class CharsetTest extends \PHPUnit_Framework_TestCase
     {
         $validator = new Charset($charset);
         $this->assertTrue($validator->__invoke($input));
+        $this->assertTrue($validator->validate($input));
     }
 
     /**
@@ -30,6 +31,7 @@ class CharsetTest extends \PHPUnit_Framework_TestCase
     {
         $validator = new Charset($charset);
         $this->assertFalse($validator->__invoke($input));
+        $this->assertFalse($validator->validate($input));
         $this->assertFalse($validator->assert($input));
     }
 

@@ -34,7 +34,7 @@ class CountryCode extends AbstractRule
         'VG', 'VI', 'VN', 'VU', 'WF', 'WS', 'YE', 'YT', 'ZA', 'ZM', 'ZW',
     );
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         return in_array(strtoupper($input), $this->countryCodeList);
     }

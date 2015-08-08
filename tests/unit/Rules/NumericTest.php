@@ -26,6 +26,7 @@ class NumericTest extends \PHPUnit_Framework_TestCase
     public function testNumeric($input)
     {
         $this->assertTrue($this->object->__invoke($input));
+        $this->assertTrue($this->object->validate($input));
         $this->assertTrue($this->object->check($input));
         $this->assertTrue($this->object->assert($input));
     }
@@ -37,6 +38,7 @@ class NumericTest extends \PHPUnit_Framework_TestCase
     public function testNotNumeric($input)
     {
         $this->assertFalse($this->object->__invoke($input));
+        $this->assertFalse($this->object->validate($input));
         $this->assertFalse($this->object->assert($input));
     }
 

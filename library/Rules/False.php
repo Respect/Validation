@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 class False extends AbstractRule
 {
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         if (!is_string($input) || is_numeric($input)) {
             return ($input == false);

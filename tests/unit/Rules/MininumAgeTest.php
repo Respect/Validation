@@ -20,6 +20,7 @@ class MininumAgeTest extends \PHPUnit_Framework_TestCase
     {
         $minimumAge = new MinimumAge($age, $format);
         $this->assertTrue($minimumAge->__invoke($input));
+        $this->assertTrue($minimumAge->validate($input));
         $this->assertTrue($minimumAge->assert($input));
         $this->assertTrue($minimumAge->check($input));
     }
@@ -32,6 +33,7 @@ class MininumAgeTest extends \PHPUnit_Framework_TestCase
     {
         $minimumAge = new MinimumAge($age, $format);
         $this->assertFalse($minimumAge->__invoke($input));
+        $this->assertFalse($minimumAge->validate($input));
         $this->assertFalse($minimumAge->assert($input));
     }
 
@@ -43,6 +45,7 @@ class MininumAgeTest extends \PHPUnit_Framework_TestCase
     {
         $minimumAge = new MinimumAge($age, $format);
         $this->assertFalse($minimumAge->__invoke($input));
+        $this->assertFalse($minimumAge->validate($input));
         $this->assertFalse($minimumAge->assert($input));
     }
 

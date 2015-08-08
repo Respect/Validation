@@ -12,9 +12,10 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validatable;
+use Respect\Validation\RequiredValidatable;
 use Respect\Validation\Exceptions\ComponentException;
 
-abstract class AbstractWrapper extends AbstractRule
+abstract class AbstractWrapper extends AbstractRule implements RequiredValidatable
 {
     protected $validatable;
 
@@ -37,7 +38,7 @@ abstract class AbstractWrapper extends AbstractRule
         return $this->getValidatable()->check($input);
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         return $this->getValidatable()->validate($input);
     }

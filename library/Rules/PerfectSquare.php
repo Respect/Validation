@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 class PerfectSquare extends AbstractRule
 {
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         return is_numeric($input) && sqrt($input) * sqrt($input) == $input;
     }

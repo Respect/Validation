@@ -27,7 +27,7 @@ class Equals extends AbstractRule
         return parent::reportError($input, $extraParams);
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         if ($this->compareIdentical) {
             return $input === $this->compareTo;

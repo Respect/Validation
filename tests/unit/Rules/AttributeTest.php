@@ -25,6 +25,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $obj->bar = 'foo';
         $this->assertTrue($validator->check($obj));
         $this->assertTrue($validator->__invoke($obj));
+        $this->assertTrue($validator->validate($obj));
         $this->assertTrue($validator->assert($obj));
     }
 
@@ -37,6 +38,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $obj = new \stdClass();
         $obj->baraaaaa = 'foo';
         $this->assertFalse($validator->__invoke($obj));
+        $this->assertFalse($validator->validate($obj));
         $this->assertFalse($validator->assert($obj));
     }
     /**
@@ -48,6 +50,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $obj = new \stdClass();
         $obj->baraaaaa = 'foo';
         $this->assertFalse($validator->__invoke($obj));
+        $this->assertFalse($validator->validate($obj));
         $this->assertFalse($validator->check($obj));
     }
 
@@ -76,9 +79,11 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $obj = new \stdClass();
         $obj->bar = 'foo';
         $this->assertTrue($validator->__invoke($obj));
+        $this->assertTrue($validator->validate($obj));
         $this->assertTrue($validator->assert($obj));
         $this->assertTrue($validator->check($obj));
         $this->assertTrue($validator->__invoke(''));
+        $this->assertTrue($validator->validate(''));
         $this->assertTrue($validator->assert(''));
         $this->assertTrue($validator->check(''));
     }
@@ -90,6 +95,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $obj = new \stdClass();
         $obj->bar = 'foo hey this has more than 3 chars';
         $this->assertFalse($validator->__invoke($obj));
+        $this->assertFalse($validator->validate($obj));
     }
 
     /**
@@ -120,6 +126,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $validator = new Attribute('bar', null, false);
         $obj = new \stdClass();
         $this->assertTrue($validator->__invoke($obj));
+        $this->assertTrue($validator->validate($obj));
     }
 
     public function testNotMandatoryAttributeShouldNotFailWhenAttributeIsAbsent_with_extra_validator()
@@ -128,6 +135,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $validator = new Attribute('bar', $subValidator, false);
         $obj = new \stdClass();
         $this->assertTrue($validator->__invoke($obj));
+        $this->assertTrue($validator->validate($obj));
     }
 
     public function testPrivateAttributeShouldAlsoBeChecked()
@@ -144,5 +152,6 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $validator = new Attribute('bar', $subValidator);
         $obj = new PrivClass();
         $this->assertFalse($validator->__invoke($obj));
+        $this->assertFalse($validator->validate($obj));
     }
 }

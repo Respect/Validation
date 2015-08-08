@@ -44,7 +44,7 @@ class Mimetype extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         if ($input instanceof SplFileInfo) {
             $input = $input->getPathname();

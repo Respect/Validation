@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 class Odd extends AbstractRule
 {
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         return ((int) $input % 2 !== 0);
     }

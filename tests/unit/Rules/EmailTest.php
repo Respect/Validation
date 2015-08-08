@@ -97,6 +97,7 @@ class EmailTest extends \PHPUnit_Framework_TestCase
     {
         $validator = new Email();
         $this->assertTrue($validator->__invoke($validEmail));
+        $this->assertTrue($validator->validate($validEmail));
         $this->assertTrue($validator->check($validEmail));
         $this->assertTrue($validator->assert($validEmail));
     }
@@ -109,6 +110,7 @@ class EmailTest extends \PHPUnit_Framework_TestCase
     {
         $validator = new Email();
         $this->assertFalse($validator->__invoke($invalidEmail));
+        $this->assertFalse($validator->validate($invalidEmail));
         $this->assertFalse($validator->assert($invalidEmail));
     }
 

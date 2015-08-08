@@ -22,6 +22,7 @@ class BaseTest extends \PHPUnit_Framework_TestCase
     {
         $object = new Base($base);
         $this->assertTrue($object->__invoke($input));
+        $this->assertTrue($object->validate($input));
         $this->assertTrue($object->check($input));
         $this->assertTrue($object->assert($input));
     }
@@ -33,6 +34,7 @@ class BaseTest extends \PHPUnit_Framework_TestCase
     {
         $object = new Base($base);
         $this->assertFalse($object->__invoke($input));
+        $this->assertFalse($object->validate($input));
     }
 
     /**
@@ -43,6 +45,7 @@ class BaseTest extends \PHPUnit_Framework_TestCase
     {
         $object = new Base($base);
         $this->assertTrue($object->__invoke($input));
+        $this->assertTrue($object->validate($input));
         $this->assertTrue($object->assert($input));
     }
 
@@ -53,6 +56,7 @@ class BaseTest extends \PHPUnit_Framework_TestCase
     {
         $object = new Base($base, $custom);
         $this->assertTrue($object->__invoke($input));
+        $this->assertTrue($object->validate($input));
         $this->assertTrue($object->check($input));
         $this->assertTrue($object->assert($input));
     }

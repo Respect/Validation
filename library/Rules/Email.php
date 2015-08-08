@@ -30,7 +30,7 @@ class Email extends AbstractRule
         return $this->emailValidator;
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         $emailValidator = $this->getEmailValidator();
         if (null !== $emailValidator) {

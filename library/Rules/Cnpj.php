@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 class Cnpj extends AbstractRule
 {
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         //Code ported from jsfromhell.com
         $c = preg_replace('/\D/', '', $input);

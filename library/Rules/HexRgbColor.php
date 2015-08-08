@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 class HexRgbColor extends Xdigit
 {
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         if (!is_string($input)) {
             return false;
@@ -28,6 +28,6 @@ class HexRgbColor extends Xdigit
             return false;
         }
 
-        return parent::validate($input);
+        return parent::validateConcrete($input);
     }
 }

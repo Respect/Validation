@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 class Cnh extends AbstractRule
 {
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         $ret = false;
 

@@ -12,6 +12,7 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validatable;
+use Respect\Validation\RequiredValidatable;
 use Respect\Validation\Exceptions\ValidationException;
 
 abstract class AbstractRelated extends AbstractRule
@@ -53,7 +54,7 @@ abstract class AbstractRelated extends AbstractRule
 
     public function assert($input)
     {
-        if ($input === '') {
+        if ($this->isOptional($input)) {
             return true;
         }
 
@@ -73,7 +74,7 @@ abstract class AbstractRelated extends AbstractRule
 
     public function check($input)
     {
-        if ($input === '') {
+        if ($this->isOptional($input)) {
             return true;
         }
 
@@ -85,9 +86,9 @@ abstract class AbstractRelated extends AbstractRule
         return $this->decision('check', $hasReference, $input);
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
-        if ($input === '') {
+        if ($this->isOptional($input)) {
             return true;
         }
 

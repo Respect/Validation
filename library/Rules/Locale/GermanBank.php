@@ -44,7 +44,7 @@ class GermanBank extends AbstractRule
     /**
      * @return bool
      */
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         return $this->bav->isValidBank($input);
     }

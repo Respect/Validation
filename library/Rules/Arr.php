@@ -17,7 +17,7 @@ use Traversable;
 
 class Arr extends AbstractRule
 {
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         return is_array($input) || ($input instanceof ArrayAccess
             && $input instanceof Traversable

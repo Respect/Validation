@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 class CreditCard extends AbstractRule
 {
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         $input = preg_replace('([^0-9])', '', $input);
         if (!empty($input)) {

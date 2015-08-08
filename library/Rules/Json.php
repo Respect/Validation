@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 class Json extends AbstractRule
 {
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         if (is_string($input)
             && strtolower($input) == 'null') {

@@ -22,6 +22,7 @@ class MinTest extends \PHPUnit_Framework_TestCase
     {
         $min = new Min($minValue, $inclusive);
         $this->assertTrue($min->__invoke($input));
+        $this->assertTrue($min->validate($input));
         $this->assertTrue($min->check($input));
         $this->assertTrue($min->assert($input));
     }
@@ -34,6 +35,7 @@ class MinTest extends \PHPUnit_Framework_TestCase
     {
         $min = new Min($minValue, $inclusive);
         $this->assertFalse($min->__invoke($input));
+        $this->assertFalse($min->validate($input));
         $this->assertFalse($min->assert($input));
     }
 

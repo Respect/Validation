@@ -17,8 +17,11 @@ class BoolTest extends \PHPUnit_Framework_TestCase
     {
         $validator = new Bool();
         $this->assertTrue($validator->__invoke(''));
+        $this->assertTrue($validator->validate(''));
         $this->assertTrue($validator->__invoke(true));
+        $this->assertTrue($validator->validate(true));
         $this->assertTrue($validator->__invoke(false));
+        $this->assertTrue($validator->validate(false));
         $this->assertTrue($validator->assert(true));
         $this->assertTrue($validator->assert(false));
         $this->assertTrue($validator->check(true));
@@ -38,11 +41,18 @@ class BoolTest extends \PHPUnit_Framework_TestCase
     {
         $validator = new Bool();
         $this->assertFalse($validator->__invoke('foo'));
+        $this->assertFalse($validator->validate('foo'));
         $this->assertFalse($validator->__invoke(123123));
+        $this->assertFalse($validator->validate(123123));
         $this->assertFalse($validator->__invoke(new \stdClass()));
+        $this->assertFalse($validator->validate(new \stdClass()));
         $this->assertFalse($validator->__invoke(array()));
+        $this->assertFalse($validator->validate(array()));
         $this->assertFalse($validator->__invoke(1));
+        $this->assertFalse($validator->validate(1));
         $this->assertFalse($validator->__invoke(0));
+        $this->assertFalse($validator->validate(0));
         $this->assertFalse($validator->__invoke(null));
+        $this->assertFalse($validator->validate(null));
     }
 }

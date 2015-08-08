@@ -13,9 +13,10 @@ namespace Respect\Validation\Rules;
 
 use Traversable;
 use Respect\Validation\Validatable;
+use Respect\Validation\RequiredValidatable;
 use Respect\Validation\Exceptions\ValidationException;
 
-class Each extends AbstractRule
+class Each extends AbstractRule implements RequiredValidatable
 {
     public $itemValidator;
     public $keyValidator;
@@ -86,7 +87,7 @@ class Each extends AbstractRule
         return true;
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         if (!is_array($input) || $input instanceof Traversable) {
             return false;

@@ -63,6 +63,7 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
     {
         $o = new Between($min, $max, $inclusive);
         $this->assertTrue($o->__invoke($input));
+        $this->assertTrue($o->validate($input));
         $this->assertTrue($o->assert($input));
         $this->assertTrue($o->check($input));
     }
@@ -75,6 +76,7 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
     {
         $o = new Between($min, $max, $inclusive);
         $this->assertFalse($o->__invoke($input));
+        $this->assertFalse($o->validate($input));
         $this->assertFalse($o->assert($input));
     }
 

@@ -24,7 +24,7 @@ class MinimumAge extends AbstractRule
         $this->format = $format;
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         if (!is_int($this->age)) {
             return false;

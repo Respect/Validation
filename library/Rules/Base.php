@@ -31,7 +31,7 @@ class Base extends AbstractRule
         $this->base = $base;
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         $valid = substr($this->chars, 0, $this->base);
 

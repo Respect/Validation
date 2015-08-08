@@ -134,12 +134,12 @@ class KeySet extends AllOf
     /**
      * {@inheritdoc}
      */
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         if (!$this->hasValidStructure($input)) {
             return false;
         }
 
-        return parent::validate($input);
+        return parent::validateConcrete($input);
     }
 }

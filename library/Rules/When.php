@@ -12,9 +12,10 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validatable;
+use Respect\Validation\RequiredValidatable;
 use Respect\Validation\Exceptions\AlwaysInvalidException;
 
-class When extends AbstractRule
+class When extends AbstractRule implements RequiredValidatable
 {
     public $when;
     public $then;
@@ -32,7 +33,7 @@ class When extends AbstractRule
         $this->else = $else;
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         if ($this->when->validate($input)) {
             return $this->then->validate($input);

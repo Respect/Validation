@@ -29,6 +29,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
     {
         $this->object->tldCheck($tldcheck);
         $this->assertTrue($this->object->__invoke($input));
+        $this->assertTrue($this->object->validate($input));
         $this->assertTrue($this->object->assert($input));
         $this->assertTrue($this->object->check($input));
     }

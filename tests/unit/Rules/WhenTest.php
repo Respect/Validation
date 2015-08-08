@@ -68,7 +68,7 @@ class WhenTest extends \PHPUnit_Framework_TestCase
     public function testWhenException_on_else()
     {
         $v = new When(new Int(), new Between(1, 5), new NotEmpty());
-        $this->assertFalse($v->assert(''));
+        $this->assertFalse($v->assert(' '));
     }
 
     /**
@@ -86,6 +86,6 @@ class WhenTest extends \PHPUnit_Framework_TestCase
     public function testWhenException_on_else_failfast()
     {
         $v = new When(new Int(), new Between(1, 5), new NotEmpty());
-        $this->assertFalse($v->check(''));
+        $this->assertFalse($v->check(' '));
     }
 }

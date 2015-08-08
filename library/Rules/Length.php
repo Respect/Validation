@@ -45,7 +45,7 @@ class Length extends AbstractRule
         }
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         $length = $this->extractLength($input);
 

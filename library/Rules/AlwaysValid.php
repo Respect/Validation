@@ -11,9 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
-class AlwaysValid extends AbstractRule
+use Respect\Validation\RequiredValidatable;
+
+class AlwaysValid extends AbstractRule implements RequiredValidatable
 {
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         return true;
     }

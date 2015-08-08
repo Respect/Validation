@@ -119,7 +119,7 @@ class Tld extends AbstractRule
         'wf', 'ws', 'ye', 'yt', 'za', 'zm', 'zw',
     );
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         return in_array(strtolower($input), $this->tldList);
     }

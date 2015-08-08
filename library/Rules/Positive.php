@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 class Positive extends AbstractRule
 {
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         return $input > 0;
     }

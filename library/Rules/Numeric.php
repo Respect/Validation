@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 class Numeric extends AbstractRule
 {
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         return is_numeric($input);
     }

@@ -60,7 +60,7 @@ class Zend extends AbstractRule
         throw $this->reportError($input)->setRelated($exceptions);
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         $validator = clone $this->zendValidator;
 

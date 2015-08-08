@@ -51,7 +51,7 @@ class GermanBic extends AbstractRule
     /**
      * @return bool
      */
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         return $this->bav->isValidBIC($input);
     }

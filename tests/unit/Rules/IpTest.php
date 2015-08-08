@@ -20,6 +20,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
     {
         $ipValidator = new Ip($options);
         $this->assertTrue($ipValidator->__invoke($input));
+        $this->assertTrue($ipValidator->validate($input));
         $this->assertTrue($ipValidator->assert($input));
         $this->assertTrue($ipValidator->check($input));
     }
@@ -31,6 +32,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
     {
         $ipValidator = new Ip($networkRange);
         $this->assertTrue($ipValidator->__invoke($input));
+        $this->assertTrue($ipValidator->validate($input));
         $this->assertTrue($ipValidator->assert($input));
         $this->assertTrue($ipValidator->check($input));
     }
@@ -43,6 +45,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
     {
         $ipValidator = new Ip($options);
         $this->assertFalse($ipValidator->__invoke($input));
+        $this->assertFalse($ipValidator->validate($input));
         $this->assertFalse($ipValidator->assert($input));
     }
 
@@ -54,6 +57,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
     {
         $ipValidator = new Ip($networkRange);
         $this->assertFalse($ipValidator->__invoke($input));
+        $this->assertFalse($ipValidator->validate($input));
         $this->assertFalse($ipValidator->assert($input));
     }
 

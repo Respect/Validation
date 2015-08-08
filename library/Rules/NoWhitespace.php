@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 class NoWhitespace extends AbstractRule
 {
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         if (is_null($input)) {
             return true;

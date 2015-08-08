@@ -26,6 +26,7 @@ class MacAddressTest extends \PHPUnit_Framework_TestCase
     public function testValidMacaddressesShouldReturnTrue($input)
     {
         $this->assertTrue($this->macaddressValidator->__invoke($input));
+        $this->assertTrue($this->macaddressValidator->validate($input));
         $this->assertTrue($this->macaddressValidator->assert($input));
         $this->assertTrue($this->macaddressValidator->check($input));
     }
@@ -37,6 +38,7 @@ class MacAddressTest extends \PHPUnit_Framework_TestCase
     public function testInvalidMacaddressShouldThrowMacAddressException($input)
     {
         $this->assertFalse($this->macaddressValidator->__invoke($input));
+        $this->assertFalse($this->macaddressValidator->validate($input));
         $this->assertFalse($this->macaddressValidator->assert($input));
     }
 

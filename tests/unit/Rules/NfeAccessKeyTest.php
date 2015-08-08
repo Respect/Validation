@@ -27,6 +27,7 @@ class NfeAccessKeyTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertTrue($this->nfeValidator->assert($aK));
         $this->assertTrue($this->nfeValidator->__invoke($aK));
+        $this->assertTrue($this->nfeValidator->validate($aK));
         $this->assertTrue($this->nfeValidator->check($aK));
     }
 

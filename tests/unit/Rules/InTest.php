@@ -20,6 +20,7 @@ class InTest extends \PHPUnit_Framework_TestCase
     {
         $v = new In($options);
         $this->assertTrue($v->__invoke($input));
+        $this->assertTrue($v->validate($input));
         $this->assertTrue($v->check($input));
         $this->assertTrue($v->assert($input));
     }
@@ -32,6 +33,7 @@ class InTest extends \PHPUnit_Framework_TestCase
     {
         $v = new In($options, $strict);
         $this->assertFalse($v->__invoke($input));
+        $this->assertFalse($v->validate($input));
         $this->assertFalse($v->assert($input));
     }
 

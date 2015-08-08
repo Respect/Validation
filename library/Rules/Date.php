@@ -22,7 +22,7 @@ class Date extends AbstractRule
         $this->format = $format;
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         if ($input instanceof DateTime) {
             return true;

@@ -33,7 +33,7 @@ abstract class AbstractFilterRule extends AbstractRule
         return str_replace(str_split($this->additionalChars), '', $input);
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         if (!is_scalar($input)) {
             return false;
@@ -41,6 +41,6 @@ abstract class AbstractFilterRule extends AbstractRule
 
         $cleanInput = $this->filter((string) $input);
 
-        return $cleanInput === '' || $this->validateClean($cleanInput);
+        return $this->isOptional($cleanInput) || $this->validateClean($cleanInput);
     }
 }

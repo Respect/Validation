@@ -11,9 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
-class NotEmpty extends AbstractRule
+use Respect\Validation\RequiredValidatable;
+
+class NotEmpty extends AbstractRule implements RequiredValidatable
 {
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         if (is_string($input)) {
             $input = trim($input);

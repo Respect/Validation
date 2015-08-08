@@ -22,7 +22,7 @@ class Contains extends AbstractRule
         $this->identical = $identical;
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         if ($this->identical) {
             return $this->validateIdentical($input);

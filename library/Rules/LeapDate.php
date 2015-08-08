@@ -22,7 +22,7 @@ class LeapDate extends AbstractRule
         $this->format = $format;
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         if (is_string($input)) {
             $date = DateTime::createFromFormat($this->format, $input);

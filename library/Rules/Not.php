@@ -27,7 +27,7 @@ class Not extends AbstractRule
         $this->rule = $rule;
     }
 
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         if ($this->rule instanceof AllOff) {
             return $this->rule->validate($input);

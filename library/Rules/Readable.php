@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 class Readable extends AbstractRule
 {
-    public function validate($input)
+    protected function validateConcrete($input)
     {
         if ($input instanceof \SplFileInfo) {
             return $input->isReadable();

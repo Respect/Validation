@@ -12,10 +12,11 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\RequiredValidatable;
 use Respect\Validation\Validatable;
 use Respect\Validation\Validator;
 
-abstract class AbstractComposite extends AbstractRule
+abstract class AbstractComposite extends AbstractRule implements RequiredValidatable
 {
     protected $rules = array();
 
