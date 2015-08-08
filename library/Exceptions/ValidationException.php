@@ -39,16 +39,34 @@ class ValidationException extends InvalidArgumentException implements Validation
         if (is_string($value)) {
             return $value;
         } elseif (is_array($value)) {
-            $strings = array_filter($value, 'is_string');
-            if (count($strings) > 0) {
-                return "'" . implode("', '", $strings) . "'";
-            }
-            return 'Array';
+            return self::stringifyArray($value);
         } elseif (is_object($value)) {
             return static::stringifyObject($value);
         } else {
             return (string) $value;
         }
+    }
+
+    /**
+     * @param $value
+     * @return string
+     */
+    public static function stringifyArray($value)
+    {
+        $items = array();
+        foreach ($value as $val) {
+            if (is_object($val)) {
+                $items[] = self::stringifyObject($val);
+            } elseif (is_string($val)) {
+                $items[] = "'$val'";
+            } else {
+                $items[] = (string) $val;
+            }
+        }
+        if (count($items) > 0) {
+            return implode(", ", $items);
+        }
+        return 'Empty array';
     }
 
     public static function stringifyObject($value)
