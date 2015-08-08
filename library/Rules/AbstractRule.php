@@ -11,8 +11,9 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\RequiredValidatable;
+use Respect\Validation\Validatable;
 
 abstract class AbstractRule implements Validatable
 {
@@ -26,10 +27,45 @@ abstract class AbstractRule implements Validatable
         //a constructor is required for ReflectionClass::newInstance()
     }
 
+    /**
+     * Should perform the validation on child classes.
+     *
+     * This method is called by `validate()` right after it checks if the value
+     * is optional or not.
+     *
+     * @param mixed $input
+     *
+     * @return bool
+     */
+    abstract protected function validateConcrete($input);
+
+    /**
+     * Returns if a given value is optional or not.
+     *
+     * @param mixed $input
+     *
+     * @return bool
+     */
+    protected function isOptional($input)
+    {
+        if ($this instanceof RequiredValidatable) {
+            return false;
+        }
+
+        return ($input === '');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    final public function validate($input)
+    {
+        return $this->isOptional($input) || $this->validateConcrete($input);
+    }
+
     public function __invoke($input)
     {
-        return !is_a($this, __NAMESPACE__.'\\NotEmpty')
-            && $input === '' || $this->validate($input);
+        return $this->validate($input);
     }
 
     public function addOr()

@@ -36,18 +36,28 @@ validator that validates if a string is equal "Hello World".
 
 The rule itself needs to implement the `Validatable` interface.
 Also, it is convenient to extend the `AbstractRule`.
-Doing that, you'll only need to declare one method: `validate($input)`.
+Doing that, you'll only need to declare one method: `validateConcrete($input)`.
 This method must return `true` or `false`.
 
 If your validator class is `HelloWorld`, it will be available as `v::helloWorld()`
 and will natively have support for chaining and everything else.
 
 ```php
+
+/*
+ * This file is part of Respect/Validation.
+ *
+ * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ *
+ * For the full copyright and license information, please view the "LICENSE.md"
+ * file that was distributed with this source code.
+ */
+
 namespace Respect\Validation\Rules;
 
 class HelloWorld extends AbstractRule
 {
-    public function validate($input)
+    public function validateConcrete($input)
     {
         return $input === 'Hello World';
     }
@@ -60,6 +70,16 @@ affirmative and negative moods, so if anyone calls `v::not(v::helloWorld())` the
 library will show the appropriate message.
 
 ```php
+
+/*
+ * This file is part of Respect/Validation.
+ *
+ * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ *
+ * For the full copyright and license information, please view the "LICENSE.md"
+ * file that was distributed with this source code.
+ */
+
 namespace Respect\Validation\Exceptions;
 
 class HelloWorldException extends ValidationException
@@ -78,6 +98,16 @@ class HelloWorldException extends ValidationException
 Finally, we need to test if everything is running smooth:
 
 ```php
+
+/*
+ * This file is part of Respect/Validation.
+ *
+ * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ *
+ * For the full copyright and license information, please view the "LICENSE.md"
+ * file that was distributed with this source code.
+ */
+
 namespace Respect\Validation\Rules;
 
 class HelloWorldTest extends \PHPUnit_Framework_TestCase
@@ -105,6 +135,13 @@ class HelloWorldTest extends \PHPUnit_Framework_TestCase
         $rule = new HelloWorld();
 
         $rule->check('Hello Mars');
+    }
+
+    public function testShouldAcceptOptionalValues()
+    {
+        $rule = new HelloWorld();
+
+        $this->assertTrue($rule->validate(''));
     }
 }
 ```
