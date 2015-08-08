@@ -35,6 +35,16 @@ class InTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($v->assert($input));
     }
 
+    /**
+     * @expectedException Respect\Validation\Exceptions\InException
+     * @expectedExceptionMessage "x" must be in ('foo', 'bar')
+     */
+    public function testInCheckExceptionMessageWithArray()
+    {
+        $v = new In(array('foo', 'bar'));
+        $v->assert('x');
+    }
+
     public function providerForIn()
     {
         return array(

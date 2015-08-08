@@ -49,7 +49,11 @@ class ValidationException extends InvalidArgumentException implements Validation
         if (is_string($value)) {
             return $value;
         } elseif (is_array($value)) {
-            return 'Array'; //FIXME
+            $strings = array_filter($value, 'is_string');
+            if (count($strings) > 0) {
+                return "'" . implode("', '", $strings) . "'";
+            }
+            return 'Array';
         } elseif (is_object($value)) {
             return static::stringifyObject($value);
         } else {
