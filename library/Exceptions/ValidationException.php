@@ -27,6 +27,10 @@ class ValidationException extends InvalidArgumentException implements Validation
             self::STANDARD => 'Data validation failed for %s',
         ),
     );
+    /**
+     * @var int Maximum depth when stringifying nested arrays
+     */
+    private static $maxDepthStringify = 3;
     protected $id = 'validation';
     protected $mode = self::MODE_DEFAULT;
     protected $name = '';
@@ -49,12 +53,40 @@ class ValidationException extends InvalidArgumentException implements Validation
         if (is_string($value)) {
             return $value;
         } elseif (is_array($value)) {
-            return 'Array'; //FIXME
+            return self::stringifyArray($value);
         } elseif (is_object($value)) {
             return static::stringifyObject($value);
         } else {
             return (string) $value;
         }
+    }
+
+    /**
+     * @param array $value
+     * @param int   $depth
+     *
+     * @return string
+     */
+    private static function stringifyArray($value, $depth = 0)
+    {
+        $items = array();
+        foreach ($value as $val) {
+            if (is_object($val)) {
+                $items[] = self::stringifyObject($val);
+            } elseif (is_array($val)) {
+                if ($depth >= self::$maxDepthStringify) {
+                    $items[] = '...';
+                } else {
+                    $items[] = '('.self::stringifyArray($val, $depth + 1).')';
+                }
+            } elseif (is_string($val)) {
+                $items[] = "'$val'";
+            } else {
+                $items[] = (string) $val;
+            }
+        }
+
+        return implode(', ', $items);
     }
 
     public static function stringifyObject($value)
