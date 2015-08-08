@@ -94,9 +94,17 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
         return array(
             array('foo', 'foo'),
             array(123, '123'),
-            array(array(), 'Array'),
-            array(new \stdClass(), 'Object of class stdClass'),
-            array($x = new \DateTime(), $x->format('Y-m-d H:i:s')),
+            array(array(), ''),
+            array(array(array(), 'foo'), "(), 'foo'"),
+            array(array(array(1), 'foo'), "(1), 'foo'"),
+            array(array(1, array(2, array(3))), "1, (2, (3))"),
+            array(array(1, array(2, array(3, array(4)))), "1, (2, (3, (4)))"),
+            array(array(1, array(2, array(3, array(4, array(5))))), "1, (2, (3, (4, ...)))"),
+            array(array('foo', 'bar'), "'foo', 'bar'"),
+            array(array('foo', -1), "'foo', -1"),
+            array(array(new \stdClass, "foo"), "Object of class stdClass, 'foo'"),
+            array(new \stdClass, 'Object of class stdClass'),
+            array($x = new \DateTime, $x->format('Y-m-d H:i:s')),
         );
     }
 
