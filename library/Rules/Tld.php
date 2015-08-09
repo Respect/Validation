@@ -92,7 +92,7 @@ class Tld extends AbstractRule
         'uol', 'vacations', 'vegas', 'ventures', 'versicherung', 'vet', 'viajes', 'video',
         'villas', 'vision', 'vista', 'vistaprint', 'vlaanderen', 'vodka', 'vote', 'voting',
         'voto', 'voyage', 'wales', 'walter', 'wang', 'watch', 'webcam', 'website', 'wed',
-        'wedding', 'weir', 'whoswho', 'wien', 'wiki', 'williamhill', 'win', 'windows', 
+        'wedding', 'weir', 'whoswho', 'wien', 'wiki', 'williamhill', 'win', 'windows',
         'wme', 'work', 'works', 'world', 'wtc', 'wtf', 'xbox', 'xerox', 'xin', 'xyz',
         'yachts', 'yandex', 'yodobashi', 'yoga', 'yokohama', 'youtube', 'zip', 'zone', 'zuerich',
         //country

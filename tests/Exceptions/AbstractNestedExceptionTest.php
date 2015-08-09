@@ -11,8 +11,6 @@
 
 namespace Respect\Validation\Exceptions;
 
-use Respect\Validation\Validator as v;
-
 /**
  * phpunit has an issue with mocking exceptions when in HHVM:
  * https://github.com/sebastianbergmann/phpunit-mock-objects/issues/207

@@ -28,7 +28,8 @@
         "egulias/email-validator": "Strict (RFC compliant) email validation",
         "malkusch/bav": "German bank account validation",
         "symfony/validator": "Use Symfony validator through Respect\\Validation",
-        "zendframework/zend-validator": "Use Zend Framework validator through Respect\\Validation"
+        "zendframework/zend-validator": "Use Zend Framework validator through Respect\\Validation",
+        "fabpot/php-cs-fixer": "Fix PSR2 and other coding style issues"
     },
     "autoload": {
         "psr-4": {

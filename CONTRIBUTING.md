@@ -140,6 +140,21 @@ No test should fail.
 You can tweak the PHPUnit's settings by copying `phpunit.xml.dist` to `phpunit.xml`
 and changing it according to your needs.
 
+## Coding style and standards
+
+We follow the [PSR-2](http://www.php-fig.org/psr/psr-2/) coding style and
+[PSR-4](http://www.php-fig.org/psr/psr-4/) autoloading standard.
+
+There are some preferences regarding code style which you can easily adhere to
+by using [php-cs-fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer).
+
+This will format all PHP files consistently using the preferences of this
+project.
+
+```sh
+$ vendor/bin/php-cs-fixer fix
+```
+
 ***
 
 See also:
