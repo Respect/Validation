@@ -24,7 +24,7 @@ class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
 
     public function provideListOfRuleNames()
     {
-        $rulesDirectory = __DIR__.'/../../library/Rules';
+        $rulesDirectory = 'library/Rules';
         $rulesDirectoryIterator = new DirectoryIterator($rulesDirectory);
         $ruleNames = array();
         foreach ($rulesDirectoryIterator as $fileInfo) {

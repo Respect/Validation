@@ -1,4 +1,5 @@
-<phpunit backupGlobals="false"
+<phpunit bootstrap="vendor/autoload.php"
+         backupGlobals="false"
          backupStaticAttributes="false"
          cacheTokens="true"
          convertErrorsToExceptions="true"
@@ -10,14 +11,14 @@
          verbose="false">
     <testsuites>
         <testsuite name="unit">
-            <directory suffix="Test.php">tests</directory>
+            <directory suffix="Test.php">tests/unit/</directory>
         </testsuite>
         <testsuite name="integration">
-            <directory suffix=".phpt">tests</directory>
+            <directory suffix=".phpt">tests/integration/</directory>
         </testsuite>
     </testsuites>
     <filter>
-        <whitelist>
+        <whitelist processUncoveredFilesFromWhitelist="false">
             <directory>library/</directory>
         </whitelist>
     </filter>
