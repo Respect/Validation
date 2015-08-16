@@ -14,6 +14,7 @@ namespace Respect\Validation\Rules\Locale;
 use Respect\Validation\Test\LocaleTestCase;
 
 /**
+ * @group  rule
  * @covers Respect\Validation\Rules\Locale\GermanBic
  * @covers Respect\Validation\Exceptions\Locale\GermanBicException
  */
