@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Roman
+ * @covers Respect\Validation\Exceptions\RomanException
+ */
 class RomanTest extends \PHPUnit_Framework_TestCase
 {
     protected $romanValidator;

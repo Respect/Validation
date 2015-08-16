@@ -20,6 +20,11 @@ function class_exists($className)
     return \class_exists($className);
 }
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Email
+ * @covers Respect\Validation\Exceptions\EmailException
+ */
 class EmailTest extends \PHPUnit_Framework_TestCase
 {
     private function setEmailValidatorExists($value)

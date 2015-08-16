@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\PrimeNumber
+ * @covers Respect\Validation\Exceptions\PrimeNumberException
+ */
 class PrimeNumberTest extends \PHPUnit_Framework_TestCase
 {
     protected $object;

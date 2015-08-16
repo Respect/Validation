@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Lowercase
+ * @covers Respect\Validation\Exceptions\LowercaseException
+ */
 class LowercaseTest extends \PHPUnit_Framework_TestCase
 {
     /**

@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Object
+ * @covers Respect\Validation\Exceptions\ObjectException
+ */
 class ObjectTest extends \PHPUnit_Framework_TestCase
 {
     protected $object;

@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Each
+ * @covers Respect\Validation\Exceptions\EachException
+ */
 class EachTest extends \PHPUnit_Framework_TestCase
 {
     public function testValidatorShouldPassIfEveryArrayItemPass()

@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Alpha
+ * @covers Respect\Validation\Exceptions\AlphaException
+ */
 class AlphaTest extends \PHPUnit_Framework_TestCase
 {
     /**

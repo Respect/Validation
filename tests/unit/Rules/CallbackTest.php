@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Callback
+ * @covers Respect\Validation\Exceptions\CallbackException
+ */
 class CallbackTest extends \PHPUnit_Framework_TestCase
 {
     private $truthy, $falsy;

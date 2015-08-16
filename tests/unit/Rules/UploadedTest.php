@@ -24,6 +24,11 @@ function is_uploaded_file($uploaded)
     return $return;
 }
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Uploaded
+ * @covers Respect\Validation\Exceptions\UploadedException
+ */
 class UploadedTest extends \PHPUnit_Framework_TestCase
 {
     /**

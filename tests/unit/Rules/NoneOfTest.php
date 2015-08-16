@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\NoneOf
+ * @covers Respect\Validation\Exceptions\NoneOfException
+ */
 class NoneOfTest extends \PHPUnit_Framework_TestCase
 {
     public function testValid()

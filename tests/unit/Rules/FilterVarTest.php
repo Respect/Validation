@@ -12,7 +12,9 @@
 namespace Respect\Validation\Rules;
 
 /**
+ * @group  rule
  * @covers Respect\Validation\Rules\FilterVar
+ * @covers Respect\Validation\Exceptions\FilterVarException
  */
 class FilterVarTest extends \PHPUnit_Framework_TestCase
 {

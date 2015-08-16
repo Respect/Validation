@@ -16,6 +16,9 @@ use SplFileInfo;
 
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @group  rule
+ * @covers Respect\Validation\Rules\Mimetype
+ * @covers Respect\Validation\Exceptions\MimetypeException
  */
 class MimetypeTest extends PHPUnit_Framework_TestCase
 {

@@ -12,7 +12,9 @@
 namespace Respect\Validation\Rules;
 
 /**
+ * @group  rule
  * @covers Respect\Validation\Rules\When
+ * @covers Respect\Validation\Exceptions\WhenException
  */
 class WhenTest extends \PHPUnit_Framework_TestCase
 {

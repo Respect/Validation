@@ -13,6 +13,11 @@ namespace Respect\Validation\Rules;
 
 use stdClass;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Type
+ * @covers Respect\Validation\Exceptions\TypeException
+ */
 class TypeTest extends \PHPUnit_Framework_TestCase
 {
     public function testShouldDefineTypeOnConstructor()

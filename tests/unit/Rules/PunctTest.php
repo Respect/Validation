@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Punct
+ * @covers Respect\Validation\Exceptions\PunctException
+ */
 class PunctTest extends \PHPUnit_Framework_TestCase
 {
     /**

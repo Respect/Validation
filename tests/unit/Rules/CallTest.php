@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Call
+ * @covers Respect\Validation\Exceptions\CallException
+ */
 class CallTest extends \PHPUnit_Framework_TestCase
 {
     public function thisIsASampleCallbackUsedInsideThisTest()

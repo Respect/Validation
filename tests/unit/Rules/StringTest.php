@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\String
+ * @covers Respect\Validation\Exceptions\StringException
+ */
 class StringTest extends \PHPUnit_Framework_TestCase
 {
     protected $object;

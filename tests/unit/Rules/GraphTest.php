@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Graph
+ * @covers Respect\Validation\Exceptions\GraphException
+ */
 class GraphTest extends \PHPUnit_Framework_TestCase
 {
     /**

@@ -25,7 +25,9 @@ function is_executable($executable)
 }
 
 /**
+ * @group  rule
  * @covers Respect\Validation\Rules\Executable
+ * @covers Respect\Validation\Exceptions\ExecutableException
  */
 class ExecutableTest extends \PHPUnit_Framework_TestCase
 {

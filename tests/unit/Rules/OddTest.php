@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Odd
+ * @covers Respect\Validation\Exceptions\OddException
+ */
 class OddTest extends \PHPUnit_Framework_TestCase
 {
     protected $object;

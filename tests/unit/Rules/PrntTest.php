@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Prnt
+ * @covers Respect\Validation\Exceptions\PrntException
+ */
 class PrntTest extends \PHPUnit_Framework_TestCase
 {
     /**

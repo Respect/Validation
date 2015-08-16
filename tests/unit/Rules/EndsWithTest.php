@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\EndsWith
+ * @covers Respect\Validation\Exceptions\EndsWithException
+ */
 class EndsWithTest extends \PHPUnit_Framework_TestCase
 {
     /**

@@ -13,6 +13,11 @@ namespace Respect\Validation\Rules;
 
 use DateTime;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Min
+ * @covers Respect\Validation\Exceptions\MinException
+ */
 class MinTest extends \PHPUnit_Framework_TestCase
 {
     /**

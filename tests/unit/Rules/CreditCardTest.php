@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\CreditCard
+ * @covers Respect\Validation\Exceptions\CreditCardException
+ */
 class CreditCardTest extends \PHPUnit_Framework_TestCase
 {
     protected $creditCardValidator;

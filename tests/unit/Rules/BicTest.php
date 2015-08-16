@@ -14,7 +14,9 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Test\LocaleTestCase;
 
 /**
+ * @group  rule
  * @covers Respect\Validation\Rules\Bic
+ * @covers Respect\Validation\Exceptions\BicException
  */
 class BicTest extends LocaleTestCase
 {

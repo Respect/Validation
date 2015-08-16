@@ -15,6 +15,11 @@ class TestAccess extends \ArrayObject implements \ArrayAccess, \Countable, \Trav
 {
 }
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Arr
+ * @covers Respect\Validation\Exceptions\ArrException
+ */
 class ArrTest extends \PHPUnit_Framework_TestCase
 {
     protected $object;

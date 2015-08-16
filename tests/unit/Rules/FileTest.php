@@ -24,6 +24,11 @@ function is_file($file)
     return $return;
 }
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\File
+ * @covers Respect\Validation\Exceptions\FileException
+ */
 class FileTest extends \PHPUnit_Framework_TestCase
 {
     /**

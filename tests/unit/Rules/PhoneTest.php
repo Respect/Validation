@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Phone
+ * @covers Respect\Validation\Exceptions\PhoneException
+ */
 class PhoneTest extends \PHPUnit_Framework_TestCase
 {
     protected $phoneValidator;

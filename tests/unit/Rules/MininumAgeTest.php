@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\MinimumAge
+ * @covers Respect\Validation\Exceptions\MinimumAgeException
+ */
 class MininumAgeTest extends \PHPUnit_Framework_TestCase
 {
     /**

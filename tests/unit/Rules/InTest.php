@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\In
+ * @covers Respect\Validation\Exceptions\InException
+ */
 class InTest extends \PHPUnit_Framework_TestCase
 {
     /**

@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Cntrl
+ * @covers Respect\Validation\Exceptions\CntrlException
+ */
 class CntrlTest extends \PHPUnit_Framework_TestCase
 {
     /**

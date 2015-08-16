@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Bool
+ * @covers Respect\Validation\Exceptions\BoolException
+ */
 class BoolTest extends \PHPUnit_Framework_TestCase
 {
     public function testBooleanValuesONLYShouldReturnTrue()

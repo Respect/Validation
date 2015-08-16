@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\StartsWith
+ * @covers Respect\Validation\Exceptions\StartsWithException
+ */
 class StartsWithTest extends \PHPUnit_Framework_TestCase
 {
     /**

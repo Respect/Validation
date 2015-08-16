@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Digit
+ * @covers Respect\Validation\Exceptions\DigitException
+ */
 class DigitTest extends \PHPUnit_Framework_TestCase
 {
     /**

@@ -18,6 +18,9 @@ use SplFileInfo;
 
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @group  rule
+ * @covers Respect\Validation\Rules\Size
+ * @covers Respect\Validation\Exceptions\SizeException
  */
 class SizeTest extends PHPUnit_Framework_TestCase
 {

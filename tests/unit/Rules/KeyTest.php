@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Key
+ * @covers Respect\Validation\Exceptions\KeyException
+ */
 class KeyTest extends \PHPUnit_Framework_TestCase
 {
     public function testArrayWithPresentKeyShouldReturnTrue()

@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\NullValue
+ * @covers Respect\Validation\Exceptions\NullValueException
+ */
 class NullValueTest extends \PHPUnit_Framework_TestCase
 {
     protected $object;

@@ -14,6 +14,7 @@ namespace Respect\Validation\Rules;
 use DateTime;
 
 /**
+ * @group  rule
  * @covers Respect\Validation\Rules\Age
  * @covers Respect\Validation\Exceptions\AgeException
  */

@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Vowel
+ * @covers Respect\Validation\Exceptions\VowelException
+ */
 class VowelTest extends \PHPUnit_Framework_TestCase
 {
     /**

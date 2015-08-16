@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Consonant
+ * @covers Respect\Validation\Exceptions\ConsonantException
+ */
 class ConsonantTest extends \PHPUnit_Framework_TestCase
 {
     /**

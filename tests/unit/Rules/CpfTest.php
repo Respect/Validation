@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Cpf
+ * @covers Respect\Validation\Exceptions\CpfException
+ */
 class CpfTest extends \PHPUnit_Framework_TestCase
 {
     protected $cpfValidator;

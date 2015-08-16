@@ -13,6 +13,11 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validator as v;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Sf
+ * @covers Respect\Validation\Exceptions\SfException
+ */
 class SfTest extends \PHPUnit_Framework_TestCase
 {
     public function testValidationWithAnExistingValidationConstraint()

@@ -16,6 +16,9 @@ use SplFileInfo;
 
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @group  rule
+ * @covers Respect\Validation\Rules\Extension
+ * @covers Respect\Validation\Exceptions\ExtensionException
  */
 class ExtensionTest extends PHPUnit_Framework_TestCase
 {

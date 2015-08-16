@@ -24,6 +24,11 @@ function file_exists($file)
     return $return;
 }
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Exists
+ * @covers Respect\Validation\Exceptions\ExistsException
+ */
 class ExistsTest extends \PHPUnit_Framework_TestCase
 {
     /**

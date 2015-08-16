@@ -24,6 +24,11 @@ function is_link($link)
     return $return;
 }
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\SymbolicLink
+ * @covers Respect\Validation\Exceptions\SymbolicLinkException
+ */
 class SymbolicLinkTest extends \PHPUnit_Framework_TestCase
 {
     /**

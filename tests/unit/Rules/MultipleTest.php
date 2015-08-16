@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Multiple
+ * @covers Respect\Validation\Exceptions\MultipleException
+ */
 class MultipleTest extends \PHPUnit_Framework_TestCase
 {
     /**

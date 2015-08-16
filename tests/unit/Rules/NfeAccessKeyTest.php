@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\NfeAccessKey
+ * @covers Respect\Validation\Exceptions\NfeAccessKeyException
+ */
 class NfeAccessKeyTest extends \PHPUnit_Framework_TestCase
 {
     protected $nfeValidator;

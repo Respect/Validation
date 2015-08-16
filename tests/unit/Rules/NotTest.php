@@ -13,6 +13,11 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validator;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Not
+ * @covers Respect\Validation\Exceptions\NotException
+ */
 class NotTest extends \PHPUnit_Framework_TestCase
 {
     /**

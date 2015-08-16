@@ -12,7 +12,9 @@
 namespace Respect\Validation\Rules;
 
 /**
+ * @group  rule
  * @covers Respect\Validation\Rules\PostalCode
+ * @covers Respect\Validation\Exceptions\PostalCodeException
  */
 class PostalCodeTest extends \PHPUnit_Framework_TestCase
 {

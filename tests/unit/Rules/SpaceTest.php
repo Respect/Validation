@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Space
+ * @covers Respect\Validation\Exceptions\SpaceException
+ */
 class SpaceTest extends \PHPUnit_Framework_TestCase
 {
     /**

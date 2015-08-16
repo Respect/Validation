@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Equals
+ * @covers Respect\Validation\Exceptions\EqualsException
+ */
 class EqualsTest extends \PHPUnit_Framework_TestCase
 {
     /**

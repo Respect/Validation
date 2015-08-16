@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Directory
+ * @covers Respect\Validation\Exceptions\DirectoryException
+ */
 class DirectoryTest extends \PHPUnit_Framework_TestCase
 {
     /**

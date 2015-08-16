@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\True
+ * @covers Respect\Validation\Exceptions\TrueException
+ */
 class TrueTest extends \PHPUnit_Framework_TestCase
 {
     /**

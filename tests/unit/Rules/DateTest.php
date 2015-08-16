@@ -13,6 +13,11 @@ namespace Respect\Validation\Rules;
 
 use DateTime;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Date
+ * @covers Respect\Validation\Exceptions\DateException
+ */
 class DateTest extends \PHPUnit_Framework_TestCase
 {
     protected $dateValidator;

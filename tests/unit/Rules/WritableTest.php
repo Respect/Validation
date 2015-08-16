@@ -24,6 +24,11 @@ function is_writable($writable)
     return $return;
 }
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Writable
+ * @covers Respect\Validation\Exceptions\WritableException
+ */
 class WritableTest extends \PHPUnit_Framework_TestCase
 {
     /**

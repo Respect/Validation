@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\AllOf
+ * @covers Respect\Validation\Exceptions\AllOfException
+ */
 class AlnumTest extends \PHPUnit_Framework_TestCase
 {
     /**

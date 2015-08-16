@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\False
+ * @covers Respect\Validation\Exceptions\FalseException
+ */
 class FalseTest extends \PHPUnit_Framework_TestCase
 {
     /**

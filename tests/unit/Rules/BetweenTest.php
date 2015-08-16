@@ -13,6 +13,11 @@ namespace Respect\Validation\Rules;
 
 use DateTime;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Between
+ * @covers Respect\Validation\Exceptions\BetweenException
+ */
 class BetweenTest extends \PHPUnit_Framework_TestCase
 {
     public function providerValid()

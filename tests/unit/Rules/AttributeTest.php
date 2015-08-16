@@ -16,6 +16,11 @@ class PrivClass
     private $bar = 'foo';
 }
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Attribute
+ * @covers Respect\Validation\Exceptions\AttributeException
+ */
 class AttributeTest extends \PHPUnit_Framework_TestCase
 {
     public function testAttributeWithNoExtraValidationShouldCheckItsPresence()

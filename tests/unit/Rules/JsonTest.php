@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Json
+ * @covers Respect\Validation\Exceptions\JsonException
+ */
 class JsonTest extends \PHPUnit_Framework_TestCase
 {
     protected $json;

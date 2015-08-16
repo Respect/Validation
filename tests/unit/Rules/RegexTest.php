@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Regex
+ * @covers Respect\Validation\Exceptions\RegexException
+ */
 class RegexTest extends \PHPUnit_Framework_TestCase
 {
     public function testRegexOk()

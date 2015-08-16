@@ -24,6 +24,11 @@ function is_readable($readable)
     return $return;
 }
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Readable
+ * @covers Respect\Validation\Exceptions\ReadableException
+ */
 class ReadableTest extends \PHPUnit_Framework_TestCase
 {
     /**

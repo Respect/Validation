@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Float
+ * @covers Respect\Validation\Exceptions\FloatException
+ */
 class FloatTest extends \PHPUnit_Framework_TestCase
 {
     protected $floatValidator;

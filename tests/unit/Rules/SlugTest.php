@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Slug
+ * @covers Respect\Validation\Exceptions\SlugException
+ */
 class SlugTest extends \PHPUnit_Framework_TestCase
 {
     protected $slug;

@@ -11,6 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\Base
+ * @covers Respect\Validation\Exceptions\BaseException
+ */
 class BaseTest extends \PHPUnit_Framework_TestCase
 {
     protected $object;
