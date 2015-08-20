@@ -20,4 +20,5 @@ See also
   * [Instance](Instance.md)
   * [Int](Int.md)
   * [Object](Object.md)
+  * [Resource](Resource.md)
   * [String](String.md)
