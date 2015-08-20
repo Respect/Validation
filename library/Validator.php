@@ -33,6 +33,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator bic(string $countryCode)
  * @method static Validator bool()
  * @method static Validator call()
+ * @method static Validator callableType()
  * @method static Validator callback(mixed $callback)
  * @method static Validator charset(mixed $charset)
  * @method static Validator cnh()

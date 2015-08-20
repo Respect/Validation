@@ -4,6 +4,7 @@
 
   * [Arr](Arr.md)
   * [Bool](Bool.md)
+  * [CallableType](CallableType.md)
   * [Date](Date.md)
   * [False](False.md)
   * [Float](Float.md)

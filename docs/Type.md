@@ -14,6 +14,7 @@ See also
 
   * [Arr](Arr.md)
   * [Bool](Bool.md)
+  * [CallableType](CallableType.md)
   * [Finite](Finite.md)
   * [Float](Float.md)
   * [Infinite](Infinite.md)

@@ -16,4 +16,5 @@ As in `v::call()`, you can pass a method or closure to it.
 See also:
 
   * [Call](Call.md)
+  * [CallableType](CallableType.md)
   * [FilterVar](FilterVar.md)
