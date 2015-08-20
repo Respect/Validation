@@ -14,6 +14,7 @@ See also
 
   * [Arr](Arr.md)
   * [Bool](Bool.md)
+  * [Finite](Finite.md)
   * [Float](Float.md)
   * [Instance](Instance.md)
   * [Int](Int.md)

@@ -11,5 +11,6 @@ v::numeric()->validate('135.0'); //true
 
 See also:
 
-  * [Int](Int.md)
   * [Digit](Digit.md)
+  * [Finite](Finite.md)
+  * [Int](Int.md)

@@ -57,6 +57,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator false()
  * @method static Validator file()
  * @method static Validator filterVar(int $filter, mixed $options = null)
+ * @method static Validator finite()
  * @method static Validator float()
  * @method static Validator graph(string $additionalChars = null)
  * @method static Validator hexRgbColor()

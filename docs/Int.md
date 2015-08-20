@@ -11,5 +11,6 @@ v::int()->validate(10); //true
 
 See also:
 
-  * [Numeric](Numeric.md)
   * [Digit](Digit.md)
+  * [Finite](Finite.md)
+  * [Numeric](Numeric.md)
