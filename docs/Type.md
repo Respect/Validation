@@ -21,4 +21,5 @@ See also
   * [Int](Int.md)
   * [Object](Object.md)
   * [Resource](Resource.md)
+  * [Scalar](Scalar.md)
   * [String](String.md)
