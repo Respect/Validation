@@ -13,4 +13,5 @@ See also:
 
   * [Digit](Digit.md)
   * [Finite](Finite.md)
+  * [Infinite](Infinite.md)
   * [Int](Int.md)

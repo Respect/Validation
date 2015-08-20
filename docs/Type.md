@@ -16,6 +16,7 @@ See also
   * [Bool](Bool.md)
   * [Finite](Finite.md)
   * [Float](Float.md)
+  * [Infinite](Infinite.md)
   * [Instance](Instance.md)
   * [Int](Int.md)
   * [Object](Object.md)

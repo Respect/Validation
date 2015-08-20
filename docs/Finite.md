@@ -12,5 +12,6 @@ v::finite()->validate(10); //true
 See also:
 
   * [Digit](Digit.md)
+  * [Infinite](Infinite.md)
   * [Int](Int.md)
   * [Numeric](Numeric.md)
