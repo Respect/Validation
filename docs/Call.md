@@ -45,6 +45,7 @@ v::call(array($myObj, 'methodName'), v::int())->validate($myInput);
 v::call(function($input) {}, v::int())->validate($myInput);
 ```
 
+***
 See also:
 
   * [Callback](Callback.md)

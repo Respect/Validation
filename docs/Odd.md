@@ -10,7 +10,8 @@ v::int()->odd()->validate(3); //true
 
 Using `int()` before `odd()` is a best practice.
 
-See also
+***
+See also:
 
   * [Even](Even.md)
   * [Multiple](Multiple.md)

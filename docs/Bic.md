@@ -13,7 +13,8 @@ Theses country codes are supported:
 
  * "de" (Germany) - You must add `"malkusch/bav": "~1.0"` to your `require` property on composer.json file.
 
-See also
+***
+See also:
 
   * [Bank](Bank.md)
   * [BankAccount](BankAccount.md)

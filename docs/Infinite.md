@@ -8,6 +8,7 @@ Validates if the input is an infinite number.
 v::infinite()->validate(INF); //true
 ```
 
+***
 See also:
 
   * [Digit](Digit.md)

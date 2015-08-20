@@ -16,6 +16,7 @@ In the sample above, if `$input` is an integer, then it must be positive.
 If `$input` is not an integer, then it must not me empty.
 When `$else` is not defined use [AlwaysInvalid](AlwaysInvalid.md)
 
+***
 See also:
 
   * [AllOf](AllOf.md)

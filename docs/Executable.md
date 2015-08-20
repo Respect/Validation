@@ -8,7 +8,8 @@ Validates if a file is an executable.
 v::email()->executable('script.sh'); //true
 ```
 
-See also
+***
+See also:
 
   * [Readable](Readable.md)
   * [Writable](Writable.md)

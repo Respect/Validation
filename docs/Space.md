@@ -9,6 +9,7 @@ Accepts only whitespace:
 v::space()->validate('    '); //true
 ```
 
+***
 See also:
 
   * [Cntrl](Cntrl.md)

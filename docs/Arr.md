@@ -9,6 +9,7 @@ v::arr()->validate(array()); //true
 v::arr()->validate(new ArrayObject); //true
 ```
 
+***
 See also:
 
   * [Each](Each.md)

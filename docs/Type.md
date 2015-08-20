@@ -10,7 +10,8 @@ v::type('callable')->validate(function (){}); //true
 v::type('object')->validate(new stdClass()); //true
 ```
 
-See also
+***
+See also:
 
   * [Arr](Arr.md)
   * [Bool](Bool.md)

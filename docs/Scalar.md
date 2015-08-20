@@ -9,6 +9,7 @@ v::scalar()->validate(array()); //false
 v::scalar()->validate(135.0); //true
 ```
 
+***
 See also:
 
   * [Type](Type.md)

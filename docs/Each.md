@@ -20,6 +20,7 @@ v::arr()->each(v::date(), v::string()->lowercase())->validate($releaseDates); //
 
 Using `arr()` before `each()` is a best practice.
 
+***
 See also:
 
   * [Key](Key.md)

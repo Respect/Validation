@@ -23,6 +23,7 @@ of equal comparison.
 
 Message template for this validator includes `{{endValue}}`.
 
+***
 See also:
 
   * [StartsWith](StartsWith.md)

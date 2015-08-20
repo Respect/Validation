@@ -8,6 +8,7 @@ Always returns true.
 v::alwaysValid()->validate($whatever); //true
 ```
 
+***
 See also:
 
   * [AlwaysInvalid](AlwaysInvalid.md)

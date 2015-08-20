@@ -9,6 +9,7 @@ Accepts only punctuation characters:
 v::punct()->validate('&,.;[]'); //true
 ```
 
+***
 See also:
 
   * [Cntrl](Cntrl.md)

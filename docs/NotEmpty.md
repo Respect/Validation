@@ -35,6 +35,7 @@ v::string()->notEmpty()->validate('        ');  //false
 v::string()->notEmpty()->validate("\t \n \r");  //false
 ```
 
+***
 See also:
 
   * [NoWhitespace](NoWhitespace.md)

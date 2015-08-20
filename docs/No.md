@@ -18,6 +18,7 @@ This rule is case insensitive.
 
 If `$locale` is TRUE, uses the value of [nl_langinfo()](http://php.net/nl_langinfo) with `NOEXPR` constant.
 
+***
 See also:
 
   * [Yes](Yes.md)

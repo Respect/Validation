@@ -10,7 +10,8 @@ v::tld()->validate('ly'); //true
 v::tld()->validate('org'); //true
 ```
 
-See also
+***
+See also:
 
  * [Domain](Domain.md)
  * [CountryCode](CountryCode.md)

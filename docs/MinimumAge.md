@@ -16,6 +16,7 @@ Using `date()` before is a best-practice.
 
 Message template for this validator includes `{{age}}`.
 
+***
 See also:
 
   * [Age](Age.md)

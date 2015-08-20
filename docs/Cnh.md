@@ -8,6 +8,7 @@ Validates a Brazillian driver's license.
 v::cnh()->validate('02650306461'); //true
 ```
 
+***
 See also:
 
   * [Cnpj](Cnpj.md)

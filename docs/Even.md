@@ -10,7 +10,8 @@ v::int()->even()->validate(2); //true
 
 Using `int()` before `even()` is a best practice.
 
-See also
+***
+See also:
 
   * [Odd](Odd.md)
   * [Multiple](Multiple.md)

@@ -13,6 +13,7 @@ v::noneOf(
 
 In the sample above, 'foo' isn't a integer nor a float, so noneOf returns true.
 
+***
 See also:
 
   * [Not](Not.md)

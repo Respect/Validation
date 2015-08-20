@@ -15,7 +15,8 @@ This validator will consider SplFileInfo instances, so you can do something like
 v::exists()->validate(new \SplFileInfo($file));
 ```
 
-See also
+***
+See also:
 
   * [Directory](Directory.md)
   * [File](File.md)

@@ -22,6 +22,7 @@ values must be used.
 
 Message template for this validator includes `{{minValue}}`.
 
+***
 See also:
 
   * [Max](Max.md)

@@ -22,6 +22,7 @@ v::allOf(
  ->validate(15); //true
 ```
 
+***
 See also:
 
   * [OneOf](OneOf.md)

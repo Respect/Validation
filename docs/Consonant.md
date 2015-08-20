@@ -9,6 +9,7 @@ Similar to `v::alnum()`. Validates strings that contain only consonants:
 v::consonant()->validate('xkcd'); //true
 ```
 
+***
 See also:
 
   * [Alnum](Alnum.md)

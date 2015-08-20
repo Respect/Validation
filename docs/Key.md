@@ -28,6 +28,7 @@ v::key('lorem', v::string(), false)->validate($dict); // true
 
 The name of this validator is automatically set to the key name.
 
+***
 See also:
 
   * [Attribute](Attribute.md)

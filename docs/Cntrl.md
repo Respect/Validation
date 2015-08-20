@@ -9,6 +9,7 @@ This is similar to `v::alnum()`, but only accepts control characters:
 v::cntrl()->validate("\n\r\t"); //true
 ```
 
+***
 See also:
 
   * [Alnum](Alnum.md)

@@ -9,6 +9,7 @@ Validates all characters that are graphically represented.
 v::graph()->validate('LKM@#$%4;'); //true
 ```
 
+***
 See also:
 
   * [Prnt](Prnt.md)

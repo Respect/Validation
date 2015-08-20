@@ -37,6 +37,7 @@ v::age(null, 70)->validate('71 years ago'); //false
 
 Message template for this validator includes `{{minAge}}` and `{{maxAge}}`.
 
+***
 See also:
 
   * [Between](Between.md)

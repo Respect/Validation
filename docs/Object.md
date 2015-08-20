@@ -8,6 +8,7 @@ Validates if the input is an object.
 v::object()->validate(new stdClass); //true
 ```
 
+***
 See also:
 
   * [Instance](Instance.md)

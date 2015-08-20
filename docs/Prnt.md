@@ -9,6 +9,7 @@ Similar to `v::graph` but accepts whitespace.
 v::prnt()->validate('LMKA0$% _123'); //true
 ```
 
+***
 See also:
 
   * [Graph](Graph.md)

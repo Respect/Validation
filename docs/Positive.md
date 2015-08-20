@@ -8,6 +8,7 @@ Validates if a number is higher than zero
 v::numeric()->positive()->validate(-15); //false
 ```
 
+***
 See also:
 
   * [Negative](Negative.md)

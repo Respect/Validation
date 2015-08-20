@@ -8,6 +8,7 @@ Validates an ISO country code like US or BR.
 v::countryCode()->validate('BR'); //true
 ```
 
+***
 See also:
 
   * [Tld](Tld.md)

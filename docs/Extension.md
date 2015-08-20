@@ -10,6 +10,7 @@ v::extension('png')->validate('image.png'); //true
 
 This rule is case-sensitive.
 
+***
 See also:
 
   * [Executable](Executable.md)

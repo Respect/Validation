@@ -12,6 +12,7 @@ v::numeric()->postalCode('US')->validate('02179-000'); //false
 
 Extracted from [GeoNames](http://www.geonames.org/).
 
+***
 See also:
 
   * [CountryCode](CountryCode.md)

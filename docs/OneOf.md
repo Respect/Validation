@@ -23,6 +23,7 @@ Using a shortcut
 v::int()->addOr(v::float())->validate(15.5); //true
 ```
 
+***
 See also:
 
   * [AllOf](AllOf.md)

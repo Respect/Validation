@@ -27,6 +27,7 @@ v::attribute('lorem', v::string(), false)->validate($obj); // true
 
 The name of this validator is automatically set to the attribute name.
 
+***
 See also:
 
   * [Key](Key.md)

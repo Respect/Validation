@@ -30,6 +30,7 @@ v::int()->positive()->not()->validate(-1.5); //true
 
 Each other validation has custom messages for negated rules.
 
+***
 See also:
 
   * [NoneOf](NoneOf.md)

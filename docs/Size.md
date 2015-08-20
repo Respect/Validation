@@ -33,6 +33,7 @@ v::size('1.5mb')->validate($fileInfo); // Will return true or false
 
 Message template for this validator includes `{{minSize}}` and `{{maxSize}}`.
 
+***
 See also:
 
   * [Executable](Executable.md)

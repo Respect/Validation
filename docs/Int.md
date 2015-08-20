@@ -9,6 +9,7 @@ v::int()->validate('10'); //true
 v::int()->validate(10); //true
 ```
 
+***
 See also:
 
   * [Digit](Digit.md)

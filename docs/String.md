@@ -8,6 +8,7 @@ Validates a string.
 v::string()->validate('hi'); //true
 ```
 
+***
 See also:
 
   * [Alnum](Alnum.md)

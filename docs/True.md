@@ -13,6 +13,7 @@ v::true()->validate('on'); //true
 v::true()->validate('yes'); //true
 ```
 
-See also
+***
+See also:
 
   * [False](False.md)

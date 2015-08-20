@@ -8,6 +8,7 @@ Validates if the input is a resource.
 v::resource()->validate(fopen('/path/to/file.txt', 'w')); //true
 ```
 
+***
 See also:
 
   * [Type](Type.md)

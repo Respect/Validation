@@ -156,7 +156,6 @@ $ vendor/bin/php-cs-fixer fix
 ```
 
 ***
-
 See also:
 
 - [Feature Guide](docs/README.md)

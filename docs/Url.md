@@ -14,6 +14,7 @@ v::url()->validate('news:new.example.com'); //true
 
 This rule uses [FilterVar](FilterVar.md)
 
+***
 See also:
 
   * [Domain](Domain.md)

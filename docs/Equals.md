@@ -18,6 +18,7 @@ v::equals(10, true)->validate('10'); //false
 
 Message template for this validator includes `{{compareTo}}`.
 
+***
 See also:
 
   * [Contains](Contains.md)

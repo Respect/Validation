@@ -11,6 +11,7 @@ v::zend('Hostname')->validate('google.com');
 
 You must add `"zendframework/zend-validator": "~2.3"` to your `require` property on composer.json file.
 
+***
 See also:
 
   * [Sf](Sf.md)

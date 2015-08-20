@@ -21,6 +21,7 @@ the chain:
 v::digit()->cpf()->validate('44455566820'); //true
 ```
 
+***
 See also:
 
   * [Cnpj](Cnpj.md)

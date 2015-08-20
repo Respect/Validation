@@ -20,6 +20,7 @@ of equal comparison.
 
 Message template for this validator includes `{{containsValue}}`.
 
+***
 See also:
 
   * [StartsWith](StartsWith.md)
