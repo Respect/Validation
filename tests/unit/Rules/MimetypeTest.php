@@ -22,9 +22,23 @@ use SplFileInfo;
  */
 class MimetypeTest extends PHPUnit_Framework_TestCase
 {
+
+    private $filename;
+
+    protected function setUp()
+    {
+        $this->filename = sprintf('%s/validation.txt', sys_get_temp_dir());
+
+        file_put_contents($this->filename, 'File content');
+    }
+
+    protected function tearDown()
+    {
+        unlink($this->filename);
+    }
+
     public function testShouldValidateMimetype()
     {
-        $filename = 'filename.txt';
         $mimetype = 'plain/text';
 
         $fileInfoMock = $this
@@ -36,18 +50,18 @@ class MimetypeTest extends PHPUnit_Framework_TestCase
         $fileInfoMock
             ->expects($this->once())
             ->method('file')
-            ->with($filename)
+            ->with($this->filename)
             ->will($this->returnValue($mimetype));
 
         $rule = new Mimetype($mimetype, $fileInfoMock);
 
-        $this->assertTrue($rule->validate($filename));
+        $rule->validate($this->filename);
     }
 
     public function testShouldValidateSplFileInfoMimetype()
     {
-        $fileInfo = new SplFileInfo('filename.png');
-        $mimetype = 'image/png';
+        $fileInfo = new SplFileInfo($this->filename);
+        $mimetype = 'plain/text';
 
         $fileInfoMock = $this
             ->getMockBuilder('finfo')
@@ -71,6 +85,13 @@ class MimetypeTest extends PHPUnit_Framework_TestCase
         $rule = new Mimetype('application/octet-stream');
 
         $this->assertFalse($rule->validate(array(__FILE__)));
+    }
+
+    public function testShouldInvalidateWhenItIsNotAValidFile()
+    {
+        $rule = new Mimetype('application/octet-stream');
+
+        $this->assertFalse($rule->validate(__DIR__));
     }
 
     /**
