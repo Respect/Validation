@@ -42,7 +42,7 @@ class InTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Respect\Validation\Exceptions\InException
-     * @expectedExceptionMessage "x" must be in ('foo', 'bar')
+     * @expectedExceptionMessage "x" must be in { "foo", "bar" }
      */
     public function testInCheckExceptionMessageWithArray()
     {

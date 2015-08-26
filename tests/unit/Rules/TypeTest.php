@@ -66,7 +66,7 @@ class TypeTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Respect\Validation\Exceptions\TypeException
-     * @expectedExceptionMessage "Something" must be integer
+     * @expectedExceptionMessage "Something" must be "integer"
      */
     public function testShouldThrowTypeExceptionWhenCheckingAnInvalidInput()
     {

@@ -145,7 +145,7 @@ class KeySetTest extends PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Respect\Validation\Exceptions\KeySetException
-     * @expectedExceptionMessage Must have keys "foo","bar"
+     * @expectedExceptionMessage Must have keys { "foo", "bar" }
      */
     public function testShouldCheckKeys()
     {
@@ -160,7 +160,7 @@ class KeySetTest extends PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Respect\Validation\Exceptions\KeySetException
-     * @expectedExceptionMessage Must have keys "foo","bar"
+     * @expectedExceptionMessage Must have keys { "foo", "bar" }
      */
     public function testShouldAssertKeys()
     {

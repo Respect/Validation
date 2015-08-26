@@ -112,7 +112,7 @@ class SizeTest extends PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Respect\Validation\Exceptions\SizeException
-     * @expectedExceptionMessage "vfs://root/1gb.txt" must be greater than 2pb
+     * @expectedExceptionMessageRegExp #"vfs:.?/.?/root.?/1gb.txt" must be greater than "2pb"#
      */
     public function testShouldThrowsSizeExceptionWhenAsserting()
     {

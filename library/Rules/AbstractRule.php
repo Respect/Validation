@@ -61,8 +61,7 @@ abstract class AbstractRule implements Validatable
     public function reportError($input, array $extraParams = array())
     {
         $exception = $this->createException();
-        $input = ValidationException::stringify($input);
-        $name = $this->name ?: "\"$input\"";
+        $name = $this->name ?: ValidationException::stringify($input);
         $params = array_merge(
             get_class_vars(__CLASS__),
             get_object_vars($this),

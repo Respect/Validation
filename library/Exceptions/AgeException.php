@@ -30,14 +30,6 @@ class AgeException extends AbstractNestedException
         ),
     );
 
-    public function configure($name, array $params = array())
-    {
-        $params['minAge'] = static::stringify($params['minAge']);
-        $params['maxAge'] = static::stringify($params['maxAge']);
-
-        return parent::configure($name, $params);
-    }
-
     public function chooseTemplate()
     {
         if (!$this->getParam('minAge')) {

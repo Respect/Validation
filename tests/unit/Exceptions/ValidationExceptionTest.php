@@ -11,6 +11,12 @@
 
 namespace Respect\Validation\Exceptions;
 
+use ArrayIterator;
+use DateTime;
+use Exception;
+use SplFileInfo;
+use stdClass;
+
 class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
 {
     public function testItImplementsValidationExceptionInterface()
@@ -42,7 +48,7 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testStringifyShouldConvertStringsProperly($input, $result)
     {
-        $this->assertEquals(
+        $this->assertStringMatchesFormat(
             $result,
             ValidationException::stringify($input)
         );
@@ -68,19 +74,6 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerForStringify
-     */
-    public function testSettingExceptionParamsMakesThemAvailable($input, $expected)
-    {
-        $x = new ValidationException();
-        $x->setParam('foo', $input);
-        $this->assertEquals(
-            $expected,
-            $x->getParam('foo')
-        );
-    }
-
-    /**
      * @link https://github.com/Respect/Validation/pull/214
      */
     public function testFixedConstEqualsException()
@@ -91,20 +84,73 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
 
     public function providerForStringify()
     {
+        $object1 = new SplFileInfo('stringify.phpt'); // __toString()
+
+        $object2 = new DateTime('1988-09-09 23:59:59');
+
+        $object3 = new stdClass();
+
+        $object4 = new stdClass();
+        $object4->foo = 1;
+        $object4->bar = false;
+
+        $object5 = new stdClass();
+        $objectRecursive = $object5;
+        for ($i = 0; $i < 10; ++$i) {
+            $objectRecursive->name = new stdClass();
+            $objectRecursive = $objectRecursive->name;
+        }
+
+        $exception = new Exception('My message');
+
+        $iterator1 = new ArrayIterator(array(1, 2, 3));
+        $iterator2 = new ArrayIterator(array('a' => 1, 'b' => 2, 'c' => 3));
+
         return array(
-            array('foo', 'foo'),
+            array('', '""'),
+            array('foo', '"foo"'),
+            array(INF, 'INF'),
+            array(-INF, '-INF'),
+            array(acos(4), 'NaN'),
             array(123, '123'),
-            array(array(), ''),
-            array(array(array(), 'foo'), "(), 'foo'"),
-            array(array(array(1), 'foo'), "(1), 'foo'"),
-            array(array(1, array(2, array(3))), '1, (2, (3))'),
-            array(array(1, array(2, array(3, array(4)))), '1, (2, (3, (4)))'),
-            array(array(1, array(2, array(3, array(4, array(5))))), '1, (2, (3, (4, ...)))'),
-            array(array('foo', 'bar'), "'foo', 'bar'"),
-            array(array('foo', -1), "'foo', -1"),
-            array(array(new \stdClass, 'foo'), "Object of class stdClass, 'foo'"),
-            array(new \stdClass, 'Object of class stdClass'),
-            array($x = new \DateTime, $x->format('Y-m-d H:i:s')),
+            array(123.456, '123.456'),
+            array(array(), '{ }'),
+            array(array(false), '{ false }'),
+            array(array(1,2,3,4,5,6,7,8,9,10), '{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }'),
+            array(range(1, 80), '{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ... }'),
+            array(
+                array('foo' => true, 'bar' => array('baz' => 123, 'qux' => array(1, 2, 3))),
+                '{ "foo": true, "bar": { "baz": 123, "qux": { 1, 2, 3 } } }'
+            ),
+            array(
+                array('foo' => true, 'bar' => array('baz' => 123, 'qux' => array('norf' => array(1,2,3)))),
+                '{ "foo": true, "bar": { "baz": 123, "qux": { "norf": ... } } }'
+            ),
+            array(array(array(), 'foo'), '{ { }, "foo" }'),
+            array(array(array(1), 'foo'), '{ { 1 }, "foo" }'),
+            array(array(1, array(2, array(3))), '{ 1, { 2, { 3 } } }'),
+            array(array(1, array(2, array(3, array(4)))), '{ 1, { 2, { 3, ... } } }'),
+            array(array(1, array(2, array(3, array(4, array(5))))), '{ 1, { 2, { 3, ... } } }'),
+            array(array('foo', 'bar'), '{ "foo", "bar" }'),
+            array(array('foo', -1), '{ "foo", -1 }'),
+            array($object1, '"stringify.phpt"'),
+            array($object2, sprintf('"%s"', $object2->format('Y-m-d H:i:s'))),
+            array($object3, '`[object] (stdClass: { })`'),
+            array($object4, '`[object] (stdClass: { "foo": 1, "bar": false })`'),
+            array($object5, '`[object] (stdClass: { "name": [object] (stdClass: ...) })`'),
+            array(
+                $exception,
+                '`[exception] (Exception: { "message": "My message", "code": 0, "file": "%s:%d" })`'
+            ),
+            array($iterator1, '`[traversable] (ArrayIterator: { 1, 2, 3 })`'),
+            array($iterator2, '`[traversable] (ArrayIterator: { "a": 1, "b": 2, "c": 3 })`'),
+            array(stream_context_create(), '`[resource] (stream-context)`'),
+            array(tmpfile(), '`[resource] (stream)`'),
+            array(xml_parser_create(), '`[resource] (xml)`'),
+            array(
+                array($object4, array(42, 43), true, null, tmpfile()),
+                '{ `[object] (stdClass: { "foo": 1, "bar": false })`, { 42, 43 }, true, null, `[resource] (stream)` }'
+            ),
         );
     }
 
@@ -113,17 +159,17 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
         return array(
             array(
                 '{{foo}} {{bar}} {{baz}}',
-                'hello world respect',
+                '"hello" "world" "respect"',
                 array('foo' => 'hello', 'bar' => 'world', 'baz' => 'respect'),
             ),
             array(
                 '{{foo}} {{bar}} {{baz}}',
-                'hello {{bar}} respect',
+                '"hello" {{bar}} "respect"',
                 array('foo' => 'hello', 'baz' => 'respect'),
             ),
             array(
                 '{{foo}} {{bar}} {{baz}}',
-                'hello {{bar}} respect',
+                '"hello" {{bar}} "respect"',
                 array('foo' => 'hello', 'bot' => 111, 'baz' => 'respect'),
             ),
         );

@@ -40,6 +40,6 @@ try {
 --EXPECTF--
 Array
 (
-    [allOf] => These rules must pass for Validation Form
+    [allOf] => All of the required rules must pass for Validation Form
     [first_name_length] => security_question must have a length between 5 and 256
 )

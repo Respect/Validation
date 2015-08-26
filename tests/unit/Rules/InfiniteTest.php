@@ -43,7 +43,7 @@ class InfiniteTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Respect\Validation\Exceptions\InfiniteException
-     * @expectedExceptionMessage "123456" must be an infinite number
+     * @expectedExceptionMessage 123456 must be an infinite number
      */
     public function testShouldThrowInfiniteExceptionWhenChecking()
     {
@@ -54,6 +54,7 @@ class InfiniteTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(INF),
+            array(INF * -1),
         );
     }
 

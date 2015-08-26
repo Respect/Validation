@@ -25,4 +25,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-These rules must not pass for "2"
+\-These rules must not pass for 2

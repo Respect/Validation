@@ -42,16 +42,4 @@ class KeySetException extends AbstractGroupedException
 
         return parent::chooseTemplate();
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setParam($name, $value)
-    {
-        if ($name === 'keys') {
-            $value = trim(json_encode($value), '[]');
-        }
-
-        return parent::setParam($name, $value);
-    }
 }

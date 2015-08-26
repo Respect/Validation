@@ -43,7 +43,7 @@ class FiniteTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Respect\Validation\Exceptions\FiniteException
-     * @expectedExceptionMessage "INF" must be a finite number
+     * @expectedExceptionMessage INF must be a finite number
      */
     public function testShouldThrowFiniteExceptionWhenChecking()
     {

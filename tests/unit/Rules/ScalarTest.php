@@ -43,7 +43,7 @@ class ScalarTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Respect\Validation\Exceptions\ScalarException
-     * @expectedExceptionMessage "" must be a scalar value
+     * @expectedExceptionMessage null must be a scalar value
      */
     public function testShouldThrowScalarExceptionWhenChecking()
     {

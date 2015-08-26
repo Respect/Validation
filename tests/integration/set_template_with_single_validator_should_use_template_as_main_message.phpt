@@ -6,6 +6,7 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
 use Respect\Validation\Validator;
+use Respect\Validation\Rules\Callback;
 
 try {
     Validator::callback('is_int')->setTemplate('{{name}} is not tasty')->assert('something');

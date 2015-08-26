@@ -208,28 +208,9 @@ class Validator extends AllOf
         return $this->addRule(static::buildRule($method, $arguments));
     }
 
-    /**
-     * @param mixed $input
-     * @param array $extraParams
-     *
-     * @return AllOfException
-     */
-    public function reportError($input, array $extraParams = array())
+    protected function createException()
     {
-        $exception = new AllOfException();
-        $input = AllOfException::stringify($input);
-        $name = $this->getName() ?: "\"$input\"";
-        $params = array_merge(
-            $extraParams,
-            get_object_vars($this),
-            get_class_vars(__CLASS__)
-        );
-        $exception->configure($name, $params);
-        if (!is_null($this->template)) {
-            $exception->setTemplate($this->template);
-        }
-
-        return $exception;
+        return new AllOfException();
     }
 
     /**

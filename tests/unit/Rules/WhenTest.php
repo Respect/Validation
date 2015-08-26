@@ -47,7 +47,7 @@ class WhenTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Respect\Validation\Exceptions\AlwaysInvalidException
-     * @expectedExceptionMessage "15" is not valid
+     * @expectedExceptionMessage 15 is not valid
      */
     public function testWhenWithoutElseAssert()
     {

@@ -20,7 +20,7 @@ try {
 }
 ?>
 --EXPECTF--
-\-These rules must pass for User Subscription Form
+\-All of the required rules must pass for User Subscription Form
   |-Key username must be valid
   | \-username must have a length between 2 and 32
   \-Key birthdate must be valid
