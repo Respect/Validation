@@ -47,7 +47,7 @@ class PHPLabelTest extends \PHPUnit_Framework_TestCase
 
     public function providerForPHPLabel()
     {
-        return array_map(function($test) { return (array) $test; }, array(
+        return array_map(function($test) { return array($test); }, array(
             '_',
             'foo',
             'f00',
@@ -60,7 +60,7 @@ class PHPLabelTest extends \PHPUnit_Framework_TestCase
 
     public function providerForNotPHPLabel()
     {
-        return array_map(function($test) { return (array) $test; }, array(
+        return array_map(function($test) { return array($test); }, array(
             '%',
             '*',
             '-',
@@ -72,8 +72,15 @@ class PHPLabelTest extends \PHPUnit_Framework_TestCase
             'f o o',
             '0ne',
             '0_ne',
-            mt_rand(),
             uniqid(mt_rand(0, 9)),
+            // Add some things that aren't even strings.
+            null,
+            mt_rand(),
+            0,
+            1,
+            [],
+            new \StdClass(),
+            new \DateTime(),
         ));
     }
 }
