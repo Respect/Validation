@@ -78,7 +78,7 @@ class PHPLabelTest extends \PHPUnit_Framework_TestCase
             mt_rand(),
             0,
             1,
-            [],
+            array(),
             new \StdClass(),
             new \DateTime(),
         ));
