@@ -92,7 +92,7 @@ class FactorOfTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidFactorOfDividend()
     {
         return array(
-            // Invalid divisor, valid input.
+            // Invalid dividend, valid input.
             array(0, 0),
             array(0, 1),
             array(0.5, mt_rand()),

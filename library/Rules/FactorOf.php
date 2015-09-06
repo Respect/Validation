@@ -34,8 +34,8 @@ class FactorOf extends AbstractRule
         $input = (int) abs($input);
         $dividend = (int) abs($this->dividend);
 
-        // The composite divided by the input must be an integer if input is a
-        // factor of the composite.
+        // The dividend divided by the input must be an integer if input is a
+        // factor of the dividend.
         return is_integer($dividend / $input);
     }
 }
