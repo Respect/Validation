@@ -55,6 +55,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator executable()
  * @method static Validator exists()
  * @method static Validator extension(string $extension)
+ * @method static Validator factor(int $dividend)
  * @method static Validator false()
  * @method static Validator file()
  * @method static Validator filterVar(int $filter, mixed $options = null)
