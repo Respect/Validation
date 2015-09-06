@@ -86,6 +86,13 @@ class FactorOfTest extends \PHPUnit_Framework_TestCase
 
         $tests = $this->generateStringAndFloatCombinations($tests);
 
+        $extra_tests = array(
+            // Non-integer values.
+            array(1, mt_rand(1, mt_getrandmax() - 1) / mt_getrandmax()),
+            array(1, uniqid('a')),
+        );
+        $tests = array_merge($tests, $extra_tests);
+
         return $tests;
     }
 
