@@ -116,10 +116,10 @@ class FactorOfTest extends \PHPUnit_Framework_TestCase
         $base_tests = $tests;
 
         // Test everything again as a string.
-        $tests = array_merge($tests, array_map(function($test) { return [(string) $test[0], (string) $test[1]]; }, $base_tests));
+        $tests = array_merge($tests, array_map(function($test) { return array((string) $test[0], (string) $test[1]); }, $base_tests));
 
         // Test everything again as a float.
-        $tests = array_merge($tests, array_map(function($test) { return [(float) $test[0], (float) $test[1]]; }, $base_tests));
+        $tests = array_merge($tests, array_map(function($test) { return array((float) $test[0], (float) $test[1]); }, $base_tests));
 
         return $tests;
     }
