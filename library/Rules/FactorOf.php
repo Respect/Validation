@@ -11,21 +11,31 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Exceptions\FactorOfException;
+use Respect\Validation\Exceptions\ComponentException;
 
 class FactorOf extends AbstractRule
 {
+    public $dividend;
+
     public function __construct($dividend)
     {
-        if (!is_numeric($dividend) || (int) $dividend != $dividend || $dividend == 0) {
-            throw new FactorOfException('Dividend must be an integer greater than 0');
+        if (!is_numeric($dividend) || (int) $dividend != $dividend) {
+            throw new ComponentException('Dividend ' . ValidationException::stringify($dividend) . ' must be an integer');
         }
 
-        $this->dividend = $dividend;
+        $this->dividend = (int) $dividend;
     }
 
     public function validate($input)
     {
+        // Every integer is a factor of zero, and zero is the only integer that
+        // has zero for a factor.
+        if ($this->dividend === 0) {
+            return true;
+        }
+
         // Factors must be integers that are not zero.
         if (!is_numeric($input) || (int) $input != $input || $input == 0) {
             return false;

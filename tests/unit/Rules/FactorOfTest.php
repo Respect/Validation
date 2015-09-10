@@ -11,6 +11,8 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ValidationException;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\FactorOf
@@ -34,11 +36,21 @@ class FactorOfTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidFactorOfShouldThrowFactorOfException($dividend, $input)
     {
-        $this->setExpectedException('Respect\Validation\Exceptions\FactorOfException', json_encode($input) . ' must be a factor of ' . json_encode($dividend));
+        $this->setExpectedException('Respect\Validation\Exceptions\FactorOfException', ValidationException::stringify($input) . ' must be a factor of ' . $dividend);
 
         $min = new FactorOf($dividend);
         $this->assertFalse($min->__invoke($input));
         $this->assertFalse($min->assert($input));
+    }
+
+    /**
+     * @dataProvider providerForInvalidFactorOfDividend
+     */
+    public function testInvalidDividentShouldThrowComponentException($dividend, $input)
+    {
+        $this->setExpectedException('Respect\Validation\Exceptions\ComponentException', 'Dividend ' . ValidationException::stringify($dividend) . ' must be an integer');
+
+        new FactorOf($dividend);
     }
 
     public function providerForValidFactorOf()
@@ -59,6 +71,10 @@ class FactorOfTest extends \PHPUnit_Framework_TestCase
             array(6, 2),
             array(6, 3),
             array(6, 6),
+            // Zero as a dividend is always a pass.
+            array(0, 0),
+            array(0, 1),
+            array(0, mt_rand()),
         );
 
         $tests = $this->generateNegativeCombinations($tests);
@@ -98,13 +114,16 @@ class FactorOfTest extends \PHPUnit_Framework_TestCase
 
     public function providerForInvalidFactorOfDividend()
     {
-        return array(
-            // Invalid dividend, valid input.
-            array(0, 0),
-            array(0, 1),
-            array(0.5, mt_rand()),
-            array(1.5, mt_rand()),
-        );
+        return array_map(function($test) { return array($test, mt_rand()); }, array(
+            // Invalid float dividends, valid input.
+            0.5,
+            1.5,
+            // Non integer values.
+            // Random integer.
+            mt_rand(1, mt_getrandmax() - 1) / mt_getrandmax(),
+            // Randomish string.
+            uniqid('a'),
+        ));
     }
 
     protected function generateNegativeCombinations($tests)
