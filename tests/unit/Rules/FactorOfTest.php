@@ -123,7 +123,7 @@ class FactorOfTest extends \PHPUnit_Framework_TestCase
     }
 
     protected function thingsThatAreNotIntegers() {
-        return [
+        return array(
             0.5,
             1.5,
             -0.5,
@@ -143,7 +143,7 @@ class FactorOfTest extends \PHPUnit_Framework_TestCase
             NULL,
             true,
             false,
-        ];
+        );
     }
 
     protected function randomFloatBeweenZeroAndOne($inclusive = false) {
