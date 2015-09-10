@@ -137,7 +137,7 @@ class FactorOfTest extends \PHPUnit_Framework_TestCase
             // Randomish string.
             uniqid('a'),
             // Non-scalars.
-            [],
+            array(),
             new \StdClass(),
             new \DateTime(),
             NULL,
