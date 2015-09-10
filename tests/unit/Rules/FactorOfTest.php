@@ -117,7 +117,7 @@ class FactorOfTest extends \PHPUnit_Framework_TestCase
         $tests = array_map(function($test) { return array($test, mt_rand()); }, $this->thingsThatAreNotIntegers());
 
         // Also check for an empty dividend string.
-        $tests[] = ['', mt_rand()];
+        $tests[] = array('', mt_rand());
 
         return $tests;
     }
