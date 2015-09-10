@@ -50,6 +50,8 @@ class FactorOfTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('Respect\Validation\Exceptions\ComponentException', 'Dividend ' . ValidationException::stringify($dividend) . ' must be an integer');
 
+        // It is enough to simply create a new FactorOf to trigger the dividend
+        // exceptions in __construct.
         new FactorOf($dividend);
     }
 
@@ -102,11 +104,8 @@ class FactorOfTest extends \PHPUnit_Framework_TestCase
 
         $tests = $this->generateStringAndFloatCombinations($tests);
 
-        $extra_tests = array(
-            // Non-integer values.
-            array(1, mt_rand(1, mt_getrandmax() - 1) / mt_getrandmax()),
-            array(1, uniqid('a')),
-        );
+        // Valid (but random) dividends, invalid inputs.
+        $extra_tests = array_map(function($test) { return array(mt_rand(), $test); }, $this->thingsThatAreNotIntegers());
         $tests = array_merge($tests, $extra_tests);
 
         return $tests;
@@ -114,16 +113,43 @@ class FactorOfTest extends \PHPUnit_Framework_TestCase
 
     public function providerForInvalidFactorOfDividend()
     {
-        return array_map(function($test) { return array($test, mt_rand()); }, array(
-            // Invalid float dividends, valid input.
+        // Invalid dividends, valid (but random) inputs.
+        $tests = array_map(function($test) { return array($test, mt_rand()); }, $this->thingsThatAreNotIntegers());
+
+        // Also check for an empty dividend string.
+        $tests[] = ['', mt_rand()];
+
+        return $tests;
+    }
+
+    protected function thingsThatAreNotIntegers() {
+        return [
             0.5,
             1.5,
+            -0.5,
+            -1.5,
+            PHP_INT_MAX + 1,
             // Non integer values.
-            // Random integer.
-            mt_rand(1, mt_getrandmax() - 1) / mt_getrandmax(),
+            $this->randomFloatBeweenZeroAndOne(),
+            -$this->randomFloatBeweenZeroAndOne(),
+            'a',
+            'foo',
             // Randomish string.
             uniqid('a'),
-        ));
+            // Non-scalars.
+            [],
+            new \StdClass(),
+            new \DateTime(),
+            NULL,
+            true,
+            false,
+        ];
+    }
+
+    protected function randomFloatBeweenZeroAndOne($inclusive = false) {
+        $offset = $inclusive ? 0 : 1;
+
+        return mt_rand($offset, mt_getrandmax() - $offset) / mt_getrandmax();
     }
 
     protected function generateNegativeCombinations($tests)
