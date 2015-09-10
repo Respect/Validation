@@ -121,7 +121,7 @@ The printed message is exactly this, as a text tree:
   \-"really messed up screen#name" must have a length between 1 and 15
 ```
 
-## Getting Messages
+## Requesting Messages
 
 The text tree is fine, but unusable on a HTML form or something more custom. You can use
 `findMessages()` for that:
@@ -137,6 +137,35 @@ try {
 ```
 
 `findMessages()` returns an array with messages from the requested validators.
+
+## Getting Messages
+
+Sometimes you just need all the messages, for that you can use `getMessages()`.
+It will return all messages from the rules that did not pass the validation.
+
+```php
+try {
+    Validator::key('username', Validator::length(2, 32))
+             ->key('birthdate', Validator::date())
+             ->key('password', Validator::notEmpty())
+             ->key('email', Validator::email())
+             ->assert($input);
+} catch (NestedValidationExceptionInterface $e) {
+    print_r($e->getMessages());
+}
+```
+
+The code above may display something like:
+
+```
+Array
+(
+    [0] => username must have a length between 2 and 32
+    [1] => birthdate must be a valid date
+    [2] => password must not be empty
+    [3] => Key email must be present
+)
+```
 
 ## Custom Messages
 
