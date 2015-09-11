@@ -77,8 +77,7 @@ class AbstractNestedException extends ValidationException implements NestedValid
     {
         $messages = array();
         foreach ($this->getIterator() as $key => $exception) {
-            if ($exception instanceof AbstractNestedException
-                && count($exception->getRelated()) > 0) {
+            if ($key === 0) {
                 continue;
             }
 

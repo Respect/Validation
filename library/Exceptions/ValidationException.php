@@ -50,6 +50,7 @@ class ValidationException extends InvalidArgumentException implements Validation
     protected $name = '';
     protected $template = '';
     protected $params = array();
+    private $customTemplate = false;
 
     public static function format($template, array $vars = array())
     {
@@ -296,8 +297,14 @@ class ValidationException extends InvalidArgumentException implements Validation
         return $this;
     }
 
+    public function hasCustomTemplate()
+    {
+        return (true === $this->customTemplate);
+    }
+
     public function setTemplate($template)
     {
+        $this->customTemplate = true;
         $this->template = $template;
 
         return $this;

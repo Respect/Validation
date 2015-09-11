@@ -60,8 +60,7 @@ class SfTest extends \PHPUnit_Framework_TestCase
         } catch (\Respect\Validation\Exceptions\AllOfException $exception) {
             $fullValidationMessage = $exception->getFullMessage();
             $expectedValidationException = <<<EOF
-\-All of the required rules must pass for "34:90:70"
-  \-Time
+\-Time
 EOF;
 
             return $this->assertEquals(

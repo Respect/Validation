@@ -24,6 +24,23 @@ class ExceptionIterator extends RecursiveArrayIterator
         parent::__construct(is_array($target) ? $target : array($target));
     }
 
+    public function current()
+    {
+        $current = parent::current();
+        if ($this->fullRelated
+            || $current->hasCustomTemplate()
+            || !$current instanceof AbstractNestedException) {
+            return $current;
+        }
+
+        $currentRelated = $current->getRelated(false);
+        if (count($currentRelated) == 1) {
+            return current($currentRelated);
+        }
+
+        return $current;
+    }
+
     public function hasChildren()
     {
         if (!$this->current() instanceof AbstractNestedException) {
