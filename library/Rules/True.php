@@ -15,17 +15,6 @@ class True extends AbstractRule
 {
     public function validate($input)
     {
-        if (!is_string($input) || is_numeric($input)) {
-            return ($input == true);
-        }
-
-        $validValues = array(
-            'on',
-            'true',
-            'yes',
-        );
-        $filteredInput = strtolower($input);
-
-        return in_array($filteredInput, $validValues);
+        return (true === filter_var($input, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE));
     }
 }

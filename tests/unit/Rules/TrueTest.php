@@ -37,6 +37,12 @@ class TrueTest extends \PHPUnit_Framework_TestCase
             array('true'),
             array('on'),
             array('yes'),
+            array('TRUE'),
+            array('ON'),
+            array('YES'),
+            array('True'),
+            array('On'),
+            array('Yes'),
         );
     }
 
@@ -55,10 +61,13 @@ class TrueTest extends \PHPUnit_Framework_TestCase
         return array(
             array(false),
             array(0),
+            array(0.5),
+            array(2),
             array('0'),
             array('false'),
             array('off'),
             array('no'),
+            array('truth'),
         );
     }
 }

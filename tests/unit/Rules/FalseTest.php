@@ -37,6 +37,12 @@ class FalseTest extends \PHPUnit_Framework_TestCase
             array('false'),
             array('off'),
             array('no'),
+            array('FALSE'),
+            array('OFF'),
+            array('NO'),
+            array('False'),
+            array('Off'),
+            array('No'),
         );
     }
 
@@ -56,9 +62,12 @@ class FalseTest extends \PHPUnit_Framework_TestCase
             array(true),
             array(1),
             array('1'),
+            array(0.5),
+            array(2),
             array('true'),
             array('on'),
             array('yes'),
+            array('anything'),
         );
     }
 }
