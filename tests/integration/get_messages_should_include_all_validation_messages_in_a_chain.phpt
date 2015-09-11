@@ -11,7 +11,6 @@ use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
 use Respect\Validation\Validator;
 
 try {
-
     $input = array(
         'username' => 'u',
         'birthdate' => 'Not a date',

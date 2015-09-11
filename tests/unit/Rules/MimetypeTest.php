@@ -22,7 +22,6 @@ use SplFileInfo;
  */
 class MimetypeTest extends PHPUnit_Framework_TestCase
 {
-
     private $filename;
 
     protected function setUp()

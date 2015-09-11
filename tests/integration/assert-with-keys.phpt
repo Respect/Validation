@@ -3,6 +3,7 @@
 require 'vendor/autoload.php';
 use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
 use Respect\Validation\Validator as v;
+
 try {
     v::create()
         ->key(
