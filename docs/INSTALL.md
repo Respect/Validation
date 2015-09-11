@@ -10,8 +10,6 @@ composer require respect/validation
 [PHP](https://php.net) 5.3+ or [HHVM](http://hhvm.com) 3.3+ are required.
 
 ***
-
-***
 See also:
 
 - [Contributing](../CONTRIBUTING.md)
