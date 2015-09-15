@@ -13,12 +13,17 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 
-class VideoUrl extends OneOf
+class VideoUrl
 {
     /**
-     * @var array
+     * @var string
      */
     public $provider;
+
+    /**
+     * @var string
+     */
+    private $providerKey;
 
     /**
      * @var array
@@ -31,66 +36,36 @@ class VideoUrl extends OneOf
     /**
      * Create a new instance VideoUrl
      *
-     * @param mixed $provider
+     * @param string $provider
      */
-    public function __construct($provider)
+    public function __construct($provider = null)
     {
-        $this->provider = $this->toProvider(is_array($provider) ? $provider : func_get_args());
-        $this->createRules();
-
-        parent::__construct();
-    }
-
-    /**
-     * toProvider.
-     *
-     * @param array $providers
-     *
-     * @return array
-     */
-    private function toProvider(array $providers)
-    {
-        $result = array();
-
-        foreach($providers as $item) {
-            if(empty($item)) continue;
-
-            if(!array_key_exists($item, $this->providers)) {
-                throw new ComponentException(sprintf('"%s" is not a recognized video url provider.', $item));
-            }
-
-            array_push($result, $item);
+        $providerKey = strtolower($provider);
+        if (null !== $provider && !isset($this->providers[$providerKey])) {
+            throw new ComponentException(sprintf('"%s" is not a recognized video URL provider.', $provider));
         }
 
-        return $result;
+        $this->provider = $provider;
+        $this->providerKey = strtolower($provider);
     }
 
     /**
-     * createRules
-     *
-     * @return void
-     */
-    private function createRules()
-    {
-        $providers = count($this->provider) === 0 ? array_keys($this->providers) :  $this->provider;
-
-        foreach($providers as $provider)
-        {
-            $this->addRule(new Regex($this->providers[$provider]));
-        }
-    }
-
-    /**
-     * validate
-     *
-     * @param mixed $input
-     *
-     * @return bool
+     * {@inheritdoc}
      */
     public function validate($input)
     {
-        $url = new Url();
+        if (isset($this->providers[$this->providerKey])) {
+            return (preg_match($this->providers[$this->providerKey], $input) > 0);
+        }
 
-        return !empty($input) && $url->validate($input) && parent::validate($input);
+        foreach ($this->providers as $pattern) {
+            if (0 === preg_match($pattern, $input)) {
+                continue;
+            }
+
+            return true;
+        }
+
+        return false;
     }
 }
