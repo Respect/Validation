@@ -26,3 +26,9 @@ The providers accepted are:
 - vimeo
 
 Message template for this validator includes `{{provider}}`.
+
+
+***
+See also:
+
+  * [Url](Url.md)
