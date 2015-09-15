@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 
-class VideoUrl
+class VideoUrl extends AbstractRule
 {
     /**
      * @var string

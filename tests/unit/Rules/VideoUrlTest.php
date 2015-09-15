@@ -79,4 +79,24 @@ class VideoUrlTest extends \PHPUnit_Framework_TestCase
 
         $this->assertFalse($rule->validate($input));
     }
+
+    /**
+     * @expectedException Respect\Validation\Exceptions\VideoUrlException
+     * @expectedExceptionMessage "http://exemplo.com" must be a valid video URL
+     */
+    public function testUseAProperExceptionMessageWhenVideoUrlIsNotValid()
+    {
+        $rule = new VideoUrl();
+        $rule->check('http://exemplo.com');
+    }
+
+    /**
+     * @expectedException Respect\Validation\Exceptions\VideoUrlException
+     * @expectedExceptionMessage "http://exemplo.com" must be a valid "YouTube" video URL
+     */
+    public function testUseAProperExceptionMessageWhenVideoUrlIsNotValidForTheDefinedProvider()
+    {
+        $rule = new VideoUrl('YouTube');
+        $rule->check('http://exemplo.com');
+    }
 }
