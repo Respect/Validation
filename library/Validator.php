@@ -118,6 +118,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator uppercase()
  * @method static Validator url()
  * @method static Validator version()
+ * @method static Validator videoUrl()
  * @method static Validator vowel()
  * @method static Validator when(Validatable $if, Validatable $then, Validatable $when = null)
  * @method static Validator writable()
