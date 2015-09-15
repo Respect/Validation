@@ -18,17 +18,17 @@ class VideoUrl extends AbstractRule
     /**
      * @var string
      */
-    public $provider;
+    public $service;
 
     /**
      * @var string
      */
-    private $providerKey;
+    private $serviceKey;
 
     /**
      * @var array
      */
-    private $providers = array(
+    private $services = array(
         'youtube' => '@^(http|https)://(www\.)?(?:youtube\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^\"&?/]{11})@i',
         'vimeo' => '@^(http|https)://(www\.)?(player\.)?(vimeo\.com/)((channels/[A-z]+/)|(groups/[A-z]+/videos/)|(video/))?([0-9]+)@i',
     );
@@ -36,17 +36,17 @@ class VideoUrl extends AbstractRule
     /**
      * Create a new instance VideoUrl
      *
-     * @param string $provider
+     * @param string $service
      */
-    public function __construct($provider = null)
+    public function __construct($service = null)
     {
-        $providerKey = strtolower($provider);
-        if (null !== $provider && !isset($this->providers[$providerKey])) {
-            throw new ComponentException(sprintf('"%s" is not a recognized video URL provider.', $provider));
+        $serviceKey = strtolower($service);
+        if (null !== $service && !isset($this->services[$serviceKey])) {
+            throw new ComponentException(sprintf('"%s" is not a recognized video service.', $service));
         }
 
-        $this->provider = $provider;
-        $this->providerKey = strtolower($provider);
+        $this->service = $service;
+        $this->serviceKey = strtolower($service);
     }
 
     /**
@@ -54,11 +54,11 @@ class VideoUrl extends AbstractRule
      */
     public function validate($input)
     {
-        if (isset($this->providers[$this->providerKey])) {
-            return (preg_match($this->providers[$this->providerKey], $input) > 0);
+        if (isset($this->services[$this->serviceKey])) {
+            return (preg_match($this->services[$this->serviceKey], $input) > 0);
         }
 
-        foreach ($this->providers as $pattern) {
+        foreach ($this->services as $pattern) {
             if (0 === preg_match($pattern, $input)) {
                 continue;
             }

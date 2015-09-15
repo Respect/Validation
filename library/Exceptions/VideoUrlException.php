@@ -13,16 +13,16 @@ namespace Respect\Validation\Exceptions;
 
 class VideoUrlException extends ValidationException
 {
-    const PROVIDER = 1;
+    const SERVICE = 1;
 
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => '{{name}} must be a valid video URL',
-            self::PROVIDER => '{{name}} must be a valid {{provider}} video URL',
+            self::SERVICE => '{{name}} must be a valid {{service}} video URL',
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => '{{name}} must not be a valid video URL',
-            self::PROVIDER => '{{name}} must not be a valid {{provider}} video URL',
+            self::SERVICE => '{{name}} must not be a valid {{service}} video URL',
         ),
     );
 
@@ -31,8 +31,8 @@ class VideoUrlException extends ValidationException
      */
     public function chooseTemplate()
     {
-        if (false !== $this->getParam('provider')) {
-            return self::PROVIDER;
+        if (false !== $this->getParam('service')) {
+            return self::SERVICE;
         }
 
         return static::STANDARD;

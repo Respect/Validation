@@ -20,7 +20,7 @@ class VideoUrlTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @expectedException Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage "teste" is not a recognized video URL provider.
+     * @expectedExceptionMessage "teste" is not a recognized video service.
      */
     public function testShouldThrowsAnExceptionWhenProviderIsNotValid()
     {
@@ -63,9 +63,9 @@ class VideoUrlTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider validVideoUrlProvider
      */
-    public function testShouldValidateVideoUrl($provider, $input)
+    public function testShouldValidateVideoUrl($service, $input)
     {
-        $rule = new VideoUrl($provider);
+        $rule = new VideoUrl($service);
 
         $this->assertTrue($rule->validate($input));
     }
@@ -73,9 +73,9 @@ class VideoUrlTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider invalidVideoUrlProvider
      */
-    public function testShouldInvalidateNonVideoUrl($provider, $input)
+    public function testShouldInvalidateNonVideoUrl($service, $input)
     {
-        $rule = new VideoUrl($provider);
+        $rule = new VideoUrl($service);
 
         $this->assertFalse($rule->validate($input));
     }
