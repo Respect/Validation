@@ -50,13 +50,19 @@ class VideoUrl extends OneOf
      */
     private function toProvider(array $providers)
     {
-        return array_filter($providers, function($item) {
-            if(empty($item)) return false;
+        $result = array();
+
+        foreach($providers as $item) {
+            if(empty($item)) continue;
+
             if(!array_key_exists($item, $this->providers)) {
                 throw new ComponentException(sprintf('"%s" is not a recognized video url provider.', $item));
             }
-            return true;
-        });
+
+            array_push($result, $item);
+        }
+
+        return $result;
     }
 
     /**
