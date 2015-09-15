@@ -163,6 +163,7 @@
   * [Phone](Phone.md)
   * [Sf](Sf.md)
   * [Url](Url.md)
+  * [VideoUrl](VideoUrl.md)
   * [Zend](Zend.md)
 
 ## Yes/No
@@ -270,6 +271,7 @@
   * [Uppercase](Uppercase.md)
   * [Url](Url.md)
   * [Version](Version.md)
+  * [VideoUrl](VideoUrl.md)
   * [Vowel](Vowel.md)
   * [When](When.md)
   * [Writable](Writable.md)
