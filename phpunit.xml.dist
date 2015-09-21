@@ -20,6 +20,10 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="false">
             <directory>library/</directory>
+            <exclude>
+                <directory suffix=".php">library/Exceptions/SubdivisionCode</directory>
+                <directory suffix=".php">library/Rules/SubdivisionCode</directory>
+            </exclude>
         </whitelist>
     </filter>
 </phpunit>

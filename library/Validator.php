@@ -110,6 +110,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator space(string $additionalChars = null)
  * @method static Validator startsWith(mixed $startValue, bool $identical = false)
  * @method static Validator string()
+ * @method static Validator subdivisionCode(string $countryCode)
  * @method static Validator symbolicLink()
  * @method static Validator tld()
  * @method static Validator true()

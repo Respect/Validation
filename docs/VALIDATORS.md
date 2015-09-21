@@ -126,6 +126,7 @@
 
   * [CountryCode](CountryCode.md)
   * [PostalCode](PostalCode.md)
+  * [SubdivisionCode](SubdivisionCode.md)
   * [Tld](Tld.md)
 
 ## Files
@@ -263,6 +264,7 @@
   * [Space](Space.md)
   * [StartsWith](StartsWith.md)
   * [String](String.md)
+  * [SubdivisionCode](SubdivisionCode.md)
   * [SymbolicLink](SymbolicLink.md)
   * [Tld](Tld.md)
   * [True](True.md)
