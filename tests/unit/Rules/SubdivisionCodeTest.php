@@ -20,8 +20,8 @@ use PHPUnit_Framework_TestCase;
 class SubdivisionCodeTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @expectedException        Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage "whatever" is not a valid entry for ISO 3166-2
+     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedExceptionMessage "whatever" is not a valid country code in ISO 3166-2
      */
     public function testShouldThrowsExceptionWhenInvalidFormat()
     {
@@ -29,8 +29,8 @@ class SubdivisionCodeTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException        Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage "JK" is not a valid entry for ISO 3166-2
+     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedExceptionMessage "JK" is not a valid country code in ISO 3166-2
      */
     public function testShouldNotAcceptWrongNamesOnConstructor()
     {
@@ -41,7 +41,7 @@ class SubdivisionCodeTest extends PHPUnit_Framework_TestCase
     {
         $countrySubdivision = new SubdivisionCode('US');
 
-        $this->assertEquals('US', $countrySubdivision->entry);
+        $this->assertEquals('US', $countrySubdivision->countryCode);
     }
 
     public function providerForValidSubdivisionCodeInformation()
@@ -58,9 +58,9 @@ class SubdivisionCodeTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidSubdivisionCodeInformation
      */
-    public function testShouldValidateValidSubdivisionCodeInformation($entry, $input)
+    public function testShouldValidateValidSubdivisionCodeInformation($countryCode, $input)
     {
-        $countrySubdivision = new SubdivisionCode($entry);
+        $countrySubdivision = new SubdivisionCode($countryCode);
 
         $this->assertTrue($countrySubdivision->validate($input));
     }
@@ -77,16 +77,16 @@ class SubdivisionCodeTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForInvalidSubdivisionCodeInformation
      */
-    public function testShouldNotValidateInvalidSubdivisionCodeInformation($entry, $input)
+    public function testShouldNotValidateInvalidSubdivisionCodeInformation($countryCode, $input)
     {
-        $countrySubdivision = new SubdivisionCode($entry);
+        $countrySubdivision = new SubdivisionCode($countryCode);
 
         $this->assertFalse($countrySubdivision->validate($input));
     }
 
     /**
-     * @expectedException        Respect\Validation\Exceptions\SubdivisionCode\BrSubdivisionCodeException
-     * @expectedExceptionMessage "CA" must be a country subdivision of Brazil
+     * @expectedException Respect\Validation\Exceptions\SubdivisionCode\BrSubdivisionCodeException
+     * @expectedExceptionMessage "CA" must be a subdivision code of Brazil
      */
     public function testShouldThrowsSubdivisionCodeException()
     {
