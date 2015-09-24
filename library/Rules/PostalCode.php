@@ -174,6 +174,8 @@ class PostalCode extends Regex
         'ZM' => "/^(\d{5})$/",
     );
 
+    public $countryCode;
+
     public function __construct($countryCode, CountryCode $countryCodeRule = null)
     {
         $countryCodeRule = $countryCodeRule ?: new CountryCode();
@@ -186,6 +188,8 @@ class PostalCode extends Regex
         if (isset($this->postalCodes[$upperCountryCode])) {
             $regex = $this->postalCodes[$upperCountryCode];
         }
+
+        $this->countryCode = $countryCode;
 
         parent::__construct($regex);
     }

@@ -103,6 +103,16 @@ class PostalCodeTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($rule->validate($postalCode));
     }
 
+    /**
+     * @expectedException Respect\Validation\Exceptions\PostalCodeException
+     * @expectedExceptionMessage "02179-000" must be a valid postal code on "US"
+     */
+    public function testShouldThrowsPostalCodeExceptionWhenValidationFails()
+    {
+        $rule = new PostalCode('US');
+        $rule->check('02179-000');
+    }
+
     public function invalidPostalCodesProvider()
     {
         return array(

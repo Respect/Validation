@@ -10,6 +10,8 @@ v::numeric()->postalCode('BR')->validate('02179-000'); //true
 v::numeric()->postalCode('US')->validate('02179-000'); //false
 ```
 
+Message template for this validator includes `{{countryCode}}`.
+
 Extracted from [GeoNames](http://www.geonames.org/).
 
 ***
