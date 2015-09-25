@@ -187,6 +187,23 @@ For all messages, the `{{name}}` and `{{input}}` variable is available for templ
 You also can use your own rules:
 
 ```php
+namespace My\Validation\Rules;
+
+use Respect\Validation\Rules\AbstractRule;
+
+class MyRule extends AbstractRule
+{
+    public function validate($input)
+    {
+        // Do something here with the $input and return a boolean value
+    }
+}
+```
+
+If you do want Validation to execute you rule (or rules) in the chain, you must
+use `v::with()` passing your rule's namespace as an argument:
+
+```php
 v::with('My\\Validation\\Rules\\');
 v::myRule(); // Try to load "My\Validation\Rules\MyRule" if any
 ```
