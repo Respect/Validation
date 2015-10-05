@@ -15,12 +15,12 @@ class NestedKeyException extends AttributeException
 {
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
-            self::NOT_PRESENT => 'Key {{name}} must be present',
-            self::INVALID => 'Key {{name}} must be valid',
+            self::NOT_PRESENT => 'No items were found for key chain {{name}}',
+            self::INVALID => 'Key chain {{name}} is not valid',
         ),
         self::MODE_NEGATIVE => array(
-            self::NOT_PRESENT => 'Key {{name}} must not be present',
-            self::INVALID => 'Key {{name}} must not be valid',
+            self::NOT_PRESENT => 'Items for key chain {{name}} must not be present',
+            self::INVALID => 'Key chain {{name}} must not be valid',
         ),
     );
 }

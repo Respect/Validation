@@ -22,6 +22,14 @@ class NestedKeyTest extends \PHPUnit_Framework_TestCase
 {
     public function testArrayWithPresentKeysWillReturnTrue()
     {
-
+        $validator = new NestedKey('bar.foo.baz');
+        $obj = array(
+            'bar' => array (
+                'foo' => array (
+                    'baz' => 'hello world!',
+                ),
+            ),
+        );
+        $validator->assert($obj);
     }
 }
