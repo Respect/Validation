@@ -70,6 +70,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator ip(mixed $ipOptions = null)
  * @method static Validator json()
  * @method static Validator key(string $reference, Validatable $referenceValidator = null, bool $mandatory = true)
+ * @method static Validator keyNested(string $reference, Validatable $referenceValidator = null, bool $mandatory = true)
  * @method static Validator keySet(Key $rule...)
  * @method static Validator leapDate(string $format)
  * @method static Validator leapYear()

@@ -12,6 +12,7 @@ All notable changes of the Respect\Validation releases are documented in this fi
 - Create "Factor" rule (#405)
 - Create "Finite" rule (#397)
 - Create "Infinite" rule (#397)
+- Create "KeyNested" rule (#429)
 - Create "KeySet" rule (#374)
 - Create "Mimetype" rule (#361)
 - Create "Optional" rule (#423)
