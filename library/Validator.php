@@ -86,6 +86,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator noneOf()
  * @method static Validator not(Validatable $rule)
  * @method static Validator notEmpty()
+ * @method static Validator notOptional()
  * @method static Validator noWhitespace()
  * @method static Validator nullValue()
  * @method static Validator numeric()
@@ -130,6 +131,23 @@ use Respect\Validation\Rules\Key;
 class Validator extends AllOf
 {
     protected static $factory;
+    protected static $optionalValues = array('');
+
+    /**
+     * @return array
+     */
+    public static function getOptionalValues()
+    {
+        return static::$optionalValues;
+    }
+
+    /**
+     * @param array $optionalValues
+     */
+    public static function setOptionalValues(array $optionalValues)
+    {
+        static::$optionalValues = $optionalValues;
+    }
 
     /**
      * @return Factory

@@ -11,9 +11,9 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Validator as v;
+use Respect\Validation\Validatable;
+use Respect\Validation\Validator;
 
 abstract class AbstractRule implements Validatable
 {
@@ -29,7 +29,7 @@ abstract class AbstractRule implements Validatable
 
     protected function isOptional($input)
     {
-        return ($input === '');
+        return in_array($input, Validator::getOptionalValues(), true);
     }
 
     public function __invoke($input)

@@ -245,6 +245,7 @@
   * [NoneOf](NoneOf.md)
   * [Not](Not.md)
   * [NotEmpty](NotEmpty.md)
+  * [NotOptional](NotOptional.md)
   * [NullValue](NullValue.md)
   * [Numeric](Numeric.md)
   * [Object](Object.md)
