@@ -122,4 +122,11 @@ class SizeTest extends PHPUnit_Framework_TestCase
         $rule = new Size('2pb');
         $rule->assert($file1Gb->url());
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $rule = new Size('2pb');
+
+        $this->assertTrue($rule->validate(''));
+    }
 }

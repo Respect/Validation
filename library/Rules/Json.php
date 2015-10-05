@@ -15,6 +15,10 @@ class Json extends AbstractRule
 {
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         if (is_string($input)
             && strtolower($input) == 'null') {
             return true;

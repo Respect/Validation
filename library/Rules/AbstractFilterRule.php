@@ -35,12 +35,16 @@ abstract class AbstractFilterRule extends AbstractRule
 
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         if (!is_scalar($input)) {
             return false;
         }
 
         $cleanInput = $this->filter((string) $input);
 
-        return $cleanInput === '' || $this->validateClean($cleanInput);
+        return $this->isOptional($cleanInput) || $this->validateClean($cleanInput);
     }
 }

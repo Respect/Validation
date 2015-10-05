@@ -41,6 +41,7 @@ class HexRgbColorTest extends \PHPUnit_Framework_TestCase
     public function providerForValidHexRgbColor()
     {
         return array(
+            array(''),
             array('#000'),
             array('#00000F'),
             array('#123'),

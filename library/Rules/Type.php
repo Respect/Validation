@@ -43,6 +43,10 @@ class Type extends AbstractRule
 
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         $lowerType = strtolower($this->type);
         if ('callable' === $lowerType) {
             return is_callable($input);

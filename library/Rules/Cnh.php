@@ -15,6 +15,10 @@ class Cnh extends AbstractRule
 {
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         $ret = false;
 
         if ((strlen($input = preg_replace('/[^\d]/', '', $input)) == 11)

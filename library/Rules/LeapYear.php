@@ -17,6 +17,10 @@ class LeapYear extends AbstractRule
 {
     public function validate($year)
     {
+        if ($this->isOptional($year)) {
+            return true;
+        }
+
         if (is_numeric($year)) {
             $year = (int) $year;
         } elseif (is_string($year)) {

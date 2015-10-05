@@ -32,6 +32,10 @@ class Email extends AbstractRule
 
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         $emailValidator = $this->getEmailValidator();
         if (null !== $emailValidator) {
             return $emailValidator->isValid($input);

@@ -28,6 +28,10 @@ class NfeAccessKey extends AbstractRule
      */
     public function validate($aK)
     {
+        if ($this->isOptional($aK)) {
+            return true;
+        }
+
         if (strlen($aK) !== 44) {
             return false;
         }

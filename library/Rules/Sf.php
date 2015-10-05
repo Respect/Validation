@@ -65,6 +65,10 @@ class Sf extends AbstractRule
 
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         $violations = $this->returnViolationsForConstraint($input, $this->constraint);
         if (count($violations)) {
             return false;

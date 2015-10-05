@@ -25,6 +25,7 @@ class ExtensionTest extends PHPUnit_Framework_TestCase
     public function providerValidExtension()
     {
         return array(
+            array('', 'whatever'),
             array('filename.txt', 'txt'),
             array('filename.jpg', 'jpg'),
             array('filename.inc.php', 'php'),

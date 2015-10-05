@@ -52,6 +52,10 @@ class GermanBankAccount extends AbstractRule
      */
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         return $this->bav->isValidBankAccount($this->bank, $input);
     }
 }

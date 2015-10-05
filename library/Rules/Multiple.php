@@ -22,6 +22,10 @@ class Multiple extends AbstractRule
 
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         if ($this->multipleOf == 0) {
             return ($input == 0);
         }

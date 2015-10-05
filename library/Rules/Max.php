@@ -15,6 +15,10 @@ class Max extends AbstractInterval
 {
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         if ($this->inclusive) {
             return $this->filterInterval($input) <= $this->filterInterval($this->interval);
         }

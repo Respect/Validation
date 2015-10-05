@@ -31,6 +31,7 @@ class TrueTest extends \PHPUnit_Framework_TestCase
     public function validTrueProvider()
     {
         return array(
+            array(''),
             array(true),
             array(1),
             array('1'),

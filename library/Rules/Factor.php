@@ -33,6 +33,10 @@ class Factor extends AbstractRule
 
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         // Every integer is a factor of zero, and zero is the only integer that
         // has zero for a factor.
         if ($this->dividend === 0) {

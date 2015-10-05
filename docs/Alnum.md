@@ -23,10 +23,10 @@ v::alnum()->noWhitespace->validate('foo 123'); //false
 ```
 
 By default empty values are allowed, if you want
-to invalidate them, add `->notEmpty()` to the chain:
+to invalidate them, add `->notOptional()` to the chain:
 
 ```php
-v::alnum()->notEmpty()->validate(''); //false
+v::alnum()->notOptional()->validate(''); //false
 ```
 
 You can restrict case using the `->lowercase()` and

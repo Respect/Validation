@@ -31,6 +31,7 @@ class FalseTest extends \PHPUnit_Framework_TestCase
     public function validFalseProvider()
     {
         return array(
+            array(''),
             array(false),
             array(0),
             array('0'),

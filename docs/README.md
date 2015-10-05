@@ -55,15 +55,24 @@ validated object as the first node in the chain.
 
 ## Input optional
 
-All validators treat input as optional and will accept empty string input as valid,
-unless otherwise stated in the documentation.
+All validators treat input as optional and will accept, by default, an empty
+string (`''`) input as valid, unless otherwise stated in the documentation.
 
-We use the `v:notEmpty()` validator prefixed to disallow empty input and effectively
+We use the `v:notOptional()` validator prefixed to disallow empty input and effectively
 define the field as mandatory as input will be required or validation will fail.
 
 ```php
-v::string()->notEmpty()->validate(''); //false input required
+v::string()->notOptional()->validate(''); //false input required
 ```
+
+We know there are cases when you want to consider other values as optional, for
+that reason we allow you to overwrite what is considered as optional.
+
+```php
+v::setOptionalValues(array(null, ''));
+```
+
+With the code above `null` and an empty string (`''`) are considered optional values.
 
 ## Negating Rules
 
@@ -147,7 +156,7 @@ It will return all messages from the rules that did not pass the validation.
 try {
     Validator::key('username', Validator::length(2, 32))
              ->key('birthdate', Validator::date())
-             ->key('password', Validator::notEmpty())
+             ->key('password', Validator::notOptional())
              ->key('email', Validator::email())
              ->assert($input);
 } catch (NestedValidationExceptionInterface $e) {
@@ -195,6 +204,10 @@ class MyRule extends AbstractRule
 {
     public function validate($input)
     {
+        if ($this->isOptional($input)) { // Handles optional inputs
+            return true;
+        }
+
         // Do something here with the $input and return a boolean value
     }
 }

@@ -53,6 +53,7 @@ class FiniteTest extends \PHPUnit_Framework_TestCase
     public function providerForFinite()
     {
         return array(
+            array(''),
             array('123456'),
             array(-9),
             array(0),

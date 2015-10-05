@@ -15,6 +15,10 @@ class Float extends AbstractRule
 {
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         return is_float(filter_var($input, FILTER_VALIDATE_FLOAT));
     }
 }

@@ -15,6 +15,10 @@ class Executable extends AbstractRule
 {
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         if ($input instanceof \SplFileInfo) {
             return $input->isExecutable();
         }

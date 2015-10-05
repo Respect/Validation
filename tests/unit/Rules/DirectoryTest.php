@@ -24,7 +24,7 @@ class DirectoryTest extends \PHPUnit_Framework_TestCase
     public function testValidDirectoryShouldReturnTrue($input)
     {
         $rule = new Directory();
-        $this->assertTrue($rule->__invoke($input));
+        $this->assertTrue($rule->validate($input));
         $this->assertTrue($rule->assert($input));
         $this->assertTrue($rule->check($input));
     }
@@ -36,7 +36,7 @@ class DirectoryTest extends \PHPUnit_Framework_TestCase
     public function testInvalidDirectoryShouldThrowException($input)
     {
         $rule = new Directory();
-        $this->assertFalse($rule->__invoke($input));
+        $this->assertFalse($rule->validate($input));
         $this->assertFalse($rule->assert($input));
         $this->assertFalse($rule->check($input));
     }

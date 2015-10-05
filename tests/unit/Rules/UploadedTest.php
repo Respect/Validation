@@ -67,4 +67,11 @@ class UploadedTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($rule->validate($object));
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $rule = new Uploaded();
+
+        $this->assertTrue($rule->validate(''));
+    }
 }

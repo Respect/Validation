@@ -52,4 +52,9 @@ class LeapDateTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertFalse($this->leapDateValidator->validate(array()));
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $this->assertTrue($this->leapDateValidator->validate(''));
+    }
 }

@@ -58,4 +58,16 @@ class CallTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($v->validate('test'));
         $this->assertFalse($v->assert('test'));
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $rule = new Call(
+            function () {
+                return array();
+            },
+            new String()
+        );
+
+        $this->assertTrue($rule->validate(''));
+    }
 }

@@ -15,6 +15,10 @@ class NullValue extends NotEmpty
 {
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         return is_null($input);
     }
 }

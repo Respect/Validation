@@ -132,6 +132,13 @@ class ZendTest extends \PHPUnit_Framework_TestCase
         $v = new Zend('StringLength', array('min' => 10, 'max' => 25));
         $this->assertFalse($v->assert('aw'));
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $rule = new Zend('Date');
+
+        $this->assertTrue($rule->validate(''));
+    }
 }
 
 // Stubs

@@ -94,4 +94,13 @@ class EachTest extends \PHPUnit_Framework_TestCase
         $result = $v->assert(123);
         $this->assertFalse($result);
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $rule = new Each(new Int());
+
+        $this->assertTrue($rule->validate(''));
+        $this->assertTrue($rule->assert(''));
+        $this->assertTrue($rule->check(''));
+    }
 }

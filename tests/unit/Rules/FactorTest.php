@@ -28,7 +28,7 @@ class FactorTest extends \PHPUnit_Framework_TestCase
     public function testValidFactorShouldReturnTrue($dividend, $input)
     {
         $min = new Factor($dividend);
-        $this->assertTrue($min->__invoke($input));
+        $this->assertTrue($min->validate($input));
         $this->assertTrue($min->check($input));
         $this->assertTrue($min->assert($input));
     }
@@ -44,7 +44,7 @@ class FactorTest extends \PHPUnit_Framework_TestCase
         );
 
         $min = new Factor($dividend);
-        $this->assertFalse($min->__invoke($input));
+        $this->assertFalse($min->validate($input));
         $this->assertFalse($min->assert($input));
     }
 
@@ -61,6 +61,13 @@ class FactorTest extends \PHPUnit_Framework_TestCase
         // It is enough to simply create a new Factor to trigger the dividend
         // exceptions in __construct.
         new Factor($dividend);
+    }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $rule = new Factor(3);
+
+        $this->assertTrue($rule->validate(''));
     }
 
     public function providerForValidFactor()

@@ -62,6 +62,10 @@ class Zend extends AbstractRule
 
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         $validator = clone $this->zendValidator;
 
         return $validator->isValid($input);

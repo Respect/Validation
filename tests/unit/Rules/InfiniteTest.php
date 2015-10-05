@@ -53,6 +53,7 @@ class InfiniteTest extends \PHPUnit_Framework_TestCase
     public function providerForInfinite()
     {
         return array(
+            array(''),
             array(INF),
             array(INF * -1),
         );

@@ -36,6 +36,10 @@ class CountryCode extends AbstractRule
 
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         return in_array(strtoupper($input), $this->countryCodeList);
     }
 }

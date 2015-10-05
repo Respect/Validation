@@ -68,4 +68,11 @@ class FileTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($rule->validate($object));
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $rule = new File();
+
+        $this->assertTrue($rule->validate(''));
+    }
 }

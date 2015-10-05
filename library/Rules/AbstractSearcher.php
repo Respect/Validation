@@ -36,6 +36,10 @@ abstract class AbstractSearcher extends AbstractRule
 
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         if ($this->compareIdentical) {
             return $this->validateIdentical($input);
         }

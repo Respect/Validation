@@ -46,4 +46,13 @@ class BankAccountTest extends LocaleTestCase
 
         $this->assertInstanceOf('Respect\Validation\Rules\Locale\GermanBankAccount', $rule->getValidatable());
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $countryCode = 'DE';
+        $bank = '123456';
+        $rule = new BankAccount($countryCode, $bank);
+
+        $this->assertTrue($rule->validate(''));
+    }
 }

@@ -30,7 +30,7 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
      */
     public function testObject($input)
     {
-        $this->assertTrue($this->object->__invoke($input));
+        $this->assertTrue($this->object->validate($input));
         $this->assertTrue($this->object->assert($input));
         $this->assertTrue($this->object->check($input));
     }
@@ -41,7 +41,7 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
      */
     public function testNotObject($input)
     {
-        $this->assertFalse($this->object->__invoke($input));
+        $this->assertFalse($this->object->validate($input));
         $this->assertFalse($this->object->assert($input));
     }
 

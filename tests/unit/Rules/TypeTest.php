@@ -77,6 +77,7 @@ class TypeTest extends \PHPUnit_Framework_TestCase
     public function providerForValidType()
     {
         return array(
+            array('array', ''),
             array('array', array()),
             array('bool', true),
             array('boolean', false),

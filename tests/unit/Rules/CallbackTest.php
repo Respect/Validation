@@ -81,4 +81,11 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
         $v = new Callback(new \stdClass());
         $this->assertTrue($v->assert('w poiur'));
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $rule = new Callback(function() { return false; });
+
+        $this->assertTrue($rule->validate(''));
+    }
 }

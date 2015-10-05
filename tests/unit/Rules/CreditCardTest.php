@@ -30,7 +30,7 @@ class CreditCardTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidCreditCardsShouldReturnTrue($input)
     {
-        $this->assertTrue($this->creditCardValidator->__invoke($input));
+        $this->assertTrue($this->creditCardValidator->validate($input));
         $this->assertTrue($this->creditCardValidator->assert($input));
         $this->assertTrue($this->creditCardValidator->check($input));
     }
@@ -41,8 +41,13 @@ class CreditCardTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidCreditCardsShouldThrowCreditCardException($input)
     {
-        $this->assertFalse($this->creditCardValidator->__invoke($input));
+        $this->assertFalse($this->creditCardValidator->validate($input));
         $this->assertFalse($this->creditCardValidator->assert($input));
+    }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $this->assertTrue($this->creditCardValidator->validate(''));
     }
 
     public function providerForCreditCard()

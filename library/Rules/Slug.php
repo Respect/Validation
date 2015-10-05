@@ -15,6 +15,10 @@ class Slug extends AbstractRule
 {
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         if (strstr($input, '--')) {
             return false;
         }

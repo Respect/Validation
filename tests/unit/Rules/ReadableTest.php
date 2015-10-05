@@ -68,4 +68,11 @@ class ReadableTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($rule->validate($object));
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $rule = new Readable();
+
+        $this->assertTrue($rule->validate(''));
+    }
 }

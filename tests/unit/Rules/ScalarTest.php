@@ -53,6 +53,7 @@ class ScalarTest extends \PHPUnit_Framework_TestCase
     public function providerForScalar()
     {
         return array(
+            array(''),
             array('6'),
             array('String'),
             array(1.0),

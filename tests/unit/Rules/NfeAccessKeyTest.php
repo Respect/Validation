@@ -31,7 +31,7 @@ class NfeAccessKeyTest extends \PHPUnit_Framework_TestCase
     public function testValidAccessKey($aK)
     {
         $this->assertTrue($this->nfeValidator->assert($aK));
-        $this->assertTrue($this->nfeValidator->__invoke($aK));
+        $this->assertTrue($this->nfeValidator->validate($aK));
         $this->assertTrue($this->nfeValidator->check($aK));
     }
 
@@ -56,6 +56,7 @@ class NfeAccessKeyTest extends \PHPUnit_Framework_TestCase
     public function validAccessKeyProvider()
     {
         return array(
+            array(''),
             array('52060433009911002506550120000007800267301615'),
         );
     }

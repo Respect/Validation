@@ -24,6 +24,10 @@ class Contains extends AbstractRule
 
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         if ($this->identical) {
             return $this->validateIdentical($input);
         }
