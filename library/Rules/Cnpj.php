@@ -15,6 +15,10 @@ class Cnpj extends AbstractRule
 {
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         //Code ported from jsfromhell.com
         $c = preg_replace('/\D/', '', $input);
         $b = array(6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2);

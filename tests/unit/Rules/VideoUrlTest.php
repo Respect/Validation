@@ -30,6 +30,9 @@ class VideoUrlTest extends \PHPUnit_Framework_TestCase
     public function validVideoUrlProvider()
     {
         return array(
+            array('vimeo', ''),
+            array('youtube', ''),
+            array(null, ''),
             array('vimeo', 'https://player.vimeo.com/video/71787467'),
             array('vimeo', 'https://vimeo.com/71787467'),
             array('youtube', 'https://www.youtube.com/embed/netHLn9TScY'),

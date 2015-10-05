@@ -15,6 +15,10 @@ class False extends AbstractRule
 {
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         if (false === $input) { // PHP 5.3 workaround
             return true;
         }

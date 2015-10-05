@@ -49,6 +49,10 @@ class HelloWorld extends AbstractRule
 {
     public function validate($input)
     {
+        if ($this->isOptional($input)) { // Handles optional inputs
+            return true;
+        }
+
         return $input === 'Hello World';
     }
 }

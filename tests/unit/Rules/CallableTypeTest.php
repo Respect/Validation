@@ -50,6 +50,13 @@ class CallableTypeTest extends \PHPUnit_Framework_TestCase
         $this->rule->check(__FUNCTION__);
     }
 
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $rule = new CallableType();
+
+        $this->assertTrue($rule->validate(''));
+    }
+
     public function providerForCallable()
     {
         return array(

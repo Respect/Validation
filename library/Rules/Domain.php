@@ -61,6 +61,10 @@ class Domain extends AbstractComposite
 
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         foreach ($this->checks as $chk) {
             if (!$chk->validate($input)) {
                 return false;
@@ -83,6 +87,10 @@ class Domain extends AbstractComposite
 
     public function assert($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         $e = array();
         foreach ($this->checks as $chk) {
             $this->collectAssertException($e, $chk, $input);
@@ -114,6 +122,10 @@ class Domain extends AbstractComposite
 
     public function check($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         foreach ($this->checks as $chk) {
             $chk->check($input);
         }

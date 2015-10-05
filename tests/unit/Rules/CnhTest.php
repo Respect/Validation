@@ -31,7 +31,7 @@ class CnhTest extends \PHPUnit_Framework_TestCase
     public function testValidCnh($cnh)
     {
         $this->assertTrue($this->cnhValidator->assert($cnh));
-        $this->assertTrue($this->cnhValidator->__invoke($cnh));
+        $this->assertTrue($this->cnhValidator->validate($cnh));
         $this->assertTrue($this->cnhValidator->check($cnh));
     }
 

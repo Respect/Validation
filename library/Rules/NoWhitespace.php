@@ -15,6 +15,10 @@ class NoWhitespace extends AbstractRule
 {
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         if (is_null($input)) {
             return true;
         }

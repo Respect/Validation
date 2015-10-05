@@ -98,6 +98,10 @@ class Ip extends AbstractRule
 
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         return $this->verifyAddress($input) && $this->verifyNetwork($input);
     }
 

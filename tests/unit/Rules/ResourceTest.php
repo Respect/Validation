@@ -53,6 +53,7 @@ class ResourceTest extends \PHPUnit_Framework_TestCase
     public function providerForResource()
     {
         return array(
+            array(''),
             array(stream_context_create()),
             array(tmpfile()),
             array(xml_parser_create()),

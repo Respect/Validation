@@ -24,6 +24,10 @@ class Date extends AbstractRule
 
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         if ($input instanceof DateTime) {
             return true;
         } elseif (!is_string($input)) {

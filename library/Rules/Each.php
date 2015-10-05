@@ -28,6 +28,10 @@ class Each extends AbstractRule
 
     public function assert($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         $exceptions = array();
 
         if (!is_array($input) || $input instanceof Traversable) {
@@ -65,6 +69,10 @@ class Each extends AbstractRule
 
     public function check($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         if (empty($input)) {
             return true;
         }
@@ -88,6 +96,10 @@ class Each extends AbstractRule
 
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         if (!is_array($input) || $input instanceof Traversable) {
             return false;
         }

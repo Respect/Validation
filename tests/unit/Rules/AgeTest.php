@@ -137,4 +137,11 @@ class AgeTest extends \PHPUnit_Framework_TestCase
         $rule = new Age(18, 50);
         $rule->assert('today');
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $rule = new Age(18, 50);
+
+        $this->assertTrue($rule->validate(''));
+    }
 }

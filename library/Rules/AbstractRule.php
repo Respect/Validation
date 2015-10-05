@@ -13,6 +13,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Validator as v;
 
 abstract class AbstractRule implements Validatable
 {
@@ -26,10 +27,14 @@ abstract class AbstractRule implements Validatable
         //a constructor is required for ReflectionClass::newInstance()
     }
 
+    protected function isOptional($input)
+    {
+        return ($input === '');
+    }
+
     public function __invoke($input)
     {
-        return !is_a($this, __NAMESPACE__.'\\NotEmpty')
-            && $input === '' || $this->validate($input);
+        return $this->validate($input);
     }
 
     public function addOr()
@@ -42,9 +47,10 @@ abstract class AbstractRule implements Validatable
 
     public function assert($input)
     {
-        if ($this->__invoke($input)) {
+        if ($this->validate($input)) {
             return true;
         }
+
         throw $this->reportError($input);
     }
 

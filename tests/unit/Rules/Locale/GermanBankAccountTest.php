@@ -93,4 +93,16 @@ class GermanBankAccountTest extends LocaleTestCase
 
         $rule->check($input);
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $bank = '10000000';
+        $bav = $this->getBavMock();
+        $rule = new GermanBankAccount($bank, $bav);
+
+        $bav->expects($this->never())
+            ->method('isValidBankAccount');
+
+        $this->assertTrue($rule->validate(''));
+    }
 }

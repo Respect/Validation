@@ -82,4 +82,11 @@ EOF;
         $fantasyValue = '8GW';
         v::sf($fantasyConstraintName)->validate($fantasyValue);
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $rule = new Sf('Time');
+
+        $this->assertTrue($rule->validate(''));
+    }
 }

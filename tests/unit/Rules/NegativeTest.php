@@ -31,7 +31,7 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
     public function testNegativeShouldPass($input)
     {
         $this->assertTrue($this->negativeValidator->assert($input));
-        $this->assertTrue($this->negativeValidator->__invoke($input));
+        $this->assertTrue($this->negativeValidator->validate($input));
         $this->assertTrue($this->negativeValidator->check($input));
     }
 
@@ -41,7 +41,7 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
      */
     public function testNotNegativeNumbersShouldThrowNegativeException($input)
     {
-        $this->assertFalse($this->negativeValidator->__invoke($input));
+        $this->assertFalse($this->negativeValidator->validate($input));
         $this->assertFalse($this->negativeValidator->assert($input));
     }
 

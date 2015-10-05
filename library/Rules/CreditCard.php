@@ -15,6 +15,10 @@ class CreditCard extends AbstractRule
 {
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         $input = preg_replace('([^0-9])', '', $input);
         if (!empty($input)) {
             return $this->verifyMod10($input);

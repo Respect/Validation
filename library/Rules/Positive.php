@@ -15,6 +15,10 @@ class Positive extends AbstractRule
 {
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         return $input > 0;
     }
 }

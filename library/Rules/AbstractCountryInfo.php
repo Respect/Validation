@@ -44,6 +44,10 @@ abstract class AbstractCountryInfo extends AbstractRule
 
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         return in_array(strtolower($input), $this->tldList);
     }
 }

@@ -33,7 +33,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
     public function testValidDomainsShouldReturnTrue($input, $tldcheck = true)
     {
         $this->object->tldCheck($tldcheck);
-        $this->assertTrue($this->object->__invoke($input));
+        $this->assertTrue($this->object->validate($input));
         $this->assertTrue($this->object->assert($input));
         $this->assertTrue($this->object->check($input));
     }
@@ -61,6 +61,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
     public function providerForDomain()
     {
         return array(
+            array('', false),
             array('111111111111domain.local', false),
             array('111111111111.domain.local', false),
             array('example.com'),
@@ -74,7 +75,6 @@ class DomainTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(null),
-            array(''),
             array('2222222domain.local'),
             array('example--invalid.com'),
             array('-example-invalid.com'),

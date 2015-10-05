@@ -44,4 +44,12 @@ class BicTest extends LocaleTestCase
 
         $this->assertInstanceOf('Respect\Validation\Rules\Locale\GermanBic', $rule->getValidatable());
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $countryCode = 'DE';
+        $rule = new Bic($countryCode);
+
+        $this->assertTrue($rule->validate(''));
+    }
 }

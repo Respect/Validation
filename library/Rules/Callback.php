@@ -33,6 +33,10 @@ class Callback extends AbstractRule
 
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         $params = $this->arguments;
         array_unshift($params, $input);
 

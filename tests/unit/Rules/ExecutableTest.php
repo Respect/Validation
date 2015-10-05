@@ -59,4 +59,11 @@ class ExecutableTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($rule->validate($object));
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $rule = new Executable();
+
+        $this->assertTrue($rule->validate(''));
+    }
 }

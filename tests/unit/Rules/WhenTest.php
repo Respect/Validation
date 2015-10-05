@@ -65,12 +65,12 @@ class WhenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\NotEmptyException
+     * @expectedException Respect\Validation\Exceptions\DigitException
      */
     public function testWhenException_on_else()
     {
-        $v = new When(new Int(), new Between(1, 5), new NotEmpty());
-        $this->assertFalse($v->assert(''));
+        $v = new When(new Int(), new Between(1, 5), new Digit());
+        $this->assertFalse($v->assert('String'));
     }
 
     /**
@@ -83,11 +83,11 @@ class WhenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\NotEmptyException
+     * @expectedException Respect\Validation\Exceptions\DigitException
      */
     public function testWhenException_on_else_failfast()
     {
-        $v = new When(new Int(), new Between(1, 5), new NotEmpty());
-        $this->assertFalse($v->check(''));
+        $v = new When(new Int(), new Between(1, 5), new Digit());
+        $this->assertFalse($v->check('String'));
     }
 }

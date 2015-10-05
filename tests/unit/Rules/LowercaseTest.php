@@ -24,7 +24,7 @@ class LowercaseTest extends \PHPUnit_Framework_TestCase
     public function testValidLowercaseShouldReturnTrue($input)
     {
         $lowercase = new Lowercase();
-        $this->assertTrue($lowercase->__invoke($input));
+        $this->assertTrue($lowercase->validate($input));
         $this->assertTrue($lowercase->assert($input));
         $this->assertTrue($lowercase->check($input));
     }
@@ -36,7 +36,7 @@ class LowercaseTest extends \PHPUnit_Framework_TestCase
     public function testInvalidLowercaseShouldThrowException($input)
     {
         $lowercase = new Lowercase();
-        $this->assertFalse($lowercase->__invoke($input));
+        $this->assertFalse($lowercase->validate($input));
         $this->assertFalse($lowercase->assert($input));
     }
 

@@ -39,4 +39,11 @@ class RegexTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($v->validate('w poiur'));
         $this->assertFalse($v->assert('w poiur'));
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $rule = new Regex('/^.$/');
+
+        $this->assertTrue($rule->validate(''));
+    }
 }

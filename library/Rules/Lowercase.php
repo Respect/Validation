@@ -15,6 +15,10 @@ class Lowercase extends AbstractRule
 {
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         return $input === mb_strtolower($input, mb_detect_encoding($input));
     }
 }

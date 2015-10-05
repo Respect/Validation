@@ -27,6 +27,10 @@ class Instance extends AbstractRule
 
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         return $input instanceof $this->instanceName;
     }
 }

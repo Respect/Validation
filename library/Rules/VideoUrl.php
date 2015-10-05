@@ -54,6 +54,10 @@ class VideoUrl extends AbstractRule
      */
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         if (isset($this->services[$this->serviceKey])) {
             return (preg_match($this->services[$this->serviceKey], $input) > 0);
         }

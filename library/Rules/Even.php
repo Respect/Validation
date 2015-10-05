@@ -15,6 +15,10 @@ class Even extends AbstractRule
 {
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         return ((int) $input % 2 === 0);
     }
 }

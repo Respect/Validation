@@ -24,7 +24,7 @@ class EndsWithTest extends \PHPUnit_Framework_TestCase
     public function testStringsEndingWithExpectedValueShouldPass($start, $input)
     {
         $v = new EndsWith($start);
-        $this->assertTrue($v->__invoke($input));
+        $this->assertTrue($v->validate($input));
         $this->assertTrue($v->check($input));
         $this->assertTrue($v->assert($input));
     }
@@ -36,7 +36,7 @@ class EndsWithTest extends \PHPUnit_Framework_TestCase
     public function testStringsNotEndingWithExpectedValueShouldNotPass($start, $input, $caseSensitive = false)
     {
         $v = new EndsWith($start, $caseSensitive);
-        $this->assertFalse($v->__invoke($input));
+        $this->assertFalse($v->validate($input));
         $this->assertFalse($v->assert($input));
     }
 

@@ -33,6 +33,10 @@ class Base extends AbstractRule
 
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         $valid = substr($this->chars, 0, $this->base);
 
         return (boolean) preg_match("@^[$valid]+$@", (string) $input);

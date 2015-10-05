@@ -15,6 +15,10 @@ class PrimeNumber extends AbstractRule
 {
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         if (!is_numeric($input) || $input <= 1) {
             return false;
         }

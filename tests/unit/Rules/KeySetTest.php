@@ -172,4 +172,13 @@ class KeySetTest extends PHPUnit_Framework_TestCase
         $keySet = new KeySet($key1, $key2);
         $keySet->assert($input);
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $key1 = new Key('foo', new AlwaysInvalid(), true);
+
+        $rule = new KeySet($key1);
+
+        $this->assertTrue($rule->validate(''));
+    }
 }

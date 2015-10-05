@@ -15,6 +15,10 @@ class HexRgbColor extends Xdigit
 {
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         if (!is_string($input)) {
             return false;
         }

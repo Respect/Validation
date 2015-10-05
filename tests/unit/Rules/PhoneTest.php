@@ -30,7 +30,7 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidPhoneShouldReturnTrue($input)
     {
-        $this->assertTrue($this->phoneValidator->__invoke($input));
+        $this->assertTrue($this->phoneValidator->validate($input));
         $this->assertTrue($this->phoneValidator->assert($input));
         $this->assertTrue($this->phoneValidator->check($input));
     }
@@ -41,7 +41,7 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidPhoneShouldThrowPhoneException($input)
     {
-        $this->assertFalse($this->phoneValidator->__invoke($input));
+        $this->assertFalse($this->phoneValidator->validate($input));
         $this->assertFalse($this->phoneValidator->assert($input));
     }
 

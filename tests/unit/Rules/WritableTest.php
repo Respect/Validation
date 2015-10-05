@@ -68,4 +68,11 @@ class WritableTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($rule->validate($object));
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $rule = new Writable();
+
+        $this->assertTrue($rule->validate(''));
+    }
 }

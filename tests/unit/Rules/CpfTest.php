@@ -68,6 +68,11 @@ class CpfTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->cpfValidator->assert($input));
     }
 
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $this->assertTrue($this->cpfValidator->validate(''));
+    }
+
     public function providerValidFormattedCpf()
     {
         return array(

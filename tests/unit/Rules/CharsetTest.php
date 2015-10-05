@@ -24,7 +24,7 @@ class CharsetTest extends \PHPUnit_Framework_TestCase
     public function testValidDataWithCharsetShouldReturnTrue($charset, $input)
     {
         $validator = new Charset($charset);
-        $this->assertTrue($validator->__invoke($input));
+        $this->assertTrue($validator->validate($input));
     }
 
     /**
@@ -34,7 +34,7 @@ class CharsetTest extends \PHPUnit_Framework_TestCase
     public function testInvalidCharsetShouldFailAndThrowCharsetException($charset, $input)
     {
         $validator = new Charset($charset);
-        $this->assertFalse($validator->__invoke($input));
+        $this->assertFalse($validator->validate($input));
         $this->assertFalse($validator->assert($input));
     }
 

@@ -27,23 +27,21 @@ class LeapYearTest extends \PHPUnit_Framework_TestCase
         $this->leapYearValidator = new LeapYear();
     }
 
-    public function testValidLeapDate()
+    public function testValidLeapYear()
     {
-        $this->assertTrue($this->leapYearValidator->__invoke(''));
-        $this->assertTrue($this->leapYearValidator->__invoke('2008'));
-        $this->assertTrue($this->leapYearValidator->__invoke('2008-02-29'));
-        $this->assertTrue($this->leapYearValidator->__invoke(2008));
-        $this->assertTrue($this->leapYearValidator->__invoke(
-            new DateTime('2008-02-29')));
+        $this->assertTrue($this->leapYearValidator->validate(''));
+        $this->assertTrue($this->leapYearValidator->validate('2008'));
+        $this->assertTrue($this->leapYearValidator->validate('2008-02-29'));
+        $this->assertTrue($this->leapYearValidator->validate(2008));
+        $this->assertTrue($this->leapYearValidator->validate(new DateTime('2008-02-29')));
     }
 
-    public function testInvalidLeapDate()
+    public function testInvalidLeapYear()
     {
-        $this->assertFalse($this->leapYearValidator->__invoke('2009'));
-        $this->assertFalse($this->leapYearValidator->__invoke('2009-02-29'));
-        $this->assertFalse($this->leapYearValidator->__invoke(2009));
-        $this->assertFalse($this->leapYearValidator->__invoke(
-            new DateTime('2009-02-29')));
-        $this->assertFalse($this->leapYearValidator->__invoke(array()));
+        $this->assertFalse($this->leapYearValidator->validate('2009'));
+        $this->assertFalse($this->leapYearValidator->validate('2009-02-29'));
+        $this->assertFalse($this->leapYearValidator->validate(2009));
+        $this->assertFalse($this->leapYearValidator->validate(new DateTime('2009-02-29')));
+        $this->assertFalse($this->leapYearValidator->validate(array()));
     }
 }

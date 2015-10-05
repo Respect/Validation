@@ -80,4 +80,15 @@ class GermanBicTest extends LocaleTestCase
 
         $rule->check($input);
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $bav = $this->getBavMock();
+        $rule = new GermanBic($bav);
+
+        $bav->expects($this->never())
+            ->method('isValidBIC');
+
+        $this->assertTrue($rule->validate(''));
+    }
 }

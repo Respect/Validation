@@ -195,6 +195,10 @@ class MyRule extends AbstractRule
 {
     public function validate($input)
     {
+        if ($this->isOptional($input)) { // Handles optional inputs
+            return true;
+        }
+
         // Do something here with the $input and return a boolean value
     }
 }

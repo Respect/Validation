@@ -102,4 +102,11 @@ class MimetypeTest extends PHPUnit_Framework_TestCase
         $rule = new Mimetype('application/json');
         $rule->check(__FILE__);
     }
+
+    public function testShouldAcceptEmptyStringAsOptionalInput()
+    {
+        $rule = new Mimetype('application/octet-stream');
+
+        $this->assertTrue($rule->validate(''));
+    }
 }

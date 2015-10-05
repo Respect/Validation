@@ -24,7 +24,7 @@ class VersionTest extends \PHPUnit_Framework_TestCase
     public function testValidVersionShouldReturnTrue($input)
     {
         $rule = new Version();
-        $this->assertTrue($rule->__invoke($input));
+        $this->assertTrue($rule->validate($input));
         $this->assertTrue($rule->assert($input));
         $this->assertTrue($rule->check($input));
     }
@@ -36,7 +36,7 @@ class VersionTest extends \PHPUnit_Framework_TestCase
     public function testInvalidVersionShouldThrowException($input)
     {
         $rule = new Version();
-        $this->assertFalse($rule->__invoke($input));
+        $this->assertFalse($rule->validate($input));
         $this->assertFalse($rule->assert($input));
     }
 

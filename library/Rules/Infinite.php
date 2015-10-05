@@ -21,6 +21,10 @@ class Infinite extends AbstractRule
      */
     public function validate($input)
     {
+        if ($this->isOptional($input)) {
+            return true;
+        }
+
         return is_numeric($input) && is_infinite($input);
     }
 }
