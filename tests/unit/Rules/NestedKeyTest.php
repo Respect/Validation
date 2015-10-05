@@ -26,11 +26,11 @@ class NestedKeyTest extends \PHPUnit_Framework_TestCase
         $halfPathValidator = new NestedKey('bar.foo');
         $dirtyPathValidator = new NestedKey('bar.foooo.');
         $obj = array(
-            'bar' => array (
-                'foo' => array (
+            'bar' => array(
+                'foo'   => array(
                     'baz' => 'hello world!',
                 ),
-                'foooo' => array (
+                'foooo' => array(
                     'boooo' => 321,
                 ),
             ),
@@ -55,11 +55,11 @@ class NestedKeyTest extends \PHPUnit_Framework_TestCase
         $halfPathValidator = new NestedKey('bar.foo');
         $dirtyPathValidator = new NestedKey('bar.foooo.');
         $obj = (object) array(
-            'bar' => (object) array (
-                'foo' => (object) array (
+            'bar' => (object) array(
+                'foo'   => (object) array(
                     'baz' => 'hello world!',
                 ),
-                'foooo' => (object) array (
+                'foooo' => (object) array(
                     'boooo' => 321,
                 ),
             ),
@@ -76,5 +76,115 @@ class NestedKeyTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($dirtyPathValidator->assert($obj));
         $this->assertTrue($dirtyPathValidator->check($obj));
         $this->assertTrue($dirtyPathValidator->validate($obj));
+    }
+
+    public function testEmptyInputMustReturnTrue()
+    {
+        $fullPathValidator = new NestedKey('bar.foo.baz');
+        $halfPathValidator = new NestedKey('bar.foo');
+        $dirtyPathValidator = new NestedKey('bar.foooo.');
+        $obj = '';
+
+        $this->assertTrue($fullPathValidator->assert($obj));
+        $this->assertTrue($fullPathValidator->check($obj));
+        $this->assertTrue($fullPathValidator->validate($obj));
+
+        $this->assertTrue($halfPathValidator->assert($obj));
+        $this->assertTrue($halfPathValidator->check($obj));
+        $this->assertTrue($halfPathValidator->validate($obj));
+
+        $this->assertTrue($dirtyPathValidator->assert($obj));
+        $this->assertTrue($dirtyPathValidator->check($obj));
+        $this->assertTrue($dirtyPathValidator->validate($obj));
+    }
+
+    public function testArrayWithEmptyKeyShouldReturnTrue()
+    {
+        $pathValidator = new NestedKey('emptyKey');
+        $dirtyPathValidator = new NestedKey('emptyKey.');
+        $input = array();
+        $input['emptyKey'] = '';
+
+        $this->assertTrue($pathValidator->assert($input));
+        $this->assertTrue($pathValidator->check($input));
+        $this->assertTrue($pathValidator->validate($input));
+
+        $this->assertTrue($dirtyPathValidator->assert($input));
+        $this->assertTrue($dirtyPathValidator->check($input));
+        $this->assertTrue($dirtyPathValidator->validate($input));
+    }
+
+    public function testShouldHaveTheSameReturnValueForAllValidators()
+    {
+        $rule = new NestedKey('key1.key2', new NotEmpty());
+        $input = (object) array('key1' => array('key2' => ''));
+
+        try {
+            $rule->assert($input);
+            $this->fail('`assert()` must throws exception');
+        } catch (\Exception $e) {
+        }
+
+        try {
+            $rule->check($input);
+            $this->fail('`check()` must throws exception');
+        } catch (\Exception $e) {
+        }
+
+        $this->assertFalse($rule->validate($input));
+    }
+
+    /**
+     * @expectedException \Respect\Validation\Exceptions\NestedKeyException
+     */
+    public function testArrayWithAbsentKeyShouldThrowNestedKeyException()
+    {
+        $validator = new NestedKey('bar.bar');
+        $obj = array(
+            'baraaaaaa' => array(
+                'bar' => 'foo',
+            ),
+        );
+        $this->assertTrue($validator->assert($obj));
+    }
+
+    /**
+     * @expectedException \Respect\Validation\Exceptions\NestedKeyException
+     */
+    public function testNotArrayShouldThrowKeyException()
+    {
+        $validator = new NestedKey('baz.bar');
+        $obj = 123;
+        $this->assertFalse($validator->assert($obj));
+    }
+
+    /**
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
+     */
+    public function testInvalidConstructorParametersShouldThrowComponentExceptionUponInstantiation()
+    {
+        $validator = new NestedKey(array('invalid'));
+    }
+
+    public function testExtraValidatorShouldValidateKey()
+    {
+        $subValidator = new Length(3, 5);
+        $validator = new NestedKey('rab.rab.rab', $subValidator);
+        $obj = array(
+            'rab' => array(
+                'rab' => array(
+                    'rab' => 'obama',
+                ),
+            ),
+        );
+        $this->assertTrue($validator->assert($obj));
+    }
+
+    public function testNotMandatoryExtraValidatorShouldPassWithAbsentKey()
+    {
+        $subValidator = new Length(1, 3);
+        $validator = new NestedKey('bar.rab', $subValidator, false);
+        $obj = new \stdClass();
+        $this->assertTrue($validator->validate($obj));
     }
 }

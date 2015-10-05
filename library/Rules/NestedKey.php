@@ -18,7 +18,7 @@ class NestedKey extends AbstractRelated
 {
     public function __construct($reference, Validatable $referenceValidator = null, $mandatory = true)
     {
-        if (!$reference) {
+        if (!$reference || !is_scalar($reference)) {
             throw new ComponentException('Invalid array key');
         }
         parent::__construct($reference, $referenceValidator, $mandatory);
@@ -26,7 +26,12 @@ class NestedKey extends AbstractRelated
 
     public function hasReference($input)
     {
-        return !!$this->getReferenceValue($input);
+        try {
+            $this->getReferenceValue($input);
+            return true;
+        } catch (ComponentException $cex) {
+            return false;
+        }
     }
 
     public function getReferenceValue($input)
