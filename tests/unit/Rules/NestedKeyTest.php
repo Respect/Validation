@@ -49,6 +49,25 @@ class NestedKeyTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($dirtyPathValidator->validate($obj));
     }
 
+    public function testArrayWithPresentKeyContainingADotSignWillReturnTrue()
+    {
+        $pathValidator = new NestedKey('bar.foo');
+        $obj = array(
+            'bar.foo' => 'hello world!',
+        );
+
+        $this->assertTrue($pathValidator->assert($obj));
+        $this->assertTrue($pathValidator->check($obj));
+        $this->assertTrue($pathValidator->validate($obj));
+
+        $subValidator = new Equals('hello world!');
+        $validator = new NestedKey('bar.foo', $subValidator);
+
+        $this->assertTrue($validator->assert($obj));
+        $this->assertTrue($validator->check($obj));
+        $this->assertTrue($validator->validate($obj));
+    }
+
     public function testObjectWithPresentPropertiesWillReturnTrue()
     {
         $fullPathValidator = new NestedKey('bar.foo.baz');
@@ -168,12 +187,12 @@ class NestedKeyTest extends \PHPUnit_Framework_TestCase
 
     public function testExtraValidatorShouldValidateKey()
     {
-        $subValidator = new Length(3, 5);
+        $subValidator = new Length(3, 7);
         $validator = new NestedKey('bar.foo.baz', $subValidator);
         $obj = array(
             'bar' => array(
                 'foo'   => array(
-                    'baz' => 'hello world!',
+                    'baz' => 'example',
                 ),
             ),
         );
