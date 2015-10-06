@@ -37,6 +37,10 @@ class NestedKey extends AbstractRelated
     public function getReferenceValue($input)
     {
         $type = gettype($input);
+        if ('array' === $type && isset($input[$this->reference])) {
+            return $input[$this->reference];
+        }
+
         if (false === $pos = strpos($this->reference, '.')) {
             if ('array' === $type && array_key_exists($this->reference, $input)) {
                 return $input[$this->reference];

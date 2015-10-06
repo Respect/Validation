@@ -169,11 +169,11 @@ class NestedKeyTest extends \PHPUnit_Framework_TestCase
     public function testExtraValidatorShouldValidateKey()
     {
         $subValidator = new Length(3, 5);
-        $validator = new NestedKey('rab.rab.rab', $subValidator);
+        $validator = new NestedKey('bar.foo.baz', $subValidator);
         $obj = array(
-            'rab' => array(
-                'rab' => array(
-                    'rab' => 'obama',
+            'bar' => array(
+                'foo'   => array(
+                    'baz' => 'hello world!',
                 ),
             ),
         );
