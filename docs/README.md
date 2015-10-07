@@ -193,6 +193,24 @@ $errors = $exception->findMessages(array(
 
 For all messages, the `{{name}}` and `{{input}}` variable is available for templates.
 
+## Message localization
+
+You're also able to translate your message to another language with Validation.
+The only thing one must do is to define the param `translator` as a callable that
+will handle the translation:
+
+```php
+$exception->setParam('translator', 'gettext');
+```
+
+The example above uses `gettext()` but you can use any other callable value, like
+`array($translator, 'trans')` or `you_custom_function()`.
+
+After that, if you call `getMainMessage()` or `getFullMessage()` (for nested),
+the message will be translated.
+
+Note that `getMessage()` will keep the original message.
+
 ## Custom Rules
 
 You also can use your own rules:
