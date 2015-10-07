@@ -45,8 +45,6 @@ class MinTest extends \PHPUnit_Framework_TestCase
     public function providerForValidMin()
     {
         return array(
-            array(100, true, ''),
-            array(100, false, ''),
             array(100, false, 165.0),
             array(-100, false, 200),
             array(200, true, 200),
@@ -66,6 +64,8 @@ class MinTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidMin()
     {
         return array(
+            array(100, true, ''),
+            array(100, false, ''),
             array(500, false, 300),
             array(0, false, -250),
             array(0, false, -50),

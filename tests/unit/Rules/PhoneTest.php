@@ -48,7 +48,6 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
     public function providerForPhone()
     {
         return array(
-            array(''),
             array('+5-555-555-5555'),
             array('+5 555 555 5555'),
             array('+5.555.555.5555'),
@@ -100,6 +99,7 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
     public function providerForNotPhone()
     {
         return array(
+            array(''),
             array('123'),
             array('s555-5555'),
             array('555-555'),

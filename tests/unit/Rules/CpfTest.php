@@ -71,7 +71,6 @@ class CpfTest extends \PHPUnit_Framework_TestCase
     public function providerValidFormattedCpf()
     {
         return array(
-            array(''),
             array('342.444.198-88'),
             array('342.444.198.88'),
             array('350.45261819'),
@@ -83,7 +82,6 @@ class CpfTest extends \PHPUnit_Framework_TestCase
     public function providerValidUnformattedCpf()
     {
         return array(
-            array(''),
             array('11598647644'),
             array('86734718697'),
             array('86223423284'),
@@ -95,6 +93,7 @@ class CpfTest extends \PHPUnit_Framework_TestCase
     public function providerInvalidFormattedCpf()
     {
         return array(
+            array(''),
             array('000.000.000-00'),
             array('111.222.444-05'),
             array('999999999.99'),

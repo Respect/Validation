@@ -73,7 +73,7 @@ class DirectoryTest extends \PHPUnit_Framework_TestCase
             sys_get_temp_dir().DIRECTORY_SEPARATOR.'dataprovider-5',
         );
 
-        return array(array('')) + array_map(
+        return array_map(
             function ($directory) {
                 if (!is_dir($directory)) {
                     mkdir($directory, 0766, true);
@@ -89,6 +89,7 @@ class DirectoryTest extends \PHPUnit_Framework_TestCase
     {
         return array_chunk(
             array(
+                '',
                 __FILE__,
                 __DIR__.'/../../../../../README.md',
                 __DIR__.'/../../../../../composer.json',

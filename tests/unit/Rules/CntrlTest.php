@@ -76,7 +76,6 @@ class CntrlTest extends \PHPUnit_Framework_TestCase
     public function providerForValidCntrl()
     {
         return array(
-            array(''),
             array("\n"),
             array("\r"),
             array("\t"),
@@ -88,6 +87,7 @@ class CntrlTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidCntrl()
     {
         return array(
+            array(''),
             array('16-50'),
             array('a'),
             array(' '),

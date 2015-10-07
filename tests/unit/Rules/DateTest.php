@@ -27,11 +27,25 @@ class DateTest extends \PHPUnit_Framework_TestCase
         $this->dateValidator = new Date();
     }
 
-    public function testDateEmptyShouldValidate()
+    public function testDateEmptyShouldNotValidate()
     {
-        $this->assertTrue($this->dateValidator->__invoke(''));
-        $this->assertTrue($this->dateValidator->check(''));
-        $this->assertTrue($this->dateValidator->assert(''));
+        $this->assertFalse($this->dateValidator->__invoke(''));
+    }
+
+    /**
+     * @expectedException Respect\Validation\Exceptions\DateException
+     */
+    public function testDateEmptyShouldNotCheck()
+    {
+        $this->dateValidator->check('');
+    }
+
+    /**
+     * @expectedException Respect\Validation\Exceptions\DateException
+     */
+    public function testDateEmptyShouldNotAssert()
+    {
+        $this->dateValidator->assert('');
     }
 
     public function testDateWithoutFormatShouldValidate()

@@ -65,7 +65,6 @@ class IpTest extends \PHPUnit_Framework_TestCase
     public function providerForIp()
     {
         return array(
-            array(''),
             array('127.0.0.1'),
         );
     }
@@ -96,6 +95,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
     public function providerForNotIp()
     {
         return array(
+            array(''),
             array(null),
             array('j'),
             array(' '),

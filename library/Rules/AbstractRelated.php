@@ -53,10 +53,6 @@ abstract class AbstractRelated extends AbstractRule
 
     public function assert($input)
     {
-        if ($input === '') {
-            return true;
-        }
-
         $hasReference = $this->hasReference($input);
         if ($this->mandatory && !$hasReference) {
             throw $this->reportError($input, array('hasReference' => false));
@@ -73,10 +69,6 @@ abstract class AbstractRelated extends AbstractRule
 
     public function check($input)
     {
-        if ($input === '') {
-            return true;
-        }
-
         $hasReference = $this->hasReference($input);
         if ($this->mandatory && !$hasReference) {
             throw $this->reportError($input, array('hasReference' => false));
@@ -87,10 +79,6 @@ abstract class AbstractRelated extends AbstractRule
 
     public function validate($input)
     {
-        if ($input === '') {
-            return true;
-        }
-
         $hasReference = $this->hasReference($input);
         if ($this->mandatory && !$hasReference) {
             return false;

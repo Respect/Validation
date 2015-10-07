@@ -55,15 +55,26 @@ validated object as the first node in the chain.
 
 ## Input optional
 
-All validators treat input as optional and will accept empty string input as valid,
-unless otherwise stated in the documentation.
+On oldest versions of Respect\Validation all validators treat input as optional
+and accept an empty string input as valid. Even though a useful feature that
+caused a lot of troubles for our team and neither was an obvious behavior. Also
+there was some people who likes to accept `null` as optional value, not only an
+empty string.
 
-We use the `v:notEmpty()` validator prefixed to disallow empty input and effectively
-define the field as mandatory as input will be required or validation will fail.
+For that reason all rules are mandatory now but if you want to treat a value as
+optional you can use `v::optional()` rule:
 
 ```php
-v::string()->notEmpty()->validate(''); //false input required
+v::alpha()->validate(''); // false input required
+v::alpha()->validate(null); // false input required
+
+v::optional(v::alpha())->validate(''); // true
+v::optional(v::alpha())->validate(null); // true
 ```
+
+By _optional_ you may interpret as `null` or an empty string (`''`).
+
+See more on [Optional](Optional.md).
 
 ## Negating Rules
 
@@ -263,3 +274,4 @@ See also:
 - [Installation](INSTALL.md)
 - [License](../LICENSE.md)
 - [Validators](VALIDATORS.md)
+- [Changelog](../CHANGELOG.md)

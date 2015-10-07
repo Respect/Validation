@@ -120,7 +120,6 @@ class EmailTest extends \PHPUnit_Framework_TestCase
     public function providerForValidEmail()
     {
         return array(
-            array(''),
             array('test@test.com'),
             array('mail+mail@gmail.com'),
             array('mail.email@e.test.com'),
@@ -131,6 +130,7 @@ class EmailTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidEmail()
     {
         return array(
+            array(''),
             array('test@test'),
             array('test'),
             array('test@тест.рф'),

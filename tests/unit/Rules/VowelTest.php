@@ -76,7 +76,6 @@ class VowelTest extends \PHPUnit_Framework_TestCase
     public function providerForValidVowels()
     {
         return array(
-            array(''),
             array('a'),
             array('e'),
             array('i'),
@@ -92,6 +91,7 @@ class VowelTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidVowels()
     {
         return array(
+            array(''),
             array(null),
             array('16'),
             array('F'),

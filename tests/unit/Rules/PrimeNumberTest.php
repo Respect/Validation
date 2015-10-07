@@ -48,7 +48,6 @@ class PrimeNumberTest extends \PHPUnit_Framework_TestCase
     public function providerForPrimeNumber()
     {
         return array(
-            array(''),
             array(3),
             array(5),
             array(7),
@@ -61,6 +60,7 @@ class PrimeNumberTest extends \PHPUnit_Framework_TestCase
     public function providerForNotPrimeNumber()
     {
         return array(
+            array(''),
             array(null),
             array(0),
             array(10),

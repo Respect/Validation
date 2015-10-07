@@ -44,10 +44,14 @@ class JsonTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->json->assert('{foo:bar}'));
     }
 
+    public function testInvalidJsonsNotBeValid()
+    {
+        $this->assertFalse($this->json->validate(''));
+    }
+
     public function providerForPass()
     {
         return array(
-            array(''),
             array('2'),
             array('"abc"'),
             array('[1,2,3]'),

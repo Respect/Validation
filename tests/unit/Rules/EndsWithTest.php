@@ -43,7 +43,6 @@ class EndsWithTest extends \PHPUnit_Framework_TestCase
     public function providerForEndsWith()
     {
         return array(
-            array('foo', ''),
             array('foo', array('bar', 'foo')),
             array('foo', 'barbazFOO'),
             array('foo', 'barbazfoo'),
@@ -56,6 +55,7 @@ class EndsWithTest extends \PHPUnit_Framework_TestCase
     public function providerForNotEndsWith()
     {
         return array(
+            array('foo', ''),
             array('bat', array('bar', 'foo')),
             array('foo', 'barfaabaz'),
             array('foo', 'barbazFOO', true),

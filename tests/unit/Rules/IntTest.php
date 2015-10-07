@@ -48,7 +48,6 @@ class IntTest extends \PHPUnit_Framework_TestCase
     public function providerForInt()
     {
         return array(
-            array(''),
             array(16),
             array('165'),
             array(123456),
@@ -59,6 +58,7 @@ class IntTest extends \PHPUnit_Framework_TestCase
     public function providerForNotInt()
     {
         return array(
+            array(''),
             array(null),
             array('a'),
             array(' '),

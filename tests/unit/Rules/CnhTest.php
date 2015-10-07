@@ -68,7 +68,6 @@ class CnhTest extends \PHPUnit_Framework_TestCase
     public function validCnhProvider()
     {
         return array(
-               array(''),
                array('02650306461'),
                array('04397322870'),
                array('04375701302'),
@@ -129,6 +128,7 @@ class CnhTest extends \PHPUnit_Framework_TestCase
     public function notIntegerCnhProvider()
     {
         return array(
+               array(''),
                array('F265F3F6461'),
                array('F439732287F'),
                array('F43757F13F2'),

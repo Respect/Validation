@@ -48,7 +48,6 @@ class NumericTest extends \PHPUnit_Framework_TestCase
     public function providerForNumeric()
     {
         return array(
-            array(''),
             array(165),
             array(165.0),
             array(-165),
@@ -61,6 +60,7 @@ class NumericTest extends \PHPUnit_Framework_TestCase
     public function providerForNotNumeric()
     {
         return array(
+            array(''),
             array(null),
             array('a'),
             array(' '),

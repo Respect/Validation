@@ -48,7 +48,6 @@ class FloatTest extends \PHPUnit_Framework_TestCase
     public function providerForFloat()
     {
         return array(
-            array(''),
             array(165),
             array(1),
             array(0),
@@ -64,6 +63,7 @@ class FloatTest extends \PHPUnit_Framework_TestCase
     public function providerForNotFloat()
     {
         return array(
+            array(''),
             array(null),
             array('a'),
             array(' '),

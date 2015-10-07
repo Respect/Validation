@@ -65,7 +65,6 @@ class LengthTest extends \PHPUnit_Framework_TestCase
     public function providerForValidLength()
     {
         return array(
-            array('', 1, 15),
             array('alganet', 1, 15),
             array('ççççç', 4, 6),
             array(range(1, 20), 1, 30),
@@ -78,6 +77,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidLengthInclusive()
     {
         return array(
+            array('', 1, 15),
             array('alganet', 1, 7),
             array(range(1, 20), 1, 20),
             array('alganet', 7, null), //null is a valid max length, means "no maximum",

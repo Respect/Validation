@@ -53,7 +53,10 @@ class InTest extends \PHPUnit_Framework_TestCase
     public function providerForIn()
     {
         return array(
-            array('', 'barfoobaz'),
+            array('', array('')),
+            array(null, array(null)),
+            array('0', array('0')),
+            array(0, array(0)),
             array('foo', array('foo', 'bar')),
             array('foo', 'barfoobaz'),
             array('foo', 'foobarbaz'),
@@ -66,6 +69,14 @@ class InTest extends \PHPUnit_Framework_TestCase
     public function providerForNotIn()
     {
         return array(
+            array(null, '0'),
+            array(null, 0, true),
+            array(null, '', true),
+            array(null, array()),
+            array('', 'barfoobaz'),
+            array(null, 'barfoobaz'),
+            array(0, 'barfoobaz'),
+            array('0', 'barfoobaz'),
             array('bat', array('foo', 'bar')),
             array('foo', 'barfaabaz'),
             array('foo', 'faabarbaz'),

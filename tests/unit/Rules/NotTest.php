@@ -55,6 +55,7 @@ class NotTest extends \PHPUnit_Framework_TestCase
     public function providerForValidNot()
     {
         return array(
+            array(new Int(), ''),
             array(new Int(), 'aaa'),
             array(new AllOf(new NoWhitespace(), new Digit()), 'as df'),
             array(new AllOf(new NoWhitespace(), new Digit()), '12 34'),
@@ -68,7 +69,6 @@ class NotTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidNot()
     {
         return array(
-            array(new Int(), ''),
             array(new Int(), 123),
             array(new AllOf(new OneOf(new Numeric(), new Int())), 13.37),
             array(new OneOf(new Numeric(), new Int()), 13.37),

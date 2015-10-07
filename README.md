@@ -22,3 +22,4 @@
 - [Installation](docs/INSTALL.md)
 - [License](LICENSE.md)
 - [Validators](docs/VALIDATORS.md)
+- [Changelog](CHANGELOG.md)

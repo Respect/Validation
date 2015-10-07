@@ -43,7 +43,6 @@ class EqualsTest extends \PHPUnit_Framework_TestCase
     public function providerForEquals()
     {
         return array(
-            array('foo', ''),
             array('foo', 'foo'),
             array(10, '10'),
         );
@@ -52,6 +51,7 @@ class EqualsTest extends \PHPUnit_Framework_TestCase
     public function providerForNotEquals()
     {
         return array(
+            array('foo', ''),
             array('foo', 'bar'),
             array(10, '10', true),
         );

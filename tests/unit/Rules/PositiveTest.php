@@ -48,7 +48,6 @@ class PositiveTest extends \PHPUnit_Framework_TestCase
     public function providerForPositive()
     {
         return array(
-            array(''),
             array(16),
             array('165'),
             array(123456),
@@ -59,6 +58,7 @@ class PositiveTest extends \PHPUnit_Framework_TestCase
     public function providerForNotPositive()
     {
         return array(
+            array(''),
             array(null),
             array('a'),
             array(' '),

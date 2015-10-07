@@ -76,7 +76,6 @@ class PunctTest extends \PHPUnit_Framework_TestCase
     public function providerForValidPunct()
     {
         return array(
-            array(''),
             array('.'),
             array(',;:'),
             array('-@#$*'),
@@ -87,6 +86,7 @@ class PunctTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidPunct()
     {
         return array(
+            array(''),
             array('16-50'),
             array('a'),
             array(' '),

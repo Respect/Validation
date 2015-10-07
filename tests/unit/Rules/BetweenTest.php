@@ -23,8 +23,6 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
     public function providerValid()
     {
         return array(
-            array(10, 20, false, ''),
-            array(10, 20, true, ''),
             array(0, 1, true, 0),
             array(0, 1, true, 1),
             array(10, 20, false, 15),
@@ -44,6 +42,8 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
     public function providerInvalid()
     {
         return array(
+            array(10, 20, false, ''),
+            array(10, 20, true, ''),
             array(0, 1, false, 0),
             array(0, 1, false, 1),
             array(0, 1, false, 2),

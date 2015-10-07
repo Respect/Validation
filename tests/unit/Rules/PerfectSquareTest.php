@@ -48,7 +48,6 @@ class PerfectSquareTest extends \PHPUnit_Framework_TestCase
     public function providerForPerfectSquare()
     {
         return array(
-            array(''),
             array(1),
             array(9),
             array(25),
@@ -65,6 +64,7 @@ class PerfectSquareTest extends \PHPUnit_Framework_TestCase
     public function providerForNotPerfectSquare()
     {
         return array(
+            array(''),
             array(null),
             array(7),
             array(-1),

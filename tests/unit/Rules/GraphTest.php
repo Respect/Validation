@@ -76,7 +76,6 @@ class GraphTest extends \PHPUnit_Framework_TestCase
     public function providerForValidGraph()
     {
         return array(
-            array(''),
             array('LKA#@%.54'),
             array('foobar'),
             array('16-50'),
@@ -88,6 +87,7 @@ class GraphTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidGraph()
     {
         return array(
+            array(''),
             array(null),
             array("foo\nbar"),
             array("foo\tbar"),

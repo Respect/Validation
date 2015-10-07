@@ -43,7 +43,6 @@ class VersionTest extends \PHPUnit_Framework_TestCase
     public function providerForValidVersion()
     {
         return array(
-            array(''),
             array('1.0.0'),
             array('1.0.0-alpha'),
             array('1.0.0-alpha.1'),
@@ -57,6 +56,7 @@ class VersionTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidVersion()
     {
         return array(
+            array(''),
             array('1.3.7--'),
             array('1.3.7++'),
             array('foo'),

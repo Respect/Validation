@@ -76,7 +76,6 @@ class SpaceTest extends \PHPUnit_Framework_TestCase
     public function providerForValidSpace()
     {
         return array(
-            array(''),
             array("\n"),
             array(' '),
             array('    '),
@@ -88,6 +87,7 @@ class SpaceTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidSpace()
     {
         return array(
+            array(''),
             array('16-50'),
             array('a'),
             array('Foo'),
