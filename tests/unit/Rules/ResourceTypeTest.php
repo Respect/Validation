@@ -13,16 +13,16 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Resource
- * @covers Respect\Validation\Exceptions\ResourceException
+ * @covers Respect\Validation\Rules\ResourceType
+ * @covers Respect\Validation\Exceptions\ResourceTypeException
  */
-class ResourceTest extends \PHPUnit_Framework_TestCase
+class ResourceTypeTest extends \PHPUnit_Framework_TestCase
 {
     protected $rule;
 
     protected function setUp()
     {
-        $this->rule = new Resource();
+        $this->rule = new ResourceType();
     }
 
     /**
@@ -42,7 +42,7 @@ class ResourceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ResourceException
+     * @expectedException Respect\Validation\Exceptions\ResourceTypeException
      * @expectedExceptionMessage "Something" must be a resource
      */
     public function testShouldThrowResourceExceptionWhenChecking()

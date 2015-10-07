@@ -22,6 +22,6 @@ See also:
   * [Instance](Instance.md)
   * [IntVal](IntVal.md)
   * [ObjectType](ObjectType.md)
-  * [Resource](Resource.md)
+  * [ResourceType](ResourceType.md)
   * [Scalar](Scalar.md)
   * [StringType](StringType.md)

@@ -14,7 +14,7 @@ namespace Respect\Validation\Exceptions;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ResourceException extends ValidationException
+class ResourceTypeException extends ValidationException
 {
     /**
      * @var array

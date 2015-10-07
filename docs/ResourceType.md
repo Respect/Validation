@@ -1,11 +1,11 @@
-# Resource
+# ResourceType
 
-- `v::resource()`
+- `v::resourceType()`
 
 Validates if the input is a resource.
 
 ```php
-v::resource()->validate(fopen('/path/to/file.txt', 'w')); //true
+v::resourceType()->validate(fopen('/path/to/file.txt', 'w')); //true
 ```
 
 ***

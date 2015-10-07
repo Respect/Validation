@@ -102,7 +102,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator punct(string $additionalChars = null)
  * @method static Validator readable()
  * @method static Validator regex(string $regex)
- * @method static Validator resource()
+ * @method static Validator resourceType()
  * @method static Validator roman()
  * @method static Validator scalar()
  * @method static Validator sf(string $name, array $params = null)

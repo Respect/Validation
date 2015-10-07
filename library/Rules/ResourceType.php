@@ -14,7 +14,7 @@ namespace Respect\Validation\Rules;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class Resource extends AbstractRule
+class ResourceType extends AbstractRule
 {
     /**
      * {@inheritdoc}
