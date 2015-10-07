@@ -2,7 +2,7 @@
 
 All notable changes of the Respect\Validation releases are documented in this file.
 
-## 1.0.0 - Upcoming
+## 1.0.0 - 2015-10-24
 
 ### Added
 
