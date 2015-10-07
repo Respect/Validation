@@ -6,6 +6,7 @@ All notable changes of the Respect\Validation releases are documented in this fi
 
 ### Added
 
+- Add support for PHP 7 (#426)
 - Create "CallableType" rule (#397)
 - Create "Extension" rule (#360)
 - Create "Factor" rule (#405)
@@ -33,6 +34,12 @@ All notable changes of the Respect\Validation releases are documented in this fi
 - On exceptions, do not display parent message then rule has only one child (#407)
 - On exceptions, improve `Object` conversion to string (#399)
 - On exceptions, improve conversion of all values by using JSON (#399)
+- Rename rule "Bool" to "BoolType" (#426)
+- Rename rule "False" to "FalseVal" (#426)
+- Rename rule "Float" to "FloatVal" (#426)
+- Rename rule "Int" to "IntVal" (#426)
+- Rename rule "String" to "StringType" (#426)
+- Rename rule "True" to "TrueVal" (#426)
 - Use `filter_var()` on "TrueVal" and "FalseVal" rules (#409)
 
 ### Removed
