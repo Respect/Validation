@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
-class Object extends AbstractRule
+class ObjectType extends AbstractRule
 {
     public function validate($input)
     {

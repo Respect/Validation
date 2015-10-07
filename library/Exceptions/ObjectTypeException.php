@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class ObjectException extends ValidationException
+class ObjectTypeException extends ValidationException
 {
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(

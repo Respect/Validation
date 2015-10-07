@@ -12,7 +12,7 @@
   * [IntVal](IntVal.md)
   * [NullType](NullType.md)
   * [Numeric](Numeric.md)
-  * [Object](Object.md)
+  * [ObjectType](ObjectType.md)
   * [Resource](Resource.md)
   * [Scalar](Scalar.md)
   * [StringType](StringType.md)
@@ -61,7 +61,7 @@
   * [Roman](Roman.md)
   * [Xdigit](Xdigit.md)
 
-## StringType
+## String
 
   * [Alnum](Alnum.md)
   * [Alpha](Alpha.md)
@@ -248,7 +248,7 @@
   * [NotEmpty](NotEmpty.md)
   * [NullType](NullType.md)
   * [Numeric](Numeric.md)
-  * [Object](Object.md)
+  * [ObjectType](ObjectType.md)
   * [Odd](Odd.md)
   * [OneOf](OneOf.md)
   * [Optional](Optional.md)

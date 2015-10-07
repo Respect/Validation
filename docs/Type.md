@@ -21,7 +21,7 @@ See also:
   * [Infinite](Infinite.md)
   * [Instance](Instance.md)
   * [IntVal](IntVal.md)
-  * [Object](Object.md)
+  * [ObjectType](ObjectType.md)
   * [Resource](Resource.md)
   * [Scalar](Scalar.md)
   * [StringType](StringType.md)
