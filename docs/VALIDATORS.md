@@ -28,6 +28,7 @@
   * [Callback](Callback.md)
   * [FilterVar](FilterVar.md)
   * [Not](Not.md)
+  * [Optional](Optional.md)
   * [Type](Type.md)
   * [When](When.md)
 
@@ -250,6 +251,7 @@
   * [Object](Object.md)
   * [Odd](Odd.md)
   * [OneOf](OneOf.md)
+  * [Optional](Optional.md)
   * [PerfectSquare](PerfectSquare.md)
   * [Phone](Phone.md)
   * [Positive](Positive.md)

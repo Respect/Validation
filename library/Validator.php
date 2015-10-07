@@ -92,6 +92,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator object()
  * @method static Validator odd()
  * @method static Validator oneOf()
+ * @method static Validator optional(Validatable $rule, array $optionalValues = array(null, ''))
  * @method static Validator perfectSquare()
  * @method static Validator phone()
  * @method static Validator positive()

@@ -53,6 +53,29 @@ Note that we used `v::string()` and `v::date()` in the beginning of the validato
 Although is not mandatory, it is a good practice to use the type of the
 validated object as the first node in the chain.
 
+## Input optional
+
+On oldest versions of Respect\Validation all validators treat input as optional
+and accept an empty string input as valid. Even though a useful feature that
+caused a lot of troubles for our team and neither was an obvious behavior. Also
+there was some people who likes to accept `null` as optional value, not only an
+empty string.
+
+For that reason all rules are mandatory now but if you want to treat a value as
+optional you can use `v::optional()` rule:
+
+```php
+v::alpha()->validate(''); // false input required
+v::alpha()->validate(null); // false input required
+
+v::optional(v::alpha())->validate(''); // true
+v::optional(v::alpha())->validate(null); // true
+```
+
+By _optional_ you may interpret as `null` or an empty string (`''`).
+
+See more on [Optional](Optional.md).
+
 ## Negating Rules
 
 You can use the `v::not()` to negate any rule:
