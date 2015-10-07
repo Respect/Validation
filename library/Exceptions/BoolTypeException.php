@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class BoolException extends ValidationException
+class BoolTypeException extends ValidationException
 {
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(

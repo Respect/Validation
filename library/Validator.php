@@ -31,7 +31,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator base()
  * @method static Validator between(mixed $min = null, mixed $max = null, bool $inclusive = false)
  * @method static Validator bic(string $countryCode)
- * @method static Validator bool()
+ * @method static Validator boolType()
  * @method static Validator call()
  * @method static Validator callableType()
  * @method static Validator callback(mixed $callback)

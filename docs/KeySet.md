@@ -28,7 +28,7 @@ $dict = array('foo' => 42, 'bar' => 'String');
 v::keySet(
     v::key('foo', v::int()),
     v::key('bar', v::string()),
-    v::key('baz', v::bool())
+    v::key('baz', v::boolType())
 )->validate($dict); //false
 ```
 
@@ -39,7 +39,7 @@ $dict = array('foo' => 42, 'bar' => 'String');
 v::keySet(
     v::key('foo', v::int()),
     v::key('bar', v::string()),
-    v::key('baz', v::bool(), false)
+    v::key('baz', v::boolType(), false)
 )->validate($dict); //true
 ```
 

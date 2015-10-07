@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
-class Bool extends AbstractRule
+class BoolType extends AbstractRule
 {
     public function validate($input)
     {
