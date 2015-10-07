@@ -13,16 +13,16 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\String
- * @covers Respect\Validation\Exceptions\StringException
+ * @covers Respect\Validation\Rules\StringType
+ * @covers Respect\Validation\Exceptions\StringTypeException
  */
-class StringTest extends \PHPUnit_Framework_TestCase
+class StringTypeTest extends \PHPUnit_Framework_TestCase
 {
     protected $object;
 
     protected function setUp()
     {
-        $this->object = new String();
+        $this->object = new StringType();
     }
 
     /**
@@ -37,7 +37,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotString
-     * @expectedException Respect\Validation\Exceptions\StringException
+     * @expectedException Respect\Validation\Exceptions\StringTypeException
      */
     public function testNotString($input)
     {

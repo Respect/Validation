@@ -15,7 +15,7 @@ function translatorCallback($message)
 }
 
 try {
-    Validator::string()->length(2, 15)->check(0);
+    Validator::stringType()->length(2, 15)->check(0);
 } catch (ValidationExceptionInterface $exception) {
     $exception->setParam('translator', 'translatorCallback');
 

@@ -15,7 +15,7 @@ $releaseDates = array(
 );
 
 v::arr()->each(v::date())->validate($releaseDates); //true
-v::arr()->each(v::date(), v::string()->lowercase())->validate($releaseDates); //true
+v::arr()->each(v::date(), v::stringType()->lowercase())->validate($releaseDates); //true
 ```
 
 Using `arr()` before `each()` is a best practice.

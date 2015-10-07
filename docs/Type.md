@@ -24,4 +24,4 @@ See also:
   * [Object](Object.md)
   * [Resource](Resource.md)
   * [Scalar](Scalar.md)
-  * [String](String.md)
+  * [StringType](StringType.md)

@@ -9,19 +9,19 @@ try {
         ->key(
             'mysql',
             v::create()
-                ->key('host', v::string(), true)
-                ->key('user', v::string(), true)
-                ->key('password', v::string(), true)
-                ->key('schema', v::string(), true),
+                ->key('host', v::stringType(), true)
+                ->key('user', v::stringType(), true)
+                ->key('password', v::stringType(), true)
+                ->key('schema', v::stringType(), true),
             true
         )
         ->key(
             'postgresql',
             v::create()
-                ->key('host', v::string(), true)
-                ->key('user', v::string(), true)
-                ->key('password', v::string(), true)
-                ->key('schema', v::string(), true),
+                ->key('host', v::stringType(), true)
+                ->key('user', v::stringType(), true)
+                ->key('password', v::stringType(), true)
+                ->key('schema', v::stringType(), true),
             true
         )
         ->setName('the given data')

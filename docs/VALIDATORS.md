@@ -15,7 +15,7 @@
   * [Object](Object.md)
   * [Resource](Resource.md)
   * [Scalar](Scalar.md)
-  * [String](String.md)
+  * [StringType](StringType.md)
   * [TrueVal](TrueVal.md)
   * [Type](Type.md)
   * [Xdigit](Xdigit.md)
@@ -61,7 +61,7 @@
   * [Roman](Roman.md)
   * [Xdigit](Xdigit.md)
 
-## String
+## StringType
 
   * [Alnum](Alnum.md)
   * [Alpha](Alpha.md)
@@ -269,7 +269,7 @@
   * [Slug](Slug.md)
   * [Space](Space.md)
   * [StartsWith](StartsWith.md)
-  * [String](String.md)
+  * [StringType](StringType.md)
   * [SubdivisionCode](SubdivisionCode.md)
   * [SymbolicLink](SymbolicLink.md)
   * [Tld](Tld.md)

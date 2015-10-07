@@ -22,7 +22,7 @@ We can validate them this way:
 ```php
 v::arr()->key('scheme', v::startsWith('http'))
         ->key('host',   v::domain())
-        ->key('path',   v::string())
+        ->key('path',   v::stringType())
         ->key('query',  v::notEmpty());
 ```
 
@@ -33,7 +33,7 @@ v::call(
     'parse_url',
      v::arr()->key('scheme', v::startsWith('http'))
         ->key('host',   v::domain())
-        ->key('path',   v::string())
+        ->key('path',   v::stringType())
         ->key('query',  v::notEmpty())
 )->validate($url);
 ```

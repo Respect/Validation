@@ -22,7 +22,7 @@ v::attribute('foo', v::equals('bar'))->validate($obj); //true
 Third parameter makes the attribute presence optional:
 
 ```php
-v::attribute('lorem', v::string(), false)->validate($obj); // true
+v::attribute('lorem', v::stringType(), false)->validate($obj); // true
 ```
 
 The name of this validator is automatically set to the attribute name.

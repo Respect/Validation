@@ -17,7 +17,7 @@ function translatorCallback($message)
 }
 
 try {
-    Validator::string()->length(2, 15)->assert(0);
+    Validator::stringType()->length(2, 15)->assert(0);
 } catch (NestedValidationExceptionInterface $exception) {
     $exception->setParam('translator', 'translatorCallback');
 

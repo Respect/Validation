@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class StringException extends ValidationException
+class StringTypeException extends ValidationException
 {
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(

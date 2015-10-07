@@ -40,7 +40,7 @@ class WhenTest extends \PHPUnit_Framework_TestCase
 
     public function testWhenWithoutElseError()
     {
-        $v = new When(new String(), new Between(1, 5));
+        $v = new When(new StringType(), new Between(1, 5));
 
         $this->assertFalse($v->validate(15));
     }
@@ -51,7 +51,7 @@ class WhenTest extends \PHPUnit_Framework_TestCase
      */
     public function testWhenWithoutElseAssert()
     {
-        $v = new When(new String(), new Between(1, 5));
+        $v = new When(new StringType(), new Between(1, 5));
         $v->assert(15);
     }
 

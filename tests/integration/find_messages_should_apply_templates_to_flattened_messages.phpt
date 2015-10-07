@@ -7,9 +7,9 @@ require 'vendor/autoload.php';
 use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
 use Respect\Validation\Validator as v;
 
-$stringMax256 = v::string()->length(5, 256);
+$stringMax256 = v::stringType()->length(5, 256);
 $alnumDot = v::alnum('.');
-$stringMin8 = v::string()->length(8, null);
+$stringMin8 = v::stringType()->length(8, null);
 $validator = v::allOf(
         v::attribute('first_name', $stringMax256)->setName('First Name'),
         v::attribute('last_name', $stringMax256)->setName('Last Name'),
