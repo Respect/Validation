@@ -13,17 +13,17 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\True
- * @covers Respect\Validation\Exceptions\TrueException
+ * @covers Respect\Validation\Rules\TrueVal
+ * @covers Respect\Validation\Exceptions\TrueValException
  */
-class TrueTest extends \PHPUnit_Framework_TestCase
+class TrueValTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider validTrueProvider
      */
     public function testShouldValidatePatternAccordingToTheDefinedLocale($input)
     {
-        $rule = new True();
+        $rule = new TrueVal();
 
         $this->assertTrue($rule->validate($input));
     }
@@ -51,7 +51,7 @@ class TrueTest extends \PHPUnit_Framework_TestCase
      */
     public function testShouldNotValidatePatternAccordingToTheDefinedLocale($input)
     {
-        $rule = new True();
+        $rule = new TrueVal();
 
         $this->assertFalse($rule->validate($input));
     }

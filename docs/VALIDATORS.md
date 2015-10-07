@@ -16,7 +16,7 @@
   * [Resource](Resource.md)
   * [Scalar](Scalar.md)
   * [String](String.md)
-  * [True](True.md)
+  * [TrueVal](TrueVal.md)
   * [Type](Type.md)
   * [Xdigit](Xdigit.md)
 
@@ -273,7 +273,7 @@
   * [SubdivisionCode](SubdivisionCode.md)
   * [SymbolicLink](SymbolicLink.md)
   * [Tld](Tld.md)
-  * [True](True.md)
+  * [TrueVal](TrueVal.md)
   * [Type](Type.md)
   * [Uploaded](Uploaded.md)
   * [Uppercase](Uppercase.md)

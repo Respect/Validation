@@ -114,7 +114,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator subdivisionCode(string $countryCode)
  * @method static Validator symbolicLink()
  * @method static Validator tld()
- * @method static Validator true()
+ * @method static Validator trueVal()
  * @method static Validator type(string $type)
  * @method static Validator uploaded()
  * @method static Validator uppercase()

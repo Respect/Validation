@@ -18,4 +18,4 @@ v::falseVal()->validate('2'); //false
 ***
 See also:
 
-  * [True](True.md)
+  * [TrueVal](TrueVal.md)

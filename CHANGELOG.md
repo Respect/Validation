@@ -33,7 +33,7 @@ All notable changes of the Respect\Validation releases are documented in this fi
 - On exceptions, do not display parent message then rule has only one child (#407)
 - On exceptions, improve `Object` conversion to string (#399)
 - On exceptions, improve conversion of all values by using JSON (#399)
-- Use `filter_var()` on "True" and "FalseVal" rules (#409)
+- Use `filter_var()` on "TrueVal" and "FalseVal" rules (#409)
 
 ### Removed
 
