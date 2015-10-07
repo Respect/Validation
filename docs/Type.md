@@ -20,7 +20,7 @@ See also:
   * [FloatVal](FloatVal.md)
   * [Infinite](Infinite.md)
   * [Instance](Instance.md)
-  * [Int](Int.md)
+  * [IntVal](IntVal.md)
   * [Object](Object.md)
   * [Resource](Resource.md)
   * [Scalar](Scalar.md)

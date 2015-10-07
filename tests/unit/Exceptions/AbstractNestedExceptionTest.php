@@ -31,7 +31,7 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
     public function testGetRelatedShouldReturnExceptionAddedByAddRelated()
     {
         $composite = new AttributeException();
-        $node = new IntException();
+        $node = new IntValException();
         $composite->addRelated($node);
         $this->assertEquals(1, count($composite->getRelated(true)));
         $this->assertContainsOnly($node, $composite->getRelated());
@@ -40,7 +40,7 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
     public function testAddingTheSameInstanceShouldAddJustASingleReference()
     {
         $composite = new AttributeException();
-        $node = new IntException();
+        $node = new IntValException();
         $composite->addRelated($node);
         $composite->addRelated($node);
         $composite->addRelated($node);

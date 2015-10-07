@@ -13,7 +13,7 @@ try {
             Validator::not(
                 Validator::not(
                     Validator::not(
-                        Validator::int()->positive()
+                        Validator::intVal()->positive()
                     )
                 )
             )

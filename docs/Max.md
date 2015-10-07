@@ -6,9 +6,9 @@
 Validates if the input doesn't exceed the maximum value.
 
 ```php
-v::int()->max(15)->validate(20); //false
-v::int()->max(20)->validate(20); //false
-v::int()->max(20, true)->validate(20); //true
+v::intVal()->max(15)->validate(20); //false
+v::intVal()->max(20)->validate(20); //false
+v::intVal()->max(20, true)->validate(20); //true
 ```
 
 Also accepts dates:

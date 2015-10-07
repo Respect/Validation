@@ -15,7 +15,7 @@ class AbstractGroupedExceptionTest extends \PHPUnit_Framework_TestCase
 {
     public function testOneOrMoreGroupedExceptionsShouldBeCondensedByGetRelated()
     {
-        $int = new IntException();
+        $int = new IntValException();
         $e = new AbstractGroupedException();
         $e2 = new AbstractNestedException();
         $e->addRelated($e2);

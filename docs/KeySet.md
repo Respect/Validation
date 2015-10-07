@@ -8,7 +8,7 @@ Validates a keys in a defined structure.
 $dict = array('foo' => 42);
 
 v::keySet(
-    v::key('foo', v::int())
+    v::key('foo', v::intVal())
 )->validate($dict); //true
 ```
 
@@ -17,7 +17,7 @@ Extra keys are not allowed:
 $dict = array('foo' => 42, 'bar' => 'String');
 
 v::keySet(
-    v::key('foo', v::int())
+    v::key('foo', v::intVal())
 )->validate($dict); //false
 ```
 
@@ -26,7 +26,7 @@ Missing required keys are not allowed:
 $dict = array('foo' => 42, 'bar' => 'String');
 
 v::keySet(
-    v::key('foo', v::int()),
+    v::key('foo', v::intVal()),
     v::key('bar', v::string()),
     v::key('baz', v::boolType())
 )->validate($dict); //false
@@ -37,7 +37,7 @@ Missing non-required keys are allowed:
 $dict = array('foo' => 42, 'bar' => 'String');
 
 v::keySet(
-    v::key('foo', v::int()),
+    v::key('foo', v::intVal()),
     v::key('bar', v::string()),
     v::key('baz', v::boolType(), false)
 )->validate($dict); //true

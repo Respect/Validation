@@ -81,7 +81,7 @@ See more on [Optional](Optional.md).
 You can use the `v::not()` to negate any rule:
 
 ```php
-v::not(v::int())->validate(10); //false, input must not be integer
+v::not(v::intVal())->validate(10); //false, input must not be integer
 ```
 
 ## Validator Reuse

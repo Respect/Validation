@@ -19,7 +19,7 @@ v::notEmpty()->validate(null); //false
 Numbers:
 
 ```php
-v::int()->notEmpty()->validate(0); //false
+v::intVal()->notEmpty()->validate(0); //false
 ```
 
 Empty arrays:

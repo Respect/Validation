@@ -14,7 +14,7 @@ on IRC, or on Gitter if you feel that we forgot to respond.
 Please see the [project documentation](http://respect.github.io/Validation)
 before proceeding. You should also know about [PHP-FIG](http://www.php-fig.org)'s
 standards and basic unit testing, but we're sure you can learn that just by
-looking at other rules. Pick the simple ones like `Int` to begin.
+looking at other rules. Pick the simple ones like `IntVal` to begin.
 
 Before writing anything, make sure there is no validator that already does what
 you need. Also, it would be awesome if you

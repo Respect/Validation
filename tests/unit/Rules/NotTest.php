@@ -31,7 +31,7 @@ class NotTest extends \PHPUnit_Framework_TestCase
 
     public function testShortcutNot()
     {
-        $this->assertTrue(Validator::int()->not()->assert('afg'));
+        $this->assertTrue(Validator::intVal()->not()->assert('afg'));
     }
 
     /**
@@ -49,30 +49,30 @@ class NotTest extends \PHPUnit_Framework_TestCase
      */
     public function testShortcutNotNotHaha()
     {
-        $this->assertFalse(Validator::int()->not()->assert(10));
+        $this->assertFalse(Validator::intVal()->not()->assert(10));
     }
 
     public function providerForValidNot()
     {
         return array(
-            array(new Int(), ''),
-            array(new Int(), 'aaa'),
+            array(new IntVal(), ''),
+            array(new IntVal(), 'aaa'),
             array(new AllOf(new NoWhitespace(), new Digit()), 'as df'),
             array(new AllOf(new NoWhitespace(), new Digit()), '12 34'),
             array(new AllOf(new AllOf(new NoWhitespace(), new Digit())), '12 34'),
-            array(new AllOf(new NoneOf(new Numeric(), new Int())), 13.37),
-            array(new NoneOf(new Numeric(), new Int()), 13.37),
-            array(Validator::noneOf(Validator::numeric(), Validator::int()), 13.37),
+            array(new AllOf(new NoneOf(new Numeric(), new IntVal())), 13.37),
+            array(new NoneOf(new Numeric(), new IntVal()), 13.37),
+            array(Validator::noneOf(Validator::numeric(), Validator::intVal()), 13.37),
         );
     }
 
     public function providerForInvalidNot()
     {
         return array(
-            array(new Int(), 123),
-            array(new AllOf(new OneOf(new Numeric(), new Int())), 13.37),
-            array(new OneOf(new Numeric(), new Int()), 13.37),
-            array(Validator::oneOf(Validator::numeric(), Validator::int()), 13.37),
+            array(new IntVal(), 123),
+            array(new AllOf(new OneOf(new Numeric(), new IntVal())), 13.37),
+            array(new OneOf(new Numeric(), new IntVal()), 13.37),
+            array(Validator::oneOf(Validator::numeric(), Validator::intVal()), 13.37),
         );
     }
 }

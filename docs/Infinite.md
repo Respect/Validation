@@ -13,5 +13,5 @@ See also:
 
   * [Digit](Digit.md)
   * [Finite](Finite.md)
-  * [Int](Int.md)
+  * [IntVal](IntVal.md)
   * [Numeric](Numeric.md)

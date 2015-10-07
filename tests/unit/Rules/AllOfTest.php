@@ -20,7 +20,7 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
 {
     public function testRemoveRulesShouldRemoveAllRules()
     {
-        $o = new AllOf(new Int(), new Positive());
+        $o = new AllOf(new IntVal(), new Positive());
         $o->removeRules();
         $this->assertEquals(0, count($o->getRules()));
     }
@@ -30,7 +30,7 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
         $o = new AllOf();
         $o->addRules(
             array(
-                array($x = new Int(), new Positive()),
+                array($x = new IntVal(), new Positive()),
             )
         );
         $this->assertTrue($o->hasRule($x));

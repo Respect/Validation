@@ -6,7 +6,7 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator;
 
-var_dump(Validator::not(Validator::int())->validate(10));
+var_dump(Validator::not(Validator::intVal())->validate(10));
 ?>
 --EXPECTF--
 bool(false)

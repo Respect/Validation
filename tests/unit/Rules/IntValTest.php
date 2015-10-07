@@ -13,16 +13,16 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Int
- * @covers Respect\Validation\Exceptions\IntException
+ * @covers Respect\Validation\Rules\IntVal
+ * @covers Respect\Validation\Exceptions\IntValException
  */
-class IntTest extends \PHPUnit_Framework_TestCase
+class IntValTest extends \PHPUnit_Framework_TestCase
 {
     protected $intValidator;
 
     protected function setUp()
     {
-        $this->intValidator = new Int();
+        $this->intValidator = new IntVal();
     }
 
     /**
@@ -37,7 +37,7 @@ class IntTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotInt
-     * @expectedException Respect\Validation\Exceptions\IntException
+     * @expectedException Respect\Validation\Exceptions\IntValException
      */
     public function testInvalidIntegersShouldThrowIntException($input)
     {
