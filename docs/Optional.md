@@ -25,4 +25,4 @@ See also:
 
   * [NotEmpty](NotEmpty.md)
   * [NoWhitespace](NoWhitespace.md)
-  * [NullValue](NullValue.md)
+  * [NullType](NullType.md)

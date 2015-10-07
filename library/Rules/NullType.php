@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
-class NullValue extends NotEmpty
+class NullType extends NotEmpty
 {
     public function validate($input)
     {
