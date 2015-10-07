@@ -24,9 +24,9 @@ All notable changes of the Respect\Validation releases are documented in this fi
 
 ### Changed
 
-- `AbstractRelated` (`Attribute`, `Call` and `Key`) define names for child rules (#365)
 - Add country code to the message of "PostalCode" exception rule (#413)
 - New generic top-level domains (#368)
+- On `AbstractRelated` (`Attribute`, `Call` and `Key`) define names for child rules (#365)
 - On exceptions, convert `Array` to string (#387)
 - On exceptions, convert `Exception` to string (#399)
 - On exceptions, convert `Traversable` to string (#399)
@@ -34,10 +34,13 @@ All notable changes of the Respect\Validation releases are documented in this fi
 - On exceptions, do not display parent message then rule has only one child (#407)
 - On exceptions, improve `Object` conversion to string (#399)
 - On exceptions, improve conversion of all values by using JSON (#399)
+- Rename rule "Arr" to "ArrayVal"
 - Rename rule "Bool" to "BoolType" (#426)
 - Rename rule "False" to "FalseVal" (#426)
 - Rename rule "Float" to "FloatVal" (#426)
 - Rename rule "Int" to "IntVal" (#426)
+- Rename rule "NullValue" to "NullType"
+- Rename rule "Object" to "ObjectType"
 - Rename rule "String" to "StringType" (#426)
 - Rename rule "True" to "TrueVal" (#426)
 - Use `filter_var()` on "TrueVal" and "FalseVal" rules (#409)
