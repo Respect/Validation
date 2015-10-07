@@ -24,7 +24,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator alpha(string $additionalChars = null)
  * @method static Validator alwaysInvalid()
  * @method static Validator alwaysValid()
- * @method static Validator arr()
+ * @method static Validator arrayVal()
  * @method static Validator attribute(string $reference, Validatable $validator = null, bool $mandatory = true)
  * @method static Validator bank(string $countryCode)
  * @method static Validator bankAccount(string $countryCode)

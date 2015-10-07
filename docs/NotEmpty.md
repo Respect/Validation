@@ -25,7 +25,7 @@ v::intVal()->notEmpty()->validate(0); //false
 Empty arrays:
 
 ```php
-v::arr()->notEmpty()->validate(array()); //false
+v::arrayVal()->notEmpty()->validate(array()); //false
 ```
 
 Whitespace:

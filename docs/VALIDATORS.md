@@ -2,7 +2,7 @@
 
 ## Types
 
-  * [Arr](Arr.md)
+  * [ArrayVal](ArrayVal.md)
   * [BoolType](BoolType.md)
   * [CallableType](CallableType.md)
   * [Date](Date.md)
@@ -92,7 +92,7 @@
 
 ## Arrays
 
-  * [Arr](Arr.md)
+  * [ArrayVal](ArrayVal.md)
   * [Contains](Contains.md)
   * [Each](Each.md)
   * [EndsWith](EndsWith.md)
@@ -182,7 +182,7 @@
   * [Alpha](Alpha.md)
   * [AlwaysInvalid](AlwaysInvalid.md)
   * [AlwaysValid](AlwaysValid.md)
-  * [Arr](Arr.md)
+  * [ArrayVal](ArrayVal.md)
   * [Attribute](Attribute.md)
   * [Bank](Bank.md)
   * [BankAccount](BankAccount.md)

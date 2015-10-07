@@ -1,12 +1,12 @@
-# Arr
+# ArrayVal
 
-- `v::arr()`
+- `v::arrayVal()`
 
 Validates if the input is an array or traversable object.
 
 ```php
-v::arr()->validate(array()); //true
-v::arr()->validate(new ArrayObject); //true
+v::arrayVal()->validate(array()); //true
+v::arrayVal()->validate(new ArrayObject); //true
 ```
 
 ***
