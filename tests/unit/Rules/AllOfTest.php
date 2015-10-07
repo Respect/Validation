@@ -88,13 +88,12 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerStaticDummyRules
+     * @expectedException Respect\Validation\Exceptions\ValidationException
      */
-    public function testValidationCheckShouldNotFailOnEmptyInput($v1, $v2, $v3)
+    public function testValidationCheckShouldFailOnEmptyInput($v1, $v2, $v3)
     {
         $o = new AllOf($v1, $v2, $v3);
-        $this->assertTrue($o->__invoke(''));
         $this->assertTrue($o->check(''));
-        $this->assertTrue($o->assert(''));
     }
 
     /**

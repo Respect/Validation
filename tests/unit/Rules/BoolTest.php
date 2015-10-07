@@ -21,7 +21,6 @@ class BoolTest extends \PHPUnit_Framework_TestCase
     public function testBooleanValuesONLYShouldReturnTrue()
     {
         $validator = new Bool();
-        $this->assertTrue($validator->__invoke(''));
         $this->assertTrue($validator->__invoke(true));
         $this->assertTrue($validator->__invoke(false));
         $this->assertTrue($validator->assert(true));
@@ -42,6 +41,7 @@ class BoolTest extends \PHPUnit_Framework_TestCase
     public function testInvalidBooleanValuesShouldReturnFalse()
     {
         $validator = new Bool();
+        $this->assertFalse($validator->__invoke(''));
         $this->assertFalse($validator->__invoke('foo'));
         $this->assertFalse($validator->__invoke(123123));
         $this->assertFalse($validator->__invoke(new \stdClass()));

@@ -43,7 +43,6 @@ class StartsWithTest extends \PHPUnit_Framework_TestCase
     public function providerForStartsWith()
     {
         return array(
-            array('foo', ''),
             array('foo', array('foo', 'bar')),
             array('foo', 'FOObarbaz'),
             array('foo', 'foobarbaz'),
@@ -56,6 +55,7 @@ class StartsWithTest extends \PHPUnit_Framework_TestCase
     public function providerForNotStartsWith()
     {
         return array(
+            array('foo', ''),
             array('bat', array('foo', 'bar')),
             array('foo', 'barfaabaz'),
             array('foo', 'FOObarbaz', true),

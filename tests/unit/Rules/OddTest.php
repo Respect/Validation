@@ -48,7 +48,6 @@ class OddTest extends \PHPUnit_Framework_TestCase
     public function providerForOdd()
     {
         return array(
-            array(''),
             array(-5),
             array(-1),
             array(1),
@@ -59,6 +58,7 @@ class OddTest extends \PHPUnit_Framework_TestCase
     public function providerForNotOdd()
     {
         return array(
+            array(''),
             array(-2),
             array(-0),
             array(0),

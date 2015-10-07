@@ -65,13 +65,6 @@ class BaseTest extends \PHPUnit_Framework_TestCase
     public function providerForBase()
     {
         return array(
-            array(2, ''),
-            array(3, ''),
-            array(8, ''),
-            array(16, ''),
-            array(20, ''),
-            array(50, ''),
-            array(62, ''),
             array(2, '011010001'),
             array(3, '0120122001'),
             array(8, '01234567520'),
@@ -85,6 +78,13 @@ class BaseTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidBase()
     {
         return array(
+            array(2, ''),
+            array(3, ''),
+            array(8, ''),
+            array(16, ''),
+            array(20, ''),
+            array(50, ''),
+            array(62, ''),
             array(2, '01210103001'),
             array(3, '0120125f2001'),
             array(8, '01234dfZ567520'),

@@ -78,7 +78,6 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
     public function providerForValidAlpha()
     {
         return array(
-            array('', ''),
             array('alganet', ''),
             array('alganet', 'alganet'),
             array('0alg-anet0', '0-9'),
@@ -98,6 +97,7 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidAlpha()
     {
         return array(
+            array('', ''),
             array('@#$', ''),
             array('_', ''),
             array('dgç', ''),

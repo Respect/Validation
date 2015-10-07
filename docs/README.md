@@ -53,18 +53,6 @@ Note that we used `v::string()` and `v::date()` in the beginning of the validato
 Although is not mandatory, it is a good practice to use the type of the
 validated object as the first node in the chain.
 
-## Input optional
-
-All validators treat input as optional and will accept empty string input as valid,
-unless otherwise stated in the documentation.
-
-We use the `v:notEmpty()` validator prefixed to disallow empty input and effectively
-define the field as mandatory as input will be required or validation will fail.
-
-```php
-v::string()->notEmpty()->validate(''); //false input required
-```
-
 ## Negating Rules
 
 You can use the `v::not()` to negate any rule:

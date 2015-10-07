@@ -22,6 +22,10 @@ abstract class AbstractSearcher extends AbstractRule
             return in_array($input, $this->haystack);
         }
 
+        if ($input === null || $input === '') {
+            return ($input == $this->haystack);
+        }
+
         return (false !== mb_stripos($this->haystack, $input, 0, mb_detect_encoding($input)));
     }
 
@@ -29,6 +33,10 @@ abstract class AbstractSearcher extends AbstractRule
     {
         if (is_array($this->haystack)) {
             return in_array($input, $this->haystack, true);
+        }
+
+        if ($input === null || $input === '') {
+            return ($input === $this->haystack);
         }
 
         return (false !== mb_strpos($this->haystack, $input, 0, mb_detect_encoding($input)));

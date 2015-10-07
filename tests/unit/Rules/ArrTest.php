@@ -52,7 +52,6 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     public function providerForArray()
     {
         return array(
-            array(''),
             array(array()),
             array(array(1, 2, 3)),
             array(new TestAccess()),
@@ -69,6 +68,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     public function providerForNotArray()
     {
         return array(
+            array(''),
             array(null),
             array(121),
             array(new \stdClass()),

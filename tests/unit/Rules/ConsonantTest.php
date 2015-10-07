@@ -76,7 +76,6 @@ class ConsonantTest extends \PHPUnit_Framework_TestCase
     public function providerForValidConsonants()
     {
         return array(
-            array(''),
             array('b'),
             array('c'),
             array('d'),
@@ -94,6 +93,7 @@ class ConsonantTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidConsonants()
     {
         return array(
+            array(''),
             array(null),
             array('16'),
             array('aeiou'),

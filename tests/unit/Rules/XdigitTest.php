@@ -65,7 +65,6 @@ class XdigitTest extends \PHPUnit_Framework_TestCase
     public function providerForXdigit()
     {
         return array(
-            array(''),
             array('FFF'),
             array('15'),
             array('DE12FA'),
@@ -77,6 +76,7 @@ class XdigitTest extends \PHPUnit_Framework_TestCase
     public function providerForNotXdigit()
     {
         return array(
+            array(''),
             array(null),
             array('j'),
             array(' '),

@@ -48,7 +48,6 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
     public function providerForObject()
     {
         return array(
-            array(''),
             array(new \stdClass()),
             array(new \ArrayObject()),
         );
@@ -57,6 +56,7 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
     public function providerForNotObject()
     {
         return array(
+            array(''),
             array(null),
             array(121),
             array(array()),

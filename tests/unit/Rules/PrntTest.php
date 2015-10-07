@@ -76,7 +76,6 @@ class PrntTest extends \PHPUnit_Framework_TestCase
     public function providerForValidPrint()
     {
         return array(
-            array(''),
             array(' '),
             array('LKA#@%.54'),
             array('foobar'),
@@ -90,6 +89,7 @@ class PrntTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidPrint()
     {
         return array(
+            array(''),
             array(null),
             array('foo'.chr(7).'bar'),
             array('foo'.chr(10).'bar'),

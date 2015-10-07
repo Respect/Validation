@@ -42,10 +42,12 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($rule->validate(new \stdClass()));
     }
 
-    public function testCallbackValidatorShouldReturnTrueForEmptyString()
+    /**
+     * @expectedException Respect\Validation\Exceptions\CallbackException
+     */
+    public function testCallbackValidatorShouldReturnFalseForEmptyString()
     {
-        $this->assertTrue($this->truthy->assert(''));
-        $this->assertTrue($this->falsy->assert(''));
+        $this->falsy->assert('');
     }
 
     public function testCallbackValidatorShouldReturnTrueIfCallbackReturnsTrue()

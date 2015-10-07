@@ -28,14 +28,30 @@ class KeyTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($validator->validate($obj));
     }
 
-    public function testEmptyInputMustReturnTrue()
+    public function testEmptyInputMustReturnFalse()
     {
         $validator = new Key('someEmptyKey');
         $input = '';
 
-        $this->assertTrue($validator->assert($input));
-        $this->assertTrue($validator->check($input));
-        $this->assertTrue($validator->validate($input));
+        $this->assertFalse($validator->validate($input));
+    }
+
+    /**
+     * @expectedException Respect\Validation\Exceptions\KeyException
+     */
+    public function testEmptyInputMustNotAssert()
+    {
+        $validator = new Key('someEmptyKey');
+        $validator->assert('');
+    }
+
+    /**
+     * @expectedException Respect\Validation\Exceptions\KeyException
+     */
+    public function testEmptyInputMustNotCheck()
+    {
+        $validator = new Key('someEmptyKey');
+        $validator->check('');
     }
 
     public function testArrayWithEmptyKeyShouldReturnTrue()

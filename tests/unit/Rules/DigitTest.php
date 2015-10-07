@@ -76,7 +76,6 @@ class DigitTest extends \PHPUnit_Framework_TestCase
     public function providerForValidDigits()
     {
         return array(
-            array(''),
             array("\n\t"),
             array(' '),
             array(165),
@@ -93,6 +92,7 @@ class DigitTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidDigits()
     {
         return array(
+            array(''),
             array(null),
             array('16-50'),
             array('a'),

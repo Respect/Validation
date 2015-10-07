@@ -48,7 +48,6 @@ class SlugTest extends \PHPUnit_Framework_TestCase
     public function providerValidSlug()
     {
         return array(
-            array(''),
             array('o-rato-roeu-o-rei-de-roma'),
             array('o-alganet-e-um-feio'),
             array('a-e-i-o-u'),
@@ -59,6 +58,7 @@ class SlugTest extends \PHPUnit_Framework_TestCase
     public function providerInvalidSlug()
     {
         return array(
+            array(''),
             array('o-alganet-é-um-feio'),
             array('á-é-í-ó-ú'),
             array('-assim-nao-pode'),

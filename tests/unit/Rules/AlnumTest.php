@@ -78,7 +78,6 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
     public function providerForValidAlnum()
     {
         return array(
-            array('', ''),
             array('alganet', ''),
             array('alganet', 'alganet'),
             array('0alg-anet0', '0-9'),
@@ -100,6 +99,7 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidAlnum()
     {
         return array(
+            array('', ''),
             array('@#$', ''),
             array('_', ''),
             array('dgç', ''),
