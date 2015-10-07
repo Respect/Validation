@@ -274,3 +274,4 @@ See also:
 - [Installation](INSTALL.md)
 - [License](../LICENSE.md)
 - [Validators](VALIDATORS.md)
+- [Changelog](../CHANGELOG.md)

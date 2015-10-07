@@ -294,3 +294,4 @@ See also:
 - [Feature Guide](README.md)
 - [Installation](INSTALL.md)
 - [License](../LICENSE.md)
+- [Changelog](../CHANGELOG.md)
