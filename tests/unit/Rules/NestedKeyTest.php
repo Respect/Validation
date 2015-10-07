@@ -97,24 +97,44 @@ class NestedKeyTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($dirtyPathValidator->validate($obj));
     }
 
-    public function testEmptyInputMustReturnTrue()
+    public function testEmptyInputMustReturnFalse()
     {
         $fullPathValidator = new NestedKey('bar.foo.baz');
         $halfPathValidator = new NestedKey('bar.foo');
         $dirtyPathValidator = new NestedKey('bar.foooo.');
         $obj = '';
 
-        $this->assertTrue($fullPathValidator->assert($obj));
-        $this->assertTrue($fullPathValidator->check($obj));
-        $this->assertTrue($fullPathValidator->validate($obj));
+        $this->assertFalse($fullPathValidator->validate($obj));
 
-        $this->assertTrue($halfPathValidator->assert($obj));
-        $this->assertTrue($halfPathValidator->check($obj));
-        $this->assertTrue($halfPathValidator->validate($obj));
+        $this->assertFalse($halfPathValidator->validate($obj));
 
-        $this->assertTrue($dirtyPathValidator->assert($obj));
-        $this->assertTrue($dirtyPathValidator->check($obj));
-        $this->assertTrue($dirtyPathValidator->validate($obj));
+        $this->assertFalse($dirtyPathValidator->validate($obj));
+    }
+
+    /**
+     * @expectedException \Respect\Validation\Exceptions\NestedKeyException
+     */
+    public function testEmptyInputMustNotAssert()
+    {
+        $fullPathValidator = new NestedKey('bar.foo.baz');
+        $halfPathValidator = new NestedKey('bar.foo');
+        $dirtyPathValidator = new NestedKey('bar.foooo.');
+        $obj = '';
+        
+        $this->assertFalse($halfPathValidator->assert($obj));
+    }
+
+    /**
+     * @expectedException \Respect\Validation\Exceptions\NestedKeyException
+     */
+    public function testEmptyInputMustNotCheck()
+    {
+        $fullPathValidator = new NestedKey('bar.foo.baz');
+        $halfPathValidator = new NestedKey('bar.foo');
+        $dirtyPathValidator = new NestedKey('bar.foooo.');
+        $obj = '';
+
+        $this->assertFalse($halfPathValidator->check($obj));
     }
 
     public function testArrayWithEmptyKeyShouldReturnTrue()
