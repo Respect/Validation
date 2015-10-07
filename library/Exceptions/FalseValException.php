@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class FalseException extends ValidationException
+class FalseValException extends ValidationException
 {
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(

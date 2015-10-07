@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
-class False extends AbstractRule
+class FalseVal extends AbstractRule
 {
     public function validate($input)
     {
