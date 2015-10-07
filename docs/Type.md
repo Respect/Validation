@@ -23,5 +23,5 @@ See also:
   * [IntVal](IntVal.md)
   * [ObjectType](ObjectType.md)
   * [ResourceType](ResourceType.md)
-  * [Scalar](Scalar.md)
+  * [ScalarVal](ScalarVal.md)
   * [StringType](StringType.md)

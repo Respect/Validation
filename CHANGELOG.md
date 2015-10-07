@@ -16,7 +16,7 @@ All notable changes of the Respect\Validation releases are documented in this fi
 - Create "Mimetype" rule (#361)
 - Create "Optional" rule (#423)
 - Create "ResourceType" rule (#397)
-- Create "Scalar" rule (#397)
+- Create "ScalarVal" rule (#397)
 - Create "Size" rule (#359)
 - Create "SubdivisionCode" rule for 252 countries (#411)
 - Create "VideoUrl" rule (#410)

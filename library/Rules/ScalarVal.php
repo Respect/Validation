@@ -14,7 +14,7 @@ namespace Respect\Validation\Rules;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class Scalar extends AbstractRule
+class ScalarVal extends AbstractRule
 {
     /**
      * {@inheritdoc}

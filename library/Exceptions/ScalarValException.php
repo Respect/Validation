@@ -14,7 +14,7 @@ namespace Respect\Validation\Exceptions;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ScalarException extends ValidationException
+class ScalarValException extends ValidationException
 {
     /**
      * @var array

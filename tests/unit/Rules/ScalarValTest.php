@@ -13,16 +13,16 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Scalar
- * @covers Respect\Validation\Exceptions\ScalarException
+ * @covers Respect\Validation\Rules\ScalarVal
+ * @covers Respect\Validation\Exceptions\ScalarValException
  */
-class ScalarTest extends \PHPUnit_Framework_TestCase
+class ScalarValTest extends \PHPUnit_Framework_TestCase
 {
     protected $rule;
 
     protected function setUp()
     {
-        $this->rule = new Scalar();
+        $this->rule = new ScalarVal();
     }
 
     /**
@@ -42,7 +42,7 @@ class ScalarTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ScalarException
+     * @expectedException Respect\Validation\Exceptions\ScalarValException
      * @expectedExceptionMessage null must be a scalar value
      */
     public function testShouldThrowScalarExceptionWhenChecking()

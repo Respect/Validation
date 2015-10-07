@@ -104,7 +104,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator regex(string $regex)
  * @method static Validator resourceType()
  * @method static Validator roman()
- * @method static Validator scalar()
+ * @method static Validator scalarVal()
  * @method static Validator sf(string $name, array $params = null)
  * @method static Validator size(string $minSize = null, string $maxSize = null)
  * @method static Validator slug()
