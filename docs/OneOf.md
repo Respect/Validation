@@ -7,12 +7,12 @@ This is a group validator that acts as an OR operator.
 ```php
 v::oneOf(
     v::int(),
-    v::float()
+    v::floatVal()
 )->validate(15.5); //true
 ```
 
 In the sample above, `v::int()` doesn't validates, but
-`v::float()` validates, so oneOf returns true.
+`v::floatVal()` validates, so oneOf returns true.
 
 `v::oneOf` returns true if at least one inner validator
 passes.
@@ -20,7 +20,7 @@ passes.
 Using a shortcut
 
 ```php
-v::int()->addOr(v::float())->validate(15.5); //true
+v::int()->addOr(v::floatVal())->validate(15.5); //true
 ```
 
 ***

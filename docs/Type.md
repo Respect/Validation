@@ -17,7 +17,7 @@ See also:
   * [BoolType](BoolType.md)
   * [CallableType](CallableType.md)
   * [Finite](Finite.md)
-  * [Float](Float.md)
+  * [FloatVal](FloatVal.md)
   * [Infinite](Infinite.md)
   * [Instance](Instance.md)
   * [Int](Int.md)

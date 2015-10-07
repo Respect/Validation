@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class FloatException extends ValidationException
+class FloatValException extends ValidationException
 {
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(

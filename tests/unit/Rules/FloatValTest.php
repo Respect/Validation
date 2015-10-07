@@ -13,16 +13,16 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Float
- * @covers Respect\Validation\Exceptions\FloatException
+ * @covers Respect\Validation\Rules\FloatVal
+ * @covers Respect\Validation\Exceptions\FloatValException
  */
-class FloatTest extends \PHPUnit_Framework_TestCase
+class FloatValTest extends \PHPUnit_Framework_TestCase
 {
     protected $floatValidator;
 
     protected function setUp()
     {
-        $this->floatValidator = new Float();
+        $this->floatValidator = new FloatVal();
     }
 
     /**
@@ -37,7 +37,7 @@ class FloatTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotFloat
-     * @expectedException Respect\Validation\Exceptions\FloatException
+     * @expectedException Respect\Validation\Exceptions\FloatValException
      */
     public function testNotFloatNumbersShouldFail($input)
     {

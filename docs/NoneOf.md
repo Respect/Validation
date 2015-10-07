@@ -7,7 +7,7 @@ Validates if NONE of the given validators validate:
 ```php
 v::noneOf(
     v::int(),
-    v::float()
+    v::floatVal()
 )->validate('foo'); //true
 ```
 
