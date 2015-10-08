@@ -47,6 +47,7 @@ class NotEmptyTest extends \PHPUnit_Framework_TestCase
         return array(
             array(1),
             array(' oi'),
+            array('0'),
             array(array(5)),
             array(array(0)),
             array(new \stdClass()),
