@@ -11,6 +11,7 @@ All notable changes of the Respect\Validation releases are documented in this fi
 - Create "Extension" rule (#360)
 - Create "Factor" rule (#405)
 - Create "Finite" rule (#397)
+- Create "Identical" rule (#442)
 - Create "Infinite" rule (#397)
 - Create "KeyNested" rule (#429)
 - Create "KeySet" rule (#374)
