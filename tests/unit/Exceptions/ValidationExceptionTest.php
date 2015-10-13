@@ -73,15 +73,6 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('foo', $x->getTemplate());
     }
 
-    /**
-     * @link https://github.com/Respect/Validation/pull/214
-     */
-    public function testFixedConstEqualsException()
-    {
-        $this->assertTrue(EqualsException::EQUALS === 0);
-        $this->assertTrue(EqualsException::IDENTICAL === 1);
-    }
-
     public function providerForStringify()
     {
         $object1 = new SplFileInfo('stringify.phpt'); // __toString()

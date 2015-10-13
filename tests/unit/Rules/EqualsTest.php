@@ -11,6 +11,8 @@
 
 namespace Respect\Validation\Rules;
 
+use stdClass;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Equals
@@ -21,29 +23,39 @@ class EqualsTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForEquals
      */
-    public function testStringsContainingExpectedValueShouldPass($start, $input)
+    public function testInputEqualsToExpectedValueShouldPass($compareTo, $input)
     {
-        $v = new Equals($start);
-        $this->assertTrue($v->__invoke($input));
-        $this->assertTrue($v->check($input));
-        $this->assertTrue($v->assert($input));
+        $rule = new Equals($compareTo);
+
+        $this->assertTrue($rule->validate($input));
     }
 
     /**
      * @dataProvider providerForNotEquals
-     * @expectedException Respect\Validation\Exceptions\EqualsException
      */
-    public function testStringsNotEqualsExpectedValueShouldNotPass($start, $input, $identical = false)
+    public function testInputNotEqualsToExpectedValueShouldPass($compareTo, $input)
     {
-        $v = new Equals($start, $identical);
-        $this->assertFalse($v->__invoke($input));
-        $this->assertFalse($v->assert($input));
+        $rule = new Equals($compareTo);
+
+        $this->assertFalse($rule->validate($input));
+    }
+
+    /**
+     * @expectedException Respect\Validation\Exceptions\EqualsException
+     * @expectedExceptionMessage "24" must be equals 42
+     */
+    public function testShouldThrowTheProperExceptionWhenFailure()
+    {
+        $rule = new Equals(42);
+        $rule->check('24');
     }
 
     public function providerForEquals()
     {
         return array(
             array('foo', 'foo'),
+            array(array(), array()),
+            array(new stdClass(), new stdClass()),
             array(10, '10'),
         );
     }
@@ -53,7 +65,6 @@ class EqualsTest extends \PHPUnit_Framework_TestCase
         return array(
             array('foo', ''),
             array('foo', 'bar'),
-            array(10, '10', true),
         );
     }
 }

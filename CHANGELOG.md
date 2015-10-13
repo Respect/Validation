@@ -36,6 +36,7 @@ All notable changes of the Respect\Validation releases are documented in this fi
 - On exceptions, do not display parent message then rule has only one child (#407)
 - On exceptions, improve `Object` conversion to string (#399)
 - On exceptions, improve conversion of all values by using JSON (#399)
+- Remove identical checking from "Equals" rule (#442)
 - Rename rule "Arr" to "ArrayVal"
 - Rename rule "Bool" to "BoolType" (#426)
 - Rename rule "False" to "FalseVal" (#426)
