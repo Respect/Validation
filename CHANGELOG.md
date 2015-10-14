@@ -17,6 +17,7 @@ All notable changes of the Respect\Validation releases are documented in this fi
 - Create "KeySet" rule (#374)
 - Create "KeyValue" rule (#441)
 - Create "Mimetype" rule (#361)
+- Create "NotBlank" rule (#443)
 - Create "Optional" rule (#423)
 - Create "ResourceType" rule (#397)
 - Create "ScalarVal" rule (#397)
