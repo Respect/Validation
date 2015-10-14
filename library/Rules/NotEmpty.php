@@ -17,6 +17,7 @@ class NotEmpty extends AbstractRule
     {
         if (is_string($input)) {
             $input = trim($input);
+            return isset($input[0]);
         }
 
         return !empty($input);
