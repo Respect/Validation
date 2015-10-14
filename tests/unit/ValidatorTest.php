@@ -27,16 +27,6 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     /**
      * Regression test #174.
      */
-    public function testShouldReturnANewValidatorInstanceWhenTheNotRuleIsCalledWithoutAnyArgument()
-    {
-        $validator = new Validator();
-
-        $this->assertInstanceOf('Respect\Validation\Validator', $validator->not());
-    }
-
-    /**
-     * Regression test #174.
-     */
     public function testShouldReturnValidatorInstanceWhenTheNotRuleIsCalledWithArguments()
     {
         $validator = new Validator();

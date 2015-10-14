@@ -17,12 +17,6 @@ In the sample above, `v::intVal()` doesn't validates, but
 `v::oneOf` returns true if at least one inner validator
 passes.
 
-Using a shortcut
-
-```php
-v::intVal()->addOr(v::floatVal())->validate(15.5); //true
-```
-
 ***
 See also:
 

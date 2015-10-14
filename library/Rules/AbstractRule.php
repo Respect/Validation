@@ -31,14 +31,6 @@ abstract class AbstractRule implements Validatable
         return $this->validate($input);
     }
 
-    public function addOr()
-    {
-        $rules = func_get_args();
-        array_unshift($rules, $this);
-
-        return new OneOf($rules);
-    }
-
     public function assert($input)
     {
         if ($this->__invoke($input)) {
