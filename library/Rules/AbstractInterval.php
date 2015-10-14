@@ -19,7 +19,7 @@ abstract class AbstractInterval extends AbstractRule
     public $interval;
     public $inclusive;
 
-    public function __construct($interval, $inclusive = false)
+    public function __construct($interval, $inclusive = true)
     {
         $this->interval = $interval;
         $this->inclusive = $inclusive;

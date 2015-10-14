@@ -1,7 +1,7 @@
 # Min
 
 - `v::min(mixed $minValue)`
-- `v::min(mixed $minValue, boolean $inclusive = false)`
+- `v::min(mixed $minValue, boolean $inclusive = true)`
 
 Validates if the input is greater than the minimum value.
 

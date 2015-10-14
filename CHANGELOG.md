@@ -29,6 +29,9 @@ All notable changes of the Respect\Validation releases are documented in this fi
 ### Changed
 
 - Add country code to the message of "PostalCode" exception rule (#413)
+- Make "Between" rule inclusive (#445)
+- Make "Max" rule inclusive (#445)
+- Make "Min" rule inclusive (#445)
 - New generic top-level domains (#368)
 - On `AbstractRelated` (`Attribute`, `Call` and `Key`) define names for child rules (#365)
 - On exceptions, convert `Array` to string (#387)
