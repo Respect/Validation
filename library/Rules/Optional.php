@@ -12,21 +12,17 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validatable;
-use Respect\Validation\Exceptions\ComponentException;
 
 class Optional extends AbstractWrapper
 {
-    public $optionalValues;
-
-    public function __construct(Validatable $rule, array $optionalValues = array(null, ''))
+    public function __construct(Validatable $rule)
     {
         $this->validatable = $rule;
-        $this->optionalValues = $optionalValues;
     }
 
     private function isOptional($input)
     {
-        return in_array($input, $this->optionalValues, true);
+        return in_array($input, array(null, ''), true);
     }
 
     public function assert($input)

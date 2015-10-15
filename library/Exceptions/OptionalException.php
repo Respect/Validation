@@ -15,14 +15,15 @@ class OptionalException extends ValidationException
 {
     const STANDARD = 0;
     const NAMED = 1;
+
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
             self::STANDARD => 'The value must be optional',
             self::NAMED => '{{name}} must be optional',
         ),
         self::MODE_NEGATIVE => array(
-            self::STANDARD => 'The value is required',
-            self::NAMED => '{{name}} is required',
+            self::STANDARD => 'The value must not be optional',
+            self::NAMED => '{{name}} must not be optional',
         ),
     );
 

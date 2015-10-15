@@ -72,7 +72,7 @@ v::optional(v::alpha())->validate(''); // true
 v::optional(v::alpha())->validate(null); // true
 ```
 
-By _optional_ you may interpret as `null` or an empty string (`''`).
+By _optional_ we consider `null` or an empty string (`''`).
 
 See more on [Optional](Optional.md).
 
