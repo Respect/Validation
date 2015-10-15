@@ -89,6 +89,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator not(Validatable $rule)
  * @method static Validator notBlank()
  * @method static Validator notEmpty()
+ * @method static Validator notOptional()
  * @method static Validator noWhitespace()
  * @method static Validator nullType()
  * @method static Validator numeric()
