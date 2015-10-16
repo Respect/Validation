@@ -155,6 +155,7 @@
 
 ## Other
 
+  * [Bsn](Bsn.md)
   * [Cnh](Cnh.md)
   * [Cnpj](Cnpj.md)
   * [Cpf](Cpf.md)
@@ -193,6 +194,7 @@
   * [Between](Between.md)
   * [Bic](Bic.md)
   * [BoolType](BoolType.md)
+  * [Bsn](Bsn.md)
   * [Call](Call.md)
   * [CallableType](CallableType.md)
   * [Callback](Callback.md)
