@@ -1,4 +1,4 @@
---SKIPIT--
+--SKIPIF--
 <?php
   if (defined('HHVM_VERSION')) { 
     die("skip: Not working on hhvm because of dynamic callable id"); 
