@@ -26,6 +26,6 @@ try {
 
 ?>
 --EXPECTF--
-`[object] (Closure: { })` must not be a callable
+`[object] (Closure%s: { })` must not be a callable
 "trim" must not be a callable
 `[object] (Respect\Validation\Validator: { })` must not be a callable
