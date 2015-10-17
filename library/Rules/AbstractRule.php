@@ -33,7 +33,7 @@ abstract class AbstractRule implements Validatable
 
     public function assert($input)
     {
-        if ($this->__invoke($input)) {
+        if ($this->validate($input)) {
             return true;
         }
         throw $this->reportError($input);
