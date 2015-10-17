@@ -11,10 +11,6 @@
 
 namespace Respect\Validation\Rules;
 
-class TestAccess extends \ArrayObject implements \ArrayAccess, \Countable, \Traversable
-{
-}
-
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\ArrayVal
@@ -22,50 +18,33 @@ class TestAccess extends \ArrayObject implements \ArrayAccess, \Countable, \Trav
  */
 class ArrayValTest extends \PHPUnit_Framework_TestCase
 {
-    protected $object;
-
-    protected function setUp()
-    {
-        $this->object = new ArrayVal();
-    }
-
     /**
-     * @dataProvider providerForArray
+     * @dataProvider providerValidArrayData
      */
     public function testValidArrayOrArrayObjectShouldReturnTrue($input)
     {
-        $this->assertTrue($this->object->__invoke($input));
-        $this->assertTrue($this->object->assert($input));
-        $this->assertTrue($this->object->check($input));
+        $arrayVal = new ArrayVal();
+        $this->assertTrue($arrayVal->validate($input));
     }
 
     /**
-     * @dataProvider providerForNotArray
-     * @expectedException Respect\Validation\Exceptions\ArrayValException
+     * @dataProvider providerInvalidArrayData
      */
-    public function testNotArraysShouldThrowArrException($input)
+    public function testInvalidArgumentShouldReturnFalse($input)
     {
-        $this->assertFalse($this->object->__invoke($input));
-        $this->assertFalse($this->object->assert($input));
+        $arrayVal = new ArrayVal();
+        $this->assertFalse($arrayVal->validate($input));
     }
 
-    public function providerForArray()
+    public function providerValidArrayData()
     {
         return array(
-            array(array()),
             array(array(1, 2, 3)),
-            array(new TestAccess()),
-        );
-
-        $validator = v::alnum()->length(1, 10);
-
-        $validator = new \Respect\Validation\Rules\AllOf(
-            new Respect\Validation\Rules\Alnum(),
-            new Respect\Validation\Rules\Length(1, 10)
+            array(new \ArrayObject()),
         );
     }
 
-    public function providerForNotArray()
+    public function providerInvalidArrayData()
     {
         return array(
             array(''),
