@@ -11,9 +11,6 @@
 
 namespace Respect\Validation\Rules;
 
-use ArrayAccess;
-use Traversable;
-
 class Countable extends AbstractRule
 {
     public function validate($input)

@@ -42,8 +42,7 @@ class CountableTest extends \PHPUnit_Framework_TestCase
             array('1'),
             array(1.0),
             array(PHP_INT_MAX),
-            array(true),
-            array(new \MultipleIterator()),
+            array(true)
         );
     }
 

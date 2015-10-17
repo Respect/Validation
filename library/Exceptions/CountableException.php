@@ -15,10 +15,10 @@ class CountableException extends ValidationException
 {
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
-            self::STANDARD => '{{name}} must be an array',
+            self::STANDARD => '{{name}} must be a countable',
         ),
         self::MODE_NEGATIVE => array(
-            self::STANDARD => '{{name}} must not be an array',
+            self::STANDARD => '{{name}} must not be a countable',
         ),
     );
 }
