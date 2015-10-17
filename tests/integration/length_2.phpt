@@ -19,7 +19,7 @@ try {
 }
 
 try {
-    v::length(2, 5)->check('phpsp.org.br');
+    v::not(v::length(5, 20))->check('phpsp.org.br');
 } catch (LengthException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }
@@ -28,4 +28,4 @@ try {
 --EXPECTF--
 "nawarian" must have a length lower than 5
 "phpsp.org.br" must have a length greater than 13
-"phpsp.org.br" must have a length between 2 and 5
+"phpsp.org.br" must not have a length between 5 and 20
