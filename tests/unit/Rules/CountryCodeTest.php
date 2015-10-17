@@ -13,8 +13,7 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Ip
- * @covers Respect\Validation\Exceptions\IpException
+ * @covers Respect\Validation\Rules\CountryCode
  */
 class CountryCodeTest extends \PHPUnit_Framework_TestCase
 {
