@@ -6,7 +6,8 @@ use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\CallableTypeException;
 
 try {
-  v::not(v::callableType())->check(function () {});
+  $x = function(){};
+  v::not(v::callableType())->check($x);
 } catch (CallableTypeException $e) {
   echo $e->getMainMessage().PHP_EOL;
 }
