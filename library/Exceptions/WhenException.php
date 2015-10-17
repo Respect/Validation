@@ -13,4 +13,12 @@ namespace Respect\Validation\Exceptions;
 
 class WhenException extends ValidationException
 {
+    public static $defaultTemplates = array(
+        self::MODE_DEFAULT => array(
+            self::STANDARD => 'Data validation failed for {{name}}',
+        ),
+        self::MODE_NEGATIVE => array(
+            self::STANDARD => 'Data validation failed for {{name}}',
+        ),
+    );
 }
