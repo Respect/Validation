@@ -15,3 +15,5 @@ v::countable()->validate('string'); // false
 See also:
 
   * [ArrayVal](ArrayVal.md)
+  * [Instance](Instance.md)
+  * [Iterable](Iterable.md)
