@@ -1,4 +1,5 @@
 .couscous/
+composer.lock
 Makefile
 phpunit.xml
 vendor/
