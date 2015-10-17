@@ -17,7 +17,14 @@ try {
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }
+
+try {
+    v::not(v::notOptional()->setName('Field'))->assert(array());
+} catch (AllOfException $e) {
+    echo $e->getFullMessage().PHP_EOL;
+}
 ?>
 --EXPECTF--
 The value must be optional
 \-{ } must be optional
+\-Field must be optional
