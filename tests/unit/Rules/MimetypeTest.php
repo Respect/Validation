@@ -95,9 +95,9 @@ class MimetypeTest extends PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Respect\Validation\Exceptions\MimetypeException
-     * @expectedExceptionMessageRegExp #".+/MimetypeTest.php" must have "application.?/json" mimetype#
+     * @expectedExceptionMessageRegExp #".+MimetypeTest.php" must have "application.?/json" mimetype#
      */
-    public function testShouldThowsMimetypeExceptionWhenCheckingValue()
+    public function testShouldThrowMimetypeExceptionWhenCheckingValue()
     {
         $rule = new Mimetype('application/json');
         $rule->check(__FILE__);
