@@ -39,6 +39,22 @@ class NotTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($not->assert($input));
     }
 
+    /**
+    * @dataProvider providerForTestAssert
+    **/
+    public function testAssert($input)
+    {
+        $not = new Not($input);
+        $this->assertTrue($not->assert($input));
+    }
+
+    public function providerForTestAssert()
+    {
+        return array(
+            array(new IntVal())
+        );
+    }
+
     public function providerForValidNot()
     {
         return array(
