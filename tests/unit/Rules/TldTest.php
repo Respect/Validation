@@ -13,11 +13,11 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\IntType
+ * @covers Respect\Validation\Rules\Tld
  */
 class TldTest extends \PHPUnit_Framework_TestCase
 {
-    public function providerForValidIntType()
+    public function providerForValidTld()
     {
         return array(
             array('com'),
@@ -30,16 +30,16 @@ class TldTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerForValidIntType
+     * @dataProvider providerForValidTld
      */
-    public function testShouldValidateInputWhenItIsAValidIntType($input)
+    public function testShouldValidateInputWhenItIsAValidTld($input)
     {
         $rule = new Tld();
 
         $this->assertTrue($rule->validate($input));
     }
 
-    public function providerForInvalidIntType()
+    public function providerForInvalidTld()
     {
         return array(
             array('1'),
@@ -50,9 +50,9 @@ class TldTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerForInvalidIntType
+     * @dataProvider providerForInvalidIntTld
      */
-    public function testShouldInvalidateInputWhenItIsNotAValidIntType($input)
+    public function testShouldInvalidateInputWhenItIsNotAValidTld($input)
     {
         $rule = new Tld();
 
