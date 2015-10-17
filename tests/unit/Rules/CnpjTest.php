@@ -36,9 +36,33 @@ class CnpjTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerValidUnformattedCnpj
      */
-    public function testUnformattedCnpjsShouldValidates($input)
+    public function testUnformattedCnpjsShouldValidate($input)
     {
         $this->assertTrue($this->cnpjValidator->validate($input));
+    }
+
+    /**
+     * @dataProvider providerInvalidFormattedCnpj
+     */
+    public function testFormattedCnpjsShouldNotValidate($input)
+    {
+        $this->assertFalse($this->cnpjValidator->validate($input));
+    }
+
+    /**
+     * @dataProvider providerInvalidUnformattedCnpj
+     */
+    public function testUnformattedCnpjsShouldNotValidate($input)
+    {
+        $this->assertFalse($this->cnpjValidator->validate($input));
+    }
+
+    /**
+     * @dataProvider providerInvalidFormattedAndUnformattedCnpjLength
+     */
+    public function testFormattedAndUnformattedCnpjsShouldNotValidate($input)
+    {
+        $this->assertFalse($this->cnpjValidator->validate($input));
     }
 
     /**
