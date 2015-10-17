@@ -15,7 +15,7 @@ class IterableException extends ValidationException
 {
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
-            self::STANDARD => '{{name}} must be iterable',
+            self::STANDARD => '{{name}} is not a valid iterable instance',
         ),
         self::MODE_NEGATIVE => array(
             self::STANDARD => '{{name}} must not be iterable',
