@@ -37,6 +37,7 @@ All notable changes of the Respect\Validation releases are documented in this fi
 ### Changed
 
 - Add country code to the message of "PostalCode" exception rule (#413)
+- Make "ArrayVal" validate only if the input can be used as an array (#574)
 - Make "Between" rule inclusive (#445)
 - Make "Max" rule inclusive (#445)
 - Make "Min" rule inclusive (#445)
