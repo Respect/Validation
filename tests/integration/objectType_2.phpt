@@ -8,19 +8,19 @@ use Respect\Validation\Exceptions\ObjectTypeException;
 try {
     v::objectType()->check('');
 } catch (ObjectTypeException $exception) {
-    echo $exception->getMainMessage();
+    echo $exception->getMainMessage().PHP_EOL;
 }
 
 try {
     v::objectType()->check(true);
 } catch (ObjectTypeException $exception) {
-    echo $exception->getMainMessage();
+    echo $exception->getMainMessage().PHP_EOL;
 }
 
 try {
     v::objectType()->check(0);
 } catch (ObjectTypeException $exception) {
-    echo $exception->getMainMessage();
+    echo $exception->getMainMessage().PHP_EOL;
 }
 ?>
 --EXPECTF--
