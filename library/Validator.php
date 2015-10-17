@@ -68,6 +68,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator infinite()
  * @method static Validator instance(string $instanceName)
  * @method static Validator intVal()
+ * @method static Validator intType()
  * @method static Validator ip(mixed $ipOptions = null)
  * @method static Validator json()
  * @method static Validator key(string $reference, Validatable $referenceValidator = null, bool $mandatory = true)
