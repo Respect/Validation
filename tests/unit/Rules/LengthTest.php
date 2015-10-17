@@ -18,57 +18,71 @@ namespace Respect\Validation\Rules;
  */
 class LengthTest extends \PHPUnit_Framework_TestCase
 {
+
     /**
-     * @dataProvider providerForValidLength
+     * @dataProvider providerForValidLengthInclusive
      */
-    public function testLengthInsideBoundsShouldReturnTrue($string, $min, $max)
+    public function testLengthInsideBoundsForInclusiveCasesReturnTrue($string, $min, $max)
     {
-        $validator = new Length($min, $max);
-        $this->assertTrue($validator->__invoke($string));
-        $this->assertTrue($validator->check($string));
-        $this->assertTrue($validator->assert($string));
+        $validator = new Length($min, $max, true);
+        $this->assertTrue($validator->validate($string));
+    }
+
+    /**
+     * @dataProvider providerForValidLengthNonInclusive
+     */
+    public function testLengthInsideBoundsForNonInclusiveCasesShouldReturnTrue($string, $min, $max)
+    {
+        $validator = new Length($min, $max, false);
+        $this->assertTrue($validator->validate($string));
     }
 
     /**
      * @dataProvider providerForInvalidLengthInclusive
-     * @expectedException Respect\Validation\Exceptions\LengthException
      */
-    public function testLengthOutsideBoundsShouldThrowLengthException($string, $min, $max)
+    public function testLengthOutsideBoundsForInclusiveCasesReturnFalse($string, $min, $max)
     {
-        $validator = new Length($min, $max, false);
-        $this->assertfalse($validator->__invoke($string));
-        $this->assertfalse($validator->assert($string));
+        $validator = new Length($min, $max, true);
+        $this->assertfalse($validator->validate($string));
     }
 
     /**
-     * @dataProvider providerForInvalidLength
-     * @expectedException Respect\Validation\Exceptions\LengthException
+     * @dataProvider providerForInvalidLengthNonInclusive
      */
-    public function testLengthOutsideValidBoundsShouldThrowLengthException($string, $min, $max)
+    public function testLengthOutsideBoundsForNonInclusiveCasesReturnFalse($string, $min, $max)
     {
-        $validator = new Length($min, $max);
-        $this->assertFalse($validator->__invoke($string));
-        $this->assertFalse($validator->assert($string));
+        $validator = new Length($min, $max, false);
+        $this->assertfalse($validator->validate($string));
     }
 
     /**
      * @dataProvider providerForComponentException
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParametersShouldThrowComponentExceptionUponInstantiation($string, $min, $max)
+    public function testComponentExceptionsForInvalidParameters($min, $max)
     {
-        $validator = new Length($min, $max);
-        $this->assertFalse($validator->__invoke($string));
-        $this->assertFalse($validator->assert($string));
+        $buggyValidator = new Length($min, $max);
     }
 
-    public function providerForValidLength()
+    public function providerForValidLengthInclusive()
     {
         return array(
             array('alganet', 1, 15),
             array('ççççç', 4, 6),
             array(range(1, 20), 1, 30),
-            array((object) array('foo' => 'bar', 'bar' => 'baz'), 1, 2),
+            array((object) array('foo' => 'bar', 'bar' => 'baz'), 0, 2),
+            array('alganet', 1, null), //null is a valid max length, means "no maximum",
+            array('alganet', null, 15), //null is a valid min length, means "no minimum"
+        );
+    }
+
+    public function providerForValidLengthNonInclusive()
+    {
+        return array(
+            array('alganet', 1, 15),
+            array('ççççç', 4, 6),
+            array(range(1, 20), 1, 30),
+            array((object) array('foo' => 'bar', 'bar' => 'baz'), 1, 3),
             array('alganet', 1, null), //null is a valid max length, means "no maximum",
             array('alganet', null, 15), //null is a valid min length, means "no minimum"
         );
@@ -78,17 +92,17 @@ class LengthTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array('', 1, 15),
-            array('alganet', 1, 7),
-            array(range(1, 20), 1, 20),
-            array('alganet', 7, null), //null is a valid max length, means "no maximum",
-            array('alganet', null, 7), //null is a valid min length, means "no minimum"
+            array('alganet', 1, 6),
+            array(range(1, 20), 1, 19),
+            array('alganet', 8, null), //null is a valid max length, means "no maximum",
+            array('alganet', null, 6), //null is a valid min length, means "no minimum"
         );
     }
 
-    public function providerForInvalidLength()
+    public function providerForInvalidLengthNonInclusive()
     {
         return array(
-            array('alganet', 1, 3),
+            array('alganet', 1, 7),
             array((object) array('foo' => 'bar', 'bar' => 'baz'), 3, 5),
             array(range(1, 50), 1, 30),
         );
@@ -97,9 +111,9 @@ class LengthTest extends \PHPUnit_Framework_TestCase
     public function providerForComponentException()
     {
         return array(
-            array('alganet', 'a', 15),
-            array('alganet', 1, 'abc d'),
-            array('alganet', 10, 1),
+            array('a', 15),
+            array(1, 'abc d'),
+            array(10, 1),
         );
     }
 }
