@@ -6,11 +6,11 @@ use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\CreditCardException;
 
 try {
-	v::creditCard()->check('');
+	v::creditCard()->check(0);
 } catch (CreditCardException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }
 
 ?>
 --EXPECTF--
-"" must be a valid Credit Card number
+0 must be a valid Credit Card number
