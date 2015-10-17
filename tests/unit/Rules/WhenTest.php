@@ -11,83 +11,85 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Test\RuleTestCase;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\When
  * @covers Respect\Validation\Exceptions\WhenException
  */
-class WhenTest extends \PHPUnit_Framework_TestCase
+class WhenTest extends RuleTestCase
 {
-    public function testWhenHappypath()
+    public function testShouldConstructAnObjectWithoutElseRule()
     {
-        $v = new When(new IntVal(), new Between(1, 5), new NotEmpty());
-        $this->assertTrue($v->validate(3));
-        $this->assertTrue($v->validate('aaa'));
+        $v = new When($this->getRuleMock(), $this->getRuleMock());
+        $this->assertInstanceOf('\Respect\Validation\Rules\AlwaysInvalid', $v->else);
     }
 
-    public function testWhenError()
+    public function testShouldConstructAnObjectWithElseRule()
     {
-        $v = new When(new IntVal(), new Between(1, 5), new NotEmpty());
-        $this->assertFalse($v->validate(15));
-    }
-
-    public function testWhenWithoutElseHappypath()
-    {
-        $v = new When(new IntVal(), new Between(1, 5));
-
-        $this->assertTrue($v->validate(3));
-    }
-
-    public function testWhenWithoutElseError()
-    {
-        $v = new When(new StringType(), new Between(1, 5));
-
-        $this->assertFalse($v->validate(15));
+        $v = new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock());
+        $this->assertNotNull($v->else);
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\AlwaysInvalidException
-     * @expectedExceptionMessage 15 is not valid
+     * It is to provide constructor arguments and.
+     *
+     * @return array
      */
-    public function testWhenWithoutElseAssert()
+    public function providerForValidInput()
     {
-        $v = new When(new StringType(), new Between(1, 5));
-        $v->assert(15);
+        return array(
+            'int (all true)' => array(
+                new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock()),
+                42,
+            ),
+            'bool (all true)' => array(
+                new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock()),
+                true,
+            ),
+            'empty (all true)' => array(
+                new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock()),
+                '',
+            ),
+            'object (all true)' => array(
+                new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock()),
+                new \stdClass(),
+            ),
+            'empty array (all true)' => array(
+                new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock()),
+                array(),
+            ),
+            'not empty array (all true)' => array(
+                new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock()),
+                array('test'),
+            ),
+            'when = true, then = false, else = true' => array(
+                new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock(false)),
+                false,
+            ),
+
+        );
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\BetweenException
+     * @return array
      */
-    public function testWhenException()
+    public function providerForInvalidInput()
     {
-        $v = new When(new IntVal(), new Between(1, 5), new NotEmpty());
-        $this->assertFalse($v->assert(15));
-    }
-
-    /**
-     * @expectedException Respect\Validation\Exceptions\NotEmptyException
-     */
-    public function testWhenException_on_else()
-    {
-        $v = new When(new IntVal(), new Between(1, 5), new NotEmpty());
-        $this->assertFalse($v->assert(''));
-    }
-
-    /**
-     * @expectedException Respect\Validation\Exceptions\MaxException
-     */
-    public function testWhenException_failfast()
-    {
-        $v = new When(new IntVal(), new Between(1, 5), new NotEmpty());
-        $this->assertFalse($v->check(15));
-    }
-
-    /**
-     * @expectedException Respect\Validation\Exceptions\NotEmptyException
-     */
-    public function testWhenException_on_else_failfast()
-    {
-        $v = new When(new IntVal(), new Between(1, 5), new NotEmpty());
-        $this->assertFalse($v->check(''));
+        return array(
+            'when = true, then = false, else = false' => array(
+                new When($this->getRuleMock(), $this->getRuleMock(false), $this->getRuleMock(false)),
+                false,
+            ),
+            'when = true, then = false, else = true' => array(
+                new When($this->getRuleMock(), $this->getRuleMock(false), $this->getRuleMock()),
+                false,
+            ),
+            'when = false, then = false, else = false' => array(
+                new When($this->getRuleMock(false), $this->getRuleMock(false), $this->getRuleMock(false)),
+                false,
+            ),
+        );
     }
 }
