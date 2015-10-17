@@ -63,9 +63,8 @@ class CnpjTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerInvalidFormattedAndUnformattedCnpjLength
      * @expectedException Respect\Validation\Exceptions\CnpjException
      */
-    public function testCnpjsWithIncorrectLengthShouldThrowCnpjExceptionAndReturnFalse($input)
+    public function testCnpjsWithIncorrectLengthShouldThrowCnpjException($input)
     {
-        $this->assertFalse($this->cnpjValidator->validate($input));
         $this->cnpjValidator->assert($input);
     }
 
