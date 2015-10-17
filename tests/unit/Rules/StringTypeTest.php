@@ -18,31 +18,24 @@ namespace Respect\Validation\Rules;
  */
 class StringTypeTest extends \PHPUnit_Framework_TestCase
 {
-    protected $object;
-
-    protected function setUp()
-    {
-        $this->object = new StringType();
-    }
-
     /**
      * @dataProvider providerForString
      */
     public function testString($input)
     {
-        $this->assertTrue($this->object->validate($input));
-        $this->assertTrue($this->object->check($input));
-        $this->assertTrue($this->object->assert($input));
+        $rule = new StringType();
+
+        $this->assertTrue($rule->validate($input));
     }
 
     /**
      * @dataProvider providerForNotString
-     * @expectedException Respect\Validation\Exceptions\StringTypeException
      */
     public function testNotString($input)
     {
-        $this->assertFalse($this->object->validate($input));
-        $this->assertFalse($this->object->assert($input));
+        $rule = new StringType();
+
+        $this->assertFalse($rule->validate($input));
     }
 
     public function providerForString()
