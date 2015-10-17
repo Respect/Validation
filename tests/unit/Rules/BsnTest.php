@@ -45,14 +45,12 @@ class BsnTest extends PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidBsn
-     * @expectedException \Respect\Validation\Exceptions\BsnException
      *
      * @param string $input
      */
     public function testShouldNotValidateBsn($input)
     {
         $this->assertFalse($this->rule->validate($input));
-        $this->assertFalse($this->rule->assert($input));
     }
 
     /**
@@ -90,6 +88,9 @@ class BsnTest extends PHPUnit_Framework_TestCase
             array('189023323'),
             array('238150912'),
             array('382409678'),
+            array('38240.678'),
+            array('38240a678'),
+            array('abcdefghi'),
         );
     }
 }
