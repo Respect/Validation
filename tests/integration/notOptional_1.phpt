@@ -6,7 +6,8 @@ use Respect\Validation\Validator as v;
 
 v::notOptional()->check(0);
 v::notOptional()->assert(false);
+v::notOptional()->assert(array());
+v::notOptional()->check(true);
+v::notOptional()->check(PHP_EOL);
 ?>
-===DONE===
 --EXPECTF--
-===DONE===

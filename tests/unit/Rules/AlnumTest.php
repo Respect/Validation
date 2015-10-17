@@ -25,8 +25,6 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
     {
         $validator = new Alnum($additional);
         $this->assertTrue($validator->validate($validAlnum));
-        $this->assertTrue($validator->check($validAlnum));
-        $this->assertTrue($validator->assert($validAlnum));
     }
 
     /**

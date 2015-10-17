@@ -19,25 +19,39 @@ namespace Respect\Validation\Rules;
 class ContainsTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * @dataProvider providerForContainsIdentical
+     */
+    public function testStringsContainingExpectedIdenticalValueShouldPass($start, $input)
+    {
+        $v = new Contains($start, true);
+        $this->assertTrue($v->validate($input));
+    }
+
+    /**
      * @dataProvider providerForContains
      */
     public function testStringsContainingExpectedValueShouldPass($start, $input)
     {
-        $v = new Contains($start);
-        $this->assertTrue($v->__invoke($input));
-        $this->assertTrue($v->check($input));
-        $this->assertTrue($v->assert($input));
+        $v = new Contains($start, false);
+        $this->assertTrue($v->validate($input));
+    }
+
+    /**
+     * @dataProvider providerForNotContainsIdentical
+     */
+    public function testStringsNotContainsExpectedIdenticalValueShouldNotPass($start, $input)
+    {
+        $v = new Contains($start, true);
+        $this->assertFalse($v->validate($input));
     }
 
     /**
      * @dataProvider providerForNotContains
-     * @expectedException Respect\Validation\Exceptions\ContainsException
      */
-    public function testStringsNotContainsExpectedValueShouldNotPass($start, $input, $identical = false)
+    public function testStringsNotContainsExpectedValueShouldNotPass($start, $input)
     {
-        $v = new Contains($start, $identical);
-        $this->assertFalse($v->__invoke($input));
-        $this->assertFalse($v->assert($input));
+        $v = new Contains($start, false);
+        $this->assertFalse($v->validate($input));
     }
 
     public function providerForContains()
@@ -46,9 +60,20 @@ class ContainsTest extends \PHPUnit_Framework_TestCase
             array('foo', array('bar', 'foo')),
             array('foo', 'barbazFOO'),
             array('foo', 'barbazfoo'),
-            array('foo', 'foobazfoo'),
+            array('foo', 'foobazfoO'),
             array('1', array(2, 3, 1)),
-            array('1', array(2, 3, '1'), true),
+            array('1', array(2, 3, '1')),
+        );
+    }
+
+    public function providerForContainsIdentical()
+    {
+        return array(
+            array('foo', array('fool', 'foo')),
+            array('foo', 'barbazfoo'),
+            array('foo', 'foobazfoo'),
+            array('1', array(2, 3, (string) 1)),
+            array('1', array(2, 3, '1')),
         );
     }
 
@@ -58,7 +83,18 @@ class ContainsTest extends \PHPUnit_Framework_TestCase
             array('foo', ''),
             array('bat', array('bar', 'foo')),
             array('foo', 'barfaabaz'),
-            array('foo', 'barbazFOO', true),
+            array('foo', 'faabarbaz'),
+        );
+    }
+
+    public function providerForNotContainsIdentical()
+    {
+        return array(
+            array('foo', ''),
+            array('bat', array('BAT', 'foo')),
+            array('bat', array('BaT', 'Batata')),
+            array('foo', 'barfaabaz'),
+            array('foo', 'barbazFOO'),
             array('foo', 'faabarbaz'),
         );
     }

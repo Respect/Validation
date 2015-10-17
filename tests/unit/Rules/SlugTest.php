@@ -14,35 +14,27 @@ namespace Respect\Validation\Rules;
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Slug
- * @covers Respect\Validation\Exceptions\SlugException
  */
 class SlugTest extends \PHPUnit_Framework_TestCase
 {
-    protected $slug;
-
-    protected function setUp()
-    {
-        $this->slug = new Slug();
-    }
-
     /**
      * @dataProvider providerValidSlug
      */
     public function testValidSlug($input)
     {
-        $this->assertTrue($this->slug->__invoke($input));
-        $this->assertTrue($this->slug->check($input));
-        $this->assertTrue($this->slug->assert($input));
+        $rule = new Slug();
+
+        $this->assertTrue($rule->validate($input));
     }
 
     /**
      * @dataProvider providerInvalidSlug
-     * @expectedException Respect\Validation\Exceptions\SlugException
      */
     public function testInvalidSlug($input)
     {
-        $this->assertFalse($this->slug->__invoke($input));
-        $this->assertFalse($this->slug->assert($input));
+        $rule = new Slug();
+        
+        $this->assertFalse($rule->validate($input));
     }
 
     public function providerValidSlug()

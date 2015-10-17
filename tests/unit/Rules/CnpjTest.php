@@ -31,48 +31,38 @@ class CnpjTest extends \PHPUnit_Framework_TestCase
     public function testFormattedCnpjsShouldValidate($input)
     {
         $this->assertTrue($this->cnpjValidator->validate($input));
-        $this->assertTrue($this->cnpjValidator->check($input));
-        $this->assertTrue($this->cnpjValidator->assert($input));
     }
 
     /**
      * @dataProvider providerValidUnformattedCnpj
      */
-    public function testUnformattedCnpjsShouldValidates($input)
+    public function testUnformattedCnpjsShouldValidate($input)
     {
         $this->assertTrue($this->cnpjValidator->validate($input));
-        $this->assertTrue($this->cnpjValidator->check($input));
-        $this->assertTrue($this->cnpjValidator->assert($input));
     }
 
     /**
      * @dataProvider providerInvalidFormattedCnpj
-     * @expectedException Respect\Validation\Exceptions\CnpjException
      */
-    public function testInvalidCnpjShouldThrowCnpjExceptionAndReturnFalseWhenFormatted($input)
+    public function testFormattedCnpjsShouldNotValidate($input)
     {
         $this->assertFalse($this->cnpjValidator->validate($input));
-        $this->assertFalse($this->cnpjValidator->assert($input));
     }
 
     /**
      * @dataProvider providerInvalidUnformattedCnpj
-     * @expectedException Respect\Validation\Exceptions\CnpjException
      */
-    public function testInvalidCnpjShouldThrowCnpjExceptionAndReturnFalseWhenNotFormatted($input)
+    public function testUnformattedCnpjsShouldNotValidate($input)
     {
         $this->assertFalse($this->cnpjValidator->validate($input));
-        $this->assertFalse($this->cnpjValidator->assert($input));
     }
 
     /**
      * @dataProvider providerInvalidFormattedAndUnformattedCnpjLength
-     * @expectedException Respect\Validation\Exceptions\CnpjException
      */
-    public function testCnpjsWithIncorrectLengthShouldThrowCnpjExceptionAndReturnFalse($input)
+    public function testFormattedAndUnformattedCnpjsShouldNotValidate($input)
     {
         $this->assertFalse($this->cnpjValidator->validate($input));
-        $this->assertFalse($this->cnpjValidator->assert($input));
     }
 
     public function providerValidFormattedCnpj()

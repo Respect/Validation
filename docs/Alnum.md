@@ -19,7 +19,7 @@ This validator allows whitespace, if you want to
 remove them add `->noWhitespace()` to the chain:
 
 ```php
-v::alnum()->noWhitespace->validate('foo 123'); //false
+v::alnum()->noWhitespace()->validate('foo 123'); //false
 ```
 
 You can restrict case using the `->lowercase()` and
