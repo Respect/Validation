@@ -1,3 +1,9 @@
+--SKIPIT--
+<?php
+  if (defined('HHVM_VERSION')) { 
+    die("skip: Not working on hhvm because of dynamic callable id"); 
+  }
+?>
 --FILE--
 <?php
 require 'vendor/autoload.php';
@@ -26,6 +32,6 @@ try {
 
 ?>
 --EXPECTF--
-`[object] (Closure%s: { })` must not be a callable
+`[object] (Closure: { })` must not be a callable
 "trim" must not be a callable
 `[object] (Respect\Validation\Validator: { })` must not be a callable
