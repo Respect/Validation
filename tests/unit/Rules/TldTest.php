@@ -50,7 +50,7 @@ class TldTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerForInvalidIntTld
+     * @dataProvider providerForInvalidTld
      */
     public function testShouldInvalidateInputWhenItIsNotAValidTld($input)
     {
