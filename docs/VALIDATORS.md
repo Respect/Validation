@@ -3,6 +3,7 @@
 ## Types
 
   * [ArrayVal](ArrayVal.md)
+  * [ArrayType](ArrayType.md)
   * [BoolType](BoolType.md)
   * [CallableType](CallableType.md)
   * [Countable](Countable.md)
@@ -99,6 +100,7 @@
 ## Arrays
 
   * [ArrayVal](ArrayVal.md)
+  * [ArrayType](ArrayType.md)
   * [Contains](Contains.md)
   * [Each](Each.md)
   * [EndsWith](EndsWith.md)
@@ -195,6 +197,7 @@
   * [AlwaysInvalid](AlwaysInvalid.md)
   * [AlwaysValid](AlwaysValid.md)
   * [ArrayVal](ArrayVal.md)
+  * [ArrayType](ArrayType.md)
   * [Attribute](Attribute.md)
   * [Bank](Bank.md)
   * [BankAccount](BankAccount.md)
