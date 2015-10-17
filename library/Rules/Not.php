@@ -47,7 +47,6 @@ class Not extends AbstractRule
     private function absorbAllOf(AllOf $rule, $input)
     {
         $rules = $rule->getRules();
-        $current = null;
         while (($current = array_shift($rules))) {
             $rule = $current;
             if (!$rule instanceof AllOf) {
