@@ -106,12 +106,7 @@ class ValidationException extends InvalidArgumentException implements Validation
             }
         }
 
-        $options = 0;
-        if (version_compare(PHP_VERSION, '5.4.0', '>=')) {
-            $options = (JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-        }
-
-        return (@json_encode($value, $options) ?: $value);
+        return (@json_encode($value, (JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)) ?: $value);
     }
 
     /**
