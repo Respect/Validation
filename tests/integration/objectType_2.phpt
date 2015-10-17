@@ -24,6 +24,6 @@ try {
 }
 ?>
 --EXPECTF--
-"" must be of the type object
-true must be of the type object
-0 must be of the type object
+"" must be an object
+true must be an object
+0 must be an object
