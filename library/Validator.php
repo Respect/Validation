@@ -43,6 +43,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator contains(mixed $containsValue, bool $identical = false)
  * @method static Validator countable()
  * @method static Validator countryCode()
+ * @method static Validator currencyCode()
  * @method static Validator cpf()
  * @method static Validator creditCard()
  * @method static Validator date(string $format = null)

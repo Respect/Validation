@@ -132,6 +132,7 @@
 ## Regional
 
   * [CountryCode](CountryCode.md)
+  * [CurrencyCode](CurrencyCode.md)
   * [PostalCode](PostalCode.md)
   * [SubdivisionCode](SubdivisionCode.md)
   * [Tld](Tld.md)

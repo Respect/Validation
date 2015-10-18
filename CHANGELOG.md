@@ -11,6 +11,7 @@ All notable changes of the Respect\Validation releases are documented in this fi
 - Create "Bsn" rule (#450)
 - Create "CallableType" rule (#397)
 - Create "Countable" rule (#566)
+- Create "CurrencyCode" rule (#567)
 - Create "Extension" rule (#360)
 - Create "Factor" rule (#405)
 - Create "Finite" rule (#397)
