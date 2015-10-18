@@ -11,28 +11,23 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Test\RuleTestCase;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Json
  * @covers Respect\Validation\Exceptions\JsonException
  */
-class JsonTest extends \PHPUnit_Framework_TestCase
+class JsonTest extends RuleTestCase
 {
-    protected $json;
-
-    protected function setUp()
-    {
-        $this->json = new Json();
-    }
-
     /**
-     * @dataProvider providerForPass
+     * @dataProvider providerForValidInput
      */
-    public function testValidJsonsShouldReturnTrue($input)
+    public function testValidJsonsShouldReturnTrue($json, $input)
     {
-        $this->assertTrue($this->json->__invoke($input));
-        $this->assertTrue($this->json->check($input));
-        $this->assertTrue($this->json->assert($input));
+        $this->assertTrue($json->__invoke($input));
+        $this->assertTrue($json->check($input));
+        $this->assertTrue($json->assert($input));
     }
 
     /**
@@ -40,27 +35,39 @@ class JsonTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidJsonsShouldThrowJsonException()
     {
-        $this->assertFalse($this->json->__invoke('{foo:bar}'));
-        $this->assertFalse($this->json->assert('{foo:bar}'));
+        $json = new Json();
+
+        $this->assertFalse($json->__invoke('{foo:bar}'));
+        $this->assertFalse($json->assert('{foo:bar}'));
     }
 
-    public function testInvalidJsonsNotBeValid()
+    public function providerForValidInput()
     {
-        $this->assertFalse($this->json->validate(''));
-    }
+        $json = new Json();
 
-    public function providerForPass()
-    {
         return [
-            ['2'],
-            ['"abc"'],
-            ['[1,2,3]'],
-            ['["foo", "bar", "number", 1]'],
-            ['{"foo": "bar", "number":1}'],
-            ['[]'],
-            ['{}'],
-            ['false'],
-            ['null'],
+            [$json, '2'],
+            [$json, '"abc"'],
+            [$json, '[1,2,3]'],
+            [$json, '["foo", "bar", "number", 1]'],
+            [$json, '{"foo": "bar", "number":1}'],
+            [$json, '[]'],
+            [$json, '{}'],
+            [$json, 'false'],
+            [$json, 'null'],
+            [$json, ''],
+        ];
+    }
+
+    public function providerForInvalidInput()
+    {
+        $json = new Json();
+
+        return [
+            [$json, 'a'],
+            [$json, 'xx'],
+            [$json, '{foo: bar}'],
+            [$json, '{foo: "baz"}'],
         ];
     }
 }
