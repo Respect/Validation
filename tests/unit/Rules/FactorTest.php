@@ -65,27 +65,27 @@ class FactorTest extends \PHPUnit_Framework_TestCase
 
     public function providerForValidFactor()
     {
-        $tests = array(
+        $tests = [
             // Run through the first few integers.
-            array(1, 1),
-            array(2, 1),
-            array(2, 2),
-            array(3, 1),
-            array(3, 3),
-            array(4, 1),
-            array(4, 2),
-            array(4, 4),
-            array(5, 1),
-            array(5, 5),
-            array(6, 1),
-            array(6, 2),
-            array(6, 3),
-            array(6, 6),
+            [1, 1],
+            [2, 1],
+            [2, 2],
+            [3, 1],
+            [3, 3],
+            [4, 1],
+            [4, 2],
+            [4, 4],
+            [5, 1],
+            [5, 5],
+            [6, 1],
+            [6, 2],
+            [6, 3],
+            [6, 6],
             // Zero as a dividend is always a pass.
-            array(0, 0),
-            array(0, 1),
-            array(0, mt_rand()),
-        );
+            [0, 0],
+            [0, 1],
+            [0, mt_rand()],
+        ];
 
         $tests = $this->generateNegativeCombinations($tests);
 
@@ -96,17 +96,17 @@ class FactorTest extends \PHPUnit_Framework_TestCase
 
     public function providerForInvalidFactor()
     {
-        $tests = array(
+        $tests = [
             // Run through the first few integers.
-            array(3, 2),
-            array(4, 3),
-            array(5, 2),
-            array(5, 3),
-            array(5, 4),
+            [3, 2],
+            [4, 3],
+            [5, 2],
+            [5, 3],
+            [5, 4],
             // Zeros.
-            array(1, 0),
-            array(2, 0),
-        );
+            [1, 0],
+            [2, 0],
+        ];
 
         $tests = $this->generateNegativeCombinations($tests);
 
@@ -115,7 +115,7 @@ class FactorTest extends \PHPUnit_Framework_TestCase
         // Valid (but random) dividends, invalid inputs.
         $extra_tests = array_map(
             function ($test) {
-                return array(mt_rand(), $test);
+                return [mt_rand(), $test];
             },
             $this->thingsThatAreNotIntegers()
         );
@@ -129,20 +129,20 @@ class FactorTest extends \PHPUnit_Framework_TestCase
         // Invalid dividends, valid (but random) inputs.
         $tests = array_map(
             function ($test) {
-                return array($test, mt_rand());
+                return [$test, mt_rand()];
             },
             $this->thingsThatAreNotIntegers()
         );
 
         // Also check for an empty dividend string.
-        $tests[] = array('', mt_rand());
+        $tests[] = ['', mt_rand()];
 
         return $tests;
     }
 
     private function thingsThatAreNotIntegers()
     {
-        return array(
+        return [
             0.5,
             1.5,
             -0.5,
@@ -156,13 +156,13 @@ class FactorTest extends \PHPUnit_Framework_TestCase
             // Randomish string.
             uniqid('a'),
             // Non-scalars.
-            array(),
+            [],
             new \StdClass(),
             new \DateTime(),
             null,
             true,
             false,
-        );
+        ];
     }
 
     private function randomFloatBeweenZeroAndOne()
@@ -177,7 +177,7 @@ class FactorTest extends \PHPUnit_Framework_TestCase
             $tests,
             array_map(
                 function ($test) {
-                    return array(-$test[0], $test[1]);
+                    return [-$test[0], $test[1]];
                 },
                 $tests
             )
@@ -188,7 +188,7 @@ class FactorTest extends \PHPUnit_Framework_TestCase
             $tests,
             array_map(
                 function ($test) {
-                    return array($test[0], -$test[1]);
+                    return [$test[0], -$test[1]];
                 },
                 $tests
             )
@@ -206,7 +206,7 @@ class FactorTest extends \PHPUnit_Framework_TestCase
             $tests,
             array_map(
                 function ($test) {
-                    return array((string) $test[0], (string) $test[1]);
+                    return [(string) $test[0], (string) $test[1]];
                 },
                 $base_tests
             )
@@ -217,7 +217,7 @@ class FactorTest extends \PHPUnit_Framework_TestCase
             $tests,
             array_map(
                 function ($test) {
-                    return array((float) $test[0], (float) $test[1]);
+                    return [(float) $test[0], (float) $test[1]];
                 },
                 $base_tests
             )

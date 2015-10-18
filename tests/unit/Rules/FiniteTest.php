@@ -52,24 +52,24 @@ class FiniteTest extends \PHPUnit_Framework_TestCase
 
     public function providerForFinite()
     {
-        return array(
-            array('123456'),
-            array(-9),
-            array(0),
-            array(16),
-            array(2),
-            array(PHP_INT_MAX),
-        );
+        return [
+            ['123456'],
+            [-9],
+            [0],
+            [16],
+            [2],
+            [PHP_INT_MAX],
+        ];
     }
 
     public function providerForNonFinite()
     {
-        return array(
-            array(' '),
-            array(INF),
-            array(array()),
-            array(new \stdClass()),
-            array(null),
-        );
+        return [
+            [' '],
+            [INF],
+            [[]],
+            [new \stdClass()],
+            [null],
+        ];
     }
 }

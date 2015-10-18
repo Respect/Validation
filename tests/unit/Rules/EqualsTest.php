@@ -52,19 +52,19 @@ class EqualsTest extends \PHPUnit_Framework_TestCase
 
     public function providerForEquals()
     {
-        return array(
-            array('foo', 'foo'),
-            array(array(), array()),
-            array(new stdClass(), new stdClass()),
-            array(10, '10'),
-        );
+        return [
+            ['foo', 'foo'],
+            [[], []],
+            [new stdClass(), new stdClass()],
+            [10, '10'],
+        ];
     }
 
     public function providerForNotEquals()
     {
-        return array(
-            array('foo', ''),
-            array('foo', 'bar'),
-        );
+        return [
+            ['foo', ''],
+            ['foo', 'bar'],
+        ];
     }
 }

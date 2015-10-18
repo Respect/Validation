@@ -2,9 +2,9 @@
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-use Respect\Validation\Exceptions\NotEmptyException;
 use Respect\Validation\Exceptions\AllOfException;
+use Respect\Validation\Exceptions\NotEmptyException;
+use Respect\Validation\Validator as v;
 
 try {
     v::notEmpty()->setName('Field')->check(null);

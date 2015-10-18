@@ -48,22 +48,22 @@ class AgeTest extends \PHPUnit_Framework_TestCase
 
     public function providerForValidAge()
     {
-        return array(
-            array(18, null, date('Y-m-d', strtotime('-18 years'))),
-            array(18, null, date('Y-m-d', strtotime('-19 years'))),
-            array(18, null, new DateTime('-18 years')),
-            array(18, null, new DateTime('-19 years')),
+        return [
+            [18, null, date('Y-m-d', strtotime('-18 years'))],
+            [18, null, date('Y-m-d', strtotime('-19 years'))],
+            [18, null, new DateTime('-18 years')],
+            [18, null, new DateTime('-19 years')],
 
-            array(18, 50, date('Y-m-d', strtotime('-18 years'))),
-            array(18, 50, date('Y-m-d', strtotime('-50 years'))),
-            array(18, 50, new DateTime('-18 years')),
-            array(18, 50, new DateTime('-50 years')),
+            [18, 50, date('Y-m-d', strtotime('-18 years'))],
+            [18, 50, date('Y-m-d', strtotime('-50 years'))],
+            [18, 50, new DateTime('-18 years')],
+            [18, 50, new DateTime('-50 years')],
 
-            array(null, 50, date('Y-m-d', strtotime('-49 years'))),
-            array(null, 50, date('Y-m-d', strtotime('-50 years'))),
-            array(null, 50, new DateTime('-49 years')),
-            array(null, 50, new DateTime('-50 years')),
-        );
+            [null, 50, date('Y-m-d', strtotime('-49 years'))],
+            [null, 50, date('Y-m-d', strtotime('-50 years'))],
+            [null, 50, new DateTime('-49 years')],
+            [null, 50, new DateTime('-50 years')],
+        ];
     }
 
     /**
@@ -78,18 +78,18 @@ class AgeTest extends \PHPUnit_Framework_TestCase
 
     public function providerForInvalidAge()
     {
-        return array(
-            array(18, null, date('Y-m-d', strtotime('-17 years'))),
-            array(18, null, new DateTime('-17 years')),
+        return [
+            [18, null, date('Y-m-d', strtotime('-17 years'))],
+            [18, null, new DateTime('-17 years')],
 
-            array(18, 50, date('Y-m-d', strtotime('-17 years'))),
-            array(18, 50, date('Y-m-d', strtotime('-51 years'))),
-            array(18, 50, new DateTime('-17 years')),
-            array(18, 50, new DateTime('-51 years')),
+            [18, 50, date('Y-m-d', strtotime('-17 years'))],
+            [18, 50, date('Y-m-d', strtotime('-51 years'))],
+            [18, 50, new DateTime('-17 years')],
+            [18, 50, new DateTime('-51 years')],
 
-            array(null, 50, date('Y-m-d', strtotime('-51 years'))),
-            array(null, 50, new DateTime('-51 years')),
-        );
+            [null, 50, date('Y-m-d', strtotime('-51 years'))],
+            [null, 50, new DateTime('-51 years')],
+        ];
     }
 
     /**

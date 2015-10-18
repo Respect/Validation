@@ -11,8 +11,8 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Validatable;
 
 class Not extends AbstractRule
 {

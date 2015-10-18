@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class LtSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AL', // Alytus
         'KL', // Klaipeda
         'KU', // Kaunas
@@ -33,7 +33,7 @@ class LtSubdivisionCode extends AbstractSearcher
         'TE', // Telsiai
         'UT', // Utena
         'VL', // Vilnius
-    );
+    ];
 
     public $compareIdentical = true;
 }

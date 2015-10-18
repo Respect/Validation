@@ -194,7 +194,7 @@ class Validator extends AllOf
      *
      * @return Validatable
      */
-    public static function buildRule($ruleSpec, $arguments = array())
+    public static function buildRule($ruleSpec, $arguments = [])
     {
         try {
             return static::getFactory()->rule($ruleSpec, $arguments);

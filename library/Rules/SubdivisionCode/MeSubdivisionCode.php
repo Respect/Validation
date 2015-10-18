@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class MeSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Opština Andrijevica
         '02', // Opština Bar
         '03', // Opština Berane
@@ -44,7 +44,7 @@ class MeSubdivisionCode extends AbstractSearcher
         '19', // Opština Tivat
         '20', // Opština Ulcinj
         '21', // Opština Žabljak
-    );
+    ];
 
     public $compareIdentical = true;
 }

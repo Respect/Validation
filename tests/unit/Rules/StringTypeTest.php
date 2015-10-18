@@ -40,19 +40,19 @@ class StringTypeTest extends \PHPUnit_Framework_TestCase
 
     public function providerForString()
     {
-        return array(
-            array(''),
-            array('165.7'),
-        );
+        return [
+            [''],
+            ['165.7'],
+        ];
     }
 
     public function providerForNotString()
     {
-        return array(
-            array(null),
-            array(array()),
-            array(new \stdClass()),
-            array(150),
-        );
+        return [
+            [null],
+            [[]],
+            [new \stdClass()],
+            [150],
+        ];
     }
 }

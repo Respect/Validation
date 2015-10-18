@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class GtSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AV', // Alta Verapaz
         'BV', // Baja Verapaz
         'CM', // Chimaltenango
@@ -45,7 +45,7 @@ class GtSubdivisionCode extends AbstractSearcher
         'SU', // Suchitepequez
         'TO', // Totonicapan
         'ZA', // Zacapa
-    );
+    ];
 
     public $compareIdentical = true;
 }

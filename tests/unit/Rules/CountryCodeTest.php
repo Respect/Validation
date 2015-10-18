@@ -39,26 +39,26 @@ class CountryCodeTest extends \PHPUnit_Framework_TestCase
 
     public function providerForValidCountryCode()
     {
-        return array(
-            array(CountryCode::ALPHA2,  'BR'),
-            array(CountryCode::ALPHA3,  'BRA'),
-            array(CountryCode::NUMERIC, '076'),
-            array(CountryCode::ALPHA2,  'DE'),
-            array(CountryCode::ALPHA3,  'DEU'),
-            array(CountryCode::NUMERIC, '276'),
-            array(CountryCode::ALPHA2,  'US'),
-            array(CountryCode::ALPHA3,  'USA'),
-            array(CountryCode::NUMERIC, '840')
-        );
+        return [
+            [CountryCode::ALPHA2,  'BR'],
+            [CountryCode::ALPHA3,  'BRA'],
+            [CountryCode::NUMERIC, '076'],
+            [CountryCode::ALPHA2,  'DE'],
+            [CountryCode::ALPHA3,  'DEU'],
+            [CountryCode::NUMERIC, '276'],
+            [CountryCode::ALPHA2,  'US'],
+            [CountryCode::ALPHA3,  'USA'],
+            [CountryCode::NUMERIC, '840']
+        ];
     }
 
     public function providerForInvalidCountryCode()
     {
-        return array(
-            array(CountryCode::ALPHA2,  'USA'),
-            array(CountryCode::ALPHA3,  'US'),
-            array(CountryCode::NUMERIC, '000')
-        );
+        return [
+            [CountryCode::ALPHA2,  'USA'],
+            [CountryCode::ALPHA3,  'US'],
+            [CountryCode::NUMERIC, '000']
+        ];
     }
 
     /**

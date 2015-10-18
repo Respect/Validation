@@ -2,9 +2,9 @@
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-use Respect\Validation\Exceptions\NotEmptyException;
 use Respect\Validation\Exceptions\AllOfException;
+use Respect\Validation\Exceptions\NotEmptyException;
+use Respect\Validation\Validator as v;
 
 try {
     v::not(v::notEmpty())->check(1);
@@ -13,7 +13,7 @@ try {
 }
 
 try {
-    v::not(v::notEmpty())->assert(array(1));
+    v::not(v::notEmpty())->assert([1]);
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }

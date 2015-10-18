@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class ArSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'A', // Salta
         'B', // Buenos Aires Province
         'C', // Ciudad Autónoma de Buenos Aires
@@ -47,7 +47,7 @@ class ArSubdivisionCode extends AbstractSearcher
         'X', // Cordoba
         'Y', // Jujuy
         'Z', // Santa Cruz
-    );
+    ];
 
     public $compareIdentical = true;
 }

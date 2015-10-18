@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class AdSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '02', // Canillo
         '03', // Encamp
         '04', // La Massana
@@ -30,7 +30,7 @@ class AdSubdivisionCode extends AbstractSearcher
         '06', // Sant Julia de Lòria
         '07', // Andorra la Vella
         '08', // Escaldes-Engordany
-    );
+    ];
 
     public $compareIdentical = true;
 }

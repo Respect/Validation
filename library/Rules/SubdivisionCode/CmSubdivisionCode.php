@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class CmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AD', // Adamawa Province (Adamaoua)
         'CE', // Centre Province
         'EN', // Extreme North Province (Extrême-Nord)
@@ -33,7 +33,7 @@ class CmSubdivisionCode extends AbstractSearcher
         'OU', // West Province (Ouest)
         'SU', // South Province (Sud)
         'SW', // Southwest Province (Sud-Ouest).
-    );
+    ];
 
     public $compareIdentical = true;
 }

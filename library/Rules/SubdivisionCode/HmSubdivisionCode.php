@@ -22,12 +22,12 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class HmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'F', // Flat Island
         'H', // Heard Island
         'M', // McDonald Island
         'S', // Shag Island
-    );
+    ];
 
     public $compareIdentical = true;
 }

@@ -14,7 +14,7 @@ v::in('lorem ipsum')->validate('ipsum'); //true
 For arrays:
 
 ```php
-v::in(array('lorem', 'ipsum'))->validate('lorem'); //true
+v::in(['lorem', 'ipsum'])->validate('lorem'); //true
 ```
 
 A second parameter may be passed for identical comparison instead

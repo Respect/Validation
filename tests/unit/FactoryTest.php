@@ -20,7 +20,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     {
         $factory = new Factory();
 
-        $this->assertEquals(array('Respect\\Validation\\Rules\\'), $factory->getRulePrefixes());
+        $this->assertEquals(['Respect\\Validation\\Rules\\'], $factory->getRulePrefixes());
     }
 
     public function testShouldBeAbleToAppendANewPrefix()
@@ -28,7 +28,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $factory = new Factory();
         $factory->appendRulePrefix('My\\Validation\\Rules\\');
 
-        $this->assertEquals(array('Respect\\Validation\\Rules\\', 'My\\Validation\\Rules\\'), $factory->getRulePrefixes());
+        $this->assertEquals(['Respect\\Validation\\Rules\\', 'My\\Validation\\Rules\\'], $factory->getRulePrefixes());
     }
 
     public function testShouldBeAbleToPrependANewRulePrefix()
@@ -36,7 +36,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $factory = new Factory();
         $factory->prependRulePrefix('My\\Validation\\Rules\\');
 
-        $this->assertEquals(array('My\\Validation\\Rules\\', 'Respect\\Validation\\Rules\\'), $factory->getRulePrefixes());
+        $this->assertEquals(['My\\Validation\\Rules\\', 'Respect\\Validation\\Rules\\'], $factory->getRulePrefixes());
     }
 
     public function testShouldCreateARuleByName()
@@ -49,7 +49,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testShouldDefineConstructorArgumentsWhenCreatingARule()
     {
         $factory = new Factory();
-        $rule = $factory->rule('date', array('Y-m-d'));
+        $rule = $factory->rule('date', ['Y-m-d']);
 
         $this->assertEquals('Y-m-d', $rule->format);
     }

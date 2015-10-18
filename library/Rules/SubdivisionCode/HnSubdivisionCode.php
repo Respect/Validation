@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class HnSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AT', // Atlantida
         'CH', // Choluteca
         'CL', // Colon
@@ -41,7 +41,7 @@ class HnSubdivisionCode extends AbstractSearcher
         'SB', // Santa Barbara
         'VA', // Valle
         'YO', // Yoro
-    );
+    ];
 
     public $compareIdentical = true;
 }

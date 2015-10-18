@@ -22,14 +22,14 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class VcSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Charlotte
         '02', // Saint Andrew
         '03', // Saint David
         '04', // Saint George
         '05', // Saint Patrick
         '06', // Grenadines
-    );
+    ];
 
     public $compareIdentical = true;
 }

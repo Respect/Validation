@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class BgSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Blagoevgrad
         '02', // Burgas
         '03', // Varna
@@ -51,7 +51,7 @@ class BgSubdivisionCode extends AbstractSearcher
         '26', // Khaskovo
         '27', // Shumen
         '28', // Yambol
-    );
+    ];
 
     public $compareIdentical = true;
 }

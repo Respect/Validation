@@ -58,41 +58,41 @@ class PrntTest extends \PHPUnit_Framework_TestCase
 
     public function providerAdditionalChars()
     {
-        return array(
-            array("\t\n", "\t\n "),
-            array("\v\r", "\v\r "),
-        );
+        return [
+            ["\t\n", "\t\n "],
+            ["\v\r", "\v\r "],
+        ];
     }
 
     public function providerForInvalidParams()
     {
-        return array(
-            array(new \stdClass()),
-            array(array()),
-            array(0x2),
-        );
+        return [
+            [new \stdClass()],
+            [[]],
+            [0x2],
+        ];
     }
 
     public function providerForValidPrint()
     {
-        return array(
-            array(' '),
-            array('LKA#@%.54'),
-            array('foobar'),
-            array('16-50'),
-            array('123'),
-            array('foo bar'),
-            array('#$%&*_'),
-        );
+        return [
+            [' '],
+            ['LKA#@%.54'],
+            ['foobar'],
+            ['16-50'],
+            ['123'],
+            ['foo bar'],
+            ['#$%&*_'],
+        ];
     }
 
     public function providerForInvalidPrint()
     {
-        return array(
-            array(''),
-            array(null),
-            array('foo'.chr(7).'bar'),
-            array('foo'.chr(10).'bar'),
-        );
+        return [
+            [''],
+            [null],
+            ['foo'.chr(7).'bar'],
+            ['foo'.chr(10).'bar'],
+        ];
     }
 }

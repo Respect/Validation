@@ -11,9 +11,9 @@
 
 namespace Respect\Validation\Rules;
 
-use Traversable;
-use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Validatable;
+use Traversable;
 
 class Each extends AbstractRule
 {
@@ -28,7 +28,7 @@ class Each extends AbstractRule
 
     public function assert($input)
     {
-        $exceptions = array();
+        $exceptions = [];
 
         if (!is_array($input) || $input instanceof Traversable) {
             throw $this->reportError($input);

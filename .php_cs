@@ -19,11 +19,15 @@ return Symfony\CS\Config\Config::create()
         'phpdoc_separation',
         // An empty line feed should precede a return statement.
         'return',
+        // PHP arrays should use the PHP 5.4 short-syntax.
+        'short_array_syntax',
         // Remove trailing whitespace at the end of blank lines.
         'whitespacy_lines',
         // Removes extra empty lines.
         'extra_empty_lines',
         // Unused use statements must be removed.
-        'unused_use'
+        'unused_use',
+        // Ordering use statements.
+        'ordered_use',
     ))
     ->finder($finder);

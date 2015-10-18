@@ -42,25 +42,25 @@ class UppercaseTest extends \PHPUnit_Framework_TestCase
 
     public function providerForValidUppercase()
     {
-        return array(
-            array(''),
-            array('UPPERCASE'),
-            array('UPPERCASE-WITH-DASHES'),
-            array('UPPERCASE WITH SPACES'),
-            array('UPPERCASE WITH NUMBERS 123'),
-            array('UPPERCASE WITH SPECIALS CHARACTERS LIKE Ã Ç Ê'),
-            array('WITH SPECIALS CHARACTERS LIKE # $ % & * +'),
-            array('ΤΆΧΙΣΤΗ ΑΛΏΠΗΞ ΒΑΦΉΣ ΨΗΜΈΝΗ ΓΗ, ΔΡΑΣΚΕΛΊΖΕΙ ΥΠΈΡ ΝΩΘΡΟΎ ΚΥΝΌΣ'),
-        );
+        return [
+            [''],
+            ['UPPERCASE'],
+            ['UPPERCASE-WITH-DASHES'],
+            ['UPPERCASE WITH SPACES'],
+            ['UPPERCASE WITH NUMBERS 123'],
+            ['UPPERCASE WITH SPECIALS CHARACTERS LIKE Ã Ç Ê'],
+            ['WITH SPECIALS CHARACTERS LIKE # $ % & * +'],
+            ['ΤΆΧΙΣΤΗ ΑΛΏΠΗΞ ΒΑΦΉΣ ΨΗΜΈΝΗ ΓΗ, ΔΡΑΣΚΕΛΊΖΕΙ ΥΠΈΡ ΝΩΘΡΟΎ ΚΥΝΌΣ'],
+        ];
     }
 
     public function providerForInvalidUppercase()
     {
-        return array(
-            array('lowercase'),
-            array('CamelCase'),
-            array('First Character Uppercase'),
-            array('With Numbers 1 2 3'),
-        );
+        return [
+            ['lowercase'],
+            ['CamelCase'],
+            ['First Character Uppercase'],
+            ['With Numbers 1 2 3'],
+        ];
     }
 }

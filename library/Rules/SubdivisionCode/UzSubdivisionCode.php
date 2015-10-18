@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class UzSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AN', // Andijon
         'BU', // Buxoro
         'FA', // Farg'ona
@@ -37,7 +37,7 @@ class UzSubdivisionCode extends AbstractSearcher
         'TK', // Toshkent city
         'TO', // Toshkent region
         'XO', // Xorazm
-    );
+    ];
 
     public $compareIdentical = true;
 }

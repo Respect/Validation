@@ -27,7 +27,7 @@ The type as the first validator in a chain is a good practice,
 since length accepts many types:
 
 ```php
-v::arrayVal()->length(1, 5)->validate(array('foo', 'bar')); //true
+v::arrayVal()->length(1, 5)->validate(['foo', 'bar']); //true
 ```
 
 A third parameter may be passed to validate the passed values inclusive:

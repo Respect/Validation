@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
  * Validates a Dutch citizen service number (BSN)
  *
  * @author Ronald Drenth <ronalddrenth@gmail.com>
+ *
  * @see https://nl.wikipedia.org/wiki/Burgerservicenummer
  */
 class Bsn extends AbstractRule

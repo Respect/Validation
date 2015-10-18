@@ -3,8 +3,8 @@
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\StringTypeException;
+use Respect\Validation\Validator as v;
 
 try {
     v::stringType()->check(42);

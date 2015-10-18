@@ -2,9 +2,9 @@
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-use Respect\Validation\Exceptions\NotOptionalException;
 use Respect\Validation\Exceptions\AllOfException;
+use Respect\Validation\Exceptions\NotOptionalException;
+use Respect\Validation\Validator as v;
 
 try {
     v::not(v::notOptional())->check(0);
@@ -13,13 +13,13 @@ try {
 }
 
 try {
-    v::not(v::notOptional())->assert(array());
+    v::not(v::notOptional())->assert([]);
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }
 
 try {
-    v::not(v::notOptional()->setName('Field'))->assert(array());
+    v::not(v::notOptional()->setName('Field'))->assert([]);
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }

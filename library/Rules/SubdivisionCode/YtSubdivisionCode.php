@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class YtSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(null, '');
+    public $haystack = [null, ''];
 
     public $compareIdentical = true;
 }

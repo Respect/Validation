@@ -16,7 +16,7 @@ use Respect\Validation\Exceptions\ComponentException;
 
 class Factory
 {
-    protected $rulePrefixes = array('Respect\\Validation\\Rules\\');
+    protected $rulePrefixes = ['Respect\\Validation\\Rules\\'];
 
     public function getRulePrefixes()
     {
@@ -33,7 +33,7 @@ class Factory
         array_unshift($this->rulePrefixes, $rulePrefix);
     }
 
-    public function rule($ruleName, array $arguments = array())
+    public function rule($ruleName, array $arguments = [])
     {
         if ($ruleName instanceof Validatable) {
             return $ruleName;

@@ -2,9 +2,9 @@
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-use Respect\Validation\Exceptions\NotOptionalException;
 use Respect\Validation\Exceptions\AllOfException;
+use Respect\Validation\Exceptions\NotOptionalException;
+use Respect\Validation\Validator as v;
 
 try {
     v::notOptional()->check(null);

@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class BrSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AC', // Acre
         'AL', // Alagoas
         'AM', // Amazonas
@@ -50,7 +50,7 @@ class BrSubdivisionCode extends AbstractSearcher
         'SE', // Sergipe
         'SP', // Sao Paulo
         'TO', // Tocantins
-    );
+    ];
 
     public $compareIdentical = true;
 }

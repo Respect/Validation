@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class SkSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BC', // Banskobystricky
         'BL', // Bratislavsky
         'KI', // Kosicky
@@ -31,7 +31,7 @@ class SkSubdivisionCode extends AbstractSearcher
         'TA', // Trnavsky
         'TC', // Trenciansky
         'ZI', // Zilinsky
-    );
+    ];
 
     public $compareIdentical = true;
 }

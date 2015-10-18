@@ -3,8 +3,8 @@
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\SlugException;
+use Respect\Validation\Validator as v;
 
 try {
     v::not(v::slug())->check('good-and-valid-slug');

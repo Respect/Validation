@@ -55,24 +55,24 @@ class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
 
     public function providerForPass()
     {
-        return array(
-            array(''),
-            array(null),
-            array(0),
-            array('wpoiur'),
-            array('Foo'),
-        );
+        return [
+            [''],
+            [null],
+            [0],
+            ['wpoiur'],
+            ['Foo'],
+        ];
     }
 
     public function providerForFail()
     {
-        return array(
-            array(' '),
-            array('w poiur'),
-            array('      '),
-            array("Foo\nBar"),
-            array("Foo\tBar"),
-        );
+        return [
+            [' '],
+            ['w poiur'],
+            ['      '],
+            ["Foo\nBar"],
+            ["Foo\tBar"],
+        ];
     }
 
     /**
@@ -81,6 +81,6 @@ class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
      */
     public function testArrayDoesNotThrowAWarning()
     {
-        $this->noWhitespaceValidator->assert(array());
+        $this->noWhitespaceValidator->assert([]);
     }
 }

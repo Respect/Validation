@@ -15,16 +15,16 @@ class VideoUrlException extends ValidationException
 {
     const SERVICE = 1;
 
-    public static $defaultTemplates = array(
-        self::MODE_DEFAULT => array(
+    public static $defaultTemplates = [
+        self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a valid video URL',
             self::SERVICE => '{{name}} must be a valid {{service}} video URL',
-        ),
-        self::MODE_NEGATIVE => array(
+        ],
+        self::MODE_NEGATIVE => [
             self::STANDARD => '{{name}} must not be a valid video URL',
             self::SERVICE => '{{name}} must not be a valid {{service}} video URL',
-        ),
-    );
+        ],
+    ];
 
     /**
      * {@inheritdoc}

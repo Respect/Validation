@@ -41,7 +41,7 @@ v::call(
 It is possible to call methods and closures as the first parameter:
 
 ```php
-v::call(array($myObj, 'methodName'), v::intVal())->validate($myInput);
+v::call([$myObj, 'methodName'], v::intVal())->validate($myInput);
 v::call(function($input) {}, v::intVal())->validate($myInput);
 ```
 

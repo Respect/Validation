@@ -20,7 +20,7 @@ class CallTest extends \PHPUnit_Framework_TestCase
 {
     public function thisIsASampleCallbackUsedInsideThisTest()
     {
-        return array();
+        return [];
     }
 
     public function testCallbackValidatorShouldAcceptEmptyString()
@@ -37,14 +37,14 @@ class CallTest extends \PHPUnit_Framework_TestCase
 
     public function testCallbackValidatorShouldAcceptArrayCallbackDefinition()
     {
-        $v = new Call(array($this, 'thisIsASampleCallbackUsedInsideThisTest'), new ArrayVal());
+        $v = new Call([$this, 'thisIsASampleCallbackUsedInsideThisTest'], new ArrayVal());
         $this->assertTrue($v->assert('test'));
     }
 
     public function testCallbackValidatorShouldAcceptClosures()
     {
         $v = new Call(function () {
-                    return array();
+                    return [];
                 }, new ArrayVal());
         $this->assertTrue($v->assert('test'));
     }

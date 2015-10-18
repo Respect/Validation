@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class MnSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '035', // Orhon
         '037', // Darhan uul
         '039', // Hentiy
@@ -45,7 +45,7 @@ class MnSubdivisionCode extends AbstractSearcher
         '071', // Bayan-Olgiy
         '073', // Arhangay
         '1', // Ulanbaatar
-    );
+    ];
 
     public $compareIdentical = true;
 }

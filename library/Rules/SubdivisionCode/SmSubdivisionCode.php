@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class SmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Acquaviva
         '02', // Chiesanuova
         '03', // Domagnano
@@ -32,7 +32,7 @@ class SmSubdivisionCode extends AbstractSearcher
         '07', // Citta di San Marino
         '08', // Montegiardino
         '09', // Serravalle
-    );
+    ];
 
     public $compareIdentical = true;
 }

@@ -15,7 +15,7 @@ v::endsWith('ipsum')->validate('lorem ipsum'); //true
 For arrays:
 
 ```php
-v::endsWith('ipsum')->validate(array('lorem', 'ipsum')); //true
+v::endsWith('ipsum')->validate(['lorem', 'ipsum']); //true
 ```
 
 A second parameter may be passed for identical comparison instead

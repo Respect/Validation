@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class GqSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'C', // Región Continental
         'I', // Región Insular
         'AN', // Provincia Annobon
@@ -32,7 +32,7 @@ class GqSubdivisionCode extends AbstractSearcher
         'KN', // Provincia Kie-Ntem
         'LI', // Provincia Litoral
         'WN', // Provincia Wele-Nzas
-    );
+    ];
 
     public $compareIdentical = true;
 }

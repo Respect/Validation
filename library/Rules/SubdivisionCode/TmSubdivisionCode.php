@@ -22,14 +22,14 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class TmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'A', // Ahal Welayaty
         'B', // Balkan Welayaty
         'D', // Dashhowuz Welayaty
         'L', // Lebap Welayaty
         'M', // Mary Welayaty
         'S', // Aşgabat
-    );
+    ];
 
     public $compareIdentical = true;
 }

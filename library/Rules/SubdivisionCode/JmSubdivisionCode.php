@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class JmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Kingston Parish
         '02', // Saint Andrew Parish
         '03', // Saint Thomas Parish
@@ -37,7 +37,7 @@ class JmSubdivisionCode extends AbstractSearcher
         '12', // Manchester Parish
         '13', // Clarendon Parish
         '14', // Saint Catherine Parish
-    );
+    ];
 
     public $compareIdentical = true;
 }

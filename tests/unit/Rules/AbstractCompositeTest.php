@@ -29,7 +29,7 @@ class AbstractCompositeTest extends \PHPUnit_Framework_TestCase
 
         $compositeRuleMock = $this
             ->getMockBuilder('Respect\\Validation\\Rules\\AbstractComposite')
-            ->setMethods(array('validate'))
+            ->setMethods(['validate'])
             ->getMockForAbstractClass();
         $compositeRuleMock->setName($ruleName);
         $compositeRuleMock->addRule($simpleRuleMock);
@@ -60,7 +60,7 @@ class AbstractCompositeTest extends \PHPUnit_Framework_TestCase
 
         $compositeRuleMock = $this
             ->getMockBuilder('Respect\\Validation\\Rules\\AbstractComposite')
-            ->setMethods(array('validate'))
+            ->setMethods(['validate'])
             ->getMockForAbstractClass();
         $compositeRuleMock->setName($ruleName1);
         $compositeRuleMock->addRule($simpleRuleMock);
@@ -80,7 +80,7 @@ class AbstractCompositeTest extends \PHPUnit_Framework_TestCase
 
         $compositeRuleMock = $this
             ->getMockBuilder('Respect\\Validation\\Rules\\AbstractComposite')
-            ->setMethods(array('validate'))
+            ->setMethods(['validate'])
             ->getMockForAbstractClass();
         $compositeRuleMock->addRule($simpleRuleMock);
         $compositeRuleMock->setName('Whatever');
@@ -102,7 +102,7 @@ class AbstractCompositeTest extends \PHPUnit_Framework_TestCase
 
         $compositeRuleMock = $this
             ->getMockBuilder('Respect\\Validation\\Rules\\AbstractComposite')
-            ->setMethods(array('validate'))
+            ->setMethods(['validate'])
             ->getMockForAbstractClass();
         $compositeRuleMock->addRule($simpleRuleMock);
         $compositeRuleMock->setName($ruleName);
@@ -124,7 +124,7 @@ class AbstractCompositeTest extends \PHPUnit_Framework_TestCase
 
         $compositeRuleMock = $this
             ->getMockBuilder('Respect\\Validation\\Rules\\AbstractComposite')
-            ->setMethods(array('validate'))
+            ->setMethods(['validate'])
             ->getMockForAbstractClass();
         $compositeRuleMock->addRule($simpleRuleMock);
         $compositeRuleMock->setName($ruleName);
@@ -145,7 +145,7 @@ class AbstractCompositeTest extends \PHPUnit_Framework_TestCase
 
         $compositeRuleMock = $this
             ->getMockBuilder('Respect\\Validation\\Rules\\AbstractComposite')
-            ->setMethods(array('validate'))
+            ->setMethods(['validate'])
             ->getMockForAbstractClass();
         $compositeRuleMock->addRule($simpleRuleMock);
         $compositeRuleMock->setName($ruleName);

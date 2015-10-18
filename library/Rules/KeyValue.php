@@ -39,10 +39,10 @@ class KeyValue extends AbstractRule
         }
 
         try {
-            $rule = Validator::__callStatic($this->ruleName, array($input[$this->baseKey]));
+            $rule = Validator::__callStatic($this->ruleName, [$input[$this->baseKey]]);
             $rule->setName($this->comparedKey);
         } catch (ComponentException $exception) {
-            throw $this->reportError($input, array('component' => true));
+            throw $this->reportError($input, ['component' => true]);
         }
 
         return $rule;
@@ -50,9 +50,9 @@ class KeyValue extends AbstractRule
 
     private function overwriteExceptionParams(ValidationException $exception)
     {
-        $params = array();
+        $params = [];
         foreach ($exception->getParams() as $key => $value) {
-            if (in_array($key, array('template', 'translator'))) {
+            if (in_array($key, ['template', 'translator'])) {
                 continue;
             }
 

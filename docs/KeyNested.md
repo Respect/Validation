@@ -9,11 +9,11 @@ Validates an array key or an object property using `.` to represent nested data.
 Validating keys from arrays or `ArrayAccess` instances:
 
 ```php
-$array = array(
-    'foo' => array(
+$array = [
+    'foo' => [
         'bar' => 123,
-    ),
-);
+    ],
+];
 
 v::keyNested('foo.bar')->validate($array); // true
 ```

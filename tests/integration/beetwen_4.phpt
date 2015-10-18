@@ -6,10 +6,9 @@ use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\AllOfException;
 
 try {
-    v::countryCode()->assert('1');
-} catch (AllOfException $exception) {
-    echo $exception->getFullMessage();
+    v::between('a', 'b')->assert('c');
+} catch (AllOfException $e) {
+    echo $e->getFullMessage();
 }
-?>
 --EXPECTF--
-\-"1" must be a valid country
+\-"c" must be lower than or equals "b"

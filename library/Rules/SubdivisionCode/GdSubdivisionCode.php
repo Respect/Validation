@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class GdSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Saint Andrew
         '02', // Saint David
         '03', // Saint George
@@ -30,7 +30,7 @@ class GdSubdivisionCode extends AbstractSearcher
         '05', // Saint Mark
         '06', // Saint Patrick
         '10', // Southern Grenadine Islands
-    );
+    ];
 
     public $compareIdentical = true;
 }

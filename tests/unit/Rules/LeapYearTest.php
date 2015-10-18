@@ -44,6 +44,6 @@ class LeapYearTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->leapYearValidator->__invoke(2009));
         $this->assertFalse($this->leapYearValidator->__invoke(
             new DateTime('2009-02-29')));
-        $this->assertFalse($this->leapYearValidator->__invoke(array()));
+        $this->assertFalse($this->leapYearValidator->__invoke([]));
     }
 }

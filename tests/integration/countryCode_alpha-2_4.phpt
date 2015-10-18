@@ -2,14 +2,14 @@
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\AllOfException;
+use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::countryCode())->assert('BR');
+    v::countryCode()->assert('1');
 } catch (AllOfException $exception) {
     echo $exception->getFullMessage();
 }
 ?>
 --EXPECTF--
-\-"BR" must not be a valid country
+\-"1" must be a valid country

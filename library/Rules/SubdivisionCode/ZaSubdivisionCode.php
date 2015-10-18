@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class ZaSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'EC', // Eastern Cape
         'FS', // Free State
         'GP', // Gauteng
@@ -32,7 +32,7 @@ class ZaSubdivisionCode extends AbstractSearcher
         'NW', // North West
         'WC', // Western Cape
         'ZN', // KwaZulu-Natal
-    );
+    ];
 
     public $compareIdentical = true;
 }

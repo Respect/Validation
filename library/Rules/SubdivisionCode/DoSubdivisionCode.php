@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class DoSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Distrito Nacional
         '02', // Azua
         '03', // Baoruco
@@ -53,7 +53,7 @@ class DoSubdivisionCode extends AbstractSearcher
         '28', // Monsenor Nouel
         '29', // Monte Plata
         '30', // Hato Mayor
-    );
+    ];
 
     public $compareIdentical = true;
 }

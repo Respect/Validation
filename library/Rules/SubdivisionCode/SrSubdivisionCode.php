@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class SrSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BR', // Brokopondo
         'CM', // Commewijne
         'CR', // Coronie
@@ -33,7 +33,7 @@ class SrSubdivisionCode extends AbstractSearcher
         'SA', // Saramacca
         'SI', // Sipaliwini
         'WA', // Wanica
-    );
+    ];
 
     public $compareIdentical = true;
 }

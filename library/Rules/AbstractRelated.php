@@ -11,8 +11,8 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Validatable;
 
 abstract class AbstractRelated extends AbstractRule
 {
@@ -55,14 +55,14 @@ abstract class AbstractRelated extends AbstractRule
     {
         $hasReference = $this->hasReference($input);
         if ($this->mandatory && !$hasReference) {
-            throw $this->reportError($input, array('hasReference' => false));
+            throw $this->reportError($input, ['hasReference' => false]);
         }
 
         try {
             return $this->decision('assert', $hasReference, $input);
         } catch (ValidationException $e) {
             throw $this
-                ->reportError($this->reference, array('hasReference' => true))
+                ->reportError($this->reference, ['hasReference' => true])
                 ->addRelated($e);
         }
     }
@@ -71,7 +71,7 @@ abstract class AbstractRelated extends AbstractRule
     {
         $hasReference = $this->hasReference($input);
         if ($this->mandatory && !$hasReference) {
-            throw $this->reportError($input, array('hasReference' => false));
+            throw $this->reportError($input, ['hasReference' => false]);
         }
 
         return $this->decision('check', $hasReference, $input);

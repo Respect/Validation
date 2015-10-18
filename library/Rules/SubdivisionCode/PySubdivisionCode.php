@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class PySubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '1', // Concepcion
         '10', // Alto Parana
         '11', // Central
@@ -41,7 +41,7 @@ class PySubdivisionCode extends AbstractSearcher
         '8', // Misiones
         '9', // Paraguari
         'ASU', // Asuncion
-    );
+    ];
 
     public $compareIdentical = true;
 }

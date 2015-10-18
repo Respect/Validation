@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class BtSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '11', // Paro
         '12', // Chukha
         '13', // Haa
@@ -43,7 +43,7 @@ class BtSubdivisionCode extends AbstractSearcher
         '45', // Samdrup Jongkhar
         'GA', // Gasa
         'TY', // Trashi Yangste
-    );
+    ];
 
     public $compareIdentical = true;
 }

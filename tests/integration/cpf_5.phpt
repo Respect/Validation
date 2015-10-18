@@ -3,8 +3,8 @@
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\AllOfException;
+use Respect\Validation\Validator as v;
 
 try {
     v::not(v::cpf())->assert('368.928.062-10');

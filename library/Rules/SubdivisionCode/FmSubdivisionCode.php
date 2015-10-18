@@ -22,12 +22,12 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class FmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'KSA', // Kosrae
         'PNI', // Pohnpei
         'TRK', // Chuuk
         'YAP', // Yap
-    );
+    ];
 
     public $compareIdentical = true;
 }

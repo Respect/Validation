@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class KrSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '11', // Seoul Special City
         '26', // Busan Metropolitan City
         '27', // Daegu Metropolitan City
@@ -39,7 +39,7 @@ class KrSubdivisionCode extends AbstractSearcher
         '47', // Gyeongsangbuk-do
         '48', // Gyeongsangnam-do
         '49', // Jeju-do
-    );
+    ];
 
     public $compareIdentical = true;
 }

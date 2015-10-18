@@ -19,14 +19,14 @@ class TldTest extends \PHPUnit_Framework_TestCase
 {
     public function providerForValidTld()
     {
-        return array(
-            array('com'),
-            array('cafe'),
-            array('democrat'),
-            array('br'),
-            array('us'),
-            array('eu'),
-        );
+        return [
+            ['com'],
+            ['cafe'],
+            ['democrat'],
+            ['br'],
+            ['us'],
+            ['eu'],
+        ];
     }
 
     /**
@@ -41,12 +41,12 @@ class TldTest extends \PHPUnit_Framework_TestCase
 
     public function providerForInvalidTld()
     {
-        return array(
-            array('1'),
-            array(1.0),
-            array('wrongtld'),
-            array(true),
-        );
+        return [
+            ['1'],
+            [1.0],
+            ['wrongtld'],
+            [true],
+        ];
     }
 
     /**

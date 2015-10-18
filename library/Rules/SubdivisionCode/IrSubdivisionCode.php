@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class IrSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // East Azarbaijan
         '02', // West Azarbaijan
         '03', // Ardabil
@@ -54,7 +54,7 @@ class IrSubdivisionCode extends AbstractSearcher
         '30', // Razavi Khorasan
         '31', // North Khorasan
         '09', // Khorāsān
-    );
+    ];
 
     public $compareIdentical = true;
 }

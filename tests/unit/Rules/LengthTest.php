@@ -65,54 +65,54 @@ class LengthTest extends \PHPUnit_Framework_TestCase
 
     public function providerForValidLengthInclusive()
     {
-        return array(
-            array('alganet', 1, 15),
-            array('ççççç', 4, 6),
-            array(range(1, 20), 1, 30),
-            array((object) array('foo' => 'bar', 'bar' => 'baz'), 0, 2),
-            array('alganet', 1, null), //null is a valid max length, means "no maximum",
-            array('alganet', null, 15), //null is a valid min length, means "no minimum"
-        );
+        return [
+            ['alganet', 1, 15],
+            ['ççççç', 4, 6],
+            [range(1, 20), 1, 30],
+            [(object) ['foo' => 'bar', 'bar' => 'baz'], 0, 2],
+            ['alganet', 1, null], //null is a valid max length, means "no maximum",
+            ['alganet', null, 15], //null is a valid min length, means "no minimum"
+        ];
     }
 
     public function providerForValidLengthNonInclusive()
     {
-        return array(
-            array('alganet', 1, 15),
-            array('ççççç', 4, 6),
-            array(range(1, 20), 1, 30),
-            array((object) array('foo' => 'bar', 'bar' => 'baz'), 1, 3),
-            array('alganet', 1, null), //null is a valid max length, means "no maximum",
-            array('alganet', null, 15), //null is a valid min length, means "no minimum"
-        );
+        return [
+            ['alganet', 1, 15],
+            ['ççççç', 4, 6],
+            [range(1, 20), 1, 30],
+            [(object) ['foo' => 'bar', 'bar' => 'baz'], 1, 3],
+            ['alganet', 1, null], //null is a valid max length, means "no maximum",
+            ['alganet', null, 15], //null is a valid min length, means "no minimum"
+        ];
     }
 
     public function providerForInvalidLengthInclusive()
     {
-        return array(
-            array('', 1, 15),
-            array('alganet', 1, 6),
-            array(range(1, 20), 1, 19),
-            array('alganet', 8, null), //null is a valid max length, means "no maximum",
-            array('alganet', null, 6), //null is a valid min length, means "no minimum"
-        );
+        return [
+            ['', 1, 15],
+            ['alganet', 1, 6],
+            [range(1, 20), 1, 19],
+            ['alganet', 8, null], //null is a valid max length, means "no maximum",
+            ['alganet', null, 6], //null is a valid min length, means "no minimum"
+        ];
     }
 
     public function providerForInvalidLengthNonInclusive()
     {
-        return array(
-            array('alganet', 1, 7),
-            array((object) array('foo' => 'bar', 'bar' => 'baz'), 3, 5),
-            array(range(1, 50), 1, 30),
-        );
+        return [
+            ['alganet', 1, 7],
+            [(object) ['foo' => 'bar', 'bar' => 'baz'], 3, 5],
+            [range(1, 50), 1, 30],
+        ];
     }
 
     public function providerForComponentException()
     {
-        return array(
-            array('a', 15),
-            array(1, 'abc d'),
-            array(10, 1),
-        );
+        return [
+            ['a', 15],
+            [1, 'abc d'],
+            [10, 1],
+        ];
     }
 }

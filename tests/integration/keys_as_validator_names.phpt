@@ -14,7 +14,7 @@ try {
     Validator::key('username', Validator::length(2, 32))
              ->key('birthdate', Validator::date())
              ->setName('User Subscription Form')
-             ->assert(array('username' => '0', 'birthdate' => 'Whatever'));
+             ->assert(['username' => '0', 'birthdate' => 'Whatever']);
 } catch (NestedValidationExceptionInterface $e) {
     echo $e->getFullMessage();
 }

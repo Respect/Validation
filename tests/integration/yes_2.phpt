@@ -3,8 +3,8 @@
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\YesException;
+use Respect\Validation\Validator as v;
 
 try {
     v::yes()->check('si');

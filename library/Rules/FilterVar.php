@@ -34,7 +34,7 @@ class FilterVar extends Callback
     {
         return in_array(
             $filter,
-            array(
+            [
                 FILTER_VALIDATE_BOOLEAN,
                 FILTER_VALIDATE_EMAIL,
                 FILTER_VALIDATE_FLOAT,
@@ -42,7 +42,7 @@ class FilterVar extends Callback
                 FILTER_VALIDATE_IP,
                 FILTER_VALIDATE_REGEXP,
                 FILTER_VALIDATE_URL,
-            )
+            ]
         );
     }
 }

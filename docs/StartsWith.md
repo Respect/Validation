@@ -15,7 +15,7 @@ v::startsWith('lorem')->validate('lorem ipsum'); //true
 For arrays:
 
 ```php
-v::startsWith('lorem')->validate(array('lorem', 'ipsum')); //true
+v::startsWith('lorem')->validate(['lorem', 'ipsum']); //true
 ```
 
 `true` may be passed as a parameter to indicate identical comparison

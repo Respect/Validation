@@ -22,13 +22,13 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class DkSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '81', // Region Nordjylland
         '82', // Region Midtjylland
         '83', // Region Syddanmark
         '84', // Region Hovedstaden
         '85', // Region Sjæland
-    );
+    ];
 
     public $compareIdentical = true;
 }

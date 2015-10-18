@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class GrSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '69', // Agio Oros
         'A', // Anatoliki Makedonia kai Thraki
         'B', // Kentriki Makedonia
@@ -88,7 +88,7 @@ class GrSubdivisionCode extends AbstractSearcher
         '93', // Nomós Rethýmnis
         '94', // Nomós Chaniás
         'A1', // Nomós Attikís
-    );
+    ];
 
     public $compareIdentical = true;
 }

@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class PwSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '002', // Aimeliik
         '004', // Airai
         '010', // Angaur
@@ -39,7 +39,7 @@ class PwSubdivisionCode extends AbstractSearcher
         '228', // Ngiwal
         '350', // Peleliu
         '370', // Sonsorol
-    );
+    ];
 
     public $compareIdentical = true;
 }

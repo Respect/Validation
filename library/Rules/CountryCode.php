@@ -27,261 +27,261 @@ class CountryCode extends AbstractSearcher
      *
      * @var array
      */
-    protected $countryCodeList = array(
-        array('AD', 'AND', '020'), // Andorra
-        array('AE', 'ARE', '784'), // United Arab Emirates
-        array('AF', 'AFG', '004'), // Afghanistan
-        array('AG', 'ATG', '028'), // Antigua and Barbuda
-        array('AI', 'AIA', '660'), // Anguilla
-        array('AL', 'ALB', '008'), // Albania
-        array('AM', 'ARM', '051'), // Armenia
-        array('AN', 'ANT', '530'), // Netherlands Antilles
-        array('AO', 'AGO', '024'), // Angola
-        array('AQ', 'ATA', '010'), // Antarctica
-        array('AR', 'ARG', '032'), // Argentina
-        array('AS', 'ASM', '016'), // American Samoa
-        array('AT', 'AUT', '040'), // Austria
-        array('AU', 'AUS', '036'), // Australia
-        array('AW', 'ABW', '533'), // Aruba
-        array('AX', 'ALA', '248'), // Aland Islands
-        array('AZ', 'AZE', '031'), // Azerbaijan
-        array('BA', 'BIH', '070'), // Bosnia and Herzegovina
-        array('BB', 'BRB', '052'), // Barbados
-        array('BD', 'BGD', '050'), // Bangladesh
-        array('BE', 'BEL', '056'), // Belgium
-        array('BF', 'BFA', '854'), // Burkina Faso
-        array('BG', 'BGR', '100'), // Bulgaria
-        array('BH', 'BHR', '048'), // Bahrain
-        array('BI', 'BDI', '108'), // Burundi
-        array('BJ', 'BEN', '204'), // Benin
-        array('BL', 'BLM', '652'), // Saint Barthelemy
-        array('BM', 'BMU', '060'), // Bermuda
-        array('BN', 'BRN', '096'), // Brunei
-        array('BO', 'BOL', '068'), // Bolivia
-        array('BQ', 'BES', '535'), // Bonaire, Saint Eustatius and Saba
-        array('BR', 'BRA', '076'), // Brazil
-        array('BS', 'BHS', '044'), // Bahamas
-        array('BT', 'BTN', '064'), // Bhutan
-        array('BV', 'BVT', '074'), // Bouvet Island
-        array('BW', 'BWA', '072'), // Botswana
-        array('BY', 'BLR', '112'), // Belarus
-        array('BZ', 'BLZ', '084'), // Belize
-        array('CA', 'CAN', '124'), // Canada
-        array('CC', 'CCK', '166'), // Cocos Islands
-        array('CD', 'COD', '180'), // Democratic Republic of the Congo
-        array('CF', 'CAF', '140'), // Central African Republic
-        array('CG', 'COG', '178'), // Republic of the Congo
-        array('CH', 'CHE', '756'), // Switzerland
-        array('CI', 'CIV', '384'), // Ivory Coast
-        array('CK', 'COK', '184'), // Cook Islands
-        array('CL', 'CHL', '152'), // Chile
-        array('CM', 'CMR', '120'), // Cameroon
-        array('CN', 'CHN', '156'), // China
-        array('CO', 'COL', '170'), // Colombia
-        array('CR', 'CRI', '188'), // Costa Rica
-        array('CS', 'SCG', '891'), // Serbia and Montenegro
-        array('CU', 'CUB', '192'), // Cuba
-        array('CV', 'CPV', '132'), // Cape Verde
-        array('CW', 'CUW', '531'), // Curacao
-        array('CX', 'CXR', '162'), // Christmas Island
-        array('CY', 'CYP', '196'), // Cyprus
-        array('CZ', 'CZE', '203'), // Czech Republic
-        array('DE', 'DEU', '276'), // Germany
-        array('DJ', 'DJI', '262'), // Djibouti
-        array('DK', 'DNK', '208'), // Denmark
-        array('DM', 'DMA', '212'), // Dominica
-        array('DO', 'DOM', '214'), // Dominican Republic
-        array('DZ', 'DZA', '012'), // Algeria
-        array('EC', 'ECU', '218'), // Ecuador
-        array('EE', 'EST', '233'), // Estonia
-        array('EG', 'EGY', '818'), // Egypt
-        array('EH', 'ESH', '732'), // Western Sahara
-        array('ER', 'ERI', '232'), // Eritrea
-        array('ES', 'ESP', '724'), // Spain
-        array('ET', 'ETH', '231'), // Ethiopia
-        array('FI', 'FIN', '246'), // Finland
-        array('FJ', 'FJI', '242'), // Fiji
-        array('FK', 'FLK', '238'), // Falkland Islands
-        array('FM', 'FSM', '583'), // Micronesia
-        array('FO', 'FRO', '234'), // Faroe Islands
-        array('FR', 'FRA', '250'), // France
-        array('GA', 'GAB', '266'), // Gabon
-        array('GB', 'GBR', '826'), // United Kingdom
-        array('GD', 'GRD', '308'), // Grenada
-        array('GE', 'GEO', '268'), // Georgia
-        array('GF', 'GUF', '254'), // French Guiana
-        array('GG', 'GGY', '831'), // Guernsey
-        array('GH', 'GHA', '288'), // Ghana
-        array('GI', 'GIB', '292'), // Gibraltar
-        array('GL', 'GRL', '304'), // Greenland
-        array('GM', 'GMB', '270'), // Gambia
-        array('GN', 'GIN', '324'), // Guinea
-        array('GP', 'GLP', '312'), // Guadeloupe
-        array('GQ', 'GNQ', '226'), // Equatorial Guinea
-        array('GR', 'GRC', '300'), // Greece
-        array('GS', 'SGS', '239'), // South Georgia and the South Sandwich Islands
-        array('GT', 'GTM', '320'), // Guatemala
-        array('GU', 'GUM', '316'), // Guam
-        array('GW', 'GNB', '624'), // Guinea-Bissau
-        array('GY', 'GUY', '328'), // Guyana
-        array('HK', 'HKG', '344'), // Hong Kong
-        array('HM', 'HMD', '334'), // Heard Island and McDonald Islands
-        array('HN', 'HND', '340'), // Honduras
-        array('HR', 'HRV', '191'), // Croatia
-        array('HT', 'HTI', '332'), // Haiti
-        array('HU', 'HUN', '348'), // Hungary
-        array('ID', 'IDN', '360'), // Indonesia
-        array('IE', 'IRL', '372'), // Ireland
-        array('IL', 'ISR', '376'), // Israel
-        array('IM', 'IMN', '833'), // Isle of Man
-        array('IN', 'IND', '356'), // India
-        array('IO', 'IOT', '086'), // British Indian Ocean Territory
-        array('IQ', 'IRQ', '368'), // Iraq
-        array('IR', 'IRN', '364'), // Iran
-        array('IS', 'ISL', '352'), // Iceland
-        array('IT', 'ITA', '380'), // Italy
-        array('JE', 'JEY', '832'), // Jersey
-        array('JM', 'JAM', '388'), // Jamaica
-        array('JO', 'JOR', '400'), // Jordan
-        array('JP', 'JPN', '392'), // Japan
-        array('KE', 'KEN', '404'), // Kenya
-        array('KG', 'KGZ', '417'), // Kyrgyzstan
-        array('KH', 'KHM', '116'), // Cambodia
-        array('KI', 'KIR', '296'), // Kiribati
-        array('KM', 'COM', '174'), // Comoros
-        array('KN', 'KNA', '659'), // Saint Kitts and Nevis
-        array('KP', 'PRK', '408'), // North Korea
-        array('KR', 'KOR', '410'), // South Korea
-        array('KW', 'KWT', '414'), // Kuwait
-        array('KY', 'CYM', '136'), // Cayman Islands
-        array('KZ', 'KAZ', '398'), // Kazakhstan
-        array('LA', 'LAO', '418'), // Laos
-        array('LB', 'LBN', '422'), // Lebanon
-        array('LC', 'LCA', '662'), // Saint Lucia
-        array('LI', 'LIE', '438'), // Liechtenstein
-        array('LK', 'LKA', '144'), // Sri Lanka
-        array('LR', 'LBR', '430'), // Liberia
-        array('LS', 'LSO', '426'), // Lesotho
-        array('LT', 'LTU', '440'), // Lithuania
-        array('LU', 'LUX', '442'), // Luxembourg
-        array('LV', 'LVA', '428'), // Latvia
-        array('LY', 'LBY', '434'), // Libya
-        array('MA', 'MAR', '504'), // Morocco
-        array('MC', 'MCO', '492'), // Monaco
-        array('MD', 'MDA', '498'), // Moldova
-        array('ME', 'MNE', '499'), // Montenegro
-        array('MF', 'MAF', '663'), // Saint Martin
-        array('MG', 'MDG', '450'), // Madagascar
-        array('MH', 'MHL', '584'), // Marshall Islands
-        array('MK', 'MKD', '807'), // Macedonia
-        array('ML', 'MLI', '466'), // Mali
-        array('MM', 'MMR', '104'), // Myanmar
-        array('MN', 'MNG', '496'), // Mongolia
-        array('MO', 'MAC', '446'), // Macao
-        array('MP', 'MNP', '580'), // Northern Mariana Islands
-        array('MQ', 'MTQ', '474'), // Martinique
-        array('MR', 'MRT', '478'), // Mauritania
-        array('MS', 'MSR', '500'), // Montserrat
-        array('MT', 'MLT', '470'), // Malta
-        array('MU', 'MUS', '480'), // Mauritius
-        array('MV', 'MDV', '462'), // Maldives
-        array('MW', 'MWI', '454'), // Malawi
-        array('MX', 'MEX', '484'), // Mexico
-        array('MY', 'MYS', '458'), // Malaysia
-        array('MZ', 'MOZ', '508'), // Mozambique
-        array('NA', 'NAM', '516'), // Namibia
-        array('NC', 'NCL', '540'), // New Caledonia
-        array('NE', 'NER', '562'), // Niger
-        array('NF', 'NFK', '574'), // Norfolk Island
-        array('NG', 'NGA', '566'), // Nigeria
-        array('NI', 'NIC', '558'), // Nicaragua
-        array('NL', 'NLD', '528'), // Netherlands
-        array('NO', 'NOR', '578'), // Norway
-        array('NP', 'NPL', '524'), // Nepal
-        array('NR', 'NRU', '520'), // Nauru
-        array('NU', 'NIU', '570'), // Niue
-        array('NZ', 'NZL', '554'), // New Zealand
-        array('OM', 'OMN', '512'), // Oman
-        array('PA', 'PAN', '591'), // Panama
-        array('PE', 'PER', '604'), // Peru
-        array('PF', 'PYF', '258'), // French Polynesia
-        array('PG', 'PNG', '598'), // Papua New Guinea
-        array('PH', 'PHL', '608'), // Philippines
-        array('PK', 'PAK', '586'), // Pakistan
-        array('PL', 'POL', '616'), // Poland
-        array('PM', 'SPM', '666'), // Saint Pierre and Miquelon
-        array('PN', 'PCN', '612'), // Pitcairn
-        array('PR', 'PRI', '630'), // Puerto Rico
-        array('PS', 'PSE', '275'), // Palestinian Territory
-        array('PT', 'PRT', '620'), // Portugal
-        array('PW', 'PLW', '585'), // Palau
-        array('PY', 'PRY', '600'), // Paraguay
-        array('QA', 'QAT', '634'), // Qatar
-        array('RE', 'REU', '638'), // Reunion
-        array('RO', 'ROU', '642'), // Romania
-        array('RS', 'SRB', '688'), // Serbia
-        array('RU', 'RUS', '643'), // Russia
-        array('RW', 'RWA', '646'), // Rwanda
-        array('SA', 'SAU', '682'), // Saudi Arabia
-        array('SB', 'SLB', '090'), // Solomon Islands
-        array('SC', 'SYC', '690'), // Seychelles
-        array('SD', 'SDN', '729'), // Sudan
-        array('SE', 'SWE', '752'), // Sweden
-        array('SG', 'SGP', '702'), // Singapore
-        array('SH', 'SHN', '654'), // Saint Helena
-        array('SI', 'SVN', '705'), // Slovenia
-        array('SJ', 'SJM', '744'), // Svalbard and Jan Mayen
-        array('SK', 'SVK', '703'), // Slovakia
-        array('SL', 'SLE', '694'), // Sierra Leone
-        array('SM', 'SMR', '674'), // San Marino
-        array('SN', 'SEN', '686'), // Senegal
-        array('SO', 'SOM', '706'), // Somalia
-        array('SR', 'SUR', '740'), // Suriname
-        array('SS', 'SSD', '728'), // South Sudan
-        array('ST', 'STP', '678'), // Sao Tome and Principe
-        array('SV', 'SLV', '222'), // El Salvador
-        array('SX', 'SXM', '534'), // Sint Maarten
-        array('SY', 'SYR', '760'), // Syria
-        array('SZ', 'SWZ', '748'), // Swaziland
-        array('TC', 'TCA', '796'), // Turks and Caicos Islands
-        array('TD', 'TCD', '148'), // Chad
-        array('TF', 'ATF', '260'), // French Southern Territories
-        array('TG', 'TGO', '768'), // Togo
-        array('TH', 'THA', '764'), // Thailand
-        array('TJ', 'TJK', '762'), // Tajikistan
-        array('TK', 'TKL', '772'), // Tokelau
-        array('TL', 'TLS', '626'), // East Timor
-        array('TM', 'TKM', '795'), // Turkmenistan
-        array('TN', 'TUN', '788'), // Tunisia
-        array('TO', 'TON', '776'), // Tonga
-        array('TR', 'TUR', '792'), // Turkey
-        array('TT', 'TTO', '780'), // Trinidad and Tobago
-        array('TV', 'TUV', '798'), // Tuvalu
-        array('TW', 'TWN', '158'), // Taiwan
-        array('TZ', 'TZA', '834'), // Tanzania
-        array('UA', 'UKR', '804'), // Ukraine
-        array('UG', 'UGA', '800'), // Uganda
-        array('UM', 'UMI', '581'), // United States Minor Outlying Islands
-        array('US', 'USA', '840'), // United States
-        array('UY', 'URY', '858'), // Uruguay
-        array('UZ', 'UZB', '860'), // Uzbekistan
-        array('VA', 'VAT', '336'), // Vatican
-        array('VC', 'VCT', '670'), // Saint Vincent and the Grenadines
-        array('VE', 'VEN', '862'), // Venezuela
-        array('VG', 'VGB', '092'), // British Virgin Islands
-        array('VI', 'VIR', '850'), // U.S. Virgin Islands
-        array('VN', 'VNM', '704'), // Vietnam
-        array('VU', 'VUT', '548'), // Vanuatu
-        array('WF', 'WLF', '876'), // Wallis and Futuna
-        array('WS', 'WSM', '882'), // Samoa
-        array('XK', 'XKX', '0'), // Kosovo
-        array('YE', 'YEM', '887'), // Yemen
-        array('YT', 'MYT', '175'), // Mayotte
-        array('ZA', 'ZAF', '710'), // South Africa
-        array('ZM', 'ZMB', '894'), // Zambia
-        array('ZW', 'ZWE', '716'), // Zimbabwe
+    protected $countryCodeList = [
+        ['AD', 'AND', '020'], // Andorra
+        ['AE', 'ARE', '784'], // United Arab Emirates
+        ['AF', 'AFG', '004'], // Afghanistan
+        ['AG', 'ATG', '028'], // Antigua and Barbuda
+        ['AI', 'AIA', '660'], // Anguilla
+        ['AL', 'ALB', '008'], // Albania
+        ['AM', 'ARM', '051'], // Armenia
+        ['AN', 'ANT', '530'], // Netherlands Antilles
+        ['AO', 'AGO', '024'], // Angola
+        ['AQ', 'ATA', '010'], // Antarctica
+        ['AR', 'ARG', '032'], // Argentina
+        ['AS', 'ASM', '016'], // American Samoa
+        ['AT', 'AUT', '040'], // Austria
+        ['AU', 'AUS', '036'], // Australia
+        ['AW', 'ABW', '533'], // Aruba
+        ['AX', 'ALA', '248'], // Aland Islands
+        ['AZ', 'AZE', '031'], // Azerbaijan
+        ['BA', 'BIH', '070'], // Bosnia and Herzegovina
+        ['BB', 'BRB', '052'], // Barbados
+        ['BD', 'BGD', '050'], // Bangladesh
+        ['BE', 'BEL', '056'], // Belgium
+        ['BF', 'BFA', '854'], // Burkina Faso
+        ['BG', 'BGR', '100'], // Bulgaria
+        ['BH', 'BHR', '048'], // Bahrain
+        ['BI', 'BDI', '108'], // Burundi
+        ['BJ', 'BEN', '204'], // Benin
+        ['BL', 'BLM', '652'], // Saint Barthelemy
+        ['BM', 'BMU', '060'], // Bermuda
+        ['BN', 'BRN', '096'], // Brunei
+        ['BO', 'BOL', '068'], // Bolivia
+        ['BQ', 'BES', '535'], // Bonaire, Saint Eustatius and Saba
+        ['BR', 'BRA', '076'], // Brazil
+        ['BS', 'BHS', '044'], // Bahamas
+        ['BT', 'BTN', '064'], // Bhutan
+        ['BV', 'BVT', '074'], // Bouvet Island
+        ['BW', 'BWA', '072'], // Botswana
+        ['BY', 'BLR', '112'], // Belarus
+        ['BZ', 'BLZ', '084'], // Belize
+        ['CA', 'CAN', '124'], // Canada
+        ['CC', 'CCK', '166'], // Cocos Islands
+        ['CD', 'COD', '180'], // Democratic Republic of the Congo
+        ['CF', 'CAF', '140'], // Central African Republic
+        ['CG', 'COG', '178'], // Republic of the Congo
+        ['CH', 'CHE', '756'], // Switzerland
+        ['CI', 'CIV', '384'], // Ivory Coast
+        ['CK', 'COK', '184'], // Cook Islands
+        ['CL', 'CHL', '152'], // Chile
+        ['CM', 'CMR', '120'], // Cameroon
+        ['CN', 'CHN', '156'], // China
+        ['CO', 'COL', '170'], // Colombia
+        ['CR', 'CRI', '188'], // Costa Rica
+        ['CS', 'SCG', '891'], // Serbia and Montenegro
+        ['CU', 'CUB', '192'], // Cuba
+        ['CV', 'CPV', '132'], // Cape Verde
+        ['CW', 'CUW', '531'], // Curacao
+        ['CX', 'CXR', '162'], // Christmas Island
+        ['CY', 'CYP', '196'], // Cyprus
+        ['CZ', 'CZE', '203'], // Czech Republic
+        ['DE', 'DEU', '276'], // Germany
+        ['DJ', 'DJI', '262'], // Djibouti
+        ['DK', 'DNK', '208'], // Denmark
+        ['DM', 'DMA', '212'], // Dominica
+        ['DO', 'DOM', '214'], // Dominican Republic
+        ['DZ', 'DZA', '012'], // Algeria
+        ['EC', 'ECU', '218'], // Ecuador
+        ['EE', 'EST', '233'], // Estonia
+        ['EG', 'EGY', '818'], // Egypt
+        ['EH', 'ESH', '732'], // Western Sahara
+        ['ER', 'ERI', '232'], // Eritrea
+        ['ES', 'ESP', '724'], // Spain
+        ['ET', 'ETH', '231'], // Ethiopia
+        ['FI', 'FIN', '246'], // Finland
+        ['FJ', 'FJI', '242'], // Fiji
+        ['FK', 'FLK', '238'], // Falkland Islands
+        ['FM', 'FSM', '583'], // Micronesia
+        ['FO', 'FRO', '234'], // Faroe Islands
+        ['FR', 'FRA', '250'], // France
+        ['GA', 'GAB', '266'], // Gabon
+        ['GB', 'GBR', '826'], // United Kingdom
+        ['GD', 'GRD', '308'], // Grenada
+        ['GE', 'GEO', '268'], // Georgia
+        ['GF', 'GUF', '254'], // French Guiana
+        ['GG', 'GGY', '831'], // Guernsey
+        ['GH', 'GHA', '288'], // Ghana
+        ['GI', 'GIB', '292'], // Gibraltar
+        ['GL', 'GRL', '304'], // Greenland
+        ['GM', 'GMB', '270'], // Gambia
+        ['GN', 'GIN', '324'], // Guinea
+        ['GP', 'GLP', '312'], // Guadeloupe
+        ['GQ', 'GNQ', '226'], // Equatorial Guinea
+        ['GR', 'GRC', '300'], // Greece
+        ['GS', 'SGS', '239'], // South Georgia and the South Sandwich Islands
+        ['GT', 'GTM', '320'], // Guatemala
+        ['GU', 'GUM', '316'], // Guam
+        ['GW', 'GNB', '624'], // Guinea-Bissau
+        ['GY', 'GUY', '328'], // Guyana
+        ['HK', 'HKG', '344'], // Hong Kong
+        ['HM', 'HMD', '334'], // Heard Island and McDonald Islands
+        ['HN', 'HND', '340'], // Honduras
+        ['HR', 'HRV', '191'], // Croatia
+        ['HT', 'HTI', '332'], // Haiti
+        ['HU', 'HUN', '348'], // Hungary
+        ['ID', 'IDN', '360'], // Indonesia
+        ['IE', 'IRL', '372'], // Ireland
+        ['IL', 'ISR', '376'], // Israel
+        ['IM', 'IMN', '833'], // Isle of Man
+        ['IN', 'IND', '356'], // India
+        ['IO', 'IOT', '086'], // British Indian Ocean Territory
+        ['IQ', 'IRQ', '368'], // Iraq
+        ['IR', 'IRN', '364'], // Iran
+        ['IS', 'ISL', '352'], // Iceland
+        ['IT', 'ITA', '380'], // Italy
+        ['JE', 'JEY', '832'], // Jersey
+        ['JM', 'JAM', '388'], // Jamaica
+        ['JO', 'JOR', '400'], // Jordan
+        ['JP', 'JPN', '392'], // Japan
+        ['KE', 'KEN', '404'], // Kenya
+        ['KG', 'KGZ', '417'], // Kyrgyzstan
+        ['KH', 'KHM', '116'], // Cambodia
+        ['KI', 'KIR', '296'], // Kiribati
+        ['KM', 'COM', '174'], // Comoros
+        ['KN', 'KNA', '659'], // Saint Kitts and Nevis
+        ['KP', 'PRK', '408'], // North Korea
+        ['KR', 'KOR', '410'], // South Korea
+        ['KW', 'KWT', '414'], // Kuwait
+        ['KY', 'CYM', '136'], // Cayman Islands
+        ['KZ', 'KAZ', '398'], // Kazakhstan
+        ['LA', 'LAO', '418'], // Laos
+        ['LB', 'LBN', '422'], // Lebanon
+        ['LC', 'LCA', '662'], // Saint Lucia
+        ['LI', 'LIE', '438'], // Liechtenstein
+        ['LK', 'LKA', '144'], // Sri Lanka
+        ['LR', 'LBR', '430'], // Liberia
+        ['LS', 'LSO', '426'], // Lesotho
+        ['LT', 'LTU', '440'], // Lithuania
+        ['LU', 'LUX', '442'], // Luxembourg
+        ['LV', 'LVA', '428'], // Latvia
+        ['LY', 'LBY', '434'], // Libya
+        ['MA', 'MAR', '504'], // Morocco
+        ['MC', 'MCO', '492'], // Monaco
+        ['MD', 'MDA', '498'], // Moldova
+        ['ME', 'MNE', '499'], // Montenegro
+        ['MF', 'MAF', '663'], // Saint Martin
+        ['MG', 'MDG', '450'], // Madagascar
+        ['MH', 'MHL', '584'], // Marshall Islands
+        ['MK', 'MKD', '807'], // Macedonia
+        ['ML', 'MLI', '466'], // Mali
+        ['MM', 'MMR', '104'], // Myanmar
+        ['MN', 'MNG', '496'], // Mongolia
+        ['MO', 'MAC', '446'], // Macao
+        ['MP', 'MNP', '580'], // Northern Mariana Islands
+        ['MQ', 'MTQ', '474'], // Martinique
+        ['MR', 'MRT', '478'], // Mauritania
+        ['MS', 'MSR', '500'], // Montserrat
+        ['MT', 'MLT', '470'], // Malta
+        ['MU', 'MUS', '480'], // Mauritius
+        ['MV', 'MDV', '462'], // Maldives
+        ['MW', 'MWI', '454'], // Malawi
+        ['MX', 'MEX', '484'], // Mexico
+        ['MY', 'MYS', '458'], // Malaysia
+        ['MZ', 'MOZ', '508'], // Mozambique
+        ['NA', 'NAM', '516'], // Namibia
+        ['NC', 'NCL', '540'], // New Caledonia
+        ['NE', 'NER', '562'], // Niger
+        ['NF', 'NFK', '574'], // Norfolk Island
+        ['NG', 'NGA', '566'], // Nigeria
+        ['NI', 'NIC', '558'], // Nicaragua
+        ['NL', 'NLD', '528'], // Netherlands
+        ['NO', 'NOR', '578'], // Norway
+        ['NP', 'NPL', '524'], // Nepal
+        ['NR', 'NRU', '520'], // Nauru
+        ['NU', 'NIU', '570'], // Niue
+        ['NZ', 'NZL', '554'], // New Zealand
+        ['OM', 'OMN', '512'], // Oman
+        ['PA', 'PAN', '591'], // Panama
+        ['PE', 'PER', '604'], // Peru
+        ['PF', 'PYF', '258'], // French Polynesia
+        ['PG', 'PNG', '598'], // Papua New Guinea
+        ['PH', 'PHL', '608'], // Philippines
+        ['PK', 'PAK', '586'], // Pakistan
+        ['PL', 'POL', '616'], // Poland
+        ['PM', 'SPM', '666'], // Saint Pierre and Miquelon
+        ['PN', 'PCN', '612'], // Pitcairn
+        ['PR', 'PRI', '630'], // Puerto Rico
+        ['PS', 'PSE', '275'], // Palestinian Territory
+        ['PT', 'PRT', '620'], // Portugal
+        ['PW', 'PLW', '585'], // Palau
+        ['PY', 'PRY', '600'], // Paraguay
+        ['QA', 'QAT', '634'], // Qatar
+        ['RE', 'REU', '638'], // Reunion
+        ['RO', 'ROU', '642'], // Romania
+        ['RS', 'SRB', '688'], // Serbia
+        ['RU', 'RUS', '643'], // Russia
+        ['RW', 'RWA', '646'], // Rwanda
+        ['SA', 'SAU', '682'], // Saudi Arabia
+        ['SB', 'SLB', '090'], // Solomon Islands
+        ['SC', 'SYC', '690'], // Seychelles
+        ['SD', 'SDN', '729'], // Sudan
+        ['SE', 'SWE', '752'], // Sweden
+        ['SG', 'SGP', '702'], // Singapore
+        ['SH', 'SHN', '654'], // Saint Helena
+        ['SI', 'SVN', '705'], // Slovenia
+        ['SJ', 'SJM', '744'], // Svalbard and Jan Mayen
+        ['SK', 'SVK', '703'], // Slovakia
+        ['SL', 'SLE', '694'], // Sierra Leone
+        ['SM', 'SMR', '674'], // San Marino
+        ['SN', 'SEN', '686'], // Senegal
+        ['SO', 'SOM', '706'], // Somalia
+        ['SR', 'SUR', '740'], // Suriname
+        ['SS', 'SSD', '728'], // South Sudan
+        ['ST', 'STP', '678'], // Sao Tome and Principe
+        ['SV', 'SLV', '222'], // El Salvador
+        ['SX', 'SXM', '534'], // Sint Maarten
+        ['SY', 'SYR', '760'], // Syria
+        ['SZ', 'SWZ', '748'], // Swaziland
+        ['TC', 'TCA', '796'], // Turks and Caicos Islands
+        ['TD', 'TCD', '148'], // Chad
+        ['TF', 'ATF', '260'], // French Southern Territories
+        ['TG', 'TGO', '768'], // Togo
+        ['TH', 'THA', '764'], // Thailand
+        ['TJ', 'TJK', '762'], // Tajikistan
+        ['TK', 'TKL', '772'], // Tokelau
+        ['TL', 'TLS', '626'], // East Timor
+        ['TM', 'TKM', '795'], // Turkmenistan
+        ['TN', 'TUN', '788'], // Tunisia
+        ['TO', 'TON', '776'], // Tonga
+        ['TR', 'TUR', '792'], // Turkey
+        ['TT', 'TTO', '780'], // Trinidad and Tobago
+        ['TV', 'TUV', '798'], // Tuvalu
+        ['TW', 'TWN', '158'], // Taiwan
+        ['TZ', 'TZA', '834'], // Tanzania
+        ['UA', 'UKR', '804'], // Ukraine
+        ['UG', 'UGA', '800'], // Uganda
+        ['UM', 'UMI', '581'], // United States Minor Outlying Islands
+        ['US', 'USA', '840'], // United States
+        ['UY', 'URY', '858'], // Uruguay
+        ['UZ', 'UZB', '860'], // Uzbekistan
+        ['VA', 'VAT', '336'], // Vatican
+        ['VC', 'VCT', '670'], // Saint Vincent and the Grenadines
+        ['VE', 'VEN', '862'], // Venezuela
+        ['VG', 'VGB', '092'], // British Virgin Islands
+        ['VI', 'VIR', '850'], // U.S. Virgin Islands
+        ['VN', 'VNM', '704'], // Vietnam
+        ['VU', 'VUT', '548'], // Vanuatu
+        ['WF', 'WLF', '876'], // Wallis and Futuna
+        ['WS', 'WSM', '882'], // Samoa
+        ['XK', 'XKX', '0'], // Kosovo
+        ['YE', 'YEM', '887'], // Yemen
+        ['YT', 'MYT', '175'], // Mayotte
+        ['ZA', 'ZAF', '710'], // South Africa
+        ['ZM', 'ZMB', '894'], // Zambia
+        ['ZW', 'ZWE', '716'], // Zimbabwe
 
-    );
+    ];
 
     public $set;
     public $index;
@@ -299,16 +299,16 @@ class CountryCode extends AbstractSearcher
 
     public static function getAvailableSets()
     {
-        return array(
+        return [
             self::ALPHA2,
             self::ALPHA3,
             self::NUMERIC,
-        );
+        ];
     }
 
     private function getCountryCodeList($index)
     {
-        $countryList = array();
+        $countryList = [];
         foreach ($this->countryCodeList as $country) {
             $countryList[] = $country[$index];
         }

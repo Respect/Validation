@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class LkSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '1', // Western
         '2', // Central
         '3', // Southern
@@ -57,7 +57,7 @@ class LkSubdivisionCode extends AbstractSearcher
         '82', // Mŏṇarāgala
         '91', // Ratnapura
         '92', // Kægalla
-    );
+    ];
 
     public $compareIdentical = true;
 }

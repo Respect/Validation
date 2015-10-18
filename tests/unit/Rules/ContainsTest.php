@@ -56,46 +56,46 @@ class ContainsTest extends \PHPUnit_Framework_TestCase
 
     public function providerForContains()
     {
-        return array(
-            array('foo', array('bar', 'foo')),
-            array('foo', 'barbazFOO'),
-            array('foo', 'barbazfoo'),
-            array('foo', 'foobazfoO'),
-            array('1', array(2, 3, 1)),
-            array('1', array(2, 3, '1')),
-        );
+        return [
+            ['foo', ['bar', 'foo']],
+            ['foo', 'barbazFOO'],
+            ['foo', 'barbazfoo'],
+            ['foo', 'foobazfoO'],
+            ['1', [2, 3, 1]],
+            ['1', [2, 3, '1']],
+        ];
     }
 
     public function providerForContainsIdentical()
     {
-        return array(
-            array('foo', array('fool', 'foo')),
-            array('foo', 'barbazfoo'),
-            array('foo', 'foobazfoo'),
-            array('1', array(2, 3, (string) 1)),
-            array('1', array(2, 3, '1')),
-        );
+        return [
+            ['foo', ['fool', 'foo']],
+            ['foo', 'barbazfoo'],
+            ['foo', 'foobazfoo'],
+            ['1', [2, 3, (string) 1]],
+            ['1', [2, 3, '1']],
+        ];
     }
 
     public function providerForNotContains()
     {
-        return array(
-            array('foo', ''),
-            array('bat', array('bar', 'foo')),
-            array('foo', 'barfaabaz'),
-            array('foo', 'faabarbaz'),
-        );
+        return [
+            ['foo', ''],
+            ['bat', ['bar', 'foo']],
+            ['foo', 'barfaabaz'],
+            ['foo', 'faabarbaz'],
+        ];
     }
 
     public function providerForNotContainsIdentical()
     {
-        return array(
-            array('foo', ''),
-            array('bat', array('BAT', 'foo')),
-            array('bat', array('BaT', 'Batata')),
-            array('foo', 'barfaabaz'),
-            array('foo', 'barbazFOO'),
-            array('foo', 'faabarbaz'),
-        );
+        return [
+            ['foo', ''],
+            ['bat', ['BAT', 'foo']],
+            ['bat', ['BaT', 'Batata']],
+            ['foo', 'barfaabaz'],
+            ['foo', 'barbazFOO'],
+            ['foo', 'faabarbaz'],
+        ];
     }
 }

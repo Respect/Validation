@@ -5,7 +5,7 @@
 Validates a keys in a defined structure.
 
 ```php
-$dict = array('foo' => 42);
+$dict = ['foo' => 42];
 
 v::keySet(
     v::key('foo', v::intVal())
@@ -14,7 +14,7 @@ v::keySet(
 
 Extra keys are not allowed:
 ```php
-$dict = array('foo' => 42, 'bar' => 'String');
+$dict = ['foo' => 42, 'bar' => 'String'];
 
 v::keySet(
     v::key('foo', v::intVal())
@@ -23,7 +23,7 @@ v::keySet(
 
 Missing required keys are not allowed:
 ```php
-$dict = array('foo' => 42, 'bar' => 'String');
+$dict = ['foo' => 42, 'bar' => 'String'];
 
 v::keySet(
     v::key('foo', v::intVal()),
@@ -34,7 +34,7 @@ v::keySet(
 
 Missing non-required keys are allowed:
 ```php
-$dict = array('foo' => 42, 'bar' => 'String');
+$dict = ['foo' => 42, 'bar' => 'String'];
 
 v::keySet(
     v::key('foo', v::intVal()),

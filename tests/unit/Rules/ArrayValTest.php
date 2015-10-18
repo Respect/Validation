@@ -51,11 +51,11 @@ class ArrayValTest extends \PHPUnit_Framework_TestCase
 
     public function providerForArray()
     {
-        return array(
-            array(array()),
-            array(array(1, 2, 3)),
-            array(new TestAccess()),
-        );
+        return [
+            [[]],
+            [[1, 2, 3]],
+            [new TestAccess()],
+        ];
 
         $validator = v::alnum()->length(1, 10);
 
@@ -67,13 +67,13 @@ class ArrayValTest extends \PHPUnit_Framework_TestCase
 
     public function providerForNotArray()
     {
-        return array(
-            array(''),
-            array(null),
-            array(121),
-            array(new \stdClass()),
-            array(false),
-            array('aaa'),
-        );
+        return [
+            [''],
+            [null],
+            [121],
+            [new \stdClass()],
+            [false],
+            ['aaa'],
+        ];
     }
 }

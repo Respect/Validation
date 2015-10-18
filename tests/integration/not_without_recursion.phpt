@@ -4,8 +4,8 @@ not() with recursion should update mode from related rules
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator;
 use Respect\Validation\Exceptions\ValidationExceptionInterface;
+use Respect\Validation\Validator;
 
 try {
     $validator = Validator::not(

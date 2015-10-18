@@ -47,32 +47,32 @@ class PrimeNumberTest extends \PHPUnit_Framework_TestCase
 
     public function providerForPrimeNumber()
     {
-        return array(
-            array(3),
-            array(5),
-            array(7),
-            array('3'),
-            array('5'),
-            array('+7'),
-        );
+        return [
+            [3],
+            [5],
+            [7],
+            ['3'],
+            ['5'],
+            ['+7'],
+        ];
     }
 
     public function providerForNotPrimeNumber()
     {
-        return array(
-            array(''),
-            array(null),
-            array(0),
-            array(10),
-            array(25),
-            array(36),
-            array(-1),
-            array('-1'),
-            array('25'),
-            array('0'),
-            array('a'),
-            array(' '),
-            array('Foo'),
-        );
+        return [
+            [''],
+            [null],
+            [0],
+            [10],
+            [25],
+            [36],
+            [-1],
+            ['-1'],
+            ['25'],
+            ['0'],
+            ['a'],
+            [' '],
+            ['Foo'],
+        ];
     }
 }

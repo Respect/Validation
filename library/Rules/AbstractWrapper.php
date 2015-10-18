@@ -11,8 +11,8 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Validatable;
 
 abstract class AbstractWrapper extends AbstractRule
 {

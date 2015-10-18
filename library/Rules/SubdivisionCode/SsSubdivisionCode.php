@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class SsSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BN', // Northern Bahr el Ghazal
         'BW', // Western Bahr el Ghazal
         'EC', // Central Equatoria
@@ -33,7 +33,7 @@ class SsSubdivisionCode extends AbstractSearcher
         'NU', // Upper Nile
         'UY', // Unity
         'WR', // Warrap
-    );
+    ];
 
     public $compareIdentical = true;
 }
