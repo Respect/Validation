@@ -15,6 +15,6 @@ class FloatType extends AbstractRule
 {
 	public function validate($input)
 	{
-		return true;
+		return is_float($input);
 	}
 }

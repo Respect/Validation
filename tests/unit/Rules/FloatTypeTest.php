@@ -11,6 +11,10 @@
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @group  rule
+ * @covers Respect\Validation\Rules\FloatType
+ */
 class FloatTypeTest extends \PHPUnit_Framework_TestCase
 {
 
@@ -18,27 +22,47 @@ class FloatTypeTest extends \PHPUnit_Framework_TestCase
 
 	public function setUp()
 	{
-		$this->floatTypeTest = new FloatTypeTest();
+		$this->floatTypeTest = new FloatType();
 	}
 
-	public function providerNumbersOfTypeFloat()
+    /**
+     * @dataProvider providerNumbersFloat
+     */
+	public function testNumbersTypeFloat($input)
+	{
+		$this->assertTrue($this->floatTypeTest->validate($input));
+	}
+
+    /**
+     * @dataProvider provideNumbersNotFloat
+     */
+	public function testNumbersTypeNotFloat($input)
+	{
+		$this->assertFalse($this->floatTypeTest->validate($input));
+	}
+
+	public function providerNumbersFloat()
 	{
 		return array(
-            array(165),
-            array(1),
-            array(0),
+            array(165.23),
+            array(1.3e3),
+            array(7E-10),
             array(0.0),
-            array('1'),
-            array('19347e12'),
-            array(165.0),
-            array('165.7'),
-            array(1e12),
+            array(-2.44),
+            array(10/33.33),
+            array(PHP_INT_MAX + 1),
 		);
 	}
 
-	public function providerNumbersOfTypeNotFloat()
+	public function provideNumbersNotFloat()
 	{
-
+		return array(
+			array('1'),
+			array('1.0'),
+			array('7E-10'),
+			array(111111),
+			array(PHP_INT_MAX * -1)
+		);
 	}
 
 }
