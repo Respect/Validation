@@ -2,6 +2,8 @@
 <?php
 require 'vendor/autoload.php';
 
+date_default_timezone_set('UTC');
+
 use Respect\Validation\Validator as v;
 
 v::intType()->between(1, 42)->check(2);
