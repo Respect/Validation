@@ -16,51 +16,38 @@ namespace Respect\Validation\Rules;
  * @covers Respect\Validation\Rules\Json
  * @covers Respect\Validation\Exceptions\JsonException
  */
-class JsonTest extends \PHPUnit_Framework_TestCase
+class JsonTest extends RuleTestCase
 {
-    protected $json;
-
-    protected function setUp()
+    public function providerForValidInput()
     {
-        $this->json = new Json();
-    }
+        $json = new Json();
 
-    /**
-     * @dataProvider providerForPass
-     */
-    public function testValidJsonsShouldReturnTrue($input)
-    {
-        $this->assertTrue($this->json->__invoke($input));
-        $this->assertTrue($this->json->check($input));
-        $this->assertTrue($this->json->assert($input));
-    }
-
-    /**
-     * @expectedException Respect\Validation\Exceptions\JSonException
-     */
-    public function testInvalidJsonsShouldThrowJsonException()
-    {
-        $this->assertFalse($this->json->__invoke('{foo:bar}'));
-        $this->assertFalse($this->json->assert('{foo:bar}'));
-    }
-
-    public function testInvalidJsonsNotBeValid()
-    {
-        $this->assertFalse($this->json->validate(''));
-    }
-
-    public function providerForPass()
-    {
         return [
-            ['2'],
-            ['"abc"'],
-            ['[1,2,3]'],
-            ['["foo", "bar", "number", 1]'],
-            ['{"foo": "bar", "number":1}'],
-            ['[]'],
-            ['{}'],
-            ['false'],
-            ['null'],
+            [$json, '2'],
+            [$json, '"abc"'],
+            [$json, '[1,2,3]'],
+            [$json, '["foo", "bar", "number", 1]'],
+            [$json, '{"foo": "bar", "number":1}'],
+            [$json, '[]'],
+            [$json, '{}'],
+            [$json, 'false'],
+            [$json, 'null'],
+        ];
+    }
+
+    public function providerForInvalidInput()
+    {
+        $json = new Json();
+
+        return [
+            [$json, false],
+            [$json, new \stdClass()],
+            [$json, []],
+            [$json, ''],
+            [$json, 'a'],
+            [$json, 'xx'],
+            [$json, '{foo: bar}'],
+            [$json, '{foo: "baz"}'],
         ];
     }
 }
