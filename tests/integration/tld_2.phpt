@@ -2,8 +2,8 @@
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\TldException;
+use Respect\Validation\Validator as v;
 
 try {
     v::tld()->check('42');

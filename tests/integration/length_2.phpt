@@ -3,8 +3,8 @@
 
 require_once 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\LengthException;
+use Respect\Validation\Validator as v;
 
 try {
     v::length(0, 5)->check('nawarian');

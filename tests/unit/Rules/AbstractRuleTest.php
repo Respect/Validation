@@ -11,8 +11,6 @@
 
 namespace Respect\Validation\Rules;
 
-use ReflectionObject;
-
 class AbstractRuleTest extends \PHPUnit_Framework_TestCase
 {
     /** @var Respect\Validation\Rules\AbstractRule */
@@ -27,10 +25,10 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
 
     public function providerForTrueAndFalse()
     {
-        return array(
-            array(true),
-            array(false)
-        );
+        return [
+            [true],
+            [false]
+        ];
     }
 
     /**
@@ -70,5 +68,3 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-
-

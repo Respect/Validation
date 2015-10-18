@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class BbSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Christ Church
         '02', // Saint Andrew
         '03', // Saint George
@@ -34,7 +34,7 @@ class BbSubdivisionCode extends AbstractSearcher
         '09', // Saint Peter
         '10', // Saint Philip
         '11', // Saint Thomas
-    );
+    ];
 
     public $compareIdentical = true;
 }

@@ -7,9 +7,9 @@ use Respect\Validation\Validator;
 
 function translatorCallback($message)
 {
-    $messages = array(
+    $messages = [
         '{{name}} must be a string' => '{{name}} deve ser uma string',
-    );
+    ];
 
     return $messages[$message];
 }

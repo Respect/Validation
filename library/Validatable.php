@@ -20,7 +20,7 @@ interface Validatable
 
     public function getName();
 
-    public function reportError($input, array $relatedExceptions = array());
+    public function reportError($input, array $relatedExceptions = []);
 
     public function setName($name);
 

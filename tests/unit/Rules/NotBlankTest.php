@@ -66,34 +66,34 @@ class NotBlankTest extends \PHPUnit_Framework_TestCase
         $object = new stdClass();
         $object->foo = true;
 
-        return array(
-            array(1),
-            array(' oi'),
-            array(array(5)),
-            array(array(1)),
-            array($object),
-        );
+        return [
+            [1],
+            [' oi'],
+            [[5]],
+            [[1]],
+            [$object],
+        ];
     }
 
     public function providerForBlank()
     {
-        return array(
-            array(null),
-            array(''),
-            array(array()),
-            array(' '),
-            array(0),
-            array('0'),
-            array(0),
-            array('0.0'),
-            array(false),
-            array(array('')),
-            array(array(' ')),
-            array(array(0)),
-            array(array('0')),
-            array(array(false)),
-            array(array(array(''), array(0))),
-            array(new stdClass()),
-        );
+        return [
+            [null],
+            [''],
+            [[]],
+            [' '],
+            [0],
+            ['0'],
+            [0],
+            ['0.0'],
+            [false],
+            [['']],
+            [[' ']],
+            [[0]],
+            [['0']],
+            [[false]],
+            [[[''], [0]]],
+            [new stdClass()],
+        ];
     }
 }

@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class SoSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AW', // Awdal
         'BK', // Bakool
         'BN', // Banaadir
@@ -41,7 +41,7 @@ class SoSubdivisionCode extends AbstractSearcher
         'SO', // Sool
         'TO', // Togdheer
         'WO', // Woqooyi Galbeed
-    );
+    ];
 
     public $compareIdentical = true;
 }

@@ -143,7 +143,7 @@ use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
 try {
     $usernameValidator->assert('really messed up screen#name');
 } catch(NestedValidationExceptionInterface $exception) {
-    var_dump($exception->findMessages(array('alnum', 'length', 'noWhitespace')));
+    var_dump($exception->findMessages(['alnum', 'length', 'noWhitespace']));
 }
 ```
 
@@ -184,11 +184,11 @@ Getting messages as an array is fine, but sometimes you need to customize them i
 to present them to the user. This is possible using the `findMessages()` method as well:
 
 ```php
-$errors = $exception->findMessages(array(
+$errors = $exception->findMessages([
     'alnum'        => '{{name}} must contain only letters and digits',
     'length'       => '{{name}} must not have more than 15 chars',
     'noWhitespace' => '{{name}} cannot contain spaces'
-));
+]);
 ```
 
 For all messages, the `{{name}}` and `{{input}}` variable is available for templates.
@@ -204,7 +204,7 @@ $exception->setParam('translator', 'gettext');
 ```
 
 The example above uses `gettext()` but you can use any other callable value, like
-`array($translator, 'trans')` or `you_custom_function()`.
+`[$translator, 'trans']` or `you_custom_function()`.
 
 After that, if you call `getMainMessage()` or `getFullMessage()` (for nested),
 the message will be translated.

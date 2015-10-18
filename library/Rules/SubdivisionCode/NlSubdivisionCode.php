@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class NlSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'DR', // Drenthe
         'FL', // Flevoland
         'FR', // Friesland
@@ -35,7 +35,7 @@ class NlSubdivisionCode extends AbstractSearcher
         'UT', // Utrecht
         'ZE', // Zeeland
         'ZH', // Zuid Holland
-    );
+    ];
 
     public $compareIdentical = true;
 }

@@ -22,14 +22,14 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class VuSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'MAP', // Malampa
         'PAM', // Penama
         'SAM', // Sanma
         'SEE', // Shefa
         'TAE', // Tafea
         'TOB', // Torba
-    );
+    ];
 
     public $compareIdentical = true;
 }

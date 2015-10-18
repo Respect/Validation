@@ -2,18 +2,18 @@
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\EqualsException;
+use Respect\Validation\Validator as v;
 
-$data = array(
-	'password' => 'shuberry',
-	'password_confirmation' => '_shuberry_'
-);
+$data = [
+    'password' => 'shuberry',
+    'password_confirmation' => '_shuberry_'
+];
 
 try {
-	v::keyValue('password', 'equals', 'password_confirmation')->check($data);
+    v::keyValue('password', 'equals', 'password_confirmation')->check($data);
 } catch (EqualsException $e) {
-	echo $e->getMainMessage();
+    echo $e->getMainMessage();
 }
 ?>
 --EXPECTF--

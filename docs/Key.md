@@ -7,9 +7,9 @@
 Validates an array key.
 
 ```php
-$dict = array(
+$dict = [
     'foo' => 'bar'
-);
+];
 
 v::key('foo')->validate($dict); //true
 ```

@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class LbSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AK', // Aakkâr
         'AS', // Liban-Nord
         'BA', // Beyrouth
@@ -31,7 +31,7 @@ class LbSubdivisionCode extends AbstractSearcher
         'JA', // Liban-Sud
         'JL', // Mont-Liban
         'NA', // Nabatîyé
-    );
+    ];
 
     public $compareIdentical = true;
 }

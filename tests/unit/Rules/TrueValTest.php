@@ -30,20 +30,20 @@ class TrueValTest extends \PHPUnit_Framework_TestCase
 
     public function validTrueProvider()
     {
-        return array(
-            array(true),
-            array(1),
-            array('1'),
-            array('true'),
-            array('on'),
-            array('yes'),
-            array('TRUE'),
-            array('ON'),
-            array('YES'),
-            array('True'),
-            array('On'),
-            array('Yes'),
-        );
+        return [
+            [true],
+            [1],
+            ['1'],
+            ['true'],
+            ['on'],
+            ['yes'],
+            ['TRUE'],
+            ['ON'],
+            ['YES'],
+            ['True'],
+            ['On'],
+            ['Yes'],
+        ];
     }
 
     /**
@@ -58,16 +58,16 @@ class TrueValTest extends \PHPUnit_Framework_TestCase
 
     public function invalidTrueProvider()
     {
-        return array(
-            array(false),
-            array(0),
-            array(0.5),
-            array(2),
-            array('0'),
-            array('false'),
-            array('off'),
-            array('no'),
-            array('truth'),
-        );
+        return [
+            [false],
+            [0],
+            [0.5],
+            [2],
+            ['0'],
+            ['false'],
+            ['off'],
+            ['no'],
+            ['truth'],
+        ];
     }
 }

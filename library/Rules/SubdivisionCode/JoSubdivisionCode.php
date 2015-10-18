@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class JoSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AJ', // Ajlun
         'AM', // 'Amman
         'AQ', // Al 'Aqabah
@@ -35,7 +35,7 @@ class JoSubdivisionCode extends AbstractSearcher
         'MA', // Al Mafraq
         'MD', // Madaba
         'MN', // Ma'an
-    );
+    ];
 
     public $compareIdentical = true;
 }

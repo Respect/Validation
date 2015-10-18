@@ -5,7 +5,6 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator as v;
 
-
 var_dump(v::alpha()->validate(''));
 var_dump(v::alpha()->validate(null));
 

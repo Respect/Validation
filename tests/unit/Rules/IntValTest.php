@@ -47,24 +47,24 @@ class IntValTest extends \PHPUnit_Framework_TestCase
 
     public function providerForInt()
     {
-        return array(
-            array(16),
-            array('165'),
-            array(123456),
-            array(PHP_INT_MAX),
-        );
+        return [
+            [16],
+            ['165'],
+            [123456],
+            [PHP_INT_MAX],
+        ];
     }
 
     public function providerForNotInt()
     {
-        return array(
-            array(''),
-            array(null),
-            array('a'),
-            array(' '),
-            array('Foo'),
-            array('1.44'),
-            array(1e-5),
-        );
+        return [
+            [''],
+            [null],
+            ['a'],
+            [' '],
+            ['Foo'],
+            ['1.44'],
+            [1e-5],
+        ];
     }
 }

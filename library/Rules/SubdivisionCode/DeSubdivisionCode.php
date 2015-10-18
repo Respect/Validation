@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class DeSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BB', // Brandenburg
         'BE', // Berlin
         'BW', // Baden-Württemberg
@@ -39,7 +39,7 @@ class DeSubdivisionCode extends AbstractSearcher
         'SN', // Sachsen
         'ST', // Sachsen-Anhalt
         'TH', // Thüringen
-    );
+    ];
 
     public $compareIdentical = true;
 }

@@ -21,7 +21,7 @@ class ExceptionIterator extends RecursiveArrayIterator
     public function __construct($target, $fullRelated = false)
     {
         $this->fullRelated = $fullRelated;
-        parent::__construct(is_array($target) ? $target : array($target));
+        parent::__construct(is_array($target) ? $target : [$target]);
     }
 
     public function current()

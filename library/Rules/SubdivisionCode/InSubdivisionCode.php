@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class InSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AN', // Andaman and Nicobar Islands
         'AP', // Andhra Pradesh
         'AR', // Arunachal Pradesh
@@ -58,7 +58,7 @@ class InSubdivisionCode extends AbstractSearcher
         'UL', // Uttaranchal
         'UP', // Uttar Pradesh
         'WB', // West Bengal
-    );
+    ];
 
     public $compareIdentical = true;
 }

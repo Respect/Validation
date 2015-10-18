@@ -3,13 +3,13 @@
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\BoolTypeException;
+use Respect\Validation\Validator as v;
 
 try {
-	v::not(v::boolType())->check(true);
+    v::not(v::boolType())->check(true);
 } catch (BoolTypeException $e) {
-	echo $e->getMainMessage();
+    echo $e->getMainMessage();
 }
 ?>
 --EXPECTF--

@@ -3,13 +3,13 @@
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\AllOfException;
+use Respect\Validation\Validator as v;
 
 try {
-	v::not(v::boolType())->assert(true);
+    v::not(v::boolType())->assert(true);
 } catch (AllOfException $e) {
-	echo $e->getFullMessage();
+    echo $e->getFullMessage();
 }
 ?>
 --EXPECTF--

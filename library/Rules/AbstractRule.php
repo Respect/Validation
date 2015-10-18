@@ -11,8 +11,8 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Validatable;
 
 abstract class AbstractRule implements Validatable
 {
@@ -49,7 +49,7 @@ abstract class AbstractRule implements Validatable
         return $this->name;
     }
 
-    public function reportError($input, array $extraParams = array())
+    public function reportError($input, array $extraParams = [])
     {
         $exception = $this->createException();
         $name = $this->name ?: ValidationException::stringify($input);

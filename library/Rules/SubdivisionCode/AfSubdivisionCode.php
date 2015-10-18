@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class AfSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BAL', // Balkh province
         'BAM', // Bamian province
         'BDG', // Badghis province
@@ -57,7 +57,7 @@ class AfSubdivisionCode extends AbstractSearcher
         'TAK', // Takhar province
         'WAR', // Wardak province
         'ZAB', // Zabol province
-    );
+    ];
 
     public $compareIdentical = true;
 }

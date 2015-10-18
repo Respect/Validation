@@ -41,7 +41,7 @@ class FilterVarTest extends \PHPUnit_Framework_TestCase
         $rule = new FilterVar(FILTER_VALIDATE_REGEXP);
 
         $actualArguments = $rule->arguments;
-        $expectedArguments = array(FILTER_VALIDATE_REGEXP);
+        $expectedArguments = [FILTER_VALIDATE_REGEXP];
 
         $this->assertEquals($expectedArguments, $actualArguments);
     }
@@ -51,7 +51,7 @@ class FilterVarTest extends \PHPUnit_Framework_TestCase
         $rule = new FilterVar(FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED);
 
         $actualArguments = $rule->arguments;
-        $expectedArguments = array(FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED);
+        $expectedArguments = [FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED];
 
         $this->assertEquals($expectedArguments, $actualArguments);
     }

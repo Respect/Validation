@@ -3,8 +3,8 @@
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\CpfException;
+use Respect\Validation\Validator as v;
 
 try {
     v::not(v::cpf())->check('276.865.775-11');

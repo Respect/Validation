@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class GwSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'L', // Leste
         'N', // Norte
         'S', // Sul
@@ -35,7 +35,7 @@ class GwSubdivisionCode extends AbstractSearcher
         'OI', // Oio Region
         'QU', // Quinara Region
         'TO', // Tombali Region
-    );
+    ];
 
     public $compareIdentical = true;
 }

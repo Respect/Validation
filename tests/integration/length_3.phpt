@@ -3,8 +3,8 @@
 
 require_once 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\AllOfException;
+use Respect\Validation\Validator as v;
 
 try {
     v::length(3, 5)->assert('phpsp.org.br');

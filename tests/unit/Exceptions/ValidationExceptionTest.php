@@ -57,7 +57,7 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
     public function testGetMainMessageShouldApplyTemplatePlaceholders()
     {
         $sampleValidationException = new ValidationException();
-        $sampleValidationException->configure('foo', array('bar' => 1, 'baz' => 2));
+        $sampleValidationException->configure('foo', ['bar' => 1, 'baz' => 2]);
         $sampleValidationException->setTemplate('{{name}} {{bar}} {{baz}}');
         $this->assertEquals(
             'foo 1 2',
@@ -94,75 +94,75 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
 
         $exception = new Exception('My message');
 
-        $iterator1 = new ArrayIterator(array(1, 2, 3));
-        $iterator2 = new ArrayIterator(array('a' => 1, 'b' => 2, 'c' => 3));
+        $iterator1 = new ArrayIterator([1, 2, 3]);
+        $iterator2 = new ArrayIterator(['a' => 1, 'b' => 2, 'c' => 3]);
 
-        return array(
-            array('', '""'),
-            array('foo', '"foo"'),
-            array(INF, 'INF'),
-            array(-INF, '-INF'),
-            array(acos(4), 'NaN'),
-            array(123, '123'),
-            array(123.456, '123.456'),
-            array(array(), '{ }'),
-            array(array(false), '{ false }'),
-            array(array(1,2,3,4,5,6,7,8,9,10), '{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }'),
-            array(range(1, 80), '{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ... }'),
-            array(
-                array('foo' => true, 'bar' => array('baz' => 123, 'qux' => array(1, 2, 3))),
+        return [
+            ['', '""'],
+            ['foo', '"foo"'],
+            [INF, 'INF'],
+            [-INF, '-INF'],
+            [acos(4), 'NaN'],
+            [123, '123'],
+            [123.456, '123.456'],
+            [[], '{ }'],
+            [[false], '{ false }'],
+            [[1,2,3,4,5,6,7,8,9,10], '{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }'],
+            [range(1, 80), '{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ... }'],
+            [
+                ['foo' => true, 'bar' => ['baz' => 123, 'qux' => [1, 2, 3]]],
                 '{ "foo": true, "bar": { "baz": 123, "qux": { 1, 2, 3 } } }'
-            ),
-            array(
-                array('foo' => true, 'bar' => array('baz' => 123, 'qux' => array('norf' => array(1,2,3)))),
+            ],
+            [
+                ['foo' => true, 'bar' => ['baz' => 123, 'qux' => ['norf' => [1,2,3]]]],
                 '{ "foo": true, "bar": { "baz": 123, "qux": { "norf": ... } } }'
-            ),
-            array(array(array(), 'foo'), '{ { }, "foo" }'),
-            array(array(array(1), 'foo'), '{ { 1 }, "foo" }'),
-            array(array(1, array(2, array(3))), '{ 1, { 2, { 3 } } }'),
-            array(array(1, array(2, array(3, array(4)))), '{ 1, { 2, { 3, ... } } }'),
-            array(array(1, array(2, array(3, array(4, array(5))))), '{ 1, { 2, { 3, ... } } }'),
-            array(array('foo', 'bar'), '{ "foo", "bar" }'),
-            array(array('foo', -1), '{ "foo", -1 }'),
-            array($object1, '"stringify.phpt"'),
-            array($object2, sprintf('"%s"', $object2->format('Y-m-d H:i:s'))),
-            array($object3, '`[object] (stdClass: { })`'),
-            array($object4, '`[object] (stdClass: { "foo": 1, "bar": false })`'),
-            array($object5, '`[object] (stdClass: { "name": [object] (stdClass: ...) })`'),
-            array(
+            ],
+            [[[], 'foo'], '{ { }, "foo" }'],
+            [[[1], 'foo'], '{ { 1 }, "foo" }'],
+            [[1, [2, [3]]], '{ 1, { 2, { 3 } } }'],
+            [[1, [2, [3, [4]]]], '{ 1, { 2, { 3, ... } } }'],
+            [[1, [2, [3, [4, [5]]]]], '{ 1, { 2, { 3, ... } } }'],
+            [['foo', 'bar'], '{ "foo", "bar" }'],
+            [['foo', -1], '{ "foo", -1 }'],
+            [$object1, '"stringify.phpt"'],
+            [$object2, sprintf('"%s"', $object2->format('Y-m-d H:i:s'))],
+            [$object3, '`[object] (stdClass: { })`'],
+            [$object4, '`[object] (stdClass: { "foo": 1, "bar": false })`'],
+            [$object5, '`[object] (stdClass: { "name": [object] (stdClass: ...) })`'],
+            [
                 $exception,
                 '`[exception] (Exception: { "message": "My message", "code": 0, "file": "%s:%d" })`'
-            ),
-            array($iterator1, '`[traversable] (ArrayIterator: { 1, 2, 3 })`'),
-            array($iterator2, '`[traversable] (ArrayIterator: { "a": 1, "b": 2, "c": 3 })`'),
-            array(stream_context_create(), '`[resource] (stream-context)`'),
-            array(tmpfile(), '`[resource] (stream)`'),
-            array(xml_parser_create(), '`[resource] (xml)`'),
-            array(
-                array($object4, array(42, 43), true, null, tmpfile()),
+            ],
+            [$iterator1, '`[traversable] (ArrayIterator: { 1, 2, 3 })`'],
+            [$iterator2, '`[traversable] (ArrayIterator: { "a": 1, "b": 2, "c": 3 })`'],
+            [stream_context_create(), '`[resource] (stream-context)`'],
+            [tmpfile(), '`[resource] (stream)`'],
+            [xml_parser_create(), '`[resource] (xml)`'],
+            [
+                [$object4, [42, 43], true, null, tmpfile()],
                 '{ `[object] (stdClass: { "foo": 1, "bar": false })`, { 42, 43 }, true, null, `[resource] (stream)` }'
-            ),
-        );
+            ],
+        ];
     }
 
     public function providerForFormat()
     {
-        return array(
-            array(
+        return [
+            [
                 '{{foo}} {{bar}} {{baz}}',
                 '"hello" "world" "respect"',
-                array('foo' => 'hello', 'bar' => 'world', 'baz' => 'respect'),
-            ),
-            array(
+                ['foo' => 'hello', 'bar' => 'world', 'baz' => 'respect'],
+            ],
+            [
                 '{{foo}} {{bar}} {{baz}}',
                 '"hello" {{bar}} "respect"',
-                array('foo' => 'hello', 'baz' => 'respect'),
-            ),
-            array(
+                ['foo' => 'hello', 'baz' => 'respect'],
+            ],
+            [
                 '{{foo}} {{bar}} {{baz}}',
                 '"hello" {{bar}} "respect"',
-                array('foo' => 'hello', 'bot' => 111, 'baz' => 'respect'),
-            ),
-        );
+                ['foo' => 'hello', 'bot' => 111, 'baz' => 'respect'],
+            ],
+        ];
     }
 }

@@ -11,11 +11,11 @@ use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
 use Respect\Validation\Validator;
 
 try {
-    $input = array(
+    $input = [
         'username' => 'u',
         'birthdate' => 'Not a date',
         'password' => '',
-    );
+    ];
 
     Validator::key('username', Validator::length(2, 32))
              ->key('birthdate', Validator::date())

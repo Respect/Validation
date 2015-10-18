@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class MySubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Johor
         '02', // Kedah
         '03', // Kelantan
@@ -39,7 +39,7 @@ class MySubdivisionCode extends AbstractSearcher
         '14', // Kuala Lumpur
         '15', // Labuan
         '16', // Putrajaya
-    );
+    ];
 
     public $compareIdentical = true;
 }

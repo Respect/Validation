@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class BoSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'B', // Departmento Beni
         'C', // Departmento Cochabamba
         'H', // Departmento Chuquisaca
@@ -32,7 +32,7 @@ class BoSubdivisionCode extends AbstractSearcher
         'P', // Departmento Potosi
         'S', // Departmento Santa Cruz
         'T', // Departmento Tarija
-    );
+    ];
 
     public $compareIdentical = true;
 }

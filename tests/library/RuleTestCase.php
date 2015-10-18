@@ -36,9 +36,9 @@ abstract class RuleTestCase extends \PHPUnit_Framework_TestCase
         $ruleMocked = $this->getMockBuilder('Respect\Validation\Validatable')
             ->disableOriginalConstructor()
             ->setMethods(
-                array(
+                [
                     'assert', 'check', 'getName', 'reportError', 'setName', 'setTemplate', 'validate',
-                )
+                ]
             )
             ->getMock();
 

@@ -2,8 +2,8 @@
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Rules\Ip;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Rules\Ip;
 
 try {
     $ip = new Ip('192.168');

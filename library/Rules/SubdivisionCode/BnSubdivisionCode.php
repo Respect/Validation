@@ -22,12 +22,12 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class BnSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BE', // Belait
         'BM', // Brunei and Muara
         'TE', // Temburong
         'TU', // Tutong
-    );
+    ];
 
     public $compareIdentical = true;
 }

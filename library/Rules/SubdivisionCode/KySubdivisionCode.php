@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class KySubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'CR', // Creek
         'EA', // Eastern
         'ML', // Midland
@@ -31,7 +31,7 @@ class KySubdivisionCode extends AbstractSearcher
         'ST', // South Town
         'WD', // West End
         'WN', // Western
-    );
+    ];
 
     public $compareIdentical = true;
 }

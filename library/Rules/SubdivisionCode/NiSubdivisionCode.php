@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class NiSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AN', // Region Autonoma del Atlantico Norte
         'AS', // Region Autonoma del Atlantico Sur
         'BO', // Boaco
@@ -40,7 +40,7 @@ class NiSubdivisionCode extends AbstractSearcher
         'NS', // Nueva Segovia
         'RI', // Rivas
         'SJ', // Rio San Juan
-    );
+    ];
 
     public $compareIdentical = true;
 }

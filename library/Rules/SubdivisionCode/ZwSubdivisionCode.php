@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class ZwSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BU', // Bulawayo (city)
         'HA', // Harare (city)
         'MA', // Manicaland
@@ -33,7 +33,7 @@ class ZwSubdivisionCode extends AbstractSearcher
         'MS', // Matabeleland South
         'MV', // Masvingo
         'MW', // Mashonaland West
-    );
+    ];
 
     public $compareIdentical = true;
 }

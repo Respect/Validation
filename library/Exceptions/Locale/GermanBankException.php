@@ -15,12 +15,12 @@ use Respect\Validation\Exceptions\BankException;
 
 class GermanBankException extends BankException
 {
-    public static $defaultTemplates = array(
-        self::MODE_DEFAULT => array(
+    public static $defaultTemplates = [
+        self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a german bank',
-        ),
-        self::MODE_NEGATIVE => array(
+        ],
+        self::MODE_NEGATIVE => [
             self::STANDARD => '{{name}} must not be a german bank',
-        ),
-    );
+        ],
+    ];
 }

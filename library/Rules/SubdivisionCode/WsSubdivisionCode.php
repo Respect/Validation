@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class WsSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AA', // A'ana
         'AL', // Aiga-i-le-Tai
         'AT', // Atua
@@ -34,7 +34,7 @@ class WsSubdivisionCode extends AbstractSearcher
         'TU', // Tuamasaga
         'VF', // Va'a-o-Fonoti
         'VS', // Vaisigano
-    );
+    ];
 
     public $compareIdentical = true;
 }

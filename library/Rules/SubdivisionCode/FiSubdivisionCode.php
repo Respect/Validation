@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class FiSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Ahvenanmaa [Finnish] / Åland [Swedish]
         '02', // Etelä-Karjala [Finnish] / Södra Karelen [Swedish]
         '03', // Etelä-Pohjanmaa [Finnish] / Södra Österbotten [Swedish]
@@ -48,7 +48,7 @@ class FiSubdivisionCode extends AbstractSearcher
         'LL', // Lapin laani
         'LS', // Lansi-Suomen laani
         'OL', // Oulun laani
-    );
+    ];
 
     public $compareIdentical = true;
 }

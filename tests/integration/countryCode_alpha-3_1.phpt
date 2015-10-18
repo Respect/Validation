@@ -4,8 +4,8 @@ countryCode()
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator;
 use Respect\Validation\Rules\CountryCode;
+use Respect\Validation\Validator;
 
 var_dump(Validator::countryCode(CountryCode::ALPHA3)->validate('BRA'));
 ?>

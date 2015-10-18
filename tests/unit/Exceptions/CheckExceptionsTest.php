@@ -11,18 +11,18 @@
 
 namespace Respect\Validation\Exceptions;
 
-use ReflectionClass;
 use DirectoryIterator;
+use ReflectionClass;
 
 class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
 {
-    protected $deprecateds = array();
+    protected $deprecateds = [];
 
     public function provideListOfRuleNames()
     {
         $rulesDirectory = 'library/Rules';
         $rulesDirectoryIterator = new DirectoryIterator($rulesDirectory);
-        $ruleNames = array();
+        $ruleNames = [];
         foreach ($rulesDirectoryIterator as $fileInfo) {
             if ($fileInfo->isDir()) {
                 continue;
@@ -41,7 +41,7 @@ class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
                 continue;
             }
 
-            $ruleNames[] = array($ruleName);
+            $ruleNames[] = [$ruleName];
         }
 
         return $ruleNames;

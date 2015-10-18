@@ -21,33 +21,33 @@ class EachTest extends \PHPUnit_Framework_TestCase
     public function testValidatorShouldPassIfEveryArrayItemPass()
     {
         $v = new Each(new NotEmpty());
-        $result = $v->validate(array(1, 2, 3, 4, 5));
+        $result = $v->validate([1, 2, 3, 4, 5]);
         $this->assertTrue($result);
-        $result = $v->check(array(1, 2, 3, 4, 5));
+        $result = $v->check([1, 2, 3, 4, 5]);
         $this->assertTrue($result);
-        $result = $v->assert(array(1, 2, 3, 4, 5));
+        $result = $v->assert([1, 2, 3, 4, 5]);
         $this->assertTrue($result);
     }
 
     public function testValidatorShouldPassIfEveryArrayItemAndKeyPass()
     {
         $v = new Each(new Alpha(), new IntVal());
-        $result = $v->validate(array('a', 'b', 'c', 'd', 'e'));
+        $result = $v->validate(['a', 'b', 'c', 'd', 'e']);
         $this->assertTrue($result);
-        $result = $v->check(array('a', 'b', 'c', 'd', 'e'));
+        $result = $v->check(['a', 'b', 'c', 'd', 'e']);
         $this->assertTrue($result);
-        $result = $v->assert(array('a', 'b', 'c', 'd', 'e'));
+        $result = $v->assert(['a', 'b', 'c', 'd', 'e']);
         $this->assertTrue($result);
     }
 
     public function testValidatorShouldPassWithOnlyKeyValidation()
     {
         $v = new Each(null, new IntVal());
-        $result = $v->validate(array('a', 'b', 'c', 'd', 'e'));
+        $result = $v->validate(['a', 'b', 'c', 'd', 'e']);
         $this->assertTrue($result);
-        $result = $v->check(array('a', 'b', 'c', 'd', 'e'));
+        $result = $v->check(['a', 'b', 'c', 'd', 'e']);
         $this->assertTrue($result);
-        $result = $v->assert(array('a', 'b', 'c', 'd', 'e'));
+        $result = $v->assert(['a', 'b', 'c', 'd', 'e']);
         $this->assertTrue($result);
     }
 
@@ -57,7 +57,7 @@ class EachTest extends \PHPUnit_Framework_TestCase
     public function testValidatorShouldNotPassWithOnlyKeyValidation()
     {
         $v = new Each(null, new StringType());
-        $result = $v->assert(array('a', 'b', 'c', 'd', 'e'));
+        $result = $v->assert(['a', 'b', 'c', 'd', 'e']);
         $this->assertTrue($result);
     }
 
@@ -71,7 +71,7 @@ class EachTest extends \PHPUnit_Framework_TestCase
     public function testValidatorShouldFailOnInvalidItem()
     {
         $v = new Each(new NotEmpty());
-        $result = $v->validate(array('', 2, 3, 4, 5));
+        $result = $v->validate(['', 2, 3, 4, 5]);
         $this->assertFalse($result);
     }
 
@@ -81,7 +81,7 @@ class EachTest extends \PHPUnit_Framework_TestCase
     public function testAssertShouldFailOnInvalidItem()
     {
         $v = new Each(new IntVal());
-        $result = $v->assert(array('a', 2, 3, 4, 5));
+        $result = $v->assert(['a', 2, 3, 4, 5]);
         $this->assertFalse($result);
     }
 

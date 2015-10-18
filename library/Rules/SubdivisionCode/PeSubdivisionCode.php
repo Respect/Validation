@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class PeSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AMA', // Amazonas
         'ANC', // Ancash
         'APU', // Apurimac
@@ -49,7 +49,7 @@ class PeSubdivisionCode extends AbstractSearcher
         'TAC', // Tacna
         'TUM', // Tumbes
         'UCA', // Ucayali
-    );
+    ];
 
     public $compareIdentical = true;
 }

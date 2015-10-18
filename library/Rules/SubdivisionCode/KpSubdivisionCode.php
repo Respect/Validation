@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class KpSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // P'yongyang Special City
         '02', // P'yongan-namdo
         '03', // P'yongan-bukto
@@ -34,7 +34,7 @@ class KpSubdivisionCode extends AbstractSearcher
         '09', // Hamgyong-bukto
         '10', // Ryanggang-do (Yanggang-do)
         '13', // Nasŏn (Najin-Sŏnbong)
-    );
+    ];
 
     public $compareIdentical = true;
 }

@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class GeSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AB', // Abkhazia
         'AJ', // Ajaria
         'GU', // Guria
@@ -35,7 +35,7 @@ class GeSubdivisionCode extends AbstractSearcher
         'SK', // Shida Kartli
         'SZ', // Samegrelo-Zemo Svaneti
         'TB', // Tbilisi
-    );
+    ];
 
     public $compareIdentical = true;
 }

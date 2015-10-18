@@ -2,9 +2,9 @@
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-use Respect\Validation\Exceptions\IpException;
 use Respect\Validation\Exceptions\AllOfException;
+use Respect\Validation\Exceptions\IpException;
+use Respect\Validation\Validator as v;
 
 try {
     v::ip('127.0.1.*')->check('127.0.0.1');

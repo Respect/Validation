@@ -13,7 +13,6 @@ namespace Respect\Validation\Rules;
 
 use ArrayAccess;
 use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Validatable;
 
 class KeyNested extends AbstractRelated
 {

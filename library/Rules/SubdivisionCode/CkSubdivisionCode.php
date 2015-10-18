@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class CkSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AI', // Aitutaki
         'AT', // Atiu
         'MA', // Manuae
@@ -38,7 +38,7 @@ class CkSubdivisionCode extends AbstractSearcher
         'RR', // Rarotonga
         'SU', // Surwarrow
         'TA', // Takutea
-    );
+    ];
 
     public $compareIdentical = true;
 }

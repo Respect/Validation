@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class SeSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AB', // Stockholms
         'AC', // Vasterbottens
         'BD', // Norrbottens
@@ -44,7 +44,7 @@ class SeSubdivisionCode extends AbstractSearcher
         'X', // Gavleborgs
         'Y', // Vasternorrlands
         'Z', // Jamtlands
-    );
+    ];
 
     public $compareIdentical = true;
 }

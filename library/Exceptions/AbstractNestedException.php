@@ -20,7 +20,7 @@ class AbstractNestedException extends ValidationException implements NestedValid
     const ITERATE_TREE = 1;
     const ITERATE_ALL = 2;
 
-    protected $related = array();
+    protected $related = [];
 
     public function addRelated(ValidationException $related)
     {
@@ -31,7 +31,7 @@ class AbstractNestedException extends ValidationException implements NestedValid
 
     public function findMessages(array $paths)
     {
-        $messages = array();
+        $messages = [];
 
         foreach ($paths as $key => $value) {
             $numericKey = is_numeric($key);
@@ -75,7 +75,7 @@ class AbstractNestedException extends ValidationException implements NestedValid
 
     public function getMessages()
     {
-        $messages = array();
+        $messages = [];
         foreach ($this->getIterator() as $key => $exception) {
             if ($key === 0) {
                 continue;
@@ -89,7 +89,7 @@ class AbstractNestedException extends ValidationException implements NestedValid
 
     public function getFullMessage()
     {
-        $message = array();
+        $message = [];
         $iterator = $this->getIterator(false, self::ITERATE_TREE);
         foreach ($iterator as $m) {
             $message[] = $m;

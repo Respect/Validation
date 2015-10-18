@@ -39,37 +39,37 @@ class WhenTest extends RuleTestCase
      */
     public function providerForValidInput()
     {
-        return array(
-            'int (all true)' => array(
+        return [
+            'int (all true)' => [
                 new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock()),
                 42,
-            ),
-            'bool (all true)' => array(
+            ],
+            'bool (all true)' => [
                 new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock()),
                 true,
-            ),
-            'empty (all true)' => array(
+            ],
+            'empty (all true)' => [
                 new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock()),
                 '',
-            ),
-            'object (all true)' => array(
+            ],
+            'object (all true)' => [
                 new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock()),
                 new \stdClass(),
-            ),
-            'empty array (all true)' => array(
+            ],
+            'empty array (all true)' => [
                 new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock()),
-                array(),
-            ),
-            'not empty array (all true)' => array(
+                [],
+            ],
+            'not empty array (all true)' => [
                 new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock()),
-                array('test'),
-            ),
-            'when = true, then = false, else = true' => array(
+                ['test'],
+            ],
+            'when = true, then = false, else = true' => [
                 new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock(false)),
                 false,
-            ),
+            ],
 
-        );
+        ];
     }
 
     /**
@@ -77,19 +77,19 @@ class WhenTest extends RuleTestCase
      */
     public function providerForInvalidInput()
     {
-        return array(
-            'when = true, then = false, else = false' => array(
+        return [
+            'when = true, then = false, else = false' => [
                 new When($this->getRuleMock(), $this->getRuleMock(false), $this->getRuleMock(false)),
                 false,
-            ),
-            'when = true, then = false, else = true' => array(
+            ],
+            'when = true, then = false, else = true' => [
                 new When($this->getRuleMock(), $this->getRuleMock(false), $this->getRuleMock()),
                 false,
-            ),
-            'when = false, then = false, else = false' => array(
+            ],
+            'when = false, then = false, else = false' => [
                 new When($this->getRuleMock(false), $this->getRuleMock(false), $this->getRuleMock(false)),
                 false,
-            ),
-        );
+            ],
+        ];
     }
 }

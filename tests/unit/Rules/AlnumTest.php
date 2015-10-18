@@ -58,53 +58,53 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
 
     public function providerAdditionalChars()
     {
-        return array(
-            array('!@#$%^&*(){}', '!@#$%^&*(){} abc 123'),
-            array('[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n abc 123"),
-        );
+        return [
+            ['!@#$%^&*(){}', '!@#$%^&*(){} abc 123'],
+            ['[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n abc 123"],
+        ];
     }
 
     public function providerForInvalidParams()
     {
-        return array(
-            array(new \stdClass()),
-            array(array()),
-            array(0x2),
-        );
+        return [
+            [new \stdClass()],
+            [[]],
+            [0x2],
+        ];
     }
 
     public function providerForValidAlnum()
     {
-        return array(
-            array('alganet', ''),
-            array('alganet', 'alganet'),
-            array('0alg-anet0', '0-9'),
-            array('1', ''),
-            array("\t", ''),
-            array("\n", ''),
-            array('a', ''),
-            array('foobar', ''),
-            array('rubinho_', '_'),
-            array('google.com', '.'),
-            array('alganet alganet', ''),
-            array("\nabc", ''),
-            array("\tdef", ''),
-            array("\nabc \t", ''),
-            array(0, ''),
-        );
+        return [
+            ['alganet', ''],
+            ['alganet', 'alganet'],
+            ['0alg-anet0', '0-9'],
+            ['1', ''],
+            ["\t", ''],
+            ["\n", ''],
+            ['a', ''],
+            ['foobar', ''],
+            ['rubinho_', '_'],
+            ['google.com', '.'],
+            ['alganet alganet', ''],
+            ["\nabc", ''],
+            ["\tdef", ''],
+            ["\nabc \t", ''],
+            [0, ''],
+        ];
     }
 
     public function providerForInvalidAlnum()
     {
-        return array(
-            array('', ''),
-            array('@#$', ''),
-            array('_', ''),
-            array('dgç', ''),
-            array(1e21, ''), //evaluates to "1.0E+21"
-            array(null, ''),
-            array(new \stdClass(), ''),
-            array(array(), ''),
-        );
+        return [
+            ['', ''],
+            ['@#$', ''],
+            ['_', ''],
+            ['dgç', ''],
+            [1e21, ''], //evaluates to "1.0E+21"
+            [null, ''],
+            [new \stdClass(), ''],
+            [[], ''],
+        ];
     }
 }

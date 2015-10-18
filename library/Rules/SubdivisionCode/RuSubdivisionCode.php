@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class RuSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AD', // Adygeya
         'AL', // Altai Republic
         'ALT', // Altai Krai
@@ -106,7 +106,7 @@ class RuSubdivisionCode extends AbstractSearcher
         'YAR', // Yaroslavl
         'YEV', // Jewish Oblast
         'ZAB', // Zabaykal'skiy kray
-    );
+    ];
 
     public $compareIdentical = true;
 }

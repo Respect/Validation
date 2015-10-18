@@ -22,13 +22,13 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class PfSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'I', // Austral Islands
         'M', // Marquesas Islands
         'S', // Iles Sous-le-Vent
         'T', // Tuamotu-Gambier
         'V', // Iles du Vent
-    );
+    ];
 
     public $compareIdentical = true;
 }

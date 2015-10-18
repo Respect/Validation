@@ -2,9 +2,9 @@
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-use Respect\Validation\Rules\CountryCode;
 use Respect\Validation\Exceptions\CountryCodeException;
+use Respect\Validation\Rules\CountryCode;
+use Respect\Validation\Validator as v;
 
 try {
     v::countryCode(CountryCode::ALPHA3)->check('1');

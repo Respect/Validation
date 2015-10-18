@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class SdSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'DC', // Wasaţ Dārfūr
         'DE', // Sharq Dārfūr
         'DN', // Shamāl Dārfūr
@@ -40,7 +40,7 @@ class SdSubdivisionCode extends AbstractSearcher
         'NW', // An Nīl al Abyaḑ
         'RS', // Al Baḩr al Aḩmar
         'SI', // Sinnār
-    );
+    ];
 
     public $compareIdentical = true;
 }

@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class BeSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BRU', // Brussels
         'VLG', // Flanders
         'WAL', // Wallonia
@@ -37,7 +37,7 @@ class BeSubdivisionCode extends AbstractSearcher
         'WLG', // Liege
         'WLX', // Luxembourg
         'WNA', // Namur
-    );
+    ];
 
     public $compareIdentical = true;
 }

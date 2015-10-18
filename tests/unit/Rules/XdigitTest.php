@@ -56,32 +56,32 @@ class XdigitTest extends \PHPUnit_Framework_TestCase
 
     public function providerAdditionalChars()
     {
-        return array(
-            array('!@#$%^&*(){} ', '!@#$%^&*(){} abc 123'),
-            array("[]?+=/\\-_|\"',<>. \t\n", "[]?+=/\\-_|\"',<>. \t \n abc 123"),
-        );
+        return [
+            ['!@#$%^&*(){} ', '!@#$%^&*(){} abc 123'],
+            ["[]?+=/\\-_|\"',<>. \t\n", "[]?+=/\\-_|\"',<>. \t \n abc 123"],
+        ];
     }
 
     public function providerForXdigit()
     {
-        return array(
-            array('FFF'),
-            array('15'),
-            array('DE12FA'),
-            array('1234567890abcdef'),
-            array(0x123),
-        );
+        return [
+            ['FFF'],
+            ['15'],
+            ['DE12FA'],
+            ['1234567890abcdef'],
+            [0x123],
+        ];
     }
 
     public function providerForNotXdigit()
     {
-        return array(
-            array(''),
-            array(null),
-            array('j'),
-            array(' '),
-            array('Foo'),
-            array('1.5'),
-        );
+        return [
+            [''],
+            [null],
+            ['j'],
+            [' '],
+            ['Foo'],
+            ['1.5'],
+        ];
     }
 }

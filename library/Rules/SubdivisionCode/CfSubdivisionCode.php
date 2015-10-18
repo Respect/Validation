@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class CfSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AC', // Ouham
         'BB', // Bamingui-Bangoran
         'BGF', // Bangui
@@ -40,7 +40,7 @@ class CfSubdivisionCode extends AbstractSearcher
         'SE', // Sangha-Mbaere
         'UK', // Ouaka
         'VK', // Vakaga
-    );
+    ];
 
     public $compareIdentical = true;
 }

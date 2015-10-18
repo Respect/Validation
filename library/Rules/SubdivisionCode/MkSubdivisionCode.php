@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class MkSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Aerodrom †
         '02', // Aračinovo
         '03', // Berovo
@@ -107,7 +107,7 @@ class MkSubdivisionCode extends AbstractSearcher
         '82', // Čučer Sandevo
         '83', // Sopište
         '84', // Staro Nagoričane
-    );
+    ];
 
     public $compareIdentical = true;
 }

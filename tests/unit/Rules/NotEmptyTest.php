@@ -44,24 +44,24 @@ class NotEmptyTest extends \PHPUnit_Framework_TestCase
 
     public function providerForNotEmpty()
     {
-        return array(
-            array(1),
-            array(' oi'),
-            array(array(5)),
-            array(array(0)),
-            array(new \stdClass()),
-        );
+        return [
+            [1],
+            [' oi'],
+            [[5]],
+            [[0]],
+            [new \stdClass()],
+        ];
     }
 
     public function providerForEmpty()
     {
-        return array(
-            array(''),
-            array('    '),
-            array("\n"),
-            array(false),
-            array(null),
-            array(array()),
-        );
+        return [
+            [''],
+            ['    '],
+            ["\n"],
+            [false],
+            [null],
+            [[]],
+        ];
     }
 }

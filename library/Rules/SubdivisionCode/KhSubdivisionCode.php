@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class KhSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '1', // Banteay Mean Choay
         '10', // Kratie
         '11', // Mondul Kiri
@@ -47,7 +47,7 @@ class KhSubdivisionCode extends AbstractSearcher
         '7', // Kampot
         '8', // Kandal
         '9', // Kaoh Kong
-    );
+    ];
 
     public $compareIdentical = true;
 }

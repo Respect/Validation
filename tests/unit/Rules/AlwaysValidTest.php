@@ -19,17 +19,17 @@ class AlwaysValidTest extends \PHPUnit_Framework_TestCase
 {
     public function providerForValidAlwaysValid()
     {
-        return array(
-            array(0),
-            array(1),
-            array('string'),
-            array(true),
-            array(false),
-            array(null),
-            array(''),
-            array(array()),
-            array(array('array_full')),
-        );
+        return [
+            [0],
+            [1],
+            ['string'],
+            [true],
+            [false],
+            [null],
+            [''],
+            [[]],
+            [['array_full']],
+        ];
     }
 
     /**

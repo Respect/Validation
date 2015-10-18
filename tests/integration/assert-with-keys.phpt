@@ -25,16 +25,16 @@ try {
             true
         )
         ->setName('the given data')
-        ->assert(array(
-            'mysql' => array(
+        ->assert([
+            'mysql' => [
                 'host' => 42,
                 'schema' => 42,
-            ),
-            'postgresql' => array(
+            ],
+            'postgresql' => [
                 'user' => 42,
                 'password' => 42,
-            ),
-        ));
+            ],
+        ]);
 } catch (NestedValidationExceptionInterface $exception) {
     echo $exception->getFullMessage().PHP_EOL;
 }

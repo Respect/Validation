@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class TrSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Adana
         '02', // Adiyaman
         '03', // Afyonkarahisar
@@ -104,7 +104,7 @@ class TrSubdivisionCode extends AbstractSearcher
         '79', // Kilis
         '80', // Osmaniye
         '81', // Duzce
-    );
+    ];
 
     public $compareIdentical = true;
 }

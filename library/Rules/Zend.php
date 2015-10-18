@@ -16,10 +16,10 @@ use Respect\Validation\Exceptions\ComponentException;
 
 class Zend extends AbstractRule
 {
-    protected $messages = array();
+    protected $messages = [];
     protected $zendValidator;
 
-    public function __construct($validator, $params = array())
+    public function __construct($validator, $params = [])
     {
         if (is_object($validator)) {
             return $this->zendValidator = $validator;
@@ -52,7 +52,7 @@ class Zend extends AbstractRule
             return true;
         }
 
-        $exceptions = array();
+        $exceptions = [];
         foreach ($validator->getMessages() as $m) {
             $exceptions[] = $this->reportError($m, get_object_vars($this));
         }

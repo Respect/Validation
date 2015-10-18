@@ -3,13 +3,13 @@
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\BoolTypeException;
+use Respect\Validation\Validator as v;
 
 try {
-	v::boolType()->check('12345');
+    v::boolType()->check('12345');
 } catch (BoolTypeException $e) {
-	echo $e->getMainMessage();
+    echo $e->getMainMessage();
 }
 ?>
 --EXPECTF--

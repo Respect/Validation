@@ -22,14 +22,14 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class GmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'B', // Banjul
         'L', // Lower River
         'M', // Central River
         'N', // North Bank
         'U', // Upper River
         'W', // Western
-    );
+    ];
 
     public $compareIdentical = true;
 }

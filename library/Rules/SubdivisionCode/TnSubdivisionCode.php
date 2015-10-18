@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class TnSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '11', // Tunis
         '12', // L'Ariana
         '13', // Ben Arous
@@ -47,7 +47,7 @@ class TnSubdivisionCode extends AbstractSearcher
         '81', // Gabès
         '82', // Medenine
         '83', // Tataouine
-    );
+    ];
 
     public $compareIdentical = true;
 }

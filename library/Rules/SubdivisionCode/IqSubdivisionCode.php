@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class IqSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AN', // Al Anbar
         'AR', // Arbīl
         'BA', // Al Basrah
@@ -41,7 +41,7 @@ class IqSubdivisionCode extends AbstractSearcher
         'SU', // As Sulaymānīyah
         'TS', // Kirkūk
         'WA', // Wasit
-    );
+    ];
 
     public $compareIdentical = true;
 }

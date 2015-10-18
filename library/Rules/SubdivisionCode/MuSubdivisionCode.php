@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class MuSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AG', // Agalega Islands
         'BL', // Black River
         'BR', // Beau Bassin-Rose Hill
@@ -40,7 +40,7 @@ class MuSubdivisionCode extends AbstractSearcher
         'RR', // Riviere du Rempart
         'SA', // Savanne
         'VP', // Vacoas-Phoenix
-    );
+    ];
 
     public $compareIdentical = true;
 }

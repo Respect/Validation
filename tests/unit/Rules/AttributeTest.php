@@ -67,11 +67,11 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
 
     public function providerForInvalidAttributeNames()
     {
-        return array(
-            array(new \stdClass()),
-            array(123),
-            array(''),
-        );
+        return [
+            [new \stdClass()],
+            [123],
+            [''],
+        ];
     }
 
     public function testExtraValidatorRulesForAttribute()

@@ -76,27 +76,27 @@ class TypeTest extends \PHPUnit_Framework_TestCase
 
     public function providerForValidType()
     {
-        return array(
-            array('array', array()),
-            array('bool', true),
-            array('boolean', false),
-            array('callable', function () {}),
-            array('double', 0.8),
-            array('float', 1.0),
-            array('int', 42),
-            array('integer', 13),
-            array('null', null),
-            array('object', new stdClass()),
-            array('resource', tmpfile()),
-            array('string', 'Something'),
-        );
+        return [
+            ['array', []],
+            ['bool', true],
+            ['boolean', false],
+            ['callable', function () {}],
+            ['double', 0.8],
+            ['float', 1.0],
+            ['int', 42],
+            ['integer', 13],
+            ['null', null],
+            ['object', new stdClass()],
+            ['resource', tmpfile()],
+            ['string', 'Something'],
+        ];
     }
 
     public function providerForInvalidType()
     {
-        return array(
-            array('int', '1'),
-            array('bool', '1'),
-        );
+        return [
+            ['int', '1'],
+            ['bool', '1'],
+        ];
     }
 }

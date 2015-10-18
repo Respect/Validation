@@ -22,14 +22,14 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class ErSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AN', // Anseba (Keren)
         'DK', // Southern Red Sea (Debub-Keih-Bahri)
         'DU', // Southern (Debub)
         'GB', // Gash-Barka (Barentu)
         'MA', // Central (Maekel)
         'SK', // Northern Red Sea (Semien-Keih-Bahri)
-    );
+    ];
 
     public $compareIdentical = true;
 }
