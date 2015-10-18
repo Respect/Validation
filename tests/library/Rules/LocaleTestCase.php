@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Respect\Validation\Test;
+namespace Respect\Validation\Rules;
 
 use malkusch\bav\ConfigurationRegistry;
 

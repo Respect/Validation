@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Respect\Validation\Test;
+namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
