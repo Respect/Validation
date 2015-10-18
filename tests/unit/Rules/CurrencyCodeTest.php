@@ -19,6 +19,22 @@ use Respect\Validation\Test\RuleTestCase;
  */
 class CurrencyCodeTest extends RuleTestCase
 {
+    /**
+     * @dataProvider providerForValidInput
+     */
+    public function testValidCurrencyCodeShouldReturnTrue($rule, $currencyCode)
+    {
+        $this->assertTrue($rule->validate($currencyCode));
+    }
+
+    /**
+     * @dataProvider providerForInvalidInput
+     */
+    public function testInvalidCurrencyCodeShouldReturnFalse($rule, $currencyCode)
+    {
+        $this->assertFalse($rule->validate($currencyCode));
+    }
+
     public function providerForValidInput()
     {
         $rule = new CurrencyCode();
