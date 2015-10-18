@@ -3,8 +3,11 @@
 
 require_once 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\BankException;
+use Respect\Validation\Validator as v;
+use malkusch\bav\ConfigurationRegistry;
+
+ConfigurationRegistry::getConfiguration()->setUpdatePlan(null);
 
 try
 {
