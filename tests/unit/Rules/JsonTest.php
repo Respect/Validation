@@ -36,14 +36,6 @@ class JsonTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerForNotPass
-     */
-    public function testInvalidJsonsShouldReturnFalse($input)
-    {
-        $this->assertFalse($this->json->validate($input));
-    }
-
-    /**
      * @expectedException Respect\Validation\Exceptions\JSonException
      */
     public function testInvalidJsonsShouldThrowJsonException()
@@ -60,19 +52,13 @@ class JsonTest extends \PHPUnit_Framework_TestCase
     public function providerForPass()
     {
         return [
+            ['2'],
+            ['"abc"'],
             ['[1,2,3]'],
             ['["foo", "bar", "number", 1]'],
             ['{"foo": "bar", "number":1}'],
             ['[]'],
             ['{}'],
-        ];
-    }
-
-    public function providerForNotPass()
-    {
-        return [
-            ['2'],
-            ['"abc"'],
             ['false'],
             ['null'],
         ];
