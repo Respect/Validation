@@ -15,11 +15,12 @@ class Json extends AbstractRule
 {
     public function validate($input)
     {
-        if (is_string($input)
-            && strtolower($input) == 'null') {
-            return true;
+        if (!is_string($input)) {
+            return false;
         }
 
-        return (null !== json_decode($input));
+        $decode = json_decode($input);
+
+        return is_object($decode) || is_array($decode);
     }
 }
