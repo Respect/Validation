@@ -11,7 +11,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Countable;
 use Respect\Validation\Exceptions\ComponentException;
 
 class Length extends AbstractRule
@@ -58,7 +57,7 @@ class Length extends AbstractRule
             return mb_strlen($input, mb_detect_encoding($input));
         }
 
-        if (is_array($input) || $input instanceof Countable) {
+        if (is_array($input) || $input instanceof \Countable) {
             return count($input);
         }
 

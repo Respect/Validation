@@ -5,6 +5,7 @@
   * [ArrayVal](ArrayVal.md)
   * [BoolType](BoolType.md)
   * [CallableType](CallableType.md)
+  * [Countable](Countable.md)
   * [Date](Date.md)
   * [FalseVal](FalseVal.md)
   * [FloatVal](FloatVal.md)
@@ -131,6 +132,7 @@
 ## Regional
 
   * [CountryCode](CountryCode.md)
+  * [CurrencyCode](CurrencyCode.md)
   * [PostalCode](PostalCode.md)
   * [SubdivisionCode](SubdivisionCode.md)
   * [Tld](Tld.md)
@@ -206,6 +208,7 @@
   * [Cntrl](Cntrl.md)
   * [Consonant](Consonant.md)
   * [Contains](Contains.md)
+  * [Countable](Countable.md)
   * [CountryCode](CountryCode.md)
   * [Cpf](Cpf.md)
   * [CreditCard](CreditCard.md)

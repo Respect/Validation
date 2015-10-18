@@ -6,9 +6,12 @@ All notable changes of the Respect\Validation releases are documented in this fi
 
 ### Added
 
+- Add "alpha-3" and "numeric" formats for "CountryCode" rule (#530)
 - Add support for PHP 7 (#426)
 - Create "Bsn" rule (#450)
 - Create "CallableType" rule (#397)
+- Create "Countable" rule (#566)
+- Create "CurrencyCode" rule (#567)
 - Create "Extension" rule (#360)
 - Create "Factor" rule (#405)
 - Create "Finite" rule (#397)
