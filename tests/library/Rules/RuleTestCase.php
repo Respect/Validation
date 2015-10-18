@@ -87,28 +87,6 @@ abstract class RuleTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerForValidInput
-     *
-     * @param Validatable $validator
-     * @param mixed       $input
-     */
-    public function testShouldCheckValidInput(Validatable $validator, $input)
-    {
-        $this->assertTrue($validator->check($input));
-    }
-
-    /**
-     * @dataProvider providerForValidInput
-     *
-     * @param Validatable $validator
-     * @param mixed       $input
-     */
-    public function testShouldAsserValidInput(Validatable $validator, $input)
-    {
-        $this->assertTrue($validator->assert($input));
-    }
-
-    /**
      * @dataProvider providerForInvalidInput
      *
      * @param Validatable $validator
@@ -117,38 +95,5 @@ abstract class RuleTestCase extends \PHPUnit_Framework_TestCase
     public function testShouldValidateInvalidInput(Validatable $validator, $input)
     {
         $this->assertFalse($validator->validate($input));
-    }
-
-    /**
-     * @dataProvider providerForInvalidInput
-     *
-     * @param Validatable $validator
-     * @param mixed       $input
-     * @param string      $expectedExceptionMessage [optional]
-     */
-    public function testShouldCheckInvalidInput(Validatable $validator, $input, $expectedExceptionMessage = null)
-    {
-        $this->setExpectedException(
-            '\Respect\Validation\Exceptions\ValidationException',
-            $expectedExceptionMessage
-        );
-
-        $validator->check($input);
-    }
-
-    /**
-     * @dataProvider providerForInvalidInput
-     *
-     * @param Validatable $validator
-     * @param mixed       $input
-     */
-    public function testShouldAsserInvalidInput(Validatable $validator, $input, $expectedExceptionMessage = null)
-    {
-        $this->setExpectedException(
-            '\Respect\Validation\Exceptions\ValidationException',
-            $expectedExceptionMessage
-        );
-
-        $this->assertFalse($validator->assert($input));
     }
 }
