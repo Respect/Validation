@@ -47,22 +47,22 @@ class EvenTest extends \PHPUnit_Framework_TestCase
 
     public function providerForEven()
     {
-        return array(
-            array(''),
-            array(-2),
-            array(-0),
-            array(0),
-            array(32),
-        );
+        return [
+            [''],
+            [-2],
+            [-0],
+            [0],
+            [32],
+        ];
     }
 
     public function providerForNotEven()
     {
-        return array(
-            array(-5),
-            array(-1),
-            array(1),
-            array(13),
-        );
+        return [
+            [-5],
+            [-1],
+            [1],
+            [13],
+        ];
     }
 }

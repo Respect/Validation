@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class LsSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'A', // Maseru
         'B', // Butha-Buthe
         'C', // Leribe
@@ -33,7 +33,7 @@ class LsSubdivisionCode extends AbstractSearcher
         'H', // Qacha's Nek
         'J', // Mokhotlong
         'K', // Thaba-Tseka
-    );
+    ];
 
     public $compareIdentical = true;
 }

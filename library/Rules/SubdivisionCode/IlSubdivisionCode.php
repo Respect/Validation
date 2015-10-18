@@ -22,14 +22,14 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class IlSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'D', // Southern
         'HA', // Haifa
         'JM', // Jerusalem
         'M', // Central
         'TA', // Tel Aviv
         'Z', // Northern
-    );
+    ];
 
     public $compareIdentical = true;
 }

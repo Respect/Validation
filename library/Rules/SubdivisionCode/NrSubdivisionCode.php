@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class NrSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Aiwo
         '02', // Anabar
         '03', // Anetan
@@ -37,7 +37,7 @@ class NrSubdivisionCode extends AbstractSearcher
         '12', // Nibok
         '13', // Uaboe
         '14', // Yaren
-    );
+    ];
 
     public $compareIdentical = true;
 }

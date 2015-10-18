@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class ScSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Anse aux Pins
         '02', // Anse Boileau
         '03', // Anse Etoile
@@ -48,7 +48,7 @@ class ScSubdivisionCode extends AbstractSearcher
         '23', // Takamaka
         '24', // Les Mamelles
         '25', // Roche Caïman
-    );
+    ];
 
     public $compareIdentical = true;
 }

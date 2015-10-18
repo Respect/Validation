@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class UaSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '05', // Vinnytsya
         '07', // Volyn'
         '09', // Luhans'k
@@ -50,7 +50,7 @@ class UaSubdivisionCode extends AbstractSearcher
         '71', // Cherkasy
         '74', // Chernihiv
         '77', // Chernivtsi
-    );
+    ];
 
     public $compareIdentical = true;
 }

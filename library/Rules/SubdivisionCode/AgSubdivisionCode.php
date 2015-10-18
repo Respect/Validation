@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class AgSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '03', // Saint George
         '04', // Saint John
         '05', // Saint Mary
@@ -31,7 +31,7 @@ class AgSubdivisionCode extends AbstractSearcher
         '08', // Saint Philip
         '10', // Barbuda
         '11', // Redonda
-    );
+    ];
 
     public $compareIdentical = true;
 }

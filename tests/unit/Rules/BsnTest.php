@@ -45,14 +45,12 @@ class BsnTest extends PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidBsn
-     * @expectedException \Respect\Validation\Exceptions\BsnException
      *
      * @param string $input
      */
     public function testShouldNotValidateBsn($input)
     {
         $this->assertFalse($this->rule->validate($input));
-        $this->assertFalse($this->rule->assert($input));
     }
 
     /**
@@ -60,18 +58,18 @@ class BsnTest extends PHPUnit_Framework_TestCase
      */
     public function providerForBsn()
     {
-        return array(
-            array('612890053'),
-            array('087880532'),
-            array('386625918'),
-            array('601608021'),
-            array('254650703'),
-            array('478063441'),
-            array('478063441'),
-            array('187368429'),
-            array('541777348'),
-            array('254283883'),
-        );
+        return [
+            ['612890053'],
+            ['087880532'],
+            ['386625918'],
+            ['601608021'],
+            ['254650703'],
+            ['478063441'],
+            ['478063441'],
+            ['187368429'],
+            ['541777348'],
+            ['254283883'],
+        ];
     }
 
     /**
@@ -79,17 +77,20 @@ class BsnTest extends PHPUnit_Framework_TestCase
      */
     public function providerForInvalidBsn()
     {
-        return array(
-            array('1234567890'),
-            array('0987654321'),
-            array('13579024'),
-            array('612890054'),
-            array('854650703'),
-            array('283958721'),
-            array('231859081'),
-            array('189023323'),
-            array('238150912'),
-            array('382409678'),
-        );
+        return [
+            ['1234567890'],
+            ['0987654321'],
+            ['13579024'],
+            ['612890054'],
+            ['854650703'],
+            ['283958721'],
+            ['231859081'],
+            ['189023323'],
+            ['238150912'],
+            ['382409678'],
+            ['38240.678'],
+            ['38240a678'],
+            ['abcdefghi'],
+        ];
     }
 }

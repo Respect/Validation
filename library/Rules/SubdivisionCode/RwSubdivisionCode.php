@@ -22,13 +22,13 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class RwSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Kigali
         '02', // Est
         '03', // Nord
         '04', // Ouest
         '05', // Sud
-    );
+    ];
 
     public $compareIdentical = true;
 }

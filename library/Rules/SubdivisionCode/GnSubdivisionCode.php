@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class GnSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'B', // Boké
         'C', // Conakry
         'D', // Kindia
@@ -64,7 +64,7 @@ class GnSubdivisionCode extends AbstractSearcher
         'TE', // Telimele
         'TO', // Tougue
         'YO', // Yomou
-    );
+    ];
 
     public $compareIdentical = true;
 }

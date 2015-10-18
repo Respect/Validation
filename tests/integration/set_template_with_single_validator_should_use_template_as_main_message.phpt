@@ -5,8 +5,8 @@ setTemplate() with single validator should use template as main message
 require 'vendor/autoload.php';
 
 use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
-use Respect\Validation\Validator;
 use Respect\Validation\Rules\Callback;
+use Respect\Validation\Validator;
 
 try {
     Validator::callback('is_int')->setTemplate('{{name}} is not tasty')->assert('something');

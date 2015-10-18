@@ -45,7 +45,7 @@ class BoolTypeTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($validator->__invoke('foo'));
         $this->assertFalse($validator->__invoke(123123));
         $this->assertFalse($validator->__invoke(new \stdClass()));
-        $this->assertFalse($validator->__invoke(array()));
+        $this->assertFalse($validator->__invoke([]));
         $this->assertFalse($validator->__invoke(1));
         $this->assertFalse($validator->__invoke(0));
         $this->assertFalse($validator->__invoke(null));

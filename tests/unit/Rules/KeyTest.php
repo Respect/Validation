@@ -21,7 +21,7 @@ class KeyTest extends \PHPUnit_Framework_TestCase
     public function testArrayWithPresentKeyShouldReturnTrue()
     {
         $validator = new Key('bar');
-        $obj = array();
+        $obj = [];
         $obj['bar'] = 'foo';
         $this->assertTrue($validator->assert($obj));
         $this->assertTrue($validator->check($obj));
@@ -57,7 +57,7 @@ class KeyTest extends \PHPUnit_Framework_TestCase
     public function testArrayWithEmptyKeyShouldReturnTrue()
     {
         $validator = new Key('someEmptyKey');
-        $input = array();
+        $input = [];
         $input['someEmptyKey'] = '';
 
         $this->assertTrue($validator->assert($input));
@@ -68,7 +68,7 @@ class KeyTest extends \PHPUnit_Framework_TestCase
     public function testShouldHaveTheSameReturnValueForAllValidators()
     {
         $rule = new Key('key', new NotEmpty());
-        $input = array('key' => '');
+        $input = ['key' => ''];
 
         try {
             $rule->assert($input);
@@ -91,7 +91,7 @@ class KeyTest extends \PHPUnit_Framework_TestCase
     public function testArrayWithAbsentKeyShouldThrowKeyException()
     {
         $validator = new Key('bar');
-        $obj = array();
+        $obj = [];
         $obj['baraaaaaa'] = 'foo';
         $this->assertTrue($validator->assert($obj));
     }
@@ -110,14 +110,14 @@ class KeyTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidConstructorParametersShouldThrowComponentExceptionUponInstantiation()
     {
-        $validator = new Key(array('invalid'));
+        $validator = new Key(['invalid']);
     }
 
     public function testExtraValidatorShouldValidateKey()
     {
         $subValidator = new Length(1, 3);
         $validator = new Key('bar', $subValidator);
-        $obj = array();
+        $obj = [];
         $obj['bar'] = 'foo';
         $this->assertTrue($validator->assert($obj));
     }
@@ -126,7 +126,7 @@ class KeyTest extends \PHPUnit_Framework_TestCase
     {
         $subValidator = new Length(1, 3);
         $validator = new Key('bar', $subValidator, false);
-        $obj = array();
+        $obj = [];
         $this->assertTrue($validator->validate($obj));
     }
 }

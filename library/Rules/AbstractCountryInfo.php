@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 abstract class AbstractCountryInfo extends AbstractRule
 {
-    protected $tldList = array(
+    protected $tldList = [
         //generic
         'aero', 'asia', 'biz', 'cat', 'com', 'coop', 'edu', 'gov', 'info',
         'int', 'jobs', 'mil', 'mobi', 'museum', 'name', 'net', 'org', 'pro',
@@ -40,7 +40,7 @@ abstract class AbstractCountryInfo extends AbstractRule
         'tk', 'tl', 'tm', 'tn', 'to', 'tp', 'tr', 'tt', 'tv', 'tw', 'tz', 'ua',
         'ug', 'uk', 'us', 'uy', 'uz', 'va', 'vc', 've', 'vg', 'vi', 'vn', 'vu',
         'wf', 'ws', 'ye', 'yt', 'za', 'zm', 'zw',
-    );
+    ];
 
     public function validate($input)
     {

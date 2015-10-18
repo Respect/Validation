@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class EsSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AN', // Comunidad Autónoma de Andalucía
         'AR', // Comunidad Autónoma de Aragón
         'AS', // Comunidad Autónoma del Principado de Asturias
@@ -92,7 +92,7 @@ class EsSubdivisionCode extends AbstractSearcher
         'VI', // Álava
         'Z', // Zaragoza
         'ZA', // Zamora
-    );
+    ];
 
     public $compareIdentical = true;
 }

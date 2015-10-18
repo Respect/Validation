@@ -7,11 +7,11 @@ use Respect\Validation\Validator;
 
 function translatorCallback($message)
 {
-    $messages = array(
+    $messages = [
         'All of the required rules must pass for {{name}}' => 'Todas as regras requeridas devem passar para {{name}}',
         '{{name}} must be a string' => '{{name}} deve ser uma string',
         '{{name}} must have a length between {{minValue}} and {{maxValue}}' => '{{name}} deve possuir de {{minValue}} a {{maxValue}} caracteres',
-    );
+    ];
 
     return $messages[$message];
 }

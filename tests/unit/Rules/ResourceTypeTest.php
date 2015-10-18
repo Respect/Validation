@@ -52,22 +52,22 @@ class ResourceTypeTest extends \PHPUnit_Framework_TestCase
 
     public function providerForResource()
     {
-        return array(
-            array(stream_context_create()),
-            array(tmpfile()),
-            array(xml_parser_create()),
-        );
+        return [
+            [stream_context_create()],
+            [tmpfile()],
+            [xml_parser_create()],
+        ];
     }
 
     public function providerForNonResource()
     {
-        return array(
-            array('String'),
-            array(123),
-            array(array()),
-            array(function () {}),
-            array(new \stdClass()),
-            array(null),
-        );
+        return [
+            ['String'],
+            [123],
+            [[]],
+            [function () {}],
+            [new \stdClass()],
+            [null],
+        ];
     }
 }

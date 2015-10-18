@@ -52,26 +52,26 @@ class DirectoryTest extends \PHPUnit_Framework_TestCase
 
     public function providerForDirectoryObjects()
     {
-        return array(
-            array(new \SplFileInfo(__DIR__), true),
-            array(new \SplFileInfo(__FILE__), false),
+        return [
+            [new \SplFileInfo(__DIR__), true],
+            [new \SplFileInfo(__FILE__), false],
             /*
              * PHP 5.4 does not allows to use SplFileObject with directories.
              * array(new \SplFileObject(__DIR__), true),
              */
-            array(new \SplFileObject(__FILE__), false),
-        );
+            [new \SplFileObject(__FILE__), false],
+        ];
     }
 
     public function providerForValidDirectory()
     {
-        $directories = array(
+        $directories = [
             sys_get_temp_dir().DIRECTORY_SEPARATOR.'dataprovider-1',
             sys_get_temp_dir().DIRECTORY_SEPARATOR.'dataprovider-2',
             sys_get_temp_dir().DIRECTORY_SEPARATOR.'dataprovider-3',
             sys_get_temp_dir().DIRECTORY_SEPARATOR.'dataprovider-4',
             sys_get_temp_dir().DIRECTORY_SEPARATOR.'dataprovider-5',
-        );
+        ];
 
         return array_map(
             function ($directory) {
@@ -79,7 +79,7 @@ class DirectoryTest extends \PHPUnit_Framework_TestCase
                     mkdir($directory, 0766, true);
                 }
 
-                return array(realpath($directory));
+                return [realpath($directory)];
             },
             $directories
         );
@@ -88,14 +88,14 @@ class DirectoryTest extends \PHPUnit_Framework_TestCase
     public function providerForInvalidDirectory()
     {
         return array_chunk(
-            array(
+            [
                 '',
                 __FILE__,
                 __DIR__.'/../../../../../README.md',
                 __DIR__.'/../../../../../composer.json',
                 new \stdClass(),
-                array(__DIR__),
-            ),
+                [__DIR__],
+            ],
             1
         );
     }

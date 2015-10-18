@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class LcSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AR', // Anse-la-Raye
         'CA', // Castries
         'CH', // Choiseul
@@ -34,7 +34,7 @@ class LcSubdivisionCode extends AbstractSearcher
         'PR', // Praslin
         'SO', // Soufriere
         'VF', // Vieux-Fort
-    );
+    ];
 
     public $compareIdentical = true;
 }

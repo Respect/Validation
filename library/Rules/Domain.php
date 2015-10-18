@@ -16,7 +16,7 @@ use Respect\Validation\Exceptions\ValidationException;
 class Domain extends AbstractComposite
 {
     protected $tld;
-    protected $checks = array();
+    protected $checks = [];
     protected $otherParts;
 
     public function __construct($tldCheck = true)
@@ -83,7 +83,7 @@ class Domain extends AbstractComposite
 
     public function assert($input)
     {
-        $e = array();
+        $e = [];
         foreach ($this->checks as $chk) {
             $this->collectAssertException($e, $chk, $input);
         }

@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class HuSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BA', // Baranya megye
         'BC', // Békéscsaba
         'BE', // Békés megye
@@ -66,7 +66,7 @@ class HuSubdivisionCode extends AbstractSearcher
         'VM', // Veszprém
         'ZA', // Zala megye
         'ZE', // Zalaegerszeg
-    );
+    ];
 
     public $compareIdentical = true;
 }

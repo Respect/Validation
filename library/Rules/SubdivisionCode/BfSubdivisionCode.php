@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class BfSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Boucle du Mouhoun
         '02', // Cascades
         '03', // Centre
@@ -81,7 +81,7 @@ class BfSubdivisionCode extends AbstractSearcher
         'ZIR', // Ziro
         'ZON', // Zondoma
         'ZOU', // Zoundweogo
-    );
+    ];
 
     public $compareIdentical = true;
 }

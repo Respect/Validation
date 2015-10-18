@@ -20,12 +20,12 @@ use Respect\Validation\Exceptions\SubdivisionCodeException;
  */
 class AuSubdivisionCodeException extends SubdivisionCodeException
 {
-    public static $defaultTemplates = array(
-        self::MODE_DEFAULT => array(
+    public static $defaultTemplates = [
+        self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Australia',
-        ),
-        self::MODE_NEGATIVE => array(
+        ],
+        self::MODE_NEGATIVE => [
             self::STANDARD => '{{name}} must not be a subdivision code of Australia',
-        ),
-    );
+        ],
+    ];
 }

@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class SiSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '001', // Ajdovščina
         '002', // Beltinci
         '003', // Bled
@@ -233,7 +233,7 @@ class SiSubdivisionCode extends AbstractSearcher
         '210', // Sveti Jurij v Slovenskih Goricah
         '211', // Šentrupert
         '215', // Starše
-    );
+    ];
 
     public $compareIdentical = true;
 }

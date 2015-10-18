@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class TtSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'ARI', // Arima
         'CHA', // Chaguanas
         'CTT', // Couva/Tabaquite/Talparo
@@ -39,7 +39,7 @@ class TtSubdivisionCode extends AbstractSearcher
         'SJL', // San Juan/Laventille
         'TUP', // Tunapuna/Piarco
         'WTO', // Tobago
-    );
+    ];
 
     public $compareIdentical = true;
 }

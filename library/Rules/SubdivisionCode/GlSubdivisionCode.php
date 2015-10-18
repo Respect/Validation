@@ -22,12 +22,12 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class GlSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'KU', // Kujalleq
         'QA', // Qaasuitsup
         'QE', // Qeqqata
         'SM', // Sermersooq
-    );
+    ];
 
     public $compareIdentical = true;
 }

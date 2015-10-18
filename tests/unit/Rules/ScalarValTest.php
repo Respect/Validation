@@ -52,24 +52,24 @@ class ScalarValTest extends \PHPUnit_Framework_TestCase
 
     public function providerForScalar()
     {
-        return array(
-            array('6'),
-            array('String'),
-            array(1.0),
-            array(42),
-            array(false),
-            array(true),
-        );
+        return [
+            ['6'],
+            ['String'],
+            [1.0],
+            [42],
+            [false],
+            [true],
+        ];
     }
 
     public function providerForNonScalar()
     {
-        return array(
-            array(array()),
-            array(function () {}),
-            array(new \stdClass()),
-            array(null),
-            array(tmpfile()),
-        );
+        return [
+            [[]],
+            [function () {}],
+            [new \stdClass()],
+            [null],
+            [tmpfile()],
+        ];
     }
 }

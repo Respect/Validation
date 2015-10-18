@@ -47,27 +47,27 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
 
     public function providerForNegative()
     {
-        return array(
-            array('-1.44'),
-            array(-1e-5),
-            array(-10),
-        );
+        return [
+            ['-1.44'],
+            [-1e-5],
+            [-10],
+        ];
     }
 
     public function providerForNotNegative()
     {
-        return array(
-            array(''),
-            array(0),
-            array(-0),
-            array(null),
-            array('a'),
-            array(' '),
-            array('Foo'),
-            array(16),
-            array('165'),
-            array(123456),
-            array(1e10),
-        );
+        return [
+            [''],
+            [0],
+            [-0],
+            [null],
+            ['a'],
+            [' '],
+            ['Foo'],
+            [16],
+            ['165'],
+            [123456],
+            [1e10],
+        ];
     }
 }

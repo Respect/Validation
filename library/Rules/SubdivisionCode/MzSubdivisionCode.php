@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class MzSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'A', // Niassa
         'B', // Manica
         'G', // Gaza
@@ -34,7 +34,7 @@ class MzSubdivisionCode extends AbstractSearcher
         'Q', // Zambezia
         'S', // Sofala
         'T', // Tete
-    );
+    ];
 
     public $compareIdentical = true;
 }

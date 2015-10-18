@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class CzSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'JC', // South Bohemian Region (Jihocesky kraj)
         'JM', // South Moravian Region (Jihomoravsky kraj)
         'KA', // Carlsbad Region  (Karlovarsky kraj)
@@ -128,7 +128,7 @@ class CzSubdivisionCode extends AbstractSearcher
         '804', // Nový Jičín
         '805', // Opava
         '806', // Ostrava - město
-    );
+    ];
 
     public $compareIdentical = true;
 }

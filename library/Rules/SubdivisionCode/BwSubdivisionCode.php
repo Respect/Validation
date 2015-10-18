@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class BwSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'CE', // Central
         'GH', // Ghanzi
         'KG', // Kgalagadi
@@ -32,7 +32,7 @@ class BwSubdivisionCode extends AbstractSearcher
         'NW', // North West
         'SE', // South East
         'SO', // Southern
-    );
+    ];
 
     public $compareIdentical = true;
 }

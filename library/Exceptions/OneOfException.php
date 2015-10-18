@@ -13,12 +13,12 @@ namespace Respect\Validation\Exceptions;
 
 class OneOfException extends AbstractNestedException
 {
-    public static $defaultTemplates = array(
-        self::MODE_DEFAULT => array(
+    public static $defaultTemplates = [
+        self::MODE_DEFAULT => [
             self::STANDARD => 'At least one of these rules must pass for {{name}}',
-        ),
-        self::MODE_NEGATIVE => array(
+        ],
+        self::MODE_NEGATIVE => [
             self::STANDARD => 'At least one of these rules must not pass for {{name}}',
-        ),
-    );
+        ],
+    ];
 }

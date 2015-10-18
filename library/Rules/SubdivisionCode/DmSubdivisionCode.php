@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class DmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '02', // Saint Andrew Parish
         '03', // Saint David Parish
         '04', // Saint George Parish
@@ -33,7 +33,7 @@ class DmSubdivisionCode extends AbstractSearcher
         '09', // Saint Patrick Parish
         '10', // Saint Paul Parish
         '11', // Saint Peter Parish
-    );
+    ];
 
     public $compareIdentical = true;
 }

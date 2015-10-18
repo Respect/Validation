@@ -46,42 +46,42 @@ class InTest extends \PHPUnit_Framework_TestCase
      */
     public function testInCheckExceptionMessageWithArray()
     {
-        $v = new In(array('foo', 'bar'));
+        $v = new In(['foo', 'bar']);
         $v->assert('x');
     }
 
     public function providerForIn()
     {
-        return array(
-            array('', array('')),
-            array(null, array(null)),
-            array('0', array('0')),
-            array(0, array(0)),
-            array('foo', array('foo', 'bar')),
-            array('foo', 'barfoobaz'),
-            array('foo', 'foobarbaz'),
-            array('foo', 'barbazfoo'),
-            array('1', array(1, 2, 3)),
-            array('1', array('1', 2, 3), true),
-        );
+        return [
+            ['', ['']],
+            [null, [null]],
+            ['0', ['0']],
+            [0, [0]],
+            ['foo', ['foo', 'bar']],
+            ['foo', 'barfoobaz'],
+            ['foo', 'foobarbaz'],
+            ['foo', 'barbazfoo'],
+            ['1', [1, 2, 3]],
+            ['1', ['1', 2, 3], true],
+        ];
     }
 
     public function providerForNotIn()
     {
-        return array(
-            array(null, '0'),
-            array(null, 0, true),
-            array(null, '', true),
-            array(null, array()),
-            array('', 'barfoobaz'),
-            array(null, 'barfoobaz'),
-            array(0, 'barfoobaz'),
-            array('0', 'barfoobaz'),
-            array('bat', array('foo', 'bar')),
-            array('foo', 'barfaabaz'),
-            array('foo', 'faabarbaz'),
-            array('foo', 'baabazfaa'),
-            array('1', array(1, 2, 3), true),
-        );
+        return [
+            [null, '0'],
+            [null, 0, true],
+            [null, '', true],
+            [null, []],
+            ['', 'barfoobaz'],
+            [null, 'barfoobaz'],
+            [0, 'barfoobaz'],
+            ['0', 'barfoobaz'],
+            ['bat', ['foo', 'bar']],
+            ['foo', 'barfaabaz'],
+            ['foo', 'faabarbaz'],
+            ['foo', 'baabazfaa'],
+            ['1', [1, 2, 3], true],
+        ];
     }
 }

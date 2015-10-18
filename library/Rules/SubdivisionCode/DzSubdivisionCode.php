@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class DzSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Adrar
         '02', // Chlef
         '03', // Laghouat
@@ -71,7 +71,7 @@ class DzSubdivisionCode extends AbstractSearcher
         '46', // Ain Temouchent
         '47', // Ghardaia
         '48', // Relizane
-    );
+    ];
 
     public $compareIdentical = true;
 }

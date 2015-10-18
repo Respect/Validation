@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class MaSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Tanger-Tétouan
         '02', // Gharb-Chrarda-Beni Hssen
         '03', // Taza-Al Hoceima-Taounate
@@ -102,7 +102,7 @@ class MaSubdivisionCode extends AbstractSearcher
         'TNG', // Tanger-Assilah
         'TNT', // Tan-Tan
         'ZAG', // Zagora
-    );
+    ];
 
     public $compareIdentical = true;
 }

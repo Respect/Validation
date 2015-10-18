@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class PgSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'CPK', // Chimbu
         'CPM', // Central
         'EBR', // East New Britain
@@ -43,7 +43,7 @@ class PgSubdivisionCode extends AbstractSearcher
         'WBK', // West New Britain
         'WHM', // Western Highlands
         'WPD', // Western
-    );
+    ];
 
     public $compareIdentical = true;
 }

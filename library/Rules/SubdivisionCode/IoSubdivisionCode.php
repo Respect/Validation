@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class IoSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'DG', // Diego Garcia
         'DI', // Danger Island
         'EA', // Eagle Islands
@@ -31,7 +31,7 @@ class IoSubdivisionCode extends AbstractSearcher
         'PB', // Peros Banhos
         'SI', // Salomon Islands
         'TB', // Three Brothers
-    );
+    ];
 
     public $compareIdentical = true;
 }

@@ -53,21 +53,22 @@ class IdenticalTest extends \PHPUnit_Framework_TestCase
     public function providerForIdentical()
     {
         $object = new stdClass();
-        return array(
-            array('foo', 'foo'),
-            array(array(), array()),
-            array($object, $object),
-            array(10, 10),
-        );
+
+        return [
+            ['foo', 'foo'],
+            [[], []],
+            [$object, $object],
+            [10, 10],
+        ];
     }
 
     public function providerForNotIdentical()
     {
-        return array(
-            array(42, '42'),
-            array('foo', 'bar'),
-            array(array(1), array()),
-            array(new stdClass(), new stdClass()),
-        );
+        return [
+            [42, '42'],
+            ['foo', 'bar'],
+            [[1], []],
+            [new stdClass(), new stdClass()],
+        ];
     }
 }

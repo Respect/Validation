@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class HkSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'HCW', // Central and Western Hong Kong Island
         'HEA', // Eastern Hong Kong Island
         'HSO', // Southern Hong Kong Island
@@ -41,7 +41,7 @@ class HkSubdivisionCode extends AbstractSearcher
         'NTP', // Tai Po New Territories
         'NTW', // Tsuen Wan New Territories
         'NYL', // Yuen Long New Territories
-    );
+    ];
 
     public $compareIdentical = true;
 }

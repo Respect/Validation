@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class MxSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AGU', // Aguascalientes
         'BCN', // Baja California
         'BCS', // Baja California Sur
@@ -55,7 +55,7 @@ class MxSubdivisionCode extends AbstractSearcher
         'VER', // Veracruz
         'YUC', // Yucatan
         'ZAC', // Zacatecas
-    );
+    ];
 
     public $compareIdentical = true;
 }

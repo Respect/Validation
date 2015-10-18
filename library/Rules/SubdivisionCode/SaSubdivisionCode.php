@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class SaSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Ar Riyad
         '02', // Makkah
         '03', // Al Madinah
@@ -36,7 +36,7 @@ class SaSubdivisionCode extends AbstractSearcher
         '11', // Al Bahah
         '12', // Al Jawf
         '14', // 'Asir
-    );
+    ];
 
     public $compareIdentical = true;
 }

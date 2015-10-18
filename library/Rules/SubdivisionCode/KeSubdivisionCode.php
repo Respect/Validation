@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class KeSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '110', // Nairobi Area
         '200', // Central
         '300', // Coast
@@ -31,7 +31,7 @@ class KeSubdivisionCode extends AbstractSearcher
         '600', // Nyanza
         '700', // Rift Valley
         '800', // Western
-    );
+    ];
 
     public $compareIdentical = true;
 }

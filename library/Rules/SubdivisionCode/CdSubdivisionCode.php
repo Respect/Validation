@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class CdSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BC', // Bas-Congo
         'BN', // Bandundu
         'EQ', // Equateur
@@ -34,7 +34,7 @@ class CdSubdivisionCode extends AbstractSearcher
         'NK', // Nord-Kivu
         'OR', // Orientale
         'SK', // Sud-Kivu
-    );
+    ];
 
     public $compareIdentical = true;
 }

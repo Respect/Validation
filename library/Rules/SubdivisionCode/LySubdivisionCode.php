@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class LySubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BA', // Banghazi
         'BU', // Al Buţnān
         'DR', // Darnah
@@ -45,7 +45,7 @@ class LySubdivisionCode extends AbstractSearcher
         'WD', // Wādī al Ḩayāt
         'WS', // Wādī ash Shāţi´
         'ZA', // Az Zawiyah
-    );
+    ];
 
     public $compareIdentical = true;
 }

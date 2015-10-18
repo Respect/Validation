@@ -43,7 +43,7 @@ class MimetypeTest extends PHPUnit_Framework_TestCase
         $fileInfoMock = $this
             ->getMockBuilder('finfo')
             ->disableOriginalConstructor()
-            ->setMethods(array('file'))
+            ->setMethods(['file'])
             ->getMock();
 
         $fileInfoMock
@@ -65,7 +65,7 @@ class MimetypeTest extends PHPUnit_Framework_TestCase
         $fileInfoMock = $this
             ->getMockBuilder('finfo')
             ->disableOriginalConstructor()
-            ->setMethods(array('file'))
+            ->setMethods(['file'])
             ->getMock();
 
         $fileInfoMock
@@ -83,7 +83,7 @@ class MimetypeTest extends PHPUnit_Framework_TestCase
     {
         $rule = new Mimetype('application/octet-stream');
 
-        $this->assertFalse($rule->validate(array(__FILE__)));
+        $this->assertFalse($rule->validate([__FILE__]));
     }
 
     public function testShouldInvalidateWhenItIsNotAValidFile()
@@ -95,9 +95,9 @@ class MimetypeTest extends PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Respect\Validation\Exceptions\MimetypeException
-     * @expectedExceptionMessageRegExp #".+/MimetypeTest.php" must have "application.?/json" mimetype#
+     * @expectedExceptionMessageRegExp #".+MimetypeTest.php" must have "application.?/json" mimetype#
      */
-    public function testShouldThowsMimetypeExceptionWhenCheckingValue()
+    public function testShouldThrowMimetypeExceptionWhenCheckingValue()
     {
         $rule = new Mimetype('application/json');
         $rule->check(__FILE__);

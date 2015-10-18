@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class NpSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '1', // Madhyamanchal
         '2', // Madhya Pashchimanchal
         '3', // Pashchimanchal
@@ -42,7 +42,7 @@ class NpSubdivisionCode extends AbstractSearcher
         'RA', // Rapti
         'SA', // Sagarmatha
         'SE', // Seti
-    );
+    ];
 
     public $compareIdentical = true;
 }

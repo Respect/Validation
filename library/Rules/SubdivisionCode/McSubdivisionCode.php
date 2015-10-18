@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class McSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'CL', // La Colle
         'CO', // La Condamine
         'FO', // Fontvieille
@@ -40,7 +40,7 @@ class McSubdivisionCode extends AbstractSearcher
         'SP', // Spélugues
         'SR', // Saint-Roman
         'VR', // Vallon de la Rousse
-    );
+    ];
 
     public $compareIdentical = true;
 }

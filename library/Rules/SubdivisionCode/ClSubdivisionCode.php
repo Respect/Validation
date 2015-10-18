@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class ClSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AI', // Aisen del General Carlos Ibanez del Campo (XI)
         'AN', // Antofagasta (II)
         'AP', // Arica y Parinacota
@@ -38,7 +38,7 @@ class ClSubdivisionCode extends AbstractSearcher
         'RM', // Region Metropolitana (RM)
         'TA', // Tarapaca (I)
         'VS', // Valparaiso (V)
-    );
+    ];
 
     public $compareIdentical = true;
 }

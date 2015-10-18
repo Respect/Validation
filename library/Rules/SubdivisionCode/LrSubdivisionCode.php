@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class LrSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BG', // Bong
         'BM', // Bomi
         'CM', // Grand Cape Mount
@@ -36,7 +36,7 @@ class LrSubdivisionCode extends AbstractSearcher
         'NI', // Nimba
         'RI', // River Cess
         'SI', // Sinoe
-    );
+    ];
 
     public $compareIdentical = true;
 }

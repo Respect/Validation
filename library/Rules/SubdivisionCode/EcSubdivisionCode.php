@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class EcSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'A', // Azuay
         'B', // Bolivar
         'C', // Carchi
@@ -47,7 +47,7 @@ class EcSubdivisionCode extends AbstractSearcher
         'X', // Cotopaxi
         'Y', // Pastaza
         'Z', // Zamora-Chinchipe
-    );
+    ];
 
     public $compareIdentical = true;
 }

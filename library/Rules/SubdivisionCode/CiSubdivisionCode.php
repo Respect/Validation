@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class CiSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Lagunes (Région des)
         '02', // Haut-Sassandra (Région du)
         '03', // Savanes (Région des)
@@ -42,7 +42,7 @@ class CiSubdivisionCode extends AbstractSearcher
         '17', // Bafing (Région du)
         '18', // Fromager (Région du)
         '19', // Moyen-Cavally (Région du)
-    );
+    ];
 
     public $compareIdentical = true;
 }

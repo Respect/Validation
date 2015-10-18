@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class EtSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AA', // Addis Ababa
         'AF', // Afar
         'AM', // Amhara
@@ -34,7 +34,7 @@ class EtSubdivisionCode extends AbstractSearcher
         'SN', // Southern Nations - Nationalities and Peoples Region
         'SO', // Somali
         'TI', // Tigray
-    );
+    ];
 
     public $compareIdentical = true;
 }

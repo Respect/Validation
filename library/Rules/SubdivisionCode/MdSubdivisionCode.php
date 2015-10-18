@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class MdSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AN', // Raionul Anenii Noi
         'BA', // Municipiul Bălţi
         'BD', // Tighina
@@ -60,7 +60,7 @@ class MdSubdivisionCode extends AbstractSearcher
         'TA', // Raionul Taraclia
         'TE', // Teleneşti
         'UN', // Raionul Ungheni
-    );
+    ];
 
     public $compareIdentical = true;
 }
