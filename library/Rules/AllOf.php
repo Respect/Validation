@@ -32,10 +32,8 @@ class AllOf extends AbstractComposite
 
     public function check($input)
     {
-        foreach ($this->getRules() as $v) {
-            if (!$v->check($input)) {
-                return false;
-            }
+        foreach ($this->getRules() as $rule) {
+            $rule->check($input);
         }
 
         return true;
@@ -43,8 +41,8 @@ class AllOf extends AbstractComposite
 
     public function validate($input)
     {
-        foreach ($this->getRules() as $v) {
-            if (!$v->validate($input)) {
+        foreach ($this->getRules() as $rule) {
+            if (!$rule->validate($input)) {
                 return false;
             }
         }

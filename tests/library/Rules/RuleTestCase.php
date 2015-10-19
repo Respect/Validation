@@ -29,9 +29,12 @@ abstract class RuleTestCase extends \PHPUnit_Framework_TestCase
     abstract public function providerForInvalidInput();
 
     /**
+     * @param bool             $expectedResult
+     * @param string[optional] $mockClassName
+     *
      * @return \Respect\Validation\Validatable
      */
-    public function getRuleMock($expectedResult = true)
+    public function getRuleMock($expectedResult, $mockClassName = '')
     {
         $ruleMocked = $this->getMockBuilder('Respect\Validation\Validatable')
             ->disableOriginalConstructor()
@@ -40,6 +43,7 @@ abstract class RuleTestCase extends \PHPUnit_Framework_TestCase
                     'assert', 'check', 'getName', 'reportError', 'setName', 'setTemplate', 'validate',
                 ]
             )
+            ->setMockClassName($mockClassName)
             ->getMock();
 
         $ruleMocked
@@ -63,12 +67,12 @@ abstract class RuleTestCase extends \PHPUnit_Framework_TestCase
             $ruleMocked
                 ->expects($this->any())
                 ->method('check')
-                ->willThrowException(new ValidationException())
+                ->willThrowException(new ValidationException('Exception for '.$mockClassName.':check() method'))
             ;
             $ruleMocked
                 ->expects($this->any())
                 ->method('assert')
-                ->willThrowException(new ValidationException())
+                ->willThrowException(new ValidationException('Exception for '.$mockClassName.':assert() method'))
             ;
         }
 

@@ -13,7 +13,7 @@ namespace Respect\Validation\Exceptions;
 
 class AlwaysInvalidException extends ValidationException
 {
-    const SIMPLE = 0;
+    const SIMPLE = 1;
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

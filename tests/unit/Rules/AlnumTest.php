@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\AllOf
- * @covers Respect\Validation\Exceptions\AllOfException
+ * @covers Respect\Validation\Rules\Alnum
+ * @covers Respect\Validation\Exceptions\AlnumException
  */
 class AlnumTest extends \PHPUnit_Framework_TestCase
 {

@@ -14,20 +14,77 @@ namespace Respect\Validation\Rules;
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\When
- * @covers Respect\Validation\Exceptions\WhenException
  */
 class WhenTest extends RuleTestCase
 {
     public function testShouldConstructAnObjectWithoutElseRule()
     {
-        $v = new When($this->getRuleMock(), $this->getRuleMock());
-        $this->assertInstanceOf('\Respect\Validation\Rules\AlwaysInvalid', $v->else);
+        $rule = new When($this->getRuleMock(true), $this->getRuleMock(true));
+
+        $this->assertInstanceOf('\Respect\Validation\Rules\AlwaysInvalid', $rule->else);
     }
 
     public function testShouldConstructAnObjectWithElseRule()
     {
-        $v = new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock());
-        $this->assertNotNull($v->else);
+        $rule = new When($this->getRuleMock(true), $this->getRuleMock(true), $this->getRuleMock(true));
+
+        $this->assertNotNull($rule->else);
+    }
+
+    /**
+     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedExceptionMessage Exception for ThenNotValid:assert() method
+     */
+    public function testShouldThrowExceptionForTheThenRuleWhenTheIfRuleIsValidAndTheThenRuleIsNotOnAssertMethod()
+    {
+        $if = $this->getRuleMock(true);
+        $then = $this->getRuleMock(false, 'ThenNotValid');
+        $else = $this->getRuleMock(true);
+
+        $rule = new When($if, $then, $else);
+        $rule->assert('');
+    }
+
+    /**
+     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedExceptionMessage Exception for ThenNotValid:check() method
+     */
+    public function testShouldThrowExceptionForTheThenRuleWhenTheIfRuleIsValidAndTheThenRuleIsNotOnCheckMethod()
+    {
+        $if = $this->getRuleMock(true);
+        $then = $this->getRuleMock(false, 'ThenNotValid');
+        $else = $this->getRuleMock(true);
+
+        $rule = new When($if, $then, $else);
+        $rule->check('');
+    }
+
+    /**
+     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedExceptionMessage Exception for ElseNotValid:assert() method
+     */
+    public function testShouldThrowExceptionForTheElseRuleWhenTheIfRuleIsNotValidAndTheElseRuleIsNotOnAssertMethod()
+    {
+        $if = $this->getRuleMock(false);
+        $then = $this->getRuleMock(false);
+        $else = $this->getRuleMock(false, 'ElseNotValid');
+
+        $rule = new When($if, $then, $else);
+        $rule->assert('');
+    }
+
+    /**
+     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedExceptionMessage Exception for ElseNotValid:check() method
+     */
+    public function testShouldThrowExceptionForTheElseRuleWhenTheIfRuleIsNotValidAndTheElseRuleIsNotOnCheckMethod()
+    {
+        $if = $this->getRuleMock(false);
+        $then = $this->getRuleMock(false);
+        $else = $this->getRuleMock(false, 'ElseNotValid');
+
+        $rule = new When($if, $then, $else);
+        $rule->check('');
     }
 
     /**
@@ -39,31 +96,31 @@ class WhenTest extends RuleTestCase
     {
         return [
             'int (all true)' => [
-                new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock()),
+                new When($this->getRuleMock(true), $this->getRuleMock(true), $this->getRuleMock(true)),
                 42,
             ],
             'bool (all true)' => [
-                new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock()),
+                new When($this->getRuleMock(true), $this->getRuleMock(true), $this->getRuleMock(true)),
                 true,
             ],
             'empty (all true)' => [
-                new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock()),
+                new When($this->getRuleMock(true), $this->getRuleMock(true), $this->getRuleMock(true)),
                 '',
             ],
             'object (all true)' => [
-                new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock()),
+                new When($this->getRuleMock(true), $this->getRuleMock(true), $this->getRuleMock(true)),
                 new \stdClass(),
             ],
             'empty array (all true)' => [
-                new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock()),
+                new When($this->getRuleMock(true), $this->getRuleMock(true), $this->getRuleMock(true)),
                 [],
             ],
             'not empty array (all true)' => [
-                new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock()),
+                new When($this->getRuleMock(true), $this->getRuleMock(true), $this->getRuleMock(true)),
                 ['test'],
             ],
             'when = true, then = false, else = true' => [
-                new When($this->getRuleMock(), $this->getRuleMock(), $this->getRuleMock(false)),
+                new When($this->getRuleMock(true), $this->getRuleMock(true), $this->getRuleMock(false)),
                 false,
             ],
 
@@ -77,11 +134,11 @@ class WhenTest extends RuleTestCase
     {
         return [
             'when = true, then = false, else = false' => [
-                new When($this->getRuleMock(), $this->getRuleMock(false), $this->getRuleMock(false)),
+                new When($this->getRuleMock(true), $this->getRuleMock(false), $this->getRuleMock(false)),
                 false,
             ],
             'when = true, then = false, else = true' => [
-                new When($this->getRuleMock(), $this->getRuleMock(false), $this->getRuleMock()),
+                new When($this->getRuleMock(true), $this->getRuleMock(false), $this->getRuleMock(true)),
                 false,
             ],
             'when = false, then = false, else = false' => [
