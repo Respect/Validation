@@ -187,11 +187,23 @@ You can test the project using the commands:
 $ vendor/bin/phpunit
 ```
 
+or
+
+```sh
+$ composer test
+```
+
 ### Windows
 
 You can test the project using the commands:
 ```sh
 > vendor\bin\phpunit
+```
+
+or
+
+```sh
+> composer test
 ```
 
 No test should fail.
