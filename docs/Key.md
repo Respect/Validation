@@ -11,13 +11,13 @@ $dict = [
     'foo' => 'bar'
 ];
 
-v::key('foo')->validate($dict); //true
+v::key('foo')->validate($dict); // true
 ```
 
 You can also validate the key value itself:
 
 ```php
-v::key('foo', v::equals('bar'))->validate($dict); //true
+v::key('foo', v::equals('bar'))->validate($dict); // true
 ```
 
 Third parameter makes the key presence optional:

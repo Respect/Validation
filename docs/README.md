@@ -15,7 +15,7 @@ The Hello World validator is something like this:
 
 ```php
 $number = 123;
-v::numeric()->validate($number); //true
+v::numeric()->validate($number); // true
 ```
 
 ## Chained Validation
@@ -25,7 +25,7 @@ containing numbers and letters, no whitespace and length between 1 and 15.
 
 ```php
 $usernameValidator = v::alnum()->noWhitespace()->length(1,15);
-$usernameValidator->validate('alganet'); //true
+$usernameValidator->validate('alganet'); // true
 ```
 
 ## Validating Object Attributes
@@ -44,7 +44,7 @@ Is possible to validate its attributes in a single chain:
 $userValidator = v::attribute('name', v::stringType()->length(1,32))
                   ->attribute('birthdate', v::date()->age(18));
 
-$userValidator->validate($user); //true
+$userValidator->validate($user); // true
 ```
 
 Validating array keys is also possible using `v::key()`
@@ -81,7 +81,7 @@ See more on [Optional](Optional.md).
 You can use the `v::not()` to negate any rule:
 
 ```php
-v::not(v::intVal())->validate(10); //false, input must not be integer
+v::not(v::intVal())->validate(10); // false, input must not be integer
 ```
 
 ## Validator Reuse
@@ -90,7 +90,7 @@ Once created, you can reuse your validator anywhere. Remember `$usernameValidato
 
 ```php
 $usernameValidator->validate('respect');            //true
-$usernameValidator->validate('alexandre gaigalas'); //false
+$usernameValidator->validate('alexandre gaigalas'); // false
 $usernameValidator->validate('#$%');                //false
 ```
 

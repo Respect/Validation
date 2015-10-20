@@ -6,8 +6,8 @@ Validates if the given input is not optional. By _optional_ we consider `null`
 or an empty string (`''`).
 
 ```php
-v::notOptional()->validate(''); //false
-v::notOptional()->validate(null); //false
+v::notOptional()->validate(''); // false
+v::notOptional()->validate(null); // false
 ```
 
 Other values:

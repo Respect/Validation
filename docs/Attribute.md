@@ -10,13 +10,13 @@ Validates an object attribute.
 $obj = new stdClass;
 $obj->foo = 'bar';
 
-v::attribute('foo')->validate($obj); //true
+v::attribute('foo')->validate($obj); // true
 ```
 
 You can also validate the attribute itself:
 
 ```php
-v::attribute('foo', v::equals('bar'))->validate($obj); //true
+v::attribute('foo', v::equals('bar'))->validate($obj); // true
 ```
 
 Third parameter makes the attribute presence optional:

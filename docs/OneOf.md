@@ -8,7 +8,7 @@ This is a group validator that acts as an OR operator.
 v::oneOf(
     v::intVal(),
     v::floatVal()
-)->validate(15.5); //true
+)->validate(15.5); // true
 ```
 
 In the sample above, `v::intVal()` doesn't validates, but

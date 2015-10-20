@@ -14,8 +14,8 @@ $releaseDates = [
     'relational' => '2011-02-05',
 ];
 
-v::arrayVal()->each(v::date())->validate($releaseDates); //true
-v::arrayVal()->each(v::date(), v::stringType()->lowercase())->validate($releaseDates); //true
+v::arrayVal()->each(v::date())->validate($releaseDates); // true
+v::arrayVal()->each(v::date(), v::stringType()->lowercase())->validate($releaseDates); // true
 ```
 
 Using `arr()` before `each()` is a best practice.

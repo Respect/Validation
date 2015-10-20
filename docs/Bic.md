@@ -5,8 +5,8 @@
 Validates a BIC (Bank Identifier Code) for a given country.
 
 ```php
-v::bic("de")->validate("VZVDDED1XXX"); //true
-v::bic("de")->validate("VZVDDED1"); //true
+v::bic("de")->validate("VZVDDED1XXX"); // true
+v::bic("de")->validate("VZVDDED1"); // true
 ```
 
 Theses country codes are supported:
