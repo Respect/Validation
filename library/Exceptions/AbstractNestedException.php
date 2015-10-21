@@ -110,13 +110,13 @@ class AbstractNestedException extends ValidationException implements NestedValid
 
     public function setParam($name, $value)
     {
-        parent::setParam($name, $value);
-
         if ('translator' === $name) {
             foreach ($this->getRelated(true) as $related) {
                 $related->setParam($name, $value);
             }
         }
+
+        parent::setParam($name, $value);
 
         return $this;
     }

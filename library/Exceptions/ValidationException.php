@@ -201,9 +201,8 @@ class ValidationException extends InvalidArgumentException implements Validation
     public function configure($name, array $params = [])
     {
         $this->setName($name);
-        $this->setParams($params);
-        $this->message = $this->getMainMessage();
         $this->setId($this->guessId());
+        $this->setParams($params);
 
         return $this;
     }
@@ -273,6 +272,8 @@ class ValidationException extends InvalidArgumentException implements Validation
         $this->mode = $mode;
         $this->template = $this->buildTemplate();
 
+        $this->buildMessage();
+
         return $this;
     }
 
@@ -280,14 +281,18 @@ class ValidationException extends InvalidArgumentException implements Validation
     {
         $this->params[$key] = $value;
 
+        $this->buildMessage();
+
         return $this;
     }
 
     public function setParams(array $params)
     {
         foreach ($params as $key => $value) {
-            $this->setParam($key, $value);
+            $this->params[$key] = $value;
         }
+
+        $this->buildMessage();
 
         return $this;
     }
@@ -303,6 +308,11 @@ class ValidationException extends InvalidArgumentException implements Validation
         $this->template = $template;
 
         return $this;
+    }
+
+    private function buildMessage()
+    {
+        $this->message = $this->getMainMessage();
     }
 
     protected function buildTemplate()

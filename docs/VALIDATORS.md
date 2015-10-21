@@ -4,6 +4,7 @@
 
   * [ArrayVal](ArrayVal.md)
   * [ArrayType](ArrayType.md)
+  * [BoolVal](BoolVal.md)
   * [BoolType](BoolType.md)
   * [CallableType](CallableType.md)
   * [Countable](Countable.md)
