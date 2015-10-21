@@ -33,6 +33,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator between(mixed $min = null, mixed $max = null, bool $inclusive = true)
  * @method static Validator bic(string $countryCode)
  * @method static Validator boolType()
+ * @method static Validator boolVal()
  * @method static Validator bsn()
  * @method static Validator call()
  * @method static Validator callableType()
