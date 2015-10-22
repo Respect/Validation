@@ -36,8 +36,9 @@ class KeyNested extends AbstractRelated
     {
         $keys = $this->getReferencePieces();
         $value = $input;
-        while (($key = array_shift($keys))) {
-            if (!isset($value[$key])) {
+
+        while (!is_null($key = array_shift($keys))) {
+            if (!array_key_exists($key, $value)) {
                 $message = sprintf('Cannot select the key %s from the given array', $this->reference);
                 throw new ComponentException($message);
             }
@@ -52,8 +53,11 @@ class KeyNested extends AbstractRelated
     {
         $properties = $this->getReferencePieces();
         $value = $input;
-        while (($property = array_shift($properties))) {
-            if (!isset($value->$property)) {
+
+        while (!is_null($property = array_shift($properties)) &&
+            '' != $property
+        ) {
+            if (!is_object($value) || !property_exists($value, $property)) {
                 $message = sprintf('Cannot select the property %s from the given object', $this->reference);
                 throw new ComponentException($message);
             }

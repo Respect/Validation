@@ -1,5 +1,5 @@
 --TEST--
-alwaysInvalid()
+keyNested()
 --FILE--
 <?php
 require 'vendor/autoload.php';

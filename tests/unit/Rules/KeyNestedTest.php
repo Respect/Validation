@@ -38,6 +38,17 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($rule->validate($array));
     }
 
+    public function testArrayWithNumericKeysWillReturnTrueForFullPathValidator()
+    {
+        $array = [
+            0 => 'Zero, the hero!'
+        ];
+
+        $rule = new KeyNested(0, new Equals('Zero, the hero!'));
+
+        $this->assertTrue($rule->check($array));
+    }
+
     public function testArrayWithPresentKeysWillReturnTrueForHalfPathValidator()
     {
         $array = [
