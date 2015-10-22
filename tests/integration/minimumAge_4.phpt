@@ -15,4 +15,4 @@ try {
 
 ?>
 --EXPECTF--
-\-The age must be 12 years or more.
+- The age must be 12 years or more.

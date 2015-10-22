@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"good-and-valid-slug" must not be a valid slug
+- "good-and-valid-slug" must not be a valid slug

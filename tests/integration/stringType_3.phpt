@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-42 must be a string
+- 42 must be a string

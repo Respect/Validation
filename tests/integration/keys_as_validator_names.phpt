@@ -20,6 +20,6 @@ try {
 }
 ?>
 --EXPECTF--
-\-All of the required rules must pass for User Subscription Form
-  |-username must have a length between 2 and 32
-  \-birthdate must be a valid date
+- All of the required rules must pass for User Subscription Form
+  - username must have a length between 2 and 32
+  - birthdate must be a valid date

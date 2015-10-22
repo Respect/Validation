@@ -12,4 +12,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"iambatman@gothancity.com" must not be an email
+- "iambatman@gothancity.com" must not be an email

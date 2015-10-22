@@ -12,4 +12,4 @@ try {
 }
 
 --EXPECTF--
-\-"a" must contain only digits (0-9)
+- "a" must contain only digits (0-9)

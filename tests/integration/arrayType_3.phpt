@@ -12,4 +12,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-`[traversable] (ArrayObject: { })` must be of the type array
+- `[traversable] (ArrayObject: { })` must be of the type array

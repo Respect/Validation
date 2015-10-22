@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"Not countable!" must be countable
+- "Not countable!" must be countable

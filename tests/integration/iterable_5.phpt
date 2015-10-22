@@ -13,4 +13,4 @@ try {
 
 ?>
 --EXPECTF--
-\-`[object] (stdClass: { })` must not be iterable
+- `[object] (stdClass: { })` must not be iterable

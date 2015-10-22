@@ -14,4 +14,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"" is always invalid
+- "" is always invalid

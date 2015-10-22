@@ -20,4 +20,4 @@ try {
 ?>
 --EXPECTF--
 "1" must not be numeric
-\-"1" must not be numeric
+- "1" must not be numeric

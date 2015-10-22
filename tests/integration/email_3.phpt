@@ -12,4 +12,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"bruce wayne" must be valid email
+- "bruce wayne" must be valid email

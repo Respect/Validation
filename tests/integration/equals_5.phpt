@@ -12,4 +12,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"test 123" must not be equals "test 123"
+- "test 123" must not be equals "test 123"

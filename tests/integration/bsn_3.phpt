@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"abc" must be a BSN
+- "abc" must be a BSN

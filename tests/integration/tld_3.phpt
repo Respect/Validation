@@ -12,4 +12,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"1984" must be a valid top-level domain name
+- "1984" must be a valid top-level domain name

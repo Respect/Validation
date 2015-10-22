@@ -20,4 +20,4 @@ try {
 ?>
 --EXPECTF--
 "127.0.0.1" must be an IP address in the "127.0.1.0-127.0.1.255" range
-\-"127.0.0.1" must be an IP address in the "127.0.1.0-127.0.1.255" range
+- "127.0.0.1" must be an IP address in the "127.0.1.0-127.0.1.255" range

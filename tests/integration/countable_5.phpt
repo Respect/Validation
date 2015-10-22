@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-`[traversable] (ArrayObject: { })` must not be countable
+- `[traversable] (ArrayObject: { })` must not be countable

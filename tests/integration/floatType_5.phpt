@@ -12,4 +12,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-1984.434 must not be of the type float
+- 1984.434 must not be of the type float

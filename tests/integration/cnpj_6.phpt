@@ -14,4 +14,4 @@ try
 }
 
 --EXPECTF--
-\-"65.150.175/0001-20" must contain only digits (0-9)
+- "65.150.175/0001-20" must contain only digits (0-9)

@@ -33,5 +33,5 @@ try {
 --EXPECTF--
 "ok" must be a boolean value
 "yes" must not be a boolean value
-\-"yep" must be a boolean value
-\-"on" must not be a boolean value
+- "yep" must be a boolean value
+- "on" must not be a boolean value

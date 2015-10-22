@@ -11,4 +11,4 @@ try {
     echo $e->getFullMessage();
 }
 --EXPECTF--
-\-"bb" must not contain consonants
+- "bb" must not contain consonants

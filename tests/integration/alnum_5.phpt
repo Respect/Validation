@@ -10,7 +10,6 @@ try {
 } catch (AllOfException $exception) {
     echo $exception->getFullMessage();
 }
-
 ?>
 --EXPECTF--
-\-"asd124SF" must not contain letters (a-z) or digits (0-9)
+- "asd124SF" must not contain letters (a-z) or digits (0-9)

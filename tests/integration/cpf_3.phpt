@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"your mother" must be a valid CPF number
+- "your mother" must be a valid CPF number

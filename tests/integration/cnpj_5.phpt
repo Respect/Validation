@@ -14,4 +14,4 @@ try
 }
 
 --EXPECTF--
-\-"65150175000120" must not be a valid CNPJ number
+- "65150175000120" must not be a valid CNPJ number

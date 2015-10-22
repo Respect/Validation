@@ -12,4 +12,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"GBP" must not be a valid currency
+- "GBP" must not be a valid currency

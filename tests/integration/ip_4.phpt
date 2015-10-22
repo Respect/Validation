@@ -20,4 +20,4 @@ try {
 ?>
 --EXPECTF--
 "10.0.0.1" must not be an IP address
-\-"10.0.0.1" must not be an IP address
+- "10.0.0.1" must not be an IP address

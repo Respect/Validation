@@ -13,4 +13,4 @@ try
 	echo $e->getFullMessage();
 }
 --EXPECTF--
-\-"test" must be a valid CNPJ number
+- "test" must be a valid CNPJ number

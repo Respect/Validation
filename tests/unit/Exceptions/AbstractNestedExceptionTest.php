@@ -66,7 +66,7 @@ class AbstractNestedExceptionTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($baz, $foo->findRelated('bar.baz'));
         $this->assertSame($baz, $foo->findRelated('baz'));
         $this->assertSame($bat, $foo->findRelated('bar.bat'));
-        $this->assertSame(false, $foo->findRelated('none'));
-        $this->assertSame(false, $foo->findRelated('bar.none'));
+        $this->assertNull($foo->findRelated('none'));
+        $this->assertNull($foo->findRelated('bar.none'));
     }
 }

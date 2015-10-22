@@ -307,6 +307,8 @@ class ValidationException extends InvalidArgumentException implements Validation
         $this->customTemplate = true;
         $this->template = $template;
 
+        $this->buildMessage();
+
         return $this;
     }
 

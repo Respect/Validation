@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"hello world" must not be string
+- "hello world" must not be string

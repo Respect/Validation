@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-null is not considered as "Yes"
+- null is not considered as "Yes"

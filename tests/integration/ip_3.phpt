@@ -20,4 +20,4 @@ try {
 ?>
 --EXPECTF--
 "foo" must be an IP address
-\-"foo" must be an IP address
+- "foo" must be an IP address

@@ -13,4 +13,4 @@ try {
 
 ?>
 --EXPECTF--
-\-"String" must be iterable
+- "String" must be iterable

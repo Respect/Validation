@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"wrong slug" must be a valid slug
+- "wrong slug" must be a valid slug

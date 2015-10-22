@@ -20,4 +20,4 @@ try {
 ?>
 --EXPECTF--
 Field must be numeric
-\-Field must be numeric
+- Field must be numeric

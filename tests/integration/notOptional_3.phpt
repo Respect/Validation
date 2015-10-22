@@ -20,4 +20,4 @@ try {
 ?>
 --EXPECTF--
 Field must not be optional
-\-Field must not be optional
+- Field must not be optional

@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-`[object] (stdClass: { })` must be an array
+- `[object] (stdClass: { })` must be an array

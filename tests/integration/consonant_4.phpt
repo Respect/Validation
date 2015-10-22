@@ -11,4 +11,4 @@ try {
     echo $e->getFullMessage();
 }
 --EXPECTF--
-\-"Jaspion" must contain only consonants
+- "Jaspion" must contain only consonants

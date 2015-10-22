@@ -12,4 +12,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"ppz" must be a valid currency
+- "ppz" must be a valid currency

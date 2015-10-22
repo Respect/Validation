@@ -16,4 +16,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-Data validation failed for 3
+- Data validation failed for 3

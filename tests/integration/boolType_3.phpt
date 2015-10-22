@@ -1,5 +1,5 @@
 --FILE--
-<?php 
+<?php
 
 require 'vendor/autoload.php';
 
@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"12345" must be a boolean
+- "12345" must be a boolean

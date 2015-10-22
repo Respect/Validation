@@ -12,4 +12,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"com" must not be a valid top-level domain name
+- "com" must not be a valid top-level domain name

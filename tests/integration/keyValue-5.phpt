@@ -16,4 +16,4 @@ try {
 	echo $e->getFullMessage();
 }
 --EXPECTF--
-\-Key { "password": "123", "invalid_passwords": { "123", "secreta" } } must not be present
+- Key { "password": "123", "invalid_passwords": { "123", "secreta" } } must not be present

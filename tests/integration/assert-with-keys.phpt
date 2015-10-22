@@ -40,14 +40,14 @@ try {
 }
 ?>
 --EXPECTF--
-\-All of the required rules must pass for the given data
-  |-Key mysql must be valid
-  | |-host must be a string
-  | |-Key user must be present
-  | |-Key password must be present
-  | \-schema must be a string
-  \-Key postgresql must be valid
-    |-Key host must be present
-    |-user must be a string
-    |-password must be a string
-    \-Key schema must be present
+- All of the required rules must pass for the given data
+  - All of the required rules must pass for mysql
+    - host must be a string
+    - Key user must be present
+    - Key password must be present
+    - schema must be a string
+  - All of the required rules must pass for postgresql
+    - Key host must be present
+    - user must be a string
+    - password must be a string
+    - Key schema must be present

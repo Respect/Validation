@@ -20,4 +20,4 @@ try {
 ?>
 --EXPECTF--
 "a" must not contain letters (a-z)
-\-"b" must not contain letters (a-z)
+- "b" must not contain letters (a-z)

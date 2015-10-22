@@ -14,6 +14,6 @@ try {
 }
 ?>
 --EXPECTF--
-\-All of the required rules must pass for 0
-  |-0 must be a string
-  \-0 must have a length between 2 and 15
+- All of the required rules must pass for 0
+  - 0 must be a string
+  - 0 must have a length between 2 and 15

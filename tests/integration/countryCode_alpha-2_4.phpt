@@ -12,4 +12,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"1" must be a valid country
+- "1" must be a valid country

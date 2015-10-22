@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-`[traversable] (ArrayObject: { 2, 3 })` must not be an array
+- `[traversable] (ArrayObject: { 2, 3 })` must not be an array

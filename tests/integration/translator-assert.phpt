@@ -25,6 +25,6 @@ try {
 }
 ?>
 --EXPECTF--
-\-Todas as regras requeridas devem passar para 0
-  |-0 deve ser uma string
-  \-0 deve possuir de 2 a 15 caracteres
+- Todas as regras requeridas devem passar para 0
+  - 0 deve ser uma string
+  - 0 deve possuir de 2 a 15 caracteres

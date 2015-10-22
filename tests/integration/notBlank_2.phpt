@@ -20,4 +20,4 @@ try {
 ?>
 --EXPECTF--
 null must not be blank
-\-"" must not be blank
+- "" must not be blank

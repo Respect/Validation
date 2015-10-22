@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"phpsp.org.br" must have a length between 3 and 5
+- "phpsp.org.br" must have a length between 3 and 5

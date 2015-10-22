@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"076" must not be a valid country
+- "076" must not be a valid country

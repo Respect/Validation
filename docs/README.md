@@ -1,6 +1,6 @@
 # Feature Guide
 
-## Namespace Import
+## Namespace import
 
 Respect\Validation is namespaced, but you can make your life easier by importing
 a single class into your context:
@@ -9,7 +9,7 @@ a single class into your context:
 use Respect\Validation\Validator as v;
 ```
 
-## Simple Validation
+## Simple validation
 
 The Hello World validator is something like this:
 
@@ -18,17 +18,17 @@ $number = 123;
 v::numeric()->validate($number); // true
 ```
 
-## Chained Validation
+## Chained validation
 
 It is possible to use validators in a chain. Sample below validates a string
 containing numbers and letters, no whitespace and length between 1 and 15.
 
 ```php
-$usernameValidator = v::alnum()->noWhitespace()->length(1,15);
+$usernameValidator = v::alnum()->noWhitespace()->length(1, 15);
 $usernameValidator->validate('alganet'); // true
 ```
 
-## Validating Object Attributes
+## Validating object attributes
 
 Given this simple object:
 
@@ -76,7 +76,7 @@ By _optional_ we consider `null` or an empty string (`''`).
 
 See more on [Optional](Optional.md).
 
-## Negating Rules
+## Negating rules
 
 You can use the `v::not()` to negate any rule:
 
@@ -84,7 +84,7 @@ You can use the `v::not()` to negate any rule:
 v::not(v::intVal())->validate(10); // false, input must not be integer
 ```
 
-## Validator Reuse
+## Validator reuse
 
 Once created, you can reuse your validator anywhere. Remember `$usernameValidator`?
 
@@ -94,7 +94,7 @@ $usernameValidator->validate('alexandre gaigalas'); // false
 $usernameValidator->validate('#$%');                //false
 ```
 
-## Exception Types
+## Exception types
 
 * `Repect\Validation\Exceptions\ExceptionInterface`:
     * All exceptions implement this interface;
@@ -108,7 +108,7 @@ $usernameValidator->validate('#$%');                //false
     * Use when calling `assert()`
     * Interface has three methods: `getFullMessage()`, `findMessages()`, and `getMainMessage()`.
 
-## Informative Exceptions
+## Informative exceptions
 
 When something goes wrong, Validation can tell you exactly what's going on. For this,
 we use the `assert()` method instead of `validate()`:
@@ -123,75 +123,80 @@ try {
 }
 ```
 
-The printed message is exactly this, as a text tree:
+The printed message is exactly this, as a nested Markdown list:
 
 ```no-highlight
-\-All of the 3 required rules must pass
-  |-"really messed up screen#name" must contain only letters (a-z) and digits (0-9)
-  |-"really messed up screen#name" must not contain whitespace
-  \-"really messed up screen#name" must have a length between 1 and 15
+- All of the required rules must pass for "really messed up screen#name"
+  - "really messed up screen#name" must contain only letters (a-z) and digits (0-9)
+  - "really messed up screen#name" must not contain whitespace
+  - "really messed up screen#name" must have a length between 1 and 15
 ```
 
-## Requesting Messages
+## Getting all messages as an array
 
-The text tree is fine, but unusable on a HTML form or something more custom. You can use
-`findMessages()` for that:
+The Markdown list is fine, but unusable on a HTML form or something more custom.
+For that you can use `getMessages()`.
 
-```php
-use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
-
-try {
-    $usernameValidator->assert('really messed up screen#name');
-} catch(NestedValidationExceptionInterface $exception) {
-    var_dump($exception->findMessages(['alnum', 'length', 'noWhitespace']));
-}
-```
-
-`findMessages()` returns an array with messages from the requested validators.
-
-## Getting Messages
-
-Sometimes you just need all the messages, for that you can use `getMessages()`.
 It will return all messages from the rules that did not pass the validation.
 
 ```php
 try {
-    Validator::key('username', Validator::length(2, 32))
-             ->key('birthdate', Validator::date())
-             ->key('password', Validator::notEmpty())
-             ->key('email', Validator::email())
-             ->assert($input);
-} catch (NestedValidationExceptionInterface $e) {
-    print_r($e->getMessages());
+    $usernameValidator->assert('really messed up screen#name');
+} catch(NestedValidationExceptionInterface $exception) {
+    print_r($exception->getMessages());
 }
 ```
 
 The code above may display something like:
 
-```
+```no-highlight
 Array
 (
-    [0] => username must have a length between 2 and 32
-    [1] => birthdate must be a valid date
-    [2] => password must not be empty
-    [3] => Key email must be present
+    [0] => "really messed up screen#name" must contain only letters (a-z) and digits (0-9)
+    [1] => "really messed up screen#name" must not contain whitespace
+    [2] => "really messed up screen#name" must have a length between 1 and 15
 )
 ```
 
-## Custom Messages
+## Getting messages as an array by name
+
+If you want to get specific message by name you can use `findMessages()` passing
+the names of the rules you want:
+
+```php
+try {
+    $usernameValidator->assert('really messed up screen#name');
+} catch(NestedValidationExceptionInterface $exception) {
+    print_r($exception->findMessages(['alnum', 'noWhitespace']));
+}
+```
+
+The `findMessages()` returns an array with messages from the requested validators,
+like this:
+
+```no-highlight
+Array
+(
+    [alnum] => "really messed up screen#name" must contain only letters (a-z) and digits (0-9)
+    [noWhitespace] => "really messed up screen#name" must not contain whitespace
+)
+```
+
+## Custom messages
 
 Getting messages as an array is fine, but sometimes you need to customize them in order
 to present them to the user. This is possible using the `findMessages()` method as well:
 
 ```php
 $errors = $exception->findMessages([
-    'alnum'        => '{{name}} must contain only letters and digits',
-    'length'       => '{{name}} must not have more than 15 chars',
+    'alnum' => '{{name}} must contain only letters and digits',
+    'length' => '{{name}} must not have more than 15 chars',
     'noWhitespace' => '{{name}} cannot contain spaces'
 ]);
 ```
 
-For all messages, the `{{name}}` and `{{input}}` variable is available for templates.
+For all messages, the `{{name}}` variable is available for templates. If you
+do not define a name it uses the input to replace this placeholder.
 
 ## Message localization
 
@@ -211,7 +216,7 @@ the message will be translated.
 
 Note that `getMessage()` will keep the original message.
 
-## Custom Rules
+## Custom rules
 
 You also can use your own rules:
 
@@ -245,7 +250,7 @@ v::with('My\\Validation\\Rules\\', true);
 v::alnum(); // Try to use "My\Validation\Rules\Alnum" if any
 ```
 
-## Validator Name
+## Validator name
 
 On `v::attribute()` and `v::key()`, `{{name}}` is the attribute/key name. For others,
 is the same as the input. You can customize a validator name using:
@@ -254,7 +259,7 @@ is the same as the input. You can customize a validator name using:
 v::date('Y-m-d')->between('1980-02-02', 'now')->setName('Member Since');
 ```
 
-## Zend/Symfony Validators
+## Zend/Symfony validators
 
 It is also possible to reuse validators from other frameworks if they are installed:
 
@@ -263,7 +268,7 @@ $hostnameValidator = v::zend('Hostname')->assert('google.com');
 $timeValidator     = v::sf('Time')->assert('22:00:01');
 ```
 
-## Validation Methods
+## Validation methods
 
 We've seen `validate()` that returns true or false and `assert()` that throws a complete
 validation report. There is also a `check()` method that returns an Exception

@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"BRA" must not be a valid country
+- "BRA" must not be a valid country

@@ -20,4 +20,4 @@ try {
 ?>
 --EXPECTF--
 Field must contain only letters (a-z)
-\-Field must contain only letters (a-z)
+- Field must contain only letters (a-z)

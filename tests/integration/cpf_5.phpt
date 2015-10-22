@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-\-"368.928.062-10" must not be a valid CPF number
+- "368.928.062-10" must not be a valid CPF number

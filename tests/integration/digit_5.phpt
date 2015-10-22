@@ -12,4 +12,4 @@ try {
 }
 
 --EXPECTF--
-\-1 must not contain digits (0-9)
+- 1 must not contain digits (0-9)

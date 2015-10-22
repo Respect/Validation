@@ -12,23 +12,32 @@
 namespace Respect\Validation\Exceptions;
 
 use RecursiveIteratorIterator;
-use RecursiveTreeIterator;
-use Respect\Validation\ExceptionIterator;
+use SplObjectStorage;
 
 class AbstractNestedException extends ValidationException implements NestedValidationExceptionInterface
 {
-    const ITERATE_TREE = 1;
-    const ITERATE_ALL = 2;
+    /**
+     * @var SplObjectStorage
+     */
+    private $exceptions = [];
 
-    protected $related = [];
-
-    public function addRelated(ValidationException $related)
+    /**
+     * @param ValidationException $exception
+     *
+     * @return self
+     */
+    public function addRelated(ValidationException $exception)
     {
-        $this->related[spl_object_hash($related)] = $related;
+        $this->getRelated()->attach($exception);
 
         return $this;
     }
 
+    /**
+     * @param array $paths
+     *
+     * @return self
+     */
     public function findMessages(array $paths)
     {
         $messages = [];
@@ -37,82 +46,162 @@ class AbstractNestedException extends ValidationException implements NestedValid
             $numericKey = is_numeric($key);
             $path = $numericKey ? $value : $key;
 
-            $e = $this->findRelated($path);
+            $exception = $this->findRelated($path);
 
-            if (is_object($e) && !$numericKey) {
-                $e->setTemplate($value);
+            if (is_object($exception) && !$numericKey) {
+                $exception->setTemplate($value);
             }
 
             $path = str_replace('.', '_', $path);
-            $messages[$path] = $e ? $e->getMainMessage() : '';
+            $messages[$path] = $exception ? $exception->getMainMessage() : '';
         }
 
         return $messages;
     }
 
+    /**
+     * @return Exception
+     */
     public function findRelated($path)
     {
         $target = $this;
-        $path = explode('.', $path);
+        $pieces = explode('.', $path);
 
-        while (!empty($path) && $target !== false) {
-            $target = $target->getRelatedByName(array_shift($path));
+        while (!empty($pieces) && $target) {
+            $piece = array_shift($pieces);
+            $target = $target->getRelatedByName($piece);
         }
 
         return $target;
     }
 
-    public function getIterator($full = false, $mode = self::ITERATE_ALL)
+    /**
+     * @return RecursiveIteratorIterator
+     */
+    private function getRecursiveIterator()
     {
-        $exceptionIterator = new ExceptionIterator($this, $full);
+        $exceptionIterator = new RecursiveExceptionIterator($this);
+        $recursiveIteratorIterator = new RecursiveIteratorIterator(
+            $exceptionIterator,
+            RecursiveIteratorIterator::SELF_FIRST
+        );
 
-        if ($mode == self::ITERATE_ALL) {
-            return new RecursiveIteratorIterator($exceptionIterator, 1);
-        } else {
-            return new RecursiveTreeIterator($exceptionIterator);
-        }
+        return $recursiveIteratorIterator;
     }
 
-    public function getMessages()
+    /**
+     * @return SplObjectStorage
+     */
+    public function getIterator()
     {
-        $messages = [];
-        foreach ($this->getIterator() as $key => $exception) {
-            if ($key === 0) {
+        $childrenExceptions = new SplObjectStorage();
+
+        $recursiveIteratorIterator = $this->getRecursiveIterator();
+        $exceptionIterator = $recursiveIteratorIterator->getInnerIterator();
+
+        $lastDepth = 0;
+        $lastDepthOriginal = 0;
+        $knownDepths = [];
+        foreach ($recursiveIteratorIterator as $childException) {
+            if ($childException instanceof self
+                && $childException->getRelated()->count() > 0
+                && $childException->getRelated()->count() < 2) {
                 continue;
             }
 
+            $currentDepth = $lastDepth;
+            $currentDepthOriginal = $recursiveIteratorIterator->getDepth() + 1;
+
+            if (isset($knownDepths[$currentDepthOriginal])) {
+                $currentDepth = $knownDepths[$currentDepthOriginal];
+            } elseif ($currentDepthOriginal > $lastDepthOriginal
+                && ($this->hasCustomTemplate() || $exceptionIterator->count() != 1)) {
+                ++$currentDepth;
+            }
+
+            if (!isset($knownDepths[$currentDepthOriginal])) {
+                $knownDepths[$currentDepthOriginal] = $currentDepth;
+            }
+
+            $lastDepth = $currentDepth;
+            $lastDepthOriginal = $currentDepthOriginal;
+
+            $childrenExceptions->attach(
+                $childException,
+                [
+                    'depth' => $currentDepth,
+                    'depth_original' => $currentDepthOriginal,
+                    'previous_depth' => $lastDepth,
+                    'previous_depth_original' => $lastDepthOriginal,
+                ]
+            );
+        }
+
+        return $childrenExceptions;
+    }
+
+    /**
+     * @return array
+     */
+    public function getMessages()
+    {
+        $messages = [$this->getMessage()];
+        foreach ($this as $exception) {
             $messages[] = $exception->getMessage();
+        }
+
+        if (count($messages) > 1) {
+            array_shift($messages);
         }
 
         return $messages;
     }
 
+    /**
+     * @return string
+     */
     public function getFullMessage()
     {
-        $message = [];
-        $iterator = $this->getIterator(false, self::ITERATE_TREE);
-        foreach ($iterator as $m) {
-            $message[] = $m;
+        $marker = '-';
+        $messages = [];
+        $exceptions = $this->getIterator();
+
+        if ($this->hasCustomTemplate() || count($exceptions) != 1) {
+            $messages[] = sprintf('%s %s', $marker, $this->getMessage());
         }
 
-        return implode(PHP_EOL, $message);
+        foreach ($exceptions as $exception) {
+            $depth = $exceptions[$exception]['depth'];
+            $prefix = str_repeat(' ', $depth * 2);
+            $messages[] = sprintf('%s%s %s', $prefix, $marker, $exception->getMessage());
+        }
+
+        return implode(PHP_EOL, $messages);
     }
 
-    public function getRelated($full = false)
+    /**
+     * @return SplObjectStorage
+     */
+    public function getRelated()
     {
-        if (!$full && 1 === count($this->related)
-            && current($this->related) instanceof self) {
-            return current($this->related)->getRelated();
-        } else {
-            return $this->related;
+        if (!$this->exceptions instanceof SplObjectStorage) {
+            $this->exceptions = new SplObjectStorage();
         }
+
+        return $this->exceptions;
     }
 
+    /**
+     * @param string $name
+     * @param mixed  $value
+     *
+     * @return self
+     */
     public function setParam($name, $value)
     {
         if ('translator' === $name) {
-            foreach ($this->getRelated(true) as $related) {
-                $related->setParam($name, $value);
+            foreach ($this->getRelated() as $exception) {
+                $exception->setParam($name, $value);
             }
         }
 
@@ -121,21 +210,39 @@ class AbstractNestedException extends ValidationException implements NestedValid
         return $this;
     }
 
-    public function getRelatedByName($name)
+    /**
+     * @return bool
+     */
+    private function isRelated($name, ValidationException $exception)
     {
-        foreach ($this->getIterator(true) as $e) {
-            if ($e->getId() === $name || $e->getName() === $name) {
-                return $e;
-            }
-        }
-
-        return false;
+        return ($exception->getId() === $name || $exception->getName() === $name);
     }
 
-    public function setRelated(array $relatedExceptions)
+    /**
+     * @return ValidationException
+     */
+    public function getRelatedByName($name)
     {
-        foreach ($relatedExceptions as $related) {
-            $this->addRelated($related);
+        if ($this->isRelated($name, $this)) {
+            return $this;
+        }
+
+        foreach ($this->getRecursiveIterator() as $exception) {
+            if ($this->isRelated($name, $exception)) {
+                return $exception;
+            }
+        }
+    }
+
+    /**
+     * @param array $exceptions
+     *
+     * @return self
+     */
+    public function setRelated(array $exceptions)
+    {
+        foreach ($exceptions as $exception) {
+            $this->addRelated($exception);
         }
 
         return $this;
