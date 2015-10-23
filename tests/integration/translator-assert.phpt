@@ -2,7 +2,7 @@
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator;
 
 function translatorCallback($message)
@@ -18,7 +18,7 @@ function translatorCallback($message)
 
 try {
     Validator::stringType()->length(2, 15)->assert(0);
-} catch (NestedValidationExceptionInterface $exception) {
+} catch (NestedValidationException $exception) {
     $exception->setParam('translator', 'translatorCallback');
 
     echo $exception->getFullMessage();

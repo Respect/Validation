@@ -4,12 +4,12 @@ getFullMessage() should include all validation messages in a chain
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator;
 
 try {
     Validator::stringType()->length(2, 15)->assert(0);
-} catch (NestedValidationExceptionInterface $e) {
+} catch (NestedValidationException $e) {
     echo $e->getFullMessage();
 }
 ?>

@@ -21,13 +21,6 @@ class PrivateNestedValidationException extends NestedValidationException
 
 class NestedValidationExceptionTest extends \PHPUnit_Framework_TestCase
 {
-    public function testItImplementsNestedValidationExceptionInterface()
-    {
-        $abstractNestedException = new PrivateNestedValidationException();
-        $this->assertInstanceOf('Respect\Validation\Exceptions\NestedValidationExceptionInterface',
-            $abstractNestedException);
-    }
-
     public function testGetRelatedShouldReturnExceptionAddedByAddRelated()
     {
         $composite = new AttributeException();

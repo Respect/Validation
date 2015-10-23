@@ -3,7 +3,7 @@
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
 $arr = [
@@ -16,7 +16,7 @@ try {
         ->key('name', v::length(2, 32))
         ->key('email', v::email())
         ->assert($arr);
-} catch (NestedValidationExceptionInterface $e) {
+} catch (NestedValidationException $e) {
     print_r($e->getMessages());
 }
 ?>

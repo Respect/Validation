@@ -4,7 +4,7 @@ not() with recursion should update mode from related rules
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator;
 
 try {
@@ -20,7 +20,7 @@ try {
         )
     );
     $validator->check(2);
-} catch (NestedValidationExceptionInterface $exception) {
+} catch (NestedValidationException $exception) {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>

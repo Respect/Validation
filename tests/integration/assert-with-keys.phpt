@@ -1,7 +1,7 @@
 --FILE--
 <?php
 require 'vendor/autoload.php';
-use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
 try {
@@ -35,7 +35,7 @@ try {
                 'password' => 42,
             ],
         ]);
-} catch (NestedValidationExceptionInterface $exception) {
+} catch (NestedValidationException $exception) {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>

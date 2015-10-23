@@ -7,7 +7,7 @@ date_default_timezone_set('UTC');
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator;
 
 try {
@@ -15,7 +15,7 @@ try {
              ->key('birthdate', Validator::date())
              ->setName('User Subscription Form')
              ->assert(['username' => '0', 'birthdate' => 'Whatever']);
-} catch (NestedValidationExceptionInterface $e) {
+} catch (NestedValidationException $e) {
     echo $e->getFullMessage();
 }
 ?>

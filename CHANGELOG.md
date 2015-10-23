@@ -70,6 +70,7 @@ All notable changes of the Respect\Validation releases are documented in this fi
 
 - Drop support for PHP 5.3 (#466)
 - Remove `addOr()` shortcut (#444)
+- Remove `NestedValidationExceptionInterface` interface (#591)
 - Remove `not()` shortcut (#444)
 - Remove identical checking from "Equals" rule (#442)
 - Removed Deprecated Rules (#277)

@@ -103,10 +103,14 @@ $usernameValidator->validate('#$%');                //false
     * Use when calling `check()`
     * All validation exceptions implement this interface
     * Interface has one method: `getMainMessage()`
-* `Respect\Validation\Exceptions\NestedValidationExceptionInterface`:
-    * Extends the `Respect\Validation\Exceptions\ValidationExceptionInterface` interface
-    * Use when calling `assert()`
-    * Interface has three methods: `getFullMessage()`, `findMessages()`, and `getMainMessage()`.
+* `Respect\Validation\Exceptions\NestedValidationException`:
+    * Extends the `Respect\Validation\Exceptions\ValidationException` class
+    * Usually thrown when the `assert()` fails
+    * Available methods:
+        * `findMessages()`;
+        * `getFullMessage()`;
+        * `getMessages()`;
+        * more...
 
 ## Informative exceptions
 
@@ -114,11 +118,11 @@ When something goes wrong, Validation can tell you exactly what's going on. For 
 we use the `assert()` method instead of `validate()`:
 
 ```php
-use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
+use Respect\Validation\Exceptions\NestedValidationException;
 
 try {
     $usernameValidator->assert('really messed up screen#name');
-} catch(NestedValidationExceptionInterface $exception) {
+} catch(NestedValidationException $exception) {
    echo $exception->getFullMessage();
 }
 ```
@@ -142,7 +146,7 @@ It will return all messages from the rules that did not pass the validation.
 ```php
 try {
     $usernameValidator->assert('really messed up screen#name');
-} catch(NestedValidationExceptionInterface $exception) {
+} catch(NestedValidationException $exception) {
     print_r($exception->getMessages());
 }
 ```
@@ -166,7 +170,7 @@ the names of the rules you want:
 ```php
 try {
     $usernameValidator->assert('really messed up screen#name');
-} catch(NestedValidationExceptionInterface $exception) {
+} catch(NestedValidationException $exception) {
     print_r($exception->findMessages(['alnum', 'noWhitespace']));
 }
 ```

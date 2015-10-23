@@ -11,10 +11,11 @@
 
 namespace Respect\Validation\Exceptions;
 
+use IteratorAggregate;
 use RecursiveIteratorIterator;
 use SplObjectStorage;
 
-class NestedValidationException extends ValidationException implements NestedValidationExceptionInterface
+class NestedValidationException extends ValidationException implements IteratorAggregate
 {
     /**
      * @var SplObjectStorage

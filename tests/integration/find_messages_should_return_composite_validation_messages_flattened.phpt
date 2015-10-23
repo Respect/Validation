@@ -4,7 +4,7 @@ findMessages() should return composite validation messages flattened
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
 $stringMax256 = v::stringType()->length(5, 256);
@@ -33,7 +33,7 @@ try {
             'security_question' => null,
         ]
     );
-} catch (NestedValidationExceptionInterface $e) {
+} catch (NestedValidationException $e) {
     print_r($e->findMessages(['allOf', 'first_name.length']));
 }
 ?>

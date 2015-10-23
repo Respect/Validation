@@ -3,12 +3,12 @@
 require 'vendor/autoload.php';
 
 use Respect\Validation\Validator as v;
-use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
+use Respect\Validation\Exceptions\NestedValidationException;
 
 $usernameValidator = v::alnum()->noWhitespace()->length(1, 15);
 try {
     $usernameValidator->assert('really messed up screen#name');
-} catch(NestedValidationExceptionInterface $exception) {
+} catch(NestedValidationException $exception) {
    echo $exception->getFullMessage();
 }
 ?>

@@ -25,13 +25,6 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Respect\Validation\Exceptions\ValidationExceptionInterface', $validationException);
     }
 
-    public function testItDoesNotImplementNestedValidationExceptionInterface()
-    {
-        $validationException = new ValidationException();
-        $this->assertNotInstanceOf('Respect\Validation\Exceptions\NestedValidationExceptionInterface',
-            $validationException);
-    }
-
     /**
      * @dataProvider providerForFormat
      */
