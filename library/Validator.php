@@ -74,6 +74,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator instance(string $instanceName)
  * @method static Validator intVal()
  * @method static Validator intType()
+ * @method static Validator imei()
  * @method static Validator ip(mixed $ipOptions = null)
  * @method static Validator iterable()
  * @method static Validator json()
