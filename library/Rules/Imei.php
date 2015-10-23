@@ -12,6 +12,13 @@ class Imei extends AbstractRule
         $this->name = 'imei';
     }
 
+    /**
+     * @see https://en.wikipedia.org/wiki/International_Mobile_Station_Equipment_Identity
+     * 
+     * @param string $input
+     *
+     * @return bool
+     */
     public function validate($input)
     {
         if (!$input || strlen($input) != self::IMEI_SIZE) {
