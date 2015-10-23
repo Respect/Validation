@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class AgeException extends AbstractNestedException
+class AgeException extends NestedValidationException
 {
     const BOTH = 0;
     const LOWER = 1;

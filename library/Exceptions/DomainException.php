@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class DomainException extends AbstractNestedException
+class DomainException extends NestedValidationException
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

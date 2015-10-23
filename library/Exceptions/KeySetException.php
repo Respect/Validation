@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class KeySetException extends AbstractGroupedException
+class KeySetException extends GroupedValidationException
 {
     const STRUCTURE = 2;
 

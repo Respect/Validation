@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class AbstractGroupedException extends AbstractNestedException
+class GroupedValidationException extends NestedValidationException
 {
     const NONE = 0;
     const SOME = 1;

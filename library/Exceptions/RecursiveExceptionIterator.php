@@ -18,7 +18,7 @@ class RecursiveExceptionIterator implements RecursiveIterator, Countable
 {
     private $exceptions;
 
-    public function __construct(AbstractNestedException $parent)
+    public function __construct(NestedValidationException $parent)
     {
         $this->exceptions = $parent->getRelated();
     }
@@ -34,7 +34,7 @@ class RecursiveExceptionIterator implements RecursiveIterator, Countable
             return false;
         }
 
-        return ($this->current() instanceof AbstractNestedException);
+        return ($this->current() instanceof NestedValidationException);
     }
 
     public function getChildren()

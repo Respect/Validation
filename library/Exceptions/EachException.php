@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class EachException extends AbstractNestedException
+class EachException extends NestedValidationException
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

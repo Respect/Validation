@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class NoneOfException extends AbstractNestedException
+class NoneOfException extends NestedValidationException
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

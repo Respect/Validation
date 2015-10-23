@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class AtLeastException extends AbstractGroupedException
+class AtLeastException extends GroupedValidationException
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

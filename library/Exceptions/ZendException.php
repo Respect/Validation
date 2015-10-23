@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class ZendException extends AbstractNestedException
+class ZendException extends NestedValidationException
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
