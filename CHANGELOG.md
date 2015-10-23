@@ -72,6 +72,7 @@ All notable changes of the Respect\Validation releases are documented in this fi
 - Remove `addOr()` shortcut (#444)
 - Remove `NestedValidationExceptionInterface` interface (#591)
 - Remove `not()` shortcut (#444)
+- Remove `ValidationExceptionInterface` interface (#591)
 - Remove identical checking from "Equals" rule (#442)
 - Removed Deprecated Rules (#277)
 - Validation rules do not accept an empty string by default (#422)

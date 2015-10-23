@@ -19,10 +19,10 @@ use stdClass;
 
 class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
 {
-    public function testItImplementsValidationExceptionInterface()
+    public function testItImplementsExceptionInterface()
     {
         $validationException = new ValidationException();
-        $this->assertInstanceOf('Respect\Validation\Exceptions\ValidationExceptionInterface', $validationException);
+        $this->assertInstanceOf('Respect\Validation\Exceptions\ExceptionInterface', $validationException);
     }
 
     /**

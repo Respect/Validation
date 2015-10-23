@@ -4,7 +4,7 @@ not() with recursion should update mode from related rules
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\ValidationExceptionInterface;
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validator;
 
 try {
@@ -12,7 +12,7 @@ try {
         Validator::intVal()->positive()
     );
     $validator->check(2);
-} catch (ValidationExceptionInterface $exception) {
+} catch (ValidationException $exception) {
     echo $exception->getMainMessage().PHP_EOL;
 }
 ?>

@@ -16,7 +16,7 @@ use Exception;
 use InvalidArgumentException;
 use Traversable;
 
-class ValidationException extends InvalidArgumentException implements ValidationExceptionInterface
+class ValidationException extends InvalidArgumentException implements ExceptionInterface
 {
     const MODE_DEFAULT = 1;
     const MODE_NEGATIVE = 2;

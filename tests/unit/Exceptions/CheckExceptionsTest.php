@@ -66,9 +66,9 @@ class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
             'Every exception should extend an Exception class.'
         );
         $this->assertInstanceOf(
-            'Respect\Validation\Exceptions\ValidationExceptionInterface',
+            'Respect\Validation\Exceptions\ValidationException',
             $exceptionObject,
-            'Every Respect/Validation exception must implement out interface.'
+            'Every Respect/Validation exception must extend ValidationException.'
         );
     }
 }

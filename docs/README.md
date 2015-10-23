@@ -98,11 +98,17 @@ $usernameValidator->validate('#$%');                //false
 
 * `Repect\Validation\Exceptions\ExceptionInterface`:
     * All exceptions implement this interface;
-* `Respect\Validation\Exceptions\ValidationExceptionInterface`:
-    * Extends the `Repect\Validation\Exceptions\ExceptionInterface` interface
-    * Use when calling `check()`
-    * All validation exceptions implement this interface
-    * Interface has one method: `getMainMessage()`
+* `Respect\Validation\Exceptions\ValidationException`:
+    * Implements the `Repect\Validation\Exceptions\ExceptionInterface` interface
+    * Thrown when the `check()` fails
+    * All validation exceptions extend this class
+    * Available methods:
+        * `getMainMessage()`;
+        * `setMode($mode)`;
+        * `setName($name)`;
+        * `setParam($name, $value)`;
+        * `setTemplate($template)`;
+        * more...
 * `Respect\Validation\Exceptions\NestedValidationException`:
     * Extends the `Respect\Validation\Exceptions\ValidationException` class
     * Usually thrown when the `assert()` fails
@@ -279,11 +285,11 @@ validation report. There is also a `check()` method that returns an Exception
 only with the first error found:
 
 ```php
-use Respect\Validation\Exceptions\ValidationExceptionInterface;
+use Respect\Validation\Exceptions\ValidationException;
 
 try {
     $usernameValidator->check('really messed up screen#name');
-} catch(ValidationExceptionInterface $exception) {
+} catch(ValidationException $exception) {
     echo $exception->getMainMessage();
 }
 ```
