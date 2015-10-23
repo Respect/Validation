@@ -18,6 +18,7 @@ All notable changes of the Respect\Validation releases are documented in this fi
 - Create "Finite" rule (#397)
 - Create "FloatType" rule (#565)
 - Create "Identical" rule (#442)
+- Create "Imei" rule (#590)
 - Create "Infinite" rule (#397)
 - Create "IntType" rule (#451)
 - Create "Iterable" rule (#570)
