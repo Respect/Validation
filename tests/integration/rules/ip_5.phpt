@@ -9,13 +9,13 @@ use Respect\Validation\Validator as v;
 try {
     v::ip('127.0.1.*')->check('127.0.0.1');
 } catch (IpException $e) {
-    echo $e->getMainMessage() . PHP_EOL;
+    echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
     v::ip('127.0.1.*')->assert('127.0.0.1');
 } catch (AllOfException $e) {
-    echo $e->getFullMessage() . PHP_EOL;
+    echo $e->getFullMessage().PHP_EOL;
 }
 ?>
 --EXPECTF--

@@ -7,7 +7,7 @@ use Respect\Validation\Validator as v;
 
 $data = [
     'password' => 'shuberry',
-    'password_confirmation' => '_shuberry_'
+    'password_confirmation' => '_shuberry_',
 ];
 
 try {

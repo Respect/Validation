@@ -2,7 +2,7 @@
 
 - `v::arrayVal()`
 
-Validates if the input is an array or if the input be used as an array
+Validates if the input is an array or if the input can be used as an array
 (instance of `ArrayAccess`).
 
 ```php

@@ -34,7 +34,7 @@ class VideoUrl extends AbstractRule
     ];
 
     /**
-     * Create a new instance VideoUrl
+     * Create a new instance VideoUrl.
      *
      * @param string $service
      */

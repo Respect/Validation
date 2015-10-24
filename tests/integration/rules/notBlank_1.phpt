@@ -7,7 +7,7 @@ use Respect\Validation\Validator as v;
 $notBlankValues = [
     'a',
     1,
-    1.0
+    1.0,
 ];
 
 //Check the "pure" value

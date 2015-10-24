@@ -18,8 +18,8 @@ use Respect\Validation\Exceptions\ComponentException;
  */
 class CountryCode extends AbstractSearcher
 {
-    const ALPHA2  = 'alpha-2';
-    const ALPHA3  = 'alpha-3';
+    const ALPHA2 = 'alpha-2';
+    const ALPHA3 = 'alpha-3';
     const NUMERIC = 'numeric';
 
     /**
@@ -293,7 +293,7 @@ class CountryCode extends AbstractSearcher
             throw new ComponentException(sprintf('"%s" is not a valid country set for ISO 3166-1', $set));
         }
 
-        $this->set   = $set;
+        $this->set = $set;
         $this->index = $index;
     }
 

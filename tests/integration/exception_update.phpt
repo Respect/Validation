@@ -8,7 +8,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::alnum())->check('abc123');
 } catch (Exception $exception) {
-    $exception->setParam('translator', function() {
+    $exception->setParam('translator', function () {
         return '{{name}} não deve conter letras (a-z) ou dígitos (0-9)';
     });
     echo $exception->getMessage();

@@ -55,7 +55,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator each(Validatable $itemValidator = null, Validatable $keyValidator = null)
  * @method static Validator email()
  * @method static Validator endsWith(mixed $endValue, bool $identical = false)
- * @method static Validator equals(mixed $compareTo, bool $compareIdentical = false)
+ * @method static Validator equals(mixed $compareTo)
  * @method static Validator even()
  * @method static Validator executable()
  * @method static Validator exists()

@@ -9,25 +9,25 @@ use Respect\Validation\Validator as v;
 try {
     v::boolVal()->check('ok');
 } catch (BoolValException $e) {
-    echo $e->getMainMessage() . PHP_EOL;
+    echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
     v::not(v::boolVal())->check('yes');
 } catch (BoolValException $e) {
-    echo $e->getMainMessage() . PHP_EOL;
+    echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
     v::boolVal()->assert('yep');
 } catch (AllOfException $e) {
-    echo $e->getFullMessage() . PHP_EOL;
+    echo $e->getFullMessage().PHP_EOL;
 }
 
 try {
     v::not(v::boolVal())->assert('on');
 } catch (AllOfException $e) {
-    echo $e->getFullMessage() . PHP_EOL;
+    echo $e->getFullMessage().PHP_EOL;
 }
 ?>
 --EXPECTF--

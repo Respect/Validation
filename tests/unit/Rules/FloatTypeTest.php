@@ -27,7 +27,7 @@ class FloatTypeTest extends RuleTestCase
             [$rule, 7E-10],
             [$rule, 0.0],
             [$rule, -2.44],
-            [$rule, 10/33.33],
+            [$rule, 10 / 33.33],
             [$rule, PHP_INT_MAX + 1],
         ];
     }
@@ -41,7 +41,7 @@ class FloatTypeTest extends RuleTestCase
             [$rule, '1.0'],
             [$rule, '7E-10'],
             [$rule, 111111],
-            [$rule, PHP_INT_MAX * -1]
+            [$rule, PHP_INT_MAX * -1],
         ];
     }
 }

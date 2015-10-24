@@ -23,8 +23,8 @@ class IterableTest extends RuleTestCase
 
         return [
             [$rule, [1, 2, 3]],
-            [$rule, new \stdClass],
-            [$rule, new \ArrayIterator]
+            [$rule, new \stdClass()],
+            [$rule, new \ArrayIterator()],
         ];
     }
 
@@ -37,7 +37,7 @@ class IterableTest extends RuleTestCase
             [$rule, 'asdf'],
             [$rule, 9.85],
             [$rule, null],
-            [$rule, true]
+            [$rule, true],
         ];
     }
 }

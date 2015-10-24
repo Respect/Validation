@@ -24,7 +24,7 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
     {
         $array = [
             'bar' => [
-                'foo'   => [
+                'foo' => [
                     'baz' => 'hello world!',
                 ],
                 'foooo' => [
@@ -41,7 +41,7 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
     public function testArrayWithNumericKeysWillReturnTrueForFullPathValidator()
     {
         $array = [
-            0 => 'Zero, the hero!'
+            0 => 'Zero, the hero!',
         ];
 
         $rule = new KeyNested(0, new Equals('Zero, the hero!'));
@@ -53,7 +53,7 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
     {
         $array = [
             'bar' => [
-                'foo'   => [
+                'foo' => [
                     'baz' => 'hello world!',
                 ],
                 'foooo' => [
@@ -71,7 +71,7 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
     {
         $object = (object) [
             'bar' => (object) [
-                'foo'   => (object) [
+                'foo' => (object) [
                     'baz' => 'hello world!',
                 ],
                 'foooo' => (object) [
@@ -148,7 +148,7 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
         $validator = new KeyNested('bar.foo.baz', $subValidator);
         $object = [
             'bar' => [
-                'foo'   => [
+                'foo' => [
                     'baz' => 'example',
                 ],
             ],
@@ -168,7 +168,7 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
     {
         $arrayAccess = new ArrayObject([
             'bar' => [
-                'foo'   => [
+                'foo' => [
                     'baz' => 'hello world!',
                 ],
                 'foooo' => [

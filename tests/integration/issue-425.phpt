@@ -3,8 +3,8 @@
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\AllOfException;
+use Respect\Validation\Validator as v;
 
 $validator = v::create()
     ->key('age', v::intType()->notEmpty()->noneOf(v::stringType()))

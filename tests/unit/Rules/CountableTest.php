@@ -37,7 +37,7 @@ class CountableTest extends RuleTestCase
             [$rule, 1.0],
             [$rule, new \stdClass()],
             [$rule, PHP_INT_MAX],
-            [$rule, true]
+            [$rule, true],
         ];
     }
 }

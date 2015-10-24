@@ -104,11 +104,11 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
             [range(1, 80), '{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ... }'],
             [
                 ['foo' => true, 'bar' => ['baz' => 123, 'qux' => [1, 2, 3]]],
-                '{ "foo": true, "bar": { "baz": 123, "qux": { 1, 2, 3 } } }'
+                '{ "foo": true, "bar": { "baz": 123, "qux": { 1, 2, 3 } } }',
             ],
             [
                 ['foo' => true, 'bar' => ['baz' => 123, 'qux' => ['norf' => [1,2,3]]]],
-                '{ "foo": true, "bar": { "baz": 123, "qux": { "norf": ... } } }'
+                '{ "foo": true, "bar": { "baz": 123, "qux": { "norf": ... } } }',
             ],
             [[[], 'foo'], '{ { }, "foo" }'],
             [[[1], 'foo'], '{ { 1 }, "foo" }'],
@@ -124,7 +124,7 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
             [$object5, '`[object] (stdClass: { "name": [object] (stdClass: ...) })`'],
             [
                 $exception,
-                '`[exception] (Exception: { "message": "My message", "code": 0, "file": "%s:%d" })`'
+                '`[exception] (Exception: { "message": "My message", "code": 0, "file": "%s:%d" })`',
             ],
             [$iterator1, '`[traversable] (ArrayIterator: { 1, 2, 3 })`'],
             [$iterator2, '`[traversable] (ArrayIterator: { "a": 1, "b": 2, "c": 3 })`'],
@@ -133,7 +133,7 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
             [xml_parser_create(), '`[resource] (xml)`'],
             [
                 [$object4, [42, 43], true, null, tmpfile()],
-                '{ `[object] (stdClass: { "foo": 1, "bar": false })`, { 42, 43 }, true, null, `[resource] (stream)` }'
+                '{ `[object] (stdClass: { "foo": 1, "bar": false })`, { 42, 43 }, true, null, `[resource] (stream)` }',
             ],
         ];
     }

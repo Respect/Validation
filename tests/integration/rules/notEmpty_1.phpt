@@ -7,7 +7,7 @@ use Respect\Validation\Validator as v;
 $notEmptyValues = [
     'a',
     1,
-    1.0
+    1.0,
 ];
 
 //Check not empty values

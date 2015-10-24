@@ -18,6 +18,6 @@ class BoolValException extends ValidationException
         ],
         self::MODE_NEGATIVE => [
             self::STANDARD => '{{name}} must not be a boolean value',
-        ]
+        ],
     ];
 }

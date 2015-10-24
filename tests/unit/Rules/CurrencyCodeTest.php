@@ -26,7 +26,7 @@ class CurrencyCodeTest extends RuleTestCase
             [$rule, 'GBP'],
             [$rule, 'XAU'],
             [$rule, 'xba'],
-            [$rule, 'xxx']
+            [$rule, 'xxx'],
         ];
     }
 
@@ -37,7 +37,7 @@ class CurrencyCodeTest extends RuleTestCase
         return [
             [$rule, 'BTC'],
             [$rule, 'GGP'],
-            [$rule, 'USA']
+            [$rule, 'USA'],
         ];
     }
 }

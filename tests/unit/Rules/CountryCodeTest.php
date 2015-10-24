@@ -48,7 +48,7 @@ class CountryCodeTest extends \PHPUnit_Framework_TestCase
             [CountryCode::NUMERIC, '276'],
             [CountryCode::ALPHA2,  'US'],
             [CountryCode::ALPHA3,  'USA'],
-            [CountryCode::NUMERIC, '840']
+            [CountryCode::NUMERIC, '840'],
         ];
     }
 
@@ -57,7 +57,7 @@ class CountryCodeTest extends \PHPUnit_Framework_TestCase
         return [
             [CountryCode::ALPHA2,  'USA'],
             [CountryCode::ALPHA3,  'US'],
-            [CountryCode::NUMERIC, '000']
+            [CountryCode::NUMERIC, '000'],
         ];
     }
 
