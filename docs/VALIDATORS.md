@@ -139,6 +139,7 @@
 
   * [CountryCode](CountryCode.md)
   * [CurrencyCode](CurrencyCode.md)
+  * [LanguageCode](LanguageCode.md)
   * [PostalCode](PostalCode.md)
   * [SubdivisionCode](SubdivisionCode.md)
   * [Tld](Tld.md)
@@ -254,6 +255,7 @@
   * [KeyNested](KeyNested.md)
   * [KeySet](KeySet.md)
   * [KeyValue](KeyValue.md)
+  * [LanguageCode](LanguageCode.md)
   * [LeapDate](LeapDate.md)
   * [LeapYear](LeapYear.md)
   * [Length](Length.md)
