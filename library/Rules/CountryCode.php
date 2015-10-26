@@ -16,7 +16,7 @@ use Respect\Validation\Exceptions\ComponentException;
 /**
  * Validates countries in ISO 3166-1.
  */
-class CountryCode extends AbstractSearcher
+class CountryCode extends AbstractRule
 {
     const ALPHA2 = 'alpha-2';
     const ALPHA3 = 'alpha-3';
