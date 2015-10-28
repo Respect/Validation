@@ -58,6 +58,7 @@ class MininumAgeTest extends \PHPUnit_Framework_TestCase
             [18, 'Y-m-d', '1969-07-20'],
             [18, null, new \DateTime('1969-07-20')],
             [18, 'Y-m-d', new \DateTime('1969-07-20')],
+            ['18', 'Y-m-d', '1985-09-10'],
         ];
     }
 
@@ -67,6 +68,7 @@ class MininumAgeTest extends \PHPUnit_Framework_TestCase
             [18, 'Y-m-d', '2002-06-30'],
             [18, null, new \DateTime('2002-06-30')],
             [18, 'Y-m-d', new \DateTime('2002-06-30')],
+            ['invalid', 'Y-m-d', new \DateTime('2001-10-20')],
         ];
     }
 
