@@ -13,9 +13,8 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
-use Traversable;
 
-class Each extends AbstractRule
+class Each extends Iterable
 {
     public $itemValidator;
     public $keyValidator;
@@ -30,12 +29,8 @@ class Each extends AbstractRule
     {
         $exceptions = [];
 
-        if (!is_array($input) || $input instanceof Traversable) {
+        if (!parent::validate($input)) {
             throw $this->reportError($input);
-        }
-
-        if (empty($input)) {
-            return true;
         }
 
         foreach ($input as $key => $item) {
@@ -65,11 +60,7 @@ class Each extends AbstractRule
 
     public function check($input)
     {
-        if (empty($input)) {
-            return true;
-        }
-
-        if (!is_array($input) || $input instanceof Traversable) {
+        if (!parent::validate($input)) {
             throw $this->reportError($input);
         }
 
@@ -88,12 +79,8 @@ class Each extends AbstractRule
 
     public function validate($input)
     {
-        if (!is_array($input) || $input instanceof Traversable) {
+        if (!parent::validate($input)) {
             return false;
-        }
-
-        if (empty($input)) {
-            return true;
         }
 
         foreach ($input as $key => $item) {
