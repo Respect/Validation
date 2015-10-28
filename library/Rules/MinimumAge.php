@@ -20,7 +20,7 @@ class MinimumAge extends AbstractRule
 
     public function __construct($age, $format = null)
     {
-        $this->age = $age;
+        $this->age = filter_var($age, FILTER_VALIDATE_INT);
         $this->format = $format;
     }
 
