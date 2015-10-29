@@ -22,9 +22,6 @@ class AbstractSearcherTest extends \PHPUnit_Framework_TestCase
     public function testValidateMethodWhenArgsIsNullCompareIdenticalFalse()
     {
         $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
-        $compositeRuleMock->expects($this->any())
-                ->method('validate')
-                ->will($this->returnValue(true));
         $compositeRuleMock->compareIdentical = false;
         $this->assertTrue($compositeRuleMock->validate(null));
     }
@@ -32,9 +29,6 @@ class AbstractSearcherTest extends \PHPUnit_Framework_TestCase
     public function testValidateMethodWhenArgsIsNullCompareIdenticalTrue()
     {
         $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
-        $compositeRuleMock->expects($this->any())
-                ->method('validate')
-                ->will($this->returnValue(true));
         $compositeRuleMock->compareIdentical = true;
         $this->assertTrue($compositeRuleMock->validate(null));
     }
@@ -42,9 +36,6 @@ class AbstractSearcherTest extends \PHPUnit_Framework_TestCase
     public function testValidateMethodWhenArgsIsEmptyWithDoubleQuotesCompareIdenticalFalse()
     {
         $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
-        $compositeRuleMock->expects($this->any())
-             ->method('validate')
-             ->will($this->returnValue(true));
         $compositeRuleMock->compareIdentical = false;
         $this->assertTrue($compositeRuleMock->validate(""));
     }
@@ -52,9 +43,6 @@ class AbstractSearcherTest extends \PHPUnit_Framework_TestCase
     public function testValidateMethodWhenArgsIsEmptyWithDoubleQuotesCompareIdenticalTrue()
     {
         $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
-        $compositeRuleMock->expects($this->any())
-             ->method('validate')
-             ->will($this->returnValue(false));
         $compositeRuleMock->compareIdentical = true;
         $this->assertFalse($compositeRuleMock->validate(""));
     }    
@@ -62,9 +50,6 @@ class AbstractSearcherTest extends \PHPUnit_Framework_TestCase
     public function testValidateMethodWhenArgsIsEmptyWithSingleQuotesCompareIdenticalFalse()
     {
         $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
-        $compositeRuleMock->expects($this->any())
-             ->method('validate')
-             ->will($this->returnValue(true));
         $compositeRuleMock->compareIdentical = false;     
         $this->assertTrue($compositeRuleMock->validate(''));
     }
@@ -72,9 +57,6 @@ class AbstractSearcherTest extends \PHPUnit_Framework_TestCase
     public function testValidateMethodWhenArgsIsEmptyWithSingleQuotesCompareIdenticalTrue()
     {
         $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
-        $compositeRuleMock->expects($this->any())
-             ->method('validate')
-             ->will($this->returnValue(false));
         $compositeRuleMock->compareIdentical = true;
         $this->assertFalse($compositeRuleMock->validate(''));
     }    
@@ -82,9 +64,6 @@ class AbstractSearcherTest extends \PHPUnit_Framework_TestCase
     public function testValidateMethodWhenArgsNotIsInArrayHaystackCompareIdenticalFalse()
     {
         $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
-        $compositeRuleMock->expects($this->any())
-             ->method('validate')
-             ->will($this->returnValue(false));
         $compositeRuleMock->haystack = array("goLang","java","python");
         $compositeRuleMock->compareIdentical = false;
         $this->assertFalse($compositeRuleMock->validate("js"));
@@ -93,9 +72,6 @@ class AbstractSearcherTest extends \PHPUnit_Framework_TestCase
     public function testValidateMethodWhenArgsNotIsInArrayHaystackCompareIdenticalTrue()
     {
         $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
-        $compositeRuleMock->expects($this->any())
-             ->method('validate')
-             ->will($this->returnValue(false));
         $compositeRuleMock->haystack = array("goLang","java","python");
         $compositeRuleMock->compareIdentical = true;
         $this->assertFalse($compositeRuleMock->validate("js"));
@@ -104,9 +80,6 @@ class AbstractSearcherTest extends \PHPUnit_Framework_TestCase
     public function testValidateMethodWhenArgsIsInArrayHaystackCompareIdenticalFalse()
     {
         $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
-        $compositeRuleMock->expects($this->any())
-             ->method('validate')
-             ->will($this->returnValue(true));
         $compositeRuleMock->haystack = array("goLang","java","python");
         $compositeRuleMock->compareIdentical = false;
         $this->assertTrue($compositeRuleMock->validate("java"));
@@ -115,9 +88,6 @@ class AbstractSearcherTest extends \PHPUnit_Framework_TestCase
     public function testValidateMethodWhenArgsIsInArrayHaystackCompareIdenticalTrue()
     {
         $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
-        $compositeRuleMock->expects($this->any())
-             ->method('validate')
-             ->will($this->returnValue(true));
         $compositeRuleMock->haystack = array("goLang","java","python");
         $compositeRuleMock->compareIdentical = true;
         $this->assertTrue($compositeRuleMock->validate("java"));
