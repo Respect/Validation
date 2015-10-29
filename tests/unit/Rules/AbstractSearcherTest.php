@@ -19,31 +19,107 @@ namespace Respect\Validation\Rules;
 class AbstractSearcherTest extends \PHPUnit_Framework_TestCase
 {
 
-    public function testValidateMethodWhenArgsIsNull()
+    public function testValidateMethodWhenArgsIsNullCompareIdenticalFalse()
     {
         $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
         $compositeRuleMock->expects($this->any())
-             ->method('validate')
-             ->will($this->returnValue(true));
+                ->method('validate')
+                ->will($this->returnValue(true));
+        $compositeRuleMock->compareIdentical = false;
         $this->assertTrue($compositeRuleMock->validate(null));
     }
 
-    public function testValidateMethodWhenArgsIsEmptyWithDoubleQuotes()
+    public function testValidateMethodWhenArgsIsNullCompareIdenticalTrue()
+    {
+        $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
+        $compositeRuleMock->expects($this->any())
+                ->method('validate')
+                ->will($this->returnValue(true));
+        $compositeRuleMock->compareIdentical = true;
+        $this->assertTrue($compositeRuleMock->validate(null));
+    }
+    
+    public function testValidateMethodWhenArgsIsEmptyWithDoubleQuotesCompareIdenticalFalse()
     {
         $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
         $compositeRuleMock->expects($this->any())
              ->method('validate')
              ->will($this->returnValue(true));
+        $compositeRuleMock->compareIdentical = false;
         $this->assertTrue($compositeRuleMock->validate(""));
     }
     
-    public function testValidateMethodWhenArgsIsEmptyWithSingleQuotes()
+    public function testValidateMethodWhenArgsIsEmptyWithDoubleQuotesCompareIdenticalTrue()
+    {
+        $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
+        $compositeRuleMock->expects($this->any())
+             ->method('validate')
+             ->will($this->returnValue(false));
+        $compositeRuleMock->compareIdentical = true;
+        $this->assertFalse($compositeRuleMock->validate(""));
+    }    
+    
+    public function testValidateMethodWhenArgsIsEmptyWithSingleQuotesCompareIdenticalFalse()
     {
         $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
         $compositeRuleMock->expects($this->any())
              ->method('validate')
              ->will($this->returnValue(true));
+        $compositeRuleMock->compareIdentical = false;     
         $this->assertTrue($compositeRuleMock->validate(''));
     }
     
+    public function testValidateMethodWhenArgsIsEmptyWithSingleQuotesCompareIdenticalTrue()
+    {
+        $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
+        $compositeRuleMock->expects($this->any())
+             ->method('validate')
+             ->will($this->returnValue(false));
+        $compositeRuleMock->compareIdentical = true;
+        $this->assertFalse($compositeRuleMock->validate(''));
+    }    
+    
+    public function testValidateMethodWhenArgsNotIsInArrayHaystackCompareIdenticalFalse()
+    {
+        $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
+        $compositeRuleMock->expects($this->any())
+             ->method('validate')
+             ->will($this->returnValue(false));
+        $compositeRuleMock->haystack = array("goLang","java","python");
+        $compositeRuleMock->compareIdentical = false;
+        $this->assertFalse($compositeRuleMock->validate("js"));
+    }
+    
+    public function testValidateMethodWhenArgsNotIsInArrayHaystackCompareIdenticalTrue()
+    {
+        $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
+        $compositeRuleMock->expects($this->any())
+             ->method('validate')
+             ->will($this->returnValue(false));
+        $compositeRuleMock->haystack = array("goLang","java","python");
+        $compositeRuleMock->compareIdentical = true;
+        $this->assertFalse($compositeRuleMock->validate("js"));
+    }    
+    
+    public function testValidateMethodWhenArgsIsInArrayHaystackCompareIdenticalFalse()
+    {
+        $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
+        $compositeRuleMock->expects($this->any())
+             ->method('validate')
+             ->will($this->returnValue(true));
+        $compositeRuleMock->haystack = array("goLang","java","python");
+        $compositeRuleMock->compareIdentical = false;
+        $this->assertTrue($compositeRuleMock->validate("java"));
+    }
+    
+    public function testValidateMethodWhenArgsIsInArrayHaystackCompareIdenticalTrue()
+    {
+        $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
+        $compositeRuleMock->expects($this->any())
+             ->method('validate')
+             ->will($this->returnValue(true));
+        $compositeRuleMock->haystack = array("goLang","java","python");
+        $compositeRuleMock->compareIdentical = true;
+        $this->assertTrue($compositeRuleMock->validate("java"));
+    }        
 }
