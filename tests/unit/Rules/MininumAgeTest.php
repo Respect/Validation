@@ -51,6 +51,15 @@ class MininumAgeTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($minimumAge->assert($input));
     }
 
+    /**
+     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedExceptionMessage The age must be a integer value
+     */
+    public function testShouldNotAcceptNonIntegerAgeOnConstructor()
+    {
+        new MinimumAge('L12');
+    }
+
     public function providerForValidDateValidMinimumAge()
     {
         return [
