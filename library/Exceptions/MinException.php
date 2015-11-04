@@ -18,11 +18,11 @@ class MinException extends ValidationException
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be greater than {{interval}}',
-            self::INCLUSIVE => '{{name}} must be greater than or equals {{interval}}',
+            self::INCLUSIVE => '{{name}} must be greater than or equal to {{interval}}',
         ],
         self::MODE_NEGATIVE => [
             self::STANDARD => '{{name}} must not be greater than {{interval}}',
-            self::INCLUSIVE => '{{name}} must not be greater than or equals {{interval}}',
+            self::INCLUSIVE => '{{name}} must not be greater than or equal to {{interval}}',
         ],
     ];
 
