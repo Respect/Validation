@@ -11,4 +11,4 @@ try {
     echo $e->getFullMessage();
 }
 --EXPECTF--
-- 41 must not be lower than or equals 42
+- 41 must not be less than or equal to 42
