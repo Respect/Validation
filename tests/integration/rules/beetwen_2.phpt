@@ -11,4 +11,4 @@ try {
     echo $e->getMainMessage().PHP_EOL;
 }
 --EXPECTF--
-42 must be lower than or equals 2
+42 must be less than or equal to 2

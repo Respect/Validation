@@ -11,4 +11,4 @@ try {
     echo $e->getFullMessage();
 }
 --EXPECTF--
-- "a" must not be lower than or equals "b"
+- "a" must not be less than or equal to "b"
