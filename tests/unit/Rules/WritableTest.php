@@ -61,7 +61,7 @@ class WritableTest extends \PHPUnit_Framework_TestCase
     public function testShouldValidateObjects()
     {
         $rule = new Writable();
-        $object = $this->getMock('SplFileInfo', array('isWritable'), array('somefile.txt'));
+        $object = $this->getMock('SplFileInfo', ['isWritable'], ['somefile.txt']);
         $object->expects($this->once())
                 ->method('isWritable')
                 ->will($this->returnValue(true));

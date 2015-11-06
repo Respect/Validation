@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class RsSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'KM', // Kosovo
         'VO', // Vojvodina
         '00', // Beograd
@@ -55,7 +55,7 @@ class RsSubdivisionCode extends AbstractSearcher
         '27', // Prizrenski okrug
         '28', // Kosovsko-Mitrovački okrug
         '29', // Kosovsko-Pomoravski okrug
-    );
+    ];
 
     public $compareIdentical = true;
 }

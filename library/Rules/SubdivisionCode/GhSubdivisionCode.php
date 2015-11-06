@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class GhSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AA', // Greater Accra Region
         'AH', // Ashanti Region
         'BA', // Brong-Ahafo Region
@@ -33,7 +33,7 @@ class GhSubdivisionCode extends AbstractSearcher
         'UE', // Upper East Region
         'UW', // Upper West Region
         'WP', // Western Region
-    );
+    ];
 
     public $compareIdentical = true;
 }

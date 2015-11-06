@@ -84,14 +84,14 @@ class KeySetTest extends PHPUnit_Framework_TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        $this->assertEquals(array('foo', 'bar'), $keySet->getKeys());
+        $this->assertEquals(['foo', 'bar'], $keySet->getKeys());
     }
 
     public function testShouldValidateKeysWhenThereAreMissingRequiredKeys()
     {
-        $input = array(
+        $input = [
             'foo' => 42,
-        );
+        ];
 
         $key1 = new Key('foo', new AlwaysValid(), true);
         $key2 = new Key('bar', new AlwaysValid(), true);
@@ -103,9 +103,9 @@ class KeySetTest extends PHPUnit_Framework_TestCase
 
     public function testShouldValidateKeysWhenThereAreMissingNonRequiredKeys()
     {
-        $input = array(
+        $input = [
             'foo' => 42,
-        );
+        ];
 
         $key1 = new Key('foo', new AlwaysValid(), true);
         $key2 = new Key('bar', new AlwaysValid(), false);
@@ -117,11 +117,11 @@ class KeySetTest extends PHPUnit_Framework_TestCase
 
     public function testShouldValidateKeysWhenThereAreMoreKeys()
     {
-        $input = array(
+        $input = [
             'foo' => 42,
             'bar' => 'String',
             'baz' => false,
-        );
+        ];
 
         $key1 = new Key('foo', new AlwaysValid(), false);
         $key2 = new Key('bar', new AlwaysValid(), false);
@@ -133,7 +133,7 @@ class KeySetTest extends PHPUnit_Framework_TestCase
 
     public function testShouldValidateKeysWhenEmpty()
     {
-        $input = array();
+        $input = [];
 
         $key1 = new Key('foo', new AlwaysValid(), true);
         $key2 = new Key('bar', new AlwaysValid(), true);
@@ -149,7 +149,7 @@ class KeySetTest extends PHPUnit_Framework_TestCase
      */
     public function testShouldCheckKeys()
     {
-        $input = array();
+        $input = [];
 
         $key1 = new Key('foo', new AlwaysValid(), true);
         $key2 = new Key('bar', new AlwaysValid(), true);
@@ -164,7 +164,7 @@ class KeySetTest extends PHPUnit_Framework_TestCase
      */
     public function testShouldAssertKeys()
     {
-        $input = array();
+        $input = [];
 
         $key1 = new Key('foo', new AlwaysValid(), true);
         $key2 = new Key('bar', new AlwaysValid(), true);

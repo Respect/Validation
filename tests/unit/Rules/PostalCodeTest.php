@@ -83,14 +83,14 @@ class PostalCodeTest extends \PHPUnit_Framework_TestCase
 
     public function validPostalCodesProvider()
     {
-        return array(
-            array('BR', '02179-000'),
-            array('BR', '02179000'),
-            array('GB', 'GIR 0AA'),
-            array('GB', 'PR1 9LY'),
-            array('US', '02179'),
-            array('YE', ''),
-        );
+        return [
+            ['BR', '02179-000'],
+            ['BR', '02179000'],
+            ['GB', 'GIR 0AA'],
+            ['GB', 'PR1 9LY'],
+            ['US', '02179'],
+            ['YE', ''],
+        ];
     }
 
     /**
@@ -115,14 +115,14 @@ class PostalCodeTest extends \PHPUnit_Framework_TestCase
 
     public function invalidPostalCodesProvider()
     {
-        return array(
-            array('BR', '02179'),
-            array('BR', '02179.000'),
-            array('GB', 'GIR 00A'),
-            array('GB', 'GIR0AA'),
-            array('GB', 'PR19LY'),
-            array('US', '021 79'),
-            array('YE', '02179'),
-        );
+        return [
+            ['BR', '02179'],
+            ['BR', '02179.000'],
+            ['GB', 'GIR 00A'],
+            ['GB', 'GIR0AA'],
+            ['GB', 'PR19LY'],
+            ['US', '021 79'],
+            ['YE', '02179'],
+        ];
     }
 }

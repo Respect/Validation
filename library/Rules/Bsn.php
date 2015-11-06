@@ -12,9 +12,10 @@
 namespace Respect\Validation\Rules;
 
 /**
- * Validates a Dutch citizen service number (BSN)
+ * Validates a Dutch citizen service number (BSN).
  *
  * @author Ronald Drenth <ronalddrenth@gmail.com>
+ *
  * @see https://nl.wikipedia.org/wiki/Burgerservicenummer
  */
 class Bsn extends AbstractRule
@@ -33,7 +34,7 @@ class Bsn extends AbstractRule
         }
 
         $sum = -1 * $input[8];
-        for ($i = 9; $i > 1; $i--) {
+        for ($i = 9; $i > 1; --$i) {
             $sum += $i * $input[9 - $i];
         }
 

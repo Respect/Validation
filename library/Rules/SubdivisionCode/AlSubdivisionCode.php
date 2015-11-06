@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class AlSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Berat
         '02', // Durres
         '03', // Elbasan
@@ -71,7 +71,7 @@ class AlSubdivisionCode extends AbstractSearcher
         'TP', // Tropoje
         'TR', // Tirane
         'VL', // Vlore
-    );
+    ];
 
     public $compareIdentical = true;
 }

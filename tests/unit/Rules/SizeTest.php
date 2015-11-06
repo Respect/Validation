@@ -26,18 +26,18 @@ class SizeTest extends PHPUnit_Framework_TestCase
 {
     public function validSizeProvider()
     {
-        return array(
-            array(42, 42),
-            array('1b', 1),
-            array('1kb', 1024),
-            array('1mb', 1048576),
-            array('1gb', 1073741824),
-            array('1tb', 1099511627776),
-            array('1pb', 1125899906842624),
-            array('1eb', 1152921504606846976),
-            array('1zb', 1.1805916207174113E+21),
-            array('1yb', 1.2089258196146292E+24),
-        );
+        return [
+            [42, 42],
+            ['1b', 1],
+            ['1kb', 1024],
+            ['1mb', 1048576],
+            ['1gb', 1073741824],
+            ['1tb', 1099511627776],
+            ['1pb', 1125899906842624],
+            ['1eb', 1152921504606846976],
+            ['1zb', 1.1805916207174113E+21],
+            ['1yb', 1.2089258196146292E+24],
+        ];
     }
 
     public function validFileProvider()
@@ -47,27 +47,27 @@ class SizeTest extends PHPUnit_Framework_TestCase
         $file2Kb = vfsStream::newFile('2kb.txt')->withContent(LargeFileContent::withKilobytes(2))->at($root);
         $file2Mb = vfsStream::newFile('2mb.txt')->withContent(LargeFileContent::withMegabytes(2))->at($root);
 
-        return array(
+        return [
             // Valid data
-            array($file2Kb->url(), '1kb', null, true),
-            array($file2Kb->url(), '2kb', null, true),
-            array($file2Kb->url(), null, '2kb', true),
-            array($file2Kb->url(), null, '3kb', true),
-            array($file2Kb->url(), '1kb', '3kb', true),
-            array($file2Mb->url(), '1mb', null, true),
-            array($file2Mb->url(), '2mb', null, true),
-            array($file2Mb->url(), null, '2mb', true),
-            array($file2Mb->url(), null, '3mb', true),
-            array($file2Mb->url(), '1mb', '3mb', true),
+            [$file2Kb->url(), '1kb', null, true],
+            [$file2Kb->url(), '2kb', null, true],
+            [$file2Kb->url(), null, '2kb', true],
+            [$file2Kb->url(), null, '3kb', true],
+            [$file2Kb->url(), '1kb', '3kb', true],
+            [$file2Mb->url(), '1mb', null, true],
+            [$file2Mb->url(), '2mb', null, true],
+            [$file2Mb->url(), null, '2mb', true],
+            [$file2Mb->url(), null, '3mb', true],
+            [$file2Mb->url(), '1mb', '3mb', true],
             // Invalid data
-            array($file2Kb->url(), '3kb', null, false),
-            array($file2Kb->url(), null, '1kb', false),
-            array($file2Kb->url(), '1kb', '1.5kb', false),
-            array($file2Mb->url(), '2.5mb', null, false),
-            array($file2Mb->url(), '3gb', null, false),
-            array($file2Mb->url(), null, '1b', false),
-            array($file2Mb->url(), '1pb', '3pb', false),
-        );
+            [$file2Kb->url(), '3kb', null, false],
+            [$file2Kb->url(), null, '1kb', false],
+            [$file2Kb->url(), '1kb', '1.5kb', false],
+            [$file2Mb->url(), '2.5mb', null, false],
+            [$file2Mb->url(), '3gb', null, false],
+            [$file2Mb->url(), null, '1b', false],
+            [$file2Mb->url(), '1pb', '3pb', false],
+        ];
     }
 
     /**

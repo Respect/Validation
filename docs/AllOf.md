@@ -8,7 +8,7 @@ Will validate if all inner validators validates.
 v::allOf(
     v::intVal(),
     v::positive()
-)->validate(15); //true
+)->validate(15); // true
 ```
 
 This is similar to the chain (which is an allOf already), but
@@ -19,7 +19,7 @@ v::allOf(
     v::intVal()->setName('Account Number'),
     v::positive()->setName('Higher Than Zero')
 )->setName('Positive integer')
- ->validate(15); //true
+ ->validate(15); // true
 ```
 
 ***

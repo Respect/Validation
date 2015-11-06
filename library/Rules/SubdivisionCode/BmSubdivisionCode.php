@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class BmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'DS', // Devonshire
         'GC', // Saint George
         'HA', // Hamilton
@@ -34,7 +34,7 @@ class BmSubdivisionCode extends AbstractSearcher
         'SH', // Southampton
         'SM', // Smith's
         'WA', // Warwick
-    );
+    ];
 
     public $compareIdentical = true;
 }

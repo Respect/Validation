@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class NoSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Ostfold
         '02', // Akershus
         '03', // Oslo
@@ -44,7 +44,7 @@ class NoSubdivisionCode extends AbstractSearcher
         '20', // Finnmark
         '21', // Svalbard
         '22', // Jan Mayen
-    );
+    ];
 
     public $compareIdentical = true;
 }

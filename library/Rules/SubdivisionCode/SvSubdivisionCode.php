@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class SvSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AH', // Ahuachapan
         'CA', // Cabanas
         'CH', // Chalatenango
@@ -37,7 +37,7 @@ class SvSubdivisionCode extends AbstractSearcher
         'SV', // San Vicente
         'UN', // La Union
         'US', // Usulutan
-    );
+    ];
 
     public $compareIdentical = true;
 }

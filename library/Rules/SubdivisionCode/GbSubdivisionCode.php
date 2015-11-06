@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class GbSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'ENG', // England
         'NIR', // Northern Ireland
         'SCT', // Scotland
@@ -260,7 +260,7 @@ class GbSubdivisionCode extends AbstractSearcher
         'ZET', // Shetland Islands
         'BDF', // Bedfordshire
         'CHS', // Cheshire
-    );
+    ];
 
     public $compareIdentical = true;
 }

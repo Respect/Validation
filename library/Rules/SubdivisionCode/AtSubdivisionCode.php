@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class AtSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '1', // Burgenland
         '2', // Karnten
         '3', // Niederosterreich
@@ -32,7 +32,7 @@ class AtSubdivisionCode extends AbstractSearcher
         '7', // Tirol
         '8', // Vorarlberg
         '9', // Wien
-    );
+    ];
 
     public $compareIdentical = true;
 }

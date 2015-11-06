@@ -29,35 +29,35 @@ class VideoUrlTest extends \PHPUnit_Framework_TestCase
 
     public function validVideoUrlProvider()
     {
-        return array(
-            array('vimeo', 'https://player.vimeo.com/video/71787467'),
-            array('vimeo', 'https://vimeo.com/71787467'),
-            array('youtube', 'https://www.youtube.com/embed/netHLn9TScY'),
-            array('youtube', 'https://www.youtube.com/watch?v=netHLn9TScY'),
-            array('youtube', 'https://youtu.be/netHLn9TScY'),
-            array(null, 'https://player.vimeo.com/video/71787467'),
-            array(null, 'https://vimeo.com/71787467'),
-            array(null, 'https://www.youtube.com/embed/netHLn9TScY'),
-            array(null, 'https://www.youtube.com/watch?v=netHLn9TScY'),
-            array(null, 'https://youtu.be/netHLn9TScY'),
-        );
+        return [
+            ['vimeo', 'https://player.vimeo.com/video/71787467'],
+            ['vimeo', 'https://vimeo.com/71787467'],
+            ['youtube', 'https://www.youtube.com/embed/netHLn9TScY'],
+            ['youtube', 'https://www.youtube.com/watch?v=netHLn9TScY'],
+            ['youtube', 'https://youtu.be/netHLn9TScY'],
+            [null, 'https://player.vimeo.com/video/71787467'],
+            [null, 'https://vimeo.com/71787467'],
+            [null, 'https://www.youtube.com/embed/netHLn9TScY'],
+            [null, 'https://www.youtube.com/watch?v=netHLn9TScY'],
+            [null, 'https://youtu.be/netHLn9TScY'],
+        ];
     }
 
     public function invalidVideoUrlProvider()
     {
-        return array(
-            array('vimeo', 'https://www.youtube.com/watch?v=netHLn9TScY'),
-            array('youtube', 'https://vimeo.com/71787467'),
-            array(null, 'example.com'),
-            array(null, 'ftp://youtu.be/netHLn9TScY'),
-            array(null, 'https:/example.com/'),
-            array(null, 'https:/youtube.com/'),
-            array(null, 'https://vimeo'),
-            array(null, 'https://vimeo.com71787467'),
-            array(null, 'https://www.google.com'),
-            array(null, 'tel:+1-816-555-1212'),
-            array(null, 'text'),
-        );
+        return [
+            ['vimeo', 'https://www.youtube.com/watch?v=netHLn9TScY'],
+            ['youtube', 'https://vimeo.com/71787467'],
+            [null, 'example.com'],
+            [null, 'ftp://youtu.be/netHLn9TScY'],
+            [null, 'https:/example.com/'],
+            [null, 'https:/youtube.com/'],
+            [null, 'https://vimeo'],
+            [null, 'https://vimeo.com71787467'],
+            [null, 'https://www.google.com'],
+            [null, 'tel:+1-816-555-1212'],
+            [null, 'text'],
+        ];
     }
 
     /**

@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class IeSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'C', // Connaught
         'L', // Leinster
         'M', // Munster
@@ -53,7 +53,7 @@ class IeSubdivisionCode extends AbstractSearcher
         'WH', // Westmeath
         'WW', // Wicklow
         'WX', // Wexford
-    );
+    ];
 
     public $compareIdentical = true;
 }

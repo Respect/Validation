@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class CoSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AMA', // Amazonas
         'ANT', // Antioquia
         'ARA', // Arauca
@@ -56,7 +56,7 @@ class CoSubdivisionCode extends AbstractSearcher
         'VAC', // Valle del Cauca
         'VAU', // Vaupes
         'VID', // Vichada
-    );
+    ];
 
     public $compareIdentical = true;
 }

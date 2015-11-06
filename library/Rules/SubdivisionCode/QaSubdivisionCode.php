@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class QaSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'DA', // Ad Dawhah
         'KH', // Al Khawr wa adh Dhakhīrah
         'MS', // Ash Shamāl
@@ -30,7 +30,7 @@ class QaSubdivisionCode extends AbstractSearcher
         'US', // Umm Salal
         'WA', // Al Wakrah
         'ZA', // Az Z a‘āyin
-    );
+    ];
 
     public $compareIdentical = true;
 }

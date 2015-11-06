@@ -11,8 +11,8 @@
 
 namespace Respect\Validation\Rules;
 
-use Exception;
 use DateTime;
+use Exception;
 
 abstract class AbstractInterval extends AbstractRule
 {

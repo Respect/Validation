@@ -41,25 +41,25 @@ class NotTest extends \PHPUnit_Framework_TestCase
 
     public function providerForValidNot()
     {
-        return array(
-            array(new IntVal(), ''),
-            array(new IntVal(), 'aaa'),
-            array(new AllOf(new NoWhitespace(), new Digit()), 'as df'),
-            array(new AllOf(new NoWhitespace(), new Digit()), '12 34'),
-            array(new AllOf(new AllOf(new NoWhitespace(), new Digit())), '12 34'),
-            array(new AllOf(new NoneOf(new Numeric(), new IntVal())), 13.37),
-            array(new NoneOf(new Numeric(), new IntVal()), 13.37),
-            array(Validator::noneOf(Validator::numeric(), Validator::intVal()), 13.37),
-        );
+        return [
+            [new IntVal(), ''],
+            [new IntVal(), 'aaa'],
+            [new AllOf(new NoWhitespace(), new Digit()), 'as df'],
+            [new AllOf(new NoWhitespace(), new Digit()), '12 34'],
+            [new AllOf(new AllOf(new NoWhitespace(), new Digit())), '12 34'],
+            [new AllOf(new NoneOf(new Numeric(), new IntVal())), 13.37],
+            [new NoneOf(new Numeric(), new IntVal()), 13.37],
+            [Validator::noneOf(Validator::numeric(), Validator::intVal()), 13.37],
+        ];
     }
 
     public function providerForInvalidNot()
     {
-        return array(
-            array(new IntVal(), 123),
-            array(new AllOf(new OneOf(new Numeric(), new IntVal())), 13.37),
-            array(new OneOf(new Numeric(), new IntVal()), 13.37),
-            array(Validator::oneOf(Validator::numeric(), Validator::intVal()), 13.37),
-        );
+        return [
+            [new IntVal(), 123],
+            [new AllOf(new OneOf(new Numeric(), new IntVal())), 13.37],
+            [new OneOf(new Numeric(), new IntVal()), 13.37],
+            [Validator::oneOf(Validator::numeric(), Validator::intVal()), 13.37],
+        ];
     }
 }

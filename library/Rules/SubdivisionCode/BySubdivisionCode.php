@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class BySubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BR', // Brest voblast
         'HM', // Horad Minsk
         'HO', // Homyel voblast
@@ -30,7 +30,7 @@ class BySubdivisionCode extends AbstractSearcher
         'MA', // Mahilyow voblast
         'MI', // Minsk voblast
         'VI', // Vitsebsk voblast
-    );
+    ];
 
     public $compareIdentical = true;
 }

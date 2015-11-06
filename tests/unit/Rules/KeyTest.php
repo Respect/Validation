@@ -21,11 +21,17 @@ class KeyTest extends \PHPUnit_Framework_TestCase
     public function testArrayWithPresentKeyShouldReturnTrue()
     {
         $validator = new Key('bar');
-        $obj = array();
-        $obj['bar'] = 'foo';
-        $this->assertTrue($validator->assert($obj));
-        $this->assertTrue($validator->check($obj));
-        $this->assertTrue($validator->validate($obj));
+        $someArray = [];
+        $someArray['bar'] = 'foo';
+        $this->assertTrue($validator->validate($someArray));
+    }
+
+    public function testArrayWithNumericKeyShouldReturnTrue()
+    {
+        $validator = new Key(0);
+        $someArray = [];
+        $someArray[0] = 'foo';
+        $this->assertTrue($validator->validate($someArray));
     }
 
     public function testEmptyInputMustReturnFalse()
@@ -57,18 +63,16 @@ class KeyTest extends \PHPUnit_Framework_TestCase
     public function testArrayWithEmptyKeyShouldReturnTrue()
     {
         $validator = new Key('someEmptyKey');
-        $input = array();
+        $input = [];
         $input['someEmptyKey'] = '';
 
-        $this->assertTrue($validator->assert($input));
-        $this->assertTrue($validator->check($input));
         $this->assertTrue($validator->validate($input));
     }
 
     public function testShouldHaveTheSameReturnValueForAllValidators()
     {
         $rule = new Key('key', new NotEmpty());
-        $input = array('key' => '');
+        $input = ['key' => ''];
 
         try {
             $rule->assert($input);
@@ -91,9 +95,9 @@ class KeyTest extends \PHPUnit_Framework_TestCase
     public function testArrayWithAbsentKeyShouldThrowKeyException()
     {
         $validator = new Key('bar');
-        $obj = array();
-        $obj['baraaaaaa'] = 'foo';
-        $this->assertTrue($validator->assert($obj));
+        $someArray = [];
+        $someArray['baraaaaaa'] = 'foo';
+        $this->assertTrue($validator->assert($someArray));
     }
     /**
      * @expectedException Respect\Validation\Exceptions\KeyException
@@ -101,8 +105,8 @@ class KeyTest extends \PHPUnit_Framework_TestCase
     public function testNotArrayShouldThrowKeyException()
     {
         $validator = new Key('bar');
-        $obj = 123;
-        $this->assertFalse($validator->assert($obj));
+        $someArray = 123;
+        $this->assertFalse($validator->assert($someArray));
     }
 
     /**
@@ -110,23 +114,23 @@ class KeyTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidConstructorParametersShouldThrowComponentExceptionUponInstantiation()
     {
-        $validator = new Key(array('invalid'));
+        $validator = new Key(['invalid']);
     }
 
     public function testExtraValidatorShouldValidateKey()
     {
         $subValidator = new Length(1, 3);
         $validator = new Key('bar', $subValidator);
-        $obj = array();
-        $obj['bar'] = 'foo';
-        $this->assertTrue($validator->assert($obj));
+        $someArray = [];
+        $someArray['bar'] = 'foo';
+        $this->assertTrue($validator->assert($someArray));
     }
 
     public function testNotMandatoryExtraValidatorShouldPassWithAbsentKey()
     {
         $subValidator = new Length(1, 3);
         $validator = new Key('bar', $subValidator, false);
-        $obj = array();
-        $this->assertTrue($validator->validate($obj));
+        $someArray = [];
+        $this->assertTrue($validator->validate($someArray));
     }
 }

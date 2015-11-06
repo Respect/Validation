@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class CaSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AB', // Alberta
         'BC', // British Columbia
         'MB', // Manitoba
@@ -36,7 +36,7 @@ class CaSubdivisionCode extends AbstractSearcher
         'QC', // Quebec
         'SK', // Saskatchewan
         'YT', // Yukon Territory
-    );
+    ];
 
     public $compareIdentical = true;
 }

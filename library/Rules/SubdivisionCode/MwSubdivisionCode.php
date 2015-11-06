@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class MwSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'C', // Central
         'N', // Northern
         'S', // Southern
@@ -54,7 +54,7 @@ class MwSubdivisionCode extends AbstractSearcher
         'SA', // Salima
         'TH', // Thyolo
         'ZO', // Zomba
-    );
+    ];
 
     public $compareIdentical = true;
 }

@@ -46,13 +46,13 @@ class SubdivisionCodeTest extends PHPUnit_Framework_TestCase
 
     public function providerForValidSubdivisionCodeInformation()
     {
-        return array(
-            array('AQ',  null),
-            array('BR',  'SP'),
-            array('MV',  '00'),
-            array('US',  'CA'),
-            array('YT',  ''),
-        );
+        return [
+            ['AQ',  null],
+            ['BR',  'SP'],
+            ['MV',  '00'],
+            ['US',  'CA'],
+            ['YT',  ''],
+        ];
     }
 
     /**
@@ -67,11 +67,11 @@ class SubdivisionCodeTest extends PHPUnit_Framework_TestCase
 
     public function providerForInvalidSubdivisionCodeInformation()
     {
-        return array(
-            array('BR',  'CA'),
-            array('MV',  0),
-            array('US',  'CE'),
-        );
+        return [
+            ['BR',  'CA'],
+            ['MV',  0],
+            ['US',  'CE'],
+        ];
     }
 
     /**

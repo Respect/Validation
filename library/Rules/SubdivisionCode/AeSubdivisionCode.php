@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class AeSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AJ', // 'Ajman
         'AZ', // Abu Zaby
         'DU', // Dubayy
@@ -30,7 +30,7 @@ class AeSubdivisionCode extends AbstractSearcher
         'RK', // R'as al Khaymah
         'SH', // Ash Shariqah
         'UQ', // Umm al Qaywayn
-    );
+    ];
 
     public $compareIdentical = true;
 }

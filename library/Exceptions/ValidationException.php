@@ -16,19 +16,19 @@ use Exception;
 use InvalidArgumentException;
 use Traversable;
 
-class ValidationException extends InvalidArgumentException implements ValidationExceptionInterface
+class ValidationException extends InvalidArgumentException implements ExceptionInterface
 {
     const MODE_DEFAULT = 1;
     const MODE_NEGATIVE = 2;
     const STANDARD = 0;
-    public static $defaultTemplates = array(
-        self::MODE_DEFAULT => array(
+    public static $defaultTemplates = [
+        self::MODE_DEFAULT => [
             self::STANDARD => 'Data validation failed for %s',
-        ),
-        self::MODE_NEGATIVE => array(
+        ],
+        self::MODE_NEGATIVE => [
             self::STANDARD => 'Data validation failed for %s',
-        ),
-    );
+        ],
+    ];
 
     /**
      * @var int
@@ -49,10 +49,10 @@ class ValidationException extends InvalidArgumentException implements Validation
     protected $mode = self::MODE_DEFAULT;
     protected $name = '';
     protected $template = '';
-    protected $params = array();
+    protected $params = [];
     private $customTemplate = false;
 
-    public static function format($template, array $vars = array())
+    public static function format($template, array $vars = [])
     {
         return preg_replace_callback(
             '/{{(\w+)}}/',
@@ -106,12 +106,7 @@ class ValidationException extends InvalidArgumentException implements Validation
             }
         }
 
-        $options = 0;
-        if (version_compare(PHP_VERSION, '5.4.0', '>=')) {
-            $options = (JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-        }
-
-        return (@json_encode($value, $options) ?: $value);
+        return (@json_encode($value, (JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)) ?: $value);
     }
 
     /**
@@ -175,11 +170,11 @@ class ValidationException extends InvalidArgumentException implements Validation
         }
 
         if ($value instanceof Exception) {
-            $properties = array(
+            $properties = [
                 'message' => $value->getMessage(),
                 'code' => $value->getCode(),
                 'file' => $value->getFile().':'.$value->getLine(),
-            );
+            ];
 
             return sprintf('`[exception] (%s: %s)`', $class, static::stringify($properties, $nextDepth));
         }
@@ -203,12 +198,11 @@ class ValidationException extends InvalidArgumentException implements Validation
         return key(static::$defaultTemplates[$this->mode]);
     }
 
-    public function configure($name, array $params = array())
+    public function configure($name, array $params = [])
     {
         $this->setName($name);
-        $this->setParams($params);
-        $this->message = $this->getMainMessage();
         $this->setId($this->guessId());
+        $this->setParams($params);
 
         return $this;
     }
@@ -278,6 +272,8 @@ class ValidationException extends InvalidArgumentException implements Validation
         $this->mode = $mode;
         $this->template = $this->buildTemplate();
 
+        $this->buildMessage();
+
         return $this;
     }
 
@@ -285,14 +281,18 @@ class ValidationException extends InvalidArgumentException implements Validation
     {
         $this->params[$key] = $value;
 
+        $this->buildMessage();
+
         return $this;
     }
 
     public function setParams(array $params)
     {
         foreach ($params as $key => $value) {
-            $this->setParam($key, $value);
+            $this->params[$key] = $value;
         }
+
+        $this->buildMessage();
 
         return $this;
     }
@@ -307,7 +307,14 @@ class ValidationException extends InvalidArgumentException implements Validation
         $this->customTemplate = true;
         $this->template = $template;
 
+        $this->buildMessage();
+
         return $this;
+    }
+
+    private function buildMessage()
+    {
+        $this->message = $this->getMainMessage();
     }
 
     protected function buildTemplate()

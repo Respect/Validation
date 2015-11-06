@@ -22,14 +22,14 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class CySubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Lefkosía
         '02', // Lemesós
         '03', // Lárnaka
         '04', // Ammóchostos
         '05', // Páfos
         '06', // Kerýneia
-    );
+    ];
 
     public $compareIdentical = true;
 }

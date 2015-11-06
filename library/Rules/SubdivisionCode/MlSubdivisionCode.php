@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class MlSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '1', // Kayes
         '2', // Koulikoro
         '3', // Sikasso
@@ -32,7 +32,7 @@ class MlSubdivisionCode extends AbstractSearcher
         '7', // Gao
         '8', // Kidal
         'BKO', // Bamako Capital District
-    );
+    ];
 
     public $compareIdentical = true;
 }

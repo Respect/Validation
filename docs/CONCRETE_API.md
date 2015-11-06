@@ -8,7 +8,7 @@ or magic methods. We'll use a traditional dependency injection approach.
 use Respect\Validation\Validator as v;
 
 $usernameValidator = v::alnum()->noWhitespace()->length(1,15);
-$usernameValidator->validate('alganet'); //true
+$usernameValidator->validate('alganet'); // true
 ```
 
 If you `var_dump($usernameValidator)`, you'll see a composite of objects with
@@ -24,7 +24,7 @@ $usernameValidator = new Rules\AllOf(
     new Rules\NoWhitespace(),
     new Rules\Length(1, 15)
 );
-$usernameValidator->validate('alganet'); //true
+$usernameValidator->validate('alganet'); // true
 ```
 
 This is still a very lean API. You can use it in any dependency injection
@@ -39,7 +39,7 @@ $usernameValidator = new Rules\AllOf(
     new Rules\Length(1, 15)
 );
 $userValidator = new Rules\Key('name', $usernameValidator);
-$userValidator->validate(['name' => 'alganet']); //true
+$userValidator->validate(['name' => 'alganet']); // true
 ```
 
 ## How It Works?

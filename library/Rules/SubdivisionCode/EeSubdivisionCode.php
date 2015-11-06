@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class EeSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '37', // Harju County
         '39', // Hiiu County
         '44', // Ida-Viru County
@@ -38,7 +38,7 @@ class EeSubdivisionCode extends AbstractSearcher
         '82', // Valga County
         '84', // Viljandi County
         '86', // Võru County
-    );
+    ];
 
     public $compareIdentical = true;
 }

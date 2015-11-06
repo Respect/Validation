@@ -22,14 +22,14 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class BzSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BZ', // Belize District
         'CY', // Cayo District
         'CZL', // Corozal District
         'OW', // Orange Walk District
         'SC', // Stann Creek District
         'TOL', // Toledo District
-    );
+    ];
 
     public $compareIdentical = true;
 }

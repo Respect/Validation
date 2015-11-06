@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class EgSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'ALX', // Al Iskandariyah
         'ASN', // Aswan
         'AST', // Asyut
@@ -52,7 +52,7 @@ class EgSubdivisionCode extends AbstractSearcher
         'WAD', // Al Wadi al Jadid
         'HU', // Helwan
         'SU', // As Sādis min Uktūbar
-    );
+    ];
 
     public $compareIdentical = true;
 }
