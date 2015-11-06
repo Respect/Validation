@@ -11,10 +11,10 @@
 
 namespace Respect\Validation\Rules;
 
-class Imagem extends AbstractRule
+class Image extends AbstractRule
 {
     public function validate($input)
     {
-        return getimagesize($input) ? true : false;
+        return @getimagesize($input) ? true : false;
     }
 }

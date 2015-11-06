@@ -13,10 +13,28 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\ArrayVal
  */
-class ImageTest extends RuleTestCase
+class ImageTest extends \PHPUnit_Framework_TestCase
 {
+
+    /**
+     * @dataProvider providerForValidInput
+     */
+    public function testValidImageUrlShouldValidate($input)
+    {
+        $instance = new Image();
+        $this->assertTrue($instance->validate($input));
+    }
+
+    /**
+     * @dataProvider providerForInvalidInput
+     */
+    public function testInvalidImageUrlShouldNotValidate($input)
+    {
+        $instance = new Image();
+        $this->assertFalse($instance->validate($input));
+    }    
+
     public function providerForValidInput()
     {
         return [
