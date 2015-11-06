@@ -57,7 +57,7 @@ class PerfectSquareTest extends \PHPUnit_Framework_TestCase
             ['0'],
             [81],
             [0],
-            [250],
+            [2500],
         ];
     }
 
