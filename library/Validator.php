@@ -11,6 +11,7 @@
 
 namespace Respect\Validation;
 
+use finfo;
 use ReflectionClass;
 use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Exceptions\ComponentException;
@@ -69,6 +70,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator floatType()
  * @method static Validator graph(string $additionalChars = null)
  * @method static Validator hexRgbColor()
+ * @method static Validator image(finfo $fileInfo = null)
  * @method static Validator imei()
  * @method static Validator in(mixed $haystack, bool $compareIdentical = false)
  * @method static Validator infinite()
