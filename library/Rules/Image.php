@@ -15,6 +15,10 @@ class Image extends AbstractRule
 {
     public function validate($input)
     {
-        return @getimagesize($input) ? true : false;
+    	if (is_file($input) || filter_var($input, FILTER_VALIDATE_URL)) {
+     	   return is_array(getimagesize($input));
+    	}
+
+    	return false;
     }
 }
