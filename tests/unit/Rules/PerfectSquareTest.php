@@ -57,13 +57,14 @@ class PerfectSquareTest extends \PHPUnit_Framework_TestCase
             ['0'],
             [81],
             [0],
-            [250],
+            [2500],
         ];
     }
 
     public function providerForNotPerfectSquare()
     {
         return [
+            [250],
             [''],
             [null],
             [7],
