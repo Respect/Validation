@@ -1,4 +1,4 @@
-# BoolType
+# BoolVal
 
 - `v::boolVal()`
 
