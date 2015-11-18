@@ -3,8 +3,9 @@
 Contributions to Respect\Validation are always welcome. You make our lives
 easier by sending us your contributions through [pull requests][].
 
-Pull requests for bug fixes must be based on the current stable branch whereas
-pull requests for new features must be based on `master`.
+Pull requests for bug fixes must be based on the oldest supported version's
+branch (see [Release Cycle and Support][]) whereas pull requests for new features
+must be based on the `master` branch.
 
 Due to time constraints, we are not always able to respond as quickly as we
 would like. Please do not take delays personal and feel free to remind us here,
@@ -15,9 +16,14 @@ about [PHP-FIG][]'s standards and basic unit testing, but we're sure you can
 learn that just by looking at other rules. Pick the simple ones like `ArrayType`
 to begin.
 
-Before writing anything, make sure there is no validator that already does what
-you need. Also, it would be awesome if you [open an issue][] before starting,
-so if anyone has the same idea the guy will see that you're already doing that.
+Before writing anything, feature or bug fix:
+- Check if there is already an issue related to it (opened or closed) and if
+  someone is already working on that;
+    - If there is not, [open an issue][] and notify everybody that you're going
+      to work on that;
+    - If there is, create a comment to notify everybody that you're going to
+      work on that.
+- Make sure that what you need is not done yet
 
 ## Adding a new validator
 
@@ -27,13 +33,13 @@ A common validator (rule) on Respect\Validation is composed of three classes:
   * `library/Exceptions/YourRuleNameException.php`: the exception thrown by the rule
   * `tests/unit/Rules/YourRuleNameTest.php`: tests for the rule
 
-Classes are pretty straightforward. In the sample below, we're going to create a
-validator that validates if a string is equal "Hello World".
+The classes are pretty straightforward. In the sample below, we're going to
+create a validator that validates if a string is equal to "Hello World".
 
 ### Creating the rule
 
-The rule itself needs to implement the `Validatable` interface.
-Also, it is convenient to extend the `AbstractRule`.
+The rule itself needs to implement the `Validatable` interface but, it is
+convenient to just extend the `AbstractRule` class.
 Doing that, you'll only need to declare one method: `validate($input)`.
 This method must return `true` or `false`.
 
@@ -107,7 +113,7 @@ that allows us to make easier to test rules, but you fell free to use the
 `PHPUnit_Framework_TestCase` if you want or you need it's necessary.
 
 The `RuleTestCase` extends PHPUnit's `PHPUnit_Framework_TestCase` class, so you
-are able to use any method of them. By extending `RuleTestCase` you should
+are able to use any methods of it. By extending `RuleTestCase` you should
 implement two methods that should return a [data provider][] with the rule as
 first item of the arrays:
 
@@ -168,13 +174,13 @@ but if you really want to help us, you can follow the example of [ArrayType][] b
 - Writing a documentation for your new rule;
 - Creating integration tests with PHPT.
 
-As I already said, none of them are required but you will help us a lot.
+As we already said, none of them are required but you will help us a lot.
 
 ## Documentation
 
 Our docs at http://respect.github.io/Validation are generated from our Markdown
-files using [Couscous][]. Add your brand new rule there and
-everything will be updated as soon as possible.
+files using [Couscous][]. Add your brand new rule there and everything will be
+updated as soon as possible.
 
 ## Running Tests
 
@@ -245,3 +251,4 @@ See also:
 [PSR-2]: http://www.php-fig.org/psr/psr-2 "PHP Standard Recommendation: Coding Style Guide"
 [PSR-4]: http://www.php-fig.org/psr/psr-4 "PHP Standard Recommendation: Autoloader"
 [pull requests]: http://help.github.com/pull-requests "GitHub pull requests"
+[Release Cycle and Support]: https://github.com/Respect/Validation/wiki/Release-Cycle-and-Support
