@@ -78,6 +78,7 @@ class PostalCodeTest extends \PHPUnit_Framework_TestCase
             array('GB', 'PR1 9LY'),
             array('US', '02179'),
             array('YE', ''),
+            array('PL', '99-300'),
         );
     }
 
@@ -101,6 +102,7 @@ class PostalCodeTest extends \PHPUnit_Framework_TestCase
             array('GB', 'PR19LY'),
             array('US', '021 79'),
             array('YE', '02179'),
+            array('PL', '99300'),
         );
     }
 }
