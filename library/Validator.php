@@ -108,6 +108,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator oneOf()
  * @method static Validator optional(Validatable $rule)
  * @method static Validator perfectSquare()
+ * @method static Validator pesel()
  * @method static Validator phone()
  * @method static Validator positive()
  * @method static Validator postalCode(string $countryCode)
