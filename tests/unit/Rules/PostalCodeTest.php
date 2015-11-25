@@ -90,6 +90,7 @@ class PostalCodeTest extends \PHPUnit_Framework_TestCase
             ['GB', 'PR1 9LY'],
             ['US', '02179'],
             ['YE', ''],
+            ['PL', '99-300'],
         ];
     }
 
@@ -123,6 +124,7 @@ class PostalCodeTest extends \PHPUnit_Framework_TestCase
             ['GB', 'PR19LY'],
             ['US', '021 79'],
             ['YE', '02179'],
+            ['PL', '99300'],
         ];
     }
 }
