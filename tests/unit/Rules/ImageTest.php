@@ -38,7 +38,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     public function providerForValidInput()
     {
         return [
-            ['http://lorempixel.com/400/200/'],
+            [__DIR__.'/../../fixtures/image_test.jpg'],
         ];
     }
 
