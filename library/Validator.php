@@ -70,6 +70,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator floatType()
  * @method static Validator graph(string $additionalChars = null)
  * @method static Validator hexRgbColor()
+ * @method static Validator identityCard()
  * @method static Validator image(finfo $fileInfo = null)
  * @method static Validator imei()
  * @method static Validator in(mixed $haystack, bool $compareIdentical = false)
