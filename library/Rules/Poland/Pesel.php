@@ -9,8 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Respect\Validation\Rules;
+namespace Respect\Validation\Rules\Poland;
 
+use Respect\Validation\Rules\AbstractRule;
+
+/**
+ * Validator for Poland PESEL.
+ *
+ * @link https://en.wikipedia.org/wiki/PESEL
+ */
 class Pesel extends AbstractRule
 {
     public function validate($pesel)
