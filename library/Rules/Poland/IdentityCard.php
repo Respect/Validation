@@ -9,8 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Respect\Validation\Rules;
+namespace Respect\Validation\Rules\Poland;
 
+use Respect\Validation\Rules\AbstractRule;
+
+/**
+ * Validator for Poland Identity Card.
+ *
+ * @link https://en.wikipedia.org/wiki/Polish_identity_card
+ */
 class IdentityCard extends AbstractRule
 {
     public function validate($identityCard)
