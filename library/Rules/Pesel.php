@@ -13,19 +13,21 @@ namespace Respect\Validation\Rules;
 
 class Pesel extends AbstractRule
 {
-    public function validate($pesel)
+    public function validate($input)
     {
-        $weights = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
-
-        if (!is_numeric($pesel) || strlen($pesel) != 11) {
+        if (!is_numeric($input)
+            || !filter_var($input, FILTER_VALIDATE_INT)
+            || strlen($input) != 11) {
             return false;
         }
 
-        $targetControlNumber = $pesel[10];
+        $weights = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
+
+        $targetControlNumber = $input[10];
         $calculateControlNumber = 0;
 
         for ($i = 0; $i < 10; $i++) {
-            $calculateControlNumber += $pesel[$i] * $weights[$i];
+            $calculateControlNumber += $input[$i] * $weights[$i];
         }
 
         $calculateControlNumber = (10 - $calculateControlNumber % 10) % 10;

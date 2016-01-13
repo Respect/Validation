@@ -14,53 +14,37 @@ namespace Respect\Validation\Rules;
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Pesel
- * @covers Respect\Validation\Exceptions\PeselException
  */
-class PeselTest extends \PHPUnit_Framework_TestCase
+class PeselTest extends RuleTestCase
 {
-    protected $peselValidator;
-
-    protected function setUp()
+    public function providerForValidInput()
     {
-        $this->peselValidator = new Pesel();
-    }
+        $rule = new Pesel();
 
-    /**
-     * @dataProvider providerValidPesel
-     */
-    public function testPeselShouldValidate($input)
-    {
-        $this->assertTrue($this->peselValidator->validate($input));
-    }
-
-    /**
-     * @dataProvider providerInvalidPesel
-     */
-    public function testPeselShouldNotValidate($input)
-    {
-        $this->assertFalse($this->peselValidator->validate($input));
-    }
-
-    public function providerValidPesel()
-    {
         return [
-            ['49040501580'],
-            ['39012110375'],
-            ['50083014540'],
-            ['69090515504'],
-            ['21120209256']
+            [$rule, 0x4EADCD168], // 0x4EADCD168 === 21120209256
+            [$rule, 49040501580],
+            [$rule, '49040501580'],
+            [$rule, '39012110375'],
+            [$rule, '50083014540'],
+            [$rule, '69090515504'],
+            [$rule, '21120209256']
         ];
     }
 
-    public function providerInvalidPesel()
+    public function providerForInvalidInput()
     {
+        $rule = new Pesel();
+
         return [
-            ['1'],
-            ['22'],
-            ['PESEL'],
-            ['PESEL123456'],
-            ['21120209251'],
-            ['21120209250'],
+            [$rule, '1'],
+            [$rule, '22'],
+            [$rule, 'PESEL'],
+            [$rule, '0x4EADCD168'],
+            [$rule, 'PESEL123456'],
+            [$rule, '690905155.4'],
+            [$rule, '21120209251'],
+            [$rule, '21120209250'],
         ];
     }
 }
