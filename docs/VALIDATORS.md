@@ -139,6 +139,7 @@
 
   * [CountryCode](CountryCode.md)
   * [CurrencyCode](CurrencyCode.md)
+  * [IdentityCard](IdentityCard.md)
   * [LanguageCode](LanguageCode.md)
   * [PostalCode](PostalCode.md)
   * [SubdivisionCode](SubdivisionCode.md)
@@ -244,6 +245,7 @@
   * [FloatType](FloatType.md)
   * [Graph](Graph.md)
   * [HexRgbColor](HexRgbColor.md)
+  * [IdentityCard](IdentityCard.md)
   * [Image](Image.md)
   * [Imei](Imei.md)
   * [In](In.md)
