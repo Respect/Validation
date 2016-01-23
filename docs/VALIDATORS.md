@@ -52,6 +52,7 @@
   * [BoolType](BoolType.md)
   * [Even](Even.md)
   * [Factor](Factor.md)
+  * [Fibonacci](Fibonacci.md)
   * [Finite](Finite.md)
   * [FloatVal](FloatVal.md)
   * [FloatType](FloatType.md)
