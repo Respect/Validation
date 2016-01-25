@@ -1,8 +1,8 @@
 # Fibonacci
 
- - `v::arrayType()`
+ - `v::fibonacci()`
 
-Validates whether the input follows the fibonacci integer sequence
+Validates whether the input follows the Fibonacci integer sequence.
 
 ```php
 v::fibonacci()->validate(1); // true
