@@ -14,70 +14,46 @@ namespace Respect\Validation\Rules;
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Fibonacci
- * @covers Respect\Validation\Exceptions\FibonacciException
  */
-class FibonacciTest extends \PHPUnit_Framework_TestCase
+class FibonacciTest extends RuleTestCase
 {
-    protected $object;
-
-    protected function setUp()
+    public function providerForValidInput()
     {
-        $this->object = new Fibonacci();
-    }
+        $rule = new Fibonacci();
 
-    /**
-     * @dataProvider providerForFibonacci
-     */
-    public function testFibonacci($input)
-    {
-        $this->assertTrue($this->object->__invoke($input));
-        $this->assertTrue($this->object->check($input));
-        $this->assertTrue($this->object->assert($input));
-    }
-
-    public function providerForFibonacci()
-    {
         return [
-            [1],
-            [2],
-            [3],
-            [5],
-            [8.0],
-            ['3'],
-            [21],
-            ['21.0'],
-            [34],
-            ['34'],
-            [1346269],
-            [10610209857723]
+            [$rule, 1],
+            [$rule, 2],
+            [$rule, 3],
+            [$rule, 5],
+            [$rule, 8.0],
+            [$rule, '3'],
+            [$rule, 21],
+            [$rule, '21.0'],
+            [$rule, 34],
+            [$rule, '34'],
+            [$rule, 1346269],
+            [$rule, 10610209857723]
         ];
     }
 
-    /**
-     * @dataProvider providerForNotFibonacci
-     * @expectedException Respect\Validation\Exceptions\FibonacciException
-     */
-    public function testNotFibonacci($input)
+    public function providerForInvalidInput()
     {
-        $this->assertFalse($this->object->__invoke($input));
-        $this->assertFalse($this->object->assert($input));
-    }
+        $rule = new Fibonacci();
 
-    public function providerForNotFibonacci()
-    {
         return [
-            [0],
-            [1346268],
-            [''],
-            [null],
-            [7],
-            [-1],
-            [5.2],
-            ['-1'],
-            ['a'],
-            [' '],
-            [false],
-            [true]
+            [$rule, 0],
+            [$rule, 1346268],
+            [$rule, ''],
+            [$rule, null],
+            [$rule, 7],
+            [$rule, -1],
+            [$rule, 5.2],
+            [$rule, '-1'],
+            [$rule, 'a'],
+            [$rule, ' '],
+            [$rule, false],
+            [$rule, true]
         ];
     }
 }
