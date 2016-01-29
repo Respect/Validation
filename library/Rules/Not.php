@@ -23,6 +23,13 @@ class Not extends AbstractRule
         $this->rule = $rule;
     }
 
+    public function setName($name)
+    {
+        $this->rule->setName($name);
+
+        return parent::setName($name);
+    }
+
     public function validate($input)
     {
         return (false == $this->rule->validate($input));
