@@ -64,6 +64,10 @@ class Length extends AbstractRule
         if (is_object($input)) {
             return count(get_object_vars($input));
         }
+        
+        if (is_int($input)) {
+            return mb_strlen((string)$input, mb_detect_encoding((string)$input));
+        }
 
         return false;
     }
