@@ -27,7 +27,7 @@ class Not extends AbstractRule
     {
         $this->rule->setName($name);
 
-        parent::setName($name);
+        return parent::setName($name);
     }
 
     public function validate($input)
