@@ -66,7 +66,7 @@ class Length extends AbstractRule
         }
         
         if (is_int($input)) {
-            return mb_strlen((string)$input, mb_detect_encoding((string)$input));
+            return strlen((string)$input);
         }
 
         return false;
