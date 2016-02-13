@@ -63,6 +63,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator extension(string $extension)
  * @method static Validator factor(int $dividend)
  * @method static Validator falseVal()
+ * @method static Validator fibonacci()
  * @method static Validator file()
  * @method static Validator filterVar(int $filter, mixed $options = null)
  * @method static Validator finite()
