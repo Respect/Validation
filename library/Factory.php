@@ -25,7 +25,12 @@ class Factory
 
     public function appendRulePrefix($rulePrefix)
     {
-        array_push($this->rulePrefixes, $rulePrefix);
+        $namespaceSeparator = '\\';
+        $rulePrefix = rtrim($rulePrefix, $namespaceSeparator);
+        array_push(
+            $this->rulePrefixes,
+            $rulePrefix . $namespaceSeparator
+        );
     }
 
     public function prependRulePrefix($rulePrefix)
