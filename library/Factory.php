@@ -23,14 +23,22 @@ class Factory
         return $this->rulePrefixes;
     }
 
+    private function filterRulePrefix($rulePrefix)
+    {
+        $namespaceSeparator = '\\';
+        $rulePrefix = rtrim($rulePrefix, $namespaceSeparator);
+
+        return $rulePrefix.$namespaceSeparator;
+    }
+
     public function appendRulePrefix($rulePrefix)
     {
-        array_push($this->rulePrefixes, $rulePrefix);
+        array_push($this->rulePrefixes, $this->filterRulePrefix($rulePrefix));
     }
 
     public function prependRulePrefix($rulePrefix)
     {
-        array_unshift($this->rulePrefixes, $rulePrefix);
+        array_unshift($this->rulePrefixes, $this->filterRulePrefix($rulePrefix));
     }
 
     public function rule($ruleName, array $arguments = [])
