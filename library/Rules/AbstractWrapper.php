@@ -41,4 +41,10 @@ abstract class AbstractWrapper extends AbstractRule
     {
         return $this->getValidatable()->validate($input);
     }
+
+    public function setName($name)
+    {
+        $this->getValidatable()->setName($name);
+        return parent::setName($name);
+    }
 }

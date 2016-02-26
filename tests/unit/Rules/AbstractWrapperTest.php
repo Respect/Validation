@@ -93,4 +93,21 @@ class AbstractWrapperTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($wrapper->check($input));
     }
+
+    public function testShouldPassNameOnToWrapped()
+    {
+        $name = 'Whatever';
+
+        $validatable = $this->getMock('Respect\Validation\Validatable');
+        $validatable
+            ->expects($this->once())
+            ->method('setName')
+            ->with($name)
+            ->will($this->returnValue($validatable));
+
+        $wrapper = $this->getMockForAbstractClass('Respect\Validation\Rules\AbstractWrapper');
+        $this->bindValidatable($wrapper, $validatable);
+
+        $this->assertSame($wrapper, $wrapper->setName($name));
+    }
 }
