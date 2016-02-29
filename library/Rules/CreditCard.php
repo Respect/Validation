@@ -23,7 +23,7 @@ class CreditCard extends AbstractRule
         return false;
     }
 
-    private function verifyMod10($input)
+    protected function verifyMod10($input)
     {
         $sum = 0;
         $input = strrev($input);
