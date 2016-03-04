@@ -114,6 +114,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator perfectSquare()
  * @method static Validator pesel()
  * @method static Validator phone()
+ * @method static Validator phpLabel()
  * @method static Validator positive()
  * @method static Validator postalCode(string $countryCode)
  * @method static Validator primeNumber()

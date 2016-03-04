@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
-class PHPLabel extends AbstractRule
+class PhpLabel extends AbstractRule
 {
     public function validate($input)
     {

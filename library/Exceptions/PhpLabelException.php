@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class PHPLabelException extends ValidationException
+class PhpLabelException extends ValidationException
 {
     public static $defaultTemplates = array(
         self::MODE_DEFAULT => array(
