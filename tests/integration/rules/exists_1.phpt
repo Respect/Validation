@@ -3,8 +3,8 @@
 require 'vendor/autoload.php';
 
 use org\bovigo\vfs\content\LargeFileContent;
-use Respect\Validation\Validator as v;
 use org\bovigo\vfs\vfsStream;
+use Respect\Validation\Validator as v;
 
 $root = vfsStream::setup();
 

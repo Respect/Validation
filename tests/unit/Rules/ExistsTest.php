@@ -12,8 +12,8 @@
 namespace Respect\Validation\Rules;
 
 use org\bovigo\vfs\content\LargeFileContent;
-use PHPUnit_Framework_TestCase;
 use org\bovigo\vfs\vfsStream;
+use PHPUnit_Framework_TestCase;
 use SplFileInfo;
 
 /**

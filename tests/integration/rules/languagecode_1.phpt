@@ -2,8 +2,8 @@
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Rules\LanguageCode;
+use Respect\Validation\Validator as v;
 
 v::languageCode()->assert('pt');
 v::languageCode()->assert('en');

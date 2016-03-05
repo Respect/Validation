@@ -21,7 +21,6 @@ class AbstractRegexRuleTest extends \PHPUnit_Framework_TestCase
             ->will($this->returnValue('/^Respect$/'));
 
         $this->assertEquals(1, $regexRuleMock->validateClean('Respect'));
-
     }
 
     public function testValidateCleanShouldReturnZeroIfPatternIsNotFound()

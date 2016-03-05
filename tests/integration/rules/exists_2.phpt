@@ -2,8 +2,8 @@
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\ExistsException;
+use Respect\Validation\Validator as v;
 
 try {
     v::exists()->check('/path/of/a/non-existent/file');
