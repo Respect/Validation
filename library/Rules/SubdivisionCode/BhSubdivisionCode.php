@@ -22,13 +22,13 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class BhSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '13', // Capital
         '14', // Southern
         '15', // Muharraq
         '16', // Central
         '17', // Northern
-    );
+    ];
 
     public $compareIdentical = true;
 }

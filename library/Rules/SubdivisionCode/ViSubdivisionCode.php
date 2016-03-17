@@ -22,11 +22,11 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class ViSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'C', // Saint Croix
         'J', // Saint John
         'T', // Saint Thomas
-    );
+    ];
 
     public $compareIdentical = true;
 }

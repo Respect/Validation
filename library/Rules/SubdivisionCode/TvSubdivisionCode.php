@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class TvSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'FUN', // Funafuti
         'NIT', // Niutao
         'NKF', // Nukufetau
@@ -31,7 +31,7 @@ class TvSubdivisionCode extends AbstractSearcher
         'NMG', // Nanumanga
         'NUI', // Nui
         'VAI', // Vaitupu
-    );
+    ];
 
     public $compareIdentical = true;
 }

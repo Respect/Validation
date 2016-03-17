@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class LaSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AT', // Attapu
         'BK', // Bokeo
         'BL', // Bolikhamxai
@@ -41,7 +41,7 @@ class LaSubdivisionCode extends AbstractSearcher
         'XE', // Xekong
         'XI', // Xiangkhoang
         'XN', // Xaisomboun
-    );
+    ];
 
     public $compareIdentical = true;
 }

@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class CgSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '11', // Bouenza
         '12', // Pool
         '13', // Sangha
@@ -35,7 +35,7 @@ class CgSubdivisionCode extends AbstractSearcher
         '8', // Cuvette
         '9', // Niari
         'BZV', // Brazzaville
-    );
+    ];
 
     public $compareIdentical = true;
 }

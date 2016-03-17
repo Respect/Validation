@@ -53,29 +53,31 @@ class MininumAgeTest extends \PHPUnit_Framework_TestCase
 
     public function providerForValidDateValidMinimumAge()
     {
-        return array(
-            array(18, 'Y-m-d', ''),
-            array(18, 'Y-m-d', '1969-07-20'),
-            array(18, null, new \DateTime('1969-07-20')),
-            array(18, 'Y-m-d', new \DateTime('1969-07-20')),
-        );
+        return [
+            [18, 'Y-m-d', ''],
+            [18, 'Y-m-d', '1969-07-20'],
+            [18, null, new \DateTime('1969-07-20')],
+            [18, 'Y-m-d', new \DateTime('1969-07-20')],
+            ['18', 'Y-m-d', '1969-07-20'],
+            [18.0, 'Y-m-d', '1969-07-20'],
+        ];
     }
 
     public function providerForValidDateInvalidMinimumAge()
     {
-        return array(
-            array(18, 'Y-m-d', '2002-06-30'),
-            array(18, null, new \DateTime('2002-06-30')),
-            array(18, 'Y-m-d', new \DateTime('2002-06-30')),
-        );
+        return [
+            [18, 'Y-m-d', '2002-06-30'],
+            [18, null, new \DateTime('2002-06-30')],
+            [18, 'Y-m-d', new \DateTime('2002-06-30')],
+        ];
     }
 
     public function providerForInvalidDate()
     {
-        return array(
-            array(18, null, 'invalid-input'),
-            array(18, null, new \stdClass()),
-            array(18, 'y-m-d', '2002-06-30'),
-        );
+        return [
+            [18, null, 'invalid-input'],
+            [18, null, new \stdClass()],
+            [18, 'y-m-d', '2002-06-30'],
+        ];
     }
 }

@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class ZmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Western Province
         '02', // Central Province
         '03', // Eastern Province
@@ -32,7 +32,7 @@ class ZmSubdivisionCode extends AbstractSearcher
         '07', // Southern Province
         '08', // Copperbelt Province
         '09', // Lusaka Province
-    );
+    ];
 
     public $compareIdentical = true;
 }

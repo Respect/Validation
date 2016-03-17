@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class HtSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AR', // Artibonite
         'CE', // Centre
         'GA', // Grand'Anse
@@ -32,7 +32,7 @@ class HtSubdivisionCode extends AbstractSearcher
         'OU', // Ouest
         'SD', // Sud
         'SE', // Sud-Est
-    );
+    ];
 
     public $compareIdentical = true;
 }

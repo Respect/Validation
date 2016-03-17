@@ -20,7 +20,7 @@ class Charset extends AbstractRule
     public function __construct($charset)
     {
         $available = mb_list_encodings();
-        $charset = is_array($charset) ? $charset : array($charset);
+        $charset = is_array($charset) ? $charset : [$charset];
         $charset = array_filter($charset, function ($c) use ($available) {
             return in_array($c, $available, true);
         });

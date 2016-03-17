@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class PaSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '1', // Bocas del Toro
         '2', // Cocle
         '3', // Colon
@@ -35,7 +35,7 @@ class PaSubdivisionCode extends AbstractSearcher
         'EM', // Comarca Emberá-Wounaan
         'KY', // Comarca de Kuna Yala
         'NB', // Ngöbe-Buglé
-    );
+    ];
 
     public $compareIdentical = true;
 }

@@ -8,7 +8,7 @@
 Validates lengths. Most simple example:
 
 ```php
-v::stringType()->length(1, 5)->validate('abc'); //true
+v::stringType()->length(1, 5)->validate('abc'); // true
 ```
 
 You can also validate only minimum length:
@@ -27,13 +27,13 @@ The type as the first validator in a chain is a good practice,
 since length accepts many types:
 
 ```php
-v::arrayVal()->length(1, 5)->validate(array('foo', 'bar')); //true
+v::arrayVal()->length(1, 5)->validate(['foo', 'bar']); // true
 ```
 
 A third parameter may be passed to validate the passed values inclusive:
 
 ```php
-v::stringType()->length(1, 5, true)->validate('a'); //true
+v::stringType()->length(1, 5, true)->validate('a'); // true
 ```
 
 Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.

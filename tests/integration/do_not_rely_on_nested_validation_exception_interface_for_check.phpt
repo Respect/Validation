@@ -4,16 +4,16 @@ Do not rely on nested validation exception interface for check
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
-use Respect\Validation\Exceptions\ValidationExceptionInterface;
+use Respect\Validation\Exceptions\NestedValidationException;
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validator;
 
 $usernameValidator = Validator::alnum('_')->length(1, 15)->noWhitespace();
 try {
     $usernameValidator->check('really messed up screen#name');
-} catch (NestedValidationExceptionInterface $e) {
+} catch (NestedValidationException $e) {
     echo 'Check used NestedValidationException';
-} catch (ValidationExceptionInterface $e) {
+} catch (ValidationException $e) {
     echo $e->getMessage();
 }
 ?>

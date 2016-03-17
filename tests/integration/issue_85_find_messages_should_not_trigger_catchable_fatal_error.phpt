@@ -4,14 +4,14 @@ Issue #85: findMessages() should not trigger catchable fatal error
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator;
 
 $usernameValidator = Validator::alnum('_')->length(1, 15)->noWhitespace();
 try {
     $usernameValidator->assert('really messed up screen#name');
-} catch (NestedValidationExceptionInterface $e) {
-    print_r($e->findMessages(array('alnum', 'length', 'noWhitespace')));
+} catch (NestedValidationException $e) {
+    print_r($e->findMessages(['alnum', 'length', 'noWhitespace']));
 }
 ?>
 --EXPECTF--

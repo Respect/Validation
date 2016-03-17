@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class GaSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '1', // Estuaire
         '2', // Haut-Ogooue
         '3', // Moyen-Ogooue
@@ -32,7 +32,7 @@ class GaSubdivisionCode extends AbstractSearcher
         '7', // Ogooue-Lolo
         '8', // Ogooue-Maritime
         '9', // Woleu-Ntem
-    );
+    ];
 
     public $compareIdentical = true;
 }

@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class BjSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AK', // Atakora
         'AL', // Alibori
         'AQ', // Atlantique
@@ -35,7 +35,7 @@ class BjSubdivisionCode extends AbstractSearcher
         'OU', // Oueme
         'PL', // Plateau
         'ZO', // Zou
-    );
+    ];
 
     public $compareIdentical = true;
 }

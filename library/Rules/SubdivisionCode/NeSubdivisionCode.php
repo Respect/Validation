@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class NeSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '1', // Agadez
         '2', // Diffa
         '3', // Dosso
@@ -31,7 +31,7 @@ class NeSubdivisionCode extends AbstractSearcher
         '6', // Tillabéri
         '7', // Zinder
         '8', // Niamey
-    );
+    ];
 
     public $compareIdentical = true;
 }

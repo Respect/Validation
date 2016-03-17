@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class AoSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BGO', // Bengo
         'BGU', // Benguela province
         'BIE', // Bie
@@ -41,7 +41,7 @@ class AoSubdivisionCode extends AbstractSearcher
         'NAM', // Namibe
         'UIG', // Uige
         'ZAI', // Zaire
-    );
+    ];
 
     public $compareIdentical = true;
 }

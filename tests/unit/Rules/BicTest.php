@@ -11,8 +11,6 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Test\LocaleTestCase;
-
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Bic

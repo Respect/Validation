@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class VeSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'A', // Federal Capital
         'B', // Anzoategui
         'C', // Apure
@@ -48,7 +48,7 @@ class VeSubdivisionCode extends AbstractSearcher
         'X', // Vargas
         'Y', // Delta Amacuro
         'Z', // Amazonas
-    );
+    ];
 
     public $compareIdentical = true;
 }

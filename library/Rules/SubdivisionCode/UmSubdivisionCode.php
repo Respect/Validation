@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class UmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '67', // Johnston Atoll
         '71', // Midway Atoll
         '76', // Navassa Island
@@ -32,7 +32,7 @@ class UmSubdivisionCode extends AbstractSearcher
         '86', // Jarvis Island
         '89', // Kingman Reef
         '95', // Palmyra Atoll
-    );
+    ];
 
     public $compareIdentical = true;
 }

@@ -11,6 +11,7 @@
 
 namespace Respect\Validation;
 
+use finfo;
 use ReflectionClass;
 use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Exceptions\ComponentException;
@@ -25,6 +26,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator alwaysInvalid()
  * @method static Validator alwaysValid()
  * @method static Validator arrayVal()
+ * @method static Validator arrayType()
  * @method static Validator attribute(string $reference, Validatable $validator = null, bool $mandatory = true)
  * @method static Validator bank(string $countryCode)
  * @method static Validator bankAccount(string $countryCode)
@@ -32,6 +34,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator between(mixed $min = null, mixed $max = null, bool $inclusive = true)
  * @method static Validator bic(string $countryCode)
  * @method static Validator boolType()
+ * @method static Validator boolVal()
  * @method static Validator bsn()
  * @method static Validator call()
  * @method static Validator callableType()
@@ -41,7 +44,9 @@ use Respect\Validation\Rules\Key;
  * @method static Validator cnpj()
  * @method static Validator consonant(string $additionalChars = null)
  * @method static Validator contains(mixed $containsValue, bool $identical = false)
+ * @method static Validator countable()
  * @method static Validator countryCode()
+ * @method static Validator currencyCode()
  * @method static Validator cpf()
  * @method static Validator creditCard()
  * @method static Validator date(string $format = null)
@@ -51,30 +56,37 @@ use Respect\Validation\Rules\Key;
  * @method static Validator each(Validatable $itemValidator = null, Validatable $keyValidator = null)
  * @method static Validator email()
  * @method static Validator endsWith(mixed $endValue, bool $identical = false)
- * @method static Validator equals(mixed $compareTo, bool $compareIdentical = false)
+ * @method static Validator equals(mixed $compareTo)
  * @method static Validator even()
  * @method static Validator executable()
  * @method static Validator exists()
  * @method static Validator extension(string $extension)
  * @method static Validator factor(int $dividend)
  * @method static Validator falseVal()
+ * @method static Validator fibonacci()
  * @method static Validator file()
  * @method static Validator filterVar(int $filter, mixed $options = null)
  * @method static Validator finite()
  * @method static Validator floatVal()
+ * @method static Validator floatType()
  * @method static Validator graph(string $additionalChars = null)
  * @method static Validator hexRgbColor()
+ * @method static Validator identityCard(string $countryCode)
+ * @method static Validator image(finfo $fileInfo = null)
+ * @method static Validator imei()
  * @method static Validator in(mixed $haystack, bool $compareIdentical = false)
  * @method static Validator infinite()
  * @method static Validator instance(string $instanceName)
  * @method static Validator intVal()
  * @method static Validator intType()
  * @method static Validator ip(mixed $ipOptions = null)
+ * @method static Validator iterable()
  * @method static Validator json()
  * @method static Validator key(string $reference, Validatable $referenceValidator = null, bool $mandatory = true)
  * @method static Validator keyNested(string $reference, Validatable $referenceValidator = null, bool $mandatory = true)
  * @method static Validator keySet(Key $rule...)
  * @method static Validator keyValue(string $comparedKey, string $ruleName, string $baseKey)
+ * @method static Validator languageCode(string $set)
  * @method static Validator leapDate(string $format)
  * @method static Validator leapYear()
  * @method static Validator length(int $min = null, int $max = null, bool $inclusive = true)
@@ -100,7 +112,9 @@ use Respect\Validation\Rules\Key;
  * @method static Validator oneOf()
  * @method static Validator optional(Validatable $rule)
  * @method static Validator perfectSquare()
+ * @method static Validator pesel()
  * @method static Validator phone()
+ * @method static Validator phpLabel()
  * @method static Validator positive()
  * @method static Validator postalCode(string $countryCode)
  * @method static Validator primeNumber()
@@ -194,7 +208,7 @@ class Validator extends AllOf
      *
      * @return Validatable
      */
-    public static function buildRule($ruleSpec, $arguments = array())
+    public static function buildRule($ruleSpec, $arguments = [])
     {
         try {
             return static::getFactory()->rule($ruleSpec, $arguments);

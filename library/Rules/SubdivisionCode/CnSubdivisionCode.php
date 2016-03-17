@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class CnSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '11', // Beijing
         '12', // Tianjin
         '13', // Hebei
@@ -57,7 +57,7 @@ class CnSubdivisionCode extends AbstractSearcher
         '71', // Taiwan
         '91', // Xianggang
         '92', // Aomen
-    );
+    ];
 
     public $compareIdentical = true;
 }

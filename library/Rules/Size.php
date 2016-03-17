@@ -63,7 +63,7 @@ class Size extends AbstractRule
     private function toBytes($size)
     {
         $value = $size;
-        $units = array('b', 'kb', 'mb', 'gb', 'tb', 'pb', 'eb', 'zb', 'yb');
+        $units = ['b', 'kb', 'mb', 'gb', 'tb', 'pb', 'eb', 'zb', 'yb'];
         foreach ($units as $exponent => $unit) {
             if (!preg_match("/^(\d+(.\d+)?){$unit}$/i", $size, $matches)) {
                 continue;

@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class MvSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'CE', // Medhu
         'MLE', // Male
         'NC', // Medhu Uthuru
@@ -51,7 +51,7 @@ class MvSubdivisionCode extends AbstractSearcher
         '27', // Gaafu Alifu / Huvadhu Atholhu Uthuruburi
         '28', // Gaafu Dhaalu / Huvadhu Atholhu Dhekunuburi
         '29', // Gnaviyani / Fuvammulah
-    );
+    ];
 
     public $compareIdentical = true;
 }

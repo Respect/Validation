@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class BsSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AK', // Acklins Islands
         'BI', // Bimini and Cat Cay
         'BP', // Black Point
@@ -63,7 +63,7 @@ class BsSubdivisionCode extends AbstractSearcher
         'MH', // Marsh Harbour District
         'RS', // Rock Sound
         'SP', // Sandy Point
-    );
+    ];
 
     public $compareIdentical = true;
 }

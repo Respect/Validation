@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class SbSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'CE', // Central
         'CH', // Choiseul
         'CT', // Capital Territory
@@ -33,7 +33,7 @@ class SbSubdivisionCode extends AbstractSearcher
         'RB', // Rennell and Bellona
         'TE', // Temotu
         'WE', // Western
-    );
+    ];
 
     public $compareIdentical = true;
 }

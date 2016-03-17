@@ -4,8 +4,8 @@ not() with recursion should update mode from related rules
 <?php
 require 'vendor/autoload.php';
 
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator;
-use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
 
 try {
     $validator = Validator::not(
@@ -20,9 +20,9 @@ try {
         )
     );
     $validator->check(2);
-} catch (NestedValidationExceptionInterface $exception) {
+} catch (NestedValidationException $exception) {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
 --EXPECTF--
-\-These rules must not pass for 2
+- These rules must not pass for 2

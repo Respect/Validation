@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class NgSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AB', // Abia
         'AD', // Adamawa
         'AK', // Akwa Ibom
@@ -60,7 +60,7 @@ class NgSubdivisionCode extends AbstractSearcher
         'TA', // Taraba
         'YO', // Yobe
         'ZA', // Zamfara
-    );
+    ];
 
     public $compareIdentical = true;
 }

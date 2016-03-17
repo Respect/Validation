@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class BiSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BB', // Bubanza
         'BL', // Bujumbura Rural
         'BM', // Bujumbura Mairie
@@ -40,7 +40,7 @@ class BiSubdivisionCode extends AbstractSearcher
         'NG', // Ngozi
         'RT', // Rutana
         'RY', // Ruyigi
-    );
+    ];
 
     public $compareIdentical = true;
 }

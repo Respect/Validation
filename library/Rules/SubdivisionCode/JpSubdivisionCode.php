@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class JpSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Hokkaidō
         '02', // Aomori
         '03', // Iwate
@@ -70,7 +70,7 @@ class JpSubdivisionCode extends AbstractSearcher
         '45', // Miyazaki
         '46', // Kagosima (Kagoshima)
         '47', // Okinawa
-    );
+    ];
 
     public $compareIdentical = true;
 }

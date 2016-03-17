@@ -6,15 +6,22 @@ All notable changes of the Respect\Validation releases are documented in this fi
 
 ### Added
 
+- Add "alpha-3" and "numeric" formats for "CountryCode" rule (#530)
 - Add support for PHP 7 (#426)
+- Create "BoolVal" rule (#583)
 - Create "Bsn" rule (#450)
 - Create "CallableType" rule (#397)
+- Create "Countable" rule (#566)
+- Create "CurrencyCode" rule (#567)
 - Create "Extension" rule (#360)
 - Create "Factor" rule (#405)
 - Create "Finite" rule (#397)
+- Create "FloatType" rule (#565)
 - Create "Identical" rule (#442)
+- Create "Imei" rule (#590)
 - Create "Infinite" rule (#397)
 - Create "IntType" rule (#451)
+- Create "Iterable" rule (#570)
 - Create "KeyNested" rule (#429)
 - Create "KeySet" rule (#374)
 - Create "KeyValue" rule (#441)
@@ -32,6 +39,7 @@ All notable changes of the Respect\Validation releases are documented in this fi
 ### Changed
 
 - Add country code to the message of "PostalCode" exception rule (#413)
+- Make "ArrayVal" validate only if the input can be used as an array (#574)
 - Make "Between" rule inclusive (#445)
 - Make "Max" rule inclusive (#445)
 - Make "Min" rule inclusive (#445)
@@ -44,9 +52,9 @@ All notable changes of the Respect\Validation releases are documented in this fi
 - On exceptions, do not display parent message then rule has only one child (#407)
 - On exceptions, improve `Object` conversion to string (#399)
 - On exceptions, improve conversion of all values by using JSON (#399)
-- Remove `addOr()` shortcut (#444)
-- Remove `not()` shortcut (#444)
-- Remove identical checking from "Equals" rule (#442)
+- On exceptions, nested messages are displayed in a Markdown list (#588)
+- Rename exception class "AbstractGroupedException" to "GroupedValidationException" (#591)
+- Rename exception class "AbstractNestedException" to "NestedValidationException" (#591)
 - Rename rule "Arr" to "ArrayVal"
 - Rename rule "Bool" to "BoolType" (#426)
 - Rename rule "False" to "FalseVal" (#426)
@@ -60,6 +68,12 @@ All notable changes of the Respect\Validation releases are documented in this fi
 
 ### Removed
 
+- Drop support for PHP 5.3 (#466)
+- Remove `addOr()` shortcut (#444)
+- Remove `NestedValidationExceptionInterface` interface (#591)
+- Remove `not()` shortcut (#444)
+- Remove `ValidationExceptionInterface` interface (#591)
+- Remove identical checking from "Equals" rule (#442)
 - Removed Deprecated Rules (#277)
 - Validation rules do not accept an empty string by default (#422)
 

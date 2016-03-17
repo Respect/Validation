@@ -16,7 +16,7 @@ use Respect\Validation\Exceptions\ComponentException;
 class Type extends AbstractRule
 {
     public $type;
-    public $availableTypes = array(
+    public $availableTypes = [
         'array' => 'array',
         'bool' => 'boolean',
         'boolean' => 'boolean',
@@ -29,7 +29,7 @@ class Type extends AbstractRule
         'object' => 'object',
         'resource' => 'resource',
         'string' => 'string',
-    );
+    ];
 
     public function __construct($type)
     {

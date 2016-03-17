@@ -22,10 +22,10 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class PmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'M', // Miquelon
         'P', // Saint Pierre
-    );
+    ];
 
     public $compareIdentical = true;
 }

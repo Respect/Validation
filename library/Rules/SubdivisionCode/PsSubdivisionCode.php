@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class PsSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'DEB', // Bethlehem [conventional] / Bayt Laḩm [Arabic]
         'DEB', // Deir El Balah [conventional] /Dayr al Balaḩ[Arabic]
         'GZA', // Gaza [conventional] / Ghazzah[Arabic]
@@ -39,7 +39,7 @@ class PsSubdivisionCode extends AbstractSearcher
         'SLT', // Salfit [conventional] / Salfīt [Arabic]
         'TBS', // Tubas [conventional] / Ţūbās [Arabic]
         'TKM', // Tulkarm [conventional] /Ţūlkarm [Arabic]
-    );
+    ];
 
     public $compareIdentical = true;
 }

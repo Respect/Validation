@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class AmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AG', // Aragatsotn
         'AR', // Ararat
         'AV', // Armavir
@@ -34,7 +34,7 @@ class AmSubdivisionCode extends AbstractSearcher
         'SU', // Syunik'
         'TV', // Tavush
         'VD', // Vayots' Dzor
-    );
+    ];
 
     public $compareIdentical = true;
 }

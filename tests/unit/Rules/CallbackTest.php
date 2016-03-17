@@ -65,7 +65,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
 
     public function testCallbackValidatorShouldAcceptArrayCallbackDefinitions()
     {
-        $v = new Callback(array($this, 'thisIsASampleCallbackUsedInsideThisTest'));
+        $v = new Callback([$this, 'thisIsASampleCallbackUsedInsideThisTest']);
         $this->assertTrue($v->assert('test'));
     }
 

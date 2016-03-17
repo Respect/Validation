@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class CvSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'B', // Ilhas de Barlavento
         'S', // Ilhas de Sotavento
         'BR', // Brava
@@ -47,7 +47,7 @@ class CvSubdivisionCode extends AbstractSearcher
         'SV', // Sao Vicente
         'TA', // Tarrafal
         'TS', // Tarrafal de São Nicolau
-    );
+    ];
 
     public $compareIdentical = true;
 }

@@ -52,25 +52,25 @@ class InfiniteTest extends \PHPUnit_Framework_TestCase
 
     public function providerForInfinite()
     {
-        return array(
-            array(INF),
-            array(INF * -1),
-        );
+        return [
+            [INF],
+            [INF * -1],
+        ];
     }
 
     public function providerForNonInfinite()
     {
-        return array(
-            array(' '),
-            array(array()),
-            array(new \stdClass()),
-            array(null),
-            array('123456'),
-            array(-9),
-            array(0),
-            array(16),
-            array(2),
-            array(PHP_INT_MAX),
-        );
+        return [
+            [' '],
+            [[]],
+            [new \stdClass()],
+            [null],
+            ['123456'],
+            [-9],
+            [0],
+            [16],
+            [2],
+            [PHP_INT_MAX],
+        ];
     }
 }

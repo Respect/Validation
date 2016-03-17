@@ -17,7 +17,7 @@ class Cnpj extends AbstractRule
     {
         //Code ported from jsfromhell.com
         $c = preg_replace('/\D/', '', $input);
-        $b = array(6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2);
+        $b = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
 
         if (strlen($c) != 14) {
             return false;

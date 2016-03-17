@@ -22,11 +22,11 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class KmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'A', // Anjouan
         'G', // Grande Comore
         'M', // Moheli
-    );
+    ];
 
     public $compareIdentical = true;
 }

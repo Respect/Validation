@@ -11,8 +11,8 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Validatable;
 
 class Not extends AbstractRule
 {
@@ -21,6 +21,13 @@ class Not extends AbstractRule
     public function __construct(Validatable $rule)
     {
         $this->rule = $rule;
+    }
+
+    public function setName($name)
+    {
+        $this->rule->setName($name);
+
+        return parent::setName($name);
     }
 
     public function validate($input)
@@ -47,7 +54,6 @@ class Not extends AbstractRule
     private function absorbAllOf(AllOf $rule, $input)
     {
         $rules = $rule->getRules();
-        $current = null;
         while (($current = array_shift($rules))) {
             $rule = $current;
             if (!$rule instanceof AllOf) {

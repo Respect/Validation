@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class SySubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'DI', // Dimashq
         'DR', // Dara
         'DY', // Dayr az Zawr
@@ -37,7 +37,7 @@ class SySubdivisionCode extends AbstractSearcher
         'RD', // Rif Dimashq
         'SU', // As Suwayda
         'TA', // Tartus
-    );
+    ];
 
     public $compareIdentical = true;
 }

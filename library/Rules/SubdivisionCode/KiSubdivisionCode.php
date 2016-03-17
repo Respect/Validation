@@ -22,11 +22,11 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class KiSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'G', // Gilbert Islands
         'L', // Line Islands
         'P', // Phoenix Islands
-    );
+    ];
 
     public $compareIdentical = true;
 }

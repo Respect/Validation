@@ -11,8 +11,8 @@
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Validatable;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Validatable;
 
 abstract class AbstractWrapper extends AbstractRule
 {
@@ -40,5 +40,12 @@ abstract class AbstractWrapper extends AbstractRule
     public function validate($input)
     {
         return $this->getValidatable()->validate($input);
+    }
+
+    public function setName($name)
+    {
+        $this->getValidatable()->setName($name);
+
+        return parent::setName($name);
     }
 }

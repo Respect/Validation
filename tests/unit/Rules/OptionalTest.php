@@ -21,31 +21,31 @@ class OptionalTest extends \PHPUnit_Framework_TestCase
 {
     public function providerForOptional()
     {
-        return array(
-            array(null),
-            array(''),
-        );
+        return [
+            [null],
+            [''],
+        ];
     }
 
     public function providerForNotOptional()
     {
-        return array(
-            array(1),
-            array(array()),
-            array(' '),
-            array(0),
-            array('0'),
-            array(0),
-            array('0.0'),
-            array(false),
-            array(array('')),
-            array(array(' ')),
-            array(array(0)),
-            array(array('0')),
-            array(array(false)),
-            array(array(array(''), array(0))),
-            array(new stdClass()),
-        );
+        return [
+            [1],
+            [[]],
+            [' '],
+            [0],
+            ['0'],
+            [0],
+            ['0.0'],
+            [false],
+            [['']],
+            [[' ']],
+            [[0]],
+            [['0']],
+            [[false]],
+            [[[''], [0]]],
+            [new stdClass()],
+        ];
     }
 
     public function testShouldAcceptInstanceOfValidatobleOnConstructor()

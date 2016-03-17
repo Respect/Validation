@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class LiSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Balzers
         '02', // Eschen
         '03', // Gamprin
@@ -34,7 +34,7 @@ class LiSubdivisionCode extends AbstractSearcher
         '09', // Triesen
         '10', // Triesenberg
         '11', // Vaduz
-    );
+    ];
 
     public $compareIdentical = true;
 }
