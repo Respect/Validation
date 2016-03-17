@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class VnSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Lai Chau
         '02', // Lao Cai
         '03', // Ha Giang
@@ -87,7 +87,7 @@ class VnSubdivisionCode extends AbstractSearcher
         '72', // Dak Nong
         '73', // Hau Giang
         '15', // Ha Tay
-    );
+    ];
 
     public $compareIdentical = true;
 }

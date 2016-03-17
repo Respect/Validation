@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class TwSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'CHA', // Changhua
         'CYI', // Chiayi
         'CYQ', // Chiayi
@@ -44,7 +44,7 @@ class TwSubdivisionCode extends AbstractSearcher
         'TXG', // Taichung
         'YUN', // Yunlin
         'TXQ', // Taichung County
-    );
+    ];
 
     public $compareIdentical = true;
 }

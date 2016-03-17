@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class CrSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'A', // Alajuela
         'C', // Cartago
         'G', // Guanacaste
@@ -30,7 +30,7 @@ class CrSubdivisionCode extends AbstractSearcher
         'L', // Limon
         'P', // Puntarenas
         'SJ', // San Jose
-    );
+    ];
 
     public $compareIdentical = true;
 }

@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class TzSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Arusha
         '02', // Dar es Salaam
         '03', // Dodoma
@@ -49,7 +49,7 @@ class TzSubdivisionCode extends AbstractSearcher
         '24', // Tabora
         '25', // Tanga
         '26', // Manyara
-    );
+    ];
 
     public $compareIdentical = true;
 }

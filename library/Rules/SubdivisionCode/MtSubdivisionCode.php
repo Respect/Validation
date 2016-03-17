@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class MtSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Attard
         '02', // Balzan
         '03', // Birgu
@@ -91,7 +91,7 @@ class MtSubdivisionCode extends AbstractSearcher
         '66', // Żebbuġ Malta
         '67', // Zejtun
         '68', // Zurrieq
-    );
+    ];
 
     public $compareIdentical = true;
 }

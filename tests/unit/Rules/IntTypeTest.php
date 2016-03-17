@@ -19,12 +19,12 @@ class IntTypeTest extends \PHPUnit_Framework_TestCase
 {
     public function providerForValidIntType()
     {
-        return array(
-            array(0),
-            array(123456),
-            array(PHP_INT_MAX),
-            array(PHP_INT_MAX * -1),
-        );
+        return [
+            [0],
+            [123456],
+            [PHP_INT_MAX],
+            [PHP_INT_MAX * -1],
+        ];
     }
 
     /**
@@ -39,12 +39,12 @@ class IntTypeTest extends \PHPUnit_Framework_TestCase
 
     public function providerForInvalidIntType()
     {
-        return array(
-            array('1'),
-            array(1.0),
-            array(PHP_INT_MAX + 1),
-            array(true),
-        );
+        return [
+            ['1'],
+            [1.0],
+            [PHP_INT_MAX + 1],
+            [true],
+        ];
     }
 
     /**

@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class PkSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BA', // Balochistan
         'IS', // Islamabad Capital Territory
         'JK', // Azad Kashmir
@@ -31,7 +31,7 @@ class PkSubdivisionCode extends AbstractSearcher
         'PB', // Punjab
         'SD', // Sindh
         'TA', // Federally Administered Tribal Areas
-    );
+    ];
 
     public $compareIdentical = true;
 }

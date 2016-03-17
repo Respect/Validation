@@ -60,55 +60,55 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
 
     public function providerAdditionalChars()
     {
-        return array(
-            array('!@#$%^&*(){}', '!@#$%^&*(){} abc'),
-            array('[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n abc"),
-        );
+        return [
+            ['!@#$%^&*(){}', '!@#$%^&*(){} abc'],
+            ['[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n abc"],
+        ];
     }
 
     public function providerForInvalidParams()
     {
-        return array(
-            array(new \stdClass()),
-            array(array()),
-            array(0x2),
-        );
+        return [
+            [new \stdClass()],
+            [[]],
+            [0x2],
+        ];
     }
 
     public function providerForValidAlpha()
     {
-        return array(
-            array('alganet', ''),
-            array('alganet', 'alganet'),
-            array('0alg-anet0', '0-9'),
-            array('a', ''),
-            array("\t", ''),
-            array("\n", ''),
-            array('foobar', ''),
-            array('rubinho_', '_'),
-            array('google.com', '.'),
-            array('alganet alganet', ''),
-            array("\nabc", ''),
-            array("\tdef", ''),
-            array("\nabc \t", ''),
-        );
+        return [
+            ['alganet', ''],
+            ['alganet', 'alganet'],
+            ['0alg-anet0', '0-9'],
+            ['a', ''],
+            ["\t", ''],
+            ["\n", ''],
+            ['foobar', ''],
+            ['rubinho_', '_'],
+            ['google.com', '.'],
+            ['alganet alganet', ''],
+            ["\nabc", ''],
+            ["\tdef", ''],
+            ["\nabc \t", ''],
+        ];
     }
 
     public function providerForInvalidAlpha()
     {
-        return array(
-            array('', ''),
-            array('@#$', ''),
-            array('_', ''),
-            array('dgç', ''),
-            array('122al', ''),
-            array('122', ''),
-            array(11123, ''),
-            array(1e21, ''),
-            array(0, ''),
-            array(null, ''),
-            array(new \stdClass(), ''),
-            array(array(), ''),
-        );
+        return [
+            ['', ''],
+            ['@#$', ''],
+            ['_', ''],
+            ['dgç', ''],
+            ['122al', ''],
+            ['122', ''],
+            [11123, ''],
+            [1e21, ''],
+            [0, ''],
+            [null, ''],
+            [new \stdClass(), ''],
+            [[], ''],
+        ];
     }
 }

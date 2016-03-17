@@ -22,13 +22,13 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class ToSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Eua
         '02', // Ha'apai
         '03', // Niuas
         '04', // Tongatapu
         '05', // Vava'u
-    );
+    ];
 
     public $compareIdentical = true;
 }

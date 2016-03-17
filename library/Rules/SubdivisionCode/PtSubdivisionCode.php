@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class PtSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Aveiro
         '02', // Beja
         '03', // Braga
@@ -43,7 +43,7 @@ class PtSubdivisionCode extends AbstractSearcher
         '18', // Viseu
         '20', // Acores (Azores)
         '30', // Madeira
-    );
+    ];
 
     public $compareIdentical = true;
 }

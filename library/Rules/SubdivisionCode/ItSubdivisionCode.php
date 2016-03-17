@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class ItSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '21', // Piedmont
         '23', // Regione Autonoma Valle d'Aosta
         '25', // Lombardy
@@ -153,7 +153,7 @@ class ItSubdivisionCode extends AbstractSearcher
         'VS', // Medio Campidano
         'VT', // Viterbo
         'VV', // Vibo Valentia
-    );
+    ];
 
     public $compareIdentical = true;
 }

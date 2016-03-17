@@ -40,35 +40,35 @@ class HexRgbColorTest extends \PHPUnit_Framework_TestCase
 
     public function providerForValidHexRgbColor()
     {
-        return array(
-            array('#000'),
-            array('#00000F'),
-            array('#123'),
-            array('#123456'),
-            array('#FFFFFF'),
-            array('123123'),
-            array('FFFFFF'),
-        );
+        return [
+            ['#000'],
+            ['#00000F'],
+            ['#123'],
+            ['#123456'],
+            ['#FFFFFF'],
+            ['123123'],
+            ['FFFFFF'],
+        ];
     }
 
     public function providerForInvalidHexRgbColor()
     {
-        return array(
-            array('#0'),
-            array('#0000G0'),
-            array('#0FG'),
-            array('#1234'),
-            array('#AAAAAA1'),
-            array('#S'),
-            array('1234'),
-            array('foo'),
-            array(0x39F),
-            array(05),
-            array(1),
-            array(443),
-            array(array()),
-            array(new \stdClass()),
-            array(null),
-        );
+        return [
+            ['#0'],
+            ['#0000G0'],
+            ['#0FG'],
+            ['#1234'],
+            ['#AAAAAA1'],
+            ['#S'],
+            ['1234'],
+            ['foo'],
+            [0x39F],
+            [05],
+            [1],
+            [443],
+            [[]],
+            [new \stdClass()],
+            [null],
+        ];
     }
 }

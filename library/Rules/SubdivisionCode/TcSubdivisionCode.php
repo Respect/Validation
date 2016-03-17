@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class TcSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AC', // Ambergris Cays
         'DC', // Dellis Cay
         'EC', // East Caicos
@@ -37,7 +37,7 @@ class TcSubdivisionCode extends AbstractSearcher
         'SC', // South Caicos
         'SL', // Salt Cay
         'WC', // West Caicos
-    );
+    ];
 
     public $compareIdentical = true;
 }

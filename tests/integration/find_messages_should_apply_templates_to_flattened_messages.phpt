@@ -4,7 +4,7 @@ findMessages() should apply templates to flattened messages
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
 $stringMax256 = v::stringType()->length(5, 256);
@@ -22,7 +22,7 @@ $validator = v::allOf(
     )->setName('Validation Form');
 try {
     $validator->assert(
-        (object) array(
+        (object) [
             'first_name' => 'fiif',
             'last_name' => null,
             'desired_login' => null,
@@ -31,14 +31,14 @@ try {
             'stay_signedin' => null,
             'enable_webhistory' => null,
             'security_question' => null,
-        )
+        ]
     );
-} catch (NestedValidationExceptionInterface $e) {
+} catch (NestedValidationException $e) {
     $messages = $e->findMessages(
-        array(
+        [
             'allOf' => 'Invalid {{name}}',
             'first_name.length' => 'Invalid length for {{name}} {{input}}',
-        )
+        ]
     );
     print_r($messages);
 }

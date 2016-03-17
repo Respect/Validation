@@ -52,22 +52,22 @@ class CallableTypeTest extends \PHPUnit_Framework_TestCase
 
     public function providerForCallable()
     {
-        return array(
-            array(function () {}),
-            array('trim'),
-            array(__METHOD__),
-            array(array($this, __FUNCTION__)),
-        );
+        return [
+            [function () {}],
+            ['trim'],
+            [__METHOD__],
+            [[$this, __FUNCTION__]],
+        ];
     }
 
     public function providerForNonCallable()
     {
-        return array(
-            array(' '),
-            array(INF),
-            array(array()),
-            array(new \stdClass()),
-            array(null),
-        );
+        return [
+            [' '],
+            [INF],
+            [[]],
+            [new \stdClass()],
+            [null],
+        ];
     }
 }

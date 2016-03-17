@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class KnSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'K', // Saint Kitts
         'N', // Nevis
         '01', // Christ Church Nichola Town
@@ -39,7 +39,7 @@ class KnSubdivisionCode extends AbstractSearcher
         '12', // Saint Thomas Lowland
         '13', // Saint Thomas Middle Island
         '15', // Trinity Palmetto Point
-    );
+    ];
 
     public $compareIdentical = true;
 }

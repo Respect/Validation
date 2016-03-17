@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Rules\Locale;
 
-use Respect\Validation\Test\LocaleTestCase;
+use Respect\Validation\Rules\LocaleTestCase;
 
 /**
  * @group  rule

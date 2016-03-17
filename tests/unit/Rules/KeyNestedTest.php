@@ -22,34 +22,45 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
 {
     public function testArrayWithPresentKeysWillReturnTrueForFullPathValidator()
     {
-        $array = array(
-            'bar' => array(
-                'foo'   => array(
+        $array = [
+            'bar' => [
+                'foo' => [
                     'baz' => 'hello world!',
-                ),
-                'foooo' => array(
+                ],
+                'foooo' => [
                     'boooo' => 321,
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
 
         $rule = new KeyNested('bar.foo.baz');
 
         $this->assertTrue($rule->validate($array));
     }
 
+    public function testArrayWithNumericKeysWillReturnTrueForFullPathValidator()
+    {
+        $array = [
+            0 => 'Zero, the hero!',
+        ];
+
+        $rule = new KeyNested(0, new Equals('Zero, the hero!'));
+
+        $this->assertTrue($rule->check($array));
+    }
+
     public function testArrayWithPresentKeysWillReturnTrueForHalfPathValidator()
     {
-        $array = array(
-            'bar' => array(
-                'foo'   => array(
+        $array = [
+            'bar' => [
+                'foo' => [
                     'baz' => 'hello world!',
-                ),
-                'foooo' => array(
+                ],
+                'foooo' => [
                     'boooo' => 321,
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
 
         $rule = new KeyNested('bar.foo');
 
@@ -58,16 +69,16 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
 
     public function testOnjectWithPresentPropertiesWillReturnTrueForDirtyPathValidator()
     {
-        $object = (object) array(
-            'bar' => (object) array(
-                'foo'   => (object) array(
+        $object = (object) [
+            'bar' => (object) [
+                'foo' => (object) [
                     'baz' => 'hello world!',
-                ),
-                'foooo' => (object) array(
+                ],
+                'foooo' => (object) [
                     'boooo' => 321,
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
 
         $rule = new KeyNested('bar.foooo.');
 
@@ -102,7 +113,7 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
     public function testArrayWithEmptyKeyShouldReturnTrue()
     {
         $rule = new KeyNested('emptyKey');
-        $input = array('emptyKey' => '');
+        $input = ['emptyKey' => ''];
 
         $this->assertTrue($rule->validate($input));
     }
@@ -113,11 +124,11 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
     public function testArrayWithAbsentKeyShouldThrowNestedKeyException()
     {
         $validator = new KeyNested('bar.bar');
-        $object = array(
-            'baraaaaaa' => array(
+        $object = [
+            'baraaaaaa' => [
                 'bar' => 'foo',
-            ),
-        );
+            ],
+        ];
         $this->assertTrue($validator->assert($object));
     }
 
@@ -135,13 +146,13 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
     {
         $subValidator = new Length(3, 7);
         $validator = new KeyNested('bar.foo.baz', $subValidator);
-        $object = array(
-            'bar' => array(
-                'foo'   => array(
+        $object = [
+            'bar' => [
+                'foo' => [
                     'baz' => 'example',
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
         $this->assertTrue($validator->assert($object));
     }
 
@@ -155,16 +166,16 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
 
     public function testArrayAccessWithPresentKeysWillReturnTrue()
     {
-        $arrayAccess = new ArrayObject(array(
-            'bar' => array(
-                'foo'   => array(
+        $arrayAccess = new ArrayObject([
+            'bar' => [
+                'foo' => [
                     'baz' => 'hello world!',
-                ),
-                'foooo' => array(
+                ],
+                'foooo' => [
                     'boooo' => 321,
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
 
         $rule = new KeyNested('bar.foo.baz');
 

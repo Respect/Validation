@@ -42,27 +42,27 @@ class EndsWithTest extends \PHPUnit_Framework_TestCase
 
     public function providerForEndsWith()
     {
-        return array(
-            array('foo', array('bar', 'foo')),
-            array('foo', 'barbazFOO'),
-            array('foo', 'barbazfoo'),
-            array('foo', 'foobazfoo'),
-            array('1', array(2, 3, 1)),
-            array('1', array(2, 3, '1'), true),
-        );
+        return [
+            ['foo', ['bar', 'foo']],
+            ['foo', 'barbazFOO'],
+            ['foo', 'barbazfoo'],
+            ['foo', 'foobazfoo'],
+            ['1', [2, 3, 1]],
+            ['1', [2, 3, '1'], true],
+        ];
     }
 
     public function providerForNotEndsWith()
     {
-        return array(
-            array('foo', ''),
-            array('bat', array('bar', 'foo')),
-            array('foo', 'barfaabaz'),
-            array('foo', 'barbazFOO', true),
-            array('foo', 'faabarbaz'),
-            array('foo', 'baabazfaa'),
-            array('foo', 'baafoofaa'),
-            array('1', array(1, '1', 3), true),
-        );
+        return [
+            ['foo', ''],
+            ['bat', ['bar', 'foo']],
+            ['foo', 'barfaabaz'],
+            ['foo', 'barbazFOO', true],
+            ['foo', 'faabarbaz'],
+            ['foo', 'baabazfaa'],
+            ['foo', 'baafoofaa'],
+            ['1', [1, '1', 3], true],
+        ];
     }
 }

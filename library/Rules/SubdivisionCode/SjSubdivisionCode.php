@@ -22,10 +22,10 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class SjSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '21', // Svalbard
         '22', // Jan Mayen
-    );
+    ];
 
     public $compareIdentical = true;
 }

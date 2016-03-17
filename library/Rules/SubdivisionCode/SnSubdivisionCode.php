@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class SnSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'DB', // Diourbel
         'DK', // Dakar
         'FK', // Fatick
@@ -37,7 +37,7 @@ class SnSubdivisionCode extends AbstractSearcher
         'TC', // Tambacounda
         'TH', // Thies
         'ZG', // Ziguinchor
-    );
+    ];
 
     public $compareIdentical = true;
 }

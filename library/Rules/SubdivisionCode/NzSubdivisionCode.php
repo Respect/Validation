@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class NzSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'N', // North Island
         'S', // South Island
         'AUK', // Auckland
@@ -42,7 +42,7 @@ class NzSubdivisionCode extends AbstractSearcher
         'WGN', // Wellington
         'WKO', // Waikato
         'WTC', // West Coast
-    );
+    ];
 
     public $compareIdentical = true;
 }

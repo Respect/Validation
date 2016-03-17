@@ -15,16 +15,16 @@ class NotEmptyException extends ValidationException
 {
     const STANDARD = 0;
     const NAMED = 1;
-    public static $defaultTemplates = array(
-        self::MODE_DEFAULT => array(
+    public static $defaultTemplates = [
+        self::MODE_DEFAULT => [
             self::STANDARD => 'The value must not be empty',
             self::NAMED => '{{name}} must not be empty',
-        ),
-        self::MODE_NEGATIVE => array(
+        ],
+        self::MODE_NEGATIVE => [
             self::STANDARD => 'The value must be empty',
             self::NAMED => '{{name}} must be empty',
-        ),
-    );
+        ],
+    ];
 
     public function chooseTemplate()
     {

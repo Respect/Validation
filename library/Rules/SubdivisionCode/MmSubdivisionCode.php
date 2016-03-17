@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class MmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Sagaing
         '02', // Bago
         '03', // Magway
@@ -37,7 +37,7 @@ class MmSubdivisionCode extends AbstractSearcher
         '15', // Mon State
         '16', // Rakhine State
         '17', // Shan State
-    );
+    ];
 
     public $compareIdentical = true;
 }

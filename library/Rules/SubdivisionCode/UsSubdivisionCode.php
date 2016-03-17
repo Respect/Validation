@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class UsSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AK', // Alaska
         'AL', // Alabama
         'AR', // Arkansas
@@ -80,7 +80,7 @@ class UsSubdivisionCode extends AbstractSearcher
         'WI', // Wisconsin
         'WV', // West Virginia
         'WY', // Wyoming
-    );
+    ];
 
     public $compareIdentical = true;
 }

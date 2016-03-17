@@ -56,14 +56,14 @@ class NoTest extends \PHPUnit_Framework_TestCase
 
     public function validNoProvider()
     {
-        return array(
-            array('N'),
-            array('Nay'),
-            array('Nix'),
-            array('No'),
-            array('Nope'),
-            array('Not'),
-        );
+        return [
+            ['N'],
+            ['Nay'],
+            ['Nix'],
+            ['No'],
+            ['Nope'],
+            ['Not'],
+        ];
     }
 
     /**
@@ -78,12 +78,12 @@ class NoTest extends \PHPUnit_Framework_TestCase
 
     public function invalidNoProvider()
     {
-        return array(
-            array('Donnot'),
-            array('Never'),
-            array('Niet'),
-            array('Noooooooo'),
-            array('Não'),
-        );
+        return [
+            ['Donnot'],
+            ['Never'],
+            ['Niet'],
+            ['Noooooooo'],
+            ['Não'],
+        ];
     }
 }

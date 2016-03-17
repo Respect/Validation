@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class UySubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AR', // Artigas
         'CA', // Canelones
         'CL', // Cerro Largo
@@ -42,7 +42,7 @@ class UySubdivisionCode extends AbstractSearcher
         'SO', // Soriano
         'TA', // Tacuarembó
         'TT', // Treinta y Tres
-    );
+    ];
 
     public $compareIdentical = true;
 }

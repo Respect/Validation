@@ -22,12 +22,12 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class SzSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'HH', // Hhohho
         'LU', // Lubombo
         'MA', // Manzini
         'SH', // Shishelweni
-    );
+    ];
 
     public $compareIdentical = true;
 }

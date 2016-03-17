@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class KgSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'B', // Batken
         'C', // Chu
         'GB', // Bishkek
@@ -32,7 +32,7 @@ class KgSubdivisionCode extends AbstractSearcher
         'O', // Osh
         'T', // Talas
         'Y', // Ysyk-Kol
-    );
+    ];
 
     public $compareIdentical = true;
 }

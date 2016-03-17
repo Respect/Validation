@@ -50,6 +50,6 @@ class LeapDateTest extends \PHPUnit_Framework_TestCase
     }
     public function testInvalidLeapDate_input()
     {
-        $this->assertFalse($this->leapDateValidator->validate(array()));
+        $this->assertFalse($this->leapDateValidator->validate([]));
     }
 }

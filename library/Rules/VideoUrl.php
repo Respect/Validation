@@ -28,13 +28,13 @@ class VideoUrl extends AbstractRule
     /**
      * @var array
      */
-    private $services = array(
+    private $services = [
         'youtube' => '@^https?://(www\.)?(?:youtube\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^\"&?/]{11})@i',
         'vimeo' => '@^https?://(www\.)?(player\.)?(vimeo\.com/)((channels/[A-z]+/)|(groups/[A-z]+/videos/)|(video/))?([0-9]+)@i',
-    );
+    ];
 
     /**
-     * Create a new instance VideoUrl
+     * Create a new instance VideoUrl.
      *
      * @param string $service
      */

@@ -22,7 +22,7 @@ class Optional extends AbstractWrapper
 
     private function isOptional($input)
     {
-        return in_array($input, array(null, ''), true);
+        return in_array($input, [null, ''], true);
     }
 
     public function assert($input)

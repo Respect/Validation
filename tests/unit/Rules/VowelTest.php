@@ -58,47 +58,47 @@ class VowelTest extends \PHPUnit_Framework_TestCase
 
     public function providerAdditionalChars()
     {
-        return array(
-            array('!@#$%^&*(){}', '!@#$%^&*(){} aeo iu'),
-            array('[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n aeo iu"),
-        );
+        return [
+            ['!@#$%^&*(){}', '!@#$%^&*(){} aeo iu'],
+            ['[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n aeo iu"],
+        ];
     }
 
     public function providerForInvalidParams()
     {
-        return array(
-            array(new \stdClass()),
-            array(array()),
-            array(0x2),
-        );
+        return [
+            [new \stdClass()],
+            [[]],
+            [0x2],
+        ];
     }
 
     public function providerForValidVowels()
     {
-        return array(
-            array('a'),
-            array('e'),
-            array('i'),
-            array('o'),
-            array('u'),
-            array('aeiou'),
-            array('aei ou'),
-            array("\na\t"),
-            array('uoiea'),
-        );
+        return [
+            ['a'],
+            ['e'],
+            ['i'],
+            ['o'],
+            ['u'],
+            ['aeiou'],
+            ['aei ou'],
+            ["\na\t"],
+            ['uoiea'],
+        ];
     }
 
     public function providerForInvalidVowels()
     {
-        return array(
-            array(''),
-            array(null),
-            array('16'),
-            array('F'),
-            array('g'),
-            array('Foo'),
-            array(-50),
-            array('basic'),
-        );
+        return [
+            [''],
+            [null],
+            ['16'],
+            ['F'],
+            ['g'],
+            ['Foo'],
+            [-50],
+            ['basic'],
+        ];
     }
 }

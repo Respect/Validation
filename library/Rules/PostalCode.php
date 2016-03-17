@@ -20,7 +20,7 @@ class PostalCode extends Regex
     /**
      * @link http://download.geonames.org/export/dump/countryInfo.txt
      */
-    public $postalCodes = array(
+    public $postalCodes = [
         'AD' => "/^(?:AD)*(\d{3})$/",
         'AM' => "/^(\d{6})$/",
         'AR' => "/^([A-Z]\d{4}[A-Z]{3})$/",
@@ -131,7 +131,7 @@ class PostalCode extends Regex
         'PG' => "/^(\d{3})$/",
         'PH' => "/^(\d{4})$/",
         'PK' => "/^(\d{5})$/",
-        'PL' => "/^(\d{5})$/",
+        'PL' => "/^(\d{2}-\d{3})$/",
         'PM' => '/^(97500)$/',
         'PR' => "/^(\d{9})$/",
         'PT' => "/^(\d{7})$/",
@@ -172,7 +172,7 @@ class PostalCode extends Regex
         'YT' => "/^(\d{5})$/",
         'ZA' => "/^(\d{4})$/",
         'ZM' => "/^(\d{5})$/",
-    );
+    ];
 
     public $countryCode;
 

@@ -15,16 +15,16 @@ class KeyValueException extends ValidationException
 {
     const COMPONENT = 1;
 
-    public static $defaultTemplates = array(
-        self::MODE_DEFAULT => array(
+    public static $defaultTemplates = [
+        self::MODE_DEFAULT => [
             self::STANDARD => 'Key {{name}} must be present',
             self::COMPONENT => '{{baseKey}} must be valid to validate {{comparedKey}}',
-        ),
-        self::MODE_NEGATIVE => array(
+        ],
+        self::MODE_NEGATIVE => [
             self::STANDARD => 'Key {{name}} must not be present',
             self::COMPONENT => '{{baseKey}} must not be valid to validate {{comparedKey}}',
-        ),
-    );
+        ],
+    ];
 
     public function chooseTemplate()
     {

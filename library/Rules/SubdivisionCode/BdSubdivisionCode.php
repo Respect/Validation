@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class BdSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'A', // Barisal
         'B', // Chittagong
         'C', // Dhaka
@@ -94,7 +94,7 @@ class BdSubdivisionCode extends AbstractSearcher
         '62', // Shariatpur zila
         '63', // Tangail zila
         '64', // Thakurgaon zila
-    );
+    ];
 
     public $compareIdentical = true;
 }

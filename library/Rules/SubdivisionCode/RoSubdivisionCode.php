@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class RoSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AB', // Alba
         'AG', // Arges
         'AR', // Arad
@@ -65,7 +65,7 @@ class RoSubdivisionCode extends AbstractSearcher
         'VL', // Vilcea
         'VN', // Vrancea
         'VS', // Vaslui
-    );
+    ];
 
     public $compareIdentical = true;
 }

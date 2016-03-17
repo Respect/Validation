@@ -49,38 +49,38 @@ class CharsetTest extends \PHPUnit_Framework_TestCase
 
     public function providerForInvalidParams()
     {
-        return array(
-            array(new \stdClass()),
-            array(array()),
-            array(null),
-            array('16'),
-            array('aeiou'),
-            array('a'),
-            array('Foo'),
-            array('basic'),
-            array(10),
-        );
+        return [
+            [new \stdClass()],
+            [[]],
+            [null],
+            ['16'],
+            ['aeiou'],
+            ['a'],
+            ['Foo'],
+            ['basic'],
+            [10],
+        ];
     }
 
     public function providerForValidCharset()
     {
-        return array(
-            array('UTF-8', ''),
-            array('ISO-8859-1', mb_convert_encoding('açaí', 'ISO-8859-1')),
-            array(array('UTF-8', 'ASCII'), 'strawberry'),
-            array('ASCII', mb_convert_encoding('strawberry', 'ASCII')),
-            array('UTF-8', '日本国'),
-            array(array('ISO-8859-1', 'EUC-JP'), '日本国'),
-            array('UTF-8', 'açaí'),
-            array('ISO-8859-1', 'açaí'),
-        );
+        return [
+            ['UTF-8', ''],
+            ['ISO-8859-1', mb_convert_encoding('açaí', 'ISO-8859-1')],
+            [['UTF-8', 'ASCII'], 'strawberry'],
+            ['ASCII', mb_convert_encoding('strawberry', 'ASCII')],
+            ['UTF-8', '日本国'],
+            [['ISO-8859-1', 'EUC-JP'], '日本国'],
+            ['UTF-8', 'açaí'],
+            ['ISO-8859-1', 'açaí'],
+        ];
     }
 
     public function providerForInvalidCharset()
     {
-        return array(
-            array('ASCII', '日本国'),
-            array('ASCII', 'açaí'),
-        );
+        return [
+            ['ASCII', '日本国'],
+            ['ASCII', 'açaí'],
+        ];
     }
 }

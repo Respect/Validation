@@ -29,9 +29,9 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
     {
         $o = new AllOf();
         $o->addRules(
-            array(
-                array($x = new IntVal(), new Positive()),
-            )
+            [
+                [$x = new IntVal(), new Positive()],
+            ]
         );
         $this->assertTrue($o->hasRule($x));
         $this->assertTrue($o->hasRule('Positive'));
@@ -40,7 +40,7 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
     public function testAddRulesUsingSpecificationArray()
     {
         $o = new AllOf();
-        $o->addRules(array('Between' => array(1, 2)));
+        $o->addRules(['Between' => [1, 2]]);
         $this->assertTrue($o->hasRule('Between'));
     }
 
@@ -117,12 +117,12 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
                     return true;
                 });
 
-        return array(
-            array($theInvalidOne, $valid1, $valid2),
-            array($valid2, $valid1, $theInvalidOne),
-            array($valid2, $theInvalidOne, $valid1),
-            array($valid1, $valid2, $theInvalidOne),
-            array($valid1, $theInvalidOne, $valid2),
-        );
+        return [
+            [$theInvalidOne, $valid1, $valid2],
+            [$valid2, $valid1, $theInvalidOne],
+            [$valid2, $theInvalidOne, $valid1],
+            [$valid1, $valid2, $theInvalidOne],
+            [$valid1, $theInvalidOne, $valid2],
+        ];
     }
 }

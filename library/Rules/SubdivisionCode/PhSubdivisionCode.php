@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class PhSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '00', // National Capital Region
         '01', // Ilocos
         '02', // Cagayan Valley
@@ -120,7 +120,7 @@ class PhSubdivisionCode extends AbstractSearcher
         'ZAS', // Zamboanga del Sur
         'ZMB', // Zambales
         'ZSI', // Zamboanga Sibugay
-    );
+    ];
 
     public $compareIdentical = true;
 }

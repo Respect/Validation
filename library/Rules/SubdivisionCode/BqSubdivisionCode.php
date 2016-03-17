@@ -22,11 +22,11 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class BqSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BO', // Bonaire
         'SA', // Saba
         'SE', // Sint Eustatius
-    );
+    ];
 
     public $compareIdentical = true;
 }

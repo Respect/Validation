@@ -42,25 +42,25 @@ class LowercaseTest extends \PHPUnit_Framework_TestCase
 
     public function providerForValidLowercase()
     {
-        return array(
-            array(''),
-            array('lowercase'),
-            array('lowercase-with-dashes'),
-            array('lowercase with spaces'),
-            array('lowercase with numbers 123'),
-            array('lowercase with specials characters like ã ç ê'),
-            array('with specials characters like # $ % & * +'),
-            array('τάχιστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός'),
-        );
+        return [
+            [''],
+            ['lowercase'],
+            ['lowercase-with-dashes'],
+            ['lowercase with spaces'],
+            ['lowercase with numbers 123'],
+            ['lowercase with specials characters like ã ç ê'],
+            ['with specials characters like # $ % & * +'],
+            ['τάχιστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός'],
+        ];
     }
 
     public function providerForInvalidLowercase()
     {
-        return array(
-            array('UPPERCASE'),
-            array('CamelCase'),
-            array('First Character Uppercase'),
-            array('With Numbers 1 2 3'),
-        );
+        return [
+            ['UPPERCASE'],
+            ['CamelCase'],
+            ['First Character Uppercase'],
+            ['With Numbers 1 2 3'],
+        ];
     }
 }

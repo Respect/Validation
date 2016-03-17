@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class MhSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'L', // Ralik chain
         'T', // Ratak chain
         'ALK', // Ailuk
@@ -49,7 +49,7 @@ class MhSubdivisionCode extends AbstractSearcher
         'UTI', // Utirik
         'WTH', // Wotho
         'WTJ', // Wotje
-    );
+    ];
 
     public $compareIdentical = true;
 }

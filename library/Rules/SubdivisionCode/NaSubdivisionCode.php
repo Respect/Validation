@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class NaSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'CA', // Caprivi
         'ER', // Erongo
         'HA', // Hardap
@@ -36,7 +36,7 @@ class NaSubdivisionCode extends AbstractSearcher
         'OT', // Oshikoto
         'OW', // Ohangwena
         'OK', // Kavango
-    );
+    ];
 
     public $compareIdentical = true;
 }

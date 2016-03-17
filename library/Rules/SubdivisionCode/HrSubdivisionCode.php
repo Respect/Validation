@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class HrSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '01', // Zagreb county
         '02', // Krapina-Zagorje county
         '03', // Sisak-Moslavina county
@@ -44,7 +44,7 @@ class HrSubdivisionCode extends AbstractSearcher
         '19', // Dubrovnik-Neretva county
         '20', // Medjimurje county
         '21', // Zagreb (city)
-    );
+    ];
 
     public $compareIdentical = true;
 }

@@ -37,42 +37,42 @@ class KeyValueTest extends PHPUnit_Framework_TestCase
     {
         $rule = new KeyValue('foo', 'equals', 'bar');
 
-        $this->assertFalse($rule->validate(array('bar' => 42)));
+        $this->assertFalse($rule->validate(['bar' => 42]));
     }
 
     public function testShouldNotValidateWhenBaseKeyDoesNotExist()
     {
         $rule = new KeyValue('foo', 'equals', 'bar');
 
-        $this->assertFalse($rule->validate(array('foo' => true)));
+        $this->assertFalse($rule->validate(['foo' => true]));
     }
 
     public function testShouldNotValidateRuleIsNotValid()
     {
         $rule = new KeyValue('foo', 'probably_not_a_rule', 'bar');
 
-        $this->assertFalse($rule->validate(array('foo' => true, 'bar' => false)));
+        $this->assertFalse($rule->validate(['foo' => true, 'bar' => false]));
     }
 
     public function testShouldValidateWhenDefinedValuesMatch()
     {
         $rule = new KeyValue('foo', 'equals', 'bar');
 
-        $this->assertTrue($rule->validate(array('foo' => 42, 'bar' => 42)));
+        $this->assertTrue($rule->validate(['foo' => 42, 'bar' => 42]));
     }
 
     public function testShouldValidateWhenDefinedValuesDoesNotMatch()
     {
         $rule = new KeyValue('foo', 'equals', 'bar');
 
-        $this->assertFalse($rule->validate(array('foo' => 43, 'bar' => 42)));
+        $this->assertFalse($rule->validate(['foo' => 43, 'bar' => 42]));
     }
 
     public function testShouldAssertWhenDefinedValuesMatch()
     {
         $rule = new KeyValue('foo', 'equals', 'bar');
 
-        $this->assertTrue($rule->assert(array('foo' => 42, 'bar' => 42)));
+        $this->assertTrue($rule->assert(['foo' => 42, 'bar' => 42]));
     }
 
     /**
@@ -82,7 +82,7 @@ class KeyValueTest extends PHPUnit_Framework_TestCase
     public function testShouldAssertWhenDefinedValuesDoesNotMatch()
     {
         $rule = new KeyValue('foo', 'equals', 'bar');
-        $rule->assert(array('foo' => 43, 'bar' => 42));
+        $rule->assert(['foo' => 43, 'bar' => 42]);
     }
 
     /**
@@ -92,14 +92,14 @@ class KeyValueTest extends PHPUnit_Framework_TestCase
     public function testShouldNotAssertWhenRuleIsNotValid()
     {
         $rule = new KeyValue('foo', 'probably_not_a_rule', 'bar');
-        $rule->assert(array('foo' => 43, 'bar' => 42));
+        $rule->assert(['foo' => 43, 'bar' => 42]);
     }
 
     public function testShouldCheckWhenDefinedValuesMatch()
     {
         $rule = new KeyValue('foo', 'equals', 'bar');
 
-        $this->assertTrue($rule->check(array('foo' => 42, 'bar' => 42)));
+        $this->assertTrue($rule->check(['foo' => 42, 'bar' => 42]));
     }
 
     /**
@@ -109,6 +109,6 @@ class KeyValueTest extends PHPUnit_Framework_TestCase
     public function testShouldCheckWhenDefinedValuesDoesNotMatch()
     {
         $rule = new KeyValue('foo', 'equals', 'bar');
-        $rule->check(array('foo' => 43, 'bar' => 42));
+        $rule->check(['foo' => 43, 'bar' => 42]);
     }
 }

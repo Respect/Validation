@@ -4,15 +4,15 @@ setTemplate() with multiple validators should use template as full message
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationExceptionInterface;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator;
 
 try {
     Validator::callback('is_string')->between(1, 2)->setTemplate('{{name}} is not tasty')->assert('something');
-} catch (NestedValidationExceptionInterface $e) {
+} catch (NestedValidationException $e) {
     echo $e->getFullMessage();
 }
 ?>
 --EXPECTF--
-\-"something" is not tasty
-  \-"something" must be greater than or equals 1
+- "something" is not tasty
+  - "something" must be greater than or equal to 1

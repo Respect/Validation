@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class IsSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '1', // Höfuðborgarsvæði
         '2', // Suðurnes
         '3', // Vesturland
@@ -31,7 +31,7 @@ class IsSubdivisionCode extends AbstractSearcher
         '6', // Norðurland Eystra
         '7', // Austurland
         '8', // Suðurland
-    );
+    ];
 
     public $compareIdentical = true;
 }

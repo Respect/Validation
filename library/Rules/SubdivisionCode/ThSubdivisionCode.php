@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class ThSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '10', // Bangkok
         '11', // Samut Prakan
         '12', // Nonthaburi
@@ -100,7 +100,7 @@ class ThSubdivisionCode extends AbstractSearcher
         '94', // Pattani
         '95', // Yala
         '96', // Narathiwat
-    );
+    ];
 
     public $compareIdentical = true;
 }

@@ -22,14 +22,14 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class KwSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'AH', // Al Ahmadi
         'FA', // Al Farwaniyah
         'HA', // Hawalli
         'JA', // Al Jahra
         'KU', // Al Asimah
         'MU', // Mubārak al Kabīr
-    );
+    ];
 
     public $compareIdentical = true;
 }

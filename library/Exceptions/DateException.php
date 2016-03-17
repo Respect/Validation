@@ -15,18 +15,18 @@ class DateException extends ValidationException
 {
     const FORMAT = 1;
 
-    public static $defaultTemplates = array(
-        self::MODE_DEFAULT => array(
+    public static $defaultTemplates = [
+        self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a valid date',
             self::FORMAT => '{{name}} must be a valid date. Sample format: {{format}}',
-        ),
-        self::MODE_NEGATIVE => array(
+        ],
+        self::MODE_NEGATIVE => [
             self::STANDARD => '{{name}} must not be a valid date',
             self::FORMAT => '{{name}} must not be a valid date in the format {{format}}',
-        ),
-    );
+        ],
+    ];
 
-    public function configure($name, array $params = array())
+    public function configure($name, array $params = [])
     {
         $params['format'] = date(
             $params['format'],

@@ -56,13 +56,13 @@ class YesTest extends \PHPUnit_Framework_TestCase
 
     public function validYesProvider()
     {
-        return array(
-            array('Y'),
-            array('Yea'),
-            array('Yeah'),
-            array('Yep'),
-            array('Yes'),
-        );
+        return [
+            ['Y'],
+            ['Yea'],
+            ['Yeah'],
+            ['Yep'],
+            ['Yes'],
+        ];
     }
 
     /**
@@ -77,12 +77,12 @@ class YesTest extends \PHPUnit_Framework_TestCase
 
     public function invalidYesProvider()
     {
-        return array(
-            array('Si'),
-            array('Sim'),
-            array('Yoo'),
-            array('Young'),
-            array('Yy'),
-        );
+        return [
+            ['Si'],
+            ['Sim'],
+            ['Yoo'],
+            ['Young'],
+            ['Yy'],
+        ];
     }
 }

@@ -5,8 +5,8 @@
 Validates a bank account for a given bank.
 
 ```php
-v::bankAccount("de", "70169464")->validate("1112"); //true
-v::bankAccount("de", "70169464")->validate("1234"); //false
+v::bankAccount("de", "70169464")->validate("1112"); // true
+v::bankAccount("de", "70169464")->validate("1234"); // false
 ```
 
 These country codes are supported:

@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class LvSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         '001', // Aglonas Novads
         '002', // Aizkraukles Novads
         '003', // Aizputes Novads
@@ -142,7 +142,7 @@ class LvSubdivisionCode extends AbstractSearcher
         'RIX', // Riga
         'VEN', // Ventspils
         'VMR', // Valmiera
-    );
+    ];
 
     public $compareIdentical = true;
 }

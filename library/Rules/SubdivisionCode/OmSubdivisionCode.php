@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class OmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BA', // Al Batinah South
         'BU', // Al Buraymī
         'DA', // Ad Dakhiliyah
@@ -32,7 +32,7 @@ class OmSubdivisionCode extends AbstractSearcher
         'WU', // Al Wusta
         'ZA', // Az Zahirah
         'ZU', // Zufar
-    );
+    ];
 
     public $compareIdentical = true;
 }

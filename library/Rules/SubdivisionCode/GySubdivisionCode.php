@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class GySubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'BA', // Barima-Waini
         'CU', // Cuyuni-Mazaruni
         'DE', // Demerara-Mahaica
@@ -33,7 +33,7 @@ class GySubdivisionCode extends AbstractSearcher
         'PT', // Potaro-Siparuni
         'UD', // Upper Demerara-Berbice
         'UT', // Upper Takutu-Upper Essequibo
-    );
+    ];
 
     public $compareIdentical = true;
 }

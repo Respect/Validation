@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class IdSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'IJ', // Papua
         'JW', // Java
         'KA', // Kalimantan
@@ -64,7 +64,7 @@ class IdSubdivisionCode extends AbstractSearcher
         'ST', // Sulawesi Tengah
         'SU', // Sumatera Utara
         'YO', // Yogyakarta
-    );
+    ];
 
     public $compareIdentical = true;
 }

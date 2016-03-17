@@ -119,29 +119,29 @@ class EmailTest extends \PHPUnit_Framework_TestCase
 
     public function providerForValidEmail()
     {
-        return array(
-            array('test@test.com'),
-            array('mail+mail@gmail.com'),
-            array('mail.email@e.test.com'),
-            array('a@a.a'),
-        );
+        return [
+            ['test@test.com'],
+            ['mail+mail@gmail.com'],
+            ['mail.email@e.test.com'],
+            ['a@a.a'],
+        ];
     }
 
     public function providerForInvalidEmail()
     {
-        return array(
-            array(''),
-            array('test@test'),
-            array('test'),
-            array('test@тест.рф'),
-            array('@test.com'),
-            array('mail@test@test.com'),
-            array('test.test@'),
-            array('test.@test.com'),
-            array('test@.test.com'),
-            array('test@test..com'),
-            array('test@test.com.'),
-            array('.test@test.com'),
-        );
+        return [
+            [''],
+            ['test@test'],
+            ['test'],
+            ['test@тест.рф'],
+            ['@test.com'],
+            ['mail@test@test.com'],
+            ['test.test@'],
+            ['test.@test.com'],
+            ['test@.test.com'],
+            ['test@test..com'],
+            ['test@test.com.'],
+            ['.test@test.com'],
+        ];
     }
 }

@@ -47,21 +47,21 @@ class ObjectTypeTest extends \PHPUnit_Framework_TestCase
 
     public function providerForObject()
     {
-        return array(
-            array(new \stdClass()),
-            array(new \ArrayObject()),
-        );
+        return [
+            [new \stdClass()],
+            [new \ArrayObject()],
+        ];
     }
 
     public function providerForNotObject()
     {
-        return array(
-            array(''),
-            array(null),
-            array(121),
-            array(array()),
-            array('Foo'),
-            array(false),
-        );
+        return [
+            [''],
+            [null],
+            [121],
+            [[]],
+            ['Foo'],
+            [false],
+        ];
     }
 }

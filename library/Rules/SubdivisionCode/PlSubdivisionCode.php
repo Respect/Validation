@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class PlSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'DS', // Dolnoslaskie
         'KP', // Kujawsko-Pomorskie
         'LB', // Lubuskie
@@ -39,7 +39,7 @@ class PlSubdivisionCode extends AbstractSearcher
         'WN', // Warminsko-Mazurskie
         'WP', // Wielkopolskie
         'ZP', // Zachodniopomorskie
-    );
+    ];
 
     public $compareIdentical = true;
 }

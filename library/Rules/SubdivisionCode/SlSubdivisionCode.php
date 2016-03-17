@@ -22,12 +22,12 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class SlSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = array(
+    public $haystack = [
         'E', // Eastern
         'N', // Northern
         'S', // Southern
         'W', // Western
-    );
+    ];
 
     public $compareIdentical = true;
 }
