@@ -11,21 +11,9 @@
 
 namespace Respect\Validation\Rules;
 
-class VisaCreditCard extends CreditCard
+class VisaCreditCard extends AbstractCreditCardBrand
 {
 
-    public function validate($input)
-    {
-        $input = preg_replace('([^0-9])', '', $input);
-        
-        return parent::verifyMod10($input) && $this->verifyIfCardIsVisa($input);
-    }
-
-    private function verifyIfCardIsVisa($input)
-    {
-        $pattern = "/^4[0-9]{12,15}$/";//Visa
-
-        return (preg_match($pattern, $input) > 0);
-    }
+    protected $pattern = '/^4[0-9]{12,15}$/';//Visa
 
 }
