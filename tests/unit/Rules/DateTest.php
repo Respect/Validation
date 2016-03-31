@@ -122,6 +122,11 @@ class DateTest extends \PHPUnit_Framework_TestCase
     public function providerForDateTimeTimezoneStrings()
     {
         return [
+                ['UTC', 'Ym', '202302'],
+                ['UTC', 'Ym', '202304'],
+                ['UTC', 'Ym', '202306'],
+                ['UTC', 'Ym', '202309'],
+                ['UTC', 'Ym', '202311'],
                 ['UTC', 'c', '2005-12-30T01:02:03+01:00'],
                 ['UTC', 'c', '2004-02-12T15:19:21+00:00'],
                 ['UTC', 'r', 'Thu, 29 Dec 2005 01:02:03 +0000'],
