@@ -168,6 +168,10 @@
   * [BankAccount](BankAccount.md)
   * [Bic](Bic.md)
 
+## Credit Card Brand
+
+  * [VisaCreditCard](VisaCrediCard.md)
+
 ## Other
 
   * [Bsn](Bsn.md)
