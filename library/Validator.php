@@ -48,7 +48,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator countryCode()
  * @method static Validator currencyCode()
  * @method static Validator cpf()
- * @method static Validator creditCard()
+ * @method static Validator creditCard(string $brand = null)
  * @method static Validator date(string $format = null)
  * @method static Validator digit(string $additionalChars = null)
  * @method static Validator directory()
