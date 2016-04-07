@@ -15,6 +15,7 @@ use finfo;
 use ReflectionClass;
 use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Rules\AllOf;
 use Respect\Validation\Rules\Key;
 
@@ -182,6 +183,19 @@ class Validator extends AllOf
             self::getFactory()->appendRulePrefix($rulePrefix);
         } else {
             self::getFactory()->prependRulePrefix($rulePrefix);
+        }
+    }
+
+    public function check($input)
+    {
+        try {
+            return parent::check($input);
+        } catch (ValidationException $exception) {
+            if (count($this->getRules()) == 1 && $this->template) {
+                $exception->setTemplate($this->template);
+            }
+
+            throw $exception;
         }
     }
 
