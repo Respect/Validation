@@ -2,6 +2,27 @@
 
 All notable changes of the Respect\Validation releases are documented in this file.
 
+## 1.1.0 - 2016-04-24
+
+### Added
+
+- Create "Fibonacci" rule (#637)
+- Create "IdentityCard" rule (#632)
+- Create "Image" rule (#621)
+- Create "LanguageCode" rule (#597)
+- Create "Pesel" rule (#616)
+- Create "PhpLabel" rule (#652)
+
+### Changed
+
+- Allow the define brands for credit card validation (#661)
+- Define names for the child of Not rule (#641)
+- Ensure namespace separator on appended prefixes (#666)
+- Length gets length of integers (#643)
+- Set template for the only rule in the chain (#663)
+- Throw an exception when age is not an integer (#667)
+- Use "{less/greater} than or equal to" phrasing (#604)
+
 ## 1.0.0 - 2015-10-24
 
 ### Added
