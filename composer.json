@@ -12,7 +12,7 @@
         }
     ],
     "require": {
-        "php": ">=5.4"
+        "php": ">=7.0"
     },
     "require-dev": {
         "egulias/email-validator": "~1.2",

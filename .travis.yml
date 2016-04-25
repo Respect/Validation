@@ -5,11 +5,7 @@ language:
   php
 
 php:
-  - 5.4
-  - 5.5
-  - 5.6
   - 7
-  - hhvm
 
 before_script:
   - composer self-update
@@ -19,8 +15,8 @@ script:
   - vendor/bin/phpunit --configuration phpunit.xml.dist --colors --coverage-clover=coverage.clover
 
 after_script:
-  - test "5.6" == "${TRAVIS_PHP_VERSION}" && wget https://scrutinizer-ci.com/ocular.phar
-  - test -f ocular.phar && php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
 
 notifications:
   irc:
