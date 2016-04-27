@@ -87,6 +87,10 @@ class KeySet extends AllOf
      */
     private function hasValidStructure($input)
     {
+        if (!is_array($input)) {
+            return false;
+        }
+
         foreach ($this->getRules() as $keyRule) {
             if (!array_key_exists($keyRule->reference, $input) && $keyRule->mandatory) {
                 return false;
