@@ -93,13 +93,22 @@ class DateTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->dateValidator->assert('2009-09-09'));
     }
 
-    public function testDateTimeExceptionalFormatsThatShouldBeValid()
+    /**
+     * @dataProvider provideFormatAndValidInput
+     */
+    public function testDateTimeExceptionalFormatsThatShouldBeValid($format, $validInput)
     {
-        $this->dateValidator = new Date('c');
-        $this->assertTrue($this->dateValidator->assert('2004-02-12T15:19:21+00:00'));
+        $this->dateValidator = new Date($format);
+        $this->assertTrue($this->dateValidator->assert($validInput));
+    }
 
-        $this->dateValidator = new Date('r');
-        $this->assertTrue($this->dateValidator->assert('Thu, 29 Dec 2005 01:02:03 +0000'));
+    public function provideFormatAndValidInput()
+    {
+        return array(
+            array('c', '2004-02-12T15:19:21+00:00'),
+            array('r', 'Thu, 29 Dec 2005 01:02:03 +0000'),
+            array('m', '02')
+        );
     }
 
     /**
