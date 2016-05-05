@@ -172,4 +172,25 @@ class KeySetTest extends PHPUnit_Framework_TestCase
         $keySet = new KeySet($key1, $key2);
         $keySet->assert($input);
     }
+
+    /**
+     * @expectedException Respect\Validation\Exceptions\KeySetException
+     * @expectedExceptionMessage Must have keys { "name" }
+     * @dataProvider providerForInvalidArguments
+     */
+    public function testShouldThrowExceptionInCaseArgumentIsAnythingOtherThanArray($input)
+    {
+        $keySet = new KeySet(new Key('name'));
+        $keySet->assert($input);
+    }
+
+    public function providerForInvalidArguments()
+    {
+        return [
+            [''],
+            [null],
+            [0],
+            [new \stdClass()]
+        ];
+    }
 }
