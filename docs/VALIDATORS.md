@@ -43,6 +43,7 @@
   * [Age](Age.md)
   * [Between](Between.md)
   * [Equals](Equals.md)
+  * [Identical](Identical.md)
   * [Max](Max.md)
   * [Min](Min.md)
 
@@ -241,6 +242,7 @@
   * [FloatType](FloatType.md)
   * [Graph](Graph.md)
   * [HexRgbColor](HexRgbColor.md)
+  * [Identical](Identical.md)
   * [Imei](Imei.md)
   * [In](In.md)
   * [Infinite](Infinite.md)
