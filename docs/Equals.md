@@ -1,6 +1,6 @@
 # Equals
 
-- `v::equals(mixed $value)`
+- `equals(mixed $compareTo)`
 
 Validates if the input is equal to some value.
 

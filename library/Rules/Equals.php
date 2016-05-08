@@ -11,17 +11,39 @@
 
 namespace Respect\Validation\Rules;
 
-class Equals extends AbstractRule
-{
-    public $compareTo;
+use Respect\Validation\Result;
+use Respect\Validation\Rule;
 
+/**
+ * Validates if the input is equal to some value.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
+ */
+final class Equals implements Rule
+{
+    /**
+     * @var mixed
+     */
+    private $compareTo;
+
+    /**
+     * Initializes the rule.
+     *
+     * @param mixed $compareTo
+     */
     public function __construct($compareTo)
     {
         $this->compareTo = $compareTo;
     }
 
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): Result
     {
-        return $input == $this->compareTo;
+        return new Result(($input == $this->compareTo), $input, $this, ['compareTo' => $this->compareTo]);
     }
 }
