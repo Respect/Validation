@@ -21,7 +21,12 @@ use Respect\Validation\Test\RuleTestCase;
  */
 class UniqueTest extends RuleTestCase
 {
-    public function providerForValidInput()
+    protected function setUp(): void
+    {
+        $this->markTestIncomplete(Unique::class.' needs to be refactored');
+    }
+
+    public function providerForValidInput(): array
     {
         $rule = new Unique();
 
@@ -36,7 +41,7 @@ class UniqueTest extends RuleTestCase
         ];
     }
 
-    public function providerForInvalidInput()
+    public function providerForInvalidInput(): array
     {
         $rule = new Unique();
 

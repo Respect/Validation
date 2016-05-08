@@ -22,10 +22,17 @@ use PHPUnit\Framework\TestCase;
  */
 class KeyValueTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        $this->markTestSkipped('KeyValue needs to be refactored');
+
+        StaticTestSpy::reset();
+    }
+
     public function testShouldDefineValuesOnConstructor(): void
     {
         $comparedKey = 'foo';
-        $ruleName = 'equals';
+        $ruleName = 'staticTestSpy';
         $baseKey = 'bar';
 
         $rule = new KeyValue($comparedKey, $ruleName, $baseKey);
@@ -37,14 +44,14 @@ class KeyValueTest extends TestCase
 
     public function testShouldNotValidateWhenComparedKeyDoesNotExist(): void
     {
-        $rule = new KeyValue('foo', 'equals', 'bar');
+        $rule = new KeyValue('foo', 'staticTestSpy', 'bar');
 
         self::assertFalse($rule->validate(['bar' => 42]));
     }
 
     public function testShouldNotValidateWhenBaseKeyDoesNotExist(): void
     {
-        $rule = new KeyValue('foo', 'equals', 'bar');
+        $rule = new KeyValue('foo', 'staticTestSpy', 'bar');
 
         self::assertFalse($rule->validate(['foo' => true]));
     }
@@ -58,32 +65,36 @@ class KeyValueTest extends TestCase
 
     public function testShouldValidateWhenDefinedValuesMatch(): void
     {
-        $rule = new KeyValue('foo', 'equals', 'bar');
+        $rule = new KeyValue('foo', 'staticTestSpy', 'bar');
 
         self::assertTrue($rule->validate(['foo' => 42, 'bar' => 42]));
     }
 
     public function testShouldValidateWhenDefinedValuesDoesNotMatch(): void
     {
-        $rule = new KeyValue('foo', 'equals', 'bar');
+        StaticTestSpy::$result = false;
+
+        $rule = new KeyValue('foo', 'staticTestSpy', 'bar');
 
         self::assertFalse($rule->validate(['foo' => 43, 'bar' => 42]));
     }
 
     public function testShouldAssertWhenDefinedValuesMatch(): void
     {
-        $rule = new KeyValue('foo', 'equals', 'bar');
+        $rule = new KeyValue('foo', 'staticTestSpy', 'bar');
 
         self::assertTrue($rule->assert(['foo' => 42, 'bar' => 42]));
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\AllOfException
-     * @expectedExceptionMessage All of the required rules must pass for foo
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Exception from `StaticTestSpy::assert()
      */
     public function testShouldAssertWhenDefinedValuesDoesNotMatch(): void
     {
-        $rule = new KeyValue('foo', 'equals', 'bar');
+        StaticTestSpy::$result = false;
+
+        $rule = new KeyValue('foo', 'staticTestSpy', 'bar');
         $rule->assert(['foo' => 43, 'bar' => 42]);
     }
 
@@ -99,7 +110,7 @@ class KeyValueTest extends TestCase
 
     public function testShouldCheckWhenDefinedValuesMatch(): void
     {
-        $rule = new KeyValue('foo', 'equals', 'bar');
+        $rule = new KeyValue('foo', 'staticTestSpy', 'bar');
 
         self::assertTrue($rule->check(['foo' => 42, 'bar' => 42]));
     }
@@ -107,10 +118,14 @@ class KeyValueTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\EqualsException
      * @expectedExceptionMessage foo must equal "bar"
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Exception from `StaticTestSpy::check()` method
      */
     public function testShouldCheckWhenDefinedValuesDoesNotMatch(): void
     {
-        $rule = new KeyValue('foo', 'equals', 'bar');
+        StaticTestSpy::$result = false;
+
+        $rule = new KeyValue('foo', 'staticTestSpy', 'bar');
         $rule->check(['foo' => 43, 'bar' => 42]);
     }
 }

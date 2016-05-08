@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use ArrayObject;
 use PHPUnit\Framework\TestCase;
+use Respect\Validation\Validatable;
 
 /**
  * @group  rule
@@ -47,7 +48,12 @@ class KeyNestedTest extends TestCase
             0 => 'Zero, the hero!',
         ];
 
-        $rule = new KeyNested(0, new Equals('Zero, the hero!'));
+        $childRule = $this->createMock(Validatable::class);
+        $childRule
+            ->method('check')
+            ->willReturn(true);
+
+        $rule = new KeyNested(0, $childRule);
 
         self::assertTrue($rule->check($array));
     }

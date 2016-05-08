@@ -21,7 +21,12 @@ use Respect\Validation\Test\RuleTestCase;
  */
 class PlIdentityCardTest extends RuleTestCase
 {
-    public function providerForValidInput()
+    protected function setUp(): void
+    {
+        $this->markTestIncomplete(PlIdentityCard::class.' needs to be refactored');
+    }
+
+    public function providerForValidInput(): array
     {
         $rule = new PlIdentityCard();
 
@@ -32,7 +37,7 @@ class PlIdentityCardTest extends RuleTestCase
         ];
     }
 
-    public function providerForInvalidInput()
+    public function providerForInvalidInput(): array
     {
         $rule = new PlIdentityCard();
 

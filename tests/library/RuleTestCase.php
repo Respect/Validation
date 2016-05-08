@@ -15,29 +15,42 @@ namespace Respect\Validation\Test;
 
 use PHPUnit\Framework\TestCase;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Result;
+use Respect\Validation\Rule;
 use Respect\Validation\Validatable;
 
 abstract class RuleTestCase extends TestCase
 {
     /**
-     * It is to provide constructor arguments and.
-     *
      * @return array
      */
-    abstract public function providerForValidInput();
+    abstract public function providerForValidInput(): array;
 
     /**
      * @return array
      */
-    abstract public function providerForInvalidInput();
+    abstract public function providerForInvalidInput(): array;
+
+    /**
+     * @return array
+     */
+    public function providerForAllInput(): array
+    {
+        return array_merge(
+            $this->providerForValidInput(),
+            $this->providerForInvalidInput()
+        );
+    }
 
     /**
      * @param bool             $expectedResult
      * @param string[optional] $mockClassName
      *
+     * @deprecated
+     *
      * @return Validatable
      */
-    public function getRuleMock($expectedResult, $mockClassName = '')
+    public function getRuleMock($expectedResult, $mockClassName = ''): Validatable
     {
         $ruleMocked = $this->getMockBuilder(Validatable::class)
             ->disableOriginalConstructor()
@@ -78,24 +91,118 @@ abstract class RuleTestCase extends TestCase
     }
 
     /**
-     * @dataProvider providerForValidInput
+     * @api
      *
-     * @param Validatable $validator
-     * @param mixed       $input
+     * @param mixed $input
+     * @param bool  $isValid
+     *
+     * @return Rule
      */
-    public function testShouldValidateValidInput(Validatable $validator, $input): void
+    public function createRuleMock($input, bool $isValid): Rule
     {
-        self::assertTrue($validator->validate($input));
+        $ruleMock = $this->createMock(Rule::class);
+
+        $result = new Result($isValid, $input, $ruleMock);
+
+        $ruleMock
+            ->method('apply')
+            ->with($input)
+            ->willReturn($result);
+
+        return $ruleMock;
     }
 
     /**
+     * @api
+     *
+     * @param mixed $input
+     * @param bool  $isValid
+     * @param bool  $isValid2
+     *
+     * @return Rule[]
+     */
+    public function createManyRuleMock($input, bool ...$isValid)
+    {
+        $rules = [];
+        foreach ($isValid as $isValidRule) {
+            $rules[] = $this->createRuleMock($input, $isValidRule);
+        }
+
+        return $rules;
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider providerForValidInput
+     *
+     * @param Rule  $rule
+     * @param mixed $input
+     */
+    public function shouldValidateValidInput(Rule $rule, $input): void
+    {
+        $result = $rule->apply($input);
+
+        self::assertTrue($result->isValid());
+    }
+
+    /**
+     * @test
+     *
      * @dataProvider providerForInvalidInput
      *
-     * @param Validatable $validator
-     * @param mixed       $input
+     * @param Rule  $rule
+     * @param mixed $input
      */
-    public function testShouldValidateInvalidInput(Validatable $validator, $input): void
+    public function shouldValidateInvalidInput(Rule $rule, $input): void
     {
-        self::assertFalse($validator->validate($input));
+        $result = $rule->apply($input);
+
+        self::assertFalse($result->isValid());
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider providerForAllInput
+     *
+     * @param Rule  $rule
+     * @param mixed $input
+     */
+    public function shouldReturnTheSameInputOnResult(Rule $rule, $input): void
+    {
+        $result = $rule->apply($input);
+
+        self::assertSame($input, $result->getInput());
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider providerForAllInput
+     *
+     * @param Rule  $rule
+     * @param mixed $input
+     */
+    public function shouldReturnTheSameRuleOnResult(Rule $rule, $input): void
+    {
+        $result = $rule->apply($input);
+
+        self::assertSame($rule, $result->getRule());
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider providerForAllInput
+     *
+     * @param Rule  $rule
+     * @param mixed $input
+     */
+    public function shouldReturnANonInvertedResult(Rule $rule, $input): void
+    {
+        $result = $rule->apply($input);
+
+        self::assertFalse($result->isInverted());
     }
 }

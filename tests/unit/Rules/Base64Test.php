@@ -21,7 +21,12 @@ use Respect\Validation\Test\RuleTestCase;
  */
 class Base64Test extends RuleTestCase
 {
-    public function providerForValidInput()
+    protected function setUp(): void
+    {
+        $this->markTestIncomplete(Base64::class.' needs to be refactored');
+    }
+
+    public function providerForValidInput(): array
     {
         $rule = new Base64();
 
@@ -50,7 +55,7 @@ class Base64Test extends RuleTestCase
         ];
     }
 
-    public function providerForInvalidInput()
+    public function providerForInvalidInput(): array
     {
         $rule = new Base64();
 

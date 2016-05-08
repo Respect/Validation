@@ -26,10 +26,15 @@ use stdClass;
  */
 class PisTest extends RuleTestCase
 {
+    protected function setUp(): void
+    {
+        $this->markTestIncomplete(Pis::class.' needs to be refactored');
+    }
+
     /**
      * {@inheritdoc}
      */
-    public function providerForValidInput()
+    public function providerForValidInput(): array
     {
         $rule = new Pis();
 
@@ -51,7 +56,7 @@ class PisTest extends RuleTestCase
     /**
      * {@inheritdoc}
      */
-    public function providerForInvalidInput()
+    public function providerForInvalidInput(): array
     {
         $rule = new Pis();
 
