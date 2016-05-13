@@ -16,24 +16,24 @@ class Cnh extends AbstractRule
     public function validate($input)
     {
         // Canonicalize input
-        $cnh = sprintf('%011s', preg_replace('{\D}', '', $cnh));
+        $input = sprintf('%011s', preg_replace('{\D}', '', $input));
 
         // Validate length and invalid numbers
-        if ((strlen($cnh) != 11) || (intval($cnh) == 0)) {
+        if ((strlen($input) != 11) || (intval($input) == 0)) {
             return false;
         }
 
         // Validate check digits using a modulus 11 algorithm
         for ($c = $s1 = $s2 = 0, $p = 9; $c < 9; $c++, $p--) {
-            $s1 += intval($cnh[$c]) * $p;
-            $s2 += intval($cnh[$c]) * (10 - $p);
+            $s1 += intval($input[$c]) * $p;
+            $s2 += intval($input[$c]) * (10 - $p);
         }
 
-        if ($cnh[9] != (($dv1 = $s1 % 11) > 9) ? 0 : $dv1) {
+        if ($input[9] != (($dv1 = $s1 % 11) > 9) ? 0 : $dv1) {
             return false;
         }
 
-        if ($cnh[10] != (((($dv2 = ($s2 % 11) - (($dv1 > 9) ? 2 : 0)) < 0)
+        if ($input[10] != (((($dv2 = ($s2 % 11) - (($dv1 > 9) ? 2 : 0)) < 0)
                 ? $dv2 + 11 : $dv2) > 9) ? 0 : $dv2) {
             return false;
         }
