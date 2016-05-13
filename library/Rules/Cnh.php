@@ -15,28 +15,33 @@ class Cnh extends AbstractRule
 {
     public function validate($input)
     {
-        $ret = false;
-
-        if ((strlen($input = preg_replace('/[^\d]/', '', $input)) == 11)
-            && (str_repeat($input[1], 11) != $input)) {
-            $dsc = 0;
-            for ($i = 0, $j = 9, $v = 0; $i < 9; ++$i, --$j) {
-                $v += (int) $input[$i] * $j;
-            }
-
-            if (($vl1 = $v % 11) >= 10) {
-                $vl1 = 0;
-                $dsc = 2;
-            }
-
-            for ($i = 0, $j = 1, $v = 0; $i < 9; ++$i, ++$j) {
-                $v += (int) $input[$i] * $j;
-            }
-
-            $vl2 = ($x = ($v % 11)) >= 10 ? 0 : $x - $dsc;
-            $ret = sprintf('%d%d', $vl1, $vl2) == substr($input, -2);
+        if (!is_scalar($input)) {
+            return false;
         }
 
-        return $ret;
+        // Canonicalize input
+        $input = preg_replace('{\D}', '', (string) $input);
+
+        // Validate length and invalid numbers
+        if ((strlen($input) != 11) || (intval($input) == 0)) {
+            return false;
+        }
+
+        // Validate check digits using a modulus 11 algorithm
+        for ($c = $s1 = $s2 = 0, $p = 9; $c < 9; $c++, $p--) {
+            $s1 += intval($input[$c]) * $p;
+            $s2 += intval($input[$c]) * (10 - $p);
+        }
+
+        if ($input[9] != (($dv1 = $s1 % 11) > 9) ? 0 : $dv1) {
+            return false;
+        }
+
+        if ($input[10] != (((($dv2 = ($s2 % 11) - (($dv1 > 9) ? 2 : 0)) < 0)
+                ? $dv2 + 11 : $dv2) > 9) ? 0 : $dv2) {
+            return false;
+        }
+
+        return true;
     }
 }
