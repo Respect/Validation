@@ -16,7 +16,7 @@ class Cnh extends AbstractRule
     public function validate($input)
     {
         // Canonicalize input
-        $input = sprintf('%011s', preg_replace('{\D}', '', $input));
+        $input = preg_replace('{\D}', '', $input);
 
         // Validate length and invalid numbers
         if ((strlen($input) != 11) || (intval($input) == 0)) {
