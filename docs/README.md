@@ -256,7 +256,7 @@ By default `with()` appends the given prefix, but you can change this behavior
 in order to overwrite default rules:
 
 ```php
-v::with('My\\Validation\\Rules\\', true);
+v::with('My\\Validation\\Rules', true);
 v::alnum(); // Try to use "My\Validation\Rules\Alnum" if any
 ```
 

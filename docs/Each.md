@@ -18,7 +18,7 @@ v::arrayVal()->each(v::date())->validate($releaseDates); // true
 v::arrayVal()->each(v::date(), v::stringType()->lowercase())->validate($releaseDates); // true
 ```
 
-Using `arr()` before `each()` is a best practice.
+Using `arrayVal()` before `each()` is a best practice.
 
 ***
 See also:

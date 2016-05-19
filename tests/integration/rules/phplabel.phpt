@@ -1,17 +1,17 @@
+--TEST--
+PhpLabel rule exception should not be thrown for valid inputs
 --FILE--
 <?php
-
 require 'vendor/autoload.php';
 
 use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::age(10, 50)->assert('9 years ago');
+    v::phpLabel()->check('topic01');
+    v::phpLabel()->assert('access');
 } catch (AllOfException $e) {
-    echo $e->getFullMessage();
+    echo $e->getMainMessage();
 }
-
 ?>
 --EXPECTF--
-- "9 years ago" must be less than or equal to "%d-%d-%d %d:%d:%d"

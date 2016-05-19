@@ -23,20 +23,62 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(['Respect\\Validation\\Rules\\'], $factory->getRulePrefixes());
     }
 
-    public function testShouldBeAbleToAppendANewPrefix()
+    /**
+     * @dataProvider provideRulePrefixes
+     */
+    public function testShouldBeAbleToAppendANewPrefix($namespace, $expectedNamespace)
     {
         $factory = new Factory();
-        $factory->appendRulePrefix('My\\Validation\\Rules\\');
+        $factory->appendRulePrefix($namespace);
 
-        $this->assertEquals(['Respect\\Validation\\Rules\\', 'My\\Validation\\Rules\\'], $factory->getRulePrefixes());
+        $currentRulePrefixes = $factory->getRulePrefixes();
+
+        $this->assertSame(
+            $expectedNamespace,
+            array_pop($currentRulePrefixes),
+            'Appended namespace rule was not found as expected into the prefix list.' . PHP_EOL .
+            sprintf(
+                'Appended "%s", current list is ' . PHP_EOL . '%s',
+                $namespace,
+                implode(PHP_EOL, $factory->getRulePrefixes())
+            )
+        );
     }
 
-    public function testShouldBeAbleToPrependANewRulePrefix()
+    /**
+     * @dataProvider provideRulePrefixes
+     */
+    public function testShouldBeAbleToPrependANewRulePrefix($namespace, $expectedNamespace)
     {
         $factory = new Factory();
-        $factory->prependRulePrefix('My\\Validation\\Rules\\');
+        $factory->prependRulePrefix($namespace);
 
-        $this->assertEquals(['My\\Validation\\Rules\\', 'Respect\\Validation\\Rules\\'], $factory->getRulePrefixes());
+        $currentRulePrefixes = $factory->getRulePrefixes();
+
+        $this->assertContains(
+            $expectedNamespace,
+            array_shift($currentRulePrefixes),
+            'Prepended namespace rule was not found as expected into the prefix list.' . PHP_EOL .
+            sprintf(
+                'Prepended "%s", current list is ' . PHP_EOL . '%s',
+                $namespace,
+                implode(PHP_EOL, $factory->getRulePrefixes())
+            )
+        );
+    }
+
+    public function provideRulePrefixes()
+    {
+        return [
+            'Namespace with trailing separator' => [
+                'namespace' => 'My\\Validation\\Rules\\',
+                'expected' => 'My\\Validation\\Rules\\'
+            ],
+            'Namespace without trailing separator' => [
+                'namespace' => 'My\\Validation\\Rules',
+                'expected' => 'My\\Validation\\Rules\\'
+            ]
+        ];
     }
 
     public function testShouldCreateARuleByName()
@@ -66,16 +108,12 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage "Respect\Validation\TestNonRule" is not a valid respect rule
+     * @expectedExceptionMessage "Respect\Validation\Exceptions\AgeException" is not a valid respect rule
      */
     public function testShouldThrowsAnExceptionWhenRuleIsNotInstanceOfRuleInterface()
     {
         $factory = new Factory();
-        $factory->appendRulePrefix('Respect\\Validation\\Test');
-        $factory->rule('nonRule');
+        $factory->appendRulePrefix('Respect\\Validation\\Exceptions\\');
+        $factory->rule('AgeException');
     }
-}
-
-class TestNonRule
-{
 }

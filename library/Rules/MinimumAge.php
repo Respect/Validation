@@ -12,6 +12,7 @@
 namespace Respect\Validation\Rules;
 
 use DateTime;
+use Respect\Validation\Exceptions\ComponentException;
 
 class MinimumAge extends AbstractRule
 {
@@ -20,16 +21,16 @@ class MinimumAge extends AbstractRule
 
     public function __construct($age, $format = null)
     {
+        if (!filter_var($age, FILTER_VALIDATE_INT)) {
+            throw new ComponentException('The age must be a integer value.');
+        }
+
         $this->age = $age;
         $this->format = $format;
     }
 
     public function validate($input)
     {
-        if (!filter_var($this->age, FILTER_VALIDATE_INT)) {
-            return false;
-        }
-
         if ($input instanceof DateTime) {
             $birthday = new \DateTime('now - '.$this->age.' year');
 

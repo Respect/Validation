@@ -14,57 +14,85 @@ namespace Respect\Validation\Rules;
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\CreditCard
- * @covers Respect\Validation\Exceptions\CreditCardException
  */
-class CreditCardTest extends \PHPUnit_Framework_TestCase
+class CreditCardTest extends RuleTestCase
 {
-    protected $creditCardValidator;
-
-    protected function setUp()
+    public function testShouldHaveNoCreditCardBrandByDefault()
     {
-        $this->creditCardValidator = new CreditCard();
+        $rule = new CreditCard();
+
+        $this->assertNull($rule->brand);
     }
 
-    /**
-     * @dataProvider providerForCreditCard
-     */
-    public function testValidCreditCardsShouldReturnTrue($input)
+    public function testShouldAcceptCreditCardBrandOnConstructor()
     {
-        $this->assertTrue($this->creditCardValidator->__invoke($input));
-        $this->assertTrue($this->creditCardValidator->assert($input));
-        $this->assertTrue($this->creditCardValidator->check($input));
+        $rule = new CreditCard(CreditCard::VISA);
+
+        $this->assertSame(CreditCard::VISA, $rule->brand);
     }
 
-    /**
-     * @dataProvider providerForNotCreditCard
-     * @expectedException Respect\Validation\Exceptions\CreditCardException
-     */
-    public function testInvalidCreditCardsShouldThrowCreditCardException($input)
+    public function testShouldThrowExceptionWhenCreditCardBrandIsNotValid()
     {
-        $this->assertFalse($this->creditCardValidator->__invoke($input));
-        $this->assertFalse($this->creditCardValidator->assert($input));
+        $class = 'Respect\Validation\Exceptions\ComponentException';
+        $message = '"RespectCard" is not a valid credit card brand';
+        $message .= ' (Available: American Express, Diners Club, Discover, JCB, MasterCard, Visa).';
+
+        $this->setExpectedException($class, $message);
+
+        new CreditCard('RespectCard');
     }
 
-    public function providerForCreditCard()
+    public function providerForValidInput()
     {
+        $general = new CreditCard();
+        $amex = new CreditCard(CreditCard::AMERICAN_EXPRESS);
+        $diners = new CreditCard(CreditCard::DINERS_CLUB);
+        $discover = new CreditCard(CreditCard::DISCOVER);
+        $jcb = new CreditCard(CreditCard::JCB);
+        $master = new CreditCard(CreditCard::MASTERCARD);
+        $visa = new CreditCard(CreditCard::VISA);
+
         return [
-            ['5376 7473 9720 8720'], // MasterCard
-            ['4024.0071.5336.1885'], // Visa 16
-            ['4024 007 193 879'], // Visa 13
-            ['340-3161-9380-9364'], // AmericanExpress
-            ['30351042633884'], // Dinners
+            [$general, '5376 7473 9720 8720'], // MasterCard
+            [$master, '5376 7473 9720 8720'],
+            [$general, '4024.0071.5336.1885'], // Visa 16
+            [$visa, '4024.0071.5336.1885'],
+            [$general, '4024 007 193 879'], // Visa 13
+            [$visa, '4024 007 193 879'],
+            [$general, '340-3161-9380-9364'], // American Express
+            [$amex, '340-3161-9380-9364'],
+            [$general, '30351042633884'], // Diners Club
+            [$diners, '30351042633884'],
+            [$general, '6011000990139424'], // Discover
+            [$discover, '6011000990139424'],
+            [$general, '3566002020360505'], // JBC
+            [$jcb, '3566002020360505'],
         ];
     }
 
-    public function providerForNotCreditCard()
+    public function providerForInvalidInput()
     {
+        $general = new CreditCard();
+        $amex = new CreditCard(CreditCard::AMERICAN_EXPRESS);
+        $diners = new CreditCard(CreditCard::DINERS_CLUB);
+        $discover = new CreditCard(CreditCard::DISCOVER);
+        $jcb = new CreditCard(CreditCard::JCB);
+        $master = new CreditCard(CreditCard::MASTERCARD);
+        $visa = new CreditCard(CreditCard::VISA);
+
         return [
-            [''],
-            [null],
-            ['it isnt my credit card number'],
-            ['&stR@ng3|) (|-|@r$'],
-            ['1234 1234 1234 1234'],
-            ['1234.1234.1234.1234'],
+            [$general, ''],
+            [$general, null],
+            [$general, 'it isnt my credit card number'],
+            [$general, '&stR@ng3|) (|-|@r$'],
+            [$general, '1234 1234 1234 1234'],
+            [$general, '1234.1234.1234.1234'],
+            [$master, '6011111111111117'], // Discover
+            [$visa, '3530111333300000'], // JCB
+            [$amex, '5555555555554444'], // MasterCard
+            [$diners, '4012888888881881'], // Visa
+            [$discover, '371449635398431'], // American Express
+            [$jcb, '38520000023237'], // Diners Club
         ];
     }
 }

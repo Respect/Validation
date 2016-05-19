@@ -64,7 +64,7 @@ class Length extends AbstractRule
         if (is_object($input)) {
             return count(get_object_vars($input));
         }
-        
+
         if (is_int($input)) {
             return strlen((string)$input);
         }
