@@ -59,7 +59,7 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
 
         $abstractRuleMock = $this
             ->getMockBuilder('Respect\Validation\Rules\AbstractRule')
-            ->setMethods(['validate'])
+            ->setMethods(['validate', 'reportError'])
             ->getMockForAbstractClass();
 
         $abstractRuleMock
