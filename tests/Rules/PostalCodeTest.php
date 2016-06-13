@@ -79,6 +79,10 @@ class PostalCodeTest extends \PHPUnit_Framework_TestCase
             array('US', '02179'),
             array('YE', ''),
             array('PL', '99-300'),
+            array('NL', '2215 DP'),
+            array('NL', '2215DP'),
+            array('NL', '2215 dp'),
+            array('NL', '2215dp'),
         );
     }
 
@@ -103,6 +107,9 @@ class PostalCodeTest extends \PHPUnit_Framework_TestCase
             array('US', '021 79'),
             array('YE', '02179'),
             array('PL', '99300'),
+            array('NL', '0122DP'),
+            array('NL', '2122-DP'),
+            array('NL', '2122.DP'),
         );
     }
 }
