@@ -19,7 +19,7 @@ class Cnpj extends AbstractRule
         $c = preg_replace('/\D/', '', $input);
         $b = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
 
-        if (strlen($c) != 14) {
+        if (strlen($c) != 14 || preg_match("/^{$c[0]}{14}$/", $c)) {
             return false;
         }
 
