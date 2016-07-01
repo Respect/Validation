@@ -15,9 +15,7 @@ class Pesel extends AbstractRule
 {
     public function validate($input)
     {
-        if (!is_numeric($input)
-            || !filter_var($input, FILTER_VALIDATE_INT)
-            || strlen($input) != 11) {
+        if (!preg_match('/^\d{11}$/', $input)) {
             return false;
         }
 

@@ -28,7 +28,8 @@ class PeselTest extends RuleTestCase
             [$rule, '39012110375'],
             [$rule, '50083014540'],
             [$rule, '69090515504'],
-            [$rule, '21120209256']
+            [$rule, '21120209256'],
+            [$rule, '01320613891']
         ];
     }
 
@@ -45,6 +46,7 @@ class PeselTest extends RuleTestCase
             [$rule, '690905155.4'],
             [$rule, '21120209251'],
             [$rule, '21120209250'],
+            [$rule, '01320613890']
         ];
     }
 }
