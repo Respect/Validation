@@ -1,11 +1,11 @@
-# NullType
+# NanType
 
-- `v::nullType()`
+- `v::nanType()`
 
-Validates if the input is null.
+Validates if the input is not a number.
 
 ```php
-v::nullType()->validate(null); // true
+v::nanType()->validate(acos(8)); // true
 ```
 
 ***
@@ -17,7 +17,6 @@ See also:
   * [IntType](IntType.md)
   * [NotBlank](NotBlank.md)
   * [NotEmpty](NotEmpty.md)
-  * [NanType](NanType.md)
   * [NotOptional](NotOptional.md)
   * [NullType](NullType.md)
   * [ObjectType](ObjectType.md)
