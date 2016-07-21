@@ -25,6 +25,8 @@ See also:
 - [IntType](IntType.md)
 - [IntVal](IntVal.md)
 - [NullType](NullType.md)
+- [Number](Number.md)
+- [NumericVal](NumericVal.md)
 - [ObjectType](ObjectType.md)
 - [ResourceType](ResourceType.md)
 - [StringType](StringType.md)

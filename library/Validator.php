@@ -110,6 +110,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator notOptional()
  * @method static Validator noWhitespace()
  * @method static Validator nullType()
+ * @method static Validator number()
  * @method static Validator numericVal()
  * @method static Validator objectType()
  * @method static Validator odd()

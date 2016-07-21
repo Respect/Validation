@@ -48,7 +48,7 @@
 - [Max](Max.md)
 - [Min](Min.md)
 
-## NumericVal
+## Numeric
 
 - [Base](Base.md)
 - [Between](Between.md)
@@ -65,6 +65,7 @@
 - [Multiple](Multiple.md)
 - [Negative](Negative.md)
 - [NotEmpty](NotEmpty.md)
+- [Number](Number.md)
 - [NumericVal](NumericVal.md)
 - [Odd](Odd.md)
 - [PerfectSquare](PerfectSquare.md)
@@ -299,6 +300,7 @@
 - [NotEmpty](NotEmpty.md)
 - [NotOptional](NotOptional.md)
 - [NullType](NullType.md)
+- [Number](Number.md)
 - [NumericVal](NumericVal.md)
 - [ObjectType](ObjectType.md)
 - [Odd](Odd.md)
