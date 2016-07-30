@@ -24,7 +24,7 @@ class AbstractRelatedTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructionOfAbstractRelatedClass()
     {
-        $validatableMock = $this->getMock('Respect\\Validation\\Validatable');
+        $validatableMock = $this->createMock('Respect\\Validation\\Validatable');
         $relatedRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractRelated', ['foo', $validatableMock]);
 
         $this->assertEquals('foo', $relatedRuleMock->getName());
@@ -38,7 +38,7 @@ class AbstractRelatedTest extends \PHPUnit_Framework_TestCase
      */
     public function testOperationsShouldReturnTrueWhenReferenceValidatesItsValue($method)
     {
-        $validatableMock = $this->getMock('Respect\\Validation\\Validatable');
+        $validatableMock = $this->createMock('Respect\\Validation\\Validatable');
         $validatableMock->expects($this->any())
             ->method($method)
             ->will($this->returnValue(true));

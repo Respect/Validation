@@ -61,7 +61,7 @@ class SymbolicLinkTest extends \PHPUnit_Framework_TestCase
     public function testShouldValidateObjects()
     {
         $rule = new SymbolicLink();
-        $object = $this->getMock('SplFileInfo', ['isLink'], ['somelink.lnk']);
+        $object = $this->createMock('SplFileInfo', ['isLink'], ['somelink.lnk']);
         $object->expects($this->once())
                 ->method('isLink')
                 ->will($this->returnValue(true));

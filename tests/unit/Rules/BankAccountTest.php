@@ -23,8 +23,8 @@ class BankAccountTest extends LocaleTestCase
         $countryCode = 'XX';
         $bank = '123456';
 
-        $validatable = $this->getMock('Respect\Validation\Validatable');
-        $factory = $this->getMock('Respect\Validation\Rules\Locale\Factory');
+        $validatable = $this->createMock('Respect\Validation\Validatable');
+        $factory = $this->createMock('Respect\Validation\Rules\Locale\Factory');
         $factory
             ->expects($this->once())
             ->method('bankAccount')

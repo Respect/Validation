@@ -22,8 +22,8 @@ class BankTest extends LocaleTestCase
     {
         $countryCode = 'XX';
 
-        $validatable = $this->getMock('Respect\Validation\Validatable');
-        $factory = $this->getMock('Respect\Validation\Rules\Locale\Factory');
+        $validatable = $this->createMock('Respect\Validation\Validatable');
+        $factory = $this->createMock('Respect\Validation\Rules\Locale\Factory');
         $factory
             ->expects($this->once())
             ->method('bank')

@@ -61,7 +61,7 @@ class ReadableTest extends \PHPUnit_Framework_TestCase
     public function testShouldValidateObjects()
     {
         $rule = new Readable();
-        $object = $this->getMock('SplFileInfo', ['isReadable'], ['somefile.txt']);
+        $object = $this->createMock('SplFileInfo', ['isReadable'], ['somefile.txt']);
         $object->expects($this->once())
                 ->method('isReadable')
                 ->will($this->returnValue(true));

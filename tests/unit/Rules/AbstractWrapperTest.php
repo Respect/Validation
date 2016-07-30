@@ -35,7 +35,7 @@ class AbstractWrapperTest extends \PHPUnit_Framework_TestCase
 
     public function testShouldReturnDefinedValidatable()
     {
-        $validatable = $this->getMock('Respect\Validation\Validatable');
+        $validatable = $this->createMock('Respect\Validation\Validatable');
 
         $wrapper = $this->getMockForAbstractClass('Respect\Validation\Rules\AbstractWrapper');
         $this->bindValidatable($wrapper, $validatable);
@@ -47,7 +47,7 @@ class AbstractWrapperTest extends \PHPUnit_Framework_TestCase
     {
         $input = 'Whatever';
 
-        $validatable = $this->getMock('Respect\Validation\Validatable');
+        $validatable = $this->createMock('Respect\Validation\Validatable');
         $validatable
             ->expects($this->once())
             ->method('validate')
@@ -64,7 +64,7 @@ class AbstractWrapperTest extends \PHPUnit_Framework_TestCase
     {
         $input = 'Whatever';
 
-        $validatable = $this->getMock('Respect\Validation\Validatable');
+        $validatable = $this->createMock('Respect\Validation\Validatable');
         $validatable
             ->expects($this->once())
             ->method('assert')
@@ -81,7 +81,7 @@ class AbstractWrapperTest extends \PHPUnit_Framework_TestCase
     {
         $input = 'Whatever';
 
-        $validatable = $this->getMock('Respect\Validation\Validatable');
+        $validatable = $this->createMock('Respect\Validation\Validatable');
         $validatable
             ->expects($this->once())
             ->method('check')
@@ -98,7 +98,7 @@ class AbstractWrapperTest extends \PHPUnit_Framework_TestCase
     {
         $name = 'Whatever';
 
-        $validatable = $this->getMock('Respect\Validation\Validatable');
+        $validatable = $this->createMock('Respect\Validation\Validatable');
         $validatable
             ->expects($this->once())
             ->method('setName')
