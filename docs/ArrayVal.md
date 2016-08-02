@@ -16,7 +16,7 @@ See also:
   * [ArrayType](ArrayType.md)
   * [Countable](Countable.md)
   * [Each](Each.md)
-  * [Iterable](Iterable.md)
+  * [IterableType](IterableType.md)
   * [Key](Key.md)
   * [KeySet](KeySet.md)
   * [KeyValue](KeyValue.md)

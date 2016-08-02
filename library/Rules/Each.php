@@ -14,7 +14,7 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
 
-class Each extends Iterable
+class Each extends IterableType
 {
     public $itemValidator;
     public $keyValidator;

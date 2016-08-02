@@ -6,11 +6,11 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::iterable())->assert(new stdClass());
+    v::iterableType()->assert('String');
 } catch (AllOfException $exception) {
     echo $exception->getFullMessage();
 }
 
 ?>
 --EXPECTF--
-- `[object] (stdClass: { })` must not be iterable
+- "String" must be iterable

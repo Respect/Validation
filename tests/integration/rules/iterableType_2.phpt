@@ -3,12 +3,12 @@
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\IterableException;
+use Respect\Validation\Exceptions\IterableTypeException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::iterable()->check(3);
-} catch (IterableException $exception) {
+    v::iterableType()->check(3);
+} catch (IterableTypeException $exception) {
     echo $exception->getMainMessage();
 }
 ?>

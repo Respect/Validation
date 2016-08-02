@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
-class Iterable extends AbstractRule
+class IterableType extends AbstractRule
 {
     public function validate($input)
     {
