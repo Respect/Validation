@@ -1,15 +1,15 @@
-# Iterable
+# IterableType
 
-- `v::iterable()`
+- `v::iterableType()`
 
 Validates if the input is iterable, in other words, if you're able to iterate
 over it with [foreach](http://php.net/foreach) language construct.
 
 ```php
-v::iterable()->validate([]); // true
-v::iterable()->validate(new ArrayObject()); // true
-v::iterable()->validate(new stdClass()); // true
-v::iterable()->validate('string'); // false
+v::iterableType()->validate([]); // true
+v::iterableType()->validate(new ArrayObject()); // true
+v::iterableType()->validate(new stdClass()); // true
+v::iterableType()->validate('string'); // false
 ```
 
 ***

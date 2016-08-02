@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class IterableException extends ValidationException
+class IterableTypeException extends ValidationException
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
