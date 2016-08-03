@@ -19,7 +19,7 @@ See also:
   * [Countable](Countable.md)
   * [FloatType](FloatType.md)
   * [IntType](IntType.md)
-  * [Iterable](Iterable.md)
+  * [IterableType](IterableType.md)
   * [NullType](NullType.md)
   * [ObjectType](ObjectType.md)
   * [ResourceType](ResourceType.md)

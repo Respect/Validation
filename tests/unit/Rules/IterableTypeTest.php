@@ -13,13 +13,13 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Iterable
+ * @covers Respect\Validation\Rules\IterableType
  */
 class IterableTest extends RuleTestCase
 {
     public function providerForValidInput()
     {
-        $rule = new Iterable();
+        $rule = new IterableType();
 
         return [
             [$rule, [1, 2, 3]],
@@ -30,7 +30,7 @@ class IterableTest extends RuleTestCase
 
     public function providerForInvalidInput()
     {
-        $rule = new Iterable();
+        $rule = new IterableType();
 
         return [
             [$rule, 3],

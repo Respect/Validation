@@ -9,6 +9,14 @@
  * file that was distributed with this source code.
  */
 
-if (version_compare(PHP_VERSION, '7.1', '<')) {
-    eval('namespace Respect\Validation\Rules; class Iterable extends IterableType {}');
+namespace Respect\Validation\Rules;
+
+class IterableType extends AbstractRule
+{
+    public function validate($input)
+    {
+        return is_array($input) ||
+            $input instanceof \stdClass ||
+            $input instanceof \Traversable;
+    }
 }
