@@ -16,4 +16,4 @@ See also:
 
   * [ArrayVal](ArrayVal.md)
   * [Instance](Instance.md)
-  * [Iterable](Iterable.md)
+  * [IterableType](IterableType.md)

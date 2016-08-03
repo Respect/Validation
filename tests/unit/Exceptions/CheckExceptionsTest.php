@@ -16,7 +16,7 @@ use ReflectionClass;
 
 class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
 {
-    protected $deprecateds = [];
+    protected $deprecateds = ['Iterable'];
 
     public function provideListOfRuleNames()
     {
