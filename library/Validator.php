@@ -82,7 +82,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator intVal()
  * @method static Validator intType()
  * @method static Validator ip(mixed $ipOptions = null)
- * @method static Validator iterable()
+ * @method static Validator iterableType()
  * @method static Validator json()
  * @method static Validator key(string $reference, Validatable $referenceValidator = null, bool $mandatory = true)
  * @method static Validator keyNested(string $reference, Validatable $referenceValidator = null, bool $mandatory = true)
