@@ -141,6 +141,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator uploaded()
  * @method static Validator uppercase()
  * @method static Validator url()
+ * @method static Validator vatin(string $countryCode)
  * @method static Validator version()
  * @method static Validator videoUrl(string $service = null)
  * @method static Validator vowel()
