@@ -189,6 +189,7 @@
   * [Phone](Phone.md)
   * [Sf](Sf.md)
   * [Url](Url.md)
+  * [Vatin](Vatin.md)
   * [VideoUrl](VideoUrl.md)
   * [Zend](Zend.md)
 
@@ -319,6 +320,7 @@
   * [Uploaded](Uploaded.md)
   * [Uppercase](Uppercase.md)
   * [Url](Url.md)
+  * [Vatin](Vatin.md)
   * [Version](Version.md)
   * [VideoUrl](VideoUrl.md)
   * [Vowel](Vowel.md)
