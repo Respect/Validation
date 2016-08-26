@@ -104,7 +104,7 @@ class KeyValueTest extends PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Respect\Validation\Exceptions\EqualsException
-     * @expectedExceptionMessage foo must be equals "bar"
+     * @expectedExceptionMessage foo must equal "bar"
      */
     public function testShouldCheckWhenDefinedValuesDoesNotMatch()
     {
