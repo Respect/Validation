@@ -17,4 +17,4 @@ try {
 }
 ?>
 --EXPECTF--
-password must be equals "password_confirmation"
+password must equal "password_confirmation"
