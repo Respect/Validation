@@ -29,56 +29,56 @@ class KeyNested extends AbstractRelated
 
     private function getReferencePieces()
     {
-        return explode('.', $this->reference);
+        return explode('.', rtrim($this->reference, '.'));
     }
 
-    private function getReferenceArrayValue($input)
+    private function getValueFromArray($array, $key)
     {
-        $keys = $this->getReferencePieces();
-        $value = $input;
-
-        while (!is_null($key = array_shift($keys))) {
-            if (!array_key_exists($key, $value)) {
-                $message = sprintf('Cannot select the key %s from the given array', $this->reference);
-                throw new ComponentException($message);
-            }
-
-            $value = $value[$key];
+        if (!array_key_exists($key, $array)) {
+            $message = sprintf('Cannot select the key %s from the given array', $this->reference);
+            throw new ComponentException($message);
         }
 
-        return $value;
+        return $array[$key];
     }
 
-    private function getReferenceObjectValue($input)
+    private function getValueFromObject($object, $property)
     {
-        $properties = $this->getReferencePieces();
-        $value = $input;
-
-        while (!is_null($property = array_shift($properties)) &&
-            '' != $property
-        ) {
-            if (!is_object($value) || !property_exists($value, $property)) {
-                $message = sprintf('Cannot select the property %s from the given object', $this->reference);
-                throw new ComponentException($message);
-            }
-
-            $value = $value->$property;
+        if (empty($property) || !property_exists($object, $property)) {
+            $message = sprintf('Cannot select the property %s from the given object', $this->reference);
+            throw new ComponentException($message);
         }
 
-        return $value;
+        return $object->{$property};
+    }
+
+    private function getValue($value, $key)
+    {
+        if (is_array($value) || $value instanceof ArrayAccess) {
+            return $this->getValueFromArray($value, $key);
+        }
+
+        if (is_object($value)) {
+            return $this->getValueFromObject($value, $key);
+        }
+
+        $message = sprintf('Cannot select the property %s from the given data', $this->reference);
+        throw new ComponentException($message);
     }
 
     public function getReferenceValue($input)
     {
-        if (is_array($input) || $input instanceof ArrayAccess) {
-            return $this->getReferenceArrayValue($input);
+        if (is_scalar($input)) {
+            $message = sprintf('Cannot select the %s in the given data', $this->reference);
+            throw new ComponentException($message);
         }
 
-        if (is_object($input)) {
-            return $this->getReferenceObjectValue($input);
+        $keys = $this->getReferencePieces();
+        $value = $input;
+        while (!is_null($key = array_shift($keys))) {
+            $value = $this->getValue($value, $key);
         }
 
-        $message = sprintf('Cannot select the %s in the given data', $this->reference);
-        throw new ComponentException($message);
+        return $value;
     }
 }
