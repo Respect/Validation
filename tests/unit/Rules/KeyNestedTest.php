@@ -67,7 +67,7 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($rule->validate($array));
     }
 
-    public function testOnjectWithPresentPropertiesWillReturnTrueForDirtyPathValidator()
+    public function testObjectWithPresentPropertiesWillReturnTrueForDirtyPathValidator()
     {
         $object = (object) [
             'bar' => (object) [
