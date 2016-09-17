@@ -68,7 +68,9 @@ class NestedValidationException extends ValidationException implements IteratorA
             $numericKey = is_numeric($key);
             $path = $numericKey ? $value : $key;
 
-            $exception = $this->findRelated($path);
+            if (!($exception = $this->getRelatedByName($path))) {
+                $exception = $this->findRelated($path);
+            }
 
             $path = str_replace('.', '_', $path);
 
