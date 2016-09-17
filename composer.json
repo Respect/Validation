@@ -12,7 +12,8 @@
         }
     ],
     "require": {
-        "php": ">=5.4"
+        "php": ">=5.4",
+        "symfony/polyfill-mbstring": "^1.2"
     },
     "require-dev": {
         "egulias/email-validator": "~1.2",
