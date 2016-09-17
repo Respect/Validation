@@ -41,5 +41,5 @@ try {
 Array
 (
     [allOf] => All of the required rules must pass for Validation Form
-    [first_name_length] => security_question must have a length between 5 and 256
+    [first_name_length] => first_name must have a length between 5 and 256
 )
