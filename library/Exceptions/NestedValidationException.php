@@ -35,6 +35,27 @@ class NestedValidationException extends ValidationException implements IteratorA
     }
 
     /**
+     * @param string $path
+     * @param ValidationException $exception
+     *
+     * @return ValidationException
+     */
+    private function getExceptionForPath($path, ValidationException $exception)
+    {
+        if ($path === $exception->guessId()) {
+            return $exception;
+        }
+
+        if (!$exception instanceof self) {
+            return $exception;
+        }
+
+        foreach ($exception as $subException) {
+            return $subException;
+        }
+    }
+
+    /**
      * @param array $paths
      *
      * @return self
@@ -49,12 +70,19 @@ class NestedValidationException extends ValidationException implements IteratorA
 
             $exception = $this->findRelated($path);
 
-            if (is_object($exception) && !$numericKey) {
+            $path = str_replace('.', '_', $path);
+
+            if (!$exception) {
+                $messages[$path] = '';
+                continue;
+            }
+
+            $exception = $this->getExceptionForPath($path, $exception);
+            if (!$numericKey) {
                 $exception->setTemplate($value);
             }
 
-            $path = str_replace('.', '_', $path);
-            $messages[$path] = $exception ? $exception->getMainMessage() : '';
+            $messages[$path] = $exception->getMainMessage();
         }
 
         return $messages;

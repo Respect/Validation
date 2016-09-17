@@ -17,6 +17,10 @@ try {
         ->assert($object);
 } catch (NestedValidationException $exception) {
     print_r($exception->getMessages());
+    print_r($exception->findMessages([
+        'email' => 'Error: {{name}}',
+        'noWhitespace' => 'Error: {{name}}'
+    ]));
 }
 ?>
 --EXPECTF--
@@ -24,4 +28,9 @@ Array
 (
     [0] => Email Field must be valid email
     [1] => Password Field must not contain whitespace
+)
+Array
+(
+    [email] => Error: Email Field
+    [noWhitespace] => Error: Password Field
 )
