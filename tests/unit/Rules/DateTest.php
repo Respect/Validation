@@ -12,6 +12,7 @@
 namespace Respect\Validation\Rules;
 
 use DateTime;
+use DateTimeImmutable;
 
 /**
  * @group  rule
@@ -56,6 +57,15 @@ class DateTest extends \PHPUnit_Framework_TestCase
     public function testDateTimeInstancesShouldAlwaysValidate()
     {
         $this->assertTrue($this->dateValidator->__invoke(new DateTime('today')));
+    }
+
+    public function testDateTimeImmutableInterfaceInstancesShouldAlwaysValidate()
+    {
+        if (!class_exists('DateTimeImmutable')) {
+            return $this->markTestSkipped('DateTimeImmutable does not exist');
+        }
+
+        $this->assertTrue($this->dateValidator->validate(new DateTimeImmutable('today')));
     }
 
     public function testInvalidDateShouldFail()
@@ -133,6 +143,11 @@ class DateTest extends \PHPUnit_Framework_TestCase
                 ['Europe/Amsterdam', 'c', '2005-12-30T01:02:03+01:00'],
                 ['Europe/Amsterdam', 'c', '2004-02-12T15:19:21+00:00'],
                 ['Europe/Amsterdam', 'r', 'Thu, 29 Dec 2005 01:02:03 +0000'],
+                ['UTC', 'U', 1464658596],
+                ['UTC', 'U', 1464399539],
+                ['UTC', 'g', 0],
+                ['UTC', 'h', 6],
+                ['UTC', 'z', 320],
         ];
     }
 }
