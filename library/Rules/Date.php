@@ -26,7 +26,7 @@ class Date extends AbstractRule
     {
         if ($input instanceof DateTime) {
             return true;
-        } elseif (!is_string($input)) {
+        } elseif (!(is_string($input) || is_int($input))) {
             return false;
         } elseif (is_null($this->format)) {
             return false !== strtotime($input);
