@@ -12,6 +12,7 @@
 namespace Respect\Validation\Rules;
 
 use DateTime;
+use DateTimeInterface;
 
 class Date extends AbstractRule
 {
@@ -24,12 +25,19 @@ class Date extends AbstractRule
 
     public function validate($input)
     {
-        if ($input instanceof DateTime) {
+        if ($input instanceof DateTimeInterface
+            || $input instanceof DateTime) {
             return true;
-        } elseif (!is_string($input)) {
+        }
+
+        if (!is_scalar($input)) {
             return false;
-        } elseif (is_null($this->format)) {
-            return false !== strtotime($input);
+        }
+
+        $inputString = (string) $input;
+
+        if (is_null($this->format)) {
+            return false !== strtotime($inputString);
         }
 
         $exceptionalFormats = [
@@ -38,10 +46,10 @@ class Date extends AbstractRule
         ];
 
         if (in_array($this->format, array_keys($exceptionalFormats))) {
-            $this->format = $exceptionalFormats[ $this->format ];
+            $this->format = $exceptionalFormats[$this->format];
         }
 
-        $info = date_parse_from_format($this->format, $input);
+        $info = date_parse_from_format($this->format, $inputString);
 
         return ($info['error_count'] === 0 && $info['warning_count'] === 0);
     }
