@@ -53,6 +53,8 @@ class NestedValidationException extends ValidationException implements IteratorA
         foreach ($exception as $subException) {
             return $subException;
         }
+
+        return $exception;
     }
 
     /**
