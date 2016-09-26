@@ -8,5 +8,7 @@ use `->digit()` if needed.
 ***
 See also:
 
-  * [Cpf](Cpf.md)
+  * [Bsn](Bsn.md)
   * [Cnh](Cnh.md)
+  * [Cpf](Cpf.md)
+  * [Nif](Nif.md)

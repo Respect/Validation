@@ -183,6 +183,7 @@
   * [Json](Json.md)
   * [MacAddress](MacAddress.md)
   * [NfeAccessKey](NfeAccessKey.md)
+  * [Nif](Nif.md)
   * [NotBlank](NotBlank.md)
   * [NotOptional](NotOptional.md)
   * [Pesel](Pesel.md)
