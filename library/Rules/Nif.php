@@ -1,0 +1,102 @@
+<?php
+
+/*
+ * This file is part of Respect/Validation.
+ *
+ * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ *
+ * For the full copyright and license information, please view the "LICENSE.md"
+ * file that was distributed with this source code.
+ */
+
+namespace Respect\Validation\Rules;
+
+/**
+ * Validates Spain's fiscal identification number (NIF).
+ *
+ * @author Julián Gutiérrez <juliangut@gmail.com>
+ *
+ * @see https://es.wikipedia.org/wiki/N%C3%BAmero_de_identificaci%C3%B3n_fiscal
+ */
+final class Nif extends AbstractRule
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input)
+    {
+        if (!is_string($input)) {
+            return false;
+        }
+
+        if (preg_match('/^(\d{8})([A-Z])$/', $input, $matches)) {
+            return $this->validateDni($matches[1], $matches[2]);
+        }
+
+        if (preg_match('/^([KLMXYZ])(\d{7})([A-Z])$/', $input, $matches)) {
+            return $this->validateNie($matches[1], $matches[2], $matches[3]);
+        }
+
+        if (preg_match('/^([A-HJNP-SUVW])(\d{7})([0-9A-Z])$/', $input, $matches)) {
+            return $this->validateCif($matches[2], $matches[3]);
+        }
+
+        return false;
+    }
+
+    /**
+     * @param int $number
+     * @param int $control
+     */
+    private function validateDni($number, $control)
+    {
+        return substr('TRWAGMYFPDXBNJZSQVHLCKE', ($number % 23), 1) === $control;
+    }
+
+    /**
+     * @param string $prefix
+     * @param int    $number
+     * @param int    $control
+     */
+    private function validateNie($prefix, $number, $control)
+    {
+        if ($prefix === 'Y') {
+            return $this->validateDni('1'.$number, $control);
+        }
+
+        if ($prefix === 'Z') {
+            return $this->validateDni('2'.$number, $control);
+        }
+
+        return $this->validateDni($number, $control);
+    }
+
+    /**
+     * @param int    $number
+     * @param string $control
+     */
+    private function validateCif($number, $control)
+    {
+        $code = 0;
+        $position = 1;
+        foreach (str_split($number) as $digit) {
+            $increaser = $digit;
+            if ($position % 2 !== 0) {
+                $increaser = array_sum(str_split($digit * 2));
+            }
+
+            $code += $increaser;
+            ++$position;
+        }
+
+        $digits = str_split($code);
+        $lastDigit = array_pop($digits);
+        $key = $lastDigit === 0 ? 0 : (10 - $lastDigit);
+
+        if (is_numeric($control)) {
+            return (int) $key === (int) $control;
+        }
+
+        return substr('JABCDEFGHI', ($key % 10), 1) === $control;
+    }
+}

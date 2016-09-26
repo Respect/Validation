@@ -100,6 +100,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator minimumAge(int $age)
  * @method static Validator multiple(int $multipleOf)
  * @method static Validator negative()
+ * @method static Validator nif()
  * @method static Validator no($useLocale = false)
  * @method static Validator noneOf()
  * @method static Validator not(Validatable $rule)
