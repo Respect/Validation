@@ -56,27 +56,24 @@ class Nif extends AbstractRule
             $control = $matches[3];
 
             $code = 0;
-            $codeParts = str_split($matches[2]);
-            array_walk(
-                $codeParts,
-                function ($value, $key) use (&$code) {
-                    if (($key + 1) % 2 === 0) {
-                        $code += $value;
-                    } else {
-                        $code += array_sum(str_split($value * 2));
-                    }
+            $pos = 1;
+            foreach (str_split($matches[2]) as $number) {
+                if ($pos % 2 === 0) {
+                    $code += $number;
+                } else {
+                    $code += array_sum(str_split($number * 2));
                 }
-            );
-            $controlKey = end(str_split($code));
-            if ($controlKey !== 0) {
-                $controlKey = 10 - $controlKey;
+
+                $pos++;
             }
+            $code = str_split($code);
+            $key = end($code) === 0 ? 0 : 10 - end($code);
 
             if (is_numeric($control)) {
-                return $controlKey === (int) $control;
+                return (int) $key === (int) $control;
             }
 
-            return substr('JABCDEFGHI', $controlKey % 10, 1) === $control;
+            return substr('JABCDEFGHI', $key % 10, 1) === $control;
         }
 
         return false;
