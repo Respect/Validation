@@ -47,8 +47,20 @@ class Factory
             return $ruleName;
         }
 
+        // statically cache the reflections for performance reasons.
+        // Since using RelectionClass is not very performant we statically cache
+        // the initantized reflect objects so that subsequent requests for the
+        // same rule to not have to do the expensive reflection startup process
+        // once again.
+        static $reflections = array();
+
         foreach ($this->getRulePrefixes() as $prefix) {
             $className = $prefix.ucfirst($ruleName);
+
+            if(isset($reflections[$className]) === true) {
+                return $reflections[$className]->newInstanceArgs($arguments);
+            }
+
             if (!class_exists($className)) {
                 continue;
             }
@@ -57,6 +69,7 @@ class Factory
             if (!$reflection->isSubclassOf('Respect\\Validation\\Validatable')) {
                 throw new ComponentException(sprintf('"%s" is not a valid respect rule', $className));
             }
+            $reflections[$className] = $reflection;
 
             return $reflection->newInstanceArgs($arguments);
         }
