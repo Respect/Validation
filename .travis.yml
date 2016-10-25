@@ -16,6 +16,7 @@ before_script:
 
 script:
   - vendor/bin/phpunit --configuration phpunit.xml.dist --colors --coverage-clover=coverage.clover
+  - vendor/bin/docheader check library tests
 
 after_script:
   - test "5.6" == "${TRAVIS_PHP_VERSION}" && wget https://scrutinizer-ci.com/ocular.phar
