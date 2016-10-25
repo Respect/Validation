@@ -21,7 +21,8 @@
         "mikey179/vfsStream": "^1.5",
         "phpunit/phpunit": "~5.3",
         "symfony/validator": "~2.6.9",
-        "zendframework/zend-validator": "~2.3"
+        "zendframework/zend-validator": "~2.3",
+        "malukenho/docheader": "^0.1.4"
     },
     "suggest": {
         "ext-bcmath": "Arbitrary Precision Mathematics",
