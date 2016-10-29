@@ -23,8 +23,8 @@ class Email extends AbstractRule
 
     public function getEmailValidator()
     {
-        if (!$this->emailValidator instanceof EmailValidator
-            && class_exists('Egulias\\EmailValidator\\EmailValidator')) {
+        if (class_exists(EmailValidator::class)
+            && !$this->emailValidator instanceof EmailValidator) {
             $this->emailValidator = new EmailValidator();
         }
 
@@ -38,7 +38,7 @@ class Email extends AbstractRule
             return is_string($input) && filter_var($input, FILTER_VALIDATE_EMAIL);
         }
 
-        if (!class_exists('Egulias\\EmailValidator\\Validation\\RFCValidation')) {
+        if (!class_exists(RFCValidation::class)) {
             return $emailValidator->isValid($input);
         }
 
