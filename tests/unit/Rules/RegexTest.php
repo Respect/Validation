@@ -14,29 +14,30 @@ namespace Respect\Validation\Rules;
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Regex
- * @covers Respect\Validation\Exceptions\RegexException
  */
-class RegexTest extends \PHPUnit_Framework_TestCase
+final class RegexTest extends RuleTestCase
 {
-    public function testRegexOk()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput()
     {
-        $v = new Regex('/^[a-z]+$/');
-        $this->assertTrue($v->validate('wpoiur'));
-        $this->assertFalse($v->validate('wPoiUur'));
-
-        $v = new Regex('/^[a-z]+$/i');
-        $this->assertTrue($v->validate('wPoiur'));
-        $this->assertTrue($v->check('wPoiur'));
-        $this->assertTrue($v->assert('wPoiur'));
+        return [
+            [new Regex('/^[a-z]+$/'), 'wpoiur'],
+            [new Regex('/^[a-z]+$/i'), 'wPoiur'],
+            [new Regex('/^[0-9]+$/i'), 42],
+        ];
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\RegexException
+     * {@inheritdoc}
      */
-    public function testRegexNot()
+    public function providerForInvalidInput()
     {
-        $v = new Regex('/^w+$/');
-        $this->assertFalse($v->validate('w poiur'));
-        $this->assertFalse($v->assert('w poiur'));
+        return [
+            [new Regex('/^w+$/'), 'w poiur'],
+            [new Regex('/^w+$/'), new \stdClass()],
+            [new Regex('/^w+$/'), []],
+        ];
     }
 }
