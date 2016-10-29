@@ -22,6 +22,10 @@ class Regex extends AbstractRule
 
     public function validate($input)
     {
+        if (!is_scalar($input)) {
+            return false;
+        }
+
         return (bool) preg_match($this->regex, $input);
     }
 }
