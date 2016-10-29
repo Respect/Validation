@@ -30,6 +30,7 @@ class EmailTest extends \PHPUnit_Framework_TestCase
     private function setEmailValidatorExists($value)
     {
         $GLOBALS['class_exists']['Egulias\EmailValidator\EmailValidator'] = (bool) $value;
+        $GLOBALS['class_exists']['Egulias\EmailValidator\Validation\RFCValidation'] = (bool) $value;
     }
 
     private function resetClassExists()
@@ -87,7 +88,7 @@ class EmailTest extends \PHPUnit_Framework_TestCase
         $emailValidator
             ->expects($this->once())
             ->method('isValid')
-            ->with($input)
+            ->with($input, $this->isInstanceOf('Egulias\\EmailValidator\\Validation\\RFCValidation'))
             ->will($this->returnValue(true));
 
         $rule = new Email($emailValidator);

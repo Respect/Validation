@@ -16,7 +16,7 @@
         "symfony/polyfill-mbstring": "^1.2"
     },
     "require-dev": {
-        "egulias/email-validator": "~1.2",
+        "egulias/email-validator": "~2.1",
         "malkusch/bav": "~1.0",
         "mikey179/vfsStream": "^1.5",
         "phpunit/phpunit": "~4.0",
