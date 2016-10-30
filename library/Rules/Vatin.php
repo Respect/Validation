@@ -19,7 +19,7 @@ final class Vatin extends AbstractWrapper
 
     public function __construct($countryCode)
     {
-        $shortName = ucfirst(strtolower($countryCode)).'Vatin';
+        $shortName = ucfirst(mb_strtolower($countryCode)).'Vatin';
         $className = __NAMESPACE__.'\\Locale\\'.$shortName;
         if (!class_exists($className)) {
             $message = sprintf('There is no support for VAT identification number from "%s"', $countryCode);

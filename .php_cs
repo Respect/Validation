@@ -11,6 +11,7 @@ return Symfony\CS\Config\Config::create()
     ->level(\Symfony\CS\FixerInterface::SYMFONY_LEVEL)
     ->fixers(array(
         'empty_return',
+        'mb_str_functions',
         'multiline_spaces_before_semicolon',
         'newline_after_open_tag',
         'no_useless_else',

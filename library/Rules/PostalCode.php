@@ -184,7 +184,7 @@ class PostalCode extends Regex
         }
 
         $regex = self::DEFAULT_PATTERN;
-        $upperCountryCode = strtoupper($countryCode);
+        $upperCountryCode = mb_strtoupper($countryCode);
         if (isset($this->postalCodes[$upperCountryCode])) {
             $regex = $this->postalCodes[$upperCountryCode];
         }

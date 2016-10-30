@@ -24,7 +24,7 @@ class Base extends AbstractRule
             $this->chars = $chars;
         }
 
-        $max = strlen($this->chars);
+        $max = mb_strlen($this->chars);
         if (!is_numeric($base) || $base > $max) {
             throw new BaseException(sprintf('a base between 1 and %s is required', $max));
         }
@@ -33,7 +33,7 @@ class Base extends AbstractRule
 
     public function validate($input)
     {
-        $valid = substr($this->chars, 0, $this->base);
+        $valid = mb_substr($this->chars, 0, $this->base);
 
         return (bool) preg_match("@^[$valid]+$@", (string) $input);
     }

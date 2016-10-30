@@ -50,7 +50,7 @@ final class Nif extends AbstractRule
      */
     private function validateDni($number, $control)
     {
-        return substr('TRWAGMYFPDXBNJZSQVHLCKE', ($number % 23), 1) === $control;
+        return mb_substr('TRWAGMYFPDXBNJZSQVHLCKE', ($number % 23), 1) === $control;
     }
 
     /**
@@ -97,6 +97,6 @@ final class Nif extends AbstractRule
             return (int) $key === (int) $control;
         }
 
-        return substr('JABCDEFGHI', ($key % 10), 1) === $control;
+        return mb_substr('JABCDEFGHI', ($key % 10), 1) === $control;
     }
 }

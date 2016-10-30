@@ -23,7 +23,7 @@ class Cnh extends AbstractRule
         $input = preg_replace('{\D}', '', (string) $input);
 
         // Validate length and invalid numbers
-        if ((strlen($input) != 11) || (intval($input) == 0)) {
+        if ((mb_strlen($input) != 11) || (intval($input) == 0)) {
             return false;
         }
 

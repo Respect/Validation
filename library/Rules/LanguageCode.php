@@ -556,7 +556,7 @@ class LanguageCode extends AbstractRule
         }
 
         return in_array(
-            strtoupper($input),
+            mb_strtoupper($input),
             $this->getLanguageCodeList($this->index),
             true
         );

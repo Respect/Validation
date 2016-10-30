@@ -19,11 +19,11 @@ class HexRgbColor extends Xdigit
             return false;
         }
 
-        if (0 === strpos($input, '#')) {
-            $input = substr($input, 1);
+        if (0 === mb_strpos($input, '#')) {
+            $input = mb_substr($input, 1);
         }
 
-        $length = strlen($input);
+        $length = mb_strlen($input);
         if ($length != 3 && $length != 6) {
             return false;
         }

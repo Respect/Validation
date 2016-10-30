@@ -28,7 +28,7 @@ class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
                 continue;
             }
 
-            $ruleName = substr($fileInfo->getBasename(), 0, -4);
+            $ruleName = mb_substr($fileInfo->getBasename(), 0, -4);
             $ruleIsDeprecated = in_array($ruleName, $this->deprecateds);
             $isRuleClassFile = (bool) ($fileInfo->getExtension() !== 'php');
             if ($ruleIsDeprecated || $isRuleClassFile) {

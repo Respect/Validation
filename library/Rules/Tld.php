@@ -120,6 +120,6 @@ class Tld extends AbstractRule
 
     public function validate($input)
     {
-        return in_array(strtolower($input), $this->tldList);
+        return in_array(mb_strtolower($input), $this->tldList);
     }
 }
