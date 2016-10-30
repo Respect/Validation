@@ -19,7 +19,7 @@ class PrimeNumber extends AbstractRule
             return false;
         }
 
-        if ($input != 2 && ($input % 2) ==  0) {
+        if ($input != 2 && ($input % 2) == 0) {
             return false;
         }
 

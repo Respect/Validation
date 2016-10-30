@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
  * @group  rule
  * @covers Respect\Validation\Rules\IterableType
  */
-class IterableTest extends RuleTestCase
+class IterableTypeTest extends RuleTestCase
 {
     public function providerForValidInput()
     {

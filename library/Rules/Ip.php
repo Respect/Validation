@@ -103,7 +103,7 @@ class Ip extends AbstractRule
 
     protected function verifyAddress($address)
     {
-        return (boolean) filter_var(
+        return (bool) filter_var(
             $address,
             FILTER_VALIDATE_IP,
             [

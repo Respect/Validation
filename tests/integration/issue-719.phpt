@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 $input = [
     'user_name' => 'MyName111',
     'user_surname' => 'MySurname111',
-    'user_tel' => 'asd123'
+    'user_tel' => 'asd123',
 ];
 
 $rules = [
@@ -18,7 +18,7 @@ $rules = [
     v::key('user_tel',      v::phone())->setName('Phone number'),
 ];
 
-try{
+try {
     v::allOf($rules)->setName('Validation Form')->assert($input);
 } catch (NestedValidationException $exception) {
     print_r($exception->findMessages(array_keys($input)));

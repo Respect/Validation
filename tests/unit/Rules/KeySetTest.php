@@ -190,7 +190,7 @@ class KeySetTest extends PHPUnit_Framework_TestCase
             [''],
             [null],
             [0],
-            [new \stdClass()]
+            [new \stdClass()],
         ];
     }
 }

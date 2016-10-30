@@ -49,8 +49,8 @@ class IpException extends ValidationException
     {
         if (!$this->getParam('networkRange')) {
             return static::STANDARD;
-        } else {
-            return static::NETWORK_RANGE;
         }
+
+        return static::NETWORK_RANGE;
     }
 }

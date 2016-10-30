@@ -66,7 +66,8 @@ class ScalarValTest extends \PHPUnit_Framework_TestCase
     {
         return [
             [[]],
-            [function () {}],
+            [function () {
+            }],
             [new \stdClass()],
             [null],
             [tmpfile()],

@@ -39,6 +39,6 @@ class Imei extends AbstractRule
             $sum += ($number % 10) + intval($number / 10);
         }
 
-        return ((ceil($sum / 10) * 10) - $sum == $numbers[14]);
+        return (ceil($sum / 10) * 10) - $sum == $numbers[14];
     }
 }

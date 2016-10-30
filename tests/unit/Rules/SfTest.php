@@ -59,7 +59,7 @@ class SfTest extends \PHPUnit_Framework_TestCase
             v::sf($constraintName)->assert($invalidConstraintValue);
         } catch (\Respect\Validation\Exceptions\AllOfException $exception) {
             $fullValidationMessage = $exception->getFullMessage();
-            $expectedValidationException = <<<EOF
+            $expectedValidationException = <<<'EOF'
 - Time
 EOF;
 

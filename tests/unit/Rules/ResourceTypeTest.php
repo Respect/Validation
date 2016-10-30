@@ -65,7 +65,8 @@ class ResourceTypeTest extends \PHPUnit_Framework_TestCase
             ['String'],
             [123],
             [[]],
-            [function () {}],
+            [function () {
+            }],
             [new \stdClass()],
             [null],
         ];

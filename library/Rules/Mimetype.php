@@ -58,6 +58,6 @@ class Mimetype extends AbstractRule
             return false;
         }
 
-        return ($this->fileInfo->file($input) == $this->mimetype);
+        return $this->fileInfo->file($input) == $this->mimetype;
     }
 }

@@ -36,9 +36,9 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(
             $expectedNamespace,
             array_pop($currentRulePrefixes),
-            'Appended namespace rule was not found as expected into the prefix list.' . PHP_EOL .
+            'Appended namespace rule was not found as expected into the prefix list.'.PHP_EOL.
             sprintf(
-                'Appended "%s", current list is ' . PHP_EOL . '%s',
+                'Appended "%s", current list is '.PHP_EOL.'%s',
                 $namespace,
                 implode(PHP_EOL, $factory->getRulePrefixes())
             )
@@ -58,9 +58,9 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertContains(
             $expectedNamespace,
             array_shift($currentRulePrefixes),
-            'Prepended namespace rule was not found as expected into the prefix list.' . PHP_EOL .
+            'Prepended namespace rule was not found as expected into the prefix list.'.PHP_EOL.
             sprintf(
-                'Prepended "%s", current list is ' . PHP_EOL . '%s',
+                'Prepended "%s", current list is '.PHP_EOL.'%s',
                 $namespace,
                 implode(PHP_EOL, $factory->getRulePrefixes())
             )
@@ -72,12 +72,12 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         return [
             'Namespace with trailing separator' => [
                 'namespace' => 'My\\Validation\\Rules\\',
-                'expected' => 'My\\Validation\\Rules\\'
+                'expected' => 'My\\Validation\\Rules\\',
             ],
             'Namespace without trailing separator' => [
                 'namespace' => 'My\\Validation\\Rules',
-                'expected' => 'My\\Validation\\Rules\\'
-            ]
+                'expected' => 'My\\Validation\\Rules\\',
+            ],
         ];
     }
 

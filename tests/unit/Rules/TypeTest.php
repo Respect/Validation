@@ -80,7 +80,8 @@ class TypeTest extends \PHPUnit_Framework_TestCase
             ['array', []],
             ['bool', true],
             ['boolean', false],
-            ['callable', function () {}],
+            ['callable', function () {
+            }],
             ['double', 0.8],
             ['float', 1.0],
             ['int', 42],

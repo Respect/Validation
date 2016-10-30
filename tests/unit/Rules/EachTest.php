@@ -31,7 +31,7 @@ class EachTest extends RuleTestCase
         $intStack->push(4);
         $intStack->push(5);
 
-        $stdClass = new \stdClass;
+        $stdClass = new \stdClass();
         $stdClass->name = 'Emmerson';
         $stdClass->age = 22;
 

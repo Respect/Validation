@@ -51,6 +51,6 @@ class Date extends AbstractRule
 
         $info = date_parse_from_format($this->format, $inputString);
 
-        return ($info['error_count'] === 0 && $info['warning_count'] === 0);
+        return $info['error_count'] === 0 && $info['warning_count'] === 0;
     }
 }

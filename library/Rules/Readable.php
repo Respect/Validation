@@ -19,6 +19,6 @@ class Readable extends AbstractRule
             return $input->isReadable();
         }
 
-        return (is_string($input) && is_readable($input));
+        return is_string($input) && is_readable($input);
     }
 }

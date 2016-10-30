@@ -59,7 +59,7 @@ class ExistsTest extends PHPUnit_Framework_TestCase
         $file = vfsStream::newFile('2kb.txt')->withContent(LargeFileContent::withKilobytes(2))->at($root);
 
         return [
-            [$file]
+            [$file],
         ];
     }
 }

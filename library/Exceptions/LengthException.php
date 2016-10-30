@@ -36,8 +36,8 @@ class LengthException extends ValidationException
             return static::GREATER;
         } elseif (!$this->getParam('maxValue')) {
             return static::LOWER;
-        } else {
-            return static::BOTH;
         }
+
+        return static::BOTH;
     }
 }

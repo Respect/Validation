@@ -19,6 +19,6 @@ class Writable extends AbstractRule
             return $input->isWritable();
         }
 
-        return (is_string($input) && is_writable($input));
+        return is_string($input) && is_writable($input);
     }
 }

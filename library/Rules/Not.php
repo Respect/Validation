@@ -32,7 +32,7 @@ class Not extends AbstractRule
 
     public function validate($input)
     {
-        return (false == $this->rule->validate($input));
+        return false == $this->rule->validate($input);
     }
 
     public function assert($input)

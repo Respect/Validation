@@ -24,7 +24,7 @@ class Pesel extends AbstractRule
         $targetControlNumber = $input[10];
         $calculateControlNumber = 0;
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; ++$i) {
             $calculateControlNumber += $input[$i] * $weights[$i];
         }
 

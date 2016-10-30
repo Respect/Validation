@@ -53,7 +53,8 @@ class CallableTypeTest extends \PHPUnit_Framework_TestCase
     public function providerForCallable()
     {
         return [
-            [function () {}],
+            [function () {
+            }],
             ['trim'],
             [__METHOD__],
             [[$this, __FUNCTION__]],

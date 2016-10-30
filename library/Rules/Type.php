@@ -48,6 +48,6 @@ class Type extends AbstractRule
             return is_callable($input);
         }
 
-        return ($this->availableTypes[$lowerType] === gettype($input));
+        return $this->availableTypes[$lowerType] === gettype($input);
     }
 }

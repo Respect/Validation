@@ -81,7 +81,7 @@ class ConsonantTest extends \PHPUnit_Framework_TestCase
             ['d'],
             ['w'],
             ['y'],
-            ['y',''],
+            ['y', ''],
             ['bcdfghklmnp'],
             ['bcdfghklm np'],
             ['qrst'],

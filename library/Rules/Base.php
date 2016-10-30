@@ -35,6 +35,6 @@ class Base extends AbstractRule
     {
         $valid = substr($this->chars, 0, $this->base);
 
-        return (boolean) preg_match("@^[$valid]+$@", (string) $input);
+        return (bool) preg_match("@^[$valid]+$@", (string) $input);
     }
 }

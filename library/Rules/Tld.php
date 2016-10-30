@@ -38,8 +38,7 @@ class Tld extends AbstractRule
         'cooking', 'cool', 'corsica', 'country', 'coupons', 'courses', 'credit',
         'creditcard', 'cricket', 'crown', 'crs', 'cruises', 'cuisinella', 'cw',
         'cymru', 'cyou', 'dabur', 'dad', 'dance', 'date', 'dating', 'datsun',
-        'day', 'dclk', 'deals', 'degree', 'delivery', 'democrat', 'dental', 'dentist'
-        , 'desi', 'design', 'dev', 'diamonds', 'diet', 'digital', 'direct', 'directory',
+        'day', 'dclk', 'deals', 'degree', 'delivery', 'democrat', 'dental', 'dentist', 'desi', 'design', 'dev', 'diamonds', 'diet', 'digital', 'direct', 'directory',
         'discount', 'dnp', 'docs', 'dog', 'doha', 'domains', 'doosan', 'download',
         'drive', 'durban', 'dvag', 'earth', 'eat', 'education', 'email', 'emerck',
         'energy', 'engineer', 'engineering', 'enterprises', 'epson', 'equipment',

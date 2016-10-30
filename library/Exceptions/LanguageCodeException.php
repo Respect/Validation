@@ -19,6 +19,6 @@ class LanguageCodeException extends ValidationException
         ],
         self::MODE_NEGATIVE => [
             self::STANDARD => '{{name}} must not be a valid language',
-        ]
+        ],
     ];
 }

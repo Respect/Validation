@@ -34,7 +34,7 @@ class NfeAccessKey extends AbstractRule
 
         $w = [];
         for ($i = 0, $z = 5, $m = 43; $i <= $m; ++$i) {
-            $z = ($i < $m) ? ($z - 1) == 1 ? 9 : ($z - 1)  : 0;
+            $z = ($i < $m) ? ($z - 1) == 1 ? 9 : ($z - 1) : 0;
             $w[] = $z;
         }
 

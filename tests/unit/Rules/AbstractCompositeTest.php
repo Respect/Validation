@@ -218,7 +218,7 @@ class AbstractCompositeTest extends \PHPUnit_Framework_TestCase
 
         $compositeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractComposite', [
             $simpleRuleMock,
-            $anotherSimpleRuleMock
+            $anotherSimpleRuleMock,
         ]);
 
         $this->assertCount(2, $compositeRuleMock->getRules());

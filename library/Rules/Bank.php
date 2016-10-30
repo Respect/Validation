@@ -20,7 +20,7 @@ class Bank extends AbstractWrapper
      *
      * The country code is not case sensitive.
      *
-     * @param string  $countryCode The ISO 639-1 country code.
+     * @param string  $countryCode The ISO 639-1 country code
      * @param Factory $factory
      */
     public function __construct($countryCode, Factory $factory = null)

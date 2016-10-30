@@ -39,13 +39,13 @@ class Extension extends AbstractRule
     public function validate($input)
     {
         if ($input instanceof SplFileInfo) {
-            return ($input->getExtension() == $this->extension);
+            return $input->getExtension() == $this->extension;
         }
 
         if (!is_string($input)) {
             return false;
         }
 
-        return (pathinfo($input, PATHINFO_EXTENSION) == $this->extension);
+        return pathinfo($input, PATHINFO_EXTENSION) == $this->extension;
     }
 }

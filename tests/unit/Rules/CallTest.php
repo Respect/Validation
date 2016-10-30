@@ -44,8 +44,8 @@ class CallTest extends \PHPUnit_Framework_TestCase
     public function testCallbackValidatorShouldAcceptClosures()
     {
         $v = new Call(function () {
-                    return [];
-                }, new ArrayVal());
+            return [];
+        }, new ArrayVal());
         $this->assertTrue($v->assert('test'));
     }
 

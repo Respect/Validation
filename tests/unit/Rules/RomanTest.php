@@ -70,7 +70,7 @@ class RomanTest extends \PHPUnit_Framework_TestCase
             [' '],
             ['IIII'],
             ['IVVVX'],
-            ['CCDC'], //
+            ['CCDC'],
             ['MXM'],
             ['XIIIIIIII'],
             ['MIMIMI'],

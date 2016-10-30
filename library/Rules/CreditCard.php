@@ -40,7 +40,7 @@ class CreditCard extends AbstractRule
     ];
 
     /**
-     * @param string $brand Optional credit card brand.
+     * @param string $brand Optional credit card brand
      */
     public function __construct($brand = null)
     {

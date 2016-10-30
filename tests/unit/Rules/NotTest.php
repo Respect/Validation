@@ -79,7 +79,7 @@ class NotTest extends \PHPUnit_Framework_TestCase
     {
         return [
             [new IntVal()],
-            [new AllOf(new Numeric, new IntVal)],
+            [new AllOf(new Numeric(), new IntVal())],
             [new Not(new Not(new IntVal()))],
             [Validator::intVal()->setName('Bar')],
             [Validator::noneOf(Validator::numeric(), Validator::intVal())],

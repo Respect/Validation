@@ -35,7 +35,7 @@ class NestedValidationException extends ValidationException implements IteratorA
     }
 
     /**
-     * @param string $path
+     * @param string              $path
      * @param ValidationException $exception
      *
      * @return ValidationException
@@ -248,7 +248,7 @@ class NestedValidationException extends ValidationException implements IteratorA
      */
     private function isRelated($name, ValidationException $exception)
     {
-        return ($exception->getId() === $name || $exception->getName() === $name);
+        return $exception->getId() === $name || $exception->getName() === $name;
     }
 
     /**
