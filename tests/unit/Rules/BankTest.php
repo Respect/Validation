@@ -11,6 +11,10 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Rules\Locale\Factory;
+use Respect\Validation\Rules\Locale\GermanBank;
+use Respect\Validation\Validatable;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Bank
@@ -22,8 +26,8 @@ class BankTest extends LocaleTestCase
     {
         $countryCode = 'XX';
 
-        $validatable = $this->createMock('Respect\Validation\Validatable');
-        $factory = $this->createMock('Respect\Validation\Rules\Locale\Factory');
+        $validatable = $this->createMock(Validatable::class);
+        $factory = $this->createMock(Factory::class);
         $factory
             ->expects($this->once())
             ->method('bank')
@@ -40,6 +44,6 @@ class BankTest extends LocaleTestCase
         $countryCode = 'DE';
         $rule = new Bank($countryCode);
 
-        $this->assertInstanceOf('Respect\Validation\Rules\Locale\GermanBank', $rule->getValidatable());
+        $this->assertInstanceOf(GermanBank::class, $rule->getValidatable());
     }
 }

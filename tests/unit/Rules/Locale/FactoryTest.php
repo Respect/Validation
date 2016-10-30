@@ -12,6 +12,7 @@
 namespace Respect\Validation\Rules\Locale;
 
 use Respect\Validation\Rules\LocaleTestCase;
+use Respect\Validation\Validatable;
 
 /**
  * @covers Respect\Validation\Rules\Locale\Factory
@@ -32,7 +33,7 @@ class FactoryTest extends LocaleTestCase
     {
         $factory = new Factory();
 
-        $this->assertInstanceOf('Respect\Validation\Validatable', $factory->bic('DE'));
+        $this->assertInstanceOf(Validatable::class, $factory->bic('DE'));
     }
 
     public function testShouldNotBeCaseSensitiveToReturnBICRuleAccordingToCountry()
@@ -56,7 +57,7 @@ class FactoryTest extends LocaleTestCase
     {
         $factory = new Factory();
 
-        $this->assertInstanceOf('Respect\Validation\Validatable', $factory->bank('DE'));
+        $this->assertInstanceOf(Validatable::class, $factory->bank('DE'));
     }
 
     public function testShouldNotBeCaseSensitiveToReturnBankRuleAccordingToCountry()
@@ -80,7 +81,7 @@ class FactoryTest extends LocaleTestCase
     {
         $factory = new Factory();
 
-        $this->assertInstanceOf('Respect\Validation\Validatable', $factory->bankAccount('DE', '123'));
+        $this->assertInstanceOf(Validatable::class, $factory->bankAccount('DE', '123'));
     }
 
     public function testShouldNotBeCaseSensitiveToReturnBankAccountRuleAccordingToCountry()

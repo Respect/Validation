@@ -11,6 +11,10 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Rules\Locale\Factory;
+use Respect\Validation\Rules\Locale\GermanBic;
+use Respect\Validation\Validatable;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Bic
@@ -22,8 +26,8 @@ class BicTest extends LocaleTestCase
     {
         $countryCode = 'XX';
 
-        $validatable = $this->createMock('Respect\Validation\Validatable');
-        $factory = $this->createMock('Respect\Validation\Rules\Locale\Factory');
+        $validatable = $this->createMock(Validatable::class);
+        $factory = $this->createMock(Factory::class);
         $factory
             ->expects($this->once())
             ->method('bic')
@@ -40,6 +44,6 @@ class BicTest extends LocaleTestCase
         $countryCode = 'DE';
         $rule = new Bic($countryCode);
 
-        $this->assertInstanceOf('Respect\Validation\Rules\Locale\GermanBic', $rule->getValidatable());
+        $this->assertInstanceOf(GermanBic::class, $rule->getValidatable());
     }
 }

@@ -11,6 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 /**
@@ -57,7 +58,7 @@ class SfTest extends \PHPUnit_Framework_TestCase
         $invalidConstraintValue = '34:90:70';
         try {
             v::sf($constraintName)->assert($invalidConstraintValue);
-        } catch (\Respect\Validation\Exceptions\AllOfException $exception) {
+        } catch (AllOfException $exception) {
             $fullValidationMessage = $exception->getFullMessage();
             $expectedValidationException = <<<'EOF'
 - Time

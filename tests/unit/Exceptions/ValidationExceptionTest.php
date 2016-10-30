@@ -22,7 +22,7 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
     public function testItImplementsExceptionInterface()
     {
         $validationException = new ValidationException();
-        $this->assertInstanceOf('Respect\Validation\Exceptions\ExceptionInterface', $validationException);
+        $this->assertInstanceOf(ExceptionInterface::class, $validationException);
     }
 
     /**

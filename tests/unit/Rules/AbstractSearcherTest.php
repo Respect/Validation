@@ -17,7 +17,7 @@ class AbstractSearcherTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->searcherRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractSearcher');
+        $this->searcherRuleMock = $this->getMockForAbstractClass(AbstractSearcher::class);
     }
 
     public function testValidateShouldReturnTrueWhenEqualValueIsFoundInHaystack()

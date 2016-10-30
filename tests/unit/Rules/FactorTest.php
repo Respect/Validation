@@ -11,6 +11,8 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\FactorException;
 use Respect\Validation\Exceptions\ValidationException;
 
 /**
@@ -39,7 +41,7 @@ class FactorTest extends \PHPUnit_Framework_TestCase
     public function testInvalidFactorShouldThrowFactorException($dividend, $input)
     {
         $this->setExpectedException(
-            'Respect\\Validation\\Exceptions\\FactorException',
+            FactorException::class,
             ValidationException::stringify($input).' must be a factor of '.$dividend
         );
 
@@ -54,7 +56,7 @@ class FactorTest extends \PHPUnit_Framework_TestCase
     public function testInvalidDividentShouldThrowComponentException($dividend, $input)
     {
         $this->setExpectedException(
-            'Respect\\Validation\\Exceptions\\ComponentException',
+            ComponentException::class,
             'Dividend '.ValidationException::stringify($dividend).' must be an integer'
         );
 

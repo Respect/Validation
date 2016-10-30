@@ -11,6 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Validatable;
 use stdClass;
 
 /**
@@ -50,7 +51,7 @@ class OptionalTest extends \PHPUnit_Framework_TestCase
 
     public function testShouldAcceptInstanceOfValidatobleOnConstructor()
     {
-        $validatable = $this->createMock('Respect\\Validation\\Validatable');
+        $validatable = $this->createMock(Validatable::class);
         $rule = new Optional($validatable);
 
         $this->assertSame($validatable, $rule->getValidatable());
@@ -61,7 +62,7 @@ class OptionalTest extends \PHPUnit_Framework_TestCase
      */
     public function testShouldNotValidateRuleWhenInputIsOptional($input)
     {
-        $validatable = $this->createMock('Respect\\Validation\\Validatable');
+        $validatable = $this->createMock(Validatable::class);
         $validatable
             ->expects($this->never())
             ->method('validate');
@@ -76,7 +77,7 @@ class OptionalTest extends \PHPUnit_Framework_TestCase
      */
     public function testShouldValidateRuleWhenInputIsNotOptional($input)
     {
-        $validatable = $this->createMock('Respect\\Validation\\Validatable');
+        $validatable = $this->createMock(Validatable::class);
         $validatable
             ->expects($this->once())
             ->method('validate')
@@ -90,7 +91,7 @@ class OptionalTest extends \PHPUnit_Framework_TestCase
 
     public function testShouldNotAssertRuleWhenInputIsOptional()
     {
-        $validatable = $this->createMock('Respect\\Validation\\Validatable');
+        $validatable = $this->createMock(Validatable::class);
         $validatable
             ->expects($this->never())
             ->method('assert');
@@ -104,7 +105,7 @@ class OptionalTest extends \PHPUnit_Framework_TestCase
     {
         $input = 'foo';
 
-        $validatable = $this->createMock('Respect\\Validation\\Validatable');
+        $validatable = $this->createMock(Validatable::class);
         $validatable
             ->expects($this->once())
             ->method('assert')
@@ -118,7 +119,7 @@ class OptionalTest extends \PHPUnit_Framework_TestCase
 
     public function testShouldNotCheckRuleWhenInputIsOptional()
     {
-        $validatable = $this->createMock('Respect\\Validation\\Validatable');
+        $validatable = $this->createMock(Validatable::class);
         $validatable
             ->expects($this->never())
             ->method('check');
@@ -132,7 +133,7 @@ class OptionalTest extends \PHPUnit_Framework_TestCase
     {
         $input = 'foo';
 
-        $validatable = $this->createMock('Respect\\Validation\\Validatable');
+        $validatable = $this->createMock(Validatable::class);
         $validatable
             ->expects($this->once())
             ->method('check')

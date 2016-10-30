@@ -32,11 +32,11 @@ abstract class RuleTestCase extends \PHPUnit_Framework_TestCase
      * @param bool             $expectedResult
      * @param string[optional] $mockClassName
      *
-     * @return \Respect\Validation\Validatable
+     * @return Validatable
      */
     public function getRuleMock($expectedResult, $mockClassName = '')
     {
-        $ruleMocked = $this->getMockBuilder('Respect\Validation\Validatable')
+        $ruleMocked = $this->getMockBuilder(Validatable::class)
             ->disableOriginalConstructor()
             ->setMethods(
                 [

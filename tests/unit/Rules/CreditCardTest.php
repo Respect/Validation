@@ -11,6 +11,8 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ComponentException;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\CreditCard
@@ -33,11 +35,10 @@ class CreditCardTest extends RuleTestCase
 
     public function testShouldThrowExceptionWhenCreditCardBrandIsNotValid()
     {
-        $class = 'Respect\Validation\Exceptions\ComponentException';
         $message = '"RespectCard" is not a valid credit card brand';
         $message .= ' (Available: American Express, Diners Club, Discover, JCB, MasterCard, Visa).';
 
-        $this->setExpectedException($class, $message);
+        $this->setExpectedException(ComponentException::class, $message);
 
         new CreditCard('RespectCard');
     }

@@ -12,6 +12,8 @@
 namespace Respect\Validation\Rules;
 
 use DateTime;
+use Zend\Validator\Date as ZendDate;
+use Zend\Validator\ValidatorInterface;
 
 /**
  * @group  rule
@@ -24,7 +26,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     {
         $v = new Zend('Date');
         $this->assertAttributeInstanceOf(
-            $instanceOf = 'Zend\Validator\ValidatorInterface',
+            $instanceOf = ValidatorInterface::class,
             $attribute = 'zendValidator',
             $instance = $v
         );
@@ -35,9 +37,9 @@ class ZendTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorWithValidatorClassName()
     {
-        $v = new Zend('Zend\Validator\Date');
+        $v = new Zend(ZendDate::class);
         $this->assertAttributeInstanceOf(
-            $instanceOf = 'Zend\Validator\ValidatorInterface',
+            $instanceOf = ValidatorInterface::class,
             $attribute = 'zendValidator',
             $instance = $v
         );
@@ -45,7 +47,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructorWithZendValidatorInstance()
     {
-        $zendInstance = new \Zend\Validator\Date();
+        $zendInstance = new Date();
         $v = new Zend($zendInstance);
         $this->assertAttributeSame(
             $expected = $zendInstance,
@@ -61,7 +63,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     {
         $v = new Zend(new MyValidator());
         $this->assertAttributeInstanceOf(
-            $instanceOf = 'Zend\Validator\ValidatorInterface',
+            $instanceOf = ValidatorInterface::class,
             $attribute = 'zendValidator',
             $instance = $v
         );
@@ -71,7 +73,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     {
         $v = new Zend('Sitemap\Lastmod');
         $this->assertAttributeInstanceOf(
-            $instanceOf = 'Zend\Validator\ValidatorInterface',
+            $instanceOf = ValidatorInterface::class,
             $attribute = 'zendValidator',
             $instance = $v
         );
@@ -135,8 +137,8 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 }
 
 // Stubs
-if (class_exists('\Zend\Validator\Date')) {
-    class MyValidator extends \Zend\Validator\Date
+if (class_exists(ZendDate::class)) {
+    class MyValidator extends ZendDate
     {
     }
 }

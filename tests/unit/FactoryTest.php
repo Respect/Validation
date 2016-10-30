@@ -11,6 +11,8 @@
 
 namespace Respect\Validation;
 
+use Respect\Validation\Rules\Uppercase;
+
 /**
  * @covers Respect\Validation\Factory
  */
@@ -85,7 +87,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     {
         $factory = new Factory();
 
-        $this->assertInstanceOf('Respect\\Validation\\Rules\\Uppercase', $factory->rule('uppercase'));
+        $this->assertInstanceOf(Uppercase::class, $factory->rule('uppercase'));
     }
 
     public function testShouldDefineConstructorArgumentsWhenCreatingARule()

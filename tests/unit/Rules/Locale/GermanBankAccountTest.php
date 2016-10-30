@@ -11,6 +11,7 @@
 
 namespace Respect\Validation\Rules\Locale;
 
+use malkusch\bav\BAV;
 use Respect\Validation\Rules\LocaleTestCase;
 
 /**
@@ -42,7 +43,7 @@ class GermanBankAccountTest extends LocaleTestCase
         $bank = '10000000';
         $rule = new GermanBankAccount($bank);
 
-        $this->assertInstanceOf('malkusch\bav\BAV', $rule->bav);
+        $this->assertInstanceOf(BAV::class, $rule->bav);
     }
 
     public function testShouldUseBAVInstanceToValidate()

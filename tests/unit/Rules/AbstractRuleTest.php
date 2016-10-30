@@ -32,7 +32,7 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
         $input = 'something';
 
         $abstractRuleMock = $this
-            ->getMockBuilder('Respect\Validation\Rules\AbstractRule')
+            ->getMockBuilder(AbstractRule::class)
             ->setMethods(['validate'])
             ->getMockForAbstractClass();
 
@@ -58,7 +58,7 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
         $input = 'something';
 
         $abstractRuleMock = $this
-            ->getMockBuilder('Respect\Validation\Rules\AbstractRule')
+            ->getMockBuilder(AbstractRule::class)
             ->setMethods(['validate', 'reportError'])
             ->getMockForAbstractClass();
 
@@ -84,7 +84,7 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
         $input = 'something';
 
         $abstractRuleMock = $this
-            ->getMockBuilder('Respect\Validation\Rules\AbstractRule')
+            ->getMockBuilder(AbstractRule::class)
             ->setMethods(['validate', 'reportError'])
             ->getMockForAbstractClass();
 
@@ -111,7 +111,7 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
         $input = 'something';
 
         $abstractRuleMock = $this
-            ->getMockBuilder('Respect\Validation\Rules\AbstractRule')
+            ->getMockBuilder(AbstractRule::class)
             ->setMethods(['assert'])
             ->getMockForAbstractClass();
 
@@ -134,12 +134,12 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
         }
 
         $exceptionMock = $this
-            ->getMockBuilder('Respect\Validation\Exceptions\ValidationException')
+            ->getMockBuilder(ValidationException::class)
             ->setMockClassName('MockRule1Exception')
             ->getMock();
 
         $abstractRuleMock = $this
-            ->getMockBuilder('Respect\Validation\Rules\AbstractRule')
+            ->getMockBuilder(AbstractRule::class)
             ->setMockClassName('MockRule1')
             ->getMockForAbstractClass();
 
@@ -157,7 +157,7 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
         $template = 'This is my template';
 
         $exceptionMock = $this
-            ->getMockBuilder('Respect\Validation\Exceptions\ValidationException')
+            ->getMockBuilder(ValidationException::class)
             ->setMethods(['setTemplate'])
             ->getMock();
 
@@ -167,7 +167,7 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
             ->with($template);
 
         $abstractRuleMock = $this
-            ->getMockBuilder('Respect\Validation\Rules\AbstractRule')
+            ->getMockBuilder(AbstractRule::class)
             ->setMethods(['createException'])
             ->getMockForAbstractClass();
 
@@ -186,7 +186,7 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
     public function testShouldReturnTheCurrentObjectWhenDefinigTemplate()
     {
         $abstractRuleMock = $this
-            ->getMockBuilder('Respect\Validation\Rules\AbstractRule')
+            ->getMockBuilder(AbstractRule::class)
             ->getMockForAbstractClass();
 
         $this->assertSame($abstractRuleMock, $abstractRuleMock->setTemplate('whatever'));
@@ -198,7 +198,7 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
     public function testShouldReturnTheCurrentObjectWhenDefinigName()
     {
         $abstractRuleMock = $this
-            ->getMockBuilder('Respect\Validation\Rules\AbstractRule')
+            ->getMockBuilder(AbstractRule::class)
             ->getMockForAbstractClass();
 
         $this->assertSame($abstractRuleMock, $abstractRuleMock->setName('whatever'));
@@ -211,7 +211,7 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
     public function testShouldBeAbleToDefineAndRetrivedRuleName()
     {
         $abstractRuleMock = $this
-            ->getMockBuilder('Respect\Validation\Rules\AbstractRule')
+            ->getMockBuilder(AbstractRule::class)
             ->getMockForAbstractClass();
 
         $name = 'something';

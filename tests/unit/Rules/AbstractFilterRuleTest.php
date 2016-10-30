@@ -19,12 +19,12 @@ class AbstractFilterRuleTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorShouldThrowExceptionIfParamIsNotString()
     {
-        $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractFilterRule', [1]);
+        $this->getMockForAbstractClass(AbstractFilterRule::class, [1]);
     }
 
     public function testValidateShouldReturnTrueForValidArguments()
     {
-        $filterRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractFilterRule');
+        $filterRuleMock = $this->getMockForAbstractClass(AbstractFilterRule::class);
         $filterRuleMock->expects($this->any())
             ->method('validateClean')
             ->will($this->returnValue(true));
@@ -34,7 +34,7 @@ class AbstractFilterRuleTest extends \PHPUnit_Framework_TestCase
 
     public function testValidateShouldReturnFalseForInvalidArguments()
     {
-        $filterRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractFilterRule');
+        $filterRuleMock = $this->getMockForAbstractClass(AbstractFilterRule::class);
         $filterRuleMock->expects($this->any())
             ->method('validateClean')
             ->will($this->returnValue(true));

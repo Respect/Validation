@@ -54,7 +54,7 @@ class Factory
             }
 
             $reflection = new ReflectionClass($className);
-            if (!$reflection->isSubclassOf('Respect\\Validation\\Validatable')) {
+            if (!$reflection->isSubclassOf(Validatable::class)) {
                 throw new ComponentException(sprintf('"%s" is not a valid respect rule', $className));
             }
 
