@@ -19,6 +19,7 @@ See also:
   * [IntType](IntType.md)
   * [IntVal](IntVal.md)
   * [NullType](NullType.md)
+  * [NanType](NanType.md)
   * [ObjectType](ObjectType.md)
   * [ResourceType](ResourceType.md)
   * [StringType](StringType.md)
