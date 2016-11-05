@@ -9,6 +9,8 @@ cache:
 matrix:
   include:
     - php: 7.0
+      env: COMPOSER_ARGUMENTS="--prefer-lowest --prefer-stable"
+    - php: 7.0
     - php: 7.1
     - php: nightly
   allow_failures:
@@ -16,18 +18,18 @@ matrix:
   fast_finish: true
 
 before_script:
-  - composer install --prefer-dist
+  - composer update --prefer-dist ${COMPOSER_ARGUMENTS}
 
 script:
   - vendor/bin/phpunit --configuration phpunit.xml.dist --colors --coverage-clover=coverage.clover
   - |
-    if [[ "${TRAVIS_PHP_VERSION}" == "7.0" ]]; then
+    if [[ "${TRAVIS_PHP_VERSION}" == "7.1" ]]; then
       vendor/bin/docheader check library tests
     fi
 
 after_script:
   - |
-    if [[ "${TRAVIS_PHP_VERSION}" == "7.0" ]]; then
+    if [[ "${TRAVIS_PHP_VERSION}" == "7.1" ]]; then
       wget https://scrutinizer-ci.com/ocular.phar
       php ocular.phar code-coverage:upload --format=php-clover coverage.clover
     fi

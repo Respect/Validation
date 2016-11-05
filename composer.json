@@ -16,13 +16,13 @@
         "symfony/polyfill-mbstring": "^1.2"
     },
     "require-dev": {
-        "egulias/email-validator": "~2.1",
-        "malkusch/bav": "~1.0",
-        "mikey179/vfsStream": "^1.5",
-        "phpunit/phpunit": "~5.3",
+        "egulias/email-validator": "^2.0",
+        "malkusch/bav": "^1.1",
+        "malukenho/docheader": "^0.1.4",
+        "mikey179/vfsStream": "^1.6",
+        "phpunit/phpunit": "^5.6",
         "symfony/validator": "~2.6.9",
-        "zendframework/zend-validator": "~2.3",
-        "malukenho/docheader": "^0.1.4"
+        "zendframework/zend-validator": "^2.0"
     },
     "suggest": {
         "ext-bcmath": "Arbitrary Precision Mathematics",

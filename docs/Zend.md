@@ -9,7 +9,7 @@ are preserved.
 v::zend('Hostname')->validate('google.com');
 ```
 
-You must add `"zendframework/zend-validator": "~2.3"` to your `require` property on composer.json file.
+Respect\Validation supports version >=2.0.3 of Zend\Validator.
 
 ***
 See also:

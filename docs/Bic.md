@@ -11,7 +11,7 @@ v::bic("de")->validate("VZVDDED1"); // true
 
 Theses country codes are supported:
 
- * "de" (Germany) - You must add `"malkusch/bav": "~1.0"` to your `require` property on composer.json file.
+ * "de" (Germany): Respect\Validation supports version >=1.1.0 of "malkusch/bav" for this rule.
 
 ***
 See also:
