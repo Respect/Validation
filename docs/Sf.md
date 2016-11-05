@@ -9,9 +9,7 @@ are preserved.
 v::sf('Time')->validate('15:00:00');
 ```
 
-
-You must add `"symfony/validator": "~2.6"` to your `require` property on composer.json file.
-
+Respect\Validation supports version >=3.0.0 of Symfony Validator.
 
 ***
 See also:

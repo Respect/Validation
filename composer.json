@@ -21,7 +21,7 @@
         "malukenho/docheader": "^0.1.4",
         "mikey179/vfsStream": "^1.6",
         "phpunit/phpunit": "^5.6",
-        "symfony/validator": "~2.6.9",
+        "symfony/validator": "^3.0",
         "zendframework/zend-validator": "^2.0"
     },
     "suggest": {
