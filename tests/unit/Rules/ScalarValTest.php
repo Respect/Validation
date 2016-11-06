@@ -12,65 +12,47 @@
 namespace Respect\Validation\Rules;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers Respect\Validation\Rules\ScalarVal
- * @covers Respect\Validation\Exceptions\ScalarValException
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 1.0.0
  */
-class ScalarValTest extends \PHPUnit_Framework_TestCase
+final class ScalarValTest extends RuleTestCase2
 {
-    protected $rule;
-
-    protected function setUp()
-    {
-        $this->rule = new ScalarVal();
-    }
-
     /**
-     * @dataProvider providerForScalar
+     * {@inheritdoc}
      */
-    public function testShouldValidateScalarNumbers($input)
+    public function providerForValidInput(): array
     {
-        $this->assertTrue($this->rule->validate($input));
-    }
+        $rule = new ScalarVal();
 
-    /**
-     * @dataProvider providerForNonScalar
-     */
-    public function testShouldNotValidateNonScalarNumbers($input)
-    {
-        $this->assertFalse($this->rule->validate($input));
-    }
-
-    /**
-     * @expectedException Respect\Validation\Exceptions\ScalarValException
-     * @expectedExceptionMessage null must be a scalar value
-     */
-    public function testShouldThrowScalarExceptionWhenChecking()
-    {
-        $this->rule->check(null);
-    }
-
-    public function providerForScalar()
-    {
         return [
-            ['6'],
-            ['String'],
-            [1.0],
-            [42],
-            [false],
-            [true],
+            [$rule, '6'],
+            [$rule, 'String'],
+            [$rule, 1.0],
+            [$rule, 42],
+            [$rule, false],
+            [$rule, true],
         ];
     }
 
-    public function providerForNonScalar()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
+        $rule = new ScalarVal();
+
         return [
-            [[]],
-            [function () {
+            [$rule, []],
+            [$rule, function () {
             }],
-            [new \stdClass()],
-            [null],
-            [tmpfile()],
+            [$rule, new \stdClass()],
+            [$rule, null],
+            [$rule, tmpfile()],
         ];
     }
 }

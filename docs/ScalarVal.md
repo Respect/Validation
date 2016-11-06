@@ -1,6 +1,6 @@
 # ScalarVal
 
-- `v::scalarVal()`
+- `scalarVal()`
 
 Validates if the input is a scalar value.
 
