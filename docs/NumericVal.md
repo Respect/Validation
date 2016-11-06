@@ -1,12 +1,12 @@
-# Numeric
+# NumericVal
 
-- `v::numeric()`
+- `v::numericVal()`
 
 Validates on any numeric value.
 
 ```php
-v::numeric()->validate(-12); // true
-v::numeric()->validate('135.0'); // true
+v::numericVal()->validate(-12); // true
+v::numericVal()->validate('135.0'); // true
 ```
 
 ***

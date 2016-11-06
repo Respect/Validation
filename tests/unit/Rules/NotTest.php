@@ -59,9 +59,9 @@ class NotTest extends \PHPUnit_Framework_TestCase
             [new AllOf(new NoWhitespace(), new Digit()), 'as df'],
             [new AllOf(new NoWhitespace(), new Digit()), '12 34'],
             [new AllOf(new AllOf(new NoWhitespace(), new Digit())), '12 34'],
-            [new AllOf(new NoneOf(new Numeric(), new IntVal())), 13.37],
-            [new NoneOf(new Numeric(), new IntVal()), 13.37],
-            [Validator::noneOf(Validator::numeric(), Validator::intVal()), 13.37],
+            [new AllOf(new NoneOf(new NumericVal(), new IntVal())), 13.37],
+            [new NoneOf(new NumericVal(), new IntVal()), 13.37],
+            [Validator::noneOf(Validator::numericVal(), Validator::intVal()), 13.37],
         ];
     }
 
@@ -69,9 +69,9 @@ class NotTest extends \PHPUnit_Framework_TestCase
     {
         return [
             [new IntVal(), 123],
-            [new AllOf(new OneOf(new Numeric(), new IntVal())), 13.37],
-            [new OneOf(new Numeric(), new IntVal()), 13.37],
-            [Validator::oneOf(Validator::numeric(), Validator::intVal()), 13.37],
+            [new AllOf(new OneOf(new NumericVal(), new IntVal())), 13.37],
+            [new OneOf(new NumericVal(), new IntVal()), 13.37],
+            [Validator::oneOf(Validator::numericVal(), Validator::intVal()), 13.37],
         ];
     }
 
@@ -79,10 +79,10 @@ class NotTest extends \PHPUnit_Framework_TestCase
     {
         return [
             [new IntVal()],
-            [new AllOf(new Numeric(), new IntVal())],
+            [new AllOf(new NumericVal(), new IntVal())],
             [new Not(new Not(new IntVal()))],
             [Validator::intVal()->setName('Bar')],
-            [Validator::noneOf(Validator::numeric(), Validator::intVal())],
+            [Validator::noneOf(Validator::numericVal(), Validator::intVal())],
         ];
     }
 }

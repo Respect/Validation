@@ -16,4 +16,4 @@ See also:
   * [Digit](Digit.md)
   * [Finite](Finite.md)
   * [Infinite](Infinite.md)
-  * [Numeric](Numeric.md)
+  * [NumericVal](NumericVal.md)

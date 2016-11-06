@@ -3,17 +3,17 @@
 require 'vendor/autoload.php';
 
 use Respect\Validation\Exceptions\AllOfException;
-use Respect\Validation\Exceptions\NumericException;
+use Respect\Validation\Exceptions\NumericValException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::numeric()->check('a');
-} catch (NumericException $e) {
+    v::numericVal()->check('a');
+} catch (NumericValException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
-    v::numeric()->assert('a');
+    v::numericVal()->assert('a');
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }

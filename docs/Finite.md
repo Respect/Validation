@@ -15,4 +15,4 @@ See also:
   * [Digit](Digit.md)
   * [Infinite](Infinite.md)
   * [IntVal](IntVal.md)
-  * [Numeric](Numeric.md)
+  * [NumericVal](NumericVal.md)

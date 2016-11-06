@@ -20,7 +20,7 @@ See also:
   * [Infinite](Infinite.md)
   * [IntVal](IntVal.md)
   * [NullType](NullType.md)
-  * [Numeric](Numeric.md)
+  * [NumericVal](NumericVal.md)
   * [ObjectType](ObjectType.md)
   * [ResourceType](ResourceType.md)
   * [StringType](StringType.md)

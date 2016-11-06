@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
-class Numeric extends AbstractRule
+class NumericVal extends AbstractRule
 {
     public function validate($input)
     {

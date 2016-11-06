@@ -15,7 +15,7 @@ The Hello World validator is something like this:
 
 ```php
 $number = 123;
-v::numeric()->validate($number); // true
+v::numericVal()->validate($number); // true
 ```
 
 ## Chained validation

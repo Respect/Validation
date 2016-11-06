@@ -17,7 +17,7 @@
   * [IntType](IntType.md)
   * [IterableType](IterableType.md)
   * [NullType](NullType.md)
-  * [Numeric](Numeric.md)
+  * [NumericVal](NumericVal.md)
   * [ObjectType](ObjectType.md)
   * [ResourceType](ResourceType.md)
   * [ScalarVal](ScalarVal.md)
@@ -47,7 +47,7 @@
   * [Max](Max.md)
   * [Min](Min.md)
 
-## Numeric
+## NumericVal
 
   * [Between](Between.md)
   * [BoolType](BoolType.md)
@@ -63,7 +63,7 @@
   * [Multiple](Multiple.md)
   * [Negative](Negative.md)
   * [NotEmpty](NotEmpty.md)
-  * [Numeric](Numeric.md)
+  * [NumericVal](NumericVal.md)
   * [Odd](Odd.md)
   * [PerfectSquare](PerfectSquare.md)
   * [Positive](Positive.md)
@@ -289,7 +289,7 @@
   * [NotEmpty](NotEmpty.md)
   * [NotOptional](NotOptional.md)
   * [NullType](NullType.md)
-  * [Numeric](Numeric.md)
+  * [NumericVal](NumericVal.md)
   * [ObjectType](ObjectType.md)
   * [Odd](Odd.md)
   * [OneOf](OneOf.md)

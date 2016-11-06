@@ -14,4 +14,4 @@ See also:
   * [Digit](Digit.md)
   * [Finite](Finite.md)
   * [IntVal](IntVal.md)
-  * [Numeric](Numeric.md)
+  * [NumericVal](NumericVal.md)

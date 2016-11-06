@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class NumericException extends ValidationException
+class NumericValException extends ValidationException
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

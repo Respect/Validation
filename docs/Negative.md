@@ -5,7 +5,7 @@
 Validates if a number is lower than zero
 
 ```php
-v::numeric()->negative()->validate(-15); // true
+v::numericVal()->negative()->validate(-15); // true
 ```
 
 ***
