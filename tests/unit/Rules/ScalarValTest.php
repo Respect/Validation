@@ -13,68 +13,50 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\ScalarVal
- * @covers \Respect\Validation\Exceptions\ScalarValException
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 1.0.0
  */
-class ScalarValTest extends TestCase
+final class ScalarValTest extends RuleTestCase
 {
-    protected $rule;
-
-    protected function setUp(): void
-    {
-        $this->rule = new ScalarVal();
-    }
-
     /**
-     * @dataProvider providerForScalar
+     * {@inheritdoc}
      */
-    public function testShouldValidateScalarNumbers($input): void
+    public function providerForValidInput(): array
     {
-        self::assertTrue($this->rule->validate($input));
-    }
+        $rule = new ScalarVal();
 
-    /**
-     * @dataProvider providerForNonScalar
-     */
-    public function testShouldNotValidateNonScalarNumbers($input): void
-    {
-        self::assertFalse($this->rule->validate($input));
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\ScalarValException
-     * @expectedExceptionMessage `NULL` must be a scalar value
-     */
-    public function testShouldThrowScalarExceptionWhenChecking(): void
-    {
-        $this->rule->check(null);
-    }
-
-    public function providerForScalar()
-    {
         return [
-            ['6'],
-            ['String'],
-            [1.0],
-            [42],
-            [false],
-            [true],
+            [$rule, '6'],
+            [$rule, 'String'],
+            [$rule, 1.0],
+            [$rule, 42],
+            [$rule, false],
+            [$rule, true],
         ];
     }
 
-    public function providerForNonScalar()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
+        $rule = new ScalarVal();
+
         return [
-            [[]],
-            [function (): void {
+            [$rule, []],
+            [$rule, function (): void {
             }],
-            [new \stdClass()],
-            [null],
-            [tmpfile()],
+            [$rule, new \stdClass()],
+            [$rule, null],
+            [$rule, tmpfile()],
         ];
     }
 }

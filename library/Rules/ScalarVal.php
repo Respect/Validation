@@ -13,16 +13,23 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Result;
+use Respect\Validation\Rule;
+
 /**
+ * Validates if the input is a scalar value.
+ *
  * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 1.0.0
  */
-class ScalarVal extends AbstractRule
+final class ScalarVal implements Rule
 {
     /**
      * {@inheritdoc}
      */
-    public function validate($input)
+    public function apply($input): Result
     {
-        return is_scalar($input);
+        return new Result(is_scalar($input), $input, $this);
     }
 }
