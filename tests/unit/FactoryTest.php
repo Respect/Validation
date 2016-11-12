@@ -11,6 +11,7 @@
 
 namespace Respect\Validation;
 
+use Respect\Validation\Rules\StaticTestSpy;
 use Respect\Validation\Rules\Uppercase;
 
 /**
@@ -18,6 +19,16 @@ use Respect\Validation\Rules\Uppercase;
  */
 class FactoryTest extends \PHPUnit_Framework_TestCase
 {
+    protected function setUp()
+    {
+        StaticTestSpy::reset();
+    }
+
+    protected function tearDown()
+    {
+        StaticTestSpy::reset();
+    }
+
     public function testShouldHaveRulePrefixesByDefault()
     {
         $factory = new Factory();
@@ -93,9 +104,9 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testShouldDefineConstructorArgumentsWhenCreatingARule()
     {
         $factory = new Factory();
-        $rule = $factory->rule('date', ['Y-m-d']);
+        $rule = $factory->rule('staticTestSpy', ['Y-m-d']);
 
-        $this->assertEquals('Y-m-d', $rule->format);
+        $this->assertEquals('Y-m-d', StaticTestSpy::$constructorCalls[0][0]);
     }
 
     /**
