@@ -14,43 +14,69 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use DateTimeInterface;
+use Respect\Validation\Result;
+use Respect\Validation\Rule;
 
-class DateTime extends AbstractRule
+/**
+ * Validates if input is a date.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
+ */
+final class DateTime implements Rule
 {
-    public $format = null;
+    /**
+     * @var string
+     */
+    private $format;
 
-    public function __construct($format = null)
+    const EXCEPTIONAL_FORMATS = [
+        'c' => 'Y-m-d\TH:i:sP',
+        'r' => 'D, d M Y H:i:s O',
+    ];
+
+    public function __construct(string $format = null)
     {
         $this->format = $format;
     }
 
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function apply($input): Result
     {
         if ($input instanceof DateTimeInterface) {
-            return true;
+            return new Result(null === $this->format, $input, $this, array_filter(['format' => $this->format]));
         }
 
-        if (!is_scalar($input)) {
-            return false;
+        $scalarValResult = (new ScalarVal())->apply($input);
+        if (!$scalarValResult->isValid()) {
+            return new Result(false, $input, $this, [], $scalarValResult);
         }
 
-        $inputString = (string) $input;
-
-        if (is_null($this->format)) {
-            return false !== strtotime($inputString);
+        if (null === $this->format) {
+            return $this->validateWithoutFormat($input);
         }
 
-        $exceptionalFormats = [
-            'c' => 'Y-m-d\TH:i:sP',
-            'r' => 'D, d M Y H:i:s O',
-        ];
+        return $this->validateWithFormat($input, $this->format);
+    }
 
-        if (in_array($this->format, array_keys($exceptionalFormats))) {
-            $this->format = $exceptionalFormats[$this->format];
+    private function validateWithoutFormat($input): Result
+    {
+        return new Result(false !== strtotime($input), $input, $this);
+    }
+
+    private function validateWithFormat($input, string $format): Result
+    {
+        if (isset(self::EXCEPTIONAL_FORMATS[$format])) {
+            $format = self::EXCEPTIONAL_FORMATS[$format];
         }
 
-        $info = date_parse_from_format($this->format, $inputString);
+        $info = date_parse_from_format($format, (string) $input);
+        $isValid = 0 === $info['error_count'] && 0 === $info['warning_count'];
 
-        return 0 === $info['error_count'] && 0 === $info['warning_count'];
+        return new Result($isValid, $input, $this, ['format' => $format]);
     }
 }

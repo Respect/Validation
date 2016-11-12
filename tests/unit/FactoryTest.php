@@ -21,6 +21,11 @@ use Respect\Validation\Rules\Uppercase;
  */
 class FactoryTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        $this->markTestIncomplete(Factory::class.' needs to be refactored');
+    }
+
     public function testShouldHaveRulePrefixesByDefault(): void
     {
         $factory = new Factory();
