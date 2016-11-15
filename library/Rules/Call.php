@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
-class Call extends AbstractRelated
+class Call
 {
     public function getReferenceValue($input)
     {

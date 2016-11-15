@@ -14,7 +14,7 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Validatable;
 
-class Key extends AbstractRelated
+class Key
 {
     public function __construct($reference, Validatable $referenceValidator = null, $mandatory = true)
     {

@@ -15,7 +15,7 @@ use ReflectionProperty;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Validatable;
 
-class Attribute extends AbstractRelated
+class Attribute
 {
     public function __construct($reference, Validatable $validator = null, $mandatory = true)
     {
