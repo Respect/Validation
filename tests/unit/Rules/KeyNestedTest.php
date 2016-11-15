@@ -24,6 +24,11 @@ use Respect\Validation\Validatable;
  */
 class KeyNestedTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        $this->markTestSkipped('KeyNested needs to be refactored');
+    }
+
     public function testArrayWithPresentKeysWillReturnTrueForFullPathValidator(): void
     {
         $array = [

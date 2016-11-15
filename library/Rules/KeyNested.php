@@ -16,7 +16,7 @@ namespace Respect\Validation\Rules;
 use ArrayAccess;
 use Respect\Validation\Exceptions\ComponentException;
 
-class KeyNested extends AbstractRelated
+class KeyNested
 {
     public function hasReference($input)
     {
