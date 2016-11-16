@@ -11,15 +11,10 @@
 
 namespace Respect\Validation\Rules;
 
-class Alpha extends AbstractCtypeRule
+class Alpha extends AbstractFilterRule
 {
-    protected function filter($input)
+    protected function validateClean($input)
     {
-        return $this->filterWhiteSpaceOption($input);
-    }
-
-    protected function ctypeFunction($input)
-    {
-        return ctype_alpha($input);
+        return preg_match('/^[\p{L}\s]+$/u', $input) > 0;
     }
 }

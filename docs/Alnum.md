@@ -3,10 +3,13 @@
 - `v::alnum()`
 - `v::alnum(string $additionalChars)`
 
-Validates alphanumeric characters from a-Z and 0-9.
+Validates alphanumeric characters.
 
 ```php
 v::alnum()->validate('foo 123'); // true
+v::alnum()->validate('Eso que ni qué'); // true
+v::alnum()->validate('Vai filhão'); // true
+v::alnum()->validate('Пожалуйста'); // true
 ```
 
 A parameter for extra characters can be used:
@@ -20,6 +23,13 @@ remove them add `->noWhitespace()` to the chain:
 
 ```php
 v::alnum()->noWhitespace()->validate('foo 123'); // false
+```
+
+If you want only the ASCII alphanumeric characters:
+
+```php
+v::alnum()->charset('ASCII')->validate('Vai filhão'); // false
+v::alnum()->charset('ASCII')->validate('Vai filhao'); // true
 ```
 
 You can restrict case using the `->lowercase()` and

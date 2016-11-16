@@ -11,15 +11,10 @@
 
 namespace Respect\Validation\Rules;
 
-class Alnum extends AbstractCtypeRule
+class Alnum extends AbstractFilterRule
 {
-    protected function filter($input)
+    protected function validateClean($input)
     {
-        return $this->filterWhiteSpaceOption($input);
-    }
-
-    protected function ctypeFunction($input)
-    {
-        return ctype_alnum($input);
+        return preg_match('/^[\p{L}\d\s]+$/u', $input) > 0;
     }
 }

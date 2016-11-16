@@ -3,7 +3,7 @@
 - `v::alpha()`
 - `v::alpha(string $additionalChars)`
 
-This is similar to `v::alnum()`, but it doesn't allow numbers.
+This is similar to [Alnum](Alnum.md), but it doesn't allow numbers.
 
 ***
 See also:
