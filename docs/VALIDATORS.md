@@ -136,6 +136,7 @@
 ## Group Validators
 
   * [AllOf](AllOf.md)
+  * [AnyOf](AnyOf.md)
   * [NoneOf](NoneOf.md)
   * [OneOf](OneOf.md)
 
@@ -209,6 +210,7 @@
   * [Alpha](Alpha.md)
   * [AlwaysInvalid](AlwaysInvalid.md)
   * [AlwaysValid](AlwaysValid.md)
+  * [AnyOf](AnyOf.md)
   * [ArrayVal](ArrayVal.md)
   * [ArrayType](ArrayType.md)
   * [Attribute](Attribute.md)

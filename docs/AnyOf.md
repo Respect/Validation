@@ -22,4 +22,5 @@ See also:
 
   * [AllOf](AllOf.md)
   * [NoneOf](NoneOf.md)
+  * [OneOf](OneOf.md)
   * [When](When.md)
