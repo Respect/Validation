@@ -54,8 +54,10 @@ class CreditCardTest extends RuleTestCase
         $visa = new CreditCard(CreditCard::VISA);
 
         return [
-            [$general, '5376 7473 9720 8720'], // MasterCard
+            [$general, '5376 7473 9720 8720'], // MasterCard 5 BIN Range
             [$master, '5376 7473 9720 8720'],
+            [$general, '2223000048400011'], // MasterCard 2 BIN Range
+            [$master, '2222 4000 4124 0011'],
             [$general, '4024.0071.5336.1885'], // Visa 16
             [$visa, '4024.0071.5336.1885'],
             [$general, '4024 007 193 879'], // Visa 13
