@@ -13,26 +13,44 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Validatable;
-
-class Key
+/**
+ * Validates an array key.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
+ *
+ * @Templates(
+ *   regular={
+ *     @Template("Key {{reference}} must be valid"),
+ *     @Template("Key {{reference}} must be present", id="missing"),
+ *   },
+ *   inverted={
+ *     @Template("Key {{reference}} must not be valid"),
+ *     @Template("Key {{reference}} must not be present", id="missing"),
+ *   },
+ * )
+ */
+final class Key extends AbstractRelated
 {
-    public function __construct($reference, Validatable $referenceValidator = null, $mandatory = true)
+    /**
+     * {@inheritdoc}
+     */
+    protected function getReferenceValue($input, $reference)
     {
-        if (!is_scalar($reference) || '' === $reference) {
-            throw new ComponentException('Invalid array key name');
+        return $input[$reference];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function hasReference($input, $reference): bool
+    {
+        if (is_array($input)) {
+            return array_key_exists($reference, $input);
         }
-        parent::__construct($reference, $referenceValidator, $mandatory);
-    }
 
-    public function getReferenceValue($input)
-    {
-        return $input[$this->reference];
-    }
-
-    public function hasReference($input)
-    {
-        return is_array($input) && array_key_exists($this->reference, $input);
+        return isset($input[$reference]);
     }
 }

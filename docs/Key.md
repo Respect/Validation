@@ -1,8 +1,8 @@
 # Key
 
 - `Key(mixed $key)`
-- `Key(mixed $key, Validatable $rule)`
-- `Key(mixed $key, Validatable $rule, bool $mandatory)`
+- `Key(mixed $key, Rule $rule)`
+- `Key(mixed $key, Rule $rule, bool $mandatory)`
 
 Validates an array key.
 

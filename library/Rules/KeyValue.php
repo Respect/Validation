@@ -100,6 +100,6 @@ class KeyValue extends AbstractRule
             return false;
         }
 
-        return $rule->validate($input[$this->comparedKey]);
+        return $rule->apply($input[$this->comparedKey]);
     }
 }

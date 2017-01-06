@@ -13,134 +13,49 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Key
- * @covers \Respect\Validation\Exceptions\KeyException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
  */
-class KeyTest extends TestCase
+final class KeyTest extends RuleTestCase
 {
-    protected function setUp(): void
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
-        $this->markTestSkipped('Key needs to be refactored');
-    }
-
-    public function testArrayWithPresentKeyShouldReturnTrue(): void
-    {
-        $validator = new Key('bar');
-        $someArray = [];
-        $someArray['bar'] = 'foo';
-        self::assertTrue($validator->validate($someArray));
-    }
-
-    public function testArrayWithNumericKeyShouldReturnTrue(): void
-    {
-        $validator = new Key(0);
-        $someArray = [];
-        $someArray[0] = 'foo';
-        self::assertTrue($validator->validate($someArray));
-    }
-
-    public function testEmptyInputMustReturnFalse(): void
-    {
-        $validator = new Key('someEmptyKey');
-        $input = '';
-
-        self::assertFalse($validator->validate($input));
+        return [
+            'Present Key' => [new Key('bar'), ['bar' => 'foo']],
+            'Present Numeric Key' => [new Key(0), [0 => 'foo']],
+            'Empty Key' => [new Key('someEmptyKey'), ['someEmptyKey' => '']],
+            'Absent Key When Not Mandatory With Extra Validator' => [
+                new Key('bar', $this->createRuleMock(null, false), false),
+                ['foo' => ''],
+            ],
+            'Present Key With Valid Extra Validator' => [
+                new Key('bar', $this->createRuleMock('something', true)),
+                ['bar' => 'something'],
+            ],
+        ];
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\KeyException
+     * {@inheritdoc}
      */
-    public function testEmptyInputMustNotAssert(): void
+    public function providerForInvalidInput(): array
     {
-        $validator = new Key('someEmptyKey');
-        $validator->assert('');
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\KeyException
-     */
-    public function testEmptyInputMustNotCheck(): void
-    {
-        $validator = new Key('someEmptyKey');
-        $validator->check('');
-    }
-
-    public function testArrayWithEmptyKeyShouldReturnTrue(): void
-    {
-        $validator = new Key('someEmptyKey');
-        $input = [];
-        $input['someEmptyKey'] = '';
-
-        self::assertTrue($validator->validate($input));
-    }
-
-    public function testShouldHaveTheSameReturnValueForAllValidators(): void
-    {
-        $rule = new Key('key', new NotEmpty());
-        $input = ['key' => ''];
-
-        try {
-            $rule->assert($input);
-            $this->fail('`assert()` must throws exception');
-        } catch (\Exception $e) {
-        }
-
-        try {
-            $rule->check($input);
-            $this->fail('`check()` must throws exception');
-        } catch (\Exception $e) {
-        }
-
-        self::assertFalse($rule->validate($input));
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\KeyException
-     */
-    public function testArrayWithAbsentKeyShouldThrowKeyException(): void
-    {
-        $validator = new Key('bar');
-        $someArray = [];
-        $someArray['baraaaaaa'] = 'foo';
-        self::assertTrue($validator->assert($someArray));
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\KeyException
-     */
-    public function testNotArrayShouldThrowKeyException(): void
-    {
-        $validator = new Key('bar');
-        $someArray = 123;
-        self::assertFalse($validator->assert($someArray));
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     */
-    public function testInvalidConstructorParametersShouldThrowComponentExceptionUponInstantiation(): void
-    {
-        $validator = new Key(['invalid']);
-    }
-
-    public function testExtraValidatorShouldValidateKey(): void
-    {
-        $subValidator = new Length(1, 3);
-        $validator = new Key('bar', $subValidator);
-        $someArray = [];
-        $someArray['bar'] = 'foo';
-        self::assertTrue($validator->assert($someArray));
-    }
-
-    public function testNotMandatoryExtraValidatorShouldPassWithAbsentKey(): void
-    {
-        $subValidator = new Length(1, 3);
-        $validator = new Key('bar', $subValidator, false);
-        $someArray = [];
-        self::assertTrue($validator->validate($someArray));
+        return [
+            'Empty Input' => [new Key('someEmptyKey'), ''],
+            'Absent Key' => [new Key('bar'), ['baraaaaaa' => 'foo']],
+            'Present Key Invalid Key Rule' => [new Key('bar', $this->createRuleMock(42, false)), ['bar' => 42]],
+        ];
     }
 }

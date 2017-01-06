@@ -85,7 +85,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator ip(mixed $ipOptions = null)
  * @method static Validator iterableType()
  * @method static Validator json()
- * @method static Validator key(string $reference, Validatable $referenceValidator = null, bool $mandatory = true)
+ * @method static Validator key(mixed $key, Rule $rule = null, bool $mandatory = true)
  * @method static Validator keyNested(string $reference, Validatable $referenceValidator = null, bool $mandatory = true)
  * @method static Validator keySet(Key ...$rule)
  * @method static Validator keyValue(string $comparedKey, string $ruleName, string $baseKey)
