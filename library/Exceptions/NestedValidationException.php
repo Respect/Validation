@@ -60,7 +60,7 @@ class NestedValidationException extends ValidationException implements IteratorA
     /**
      * @param array $paths
      *
-     * @return self
+     * @return string[]
      */
     public function findMessages(array $paths)
     {
