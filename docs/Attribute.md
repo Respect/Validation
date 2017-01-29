@@ -1,8 +1,8 @@
 # Attribute
 
-- `Attribute(string $name)`
-- `Attribute(string $name, Validatable $rule)`
-- `Attribute(string $name, Validatable $rule, bool $mandatory)`
+- `Attribute(string $attributeName)`
+- `Attribute(string $attributeName, Rule $rule)`
+- `Attribute(string $attributeName, Rule $rule, bool $mandatory)`
 
 Validates an object attribute.
 
