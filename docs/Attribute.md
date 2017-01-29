@@ -1,8 +1,8 @@
 # Attribute
 
-- `v::attribute(string $name)`
-- `v::attribute(string $name, v $validator)`
-- `v::attribute(string $name, v $validator, bool $mandatory = true)`
+- `attribute(string $attributeName)`
+- `attribute(string $attributeName, Rule $rule)`
+- `attribute(string $attributeName, Rule $rule, bool $mandatory = true)`
 
 Validates an object attribute.
 

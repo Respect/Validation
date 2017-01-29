@@ -28,7 +28,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator alwaysValid()
  * @method static Validator arrayVal()
  * @method static Validator arrayType()
- * @method static Validator attribute(string $reference, Validatable $validator = null, bool $mandatory = true)
+ * @method static Validator attribute(string $attributeName, Rule $rule = null, bool $mandatory = true)
  * @method static Validator bank(string $countryCode)
  * @method static Validator bankAccount(string $countryCode)
  * @method static Validator base()

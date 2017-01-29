@@ -11,159 +11,83 @@
 
 namespace Respect\Validation\Rules;
 
-class PrivClass
-{
-    private $bar = 'foo';
-}
+use Respect\Validation\Exceptions\ComponentException;
+use stdClass;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers Respect\Validation\Rules\Attribute
- * @covers Respect\Validation\Exceptions\AttributeException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
  */
-class AttributeTest extends \PHPUnit_Framework_TestCase
+final class AttributeTest extends RuleTestCase2
 {
-    protected function setUp()
-    {
-        $this->markTestSkipped('Attribute needs to be refactored');
-    }
-
-    public function testAttributeWithNoExtraValidationShouldCheckItsPresence()
-    {
-        $validator = new Attribute('bar');
-        $obj = new \stdClass();
-        $obj->bar = 'foo';
-        $this->assertTrue($validator->check($obj));
-        $this->assertTrue($validator->__invoke($obj));
-        $this->assertTrue($validator->assert($obj));
-    }
-
     /**
-     * @expectedException Respect\Validation\Exceptions\AttributeException
+     * {@inheritdoc}
      */
-    public function testAbsentAttributeShouldRaiseAttributeException()
+    public function providerForValidInput(): array
     {
-        $validator = new Attribute('bar');
-        $obj = new \stdClass();
-        $obj->baraaaaa = 'foo';
-        $this->assertFalse($validator->__invoke($obj));
-        $this->assertFalse($validator->assert($obj));
-    }
-    /**
-     * @expectedException Respect\Validation\Exceptions\ValidationException
-     */
-    public function testAbsentAttributeShouldRaiseAttributeException_on_check()
-    {
-        $validator = new Attribute('bar');
-        $obj = new \stdClass();
-        $obj->baraaaaa = 'foo';
-        $this->assertFalse($validator->__invoke($obj));
-        $this->assertFalse($validator->check($obj));
-    }
+        $object1 = new stdClass();
+        $object1->foo = 'foo';
 
-    /**
-     * @dataProvider providerForInvalidAttributeNames
-     * @expectedException Respect\Validation\Exceptions\ComponentException
-     */
-    public function testInvalidConstructorArgumentsShouldThrowComponentException($attributeName)
-    {
-        $validator = new Attribute($attributeName);
-    }
+        $object2 = new stdClass();
+        $object2->bar = '';
 
-    public function providerForInvalidAttributeNames()
-    {
+        $object3 = new stdClass();
+        $object3->{0} = '';
+
+        $object4 = new PrivClass();
+
         return [
-            [new \stdClass()],
-            [123],
-            [''],
+            [new Attribute('foo'), $object1],
+            [new Attribute('foo', $this->createRuleMock(true, $object1->foo)), $object1],
+            [new Attribute('bar', $this->createRuleMock(false, null), false), $object1],
+            [new Attribute('bar'), $object2],
+            [new Attribute('bar', $this->createRuleMock(true, $object2->bar)), $object2],
+            [new Attribute('foo', $this->createRuleMock(false, null), false), $object2],
+            [new Attribute(0), $object3],
+            [new Attribute('baz'), $object4],
+            [new Attribute('baz', $this->createRuleMock(true, 'baz')), $object4],
+            [new Attribute('foo', $this->createRuleMock(false, null), false), $object4],
         ];
     }
 
-    public function testExtraValidatorRulesForAttribute()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
-        $subValidator = new Length(1, 3);
-        $validator = new Attribute('bar', $subValidator);
-        $obj = new \stdClass();
-        $obj->bar = 'foo';
-        $this->assertTrue($validator->__invoke($obj));
-        $this->assertTrue($validator->assert($obj));
-        $this->assertTrue($validator->check($obj));
+        $object1 = new stdClass();
+        $object1->foo = 'foo';
+
+        $object2 = new PrivClass();
+
+        return [
+            [new Attribute('bar'), $object1],
+            [new Attribute('foo', $this->createRuleMock(false, $object1->foo)), $object1],
+            [new Attribute('foo', $this->createRuleMock(false, $object1->foo), false), $object1],
+            [new Attribute('foo'), $object2],
+            [new Attribute('baz', $this->createRuleMock(false, 'baz')), $object2],
+            [new Attribute('baz', $this->createRuleMock(false, 'baz'), false), $object2],
+        ];
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\AttributeException
+     * @test
      */
-    public function testShouldNotValidateEmptyString()
+    public function shouldThrowAnExceptionWhenAttributeNameIsEmpty()
     {
-        $subValidator = new Length(1, 3);
-        $validator = new Attribute('bar', $subValidator);
-        $obj = new \stdClass();
-        $obj->bar = 'foo';
+        $this->expectException(ComponentException::class, 'Attribute name cannot be empty');
 
-        $this->assertFalse($validator->__invoke(''));
-        $validator->assert('');
+        new Attribute('');
     }
+}
 
-    public function testExtraValidatorRulesForAttribute_should_fail_if_invalid()
-    {
-        $subValidator = new Length(1, 3);
-        $validator = new Attribute('bar', $subValidator);
-        $obj = new \stdClass();
-        $obj->bar = 'foo hey this has more than 3 chars';
-        $this->assertFalse($validator->__invoke($obj));
-    }
-
-    /**
-     * @expectedException Respect\Validation\Exceptions\LengthException
-     */
-    public function testExtraValidatorRulesForAttribute_should_raise_extra_validator_exception_on_check()
-    {
-        $subValidator = new Length(1, 3);
-        $validator = new Attribute('bar', $subValidator);
-        $obj = new \stdClass();
-        $obj->bar = 'foo hey this has more than 3 chars';
-        $this->assertFalse($validator->check($obj));
-    }
-    /**
-     * @expectedException Respect\Validation\Exceptions\AttributeException
-     */
-    public function testExtraValidatorRulesForAttribute_should_raise_AttributeException_on_assert()
-    {
-        $subValidator = new Length(1, 3);
-        $validator = new Attribute('bar', $subValidator);
-        $obj = new \stdClass();
-        $obj->bar = 'foo hey this has more than 3 chars';
-        $this->assertFalse($validator->assert($obj));
-    }
-
-    public function testNotMandatoryAttributeShouldNotFailWhenAttributeIsAbsent()
-    {
-        $validator = new Attribute('bar', null, false);
-        $obj = new \stdClass();
-        $this->assertTrue($validator->__invoke($obj));
-    }
-
-    public function testNotMandatoryAttributeShouldNotFailWhenAttributeIsAbsent_with_extra_validator()
-    {
-        $subValidator = new Length(1, 3);
-        $validator = new Attribute('bar', $subValidator, false);
-        $obj = new \stdClass();
-        $this->assertTrue($validator->__invoke($obj));
-    }
-
-    public function testPrivateAttributeShouldAlsoBeChecked()
-    {
-        $subValidator = new Length(1, 3);
-        $validator = new Attribute('bar', $subValidator);
-        $obj = new PrivClass();
-        $this->assertTrue($validator->assert($obj));
-    }
-
-    public function testPrivateAttributeShouldFailIfNotValid()
-    {
-        $subValidator = new Length(33333, 888888);
-        $validator = new Attribute('bar', $subValidator);
-        $obj = new PrivClass();
-        $this->assertFalse($validator->__invoke($obj));
-    }
+class PrivClass
+{
+    private $baz = 'baz';
 }

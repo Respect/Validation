@@ -13,29 +13,60 @@ namespace Respect\Validation\Rules;
 
 use ReflectionProperty;
 use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
-class Attribute
+/**
+ * Validates an object attribute.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
+ */
+final class Attribute extends AbstractRelated
 {
-    public function __construct($reference, Validatable $validator = null, $mandatory = true)
+    /**
+     * Initializes the rule.
+     *
+     * @param string $attributeName
+     * @param Rule   $rule
+     * @param bool   $mandatory
+     */
+    public function __construct(string $attributeName, Rule $rule = null, bool $mandatory = true)
     {
-        if (!is_string($reference) || empty($reference)) {
-            throw new ComponentException('Invalid attribute/property name');
+        if ('' === $attributeName) {
+            throw new ComponentException('Attribute name cannot be empty');
         }
 
-        parent::__construct($reference, $validator, $mandatory);
+        parent::__construct($attributeName, $rule, $mandatory);
     }
 
-    public function getReferenceValue($input)
+    /**
+     * Get the value of attribute in the object object even when the attribute is private.
+     *
+     * @param object $object
+     * @param string $attributeName
+     *
+     * @return mixed
+     */
+    public function getReferenceValue($object, $attributeName)
     {
-        $propertyMirror = new ReflectionProperty($input, $this->reference);
-        $propertyMirror->setAccessible(true);
+        $attributeMirror = new ReflectionProperty($object, $attributeName);
+        $attributeMirror->setAccessible(true);
 
-        return $propertyMirror->getValue($input);
+        return $attributeMirror->getValue($object);
     }
 
-    public function hasReference($input)
+    /**
+     * Verifies if the input is an object and if it has the attribute.
+     *
+     * @param object $object
+     * @param string $attributeName
+     *
+     * @return bool
+     */
+    public function hasReference($object, $attributeName): bool
     {
-        return is_object($input) && property_exists($input, $this->reference);
+        return is_object($object) && property_exists($object, $attributeName);
     }
 }
