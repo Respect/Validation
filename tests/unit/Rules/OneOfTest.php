@@ -18,6 +18,11 @@ namespace Respect\Validation\Rules;
  */
 class OneOfTest extends \PHPUnit_Framework_TestCase
 {
+    protected function setUp()
+    {
+        $this->markTestSkipped('OneOf needs to be refactored');
+    }
+
     public function testValid()
     {
         $valid1 = new Callback(function () {

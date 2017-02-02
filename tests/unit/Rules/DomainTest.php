@@ -24,6 +24,8 @@ class DomainTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
+        $this->markTestSkipped('Domain needs to be refactored');
+
         $this->object = new Domain();
     }
 

@@ -21,6 +21,11 @@ use Respect\Validation\Validator as v;
  */
 class SfTest extends \PHPUnit_Framework_TestCase
 {
+    protected function setUp()
+    {
+        $this->markTestSkipped('Sf needs to be refactored');
+    }
+
     public function testValidationWithAnExistingValidationConstraint()
     {
         $constraintName = 'Time';

@@ -22,6 +22,8 @@ class KeyValueTest extends PHPUnit_Framework_TestCase
 {
     protected function setUp()
     {
+        $this->markTestSkipped('KeyValue needs to be refactored');
+
         StaticTestSpy::reset();
     }
 
