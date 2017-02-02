@@ -1,6 +1,6 @@
 # Call
 
-- `v::call(callable $callback)`
+- `call(callable $callable, Rule $rule)`
 
 This is a very low level validator. It calls a function, method or closure
 for the input and then validates it. Consider the following variable:

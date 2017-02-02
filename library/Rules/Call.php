@@ -11,15 +11,49 @@
 
 namespace Respect\Validation\Rules;
 
-class Call
+use Respect\Validation\Result;
+use Respect\Validation\Rule;
+
+/**
+ * Executes a callable for the input and then validates its return.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
+ */
+final class Call implements Rule
 {
-    public function getReferenceValue($input)
+    /**
+     * @var callable
+     */
+    private $callable;
+
+    /**
+     * @var Rule
+     */
+    private $rule;
+
+    /**
+     * Initializes the rule.
+     *
+     * @param callable $callable
+     * @param Rule     $rule
+     */
+    public function __construct(callable $callable, Rule $rule)
     {
-        return call_user_func_array($this->reference, [&$input]);
+        $this->callable = $callable;
+        $this->rule = $rule;
     }
 
-    public function hasReference($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): Result
     {
-        return is_callable($this->reference);
+        $return = call_user_func($this->callable, $input);
+        $returnResult = $this->rule->validate($return);
+
+        return new Result($returnResult->isValid(), $input, $this, [], $returnResult);
     }
 }

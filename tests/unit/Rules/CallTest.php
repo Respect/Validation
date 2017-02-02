@@ -12,55 +12,52 @@
 namespace Respect\Validation\Rules;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers Respect\Validation\Rules\Call
- * @covers Respect\Validation\Exceptions\CallException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
  */
-class CallTest extends \PHPUnit_Framework_TestCase
+final class CallTest extends RuleTestCase2
 {
-    protected function setUp()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
-        $this->markTestSkipped('Call needs to be refactored');
-    }
-
-    public function thisIsASampleCallbackUsedInsideThisTest()
-    {
-        return [];
-    }
-
-    public function testCallbackValidatorShouldAcceptEmptyString()
-    {
-        $v = new Call('str_split', new ArrayVal());
-        $this->assertTrue($v->assert(''));
-    }
-
-    public function testCallbackValidatorShouldAcceptStringWithFunctionName()
-    {
-        $v = new Call('str_split', new ArrayVal());
-        $this->assertTrue($v->assert('test'));
-    }
-
-    public function testCallbackValidatorShouldAcceptArrayCallbackDefinition()
-    {
-        $v = new Call([$this, 'thisIsASampleCallbackUsedInsideThisTest'], new ArrayVal());
-        $this->assertTrue($v->assert('test'));
-    }
-
-    public function testCallbackValidatorShouldAcceptClosures()
-    {
-        $v = new Call(function () {
-            return [];
-        }, new ArrayVal());
-        $this->assertTrue($v->assert('test'));
+        return [
+            [new Call('trim', $this->createRuleMock(true, 'Something')), ' Something '],
+        ];
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\CallException
+     * {@inheritdoc}
      */
-    public function testCallbackFailedShouldThrowCallException()
+    public function providerForInvalidInput(): array
     {
-        $v = new Call('strrev', new ArrayVal());
-        $this->assertFalse($v->validate('test'));
-        $this->assertFalse($v->assert('test'));
+        return [
+            [new Call('trim', $this->createRuleMock(false, 'Something')), ' Something '],
+        ];
+    }
+
+    /**
+     * @test
+     */
+    public function shouldValidateTheReturnOfTheCallable()
+    {
+        $input = 'Something';
+        $return = str_split($input);
+
+        $childRule = $this->createRuleMock(true, $return);
+
+        $rule = new Call('str_split', $childRule, $input);
+        $result = $rule->validate($input);
+
+        $childResult = current($result->getChildren());
+
+        $this->assertSame($return, $childResult->getInput());
     }
 }
