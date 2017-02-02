@@ -22,6 +22,11 @@ use PHPUnit\Framework\TestCase;
  */
 class AnyOfTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        $this->markTestSkipped('AnyOf needs to be refactored');
+    }
+
     public function testValid(): void
     {
         $valid1 = new Callback(function () {

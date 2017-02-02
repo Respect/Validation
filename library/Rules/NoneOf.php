@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class NoneOf extends AbstractComposite
+class NoneOf
 {
     public function assert($input)
     {

@@ -19,7 +19,7 @@ use Respect\Validation\Exceptions\ValidationException;
  * @author Bradyn Poulsen <bradyn@bradynpoulsen.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class OneOf extends AbstractComposite
+class OneOf
 {
     public function assert($input)
     {

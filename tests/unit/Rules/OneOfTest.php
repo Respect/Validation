@@ -22,6 +22,11 @@ use PHPUnit\Framework\TestCase;
  */
 class OneOfTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        $this->markTestSkipped('OneOf needs to be refactored');
+    }
+
     public function testValid(): void
     {
         $valid1 = new Callback(function () {

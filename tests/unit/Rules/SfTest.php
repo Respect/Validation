@@ -24,6 +24,11 @@ use Respect\Validation\Validator as v;
  */
 class SfTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        $this->markTestSkipped('Sf needs to be refactored');
+    }
+
     public function testValidationWithAnExistingValidationConstraint(): void
     {
         $constraintName = 'Time';

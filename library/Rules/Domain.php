@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
 
-class Domain extends AbstractComposite
+class Domain
 {
     protected $tld;
     protected $checks = [];
