@@ -14,185 +14,57 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use ArrayObject;
-use PHPUnit\Framework\TestCase;
-use Respect\Validation\Validatable;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\KeyNested
- * @covers \Respect\Validation\Exceptions\KeyNestedException
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ivan Zinovyev <vanyazin@gmail.com>
+ *
+ * @since 1.0.0
  */
-class KeyNestedTest extends TestCase
+final class KeyNestedTest extends RuleTestCase
 {
-    protected function setUp(): void
+    /**
+     * @return array
+     */
+    public function providerForValidInput(): array
     {
-        $this->markTestSkipped('KeyNested needs to be refactored');
-    }
-
-    public function testArrayWithPresentKeysWillReturnTrueForFullPathValidator(): void
-    {
-        $array = [
+        $input1 = ['bar' => ['foo' => (object) ['baz' => 'hello world!']]];
+        $input2 = [0 => 'Zero!'];
+        $input3 = ['empty-key' => ''];
+        $input4 = new ArrayObject([
             'bar' => [
                 'foo' => [
                     'baz' => 'hello world!',
-                ],
-                'foooo' => [
-                    'boooo' => 321,
-                ],
-            ],
-        ];
-
-        $rule = new KeyNested('bar.foo.baz');
-
-        self::assertTrue($rule->validate($array));
-    }
-
-    public function testArrayWithNumericKeysWillReturnTrueForFullPathValidator(): void
-    {
-        $array = [
-            0 => 'Zero, the hero!',
-        ];
-
-        $childRule = $this->createMock(Validatable::class);
-        $childRule
-            ->method('check')
-            ->willReturn(true);
-
-        $rule = new KeyNested(0, $childRule);
-
-        self::assertTrue($rule->check($array));
-    }
-
-    public function testArrayWithPresentKeysWillReturnTrueForHalfPathValidator(): void
-    {
-        $array = [
-            'bar' => [
-                'foo' => [
-                    'baz' => 'hello world!',
-                ],
-                'foooo' => [
-                    'boooo' => 321,
-                ],
-            ],
-        ];
-
-        $rule = new KeyNested('bar.foo');
-
-        self::assertTrue($rule->validate($array));
-    }
-
-    public function testObjectWithPresentPropertiesWillReturnTrueForDirtyPathValidator(): void
-    {
-        $object = (object) [
-            'bar' => (object) [
-                'foo' => (object) [
-                    'baz' => 'hello world!',
-                ],
-                'foooo' => (object) [
-                    'boooo' => 321,
-                ],
-            ],
-        ];
-
-        $rule = new KeyNested('bar.foooo.');
-
-        self::assertTrue($rule->validate($object));
-    }
-
-    public function testEmptyInputMustReturnFalse(): void
-    {
-        $rule = new KeyNested('bar.foo.baz');
-
-        self::assertFalse($rule->validate(''));
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\KeyNestedException
-     */
-    public function testEmptyInputMustNotAssert(): void
-    {
-        $rule = new KeyNested('bar.foo.baz');
-        $rule->assert('');
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\KeyNestedException
-     */
-    public function testEmptyInputMustNotCheck(): void
-    {
-        $rule = new KeyNested('bar.foo.baz');
-        $rule->check('');
-    }
-
-    public function testArrayWithEmptyKeyShouldReturnTrue(): void
-    {
-        $rule = new KeyNested('emptyKey');
-        $input = ['emptyKey' => ''];
-
-        self::assertTrue($rule->validate($input));
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\KeyNestedException
-     */
-    public function testArrayWithAbsentKeyShouldThrowNestedKeyException(): void
-    {
-        $validator = new KeyNested('bar.bar');
-        $object = [
-            'baraaaaaa' => [
-                'bar' => 'foo',
-            ],
-        ];
-        self::assertTrue($validator->assert($object));
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\KeyNestedException
-     */
-    public function testNotArrayShouldThrowKeyException(): void
-    {
-        $validator = new KeyNested('baz.bar');
-        $object = 123;
-        self::assertFalse($validator->assert($object));
-    }
-
-    public function testExtraValidatorShouldValidateKey(): void
-    {
-        $subValidator = new Length(3, 7);
-        $validator = new KeyNested('bar.foo.baz', $subValidator);
-        $object = [
-            'bar' => [
-                'foo' => [
-                    'baz' => 'example',
-                ],
-            ],
-        ];
-        self::assertTrue($validator->assert($object));
-    }
-
-    public function testNotMandatoryExtraValidatorShouldPassWithAbsentKey(): void
-    {
-        $subValidator = new Length(1, 3);
-        $validator = new KeyNested('bar.rab', $subValidator, false);
-        $object = new \stdClass();
-        self::assertTrue($validator->validate($object));
-    }
-
-    public function testArrayAccessWithPresentKeysWillReturnTrue(): void
-    {
-        $arrayAccess = new ArrayObject([
-            'bar' => [
-                'foo' => [
-                    'baz' => 'hello world!',
-                ],
-                'foooo' => [
-                    'boooo' => 321,
                 ],
             ],
         ]);
 
-        $rule = new KeyNested('bar.foo.baz');
+        return [
+            [new KeyNested('bar.foo.baz'), $input1],
+            [new KeyNested('bar.foo'), $input1],
+            [new KeyNested('bar.foo.'), $input1],
+            [new KeyNested('bar.foo.baz', $this->createRuleMock('hello world!', true)), $input1],
+            [new KeyNested(0, $this->createRuleMock('Zero!', true)), $input2],
+            [new KeyNested('empty-key'), $input3],
+            [new KeyNested('empty-key.nothing', $this->createRuleMock(null, false), false), $input3],
+            [new KeyNested('bar.foo.baz'), $input4],
+        ];
+    }
 
-        self::assertTrue($rule->validate($arrayAccess));
+    /**
+     * @return array
+     */
+    public function providerForInvalidInput(): array
+    {
+        return [
+            [new KeyNested('bar.foo.baz'), ['bar' => ['foo' => ['qux' => 'hello world!']]]],
+            [new KeyNested('bar.foo.'), ''],
+            [new KeyNested('baz.bar'), 123],
+        ];
     }
 }

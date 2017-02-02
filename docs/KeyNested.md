@@ -1,8 +1,8 @@
 # KeyNested
 
-- `KeyNested(string $name)`
-- `KeyNested(string $name, Validatable $rule)`
-- `KeyNested(string $name, Validatable $rule, bool $mandatory)`
+- `KeyNested(string $reference)`
+- `KeyNested(string $reference, Rule $rule)`
+- `KeyNested(string $reference, Rule $rule, bool $mandatory)`
 
 Validates an array key or an object property using `.` to represent nested data.
 
