@@ -1,6 +1,6 @@
 # OneOf
 
-- `v::oneOf(v $v1, v $v2, v $v3...)`
+- `oneOf(Rule ...$rule)`
 
 This is a group validator that acts as an OR operator.
 

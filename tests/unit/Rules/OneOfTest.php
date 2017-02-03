@@ -12,60 +12,68 @@
 namespace Respect\Validation\Rules;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers Respect\Validation\Rules\OneOf
- * @covers Respect\Validation\Exceptions\OneOfException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
  */
-class OneOfTest extends \PHPUnit_Framework_TestCase
+final class OneOfTest extends RuleTestCase2
 {
-    protected function setUp()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
-        $this->markTestSkipped('OneOf needs to be refactored');
-    }
+        $input = 'foo';
 
-    public function testValid()
-    {
-        $valid1 = new Callback(function () {
-            return false;
-        });
-        $valid2 = new Callback(function () {
-            return true;
-        });
-        $valid3 = new Callback(function () {
-            return false;
-        });
-        $o = new OneOf($valid1, $valid2, $valid3);
-        $this->assertTrue($o->validate('any'));
-        $this->assertTrue($o->assert('any'));
-        $this->assertTrue($o->check('any'));
+        return [
+            [new OneOf($this->createRuleMock(true, $input)), $input],
+            [new OneOf($this->createRuleMock(true, $input), $this->createRuleMock(true, $input)), $input],
+            [new OneOf($this->createRuleMock(false, $input), $this->createRuleMock(true, $input)), $input],
+            [new OneOf($this->createRuleMock(true, $input), $this->createRuleMock(false, $input)), $input],
+        ];
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\OneOfException
+     * {@inheritdoc}
      */
-    public function testInvalid()
+    public function providerForInvalidInput(): array
     {
-        $valid1 = new Callback(function () {
-            return false;
-        });
-        $valid2 = new Callback(function () {
-            return false;
-        });
-        $valid3 = new Callback(function () {
-            return false;
-        });
-        $o = new OneOf($valid1, $valid2, $valid3);
-        $this->assertFalse($o->validate('any'));
-        $this->assertFalse($o->assert('any'));
+        $input = 'bar';
+
+        return [
+            [new OneOf(), $input],
+            [new OneOf($this->createRuleMock(false, $input)), $input],
+            [new OneOf($this->createRuleMock(false, $input), $this->createRuleMock(false, $input)), $input],
+        ];
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\XdigitException
+     * @test
      */
-    public function testInvalidCheck()
+    public function shouldOneRuleResultsAsChildren()
     {
-        $o = new OneOf(new Xdigit(), new Alnum());
-        $this->assertFalse($o->validate(-10));
-        $this->assertFalse($o->check(-10));
+        $input = 'baz';
+
+        $expectedRules = [
+            $this->createRuleMock(true, $input),
+            $this->createRuleMock(false, $input),
+            $this->createRuleMock(true, $input),
+            $this->createRuleMock(false, $input),
+        ];
+
+        $rule = new OneOf(...$expectedRules);
+        $result = $rule->validate($input);
+
+        $actualRules = [];
+        foreach ($result->getChildren() as $childResult) {
+            $actualRules[] = $childResult->getRule();
+        }
+
+        $this->assertSame($expectedRules, $actualRules);
     }
 }
