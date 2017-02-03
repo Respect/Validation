@@ -3,7 +3,7 @@
 - `v::length(int $min, int $max)`
 - `v::length(int $min, null)`
 - `v::length(null, int $max)`
-- `v::length(int $min, int $max, boolean $inclusive = true)`
+- `v::length(int $min, int $max, bool $inclusive = true)`
 
 Validates lengths. Most simple example:
 

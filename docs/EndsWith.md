@@ -1,7 +1,7 @@
 # EndsWith
 
 - `v::endsWith(mixed $value)`
-- `v::endsWith(mixed $value, boolean $identical = false)`
+- `v::endsWith(mixed $value, bool $identical = false)`
 
 This validator is similar to `v::contains()`, but validates
 only if the value is at the end of the input.

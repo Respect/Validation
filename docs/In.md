@@ -1,7 +1,7 @@
 # In
 
 - `v::in(mixed $haystack)`
-- `v::in(mixed $haystack, boolean $identical = false)`
+- `v::in(mixed $haystack, bool $identical = false)`
 
 Validates if the input is contained in a specific haystack.
 

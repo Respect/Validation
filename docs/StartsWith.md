@@ -1,7 +1,7 @@
 # StartsWith
 
 - `v::startsWith(mixed $value)`
-- `v::startsWith(mixed $value, boolean $identical = false)`
+- `v::startsWith(mixed $value, bool $identical = false)`
 
 This validator is similar to `v::contains()`, but validates
 only if the value is at the beginning of the input.

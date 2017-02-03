@@ -1,7 +1,7 @@
 # Contains
 
 - `v::contains(mixed $value)`
-- `v::contains(mixed $value, boolean $identical = false)`
+- `v::contains(mixed $value, bool $identical = false)`
 
 For strings:
 

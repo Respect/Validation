@@ -2,7 +2,7 @@
 
 - `v::attribute(string $name)`
 - `v::attribute(string $name, v $validator)`
-- `v::attribute(string $name, v $validator, boolean $mandatory = true)`
+- `v::attribute(string $name, v $validator, bool $mandatory = true)`
 
 Validates an object attribute.
 

@@ -2,7 +2,7 @@
 
 - `v::key(string $name)`
 - `v::key(string $name, v $validator)`
-- `v::key(string $name, v $validator, boolean $mandatory = true)`
+- `v::key(string $name, v $validator, bool $mandatory = true)`
 
 Validates an array key.
 
