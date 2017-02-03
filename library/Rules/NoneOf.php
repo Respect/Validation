@@ -13,28 +13,51 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class NoneOf
-{
-    public function assert($input)
-    {
-        $exceptions = $this->validateRules($input);
-        $numRules = count($this->getRules());
-        $numExceptions = count($exceptions);
-        if ($numRules !== $numExceptions) {
-            throw $this->reportError($input)->setRelated($exceptions);
-        }
+use Respect\Validation\Result;
+use Respect\Validation\Rule;
 
-        return true;
+/**
+ * Validates if none of the given validators validate.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
+ */
+final class NoneOf implements Rule
+{
+    /**
+     * @var Rule[]
+     */
+    private $rules = [];
+
+    /**
+     * Initializes the rule.
+     *
+     * @param Rule $rule
+     * @param Rule ...$rule2
+     */
+    public function __construct(Rule ...$rule)
+    {
+        $this->rules = $rule;
     }
 
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function apply($input): Result
     {
-        foreach ($this->getRules() as $rule) {
-            if ($rule->validate($input)) {
-                return false;
-            }
+        $isValid = true;
+        $childrenResults = [];
+        foreach ($this->rules as $rule) {
+            $childResult = $rule
+                ->apply($input)
+                ->invert();
+
+            $isValid = $isValid && $childResult->isValid();
+            $childrenResults[] = $childResult;
         }
 
-        return true;
+        return new Result($isValid, $input, $this, [], ...$childrenResults);
     }
 }

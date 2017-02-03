@@ -1,6 +1,6 @@
 # NoneOf
 
-- `NoneOf(Validatable ...$rule)`
+- `NoneOf(Rule ...$rule)`
 
 Validates if NONE of the given validators validate:
 
