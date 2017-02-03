@@ -14,7 +14,7 @@ namespace Respect\Validation\Rules;
 use DateTime;
 use Respect\Validation\Exceptions\ComponentException;
 
-class Age extends AllOf
+class Age
 {
     public $minAge;
     public $maxAge;

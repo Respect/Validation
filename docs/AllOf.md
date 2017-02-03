@@ -1,6 +1,6 @@
 # AllOf
 
-- `v::allOf(v $v1, v $v2, v $v3...)`
+- `allOf(Rule ...$rule)`
 
 Will validate if all inner validators validates.
 

@@ -20,7 +20,7 @@ use Respect\Validation\Validatable;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class KeySet extends AllOf
+class KeySet
 {
     /**
      * @param AllOf $rule

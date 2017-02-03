@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 
-class Between extends AllOf
+class Between
 {
     public $minValue;
     public $maxValue;

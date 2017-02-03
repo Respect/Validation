@@ -11,42 +11,48 @@
 
 namespace Respect\Validation\Rules;
 
-class AllOf extends AbstractComposite
+use Respect\Validation\Result;
+use Respect\Validation\Rule;
+
+/**
+ * Validates if all of the given validators validate.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
+ */
+final class AllOf implements Rule
 {
-    public function assert($input)
-    {
-        $exceptions = $this->validateRules($input);
-        $numRules = count($this->rules);
-        $numExceptions = count($exceptions);
-        $summary = [
-            'total' => $numRules,
-            'failed' => $numExceptions,
-            'passed' => $numRules - $numExceptions,
-        ];
-        if (!empty($exceptions)) {
-            throw $this->reportError($input, $summary)->setRelated($exceptions);
-        }
+    /**
+     * @var Rule[]
+     */
+    private $rules = [];
 
-        return true;
+    /**
+     * Initializes the rule.
+     *
+     * @param Rule $rule
+     * @param Rule ...$rule2
+     */
+    public function __construct(Rule ...$rule)
+    {
+        $this->rules = $rule;
     }
 
-    public function check($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): Result
     {
-        foreach ($this->getRules() as $rule) {
-            $rule->check($input);
+        $isValid = !empty($this->rules);
+        $childrenResults = [];
+        foreach ($this->rules as $rule) {
+            $childResult = $rule->validate($input);
+            $isValid = $isValid && $childResult->isValid();
+            $childrenResults[] = $childResult;
         }
 
-        return true;
-    }
-
-    public function validate($input)
-    {
-        foreach ($this->getRules() as $rule) {
-            if (!$rule->validate($input)) {
-                return false;
-            }
-        }
-
-        return true;
+        return new Result($isValid, $input, $this, [], ...$childrenResults);
     }
 }
