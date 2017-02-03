@@ -12,50 +12,68 @@
 namespace Respect\Validation\Rules;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers Respect\Validation\Rules\NoneOf
- * @covers Respect\Validation\Exceptions\NoneOfException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
  */
-class NoneOfTest extends \PHPUnit_Framework_TestCase
+final class NoneOfTest extends RuleTestCase2
 {
-    protected function setUp()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
-        $this->markTestSkipped('NoneOf needs to be refactored');
-    }
+        $input = 'foo';
 
-    public function testValid()
-    {
-        $valid1 = new Callback(function () {
-            return false;
-        });
-        $valid2 = new Callback(function () {
-            return false;
-        });
-        $valid3 = new Callback(function () {
-            return false;
-        });
-        $o = new NoneOf($valid1, $valid2, $valid3);
-        $this->assertTrue($o->validate('any'));
-        $this->assertTrue($o->assert('any'));
-        $this->assertTrue($o->check('any'));
+        return [
+            [new NoneOf(), $input],
+            [new NoneOf($this->createRuleMock(false, $input)), $input],
+            [new NoneOf($this->createRuleMock(false, $input), $this->createRuleMock(false, $input)), $input],
+        ];
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\NoneOfException
+     * {@inheritdoc}
      */
-    public function testInvalid()
+    public function providerForInvalidInput(): array
     {
-        $valid1 = new Callback(function () {
-            return false;
-        });
-        $valid2 = new Callback(function () {
-            return false;
-        });
-        $valid3 = new Callback(function () {
-            return true;
-        });
-        $o = new NoneOf($valid1, $valid2, $valid3);
-        $this->assertFalse($o->validate('any'));
-        $this->assertFalse($o->assert('any'));
+        $input = 'bar';
+
+        return [
+            [new NoneOf($this->createRuleMock(true, $input)), $input],
+            [new NoneOf($this->createRuleMock(true, $input), $this->createRuleMock(false, $input)), $input],
+            [new NoneOf($this->createRuleMock(false, $input), $this->createRuleMock(true, $input)), $input],
+            [new NoneOf($this->createRuleMock(true, $input), $this->createRuleMock(true, $input)), $input],
+        ];
+    }
+
+    /**
+     * @test
+     */
+    public function shouldAllRuleResultsAsChildren()
+    {
+        $input = 'baz';
+
+        $expectedRules = [
+            $this->createRuleMock(true, $input),
+            $this->createRuleMock(false, $input),
+            $this->createRuleMock(true, $input),
+            $this->createRuleMock(false, $input),
+        ];
+
+        $rule = new NoneOf(...$expectedRules);
+        $result = $rule->validate($input);
+
+        $actualRules = [];
+        foreach ($result->getChildren() as $childResult) {
+            $actualRules[] = $childResult->getRule();
+        }
+
+        $this->assertSame($expectedRules, $actualRules);
     }
 }

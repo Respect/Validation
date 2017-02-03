@@ -1,6 +1,6 @@
 # NoneOf
 
-- `v::noneOf(v $v1, v $v2, v $v3...)`
+- `noneOf(Rule ...$rule)`
 
 Validates if NONE of the given validators validate:
 
