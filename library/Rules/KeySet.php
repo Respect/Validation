@@ -22,7 +22,7 @@ use Respect\Validation\Validatable;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class KeySet extends AllOf
+class KeySet
 {
     /**
      * @param AllOf $rule
@@ -39,9 +39,6 @@ class KeySet extends AllOf
         return current($rules);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addRule($rule, $arguments = [])
     {
         if ($rule instanceof AllOf) {
@@ -57,9 +54,6 @@ class KeySet extends AllOf
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addRules(array $rules)
     {
         foreach ($rules as $rule) {
@@ -117,9 +111,6 @@ class KeySet extends AllOf
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function assert($input)
     {
         $this->checkKeys($input);
@@ -127,9 +118,6 @@ class KeySet extends AllOf
         return parent::assert($input);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function check($input)
     {
         $this->checkKeys($input);
@@ -137,9 +125,6 @@ class KeySet extends AllOf
         return parent::check($input);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function validate($input)
     {
         if (!$this->hasValidStructure($input)) {

@@ -23,7 +23,7 @@ use Respect\Validation\Rules\Key;
 
 /**
  * @method static Validator age(int $minAge = null, int $maxAge = null)
- * @method static Validator allOf(Validatable ...$rule)
+ * @method static Validator allOf(Rule ...$rule)
  * @method static Validator alnum(string $additionalChars = null)
  * @method static Validator alpha(string $additionalChars = null)
  * @method static Validator alwaysInvalid()

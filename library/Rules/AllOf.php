@@ -13,42 +13,59 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class AllOf
+use Respect\Validation\Message\Template;
+use Respect\Validation\Message\Templates;
+use Respect\Validation\Result;
+use Respect\Validation\Rule;
+
+/**
+ * Validates if all of the given validators validate.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
+ *
+ * @Templates(
+ *   regular={
+ *     @Template("These rules must pass for {{placeholder}}"),
+ *   },
+ *   inverted={
+ *     @Template("These rules must not pass for {{placeholder}}"),
+ *   },
+ * )
+ */
+final class AllOf implements Rule
 {
-    public function assert($input)
-    {
-        $exceptions = $this->validateRules($input);
-        $numRules = count($this->rules);
-        $numExceptions = count($exceptions);
-        $summary = [
-            'total' => $numRules,
-            'failed' => $numExceptions,
-            'passed' => $numRules - $numExceptions,
-        ];
-        if (!empty($exceptions)) {
-            throw $this->reportError($input, $summary)->setRelated($exceptions);
-        }
+    /**
+     * @var Rule[]
+     */
+    private $rules = [];
 
-        return true;
+    /**
+     * Initializes the rule.
+     *
+     * @param Rule $rule
+     * @param Rule ...$rule2
+     */
+    public function __construct(Rule ...$rule)
+    {
+        $this->rules = $rule;
     }
 
-    public function check($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function apply($input): Result
     {
-        foreach ($this->getRules() as $rule) {
-            $rule->check($input);
+        $isValid = !empty($this->rules);
+        $childrenResults = [];
+        foreach ($this->rules as $rule) {
+            $childResult = $rule->apply($input);
+            $isValid = $isValid && $childResult->isValid();
+            $childrenResults[] = $childResult;
         }
 
-        return true;
-    }
-
-    public function validate($input)
-    {
-        foreach ($this->getRules() as $rule) {
-            if (!$rule->validate($input)) {
-                return false;
-            }
-        }
-
-        return true;
+        return new Result($isValid, $input, $this, [], ...$childrenResults);
     }
 }

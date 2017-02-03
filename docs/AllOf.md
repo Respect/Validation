@@ -1,6 +1,6 @@
 # AllOf
 
-- `AllOf(Validatable ...$rule)`
+- `AllOf(Rule ...$rule)`
 
 Will validate if all inner validators validates.
 
