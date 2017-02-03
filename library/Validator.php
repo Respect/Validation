@@ -28,7 +28,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator alpha(string $additionalChars = null)
  * @method static Validator alwaysInvalid()
  * @method static Validator alwaysValid()
- * @method static Validator anyOf()
+ * @method static Validator anyOf(Rule ...$rule)
  * @method static Validator arrayType()
  * @method static Validator arrayVal()
  * @method static Validator attribute(string $attributeName, Rule $rule = null, bool $mandatory = true)

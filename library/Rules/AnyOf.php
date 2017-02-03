@@ -13,52 +13,49 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Result;
+use Respect\Validation\Rule;
 
-class AnyOf
+/**
+ * Validates if none of the given validators validate.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
+ */
+final class AnyOf implements Rule
 {
-    public function assert($input)
-    {
-        $validators = $this->getRules();
-        $exceptions = $this->validateRules($input);
-        $numRules = count($validators);
-        $numExceptions = count($exceptions);
-        if ($numExceptions === $numRules) {
-            throw $this->reportError($input)->setRelated($exceptions);
-        }
+    /**
+     * @var Rule[]
+     */
+    private $rules = [];
 
-        return true;
+    /**
+     * Initializes the rule.
+     *
+     * @param Rule $rule
+     * @param Rule ...$rule2
+     */
+    public function __construct(Rule ...$rule)
+    {
+        $this->rules = $rule;
     }
 
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function apply($input): Result
     {
-        foreach ($this->getRules() as $v) {
-            if ($v->validate($input)) {
-                return true;
-            }
+        $isValid = false;
+        $childrenResults = [];
+        foreach ($this->rules as $rule) {
+            $childResult = $rule->apply($input);
+
+            $isValid = $childResult->isValid() || $isValid;
+            $childrenResults[] = $childResult;
         }
 
-        return false;
-    }
-
-    public function check($input)
-    {
-        foreach ($this->getRules() as $v) {
-            try {
-                if ($v->check($input)) {
-                    return true;
-                }
-            } catch (ValidationException $e) {
-                if (!isset($firstException)) {
-                    $firstException = $e;
-                }
-            }
-        }
-
-        if (isset($firstException)) {
-            throw $firstException;
-        }
-
-        return false;
+        return new Result($isValid, $input, $this, [], ...$childrenResults);
     }
 }
