@@ -42,7 +42,7 @@ class EqualsTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Respect\Validation\Exceptions\EqualsException
-     * @expectedExceptionMessage "24" must be equals 42
+     * @expectedExceptionMessage "24" must equal 42
      */
     public function testShouldThrowTheProperExceptionWhenFailure()
     {
