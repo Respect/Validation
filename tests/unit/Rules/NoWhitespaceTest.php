@@ -13,79 +13,65 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\NoWhitespace
- * @covers \Respect\Validation\Exceptions\NoWhitespaceException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Augusto Pascutti <augusto@phpsp.org.br>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
  */
-class NoWhitespaceTest extends TestCase
+final class NoWhitespaceTest extends RuleTestCase
 {
-    protected $noWhitespaceValidator;
-
-    protected function setUp(): void
-    {
-        $this->noWhitespaceValidator = new NoWhitespace();
-    }
-
     /**
-     * @dataProvider providerForPass
+     * {@inheritdoc}
      */
-    public function testStringWithNoWhitespaceShouldPass($input): void
+    public function providerForValidInput(): array
     {
-        self::assertTrue($this->noWhitespaceValidator->__invoke($input));
-        self::assertTrue($this->noWhitespaceValidator->check($input));
-        self::assertTrue($this->noWhitespaceValidator->assert($input));
-    }
+        $rule = new NoWhitespace();
 
-    /**
-     * @dataProvider providerForFail
-     * @expectedException \Respect\Validation\Exceptions\NoWhitespaceException
-     */
-    public function testStringWithWhitespaceShouldFail($input): void
-    {
-        self::assertFalse($this->noWhitespaceValidator->__invoke($input));
-        self::assertFalse($this->noWhitespaceValidator->assert($input));
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\NoWhitespaceException
-     */
-    public function testStringWithLineBreaksShouldFail(): void
-    {
-        self::assertFalse($this->noWhitespaceValidator->__invoke("w\npoiur"));
-        self::assertFalse($this->noWhitespaceValidator->assert("w\npoiur"));
-    }
-
-    public function providerForPass()
-    {
         return [
-            [''],
-            [null],
-            [0],
-            ['wpoiur'],
-            ['Foo'],
-        ];
-    }
-
-    public function providerForFail()
-    {
-        return [
-            [' '],
-            ['w poiur'],
-            ['      '],
-            ["Foo\nBar"],
-            ["Foo\tBar"],
+            [$rule, ''],
+            [$rule, null],
+            [$rule, 0],
+            [$rule, 'wpoiur'],
+            [$rule, 'Foo'],
         ];
     }
 
     /**
-     * @issue 346
-     * @expectedException \Respect\Validation\Exceptions\NoWhitespaceException
+     * {@inheritdoc}
      */
-    public function testArrayDoesNotThrowAWarning(): void
+    public function providerForInvalidInput(): array
     {
-        $this->noWhitespaceValidator->assert([]);
+        $rule = new NoWhitespace();
+
+        return [
+            [$rule, []], // issue 346
+            [$rule, ' '],
+            [$rule, 'w poiur'],
+            [$rule, "w\npoiur"],
+            [$rule, '      '],
+            [$rule, "Foo\nBar"],
+            [$rule, "Foo\tBar"],
+        ];
+    }
+
+    public function shouldReturnScalarValResultWhenInputIsNotScalar(): void
+    {
+        $input = new stdClass();
+
+        $rule = new NoWhitespace();
+        $result = $rule->apply($input);
+
+        $childResult = current($result->getChildren());
+
+        self::assertInstanceOf(ScalarVal::class, $childResult->getRule());
     }
 }
