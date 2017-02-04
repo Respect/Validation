@@ -13,71 +13,75 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Not
- * @covers \Respect\Validation\Exceptions\NotException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
  */
-class NotTest extends TestCase
+final class NotTest extends RuleTestCase
 {
-    protected function setUp(): void
-    {
-        $this->markTestSkipped('Not needs to be refactored');
-    }
-
     /**
-     * @dataProvider providerForValidNot
+     * {@inheritdoc}
      */
-    public function testNot($v, $input): void
-    {
-        $not = new Not($v);
-        self::assertTrue($not->assert($input));
-    }
-
-    /**
-     * @dataProvider providerForInvalidNot
-     * @expectedException \Respect\Validation\Exceptions\ValidationException
-     */
-    public function testNotNotHaha($v, $input): void
-    {
-        $not = new Not($v);
-        self::assertFalse($not->assert($input));
-    }
-
-    /**
-     * @dataProvider providerForSetName
-     */
-    public function testNotSetName($v): void
-    {
-        $not = new Not($v);
-        $not->setName('Foo');
-
-        self::assertEquals('Foo', $not->getName());
-        self::assertEquals('Foo', $v->getName());
-    }
-
-    public function providerForValidNot()
+    public function providerForValidInput(): array
     {
         return [
-            [new IntVal(), ''],
-            [new IntVal(), 'aaa'],
+            [new Not($this->createRuleMock('foo', false)), 'foo'],
+            [new Not(new Not($this->createRuleMock('foo', true))), 'foo'],
+            [new Not(new Not(new Not($this->createRuleMock('foo', false)))), 'foo'],
         ];
     }
 
-    public function providerForInvalidNot()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         return [
-            [new IntVal(), 123],
+            [new Not($this->createRuleMock('foo', true)), 'foo'],
+            [new Not(new Not($this->createRuleMock('foo', false))), 'foo'],
+            [new Not(new Not(new Not($this->createRuleMock('foo', true)))), 'foo'],
         ];
     }
 
-    public function providerForSetName()
+    /**
+     * @test
+     */
+    public function shouldHaveChildResultAsChildren(): void
     {
-        return [
-            [new IntVal()],
-            [new Not(new Not(new IntVal()))],
-        ];
+        $input = 'baz';
+
+        $childRule = $this->createRuleMock($input, true);
+
+        $rule = new Not($childRule);
+        $result = $rule->apply($input);
+
+        $childResult = current($result->getChildren());
+
+        self::assertSame($childRule, $childResult->getRule());
+    }
+
+    /**
+     * @test
+     */
+    public function shouldHaveAnInvertedChildResultAsChildren(): void
+    {
+        $input = 'baz';
+
+        $childRule = $this->createRuleMock($input, false);
+
+        $rule = new Not($childRule);
+        $result = $rule->apply($input);
+
+        $childResult = current($result->getChildren());
+
+        self::assertTrue($childResult->isInverted());
     }
 }

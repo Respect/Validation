@@ -13,62 +13,42 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Validatable;
+use Respect\Validation\Result;
+use Respect\Validation\Rule;
 
-class Not extends AbstractRule
+/**
+ * Negates the given rule.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
+ */
+final class Not implements Rule
 {
-    public $rule;
+    /**
+     * @var Rule
+     */
+    private $rule;
 
-    public function __construct(Validatable $rule)
+    /**
+     * Initializes the rule.
+     *
+     * @param Rule $rule
+     */
+    public function __construct(Rule $rule)
     {
         $this->rule = $rule;
     }
 
-    public function setName($name)
+    /**
+     * {@inheritdoc}
+     */
+    public function apply($input): Result
     {
-        $this->rule->setName($name);
+        $ruleResult = $this->rule->apply($input);
+        $ruleResult = $ruleResult->invert();
 
-        return parent::setName($name);
-    }
-
-    public function validate($input)
-    {
-        return false == $this->rule->validate($input);
-    }
-
-    public function assert($input)
-    {
-        if ($this->validate($input)) {
-            return true;
-        }
-
-        $rule = $this->rule;
-        if ($rule instanceof AllOf) {
-            $rule = $this->absorbAllOf($rule, $input);
-        }
-
-        throw $rule
-            ->reportError($input)
-            ->setMode(ValidationException::MODE_NEGATIVE);
-    }
-
-    private function absorbAllOf(AllOf $rule, $input)
-    {
-        $rules = $rule->getRules();
-        while (($current = array_shift($rules))) {
-            $rule = $current;
-            if (!$rule instanceof AllOf) {
-                continue;
-            }
-
-            if (!$rule->validate($input)) {
-                continue;
-            }
-
-            $rules = $rule->getRules();
-        }
-
-        return $rule;
+        return new Result($ruleResult->isValid(), $input, $this, [], $ruleResult);
     }
 }
