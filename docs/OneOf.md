@@ -21,5 +21,5 @@ passes.
 See also:
 
   * [AllOf](AllOf.md)
+  * [OnlyOneOf](OnlyOneOf.md)
   * [NoneOf](NoneOf.md)
-  * [When](When.md)
