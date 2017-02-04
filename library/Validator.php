@@ -45,7 +45,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator cnh()
  * @method static Validator cnpj()
  * @method static Validator consonant(string $additionalChars = null)
- * @method static Validator contains(mixed $containsValue, bool $identical = false)
+ * @method static Validator contains(mixed $expectedValue, bool $identical = false)
  * @method static Validator countable()
  * @method static Validator countryCode()
  * @method static Validator currencyCode()

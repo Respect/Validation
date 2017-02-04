@@ -13,45 +13,86 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Contains extends AbstractRule
-{
-    public $containsValue;
-    public $identical;
+use Respect\Validation\Result;
+use Respect\Validation\Rule;
 
-    public function __construct($containsValue, $identical = false)
+/**
+ * Validates if the input contains some value.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
+ */
+final class Contains implements Rule
+{
+    /**
+     * @var mixed
+     */
+    private $expectedValue;
+
+    /**
+     * @var bool
+     */
+    private $identical;
+
+    /**
+     * Initializes the rule.
+     *
+     * @param mixed $expectedValue
+     * @param bool  $identical
+     */
+    public function __construct($expectedValue, bool $identical = false)
     {
-        $this->containsValue = (string) $containsValue;
+        $this->expectedValue = $expectedValue;
         $this->identical = $identical;
     }
 
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function apply($input): Result
     {
+        if (is_array($input)) {
+            return new Result(in_array($this->expectedValue, $input, $this->identical), $input, $this);
+        }
+
+        $stringValResult = (new StringVal())->apply($input);
+        if (!$stringValResult->isValid()) {
+            return new Result(false, $input, $this, [], $stringValResult);
+        }
+
+        $encoding = mb_detect_encoding($input);
         if ($this->identical) {
-            return $this->validateIdentical($input);
+            return new Result($this->isIdenticalToExpectedValue($input, $encoding), $input, $this);
         }
 
-        return $this->validateEquals($input);
+        return new Result($this->isEqualToExpectedValue($input, $encoding), $input, $this);
     }
 
-    protected function validateEquals($input)
+    /**
+     * Verifies if the input is equal to the expected value.
+     *
+     * @param string $input
+     * @param string $encoding
+     *
+     * @return bool
+     */
+    private function isEqualToExpectedValue(string $input, string $encoding): bool
     {
-        if (is_array($input)) {
-            return in_array($this->containsValue, $input);
-        }
-
-        $inputString = (string) $input;
-
-        return false !== mb_stripos($inputString, $this->containsValue, 0, mb_detect_encoding($inputString));
+        return false !== mb_stripos($input, $this->expectedValue, 0, $encoding);
     }
 
-    protected function validateIdentical($input)
+    /**
+     * Verifies if the input is identical to the expected value.
+     *
+     * @param string $input
+     * @param string $encoding
+     *
+     * @return bool
+     */
+    private function isIdenticalToExpectedValue(string $input, string $encoding): bool
     {
-        if (is_array($input)) {
-            return in_array($this->containsValue, $input, true);
-        }
-
-        $inputString = (string) $input;
-
-        return false !== mb_strpos($inputString, $this->containsValue, 0, mb_detect_encoding($inputString));
+        return false !== mb_strpos($input, $this->expectedValue, 0, $encoding);
     }
 }

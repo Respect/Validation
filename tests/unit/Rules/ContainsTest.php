@@ -13,93 +13,71 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Contains
- * @covers \Respect\Validation\Exceptions\ContainsException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
  */
-class ContainsTest extends TestCase
+final class ContainsTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForContainsIdentical
+     * {@inheritdoc}
      */
-    public function testStringsContainingExpectedIdenticalValueShouldPass($start, $input): void
+    public function providerForValidInput(): array
     {
-        $v = new Contains($start, true);
-        self::assertTrue($v->validate($input));
+        return [
+            [new Contains('foo'), ['bar', 'foo']],
+            [new Contains('foo'), 'barbazFOO'],
+            [new Contains('foo'), 'barbazfoo'],
+            [new Contains('foo'), 'foobazfoO'],
+            [new Contains('1'), [2, 3, 1]],
+            [new Contains('1'), [2, 3, '1']],
+            [new Contains('foo', true), ['fool', 'foo']],
+            [new Contains('foo', true), 'barbazfoo'],
+            [new Contains('foo', true), 'foobazfoo'],
+            [new Contains('1', true), [2, 3, '1']],
+        ];
     }
 
     /**
-     * @dataProvider providerForContains
+     * {@inheritdoc}
      */
-    public function testStringsContainingExpectedValueShouldPass($start, $input): void
+    public function providerForInvalidInput(): array
     {
-        $v = new Contains($start, false);
-        self::assertTrue($v->validate($input));
+        return [
+            [new Contains('bat'), ['bar', 'foo']],
+            [new Contains('foo'), 'barfaabaz'],
+            [new Contains('foo'), 'faabarbaz'],
+            [new Contains('foo', true), ''],
+            [new Contains('bat', true), ['BAT', 'foo']],
+            [new Contains('bat', true), ['BaT', 'Batata']],
+            [new Contains('foo', true), 'barfaabaz'],
+            [new Contains('foo', true), 'barbazFOO'],
+            [new Contains('foo', true), 'faabarbaz'],
+            [new Contains('1', true), [1, 2, 3]],
+        ];
     }
 
     /**
-     * @dataProvider providerForNotContainsIdentical
+     * @test
      */
-    public function testStringsNotContainsExpectedIdenticalValueShouldNotPass($start, $input): void
+    public function shouldReturnAStringValResultWhenIsNotAString(): void
     {
-        $v = new Contains($start, true);
-        self::assertFalse($v->validate($input));
-    }
+        $input = new stdClass();
 
-    /**
-     * @dataProvider providerForNotContains
-     */
-    public function testStringsNotContainsExpectedValueShouldNotPass($start, $input): void
-    {
-        $v = new Contains($start, false);
-        self::assertFalse($v->validate($input));
-    }
+        $rule = new Contains('foo');
+        $result = $rule->apply($input);
 
-    public function providerForContains()
-    {
-        return [
-            ['foo', ['bar', 'foo']],
-            ['foo', 'barbazFOO'],
-            ['foo', 'barbazfoo'],
-            ['foo', 'foobazfoO'],
-            ['1', [2, 3, 1]],
-            ['1', [2, 3, '1']],
-        ];
-    }
+        $childResult = current($result->getChildren());
 
-    public function providerForContainsIdentical()
-    {
-        return [
-            ['foo', ['fool', 'foo']],
-            ['foo', 'barbazfoo'],
-            ['foo', 'foobazfoo'],
-            ['1', [2, 3, (string) 1]],
-            ['1', [2, 3, '1']],
-        ];
-    }
-
-    public function providerForNotContains()
-    {
-        return [
-            ['foo', ''],
-            ['bat', ['bar', 'foo']],
-            ['foo', 'barfaabaz'],
-            ['foo', 'faabarbaz'],
-        ];
-    }
-
-    public function providerForNotContainsIdentical()
-    {
-        return [
-            ['foo', ''],
-            ['bat', ['BAT', 'foo']],
-            ['bat', ['BaT', 'Batata']],
-            ['foo', 'barfaabaz'],
-            ['foo', 'barbazFOO'],
-            ['foo', 'faabarbaz'],
-        ];
+        self::assertInstanceOf(StringVal::class, $childResult->getRule());
     }
 }
