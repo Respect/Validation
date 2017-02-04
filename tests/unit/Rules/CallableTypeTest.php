@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\CallableType
- * @covers Respect\Validation\Exceptions\CallableTypeException
+ * @covers \Respect\Validation\Rules\CallableType
+ * @covers \Respect\Validation\Exceptions\CallableTypeException
  */
 class CallableTypeTest extends \PHPUnit_Framework_TestCase
 {
@@ -42,7 +42,7 @@ class CallableTypeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\CallableTypeException
+     * @expectedException \Respect\Validation\Exceptions\CallableTypeException
      * @expectedExceptionMessage "testShouldThrowCallableTypeExceptionWhenChecking" must be a callable
      */
     public function testShouldThrowCallableTypeExceptionWhenChecking()

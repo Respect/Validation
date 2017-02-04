@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Alpha
- * @covers Respect\Validation\Exceptions\AlphaException
+ * @covers \Respect\Validation\Rules\Alpha
+ * @covers \Respect\Validation\Exceptions\AlphaException
  */
 class AlphaTest extends \PHPUnit_Framework_TestCase
 {
@@ -31,7 +31,7 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidAlpha
-     * @expectedException Respect\Validation\Exceptions\AlphaException
+     * @expectedException \Respect\Validation\Exceptions\AlphaException
      */
     public function testInvalidAlphanumericCharsShouldThrowAlphaException($invalidAlpha, $additional)
     {
@@ -42,7 +42,7 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
     public function testInvalidConstructorParamsShouldThrowComponentException($additional)
     {

@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Xdigit
- * @covers Respect\Validation\Exceptions\XdigitException
+ * @covers \Respect\Validation\Rules\Xdigit
+ * @covers \Respect\Validation\Exceptions\XdigitException
  */
 class XdigitTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,7 +37,7 @@ class XdigitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotXdigit
-     * @expectedException Respect\Validation\Exceptions\XdigitException
+     * @expectedException \Respect\Validation\Exceptions\XdigitException
      */
     public function testInvalidHexadecimalDigitsShouldThrowXdigitException($input)
     {

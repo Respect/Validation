@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\When
+ * @covers \Respect\Validation\Rules\When
  */
 class WhenTest extends RuleTestCase
 {
@@ -32,7 +32,7 @@ class WhenTest extends RuleTestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException \Respect\Validation\Exceptions\ValidationException
      * @expectedExceptionMessage Exception for ThenNotValid:assert() method
      */
     public function testShouldThrowExceptionForTheThenRuleWhenTheIfRuleIsValidAndTheThenRuleIsNotOnAssertMethod()
@@ -46,7 +46,7 @@ class WhenTest extends RuleTestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException \Respect\Validation\Exceptions\ValidationException
      * @expectedExceptionMessage Exception for ThenNotValid:check() method
      */
     public function testShouldThrowExceptionForTheThenRuleWhenTheIfRuleIsValidAndTheThenRuleIsNotOnCheckMethod()
@@ -60,7 +60,7 @@ class WhenTest extends RuleTestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException \Respect\Validation\Exceptions\ValidationException
      * @expectedExceptionMessage Exception for ElseNotValid:assert() method
      */
     public function testShouldThrowExceptionForTheElseRuleWhenTheIfRuleIsNotValidAndTheElseRuleIsNotOnAssertMethod()
@@ -74,7 +74,7 @@ class WhenTest extends RuleTestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException \Respect\Validation\Exceptions\ValidationException
      * @expectedExceptionMessage Exception for ElseNotValid:check() method
      */
     public function testShouldThrowExceptionForTheElseRuleWhenTheIfRuleIsNotValidAndTheElseRuleIsNotOnCheckMethod()

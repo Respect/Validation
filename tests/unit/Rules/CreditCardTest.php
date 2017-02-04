@@ -15,7 +15,7 @@ use Respect\Validation\Exceptions\ComponentException;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\CreditCard
+ * @covers \Respect\Validation\Rules\CreditCard
  */
 class CreditCardTest extends RuleTestCase
 {

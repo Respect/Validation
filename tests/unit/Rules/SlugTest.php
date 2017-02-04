@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Slug
+ * @covers \Respect\Validation\Rules\Slug
  */
 class SlugTest extends \PHPUnit_Framework_TestCase
 {

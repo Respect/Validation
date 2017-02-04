@@ -26,13 +26,13 @@ function is_readable($readable)
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Readable
- * @covers Respect\Validation\Exceptions\ReadableException
+ * @covers \Respect\Validation\Rules\Readable
+ * @covers \Respect\Validation\Exceptions\ReadableException
  */
 class ReadableTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers Respect\Validation\Rules\Readable::validate
+     * @covers \Respect\Validation\Rules\Readable::validate
      */
     public function testValidReadableFileShouldReturnTrue()
     {
@@ -44,7 +44,7 @@ class ReadableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\Readable::validate
+     * @covers \Respect\Validation\Rules\Readable::validate
      */
     public function testInvalidReadableFileShouldReturnFalse()
     {
@@ -56,7 +56,7 @@ class ReadableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\Readable::validate
+     * @covers \Respect\Validation\Rules\Readable::validate
      */
     public function testShouldValidateObjects()
     {

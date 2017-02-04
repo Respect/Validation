@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\NumericVal
- * @covers Respect\Validation\Exceptions\NumericValException
+ * @covers \Respect\Validation\Rules\NumericVal
+ * @covers \Respect\Validation\Exceptions\NumericValException
  */
 class NumericValTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,7 +37,7 @@ class NumericValTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotNumeric
-     * @expectedException Respect\Validation\Exceptions\NumericValException
+     * @expectedException \Respect\Validation\Exceptions\NumericValException
      */
     public function testNotNumeric($input)
     {

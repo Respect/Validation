@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\ArrayVal
+ * @covers \Respect\Validation\Rules\ArrayVal
  */
 class ArrayValTest extends RuleTestCase
 {

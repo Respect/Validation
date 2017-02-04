@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\MacAddress
- * @covers Respect\Validation\Exceptions\MacAddressException
+ * @covers \Respect\Validation\Rules\MacAddress
+ * @covers \Respect\Validation\Exceptions\MacAddressException
  */
 class MacAddressTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,7 +37,7 @@ class MacAddressTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotMacAddress
-     * @expectedException Respect\Validation\Exceptions\MacAddressException
+     * @expectedException \Respect\Validation\Exceptions\MacAddressException
      */
     public function testInvalidMacaddressShouldThrowMacAddressException($input)
     {

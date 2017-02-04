@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\IterableType
+ * @covers \Respect\Validation\Rules\IterableType
  */
 class IterableTypeTest extends RuleTestCase
 {

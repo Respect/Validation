@@ -17,8 +17,8 @@ use Respect\Validation\Validatable;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\BankAccount
- * @covers Respect\Validation\Exceptions\BankAccountException
+ * @covers \Respect\Validation\Rules\BankAccount
+ * @covers \Respect\Validation\Exceptions\BankAccountException
  */
 class BankAccountTest extends LocaleTestCase
 {

@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\EndsWith
- * @covers Respect\Validation\Exceptions\EndsWithException
+ * @covers \Respect\Validation\Rules\EndsWith
+ * @covers \Respect\Validation\Exceptions\EndsWithException
  */
 class EndsWithTest extends \PHPUnit_Framework_TestCase
 {
@@ -31,7 +31,7 @@ class EndsWithTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotEndsWith
-     * @expectedException Respect\Validation\Exceptions\EndsWithException
+     * @expectedException \Respect\Validation\Exceptions\EndsWithException
      */
     public function testStringsNotEndingWithExpectedValueShouldNotPass($start, $input, $caseSensitive = false)
     {

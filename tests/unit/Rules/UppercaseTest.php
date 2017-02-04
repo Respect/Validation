@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Uppercase
- * @covers Respect\Validation\Exceptions\UppercaseException
+ * @covers \Respect\Validation\Rules\Uppercase
+ * @covers \Respect\Validation\Exceptions\UppercaseException
  */
 class UppercaseTest extends \PHPUnit_Framework_TestCase
 {
@@ -31,7 +31,7 @@ class UppercaseTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidUppercase
-     * @expectedException Respect\Validation\Exceptions\UppercaseException
+     * @expectedException \Respect\Validation\Exceptions\UppercaseException
      */
     public function testInvalidUppercaseShouldThrowException($input)
     {

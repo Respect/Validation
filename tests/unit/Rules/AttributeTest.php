@@ -18,8 +18,8 @@ class PrivClass
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Attribute
- * @covers Respect\Validation\Exceptions\AttributeException
+ * @covers \Respect\Validation\Rules\Attribute
+ * @covers \Respect\Validation\Exceptions\AttributeException
  */
 class AttributeTest extends \PHPUnit_Framework_TestCase
 {
@@ -34,7 +34,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\AttributeException
+     * @expectedException \Respect\Validation\Exceptions\AttributeException
      */
     public function testAbsentAttributeShouldRaiseAttributeException()
     {
@@ -45,7 +45,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($validator->assert($obj));
     }
     /**
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException \Respect\Validation\Exceptions\ValidationException
      */
     public function testAbsentAttributeShouldRaiseAttributeException_on_check()
     {
@@ -58,7 +58,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidAttributeNames
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
     public function testInvalidConstructorArgumentsShouldThrowComponentException($attributeName)
     {
@@ -86,7 +86,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\AttributeException
+     * @expectedException \Respect\Validation\Exceptions\AttributeException
      */
     public function testShouldNotValidateEmptyString()
     {
@@ -109,7 +109,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\LengthException
+     * @expectedException \Respect\Validation\Exceptions\LengthException
      */
     public function testExtraValidatorRulesForAttribute_should_raise_extra_validator_exception_on_check()
     {
@@ -120,7 +120,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($validator->check($obj));
     }
     /**
-     * @expectedException Respect\Validation\Exceptions\AttributeException
+     * @expectedException \Respect\Validation\Exceptions\AttributeException
      */
     public function testExtraValidatorRulesForAttribute_should_raise_AttributeException_on_assert()
     {

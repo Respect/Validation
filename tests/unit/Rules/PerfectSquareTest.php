@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\PerfectSquare
- * @covers Respect\Validation\Exceptions\PerfectSquareException
+ * @covers \Respect\Validation\Rules\PerfectSquare
+ * @covers \Respect\Validation\Exceptions\PerfectSquareException
  */
 class PerfectSquareTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,7 +37,7 @@ class PerfectSquareTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotPerfectSquare
-     * @expectedException Respect\Validation\Exceptions\PerfectSquareException
+     * @expectedException \Respect\Validation\Exceptions\PerfectSquareException
      */
     public function testNotPerfectSquare($input)
     {

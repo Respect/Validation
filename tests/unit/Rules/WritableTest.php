@@ -26,13 +26,13 @@ function is_writable($writable)
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Writable
- * @covers Respect\Validation\Exceptions\WritableException
+ * @covers \Respect\Validation\Rules\Writable
+ * @covers \Respect\Validation\Exceptions\WritableException
  */
 class WritableTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers Respect\Validation\Rules\Writable::validate
+     * @covers \Respect\Validation\Rules\Writable::validate
      */
     public function testValidWritableFileShouldReturnTrue()
     {
@@ -44,7 +44,7 @@ class WritableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\Writable::validate
+     * @covers \Respect\Validation\Rules\Writable::validate
      */
     public function testInvalidWritableFileShouldReturnFalse()
     {
@@ -56,7 +56,7 @@ class WritableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\Writable::validate
+     * @covers \Respect\Validation\Rules\Writable::validate
      */
     public function testShouldValidateObjects()
     {

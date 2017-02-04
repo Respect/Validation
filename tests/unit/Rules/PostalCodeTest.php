@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\PostalCode
- * @covers Respect\Validation\Exceptions\PostalCodeException
+ * @covers \Respect\Validation\Rules\PostalCode
+ * @covers \Respect\Validation\Exceptions\PostalCodeException
  */
 class PostalCodeTest extends \PHPUnit_Framework_TestCase
 {
@@ -63,7 +63,7 @@ class PostalCodeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Cannot validate postal code from "Whatever" country
      */
     public function testShouldThrowsExceptionWhenCountryCodeIsNotValid()
@@ -105,7 +105,7 @@ class PostalCodeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\PostalCodeException
+     * @expectedException \Respect\Validation\Exceptions\PostalCodeException
      * @expectedExceptionMessage "02179-000" must be a valid postal code on "US"
      */
     public function testShouldThrowsPostalCodeExceptionWhenValidationFails()

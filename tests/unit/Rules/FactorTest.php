@@ -17,8 +17,8 @@ use Respect\Validation\Exceptions\ValidationException;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Factor
- * @covers Respect\Validation\Exceptions\FactorException
+ * @covers \Respect\Validation\Rules\Factor
+ * @covers \Respect\Validation\Exceptions\FactorException
  *
  * @author David Meister <thedavidmeister@gmail.com>
  */

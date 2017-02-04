@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Finite
- * @covers Respect\Validation\Exceptions\FiniteException
+ * @covers \Respect\Validation\Rules\Finite
+ * @covers \Respect\Validation\Exceptions\FiniteException
  */
 class FiniteTest extends \PHPUnit_Framework_TestCase
 {
@@ -42,7 +42,7 @@ class FiniteTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\FiniteException
+     * @expectedException \Respect\Validation\Exceptions\FiniteException
      * @expectedExceptionMessage INF must be a finite number
      */
     public function testShouldThrowFiniteExceptionWhenChecking()

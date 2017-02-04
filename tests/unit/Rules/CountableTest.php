@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Countable
+ * @covers \Respect\Validation\Rules\Countable
  */
 class CountableTest extends RuleTestCase
 {

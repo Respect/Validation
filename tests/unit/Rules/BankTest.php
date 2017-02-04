@@ -17,8 +17,8 @@ use Respect\Validation\Validatable;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Bank
- * @covers Respect\Validation\Exceptions\BankException
+ * @covers \Respect\Validation\Rules\Bank
+ * @covers \Respect\Validation\Exceptions\BankException
  */
 class BankTest extends LocaleTestCase
 {

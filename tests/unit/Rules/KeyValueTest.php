@@ -15,8 +15,8 @@ use PHPUnit_Framework_TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\KeyValue
- * @covers Respect\Validation\Exceptions\KeyValueException
+ * @covers \Respect\Validation\Rules\KeyValue
+ * @covers \Respect\Validation\Exceptions\KeyValueException
  */
 class KeyValueTest extends PHPUnit_Framework_TestCase
 {
@@ -76,7 +76,7 @@ class KeyValueTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\AllOfException
+     * @expectedException \Respect\Validation\Exceptions\AllOfException
      * @expectedExceptionMessage All of the required rules must pass for foo
      */
     public function testShouldAssertWhenDefinedValuesDoesNotMatch()
@@ -86,7 +86,7 @@ class KeyValueTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeyValueException
+     * @expectedException \Respect\Validation\Exceptions\KeyValueException
      * @expectedExceptionMessage "bar" must be valid to validate "foo"
      */
     public function testShouldNotAssertWhenRuleIsNotValid()
@@ -103,7 +103,7 @@ class KeyValueTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\EqualsException
+     * @expectedException \Respect\Validation\Exceptions\EqualsException
      * @expectedExceptionMessage foo must be equals "bar"
      */
     public function testShouldCheckWhenDefinedValuesDoesNotMatch()

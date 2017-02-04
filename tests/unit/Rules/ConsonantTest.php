@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Consonant
- * @covers Respect\Validation\Exceptions\ConsonantException
+ * @covers \Respect\Validation\Rules\Consonant
+ * @covers \Respect\Validation\Exceptions\ConsonantException
  */
 class ConsonantTest extends \PHPUnit_Framework_TestCase
 {
@@ -29,7 +29,7 @@ class ConsonantTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidConsonants
-     * @expectedException Respect\Validation\Exceptions\ConsonantException
+     * @expectedException \Respect\Validation\Exceptions\ConsonantException
      */
     public function testInvalidConsonantsShouldFailAndThrowConsonantException($invalidConsonants, $additional = '')
     {
@@ -40,7 +40,7 @@ class ConsonantTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
     public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
     {

@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Regex
+ * @covers \Respect\Validation\Rules\Regex
  */
 final class RegexTest extends RuleTestCase
 {

@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Odd
- * @covers Respect\Validation\Exceptions\OddException
+ * @covers \Respect\Validation\Rules\Odd
+ * @covers \Respect\Validation\Exceptions\OddException
  */
 class OddTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,7 +37,7 @@ class OddTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotOdd
-     * @expectedException Respect\Validation\Exceptions\OddException
+     * @expectedException \Respect\Validation\Exceptions\OddException
      */
     public function testNotOdd($input)
     {

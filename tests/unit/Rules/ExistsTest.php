@@ -18,14 +18,14 @@ use SplFileInfo;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Exists
- * @covers Respect\Validation\Exceptions\ExistsException
+ * @covers \Respect\Validation\Rules\Exists
+ * @covers \Respect\Validation\Exceptions\ExistsException
  */
 class ExistsTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider fileProvider
-     * @covers Respect\Validation\Rules\Exists::validate
+     * @covers \Respect\Validation\Rules\Exists::validate
      */
     public function testExistentFileShouldReturnTrue($file)
     {
@@ -34,7 +34,7 @@ class ExistsTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\Exists::validate
+     * @covers \Respect\Validation\Rules\Exists::validate
      */
     public function testNonExistentFileShouldReturnFalse()
     {
@@ -44,7 +44,7 @@ class ExistsTest extends PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider fileProvider
-     * @covers Respect\Validation\Rules\Exists::validate
+     * @covers \Respect\Validation\Rules\Exists::validate
      */
     public function testShouldValidateObjects($file)
     {

@@ -15,8 +15,8 @@ use stdClass;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\NotBlank
- * @covers Respect\Validation\Exceptions\NotBlankException
+ * @covers \Respect\Validation\Rules\NotBlank
+ * @covers \Respect\Validation\Exceptions\NotBlankException
  */
 class NotBlankTest extends \PHPUnit_Framework_TestCase
 {
@@ -41,7 +41,7 @@ class NotBlankTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\NotBlankException
+     * @expectedException \Respect\Validation\Exceptions\NotBlankException
      * @expectedExceptionMessage The value must not be blank
      */
     public function testShouldThrowExceptionWhenFailure()
@@ -51,7 +51,7 @@ class NotBlankTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\NotBlankException
+     * @expectedException \Respect\Validation\Exceptions\NotBlankException
      * @expectedExceptionMessage whatever must not be blank
      */
     public function testShouldThrowExceptionWhenFailureAndDoesHaveAName()

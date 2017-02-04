@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Pesel
+ * @covers \Respect\Validation\Rules\Pesel
  */
 class PeselTest extends RuleTestCase
 {

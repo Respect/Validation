@@ -15,8 +15,8 @@ use stdClass;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Identical
- * @covers Respect\Validation\Exceptions\IdenticalException
+ * @covers \Respect\Validation\Rules\Identical
+ * @covers \Respect\Validation\Exceptions\IdenticalException
  */
 class IdenticalTest extends \PHPUnit_Framework_TestCase
 {
@@ -41,7 +41,7 @@ class IdenticalTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\IdenticalException
+     * @expectedException \Respect\Validation\Exceptions\IdenticalException
      * @expectedExceptionMessage "42" must be identical as 42
      */
     public function testShouldThrowTheProperExceptionWhenFailure()

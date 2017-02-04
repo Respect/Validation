@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\HexRgbColor
- * @covers Respect\Validation\Exceptions\HexRgbColorException
+ * @covers \Respect\Validation\Rules\HexRgbColor
+ * @covers \Respect\Validation\Exceptions\HexRgbColorException
  */
 class HexRgbColorTest extends \PHPUnit_Framework_TestCase
 {

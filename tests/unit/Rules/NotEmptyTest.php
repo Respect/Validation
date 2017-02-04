@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\NotEmpty
- * @covers Respect\Validation\Exceptions\NotEmptyException
+ * @covers \Respect\Validation\Rules\NotEmpty
+ * @covers \Respect\Validation\Exceptions\NotEmptyException
  */
 class NotEmptyTest extends \PHPUnit_Framework_TestCase
 {
@@ -35,7 +35,7 @@ class NotEmptyTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForEmpty
-     * @expectedException Respect\Validation\Exceptions\NotEmptyException
+     * @expectedException \Respect\Validation\Exceptions\NotEmptyException
      */
     public function testStringEmpty($input)
     {

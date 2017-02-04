@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Roman
- * @covers Respect\Validation\Exceptions\RomanException
+ * @covers \Respect\Validation\Rules\Roman
+ * @covers \Respect\Validation\Exceptions\RomanException
  */
 class RomanTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,7 +37,7 @@ class RomanTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotRoman
-     * @expectedException Respect\Validation\Exceptions\RomanException
+     * @expectedException \Respect\Validation\Exceptions\RomanException
      */
     public function testInvalidRomansShouldThrowRomanException($input)
     {

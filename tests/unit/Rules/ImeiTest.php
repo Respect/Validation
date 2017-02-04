@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Imei
+ * @covers \Respect\Validation\Rules\Imei
  */
 class ImeiTest extends RuleTestCase
 {

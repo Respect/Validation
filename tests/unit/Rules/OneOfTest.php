@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\OneOf
- * @covers Respect\Validation\Exceptions\OneOfException
+ * @covers \Respect\Validation\Rules\OneOf
+ * @covers \Respect\Validation\Exceptions\OneOfException
  */
 class OneOfTest extends \PHPUnit_Framework_TestCase
 {
@@ -36,7 +36,7 @@ class OneOfTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\OneOfException
+     * @expectedException \Respect\Validation\Exceptions\OneOfException
      */
     public function testInvalid()
     {
@@ -55,7 +55,7 @@ class OneOfTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\XdigitException
+     * @expectedException \Respect\Validation\Exceptions\XdigitException
      */
     public function testInvalidCheck()
     {

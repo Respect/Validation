@@ -17,8 +17,8 @@ use Respect\Validation\Validatable;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Bic
- * @covers Respect\Validation\Exceptions\BicException
+ * @covers \Respect\Validation\Rules\Bic
+ * @covers \Respect\Validation\Exceptions\BicException
  */
 class BicTest extends LocaleTestCase
 {

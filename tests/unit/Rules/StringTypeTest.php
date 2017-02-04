@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\StringType
- * @covers Respect\Validation\Exceptions\StringTypeException
+ * @covers \Respect\Validation\Rules\StringType
+ * @covers \Respect\Validation\Exceptions\StringTypeException
  */
 class StringTypeTest extends \PHPUnit_Framework_TestCase
 {

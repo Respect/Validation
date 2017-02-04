@@ -15,8 +15,8 @@ use Respect\Validation\Validator;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Not
- * @covers Respect\Validation\Exceptions\NotException
+ * @covers \Respect\Validation\Rules\Not
+ * @covers \Respect\Validation\Exceptions\NotException
  */
 class NotTest extends \PHPUnit_Framework_TestCase
 {
@@ -31,7 +31,7 @@ class NotTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidNot
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException \Respect\Validation\Exceptions\ValidationException
      */
     public function testNotNotHaha($v, $input)
     {

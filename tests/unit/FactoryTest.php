@@ -14,7 +14,7 @@ namespace Respect\Validation;
 use Respect\Validation\Rules\Uppercase;
 
 /**
- * @covers Respect\Validation\Factory
+ * @covers \Respect\Validation\Factory
  */
 class FactoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -99,7 +99,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "uterere" is not a valid rule name
      */
     public function testShouldThrowsAnExceptionWhenRuleNameIsNotValid()
@@ -109,7 +109,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "Respect\Validation\Exceptions\AgeException" is not a valid respect rule
      */
     public function testShouldThrowsAnExceptionWhenRuleIsNotInstanceOfRuleInterface()

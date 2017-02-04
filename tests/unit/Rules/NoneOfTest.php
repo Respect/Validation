@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\NoneOf
- * @covers Respect\Validation\Exceptions\NoneOfException
+ * @covers \Respect\Validation\Rules\NoneOf
+ * @covers \Respect\Validation\Exceptions\NoneOfException
  */
 class NoneOfTest extends \PHPUnit_Framework_TestCase
 {
@@ -36,7 +36,7 @@ class NoneOfTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\NoneOfException
+     * @expectedException \Respect\Validation\Exceptions\NoneOfException
      */
     public function testInvalid()
     {

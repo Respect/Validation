@@ -25,7 +25,7 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForTrueAndFalse
-     * @covers       Respect\Validation\Rules\AbstractRule::__invoke
+     * @covers       \Respect\Validation\Rules\AbstractRule::__invoke
      */
     public function testMagicMethodInvokeCallsValidateWithInput($booleanResult)
     {
@@ -51,7 +51,7 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\AbstractRule::assert
+     * @covers \Respect\Validation\Rules\AbstractRule::assert
      */
     public function testAssertInvokesValidateOnSuccess()
     {
@@ -76,8 +76,8 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers            Respect\Validation\Rules\AbstractRule::assert
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @covers            \Respect\Validation\Rules\AbstractRule::assert
+     * @expectedException \Respect\Validation\Exceptions\ValidationException
      */
     public function testAssertInvokesValidateAndReportErrorOnFailure()
     {
@@ -104,7 +104,7 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\AbstractRule::check
+     * @covers \Respect\Validation\Rules\AbstractRule::check
      */
     public function testCheckInvokesAssertToPerformTheValidationByDefault()
     {
@@ -124,8 +124,8 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\AbstractRule::reportError
-     * @covers Respect\Validation\Rules\AbstractRule::createException
+     * @covers \Respect\Validation\Rules\AbstractRule::reportError
+     * @covers \Respect\Validation\Rules\AbstractRule::createException
      */
     public function testShouldCreateExceptionBasedOnTheCurrentClassName()
     {
@@ -149,8 +149,8 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\AbstractRule::reportError
-     * @covers Respect\Validation\Rules\AbstractRule::setTemplate
+     * @covers \Respect\Validation\Rules\AbstractRule::reportError
+     * @covers \Respect\Validation\Rules\AbstractRule::setTemplate
      */
     public function testShouldUseDefinedTemplateOnCreatedException()
     {
@@ -181,7 +181,7 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\AbstractRule::setTemplate
+     * @covers \Respect\Validation\Rules\AbstractRule::setTemplate
      */
     public function testShouldReturnTheCurrentObjectWhenDefinigTemplate()
     {
@@ -193,7 +193,7 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\AbstractRule::setName
+     * @covers \Respect\Validation\Rules\AbstractRule::setName
      */
     public function testShouldReturnTheCurrentObjectWhenDefinigName()
     {
@@ -205,8 +205,8 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\AbstractRule::setName
-     * @covers Respect\Validation\Rules\AbstractRule::getName
+     * @covers \Respect\Validation\Rules\AbstractRule::setName
+     * @covers \Respect\Validation\Rules\AbstractRule::getName
      */
     public function testShouldBeAbleToDefineAndRetrivedRuleName()
     {

@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\ScalarVal
- * @covers Respect\Validation\Exceptions\ScalarValException
+ * @covers \Respect\Validation\Rules\ScalarVal
+ * @covers \Respect\Validation\Exceptions\ScalarValException
  */
 class ScalarValTest extends \PHPUnit_Framework_TestCase
 {
@@ -42,7 +42,7 @@ class ScalarValTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ScalarValException
+     * @expectedException \Respect\Validation\Exceptions\ScalarValException
      * @expectedExceptionMessage null must be a scalar value
      */
     public function testShouldThrowScalarExceptionWhenChecking()

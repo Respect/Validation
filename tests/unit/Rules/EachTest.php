@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Each
- * @covers Respect\Validation\Exceptions\EachException
+ * @covers \Respect\Validation\Rules\Each
+ * @covers \Respect\Validation\Exceptions\EachException
  */
 class EachTest extends RuleTestCase
 {
@@ -87,7 +87,7 @@ class EachTest extends RuleTestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\EachException
+     * @expectedException \Respect\Validation\Exceptions\EachException
      */
     public function testValidatorShouldNotPassWithOnlyKeyValidation()
     {
@@ -96,7 +96,7 @@ class EachTest extends RuleTestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\EachException
+     * @expectedException \Respect\Validation\Exceptions\EachException
      */
     public function testAssertShouldFailOnInvalidItem()
     {
@@ -105,7 +105,7 @@ class EachTest extends RuleTestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\EachException
+     * @expectedException \Respect\Validation\Exceptions\EachException
      */
     public function testAssertShouldFailWithNonIterableInput()
     {
@@ -114,7 +114,7 @@ class EachTest extends RuleTestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\EachException
+     * @expectedException \Respect\Validation\Exceptions\EachException
      */
     public function testCheckShouldFailWithNonIterableInput()
     {

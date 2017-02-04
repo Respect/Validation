@@ -14,13 +14,13 @@ namespace Respect\Validation\Rules;
 use PHPUnit_Framework_TestCase;
 
 /**
- * @covers Respect\Validation\Rules\SubdivisionCode
- * @covers Respect\Validation\Exceptions\SubdivisionCodeException
+ * @covers \Respect\Validation\Rules\SubdivisionCode
+ * @covers \Respect\Validation\Exceptions\SubdivisionCodeException
  */
 class SubdivisionCodeTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "whatever" is not a valid country code in ISO 3166-2
      */
     public function testShouldThrowsExceptionWhenInvalidFormat()
@@ -29,7 +29,7 @@ class SubdivisionCodeTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "JK" is not a valid country code in ISO 3166-2
      */
     public function testShouldNotAcceptWrongNamesOnConstructor()
@@ -85,7 +85,7 @@ class SubdivisionCodeTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\SubdivisionCode\BrSubdivisionCodeException
+     * @expectedException \Respect\Validation\Exceptions\SubdivisionCode\BrSubdivisionCodeException
      * @expectedExceptionMessage "CA" must be a subdivision code of Brazil
      */
     public function testShouldThrowsSubdivisionCodeException()

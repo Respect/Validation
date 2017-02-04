@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Url
- * @covers Respect\Validation\Exceptions\UrlException
+ * @covers \Respect\Validation\Rules\Url
+ * @covers \Respect\Validation\Exceptions\UrlException
  */
 class UrlTest extends \PHPUnit_Framework_TestCase
 {

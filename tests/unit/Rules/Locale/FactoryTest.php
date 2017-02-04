@@ -15,12 +15,12 @@ use Respect\Validation\Rules\LocaleTestCase;
 use Respect\Validation\Validatable;
 
 /**
- * @covers Respect\Validation\Rules\Locale\Factory
+ * @covers \Respect\Validation\Rules\Locale\Factory
  */
 class FactoryTest extends LocaleTestCase
 {
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Cannot provide BIC validation for country "XX"
      */
     public function testShouldThrowExceptionWhenFailedToGetBICRule()
@@ -44,7 +44,7 @@ class FactoryTest extends LocaleTestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Cannot provide bank validation for country "XX"
      */
     public function testShouldThrowExceptionWhenFailedToGetBankRule()
@@ -68,7 +68,7 @@ class FactoryTest extends LocaleTestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Cannot provide bank account validation for country "XX" and bank "123"
      */
     public function testShouldThrowExceptionWhenFailedToGetBankAccountRule()

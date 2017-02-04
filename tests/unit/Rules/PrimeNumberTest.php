@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\PrimeNumber
- * @covers Respect\Validation\Exceptions\PrimeNumberException
+ * @covers \Respect\Validation\Rules\PrimeNumber
+ * @covers \Respect\Validation\Exceptions\PrimeNumberException
  */
 class PrimeNumberTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,7 +37,7 @@ class PrimeNumberTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotPrimeNumber
-     * @expectedException Respect\Validation\Exceptions\PrimeNumberException
+     * @expectedException \Respect\Validation\Exceptions\PrimeNumberException
      */
     public function testNotPrimeNumber($input)
     {

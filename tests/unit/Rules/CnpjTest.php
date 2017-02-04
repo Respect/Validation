@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Cnpj
- * @covers Respect\Validation\Exceptions\CnpjException
+ * @covers \Respect\Validation\Rules\Cnpj
+ * @covers \Respect\Validation\Exceptions\CnpjException
  */
 class CnpjTest extends \PHPUnit_Framework_TestCase
 {

@@ -15,7 +15,7 @@ use Respect\Validation\Validatable;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Vatin
+ * @covers \Respect\Validation\Rules\Vatin
  */
 final class VatinTest extends \PHPUnit_Framework_TestCase
 {
@@ -28,7 +28,7 @@ final class VatinTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage There is no support for VAT identification number from "BR"
      */
     public function testShouldThrowAnExceptionWhenCountryCodeIsNotSupported()

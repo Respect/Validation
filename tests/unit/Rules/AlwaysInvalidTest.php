@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\AlwaysInvalid
+ * @covers \Respect\Validation\Rules\AlwaysInvalid
  */
 class AlwaysInvalidTest extends \PHPUnit_Framework_TestCase
 {

@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\In
- * @covers Respect\Validation\Exceptions\InException
+ * @covers \Respect\Validation\Rules\In
+ * @covers \Respect\Validation\Exceptions\InException
  */
 class InTest extends \PHPUnit_Framework_TestCase
 {
@@ -31,7 +31,7 @@ class InTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotIn
-     * @expectedException Respect\Validation\Exceptions\InException
+     * @expectedException \Respect\Validation\Exceptions\InException
      */
     public function testInvalidInChecksShouldThrowInException($input, $options, $strict = false)
     {
@@ -41,7 +41,7 @@ class InTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\InException
+     * @expectedException \Respect\Validation\Exceptions\InException
      * @expectedExceptionMessage "x" must be in { "foo", "bar" }
      */
     public function testInCheckExceptionMessageWithArray()

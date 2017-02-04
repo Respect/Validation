@@ -17,7 +17,7 @@ use Respect\Validation\Validatable;
 class AbstractWrapperTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage There is no defined validatable
      */
     public function testShouldThrowsAnExceptionWhenWrappedValidatableIsNotDefined()

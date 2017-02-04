@@ -26,13 +26,13 @@ function is_link($link)
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\SymbolicLink
- * @covers Respect\Validation\Exceptions\SymbolicLinkException
+ * @covers \Respect\Validation\Rules\SymbolicLink
+ * @covers \Respect\Validation\Exceptions\SymbolicLinkException
  */
 class SymbolicLinkTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers Respect\Validation\Rules\SymbolicLink::validate
+     * @covers \Respect\Validation\Rules\SymbolicLink::validate
      */
     public function testValidSymbolicLinkShouldReturnTrue()
     {
@@ -44,7 +44,7 @@ class SymbolicLinkTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\SymbolicLink::validate
+     * @covers \Respect\Validation\Rules\SymbolicLink::validate
      */
     public function testInvalidSymbolicLinkShouldThrowException()
     {
@@ -56,7 +56,7 @@ class SymbolicLinkTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\SymbolicLink::validate
+     * @covers \Respect\Validation\Rules\SymbolicLink::validate
      */
     public function testShouldValidateObjects()
     {

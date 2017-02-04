@@ -16,8 +16,8 @@ use Respect\Validation\Rules\LocaleTestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Locale\GermanBank
- * @covers Respect\Validation\Exceptions\Locale\GermanBankException
+ * @covers \Respect\Validation\Rules\Locale\GermanBank
+ * @covers \Respect\Validation\Exceptions\Locale\GermanBankException
  */
 class GermanBankTest extends LocaleTestCase
 {
@@ -65,7 +65,7 @@ class GermanBankTest extends LocaleTestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\Locale\GermanBankException
+     * @expectedException \Respect\Validation\Exceptions\Locale\GermanBankException
      * @expectedExceptionMessage "10000000" must be a german bank
      */
     public function testShouldThowsTheRightExceptionWhenChecking()

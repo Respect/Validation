@@ -15,8 +15,8 @@ use ArrayObject;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\KeyNested
- * @covers Respect\Validation\Exceptions\KeyNestedException
+ * @covers \Respect\Validation\Rules\KeyNested
+ * @covers \Respect\Validation\Exceptions\KeyNestedException
  */
 class KeyNestedTest extends \PHPUnit_Framework_TestCase
 {
@@ -93,7 +93,7 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeyNestedException
+     * @expectedException \Respect\Validation\Exceptions\KeyNestedException
      */
     public function testEmptyInputMustNotAssert()
     {
@@ -102,7 +102,7 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeyNestedException
+     * @expectedException \Respect\Validation\Exceptions\KeyNestedException
      */
     public function testEmptyInputMustNotCheck()
     {
@@ -119,7 +119,7 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeyNestedException
+     * @expectedException \Respect\Validation\Exceptions\KeyNestedException
      */
     public function testArrayWithAbsentKeyShouldThrowNestedKeyException()
     {
@@ -133,7 +133,7 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeyNestedException
+     * @expectedException \Respect\Validation\Exceptions\KeyNestedException
      */
     public function testNotArrayShouldThrowKeyException()
     {

@@ -16,7 +16,7 @@ use stdClass;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Locale\PlVatin
+ * @covers \Respect\Validation\Rules\Locale\PlVatin
  */
 class PlVatinTest extends RuleTestCase
 {

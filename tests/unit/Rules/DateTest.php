@@ -16,8 +16,8 @@ use DateTimeImmutable;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Date
- * @covers Respect\Validation\Exceptions\DateException
+ * @covers \Respect\Validation\Rules\Date
+ * @covers \Respect\Validation\Exceptions\DateException
  */
 class DateTest extends \PHPUnit_Framework_TestCase
 {
@@ -34,7 +34,7 @@ class DateTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\DateException
+     * @expectedException \Respect\Validation\Exceptions\DateException
      */
     public function testDateEmptyShouldNotCheck()
     {
@@ -42,7 +42,7 @@ class DateTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\DateException
+     * @expectedException \Respect\Validation\Exceptions\DateException
      */
     public function testDateEmptyShouldNotAssert()
     {
@@ -95,7 +95,7 @@ class DateTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\DateException
+     * @expectedException \Respect\Validation\Exceptions\DateException
      */
     public function testFormatsShouldValidateDateStrings_and_throw_DateException_on_failure()
     {

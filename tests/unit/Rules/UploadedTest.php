@@ -26,13 +26,13 @@ function is_uploaded_file($uploaded)
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Uploaded
- * @covers Respect\Validation\Exceptions\UploadedException
+ * @covers \Respect\Validation\Rules\Uploaded
+ * @covers \Respect\Validation\Exceptions\UploadedException
  */
 class UploadedTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers Respect\Validation\Rules\Uploaded::validate
+     * @covers \Respect\Validation\Rules\Uploaded::validate
      */
     public function testValidUploadedFileShouldReturnTrue()
     {
@@ -44,7 +44,7 @@ class UploadedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\Uploaded::validate
+     * @covers \Respect\Validation\Rules\Uploaded::validate
      */
     public function testInvalidUploadedFileShouldReturnFalse()
     {
@@ -56,7 +56,7 @@ class UploadedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\Uploaded::validate
+     * @covers \Respect\Validation\Rules\Uploaded::validate
      */
     public function testShouldValidateObjects()
     {

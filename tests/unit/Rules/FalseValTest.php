@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\FalseVal
- * @covers Respect\Validation\Exceptions\FalseValException
+ * @covers \Respect\Validation\Rules\FalseVal
+ * @covers \Respect\Validation\Exceptions\FalseValException
  */
 class FalseValTest extends \PHPUnit_Framework_TestCase
 {

@@ -16,8 +16,8 @@ use Respect\Validation\Validator as v;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Sf
- * @covers Respect\Validation\Exceptions\SfException
+ * @covers \Respect\Validation\Rules\Sf
+ * @covers \Respect\Validation\Exceptions\SfException
  */
 class SfTest extends \PHPUnit_Framework_TestCase
 {
@@ -74,7 +74,7 @@ EOF;
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Symfony/Validator constraint "FluxCapacitor" does not exist.
      */
     public function testValidationWithNonExistingConstraint()

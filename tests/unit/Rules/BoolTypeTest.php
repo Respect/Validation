@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\BoolType
- * @covers Respect\Validation\Exceptions\BoolTypeException
+ * @covers \Respect\Validation\Rules\BoolType
+ * @covers \Respect\Validation\Exceptions\BoolTypeException
  */
 class BoolTypeTest extends \PHPUnit_Framework_TestCase
 {
@@ -30,7 +30,7 @@ class BoolTypeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\BoolTypeException
+     * @expectedException \Respect\Validation\Exceptions\BoolTypeException
      */
     public function testInvalidBooleanShouldRaiseException()
     {

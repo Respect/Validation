@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Call
- * @covers Respect\Validation\Exceptions\CallException
+ * @covers \Respect\Validation\Rules\Call
+ * @covers \Respect\Validation\Exceptions\CallException
  */
 class CallTest extends \PHPUnit_Framework_TestCase
 {
@@ -50,7 +50,7 @@ class CallTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\CallException
+     * @expectedException \Respect\Validation\Exceptions\CallException
      */
     public function testCallbackFailedShouldThrowCallException()
     {

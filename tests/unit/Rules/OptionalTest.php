@@ -16,7 +16,7 @@ use stdClass;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Optional
+ * @covers \Respect\Validation\Rules\Optional
  */
 class OptionalTest extends \PHPUnit_Framework_TestCase
 {

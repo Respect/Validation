@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Contains
- * @covers Respect\Validation\Exceptions\ContainsException
+ * @covers \Respect\Validation\Rules\Contains
+ * @covers \Respect\Validation\Exceptions\ContainsException
  */
 class ContainsTest extends \PHPUnit_Framework_TestCase
 {

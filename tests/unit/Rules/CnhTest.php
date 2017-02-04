@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Cnh
- * @covers Respect\Validation\Exceptions\CnhException
+ * @covers \Respect\Validation\Rules\Cnh
+ * @covers \Respect\Validation\Exceptions\CnhException
  */
 class CnhTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,7 +37,7 @@ class CnhTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider invalidCnhProvider
-     * @expectedException Respect\Validation\Exceptions\CnhException
+     * @expectedException \Respect\Validation\Exceptions\CnhException
      */
     public function testInvalidCnh($cnh)
     {
@@ -47,7 +47,7 @@ class CnhTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider notIntegerCnhProvider
-     * @expectedException Respect\Validation\Exceptions\CnhException
+     * @expectedException \Respect\Validation\Exceptions\CnhException
      */
     public function testNotIntegerCnh($cnh)
     {
@@ -57,7 +57,7 @@ class CnhTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider invalidCnhLengthProvider
-     * @expectedException Respect\Validation\Exceptions\CnhException
+     * @expectedException \Respect\Validation\Exceptions\CnhException
      */
     public function testInvalidLengthCnh($cnh)
     {

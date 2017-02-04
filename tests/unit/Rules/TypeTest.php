@@ -15,8 +15,8 @@ use stdClass;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Type
- * @covers Respect\Validation\Exceptions\TypeException
+ * @covers \Respect\Validation\Rules\Type
+ * @covers \Respect\Validation\Exceptions\TypeException
  */
 class TypeTest extends \PHPUnit_Framework_TestCase
 {
@@ -36,7 +36,7 @@ class TypeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "whatever" is not a valid type
      */
     public function testShouldThrowExceptionWhenTypeIsNotValid()
@@ -65,7 +65,7 @@ class TypeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\TypeException
+     * @expectedException \Respect\Validation\Exceptions\TypeException
      * @expectedExceptionMessage "Something" must be "integer"
      */
     public function testShouldThrowTypeExceptionWhenCheckingAnInvalidInput()

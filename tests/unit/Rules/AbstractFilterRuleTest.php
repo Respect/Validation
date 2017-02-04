@@ -14,7 +14,7 @@ namespace Respect\Validation\Rules;
 class AbstractFilterRuleTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Invalid list of additional characters to be loaded
      */
     public function testConstructorShouldThrowExceptionIfParamIsNotString()

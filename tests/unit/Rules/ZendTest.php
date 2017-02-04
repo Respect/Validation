@@ -17,8 +17,8 @@ use Zend\Validator\ValidatorInterface;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Zend
- * @covers Respect\Validation\Exceptions\ZendException
+ * @covers \Respect\Validation\Rules\Zend
+ * @covers \Respect\Validation\Exceptions\ZendException
  */
 class ZendTest extends \PHPUnit_Framework_TestCase
 {
@@ -108,7 +108,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
     /**
      * @depends testConstructorWithValidatorName
      * @depends testZendDateValidatorWithRespectMethods
-     * @expectedException Respect\Validation\Exceptions\ZendException
+     * @expectedException \Respect\Validation\Exceptions\ZendException
      */
     public function testRespectExceptionForFailedValidation()
     {
@@ -127,7 +127,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
      * @depends testConstructorWithValidatorName
      * @depends testConstructorWithValidatorName_and_params
      * @depends testZendDateValidatorWithRespectMethods
-     * @expectedException Respect\Validation\Exceptions\ZendException
+     * @expectedException \Respect\Validation\Exceptions\ZendException
      */
     public function testParamsNot()
     {

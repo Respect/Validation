@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\No
- * @covers Respect\Validation\Exceptions\NoException
+ * @covers \Respect\Validation\Rules\No
+ * @covers \Respect\Validation\Exceptions\NoException
  */
 class NoTest extends \PHPUnit_Framework_TestCase
 {

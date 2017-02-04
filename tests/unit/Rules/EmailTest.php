@@ -25,8 +25,8 @@ function class_exists($className)
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Email
- * @covers Respect\Validation\Exceptions\EmailException
+ * @covers \Respect\Validation\Rules\Email
+ * @covers \Respect\Validation\Exceptions\EmailException
  */
 class EmailTest extends \PHPUnit_Framework_TestCase
 {
@@ -112,7 +112,7 @@ class EmailTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidEmail
-     * @expectedException Respect\Validation\Exceptions\EmailException
+     * @expectedException \Respect\Validation\Exceptions\EmailException
      */
     public function testInvalidEmailsShouldFailValidation($invalidEmail)
     {

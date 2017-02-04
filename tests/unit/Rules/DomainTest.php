@@ -15,8 +15,8 @@ use Respect\Validation\Validator as v;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Domain
- * @covers Respect\Validation\Exceptions\DomainException
+ * @covers \Respect\Validation\Rules\Domain
+ * @covers \Respect\Validation\Exceptions\DomainException
  */
 class DomainTest extends \PHPUnit_Framework_TestCase
 {
@@ -40,7 +40,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotDomain
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException \Respect\Validation\Exceptions\ValidationException
      */
     public function testNotDomain($input, $tldcheck = true)
     {
@@ -50,7 +50,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotDomain
-     * @expectedException Respect\Validation\Exceptions\DomainException
+     * @expectedException \Respect\Validation\Exceptions\DomainException
      */
     public function testNotDomainCheck($input, $tldcheck = true)
     {

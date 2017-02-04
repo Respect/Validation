@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Graph
- * @covers Respect\Validation\Exceptions\GraphException
+ * @covers \Respect\Validation\Rules\Graph
+ * @covers \Respect\Validation\Exceptions\GraphException
  */
 class GraphTest extends \PHPUnit_Framework_TestCase
 {
@@ -29,7 +29,7 @@ class GraphTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidGraph
-     * @expectedException Respect\Validation\Exceptions\GraphException
+     * @expectedException \Respect\Validation\Exceptions\GraphException
      */
     public function testInvalidGraphShouldFailAndThrowGraphException($invalidGraph, $additional = '')
     {
@@ -40,7 +40,7 @@ class GraphTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
     public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
     {

@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\CurrencyCode
+ * @covers \Respect\Validation\Rules\CurrencyCode
  */
 class CurrencyCodeTest extends RuleTestCase
 {

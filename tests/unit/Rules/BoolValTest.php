@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\BoolVal
+ * @covers \Respect\Validation\Rules\BoolVal
  */
 class BoolValTest extends RuleTestCase
 {

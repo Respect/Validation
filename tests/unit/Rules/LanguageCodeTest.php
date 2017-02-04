@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\LanguageCode
+ * @covers \Respect\Validation\Rules\LanguageCode
  */
 class LanguageCodeTest extends RuleTestCase
 {

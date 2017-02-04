@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\PhpLabel
- * @covers Respect\Validation\Exceptions\PhpLabelException
+ * @covers \Respect\Validation\Rules\PhpLabel
+ * @covers \Respect\Validation\Exceptions\PhpLabelException
  */
 class PhpLabelTest extends RuleTestCase
 {

@@ -13,13 +13,13 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\VideoUrl
- * @covers Respect\Validation\Exceptions\VideoUrlException
+ * @covers \Respect\Validation\Rules\VideoUrl
+ * @covers \Respect\Validation\Exceptions\VideoUrlException
  */
 class VideoUrlTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "teste" is not a recognized video service.
      */
     public function testShouldThrowsAnExceptionWhenProviderIsNotValid()
@@ -81,7 +81,7 @@ class VideoUrlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\VideoUrlException
+     * @expectedException \Respect\Validation\Exceptions\VideoUrlException
      * @expectedExceptionMessage "exemplo.com" must be a valid video URL
      */
     public function testUseAProperExceptionMessageWhenVideoUrlIsNotValid()
@@ -91,7 +91,7 @@ class VideoUrlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\VideoUrlException
+     * @expectedException \Respect\Validation\Exceptions\VideoUrlException
      * @expectedExceptionMessage "exemplo.com" must be a valid "YouTube" video URL
      */
     public function testUseAProperExceptionMessageWhenVideoUrlIsNotValidForTheDefinedProvider()

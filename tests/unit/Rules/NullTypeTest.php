@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\NullType
- * @covers Respect\Validation\Exceptions\NullTypeException
+ * @covers \Respect\Validation\Rules\NullType
+ * @covers \Respect\Validation\Exceptions\NullTypeException
  */
 class NullTypeTest extends \PHPUnit_Framework_TestCase
 {
@@ -34,7 +34,7 @@ class NullTypeTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotNull
-     * @expectedException Respect\Validation\Exceptions\NullTypeException
+     * @expectedException \Respect\Validation\Exceptions\NullTypeException
      */
     public function testNotNull($input)
     {

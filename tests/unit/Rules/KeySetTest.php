@@ -15,8 +15,8 @@ use PHPUnit_Framework_TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\KeySet
- * @covers Respect\Validation\Exceptions\KeySetException
+ * @covers \Respect\Validation\Rules\KeySet
+ * @covers \Respect\Validation\Exceptions\KeySetException
  */
 class KeySetTest extends PHPUnit_Framework_TestCase
 {
@@ -42,7 +42,7 @@ class KeySetTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage AllOf rule must have only one Key rule
      */
     public function testShouldNotAcceptAllOfWithMoreThanOneKeyRule()
@@ -55,7 +55,7 @@ class KeySetTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage KeySet rule accepts only Key rules
      */
     public function testShouldNotAcceptAllOfWithANonKeyRule()
@@ -67,7 +67,7 @@ class KeySetTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage KeySet rule accepts only Key rules
      */
     public function testShouldNotAcceptANonKeyRule()
@@ -144,7 +144,7 @@ class KeySetTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeySetException
+     * @expectedException \Respect\Validation\Exceptions\KeySetException
      * @expectedExceptionMessage Must have keys { "foo", "bar" }
      */
     public function testShouldCheckKeys()
@@ -159,7 +159,7 @@ class KeySetTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeySetException
+     * @expectedException \Respect\Validation\Exceptions\KeySetException
      * @expectedExceptionMessage Must have keys { "foo", "bar" }
      */
     public function testShouldAssertKeys()
@@ -174,7 +174,7 @@ class KeySetTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeySetException
+     * @expectedException \Respect\Validation\Exceptions\KeySetException
      * @expectedExceptionMessage Must have keys { "name" }
      * @dataProvider providerForInvalidArguments
      */

@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Nif
+ * @covers \Respect\Validation\Rules\Nif
  *
  * @author Julián Gutiérrez <juliangut@gmail.com>
  */
