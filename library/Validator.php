@@ -134,6 +134,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator space(string $additionalChars = null)
  * @method static Validator startsWith(mixed $startValue, bool $identical = false)
  * @method static Validator stringType()
+ * @method static Validator stringVal()
  * @method static Validator subdivisionCode(string $countryCode)
  * @method static Validator symbolicLink()
  * @method static Validator tld()
