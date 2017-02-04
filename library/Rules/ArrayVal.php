@@ -14,11 +14,37 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use ArrayAccess;
+use Respect\Validation\Result;
+use Respect\Validation\Rule;
 use SimpleXMLElement;
 
-class ArrayVal extends AbstractRule
+/**
+ * Validates if the input is an array or if the input can be used as an array.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Guilherme Siani <guilherme@siani.com.br>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
+ */
+final class ArrayVal implements Rule
 {
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function apply($input): Result
+    {
+        return new Result($this->isArray($input), $input, $this);
+    }
+
+    /**
+     * Returns whether the input can be used as an array or not.
+     *
+     * @param mixed $input
+     *
+     * @return bool
+     */
+    private function isArray($input): bool
     {
         return is_array($input) || $input instanceof ArrayAccess || $input instanceof SimpleXMLElement;
     }
