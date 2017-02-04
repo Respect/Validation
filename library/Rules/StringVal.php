@@ -13,10 +13,25 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class StringVal extends AbstractRule
+use Respect\Validation\Result;
+use Respect\Validation\Rule;
+
+/**
+ * Validates whether the input can be used as a string.
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 2.0.0
+ */
+final class StringVal implements Rule
 {
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function apply($input): Result
     {
-        return is_scalar($input) || (is_object($input) && method_exists($input, '__toString'));
+        $isValid = is_scalar($input) || (is_object($input) && method_exists($input, '__toString'));
+
+        return new Result($isValid, $input, $this);
     }
 }
