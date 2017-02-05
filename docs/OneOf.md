@@ -1,6 +1,6 @@
 # OneOf
 
-- `OneOf(Validatable ...$rule)`
+- `OneOf(Rule ...$rule)`
 
 Will validate if exactly one inner validator passes.
 

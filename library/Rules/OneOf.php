@@ -13,59 +13,58 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Result;
+use Respect\Validation\Rule;
 
 /**
+ * Will validate if exactly one inner validator passes.
+ *
  * @author Bradyn Poulsen <bradyn@bradynpoulsen.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 2.0.0
  */
-class OneOf
+final class OneOf implements Rule
 {
-    public function assert($input)
-    {
-        $validators = $this->getRules();
-        $exceptions = $this->validateRules($input);
-        $numRules = count($validators);
-        $numExceptions = count($exceptions);
-        if ($numExceptions !== $numRules - 1) {
-            throw $this->reportError($input)->setRelated($exceptions);
-        }
+    /**
+     * @var Rule[]
+     */
+    private $rules = [];
 
-        return true;
+    /**
+     * Initializes the rule.
+     *
+     * @param Rule $rule
+     * @param Rule ...$rule2
+     */
+    public function __construct(Rule ...$rule)
+    {
+        $this->rules = $rule;
     }
 
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function apply($input): Result
     {
-        $rulesPassedCount = 0;
-        foreach ($this->getRules() as $rule) {
-            if (!$rule->validate($input)) {
+        $validCount = 0;
+        $childrenResults = [];
+        foreach ($this->rules as $key => $rule) {
+            $childResult = $rule->apply($input);
+
+            $childrenResults[$key] = $childResult;
+
+            if (!$childResult->isValid()) {
                 continue;
             }
 
-            ++$rulesPassedCount;
-        }
-
-        return 1 === $rulesPassedCount;
-    }
-
-    public function check($input)
-    {
-        $exceptions = [];
-        $rulesPassedCount = 0;
-        foreach ($this->getRules() as $rule) {
-            try {
-                $rule->check($input);
-
-                ++$rulesPassedCount;
-            } catch (ValidationException $exception) {
-                $exceptions[] = $exception;
+            if ($validCount >= 1) {
+                $childrenResults[$key] = $childResult->invert();
             }
+
+            ++$validCount;
         }
 
-        if (1 === $rulesPassedCount) {
-            return true;
-        }
-
-        throw (array_shift($exceptions) ?: $this->reportError($input));
+        return new Result((1 === $validCount), $input, $this, [], ...$childrenResults);
     }
 }

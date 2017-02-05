@@ -115,7 +115,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator numericVal()
  * @method static Validator objectType()
  * @method static Validator odd()
- * @method static Validator oneOf(Validatable ...$rule)
+ * @method static Validator oneOf(Rule ...$rule)
  * @method static Validator optional(Validatable $rule)
  * @method static Validator perfectSquare()
  * @method static Validator pesel()
