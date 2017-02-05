@@ -40,7 +40,8 @@ class StringValTest extends RuleTestCase
 
         return [
             [$rule, []],
-            [$rule, function () { }],
+            [$rule, function () {
+            }],
             [$rule, new stdClass()],
             [$rule, null],
             [$rule, tmpfile()],
