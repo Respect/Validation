@@ -13,59 +13,43 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use ArrayObject;
+use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
  * @group  rule
+ *
  * @covers \Respect\Validation\Rules\ObjectType
- * @covers \Respect\Validation\Exceptions\ObjectTypeException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
  */
-class ObjectTypeTest extends TestCase
+final class ObjectTypeTest extends RuleTestCase
 {
-    protected $object;
-
-    protected function setUp(): void
+    public function providerForValidInput(): array
     {
-        $this->object = new ObjectType();
-    }
+        $rule = new ObjectType();
 
-    /**
-     * @dataProvider providerForObject
-     */
-    public function testObject($input): void
-    {
-        self::assertTrue($this->object->__invoke($input));
-        self::assertTrue($this->object->assert($input));
-        self::assertTrue($this->object->check($input));
-    }
-
-    /**
-     * @dataProvider providerForNotObject
-     * @expectedException \Respect\Validation\Exceptions\ObjectTypeException
-     */
-    public function testNotObject($input): void
-    {
-        self::assertFalse($this->object->__invoke($input));
-        self::assertFalse($this->object->assert($input));
-    }
-
-    public function providerForObject()
-    {
         return [
-            [new \stdClass()],
-            [new \ArrayObject()],
+            [$rule, new stdClass()],
+            [$rule, new ArrayObject()],
         ];
     }
 
-    public function providerForNotObject()
+    public function providerForInvalidInput(): array
     {
+        $rule = new ObjectType();
+
         return [
-            [''],
-            [null],
-            [121],
-            [[]],
-            ['Foo'],
-            [false],
+            [$rule, ''],
+            [$rule, null],
+            [$rule, 121],
+            [$rule, []],
+            [$rule, 'Foo'],
+            [$rule, false],
         ];
     }
 }
