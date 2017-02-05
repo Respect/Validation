@@ -24,7 +24,7 @@ class Length extends AbstractRule
         $this->minValue = $min;
         $this->maxValue = $max;
         $this->inclusive = $inclusive;
-        $paramValidator = new OneOf(new NumericVal(), new NullType());
+        $paramValidator = new AnyOf(new NumericVal(), new NullType());
         if (!$paramValidator->validate($min)) {
             throw new ComponentException(
                 sprintf('%s is not a valid numeric length', $min)

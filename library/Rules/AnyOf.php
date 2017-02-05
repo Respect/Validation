@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
 
-class OneOf extends AbstractComposite
+class AnyOf extends AbstractComposite
 {
     public function assert($input)
     {

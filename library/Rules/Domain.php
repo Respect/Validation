@@ -28,7 +28,7 @@ class Domain extends AbstractComposite
         $this->otherParts = new AllOf(
             new Alnum('-'),
             new Not(new StartsWith('-')),
-            new OneOf(
+            new AnyOf(
                 new Not(
                     new Contains('--')
                 ),

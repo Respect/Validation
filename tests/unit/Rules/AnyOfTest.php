@@ -13,10 +13,10 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\OneOf
- * @covers \Respect\Validation\Exceptions\OneOfException
+ * @covers \Respect\Validation\Rules\AnyOf
+ * @covers \Respect\Validation\Exceptions\AnyOfException
  */
-class OneOfTest extends \PHPUnit_Framework_TestCase
+class AnyOfTest extends \PHPUnit_Framework_TestCase
 {
     public function testValid()
     {
@@ -29,14 +29,14 @@ class OneOfTest extends \PHPUnit_Framework_TestCase
         $valid3 = new Callback(function () {
             return false;
         });
-        $o = new OneOf($valid1, $valid2, $valid3);
+        $o = new AnyOf($valid1, $valid2, $valid3);
         $this->assertTrue($o->validate('any'));
         $this->assertTrue($o->assert('any'));
         $this->assertTrue($o->check('any'));
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\OneOfException
+     * @expectedException \Respect\Validation\Exceptions\AnyOfException
      */
     public function testInvalid()
     {
@@ -49,7 +49,7 @@ class OneOfTest extends \PHPUnit_Framework_TestCase
         $valid3 = new Callback(function () {
             return false;
         });
-        $o = new OneOf($valid1, $valid2, $valid3);
+        $o = new AnyOf($valid1, $valid2, $valid3);
         $this->assertFalse($o->validate('any'));
         $this->assertFalse($o->assert('any'));
     }
@@ -59,7 +59,7 @@ class OneOfTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidCheck()
     {
-        $o = new OneOf(new Xdigit(), new Alnum());
+        $o = new AnyOf(new Xdigit(), new Alnum());
         $this->assertFalse($o->validate(-10));
         $this->assertFalse($o->check(-10));
     }
