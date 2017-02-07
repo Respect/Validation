@@ -20,12 +20,13 @@ class TldTest extends \PHPUnit_Framework_TestCase
     public function providerForValidTld()
     {
         return [
-            ['com'],
-            ['cafe'],
-            ['democrat'],
             ['br'],
-            ['us'],
+            ['cafe'],
+            ['com'],
+            ['democrat'],
             ['eu'],
+            ['gmbh'],
+            ['us'],
         ];
     }
 
