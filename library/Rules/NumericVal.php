@@ -13,10 +13,24 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class NumericVal extends AbstractRule
+use Respect\Validation\Result;
+use Respect\Validation\Rule;
+
+/**
+ * Validates on any numeric value.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
+ */
+final class NumericVal implements Rule
 {
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function apply($input): Result
     {
-        return is_numeric($input);
+        return new Result(is_numeric($input), $input, $this);
     }
 }
