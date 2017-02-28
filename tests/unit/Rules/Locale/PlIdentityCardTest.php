@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules\Locale;
 
-use Respect\Validation\Rules\RuleTestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group  rule

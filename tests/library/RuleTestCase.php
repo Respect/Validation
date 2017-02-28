@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Rules;
+namespace Respect\Validation\Test;
 
 use PHPUnit\Framework\TestCase;
 use Respect\Validation\Exceptions\ValidationException;

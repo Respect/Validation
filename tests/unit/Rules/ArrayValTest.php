@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use ArrayObject;
+use Respect\Validation\Test\RuleTestCase;
 use SimpleXMLElement;
 use stdClass;
 
