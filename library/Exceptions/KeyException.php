@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class KeyException extends AttributeException
+class KeyException extends AttributeException implements NonOmittableExceptionInterface
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

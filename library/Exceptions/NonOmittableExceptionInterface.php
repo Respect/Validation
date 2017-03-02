@@ -11,6 +11,6 @@
 
 namespace Respect\Validation\Exceptions;
 
-class CallException extends GroupedValidationException implements NonOmittableExceptionInterface
+interface NonOmittableExceptionInterface extends ExceptionInterface
 {
 }

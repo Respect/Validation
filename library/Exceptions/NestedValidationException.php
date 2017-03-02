@@ -137,11 +137,10 @@ class NestedValidationException extends ValidationException implements IteratorA
         $knownDepths = [];
         foreach ($recursiveIteratorIterator as $childException) {
             if ($childException instanceof self
-                && $childException->getRelated()->count() > 0
-                && $childException->getRelated()->count() < 2) {
+                && $childException->getRelated()->count() === 1
+                && !iterator_to_array($childException->getRelated())[0] instanceof NonOmittableExceptionInterface) {
                 continue;
             }
-
             $currentDepth = $lastDepth;
             $currentDepthOriginal = $recursiveIteratorIterator->getDepth() + 1;
 
