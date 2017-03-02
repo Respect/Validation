@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class KeyNestedException extends AttributeException
+class KeyNestedException extends AttributeException implements NonOmissibleExceptionInterface
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

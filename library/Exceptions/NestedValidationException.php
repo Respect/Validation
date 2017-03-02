@@ -123,6 +123,26 @@ class NestedValidationException extends ValidationException implements IteratorA
     }
 
     /**
+     * Returns weather an exception should be omitted or not.
+     *
+     * @param ExceptionInterface $exception
+     *
+     * @return bool
+     */
+    private function isOmissible(ExceptionInterface $exception)
+    {
+        if (!$exception instanceof self) {
+            return false;
+        }
+
+        $relatedExceptions = $exception->getRelated();
+        $relatedExceptions->rewind();
+        $childException = $relatedExceptions->current();
+
+        return $relatedExceptions->count() === 1 && !$childException instanceof NonOmissibleExceptionInterface;
+    }
+
+    /**
      * @return SplObjectStorage
      */
     public function getIterator()
@@ -136,9 +156,7 @@ class NestedValidationException extends ValidationException implements IteratorA
         $lastDepthOriginal = 0;
         $knownDepths = [];
         foreach ($recursiveIteratorIterator as $childException) {
-            if ($childException instanceof self
-                && $childException->getRelated()->count() > 0
-                && $childException->getRelated()->count() < 2) {
+            if ($this->isOmissible($childException)) {
                 continue;
             }
 
