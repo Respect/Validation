@@ -3,8 +3,6 @@
 /*
  * This file is part of Respect/Validation.
  *
- * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
- *
  * For the full copyright and license information, please view the "LICENSE.md"
  * file that was distributed with this source code.
  */
@@ -26,9 +24,9 @@ class Pis extends AbstractRule
         for ($n = 0, $i = 0; $i <= 9; $n += $c[$i] * $r[$i++]);
 
         if ($c[10] != ((($n %= 11) < 2) ? 0 : 11 - $n)) {
-            print false;
+            return false;
         }
 
-        print true;
+        return true;
     }
 }
