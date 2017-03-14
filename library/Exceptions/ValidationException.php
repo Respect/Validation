@@ -62,7 +62,7 @@ class ValidationException extends InvalidArgumentException implements ExceptionI
                 }
 
                 $value = $vars[$match[1]];
-                if ('name' == $match[1]) {
+                if ('name' == $match[1] && is_string($value)) {
                     return $value;
                 }
 
