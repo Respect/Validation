@@ -50,7 +50,7 @@ class Sf extends AbstractRule
     {
         $validator = Validation::createValidator(); // You gotta love those Symfony namings
 
-        return $validator->validateValue($valueToValidate, $symfonyConstraint);
+        return $validator->validate($valueToValidate, $symfonyConstraint);
     }
 
     public function assert($input)
