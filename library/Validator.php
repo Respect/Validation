@@ -87,7 +87,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator json()
  * @method static Validator key(string $reference, Validatable $referenceValidator = null, bool $mandatory = true)
  * @method static Validator keyNested(string $reference, Validatable $referenceValidator = null, bool $mandatory = true)
- * @method static Validator keySet(Key $rule...)
+ * @method static Validator keySet(Key ...$rule)
  * @method static Validator keyValue(string $comparedKey, string $ruleName, string $baseKey)
  * @method static Validator languageCode(string $set)
  * @method static Validator leapDate(string $format)
