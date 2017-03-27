@@ -1,6 +1,6 @@
 # Cnh
 
-- `v::cnh()`
+- `Cnh()`
 
 Validates a Brazillian driver's license.
 

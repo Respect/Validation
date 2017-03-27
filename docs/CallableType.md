@@ -1,6 +1,6 @@
 # CallableType
 
-- `v::callableType()`
+- `CallableType()`
 
 Validates if the input is a callable value.
 

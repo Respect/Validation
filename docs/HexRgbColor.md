@@ -1,6 +1,6 @@
 # HexRgbColor
 
-- `v::hexRgbColor()`
+- `HexRgbColor()`
 
 Validates a hex RGB color
 

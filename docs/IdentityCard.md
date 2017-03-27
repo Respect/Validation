@@ -1,6 +1,6 @@
 # IdentityCard
 
-- `v::identityCard(string $countryCode)`
+- `IdentityCard(string $countryCode)`
 
 Validates Identity Card numbers according to the defined country.
 

@@ -1,6 +1,6 @@
 # LeapDate
 
-- `v::leapDate(string $format)`
+- `LeapDate(string $format)`
 
 Validates if a date is leap.
 

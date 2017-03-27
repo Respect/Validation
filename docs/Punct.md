@@ -1,7 +1,7 @@
 # Punct
 
-- `v::punct()`
-- `v::punct(string $additionalChars)`
+- `Punct()`
+- `Punct(string $additionalChars)`
 
 Accepts only punctuation characters:
 

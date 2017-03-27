@@ -1,6 +1,6 @@
 # Slug
 
-- `v::slug()`
+- `Slug()`
 
 Validates slug-like strings:
 

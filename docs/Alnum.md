@@ -1,7 +1,7 @@
 # Alnum
 
-- `v::alnum()`
-- `v::alnum(string $additionalChars)`
+- `Alnum()`
+- `Alnum(string $additionalChars)`
 
 Validates alphanumeric characters from a-Z and 0-9.
 

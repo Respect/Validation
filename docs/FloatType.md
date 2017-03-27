@@ -1,6 +1,6 @@
 # FloatType
 
-- `v::floatType()`
+- `FloatType()`
 
 Validates whether the type of a value is float.
 

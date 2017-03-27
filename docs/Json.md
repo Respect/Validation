@@ -1,6 +1,6 @@
 # Json
 
-- `v::json()`
+- `Json()`
 
 Validates if the given input is a valid JSON.
 

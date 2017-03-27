@@ -1,7 +1,7 @@
 # Between
 
-- `v::between(mixed $start, mixed $end)`
-- `v::between(mixed $start, mixed $end, bool $inclusive = true)`
+- `Between(mixed $start, mixed $end)`
+- `Between(mixed $start, mixed $end, bool $inclusive)`
 
 Validates ranges. Most simple example:
 

@@ -1,6 +1,6 @@
 # ObjectType
 
-- `v::objectType()`
+- `ObjectType()`
 
 Validates if the input is an object.
 

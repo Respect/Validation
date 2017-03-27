@@ -1,6 +1,6 @@
 # Infinite
 
-- `v::infinite()`
+- `Infinite()`
 
 Validates if the input is an infinite number.
 

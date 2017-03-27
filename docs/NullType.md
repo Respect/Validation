@@ -1,6 +1,6 @@
 # NullType
 
-- `v::nullType()`
+- `NullType()`
 
 Validates if the input is null.
 

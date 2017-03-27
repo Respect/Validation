@@ -1,8 +1,8 @@
 # Size
 
-- `v::size(string $minSize)`
-- `v::size(string $minSize, string $maxSize)`
-- `v::size(null, string $maxSize)`
+- `Size(string $minSize)`
+- `Size(string $minSize, string $maxSize)`
+- `Size(null, string $maxSize)`
 
 Validates file sizes:
 

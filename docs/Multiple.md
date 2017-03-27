@@ -1,6 +1,6 @@
 # Multiple
 
-- `v::multiple(int $multipleOf)`
+- `Multiple(int $multipleOf)`
 
 Validates if the input is a multiple of the given parameter
 

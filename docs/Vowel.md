@@ -1,8 +1,8 @@
 # Vowel
 
-- `v::vowel()`
+- `Vowel()`
 
-Similar to `v::alnum()`. Validates strings that contains only vowels:
+Similar to `Alnum()`. Validates strings that contains only vowels:
 
 ```php
 v::vowel()->validate('aei'); // true

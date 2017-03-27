@@ -1,6 +1,6 @@
 # Zend
 
-- `v::zend(mixed $validator)`
+- `Zend(mixed $validatorName)`
 
 Use Zend validators inside Respect\Validation flow. Messages
 are preserved.

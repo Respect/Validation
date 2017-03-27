@@ -1,7 +1,7 @@
 # CreditCard
 
-- `v::creditCard()`
-- `v::creditCard(string $brand)`
+- `CreditCard()`
+- `CreditCard(string $brand)`
 
 Validates a credit card number.
 

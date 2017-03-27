@@ -1,6 +1,6 @@
 # Negative
 
-- `v::negative()`
+- `Negative()`
 
 Validates if a number is lower than zero
 

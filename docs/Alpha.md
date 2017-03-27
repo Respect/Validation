@@ -1,9 +1,9 @@
 # Alpha
 
-- `v::alpha()`
-- `v::alpha(string $additionalChars)`
+- `Alpha()`
+- `Alpha(string $additionalChars)`
 
-This is similar to `v::alnum()`, but it doesn't allow numbers.
+This is similar to `Alnum()`, but it doesn't allow numbers.
 
 ***
 See also:

@@ -1,6 +1,6 @@
 # PhpLabel
 
-- `v::phpLabel()`
+- `PhpLabel()`
 
 Validates if a value is considered a valid PHP Label, 
 so that it can be used as a *variable*, *function* or *class* name, for example.

@@ -1,6 +1,6 @@
 # AlwaysValid
 
-- `v::alwaysValid()`
+- `AlwaysValid()`
 
 Always returns true.
 

@@ -1,6 +1,6 @@
 # Directory
 
-- `v::directory()`
+- `Directory()`
 
 Validates directories.
 

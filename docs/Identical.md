@@ -1,6 +1,6 @@
 # Identical
 
-- `v::identical(mixed $value)`
+- `Identical(mixed $value)`
 
 Validates if the input is identical to some value.
 

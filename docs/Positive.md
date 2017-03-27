@@ -1,6 +1,6 @@
 # Positive
 
-- `v::positive()`
+- `Positive()`
 
 Validates if a number is higher than zero
 

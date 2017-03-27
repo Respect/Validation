@@ -2,8 +2,8 @@
 
 This is going to be deprecated, please use [Age](Age.md) instead.
 
-- `v::minimumAge(int $age)`
-- `v::minimumAge(int $age, string $format)`
+- `MinimumAge(int $age)`
+- `MinimumAge(int $age, string $format)`
 
 Validates a minimum age for a given date.
 

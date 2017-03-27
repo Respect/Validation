@@ -1,7 +1,7 @@
 # Space
 
-- `v::space()`
-- `v::space(string $additionalChars)`
+- `Space()`
+- `Space(string $additionalChars)`
 
 Accepts only whitespace:
 

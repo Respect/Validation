@@ -1,6 +1,6 @@
 # Instance
 
-- `v::instance(string $instanceName)`
+- `Instance(string $instanceName)`
 
 Validates if the input is an instance of the given class or interface.
 

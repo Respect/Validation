@@ -1,6 +1,6 @@
 # Call
 
-- `v::call(callable $callback)`
+- `Call(callable $callback)`
 
 This is a very low level validator. It calls a function, method or closure
 for the input and then validates it. Consider the following variable:
@@ -26,7 +26,7 @@ v::arrayVal()->key('scheme', v::startsWith('http'))
         ->key('query',  v::notEmpty());
 ```
 
-Using `v::call()` you can do this in a single chain:
+Using `Call()` you can do this in a single chain:
 
 ```php
 v::call(

@@ -1,6 +1,6 @@
 # Type
 
-- `v::type(string $type)`
+- `Type(string $type)`
 
 Validates the type of input.
 

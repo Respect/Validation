@@ -1,6 +1,6 @@
 # Email
 
-- `v::email()`
+- `Email()`
 
 Validates an email address.
 

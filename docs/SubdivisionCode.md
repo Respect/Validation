@@ -1,6 +1,6 @@
 # SubdivisionCode
 
-- `v::subdivisionCode(string $countryCode)`
+- `SubdivisionCode(string $countryCode)`
 
 Validates subdivision country codes according to [ISO 3166-2][].
 

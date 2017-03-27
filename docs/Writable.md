@@ -1,6 +1,6 @@
 # Writable
 
-- `v::writable()`
+- `Writable()`
 
 Validates if the given input is writable file.
 

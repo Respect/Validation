@@ -1,6 +1,6 @@
 # ArrayType
 
-- `v::arrayType()`
+- `ArrayType()`
 
 Validates whether the type of an input is array.
 

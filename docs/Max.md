@@ -1,7 +1,7 @@
 # Max
 
-- `v::max(mixed $maxValue)`
-- `v::max(mixed $maxValue, bool $inclusive = true)`
+- `Max(mixed $maxValue)`
+- `Max(mixed $maxValue, bool $inclusive)`
 
 Validates if the input doesn't exceed the maximum value.
 

@@ -1,6 +1,6 @@
 # LeapYear
 
-- `v::leapYear()`
+- `LeapYear()`
 
 Validates if a year is leap.
 

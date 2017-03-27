@@ -1,9 +1,9 @@
 # Cntrl
 
-- `v::cntrl()`
-- `v::cntrl(string $additionalChars)`
+- `Cntrl()`
+- `Cntrl(string $additionalChars)`
 
-This is similar to `v::alnum()`, but only accepts control characters:
+This is similar to `Alnum()`, but only accepts control characters:
 
 ```php
 v::cntrl()->validate("\n\r\t"); // true

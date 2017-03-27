@@ -1,6 +1,6 @@
 # KeySet
 
-- `v::keySet(Key $rule...)`
+- `KeySet(Key ...$rule)`
 
 Validates a keys in a defined structure.
 

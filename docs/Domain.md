@@ -1,7 +1,7 @@
 # Domain
 
-- `v::domain()`
-- `v::domain(bool $tldCheck = true)`
+- `Domain()`
+- `Domain(bool $tldCheck)`
 
 Validates domain names.
 

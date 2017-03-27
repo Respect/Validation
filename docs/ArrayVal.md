@@ -1,6 +1,6 @@
 # ArrayVal
 
-- `v::arrayVal()`
+- `ArrayVal()`
 
 Validates if the input is an array or if the input can be used as an array
 (instance of `ArrayAccess` or `SimpleXMLElement`).

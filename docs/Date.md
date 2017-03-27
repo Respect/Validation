@@ -1,7 +1,7 @@
 # Date
 
-- `v::date()`
-- `v::date(string $format)`
+- `Date()`
+- `Date(string $format)`
 
 Validates if input is a date:
 

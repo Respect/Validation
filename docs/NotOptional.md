@@ -1,6 +1,6 @@
 # NotOptional
 
-- `v::notOptional()`
+- `NotOptional()`
 
 Validates if the given input is not optional. By _optional_ we consider `null`
 or an empty string (`''`).

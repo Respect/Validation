@@ -1,6 +1,6 @@
 # Tld
 
-- `v::tld()`
+- `Tld()`
 
 Validates a top-level domain
 

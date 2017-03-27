@@ -1,7 +1,7 @@
 # VideoUrl
 
-- `v::videoUrl()`
-- `v::videoUrl(string $service)`
+- `VideoUrl()`
+- `VideoUrl(string $service)`
 
 Validates if the input is a video URL value:
 

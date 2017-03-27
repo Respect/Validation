@@ -1,6 +1,6 @@
 # NotEmpty
 
-- `v::notEmpty()`
+- `NotEmpty()`
 
 Validates if the given input is not empty or in other words is input mandatory and
 required. This function also takes whitespace into account, use `noWhitespace()`

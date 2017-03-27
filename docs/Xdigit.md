@@ -1,6 +1,6 @@
 # Xdigit
 
-- `v::xdigit()`
+- `Xdigit()`
 
 Accepts an hexadecimal number:
 

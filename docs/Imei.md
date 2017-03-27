@@ -1,6 +1,6 @@
 # Imei
 
-- `v::imei()`
+- `Imei()`
 
 Validates is the input is a valid [IMEI][].
 

@@ -1,6 +1,6 @@
 # NfeAccessKey
 
-- `v::nfeAccessKey(string $accessKey)`
+- `NfeAccessKey(string $accessKey)`
 
 Validates the access key of the Brazilian electronic invoice (NFe).
 

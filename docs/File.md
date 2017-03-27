@@ -1,6 +1,6 @@
 # File
 
-- `v::file()`
+- `File()`
 
 Validates files.
 

@@ -1,7 +1,7 @@
 # Graph
 
-- `v::graph()`
-- `v::graph(string $additionalChars)`
+- `Graph()`
+- `Graph(string $additionalChars)`
 
 Validates all characters that are graphically represented.
 

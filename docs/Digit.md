@@ -1,8 +1,8 @@
 # Digit
 
-- `v::digit()`
+- `Digit()`
 
-This is similar to `v::alnum()`, but it doesn't allow a-Z.
+This is similar to `Alnum()`, but it doesn't allow a-Z.
 
 ***
 See also:

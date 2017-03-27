@@ -1,6 +1,6 @@
 # Odd
 
-- `v::odd()`
+- `Odd()`
 
 Validates an odd number.
 

@@ -1,6 +1,6 @@
 # ResourceType
 
-- `v::resourceType()`
+- `ResourceType()`
 
 Validates if the input is a resource.
 

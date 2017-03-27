@@ -1,6 +1,6 @@
 # Regex
 
-- `v::regex(string $regex)`
+- `Regex(string $regex)`
 
 Evaluates a regex on the input and validates if matches
 

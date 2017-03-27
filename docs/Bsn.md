@@ -1,6 +1,6 @@
 # Bsn
 
-- `v::bsn()`
+- `Bsn()`
 
 Validates a Dutch citizen service number ([BSN](https://nl.wikipedia.org/wiki/Burgerservicenummer)).
 

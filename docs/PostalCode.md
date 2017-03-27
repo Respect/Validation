@@ -1,6 +1,6 @@
 # PostalCode
 
-- `v::postalCode(string $countryCode)`
+- `PostalCode(string $countryCode)`
 
 Validates a postal code according to the given country code.
 

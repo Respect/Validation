@@ -1,6 +1,6 @@
 # NotBlank
 
-- `v::notBlank()`
+- `NotBlank()`
 
 Validates if the given input is not a blank value (`null`, zeros, empty strings
 or empty arrays, recursively).

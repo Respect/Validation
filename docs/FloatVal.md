@@ -1,6 +1,6 @@
 # FloatVal
 
-- `v::floatVal()`
+- `FloatVal()`
 
 Validates a floating point number.
 

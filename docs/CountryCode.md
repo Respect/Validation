@@ -1,6 +1,6 @@
 # CountryCode
 
-- `v::countryCode()`
+- `CountryCode()`
 
 Validates an ISO country code like US or BR.
 

@@ -1,6 +1,6 @@
 # Extension
 
-- `v::extension(string $extension)`
+- `Extension(string $extension)`
 
 Validates if the file extension matches the expected one:
 

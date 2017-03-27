@@ -1,6 +1,6 @@
 # Bic
 
-- `v::bic(string $countryCode)`
+- `Bic(string $countryCode)`
 
 Validates a BIC (Bank Identifier Code) for a given country.
 

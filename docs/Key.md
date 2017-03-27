@@ -1,8 +1,8 @@
 # Key
 
-- `v::key(string $name)`
-- `v::key(string $name, v $validator)`
-- `v::key(string $name, v $validator, bool $mandatory = true)`
+- `new Key(string $name)`
+- `new Key(string $name, Validatable $rule)`
+- `new Key(string $name, Validatable $rule, bool $mandatory)`
 
 Validates an array key.
 

@@ -1,6 +1,6 @@
 # StringVal
 
-- `v::stringVal()`
+- `StringVal()`
 
 Validates whether the input can be used as a string.
 

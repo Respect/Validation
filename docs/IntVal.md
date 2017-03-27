@@ -1,6 +1,6 @@
 # IntVal
 
-- `v::intVal()`
+- `IntVal()`
 
 Validates if the input is an integer.
 

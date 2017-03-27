@@ -1,6 +1,6 @@
 # Charset
 
-- `v::charset(mixed $charset)`
+- `Charset(mixed $charset)`
 
 Validates if a string is in a specific charset.
 

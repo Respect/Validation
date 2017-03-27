@@ -1,6 +1,6 @@
 # Factor
 
-- `v::factor(int $dividend)`
+- `Factor(int $dividend)`
 
 Validates if the input is a factor of the defined dividend.
 

@@ -1,6 +1,6 @@
 # MacAddress
 
-- `v::macAddress()`
+- `MacAddress()`
 
 Validates a Mac Address.
 

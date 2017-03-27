@@ -1,6 +1,6 @@
 # Optional
 
-- `v::optional(v $rule)`
+- `Optional(Validatable $rule)`
 
 Validates if the given input is optional or not. By _optional_ we consider `null`
 or an empty string (`''`).

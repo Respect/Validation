@@ -1,6 +1,6 @@
 # StringType
 
-- `v::stringType()`
+- `StringType()`
 
 Validates a string.
 

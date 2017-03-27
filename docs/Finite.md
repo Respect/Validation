@@ -1,6 +1,6 @@
 # Finite
 
-- `v::finite()`
+- `Finite()`
 
 Validates if the input is a finite number.
 

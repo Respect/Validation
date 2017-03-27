@@ -1,6 +1,6 @@
 # AlwaysInvalid
 
-- `v::alwaysInvalid()`
+- `AlwaysInvalid()`
 
 Always return false.
 

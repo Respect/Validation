@@ -1,6 +1,6 @@
 # Even
 
-- `v::even()`
+- `Even()`
 
 Validates an even number.
 

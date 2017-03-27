@@ -1,9 +1,9 @@
 # Length
 
-- `v::length(int $min, int $max)`
-- `v::length(int $min, null)`
-- `v::length(null, int $max)`
-- `v::length(int $min, int $max, bool $inclusive = true)`
+- `Length(int $min, int $max)`
+- `Length(int $min, null)`
+- `Length(null, int $max)`
+- `Length(int $min, int $max, bool $inclusive)`
 
 Validates lengths. Most simple example:
 

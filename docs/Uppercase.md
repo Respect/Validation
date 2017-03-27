@@ -1,6 +1,6 @@
 # Uppercase
 
-- `v::uppercase()`
+- `Uppercase()`
 
 Validates if string characters are uppercase in the input:
 

@@ -1,7 +1,7 @@
 # Ip
 
-- `v::ip()`
-- `v::ip(mixed $options)`
+- `Ip()`
+- `Ip(mixed $options)`
 
 Validates IP Addresses. This validator uses the native filter_var()
 PHP function.

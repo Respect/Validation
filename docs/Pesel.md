@@ -1,6 +1,6 @@
 # Pesel
 
-- `v::pesel()`
+- `Pesel()`
 
 Validates PESEL (Polish human identification number).
 

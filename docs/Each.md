@@ -1,8 +1,8 @@
 # Each
 
-- `v::each(v $validatorForValue)`
-- `v::each(null, v $validatorForKey)`
-- `v::each(v $validatorForValue, v $validatorForKey)`
+- `Each(Validatable $ruleForValue)`
+- `Each(null, Validatable $ruleForKey)`
+- `Each(Validatable $ruleForValue, Validatable $ruleForKey)`
 
 Iterates over an array or Iterator and validates the value or key
 of each entry:

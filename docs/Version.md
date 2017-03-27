@@ -1,6 +1,6 @@
 # Version
 
-- `v::version()`
+- `Version()`
 
 Validates version numbers using Semantic Versioning.
 

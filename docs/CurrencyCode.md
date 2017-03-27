@@ -1,6 +1,6 @@
 # CurrencyCode
 
-- `v::currencyCode()`
+- `CurrencyCode()`
 
 Validates an [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) currency code like GBP or EUR.
 

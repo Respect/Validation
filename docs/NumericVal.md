@@ -1,6 +1,6 @@
 # NumericVal
 
-- `v::numericVal()`
+- `NumericVal()`
 
 Validates on any numeric value.
 

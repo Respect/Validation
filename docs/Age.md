@@ -1,8 +1,8 @@
 # Age
 
-- `v::age(int $minAge)`
-- `v::age(int $minAge, int $maxAge)`
-- `v::age(null, int $maxAge)`
+- `Age(int $minAge)`
+- `Age(int $minAge, int $maxAge)`
+- `Age(null, int $maxAge)`
 
 Validates ranges of years.
 

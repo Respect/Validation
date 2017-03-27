@@ -1,7 +1,7 @@
 # When
 
-- `v::when(v $if, v $then, v $else)`
-- `v::when(v $if, v $then)`
+- `When(Validatable $if, Validatable $then, Validatable $else)`
+- `When(Validatable $if, Validatable $then)`
 
 A ternary validator that accepts three parameters.
 

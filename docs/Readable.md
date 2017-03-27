@@ -1,6 +1,6 @@
 # Readable
 
-- `v::readable()`
+- `Readable()`
 
 Validates if the given data is a file exists and is readable.
 

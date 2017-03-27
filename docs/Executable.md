@@ -1,6 +1,6 @@
 # Executable
 
-- `v::executable()`
+- `Executable()`
 
 Validates if a file is an executable.
 

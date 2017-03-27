@@ -1,6 +1,6 @@
 # Url
 
-- `v::url()`
+- `Url()`
 
 Validates if input is an URL:
 

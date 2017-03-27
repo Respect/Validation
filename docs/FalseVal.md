@@ -1,6 +1,6 @@
 # FalseVal
 
-- `v::falseVal()`
+- `FalseVal()`
 
 Validates if a value is considered as `false`.
 

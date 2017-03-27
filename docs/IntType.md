@@ -1,6 +1,6 @@
 # IntType
 
-- `v::intType()`
+- `IntType()`
 
 Validates whether the type of a value is integer.
 

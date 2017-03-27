@@ -1,7 +1,7 @@
 # No
 
-- `v::no()`
-- `v::no(bool $locale)`
+- `No()`
+- `No(bool $locale)`
 
 Validates if value is considered as "No".
 

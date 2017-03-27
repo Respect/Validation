@@ -1,9 +1,9 @@
 # Consonant
 
-- `v::consonant()`
-- `v::consonant(string $additionalChars)`
+- `Consonant()`
+- `Consonant(string $additionalChars)`
 
-Similar to `v::alnum()`. Validates strings that contain only consonants:
+Similar to `Alnum()`. Validates strings that contain only consonants:
 
 ```php
 v::consonant()->validate('xkcd'); // true

@@ -1,7 +1,7 @@
 # FilterVar
 
-- `v::filterVar(int $filter)`
-- `v::filterVar(int $filter, mixed $options)`
+- `FilterVar(int $filter)`
+- `FilterVar(int $filter, mixed $options)`
 
 A wrapper for PHP's [filter_var()](http://php.net/filter_var) function.
 

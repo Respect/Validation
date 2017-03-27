@@ -1,6 +1,6 @@
 # SymbolicLink
 
-- `v::symbolicLink()`
+- `SymbolicLink()`
 
 Validates if the given data is a path of a valid symbolic link.
 

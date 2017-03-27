@@ -1,6 +1,6 @@
 # LanguageCode
 
-- `v::languageCode()`
+- `LanguageCode()`
 
 Validates a language code based on ISO 639:
 

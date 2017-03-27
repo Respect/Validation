@@ -1,6 +1,6 @@
 # Bank
 
-- `v::bank(string $countryCode)`
+- `Bank(string $countryCode)`
 
 Validates a bank.
 

@@ -1,6 +1,6 @@
 # IterableType
 
-- `v::iterableType()`
+- `IterableType()`
 
 Validates if the input is iterable, in other words, if you're able to iterate
 over it with [foreach](http://php.net/foreach) language construct.

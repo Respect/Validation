@@ -1,6 +1,6 @@
 # Roman
 
-- `v::roman()`
+- `Roman()`
 
 Validates roman numbers
 

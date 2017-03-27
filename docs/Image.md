@@ -1,7 +1,7 @@
 # Image
 
-- `v::image()`
-- `v::image(finfo $fileInfo)`
+- `Image()`
+- `Image(finfo $fileInfo)`
 
 Validates if the file is a valid image by checking its MIME type.
 

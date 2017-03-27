@@ -1,6 +1,6 @@
 # PrimeNumber
 
-- `v::primeNumber()`
+- `PrimeNumber()`
 
 Validates a prime number
 

@@ -1,6 +1,6 @@
 # PerfectSquare
 
-- `v::perfectSquare()`
+- `PerfectSquare()`
 
 Validates a perfect square.
 

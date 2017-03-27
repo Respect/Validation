@@ -1,6 +1,6 @@
 # Vatin
 
-- `v::vatin(string $countryCode)`
+- `Vatin(string $countryCode)`
 
 Validates VAT identification number according to the defined country.
 

@@ -1,6 +1,6 @@
 # Cpf
 
-- `v::cpf()`
+- `Cpf()`
 
 Validates a Brazillian CPF number.
 

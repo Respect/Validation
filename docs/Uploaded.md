@@ -1,6 +1,6 @@
 # Uploaded
 
-- `v::uploaded()`
+- `Uploaded()`
 
 Validates if the given data is a file that was uploaded via HTTP POST.
 

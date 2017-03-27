@@ -1,6 +1,6 @@
 # BankAccount
 
-- `v::bankAccount(string $countryCode, string $bank)`
+- `BankAccount(string $countryCode, string $bank)`
 
 Validates a bank account for a given bank.
 

@@ -1,6 +1,6 @@
 # Countable
 
-- `v::countable()`
+- `Countable()`
 
 Validates if the input is countable, in other words, if you're allowed to use
 [count()](http://php.net/count) function on it.

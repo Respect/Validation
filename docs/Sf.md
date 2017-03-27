@@ -1,6 +1,6 @@
 # Sf
 
-- `v::sf(string $validator)`
+- `Sf(string $validatorName)`
 
 Use Symfony2 validators inside Respect\Validation flow. Messages
 are preserved.

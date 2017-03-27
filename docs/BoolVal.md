@@ -1,6 +1,6 @@
 # BoolVal
 
-- `v::boolVal()`
+- `BoolVal()`
 
 Validates if the input results in a boolean value:
 

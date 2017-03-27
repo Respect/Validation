@@ -1,6 +1,6 @@
 # Pis
 
-- `v::pis()`
+- `Pis()`
 
 Validates a Brazilian PIS/NIS number ignoring any non-digit char.
 

@@ -1,6 +1,6 @@
 # Callback
 
-- `v::callback(callable $callback)`
+- `Callback(callable $callback)`
 
 This is a wildcard validator, it uses a function name, method or closure
 to validate something:
@@ -9,9 +9,9 @@ to validate something:
 v::callback('is_int')->validate(10); // true
 ```
 
-(Please note that this is a sample, the `v::intVal()` validator is much better).
+(Please note that this is a sample, the `IntVal()` validator is much better).
 
-As in `v::call()`, you can pass a method or closure to it.
+As in `Call()`, you can pass a method or closure to it.
 
 ***
 See also:

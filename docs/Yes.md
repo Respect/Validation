@@ -1,7 +1,7 @@
 # Yes
 
-- `v::yes()`
-- `v::yes(bool $locale)`
+- `Yes()`
+- `Yes(bool $locale)`
 
 Validates if value is considered as "Yes".
 

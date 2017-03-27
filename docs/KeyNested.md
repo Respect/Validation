@@ -1,8 +1,8 @@
 # KeyNested
 
-- `v::keyNested(string $name)`
-- `v::keyNested(string $name, v $validator)`
-- `v::keyNested(string $name, v $validator, bool $mandatory = true)`
+- `KeyNested(string $name)`
+- `KeyNested(string $name, Validatable $rule)`
+- `KeyNested(string $name, Validatable $rule, bool $mandatory)`
 
 Validates an array key or an object property using `.` to represent nested data.
 

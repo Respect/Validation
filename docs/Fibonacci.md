@@ -1,6 +1,6 @@
 # Fibonacci
 
- - `v::fibonacci()`
+- `Fibonacci()`
 
 Validates whether the input follows the Fibonacci integer sequence.
 

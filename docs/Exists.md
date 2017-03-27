@@ -1,6 +1,6 @@
 # Exists
 
-- `v::exists()`
+- `Exists()`
 
 Validates files or directories.
 

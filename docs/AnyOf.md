@@ -1,6 +1,6 @@
 # AnyOf
 
-- `v::anyOf(v $v1, v $v2, v $v3...)`
+- `AnyOf(Validatable ...$rule)`
 
 This is a group validator that acts as an OR operator.
 
@@ -11,11 +11,10 @@ v::anyOf(
 )->validate(15.5); // true
 ```
 
-In the sample above, `v::intVal()` doesn't validates, but
-`v::floatVal()` validates, so anyOf returns true.
+In the sample above, `IntVal()` doesn't validates, but `FloatVal()` validates,
+so `AnyOf()` returns true.
 
-`v::anyOf` returns true if at least one inner validator
-passes.
+`AnyOf()` returns true if at least one inner validator passes.
 
 ***
 See also:

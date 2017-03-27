@@ -1,6 +1,6 @@
 # TrueVal
 
-- `v::trueVal()`
+- `TrueVal()`
 
 Validates if a value is considered as `true`.
 

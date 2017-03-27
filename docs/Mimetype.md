@@ -1,6 +1,6 @@
 # Mimetype
 
-- `v::mimetype(string $mimetype)`
+- `Mimetype(string $mimetype)`
 
 Validates if the file mimetype matches the expected one:
 
