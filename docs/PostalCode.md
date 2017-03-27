@@ -16,6 +16,12 @@ Message template for this validator includes `{{countryCode}}`.
 
 Extracted from [GeoNames](http://www.geonames.org/).
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.7.0 | Created
+
 ***
 See also:
 

@@ -23,6 +23,12 @@ instead of equal.
 
 Message template for this validator includes `{{startValue}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 

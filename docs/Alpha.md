@@ -5,6 +5,12 @@
 
 This is similar to `Alnum()`, but it doesn't allow numbers.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 

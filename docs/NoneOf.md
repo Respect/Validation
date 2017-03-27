@@ -13,6 +13,12 @@ v::noneOf(
 
 In the sample above, 'foo' isn't a integer nor a float, so noneOf returns true.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 

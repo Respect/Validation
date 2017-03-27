@@ -29,6 +29,12 @@ v::notOptional()->validate([[''), [0]]); // true
 v::notOptional()->validate(new stdClass()); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 

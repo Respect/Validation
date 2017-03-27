@@ -11,6 +11,12 @@ v::leapDate('Y-m-d')->validate('1988-02-29'); // true
 This validator accepts DateTime instances as well. The $format
 parameter is mandatory.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 

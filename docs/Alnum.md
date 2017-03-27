@@ -32,6 +32,12 @@ v::alnum()->uppercase()->validate('aaa'); // false
 Message template for this validator includes `{{additionalChars}}` as
 the string of extra chars passed as the parameter.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 

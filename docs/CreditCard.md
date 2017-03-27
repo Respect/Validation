@@ -31,6 +31,13 @@ It ignores any non-digit chars, so use `->digit()` when appropriate.
 v::digit()->creditCard()->validate('5376747397208720'); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.1.0 | Allow the define credit card brand
+  0.3.9 | Created
+
 ***
 See also:
 

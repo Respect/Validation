@@ -29,6 +29,13 @@ values must be used.
 
 Message template for this validator includes `{{maxValue}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Became inclusive by default
+  0.3.9 | Created
+
 ***
 See also:
 

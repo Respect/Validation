@@ -10,6 +10,12 @@ v::slug()->validate('my-wordpress--title'); // false
 v::slug()->validate('my-wordpress-title-'); // false
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 

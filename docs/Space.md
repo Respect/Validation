@@ -9,6 +9,12 @@ Accepts only whitespace:
 v::space()->validate('    '); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.5.0 | Created
+
 ***
 See also:
 

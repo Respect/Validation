@@ -8,6 +8,13 @@ Validates if the input is an object.
 v::objectType()->validate(new stdClass); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Renamed from `Object` to `ObjectType`
+  0.3.9 | Created as `Object`
+
 ***
 See also:
 

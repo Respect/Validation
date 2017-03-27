@@ -13,6 +13,12 @@ v::callback('is_int')->validate(10); // true
 
 As in `Call()`, you can pass a method or closure to it.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 

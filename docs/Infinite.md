@@ -8,6 +8,12 @@ Validates if the input is an infinite number.
 v::infinite()->validate(INF); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 

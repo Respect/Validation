@@ -10,6 +10,12 @@ v::arrayType()->validate([1, 2, 3]); // true
 v::arrayType()->validate(new ArrayObject()); // false
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 

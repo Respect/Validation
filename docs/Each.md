@@ -20,6 +20,12 @@ v::arrayVal()->each(v::date(), v::stringType()->lowercase())->validate($releaseD
 
 Using `arrayVal()` before `each()` is a best practice.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 

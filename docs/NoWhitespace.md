@@ -11,6 +11,12 @@ v::noWhitespace()->validate("foo\nbar"); // false
 
 This is most useful when chaining with other validators such as `Alnum()`
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 

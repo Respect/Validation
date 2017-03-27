@@ -14,6 +14,12 @@ v::oneOf(v::digit(), v::alpha())->validate('*'); // false
 The chains above validate if the input is either a digit or an alphabetic
 character, one or the other, but not neither nor both.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  2.0.0 | Created (see [AnyOf](AnyOf.md))
+
 ***
 See also:
 

@@ -9,6 +9,12 @@ v::finite()->validate('10'); // true
 v::finite()->validate(10); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 

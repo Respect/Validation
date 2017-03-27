@@ -13,6 +13,12 @@ v::identityCard('PL')->validate('AYW036731'); // false
 
 For now this rule only accepts Polish Identity Card numbers (Dowód Osobisty).
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.1.0 | Created
+
 ***
 See also:
 

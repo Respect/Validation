@@ -8,6 +8,12 @@ Validates an [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) currency code lik
 v::currencyCode()->validate('GBP'); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 

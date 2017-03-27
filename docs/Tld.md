@@ -10,6 +10,12 @@ v::tld()->validate('ly'); // true
 v::tld()->validate('org'); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 

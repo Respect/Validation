@@ -14,6 +14,12 @@ v::stringVal()->validate(true); // true
 v::stringVal()->validate(new ClassWithToString()); // true if ClassWithToString implements `__toString`
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  2.0.0 | Created
+
 ***
 See also:
 

@@ -271,6 +271,12 @@ This rule is case sensitive.
 All data was extrated from [GeoNames][] which is licensed under a
 [Creative Commons Attribution 3.0 License][].
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 

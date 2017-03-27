@@ -12,6 +12,12 @@ v::pis()->validate('1.2.0.0.3.4.0.6.7.8.8'); // true
 v::pis()->validate('12003406788'); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  2.0.0 | Created
+
 ***
 See also:
 

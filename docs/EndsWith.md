@@ -23,6 +23,12 @@ of equal comparison.
 
 Message template for this validator includes `{{endValue}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 

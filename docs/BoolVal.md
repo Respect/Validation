@@ -13,6 +13,12 @@ v::boolVal()->validate(1); // true
 v::boolVal()->validate(0); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 

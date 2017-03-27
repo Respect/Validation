@@ -17,6 +17,12 @@ This rule is case insensitive.
 
 If `$locale` is TRUE, uses the value of [nl_langinfo()](http://php.net/nl_langinfo) with `YESEXPR` constant.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.7.0 | Created
+
 ***
 See also:
 

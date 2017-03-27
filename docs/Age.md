@@ -37,6 +37,12 @@ v::age(null, 70)->validate('71 years ago'); // false
 
 Message template for this validator includes `{{minAge}}` and `{{maxAge}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.9.0 | Created based on deprecated `MinimumAge` rule
+
 ***
 See also:
 

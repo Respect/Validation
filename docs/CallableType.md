@@ -10,6 +10,12 @@ v::callableType()->validate('trim'); // true
 v::callableType()->validate([new ObjectType, 'methodName']); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 

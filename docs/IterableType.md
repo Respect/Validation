@@ -12,6 +12,13 @@ v::iterableType()->validate(new stdClass()); // true
 v::iterableType()->validate('string'); // false
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.8 | Renamed from `Iterable` to `IterableType`
+  1.0.0 | Created as `Iterable`
+
 ***
 See also:
 

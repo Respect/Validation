@@ -8,6 +8,13 @@ Validates a string.
 v::stringType()->validate('hi'); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Renamed from `String` to `StringType`
+  0.3.9 | Created as `String`
+
 ***
 See also:
 

@@ -9,6 +9,12 @@ v::intType()->validate(42); // true
 v::intType()->validate('10'); // false
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 

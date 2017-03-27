@@ -9,6 +9,12 @@ Accepts only punctuation characters:
 v::punct()->validate('&,.;[]'); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.5.0 | Created
+
 ***
 See also:
 

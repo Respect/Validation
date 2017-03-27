@@ -10,6 +10,12 @@ v::type('callable')->validate(function (){}); // true
 v::type('object')->validate(new stdClass()); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.8.0 | Created
+
 ***
 See also:
 

@@ -8,6 +8,12 @@ Validates if the given input is writable file.
 v::writable()->validate('/path/of/a/writable/file'); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.5.0 | Created
+
 ***
 See also:
 

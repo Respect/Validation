@@ -14,6 +14,12 @@ v::url()->validate('news:new.example.com'); // true
 
 This rule uses [FilterVar](FilterVar.md)
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.8.0 | Created
+
 ***
 See also:
 

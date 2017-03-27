@@ -10,6 +10,12 @@ v::intVal()->odd()->validate(3); // true
 
 Using `int()` before `odd()` is a best practice.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 

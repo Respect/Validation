@@ -10,6 +10,11 @@ v::optional(v::alpha())->validate(''); // true
 v::optional(v::digit())->validate(null); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
 
 ***
 See also:

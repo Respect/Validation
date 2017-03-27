@@ -53,6 +53,12 @@ The above code may generate the message:
 password_confirmation must be equals "password"
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 

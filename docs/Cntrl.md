@@ -9,6 +9,12 @@ This is similar to `Alnum()`, but only accepts control characters:
 v::cntrl()->validate("\n\r\t"); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.5.0 | Created
+
 ***
 See also:
 

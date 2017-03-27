@@ -8,6 +8,12 @@ Validates if the given data is a path of a valid symbolic link.
 v::symbolicLink()->validate('/path/of/valid/symbolic/link'); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.5.0 | Created
+
 ***
 See also:
 

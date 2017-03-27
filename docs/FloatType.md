@@ -10,6 +10,12 @@ v::floatType()->validate('1.5'); // false
 v::floatType()->validate(0e5); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 

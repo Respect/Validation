@@ -11,6 +11,12 @@ v::countable()->validate(new ArrayObject()); // true
 v::countable()->validate('string'); // false
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created from `ArrayVal`
+
 ***
 See also:
 

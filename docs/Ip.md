@@ -16,6 +16,13 @@ You can pass a parameter with filter_var flags for IP.
 v::ip(FILTER_FLAG_NO_PRIV_RANGE)->validate('127.0.0.1'); // false
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.5.0 | Implemented IP range validatio
+  0.3.9 | Created
+
 ***
 See also:
 

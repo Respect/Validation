@@ -8,6 +8,13 @@ Validates if the input is null.
 v::nullType()->validate(null); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Renamed from `NullValue` to `NullType`
+  0.3.9 | Created as `NullValue`
+
 ***
 See also:
 

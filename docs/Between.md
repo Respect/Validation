@@ -36,6 +36,13 @@ v::date()->between(10, 20, true)->validate(20); // true
 
 Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Became inclusive by default
+  0.3.9 | Created
+
 ***
 See also:
 

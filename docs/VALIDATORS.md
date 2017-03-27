@@ -50,6 +50,7 @@
 
 ## NumericVal
 
+  * [Base](Base.md)
   * [Between](Between.md)
   * [BoolType](BoolType.md)
   * [Even](Even.md)
@@ -216,6 +217,7 @@
   * [Attribute](Attribute.md)
   * [Bank](Bank.md)
   * [BankAccount](BankAccount.md)
+  * [Base](Base.md)
   * [Between](Between.md)
   * [Bic](Bic.md)
   * [BoolType](BoolType.md)

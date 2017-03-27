@@ -9,6 +9,13 @@ v::boolType()->validate(true); // true
 v::boolType()->validate(false); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Renamed from `Bool` to `BoolType`
+  0.3.9 | Created as `Bool`
+
 ***
 See also:
 

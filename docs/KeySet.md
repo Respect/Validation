@@ -45,6 +45,12 @@ v::keySet(
 
 The keys' order is not considered in the validation.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 

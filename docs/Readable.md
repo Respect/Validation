@@ -8,6 +8,12 @@ Validates if the given data is a file exists and is readable.
 v::readable()->validate('/path/of/a/readable/file'); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.5.0 | Created
+
 ***
 See also:
 

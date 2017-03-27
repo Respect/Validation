@@ -2,9 +2,9 @@
 
 - `NotEmpty()`
 
-Validates if the given input is not empty or in other words is input mandatory and
-required. This function also takes whitespace into account, use `noWhitespace()`
-if no spaces or linebreaks and other whitespace anywhere in the input is desired.
+Validates if the given input is not empty. This function also takes whitespace
+into account, use `noWhitespace()` if no spaces or linebreaks and other
+whitespace anywhere in the input is desired.
 
 ```php
 v::stringType()->notEmpty()->validate(''); // false
@@ -34,6 +34,12 @@ Whitespace:
 v::stringType()->notEmpty()->validate('        ');  //false
 v::stringType()->notEmpty()->validate("\t \n \r");  //false
 ```
+
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
 
 ***
 See also:

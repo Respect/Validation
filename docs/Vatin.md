@@ -14,6 +14,12 @@ v::vatin('PL')->validate('164-58-65-777'); // false
 
 For now this rule only accepts Polish VAT identification number (NIP).
 
+## Changelog
+
+Version | Description
+--------|-------------
+  2.0.0 | Created
+
 ***
 See also:
 

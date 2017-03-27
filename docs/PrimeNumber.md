@@ -8,6 +8,12 @@ Validates a prime number
 v::primeNumber()->validate(7); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 

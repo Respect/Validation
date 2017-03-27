@@ -1,7 +1,9 @@
 # Contains
 
-- `Contains(mixed $value)`
-- `Contains(mixed $value, bool $identical)`
+- `Contains(mixed $expectedValue)`
+- `Contains(mixed $expectedValue, bool $identical)`
+
+Validates if the input contains some value.
 
 For strings:
 
@@ -19,6 +21,12 @@ A second parameter may be passed for identical comparison instead
 of equal comparison.
 
 Message template for this validator includes `{{containsValue}}`.
+
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
 
 ***
 See also:

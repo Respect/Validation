@@ -15,6 +15,12 @@ This validator will consider SplFileInfo instances, so you can do something like
 v::directory()->validate(new \SplFileInfo($directory));
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.4.4 | Created
+
 ***
 See also:
 

@@ -14,6 +14,12 @@ Notice, however, that it doesn't accept strings starting with 0x:
 v::xdigit()->validate('0x1f'); // false
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.5.0 | Created
+
 ***
 See also:
 

@@ -28,6 +28,11 @@ The `$service` value is not case-sensitive.
 
 Message template for this validator includes `{{service}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
 
 ***
 See also:

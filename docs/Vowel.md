@@ -8,6 +8,13 @@ Similar to `Alnum()`. Validates strings that contains only vowels:
 v::vowel()->validate('aei'); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.5.0 | Renamed from `Vowels` to `Vowel`
+  0.3.9 | Created as `Vowels`
+
 ***
 See also:
 

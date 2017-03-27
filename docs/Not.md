@@ -18,6 +18,12 @@ v::not(v::intVal()->positive())->validate(-1.5); // true
 
 Each other validation has custom messages for negated rules.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 

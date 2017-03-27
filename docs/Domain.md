@@ -29,6 +29,13 @@ internally:
 
 Messages for this validator will reflect rules above.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.6.0 | Allow to skip TLD check
+  0.3.9 | Created
+
 ***
 See also:
 

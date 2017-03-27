@@ -8,6 +8,12 @@ Always returns true.
 v::alwaysValid()->validate($whatever); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.5.0 | Created
+
 ***
 See also:
 

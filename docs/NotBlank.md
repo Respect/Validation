@@ -26,6 +26,12 @@ v::notBlank()->validate(new stdClass()); // false
 
 It's similar to [NotEmpty](NotEmpty.md) but it's way more strict.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 
