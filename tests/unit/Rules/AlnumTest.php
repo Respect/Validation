@@ -91,16 +91,25 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
             ["\tdef", ''],
             ["\nabc \t", ''],
             [0, ''],
+            ['dgç', ''],
+            ['müstika', ''],
+            ['ÄÖÜßàéè', ''],
+            ['La piñata de la nación 2', ''],
+            ['проблему', ''],
+            ['Eso que ni qué', ''],
+            ['Vai filhão', ''],
+            ['Пожалуйста', ''],
         ];
     }
 
     public function providerForInvalidAlnum()
     {
         return [
+            ['•', ''],
+            ['⍳', ''],
             ['', ''],
             ['@#$', ''],
             ['_', ''],
-            ['dgç', ''],
             [1e21, ''], //evaluates to "1.0E+21"
             [null, ''],
             [new \stdClass(), ''],

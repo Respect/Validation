@@ -91,16 +91,25 @@ class AlphaTest extends \PHPUnit_Framework_TestCase
             ["\nabc", ''],
             ["\tdef", ''],
             ["\nabc \t", ''],
+            ['dgç', ''],
+            ['müstika', ''],
+            ['ÄÖÜßàéè', ''],
+            ['La piñata de la nación', ''],
+            ['проблему', ''],
+            ['Eso que ni qué', ''],
+            ['Vai filhão', ''],
+            ['Пожалуйста', ''],
         ];
     }
 
     public function providerForInvalidAlpha()
     {
         return [
+            ['•', ''],
+            ['⍳', ''],
             ['', ''],
             ['@#$', ''],
             ['_', ''],
-            ['dgç', ''],
             ['122al', ''],
             ['122', ''],
             [11123, ''],

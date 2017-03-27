@@ -24,7 +24,7 @@ It is possible to use validators in a chain. Sample below validates a string
 containing numbers and letters, no whitespace and length between 1 and 15.
 
 ```php
-$usernameValidator = v::alnum()->noWhitespace()->length(1, 15);
+$usernameValidator = v::alnum()->charset('ASCII')->noWhitespace()->length(1, 15);
 $usernameValidator->validate('alganet'); // true
 ```
 
