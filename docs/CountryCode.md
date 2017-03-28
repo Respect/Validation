@@ -17,4 +17,4 @@ Version | Description
 ***
 See also:
 
-  * [Tld](Tld.md)
+- [Tld](Tld.md)

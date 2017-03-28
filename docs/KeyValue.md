@@ -62,7 +62,7 @@ Version | Description
 ***
 See also:
 
-  * [Key](Key.md)
-  * [KeyNested](KeyNested.md)
-  * [KeySet](KeySet.md)
+- [Key](Key.md)
+- [KeyNested](KeyNested.md)
+- [KeySet](KeySet.md)
 

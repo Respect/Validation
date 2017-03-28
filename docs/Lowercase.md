@@ -17,4 +17,4 @@ Version | Description
 ***
 See also:
 
-  * [Uppercase](Uppercase.md)
+- [Uppercase](Uppercase.md)

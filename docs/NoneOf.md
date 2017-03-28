@@ -22,7 +22,7 @@ Version | Description
 ***
 See also:
 
-  * [AllOf](AllOf.md)
-  * [AnyOf](AnyOf.md)
-  * [Not](Not.md)
-  * [OneOf](OneOf.md)
+- [AllOf](AllOf.md)
+- [AnyOf](AnyOf.md)
+- [Not](Not.md)
+- [OneOf](OneOf.md)

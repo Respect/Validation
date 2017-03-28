@@ -22,6 +22,6 @@ Version | Description
 ***
 See also:
 
-  * [ArrayVal](ArrayVal.md)
-  * [Countable](Countable.md)
-  * [Instance](Instance.md)
+- [ArrayVal](ArrayVal.md)
+- [Countable](Countable.md)
+- [Instance](Instance.md)

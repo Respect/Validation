@@ -25,4 +25,4 @@ Version | Description
 ***
 See also:
 
-  * [FalseVal](FalseVal.md)
+- [FalseVal](FalseVal.md)

@@ -20,7 +20,7 @@ Version | Description
 ***
 See also:
 
-  * [AnyOf](AnyOf.md)
-  * [NoneOf](NoneOf.md)
-  * [OneOf](OneOf.md)
-  * [When](When.md)
+- [AnyOf](AnyOf.md)
+- [NoneOf](NoneOf.md)
+- [OneOf](OneOf.md)
+- [When](When.md)

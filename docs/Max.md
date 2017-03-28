@@ -39,5 +39,5 @@ Version | Description
 ***
 See also:
 
-  * [Min](Min.md)
-  * [Between](Between.md)
+- [Min](Min.md)
+- [Between](Between.md)

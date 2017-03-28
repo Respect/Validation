@@ -17,11 +17,11 @@ Version | Description
 ***
 See also:
 
-  * [BoolType](BoolType.md)
-  * [CallableType](CallableType.md)
-  * [FloatType](FloatType.md)
-  * [IntType](IntType.md)
-  * [NullType](NullType.md)
-  * [ObjectType](ObjectType.md)
-  * [StringType](StringType.md)
-  * [Type](Type.md)
+- [BoolType](BoolType.md)
+- [CallableType](CallableType.md)
+- [FloatType](FloatType.md)
+- [IntType](IntType.md)
+- [NullType](NullType.md)
+- [ObjectType](ObjectType.md)
+- [StringType](StringType.md)
+- [Type](Type.md)

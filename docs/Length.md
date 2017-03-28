@@ -47,4 +47,4 @@ Version | Description
 ***
 See also:
 
-  * [Between](Between.md)
+- [Between](Between.md)

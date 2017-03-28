@@ -46,6 +46,6 @@ Version | Description
 ***
 See also:
 
-  * [Length](Length.md)
-  * [Min](Min.md)
-  * [Max](Max.md)
+- [Length](Length.md)
+- [Min](Min.md)
+- [Max](Max.md)

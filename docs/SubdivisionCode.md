@@ -280,8 +280,8 @@ Version | Description
 ***
 See also:
 
-  * [CountryCode](CountryCode.md)
-  * [Tld](Tld.md)
+- [CountryCode](CountryCode.md)
+- [Tld](Tld.md)
 
 
 [Creative Commons Attribution 3.0 License]: http://creativecommons.org/licenses/by/3.0 "Creative Commons Attribution 3.0 License"

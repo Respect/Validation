@@ -18,7 +18,7 @@ Version | Description
 ***
 See also:
 
-  * [Digit](Digit.md)
-  * [Infinite](Infinite.md)
-  * [IntVal](IntVal.md)
-  * [NumericVal](NumericVal.md)
+- [Digit](Digit.md)
+- [Infinite](Infinite.md)
+- [IntVal](IntVal.md)
+- [NumericVal](NumericVal.md)

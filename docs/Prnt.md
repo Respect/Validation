@@ -18,4 +18,4 @@ Version | Description
 ***
 See also:
 
-  * [Graph](Graph.md)
+- [Graph](Graph.md)

@@ -19,5 +19,5 @@ Version | Description
 ***
 See also:
 
-  * [Url](Url.md)
-  * [VideoUrl](VideoUrl.md)
+- [Url](Url.md)
+- [VideoUrl](VideoUrl.md)

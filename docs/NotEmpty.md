@@ -44,5 +44,5 @@ Version | Description
 ***
 See also:
 
-  * [NoWhitespace](NoWhitespace.md)
-  * [NullType](NullType.md)
+- [NoWhitespace](NoWhitespace.md)
+- [NullType](NullType.md)

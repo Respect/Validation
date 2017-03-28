@@ -18,7 +18,7 @@ Version | Description
 ***
 See also:
 
-  * [ArrayVal](ArrayVal.md)
-  * [NumericVal](NumericVal.md)
-  * [StringType](StringType.md)
-  * [Type](Type.md)
+- [ArrayVal](ArrayVal.md)
+- [NumericVal](NumericVal.md)
+- [StringType](StringType.md)
+- [Type](Type.md)

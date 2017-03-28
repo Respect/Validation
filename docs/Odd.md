@@ -19,5 +19,5 @@ Version | Description
 ***
 See also:
 
-  * [Even](Even.md)
-  * [Multiple](Multiple.md)
+- [Even](Even.md)
+- [Multiple](Multiple.md)

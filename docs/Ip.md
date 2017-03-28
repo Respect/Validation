@@ -26,6 +26,6 @@ Version | Description
 ***
 See also:
 
-  * [Domain](Domain.md)
-  * [MacAddress](MacAddress.md)
-  * [Tld](Tld.md)
+- [Domain](Domain.md)
+- [MacAddress](MacAddress.md)
+- [Tld](Tld.md)

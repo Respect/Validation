@@ -21,4 +21,4 @@ Version | Description
 ***
 See also:
 
-  * [Callback](Callback.md)
+- [Callback](Callback.md)

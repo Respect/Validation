@@ -17,4 +17,4 @@ Version | Description
 ***
 See also:
 
-  * [PrimeNumber](PrimeNumber.md)
+- [PrimeNumber](PrimeNumber.md)

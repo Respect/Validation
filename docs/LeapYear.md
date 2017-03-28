@@ -19,5 +19,5 @@ Version | Description
 ***
 See also:
 
-  * [Date](Date.md)
-  * [LeapDate](LeapDate.md)
+- [Date](Date.md)
+- [LeapDate](LeapDate.md)

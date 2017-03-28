@@ -35,6 +35,6 @@ Version | Description
 ***
 See also:
 
-  * [NoWhitespace](NoWhitespace.md)
-  * [NotEmpty](NotEmpty.md)
-  * [NullType](NullType.md)
+- [NoWhitespace](NoWhitespace.md)
+- [NotEmpty](NotEmpty.md)
+- [NullType](NullType.md)

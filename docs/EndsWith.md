@@ -32,6 +32,6 @@ Version | Description
 ***
 See also:
 
-  * [StartsWith](StartsWith.md)
-  * [Contains](Contains.md)
-  * [In](In.md)
+- [StartsWith](StartsWith.md)
+- [Contains](Contains.md)
+- [In](In.md)

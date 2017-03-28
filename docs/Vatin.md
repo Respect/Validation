@@ -23,7 +23,7 @@ Version | Description
 ***
 See also:
 
-  * [Bank](Bank.md)
-  * [IdentityCard](IdentityCard.md)
-  * [Pesel](Pesel.md)
-  * [SubdivisionCode](SubdivisionCode.md)
+- [Bank](Bank.md)
+- [IdentityCard](IdentityCard.md)
+- [Pesel](Pesel.md)
+- [SubdivisionCode](SubdivisionCode.md)

@@ -41,7 +41,7 @@ Version | Description
 ***
 See also:
 
-  * [Alpha](Alpha.md)
-  * [Digit](Digit.md)
-  * [Consonant](Consonant.md)
-  * [Vowel](Vowel.md)
+- [Alpha](Alpha.md)
+- [Digit](Digit.md)
+- [Consonant](Consonant.md)
+- [Vowel](Vowel.md)

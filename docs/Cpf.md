@@ -30,5 +30,5 @@ Version | Description
 ***
 See also:
 
-  * [Cnpj](Cnpj.md)
-  * [Cnh](Cnh.md)
+- [Cnpj](Cnpj.md)
+- [Cnh](Cnh.md)

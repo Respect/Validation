@@ -19,5 +19,5 @@ Version | Description
 ***
 See also:
 
- * [Domain](Domain.md)
- * [CountryCode](CountryCode.md)
+- [Domain](Domain.md)
+- [CountryCode](CountryCode.md)

@@ -20,8 +20,8 @@ Version | Description
 ***
 See also:
 
-  * [Alnum](Alnum.md)
-  * [Alpha](Alpha.md)
-  * [NotBlank](NotBlank.md)
-  * [NotEmpty](NotEmpty.md)
-  * [NotOptional](NotOptional.md)
+- [Alnum](Alnum.md)
+- [Alpha](Alpha.md)
+- [NotBlank](NotBlank.md)
+- [NotEmpty](NotEmpty.md)
+- [NotOptional](NotOptional.md)

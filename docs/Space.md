@@ -18,4 +18,4 @@ Version | Description
 ***
 See also:
 
-  * [Cntrl](Cntrl.md)
+- [Cntrl](Cntrl.md)

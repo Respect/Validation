@@ -18,9 +18,9 @@ Version | Description
 ***
 See also:
 
-  * [Bsn](Bsn.md)
-  * [Cnh](Cnh.md)
-  * [Cnpj](Cnpj.md)
-  * [Cpf](Cpf.md)
+- [Bsn](Bsn.md)
+- [Cnh](Cnh.md)
+- [Cnpj](Cnpj.md)
+- [Cpf](Cpf.md)
 
 [IMEI]: https://en.wikipedia.org/wiki/International_Mobile_Station_Equipment_Identity "International Mobile Station Equipment Identity"

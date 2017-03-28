@@ -21,5 +21,5 @@ Version | Description
 ***
 See also:
 
-  * [BaseAccount](BaseAccount.md)
-  * [Bic](Bic.md)
+- [BaseAccount](BaseAccount.md)
+- [Bic](Bic.md)

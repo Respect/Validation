@@ -17,6 +17,6 @@ Version | Description
 ***
 See also:
 
-  * [Equals](Equals.md)
-  * [Regex](Regex.md)
-  * [Roman](Roman.md)
+- [Equals](Equals.md)
+- [Regex](Regex.md)
+- [Roman](Roman.md)

@@ -17,6 +17,6 @@ Version | Description
 ***
 See also:
 
-  * [Factor](Factor.md)
-  * [PerfectSquare](PerfectSquare.md)
-  * [PrimeNumber](PrimeNumber.md)
+- [Factor](Factor.md)
+- [PerfectSquare](PerfectSquare.md)
+- [PrimeNumber](PrimeNumber.md)

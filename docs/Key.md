@@ -37,4 +37,4 @@ Version | Description
 ***
 See also:
 
-  * [Attribute](Attribute.md)
+- [Attribute](Attribute.md)

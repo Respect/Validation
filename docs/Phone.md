@@ -23,6 +23,6 @@ Version | Description
 ***
 See also:
 
-  * [Email](Email.md)
-  * [Url](Url.md)
-  * [VideoUrl](VideoUrl.md)
+- [Email](Email.md)
+- [Url](Url.md)
+- [VideoUrl](VideoUrl.md)

@@ -26,6 +26,6 @@ Version | Description
 ***
 See also:
 
-  * [AllOf](AllOf.md)
-  * [OneOf](OneOf.md)
-  * [NoneOf](NoneOf.md)
+- [AllOf](AllOf.md)
+- [OneOf](OneOf.md)
+- [NoneOf](NoneOf.md)

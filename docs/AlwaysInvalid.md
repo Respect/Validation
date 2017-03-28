@@ -17,4 +17,4 @@ Version | Description
 ***
 See also:
 
-  * [AlwaysValid](AlwaysValid.md)
+- [AlwaysValid](AlwaysValid.md)

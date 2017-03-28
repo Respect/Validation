@@ -41,6 +41,6 @@ Version | Description
 ***
 See also:
 
-  * [Bank](Bank.md)
-  * [BankAccount](BankAccount.md)
-  * [Bic](Bic.md)
+- [Bank](Bank.md)
+- [BankAccount](BankAccount.md)
+- [Bic](Bic.md)

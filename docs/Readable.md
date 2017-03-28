@@ -17,13 +17,13 @@ Version | Description
 ***
 See also:
 
-  * [Directory](Directory.md)
-  * [Executable](Executable.md)
-  * [Exists](Exists.md)
-  * [Extension](Extension.md)
-  * [File](File.md)
-  * [Mimetype](Mimetype.md)
-  * [Size](Size.md)
-  * [SymbolicLink](SymbolicLink.md)
-  * [Uploaded](Uploaded.md)
-  * [Writable](Writable.md)
+- [Directory](Directory.md)
+- [Executable](Executable.md)
+- [Exists](Exists.md)
+- [Extension](Extension.md)
+- [File](File.md)
+- [Mimetype](Mimetype.md)
+- [Size](Size.md)
+- [SymbolicLink](SymbolicLink.md)
+- [Uploaded](Uploaded.md)
+- [Writable](Writable.md)

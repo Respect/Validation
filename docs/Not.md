@@ -27,4 +27,4 @@ Version | Description
 ***
 See also:
 
-  * [NoneOf](NoneOf.md)
+- [NoneOf](NoneOf.md)

@@ -18,7 +18,7 @@ Version | Description
 ***
 See also:
 
-  * [Alnum](Alnum.md)
-  * [Digit](Digit.md)
-  * [Alpha](Alpha.md)
-  * [Consonant](Consonant.md)
+- [Alnum](Alnum.md)
+- [Digit](Digit.md)
+- [Alpha](Alpha.md)
+- [Consonant](Consonant.md)

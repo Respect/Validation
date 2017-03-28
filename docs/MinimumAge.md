@@ -25,5 +25,5 @@ Version | Description
 ***
 See also:
 
-  * [Age](Age.md)
-  * [Date](Date.md)
+- [Age](Age.md)
+- [Date](Date.md)

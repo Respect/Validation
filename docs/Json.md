@@ -17,8 +17,8 @@ Version | Description
 ***
 See also:
 
-  * [Domain](Domain.md)
-  * [Email](Email.md)
-  * [FilterVar](FilterVar.md)
-  * [Phone](Phone.md)
-  * [VideoUrl](VideoUrl.md)
+- [Domain](Domain.md)
+- [Email](Email.md)
+- [FilterVar](FilterVar.md)
+- [Phone](Phone.md)
+- [VideoUrl](VideoUrl.md)

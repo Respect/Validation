@@ -17,4 +17,4 @@ Version | Description
 ***
 See also:
 
-  * [Negative](Negative.md)
+- [Negative](Negative.md)

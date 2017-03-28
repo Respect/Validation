@@ -18,6 +18,6 @@ Version | Description
 ***
 See also:
 
-  * [Phone](Phone.md)
-  * [Url](Url.md)
-  * [VideoUrl](VideoUrl.md)
+- [Phone](Phone.md)
+- [Url](Url.md)
+- [VideoUrl](VideoUrl.md)

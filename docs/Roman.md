@@ -17,6 +17,6 @@ Version | Description
 ***
 See also:
 
-  * [In](In.md)
-  * [Regex](Regex.md)
-  * [Uppercase](Uppercase.md)
+- [In](In.md)
+- [Regex](Regex.md)
+- [Uppercase](Uppercase.md)

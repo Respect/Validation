@@ -27,4 +27,4 @@ Version | Description
 ***
 See also:
 
-  * [Yes](Yes.md)
+- [Yes](Yes.md)

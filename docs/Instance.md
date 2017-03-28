@@ -20,4 +20,4 @@ Version | Description
 ***
 See also:
 
-  * [ObjectType](ObjectType.md)
+- [ObjectType](ObjectType.md)

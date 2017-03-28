@@ -38,8 +38,8 @@ Version | Description
 ***
 See also:
 
-  * [NoWhitespace](NoWhitespace.md)
-  * [NotBlank](NotBlank.md)
-  * [NotEmpty](NotEmpty.md)
-  * [NullType](NullType.md)
-  * [Optional](Optional.md)
+- [NoWhitespace](NoWhitespace.md)
+- [NotBlank](NotBlank.md)
+- [NotEmpty](NotEmpty.md)
+- [NullType](NullType.md)
+- [Optional](Optional.md)

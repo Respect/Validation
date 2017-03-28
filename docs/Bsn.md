@@ -17,7 +17,7 @@ Version | Description
 ***
 See also:
 
-  * [Cnh](Cnh.md)
-  * [Cnpj](Cnpj.md)
-  * [Cpf](Cpf.md)
-  * [Nif](Nif.md)
+- [Cnh](Cnh.md)
+- [Cnpj](Cnpj.md)
+- [Cpf](Cpf.md)
+- [Nif](Nif.md)

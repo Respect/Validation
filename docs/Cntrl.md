@@ -18,6 +18,6 @@ Version | Description
 ***
 See also:
 
-  * [Alnum](Alnum.md)
-  * [Prnt](Prnt.md)
-  * [Space](Space.md)
+- [Alnum](Alnum.md)
+- [Prnt](Prnt.md)
+- [Space](Space.md)

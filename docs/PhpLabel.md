@@ -23,8 +23,8 @@ Version | Description
 ***
 See also:
 
-  * [Regex](Regex.md)
-  * [ResourceType](ResourceType.md)
-  * [Slug](Slug.md)
-  * [Charset](Charset.md)
+- [Regex](Regex.md)
+- [ResourceType](ResourceType.md)
+- [Slug](Slug.md)
+- [Charset](Charset.md)
 

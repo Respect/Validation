@@ -40,7 +40,7 @@ Version | Description
 ***
 See also:
 
-  * [Between](Between.md)
-  * [MinimumAge](MinimumAge.md)
-  * [LeapDate](LeapDate.md)
-  * [LeapYear](LeapYear.md)
+- [Between](Between.md)
+- [MinimumAge](MinimumAge.md)
+- [LeapDate](LeapDate.md)
+- [LeapYear](LeapYear.md)

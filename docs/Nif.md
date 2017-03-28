@@ -18,7 +18,7 @@ Version | Description
 ***
 See also:
 
-  * [Bsn](Bsn.md)
-  * [Cnh](Cnh.md)
-  * [Cnpj](Cnpj.md)
-  * [Cpf](Cpf.md)
+- [Bsn](Bsn.md)
+- [Cnh](Cnh.md)
+- [Cnpj](Cnpj.md)
+- [Cpf](Cpf.md)

@@ -17,5 +17,5 @@ Version | Description
 ***
 See also:
 
-  * [CountryCode](CountryCode.md)
-  * [SubdivisionCode](SubdivisionCode.md)
+- [CountryCode](CountryCode.md)
+- [SubdivisionCode](SubdivisionCode.md)

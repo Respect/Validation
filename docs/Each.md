@@ -29,5 +29,5 @@ Version | Description
 ***
 See also:
 
-  * [Key](Key.md)
-  * [ArrayVal](ArrayVal.md)
+- [Key](Key.md)
+- [ArrayVal](ArrayVal.md)

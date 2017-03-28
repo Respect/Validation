@@ -19,7 +19,7 @@ Version | Description
 ***
 See also:
 
-  * [Digit](Digit.md)
-  * [Finite](Finite.md)
-  * [Infinite](Infinite.md)
-  * [IntVal](IntVal.md)
+- [Digit](Digit.md)
+- [Finite](Finite.md)
+- [Infinite](Infinite.md)
+- [IntVal](IntVal.md)

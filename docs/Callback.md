@@ -22,6 +22,6 @@ Version | Description
 ***
 See also:
 
-  * [Call](Call.md)
-  * [CallableType](CallableType.md)
-  * [FilterVar](FilterVar.md)
+- [Call](Call.md)
+- [CallableType](CallableType.md)
+- [FilterVar](FilterVar.md)

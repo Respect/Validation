@@ -46,7 +46,7 @@ Version | Description
 ***
 See also:
 
-  * [Between](Between.md)
-  * [Date](Date.md)
-  * [Max](Max.md)
-  * [Min](Min.md)
+- [Between](Between.md)
+- [Date](Date.md)
+- [Max](Max.md)
+- [Min](Min.md)

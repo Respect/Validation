@@ -96,27 +96,27 @@ $usernameValidator->validate('#$%');                //false
 
 ## Exception types
 
-* `Respect\Validation\Exceptions\ExceptionInterface`:
-    * All exceptions implement this interface;
-* `Respect\Validation\Exceptions\ValidationException`:
-    * Implements the `Respect\Validation\Exceptions\ExceptionInterface` interface
-    * Thrown when the `check()` fails
-    * All validation exceptions extend this class
-    * Available methods:
-        * `getMainMessage()`;
-        * `setMode($mode)`;
-        * `setName($name)`;
-        * `setParam($name, $value)`;
-        * `setTemplate($template)`;
-        * more...
-* `Respect\Validation\Exceptions\NestedValidationException`:
-    * Extends the `Respect\Validation\Exceptions\ValidationException` class
-    * Usually thrown when the `assert()` fails
-    * Available methods:
-        * `findMessages()`;
-        * `getFullMessage()`;
-        * `getMessages()`;
-        * more...
+- `Respect\Validation\Exceptions\ExceptionInterface`:
+  - All exceptions implement this interface;
+- `Respect\Validation\Exceptions\ValidationException`:
+  - Implements the `Respect\Validation\Exceptions\ExceptionInterface` interface
+  - Thrown when the `check()` fails
+  - All validation exceptions extend this class
+  - Available methods:
+    - `getMainMessage()`;
+    - `setMode($mode)`;
+    - `setName($name)`;
+    - `setParam($name, $value)`;
+    - `setTemplate($template)`;
+    - more...
+- `Respect\Validation\Exceptions\NestedValidationException`:
+  - Extends the `Respect\Validation\Exceptions\ValidationException` class
+  - Usually thrown when the `assert()` fails
+  - Available methods:
+    - `findMessages()`;
+    - `getFullMessage()`;
+    - `getMessages()`;
+    - more...
 
 ## Informative exceptions
 

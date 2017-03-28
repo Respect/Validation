@@ -18,5 +18,5 @@ Version | Description
 ***
 See also:
 
-  * [Factor](Factor.md)
-  * [PrimeNumber](PrimeNumber.md)
+- [Factor](Factor.md)
+- [PrimeNumber](PrimeNumber.md)

@@ -18,6 +18,6 @@ Version | Description
 ***
 See also:
 
-  * [FloatType](FloatType.md)
-  * [IntType](IntType.md)
-  * [IntVal](IntVal.md)
+- [FloatType](FloatType.md)
+- [IntType](IntType.md)
+- [IntVal](IntVal.md)

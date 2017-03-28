@@ -24,13 +24,13 @@ Version | Description
 ***
 See also:
 
-  * [Directory](Directory.md)
-  * [Executable](Executable.md)
-  * [Extension](Extension.md)
-  * [File](File.md)
-  * [Mimetype](Mimetype.md)
-  * [Readable](Readable.md)
-  * [Size](Size.md)
-  * [SymbolicLink](SymbolicLink.md)
-  * [Uploaded](Uploaded.md)
-  * [Writable](Writable.md)
+- [Directory](Directory.md)
+- [Executable](Executable.md)
+- [Extension](Extension.md)
+- [File](File.md)
+- [Mimetype](Mimetype.md)
+- [Readable](Readable.md)
+- [Size](Size.md)
+- [SymbolicLink](SymbolicLink.md)
+- [Uploaded](Uploaded.md)
+- [Writable](Writable.md)

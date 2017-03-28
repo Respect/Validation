@@ -20,4 +20,4 @@ Version | Description
 ***
 See also:
 
-  * [Sf](Sf.md)
+- [Sf](Sf.md)

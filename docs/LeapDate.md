@@ -20,5 +20,5 @@ Version | Description
 ***
 See also:
 
-  * [Date](Date.md)
-  * [LeapYear](LeapYear.md)
+- [Date](Date.md)
+- [LeapYear](LeapYear.md)

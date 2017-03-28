@@ -18,6 +18,6 @@ Version | Description
 ***
 See also:
 
-  * [Cntrl](Cntrl.md)
-  * [Graph](Graph.md)
-  * [Prnt](Prnt.md)
+- [Cntrl](Cntrl.md)
+- [Graph](Graph.md)
+- [Prnt](Prnt.md)

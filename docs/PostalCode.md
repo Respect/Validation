@@ -25,4 +25,4 @@ Version | Description
 ***
 See also:
 
-  * [CountryCode](CountryCode.md)
+- [CountryCode](CountryCode.md)

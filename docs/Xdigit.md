@@ -23,6 +23,6 @@ Version | Description
 ***
 See also:
 
-  * [Digit](Digit.md)
-  * [Alnum](Alnum.md)
-  * [HexRgbColor](HexRgbColor.md)
+- [Digit](Digit.md)
+- [Alnum](Alnum.md)
+- [HexRgbColor](HexRgbColor.md)

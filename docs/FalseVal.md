@@ -25,4 +25,4 @@ Version | Description
 ***
 See also:
 
-  * [TrueVal](TrueVal.md)
+- [TrueVal](TrueVal.md)

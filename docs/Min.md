@@ -32,5 +32,5 @@ Version | Description
 ***
 See also:
 
-  * [Max](Max.md)
-  * [Between](Between.md)
+- [Max](Max.md)
+- [Between](Between.md)

@@ -21,5 +21,5 @@ Version | Description
 ***
 See also:
 
-  * [Alnum](Alnum.md)
-  * [Alpha](Alpha.md)
+- [Alnum](Alnum.md)
+- [Alpha](Alpha.md)

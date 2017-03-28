@@ -20,5 +20,5 @@ Version | Description
 ***
 See also:
 
-  * [Contains](Contains.md)
-  * [Identical](Identical.md)
+- [Contains](Contains.md)
+- [Identical](Identical.md)

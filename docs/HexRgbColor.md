@@ -19,4 +19,4 @@ Version | Description
 ***
 See also:
 
-  * [Vxdigit](Vxdigit.md)
+- [Vxdigit](Vxdigit.md)

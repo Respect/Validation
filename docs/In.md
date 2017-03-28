@@ -31,6 +31,6 @@ Version | Description
 ***
 See also:
 
-  * [StartsWith](StartsWith.md)
-  * [EndsWith](EndsWith.md)
-  * [Contains](Contains.md)
+- [StartsWith](StartsWith.md)
+- [EndsWith](EndsWith.md)
+- [Contains](Contains.md)

@@ -18,6 +18,6 @@ Version | Description
 ***
 See also:
 
-  * [Domain](Domain.md)
-  * [Ip](Ip.md)
-  * [Tld](Tld.md)
+- [Domain](Domain.md)
+- [Ip](Ip.md)
+- [Tld](Tld.md)

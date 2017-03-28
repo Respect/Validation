@@ -23,13 +23,13 @@ Version | Description
 ***
 See also:
 
-  * [Alnum](Alnum.md)
-  * [BoolType](BoolType.md)
-  * [CallableType](CallableType.md)
-  * [FloatType](FloatType.md)
-  * [IntType](IntType.md)
-  * [NullType](NullType.md)
-  * [ObjectType](ObjectType.md)
-  * [ResourceType](ResourceType.md)
-  * [StringType](Alnum.md)
-  * [Type](Type.md)
+- [Alnum](Alnum.md)
+- [BoolType](BoolType.md)
+- [CallableType](CallableType.md)
+- [FloatType](FloatType.md)
+- [IntType](IntType.md)
+- [NullType](NullType.md)
+- [ObjectType](ObjectType.md)
+- [ResourceType](ResourceType.md)
+- [StringType](Alnum.md)
+- [Type](Type.md)

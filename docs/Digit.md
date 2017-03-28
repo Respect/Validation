@@ -14,7 +14,7 @@ Version | Description
 ***
 See also:
 
-  * [Alnum](Alnum.md)
-  * [Alpha](Alpha.md)
-  * [Vowel](Vowel.md)
-  * [Consonant](Consonant.md)
+- [Alnum](Alnum.md)
+- [Alpha](Alpha.md)
+- [Vowel](Vowel.md)
+- [Consonant](Consonant.md)

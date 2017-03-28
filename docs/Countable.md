@@ -20,6 +20,6 @@ Version | Description
 ***
 See also:
 
-  * [ArrayVal](ArrayVal.md)
-  * [Instance](Instance.md)
-  * [IterableType](IterableType.md)
+- [ArrayVal](ArrayVal.md)
+- [Instance](Instance.md)
+- [IterableType](IterableType.md)

@@ -17,7 +17,7 @@ Version | Description
 ***
 See also:
 
-  * [Digit](Digit.md)
-  * [Finite](Finite.md)
-  * [IntVal](IntVal.md)
-  * [NumericVal](NumericVal.md)
+- [Digit](Digit.md)
+- [Finite](Finite.md)
+- [IntVal](IntVal.md)
+- [NumericVal](NumericVal.md)

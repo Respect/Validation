@@ -17,4 +17,4 @@ Version | Description
 ***
 See also:
 
-  * [Lowercase](Lowercase.md)
+- [Lowercase](Lowercase.md)

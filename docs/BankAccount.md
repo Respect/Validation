@@ -11,7 +11,7 @@ v::bankAccount("de", "70169464")->validate("1234"); // false
 
 These country codes are supported:
 
- * "de" (Germany): Respect\Validation supports version >=1.1.0 of "malkusch/bav" for this rule.
+- "de" (Germany): Respect\Validation supports version >=1.1.0 of "malkusch/bav" for this rule.
 
 ## Changelog
 
@@ -22,5 +22,5 @@ Version | Description
 ***
 See also:
 
-  * [Bank](Bank.md)
-  * [Bic](Bic.md)
+- [Bank](Bank.md)
+- [Bic](Bic.md)

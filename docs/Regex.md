@@ -19,9 +19,9 @@ Version | Description
 ***
 See also:
 
-  * [Alnum](Alnum.md)
-  * [Alpha](Alpha.md)
-  * [Contains](Contains.md)
-  * [Digit](Digit.md)
-  * [EndsWith](EndsWith.md)
-  * [StartsWith](StartsWith.md)
+- [Alnum](Alnum.md)
+- [Alpha](Alpha.md)
+- [Contains](Contains.md)
+- [Digit](Digit.md)
+- [EndsWith](EndsWith.md)
+- [StartsWith](StartsWith.md)
