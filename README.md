@@ -13,7 +13,6 @@
 - [Granularity control](docs/README.md#validation-methods) for advanced reporting.
 - [More than 130](docs/VALIDATORS.md) (fully tested) validation rules.
 - [A concrete API](docs/CONCRETE_API.md) for non fluent usage.
-- Works on PHP 7.0 or above
 
 ## Table of contents
 
