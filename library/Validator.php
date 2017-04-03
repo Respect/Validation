@@ -142,6 +142,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator tld()
  * @method static Validator trueVal()
  * @method static Validator type(string $type)
+ * @method static Validator unique()
  * @method static Validator uploaded()
  * @method static Validator uppercase()
  * @method static Validator url()
