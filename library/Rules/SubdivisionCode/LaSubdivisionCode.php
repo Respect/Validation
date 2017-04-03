@@ -40,7 +40,7 @@ class LaSubdivisionCode extends AbstractSearcher
         'XA', // Xaignabouli
         'XE', // Xekong
         'XI', // Xiangkhoang
-        'XN', // Xaisomboun
+        'XS', // Xaisômboun
     ];
 
     public $compareIdentical = true;

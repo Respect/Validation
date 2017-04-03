@@ -24,6 +24,7 @@ class PaSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         '1', // Bocas del Toro
+        '10', // Panamá Oeste Province
         '2', // Cocle
         '3', // Colon
         '4', // Chiriqui

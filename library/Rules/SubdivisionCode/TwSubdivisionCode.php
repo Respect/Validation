@@ -32,18 +32,19 @@ class TwSubdivisionCode extends AbstractSearcher
         'ILA', // Ilan
         'KEE', // Keelung
         'KHH', // Kaohsiung
+        'KIN', // Kinmen
+        'LIE', // Lienchiang
         'MIA', // Miaoli
         'NAN', // Nantou
+        'NWT', // New Taipei
         'PEN', // Penghu
         'PIF', // Pingtung
         'TAO', // Taoyuan
         'TNN', // Tainan
         'TPE', // Taipei
-        'TPQ', // New Taipei
         'TTT', // Taitung
         'TXG', // Taichung
         'YUN', // Yunlin
-        'TXQ', // Taichung County
     ];
 
     public $compareIdentical = true;

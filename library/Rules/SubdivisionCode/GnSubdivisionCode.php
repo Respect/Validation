@@ -24,26 +24,23 @@ class GnSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         'B', // Boké
-        'C', // Conakry
-        'D', // Kindia
-        'F', // Faranah
-        'K', // Kankan
-        'L', // Labé
-        'M', // Mamou
-        'N', // Nzérékoré
         'BE', // Beyla
         'BF', // Boffa
         'BK', // Boke
+        'C', // Conakry
         'CO', // Coyah
+        'D', // Kindia
         'DB', // Dabola
         'DI', // Dinguiraye
         'DL', // Dalaba
         'DU', // Dubreka
+        'F', // Faranah
         'FA', // Faranah
         'FO', // Forecariah
         'FR', // Fria
         'GA', // Gaoual
         'GU', // Gueckedou
+        'K', // Kankan
         'KA', // Kankan
         'KB', // Koubia
         'KD', // Kindia
@@ -51,13 +48,16 @@ class GnSubdivisionCode extends AbstractSearcher
         'KN', // Koundara
         'KO', // Kouroussa
         'KS', // Kissidougou
+        'L', // Labé
         'LA', // Labe
         'LE', // Lelouma
         'LO', // Lola
+        'M', // Mamou
         'MC', // Macenta
         'MD', // Mandiana
         'ML', // Mali
         'MM', // Mamou
+        'N', // Nzérékoré
         'NZ', // Nzerekore
         'PI', // Pita
         'SI', // Siguiri

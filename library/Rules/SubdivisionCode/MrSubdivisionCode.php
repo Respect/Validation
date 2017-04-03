@@ -35,7 +35,9 @@ class MrSubdivisionCode extends AbstractSearcher
         '10', // Guidimaka
         '11', // Tiris Zemmour
         '12', // Inchiri
-        'NKC', // Nouakchott
+        '13', // Nouakchott-Ouest
+        '14', // Nouakchott-Nord
+        '15', // Nouakchott-Sud
     ];
 
     public $compareIdentical = true;

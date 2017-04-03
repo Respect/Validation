@@ -53,10 +53,11 @@ class InSubdivisionCode extends AbstractSearcher
         'PY', // Pondicherry
         'RJ', // Rajasthan
         'SK', // Sikkim
+        'TG', // Telangana
         'TN', // Tamil Nadu
         'TR', // Tripura
-        'UL', // Uttaranchal
         'UP', // Uttar Pradesh
+        'UT', // Uttarakhand
         'WB', // West Bengal
     ];
 

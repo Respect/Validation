@@ -24,24 +24,22 @@ class IeSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         'C', // Connaught
-        'L', // Leinster
-        'M', // Munster
-        'U', // Ulster
-        'C', // Cork
         'CE', // Clare
         'CN', // Cavan
+        'CO', // Cork
         'CW', // Carlow
-        'D', // Dublin
         'DL', // Donegal
         'G', // Galway
         'KE', // Kildare
         'KK', // Kilkenny
         'KY', // Kerry
+        'L', // Leinster
         'LD', // Longford
         'LH', // Louth
         'LK', // Limerick
         'LM', // Leitrim
         'LS', // Laois
+        'M', // Munster
         'MH', // Meath
         'MN', // Monaghan
         'MO', // Mayo
@@ -49,6 +47,7 @@ class IeSubdivisionCode extends AbstractSearcher
         'RN', // Roscommon
         'SO', // Sligo
         'TA', // Tipperary
+        'U', // Ulster
         'WD', // Waterford
         'WH', // Westmeath
         'WW', // Wicklow

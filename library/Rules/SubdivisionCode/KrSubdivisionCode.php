@@ -39,6 +39,7 @@ class KrSubdivisionCode extends AbstractSearcher
         '47', // Gyeongsangbuk-do
         '48', // Gyeongsangnam-do
         '49', // Jeju-do
+        '50', // Sejong
     ];
 
     public $compareIdentical = true;

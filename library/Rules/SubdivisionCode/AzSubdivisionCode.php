@@ -23,7 +23,6 @@ use Respect\Validation\Rules\AbstractSearcher;
 class AzSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'AB', // Şirvan
         'ABS', // Abseron
         'AGA', // Agstafa
         'AGC', // AgcabAdi
@@ -32,24 +31,26 @@ class AzSubdivisionCode extends AbstractSearcher
         'AGU', // Agsu
         'AST', // Astara
         'BA', // Baki
+        'BAB', // Babek
         'BAL', // BalakAn
         'BAR', // Barda
         'BEY', // Beylaqan
         'BIL', // Bilasuvar
         'CAB', // Cabrayil
         'CAL', // Calilabab
+        'CUL', // Culfa
         'DAS', // Daskasan
-        'DAV', // Şabran
         'FUZ', // Fuzuli
         'GA', // Ganca
         'GAD', // Gadabay
         'GOR', // Goranboy
         'GOY', // Goycay
+        'GYG', // Göygöl
         'HAC', // Haciqabul
         'IMI', // Imisli
         'ISM', // Ismayilli
         'KAL', // Kalbacar
-        'KAN', // Kəngərli
+        'KAN', // Kangarli
         'KUR', // Kurdamir
         'LA', // Lankaran
         'LAC', // Lacin
@@ -62,6 +63,7 @@ class AzSubdivisionCode extends AbstractSearcher
         'NV', // Naxçivan
         'NX', // Naxcivan
         'OGU', // Oguz
+        'ORD', // Ordubad
         'QAB', // Qabala
         'QAX', // Qax
         'QAZ', // Qazax
@@ -71,22 +73,25 @@ class AzSubdivisionCode extends AbstractSearcher
         'QUS', // Qusar
         'SA', // Saki
         'SAB', // Sabirabad
+        'SAD', // Sadarak
+        'SAH', // Sahbuz
         'SAK', // Saki Sahari
         'SAL', // Salyan
+        'SAR', // Sarur
         'SAT', // Saatli
+        'SBN', // Şabran
         'SIY', // Siyazan
         'SKR', // Samkir
         'SM', // Sumqayit
         'SMI', // Samaxi
         'SMX', // Samux
-        'SS', // Susa
-        'SUS', // Susa Sahari
+        'SR', // Şirvan
+        'SUS', // Susa
         'TAR', // Tartar
         'TOV', // Tovuz
         'UCA', // Ucar
         'XA', // Xankandi
         'XAC', // Xacmaz
-        'XAN', // Göygöl
         'XCI', // Xocali
         'XIZ', // Xizi
         'XVD', // Xocavand
@@ -96,12 +101,6 @@ class AzSubdivisionCode extends AbstractSearcher
         'ZAN', // Zangilan
         'ZAQ', // Zaqatala
         'ZAR', // Zardab
-        'BAB', // Babek
-        'CUL', // Culfa
-        'ORD', // Ordubad
-        'SAD', // Sadarak
-        'SAH', // Sahbuz
-        'SAR', // Sarur
     ];
 
     public $compareIdentical = true;

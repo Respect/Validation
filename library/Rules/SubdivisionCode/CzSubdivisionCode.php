@@ -14,7 +14,7 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Czech Republic subdivision code.
+ * Validator for Czechia subdivision code.
  *
  * ISO 3166-1 alpha-2: CZ
  *
@@ -23,20 +23,7 @@ use Respect\Validation\Rules\AbstractSearcher;
 class CzSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'JC', // South Bohemian Region (Jihocesky kraj)
-        'JM', // South Moravian Region (Jihomoravsky kraj)
-        'KA', // Carlsbad Region  (Karlovarsky kraj)
-        'KR', // Hradec Kralove Region (Kralovehradecky kraj)
-        'LI', // Liberec Region (Liberecky kraj)
-        'MO', // Moravian-Silesian Region (Moravskoslezsky kraj)
-        'OL', // Olomouc Region (Olomoucky kraj)
-        'PA', // Pardubice Region (Pardubicky kraj)
-        'PL', // Plzen( Region Plzensky kraj)
-        'PR', // Prague - the Capital (Praha - hlavni mesto)
-        'ST', // Central Bohemian Region (Stredocesky kraj)
-        'US', // Usti nad Labem Region (Ustecky kraj)
-        'VY', // Vysocina Region (kraj Vysocina)
-        'ZL', // Zlin Region (Zlinsky kraj)
+        '10', // Prague - the Capital (Praha - hlavni mesto)
         '101', // Praha 1
         '102', // Praha 2
         '103', // Praha 3
@@ -46,12 +33,20 @@ class CzSubdivisionCode extends AbstractSearcher
         '107', // Praha 7
         '108', // Praha 8
         '109', // Praha 9
-        '10A', // Praha 10
-        '10B', // Praha 11
-        '10C', // Praha 12
-        '10D', // Praha 13
-        '10E', // Praha 14
-        '10F', // Praha 15
+        '110', // Praha 10
+        '111', // Praha 11
+        '112', // Praha 12
+        '113', // Praha 13
+        '114', // Praha 14
+        '115', // Praha 15
+        '116', // Praha 16
+        '117', // Praha 17
+        '118', // Praha 18
+        '119', // Praha 19
+        '120', // Praha 20
+        '121', // Praha 21
+        '122', // Praha 22
+        '20', // Central Bohemian Region (Stredocesky kraj)
         '201', // Benešov
         '202', // Beroun
         '203', // Kladno
@@ -64,6 +59,7 @@ class CzSubdivisionCode extends AbstractSearcher
         '20A', // Praha-západ
         '20B', // Příbram
         '20C', // Rakovník
+        '31', // South Bohemian Region (Jihocesky kraj)
         '311', // České Budějovice
         '312', // Český Krumlov
         '313', // Jindřichův Hradec
@@ -71,6 +67,7 @@ class CzSubdivisionCode extends AbstractSearcher
         '315', // Prachatice
         '316', // Strakonice
         '317', // Tábor
+        '32', // Plzen( Region Plzensky kraj)
         '321', // Domažlice
         '322', // Klatovy
         '323', // Plzeň-město
@@ -78,9 +75,11 @@ class CzSubdivisionCode extends AbstractSearcher
         '325', // Plzeň-sever
         '326', // Rokycany
         '327', // Tachov
+        '41', // Carlsbad Region  (Karlovarsky kraj)
         '411', // Cheb
         '412', // Karlovy Vary
         '413', // Sokolov
+        '42', // Usti nad Labem Region (Ustecky kraj)
         '421', // Děčín
         '422', // Chomutov
         '423', // Litoměřice
@@ -88,40 +87,48 @@ class CzSubdivisionCode extends AbstractSearcher
         '425', // Most
         '426', // Teplice
         '427', // Ústí nad Labem
+        '51', // Liberec Region (Liberecky kraj)
         '511', // Česká Lípa
         '512', // Jablonec nad Nisou
         '513', // Liberec
         '514', // Semily
+        '52', // Hradec Kralove Region (Kralovehradecky kraj)
         '521', // Hradec Králové
         '522', // Jičín
         '523', // Náchod
         '524', // Rychnov nad Kněžnou
         '525', // Trutnov
+        '53', // Pardubice Region (Pardubicky kraj)
         '531', // Chrudim
         '532', // Pardubice
         '533', // Svitavy
         '534', // Ústí nad Orlicí
-        '611', // Havlíčkův Brod
-        '612', // Jihlava
-        '613', // Pelhřimov
-        '614', // Třebíč
-        '615', // Žd’ár nad Sázavou
-        '621', // Blansko
-        '622', // Brno-město
-        '623', // Brno-venkov
-        '624', // Břeclav
-        '625', // Hodonín
-        '626', // Vyškov
-        '627', // Znojmo
+        '63', // Vysocina Region (kraj Vysocina)
+        '631', // Havlíčkův Brod
+        '632', // Jihlava
+        '633', // Pelhřimov
+        '634', // Třebíč
+        '635', // Žd’ár nad Sázavou
+        '64', // South Moravian Region (Jihomoravsky kraj)
+        '641', // Blansko
+        '642', // Brno-město
+        '643', // Brno-venkov
+        '644', // Břeclav
+        '645', // Hodonín
+        '646', // Vyškov
+        '647', // Znojmo
+        '71', // Olomouc Region (Olomoucky kraj)
         '711', // Jeseník
         '712', // Olomouc
         '713', // Prostĕjov
         '714', // Přerov
         '715', // Šumperk
+        '72', // Zlin Region (Zlinsky kraj)
         '721', // Kromĕříž
         '722', // Uherské Hradištĕ
         '723', // Vsetín
         '724', // Zlín
+        '80', // Moravian-Silesian Region (Moravskoslezsky kraj)
         '801', // Bruntál
         '802', // Frýdek - Místek
         '803', // Karviná

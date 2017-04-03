@@ -30,6 +30,8 @@ class PgSubdivisionCode extends AbstractSearcher
         'EPW', // Enga
         'ESW', // East Sepik
         'GPK', // Gulf
+        'HLA', // Hela
+        'JWK', // Jiwaka
         'MBA', // Milne Bay
         'MPL', // Morobe
         'MPM', // Madang
@@ -37,7 +39,7 @@ class PgSubdivisionCode extends AbstractSearcher
         'NCD', // National Capital
         'NIK', // New Ireland
         'NPP', // Northern
-        'NSA', // Bougainville
+        'NSB', // Bougainville
         'SAN', // Sandaun
         'SHM', // Southern Highlands
         'WBK', // West New Britain

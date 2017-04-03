@@ -37,6 +37,7 @@ class MmSubdivisionCode extends AbstractSearcher
         '15', // Mon State
         '16', // Rakhine State
         '17', // Shan State
+        '18', // Nay Pyi Taw
     ];
 
     public $compareIdentical = true;

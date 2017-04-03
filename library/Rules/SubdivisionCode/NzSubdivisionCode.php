@@ -23,8 +23,6 @@ use Respect\Validation\Rules\AbstractSearcher;
 class NzSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'N', // North Island
-        'S', // South Island
         'AUK', // Auckland
         'BOP', // Bay of Plenty
         'CAN', // Canterbury

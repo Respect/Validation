@@ -137,6 +137,7 @@ class SiSubdivisionCode extends AbstractSearcher
         '112', // Slovenj Gradec
         '113', // Slovenska Bistrica
         '114', // Slovenske Konjice
+        '115', // Starše
         '116', // Sveti Jurij
         '117', // Šenčur
         '118', // Šentilj
@@ -232,7 +233,8 @@ class SiSubdivisionCode extends AbstractSearcher
         '209', // Rečica ob Savinji
         '210', // Sveti Jurij v Slovenskih Goricah
         '211', // Šentrupert
-        '215', // Starše
+        '212', // Mirna
+        '213', // Ankaran
     ];
 
     public $compareIdentical = true;

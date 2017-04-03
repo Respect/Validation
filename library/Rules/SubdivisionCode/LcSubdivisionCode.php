@@ -23,17 +23,16 @@ use Respect\Validation\Rules\AbstractSearcher;
 class LcSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'AR', // Anse-la-Raye
-        'CA', // Castries
-        'CH', // Choiseul
-        'DA', // Dauphin
-        'DE', // Dennery
-        'GI', // Gros-Islet
-        'LA', // Laborie
-        'MI', // Micoud
-        'PR', // Praslin
-        'SO', // Soufriere
-        'VF', // Vieux-Fort
+        '01', // Anse-la-Raye
+        '02', // Castries
+        '03', // Choiseul
+        '05', // Dennery
+        '06', // Gros-Islet
+        '07', // Laborie
+        '08', // Micoud
+        '10', // Soufriere
+        '11', // Vieux-Fort
+        '12', // Canaries
     ];
 
     public $compareIdentical = true;

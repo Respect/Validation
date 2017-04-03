@@ -42,12 +42,6 @@ class FiSubdivisionCode extends AbstractSearcher
         '17', // Satakunta [Finnish and Swedish]
         '18', // Uusimaa [Finnish] / Nyland [Swedish]
         '19', // Varsinais-Suomi [Finnish] / Egentliga Finland [Swedish]
-        'AL', // Ahvenanmaan laani
-        'ES', // Etela-Suomen laani
-        'IS', // Ita-Suomen laani
-        'LL', // Lapin laani
-        'LS', // Lansi-Suomen laani
-        'OL', // Oulun laani
     ];
 
     public $compareIdentical = true;

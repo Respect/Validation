@@ -32,8 +32,8 @@ class HuSubdivisionCode extends AbstractSearcher
         'CS', // Csongrád megye
         'DE', // Debrecen
         'DU', // Dunaújváros
-        'EG', // Erd
-        'ER', // Eger
+        'EG', // Eger
+        'ER', // Erd
         'FE', // Fejér megye
         'GS', // Győr-Moson-Sopron megye
         'GY', // Győr

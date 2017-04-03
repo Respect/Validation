@@ -24,14 +24,13 @@ class BeSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         'BRU', // Brussels
-        'VLG', // Flanders
-        'WAL', // Wallonia
-        'BRU', // Brussels
         'VAN', // Antwerpen
         'VBR', // Vlaams Brabant
+        'VLG', // Flanders
         'VLI', // Limburg
         'VOV', // Oost-Vlaanderen
         'VWV', // West-Vlaanderen
+        'WAL', // Wallonia
         'WBR', // Brabant Wallon
         'WHT', // Hainaut
         'WLG', // Liege

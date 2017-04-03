@@ -23,20 +23,6 @@ use Respect\Validation\Rules\AbstractSearcher;
 class GrSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        '69', // Agio Oros
-        'A', // Anatoliki Makedonia kai Thraki
-        'B', // Kentriki Makedonia
-        'C', // Dytiki Makedonia
-        'D', // Ipeiros
-        'E', // Thessalia
-        'F', // Ionia Nisia
-        'G', // Dytiki Ellada
-        'H', // Sterea Ellada
-        'I', // Attiki
-        'J', // Peloponnisos
-        'K', // Voreio Aigaio
-        'L', // Notio Aigaio
-        'M', // Kriti
         '01', // Nomós Aitolías kai Akarnanías
         '03', // Nomós Voiotías
         '04', // Nomós Evvoías
@@ -75,6 +61,7 @@ class GrSubdivisionCode extends AbstractSearcher
         '62', // Nomós Serrón
         '63', // Nomós Florínis
         '64', // Nomós Chalkidikís
+        '69', // Agio Oros
         '71', // Nomós Évrou
         '72', // Nomós Xánthis
         '73', // Nomós Rodópis
@@ -87,7 +74,20 @@ class GrSubdivisionCode extends AbstractSearcher
         '92', // Nomós Lasithíou
         '93', // Nomós Rethýmnis
         '94', // Nomós Chaniás
+        'A', // Anatoliki Makedonia kai Thraki
         'A1', // Nomós Attikís
+        'B', // Kentriki Makedonia
+        'C', // Dytiki Makedonia
+        'D', // Ipeiros
+        'E', // Thessalia
+        'F', // Ionia Nisia
+        'G', // Dytiki Ellada
+        'H', // Sterea Ellada
+        'I', // Attiki
+        'J', // Peloponnisos
+        'K', // Voreio Aigaio
+        'L', // Notio Aigaio
+        'M', // Kriti
     ];
 
     public $compareIdentical = true;

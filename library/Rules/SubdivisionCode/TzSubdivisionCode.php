@@ -49,6 +49,10 @@ class TzSubdivisionCode extends AbstractSearcher
         '24', // Tabora
         '25', // Tanga
         '26', // Manyara
+        '27', // Geita
+        '28', // Katavi
+        '29', // Njombe
+        '30', // Simiyu
     ];
 
     public $compareIdentical = true;

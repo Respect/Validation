@@ -25,13 +25,13 @@ class ZaSubdivisionCode extends AbstractSearcher
     public $haystack = [
         'EC', // Eastern Cape
         'FS', // Free State
-        'GP', // Gauteng
+        'GT', // Gauteng
         'LP', // Limpopo
         'MP', // Mpumalanga
         'NC', // Northern Cape
+        'NL', // KwaZulu-Natal
         'NW', // North West
         'WC', // Western Cape
-        'ZN', // KwaZulu-Natal
     ];
 
     public $compareIdentical = true;

@@ -36,7 +36,7 @@ class PhSubdivisionCode extends AbstractSearcher
         '11', // Davao
         '12', // Soccsksargen
         '13', // Caraga
-        '14', // Autonomous Region in Muslim Mindanao
+        '14', // Autonomous Region in Muslim Mindanao,
         '15', // Cordillera Administrative Region
         '40', // Calabarzon
         '41', // Mimaropa
@@ -70,6 +70,7 @@ class PhSubdivisionCode extends AbstractSearcher
         'DAS', // Davao del Sur
         'DAV', // Davao del Norte
         'DIN', // Dinagat Islands
+        'DVO', // Davao Occidental
         'EAS', // Eastern Samar
         'GUI', // Guimaras
         'IFU', // Ifugao

@@ -60,7 +60,6 @@ class VnSubdivisionCode extends AbstractSearcher
         '45', // Dong Thap
         '46', // Tien Giang
         '47', // Kien Giang
-        '48', // Can Tho
         '49', // Vinh Long
         '50', // Ben Tre
         '51', // Tra Vinh
@@ -72,12 +71,8 @@ class VnSubdivisionCode extends AbstractSearcher
         '57', // Binh Duong
         '58', // Binh Phuoc
         '59', // Ca Mau
-        '60', // Da Nang
         '61', // Hai Duong
-        '62', // Hai Phong
         '63', // Ha Nam
-        '64', // Ha Noi
-        '65', // Ho Chi Minh
         '66', // Hung Yen
         '67', // Nam Dinh
         '68', // Phu Tho
@@ -86,7 +81,11 @@ class VnSubdivisionCode extends AbstractSearcher
         '71', // Dien Bien
         '72', // Dak Nong
         '73', // Hau Giang
-        '15', // Ha Tay
+        'CT', // Can Tho
+        'DN', // Da Nang
+        'HN', // Ha Noi
+        'HP', // Hai Phong
+        'SG', // Ho Chi Minh
     ];
 
     public $compareIdentical = true;

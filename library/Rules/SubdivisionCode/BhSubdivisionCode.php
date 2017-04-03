@@ -26,7 +26,6 @@ class BhSubdivisionCode extends AbstractSearcher
         '13', // Capital
         '14', // Southern
         '15', // Muharraq
-        '16', // Central
         '17', // Northern
     ];
 

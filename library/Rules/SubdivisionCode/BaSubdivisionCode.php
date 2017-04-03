@@ -23,9 +23,6 @@ use Respect\Validation\Rules\AbstractSearcher;
 class BaSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'BIH', // Federacija Bosna i Hercegovina
-        'BRC', // Brcko District
-        'SRP', // Republika Srpska
         '01', // Unsko-sanski kanton
         '02', // Posavski kanton
         '03', // Tuzlanski kanton
@@ -36,6 +33,9 @@ class BaSubdivisionCode extends AbstractSearcher
         '08', // Zapadnohercegovački kanton
         '09', // Kanton Sarajevo
         '10', // Kanton br. 10 (Livanjski kanton)
+        'BIH', // Federacija Bosna i Hercegovina
+        'BRC', // Brcko District
+        'SRP', // Republika Srpska
     ];
 
     public $compareIdentical = true;

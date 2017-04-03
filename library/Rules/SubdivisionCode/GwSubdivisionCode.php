@@ -23,17 +23,17 @@ use Respect\Validation\Rules\AbstractSearcher;
 class GwSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'L', // Leste
-        'N', // Norte
-        'S', // Sul
         'BA', // Bafata Region
         'BL', // Bolama Region
         'BM', // Biombo Region
         'BS', // Bissau Region
         'CA', // Cacheu Region
         'GA', // Gabu Region
+        'L', // Leste
+        'N', // Norte
         'OI', // Oio Region
         'QU', // Quinara Region
+        'S', // Sul
         'TO', // Tombali Region
     ];
 

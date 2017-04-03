@@ -23,8 +23,6 @@ use Respect\Validation\Rules\AbstractSearcher;
 class MhSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'L', // Ralik chain
-        'T', // Ratak chain
         'ALK', // Ailuk
         'ALL', // Ailinglaplap
         'ARN', // Arno
@@ -35,6 +33,7 @@ class MhSubdivisionCode extends AbstractSearcher
         'JAL', // Jaluit
         'KIL', // Kili
         'KWA', // Kwajalein
+        'L', // Ralik chain
         'LAE', // Lae
         'LIB', // Lib
         'LIK', // Likiep
@@ -45,6 +44,7 @@ class MhSubdivisionCode extends AbstractSearcher
         'NMK', // Namorik
         'NMU', // Namu
         'RON', // Rongelap
+        'T', // Ratak chain
         'UJA', // Ujae
         'UTI', // Utirik
         'WTH', // Wotho

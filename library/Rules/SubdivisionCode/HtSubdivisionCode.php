@@ -28,6 +28,7 @@ class HtSubdivisionCode extends AbstractSearcher
         'GA', // Grand'Anse
         'ND', // Nord
         'NE', // Nord-Est
+        'NI', // Nippes
         'NO', // Nord-Ouest
         'OU', // Ouest
         'SD', // Sud

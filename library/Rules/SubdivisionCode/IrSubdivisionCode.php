@@ -53,7 +53,7 @@ class IrSubdivisionCode extends AbstractSearcher
         '29', // South Khorasan
         '30', // Razavi Khorasan
         '31', // North Khorasan
-        '09', // Khorāsān
+        '32', // Alborz
     ];
 
     public $compareIdentical = true;
