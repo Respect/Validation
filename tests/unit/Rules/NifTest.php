@@ -41,7 +41,8 @@ final class NifTest extends RuleTestCase
             [$rule, 'Y1168744J'],
             [$rule, 'Y1168744J'],
 
-            // CIF
+            // CIF            
+            [$rule, 'B56109770'],
             [$rule, 'V8002614I'],
             [$rule, 'R1332622H'],
             [$rule, 'Q6771656C'],
@@ -75,6 +76,7 @@ final class NifTest extends RuleTestCase
             [$rule, 'X3155250B'],
 
             // CIF
+            [$rule, 'B56109771'],
             [$rule, 'v8002614i'],
             [$rule, 'C0325664D'],
             [$rule, 'R27038239'],

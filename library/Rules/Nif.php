@@ -90,7 +90,7 @@ final class Nif extends AbstractRule
         }
 
         $digits = str_split($code);
-        $lastDigit = array_pop($digits);
+        $lastDigit = (int) array_pop($digits);
         $key = $lastDigit === 0 ? 0 : (10 - $lastDigit);
 
         if (is_numeric($control)) {
