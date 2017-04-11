@@ -26,6 +26,7 @@
     },
     "suggest": {
         "ext-bcmath": "Arbitrary Precision Mathematics",
+        "ext-fileinfo": "File Information",
         "ext-mbstring": "Multibyte String Functions",
         "egulias/email-validator": "Strict (RFC compliant) email validation",
         "malkusch/bav": "German bank account validation",
