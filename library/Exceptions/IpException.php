@@ -36,7 +36,7 @@ class IpException extends ValidationException
             if (isset($range['max'])) {
                 $message .= '-'.$range['max'];
             } else {
-                $message .= '/'.long2ip($range['mask']);
+                $message .= '/'.long2ip((int) $range['mask']);
             }
 
             $params['range'] = $message;
@@ -49,8 +49,8 @@ class IpException extends ValidationException
     {
         if (!$this->getParam('networkRange')) {
             return static::STANDARD;
-        } else {
-            return static::NETWORK_RANGE;
         }
+
+        return static::NETWORK_RANGE;
     }
 }

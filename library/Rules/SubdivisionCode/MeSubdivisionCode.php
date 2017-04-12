@@ -44,6 +44,8 @@ class MeSubdivisionCode extends AbstractSearcher
         '19', // Opština Tivat
         '20', // Opština Ulcinj
         '21', // Opština Žabljak
+        '22', // Gusinje
+        '23', // Petnjica
     ];
 
     public $compareIdentical = true;

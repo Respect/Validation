@@ -22,14 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class MgSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'A', // Toamasina province
-        'D', // Antsiranana province
-        'F', // Fianarantsoa province
-        'M', // Mahajanga province
-        'T', // Antananarivo province
-        'U', // Toliara province
-    ];
+    public $haystack = [null, ''];
 
     public $compareIdentical = true;
 }

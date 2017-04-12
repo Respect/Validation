@@ -11,12 +11,13 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Sf
- * @covers Respect\Validation\Exceptions\SfException
+ * @covers \Respect\Validation\Rules\Sf
+ * @covers \Respect\Validation\Exceptions\SfException
  */
 class SfTest extends \PHPUnit_Framework_TestCase
 {
@@ -57,9 +58,9 @@ class SfTest extends \PHPUnit_Framework_TestCase
         $invalidConstraintValue = '34:90:70';
         try {
             v::sf($constraintName)->assert($invalidConstraintValue);
-        } catch (\Respect\Validation\Exceptions\AllOfException $exception) {
+        } catch (AllOfException $exception) {
             $fullValidationMessage = $exception->getFullMessage();
-            $expectedValidationException = <<<EOF
+            $expectedValidationException = <<<'EOF'
 - Time
 EOF;
 
@@ -73,7 +74,7 @@ EOF;
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Symfony/Validator constraint "FluxCapacitor" does not exist.
      */
     public function testValidationWithNonExistingConstraint()

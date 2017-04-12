@@ -39,11 +39,11 @@ class Ip extends AbstractRule
 
         $range = ['min' => null, 'max' => null, 'mask' => null];
 
-        if (strpos($input, '-') !== false) {
+        if (mb_strpos($input, '-') !== false) {
             list($range['min'], $range['max']) = explode('-', $input);
-        } elseif (strpos($input, '*') !== false) {
+        } elseif (mb_strpos($input, '*') !== false) {
             $this->parseRangeUsingWildcards($input, $range);
-        } elseif (strpos($input, '/') !== false) {
+        } elseif (mb_strpos($input, '/') !== false) {
             $this->parseRangeUsingCidr($input, $range);
         } else {
             throw new ComponentException('Invalid network range');
@@ -62,7 +62,7 @@ class Ip extends AbstractRule
 
     protected function fillAddress(&$input, $char = '*')
     {
-        while (substr_count($input, '.') < 3) {
+        while (mb_substr_count($input, '.') < 3) {
             $input .= '.'.$char;
         }
     }
@@ -81,7 +81,7 @@ class Ip extends AbstractRule
         $this->fillAddress($input[0], '0');
 
         $range['min'] = $input[0];
-        $isAddressMask = strpos($input[1], '.') !== false;
+        $isAddressMask = mb_strpos($input[1], '.') !== false;
 
         if ($isAddressMask && $this->verifyAddress($input[1])) {
             $range['mask'] = sprintf('%032b', ip2long($input[1]));
@@ -103,7 +103,7 @@ class Ip extends AbstractRule
 
     protected function verifyAddress($address)
     {
-        return (boolean) filter_var(
+        return (bool) filter_var(
             $address,
             FILTER_VALIDATE_IP,
             [

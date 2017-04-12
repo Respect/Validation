@@ -15,13 +15,13 @@ use DateTime;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Age
- * @covers Respect\Validation\Exceptions\AgeException
+ * @covers \Respect\Validation\Rules\Age
+ * @covers \Respect\Validation\Exceptions\AgeException
  */
 class AgeTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage An age interval must be provided
      */
     public function testShouldThrowsExceptionWhenThereIsNoArgumentsOnConstructor()
@@ -29,7 +29,7 @@ class AgeTest extends \PHPUnit_Framework_TestCase
         new Age();
     }
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage 20 cannot be greater than or equals to 10
      */
     public function testShouldThrowsExceptionWhenMinimumAgeIsLessThenMaximumAge()
@@ -38,7 +38,7 @@ class AgeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage 20 cannot be greater than or equals to 20
      */
     public function testShouldThrowsExceptionWhenMinimumAgeIsEqualsToMaximumAge()
@@ -105,7 +105,7 @@ class AgeTest extends \PHPUnit_Framework_TestCase
     /**
      * @depends testShouldValidateInvalidAge
      *
-     * @expectedException Respect\Validation\Exceptions\AgeException
+     * @expectedException \Respect\Validation\Exceptions\AgeException
      * @expectedExceptionMessage "today" must be lower than 18 years ago
      */
     public function testShouldThrowsExceptionWhenMinimumAgeFails()
@@ -117,7 +117,7 @@ class AgeTest extends \PHPUnit_Framework_TestCase
     /**
      * @depends testShouldValidateInvalidAge
      *
-     * @expectedException Respect\Validation\Exceptions\AgeException
+     * @expectedException \Respect\Validation\Exceptions\AgeException
      * @expectedExceptionMessage "51 years ago" must be greater than 50 years ago
      */
     public function testShouldThrowsExceptionWhenMaximunAgeFails()
@@ -129,7 +129,7 @@ class AgeTest extends \PHPUnit_Framework_TestCase
     /**
      * @depends testShouldValidateInvalidAge
      *
-     * @expectedException Respect\Validation\Exceptions\AgeException
+     * @expectedException \Respect\Validation\Exceptions\AgeException
      * @expectedExceptionMessage "today" must be between 18 and 50 years ago
      */
     public function testShouldThrowsExceptionWhenMinimunAndMaximunAgeFails()

@@ -24,10 +24,10 @@ class PkSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         'BA', // Balochistan
+        'GB', // Gilgit-Baltistan
         'IS', // Islamabad Capital Territory
         'JK', // Azad Kashmir
-        'NA', // Gilgit-Baltistan
-        'NW', // Khyber Pakhtunkhwa
+        'KP', // Khyber Pakhtunkhwa
         'PB', // Punjab
         'SD', // Sindh
         'TA', // Federally Administered Tribal Areas

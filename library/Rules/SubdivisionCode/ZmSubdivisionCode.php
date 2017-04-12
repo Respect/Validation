@@ -32,6 +32,7 @@ class ZmSubdivisionCode extends AbstractSearcher
         '07', // Southern Province
         '08', // Copperbelt Province
         '09', // Lusaka Province
+        '10', // Muchinga
     ];
 
     public $compareIdentical = true;

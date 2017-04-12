@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\PhpLabel
- * @covers Respect\Validation\Exceptions\PhpLabelException
+ * @covers \Respect\Validation\Rules\PhpLabel
+ * @covers \Respect\Validation\Exceptions\PhpLabelException
  */
 class PhpLabelTest extends RuleTestCase
 {
@@ -28,8 +28,8 @@ class PhpLabelTest extends RuleTestCase
             [$rule, 'f00'],
             [$rule, uniqid('_')],
             [$rule, uniqid('a')],
-            [$rule, strtoupper(uniqid('_'))],
-            [$rule, strtoupper(uniqid('a'))],
+            [$rule, mb_strtoupper(uniqid('_'))],
+            [$rule, mb_strtoupper(uniqid('a'))],
         ];
     }
 

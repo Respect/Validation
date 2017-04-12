@@ -11,13 +11,16 @@
 
 namespace Respect\Validation\Rules;
 
+use malkusch\bav\BAV;
 use malkusch\bav\ConfigurationRegistry;
+use malkusch\bav\DataBackend;
+use malkusch\bav\DataBackendContainer;
 
 class LocaleTestCase extends \PHPUnit_Framework_TestCase
 {
     protected function getBavMock()
     {
-        $bavMock = $this->getMockBuilder('malkusch\bav\BAV')
+        $bavMock = $this->getMockBuilder(BAV::class)
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -26,8 +29,8 @@ class LocaleTestCase extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $dataBackend = $this->getMockForAbstractClass('malkusch\bav\DataBackend');
-        $dataBackendContainer = $this->getMockForAbstractClass('malkusch\bav\DataBackendContainer');
+        $dataBackend = $this->getMockForAbstractClass(DataBackend::class);
+        $dataBackendContainer = $this->getMockForAbstractClass(DataBackendContainer::class);
         $dataBackendContainer
             ->expects($this->any())
             ->method('makeDataBackend')

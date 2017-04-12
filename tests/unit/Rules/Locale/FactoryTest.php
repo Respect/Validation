@@ -12,14 +12,15 @@
 namespace Respect\Validation\Rules\Locale;
 
 use Respect\Validation\Rules\LocaleTestCase;
+use Respect\Validation\Validatable;
 
 /**
- * @covers Respect\Validation\Rules\Locale\Factory
+ * @covers \Respect\Validation\Rules\Locale\Factory
  */
 class FactoryTest extends LocaleTestCase
 {
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Cannot provide BIC validation for country "XX"
      */
     public function testShouldThrowExceptionWhenFailedToGetBICRule()
@@ -32,7 +33,7 @@ class FactoryTest extends LocaleTestCase
     {
         $factory = new Factory();
 
-        $this->assertInstanceOf('Respect\Validation\Validatable', $factory->bic('DE'));
+        $this->assertInstanceOf(Validatable::class, $factory->bic('DE'));
     }
 
     public function testShouldNotBeCaseSensitiveToReturnBICRuleAccordingToCountry()
@@ -43,7 +44,7 @@ class FactoryTest extends LocaleTestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Cannot provide bank validation for country "XX"
      */
     public function testShouldThrowExceptionWhenFailedToGetBankRule()
@@ -56,7 +57,7 @@ class FactoryTest extends LocaleTestCase
     {
         $factory = new Factory();
 
-        $this->assertInstanceOf('Respect\Validation\Validatable', $factory->bank('DE'));
+        $this->assertInstanceOf(Validatable::class, $factory->bank('DE'));
     }
 
     public function testShouldNotBeCaseSensitiveToReturnBankRuleAccordingToCountry()
@@ -67,7 +68,7 @@ class FactoryTest extends LocaleTestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Cannot provide bank account validation for country "XX" and bank "123"
      */
     public function testShouldThrowExceptionWhenFailedToGetBankAccountRule()
@@ -80,7 +81,7 @@ class FactoryTest extends LocaleTestCase
     {
         $factory = new Factory();
 
-        $this->assertInstanceOf('Respect\Validation\Validatable', $factory->bankAccount('DE', '123'));
+        $this->assertInstanceOf(Validatable::class, $factory->bankAccount('DE', '123'));
     }
 
     public function testShouldNotBeCaseSensitiveToReturnBankAccountRuleAccordingToCountry()

@@ -23,9 +23,18 @@ use Respect\Validation\Rules\AbstractSearcher;
 class LuSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'D', // Diekirch
-        'G', // Grevenmacher
-        'L', // Luxembourg
+        'CA', // Canton de Capellen
+        'CL', // Canton de Clervaux
+        'DI', // Canton de Diekirch
+        'EC', // Canton d'Echternach
+        'ES', // Canton d'Esch-sur-Alzette
+        'GR', // Canton de Grevenmacher
+        'LU', // Canton de Luxembourg
+        'ME', // Canton de Mersch
+        'RD', // Canton de Redange
+        'RM', // Canton de Remich
+        'VD', // Canton de Vianden
+        'WI', // Canton de Wiltz
     ];
 
     public $compareIdentical = true;

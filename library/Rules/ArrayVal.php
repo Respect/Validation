@@ -11,10 +11,13 @@
 
 namespace Respect\Validation\Rules;
 
+use ArrayAccess;
+use SimpleXMLElement;
+
 class ArrayVal extends AbstractRule
 {
     public function validate($input)
     {
-        return is_array($input) || $input instanceof \ArrayAccess;
+        return is_array($input) || $input instanceof ArrayAccess || $input instanceof SimpleXMLElement;
     }
 }

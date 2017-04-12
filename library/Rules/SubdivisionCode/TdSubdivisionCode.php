@@ -27,8 +27,8 @@ class TdSubdivisionCode extends AbstractSearcher
         'BG', // Barh el Ghazel
         'BO', // Borkou
         'CB', // Chari-Baguirmi
-        'EN', // Ennedi Est
-        'EN', // Ennedi Quest
+        'EE', // Ennedi Est
+        'EO', // Ennedi Quest
         'GR', // Guéra
         'HL', // Hadjer-Lamis
         'KA', // Kanem
@@ -46,7 +46,6 @@ class TdSubdivisionCode extends AbstractSearcher
         'TA', // Tandjile
         'TI', // Tibesti
         'WF', // Wadi Fira
-        'EN', // Ennedi
     ];
 
     public $compareIdentical = true;

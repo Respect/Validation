@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Vowel
- * @covers Respect\Validation\Exceptions\VowelException
+ * @covers \Respect\Validation\Rules\Vowel
+ * @covers \Respect\Validation\Exceptions\VowelException
  */
 class VowelTest extends \PHPUnit_Framework_TestCase
 {
@@ -29,7 +29,7 @@ class VowelTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidVowels
-     * @expectedException Respect\Validation\Exceptions\VowelException
+     * @expectedException \Respect\Validation\Exceptions\VowelException
      */
     public function testInvalidVowelsShouldFailAndThrowVowelException($invalidVowels, $additional = '')
     {
@@ -40,7 +40,7 @@ class VowelTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
     public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
     {

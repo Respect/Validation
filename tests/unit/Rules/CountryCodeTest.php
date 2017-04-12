@@ -13,12 +13,12 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\CountryCode
+ * @covers \Respect\Validation\Rules\CountryCode
  */
 class CountryCodeTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @expectedException        Respect\Validation\Exceptions\ComponentException
+     * @expectedException        \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "whatever" is not a valid country set
      */
     public function testShouldThrowsExceptionWhenInvalidFormat()

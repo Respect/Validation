@@ -53,6 +53,8 @@ class DoSubdivisionCode extends AbstractSearcher
         '28', // Monsenor Nouel
         '29', // Monte Plata
         '30', // Hato Mayor
+        '31', // San Jose de Ocoa
+        '32', // Santo Domingo
     ];
 
     public $compareIdentical = true;

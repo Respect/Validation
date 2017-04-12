@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Cpf
- * @covers Respect\Validation\Exceptions\CpfException
+ * @covers \Respect\Validation\Rules\Cpf
+ * @covers \Respect\Validation\Exceptions\CpfException
  */
 class CpfTest extends \PHPUnit_Framework_TestCase
 {
@@ -43,7 +43,7 @@ class CpfTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerInvalidFormattedCpf
-     * @expectedException Respect\Validation\Exceptions\CpfException
+     * @expectedException \Respect\Validation\Exceptions\CpfException
      */
     public function testInvalidCpfShouldFailWhenFormatted($input)
     {
@@ -52,7 +52,7 @@ class CpfTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerInvalidUnformattedCpf
-     * @expectedException Respect\Validation\Exceptions\CpfException
+     * @expectedException \Respect\Validation\Exceptions\CpfException
      */
     public function testInvalidCpfShouldFailWhenNotFormatted($input)
     {
@@ -61,7 +61,7 @@ class CpfTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerInvalidFormattedAndUnformattedCpfLength
-     * @expectedException Respect\Validation\Exceptions\CpfException
+     * @expectedException \Respect\Validation\Exceptions\CpfException
      */
     public function testCpfsWithIncorrectLengthShouldFail($input)
     {

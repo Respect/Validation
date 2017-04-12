@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\StartsWith
- * @covers Respect\Validation\Exceptions\StartsWithException
+ * @covers \Respect\Validation\Rules\StartsWith
+ * @covers \Respect\Validation\Exceptions\StartsWithException
  */
 class StartsWithTest extends \PHPUnit_Framework_TestCase
 {
@@ -31,7 +31,7 @@ class StartsWithTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotStartsWith
-     * @expectedException Respect\Validation\Exceptions\StartsWithException
+     * @expectedException \Respect\Validation\Exceptions\StartsWithException
      */
     public function testNotStartsWith($start, $input, $caseSensitive = false)
     {

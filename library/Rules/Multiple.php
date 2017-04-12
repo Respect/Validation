@@ -23,9 +23,9 @@ class Multiple extends AbstractRule
     public function validate($input)
     {
         if ($this->multipleOf == 0) {
-            return ($input == 0);
+            return $input == 0;
         }
 
-        return ($input % $this->multipleOf == 0);
+        return $input % $this->multipleOf == 0;
     }
 }

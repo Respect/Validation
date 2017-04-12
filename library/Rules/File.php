@@ -19,6 +19,6 @@ class File extends AbstractRule
             return $input->isFile();
         }
 
-        return (is_string($input) && is_file($input));
+        return is_string($input) && is_file($input);
     }
 }

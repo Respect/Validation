@@ -40,13 +40,13 @@ class VideoUrl extends AbstractRule
      */
     public function __construct($service = null)
     {
-        $serviceKey = strtolower($service);
+        $serviceKey = mb_strtolower($service);
         if (null !== $service && !isset($this->services[$serviceKey])) {
             throw new ComponentException(sprintf('"%s" is not a recognized video service.', $service));
         }
 
         $this->service = $service;
-        $this->serviceKey = strtolower($service);
+        $this->serviceKey = mb_strtolower($service);
     }
 
     /**
@@ -55,7 +55,7 @@ class VideoUrl extends AbstractRule
     public function validate($input)
     {
         if (isset($this->services[$this->serviceKey])) {
-            return (preg_match($this->services[$this->serviceKey], $input) > 0);
+            return preg_match($this->services[$this->serviceKey], $input) > 0;
         }
 
         foreach ($this->services as $pattern) {

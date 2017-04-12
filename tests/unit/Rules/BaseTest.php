@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Base
- * @covers Respect\Validation\Exceptions\BaseException
+ * @covers \Respect\Validation\Rules\Base
+ * @covers \Respect\Validation\Exceptions\BaseException
  */
 class BaseTest extends \PHPUnit_Framework_TestCase
 {
@@ -42,7 +42,7 @@ class BaseTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForExceptionBase
-     * @expectedException Respect\Validation\Exceptions\BaseException
+     * @expectedException \Respect\Validation\Exceptions\BaseException
      */
     public function testExceptionBase($base, $input)
     {

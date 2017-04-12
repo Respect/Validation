@@ -11,10 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
-class Numeric extends AbstractRule
+class Unique extends AbstractRule
 {
     public function validate($input)
     {
-        return is_numeric($input);
+        if (!is_array($input)) {
+            return false;
+        }
+
+        return $input == array_unique($input, SORT_REGULAR);
     }
 }

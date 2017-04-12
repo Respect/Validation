@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Directory
- * @covers Respect\Validation\Exceptions\DirectoryException
+ * @covers \Respect\Validation\Rules\Directory
+ * @covers \Respect\Validation\Exceptions\DirectoryException
  */
 class DirectoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -31,7 +31,7 @@ class DirectoryTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidDirectory
-     * @expectedException Respect\Validation\Exceptions\DirectoryException
+     * @expectedException \Respect\Validation\Exceptions\DirectoryException
      */
     public function testInvalidDirectoryShouldThrowException($input)
     {

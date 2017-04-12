@@ -9,11 +9,10 @@
 
 [The most awesome validation engine ever created for PHP.](http://bit.ly/1a1oeQv)
 
-- Complex rules made simple: `v::numeric()->positive()->between(1, 255)->validate($input)`.
+- Complex rules made simple: `v::numericVal()->positive()->between(1, 255)->validate($input)`.
 - [Granularity control](docs/README.md#validation-methods) for advanced reporting.
-- More than 100 (fully tested) validators.
+- [More than 130](docs/VALIDATORS.md) (fully tested) validation rules.
 - [A concrete API](docs/CONCRETE_API.md) for non fluent usage.
-- Works on PHP 5.6+ or HHVM 3.6+
 
 ## Table of contents
 

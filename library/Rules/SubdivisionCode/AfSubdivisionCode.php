@@ -43,11 +43,10 @@ class AfSubdivisionCode extends AbstractSearcher
         'KHO', // Khost province
         'KNR', // Konar province
         'LAG', // Laghman province
-        'LOW', // Lowgar province
+        'LOG', // Lowgar province
         'NAN', // Nangrahar province
         'NIM', // Nimruz province
         'NUR', // Nurestan province
-        'ORU', // Oruzgan province
         'PAN', // Panjshir
         'PAR', // Parwan province
         'PIA', // Paktia province
@@ -55,6 +54,7 @@ class AfSubdivisionCode extends AbstractSearcher
         'SAM', // Samangan province
         'SAR', // Sar-e Pol province
         'TAK', // Takhar province
+        'URU', // Uruzgān province
         'WAR', // Wardak province
         'ZAB', // Zabol province
     ];

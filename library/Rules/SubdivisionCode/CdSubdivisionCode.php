@@ -23,17 +23,32 @@ use Respect\Validation\Rules\AbstractSearcher;
 class CdSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'BC', // Bas-Congo
-        'BN', // Bandundu
+        'BC', // Kongo Central
+        'BU', // Bas-Uélé
         'EQ', // Equateur
-        'KA', // Katanga
+        'HK', // Haut-Katanga
+        'HL', // Haut-Lomami
+        'HU', // Haut-Uélé
+        'IT', // Ituri
+        'KC', // Kasaï Central
         'KE', // Kasai-Oriental
+        'KG', // Kwango
+        'KL', // Kwilu
         'KN', // Kinshasa
-        'KW', // Kasai-Occidental
+        'KS', // Kasaï
+        'LO', // Lomami
+        'LU', // Lualaba
         'MA', // Maniema
+        'MN', // Mai-Ndombe
+        'MO', // Mongala
         'NK', // Nord-Kivu
-        'OR', // Orientale
+        'NU', // Nord-Ubangi
+        'SA', // Sankuru
         'SK', // Sud-Kivu
+        'SU', // Sud-Ubangi
+        'TA', // Tanganyika
+        'TO', // Tshopo
+        'TU', // Tshuapa
     ];
 
     public $compareIdentical = true;

@@ -11,14 +11,14 @@
 
 namespace Respect\Validation\Exceptions;
 
-class IterableException extends ValidationException
+class StringValException extends ValidationException
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be iterable',
+            self::STANDARD => '{{name}} must be a string',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be iterable',
+            self::STANDARD => '{{name}} must not be string',
         ],
     ];
 }

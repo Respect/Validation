@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\NoWhitespace
- * @covers Respect\Validation\Exceptions\NoWhitespaceException
+ * @covers \Respect\Validation\Rules\NoWhitespace
+ * @covers \Respect\Validation\Exceptions\NoWhitespaceException
  */
 class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,7 +37,7 @@ class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForFail
-     * @expectedException Respect\Validation\Exceptions\NoWhitespaceException
+     * @expectedException \Respect\Validation\Exceptions\NoWhitespaceException
      */
     public function testStringWithWhitespaceShouldFail($input)
     {
@@ -45,7 +45,7 @@ class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->noWhitespaceValidator->assert($input));
     }
     /**
-     * @expectedException Respect\Validation\Exceptions\NoWhitespaceException
+     * @expectedException \Respect\Validation\Exceptions\NoWhitespaceException
      */
     public function testStringWithLineBreaksShouldFail()
     {
@@ -77,7 +77,7 @@ class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @issue 346
-     * @expectedException Respect\Validation\Exceptions\NoWhitespaceException
+     * @expectedException \Respect\Validation\Exceptions\NoWhitespaceException
      */
     public function testArrayDoesNotThrowAWarning()
     {

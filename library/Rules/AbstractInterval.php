@@ -31,7 +31,7 @@ abstract class AbstractInterval extends AbstractRule
             return $value;
         }
 
-        if (strlen($value) == 1) {
+        if (mb_strlen($value) == 1) {
             return $value;
         }
 

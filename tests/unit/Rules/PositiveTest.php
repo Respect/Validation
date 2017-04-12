@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Positive
- * @covers Respect\Validation\Exceptions\PositiveException
+ * @covers \Respect\Validation\Rules\Positive
+ * @covers \Respect\Validation\Exceptions\PositiveException
  */
 class PositiveTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,7 +37,7 @@ class PositiveTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotPositive
-     * @expectedException Respect\Validation\Exceptions\PositiveException
+     * @expectedException \Respect\Validation\Exceptions\PositiveException
      */
     public function testNotPositive($input)
     {

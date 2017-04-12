@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\FloatType
+ * @covers \Respect\Validation\Rules\FloatType
  */
 class FloatTypeTest extends RuleTestCase
 {

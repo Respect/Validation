@@ -32,6 +32,7 @@ class IqSubdivisionCode extends AbstractSearcher
         'DI', // Diyala
         'DQ', // Dhi Qar
         'KA', // Al Karbala
+        'KI', // Kirkūk
         'MA', // Maysan
         'MU', // Al Muthanna
         'NA', // An Najaf
@@ -39,7 +40,6 @@ class IqSubdivisionCode extends AbstractSearcher
         'QA', // Al Qadisyah
         'SD', // Salah ad Din
         'SU', // As Sulaymānīyah
-        'TS', // Kirkūk
         'WA', // Wasit
     ];
 

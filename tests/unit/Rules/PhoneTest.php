@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Phone
- * @covers Respect\Validation\Exceptions\PhoneException
+ * @covers \Respect\Validation\Rules\Phone
+ * @covers \Respect\Validation\Exceptions\PhoneException
  */
 class PhoneTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,7 +37,7 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotPhone
-     * @expectedException Respect\Validation\Exceptions\PhoneException
+     * @expectedException \Respect\Validation\Exceptions\PhoneException
      */
     public function testInvalidPhoneShouldThrowPhoneException($input)
     {

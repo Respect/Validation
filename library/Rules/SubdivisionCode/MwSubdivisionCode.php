@@ -23,11 +23,9 @@ use Respect\Validation\Rules\AbstractSearcher;
 class MwSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'C', // Central
-        'N', // Northern
-        'S', // Southern
         'BA', // Balaka
         'BL', // Blantyre
+        'C', // Central
         'CK', // Chikwawa
         'CR', // Chiradzulu
         'CT', // Chitipa
@@ -43,6 +41,7 @@ class MwSubdivisionCode extends AbstractSearcher
         'MU', // Mulanje
         'MW', // Mwanza
         'MZ', // Mzimba
+        'N', // Northern
         'NB', // Nkhata Bay
         'NE', // Neno
         'NI', // Ntchisi
@@ -51,6 +50,7 @@ class MwSubdivisionCode extends AbstractSearcher
         'NU', // Ntcheu
         'PH', // Phalombe
         'RU', // Rumphi
+        'S', // Southern
         'SA', // Salima
         'TH', // Thyolo
         'ZO', // Zomba

@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Space
- * @covers Respect\Validation\Exceptions\SpaceException
+ * @covers \Respect\Validation\Rules\Space
+ * @covers \Respect\Validation\Exceptions\SpaceException
  */
 class SpaceTest extends \PHPUnit_Framework_TestCase
 {
@@ -29,7 +29,7 @@ class SpaceTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidSpace
-     * @expectedException Respect\Validation\Exceptions\SpaceException
+     * @expectedException \Respect\Validation\Exceptions\SpaceException
      */
     public function testInvalidSpaceShouldFailAndThrowSpaceException($invalidSpace, $additional = '')
     {
@@ -40,7 +40,7 @@ class SpaceTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
     public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
     {

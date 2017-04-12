@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Digit
- * @covers Respect\Validation\Exceptions\DigitException
+ * @covers \Respect\Validation\Rules\Digit
+ * @covers \Respect\Validation\Exceptions\DigitException
  */
 class DigitTest extends \PHPUnit_Framework_TestCase
 {
@@ -29,7 +29,7 @@ class DigitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidDigits
-     * @expectedException Respect\Validation\Exceptions\DigitException
+     * @expectedException \Respect\Validation\Exceptions\DigitException
      */
     public function testInvalidDigitsShouldFailAndThrowDigitException($invalidDigits, $additional = '')
     {
@@ -40,7 +40,7 @@ class DigitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
     public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
     {

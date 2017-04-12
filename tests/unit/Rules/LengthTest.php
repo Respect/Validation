@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Length
- * @covers Respect\Validation\Exceptions\LengthException
+ * @covers \Respect\Validation\Rules\Length
+ * @covers \Respect\Validation\Exceptions\LengthException
  */
 class LengthTest extends \PHPUnit_Framework_TestCase
 {
@@ -56,7 +56,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForComponentException
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
     public function testComponentExceptionsForInvalidParameters($min, $max)
     {

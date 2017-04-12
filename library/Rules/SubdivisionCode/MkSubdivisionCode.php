@@ -30,7 +30,6 @@ class MkSubdivisionCode extends AbstractSearcher
         '05', // Bogdanci
         '06', // Bogovinje
         '07', // Bosilovo
-        '077', // Centar †
         '08', // Brvenica
         '09', // Butel †
         '10', // Valandovo
@@ -100,6 +99,7 @@ class MkSubdivisionCode extends AbstractSearcher
         '74', // Šuto Orizari †
         '75', // Tearce
         '76', // Tetovo
+        '77', // Centar †
         '78', // Centar Župa
         '79', // Čair †
         '80', // Čaška
@@ -107,6 +107,7 @@ class MkSubdivisionCode extends AbstractSearcher
         '82', // Čučer Sandevo
         '83', // Sopište
         '84', // Staro Nagoričane
+        '85', // Skopje
     ];
 
     public $compareIdentical = true;

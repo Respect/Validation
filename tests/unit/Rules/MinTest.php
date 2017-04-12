@@ -15,8 +15,8 @@ use DateTime;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Min
- * @covers Respect\Validation\Exceptions\MinException
+ * @covers \Respect\Validation\Rules\Min
+ * @covers \Respect\Validation\Exceptions\MinException
  */
 class MinTest extends \PHPUnit_Framework_TestCase
 {
@@ -33,7 +33,7 @@ class MinTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidMin
-     * @expectedException Respect\Validation\Exceptions\MinException
+     * @expectedException \Respect\Validation\Exceptions\MinException
      */
     public function testInvalidMinShouldThrowMinException($minValue, $inclusive, $input)
     {

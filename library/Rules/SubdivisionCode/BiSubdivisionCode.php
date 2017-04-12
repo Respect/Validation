@@ -38,6 +38,7 @@ class BiSubdivisionCode extends AbstractSearcher
         'MW', // Mwaro
         'MY', // Muyinga
         'NG', // Ngozi
+        'RM', // Rumonge
         'RT', // Rutana
         'RY', // Ruyigi
     ];

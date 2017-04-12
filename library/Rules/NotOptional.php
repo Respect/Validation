@@ -15,6 +15,6 @@ class NotOptional extends AbstractRule
 {
     public function validate($input)
     {
-        return (false === in_array($input, [null, ''], true));
+        return false === in_array($input, [null, ''], true);
     }
 }

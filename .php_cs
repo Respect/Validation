@@ -8,26 +8,17 @@ $finder = Symfony\CS\Finder\DefaultFinder::create()
     ->in('tests');
 
 return Symfony\CS\Config\Config::create()
-    ->level(\Symfony\CS\FixerInterface::PSR2_LEVEL)
+    ->level(\Symfony\CS\FixerInterface::SYMFONY_LEVEL)
     ->fixers(array(
-        // All items of the @param, @throws, @return, @var, and @type phpdoc
-        // tags must be aligned vertically.
-        'phpdoc_params',
-        // Convert double quotes to single quotes for simple strings.
-        'single_quote',
-        // Group and seperate @phpdocs with empty lines.
-        'phpdoc_separation',
-        // An empty line feed should precede a return statement.
-        'return',
-        // PHP arrays should use the PHP 5.4 short-syntax.
-        'short_array_syntax',
-        // Remove trailing whitespace at the end of blank lines.
-        'whitespacy_lines',
-        // Removes extra empty lines.
-        'extra_empty_lines',
-        // Unused use statements must be removed.
-        'unused_use',
-        // Ordering use statements.
+        'empty_return',
+        'mb_str_functions',
+        'multiline_spaces_before_semicolon',
+        'newline_after_open_tag',
+        'no_useless_else',
+        'no_useless_return',
         'ordered_use',
+        'phpdoc_order',
+        'short_array_syntax',
     ))
+    ->setUsingCache(true)
     ->finder($finder);

@@ -15,7 +15,7 @@ class AbstractRegexRuleTest extends \PHPUnit_Framework_TestCase
 {
     public function testValidateCleanShouldReturnOneIfPatternIsFound()
     {
-        $regexRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractRegexRule');
+        $regexRuleMock = $this->getMockForAbstractClass(AbstractRegexRule::class);
         $regexRuleMock->expects($this->once())
             ->method('getPregFormat')
             ->will($this->returnValue('/^Respect$/'));
@@ -25,7 +25,7 @@ class AbstractRegexRuleTest extends \PHPUnit_Framework_TestCase
 
     public function testValidateCleanShouldReturnZeroIfPatternIsNotFound()
     {
-        $regexRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractRegexRule');
+        $regexRuleMock = $this->getMockForAbstractClass(AbstractRegexRule::class);
         $regexRuleMock->expects($this->once())
             ->method('getPregFormat')
             ->will($this->returnValue('/^Respect$/'));

@@ -100,6 +100,7 @@ class ThSubdivisionCode extends AbstractSearcher
         '94', // Pattani
         '95', // Yala
         '96', // Narathiwat
+        'S', // Pattaya
     ];
 
     public $compareIdentical = true;

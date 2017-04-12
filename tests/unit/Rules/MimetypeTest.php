@@ -17,8 +17,8 @@ use SplFileInfo;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @group  rule
- * @covers Respect\Validation\Rules\Mimetype
- * @covers Respect\Validation\Exceptions\MimetypeException
+ * @covers \Respect\Validation\Rules\Mimetype
+ * @covers \Respect\Validation\Exceptions\MimetypeException
  */
 class MimetypeTest extends PHPUnit_Framework_TestCase
 {
@@ -94,7 +94,7 @@ class MimetypeTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\MimetypeException
+     * @expectedException \Respect\Validation\Exceptions\MimetypeException
      * @expectedExceptionMessageRegExp #".+MimetypeTest.php" must have "application.?/json" mimetype#
      */
     public function testShouldThrowMimetypeExceptionWhenCheckingValue()

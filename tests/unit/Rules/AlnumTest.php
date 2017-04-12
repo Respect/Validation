@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Alnum
- * @covers Respect\Validation\Exceptions\AlnumException
+ * @covers \Respect\Validation\Rules\Alnum
+ * @covers \Respect\Validation\Exceptions\AlnumException
  */
 class AlnumTest extends \PHPUnit_Framework_TestCase
 {
@@ -29,7 +29,7 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidAlnum
-     * @expectedException Respect\Validation\Exceptions\AlnumException
+     * @expectedException \Respect\Validation\Exceptions\AlnumException
      */
     public function testInvalidAlnumCharsShouldThrowAlnumExceptionAndReturnFalse($invalidAlnum, $additional)
     {
@@ -40,7 +40,7 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
     public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
     {

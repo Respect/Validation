@@ -17,7 +17,7 @@ use SplFileObject;
 
 /**
  * @group rule
- * @covers Respect\Validation\Rules\Image
+ * @covers \Respect\Validation\Rules\Image
  */
 class ImageTest extends RuleTestCase
 {

@@ -32,11 +32,11 @@ abstract class RuleTestCase extends \PHPUnit_Framework_TestCase
      * @param bool             $expectedResult
      * @param string[optional] $mockClassName
      *
-     * @return \Respect\Validation\Validatable
+     * @return Validatable
      */
     public function getRuleMock($expectedResult, $mockClassName = '')
     {
-        $ruleMocked = $this->getMockBuilder('Respect\Validation\Validatable')
+        $ruleMocked = $this->getMockBuilder(Validatable::class)
             ->disableOriginalConstructor()
             ->setMethods(
                 [
@@ -49,31 +49,26 @@ abstract class RuleTestCase extends \PHPUnit_Framework_TestCase
         $ruleMocked
             ->expects($this->any())
             ->method('validate')
-            ->willReturn($expectedResult)
-        ;
+            ->willReturn($expectedResult);
 
         if ($expectedResult) {
             $ruleMocked
                 ->expects($this->any())
                 ->method('check')
-                ->willReturn($expectedResult)
-            ;
+                ->willReturn($expectedResult);
             $ruleMocked
                 ->expects($this->any())
                 ->method('assert')
-                ->willReturn($expectedResult)
-            ;
+                ->willReturn($expectedResult);
         } else {
             $ruleMocked
                 ->expects($this->any())
                 ->method('check')
-                ->willThrowException(new ValidationException('Exception for '.$mockClassName.':check() method'))
-            ;
+                ->willThrowException(new ValidationException('Exception for '.$mockClassName.':check() method'));
             $ruleMocked
                 ->expects($this->any())
                 ->method('assert')
-                ->willThrowException(new ValidationException('Exception for '.$mockClassName.':assert() method'))
-            ;
+                ->willThrowException(new ValidationException('Exception for '.$mockClassName.':assert() method'));
         }
 
         return $ruleMocked;

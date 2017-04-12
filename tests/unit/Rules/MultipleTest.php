@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Multiple
- * @covers Respect\Validation\Exceptions\MultipleException
+ * @covers \Respect\Validation\Rules\Multiple
+ * @covers \Respect\Validation\Exceptions\MultipleException
  */
 class MultipleTest extends \PHPUnit_Framework_TestCase
 {
@@ -31,7 +31,7 @@ class MultipleTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotMultiple
-     * @expectedException Respect\Validation\Exceptions\MultipleException
+     * @expectedException \Respect\Validation\Exceptions\MultipleException
      */
     public function testNotMultipleShouldThrowMultipleException($multipleOf, $input)
     {

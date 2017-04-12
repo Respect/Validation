@@ -1,7 +1,7 @@
 # CreditCard
 
-- `v::creditCard()`
-- `v::creditCard(string $brand)`
+- `CreditCard()`
+- `CreditCard(string $brand)`
 
 Validates a credit card number.
 
@@ -31,9 +31,16 @@ It ignores any non-digit chars, so use `->digit()` when appropriate.
 v::digit()->creditCard()->validate('5376747397208720'); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.1.0 | Allow the define credit card brand
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [Bank](Bank.md)
-  * [BankAccount](BankAccount.md)
-  * [Bic](Bic.md)
+- [Bank](Bank.md)
+- [BankAccount](BankAccount.md)
+- [Bic](Bic.md)

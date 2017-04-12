@@ -35,9 +35,32 @@ class NestedValidationException extends ValidationException implements IteratorA
     }
 
     /**
+     * @param string              $path
+     * @param ValidationException $exception
+     *
+     * @return ValidationException
+     */
+    private function getExceptionForPath($path, ValidationException $exception)
+    {
+        if ($path === $exception->guessId()) {
+            return $exception;
+        }
+
+        if (!$exception instanceof self) {
+            return $exception;
+        }
+
+        foreach ($exception as $subException) {
+            return $subException;
+        }
+
+        return $exception;
+    }
+
+    /**
      * @param array $paths
      *
-     * @return self
+     * @return string[]
      */
     public function findMessages(array $paths)
     {
@@ -47,14 +70,23 @@ class NestedValidationException extends ValidationException implements IteratorA
             $numericKey = is_numeric($key);
             $path = $numericKey ? $value : $key;
 
-            $exception = $this->findRelated($path);
-
-            if (is_object($exception) && !$numericKey) {
-                $exception->setTemplate($value);
+            if (!($exception = $this->getRelatedByName($path))) {
+                $exception = $this->findRelated($path);
             }
 
             $path = str_replace('.', '_', $path);
-            $messages[$path] = $exception ? $exception->getMainMessage() : '';
+
+            if (!$exception) {
+                $messages[$path] = '';
+                continue;
+            }
+
+            $exception = $this->getExceptionForPath($path, $exception);
+            if (!$numericKey) {
+                $exception->setTemplate($value);
+            }
+
+            $messages[$path] = $exception->getMainMessage();
         }
 
         return $messages;
@@ -91,6 +123,26 @@ class NestedValidationException extends ValidationException implements IteratorA
     }
 
     /**
+     * Returns weather an exception should be omitted or not.
+     *
+     * @param ExceptionInterface $exception
+     *
+     * @return bool
+     */
+    private function isOmissible(ExceptionInterface $exception)
+    {
+        if (!$exception instanceof self) {
+            return false;
+        }
+
+        $relatedExceptions = $exception->getRelated();
+        $relatedExceptions->rewind();
+        $childException = $relatedExceptions->current();
+
+        return $relatedExceptions->count() === 1 && !$childException instanceof NonOmissibleExceptionInterface;
+    }
+
+    /**
      * @return SplObjectStorage
      */
     public function getIterator()
@@ -104,9 +156,7 @@ class NestedValidationException extends ValidationException implements IteratorA
         $lastDepthOriginal = 0;
         $knownDepths = [];
         foreach ($recursiveIteratorIterator as $childException) {
-            if ($childException instanceof self
-                && $childException->getRelated()->count() > 0
-                && $childException->getRelated()->count() < 2) {
+            if ($this->isOmissible($childException)) {
                 continue;
             }
 
@@ -216,7 +266,7 @@ class NestedValidationException extends ValidationException implements IteratorA
      */
     private function isRelated($name, ValidationException $exception)
     {
-        return ($exception->getId() === $name || $exception->getName() === $name);
+        return $exception->getId() === $name || $exception->getName() === $name;
     }
 
     /**

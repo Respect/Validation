@@ -1,7 +1,7 @@
 # Date
 
-- `v::date()`
-- `v::date(string $format)`
+- `Date()`
+- `Date(string $format)`
 
 Validates if input is a date:
 
@@ -31,10 +31,16 @@ Format has no effect when validating DateTime instances.
 
 Message template for this validator includes `{{format}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [Between](Between.md)
-  * [MinimumAge](MinimumAge.md)
-  * [LeapDate](LeapDate.md)
-  * [LeapYear](LeapYear.md)
+- [Between](Between.md)
+- [MinimumAge](MinimumAge.md)
+- [LeapDate](LeapDate.md)
+- [LeapYear](LeapYear.md)

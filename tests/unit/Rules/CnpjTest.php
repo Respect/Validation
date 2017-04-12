@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Cnpj
- * @covers Respect\Validation\Exceptions\CnpjException
+ * @covers \Respect\Validation\Rules\Cnpj
+ * @covers \Respect\Validation\Exceptions\CnpjException
  */
 class CnpjTest extends \PHPUnit_Framework_TestCase
 {
@@ -99,12 +99,20 @@ class CnpjTest extends \PHPUnit_Framework_TestCase
     public function providerInvalidUnformattedCnpj()
     {
         return [
-            ['11111111111'],
-            ['22222222222'],
-            ['12345678900'],
-            ['99299929384'],
-            ['84434895894'],
-            ['44242340000'],
+            ['00000000000000'],
+            ['11111111111111'],
+            ['22222222222222'],
+            ['33333333333333'],
+            ['44444444444444'],
+            ['55555555555555'],
+            ['66666666666666'],
+            ['77777777777777'],
+            ['88888888888888'],
+            ['99999999999999'],
+            ['12345678900123'],
+            ['99299929384987'],
+            ['84434895894444'],
+            ['44242340000000'],
         ];
     }
 

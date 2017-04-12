@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\NfeAccessKey
- * @covers Respect\Validation\Exceptions\NfeAccessKeyException
+ * @covers \Respect\Validation\Rules\NfeAccessKey
+ * @covers \Respect\Validation\Exceptions\NfeAccessKeyException
  */
 class NfeAccessKeyTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,7 +37,7 @@ class NfeAccessKeyTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider invalidAccessKeyProvider
-     * @expectedException Respect\Validation\Exceptions\NfeAccessKeyException
+     * @expectedException \Respect\Validation\Exceptions\NfeAccessKeyException
      */
     public function testInvalidAccessKey($aK)
     {
@@ -46,7 +46,7 @@ class NfeAccessKeyTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider invalidAccessKeyLengthProvider
-     * @expectedException Respect\Validation\Exceptions\NfeAccessKeyException
+     * @expectedException \Respect\Validation\Exceptions\NfeAccessKeyException
      */
     public function testInvalidLengthCnh($aK)
     {

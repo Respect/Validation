@@ -14,7 +14,7 @@ namespace Respect\Validation\Exceptions\SubdivisionCode;
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Czech Republic subdivision code.
+ * Exception class for Czechia subdivision code.
  *
  * ISO 3166-1 alpha-2: CZ
  */
@@ -22,10 +22,10 @@ class CzSubdivisionCodeException extends SubdivisionCodeException
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a subdivision code of Czech Republic',
+            self::STANDARD => '{{name}} must be a subdivision code of Czechia',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a subdivision code of Czech Republic',
+            self::STANDARD => '{{name}} must not be a subdivision code of Czechia',
         ],
     ];
 }

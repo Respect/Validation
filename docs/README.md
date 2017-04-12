@@ -15,7 +15,7 @@ The Hello World validator is something like this:
 
 ```php
 $number = 123;
-v::numeric()->validate($number); // true
+v::numericVal()->validate($number); // true
 ```
 
 ## Chained validation
@@ -96,27 +96,27 @@ $usernameValidator->validate('#$%');                //false
 
 ## Exception types
 
-* `Respect\Validation\Exceptions\ExceptionInterface`:
-    * All exceptions implement this interface;
-* `Respect\Validation\Exceptions\ValidationException`:
-    * Implements the `Respect\Validation\Exceptions\ExceptionInterface` interface
-    * Thrown when the `check()` fails
-    * All validation exceptions extend this class
-    * Available methods:
-        * `getMainMessage()`;
-        * `setMode($mode)`;
-        * `setName($name)`;
-        * `setParam($name, $value)`;
-        * `setTemplate($template)`;
-        * more...
-* `Respect\Validation\Exceptions\NestedValidationException`:
-    * Extends the `Respect\Validation\Exceptions\ValidationException` class
-    * Usually thrown when the `assert()` fails
-    * Available methods:
-        * `findMessages()`;
-        * `getFullMessage()`;
-        * `getMessages()`;
-        * more...
+- `Respect\Validation\Exceptions\ExceptionInterface`:
+  - All exceptions implement this interface;
+- `Respect\Validation\Exceptions\ValidationException`:
+  - Implements the `Respect\Validation\Exceptions\ExceptionInterface` interface
+  - Thrown when the `check()` fails
+  - All validation exceptions extend this class
+  - Available methods:
+    - `getMainMessage()`;
+    - `setMode($mode)`;
+    - `setName($name)`;
+    - `setParam($name, $value)`;
+    - `setTemplate($template)`;
+    - more...
+- `Respect\Validation\Exceptions\NestedValidationException`:
+  - Extends the `Respect\Validation\Exceptions\ValidationException` class
+  - Usually thrown when the `assert()` fails
+  - Available methods:
+    - `findMessages()`;
+    - `getFullMessage()`;
+    - `getMessages()`;
+    - more...
 
 ## Informative exceptions
 
@@ -228,8 +228,12 @@ Note that `getMessage()` will keep the original message.
 
 ## Custom rules
 
-You also can use your own rules:
+You can also create and use your own rules. To do this, you will need to create
+a rule and an exception to go with the rule.
 
+To create a rule, you need to create a class that extends the AbstractRule class
+and is within the Rules `namespace`. When the rule is called the logic inside the
+validate method will be executed. Here's how the class should look:
 ```php
 namespace My\Validation\Rules;
 
@@ -244,7 +248,42 @@ class MyRule extends AbstractRule
 }
 ```
 
-If you do want Validation to execute you rule (or rules) in the chain, you must
+Each rule must have an Exception to go with it. Exceptions should be named
+with the name of the rule followed by the word Exception. The process of creating
+an Exception is similar to creating a rule but there are no methods in the
+Exception class. Instead, you create one static property that includes an
+array with the information below:
+```php
+namespace My\Validation\Exceptions;
+
+use \Respect\Validation\Exceptions\ValidationException;
+
+class MyRuleException extends ValidationException
+{
+    public static $defaultTemplates = [
+        self::MODE_DEFAULT => [
+            self::STANDARD => 'Validation message if MyRule fails validation.',
+        ],
+        self::MODE_NEGATIVE => [
+            self::STANDARD => 'Validation message if the negative of MyRule is called and fails validation.',
+        ],
+    ];
+}
+```
+
+So in the end, the folder structure for your Rules and Exceptions should look
+something like the structure below. Note that the folders (and namespaces) are
+plural but the actual Rules and Exceptions are singular.
+```
+My
+ +-- Validation
+     +-- Exceptions
+         +-- MyRuleException.php
+     +-- Rules
+         +-- MyRule.php
+```
+
+If you want Validation to execute your rule (or rules) in the chain, you must
 use `v::with()` passing your rule's namespace as an argument:
 
 ```php

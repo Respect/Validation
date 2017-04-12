@@ -33,7 +33,7 @@ class Type extends AbstractRule
 
     public function __construct($type)
     {
-        $lowerType = strtolower($type);
+        $lowerType = mb_strtolower($type);
         if (!isset($this->availableTypes[$lowerType])) {
             throw new ComponentException(sprintf('"%s" is not a valid type', print_r($type, true)));
         }
@@ -43,11 +43,11 @@ class Type extends AbstractRule
 
     public function validate($input)
     {
-        $lowerType = strtolower($this->type);
+        $lowerType = mb_strtolower($this->type);
         if ('callable' === $lowerType) {
             return is_callable($input);
         }
 
-        return ($this->availableTypes[$lowerType] === gettype($input));
+        return $this->availableTypes[$lowerType] === gettype($input);
     }
 }

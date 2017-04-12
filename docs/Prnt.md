@@ -1,15 +1,21 @@
 # Prnt
 
-- `v::prnt()`
-- `v::prnt(string $additionalChars)`
+- `Prnt()`
+- `Prnt(string $additionalChars)`
 
-Similar to `v::graph` but accepts whitespace.
+Similar to `Graph` but accepts whitespace.
 
 ```php
 v::prnt()->validate('LMKA0$% _123'); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.5.0 | Created
+
 ***
 See also:
 
-  * [Graph](Graph.md)
+- [Graph](Graph.md)

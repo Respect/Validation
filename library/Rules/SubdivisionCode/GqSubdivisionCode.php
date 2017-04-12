@@ -23,12 +23,12 @@ use Respect\Validation\Rules\AbstractSearcher;
 class GqSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'C', // Región Continental
-        'I', // Región Insular
         'AN', // Provincia Annobon
         'BN', // Provincia Bioko Norte
         'BS', // Provincia Bioko Sur
+        'C', // Región Continental
         'CS', // Provincia Centro Sur
+        'I', // Región Insular
         'KN', // Provincia Kie-Ntem
         'LI', // Provincia Litoral
         'WN', // Provincia Wele-Nzas

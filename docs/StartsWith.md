@@ -1,9 +1,9 @@
 # StartsWith
 
-- `v::startsWith(mixed $value)`
-- `v::startsWith(mixed $value, boolean $identical = false)`
+- `StartsWith(mixed $value)`
+- `StartsWith(mixed $value, bool $identical)`
 
-This validator is similar to `v::contains()`, but validates
+This validator is similar to `Contains()`, but validates
 only if the value is at the beginning of the input.
 
 For strings:
@@ -23,9 +23,15 @@ instead of equal.
 
 Message template for this validator includes `{{startValue}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [EndsWith](EndsWith.md)
-  * [Contains](Contains.md)
-  * [In](In.md)
+- [EndsWith](EndsWith.md)
+- [Contains](Contains.md)
+- [In](In.md)

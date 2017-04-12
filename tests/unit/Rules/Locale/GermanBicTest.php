@@ -11,12 +11,13 @@
 
 namespace Respect\Validation\Rules\Locale;
 
+use malkusch\bav\BAV;
 use Respect\Validation\Rules\LocaleTestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Locale\GermanBic
- * @covers Respect\Validation\Exceptions\Locale\GermanBicException
+ * @covers \Respect\Validation\Rules\Locale\GermanBic
+ * @covers \Respect\Validation\Exceptions\Locale\GermanBicException
  */
 class GermanBicTest extends LocaleTestCase
 {
@@ -32,7 +33,7 @@ class GermanBicTest extends LocaleTestCase
     {
         $rule = new GermanBic();
 
-        $this->assertInstanceOf('malkusch\bav\BAV', $rule->bav);
+        $this->assertInstanceOf(BAV::class, $rule->bav);
     }
 
     public function testShouldUseBAVInstanceToValidate()
@@ -64,7 +65,7 @@ class GermanBicTest extends LocaleTestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\Locale\GermanBicException
+     * @expectedException \Respect\Validation\Exceptions\Locale\GermanBicException
      * @expectedExceptionMessage "10000000" must be a german BIC
      */
     public function testShouldThowsTheRightExceptionWhenChecking()

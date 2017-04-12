@@ -12,16 +12,17 @@
 namespace Respect\Validation\Rules;
 
 use ReflectionObject;
+use Respect\Validation\Validatable;
 
 class AbstractWrapperTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage There is no defined validatable
      */
     public function testShouldThrowsAnExceptionWhenWrappedValidatableIsNotDefined()
     {
-        $wrapper = $this->getMockForAbstractClass('Respect\Validation\Rules\AbstractWrapper');
+        $wrapper = $this->getMockForAbstractClass(AbstractWrapper::class);
         $wrapper->getValidatable();
     }
 
@@ -35,9 +36,9 @@ class AbstractWrapperTest extends \PHPUnit_Framework_TestCase
 
     public function testShouldReturnDefinedValidatable()
     {
-        $validatable = $this->getMock('Respect\Validation\Validatable');
+        $validatable = $this->createMock(Validatable::class);
 
-        $wrapper = $this->getMockForAbstractClass('Respect\Validation\Rules\AbstractWrapper');
+        $wrapper = $this->getMockForAbstractClass(AbstractWrapper::class);
         $this->bindValidatable($wrapper, $validatable);
 
         $this->assertSame($validatable, $wrapper->getValidatable());
@@ -47,14 +48,14 @@ class AbstractWrapperTest extends \PHPUnit_Framework_TestCase
     {
         $input = 'Whatever';
 
-        $validatable = $this->getMock('Respect\Validation\Validatable');
+        $validatable = $this->createMock(Validatable::class);
         $validatable
             ->expects($this->once())
             ->method('validate')
             ->with($input)
             ->will($this->returnValue(true));
 
-        $wrapper = $this->getMockForAbstractClass('Respect\Validation\Rules\AbstractWrapper');
+        $wrapper = $this->getMockForAbstractClass(AbstractWrapper::class);
         $this->bindValidatable($wrapper, $validatable);
 
         $this->assertTrue($wrapper->validate($input));
@@ -64,14 +65,14 @@ class AbstractWrapperTest extends \PHPUnit_Framework_TestCase
     {
         $input = 'Whatever';
 
-        $validatable = $this->getMock('Respect\Validation\Validatable');
+        $validatable = $this->createMock(Validatable::class);
         $validatable
             ->expects($this->once())
             ->method('assert')
             ->with($input)
             ->will($this->returnValue(true));
 
-        $wrapper = $this->getMockForAbstractClass('Respect\Validation\Rules\AbstractWrapper');
+        $wrapper = $this->getMockForAbstractClass(AbstractWrapper::class);
         $this->bindValidatable($wrapper, $validatable);
 
         $this->assertTrue($wrapper->assert($input));
@@ -81,14 +82,14 @@ class AbstractWrapperTest extends \PHPUnit_Framework_TestCase
     {
         $input = 'Whatever';
 
-        $validatable = $this->getMock('Respect\Validation\Validatable');
+        $validatable = $this->createMock(Validatable::class);
         $validatable
             ->expects($this->once())
             ->method('check')
             ->with($input)
             ->will($this->returnValue(true));
 
-        $wrapper = $this->getMockForAbstractClass('Respect\Validation\Rules\AbstractWrapper');
+        $wrapper = $this->getMockForAbstractClass(AbstractWrapper::class);
         $this->bindValidatable($wrapper, $validatable);
 
         $this->assertTrue($wrapper->check($input));
@@ -98,14 +99,14 @@ class AbstractWrapperTest extends \PHPUnit_Framework_TestCase
     {
         $name = 'Whatever';
 
-        $validatable = $this->getMock('Respect\Validation\Validatable');
+        $validatable = $this->createMock(Validatable::class);
         $validatable
             ->expects($this->once())
             ->method('setName')
             ->with($name)
             ->will($this->returnValue($validatable));
 
-        $wrapper = $this->getMockForAbstractClass('Respect\Validation\Rules\AbstractWrapper');
+        $wrapper = $this->getMockForAbstractClass(AbstractWrapper::class);
         $this->bindValidatable($wrapper, $validatable);
 
         $this->assertSame($wrapper, $wrapper->setName($name));

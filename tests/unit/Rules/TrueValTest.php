@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\TrueVal
- * @covers Respect\Validation\Exceptions\TrueValException
+ * @covers \Respect\Validation\Rules\TrueVal
+ * @covers \Respect\Validation\Exceptions\TrueValException
  */
 class TrueValTest extends \PHPUnit_Framework_TestCase
 {

@@ -19,6 +19,6 @@ class Directory extends AbstractRule
             return $input->isDir();
         }
 
-        return (is_string($input) && is_dir($input));
+        return is_string($input) && is_dir($input);
     }
 }

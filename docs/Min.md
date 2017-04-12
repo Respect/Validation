@@ -1,7 +1,7 @@
 # Min
 
-- `v::min(mixed $minValue)`
-- `v::min(mixed $minValue, boolean $inclusive = true)`
+- `Min(mixed $minValue)`
+- `Min(mixed $minValue, bool $inclusive)`
 
 Validates if the input is greater than the minimum value.
 
@@ -22,8 +22,15 @@ values must be used.
 
 Message template for this validator includes `{{minValue}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Became inclusive by default
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [Max](Max.md)
-  * [Between](Between.md)
+- [Max](Max.md)
+- [Between](Between.md)

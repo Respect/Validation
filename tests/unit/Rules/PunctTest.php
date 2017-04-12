@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Punct
- * @covers Respect\Validation\Exceptions\PunctException
+ * @covers \Respect\Validation\Rules\Punct
+ * @covers \Respect\Validation\Exceptions\PunctException
  */
 class PunctTest extends \PHPUnit_Framework_TestCase
 {
@@ -29,7 +29,7 @@ class PunctTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidPunct
-     * @expectedException Respect\Validation\Exceptions\PunctException
+     * @expectedException \Respect\Validation\Exceptions\PunctException
      */
     public function testInvalidPunctShouldFailAndThrowPunctException($invalidPunct, $additional = '')
     {
@@ -40,7 +40,7 @@ class PunctTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
     public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
     {

@@ -19,6 +19,6 @@ class SymbolicLink extends AbstractRule
             return $input->isLink();
         }
 
-        return (is_string($input) && is_link($input));
+        return is_string($input) && is_link($input);
     }
 }

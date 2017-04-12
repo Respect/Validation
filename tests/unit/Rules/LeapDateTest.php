@@ -15,8 +15,8 @@ use DateTime;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\LeapDate
- * @covers Respect\Validation\Exceptions\LeapDateException
+ * @covers \Respect\Validation\Rules\LeapDate
+ * @covers \Respect\Validation\Exceptions\LeapDateException
  */
 class LeapDateTest extends \PHPUnit_Framework_TestCase
 {

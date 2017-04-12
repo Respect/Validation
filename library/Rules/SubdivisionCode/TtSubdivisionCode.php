@@ -27,18 +27,17 @@ class TtSubdivisionCode extends AbstractSearcher
         'CHA', // Chaguanas
         'CTT', // Couva/Tabaquite/Talparo
         'DMN', // Diego Martin
-        'ETO', // Eastern Tobago
+        'MRC', // Mayaro/Rio Claro
         'PED', // Penal/Debe
         'POS', // Port of Spain
         'PRT', // Princes Town
         'PTF', // Point Fortin
-        'RCM', // Mayaro/Rio Claro
         'SFO', // San Fernando
         'SGE', // Sangre Grande
         'SIP', // Siparia
         'SJL', // San Juan/Laventille
+        'TOB', // Tobago
         'TUP', // Tunapuna/Piarco
-        'WTO', // Tobago
     ];
 
     public $compareIdentical = true;

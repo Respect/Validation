@@ -17,8 +17,8 @@ use SplFileInfo;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @group  rule
- * @covers Respect\Validation\Rules\Extension
- * @covers Respect\Validation\Exceptions\ExtensionException
+ * @covers \Respect\Validation\Rules\Extension
+ * @covers \Respect\Validation\Exceptions\ExtensionException
  */
 class ExtensionTest extends PHPUnit_Framework_TestCase
 {
@@ -61,7 +61,7 @@ class ExtensionTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ExtensionException
+     * @expectedException \Respect\Validation\Exceptions\ExtensionException
      * @expectedExceptionMessage "filename.jpg" must have "png" extension
      */
     public function testShouldThrowExtensionExceptionWhenCheckingValue()

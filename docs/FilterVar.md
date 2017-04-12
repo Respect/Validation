@@ -1,7 +1,7 @@
 # FilterVar
 
-- `v::filterVar(int $filter)`
-- `v::filterVar(int $filter, mixed $options)`
+- `FilterVar(int $filter)`
+- `FilterVar(int $filter, mixed $options)`
 
 A wrapper for PHP's [filter_var()](http://php.net/filter_var) function.
 
@@ -12,7 +12,13 @@ v::filterVar(FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)->validate('http://e
 v::filterVar(FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)->validate('http://example.com/path'); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.8.0 | Created
+
 ***
 See also:
 
-  * [Callback](Callback.md)
+- [Callback](Callback.md)

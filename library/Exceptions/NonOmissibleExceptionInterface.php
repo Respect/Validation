@@ -9,14 +9,8 @@
  * file that was distributed with this source code.
  */
 
-namespace Respect\Validation\Rules;
+namespace Respect\Validation\Exceptions;
 
-class Iterable extends AbstractRule
+interface NonOmissibleExceptionInterface extends ExceptionInterface
 {
-    public function validate($input)
-    {
-        return is_array($input) ||
-            $input instanceof \stdClass ||
-            $input instanceof \Traversable;
-    }
 }

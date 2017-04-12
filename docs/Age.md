@@ -1,8 +1,8 @@
 # Age
 
-- `v::age(int $minAge)`
-- `v::age(int $minAge, int $maxAge)`
-- `v::age(null, int $maxAge)`
+- `Age(int $minAge)`
+- `Age(int $minAge, int $maxAge)`
+- `Age(null, int $maxAge)`
 
 Validates ranges of years.
 
@@ -37,10 +37,16 @@ v::age(null, 70)->validate('71 years ago'); // false
 
 Message template for this validator includes `{{minAge}}` and `{{maxAge}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.9.0 | Created based on deprecated `MinimumAge` rule
+
 ***
 See also:
 
-  * [Between](Between.md)
-  * [Date](Date.md)
-  * [Max](Max.md)
-  * [Min](Min.md)
+- [Between](Between.md)
+- [Date](Date.md)
+- [Max](Max.md)
+- [Min](Min.md)

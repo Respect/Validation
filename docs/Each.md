@@ -1,8 +1,8 @@
 # Each
 
-- `v::each(v $validatorForValue)`
-- `v::each(null, v $validatorForKey)`
-- `v::each(v $validatorForValue, v $validatorForKey)`
+- `Each(Validatable $ruleForValue)`
+- `Each(null, Validatable $ruleForKey)`
+- `Each(Validatable $ruleForValue, Validatable $ruleForKey)`
 
 Iterates over an array or Iterator and validates the value or key
 of each entry:
@@ -20,8 +20,14 @@ v::arrayVal()->each(v::date(), v::stringType()->lowercase())->validate($releaseD
 
 Using `arrayVal()` before `each()` is a best practice.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [Key](Key.md)
-  * [ArrayVal](ArrayVal.md)
+- [Key](Key.md)
+- [ArrayVal](ArrayVal.md)

@@ -62,7 +62,7 @@ class ValidationException extends InvalidArgumentException implements ExceptionI
                 }
 
                 $value = $vars[$match[1]];
-                if ('name' == $match[1]) {
+                if ('name' == $match[1] && is_string($value)) {
                     return $value;
                 }
 
@@ -106,7 +106,7 @@ class ValidationException extends InvalidArgumentException implements ExceptionI
             }
         }
 
-        return (@json_encode($value, (JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)) ?: $value);
+        return @json_encode($value, (JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)) ?: $value;
     }
 
     /**
@@ -243,9 +243,9 @@ class ValidationException extends InvalidArgumentException implements ExceptionI
     {
         if (!empty($this->template)) {
             return $this->template;
-        } else {
-            return $this->template = $this->buildTemplate();
         }
+
+        return $this->template = $this->buildTemplate();
     }
 
     public function hasParam($name)
@@ -299,7 +299,7 @@ class ValidationException extends InvalidArgumentException implements ExceptionI
 
     public function hasCustomTemplate()
     {
-        return (true === $this->customTemplate);
+        return true === $this->customTemplate;
     }
 
     public function setTemplate($template)
@@ -324,7 +324,7 @@ class ValidationException extends InvalidArgumentException implements ExceptionI
         return static::$defaultTemplates[$this->mode][$templateKey];
     }
 
-    protected function guessId()
+    public function guessId()
     {
         if (!empty($this->id) && $this->id != 'validation') {
             return $this->id;

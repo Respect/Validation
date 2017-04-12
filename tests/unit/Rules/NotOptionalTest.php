@@ -15,7 +15,7 @@ use stdClass;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\NotOptional
+ * @covers \Respect\Validation\Rules\NotOptional
  */
 class NotOptionalTest extends \PHPUnit_Framework_TestCase
 {

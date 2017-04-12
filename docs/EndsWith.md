@@ -1,9 +1,9 @@
 # EndsWith
 
-- `v::endsWith(mixed $value)`
-- `v::endsWith(mixed $value, boolean $identical = false)`
+- `EndsWith(mixed $value)`
+- `EndsWith(mixed $value, bool $identical)`
 
-This validator is similar to `v::contains()`, but validates
+This validator is similar to `Contains()`, but validates
 only if the value is at the end of the input.
 
 For strings:
@@ -23,9 +23,15 @@ of equal comparison.
 
 Message template for this validator includes `{{endValue}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [StartsWith](StartsWith.md)
-  * [Contains](Contains.md)
-  * [In](In.md)
+- [StartsWith](StartsWith.md)
+- [Contains](Contains.md)
+- [In](In.md)

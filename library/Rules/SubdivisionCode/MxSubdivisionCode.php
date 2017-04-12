@@ -29,9 +29,9 @@ class MxSubdivisionCode extends AbstractSearcher
         'CAM', // Campeche
         'CHH', // Chihuahua
         'CHP', // Chiapas
+        'CMX', // Ciudad de Mexico
         'COA', // Coahuila
         'COL', // Colima
-        'DIF', // Distrito Federal
         'DUR', // Durango
         'GRO', // Guerrero
         'GUA', // Guanajuato

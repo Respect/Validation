@@ -1,7 +1,7 @@
 # Space
 
-- `v::space()`
-- `v::space(string $additionalChars)`
+- `Space()`
+- `Space(string $additionalChars)`
 
 Accepts only whitespace:
 
@@ -9,7 +9,13 @@ Accepts only whitespace:
 v::space()->validate('    '); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.5.0 | Created
+
 ***
 See also:
 
-  * [Cntrl](Cntrl.md)
+- [Cntrl](Cntrl.md)

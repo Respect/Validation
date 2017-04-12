@@ -1,7 +1,7 @@
 # Max
 
-- `v::max(mixed $maxValue)`
-- `v::max(mixed $maxValue, boolean $inclusive = true)`
+- `Max(mixed $maxValue)`
+- `Max(mixed $maxValue, bool $inclusive)`
 
 Validates if the input doesn't exceed the maximum value.
 
@@ -29,8 +29,15 @@ values must be used.
 
 Message template for this validator includes `{{maxValue}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Became inclusive by default
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [Min](Min.md)
-  * [Between](Between.md)
+- [Min](Min.md)
+- [Between](Between.md)

@@ -19,8 +19,8 @@ use SplFileInfo;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @group  rule
- * @covers Respect\Validation\Rules\Size
- * @covers Respect\Validation\Exceptions\SizeException
+ * @covers \Respect\Validation\Rules\Size
+ * @covers \Respect\Validation\Exceptions\SizeException
  */
 class SizeTest extends PHPUnit_Framework_TestCase
 {
@@ -81,7 +81,7 @@ class SizeTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "42jb" is not a recognized file size
      */
     public function testShouldThrowsAnExceptionWhenSizeIsNotValid()
@@ -111,7 +111,7 @@ class SizeTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\SizeException
+     * @expectedException \Respect\Validation\Exceptions\SizeException
      * @expectedExceptionMessageRegExp #"vfs:.?/.?/root.?/1gb.txt" must be greater than "2pb"#
      */
     public function testShouldThrowsSizeExceptionWhenAsserting()

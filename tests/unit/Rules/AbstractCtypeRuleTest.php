@@ -15,7 +15,7 @@ class AbstractCtypeRuleTest extends \PHPUnit_Framework_TestCase
 {
     public function testValidateCleanShouldReturnTrueWhenCtypeFunctionReturnsTrue()
     {
-        $ctypeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractCtypeRule');
+        $ctypeRuleMock = $this->getMockForAbstractClass(AbstractCtypeRule::class);
         $ctypeRuleMock->expects($this->once())
             ->method('ctypeFunction')
             ->will($this->returnValue(true));
@@ -25,7 +25,7 @@ class AbstractCtypeRuleTest extends \PHPUnit_Framework_TestCase
 
     public function testValidateCleanShouldReturnFalseWhenCtypeFunctionReturnsFalse()
     {
-        $ctypeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractCtypeRule');
+        $ctypeRuleMock = $this->getMockForAbstractClass(AbstractCtypeRule::class);
         $ctypeRuleMock->expects($this->once())
             ->method('ctypeFunction')
             ->will($this->returnValue(false));

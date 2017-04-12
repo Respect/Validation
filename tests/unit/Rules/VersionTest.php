@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Version
- * @covers Respect\Validation\Exceptions\VersionException
+ * @covers \Respect\Validation\Rules\Version
+ * @covers \Respect\Validation\Exceptions\VersionException
  */
 class VersionTest extends \PHPUnit_Framework_TestCase
 {
@@ -31,7 +31,7 @@ class VersionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidVersion
-     * @expectedException Respect\Validation\Exceptions\VersionException
+     * @expectedException \Respect\Validation\Exceptions\VersionException
      */
     public function testInvalidVersionShouldThrowException($input)
     {

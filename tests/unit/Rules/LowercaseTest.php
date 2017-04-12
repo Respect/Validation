@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Lowercase
- * @covers Respect\Validation\Exceptions\LowercaseException
+ * @covers \Respect\Validation\Rules\Lowercase
+ * @covers \Respect\Validation\Exceptions\LowercaseException
  */
 class LowercaseTest extends \PHPUnit_Framework_TestCase
 {
@@ -31,7 +31,7 @@ class LowercaseTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidLowercase
-     * @expectedException Respect\Validation\Exceptions\LowercaseException
+     * @expectedException \Respect\Validation\Exceptions\LowercaseException
      */
     public function testInvalidLowercaseShouldThrowException($input)
     {

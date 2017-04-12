@@ -29,7 +29,7 @@ class Imei extends AbstractRule
         }
 
         $numbers = preg_replace('/\D/', '', $input);
-        if (strlen($numbers) != self::IMEI_SIZE) {
+        if (mb_strlen($numbers) != self::IMEI_SIZE) {
             return false;
         }
 
@@ -39,6 +39,6 @@ class Imei extends AbstractRule
             $sum += ($number % 10) + intval($number / 10);
         }
 
-        return ((ceil($sum / 10) * 10) - $sum == $numbers[14]);
+        return (ceil($sum / 10) * 10) - $sum == $numbers[14];
     }
 }

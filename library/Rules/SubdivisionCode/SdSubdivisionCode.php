@@ -29,6 +29,7 @@ class SdSubdivisionCode extends AbstractSearcher
         'DS', // Janūb Dārfūr
         'DW', // Gharb Dārfūr
         'GD', // Al Qaḑārif
+        'GK', // West Kurdufan
         'GZ', // Al Jazīrah
         'KA', // Kassalā
         'KH', // Al Kharţūm

@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Charset
- * @covers Respect\Validation\Exceptions\CharsetException
+ * @covers \Respect\Validation\Rules\Charset
+ * @covers \Respect\Validation\Exceptions\CharsetException
  */
 class CharsetTest extends \PHPUnit_Framework_TestCase
 {
@@ -29,7 +29,7 @@ class CharsetTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidCharset
-     * @expectedException Respect\Validation\Exceptions\CharsetException
+     * @expectedException \Respect\Validation\Exceptions\CharsetException
      */
     public function testInvalidCharsetShouldFailAndThrowCharsetException($charset, $input)
     {
@@ -40,7 +40,7 @@ class CharsetTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
     public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($charset)
     {

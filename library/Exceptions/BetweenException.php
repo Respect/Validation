@@ -36,8 +36,8 @@ class BetweenException extends NestedValidationException
             return static::GREATER;
         } elseif (!$this->getParam('maxValue')) {
             return static::LOWER;
-        } else {
-            return static::BOTH;
         }
+
+        return static::BOTH;
     }
 }

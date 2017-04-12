@@ -19,9 +19,9 @@ abstract class AbstractComposite extends AbstractRule
 {
     protected $rules = [];
 
-    public function __construct()
+    public function __construct(...$rule)
     {
-        $this->addRules(func_get_args());
+        $this->addRules($rule);
     }
 
     public function setName($name)

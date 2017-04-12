@@ -23,13 +23,6 @@ use Respect\Validation\Rules\AbstractSearcher;
 class BdSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'A', // Barisal
-        'B', // Chittagong
-        'C', // Dhaka
-        'D', // Khulna
-        'E', // Rajshahi
-        'F', // Rangpur
-        'G', // Sylhet
         '01', // Bandarban zila
         '02', // Barguna zila
         '03', // Bogra zila
@@ -94,6 +87,14 @@ class BdSubdivisionCode extends AbstractSearcher
         '62', // Shariatpur zila
         '63', // Tangail zila
         '64', // Thakurgaon zila
+        'A', // Barisal
+        'B', // Chittagong
+        'C', // Dhaka
+        'D', // Khulna
+        'E', // Rajshahi
+        'F', // Rangpur
+        'G', // Sylhet
+        'H', // Mymensingh Division
     ];
 
     public $compareIdentical = true;

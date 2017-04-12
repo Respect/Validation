@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Json
- * @covers Respect\Validation\Exceptions\JsonException
+ * @covers \Respect\Validation\Rules\Json
+ * @covers \Respect\Validation\Exceptions\JsonException
  */
 class JsonTest extends RuleTestCase
 {

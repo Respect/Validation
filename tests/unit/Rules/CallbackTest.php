@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Callback
- * @covers Respect\Validation\Exceptions\CallbackException
+ * @covers \Respect\Validation\Rules\Callback
+ * @covers \Respect\Validation\Exceptions\CallbackException
  */
 class CallbackTest extends \PHPUnit_Framework_TestCase
 {
@@ -43,7 +43,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\CallbackException
+     * @expectedException \Respect\Validation\Exceptions\CallbackException
      */
     public function testCallbackValidatorShouldReturnFalseForEmptyString()
     {
@@ -56,7 +56,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\CallbackException
+     * @expectedException \Respect\Validation\Exceptions\CallbackException
      */
     public function testCallbackValidatorShouldReturnFalseIfCallbackReturnsFalse()
     {
@@ -76,7 +76,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
     public function testInvalidCallbacksShouldRaiseComponentExceptionUponInstantiation()
     {

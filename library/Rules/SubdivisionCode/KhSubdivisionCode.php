@@ -40,6 +40,7 @@ class KhSubdivisionCode extends AbstractSearcher
         '22', // Otdar Mean Choay
         '23', // Keb
         '24', // Pailin
+        '25', // Tboung Khmum
         '3', // Kampong Cham
         '4', // Kampong Chhnang
         '5', // Kampong Speu

@@ -15,9 +15,7 @@ class Pesel extends AbstractRule
 {
     public function validate($input)
     {
-        if (!is_numeric($input)
-            || !filter_var($input, FILTER_VALIDATE_INT)
-            || strlen($input) != 11) {
+        if (!preg_match('/^\d{11}$/', $input)) {
             return false;
         }
 
@@ -26,7 +24,7 @@ class Pesel extends AbstractRule
         $targetControlNumber = $input[10];
         $calculateControlNumber = 0;
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; ++$i) {
             $calculateControlNumber += $input[$i] * $weights[$i];
         }
 

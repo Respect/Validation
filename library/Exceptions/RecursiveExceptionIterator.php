@@ -34,7 +34,7 @@ class RecursiveExceptionIterator implements RecursiveIterator, Countable
             return false;
         }
 
-        return ($this->current() instanceof NestedValidationException);
+        return $this->current() instanceof NestedValidationException;
     }
 
     public function getChildren()

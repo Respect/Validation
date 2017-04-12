@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\MinimumAge
- * @covers Respect\Validation\Exceptions\MinimumAgeException
+ * @covers \Respect\Validation\Rules\MinimumAge
+ * @covers \Respect\Validation\Exceptions\MinimumAgeException
  */
 class MininumAgeTest extends \PHPUnit_Framework_TestCase
 {
@@ -31,7 +31,7 @@ class MininumAgeTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForValidDateInvalidMinimumAge
-     * @expectedException Respect\Validation\Exceptions\MinimumAgeException
+     * @expectedException \Respect\Validation\Exceptions\MinimumAgeException
      */
     public function testInvalidMinimumAgeShouldThrowException($age, $format, $input)
     {
@@ -42,7 +42,7 @@ class MininumAgeTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidDate
-     * @expectedException Respect\Validation\Exceptions\MinimumAgeException
+     * @expectedException \Respect\Validation\Exceptions\MinimumAgeException
      */
     public function testInvalidDateShouldNotPass($age, $format, $input)
     {
@@ -52,7 +52,7 @@ class MininumAgeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage The age must be a integer value
      */
     public function testShouldNotAcceptNonIntegerAgeOnConstructor()

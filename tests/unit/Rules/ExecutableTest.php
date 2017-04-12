@@ -26,8 +26,8 @@ function is_executable($executable)
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Executable
- * @covers Respect\Validation\Exceptions\ExecutableException
+ * @covers \Respect\Validation\Rules\Executable
+ * @covers \Respect\Validation\Exceptions\ExecutableException
  */
 class ExecutableTest extends \PHPUnit_Framework_TestCase
 {
@@ -52,7 +52,7 @@ class ExecutableTest extends \PHPUnit_Framework_TestCase
     public function testShouldValidateObjects()
     {
         $rule = new Executable();
-        $object = $this->getMock('SplFileInfo', ['isExecutable'], ['somefile.txt']);
+        $object = $this->createMock('SplFileInfo', ['isExecutable'], ['somefile.txt']);
         $object->expects($this->once())
                 ->method('isExecutable')
                 ->will($this->returnValue(true));

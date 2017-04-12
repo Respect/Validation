@@ -319,7 +319,7 @@ class CountryCode extends AbstractRule
     public function validate($input)
     {
         return in_array(
-            strtoupper($input),
+            mb_strtoupper($input),
             $this->getCountryCodeList($this->index),
             true
         );

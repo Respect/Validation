@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Fibonacci
+ * @covers \Respect\Validation\Rules\Fibonacci
  */
 class FibonacciTest extends RuleTestCase
 {

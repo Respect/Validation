@@ -43,6 +43,7 @@ class YeSubdivisionCode extends AbstractSearcher
         'SD', // Sa'dah
         'SH', // Shabwah
         'SN', // San'a
+        'SU', // Socotra
         'TA', // Ta'izz
     ];
 

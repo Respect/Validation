@@ -21,7 +21,7 @@ class Factory
      */
     public function bic($countryCode)
     {
-        $filteredCountryCode = strtoupper($countryCode);
+        $filteredCountryCode = mb_strtoupper($countryCode);
         switch ($filteredCountryCode) {
             case 'DE':
                 return new GermanBic();
@@ -41,7 +41,7 @@ class Factory
      */
     public function bank($countryCode)
     {
-        $filteredCountryCode = strtoupper($countryCode);
+        $filteredCountryCode = mb_strtoupper($countryCode);
         switch ($filteredCountryCode) {
             case 'DE':
                 return new GermanBank();
@@ -61,7 +61,7 @@ class Factory
      */
     public function bankAccount($countryCode, $bank)
     {
-        $filteredCountryCode = strtoupper($countryCode);
+        $filteredCountryCode = mb_strtoupper($countryCode);
         switch ($filteredCountryCode) {
             case 'DE':
                 return new GermanBankAccount($bank);

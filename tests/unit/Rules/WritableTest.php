@@ -26,13 +26,13 @@ function is_writable($writable)
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Writable
- * @covers Respect\Validation\Exceptions\WritableException
+ * @covers \Respect\Validation\Rules\Writable
+ * @covers \Respect\Validation\Exceptions\WritableException
  */
 class WritableTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers Respect\Validation\Rules\Writable::validate
+     * @covers \Respect\Validation\Rules\Writable::validate
      */
     public function testValidWritableFileShouldReturnTrue()
     {
@@ -44,7 +44,7 @@ class WritableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\Writable::validate
+     * @covers \Respect\Validation\Rules\Writable::validate
      */
     public function testInvalidWritableFileShouldReturnFalse()
     {
@@ -56,12 +56,12 @@ class WritableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\Writable::validate
+     * @covers \Respect\Validation\Rules\Writable::validate
      */
     public function testShouldValidateObjects()
     {
         $rule = new Writable();
-        $object = $this->getMock('SplFileInfo', ['isWritable'], ['somefile.txt']);
+        $object = $this->createMock('SplFileInfo', ['isWritable'], ['somefile.txt']);
         $object->expects($this->once())
                 ->method('isWritable')
                 ->will($this->returnValue(true));

@@ -13,13 +13,13 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\FilterVar
- * @covers Respect\Validation\Exceptions\FilterVarException
+ * @covers \Respect\Validation\Rules\FilterVar
+ * @covers \Respect\Validation\Exceptions\FilterVarException
  */
 class FilterVarTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Cannot validate without filter flag
      */
     public function testShouldThrowsExceptionWhenFilterIsNotDefined()
@@ -28,7 +28,7 @@ class FilterVarTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Cannot accept the given filter
      */
     public function testShouldThrowsExceptionWhenFilterIsNotValid()

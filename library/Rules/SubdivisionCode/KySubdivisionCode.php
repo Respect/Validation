@@ -22,16 +22,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 class KySubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'CR', // Creek
-        'EA', // Eastern
-        'ML', // Midland
-        'SK', // Stake Bay
-        'SP', // Spot Bay
-        'ST', // South Town
-        'WD', // West End
-        'WN', // Western
-    ];
+    public $haystack = [null, ''];
 
     public $compareIdentical = true;
 }

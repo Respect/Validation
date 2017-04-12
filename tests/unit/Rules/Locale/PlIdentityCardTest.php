@@ -15,7 +15,7 @@ use Respect\Validation\Rules\RuleTestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Locale\PlIdentityCard
+ * @covers \Respect\Validation\Rules\Locale\PlIdentityCard
  */
 class PlIdentityCardTest extends RuleTestCase
 {

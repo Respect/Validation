@@ -13,19 +13,20 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Tld
+ * @covers \Respect\Validation\Rules\Tld
  */
 class TldTest extends \PHPUnit_Framework_TestCase
 {
     public function providerForValidTld()
     {
         return [
-            ['com'],
-            ['cafe'],
-            ['democrat'],
             ['br'],
-            ['us'],
+            ['cafe'],
+            ['com'],
+            ['democrat'],
             ['eu'],
+            ['gmbh'],
+            ['us'],
         ];
     }
 

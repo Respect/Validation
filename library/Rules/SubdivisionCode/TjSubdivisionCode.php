@@ -23,8 +23,10 @@ use Respect\Validation\Rules\AbstractSearcher;
 class TjSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
+        'DU', // Dushanbe
         'GB', // Gorno-Badakhstan
         'KT', // Khatlon
+        'RA', // Nohiyahoi Tobei Jumhurí
         'SU', // Sughd
     ];
 

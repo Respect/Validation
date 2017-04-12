@@ -11,6 +11,9 @@
 
 namespace Respect\Validation\Rules;
 
+use Egulias\EmailValidator\EmailValidator;
+use Egulias\EmailValidator\Validation\RFCValidation;
+
 function class_exists($className)
 {
     if (isset($GLOBALS['class_exists'][$className])) {
@@ -22,14 +25,15 @@ function class_exists($className)
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Email
- * @covers Respect\Validation\Exceptions\EmailException
+ * @covers \Respect\Validation\Rules\Email
+ * @covers \Respect\Validation\Exceptions\EmailException
  */
 class EmailTest extends \PHPUnit_Framework_TestCase
 {
     private function setEmailValidatorExists($value)
     {
-        $GLOBALS['class_exists']['Egulias\EmailValidator\EmailValidator'] = (bool) $value;
+        $GLOBALS['class_exists'][EmailValidator::class] = (bool) $value;
+        $GLOBALS['class_exists'][RFCValidation::class] = (bool) $value;
     }
 
     private function resetClassExists()
@@ -40,7 +44,7 @@ class EmailTest extends \PHPUnit_Framework_TestCase
     private function getEmailValidatorMock()
     {
         $emailValidatorMock = $this
-            ->getMockBuilder('Egulias\\EmailValidator\\EmailValidator')
+            ->getMockBuilder(EmailValidator::class)
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -74,7 +78,7 @@ class EmailTest extends \PHPUnit_Framework_TestCase
 
         $rule = new Email();
 
-        $this->assertInstanceOf('Egulias\\EmailValidator\\EmailValidator', $rule->getEmailValidator());
+        $this->assertInstanceOf(EmailValidator::class, $rule->getEmailValidator());
     }
 
     public function testShouldUseEmailValidatorWhenDefined()
@@ -87,7 +91,7 @@ class EmailTest extends \PHPUnit_Framework_TestCase
         $emailValidator
             ->expects($this->once())
             ->method('isValid')
-            ->with($input)
+            ->with($input, $this->isInstanceOf(RFCValidation::class))
             ->will($this->returnValue(true));
 
         $rule = new Email($emailValidator);
@@ -108,7 +112,7 @@ class EmailTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidEmail
-     * @expectedException Respect\Validation\Exceptions\EmailException
+     * @expectedException \Respect\Validation\Exceptions\EmailException
      */
     public function testInvalidEmailsShouldFailValidation($invalidEmail)
     {

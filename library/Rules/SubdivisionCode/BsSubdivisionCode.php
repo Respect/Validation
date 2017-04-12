@@ -55,14 +55,6 @@ class BsSubdivisionCode extends AbstractSearcher
         'SS', // San Salvador
         'SW', // Spanish Wells
         'WG', // West Grand Bahama
-        'CO', // Governor’s Harbour
-        'FC', // Fresh Creek
-        'GT', // Green Turtle Cay
-        'HR', // High Rock District
-        'KE', // Kemps Bay District
-        'MH', // Marsh Harbour District
-        'RS', // Rock Sound
-        'SP', // Sandy Point
     ];
 
     public $compareIdentical = true;

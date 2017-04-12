@@ -2,8 +2,8 @@
 
 This is going to be deprecated, please use [Age](Age.md) instead.
 
-- `v::minimumAge(int $age)`
-- `v::minimumAge(int $age, string $format)`
+- `MinimumAge(int $age)`
+- `MinimumAge(int $age, string $format)`
 
 Validates a minimum age for a given date.
 
@@ -16,8 +16,14 @@ Using `date()` before is a best-practice.
 
 Message template for this validator includes `{{age}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [Age](Age.md)
-  * [Date](Date.md)
+- [Age](Age.md)
+- [Date](Date.md)

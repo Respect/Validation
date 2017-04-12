@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Instance
- * @covers Respect\Validation\Exceptions\InstanceException
+ * @covers \Respect\Validation\Rules\Instance
+ * @covers \Respect\Validation\Exceptions\InstanceException
  */
 class InstanceTest extends \PHPUnit_Framework_TestCase
 {
@@ -31,7 +31,7 @@ class InstanceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\InstanceException
+     * @expectedException \Respect\Validation\Exceptions\InstanceException
      */
     public function testInstanceValidationShouldNotAssertEmpty()
     {
@@ -39,7 +39,7 @@ class InstanceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\InstanceException
+     * @expectedException \Respect\Validation\Exceptions\InstanceException
      */
     public function testInstanceValidationShouldNotCheckEmpty()
     {
@@ -54,7 +54,7 @@ class InstanceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\InstanceException
+     * @expectedException \Respect\Validation\Exceptions\InstanceException
      */
     public function testInvalidInstancesShouldThrowInstanceException()
     {

@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Yes
- * @covers Respect\Validation\Exceptions\YesException
+ * @covers \Respect\Validation\Rules\Yes
+ * @covers \Respect\Validation\Exceptions\YesException
  */
 class YesTest extends \PHPUnit_Framework_TestCase
 {

@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\IntType
+ * @covers \Respect\Validation\Rules\IntType
  */
 class IntTypeTest extends \PHPUnit_Framework_TestCase
 {

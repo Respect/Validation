@@ -23,7 +23,7 @@ use Respect\Validation\Rules\AbstractSearcher;
 class PsSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'DEB', // Bethlehem [conventional] / Bayt Laḩm [Arabic]
+        'BTH', // Bethlehem [conventional] / Bayt Laḩm [Arabic]
         'DEB', // Deir El Balah [conventional] /Dayr al Balaḩ[Arabic]
         'GZA', // Gaza [conventional] / Ghazzah[Arabic]
         'HBN', // Hebron [conventional] / Al Khalīl [Arabic]

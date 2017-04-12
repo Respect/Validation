@@ -24,7 +24,6 @@ class CvSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         'B', // Ilhas de Barlavento
-        'S', // Ilhas de Sotavento
         'BR', // Brava
         'BV', // Boa Vista
         'CA', // Santa Catarina
@@ -38,11 +37,12 @@ class CvSubdivisionCode extends AbstractSearcher
         'RB', // Ribeira Brava
         'RG', // Ribeira Grande
         'RS', // Ribeira Grande de Santiago
+        'S', // Ilhas de Sotavento
         'SD', // Sao Domingos
         'SF', // Sao Filipe
         'SL', // Sal
-        'SL*', // São Lourenço dos Orgãos
         'SM', // São Miguel
+        'SO', // São Lourenço dos Orgãos
         'SS', // São Salvador do Mundo
         'SV', // Sao Vicente
         'TA', // Tarrafal

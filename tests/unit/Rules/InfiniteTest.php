@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Infinite
- * @covers Respect\Validation\Exceptions\InfiniteException
+ * @covers \Respect\Validation\Rules\Infinite
+ * @covers \Respect\Validation\Exceptions\InfiniteException
  */
 class InfiniteTest extends \PHPUnit_Framework_TestCase
 {
@@ -42,7 +42,7 @@ class InfiniteTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\InfiniteException
+     * @expectedException \Respect\Validation\Exceptions\InfiniteException
      * @expectedExceptionMessage 123456 must be an infinite number
      */
     public function testShouldThrowInfiniteExceptionWhenChecking()

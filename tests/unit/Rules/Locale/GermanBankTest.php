@@ -11,12 +11,13 @@
 
 namespace Respect\Validation\Rules\Locale;
 
+use malkusch\bav\BAV;
 use Respect\Validation\Rules\LocaleTestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Locale\GermanBank
- * @covers Respect\Validation\Exceptions\Locale\GermanBankException
+ * @covers \Respect\Validation\Rules\Locale\GermanBank
+ * @covers \Respect\Validation\Exceptions\Locale\GermanBankException
  */
 class GermanBankTest extends LocaleTestCase
 {
@@ -32,7 +33,7 @@ class GermanBankTest extends LocaleTestCase
     {
         $rule = new GermanBank();
 
-        $this->assertInstanceOf('malkusch\bav\BAV', $rule->bav);
+        $this->assertInstanceOf(BAV::class, $rule->bav);
     }
 
     public function testShouldUseBAVInstanceToValidate()
@@ -64,7 +65,7 @@ class GermanBankTest extends LocaleTestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\Locale\GermanBankException
+     * @expectedException \Respect\Validation\Exceptions\Locale\GermanBankException
      * @expectedExceptionMessage "10000000" must be a german bank
      */
     public function testShouldThowsTheRightExceptionWhenChecking()

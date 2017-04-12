@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Ip
- * @covers Respect\Validation\Exceptions\IpException
+ * @covers \Respect\Validation\Rules\Ip
+ * @covers \Respect\Validation\Exceptions\IpException
  */
 class IpTest extends \PHPUnit_Framework_TestCase
 {
@@ -42,7 +42,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotIp
-     * @expectedException Respect\Validation\Exceptions\IpException
+     * @expectedException \Respect\Validation\Exceptions\IpException
      */
     public function testInvalidIpsShouldThrowIpException($input, $options = null)
     {
@@ -53,7 +53,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForIpOutsideRange
-     * @expectedException Respect\Validation\Exceptions\IpException
+     * @expectedException \Respect\Validation\Exceptions\IpException
      */
     public function testIpsOutsideRangeShouldReturnFalse($input, $networkRange)
     {
@@ -121,7 +121,7 @@ class IpTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidRanges
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
     public function testInvalidRangeShouldRaiseException($range)
     {

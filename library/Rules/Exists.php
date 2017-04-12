@@ -19,6 +19,6 @@ class Exists extends AbstractRule
             $input = $input->getPathname();
         }
 
-        return (is_string($input) && file_exists($input));
+        return is_string($input) && file_exists($input);
     }
 }

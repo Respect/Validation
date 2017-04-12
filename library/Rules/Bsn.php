@@ -29,7 +29,7 @@ class Bsn extends AbstractRule
             return false;
         }
 
-        if (strlen($input) !== 9) {
+        if (mb_strlen($input) !== 9) {
             return false;
         }
 

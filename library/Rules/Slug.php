@@ -15,7 +15,7 @@ class Slug extends AbstractRule
 {
     public function validate($input)
     {
-        if (strstr($input, '--')) {
+        if (mb_strstr($input, '--')) {
             return false;
         }
 

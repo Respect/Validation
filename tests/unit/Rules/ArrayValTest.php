@@ -11,9 +11,13 @@
 
 namespace Respect\Validation\Rules;
 
+use ArrayObject;
+use SimpleXMLElement;
+use stdClass;
+
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\ArrayVal
+ * @covers \Respect\Validation\Rules\ArrayVal
  */
 class ArrayValTest extends RuleTestCase
 {
@@ -24,7 +28,8 @@ class ArrayValTest extends RuleTestCase
         return [
             [$rule, []],
             [$rule, [1, 2, 3]],
-            [$rule, new \ArrayObject()],
+            [$rule, new ArrayObject()],
+            [$rule, new SimpleXMLElement('<foo></foo>')],
         ];
     }
 
@@ -36,7 +41,7 @@ class ArrayValTest extends RuleTestCase
             [$rule, ''],
             [$rule, null],
             [$rule, 121],
-            [$rule, new \stdClass()],
+            [$rule, new stdClass()],
             [$rule, false],
             [$rule, 'aaa'],
         ];

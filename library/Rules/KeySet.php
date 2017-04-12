@@ -99,7 +99,7 @@ class KeySet extends AllOf
             unset($input[$keyRule->reference]);
         }
 
-        return (count($input) == 0);
+        return count($input) == 0;
     }
 
     /**

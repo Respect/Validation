@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Cntrl
- * @covers Respect\Validation\Exceptions\CntrlException
+ * @covers \Respect\Validation\Rules\Cntrl
+ * @covers \Respect\Validation\Exceptions\CntrlException
  */
 class CntrlTest extends \PHPUnit_Framework_TestCase
 {
@@ -29,7 +29,7 @@ class CntrlTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidCntrl
-     * @expectedException Respect\Validation\Exceptions\CntrlException
+     * @expectedException \Respect\Validation\Exceptions\CntrlException
      */
     public function testInvalidCntrlShouldFailAndThrowCntrlException($invalidCntrl, $additional = '')
     {
@@ -40,7 +40,7 @@ class CntrlTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
     public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
     {

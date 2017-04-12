@@ -25,7 +25,7 @@ class SubdivisionCode extends AbstractWrapper
 
     public function __construct($countryCode)
     {
-        $shortName = ucfirst(strtolower($countryCode)).'SubdivisionCode';
+        $shortName = ucfirst(mb_strtolower($countryCode)).'SubdivisionCode';
         $className = __NAMESPACE__.'\\SubdivisionCode\\'.$shortName;
         if (!class_exists($className)) {
             throw new ComponentException(sprintf('"%s" is not a valid country code in ISO 3166-2', $countryCode));

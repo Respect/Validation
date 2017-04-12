@@ -1,25 +1,28 @@
 # OneOf
 
-- `v::oneOf(v $v1, v $v2, v $v3...)`
+- `OneOf(Validatable ...$rule)`
 
-This is a group validator that acts as an OR operator.
+Will validate if exactly one inner validator passes.
 
 ```php
-v::oneOf(
-    v::intVal(),
-    v::floatVal()
-)->validate(15.5); // true
+v::oneOf(v::digit(), v::alpha())->validate('AB'); // true
+v::oneOf(v::digit(), v::alpha())->validate('12'); // true
+v::oneOf(v::digit(), v::alpha())->validate('AB12'); // false
+v::oneOf(v::digit(), v::alpha())->validate('*'); // false
 ```
 
-In the sample above, `v::intVal()` doesn't validates, but
-`v::floatVal()` validates, so oneOf returns true.
+The chains above validate if the input is either a digit or an alphabetic
+character, one or the other, but not neither nor both.
 
-`v::oneOf` returns true if at least one inner validator
-passes.
+## Changelog
+
+Version | Description
+--------|-------------
+  2.0.0 | Created (see [AnyOf](AnyOf.md))
 
 ***
 See also:
 
-  * [AllOf](AllOf.md)
-  * [NoneOf](NoneOf.md)
-  * [When](When.md)
+- [AllOf](AllOf.md)
+- [AnyOf](AnyOf.md)
+- [NoneOf](NoneOf.md)

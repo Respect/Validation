@@ -23,12 +23,14 @@ use Respect\Validation\Rules\AbstractSearcher;
 class OmSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'BA', // Al Batinah South
+        'BJ', // Al Batinah South
+        'BS', // Shamāl al Bāţinah
         'BU', // Al Buraymī
         'DA', // Ad Dakhiliyah
         'MA', // Masqat
         'MU', // Musandam
-        'SH', // Ash Sharqiyah South
+        'SJ', // Ash Sharqiyah South
+        'SS', // Shamāl ash Sharqīyah
         'WU', // Al Wusta
         'ZA', // Az Zahirah
         'ZU', // Zufar

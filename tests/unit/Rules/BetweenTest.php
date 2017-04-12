@@ -15,8 +15,8 @@ use DateTime;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Between
- * @covers Respect\Validation\Exceptions\BetweenException
+ * @covers \Respect\Validation\Rules\Between
+ * @covers \Respect\Validation\Exceptions\BetweenException
  */
 class BetweenTest extends \PHPUnit_Framework_TestCase
 {
@@ -74,7 +74,7 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerInvalid
-     * @expectedException Respect\Validation\Exceptions\BetweenException
+     * @expectedException \Respect\Validation\Exceptions\BetweenException
      */
     public function testValuesOutBoundsShouldRaiseException($min, $max, $inclusive, $input)
     {
@@ -84,7 +84,7 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
     public function testInvalidConstructionParamsShouldRaiseException()
     {

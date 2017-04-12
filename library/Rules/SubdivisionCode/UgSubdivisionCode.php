@@ -23,10 +23,6 @@ use Respect\Validation\Rules\AbstractSearcher;
 class UgSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'C', // Central
-        'E', // Eastern
-        'N', // Northern
-        'W', // Western
         '101', // Kalangala
         '102', // Kampala
         '103', // Kiboga
@@ -40,9 +36,17 @@ class UgSubdivisionCode extends AbstractSearcher
         '111', // Sembabule
         '112', // Kayunga
         '113', // Wakiso
-        '114', // Mityana
-        '115', // Nakaseke
-        '116', // Lyantonde
+        '114', // Lyantonde
+        '115', // Mityana
+        '116', // Nakaseke
+        '117', // Buikwe
+        '118', // Bukomansimbi
+        '119', // Butambala
+        '120', // Buvuma
+        '121', // Gomba
+        '122', // Kalungu
+        '123', // Kyankwanzi
+        '124', // Lwengo
         '201', // Bugiri
         '202', // Busia
         '203', // Iganga
@@ -60,13 +64,21 @@ class UgSubdivisionCode extends AbstractSearcher
         '215', // Sironko
         '216', // Amuria
         '217', // Budaka
-        '218', // Bukwa
-        '219', // Butaleja
-        '220', // Kaliro
-        '221', // Manafwa
-        '222', // Namutumba
-        '223', // Bududa
-        '224', // Bukedea
+        '218', // Bududa
+        '219', // Bukedea
+        '220', // Bukwa
+        '221', // Butaleja
+        '222', // Kaliro
+        '223', // Manafwa
+        '224', // Namutumba
+        '225', // Bulambuli
+        '226', // Buyende
+        '227', // Kibuku
+        '228', // Kween
+        '229', // Luuka
+        '230', // Namayingo
+        '231', // Ngora
+        '232', // Serere
         '301', // Adjumani
         '302', // Apac
         '303', // Arua
@@ -80,14 +92,23 @@ class UgSubdivisionCode extends AbstractSearcher
         '311', // Nakapiripirit
         '312', // Pader
         '313', // Yumbe
-        '314', // Amolatar
-        '315', // Kaabong
-        '316', // Koboko
-        '317', // Abim
-        '318', // Dokolo
-        '319', // Amuru
+        '314', // Abim
+        '315', // Amolatar
+        '316', // Amuru
+        '317', // Dokolo
+        '318', // Kaabong
+        '319', // Koboko
         '320', // Maracha
         '321', // Oyam
+        '322', // Agago
+        '323', // Alebtong
+        '324', // Amudat
+        '325', // Kole
+        '326', // Lamwo
+        '327', // Napak
+        '328', // Nwoya
+        '329', // Otuke
+        '330', // Zombo
         '401', // Bundibugyo
         '402', // Bushenyi
         '403', // Hoima
@@ -103,10 +124,21 @@ class UgSubdivisionCode extends AbstractSearcher
         '413', // Kamwenge
         '414', // Kanungu
         '415', // Kyenjojo
-        '416', // Ibanda
-        '417', // Isingiro
-        '418', // Kiruhura
-        '419', // Buliisa
+        '416', // Buliisa
+        '417', // Ibanda
+        '418', // Isingiro
+        '419', // Kiruhura
+        '420', // Buhweju
+        '421', // Kiryandongo
+        '422', // Kyegegwa
+        '423', // Mitoma
+        '424', // Ntoroko
+        '425', // Rubirizi
+        '426', // Sheema
+        'C', // Central
+        'E', // Eastern
+        'N', // Northern
+        'W', // Western
     ];
 
     public $compareIdentical = true;

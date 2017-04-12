@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Key
- * @covers Respect\Validation\Exceptions\KeyException
+ * @covers \Respect\Validation\Rules\Key
+ * @covers \Respect\Validation\Exceptions\KeyException
  */
 class KeyTest extends \PHPUnit_Framework_TestCase
 {
@@ -43,7 +43,7 @@ class KeyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeyException
+     * @expectedException \Respect\Validation\Exceptions\KeyException
      */
     public function testEmptyInputMustNotAssert()
     {
@@ -52,7 +52,7 @@ class KeyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeyException
+     * @expectedException \Respect\Validation\Exceptions\KeyException
      */
     public function testEmptyInputMustNotCheck()
     {
@@ -90,7 +90,7 @@ class KeyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeyException
+     * @expectedException \Respect\Validation\Exceptions\KeyException
      */
     public function testArrayWithAbsentKeyShouldThrowKeyException()
     {
@@ -100,7 +100,7 @@ class KeyTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($validator->assert($someArray));
     }
     /**
-     * @expectedException Respect\Validation\Exceptions\KeyException
+     * @expectedException \Respect\Validation\Exceptions\KeyException
      */
     public function testNotArrayShouldThrowKeyException()
     {
@@ -110,7 +110,7 @@ class KeyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
     public function testInvalidConstructorParametersShouldThrowComponentExceptionUponInstantiation()
     {

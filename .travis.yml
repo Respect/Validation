@@ -1,27 +1,35 @@
-sudo:
-  false
+sudo: false
 
-language:
-  php
+language: php
 
-php:
-  - 5.6
-  - 7
-  - hhvm
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+matrix:
+  include:
+    - php: 7.0
+      env: COMPOSER_ARGUMENTS="--prefer-lowest --prefer-stable"
+    - php: 7.0
+    - php: 7.1
+    - php: nightly
+  allow_failures:
+    - php: nightly
+  fast_finish: true
 
 before_script:
-  - composer self-update
-  - composer install --no-interaction --prefer-source
+  - composer update --prefer-dist ${COMPOSER_ARGUMENTS}
 
 script:
   - vendor/bin/phpunit --configuration phpunit.xml.dist --colors --coverage-clover=coverage.clover
+  - |
+    if [[ "${TRAVIS_PHP_VERSION}" == "7.1" ]]; then
+      vendor/bin/docheader check library tests
+    fi
 
 after_script:
-  - test "5.6" == "${TRAVIS_PHP_VERSION}" && wget https://scrutinizer-ci.com/ocular.phar
-  - test -f ocular.phar && php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-
-notifications:
-  irc:
-    channels:
-      - "irc.freenode.org#php-respect"
-    use_notice: true
+  - |
+    if [[ "${TRAVIS_PHP_VERSION}" == "7.1" ]]; then
+      wget https://scrutinizer-ci.com/ocular.phar
+      php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+    fi

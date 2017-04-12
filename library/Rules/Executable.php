@@ -19,6 +19,6 @@ class Executable extends AbstractRule
             return $input->isExecutable();
         }
 
-        return (is_string($input) && is_executable($input));
+        return is_string($input) && is_executable($input);
     }
 }

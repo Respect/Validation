@@ -26,13 +26,13 @@ function is_link($link)
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\SymbolicLink
- * @covers Respect\Validation\Exceptions\SymbolicLinkException
+ * @covers \Respect\Validation\Rules\SymbolicLink
+ * @covers \Respect\Validation\Exceptions\SymbolicLinkException
  */
 class SymbolicLinkTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers Respect\Validation\Rules\SymbolicLink::validate
+     * @covers \Respect\Validation\Rules\SymbolicLink::validate
      */
     public function testValidSymbolicLinkShouldReturnTrue()
     {
@@ -44,7 +44,7 @@ class SymbolicLinkTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\SymbolicLink::validate
+     * @covers \Respect\Validation\Rules\SymbolicLink::validate
      */
     public function testInvalidSymbolicLinkShouldThrowException()
     {
@@ -56,12 +56,12 @@ class SymbolicLinkTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Respect\Validation\Rules\SymbolicLink::validate
+     * @covers \Respect\Validation\Rules\SymbolicLink::validate
      */
     public function testShouldValidateObjects()
     {
         $rule = new SymbolicLink();
-        $object = $this->getMock('SplFileInfo', ['isLink'], ['somelink.lnk']);
+        $object = $this->createMock('SplFileInfo', ['isLink'], ['somelink.lnk']);
         $object->expects($this->once())
                 ->method('isLink')
                 ->will($this->returnValue(true));

@@ -23,22 +23,18 @@ use Respect\Validation\Rules\AbstractSearcher;
 class MaSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        '01', // Tanger-Tétouan
-        '02', // Gharb-Chrarda-Beni Hssen
-        '03', // Taza-Al Hoceima-Taounate
-        '04', // Oriental
-        '05', // Fès-Boulemane
-        '06', // Meknès-Tafilalet
-        '07', // Rabat-Salé-Zemmour-Zaër
-        '08', // Grand Casablanca
-        '09', // Chaouia-Ouardigha
-        '10', // Doukkala-Abda
-        '11', // Marrakech-Tensift-Al Haouz
-        '12', // Tadla-Azilal
-        '13', // Souss-Massa-Drâa
-        '14', // Guelmim-Es Smara
-        '15', // Laâyoune-Boujdour-Sakia El Hamra
-        '16', // Oued ed Dahab-Lagouira
+        '01', // Tanger-Tetouan-Al Hoceima
+        '02', // Oriental
+        '03', // Fès-Meknès
+        '04', // Rabat-Salé-Kénitra
+        '05', // Béni Mellal-Khénifra
+        '06', // Casablanca-Settat
+        '07', // Marrakesh-Safi
+        '08', // Drâa-Tafilalet
+        '09', // Souss-Massa
+        '10', // Guelmim-Oued Noun
+        '11', // Laâyoune-Sakia El Hamra
+        '12', // Dakhla-Oued Ed-Dahab
         'AGD', // Agadir-Ida-Outanane
         'AOU', // Aousserd (EH)
         'ASZ', // Assa-Zag

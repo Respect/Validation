@@ -22,7 +22,7 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
     public function testItImplementsExceptionInterface()
     {
         $validationException = new ValidationException();
-        $this->assertInstanceOf('Respect\Validation\Exceptions\ExceptionInterface', $validationException);
+        $this->assertInstanceOf(ExceptionInterface::class, $validationException);
     }
 
     /**
@@ -100,14 +100,14 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
             [123.456, '123.456'],
             [[], '{ }'],
             [[false], '{ false }'],
-            [[1,2,3,4,5,6,7,8,9,10], '{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }'],
+            [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], '{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }'],
             [range(1, 80), '{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ... }'],
             [
                 ['foo' => true, 'bar' => ['baz' => 123, 'qux' => [1, 2, 3]]],
                 '{ "foo": true, "bar": { "baz": 123, "qux": { 1, 2, 3 } } }',
             ],
             [
-                ['foo' => true, 'bar' => ['baz' => 123, 'qux' => ['norf' => [1,2,3]]]],
+                ['foo' => true, 'bar' => ['baz' => 123, 'qux' => ['norf' => [1, 2, 3]]]],
                 '{ "foo": true, "bar": { "baz": 123, "qux": { "norf": ... } } }',
             ],
             [[[], 'foo'], '{ { }, "foo" }'],

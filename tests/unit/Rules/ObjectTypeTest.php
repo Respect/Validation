@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\ObjectType
- * @covers Respect\Validation\Exceptions\ObjectTypeException
+ * @covers \Respect\Validation\Rules\ObjectType
+ * @covers \Respect\Validation\Exceptions\ObjectTypeException
  */
 class ObjectTypeTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,7 +37,7 @@ class ObjectTypeTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotObject
-     * @expectedException Respect\Validation\Exceptions\ObjectTypeException
+     * @expectedException \Respect\Validation\Exceptions\ObjectTypeException
      */
     public function testNotObject($input)
     {

@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Negative
- * @covers Respect\Validation\Exceptions\NegativeException
+ * @covers \Respect\Validation\Rules\Negative
+ * @covers \Respect\Validation\Exceptions\NegativeException
  */
 class NegativeTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,7 +37,7 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForNotNegative
-     * @expectedException Respect\Validation\Exceptions\NegativeException
+     * @expectedException \Respect\Validation\Exceptions\NegativeException
      */
     public function testNotNegativeNumbersShouldThrowNegativeException($input)
     {

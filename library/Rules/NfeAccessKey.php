@@ -28,13 +28,13 @@ class NfeAccessKey extends AbstractRule
      */
     public function validate($aK)
     {
-        if (strlen($aK) !== 44) {
+        if (mb_strlen($aK) !== 44) {
             return false;
         }
 
         $w = [];
         for ($i = 0, $z = 5, $m = 43; $i <= $m; ++$i) {
-            $z = ($i < $m) ? ($z - 1) == 1 ? 9 : ($z - 1)  : 0;
+            $z = ($i < $m) ? ($z - 1) == 1 ? 9 : ($z - 1) : 0;
             $w[] = $z;
         }
 

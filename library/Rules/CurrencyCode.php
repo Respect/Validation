@@ -204,6 +204,6 @@ class CurrencyCode extends AbstractRule
 
     public function validate($input)
     {
-        return in_array(strtoupper($input), $this->currencyCodes, true);
+        return in_array(mb_strtoupper($input), $this->currencyCodes, true);
     }
 }

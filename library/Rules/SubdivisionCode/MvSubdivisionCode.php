@@ -23,14 +23,6 @@ use Respect\Validation\Rules\AbstractSearcher;
 class MvSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'CE', // Medhu
-        'MLE', // Male
-        'NC', // Medhu Uthuru
-        'NO', // Uthuru
-        'SC', // Medhu Dhekunu
-        'SU', // Dhekunu
-        'UN', // Mathi Uthuru
-        'US', // Mathi Dhekunu
         '00', // Alifu Dhaalu / Ari Atholhu Dhekunuburi
         '01', // Seenu / Addu Atholhu
         '02', // Alifu Alifu / Ari Atholhu Uthuruburi

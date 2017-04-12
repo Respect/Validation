@@ -23,13 +23,6 @@ use Respect\Validation\Rules\AbstractSearcher;
 class IdSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'IJ', // Papua
-        'JW', // Java
-        'KA', // Kalimantan
-        'MA', // Maluku
-        'NU', // Nusa Tenggara
-        'SL', // Sulawesi
-        'SM', // Sumatera
         'AC', // Aceh
         'BA', // Bali
         'BB', // Bangka-Belitung
@@ -41,23 +34,30 @@ class IdSubdivisionCode extends AbstractSearcher
         'JI', // Jawa Timur
         'JK', // Jakarta Raya
         'JT', // Jawa Tengah
+        'JW', // Java
+        'KA', // Kalimantan
         'KB', // Kalimantan Barat
         'KI', // Kalimantan Timur
-        'KI', // Kalimantan Utara
         'KR', // Kepulauan Riau
         'KS', // Kalimantan Selatan
         'KT', // Kalimantan Tengah
+        'KU', // Kalimantan Utara
         'LA', // Lampung
         'MA', // Maluku
+        'ML', // Maluku
         'MU', // Maluku Utara
         'NB', // Nusa Tenggara Barat
         'NT', // Nusa Tenggara Timur
+        'NU', // Nusa Tenggara
         'PA', // Papua
         'PB', // Papua Barat
+        'PP', // Papua
         'RI', // Riau
         'SA', // Sulawesi Utara
         'SB', // Sumatera Barat
         'SG', // Sulawesi Tenggara
+        'SL', // Sulawesi
+        'SM', // Sumatera
         'SN', // Sulawesi Selatan
         'SR', // Sulawesi Barat
         'SS', // Sumatera Selatan

@@ -13,8 +13,8 @@ namespace Respect\Validation\Rules;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\AllOf
- * @covers Respect\Validation\Exceptions\AllOfException
+ * @covers \Respect\Validation\Rules\AllOf
+ * @covers \Respect\Validation\Exceptions\AllOfException
  */
 class AllOfTest extends \PHPUnit_Framework_TestCase
 {
@@ -47,14 +47,14 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
     public function testValidationShouldWorkIfAllRulesReturnTrue()
     {
         $valid1 = new Callback(function () {
-                    return true;
-                });
+            return true;
+        });
         $valid2 = new Callback(function () {
-                    return true;
-                });
+            return true;
+        });
         $valid3 = new Callback(function () {
-                    return true;
-                });
+            return true;
+        });
         $o = new AllOf($valid1, $valid2, $valid3);
         $this->assertTrue($o->__invoke('any'));
         $this->assertTrue($o->check('any'));
@@ -66,7 +66,7 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerStaticDummyRules
-     * @expectedException Respect\Validation\Exceptions\AllOfException
+     * @expectedException \Respect\Validation\Exceptions\AllOfException
      */
     public function testValidationAssertShouldFailIfAnyRuleFailsAndReturnAllExceptionsFailed($v1, $v2, $v3)
     {
@@ -77,7 +77,7 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerStaticDummyRules
-     * @expectedException Respect\Validation\Exceptions\CallbackException
+     * @expectedException \Respect\Validation\Exceptions\CallbackException
      */
     public function testValidationCheckShouldFailIfAnyRuleFailsAndThrowTheFirstExceptionOnly($v1, $v2, $v3)
     {
@@ -88,7 +88,7 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerStaticDummyRules
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException \Respect\Validation\Exceptions\ValidationException
      */
     public function testValidationCheckShouldFailOnEmptyInput($v1, $v2, $v3)
     {
@@ -108,14 +108,14 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
     public function providerStaticDummyRules()
     {
         $theInvalidOne = new Callback(function () {
-                    return false;
-                });
+            return false;
+        });
         $valid1 = new Callback(function () {
-                    return true;
-                });
+            return true;
+        });
         $valid2 = new Callback(function () {
-                    return true;
-                });
+            return true;
+        });
 
         return [
             [$theInvalidOne, $valid1, $valid2],

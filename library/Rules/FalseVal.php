@@ -19,6 +19,6 @@ class FalseVal extends AbstractRule
             return true;
         }
 
-        return (false === filter_var($input, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE));
+        return false === filter_var($input, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
     }
 }
