@@ -31,5 +31,5 @@ See also:
 - [NullType](NullType.md)
 - [ObjectType](ObjectType.md)
 - [ResourceType](ResourceType.md)
-- [StringType](Alnum.md)
+- [StringType](StringType.md)
 - [Type](Type.md)
