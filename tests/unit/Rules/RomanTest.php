@@ -60,7 +60,7 @@ class RomanTest extends \PHPUnit_Framework_TestCase
             ['MCCXXXIV'],
             ['MMXXIV'],
             ['MCMLXXV'],
-            ['MMMMCMXCIX'],
+            ['MMMCMXCIX'],
         ];
     }
 
@@ -74,6 +74,7 @@ class RomanTest extends \PHPUnit_Framework_TestCase
             ['MXM'],
             ['XIIIIIIII'],
             ['MIMIMI'],
+            ['MMMM'],
         ];
     }
 }
