@@ -85,4 +85,15 @@ class NotTest extends \PHPUnit_Framework_TestCase
             [Validator::noneOf(Validator::numericVal(), Validator::intVal())],
         ];
     }
+
+    public function providerForSetName()
+    {
+        return [
+            [new IntVal()],
+            [new AllOf(new Numeric, new IntVal)],
+            [new Not(new Not(new IntVal()))],
+            [Validator::intVal()->setName('Bar')],
+            [Validator::noneOf(Validator::numeric(), Validator::intVal())],
+        ];
+    }
 }
