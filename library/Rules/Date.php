@@ -43,6 +43,10 @@ class Date extends AbstractRule
         $exceptionalFormats = [
             'c' => 'Y-m-d\TH:i:sP',
             'r' => 'D, d M Y H:i:s O',
+            'm' => '!m',
+            'n' => '!n',
+            'F' => '!F',
+            'M' => '!M'
         ];
 
         if (in_array($this->format, array_keys($exceptionalFormats))) {
