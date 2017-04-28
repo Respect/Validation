@@ -67,6 +67,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ['xn--bcher-kva.ch'],
             ['mail.xn--bcher-kva.ch'],
             ['example-hyphen.com'],
+            ['std--a.com'],
         ];
     }
 
@@ -76,10 +77,8 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             [null],
             [''],
             ['2222222domain.local'],
-            ['example--invalid.com'],
             ['-example-invalid.com'],
             ['example.invalid.-com'],
-            ['xn--bcher--kva.ch'],
             ['1.2.3.256'],
             ['1.2.3.4'],
         ];

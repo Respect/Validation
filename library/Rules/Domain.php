@@ -27,18 +27,7 @@ class Domain extends AbstractComposite
         $this->tldCheck($tldCheck);
         $this->otherParts = new AllOf(
             new Alnum('-'),
-            new Not(new StartsWith('-')),
-            new AnyOf(
-                new Not(
-                    new Contains('--')
-                ),
-                new AllOf(
-                    new StartsWith('xn--'),
-                    new Callback(function ($str) {
-                        return mb_substr_count($str, '--') == 1;
-                    })
-                )
-            )
+            new Not(new StartsWith('-'))
         );
     }
 
