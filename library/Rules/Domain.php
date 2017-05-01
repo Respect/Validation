@@ -27,7 +27,8 @@ class Domain extends AbstractComposite
         $this->tldCheck($tldCheck);
         $this->otherParts = new AllOf(
             new Alnum('-'),
-            new Not(new StartsWith('-'))
+            new Not(new StartsWith('-')),
+            new Not(new EndsWith('-'))
         );
     }
 

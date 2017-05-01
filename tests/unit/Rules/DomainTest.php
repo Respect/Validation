@@ -79,6 +79,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ['2222222domain.local'],
             ['-example-invalid.com'],
             ['example.invalid.-com'],
+            ['example.invalid-.com'],
             ['1.2.3.256'],
             ['1.2.3.4'],
         ];
