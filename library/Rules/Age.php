@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
-use DateTime;
+use DateTime as DateTimeMutable;
 use Respect\Validation\Exceptions\ComponentException;
 
 class Age extends AllOf
@@ -37,7 +37,7 @@ class Age extends AllOf
     {
         $interval = sprintf('-%d years', $age);
 
-        return new DateTime($interval);
+        return new DateTimeMutable($interval);
     }
 
     private function setMaxAge($maxAge)

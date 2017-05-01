@@ -12,7 +12,7 @@ use Respect\Validation\Validator;
 
 try {
     Validator::key('username', Validator::length(2, 32))
-             ->key('birthdate', Validator::date())
+             ->key('birthdate', Validator::dateTime())
              ->setName('User Subscription Form')
              ->assert(['username' => '0', 'birthdate' => 'Whatever']);
 } catch (NestedValidationException $e) {
@@ -22,4 +22,4 @@ try {
 --EXPECTF--
 - All of the required rules must pass for User Subscription Form
   - username must have a length between 2 and 32
-  - birthdate must be a valid date
+  - birthdate must be a valid date/time

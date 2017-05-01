@@ -47,7 +47,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructorWithZendValidatorInstance()
     {
-        $zendInstance = new Date();
+        $zendInstance = new ZendDate();
         $v = new Zend($zendInstance);
         $this->assertAttributeSame(
             $expected = $zendInstance,

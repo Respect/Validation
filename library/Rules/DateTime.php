@@ -11,10 +11,9 @@
 
 namespace Respect\Validation\Rules;
 
-use DateTime;
 use DateTimeInterface;
 
-class Date extends AbstractRule
+class DateTime extends AbstractRule
 {
     public $format = null;
 
@@ -25,8 +24,7 @@ class Date extends AbstractRule
 
     public function validate($input)
     {
-        if ($input instanceof DateTimeInterface
-            || $input instanceof DateTime) {
+        if ($input instanceof DateTimeInterface) {
             return true;
         }
 

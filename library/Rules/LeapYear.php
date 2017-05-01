@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
-use DateTime;
+use DateTimeInterface;
 
 class LeapYear extends AbstractRule
 {
@@ -21,7 +21,7 @@ class LeapYear extends AbstractRule
             $year = (int) $year;
         } elseif (is_string($year)) {
             $year = (int) date('Y', strtotime($year));
-        } elseif ($year instanceof DateTime) {
+        } elseif ($year instanceof DateTimeInterface) {
             $year = (int) $year->format('Y');
         } else {
             return false;

@@ -19,19 +19,19 @@ v::stringType()->between('a', 'f')->validate('c'); // true
 Also very powerful with dates:
 
 ```php
-v::date()->between('2009-01-01', '2013-01-01')->validate('2010-01-01'); // true
+v::dateTime()->between('2009-01-01', '2013-01-01')->validate('2010-01-01'); // true
 ```
 
 Date ranges accept strtotime values:
 
 ```php
-v::date()->between('yesterday', 'tomorrow')->validate('now'); // true
+v::dateTime()->between('yesterday', 'tomorrow')->validate('now'); // true
 ```
 
 A third parameter may be passed to validate the passed values inclusive:
 
 ```php
-v::date()->between(10, 20, true)->validate(20); // true
+v::dateTime()->between(10, 20, true)->validate(20); // true
 ```
 
 Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.

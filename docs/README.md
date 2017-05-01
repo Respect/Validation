@@ -42,14 +42,14 @@ Is possible to validate its attributes in a single chain:
 
 ```php
 $userValidator = v::attribute('name', v::stringType()->length(1,32))
-                  ->attribute('birthdate', v::date()->age(18));
+                  ->attribute('birthdate', v::dateTime()->age(18));
 
 $userValidator->validate($user); // true
 ```
 
 Validating array keys is also possible using `v::key()`
 
-Note that we used `v::stringType()` and `v::date()` in the beginning of the validator.
+Note that we used `v::stringType()` and `v::dateTime()` in the beginning of the validator.
 Although is not mandatory, it is a good practice to use the type of the
 validated object as the first node in the chain.
 
@@ -305,7 +305,7 @@ On `v::attribute()` and `v::key()`, `{{name}}` is the attribute/key name. For ot
 is the same as the input. You can customize a validator name using:
 
 ```php
-v::date('Y-m-d')->between('1980-02-02', 'now')->setName('Member Since');
+v::dateTime('Y-m-d')->between('1980-02-02', 'now')->setName('Member Since');
 ```
 
 ## Zend/Symfony validators
