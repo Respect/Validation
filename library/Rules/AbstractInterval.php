@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
-use DateTime;
+use DateTimeImmutable;
 use Exception;
 
 abstract class AbstractInterval extends AbstractRule
@@ -36,7 +36,7 @@ abstract class AbstractInterval extends AbstractRule
         }
 
         try {
-            return new DateTime($value);
+            return new DateTimeImmutable($value);
         } catch (Exception $e) {
             // Pokémon Exception Handling
         }

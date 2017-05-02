@@ -93,7 +93,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testShouldDefineConstructorArgumentsWhenCreatingARule()
     {
         $factory = new Factory();
-        $rule = $factory->rule('date', ['Y-m-d']);
+        $rule = $factory->rule('dateTime', ['Y-m-d']);
 
         $this->assertEquals('Y-m-d', $rule->format);
     }

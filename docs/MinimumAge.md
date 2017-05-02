@@ -12,7 +12,7 @@ v::minimumAge(18)->validate('1987-01-01'); // true
 v::minimumAge(18, 'd/m/Y')->validate('01/01/1987'); // true
 ```
 
-Using `date()` before is a best-practice.
+Using [DateTime](DateTime.md) before is a best-practice.
 
 Message template for this validator includes `{{age}}`.
 
@@ -26,4 +26,4 @@ Version | Description
 See also:
 
 - [Age](Age.md)
-- [Date](Date.md)
+- [DateTime](DateTime.md)

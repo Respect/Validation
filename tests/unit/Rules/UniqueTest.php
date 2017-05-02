@@ -28,7 +28,7 @@ class UniqueTest extends RuleTestCase
             [$rule, ['alpha', 'beta', 'gamma', 'delta']],
             [$rule, [0, 2.71, 3.14]],
             [$rule, [[], ['str'], [1]]],
-            [$rule, [(object)['key' => 'value'], (object)['other_key' => 'value']]],
+            [$rule, [(object) ['key' => 'value'], (object) ['other_key' => 'value']]],
         ];
     }
 
@@ -44,7 +44,7 @@ class UniqueTest extends RuleTestCase
             [$rule, ['alpha', 'beta', 'gamma', 'delta', 'beta']],
             [$rule, [0, 3.14, 2.71, 3.14]],
             [$rule, [[], [1], [1]]],
-            [$rule, [(object)['key' => 'value'], (object)['key' => 'value']]],
+            [$rule, [(object) ['key' => 'value'], (object) ['key' => 'value']]],
             [$rule, [1, true, 'test']], // PHP's array_unique treats 1 and true as equal
         ];
     }

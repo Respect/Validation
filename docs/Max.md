@@ -14,14 +14,14 @@ v::intVal()->max(20, true)->validate(20); // true
 Also accepts dates:
 
 ```php
-v::date()->max('2012-01-01')->validate('2010-01-01'); // true
+v::dateTime()->max('2012-01-01')->validate('2010-01-01'); // true
 ```
 
 Also date intervals:
 
 ```php
 // Same of minimum age validation
-v::date()->max('-18 years')->validate('1988-09-09'); // true
+v::dateTime()->max('-18 years')->validate('1988-09-09'); // true
 ```
 
 `true` may be passed as a parameter to indicate that inclusive

@@ -11,7 +11,8 @@
 
 namespace Respect\Validation\Rules;
 
-use DateTime;
+use DateTimeImmutable;
+use DateTimeInterface;
 
 class LeapDate extends AbstractRule
 {
@@ -25,8 +26,8 @@ class LeapDate extends AbstractRule
     public function validate($input)
     {
         if (is_string($input)) {
-            $date = DateTime::createFromFormat($this->format, $input);
-        } elseif ($input instanceof DateTime) {
+            $date = DateTimeImmutable::createFromFormat($this->format, $input);
+        } elseif ($input instanceof DateTimeInterface) {
             $date = $input;
         } else {
             return false;

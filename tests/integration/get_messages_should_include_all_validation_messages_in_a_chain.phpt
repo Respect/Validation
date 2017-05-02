@@ -18,7 +18,7 @@ try {
     ];
 
     Validator::key('username', Validator::length(2, 32))
-             ->key('birthdate', Validator::date())
+             ->key('birthdate', Validator::dateTime())
              ->key('password', Validator::notEmpty())
              ->key('email', Validator::email())
              ->assert($input);
@@ -30,7 +30,7 @@ try {
 Array
 (
     [0] => username must have a length between 2 and 32
-    [1] => birthdate must be a valid date
+    [1] => birthdate must be a valid date/time
     [2] => password must not be empty
     [3] => Key email must be present
 )
