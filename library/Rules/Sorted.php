@@ -34,7 +34,7 @@ class Sorted extends AbstractRule
                 || (!$this->ascending && ($this->fn)($input[$i]) > ($this->fn)($input[$i - 1]))
             ) {
                 return false;
-            };
+            }
         }
         return true;
     }
