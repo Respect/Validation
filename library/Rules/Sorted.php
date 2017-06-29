@@ -22,14 +22,12 @@ class Sorted extends AbstractRule
     public function validate($input)
     {
         $count = count($input);
-        if($count < 2){
-            return true;
-        };
+        if($count < 2) return true;
         for($i = 1; $i < $count; $i++){
             $cmp = $this->ascending === true
-                ? ($this->fn)($input[$i]) >= ($this->fn)($input[$i - 1])
-                : ($this->fn)($input[$i]) <= ($this->fn)($input[$i - 1]);
-            if($cmp === false) return false;
+                ? ($this->fn)($input[$i]) < ($this->fn)($input[$i - 1])
+                : ($this->fn)($input[$i]) > ($this->fn)($input[$i - 1]);
+            if($cmp === true) return false;
         }
         return true;
     }
