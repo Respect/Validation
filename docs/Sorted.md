@@ -28,10 +28,10 @@ v::sorted(function($x){
 		'key' => 1,
 	],
 	[
-		'key' => 4,
+		'key' => 7,
 	],
 	[
-		'key' => 7,
+		'key' => 4,
 	],
 ]); // false
 ```
