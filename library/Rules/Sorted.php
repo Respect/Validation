@@ -13,6 +13,9 @@ namespace Respect\Validation\Rules;
 
 class Sorted extends AbstractRule
 {
+    public $fn = null;
+    public $ascending = true;
+
     public function __construct(callable $fn = null, bool $ascending = true)
     {
         $this->fn = $fn ?? function($x){ return $x;};
