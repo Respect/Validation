@@ -24,10 +24,12 @@ class Sorted extends AbstractRule
         $count = count($input);
         if($count < 2) return true;
         for($i = 1; $i < $count; $i++){
-            $cmp = $this->ascending === true
-                ? ($this->fn)($input[$i]) >= ($this->fn)($input[$i - 1])
-                : ($this->fn)($input[$i]) <= ($this->fn)($input[$i - 1]);
-            if($cmp === false) return false;
+            if(
+                ($this->ascending && ($this->fn)($input[$i]) < ($this->fn)($input[$i - 1]))
+                || (!$this->ascending && ($this->fn)($input[$i]) > ($this->fn)($input[$i - 1]))
+            ){
+                return false;
+            };
         }
         return true;
     }
