@@ -27,8 +27,8 @@ class Sorted extends AbstractRule
         };
         for($i = 1; $i < $count; $i++){
             $cmp = $this->ascending === true
-                ? ($this->fn)($input[$i]) > ($this->fn)($input[$i - 1])
-                : ($this->fn)($input[$i]) < ($this->fn)($input[$i - 1]);
+                ? ($this->fn)($input[$i]) >= ($this->fn)($input[$i - 1])
+                : ($this->fn)($input[$i]) <= ($this->fn)($input[$i - 1]);
             if($cmp === false) return false;
         }
         return true;

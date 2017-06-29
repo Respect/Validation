@@ -28,6 +28,16 @@ class SortedTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($rule->check($arr));
     }
 
+    public function testPassesWithEqualValues()
+    {
+        $arr = [1,2,2,3];
+        $rule = new Sorted();
+
+        $this->assertTrue($rule->validate($arr));
+        $this->assertTrue($rule->assert($arr));
+        $this->assertTrue($rule->check($arr));
+    }
+
     /**
      * @expectedException \Respect\Validation\Exceptions\SortedException
      */
@@ -41,6 +51,16 @@ class SortedTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testPassesDescending()
+    {
+        $arr = [10,9,8];
+        $rule = new Sorted(null, false);
+
+        $this->assertTrue($rule->validate($arr));
+        $this->assertTrue($rule->assert($arr));
+        $this->assertTrue($rule->check($arr));
+    }
+
+    public function testPassesDescendingWithEqualValues()
     {
         $arr = [10,9,8];
         $rule = new Sorted(null, false);
