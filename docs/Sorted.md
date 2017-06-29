@@ -9,30 +9,30 @@ v::sorted()->validate([1,2,3]); // true
 v::sorted()->validate([1,6,3]); // false
 v::sorted(null, false)->validate([3,2,1]); // true
 v::sorted(function($x){
-	return $x['key'];
+    return $x['key'];
 })->validate([
-	[
-		'key' => 1,
-	],
-	[
-		'key' => 5,
-	],
-	[
-		'key' => 9,
-	],
+    [
+        'key' => 1,
+    ],
+    [
+        'key' => 5,
+    ],
+    [
+        'key' => 9,
+    ],
 ]); // true
 v::sorted(function($x){
-	return $x['key'];
+    return $x['key'];
 })->validate([
-	[
-		'key' => 1,
-	],
-	[
-		'key' => 7,
-	],
-	[
-		'key' => 4,
-	],
+    [
+        'key' => 1,
+    ],
+    [
+        'key' => 7,
+    ],
+    [
+        'key' => 4,
+    ],
 ]); // false
 ```
 
