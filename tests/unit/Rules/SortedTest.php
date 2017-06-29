@@ -62,7 +62,7 @@ class SortedTest extends \PHPUnit_Framework_TestCase
 
     public function testPassesDescendingWithEqualValues()
     {
-        $arr = [10,9,8];
+        $arr = [10,9,9,8];
         $rule = new Sorted(null, false);
 
         $this->assertTrue($rule->validate($arr));
