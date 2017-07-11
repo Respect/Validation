@@ -33,6 +33,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator bank(string $countryCode)
  * @method static Validator bankAccount(string $countryCode)
  * @method static Validator base()
+ * @method static Validator base64()
  * @method static Validator between(mixed $min = null, mixed $max = null, bool $inclusive = true)
  * @method static Validator bic(string $countryCode)
  * @method static Validator boolType()
