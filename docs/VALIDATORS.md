@@ -176,6 +176,7 @@
 
 ## Other
 
+- [Base64](Base64.md)
 - [Bsn](Bsn.md)
 - [Cnh](Cnh.md)
 - [Cnpj](Cnpj.md)
@@ -221,6 +222,7 @@
 - [Bank](Bank.md)
 - [BankAccount](BankAccount.md)
 - [Base](Base.md)
+- [Base64](Base64.md)
 - [Between](Between.md)
 - [Bic](Bic.md)
 - [BoolType](BoolType.md)
