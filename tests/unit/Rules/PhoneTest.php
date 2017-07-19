@@ -93,6 +93,7 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
             ['5555555'],
             ['555.5555'],
             ['555 5555'],
+            ['+1 (555) 555 5555'],
         ];
     }
 
