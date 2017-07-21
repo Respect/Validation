@@ -13,7 +13,7 @@ v::when(v::intVal(), v::positive(), v::notEmpty())->validate($input);
 ```
 
 In the sample above, if `$input` is an integer, then it must be positive.
-If `$input` is not an integer, then it must not me empty.
+If `$input` is not an integer, then it must not be empty.
 When `$else` is not defined use [AlwaysInvalid](AlwaysInvalid.md)
 
 ## Changelog
