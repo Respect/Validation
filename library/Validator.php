@@ -98,7 +98,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator max(mixed $maxValue, bool $inclusive = true)
  * @method static Validator mimetype(string $mimetype)
  * @method static Validator min(mixed $minValue, bool $inclusive = true)
- * @method static Validator minimumAge(int $age)
+ * @method static Validator minimumAge(int $age, $format = false)
  * @method static Validator multiple(int $multipleOf)
  * @method static Validator negative()
  * @method static Validator nif()
