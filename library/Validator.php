@@ -95,6 +95,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator leapYear()
  * @method static Validator length(int $min = null, int $max = null, bool $inclusive = true)
  * @method static Validator lowercase()
+ * @method static Validator luhn()
  * @method static Validator macAddress()
  * @method static Validator max(mixed $maxValue, bool $inclusive = true)
  * @method static Validator mimetype(string $mimetype)

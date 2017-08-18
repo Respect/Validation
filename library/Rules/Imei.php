@@ -33,12 +33,6 @@ class Imei extends AbstractRule
             return false;
         }
 
-        $sum = 0;
-        for ($position = 0; $position < (self::IMEI_SIZE - 1); ++$position) {
-            $number = $numbers[$position] * (($position % 2) + 1);
-            $sum += ($number % 10) + intval($number / 10);
-        }
-
-        return (ceil($sum / 10) * 10) - $sum == $numbers[14];
+        return (new Luhn())->validate($numbers);
     }
 }
