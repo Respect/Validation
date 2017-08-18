@@ -64,38 +64,11 @@ class CreditCard extends AbstractRule
             return false;
         }
 
-        if (!$this->verifyMod10($input)) {
+        if (!(new Luhn())->validate($input)) {
             return false;
         }
 
         return $this->verifyBrand($input);
-    }
-
-    /**
-     * Returns whether the input matches the Luhn algorithm or not.
-     *
-     * @param string $input
-     *
-     * @return bool
-     */
-    private function verifyMod10($input)
-    {
-        $sum = 0;
-        $input = strrev($input);
-        for ($i = 0; $i < mb_strlen($input); ++$i) {
-            $current = mb_substr($input, $i, 1);
-            if ($i % 2 == 1) {
-                $current *= 2;
-                if ($current > 9) {
-                    $firstDigit = $current % 10;
-                    $secondDigit = ($current - $firstDigit) / 10;
-                    $current = $firstDigit + $secondDigit;
-                }
-            }
-            $sum += $current;
-        }
-
-        return $sum % 10 == 0;
     }
 
     /**
