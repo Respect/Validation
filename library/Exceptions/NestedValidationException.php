@@ -124,9 +124,27 @@ class NestedValidationException extends ValidationException implements IteratorA
 
     private function isSkippable(ValidationException $exception)
     {
-        return $exception instanceof self
-            && 1 === $exception->getRelated()->count()
-            && false === $exception->hasCustomTemplate();
+        if (!$exception instanceof self) {
+            return false;
+        }
+
+        if (1 !== $exception->getRelated()->count()) {
+            return false;
+        }
+
+        if (!$exception->hasCustomTemplate()) {
+            return true;
+        }
+
+        return $this->hasChildTemplate($exception);
+    }
+
+    private function hasChildTemplate(self $exception)
+    {
+        $exception->getRelated()->rewind();
+        $childException = $exception->getRelated()->current();
+
+        return $childException->getMessage() === $exception->getMessage();
     }
 
     /**

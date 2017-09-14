@@ -11,6 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
 use Respect\Validation\Validator;
@@ -109,16 +110,33 @@ abstract class AbstractComposite extends AbstractRule
 
     protected function validateRules($input)
     {
-        $validators = $this->getRules();
         $exceptions = [];
-        foreach ($validators as $v) {
+        foreach ($this->getRules() as $rule) {
             try {
-                $v->assert($input);
-            } catch (ValidationException $e) {
-                $exceptions[] = $e;
+                $rule->assert($input);
+            } catch (ValidationException $exception) {
+                $exceptions[] = $exception;
+                $this->setExceptionTemplate($exception);
             }
         }
 
         return $exceptions;
+    }
+
+    private function setExceptionTemplate(ValidationException $exception)
+    {
+        if (null === $this->template || $exception->hasCustomTemplate()) {
+            return;
+        }
+
+        $exception->setTemplate($this->template);
+
+        if (!$exception instanceof NestedValidationException) {
+            return;
+        }
+
+        foreach ($exception->getRelated() as $relatedException) {
+            $this->setExceptionTemplate($relatedException);
+        }
     }
 }
