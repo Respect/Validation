@@ -42,6 +42,11 @@ abstract class AbstractRule implements Validatable
         return $this->name;
     }
 
+    public function getTemplate()
+    {
+        return $this->template;
+    }
+
     public function reportError($input, array $extraParams = [])
     {
         $exception = $this->createException();
