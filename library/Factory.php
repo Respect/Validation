@@ -16,14 +16,23 @@ use Respect\Validation\Exceptions\ComponentException;
 
 class Factory
 {
+    /** @var string[] */
     protected $rulePrefixes = ['Respect\\Validation\\Rules\\'];
 
-    public function getRulePrefixes()
+    /**
+     * @return string[]
+     */
+    public function getRulePrefixes(): array
     {
         return $this->rulePrefixes;
     }
 
-    private function filterRulePrefix($rulePrefix)
+    /**
+     * @param string $rulePrefix
+     *
+     * @return string
+     */
+    private function filterRulePrefix(string $rulePrefix): string
     {
         $namespaceSeparator = '\\';
         $rulePrefix = rtrim($rulePrefix, $namespaceSeparator);
@@ -31,17 +40,35 @@ class Factory
         return $rulePrefix.$namespaceSeparator;
     }
 
-    public function appendRulePrefix($rulePrefix)
+    /**
+     * @param string $rulePrefix
+     *
+     * @return void
+     */
+    public function appendRulePrefix(string $rulePrefix)
     {
         array_push($this->rulePrefixes, $this->filterRulePrefix($rulePrefix));
     }
 
-    public function prependRulePrefix($rulePrefix)
+    /**
+     * @param string $rulePrefix
+     *
+     * @return void
+     */
+    public function prependRulePrefix(string $rulePrefix)
     {
         array_unshift($this->rulePrefixes, $this->filterRulePrefix($rulePrefix));
     }
 
-    public function rule($ruleName, array $arguments = [])
+    /**
+     * @param string|Validatable $ruleName
+     * @param array              $arguments = []
+     *
+     * @return Validatable
+     *
+     * @throws ComponentException
+     */
+    public function rule($ruleName, array $arguments = []): Validatable
     {
         if ($ruleName instanceof Validatable) {
             return $ruleName;
@@ -58,7 +85,10 @@ class Factory
                 throw new ComponentException(sprintf('"%s" is not a valid respect rule', $className));
             }
 
-            return $reflection->newInstanceArgs($arguments);
+            /** @var Validatable $validator */
+            $validator = $reflection->newInstanceArgs($arguments);
+
+            return $validator;
         }
 
         throw new ComponentException(sprintf('"%s" is not a valid rule name', $ruleName));
