@@ -12,6 +12,7 @@ matrix:
       env: COMPOSER_ARGUMENTS="--prefer-lowest --prefer-stable"
     - php: 7.0
     - php: 7.1
+    - php: 7.2
     - php: nightly
   allow_failures:
     - php: nightly
@@ -23,13 +24,13 @@ before_script:
 script:
   - vendor/bin/phpunit --configuration phpunit.xml.dist --colors --coverage-clover=coverage.clover
   - |
-    if [[ "${TRAVIS_PHP_VERSION}" == "7.1" ]]; then
+    if [[ "${TRAVIS_PHP_VERSION}" == "7.2" ]]; then
       vendor/bin/docheader check library tests
     fi
 
 after_script:
   - |
-    if [[ "${TRAVIS_PHP_VERSION}" == "7.1" ]]; then
+    if [[ "${TRAVIS_PHP_VERSION}" == "7.2" ]]; then
       wget https://scrutinizer-ci.com/ocular.phar
       php ocular.phar code-coverage:upload --format=php-clover coverage.clover
     fi
