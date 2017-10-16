@@ -161,12 +161,13 @@ use Respect\Validation\Rules\Key;
  */
 class Validator extends AllOf
 {
+    /** @var Factory */
     protected static $factory;
 
     /**
      * @return Factory
      */
-    protected static function getFactory()
+    protected static function getFactory(): Factory
     {
         if (!static::$factory instanceof Factory) {
             static::$factory = new Factory();
@@ -177,17 +178,21 @@ class Validator extends AllOf
 
     /**
      * @param Factory $factory
+     *
+     * @return void
      */
-    public static function setFactory($factory)
+    public static function setFactory(Factory $factory)
     {
         static::$factory = $factory;
     }
 
     /**
      * @param string $rulePrefix
-     * @param bool   $prepend
+     * @param bool   $prepend  = false
+     *
+     * @return void
      */
-    public static function with($rulePrefix, $prepend = false)
+    public static function with(string $rulePrefix, bool $prepend = false)
     {
         if (false === $prepend) {
             self::getFactory()->appendRulePrefix($rulePrefix);
@@ -196,7 +201,14 @@ class Validator extends AllOf
         }
     }
 
-    public function check($input)
+    /**
+     * @param mixed $input
+     *
+     * @return bool
+     *
+     * @throws ValidationException
+     */
+    public function check($input): bool
     {
         try {
             return parent::check($input);
@@ -213,9 +225,9 @@ class Validator extends AllOf
      * @param string $ruleName
      * @param array  $arguments
      *
-     * @return Validator
+     * @return Validatable
      */
-    public static function __callStatic($ruleName, $arguments)
+    public static function __callStatic(string $ruleName, array $arguments): Validatable
     {
         if ('allOf' === $ruleName) {
             return static::buildRule($ruleName, $arguments);
@@ -227,12 +239,14 @@ class Validator extends AllOf
     }
 
     /**
-     * @param mixed $ruleSpec
-     * @param array $arguments
+     * @param string|Validatable $ruleSpec
+     * @param array              $arguments = []
      *
      * @return Validatable
+     *
+     * @throws ComponentException
      */
-    public static function buildRule($ruleSpec, $arguments = [])
+    public static function buildRule($ruleSpec, array $arguments = []): Validatable
     {
         try {
             return static::getFactory()->rule($ruleSpec, $arguments);
@@ -245,14 +259,17 @@ class Validator extends AllOf
      * @param string $method
      * @param array  $arguments
      *
-     * @return self
+     * @return Validatable
      */
-    public function __call($method, $arguments)
+    public function __call(string $method, array $arguments): Validatable
     {
         return $this->addRule(static::buildRule($method, $arguments));
     }
 
-    protected function createException()
+    /**
+     * @return AllOfException
+     */
+    protected function createException(): AllOfException
     {
         return new AllOfException();
     }
@@ -260,12 +277,15 @@ class Validator extends AllOf
     /**
      * Create instance validator.
      *
-     * @return Validator
+     * @return Validatable
      */
-    public static function create()
+    public static function create(): Validatable
     {
         $ref = new ReflectionClass(__CLASS__);
 
-        return $ref->newInstanceArgs(func_get_args());
+        /** @var Validatable $validator */
+        $validator = $ref->newInstanceArgs(func_get_args());
+
+        return $validator;
     }
 }
