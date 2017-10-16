@@ -21,7 +21,7 @@ use Respect\Validation\Rules\Key;
 
 /**
  * @method static Validator age(int $minAge = null, int $maxAge = null)
- * @method static Validator allOf()
+ * @method static Validator allOf(Validatable ...$rule)
  * @method static Validator alnum(string $additionalChars = null)
  * @method static Validator alpha(string $additionalChars = null)
  * @method static Validator alwaysInvalid()
@@ -104,7 +104,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator negative()
  * @method static Validator nif()
  * @method static Validator no($useLocale = false)
- * @method static Validator noneOf()
+ * @method static Validator noneOf(Validatable ...$rule)
  * @method static Validator not(Validatable $rule)
  * @method static Validator notBlank()
  * @method static Validator notEmpty()
@@ -115,7 +115,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator numericVal()
  * @method static Validator objectType()
  * @method static Validator odd()
- * @method static Validator oneOf(Validatable $v1, Validatable $v_)
+ * @method static Validator oneOf(Validatable ...$rule)
  * @method static Validator optional(Validatable $rule)
  * @method static Validator perfectSquare()
  * @method static Validator pesel()
