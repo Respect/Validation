@@ -11,10 +11,27 @@
 
 namespace Respect\Validation\Rules;
 
-class Phone extends AbstractRule
+class Phone extends AbstractRegexRule
 {
-    public function validate($input)
+    protected function getPregFormat()
     {
-        return !empty($input) && preg_match('/^[+]?([\d]{0,3})?[\(\.\-\s]?(([\d]{1,3})[\)\.\-\s]*)?(([\d]{3,5})[\.\-\s]?([\d]{4})|([\d]{2}[\.\-\s]?){4})$/', $input);
+        return $this->replaceParams(
+            '/^\+?({part1})? ?(?(?=\()(\({part2}\) ?{part3})|([. -]?({part2}[. -]*)?{part3}))$/',
+            [
+                'part1' => '\d{0,3}',
+                'part2' => '\d{1,3}',
+                'part3' => '((\d{3,5})[. -]?(\d{4})|(\d{2}[. -]?){4})',
+            ]
+        );
+    }
+
+    private function replaceParams($format, array $params)
+    {
+        $string = $format;
+        foreach ($params as $name => $value) {
+            $string = str_replace('{'.$name.'}', $value, $string);
+        }
+
+        return $string;
     }
 }
