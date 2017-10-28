@@ -24,7 +24,6 @@ class Date extends AbstractRule
 
     public function validate($input)
     {
-        var_dump($input);
         if ($input instanceof DateTimeInterface) {
             return true;
         }
