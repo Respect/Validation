@@ -48,9 +48,9 @@ class DateTest extends \PHPUnit_Framework_TestCase
         $this->dateValidator->assert('');
     }
 
-    public function testDateWithoutFormatShouldValidate()
+    public function testDateWithoutFormatShouldNotValidate()
     {
-        $this->assertTrue($this->dateValidator->__invoke('today'));
+        $this->assertFalse($this->dateValidator->__invoke('today'));
     }
 
     public function testDateInstancesShouldAlwaysValidate()
@@ -114,6 +114,16 @@ class DateTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @expectedException \Respect\Validation\Exceptions\DateException
+     * @dataProvider providerForWrongFormats
+     */
+    public function testInvalidInputs($input)
+    {
+        $this->dateValidator = new Date('y-m-d');
+        $this->assertFalse($this->dateValidator->assert($input));
+    }
+
+    /**
      * @return array
      */
     public function providerForWrongFormats()
@@ -134,6 +144,19 @@ class DateTest extends \PHPUnit_Framework_TestCase
             ['F jS, Y g:i:s'],
             ['F jS, Y G:i'],
             ['F jS, Y h:i A']
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function providerForDatetime() {
+        return [
+            ['2000-01-01T00:00:00+00:00'],
+            ['2000-01-01T00:00:00+00:00.000'],
+            ['2013-02-08 09:30:26.123+07:00'],
+            ['2010-10-20 4:30 +0000'],
+            ['2015-06-19 00:00:00']
         ];
     }
 }
