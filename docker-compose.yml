@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+  app:
+    build: .
+    volumes:
+      - ./:/app
+      - notused:/app/vendor
+
+# Keep container /vendor
+volumes:
+  notused:

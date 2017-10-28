@@ -186,6 +186,9 @@ updated as soon as possible.
 
 After run `composer install` on the library's root directory you must run PHPUnit.
 
+Another option is to run it through Docker. Before using it you need to run `docker
+-compose build`. After building it, run `docker-compose run app composer test`.
+
 ### Linux
 
 You can test the project using the commands:
