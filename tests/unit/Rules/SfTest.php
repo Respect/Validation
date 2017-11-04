@@ -11,6 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
 use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
@@ -19,7 +20,7 @@ use Respect\Validation\Validator as v;
  * @covers \Respect\Validation\Rules\Sf
  * @covers \Respect\Validation\Exceptions\SfException
  */
-class SfTest extends \PHPUnit_Framework_TestCase
+class SfTest extends TestCase
 {
     public function testValidationWithAnExistingValidationConstraint()
     {

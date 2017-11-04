@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Call
  * @covers \Respect\Validation\Exceptions\CallException
  */
-class CallTest extends \PHPUnit_Framework_TestCase
+class CallTest extends TestCase
 {
     public function thisIsASampleCallbackUsedInsideThisTest()
     {

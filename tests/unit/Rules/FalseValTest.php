@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\FalseVal
  * @covers \Respect\Validation\Exceptions\FalseValException
  */
-class FalseValTest extends \PHPUnit_Framework_TestCase
+class FalseValTest extends TestCase
 {
     /**
      * @dataProvider validFalseProvider

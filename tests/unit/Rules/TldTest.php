@@ -11,11 +11,13 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Tld
  */
-class TldTest extends \PHPUnit_Framework_TestCase
+class TldTest extends TestCase
 {
     public function providerForValidTld()
     {

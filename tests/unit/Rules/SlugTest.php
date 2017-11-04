@@ -11,11 +11,13 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Slug
  */
-class SlugTest extends \PHPUnit_Framework_TestCase
+class SlugTest extends TestCase
 {
     /**
      * @dataProvider providerValidSlug

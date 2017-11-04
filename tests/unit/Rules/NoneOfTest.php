@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\NoneOf
  * @covers \Respect\Validation\Exceptions\NoneOfException
  */
-class NoneOfTest extends \PHPUnit_Framework_TestCase
+class NoneOfTest extends TestCase
 {
     public function testValid()
     {

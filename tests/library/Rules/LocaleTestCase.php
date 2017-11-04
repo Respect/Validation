@@ -15,8 +15,9 @@ use malkusch\bav\BAV;
 use malkusch\bav\ConfigurationRegistry;
 use malkusch\bav\DataBackend;
 use malkusch\bav\DataBackendContainer;
+use PHPUnit\Framework\TestCase;
 
-class LocaleTestCase extends \PHPUnit_Framework_TestCase
+class LocaleTestCase extends TestCase
 {
     protected function getBavMock()
     {

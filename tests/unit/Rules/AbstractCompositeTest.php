@@ -11,9 +11,10 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
 use Respect\Validation\Validatable;
 
-class AbstractCompositeTest extends \PHPUnit_Framework_TestCase
+class AbstractCompositeTest extends TestCase
 {
     public function testShouldDefineNameForInternalWhenAppendRuleToCompositeRule()
     {

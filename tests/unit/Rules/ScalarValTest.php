@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\ScalarVal
  * @covers \Respect\Validation\Exceptions\ScalarValException
  */
-class ScalarValTest extends \PHPUnit_Framework_TestCase
+class ScalarValTest extends TestCase
 {
     protected $rule;
 

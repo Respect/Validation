@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\FloatVal
  * @covers \Respect\Validation\Exceptions\FloatValException
  */
-class FloatValTest extends \PHPUnit_Framework_TestCase
+class FloatValTest extends TestCase
 {
     protected $floatValidator;
 

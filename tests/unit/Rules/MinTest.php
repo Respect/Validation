@@ -12,13 +12,14 @@
 namespace Respect\Validation\Rules;
 
 use DateTime;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Min
  * @covers \Respect\Validation\Exceptions\MinException
  */
-class MinTest extends \PHPUnit_Framework_TestCase
+class MinTest extends TestCase
 {
     /**
      * @dataProvider providerForValidMin

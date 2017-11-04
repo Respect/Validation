@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\MinimumAge
  * @covers \Respect\Validation\Exceptions\MinimumAgeException
  */
-class MininumAgeTest extends \PHPUnit_Framework_TestCase
+class MininumAgeTest extends TestCase
 {
     /**
      * @dataProvider providerForValidDateValidMinimumAge

@@ -11,6 +11,8 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 $GLOBALS['is_writable'] = null;
 
 function is_writable($writable)
@@ -29,7 +31,7 @@ function is_writable($writable)
  * @covers \Respect\Validation\Rules\Writable
  * @covers \Respect\Validation\Exceptions\WritableException
  */
-class WritableTest extends \PHPUnit_Framework_TestCase
+class WritableTest extends TestCase
 {
     /**
      * @covers \Respect\Validation\Rules\Writable::validate

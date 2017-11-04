@@ -11,9 +11,10 @@
 
 namespace Respect\Validation;
 
+use PHPUnit\Framework\TestCase;
 use Respect\Validation\Exceptions\ComponentException;
 
-class ValidatorTest extends \PHPUnit_Framework_TestCase
+class ValidatorTest extends TestCase
 {
     public function testStaticCreateShouldReturnNewValidator()
     {
@@ -22,7 +23,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 
     public function testInvalidRuleClassShouldThrowComponentException()
     {
-        $this->setExpectedException(ComponentException::class);
+        $this->expectException(ComponentException::class);
         Validator::iDoNotExistSoIShouldThrowException();
     }
 

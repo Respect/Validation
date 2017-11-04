@@ -11,6 +11,8 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 $GLOBALS['is_executable'] = null;
 
 function is_executable($executable)
@@ -29,7 +31,7 @@ function is_executable($executable)
  * @covers \Respect\Validation\Rules\Executable
  * @covers \Respect\Validation\Exceptions\ExecutableException
  */
-class ExecutableTest extends \PHPUnit_Framework_TestCase
+class ExecutableTest extends TestCase
 {
     public function testValidExecutableFileShouldReturnTrue()
     {

@@ -38,7 +38,7 @@ class CreditCardTest extends RuleTestCase
         $message = '"RespectCard" is not a valid credit card brand';
         $message .= ' (Available: American Express, Diners Club, Discover, JCB, MasterCard, Visa).';
 
-        $this->setExpectedException(ComponentException::class, $message);
+        $this->expectException(ComponentException::class, $message);
 
         new CreditCard('RespectCard');
     }

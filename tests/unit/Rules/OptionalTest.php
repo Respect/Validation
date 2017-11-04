@@ -11,6 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
 use Respect\Validation\Validatable;
 use stdClass;
 
@@ -18,7 +19,7 @@ use stdClass;
  * @group  rule
  * @covers \Respect\Validation\Rules\Optional
  */
-class OptionalTest extends \PHPUnit_Framework_TestCase
+class OptionalTest extends TestCase
 {
     public function providerForOptional()
     {

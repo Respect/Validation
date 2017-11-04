@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Infinite
  * @covers \Respect\Validation\Exceptions\InfiniteException
  */
-class InfiniteTest extends \PHPUnit_Framework_TestCase
+class InfiniteTest extends TestCase
 {
     protected $rule;
 

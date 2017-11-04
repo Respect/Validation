@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\ResourceType
  * @covers \Respect\Validation\Exceptions\ResourceTypeException
  */
-class ResourceTypeTest extends \PHPUnit_Framework_TestCase
+class ResourceTypeTest extends TestCase
 {
     protected $rule;
 
