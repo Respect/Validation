@@ -110,9 +110,9 @@ class HelloWorldException extends ValidationException
 
 Finally, we need to test if everything is running smooth. We have `RuleTestCase`
 that allows us to make easier to test rules, but you fell free to use the
-`PHPUnit_Framework_TestCase` if you want or you need it's necessary.
+`PHPUnit\Framework\TestCase` if you want or you need it's necessary.
 
-The `RuleTestCase` extends PHPUnit's `PHPUnit_Framework_TestCase` class, so you
+The `RuleTestCase` extends PHPUnit's `PHPUnit\Framework\TestCase` class, so you
 are able to use any methods of it. By extending `RuleTestCase` you should
 implement two methods that should return a [data provider][] with the rule as
 first item of the arrays:

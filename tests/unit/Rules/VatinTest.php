@@ -11,13 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
 use Respect\Validation\Validatable;
 
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Vatin
  */
-final class VatinTest extends \PHPUnit_Framework_TestCase
+final class VatinTest extends TestCase
 {
     public function testShouldAcceptCountryCodeOnConstructor()
     {

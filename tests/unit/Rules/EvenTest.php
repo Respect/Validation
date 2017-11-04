@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Even
  * @covers \Respect\Validation\Exceptions\EvenException
  */
-class EvenTest extends \PHPUnit_Framework_TestCase
+class EvenTest extends TestCase
 {
     protected $evenValidator;
 

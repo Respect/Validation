@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\AllOf
  * @covers \Respect\Validation\Exceptions\AllOfException
  */
-class AllOfTest extends \PHPUnit_Framework_TestCase
+class AllOfTest extends TestCase
 {
     public function testRemoveRulesShouldRemoveAllRules()
     {

@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\NumericVal
  * @covers \Respect\Validation\Exceptions\NumericValException
  */
-class NumericValTest extends \PHPUnit_Framework_TestCase
+class NumericValTest extends TestCase
 {
     protected $object;
 

@@ -12,13 +12,14 @@
 namespace Respect\Validation\Rules;
 
 use DateTimeImmutable;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\DateTime
  * @covers \Respect\Validation\Exceptions\DateTimeException
  */
-class DateTimeTest extends \PHPUnit_Framework_TestCase
+class DateTimeTest extends TestCase
 {
     protected $dateValidator;
 

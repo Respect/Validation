@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\PerfectSquare
  * @covers \Respect\Validation\Exceptions\PerfectSquareException
  */
-class PerfectSquareTest extends \PHPUnit_Framework_TestCase
+class PerfectSquareTest extends TestCase
 {
     protected $object;
 

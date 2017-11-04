@@ -11,11 +11,13 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\CountryCode
  */
-class CountryCodeTest extends \PHPUnit_Framework_TestCase
+class CountryCodeTest extends TestCase
 {
     /**
      * @expectedException        \Respect\Validation\Exceptions\ComponentException

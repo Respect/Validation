@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Sorted
  * @covers \Respect\Validation\Exceptions\SortedException
  */
-class SortedTest extends \PHPUnit_Framework_TestCase
+class SortedTest extends TestCase
 {
     public function testPasses()
     {

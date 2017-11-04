@@ -12,13 +12,14 @@
 namespace Respect\Validation\Rules;
 
 use ArrayObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\KeyNested
  * @covers \Respect\Validation\Exceptions\KeyNestedException
  */
-class KeyNestedTest extends \PHPUnit_Framework_TestCase
+class KeyNestedTest extends TestCase
 {
     public function testArrayWithPresentKeysWillReturnTrueForFullPathValidator()
     {

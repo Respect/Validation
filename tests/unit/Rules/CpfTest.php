@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Cpf
  * @covers \Respect\Validation\Exceptions\CpfException
  */
-class CpfTest extends \PHPUnit_Framework_TestCase
+class CpfTest extends TestCase
 {
     protected $cpfValidator;
 

@@ -11,9 +11,10 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
 use Respect\Validation\Validatable;
 
-final class AbstractRelatedTest extends \PHPUnit_Framework_TestCase
+final class AbstractRelatedTest extends TestCase
 {
     public function providerForOperations()
     {

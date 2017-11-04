@@ -11,6 +11,8 @@
 
 namespace Respect\Validation\Exceptions;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * phpunit has an issue with mocking exceptions when in HHVM:
  * https://github.com/sebastianbergmann/phpunit-mock-objects/issues/207.
@@ -19,7 +21,7 @@ class PrivateNestedValidationException extends NestedValidationException
 {
 }
 
-class NestedValidationExceptionTest extends \PHPUnit_Framework_TestCase
+class NestedValidationExceptionTest extends TestCase
 {
     public function testGetRelatedShouldReturnExceptionAddedByAddRelated()
     {

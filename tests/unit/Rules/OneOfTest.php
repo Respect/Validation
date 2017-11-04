@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\OneOf
  * @covers \Respect\Validation\Exceptions\OneOfException
  */
-class OneOfTest extends \PHPUnit_Framework_TestCase
+class OneOfTest extends TestCase
 {
     public function testValid()
     {
