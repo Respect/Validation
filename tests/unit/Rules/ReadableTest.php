@@ -11,6 +11,8 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 $GLOBALS['is_readable'] = null;
 
 function is_readable($readable)
@@ -29,7 +31,7 @@ function is_readable($readable)
  * @covers \Respect\Validation\Rules\Readable
  * @covers \Respect\Validation\Exceptions\ReadableException
  */
-class ReadableTest extends \PHPUnit_Framework_TestCase
+class ReadableTest extends TestCase
 {
     /**
      * @covers \Respect\Validation\Rules\Readable::validate

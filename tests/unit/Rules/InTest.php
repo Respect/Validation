@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\In
  * @covers \Respect\Validation\Exceptions\InException
  */
-class InTest extends \PHPUnit_Framework_TestCase
+class InTest extends TestCase
 {
     /**
      * @dataProvider providerForIn

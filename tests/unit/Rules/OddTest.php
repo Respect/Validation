@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Odd
  * @covers \Respect\Validation\Exceptions\OddException
  */
-class OddTest extends \PHPUnit_Framework_TestCase
+class OddTest extends TestCase
 {
     protected $object;
 

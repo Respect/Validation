@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Charset
  * @covers \Respect\Validation\Exceptions\CharsetException
  */
-class CharsetTest extends \PHPUnit_Framework_TestCase
+class CharsetTest extends TestCase
 {
     /**
      * @dataProvider providerForValidCharset

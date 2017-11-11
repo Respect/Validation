@@ -11,6 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
 use stdClass;
 
 /**
@@ -18,7 +19,7 @@ use stdClass;
  * @covers \Respect\Validation\Rules\Type
  * @covers \Respect\Validation\Exceptions\TypeException
  */
-class TypeTest extends \PHPUnit_Framework_TestCase
+class TypeTest extends TestCase
 {
     public function testShouldDefineTypeOnConstructor()
     {

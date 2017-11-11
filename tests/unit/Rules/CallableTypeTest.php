@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\CallableType
  * @covers \Respect\Validation\Exceptions\CallableTypeException
  */
-class CallableTypeTest extends \PHPUnit_Framework_TestCase
+class CallableTypeTest extends TestCase
 {
     protected $rule;
 

@@ -11,12 +11,13 @@
 
 namespace Respect\Validation;
 
+use PHPUnit\Framework\TestCase;
 use Respect\Validation\Rules\Uppercase;
 
 /**
  * @covers \Respect\Validation\Factory
  */
-class FactoryTest extends \PHPUnit_Framework_TestCase
+class FactoryTest extends TestCase
 {
     public function testShouldHaveRulePrefixesByDefault()
     {

@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\EndsWith
  * @covers \Respect\Validation\Exceptions\EndsWithException
  */
-class EndsWithTest extends \PHPUnit_Framework_TestCase
+class EndsWithTest extends TestCase
 {
     /**
      * @dataProvider providerForEndsWith

@@ -11,6 +11,8 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 $GLOBALS['is_link'] = null;
 
 function is_link($link)
@@ -29,7 +31,7 @@ function is_link($link)
  * @covers \Respect\Validation\Rules\SymbolicLink
  * @covers \Respect\Validation\Exceptions\SymbolicLinkException
  */
-class SymbolicLinkTest extends \PHPUnit_Framework_TestCase
+class SymbolicLinkTest extends TestCase
 {
     /**
      * @covers \Respect\Validation\Rules\SymbolicLink::validate

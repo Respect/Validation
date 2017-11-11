@@ -11,11 +11,13 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\AlwaysValid
  */
-class AlwaysValidTest extends \PHPUnit_Framework_TestCase
+class AlwaysValidTest extends TestCase
 {
     public function providerForValidAlwaysValid()
     {

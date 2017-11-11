@@ -11,10 +11,11 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
 use ReflectionObject;
 use Respect\Validation\Validatable;
 
-class AbstractWrapperTest extends \PHPUnit_Framework_TestCase
+class AbstractWrapperTest extends TestCase
 {
     /**
      * @expectedException \Respect\Validation\Exceptions\ComponentException

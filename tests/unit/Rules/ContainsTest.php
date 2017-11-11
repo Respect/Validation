@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Contains
  * @covers \Respect\Validation\Exceptions\ContainsException
  */
-class ContainsTest extends \PHPUnit_Framework_TestCase
+class ContainsTest extends TestCase
 {
     /**
      * @dataProvider providerForContainsIdentical

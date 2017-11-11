@@ -12,13 +12,14 @@
 namespace Respect\Validation\Rules;
 
 use DateTime;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\LeapDate
  * @covers \Respect\Validation\Exceptions\LeapDateException
  */
-class LeapDateTest extends \PHPUnit_Framework_TestCase
+class LeapDateTest extends TestCase
 {
     protected $leapDateValidator;
 
