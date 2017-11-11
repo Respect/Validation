@@ -17,7 +17,7 @@
     },
     "require-dev": {
         "egulias/email-validator": "^2.0",
-        "malkusch/bav": "^1.1",
+        "malkusch/bav": "^1.2",
         "malukenho/docheader": "^0.1.4",
         "mikey179/vfsStream": "^1.6",
         "phpunit/phpunit": "^6.4",
