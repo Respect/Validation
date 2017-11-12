@@ -27,11 +27,11 @@ class SfTest extends TestCase
         $constraintName = 'Time';
         $validConstraintValue = '04:20:00';
         $invalidConstraintValue = 'yada';
-        $this->assertTrue(
+        self::assertTrue(
             v::sf($constraintName)->validate($validConstraintValue),
             sprintf('"%s" should be valid under "%s" constraint.', $validConstraintValue, $constraintName)
         );
-        $this->assertFalse(
+        self::assertFalse(
             v::sf($constraintName)->validate($invalidConstraintValue),
             sprintf('"%s" should be invalid under "%s" constraint.', $invalidConstraintValue, $constraintName)
         );
@@ -44,7 +44,7 @@ class SfTest extends TestCase
     {
         $constraintName = 'Time';
         $validConstraintValue = '04:20:00';
-        $this->assertTrue(
+        self::assertTrue(
             v::sf($constraintName)->assert($validConstraintValue),
             sprintf('"%s" should be valid under "%s" constraint.', $validConstraintValue, $constraintName)
         );
@@ -65,7 +65,7 @@ class SfTest extends TestCase
 - Time
 EOF;
 
-            return $this->assertEquals(
+            return self::assertEquals(
                 $expectedValidationException,
                 $fullValidationMessage,
                 'Exception message is different from the one expected.'

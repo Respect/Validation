@@ -25,7 +25,7 @@ final class VatinTest extends TestCase
         $countryCode = 'PL';
         $rule = new Vatin($countryCode);
 
-        $this->assertInstanceOf(Validatable::class, $rule->getValidatable());
+        self::assertInstanceOf(Validatable::class, $rule->getValidatable());
     }
 
     /**

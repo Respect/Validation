@@ -43,7 +43,7 @@ class AbstractRuleTest extends TestCase
             ->with($input)
             ->will($this->returnValue($booleanResult));
 
-        $this->assertEquals(
+        self::assertEquals(
             $booleanResult,
             // Invoking it to trigger __invoke
             $abstractRuleMock($input),
@@ -146,7 +146,7 @@ class AbstractRuleTest extends TestCase
 
         $exception = $abstractRuleMock->reportError('something');
 
-        $this->assertInstanceOf(get_class($exceptionMock), $exception);
+        self::assertInstanceOf(get_class($exceptionMock), $exception);
     }
 
     /**
@@ -190,7 +190,7 @@ class AbstractRuleTest extends TestCase
             ->getMockBuilder(AbstractRule::class)
             ->getMockForAbstractClass();
 
-        $this->assertSame($abstractRuleMock, $abstractRuleMock->setTemplate('whatever'));
+        self::assertSame($abstractRuleMock, $abstractRuleMock->setTemplate('whatever'));
     }
 
     /**
@@ -202,7 +202,7 @@ class AbstractRuleTest extends TestCase
             ->getMockBuilder(AbstractRule::class)
             ->getMockForAbstractClass();
 
-        $this->assertSame($abstractRuleMock, $abstractRuleMock->setName('whatever'));
+        self::assertSame($abstractRuleMock, $abstractRuleMock->setName('whatever'));
     }
 
     /**
@@ -219,6 +219,6 @@ class AbstractRuleTest extends TestCase
 
         $abstractRuleMock->setName($name);
 
-        $this->assertSame($name, $abstractRuleMock->getName());
+        self::assertSame($name, $abstractRuleMock->getName());
     }
 }

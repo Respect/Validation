@@ -30,21 +30,21 @@ class LeapYearTest extends TestCase
 
     public function testValidLeapDate()
     {
-        $this->assertTrue($this->leapYearValidator->__invoke('2008'));
-        $this->assertTrue($this->leapYearValidator->__invoke('2008-02-29'));
-        $this->assertTrue($this->leapYearValidator->__invoke(2008));
-        $this->assertTrue($this->leapYearValidator->__invoke(
+        self::assertTrue($this->leapYearValidator->__invoke('2008'));
+        self::assertTrue($this->leapYearValidator->__invoke('2008-02-29'));
+        self::assertTrue($this->leapYearValidator->__invoke(2008));
+        self::assertTrue($this->leapYearValidator->__invoke(
             new DateTime('2008-02-29')));
     }
 
     public function testInvalidLeapDate()
     {
-        $this->assertFalse($this->leapYearValidator->__invoke(''));
-        $this->assertFalse($this->leapYearValidator->__invoke('2009'));
-        $this->assertFalse($this->leapYearValidator->__invoke('2009-02-29'));
-        $this->assertFalse($this->leapYearValidator->__invoke(2009));
-        $this->assertFalse($this->leapYearValidator->__invoke(
+        self::assertFalse($this->leapYearValidator->__invoke(''));
+        self::assertFalse($this->leapYearValidator->__invoke('2009'));
+        self::assertFalse($this->leapYearValidator->__invoke('2009-02-29'));
+        self::assertFalse($this->leapYearValidator->__invoke(2009));
+        self::assertFalse($this->leapYearValidator->__invoke(
             new DateTime('2009-02-29')));
-        $this->assertFalse($this->leapYearValidator->__invoke([]));
+        self::assertFalse($this->leapYearValidator->__invoke([]));
     }
 }

@@ -26,14 +26,14 @@ class ImageTest extends RuleTestCase
         $finfo = new finfo(FILEINFO_MIME_TYPE);
         $rule = new Image($finfo);
 
-        $this->assertSame($rule->fileInfo, $finfo);
+        self::assertSame($rule->fileInfo, $finfo);
     }
 
     public function testShouldHaveAnInstanceOfFinfoByDefault()
     {
         $rule = new Image();
 
-        $this->assertInstanceOf('finfo', $rule->fileInfo);
+        self::assertInstanceOf('finfo', $rule->fileInfo);
     }
 
     public function providerForValidInput()

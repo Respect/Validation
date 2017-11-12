@@ -23,7 +23,7 @@ class FactoryTest extends TestCase
     {
         $factory = new Factory();
 
-        $this->assertEquals(['Respect\\Validation\\Rules\\'], $factory->getRulePrefixes());
+        self::assertEquals(['Respect\\Validation\\Rules\\'], $factory->getRulePrefixes());
     }
 
     /**
@@ -36,7 +36,7 @@ class FactoryTest extends TestCase
 
         $currentRulePrefixes = $factory->getRulePrefixes();
 
-        $this->assertSame(
+        self::assertSame(
             $expectedNamespace,
             array_pop($currentRulePrefixes),
             'Appended namespace rule was not found as expected into the prefix list.'.PHP_EOL.
@@ -58,7 +58,7 @@ class FactoryTest extends TestCase
 
         $currentRulePrefixes = $factory->getRulePrefixes();
 
-        $this->assertContains(
+        self::assertContains(
             $expectedNamespace,
             array_shift($currentRulePrefixes),
             'Prepended namespace rule was not found as expected into the prefix list.'.PHP_EOL.
@@ -88,7 +88,7 @@ class FactoryTest extends TestCase
     {
         $factory = new Factory();
 
-        $this->assertInstanceOf(Uppercase::class, $factory->rule('uppercase'));
+        self::assertInstanceOf(Uppercase::class, $factory->rule('uppercase'));
     }
 
     public function testShouldDefineConstructorArgumentsWhenCreatingARule()
@@ -96,7 +96,7 @@ class FactoryTest extends TestCase
         $factory = new Factory();
         $rule = $factory->rule('dateTime', ['Y-m-d']);
 
-        $this->assertEquals('Y-m-d', $rule->format);
+        self::assertEquals('Y-m-d', $rule->format);
     }
 
     /**

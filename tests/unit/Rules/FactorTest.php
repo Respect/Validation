@@ -31,9 +31,9 @@ class FactorTest extends TestCase
     public function testValidFactorShouldReturnTrue($dividend, $input)
     {
         $min = new Factor($dividend);
-        $this->assertTrue($min->__invoke($input));
-        $this->assertTrue($min->check($input));
-        $this->assertTrue($min->assert($input));
+        self::assertTrue($min->__invoke($input));
+        self::assertTrue($min->check($input));
+        self::assertTrue($min->assert($input));
     }
 
     /**
@@ -47,8 +47,8 @@ class FactorTest extends TestCase
         );
 
         $min = new Factor($dividend);
-        $this->assertFalse($min->__invoke($input));
-        $this->assertFalse($min->assert($input));
+        self::assertFalse($min->__invoke($input));
+        self::assertFalse($min->assert($input));
     }
 
     /**

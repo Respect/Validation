@@ -32,9 +32,9 @@ class EvenTest extends TestCase
      */
     public function testEvenNumbersShouldPass($input)
     {
-        $this->assertTrue($this->evenValidator->validate($input));
-        $this->assertTrue($this->evenValidator->check($input));
-        $this->assertTrue($this->evenValidator->assert($input));
+        self::assertTrue($this->evenValidator->validate($input));
+        self::assertTrue($this->evenValidator->check($input));
+        self::assertTrue($this->evenValidator->assert($input));
     }
 
     /**
@@ -43,8 +43,8 @@ class EvenTest extends TestCase
      */
     public function testNotEvenNumbersShouldFail($input)
     {
-        $this->assertFalse($this->evenValidator->validate($input));
-        $this->assertFalse($this->evenValidator->assert($input));
+        self::assertFalse($this->evenValidator->validate($input));
+        self::assertFalse($this->evenValidator->assert($input));
     }
 
     public function providerForEven()

@@ -31,12 +31,12 @@ class CountryCodeTest extends TestCase
     public function testShouldUseISO3166Alpha2ByDefault()
     {
         $country = new CountryCode();
-        $this->assertEquals(CountryCode::ALPHA2, $country->set);
+        self::assertEquals(CountryCode::ALPHA2, $country->set);
     }
     public function testShouldDefineACountryFormatOnConstructor()
     {
         $country = new CountryCode(CountryCode::NUMERIC);
-        $this->assertEquals(CountryCode::NUMERIC, $country->set);
+        self::assertEquals(CountryCode::NUMERIC, $country->set);
     }
 
     public function providerForValidCountryCode()
@@ -70,7 +70,7 @@ class CountryCodeTest extends TestCase
     {
         $rule = new CountryCode($format);
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
@@ -80,6 +80,6 @@ class CountryCodeTest extends TestCase
     {
         $rule = new CountryCode($format);
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 }

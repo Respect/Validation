@@ -28,9 +28,9 @@ class BaseTest extends TestCase
     public function testBase($base, $input)
     {
         $object = new Base($base);
-        $this->assertTrue($object->__invoke($input));
-        $this->assertTrue($object->check($input));
-        $this->assertTrue($object->assert($input));
+        self::assertTrue($object->__invoke($input));
+        self::assertTrue($object->check($input));
+        self::assertTrue($object->assert($input));
     }
 
     /**
@@ -39,7 +39,7 @@ class BaseTest extends TestCase
     public function testInvalidBase($base, $input)
     {
         $object = new Base($base);
-        $this->assertFalse($object->__invoke($input));
+        self::assertFalse($object->__invoke($input));
     }
 
     /**
@@ -49,8 +49,8 @@ class BaseTest extends TestCase
     public function testExceptionBase($base, $input)
     {
         $object = new Base($base);
-        $this->assertTrue($object->__invoke($input));
-        $this->assertTrue($object->assert($input));
+        self::assertTrue($object->__invoke($input));
+        self::assertTrue($object->assert($input));
     }
 
     /**
@@ -59,9 +59,9 @@ class BaseTest extends TestCase
     public function testCustomBase($base, $custom, $input)
     {
         $object = new Base($base, $custom);
-        $this->assertTrue($object->__invoke($input));
-        $this->assertTrue($object->check($input));
-        $this->assertTrue($object->assert($input));
+        self::assertTrue($object->__invoke($input));
+        self::assertTrue($object->check($input));
+        self::assertTrue($object->assert($input));
     }
 
     public function providerForBase()

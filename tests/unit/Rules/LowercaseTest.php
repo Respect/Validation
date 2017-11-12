@@ -26,9 +26,9 @@ class LowercaseTest extends TestCase
     public function testValidLowercaseShouldReturnTrue($input)
     {
         $lowercase = new Lowercase();
-        $this->assertTrue($lowercase->__invoke($input));
-        $this->assertTrue($lowercase->assert($input));
-        $this->assertTrue($lowercase->check($input));
+        self::assertTrue($lowercase->__invoke($input));
+        self::assertTrue($lowercase->assert($input));
+        self::assertTrue($lowercase->check($input));
     }
 
     /**
@@ -38,8 +38,8 @@ class LowercaseTest extends TestCase
     public function testInvalidLowercaseShouldThrowException($input)
     {
         $lowercase = new Lowercase();
-        $this->assertFalse($lowercase->__invoke($input));
-        $this->assertFalse($lowercase->assert($input));
+        self::assertFalse($lowercase->__invoke($input));
+        self::assertFalse($lowercase->assert($input));
     }
 
     public function providerForValidLowercase()

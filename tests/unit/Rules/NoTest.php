@@ -27,7 +27,7 @@ class NoTest extends TestCase
         $actualPattern = $rule->regex;
         $expectedPattern = '/^n(o(t|pe)?|ix|ay)?$/i';
 
-        $this->assertEquals($expectedPattern, $actualPattern);
+        self::assertEquals($expectedPattern, $actualPattern);
     }
 
     public function testShouldUseLocalPatternForNoExpressionWhenDefined()
@@ -43,7 +43,7 @@ class NoTest extends TestCase
         $actualPattern = $rule->regex;
         $expectedPattern = '/'.nl_langinfo(NOEXPR).'/i';
 
-        $this->assertEquals($expectedPattern, $actualPattern);
+        self::assertEquals($expectedPattern, $actualPattern);
     }
 
     /**
@@ -53,7 +53,7 @@ class NoTest extends TestCase
     {
         $rule = new No();
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     public function validNoProvider()
@@ -75,7 +75,7 @@ class NoTest extends TestCase
     {
         $rule = new No();
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     public function invalidNoProvider()

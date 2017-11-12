@@ -26,9 +26,9 @@ class MultipleTest extends TestCase
     public function testValidNumberMultipleOf($multipleOf, $input)
     {
         $multiple = new Multiple($multipleOf);
-        $this->assertTrue($multiple->validate($input));
-        $this->assertTrue($multiple->assert($input));
-        $this->assertTrue($multiple->check($input));
+        self::assertTrue($multiple->validate($input));
+        self::assertTrue($multiple->assert($input));
+        self::assertTrue($multiple->check($input));
     }
 
     /**
@@ -38,8 +38,8 @@ class MultipleTest extends TestCase
     public function testNotMultipleShouldThrowMultipleException($multipleOf, $input)
     {
         $multiple = new Multiple($multipleOf);
-        $this->assertFalse($multiple->validate($input));
-        $this->assertFalse($multiple->assert($input));
+        self::assertFalse($multiple->validate($input));
+        self::assertFalse($multiple->assert($input));
     }
 
     public function providerForMultiple()

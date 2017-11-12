@@ -25,7 +25,7 @@ class KeyTest extends TestCase
         $validator = new Key('bar');
         $someArray = [];
         $someArray['bar'] = 'foo';
-        $this->assertTrue($validator->validate($someArray));
+        self::assertTrue($validator->validate($someArray));
     }
 
     public function testArrayWithNumericKeyShouldReturnTrue()
@@ -33,7 +33,7 @@ class KeyTest extends TestCase
         $validator = new Key(0);
         $someArray = [];
         $someArray[0] = 'foo';
-        $this->assertTrue($validator->validate($someArray));
+        self::assertTrue($validator->validate($someArray));
     }
 
     public function testEmptyInputMustReturnFalse()
@@ -41,7 +41,7 @@ class KeyTest extends TestCase
         $validator = new Key('someEmptyKey');
         $input = '';
 
-        $this->assertFalse($validator->validate($input));
+        self::assertFalse($validator->validate($input));
     }
 
     /**
@@ -68,7 +68,7 @@ class KeyTest extends TestCase
         $input = [];
         $input['someEmptyKey'] = '';
 
-        $this->assertTrue($validator->validate($input));
+        self::assertTrue($validator->validate($input));
     }
 
     public function testShouldHaveTheSameReturnValueForAllValidators()
@@ -88,7 +88,7 @@ class KeyTest extends TestCase
         } catch (\Exception $e) {
         }
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     /**
@@ -99,7 +99,7 @@ class KeyTest extends TestCase
         $validator = new Key('bar');
         $someArray = [];
         $someArray['baraaaaaa'] = 'foo';
-        $this->assertTrue($validator->assert($someArray));
+        self::assertTrue($validator->assert($someArray));
     }
     /**
      * @expectedException \Respect\Validation\Exceptions\KeyException
@@ -108,7 +108,7 @@ class KeyTest extends TestCase
     {
         $validator = new Key('bar');
         $someArray = 123;
-        $this->assertFalse($validator->assert($someArray));
+        self::assertFalse($validator->assert($someArray));
     }
 
     /**
@@ -125,7 +125,7 @@ class KeyTest extends TestCase
         $validator = new Key('bar', $subValidator);
         $someArray = [];
         $someArray['bar'] = 'foo';
-        $this->assertTrue($validator->assert($someArray));
+        self::assertTrue($validator->assert($someArray));
     }
 
     public function testNotMandatoryExtraValidatorShouldPassWithAbsentKey()
@@ -133,6 +133,6 @@ class KeyTest extends TestCase
         $subValidator = new Length(1, 3);
         $validator = new Key('bar', $subValidator, false);
         $someArray = [];
-        $this->assertTrue($validator->validate($someArray));
+        self::assertTrue($validator->validate($someArray));
     }
 }

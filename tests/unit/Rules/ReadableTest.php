@@ -42,7 +42,7 @@ class ReadableTest extends TestCase
 
         $rule = new Readable();
         $input = '/path/of/a/valid/readable/file.txt';
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
@@ -54,7 +54,7 @@ class ReadableTest extends TestCase
 
         $rule = new Readable();
         $input = '/path/of/an/invalid/readable/file.txt';
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     /**
@@ -68,6 +68,6 @@ class ReadableTest extends TestCase
                 ->method('isReadable')
                 ->will($this->returnValue(true));
 
-        $this->assertTrue($rule->validate($object));
+        self::assertTrue($rule->validate($object));
     }
 }

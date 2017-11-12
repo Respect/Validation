@@ -26,9 +26,9 @@ class InTest extends TestCase
     public function testSuccessInValidatorCases($input, $options = null)
     {
         $v = new In($options);
-        $this->assertTrue($v->__invoke($input));
-        $this->assertTrue($v->check($input));
-        $this->assertTrue($v->assert($input));
+        self::assertTrue($v->__invoke($input));
+        self::assertTrue($v->check($input));
+        self::assertTrue($v->assert($input));
     }
 
     /**
@@ -38,8 +38,8 @@ class InTest extends TestCase
     public function testInvalidInChecksShouldThrowInException($input, $options, $strict = false)
     {
         $v = new In($options, $strict);
-        $this->assertFalse($v->__invoke($input));
-        $this->assertFalse($v->assert($input));
+        self::assertFalse($v->__invoke($input));
+        self::assertFalse($v->assert($input));
     }
 
     /**

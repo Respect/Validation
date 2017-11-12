@@ -41,7 +41,7 @@ class SubdivisionCodeTest extends TestCase
     {
         $countrySubdivision = new SubdivisionCode('US');
 
-        $this->assertEquals('US', $countrySubdivision->countryCode);
+        self::assertEquals('US', $countrySubdivision->countryCode);
     }
 
     public function providerForValidSubdivisionCodeInformation()
@@ -62,7 +62,7 @@ class SubdivisionCodeTest extends TestCase
     {
         $countrySubdivision = new SubdivisionCode($countryCode);
 
-        $this->assertTrue($countrySubdivision->validate($input));
+        self::assertTrue($countrySubdivision->validate($input));
     }
 
     public function providerForInvalidSubdivisionCodeInformation()
@@ -81,7 +81,7 @@ class SubdivisionCodeTest extends TestCase
     {
         $countrySubdivision = new SubdivisionCode($countryCode);
 
-        $this->assertFalse($countrySubdivision->validate($input));
+        self::assertFalse($countrySubdivision->validate($input));
     }
 
     /**

@@ -77,7 +77,7 @@ class SizeTest extends TestCase
     {
         $rule = new Size($size);
 
-        $this->assertEquals($bytes, $rule->minValue);
+        self::assertEquals($bytes, $rule->minValue);
     }
 
     /**
@@ -96,7 +96,7 @@ class SizeTest extends TestCase
     {
         $rule = new Size($minSize, $maxSize);
 
-        $this->assertEquals($expectedValidation, $rule->validate($filename));
+        self::assertEquals($expectedValidation, $rule->validate($filename));
     }
 
     public function testShouldValidateSplFileInfo()
@@ -107,7 +107,7 @@ class SizeTest extends TestCase
 
         $rule = new Size('1MB', '2GB');
 
-        $this->assertTrue($rule->validate($file1GbObject));
+        self::assertTrue($rule->validate($file1GbObject));
     }
 
     /**

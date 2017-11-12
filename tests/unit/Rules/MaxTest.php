@@ -26,9 +26,9 @@ class MaxTest extends TestCase
     public function testValidMaxInputShouldReturnTrue($maxValue, $inclusive, $input)
     {
         $max = new Max($maxValue, $inclusive);
-        $this->assertTrue($max->validate($input));
-        $this->assertTrue($max->check($input));
-        $this->assertTrue($max->assert($input));
+        self::assertTrue($max->validate($input));
+        self::assertTrue($max->check($input));
+        self::assertTrue($max->assert($input));
     }
 
     /**
@@ -38,8 +38,8 @@ class MaxTest extends TestCase
     public function testInvalidMaxValueShouldThrowMaxException($maxValue, $inclusive, $input)
     {
         $max = new Max($maxValue, $inclusive);
-        $this->assertFalse($max->validate($input));
-        $this->assertFalse($max->assert($input));
+        self::assertFalse($max->validate($input));
+        self::assertFalse($max->assert($input));
     }
 
     public function providerForValidMax()

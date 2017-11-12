@@ -26,9 +26,9 @@ class IpTest extends TestCase
     public function testValidIpsShouldReturnTrue($input, $options = null)
     {
         $ipValidator = new Ip($options);
-        $this->assertTrue($ipValidator->__invoke($input));
-        $this->assertTrue($ipValidator->assert($input));
-        $this->assertTrue($ipValidator->check($input));
+        self::assertTrue($ipValidator->__invoke($input));
+        self::assertTrue($ipValidator->assert($input));
+        self::assertTrue($ipValidator->check($input));
     }
 
     /**
@@ -37,9 +37,9 @@ class IpTest extends TestCase
     public function testIpsBetweenRangeShouldReturnTrue($input, $networkRange)
     {
         $ipValidator = new Ip($networkRange);
-        $this->assertTrue($ipValidator->__invoke($input));
-        $this->assertTrue($ipValidator->assert($input));
-        $this->assertTrue($ipValidator->check($input));
+        self::assertTrue($ipValidator->__invoke($input));
+        self::assertTrue($ipValidator->assert($input));
+        self::assertTrue($ipValidator->check($input));
     }
 
     /**
@@ -49,8 +49,8 @@ class IpTest extends TestCase
     public function testInvalidIpsShouldThrowIpException($input, $options = null)
     {
         $ipValidator = new Ip($options);
-        $this->assertFalse($ipValidator->__invoke($input));
-        $this->assertFalse($ipValidator->assert($input));
+        self::assertFalse($ipValidator->__invoke($input));
+        self::assertFalse($ipValidator->assert($input));
     }
 
     /**
@@ -60,8 +60,8 @@ class IpTest extends TestCase
     public function testIpsOutsideRangeShouldReturnFalse($input, $networkRange)
     {
         $ipValidator = new Ip($networkRange);
-        $this->assertFalse($ipValidator->__invoke($input));
-        $this->assertFalse($ipValidator->assert($input));
+        self::assertFalse($ipValidator->__invoke($input));
+        self::assertFalse($ipValidator->assert($input));
     }
 
     public function providerForIp()

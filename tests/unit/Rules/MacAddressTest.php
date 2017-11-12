@@ -32,9 +32,9 @@ class MacAddressTest extends TestCase
      */
     public function testValidMacaddressesShouldReturnTrue($input)
     {
-        $this->assertTrue($this->macaddressValidator->__invoke($input));
-        $this->assertTrue($this->macaddressValidator->assert($input));
-        $this->assertTrue($this->macaddressValidator->check($input));
+        self::assertTrue($this->macaddressValidator->__invoke($input));
+        self::assertTrue($this->macaddressValidator->assert($input));
+        self::assertTrue($this->macaddressValidator->check($input));
     }
 
     /**
@@ -43,8 +43,8 @@ class MacAddressTest extends TestCase
      */
     public function testInvalidMacaddressShouldThrowMacAddressException($input)
     {
-        $this->assertFalse($this->macaddressValidator->__invoke($input));
-        $this->assertFalse($this->macaddressValidator->assert($input));
+        self::assertFalse($this->macaddressValidator->__invoke($input));
+        self::assertFalse($this->macaddressValidator->assert($input));
     }
 
     public function providerForMacAddress()

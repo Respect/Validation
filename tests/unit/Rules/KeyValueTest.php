@@ -28,51 +28,51 @@ class KeyValueTest extends TestCase
 
         $rule = new KeyValue($comparedKey, $ruleName, $baseKey);
 
-        $this->assertSame($comparedKey, $rule->comparedKey);
-        $this->assertSame($ruleName, $rule->ruleName);
-        $this->assertSame($baseKey, $rule->baseKey);
+        self::assertSame($comparedKey, $rule->comparedKey);
+        self::assertSame($ruleName, $rule->ruleName);
+        self::assertSame($baseKey, $rule->baseKey);
     }
 
     public function testShouldNotValidateWhenComparedKeyDoesNotExist()
     {
         $rule = new KeyValue('foo', 'equals', 'bar');
 
-        $this->assertFalse($rule->validate(['bar' => 42]));
+        self::assertFalse($rule->validate(['bar' => 42]));
     }
 
     public function testShouldNotValidateWhenBaseKeyDoesNotExist()
     {
         $rule = new KeyValue('foo', 'equals', 'bar');
 
-        $this->assertFalse($rule->validate(['foo' => true]));
+        self::assertFalse($rule->validate(['foo' => true]));
     }
 
     public function testShouldNotValidateRuleIsNotValid()
     {
         $rule = new KeyValue('foo', 'probably_not_a_rule', 'bar');
 
-        $this->assertFalse($rule->validate(['foo' => true, 'bar' => false]));
+        self::assertFalse($rule->validate(['foo' => true, 'bar' => false]));
     }
 
     public function testShouldValidateWhenDefinedValuesMatch()
     {
         $rule = new KeyValue('foo', 'equals', 'bar');
 
-        $this->assertTrue($rule->validate(['foo' => 42, 'bar' => 42]));
+        self::assertTrue($rule->validate(['foo' => 42, 'bar' => 42]));
     }
 
     public function testShouldValidateWhenDefinedValuesDoesNotMatch()
     {
         $rule = new KeyValue('foo', 'equals', 'bar');
 
-        $this->assertFalse($rule->validate(['foo' => 43, 'bar' => 42]));
+        self::assertFalse($rule->validate(['foo' => 43, 'bar' => 42]));
     }
 
     public function testShouldAssertWhenDefinedValuesMatch()
     {
         $rule = new KeyValue('foo', 'equals', 'bar');
 
-        $this->assertTrue($rule->assert(['foo' => 42, 'bar' => 42]));
+        self::assertTrue($rule->assert(['foo' => 42, 'bar' => 42]));
     }
 
     /**
@@ -99,7 +99,7 @@ class KeyValueTest extends TestCase
     {
         $rule = new KeyValue('foo', 'equals', 'bar');
 
-        $this->assertTrue($rule->check(['foo' => 42, 'bar' => 42]));
+        self::assertTrue($rule->check(['foo' => 42, 'bar' => 42]));
     }
 
     /**

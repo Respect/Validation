@@ -42,7 +42,7 @@ class SymbolicLinkTest extends TestCase
 
         $rule = new SymbolicLink();
         $input = '/path/of/a/valid/link.lnk';
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
@@ -54,7 +54,7 @@ class SymbolicLinkTest extends TestCase
 
         $rule = new SymbolicLink();
         $input = '/path/of/an/invalid/link.lnk';
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     /**
@@ -68,6 +68,6 @@ class SymbolicLinkTest extends TestCase
                 ->method('isLink')
                 ->will($this->returnValue(true));
 
-        $this->assertTrue($rule->validate($object));
+        self::assertTrue($rule->validate($object));
     }
 }

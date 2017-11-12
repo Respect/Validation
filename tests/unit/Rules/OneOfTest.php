@@ -34,9 +34,9 @@ class OneOfTest extends TestCase
 
         $rule = new OneOf($valid1, $valid2, $valid3);
 
-        $this->assertTrue($rule->validate('any'));
-        $this->assertTrue($rule->assert('any'));
-        $this->assertTrue($rule->check('any'));
+        self::assertTrue($rule->validate('any'));
+        self::assertTrue($rule->assert('any'));
+        self::assertTrue($rule->check('any'));
     }
 
     /**
@@ -46,8 +46,8 @@ class OneOfTest extends TestCase
     {
         $rule = new OneOf();
 
-        $this->assertFalse($rule->validate('any'));
-        $this->assertFalse($rule->check('any'));
+        self::assertFalse($rule->validate('any'));
+        self::assertFalse($rule->check('any'));
     }
 
     /**
@@ -65,8 +65,8 @@ class OneOfTest extends TestCase
             return false;
         });
         $rule = new OneOf($valid1, $valid2, $valid3);
-        $this->assertFalse($rule->validate('any'));
-        $this->assertFalse($rule->assert('any'));
+        self::assertFalse($rule->validate('any'));
+        self::assertFalse($rule->assert('any'));
     }
 
     /**
@@ -84,7 +84,7 @@ class OneOfTest extends TestCase
             return false;
         });
         $rule = new OneOf($valid1, $valid2, $valid3);
-        $this->assertFalse($rule->validate('any'));
+        self::assertFalse($rule->validate('any'));
 
         $rule->assert('any');
     }
@@ -105,7 +105,7 @@ class OneOfTest extends TestCase
         });
 
         $rule = new OneOf($valid1, $valid2, $valid3);
-        $this->assertFalse($rule->validate('any'));
+        self::assertFalse($rule->validate('any'));
 
         $rule->check('any');
     }
@@ -125,7 +125,7 @@ class OneOfTest extends TestCase
         });
 
         $rule = new OneOf($valid1, $valid2, $valid3);
-        $this->assertFalse($rule->validate('any'));
+        self::assertFalse($rule->validate('any'));
 
         $rule->check('any');
     }
@@ -136,7 +136,7 @@ class OneOfTest extends TestCase
     public function testInvalidCheck()
     {
         $rule = new OneOf(new Xdigit(), new Alnum());
-        $this->assertFalse($rule->validate(-10));
+        self::assertFalse($rule->validate(-10));
 
         $rule->check(-10);
     }

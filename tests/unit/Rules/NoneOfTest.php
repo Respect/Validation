@@ -32,9 +32,9 @@ class NoneOfTest extends TestCase
             return false;
         });
         $o = new NoneOf($valid1, $valid2, $valid3);
-        $this->assertTrue($o->validate('any'));
-        $this->assertTrue($o->assert('any'));
-        $this->assertTrue($o->check('any'));
+        self::assertTrue($o->validate('any'));
+        self::assertTrue($o->assert('any'));
+        self::assertTrue($o->check('any'));
     }
 
     /**
@@ -52,7 +52,7 @@ class NoneOfTest extends TestCase
             return true;
         });
         $o = new NoneOf($valid1, $valid2, $valid3);
-        $this->assertFalse($o->validate('any'));
-        $this->assertFalse($o->assert('any'));
+        self::assertFalse($o->validate('any'));
+        self::assertFalse($o->assert('any'));
     }
 }

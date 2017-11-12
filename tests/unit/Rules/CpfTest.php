@@ -32,7 +32,7 @@ class CpfTest extends TestCase
      */
     public function testFormattedCpfsShouldValidate($input)
     {
-        $this->assertTrue($this->cpfValidator->assert($input));
+        self::assertTrue($this->cpfValidator->assert($input));
     }
 
     /**
@@ -40,7 +40,7 @@ class CpfTest extends TestCase
      */
     public function testUnformattedCpfsShouldValidates($input)
     {
-        $this->assertTrue($this->cpfValidator->assert($input));
+        self::assertTrue($this->cpfValidator->assert($input));
     }
 
     /**
@@ -49,7 +49,7 @@ class CpfTest extends TestCase
      */
     public function testInvalidCpfShouldFailWhenFormatted($input)
     {
-        $this->assertFalse($this->cpfValidator->assert($input));
+        self::assertFalse($this->cpfValidator->assert($input));
     }
 
     /**
@@ -58,7 +58,7 @@ class CpfTest extends TestCase
      */
     public function testInvalidCpfShouldFailWhenNotFormatted($input)
     {
-        $this->assertFalse($this->cpfValidator->assert($input));
+        self::assertFalse($this->cpfValidator->assert($input));
     }
 
     /**
@@ -67,7 +67,7 @@ class CpfTest extends TestCase
      */
     public function testCpfsWithIncorrectLengthShouldFail($input)
     {
-        $this->assertFalse($this->cpfValidator->assert($input));
+        self::assertFalse($this->cpfValidator->assert($input));
     }
 
     public function providerValidFormattedCpf()

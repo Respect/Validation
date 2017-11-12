@@ -32,9 +32,9 @@ class NegativeTest extends TestCase
      */
     public function testNegativeShouldPass($input)
     {
-        $this->assertTrue($this->negativeValidator->assert($input));
-        $this->assertTrue($this->negativeValidator->__invoke($input));
-        $this->assertTrue($this->negativeValidator->check($input));
+        self::assertTrue($this->negativeValidator->assert($input));
+        self::assertTrue($this->negativeValidator->__invoke($input));
+        self::assertTrue($this->negativeValidator->check($input));
     }
 
     /**
@@ -43,8 +43,8 @@ class NegativeTest extends TestCase
      */
     public function testNotNegativeNumbersShouldThrowNegativeException($input)
     {
-        $this->assertFalse($this->negativeValidator->__invoke($input));
-        $this->assertFalse($this->negativeValidator->assert($input));
+        self::assertFalse($this->negativeValidator->__invoke($input));
+        self::assertFalse($this->negativeValidator->assert($input));
     }
 
     public function providerForNegative()

@@ -32,7 +32,7 @@ class NotEmptyTest extends TestCase
      */
     public function testStringNotEmpty($input)
     {
-        $this->assertTrue($this->object->assert($input));
+        self::assertTrue($this->object->assert($input));
     }
 
     /**
@@ -41,7 +41,7 @@ class NotEmptyTest extends TestCase
      */
     public function testStringEmpty($input)
     {
-        $this->assertFalse($this->object->assert($input));
+        self::assertFalse($this->object->assert($input));
     }
 
     public function providerForNotEmpty()

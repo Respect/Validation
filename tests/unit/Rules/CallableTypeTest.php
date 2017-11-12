@@ -32,7 +32,7 @@ class CallableTypeTest extends TestCase
      */
     public function testShouldValidateCallableTypeNumbers($input)
     {
-        $this->assertTrue($this->rule->validate($input));
+        self::assertTrue($this->rule->validate($input));
     }
 
     /**
@@ -40,7 +40,7 @@ class CallableTypeTest extends TestCase
      */
     public function testShouldNotValidateNonCallableTypeNumbers($input)
     {
-        $this->assertFalse($this->rule->validate($input));
+        self::assertFalse($this->rule->validate($input));
     }
 
     /**

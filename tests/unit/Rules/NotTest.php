@@ -27,7 +27,7 @@ class NotTest extends TestCase
     public function testNot($v, $input)
     {
         $not = new Not($v);
-        $this->assertTrue($not->assert($input));
+        self::assertTrue($not->assert($input));
     }
 
     /**
@@ -37,7 +37,7 @@ class NotTest extends TestCase
     public function testNotNotHaha($v, $input)
     {
         $not = new Not($v);
-        $this->assertFalse($not->assert($input));
+        self::assertFalse($not->assert($input));
     }
 
     /**
@@ -48,8 +48,8 @@ class NotTest extends TestCase
         $not = new Not($v);
         $not->setName('Foo');
 
-        $this->assertEquals('Foo', $not->getName());
-        $this->assertEquals('Foo', $v->getName());
+        self::assertEquals('Foo', $not->getName());
+        self::assertEquals('Foo', $v->getName());
     }
 
     public function providerForValidNot()

@@ -27,9 +27,9 @@ class MinTest extends TestCase
     public function testValidMinShouldReturnTrue($minValue, $inclusive, $input)
     {
         $min = new Min($minValue, $inclusive);
-        $this->assertTrue($min->__invoke($input));
-        $this->assertTrue($min->check($input));
-        $this->assertTrue($min->assert($input));
+        self::assertTrue($min->__invoke($input));
+        self::assertTrue($min->check($input));
+        self::assertTrue($min->assert($input));
     }
 
     /**
@@ -39,8 +39,8 @@ class MinTest extends TestCase
     public function testInvalidMinShouldThrowMinException($minValue, $inclusive, $input)
     {
         $min = new Min($minValue, $inclusive);
-        $this->assertFalse($min->__invoke($input));
-        $this->assertFalse($min->assert($input));
+        self::assertFalse($min->__invoke($input));
+        self::assertFalse($min->assert($input));
     }
 
     public function providerForValidMin()

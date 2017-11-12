@@ -54,19 +54,19 @@ class CheckExceptionsTest extends TestCase
     public function testRuleHasAnExceptionWhichHasValidApi($ruleName)
     {
         $exceptionClass = 'Respect\\Validation\\Exceptions\\'.$ruleName.'Exception';
-        $this->assertTrue(
+        self::assertTrue(
             class_exists($exceptionClass),
             sprintf('Expected exception class to exist: %s.', $ruleName)
         );
 
         $expectedMessage = 'Test exception message.';
         $exceptionObject = new $exceptionClass($expectedMessage);
-        $this->assertInstanceOf(
+        self::assertInstanceOf(
             'Exception',
             $exceptionObject,
             'Every exception should extend an Exception class.'
         );
-        $this->assertInstanceOf(
+        self::assertInstanceOf(
             ValidationException::class,
             $exceptionObject,
             'Every Respect/Validation exception must extend ValidationException.'

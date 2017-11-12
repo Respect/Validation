@@ -42,7 +42,7 @@ class UploadedTest extends TestCase
 
         $rule = new Uploaded();
         $input = '/path/of/a/valid/uploaded/file.txt';
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
@@ -54,7 +54,7 @@ class UploadedTest extends TestCase
 
         $rule = new Uploaded();
         $input = '/path/of/an/invalid/uploaded/file.txt';
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     /**
@@ -67,6 +67,6 @@ class UploadedTest extends TestCase
         $rule = new Uploaded();
         $object = new \SplFileInfo('/path/of/an/uploaded/file');
 
-        $this->assertTrue($rule->validate($object));
+        self::assertTrue($rule->validate($object));
     }
 }

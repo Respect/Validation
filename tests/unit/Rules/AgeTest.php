@@ -74,7 +74,7 @@ class AgeTest extends TestCase
     {
         $rule = new Age($minAge, $maxAge);
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     public function providerForInvalidAge()
@@ -100,7 +100,7 @@ class AgeTest extends TestCase
     {
         $rule = new Age($minAge, $maxAge);
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     /**

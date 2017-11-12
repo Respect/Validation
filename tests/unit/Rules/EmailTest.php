@@ -70,7 +70,7 @@ class EmailTest extends TestCase
 
         $rule = new Email($emailValidator);
 
-        $this->assertSame($emailValidator, $rule->getEmailValidator());
+        self::assertSame($emailValidator, $rule->getEmailValidator());
     }
 
     public function testShouldHaveADefaultInstanceOfEmailValidator()
@@ -79,7 +79,7 @@ class EmailTest extends TestCase
 
         $rule = new Email();
 
-        $this->assertInstanceOf(EmailValidator::class, $rule->getEmailValidator());
+        self::assertInstanceOf(EmailValidator::class, $rule->getEmailValidator());
     }
 
     public function testShouldUseEmailValidatorWhenDefined()
@@ -97,7 +97,7 @@ class EmailTest extends TestCase
 
         $rule = new Email($emailValidator);
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
@@ -106,9 +106,9 @@ class EmailTest extends TestCase
     public function testValidEmailShouldPass($validEmail)
     {
         $validator = new Email();
-        $this->assertTrue($validator->__invoke($validEmail));
-        $this->assertTrue($validator->check($validEmail));
-        $this->assertTrue($validator->assert($validEmail));
+        self::assertTrue($validator->__invoke($validEmail));
+        self::assertTrue($validator->check($validEmail));
+        self::assertTrue($validator->assert($validEmail));
     }
 
     /**
@@ -118,8 +118,8 @@ class EmailTest extends TestCase
     public function testInvalidEmailsShouldFailValidation($invalidEmail)
     {
         $validator = new Email();
-        $this->assertFalse($validator->__invoke($invalidEmail));
-        $this->assertFalse($validator->assert($invalidEmail));
+        self::assertFalse($validator->__invoke($invalidEmail));
+        self::assertFalse($validator->assert($invalidEmail));
     }
 
     public function providerForValidEmail()

@@ -23,14 +23,14 @@ class CreditCardTest extends RuleTestCase
     {
         $rule = new CreditCard();
 
-        $this->assertNull($rule->brand);
+        self::assertNull($rule->brand);
     }
 
     public function testShouldAcceptCreditCardBrandOnConstructor()
     {
         $rule = new CreditCard(CreditCard::VISA);
 
-        $this->assertSame(CreditCard::VISA, $rule->brand);
+        self::assertSame(CreditCard::VISA, $rule->brand);
     }
 
     public function testShouldThrowExceptionWhenCreditCardBrandIsNotValid()

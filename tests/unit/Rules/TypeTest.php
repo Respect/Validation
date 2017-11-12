@@ -26,14 +26,14 @@ class TypeTest extends TestCase
         $type = 'int';
         $rule = new Type($type);
 
-        $this->assertSame($type, $rule->type);
+        self::assertSame($type, $rule->type);
     }
 
     public function testShouldNotBeCaseSensitive()
     {
         $rule = new Type('InTeGeR');
 
-        $this->assertTrue($rule->validate(42));
+        self::assertTrue($rule->validate(42));
     }
 
     /**
@@ -52,7 +52,7 @@ class TypeTest extends TestCase
     {
         $rule = new Type($type);
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
@@ -62,7 +62,7 @@ class TypeTest extends TestCase
     {
         $rule = new Type($type);
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     /**

@@ -22,7 +22,7 @@ class AbstractRegexRuleTest extends TestCase
             ->method('getPregFormat')
             ->will($this->returnValue('/^Respect$/'));
 
-        $this->assertEquals(1, $regexRuleMock->validateClean('Respect'));
+        self::assertEquals(1, $regexRuleMock->validateClean('Respect'));
     }
 
     public function testValidateCleanShouldReturnZeroIfPatternIsNotFound()
@@ -32,6 +32,6 @@ class AbstractRegexRuleTest extends TestCase
             ->method('getPregFormat')
             ->will($this->returnValue('/^Respect$/'));
 
-        $this->assertEquals(0, $regexRuleMock->validateClean('Validation'));
+        self::assertEquals(0, $regexRuleMock->validateClean('Validation'));
     }
 }

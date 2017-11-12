@@ -32,9 +32,9 @@ class RomanTest extends TestCase
      */
     public function testValidRomansShouldReturnTrue($input)
     {
-        $this->assertTrue($this->romanValidator->__invoke($input));
-        $this->assertTrue($this->romanValidator->assert($input));
-        $this->assertTrue($this->romanValidator->check($input));
+        self::assertTrue($this->romanValidator->__invoke($input));
+        self::assertTrue($this->romanValidator->assert($input));
+        self::assertTrue($this->romanValidator->check($input));
     }
 
     /**
@@ -43,8 +43,8 @@ class RomanTest extends TestCase
      */
     public function testInvalidRomansShouldThrowRomanException($input)
     {
-        $this->assertFalse($this->romanValidator->__invoke($input));
-        $this->assertFalse($this->romanValidator->assert($input));
+        self::assertFalse($this->romanValidator->__invoke($input));
+        self::assertFalse($this->romanValidator->assert($input));
     }
 
     public function providerForRoman()

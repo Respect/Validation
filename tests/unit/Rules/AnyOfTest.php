@@ -32,9 +32,9 @@ class AnyOfTest extends TestCase
             return false;
         });
         $o = new AnyOf($valid1, $valid2, $valid3);
-        $this->assertTrue($o->validate('any'));
-        $this->assertTrue($o->assert('any'));
-        $this->assertTrue($o->check('any'));
+        self::assertTrue($o->validate('any'));
+        self::assertTrue($o->assert('any'));
+        self::assertTrue($o->check('any'));
     }
 
     /**
@@ -52,8 +52,8 @@ class AnyOfTest extends TestCase
             return false;
         });
         $o = new AnyOf($valid1, $valid2, $valid3);
-        $this->assertFalse($o->validate('any'));
-        $this->assertFalse($o->assert('any'));
+        self::assertFalse($o->validate('any'));
+        self::assertFalse($o->assert('any'));
     }
 
     /**
@@ -62,7 +62,7 @@ class AnyOfTest extends TestCase
     public function testInvalidCheck()
     {
         $o = new AnyOf(new Xdigit(), new Alnum());
-        $this->assertFalse($o->validate(-10));
-        $this->assertFalse($o->check(-10));
+        self::assertFalse($o->validate(-10));
+        self::assertFalse($o->check(-10));
     }
 }

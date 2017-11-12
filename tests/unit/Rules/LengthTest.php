@@ -26,7 +26,7 @@ class LengthTest extends TestCase
     public function testLengthInsideBoundsForInclusiveCasesReturnTrue($string, $min, $max)
     {
         $validator = new Length($min, $max, true);
-        $this->assertTrue($validator->validate($string));
+        self::assertTrue($validator->validate($string));
     }
 
     /**
@@ -35,7 +35,7 @@ class LengthTest extends TestCase
     public function testLengthInsideBoundsForNonInclusiveCasesShouldReturnTrue($string, $min, $max)
     {
         $validator = new Length($min, $max, false);
-        $this->assertTrue($validator->validate($string));
+        self::assertTrue($validator->validate($string));
     }
 
     /**
@@ -44,7 +44,7 @@ class LengthTest extends TestCase
     public function testLengthOutsideBoundsForInclusiveCasesReturnFalse($string, $min, $max)
     {
         $validator = new Length($min, $max, true);
-        $this->assertfalse($validator->validate($string));
+        self::assertfalse($validator->validate($string));
     }
 
     /**
@@ -53,7 +53,7 @@ class LengthTest extends TestCase
     public function testLengthOutsideBoundsForNonInclusiveCasesReturnFalse($string, $min, $max)
     {
         $validator = new Length($min, $max, false);
-        $this->assertfalse($validator->validate($string));
+        self::assertfalse($validator->validate($string));
     }
 
     /**

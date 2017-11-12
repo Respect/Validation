@@ -39,7 +39,7 @@ class ExtensionTest extends TestCase
     {
         $rule = new Extension($extension);
 
-        $this->assertTrue($rule->validate($filename));
+        self::assertTrue($rule->validate($filename));
     }
 
     public function testShouldAcceptSplFileInfo()
@@ -48,7 +48,7 @@ class ExtensionTest extends TestCase
 
         $rule = new Extension('php');
 
-        $this->assertTrue($rule->validate($fileInfo));
+        self::assertTrue($rule->validate($fileInfo));
     }
 
     public function testShouldInvalidWhenNotStringNorSplFileInfo()
@@ -57,7 +57,7 @@ class ExtensionTest extends TestCase
 
         $rule = new Extension('php');
 
-        $this->assertFalse($rule->validate($nonFile));
+        self::assertFalse($rule->validate($nonFile));
     }
 
     /**

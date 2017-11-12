@@ -30,7 +30,7 @@ class ExistsTest extends TestCase
     public function testExistentFileShouldReturnTrue($file)
     {
         $rule = new Exists();
-        $this->assertTrue($rule->validate($file->url()));
+        self::assertTrue($rule->validate($file->url()));
     }
 
     /**
@@ -39,7 +39,7 @@ class ExistsTest extends TestCase
     public function testNonExistentFileShouldReturnFalse()
     {
         $rule = new Exists();
-        $this->assertFalse($rule->validate('/path/of/a/non-existent/file'));
+        self::assertFalse($rule->validate('/path/of/a/non-existent/file'));
     }
 
     /**
@@ -50,7 +50,7 @@ class ExistsTest extends TestCase
     {
         $rule = new Exists();
         $object = new SplFileInfo($file->url());
-        $this->assertTrue($rule->validate($object));
+        self::assertTrue($rule->validate($object));
     }
 
     public function fileProvider()

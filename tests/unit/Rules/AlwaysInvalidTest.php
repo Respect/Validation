@@ -41,6 +41,6 @@ class AlwaysInvalidTest extends TestCase
     {
         $rule = new AlwaysInvalid();
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 }

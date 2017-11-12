@@ -80,21 +80,21 @@ class MimetypeTest extends TestCase
 
         $rule = new Mimetype($mimetype, $fileInfoMock);
 
-        $this->assertTrue($rule->validate($fileInfo));
+        self::assertTrue($rule->validate($fileInfo));
     }
 
     public function testShouldInvalidateWhenNotStringNorSplFileInfo()
     {
         $rule = new Mimetype('application/octet-stream');
 
-        $this->assertFalse($rule->validate([__FILE__]));
+        self::assertFalse($rule->validate([__FILE__]));
     }
 
     public function testShouldInvalidateWhenItIsNotAValidFile()
     {
         $rule = new Mimetype('application/octet-stream');
 
-        $this->assertFalse($rule->validate(__DIR__));
+        self::assertFalse($rule->validate(__DIR__));
     }
 
     /**

@@ -26,7 +26,7 @@ class CharsetTest extends TestCase
     public function testValidDataWithCharsetShouldReturnTrue($charset, $input)
     {
         $validator = new Charset($charset);
-        $this->assertTrue($validator->__invoke($input));
+        self::assertTrue($validator->__invoke($input));
     }
 
     /**
@@ -36,8 +36,8 @@ class CharsetTest extends TestCase
     public function testInvalidCharsetShouldFailAndThrowCharsetException($charset, $input)
     {
         $validator = new Charset($charset);
-        $this->assertFalse($validator->__invoke($input));
-        $this->assertFalse($validator->assert($input));
+        self::assertFalse($validator->__invoke($input));
+        self::assertFalse($validator->assert($input));
     }
 
     /**

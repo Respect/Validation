@@ -34,9 +34,9 @@ class DomainTest extends TestCase
     public function testValidDomainsShouldReturnTrue($input, $tldcheck = true)
     {
         $this->object->tldCheck($tldcheck);
-        $this->assertTrue($this->object->__invoke($input));
-        $this->assertTrue($this->object->assert($input));
-        $this->assertTrue($this->object->check($input));
+        self::assertTrue($this->object->__invoke($input));
+        self::assertTrue($this->object->assert($input));
+        self::assertTrue($this->object->check($input));
     }
 
     /**
@@ -46,7 +46,7 @@ class DomainTest extends TestCase
     public function testNotDomain($input, $tldcheck = true)
     {
         $this->object->tldCheck($tldcheck);
-        $this->assertFalse($this->object->check($input));
+        self::assertFalse($this->object->check($input));
     }
 
     /**
@@ -56,7 +56,7 @@ class DomainTest extends TestCase
     public function testNotDomainCheck($input, $tldcheck = true)
     {
         $this->object->tldCheck($tldcheck);
-        $this->assertFalse($this->object->assert($input));
+        self::assertFalse($this->object->assert($input));
     }
 
     public function providerForDomain()
@@ -91,7 +91,7 @@ class DomainTest extends TestCase
      */
     public function testBuilder($validDomain, $checkTLD = true)
     {
-        $this->assertTrue(
+        self::assertTrue(
             v::domain($checkTLD)->validate($validDomain),
             sprintf('Domain "%s" should be valid. (Check TLD: %s)', $validDomain, var_export($checkTLD, true))
         );

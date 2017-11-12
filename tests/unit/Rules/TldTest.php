@@ -39,7 +39,7 @@ class TldTest extends TestCase
     {
         $rule = new Tld();
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     public function providerForInvalidTld()
@@ -59,6 +59,6 @@ class TldTest extends TestCase
     {
         $rule = new Tld();
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 }

@@ -23,12 +23,12 @@ class BoolTypeTest extends TestCase
     public function testBooleanValuesONLYShouldReturnTrue()
     {
         $validator = new BoolType();
-        $this->assertTrue($validator->__invoke(true));
-        $this->assertTrue($validator->__invoke(false));
-        $this->assertTrue($validator->assert(true));
-        $this->assertTrue($validator->assert(false));
-        $this->assertTrue($validator->check(true));
-        $this->assertTrue($validator->check(false));
+        self::assertTrue($validator->__invoke(true));
+        self::assertTrue($validator->__invoke(false));
+        self::assertTrue($validator->assert(true));
+        self::assertTrue($validator->assert(false));
+        self::assertTrue($validator->check(true));
+        self::assertTrue($validator->check(false));
     }
 
     /**
@@ -37,19 +37,19 @@ class BoolTypeTest extends TestCase
     public function testInvalidBooleanShouldRaiseException()
     {
         $validator = new BoolType();
-        $this->assertFalse($validator->check('foo'));
+        self::assertFalse($validator->check('foo'));
     }
 
     public function testInvalidBooleanValuesShouldReturnFalse()
     {
         $validator = new BoolType();
-        $this->assertFalse($validator->__invoke(''));
-        $this->assertFalse($validator->__invoke('foo'));
-        $this->assertFalse($validator->__invoke(123123));
-        $this->assertFalse($validator->__invoke(new \stdClass()));
-        $this->assertFalse($validator->__invoke([]));
-        $this->assertFalse($validator->__invoke(1));
-        $this->assertFalse($validator->__invoke(0));
-        $this->assertFalse($validator->__invoke(null));
+        self::assertFalse($validator->__invoke(''));
+        self::assertFalse($validator->__invoke('foo'));
+        self::assertFalse($validator->__invoke(123123));
+        self::assertFalse($validator->__invoke(new \stdClass()));
+        self::assertFalse($validator->__invoke([]));
+        self::assertFalse($validator->__invoke(1));
+        self::assertFalse($validator->__invoke(0));
+        self::assertFalse($validator->__invoke(null));
     }
 }

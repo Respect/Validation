@@ -40,7 +40,7 @@ class BsnTest extends TestCase
      */
     public function testShouldValidateBsn($input)
     {
-        $this->assertTrue($this->rule->validate($input));
+        self::assertTrue($this->rule->validate($input));
     }
 
     /**
@@ -50,7 +50,7 @@ class BsnTest extends TestCase
      */
     public function testShouldNotValidateBsn($input)
     {
-        $this->assertFalse($this->rule->validate($input));
+        self::assertFalse($this->rule->validate($input));
     }
 
     /**

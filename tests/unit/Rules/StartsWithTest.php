@@ -26,9 +26,9 @@ class StartsWithTest extends TestCase
     public function testStartsWith($start, $input)
     {
         $v = new StartsWith($start);
-        $this->assertTrue($v->__invoke($input));
-        $this->assertTrue($v->check($input));
-        $this->assertTrue($v->assert($input));
+        self::assertTrue($v->__invoke($input));
+        self::assertTrue($v->check($input));
+        self::assertTrue($v->assert($input));
     }
 
     /**
@@ -38,8 +38,8 @@ class StartsWithTest extends TestCase
     public function testNotStartsWith($start, $input, $caseSensitive = false)
     {
         $v = new StartsWith($start, $caseSensitive);
-        $this->assertFalse($v->__invoke($input));
-        $this->assertFalse($v->assert($input));
+        self::assertFalse($v->__invoke($input));
+        self::assertFalse($v->assert($input));
     }
 
     public function providerForStartsWith()

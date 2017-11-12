@@ -26,9 +26,9 @@ class VersionTest extends TestCase
     public function testValidVersionShouldReturnTrue($input)
     {
         $rule = new Version();
-        $this->assertTrue($rule->__invoke($input));
-        $this->assertTrue($rule->assert($input));
-        $this->assertTrue($rule->check($input));
+        self::assertTrue($rule->__invoke($input));
+        self::assertTrue($rule->assert($input));
+        self::assertTrue($rule->check($input));
     }
 
     /**
@@ -38,8 +38,8 @@ class VersionTest extends TestCase
     public function testInvalidVersionShouldThrowException($input)
     {
         $rule = new Version();
-        $this->assertFalse($rule->__invoke($input));
-        $this->assertFalse($rule->assert($input));
+        self::assertFalse($rule->__invoke($input));
+        self::assertFalse($rule->assert($input));
     }
 
     public function providerForValidVersion()

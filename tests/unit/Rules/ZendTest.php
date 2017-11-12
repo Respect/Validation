@@ -26,7 +26,7 @@ class ZendTest extends TestCase
     public function testConstructorWithValidatorName()
     {
         $v = new Zend('Date');
-        $this->assertAttributeInstanceOf(
+        self::assertAttributeInstanceOf(
             $instanceOf = ValidatorInterface::class,
             $attribute = 'zendValidator',
             $instance = $v
@@ -39,7 +39,7 @@ class ZendTest extends TestCase
     public function testConstructorWithValidatorClassName()
     {
         $v = new Zend(ZendDate::class);
-        $this->assertAttributeInstanceOf(
+        self::assertAttributeInstanceOf(
             $instanceOf = ValidatorInterface::class,
             $attribute = 'zendValidator',
             $instance = $v
@@ -50,7 +50,7 @@ class ZendTest extends TestCase
     {
         $zendInstance = new ZendDate();
         $v = new Zend($zendInstance);
-        $this->assertAttributeSame(
+        self::assertAttributeSame(
             $expected = $zendInstance,
             $attribute = 'zendValidator',
             $instance = $v
@@ -63,7 +63,7 @@ class ZendTest extends TestCase
     public function testUserlandValidatorExtendingZendInterface()
     {
         $v = new Zend(new MyValidator());
-        $this->assertAttributeInstanceOf(
+        self::assertAttributeInstanceOf(
             $instanceOf = ValidatorInterface::class,
             $attribute = 'zendValidator',
             $instance = $v
@@ -73,7 +73,7 @@ class ZendTest extends TestCase
     public function testConstructorWithZendValidatorPartialNamespace()
     {
         $v = new Zend('Sitemap\Lastmod');
-        $this->assertAttributeInstanceOf(
+        self::assertAttributeInstanceOf(
             $instanceOf = ValidatorInterface::class,
             $attribute = 'zendValidator',
             $instance = $v
@@ -89,7 +89,7 @@ class ZendTest extends TestCase
         $zendValidatorName = 'StringLength';
         $zendValidatorParams = ['min' => 10, 'max' => 25];
         $v = new Zend($zendValidatorName, $zendValidatorParams);
-        $this->assertTrue(
+        self::assertTrue(
             $v->validate('12345678901'),
             'The value should be valid for Zend\'s validator'
         );
@@ -102,8 +102,8 @@ class ZendTest extends TestCase
     {
         $v = new Zend('Date');
         $date = new DateTime();
-        $this->assertTrue($v->validate($date));
-        $this->assertTrue($v->assert($date));
+        self::assertTrue($v->validate($date));
+        self::assertTrue($v->assert($date));
     }
 
     /**
@@ -115,11 +115,11 @@ class ZendTest extends TestCase
     {
         $v = new Zend('Date');
         $notValid = 'a';
-        $this->assertFalse(
+        self::assertFalse(
             $v->validate($notValid),
             'The validator returned true for an invalid value, this won\'t cause an exception later on.'
         );
-        $this->assertFalse(
+        self::assertFalse(
             $v->assert($notValid)
         );
     }
@@ -133,7 +133,7 @@ class ZendTest extends TestCase
     public function testParamsNot()
     {
         $v = new Zend('StringLength', ['min' => 10, 'max' => 25]);
-        $this->assertFalse($v->assert('aw'));
+        self::assertFalse($v->assert('aw'));
     }
 }
 

@@ -32,9 +32,9 @@ class IntValTest extends TestCase
      */
     public function testValidIntegersShouldReturnTrue($input)
     {
-        $this->assertTrue($this->intValidator->__invoke($input));
-        $this->assertTrue($this->intValidator->check($input));
-        $this->assertTrue($this->intValidator->assert($input));
+        self::assertTrue($this->intValidator->__invoke($input));
+        self::assertTrue($this->intValidator->check($input));
+        self::assertTrue($this->intValidator->assert($input));
     }
 
     /**
@@ -43,8 +43,8 @@ class IntValTest extends TestCase
      */
     public function testInvalidIntegersShouldThrowIntException($input)
     {
-        $this->assertFalse($this->intValidator->__invoke($input));
-        $this->assertFalse($this->intValidator->assert($input));
+        self::assertFalse($this->intValidator->__invoke($input));
+        self::assertFalse($this->intValidator->assert($input));
     }
 
     public function providerForInt()

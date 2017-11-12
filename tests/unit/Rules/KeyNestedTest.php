@@ -36,7 +36,7 @@ class KeyNestedTest extends TestCase
 
         $rule = new KeyNested('bar.foo.baz');
 
-        $this->assertTrue($rule->validate($array));
+        self::assertTrue($rule->validate($array));
     }
 
     public function testArrayWithNumericKeysWillReturnTrueForFullPathValidator()
@@ -47,7 +47,7 @@ class KeyNestedTest extends TestCase
 
         $rule = new KeyNested(0, new Equals('Zero, the hero!'));
 
-        $this->assertTrue($rule->check($array));
+        self::assertTrue($rule->check($array));
     }
 
     public function testArrayWithPresentKeysWillReturnTrueForHalfPathValidator()
@@ -65,7 +65,7 @@ class KeyNestedTest extends TestCase
 
         $rule = new KeyNested('bar.foo');
 
-        $this->assertTrue($rule->validate($array));
+        self::assertTrue($rule->validate($array));
     }
 
     public function testObjectWithPresentPropertiesWillReturnTrueForDirtyPathValidator()
@@ -83,14 +83,14 @@ class KeyNestedTest extends TestCase
 
         $rule = new KeyNested('bar.foooo.');
 
-        $this->assertTrue($rule->validate($object));
+        self::assertTrue($rule->validate($object));
     }
 
     public function testEmptyInputMustReturnFalse()
     {
         $rule = new KeyNested('bar.foo.baz');
 
-        $this->assertFalse($rule->validate(''));
+        self::assertFalse($rule->validate(''));
     }
 
     /**
@@ -116,7 +116,7 @@ class KeyNestedTest extends TestCase
         $rule = new KeyNested('emptyKey');
         $input = ['emptyKey' => ''];
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
@@ -130,7 +130,7 @@ class KeyNestedTest extends TestCase
                 'bar' => 'foo',
             ],
         ];
-        $this->assertTrue($validator->assert($object));
+        self::assertTrue($validator->assert($object));
     }
 
     /**
@@ -140,7 +140,7 @@ class KeyNestedTest extends TestCase
     {
         $validator = new KeyNested('baz.bar');
         $object = 123;
-        $this->assertFalse($validator->assert($object));
+        self::assertFalse($validator->assert($object));
     }
 
     public function testExtraValidatorShouldValidateKey()
@@ -154,7 +154,7 @@ class KeyNestedTest extends TestCase
                 ],
             ],
         ];
-        $this->assertTrue($validator->assert($object));
+        self::assertTrue($validator->assert($object));
     }
 
     public function testNotMandatoryExtraValidatorShouldPassWithAbsentKey()
@@ -162,7 +162,7 @@ class KeyNestedTest extends TestCase
         $subValidator = new Length(1, 3);
         $validator = new KeyNested('bar.rab', $subValidator, false);
         $object = new \stdClass();
-        $this->assertTrue($validator->validate($object));
+        self::assertTrue($validator->validate($object));
     }
 
     public function testArrayAccessWithPresentKeysWillReturnTrue()
@@ -180,6 +180,6 @@ class KeyNestedTest extends TestCase
 
         $rule = new KeyNested('bar.foo.baz');
 
-        $this->assertTrue($rule->validate($arrayAccess));
+        self::assertTrue($rule->validate($arrayAccess));
     }
 }

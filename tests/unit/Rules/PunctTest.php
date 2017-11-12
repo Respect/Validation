@@ -26,7 +26,7 @@ class PunctTest extends TestCase
     public function testValidDataWithPunctShouldReturnTrue($validPunct, $additional = '')
     {
         $validator = new Punct($additional);
-        $this->assertTrue($validator->validate($validPunct));
+        self::assertTrue($validator->validate($validPunct));
     }
 
     /**
@@ -36,8 +36,8 @@ class PunctTest extends TestCase
     public function testInvalidPunctShouldFailAndThrowPunctException($invalidPunct, $additional = '')
     {
         $validator = new Punct($additional);
-        $this->assertFalse($validator->validate($invalidPunct));
-        $this->assertFalse($validator->assert($invalidPunct));
+        self::assertFalse($validator->validate($invalidPunct));
+        self::assertFalse($validator->assert($invalidPunct));
     }
 
     /**
@@ -55,7 +55,7 @@ class PunctTest extends TestCase
     public function testAdditionalCharsShouldBeRespected($additional, $query)
     {
         $validator = new Punct($additional);
-        $this->assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($query));
     }
 
     public function providerAdditionalChars()

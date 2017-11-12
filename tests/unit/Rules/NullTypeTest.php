@@ -29,9 +29,9 @@ class NullTypeTest extends TestCase
 
     public function testNullValue()
     {
-        $this->assertTrue($this->object->assert(null));
-        $this->assertTrue($this->object->__invoke(null));
-        $this->assertTrue($this->object->check(null));
+        self::assertTrue($this->object->assert(null));
+        self::assertTrue($this->object->__invoke(null));
+        self::assertTrue($this->object->check(null));
     }
 
     /**
@@ -40,8 +40,8 @@ class NullTypeTest extends TestCase
      */
     public function testNotNull($input)
     {
-        $this->assertFalse($this->object->__invoke($input));
-        $this->assertFalse($this->object->assert($input));
+        self::assertFalse($this->object->__invoke($input));
+        self::assertFalse($this->object->assert($input));
     }
 
     public function providerForNotNull()

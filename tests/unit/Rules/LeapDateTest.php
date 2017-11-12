@@ -30,27 +30,27 @@ class LeapDateTest extends TestCase
 
     public function testValidLeapDate_with_string()
     {
-        $this->assertTrue($this->leapDateValidator->validate('1988-02-29'));
+        self::assertTrue($this->leapDateValidator->validate('1988-02-29'));
     }
 
     public function testValidLeapDate_with_date_time()
     {
-        $this->assertTrue($this->leapDateValidator->validate(
+        self::assertTrue($this->leapDateValidator->validate(
             new DateTime('1988-02-29')));
     }
 
     public function testInvalidLeapDate_with_string()
     {
-        $this->assertFalse($this->leapDateValidator->validate('1989-02-29'));
+        self::assertFalse($this->leapDateValidator->validate('1989-02-29'));
     }
 
     public function testInvalidLeapDate_with_date_time()
     {
-        $this->assertFalse($this->leapDateValidator->validate(
+        self::assertFalse($this->leapDateValidator->validate(
             new DateTime('1989-02-29')));
     }
     public function testInvalidLeapDate_input()
     {
-        $this->assertFalse($this->leapDateValidator->validate([]));
+        self::assertFalse($this->leapDateValidator->validate([]));
     }
 }

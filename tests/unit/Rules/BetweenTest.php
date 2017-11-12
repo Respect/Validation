@@ -68,9 +68,9 @@ class BetweenTest extends TestCase
     public function testValuesBetweenBoundsShouldPass($min, $max, $inclusive, $input)
     {
         $o = new Between($min, $max, $inclusive);
-        $this->assertTrue($o->__invoke($input));
-        $this->assertTrue($o->assert($input));
-        $this->assertTrue($o->check($input));
+        self::assertTrue($o->__invoke($input));
+        self::assertTrue($o->assert($input));
+        self::assertTrue($o->check($input));
     }
 
     /**
@@ -80,8 +80,8 @@ class BetweenTest extends TestCase
     public function testValuesOutBoundsShouldRaiseException($min, $max, $inclusive, $input)
     {
         $o = new Between($min, $max, $inclusive);
-        $this->assertFalse($o->__invoke($input));
-        $this->assertFalse($o->assert($input));
+        self::assertFalse($o->__invoke($input));
+        self::assertFalse($o->assert($input));
     }
 
     /**

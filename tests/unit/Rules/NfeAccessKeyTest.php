@@ -32,9 +32,9 @@ class NfeAccessKeyTest extends TestCase
      */
     public function testValidAccessKey($aK)
     {
-        $this->assertTrue($this->nfeValidator->assert($aK));
-        $this->assertTrue($this->nfeValidator->__invoke($aK));
-        $this->assertTrue($this->nfeValidator->check($aK));
+        self::assertTrue($this->nfeValidator->assert($aK));
+        self::assertTrue($this->nfeValidator->__invoke($aK));
+        self::assertTrue($this->nfeValidator->check($aK));
     }
 
     /**
@@ -43,7 +43,7 @@ class NfeAccessKeyTest extends TestCase
      */
     public function testInvalidAccessKey($aK)
     {
-        $this->assertFalse($this->nfeValidator->assert($aK));
+        self::assertFalse($this->nfeValidator->assert($aK));
     }
 
     /**
@@ -52,7 +52,7 @@ class NfeAccessKeyTest extends TestCase
      */
     public function testInvalidLengthCnh($aK)
     {
-        $this->assertFalse($this->nfeValidator->assert($aK));
+        self::assertFalse($this->nfeValidator->assert($aK));
     }
 
     public function validAccessKeyProvider()

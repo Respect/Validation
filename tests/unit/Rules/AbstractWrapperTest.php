@@ -42,7 +42,7 @@ class AbstractWrapperTest extends TestCase
         $wrapper = $this->getMockForAbstractClass(AbstractWrapper::class);
         $this->bindValidatable($wrapper, $validatable);
 
-        $this->assertSame($validatable, $wrapper->getValidatable());
+        self::assertSame($validatable, $wrapper->getValidatable());
     }
 
     public function testShouldUseWrappedToValidate()
@@ -59,7 +59,7 @@ class AbstractWrapperTest extends TestCase
         $wrapper = $this->getMockForAbstractClass(AbstractWrapper::class);
         $this->bindValidatable($wrapper, $validatable);
 
-        $this->assertTrue($wrapper->validate($input));
+        self::assertTrue($wrapper->validate($input));
     }
 
     public function testShouldUseWrappedToAssert()
@@ -76,7 +76,7 @@ class AbstractWrapperTest extends TestCase
         $wrapper = $this->getMockForAbstractClass(AbstractWrapper::class);
         $this->bindValidatable($wrapper, $validatable);
 
-        $this->assertTrue($wrapper->assert($input));
+        self::assertTrue($wrapper->assert($input));
     }
 
     public function testShouldUseWrappedToCheck()
@@ -93,7 +93,7 @@ class AbstractWrapperTest extends TestCase
         $wrapper = $this->getMockForAbstractClass(AbstractWrapper::class);
         $this->bindValidatable($wrapper, $validatable);
 
-        $this->assertTrue($wrapper->check($input));
+        self::assertTrue($wrapper->check($input));
     }
 
     public function testShouldPassNameOnToWrapped()
@@ -110,6 +110,6 @@ class AbstractWrapperTest extends TestCase
         $wrapper = $this->getMockForAbstractClass(AbstractWrapper::class);
         $this->bindValidatable($wrapper, $validatable);
 
-        $this->assertSame($wrapper, $wrapper->setName($name));
+        self::assertSame($wrapper, $wrapper->setName($name));
     }
 }

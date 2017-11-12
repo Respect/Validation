@@ -27,7 +27,7 @@ class KeySetTest extends TestCase
 
         $rules = $keySet->getRules();
 
-        $this->assertSame(current($rules), $key);
+        self::assertSame(current($rules), $key);
     }
 
     public function testShouldAcceptAllOfWithOneKeyRule()
@@ -38,7 +38,7 @@ class KeySetTest extends TestCase
 
         $rules = $keySet->getRules();
 
-        $this->assertSame(current($rules), $key);
+        self::assertSame(current($rules), $key);
     }
 
     /**
@@ -84,7 +84,7 @@ class KeySetTest extends TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        $this->assertEquals(['foo', 'bar'], $keySet->getKeys());
+        self::assertEquals(['foo', 'bar'], $keySet->getKeys());
     }
 
     public function testShouldValidateKeysWhenThereAreMissingRequiredKeys()
@@ -98,7 +98,7 @@ class KeySetTest extends TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        $this->assertFalse($keySet->validate($input));
+        self::assertFalse($keySet->validate($input));
     }
 
     public function testShouldValidateKeysWhenThereAreMissingNonRequiredKeys()
@@ -112,7 +112,7 @@ class KeySetTest extends TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        $this->assertTrue($keySet->validate($input));
+        self::assertTrue($keySet->validate($input));
     }
 
     public function testShouldValidateKeysWhenThereAreMoreKeys()
@@ -128,7 +128,7 @@ class KeySetTest extends TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        $this->assertFalse($keySet->validate($input));
+        self::assertFalse($keySet->validate($input));
     }
 
     public function testShouldValidateKeysWhenEmpty()
@@ -140,7 +140,7 @@ class KeySetTest extends TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        $this->assertFalse($keySet->validate($input));
+        self::assertFalse($keySet->validate($input));
     }
 
     /**

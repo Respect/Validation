@@ -32,9 +32,9 @@ class PhoneTest extends TestCase
      */
     public function testValidPhoneShouldReturnTrue($input)
     {
-        $this->assertTrue($this->phoneValidator->__invoke($input));
-        $this->assertTrue($this->phoneValidator->assert($input));
-        $this->assertTrue($this->phoneValidator->check($input));
+        self::assertTrue($this->phoneValidator->__invoke($input));
+        self::assertTrue($this->phoneValidator->assert($input));
+        self::assertTrue($this->phoneValidator->check($input));
     }
 
     /**
@@ -43,8 +43,8 @@ class PhoneTest extends TestCase
      */
     public function testInvalidPhoneShouldThrowPhoneException($input)
     {
-        $this->assertFalse($this->phoneValidator->__invoke($input));
-        $this->assertFalse($this->phoneValidator->assert($input));
+        self::assertFalse($this->phoneValidator->__invoke($input));
+        self::assertFalse($this->phoneValidator->assert($input));
     }
 
     public function providerForPhone()

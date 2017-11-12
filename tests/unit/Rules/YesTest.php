@@ -27,7 +27,7 @@ class YesTest extends TestCase
         $actualPattern = $rule->regex;
         $expectedPattern = '/^y(eah?|ep|es)?$/i';
 
-        $this->assertEquals($expectedPattern, $actualPattern);
+        self::assertEquals($expectedPattern, $actualPattern);
     }
 
     public function testShouldUseLocalPatternForYesExpressionWhenDefined()
@@ -43,7 +43,7 @@ class YesTest extends TestCase
         $actualPattern = $rule->regex;
         $expectedPattern = '/'.nl_langinfo(YESEXPR).'/i';
 
-        $this->assertEquals($expectedPattern, $actualPattern);
+        self::assertEquals($expectedPattern, $actualPattern);
     }
 
     /**
@@ -53,7 +53,7 @@ class YesTest extends TestCase
     {
         $rule = new Yes();
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     public function validYesProvider()
@@ -74,7 +74,7 @@ class YesTest extends TestCase
     {
         $rule = new Yes();
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     public function invalidYesProvider()

@@ -32,9 +32,9 @@ class CnhTest extends TestCase
      */
     public function testValidCnh($cnh)
     {
-        $this->assertTrue($this->cnhValidator->assert($cnh));
-        $this->assertTrue($this->cnhValidator->__invoke($cnh));
-        $this->assertTrue($this->cnhValidator->check($cnh));
+        self::assertTrue($this->cnhValidator->assert($cnh));
+        self::assertTrue($this->cnhValidator->__invoke($cnh));
+        self::assertTrue($this->cnhValidator->check($cnh));
     }
 
     /**
@@ -44,7 +44,7 @@ class CnhTest extends TestCase
     public function testInvalidCnh($cnh)
     {
         $expectedInvalid = $this->cnhValidator->assert($cnh);
-        $this->assertFalse($expectedInvalid);
+        self::assertFalse($expectedInvalid);
     }
 
     /**
@@ -54,7 +54,7 @@ class CnhTest extends TestCase
     public function testNotIntegerCnh($cnh)
     {
         $expectedInvalid = $this->cnhValidator->assert($cnh);
-        $this->assertFalse($expectedInvalid);
+        self::assertFalse($expectedInvalid);
     }
 
     /**
@@ -64,7 +64,7 @@ class CnhTest extends TestCase
     public function testInvalidLengthCnh($cnh)
     {
         $expectedInvalid = $this->cnhValidator->assert($cnh);
-        $this->assertFalse($expectedInvalid);
+        self::assertFalse($expectedInvalid);
     }
 
     public function validCnhProvider()

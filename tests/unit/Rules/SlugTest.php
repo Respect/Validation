@@ -26,7 +26,7 @@ class SlugTest extends TestCase
     {
         $rule = new Slug();
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
@@ -36,7 +36,7 @@ class SlugTest extends TestCase
     {
         $rule = new Slug();
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     public function providerValidSlug()

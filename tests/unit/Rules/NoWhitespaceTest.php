@@ -32,9 +32,9 @@ class NoWhitespaceTest extends TestCase
      */
     public function testStringWithNoWhitespaceShouldPass($input)
     {
-        $this->assertTrue($this->noWhitespaceValidator->__invoke($input));
-        $this->assertTrue($this->noWhitespaceValidator->check($input));
-        $this->assertTrue($this->noWhitespaceValidator->assert($input));
+        self::assertTrue($this->noWhitespaceValidator->__invoke($input));
+        self::assertTrue($this->noWhitespaceValidator->check($input));
+        self::assertTrue($this->noWhitespaceValidator->assert($input));
     }
 
     /**
@@ -43,16 +43,16 @@ class NoWhitespaceTest extends TestCase
      */
     public function testStringWithWhitespaceShouldFail($input)
     {
-        $this->assertFalse($this->noWhitespaceValidator->__invoke($input));
-        $this->assertFalse($this->noWhitespaceValidator->assert($input));
+        self::assertFalse($this->noWhitespaceValidator->__invoke($input));
+        self::assertFalse($this->noWhitespaceValidator->assert($input));
     }
     /**
      * @expectedException \Respect\Validation\Exceptions\NoWhitespaceException
      */
     public function testStringWithLineBreaksShouldFail()
     {
-        $this->assertFalse($this->noWhitespaceValidator->__invoke("w\npoiur"));
-        $this->assertFalse($this->noWhitespaceValidator->assert("w\npoiur"));
+        self::assertFalse($this->noWhitespaceValidator->__invoke("w\npoiur"));
+        self::assertFalse($this->noWhitespaceValidator->assert("w\npoiur"));
     }
 
     public function providerForPass()

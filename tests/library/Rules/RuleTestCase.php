@@ -83,7 +83,7 @@ abstract class RuleTestCase extends TestCase
      */
     public function testShouldValidateValidInput(Validatable $validator, $input)
     {
-        $this->assertTrue($validator->validate($input));
+        self::assertTrue($validator->validate($input));
     }
 
     /**
@@ -94,6 +94,6 @@ abstract class RuleTestCase extends TestCase
      */
     public function testShouldValidateInvalidInput(Validatable $validator, $input)
     {
-        $this->assertFalse($validator->validate($input));
+        self::assertFalse($validator->validate($input));
     }
 }

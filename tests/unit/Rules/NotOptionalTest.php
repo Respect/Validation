@@ -27,7 +27,7 @@ class NotOptionalTest extends TestCase
     {
         $rule = new NotOptional();
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
@@ -37,7 +37,7 @@ class NotOptionalTest extends TestCase
     {
         $rule = new NotOptional();
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     public function providerForNotOptional()

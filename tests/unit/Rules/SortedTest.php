@@ -25,9 +25,9 @@ class SortedTest extends TestCase
         $arr = [1, 2, 3];
         $rule = new Sorted();
 
-        $this->assertTrue($rule->validate($arr));
-        $this->assertTrue($rule->assert($arr));
-        $this->assertTrue($rule->check($arr));
+        self::assertTrue($rule->validate($arr));
+        self::assertTrue($rule->assert($arr));
+        self::assertTrue($rule->check($arr));
     }
 
     public function testPassesWithEqualValues()
@@ -35,9 +35,9 @@ class SortedTest extends TestCase
         $arr = [1, 2, 2, 3];
         $rule = new Sorted();
 
-        $this->assertTrue($rule->validate($arr));
-        $this->assertTrue($rule->assert($arr));
-        $this->assertTrue($rule->check($arr));
+        self::assertTrue($rule->validate($arr));
+        self::assertTrue($rule->assert($arr));
+        self::assertTrue($rule->check($arr));
     }
 
     /**
@@ -48,8 +48,8 @@ class SortedTest extends TestCase
         $arr = [1, 2, 4, 3];
         $rule = new Sorted();
 
-        $this->assertFalse($rule->validate($arr));
-        $this->assertFalse($rule->check($arr));
+        self::assertFalse($rule->validate($arr));
+        self::assertFalse($rule->check($arr));
     }
 
     public function testPassesDescending()
@@ -57,9 +57,9 @@ class SortedTest extends TestCase
         $arr = [10, 9, 8];
         $rule = new Sorted(null, false);
 
-        $this->assertTrue($rule->validate($arr));
-        $this->assertTrue($rule->assert($arr));
-        $this->assertTrue($rule->check($arr));
+        self::assertTrue($rule->validate($arr));
+        self::assertTrue($rule->assert($arr));
+        self::assertTrue($rule->check($arr));
     }
 
     public function testPassesDescendingWithEqualValues()
@@ -67,9 +67,9 @@ class SortedTest extends TestCase
         $arr = [10, 9, 9, 8];
         $rule = new Sorted(null, false);
 
-        $this->assertTrue($rule->validate($arr));
-        $this->assertTrue($rule->assert($arr));
-        $this->assertTrue($rule->check($arr));
+        self::assertTrue($rule->validate($arr));
+        self::assertTrue($rule->assert($arr));
+        self::assertTrue($rule->check($arr));
     }
 
     public function testPassesByFunction()
@@ -89,9 +89,9 @@ class SortedTest extends TestCase
             return $x['key'];
         });
 
-        $this->assertTrue($rule->validate($arr));
-        $this->assertTrue($rule->assert($arr));
-        $this->assertTrue($rule->check($arr));
+        self::assertTrue($rule->validate($arr));
+        self::assertTrue($rule->assert($arr));
+        self::assertTrue($rule->check($arr));
     }
 
     /**
@@ -114,7 +114,7 @@ class SortedTest extends TestCase
             return $x['key'];
         });
 
-        $this->assertFalse($rule->validate($arr));
-        $this->assertFalse($rule->check($arr));
+        self::assertFalse($rule->validate($arr));
+        self::assertFalse($rule->check($arr));
     }
 }

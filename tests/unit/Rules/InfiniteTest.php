@@ -32,7 +32,7 @@ class InfiniteTest extends TestCase
      */
     public function testShouldValidateInfiniteNumbers($input)
     {
-        $this->assertTrue($this->rule->validate($input));
+        self::assertTrue($this->rule->validate($input));
     }
 
     /**
@@ -40,7 +40,7 @@ class InfiniteTest extends TestCase
      */
     public function testShouldNotValidateNonInfiniteNumbers($input)
     {
-        $this->assertFalse($this->rule->validate($input));
+        self::assertFalse($this->rule->validate($input));
     }
 
     /**

@@ -31,7 +31,7 @@ class AbstractFilterRuleTest extends TestCase
             ->method('validateClean')
             ->will($this->returnValue(true));
 
-        $this->assertTrue($filterRuleMock->validate('hey'));
+        self::assertTrue($filterRuleMock->validate('hey'));
     }
 
     public function testValidateShouldReturnFalseForInvalidArguments()
@@ -41,7 +41,7 @@ class AbstractFilterRuleTest extends TestCase
             ->method('validateClean')
             ->will($this->returnValue(true));
 
-        $this->assertFalse($filterRuleMock->validate(''));
-        $this->assertFalse($filterRuleMock->validate([]));
+        self::assertFalse($filterRuleMock->validate(''));
+        self::assertFalse($filterRuleMock->validate([]));
     }
 }

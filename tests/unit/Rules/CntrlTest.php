@@ -26,7 +26,7 @@ class CntrlTest extends TestCase
     public function testValidDataWithCntrlShouldReturnTrue($validCntrl, $additional = '')
     {
         $validator = new Cntrl($additional);
-        $this->assertTrue($validator->validate($validCntrl));
+        self::assertTrue($validator->validate($validCntrl));
     }
 
     /**
@@ -36,8 +36,8 @@ class CntrlTest extends TestCase
     public function testInvalidCntrlShouldFailAndThrowCntrlException($invalidCntrl, $additional = '')
     {
         $validator = new Cntrl($additional);
-        $this->assertFalse($validator->validate($invalidCntrl));
-        $this->assertFalse($validator->assert($invalidCntrl));
+        self::assertFalse($validator->validate($invalidCntrl));
+        self::assertFalse($validator->assert($invalidCntrl));
     }
 
     /**
@@ -55,7 +55,7 @@ class CntrlTest extends TestCase
     public function testAdditionalCharsShouldBeRespected($additional, $query)
     {
         $validator = new Cntrl($additional);
-        $this->assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($query));
     }
 
     public function providerAdditionalChars()

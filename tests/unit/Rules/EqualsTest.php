@@ -28,7 +28,7 @@ class EqualsTest extends TestCase
     {
         $rule = new Equals($compareTo);
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
@@ -38,7 +38,7 @@ class EqualsTest extends TestCase
     {
         $rule = new Equals($compareTo);
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     /**

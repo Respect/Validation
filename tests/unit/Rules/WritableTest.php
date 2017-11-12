@@ -42,7 +42,7 @@ class WritableTest extends TestCase
 
         $rule = new Writable();
         $input = '/path/of/a/valid/writable/file.txt';
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
@@ -54,7 +54,7 @@ class WritableTest extends TestCase
 
         $rule = new Writable();
         $input = '/path/of/an/invalid/writable/file.txt';
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     /**
@@ -68,6 +68,6 @@ class WritableTest extends TestCase
                 ->method('isWritable')
                 ->will($this->returnValue(true));
 
-        $this->assertTrue($rule->validate($object));
+        self::assertTrue($rule->validate($object));
     }
 }

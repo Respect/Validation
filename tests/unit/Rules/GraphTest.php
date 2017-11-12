@@ -26,7 +26,7 @@ class GraphTest extends TestCase
     public function testValidDataWithGraphCharsShouldReturnTrue($validGraph, $additional = '')
     {
         $validator = new Graph($additional);
-        $this->assertTrue($validator->validate($validGraph));
+        self::assertTrue($validator->validate($validGraph));
     }
 
     /**
@@ -36,8 +36,8 @@ class GraphTest extends TestCase
     public function testInvalidGraphShouldFailAndThrowGraphException($invalidGraph, $additional = '')
     {
         $validator = new Graph($additional);
-        $this->assertFalse($validator->validate($invalidGraph));
-        $this->assertFalse($validator->assert($invalidGraph));
+        self::assertFalse($validator->validate($invalidGraph));
+        self::assertFalse($validator->assert($invalidGraph));
     }
 
     /**
@@ -55,7 +55,7 @@ class GraphTest extends TestCase
     public function testAdditionalCharsShouldBeRespected($additional, $query)
     {
         $validator = new Graph($additional);
-        $this->assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($query));
     }
 
     public function providerAdditionalChars()

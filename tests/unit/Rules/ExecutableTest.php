@@ -39,7 +39,7 @@ class ExecutableTest extends TestCase
 
         $rule = new Executable();
         $input = '/path/of/a/valid/executable/file.txt';
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     public function testInvalidExecutableFileShouldReturnFalse()
@@ -48,7 +48,7 @@ class ExecutableTest extends TestCase
 
         $rule = new Executable();
         $input = '/path/of/an/invalid/executable/file.txt';
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     public function testShouldValidateObjects()
@@ -59,6 +59,6 @@ class ExecutableTest extends TestCase
                 ->method('isExecutable')
                 ->will($this->returnValue(true));
 
-        $this->assertTrue($rule->validate($object));
+        self::assertTrue($rule->validate($object));
     }
 }

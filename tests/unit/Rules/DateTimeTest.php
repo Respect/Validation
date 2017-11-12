@@ -30,7 +30,7 @@ class DateTimeTest extends TestCase
 
     public function testDateEmptyShouldNotValidate()
     {
-        $this->assertFalse($this->dateValidator->__invoke(''));
+        self::assertFalse($this->dateValidator->__invoke(''));
     }
 
     /**
@@ -51,12 +51,12 @@ class DateTimeTest extends TestCase
 
     public function testDateWithoutFormatShouldValidate()
     {
-        $this->assertTrue($this->dateValidator->__invoke('today'));
+        self::assertTrue($this->dateValidator->__invoke('today'));
     }
 
     public function testDateTimeInstancesShouldAlwaysValidate()
     {
-        $this->assertTrue($this->dateValidator->__invoke(new \DateTime('today')));
+        self::assertTrue($this->dateValidator->__invoke(new \DateTime('today')));
     }
 
     public function testDateTimeImmutableInterfaceInstancesShouldAlwaysValidate()
@@ -65,33 +65,33 @@ class DateTimeTest extends TestCase
             return $this->markTestSkipped('DateTimeImmutable does not exist');
         }
 
-        $this->assertTrue($this->dateValidator->validate(new DateTimeImmutable('today')));
+        self::assertTrue($this->dateValidator->validate(new DateTimeImmutable('today')));
     }
 
     public function testInvalidDateShouldFail()
     {
-        $this->assertFalse($this->dateValidator->__invoke('aids'));
+        self::assertFalse($this->dateValidator->__invoke('aids'));
     }
     public function testInvalidDateShouldFail_on_invalid_conversions()
     {
         $this->dateValidator->format = 'Y-m-d';
-        $this->assertFalse($this->dateValidator->__invoke('2009-12-00'));
+        self::assertFalse($this->dateValidator->__invoke('2009-12-00'));
     }
 
     public function testAnyObjectExceptDateTimeInstancesShouldFail()
     {
-        $this->assertFalse($this->dateValidator->__invoke(new \stdClass()));
+        self::assertFalse($this->dateValidator->__invoke(new \stdClass()));
     }
 
     public function testFormatsShouldValidateDateStrings()
     {
         $this->dateValidator = new DateTime('Y-m-d');
-        $this->assertTrue($this->dateValidator->assert('2009-09-09'));
+        self::assertTrue($this->dateValidator->assert('2009-09-09'));
     }
     public function testFormatsShouldValidateDateStrings_with_any_formats()
     {
         $this->dateValidator = new DateTime('d/m/Y');
-        $this->assertTrue($this->dateValidator->assert('23/05/1987'));
+        self::assertTrue($this->dateValidator->assert('23/05/1987'));
     }
 
     /**
@@ -100,16 +100,16 @@ class DateTimeTest extends TestCase
     public function testFormatsShouldValidateDateStrings_and_throw_DateTimeException_on_failure()
     {
         $this->dateValidator = new DateTime('y-m-d');
-        $this->assertFalse($this->dateValidator->assert('2009-09-09'));
+        self::assertFalse($this->dateValidator->assert('2009-09-09'));
     }
 
     public function testDateTimeExceptionalFormatsThatShouldBeValid()
     {
         $this->dateValidator = new DateTime('c');
-        $this->assertTrue($this->dateValidator->assert('2004-02-12T15:19:21+00:00'));
+        self::assertTrue($this->dateValidator->assert('2004-02-12T15:19:21+00:00'));
 
         $this->dateValidator = new DateTime('r');
-        $this->assertTrue($this->dateValidator->assert('Thu, 29 Dec 2005 01:02:03 +0000'));
+        self::assertTrue($this->dateValidator->assert('Thu, 29 Dec 2005 01:02:03 +0000'));
     }
 
     /**
@@ -123,7 +123,7 @@ class DateTimeTest extends TestCase
     {
         date_default_timezone_set($systemTimezone);
         $this->dateValidator = new DateTime($format);
-        $this->assertTrue($this->dateValidator->assert($input));
+        self::assertTrue($this->dateValidator->assert($input));
     }
 
     /**

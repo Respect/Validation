@@ -162,7 +162,7 @@ class AbstractCompositeTest extends TestCase
         $compositeRuleMock->addRule($simpleRuleMock);
         $compositeRuleMock->removeRules();
 
-        $this->assertEmpty($compositeRuleMock->getRules());
+        self::assertEmpty($compositeRuleMock->getRules());
     }
 
     public function testShouldReturnTheAmountOfAddedRules()
@@ -172,14 +172,14 @@ class AbstractCompositeTest extends TestCase
         $compositeRuleMock->addRule($this->createMock(Validatable::class));
         $compositeRuleMock->addRule($this->createMock(Validatable::class));
 
-        $this->assertCount(3, $compositeRuleMock->getRules());
+        self::assertCount(3, $compositeRuleMock->getRules());
     }
 
     public function testHasRuleShouldReturnFalseWhenThereIsNoRuleAppended()
     {
         $compositeRuleMock = $this->getMockForAbstractClass(AbstractComposite::class);
 
-        $this->assertFalse($compositeRuleMock->hasRule(''));
+        self::assertFalse($compositeRuleMock->hasRule(''));
     }
 
     public function testHasRuleShouldReturnFalseWhenRuleIsNotFound()
@@ -191,7 +191,7 @@ class AbstractCompositeTest extends TestCase
 
         $anotherSimpleRuleMock = $this->createMock(Validatable::class);
 
-        $this->assertFalse($compositeRuleMock->hasRule($anotherSimpleRuleMock));
+        self::assertFalse($compositeRuleMock->hasRule($anotherSimpleRuleMock));
     }
 
     public function testHasRuleShouldReturnFalseWhenRulePassedAsStringIsNotFound()
@@ -201,7 +201,7 @@ class AbstractCompositeTest extends TestCase
         $compositeRuleMock = $this->getMockForAbstractClass(AbstractComposite::class);
         $compositeRuleMock->addRule($simpleRuleMock);
 
-        $this->assertFalse($compositeRuleMock->hasRule('SomeRule'));
+        self::assertFalse($compositeRuleMock->hasRule('SomeRule'));
     }
 
     public function testHasRuleShouldReturnTrueWhenRuleIsFound()
@@ -211,7 +211,7 @@ class AbstractCompositeTest extends TestCase
         $compositeRuleMock = $this->getMockForAbstractClass(AbstractComposite::class);
         $compositeRuleMock->addRule($simpleRuleMock);
 
-        $this->assertTrue($compositeRuleMock->hasRule($simpleRuleMock));
+        self::assertTrue($compositeRuleMock->hasRule($simpleRuleMock));
     }
 
     public function testShouldAddRulesByPassingThroughConstructor()
@@ -224,6 +224,6 @@ class AbstractCompositeTest extends TestCase
             $anotherSimpleRuleMock,
         ]);
 
-        $this->assertCount(2, $compositeRuleMock->getRules());
+        self::assertCount(2, $compositeRuleMock->getRules());
     }
 }

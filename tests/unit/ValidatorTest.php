@@ -18,7 +18,7 @@ class ValidatorTest extends TestCase
 {
     public function testStaticCreateShouldReturnNewValidator()
     {
-        $this->assertInstanceOf(Validator::class, Validator::create());
+        self::assertInstanceOf(Validator::class, Validator::create());
     }
 
     public function testInvalidRuleClassShouldThrowComponentException()
@@ -34,6 +34,6 @@ class ValidatorTest extends TestCase
     {
         $validator = new Validator();
 
-        $this->assertSame($validator, $validator->not($validator->notEmpty()));
+        self::assertSame($validator, $validator->not($validator->notEmpty()));
     }
 }

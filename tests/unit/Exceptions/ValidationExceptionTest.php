@@ -23,7 +23,7 @@ class ValidationExceptionTest extends TestCase
     public function testItImplementsExceptionInterface()
     {
         $validationException = new ValidationException();
-        $this->assertInstanceOf(ExceptionInterface::class, $validationException);
+        self::assertInstanceOf(ExceptionInterface::class, $validationException);
     }
 
     /**
@@ -31,7 +31,7 @@ class ValidationExceptionTest extends TestCase
      */
     public function testFormatShouldReplacePlaceholdersProperly($template, $result, $vars)
     {
-        $this->assertEquals(
+        self::assertEquals(
             $result,
             ValidationException::format($template, $vars)
         );
@@ -42,7 +42,7 @@ class ValidationExceptionTest extends TestCase
      */
     public function testStringifyShouldConvertStringsProperly($input, $result)
     {
-        $this->assertStringMatchesFormat(
+        self::assertStringMatchesFormat(
             $result,
             ValidationException::stringify($input)
         );
@@ -53,7 +53,7 @@ class ValidationExceptionTest extends TestCase
         $sampleValidationException = new ValidationException();
         $sampleValidationException->configure('foo', ['bar' => 1, 'baz' => 2]);
         $sampleValidationException->setTemplate('{{name}} {{bar}} {{baz}}');
-        $this->assertEquals(
+        self::assertEquals(
             'foo 1 2',
             $sampleValidationException->getMainMessage()
         );
@@ -64,7 +64,7 @@ class ValidationExceptionTest extends TestCase
         $x = new ValidationException();
         $x->configure('bar');
         $x->setTemplate('foo');
-        $this->assertEquals('foo', $x->getTemplate());
+        self::assertEquals('foo', $x->getTemplate());
     }
 
     public function providerForStringify()

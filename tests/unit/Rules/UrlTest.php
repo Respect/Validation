@@ -27,7 +27,7 @@ class UrlTest extends TestCase
     {
         $validator = new Url();
 
-        $this->assertTrue($validator->validate($validUrl));
+        self::assertTrue($validator->validate($validUrl));
     }
 
     /**
@@ -37,7 +37,7 @@ class UrlTest extends TestCase
     {
         $validator = new Url();
 
-        $this->assertFalse($validator->validate($invalidUrl));
+        self::assertFalse($validator->validate($invalidUrl));
     }
 
     public function providerForValidUrl()

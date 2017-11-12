@@ -32,9 +32,9 @@ class NumericValTest extends TestCase
      */
     public function testNumeric($input)
     {
-        $this->assertTrue($this->object->__invoke($input));
-        $this->assertTrue($this->object->check($input));
-        $this->assertTrue($this->object->assert($input));
+        self::assertTrue($this->object->__invoke($input));
+        self::assertTrue($this->object->check($input));
+        self::assertTrue($this->object->assert($input));
     }
 
     /**
@@ -43,8 +43,8 @@ class NumericValTest extends TestCase
      */
     public function testNotNumeric($input)
     {
-        $this->assertFalse($this->object->__invoke($input));
-        $this->assertFalse($this->object->assert($input));
+        self::assertFalse($this->object->__invoke($input));
+        self::assertFalse($this->object->assert($input));
     }
 
     public function providerForNumeric()

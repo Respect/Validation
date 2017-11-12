@@ -26,9 +26,9 @@ class MininumAgeTest extends TestCase
     public function testValidMinimumAgeInsideBoundsShouldPass($age, $format, $input)
     {
         $minimumAge = new MinimumAge($age, $format);
-        $this->assertTrue($minimumAge->__invoke($input));
-        $this->assertTrue($minimumAge->assert($input));
-        $this->assertTrue($minimumAge->check($input));
+        self::assertTrue($minimumAge->__invoke($input));
+        self::assertTrue($minimumAge->assert($input));
+        self::assertTrue($minimumAge->check($input));
     }
 
     /**
@@ -38,8 +38,8 @@ class MininumAgeTest extends TestCase
     public function testInvalidMinimumAgeShouldThrowException($age, $format, $input)
     {
         $minimumAge = new MinimumAge($age, $format);
-        $this->assertFalse($minimumAge->__invoke($input));
-        $this->assertFalse($minimumAge->assert($input));
+        self::assertFalse($minimumAge->__invoke($input));
+        self::assertFalse($minimumAge->assert($input));
     }
 
     /**
@@ -49,8 +49,8 @@ class MininumAgeTest extends TestCase
     public function testInvalidDateShouldNotPass($age, $format, $input)
     {
         $minimumAge = new MinimumAge($age, $format);
-        $this->assertFalse($minimumAge->__invoke($input));
-        $this->assertFalse($minimumAge->assert($input));
+        self::assertFalse($minimumAge->__invoke($input));
+        self::assertFalse($minimumAge->assert($input));
     }
 
     /**

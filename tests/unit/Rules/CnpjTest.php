@@ -32,7 +32,7 @@ class CnpjTest extends TestCase
      */
     public function testFormattedCnpjsShouldValidate($input)
     {
-        $this->assertTrue($this->cnpjValidator->validate($input));
+        self::assertTrue($this->cnpjValidator->validate($input));
     }
 
     /**
@@ -40,7 +40,7 @@ class CnpjTest extends TestCase
      */
     public function testUnformattedCnpjsShouldValidate($input)
     {
-        $this->assertTrue($this->cnpjValidator->validate($input));
+        self::assertTrue($this->cnpjValidator->validate($input));
     }
 
     /**
@@ -48,7 +48,7 @@ class CnpjTest extends TestCase
      */
     public function testFormattedCnpjsShouldNotValidate($input)
     {
-        $this->assertFalse($this->cnpjValidator->validate($input));
+        self::assertFalse($this->cnpjValidator->validate($input));
     }
 
     /**
@@ -56,7 +56,7 @@ class CnpjTest extends TestCase
      */
     public function testUnformattedCnpjsShouldNotValidate($input)
     {
-        $this->assertFalse($this->cnpjValidator->validate($input));
+        self::assertFalse($this->cnpjValidator->validate($input));
     }
 
     /**
@@ -64,7 +64,7 @@ class CnpjTest extends TestCase
      */
     public function testFormattedAndUnformattedCnpjsShouldNotValidate($input)
     {
-        $this->assertFalse($this->cnpjValidator->validate($input));
+        self::assertFalse($this->cnpjValidator->validate($input));
     }
 
     public function providerValidFormattedCnpj()

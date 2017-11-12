@@ -41,7 +41,7 @@ class CallbackTest extends TestCase
     {
         $rule = new Callback('is_a', 'stdClass');
 
-        $this->assertTrue($rule->validate(new \stdClass()));
+        self::assertTrue($rule->validate(new \stdClass()));
     }
 
     /**
@@ -54,7 +54,7 @@ class CallbackTest extends TestCase
 
     public function testCallbackValidatorShouldReturnTrueIfCallbackReturnsTrue()
     {
-        $this->assertTrue($this->truthy->assert('wpoiur'));
+        self::assertTrue($this->truthy->assert('wpoiur'));
     }
 
     /**
@@ -62,19 +62,19 @@ class CallbackTest extends TestCase
      */
     public function testCallbackValidatorShouldReturnFalseIfCallbackReturnsFalse()
     {
-        $this->assertTrue($this->falsy->assert('w poiur'));
+        self::assertTrue($this->falsy->assert('w poiur'));
     }
 
     public function testCallbackValidatorShouldAcceptArrayCallbackDefinitions()
     {
         $v = new Callback([$this, 'thisIsASampleCallbackUsedInsideThisTest']);
-        $this->assertTrue($v->assert('test'));
+        self::assertTrue($v->assert('test'));
     }
 
     public function testCallbackValidatorShouldAcceptFunctionNamesAsString()
     {
         $v = new Callback('is_string');
-        $this->assertTrue($v->assert('test'));
+        self::assertTrue($v->assert('test'));
     }
 
     /**
@@ -83,6 +83,6 @@ class CallbackTest extends TestCase
     public function testInvalidCallbacksShouldRaiseComponentExceptionUponInstantiation()
     {
         $v = new Callback(new \stdClass());
-        $this->assertTrue($v->assert('w poiur'));
+        self::assertTrue($v->assert('w poiur'));
     }
 }

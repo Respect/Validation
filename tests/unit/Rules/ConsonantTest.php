@@ -26,7 +26,7 @@ class ConsonantTest extends TestCase
     public function testValidDataWithConsonantsShouldReturnTrue($validConsonants, $additional = '')
     {
         $validator = new Consonant($additional);
-        $this->assertTrue($validator->validate($validConsonants));
+        self::assertTrue($validator->validate($validConsonants));
     }
 
     /**
@@ -36,8 +36,8 @@ class ConsonantTest extends TestCase
     public function testInvalidConsonantsShouldFailAndThrowConsonantException($invalidConsonants, $additional = '')
     {
         $validator = new Consonant($additional);
-        $this->assertFalse($validator->validate($invalidConsonants));
-        $this->assertFalse($validator->assert($invalidConsonants));
+        self::assertFalse($validator->validate($invalidConsonants));
+        self::assertFalse($validator->assert($invalidConsonants));
     }
 
     /**
@@ -55,7 +55,7 @@ class ConsonantTest extends TestCase
     public function testAdditionalCharsShouldBeRespected($additional, $query)
     {
         $validator = new Consonant($additional);
-        $this->assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($query));
     }
 
     public function providerAdditionalChars()

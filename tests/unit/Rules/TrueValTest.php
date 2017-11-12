@@ -27,7 +27,7 @@ class TrueValTest extends TestCase
     {
         $rule = new TrueVal();
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     public function validTrueProvider()
@@ -55,7 +55,7 @@ class TrueValTest extends TestCase
     {
         $rule = new TrueVal();
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     public function invalidTrueProvider()

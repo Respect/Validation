@@ -32,7 +32,7 @@ class ResourceTypeTest extends TestCase
      */
     public function testShouldValidateResourceNumbers($input)
     {
-        $this->assertTrue($this->rule->validate($input));
+        self::assertTrue($this->rule->validate($input));
     }
 
     /**
@@ -40,7 +40,7 @@ class ResourceTypeTest extends TestCase
      */
     public function testShouldNotValidateNonResourceNumbers($input)
     {
-        $this->assertFalse($this->rule->validate($input));
+        self::assertFalse($this->rule->validate($input));
     }
 
     /**

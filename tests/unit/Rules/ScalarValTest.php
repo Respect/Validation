@@ -32,7 +32,7 @@ class ScalarValTest extends TestCase
      */
     public function testShouldValidateScalarNumbers($input)
     {
-        $this->assertTrue($this->rule->validate($input));
+        self::assertTrue($this->rule->validate($input));
     }
 
     /**
@@ -40,7 +40,7 @@ class ScalarValTest extends TestCase
      */
     public function testShouldNotValidateNonScalarNumbers($input)
     {
-        $this->assertFalse($this->rule->validate($input));
+        self::assertFalse($this->rule->validate($input));
     }
 
     /**

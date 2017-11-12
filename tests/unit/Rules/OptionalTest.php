@@ -55,7 +55,7 @@ class OptionalTest extends TestCase
         $validatable = $this->createMock(Validatable::class);
         $rule = new Optional($validatable);
 
-        $this->assertSame($validatable, $rule->getValidatable());
+        self::assertSame($validatable, $rule->getValidatable());
     }
 
     /**
@@ -70,7 +70,7 @@ class OptionalTest extends TestCase
 
         $rule = new Optional($validatable);
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
@@ -87,7 +87,7 @@ class OptionalTest extends TestCase
 
         $rule = new Optional($validatable);
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     public function testShouldNotAssertRuleWhenInputIsOptional()
@@ -99,7 +99,7 @@ class OptionalTest extends TestCase
 
         $rule = new Optional($validatable);
 
-        $this->assertTrue($rule->assert(''));
+        self::assertTrue($rule->assert(''));
     }
 
     public function testShouldAssertRuleWhenInputIsNotOptional()
@@ -115,7 +115,7 @@ class OptionalTest extends TestCase
 
         $rule = new Optional($validatable);
 
-        $this->assertTrue($rule->assert($input));
+        self::assertTrue($rule->assert($input));
     }
 
     public function testShouldNotCheckRuleWhenInputIsOptional()
@@ -127,7 +127,7 @@ class OptionalTest extends TestCase
 
         $rule = new Optional($validatable);
 
-        $this->assertTrue($rule->check(''));
+        self::assertTrue($rule->check(''));
     }
 
     public function testShouldCheckRuleWhenInputIsNotOptional()
@@ -143,6 +143,6 @@ class OptionalTest extends TestCase
 
         $rule = new Optional($validatable);
 
-        $this->assertTrue($rule->check($input));
+        self::assertTrue($rule->check($input));
     }
 }

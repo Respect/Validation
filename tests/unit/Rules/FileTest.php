@@ -42,7 +42,7 @@ class FileTest extends TestCase
 
         $rule = new File();
         $input = '/path/of/a/valid/file.txt';
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
@@ -54,7 +54,7 @@ class FileTest extends TestCase
 
         $rule = new File();
         $input = '/path/of/an/invalid/file.txt';
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     /**
@@ -68,6 +68,6 @@ class FileTest extends TestCase
                 ->method('isFile')
                 ->will($this->returnValue(true));
 
-        $this->assertTrue($rule->validate($object));
+        self::assertTrue($rule->validate($object));
     }
 }

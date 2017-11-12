@@ -27,7 +27,7 @@ class StringTypeTest extends TestCase
     {
         $rule = new StringType();
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
@@ -37,7 +37,7 @@ class StringTypeTest extends TestCase
     {
         $rule = new StringType();
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     public function providerForString()

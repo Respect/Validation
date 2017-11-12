@@ -28,19 +28,19 @@ class CallTest extends TestCase
     public function testCallbackValidatorShouldAcceptEmptyString()
     {
         $v = new Call('str_split', new ArrayVal());
-        $this->assertTrue($v->assert(''));
+        self::assertTrue($v->assert(''));
     }
 
     public function testCallbackValidatorShouldAcceptStringWithFunctionName()
     {
         $v = new Call('str_split', new ArrayVal());
-        $this->assertTrue($v->assert('test'));
+        self::assertTrue($v->assert('test'));
     }
 
     public function testCallbackValidatorShouldAcceptArrayCallbackDefinition()
     {
         $v = new Call([$this, 'thisIsASampleCallbackUsedInsideThisTest'], new ArrayVal());
-        $this->assertTrue($v->assert('test'));
+        self::assertTrue($v->assert('test'));
     }
 
     public function testCallbackValidatorShouldAcceptClosures()
@@ -48,7 +48,7 @@ class CallTest extends TestCase
         $v = new Call(function () {
             return [];
         }, new ArrayVal());
-        $this->assertTrue($v->assert('test'));
+        self::assertTrue($v->assert('test'));
     }
 
     /**
@@ -57,7 +57,7 @@ class CallTest extends TestCase
     public function testCallbackFailedShouldThrowCallException()
     {
         $v = new Call('strrev', new ArrayVal());
-        $this->assertFalse($v->validate('test'));
-        $this->assertFalse($v->assert('test'));
+        self::assertFalse($v->validate('test'));
+        self::assertFalse($v->assert('test'));
     }
 }

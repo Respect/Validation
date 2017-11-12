@@ -26,7 +26,7 @@ class ContainsTest extends TestCase
     public function testStringsContainingExpectedIdenticalValueShouldPass($start, $input)
     {
         $v = new Contains($start, true);
-        $this->assertTrue($v->validate($input));
+        self::assertTrue($v->validate($input));
     }
 
     /**
@@ -35,7 +35,7 @@ class ContainsTest extends TestCase
     public function testStringsContainingExpectedValueShouldPass($start, $input)
     {
         $v = new Contains($start, false);
-        $this->assertTrue($v->validate($input));
+        self::assertTrue($v->validate($input));
     }
 
     /**
@@ -44,7 +44,7 @@ class ContainsTest extends TestCase
     public function testStringsNotContainsExpectedIdenticalValueShouldNotPass($start, $input)
     {
         $v = new Contains($start, true);
-        $this->assertFalse($v->validate($input));
+        self::assertFalse($v->validate($input));
     }
 
     /**
@@ -53,7 +53,7 @@ class ContainsTest extends TestCase
     public function testStringsNotContainsExpectedValueShouldNotPass($start, $input)
     {
         $v = new Contains($start, false);
-        $this->assertFalse($v->validate($input));
+        self::assertFalse($v->validate($input));
     }
 
     public function providerForContains()

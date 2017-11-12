@@ -28,7 +28,7 @@ class IdenticalTest extends TestCase
     {
         $rule = new Identical($compareTo);
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
@@ -38,7 +38,7 @@ class IdenticalTest extends TestCase
     {
         $rule = new Identical($compareTo);
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     /**

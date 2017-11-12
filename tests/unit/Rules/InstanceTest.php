@@ -29,7 +29,7 @@ class InstanceTest extends TestCase
 
     public function testInstanceValidationShouldReturnFalseForEmpty()
     {
-        $this->assertFalse($this->instanceValidator->__invoke(''));
+        self::assertFalse($this->instanceValidator->__invoke(''));
     }
 
     /**
@@ -50,9 +50,9 @@ class InstanceTest extends TestCase
 
     public function testInstanceValidationShouldReturnTrueForValidInstances()
     {
-        $this->assertTrue($this->instanceValidator->__invoke(new \ArrayObject()));
-        $this->assertTrue($this->instanceValidator->assert(new \ArrayObject()));
-        $this->assertTrue($this->instanceValidator->check(new \ArrayObject()));
+        self::assertTrue($this->instanceValidator->__invoke(new \ArrayObject()));
+        self::assertTrue($this->instanceValidator->assert(new \ArrayObject()));
+        self::assertTrue($this->instanceValidator->check(new \ArrayObject()));
     }
 
     /**
@@ -60,7 +60,7 @@ class InstanceTest extends TestCase
      */
     public function testInvalidInstancesShouldThrowInstanceException()
     {
-        $this->assertFalse($this->instanceValidator->validate(new \stdClass()));
-        $this->assertFalse($this->instanceValidator->assert(new \stdClass()));
+        self::assertFalse($this->instanceValidator->validate(new \stdClass()));
+        self::assertFalse($this->instanceValidator->assert(new \stdClass()));
     }
 }

@@ -22,7 +22,7 @@ class AbstractCtypeRuleTest extends TestCase
             ->method('ctypeFunction')
             ->will($this->returnValue(true));
 
-        $this->assertTrue($ctypeRuleMock->validateClean('anything'));
+        self::assertTrue($ctypeRuleMock->validateClean('anything'));
     }
 
     public function testValidateCleanShouldReturnFalseWhenCtypeFunctionReturnsFalse()
@@ -32,6 +32,6 @@ class AbstractCtypeRuleTest extends TestCase
             ->method('ctypeFunction')
             ->will($this->returnValue(false));
 
-        $this->assertFalse($ctypeRuleMock->validateClean('anything'));
+        self::assertFalse($ctypeRuleMock->validateClean('anything'));
     }
 }

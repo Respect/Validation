@@ -26,7 +26,7 @@ class PrntTest extends TestCase
     public function testValidDataWithPrintCharsShouldReturnTrue($validPrint, $additional = '')
     {
         $validator = new Prnt($additional);
-        $this->assertTrue($validator->validate($validPrint));
+        self::assertTrue($validator->validate($validPrint));
     }
 
     /**
@@ -36,8 +36,8 @@ class PrntTest extends TestCase
     public function testInvalidPrintShouldFailAndThrowPrntException($invalidPrint, $additional = '')
     {
         $validator = new Prnt($additional);
-        $this->assertFalse($validator->validate($invalidPrint));
-        $this->assertFalse($validator->assert($invalidPrint));
+        self::assertFalse($validator->validate($invalidPrint));
+        self::assertFalse($validator->assert($invalidPrint));
     }
 
     /**
@@ -55,7 +55,7 @@ class PrntTest extends TestCase
     public function testAdditionalCharsShouldBeRespected($additional, $query)
     {
         $validator = new Prnt($additional);
-        $this->assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($query));
     }
 
     public function providerAdditionalChars()

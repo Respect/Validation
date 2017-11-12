@@ -36,7 +36,7 @@ class IntTypeTest extends TestCase
     {
         $rule = new IntType();
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     public function providerForInvalidIntType()
@@ -56,6 +56,6 @@ class IntTypeTest extends TestCase
     {
         $rule = new IntType();
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 }

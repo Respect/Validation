@@ -26,7 +26,7 @@ class SpaceTest extends TestCase
     public function testValidDataWithSpaceShouldReturnTrue($validSpace, $additional = '')
     {
         $validator = new Space($additional);
-        $this->assertTrue($validator->validate($validSpace));
+        self::assertTrue($validator->validate($validSpace));
     }
 
     /**
@@ -36,8 +36,8 @@ class SpaceTest extends TestCase
     public function testInvalidSpaceShouldFailAndThrowSpaceException($invalidSpace, $additional = '')
     {
         $validator = new Space($additional);
-        $this->assertFalse($validator->validate($invalidSpace));
-        $this->assertFalse($validator->assert($invalidSpace));
+        self::assertFalse($validator->validate($invalidSpace));
+        self::assertFalse($validator->assert($invalidSpace));
     }
 
     /**
@@ -55,7 +55,7 @@ class SpaceTest extends TestCase
     public function testAdditionalCharsShouldBeRespected($additional, $query)
     {
         $validator = new Space($additional);
-        $this->assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($query));
     }
 
     public function providerAdditionalChars()

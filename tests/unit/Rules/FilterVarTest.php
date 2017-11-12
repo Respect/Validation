@@ -45,7 +45,7 @@ class FilterVarTest extends TestCase
         $actualArguments = $rule->arguments;
         $expectedArguments = [FILTER_VALIDATE_REGEXP];
 
-        $this->assertEquals($expectedArguments, $actualArguments);
+        self::assertEquals($expectedArguments, $actualArguments);
     }
 
     public function testShouldDefineFilterOptionsOnConstructor()
@@ -55,20 +55,20 @@ class FilterVarTest extends TestCase
         $actualArguments = $rule->arguments;
         $expectedArguments = [FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED];
 
-        $this->assertEquals($expectedArguments, $actualArguments);
+        self::assertEquals($expectedArguments, $actualArguments);
     }
 
     public function testShouldUseDefineFilterToValidate()
     {
         $rule = new FilterVar(FILTER_VALIDATE_EMAIL);
 
-        $this->assertTrue($rule->validate('henriquemoody@users.noreply.github.com'));
+        self::assertTrue($rule->validate('henriquemoody@users.noreply.github.com'));
     }
 
     public function testShouldUseDefineFilterOptionsToValidate()
     {
         $rule = new FilterVar(FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED);
 
-        $this->assertTrue($rule->validate('http://example.com?foo=bar'));
+        self::assertTrue($rule->validate('http://example.com?foo=bar'));
     }
 }

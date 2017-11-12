@@ -21,14 +21,14 @@ class WhenTest extends RuleTestCase
     {
         $rule = new When($this->getRuleMock(true), $this->getRuleMock(true));
 
-        $this->assertInstanceOf(AlwaysInvalid::class, $rule->else);
+        self::assertInstanceOf(AlwaysInvalid::class, $rule->else);
     }
 
     public function testShouldConstructAnObjectWithElseRule()
     {
         $rule = new When($this->getRuleMock(true), $this->getRuleMock(true), $this->getRuleMock(true));
 
-        $this->assertNotNull($rule->else);
+        self::assertNotNull($rule->else);
     }
 
     /**

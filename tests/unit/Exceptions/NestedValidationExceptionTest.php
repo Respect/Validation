@@ -28,8 +28,8 @@ class NestedValidationExceptionTest extends TestCase
         $composite = new AttributeException();
         $node = new IntValException();
         $composite->addRelated($node);
-        $this->assertEquals(1, count($composite->getRelated(true)));
-        $this->assertContainsOnly($node, $composite->getRelated());
+        self::assertEquals(1, count($composite->getRelated(true)));
+        self::assertContainsOnly($node, $composite->getRelated());
     }
 
     public function testAddingTheSameInstanceShouldAddJustASingleReference()
@@ -39,8 +39,8 @@ class NestedValidationExceptionTest extends TestCase
         $composite->addRelated($node);
         $composite->addRelated($node);
         $composite->addRelated($node);
-        $this->assertEquals(1, count($composite->getRelated(true)));
-        $this->assertContainsOnly($node, $composite->getRelated());
+        self::assertEquals(1, count($composite->getRelated(true)));
+        self::assertContainsOnly($node, $composite->getRelated());
     }
 
     public function testFindRelatedShouldFindCompositeExceptions()
@@ -56,12 +56,12 @@ class NestedValidationExceptionTest extends TestCase
         $foo->addRelated($bar);
         $bar->addRelated($baz);
         $baz->addRelated($bat);
-        $this->assertSame($bar, $foo->findRelated('bar'));
-        $this->assertSame($baz, $foo->findRelated('baz'));
-        $this->assertSame($baz, $foo->findRelated('bar.baz'));
-        $this->assertSame($baz, $foo->findRelated('baz'));
-        $this->assertSame($bat, $foo->findRelated('bar.bat'));
-        $this->assertNull($foo->findRelated('none'));
-        $this->assertNull($foo->findRelated('bar.none'));
+        self::assertSame($bar, $foo->findRelated('bar'));
+        self::assertSame($baz, $foo->findRelated('baz'));
+        self::assertSame($baz, $foo->findRelated('bar.baz'));
+        self::assertSame($baz, $foo->findRelated('baz'));
+        self::assertSame($bat, $foo->findRelated('bar.bat'));
+        self::assertNull($foo->findRelated('none'));
+        self::assertNull($foo->findRelated('bar.none'));
     }
 }

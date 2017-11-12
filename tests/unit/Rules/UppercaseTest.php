@@ -26,9 +26,9 @@ class UppercaseTest extends TestCase
     public function testValidUppercaseShouldReturnTrue($input)
     {
         $uppercase = new Uppercase();
-        $this->assertTrue($uppercase->validate($input));
-        $this->assertTrue($uppercase->assert($input));
-        $this->assertTrue($uppercase->check($input));
+        self::assertTrue($uppercase->validate($input));
+        self::assertTrue($uppercase->assert($input));
+        self::assertTrue($uppercase->check($input));
     }
 
     /**
@@ -38,8 +38,8 @@ class UppercaseTest extends TestCase
     public function testInvalidUppercaseShouldThrowException($input)
     {
         $lowercase = new Uppercase();
-        $this->assertFalse($lowercase->validate($input));
-        $this->assertFalse($lowercase->assert($input));
+        self::assertFalse($lowercase->validate($input));
+        self::assertFalse($lowercase->assert($input));
     }
 
     public function providerForValidUppercase()

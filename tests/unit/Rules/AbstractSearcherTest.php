@@ -26,15 +26,15 @@ class AbstractSearcherTest extends TestCase
     {
         $this->searcherRuleMock->haystack = [1, 2, 3, 4];
 
-        $this->assertTrue($this->searcherRuleMock->validate('1'));
-        $this->assertTrue($this->searcherRuleMock->validate(1));
+        self::assertTrue($this->searcherRuleMock->validate('1'));
+        self::assertTrue($this->searcherRuleMock->validate(1));
     }
 
     public function testValidateShouldReturnFalseWhenEqualValueIsNotFoundInHaystack()
     {
         $this->searcherRuleMock->haystack = [1, 2, 3, 4];
 
-        $this->assertFalse($this->searcherRuleMock->validate(5));
+        self::assertFalse($this->searcherRuleMock->validate(5));
     }
 
     public function testValidateShouldReturnTrueWhenIdenticalValueIsFoundInHaystack()
@@ -42,8 +42,8 @@ class AbstractSearcherTest extends TestCase
         $this->searcherRuleMock->haystack = [1, 2, 3, 4];
         $this->searcherRuleMock->compareIdentical = true;
 
-        $this->assertTrue($this->searcherRuleMock->validate(1));
-        $this->assertTrue($this->searcherRuleMock->validate(4));
+        self::assertTrue($this->searcherRuleMock->validate(1));
+        self::assertTrue($this->searcherRuleMock->validate(4));
     }
 
     public function testValidateShouldReturnFalseWhenIdenticalValueIsNotFoundInHaystack()
@@ -51,57 +51,57 @@ class AbstractSearcherTest extends TestCase
         $this->searcherRuleMock->haystack = [1, 2, 3, 4];
         $this->searcherRuleMock->compareIdentical = true;
 
-        $this->assertFalse($this->searcherRuleMock->validate('1'));
-        $this->assertFalse($this->searcherRuleMock->validate('4'));
-        $this->assertFalse($this->searcherRuleMock->validate(5));
+        self::assertFalse($this->searcherRuleMock->validate('1'));
+        self::assertFalse($this->searcherRuleMock->validate('4'));
+        self::assertFalse($this->searcherRuleMock->validate(5));
     }
 
     public function testValidateShouldReturnTrueWhenInputIsEmptyOrNullAndIdenticalToHaystack()
     {
         $this->searcherRuleMock->compareIdentical = true;
 
-        $this->assertTrue($this->searcherRuleMock->validate(null));
+        self::assertTrue($this->searcherRuleMock->validate(null));
 
         $this->searcherRuleMock->haystack = '';
 
-        $this->assertTrue($this->searcherRuleMock->validate(''));
+        self::assertTrue($this->searcherRuleMock->validate(''));
     }
 
     public function testValidateShouldReturnFalseWhenInputIsEmptyOrNullAndNotIdenticalToHaystack()
     {
         $this->searcherRuleMock->compareIdentical = true;
 
-        $this->assertFalse($this->searcherRuleMock->validate(''));
+        self::assertFalse($this->searcherRuleMock->validate(''));
 
         $this->searcherRuleMock->haystack = '';
 
-        $this->assertFalse($this->searcherRuleMock->validate(null));
+        self::assertFalse($this->searcherRuleMock->validate(null));
     }
 
     public function testValidateShouldReturnTrueWhenInputIsEmptyOrNullAndEqualsHaystack()
     {
-        $this->assertTrue($this->searcherRuleMock->validate(''));
-        $this->assertTrue($this->searcherRuleMock->validate(null));
+        self::assertTrue($this->searcherRuleMock->validate(''));
+        self::assertTrue($this->searcherRuleMock->validate(null));
     }
 
     public function testValidateShouldReturnFalseWhenInputIsEmptyOrNullAndNotEqualsHaystack()
     {
         $this->searcherRuleMock->haystack = 'Respect';
 
-        $this->assertFalse($this->searcherRuleMock->validate(''));
-        $this->assertFalse($this->searcherRuleMock->validate(null));
+        self::assertFalse($this->searcherRuleMock->validate(''));
+        self::assertFalse($this->searcherRuleMock->validate(null));
     }
 
     public function testValidateWhenHaystackIsNotArrayAndInputIsPartOfHaystack()
     {
         $this->searcherRuleMock->haystack = 'Respect';
 
-        $this->assertTrue($this->searcherRuleMock->validate('Res'));
-        $this->assertTrue($this->searcherRuleMock->validate('RES'));
+        self::assertTrue($this->searcherRuleMock->validate('Res'));
+        self::assertTrue($this->searcherRuleMock->validate('RES'));
 
         $this->searcherRuleMock->compareIdentical = true;
 
-        $this->assertFalse($this->searcherRuleMock->validate('RES'));
-        $this->assertTrue($this->searcherRuleMock->validate('Res'));
+        self::assertFalse($this->searcherRuleMock->validate('RES'));
+        self::assertTrue($this->searcherRuleMock->validate('Res'));
     }
 }

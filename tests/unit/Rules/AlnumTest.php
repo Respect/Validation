@@ -26,7 +26,7 @@ class AlnumTest extends TestCase
     public function testValidAlnumCharsShouldReturnTrue($validAlnum, $additional)
     {
         $validator = new Alnum($additional);
-        $this->assertTrue($validator->validate($validAlnum));
+        self::assertTrue($validator->validate($validAlnum));
     }
 
     /**
@@ -36,8 +36,8 @@ class AlnumTest extends TestCase
     public function testInvalidAlnumCharsShouldThrowAlnumExceptionAndReturnFalse($invalidAlnum, $additional)
     {
         $validator = new Alnum($additional);
-        $this->assertFalse($validator->validate($invalidAlnum));
-        $this->assertFalse($validator->assert($invalidAlnum));
+        self::assertFalse($validator->validate($invalidAlnum));
+        self::assertFalse($validator->assert($invalidAlnum));
     }
 
     /**
@@ -55,7 +55,7 @@ class AlnumTest extends TestCase
     public function testAdditionalCharsShouldBeRespected($additional, $query)
     {
         $validator = new Alnum($additional);
-        $this->assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($query));
     }
 
     public function providerAdditionalChars()
