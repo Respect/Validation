@@ -16,6 +16,7 @@ matrix:
     - php: nightly
   allow_failures:
     - php: nightly
+    - php: 7.2
   fast_finish: true
 
 before_script:
@@ -24,13 +25,13 @@ before_script:
 script:
   - vendor/bin/phpunit --configuration phpunit.xml.dist --colors --coverage-clover=coverage.clover
   - |
-    if [[ "${TRAVIS_PHP_VERSION}" == "7.2" ]]; then
+    if [[ "${TRAVIS_PHP_VERSION}" == "7.1" ]]; then
       vendor/bin/docheader check library tests
     fi
 
 after_script:
   - |
-    if [[ "${TRAVIS_PHP_VERSION}" == "7.2" ]]; then
+    if [[ "${TRAVIS_PHP_VERSION}" == "7.1" ]]; then
       wget https://scrutinizer-ci.com/ocular.phar
       php ocular.phar code-coverage:upload --format=php-clover coverage.clover
     fi
