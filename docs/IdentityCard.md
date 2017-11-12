@@ -22,7 +22,6 @@ Version | Description
 ***
 See also:
 
-- [Bank](Bank.md)
 - [Pesel](Pesel.md)
 - [SubdivisionCode](SubdivisionCode.md)
 - [Vatin](Vatin.md)

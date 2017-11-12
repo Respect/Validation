@@ -20,7 +20,6 @@ Version | Description
 ***
 See also:
 
-- [Bank](Bank.md)
 - [IdentityCard](IdentityCard.md)
 - [SubdivisionCode](SubdivisionCode.md)
 - [Vatin](Vatin.md)

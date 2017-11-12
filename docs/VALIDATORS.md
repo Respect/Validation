@@ -169,9 +169,6 @@
 
 ## Banking
 
-- [Bank](Bank.md)
-- [BankAccount](BankAccount.md)
-- [Bic](Bic.md)
 - [CreditCard](CreditCard.md)
 
 ## Other
@@ -220,12 +217,9 @@
 - [ArrayType](ArrayType.md)
 - [ArrayVal](ArrayVal.md)
 - [Attribute](Attribute.md)
-- [Bank](Bank.md)
-- [BankAccount](BankAccount.md)
 - [Base](Base.md)
 - [Base64](Base64.md)
 - [Between](Between.md)
-- [Bic](Bic.md)
 - [BoolType](BoolType.md)
 - [BoolVal](BoolVal.md)
 - [Bsn](Bsn.md)

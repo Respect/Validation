@@ -17,7 +17,6 @@
     },
     "require-dev": {
         "egulias/email-validator": "^2.0",
-        "malkusch/bav": "^1.1",
         "malukenho/docheader": "^0.1.4",
         "mikey179/vfsStream": "^1.6",
         "phpunit/phpunit": "^5.6",
@@ -29,7 +28,6 @@
         "ext-fileinfo": "File Information",
         "ext-mbstring": "Multibyte String Functions",
         "egulias/email-validator": "Strict (RFC compliant) email validation",
-        "malkusch/bav": "German bank account validation",
         "symfony/validator": "Use Symfony validator through Respect\\Validation",
         "zendframework/zend-validator": "Use Zend Framework validator through Respect\\Validation",
         "fabpot/php-cs-fixer": "Fix PSR2 and other coding style issues"
