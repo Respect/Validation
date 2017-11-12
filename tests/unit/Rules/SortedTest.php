@@ -20,7 +20,7 @@ class SortedTest extends \PHPUnit_Framework_TestCase
 {
     public function testPasses()
     {
-        $arr = [1,2,3];
+        $arr = [1, 2, 3];
         $rule = new Sorted();
 
         $this->assertTrue($rule->validate($arr));
@@ -30,7 +30,7 @@ class SortedTest extends \PHPUnit_Framework_TestCase
 
     public function testPassesWithEqualValues()
     {
-        $arr = [1,2,2,3];
+        $arr = [1, 2, 2, 3];
         $rule = new Sorted();
 
         $this->assertTrue($rule->validate($arr));
@@ -43,7 +43,7 @@ class SortedTest extends \PHPUnit_Framework_TestCase
      */
     public function testNotPasses()
     {
-        $arr = [1,2,4,3];
+        $arr = [1, 2, 4, 3];
         $rule = new Sorted();
 
         $this->assertFalse($rule->validate($arr));
@@ -52,7 +52,7 @@ class SortedTest extends \PHPUnit_Framework_TestCase
 
     public function testPassesDescending()
     {
-        $arr = [10,9,8];
+        $arr = [10, 9, 8];
         $rule = new Sorted(null, false);
 
         $this->assertTrue($rule->validate($arr));
@@ -62,7 +62,7 @@ class SortedTest extends \PHPUnit_Framework_TestCase
 
     public function testPassesDescendingWithEqualValues()
     {
-        $arr = [10,9,9,8];
+        $arr = [10, 9, 9, 8];
         $rule = new Sorted(null, false);
 
         $this->assertTrue($rule->validate($arr));
@@ -83,7 +83,7 @@ class SortedTest extends \PHPUnit_Framework_TestCase
                 'key' => 5,
             ],
         ];
-        $rule = new Sorted(function($x){
+        $rule = new Sorted(function ($x) {
             return $x['key'];
         });
 
