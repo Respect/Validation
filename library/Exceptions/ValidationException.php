@@ -16,7 +16,7 @@ namespace Respect\Validation\Exceptions;
 use InvalidArgumentException;
 use function Respect\Stringifier\stringify;
 
-class ValidationException extends InvalidArgumentException implements ExceptionInterface
+class ValidationException extends RuleException implements ExceptionInterface
 {
     const MODE_DEFAULT = 1;
     const MODE_NEGATIVE = 2;
