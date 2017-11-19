@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class StartsWithTest extends TestCase
     /**
      * @dataProvider providerForStartsWith
      */
-    public function testStartsWith($start, $input)
+    public function testStartsWith($start, $input): void
     {
         $v = new StartsWith($start);
         self::assertTrue($v->__invoke($input));
@@ -35,7 +37,7 @@ class StartsWithTest extends TestCase
      * @dataProvider providerForNotStartsWith
      * @expectedException \Respect\Validation\Exceptions\StartsWithException
      */
-    public function testNotStartsWith($start, $input, $caseSensitive = false)
+    public function testNotStartsWith($start, $input, $caseSensitive = false): void
     {
         $v = new StartsWith($start, $caseSensitive);
         self::assertFalse($v->__invoke($input));

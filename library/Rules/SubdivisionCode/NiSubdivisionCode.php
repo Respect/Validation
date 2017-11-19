@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
@@ -18,7 +20,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: NI
  *
- * @link http://www.geonames.org/NI/administrative-division-nicaragua.html
+ * @see http://www.geonames.org/NI/administrative-division-nicaragua.html
  */
 class NiSubdivisionCode extends AbstractSearcher
 {

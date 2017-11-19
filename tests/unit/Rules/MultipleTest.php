@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class MultipleTest extends TestCase
     /**
      * @dataProvider providerForMultiple
      */
-    public function testValidNumberMultipleOf($multipleOf, $input)
+    public function testValidNumberMultipleOf($multipleOf, $input): void
     {
         $multiple = new Multiple($multipleOf);
         self::assertTrue($multiple->validate($input));
@@ -35,7 +37,7 @@ class MultipleTest extends TestCase
      * @dataProvider providerForNotMultiple
      * @expectedException \Respect\Validation\Exceptions\MultipleException
      */
-    public function testNotMultipleShouldThrowMultipleException($multipleOf, $input)
+    public function testNotMultipleShouldThrowMultipleException($multipleOf, $input): void
     {
         $multiple = new Multiple($multipleOf);
         self::assertFalse($multiple->validate($input));

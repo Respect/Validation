@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class CnhTest extends TestCase
 {
     protected $cnhValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->cnhValidator = new Cnh();
     }
@@ -30,7 +32,7 @@ class CnhTest extends TestCase
     /**
      * @dataProvider validCnhProvider
      */
-    public function testValidCnh($cnh)
+    public function testValidCnh($cnh): void
     {
         self::assertTrue($this->cnhValidator->assert($cnh));
         self::assertTrue($this->cnhValidator->__invoke($cnh));
@@ -41,7 +43,7 @@ class CnhTest extends TestCase
      * @dataProvider invalidCnhProvider
      * @expectedException \Respect\Validation\Exceptions\CnhException
      */
-    public function testInvalidCnh($cnh)
+    public function testInvalidCnh($cnh): void
     {
         $expectedInvalid = $this->cnhValidator->assert($cnh);
         self::assertFalse($expectedInvalid);
@@ -51,7 +53,7 @@ class CnhTest extends TestCase
      * @dataProvider notIntegerCnhProvider
      * @expectedException \Respect\Validation\Exceptions\CnhException
      */
-    public function testNotIntegerCnh($cnh)
+    public function testNotIntegerCnh($cnh): void
     {
         $expectedInvalid = $this->cnhValidator->assert($cnh);
         self::assertFalse($expectedInvalid);
@@ -61,7 +63,7 @@ class CnhTest extends TestCase
      * @dataProvider invalidCnhLengthProvider
      * @expectedException \Respect\Validation\Exceptions\CnhException
      */
-    public function testInvalidLengthCnh($cnh)
+    public function testInvalidLengthCnh($cnh): void
     {
         $expectedInvalid = $this->cnhValidator->assert($cnh);
         self::assertFalse($expectedInvalid);

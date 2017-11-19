@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Egulias\EmailValidator\EmailValidator;
@@ -31,13 +33,13 @@ function class_exists($className)
  */
 class EmailTest extends TestCase
 {
-    private function setEmailValidatorExists($value)
+    private function setEmailValidatorExists($value): void
     {
         $GLOBALS['class_exists'][EmailValidator::class] = (bool) $value;
         $GLOBALS['class_exists'][RFCValidation::class] = (bool) $value;
     }
 
-    private function resetClassExists()
+    private function resetClassExists(): void
     {
         unset($GLOBALS['class_exists']);
     }
@@ -52,17 +54,17 @@ class EmailTest extends TestCase
         return $emailValidatorMock;
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->setEmailValidatorExists(false);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->resetClassExists();
     }
 
-    public function testShouldAcceptInstanceOfEmailValidatorOnConstructor()
+    public function testShouldAcceptInstanceOfEmailValidatorOnConstructor(): void
     {
         $this->resetClassExists();
 
@@ -73,7 +75,7 @@ class EmailTest extends TestCase
         self::assertSame($emailValidator, $rule->getEmailValidator());
     }
 
-    public function testShouldHaveADefaultInstanceOfEmailValidator()
+    public function testShouldHaveADefaultInstanceOfEmailValidator(): void
     {
         $this->resetClassExists();
 
@@ -82,7 +84,7 @@ class EmailTest extends TestCase
         self::assertInstanceOf(EmailValidator::class, $rule->getEmailValidator());
     }
 
-    public function testShouldUseEmailValidatorWhenDefined()
+    public function testShouldUseEmailValidatorWhenDefined(): void
     {
         $this->resetClassExists();
 
@@ -103,7 +105,7 @@ class EmailTest extends TestCase
     /**
      * @dataProvider providerForValidEmail
      */
-    public function testValidEmailShouldPass($validEmail)
+    public function testValidEmailShouldPass($validEmail): void
     {
         $validator = new Email();
         self::assertTrue($validator->__invoke($validEmail));
@@ -115,7 +117,7 @@ class EmailTest extends TestCase
      * @dataProvider providerForInvalidEmail
      * @expectedException \Respect\Validation\Exceptions\EmailException
      */
-    public function testInvalidEmailsShouldFailValidation($invalidEmail)
+    public function testInvalidEmailsShouldFailValidation($invalidEmail): void
     {
         $validator = new Email();
         self::assertFalse($validator->__invoke($invalidEmail));

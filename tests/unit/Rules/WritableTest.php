@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -36,7 +38,7 @@ class WritableTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\Writable::validate
      */
-    public function testValidWritableFileShouldReturnTrue()
+    public function testValidWritableFileShouldReturnTrue(): void
     {
         $GLOBALS['is_writable'] = true;
 
@@ -48,7 +50,7 @@ class WritableTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\Writable::validate
      */
-    public function testInvalidWritableFileShouldReturnFalse()
+    public function testInvalidWritableFileShouldReturnFalse(): void
     {
         $GLOBALS['is_writable'] = false;
 
@@ -60,7 +62,7 @@ class WritableTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\Writable::validate
      */
-    public function testShouldValidateObjects()
+    public function testShouldValidateObjects(): void
     {
         $rule = new Writable();
         $object = $this->createMock('SplFileInfo', ['isWritable'], ['somefile.txt']);

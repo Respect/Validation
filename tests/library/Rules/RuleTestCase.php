@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -81,7 +83,7 @@ abstract class RuleTestCase extends TestCase
      * @param Validatable $validator
      * @param mixed       $input
      */
-    public function testShouldValidateValidInput(Validatable $validator, $input)
+    public function testShouldValidateValidInput(Validatable $validator, $input): void
     {
         self::assertTrue($validator->validate($input));
     }
@@ -92,7 +94,7 @@ abstract class RuleTestCase extends TestCase
      * @param Validatable $validator
      * @param mixed       $input
      */
-    public function testShouldValidateInvalidInput(Validatable $validator, $input)
+    public function testShouldValidateInvalidInput(Validatable $validator, $input): void
     {
         self::assertFalse($validator->validate($input));
     }

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class NotOptionalTest extends TestCase
     /**
      * @dataProvider providerForNotOptional
      */
-    public function testShouldValidateWhenNotOptional($input)
+    public function testShouldValidateWhenNotOptional($input): void
     {
         $rule = new NotOptional();
 
@@ -33,7 +35,7 @@ class NotOptionalTest extends TestCase
     /**
      * @dataProvider providerForOptional
      */
-    public function testShouldNotValidateWhenOptional($input)
+    public function testShouldNotValidateWhenOptional($input): void
     {
         $rule = new NotOptional();
 

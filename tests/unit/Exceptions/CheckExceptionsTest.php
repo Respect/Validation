@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
 use DirectoryIterator;
@@ -31,7 +33,7 @@ class CheckExceptionsTest extends TestCase
 
             $ruleName = mb_substr($fileInfo->getBasename(), 0, -4);
             $ruleIsDeprecated = in_array($ruleName, $this->deprecateds);
-            $isRuleClassFile = (bool) ($fileInfo->getExtension() !== 'php');
+            $isRuleClassFile = (bool) ('php' !== $fileInfo->getExtension());
             if ($ruleIsDeprecated || $isRuleClassFile) {
                 continue;
             }
@@ -51,7 +53,7 @@ class CheckExceptionsTest extends TestCase
     /**
      * @dataProvider provideListOfRuleNames
      */
-    public function testRuleHasAnExceptionWhichHasValidApi($ruleName)
+    public function testRuleHasAnExceptionWhichHasValidApi($ruleName): void
     {
         $exceptionClass = 'Respect\\Validation\\Exceptions\\'.$ruleName.'Exception';
         self::assertTrue(

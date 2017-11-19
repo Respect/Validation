@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Base64 extends AbstractRule
@@ -23,6 +25,6 @@ class Base64 extends AbstractRule
             return false;
         }
 
-        return strlen($input) % 4 === 0;
+        return 0 === mb_strlen($input) % 4;
     }
 }

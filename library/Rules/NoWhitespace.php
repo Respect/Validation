@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class NoWhitespace extends AbstractRule
@@ -23,6 +25,6 @@ class NoWhitespace extends AbstractRule
             return false;
         }
 
-        return !preg_match('#\s#', $input);
+        return !preg_match('#\s#', (string) $input);
     }
 }

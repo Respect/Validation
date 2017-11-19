@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class ContainsTest extends TestCase
     /**
      * @dataProvider providerForContainsIdentical
      */
-    public function testStringsContainingExpectedIdenticalValueShouldPass($start, $input)
+    public function testStringsContainingExpectedIdenticalValueShouldPass($start, $input): void
     {
         $v = new Contains($start, true);
         self::assertTrue($v->validate($input));
@@ -32,7 +34,7 @@ class ContainsTest extends TestCase
     /**
      * @dataProvider providerForContains
      */
-    public function testStringsContainingExpectedValueShouldPass($start, $input)
+    public function testStringsContainingExpectedValueShouldPass($start, $input): void
     {
         $v = new Contains($start, false);
         self::assertTrue($v->validate($input));
@@ -41,7 +43,7 @@ class ContainsTest extends TestCase
     /**
      * @dataProvider providerForNotContainsIdentical
      */
-    public function testStringsNotContainsExpectedIdenticalValueShouldNotPass($start, $input)
+    public function testStringsNotContainsExpectedIdenticalValueShouldNotPass($start, $input): void
     {
         $v = new Contains($start, true);
         self::assertFalse($v->validate($input));
@@ -50,7 +52,7 @@ class ContainsTest extends TestCase
     /**
      * @dataProvider providerForNotContains
      */
-    public function testStringsNotContainsExpectedValueShouldNotPass($start, $input)
+    public function testStringsNotContainsExpectedValueShouldNotPass($start, $input): void
     {
         $v = new Contains($start, false);
         self::assertFalse($v->validate($input));

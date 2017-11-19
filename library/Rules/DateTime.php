@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use DateTimeInterface;
@@ -49,6 +51,6 @@ class DateTime extends AbstractRule
 
         $info = date_parse_from_format($this->format, $inputString);
 
-        return $info['error_count'] === 0 && $info['warning_count'] === 0;
+        return 0 === $info['error_count'] && 0 === $info['warning_count'];
     }
 }

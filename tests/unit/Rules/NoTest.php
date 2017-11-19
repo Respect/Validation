@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -20,7 +22,7 @@ use PHPUnit\Framework\TestCase;
  */
 class NoTest extends TestCase
 {
-    public function testShouldUseDefaultPattern()
+    public function testShouldUseDefaultPattern(): void
     {
         $rule = new No();
 
@@ -30,7 +32,7 @@ class NoTest extends TestCase
         self::assertEquals($expectedPattern, $actualPattern);
     }
 
-    public function testShouldUseLocalPatternForNoExpressionWhenDefined()
+    public function testShouldUseLocalPatternForNoExpressionWhenDefined(): void
     {
         if (!defined('NOEXPR')) {
             $this->markTestSkipped('Constant NOEXPR is not defined');
@@ -49,7 +51,7 @@ class NoTest extends TestCase
     /**
      * @dataProvider validNoProvider
      */
-    public function testShouldValidatePatternAccordingToTheDefinedLocale($input)
+    public function testShouldValidatePatternAccordingToTheDefinedLocale($input): void
     {
         $rule = new No();
 
@@ -71,7 +73,7 @@ class NoTest extends TestCase
     /**
      * @dataProvider invalidNoProvider
      */
-    public function testShouldNotValidatePatternAccordingToTheDefinedLocale($input)
+    public function testShouldNotValidatePatternAccordingToTheDefinedLocale($input): void
     {
         $rule = new No();
 

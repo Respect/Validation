@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -24,7 +26,7 @@ class IdenticalTest extends TestCase
     /**
      * @dataProvider providerForIdentical
      */
-    public function testInputIdenticalToExpectedValueShouldPass($compareTo, $input)
+    public function testInputIdenticalToExpectedValueShouldPass($compareTo, $input): void
     {
         $rule = new Identical($compareTo);
 
@@ -34,7 +36,7 @@ class IdenticalTest extends TestCase
     /**
      * @dataProvider providerForNotIdentical
      */
-    public function testInputNotIdenticalToExpectedValueShouldPass($compareTo, $input)
+    public function testInputNotIdenticalToExpectedValueShouldPass($compareTo, $input): void
     {
         $rule = new Identical($compareTo);
 
@@ -45,7 +47,7 @@ class IdenticalTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\IdenticalException
      * @expectedExceptionMessage "42" must be identical as 42
      */
-    public function testShouldThrowTheProperExceptionWhenFailure()
+    public function testShouldThrowTheProperExceptionWhenFailure(): void
     {
         $rule = new Identical(42);
         $rule->check('42');

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
@@ -43,7 +45,7 @@ class OneOf extends AbstractComposite
             ++$rulesPassedCount;
         }
 
-        return $rulesPassedCount === 1;
+        return 1 === $rulesPassedCount;
     }
 
     public function check($input)
@@ -60,7 +62,7 @@ class OneOf extends AbstractComposite
             }
         }
 
-        if ($rulesPassedCount === 1) {
+        if (1 === $rulesPassedCount) {
             return true;
         }
 

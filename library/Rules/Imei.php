@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Imei extends AbstractRule
@@ -29,7 +31,7 @@ class Imei extends AbstractRule
         }
 
         $numbers = preg_replace('/\D/', '', $input);
-        if (mb_strlen($numbers) != self::IMEI_SIZE) {
+        if (self::IMEI_SIZE != mb_strlen($numbers)) {
             return false;
         }
 

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class SpaceTest extends TestCase
     /**
      * @dataProvider providerForValidSpace
      */
-    public function testValidDataWithSpaceShouldReturnTrue($validSpace, $additional = '')
+    public function testValidDataWithSpaceShouldReturnTrue($validSpace, $additional = ''): void
     {
         $validator = new Space($additional);
         self::assertTrue($validator->validate($validSpace));
@@ -33,7 +35,7 @@ class SpaceTest extends TestCase
      * @dataProvider providerForInvalidSpace
      * @expectedException \Respect\Validation\Exceptions\SpaceException
      */
-    public function testInvalidSpaceShouldFailAndThrowSpaceException($invalidSpace, $additional = '')
+    public function testInvalidSpaceShouldFailAndThrowSpaceException($invalidSpace, $additional = ''): void
     {
         $validator = new Space($additional);
         self::assertFalse($validator->validate($invalidSpace));
@@ -44,7 +46,7 @@ class SpaceTest extends TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
     {
         $validator = new Space($additional);
     }
@@ -52,7 +54,7 @@ class SpaceTest extends TestCase
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Space($additional);
         self::assertTrue($validator->validate($query));

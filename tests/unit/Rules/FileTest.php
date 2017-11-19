@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -36,7 +38,7 @@ class FileTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\File::validate
      */
-    public function testValidFileShouldReturnTrue()
+    public function testValidFileShouldReturnTrue(): void
     {
         $GLOBALS['is_file'] = true;
 
@@ -48,7 +50,7 @@ class FileTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\File::validate
      */
-    public function testInvalidFileShouldReturnFalse()
+    public function testInvalidFileShouldReturnFalse(): void
     {
         $GLOBALS['is_file'] = false;
 
@@ -60,7 +62,7 @@ class FileTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\File::validate
      */
-    public function testShouldValidateObjects()
+    public function testShouldValidateObjects(): void
     {
         $rule = new File();
         $object = $this->createMock('SplFileInfo', ['isFile'], ['somefile.txt']);

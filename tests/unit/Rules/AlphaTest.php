@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class AlphaTest extends TestCase
     /**
      * @dataProvider providerForValidAlpha
      */
-    public function testValidAlphanumericCharsShouldReturnTrue($validAlpha, $additional)
+    public function testValidAlphanumericCharsShouldReturnTrue($validAlpha, $additional): void
     {
         $validator = new Alpha($additional);
         self::assertTrue($validator->validate($validAlpha));
@@ -35,7 +37,7 @@ class AlphaTest extends TestCase
      * @dataProvider providerForInvalidAlpha
      * @expectedException \Respect\Validation\Exceptions\AlphaException
      */
-    public function testInvalidAlphanumericCharsShouldThrowAlphaException($invalidAlpha, $additional)
+    public function testInvalidAlphanumericCharsShouldThrowAlphaException($invalidAlpha, $additional): void
     {
         $validator = new Alpha($additional);
         self::assertFalse($validator->validate($invalidAlpha));
@@ -46,7 +48,7 @@ class AlphaTest extends TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentException($additional)
+    public function testInvalidConstructorParamsShouldThrowComponentException($additional): void
     {
         $validator = new Alpha($additional);
     }
@@ -54,7 +56,7 @@ class AlphaTest extends TestCase
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Alpha($additional);
         self::assertTrue($validator->validate($query));

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
@@ -19,21 +21,21 @@ use Respect\Validation\Exceptions\ComponentException;
  */
 class CreditCardTest extends RuleTestCase
 {
-    public function testShouldHaveNoCreditCardBrandByDefault()
+    public function testShouldHaveNoCreditCardBrandByDefault(): void
     {
         $rule = new CreditCard();
 
         self::assertNull($rule->brand);
     }
 
-    public function testShouldAcceptCreditCardBrandOnConstructor()
+    public function testShouldAcceptCreditCardBrandOnConstructor(): void
     {
         $rule = new CreditCard(CreditCard::VISA);
 
         self::assertSame(CreditCard::VISA, $rule->brand);
     }
 
-    public function testShouldThrowExceptionWhenCreditCardBrandIsNotValid()
+    public function testShouldThrowExceptionWhenCreditCardBrandIsNotValid(): void
     {
         $message = '"RespectCard" is not a valid credit card brand';
         $message .= ' (Available: American Express, Diners Club, Discover, JCB, MasterCard, Visa).';

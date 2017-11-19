@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -36,7 +38,7 @@ class UploadedTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\Uploaded::validate
      */
-    public function testValidUploadedFileShouldReturnTrue()
+    public function testValidUploadedFileShouldReturnTrue(): void
     {
         $GLOBALS['is_uploaded_file'] = true;
 
@@ -48,7 +50,7 @@ class UploadedTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\Uploaded::validate
      */
-    public function testInvalidUploadedFileShouldReturnFalse()
+    public function testInvalidUploadedFileShouldReturnFalse(): void
     {
         $GLOBALS['is_uploaded_file'] = false;
 
@@ -60,7 +62,7 @@ class UploadedTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\Uploaded::validate
      */
-    public function testShouldValidateObjects()
+    public function testShouldValidateObjects(): void
     {
         $GLOBALS['is_uploaded_file'] = true;
 

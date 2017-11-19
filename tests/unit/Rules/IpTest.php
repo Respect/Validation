@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class IpTest extends TestCase
     /**
      * @dataProvider providerForIp
      */
-    public function testValidIpsShouldReturnTrue($input, $options = null)
+    public function testValidIpsShouldReturnTrue($input, $options = null): void
     {
         $ipValidator = new Ip($options);
         self::assertTrue($ipValidator->__invoke($input));
@@ -34,7 +36,7 @@ class IpTest extends TestCase
     /**
      * @dataProvider providerForIpBetweenRange
      */
-    public function testIpsBetweenRangeShouldReturnTrue($input, $networkRange)
+    public function testIpsBetweenRangeShouldReturnTrue($input, $networkRange): void
     {
         $ipValidator = new Ip($networkRange);
         self::assertTrue($ipValidator->__invoke($input));
@@ -46,7 +48,7 @@ class IpTest extends TestCase
      * @dataProvider providerForNotIp
      * @expectedException \Respect\Validation\Exceptions\IpException
      */
-    public function testInvalidIpsShouldThrowIpException($input, $options = null)
+    public function testInvalidIpsShouldThrowIpException($input, $options = null): void
     {
         $ipValidator = new Ip($options);
         self::assertFalse($ipValidator->__invoke($input));
@@ -57,7 +59,7 @@ class IpTest extends TestCase
      * @dataProvider providerForIpOutsideRange
      * @expectedException \Respect\Validation\Exceptions\IpException
      */
-    public function testIpsOutsideRangeShouldReturnFalse($input, $networkRange)
+    public function testIpsOutsideRangeShouldReturnFalse($input, $networkRange): void
     {
         $ipValidator = new Ip($networkRange);
         self::assertFalse($ipValidator->__invoke($input));
@@ -125,7 +127,7 @@ class IpTest extends TestCase
      * @dataProvider providerForInvalidRanges
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidRangeShouldRaiseException($range)
+    public function testInvalidRangeShouldRaiseException($range): void
     {
         $o = new Ip($range);
     }

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Cnh extends AbstractRule
@@ -23,7 +25,7 @@ class Cnh extends AbstractRule
         $input = preg_replace('{\D}', '', (string) $input);
 
         // Validate length and invalid numbers
-        if ((mb_strlen($input) != 11) || (intval($input) == 0)) {
+        if ((11 != mb_strlen($input)) || (0 == intval($input))) {
             return false;
         }
 

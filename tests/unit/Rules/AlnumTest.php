@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class AlnumTest extends TestCase
     /**
      * @dataProvider providerForValidAlnum
      */
-    public function testValidAlnumCharsShouldReturnTrue($validAlnum, $additional)
+    public function testValidAlnumCharsShouldReturnTrue($validAlnum, $additional): void
     {
         $validator = new Alnum($additional);
         self::assertTrue($validator->validate($validAlnum));
@@ -33,7 +35,7 @@ class AlnumTest extends TestCase
      * @dataProvider providerForInvalidAlnum
      * @expectedException \Respect\Validation\Exceptions\AlnumException
      */
-    public function testInvalidAlnumCharsShouldThrowAlnumExceptionAndReturnFalse($invalidAlnum, $additional)
+    public function testInvalidAlnumCharsShouldThrowAlnumExceptionAndReturnFalse($invalidAlnum, $additional): void
     {
         $validator = new Alnum($additional);
         self::assertFalse($validator->validate($invalidAlnum));
@@ -44,7 +46,7 @@ class AlnumTest extends TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
     {
         $validator = new Alnum($additional);
     }
@@ -52,7 +54,7 @@ class AlnumTest extends TestCase
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Alnum($additional);
         self::assertTrue($validator->validate($query));

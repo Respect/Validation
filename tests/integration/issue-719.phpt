@@ -13,9 +13,9 @@ $input = [
 ];
 
 $rules = [
-    v::key('user_name',     v::numericVal())->setName('First Name'),
-    v::key('user_surname',  v::numericVal())->setName('Second Name'),
-    v::key('user_tel',      v::phone())->setName('Phone number'),
+    v::key('user_name', v::numericVal())->setName('First Name'),
+    v::key('user_surname', v::numericVal())->setName('Second Name'),
+    v::key('user_tel', v::phone())->setName('Phone number'),
 ];
 
 try {

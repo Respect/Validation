@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation;
 
 use ReflectionClass;
@@ -31,12 +33,12 @@ class Factory
         return $rulePrefix.$namespaceSeparator;
     }
 
-    public function appendRulePrefix($rulePrefix)
+    public function appendRulePrefix($rulePrefix): void
     {
         array_push($this->rulePrefixes, $this->filterRulePrefix($rulePrefix));
     }
 
-    public function prependRulePrefix($rulePrefix)
+    public function prependRulePrefix($rulePrefix): void
     {
         array_unshift($this->rulePrefixes, $this->filterRulePrefix($rulePrefix));
     }

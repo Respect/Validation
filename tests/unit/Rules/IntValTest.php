@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class IntValTest extends TestCase
 {
     protected $intValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->intValidator = new IntVal();
     }
@@ -30,7 +32,7 @@ class IntValTest extends TestCase
     /**
      * @dataProvider providerForInt
      */
-    public function testValidIntegersShouldReturnTrue($input)
+    public function testValidIntegersShouldReturnTrue($input): void
     {
         self::assertTrue($this->intValidator->__invoke($input));
         self::assertTrue($this->intValidator->check($input));
@@ -41,7 +43,7 @@ class IntValTest extends TestCase
      * @dataProvider providerForNotInt
      * @expectedException \Respect\Validation\Exceptions\IntValException
      */
-    public function testInvalidIntegersShouldThrowIntException($input)
+    public function testInvalidIntegersShouldThrowIntException($input): void
     {
         self::assertFalse($this->intValidator->__invoke($input));
         self::assertFalse($this->intValidator->assert($input));

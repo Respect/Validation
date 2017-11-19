@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class RomanTest extends TestCase
 {
     protected $romanValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->romanValidator = new Roman();
     }
@@ -30,7 +32,7 @@ class RomanTest extends TestCase
     /**
      * @dataProvider providerForRoman
      */
-    public function testValidRomansShouldReturnTrue($input)
+    public function testValidRomansShouldReturnTrue($input): void
     {
         self::assertTrue($this->romanValidator->__invoke($input));
         self::assertTrue($this->romanValidator->assert($input));
@@ -41,7 +43,7 @@ class RomanTest extends TestCase
      * @dataProvider providerForNotRoman
      * @expectedException \Respect\Validation\Exceptions\RomanException
      */
-    public function testInvalidRomansShouldThrowRomanException($input)
+    public function testInvalidRomansShouldThrowRomanException($input): void
     {
         self::assertFalse($this->romanValidator->__invoke($input));
         self::assertFalse($this->romanValidator->assert($input));

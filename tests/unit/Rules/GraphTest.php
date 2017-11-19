@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class GraphTest extends TestCase
     /**
      * @dataProvider providerForValidGraph
      */
-    public function testValidDataWithGraphCharsShouldReturnTrue($validGraph, $additional = '')
+    public function testValidDataWithGraphCharsShouldReturnTrue($validGraph, $additional = ''): void
     {
         $validator = new Graph($additional);
         self::assertTrue($validator->validate($validGraph));
@@ -33,7 +35,7 @@ class GraphTest extends TestCase
      * @dataProvider providerForInvalidGraph
      * @expectedException \Respect\Validation\Exceptions\GraphException
      */
-    public function testInvalidGraphShouldFailAndThrowGraphException($invalidGraph, $additional = '')
+    public function testInvalidGraphShouldFailAndThrowGraphException($invalidGraph, $additional = ''): void
     {
         $validator = new Graph($additional);
         self::assertFalse($validator->validate($invalidGraph));
@@ -44,7 +46,7 @@ class GraphTest extends TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
     {
         $validator = new Graph($additional);
     }
@@ -52,7 +54,7 @@ class GraphTest extends TestCase
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Graph($additional);
         self::assertTrue($validator->validate($query));

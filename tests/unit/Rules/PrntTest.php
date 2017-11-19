@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class PrntTest extends TestCase
     /**
      * @dataProvider providerForValidPrint
      */
-    public function testValidDataWithPrintCharsShouldReturnTrue($validPrint, $additional = '')
+    public function testValidDataWithPrintCharsShouldReturnTrue($validPrint, $additional = ''): void
     {
         $validator = new Prnt($additional);
         self::assertTrue($validator->validate($validPrint));
@@ -33,7 +35,7 @@ class PrntTest extends TestCase
      * @dataProvider providerForInvalidPrint
      * @expectedException \Respect\Validation\Exceptions\PrntException
      */
-    public function testInvalidPrintShouldFailAndThrowPrntException($invalidPrint, $additional = '')
+    public function testInvalidPrintShouldFailAndThrowPrntException($invalidPrint, $additional = ''): void
     {
         $validator = new Prnt($additional);
         self::assertFalse($validator->validate($invalidPrint));
@@ -44,7 +46,7 @@ class PrntTest extends TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
     {
         $validator = new Prnt($additional);
     }
@@ -52,7 +54,7 @@ class PrntTest extends TestCase
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Prnt($additional);
         self::assertTrue($validator->validate($query));

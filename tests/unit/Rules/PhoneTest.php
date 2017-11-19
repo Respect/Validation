@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class PhoneTest extends TestCase
 {
     protected $phoneValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->phoneValidator = new Phone();
     }
@@ -30,7 +32,7 @@ class PhoneTest extends TestCase
     /**
      * @dataProvider providerForPhone
      */
-    public function testValidPhoneShouldReturnTrue($input)
+    public function testValidPhoneShouldReturnTrue($input): void
     {
         self::assertTrue($this->phoneValidator->__invoke($input));
         self::assertTrue($this->phoneValidator->assert($input));
@@ -41,7 +43,7 @@ class PhoneTest extends TestCase
      * @dataProvider providerForNotPhone
      * @expectedException \Respect\Validation\Exceptions\PhoneException
      */
-    public function testInvalidPhoneShouldThrowPhoneException($input)
+    public function testInvalidPhoneShouldThrowPhoneException($input): void
     {
         self::assertFalse($this->phoneValidator->__invoke($input));
         self::assertFalse($this->phoneValidator->assert($input));

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,12 +24,12 @@ class NullTypeTest extends TestCase
 {
     protected $object;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new NullType();
     }
 
-    public function testNullValue()
+    public function testNullValue(): void
     {
         self::assertTrue($this->object->assert(null));
         self::assertTrue($this->object->__invoke(null));
@@ -38,7 +40,7 @@ class NullTypeTest extends TestCase
      * @dataProvider providerForNotNull
      * @expectedException \Respect\Validation\Exceptions\NullTypeException
      */
-    public function testNotNull($input)
+    public function testNotNull($input): void
     {
         self::assertFalse($this->object->__invoke($input));
         self::assertFalse($this->object->assert($input));

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\Locale;
 
 use Respect\Validation\Rules\AbstractRule;
@@ -16,7 +18,7 @@ use Respect\Validation\Rules\AbstractRule;
 /**
  * Validator for Polish VAT identification number (NIP).
  *
- * @link https://en.wikipedia.org/wiki/VAT_identification_number
+ * @see https://en.wikipedia.org/wiki/VAT_identification_number
  */
 final class PlVatin extends AbstractRule
 {

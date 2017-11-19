@@ -9,10 +9,12 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 /**
- * @link https://en.wikipedia.org/wiki/Luhn_algorithm
+ * @see https://en.wikipedia.org/wiki/Luhn_algorithm
  */
 class Luhn extends AbstractRule
 {
@@ -31,10 +33,10 @@ class Luhn extends AbstractRule
     private function isValid($input): bool
     {
         $sum = 0;
-        $numDigits = strlen($input);
+        $numDigits = mb_strlen($input);
         $parity = $numDigits % 2;
         for ($i = 0; $i < $numDigits; ++$i) {
-            $digit = substr($input, $i, 1);
+            $digit = mb_substr($input, $i, 1);
             if ($parity == ($i % 2)) {
                 $digit <<= 1;
                 if (9 < $digit) {

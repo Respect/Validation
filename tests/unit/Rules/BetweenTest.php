@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use DateTime;
@@ -65,7 +67,7 @@ class BetweenTest extends TestCase
     /**
      * @dataProvider providerValid
      */
-    public function testValuesBetweenBoundsShouldPass($min, $max, $inclusive, $input)
+    public function testValuesBetweenBoundsShouldPass($min, $max, $inclusive, $input): void
     {
         $o = new Between($min, $max, $inclusive);
         self::assertTrue($o->__invoke($input));
@@ -77,7 +79,7 @@ class BetweenTest extends TestCase
      * @dataProvider providerInvalid
      * @expectedException \Respect\Validation\Exceptions\BetweenException
      */
-    public function testValuesOutBoundsShouldRaiseException($min, $max, $inclusive, $input)
+    public function testValuesOutBoundsShouldRaiseException($min, $max, $inclusive, $input): void
     {
         $o = new Between($min, $max, $inclusive);
         self::assertFalse($o->__invoke($input));
@@ -87,7 +89,7 @@ class BetweenTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructionParamsShouldRaiseException()
+    public function testInvalidConstructionParamsShouldRaiseException(): void
     {
         $o = new Between(10, 5);
     }

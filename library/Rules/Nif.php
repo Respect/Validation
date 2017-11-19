@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 /**
@@ -60,11 +62,11 @@ final class Nif extends AbstractRule
      */
     private function validateNie($prefix, $number, $control)
     {
-        if ($prefix === 'Y') {
+        if ('Y' === $prefix) {
             return $this->validateDni('1'.$number, $control);
         }
 
-        if ($prefix === 'Z') {
+        if ('Z' === $prefix) {
             return $this->validateDni('2'.$number, $control);
         }
 
@@ -75,23 +77,23 @@ final class Nif extends AbstractRule
      * @param int    $number
      * @param string $control
      */
-    private function validateCif($number, $control)
+    private function validateCif(string $number, $control)
     {
         $code = 0;
         $position = 1;
         foreach (str_split($number) as $digit) {
             $increaser = $digit;
-            if ($position % 2 !== 0) {
-                $increaser = array_sum(str_split($digit * 2));
+            if (0 !== $position % 2) {
+                $increaser = array_sum(str_split((string) ($digit * 2)));
             }
 
             $code += $increaser;
             ++$position;
         }
 
-        $digits = str_split($code);
+        $digits = str_split((string) $code);
         $lastDigit = (int) array_pop($digits);
-        $key = $lastDigit === 0 ? 0 : (10 - $lastDigit);
+        $key = 0 === $lastDigit ? 0 : (10 - $lastDigit);
 
         if (is_numeric($control)) {
             return (int) $key === (int) $control;

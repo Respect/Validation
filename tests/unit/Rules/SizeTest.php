@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use org\bovigo\vfs\content\LargeFileContent;
@@ -73,7 +75,7 @@ class SizeTest extends TestCase
     /**
      * @dataProvider validSizeProvider
      */
-    public function testShouldConvertUnitonConstructor($size, $bytes)
+    public function testShouldConvertUnitonConstructor($size, $bytes): void
     {
         $rule = new Size($size);
 
@@ -84,7 +86,7 @@ class SizeTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "42jb" is not a recognized file size
      */
-    public function testShouldThrowsAnExceptionWhenSizeIsNotValid()
+    public function testShouldThrowsAnExceptionWhenSizeIsNotValid(): void
     {
         new Size('42jb');
     }
@@ -92,14 +94,14 @@ class SizeTest extends TestCase
     /**
      * @dataProvider validFileProvider
      */
-    public function testShouldValidateFile($filename, $minSize, $maxSize, $expectedValidation)
+    public function testShouldValidateFile($filename, $minSize, $maxSize, $expectedValidation): void
     {
         $rule = new Size($minSize, $maxSize);
 
         self::assertEquals($expectedValidation, $rule->validate($filename));
     }
 
-    public function testShouldValidateSplFileInfo()
+    public function testShouldValidateSplFileInfo(): void
     {
         $root = vfsStream::setup();
         $file1Gb = vfsStream::newFile('1gb.txt')->withContent(LargeFileContent::withGigabytes(1))->at($root);
@@ -114,7 +116,7 @@ class SizeTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\SizeException
      * @expectedExceptionMessageRegExp #"vfs:.?/.?/root.?/1gb.txt" must be greater than "2pb"#
      */
-    public function testShouldThrowsSizeExceptionWhenAsserting()
+    public function testShouldThrowsSizeExceptionWhenAsserting(): void
     {
         $root = vfsStream::setup();
         $file1Gb = vfsStream::newFile('1gb.txt')->withContent(LargeFileContent::withGigabytes(1))->at($root);

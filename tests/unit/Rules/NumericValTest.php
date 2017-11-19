@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class NumericValTest extends TestCase
 {
     protected $object;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new NumericVal();
     }
@@ -30,7 +32,7 @@ class NumericValTest extends TestCase
     /**
      * @dataProvider providerForNumeric
      */
-    public function testNumeric($input)
+    public function testNumeric($input): void
     {
         self::assertTrue($this->object->__invoke($input));
         self::assertTrue($this->object->check($input));
@@ -41,7 +43,7 @@ class NumericValTest extends TestCase
      * @dataProvider providerForNotNumeric
      * @expectedException \Respect\Validation\Exceptions\NumericValException
      */
-    public function testNotNumeric($input)
+    public function testNotNumeric($input): void
     {
         self::assertFalse($this->object->__invoke($input));
         self::assertFalse($this->object->assert($input));

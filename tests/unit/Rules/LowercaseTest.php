@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class LowercaseTest extends TestCase
     /**
      * @dataProvider providerForValidLowercase
      */
-    public function testValidLowercaseShouldReturnTrue($input)
+    public function testValidLowercaseShouldReturnTrue($input): void
     {
         $lowercase = new Lowercase();
         self::assertTrue($lowercase->__invoke($input));
@@ -35,7 +37,7 @@ class LowercaseTest extends TestCase
      * @dataProvider providerForInvalidLowercase
      * @expectedException \Respect\Validation\Exceptions\LowercaseException
      */
-    public function testInvalidLowercaseShouldThrowException($input)
+    public function testInvalidLowercaseShouldThrowException($input): void
     {
         $lowercase = new Lowercase();
         self::assertFalse($lowercase->__invoke($input));

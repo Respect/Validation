@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class PerfectSquareTest extends TestCase
 {
     protected $object;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new PerfectSquare();
     }
@@ -30,7 +32,7 @@ class PerfectSquareTest extends TestCase
     /**
      * @dataProvider providerForPerfectSquare
      */
-    public function testPerfectSquare($input)
+    public function testPerfectSquare($input): void
     {
         self::assertTrue($this->object->__invoke($input));
         self::assertTrue($this->object->check($input));
@@ -41,7 +43,7 @@ class PerfectSquareTest extends TestCase
      * @dataProvider providerForNotPerfectSquare
      * @expectedException \Respect\Validation\Exceptions\PerfectSquareException
      */
-    public function testNotPerfectSquare($input)
+    public function testNotPerfectSquare($input): void
     {
         self::assertFalse($this->object->__invoke($input));
         self::assertFalse($this->object->assert($input));

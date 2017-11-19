@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use DateTime;
@@ -25,15 +27,16 @@ class AgeTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage An age interval must be provided
      */
-    public function testShouldThrowsExceptionWhenThereIsNoArgumentsOnConstructor()
+    public function testShouldThrowsExceptionWhenThereIsNoArgumentsOnConstructor(): void
     {
         new Age();
     }
+
     /**
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage 20 cannot be greater than or equals to 10
      */
-    public function testShouldThrowsExceptionWhenMinimumAgeIsLessThenMaximumAge()
+    public function testShouldThrowsExceptionWhenMinimumAgeIsLessThenMaximumAge(): void
     {
         new Age(20, 10);
     }
@@ -42,7 +45,7 @@ class AgeTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage 20 cannot be greater than or equals to 20
      */
-    public function testShouldThrowsExceptionWhenMinimumAgeIsEqualsToMaximumAge()
+    public function testShouldThrowsExceptionWhenMinimumAgeIsEqualsToMaximumAge(): void
     {
         new Age(20, 20);
     }
@@ -70,7 +73,7 @@ class AgeTest extends TestCase
     /**
      * @dataProvider providerForValidAge
      */
-    public function testShouldValidateValidAge($minAge, $maxAge, $input)
+    public function testShouldValidateValidAge($minAge, $maxAge, $input): void
     {
         $rule = new Age($minAge, $maxAge);
 
@@ -96,7 +99,7 @@ class AgeTest extends TestCase
     /**
      * @dataProvider providerForInvalidAge
      */
-    public function testShouldValidateInvalidAge($minAge, $maxAge, $input)
+    public function testShouldValidateInvalidAge($minAge, $maxAge, $input): void
     {
         $rule = new Age($minAge, $maxAge);
 
@@ -109,7 +112,7 @@ class AgeTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\AgeException
      * @expectedExceptionMessage "today" must be lower than 18 years ago
      */
-    public function testShouldThrowsExceptionWhenMinimumAgeFails()
+    public function testShouldThrowsExceptionWhenMinimumAgeFails(): void
     {
         $rule = new Age(18);
         $rule->assert('today');
@@ -121,7 +124,7 @@ class AgeTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\AgeException
      * @expectedExceptionMessage "51 years ago" must be greater than 50 years ago
      */
-    public function testShouldThrowsExceptionWhenMaximunAgeFails()
+    public function testShouldThrowsExceptionWhenMaximunAgeFails(): void
     {
         $rule = new Age(null, 50);
         $rule->assert('51 years ago');
@@ -133,7 +136,7 @@ class AgeTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\AgeException
      * @expectedExceptionMessage "today" must be between 18 and 50 years ago
      */
-    public function testShouldThrowsExceptionWhenMinimunAndMaximunAgeFails()
+    public function testShouldThrowsExceptionWhenMinimunAndMaximunAgeFails(): void
     {
         $rule = new Age(18, 50);
         $rule->assert('today');

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -50,7 +52,7 @@ class OptionalTest extends TestCase
         ];
     }
 
-    public function testShouldAcceptInstanceOfValidatobleOnConstructor()
+    public function testShouldAcceptInstanceOfValidatobleOnConstructor(): void
     {
         $validatable = $this->createMock(Validatable::class);
         $rule = new Optional($validatable);
@@ -61,7 +63,7 @@ class OptionalTest extends TestCase
     /**
      * @dataProvider providerForOptional
      */
-    public function testShouldNotValidateRuleWhenInputIsOptional($input)
+    public function testShouldNotValidateRuleWhenInputIsOptional($input): void
     {
         $validatable = $this->createMock(Validatable::class);
         $validatable
@@ -76,7 +78,7 @@ class OptionalTest extends TestCase
     /**
      * @dataProvider providerForNotOptional
      */
-    public function testShouldValidateRuleWhenInputIsNotOptional($input)
+    public function testShouldValidateRuleWhenInputIsNotOptional($input): void
     {
         $validatable = $this->createMock(Validatable::class);
         $validatable
@@ -90,7 +92,7 @@ class OptionalTest extends TestCase
         self::assertTrue($rule->validate($input));
     }
 
-    public function testShouldNotAssertRuleWhenInputIsOptional()
+    public function testShouldNotAssertRuleWhenInputIsOptional(): void
     {
         $validatable = $this->createMock(Validatable::class);
         $validatable
@@ -102,7 +104,7 @@ class OptionalTest extends TestCase
         self::assertTrue($rule->assert(''));
     }
 
-    public function testShouldAssertRuleWhenInputIsNotOptional()
+    public function testShouldAssertRuleWhenInputIsNotOptional(): void
     {
         $input = 'foo';
 
@@ -118,7 +120,7 @@ class OptionalTest extends TestCase
         self::assertTrue($rule->assert($input));
     }
 
-    public function testShouldNotCheckRuleWhenInputIsOptional()
+    public function testShouldNotCheckRuleWhenInputIsOptional(): void
     {
         $validatable = $this->createMock(Validatable::class);
         $validatable
@@ -130,7 +132,7 @@ class OptionalTest extends TestCase
         self::assertTrue($rule->check(''));
     }
 
-    public function testShouldCheckRuleWhenInputIsNotOptional()
+    public function testShouldCheckRuleWhenInputIsNotOptional(): void
     {
         $input = 'foo';
 

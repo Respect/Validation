@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation;
 
 use PHPUnit\Framework\TestCase;
@@ -19,7 +21,7 @@ use Respect\Validation\Rules\Uppercase;
  */
 class FactoryTest extends TestCase
 {
-    public function testShouldHaveRulePrefixesByDefault()
+    public function testShouldHaveRulePrefixesByDefault(): void
     {
         $factory = new Factory();
 
@@ -29,7 +31,7 @@ class FactoryTest extends TestCase
     /**
      * @dataProvider provideRulePrefixes
      */
-    public function testShouldBeAbleToAppendANewPrefix($namespace, $expectedNamespace)
+    public function testShouldBeAbleToAppendANewPrefix($namespace, $expectedNamespace): void
     {
         $factory = new Factory();
         $factory->appendRulePrefix($namespace);
@@ -51,7 +53,7 @@ class FactoryTest extends TestCase
     /**
      * @dataProvider provideRulePrefixes
      */
-    public function testShouldBeAbleToPrependANewRulePrefix($namespace, $expectedNamespace)
+    public function testShouldBeAbleToPrependANewRulePrefix($namespace, $expectedNamespace): void
     {
         $factory = new Factory();
         $factory->prependRulePrefix($namespace);
@@ -84,14 +86,14 @@ class FactoryTest extends TestCase
         ];
     }
 
-    public function testShouldCreateARuleByName()
+    public function testShouldCreateARuleByName(): void
     {
         $factory = new Factory();
 
         self::assertInstanceOf(Uppercase::class, $factory->rule('uppercase'));
     }
 
-    public function testShouldDefineConstructorArgumentsWhenCreatingARule()
+    public function testShouldDefineConstructorArgumentsWhenCreatingARule(): void
     {
         $factory = new Factory();
         $rule = $factory->rule('dateTime', ['Y-m-d']);
@@ -103,7 +105,7 @@ class FactoryTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "uterere" is not a valid rule name
      */
-    public function testShouldThrowsAnExceptionWhenRuleNameIsNotValid()
+    public function testShouldThrowsAnExceptionWhenRuleNameIsNotValid(): void
     {
         $factory = new Factory();
         $factory->rule('uterere');
@@ -113,7 +115,7 @@ class FactoryTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "Respect\Validation\Exceptions\AgeException" is not a valid respect rule
      */
-    public function testShouldThrowsAnExceptionWhenRuleIsNotInstanceOfRuleInterface()
+    public function testShouldThrowsAnExceptionWhenRuleIsNotInstanceOfRuleInterface(): void
     {
         $factory = new Factory();
         $factory->appendRulePrefix('Respect\\Validation\\Exceptions\\');

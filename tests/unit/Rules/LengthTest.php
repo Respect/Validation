@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class LengthTest extends TestCase
     /**
      * @dataProvider providerForValidLengthInclusive
      */
-    public function testLengthInsideBoundsForInclusiveCasesReturnTrue($string, $min, $max)
+    public function testLengthInsideBoundsForInclusiveCasesReturnTrue($string, $min, $max): void
     {
         $validator = new Length($min, $max, true);
         self::assertTrue($validator->validate($string));
@@ -32,7 +34,7 @@ class LengthTest extends TestCase
     /**
      * @dataProvider providerForValidLengthNonInclusive
      */
-    public function testLengthInsideBoundsForNonInclusiveCasesShouldReturnTrue($string, $min, $max)
+    public function testLengthInsideBoundsForNonInclusiveCasesShouldReturnTrue($string, $min, $max): void
     {
         $validator = new Length($min, $max, false);
         self::assertTrue($validator->validate($string));
@@ -41,7 +43,7 @@ class LengthTest extends TestCase
     /**
      * @dataProvider providerForInvalidLengthInclusive
      */
-    public function testLengthOutsideBoundsForInclusiveCasesReturnFalse($string, $min, $max)
+    public function testLengthOutsideBoundsForInclusiveCasesReturnFalse($string, $min, $max): void
     {
         $validator = new Length($min, $max, true);
         self::assertfalse($validator->validate($string));
@@ -50,7 +52,7 @@ class LengthTest extends TestCase
     /**
      * @dataProvider providerForInvalidLengthNonInclusive
      */
-    public function testLengthOutsideBoundsForNonInclusiveCasesReturnFalse($string, $min, $max)
+    public function testLengthOutsideBoundsForNonInclusiveCasesReturnFalse($string, $min, $max): void
     {
         $validator = new Length($min, $max, false);
         self::assertfalse($validator->validate($string));
@@ -60,7 +62,7 @@ class LengthTest extends TestCase
      * @dataProvider providerForComponentException
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testComponentExceptionsForInvalidParameters($min, $max)
+    public function testComponentExceptionsForInvalidParameters($min, $max): void
     {
         $buggyValidator = new Length($min, $max);
     }

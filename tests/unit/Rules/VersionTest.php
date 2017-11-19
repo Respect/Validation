@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class VersionTest extends TestCase
     /**
      * @dataProvider providerForValidVersion
      */
-    public function testValidVersionShouldReturnTrue($input)
+    public function testValidVersionShouldReturnTrue($input): void
     {
         $rule = new Version();
         self::assertTrue($rule->__invoke($input));
@@ -35,7 +37,7 @@ class VersionTest extends TestCase
      * @dataProvider providerForInvalidVersion
      * @expectedException \Respect\Validation\Exceptions\VersionException
      */
-    public function testInvalidVersionShouldThrowException($input)
+    public function testInvalidVersionShouldThrowException($input): void
     {
         $rule = new Version();
         self::assertFalse($rule->__invoke($input));

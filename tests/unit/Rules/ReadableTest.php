@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -36,7 +38,7 @@ class ReadableTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\Readable::validate
      */
-    public function testValidReadableFileShouldReturnTrue()
+    public function testValidReadableFileShouldReturnTrue(): void
     {
         $GLOBALS['is_readable'] = true;
 
@@ -48,7 +50,7 @@ class ReadableTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\Readable::validate
      */
-    public function testInvalidReadableFileShouldReturnFalse()
+    public function testInvalidReadableFileShouldReturnFalse(): void
     {
         $GLOBALS['is_readable'] = false;
 
@@ -60,7 +62,7 @@ class ReadableTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\Readable::validate
      */
-    public function testShouldValidateObjects()
+    public function testShouldValidateObjects(): void
     {
         $rule = new Readable();
         $object = $this->createMock('SplFileInfo', ['isReadable'], ['somefile.txt']);
