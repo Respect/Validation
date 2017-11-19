@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -25,7 +27,7 @@ class BaseTest extends TestCase
     /**
      * @dataProvider providerForBase
      */
-    public function testBase($base, $input)
+    public function testBase($base, $input): void
     {
         $object = new Base($base);
         self::assertTrue($object->__invoke($input));
@@ -36,7 +38,7 @@ class BaseTest extends TestCase
     /**
      * @dataProvider providerForInvalidBase
      */
-    public function testInvalidBase($base, $input)
+    public function testInvalidBase($base, $input): void
     {
         $object = new Base($base);
         self::assertFalse($object->__invoke($input));
@@ -46,7 +48,7 @@ class BaseTest extends TestCase
      * @dataProvider providerForExceptionBase
      * @expectedException \Respect\Validation\Exceptions\BaseException
      */
-    public function testExceptionBase($base, $input)
+    public function testExceptionBase($base, $input): void
     {
         $object = new Base($base);
         self::assertTrue($object->__invoke($input));
@@ -56,7 +58,7 @@ class BaseTest extends TestCase
     /**
      * @dataProvider providerForCustomBase
      */
-    public function testCustomBase($base, $custom, $input)
+    public function testCustomBase($base, $custom, $input): void
     {
         $object = new Base($base, $custom);
         self::assertTrue($object->__invoke($input));

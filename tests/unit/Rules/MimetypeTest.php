@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -35,12 +37,12 @@ class MimetypeTest extends TestCase
         file_put_contents($this->filename, 'File content');
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         unlink($this->filename);
     }
 
-    public function testShouldValidateMimetype()
+    public function testShouldValidateMimetype(): void
     {
         $mimetype = 'plain/text';
 
@@ -61,7 +63,7 @@ class MimetypeTest extends TestCase
         $rule->validate($this->filename);
     }
 
-    public function testShouldValidateSplFileInfoMimetype()
+    public function testShouldValidateSplFileInfoMimetype(): void
     {
         $fileInfo = new SplFileInfo($this->filename);
         $mimetype = 'plain/text';
@@ -83,14 +85,14 @@ class MimetypeTest extends TestCase
         self::assertTrue($rule->validate($fileInfo));
     }
 
-    public function testShouldInvalidateWhenNotStringNorSplFileInfo()
+    public function testShouldInvalidateWhenNotStringNorSplFileInfo(): void
     {
         $rule = new Mimetype('application/octet-stream');
 
         self::assertFalse($rule->validate([__FILE__]));
     }
 
-    public function testShouldInvalidateWhenItIsNotAValidFile()
+    public function testShouldInvalidateWhenItIsNotAValidFile(): void
     {
         $rule = new Mimetype('application/octet-stream');
 
@@ -101,7 +103,7 @@ class MimetypeTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\MimetypeException
      * @expectedExceptionMessageRegExp #".+MimetypeTest.php" must have "application.?/json" mimetype#
      */
-    public function testShouldThrowMimetypeExceptionWhenCheckingValue()
+    public function testShouldThrowMimetypeExceptionWhenCheckingValue(): void
     {
         $rule = new Mimetype('application/json');
         $rule->check(__FILE__);

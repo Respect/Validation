@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -20,7 +22,7 @@ use PHPUnit\Framework\TestCase;
  */
 class AnyOfTest extends TestCase
 {
-    public function testValid()
+    public function testValid(): void
     {
         $valid1 = new Callback(function () {
             return false;
@@ -40,7 +42,7 @@ class AnyOfTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\AnyOfException
      */
-    public function testInvalid()
+    public function testInvalid(): void
     {
         $valid1 = new Callback(function () {
             return false;
@@ -59,7 +61,7 @@ class AnyOfTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\XdigitException
      */
-    public function testInvalidCheck()
+    public function testInvalidCheck(): void
     {
         $o = new AnyOf(new Xdigit(), new Alnum());
         self::assertFalse($o->validate(-10));

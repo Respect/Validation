@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
@@ -16,8 +18,8 @@ use Respect\Validation\Exceptions\ComponentException;
 /**
  * Validates country subdivision codes according to ISO 3166-2.
  *
- * @link http://en.wikipedia.org/wiki/ISO_3166-2
- * @link http://www.geonames.org/countries/
+ * @see http://en.wikipedia.org/wiki/ISO_3166-2
+ * @see http://www.geonames.org/countries/
  */
 class SubdivisionCode extends AbstractWrapper
 {

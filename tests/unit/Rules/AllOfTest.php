@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -20,14 +22,14 @@ use PHPUnit\Framework\TestCase;
  */
 class AllOfTest extends TestCase
 {
-    public function testRemoveRulesShouldRemoveAllRules()
+    public function testRemoveRulesShouldRemoveAllRules(): void
     {
         $o = new AllOf(new IntVal(), new Positive());
         $o->removeRules();
         self::assertEquals(0, count($o->getRules()));
     }
 
-    public function testAddRulesUsingArrayOfRules()
+    public function testAddRulesUsingArrayOfRules(): void
     {
         $o = new AllOf();
         $o->addRules(
@@ -39,14 +41,14 @@ class AllOfTest extends TestCase
         self::assertTrue($o->hasRule('Positive'));
     }
 
-    public function testAddRulesUsingSpecificationArray()
+    public function testAddRulesUsingSpecificationArray(): void
     {
         $o = new AllOf();
         $o->addRules(['Between' => [1, 2]]);
         self::assertTrue($o->hasRule('Between'));
     }
 
-    public function testValidationShouldWorkIfAllRulesReturnTrue()
+    public function testValidationShouldWorkIfAllRulesReturnTrue(): void
     {
         $valid1 = new Callback(function () {
             return true;
@@ -70,7 +72,7 @@ class AllOfTest extends TestCase
      * @dataProvider providerStaticDummyRules
      * @expectedException \Respect\Validation\Exceptions\AllOfException
      */
-    public function testValidationAssertShouldFailIfAnyRuleFailsAndReturnAllExceptionsFailed($v1, $v2, $v3)
+    public function testValidationAssertShouldFailIfAnyRuleFailsAndReturnAllExceptionsFailed($v1, $v2, $v3): void
     {
         $o = new AllOf($v1, $v2, $v3);
         self::assertFalse($o->__invoke('any'));
@@ -81,7 +83,7 @@ class AllOfTest extends TestCase
      * @dataProvider providerStaticDummyRules
      * @expectedException \Respect\Validation\Exceptions\CallbackException
      */
-    public function testValidationCheckShouldFailIfAnyRuleFailsAndThrowTheFirstExceptionOnly($v1, $v2, $v3)
+    public function testValidationCheckShouldFailIfAnyRuleFailsAndThrowTheFirstExceptionOnly($v1, $v2, $v3): void
     {
         $o = new AllOf($v1, $v2, $v3);
         self::assertFalse($o->__invoke('any'));
@@ -92,7 +94,7 @@ class AllOfTest extends TestCase
      * @dataProvider providerStaticDummyRules
      * @expectedException \Respect\Validation\Exceptions\ValidationException
      */
-    public function testValidationCheckShouldFailOnEmptyInput($v1, $v2, $v3)
+    public function testValidationCheckShouldFailOnEmptyInput($v1, $v2, $v3): void
     {
         $o = new AllOf($v1, $v2, $v3);
         self::assertTrue($o->check(''));
@@ -101,7 +103,7 @@ class AllOfTest extends TestCase
     /**
      * @dataProvider providerStaticDummyRules
      */
-    public function testValidationShouldFailIfAnyRuleFails($v1, $v2, $v3)
+    public function testValidationShouldFailIfAnyRuleFails($v1, $v2, $v3): void
     {
         $o = new AllOf($v1, $v2, $v3);
         self::assertFalse($o->__invoke('any'));

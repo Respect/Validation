@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class ResourceTypeTest extends TestCase
 {
     protected $rule;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->rule = new ResourceType();
     }
@@ -30,7 +32,7 @@ class ResourceTypeTest extends TestCase
     /**
      * @dataProvider providerForResource
      */
-    public function testShouldValidateResourceNumbers($input)
+    public function testShouldValidateResourceNumbers($input): void
     {
         self::assertTrue($this->rule->validate($input));
     }
@@ -38,7 +40,7 @@ class ResourceTypeTest extends TestCase
     /**
      * @dataProvider providerForNonResource
      */
-    public function testShouldNotValidateNonResourceNumbers($input)
+    public function testShouldNotValidateNonResourceNumbers($input): void
     {
         self::assertFalse($this->rule->validate($input));
     }
@@ -47,7 +49,7 @@ class ResourceTypeTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\ResourceTypeException
      * @expectedExceptionMessage "Something" must be a resource
      */
-    public function testShouldThrowResourceExceptionWhenChecking()
+    public function testShouldThrowResourceExceptionWhenChecking(): void
     {
         $this->rule->check('Something');
     }
@@ -67,7 +69,7 @@ class ResourceTypeTest extends TestCase
             ['String'],
             [123],
             [[]],
-            [function () {
+            [function (): void {
             }],
             [new \stdClass()],
             [null],

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
@@ -23,7 +25,7 @@ class CountryCode extends AbstractRule
     const NUMERIC = 'numeric';
 
     /**
-     * @link http://download.geonames.org/export/dump/countryInfo.txt
+     * @see http://download.geonames.org/export/dump/countryInfo.txt
      *
      * @var array
      */
@@ -280,7 +282,6 @@ class CountryCode extends AbstractRule
         ['ZA', 'ZAF', '710'], // South Africa
         ['ZM', 'ZMB', '894'], // Zambia
         ['ZW', 'ZWE', '716'], // Zimbabwe
-
     ];
 
     public $set;

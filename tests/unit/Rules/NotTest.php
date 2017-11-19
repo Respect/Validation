@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -24,7 +26,7 @@ class NotTest extends TestCase
     /**
      * @dataProvider providerForValidNot
      */
-    public function testNot($v, $input)
+    public function testNot($v, $input): void
     {
         $not = new Not($v);
         self::assertTrue($not->assert($input));
@@ -34,7 +36,7 @@ class NotTest extends TestCase
      * @dataProvider providerForInvalidNot
      * @expectedException \Respect\Validation\Exceptions\ValidationException
      */
-    public function testNotNotHaha($v, $input)
+    public function testNotNotHaha($v, $input): void
     {
         $not = new Not($v);
         self::assertFalse($not->assert($input));
@@ -43,7 +45,7 @@ class NotTest extends TestCase
     /**
      * @dataProvider providerForSetName
      */
-    public function testNotSetName($v)
+    public function testNotSetName($v): void
     {
         $not = new Not($v);
         $not->setName('Foo');

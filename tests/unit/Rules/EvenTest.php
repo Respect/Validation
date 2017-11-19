@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class EvenTest extends TestCase
 {
     protected $evenValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->evenValidator = new Even();
     }
@@ -30,7 +32,7 @@ class EvenTest extends TestCase
     /**
      * @dataProvider providerForEven
      */
-    public function testEvenNumbersShouldPass($input)
+    public function testEvenNumbersShouldPass($input): void
     {
         self::assertTrue($this->evenValidator->validate($input));
         self::assertTrue($this->evenValidator->check($input));
@@ -41,7 +43,7 @@ class EvenTest extends TestCase
      * @dataProvider providerForNotEven
      * @expectedException \Respect\Validation\Exceptions\EvenException
      */
-    public function testNotEvenNumbersShouldFail($input)
+    public function testNotEvenNumbersShouldFail($input): void
     {
         self::assertFalse($this->evenValidator->validate($input));
         self::assertFalse($this->evenValidator->assert($input));

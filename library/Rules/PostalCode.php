@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
@@ -18,7 +20,7 @@ class PostalCode extends Regex
     const DEFAULT_PATTERN = '/^$/';
 
     /**
-     * @link http://download.geonames.org/export/dump/countryInfo.txt
+     * @see http://download.geonames.org/export/dump/countryInfo.txt
      */
     public $postalCodes = [
         'AD' => "/^(?:AD)*(\d{3})$/",

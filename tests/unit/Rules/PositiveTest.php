@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class PositiveTest extends TestCase
 {
     protected $object;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new Positive();
     }
@@ -30,7 +32,7 @@ class PositiveTest extends TestCase
     /**
      * @dataProvider providerForPositive
      */
-    public function testPositive($input)
+    public function testPositive($input): void
     {
         self::assertTrue($this->object->__invoke($input));
         self::assertTrue($this->object->check($input));
@@ -41,7 +43,7 @@ class PositiveTest extends TestCase
      * @dataProvider providerForNotPositive
      * @expectedException \Respect\Validation\Exceptions\PositiveException
      */
-    public function testNotPositive($input)
+    public function testNotPositive($input): void
     {
         self::assertFalse($this->object->__invoke($input));
         self::assertFalse($this->object->assert($input));

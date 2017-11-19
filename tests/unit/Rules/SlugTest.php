@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class SlugTest extends TestCase
     /**
      * @dataProvider providerValidSlug
      */
-    public function testValidSlug($input)
+    public function testValidSlug($input): void
     {
         $rule = new Slug();
 
@@ -32,7 +34,7 @@ class SlugTest extends TestCase
     /**
      * @dataProvider providerInvalidSlug
      */
-    public function testInvalidSlug($input)
+    public function testInvalidSlug($input): void
     {
         $rule = new Slug();
 

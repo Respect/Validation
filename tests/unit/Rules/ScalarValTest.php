@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class ScalarValTest extends TestCase
 {
     protected $rule;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->rule = new ScalarVal();
     }
@@ -30,7 +32,7 @@ class ScalarValTest extends TestCase
     /**
      * @dataProvider providerForScalar
      */
-    public function testShouldValidateScalarNumbers($input)
+    public function testShouldValidateScalarNumbers($input): void
     {
         self::assertTrue($this->rule->validate($input));
     }
@@ -38,7 +40,7 @@ class ScalarValTest extends TestCase
     /**
      * @dataProvider providerForNonScalar
      */
-    public function testShouldNotValidateNonScalarNumbers($input)
+    public function testShouldNotValidateNonScalarNumbers($input): void
     {
         self::assertFalse($this->rule->validate($input));
     }
@@ -47,7 +49,7 @@ class ScalarValTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\ScalarValException
      * @expectedExceptionMessage null must be a scalar value
      */
-    public function testShouldThrowScalarExceptionWhenChecking()
+    public function testShouldThrowScalarExceptionWhenChecking(): void
     {
         $this->rule->check(null);
     }
@@ -68,7 +70,7 @@ class ScalarValTest extends TestCase
     {
         return [
             [[]],
-            [function () {
+            [function (): void {
             }],
             [new \stdClass()],
             [null],

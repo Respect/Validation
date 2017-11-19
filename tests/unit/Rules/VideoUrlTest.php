@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -24,7 +26,7 @@ class VideoUrlTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "teste" is not a recognized video service.
      */
-    public function testShouldThrowsAnExceptionWhenProviderIsNotValid()
+    public function testShouldThrowsAnExceptionWhenProviderIsNotValid(): void
     {
         new VideoUrl('teste');
     }
@@ -65,7 +67,7 @@ class VideoUrlTest extends TestCase
     /**
      * @dataProvider validVideoUrlProvider
      */
-    public function testShouldValidateVideoUrl($service, $input)
+    public function testShouldValidateVideoUrl($service, $input): void
     {
         $rule = new VideoUrl($service);
 
@@ -75,7 +77,7 @@ class VideoUrlTest extends TestCase
     /**
      * @dataProvider invalidVideoUrlProvider
      */
-    public function testShouldInvalidateNonVideoUrl($service, $input)
+    public function testShouldInvalidateNonVideoUrl($service, $input): void
     {
         $rule = new VideoUrl($service);
 
@@ -86,7 +88,7 @@ class VideoUrlTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\VideoUrlException
      * @expectedExceptionMessage "exemplo.com" must be a valid video URL
      */
-    public function testUseAProperExceptionMessageWhenVideoUrlIsNotValid()
+    public function testUseAProperExceptionMessageWhenVideoUrlIsNotValid(): void
     {
         $rule = new VideoUrl();
         $rule->check('exemplo.com');
@@ -96,7 +98,7 @@ class VideoUrlTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\VideoUrlException
      * @expectedExceptionMessage "exemplo.com" must be a valid "YouTube" video URL
      */
-    public function testUseAProperExceptionMessageWhenVideoUrlIsNotValidForTheDefinedProvider()
+    public function testUseAProperExceptionMessageWhenVideoUrlIsNotValidForTheDefinedProvider(): void
     {
         $rule = new VideoUrl('YouTube');
         $rule->check('exemplo.com');

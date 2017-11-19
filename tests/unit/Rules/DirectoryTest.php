@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class DirectoryTest extends TestCase
     /**
      * @dataProvider providerForValidDirectory
      */
-    public function testValidDirectoryShouldReturnTrue($input)
+    public function testValidDirectoryShouldReturnTrue($input): void
     {
         $rule = new Directory();
         self::assertTrue($rule->__invoke($input));
@@ -35,7 +37,7 @@ class DirectoryTest extends TestCase
      * @dataProvider providerForInvalidDirectory
      * @expectedException \Respect\Validation\Exceptions\DirectoryException
      */
-    public function testInvalidDirectoryShouldThrowException($input)
+    public function testInvalidDirectoryShouldThrowException($input): void
     {
         $rule = new Directory();
         self::assertFalse($rule->__invoke($input));
@@ -46,7 +48,7 @@ class DirectoryTest extends TestCase
     /**
      * @dataProvider providerForDirectoryObjects
      */
-    public function testDirectoryWithObjects($object, $valid)
+    public function testDirectoryWithObjects($object, $valid): void
     {
         $rule = new Directory();
         self::assertEquals($valid, $rule->validate($object));

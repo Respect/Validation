@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class XdigitTest extends TestCase
 {
     protected $xdigitsValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->xdigitsValidator = new Xdigit();
     }
@@ -30,7 +32,7 @@ class XdigitTest extends TestCase
     /**
      * @dataProvider providerForXdigit
      */
-    public function testValidateValidHexasdecimalDigits($input)
+    public function testValidateValidHexasdecimalDigits($input): void
     {
         self::assertTrue($this->xdigitsValidator->assert($input));
         self::assertTrue($this->xdigitsValidator->check($input));
@@ -41,7 +43,7 @@ class XdigitTest extends TestCase
      * @dataProvider providerForNotXdigit
      * @expectedException \Respect\Validation\Exceptions\XdigitException
      */
-    public function testInvalidHexadecimalDigitsShouldThrowXdigitException($input)
+    public function testInvalidHexadecimalDigitsShouldThrowXdigitException($input): void
     {
         self::assertFalse($this->xdigitsValidator->validate($input));
         self::assertFalse($this->xdigitsValidator->assert($input));
@@ -50,7 +52,7 @@ class XdigitTest extends TestCase
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Xdigit($additional);
         self::assertTrue($validator->validate($query));

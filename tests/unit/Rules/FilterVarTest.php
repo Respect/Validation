@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -24,7 +26,7 @@ class FilterVarTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Cannot validate without filter flag
      */
-    public function testShouldThrowsExceptionWhenFilterIsNotDefined()
+    public function testShouldThrowsExceptionWhenFilterIsNotDefined(): void
     {
         new FilterVar();
     }
@@ -33,12 +35,12 @@ class FilterVarTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Cannot accept the given filter
      */
-    public function testShouldThrowsExceptionWhenFilterIsNotValid()
+    public function testShouldThrowsExceptionWhenFilterIsNotValid(): void
     {
         new FilterVar(FILTER_SANITIZE_EMAIL);
     }
 
-    public function testShouldDefineFilterOnConstructor()
+    public function testShouldDefineFilterOnConstructor(): void
     {
         $rule = new FilterVar(FILTER_VALIDATE_REGEXP);
 
@@ -48,7 +50,7 @@ class FilterVarTest extends TestCase
         self::assertEquals($expectedArguments, $actualArguments);
     }
 
-    public function testShouldDefineFilterOptionsOnConstructor()
+    public function testShouldDefineFilterOptionsOnConstructor(): void
     {
         $rule = new FilterVar(FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED);
 
@@ -58,14 +60,14 @@ class FilterVarTest extends TestCase
         self::assertEquals($expectedArguments, $actualArguments);
     }
 
-    public function testShouldUseDefineFilterToValidate()
+    public function testShouldUseDefineFilterToValidate(): void
     {
         $rule = new FilterVar(FILTER_VALIDATE_EMAIL);
 
         self::assertTrue($rule->validate('henriquemoody@users.noreply.github.com'));
     }
 
-    public function testShouldUseDefineFilterOptionsToValidate()
+    public function testShouldUseDefineFilterOptionsToValidate(): void
     {
         $rule = new FilterVar(FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED);
 

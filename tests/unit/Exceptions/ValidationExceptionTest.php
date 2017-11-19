@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
 use ArrayIterator;
@@ -20,7 +22,7 @@ use stdClass;
 
 class ValidationExceptionTest extends TestCase
 {
-    public function testItImplementsExceptionInterface()
+    public function testItImplementsExceptionInterface(): void
     {
         $validationException = new ValidationException();
         self::assertInstanceOf(ExceptionInterface::class, $validationException);
@@ -29,7 +31,7 @@ class ValidationExceptionTest extends TestCase
     /**
      * @dataProvider providerForFormat
      */
-    public function testFormatShouldReplacePlaceholdersProperly($template, $result, $vars)
+    public function testFormatShouldReplacePlaceholdersProperly($template, $result, $vars): void
     {
         self::assertEquals(
             $result,
@@ -40,7 +42,7 @@ class ValidationExceptionTest extends TestCase
     /**
      * @dataProvider providerForStringify
      */
-    public function testStringifyShouldConvertStringsProperly($input, $result)
+    public function testStringifyShouldConvertStringsProperly($input, $result): void
     {
         self::assertStringMatchesFormat(
             $result,
@@ -48,7 +50,7 @@ class ValidationExceptionTest extends TestCase
         );
     }
 
-    public function testGetMainMessageShouldApplyTemplatePlaceholders()
+    public function testGetMainMessageShouldApplyTemplatePlaceholders(): void
     {
         $sampleValidationException = new ValidationException();
         $sampleValidationException->configure('foo', ['bar' => 1, 'baz' => 2]);
@@ -59,7 +61,7 @@ class ValidationExceptionTest extends TestCase
         );
     }
 
-    public function testSettingTemplates()
+    public function testSettingTemplates(): void
     {
         $x = new ValidationException();
         $x->configure('bar');

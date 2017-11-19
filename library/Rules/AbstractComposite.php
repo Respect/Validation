@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
@@ -50,7 +52,7 @@ abstract class AbstractComposite extends AbstractRule
         return $this;
     }
 
-    public function removeRules()
+    public function removeRules(): void
     {
         $this->rules = [];
     }
@@ -98,7 +100,7 @@ abstract class AbstractComposite extends AbstractRule
         return false;
     }
 
-    protected function appendRule(Validatable $validator)
+    protected function appendRule(Validatable $validator): void
     {
         if (!$validator->getName() && $this->getName()) {
             $validator->setName($this->getName());

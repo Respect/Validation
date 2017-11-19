@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Regex extends AbstractRule
@@ -26,6 +28,6 @@ class Regex extends AbstractRule
             return false;
         }
 
-        return (bool) preg_match($this->regex, $input);
+        return (bool) preg_match($this->regex, (string) $input);
     }
 }

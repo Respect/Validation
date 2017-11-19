@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -28,7 +30,7 @@ class AbstractRuleTest extends TestCase
      * @dataProvider providerForTrueAndFalse
      * @covers       \Respect\Validation\Rules\AbstractRule::__invoke
      */
-    public function testMagicMethodInvokeCallsValidateWithInput($booleanResult)
+    public function testMagicMethodInvokeCallsValidateWithInput($booleanResult): void
     {
         $input = 'something';
 
@@ -54,7 +56,7 @@ class AbstractRuleTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::assert
      */
-    public function testAssertInvokesValidateOnSuccess()
+    public function testAssertInvokesValidateOnSuccess(): void
     {
         $input = 'something';
 
@@ -80,7 +82,7 @@ class AbstractRuleTest extends TestCase
      * @covers            \Respect\Validation\Rules\AbstractRule::assert
      * @expectedException \Respect\Validation\Exceptions\ValidationException
      */
-    public function testAssertInvokesValidateAndReportErrorOnFailure()
+    public function testAssertInvokesValidateAndReportErrorOnFailure(): void
     {
         $input = 'something';
 
@@ -107,7 +109,7 @@ class AbstractRuleTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::check
      */
-    public function testCheckInvokesAssertToPerformTheValidationByDefault()
+    public function testCheckInvokesAssertToPerformTheValidationByDefault(): void
     {
         $input = 'something';
 
@@ -153,7 +155,7 @@ class AbstractRuleTest extends TestCase
      * @covers \Respect\Validation\Rules\AbstractRule::reportError
      * @covers \Respect\Validation\Rules\AbstractRule::setTemplate
      */
-    public function testShouldUseDefinedTemplateOnCreatedException()
+    public function testShouldUseDefinedTemplateOnCreatedException(): void
     {
         $template = 'This is my template';
 
@@ -184,7 +186,7 @@ class AbstractRuleTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::setTemplate
      */
-    public function testShouldReturnTheCurrentObjectWhenDefinigTemplate()
+    public function testShouldReturnTheCurrentObjectWhenDefinigTemplate(): void
     {
         $abstractRuleMock = $this
             ->getMockBuilder(AbstractRule::class)
@@ -196,7 +198,7 @@ class AbstractRuleTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::setName
      */
-    public function testShouldReturnTheCurrentObjectWhenDefinigName()
+    public function testShouldReturnTheCurrentObjectWhenDefinigName(): void
     {
         $abstractRuleMock = $this
             ->getMockBuilder(AbstractRule::class)
@@ -209,7 +211,7 @@ class AbstractRuleTest extends TestCase
      * @covers \Respect\Validation\Rules\AbstractRule::setName
      * @covers \Respect\Validation\Rules\AbstractRule::getName
      */
-    public function testShouldBeAbleToDefineAndRetrivedRuleName()
+    public function testShouldBeAbleToDefineAndRetrivedRuleName(): void
     {
         $abstractRuleMock = $this
             ->getMockBuilder(AbstractRule::class)

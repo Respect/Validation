@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -33,7 +35,7 @@ function is_executable($executable)
  */
 class ExecutableTest extends TestCase
 {
-    public function testValidExecutableFileShouldReturnTrue()
+    public function testValidExecutableFileShouldReturnTrue(): void
     {
         $GLOBALS['is_executable'] = true;
 
@@ -42,7 +44,7 @@ class ExecutableTest extends TestCase
         self::assertTrue($rule->validate($input));
     }
 
-    public function testInvalidExecutableFileShouldReturnFalse()
+    public function testInvalidExecutableFileShouldReturnFalse(): void
     {
         $GLOBALS['is_executable'] = false;
 
@@ -51,7 +53,7 @@ class ExecutableTest extends TestCase
         self::assertFalse($rule->validate($input));
     }
 
-    public function testShouldValidateObjects()
+    public function testShouldValidateObjects(): void
     {
         $rule = new Executable();
         $object = $this->createMock('SplFileInfo', ['isExecutable'], ['somefile.txt']);

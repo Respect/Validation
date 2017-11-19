@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 /**
@@ -28,24 +30,24 @@ class NfeAccessKey extends AbstractRule
      */
     public function validate($aK)
     {
-        if (mb_strlen($aK) !== 44) {
+        if (44 !== mb_strlen($aK)) {
             return false;
         }
 
         $w = [];
         for ($i = 0, $z = 5, $m = 43; $i <= $m; ++$i) {
-            $z = ($i < $m) ? ($z - 1) == 1 ? 9 : ($z - 1) : 0;
+            $z = ($i < $m) ? 1 == ($z - 1) ? 9 : ($z - 1) : 0;
             $w[] = $z;
         }
 
         for ($i = 0, $s = 0, $k = 44; $i < $k; ++$i) {
-            $s += $aK{ $i }
-            * $w[ $i ];
+            $s += $aK[$i]
+            * $w[$i];
         }
 
         $s -= (11 * floor($s / 11));
-        $v = ($s == 0 || $s == 1) ? 0 : (11 - $s);
+        $v = (0 == $s || 1 == $s) ? 0 : (11 - $s);
 
-        return $v == $aK{ 43 };
+        return $v == $aK[43];
     }
 }

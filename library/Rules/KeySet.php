@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
@@ -30,7 +32,7 @@ class KeySet extends AllOf
     private function filterAllOf(AllOf $rule)
     {
         $rules = $rule->getRules();
-        if (count($rules) != 1) {
+        if (1 != count($rules)) {
             throw new ComponentException('AllOf rule must have only one Key rule');
         }
 
@@ -99,13 +101,13 @@ class KeySet extends AllOf
             unset($input[$keyRule->reference]);
         }
 
-        return count($input) == 0;
+        return 0 == count($input);
     }
 
     /**
      * @throws KeySetException
      */
-    private function checkKeys($input)
+    private function checkKeys($input): void
     {
         if (!$this->hasValidStructure($input)) {
             $params = ['keys' => $this->getKeys()];

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class FiniteTest extends TestCase
 {
     protected $rule;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->rule = new Finite();
     }
@@ -30,7 +32,7 @@ class FiniteTest extends TestCase
     /**
      * @dataProvider providerForFinite
      */
-    public function testShouldValidateFiniteNumbers($input)
+    public function testShouldValidateFiniteNumbers($input): void
     {
         self::assertTrue($this->rule->validate($input));
     }
@@ -38,7 +40,7 @@ class FiniteTest extends TestCase
     /**
      * @dataProvider providerForNonFinite
      */
-    public function testShouldNotValidateNonFiniteNumbers($input)
+    public function testShouldNotValidateNonFiniteNumbers($input): void
     {
         self::assertFalse($this->rule->validate($input));
     }
@@ -47,7 +49,7 @@ class FiniteTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\FiniteException
      * @expectedExceptionMessage INF must be a finite number
      */
-    public function testShouldThrowFiniteExceptionWhenChecking()
+    public function testShouldThrowFiniteExceptionWhenChecking(): void
     {
         $this->rule->check(INF);
     }

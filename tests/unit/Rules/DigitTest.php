@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class DigitTest extends TestCase
     /**
      * @dataProvider providerForValidDigits
      */
-    public function testValidDataWithDigitsShouldReturnTrue($validDigits, $additional = '')
+    public function testValidDataWithDigitsShouldReturnTrue($validDigits, $additional = ''): void
     {
         $validator = new Digit($additional);
         self::assertTrue($validator->validate($validDigits));
@@ -33,7 +35,7 @@ class DigitTest extends TestCase
      * @dataProvider providerForInvalidDigits
      * @expectedException \Respect\Validation\Exceptions\DigitException
      */
-    public function testInvalidDigitsShouldFailAndThrowDigitException($invalidDigits, $additional = '')
+    public function testInvalidDigitsShouldFailAndThrowDigitException($invalidDigits, $additional = ''): void
     {
         $validator = new Digit($additional);
         self::assertFalse($validator->validate($invalidDigits));
@@ -44,7 +46,7 @@ class DigitTest extends TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
     {
         $validator = new Digit($additional);
     }
@@ -52,7 +54,7 @@ class DigitTest extends TestCase
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Digit($additional);
         self::assertTrue($validator->validate($query));

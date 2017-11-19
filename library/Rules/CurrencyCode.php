@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 /**
@@ -17,7 +19,7 @@ namespace Respect\Validation\Rules;
 class CurrencyCode extends AbstractRule
 {
     /**
-     * @link http://www.currency-iso.org/en/home/tables/table-a1.html
+     * @see http://www.currency-iso.org/en/home/tables/table-a1.html
      *
      * @var array
      */

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Number extends AbstractRule
@@ -19,6 +21,6 @@ class Number extends AbstractRule
             return false;
         }
 
-        return !is_nan($input);
+        return !is_nan((float) $input);
     }
 }

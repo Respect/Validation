@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -24,7 +26,7 @@ class EqualsTest extends TestCase
     /**
      * @dataProvider providerForEquals
      */
-    public function testInputEqualsToExpectedValueShouldPass($compareTo, $input)
+    public function testInputEqualsToExpectedValueShouldPass($compareTo, $input): void
     {
         $rule = new Equals($compareTo);
 
@@ -34,7 +36,7 @@ class EqualsTest extends TestCase
     /**
      * @dataProvider providerForNotEquals
      */
-    public function testInputNotEqualsToExpectedValueShouldPass($compareTo, $input)
+    public function testInputNotEqualsToExpectedValueShouldPass($compareTo, $input): void
     {
         $rule = new Equals($compareTo);
 
@@ -45,7 +47,7 @@ class EqualsTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\EqualsException
      * @expectedExceptionMessage "24" must equal 42
      */
-    public function testShouldThrowTheProperExceptionWhenFailure()
+    public function testShouldThrowTheProperExceptionWhenFailure(): void
     {
         $rule = new Equals(42);
         $rule->check('24');

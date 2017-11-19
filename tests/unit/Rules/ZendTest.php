@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use DateTime;
@@ -23,7 +25,7 @@ use Zend\Validator\ValidatorInterface;
  */
 class ZendTest extends TestCase
 {
-    public function testConstructorWithValidatorName()
+    public function testConstructorWithValidatorName(): void
     {
         $v = new Zend('Date');
         self::assertAttributeInstanceOf(
@@ -36,7 +38,7 @@ class ZendTest extends TestCase
     /**
      * @depends testConstructorWithValidatorName
      */
-    public function testConstructorWithValidatorClassName()
+    public function testConstructorWithValidatorClassName(): void
     {
         $v = new Zend(ZendDate::class);
         self::assertAttributeInstanceOf(
@@ -46,7 +48,7 @@ class ZendTest extends TestCase
         );
     }
 
-    public function testConstructorWithZendValidatorInstance()
+    public function testConstructorWithZendValidatorInstance(): void
     {
         $zendInstance = new ZendDate();
         $v = new Zend($zendInstance);
@@ -60,7 +62,7 @@ class ZendTest extends TestCase
     /**
      * @depends testConstructorWithZendValidatorInstance
      */
-    public function testUserlandValidatorExtendingZendInterface()
+    public function testUserlandValidatorExtendingZendInterface(): void
     {
         $v = new Zend(new MyValidator());
         self::assertAttributeInstanceOf(
@@ -70,7 +72,7 @@ class ZendTest extends TestCase
         );
     }
 
-    public function testConstructorWithZendValidatorPartialNamespace()
+    public function testConstructorWithZendValidatorPartialNamespace(): void
     {
         $v = new Zend('Sitemap\Lastmod');
         self::assertAttributeInstanceOf(
@@ -84,7 +86,7 @@ class ZendTest extends TestCase
      * @depends testConstructorWithValidatorName
      * @depends testConstructorWithZendValidatorPartialNamespace
      */
-    public function testConstructorWithValidatorName_and_params()
+    public function testConstructorWithValidatorName_and_params(): void
     {
         $zendValidatorName = 'StringLength';
         $zendValidatorParams = ['min' => 10, 'max' => 25];
@@ -98,7 +100,7 @@ class ZendTest extends TestCase
     /**
      * @depends testConstructorWithValidatorName
      */
-    public function testZendDateValidatorWithRespectMethods()
+    public function testZendDateValidatorWithRespectMethods(): void
     {
         $v = new Zend('Date');
         $date = new DateTime();
@@ -111,7 +113,7 @@ class ZendTest extends TestCase
      * @depends testZendDateValidatorWithRespectMethods
      * @expectedException \Respect\Validation\Exceptions\ZendException
      */
-    public function testRespectExceptionForFailedValidation()
+    public function testRespectExceptionForFailedValidation(): void
     {
         $v = new Zend('Date');
         $notValid = 'a';
@@ -130,7 +132,7 @@ class ZendTest extends TestCase
      * @depends testZendDateValidatorWithRespectMethods
      * @expectedException \Respect\Validation\Exceptions\ZendException
      */
-    public function testParamsNot()
+    public function testParamsNot(): void
     {
         $v = new Zend('StringLength', ['min' => 10, 'max' => 25]);
         self::assertFalse($v->assert('aw'));

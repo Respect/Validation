@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -20,7 +22,7 @@ use PHPUnit\Framework\TestCase;
  */
 class OneOfTest extends TestCase
 {
-    public function testValid()
+    public function testValid(): void
     {
         $valid1 = new Callback(function () {
             return false;
@@ -42,7 +44,7 @@ class OneOfTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\OneOfException
      */
-    public function testEmptyChain()
+    public function testEmptyChain(): void
     {
         $rule = new OneOf();
 
@@ -53,7 +55,7 @@ class OneOfTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\OneOfException
      */
-    public function testInvalid()
+    public function testInvalid(): void
     {
         $valid1 = new Callback(function () {
             return false;
@@ -72,7 +74,7 @@ class OneOfTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\OneOfException
      */
-    public function testInvalidMultipleAssert()
+    public function testInvalidMultipleAssert(): void
     {
         $valid1 = new Callback(function () {
             return true;
@@ -92,7 +94,7 @@ class OneOfTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\CallbackException
      */
-    public function testInvalidMultipleCheck()
+    public function testInvalidMultipleCheck(): void
     {
         $valid1 = new Callback(function () {
             return true;
@@ -109,10 +111,11 @@ class OneOfTest extends TestCase
 
         $rule->check('any');
     }
+
     /**
      * @expectedException \Respect\Validation\Exceptions\OneOfException
      */
-    public function testInvalidMultipleCheckAllValid()
+    public function testInvalidMultipleCheckAllValid(): void
     {
         $valid1 = new Callback(function () {
             return true;
@@ -133,7 +136,7 @@ class OneOfTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\XdigitException
      */
-    public function testInvalidCheck()
+    public function testInvalidCheck(): void
     {
         $rule = new OneOf(new Xdigit(), new Alnum());
         self::assertFalse($rule->validate(-10));

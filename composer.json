@@ -17,6 +17,7 @@
     },
     "require-dev": {
         "egulias/email-validator": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.8",
         "malukenho/docheader": "^0.1.4",
         "mikey179/vfsStream": "^1.6",
         "phpunit/phpunit": "^6.4",

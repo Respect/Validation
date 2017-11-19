@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use stdClass;
@@ -40,7 +42,7 @@ class StringValTest extends RuleTestCase
 
         return [
             [$rule, []],
-            [$rule, function () {
+            [$rule, function (): void {
             }],
             [$rule, new stdClass()],
             [$rule, null],

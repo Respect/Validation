@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class PunctTest extends TestCase
     /**
      * @dataProvider providerForValidPunct
      */
-    public function testValidDataWithPunctShouldReturnTrue($validPunct, $additional = '')
+    public function testValidDataWithPunctShouldReturnTrue($validPunct, $additional = ''): void
     {
         $validator = new Punct($additional);
         self::assertTrue($validator->validate($validPunct));
@@ -33,7 +35,7 @@ class PunctTest extends TestCase
      * @dataProvider providerForInvalidPunct
      * @expectedException \Respect\Validation\Exceptions\PunctException
      */
-    public function testInvalidPunctShouldFailAndThrowPunctException($invalidPunct, $additional = '')
+    public function testInvalidPunctShouldFailAndThrowPunctException($invalidPunct, $additional = ''): void
     {
         $validator = new Punct($additional);
         self::assertFalse($validator->validate($invalidPunct));
@@ -44,7 +46,7 @@ class PunctTest extends TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
     {
         $validator = new Punct($additional);
     }
@@ -52,7 +54,7 @@ class PunctTest extends TestCase
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Punct($additional);
         self::assertTrue($validator->validate($query));

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -25,25 +27,25 @@ class CallTest extends TestCase
         return [];
     }
 
-    public function testCallbackValidatorShouldAcceptEmptyString()
+    public function testCallbackValidatorShouldAcceptEmptyString(): void
     {
         $v = new Call('str_split', new ArrayVal());
         self::assertTrue($v->assert(''));
     }
 
-    public function testCallbackValidatorShouldAcceptStringWithFunctionName()
+    public function testCallbackValidatorShouldAcceptStringWithFunctionName(): void
     {
         $v = new Call('str_split', new ArrayVal());
         self::assertTrue($v->assert('test'));
     }
 
-    public function testCallbackValidatorShouldAcceptArrayCallbackDefinition()
+    public function testCallbackValidatorShouldAcceptArrayCallbackDefinition(): void
     {
         $v = new Call([$this, 'thisIsASampleCallbackUsedInsideThisTest'], new ArrayVal());
         self::assertTrue($v->assert('test'));
     }
 
-    public function testCallbackValidatorShouldAcceptClosures()
+    public function testCallbackValidatorShouldAcceptClosures(): void
     {
         $v = new Call(function () {
             return [];
@@ -54,7 +56,7 @@ class CallTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\CallException
      */
-    public function testCallbackFailedShouldThrowCallException()
+    public function testCallbackFailedShouldThrowCallException(): void
     {
         $v = new Call('strrev', new ArrayVal());
         self::assertFalse($v->validate('test'));

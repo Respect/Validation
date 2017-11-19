@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
 class DateTimeException extends ValidationException
@@ -29,7 +31,7 @@ class DateTimeException extends ValidationException
     public function configure($name, array $params = [])
     {
         $params['format'] = date(
-            $params['format'],
+            (string) $params['format'],
             strtotime('2005-12-30 01:02:03')
         );
 

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class NoWhitespaceTest extends TestCase
 {
     protected $noWhitespaceValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->noWhitespaceValidator = new NoWhitespace();
     }
@@ -30,7 +32,7 @@ class NoWhitespaceTest extends TestCase
     /**
      * @dataProvider providerForPass
      */
-    public function testStringWithNoWhitespaceShouldPass($input)
+    public function testStringWithNoWhitespaceShouldPass($input): void
     {
         self::assertTrue($this->noWhitespaceValidator->__invoke($input));
         self::assertTrue($this->noWhitespaceValidator->check($input));
@@ -41,15 +43,16 @@ class NoWhitespaceTest extends TestCase
      * @dataProvider providerForFail
      * @expectedException \Respect\Validation\Exceptions\NoWhitespaceException
      */
-    public function testStringWithWhitespaceShouldFail($input)
+    public function testStringWithWhitespaceShouldFail($input): void
     {
         self::assertFalse($this->noWhitespaceValidator->__invoke($input));
         self::assertFalse($this->noWhitespaceValidator->assert($input));
     }
+
     /**
      * @expectedException \Respect\Validation\Exceptions\NoWhitespaceException
      */
-    public function testStringWithLineBreaksShouldFail()
+    public function testStringWithLineBreaksShouldFail(): void
     {
         self::assertFalse($this->noWhitespaceValidator->__invoke("w\npoiur"));
         self::assertFalse($this->noWhitespaceValidator->assert("w\npoiur"));
@@ -81,7 +84,7 @@ class NoWhitespaceTest extends TestCase
      * @issue 346
      * @expectedException \Respect\Validation\Exceptions\NoWhitespaceException
      */
-    public function testArrayDoesNotThrowAWarning()
+    public function testArrayDoesNotThrowAWarning(): void
     {
         $this->noWhitespaceValidator->assert([]);
     }

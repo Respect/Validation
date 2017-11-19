@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
 use DateTime;
@@ -315,7 +317,7 @@ class ValidationException extends InvalidArgumentException implements ExceptionI
         return $this;
     }
 
-    private function buildMessage()
+    private function buildMessage(): void
     {
         $this->message = $this->getMainMessage();
     }
@@ -329,7 +331,7 @@ class ValidationException extends InvalidArgumentException implements ExceptionI
 
     public function guessId()
     {
-        if (!empty($this->id) && $this->id != 'validation') {
+        if (!empty($this->id) && 'validation' != $this->id) {
             return $this->id;
         }
 

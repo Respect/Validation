@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -28,7 +30,7 @@ class FactorTest extends TestCase
     /**
      * @dataProvider providerForValidFactor
      */
-    public function testValidFactorShouldReturnTrue($dividend, $input)
+    public function testValidFactorShouldReturnTrue($dividend, $input): void
     {
         $min = new Factor($dividend);
         self::assertTrue($min->__invoke($input));
@@ -39,7 +41,7 @@ class FactorTest extends TestCase
     /**
      * @dataProvider providerForInvalidFactor
      */
-    public function testInvalidFactorShouldThrowFactorException($dividend, $input)
+    public function testInvalidFactorShouldThrowFactorException($dividend, $input): void
     {
         $this->expectException(
             FactorException::class,
@@ -54,7 +56,7 @@ class FactorTest extends TestCase
     /**
      * @dataProvider providerForInvalidFactorDividend
      */
-    public function testInvalidDividentShouldThrowComponentException($dividend, $input)
+    public function testInvalidDividentShouldThrowComponentException($dividend, $input): void
     {
         $this->expectException(
             ComponentException::class,

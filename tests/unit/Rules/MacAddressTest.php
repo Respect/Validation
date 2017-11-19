@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class MacAddressTest extends TestCase
 {
     protected $macaddressValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->macaddressValidator = new MacAddress();
     }
@@ -30,7 +32,7 @@ class MacAddressTest extends TestCase
     /**
      * @dataProvider providerForMacAddress
      */
-    public function testValidMacaddressesShouldReturnTrue($input)
+    public function testValidMacaddressesShouldReturnTrue($input): void
     {
         self::assertTrue($this->macaddressValidator->__invoke($input));
         self::assertTrue($this->macaddressValidator->assert($input));
@@ -41,7 +43,7 @@ class MacAddressTest extends TestCase
      * @dataProvider providerForNotMacAddress
      * @expectedException \Respect\Validation\Exceptions\MacAddressException
      */
-    public function testInvalidMacaddressShouldThrowMacAddressException($input)
+    public function testInvalidMacaddressShouldThrowMacAddressException($input): void
     {
         self::assertFalse($this->macaddressValidator->__invoke($input));
         self::assertFalse($this->macaddressValidator->assert($input));

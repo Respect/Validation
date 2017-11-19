@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use DateTime as DateTimeMutable;
@@ -40,7 +42,7 @@ class Age extends AllOf
         return new DateTimeMutable($interval);
     }
 
-    private function setMaxAge($maxAge)
+    private function setMaxAge($maxAge): void
     {
         $this->maxAge = $maxAge;
 
@@ -56,7 +58,7 @@ class Age extends AllOf
         $this->addRule($minRule);
     }
 
-    private function setMinAge($minAge)
+    private function setMinAge($minAge): void
     {
         $this->minAge = $minAge;
 

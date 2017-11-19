@@ -9,13 +9,15 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
 
 class AbstractCtypeRuleTest extends TestCase
 {
-    public function testValidateCleanShouldReturnTrueWhenCtypeFunctionReturnsTrue()
+    public function testValidateCleanShouldReturnTrueWhenCtypeFunctionReturnsTrue(): void
     {
         $ctypeRuleMock = $this->getMockForAbstractClass(AbstractCtypeRule::class);
         $ctypeRuleMock->expects($this->once())
@@ -25,7 +27,7 @@ class AbstractCtypeRuleTest extends TestCase
         self::assertTrue($ctypeRuleMock->validateClean('anything'));
     }
 
-    public function testValidateCleanShouldReturnFalseWhenCtypeFunctionReturnsFalse()
+    public function testValidateCleanShouldReturnFalseWhenCtypeFunctionReturnsFalse(): void
     {
         $ctypeRuleMock = $this->getMockForAbstractClass(AbstractCtypeRule::class);
         $ctypeRuleMock->expects($this->once())

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation;
 
 use finfo;
@@ -176,7 +178,7 @@ class Validator extends AllOf
     /**
      * @param Factory $factory
      */
-    public static function setFactory($factory)
+    public static function setFactory($factory): void
     {
         static::$factory = $factory;
     }
@@ -185,7 +187,7 @@ class Validator extends AllOf
      * @param string $rulePrefix
      * @param bool   $prepend
      */
-    public static function with($rulePrefix, $prepend = false)
+    public static function with($rulePrefix, $prepend = false): void
     {
         if (false === $prepend) {
             self::getFactory()->appendRulePrefix($rulePrefix);
@@ -199,7 +201,7 @@ class Validator extends AllOf
         try {
             return parent::check($input);
         } catch (ValidationException $exception) {
-            if (count($this->getRules()) == 1 && $this->template) {
+            if (1 == count($this->getRules()) && $this->template) {
                 $exception->setTemplate($this->template);
             }
 

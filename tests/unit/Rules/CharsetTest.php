@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class CharsetTest extends TestCase
     /**
      * @dataProvider providerForValidCharset
      */
-    public function testValidDataWithCharsetShouldReturnTrue($charset, $input)
+    public function testValidDataWithCharsetShouldReturnTrue($charset, $input): void
     {
         $validator = new Charset($charset);
         self::assertTrue($validator->__invoke($input));
@@ -33,7 +35,7 @@ class CharsetTest extends TestCase
      * @dataProvider providerForInvalidCharset
      * @expectedException \Respect\Validation\Exceptions\CharsetException
      */
-    public function testInvalidCharsetShouldFailAndThrowCharsetException($charset, $input)
+    public function testInvalidCharsetShouldFailAndThrowCharsetException($charset, $input): void
     {
         $validator = new Charset($charset);
         self::assertFalse($validator->__invoke($input));
@@ -44,7 +46,7 @@ class CharsetTest extends TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($charset)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($charset): void
     {
         $validator = new Charset($charset);
     }

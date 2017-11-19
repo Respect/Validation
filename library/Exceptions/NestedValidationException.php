@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
 use IteratorAggregate;
@@ -139,7 +141,7 @@ class NestedValidationException extends ValidationException implements IteratorA
         $relatedExceptions->rewind();
         $childException = $relatedExceptions->current();
 
-        return $relatedExceptions->count() === 1 && !$childException instanceof NonOmissibleExceptionInterface;
+        return 1 === $relatedExceptions->count() && !$childException instanceof NonOmissibleExceptionInterface;
     }
 
     /**
@@ -166,7 +168,7 @@ class NestedValidationException extends ValidationException implements IteratorA
             if (isset($knownDepths[$currentDepthOriginal])) {
                 $currentDepth = $knownDepths[$currentDepthOriginal];
             } elseif ($currentDepthOriginal > $lastDepthOriginal
-                && ($this->hasCustomTemplate() || $exceptionIterator->count() != 1)) {
+                && ($this->hasCustomTemplate() || 1 != $exceptionIterator->count())) {
                 ++$currentDepth;
             }
 
@@ -217,7 +219,7 @@ class NestedValidationException extends ValidationException implements IteratorA
         $messages = [];
         $exceptions = $this->getIterator();
 
-        if ($this->hasCustomTemplate() || count($exceptions) != 1) {
+        if ($this->hasCustomTemplate() || 1 != count($exceptions)) {
             $messages[] = sprintf('%s %s', $marker, $this->getMessage());
         }
 

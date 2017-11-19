@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class StringTypeTest extends TestCase
     /**
      * @dataProvider providerForString
      */
-    public function testString($input)
+    public function testString($input): void
     {
         $rule = new StringType();
 
@@ -33,7 +35,7 @@ class StringTypeTest extends TestCase
     /**
      * @dataProvider providerForNotString
      */
-    public function testNotString($input)
+    public function testNotString($input): void
     {
         $rule = new StringType();
 

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class CnpjTest extends TestCase
 {
     protected $cnpjValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->cnpjValidator = new Cnpj();
     }
@@ -30,7 +32,7 @@ class CnpjTest extends TestCase
     /**
      * @dataProvider providerValidFormattedCnpj
      */
-    public function testFormattedCnpjsShouldValidate($input)
+    public function testFormattedCnpjsShouldValidate($input): void
     {
         self::assertTrue($this->cnpjValidator->validate($input));
     }
@@ -38,7 +40,7 @@ class CnpjTest extends TestCase
     /**
      * @dataProvider providerValidUnformattedCnpj
      */
-    public function testUnformattedCnpjsShouldValidate($input)
+    public function testUnformattedCnpjsShouldValidate($input): void
     {
         self::assertTrue($this->cnpjValidator->validate($input));
     }
@@ -46,7 +48,7 @@ class CnpjTest extends TestCase
     /**
      * @dataProvider providerInvalidFormattedCnpj
      */
-    public function testFormattedCnpjsShouldNotValidate($input)
+    public function testFormattedCnpjsShouldNotValidate($input): void
     {
         self::assertFalse($this->cnpjValidator->validate($input));
     }
@@ -54,7 +56,7 @@ class CnpjTest extends TestCase
     /**
      * @dataProvider providerInvalidUnformattedCnpj
      */
-    public function testUnformattedCnpjsShouldNotValidate($input)
+    public function testUnformattedCnpjsShouldNotValidate($input): void
     {
         self::assertFalse($this->cnpjValidator->validate($input));
     }
@@ -62,7 +64,7 @@ class CnpjTest extends TestCase
     /**
      * @dataProvider providerInvalidFormattedAndUnformattedCnpjLength
      */
-    public function testFormattedAndUnformattedCnpjsShouldNotValidate($input)
+    public function testFormattedAndUnformattedCnpjsShouldNotValidate($input): void
     {
         self::assertFalse($this->cnpjValidator->validate($input));
     }

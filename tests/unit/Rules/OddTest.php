@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class OddTest extends TestCase
 {
     protected $object;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new Odd();
     }
@@ -30,7 +32,7 @@ class OddTest extends TestCase
     /**
      * @dataProvider providerForOdd
      */
-    public function testOdd($input)
+    public function testOdd($input): void
     {
         self::assertTrue($this->object->assert($input));
         self::assertTrue($this->object->__invoke($input));
@@ -41,7 +43,7 @@ class OddTest extends TestCase
      * @dataProvider providerForNotOdd
      * @expectedException \Respect\Validation\Exceptions\OddException
      */
-    public function testNotOdd($input)
+    public function testNotOdd($input): void
     {
         self::assertFalse($this->object->__invoke($input));
         self::assertFalse($this->object->assert($input));

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class NfeAccessKeyTest extends TestCase
 {
     protected $nfeValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->nfeValidator = new NfeAccessKey();
     }
@@ -30,7 +32,7 @@ class NfeAccessKeyTest extends TestCase
     /**
      * @dataProvider validAccessKeyProvider
      */
-    public function testValidAccessKey($aK)
+    public function testValidAccessKey($aK): void
     {
         self::assertTrue($this->nfeValidator->assert($aK));
         self::assertTrue($this->nfeValidator->__invoke($aK));
@@ -41,7 +43,7 @@ class NfeAccessKeyTest extends TestCase
      * @dataProvider invalidAccessKeyProvider
      * @expectedException \Respect\Validation\Exceptions\NfeAccessKeyException
      */
-    public function testInvalidAccessKey($aK)
+    public function testInvalidAccessKey($aK): void
     {
         self::assertFalse($this->nfeValidator->assert($aK));
     }
@@ -50,7 +52,7 @@ class NfeAccessKeyTest extends TestCase
      * @dataProvider invalidAccessKeyLengthProvider
      * @expectedException \Respect\Validation\Exceptions\NfeAccessKeyException
      */
-    public function testInvalidLengthCnh($aK)
+    public function testInvalidLengthCnh($aK): void
     {
         self::assertFalse($this->nfeValidator->assert($aK));
     }

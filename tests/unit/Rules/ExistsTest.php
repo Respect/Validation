@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use org\bovigo\vfs\content\LargeFileContent;
@@ -27,7 +29,7 @@ class ExistsTest extends TestCase
      * @dataProvider fileProvider
      * @covers \Respect\Validation\Rules\Exists::validate
      */
-    public function testExistentFileShouldReturnTrue($file)
+    public function testExistentFileShouldReturnTrue($file): void
     {
         $rule = new Exists();
         self::assertTrue($rule->validate($file->url()));
@@ -36,7 +38,7 @@ class ExistsTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\Exists::validate
      */
-    public function testNonExistentFileShouldReturnFalse()
+    public function testNonExistentFileShouldReturnFalse(): void
     {
         $rule = new Exists();
         self::assertFalse($rule->validate('/path/of/a/non-existent/file'));
@@ -46,7 +48,7 @@ class ExistsTest extends TestCase
      * @dataProvider fileProvider
      * @covers \Respect\Validation\Rules\Exists::validate
      */
-    public function testShouldValidateObjects($file)
+    public function testShouldValidateObjects($file): void
     {
         $rule = new Exists();
         $object = new SplFileInfo($file->url());

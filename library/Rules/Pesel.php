@@ -9,13 +9,15 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Pesel extends AbstractRule
 {
     public function validate($input)
     {
-        if (!preg_match('/^\d{11}$/', $input)) {
+        if (!preg_match('/^\d{11}$/', (string) $input)) {
             return false;
         }
 

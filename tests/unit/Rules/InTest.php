@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class InTest extends TestCase
     /**
      * @dataProvider providerForIn
      */
-    public function testSuccessInValidatorCases($input, $options = null)
+    public function testSuccessInValidatorCases($input, $options = null): void
     {
         $v = new In($options);
         self::assertTrue($v->__invoke($input));
@@ -35,7 +37,7 @@ class InTest extends TestCase
      * @dataProvider providerForNotIn
      * @expectedException \Respect\Validation\Exceptions\InException
      */
-    public function testInvalidInChecksShouldThrowInException($input, $options, $strict = false)
+    public function testInvalidInChecksShouldThrowInException($input, $options, $strict = false): void
     {
         $v = new In($options, $strict);
         self::assertFalse($v->__invoke($input));
@@ -46,7 +48,7 @@ class InTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\InException
      * @expectedExceptionMessage "x" must be in { "foo", "bar" }
      */
-    public function testInCheckExceptionMessageWithArray()
+    public function testInCheckExceptionMessageWithArray(): void
     {
         $v = new In(['foo', 'bar']);
         $v->assert('x');

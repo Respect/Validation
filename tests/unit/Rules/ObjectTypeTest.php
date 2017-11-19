@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class ObjectTypeTest extends TestCase
 {
     protected $object;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new ObjectType();
     }
@@ -30,7 +32,7 @@ class ObjectTypeTest extends TestCase
     /**
      * @dataProvider providerForObject
      */
-    public function testObject($input)
+    public function testObject($input): void
     {
         self::assertTrue($this->object->__invoke($input));
         self::assertTrue($this->object->assert($input));
@@ -41,7 +43,7 @@ class ObjectTypeTest extends TestCase
      * @dataProvider providerForNotObject
      * @expectedException \Respect\Validation\Exceptions\ObjectTypeException
      */
-    public function testNotObject($input)
+    public function testNotObject($input): void
     {
         self::assertFalse($this->object->__invoke($input));
         self::assertFalse($this->object->assert($input));

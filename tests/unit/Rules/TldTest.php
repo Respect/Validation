@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -35,7 +37,7 @@ class TldTest extends TestCase
     /**
      * @dataProvider providerForValidTld
      */
-    public function testShouldValidateInputWhenItIsAValidTld($input)
+    public function testShouldValidateInputWhenItIsAValidTld($input): void
     {
         $rule = new Tld();
 
@@ -55,7 +57,7 @@ class TldTest extends TestCase
     /**
      * @dataProvider providerForInvalidTld
      */
-    public function testShouldInvalidateInputWhenItIsNotAValidTld($input)
+    public function testShouldInvalidateInputWhenItIsNotAValidTld($input): void
     {
         $rule = new Tld();
 
