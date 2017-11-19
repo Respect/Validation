@@ -8,15 +8,13 @@ cache:
 
 matrix:
   include:
-    - php: 7.0
+    - php: 7.1
       env: COMPOSER_ARGUMENTS="--prefer-lowest --prefer-stable"
-    - php: 7.0
     - php: 7.1
     - php: 7.2
     - php: nightly
   allow_failures:
     - php: nightly
-    - php: 7.2
   fast_finish: true
 
 before_script:
