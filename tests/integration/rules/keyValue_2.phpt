@@ -11,7 +11,7 @@ $data = [
 ];
 
 try {
-    v::keyValue('password', 'equals', 'password_confirmation')->check($data);
+    v::keyValue('password', 'equals', 'password_confirmation')->assert($data);
 } catch (EqualsException $e) {
     echo $e->getMainMessage();
 }

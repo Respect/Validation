@@ -10,7 +10,7 @@ $data = [
     'valid_passwords' => ['shuberry', 'monty-python'],
 ];
 
-v::keyValue('password', 'equals', 'password_confirmation')->check($data);
-v::keyValue('password', 'in', 'valid_passwords')->assert($data);
+v::keyValue('password', 'equals', 'password_confirmation')->assert($data);
+v::keyValue('password', 'in', 'valid_passwords')->assertAll($data);
 ?>
 --EXPECTF--

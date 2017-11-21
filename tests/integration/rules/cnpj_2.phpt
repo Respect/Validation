@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\CnpjException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::cnpj()->check('não cnpj');
+    v::cnpj()->assert('não cnpj');
 } catch (CnpjException $e) {
     echo $e->getMainMessage();
 }

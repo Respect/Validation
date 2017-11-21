@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\ConsonantException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::consonant())->check('ddd');
+    v::not(v::consonant())->assert('ddd');
 } catch (ConsonantException $e) {
     echo $e->getMainMessage();
 }

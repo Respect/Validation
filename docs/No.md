@@ -6,12 +6,12 @@
 Validates if value is considered as "No".
 
 ```php
-v::no()->validate('N'); // true
-v::no()->validate('Nay'); // true
-v::no()->validate('Nix'); // true
-v::no()->validate('No'); // true
-v::no()->validate('Nope'); // true
-v::no()->validate('Not'); // true
+v::no()->isValid('N'); // true
+v::no()->isValid('Nay'); // true
+v::no()->isValid('Nix'); // true
+v::no()->isValid('No'); // true
+v::no()->isValid('Nope'); // true
+v::no()->isValid('Not'); // true
 ```
 
 This rule is case insensitive.

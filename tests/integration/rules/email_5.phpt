@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::email())->assert('iambatman@gothancity.com');
+    v::not(v::email())->assertAll('iambatman@gothancity.com');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

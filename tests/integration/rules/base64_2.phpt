@@ -8,13 +8,13 @@ use Respect\Validation\Exceptions\Base64Exception;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::base64())->check('c3VyZS4=');
+    v::not(v::base64())->assert('c3VyZS4=');
 } catch (Base64Exception $exception) {
     echo $exception->getMainMessage().PHP_EOL;
 }
 
 try {
-    v::not(v::base64())->assert('c3VyZS4=');
+    v::not(v::base64())->assertAll('c3VyZS4=');
 } catch (AllOfException $exception) {
     echo $exception->getFullMessage().PHP_EOL;
 }

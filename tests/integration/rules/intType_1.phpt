@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator as v;
 
-v::intType()->assert(42);
-v::intType()->check(1984);
+v::intType()->assertAll(42);
+v::intType()->assert(1984);
 ?>
 --EXPECTF--

@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\CpfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::cpf()->check('this thing');
+    v::cpf()->assert('this thing');
 } catch (CpfException $e) {
     echo $e->getMainMessage();
 }

@@ -12,13 +12,13 @@ $notEmptyValues = [
 
 //Check not empty values
 foreach ($notEmptyValues as $value) {
+    v::notEmpty()->assertAll($value);
     v::notEmpty()->assert($value);
-    v::notEmpty()->check($value);
 }
 
 //Check a not empty array
+v::notEmpty()->assertAll([1]);
 v::notEmpty()->assert([1]);
-v::notEmpty()->check([1]);
 
 ?>
 --EXPECTF--

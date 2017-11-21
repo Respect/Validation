@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\ObjectTypeException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::objectType())->check(new stdClass());
+    v::not(v::objectType())->assert(new stdClass());
 } catch (ObjectTypeException $exception) {
     echo $exception->getMainMessage();
 }

@@ -7,13 +7,13 @@ use Respect\Validation\Exceptions\ImeiException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::imei()->check('497511659092062');
+    v::imei()->assert('497511659092062');
 } catch (ImeiException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
-    v::imei()->assert([]);
+    v::imei()->assertAll([]);
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }

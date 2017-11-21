@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\PeselException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::pesel())->check('21120209256');
+    v::not(v::pesel())->assert('21120209256');
 } catch (PeselException $e) {
     echo $e->getMainMessage();
 }

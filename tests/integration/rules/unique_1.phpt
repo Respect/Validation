@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator as v;
 
-v::unique()->assert([]);
-v::unique()->check([1, 2, 3]);
+v::unique()->assertAll([]);
+v::unique()->assert([1, 2, 3]);
 ?>
 --EXPECTF--

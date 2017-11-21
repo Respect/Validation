@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::digit()->assert('a');
+    v::digit()->assertAll('a');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::pis()->assert('your mother');
+    v::pis()->assertAll('your mother');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

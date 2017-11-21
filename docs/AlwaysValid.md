@@ -5,7 +5,7 @@
 Always returns true.
 
 ```php
-v::alwaysValid()->validate($whatever); // true
+v::alwaysValid()->isValid($whatever); // true
 ```
 
 ## Changelog

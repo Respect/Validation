@@ -40,7 +40,7 @@ try {
             true
         )
         ->setName('the given data')
-        ->assert($object);
+        ->assertAll($object);
 } catch (NestedValidationException $exception) {
     echo $exception->getFullMessage().PHP_EOL;
 }

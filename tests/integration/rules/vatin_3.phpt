@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::vatin('PL')->assert('1645865778');
+    v::vatin('PL')->assertAll('1645865778');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

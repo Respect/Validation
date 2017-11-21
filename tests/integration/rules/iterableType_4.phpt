@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::iterableType()->assert('String');
+    v::iterableType()->assertAll('String');
 } catch (AllOfException $exception) {
     echo $exception->getFullMessage();
 }

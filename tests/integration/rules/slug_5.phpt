@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::slug())->assert('good-and-valid-slug');
+    v::not(v::slug())->assertAll('good-and-valid-slug');
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }

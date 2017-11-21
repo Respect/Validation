@@ -10,7 +10,7 @@ $data = [
 ];
 
 try {
-    v::not(v::keyValue('password', 'in', 'invalid_passwords'))->check($data);
+    v::not(v::keyValue('password', 'in', 'invalid_passwords'))->assert($data);
 } catch (Exception $e) {
     echo $e->getMainMessage();
 }

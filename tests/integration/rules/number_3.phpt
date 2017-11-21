@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::number()->assert(NAN);
+    v::number()->assertAll(NAN);
 } catch (AllOfException $exception) {
     echo $exception->getFullMessage();
 }

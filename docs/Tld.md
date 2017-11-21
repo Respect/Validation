@@ -5,9 +5,9 @@
 Validates a top-level domain
 
 ```php
-v::tld()->validate('com'); // true
-v::tld()->validate('ly'); // true
-v::tld()->validate('org'); // true
+v::tld()->isValid('com'); // true
+v::tld()->isValid('ly'); // true
+v::tld()->isValid('org'); // true
 ```
 
 ## Changelog

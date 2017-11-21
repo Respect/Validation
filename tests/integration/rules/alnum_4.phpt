@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AlnumException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::alnum())->check('adsfASDF123');
+    v::not(v::alnum())->assert('adsfASDF123');
 } catch (AlnumException $exception) {
     echo $exception->getMainMessage();
 }

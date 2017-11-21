@@ -19,7 +19,7 @@ $rules = [
 ];
 
 try {
-    v::allOf($rules)->setName('Validation Form')->assert($input);
+    v::allOf($rules)->setName('Validation Form')->assertAll($input);
 } catch (NestedValidationException $exception) {
     print_r($exception->findMessages(array_keys($input)));
 }

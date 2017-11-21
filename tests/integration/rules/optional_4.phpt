@@ -4,8 +4,8 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator as v;
 
-v::optional(v::alpha())->validate('');
-v::optional(v::alpha())->validate(null);
+v::optional(v::alpha())->isValid('');
+v::optional(v::alpha())->isValid(null);
 
 ?>
 --EXPECTF--

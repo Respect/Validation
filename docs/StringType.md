@@ -5,7 +5,7 @@
 Validates a string.
 
 ```php
-v::stringType()->validate('hi'); // true
+v::stringType()->isValid('hi'); // true
 ```
 
 ## Changelog

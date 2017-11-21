@@ -8,7 +8,7 @@ use Respect\Validation\Exceptions\AlwaysInvalidException;
 use Respect\Validation\Validator;
 
 try {
-    Validator::alwaysInvalid()->check('whatever');
+    Validator::alwaysInvalid()->assert('whatever');
 } catch (AlwaysInvalidException $e) {
     echo $e->getMainMessage();
 }

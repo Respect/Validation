@@ -8,8 +8,8 @@ This is going to be deprecated, please use [Age](Age.md) instead.
 Validates a minimum age for a given date.
 
 ```php
-v::minimumAge(18)->validate('1987-01-01'); // true
-v::minimumAge(18, 'd/m/Y')->validate('01/01/1987'); // true
+v::minimumAge(18)->isValid('1987-01-01'); // true
+v::minimumAge(18, 'd/m/Y')->isValid('01/01/1987'); // true
 ```
 
 Using [DateTime](DateTime.md) before is a best-practice.

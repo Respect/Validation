@@ -7,13 +7,13 @@ use Respect\Validation\Exceptions\NullTypeException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::nullType())->check(null);
+    v::not(v::nullType())->assert(null);
 } catch (NullTypeException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
-    v::not(v::nullType())->assert(null);
+    v::not(v::nullType())->assertAll(null);
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }

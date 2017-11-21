@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::floatType())->assert(1984.434);
+    v::not(v::floatType())->assertAll(1984.434);
 } catch (AllOfException $exception) {
     echo $exception->getFullMessage();
 }

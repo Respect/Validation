@@ -1,5 +1,5 @@
 --TEST--
-PhpLabel rule exception should be thrown by assert() method
+PhpLabel rule exception should be thrown by assertAll() method
 --FILE--
 <?php
 require 'vendor/autoload.php';
@@ -8,13 +8,13 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::phpLabel()->assert('0wner');
+    v::phpLabel()->assertAll('0wner');
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }
 
 try {
-    v::not(v::phpLabel())->assert('Respect');
+    v::not(v::phpLabel())->assertAll('Respect');
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }

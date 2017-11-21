@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::consonant())->assert('bb');
+    v::not(v::consonant())->assertAll('bb');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::identityCard('PL'))->assert('AYE205410');
+    v::not(v::identityCard('PL'))->assertAll('AYE205410');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

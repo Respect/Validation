@@ -14,10 +14,6 @@ declare(strict_types=1);
 namespace Respect\Validation;
 
 use finfo;
-use ReflectionClass;
-use Respect\Validation\Exceptions\AllOfException;
-use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Rules\AllOf;
 use Respect\Validation\Rules\Key;
 
@@ -159,113 +155,108 @@ use Respect\Validation\Rules\Key;
  * @method static Validator yes($useLocale = false)
  * @method static Validator zend(mixed $validator, array $params = null)
  */
-class Validator extends AllOf
+final class Validator implements Rule
 {
-    protected static $factory;
+    /**
+     * @var Rule[]
+     */
+    private $rules = [];
 
     /**
-     * @return Factory
+     * @var Factory
      */
-    protected static function getFactory()
+    private $factory;
+
+    /**
+     * @var string
+     */
+    private $locale;
+
+    public function __construct(Factory $factory, string $locale)
     {
-        if (!static::$factory instanceof Factory) {
-            static::$factory = new Factory();
+        $this->factory = $factory;
+        $this->locale = $locale;
+    }
+
+    private function rule(): Rule
+    {
+        if (1 === count($this->rules)) {
+            return current($this->rules);
         }
 
-        return static::$factory;
+        return new AllOf(...$this->rules);
     }
 
-    /**
-     * @param Factory $factory
-     */
-    public static function setFactory($factory): void
+    public function addRules(array $rules): void
     {
-        static::$factory = $factory;
-    }
-
-    /**
-     * @param string $rulePrefix
-     * @param bool   $prepend
-     */
-    public static function with($rulePrefix, $prepend = false): void
-    {
-        if (false === $prepend) {
-            self::getFactory()->appendRulePrefix($rulePrefix);
-        } else {
-            self::getFactory()->prependRulePrefix($rulePrefix);
-        }
-    }
-
-    public function check($input)
-    {
-        try {
-            return parent::check($input);
-        } catch (ValidationException $exception) {
-            if (1 == count($this->getRules()) && $this->template) {
-                $exception->setTemplate($this->template);
-            }
-
-            throw $exception;
+        foreach ($rules as $rule) {
+            $this->addRule($rule);
         }
     }
 
-    /**
-     * @param string $ruleName
-     * @param array  $arguments
-     *
-     * @return Validator
-     */
-    public static function __callStatic($ruleName, $arguments)
+    private function addRule(Rule $rule): void
     {
-        if ('allOf' === $ruleName) {
-            return static::buildRule($ruleName, $arguments);
+        $this->rules[] = $rule;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function apply($input): Result
+    {
+        return $this->rule()->apply($input);
+    }
+
+    public static function create(): self
+    {
+        return new static(Factory::getDefaultInstance(), 'en');
+    }
+
+    public static function __callStatic($ruleName, $arguments): self
+    {
+        return self::create()->__call($ruleName, $arguments);
+    }
+
+    public function __call(string $name, array $parameters): self
+    {
+        $this->addRule($this->factory->rule($name, $parameters));
+
+        return $this;
+    }
+
+    public function isValid($input): bool
+    {
+        $result = $this->apply($input);
+
+        return $result->isValid();
+    }
+
+    public function validate($input): Validation
+    {
+        $result = $this->apply($input);
+
+        return new Validation($result, $this->factory, $this->locale);
+    }
+
+    public function assert($input): void
+    {
+        $validation = $this->validate($input);
+
+        if ($validation->isValid()) {
+            return;
         }
 
-        $validator = new static();
-
-        return $validator->__call($ruleName, $arguments);
+        throw $this->factory->exception($validation->getMainMessage());
     }
 
-    /**
-     * @param mixed $ruleSpec
-     * @param array $arguments
-     *
-     * @return Validatable
-     */
-    public static function buildRule($ruleSpec, $arguments = [])
+    public function assertAll($input): void
     {
-        try {
-            return static::getFactory()->rule($ruleSpec, $arguments);
-        } catch (\Exception $exception) {
-            throw new ComponentException($exception->getMessage(), $exception->getCode(), $exception);
+        $validation = $this->validate($input);
+
+        if ($validation->isValid()) {
+            return;
         }
-    }
 
-    /**
-     * @param string $method
-     * @param array  $arguments
-     *
-     * @return self
-     */
-    public function __call($method, $arguments)
-    {
-        return $this->addRule(static::buildRule($method, $arguments));
-    }
-
-    protected function createException()
-    {
-        return new AllOfException();
-    }
-
-    /**
-     * Create instance validator.
-     *
-     * @return Validator
-     */
-    public static function create()
-    {
-        $ref = new ReflectionClass(__CLASS__);
-
-        return $ref->newInstanceArgs(func_get_args());
+        throw $this->factory->exception($validation->getFullMessage());
     }
 }

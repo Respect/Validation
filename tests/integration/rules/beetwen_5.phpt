@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::between('a', 'b'))->assert('a');
+    v::not(v::between('a', 'b'))->assertAll('a');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

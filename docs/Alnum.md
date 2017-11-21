@@ -6,27 +6,27 @@
 Validates alphanumeric characters from a-Z and 0-9.
 
 ```php
-v::alnum()->validate('foo 123'); // true
+v::alnum()->isValid('foo 123'); // true
 ```
 
 A parameter for extra characters can be used:
 
 ```php
-v::alnum('-')->validate('foo - 123'); // true
+v::alnum('-')->isValid('foo - 123'); // true
 ```
 
 This validator allows whitespace, if you want to
 remove them add `->noWhitespace()` to the chain:
 
 ```php
-v::alnum()->noWhitespace()->validate('foo 123'); // false
+v::alnum()->noWhitespace()->isValid('foo 123'); // false
 ```
 
 You can restrict case using the `->lowercase()` and
 `->uppercase()` validators:
 
 ```php
-v::alnum()->uppercase()->validate('aaa'); // false
+v::alnum()->uppercase()->isValid('aaa'); // false
 ```
 
 Message template for this validator includes `{{additionalChars}}` as

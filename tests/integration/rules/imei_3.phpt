@@ -7,13 +7,13 @@ use Respect\Validation\Exceptions\ImeiException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::imei())->check('35-007752-323751-3');
+    v::not(v::imei())->assert('35-007752-323751-3');
 } catch (ImeiException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
-    v::not(v::imei())->assert('350077523237513');
+    v::not(v::imei())->assertAll('350077523237513');
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }

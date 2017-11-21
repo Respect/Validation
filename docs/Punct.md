@@ -6,7 +6,7 @@
 Accepts only punctuation characters:
 
 ```php
-v::punct()->validate('&,.;[]'); // true
+v::punct()->isValid('&,.;[]'); // true
 ```
 
 ## Changelog

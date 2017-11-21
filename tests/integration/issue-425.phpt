@@ -11,7 +11,7 @@ $validator = v::create()
     ->key('reference', v::stringType()->notEmpty()->length(1, 50));
 
 try {
-    $validator->assert(['age' => 1]);
+    $validator->assertAll(['age' => 1]);
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }
@@ -19,7 +19,7 @@ try {
 echo PHP_EOL;
 
 try {
-    $validator->assert(['reference' => 'QSF1234']);
+    $validator->assertAll(['reference' => 'QSF1234']);
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

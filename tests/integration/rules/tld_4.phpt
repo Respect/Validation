@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\TldException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::tld())->check('com');
+    v::not(v::tld())->assert('com');
 } catch (TldException $exception) {
     echo $exception->getMainMessage();
 }

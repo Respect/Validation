@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::pesel())->assert('21120209256');
+    v::not(v::pesel())->assertAll('21120209256');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

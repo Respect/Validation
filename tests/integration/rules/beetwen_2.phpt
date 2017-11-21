@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\MaxException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::intType()->between(1, 2)->check(42);
+    v::intType()->between(1, 2)->assert(42);
 } catch (MaxException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }

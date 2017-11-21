@@ -11,7 +11,7 @@ $data = [
 ];
 
 try {
-    v::not(v::keyValue('password', 'in', 'invalid_passwords'))->assert($data);
+    v::not(v::keyValue('password', 'in', 'invalid_passwords'))->assertAll($data);
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

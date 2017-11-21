@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\YesException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::yes()->check('si');
+    v::yes()->assert('si');
 } catch (YesException $e) {
     echo $e->getMainMessage();
 }

@@ -21,7 +21,7 @@ try {
              ->key('birthdate', Validator::dateTime())
              ->key('password', Validator::notEmpty())
              ->key('email', Validator::email())
-             ->assert($input);
+             ->assertAll($input);
 } catch (NestedValidationException $e) {
     print_r($e->getMessages());
 }

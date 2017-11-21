@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\ConsonantException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::consonant()->check('top nos falsetes');
+    v::consonant()->assert('top nos falsetes');
 } catch (ConsonantException $e) {
     echo $e->getMainMessage();
 }

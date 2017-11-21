@@ -20,7 +20,7 @@ $validator = v::arrayType()
     ->key('schema', v::stringType());
 
 try {
-    $validator->assert($config);
+    $validator->assertAll($config);
 } catch (AllOfException $exception) {
     echo $exception->getFullMessage().PHP_EOL;
 }

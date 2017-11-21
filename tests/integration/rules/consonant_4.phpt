@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::consonant()->assert('Jaspion');
+    v::consonant()->assertAll('Jaspion');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

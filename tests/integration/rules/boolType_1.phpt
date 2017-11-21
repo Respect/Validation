@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator as v;
 
-v::boolType()->check(false);
-v::boolType()->assert(true);
+v::boolType()->assert(false);
+v::boolType()->assertAll(true);
 ?>
 --EXPECTF--

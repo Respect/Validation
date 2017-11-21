@@ -5,6 +5,6 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator as v;
 
-v::bsn()->check('612890053');
+v::bsn()->assert('612890053');
 ?>
 --EXPECTF--

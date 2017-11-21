@@ -14,7 +14,7 @@ try {
     v::create()
         ->attribute('email', v::email()->setName('Email Field'))
         ->attribute('password', v::noWhitespace()->setName('Password Field'))
-        ->assert($object);
+        ->assertAll($object);
 } catch (NestedValidationException $exception) {
     print_r($exception->getMessages());
     print_r($exception->findMessages([

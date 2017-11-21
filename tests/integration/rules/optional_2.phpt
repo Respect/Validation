@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\OptionalException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::optional(v::equals('foo')))->check(null);
+    v::not(v::optional(v::equals('foo')))->assert(null);
 } catch (OptionalException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }

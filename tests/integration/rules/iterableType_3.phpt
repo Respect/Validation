@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\IterableTypeException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::iterableType())->check([2, 3]);
+    v::not(v::iterableType())->assert([2, 3]);
 } catch (IterableTypeException $exception) {
     echo $exception->getMainMessage();
 }

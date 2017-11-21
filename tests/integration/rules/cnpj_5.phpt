@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::cnpj())->assert('65150175000120');
+    v::not(v::cnpj())->assertAll('65150175000120');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

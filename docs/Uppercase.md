@@ -5,7 +5,7 @@
 Validates if string characters are uppercase in the input:
 
 ```php
-v::stringType()->uppercase()->validate('W3C'); // true
+v::stringType()->uppercase()->isValid('W3C'); // true
 ```
 
 ## Changelog

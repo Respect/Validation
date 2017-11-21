@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\NumberException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::number()->check(acos(1.01));
+    v::number()->assert(acos(1.01));
 } catch (NumberException $exception) {
     echo $exception->getMainMessage();
 }

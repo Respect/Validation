@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\CountableException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::countable())->check([]);
+    v::not(v::countable())->assert([]);
 } catch (CountableException $e) {
     echo $e->getMainMessage();
 }

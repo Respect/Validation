@@ -15,7 +15,7 @@ try {
     v::create()
         ->key('name', v::length(2, 32))
         ->key('email', v::email())
-        ->assert($arr);
+        ->assertAll($arr);
 } catch (NestedValidationException $e) {
     print_r($e->getMessages());
 }

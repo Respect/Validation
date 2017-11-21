@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::arrayType()->assert(new ArrayObject());
+    v::arrayType()->assertAll(new ArrayObject());
 } catch (AllOfException $exception) {
     echo $exception->getFullMessage();
 }

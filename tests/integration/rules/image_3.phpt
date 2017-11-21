@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::image()->assert(new stdClass());
+    v::image()->assertAll(new stdClass());
 } catch (NestedValidationException $exception) {
     echo $exception->getFullMessage();
 }

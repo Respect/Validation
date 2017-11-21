@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::nif())->assert('R1332622H');
+    v::not(v::nif())->assertAll('R1332622H');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

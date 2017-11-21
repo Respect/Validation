@@ -7,13 +7,13 @@ Validates IP Addresses. This validator uses the native filter_var()
 PHP function.
 
 ```php
-v::ip()->validate('192.168.0.1');
+v::ip()->isValid('192.168.0.1');
 ```
 
 You can pass a parameter with filter_var flags for IP.
 
 ```php
-v::ip(FILTER_FLAG_NO_PRIV_RANGE)->validate('127.0.0.1'); // false
+v::ip(FILTER_FLAG_NO_PRIV_RANGE)->isValid('127.0.0.1'); // false
 ```
 
 ## Changelog

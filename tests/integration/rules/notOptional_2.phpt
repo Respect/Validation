@@ -7,13 +7,13 @@ use Respect\Validation\Exceptions\NotOptionalException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::notOptional()->check(null);
+    v::notOptional()->assert(null);
 } catch (NotOptionalException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
-    v::notOptional()->assert('');
+    v::notOptional()->assertAll('');
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }

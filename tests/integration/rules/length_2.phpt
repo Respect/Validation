@@ -7,19 +7,19 @@ use Respect\Validation\Exceptions\LengthException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::length(0, 5)->check('nawarian');
+    v::length(0, 5)->assert('nawarian');
 } catch (LengthException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
-    v::length(13, null)->check('phpsp.org.br');
+    v::length(13, null)->assert('phpsp.org.br');
 } catch (LengthException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
-    v::not(v::length(5, 20))->check('phpsp.org.br');
+    v::not(v::length(5, 20))->assert('phpsp.org.br');
 } catch (LengthException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }

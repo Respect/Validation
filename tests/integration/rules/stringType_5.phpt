@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::stringType())->assert('hello world');
+    v::not(v::stringType())->assertAll('hello world');
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }

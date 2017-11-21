@@ -12,27 +12,27 @@ to the defined locale settings.
 
 The examples below validate if the given dates are lower or equal to 18 years ago:
 ```php
-v::age(18)->validate('17 years ago'); // false
-v::age(18)->validate('18 years ago'); // true
-v::age(18)->validate('19 years ago'); // true
-v::age(18)->validate('1970-01-01'); // true
-v::age(18)->validate('today'); // false
+v::age(18)->isValid('17 years ago'); // false
+v::age(18)->isValid('18 years ago'); // true
+v::age(18)->isValid('19 years ago'); // true
+v::age(18)->isValid('1970-01-01'); // true
+v::age(18)->isValid('today'); // false
 ```
 
 The examples below validate if the given dates are between 10 and 50 years ago:
 ```php
-v::age(10, 50)->validate('9 years ago'); // false
-v::age(10, 50)->validate('10 years ago'); // true
-v::age(10, 50)->validate('30 years ago'); // true
-v::age(10, 50)->validate('50 years ago'); // true
-v::age(10, 50)->validate('51 years ago'); // false
+v::age(10, 50)->isValid('9 years ago'); // false
+v::age(10, 50)->isValid('10 years ago'); // true
+v::age(10, 50)->isValid('30 years ago'); // true
+v::age(10, 50)->isValid('50 years ago'); // true
+v::age(10, 50)->isValid('51 years ago'); // false
 ```
 
 The examples below validate if the given dates are greater than or equal to 70 years ago:
 ```php
-v::age(null, 70)->validate('today'); // true
-v::age(null, 70)->validate('70 years ago'); // true
-v::age(null, 70)->validate('71 years ago'); // false
+v::age(null, 70)->isValid('today'); // true
+v::age(null, 70)->isValid('70 years ago'); // true
+v::age(null, 70)->isValid('71 years ago'); // false
 ```
 
 Message template for this validator includes `{{minAge}}` and `{{maxAge}}`.

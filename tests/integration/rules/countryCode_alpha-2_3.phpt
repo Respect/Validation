@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\CountryCodeException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::countryCode()->check('1');
+    v::countryCode()->assert('1');
 } catch (CountryCodeException $exception) {
     echo $exception->getMainMessage();
 }

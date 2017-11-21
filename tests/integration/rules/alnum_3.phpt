@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::alnum()->noWhitespace()->assert('Bla %1#%&23');
+    v::alnum()->noWhitespace()->assertAll('Bla %1#%&23');
 } catch (AllOfException $exception) {
     echo $exception->getFullMessage();
 }

@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::number())->assert(42);
+    v::not(v::number())->assertAll(42);
 } catch (AllOfException $exception) {
     echo $exception->getFullMessage();
 }

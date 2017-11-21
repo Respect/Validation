@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::countable())->assert(new ArrayObject());
+    v::not(v::countable())->assertAll(new ArrayObject());
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

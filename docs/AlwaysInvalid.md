@@ -5,7 +5,7 @@
 Always return false.
 
 ```php
-v::alwaysInvalid()->validate($whatever); // false
+v::alwaysInvalid()->isValid($whatever); // false
 ```
 
 ## Changelog

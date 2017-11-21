@@ -7,9 +7,9 @@ use Respect\Validation\Validator as v;
 
 $validator = v::length(0, 10);
 
-$validator->validate('phpsp');
-v::not($validator)->validate('phpsp');
-$validator->assert('nickolas');
-$validator->check('nawarian');
+$validator->isValid('phpsp');
+v::not($validator)->isValid('phpsp');
+$validator->assertAll('nickolas');
+$validator->assert('nawarian');
 ?>
 --EXPECTF--

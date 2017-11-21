@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\DigitException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::digit())->check(1);
+    v::not(v::digit())->assert(1);
 } catch (DigitException $e) {
     echo $e->getMainMessage();
 }

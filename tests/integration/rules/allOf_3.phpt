@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::allOf(v::stringType(), v::consonant())->assert(42);
+    v::allOf(v::stringType(), v::consonant())->assertAll(42);
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

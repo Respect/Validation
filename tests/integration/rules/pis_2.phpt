@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\PisException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::pis()->check('this thing');
+    v::pis()->assert('this thing');
 } catch (PisException $e) {
     echo $e->getMainMessage();
 }

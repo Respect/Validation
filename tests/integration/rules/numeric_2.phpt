@@ -7,13 +7,13 @@ use Respect\Validation\Exceptions\NumericValException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::numericVal()->check('a');
+    v::numericVal()->assert('a');
 } catch (NumericValException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
-    v::numericVal()->assert('a');
+    v::numericVal()->assertAll('a');
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }

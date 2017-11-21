@@ -6,15 +6,15 @@
 Validates if the input is greater than the minimum value.
 
 ```php
-v::intVal()->min(15)->validate(5); // false
-v::intVal()->min(5)->validate(5); // false
-v::intVal()->min(5, true)->validate(5); // true
+v::intVal()->min(15)->isValid(5); // false
+v::intVal()->min(5)->isValid(5); // false
+v::intVal()->min(5, true)->isValid(5); // true
 ```
 
 Also accepts dates:
 
 ```php
-v::dateTime()->min('2012-01-01')->validate('2015-01-01'); // true
+v::dateTime()->min('2012-01-01')->isValid('2015-01-01'); // true
 ```
 
 `true` may be passed as a parameter to indicate that inclusive

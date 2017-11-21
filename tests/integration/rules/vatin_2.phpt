@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\Locale\PlVatinException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::vatin('PL')->check('1645865778');
+    v::vatin('PL')->assert('1645865778');
 } catch (PlVatinException $e) {
     echo $e->getMainMessage();
 }

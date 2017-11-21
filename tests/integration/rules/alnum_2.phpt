@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AlnumException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::alnum()->check('Bla %123');
+    v::alnum()->assert('Bla %123');
 } catch (AlnumException $exception) {
     echo $exception->getMainMessage();
 }

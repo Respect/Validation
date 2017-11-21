@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\MaxException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::age(18)->check('17 years ago');
+    v::age(18)->assert('17 years ago');
 } catch (MaxException $e) {
     echo $e->getMainMessage();
 }

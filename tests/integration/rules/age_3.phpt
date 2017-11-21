@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::age(18)->assert('17 years ago');
+    v::age(18)->assertAll('17 years ago');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::currencyCode())->assert('GBP');
+    v::not(v::currencyCode())->assertAll('GBP');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }
