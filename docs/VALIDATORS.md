@@ -122,6 +122,7 @@
 - [Length](Length.md)
 - [NotEmpty](NotEmpty.md)
 - [StartsWith](StartsWith.md)
+- [Subset](Subset.md)
 
 ## Objects
 
@@ -337,6 +338,7 @@
 - [StringType](StringType.md)
 - [StringVal](StringVal.md)
 - [SubdivisionCode](SubdivisionCode.md)
+- [Subset](Subset.md)
 - [SymbolicLink](SymbolicLink.md)
 - [Time](Time.md)
 - [Tld](Tld.md)
