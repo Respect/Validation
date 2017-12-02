@@ -138,6 +138,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator stringType()
  * @method static Validator stringVal()
  * @method static Validator subdivisionCode(string $countryCode)
+ * @method static Validator superSet(array $input)
  * @method static Validator symbolicLink()
  * @method static Validator tld()
  * @method static Validator trueVal()
