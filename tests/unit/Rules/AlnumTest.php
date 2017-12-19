@@ -77,7 +77,8 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
     {
         return [
             ['alganet', ''],
-            ['alganet', 'alganet'],
+            ['foo :- 123 !', '- ! :'],
+            ['number 100%', '%'],
             ['0alg-anet0', '0-9'],
             ['1', ''],
             ["\t", ''],
@@ -98,6 +99,7 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
     {
         return [
             ['', ''],
+            ['number 100%', ''],
             ['@#$', ''],
             ['_', ''],
             ['dgç', ''],
