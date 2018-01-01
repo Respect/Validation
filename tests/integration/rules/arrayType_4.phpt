@@ -12,4 +12,4 @@ try {
 }
 ?>
 --EXPECTF--
-{ } must not be of the type array
+`{ }` must not be of the type array

@@ -1,5 +1,5 @@
 --FILE--
-<?php 
+<?php
 
 require 'vendor/autoload.php';
 
@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-true must not be a boolean
+`TRUE` must not be a boolean
