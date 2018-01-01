@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-{ } must not be countable
+`{ }` must not be countable

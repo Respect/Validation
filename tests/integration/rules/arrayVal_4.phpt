@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-{ 42 } must not be an array
+`{ 42 }` must not be an array

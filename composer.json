@@ -13,6 +13,7 @@
     ],
     "require": {
         "php": ">=7.1",
+        "respect/stringifier": "^0.2.0",
         "symfony/polyfill-mbstring": "^1.2"
     },
     "require-dev": {

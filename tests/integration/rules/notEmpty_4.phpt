@@ -20,4 +20,4 @@ try {
 ?>
 --EXPECTF--
 1 must be empty
-- { 1 } must be empty
+- `{ 1 }` must be empty

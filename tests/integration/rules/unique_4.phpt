@@ -12,4 +12,4 @@ try {
 }
 ?>
 --EXPECTF--
-{ 1, 2, 3, 1 } must not contain duplicates
+`{ 1, 2, 3, 1 }` must not contain duplicates
