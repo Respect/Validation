@@ -12,4 +12,4 @@ try {
 }
 ?>
 --EXPECTF--
-- { 1, 2, 3 } must not be of the type array
+- `{ 1, 2, 3 }` must not be of the type array

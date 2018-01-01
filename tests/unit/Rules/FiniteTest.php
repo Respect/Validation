@@ -47,7 +47,7 @@ class FiniteTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\FiniteException
-     * @expectedExceptionMessage INF must be a finite number
+     * @expectedExceptionMessage `INF` must be a finite number
      */
     public function testShouldThrowFiniteExceptionWhenChecking(): void
     {

@@ -15,5 +15,6 @@ try {
 } catch (AllOfException $e) {
     echo $e->getMainMessage();
 }
+?>
 --EXPECTF--
-All of the required rules must pass for { "password": "shazam", "password_confirmation": "batman" }
+All of the required rules must pass for `{ "password": "shazam", "password_confirmation": "batman" }`

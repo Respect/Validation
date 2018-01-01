@@ -14,4 +14,4 @@ try {
 
 ?>
 --EXPECTF--
-- "9 years ago" must be less than or equal to "%d-%d-%d %d:%d:%d"
+- "9 years ago" must be less than or equal to `[date-time] (DateTime: "%s")`

@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-null must be a BSN
+`NULL` must be a BSN

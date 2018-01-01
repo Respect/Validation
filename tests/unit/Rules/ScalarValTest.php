@@ -47,7 +47,7 @@ class ScalarValTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\ScalarValException
-     * @expectedExceptionMessage null must be a scalar value
+     * @expectedExceptionMessage `NULL` must be a scalar value
      */
     public function testShouldThrowScalarExceptionWhenChecking(): void
     {

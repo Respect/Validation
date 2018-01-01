@@ -147,7 +147,7 @@ class KeySetTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\KeySetException
-     * @expectedExceptionMessage Must have keys { "foo", "bar" }
+     * @expectedExceptionMessage Must have keys `{ "foo", "bar" }`
      */
     public function testShouldCheckKeys(): void
     {
@@ -162,7 +162,7 @@ class KeySetTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\KeySetException
-     * @expectedExceptionMessage Must have keys { "foo", "bar" }
+     * @expectedExceptionMessage Must have keys `{ "foo", "bar" }`
      */
     public function testShouldAssertKeys(): void
     {
@@ -177,7 +177,7 @@ class KeySetTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\KeySetException
-     * @expectedExceptionMessage Must have keys { "name" }
+     * @expectedExceptionMessage Must have keys `{ "name" }`
      * @dataProvider providerForInvalidArguments
      */
     public function testShouldThrowExceptionInCaseArgumentIsAnythingOtherThanArray($input): void

@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-- NaN must be a number
+- `NaN` must be a number
