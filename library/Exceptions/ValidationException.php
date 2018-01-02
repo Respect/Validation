@@ -305,6 +305,9 @@ class ValidationException extends InvalidArgumentException implements ExceptionI
     public function setTemplate($template)
     {
         $this->customTemplate = true;
+        if (isset(static::$defaultTemplates[$this->mode][$template])) {
+            $template = static::$defaultTemplates[$this->mode][$template];
+        }
         $this->template = $template;
 
         $this->buildMessage();
