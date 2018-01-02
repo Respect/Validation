@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-- true must not be a boolean
+- `TRUE` must not be a boolean

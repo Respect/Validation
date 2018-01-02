@@ -13,4 +13,4 @@ try {
 }
 ?>
 --EXPECTF--
-{ 2, 3 } must not be iterable
+`{ 2, 3 }` must not be iterable

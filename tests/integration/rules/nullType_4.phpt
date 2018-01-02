@@ -19,5 +19,5 @@ try {
 }
 ?>
 --EXPECTF--
-null must not be null
-- null must not be null
+`NULL` must not be null
+- `NULL` must not be null

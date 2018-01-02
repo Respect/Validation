@@ -37,8 +37,8 @@ try {
 
 ?>
 --EXPECTF--
-{ } must be a callable
+`{ }` must be a callable
 "oneInexistentFunction" must be a callable
 100 must be a callable
-null must be a callable
+`NULL` must be a callable
 "" must be a callable

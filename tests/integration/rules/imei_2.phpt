@@ -20,4 +20,4 @@ try {
 ?>
 --EXPECTF--
 "497511659092062" must be a valid IMEI
-- { } must be a valid IMEI
+- `{ }` must be a valid IMEI
