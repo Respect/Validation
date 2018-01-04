@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -37,7 +39,7 @@ class AlwaysValidTest extends TestCase
     /**
      * @dataProvider providerForValidAlwaysValid
      */
-    public function testShouldValidateInputWhenItIsAValidAlwaysValid($input)
+    public function testShouldValidateInputWhenItIsAValidAlwaysValid($input): void
     {
         $rule = new AlwaysValid();
 

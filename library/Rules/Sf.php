@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use ReflectionClass;
@@ -56,7 +58,7 @@ class Sf extends AbstractRule
     public function assert($input)
     {
         $violations = $this->returnViolationsForConstraint($input, $this->constraint);
-        if (count($violations) == 0) {
+        if (0 == count($violations)) {
             return true;
         }
 

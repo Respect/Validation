@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::tld())->assert('com');
+    v::not(v::tld())->assertAll('com');
 } catch (AllOfException $exception) {
     echo $exception->getFullMessage();
 }

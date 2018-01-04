@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\ArrayValException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::arrayVal()->check('Bla %123');
+    v::arrayVal()->assert('Bla %123');
 } catch (ArrayValException $exception) {
     echo $exception->getMainMessage();
 }

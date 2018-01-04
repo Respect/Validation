@@ -35,14 +35,14 @@ v::call(
         ->key('host',   v::domain())
         ->key('path',   v::stringType())
         ->key('query',  v::notEmpty())
-)->validate($url);
+)->isValid($url);
 ```
 
 It is possible to call methods and closures as the first parameter:
 
 ```php
-v::call([$myObj, 'methodName'], v::intVal())->validate($myInput);
-v::call(function($input) {}, v::intVal())->validate($myInput);
+v::call([$myObj, 'methodName'], v::intVal())->isValid($myInput);
+v::call(function($input) {}, v::intVal())->isValid($myInput);
 ```
 
 ## Changelog

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -36,7 +38,7 @@ class SymbolicLinkTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\SymbolicLink::validate
      */
-    public function testValidSymbolicLinkShouldReturnTrue()
+    public function testValidSymbolicLinkShouldReturnTrue(): void
     {
         $GLOBALS['is_link'] = true;
 
@@ -48,7 +50,7 @@ class SymbolicLinkTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\SymbolicLink::validate
      */
-    public function testInvalidSymbolicLinkShouldThrowException()
+    public function testInvalidSymbolicLinkShouldThrowException(): void
     {
         $GLOBALS['is_link'] = false;
 
@@ -60,7 +62,7 @@ class SymbolicLinkTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\SymbolicLink::validate
      */
-    public function testShouldValidateObjects()
+    public function testShouldValidateObjects(): void
     {
         $rule = new SymbolicLink();
         $object = $this->createMock('SplFileInfo', ['isLink'], ['somelink.lnk']);

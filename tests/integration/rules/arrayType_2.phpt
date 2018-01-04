@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\ArrayTypeException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::arrayType()->check('teste');
+    v::arrayType()->assert('teste');
 } catch (ArrayTypeException $exception) {
     echo $exception->getMainMessage();
 }

@@ -5,7 +5,7 @@
 Validates an odd number.
 
 ```php
-v::intVal()->odd()->validate(3); // true
+v::intVal()->odd()->isValid(3); // true
 ```
 
 Using `int()` before `odd()` is a best practice.

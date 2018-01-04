@@ -5,7 +5,7 @@
 Validates if the input is an object.
 
 ```php
-v::objectType()->validate(new stdClass); // true
+v::objectType()->isValid(new stdClass); // true
 ```
 
 ## Changelog

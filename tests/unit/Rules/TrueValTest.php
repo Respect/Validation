@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class TrueValTest extends TestCase
     /**
      * @dataProvider validTrueProvider
      */
-    public function testShouldValidatePatternAccordingToTheDefinedLocale($input)
+    public function testShouldValidatePatternAccordingToTheDefinedLocale($input): void
     {
         $rule = new TrueVal();
 
@@ -51,7 +53,7 @@ class TrueValTest extends TestCase
     /**
      * @dataProvider invalidTrueProvider
      */
-    public function testShouldNotValidatePatternAccordingToTheDefinedLocale($input)
+    public function testShouldNotValidatePatternAccordingToTheDefinedLocale($input): void
     {
         $rule = new TrueVal();
 

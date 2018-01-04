@@ -7,13 +7,13 @@ use Respect\Validation\Exceptions\NotEmptyException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::notEmpty()->setName('Field')->check(null);
+    v::notEmpty()->setName('Field')->assert(null);
 } catch (NotEmptyException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
-    v::notEmpty()->setName('Field')->assert('');
+    v::notEmpty()->setName('Field')->assertAll('');
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }

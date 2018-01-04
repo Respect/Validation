@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\CpfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::cpf())->check('276.865.775-11');
+    v::not(v::cpf())->assert('276.865.775-11');
 } catch (CpfException $e) {
     echo $e->getMainMessage();
 }

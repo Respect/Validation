@@ -43,7 +43,7 @@ try {
                         ->key('powerup', v::length(2, 50))
                 )
         )
-        ->assert($input);
+        ->assertAll($input);
 } catch (NestedValidationException $exception) {
     print_r(array_filter($exception->findMessages([
         'each.name' => 'Center name',

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -35,14 +37,14 @@ class ExtensionTest extends TestCase
     /**
      * @dataProvider providerValidExtension
      */
-    public function testShouldValidateExtension($filename, $extension)
+    public function testShouldValidateExtension($filename, $extension): void
     {
         $rule = new Extension($extension);
 
         self::assertTrue($rule->validate($filename));
     }
 
-    public function testShouldAcceptSplFileInfo()
+    public function testShouldAcceptSplFileInfo(): void
     {
         $fileInfo = new SplFileInfo(__FILE__);
 
@@ -51,7 +53,7 @@ class ExtensionTest extends TestCase
         self::assertTrue($rule->validate($fileInfo));
     }
 
-    public function testShouldInvalidWhenNotStringNorSplFileInfo()
+    public function testShouldInvalidWhenNotStringNorSplFileInfo(): void
     {
         $nonFile = [__FILE__];
 
@@ -64,7 +66,7 @@ class ExtensionTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\ExtensionException
      * @expectedExceptionMessage "filename.jpg" must have "png" extension
      */
-    public function testShouldThrowExtensionExceptionWhenCheckingValue()
+    public function testShouldThrowExtensionExceptionWhenCheckingValue(): void
     {
         $rule = new Extension('png');
         $rule->check('filename.jpg');

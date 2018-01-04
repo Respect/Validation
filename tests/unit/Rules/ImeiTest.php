@@ -9,7 +9,11 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group  rule
@@ -17,7 +21,12 @@ namespace Respect\Validation\Rules;
  */
 class ImeiTest extends RuleTestCase
 {
-    public function providerForValidInput()
+    protected function setUp(): void
+    {
+        $this->markTestIncomplete(Imei::class.' needs to be refactored');
+    }
+
+    public function providerForValidInput(): array
     {
         $rule = new Imei();
 
@@ -33,7 +42,7 @@ class ImeiTest extends RuleTestCase
         ];
     }
 
-    public function providerForInvalidInput()
+    public function providerForInvalidInput(): array
     {
         $rule = new Imei();
 

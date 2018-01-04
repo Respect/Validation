@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use DateTime;
@@ -24,7 +26,7 @@ class MinTest extends TestCase
     /**
      * @dataProvider providerForValidMin
      */
-    public function testValidMinShouldReturnTrue($minValue, $inclusive, $input)
+    public function testValidMinShouldReturnTrue($minValue, $inclusive, $input): void
     {
         $min = new Min($minValue, $inclusive);
         self::assertTrue($min->__invoke($input));
@@ -36,7 +38,7 @@ class MinTest extends TestCase
      * @dataProvider providerForInvalidMin
      * @expectedException \Respect\Validation\Exceptions\MinException
      */
-    public function testInvalidMinShouldThrowMinException($minValue, $inclusive, $input)
+    public function testInvalidMinShouldThrowMinException($minValue, $inclusive, $input): void
     {
         $min = new Min($minValue, $inclusive);
         self::assertFalse($min->__invoke($input));

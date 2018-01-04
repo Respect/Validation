@@ -5,8 +5,8 @@
 Validates whether the type of a value is integer.
 
 ```php
-v::intType()->validate(42); // true
-v::intType()->validate('10'); // false
+v::intType()->isValid(42); // true
+v::intType()->isValid('10'); // false
 ```
 
 ## Changelog

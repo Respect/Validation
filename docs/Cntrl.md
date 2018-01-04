@@ -6,7 +6,7 @@
 This is similar to `Alnum()`, but only accepts control characters:
 
 ```php
-v::cntrl()->validate("\n\r\t"); // true
+v::cntrl()->isValid("\n\r\t"); // true
 ```
 
 ## Changelog

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class PrimeNumber extends AbstractRule
@@ -19,12 +21,12 @@ class PrimeNumber extends AbstractRule
             return false;
         }
 
-        if ($input != 2 && ($input % 2) == 0) {
+        if (2 != $input && 0 == ($input % 2)) {
             return false;
         }
 
-        for ($i = 3; $i <= ceil(sqrt($input)); $i += 2) {
-            if (($input % $i) == 0) {
+        for ($i = 3; $i <= ceil(sqrt((float) $input)); $i += 2) {
+            if (0 == ($input % $i)) {
                 return false;
             }
         }

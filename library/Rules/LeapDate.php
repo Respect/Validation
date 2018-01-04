@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use DateTimeImmutable;
@@ -34,6 +36,6 @@ class LeapDate extends AbstractRule
         }
 
         // Dates that aren't leap will aways be rounded
-        return $date->format('m-d') == '02-29';
+        return '02-29' == $date->format('m-d');
     }
 }

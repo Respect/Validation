@@ -5,8 +5,8 @@
 Validates if the input is a number.
 
 ```php
-v::number()->validate(42); // true
-v::number()->validate(acos(8)); // false
+v::number()->isValid(42); // true
+v::number()->isValid(acos(8)); // false
 ```
 
 > "In computing, NaN, standing for not a number, is a numeric data type value

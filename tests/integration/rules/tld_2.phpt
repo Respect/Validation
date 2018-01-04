@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\TldException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::tld()->check('42');
+    v::tld()->assert('42');
 } catch (TldException $exception) {
     echo $exception->getMainMessage();
 }

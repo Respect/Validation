@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use DateTimeImmutable;
@@ -31,7 +33,7 @@ abstract class AbstractInterval extends AbstractRule
             return $value;
         }
 
-        if (mb_strlen($value) == 1) {
+        if (1 == mb_strlen($value)) {
             return $value;
         }
 

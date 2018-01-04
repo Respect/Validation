@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\ImageException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::image())->check('tests/fixtures/valid-image.png');
+    v::not(v::image())->assert('tests/fixtures/valid-image.png');
 } catch (ImageException $exception) {
     echo $exception->getMainMessage();
 }

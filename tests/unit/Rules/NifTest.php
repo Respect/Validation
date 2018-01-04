@@ -9,7 +9,11 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group  rule
@@ -19,10 +23,15 @@ namespace Respect\Validation\Rules;
  */
 final class NifTest extends RuleTestCase
 {
+    protected function setUp(): void
+    {
+        $this->markTestIncomplete(Nif::class.' needs to be refactored');
+    }
+
     /**
      * {@inheritdoc}
      */
-    public function providerForValidInput()
+    public function providerForValidInput(): array
     {
         $rule = new Nif();
 
@@ -54,7 +63,7 @@ final class NifTest extends RuleTestCase
     /**
      * {@inheritdoc}
      */
-    public function providerForInvalidInput()
+    public function providerForInvalidInput(): array
     {
         $rule = new Nif();
 

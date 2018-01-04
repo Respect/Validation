@@ -5,8 +5,8 @@
 Validates if the input is identical to some value.
 
 ```php
-v::identical(42)->validate(42); // true
-v::identical(42)->validate('42'); // false
+v::identical(42)->isValid(42); // true
+v::identical(42)->isValid('42'); // false
 ```
 
 Message template for this validator includes `{{compareTo}}`.

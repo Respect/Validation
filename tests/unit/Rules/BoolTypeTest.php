@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -20,7 +22,7 @@ use PHPUnit\Framework\TestCase;
  */
 class BoolTypeTest extends TestCase
 {
-    public function testBooleanValuesONLYShouldReturnTrue()
+    public function testBooleanValuesONLYShouldReturnTrue(): void
     {
         $validator = new BoolType();
         self::assertTrue($validator->__invoke(true));
@@ -34,13 +36,13 @@ class BoolTypeTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\BoolTypeException
      */
-    public function testInvalidBooleanShouldRaiseException()
+    public function testInvalidBooleanShouldRaiseException(): void
     {
         $validator = new BoolType();
         self::assertFalse($validator->check('foo'));
     }
 
-    public function testInvalidBooleanValuesShouldReturnFalse()
+    public function testInvalidBooleanValuesShouldReturnFalse(): void
     {
         $validator = new BoolType();
         self::assertFalse($validator->__invoke(''));

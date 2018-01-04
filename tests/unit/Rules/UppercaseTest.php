@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class UppercaseTest extends TestCase
     /**
      * @dataProvider providerForValidUppercase
      */
-    public function testValidUppercaseShouldReturnTrue($input)
+    public function testValidUppercaseShouldReturnTrue($input): void
     {
         $uppercase = new Uppercase();
         self::assertTrue($uppercase->validate($input));
@@ -35,7 +37,7 @@ class UppercaseTest extends TestCase
      * @dataProvider providerForInvalidUppercase
      * @expectedException \Respect\Validation\Exceptions\UppercaseException
      */
-    public function testInvalidUppercaseShouldThrowException($input)
+    public function testInvalidUppercaseShouldThrowException($input): void
     {
         $lowercase = new Uppercase();
         self::assertFalse($lowercase->validate($input));

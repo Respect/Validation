@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\StringTypeException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::stringType()->check(42);
+    v::stringType()->assert(42);
 } catch (StringTypeException $e) {
     echo $e->getMainMessage();
 }

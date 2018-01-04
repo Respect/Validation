@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
@@ -20,7 +22,7 @@ use Respect\Validation\Validatable;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class KeySet extends AllOf
+class KeySet
 {
     /**
      * @param AllOf $rule
@@ -30,16 +32,13 @@ class KeySet extends AllOf
     private function filterAllOf(AllOf $rule)
     {
         $rules = $rule->getRules();
-        if (count($rules) != 1) {
+        if (1 != count($rules)) {
             throw new ComponentException('AllOf rule must have only one Key rule');
         }
 
         return current($rules);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addRule($rule, $arguments = [])
     {
         if ($rule instanceof AllOf) {
@@ -55,9 +54,6 @@ class KeySet extends AllOf
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addRules(array $rules)
     {
         foreach ($rules as $rule) {
@@ -99,13 +95,13 @@ class KeySet extends AllOf
             unset($input[$keyRule->reference]);
         }
 
-        return count($input) == 0;
+        return 0 == count($input);
     }
 
     /**
      * @throws KeySetException
      */
-    private function checkKeys($input)
+    private function checkKeys($input): void
     {
         if (!$this->hasValidStructure($input)) {
             $params = ['keys' => $this->getKeys()];
@@ -115,9 +111,6 @@ class KeySet extends AllOf
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function assert($input)
     {
         $this->checkKeys($input);
@@ -125,9 +118,6 @@ class KeySet extends AllOf
         return parent::assert($input);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function check($input)
     {
         $this->checkKeys($input);
@@ -135,9 +125,6 @@ class KeySet extends AllOf
         return parent::check($input);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function validate($input)
     {
         if (!$this->hasValidStructure($input)) {

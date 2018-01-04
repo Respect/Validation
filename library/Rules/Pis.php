@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 /**
@@ -29,7 +31,7 @@ class Pis extends AbstractRule
         }
 
         $digits = preg_replace('/\D/', '', $input);
-        if (mb_strlen($digits) != 11 || preg_match("/^{$digits[0]}{11}$/", $digits)) {
+        if (11 != mb_strlen($digits) || preg_match("/^{$digits[0]}{11}$/", $digits)) {
             return false;
         }
 

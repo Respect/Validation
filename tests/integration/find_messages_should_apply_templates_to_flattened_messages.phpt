@@ -21,7 +21,7 @@ $validator = v::allOf(
         v::attribute('security_question', $stringMax256)->setName('Security Question')
     )->setName('Validation Form');
 try {
-    $validator->assert(
+    $validator->assertAll(
         (object) [
             'first_name' => 'fiif',
             'last_name' => null,

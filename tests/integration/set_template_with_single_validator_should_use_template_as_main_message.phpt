@@ -10,7 +10,7 @@ use Respect\Validation\Validator;
 
 $rule = Validator::callback('is_int')->setTemplate('{{name}} is not tasty');
 try {
-    $rule->assert('something');
+    $rule->assertAll('something');
 } catch (NestedValidationException $e) {
     echo $e->getMainMessage();
 }
@@ -18,7 +18,7 @@ try {
 echo PHP_EOL;
 
 try {
-    $rule->check('something');
+    $rule->assert('something');
 } catch (NestedValidationException $e) {
     echo $e->getMainMessage();
 }

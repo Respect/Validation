@@ -9,12 +9,14 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Even extends AbstractRule
 {
     public function validate($input)
     {
-        return (int) $input % 2 === 0;
+        return 0 === (int) $input % 2;
     }
 }

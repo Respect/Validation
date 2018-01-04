@@ -12,11 +12,14 @@
         }
     ],
     "require": {
-        "php": ">=7.0",
-        "symfony/polyfill-mbstring": "^1.2"
+        "php": ">=7.1",
+        "respect/stringifier": "^0.2.0",
+        "symfony/polyfill-mbstring": "^1.2",
+        "doctrine/annotations": "^1.5"
     },
     "require-dev": {
         "egulias/email-validator": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.8",
         "malukenho/docheader": "^0.1.4",
         "mikey179/vfsStream": "^1.6",
         "phpunit/phpunit": "^6.4",
@@ -39,7 +42,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Respect\\Validation\\": "tests/library/"
+            "Respect\\Validation\\Test\\": "tests/library/"
         }
     },
     "extra": {

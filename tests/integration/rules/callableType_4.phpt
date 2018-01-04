@@ -12,21 +12,21 @@ use Respect\Validation\Exceptions\CallableTypeException;
 use Respect\Validation\Validator as v;
 
 try {
-    $x = function () {
+    $x = function (): void {
     };
-    v::not(v::callableType())->check($x);
+    v::not(v::callableType())->assert($x);
 } catch (CallableTypeException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
-    v::not(v::callableType())->check('trim');
+    v::not(v::callableType())->assert('trim');
 } catch (CallableTypeException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
-    v::not(v::callableType())->check(v::callableType(), 'validate');
+    v::not(v::callableType())->assert(v::callableType(), 'validate');
 } catch (CallableTypeException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }

@@ -6,7 +6,7 @@ Use Symfony2 validators inside Respect\Validation flow. Messages
 are preserved.
 
 ```php
-v::sf('Time')->validate('15:00:00');
+v::sf('Time')->isValid('15:00:00');
 ```
 
 ## Changelog

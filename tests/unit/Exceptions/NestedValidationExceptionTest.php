@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class PrivateNestedValidationException extends NestedValidationException
 
 class NestedValidationExceptionTest extends TestCase
 {
-    public function testGetRelatedShouldReturnExceptionAddedByAddRelated()
+    public function testGetRelatedShouldReturnExceptionAddedByAddRelated(): void
     {
         $composite = new AttributeException();
         $node = new IntValException();
@@ -32,7 +34,7 @@ class NestedValidationExceptionTest extends TestCase
         self::assertContainsOnly($node, $composite->getRelated());
     }
 
-    public function testAddingTheSameInstanceShouldAddJustASingleReference()
+    public function testAddingTheSameInstanceShouldAddJustASingleReference(): void
     {
         $composite = new AttributeException();
         $node = new IntValException();
@@ -43,7 +45,7 @@ class NestedValidationExceptionTest extends TestCase
         self::assertContainsOnly($node, $composite->getRelated());
     }
 
-    public function testFindRelatedShouldFindCompositeExceptions()
+    public function testFindRelatedShouldFindCompositeExceptions(): void
     {
         $foo = new AttributeException();
         $bar = new AttributeException();

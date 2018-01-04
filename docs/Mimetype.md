@@ -5,7 +5,7 @@
 Validates if the file mimetype matches the expected one:
 
 ```php
-v::mimetype('image/png')->validate('image.png'); // true
+v::mimetype('image/png')->isValid('image.png'); // true
 ```
 
 This rule is case-sensitive and requires [fileinfo](http://php.net/fileinfo) PHP extension.

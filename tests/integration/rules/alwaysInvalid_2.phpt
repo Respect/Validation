@@ -8,7 +8,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator;
 
 try {
-    Validator::alwaysInvalid()->assert('');
+    Validator::alwaysInvalid()->assertAll('');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

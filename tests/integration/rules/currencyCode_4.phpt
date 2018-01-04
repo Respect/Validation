@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\CurrencyCodeException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::currencyCode())->check('BRL');
+    v::not(v::currencyCode())->assert('BRL');
 } catch (CurrencyCodeException $e) {
     echo $e->getMainMessage();
 }

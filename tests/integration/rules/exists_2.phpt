@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\ExistsException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::exists()->check('/path/of/a/non-existent/file');
+    v::exists()->assert('/path/of/a/non-existent/file');
 } catch (ExistsException $e) {
     echo $e->getMainMessage();
 }

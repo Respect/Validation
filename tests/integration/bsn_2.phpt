@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\BsnException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::bsn()->check('acb');
+    v::bsn()->assert('acb');
 } catch (BsnException $e) {
     echo $e->getMainMessage();
 }

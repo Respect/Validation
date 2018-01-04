@@ -1,8 +1,8 @@
 # Attribute
 
-- `Attribute(string $name)`
-- `Attribute(string $name, Validatable $rule)`
-- `Attribute(string $name, Validatable $rule, bool $mandatory)`
+- `Attribute(string $attributeName)`
+- `Attribute(string $attributeName, Rule $rule)`
+- `Attribute(string $attributeName, Rule $rule, bool $mandatory)`
 
 Validates an object attribute.
 
@@ -10,19 +10,19 @@ Validates an object attribute.
 $obj = new stdClass;
 $obj->foo = 'bar';
 
-v::attribute('foo')->validate($obj); // true
+v::attribute('foo')->isValid($obj); // true
 ```
 
 You can also validate the attribute itself:
 
 ```php
-v::attribute('foo', v::equals('bar'))->validate($obj); // true
+v::attribute('foo', v::equals('bar'))->isValid($obj); // true
 ```
 
 Third parameter makes the attribute presence optional:
 
 ```php
-v::attribute('lorem', v::stringType(), false)->validate($obj); // true
+v::attribute('lorem', v::stringType(), false)->isValid($obj); // true
 ```
 
 The name of this validator is automatically set to the attribute name.

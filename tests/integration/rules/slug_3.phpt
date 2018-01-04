@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::slug()->assert('wrong slug');
+    v::slug()->assertAll('wrong slug');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

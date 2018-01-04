@@ -1,5 +1,5 @@
 --TEST--
-PhpLabel rule exception should be thrown by check() method
+PhpLabel rule exception should be thrown by assert() method
 --FILE--
 <?php
 require 'vendor/autoload.php';
@@ -8,13 +8,13 @@ use Respect\Validation\Exceptions\PhpLabelException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::phpLabel()->check('f o o');
+    v::phpLabel()->assert('f o o');
 } catch (PhpLabelException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
-    v::not(v::phpLabel())->check('correctOne');
+    v::not(v::phpLabel())->assert('correctOne');
 } catch (PhpLabelException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }

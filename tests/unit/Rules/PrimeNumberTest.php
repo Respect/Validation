@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class PrimeNumberTest extends TestCase
 {
     protected $object;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new PrimeNumber();
     }
@@ -30,7 +32,7 @@ class PrimeNumberTest extends TestCase
     /**
      * @dataProvider providerForPrimeNumber
      */
-    public function testPrimeNumber($input)
+    public function testPrimeNumber($input): void
     {
         self::assertTrue($this->object->__invoke($input));
         self::assertTrue($this->object->check($input));
@@ -41,7 +43,7 @@ class PrimeNumberTest extends TestCase
      * @dataProvider providerForNotPrimeNumber
      * @expectedException \Respect\Validation\Exceptions\PrimeNumberException
      */
-    public function testNotPrimeNumber($input)
+    public function testNotPrimeNumber($input): void
     {
         self::assertFalse($this->object->__invoke($input));
         self::assertFalse($this->object->assert($input));

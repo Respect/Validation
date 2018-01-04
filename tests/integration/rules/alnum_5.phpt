@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::alnum())->assert('asd124SF');
+    v::not(v::alnum())->assertAll('asd124SF');
 } catch (AllOfException $exception) {
     echo $exception->getFullMessage();
 }

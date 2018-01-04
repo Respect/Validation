@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -28,7 +30,7 @@ class BsnTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->rule = new Bsn();
     }
@@ -38,7 +40,7 @@ class BsnTest extends TestCase
      *
      * @param string $input
      */
-    public function testShouldValidateBsn($input)
+    public function testShouldValidateBsn($input): void
     {
         self::assertTrue($this->rule->validate($input));
     }
@@ -48,7 +50,7 @@ class BsnTest extends TestCase
      *
      * @param string $input
      */
-    public function testShouldNotValidateBsn($input)
+    public function testShouldNotValidateBsn($input): void
     {
         self::assertFalse($this->rule->validate($input));
     }

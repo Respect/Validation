@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
 class OptionalException extends ValidationException
@@ -29,6 +31,6 @@ class OptionalException extends ValidationException
 
     public function chooseTemplate()
     {
-        return $this->getName() == '' ? static::STANDARD : static::NAMED;
+        return $this->hasName() ? static::NAMED : static::STANDARD;
     }
 }

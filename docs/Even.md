@@ -5,7 +5,7 @@
 Validates an even number.
 
 ```php
-v::intVal()->even()->validate(2); // true
+v::intVal()->even()->isValid(2); // true
 ```
 
 Using `int()` before `even()` is a best practice.

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -19,12 +21,12 @@ class AbstractFilterRuleTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Invalid list of additional characters to be loaded
      */
-    public function testConstructorShouldThrowExceptionIfParamIsNotString()
+    public function testConstructorShouldThrowExceptionIfParamIsNotString(): void
     {
         $this->getMockForAbstractClass(AbstractFilterRule::class, [1]);
     }
 
-    public function testValidateShouldReturnTrueForValidArguments()
+    public function testValidateShouldReturnTrueForValidArguments(): void
     {
         $filterRuleMock = $this->getMockForAbstractClass(AbstractFilterRule::class);
         $filterRuleMock->expects($this->any())
@@ -34,7 +36,7 @@ class AbstractFilterRuleTest extends TestCase
         self::assertTrue($filterRuleMock->validate('hey'));
     }
 
-    public function testValidateShouldReturnFalseForInvalidArguments()
+    public function testValidateShouldReturnFalseForInvalidArguments(): void
     {
         $filterRuleMock = $this->getMockForAbstractClass(AbstractFilterRule::class);
         $filterRuleMock->expects($this->any())

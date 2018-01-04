@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class CallableTypeTest extends TestCase
 {
     protected $rule;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->rule = new CallableType();
     }
@@ -30,7 +32,7 @@ class CallableTypeTest extends TestCase
     /**
      * @dataProvider providerForCallable
      */
-    public function testShouldValidateCallableTypeNumbers($input)
+    public function testShouldValidateCallableTypeNumbers($input): void
     {
         self::assertTrue($this->rule->validate($input));
     }
@@ -38,7 +40,7 @@ class CallableTypeTest extends TestCase
     /**
      * @dataProvider providerForNonCallable
      */
-    public function testShouldNotValidateNonCallableTypeNumbers($input)
+    public function testShouldNotValidateNonCallableTypeNumbers($input): void
     {
         self::assertFalse($this->rule->validate($input));
     }
@@ -47,7 +49,7 @@ class CallableTypeTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\CallableTypeException
      * @expectedExceptionMessage "testShouldThrowCallableTypeExceptionWhenChecking" must be a callable
      */
-    public function testShouldThrowCallableTypeExceptionWhenChecking()
+    public function testShouldThrowCallableTypeExceptionWhenChecking(): void
     {
         $this->rule->check(__FUNCTION__);
     }
@@ -55,7 +57,7 @@ class CallableTypeTest extends TestCase
     public function providerForCallable()
     {
         return [
-            [function () {
+            [function (): void {
             }],
             ['trim'],
             [__METHOD__],

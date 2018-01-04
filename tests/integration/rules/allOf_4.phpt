@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\IntTypeException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::allOf(v::intType(), v::positive()))->check(42);
+    v::not(v::allOf(v::intType(), v::positive()))->assert(42);
 } catch (IntTypeException $e) {
     echo $e->getMainMessage();
 }

@@ -10,7 +10,7 @@ use Respect\Validation\Rules\NotEmpty;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::when(new IntVal(), new Between(1, 5), new NotEmpty()))->assert(3);
+    v::not(v::when(new IntVal(), new Between(1, 5), new NotEmpty()))->assertAll(3);
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -17,12 +19,12 @@ class AbstractSearcherTest extends TestCase
 {
     protected $searcherRuleMock;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->searcherRuleMock = $this->getMockForAbstractClass(AbstractSearcher::class);
     }
 
-    public function testValidateShouldReturnTrueWhenEqualValueIsFoundInHaystack()
+    public function testValidateShouldReturnTrueWhenEqualValueIsFoundInHaystack(): void
     {
         $this->searcherRuleMock->haystack = [1, 2, 3, 4];
 
@@ -30,14 +32,14 @@ class AbstractSearcherTest extends TestCase
         self::assertTrue($this->searcherRuleMock->validate(1));
     }
 
-    public function testValidateShouldReturnFalseWhenEqualValueIsNotFoundInHaystack()
+    public function testValidateShouldReturnFalseWhenEqualValueIsNotFoundInHaystack(): void
     {
         $this->searcherRuleMock->haystack = [1, 2, 3, 4];
 
         self::assertFalse($this->searcherRuleMock->validate(5));
     }
 
-    public function testValidateShouldReturnTrueWhenIdenticalValueIsFoundInHaystack()
+    public function testValidateShouldReturnTrueWhenIdenticalValueIsFoundInHaystack(): void
     {
         $this->searcherRuleMock->haystack = [1, 2, 3, 4];
         $this->searcherRuleMock->compareIdentical = true;
@@ -46,7 +48,7 @@ class AbstractSearcherTest extends TestCase
         self::assertTrue($this->searcherRuleMock->validate(4));
     }
 
-    public function testValidateShouldReturnFalseWhenIdenticalValueIsNotFoundInHaystack()
+    public function testValidateShouldReturnFalseWhenIdenticalValueIsNotFoundInHaystack(): void
     {
         $this->searcherRuleMock->haystack = [1, 2, 3, 4];
         $this->searcherRuleMock->compareIdentical = true;
@@ -56,7 +58,7 @@ class AbstractSearcherTest extends TestCase
         self::assertFalse($this->searcherRuleMock->validate(5));
     }
 
-    public function testValidateShouldReturnTrueWhenInputIsEmptyOrNullAndIdenticalToHaystack()
+    public function testValidateShouldReturnTrueWhenInputIsEmptyOrNullAndIdenticalToHaystack(): void
     {
         $this->searcherRuleMock->compareIdentical = true;
 
@@ -67,7 +69,7 @@ class AbstractSearcherTest extends TestCase
         self::assertTrue($this->searcherRuleMock->validate(''));
     }
 
-    public function testValidateShouldReturnFalseWhenInputIsEmptyOrNullAndNotIdenticalToHaystack()
+    public function testValidateShouldReturnFalseWhenInputIsEmptyOrNullAndNotIdenticalToHaystack(): void
     {
         $this->searcherRuleMock->compareIdentical = true;
 
@@ -78,13 +80,13 @@ class AbstractSearcherTest extends TestCase
         self::assertFalse($this->searcherRuleMock->validate(null));
     }
 
-    public function testValidateShouldReturnTrueWhenInputIsEmptyOrNullAndEqualsHaystack()
+    public function testValidateShouldReturnTrueWhenInputIsEmptyOrNullAndEqualsHaystack(): void
     {
         self::assertTrue($this->searcherRuleMock->validate(''));
         self::assertTrue($this->searcherRuleMock->validate(null));
     }
 
-    public function testValidateShouldReturnFalseWhenInputIsEmptyOrNullAndNotEqualsHaystack()
+    public function testValidateShouldReturnFalseWhenInputIsEmptyOrNullAndNotEqualsHaystack(): void
     {
         $this->searcherRuleMock->haystack = 'Respect';
 
@@ -92,7 +94,7 @@ class AbstractSearcherTest extends TestCase
         self::assertFalse($this->searcherRuleMock->validate(null));
     }
 
-    public function testValidateWhenHaystackIsNotArrayAndInputIsPartOfHaystack()
+    public function testValidateWhenHaystackIsNotArrayAndInputIsPartOfHaystack(): void
     {
         $this->searcherRuleMock->haystack = 'Respect';
 

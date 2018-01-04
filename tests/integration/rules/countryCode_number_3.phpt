@@ -7,7 +7,7 @@ use Respect\Validation\Rules\CountryCode;
 use Respect\Validation\Validator as v;
 
 try {
-    v::countryCode(CountryCode::NUMERIC)->check('BRA');
+    v::countryCode(CountryCode::NUMERIC)->assert('BRA');
 } catch (CountryCodeException $exception) {
     echo $exception->getMainMessage();
 }

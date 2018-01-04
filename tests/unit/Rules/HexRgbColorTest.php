@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class HexRgbColorTest extends TestCase
     /**
      * @dataProvider providerForValidHexRgbColor
      */
-    public function testHexRgbColorValuesONLYShouldReturnTrue($validHexRgbColor)
+    public function testHexRgbColorValuesONLYShouldReturnTrue($validHexRgbColor): void
     {
         $validator = new HexRgbColor();
 
@@ -33,7 +35,7 @@ class HexRgbColorTest extends TestCase
     /**
      * @dataProvider providerForInvalidHexRgbColor
      */
-    public function testInvalidHexRgbColorValuesShouldReturnFalse($invalidHexRgbColor)
+    public function testInvalidHexRgbColorValuesShouldReturnFalse($invalidHexRgbColor): void
     {
         $validator = new HexRgbColor();
 

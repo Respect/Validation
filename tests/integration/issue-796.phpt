@@ -25,7 +25,7 @@ try {
             true
         )
         ->setName('the given data')
-        ->assert([
+        ->assertAll([
             'mysql' => [
                 'host' => 42,
                 'user' => 'user',

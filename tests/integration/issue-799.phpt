@@ -23,7 +23,7 @@ try {
             [new MyClass(), 'parse'],
             v::arrayVal()->key('scheme', v::startsWith('https'))
         )
-        ->assert($input);
+        ->assertAll($input);
 } catch (AllOfException $exception) {
     echo $exception->getMainMessage().PHP_EOL;
 }
@@ -36,7 +36,7 @@ try {
             },
             v::arrayVal()->key('scheme', v::startsWith('https'))
         )
-        ->assert($input);
+        ->assertAll($input);
 } catch (AllOfException $exception) {
     echo $exception->getMainMessage().PHP_EOL;
 }

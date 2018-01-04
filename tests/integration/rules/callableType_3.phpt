@@ -6,31 +6,31 @@ use Respect\Validation\Exceptions\CallableTypeException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::callableType())->check([]);
+    v::not(v::callableType())->assert([]);
 } catch (CallableTypeException $exception) {
     echo $exception->getFullMessage();
 }
 
 try {
-    v::not(v::callableType())->check('oneInexistentFunction');
+    v::not(v::callableType())->assert('oneInexistentFunction');
 } catch (CallableTypeException $exception) {
     echo $exception->getFullMessage();
 }
 
 try {
-    v::not(v::callableType())->check(100);
+    v::not(v::callableType())->assert(100);
 } catch (CallableTypeException $exception) {
     echo $exception->getFullMessage();
 }
 
 try {
-    v::not(v::callableType())->check(null);
+    v::not(v::callableType())->assert(null);
 } catch (CallableTypeException $exception) {
     echo $exception->getFullMessage();
 }
 
 try {
-    v::not(v::callableType())->check('');
+    v::not(v::callableType())->assert('');
 } catch (CallableTypeException $exception) {
     echo $exception->getFullMessage();
 }

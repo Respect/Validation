@@ -6,7 +6,7 @@
 Similar to `Graph` but accepts whitespace.
 
 ```php
-v::prnt()->validate('LMKA0$% _123'); // true
+v::prnt()->isValid('LMKA0$% _123'); // true
 ```
 
 ## Changelog

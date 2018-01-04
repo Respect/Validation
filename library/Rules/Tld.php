@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Tld extends AbstractRule
@@ -1552,6 +1554,6 @@ class Tld extends AbstractRule
 
     public function validate($input)
     {
-        return in_array(mb_strtoupper($input), $this->tldList);
+        return in_array(mb_strtoupper((string) $input), $this->tldList);
     }
 }

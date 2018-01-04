@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use DateTime;
@@ -23,12 +25,12 @@ class LeapYearTest extends TestCase
 {
     protected $leapYearValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->leapYearValidator = new LeapYear();
     }
 
-    public function testValidLeapDate()
+    public function testValidLeapDate(): void
     {
         self::assertTrue($this->leapYearValidator->__invoke('2008'));
         self::assertTrue($this->leapYearValidator->__invoke('2008-02-29'));
@@ -37,7 +39,7 @@ class LeapYearTest extends TestCase
             new DateTime('2008-02-29')));
     }
 
-    public function testInvalidLeapDate()
+    public function testInvalidLeapDate(): void
     {
         self::assertFalse($this->leapYearValidator->__invoke(''));
         self::assertFalse($this->leapYearValidator->__invoke('2009'));

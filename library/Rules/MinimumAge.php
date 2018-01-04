@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use DateTimeImmutable;
@@ -42,7 +44,7 @@ class MinimumAge extends AbstractRule
             return false;
         }
 
-        $age = ((date('Ymd') - date('Ymd', strtotime($input))) / 10000);
+        $age = ((date('Ymd') - date('Ymd', (int) strtotime($input))) / 10000);
 
         return $age >= $this->age;
     }

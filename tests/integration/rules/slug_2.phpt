@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\SlugException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::slug()->check('wrong slug');
+    v::slug()->assert('wrong slug');
 } catch (SlugException $e) {
     echo $e->getMainMessage();
 }

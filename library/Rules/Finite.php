@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 /**
@@ -21,6 +23,6 @@ class Finite extends AbstractRule
      */
     public function validate($input)
     {
-        return is_numeric($input) && is_finite($input);
+        return is_numeric($input) && is_finite((float) $input);
     }
 }

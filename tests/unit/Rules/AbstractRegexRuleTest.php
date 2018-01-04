@@ -9,13 +9,15 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
 
 class AbstractRegexRuleTest extends TestCase
 {
-    public function testValidateCleanShouldReturnOneIfPatternIsFound()
+    public function testValidateCleanShouldReturnOneIfPatternIsFound(): void
     {
         $regexRuleMock = $this->getMockForAbstractClass(AbstractRegexRule::class);
         $regexRuleMock->expects($this->once())
@@ -25,7 +27,7 @@ class AbstractRegexRuleTest extends TestCase
         self::assertEquals(1, $regexRuleMock->validateClean('Respect'));
     }
 
-    public function testValidateCleanShouldReturnZeroIfPatternIsNotFound()
+    public function testValidateCleanShouldReturnZeroIfPatternIsNotFound(): void
     {
         $regexRuleMock = $this->getMockForAbstractClass(AbstractRegexRule::class);
         $regexRuleMock->expects($this->once())

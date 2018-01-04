@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\CreditCardException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::creditCard()->check(0);
+    v::creditCard()->assert(0);
 } catch (CreditCardException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }

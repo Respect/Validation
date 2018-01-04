@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class CntrlTest extends TestCase
     /**
      * @dataProvider providerForValidCntrl
      */
-    public function testValidDataWithCntrlShouldReturnTrue($validCntrl, $additional = '')
+    public function testValidDataWithCntrlShouldReturnTrue($validCntrl, $additional = ''): void
     {
         $validator = new Cntrl($additional);
         self::assertTrue($validator->validate($validCntrl));
@@ -33,7 +35,7 @@ class CntrlTest extends TestCase
      * @dataProvider providerForInvalidCntrl
      * @expectedException \Respect\Validation\Exceptions\CntrlException
      */
-    public function testInvalidCntrlShouldFailAndThrowCntrlException($invalidCntrl, $additional = '')
+    public function testInvalidCntrlShouldFailAndThrowCntrlException($invalidCntrl, $additional = ''): void
     {
         $validator = new Cntrl($additional);
         self::assertFalse($validator->validate($invalidCntrl));
@@ -44,7 +46,7 @@ class CntrlTest extends TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
     {
         $validator = new Cntrl($additional);
     }
@@ -52,7 +54,7 @@ class CntrlTest extends TestCase
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Cntrl($additional);
         self::assertTrue($validator->validate($query));

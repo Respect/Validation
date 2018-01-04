@@ -13,13 +13,13 @@ $input = [
 ];
 
 $rules = [
-    v::key('user_name',     v::numericVal())->setName('First Name'),
-    v::key('user_surname',  v::numericVal())->setName('Second Name'),
-    v::key('user_tel',      v::phone())->setName('Phone number'),
+    v::key('user_name', v::numericVal())->setName('First Name'),
+    v::key('user_surname', v::numericVal())->setName('Second Name'),
+    v::key('user_tel', v::phone())->setName('Phone number'),
 ];
 
 try {
-    v::allOf($rules)->setName('Validation Form')->assert($input);
+    v::allOf($rules)->setName('Validation Form')->assertAll($input);
 } catch (NestedValidationException $exception) {
     print_r($exception->findMessages(array_keys($input)));
 }

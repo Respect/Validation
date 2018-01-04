@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class FloatValTest extends TestCase
 {
     protected $floatValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->floatValidator = new FloatVal();
     }
@@ -30,7 +32,7 @@ class FloatValTest extends TestCase
     /**
      * @dataProvider providerForFloat
      */
-    public function testFloatNumbersShouldPass($input)
+    public function testFloatNumbersShouldPass($input): void
     {
         self::assertTrue($this->floatValidator->assert($input));
         self::assertTrue($this->floatValidator->__invoke($input));
@@ -41,7 +43,7 @@ class FloatValTest extends TestCase
      * @dataProvider providerForNotFloat
      * @expectedException \Respect\Validation\Exceptions\FloatValException
      */
-    public function testNotFloatNumbersShouldFail($input)
+    public function testNotFloatNumbersShouldFail($input): void
     {
         self::assertFalse($this->floatValidator->__invoke($input));
         self::assertFalse($this->floatValidator->assert($input));

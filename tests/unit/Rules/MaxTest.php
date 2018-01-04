@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class MaxTest extends TestCase
     /**
      * @dataProvider providerForValidMax
      */
-    public function testValidMaxInputShouldReturnTrue($maxValue, $inclusive, $input)
+    public function testValidMaxInputShouldReturnTrue($maxValue, $inclusive, $input): void
     {
         $max = new Max($maxValue, $inclusive);
         self::assertTrue($max->validate($input));
@@ -35,7 +37,7 @@ class MaxTest extends TestCase
      * @dataProvider providerForInvalidMax
      * @expectedException \Respect\Validation\Exceptions\MaxException
      */
-    public function testInvalidMaxValueShouldThrowMaxException($maxValue, $inclusive, $input)
+    public function testInvalidMaxValueShouldThrowMaxException($maxValue, $inclusive, $input): void
     {
         $max = new Max($maxValue, $inclusive);
         self::assertFalse($max->validate($input));

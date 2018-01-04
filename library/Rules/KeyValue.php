@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
@@ -98,6 +100,6 @@ class KeyValue extends AbstractRule
             return false;
         }
 
-        return $rule->validate($input[$this->comparedKey]);
+        return $rule->apply($input[$this->comparedKey]);
     }
 }

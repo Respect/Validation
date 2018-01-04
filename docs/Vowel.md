@@ -5,7 +5,7 @@
 Similar to `Alnum()`. Validates strings that contains only vowels:
 
 ```php
-v::vowel()->validate('aei'); // true
+v::vowel()->isValid('aei'); // true
 ```
 
 ## Changelog

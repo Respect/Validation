@@ -7,25 +7,25 @@ use Respect\Validation\Exceptions\BoolValException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::boolVal()->check('ok');
+    v::boolVal()->assert('ok');
 } catch (BoolValException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
-    v::not(v::boolVal())->check('yes');
+    v::not(v::boolVal())->assert('yes');
 } catch (BoolValException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
-    v::boolVal()->assert('yep');
+    v::boolVal()->assertAll('yep');
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }
 
 try {
-    v::not(v::boolVal())->assert('on');
+    v::not(v::boolVal())->assertAll('on');
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }

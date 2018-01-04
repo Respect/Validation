@@ -7,10 +7,10 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::boolType())->assert(true);
+    v::not(v::boolType())->assertAll(true);
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }
 ?>
 --EXPECTF--
-- true must not be a boolean
+- `TRUE` must not be a boolean

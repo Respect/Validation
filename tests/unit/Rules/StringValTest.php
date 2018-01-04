@@ -9,17 +9,28 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\StringVal
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 2.0.0
  */
-class StringValTest extends RuleTestCase
+final class StringValTest extends RuleTestCase
 {
-    public function providerForValidInput()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
         $rule = new StringVal();
 
@@ -34,13 +45,16 @@ class StringValTest extends RuleTestCase
         ];
     }
 
-    public function providerForInvalidInput()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         $rule = new StringVal();
 
         return [
             [$rule, []],
-            [$rule, function () {
+            [$rule, function (): void {
             }],
             [$rule, new stdClass()],
             [$rule, null],

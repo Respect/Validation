@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
@@ -38,15 +40,15 @@ class VideoUrl extends AbstractRule
      *
      * @param string $service
      */
-    public function __construct($service = null)
+    public function __construct(string $service = null)
     {
-        $serviceKey = mb_strtolower($service);
+        $serviceKey = mb_strtolower((string) $service);
         if (null !== $service && !isset($this->services[$serviceKey])) {
             throw new ComponentException(sprintf('"%s" is not a recognized video service.', $service));
         }
 
         $this->service = $service;
-        $this->serviceKey = mb_strtolower($service);
+        $this->serviceKey = $serviceKey;
     }
 
     /**
@@ -55,11 +57,11 @@ class VideoUrl extends AbstractRule
     public function validate($input)
     {
         if (isset($this->services[$this->serviceKey])) {
-            return preg_match($this->services[$this->serviceKey], $input) > 0;
+            return preg_match($this->services[$this->serviceKey], (string) $input) > 0;
         }
 
         foreach ($this->services as $pattern) {
-            if (0 === preg_match($pattern, $input)) {
+            if (0 === preg_match($pattern, (string) $input)) {
                 continue;
             }
 

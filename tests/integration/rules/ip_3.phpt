@@ -7,13 +7,13 @@ use Respect\Validation\Exceptions\IpException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::ip()->check('foo');
+    v::ip()->assert('foo');
 } catch (IpException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
-    v::ip()->assert('foo');
+    v::ip()->assertAll('foo');
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }

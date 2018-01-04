@@ -7,9 +7,9 @@
 Validates file sizes:
 
 ```php
-v::size('1KB')->validate($filename); // Must have at least 1KB size
-v::size('1MB', '2MB')->validate($filename); // Must have the size between 1MB and 2MB
-v::size(null, '1GB')->validate($filename); // Must not be greater than 1GB
+v::size('1KB')->isValid($filename); // Must have at least 1KB size
+v::size('1MB', '2MB')->isValid($filename); // Must have the size between 1MB and 2MB
+v::size(null, '1GB')->isValid($filename); // Must not be greater than 1GB
 ```
 
 Sizes are not case-sensitive and the accepted values are:
@@ -28,7 +28,7 @@ This validator will consider `SplFileInfo` instances, like:
 
 ```php
 $fileInfo = new SplFileInfo($filename);
-v::size('1.5mb')->validate($fileInfo); // Will return true or false
+v::size('1.5mb')->isValid($fileInfo); // Will return true or false
 ```
 
 Message template for this validator includes `{{minSize}}` and `{{maxSize}}`.

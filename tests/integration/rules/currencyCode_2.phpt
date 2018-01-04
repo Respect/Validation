@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\CurrencyCodeException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::currencyCode()->check('batman');
+    v::currencyCode()->assert('batman');
 } catch (CurrencyCodeException $e) {
     echo $e->getMainMessage();
 }

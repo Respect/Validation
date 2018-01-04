@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\ConsonantException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::allOf(v::stringType(), v::consonant())->check('Luke i\'m your father');
+    v::allOf(v::stringType(), v::consonant())->assert('Luke i\'m your father');
 } catch (ConsonantException $e) {
     echo $e->getMainMessage();
 }

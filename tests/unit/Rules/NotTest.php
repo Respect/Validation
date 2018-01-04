@@ -9,81 +9,79 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
-use Respect\Validation\Validator;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Not
- * @covers \Respect\Validation\Exceptions\NotException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 0.3.9
  */
-class NotTest extends TestCase
+final class NotTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForValidNot
+     * {@inheritdoc}
      */
-    public function testNot($v, $input)
+    public function providerForValidInput(): array
     {
-        $not = new Not($v);
-        self::assertTrue($not->assert($input));
+        return [
+            [new Not($this->createRuleMock('foo', false)), 'foo'],
+            [new Not(new Not($this->createRuleMock('foo', true))), 'foo'],
+            [new Not(new Not(new Not($this->createRuleMock('foo', false)))), 'foo'],
+        ];
     }
 
     /**
-     * @dataProvider providerForInvalidNot
-     * @expectedException \Respect\Validation\Exceptions\ValidationException
+     * {@inheritdoc}
      */
-    public function testNotNotHaha($v, $input)
+    public function providerForInvalidInput(): array
     {
-        $not = new Not($v);
-        self::assertFalse($not->assert($input));
+        return [
+            [new Not($this->createRuleMock('foo', true)), 'foo'],
+            [new Not(new Not($this->createRuleMock('foo', false))), 'foo'],
+            [new Not(new Not(new Not($this->createRuleMock('foo', true)))), 'foo'],
+        ];
     }
 
     /**
-     * @dataProvider providerForSetName
+     * @test
      */
-    public function testNotSetName($v)
+    public function shouldHaveChildResultAsChildren(): void
     {
-        $not = new Not($v);
-        $not->setName('Foo');
+        $input = 'baz';
 
-        self::assertEquals('Foo', $not->getName());
-        self::assertEquals('Foo', $v->getName());
+        $childRule = $this->createRuleMock($input, true);
+
+        $rule = new Not($childRule);
+        $result = $rule->apply($input);
+
+        $childResult = current($result->getChildren());
+
+        self::assertSame($childRule, $childResult->getRule());
     }
 
-    public function providerForValidNot()
+    /**
+     * @test
+     */
+    public function shouldHaveAnInvertedChildResultAsChildren(): void
     {
-        return [
-            [new IntVal(), ''],
-            [new IntVal(), 'aaa'],
-            [new AllOf(new NoWhitespace(), new Digit()), 'as df'],
-            [new AllOf(new NoWhitespace(), new Digit()), '12 34'],
-            [new AllOf(new AllOf(new NoWhitespace(), new Digit())), '12 34'],
-            [new AllOf(new NoneOf(new NumericVal(), new IntVal())), 13.37],
-            [new NoneOf(new NumericVal(), new IntVal()), 13.37],
-            [Validator::noneOf(Validator::numericVal(), Validator::intVal()), 13.37],
-        ];
-    }
+        $input = 'baz';
 
-    public function providerForInvalidNot()
-    {
-        return [
-            [new IntVal(), 123],
-            [new AllOf(new AnyOf(new NumericVal(), new IntVal())), 13.37],
-            [new AnyOf(new NumericVal(), new IntVal()), 13.37],
-            [Validator::anyOf(Validator::numericVal(), Validator::intVal()), 13.37],
-        ];
-    }
+        $childRule = $this->createRuleMock($input, false);
 
-    public function providerForSetName()
-    {
-        return [
-            [new IntVal()],
-            [new AllOf(new NumericVal(), new IntVal())],
-            [new Not(new Not(new IntVal()))],
-            [Validator::intVal()->setName('Bar')],
-            [Validator::noneOf(Validator::numericVal(), Validator::intVal())],
-        ];
+        $rule = new Not($childRule);
+        $result = $rule->apply($input);
+
+        $childResult = current($result->getChildren());
+
+        self::assertTrue($childResult->isInverted());
     }
 }

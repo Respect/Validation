@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class MininumAgeTest extends TestCase
     /**
      * @dataProvider providerForValidDateValidMinimumAge
      */
-    public function testValidMinimumAgeInsideBoundsShouldPass($age, $format, $input)
+    public function testValidMinimumAgeInsideBoundsShouldPass($age, $format, $input): void
     {
         $minimumAge = new MinimumAge($age, $format);
         self::assertTrue($minimumAge->__invoke($input));
@@ -35,7 +37,7 @@ class MininumAgeTest extends TestCase
      * @dataProvider providerForValidDateInvalidMinimumAge
      * @expectedException \Respect\Validation\Exceptions\MinimumAgeException
      */
-    public function testInvalidMinimumAgeShouldThrowException($age, $format, $input)
+    public function testInvalidMinimumAgeShouldThrowException($age, $format, $input): void
     {
         $minimumAge = new MinimumAge($age, $format);
         self::assertFalse($minimumAge->__invoke($input));
@@ -46,7 +48,7 @@ class MininumAgeTest extends TestCase
      * @dataProvider providerForInvalidDate
      * @expectedException \Respect\Validation\Exceptions\MinimumAgeException
      */
-    public function testInvalidDateShouldNotPass($age, $format, $input)
+    public function testInvalidDateShouldNotPass($age, $format, $input): void
     {
         $minimumAge = new MinimumAge($age, $format);
         self::assertFalse($minimumAge->__invoke($input));
@@ -57,7 +59,7 @@ class MininumAgeTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage The age must be a integer value
      */
-    public function testShouldNotAcceptNonIntegerAgeOnConstructor()
+    public function testShouldNotAcceptNonIntegerAgeOnConstructor(): void
     {
         new MinimumAge('L12');
     }

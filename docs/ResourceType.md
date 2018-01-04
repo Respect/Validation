@@ -5,7 +5,7 @@
 Validates if the input is a resource.
 
 ```php
-v::resourceType()->validate(fopen('/path/to/file.txt', 'w')); // true
+v::resourceType()->isValid(fopen('/path/to/file.txt', 'w')); // true
 ```
 
 ## Changelog

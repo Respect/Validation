@@ -8,8 +8,8 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::phpLabel()->check('topic01');
-    v::phpLabel()->assert('access');
+    v::phpLabel()->assert('topic01');
+    v::phpLabel()->assertAll('access');
 } catch (AllOfException $e) {
     echo $e->getMainMessage();
 }

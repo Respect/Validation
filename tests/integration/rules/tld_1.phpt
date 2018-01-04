@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator as v;
 
-v::tld()->assert('com');
-v::tld()->check('br');
+v::tld()->assertAll('com');
+v::tld()->assert('br');
 ?>
 --EXPECTF--

@@ -6,22 +6,22 @@ Validates if the given input is not a blank value (`null`, zeros, empty strings
 or empty arrays, recursively).
 
 ```php
-v::notBlank()->validate(null); // false
-v::notBlank()->validate(''); // false
-v::notBlank()->validate([]); // false
-v::notBlank()->validate(' '); // false
-v::notBlank()->validate(0); // false
-v::notBlank()->validate('0'); // false
-v::notBlank()->validate(0); // false
-v::notBlank()->validate('0.0'); // false
-v::notBlank()->validate(false); // false
-v::notBlank()->validate(['']); // false
-v::notBlank()->validate([' ']); // false
-v::notBlank()->validate([0]); // false
-v::notBlank()->validate(['0']); // false
-v::notBlank()->validate([false]); // false
-v::notBlank()->validate([[''], [0]]); // false
-v::notBlank()->validate(new stdClass()); // false
+v::notBlank()->isValid(null); // false
+v::notBlank()->isValid(''); // false
+v::notBlank()->isValid([]); // false
+v::notBlank()->isValid(' '); // false
+v::notBlank()->isValid(0); // false
+v::notBlank()->isValid('0'); // false
+v::notBlank()->isValid(0); // false
+v::notBlank()->isValid('0.0'); // false
+v::notBlank()->isValid(false); // false
+v::notBlank()->isValid(['']); // false
+v::notBlank()->isValid([' ']); // false
+v::notBlank()->isValid([0]); // false
+v::notBlank()->isValid(['0']); // false
+v::notBlank()->isValid([false]); // false
+v::notBlank()->isValid([[''], [0]]); // false
+v::notBlank()->isValid(new stdClass()); // false
 ```
 
 It's similar to [NotEmpty](NotEmpty.md) but it's way more strict.

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,17 +25,18 @@ class CountryCodeTest extends TestCase
      * @expectedException        \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "whatever" is not a valid country set
      */
-    public function testShouldThrowsExceptionWhenInvalidFormat()
+    public function testShouldThrowsExceptionWhenInvalidFormat(): void
     {
         new CountryCode('whatever');
     }
 
-    public function testShouldUseISO3166Alpha2ByDefault()
+    public function testShouldUseISO3166Alpha2ByDefault(): void
     {
         $country = new CountryCode();
         self::assertEquals(CountryCode::ALPHA2, $country->set);
     }
-    public function testShouldDefineACountryFormatOnConstructor()
+
+    public function testShouldDefineACountryFormatOnConstructor(): void
     {
         $country = new CountryCode(CountryCode::NUMERIC);
         self::assertEquals(CountryCode::NUMERIC, $country->set);
@@ -66,7 +69,7 @@ class CountryCodeTest extends TestCase
     /**
      * @dataProvider providerForValidCountryCode
      */
-    public function testValidContryCodes($format, $input)
+    public function testValidContryCodes($format, $input): void
     {
         $rule = new CountryCode($format);
 
@@ -76,7 +79,7 @@ class CountryCodeTest extends TestCase
     /**
      * @dataProvider providerForInvalidCountryCode
      */
-    public function testInvalidContryCodes($format, $input)
+    public function testInvalidContryCodes($format, $input): void
     {
         $rule = new CountryCode($format);
 

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -21,13 +23,13 @@ class AbstractWrapperTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage There is no defined validatable
      */
-    public function testShouldThrowsAnExceptionWhenWrappedValidatableIsNotDefined()
+    public function testShouldThrowsAnExceptionWhenWrappedValidatableIsNotDefined(): void
     {
         $wrapper = $this->getMockForAbstractClass(AbstractWrapper::class);
         $wrapper->getValidatable();
     }
 
-    private function bindValidatable($wrapper, $validatable)
+    private function bindValidatable($wrapper, $validatable): void
     {
         $reflectionObject = new ReflectionObject($wrapper);
         $reflectionProperty = $reflectionObject->getProperty('validatable');
@@ -35,7 +37,7 @@ class AbstractWrapperTest extends TestCase
         $reflectionProperty->setValue($wrapper, $validatable);
     }
 
-    public function testShouldReturnDefinedValidatable()
+    public function testShouldReturnDefinedValidatable(): void
     {
         $validatable = $this->createMock(Validatable::class);
 
@@ -45,7 +47,7 @@ class AbstractWrapperTest extends TestCase
         self::assertSame($validatable, $wrapper->getValidatable());
     }
 
-    public function testShouldUseWrappedToValidate()
+    public function testShouldUseWrappedToValidate(): void
     {
         $input = 'Whatever';
 
@@ -62,7 +64,7 @@ class AbstractWrapperTest extends TestCase
         self::assertTrue($wrapper->validate($input));
     }
 
-    public function testShouldUseWrappedToAssert()
+    public function testShouldUseWrappedToAssert(): void
     {
         $input = 'Whatever';
 
@@ -79,7 +81,7 @@ class AbstractWrapperTest extends TestCase
         self::assertTrue($wrapper->assert($input));
     }
 
-    public function testShouldUseWrappedToCheck()
+    public function testShouldUseWrappedToCheck(): void
     {
         $input = 'Whatever';
 
@@ -96,7 +98,7 @@ class AbstractWrapperTest extends TestCase
         self::assertTrue($wrapper->check($input));
     }
 
-    public function testShouldPassNameOnToWrapped()
+    public function testShouldPassNameOnToWrapped(): void
     {
         $name = 'Whatever';
 

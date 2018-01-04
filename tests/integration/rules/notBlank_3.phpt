@@ -7,13 +7,13 @@ use Respect\Validation\Exceptions\NotBlankException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::notBlank()->setName('Field')->check(null);
+    v::notBlank()->setName('Field')->assert(null);
 } catch (NotBlankException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
-    v::notBlank()->setName('Field')->assert('');
+    v::notBlank()->setName('Field')->assertAll('');
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }

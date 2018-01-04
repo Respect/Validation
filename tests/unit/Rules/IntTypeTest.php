@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -32,7 +34,7 @@ class IntTypeTest extends TestCase
     /**
      * @dataProvider providerForValidIntType
      */
-    public function testShouldValidateInputWhenItIsAValidIntType($input)
+    public function testShouldValidateInputWhenItIsAValidIntType($input): void
     {
         $rule = new IntType();
 
@@ -52,7 +54,7 @@ class IntTypeTest extends TestCase
     /**
      * @dataProvider providerForInvalidIntType
      */
-    public function testShouldInvalidateInputWhenItIsNotAValidIntType($input)
+    public function testShouldInvalidateInputWhenItIsNotAValidIntType($input): void
     {
         $rule = new IntType();
 

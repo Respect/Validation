@@ -7,11 +7,11 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::age(10, 50)->assert('9 years ago');
+    v::age(10, 50)->assertAll('9 years ago');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }
 
 ?>
 --EXPECTF--
-- "9 years ago" must be less than or equal to "%d-%d-%d %d:%d:%d"
+- "9 years ago" must be less than or equal to `[date-time] (DateTime: "%s")`

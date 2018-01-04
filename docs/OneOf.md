@@ -1,14 +1,14 @@
 # OneOf
 
-- `OneOf(Validatable ...$rule)`
+- `OneOf(Rule ...$rule)`
 
 Will validate if exactly one inner validator passes.
 
 ```php
-v::oneOf(v::digit(), v::alpha())->validate('AB'); // true
-v::oneOf(v::digit(), v::alpha())->validate('12'); // true
-v::oneOf(v::digit(), v::alpha())->validate('AB12'); // false
-v::oneOf(v::digit(), v::alpha())->validate('*'); // false
+v::oneOf(v::digit(), v::alpha())->isValid('AB'); // true
+v::oneOf(v::digit(), v::alpha())->isValid('12'); // true
+v::oneOf(v::digit(), v::alpha())->isValid('AB12'); // false
+v::oneOf(v::digit(), v::alpha())->isValid('*'); // false
 ```
 
 The chains above validate if the input is either a digit or an alphabetic

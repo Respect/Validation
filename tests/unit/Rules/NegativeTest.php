@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class NegativeTest extends TestCase
 {
     protected $negativeValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->negativeValidator = new Negative();
     }
@@ -30,7 +32,7 @@ class NegativeTest extends TestCase
     /**
      * @dataProvider providerForNegative
      */
-    public function testNegativeShouldPass($input)
+    public function testNegativeShouldPass($input): void
     {
         self::assertTrue($this->negativeValidator->assert($input));
         self::assertTrue($this->negativeValidator->__invoke($input));
@@ -41,7 +43,7 @@ class NegativeTest extends TestCase
      * @dataProvider providerForNotNegative
      * @expectedException \Respect\Validation\Exceptions\NegativeException
      */
-    public function testNotNegativeNumbersShouldThrowNegativeException($input)
+    public function testNotNegativeNumbersShouldThrowNegativeException($input): void
     {
         self::assertFalse($this->negativeValidator->__invoke($input));
         self::assertFalse($this->negativeValidator->assert($input));

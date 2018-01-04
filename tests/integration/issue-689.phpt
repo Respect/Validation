@@ -33,7 +33,7 @@ try {
         ->keyNested('contact.password', v::length(3, 100)->notEmpty())
         ->keyNested('contact.position', v::length(1, 100)->notEmpty())
         ->keyNested('contact.number', v::phone()->notEmpty())
-        ->assert($input);
+        ->assertAll($input);
 } catch (NestedValidationException $exception) {
     print_r(array_filter($exception->findMessages([
         'organization.name' => 'Center name',

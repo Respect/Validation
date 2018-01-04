@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 abstract class AbstractSearcher extends AbstractRule
@@ -22,11 +24,13 @@ abstract class AbstractSearcher extends AbstractRule
             return in_array($input, $this->haystack);
         }
 
-        if ($input === null || $input === '') {
+        if (null === $input || '' === $input) {
             return $input == $this->haystack;
         }
 
-        return false !== mb_stripos($this->haystack, $input, 0, mb_detect_encoding($input));
+        $inputString = (string) $input;
+
+        return false !== mb_stripos($this->haystack, $inputString, 0, mb_detect_encoding($inputString));
     }
 
     protected function validateIdentical($input)
@@ -35,11 +39,13 @@ abstract class AbstractSearcher extends AbstractRule
             return in_array($input, $this->haystack, true);
         }
 
-        if ($input === null || $input === '') {
+        if (null === $input || '' === $input) {
             return $input === $this->haystack;
         }
 
-        return false !== mb_strpos($this->haystack, $input, 0, mb_detect_encoding($input));
+        $inputString = (string) $input;
+
+        return false !== mb_strpos($this->haystack, $inputString, 0, mb_detect_encoding($inputString));
     }
 
     public function validate($input)

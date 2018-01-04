@@ -30,7 +30,7 @@ try {
         ->keyNested('phoneNumbers.work.country', v::intType(), false)
         ->keyNested('phoneNumbers.work.number', v::phone(), false)
         ->keyNested('phoneNumbers.work.primary', v::boolType(), false)
-        ->check($validateThis);
+        ->assert($validateThis);
 } catch (PhoneException $exception) {
     echo $exception->getMainMessage();
 }

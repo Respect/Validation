@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::length(3, 5)->assert('phpsp.org.br');
+    v::length(3, 5)->assertAll('phpsp.org.br');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

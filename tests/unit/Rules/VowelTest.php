@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class VowelTest extends TestCase
     /**
      * @dataProvider providerForValidVowels
      */
-    public function testValidDataWithVowelsShouldReturnTrue($validVowels, $additional = '')
+    public function testValidDataWithVowelsShouldReturnTrue($validVowels, $additional = ''): void
     {
         $validator = new Vowel($additional);
         self::assertTrue($validator->validate($validVowels));
@@ -33,7 +35,7 @@ class VowelTest extends TestCase
      * @dataProvider providerForInvalidVowels
      * @expectedException \Respect\Validation\Exceptions\VowelException
      */
-    public function testInvalidVowelsShouldFailAndThrowVowelException($invalidVowels, $additional = '')
+    public function testInvalidVowelsShouldFailAndThrowVowelException($invalidVowels, $additional = ''): void
     {
         $validator = new Vowel($additional);
         self::assertFalse($validator->validate($invalidVowels));
@@ -44,7 +46,7 @@ class VowelTest extends TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
     {
         $validator = new Vowel($additional);
     }
@@ -52,7 +54,7 @@ class VowelTest extends TestCase
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Vowel($additional);
         self::assertTrue($validator->validate($query));

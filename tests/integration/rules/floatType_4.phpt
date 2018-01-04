@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\FloatTypeException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::floatType())->check(42.33);
+    v::not(v::floatType())->assert(42.33);
 } catch (FloatTypeException $exception) {
     echo $exception->getMainMessage();
 }

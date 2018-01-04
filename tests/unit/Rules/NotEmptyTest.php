@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class NotEmptyTest extends TestCase
 {
     protected $object;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new NotEmpty();
     }
@@ -30,7 +32,7 @@ class NotEmptyTest extends TestCase
     /**
      * @dataProvider providerForNotEmpty
      */
-    public function testStringNotEmpty($input)
+    public function testStringNotEmpty($input): void
     {
         self::assertTrue($this->object->assert($input));
     }
@@ -39,7 +41,7 @@ class NotEmptyTest extends TestCase
      * @dataProvider providerForEmpty
      * @expectedException \Respect\Validation\Exceptions\NotEmptyException
      */
-    public function testStringEmpty($input)
+    public function testStringEmpty($input): void
     {
         self::assertFalse($this->object->assert($input));
     }

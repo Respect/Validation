@@ -10,8 +10,8 @@ another key value and that may cause some ugly code since you need the input
 before the validation, making some checking manually:
 
 ```php
-v::key('password')->check($_POST);
-v::key('password_confirmation', v::equals($_POST['password']))->check($_POST);
+v::key('password')->assert($_POST);
+v::key('password_confirmation', v::equals($_POST['password']))->assert($_POST);
 ```
 
 The problem with the above code is because you do not know if `password` is a
@@ -22,7 +22,7 @@ The `keyValue()` rule makes this job easier by creating a rule named on
 `$ruleName` passing `$baseKey` as the first argument of this rule, see an example:
 
 ```php
-v::keyValue('password_confirmation', 'equals', 'password')->validate($_POST);
+v::keyValue('password_confirmation', 'equals', 'password')->isValid($_POST);
 ```
 
 The above code will result on `true` if _`$_POST['password_confirmation']` is
@@ -31,7 +31,7 @@ The above code will result on `true` if _`$_POST['password_confirmation']` is
 See another example:
 
 ```php
-v::keyValue('state', 'subdivisionCode', 'country')->validate($_POST);
+v::keyValue('state', 'subdivisionCode', 'country')->isValid($_POST);
 ```
 
 The above code will result on `true` if _`$_POST['state']` is a
@@ -40,11 +40,11 @@ The above code will result on `true` if _`$_POST['state']` is a
 This rule will invalidate the input if `$comparedKey` or `$baseKey` don't exist,
 or if the rule named on `$ruleName` could not be created (or don't exist).
 
-When using `assert()` or `check()` methods and the rule do not pass, it overwrites
+When using `assert()` or `assert()` methods and the rule do not pass, it overwrites
 all values in the validation exceptions with `$baseKey` and `$comparedKey`.
 
 ```php
-v::keyValue('password_confirmation', 'equals', 'password')->check($input);
+v::keyValue('password_confirmation', 'equals', 'password')->assert($input);
 ```
 
 The above code may generate the message:

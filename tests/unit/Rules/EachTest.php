@@ -9,7 +9,11 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group  rule
@@ -18,7 +22,12 @@ namespace Respect\Validation\Rules;
  */
 class EachTest extends RuleTestCase
 {
-    public function providerForValidInput()
+    protected function setUp(): void
+    {
+        $this->markTestIncomplete(self::class.' needs to be refactored');
+    }
+
+    public function providerForValidInput(): array
     {
         $ruleNotEmpty = new Each($this->getRuleMock(true));
         $ruleAlphaItemIntKey = new Each($this->getRuleMock(true), $this->getRuleMock(true));
@@ -44,7 +53,7 @@ class EachTest extends RuleTestCase
         ];
     }
 
-    public function providerForInvalidInput()
+    public function providerForInvalidInput(): array
     {
         $rule = new Each($this->getRuleMock(false));
         $ruleOnlyKeyValidation = new Each(null, $this->getRuleMock(false));
@@ -59,7 +68,7 @@ class EachTest extends RuleTestCase
         ];
     }
 
-    public function testValidatorShouldPassIfEveryArrayItemPass()
+    public function testValidatorShouldPassIfEveryArrayItemPass(): void
     {
         $v = new Each($this->getRuleMock(true));
         $result = $v->check([1, 2, 3, 4, 5]);
@@ -68,7 +77,7 @@ class EachTest extends RuleTestCase
         self::assertTrue($result);
     }
 
-    public function testValidatorShouldPassIfEveryArrayItemAndKeyPass()
+    public function testValidatorShouldPassIfEveryArrayItemAndKeyPass(): void
     {
         $v = new Each($this->getRuleMock(true), $this->getRuleMock(true));
         $result = $v->check(['a', 'b', 'c', 'd', 'e']);
@@ -77,7 +86,7 @@ class EachTest extends RuleTestCase
         self::assertTrue($result);
     }
 
-    public function testValidatorShouldPassWithOnlyKeyValidation()
+    public function testValidatorShouldPassWithOnlyKeyValidation(): void
     {
         $v = new Each(null, $this->getRuleMock(true));
         $result = $v->check(['a', 'b', 'c', 'd', 'e']);
@@ -89,7 +98,7 @@ class EachTest extends RuleTestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\EachException
      */
-    public function testValidatorShouldNotPassWithOnlyKeyValidation()
+    public function testValidatorShouldNotPassWithOnlyKeyValidation(): void
     {
         $v = new Each(null, $this->getRuleMock(false));
         $v->assert(['a', 'b', 'c', 'd', 'e']);
@@ -98,7 +107,7 @@ class EachTest extends RuleTestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\EachException
      */
-    public function testAssertShouldFailOnInvalidItem()
+    public function testAssertShouldFailOnInvalidItem(): void
     {
         $v = new Each($this->getRuleMock(false));
         $v->assert(['a', 2, 3, 4, 5]);
@@ -107,7 +116,7 @@ class EachTest extends RuleTestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\EachException
      */
-    public function testAssertShouldFailWithNonIterableInput()
+    public function testAssertShouldFailWithNonIterableInput(): void
     {
         $v = new Each($this->getRuleMock(false));
         $v->assert('a');
@@ -116,7 +125,7 @@ class EachTest extends RuleTestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\EachException
      */
-    public function testCheckShouldFailWithNonIterableInput()
+    public function testCheckShouldFailWithNonIterableInput(): void
     {
         $v = new Each($this->getRuleMock(false));
         $v->check(null);

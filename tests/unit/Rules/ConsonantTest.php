@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class ConsonantTest extends TestCase
     /**
      * @dataProvider providerForValidConsonants
      */
-    public function testValidDataWithConsonantsShouldReturnTrue($validConsonants, $additional = '')
+    public function testValidDataWithConsonantsShouldReturnTrue($validConsonants, $additional = ''): void
     {
         $validator = new Consonant($additional);
         self::assertTrue($validator->validate($validConsonants));
@@ -33,7 +35,7 @@ class ConsonantTest extends TestCase
      * @dataProvider providerForInvalidConsonants
      * @expectedException \Respect\Validation\Exceptions\ConsonantException
      */
-    public function testInvalidConsonantsShouldFailAndThrowConsonantException($invalidConsonants, $additional = '')
+    public function testInvalidConsonantsShouldFailAndThrowConsonantException($invalidConsonants, $additional = ''): void
     {
         $validator = new Consonant($additional);
         self::assertFalse($validator->validate($invalidConsonants));
@@ -44,7 +46,7 @@ class ConsonantTest extends TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
     {
         $validator = new Consonant($additional);
     }
@@ -52,7 +54,7 @@ class ConsonantTest extends TestCase
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Consonant($additional);
         self::assertTrue($validator->validate($query));

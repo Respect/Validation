@@ -9,10 +9,12 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 /**
- * @link http://semver.org/
+ * @see http://semver.org/
  */
 class Version extends AbstractRule
 {

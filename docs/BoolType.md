@@ -5,8 +5,8 @@
 Validates if the input is a boolean value:
 
 ```php
-v::boolType()->validate(true); // true
-v::boolType()->validate(false); // true
+v::boolType()->isValid(true); // true
+v::boolType()->isValid(false); // true
 ```
 
 ## Changelog

@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::bsn()->assert('abc');
+    v::bsn()->assertAll('abc');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

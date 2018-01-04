@@ -7,13 +7,13 @@ use Respect\Validation\Exceptions\AlphaException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::alpha()->check(1);
+    v::alpha()->assert(1);
 } catch (AlphaException $e) {
     echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
-    v::alpha()->assert(2);
+    v::alpha()->assertAll(2);
 } catch (AllOfException $e) {
     echo $e->getFullMessage().PHP_EOL;
 }

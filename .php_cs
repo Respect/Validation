@@ -1,24 +1,24 @@
 <?php
 
-$finder = Symfony\CS\Finder\DefaultFinder::create()
-    ->files()
-    ->name('*.php')
-    ->name('*.phpt')
-    ->in('library')
-    ->in('tests');
-
-return Symfony\CS\Config\Config::create()
-    ->level(\Symfony\CS\FixerInterface::SYMFONY_LEVEL)
-    ->fixers(array(
-        'empty_return',
-        'mb_str_functions',
-        'multiline_spaces_before_semicolon',
-        'newline_after_open_tag',
-        'no_useless_else',
-        'no_useless_return',
-        'ordered_use',
-        'phpdoc_order',
-        'short_array_syntax',
-    ))
-    ->setUsingCache(true)
-    ->finder($finder);
+return PhpCsFixer\Config::create()
+    ->setRiskyAllowed(true)
+    ->setRules([
+        '@Symfony' => true,
+        '@PHP71Migration:risky' => true,
+        'phpdoc_align' => false,
+        'phpdoc_summary' => false,
+        'mb_str_functions' => true,
+        'no_multiline_whitespace_before_semicolons' => true,
+        'no_useless_else' => true,
+        'no_useless_return' => true,
+        'ordered_imports' => true,
+        'phpdoc_order' => true,
+        'array_syntax' => ['syntax' => 'short'],
+        'no_short_echo_tag' => true,
+    ])
+    ->setFinder(
+        PhpCsFixer\Finder::create()
+            ->in(['library', 'tests'])
+            ->name('*.php')
+            ->name('*.phpt')
+    );

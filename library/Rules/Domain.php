@@ -9,11 +9,13 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
 
-class Domain extends AbstractComposite
+class Domain
 {
     protected $tld;
     protected $checks = [];
@@ -31,7 +33,7 @@ class Domain extends AbstractComposite
             new AnyOf(
                 new Not(new Contains('--')),
                 new Callback(function ($str) {
-                    return substr_count($str, '--') == 1;
+                    return 1 == mb_substr_count($str, '--');
                 })
             ),
             new Not(new EndsWith('-'))
@@ -40,7 +42,7 @@ class Domain extends AbstractComposite
 
     public function tldCheck($do = true)
     {
-        if ($do === true) {
+        if (true === $do) {
             $this->tld = new Tld();
         } else {
             $this->tld = new AllOf(
@@ -63,7 +65,7 @@ class Domain extends AbstractComposite
             }
         }
 
-        if (count($parts = explode('.', $input)) < 2
+        if (count($parts = explode('.', (string) $input)) < 2
             || !$this->tld->validate(array_pop($parts))) {
             return false;
         }
@@ -84,7 +86,7 @@ class Domain extends AbstractComposite
             $this->collectAssertException($e, $chk, $input);
         }
 
-        if (count($parts = explode('.', $input)) >= 2) {
+        if (count($parts = explode('.', (string) $input)) >= 2) {
             $this->collectAssertException($e, $this->tld, array_pop($parts));
         }
 
@@ -99,7 +101,7 @@ class Domain extends AbstractComposite
         return true;
     }
 
-    protected function collectAssertException(&$exceptions, $validator, $input)
+    protected function collectAssertException(&$exceptions, $validator, $input): void
     {
         try {
             $validator->assert($input);

@@ -9,135 +9,90 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\OneOf
- * @covers \Respect\Validation\Exceptions\OneOfException
+ *
+ * @author Bradyn Poulsen <bradyn@bradynpoulsen.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 2.0.0
  */
-class OneOfTest extends TestCase
+final class OneOfTest extends RuleTestCase
 {
-    public function testValid()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
-        $valid1 = new Callback(function () {
-            return false;
-        });
-        $valid2 = new Callback(function () {
-            return true;
-        });
-        $valid3 = new Callback(function () {
-            return false;
-        });
+        $input = 'foo';
 
-        $rule = new OneOf($valid1, $valid2, $valid3);
-
-        self::assertTrue($rule->validate('any'));
-        self::assertTrue($rule->assert('any'));
-        self::assertTrue($rule->check('any'));
+        return [
+            [new OneOf($this->createRuleMock($input, true)), $input],
+            [new OneOf(...$this->createManyRuleMock($input, true, false)), $input],
+            [new OneOf(...$this->createManyRuleMock($input, false, true)), $input],
+            [new OneOf(...$this->createManyRuleMock($input, false, false, true)), $input],
+        ];
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\OneOfException
+     * {@inheritdoc}
      */
-    public function testEmptyChain()
+    public function providerForInvalidInput(): array
     {
-        $rule = new OneOf();
+        $input = 'bar';
 
-        self::assertFalse($rule->validate('any'));
-        self::assertFalse($rule->check('any'));
+        return [
+            [new OneOf(), $input],
+            [new OneOf($this->createRuleMock($input, false)), $input],
+            [new OneOf(...$this->createManyRuleMock($input, false, false)), $input],
+            [new OneOf(...$this->createManyRuleMock($input, true, true)), $input],
+            [new OneOf(...$this->createManyRuleMock($input, false, true, true)), $input],
+        ];
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\OneOfException
+     * @test
      */
-    public function testInvalid()
+    public function shouldOneRuleResultsAsChildren(): void
     {
-        $valid1 = new Callback(function () {
-            return false;
-        });
-        $valid2 = new Callback(function () {
-            return false;
-        });
-        $valid3 = new Callback(function () {
-            return false;
-        });
-        $rule = new OneOf($valid1, $valid2, $valid3);
-        self::assertFalse($rule->validate('any'));
-        self::assertFalse($rule->assert('any'));
+        $input = 'baz';
+
+        $expectedRules = $this->createManyRuleMock($input, true, false, true, false);
+
+        $rule = new OneOf(...$expectedRules);
+        $result = $rule->apply($input);
+
+        $actualRules = [];
+        foreach ($result->getChildren() as $childResult) {
+            $actualRules[] = $childResult->getRule();
+        }
+
+        self::assertSame($expectedRules, $actualRules);
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\OneOfException
+     * @test
      */
-    public function testInvalidMultipleAssert()
+    public function shouldInvertValidResultsWhenThereIsAlreadyAValidResult(): void
     {
-        $valid1 = new Callback(function () {
-            return true;
-        });
-        $valid2 = new Callback(function () {
-            return true;
-        });
-        $valid3 = new Callback(function () {
-            return false;
-        });
-        $rule = new OneOf($valid1, $valid2, $valid3);
-        self::assertFalse($rule->validate('any'));
+        $input = 'baz';
 
-        $rule->assert('any');
-    }
+        $expectedRules = $this->createManyRuleMock($input, true, true);
 
-    /**
-     * @expectedException \Respect\Validation\Exceptions\CallbackException
-     */
-    public function testInvalidMultipleCheck()
-    {
-        $valid1 = new Callback(function () {
-            return true;
-        });
-        $valid2 = new Callback(function () {
-            return true;
-        });
-        $valid3 = new Callback(function () {
-            return false;
-        });
+        $rule = new OneOf(...$expectedRules);
+        $result = $rule->apply($input);
 
-        $rule = new OneOf($valid1, $valid2, $valid3);
-        self::assertFalse($rule->validate('any'));
+        $childrenResult = $result->getChildren();
+        $lastResult = array_pop($childrenResult);
 
-        $rule->check('any');
-    }
-    /**
-     * @expectedException \Respect\Validation\Exceptions\OneOfException
-     */
-    public function testInvalidMultipleCheckAllValid()
-    {
-        $valid1 = new Callback(function () {
-            return true;
-        });
-        $valid2 = new Callback(function () {
-            return true;
-        });
-        $valid3 = new Callback(function () {
-            return true;
-        });
-
-        $rule = new OneOf($valid1, $valid2, $valid3);
-        self::assertFalse($rule->validate('any'));
-
-        $rule->check('any');
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\XdigitException
-     */
-    public function testInvalidCheck()
-    {
-        $rule = new OneOf(new Xdigit(), new Alnum());
-        self::assertFalse($rule->validate(-10));
-
-        $rule->check(-10);
+        self::assertTrue($lastResult->isInverted());
     }
 }

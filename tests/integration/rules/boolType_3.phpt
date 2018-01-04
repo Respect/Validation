@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::boolType()->assert('12345');
+    v::boolType()->assertAll('12345');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

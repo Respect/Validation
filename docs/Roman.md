@@ -5,7 +5,7 @@
 Validates roman numbers
 
 ```php
-v::roman()->validate('IV'); // true
+v::roman()->isValid('IV'); // true
 ```
 
 ## Changelog

@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\LengthException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::length(5, 5)->check('123456');
+    v::length(5, 5)->assert('123456');
 } catch (LengthException $e) {
     echo $e->getMainMessage();
 }

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Sorted extends AbstractRule
@@ -18,7 +20,7 @@ class Sorted extends AbstractRule
 
     public function __construct(callable $fn = null, bool $ascending = true)
     {
-        $this->fn = $fn ?? function ($x) { return $x;};
+        $this->fn = $fn ?? function ($x) { return $x; };
         $this->ascending = $ascending;
     }
 

@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::intType()->assert('1984');
+    v::intType()->assertAll('1984');
 } catch (AllOfException $exception) {
     echo $exception->getFullMessage();
 }

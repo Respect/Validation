@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::countryCode())->assert('BR');
+    v::not(v::countryCode())->assertAll('BR');
 } catch (AllOfException $exception) {
     echo $exception->getFullMessage();
 }

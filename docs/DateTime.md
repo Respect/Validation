@@ -7,26 +7,26 @@ Validates if input is a date. The `$format` argument should be in accordance to
 PHP's [date()](http://php.net/date) function.
 
 ```php
-v::dateTime()->validate('2009-01-01'); // true
+v::dateTime()->isValid('2009-01-01'); // true
 ```
 
 Also accepts strtotime values:
 
 ```php
-v::dateTime()->validate('now'); // true
+v::dateTime()->isValid('now'); // true
 ```
 
 And `DateTimeInterface` instances:
 
 ```php
-v::dateTime()->validate(new DateTime()); // true
-v::dateTime()->validate(new DateTimeImmutable()); // true
+v::dateTime()->isValid(new DateTime()); // true
+v::dateTime()->isValid(new DateTimeImmutable()); // true
 ```
 
 You can pass a format when validating strings:
 
 ```php
-v::dateTime('Y-m-d')->validate('01-01-2009'); // false
+v::dateTime('Y-m-d')->isValid('01-01-2009'); // false
 ```
 
 Format has no effect when validating DateTime instances.

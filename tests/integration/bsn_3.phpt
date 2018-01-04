@@ -7,10 +7,10 @@ use Respect\Validation\Exceptions\BsnException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::bsn()->check(null);
+    v::bsn()->assert(null);
 } catch (BsnException $e) {
     echo $e->getMainMessage();
 }
 ?>
 --EXPECTF--
-null must be a BSN
+`NULL` must be a BSN

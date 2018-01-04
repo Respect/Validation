@@ -7,7 +7,7 @@ use Respect\Validation\Rules\CountryCode;
 use Respect\Validation\Validator as v;
 
 try {
-    v::not(v::countryCode(CountryCode::NUMERIC))->assert('076');
+    v::not(v::countryCode(CountryCode::NUMERIC))->assertAll('076');
 } catch (AllOfException $exception) {
     echo $exception->getFullMessage();
 }

@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::countable()->assert('Not countable!');
+    v::countable()->assertAll('Not countable!');
 } catch (AllOfException $e) {
     echo $e->getFullMessage();
 }

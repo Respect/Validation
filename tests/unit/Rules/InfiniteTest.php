@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class InfiniteTest extends TestCase
 {
     protected $rule;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->rule = new Infinite();
     }
@@ -30,7 +32,7 @@ class InfiniteTest extends TestCase
     /**
      * @dataProvider providerForInfinite
      */
-    public function testShouldValidateInfiniteNumbers($input)
+    public function testShouldValidateInfiniteNumbers($input): void
     {
         self::assertTrue($this->rule->validate($input));
     }
@@ -38,7 +40,7 @@ class InfiniteTest extends TestCase
     /**
      * @dataProvider providerForNonInfinite
      */
-    public function testShouldNotValidateNonInfiniteNumbers($input)
+    public function testShouldNotValidateNonInfiniteNumbers($input): void
     {
         self::assertFalse($this->rule->validate($input));
     }
@@ -47,7 +49,7 @@ class InfiniteTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\InfiniteException
      * @expectedExceptionMessage 123456 must be an infinite number
      */
-    public function testShouldThrowInfiniteExceptionWhenChecking()
+    public function testShouldThrowInfiniteExceptionWhenChecking(): void
     {
         $this->rule->check(123456);
     }

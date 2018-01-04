@@ -6,10 +6,10 @@ use Respect\Validation\Exceptions\UniqueException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::unique()->check([1, 2, 2, 3]);
+    v::unique()->assert([1, 2, 2, 3]);
 } catch (UniqueException $exception) {
     echo $exception->getMainMessage();
 }
 ?>
 --EXPECTF--
-{ 1, 2, 2, 3 } must not contain duplicates
+`{ 1, 2, 2, 3 }` must not contain duplicates

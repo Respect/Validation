@@ -5,7 +5,7 @@
 Validates if the input is null.
 
 ```php
-v::nullType()->validate(null); // true
+v::nullType()->isValid(null); // true
 ```
 
 ## Changelog

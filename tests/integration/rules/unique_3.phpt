@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\UniqueException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::unique()->check('test');
+    v::unique()->assert('test');
 } catch (UniqueException $exception) {
     echo $exception->getMainMessage();
 }

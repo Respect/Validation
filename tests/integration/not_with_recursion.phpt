@@ -19,7 +19,7 @@ try {
             )
         )
     );
-    $validator->check(2);
+    $validator->assert(2);
 } catch (NestedValidationException $exception) {
     echo $exception->getFullMessage().PHP_EOL;
 }

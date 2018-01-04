@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -22,7 +24,7 @@ class CpfTest extends TestCase
 {
     protected $cpfValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->cpfValidator = new Cpf();
     }
@@ -30,7 +32,7 @@ class CpfTest extends TestCase
     /**
      * @dataProvider providerValidFormattedCpf
      */
-    public function testFormattedCpfsShouldValidate($input)
+    public function testFormattedCpfsShouldValidate($input): void
     {
         self::assertTrue($this->cpfValidator->assert($input));
     }
@@ -38,7 +40,7 @@ class CpfTest extends TestCase
     /**
      * @dataProvider providerValidUnformattedCpf
      */
-    public function testUnformattedCpfsShouldValidates($input)
+    public function testUnformattedCpfsShouldValidates($input): void
     {
         self::assertTrue($this->cpfValidator->assert($input));
     }
@@ -47,7 +49,7 @@ class CpfTest extends TestCase
      * @dataProvider providerInvalidFormattedCpf
      * @expectedException \Respect\Validation\Exceptions\CpfException
      */
-    public function testInvalidCpfShouldFailWhenFormatted($input)
+    public function testInvalidCpfShouldFailWhenFormatted($input): void
     {
         self::assertFalse($this->cpfValidator->assert($input));
     }
@@ -56,7 +58,7 @@ class CpfTest extends TestCase
      * @dataProvider providerInvalidUnformattedCpf
      * @expectedException \Respect\Validation\Exceptions\CpfException
      */
-    public function testInvalidCpfShouldFailWhenNotFormatted($input)
+    public function testInvalidCpfShouldFailWhenNotFormatted($input): void
     {
         self::assertFalse($this->cpfValidator->assert($input));
     }
@@ -65,7 +67,7 @@ class CpfTest extends TestCase
      * @dataProvider providerInvalidFormattedAndUnformattedCpfLength
      * @expectedException \Respect\Validation\Exceptions\CpfException
      */
-    public function testCpfsWithIncorrectLengthShouldFail($input)
+    public function testCpfsWithIncorrectLengthShouldFail($input): void
     {
         self::assertFalse($this->cpfValidator->assert($input));
     }

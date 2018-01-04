@@ -4,8 +4,8 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator as v;
 
-v::not(v::objectType())->check('');
-v::not(v::objectType())->check(true);
-v::not(v::objectType())->check(0);
+v::not(v::objectType())->assert('');
+v::not(v::objectType())->assert(true);
+v::not(v::objectType())->assert(0);
 ?>
 --EXPECTF--

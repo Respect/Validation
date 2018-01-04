@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class EndsWithTest extends TestCase
     /**
      * @dataProvider providerForEndsWith
      */
-    public function testStringsEndingWithExpectedValueShouldPass($start, $input)
+    public function testStringsEndingWithExpectedValueShouldPass($start, $input): void
     {
         $v = new EndsWith($start);
         self::assertTrue($v->__invoke($input));
@@ -35,7 +37,7 @@ class EndsWithTest extends TestCase
      * @dataProvider providerForNotEndsWith
      * @expectedException \Respect\Validation\Exceptions\EndsWithException
      */
-    public function testStringsNotEndingWithExpectedValueShouldNotPass($start, $input, $caseSensitive = false)
+    public function testStringsNotEndingWithExpectedValueShouldNotPass($start, $input, $caseSensitive = false): void
     {
         $v = new EndsWith($start, $caseSensitive);
         self::assertFalse($v->__invoke($input));

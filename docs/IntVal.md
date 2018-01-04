@@ -5,8 +5,8 @@
 Validates if the input is an integer.
 
 ```php
-v::intVal()->validate('10'); // true
-v::intVal()->validate(10); // true
+v::intVal()->isValid('10'); // true
+v::intVal()->isValid(10); // true
 ```
 
 ## Changelog

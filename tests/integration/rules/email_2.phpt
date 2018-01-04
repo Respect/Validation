@@ -6,7 +6,7 @@ use Respect\Validation\Exceptions\EmailException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::email()->check('batman');
+    v::email()->assert('batman');
 } catch (EmailException $e) {
     echo $e->getMainMessage();
 }
