@@ -234,6 +234,7 @@ a rule and an exception to go with the rule.
 To create a rule, you need to create a class that extends the AbstractRule class
 and is within the Rules `namespace`. When the rule is called the logic inside the
 validate method will be executed. Here's how the class should look:
+
 ```php
 namespace My\Validation\Rules;
 
@@ -253,6 +254,7 @@ with the name of the rule followed by the word Exception. The process of creatin
 an Exception is similar to creating a rule but there are no methods in the
 Exception class. Instead, you create one static property that includes an
 array with the information below:
+
 ```php
 namespace My\Validation\Exceptions;
 
@@ -274,6 +276,7 @@ class MyRuleException extends ValidationException
 So in the end, the folder structure for your Rules and Exceptions should look
 something like the structure below. Note that the folders (and namespaces) are
 plural but the actual Rules and Exceptions are singular.
+
 ```
 My
  +-- Validation
@@ -283,20 +286,19 @@ My
          +-- MyRule.php
 ```
 
-If you want Validation to execute your rule (or rules) in the chain, you must
-use `v::with()` passing your rule's namespace as an argument:
+All classes in Validation are created by the `Factory` class. If you want
+Validation to execute your rule (or rules) in the chain, you must overwrite the
+default `Factory`.
 
 ```php
-v::with('My\\Validation\\Rules\\');
+Factory::setDefaultInstance(
+    new Factory(
+      ['My\\Validation\\Rules'],
+      ['My\\Validation\\Exceptions']
+    )
+);
 v::myRule(); // Try to load "My\Validation\Rules\MyRule" if any
-```
-
-By default `with()` appends the given prefix, but you can change this behavior
-in order to overwrite default rules:
-
-```php
-v::with('My\\Validation\\Rules', true);
-v::alnum(); // Try to use "My\Validation\Rules\Alnum" if any
+v::alnum(); // Try to use "My\Validation\Rules\Alnum" if any, or else "Respect\Validation\Rules\Alnum"
 ```
 
 ## Validator name

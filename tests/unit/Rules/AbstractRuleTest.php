@@ -127,63 +127,6 @@ class AbstractRuleTest extends TestCase
     }
 
     /**
-     * @covers \Respect\Validation\Rules\AbstractRule::reportError
-     * @covers \Respect\Validation\Rules\AbstractRule::createException
-     */
-    public function testShouldCreateExceptionBasedOnTheCurrentClassName()
-    {
-        if (defined('HHVM_VERSION')) {
-            return $this->markTestSkipped('If you are a HHVM user, and you are in the mood, please fix it');
-        }
-
-        $exceptionMock = $this
-            ->getMockBuilder(ValidationException::class)
-            ->setMockClassName('MockRule1Exception')
-            ->getMock();
-
-        $abstractRuleMock = $this
-            ->getMockBuilder(AbstractRule::class)
-            ->setMockClassName('MockRule1')
-            ->getMockForAbstractClass();
-
-        $exception = $abstractRuleMock->reportError('something');
-
-        self::assertInstanceOf(get_class($exceptionMock), $exception);
-    }
-
-    /**
-     * @covers \Respect\Validation\Rules\AbstractRule::reportError
-     * @covers \Respect\Validation\Rules\AbstractRule::setTemplate
-     */
-    public function testShouldUseDefinedTemplateOnCreatedException(): void
-    {
-        $template = 'This is my template';
-
-        $exceptionMock = $this
-            ->getMockBuilder(ValidationException::class)
-            ->setMethods(['setTemplate'])
-            ->getMock();
-
-        $exceptionMock
-            ->expects($this->once())
-            ->method('setTemplate')
-            ->with($template);
-
-        $abstractRuleMock = $this
-            ->getMockBuilder(AbstractRule::class)
-            ->setMethods(['createException'])
-            ->getMockForAbstractClass();
-
-        $abstractRuleMock
-            ->expects($this->once())
-            ->method('createException')
-            ->will($this->returnValue($exceptionMock));
-
-        $abstractRuleMock->setTemplate($template);
-        $abstractRuleMock->reportError('something');
-    }
-
-    /**
      * @covers \Respect\Validation\Rules\AbstractRule::setTemplate
      */
     public function testShouldReturnTheCurrentObjectWhenDefinigTemplate(): void

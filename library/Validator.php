@@ -161,41 +161,6 @@ use Respect\Validation\Rules\Key;
  */
 class Validator extends AllOf
 {
-    protected static $factory;
-
-    /**
-     * @return Factory
-     */
-    protected static function getFactory()
-    {
-        if (!static::$factory instanceof Factory) {
-            static::$factory = new Factory();
-        }
-
-        return static::$factory;
-    }
-
-    /**
-     * @param Factory $factory
-     */
-    public static function setFactory($factory): void
-    {
-        static::$factory = $factory;
-    }
-
-    /**
-     * @param string $rulePrefix
-     * @param bool   $prepend
-     */
-    public static function with($rulePrefix, $prepend = false): void
-    {
-        if (false === $prepend) {
-            self::getFactory()->appendRulePrefix($rulePrefix);
-        } else {
-            self::getFactory()->prependRulePrefix($rulePrefix);
-        }
-    }
-
     public function check($input)
     {
         try {
@@ -235,7 +200,7 @@ class Validator extends AllOf
     public static function buildRule($ruleSpec, $arguments = [])
     {
         try {
-            return static::getFactory()->rule($ruleSpec, $arguments);
+            return Factory::getDefaultInstance()->rule($ruleSpec, $arguments);
         } catch (\Exception $exception) {
             throw new ComponentException($exception->getMessage(), $exception->getCode(), $exception);
         }
@@ -250,11 +215,6 @@ class Validator extends AllOf
     public function __call($method, $arguments)
     {
         return $this->addRule(static::buildRule($method, $arguments));
-    }
-
-    protected function createException()
-    {
-        return new AllOfException();
     }
 
     /**
