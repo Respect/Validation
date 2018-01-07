@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use finfo;
+use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use SplFileObject;
 
@@ -38,7 +39,7 @@ class ImageTest extends RuleTestCase
         self::assertInstanceOf('finfo', $rule->fileInfo);
     }
 
-    public function providerForValidInput()
+    public function providerForValidInput(): array
     {
         $rule = new Image();
         $fixturesDirectory = realpath(__DIR__.'/../../fixtures/');
@@ -53,7 +54,7 @@ class ImageTest extends RuleTestCase
         ];
     }
 
-    public function providerForInvalidInput()
+    public function providerForInvalidInput(): array
     {
         $rule = new Image();
         $fixturesDirectory = realpath(__DIR__.'/../../fixtures/');

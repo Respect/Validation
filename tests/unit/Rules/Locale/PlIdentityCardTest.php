@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules\Locale;
 
-use Respect\Validation\Rules\RuleTestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group  rule
@@ -21,7 +21,7 @@ use Respect\Validation\Rules\RuleTestCase;
  */
 class PlIdentityCardTest extends RuleTestCase
 {
-    public function providerForValidInput()
+    public function providerForValidInput(): array
     {
         $rule = new PlIdentityCard();
 
@@ -32,7 +32,7 @@ class PlIdentityCardTest extends RuleTestCase
         ];
     }
 
-    public function providerForInvalidInput()
+    public function providerForInvalidInput(): array
     {
         $rule = new PlIdentityCard();
 

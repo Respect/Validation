@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Test\RuleTestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\When
@@ -21,14 +23,14 @@ class WhenTest extends RuleTestCase
 {
     public function testShouldConstructAnObjectWithoutElseRule(): void
     {
-        $rule = new When($this->getRuleMock(true), $this->getRuleMock(true));
+        $rule = new When($this->createValidatableMock(true), $this->createValidatableMock(true));
 
         self::assertInstanceOf(AlwaysInvalid::class, $rule->else);
     }
 
     public function testShouldConstructAnObjectWithElseRule(): void
     {
-        $rule = new When($this->getRuleMock(true), $this->getRuleMock(true), $this->getRuleMock(true));
+        $rule = new When($this->createValidatableMock(true), $this->createValidatableMock(true), $this->createValidatableMock(true));
 
         self::assertNotNull($rule->else);
     }
@@ -39,9 +41,9 @@ class WhenTest extends RuleTestCase
      */
     public function testShouldThrowExceptionForTheThenRuleWhenTheIfRuleIsValidAndTheThenRuleIsNotOnAssertMethod(): void
     {
-        $if = $this->getRuleMock(true);
-        $then = $this->getRuleMock(false, 'ThenNotValid');
-        $else = $this->getRuleMock(true);
+        $if = $this->createValidatableMock(true);
+        $then = $this->createValidatableMock(false, 'ThenNotValid');
+        $else = $this->createValidatableMock(true);
 
         $rule = new When($if, $then, $else);
         $rule->assert('');
@@ -53,9 +55,9 @@ class WhenTest extends RuleTestCase
      */
     public function testShouldThrowExceptionForTheThenRuleWhenTheIfRuleIsValidAndTheThenRuleIsNotOnCheckMethod(): void
     {
-        $if = $this->getRuleMock(true);
-        $then = $this->getRuleMock(false, 'ThenNotValid');
-        $else = $this->getRuleMock(true);
+        $if = $this->createValidatableMock(true);
+        $then = $this->createValidatableMock(false, 'ThenNotValid');
+        $else = $this->createValidatableMock(true);
 
         $rule = new When($if, $then, $else);
         $rule->check('');
@@ -67,9 +69,9 @@ class WhenTest extends RuleTestCase
      */
     public function testShouldThrowExceptionForTheElseRuleWhenTheIfRuleIsNotValidAndTheElseRuleIsNotOnAssertMethod(): void
     {
-        $if = $this->getRuleMock(false);
-        $then = $this->getRuleMock(false);
-        $else = $this->getRuleMock(false, 'ElseNotValid');
+        $if = $this->createValidatableMock(false);
+        $then = $this->createValidatableMock(false);
+        $else = $this->createValidatableMock(false, 'ElseNotValid');
 
         $rule = new When($if, $then, $else);
         $rule->assert('');
@@ -81,9 +83,9 @@ class WhenTest extends RuleTestCase
      */
     public function testShouldThrowExceptionForTheElseRuleWhenTheIfRuleIsNotValidAndTheElseRuleIsNotOnCheckMethod(): void
     {
-        $if = $this->getRuleMock(false);
-        $then = $this->getRuleMock(false);
-        $else = $this->getRuleMock(false, 'ElseNotValid');
+        $if = $this->createValidatableMock(false);
+        $then = $this->createValidatableMock(false);
+        $else = $this->createValidatableMock(false, 'ElseNotValid');
 
         $rule = new When($if, $then, $else);
         $rule->check('');
@@ -94,35 +96,35 @@ class WhenTest extends RuleTestCase
      *
      * @return array
      */
-    public function providerForValidInput()
+    public function providerForValidInput(): array
     {
         return [
             'int (all true)' => [
-                new When($this->getRuleMock(true), $this->getRuleMock(true), $this->getRuleMock(true)),
+                new When($this->createValidatableMock(true), $this->createValidatableMock(true), $this->createValidatableMock(true)),
                 42,
             ],
             'bool (all true)' => [
-                new When($this->getRuleMock(true), $this->getRuleMock(true), $this->getRuleMock(true)),
+                new When($this->createValidatableMock(true), $this->createValidatableMock(true), $this->createValidatableMock(true)),
                 true,
             ],
             'empty (all true)' => [
-                new When($this->getRuleMock(true), $this->getRuleMock(true), $this->getRuleMock(true)),
+                new When($this->createValidatableMock(true), $this->createValidatableMock(true), $this->createValidatableMock(true)),
                 '',
             ],
             'object (all true)' => [
-                new When($this->getRuleMock(true), $this->getRuleMock(true), $this->getRuleMock(true)),
+                new When($this->createValidatableMock(true), $this->createValidatableMock(true), $this->createValidatableMock(true)),
                 new \stdClass(),
             ],
             'empty array (all true)' => [
-                new When($this->getRuleMock(true), $this->getRuleMock(true), $this->getRuleMock(true)),
+                new When($this->createValidatableMock(true), $this->createValidatableMock(true), $this->createValidatableMock(true)),
                 [],
             ],
             'not empty array (all true)' => [
-                new When($this->getRuleMock(true), $this->getRuleMock(true), $this->getRuleMock(true)),
+                new When($this->createValidatableMock(true), $this->createValidatableMock(true), $this->createValidatableMock(true)),
                 ['test'],
             ],
             'when = true, then = false, else = true' => [
-                new When($this->getRuleMock(true), $this->getRuleMock(true), $this->getRuleMock(false)),
+                new When($this->createValidatableMock(true), $this->createValidatableMock(true), $this->createValidatableMock(false)),
                 false,
             ],
         ];
@@ -131,19 +133,19 @@ class WhenTest extends RuleTestCase
     /**
      * @return array
      */
-    public function providerForInvalidInput()
+    public function providerForInvalidInput(): array
     {
         return [
             'when = true, then = false, else = false' => [
-                new When($this->getRuleMock(true), $this->getRuleMock(false), $this->getRuleMock(false)),
+                new When($this->createValidatableMock(true), $this->createValidatableMock(false), $this->createValidatableMock(false)),
                 false,
             ],
             'when = true, then = false, else = true' => [
-                new When($this->getRuleMock(true), $this->getRuleMock(false), $this->getRuleMock(true)),
+                new When($this->createValidatableMock(true), $this->createValidatableMock(false), $this->createValidatableMock(true)),
                 false,
             ],
             'when = false, then = false, else = false' => [
-                new When($this->getRuleMock(false), $this->getRuleMock(false), $this->getRuleMock(false)),
+                new When($this->createValidatableMock(false), $this->createValidatableMock(false), $this->createValidatableMock(false)),
                 false,
             ],
         ];

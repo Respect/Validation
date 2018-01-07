@@ -13,13 +13,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Test\RuleTestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Luhn
  */
 class LuhnTest extends RuleTestCase
 {
-    public function providerForValidInput()
+    public function providerForValidInput(): array
     {
         $rule = new Luhn();
 
@@ -31,7 +33,7 @@ class LuhnTest extends RuleTestCase
         ];
     }
 
-    public function providerForInvalidInput()
+    public function providerForInvalidInput(): array
     {
         $rule = new Luhn();
 

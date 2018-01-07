@@ -41,7 +41,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Respect\\Validation\\": "tests/library/"
+            "Respect\\Validation\\Test\\": "tests/library/"
         }
     },
     "extra": {

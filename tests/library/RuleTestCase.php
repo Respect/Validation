@@ -11,35 +11,59 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Rules;
+namespace Respect\Validation\Test;
 
 use PHPUnit\Framework\TestCase;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
 
+/**
+ * Abstract class to create TestCases for Rules.
+ *
+ * @author Antonio Spinelli <tonicospinelli85@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @since 1.0.0
+ */
 abstract class RuleTestCase extends TestCase
 {
     /**
-     * It is to provide constructor arguments and.
+     * Data providers for valid results.
      *
-     * @return array
+     * It returns an array of arrays. Each array contains an instance of Validatable
+     * as the first element and an input in which the validation SHOULD pass.
+     *
+     * @api
+     *
+     * @return array[]
      */
-    abstract public function providerForValidInput();
+    abstract public function providerForValidInput(): array;
 
     /**
-     * @return array
+     * Data providers for invalid results.
+     *
+     * It returns an array of arrays. Each array contains an instance of Validatable
+     * as the first element and an input in which the validation SHOULD NOT pass.
+     *
+     * @api
+     *
+     * @return array[]
      */
-    abstract public function providerForInvalidInput();
+    abstract public function providerForInvalidInput(): array;
 
     /**
+     * Create a mock of a Validatable.
+     *
+     * @api
+     *
      * @param bool             $expectedResult
      * @param string[optional] $mockClassName
      *
      * @return Validatable
      */
-    public function getRuleMock($expectedResult, $mockClassName = '')
+    public function createValidatableMock(bool $expectedResult, string $mockClassName = ''): Validatable
     {
-        $ruleMocked = $this->getMockBuilder(Validatable::class)
+        $validatableMocked = $this->getMockBuilder(Validatable::class)
             ->disableOriginalConstructor()
             ->setMethods(
                 [
@@ -49,52 +73,56 @@ abstract class RuleTestCase extends TestCase
             ->setMockClassName($mockClassName)
             ->getMock();
 
-        $ruleMocked
+        $validatableMocked
             ->expects($this->any())
             ->method('validate')
             ->willReturn($expectedResult);
 
         if ($expectedResult) {
-            $ruleMocked
+            $validatableMocked
                 ->expects($this->any())
                 ->method('check')
                 ->willReturn($expectedResult);
-            $ruleMocked
+            $validatableMocked
                 ->expects($this->any())
                 ->method('assert')
                 ->willReturn($expectedResult);
         } else {
-            $ruleMocked
+            $validatableMocked
                 ->expects($this->any())
                 ->method('check')
                 ->willThrowException(new ValidationException('Exception for '.$mockClassName.':check() method'));
-            $ruleMocked
+            $validatableMocked
                 ->expects($this->any())
                 ->method('assert')
                 ->willThrowException(new ValidationException('Exception for '.$mockClassName.':assert() method'));
         }
 
-        return $ruleMocked;
+        return $validatableMocked;
     }
 
     /**
+     * @test
+     *
      * @dataProvider providerForValidInput
      *
      * @param Validatable $validator
      * @param mixed       $input
      */
-    public function testShouldValidateValidInput(Validatable $validator, $input): void
+    public function shouldValidateValidInput(Validatable $validator, $input): void
     {
         self::assertTrue($validator->validate($input));
     }
 
     /**
+     * @test
+     *
      * @dataProvider providerForInvalidInput
      *
      * @param Validatable $validator
      * @param mixed       $input
      */
-    public function testShouldValidateInvalidInput(Validatable $validator, $input): void
+    public function shouldValidateInvalidInput(Validatable $validator, $input): void
     {
         self::assertFalse($validator->validate($input));
     }

@@ -13,13 +13,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Test\RuleTestCase;
+
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Fibonacci
  */
 class FibonacciTest extends RuleTestCase
 {
-    public function providerForValidInput()
+    public function providerForValidInput(): array
     {
         $rule = new Fibonacci();
 
@@ -40,7 +42,7 @@ class FibonacciTest extends RuleTestCase
         ];
     }
 
-    public function providerForInvalidInput()
+    public function providerForInvalidInput(): array
     {
         $rule = new Fibonacci();
 

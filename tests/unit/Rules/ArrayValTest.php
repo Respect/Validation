@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use ArrayObject;
+use Respect\Validation\Test\RuleTestCase;
 use SimpleXMLElement;
 use stdClass;
 
@@ -23,7 +24,7 @@ use stdClass;
  */
 class ArrayValTest extends RuleTestCase
 {
-    public function providerForValidInput()
+    public function providerForValidInput(): array
     {
         $rule = new ArrayVal();
 
@@ -35,7 +36,7 @@ class ArrayValTest extends RuleTestCase
         ];
     }
 
-    public function providerForInvalidInput()
+    public function providerForInvalidInput(): array
     {
         $rule = new ArrayVal();
 

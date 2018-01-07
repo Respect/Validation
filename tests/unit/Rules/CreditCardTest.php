@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group  rule
@@ -45,7 +46,7 @@ class CreditCardTest extends RuleTestCase
         new CreditCard('RespectCard');
     }
 
-    public function providerForValidInput()
+    public function providerForValidInput(): array
     {
         $general = new CreditCard();
         $amex = new CreditCard(CreditCard::AMERICAN_EXPRESS);
@@ -75,7 +76,7 @@ class CreditCardTest extends RuleTestCase
         ];
     }
 
-    public function providerForInvalidInput()
+    public function providerForInvalidInput(): array
     {
         $general = new CreditCard();
         $amex = new CreditCard(CreditCard::AMERICAN_EXPRESS);
