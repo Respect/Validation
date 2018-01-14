@@ -14,64 +14,57 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Identical
- * @covers \Respect\Validation\Exceptions\IdenticalException
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class IdenticalTest extends TestCase
+final class IdenticalTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForIdentical
+     * {@inheritdoc}
      */
-    public function testInputIdenticalToExpectedValueShouldPass($compareTo, $input): void
-    {
-        $rule = new Identical($compareTo);
-
-        self::assertTrue($rule->validate($input));
-    }
-
-    /**
-     * @dataProvider providerForNotIdentical
-     */
-    public function testInputNotIdenticalToExpectedValueShouldPass($compareTo, $input): void
-    {
-        $rule = new Identical($compareTo);
-
-        self::assertFalse($rule->validate($input));
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\IdenticalException
-     * @expectedExceptionMessage "42" must be identical as 42
-     */
-    public function testShouldThrowTheProperExceptionWhenFailure(): void
-    {
-        $rule = new Identical(42);
-        $rule->check('42');
-    }
-
-    public function providerForIdentical()
+    public function providerForValidInput(): array
     {
         $object = new stdClass();
 
         return [
-            ['foo', 'foo'],
-            [[], []],
-            [$object, $object],
-            [10, 10],
+            [new Identical('foo'), 'foo'],
+            [new Identical([]), []],
+            [new Identical($object), $object],
+            [new Identical(10), 10],
+            [new Identical(10.0), 10.0],
         ];
     }
 
-    public function providerForNotIdentical()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         return [
-            [42, '42'],
-            ['foo', 'bar'],
-            [[1], []],
-            [new stdClass(), new stdClass()],
+            [new Identical(42), '42'],
+            [new Identical('foo'), 'bar'],
+            [new Identical([1]), []],
+            [new Identical(new stdClass()), new stdClass()],
+            [new Identical(10), 10.0],
         ];
+    }
+
+    /**
+     * @test
+     */
+    public function shouldPassCompareToParameterToException(): void
+    {
+        $compareTo = new stdClass();
+        $rule = new Identical($compareTo);
+        $exception = $rule->reportError('input');
+
+        self::assertSame($compareTo, $exception->getParam('compareTo'));
     }
 }

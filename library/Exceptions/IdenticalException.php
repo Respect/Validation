@@ -13,8 +13,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class IdenticalException extends ValidationException
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class IdenticalException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be identical as {{compareTo}}',
