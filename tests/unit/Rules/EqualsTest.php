@@ -13,61 +13,53 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Equals
- * @covers \Respect\Validation\Exceptions\EqualsException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class EqualsTest extends TestCase
+final class EqualsTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForEquals
+     * {@inheritdoc}
      */
-    public function testInputEqualsToExpectedValueShouldPass($compareTo, $input): void
-    {
-        $rule = new Equals($compareTo);
-
-        self::assertTrue($rule->validate($input));
-    }
-
-    /**
-     * @dataProvider providerForNotEquals
-     */
-    public function testInputNotEqualsToExpectedValueShouldPass($compareTo, $input): void
-    {
-        $rule = new Equals($compareTo);
-
-        self::assertFalse($rule->validate($input));
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\EqualsException
-     * @expectedExceptionMessage "24" must equal 42
-     */
-    public function testShouldThrowTheProperExceptionWhenFailure(): void
-    {
-        $rule = new Equals(42);
-        $rule->check('24');
-    }
-
-    public function providerForEquals()
+    public function providerForValidInput(): array
     {
         return [
-            ['foo', 'foo'],
-            [[], []],
-            [new stdClass(), new stdClass()],
-            [10, '10'],
+            [new Equals('foo'), 'foo'],
+            [new Equals([]), []],
+            [new Equals(new stdClass()), new stdClass()],
+            [new Equals(10), '10'],
+            [new Equals(10), 10.0],
         ];
     }
 
-    public function providerForNotEquals()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         return [
-            ['foo', ''],
-            ['foo', 'bar'],
+            [new Equals('foo'), ''],
+            [new Equals('foo'), 'bar'],
         ];
+    }
+
+    /**
+     * @test
+     */
+    public function shouldPassCompareToParameterToException(): void
+    {
+        $compareTo = new stdClass();
+        $equals = new Equals($compareTo);
+        $exception = $equals->reportError('input');
+
+        self::assertSame($compareTo, $exception->getParam('compareTo'));
     }
 }
