@@ -16,26 +16,32 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Haiti subdivision code.
+ * Validates whether an input is subdivision code of Haiti or not.
  *
  * ISO 3166-1 alpha-2: HT
  *
  * @see http://www.geonames.org/HT/administrative-division-haiti.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class HtSubdivisionCode extends AbstractSearcher
+final class HtSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AR', // Artibonite
-        'CE', // Centre
-        'GA', // Grand'Anse
-        'ND', // Nord
-        'NE', // Nord-Est
-        'NI', // Nippes
-        'NO', // Nord-Ouest
-        'OU', // Ouest
-        'SD', // Sud
-        'SE', // Sud-Est
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AR', // Artibonite
+           'CE', // Centre
+           'GA', // Grand'Anse
+           'ND', // Nord
+           'NE', // Nord-Est
+           'NI', // Nippes
+           'NO', // Nord-Ouest
+           'OU', // Ouest
+           'SD', // Sud
+           'SE', // Sud-Est
+       ];
+    }
 }

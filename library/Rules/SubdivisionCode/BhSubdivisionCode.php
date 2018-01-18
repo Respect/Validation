@@ -16,20 +16,26 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Bahrain subdivision code.
+ * Validates whether an input is subdivision code of Bahrain or not.
  *
  * ISO 3166-1 alpha-2: BH
  *
  * @see http://www.geonames.org/BH/administrative-division-bahrain.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class BhSubdivisionCode extends AbstractSearcher
+final class BhSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        '13', // Capital
-        '14', // Southern
-        '15', // Muharraq
-        '17', // Northern
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           '13', // Capital
+           '14', // Southern
+           '15', // Muharraq
+           '17', // Northern
+       ];
+    }
 }

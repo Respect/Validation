@@ -16,19 +16,25 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for U.S. Virgin Islands subdivision code.
+ * Validates whether an input is subdivision code of U.S. Virgin Islands or not.
  *
  * ISO 3166-1 alpha-2: VI
  *
  * @see http://www.geonames.org/VI/administrative-division-u-s-virgin-islands.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ViSubdivisionCode extends AbstractSearcher
+final class ViSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'C', // Saint Croix
-        'J', // Saint John
-        'T', // Saint Thomas
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'C', // Saint Croix
+           'J', // Saint John
+           'T', // Saint Thomas
+       ];
+    }
 }

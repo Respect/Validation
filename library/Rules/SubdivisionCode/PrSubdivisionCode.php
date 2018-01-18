@@ -16,15 +16,21 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Puerto Rico subdivision code.
+ * Validates whether an input is subdivision code of Puerto Rico or not.
  *
  * ISO 3166-1 alpha-2: PR
  *
  * @see http://www.geonames.org/PR/administrative-division-puerto-rico.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class PrSubdivisionCode extends AbstractSearcher
+final class PrSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

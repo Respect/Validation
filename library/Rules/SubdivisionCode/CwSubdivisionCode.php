@@ -16,15 +16,21 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Curacao subdivision code.
+ * Validates whether an input is subdivision code of Curacao or not.
  *
  * ISO 3166-1 alpha-2: CW
  *
  * @see http://www.geonames.org/CW/administrative-division-curacao.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class CwSubdivisionCode extends AbstractSearcher
+final class CwSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

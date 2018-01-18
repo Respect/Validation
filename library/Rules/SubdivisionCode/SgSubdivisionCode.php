@@ -16,21 +16,27 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Singapore subdivision code.
+ * Validates whether an input is subdivision code of Singapore or not.
  *
  * ISO 3166-1 alpha-2: SG
  *
  * @see http://www.geonames.org/SG/administrative-division-singapore.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SgSubdivisionCode extends AbstractSearcher
+final class SgSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        '01', // Central Singapore
-        '02', // North East
-        '03', // North West
-        '04', // South East
-        '05', // South West
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           '01', // Central Singapore
+           '02', // North East
+           '03', // North West
+           '04', // South East
+           '05', // South West
+       ];
+    }
 }

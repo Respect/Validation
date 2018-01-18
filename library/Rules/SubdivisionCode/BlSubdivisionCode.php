@@ -16,15 +16,21 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Saint Barthélemy subdivision code.
+ * Validates whether an input is subdivision code of Saint Barthélemy or not.
  *
  * ISO 3166-1 alpha-2: BL
  *
  * @see http://www.geonames.org/BL/administrative-division-saint-barthelemy.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class BlSubdivisionCode extends AbstractSearcher
+final class BlSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

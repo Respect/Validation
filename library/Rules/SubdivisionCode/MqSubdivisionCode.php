@@ -16,15 +16,21 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Martinique subdivision code.
+ * Validates whether an input is subdivision code of Martinique or not.
  *
  * ISO 3166-1 alpha-2: MQ
  *
  * @see http://www.geonames.org/MQ/administrative-division-martinique.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class MqSubdivisionCode extends AbstractSearcher
+final class MqSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

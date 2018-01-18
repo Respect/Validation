@@ -16,15 +16,21 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Saint Martin subdivision code.
+ * Validates whether an input is subdivision code of Saint Martin or not.
  *
  * ISO 3166-1 alpha-2: MF
  *
  * @see http://www.geonames.org/MF/administrative-division-saint-martin.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class MfSubdivisionCode extends AbstractSearcher
+final class MfSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

@@ -16,24 +16,30 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Iceland subdivision code.
+ * Validates whether an input is subdivision code of Iceland or not.
  *
  * ISO 3166-1 alpha-2: IS
  *
  * @see http://www.geonames.org/IS/administrative-division-iceland.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class IsSubdivisionCode extends AbstractSearcher
+final class IsSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        '1', // Höfuðborgarsvæði
-        '2', // Suðurnes
-        '3', // Vesturland
-        '4', // Vestfirðir
-        '5', // Norðurland Vestra
-        '6', // Norðurland Eystra
-        '7', // Austurland
-        '8', // Suðurland
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           '1', // Höfuðborgarsvæði
+           '2', // Suðurnes
+           '3', // Vesturland
+           '4', // Vestfirðir
+           '5', // Norðurland Vestra
+           '6', // Norðurland Eystra
+           '7', // Austurland
+           '8', // Suðurland
+       ];
+    }
 }

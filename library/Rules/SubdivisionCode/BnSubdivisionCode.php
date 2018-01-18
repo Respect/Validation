@@ -16,20 +16,26 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Brunei subdivision code.
+ * Validates whether an input is subdivision code of Brunei or not.
  *
  * ISO 3166-1 alpha-2: BN
  *
  * @see http://www.geonames.org/BN/administrative-division-brunei.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class BnSubdivisionCode extends AbstractSearcher
+final class BnSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'BE', // Belait
-        'BM', // Brunei and Muara
-        'TE', // Temburong
-        'TU', // Tutong
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'BE', // Belait
+           'BM', // Brunei and Muara
+           'TE', // Temburong
+           'TU', // Tutong
+       ];
+    }
 }

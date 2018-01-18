@@ -16,15 +16,21 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Pitcairn Islands subdivision code.
+ * Validates whether an input is subdivision code of Pitcairn Islands or not.
  *
  * ISO 3166-1 alpha-2: PN
  *
  * @see http://www.geonames.org/PN/administrative-division-pitcairn-islands.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class PnSubdivisionCode extends AbstractSearcher
+final class PnSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

@@ -16,19 +16,25 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Bonaire subdivision code.
+ * Validates whether an input is subdivision code of Bonaire or not.
  *
  * ISO 3166-1 alpha-2: BQ
  *
  * @see http://www.geonames.org/BQ/administrative-division-bonaire.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class BqSubdivisionCode extends AbstractSearcher
+final class BqSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'BO', // Bonaire
-        'SA', // Saba
-        'SE', // Sint Eustatius
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'BO', // Bonaire
+           'SA', // Saba
+           'SE', // Sint Eustatius
+       ];
+    }
 }

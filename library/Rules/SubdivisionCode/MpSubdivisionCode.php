@@ -16,20 +16,26 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Northern Mariana Islands subdivision code.
+ * Validates whether an input is subdivision code of Northern Mariana Islands or not.
  *
  * ISO 3166-1 alpha-2: MP
  *
  * @see http://www.geonames.org/MP/administrative-division-northern-mariana-islands.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class MpSubdivisionCode extends AbstractSearcher
+final class MpSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'N', // Northern Islands
-        'R', // Rota
-        'S', // Saipan
-        'T', // Tinian
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'N', // Northern Islands
+           'R', // Rota
+           'S', // Saipan
+           'T', // Tinian
+       ];
+    }
 }

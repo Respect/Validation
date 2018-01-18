@@ -15,49 +15,30 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Helpers\UndefinedHelper;
 
+/**
+ * Abstract class for searches into arrays.
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 abstract class AbstractSearcher extends AbstractRule
 {
     use UndefinedHelper;
 
-    public $haystack;
-    public $compareIdentical;
+    /**
+     * @return array
+     */
+    abstract protected function getDataSource(): array;
 
-    protected function validateEquals($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
-        if (is_array($this->haystack)) {
-            return in_array($input, $this->haystack);
+        $dataSource = $this->getDataSource();
+        if ($this->isUndefined($input) && empty($dataSource)) {
+            return true;
         }
 
-        if ($this->isUndefined($input)) {
-            return $input == $this->haystack;
-        }
-
-        $inputString = (string) $input;
-
-        return false !== mb_stripos($this->haystack, $inputString, 0, mb_detect_encoding($inputString));
-    }
-
-    protected function validateIdentical($input)
-    {
-        if (is_array($this->haystack)) {
-            return in_array($input, $this->haystack, true);
-        }
-
-        if ($this->isUndefined($input)) {
-            return $input === $this->haystack;
-        }
-
-        $inputString = (string) $input;
-
-        return false !== mb_strpos($this->haystack, $inputString, 0, mb_detect_encoding($inputString));
-    }
-
-    public function validate($input)
-    {
-        if ($this->compareIdentical) {
-            return $this->validateIdentical($input);
-        }
-
-        return $this->validateEquals($input);
+        return in_array($input, $dataSource, true);
     }
 }

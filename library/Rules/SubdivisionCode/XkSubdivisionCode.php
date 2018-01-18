@@ -16,15 +16,21 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Kosovo subdivision code.
+ * Validates whether an input is subdivision code of Kosovo or not.
  *
  * ISO 3166-1 alpha-2: XK
  *
  * @see http://www.geonames.org/XK/administrative-division-kosovo.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class XkSubdivisionCode extends AbstractSearcher
+final class XkSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

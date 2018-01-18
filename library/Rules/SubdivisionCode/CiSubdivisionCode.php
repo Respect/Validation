@@ -16,30 +16,36 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Ivory Coast subdivision code.
+ * Validates whether an input is subdivision code of Ivory Coast or not.
  *
  * ISO 3166-1 alpha-2: CI
  *
  * @see http://www.geonames.org/CI/administrative-division-ivory-coast.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class CiSubdivisionCode extends AbstractSearcher
+final class CiSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AB', // Abidjan
-        'BS', // Bas-Sassandra
-        'CM', // Comoé
-        'DN', // Denguélé
-        'GD', // Gôh-Djiboua
-        'LC', // Lacs
-        'LG', // Lagunes
-        'MG', // Montagnes
-        'SM', // Sassandra-Marahoué
-        'SV', // Savanes
-        'VB', // Vallée du Bandama
-        'WR', // Woroba
-        'YM', // Yamoussoukro Autonomous District
-        'ZZ', // Zanzan
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AB', // Abidjan
+           'BS', // Bas-Sassandra
+           'CM', // Comoé
+           'DN', // Denguélé
+           'GD', // Gôh-Djiboua
+           'LC', // Lacs
+           'LG', // Lagunes
+           'MG', // Montagnes
+           'SM', // Sassandra-Marahoué
+           'SV', // Savanes
+           'VB', // Vallée du Bandama
+           'WR', // Woroba
+           'YM', // Yamoussoukro Autonomous District
+           'ZZ', // Zanzan
+       ];
+    }
 }

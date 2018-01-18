@@ -16,31 +16,37 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Trinidad and Tobago subdivision code.
+ * Validates whether an input is subdivision code of Trinidad and Tobago or not.
  *
  * ISO 3166-1 alpha-2: TT
  *
  * @see http://www.geonames.org/TT/administrative-division-trinidad-and-tobago.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class TtSubdivisionCode extends AbstractSearcher
+final class TtSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'ARI', // Arima
-        'CHA', // Chaguanas
-        'CTT', // Couva/Tabaquite/Talparo
-        'DMN', // Diego Martin
-        'MRC', // Mayaro/Rio Claro
-        'PED', // Penal/Debe
-        'POS', // Port of Spain
-        'PRT', // Princes Town
-        'PTF', // Point Fortin
-        'SFO', // San Fernando
-        'SGE', // Sangre Grande
-        'SIP', // Siparia
-        'SJL', // San Juan/Laventille
-        'TOB', // Tobago
-        'TUP', // Tunapuna/Piarco
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'ARI', // Arima
+           'CHA', // Chaguanas
+           'CTT', // Couva/Tabaquite/Talparo
+           'DMN', // Diego Martin
+           'MRC', // Mayaro/Rio Claro
+           'PED', // Penal/Debe
+           'POS', // Port of Spain
+           'PRT', // Princes Town
+           'PTF', // Point Fortin
+           'SFO', // San Fernando
+           'SGE', // Sangre Grande
+           'SIP', // Siparia
+           'SJL', // San Juan/Laventille
+           'TOB', // Tobago
+           'TUP', // Tunapuna/Piarco
+       ];
+    }
 }

@@ -16,28 +16,34 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Netherlands subdivision code.
+ * Validates whether an input is subdivision code of Netherlands or not.
  *
  * ISO 3166-1 alpha-2: NL
  *
  * @see http://www.geonames.org/NL/administrative-division-netherlands.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class NlSubdivisionCode extends AbstractSearcher
+final class NlSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'DR', // Drenthe
-        'FL', // Flevoland
-        'FR', // Friesland
-        'GE', // Gelderland
-        'GR', // Groningen
-        'LI', // Limburg
-        'NB', // Noord Brabant
-        'NH', // Noord Holland
-        'OV', // Overijssel
-        'UT', // Utrecht
-        'ZE', // Zeeland
-        'ZH', // Zuid Holland
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'DR', // Drenthe
+           'FL', // Flevoland
+           'FR', // Friesland
+           'GE', // Gelderland
+           'GR', // Groningen
+           'LI', // Limburg
+           'NB', // Noord Brabant
+           'NH', // Noord Holland
+           'OV', // Overijssel
+           'UT', // Utrecht
+           'ZE', // Zeeland
+           'ZH', // Zuid Holland
+       ];
+    }
 }

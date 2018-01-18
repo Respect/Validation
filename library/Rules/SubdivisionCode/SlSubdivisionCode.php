@@ -16,20 +16,26 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Sierra Leone subdivision code.
+ * Validates whether an input is subdivision code of Sierra Leone or not.
  *
  * ISO 3166-1 alpha-2: SL
  *
  * @see http://www.geonames.org/SL/administrative-division-sierra-leone.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SlSubdivisionCode extends AbstractSearcher
+final class SlSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'E', // Eastern
-        'N', // Northern
-        'S', // Southern
-        'W', // Western
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'E', // Eastern
+           'N', // Northern
+           'S', // Southern
+           'W', // Western
+       ];
+    }
 }

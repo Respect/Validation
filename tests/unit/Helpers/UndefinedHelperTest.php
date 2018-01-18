@@ -15,6 +15,7 @@ namespace Respect\Validation\Test\Helpers;
 
 use PHPUnit\Framework\TestCase;
 use Respect\Validation\Helpers\UndefinedHelper;
+use Respect\Validation\Test\DataProvider\UndefinedProvider;
 
 /**
  * @group helper
@@ -25,20 +26,8 @@ use Respect\Validation\Helpers\UndefinedHelper;
  */
 final class UndefinedHelperTest extends TestCase
 {
-    use UndefinedHelper;
-
-    /**
-     * Returns values that are considered as "undefined"
-     *
-     * @return array
-     */
-    public function providerForUndefined(): array
-    {
-        return [
-            [null],
-            [''],
-        ];
-    }
+    use UndefinedHelper,
+        UndefinedProvider;
 
     /**
      * @test
@@ -49,23 +38,6 @@ final class UndefinedHelperTest extends TestCase
     public function shouldFindWhenValueIsUndefined($value): void
     {
         self::assertTrue($this->isUndefined($value));
-    }
-
-    /**
-     * Returns values that are not considered as "undefined"
-     *
-     * @return array
-     */
-    public function providerForNotUndefined(): array
-    {
-        return [
-            [0],
-            [0.0],
-            ['0'],
-            [false],
-            [' '],
-            [[]],
-        ];
     }
 
     /**

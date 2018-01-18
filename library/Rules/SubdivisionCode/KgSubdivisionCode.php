@@ -16,25 +16,31 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Kyrgyzstan subdivision code.
+ * Validates whether an input is subdivision code of Kyrgyzstan or not.
  *
  * ISO 3166-1 alpha-2: KG
  *
  * @see http://www.geonames.org/KG/administrative-division-kyrgyzstan.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class KgSubdivisionCode extends AbstractSearcher
+final class KgSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'B', // Batken
-        'C', // Chu
-        'GB', // Bishkek
-        'GO', // Osh City
-        'J', // Jalal-Abad
-        'N', // Naryn
-        'O', // Osh
-        'T', // Talas
-        'Y', // Ysyk-Kol
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'B', // Batken
+           'C', // Chu
+           'GB', // Bishkek
+           'GO', // Osh City
+           'J', // Jalal-Abad
+           'N', // Naryn
+           'O', // Osh
+           'T', // Talas
+           'Y', // Ysyk-Kol
+       ];
+    }
 }

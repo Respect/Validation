@@ -16,15 +16,21 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Guam subdivision code.
+ * Validates whether an input is subdivision code of Guam or not.
  *
  * ISO 3166-1 alpha-2: GU
  *
  * @see http://www.geonames.org/GU/administrative-division-guam.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class GuSubdivisionCode extends AbstractSearcher
+final class GuSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

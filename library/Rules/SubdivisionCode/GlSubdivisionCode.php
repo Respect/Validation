@@ -16,20 +16,26 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Greenland subdivision code.
+ * Validates whether an input is subdivision code of Greenland or not.
  *
  * ISO 3166-1 alpha-2: GL
  *
  * @see http://www.geonames.org/GL/administrative-division-greenland.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class GlSubdivisionCode extends AbstractSearcher
+final class GlSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'KU', // Kujalleq
-        'QA', // Qaasuitsup
-        'QE', // Qeqqata
-        'SM', // Sermersooq
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'KU', // Kujalleq
+           'QA', // Qaasuitsup
+           'QE', // Qeqqata
+           'SM', // Sermersooq
+       ];
+    }
 }

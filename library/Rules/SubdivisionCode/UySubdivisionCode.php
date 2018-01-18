@@ -16,35 +16,41 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Uruguay subdivision code.
+ * Validates whether an input is subdivision code of Uruguay or not.
  *
  * ISO 3166-1 alpha-2: UY
  *
  * @see http://www.geonames.org/UY/administrative-division-uruguay.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class UySubdivisionCode extends AbstractSearcher
+final class UySubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AR', // Artigas
-        'CA', // Canelones
-        'CL', // Cerro Largo
-        'CO', // Colonia
-        'DU', // Durazno
-        'FD', // Florida
-        'FS', // Flores
-        'LA', // Lavalleja
-        'MA', // Maldonado
-        'MO', // Montevideo
-        'PA', // Paysandu
-        'RN', // Rio Negro
-        'RO', // Rocha
-        'RV', // Rivera
-        'SA', // Salto
-        'SJ', // San Jose
-        'SO', // Soriano
-        'TA', // Tacuarembó
-        'TT', // Treinta y Tres
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AR', // Artigas
+           'CA', // Canelones
+           'CL', // Cerro Largo
+           'CO', // Colonia
+           'DU', // Durazno
+           'FD', // Florida
+           'FS', // Flores
+           'LA', // Lavalleja
+           'MA', // Maldonado
+           'MO', // Montevideo
+           'PA', // Paysandu
+           'RN', // Rio Negro
+           'RO', // Rocha
+           'RV', // Rivera
+           'SA', // Salto
+           'SJ', // San Jose
+           'SO', // Soriano
+           'TA', // Tacuarembó
+           'TT', // Treinta y Tres
+       ];
+    }
 }

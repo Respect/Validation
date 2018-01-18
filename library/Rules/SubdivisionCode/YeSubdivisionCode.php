@@ -16,38 +16,44 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Yemen subdivision code.
+ * Validates whether an input is subdivision code of Yemen or not.
  *
  * ISO 3166-1 alpha-2: YE
  *
  * @see http://www.geonames.org/YE/administrative-division-yemen.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class YeSubdivisionCode extends AbstractSearcher
+final class YeSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AB', // Abyan
-        'AD', // Adan
-        'AM', // Amran
-        'BA', // Al Bayda
-        'DA', // Ad Dali
-        'DH', // Dhamar
-        'HD', // Hadramawt
-        'HJ', // Hajjah
-        'HU', // Al Hudaydah
-        'IB', // Ibb
-        'JA', // Al Jawf
-        'LA', // Lahij
-        'MA', // Ma'rib
-        'MR', // Al Mahrah
-        'MW', // Al Mahwit
-        'RA', // Raymah
-        'SA', // Amanat Al Asimah
-        'SD', // Sa'dah
-        'SH', // Shabwah
-        'SN', // San'a
-        'SU', // Socotra
-        'TA', // Ta'izz
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AB', // Abyan
+           'AD', // Adan
+           'AM', // Amran
+           'BA', // Al Bayda
+           'DA', // Ad Dali
+           'DH', // Dhamar
+           'HD', // Hadramawt
+           'HJ', // Hajjah
+           'HU', // Al Hudaydah
+           'IB', // Ibb
+           'JA', // Al Jawf
+           'LA', // Lahij
+           'MA', // Ma'rib
+           'MR', // Al Mahrah
+           'MW', // Al Mahwit
+           'RA', // Raymah
+           'SA', // Amanat Al Asimah
+           'SD', // Sa'dah
+           'SH', // Shabwah
+           'SN', // San'a
+           'SU', // Socotra
+           'TA', // Ta'izz
+       ];
+    }
 }

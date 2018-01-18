@@ -16,28 +16,34 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Guinea-Bissau subdivision code.
+ * Validates whether an input is subdivision code of Guinea-Bissau or not.
  *
  * ISO 3166-1 alpha-2: GW
  *
  * @see http://www.geonames.org/GW/administrative-division-guinea-bissau.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class GwSubdivisionCode extends AbstractSearcher
+final class GwSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'BA', // Bafata Region
-        'BL', // Bolama Region
-        'BM', // Biombo Region
-        'BS', // Bissau Region
-        'CA', // Cacheu Region
-        'GA', // Gabu Region
-        'L', // Leste
-        'N', // Norte
-        'OI', // Oio Region
-        'QU', // Quinara Region
-        'S', // Sul
-        'TO', // Tombali Region
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'BA', // Bafata Region
+           'BL', // Bolama Region
+           'BM', // Biombo Region
+           'BS', // Bissau Region
+           'CA', // Cacheu Region
+           'GA', // Gabu Region
+           'L', // Leste
+           'N', // Norte
+           'OI', // Oio Region
+           'QU', // Quinara Region
+           'S', // Sul
+           'TO', // Tombali Region
+       ];
+    }
 }

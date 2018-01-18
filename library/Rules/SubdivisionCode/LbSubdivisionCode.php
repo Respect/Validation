@@ -16,24 +16,30 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Lebanon subdivision code.
+ * Validates whether an input is subdivision code of Lebanon or not.
  *
  * ISO 3166-1 alpha-2: LB
  *
  * @see http://www.geonames.org/LB/administrative-division-lebanon.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class LbSubdivisionCode extends AbstractSearcher
+final class LbSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AK', // Aakkâr
-        'AS', // Liban-Nord
-        'BA', // Beyrouth
-        'BH', // Baalbek-Hermel
-        'BI', // Béqaa
-        'JA', // Liban-Sud
-        'JL', // Mont-Liban
-        'NA', // Nabatîyé
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AK', // Aakkâr
+           'AS', // Liban-Nord
+           'BA', // Beyrouth
+           'BH', // Baalbek-Hermel
+           'BI', // Béqaa
+           'JA', // Liban-Sud
+           'JL', // Mont-Liban
+           'NA', // Nabatîyé
+       ];
+    }
 }

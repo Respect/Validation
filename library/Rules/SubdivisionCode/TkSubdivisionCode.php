@@ -16,19 +16,25 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Tokelau subdivision code.
+ * Validates whether an input is subdivision code of Tokelau or not.
  *
  * ISO 3166-1 alpha-2: TK
  *
  * @see http://www.geonames.org/TK/administrative-division-tokelau.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class TkSubdivisionCode extends AbstractSearcher
+final class TkSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'A', // Atafu
-        'F', // Fakaofo
-        'N', // Nukunonu
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'A', // Atafu
+           'F', // Fakaofo
+           'N', // Nukunonu
+       ];
+    }
 }

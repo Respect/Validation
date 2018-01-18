@@ -14,96 +14,76 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\DataProvider\UndefinedProvider;
 
-class AbstractSearcherTest extends TestCase
+/**
+ * @group core
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class AbstractSearcherTest extends TestCase
 {
-    protected $searcherRuleMock;
+    use UndefinedProvider;
 
-    protected function setUp(): void
+    /**
+     * @test
+     */
+    public function shouldValidateFromDataSource(): void
     {
-        $this->searcherRuleMock = $this->getMockForAbstractClass(AbstractSearcher::class);
+        $input = 'bar';
+
+        $rule = $this->getMockForAbstractClass(AbstractSearcher::class);
+        $rule
+            ->expects($this->once())
+            ->method('getDataSource')
+            ->willReturn(['foo', $input, 'baz']);
+
+        self::assertTrue($rule->validate($input));
     }
 
-    public function testValidateShouldReturnTrueWhenEqualValueIsFoundInHaystack(): void
+    /**
+     * @test
+     */
+    public function shouldNotFindWhenNotIdentical(): void
     {
-        $this->searcherRuleMock->haystack = [1, 2, 3, 4];
+        $input = 2.0;
 
-        self::assertTrue($this->searcherRuleMock->validate('1'));
-        self::assertTrue($this->searcherRuleMock->validate(1));
+        $rule = $this->getMockForAbstractClass(AbstractSearcher::class);
+        $rule
+            ->expects($this->once())
+            ->method('getDataSource')
+            ->willReturn([1, (int) $input, 3]);
+
+        self::assertFalse($rule->validate($input));
     }
 
-    public function testValidateShouldReturnFalseWhenEqualValueIsNotFoundInHaystack(): void
+    /**
+     * @test
+     * @dataProvider providerForUndefined
+     */
+    public function shouldValidateWhenValueIsUndefinedAndDataSourceIsEmpty($input): void
     {
-        $this->searcherRuleMock->haystack = [1, 2, 3, 4];
+        $rule = $this->getMockForAbstractClass(AbstractSearcher::class);
+        $rule
+            ->expects($this->once())
+            ->method('getDataSource')
+            ->willReturn([]);
 
-        self::assertFalse($this->searcherRuleMock->validate(5));
+        self::assertTrue($rule->validate($input));
     }
 
-    public function testValidateShouldReturnTrueWhenIdenticalValueIsFoundInHaystack(): void
+    /**
+     * @test
+     * @dataProvider providerForNotUndefined
+     */
+    public function shouldNotValidateWhenValueIsNotUndefinedAndDataSourceNotEmpty($input): void
     {
-        $this->searcherRuleMock->haystack = [1, 2, 3, 4];
-        $this->searcherRuleMock->compareIdentical = true;
+        $rule = $this->getMockForAbstractClass(AbstractSearcher::class);
+        $rule
+            ->expects($this->once())
+            ->method('getDataSource')
+            ->willReturn([]);
 
-        self::assertTrue($this->searcherRuleMock->validate(1));
-        self::assertTrue($this->searcherRuleMock->validate(4));
-    }
-
-    public function testValidateShouldReturnFalseWhenIdenticalValueIsNotFoundInHaystack(): void
-    {
-        $this->searcherRuleMock->haystack = [1, 2, 3, 4];
-        $this->searcherRuleMock->compareIdentical = true;
-
-        self::assertFalse($this->searcherRuleMock->validate('1'));
-        self::assertFalse($this->searcherRuleMock->validate('4'));
-        self::assertFalse($this->searcherRuleMock->validate(5));
-    }
-
-    public function testValidateShouldReturnTrueWhenInputIsEmptyOrNullAndIdenticalToHaystack(): void
-    {
-        $this->searcherRuleMock->compareIdentical = true;
-
-        self::assertTrue($this->searcherRuleMock->validate(null));
-
-        $this->searcherRuleMock->haystack = '';
-
-        self::assertTrue($this->searcherRuleMock->validate(''));
-    }
-
-    public function testValidateShouldReturnFalseWhenInputIsEmptyOrNullAndNotIdenticalToHaystack(): void
-    {
-        $this->searcherRuleMock->compareIdentical = true;
-
-        self::assertFalse($this->searcherRuleMock->validate(''));
-
-        $this->searcherRuleMock->haystack = '';
-
-        self::assertFalse($this->searcherRuleMock->validate(null));
-    }
-
-    public function testValidateShouldReturnTrueWhenInputIsEmptyOrNullAndEqualsHaystack(): void
-    {
-        self::assertTrue($this->searcherRuleMock->validate(''));
-        self::assertTrue($this->searcherRuleMock->validate(null));
-    }
-
-    public function testValidateShouldReturnFalseWhenInputIsEmptyOrNullAndNotEqualsHaystack(): void
-    {
-        $this->searcherRuleMock->haystack = 'Respect';
-
-        self::assertFalse($this->searcherRuleMock->validate(''));
-        self::assertFalse($this->searcherRuleMock->validate(null));
-    }
-
-    public function testValidateWhenHaystackIsNotArrayAndInputIsPartOfHaystack(): void
-    {
-        $this->searcherRuleMock->haystack = 'Respect';
-
-        self::assertTrue($this->searcherRuleMock->validate('Res'));
-        self::assertTrue($this->searcherRuleMock->validate('RES'));
-
-        $this->searcherRuleMock->compareIdentical = true;
-
-        self::assertFalse($this->searcherRuleMock->validate('RES'));
-        self::assertTrue($this->searcherRuleMock->validate('Res'));
+        self::assertFalse($rule->validate($input));
     }
 }

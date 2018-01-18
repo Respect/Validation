@@ -16,20 +16,26 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Heard Island and McDonald Islands subdivision code.
+ * Validates whether an input is subdivision code of Heard Island and McDonald Islands or not.
  *
  * ISO 3166-1 alpha-2: HM
  *
  * @see http://www.geonames.org/HM/administrative-division-heard-island-and-mcdonald-islands.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class HmSubdivisionCode extends AbstractSearcher
+final class HmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'F', // Flat Island
-        'H', // Heard Island
-        'M', // McDonald Island
-        'S', // Shag Island
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'F', // Flat Island
+           'H', // Heard Island
+           'M', // McDonald Island
+           'S', // Shag Island
+       ];
+    }
 }

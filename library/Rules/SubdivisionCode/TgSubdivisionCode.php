@@ -16,21 +16,27 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Togo subdivision code.
+ * Validates whether an input is subdivision code of Togo or not.
  *
  * ISO 3166-1 alpha-2: TG
  *
  * @see http://www.geonames.org/TG/administrative-division-togo.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class TgSubdivisionCode extends AbstractSearcher
+final class TgSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'C', // Centrale
-        'K', // Kara
-        'M', // Maritime
-        'P', // Plateaux
-        'S', // Savanes
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'C', // Centrale
+           'K', // Kara
+           'M', // Maritime
+           'P', // Plateaux
+           'S', // Savanes
+       ];
+    }
 }

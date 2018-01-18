@@ -16,30 +16,36 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Namibia subdivision code.
+ * Validates whether an input is subdivision code of Namibia or not.
  *
  * ISO 3166-1 alpha-2: NA
  *
  * @see http://www.geonames.org/NA/administrative-division-namibia.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class NaSubdivisionCode extends AbstractSearcher
+final class NaSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'CA', // Caprivi
-        'ER', // Erongo
-        'HA', // Hardap
-        'KA', // Karas
-        'KE', // Kavango East
-        'KH', // Khomas
-        'KU', // Kunene
-        'KW', // Kavango West
-        'OD', // Otjozondjupa
-        'OH', // Omaheke
-        'ON', // Oshana
-        'OS', // Omusati
-        'OT', // Oshikoto
-        'OW', // Ohangwena
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'CA', // Caprivi
+           'ER', // Erongo
+           'HA', // Hardap
+           'KA', // Karas
+           'KE', // Kavango East
+           'KH', // Khomas
+           'KU', // Kunene
+           'KW', // Kavango West
+           'OD', // Otjozondjupa
+           'OH', // Omaheke
+           'ON', // Oshana
+           'OS', // Omusati
+           'OT', // Oshikoto
+           'OW', // Ohangwena
+       ];
+    }
 }

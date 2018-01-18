@@ -16,57 +16,63 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Guinea subdivision code.
+ * Validates whether an input is subdivision code of Guinea or not.
  *
  * ISO 3166-1 alpha-2: GN
  *
  * @see http://www.geonames.org/GN/administrative-division-guinea.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class GnSubdivisionCode extends AbstractSearcher
+final class GnSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'B', // Boké
-        'BE', // Beyla
-        'BF', // Boffa
-        'BK', // Boke
-        'C', // Conakry
-        'CO', // Coyah
-        'D', // Kindia
-        'DB', // Dabola
-        'DI', // Dinguiraye
-        'DL', // Dalaba
-        'DU', // Dubreka
-        'F', // Faranah
-        'FA', // Faranah
-        'FO', // Forecariah
-        'FR', // Fria
-        'GA', // Gaoual
-        'GU', // Gueckedou
-        'K', // Kankan
-        'KA', // Kankan
-        'KB', // Koubia
-        'KD', // Kindia
-        'KE', // Kerouane
-        'KN', // Koundara
-        'KO', // Kouroussa
-        'KS', // Kissidougou
-        'L', // Labé
-        'LA', // Labe
-        'LE', // Lelouma
-        'LO', // Lola
-        'M', // Mamou
-        'MC', // Macenta
-        'MD', // Mandiana
-        'ML', // Mali
-        'MM', // Mamou
-        'N', // Nzérékoré
-        'NZ', // Nzerekore
-        'PI', // Pita
-        'SI', // Siguiri
-        'TE', // Telimele
-        'TO', // Tougue
-        'YO', // Yomou
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'B', // Boké
+           'BE', // Beyla
+           'BF', // Boffa
+           'BK', // Boke
+           'C', // Conakry
+           'CO', // Coyah
+           'D', // Kindia
+           'DB', // Dabola
+           'DI', // Dinguiraye
+           'DL', // Dalaba
+           'DU', // Dubreka
+           'F', // Faranah
+           'FA', // Faranah
+           'FO', // Forecariah
+           'FR', // Fria
+           'GA', // Gaoual
+           'GU', // Gueckedou
+           'K', // Kankan
+           'KA', // Kankan
+           'KB', // Koubia
+           'KD', // Kindia
+           'KE', // Kerouane
+           'KN', // Koundara
+           'KO', // Kouroussa
+           'KS', // Kissidougou
+           'L', // Labé
+           'LA', // Labe
+           'LE', // Lelouma
+           'LO', // Lola
+           'M', // Mamou
+           'MC', // Macenta
+           'MD', // Mandiana
+           'ML', // Mali
+           'MM', // Mamou
+           'N', // Nzérékoré
+           'NZ', // Nzerekore
+           'PI', // Pita
+           'SI', // Siguiri
+           'TE', // Telimele
+           'TO', // Tougue
+           'YO', // Yomou
+       ];
+    }
 }

@@ -16,15 +16,21 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for British Virgin Islands subdivision code.
+ * Validates whether an input is subdivision code of British Virgin Islands or not.
  *
  * ISO 3166-1 alpha-2: VG
  *
  * @see http://www.geonames.org/VG/administrative-division-british-virgin-islands.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class VgSubdivisionCode extends AbstractSearcher
+final class VgSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

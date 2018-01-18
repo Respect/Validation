@@ -16,27 +16,33 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Bermuda subdivision code.
+ * Validates whether an input is subdivision code of Bermuda or not.
  *
  * ISO 3166-1 alpha-2: BM
  *
  * @see http://www.geonames.org/BM/administrative-division-bermuda.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class BmSubdivisionCode extends AbstractSearcher
+final class BmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'DS', // Devonshire
-        'GC', // Saint George
-        'HA', // Hamilton
-        'HC', // Hamilton City
-        'PB', // Pembroke
-        'PG', // Paget
-        'SA', // Sandys
-        'SG', // Saint George's
-        'SH', // Southampton
-        'SM', // Smith's
-        'WA', // Warwick
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'DS', // Devonshire
+           'GC', // Saint George
+           'HA', // Hamilton
+           'HC', // Hamilton City
+           'PB', // Pembroke
+           'PG', // Paget
+           'SA', // Sandys
+           'SG', // Saint George's
+           'SH', // Southampton
+           'SM', // Smith's
+           'WA', // Warwick
+       ];
+    }
 }

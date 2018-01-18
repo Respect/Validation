@@ -16,21 +16,27 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for American Samoa subdivision code.
+ * Validates whether an input is subdivision code of American Samoa or not.
  *
  * ISO 3166-1 alpha-2: AS
  *
  * @see http://www.geonames.org/AS/administrative-division-american-samoa.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class AsSubdivisionCode extends AbstractSearcher
+final class AsSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'E', // Eastern
-        'M', // Manu'a
-        'R', // Rose Island
-        'S', // Swains Island
-        'W', // Western
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'E', // Eastern
+           'M', // Manu'a
+           'R', // Rose Island
+           'S', // Swains Island
+           'W', // Western
+       ];
+    }
 }

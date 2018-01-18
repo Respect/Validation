@@ -16,15 +16,21 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Guadeloupe subdivision code.
+ * Validates whether an input is subdivision code of Guadeloupe or not.
  *
  * ISO 3166-1 alpha-2: GP
  *
  * @see http://www.geonames.org/GP/administrative-division-guadeloupe.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class GpSubdivisionCode extends AbstractSearcher
+final class GpSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

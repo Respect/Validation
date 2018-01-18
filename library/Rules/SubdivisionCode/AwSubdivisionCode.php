@@ -16,15 +16,21 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Aruba subdivision code.
+ * Validates whether an input is subdivision code of Aruba or not.
  *
  * ISO 3166-1 alpha-2: AW
  *
  * @see http://www.geonames.org/AW/administrative-division-aruba.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class AwSubdivisionCode extends AbstractSearcher
+final class AwSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

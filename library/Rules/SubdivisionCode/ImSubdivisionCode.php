@@ -16,15 +16,21 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Isle of Man subdivision code.
+ * Validates whether an input is subdivision code of Isle of Man or not.
  *
  * ISO 3166-1 alpha-2: IM
  *
  * @see http://www.geonames.org/IM/administrative-division-isle-of-man.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ImSubdivisionCode extends AbstractSearcher
+final class ImSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

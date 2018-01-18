@@ -16,28 +16,34 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Luxembourg subdivision code.
+ * Validates whether an input is subdivision code of Luxembourg or not.
  *
  * ISO 3166-1 alpha-2: LU
  *
  * @see http://www.geonames.org/LU/administrative-division-luxembourg.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class LuSubdivisionCode extends AbstractSearcher
+final class LuSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'CA', // Canton de Capellen
-        'CL', // Canton de Clervaux
-        'DI', // Canton de Diekirch
-        'EC', // Canton d'Echternach
-        'ES', // Canton d'Esch-sur-Alzette
-        'GR', // Canton de Grevenmacher
-        'LU', // Canton de Luxembourg
-        'ME', // Canton de Mersch
-        'RD', // Canton de Redange
-        'RM', // Canton de Remich
-        'VD', // Canton de Vianden
-        'WI', // Canton de Wiltz
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'CA', // Canton de Capellen
+           'CL', // Canton de Clervaux
+           'DI', // Canton de Diekirch
+           'EC', // Canton d'Echternach
+           'ES', // Canton d'Esch-sur-Alzette
+           'GR', // Canton de Grevenmacher
+           'LU', // Canton de Luxembourg
+           'ME', // Canton de Mersch
+           'RD', // Canton de Redange
+           'RM', // Canton de Remich
+           'VD', // Canton de Vianden
+           'WI', // Canton de Wiltz
+       ];
+    }
 }

@@ -16,26 +16,21 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for South Sudan subdivision code.
+ * Validates whether an input is subdivision code of South Sudan or not.
  *
  * ISO 3166-1 alpha-2: SS
  *
  * @see http://www.geonames.org/SS/administrative-division-south-sudan.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SsSubdivisionCode extends AbstractSearcher
+final class SsSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'BN', // Northern Bahr el Ghazal
-        'BW', // Western Bahr el Ghazal
-        'EC', // Central Equatoria
-        'EE', // Eastern Equatoria
-        'EW', // Western Equatoria
-        'JG', // Jonglei
-        'LK', // Lakes
-        'NU', // Upper Nile
-        'UY', // Unity
-        'WR', // Warrap
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

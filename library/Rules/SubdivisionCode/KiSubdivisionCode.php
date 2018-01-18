@@ -16,19 +16,25 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Kiribati subdivision code.
+ * Validates whether an input is subdivision code of Kiribati or not.
  *
  * ISO 3166-1 alpha-2: KI
  *
  * @see http://www.geonames.org/KI/administrative-division-kiribati.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class KiSubdivisionCode extends AbstractSearcher
+final class KiSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'G', // Gilbert Islands
-        'L', // Line Islands
-        'P', // Phoenix Islands
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'G', // Gilbert Islands
+           'L', // Line Islands
+           'P', // Phoenix Islands
+       ];
+    }
 }

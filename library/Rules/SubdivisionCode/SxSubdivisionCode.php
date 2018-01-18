@@ -16,15 +16,21 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Sint Maarten subdivision code.
+ * Validates whether an input is subdivision code of Sint Maarten or not.
  *
  * ISO 3166-1 alpha-2: SX
  *
  * @see http://www.geonames.org/SX/administrative-division-sint-maarten.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SxSubdivisionCode extends AbstractSearcher
+final class SxSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

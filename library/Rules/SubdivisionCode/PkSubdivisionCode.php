@@ -16,24 +16,30 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Pakistan subdivision code.
+ * Validates whether an input is subdivision code of Pakistan or not.
  *
  * ISO 3166-1 alpha-2: PK
  *
  * @see http://www.geonames.org/PK/administrative-division-pakistan.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class PkSubdivisionCode extends AbstractSearcher
+final class PkSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'BA', // Balochistan
-        'GB', // Gilgit-Baltistan
-        'IS', // Islamabad Capital Territory
-        'JK', // Azad Kashmir
-        'KP', // Khyber Pakhtunkhwa
-        'PB', // Punjab
-        'SD', // Sindh
-        'TA', // Federally Administered Tribal Areas
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'BA', // Balochistan
+           'GB', // Gilgit-Baltistan
+           'IS', // Islamabad Capital Territory
+           'JK', // Azad Kashmir
+           'KP', // Khyber Pakhtunkhwa
+           'PB', // Punjab
+           'SD', // Sindh
+           'TA', // Federally Administered Tribal Areas
+       ];
+    }
 }

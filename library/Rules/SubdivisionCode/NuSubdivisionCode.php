@@ -16,15 +16,21 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Niue subdivision code.
+ * Validates whether an input is subdivision code of Niue or not.
  *
  * ISO 3166-1 alpha-2: NU
  *
  * @see http://www.geonames.org/NU/administrative-division-niue.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class NuSubdivisionCode extends AbstractSearcher
+final class NuSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

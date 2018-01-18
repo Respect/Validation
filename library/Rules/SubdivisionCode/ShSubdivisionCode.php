@@ -16,19 +16,25 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Saint Helena subdivision code.
+ * Validates whether an input is subdivision code of Saint Helena or not.
  *
  * ISO 3166-1 alpha-2: SH
  *
  * @see http://www.geonames.org/SH/administrative-division-saint-helena.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ShSubdivisionCode extends AbstractSearcher
+final class ShSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AC', // Ascension
-        'HL', // Saint Helena
-        'TA', // Tristan da Cunha
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AC', // Ascension
+           'HL', // Saint Helena
+           'TA', // Tristan da Cunha
+       ];
+    }
 }

@@ -16,25 +16,31 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Equatorial Guinea subdivision code.
+ * Validates whether an input is subdivision code of Equatorial Guinea or not.
  *
  * ISO 3166-1 alpha-2: GQ
  *
  * @see http://www.geonames.org/GQ/administrative-division-equatorial-guinea.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class GqSubdivisionCode extends AbstractSearcher
+final class GqSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AN', // Provincia Annobon
-        'BN', // Provincia Bioko Norte
-        'BS', // Provincia Bioko Sur
-        'C', // Región Continental
-        'CS', // Provincia Centro Sur
-        'I', // Región Insular
-        'KN', // Provincia Kie-Ntem
-        'LI', // Provincia Litoral
-        'WN', // Provincia Wele-Nzas
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AN', // Provincia Annobon
+           'BN', // Provincia Bioko Norte
+           'BS', // Provincia Bioko Sur
+           'C', // Región Continental
+           'CS', // Provincia Centro Sur
+           'I', // Región Insular
+           'KN', // Provincia Kie-Ntem
+           'LI', // Provincia Litoral
+           'WN', // Provincia Wele-Nzas
+       ];
+    }
 }

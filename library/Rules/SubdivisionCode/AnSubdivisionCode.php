@@ -16,15 +16,21 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Netherlands Antilles subdivision code.
+ * Validates whether an input is subdivision code of Netherlands Antilles or not.
  *
  * ISO 3166-1 alpha-2: AN
  *
  * @see http://www.geonames.org/AN/administrative-division-netherlands-antilles.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class AnSubdivisionCode extends AbstractSearcher
+final class AnSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

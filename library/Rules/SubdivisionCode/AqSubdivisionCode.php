@@ -16,15 +16,21 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Antarctica subdivision code.
+ * Validates whether an input is subdivision code of Antarctica or not.
  *
  * ISO 3166-1 alpha-2: AQ
  *
  * @see http://www.geonames.org/AQ/administrative-division-antarctica.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class AqSubdivisionCode extends AbstractSearcher
+final class AqSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

@@ -16,15 +16,21 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Guernsey subdivision code.
+ * Validates whether an input is subdivision code of Guernsey or not.
  *
  * ISO 3166-1 alpha-2: GG
  *
  * @see http://www.geonames.org/GG/administrative-division-guernsey.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class GgSubdivisionCode extends AbstractSearcher
+final class GgSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

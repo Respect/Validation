@@ -16,25 +16,31 @@ namespace Respect\Validation\Rules\SubdivisionCode;
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Bolivia subdivision code.
+ * Validates whether an input is subdivision code of Bolivia or not.
  *
  * ISO 3166-1 alpha-2: BO
  *
  * @see http://www.geonames.org/BO/administrative-division-bolivia.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class BoSubdivisionCode extends AbstractSearcher
+final class BoSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'B', // Departmento Beni
-        'C', // Departmento Cochabamba
-        'H', // Departmento Chuquisaca
-        'L', // Departmento La Paz
-        'N', // Departmento Pando
-        'O', // Departmento Oruro
-        'P', // Departmento Potosi
-        'S', // Departmento Santa Cruz
-        'T', // Departmento Tarija
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'B', // Departmento Beni
+           'C', // Departmento Cochabamba
+           'H', // Departmento Chuquisaca
+           'L', // Departmento La Paz
+           'N', // Departmento Pando
+           'O', // Departmento Oruro
+           'P', // Departmento Potosi
+           'S', // Departmento Santa Cruz
+           'T', // Departmento Tarija
+       ];
+    }
 }
