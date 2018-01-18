@@ -13,8 +13,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Helpers\UndefinedHelper;
+
 abstract class AbstractSearcher extends AbstractRule
 {
+    use UndefinedHelper;
+
     public $haystack;
     public $compareIdentical;
 
@@ -24,7 +28,7 @@ abstract class AbstractSearcher extends AbstractRule
             return in_array($input, $this->haystack);
         }
 
-        if (null === $input || '' === $input) {
+        if ($this->isUndefined($input)) {
             return $input == $this->haystack;
         }
 
@@ -39,7 +43,7 @@ abstract class AbstractSearcher extends AbstractRule
             return in_array($input, $this->haystack, true);
         }
 
-        if (null === $input || '' === $input) {
+        if ($this->isUndefined($input)) {
             return $input === $this->haystack;
         }
 
