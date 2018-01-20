@@ -40,7 +40,7 @@ class Nullable extends AbstractWrapper
 
     public function validate($input)
     {
-        if ($this->isOptional($input)) {
+        if ($input === null) {
             return true;
         }
 
