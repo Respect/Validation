@@ -29,6 +29,6 @@ class NullableException extends ValidationException
 
     public function chooseTemplate()
     {
-        return $this->getName() == '' ? static::STANDARD : static::NAMED;
+        return $this->hasName() ? static::NAMED : static::STANDARD;
     }
 }
