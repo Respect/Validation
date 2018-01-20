@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
 class BetweenException extends NestedValidationException
@@ -36,8 +38,8 @@ class BetweenException extends NestedValidationException
             return static::GREATER;
         } elseif (!$this->getParam('maxValue')) {
             return static::LOWER;
-        } else {
-            return static::BOTH;
         }
+
+        return static::BOTH;
     }
 }

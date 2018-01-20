@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Central African Republic subdivision code.
+ * Exception class for subdivision codes of Central African Republic.
  *
  * ISO 3166-1 alpha-2: CF
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class CfSubdivisionCodeException extends SubdivisionCodeException
+final class CfSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Central African Republic',

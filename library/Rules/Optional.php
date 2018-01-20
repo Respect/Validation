@@ -9,25 +9,25 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Helpers\UndefinedHelper;
 use Respect\Validation\Validatable;
 
 class Optional extends AbstractWrapper
 {
+    use UndefinedHelper;
+
     public function __construct(Validatable $rule)
     {
         $this->validatable = $rule;
     }
 
-    private function isOptional($input)
-    {
-        return in_array($input, [null, ''], true);
-    }
-
     public function assert($input)
     {
-        if ($this->isOptional($input)) {
+        if ($this->isUndefined($input)) {
             return true;
         }
 
@@ -36,7 +36,7 @@ class Optional extends AbstractWrapper
 
     public function check($input)
     {
-        if ($this->isOptional($input)) {
+        if ($this->isUndefined($input)) {
             return true;
         }
 
@@ -45,7 +45,7 @@ class Optional extends AbstractWrapper
 
     public function validate($input)
     {
-        if ($this->isOptional($input)) {
+        if ($this->isUndefined($input)) {
             return true;
         }
 

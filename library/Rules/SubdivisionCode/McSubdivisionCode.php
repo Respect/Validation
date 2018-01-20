@@ -9,38 +9,46 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Monaco subdivision code.
+ * Validates whether an input is subdivision code of Monaco or not.
  *
  * ISO 3166-1 alpha-2: MC
  *
- * @link http://www.geonames.org/MC/administrative-division-monaco.html
+ * @see http://www.geonames.org/MC/administrative-division-monaco.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class McSubdivisionCode extends AbstractSearcher
+final class McSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'CL', // La Colle
-        'CO', // La Condamine
-        'FO', // Fontvieille
-        'GA', // La Gare
-        'JE', // Jardin Exotique
-        'LA', // Larvotto
-        'MA', // Malbousquet
-        'MC', // Monte-Carlo
-        'MG', // Moneghetti
-        'MO', // Monaco-Ville
-        'MU', // Moulins
-        'PH', // Port-Hercule
-        'SD', // Sainte-Dévote
-        'SO', // La Source
-        'SP', // Spélugues
-        'SR', // Saint-Roman
-        'VR', // Vallon de la Rousse
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'CL', // La Colle
+           'CO', // La Condamine
+           'FO', // Fontvieille
+           'GA', // La Gare
+           'JE', // Jardin Exotique
+           'LA', // Larvotto
+           'MA', // Malbousquet
+           'MC', // Monte-Carlo
+           'MG', // Moneghetti
+           'MO', // Monaco-Ville
+           'MU', // Moulins
+           'PH', // Port-Hercule
+           'SD', // Sainte-Dévote
+           'SO', // La Source
+           'SP', // Spélugues
+           'SR', // Saint-Roman
+           'VR', // Vallon de la Rousse
+       ];
+    }
 }

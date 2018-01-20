@@ -9,20 +9,28 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Jersey subdivision code.
+ * Validates whether an input is subdivision code of Jersey or not.
  *
  * ISO 3166-1 alpha-2: JE
  *
- * @link http://www.geonames.org/JE/administrative-division-jersey.html
+ * @see http://www.geonames.org/JE/administrative-division-jersey.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class JeSubdivisionCode extends AbstractSearcher
+final class JeSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

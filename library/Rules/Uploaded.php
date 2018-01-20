@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Uploaded extends AbstractRule
@@ -19,6 +21,6 @@ class Uploaded extends AbstractRule
             $input = $input->getPathname();
         }
 
-        return (is_string($input) && is_uploaded_file($input));
+        return is_string($input) && is_uploaded_file($input);
     }
 }

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class File extends AbstractRule
@@ -19,6 +21,6 @@ class File extends AbstractRule
             return $input->isFile();
         }
 
-        return (is_string($input) && is_file($input));
+        return is_string($input) && is_file($input);
     }
 }

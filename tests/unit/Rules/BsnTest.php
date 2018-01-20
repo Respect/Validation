@@ -9,16 +9,18 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Bsn
- * @covers Respect\Validation\Exceptions\BsnException
+ * @covers \Respect\Validation\Rules\Bsn
+ * @covers \Respect\Validation\Exceptions\BsnException
  */
-class BsnTest extends PHPUnit_Framework_TestCase
+class BsnTest extends TestCase
 {
     /**
      * @var Bsn
@@ -28,7 +30,7 @@ class BsnTest extends PHPUnit_Framework_TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->rule = new Bsn();
     }
@@ -38,9 +40,9 @@ class BsnTest extends PHPUnit_Framework_TestCase
      *
      * @param string $input
      */
-    public function testShouldValidateBsn($input)
+    public function testShouldValidateBsn($input): void
     {
-        $this->assertTrue($this->rule->validate($input));
+        self::assertTrue($this->rule->validate($input));
     }
 
     /**
@@ -48,9 +50,9 @@ class BsnTest extends PHPUnit_Framework_TestCase
      *
      * @param string $input
      */
-    public function testShouldNotValidateBsn($input)
+    public function testShouldNotValidateBsn($input): void
     {
-        $this->assertFalse($this->rule->validate($input));
+        self::assertFalse($this->rule->validate($input));
     }
 
     /**

@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Christmas Island subdivision code.
+ * Exception class for subdivision codes of Christmas Island.
  *
  * ISO 3166-1 alpha-2: CX
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class CxSubdivisionCodeException extends SubdivisionCodeException
+final class CxSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Christmas Island',

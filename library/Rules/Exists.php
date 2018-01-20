@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Exists extends AbstractRule
@@ -19,6 +21,6 @@ class Exists extends AbstractRule
             $input = $input->getPathname();
         }
 
-        return (is_string($input) && file_exists($input));
+        return is_string($input) && file_exists($input);
     }
 }

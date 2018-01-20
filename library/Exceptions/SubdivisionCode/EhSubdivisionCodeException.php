@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Western Sahara subdivision code.
+ * Exception class for subdivision codes of Western Sahara.
  *
  * ISO 3166-1 alpha-2: EH
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class EhSubdivisionCodeException extends SubdivisionCodeException
+final class EhSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Western Sahara',

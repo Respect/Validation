@@ -9,20 +9,28 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Gibraltar subdivision code.
+ * Validates whether an input is subdivision code of Gibraltar or not.
  *
  * ISO 3166-1 alpha-2: GI
  *
- * @link http://www.geonames.org/GI/administrative-division-gibraltar.html
+ * @see http://www.geonames.org/GI/administrative-division-gibraltar.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class GiSubdivisionCode extends AbstractSearcher
+final class GiSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

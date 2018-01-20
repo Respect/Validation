@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Cnpj
- * @covers Respect\Validation\Exceptions\CnpjException
+ * @covers \Respect\Validation\Rules\Cnpj
+ * @covers \Respect\Validation\Exceptions\CnpjException
  */
-class CnpjTest extends \PHPUnit_Framework_TestCase
+class CnpjTest extends TestCase
 {
     protected $cnpjValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->cnpjValidator = new Cnpj();
     }
@@ -28,41 +32,41 @@ class CnpjTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerValidFormattedCnpj
      */
-    public function testFormattedCnpjsShouldValidate($input)
+    public function testFormattedCnpjsShouldValidate($input): void
     {
-        $this->assertTrue($this->cnpjValidator->validate($input));
+        self::assertTrue($this->cnpjValidator->validate($input));
     }
 
     /**
      * @dataProvider providerValidUnformattedCnpj
      */
-    public function testUnformattedCnpjsShouldValidate($input)
+    public function testUnformattedCnpjsShouldValidate($input): void
     {
-        $this->assertTrue($this->cnpjValidator->validate($input));
+        self::assertTrue($this->cnpjValidator->validate($input));
     }
 
     /**
      * @dataProvider providerInvalidFormattedCnpj
      */
-    public function testFormattedCnpjsShouldNotValidate($input)
+    public function testFormattedCnpjsShouldNotValidate($input): void
     {
-        $this->assertFalse($this->cnpjValidator->validate($input));
+        self::assertFalse($this->cnpjValidator->validate($input));
     }
 
     /**
      * @dataProvider providerInvalidUnformattedCnpj
      */
-    public function testUnformattedCnpjsShouldNotValidate($input)
+    public function testUnformattedCnpjsShouldNotValidate($input): void
     {
-        $this->assertFalse($this->cnpjValidator->validate($input));
+        self::assertFalse($this->cnpjValidator->validate($input));
     }
 
     /**
      * @dataProvider providerInvalidFormattedAndUnformattedCnpjLength
      */
-    public function testFormattedAndUnformattedCnpjsShouldNotValidate($input)
+    public function testFormattedAndUnformattedCnpjsShouldNotValidate($input): void
     {
-        $this->assertFalse($this->cnpjValidator->validate($input));
+        self::assertFalse($this->cnpjValidator->validate($input));
     }
 
     public function providerValidFormattedCnpj()

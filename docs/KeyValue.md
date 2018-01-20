@@ -50,13 +50,19 @@ v::keyValue('password_confirmation', 'equals', 'password')->check($input);
 The above code may generate the message:
 
 ```
-password_confirmation must be equals "password"
+password_confirmation must equal "password"
 ```
+
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
 
 ***
 See also:
 
-  * [Key](Key.md)
-  * [KeyNested](KeyNested.md)
-  * [KeySet](KeySet.md)
+- [Key](Key.md)
+- [KeyNested](KeyNested.md)
+- [KeySet](KeySet.md)
 

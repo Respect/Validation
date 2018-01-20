@@ -9,39 +9,47 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Honduras subdivision code.
+ * Validates whether an input is subdivision code of Honduras or not.
  *
  * ISO 3166-1 alpha-2: HN
  *
- * @link http://www.geonames.org/HN/administrative-division-honduras.html
+ * @see http://www.geonames.org/HN/administrative-division-honduras.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class HnSubdivisionCode extends AbstractSearcher
+final class HnSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AT', // Atlantida
-        'CH', // Choluteca
-        'CL', // Colon
-        'CM', // Comayagua
-        'CP', // Copan
-        'CR', // Cortes
-        'EP', // El Paraiso
-        'FM', // Francisco Morazan
-        'GD', // Gracias a Dios
-        'IB', // Islas de la Bahia (Bay Islands)
-        'IN', // Intibuca
-        'LE', // Lempira
-        'LP', // La Paz
-        'OC', // Ocotepeque
-        'OL', // Olancho
-        'SB', // Santa Barbara
-        'VA', // Valle
-        'YO', // Yoro
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AT', // Atlantida
+           'CH', // Choluteca
+           'CL', // Colon
+           'CM', // Comayagua
+           'CP', // Copan
+           'CR', // Cortes
+           'EP', // El Paraiso
+           'FM', // Francisco Morazan
+           'GD', // Gracias a Dios
+           'IB', // Islas de la Bahia (Bay Islands)
+           'IN', // Intibuca
+           'LE', // Lempira
+           'LP', // La Paz
+           'OC', // Ocotepeque
+           'OL', // Olancho
+           'SB', // Santa Barbara
+           'VA', // Valle
+           'YO', // Yoro
+       ];
+    }
 }

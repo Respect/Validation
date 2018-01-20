@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Yemen subdivision code.
+ * Exception class for subdivision codes of Yemen.
  *
  * ISO 3166-1 alpha-2: YE
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class YeSubdivisionCodeException extends SubdivisionCodeException
+final class YeSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Yemen',

@@ -9,28 +9,36 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for United Arab Emirates subdivision code.
+ * Validates whether an input is subdivision code of United Arab Emirates or not.
  *
  * ISO 3166-1 alpha-2: AE
  *
- * @link http://www.geonames.org/AE/administrative-division-united-arab-emirates.html
+ * @see http://www.geonames.org/AE/administrative-division-united-arab-emirates.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class AeSubdivisionCode extends AbstractSearcher
+final class AeSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AJ', // 'Ajman
-        'AZ', // Abu Zaby
-        'DU', // Dubayy
-        'FU', // Al Fujayrah
-        'RK', // R'as al Khaymah
-        'SH', // Ash Shariqah
-        'UQ', // Umm al Qaywayn
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AJ', // 'Ajman
+           'AZ', // Abu Zaby
+           'DU', // Dubayy
+           'FU', // Al Fujayrah
+           'RK', // R'as al Khaymah
+           'SH', // Ash Shariqah
+           'UQ', // Umm al Qaywayn
+       ];
+    }
 }

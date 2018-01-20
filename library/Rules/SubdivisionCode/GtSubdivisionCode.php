@@ -9,43 +9,51 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Guatemala subdivision code.
+ * Validates whether an input is subdivision code of Guatemala or not.
  *
  * ISO 3166-1 alpha-2: GT
  *
- * @link http://www.geonames.org/GT/administrative-division-guatemala.html
+ * @see http://www.geonames.org/GT/administrative-division-guatemala.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class GtSubdivisionCode extends AbstractSearcher
+final class GtSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AV', // Alta Verapaz
-        'BV', // Baja Verapaz
-        'CM', // Chimaltenango
-        'CQ', // Chiquimula
-        'ES', // Escuintla
-        'GU', // Guatemala
-        'HU', // Huehuetenango
-        'IZ', // Izabal
-        'JA', // Jalapa
-        'JU', // Jutiapa
-        'PE', // El Peten
-        'PR', // El Progreso
-        'QC', // El Quiche
-        'QZ', // Quetzaltenango
-        'RE', // Retalhuleu
-        'SA', // Sacatepequez
-        'SM', // San Marcos
-        'SO', // Solola
-        'SR', // Santa Rosa
-        'SU', // Suchitepequez
-        'TO', // Totonicapan
-        'ZA', // Zacapa
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AV', // Alta Verapaz
+           'BV', // Baja Verapaz
+           'CM', // Chimaltenango
+           'CQ', // Chiquimula
+           'ES', // Escuintla
+           'GU', // Guatemala
+           'HU', // Huehuetenango
+           'IZ', // Izabal
+           'JA', // Jalapa
+           'JU', // Jutiapa
+           'PE', // El Peten
+           'PR', // El Progreso
+           'QC', // El Quiche
+           'QZ', // Quetzaltenango
+           'RE', // Retalhuleu
+           'SA', // Sacatepequez
+           'SM', // San Marcos
+           'SO', // Solola
+           'SR', // Santa Rosa
+           'SU', // Suchitepequez
+           'TO', // Totonicapan
+           'ZA', // Zacapa
+       ];
+    }
 }

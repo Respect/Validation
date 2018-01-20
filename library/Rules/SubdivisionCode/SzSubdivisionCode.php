@@ -9,25 +9,33 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Swaziland subdivision code.
+ * Validates whether an input is subdivision code of Swaziland or not.
  *
  * ISO 3166-1 alpha-2: SZ
  *
- * @link http://www.geonames.org/SZ/administrative-division-swaziland.html
+ * @see http://www.geonames.org/SZ/administrative-division-swaziland.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SzSubdivisionCode extends AbstractSearcher
+final class SzSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'HH', // Hhohho
-        'LU', // Lubombo
-        'MA', // Manzini
-        'SH', // Shishelweni
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'HH', // Hhohho
+           'LU', // Lubombo
+           'MA', // Manzini
+           'SH', // Shishelweni
+       ];
+    }
 }

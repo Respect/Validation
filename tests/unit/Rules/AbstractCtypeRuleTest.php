@@ -9,27 +9,31 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class AbstractCtypeRuleTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class AbstractCtypeRuleTest extends TestCase
 {
-    public function testValidateCleanShouldReturnTrueWhenCtypeFunctionReturnsTrue()
+    public function testValidateCleanShouldReturnTrueWhenCtypeFunctionReturnsTrue(): void
     {
-        $ctypeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractCtypeRule');
+        $ctypeRuleMock = $this->getMockForAbstractClass(AbstractCtypeRule::class);
         $ctypeRuleMock->expects($this->once())
             ->method('ctypeFunction')
             ->will($this->returnValue(true));
 
-        $this->assertTrue($ctypeRuleMock->validateClean('anything'));
+        self::assertTrue($ctypeRuleMock->validateClean('anything'));
     }
 
-    public function testValidateCleanShouldReturnFalseWhenCtypeFunctionReturnsFalse()
+    public function testValidateCleanShouldReturnFalseWhenCtypeFunctionReturnsFalse(): void
     {
-        $ctypeRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractCtypeRule');
+        $ctypeRuleMock = $this->getMockForAbstractClass(AbstractCtypeRule::class);
         $ctypeRuleMock->expects($this->once())
             ->method('ctypeFunction')
             ->will($this->returnValue(false));
 
-        $this->assertFalse($ctypeRuleMock->validateClean('anything'));
+        self::assertFalse($ctypeRuleMock->validateClean('anything'));
     }
 }

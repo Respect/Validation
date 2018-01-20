@@ -9,30 +9,38 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for San Marino subdivision code.
+ * Validates whether an input is subdivision code of San Marino or not.
  *
  * ISO 3166-1 alpha-2: SM
  *
- * @link http://www.geonames.org/SM/administrative-division-san-marino.html
+ * @see http://www.geonames.org/SM/administrative-division-san-marino.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SmSubdivisionCode extends AbstractSearcher
+final class SmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        '01', // Acquaviva
-        '02', // Chiesanuova
-        '03', // Domagnano
-        '04', // Faetano
-        '05', // Fiorentino
-        '06', // Borgo Maggiore
-        '07', // Citta di San Marino
-        '08', // Montegiardino
-        '09', // Serravalle
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           '01', // Acquaviva
+           '02', // Chiesanuova
+           '03', // Domagnano
+           '04', // Faetano
+           '05', // Fiorentino
+           '06', // Borgo Maggiore
+           '07', // Citta di San Marino
+           '08', // Montegiardino
+           '09', // Serravalle
+       ];
+    }
 }

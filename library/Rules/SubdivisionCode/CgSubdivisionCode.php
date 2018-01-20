@@ -9,33 +9,41 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Republic of the Congo subdivision code.
+ * Validates whether an input is subdivision code of Republic of the Congo or not.
  *
  * ISO 3166-1 alpha-2: CG
  *
- * @link http://www.geonames.org/CG/administrative-division-republic-of-the-congo.html
+ * @see http://www.geonames.org/CG/administrative-division-republic-of-the-congo.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class CgSubdivisionCode extends AbstractSearcher
+final class CgSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        '11', // Bouenza
-        '12', // Pool
-        '13', // Sangha
-        '14', // Plateaux
-        '15', // Cuvette-Ouest
-        '16', // Pointe-Noire
-        '2', // Lekoumou
-        '5', // Kouilou
-        '7', // Likouala
-        '8', // Cuvette
-        '9', // Niari
-        'BZV', // Brazzaville
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           '11', // Bouenza
+           '12', // Pool
+           '13', // Sangha
+           '14', // Plateaux
+           '15', // Cuvette-Ouest
+           '16', // Pointe-Noire
+           '2', // Lekoumou
+           '5', // Kouilou
+           '7', // Likouala
+           '8', // Cuvette
+           '9', // Niari
+           'BZV', // Brazzaville
+       ];
+    }
 }

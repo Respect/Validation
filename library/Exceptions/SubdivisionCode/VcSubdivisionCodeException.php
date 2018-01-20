@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Saint Vincent and the Grenadines subdivision code.
+ * Exception class for subdivision codes of Saint Vincent and the Grenadines.
  *
  * ISO 3166-1 alpha-2: VC
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class VcSubdivisionCodeException extends SubdivisionCodeException
+final class VcSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Saint Vincent and the Grenadines',

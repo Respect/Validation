@@ -9,31 +9,39 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Ghana subdivision code.
+ * Validates whether an input is subdivision code of Ghana or not.
  *
  * ISO 3166-1 alpha-2: GH
  *
- * @link http://www.geonames.org/GH/administrative-division-ghana.html
+ * @see http://www.geonames.org/GH/administrative-division-ghana.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class GhSubdivisionCode extends AbstractSearcher
+final class GhSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AA', // Greater Accra Region
-        'AH', // Ashanti Region
-        'BA', // Brong-Ahafo Region
-        'CP', // Central Region
-        'EP', // Eastern Region
-        'NP', // Northern Region
-        'TV', // Volta Region
-        'UE', // Upper East Region
-        'UW', // Upper West Region
-        'WP', // Western Region
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AA', // Greater Accra Region
+           'AH', // Ashanti Region
+           'BA', // Brong-Ahafo Region
+           'CP', // Central Region
+           'EP', // Eastern Region
+           'NP', // Northern Region
+           'TV', // Volta Region
+           'UE', // Upper East Region
+           'UW', // Upper West Region
+           'WP', // Western Region
+       ];
+    }
 }

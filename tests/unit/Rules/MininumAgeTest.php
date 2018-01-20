@@ -9,53 +9,57 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\MinimumAge
- * @covers Respect\Validation\Exceptions\MinimumAgeException
+ * @covers \Respect\Validation\Rules\MinimumAge
+ * @covers \Respect\Validation\Exceptions\MinimumAgeException
  */
-class MininumAgeTest extends \PHPUnit_Framework_TestCase
+class MininumAgeTest extends TestCase
 {
     /**
      * @dataProvider providerForValidDateValidMinimumAge
      */
-    public function testValidMinimumAgeInsideBoundsShouldPass($age, $format, $input)
+    public function testValidMinimumAgeInsideBoundsShouldPass($age, $format, $input): void
     {
         $minimumAge = new MinimumAge($age, $format);
-        $this->assertTrue($minimumAge->__invoke($input));
-        $this->assertTrue($minimumAge->assert($input));
-        $this->assertTrue($minimumAge->check($input));
+        self::assertTrue($minimumAge->__invoke($input));
+        self::assertTrue($minimumAge->assert($input));
+        self::assertTrue($minimumAge->check($input));
     }
 
     /**
      * @dataProvider providerForValidDateInvalidMinimumAge
-     * @expectedException Respect\Validation\Exceptions\MinimumAgeException
+     * @expectedException \Respect\Validation\Exceptions\MinimumAgeException
      */
-    public function testInvalidMinimumAgeShouldThrowException($age, $format, $input)
+    public function testInvalidMinimumAgeShouldThrowException($age, $format, $input): void
     {
         $minimumAge = new MinimumAge($age, $format);
-        $this->assertFalse($minimumAge->__invoke($input));
-        $this->assertFalse($minimumAge->assert($input));
+        self::assertFalse($minimumAge->__invoke($input));
+        self::assertFalse($minimumAge->assert($input));
     }
 
     /**
      * @dataProvider providerForInvalidDate
-     * @expectedException Respect\Validation\Exceptions\MinimumAgeException
+     * @expectedException \Respect\Validation\Exceptions\MinimumAgeException
      */
-    public function testInvalidDateShouldNotPass($age, $format, $input)
+    public function testInvalidDateShouldNotPass($age, $format, $input): void
     {
         $minimumAge = new MinimumAge($age, $format);
-        $this->assertFalse($minimumAge->__invoke($input));
-        $this->assertFalse($minimumAge->assert($input));
+        self::assertFalse($minimumAge->__invoke($input));
+        self::assertFalse($minimumAge->assert($input));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage The age must be a integer value
      */
-    public function testShouldNotAcceptNonIntegerAgeOnConstructor()
+    public function testShouldNotAcceptNonIntegerAgeOnConstructor(): void
     {
         new MinimumAge('L12');
     }

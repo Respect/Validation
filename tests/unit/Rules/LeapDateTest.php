@@ -9,47 +9,51 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use DateTime;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\LeapDate
- * @covers Respect\Validation\Exceptions\LeapDateException
+ * @covers \Respect\Validation\Rules\LeapDate
+ * @covers \Respect\Validation\Exceptions\LeapDateException
  */
-class LeapDateTest extends \PHPUnit_Framework_TestCase
+class LeapDateTest extends TestCase
 {
     protected $leapDateValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->leapDateValidator = new LeapDate('Y-m-d');
     }
 
-    public function testValidLeapDate_with_string()
+    public function testValidLeapDate_with_string(): void
     {
-        $this->assertTrue($this->leapDateValidator->validate('1988-02-29'));
+        self::assertTrue($this->leapDateValidator->validate('1988-02-29'));
     }
 
-    public function testValidLeapDate_with_date_time()
+    public function testValidLeapDate_with_date_time(): void
     {
-        $this->assertTrue($this->leapDateValidator->validate(
+        self::assertTrue($this->leapDateValidator->validate(
             new DateTime('1988-02-29')));
     }
 
-    public function testInvalidLeapDate_with_string()
+    public function testInvalidLeapDate_with_string(): void
     {
-        $this->assertFalse($this->leapDateValidator->validate('1989-02-29'));
+        self::assertFalse($this->leapDateValidator->validate('1989-02-29'));
     }
 
-    public function testInvalidLeapDate_with_date_time()
+    public function testInvalidLeapDate_with_date_time(): void
     {
-        $this->assertFalse($this->leapDateValidator->validate(
+        self::assertFalse($this->leapDateValidator->validate(
             new DateTime('1989-02-29')));
     }
-    public function testInvalidLeapDate_input()
+
+    public function testInvalidLeapDate_input(): void
     {
-        $this->assertFalse($this->leapDateValidator->validate([]));
+        self::assertFalse($this->leapDateValidator->validate([]));
     }
 }

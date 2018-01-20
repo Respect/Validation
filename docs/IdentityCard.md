@@ -1,6 +1,6 @@
 # IdentityCard
 
-- `v::identityCard(string $countryCode)`
+- `IdentityCard(string $countryCode)`
 
 Validates Identity Card numbers according to the defined country.
 
@@ -13,9 +13,15 @@ v::identityCard('PL')->validate('AYW036731'); // false
 
 For now this rule only accepts Polish Identity Card numbers (Dowód Osobisty).
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.1.0 | Created
+
 ***
 See also:
 
-  * [Bank](Bank.md)
-  * [Pesel](Pesel.md)
-  * [SubdivisionCode](SubdivisionCode.md)
+- [Pesel](Pesel.md)
+- [SubdivisionCode](SubdivisionCode.md)
+- [Vatin](Vatin.md)

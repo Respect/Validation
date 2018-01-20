@@ -9,38 +9,46 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Mauritius subdivision code.
+ * Validates whether an input is subdivision code of Mauritius or not.
  *
  * ISO 3166-1 alpha-2: MU
  *
- * @link http://www.geonames.org/MU/administrative-division-mauritius.html
+ * @see http://www.geonames.org/MU/administrative-division-mauritius.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class MuSubdivisionCode extends AbstractSearcher
+final class MuSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AG', // Agalega Islands
-        'BL', // Black River
-        'BR', // Beau Bassin-Rose Hill
-        'CC', // Cargados Carajos Shoals (Saint Brandon Islands)
-        'CU', // Curepipe
-        'FL', // Flacq
-        'GP', // Grand Port
-        'MO', // Moka
-        'PA', // Pamplemousses
-        'PL', // Port Louis
-        'PU', // Port Louis
-        'PW', // Plaines Wilhems
-        'QB', // Quatre Bornes
-        'RO', // Rodrigues
-        'RR', // Riviere du Rempart
-        'SA', // Savanne
-        'VP', // Vacoas-Phoenix
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AG', // Agalega Islands
+           'BL', // Black River
+           'BR', // Beau Bassin-Rose Hill
+           'CC', // Cargados Carajos Shoals (Saint Brandon Islands)
+           'CU', // Curepipe
+           'FL', // Flacq
+           'GP', // Grand Port
+           'MO', // Moka
+           'PA', // Pamplemousses
+           'PL', // Port Louis
+           'PU', // Port Louis
+           'PW', // Plaines Wilhems
+           'QB', // Quatre Bornes
+           'RO', // Rodrigues
+           'RR', // Riviere du Rempart
+           'SA', // Savanne
+           'VP', // Vacoas-Phoenix
+       ];
+    }
 }

@@ -9,32 +9,36 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Slug
+ * @covers \Respect\Validation\Rules\Slug
  */
-class SlugTest extends \PHPUnit_Framework_TestCase
+class SlugTest extends TestCase
 {
     /**
      * @dataProvider providerValidSlug
      */
-    public function testValidSlug($input)
+    public function testValidSlug($input): void
     {
         $rule = new Slug();
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
      * @dataProvider providerInvalidSlug
      */
-    public function testInvalidSlug($input)
+    public function testInvalidSlug($input): void
     {
         $rule = new Slug();
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     public function providerValidSlug()

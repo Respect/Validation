@@ -9,37 +9,45 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Poland subdivision code.
+ * Validates whether an input is subdivision code of Poland or not.
  *
  * ISO 3166-1 alpha-2: PL
  *
- * @link http://www.geonames.org/PL/administrative-division-poland.html
+ * @see http://www.geonames.org/PL/administrative-division-poland.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class PlSubdivisionCode extends AbstractSearcher
+final class PlSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'DS', // Dolnoslaskie
-        'KP', // Kujawsko-Pomorskie
-        'LB', // Lubuskie
-        'LD', // Lodzkie
-        'LU', // Lubelskie
-        'MA', // Malopolskie
-        'MZ', // Mazowieckie
-        'OP', // Opolskie
-        'PD', // Podlaskie
-        'PK', // Podkarpackie
-        'PM', // Pomorskie
-        'SK', // Swietokrzyskie
-        'SL', // Slaskie
-        'WN', // Warminsko-Mazurskie
-        'WP', // Wielkopolskie
-        'ZP', // Zachodniopomorskie
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'DS', // Dolnoslaskie
+           'KP', // Kujawsko-Pomorskie
+           'LB', // Lubuskie
+           'LD', // Lodzkie
+           'LU', // Lubelskie
+           'MA', // Malopolskie
+           'MZ', // Mazowieckie
+           'OP', // Opolskie
+           'PD', // Podlaskie
+           'PK', // Podkarpackie
+           'PM', // Pomorskie
+           'SK', // Swietokrzyskie
+           'SL', // Slaskie
+           'WN', // Warminsko-Mazurskie
+           'WP', // Wielkopolskie
+           'ZP', // Zachodniopomorskie
+       ];
+    }
 }

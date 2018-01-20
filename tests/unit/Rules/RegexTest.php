@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Regex
+ * @covers \Respect\Validation\Rules\Regex
  */
 final class RegexTest extends RuleTestCase
 {
     /**
      * {@inheritdoc}
      */
-    public function providerForValidInput()
+    public function providerForValidInput(): array
     {
         return [
             [new Regex('/^[a-z]+$/'), 'wpoiur'],
@@ -32,7 +36,7 @@ final class RegexTest extends RuleTestCase
     /**
      * {@inheritdoc}
      */
-    public function providerForInvalidInput()
+    public function providerForInvalidInput(): array
     {
         return [
             [new Regex('/^w+$/'), 'w poiur'],

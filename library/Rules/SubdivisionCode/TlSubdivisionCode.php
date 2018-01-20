@@ -9,34 +9,42 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for East Timor subdivision code.
+ * Validates whether an input is subdivision code of East Timor or not.
  *
  * ISO 3166-1 alpha-2: TL
  *
- * @link http://www.geonames.org/TL/administrative-division-east-timor.html
+ * @see http://www.geonames.org/TL/administrative-division-east-timor.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class TlSubdivisionCode extends AbstractSearcher
+final class TlSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AL', // Aileu
-        'AN', // Ainaro
-        'BA', // Baucau
-        'BO', // Bobonaro
-        'CO', // Cova Lima
-        'DI', // Dili
-        'ER', // Ermera
-        'LA', // Lautem
-        'LI', // Liquica
-        'MF', // Manufahi
-        'MT', // Manatuto
-        'OE', // Oecussi
-        'VI', // Viqueque
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AL', // Aileu
+           'AN', // Ainaro
+           'BA', // Baucau
+           'BO', // Bobonaro
+           'CO', // Cova Lima
+           'DI', // Dili
+           'ER', // Ermera
+           'LA', // Lautem
+           'LI', // Liquica
+           'MF', // Manufahi
+           'MT', // Manatuto
+           'OE', // Oecussi
+           'VI', // Viqueque
+       ];
+    }
 }

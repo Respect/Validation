@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Kyrgyzstan subdivision code.
+ * Exception class for subdivision codes of Kyrgyzstan.
  *
  * ISO 3166-1 alpha-2: KG
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class KgSubdivisionCodeException extends SubdivisionCodeException
+final class KgSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Kyrgyzstan',

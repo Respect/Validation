@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\NoWhitespace
- * @covers Respect\Validation\Exceptions\NoWhitespaceException
+ * @covers \Respect\Validation\Rules\NoWhitespace
+ * @covers \Respect\Validation\Exceptions\NoWhitespaceException
  */
-class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
+class NoWhitespaceTest extends TestCase
 {
     protected $noWhitespaceValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->noWhitespaceValidator = new NoWhitespace();
     }
@@ -28,29 +32,30 @@ class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForPass
      */
-    public function testStringWithNoWhitespaceShouldPass($input)
+    public function testStringWithNoWhitespaceShouldPass($input): void
     {
-        $this->assertTrue($this->noWhitespaceValidator->__invoke($input));
-        $this->assertTrue($this->noWhitespaceValidator->check($input));
-        $this->assertTrue($this->noWhitespaceValidator->assert($input));
+        self::assertTrue($this->noWhitespaceValidator->__invoke($input));
+        self::assertTrue($this->noWhitespaceValidator->check($input));
+        self::assertTrue($this->noWhitespaceValidator->assert($input));
     }
 
     /**
      * @dataProvider providerForFail
-     * @expectedException Respect\Validation\Exceptions\NoWhitespaceException
+     * @expectedException \Respect\Validation\Exceptions\NoWhitespaceException
      */
-    public function testStringWithWhitespaceShouldFail($input)
+    public function testStringWithWhitespaceShouldFail($input): void
     {
-        $this->assertFalse($this->noWhitespaceValidator->__invoke($input));
-        $this->assertFalse($this->noWhitespaceValidator->assert($input));
+        self::assertFalse($this->noWhitespaceValidator->__invoke($input));
+        self::assertFalse($this->noWhitespaceValidator->assert($input));
     }
+
     /**
-     * @expectedException Respect\Validation\Exceptions\NoWhitespaceException
+     * @expectedException \Respect\Validation\Exceptions\NoWhitespaceException
      */
-    public function testStringWithLineBreaksShouldFail()
+    public function testStringWithLineBreaksShouldFail(): void
     {
-        $this->assertFalse($this->noWhitespaceValidator->__invoke("w\npoiur"));
-        $this->assertFalse($this->noWhitespaceValidator->assert("w\npoiur"));
+        self::assertFalse($this->noWhitespaceValidator->__invoke("w\npoiur"));
+        self::assertFalse($this->noWhitespaceValidator->assert("w\npoiur"));
     }
 
     public function providerForPass()
@@ -77,9 +82,9 @@ class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @issue 346
-     * @expectedException Respect\Validation\Exceptions\NoWhitespaceException
+     * @expectedException \Respect\Validation\Exceptions\NoWhitespaceException
      */
-    public function testArrayDoesNotThrowAWarning()
+    public function testArrayDoesNotThrowAWarning(): void
     {
         $this->noWhitespaceValidator->assert([]);
     }

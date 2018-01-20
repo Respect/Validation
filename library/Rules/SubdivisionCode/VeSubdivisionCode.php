@@ -9,46 +9,54 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Venezuela subdivision code.
+ * Validates whether an input is subdivision code of Venezuela or not.
  *
  * ISO 3166-1 alpha-2: VE
  *
- * @link http://www.geonames.org/VE/administrative-division-venezuela.html
+ * @see http://www.geonames.org/VE/administrative-division-venezuela.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class VeSubdivisionCode extends AbstractSearcher
+final class VeSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'A', // Federal Capital
-        'B', // Anzoategui
-        'C', // Apure
-        'D', // Aragua
-        'E', // Barinas
-        'F', // Bolivar
-        'G', // Carabobo
-        'H', // Cojedes
-        'I', // Falcon
-        'J', // Guarico
-        'K', // Lara
-        'L', // Merida
-        'M', // Miranda
-        'N', // Monagas
-        'O', // Nueva Esparta
-        'P', // Portuguesa
-        'R', // Sucre
-        'S', // Tachira
-        'T', // Trujillo
-        'U', // Yaracuy
-        'V', // Zulia
-        'W', // Federal Dependency
-        'X', // Vargas
-        'Y', // Delta Amacuro
-        'Z', // Amazonas
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'A', // Federal Capital
+           'B', // Anzoategui
+           'C', // Apure
+           'D', // Aragua
+           'E', // Barinas
+           'F', // Bolivar
+           'G', // Carabobo
+           'H', // Cojedes
+           'I', // Falcon
+           'J', // Guarico
+           'K', // Lara
+           'L', // Merida
+           'M', // Miranda
+           'N', // Monagas
+           'O', // Nueva Esparta
+           'P', // Portuguesa
+           'R', // Sucre
+           'S', // Tachira
+           'T', // Trujillo
+           'U', // Yaracuy
+           'V', // Zulia
+           'W', // Federal Dependency
+           'X', // Vargas
+           'Y', // Delta Amacuro
+           'Z', // Amazonas
+       ];
+    }
 }

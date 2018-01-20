@@ -1,6 +1,6 @@
 # PostalCode
 
-- `v::postalCode(string $countryCode)`
+- `PostalCode(string $countryCode)`
 
 Validates a postal code according to the given country code.
 
@@ -16,7 +16,13 @@ Message template for this validator includes `{{countryCode}}`.
 
 Extracted from [GeoNames](http://www.geonames.org/).
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.7.0 | Created
+
 ***
 See also:
 
-  * [CountryCode](CountryCode.md)
+- [CountryCode](CountryCode.md)

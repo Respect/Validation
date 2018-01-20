@@ -9,20 +9,28 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Norfolk Island subdivision code.
+ * Validates whether an input is subdivision code of Norfolk Island or not.
  *
  * ISO 3166-1 alpha-2: NF
  *
- * @link http://www.geonames.org/NF/administrative-division-norfolk-island.html
+ * @see http://www.geonames.org/NF/administrative-division-norfolk-island.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class NfSubdivisionCode extends AbstractSearcher
+final class NfSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

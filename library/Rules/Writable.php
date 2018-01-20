@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Writable extends AbstractRule
@@ -19,6 +21,6 @@ class Writable extends AbstractRule
             return $input->isWritable();
         }
 
-        return (is_string($input) && is_writable($input));
+        return is_string($input) && is_writable($input);
     }
 }

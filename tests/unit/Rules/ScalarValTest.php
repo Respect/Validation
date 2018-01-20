@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\ScalarVal
- * @covers Respect\Validation\Exceptions\ScalarValException
+ * @covers \Respect\Validation\Rules\ScalarVal
+ * @covers \Respect\Validation\Exceptions\ScalarValException
  */
-class ScalarValTest extends \PHPUnit_Framework_TestCase
+class ScalarValTest extends TestCase
 {
     protected $rule;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->rule = new ScalarVal();
     }
@@ -28,24 +32,24 @@ class ScalarValTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForScalar
      */
-    public function testShouldValidateScalarNumbers($input)
+    public function testShouldValidateScalarNumbers($input): void
     {
-        $this->assertTrue($this->rule->validate($input));
+        self::assertTrue($this->rule->validate($input));
     }
 
     /**
      * @dataProvider providerForNonScalar
      */
-    public function testShouldNotValidateNonScalarNumbers($input)
+    public function testShouldNotValidateNonScalarNumbers($input): void
     {
-        $this->assertFalse($this->rule->validate($input));
+        self::assertFalse($this->rule->validate($input));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ScalarValException
-     * @expectedExceptionMessage null must be a scalar value
+     * @expectedException \Respect\Validation\Exceptions\ScalarValException
+     * @expectedExceptionMessage `NULL` must be a scalar value
      */
-    public function testShouldThrowScalarExceptionWhenChecking()
+    public function testShouldThrowScalarExceptionWhenChecking(): void
     {
         $this->rule->check(null);
     }
@@ -66,7 +70,8 @@ class ScalarValTest extends \PHPUnit_Framework_TestCase
     {
         return [
             [[]],
-            [function () {}],
+            [function (): void {
+            }],
             [new \stdClass()],
             [null],
             [tmpfile()],

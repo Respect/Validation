@@ -9,23 +9,31 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Saint Pierre and Miquelon subdivision code.
+ * Validates whether an input is subdivision code of Saint Pierre and Miquelon or not.
  *
  * ISO 3166-1 alpha-2: PM
  *
- * @link http://www.geonames.org/PM/administrative-division-saint-pierre-and-miquelon.html
+ * @see http://www.geonames.org/PM/administrative-division-saint-pierre-and-miquelon.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class PmSubdivisionCode extends AbstractSearcher
+final class PmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'M', // Miquelon
-        'P', // Saint Pierre
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'M', // Miquelon
+           'P', // Saint Pierre
+       ];
+    }
 }

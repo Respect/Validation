@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Even
- * @covers Respect\Validation\Exceptions\EvenException
+ * @covers \Respect\Validation\Rules\Even
+ * @covers \Respect\Validation\Exceptions\EvenException
  */
-class EvenTest extends \PHPUnit_Framework_TestCase
+class EvenTest extends TestCase
 {
     protected $evenValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->evenValidator = new Even();
     }
@@ -28,21 +32,21 @@ class EvenTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForEven
      */
-    public function testEvenNumbersShouldPass($input)
+    public function testEvenNumbersShouldPass($input): void
     {
-        $this->assertTrue($this->evenValidator->validate($input));
-        $this->assertTrue($this->evenValidator->check($input));
-        $this->assertTrue($this->evenValidator->assert($input));
+        self::assertTrue($this->evenValidator->validate($input));
+        self::assertTrue($this->evenValidator->check($input));
+        self::assertTrue($this->evenValidator->assert($input));
     }
 
     /**
      * @dataProvider providerForNotEven
-     * @expectedException Respect\Validation\Exceptions\EvenException
+     * @expectedException \Respect\Validation\Exceptions\EvenException
      */
-    public function testNotEvenNumbersShouldFail($input)
+    public function testNotEvenNumbersShouldFail($input): void
     {
-        $this->assertFalse($this->evenValidator->validate($input));
-        $this->assertFalse($this->evenValidator->assert($input));
+        self::assertFalse($this->evenValidator->validate($input));
+        self::assertFalse($this->evenValidator->assert($input));
     }
 
     public function providerForEven()

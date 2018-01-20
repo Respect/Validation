@@ -9,38 +9,47 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Sudan subdivision code.
+ * Validates whether an input is subdivision code of Sudan or not.
  *
  * ISO 3166-1 alpha-2: SD
  *
- * @link http://www.geonames.org/SD/administrative-division-sudan.html
+ * @see http://www.geonames.org/SD/administrative-division-sudan.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SdSubdivisionCode extends AbstractSearcher
+final class SdSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'DC', // Wasaţ Dārfūr
-        'DE', // Sharq Dārfūr
-        'DN', // Shamāl Dārfūr
-        'DS', // Janūb Dārfūr
-        'DW', // Gharb Dārfūr
-        'GD', // Al Qaḑārif
-        'GZ', // Al Jazīrah
-        'KA', // Kassalā
-        'KH', // Al Kharţūm
-        'KN', // Shamāl Kurdufān
-        'KS', // Janūb Kurdufān
-        'NB', // An Nīl al Azraq
-        'NO', // Ash Shamālīyah
-        'NR', // An Nīl
-        'NW', // An Nīl al Abyaḑ
-        'RS', // Al Baḩr al Aḩmar
-        'SI', // Sinnār
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'DC', // Wasaţ Dārfūr
+           'DE', // Sharq Dārfūr
+           'DN', // Shamāl Dārfūr
+           'DS', // Janūb Dārfūr
+           'DW', // Gharb Dārfūr
+           'GD', // Al Qaḑārif
+           'GK', // West Kurdufan
+           'GZ', // Al Jazīrah
+           'KA', // Kassalā
+           'KH', // Al Kharţūm
+           'KN', // Shamāl Kurdufān
+           'KS', // Janūb Kurdufān
+           'NB', // An Nīl al Azraq
+           'NO', // Ash Shamālīyah
+           'NR', // An Nīl
+           'NW', // An Nīl al Abyaḑ
+           'RS', // Al Baḩr al Aḩmar
+           'SI', // Sinnār
+       ];
+    }
 }

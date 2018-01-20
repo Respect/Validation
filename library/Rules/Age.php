@@ -9,11 +9,16 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use DateTime;
+use DateTime as DateTimeMutable;
 use Respect\Validation\Exceptions\ComponentException;
 
+/**
+ * @todo Do not extend AllOf
+ */
 class Age extends AllOf
 {
     public $minAge;
@@ -37,10 +42,10 @@ class Age extends AllOf
     {
         $interval = sprintf('-%d years', $age);
 
-        return new DateTime($interval);
+        return new DateTimeMutable($interval);
     }
 
-    private function setMaxAge($maxAge)
+    private function setMaxAge($maxAge): void
     {
         $this->maxAge = $maxAge;
 
@@ -56,7 +61,7 @@ class Age extends AllOf
         $this->addRule($minRule);
     }
 
-    private function setMinAge($minAge)
+    private function setMinAge($minAge): void
     {
         $this->minAge = $minAge;
 

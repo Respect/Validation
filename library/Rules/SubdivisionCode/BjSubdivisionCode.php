@@ -9,33 +9,41 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Benin subdivision code.
+ * Validates whether an input is subdivision code of Benin or not.
  *
  * ISO 3166-1 alpha-2: BJ
  *
- * @link http://www.geonames.org/BJ/administrative-division-benin.html
+ * @see http://www.geonames.org/BJ/administrative-division-benin.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class BjSubdivisionCode extends AbstractSearcher
+final class BjSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AK', // Atakora
-        'AL', // Alibori
-        'AQ', // Atlantique
-        'BO', // Borgou
-        'CO', // Collines
-        'DO', // Donga
-        'KO', // Kouffo
-        'LI', // Littoral
-        'MO', // Mono
-        'OU', // Oueme
-        'PL', // Plateau
-        'ZO', // Zou
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AK', // Atakora
+           'AL', // Alibori
+           'AQ', // Atlantique
+           'BO', // Borgou
+           'CO', // Collines
+           'DO', // Donga
+           'KO', // Kouffo
+           'LI', // Littoral
+           'MO', // Mono
+           'OU', // Oueme
+           'PL', // Plateau
+           'ZO', // Zou
+       ];
+    }
 }

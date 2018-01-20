@@ -9,47 +9,55 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Marshall Islands subdivision code.
+ * Validates whether an input is subdivision code of Marshall Islands or not.
  *
  * ISO 3166-1 alpha-2: MH
  *
- * @link http://www.geonames.org/MH/administrative-division-marshall-islands.html
+ * @see http://www.geonames.org/MH/administrative-division-marshall-islands.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class MhSubdivisionCode extends AbstractSearcher
+final class MhSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'L', // Ralik chain
-        'T', // Ratak chain
-        'ALK', // Ailuk
-        'ALL', // Ailinglaplap
-        'ARN', // Arno
-        'AUR', // Aur
-        'EBO', // Ebon
-        'ENI', // Enewetak
-        'JAB', // Jabat
-        'JAL', // Jaluit
-        'KIL', // Kili
-        'KWA', // Kwajalein
-        'LAE', // Lae
-        'LIB', // Lib
-        'LIK', // Likiep
-        'MAJ', // Majuro
-        'MAL', // Maloelap
-        'MEJ', // Mejit
-        'MIL', // Mili
-        'NMK', // Namorik
-        'NMU', // Namu
-        'RON', // Rongelap
-        'UJA', // Ujae
-        'UTI', // Utirik
-        'WTH', // Wotho
-        'WTJ', // Wotje
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'ALK', // Ailuk
+           'ALL', // Ailinglaplap
+           'ARN', // Arno
+           'AUR', // Aur
+           'EBO', // Ebon
+           'ENI', // Enewetak
+           'JAB', // Jabat
+           'JAL', // Jaluit
+           'KIL', // Kili
+           'KWA', // Kwajalein
+           'L', // Ralik chain
+           'LAE', // Lae
+           'LIB', // Lib
+           'LIK', // Likiep
+           'MAJ', // Majuro
+           'MAL', // Maloelap
+           'MEJ', // Mejit
+           'MIL', // Mili
+           'NMK', // Namorik
+           'NMU', // Namu
+           'RON', // Rongelap
+           'T', // Ratak chain
+           'UJA', // Ujae
+           'UTI', // Utirik
+           'WTH', // Wotho
+           'WTJ', // Wotje
+       ];
+    }
 }

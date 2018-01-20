@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Egypt subdivision code.
+ * Exception class for subdivision codes of Egypt.
  *
  * ISO 3166-1 alpha-2: EG
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class EgSubdivisionCodeException extends SubdivisionCodeException
+final class EgSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Egypt',

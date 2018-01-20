@@ -9,20 +9,28 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for French Southern Territories subdivision code.
+ * Validates whether an input is subdivision code of French Southern Territories or not.
  *
  * ISO 3166-1 alpha-2: TF
  *
- * @link http://www.geonames.org/TF/administrative-division-french-southern-territories.html
+ * @see http://www.geonames.org/TF/administrative-division-french-southern-territories.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class TfSubdivisionCode extends AbstractSearcher
+final class TfSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

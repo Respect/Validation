@@ -9,12 +9,18 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use Respect\Validation\Helpers\UndefinedHelper;
 
 class NotOptional extends AbstractRule
 {
+    use UndefinedHelper;
+
     public function validate($input)
     {
-        return (false === in_array($input, [null, ''], true));
+        return false === $this->isUndefined($input);
     }
 }

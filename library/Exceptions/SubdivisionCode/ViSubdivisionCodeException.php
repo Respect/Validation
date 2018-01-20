@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for U.S. Virgin Islands subdivision code.
+ * Exception class for subdivision codes of U.S. Virgin Islands.
  *
  * ISO 3166-1 alpha-2: VI
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ViSubdivisionCodeException extends SubdivisionCodeException
+final class ViSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of U.S. Virgin Islands',

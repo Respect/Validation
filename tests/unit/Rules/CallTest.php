@@ -9,53 +9,57 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Call
- * @covers Respect\Validation\Exceptions\CallException
+ * @covers \Respect\Validation\Rules\Call
+ * @covers \Respect\Validation\Exceptions\CallException
  */
-class CallTest extends \PHPUnit_Framework_TestCase
+class CallTest extends TestCase
 {
     public function thisIsASampleCallbackUsedInsideThisTest()
     {
         return [];
     }
 
-    public function testCallbackValidatorShouldAcceptEmptyString()
+    public function testCallbackValidatorShouldAcceptEmptyString(): void
     {
         $v = new Call('str_split', new ArrayVal());
-        $this->assertTrue($v->assert(''));
+        self::assertTrue($v->assert(''));
     }
 
-    public function testCallbackValidatorShouldAcceptStringWithFunctionName()
+    public function testCallbackValidatorShouldAcceptStringWithFunctionName(): void
     {
         $v = new Call('str_split', new ArrayVal());
-        $this->assertTrue($v->assert('test'));
+        self::assertTrue($v->assert('test'));
     }
 
-    public function testCallbackValidatorShouldAcceptArrayCallbackDefinition()
+    public function testCallbackValidatorShouldAcceptArrayCallbackDefinition(): void
     {
         $v = new Call([$this, 'thisIsASampleCallbackUsedInsideThisTest'], new ArrayVal());
-        $this->assertTrue($v->assert('test'));
+        self::assertTrue($v->assert('test'));
     }
 
-    public function testCallbackValidatorShouldAcceptClosures()
+    public function testCallbackValidatorShouldAcceptClosures(): void
     {
         $v = new Call(function () {
-                    return [];
-                }, new ArrayVal());
-        $this->assertTrue($v->assert('test'));
+            return [];
+        }, new ArrayVal());
+        self::assertTrue($v->assert('test'));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\CallException
+     * @expectedException \Respect\Validation\Exceptions\CallException
      */
-    public function testCallbackFailedShouldThrowCallException()
+    public function testCallbackFailedShouldThrowCallException(): void
     {
         $v = new Call('strrev', new ArrayVal());
-        $this->assertFalse($v->validate('test'));
-        $this->assertFalse($v->assert('test'));
+        self::assertFalse($v->validate('test'));
+        self::assertFalse($v->assert('test'));
     }
 }

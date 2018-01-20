@@ -9,29 +9,37 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Tuvalu subdivision code.
+ * Validates whether an input is subdivision code of Tuvalu or not.
  *
  * ISO 3166-1 alpha-2: TV
  *
- * @link http://www.geonames.org/TV/administrative-division-tuvalu.html
+ * @see http://www.geonames.org/TV/administrative-division-tuvalu.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class TvSubdivisionCode extends AbstractSearcher
+final class TvSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'FUN', // Funafuti
-        'NIT', // Niutao
-        'NKF', // Nukufetau
-        'NKL', // Nukulaelae
-        'NMA', // Nanumea
-        'NMG', // Nanumanga
-        'NUI', // Nui
-        'VAI', // Vaitupu
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'FUN', // Funafuti
+           'NIT', // Niutao
+           'NKF', // Nukufetau
+           'NKL', // Nukulaelae
+           'NMA', // Nanumea
+           'NMG', // Nanumanga
+           'NUI', // Nui
+           'VAI', // Vaitupu
+       ];
+    }
 }

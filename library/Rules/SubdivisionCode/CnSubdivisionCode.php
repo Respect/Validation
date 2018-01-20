@@ -9,55 +9,63 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for China subdivision code.
+ * Validates whether an input is subdivision code of China or not.
  *
  * ISO 3166-1 alpha-2: CN
  *
- * @link http://www.geonames.org/CN/administrative-division-china.html
+ * @see http://www.geonames.org/CN/administrative-division-china.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class CnSubdivisionCode extends AbstractSearcher
+final class CnSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        '11', // Beijing
-        '12', // Tianjin
-        '13', // Hebei
-        '14', // Shanxi
-        '15', // Nei Mongol
-        '21', // Liaoning
-        '22', // Jilin
-        '23', // Heilongjiang
-        '31', // Shanghai
-        '32', // Jiangsu
-        '33', // Zhejiang
-        '34', // Anhui
-        '35', // Fujian
-        '36', // Jiangxi
-        '37', // Shandong
-        '41', // Henan
-        '42', // Hubei
-        '43', // Hunan
-        '44', // Guangdong
-        '45', // Guangxi
-        '46', // Hainan
-        '50', // Chongqìng
-        '51', // Sichuan
-        '52', // Guizhou
-        '53', // Yunnan
-        '54', // Xizang Zìzhìqu (Tibet)
-        '61', // Shaanxi
-        '62', // Gansu
-        '63', // Qinghai
-        '64', // Ningxia
-        '65', // Xinjiang
-        '71', // Taiwan
-        '91', // Xianggang
-        '92', // Aomen
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AH', // Anhui
+           'BJ', // Beijing
+           'CQ', // Chongqìng
+           'FJ', // Fujian
+           'GD', // Guangdong
+           'GS', // Gansu
+           'GX', // Guangxi
+           'GZ', // Guizhou
+           'HA', // Henan
+           'HB', // Hubei
+           'HE', // Hebei
+           'HI', // Hainan
+           'HK', // Xianggang
+           'HL', // Heilongjiang
+           'HN', // Hunan
+           'JL', // Jilin
+           'JS', // Jiangsu
+           'JX', // Jiangxi
+           'LN', // Liaoning
+           'MO', // Aomen
+           'NM', // Nei Mongol
+           'NX', // Ningxia
+           'QH', // Qinghai
+           'SC', // Sichuan
+           'SD', // Shandong
+           'SH', // Shanghai
+           'SN', // Shaanxi
+           'SX', // Shanxi
+           'TJ', // Tianjin
+           'TW', // Taiwan
+           'XJ', // Xinjiang
+           'XZ', // Xizang Zìzhìqu (Tibet)
+           'YN', // Yunnan
+           'ZJ', // Zhejiang
+       ];
+    }
 }

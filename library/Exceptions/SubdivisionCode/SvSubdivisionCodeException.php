@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for El Salvador subdivision code.
+ * Exception class for subdivision codes of El Salvador.
  *
  * ISO 3166-1 alpha-2: SV
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SvSubdivisionCodeException extends SubdivisionCodeException
+final class SvSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of El Salvador',

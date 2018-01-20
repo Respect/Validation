@@ -9,20 +9,28 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Western Sahara subdivision code.
+ * Validates whether an input is subdivision code of Western Sahara or not.
  *
  * ISO 3166-1 alpha-2: EH
  *
- * @link http://www.geonames.org/EH/administrative-division-western-sahara.html
+ * @see http://www.geonames.org/EH/administrative-division-western-sahara.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class EhSubdivisionCode extends AbstractSearcher
+final class EhSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

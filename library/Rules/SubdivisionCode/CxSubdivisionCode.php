@@ -9,20 +9,28 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Christmas Island subdivision code.
+ * Validates whether an input is subdivision code of Christmas Island or not.
  *
  * ISO 3166-1 alpha-2: CX
  *
- * @link http://www.geonames.org/CX/administrative-division-christmas-island.html
+ * @see http://www.geonames.org/CX/administrative-division-christmas-island.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class CxSubdivisionCode extends AbstractSearcher
+final class CxSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

@@ -1,6 +1,6 @@
 # KeySet
 
-- `v::keySet(Key $rule...)`
+- `KeySet(Key ...$rule)`
 
 Validates a keys in a defined structure.
 
@@ -45,7 +45,13 @@ v::keySet(
 
 The keys' order is not considered in the validation.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 
-  * [Key](Key.md)
+- [Key](Key.md)

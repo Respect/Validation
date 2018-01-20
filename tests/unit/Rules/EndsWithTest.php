@@ -9,35 +9,39 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\EndsWith
- * @covers Respect\Validation\Exceptions\EndsWithException
+ * @covers \Respect\Validation\Rules\EndsWith
+ * @covers \Respect\Validation\Exceptions\EndsWithException
  */
-class EndsWithTest extends \PHPUnit_Framework_TestCase
+class EndsWithTest extends TestCase
 {
     /**
      * @dataProvider providerForEndsWith
      */
-    public function testStringsEndingWithExpectedValueShouldPass($start, $input)
+    public function testStringsEndingWithExpectedValueShouldPass($start, $input): void
     {
         $v = new EndsWith($start);
-        $this->assertTrue($v->__invoke($input));
-        $this->assertTrue($v->check($input));
-        $this->assertTrue($v->assert($input));
+        self::assertTrue($v->__invoke($input));
+        self::assertTrue($v->check($input));
+        self::assertTrue($v->assert($input));
     }
 
     /**
      * @dataProvider providerForNotEndsWith
-     * @expectedException Respect\Validation\Exceptions\EndsWithException
+     * @expectedException \Respect\Validation\Exceptions\EndsWithException
      */
-    public function testStringsNotEndingWithExpectedValueShouldNotPass($start, $input, $caseSensitive = false)
+    public function testStringsNotEndingWithExpectedValueShouldNotPass($start, $input, $caseSensitive = false): void
     {
         $v = new EndsWith($start, $caseSensitive);
-        $this->assertFalse($v->__invoke($input));
-        $this->assertFalse($v->assert($input));
+        self::assertFalse($v->__invoke($input));
+        self::assertFalse($v->assert($input));
     }
 
     public function providerForEndsWith()

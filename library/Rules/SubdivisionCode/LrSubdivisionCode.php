@@ -9,34 +9,44 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Liberia subdivision code.
+ * Validates whether an input is subdivision code of Liberia or not.
  *
  * ISO 3166-1 alpha-2: LR
  *
- * @link http://www.geonames.org/LR/administrative-division-liberia.html
+ * @see http://www.geonames.org/LR/administrative-division-liberia.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class LrSubdivisionCode extends AbstractSearcher
+final class LrSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'BG', // Bong
-        'BM', // Bomi
-        'CM', // Grand Cape Mount
-        'GB', // Grand Bassa
-        'GG', // Grand Gedeh
-        'GK', // Grand Kru
-        'LO', // Lofa
-        'MG', // Margibi
-        'MO', // Montserrado
-        'MY', // Maryland
-        'NI', // Nimba
-        'RI', // River Cess
-        'SI', // Sinoe
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'BG', // Bong
+           'BM', // Bomi
+           'CM', // Grand Cape Mount
+           'GB', // Grand Bassa
+           'GG', // Grand Gedeh
+           'GK', // Grand Kru
+           'GP', // Gbarpolu
+           'LO', // Lofa
+           'MG', // Margibi
+           'MO', // Montserrado
+           'MY', // Maryland
+           'NI', // Nimba
+           'RG', // River Gee
+           'RI', // River Cess
+           'SI', // Sinoe
+       ];
+    }
 }

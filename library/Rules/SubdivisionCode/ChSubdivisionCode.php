@@ -9,47 +9,55 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Switzerland subdivision code.
+ * Validates whether an input is subdivision code of Switzerland or not.
  *
  * ISO 3166-1 alpha-2: CH
  *
- * @link http://www.geonames.org/CH/administrative-division-switzerland.html
+ * @see http://www.geonames.org/CH/administrative-division-switzerland.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ChSubdivisionCode extends AbstractSearcher
+final class ChSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AG', // Aargau
-        'AI', // Appenzell Innerhoden
-        'AR', // Appenzell Ausserrhoden
-        'BE', // Bern
-        'BL', // Basel-Landschaft
-        'BS', // Basel-Stadt
-        'FR', // Fribourg
-        'GE', // Geneva
-        'GL', // Glarus
-        'GR', // Graubunden
-        'JU', // Jura
-        'LU', // Lucerne
-        'NE', // Neuchâtel
-        'NW', // Nidwalden
-        'OW', // Obwalden
-        'SG', // St. Gallen
-        'SH', // Schaffhausen
-        'SO', // Solothurn
-        'SZ', // Schwyz
-        'TG', // Thurgau
-        'TI', // Ticino
-        'UR', // Uri
-        'VD', // Vaud
-        'VS', // Valais
-        'ZG', // Zug
-        'ZH', // Zurich
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AG', // Aargau
+           'AI', // Appenzell Innerhoden
+           'AR', // Appenzell Ausserrhoden
+           'BE', // Bern
+           'BL', // Basel-Landschaft
+           'BS', // Basel-Stadt
+           'FR', // Fribourg
+           'GE', // Geneva
+           'GL', // Glarus
+           'GR', // Graubunden
+           'JU', // Jura
+           'LU', // Lucerne
+           'NE', // Neuchâtel
+           'NW', // Nidwalden
+           'OW', // Obwalden
+           'SG', // St. Gallen
+           'SH', // Schaffhausen
+           'SO', // Solothurn
+           'SZ', // Schwyz
+           'TG', // Thurgau
+           'TI', // Ticino
+           'UR', // Uri
+           'VD', // Vaud
+           'VS', // Valais
+           'ZG', // Zug
+           'ZH', // Zurich
+       ];
+    }
 }

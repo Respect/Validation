@@ -9,27 +9,31 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Sf
- * @covers Respect\Validation\Exceptions\SfException
+ * @covers \Respect\Validation\Rules\Sf
+ * @covers \Respect\Validation\Exceptions\SfException
  */
-class SfTest extends \PHPUnit_Framework_TestCase
+class SfTest extends TestCase
 {
-    public function testValidationWithAnExistingValidationConstraint()
+    public function testValidationWithAnExistingValidationConstraint(): void
     {
         $constraintName = 'Time';
         $validConstraintValue = '04:20:00';
         $invalidConstraintValue = 'yada';
-        $this->assertTrue(
+        self::assertTrue(
             v::sf($constraintName)->validate($validConstraintValue),
             sprintf('"%s" should be valid under "%s" constraint.', $validConstraintValue, $constraintName)
         );
-        $this->assertFalse(
+        self::assertFalse(
             v::sf($constraintName)->validate($invalidConstraintValue),
             sprintf('"%s" should be invalid under "%s" constraint.', $invalidConstraintValue, $constraintName)
         );
@@ -38,11 +42,11 @@ class SfTest extends \PHPUnit_Framework_TestCase
     /**
      * @depends testValidationWithAnExistingValidationConstraint
      */
-    public function testAssertionWithAnExistingValidationConstraint()
+    public function testAssertionWithAnExistingValidationConstraint(): void
     {
         $constraintName = 'Time';
         $validConstraintValue = '04:20:00';
-        $this->assertTrue(
+        self::assertTrue(
             v::sf($constraintName)->assert($validConstraintValue),
             sprintf('"%s" should be valid under "%s" constraint.', $validConstraintValue, $constraintName)
         );
@@ -57,13 +61,13 @@ class SfTest extends \PHPUnit_Framework_TestCase
         $invalidConstraintValue = '34:90:70';
         try {
             v::sf($constraintName)->assert($invalidConstraintValue);
-        } catch (\Respect\Validation\Exceptions\AllOfException $exception) {
+        } catch (AllOfException $exception) {
             $fullValidationMessage = $exception->getFullMessage();
-            $expectedValidationException = <<<EOF
+            $expectedValidationException = <<<'EOF'
 - Time
 EOF;
 
-            return $this->assertEquals(
+            return self::assertEquals(
                 $expectedValidationException,
                 $fullValidationMessage,
                 'Exception message is different from the one expected.'
@@ -73,10 +77,10 @@ EOF;
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Symfony/Validator constraint "FluxCapacitor" does not exist.
      */
-    public function testValidationWithNonExistingConstraint()
+    public function testValidationWithNonExistingConstraint(): void
     {
         $fantasyConstraintName = 'FluxCapacitor';
         $fantasyValue = '8GW';

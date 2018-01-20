@@ -9,33 +9,41 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Georgia subdivision code.
+ * Validates whether an input is subdivision code of Georgia or not.
  *
  * ISO 3166-1 alpha-2: GE
  *
- * @link http://www.geonames.org/GE/administrative-division-georgia.html
+ * @see http://www.geonames.org/GE/administrative-division-georgia.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class GeSubdivisionCode extends AbstractSearcher
+final class GeSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AB', // Abkhazia
-        'AJ', // Ajaria
-        'GU', // Guria
-        'IM', // Imereti
-        'KA', // Kakheti
-        'KK', // Kvemo Kartli
-        'MM', // Mtskheta-Mtianeti
-        'RL', // Racha Lechkhumi and Kvemo Svaneti
-        'SJ', // Samtskhe-Javakheti
-        'SK', // Shida Kartli
-        'SZ', // Samegrelo-Zemo Svaneti
-        'TB', // Tbilisi
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AB', // Abkhazia
+           'AJ', // Ajaria
+           'GU', // Guria
+           'IM', // Imereti
+           'KA', // Kakheti
+           'KK', // Kvemo Kartli
+           'MM', // Mtskheta-Mtianeti
+           'RL', // Racha Lechkhumi and Kvemo Svaneti
+           'SJ', // Samtskhe-Javakheti
+           'SK', // Shida Kartli
+           'SZ', // Samegrelo-Zemo Svaneti
+           'TB', // Tbilisi
+       ];
+    }
 }

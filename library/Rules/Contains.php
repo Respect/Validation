@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Contains extends AbstractRule
@@ -18,7 +20,7 @@ class Contains extends AbstractRule
 
     public function __construct($containsValue, $identical = false)
     {
-        $this->containsValue = $containsValue;
+        $this->containsValue = (string) $containsValue;
         $this->identical = $identical;
     }
 
@@ -37,7 +39,9 @@ class Contains extends AbstractRule
             return in_array($this->containsValue, $input);
         }
 
-        return false !== mb_stripos($input, $this->containsValue, 0, mb_detect_encoding($input));
+        $inputString = (string) $input;
+
+        return false !== mb_stripos($inputString, $this->containsValue, 0, mb_detect_encoding($inputString));
     }
 
     protected function validateIdentical($input)
@@ -46,6 +50,8 @@ class Contains extends AbstractRule
             return in_array($this->containsValue, $input, true);
         }
 
-        return false !== mb_strpos($input, $this->containsValue, 0, mb_detect_encoding($input));
+        $inputString = (string) $input;
+
+        return false !== mb_strpos($inputString, $this->containsValue, 0, mb_detect_encoding($inputString));
     }
 }

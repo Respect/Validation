@@ -9,13 +9,17 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\AlwaysValid
+ * @covers \Respect\Validation\Rules\AlwaysValid
  */
-class AlwaysValidTest extends \PHPUnit_Framework_TestCase
+class AlwaysValidTest extends TestCase
 {
     public function providerForValidAlwaysValid()
     {
@@ -35,10 +39,10 @@ class AlwaysValidTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidAlwaysValid
      */
-    public function testShouldValidateInputWhenItIsAValidAlwaysValid($input)
+    public function testShouldValidateInputWhenItIsAValidAlwaysValid($input): void
     {
         $rule = new AlwaysValid();
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 }

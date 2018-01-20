@@ -9,31 +9,39 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Zimbabwe subdivision code.
+ * Validates whether an input is subdivision code of Zimbabwe or not.
  *
  * ISO 3166-1 alpha-2: ZW
  *
- * @link http://www.geonames.org/ZW/administrative-division-zimbabwe.html
+ * @see http://www.geonames.org/ZW/administrative-division-zimbabwe.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ZwSubdivisionCode extends AbstractSearcher
+final class ZwSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'BU', // Bulawayo (city)
-        'HA', // Harare (city)
-        'MA', // Manicaland
-        'MC', // Mashonaland Central
-        'ME', // Mashonaland East
-        'MI', // Midlands
-        'MN', // Matabeleland North
-        'MS', // Matabeleland South
-        'MV', // Masvingo
-        'MW', // Mashonaland West
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'BU', // Bulawayo (city)
+           'HA', // Harare (city)
+           'MA', // Manicaland
+           'MC', // Mashonaland Central
+           'ME', // Mashonaland East
+           'MI', // Midlands
+           'MN', // Matabeleland North
+           'MS', // Matabeleland South
+           'MV', // Masvingo
+           'MW', // Mashonaland West
+       ];
+    }
 }

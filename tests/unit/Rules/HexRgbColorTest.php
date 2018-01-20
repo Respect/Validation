@@ -9,33 +9,37 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\HexRgbColor
- * @covers Respect\Validation\Exceptions\HexRgbColorException
+ * @covers \Respect\Validation\Rules\HexRgbColor
+ * @covers \Respect\Validation\Exceptions\HexRgbColorException
  */
-class HexRgbColorTest extends \PHPUnit_Framework_TestCase
+class HexRgbColorTest extends TestCase
 {
     /**
      * @dataProvider providerForValidHexRgbColor
      */
-    public function testHexRgbColorValuesONLYShouldReturnTrue($validHexRgbColor)
+    public function testHexRgbColorValuesONLYShouldReturnTrue($validHexRgbColor): void
     {
         $validator = new HexRgbColor();
 
-        $this->assertTrue($validator->validate($validHexRgbColor));
+        self::assertTrue($validator->validate($validHexRgbColor));
     }
 
     /**
      * @dataProvider providerForInvalidHexRgbColor
      */
-    public function testInvalidHexRgbColorValuesShouldReturnFalse($invalidHexRgbColor)
+    public function testInvalidHexRgbColorValuesShouldReturnFalse($invalidHexRgbColor): void
     {
         $validator = new HexRgbColor();
 
-        $this->assertFalse($validator->validate($invalidHexRgbColor));
+        self::assertFalse($validator->validate($invalidHexRgbColor));
     }
 
     public function providerForValidHexRgbColor()

@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Kenya subdivision code.
+ * Exception class for subdivision codes of Kenya.
  *
  * ISO 3166-1 alpha-2: KE
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class KeSubdivisionCodeException extends SubdivisionCodeException
+final class KeSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Kenya',

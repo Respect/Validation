@@ -9,27 +9,35 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Vanuatu subdivision code.
+ * Validates whether an input is subdivision code of Vanuatu or not.
  *
  * ISO 3166-1 alpha-2: VU
  *
- * @link http://www.geonames.org/VU/administrative-division-vanuatu.html
+ * @see http://www.geonames.org/VU/administrative-division-vanuatu.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class VuSubdivisionCode extends AbstractSearcher
+final class VuSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'MAP', // Malampa
-        'PAM', // Penama
-        'SAM', // Sanma
-        'SEE', // Shefa
-        'TAE', // Tafea
-        'TOB', // Torba
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'MAP', // Malampa
+           'PAM', // Penama
+           'SAM', // Sanma
+           'SEE', // Shefa
+           'TAE', // Tafea
+           'TOB', // Torba
+       ];
+    }
 }

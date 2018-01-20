@@ -9,28 +9,30 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\KeySet
- * @covers Respect\Validation\Exceptions\KeySetException
+ * @covers \Respect\Validation\Rules\KeySet
+ * @covers \Respect\Validation\Exceptions\KeySetException
  */
-class KeySetTest extends PHPUnit_Framework_TestCase
+class KeySetTest extends TestCase
 {
-    public function testShouldAcceptKeyRule()
+    public function testShouldAcceptKeyRule(): void
     {
         $key = new Key('foo', new AlwaysValid(), false);
         $keySet = new KeySet($key);
 
         $rules = $keySet->getRules();
 
-        $this->assertSame(current($rules), $key);
+        self::assertSame(current($rules), $key);
     }
 
-    public function testShouldAcceptAllOfWithOneKeyRule()
+    public function testShouldAcceptAllOfWithOneKeyRule(): void
     {
         $key = new Key('foo', new AlwaysValid(), false);
         $allOf = new AllOf($key);
@@ -38,14 +40,14 @@ class KeySetTest extends PHPUnit_Framework_TestCase
 
         $rules = $keySet->getRules();
 
-        $this->assertSame(current($rules), $key);
+        self::assertSame(current($rules), $key);
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage AllOf rule must have only one Key rule
      */
-    public function testShouldNotAcceptAllOfWithMoreThanOneKeyRule()
+    public function testShouldNotAcceptAllOfWithMoreThanOneKeyRule(): void
     {
         $key1 = new Key('foo', new AlwaysValid(), false);
         $key2 = new Key('bar', new AlwaysValid(), false);
@@ -55,10 +57,10 @@ class KeySetTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage KeySet rule accepts only Key rules
      */
-    public function testShouldNotAcceptAllOfWithANonKeyRule()
+    public function testShouldNotAcceptAllOfWithANonKeyRule(): void
     {
         $alwaysValid = new AlwaysValid();
         $allOf = new AllOf($alwaysValid);
@@ -67,27 +69,27 @@ class KeySetTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage KeySet rule accepts only Key rules
      */
-    public function testShouldNotAcceptANonKeyRule()
+    public function testShouldNotAcceptANonKeyRule(): void
     {
         $alwaysValid = new AlwaysValid();
 
         new KeySet($alwaysValid);
     }
 
-    public function testShouldReturnKeys()
+    public function testShouldReturnKeys(): void
     {
         $key1 = new Key('foo', new AlwaysValid(), true);
         $key2 = new Key('bar', new AlwaysValid(), false);
 
         $keySet = new KeySet($key1, $key2);
 
-        $this->assertEquals(['foo', 'bar'], $keySet->getKeys());
+        self::assertEquals(['foo', 'bar'], $keySet->getKeys());
     }
 
-    public function testShouldValidateKeysWhenThereAreMissingRequiredKeys()
+    public function testShouldValidateKeysWhenThereAreMissingRequiredKeys(): void
     {
         $input = [
             'foo' => 42,
@@ -98,10 +100,10 @@ class KeySetTest extends PHPUnit_Framework_TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        $this->assertFalse($keySet->validate($input));
+        self::assertFalse($keySet->validate($input));
     }
 
-    public function testShouldValidateKeysWhenThereAreMissingNonRequiredKeys()
+    public function testShouldValidateKeysWhenThereAreMissingNonRequiredKeys(): void
     {
         $input = [
             'foo' => 42,
@@ -112,10 +114,10 @@ class KeySetTest extends PHPUnit_Framework_TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        $this->assertTrue($keySet->validate($input));
+        self::assertTrue($keySet->validate($input));
     }
 
-    public function testShouldValidateKeysWhenThereAreMoreKeys()
+    public function testShouldValidateKeysWhenThereAreMoreKeys(): void
     {
         $input = [
             'foo' => 42,
@@ -128,10 +130,10 @@ class KeySetTest extends PHPUnit_Framework_TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        $this->assertFalse($keySet->validate($input));
+        self::assertFalse($keySet->validate($input));
     }
 
-    public function testShouldValidateKeysWhenEmpty()
+    public function testShouldValidateKeysWhenEmpty(): void
     {
         $input = [];
 
@@ -140,14 +142,14 @@ class KeySetTest extends PHPUnit_Framework_TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        $this->assertFalse($keySet->validate($input));
+        self::assertFalse($keySet->validate($input));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeySetException
-     * @expectedExceptionMessage Must have keys { "foo", "bar" }
+     * @expectedException \Respect\Validation\Exceptions\KeySetException
+     * @expectedExceptionMessage Must have keys `{ "foo", "bar" }`
      */
-    public function testShouldCheckKeys()
+    public function testShouldCheckKeys(): void
     {
         $input = [];
 
@@ -159,10 +161,10 @@ class KeySetTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeySetException
-     * @expectedExceptionMessage Must have keys { "foo", "bar" }
+     * @expectedException \Respect\Validation\Exceptions\KeySetException
+     * @expectedExceptionMessage Must have keys `{ "foo", "bar" }`
      */
-    public function testShouldAssertKeys()
+    public function testShouldAssertKeys(): void
     {
         $input = [];
 
@@ -174,11 +176,11 @@ class KeySetTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeySetException
-     * @expectedExceptionMessage Must have keys { "name" }
+     * @expectedException \Respect\Validation\Exceptions\KeySetException
+     * @expectedExceptionMessage Must have keys `{ "name" }`
      * @dataProvider providerForInvalidArguments
      */
-    public function testShouldThrowExceptionInCaseArgumentIsAnythingOtherThanArray($input)
+    public function testShouldThrowExceptionInCaseArgumentIsAnythingOtherThanArray($input): void
     {
         $keySet = new KeySet(new Key('name'));
         $keySet->assert($input);
@@ -190,7 +192,7 @@ class KeySetTest extends PHPUnit_Framework_TestCase
             [''],
             [null],
             [0],
-            [new \stdClass()]
+            [new \stdClass()],
         ];
     }
 }

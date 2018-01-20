@@ -9,27 +9,35 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Gambia subdivision code.
+ * Validates whether an input is subdivision code of Gambia or not.
  *
  * ISO 3166-1 alpha-2: GM
  *
- * @link http://www.geonames.org/GM/administrative-division-gambia.html
+ * @see http://www.geonames.org/GM/administrative-division-gambia.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class GmSubdivisionCode extends AbstractSearcher
+final class GmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'B', // Banjul
-        'L', // Lower River
-        'M', // Central River
-        'N', // North Bank
-        'U', // Upper River
-        'W', // Western
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'B', // Banjul
+           'L', // Lower River
+           'M', // Central River
+           'N', // North Bank
+           'U', // Upper River
+           'W', // Western
+       ];
+    }
 }

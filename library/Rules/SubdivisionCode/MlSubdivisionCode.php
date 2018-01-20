@@ -9,30 +9,38 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Mali subdivision code.
+ * Validates whether an input is subdivision code of Mali or not.
  *
  * ISO 3166-1 alpha-2: ML
  *
- * @link http://www.geonames.org/ML/administrative-division-mali.html
+ * @see http://www.geonames.org/ML/administrative-division-mali.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class MlSubdivisionCode extends AbstractSearcher
+final class MlSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        '1', // Kayes
-        '2', // Koulikoro
-        '3', // Sikasso
-        '4', // Segou
-        '5', // Mopti
-        '6', // Tombouctou
-        '7', // Gao
-        '8', // Kidal
-        'BKO', // Bamako Capital District
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           '1', // Kayes
+           '2', // Koulikoro
+           '3', // Sikasso
+           '4', // Segou
+           '5', // Mopti
+           '6', // Tombouctou
+           '7', // Gao
+           '8', // Kidal
+           'BKO', // Bamako Capital District
+       ];
+    }
 }

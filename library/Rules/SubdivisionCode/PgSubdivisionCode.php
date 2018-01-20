@@ -9,41 +9,51 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Papua New Guinea subdivision code.
+ * Validates whether an input is subdivision code of Papua New Guinea or not.
  *
  * ISO 3166-1 alpha-2: PG
  *
- * @link http://www.geonames.org/PG/administrative-division-papua-new-guinea.html
+ * @see http://www.geonames.org/PG/administrative-division-papua-new-guinea.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class PgSubdivisionCode extends AbstractSearcher
+final class PgSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'CPK', // Chimbu
-        'CPM', // Central
-        'EBR', // East New Britain
-        'EHG', // Eastern Highlands
-        'EPW', // Enga
-        'ESW', // East Sepik
-        'GPK', // Gulf
-        'MBA', // Milne Bay
-        'MPL', // Morobe
-        'MPM', // Madang
-        'MRL', // Manus
-        'NCD', // National Capital
-        'NIK', // New Ireland
-        'NPP', // Northern
-        'NSA', // Bougainville
-        'SAN', // Sandaun
-        'SHM', // Southern Highlands
-        'WBK', // West New Britain
-        'WHM', // Western Highlands
-        'WPD', // Western
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'CPK', // Chimbu
+           'CPM', // Central
+           'EBR', // East New Britain
+           'EHG', // Eastern Highlands
+           'EPW', // Enga
+           'ESW', // East Sepik
+           'GPK', // Gulf
+           'HLA', // Hela
+           'JWK', // Jiwaka
+           'MBA', // Milne Bay
+           'MPL', // Morobe
+           'MPM', // Madang
+           'MRL', // Manus
+           'NCD', // National Capital
+           'NIK', // New Ireland
+           'NPP', // Northern
+           'NSB', // Bougainville
+           'SAN', // Sandaun
+           'SHM', // Southern Highlands
+           'WBK', // West New Britain
+           'WHM', // Western Highlands
+           'WPD', // Western
+       ];
+    }
 }

@@ -9,42 +9,51 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Taiwan subdivision code.
+ * Validates whether an input is subdivision code of Taiwan or not.
  *
  * ISO 3166-1 alpha-2: TW
  *
- * @link http://www.geonames.org/TW/administrative-division-taiwan.html
+ * @see http://www.geonames.org/TW/administrative-division-taiwan.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class TwSubdivisionCode extends AbstractSearcher
+final class TwSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'CHA', // Changhua
-        'CYI', // Chiayi
-        'CYQ', // Chiayi
-        'HSQ', // Hsinchu
-        'HSZ', // Hsinchu
-        'HUA', // Hualien
-        'ILA', // Ilan
-        'KEE', // Keelung
-        'KHH', // Kaohsiung
-        'MIA', // Miaoli
-        'NAN', // Nantou
-        'PEN', // Penghu
-        'PIF', // Pingtung
-        'TAO', // Taoyuan
-        'TNN', // Tainan
-        'TPE', // Taipei
-        'TPQ', // New Taipei
-        'TTT', // Taitung
-        'TXG', // Taichung
-        'YUN', // Yunlin
-        'TXQ', // Taichung County
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'CHA', // Changhua
+           'CYI', // Chiayi
+           'CYQ', // Chiayi
+           'HSQ', // Hsinchu
+           'HSZ', // Hsinchu
+           'HUA', // Hualien
+           'ILA', // Ilan
+           'KEE', // Keelung
+           'KHH', // Kaohsiung
+           'KIN', // Kinmen
+           'LIE', // Lienchiang
+           'MIA', // Miaoli
+           'NAN', // Nantou
+           'NWT', // New Taipei
+           'PEN', // Penghu
+           'PIF', // Pingtung
+           'TAO', // Taoyuan
+           'TNN', // Tainan
+           'TPE', // Taipei
+           'TTT', // Taitung
+           'TXG', // Taichung
+           'YUN', // Yunlin
+       ];
+    }
 }

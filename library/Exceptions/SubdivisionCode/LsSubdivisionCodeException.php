@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Lesotho subdivision code.
+ * Exception class for subdivision codes of Lesotho.
  *
  * ISO 3166-1 alpha-2: LS
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class LsSubdivisionCodeException extends SubdivisionCodeException
+final class LsSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Lesotho',

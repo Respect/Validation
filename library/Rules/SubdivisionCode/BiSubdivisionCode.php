@@ -9,38 +9,47 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Burundi subdivision code.
+ * Validates whether an input is subdivision code of Burundi or not.
  *
  * ISO 3166-1 alpha-2: BI
  *
- * @link http://www.geonames.org/BI/administrative-division-burundi.html
+ * @see http://www.geonames.org/BI/administrative-division-burundi.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class BiSubdivisionCode extends AbstractSearcher
+final class BiSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'BB', // Bubanza
-        'BL', // Bujumbura Rural
-        'BM', // Bujumbura Mairie
-        'BR', // Bururi
-        'CA', // Cankuzo
-        'CI', // Cibitoke
-        'GI', // Gitega
-        'KI', // Kirundo
-        'KR', // Karuzi
-        'KY', // Kayanza
-        'MA', // Makamba
-        'MU', // Muramvya
-        'MW', // Mwaro
-        'MY', // Muyinga
-        'NG', // Ngozi
-        'RT', // Rutana
-        'RY', // Ruyigi
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'BB', // Bubanza
+           'BL', // Bujumbura Rural
+           'BM', // Bujumbura Mairie
+           'BR', // Bururi
+           'CA', // Cankuzo
+           'CI', // Cibitoke
+           'GI', // Gitega
+           'KI', // Kirundo
+           'KR', // Karuzi
+           'KY', // Kayanza
+           'MA', // Makamba
+           'MU', // Muramvya
+           'MW', // Mwaro
+           'MY', // Muyinga
+           'NG', // Ngozi
+           'RM', // Rumonge
+           'RT', // Rutana
+           'RY', // Ruyigi
+       ];
+    }
 }

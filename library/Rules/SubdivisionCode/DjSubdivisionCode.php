@@ -9,27 +9,35 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Djibouti subdivision code.
+ * Validates whether an input is subdivision code of Djibouti or not.
  *
  * ISO 3166-1 alpha-2: DJ
  *
- * @link http://www.geonames.org/DJ/administrative-division-djibouti.html
+ * @see http://www.geonames.org/DJ/administrative-division-djibouti.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class DjSubdivisionCode extends AbstractSearcher
+final class DjSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AR', // Arta
-        'AS', // 'Ali Sabih
-        'DI', // Dikhil
-        'DJ', // Djibouti
-        'OB', // Obock
-        'TA', // Tadjoura
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AR', // Arta
+           'AS', // 'Ali Sabih
+           'DI', // Dikhil
+           'DJ', // Djibouti
+           'OB', // Obock
+           'TA', // Tadjoura
+       ];
+    }
 }

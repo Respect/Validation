@@ -9,18 +9,20 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use SplFileInfo;
 
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @group  rule
- * @covers Respect\Validation\Rules\Extension
- * @covers Respect\Validation\Exceptions\ExtensionException
+ * @covers \Respect\Validation\Rules\Extension
+ * @covers \Respect\Validation\Exceptions\ExtensionException
  */
-class ExtensionTest extends PHPUnit_Framework_TestCase
+class ExtensionTest extends TestCase
 {
     public function providerValidExtension()
     {
@@ -35,36 +37,36 @@ class ExtensionTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerValidExtension
      */
-    public function testShouldValidateExtension($filename, $extension)
+    public function testShouldValidateExtension($filename, $extension): void
     {
         $rule = new Extension($extension);
 
-        $this->assertTrue($rule->validate($filename));
+        self::assertTrue($rule->validate($filename));
     }
 
-    public function testShouldAcceptSplFileInfo()
+    public function testShouldAcceptSplFileInfo(): void
     {
         $fileInfo = new SplFileInfo(__FILE__);
 
         $rule = new Extension('php');
 
-        $this->assertTrue($rule->validate($fileInfo));
+        self::assertTrue($rule->validate($fileInfo));
     }
 
-    public function testShouldInvalidWhenNotStringNorSplFileInfo()
+    public function testShouldInvalidWhenNotStringNorSplFileInfo(): void
     {
         $nonFile = [__FILE__];
 
         $rule = new Extension('php');
 
-        $this->assertFalse($rule->validate($nonFile));
+        self::assertFalse($rule->validate($nonFile));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ExtensionException
+     * @expectedException \Respect\Validation\Exceptions\ExtensionException
      * @expectedExceptionMessage "filename.jpg" must have "png" extension
      */
-    public function testShouldThrowExtensionExceptionWhenCheckingValue()
+    public function testShouldThrowExtensionExceptionWhenCheckingValue(): void
     {
         $rule = new Extension('png');
         $rule->check('filename.jpg');

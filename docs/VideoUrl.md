@@ -1,7 +1,7 @@
 # VideoUrl
 
-- `v::videoUrl()`
-- `v::videoUrl(string $service)`
+- `VideoUrl()`
+- `VideoUrl(string $service)`
 
 Validates if the input is a video URL value:
 
@@ -28,8 +28,13 @@ The `$service` value is not case-sensitive.
 
 Message template for this validator includes `{{service}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
 
 ***
 See also:
 
-  * [Url](Url.md)
+- [Url](Url.md)

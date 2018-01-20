@@ -9,35 +9,39 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Uppercase
- * @covers Respect\Validation\Exceptions\UppercaseException
+ * @covers \Respect\Validation\Rules\Uppercase
+ * @covers \Respect\Validation\Exceptions\UppercaseException
  */
-class UppercaseTest extends \PHPUnit_Framework_TestCase
+class UppercaseTest extends TestCase
 {
     /**
      * @dataProvider providerForValidUppercase
      */
-    public function testValidUppercaseShouldReturnTrue($input)
+    public function testValidUppercaseShouldReturnTrue($input): void
     {
         $uppercase = new Uppercase();
-        $this->assertTrue($uppercase->validate($input));
-        $this->assertTrue($uppercase->assert($input));
-        $this->assertTrue($uppercase->check($input));
+        self::assertTrue($uppercase->validate($input));
+        self::assertTrue($uppercase->assert($input));
+        self::assertTrue($uppercase->check($input));
     }
 
     /**
      * @dataProvider providerForInvalidUppercase
-     * @expectedException Respect\Validation\Exceptions\UppercaseException
+     * @expectedException \Respect\Validation\Exceptions\UppercaseException
      */
-    public function testInvalidUppercaseShouldThrowException($input)
+    public function testInvalidUppercaseShouldThrowException($input): void
     {
         $lowercase = new Uppercase();
-        $this->assertFalse($lowercase->validate($input));
-        $this->assertFalse($lowercase->assert($input));
+        self::assertFalse($lowercase->validate($input));
+        self::assertFalse($lowercase->assert($input));
     }
 
     public function providerForValidUppercase()

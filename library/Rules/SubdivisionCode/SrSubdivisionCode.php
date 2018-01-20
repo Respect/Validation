@@ -9,31 +9,39 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Suriname subdivision code.
+ * Validates whether an input is subdivision code of Suriname or not.
  *
  * ISO 3166-1 alpha-2: SR
  *
- * @link http://www.geonames.org/SR/administrative-division-suriname.html
+ * @see http://www.geonames.org/SR/administrative-division-suriname.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SrSubdivisionCode extends AbstractSearcher
+final class SrSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'BR', // Brokopondo
-        'CM', // Commewijne
-        'CR', // Coronie
-        'MA', // Marowijne
-        'NI', // Nickerie
-        'PM', // Paramaribo
-        'PR', // Para
-        'SA', // Saramacca
-        'SI', // Sipaliwini
-        'WA', // Wanica
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'BR', // Brokopondo
+           'CM', // Commewijne
+           'CR', // Coronie
+           'MA', // Marowijne
+           'NI', // Nickerie
+           'PM', // Paramaribo
+           'PR', // Para
+           'SA', // Saramacca
+           'SI', // Sipaliwini
+           'WA', // Wanica
+       ];
+    }
 }

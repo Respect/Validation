@@ -9,30 +9,40 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Oman subdivision code.
+ * Validates whether an input is subdivision code of Oman or not.
  *
  * ISO 3166-1 alpha-2: OM
  *
- * @link http://www.geonames.org/OM/administrative-division-oman.html
+ * @see http://www.geonames.org/OM/administrative-division-oman.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class OmSubdivisionCode extends AbstractSearcher
+final class OmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'BA', // Al Batinah South
-        'BU', // Al Buraymī
-        'DA', // Ad Dakhiliyah
-        'MA', // Masqat
-        'MU', // Musandam
-        'SH', // Ash Sharqiyah South
-        'WU', // Al Wusta
-        'ZA', // Az Zahirah
-        'ZU', // Zufar
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'BJ', // Al Batinah South
+           'BS', // Shamāl al Bāţinah
+           'BU', // Al Buraymī
+           'DA', // Ad Dakhiliyah
+           'MA', // Masqat
+           'MU', // Musandam
+           'SJ', // Ash Sharqiyah South
+           'SS', // Shamāl ash Sharqīyah
+           'WU', // Al Wusta
+           'ZA', // Az Zahirah
+           'ZU', // Zufar
+       ];
+    }
 }

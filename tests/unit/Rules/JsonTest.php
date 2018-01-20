@@ -9,16 +9,20 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Json
- * @covers Respect\Validation\Exceptions\JsonException
+ * @covers \Respect\Validation\Rules\Json
+ * @covers \Respect\Validation\Exceptions\JsonException
  */
 class JsonTest extends RuleTestCase
 {
-    public function providerForValidInput()
+    public function providerForValidInput(): array
     {
         $json = new Json();
 
@@ -35,7 +39,7 @@ class JsonTest extends RuleTestCase
         ];
     }
 
-    public function providerForInvalidInput()
+    public function providerForInvalidInput(): array
     {
         $json = new Json();
 

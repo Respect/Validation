@@ -9,35 +9,42 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Belgium subdivision code.
+ * Validates whether an input is subdivision code of Belgium or not.
  *
  * ISO 3166-1 alpha-2: BE
  *
- * @link http://www.geonames.org/BE/administrative-division-belgium.html
+ * @see http://www.geonames.org/BE/administrative-division-belgium.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class BeSubdivisionCode extends AbstractSearcher
+final class BeSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'BRU', // Brussels
-        'VLG', // Flanders
-        'WAL', // Wallonia
-        'BRU', // Brussels
-        'VAN', // Antwerpen
-        'VBR', // Vlaams Brabant
-        'VLI', // Limburg
-        'VOV', // Oost-Vlaanderen
-        'VWV', // West-Vlaanderen
-        'WBR', // Brabant Wallon
-        'WHT', // Hainaut
-        'WLG', // Liege
-        'WLX', // Luxembourg
-        'WNA', // Namur
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'BRU', // Brussels
+           'VAN', // Antwerpen
+           'VBR', // Vlaams Brabant
+           'VLG', // Flanders
+           'VLI', // Limburg
+           'VOV', // Oost-Vlaanderen
+           'VWV', // West-Vlaanderen
+           'WAL', // Wallonia
+           'WBR', // Brabant Wallon
+           'WHT', // Hainaut
+           'WLG', // Liege
+           'WLX', // Luxembourg
+           'WNA', // Namur
+       ];
+    }
 }

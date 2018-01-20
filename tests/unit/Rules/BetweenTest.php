@@ -9,16 +9,19 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use DateTime;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Between
- * @covers Respect\Validation\Exceptions\BetweenException
+ * @covers \Respect\Validation\Rules\Between
+ * @covers \Respect\Validation\Exceptions\BetweenException
  */
-class BetweenTest extends \PHPUnit_Framework_TestCase
+class BetweenTest extends TestCase
 {
     public function providerValid()
     {
@@ -64,29 +67,29 @@ class BetweenTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerValid
      */
-    public function testValuesBetweenBoundsShouldPass($min, $max, $inclusive, $input)
+    public function testValuesBetweenBoundsShouldPass($min, $max, $inclusive, $input): void
     {
         $o = new Between($min, $max, $inclusive);
-        $this->assertTrue($o->__invoke($input));
-        $this->assertTrue($o->assert($input));
-        $this->assertTrue($o->check($input));
+        self::assertTrue($o->__invoke($input));
+        self::assertTrue($o->assert($input));
+        self::assertTrue($o->check($input));
     }
 
     /**
      * @dataProvider providerInvalid
-     * @expectedException Respect\Validation\Exceptions\BetweenException
+     * @expectedException \Respect\Validation\Exceptions\BetweenException
      */
-    public function testValuesOutBoundsShouldRaiseException($min, $max, $inclusive, $input)
+    public function testValuesOutBoundsShouldRaiseException($min, $max, $inclusive, $input): void
     {
         $o = new Between($min, $max, $inclusive);
-        $this->assertFalse($o->__invoke($input));
-        $this->assertFalse($o->assert($input));
+        self::assertFalse($o->__invoke($input));
+        self::assertFalse($o->assert($input));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructionParamsShouldRaiseException()
+    public function testInvalidConstructionParamsShouldRaiseException(): void
     {
         $o = new Between(10, 5);
     }

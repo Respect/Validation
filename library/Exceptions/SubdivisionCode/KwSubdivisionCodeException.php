@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Kuwait subdivision code.
+ * Exception class for subdivision codes of Kuwait.
  *
  * ISO 3166-1 alpha-2: KW
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class KwSubdivisionCodeException extends SubdivisionCodeException
+final class KwSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Kuwait',

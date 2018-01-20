@@ -9,26 +9,34 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for French Polynesia subdivision code.
+ * Validates whether an input is subdivision code of French Polynesia or not.
  *
  * ISO 3166-1 alpha-2: PF
  *
- * @link http://www.geonames.org/PF/administrative-division-french-polynesia.html
+ * @see http://www.geonames.org/PF/administrative-division-french-polynesia.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class PfSubdivisionCode extends AbstractSearcher
+final class PfSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'I', // Austral Islands
-        'M', // Marquesas Islands
-        'S', // Iles Sous-le-Vent
-        'T', // Tuamotu-Gambier
-        'V', // Iles du Vent
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'I', // Austral Islands
+           'M', // Marquesas Islands
+           'S', // Iles Sous-le-Vent
+           'T', // Tuamotu-Gambier
+           'V', // Iles du Vent
+       ];
+    }
 }

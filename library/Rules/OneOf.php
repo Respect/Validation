@@ -9,10 +9,16 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
 
+/**
+ * @author Bradyn Poulsen <bradyn@bradynpoulsen.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class OneOf extends AbstractComposite
 {
     public function assert($input)
@@ -21,7 +27,7 @@ class OneOf extends AbstractComposite
         $exceptions = $this->validateRules($input);
         $numRules = count($validators);
         $numExceptions = count($exceptions);
-        if ($numExceptions === $numRules) {
+        if ($numExceptions !== $numRules - 1) {
             throw $this->reportError($input)->setRelated($exceptions);
         }
 
@@ -30,33 +36,36 @@ class OneOf extends AbstractComposite
 
     public function validate($input)
     {
-        foreach ($this->getRules() as $v) {
-            if ($v->validate($input)) {
-                return true;
+        $rulesPassedCount = 0;
+        foreach ($this->getRules() as $rule) {
+            if (!$rule->validate($input)) {
+                continue;
             }
+
+            ++$rulesPassedCount;
         }
 
-        return false;
+        return 1 === $rulesPassedCount;
     }
 
     public function check($input)
     {
-        foreach ($this->getRules() as $v) {
+        $exceptions = [];
+        $rulesPassedCount = 0;
+        foreach ($this->getRules() as $rule) {
             try {
-                if ($v->check($input)) {
-                    return true;
-                }
-            } catch (ValidationException $e) {
-                if (!isset($firstException)) {
-                    $firstException = $e;
-                }
+                $rule->check($input);
+
+                ++$rulesPassedCount;
+            } catch (ValidationException $exception) {
+                $exceptions[] = $exception;
             }
         }
 
-        if (isset($firstException)) {
-            throw $firstException;
+        if (1 === $rulesPassedCount) {
+            return true;
         }
 
-        return false;
+        throw (array_shift($exceptions) ?: $this->reportError($input));
     }
 }

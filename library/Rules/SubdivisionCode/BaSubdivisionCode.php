@@ -9,34 +9,42 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Bosnia and Herzegovina subdivision code.
+ * Validates whether an input is subdivision code of Bosnia and Herzegovina or not.
  *
  * ISO 3166-1 alpha-2: BA
  *
- * @link http://www.geonames.org/BA/administrative-division-bosnia-and-herzegovina.html
+ * @see http://www.geonames.org/BA/administrative-division-bosnia-and-herzegovina.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class BaSubdivisionCode extends AbstractSearcher
+final class BaSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'BIH', // Federacija Bosna i Hercegovina
-        'BRC', // Brcko District
-        'SRP', // Republika Srpska
-        '01', // Unsko-sanski kanton
-        '02', // Posavski kanton
-        '03', // Tuzlanski kanton
-        '04', // Zeničko-dobojski kanton
-        '05', // Bosansko-podrinjski kanton
-        '06', // Srednjobosanski kantonn
-        '07', // Hercegovačko-neretvanski kanton
-        '08', // Zapadnohercegovački kanton
-        '09', // Kanton Sarajevo
-        '10', // Kanton br. 10 (Livanjski kanton)
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           '01', // Unsko-sanski kanton
+           '02', // Posavski kanton
+           '03', // Tuzlanski kanton
+           '04', // Zeničko-dobojski kanton
+           '05', // Bosansko-podrinjski kanton
+           '06', // Srednjobosanski kantonn
+           '07', // Hercegovačko-neretvanski kanton
+           '08', // Zapadnohercegovački kanton
+           '09', // Kanton Sarajevo
+           '10', // Kanton br. 10 (Livanjski kanton)
+           'BIH', // Federacija Bosna i Hercegovina
+           'BRC', // Brcko District
+           'SRP', // Republika Srpska
+       ];
+    }
 }

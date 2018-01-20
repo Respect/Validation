@@ -25,5 +25,5 @@ try {
 ?>
 --EXPECTF--
 "" must be an object
-true must be an object
+`TRUE` must be an object
 0 must be an object

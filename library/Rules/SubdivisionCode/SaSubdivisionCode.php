@@ -9,34 +9,42 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Saudi Arabia subdivision code.
+ * Validates whether an input is subdivision code of Saudi Arabia or not.
  *
  * ISO 3166-1 alpha-2: SA
  *
- * @link http://www.geonames.org/SA/administrative-division-saudi-arabia.html
+ * @see http://www.geonames.org/SA/administrative-division-saudi-arabia.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SaSubdivisionCode extends AbstractSearcher
+final class SaSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        '01', // Ar Riyad
-        '02', // Makkah
-        '03', // Al Madinah
-        '04', // Ash Sharqiyah (Eastern Province)
-        '05', // Al Qasim
-        '06', // Ha'il
-        '07', // Tabuk
-        '08', // Al Hudud ash Shamaliyah
-        '09', // Jizan
-        '10', // Najran
-        '11', // Al Bahah
-        '12', // Al Jawf
-        '14', // 'Asir
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           '01', // Ar Riyad
+           '02', // Makkah
+           '03', // Al Madinah
+           '04', // Ash Sharqiyah (Eastern Province)
+           '05', // Al Qasim
+           '06', // Ha'il
+           '07', // Tabuk
+           '08', // Al Hudud ash Shamaliyah
+           '09', // Jizan
+           '10', // Najran
+           '11', // Al Bahah
+           '12', // Al Jawf
+           '14', // 'Asir
+       ];
+    }
 }

@@ -9,7 +9,11 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 $GLOBALS['is_writable'] = null;
 
@@ -26,46 +30,46 @@ function is_writable($writable)
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Writable
- * @covers Respect\Validation\Exceptions\WritableException
+ * @covers \Respect\Validation\Rules\Writable
+ * @covers \Respect\Validation\Exceptions\WritableException
  */
-class WritableTest extends \PHPUnit_Framework_TestCase
+class WritableTest extends TestCase
 {
     /**
-     * @covers Respect\Validation\Rules\Writable::validate
+     * @covers \Respect\Validation\Rules\Writable::validate
      */
-    public function testValidWritableFileShouldReturnTrue()
+    public function testValidWritableFileShouldReturnTrue(): void
     {
         $GLOBALS['is_writable'] = true;
 
         $rule = new Writable();
         $input = '/path/of/a/valid/writable/file.txt';
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
-     * @covers Respect\Validation\Rules\Writable::validate
+     * @covers \Respect\Validation\Rules\Writable::validate
      */
-    public function testInvalidWritableFileShouldReturnFalse()
+    public function testInvalidWritableFileShouldReturnFalse(): void
     {
         $GLOBALS['is_writable'] = false;
 
         $rule = new Writable();
         $input = '/path/of/an/invalid/writable/file.txt';
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     /**
-     * @covers Respect\Validation\Rules\Writable::validate
+     * @covers \Respect\Validation\Rules\Writable::validate
      */
-    public function testShouldValidateObjects()
+    public function testShouldValidateObjects(): void
     {
         $rule = new Writable();
-        $object = $this->getMock('SplFileInfo', ['isWritable'], ['somefile.txt']);
+        $object = $this->createMock('SplFileInfo', ['isWritable'], ['somefile.txt']);
         $object->expects($this->once())
                 ->method('isWritable')
                 ->will($this->returnValue(true));
 
-        $this->assertTrue($rule->validate($object));
+        self::assertTrue($rule->validate($object));
     }
 }

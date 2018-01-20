@@ -9,9 +9,12 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use DateTime;
+use DateTimeImmutable;
+use DateTimeInterface;
 
 class LeapDate extends AbstractRule
 {
@@ -25,14 +28,14 @@ class LeapDate extends AbstractRule
     public function validate($input)
     {
         if (is_string($input)) {
-            $date = DateTime::createFromFormat($this->format, $input);
-        } elseif ($input instanceof DateTime) {
+            $date = DateTimeImmutable::createFromFormat($this->format, $input);
+        } elseif ($input instanceof DateTimeInterface) {
             $date = $input;
         } else {
             return false;
         }
 
         // Dates that aren't leap will aways be rounded
-        return $date->format('m-d') == '02-29';
+        return '02-29' == $date->format('m-d');
     }
 }

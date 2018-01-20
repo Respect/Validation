@@ -9,30 +9,38 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for South Africa subdivision code.
+ * Validates whether an input is subdivision code of South Africa or not.
  *
  * ISO 3166-1 alpha-2: ZA
  *
- * @link http://www.geonames.org/ZA/administrative-division-south-africa.html
+ * @see http://www.geonames.org/ZA/administrative-division-south-africa.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ZaSubdivisionCode extends AbstractSearcher
+final class ZaSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'EC', // Eastern Cape
-        'FS', // Free State
-        'GP', // Gauteng
-        'LP', // Limpopo
-        'MP', // Mpumalanga
-        'NC', // Northern Cape
-        'NW', // North West
-        'WC', // Western Cape
-        'ZN', // KwaZulu-Natal
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'EC', // Eastern Cape
+           'FS', // Free State
+           'GT', // Gauteng
+           'LP', // Limpopo
+           'MP', // Mpumalanga
+           'NC', // Northern Cape
+           'NL', // KwaZulu-Natal
+           'NW', // North West
+           'WC', // Western Cape
+       ];
+    }
 }

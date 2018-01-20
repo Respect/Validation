@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Pakistan subdivision code.
+ * Exception class for subdivision codes of Pakistan.
  *
  * ISO 3166-1 alpha-2: PK
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class PkSubdivisionCodeException extends SubdivisionCodeException
+final class PkSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Pakistan',

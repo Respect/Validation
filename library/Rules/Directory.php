@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Directory extends AbstractRule
@@ -19,6 +21,6 @@ class Directory extends AbstractRule
             return $input->isDir();
         }
 
-        return (is_string($input) && is_dir($input));
+        return is_string($input) && is_dir($input);
     }
 }

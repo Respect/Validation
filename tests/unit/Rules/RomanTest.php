@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Roman
- * @covers Respect\Validation\Exceptions\RomanException
+ * @covers \Respect\Validation\Rules\Roman
+ * @covers \Respect\Validation\Exceptions\RomanException
  */
-class RomanTest extends \PHPUnit_Framework_TestCase
+class RomanTest extends TestCase
 {
     protected $romanValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->romanValidator = new Roman();
     }
@@ -28,21 +32,21 @@ class RomanTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForRoman
      */
-    public function testValidRomansShouldReturnTrue($input)
+    public function testValidRomansShouldReturnTrue($input): void
     {
-        $this->assertTrue($this->romanValidator->__invoke($input));
-        $this->assertTrue($this->romanValidator->assert($input));
-        $this->assertTrue($this->romanValidator->check($input));
+        self::assertTrue($this->romanValidator->__invoke($input));
+        self::assertTrue($this->romanValidator->assert($input));
+        self::assertTrue($this->romanValidator->check($input));
     }
 
     /**
      * @dataProvider providerForNotRoman
-     * @expectedException Respect\Validation\Exceptions\RomanException
+     * @expectedException \Respect\Validation\Exceptions\RomanException
      */
-    public function testInvalidRomansShouldThrowRomanException($input)
+    public function testInvalidRomansShouldThrowRomanException($input): void
     {
-        $this->assertFalse($this->romanValidator->__invoke($input));
-        $this->assertFalse($this->romanValidator->assert($input));
+        self::assertFalse($this->romanValidator->__invoke($input));
+        self::assertFalse($this->romanValidator->assert($input));
     }
 
     public function providerForRoman()
@@ -70,7 +74,7 @@ class RomanTest extends \PHPUnit_Framework_TestCase
             [' '],
             ['IIII'],
             ['IVVVX'],
-            ['CCDC'], //
+            ['CCDC'],
             ['MXM'],
             ['XIIIIIIII'],
             ['MIMIMI'],

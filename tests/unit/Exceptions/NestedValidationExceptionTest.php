@@ -9,7 +9,11 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * phpunit has an issue with mocking exceptions when in HHVM:
@@ -19,29 +23,29 @@ class PrivateNestedValidationException extends NestedValidationException
 {
 }
 
-class NestedValidationExceptionTest extends \PHPUnit_Framework_TestCase
+class NestedValidationExceptionTest extends TestCase
 {
-    public function testGetRelatedShouldReturnExceptionAddedByAddRelated()
+    public function testGetRelatedShouldReturnExceptionAddedByAddRelated(): void
     {
         $composite = new AttributeException();
         $node = new IntValException();
         $composite->addRelated($node);
-        $this->assertEquals(1, count($composite->getRelated(true)));
-        $this->assertContainsOnly($node, $composite->getRelated());
+        self::assertEquals(1, count($composite->getRelated(true)));
+        self::assertContainsOnly($node, $composite->getRelated());
     }
 
-    public function testAddingTheSameInstanceShouldAddJustASingleReference()
+    public function testAddingTheSameInstanceShouldAddJustASingleReference(): void
     {
         $composite = new AttributeException();
         $node = new IntValException();
         $composite->addRelated($node);
         $composite->addRelated($node);
         $composite->addRelated($node);
-        $this->assertEquals(1, count($composite->getRelated(true)));
-        $this->assertContainsOnly($node, $composite->getRelated());
+        self::assertEquals(1, count($composite->getRelated(true)));
+        self::assertContainsOnly($node, $composite->getRelated());
     }
 
-    public function testFindRelatedShouldFindCompositeExceptions()
+    public function testFindRelatedShouldFindCompositeExceptions(): void
     {
         $foo = new AttributeException();
         $bar = new AttributeException();
@@ -54,12 +58,12 @@ class NestedValidationExceptionTest extends \PHPUnit_Framework_TestCase
         $foo->addRelated($bar);
         $bar->addRelated($baz);
         $baz->addRelated($bat);
-        $this->assertSame($bar, $foo->findRelated('bar'));
-        $this->assertSame($baz, $foo->findRelated('baz'));
-        $this->assertSame($baz, $foo->findRelated('bar.baz'));
-        $this->assertSame($baz, $foo->findRelated('baz'));
-        $this->assertSame($bat, $foo->findRelated('bar.bat'));
-        $this->assertNull($foo->findRelated('none'));
-        $this->assertNull($foo->findRelated('bar.none'));
+        self::assertSame($bar, $foo->findRelated('bar'));
+        self::assertSame($baz, $foo->findRelated('baz'));
+        self::assertSame($baz, $foo->findRelated('bar.baz'));
+        self::assertSame($baz, $foo->findRelated('baz'));
+        self::assertSame($bat, $foo->findRelated('bar.bat'));
+        self::assertNull($foo->findRelated('none'));
+        self::assertNull($foo->findRelated('bar.none'));
     }
 }

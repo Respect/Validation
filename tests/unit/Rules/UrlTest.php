@@ -9,33 +9,37 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Url
- * @covers Respect\Validation\Exceptions\UrlException
+ * @covers \Respect\Validation\Rules\Url
+ * @covers \Respect\Validation\Exceptions\UrlException
  */
-class UrlTest extends \PHPUnit_Framework_TestCase
+class UrlTest extends TestCase
 {
     /**
      * @dataProvider providerForValidUrl
      */
-    public function testShouldValidateValidUrls($validUrl)
+    public function testShouldValidateValidUrls($validUrl): void
     {
         $validator = new Url();
 
-        $this->assertTrue($validator->validate($validUrl));
+        self::assertTrue($validator->validate($validUrl));
     }
 
     /**
      * @dataProvider providerForInvalidUrl
      */
-    public function testShouldNotValidateInvalidUrls($invalidUrl)
+    public function testShouldNotValidateInvalidUrls($invalidUrl): void
     {
         $validator = new Url();
 
-        $this->assertFalse($validator->validate($invalidUrl));
+        self::assertFalse($validator->validate($invalidUrl));
     }
 
     public function providerForValidUrl()

@@ -9,39 +9,47 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Somalia subdivision code.
+ * Validates whether an input is subdivision code of Somalia or not.
  *
  * ISO 3166-1 alpha-2: SO
  *
- * @link http://www.geonames.org/SO/administrative-division-somalia.html
+ * @see http://www.geonames.org/SO/administrative-division-somalia.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SoSubdivisionCode extends AbstractSearcher
+final class SoSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AW', // Awdal
-        'BK', // Bakool
-        'BN', // Banaadir
-        'BR', // Bari
-        'BY', // Bay
-        'GA', // Galguduud
-        'GE', // Gedo
-        'HI', // Hiiraan
-        'JD', // Jubbada Dhexe
-        'JH', // Jubbada Hoose
-        'MU', // Mudug
-        'NU', // Nugaal
-        'SA', // Sanaag
-        'SD', // Shabeellaha Dhexe
-        'SH', // Shabeellaha Hoose
-        'SO', // Sool
-        'TO', // Togdheer
-        'WO', // Woqooyi Galbeed
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AW', // Awdal
+           'BK', // Bakool
+           'BN', // Banaadir
+           'BR', // Bari
+           'BY', // Bay
+           'GA', // Galguduud
+           'GE', // Gedo
+           'HI', // Hiiraan
+           'JD', // Jubbada Dhexe
+           'JH', // Jubbada Hoose
+           'MU', // Mudug
+           'NU', // Nugaal
+           'SA', // Sanaag
+           'SD', // Shabeellaha Dhexe
+           'SH', // Shabeellaha Hoose
+           'SO', // Sool
+           'TO', // Togdheer
+           'WO', // Woqooyi Galbeed
+       ];
+    }
 }

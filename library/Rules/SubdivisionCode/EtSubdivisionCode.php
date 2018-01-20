@@ -9,32 +9,40 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Ethiopia subdivision code.
+ * Validates whether an input is subdivision code of Ethiopia or not.
  *
  * ISO 3166-1 alpha-2: ET
  *
- * @link http://www.geonames.org/ET/administrative-division-ethiopia.html
+ * @see http://www.geonames.org/ET/administrative-division-ethiopia.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class EtSubdivisionCode extends AbstractSearcher
+final class EtSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AA', // Addis Ababa
-        'AF', // Afar
-        'AM', // Amhara
-        'BE', // Benishangul-Gumaz
-        'DD', // Dire Dawa
-        'GA', // Gambela
-        'HA', // Hariai
-        'OR', // Oromia
-        'SN', // Southern Nations - Nationalities and Peoples Region
-        'SO', // Somali
-        'TI', // Tigray
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AA', // Addis Ababa
+           'AF', // Afar
+           'AM', // Amhara
+           'BE', // Benishangul-Gumaz
+           'DD', // Dire Dawa
+           'GA', // Gambela
+           'HA', // Hariai
+           'OR', // Oromia
+           'SN', // Southern Nations - Nationalities and Peoples Region
+           'SO', // Somali
+           'TI', // Tigray
+       ];
+    }
 }

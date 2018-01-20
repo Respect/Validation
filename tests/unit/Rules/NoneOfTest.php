@@ -9,48 +9,52 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\NoneOf
- * @covers Respect\Validation\Exceptions\NoneOfException
+ * @covers \Respect\Validation\Rules\NoneOf
+ * @covers \Respect\Validation\Exceptions\NoneOfException
  */
-class NoneOfTest extends \PHPUnit_Framework_TestCase
+class NoneOfTest extends TestCase
 {
-    public function testValid()
+    public function testValid(): void
     {
         $valid1 = new Callback(function () {
-                    return false;
-                });
+            return false;
+        });
         $valid2 = new Callback(function () {
-                    return false;
-                });
+            return false;
+        });
         $valid3 = new Callback(function () {
-                    return false;
-                });
+            return false;
+        });
         $o = new NoneOf($valid1, $valid2, $valid3);
-        $this->assertTrue($o->validate('any'));
-        $this->assertTrue($o->assert('any'));
-        $this->assertTrue($o->check('any'));
+        self::assertTrue($o->validate('any'));
+        self::assertTrue($o->assert('any'));
+        self::assertTrue($o->check('any'));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\NoneOfException
+     * @expectedException \Respect\Validation\Exceptions\NoneOfException
      */
-    public function testInvalid()
+    public function testInvalid(): void
     {
         $valid1 = new Callback(function () {
-                    return false;
-                });
+            return false;
+        });
         $valid2 = new Callback(function () {
-                    return false;
-                });
+            return false;
+        });
         $valid3 = new Callback(function () {
-                    return true;
-                });
+            return true;
+        });
         $o = new NoneOf($valid1, $valid2, $valid3);
-        $this->assertFalse($o->validate('any'));
-        $this->assertFalse($o->assert('any'));
+        self::assertFalse($o->validate('any'));
+        self::assertFalse($o->assert('any'));
     }
 }

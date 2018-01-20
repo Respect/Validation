@@ -9,24 +9,32 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Comoros subdivision code.
+ * Validates whether an input is subdivision code of Comoros or not.
  *
  * ISO 3166-1 alpha-2: KM
  *
- * @link http://www.geonames.org/KM/administrative-division-comoros.html
+ * @see http://www.geonames.org/KM/administrative-division-comoros.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class KmSubdivisionCode extends AbstractSearcher
+final class KmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'A', // Anjouan
-        'G', // Grande Comore
-        'M', // Moheli
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'A', // Anjouan
+           'G', // Grande Comore
+           'M', // Moheli
+       ];
+    }
 }

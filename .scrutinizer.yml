@@ -17,3 +17,21 @@ tools:
     php_mess_detector: true
     php_pdepend: true
     sensiolabs_security_checker: true
+
+build:
+    environment:
+        mysql: false
+        postgresql: false
+        mongodb: false
+        elasticsearch: false
+        redis: false
+        memcached: false
+        neo4j: false
+        rabbitmq: false
+    nodes:
+        analysis:
+            project_setup:
+                override: true
+            tests:
+                override:
+                    - php-scrutinizer-run --enable-security-analysis

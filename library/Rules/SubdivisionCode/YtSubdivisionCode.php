@@ -9,20 +9,28 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Mayotte subdivision code.
+ * Validates whether an input is subdivision code of Mayotte or not.
  *
  * ISO 3166-1 alpha-2: YT
  *
- * @link http://www.geonames.org/YT/administrative-division-mayotte.html
+ * @see http://www.geonames.org/YT/administrative-division-mayotte.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class YtSubdivisionCode extends AbstractSearcher
+final class YtSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

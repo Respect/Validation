@@ -9,35 +9,43 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for El Salvador subdivision code.
+ * Validates whether an input is subdivision code of El Salvador or not.
  *
  * ISO 3166-1 alpha-2: SV
  *
- * @link http://www.geonames.org/SV/administrative-division-el-salvador.html
+ * @see http://www.geonames.org/SV/administrative-division-el-salvador.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SvSubdivisionCode extends AbstractSearcher
+final class SvSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AH', // Ahuachapan
-        'CA', // Cabanas
-        'CH', // Chalatenango
-        'CU', // Cuscatlan
-        'LI', // La Libertad
-        'MO', // Morazan
-        'PA', // La Paz
-        'SA', // Santa Ana
-        'SM', // San Miguel
-        'SO', // Sonsonate
-        'SS', // San Salvador
-        'SV', // San Vicente
-        'UN', // La Union
-        'US', // Usulutan
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AH', // Ahuachapan
+           'CA', // Cabanas
+           'CH', // Chalatenango
+           'CU', // Cuscatlan
+           'LI', // La Libertad
+           'MO', // Morazan
+           'PA', // La Paz
+           'SA', // Santa Ana
+           'SM', // San Miguel
+           'SO', // Sonsonate
+           'SS', // San Salvador
+           'SV', // San Vicente
+           'UN', // La Union
+           'US', // Usulutan
+       ];
+    }
 }

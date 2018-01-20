@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Trinidad and Tobago subdivision code.
+ * Exception class for subdivision codes of Trinidad and Tobago.
  *
  * ISO 3166-1 alpha-2: TT
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class TtSubdivisionCodeException extends SubdivisionCodeException
+final class TtSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Trinidad and Tobago',

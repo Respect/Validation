@@ -12,7 +12,7 @@ $user->name = 'Alexandre';
 $user->birthdate = '1987-07-01';
 
 $userValidator = v::attribute('name', v::stringType()->length(1, 32))
-                  ->attribute('birthdate', v::date()->age(18));
+                  ->attribute('birthdate', v::dateTime()->age(18));
 
 $userValidator->assert($user);
 ?>

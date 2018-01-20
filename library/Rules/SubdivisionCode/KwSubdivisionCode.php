@@ -9,27 +9,35 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Kuwait subdivision code.
+ * Validates whether an input is subdivision code of Kuwait or not.
  *
  * ISO 3166-1 alpha-2: KW
  *
- * @link http://www.geonames.org/KW/administrative-division-kuwait.html
+ * @see http://www.geonames.org/KW/administrative-division-kuwait.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class KwSubdivisionCode extends AbstractSearcher
+final class KwSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'AH', // Al Ahmadi
-        'FA', // Al Farwaniyah
-        'HA', // Hawalli
-        'JA', // Al Jahra
-        'KU', // Al Asimah
-        'MU', // Mubārak al Kabīr
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'AH', // Al Ahmadi
+           'FA', // Al Farwaniyah
+           'HA', // Hawalli
+           'JA', // Al Jahra
+           'KU', // Al Asimah
+           'MU', // Mubārak al Kabīr
+       ];
+    }
 }

@@ -9,27 +9,35 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Belize subdivision code.
+ * Validates whether an input is subdivision code of Belize or not.
  *
  * ISO 3166-1 alpha-2: BZ
  *
- * @link http://www.geonames.org/BZ/administrative-division-belize.html
+ * @see http://www.geonames.org/BZ/administrative-division-belize.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class BzSubdivisionCode extends AbstractSearcher
+final class BzSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'BZ', // Belize District
-        'CY', // Cayo District
-        'CZL', // Corozal District
-        'OW', // Orange Walk District
-        'SC', // Stann Creek District
-        'TOL', // Toledo District
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'BZ', // Belize District
+           'CY', // Cayo District
+           'CZL', // Corozal District
+           'OW', // Orange Walk District
+           'SC', // Stann Creek District
+           'TOL', // Toledo District
+       ];
+    }
 }

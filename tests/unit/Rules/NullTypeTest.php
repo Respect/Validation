@@ -9,37 +9,41 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\NullType
- * @covers Respect\Validation\Exceptions\NullTypeException
+ * @covers \Respect\Validation\Rules\NullType
+ * @covers \Respect\Validation\Exceptions\NullTypeException
  */
-class NullTypeTest extends \PHPUnit_Framework_TestCase
+class NullTypeTest extends TestCase
 {
     protected $object;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new NullType();
     }
 
-    public function testNullValue()
+    public function testNullValue(): void
     {
-        $this->assertTrue($this->object->assert(null));
-        $this->assertTrue($this->object->__invoke(null));
-        $this->assertTrue($this->object->check(null));
+        self::assertTrue($this->object->assert(null));
+        self::assertTrue($this->object->__invoke(null));
+        self::assertTrue($this->object->check(null));
     }
 
     /**
      * @dataProvider providerForNotNull
-     * @expectedException Respect\Validation\Exceptions\NullTypeException
+     * @expectedException \Respect\Validation\Exceptions\NullTypeException
      */
-    public function testNotNull($input)
+    public function testNotNull($input): void
     {
-        $this->assertFalse($this->object->__invoke($input));
-        $this->assertFalse($this->object->assert($input));
+        self::assertFalse($this->object->__invoke($input));
+        self::assertFalse($this->object->assert($input));
     }
 
     public function providerForNotNull()

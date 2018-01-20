@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\PrimeNumber
- * @covers Respect\Validation\Exceptions\PrimeNumberException
+ * @covers \Respect\Validation\Rules\PrimeNumber
+ * @covers \Respect\Validation\Exceptions\PrimeNumberException
  */
-class PrimeNumberTest extends \PHPUnit_Framework_TestCase
+class PrimeNumberTest extends TestCase
 {
     protected $object;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new PrimeNumber();
     }
@@ -28,21 +32,21 @@ class PrimeNumberTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForPrimeNumber
      */
-    public function testPrimeNumber($input)
+    public function testPrimeNumber($input): void
     {
-        $this->assertTrue($this->object->__invoke($input));
-        $this->assertTrue($this->object->check($input));
-        $this->assertTrue($this->object->assert($input));
+        self::assertTrue($this->object->__invoke($input));
+        self::assertTrue($this->object->check($input));
+        self::assertTrue($this->object->assert($input));
     }
 
     /**
      * @dataProvider providerForNotPrimeNumber
-     * @expectedException Respect\Validation\Exceptions\PrimeNumberException
+     * @expectedException \Respect\Validation\Exceptions\PrimeNumberException
      */
-    public function testNotPrimeNumber($input)
+    public function testNotPrimeNumber($input): void
     {
-        $this->assertFalse($this->object->__invoke($input));
-        $this->assertFalse($this->object->assert($input));
+        self::assertFalse($this->object->__invoke($input));
+        self::assertFalse($this->object->assert($input));
     }
 
     public function providerForPrimeNumber()

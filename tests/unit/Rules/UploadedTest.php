@@ -9,7 +9,11 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 $GLOBALS['is_uploaded_file'] = null;
 
@@ -26,45 +30,45 @@ function is_uploaded_file($uploaded)
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Uploaded
- * @covers Respect\Validation\Exceptions\UploadedException
+ * @covers \Respect\Validation\Rules\Uploaded
+ * @covers \Respect\Validation\Exceptions\UploadedException
  */
-class UploadedTest extends \PHPUnit_Framework_TestCase
+class UploadedTest extends TestCase
 {
     /**
-     * @covers Respect\Validation\Rules\Uploaded::validate
+     * @covers \Respect\Validation\Rules\Uploaded::validate
      */
-    public function testValidUploadedFileShouldReturnTrue()
+    public function testValidUploadedFileShouldReturnTrue(): void
     {
         $GLOBALS['is_uploaded_file'] = true;
 
         $rule = new Uploaded();
         $input = '/path/of/a/valid/uploaded/file.txt';
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
-     * @covers Respect\Validation\Rules\Uploaded::validate
+     * @covers \Respect\Validation\Rules\Uploaded::validate
      */
-    public function testInvalidUploadedFileShouldReturnFalse()
+    public function testInvalidUploadedFileShouldReturnFalse(): void
     {
         $GLOBALS['is_uploaded_file'] = false;
 
         $rule = new Uploaded();
         $input = '/path/of/an/invalid/uploaded/file.txt';
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     /**
-     * @covers Respect\Validation\Rules\Uploaded::validate
+     * @covers \Respect\Validation\Rules\Uploaded::validate
      */
-    public function testShouldValidateObjects()
+    public function testShouldValidateObjects(): void
     {
         $GLOBALS['is_uploaded_file'] = true;
 
         $rule = new Uploaded();
         $object = new \SplFileInfo('/path/of/an/uploaded/file');
 
-        $this->assertTrue($rule->validate($object));
+        self::assertTrue($rule->validate($object));
     }
 }

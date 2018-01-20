@@ -9,9 +9,12 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use DateTime;
+use DateTimeImmutable;
+use DateTimeInterface;
 use Respect\Validation\Exceptions\ComponentException;
 
 class MinimumAge extends AbstractRule
@@ -31,8 +34,8 @@ class MinimumAge extends AbstractRule
 
     public function validate($input)
     {
-        if ($input instanceof DateTime) {
-            $birthday = new \DateTime('now - '.$this->age.' year');
+        if ($input instanceof DateTimeInterface) {
+            $birthday = new DateTimeImmutable('now - '.$this->age.' year');
 
             return $birthday > $input;
         }
@@ -41,7 +44,7 @@ class MinimumAge extends AbstractRule
             return false;
         }
 
-        $age = ((date('Ymd') - date('Ymd', strtotime($input))) / 10000);
+        $age = ((date('Ymd') - date('Ymd', (int) strtotime($input))) / 10000);
 
         return $age >= $this->age;
     }

@@ -9,27 +9,35 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Saint Vincent and the Grenadines subdivision code.
+ * Validates whether an input is subdivision code of Saint Vincent and the Grenadines or not.
  *
  * ISO 3166-1 alpha-2: VC
  *
- * @link http://www.geonames.org/VC/administrative-division-saint-vincent-and-the-grenadines.html
+ * @see http://www.geonames.org/VC/administrative-division-saint-vincent-and-the-grenadines.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class VcSubdivisionCode extends AbstractSearcher
+final class VcSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        '01', // Charlotte
-        '02', // Saint Andrew
-        '03', // Saint David
-        '04', // Saint George
-        '05', // Saint Patrick
-        '06', // Grenadines
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           '01', // Charlotte
+           '02', // Saint Andrew
+           '03', // Saint David
+           '04', // Saint George
+           '05', // Saint Patrick
+           '06', // Grenadines
+       ];
+    }
 }

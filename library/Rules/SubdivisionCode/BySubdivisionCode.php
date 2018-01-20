@@ -9,28 +9,36 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Belarus subdivision code.
+ * Validates whether an input is subdivision code of Belarus or not.
  *
  * ISO 3166-1 alpha-2: BY
  *
- * @link http://www.geonames.org/BY/administrative-division-belarus.html
+ * @see http://www.geonames.org/BY/administrative-division-belarus.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class BySubdivisionCode extends AbstractSearcher
+final class BySubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'BR', // Brest voblast
-        'HM', // Horad Minsk
-        'HO', // Homyel voblast
-        'HR', // Hrodna voblast
-        'MA', // Mahilyow voblast
-        'MI', // Minsk voblast
-        'VI', // Vitsebsk voblast
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'BR', // Brest voblast
+           'HM', // Horad Minsk
+           'HO', // Homyel voblast
+           'HR', // Hrodna voblast
+           'MA', // Mahilyow voblast
+           'MI', // Minsk voblast
+           'VI', // Vitsebsk voblast
+       ];
+    }
 }

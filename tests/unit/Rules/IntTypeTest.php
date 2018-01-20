@@ -9,13 +9,17 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\IntType
+ * @covers \Respect\Validation\Rules\IntType
  */
-class IntTypeTest extends \PHPUnit_Framework_TestCase
+class IntTypeTest extends TestCase
 {
     public function providerForValidIntType()
     {
@@ -30,11 +34,11 @@ class IntTypeTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidIntType
      */
-    public function testShouldValidateInputWhenItIsAValidIntType($input)
+    public function testShouldValidateInputWhenItIsAValidIntType($input): void
     {
         $rule = new IntType();
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     public function providerForInvalidIntType()
@@ -50,10 +54,10 @@ class IntTypeTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForInvalidIntType
      */
-    public function testShouldInvalidateInputWhenItIsNotAValidIntType($input)
+    public function testShouldInvalidateInputWhenItIsNotAValidIntType($input): void
     {
         $rule = new IntType();
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 }

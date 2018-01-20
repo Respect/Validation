@@ -9,33 +9,37 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\StringType
- * @covers Respect\Validation\Exceptions\StringTypeException
+ * @covers \Respect\Validation\Rules\StringType
+ * @covers \Respect\Validation\Exceptions\StringTypeException
  */
-class StringTypeTest extends \PHPUnit_Framework_TestCase
+class StringTypeTest extends TestCase
 {
     /**
      * @dataProvider providerForString
      */
-    public function testString($input)
+    public function testString($input): void
     {
         $rule = new StringType();
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
      * @dataProvider providerForNotString
      */
-    public function testNotString($input)
+    public function testNotString($input): void
     {
         $rule = new StringType();
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     public function providerForString()

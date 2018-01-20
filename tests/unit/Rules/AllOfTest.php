@@ -9,23 +9,27 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\AllOf
- * @covers Respect\Validation\Exceptions\AllOfException
+ * @covers \Respect\Validation\Rules\AllOf
+ * @covers \Respect\Validation\Exceptions\AllOfException
  */
-class AllOfTest extends \PHPUnit_Framework_TestCase
+class AllOfTest extends TestCase
 {
-    public function testRemoveRulesShouldRemoveAllRules()
+    public function testRemoveRulesShouldRemoveAllRules(): void
     {
         $o = new AllOf(new IntVal(), new Positive());
         $o->removeRules();
-        $this->assertEquals(0, count($o->getRules()));
+        self::assertEquals(0, count($o->getRules()));
     }
 
-    public function testAddRulesUsingArrayOfRules()
+    public function testAddRulesUsingArrayOfRules(): void
     {
         $o = new AllOf();
         $o->addRules(
@@ -33,89 +37,89 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
                 [$x = new IntVal(), new Positive()],
             ]
         );
-        $this->assertTrue($o->hasRule($x));
-        $this->assertTrue($o->hasRule('Positive'));
+        self::assertTrue($o->hasRule($x));
+        self::assertTrue($o->hasRule('Positive'));
     }
 
-    public function testAddRulesUsingSpecificationArray()
+    public function testAddRulesUsingSpecificationArray(): void
     {
         $o = new AllOf();
         $o->addRules(['Between' => [1, 2]]);
-        $this->assertTrue($o->hasRule('Between'));
+        self::assertTrue($o->hasRule('Between'));
     }
 
-    public function testValidationShouldWorkIfAllRulesReturnTrue()
+    public function testValidationShouldWorkIfAllRulesReturnTrue(): void
     {
         $valid1 = new Callback(function () {
-                    return true;
-                });
+            return true;
+        });
         $valid2 = new Callback(function () {
-                    return true;
-                });
+            return true;
+        });
         $valid3 = new Callback(function () {
-                    return true;
-                });
+            return true;
+        });
         $o = new AllOf($valid1, $valid2, $valid3);
-        $this->assertTrue($o->__invoke('any'));
-        $this->assertTrue($o->check('any'));
-        $this->assertTrue($o->assert('any'));
-        $this->assertTrue($o->__invoke(''));
-        $this->assertTrue($o->check(''));
-        $this->assertTrue($o->assert(''));
+        self::assertTrue($o->__invoke('any'));
+        self::assertTrue($o->check('any'));
+        self::assertTrue($o->assert('any'));
+        self::assertTrue($o->__invoke(''));
+        self::assertTrue($o->check(''));
+        self::assertTrue($o->assert(''));
     }
 
     /**
      * @dataProvider providerStaticDummyRules
-     * @expectedException Respect\Validation\Exceptions\AllOfException
+     * @expectedException \Respect\Validation\Exceptions\AllOfException
      */
-    public function testValidationAssertShouldFailIfAnyRuleFailsAndReturnAllExceptionsFailed($v1, $v2, $v3)
+    public function testValidationAssertShouldFailIfAnyRuleFailsAndReturnAllExceptionsFailed($v1, $v2, $v3): void
     {
         $o = new AllOf($v1, $v2, $v3);
-        $this->assertFalse($o->__invoke('any'));
-        $this->assertFalse($o->assert('any'));
+        self::assertFalse($o->__invoke('any'));
+        self::assertFalse($o->assert('any'));
     }
 
     /**
      * @dataProvider providerStaticDummyRules
-     * @expectedException Respect\Validation\Exceptions\CallbackException
+     * @expectedException \Respect\Validation\Exceptions\CallbackException
      */
-    public function testValidationCheckShouldFailIfAnyRuleFailsAndThrowTheFirstExceptionOnly($v1, $v2, $v3)
+    public function testValidationCheckShouldFailIfAnyRuleFailsAndThrowTheFirstExceptionOnly($v1, $v2, $v3): void
     {
         $o = new AllOf($v1, $v2, $v3);
-        $this->assertFalse($o->__invoke('any'));
-        $this->assertFalse($o->check('any'));
+        self::assertFalse($o->__invoke('any'));
+        self::assertFalse($o->check('any'));
     }
 
     /**
      * @dataProvider providerStaticDummyRules
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException \Respect\Validation\Exceptions\ValidationException
      */
-    public function testValidationCheckShouldFailOnEmptyInput($v1, $v2, $v3)
+    public function testValidationCheckShouldFailOnEmptyInput($v1, $v2, $v3): void
     {
         $o = new AllOf($v1, $v2, $v3);
-        $this->assertTrue($o->check(''));
+        self::assertTrue($o->check(''));
     }
 
     /**
      * @dataProvider providerStaticDummyRules
      */
-    public function testValidationShouldFailIfAnyRuleFails($v1, $v2, $v3)
+    public function testValidationShouldFailIfAnyRuleFails($v1, $v2, $v3): void
     {
         $o = new AllOf($v1, $v2, $v3);
-        $this->assertFalse($o->__invoke('any'));
+        self::assertFalse($o->__invoke('any'));
     }
 
     public function providerStaticDummyRules()
     {
         $theInvalidOne = new Callback(function () {
-                    return false;
-                });
+            return false;
+        });
         $valid1 = new Callback(function () {
-                    return true;
-                });
+            return true;
+        });
         $valid2 = new Callback(function () {
-                    return true;
-                });
+            return true;
+        });
 
         return [
             [$theInvalidOne, $valid1, $valid2],

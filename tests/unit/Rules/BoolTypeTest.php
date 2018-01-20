@@ -9,45 +9,49 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\BoolType
- * @covers Respect\Validation\Exceptions\BoolTypeException
+ * @covers \Respect\Validation\Rules\BoolType
+ * @covers \Respect\Validation\Exceptions\BoolTypeException
  */
-class BoolTypeTest extends \PHPUnit_Framework_TestCase
+class BoolTypeTest extends TestCase
 {
-    public function testBooleanValuesONLYShouldReturnTrue()
+    public function testBooleanValuesONLYShouldReturnTrue(): void
     {
         $validator = new BoolType();
-        $this->assertTrue($validator->__invoke(true));
-        $this->assertTrue($validator->__invoke(false));
-        $this->assertTrue($validator->assert(true));
-        $this->assertTrue($validator->assert(false));
-        $this->assertTrue($validator->check(true));
-        $this->assertTrue($validator->check(false));
+        self::assertTrue($validator->__invoke(true));
+        self::assertTrue($validator->__invoke(false));
+        self::assertTrue($validator->assert(true));
+        self::assertTrue($validator->assert(false));
+        self::assertTrue($validator->check(true));
+        self::assertTrue($validator->check(false));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\BoolTypeException
+     * @expectedException \Respect\Validation\Exceptions\BoolTypeException
      */
-    public function testInvalidBooleanShouldRaiseException()
+    public function testInvalidBooleanShouldRaiseException(): void
     {
         $validator = new BoolType();
-        $this->assertFalse($validator->check('foo'));
+        self::assertFalse($validator->check('foo'));
     }
 
-    public function testInvalidBooleanValuesShouldReturnFalse()
+    public function testInvalidBooleanValuesShouldReturnFalse(): void
     {
         $validator = new BoolType();
-        $this->assertFalse($validator->__invoke(''));
-        $this->assertFalse($validator->__invoke('foo'));
-        $this->assertFalse($validator->__invoke(123123));
-        $this->assertFalse($validator->__invoke(new \stdClass()));
-        $this->assertFalse($validator->__invoke([]));
-        $this->assertFalse($validator->__invoke(1));
-        $this->assertFalse($validator->__invoke(0));
-        $this->assertFalse($validator->__invoke(null));
+        self::assertFalse($validator->__invoke(''));
+        self::assertFalse($validator->__invoke('foo'));
+        self::assertFalse($validator->__invoke(123123));
+        self::assertFalse($validator->__invoke(new \stdClass()));
+        self::assertFalse($validator->__invoke([]));
+        self::assertFalse($validator->__invoke(1));
+        self::assertFalse($validator->__invoke(0));
+        self::assertFalse($validator->__invoke(null));
     }
 }

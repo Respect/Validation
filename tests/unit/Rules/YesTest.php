@@ -9,26 +9,30 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Yes
- * @covers Respect\Validation\Exceptions\YesException
+ * @covers \Respect\Validation\Rules\Yes
+ * @covers \Respect\Validation\Exceptions\YesException
  */
-class YesTest extends \PHPUnit_Framework_TestCase
+class YesTest extends TestCase
 {
-    public function testShouldUseDefaultPattern()
+    public function testShouldUseDefaultPattern(): void
     {
         $rule = new Yes();
 
         $actualPattern = $rule->regex;
         $expectedPattern = '/^y(eah?|ep|es)?$/i';
 
-        $this->assertEquals($expectedPattern, $actualPattern);
+        self::assertEquals($expectedPattern, $actualPattern);
     }
 
-    public function testShouldUseLocalPatternForYesExpressionWhenDefined()
+    public function testShouldUseLocalPatternForYesExpressionWhenDefined(): void
     {
         if (!defined('YESEXPR')) {
             $this->markTestSkipped('Constant YESEXPR is not defined');
@@ -41,17 +45,17 @@ class YesTest extends \PHPUnit_Framework_TestCase
         $actualPattern = $rule->regex;
         $expectedPattern = '/'.nl_langinfo(YESEXPR).'/i';
 
-        $this->assertEquals($expectedPattern, $actualPattern);
+        self::assertEquals($expectedPattern, $actualPattern);
     }
 
     /**
      * @dataProvider validYesProvider
      */
-    public function testShouldValidatePatternAccordingToTheDefinedLocale($input)
+    public function testShouldValidatePatternAccordingToTheDefinedLocale($input): void
     {
         $rule = new Yes();
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     public function validYesProvider()
@@ -68,11 +72,11 @@ class YesTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider invalidYesProvider
      */
-    public function testShouldNotValidatePatternAccordingToTheDefinedLocale($input)
+    public function testShouldNotValidatePatternAccordingToTheDefinedLocale($input): void
     {
         $rule = new Yes();
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     public function invalidYesProvider()

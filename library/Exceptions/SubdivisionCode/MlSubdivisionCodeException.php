@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Mali subdivision code.
+ * Exception class for subdivision codes of Mali.
  *
  * ISO 3166-1 alpha-2: ML
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class MlSubdivisionCodeException extends SubdivisionCodeException
+final class MlSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Mali',

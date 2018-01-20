@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Romania subdivision code.
+ * Exception class for subdivision codes of Romania.
  *
  * ISO 3166-1 alpha-2: RO
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class RoSubdivisionCodeException extends SubdivisionCodeException
+final class RoSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Romania',

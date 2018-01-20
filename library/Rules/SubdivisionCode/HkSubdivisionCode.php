@@ -9,39 +9,47 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Hong Kong subdivision code.
+ * Validates whether an input is subdivision code of Hong Kong or not.
  *
  * ISO 3166-1 alpha-2: HK
  *
- * @link http://www.geonames.org/HK/administrative-division-hong-kong.html
+ * @see http://www.geonames.org/HK/administrative-division-hong-kong.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class HkSubdivisionCode extends AbstractSearcher
+final class HkSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'HCW', // Central and Western Hong Kong Island
-        'HEA', // Eastern Hong Kong Island
-        'HSO', // Southern Hong Kong Island
-        'HWC', // Wan Chai Hong Kong Island
-        'KKC', // Kowloon City Kowloon
-        'KKT', // Kwun Tong Kowloon
-        'KSS', // Sham Shui Po Kowloon
-        'KWT', // Wong Tai Sin Kowloon
-        'KYT', // Yau Tsim Mong Kowloon
-        'NIS', // Islands New Territories
-        'NKT', // Kwai Tsing New Territories
-        'NNO', // North New Territories
-        'NSK', // Sai Kung New Territories
-        'NST', // Sha Tin New Territories
-        'NTM', // Tuen Mun New Territories
-        'NTP', // Tai Po New Territories
-        'NTW', // Tsuen Wan New Territories
-        'NYL', // Yuen Long New Territories
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'HCW', // Central and Western Hong Kong Island
+           'HEA', // Eastern Hong Kong Island
+           'HSO', // Southern Hong Kong Island
+           'HWC', // Wan Chai Hong Kong Island
+           'KKC', // Kowloon City Kowloon
+           'KKT', // Kwun Tong Kowloon
+           'KSS', // Sham Shui Po Kowloon
+           'KWT', // Wong Tai Sin Kowloon
+           'KYT', // Yau Tsim Mong Kowloon
+           'NIS', // Islands New Territories
+           'NKT', // Kwai Tsing New Territories
+           'NNO', // North New Territories
+           'NSK', // Sai Kung New Territories
+           'NST', // Sha Tin New Territories
+           'NTM', // Tuen Mun New Territories
+           'NTP', // Tai Po New Territories
+           'NTW', // Tsuen Wan New Territories
+           'NYL', // Yuen Long New Territories
+       ];
+    }
 }

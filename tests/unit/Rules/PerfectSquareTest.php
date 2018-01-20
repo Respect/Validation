@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\PerfectSquare
- * @covers Respect\Validation\Exceptions\PerfectSquareException
+ * @covers \Respect\Validation\Rules\PerfectSquare
+ * @covers \Respect\Validation\Exceptions\PerfectSquareException
  */
-class PerfectSquareTest extends \PHPUnit_Framework_TestCase
+class PerfectSquareTest extends TestCase
 {
     protected $object;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new PerfectSquare();
     }
@@ -28,21 +32,21 @@ class PerfectSquareTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForPerfectSquare
      */
-    public function testPerfectSquare($input)
+    public function testPerfectSquare($input): void
     {
-        $this->assertTrue($this->object->__invoke($input));
-        $this->assertTrue($this->object->check($input));
-        $this->assertTrue($this->object->assert($input));
+        self::assertTrue($this->object->__invoke($input));
+        self::assertTrue($this->object->check($input));
+        self::assertTrue($this->object->assert($input));
     }
 
     /**
      * @dataProvider providerForNotPerfectSquare
-     * @expectedException Respect\Validation\Exceptions\PerfectSquareException
+     * @expectedException \Respect\Validation\Exceptions\PerfectSquareException
      */
-    public function testNotPerfectSquare($input)
+    public function testNotPerfectSquare($input): void
     {
-        $this->assertFalse($this->object->__invoke($input));
-        $this->assertFalse($this->object->assert($input));
+        self::assertFalse($this->object->__invoke($input));
+        self::assertFalse($this->object->assert($input));
     }
 
     public function providerForPerfectSquare()

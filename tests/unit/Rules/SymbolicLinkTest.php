@@ -9,7 +9,11 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 $GLOBALS['is_link'] = null;
 
@@ -26,46 +30,46 @@ function is_link($link)
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\SymbolicLink
- * @covers Respect\Validation\Exceptions\SymbolicLinkException
+ * @covers \Respect\Validation\Rules\SymbolicLink
+ * @covers \Respect\Validation\Exceptions\SymbolicLinkException
  */
-class SymbolicLinkTest extends \PHPUnit_Framework_TestCase
+class SymbolicLinkTest extends TestCase
 {
     /**
-     * @covers Respect\Validation\Rules\SymbolicLink::validate
+     * @covers \Respect\Validation\Rules\SymbolicLink::validate
      */
-    public function testValidSymbolicLinkShouldReturnTrue()
+    public function testValidSymbolicLinkShouldReturnTrue(): void
     {
         $GLOBALS['is_link'] = true;
 
         $rule = new SymbolicLink();
         $input = '/path/of/a/valid/link.lnk';
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
-     * @covers Respect\Validation\Rules\SymbolicLink::validate
+     * @covers \Respect\Validation\Rules\SymbolicLink::validate
      */
-    public function testInvalidSymbolicLinkShouldThrowException()
+    public function testInvalidSymbolicLinkShouldThrowException(): void
     {
         $GLOBALS['is_link'] = false;
 
         $rule = new SymbolicLink();
         $input = '/path/of/an/invalid/link.lnk';
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     /**
-     * @covers Respect\Validation\Rules\SymbolicLink::validate
+     * @covers \Respect\Validation\Rules\SymbolicLink::validate
      */
-    public function testShouldValidateObjects()
+    public function testShouldValidateObjects(): void
     {
         $rule = new SymbolicLink();
-        $object = $this->getMock('SplFileInfo', ['isLink'], ['somelink.lnk']);
+        $object = $this->createMock('SplFileInfo', ['isLink'], ['somelink.lnk']);
         $object->expects($this->once())
                 ->method('isLink')
                 ->will($this->returnValue(true));
 
-        $this->assertTrue($rule->validate($object));
+        self::assertTrue($rule->validate($object));
     }
 }

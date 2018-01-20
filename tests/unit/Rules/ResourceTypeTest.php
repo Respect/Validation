@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\ResourceType
- * @covers Respect\Validation\Exceptions\ResourceTypeException
+ * @covers \Respect\Validation\Rules\ResourceType
+ * @covers \Respect\Validation\Exceptions\ResourceTypeException
  */
-class ResourceTypeTest extends \PHPUnit_Framework_TestCase
+class ResourceTypeTest extends TestCase
 {
     protected $rule;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->rule = new ResourceType();
     }
@@ -28,24 +32,24 @@ class ResourceTypeTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForResource
      */
-    public function testShouldValidateResourceNumbers($input)
+    public function testShouldValidateResourceNumbers($input): void
     {
-        $this->assertTrue($this->rule->validate($input));
+        self::assertTrue($this->rule->validate($input));
     }
 
     /**
      * @dataProvider providerForNonResource
      */
-    public function testShouldNotValidateNonResourceNumbers($input)
+    public function testShouldNotValidateNonResourceNumbers($input): void
     {
-        $this->assertFalse($this->rule->validate($input));
+        self::assertFalse($this->rule->validate($input));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ResourceTypeException
+     * @expectedException \Respect\Validation\Exceptions\ResourceTypeException
      * @expectedExceptionMessage "Something" must be a resource
      */
-    public function testShouldThrowResourceExceptionWhenChecking()
+    public function testShouldThrowResourceExceptionWhenChecking(): void
     {
         $this->rule->check('Something');
     }
@@ -65,7 +69,8 @@ class ResourceTypeTest extends \PHPUnit_Framework_TestCase
             ['String'],
             [123],
             [[]],
-            [function () {}],
+            [function (): void {
+            }],
             [new \stdClass()],
             [null],
         ];

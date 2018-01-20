@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class SymbolicLink extends AbstractRule
@@ -19,6 +21,6 @@ class SymbolicLink extends AbstractRule
             return $input->isLink();
         }
 
-        return (is_string($input) && is_link($input));
+        return is_string($input) && is_link($input);
     }
 }

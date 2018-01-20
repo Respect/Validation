@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use ArrayAccess;
@@ -29,7 +31,7 @@ class KeyNested extends AbstractRelated
 
     private function getReferencePieces()
     {
-        return explode('.', rtrim($this->reference, '.'));
+        return explode('.', rtrim((string) $this->reference, '.'));
     }
 
     private function getValueFromArray($array, $key)

@@ -9,52 +9,57 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
+use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\FactorException;
 use Respect\Validation\Exceptions\ValidationException;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Factor
- * @covers Respect\Validation\Exceptions\FactorException
+ * @covers \Respect\Validation\Rules\Factor
+ * @covers \Respect\Validation\Exceptions\FactorException
  *
  * @author David Meister <thedavidmeister@gmail.com>
  */
-class FactorTest extends \PHPUnit_Framework_TestCase
+class FactorTest extends TestCase
 {
     /**
      * @dataProvider providerForValidFactor
      */
-    public function testValidFactorShouldReturnTrue($dividend, $input)
+    public function testValidFactorShouldReturnTrue($dividend, $input): void
     {
         $min = new Factor($dividend);
-        $this->assertTrue($min->__invoke($input));
-        $this->assertTrue($min->check($input));
-        $this->assertTrue($min->assert($input));
+        self::assertTrue($min->__invoke($input));
+        self::assertTrue($min->check($input));
+        self::assertTrue($min->assert($input));
     }
 
     /**
      * @dataProvider providerForInvalidFactor
      */
-    public function testInvalidFactorShouldThrowFactorException($dividend, $input)
+    public function testInvalidFactorShouldThrowFactorException($dividend, $input): void
     {
-        $this->setExpectedException(
-            'Respect\\Validation\\Exceptions\\FactorException',
+        $this->expectException(
+            FactorException::class,
             ValidationException::stringify($input).' must be a factor of '.$dividend
         );
 
         $min = new Factor($dividend);
-        $this->assertFalse($min->__invoke($input));
-        $this->assertFalse($min->assert($input));
+        self::assertFalse($min->__invoke($input));
+        self::assertFalse($min->assert($input));
     }
 
     /**
      * @dataProvider providerForInvalidFactorDividend
      */
-    public function testInvalidDividentShouldThrowComponentException($dividend, $input)
+    public function testInvalidDividentShouldThrowComponentException($dividend, $input): void
     {
-        $this->setExpectedException(
-            'Respect\\Validation\\Exceptions\\ComponentException',
+        $this->expectException(
+            ComponentException::class,
             'Dividend '.ValidationException::stringify($dividend).' must be an integer'
         );
 

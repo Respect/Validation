@@ -21,8 +21,7 @@
         <whitelist processUncoveredFilesFromWhitelist="false">
             <directory>library/</directory>
             <exclude>
-                <directory suffix=".php">library/Exceptions/SubdivisionCode</directory>
-                <directory suffix=".php">library/Rules/SubdivisionCode</directory>
+                <directory suffix="SubdivisionCode.php">library/Rules/Locale</directory>
             </exclude>
         </whitelist>
     </filter>

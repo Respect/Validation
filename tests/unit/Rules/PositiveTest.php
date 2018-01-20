@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Positive
- * @covers Respect\Validation\Exceptions\PositiveException
+ * @covers \Respect\Validation\Rules\Positive
+ * @covers \Respect\Validation\Exceptions\PositiveException
  */
-class PositiveTest extends \PHPUnit_Framework_TestCase
+class PositiveTest extends TestCase
 {
     protected $object;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new Positive();
     }
@@ -28,21 +32,21 @@ class PositiveTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForPositive
      */
-    public function testPositive($input)
+    public function testPositive($input): void
     {
-        $this->assertTrue($this->object->__invoke($input));
-        $this->assertTrue($this->object->check($input));
-        $this->assertTrue($this->object->assert($input));
+        self::assertTrue($this->object->__invoke($input));
+        self::assertTrue($this->object->check($input));
+        self::assertTrue($this->object->assert($input));
     }
 
     /**
      * @dataProvider providerForNotPositive
-     * @expectedException Respect\Validation\Exceptions\PositiveException
+     * @expectedException \Respect\Validation\Exceptions\PositiveException
      */
-    public function testNotPositive($input)
+    public function testNotPositive($input): void
     {
-        $this->assertFalse($this->object->__invoke($input));
-        $this->assertFalse($this->object->assert($input));
+        self::assertFalse($this->object->__invoke($input));
+        self::assertFalse($this->object->assert($input));
     }
 
     public function providerForPositive()

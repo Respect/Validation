@@ -2,18 +2,19 @@
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\AllOfException;
+use Respect\Validation\Validator as v;
 
-$data = array(
-	'password' => 'shazam',
-	'password_confirmation' => 'batman'
-);
+$data = [
+    'password' => 'shazam',
+    'password_confirmation' => 'batman',
+];
 
 try {
-	v::keyValue('password', 'equals', 'password_confirmation')->assert($data);
+    v::keyValue('password', 'equals', 'password_confirmation')->assert($data);
 } catch (AllOfException $e) {
-	echo $e->getMainMessage();
+    echo $e->getMainMessage();
 }
+?>
 --EXPECTF--
-All of the required rules must pass for { "password": "shazam", "password_confirmation": "batman" }
+All of the required rules must pass for `{ "password": "shazam", "password_confirmation": "batman" }`

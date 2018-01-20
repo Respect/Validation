@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Readable extends AbstractRule
@@ -19,6 +21,6 @@ class Readable extends AbstractRule
             return $input->isReadable();
         }
 
-        return (is_string($input) && is_readable($input));
+        return is_string($input) && is_readable($input);
     }
 }

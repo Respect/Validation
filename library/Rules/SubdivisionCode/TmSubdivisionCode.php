@@ -9,27 +9,35 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Turkmenistan subdivision code.
+ * Validates whether an input is subdivision code of Turkmenistan or not.
  *
  * ISO 3166-1 alpha-2: TM
  *
- * @link http://www.geonames.org/TM/administrative-division-turkmenistan.html
+ * @see http://www.geonames.org/TM/administrative-division-turkmenistan.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class TmSubdivisionCode extends AbstractSearcher
+final class TmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'A', // Ahal Welayaty
-        'B', // Balkan Welayaty
-        'D', // Dashhowuz Welayaty
-        'L', // Lebap Welayaty
-        'M', // Mary Welayaty
-        'S', // Aşgabat
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'A', // Ahal Welayaty
+           'B', // Balkan Welayaty
+           'D', // Dashhowuz Welayaty
+           'L', // Lebap Welayaty
+           'M', // Mary Welayaty
+           'S', // Aşgabat
+       ];
+    }
 }

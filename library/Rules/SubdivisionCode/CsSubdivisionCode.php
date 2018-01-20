@@ -9,25 +9,33 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Serbia And Montenegro subdivision code.
+ * Validates whether an input is subdivision code of Serbia And Montenegro or not.
  *
  * ISO 3166-1 alpha-2: CS
  *
- * @link http://www.geonames.org/CS/administrative-division-serbia-and-montenegro.html
+ * @see http://www.geonames.org/CS/administrative-division-serbia-and-montenegro.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class CsSubdivisionCode extends AbstractSearcher
+final class CsSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'KOS', // Kosovo
-        'MON', // Montenegro
-        'SER', // Serbia
-        'VOJ', // Vojvodina
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'KOS', // Kosovo
+           'MON', // Montenegro
+           'SER', // Serbia
+           'VOJ', // Vojvodina
+       ];
+    }
 }

@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Montenegro subdivision code.
+ * Exception class for subdivision codes of Montenegro.
  *
  * ISO 3166-1 alpha-2: ME
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class MeSubdivisionCodeException extends SubdivisionCodeException
+final class MeSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Montenegro',

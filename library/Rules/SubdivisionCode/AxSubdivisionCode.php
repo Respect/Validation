@@ -9,20 +9,28 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Åland subdivision code.
+ * Validates whether an input is subdivision code of Åland or not.
  *
  * ISO 3166-1 alpha-2: AX
  *
- * @link http://www.geonames.org/AX/administrative-division-aland.html
+ * @see http://www.geonames.org/AX/administrative-division-aland.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class AxSubdivisionCode extends AbstractSearcher
+final class AxSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [null, ''];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

@@ -9,40 +9,44 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Charset
- * @covers Respect\Validation\Exceptions\CharsetException
+ * @covers \Respect\Validation\Rules\Charset
+ * @covers \Respect\Validation\Exceptions\CharsetException
  */
-class CharsetTest extends \PHPUnit_Framework_TestCase
+class CharsetTest extends TestCase
 {
     /**
      * @dataProvider providerForValidCharset
      */
-    public function testValidDataWithCharsetShouldReturnTrue($charset, $input)
+    public function testValidDataWithCharsetShouldReturnTrue($charset, $input): void
     {
         $validator = new Charset($charset);
-        $this->assertTrue($validator->__invoke($input));
+        self::assertTrue($validator->__invoke($input));
     }
 
     /**
      * @dataProvider providerForInvalidCharset
-     * @expectedException Respect\Validation\Exceptions\CharsetException
+     * @expectedException \Respect\Validation\Exceptions\CharsetException
      */
-    public function testInvalidCharsetShouldFailAndThrowCharsetException($charset, $input)
+    public function testInvalidCharsetShouldFailAndThrowCharsetException($charset, $input): void
     {
         $validator = new Charset($charset);
-        $this->assertFalse($validator->__invoke($input));
-        $this->assertFalse($validator->assert($input));
+        self::assertFalse($validator->__invoke($input));
+        self::assertFalse($validator->assert($input));
     }
 
     /**
      * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($charset)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($charset): void
     {
         $validator = new Charset($charset);
     }

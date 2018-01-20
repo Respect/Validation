@@ -9,29 +9,37 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Slovakia subdivision code.
+ * Validates whether an input is subdivision code of Slovakia or not.
  *
  * ISO 3166-1 alpha-2: SK
  *
- * @link http://www.geonames.org/SK/administrative-division-slovakia.html
+ * @see http://www.geonames.org/SK/administrative-division-slovakia.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SkSubdivisionCode extends AbstractSearcher
+final class SkSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'BC', // Banskobystricky
-        'BL', // Bratislavsky
-        'KI', // Kosicky
-        'NI', // Nitriansky
-        'PV', // Presovsky
-        'TA', // Trnavsky
-        'TC', // Trenciansky
-        'ZI', // Zilinsky
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'BC', // Banskobystricky
+           'BL', // Bratislavsky
+           'KI', // Kosicky
+           'NI', // Nitriansky
+           'PV', // Presovsky
+           'TA', // Trnavsky
+           'TC', // Trenciansky
+           'ZI', // Zilinsky
+       ];
+    }
 }

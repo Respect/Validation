@@ -9,28 +9,37 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Qatar subdivision code.
+ * Validates whether an input is subdivision code of Qatar or not.
  *
  * ISO 3166-1 alpha-2: QA
  *
- * @link http://www.geonames.org/QA/administrative-division-qatar.html
+ * @see http://www.geonames.org/QA/administrative-division-qatar.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class QaSubdivisionCode extends AbstractSearcher
+final class QaSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'DA', // Ad Dawhah
-        'KH', // Al Khawr wa adh Dhakhīrah
-        'MS', // Ash Shamāl
-        'RA', // Ar Rayyan
-        'US', // Umm Salal
-        'WA', // Al Wakrah
-        'ZA', // Az Z a‘āyin
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'DA', // Ad Dawhah
+           'KH', // Al Khawr wa adh Dhakhīrah
+           'MS', // Ash Shamāl
+           'RA', // Ar Rayyan
+           'SH', // Al-Shahaniya
+           'US', // Umm Salal
+           'WA', // Al Wakrah
+           'ZA', // Az Z a‘āyin
+       ];
+    }
 }

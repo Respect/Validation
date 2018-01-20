@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Costa Rica subdivision code.
+ * Exception class for subdivision codes of Costa Rica.
  *
  * ISO 3166-1 alpha-2: CR
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class CrSubdivisionCodeException extends SubdivisionCodeException
+final class CrSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Costa Rica',

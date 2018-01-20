@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use ReflectionClass;
@@ -29,7 +31,7 @@ class Zend extends AbstractRule
             throw new ComponentException('Invalid Validator Construct');
         }
 
-        if (false === stripos($validator, 'Zend')) {
+        if (false === mb_stripos($validator, 'Zend')) {
             $validator = "Zend\\Validator\\{$validator}";
         } else {
             $validator = "\\{$validator}";

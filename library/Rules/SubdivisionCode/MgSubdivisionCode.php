@@ -9,27 +9,28 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Madagascar subdivision code.
+ * Validates whether an input is subdivision code of Madagascar or not.
  *
  * ISO 3166-1 alpha-2: MG
  *
- * @link http://www.geonames.org/MG/administrative-division-madagascar.html
+ * @see http://www.geonames.org/MG/administrative-division-madagascar.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class MgSubdivisionCode extends AbstractSearcher
+final class MgSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'A', // Toamasina province
-        'D', // Antsiranana province
-        'F', // Fianarantsoa province
-        'M', // Mahajanga province
-        'T', // Antananarivo province
-        'U', // Toliara province
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [];
+    }
 }

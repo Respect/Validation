@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Myanmar [Burma] subdivision code.
+ * Exception class for subdivision codes of Myanmar [Burma].
  *
  * ISO 3166-1 alpha-2: MM
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class MmSubdivisionCodeException extends SubdivisionCodeException
+final class MmSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Myanmar [Burma]',

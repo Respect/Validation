@@ -19,5 +19,5 @@ try {
 }
 ?>
 --EXPECTF--
-null must not be optional
-- "" must not be optional
+The value must not be optional
+- The value must not be optional

@@ -9,28 +9,36 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Costa Rica subdivision code.
+ * Validates whether an input is subdivision code of Costa Rica or not.
  *
  * ISO 3166-1 alpha-2: CR
  *
- * @link http://www.geonames.org/CR/administrative-division-costa-rica.html
+ * @see http://www.geonames.org/CR/administrative-division-costa-rica.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class CrSubdivisionCode extends AbstractSearcher
+final class CrSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'A', // Alajuela
-        'C', // Cartago
-        'G', // Guanacaste
-        'H', // Heredia
-        'L', // Limon
-        'P', // Puntarenas
-        'SJ', // San Jose
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'A', // Alajuela
+           'C', // Cartago
+           'G', // Guanacaste
+           'H', // Heredia
+           'L', // Limon
+           'P', // Puntarenas
+           'SJ', // San Jose
+       ];
+    }
 }

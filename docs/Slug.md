@@ -1,6 +1,6 @@
 # Slug
 
-- `v::slug()`
+- `Slug()`
 
 Validates slug-like strings:
 
@@ -10,8 +10,14 @@ v::slug()->validate('my-wordpress--title'); // false
 v::slug()->validate('my-wordpress-title-'); // false
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [Url](Url.md)
-  * [VideoUrl](VideoUrl.md)
+- [Url](Url.md)
+- [VideoUrl](VideoUrl.md)

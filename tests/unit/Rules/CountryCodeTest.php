@@ -9,32 +9,37 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\CountryCode
+ * @covers \Respect\Validation\Rules\CountryCode
  */
-class CountryCodeTest extends \PHPUnit_Framework_TestCase
+class CountryCodeTest extends TestCase
 {
     /**
-     * @expectedException        Respect\Validation\Exceptions\ComponentException
+     * @expectedException        \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "whatever" is not a valid country set
      */
-    public function testShouldThrowsExceptionWhenInvalidFormat()
+    public function testShouldThrowsExceptionWhenInvalidFormat(): void
     {
         new CountryCode('whatever');
     }
 
-    public function testShouldUseISO3166Alpha2ByDefault()
+    public function testShouldUseISO3166Alpha2ByDefault(): void
     {
         $country = new CountryCode();
-        $this->assertEquals(CountryCode::ALPHA2, $country->set);
+        self::assertEquals(CountryCode::ALPHA2, $country->set);
     }
-    public function testShouldDefineACountryFormatOnConstructor()
+
+    public function testShouldDefineACountryFormatOnConstructor(): void
     {
         $country = new CountryCode(CountryCode::NUMERIC);
-        $this->assertEquals(CountryCode::NUMERIC, $country->set);
+        self::assertEquals(CountryCode::NUMERIC, $country->set);
     }
 
     public function providerForValidCountryCode()
@@ -64,20 +69,20 @@ class CountryCodeTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForValidCountryCode
      */
-    public function testValidContryCodes($format, $input)
+    public function testValidContryCodes($format, $input): void
     {
         $rule = new CountryCode($format);
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
      * @dataProvider providerForInvalidCountryCode
      */
-    public function testInvalidContryCodes($format, $input)
+    public function testInvalidContryCodes($format, $input): void
     {
         $rule = new CountryCode($format);
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 }

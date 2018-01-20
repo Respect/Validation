@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
 use IteratorAggregate;
@@ -35,7 +37,7 @@ class NestedValidationException extends ValidationException implements IteratorA
     }
 
     /**
-     * @param string $path
+     * @param string              $path
      * @param ValidationException $exception
      *
      * @return ValidationException
@@ -60,7 +62,7 @@ class NestedValidationException extends ValidationException implements IteratorA
     /**
      * @param array $paths
      *
-     * @return self
+     * @return string[]
      */
     public function findMessages(array $paths)
     {
@@ -123,6 +125,26 @@ class NestedValidationException extends ValidationException implements IteratorA
     }
 
     /**
+     * Returns weather an exception should be omitted or not.
+     *
+     * @param ExceptionInterface $exception
+     *
+     * @return bool
+     */
+    private function isOmissible(ExceptionInterface $exception)
+    {
+        if (!$exception instanceof self) {
+            return false;
+        }
+
+        $relatedExceptions = $exception->getRelated();
+        $relatedExceptions->rewind();
+        $childException = $relatedExceptions->current();
+
+        return 1 === $relatedExceptions->count() && !$childException instanceof NonOmissibleExceptionInterface;
+    }
+
+    /**
      * @return SplObjectStorage
      */
     public function getIterator()
@@ -136,9 +158,7 @@ class NestedValidationException extends ValidationException implements IteratorA
         $lastDepthOriginal = 0;
         $knownDepths = [];
         foreach ($recursiveIteratorIterator as $childException) {
-            if ($childException instanceof self
-                && $childException->getRelated()->count() > 0
-                && $childException->getRelated()->count() < 2) {
+            if ($this->isOmissible($childException)) {
                 continue;
             }
 
@@ -148,7 +168,7 @@ class NestedValidationException extends ValidationException implements IteratorA
             if (isset($knownDepths[$currentDepthOriginal])) {
                 $currentDepth = $knownDepths[$currentDepthOriginal];
             } elseif ($currentDepthOriginal > $lastDepthOriginal
-                && ($this->hasCustomTemplate() || $exceptionIterator->count() != 1)) {
+                && ($this->hasCustomTemplate() || 1 != $exceptionIterator->count())) {
                 ++$currentDepth;
             }
 
@@ -199,7 +219,7 @@ class NestedValidationException extends ValidationException implements IteratorA
         $messages = [];
         $exceptions = $this->getIterator();
 
-        if ($this->hasCustomTemplate() || count($exceptions) != 1) {
+        if ($this->hasCustomTemplate() || 1 != count($exceptions)) {
             $messages[] = sprintf('%s %s', $marker, $this->getMessage());
         }
 
@@ -248,7 +268,7 @@ class NestedValidationException extends ValidationException implements IteratorA
      */
     private function isRelated($name, ValidationException $exception)
     {
-        return ($exception->getId() === $name || $exception->getName() === $name);
+        return $exception->getId() === $name || $exception->getName() === $name;
     }
 
     /**

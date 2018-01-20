@@ -1,14 +1,20 @@
 # Alpha
 
-- `v::alpha()`
-- `v::alpha(string $additionalChars)`
+- `Alpha()`
+- `Alpha(string $additionalChars)`
 
-This is similar to `v::alnum()`, but it doesn't allow numbers.
+This is similar to `Alnum()`, but it doesn't allow numbers.
+
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
 
 ***
 See also:
 
-  * [Alnum](Alnum.md)
-  * [Digit](Digit.md)
-  * [Consonant](Consonant.md)
-  * [Vowel](Vowel.md)
+- [Alnum](Alnum.md)
+- [Digit](Digit.md)
+- [Consonant](Consonant.md)
+- [Vowel](Vowel.md)

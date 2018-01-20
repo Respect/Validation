@@ -9,12 +9,14 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class PerfectSquare extends AbstractRule
 {
     public function validate($input)
     {
-        return is_numeric($input) && floor(sqrt($input)) == sqrt($input);
+        return is_numeric($input) && floor(sqrt((float) $input)) == sqrt((float) $input);
     }
 }

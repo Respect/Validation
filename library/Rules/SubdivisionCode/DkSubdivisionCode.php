@@ -9,26 +9,34 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Denmark subdivision code.
+ * Validates whether an input is subdivision code of Denmark or not.
  *
  * ISO 3166-1 alpha-2: DK
  *
- * @link http://www.geonames.org/DK/administrative-division-denmark.html
+ * @see http://www.geonames.org/DK/administrative-division-denmark.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class DkSubdivisionCode extends AbstractSearcher
+final class DkSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        '81', // Region Nordjylland
-        '82', // Region Midtjylland
-        '83', // Region Syddanmark
-        '84', // Region Hovedstaden
-        '85', // Region Sjæland
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           '81', // Region Nordjylland
+           '82', // Region Midtjylland
+           '83', // Region Syddanmark
+           '84', // Region Hovedstaden
+           '85', // Region Sjæland
+       ];
+    }
 }

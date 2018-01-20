@@ -9,9 +9,11 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use DateTime;
+use DateTimeImmutable;
 use Exception;
 
 abstract class AbstractInterval extends AbstractRule
@@ -31,12 +33,12 @@ abstract class AbstractInterval extends AbstractRule
             return $value;
         }
 
-        if (strlen($value) == 1) {
+        if (1 == mb_strlen($value)) {
             return $value;
         }
 
         try {
-            return new DateTime($value);
+            return new DateTimeImmutable($value);
         } catch (Exception $e) {
             // Pokémon Exception Handling
         }

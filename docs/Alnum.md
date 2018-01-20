@@ -1,7 +1,7 @@
 # Alnum
 
-- `v::alnum()`
-- `v::alnum(string $additionalChars)`
+- `Alnum()`
+- `Alnum(string $additionalChars)`
 
 Validates alphanumeric characters from a-Z and 0-9.
 
@@ -32,10 +32,16 @@ v::alnum()->uppercase()->validate('aaa'); // false
 Message template for this validator includes `{{additionalChars}}` as
 the string of extra chars passed as the parameter.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [Alpha](Alpha.md)
-  * [Digit](Digit.md)
-  * [Consonant](Consonant.md)
-  * [Vowel](Vowel.md)
+- [Alpha](Alpha.md)
+- [Digit](Digit.md)
+- [Consonant](Consonant.md)
+- [Vowel](Vowel.md)

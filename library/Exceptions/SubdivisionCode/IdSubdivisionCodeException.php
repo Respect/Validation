@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Indonesia subdivision code.
+ * Exception class for subdivision codes of Indonesia.
  *
  * ISO 3166-1 alpha-2: ID
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class IdSubdivisionCodeException extends SubdivisionCodeException
+final class IdSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Indonesia',

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
@@ -65,10 +67,10 @@ class Size extends AbstractRule
         $value = $size;
         $units = ['b', 'kb', 'mb', 'gb', 'tb', 'pb', 'eb', 'zb', 'yb'];
         foreach ($units as $exponent => $unit) {
-            if (!preg_match("/^(\d+(.\d+)?){$unit}$/i", $size, $matches)) {
+            if (!preg_match("/^(\d+(.\d+)?){$unit}$/i", (string) $size, $matches)) {
                 continue;
             }
-            $value = $matches[1] * pow(1024, $exponent);
+            $value = $matches[1] * 1024 ** $exponent;
             break;
         }
 
@@ -87,14 +89,14 @@ class Size extends AbstractRule
     private function isValidSize($size)
     {
         if (null !== $this->minValue && null !== $this->maxValue) {
-            return ($size >= $this->minValue && $size <= $this->maxValue);
+            return $size >= $this->minValue && $size <= $this->maxValue;
         }
 
         if (null !== $this->minValue) {
-            return ($size >= $this->minValue);
+            return $size >= $this->minValue;
         }
 
-        return ($size <= $this->maxValue);
+        return $size <= $this->maxValue;
     }
 
     /**

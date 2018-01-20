@@ -9,17 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\SubdivisionCode;
 
 use Respect\Validation\Exceptions\SubdivisionCodeException;
 
 /**
- * Exception class for Malta subdivision code.
+ * Exception class for subdivision codes of Malta.
  *
  * ISO 3166-1 alpha-2: MT
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class MtSubdivisionCodeException extends SubdivisionCodeException
+final class MtSubdivisionCodeException extends SubdivisionCodeException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a subdivision code of Malta',

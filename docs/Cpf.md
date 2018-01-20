@@ -1,6 +1,6 @@
 # Cpf
 
-- `v::cpf()`
+- `Cpf()`
 
 Validates a Brazillian CPF number.
 
@@ -21,8 +21,14 @@ the chain:
 v::digit()->cpf()->validate('44455566820'); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [Cnpj](Cnpj.md)
-  * [Cnh](Cnh.md)
+- [Cnpj](Cnpj.md)
+- [Cnh](Cnh.md)

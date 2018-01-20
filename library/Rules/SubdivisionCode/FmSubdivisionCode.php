@@ -9,25 +9,33 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules\SubdivisionCode;
 
 use Respect\Validation\Rules\AbstractSearcher;
 
 /**
- * Validator for Micronesia subdivision code.
+ * Validates whether an input is subdivision code of Micronesia or not.
  *
  * ISO 3166-1 alpha-2: FM
  *
- * @link http://www.geonames.org/FM/administrative-division-micronesia.html
+ * @see http://www.geonames.org/FM/administrative-division-micronesia.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class FmSubdivisionCode extends AbstractSearcher
+final class FmSubdivisionCode extends AbstractSearcher
 {
-    public $haystack = [
-        'KSA', // Kosrae
-        'PNI', // Pohnpei
-        'TRK', // Chuuk
-        'YAP', // Yap
-    ];
-
-    public $compareIdentical = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           'KSA', // Kosrae
+           'PNI', // Pohnpei
+           'TRK', // Chuuk
+           'YAP', // Yap
+       ];
+    }
 }
