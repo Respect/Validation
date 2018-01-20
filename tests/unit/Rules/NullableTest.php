@@ -11,15 +11,16 @@
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\TestCase;
 use stdClass;
 
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Nullable
  */
-class NullableTest extends \PHPUnit_Framework_TestCase
+class NullableTest extends TestCase
 {
-    public function providerForNotOptional()
+    public function providerForNotNullable()
     {
         return [
             [''],
@@ -43,7 +44,7 @@ class NullableTest extends \PHPUnit_Framework_TestCase
 
     public function testShouldAcceptInstanceOfValidatobleOnConstructor()
     {
-        $validatable = $this->getMock('Respect\\Validation\\Validatable');
+        $validatable = $this->createMock('Respect\\Validation\\Validatable');
         $rule = new Nullable($validatable);
 
         $this->assertSame($validatable, $rule->getValidatable());
@@ -51,7 +52,7 @@ class NullableTest extends \PHPUnit_Framework_TestCase
 
     public function testShouldNotValidateRuleWhenInputIsNull()
     {
-        $validatable = $this->getMock('Respect\\Validation\\Validatable');
+        $validatable = $this->createMock('Respect\\Validation\\Validatable');
         $validatable
             ->expects($this->never())
             ->method('validate');
@@ -62,11 +63,11 @@ class NullableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerForNotOptional
+     * @dataProvider providerForNotNullable
      */
     public function testShouldValidateRuleWhenInputIsNotNullable($input)
     {
-        $validatable = $this->getMock('Respect\\Validation\\Validatable');
+        $validatable = $this->createMock('Respect\\Validation\\Validatable');
         $validatable
             ->expects($this->once())
             ->method('validate')
@@ -80,7 +81,7 @@ class NullableTest extends \PHPUnit_Framework_TestCase
 
     public function testShouldNotAssertRuleWhenInputIsNull()
     {
-        $validatable = $this->getMock('Respect\\Validation\\Validatable');
+        $validatable = $this->createMock('Respect\\Validation\\Validatable');
         $validatable
             ->expects($this->never())
             ->method('assert');
@@ -94,7 +95,7 @@ class NullableTest extends \PHPUnit_Framework_TestCase
     {
         $input = 'foo';
 
-        $validatable = $this->getMock('Respect\\Validation\\Validatable');
+        $validatable = $this->createMock('Respect\\Validation\\Validatable');
         $validatable
             ->expects($this->once())
             ->method('assert')
@@ -108,7 +109,7 @@ class NullableTest extends \PHPUnit_Framework_TestCase
 
     public function testShouldNotCheckRuleWhenInputIsNull()
     {
-        $validatable = $this->getMock('Respect\\Validation\\Validatable');
+        $validatable = $this->createMock('Respect\\Validation\\Validatable');
         $validatable
             ->expects($this->never())
             ->method('check');
@@ -122,7 +123,7 @@ class NullableTest extends \PHPUnit_Framework_TestCase
     {
         $input = 'foo';
 
-        $validatable = $this->getMock('Respect\\Validation\\Validatable');
+        $validatable = $this->createMock('Respect\\Validation\\Validatable');
         $validatable
             ->expects($this->once())
             ->method('check')
