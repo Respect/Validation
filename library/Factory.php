@@ -35,13 +35,11 @@ final class Factory
     private const DEFAULT_RULES_NAMESPACES = [
         'Respect\\Validation\\Rules',
         'Respect\\Validation\\Rules\\Locale',
-        'Respect\\Validation\\Rules\\SubdivisionCode',
     ];
 
     private const DEFAULT_EXCEPTIONS_NAMESPACES = [
         'Respect\\Validation\\Exceptions',
         'Respect\\Validation\\Exceptions\\Locale',
-        'Respect\\Validation\\Exceptions\\SubdivisionCode',
     ];
 
     /**

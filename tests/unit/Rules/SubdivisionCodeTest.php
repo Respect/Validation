@@ -87,7 +87,7 @@ class SubdivisionCodeTest extends TestCase
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\SubdivisionCode\BrSubdivisionCodeException
+     * @expectedException \Respect\Validation\Exceptions\Locale\BrSubdivisionCodeException
      * @expectedExceptionMessage "CA" must be a subdivision code of Brazil
      */
     public function testShouldThrowsSubdivisionCodeException(): void
