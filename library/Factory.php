@@ -29,8 +29,6 @@ use Respect\Validation\Exceptions\ValidationException;
  * Factory of objects.
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
- *
- * @since 0.8.0
  */
 final class Factory
 {
@@ -228,17 +226,21 @@ final class Factory
 
     /**
      * @param Validatable $validatable
-     * @param ReflectionObject $reflection
+     * @param ReflectionClass $reflection
      *
      * @return array
      */
-    private function extractPropertiesValues(Validatable $validatable, ReflectionObject $reflection): array
+    private function extractPropertiesValues(Validatable $validatable, ReflectionClass $reflection): array
     {
         $values = [];
         foreach ($reflection->getProperties() as $property) {
             $property->setAccessible(true);
 
             $values[$property->getName()] = $property->getValue($validatable);
+        }
+
+        if (($parentReflection = $reflection->getParentClass())) {
+            return $values + $this->extractPropertiesValues($validatable, $parentReflection);
         }
 
         return $values;
