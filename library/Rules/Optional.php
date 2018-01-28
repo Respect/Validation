@@ -20,11 +20,6 @@ class Optional extends AbstractWrapper
 {
     use UndefinedHelper;
 
-    public function __construct(Validatable $rule)
-    {
-        $this->validatable = $rule;
-    }
-
     public function assert($input)
     {
         if ($this->isUndefined($input)) {

@@ -13,22 +13,13 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ComponentException;
-
-final class Vatin extends AbstractWrapper
+final class Vatin extends AbstractLocaleWrapper
 {
-    public $countryCode;
-
-    public function __construct($countryCode)
+    /**
+     * {@inheritdoc}
+     */
+    protected function getSuffix(): string
     {
-        $shortName = ucfirst(mb_strtolower($countryCode)).'Vatin';
-        $className = __NAMESPACE__.'\\Locale\\'.$shortName;
-        if (!class_exists($className)) {
-            $message = sprintf('There is no support for VAT identification number from "%s"', $countryCode);
-            throw new ComponentException($message);
-        }
-
-        $this->countryCode = $countryCode;
-        $this->validatable = new $className();
+        return 'Vatin';
     }
 }

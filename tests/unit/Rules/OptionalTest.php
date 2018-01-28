@@ -52,14 +52,6 @@ class OptionalTest extends TestCase
         ];
     }
 
-    public function testShouldAcceptInstanceOfValidatobleOnConstructor(): void
-    {
-        $validatable = $this->createMock(Validatable::class);
-        $rule = new Optional($validatable);
-
-        self::assertSame($validatable, $rule->getValidatable());
-    }
-
     /**
      * @dataProvider providerForOptional
      */

@@ -23,7 +23,7 @@ class SubdivisionCodeTest extends TestCase
 {
     /**
      * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage "whatever" is not a valid country code in ISO 3166-2
+     * @expectedExceptionMessage "whatever" is not a supported country code
      */
     public function testShouldThrowsExceptionWhenInvalidFormat(): void
     {
@@ -32,7 +32,7 @@ class SubdivisionCodeTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage "JK" is not a valid country code in ISO 3166-2
+     * @expectedExceptionMessage "JK" is not a supported country code
      */
     public function testShouldNotAcceptWrongNamesOnConstructor(): void
     {
@@ -41,9 +41,10 @@ class SubdivisionCodeTest extends TestCase
 
     public function testShouldDefineASubdivisionCodeFormatOnConstructor(): void
     {
-        $countrySubdivision = new SubdivisionCode('US');
+        $countryCode = 'US';
+        $countrySubdivision = new SubdivisionCode($countryCode);
 
-        self::assertEquals('US', $countrySubdivision->countryCode);
+        self::assertAttributeEquals($countryCode, 'countryCode', $countrySubdivision);
     }
 
     public function providerForValidSubdivisionCodeInformation()

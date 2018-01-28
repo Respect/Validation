@@ -13,40 +13,60 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Validatable;
 
+/**
+ * Abstract class to help on creating rules that wrap rules.
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 abstract class AbstractWrapper extends AbstractRule
 {
-    protected $validatable;
+    /**
+     * @var Validatable
+     */
+    private $validatable;
 
-    public function getValidatable()
+    /**
+     * Initializes the rule.
+     *
+     * @param Validatable $validatable
+     */
+    public function __construct(Validatable $validatable)
     {
-        if (!$this->validatable instanceof Validatable) {
-            throw new ComponentException('There is no defined validatable');
-        }
-
-        return $this->validatable;
+        $this->validatable = $validatable;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function assert($input)
     {
-        return $this->getValidatable()->assert($input);
+        return $this->validatable->assert($input);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function check($input)
     {
-        return $this->getValidatable()->check($input);
+        return $this->validatable->check($input);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input)
     {
-        return $this->getValidatable()->validate($input);
+        return $this->validatable->validate($input);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setName($name)
     {
-        $this->getValidatable()->setName($name);
+        $this->validatable->setName($name);
 
         return parent::setName($name);
     }

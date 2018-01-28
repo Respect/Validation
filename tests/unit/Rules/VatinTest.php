@@ -27,12 +27,12 @@ final class VatinTest extends TestCase
         $countryCode = 'PL';
         $rule = new Vatin($countryCode);
 
-        self::assertInstanceOf(Validatable::class, $rule->getValidatable());
+        self::assertAttributeInstanceOf(Validatable::class, 'validatable', $rule);
     }
 
     /**
      * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage There is no support for VAT identification number from "BR"
+     * @expectedExceptionMessage "BR" is not a supported country code
      */
     public function testShouldThrowAnExceptionWhenCountryCodeIsNotSupported(): void
     {
