@@ -32,7 +32,7 @@ class AttributeTest extends TestCase
         $validator = new Attribute('bar');
         $obj = new \stdClass();
         $obj->bar = 'foo';
-        self::assertTrue($validator->check($obj));
+        $validator->check($obj);
         self::assertTrue($validator->__invoke($obj));
         self::assertTrue($validator->assert($obj));
     }
@@ -58,7 +58,7 @@ class AttributeTest extends TestCase
         $obj = new \stdClass();
         $obj->baraaaaa = 'foo';
         self::assertFalse($validator->__invoke($obj));
-        self::assertFalse($validator->check($obj));
+        $validator->check($obj);
     }
 
     /**
@@ -87,7 +87,7 @@ class AttributeTest extends TestCase
         $obj->bar = 'foo';
         self::assertTrue($validator->__invoke($obj));
         self::assertTrue($validator->assert($obj));
-        self::assertTrue($validator->check($obj));
+        $validator->check($obj);
     }
 
     /**
@@ -122,7 +122,7 @@ class AttributeTest extends TestCase
         $validator = new Attribute('bar', $subValidator);
         $obj = new \stdClass();
         $obj->bar = 'foo hey this has more than 3 chars';
-        self::assertFalse($validator->check($obj));
+        $validator->check($obj);
     }
 
     /**

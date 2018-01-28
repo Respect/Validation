@@ -30,7 +30,7 @@ class MinTest extends TestCase
     {
         $min = new Min($minValue, $inclusive);
         self::assertTrue($min->__invoke($input));
-        self::assertTrue($min->check($input));
+        $min->check($input);
         self::assertTrue($min->assert($input));
     }
 

@@ -32,13 +32,11 @@ class AllOf extends AbstractComposite
         return true;
     }
 
-    public function check($input)
+    public function check($input): void
     {
         foreach ($this->getRules() as $rule) {
             $rule->check($input);
         }
-
-        return true;
     }
 
     public function validate($input): bool

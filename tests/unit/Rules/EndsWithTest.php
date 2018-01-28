@@ -29,7 +29,7 @@ class EndsWithTest extends TestCase
     {
         $v = new EndsWith($start);
         self::assertTrue($v->__invoke($input));
-        self::assertTrue($v->check($input));
+        $v->check($input);
         self::assertTrue($v->assert($input));
     }
 

@@ -61,10 +61,10 @@ class AllOfTest extends TestCase
         });
         $o = new AllOf($valid1, $valid2, $valid3);
         self::assertTrue($o->__invoke('any'));
-        self::assertTrue($o->check('any'));
+        $o->check('any');
         self::assertTrue($o->assert('any'));
         self::assertTrue($o->__invoke(''));
-        self::assertTrue($o->check(''));
+        $o->check('');
         self::assertTrue($o->assert(''));
     }
 
@@ -87,7 +87,7 @@ class AllOfTest extends TestCase
     {
         $o = new AllOf($v1, $v2, $v3);
         self::assertFalse($o->__invoke('any'));
-        self::assertFalse($o->check('any'));
+        $o->check('any');
     }
 
     /**
@@ -97,7 +97,7 @@ class AllOfTest extends TestCase
     public function testValidationCheckShouldFailOnEmptyInput($v1, $v2, $v3): void
     {
         $o = new AllOf($v1, $v2, $v3);
-        self::assertTrue($o->check(''));
+        $o->check('');
     }
 
     /**

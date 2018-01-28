@@ -29,8 +29,8 @@ class BoolTypeTest extends TestCase
         self::assertTrue($validator->__invoke(false));
         self::assertTrue($validator->assert(true));
         self::assertTrue($validator->assert(false));
-        self::assertTrue($validator->check(true));
-        self::assertTrue($validator->check(false));
+        $validator->check(true);
+        $validator->check(false);
     }
 
     /**
@@ -39,7 +39,7 @@ class BoolTypeTest extends TestCase
     public function testInvalidBooleanShouldRaiseException(): void
     {
         $validator = new BoolType();
-        self::assertFalse($validator->check('foo'));
+        $validator->check('foo');
     }
 
     public function testInvalidBooleanValuesShouldReturnFalse(): void

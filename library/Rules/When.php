@@ -52,12 +52,14 @@ class When extends AbstractRule
         return $this->else->assert($input);
     }
 
-    public function check($input)
+    public function check($input): void
     {
         if ($this->when->validate($input)) {
-            return $this->then->check($input);
+            $this->then->check($input);
+
+            return;
         }
 
-        return $this->else->check($input);
+        $this->else->check($input);
     }
 }

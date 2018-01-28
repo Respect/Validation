@@ -48,9 +48,9 @@ abstract class AbstractWrapper extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function check($input)
+    public function check($input): void
     {
-        return $this->validatable->check($input);
+        $this->validatable->check($input);
     }
 
     /**

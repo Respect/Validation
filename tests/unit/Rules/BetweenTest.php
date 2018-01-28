@@ -72,7 +72,7 @@ class BetweenTest extends TestCase
         $o = new Between($min, $max, $inclusive);
         self::assertTrue($o->__invoke($input));
         self::assertTrue($o->assert($input));
-        self::assertTrue($o->check($input));
+        $o->check($input);
     }
 
     /**

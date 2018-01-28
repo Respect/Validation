@@ -29,7 +29,7 @@ class InTest extends TestCase
     {
         $v = new In($options);
         self::assertTrue($v->__invoke($input));
-        self::assertTrue($v->check($input));
+        $v->check($input);
         self::assertTrue($v->assert($input));
     }
 

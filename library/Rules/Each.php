@@ -60,7 +60,7 @@ class Each extends IterableType
         return true;
     }
 
-    public function check($input)
+    public function check($input): void
     {
         if (!parent::validate($input)) {
             throw $this->reportError($input);
@@ -75,8 +75,6 @@ class Each extends IterableType
                 $this->keyValidator->check($key);
             }
         }
-
-        return true;
     }
 
     public function validate($input): bool

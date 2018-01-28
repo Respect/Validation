@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use ArrayObject;
 use PHPUnit\Framework\TestCase;
+use Respect\Validation\Validatable;
 
 /**
  * @group  rule
@@ -47,9 +48,14 @@ class KeyNestedTest extends TestCase
             0 => 'Zero, the hero!',
         ];
 
-        $rule = new KeyNested(0, new Equals('Zero, the hero!'));
+        $validatable = $this->createMock(Validatable::class);
+        $validatable
+            ->expects($this->once())
+            ->method('check')
+            ->with($array[0]);
 
-        self::assertTrue($rule->check($array));
+        $rule = new KeyNested(0, $validatable);
+        $rule->check($array);
     }
 
     public function testArrayWithPresentKeysWillReturnTrueForHalfPathValidator(): void

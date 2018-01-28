@@ -35,7 +35,7 @@ class IntValTest extends TestCase
     public function testValidIntegersShouldReturnTrue($input): void
     {
         self::assertTrue($this->intValidator->__invoke($input));
-        self::assertTrue($this->intValidator->check($input));
+        $this->intValidator->check($input);
         self::assertTrue($this->intValidator->assert($input));
     }
 

@@ -97,11 +97,13 @@ class KeyValueTest extends TestCase
         $rule->assert(['foo' => 43, 'bar' => 42]);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testShouldCheckWhenDefinedValuesMatch(): void
     {
         $rule = new KeyValue('foo', 'equals', 'bar');
-
-        self::assertTrue($rule->check(['foo' => 42, 'bar' => 42]));
+        $rule->check(['foo' => 42, 'bar' => 42]);
     }
 
     /**

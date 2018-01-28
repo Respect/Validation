@@ -130,11 +130,11 @@ class KeySet extends AllOf
     /**
      * {@inheritdoc}
      */
-    public function check($input)
+    public function check($input): void
     {
         $this->checkKeys($input);
 
-        return parent::check($input);
+        parent::check($input);
     }
 
     /**

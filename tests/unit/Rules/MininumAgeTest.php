@@ -30,7 +30,7 @@ class MininumAgeTest extends TestCase
         $minimumAge = new MinimumAge($age, $format);
         self::assertTrue($minimumAge->__invoke($input));
         self::assertTrue($minimumAge->assert($input));
-        self::assertTrue($minimumAge->check($input));
+        $minimumAge->check($input);
     }
 
     /**

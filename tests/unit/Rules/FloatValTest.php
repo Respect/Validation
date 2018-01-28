@@ -36,7 +36,7 @@ class FloatValTest extends TestCase
     {
         self::assertTrue($this->floatValidator->assert($input));
         self::assertTrue($this->floatValidator->__invoke($input));
-        self::assertTrue($this->floatValidator->check($input));
+        $this->floatValidator->check($input);
     }
 
     /**

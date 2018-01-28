@@ -35,7 +35,7 @@ class NoWhitespaceTest extends TestCase
     public function testStringWithNoWhitespaceShouldPass($input): void
     {
         self::assertTrue($this->noWhitespaceValidator->__invoke($input));
-        self::assertTrue($this->noWhitespaceValidator->check($input));
+        $this->noWhitespaceValidator->check($input);
         self::assertTrue($this->noWhitespaceValidator->assert($input));
     }
 

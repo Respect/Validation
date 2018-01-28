@@ -35,7 +35,7 @@ class XdigitTest extends TestCase
     public function testValidateValidHexasdecimalDigits($input): void
     {
         self::assertTrue($this->xdigitsValidator->assert($input));
-        self::assertTrue($this->xdigitsValidator->check($input));
+        $this->xdigitsValidator->check($input);
         self::assertTrue($this->xdigitsValidator->validate($input));
     }
 

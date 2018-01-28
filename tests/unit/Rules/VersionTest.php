@@ -30,7 +30,7 @@ class VersionTest extends TestCase
         $rule = new Version();
         self::assertTrue($rule->__invoke($input));
         self::assertTrue($rule->assert($input));
-        self::assertTrue($rule->check($input));
+        $rule->check($input);
     }
 
     /**

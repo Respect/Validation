@@ -36,7 +36,7 @@ class AnyOfTest extends TestCase
         $o = new AnyOf($valid1, $valid2, $valid3);
         self::assertTrue($o->validate('any'));
         self::assertTrue($o->assert('any'));
-        self::assertTrue($o->check('any'));
+        $o->check('any');
     }
 
     /**
@@ -65,6 +65,6 @@ class AnyOfTest extends TestCase
     {
         $o = new AnyOf(new Xdigit(), new Alnum());
         self::assertFalse($o->validate(-10));
-        self::assertFalse($o->check(-10));
+        $o->check(-10);
     }
 }

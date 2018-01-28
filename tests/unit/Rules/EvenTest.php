@@ -35,7 +35,7 @@ class EvenTest extends TestCase
     public function testEvenNumbersShouldPass($input): void
     {
         self::assertTrue($this->evenValidator->validate($input));
-        self::assertTrue($this->evenValidator->check($input));
+        $this->evenValidator->check($input);
         self::assertTrue($this->evenValidator->assert($input));
     }
 

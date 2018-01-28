@@ -33,7 +33,7 @@ class NullTypeTest extends TestCase
     {
         self::assertTrue($this->object->assert(null));
         self::assertTrue($this->object->__invoke(null));
-        self::assertTrue($this->object->check(null));
+        $this->object->check(null);
     }
 
     /**

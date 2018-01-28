@@ -35,7 +35,7 @@ class NumericValTest extends TestCase
     public function testNumeric($input): void
     {
         self::assertTrue($this->object->__invoke($input));
-        self::assertTrue($this->object->check($input));
+        $this->object->check($input);
         self::assertTrue($this->object->assert($input));
     }
 

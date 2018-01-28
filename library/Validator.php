@@ -161,10 +161,10 @@ use Respect\Validation\Rules\Key;
  */
 class Validator extends AllOf
 {
-    public function check($input)
+    public function check($input): void
     {
         try {
-            return parent::check($input);
+            parent::check($input);
         } catch (ValidationException $exception) {
             if (1 == count($this->getRules()) && $this->template) {
                 $exception->setTemplate($this->template);

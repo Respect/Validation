@@ -38,7 +38,7 @@ class DomainTest extends TestCase
         $this->object->tldCheck($tldcheck);
         self::assertTrue($this->object->__invoke($input));
         self::assertTrue($this->object->assert($input));
-        self::assertTrue($this->object->check($input));
+        $this->object->check($input);
     }
 
     /**
@@ -48,7 +48,7 @@ class DomainTest extends TestCase
     public function testNotDomain($input, $tldcheck = true): void
     {
         $this->object->tldCheck($tldcheck);
-        self::assertFalse($this->object->check($input));
+        $this->object->check($input);
     }
 
     /**

@@ -36,7 +36,7 @@ class CnhTest extends TestCase
     {
         self::assertTrue($this->cnhValidator->assert($cnh));
         self::assertTrue($this->cnhValidator->__invoke($cnh));
-        self::assertTrue($this->cnhValidator->check($cnh));
+        $this->cnhValidator->check($cnh);
     }
 
     /**

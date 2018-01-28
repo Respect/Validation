@@ -36,7 +36,7 @@ class RomanTest extends TestCase
     {
         self::assertTrue($this->romanValidator->__invoke($input));
         self::assertTrue($this->romanValidator->assert($input));
-        self::assertTrue($this->romanValidator->check($input));
+        $this->romanValidator->check($input);
     }
 
     /**

@@ -41,13 +41,13 @@ class AnyOf extends AbstractComposite
         return false;
     }
 
-    public function check($input)
+    public function check($input): void
     {
         foreach ($this->getRules() as $v) {
             try {
-                if ($v->check($input)) {
-                    return true;
-                }
+                $v->check($input);
+
+                return;
             } catch (ValidationException $e) {
                 if (!isset($firstException)) {
                     $firstException = $e;
@@ -59,6 +59,6 @@ class AnyOf extends AbstractComposite
             throw $firstException;
         }
 
-        return false;
+        throw $this->reportError($input);
     }
 }

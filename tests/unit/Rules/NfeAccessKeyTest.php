@@ -36,7 +36,7 @@ class NfeAccessKeyTest extends TestCase
     {
         self::assertTrue($this->nfeValidator->assert($aK));
         self::assertTrue($this->nfeValidator->__invoke($aK));
-        self::assertTrue($this->nfeValidator->check($aK));
+        $this->nfeValidator->check($aK);
     }
 
     /**

@@ -35,9 +35,9 @@ abstract class AbstractRule implements Validatable
         throw $this->reportError($input);
     }
 
-    public function check($input)
+    public function check($input): void
     {
-        return $this->assert($input);
+        $this->assert($input);
     }
 
     public function getName()

@@ -36,7 +36,7 @@ class MacAddressTest extends TestCase
     {
         self::assertTrue($this->macaddressValidator->__invoke($input));
         self::assertTrue($this->macaddressValidator->assert($input));
-        self::assertTrue($this->macaddressValidator->check($input));
+        $this->macaddressValidator->check($input);
     }
 
     /**

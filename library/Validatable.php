@@ -18,7 +18,7 @@ interface Validatable
 {
     public function assert($input);
 
-    public function check($input);
+    public function check($input): void;
 
     public function getName();
 

@@ -29,7 +29,7 @@ class MaxTest extends TestCase
     {
         $max = new Max($maxValue, $inclusive);
         self::assertTrue($max->validate($input));
-        self::assertTrue($max->check($input));
+        $max->check($input);
         self::assertTrue($max->assert($input));
     }
 

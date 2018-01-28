@@ -54,7 +54,7 @@ class InstanceTest extends TestCase
     {
         self::assertTrue($this->instanceValidator->__invoke(new \ArrayObject()));
         self::assertTrue($this->instanceValidator->assert(new \ArrayObject()));
-        self::assertTrue($this->instanceValidator->check(new \ArrayObject()));
+        $this->instanceValidator->check(new \ArrayObject());
     }
 
     /**

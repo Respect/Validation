@@ -31,7 +31,7 @@ class BaseTest extends TestCase
     {
         $object = new Base($base);
         self::assertTrue($object->__invoke($input));
-        self::assertTrue($object->check($input));
+        $object->check($input);
         self::assertTrue($object->assert($input));
     }
 
@@ -62,7 +62,7 @@ class BaseTest extends TestCase
     {
         $object = new Base($base, $custom);
         self::assertTrue($object->__invoke($input));
-        self::assertTrue($object->check($input));
+        $object->check($input);
         self::assertTrue($object->assert($input));
     }
 

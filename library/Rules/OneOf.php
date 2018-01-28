@@ -48,7 +48,7 @@ class OneOf extends AbstractComposite
         return 1 === $rulesPassedCount;
     }
 
-    public function check($input)
+    public function check($input): void
     {
         $exceptions = [];
         $rulesPassedCount = 0;
@@ -63,7 +63,7 @@ class OneOf extends AbstractComposite
         }
 
         if (1 === $rulesPassedCount) {
-            return true;
+            return;
         }
 
         throw (array_shift($exceptions) ?: $this->reportError($input));

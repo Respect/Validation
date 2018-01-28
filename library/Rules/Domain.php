@@ -110,7 +110,7 @@ class Domain extends AbstractComposite
         }
     }
 
-    public function check($input)
+    public function check($input): void
     {
         foreach ($this->checks as $chk) {
             $chk->check($input);
@@ -123,7 +123,5 @@ class Domain extends AbstractComposite
         foreach ($parts as $p) {
             $this->otherParts->check($p);
         }
-
-        return true;
     }
 }

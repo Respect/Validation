@@ -109,7 +109,7 @@ class EmailTest extends TestCase
     {
         $validator = new Email();
         self::assertTrue($validator->__invoke($validEmail));
-        self::assertTrue($validator->check($validEmail));
+        $validator->check($validEmail);
         self::assertTrue($validator->assert($validEmail));
     }
 

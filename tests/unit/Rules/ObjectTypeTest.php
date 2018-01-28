@@ -36,7 +36,7 @@ class ObjectTypeTest extends TestCase
     {
         self::assertTrue($this->object->__invoke($input));
         self::assertTrue($this->object->assert($input));
-        self::assertTrue($this->object->check($input));
+        $this->object->check($input);
     }
 
     /**

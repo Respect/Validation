@@ -30,7 +30,7 @@ class LowercaseTest extends TestCase
         $lowercase = new Lowercase();
         self::assertTrue($lowercase->__invoke($input));
         self::assertTrue($lowercase->assert($input));
-        self::assertTrue($lowercase->check($input));
+        $lowercase->check($input);
     }
 
     /**

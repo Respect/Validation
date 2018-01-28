@@ -30,7 +30,7 @@ class MultipleTest extends TestCase
         $multiple = new Multiple($multipleOf);
         self::assertTrue($multiple->validate($input));
         self::assertTrue($multiple->assert($input));
-        self::assertTrue($multiple->check($input));
+        $multiple->check($input);
     }
 
     /**

@@ -36,7 +36,7 @@ class PhoneTest extends TestCase
     {
         self::assertTrue($this->phoneValidator->__invoke($input));
         self::assertTrue($this->phoneValidator->assert($input));
-        self::assertTrue($this->phoneValidator->check($input));
+        $this->phoneValidator->check($input);
     }
 
     /**
