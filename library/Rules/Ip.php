@@ -98,7 +98,7 @@ class Ip extends AbstractRule
         $range['mask'] = sprintf('%032b', ip2long(long2ip(~(2 ** (32 - $input[1]) - 1))));
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         return $this->verifyAddress($input) && $this->verifyNetwork($input);
     }

@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class Json extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         if (!is_string($input) || '' === $input) {
             return false;

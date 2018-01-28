@@ -140,7 +140,7 @@ class KeySet extends AllOf
     /**
      * {@inheritdoc}
      */
-    public function validate($input)
+    public function validate($input): bool
     {
         if (!$this->hasValidStructure($input)) {
             return false;

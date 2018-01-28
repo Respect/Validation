@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class StringType extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         return is_string($input);
     }

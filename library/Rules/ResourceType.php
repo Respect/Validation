@@ -21,7 +21,7 @@ class ResourceType extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input)
+    public function validate($input): bool
     {
         return is_resource($input);
     }

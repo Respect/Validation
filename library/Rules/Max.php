@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class Max extends AbstractInterval
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         if ($this->inclusive) {
             return $this->filterInterval($input) <= $this->filterInterval($this->interval);

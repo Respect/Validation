@@ -18,7 +18,7 @@ namespace Respect\Validation\Rules;
  */
 class Version extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         $pattern = '/^[0-9]+\.[0-9]+\.[0-9]+([+-][^+-][0-9A-Za-z-.]*)?$/';
 

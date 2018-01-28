@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class Even extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         return 0 === (int) $input % 2;
     }

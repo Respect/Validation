@@ -25,7 +25,7 @@ class Image extends AbstractRule
         $this->fileInfo = $fileInfo ?: new finfo(FILEINFO_MIME_TYPE);
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         if ($input instanceof SplFileInfo) {
             $input = $input->getPathname();

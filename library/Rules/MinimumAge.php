@@ -32,7 +32,7 @@ class MinimumAge extends AbstractRule
         $this->format = $format;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         if ($input instanceof DateTimeInterface) {
             $birthday = new DateTimeImmutable('now - '.$this->age.' year');

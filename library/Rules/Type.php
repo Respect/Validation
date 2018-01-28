@@ -43,7 +43,7 @@ class Type extends AbstractRule
         $this->type = $type;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         $lowerType = mb_strtolower($this->type);
         if ('callable' === $lowerType) {

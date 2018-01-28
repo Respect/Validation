@@ -38,7 +38,7 @@ class Optional extends AbstractWrapper
         return parent::check($input);
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         if ($this->isUndefined($input)) {
             return true;

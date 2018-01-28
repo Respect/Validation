@@ -34,7 +34,7 @@ class OneOf extends AbstractComposite
         return true;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         $rulesPassedCount = 0;
         foreach ($this->getRules() as $rule) {

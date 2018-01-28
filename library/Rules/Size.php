@@ -102,7 +102,7 @@ class Size extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input)
+    public function validate($input): bool
     {
         if ($input instanceof SplFileInfo) {
             return $this->isValidSize($input->getSize());

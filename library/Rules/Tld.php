@@ -1552,7 +1552,7 @@ class Tld extends AbstractRule
         'ZW',
     ];
 
-    public function validate($input)
+    public function validate($input): bool
     {
         return in_array(mb_strtoupper((string) $input), $this->tldList);
     }

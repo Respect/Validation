@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class Countable extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         return is_array($input) || $input instanceof \Countable;
     }

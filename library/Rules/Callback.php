@@ -33,7 +33,7 @@ class Callback extends AbstractRule
         $this->arguments = $arguments;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         $params = $this->arguments;
         array_unshift($params, $input);

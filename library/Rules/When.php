@@ -34,7 +34,7 @@ class When extends AbstractRule
         $this->else = $else;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         if ($this->when->validate($input)) {
             return $this->then->validate($input);

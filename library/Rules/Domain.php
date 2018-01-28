@@ -57,7 +57,7 @@ class Domain extends AbstractComposite
         return true;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         foreach ($this->checks as $chk) {
             if (!$chk->validate($input)) {

@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class TrueVal extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         return true === filter_var($input, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
     }

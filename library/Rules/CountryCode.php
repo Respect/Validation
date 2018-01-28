@@ -317,7 +317,7 @@ class CountryCode extends AbstractRule
         return $countryList;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         return in_array(
             mb_strtoupper($input),

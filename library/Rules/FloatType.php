@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class FloatType extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         return is_float($input);
     }

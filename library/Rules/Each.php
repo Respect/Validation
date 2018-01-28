@@ -79,7 +79,7 @@ class Each extends IterableType
         return true;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         if (!parent::validate($input)) {
             return false;

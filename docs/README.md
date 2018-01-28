@@ -242,7 +242,7 @@ use Respect\Validation\Rules\AbstractRule;
 
 class MyRule extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         // Do something here with the $input and return a boolean value
     }

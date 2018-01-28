@@ -27,7 +27,7 @@ class Instance extends AbstractRule
         return parent::reportError($input, $extraParams);
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         return $input instanceof $this->instanceName;
     }

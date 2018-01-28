@@ -33,7 +33,7 @@ class Base extends AbstractRule
         $this->base = $base;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         $valid = mb_substr($this->chars, 0, $this->base);
 

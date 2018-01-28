@@ -21,7 +21,7 @@ class CallableType extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input)
+    public function validate($input): bool
     {
         return is_callable($input);
     }

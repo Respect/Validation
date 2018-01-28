@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class IntType extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         return is_int($input);
     }

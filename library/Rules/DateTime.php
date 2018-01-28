@@ -24,7 +24,7 @@ class DateTime extends AbstractRule
         $this->format = $format;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         if ($input instanceof DateTimeInterface) {
             return true;

@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class Unique extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         if (!is_array($input)) {
             return false;

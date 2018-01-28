@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class Directory extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         if ($input instanceof \SplFileInfo) {
             return $input->isDir();

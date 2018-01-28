@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class Cpf extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         // Code ported from jsfromhell.com
         $c = preg_replace('/\D/', '', $input);

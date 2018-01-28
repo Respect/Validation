@@ -19,7 +19,7 @@ class NotOptional extends AbstractRule
 {
     use UndefinedHelper;
 
-    public function validate($input)
+    public function validate($input): bool
     {
         return false === $this->isUndefined($input);
     }

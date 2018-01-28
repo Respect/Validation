@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class StringVal extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         return is_scalar($input) || (is_object($input) && method_exists($input, '__toString'));
     }

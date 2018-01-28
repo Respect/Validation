@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class Uploaded extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         if ($input instanceof \SplFileInfo) {
             $input = $input->getPathname();

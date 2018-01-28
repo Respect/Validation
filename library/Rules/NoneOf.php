@@ -27,7 +27,7 @@ class NoneOf extends AbstractComposite
         return true;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         foreach ($this->getRules() as $rule) {
             if ($rule->validate($input)) {

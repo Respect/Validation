@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class NullType extends NotEmpty
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         return is_null($input);
     }

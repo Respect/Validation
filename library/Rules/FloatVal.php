@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class FloatVal extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         return is_float(filter_var($input, FILTER_VALIDATE_FLOAT));
     }

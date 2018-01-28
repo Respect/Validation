@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class Odd extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         return 0 !== (int) $input % 2;
     }

@@ -21,7 +21,7 @@ class Fibonacci extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input)
+    public function validate($input): bool
     {
         if (!is_numeric($input)) {
             return false;

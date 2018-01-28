@@ -92,7 +92,7 @@ class KeyValue extends AbstractRule
         return true;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         try {
             $rule = $this->getRule($input);

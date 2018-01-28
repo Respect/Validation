@@ -204,7 +204,7 @@ class CurrencyCode extends AbstractRule
         'ZWL', // Zimbabwe Dollar
     ];
 
-    public function validate($input)
+    public function validate($input): bool
     {
         return in_array(mb_strtoupper($input), $this->currencyCodes, true);
     }

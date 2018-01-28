@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class Negative extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         return $input < 0;
     }

@@ -22,7 +22,7 @@ class Multiple extends AbstractRule
         $this->multipleOf = $multipleOf;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         if (0 == $this->multipleOf) {
             return 0 == $input;

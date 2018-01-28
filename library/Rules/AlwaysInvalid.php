@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class AlwaysInvalid extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         return false;
     }

@@ -18,7 +18,7 @@ use SimpleXMLElement;
 
 class ArrayVal extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         return is_array($input) || $input instanceof ArrayAccess || $input instanceof SimpleXMLElement;
     }

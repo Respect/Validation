@@ -58,7 +58,7 @@ class CreditCard extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input)
+    public function validate($input): bool
     {
         $input = preg_replace('([^0-9])', '', $input);
 

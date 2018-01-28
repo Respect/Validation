@@ -54,7 +54,7 @@ class In extends AbstractRule
         return false !== mb_strpos($this->haystack, $inputString, 0, mb_detect_encoding($inputString));
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         if ($this->compareIdentical) {
             return $this->validateIdentical($input);

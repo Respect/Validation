@@ -46,7 +46,7 @@ class Length extends AbstractRule
         }
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         $length = $this->extractLength($input);
 

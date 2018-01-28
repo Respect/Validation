@@ -30,7 +30,7 @@ class AnyOf extends AbstractComposite
         return true;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         foreach ($this->getRules() as $v) {
             if ($v->validate($input)) {

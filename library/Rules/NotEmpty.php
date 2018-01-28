@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class NotEmpty extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         if (is_string($input)) {
             $input = trim($input);

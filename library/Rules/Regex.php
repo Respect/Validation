@@ -22,7 +22,7 @@ class Regex extends AbstractRule
         $this->regex = $regex;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         if (!is_scalar($input)) {
             return false;
