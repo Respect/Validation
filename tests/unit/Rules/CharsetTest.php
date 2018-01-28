@@ -39,7 +39,7 @@ class CharsetTest extends TestCase
     {
         $validator = new Charset($charset);
         self::assertFalse($validator->__invoke($input));
-        self::assertFalse($validator->assert($input));
+        $validator->assert($input);
     }
 
     /**

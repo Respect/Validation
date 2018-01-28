@@ -30,7 +30,7 @@ class InTest extends TestCase
         $v = new In($options);
         self::assertTrue($v->__invoke($input));
         $v->check($input);
-        self::assertTrue($v->assert($input));
+        $v->assert($input);
     }
 
     /**
@@ -41,7 +41,7 @@ class InTest extends TestCase
     {
         $v = new In($options, $strict);
         self::assertFalse($v->__invoke($input));
-        self::assertFalse($v->assert($input));
+        $v->assert($input);
     }
 
     /**

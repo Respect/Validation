@@ -39,7 +39,7 @@ class PrntTest extends TestCase
     {
         $validator = new Prnt($additional);
         self::assertFalse($validator->validate($invalidPrint));
-        self::assertFalse($validator->assert($invalidPrint));
+        $validator->assert($invalidPrint);
     }
 
     /**

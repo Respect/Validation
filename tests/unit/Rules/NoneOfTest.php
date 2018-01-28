@@ -35,7 +35,7 @@ class NoneOfTest extends TestCase
         });
         $o = new NoneOf($valid1, $valid2, $valid3);
         self::assertTrue($o->validate('any'));
-        self::assertTrue($o->assert('any'));
+        $o->assert('any');
         $o->check('any');
     }
 
@@ -55,6 +55,6 @@ class NoneOfTest extends TestCase
         });
         $o = new NoneOf($valid1, $valid2, $valid3);
         self::assertFalse($o->validate('any'));
-        self::assertFalse($o->assert('any'));
+        $o->assert('any');
     }
 }

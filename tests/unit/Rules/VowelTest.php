@@ -39,7 +39,7 @@ class VowelTest extends TestCase
     {
         $validator = new Vowel($additional);
         self::assertFalse($validator->validate($invalidVowels));
-        self::assertFalse($validator->assert($invalidVowels));
+        $validator->assert($invalidVowels);
     }
 
     /**

@@ -110,7 +110,7 @@ class EmailTest extends TestCase
         $validator = new Email();
         self::assertTrue($validator->__invoke($validEmail));
         $validator->check($validEmail);
-        self::assertTrue($validator->assert($validEmail));
+        $validator->assert($validEmail);
     }
 
     /**
@@ -121,7 +121,7 @@ class EmailTest extends TestCase
     {
         $validator = new Email();
         self::assertFalse($validator->__invoke($invalidEmail));
-        self::assertFalse($validator->assert($invalidEmail));
+        $validator->assert($invalidEmail);
     }
 
     public function providerForValidEmail()

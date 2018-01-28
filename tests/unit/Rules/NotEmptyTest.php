@@ -30,11 +30,13 @@ class NotEmptyTest extends TestCase
     }
 
     /**
+     * @doesNotPerformAssertions
+     *
      * @dataProvider providerForNotEmpty
      */
     public function testStringNotEmpty($input): void
     {
-        self::assertTrue($this->object->assert($input));
+        $this->object->assert($input);
     }
 
     /**
@@ -43,7 +45,7 @@ class NotEmptyTest extends TestCase
      */
     public function testStringEmpty($input): void
     {
-        self::assertFalse($this->object->assert($input));
+        $this->object->assert($input);
     }
 
     public function providerForNotEmpty()

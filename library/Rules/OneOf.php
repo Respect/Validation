@@ -21,7 +21,7 @@ use Respect\Validation\Exceptions\ValidationException;
  */
 class OneOf extends AbstractComposite
 {
-    public function assert($input)
+    public function assert($input): void
     {
         $validators = $this->getRules();
         $exceptions = $this->validateRules($input);
@@ -30,8 +30,6 @@ class OneOf extends AbstractComposite
         if ($numExceptions !== $numRules - 1) {
             throw $this->reportError($input)->setRelated($exceptions);
         }
-
-        return true;
     }
 
     public function validate($input): bool

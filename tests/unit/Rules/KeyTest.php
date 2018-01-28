@@ -101,7 +101,7 @@ class KeyTest extends TestCase
         $validator = new Key('bar');
         $someArray = [];
         $someArray['baraaaaaa'] = 'foo';
-        self::assertTrue($validator->assert($someArray));
+        $validator->assert($someArray);
     }
 
     /**
@@ -111,7 +111,7 @@ class KeyTest extends TestCase
     {
         $validator = new Key('bar');
         $someArray = 123;
-        self::assertFalse($validator->assert($someArray));
+        $validator->assert($someArray);
     }
 
     /**
@@ -119,16 +119,19 @@ class KeyTest extends TestCase
      */
     public function testInvalidConstructorParametersShouldThrowComponentExceptionUponInstantiation(): void
     {
-        $validator = new Key(['invalid']);
+        new Key(['invalid']);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testExtraValidatorShouldValidateKey(): void
     {
         $subValidator = new Length(1, 3);
         $validator = new Key('bar', $subValidator);
         $someArray = [];
         $someArray['bar'] = 'foo';
-        self::assertTrue($validator->assert($someArray));
+        $validator->assert($someArray);
     }
 
     public function testNotMandatoryExtraValidatorShouldPassWithAbsentKey(): void

@@ -31,7 +31,7 @@ class NullTypeTest extends TestCase
 
     public function testNullValue(): void
     {
-        self::assertTrue($this->object->assert(null));
+        $this->object->assert(null);
         self::assertTrue($this->object->__invoke(null));
         $this->object->check(null);
     }
@@ -43,7 +43,7 @@ class NullTypeTest extends TestCase
     public function testNotNull($input): void
     {
         self::assertFalse($this->object->__invoke($input));
-        self::assertFalse($this->object->assert($input));
+        $this->object->assert($input);
     }
 
     public function providerForNotNull()

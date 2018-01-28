@@ -63,31 +63,34 @@ class EachTest extends RuleTestCase
         ];
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testValidatorShouldPassIfEveryArrayItemPass(): void
     {
         $v = new Each($this->createValidatableMock(true));
         $v->check([1, 2, 3, 4, 5]);
-
-        $result = $v->assert([1, 2, 3, 4, 5]);
-        self::assertTrue($result);
+        $v->assert([1, 2, 3, 4, 5]);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testValidatorShouldPassIfEveryArrayItemAndKeyPass(): void
     {
         $v = new Each($this->createValidatableMock(true), $this->createValidatableMock(true));
         $v->check(['a', 'b', 'c', 'd', 'e']);
-
-        $result = $v->assert(['a', 'b', 'c', 'd', 'e']);
-        self::assertTrue($result);
+        $v->assert(['a', 'b', 'c', 'd', 'e']);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testValidatorShouldPassWithOnlyKeyValidation(): void
     {
         $v = new Each(null, $this->createValidatableMock(true));
         $v->check(['a', 'b', 'c', 'd', 'e']);
-
-        $result = $v->assert(['a', 'b', 'c', 'd', 'e']);
-        self::assertTrue($result);
+        $v->assert(['a', 'b', 'c', 'd', 'e']);
     }
 
     /**

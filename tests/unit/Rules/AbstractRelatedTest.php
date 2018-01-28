@@ -22,7 +22,6 @@ final class AbstractRelatedTest extends TestCase
     {
         return [
             ['validate'],
-            ['assert'],
         ];
     }
 

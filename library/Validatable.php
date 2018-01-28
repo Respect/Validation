@@ -16,7 +16,7 @@ namespace Respect\Validation;
 /** Interface for validation rules */
 interface Validatable
 {
-    public function assert($input);
+    public function assert($input): void;
 
     public function check($input): void;
 

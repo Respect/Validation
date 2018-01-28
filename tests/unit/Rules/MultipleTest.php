@@ -29,7 +29,7 @@ class MultipleTest extends TestCase
     {
         $multiple = new Multiple($multipleOf);
         self::assertTrue($multiple->validate($input));
-        self::assertTrue($multiple->assert($input));
+        $multiple->assert($input);
         $multiple->check($input);
     }
 
@@ -41,7 +41,7 @@ class MultipleTest extends TestCase
     {
         $multiple = new Multiple($multipleOf);
         self::assertFalse($multiple->validate($input));
-        self::assertFalse($multiple->assert($input));
+        $multiple->assert($input);
     }
 
     public function providerForMultiple()

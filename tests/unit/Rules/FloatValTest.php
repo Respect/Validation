@@ -34,7 +34,7 @@ class FloatValTest extends TestCase
      */
     public function testFloatNumbersShouldPass($input): void
     {
-        self::assertTrue($this->floatValidator->assert($input));
+        $this->floatValidator->assert($input);
         self::assertTrue($this->floatValidator->__invoke($input));
         $this->floatValidator->check($input);
     }
@@ -46,7 +46,7 @@ class FloatValTest extends TestCase
     public function testNotFloatNumbersShouldFail($input): void
     {
         self::assertFalse($this->floatValidator->__invoke($input));
-        self::assertFalse($this->floatValidator->assert($input));
+        $this->floatValidator->assert($input);
     }
 
     public function providerForFloat()

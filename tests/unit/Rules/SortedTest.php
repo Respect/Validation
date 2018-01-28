@@ -28,7 +28,7 @@ class SortedTest extends TestCase
         $rule = new Sorted();
 
         self::assertTrue($rule->validate($arr));
-        self::assertTrue($rule->assert($arr));
+        $rule->assert($arr);
         $rule->check($arr);
     }
 
@@ -38,7 +38,7 @@ class SortedTest extends TestCase
         $rule = new Sorted();
 
         self::assertTrue($rule->validate($arr));
-        self::assertTrue($rule->assert($arr));
+        $rule->assert($arr);
         $rule->check($arr);
     }
 
@@ -60,7 +60,7 @@ class SortedTest extends TestCase
         $rule = new Sorted(null, false);
 
         self::assertTrue($rule->validate($arr));
-        self::assertTrue($rule->assert($arr));
+        $rule->assert($arr);
         $rule->check($arr);
     }
 
@@ -70,7 +70,7 @@ class SortedTest extends TestCase
         $rule = new Sorted(null, false);
 
         self::assertTrue($rule->validate($arr));
-        self::assertTrue($rule->assert($arr));
+        $rule->assert($arr);
         $rule->check($arr);
     }
 
@@ -92,7 +92,7 @@ class SortedTest extends TestCase
         });
 
         self::assertTrue($rule->validate($arr));
-        self::assertTrue($rule->assert($arr));
+        $rule->assert($arr);
         $rule->check($arr);
     }
 

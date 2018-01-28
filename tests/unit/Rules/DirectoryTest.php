@@ -29,7 +29,7 @@ class DirectoryTest extends TestCase
     {
         $rule = new Directory();
         self::assertTrue($rule->__invoke($input));
-        self::assertTrue($rule->assert($input));
+        $rule->assert($input);
         $rule->check($input);
     }
 
@@ -41,7 +41,7 @@ class DirectoryTest extends TestCase
     {
         $rule = new Directory();
         self::assertFalse($rule->__invoke($input));
-        self::assertFalse($rule->assert($input));
+        $rule->assert($input);
         $rule->check($input);
     }
 

@@ -39,7 +39,7 @@ class PunctTest extends TestCase
     {
         $validator = new Punct($additional);
         self::assertFalse($validator->validate($invalidPunct));
-        self::assertFalse($validator->assert($invalidPunct));
+        $validator->assert($invalidPunct);
     }
 
     /**

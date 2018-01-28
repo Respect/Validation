@@ -34,7 +34,7 @@ class XdigitTest extends TestCase
      */
     public function testValidateValidHexasdecimalDigits($input): void
     {
-        self::assertTrue($this->xdigitsValidator->assert($input));
+        $this->xdigitsValidator->assert($input);
         $this->xdigitsValidator->check($input);
         self::assertTrue($this->xdigitsValidator->validate($input));
     }
@@ -46,7 +46,7 @@ class XdigitTest extends TestCase
     public function testInvalidHexadecimalDigitsShouldThrowXdigitException($input): void
     {
         self::assertFalse($this->xdigitsValidator->validate($input));
-        self::assertFalse($this->xdigitsValidator->assert($input));
+        $this->xdigitsValidator->assert($input);
     }
 
     /**

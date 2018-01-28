@@ -27,7 +27,7 @@ class Each extends IterableType
         $this->keyValidator = $keyValidator;
     }
 
-    public function assert($input)
+    public function assert($input): void
     {
         $exceptions = [];
 
@@ -56,8 +56,6 @@ class Each extends IterableType
         if (!empty($exceptions)) {
             throw $this->reportError($input)->setRelated($exceptions);
         }
-
-        return true;
     }
 
     public function check($input): void

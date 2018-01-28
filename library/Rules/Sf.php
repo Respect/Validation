@@ -55,11 +55,11 @@ class Sf extends AbstractRule
         return $validator->validate($valueToValidate, $symfonyConstraint);
     }
 
-    public function assert($input)
+    public function assert($input): void
     {
         $violations = $this->returnViolationsForConstraint($input, $this->constraint);
         if (0 == count($violations)) {
-            return true;
+            return;
         }
 
         throw $this->reportError((string) $violations);

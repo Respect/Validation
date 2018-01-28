@@ -26,10 +26,10 @@ abstract class AbstractRule implements Validatable
         return $this->validate($input);
     }
 
-    public function assert($input)
+    public function assert($input): void
     {
         if ($this->validate($input)) {
-            return true;
+            return;
         }
 
         throw $this->reportError($input);

@@ -27,8 +27,8 @@ class BoolTypeTest extends TestCase
         $validator = new BoolType();
         self::assertTrue($validator->__invoke(true));
         self::assertTrue($validator->__invoke(false));
-        self::assertTrue($validator->assert(true));
-        self::assertTrue($validator->assert(false));
+        $validator->assert(true);
+        $validator->assert(false);
         $validator->check(true);
         $validator->check(false);
     }

@@ -37,7 +37,7 @@ class OneOfTest extends TestCase
         $rule = new OneOf($valid1, $valid2, $valid3);
 
         self::assertTrue($rule->validate('any'));
-        self::assertTrue($rule->assert('any'));
+        $rule->assert('any');
         $rule->check('any');
     }
 
@@ -68,7 +68,7 @@ class OneOfTest extends TestCase
         });
         $rule = new OneOf($valid1, $valid2, $valid3);
         self::assertFalse($rule->validate('any'));
-        self::assertFalse($rule->assert('any'));
+        $rule->assert('any');
     }
 
     /**

@@ -46,12 +46,12 @@ class Zend extends AbstractRule
         }
     }
 
-    public function assert($input)
+    public function assert($input): void
     {
         $validator = clone $this->zendValidator;
 
         if ($validator->isValid($input)) {
-            return true;
+            return;
         }
 
         $exceptions = [];

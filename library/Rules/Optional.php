@@ -20,13 +20,13 @@ class Optional extends AbstractWrapper
 {
     use UndefinedHelper;
 
-    public function assert($input)
+    public function assert($input): void
     {
         if ($this->isUndefined($input)) {
-            return true;
+            return;
         }
 
-        return parent::assert($input);
+        parent::assert($input);
     }
 
     public function check($input): void

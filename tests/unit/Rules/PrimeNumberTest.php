@@ -36,7 +36,7 @@ class PrimeNumberTest extends TestCase
     {
         self::assertTrue($this->object->__invoke($input));
         $this->object->check($input);
-        self::assertTrue($this->object->assert($input));
+        $this->object->assert($input);
     }
 
     /**
@@ -46,7 +46,7 @@ class PrimeNumberTest extends TestCase
     public function testNotPrimeNumber($input): void
     {
         self::assertFalse($this->object->__invoke($input));
-        self::assertFalse($this->object->assert($input));
+        $this->object->assert($input);
     }
 
     public function providerForPrimeNumber()

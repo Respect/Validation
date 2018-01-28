@@ -93,7 +93,7 @@ class OptionalTest extends TestCase
 
         $rule = new Optional($validatable);
 
-        self::assertTrue($rule->assert(''));
+        $rule->assert('');
     }
 
     public function testShouldAssertRuleWhenInputIsNotOptional(): void
@@ -109,7 +109,7 @@ class OptionalTest extends TestCase
 
         $rule = new Optional($validatable);
 
-        self::assertTrue($rule->assert($input));
+        $rule->assert($input);
     }
 
     public function testShouldNotCheckRuleWhenInputIsOptional(): void

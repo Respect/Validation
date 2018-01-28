@@ -30,7 +30,7 @@ class MaxTest extends TestCase
         $max = new Max($maxValue, $inclusive);
         self::assertTrue($max->validate($input));
         $max->check($input);
-        self::assertTrue($max->assert($input));
+        $max->assert($input);
     }
 
     /**
@@ -41,7 +41,7 @@ class MaxTest extends TestCase
     {
         $max = new Max($maxValue, $inclusive);
         self::assertFalse($max->validate($input));
-        self::assertFalse($max->assert($input));
+        $max->assert($input);
     }
 
     public function providerForValidMax()

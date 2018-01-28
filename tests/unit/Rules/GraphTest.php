@@ -39,7 +39,7 @@ class GraphTest extends TestCase
     {
         $validator = new Graph($additional);
         self::assertFalse($validator->validate($invalidGraph));
-        self::assertFalse($validator->assert($invalidGraph));
+        $validator->assert($invalidGraph);
     }
 
     /**

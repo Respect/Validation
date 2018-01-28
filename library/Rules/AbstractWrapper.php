@@ -40,9 +40,9 @@ abstract class AbstractWrapper extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function assert($input)
+    public function assert($input): void
     {
-        return $this->validatable->assert($input);
+        $this->validatable->assert($input);
     }
 
     /**

@@ -39,7 +39,7 @@ class CntrlTest extends TestCase
     {
         $validator = new Cntrl($additional);
         self::assertFalse($validator->validate($invalidCntrl));
-        self::assertFalse($validator->assert($invalidCntrl));
+        $validator->assert($invalidCntrl);
     }
 
     /**

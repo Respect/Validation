@@ -35,7 +35,7 @@ class ObjectTypeTest extends TestCase
     public function testObject($input): void
     {
         self::assertTrue($this->object->__invoke($input));
-        self::assertTrue($this->object->assert($input));
+        $this->object->assert($input);
         $this->object->check($input);
     }
 
@@ -46,7 +46,7 @@ class ObjectTypeTest extends TestCase
     public function testNotObject($input): void
     {
         self::assertFalse($this->object->__invoke($input));
-        self::assertFalse($this->object->assert($input));
+        $this->object->assert($input);
     }
 
     public function providerForObject()

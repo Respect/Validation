@@ -34,7 +34,7 @@ class OddTest extends TestCase
      */
     public function testOdd($input): void
     {
-        self::assertTrue($this->object->assert($input));
+        $this->object->assert($input);
         self::assertTrue($this->object->__invoke($input));
         $this->object->check($input);
     }
@@ -46,7 +46,7 @@ class OddTest extends TestCase
     public function testNotOdd($input): void
     {
         self::assertFalse($this->object->__invoke($input));
-        self::assertFalse($this->object->assert($input));
+        $this->object->assert($input);
     }
 
     public function providerForOdd()

@@ -30,7 +30,7 @@ class StartsWithTest extends TestCase
         $v = new StartsWith($start);
         self::assertTrue($v->__invoke($input));
         $v->check($input);
-        self::assertTrue($v->assert($input));
+        $v->assert($input);
     }
 
     /**
@@ -41,7 +41,7 @@ class StartsWithTest extends TestCase
     {
         $v = new StartsWith($start, $caseSensitive);
         self::assertFalse($v->__invoke($input));
-        self::assertFalse($v->assert($input));
+        $v->assert($input);
     }
 
     public function providerForStartsWith()

@@ -62,10 +62,10 @@ class AllOfTest extends TestCase
         $o = new AllOf($valid1, $valid2, $valid3);
         self::assertTrue($o->__invoke('any'));
         $o->check('any');
-        self::assertTrue($o->assert('any'));
+        $o->assert('any');
         self::assertTrue($o->__invoke(''));
         $o->check('');
-        self::assertTrue($o->assert(''));
+        $o->assert('');
     }
 
     /**
@@ -76,7 +76,7 @@ class AllOfTest extends TestCase
     {
         $o = new AllOf($v1, $v2, $v3);
         self::assertFalse($o->__invoke('any'));
-        self::assertFalse($o->assert('any'));
+        $o->assert('any');
     }
 
     /**

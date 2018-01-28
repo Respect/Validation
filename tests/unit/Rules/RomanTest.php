@@ -35,7 +35,7 @@ class RomanTest extends TestCase
     public function testValidRomansShouldReturnTrue($input): void
     {
         self::assertTrue($this->romanValidator->__invoke($input));
-        self::assertTrue($this->romanValidator->assert($input));
+        $this->romanValidator->assert($input);
         $this->romanValidator->check($input);
     }
 
@@ -46,7 +46,7 @@ class RomanTest extends TestCase
     public function testInvalidRomansShouldThrowRomanException($input): void
     {
         self::assertFalse($this->romanValidator->__invoke($input));
-        self::assertFalse($this->romanValidator->assert($input));
+        $this->romanValidator->assert($input);
     }
 
     public function providerForRoman()

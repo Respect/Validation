@@ -120,11 +120,11 @@ class KeySet extends AllOf
     /**
      * {@inheritdoc}
      */
-    public function assert($input)
+    public function assert($input): void
     {
         $this->checkKeys($input);
 
-        return parent::assert($input);
+        parent::assert($input);
     }
 
     /**

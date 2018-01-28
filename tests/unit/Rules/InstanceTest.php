@@ -53,7 +53,7 @@ class InstanceTest extends TestCase
     public function testInstanceValidationShouldReturnTrueForValidInstances(): void
     {
         self::assertTrue($this->instanceValidator->__invoke(new \ArrayObject()));
-        self::assertTrue($this->instanceValidator->assert(new \ArrayObject()));
+        $this->instanceValidator->assert(new \ArrayObject());
         $this->instanceValidator->check(new \ArrayObject());
     }
 
@@ -63,6 +63,6 @@ class InstanceTest extends TestCase
     public function testInvalidInstancesShouldThrowInstanceException(): void
     {
         self::assertFalse($this->instanceValidator->validate(new \stdClass()));
-        self::assertFalse($this->instanceValidator->assert(new \stdClass()));
+        $this->instanceValidator->assert(new \stdClass());
     }
 }

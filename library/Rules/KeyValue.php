@@ -66,7 +66,7 @@ class KeyValue extends AbstractRule
         return $exception;
     }
 
-    public function assert($input)
+    public function assert($input): void
     {
         $rule = $this->getRule($input);
 
@@ -75,8 +75,6 @@ class KeyValue extends AbstractRule
         } catch (ValidationException $exception) {
             throw $this->overwriteExceptionParams($exception);
         }
-
-        return true;
     }
 
     public function check($input): void

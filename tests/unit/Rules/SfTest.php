@@ -40,16 +40,15 @@ class SfTest extends TestCase
     }
 
     /**
+     * @doesNotPerformAssertions
+     *
      * @depends testValidationWithAnExistingValidationConstraint
      */
     public function testAssertionWithAnExistingValidationConstraint(): void
     {
         $constraintName = 'Time';
         $validConstraintValue = '04:20:00';
-        self::assertTrue(
-            v::sf($constraintName)->assert($validConstraintValue),
-            sprintf('"%s" should be valid under "%s" constraint.', $validConstraintValue, $constraintName)
-        );
+        v::sf($constraintName)->assert($validConstraintValue);
     }
 
     /**

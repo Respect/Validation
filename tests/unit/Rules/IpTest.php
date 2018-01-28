@@ -29,7 +29,7 @@ class IpTest extends TestCase
     {
         $ipValidator = new Ip($options);
         self::assertTrue($ipValidator->__invoke($input));
-        self::assertTrue($ipValidator->assert($input));
+        $ipValidator->assert($input);
         $ipValidator->check($input);
     }
 
@@ -40,7 +40,7 @@ class IpTest extends TestCase
     {
         $ipValidator = new Ip($networkRange);
         self::assertTrue($ipValidator->__invoke($input));
-        self::assertTrue($ipValidator->assert($input));
+        $ipValidator->assert($input);
         $ipValidator->check($input);
     }
 
@@ -52,7 +52,7 @@ class IpTest extends TestCase
     {
         $ipValidator = new Ip($options);
         self::assertFalse($ipValidator->__invoke($input));
-        self::assertFalse($ipValidator->assert($input));
+        $ipValidator->assert($input);
     }
 
     /**
@@ -63,7 +63,7 @@ class IpTest extends TestCase
     {
         $ipValidator = new Ip($networkRange);
         self::assertFalse($ipValidator->__invoke($input));
-        self::assertFalse($ipValidator->assert($input));
+        $ipValidator->assert($input);
     }
 
     public function providerForIp()

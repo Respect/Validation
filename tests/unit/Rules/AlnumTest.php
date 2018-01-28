@@ -39,7 +39,7 @@ class AlnumTest extends TestCase
     {
         $validator = new Alnum($additional);
         self::assertFalse($validator->validate($invalidAlnum));
-        self::assertFalse($validator->assert($invalidAlnum));
+        $validator->assert($invalidAlnum);
     }
 
     /**

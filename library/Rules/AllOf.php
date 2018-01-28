@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class AllOf extends AbstractComposite
 {
-    public function assert($input)
+    public function assert($input): void
     {
         $exceptions = $this->validateRules($input);
         $numRules = count($this->rules);
@@ -28,8 +28,6 @@ class AllOf extends AbstractComposite
         if (!empty($exceptions)) {
             throw $this->reportError($input, $summary)->setRelated($exceptions);
         }
-
-        return true;
     }
 
     public function check($input): void

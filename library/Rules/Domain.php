@@ -79,7 +79,7 @@ class Domain extends AbstractComposite
         return true;
     }
 
-    public function assert($input)
+    public function assert($input): void
     {
         $e = [];
         foreach ($this->checks as $chk) {
@@ -97,8 +97,6 @@ class Domain extends AbstractComposite
         if (count($e)) {
             throw $this->reportError($input)->setRelated($e);
         }
-
-        return true;
     }
 
     protected function collectAssertException(&$exceptions, $validator, $input): void

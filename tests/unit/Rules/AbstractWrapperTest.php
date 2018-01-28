@@ -72,7 +72,7 @@ final class AbstractWrapperTest extends TestCase
 
         $wrapper = $this->getMockForAbstractClass(AbstractWrapper::class, [$validatable]);
 
-        self::assertTrue($wrapper->assert($input));
+        $wrapper->assert($input);
     }
 
     /**

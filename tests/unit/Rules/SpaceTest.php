@@ -39,7 +39,7 @@ class SpaceTest extends TestCase
     {
         $validator = new Space($additional);
         self::assertFalse($validator->validate($invalidSpace));
-        self::assertFalse($validator->assert($invalidSpace));
+        $validator->assert($invalidSpace);
     }
 
     /**

@@ -35,7 +35,7 @@ class FactorTest extends TestCase
         $min = new Factor($dividend);
         self::assertTrue($min->__invoke($input));
         $min->check($input);
-        self::assertTrue($min->assert($input));
+        $min->assert($input);
     }
 
     /**
@@ -50,7 +50,7 @@ class FactorTest extends TestCase
 
         $min = new Factor($dividend);
         self::assertFalse($min->__invoke($input));
-        self::assertFalse($min->assert($input));
+        $min->assert($input);
     }
 
     /**

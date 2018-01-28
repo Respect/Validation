@@ -138,7 +138,7 @@ class KeyNestedTest extends TestCase
                 'bar' => 'foo',
             ],
         ];
-        self::assertTrue($validator->assert($object));
+        $validator->assert($object);
     }
 
     /**
@@ -148,9 +148,12 @@ class KeyNestedTest extends TestCase
     {
         $validator = new KeyNested('baz.bar');
         $object = 123;
-        self::assertFalse($validator->assert($object));
+        $validator->assert($object);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testExtraValidatorShouldValidateKey(): void
     {
         $subValidator = new Length(3, 7);
@@ -162,7 +165,7 @@ class KeyNestedTest extends TestCase
                 ],
             ],
         ];
-        self::assertTrue($validator->assert($object));
+        $validator->assert($object);
     }
 
     public function testNotMandatoryExtraValidatorShouldPassWithAbsentKey(): void

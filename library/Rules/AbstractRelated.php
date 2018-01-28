@@ -56,7 +56,7 @@ abstract class AbstractRelated extends AbstractRule
                 || $this->validator->$type($this->getReferenceValue($input)));
     }
 
-    public function assert($input)
+    public function assert($input): void
     {
         $hasReference = $this->hasReference($input);
         if ($this->mandatory && !$hasReference) {
@@ -64,7 +64,7 @@ abstract class AbstractRelated extends AbstractRule
         }
 
         try {
-            return $this->decision('assert', $hasReference, $input);
+            $this->decision('assert', $hasReference, $input);
         } catch (ValidationException $e) {
             throw $this
                 ->reportError($this->reference, ['hasReference' => true])

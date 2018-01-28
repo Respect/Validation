@@ -29,7 +29,7 @@ class UppercaseTest extends TestCase
     {
         $uppercase = new Uppercase();
         self::assertTrue($uppercase->validate($input));
-        self::assertTrue($uppercase->assert($input));
+        $uppercase->assert($input);
         $uppercase->check($input);
     }
 
@@ -41,7 +41,7 @@ class UppercaseTest extends TestCase
     {
         $lowercase = new Uppercase();
         self::assertFalse($lowercase->validate($input));
-        self::assertFalse($lowercase->assert($input));
+        $lowercase->assert($input);
     }
 
     public function providerForValidUppercase()

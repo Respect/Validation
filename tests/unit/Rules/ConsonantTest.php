@@ -39,7 +39,7 @@ class ConsonantTest extends TestCase
     {
         $validator = new Consonant($additional);
         self::assertFalse($validator->validate($invalidConsonants));
-        self::assertFalse($validator->assert($invalidConsonants));
+        $validator->assert($invalidConsonants);
     }
 
     /**

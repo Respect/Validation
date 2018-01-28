@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
+use Respect\Validation\Validatable;
 
 /**
  * @group  rule
@@ -22,35 +23,66 @@ use PHPUnit\Framework\TestCase;
  */
 class CallTest extends TestCase
 {
+    private const CALLBACK_RETURN = [];
+
     public function thisIsASampleCallbackUsedInsideThisTest()
     {
-        return [];
+        return self::CALLBACK_RETURN;
     }
 
     public function testCallbackValidatorShouldAcceptEmptyString(): void
     {
-        $v = new Call('str_split', new ArrayVal());
-        self::assertTrue($v->assert(''));
+        $validatable = $this->createMock(Validatable::class);
+        $validatable
+            ->expects($this->once())
+            ->method('assert')
+            ->with(['']);
+
+        $v = new Call('str_split', $validatable);
+        $v->assert('');
     }
 
     public function testCallbackValidatorShouldAcceptStringWithFunctionName(): void
     {
-        $v = new Call('str_split', new ArrayVal());
-        self::assertTrue($v->assert('test'));
+        $validatable = $this->createMock(Validatable::class);
+        $validatable
+            ->expects($this->once())
+            ->method('assert')
+            ->with(['t', 'e', 's', 't']);
+
+        $v = new Call('str_split', $validatable);
+        $v->assert('test');
     }
 
     public function testCallbackValidatorShouldAcceptArrayCallbackDefinition(): void
     {
-        $v = new Call([$this, 'thisIsASampleCallbackUsedInsideThisTest'], new ArrayVal());
-        self::assertTrue($v->assert('test'));
+        $validatable = $this->createMock(Validatable::class);
+        $validatable
+            ->expects($this->once())
+            ->method('assert')
+            ->with(self::CALLBACK_RETURN);
+
+        $v = new Call([$this, 'thisIsASampleCallbackUsedInsideThisTest'], $validatable);
+        $v->assert('test');
     }
 
     public function testCallbackValidatorShouldAcceptClosures(): void
     {
-        $v = new Call(function () {
-            return [];
-        }, new ArrayVal());
-        self::assertTrue($v->assert('test'));
+        $return = [];
+
+        $validatable = $this->createMock(Validatable::class);
+        $validatable
+            ->expects($this->once())
+            ->method('assert')
+            ->with($return);
+
+        $v = new Call(
+            function () use ($return) {
+                return $return;
+            },
+            $validatable
+        );
+        $v->assert('test');
     }
 
     /**
@@ -60,6 +92,6 @@ class CallTest extends TestCase
     {
         $v = new Call('strrev', new ArrayVal());
         self::assertFalse($v->validate('test'));
-        self::assertFalse($v->assert('test'));
+        $v->assert('test');
     }
 }

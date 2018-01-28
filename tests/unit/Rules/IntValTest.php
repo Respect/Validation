@@ -36,7 +36,7 @@ class IntValTest extends TestCase
     {
         self::assertTrue($this->intValidator->__invoke($input));
         $this->intValidator->check($input);
-        self::assertTrue($this->intValidator->assert($input));
+        $this->intValidator->assert($input);
     }
 
     /**
@@ -46,7 +46,7 @@ class IntValTest extends TestCase
     public function testInvalidIntegersShouldThrowIntException($input): void
     {
         self::assertFalse($this->intValidator->__invoke($input));
-        self::assertFalse($this->intValidator->assert($input));
+        $this->intValidator->assert($input);
     }
 
     public function providerForInt()

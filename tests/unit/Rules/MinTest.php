@@ -31,7 +31,7 @@ class MinTest extends TestCase
         $min = new Min($minValue, $inclusive);
         self::assertTrue($min->__invoke($input));
         $min->check($input);
-        self::assertTrue($min->assert($input));
+        $min->assert($input);
     }
 
     /**
@@ -42,7 +42,7 @@ class MinTest extends TestCase
     {
         $min = new Min($minValue, $inclusive);
         self::assertFalse($min->__invoke($input));
-        self::assertFalse($min->assert($input));
+        $min->assert($input);
     }
 
     public function providerForValidMin()

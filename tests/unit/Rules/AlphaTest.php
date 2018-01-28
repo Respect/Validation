@@ -30,7 +30,7 @@ class AlphaTest extends TestCase
         $validator = new Alpha($additional);
         self::assertTrue($validator->validate($validAlpha));
         $validator->check($validAlpha);
-        self::assertTrue($validator->assert($validAlpha));
+        $validator->assert($validAlpha);
     }
 
     /**
@@ -41,7 +41,7 @@ class AlphaTest extends TestCase
     {
         $validator = new Alpha($additional);
         self::assertFalse($validator->validate($invalidAlpha));
-        self::assertFalse($validator->assert($invalidAlpha));
+        $validator->assert($invalidAlpha);
     }
 
     /**

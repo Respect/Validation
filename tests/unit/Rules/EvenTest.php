@@ -36,7 +36,7 @@ class EvenTest extends TestCase
     {
         self::assertTrue($this->evenValidator->validate($input));
         $this->evenValidator->check($input);
-        self::assertTrue($this->evenValidator->assert($input));
+        $this->evenValidator->assert($input);
     }
 
     /**
@@ -46,7 +46,7 @@ class EvenTest extends TestCase
     public function testNotEvenNumbersShouldFail($input): void
     {
         self::assertFalse($this->evenValidator->validate($input));
-        self::assertFalse($this->evenValidator->assert($input));
+        $this->evenValidator->assert($input);
     }
 
     public function providerForEven()

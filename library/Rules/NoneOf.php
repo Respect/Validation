@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class NoneOf extends AbstractComposite
 {
-    public function assert($input)
+    public function assert($input): void
     {
         $exceptions = $this->validateRules($input);
         $numRules = count($this->getRules());
@@ -23,8 +23,6 @@ class NoneOf extends AbstractComposite
         if ($numRules !== $numExceptions) {
             throw $this->reportError($input)->setRelated($exceptions);
         }
-
-        return true;
     }
 
     public function validate($input): bool

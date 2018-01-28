@@ -24,12 +24,14 @@ use Respect\Validation\Validator;
 class NotTest extends TestCase
 {
     /**
+     * @doesNotPerformAssertions
+     *
      * @dataProvider providerForValidNot
      */
     public function testNot($v, $input): void
     {
         $not = new Not($v);
-        self::assertTrue($not->assert($input));
+        $not->assert($input);
     }
 
     /**
@@ -39,7 +41,7 @@ class NotTest extends TestCase
     public function testNotNotHaha($v, $input): void
     {
         $not = new Not($v);
-        self::assertFalse($not->assert($input));
+        $not->assert($input);
     }
 
     /**

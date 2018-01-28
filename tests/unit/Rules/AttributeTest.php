@@ -14,10 +14,13 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
+use Respect\Validation\Validatable;
 
 class PrivClass
 {
-    private $bar = 'foo';
+    public const PROPERTY_VALUE = 'foo';
+
+    private $bar = self::PROPERTY_VALUE;
 }
 
 /**
@@ -34,7 +37,7 @@ class AttributeTest extends TestCase
         $obj->bar = 'foo';
         $validator->check($obj);
         self::assertTrue($validator->__invoke($obj));
-        self::assertTrue($validator->assert($obj));
+        $validator->assert($obj);
     }
 
     /**
@@ -46,7 +49,7 @@ class AttributeTest extends TestCase
         $obj = new \stdClass();
         $obj->baraaaaa = 'foo';
         self::assertFalse($validator->__invoke($obj));
-        self::assertFalse($validator->assert($obj));
+        $validator->assert($obj);
     }
 
     /**
@@ -86,7 +89,7 @@ class AttributeTest extends TestCase
         $obj = new \stdClass();
         $obj->bar = 'foo';
         self::assertTrue($validator->__invoke($obj));
-        self::assertTrue($validator->assert($obj));
+        $validator->assert($obj);
         $validator->check($obj);
     }
 
@@ -134,7 +137,7 @@ class AttributeTest extends TestCase
         $validator = new Attribute('bar', $subValidator);
         $obj = new \stdClass();
         $obj->bar = 'foo hey this has more than 3 chars';
-        self::assertFalse($validator->assert($obj));
+        $validator->assert($obj);
     }
 
     public function testNotMandatoryAttributeShouldNotFailWhenAttributeIsAbsent(): void
@@ -154,10 +157,17 @@ class AttributeTest extends TestCase
 
     public function testPrivateAttributeShouldAlsoBeChecked(): void
     {
-        $subValidator = new Length(1, 3);
-        $validator = new Attribute('bar', $subValidator);
         $obj = new PrivClass();
-        self::assertTrue($validator->assert($obj));
+
+        $validatable = $this->createMock(Validatable::class);
+        $validatable
+            ->expects($this->once())
+            ->method('assert')
+            ->with(PrivClass::PROPERTY_VALUE);
+
+        $validator = new Attribute('bar', $validatable);
+
+        $validator->assert($obj);
     }
 
     public function testPrivateAttributeShouldFailIfNotValid(): void

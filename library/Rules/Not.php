@@ -37,10 +37,10 @@ class Not extends AbstractRule
         return false === $this->rule->validate($input);
     }
 
-    public function assert($input)
+    public function assert($input): void
     {
         if ($this->validate($input)) {
-            return true;
+            return;
         }
 
         $rule = $this->rule;

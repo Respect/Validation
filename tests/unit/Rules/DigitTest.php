@@ -39,7 +39,7 @@ class DigitTest extends TestCase
     {
         $validator = new Digit($additional);
         self::assertFalse($validator->validate($invalidDigits));
-        self::assertFalse($validator->assert($invalidDigits));
+        $validator->assert($invalidDigits);
     }
 
     /**

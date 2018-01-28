@@ -105,7 +105,7 @@ class ZendTest extends TestCase
         $v = new Zend('Date');
         $date = new DateTime();
         self::assertTrue($v->validate($date));
-        self::assertTrue($v->assert($date));
+        $v->assert($date);
     }
 
     /**
@@ -135,7 +135,7 @@ class ZendTest extends TestCase
     public function testParamsNot(): void
     {
         $v = new Zend('StringLength', ['min' => 10, 'max' => 25]);
-        self::assertFalse($v->assert('aw'));
+        $v->assert('aw');
     }
 }
 
