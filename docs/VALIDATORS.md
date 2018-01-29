@@ -130,6 +130,7 @@
 
 - [Age](Age.md)
 - [Between](Between.md)
+- [Date](Date.md)
 - [DateTime](DateTime.md)
 - [LeapDate](LeapDate.md)
 - [LeapYear](LeapYear.md)
@@ -237,6 +238,7 @@
 - [Cpf](Cpf.md)
 - [CreditCard](CreditCard.md)
 - [CurrencyCode](CurrencyCode.md)
+- [Date](Date.md)
 - [DateTime](DateTime.md)
 - [Digit](Digit.md)
 - [Directory](Directory.md)

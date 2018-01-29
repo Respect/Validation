@@ -51,6 +51,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator currencyCode()
  * @method static Validator cpf()
  * @method static Validator creditCard(string $brand = null)
+ * @method static Validator date(string $format = 'Y-m-d')
  * @method static Validator dateTime(string $format = null)
  * @method static Validator digit(string $additionalChars = null)
  * @method static Validator directory()
