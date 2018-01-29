@@ -1,18 +1,18 @@
-# MinimumAge
+# MaximumAge
 
-- `MinimumAge(int $age)`
-- `MinimumAge(int $age, string $format)`
+- `MaximumAge(int $age)`
+- `MaximumAge(int $age, string $format)`
 
-Validates a minimum age for a given date. The `$format` argument should be in
+Validates a maximum age for a given date. The `$format` argument should be in
 accordance to PHP's [date()][] function. When `$format` is not  given this rule
 accepts [Supported Date and Time Formats][] by PHP (see [strtotime()][]).
 
 ```php
-v::minimumAge(18)->validate('18 years ago'); // true
-v::minimumAge(18, 'Y-m-d')->validate('1987-01-01'); // true
+v::maximumAge(12)->validate('12 years ago'); // true
+v::maximumAge(12, 'Y-m-d')->validate('2013-07-31'); // true
 
-v::minimumAge(18)->validate('17 years ago'); // false
-v::minimumAge(18, 'Y-m-d')->validate('2010-09-07'); // false
+v::maximumAge(12)->validate('13 years ago'); // false
+v::maximumAge(18, 'Y-m-d')->validate('1988-09-09'); // false
 ```
 
 Using [Date](Date.md) before is a best-practice.
@@ -22,15 +22,15 @@ This rule does not accepts instances of [DateTimeInterface][].
 
 Version | Description
 --------|-------------
-  0.3.9 | Created
+  2.0.0 | Created based on removed `Age` rule
 
 ***
 See also:
 
 - [Date](Date.md)
 - [Max](Max.md)
-- [MaximumAge](MaximumAge.md)
 - [Min](Min.md)
+- [MinimumAge](MinimumAge.md)
 
 [date()]: http://php.net/date
 [DateTimeInterface]: http://php.net/DateTimeInterface

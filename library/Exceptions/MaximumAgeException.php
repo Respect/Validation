@@ -15,19 +15,18 @@ namespace Respect\Validation\Exceptions;
 
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jean Pimentel <jeanfap@gmail.com>
  */
-final class MinimumAgeException extends ValidationException
+final class MaximumAgeException extends ValidationException
 {
     /**
      * {@inheritdoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{input}} must be {{age}} years or more',
+            self::STANDARD => '{{name}} must be {{age}} years or less',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{input}} must not be {{age}} years or more',
+            self::STANDARD => '{{name}} must not be {{age}} years or less',
         ],
     ];
 }

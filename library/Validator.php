@@ -21,7 +21,6 @@ use Respect\Validation\Rules\AllOf;
 use Respect\Validation\Rules\Key;
 
 /**
- * @method static Validator age(int $minAge = null, int $maxAge = null)
  * @method static Validator allOf(Validatable ...$rule)
  * @method static Validator alnum(string $additionalChars = null)
  * @method static Validator alpha(string $additionalChars = null)
@@ -97,6 +96,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator luhn()
  * @method static Validator macAddress()
  * @method static Validator max(mixed $maxValue, bool $inclusive = true)
+ * @method static Validator maximumAge(int $age, string $format = null)
  * @method static Validator mimetype(string $mimetype)
  * @method static Validator min(mixed $minValue, bool $inclusive = true)
  * @method static Validator minimumAge(int $age, bool $format = null)
