@@ -135,6 +135,7 @@
 - [LeapDate](LeapDate.md)
 - [LeapYear](LeapYear.md)
 - [MinimumAge](MinimumAge.md)
+- [Time](Time.md)
 
 ## Group Validators
 
@@ -331,6 +332,7 @@
 - [StringVal](StringVal.md)
 - [SubdivisionCode](SubdivisionCode.md)
 - [SymbolicLink](SymbolicLink.md)
+- [Time](Time.md)
 - [Tld](Tld.md)
 - [TrueVal](TrueVal.md)
 - [Type](Type.md)
