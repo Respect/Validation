@@ -13,159 +13,117 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function date_default_timezone_get;
+use function date_default_timezone_set;
+use DateTime as DateTimeMutable;
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\DateTime
- * @covers \Respect\Validation\Exceptions\DateTimeException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class DateTimeTest extends TestCase
+final class DateTimeTest extends RuleTestCase
 {
-    protected $dateValidator;
-
-    protected function setUp(): void
-    {
-        $this->dateValidator = new DateTime();
-    }
-
-    public function testDateEmptyShouldNotValidate(): void
-    {
-        self::assertFalse($this->dateValidator->__invoke(''));
-    }
-
     /**
-     * @expectedException \Respect\Validation\Exceptions\DateTimeException
+     * {@inheritdoc}
      */
-    public function testDateEmptyShouldNotCheck(): void
-    {
-        $this->dateValidator->check('');
-    }
-
-    /**
-     * @doesNotPerformAssertions
-     *
-     * @expectedException \Respect\Validation\Exceptions\DateTimeException
-     */
-    public function testDateEmptyShouldNotAssert(): void
-    {
-        $this->dateValidator->assert('');
-    }
-
-    public function testDateWithoutFormatShouldValidate(): void
-    {
-        self::assertTrue($this->dateValidator->__invoke('today'));
-    }
-
-    public function testDateTimeInstancesShouldAlwaysValidate(): void
-    {
-        self::assertTrue($this->dateValidator->__invoke(new \DateTime('today')));
-    }
-
-    public function testDateTimeImmutableInterfaceInstancesShouldAlwaysValidate()
-    {
-        if (!class_exists('DateTimeImmutable')) {
-            return $this->markTestSkipped('DateTimeImmutable does not exist');
-        }
-
-        self::assertTrue($this->dateValidator->validate(new DateTimeImmutable('today')));
-    }
-
-    public function testInvalidDateShouldFail(): void
-    {
-        self::assertFalse($this->dateValidator->__invoke('aids'));
-    }
-
-    public function testInvalidDateShouldFail_on_invalid_conversions(): void
-    {
-        $this->dateValidator->format = 'Y-m-d';
-        self::assertFalse($this->dateValidator->__invoke('2009-12-00'));
-    }
-
-    public function testAnyObjectExceptDateTimeInstancesShouldFail(): void
-    {
-        self::assertFalse($this->dateValidator->__invoke(new \stdClass()));
-    }
-
-    /**
-     * @doesNotPerformAssertions
-     */
-    public function testFormatsShouldValidateDateStrings(): void
-    {
-        $this->dateValidator = new DateTime('Y-m-d');
-        $this->dateValidator->assert('2009-09-09');
-    }
-
-    /**
-     * @doesNotPerformAssertions
-     */
-    public function testFormatsShouldValidateDateStrings_with_any_formats(): void
-    {
-        $this->dateValidator = new DateTime('d/m/Y');
-        $this->dateValidator->assert('23/05/1987');
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\DateTimeException
-     */
-    public function testFormatsShouldValidateDateStrings_and_throw_DateTimeException_on_failure(): void
-    {
-        $this->dateValidator = new DateTime('y-m-d');
-        $this->dateValidator->assert('2009-09-09');
-    }
-
-    /**
-     * @doesNotPerformAssertions
-     */
-    public function testDateTimeExceptionalFormatsThatShouldBeValid(): void
-    {
-        $this->dateValidator = new DateTime('c');
-        $this->dateValidator->assert('2004-02-12T15:19:21+00:00');
-
-        $this->dateValidator = new DateTime('r');
-        $this->dateValidator->assert('Thu, 29 Dec 2005 01:02:03 +0000');
-    }
-
-    /**
-     * Test that datetime strings with timezone information are valid independent on the system's timezone setting.
-     *
-     * @doesNotPerformAssertions
-     *
-     * @param string $systemTimezone
-     * @param string $input
-     *
-     * @dataProvider providerForDateTimeTimezoneStrings
-     */
-    public function testDateTimeSystemTimezoneIndependent($systemTimezone, $format, $input): void
-    {
-        date_default_timezone_set($systemTimezone);
-        $this->dateValidator = new DateTime($format);
-        $this->dateValidator->assert($input);
-    }
-
-    /**
-     * @return array
-     */
-    public function providerForDateTimeTimezoneStrings()
+    public function providerForValidInput(): array
     {
         return [
-                ['UTC', 'Ym', '202302'],
-                ['UTC', 'Ym', '202304'],
-                ['UTC', 'Ym', '202306'],
-                ['UTC', 'Ym', '202309'],
-                ['UTC', 'Ym', '202311'],
-                ['UTC', 'c', '2005-12-30T01:02:03+01:00'],
-                ['UTC', 'c', '2004-02-12T15:19:21+00:00'],
-                ['UTC', 'r', 'Thu, 29 Dec 2005 01:02:03 +0000'],
-                ['Europe/Amsterdam', 'c', '2005-12-30T01:02:03+01:00'],
-                ['Europe/Amsterdam', 'c', '2004-02-12T15:19:21+00:00'],
-                ['Europe/Amsterdam', 'r', 'Thu, 29 Dec 2005 01:02:03 +0000'],
-                ['UTC', 'U', 1464658596],
-                ['UTC', 'U', 1464399539],
-                ['UTC', 'g', 0],
-                ['UTC', 'h', 6],
-                ['UTC', 'z', 320],
+            [new DateTime(), 'now'],
+            [new DateTime(), 'today'],
+            [new DateTime(), 'tomorrow'],
+            [new DateTime(), 'yesterday'],
+            [new DateTime(), '+1 day'],
+            [new DateTime(), 'next Thursday'],
+            [new DateTime(), '+1 week 2 days 4 hours 2 seconds'],
+            [new DateTime(), 2018],
+            [new DateTime(), new DateTimeMutable()],
+            [new DateTime(), new DateTimeImmutable()],
+            [new DateTime('Y-m-d'), '2009-09-09'],
+            [new DateTime('d/m/Y'), '23/05/1987'],
+            [new DateTime('c'), '2004-02-12T15:19:21+00:00'],
+            [new DateTime('r'), 'Thu, 29 Dec 2005 01:02:03 +0000'],
+            [new DateTime('U'), 1464658596],
+            [new DateTime('h'), 6],
+            [new DateTime('z'), 320],
+            [new DateTime('Ym'), 202302],
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
+    {
+        return [
+            [new DateTime(), 'not-a-date'],
+            [new DateTime(), []],
+            [new DateTime(), true],
+            [new DateTime(), false],
+            [new DateTime(), null],
+            [new DateTime(), ''],
+            [new DateTime('Y-m-d'), '2009-12-00'],
+            [new DateTime('Y-m-d'), '2018-02-29'],
+            [new DateTime('h'), 24],
+            [new DateTime('c'), new DateTimeMutable()],
+            [new DateTime('c'), new DateTimeImmutable()],
+        ];
+    }
+
+    /**
+     * @test
+     */
+    public function shouldPassFormatToParameterToException(): void
+    {
+        $format = 'F jS, Y';
+        $equals = new DateTime($format);
+        $exception = $equals->reportError('input');
+
+        self::assertSame($format, $exception->getParam('format'));
+    }
+
+    public function providerForDateTimeWithTimezone(): array
+    {
+        return [
+            ['c', '2004-02-12T15:19:21+00:00', 'Europe/Amsterdam'],
+            ['c', '2004-02-12T15:19:21+00:00', 'UTC'],
+            ['d/m/Y', '23/05/1987', 'Europe/Amsterdam'],
+            ['d/m/Y', '23/05/1987', 'UTC'],
+            ['r', 'Thu, 29 Dec 2005 01:02:03 +0000', 'Europe/Amsterdam'],
+            ['r', 'Thu, 29 Dec 2005 01:02:03 +0000', 'UTC'],
+            ['Ym', '202302', 'Europe/Amsterdam'],
+            ['Ym', '202302', 'UTC'],
+        ];
+    }
+
+    /**
+     * Datetime strings with timezone information are valid independent on the
+     * system's timezone setting.
+     *
+     * @test
+     *
+     * @dataProvider providerForDateTimeWithTimezone
+     *
+     * @param string $format
+     * @param string $input
+     * @param string $timezone
+     */
+    public function shouldValidateNoMatterTimezone(string $format, string $input, string $timezone): void
+    {
+        $currentTimezone = date_default_timezone_get();
+
+        date_default_timezone_set($timezone);
+
+        $rule = new DateTime($format);
+
+        self::assertTrue($rule->validate($input));
+
+        date_default_timezone_set($currentTimezone);
     }
 }

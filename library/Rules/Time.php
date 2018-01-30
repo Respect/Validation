@@ -17,6 +17,7 @@ use function date_parse_from_format;
 use function is_scalar;
 use function preg_match;
 use function sprintf;
+use Respect\Validation\Helpers\DateTimeHelper;
 use Respect\Validation\Exceptions\ComponentException;
 
 /**
@@ -26,6 +27,8 @@ use Respect\Validation\Exceptions\ComponentException;
  */
 final class Time extends AbstractRule
 {
+    use DateTimeHelper;
+
     /**
      * @var string
      */
@@ -56,8 +59,6 @@ final class Time extends AbstractRule
             return false;
         }
 
-        $info = date_parse_from_format($this->format, (string) $input);
-
-        return ($info['error_count'] + $info['warning_count']) === 0;
+        return $this->isDateTime($this->format, (string) $input);
     }
 }

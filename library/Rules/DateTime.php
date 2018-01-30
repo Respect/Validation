@@ -13,44 +13,52 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function is_scalar;
+use function strtotime;
 use DateTimeInterface;
+use Respect\Validation\Helpers\DateTimeHelper;
 
-class DateTime extends AbstractRule
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class DateTime extends AbstractRule
 {
-    public $format = null;
+    use DateTimeHelper;
 
-    public function __construct($format = null)
+    /**
+     * @var string|null
+     */
+    private $format;
+
+    /**
+     * Initializes the rule.
+     *
+     * @param string|null $format
+     */
+    public function __construct(string $format = null)
     {
         $this->format = $format;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if ($input instanceof DateTimeInterface) {
-            return true;
+            return null === $this->format;
         }
 
         if (!is_scalar($input)) {
             return false;
         }
 
-        $inputString = (string) $input;
-
-        if (is_null($this->format)) {
-            return false !== strtotime($inputString);
+        if (null === $this->format) {
+            return false !== strtotime((string) $input);
         }
 
-        $exceptionalFormats = [
-            'c' => 'Y-m-d\TH:i:sP',
-            'r' => 'D, d M Y H:i:s O',
-        ];
-
-        if (in_array($this->format, array_keys($exceptionalFormats))) {
-            $this->format = $exceptionalFormats[$this->format];
-        }
-
-        $info = date_parse_from_format($this->format, $inputString);
-
-        return 0 === $info['error_count'] && 0 === $info['warning_count'];
+        return $this->isDateTime($this->format, (string) $input);
     }
 }

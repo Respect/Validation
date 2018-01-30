@@ -3,8 +3,8 @@
 - `DateTime()`
 - `DateTime(string $format)`
 
-Validates if input is a date. The `$format` argument should be in accordance to
-PHP's [date()](http://php.net/date) function.
+Validates whether an input is a date/time or not. The `$format` argument should
+be in accordance to PHP's [date()](http://php.net/date) function.
 
 ```php
 v::dateTime()->validate('2009-01-01'); // true
@@ -43,7 +43,9 @@ Version | Description
 ***
 See also:
 
+- [Date](Date.md)
 - [Between](Between.md)
 - [MinimumAge](MinimumAge.md)
 - [LeapDate](LeapDate.md)
 - [LeapYear](LeapYear.md)
+- [Time](Time.md)
