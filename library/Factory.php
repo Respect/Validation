@@ -13,17 +13,17 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
+use ReflectionClass;
+use ReflectionObject;
+use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidClassException;
+use Respect\Validation\Exceptions\ValidationException;
 use function array_map;
 use function array_merge;
 use function array_unique;
 use function class_exists;
 use function lcfirst;
 use function Respect\Stringifier\stringify;
-use ReflectionClass;
-use ReflectionObject;
-use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Exceptions\InvalidClassException;
-use Respect\Validation\Exceptions\ValidationException;
 
 /**
  * Factory of objects.

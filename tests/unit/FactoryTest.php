@@ -15,11 +15,7 @@ namespace Respect\Validation;
 
 use PHPUnit\Framework\TestCase;
 use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Exceptions\EqualsException;
 use Respect\Validation\Exceptions\InvalidClassException;
-use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Rules\Equals;
-use Respect\Validation\Rules\Uppercase;
 use Respect\Validation\Test\Exceptions\StubException;
 use Respect\Validation\Test\Rules\AbstractClass;
 use Respect\Validation\Test\Rules\Invalid;

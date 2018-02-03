@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 

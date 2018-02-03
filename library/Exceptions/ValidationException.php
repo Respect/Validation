@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use InvalidArgumentException;
 use function in_array;
 use function is_numeric;
 use function Respect\Stringifier\stringify;
-use InvalidArgumentException;
 
 class ValidationException extends InvalidArgumentException implements ExceptionInterface
 {

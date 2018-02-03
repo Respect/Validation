@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use function is_scalar;
-use function strtotime;
 use DateTimeInterface;
 use Respect\Validation\Helpers\DateTimeHelper;
+use function is_scalar;
+use function strtotime;
 
 /**
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>

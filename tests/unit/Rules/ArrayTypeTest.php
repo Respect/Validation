@@ -20,7 +20,6 @@ use Respect\Validation\Test\RuleTestCase;
  * @covers \Respect\Validation\Rules\ArrayType
  */
 class ArrayTypeTest extends RuleTestCase
-
 {
     public function providerForValidInput(): array
     {

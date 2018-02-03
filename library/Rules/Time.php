@@ -13,12 +13,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use function date_parse_from_format;
+use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Helpers\DateTimeHelper;
 use function is_scalar;
 use function preg_match;
 use function sprintf;
-use Respect\Validation\Helpers\DateTimeHelper;
-use Respect\Validation\Exceptions\ComponentException;
 
 /**
  * Validates whether an input is a time or not

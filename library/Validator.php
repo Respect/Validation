@@ -15,7 +15,6 @@ namespace Respect\Validation;
 
 use finfo;
 use ReflectionClass;
-use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Rules\AllOf;

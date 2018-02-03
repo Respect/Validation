@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Helpers\UndefinedHelper;
-use Respect\Validation\Validatable;
 
 class Optional extends AbstractWrapper
 {

@@ -13,11 +13,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ComponentException;
 use function class_exists;
 use function mb_strtolower;
 use function sprintf;
 use function ucfirst;
-use Respect\Validation\Exceptions\ComponentException;
 
 /**
  * Abstract class to help creating rules based on location.
@@ -36,7 +36,7 @@ abstract class AbstractLocaleWrapper extends AbstractWrapper
      *
      * @param string $countryCode
      *
-     * @throws ComponentException When country is not supported.
+     * @throws ComponentException when country is not supported
      */
     public function __construct(string $countryCode)
     {
@@ -47,7 +47,7 @@ abstract class AbstractLocaleWrapper extends AbstractWrapper
         }
 
         $this->countryCode = $countryCode;
-        parent::__construct(new $className);
+        parent::__construct(new $className());
     }
 
     /**

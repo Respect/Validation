@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test\Rules;
 
-use function array_shift;
 use Respect\Validation\Rules\AbstractRule;
+use function array_shift;
 
 /**
  * Stub to help testing rules.
