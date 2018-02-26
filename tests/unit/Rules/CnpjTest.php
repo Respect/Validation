@@ -95,6 +95,7 @@ class CnpjTest extends TestCase
     public function providerInvalidFormattedCnpj()
     {
         return [
+            [[]],
             ['12.345.678/9012-34'],
             ['11.111.111/1111-11'],
         ];

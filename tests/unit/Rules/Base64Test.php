@@ -55,6 +55,7 @@ class Base64Test extends RuleTestCase
         $rule = new Base64();
 
         return [
+            [$rule, null],
             [$rule, ''],
             [$rule, 'hello!'],
             [$rule, '=c3VyZS4'],

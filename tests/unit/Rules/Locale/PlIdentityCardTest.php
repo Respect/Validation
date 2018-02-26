@@ -38,6 +38,7 @@ class PlIdentityCardTest extends RuleTestCase
 
         return [
             [$rule, 'AAAAAAAAA'],
+            [$rule, 'A9H505567'],
             [$rule, 'APH 505567'],
             [$rule, 'AYE205411'],
             [$rule, 'AYW036731'],

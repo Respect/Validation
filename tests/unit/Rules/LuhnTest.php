@@ -38,6 +38,7 @@ class LuhnTest extends RuleTestCase
         $rule = new Luhn();
 
         return [
+            [$rule, '2222.2'],
             [$rule, '2222400041240021'],
             [$rule, '340316193809334'],
             [$rule, '6011000990139421'],

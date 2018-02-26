@@ -67,4 +67,14 @@ class AnyOfTest extends TestCase
         self::assertFalse($o->validate(-10));
         $o->check(-10);
     }
+
+    /**
+     * @expectedException        \Respect\Validation\Exceptions\AnyOfException
+     * @expectedExceptionMessage At least one of these rules must pass for "invalid_input"
+     */
+    public function testCheckShouldReturnAnyOfException(): void
+    {
+        $o = new AnyOf();
+        $o->check('invalid_input');
+    }
 }

@@ -115,6 +115,8 @@ class KeySetTest extends TestCase
         $keySet = new KeySet($key1, $key2);
 
         self::assertTrue($keySet->validate($input));
+        self::assertNull($keySet->check($input));
+        self::assertNull($keySet->assert($input));
     }
 
     public function testShouldValidateKeysWhenThereAreMoreKeys(): void

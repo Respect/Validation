@@ -70,7 +70,8 @@ class EachTest extends RuleTestCase
     {
         $v = new Each($this->createValidatableMock(true));
         $v->check([1, 2, 3, 4, 5]);
-        $v->assert([1, 2, 3, 4, 5]);
+
+        self::assertNull($v->assert([1, 2, 3, 4, 5]));
     }
 
     /**
@@ -80,7 +81,8 @@ class EachTest extends RuleTestCase
     {
         $v = new Each($this->createValidatableMock(true), $this->createValidatableMock(true));
         $v->check(['a', 'b', 'c', 'd', 'e']);
-        $v->assert(['a', 'b', 'c', 'd', 'e']);
+
+        self::assertNull($v->assert(['a', 'b', 'c', 'd', 'e']));
     }
 
     /**
@@ -90,7 +92,8 @@ class EachTest extends RuleTestCase
     {
         $v = new Each(null, $this->createValidatableMock(true));
         $v->check(['a', 'b', 'c', 'd', 'e']);
-        $v->assert(['a', 'b', 'c', 'd', 'e']);
+
+        self::assertNull($v->assert(['a', 'b', 'c', 'd', 'e']));
     }
 
     /**

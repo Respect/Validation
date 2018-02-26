@@ -36,6 +36,15 @@ class ZendTest extends TestCase
     }
 
     /**
+     * @expectedException        Respect\Validation\Exceptions\ComponentException
+     * @expectedExceptionMessage Invalid Validator Construct
+     */
+    public function testConstructorWithInvalidValidator(): void
+    {
+        $v = new Zend(null);
+    }
+
+    /**
      * @depends testConstructorWithValidatorName
      */
     public function testConstructorWithValidatorClassName(): void

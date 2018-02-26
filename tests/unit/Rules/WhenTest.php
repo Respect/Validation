@@ -77,6 +77,28 @@ class WhenTest extends RuleTestCase
         $rule->assert('');
     }
 
+    public function testAssertWhenValidateShouldReturnNull()
+    {
+        $if = $this->createValidatableMock(true);
+        $then = $this->createValidatableMock(true);
+        $else = $this->createValidatableMock(true);
+
+        $rule = new When($if, $then, $else);
+
+        self::assertNull($rule->assert('validate'));    
+    }
+
+    public function testCheckWhenValidateShouldReturnNull()
+    {
+        $if = $this->createValidatableMock(true);
+        $then = $this->createValidatableMock(true);
+        $else = $this->createValidatableMock(true);
+
+        $rule = new When($if, $then, $else);
+
+        self::assertNull($rule->check('validate'));    
+    }
+
     /**
      * @expectedException \Respect\Validation\Exceptions\ValidationException
      * @expectedExceptionMessage Exception for ElseNotValid:check() method

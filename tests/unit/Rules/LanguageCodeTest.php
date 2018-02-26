@@ -52,4 +52,13 @@ class LanguageCodeTest extends RuleTestCase
             [$ruleAlpha3, 'pt'],
         ];
     }
+
+    /**
+     * @expectedException        Respect\Validation\Exceptions\ComponentException
+     * @expectedExceptionMessage "invalid_language_code" is not a valid language set for ISO 639
+     */
+    public function testConstructorInvalidLanguageCodeShouldReturnComponentException()
+    {
+        $langCode = new LanguageCode('invalid_language_code');
+    }
 }

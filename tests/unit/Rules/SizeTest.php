@@ -112,6 +112,13 @@ class SizeTest extends TestCase
         self::assertTrue($rule->validate($file1GbObject));
     }
 
+    public function testValidateNullShouldReturnFalse(): void
+    {
+        $rule = new Size('1MB', '2GB');
+
+        self::assertFalse($rule->validate(null));
+    }
+
     /**
      * @expectedException \Respect\Validation\Exceptions\SizeException
      * @expectedExceptionMessageRegExp #"vfs:.?/.?/root.?/1gb.txt" must be greater than "2pb"#
