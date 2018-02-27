@@ -12,4 +12,4 @@ try {
 }
 ?>
 --EXPECTF--
-- "a" must not be less than or equal to "b"
+- "a" must not be between "a" and "b"

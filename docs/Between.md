@@ -1,9 +1,9 @@
 # Between
 
-- `Between(mixed $start, mixed $end)`
-- `Between(mixed $start, mixed $end, bool $inclusive)`
+- `Between(mixed $minimum, mixed $maximum)`
+- `Between(mixed $minimum, mixed $maximum, bool $inclusive)`
 
-Validates ranges. Most simple example:
+Validates whether the input is between two other values.
 
 ```php
 v::intVal()->between(10, 20)->validate(15); // true

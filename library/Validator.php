@@ -32,7 +32,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator attribute(string $reference, Validatable $validator = null, bool $mandatory = true)
  * @method static Validator base()
  * @method static Validator base64()
- * @method static Validator between(mixed $min = null, mixed $max = null, bool $inclusive = true)
+ * @method static Validator between(mixed $minimum, mixed $maximum, bool $inclusive = true)
  * @method static Validator boolType()
  * @method static Validator boolVal()
  * @method static Validator bsn()

@@ -13,11 +13,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use DateTimeImmutable;
-use Exception;
+use Respect\Validation\Helpers\ComparisonHelper;
 
 abstract class AbstractInterval extends AbstractRule
 {
+    use ComparisonHelper { toComparable as protected filterInterval; }
+
     public $interval;
     public $inclusive;
 
@@ -25,24 +26,5 @@ abstract class AbstractInterval extends AbstractRule
     {
         $this->interval = $interval;
         $this->inclusive = $inclusive;
-    }
-
-    protected function filterInterval($value)
-    {
-        if (!is_string($value) || is_numeric($value) || empty($value)) {
-            return $value;
-        }
-
-        if (1 == mb_strlen($value)) {
-            return $value;
-        }
-
-        try {
-            return new DateTimeImmutable($value);
-        } catch (Exception $e) {
-            // Pokémon Exception Handling
-        }
-
-        return $value;
     }
 }

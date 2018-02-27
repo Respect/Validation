@@ -14,83 +14,72 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use DateTime;
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Between
  * @covers \Respect\Validation\Exceptions\BetweenException
  */
-class BetweenTest extends TestCase
+final class BetweenTest extends RuleTestCase
 {
-    public function providerValid()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
         return [
-            [0, 1, true, 0],
-            [0, 1, true, 1],
-            [10, 20, false, 15],
-            [10, 20, true, 20],
-            [-10, 20, false, -5],
-            [-10, 20, false, 0],
-            ['a', 'z', false, 'j'],
-            [
-                new DateTime('yesterday'),
-                new DateTime('tomorrow'),
-                false,
-                new DateTime('now'),
-            ],
-        ];
-    }
-
-    public function providerInvalid()
-    {
-        return [
-            [10, 20, false, ''],
-            [10, 20, true, ''],
-            [0, 1, false, 0],
-            [0, 1, false, 1],
-            [0, 1, false, 2],
-            [0, 1, false, -1],
-            [10, 20, false, 999],
-            [10, 20, false, 20],
-            [-10, 20, false, -11],
-            ['a', 'j', false, 'z'],
-            [
-                new DateTime('yesterday'),
-                new DateTime('now'),
-                false,
-                new DateTime('tomorrow'),
-            ],
+            [new Between(0, 1, true), 1],
+            [new Between(0, 1, true), 0],
+            [new Between(10, 20, false), 15],
+            [new Between(10, 20, true), 20],
+            [new Between(-10, 20, false), -5],
+            [new Between(-10, 20, false), 0],
+            [new Between('a', 'z', false), 'j'],
+            [new Between(new DateTime('yesterday'), new DateTime('tomorrow'), false), new DateTime('now')],
         ];
     }
 
     /**
-     * @dataProvider providerValid
+     * {@inheritdoc}
      */
-    public function testValuesBetweenBoundsShouldPass($min, $max, $inclusive, $input): void
+    public function providerForInvalidInput(): array
     {
-        $o = new Between($min, $max, $inclusive);
-        self::assertTrue($o->__invoke($input));
-        $o->assert($input);
-        $o->check($input);
+        return [
+            [new Between(10, 20, false), ''],
+            [new Between(10, 20, true), ''],
+            [new Between(0, 1, false), 0],
+            [new Between(0, 1, false), 1],
+            [new Between(0, 1, false), 2],
+            [new Between(0, 1, false), -1],
+            [new Between(10, 20, false), 999],
+            [new Between(10, 20, false), 20],
+            [new Between(-10, 20, false), -11],
+            [new Between('a', 'j', false), 'z'],
+            [new Between(new DateTime('yesterday'), new DateTime('now'), false), new DateTime('tomorrow')],
+        ];
     }
 
     /**
-     * @dataProvider providerInvalid
-     * @expectedException \Respect\Validation\Exceptions\BetweenException
-     */
-    public function testValuesOutBoundsShouldRaiseException($min, $max, $inclusive, $input): void
-    {
-        $o = new Between($min, $max, $inclusive);
-        self::assertFalse($o->__invoke($input));
-        $o->assert($input);
-    }
-
-    /**
+     * @test
+     *
      * @expectedException \Respect\Validation\Exceptions\ComponentException
+     * @expectedExceptionMessage 10 cannot be less than or equals to 5
      */
-    public function testInvalidConstructionParamsShouldRaiseException(): void
+    public function minimumValueShouldNotBeGreaterThanMaximumValue(): void
     {
-        $o = new Between(10, 5);
+        new Between(10, 5);
+    }
+
+    /**
+     * @test
+     *
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
+     * @expectedExceptionMessage 5 cannot be less than or equals to 5
+     */
+    public function minimumValueShouldNotBeEqualsToMaximumValue(): void
+    {
+        new Between(5, 5);
     }
 }

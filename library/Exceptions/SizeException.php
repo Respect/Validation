@@ -18,10 +18,14 @@ namespace Respect\Validation\Exceptions;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SizeException extends BetweenException
+class SizeException extends NestedValidationException
 {
+    public const BOTH = 0;
+    public const LOWER = 1;
+    public const GREATER = 2;
+
     /**
-     * @var array
+     * {@inheritdoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -35,4 +39,18 @@ class SizeException extends BetweenException
             self::GREATER => '{{name}} must not be lower than {{maxSize}}',
         ],
     ];
+
+    /**
+     * {@inheritdoc}
+     */
+    public function chooseTemplate(): int
+    {
+        if (!$this->getParam('minValue')) {
+            return static::GREATER;
+        } elseif (!$this->getParam('maxValue')) {
+            return static::LOWER;
+        }
+
+        return static::BOTH;
+    }
 }
