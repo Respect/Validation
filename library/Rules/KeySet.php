@@ -14,72 +14,73 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Exceptions\KeySetException;
 use Respect\Validation\Validatable;
+use function array_key_exists;
+use function array_map;
+use function count;
+use function current;
+use function is_array;
 
 /**
  * Validates a keys in a defined structure.
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  */
-class KeySet extends AllOf
+final class KeySet extends AbstractWrapper
 {
     /**
-     * @param AllOf $rule
-     *
-     * @return Validatable
+     * @var array
      */
-    private function filterAllOf(AllOf $rule)
-    {
-        $rules = $rule->getRules();
-        if (1 != count($rules)) {
-            throw new ComponentException('AllOf rule must have only one Key rule');
-        }
+    private $keys;
 
-        return current($rules);
+    /**
+     * @var Key[]
+     */
+    private $keyRules;
+
+    /**
+     * Initializes the rule.
+     *
+     * @param Validatable[] ...$validatables
+     */
+    public function __construct(Validatable ...$validatables)
+    {
+        $this->keyRules = array_map([$this, 'getKeyRule'], $validatables);
+        $this->keys = array_map([$this, 'getKeyReference'], $this->keyRules);
+
+        parent::__construct(new AllOf(...$this->keyRules));
     }
 
     /**
-     * {@inheritdoc}
+     * @param Validatable $validatable
+     *
+     * @throws ComponentException
+     *
+     * @return Key
      */
-    public function addRule($rule, $arguments = [])
+    private function getKeyRule(Validatable $validatable): Key
     {
-        if ($rule instanceof AllOf) {
-            $rule = $this->filterAllOf($rule);
+        if ($validatable instanceof Key) {
+            return $validatable;
         }
 
-        if (!$rule instanceof Key) {
+        if (!$validatable instanceof AllOf
+            || 1 !== count($validatable->getRules())) {
             throw new ComponentException('KeySet rule accepts only Key rules');
         }
 
-        $this->appendRule($rule);
-
-        return $this;
+        return $this->getKeyRule(current($validatable->getRules()));
     }
 
     /**
-     * {@inheritdoc}
+     * @param Key $rule
+     *
+     * @return mixed
      */
-    public function addRules(array $rules)
+    private function getKeyReference(Key $rule)
     {
-        foreach ($rules as $rule) {
-            $this->addRule($rule);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getKeys()
-    {
-        $keys = [];
-        foreach ($this->getRules() as $keyRule) {
-            $keys[] = $keyRule->reference;
-        }
-
-        return $keys;
+        return $rule->reference;
     }
 
     /**
@@ -93,7 +94,7 @@ class KeySet extends AllOf
             return false;
         }
 
-        foreach ($this->getRules() as $keyRule) {
+        foreach ($this->keyRules as $keyRule) {
             if (!array_key_exists($keyRule->reference, $input) && $keyRule->mandatory) {
                 return false;
             }
@@ -105,24 +106,13 @@ class KeySet extends AllOf
     }
 
     /**
-     * @throws KeySetException
-     */
-    private function checkKeys($input): void
-    {
-        if (!$this->hasValidStructure($input)) {
-            $params = ['keys' => $this->getKeys()];
-            $exception = $this->reportError($input, $params);
-
-            throw $exception;
-        }
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function assert($input): void
     {
-        $this->checkKeys($input);
+        if (!$this->hasValidStructure($input)) {
+            throw $this->reportError($input);
+        }
 
         parent::assert($input);
     }
@@ -132,7 +122,9 @@ class KeySet extends AllOf
      */
     public function check($input): void
     {
-        $this->checkKeys($input);
+        if (!$this->hasValidStructure($input)) {
+            throw $this->reportError($input);
+        }
 
         parent::check($input);
     }
