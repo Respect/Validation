@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Exceptions\ValidationException;
+use function Respect\Stringifier\stringify;
 
 /**
  * @author David Meister <thedavidmeister@gmail.com>
@@ -27,7 +27,7 @@ class Factor extends AbstractRule
     {
         if (!is_numeric($dividend) || (int) $dividend != $dividend) {
             $message = 'Dividend %s must be an integer';
-            throw new ComponentException(sprintf($message, ValidationException::stringify($dividend)));
+            throw new ComponentException(sprintf($message, stringify($dividend)));
         }
 
         $this->dividend = (int) $dividend;

@@ -16,7 +16,7 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\TestCase;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\FactorException;
-use Respect\Validation\Exceptions\ValidationException;
+use function Respect\Stringifier\stringify;
 
 /**
  * @group  rule
@@ -45,7 +45,7 @@ class FactorTest extends TestCase
     {
         $this->expectException(
             FactorException::class,
-            ValidationException::stringify($input).' must be a factor of '.$dividend
+            stringify($input).' must be a factor of '.$dividend
         );
 
         $min = new Factor($dividend);
@@ -60,7 +60,7 @@ class FactorTest extends TestCase
     {
         $this->expectException(
             ComponentException::class,
-            'Dividend '.ValidationException::stringify($dividend).' must be an integer'
+            'Dividend '.stringify($dividend).' must be an integer'
         );
 
         // It is enough to simply create a new Factor to trigger the dividend

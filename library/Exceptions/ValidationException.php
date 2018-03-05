@@ -53,20 +53,10 @@ class ValidationException extends InvalidArgumentException implements ExceptionI
                     return $value;
                 }
 
-                return ValidationException::stringify($value);
+                return stringify($value);
             },
             $template
         );
-    }
-
-    /**
-     * @param mixed $value
-     *
-     * @return string
-     */
-    public static function stringify($value)
-    {
-        return stringify($value);
     }
 
     public function __toString()
