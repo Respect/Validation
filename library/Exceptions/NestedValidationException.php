@@ -16,6 +16,8 @@ namespace Respect\Validation\Exceptions;
 use IteratorAggregate;
 use RecursiveIteratorIterator;
 use SplObjectStorage;
+use function count;
+use function is_array;
 
 class NestedValidationException extends ValidationException implements IteratorAggregate
 {
@@ -119,18 +121,29 @@ class NestedValidationException extends ValidationException implements IteratorA
         return $childrenExceptions;
     }
 
-    /**
-     * @return array
-     */
-    public function getMessages()
+    public function getMessages(array $templates = []): array
     {
-        $messages = [$this->getMessage()];
-        foreach ($this as $exception) {
-            $messages[] = $exception->getMessage();
+        $messages = [$this->getId() => $this->renderMessage($this, $templates)];
+        foreach ($this->getRelated() as $exception) {
+            $id = $exception->getId();
+            if (!$exception instanceof self) {
+                $messages[$id] = $this->renderMessage(
+                    $exception,
+                    $this->findTemplates($templates, $this->getId())
+                );
+                continue;
+            }
+
+            $messages[$id] = $exception->getMessages($this->findTemplates($templates, $id, $this->getId()));
+            if (count($messages[$id]) > 1) {
+                continue;
+            }
+
+            $messages[$id] = current($messages[$exception->getId()]);
         }
 
         if (count($messages) > 1) {
-            array_shift($messages);
+            unset($messages[$this->getId()]);
         }
 
         return $messages;
@@ -159,7 +172,7 @@ class NestedValidationException extends ValidationException implements IteratorA
     }
 
     /**
-     * @return SplObjectStorage
+     * @return SplObjectStorage|ValidationException[]
      */
     public function getRelated()
     {
@@ -168,25 +181,6 @@ class NestedValidationException extends ValidationException implements IteratorA
         }
 
         return $this->exceptions;
-    }
-
-    /**
-     * @param string $name
-     * @param mixed  $value
-     *
-     * @return self
-     */
-    public function setParam($name, $value)
-    {
-        if ('translator' === $name) {
-            foreach ($this->getRelated() as $exception) {
-                $exception->setParam($name, $value);
-            }
-        }
-
-        parent::setParam($name, $value);
-
-        return $this;
     }
 
     /**
@@ -201,5 +195,26 @@ class NestedValidationException extends ValidationException implements IteratorA
         }
 
         return $this;
+    }
+
+    private function renderMessage(ValidationException $exception, array $templates): string
+    {
+        if (isset($templates[$exception->getId()])) {
+            $exception->updateTemplate($templates[$exception->getId()]);
+        }
+
+        return $exception->getMessage();
+    }
+
+    private function findTemplates(array $templates, ...$ids): array
+    {
+        while (count($ids) > 0) {
+            $id = array_shift($ids);
+            if (isset($templates[$id]) && is_array($templates[$id])) {
+                $templates = $templates[$id];
+            }
+        }
+
+        return $templates;
     }
 }

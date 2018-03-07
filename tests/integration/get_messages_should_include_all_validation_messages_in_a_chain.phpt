@@ -29,8 +29,8 @@ try {
 --EXPECTF--
 Array
 (
-    [0] => username must have a length between 2 and 32
-    [1] => birthdate must be a valid date/time
-    [2] => password must not be empty
-    [3] => Key email must be present
+    [username] => username must have a length between 2 and 32
+    [birthdate] => birthdate must be a valid date/time
+    [password] => password must not be empty
+    [email] => Key email must be present
 )

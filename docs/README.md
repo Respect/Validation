@@ -167,10 +167,8 @@ The printed message is exactly this, as a nested Markdown list:
 
 ## Getting all messages as an array
 
-The Markdown list is fine, but unusable on a HTML form or something more custom.
-For that you can use `getMessages()`.
-
-It will return all messages from the rules that did not pass the validation.
+If you want to get all the messages as an array you can use `getMessages()` for
+that. The `getMessages()` method returns an array with all the messages.
 
 ```php
 try {
@@ -180,16 +178,55 @@ try {
 }
 ```
 
-The code above may display something like:
+The `getMessages()` returns an array in which the keys are the name of the
+validators, or its reference in case you are using [Key](Key.md) or
+[Attribute](Attribute.md) rule:
 
 ```no-highlight
 Array
 (
-    [0] => "really messed up screen#name" must contain only letters (a-z) and digits (0-9)
-    [1] => "really messed up screen#name" must not contain whitespace
-    [2] => "really messed up screen#name" must have a length between 1 and 15
+    [alnum] => "really messed up screen#name" must contain only letters (a-z) and digits (0-9)
+    [noWhitespace] => "really messed up screen#name" must not contain whitespace
+    [length] => "really messed up screen#name" must have a length between 1 and 15
 )
 ```
+
+## Custom messages
+
+Getting messages as an array is fine, but sometimes you need to customize them
+in order to present them to the user. This is possible using the `getMessages()`
+method as well by passing the templates as an argument:
+
+```php
+try {
+    $usernameValidator->assert('really messed up screen#name');
+} catch(NestedValidationException $exception) {
+    print_r(
+        $exception->getMessages([
+            'alnum' => '{{name}} must contain only letters and digits',
+            'noWhitespace' => '{{name}} cannot contain spaces',
+            'length' => '{{name}} must not have more than 15 chars',
+        ])
+    );
+}
+```
+
+For all messages, the `{{name}}` variable is available for templates. If you do
+not define a name it uses the input to replace this placeholder.
+
+The result of the code above will be:
+
+```no-highlight
+Array
+(
+    [alnum] => "really messed up screen#name" must contain only letters and digits
+    [noWhitespace] => "really messed up screen#name" cannot contain spaces
+    [length] => "really messed up screen#name" must not have more than 15 chars
+)
+```
+
+Note that `getMessage()` will only return a message when the specific validation
+in the chain fails.
 
 ## Message localization
 
