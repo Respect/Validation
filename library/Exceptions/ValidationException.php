@@ -25,10 +25,10 @@ class ValidationException extends InvalidArgumentException implements ExceptionI
     const STANDARD = 0;
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => 'Data validation failed for %s',
+            self::STANDARD => '{{name}} must be valid',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => 'Data validation failed for %s',
+            self::STANDARD => '{{name}} must not be valid',
         ],
     ];
 
