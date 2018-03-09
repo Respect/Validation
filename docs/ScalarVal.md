@@ -2,7 +2,7 @@
 
 - `ScalarVal()`
 
-Validates if the input is a scalar value.
+Validates whether the input is a scalar value or not.
 
 ```php
 v::scalarVal()->validate([]); // false
