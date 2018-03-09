@@ -2,7 +2,7 @@
 
 - `StringType()`
 
-Validates a string.
+Validates whether the type of an input is string or not.
 
 ```php
 v::stringType()->validate('hi'); // true

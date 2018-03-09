@@ -12,4 +12,4 @@ try {
 }
 ?>
 --EXPECTF--
-- "Frank Zappa is fantastic" must not be string
+- "Frank Zappa is fantastic" must not be of type string
