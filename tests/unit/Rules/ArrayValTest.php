@@ -22,8 +22,11 @@ use stdClass;
  * @group  rule
  * @covers \Respect\Validation\Rules\ArrayVal
  */
-class ArrayValTest extends RuleTestCase
+final class ArrayValTest extends RuleTestCase
 {
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new ArrayVal();
@@ -36,6 +39,9 @@ class ArrayValTest extends RuleTestCase
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new ArrayVal();
