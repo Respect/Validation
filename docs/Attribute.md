@@ -4,7 +4,7 @@
 - `Attribute(string $name, Validatable $rule)`
 - `Attribute(string $name, Validatable $rule, bool $mandatory)`
 
-Validates an object attribute.
+Validates an object attribute, even private ones.
 
 ```php
 $obj = new stdClass;

@@ -18,7 +18,7 @@ use Respect\Validation\Exceptions\ComponentException;
 
 class KeyNested extends AbstractRelated
 {
-    public function hasReference($input)
+    public function hasReference($input): bool
     {
         try {
             $this->getReferenceValue($input);

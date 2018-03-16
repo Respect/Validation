@@ -20,7 +20,7 @@ class Call extends AbstractRelated
         return call_user_func_array($this->reference, [&$input]);
     }
 
-    public function hasReference($input)
+    public function hasReference($input): bool
     {
         return is_callable($this->reference);
     }

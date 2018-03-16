@@ -23,7 +23,7 @@ abstract class AbstractRelated extends AbstractRule
     public $reference = '';
     public $validator;
 
-    abstract public function hasReference($input);
+    abstract public function hasReference($input): bool;
 
     abstract public function getReferenceValue($input);
 
@@ -50,13 +50,6 @@ abstract class AbstractRelated extends AbstractRule
         }
 
         return $this;
-    }
-
-    private function decision($type, $hasReference, $input)
-    {
-        return (!$this->mandatory && !$hasReference)
-            || (is_null($this->validator)
-                || $this->validator->$type($this->getReferenceValue($input)));
     }
 
     public function assert($input): void
@@ -93,5 +86,12 @@ abstract class AbstractRelated extends AbstractRule
         }
 
         return $this->decision('validate', $hasReference, $input);
+    }
+
+    private function decision(string $type, bool $hasReference, $input)
+    {
+        return (!$this->mandatory && !$hasReference)
+            || (is_null($this->validator)
+                || $this->validator->$type($this->getReferenceValue($input)));
     }
 }

@@ -31,7 +31,7 @@ class Key extends AbstractRelated
         return $input[$this->reference];
     }
 
-    public function hasReference($input)
+    public function hasReference($input): bool
     {
         return is_array($input) && array_key_exists($this->reference, $input);
     }
