@@ -19,8 +19,11 @@ use Respect\Validation\Test\RuleTestCase;
  * @group  rule
  * @covers \Respect\Validation\Rules\ArrayType
  */
-class ArrayTypeTest extends RuleTestCase
+final class ArrayTypeTest extends RuleTestCase
 {
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new ArrayType();
@@ -31,6 +34,9 @@ class ArrayTypeTest extends RuleTestCase
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new ArrayType();
