@@ -22,7 +22,6 @@ use function array_map;
 use function array_merge;
 use function array_unique;
 use function class_exists;
-use function lcfirst;
 use function Respect\Stringifier\stringify;
 
 /**
@@ -138,19 +137,18 @@ final class Factory
     {
         $reflection = new ReflectionObject($validatable);
         $ruleName = $reflection->getShortName();
+        $name = $validatable->getName() ?: stringify($input);
+        $params = ['input' => $input] + $extraParams + $this->extractPropertiesValues($validatable, $reflection);
         foreach ($this->exceptionsNamespaces as $namespace) {
             $exceptionName = sprintf('%s\\%sException', $namespace, $ruleName);
             if (!class_exists($exceptionName)) {
                 continue;
             }
 
-            $name = $validatable->getName() ?: stringify($input);
-            $params = ['input' => $input] + $extraParams + $this->extractPropertiesValues($validatable, $reflection);
-
             return $this->createValidationException($exceptionName, $name, $params);
         }
 
-        throw new ComponentException(sprintf('Cannot find exception for "%s" rule', lcfirst($ruleName)));
+        return $this->createValidationException(ValidationException::class, $name, $params);
     }
 
     /**
@@ -167,7 +165,7 @@ final class Factory
     private function createReflectionClass(string $name, string $parentName): ReflectionClass
     {
         $reflection = new ReflectionClass($name);
-        if (!$reflection->isSubclassOf($parentName)) {
+        if (!$reflection->isSubclassOf($parentName) && $parentName !== $name) {
             throw new InvalidClassException(sprintf('"%s" must be an instance of "%s"', $name, $parentName));
         }
 

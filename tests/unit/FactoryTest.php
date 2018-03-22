@@ -16,6 +16,7 @@ namespace Respect\Validation;
 use PHPUnit\Framework\TestCase;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\Exceptions\StubException;
 use Respect\Validation\Test\Rules\AbstractClass;
 use Respect\Validation\Test\Rules\Invalid;
@@ -132,14 +133,13 @@ final class FactoryTest extends TestCase
     /**
      * @test
      */
-    public function shouldThrowAnExceptionWhenExceptionIsNotFound(): void
+    public function shouldCreateValidationExceptionWhenExceptionIsNotFound(): void
     {
         $factory = new Factory([], []);
+        $input = 'input';
+        $rule = new Stub();
 
-        $this->expectException(ComponentException::class);
-        $this->expectExceptionMessage('Cannot find exception for "stub" rule');
-
-        $factory->exception(new Stub(), 'foo');
+        self::assertInstanceOf(ValidationException::class, $factory->exception($rule, $input));
     }
 
     /**
