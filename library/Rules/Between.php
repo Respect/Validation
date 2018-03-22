@@ -15,7 +15,6 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Helpers\ComparisonHelper;
-use function Respect\Stringifier\stringify;
 
 /**
  * Validates whether the input is between two other values.
@@ -23,24 +22,9 @@ use function Respect\Stringifier\stringify;
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Between extends AbstractRule
+final class Between extends AbstractEnvelope
 {
     use ComparisonHelper;
-
-    /**
-     * @var mixed
-     */
-    private $minimum;
-
-    /**
-     * @var mixed
-     */
-    private $maximum;
-
-    /**
-     * @var bool
-     */
-    private $inclusive;
 
     /**
      * Initializes the rule.
@@ -54,24 +38,19 @@ final class Between extends AbstractRule
     public function __construct($minimum, $maximum, bool $inclusive = true)
     {
         if ($this->toComparable($minimum) >= $this->toComparable($maximum)) {
-            throw new ComponentException(stringify($minimum).' cannot be less than or equals to '.stringify($maximum));
+            throw new ComponentException('Minimum cannot be less than or equals to maximum');
         }
 
-        $this->minimum = $minimum;
-        $this->maximum = $maximum;
-        $this->inclusive = $inclusive;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function validate($input): bool
-    {
-        $rule = new AllOf(
-            new Min($this->minimum, $this->inclusive),
-            new Max($this->maximum, $this->inclusive)
+        parent::__construct(
+            new AllOf(
+                new Min($minimum, $inclusive),
+                new Max($maximum, $inclusive)
+            ),
+            [
+                'minimum' => $minimum,
+                'maximum' => $maximum,
+                'inclusive' => $inclusive,
+            ]
         );
-
-        return $rule->validate($input);
     }
 }

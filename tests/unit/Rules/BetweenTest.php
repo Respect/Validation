@@ -17,9 +17,9 @@ use DateTime;
 use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Between
- * @covers \Respect\Validation\Exceptions\BetweenException
  */
 final class BetweenTest extends RuleTestCase
 {
@@ -64,7 +64,7 @@ final class BetweenTest extends RuleTestCase
      * @test
      *
      * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage 10 cannot be less than or equals to 5
+     * @expectedExceptionMessage Minimum cannot be less than or equals to maximum
      */
     public function minimumValueShouldNotBeGreaterThanMaximumValue(): void
     {
@@ -75,7 +75,7 @@ final class BetweenTest extends RuleTestCase
      * @test
      *
      * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage 5 cannot be less than or equals to 5
+     * @expectedExceptionMessage Minimum cannot be less than or equals to maximum
      */
     public function minimumValueShouldNotBeEqualsToMaximumValue(): void
     {
