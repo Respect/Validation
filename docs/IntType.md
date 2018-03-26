@@ -2,7 +2,7 @@
 
 - `IntType()`
 
-Validates whether the type of a value is integer.
+Validates whether the type of the input is [integer](http://php.net/types.integer).
 
 ```php
 v::intType()->validate(42); // true

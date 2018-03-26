@@ -12,4 +12,4 @@ try {
 }
 ?>
 --EXPECTF--
-42 must not be of the type integer
+42 must not be of type integer
