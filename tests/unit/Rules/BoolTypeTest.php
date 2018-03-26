@@ -13,45 +13,49 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\BoolType
- * @covers \Respect\Validation\Exceptions\BoolTypeException
+ *
+ * @author Devin Torres <devin@devintorres.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class BoolTypeTest extends TestCase
+final class BoolTypeTest extends RuleTestCase
 {
-    public function testBooleanValuesONLYShouldReturnTrue(): void
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
-        $validator = new BoolType();
-        self::assertTrue($validator->__invoke(true));
-        self::assertTrue($validator->__invoke(false));
-        $validator->assert(true);
-        $validator->assert(false);
-        $validator->check(true);
-        $validator->check(false);
+        $rule = new BoolType();
+
+        return [
+            [$rule, true],
+            [$rule, false],
+        ];
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\BoolTypeException
+     * {@inheritdoc}
      */
-    public function testInvalidBooleanShouldRaiseException(): void
+    public function providerForInvalidInput(): array
     {
-        $validator = new BoolType();
-        $validator->check('foo');
-    }
+        $rule = new BoolType();
 
-    public function testInvalidBooleanValuesShouldReturnFalse(): void
-    {
-        $validator = new BoolType();
-        self::assertFalse($validator->__invoke(''));
-        self::assertFalse($validator->__invoke('foo'));
-        self::assertFalse($validator->__invoke(123123));
-        self::assertFalse($validator->__invoke(new \stdClass()));
-        self::assertFalse($validator->__invoke([]));
-        self::assertFalse($validator->__invoke(1));
-        self::assertFalse($validator->__invoke(0));
-        self::assertFalse($validator->__invoke(null));
+        return [
+            [$rule, ''],
+            [$rule, 'foo'],
+            [$rule, 123123],
+            [$rule, new stdClass()],
+            [$rule, []],
+            [$rule, 1],
+            [$rule, 0],
+            [$rule, null],
+        ];
     }
 }

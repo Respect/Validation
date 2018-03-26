@@ -2,7 +2,7 @@
 
 - `BoolType()`
 
-Validates if the input is a boolean value:
+Validates whether the type of the input is [boolean](http://php.net/types.boolean).
 
 ```php
 v::boolType()->validate(true); // true
