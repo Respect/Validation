@@ -13,8 +13,19 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class ObjectType extends AbstractRule
+use function is_object;
+
+/**
+ * Validates whether the input is an object.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class ObjectType extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         return is_object($input);
