@@ -2,7 +2,7 @@
 
 - `CallableType()`
 
-Validates if the input is a callable value.
+Validates whether the pseudo-type of the input is [callable](http://php.net/types.callable).
 
 ```php
 v::callableType()->validate(function () {}); // true

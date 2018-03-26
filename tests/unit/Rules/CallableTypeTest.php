@@ -13,66 +13,49 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
+use stdClass;
+use const INF;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\CallableType
- * @covers \Respect\Validation\Exceptions\CallableTypeException
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class CallableTypeTest extends TestCase
+final class CallableTypeTest extends RuleTestCase
 {
-    protected $rule;
-
-    protected function setUp(): void
-    {
-        $this->rule = new CallableType();
-    }
-
     /**
-     * @dataProvider providerForCallable
+     * {@inheritdoc}
      */
-    public function testShouldValidateCallableTypeNumbers($input): void
+    public function providerForValidInput(): array
     {
-        self::assertTrue($this->rule->validate($input));
-    }
+        $rule = new CallableType();
 
-    /**
-     * @dataProvider providerForNonCallable
-     */
-    public function testShouldNotValidateNonCallableTypeNumbers($input): void
-    {
-        self::assertFalse($this->rule->validate($input));
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\CallableTypeException
-     * @expectedExceptionMessage "testShouldThrowCallableTypeExceptionWhenChecking" must be a callable
-     */
-    public function testShouldThrowCallableTypeExceptionWhenChecking(): void
-    {
-        $this->rule->check(__FUNCTION__);
-    }
-
-    public function providerForCallable()
-    {
         return [
-            [function (): void {
+            [$rule, function (): void {
             }],
-            ['trim'],
-            [__METHOD__],
-            [[$this, __FUNCTION__]],
+            [$rule, 'trim'],
+            [$rule, __METHOD__],
+            [$rule, [$this, __FUNCTION__]],
         ];
     }
 
-    public function providerForNonCallable()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
+        $rule = new CallableType();
+
         return [
-            [' '],
-            [INF],
-            [[]],
-            [new \stdClass()],
-            [null],
+            [$rule, ' '],
+            [$rule, INF],
+            [$rule, []],
+            [$rule, new stdClass()],
+            [$rule, null],
         ];
     }
 }
