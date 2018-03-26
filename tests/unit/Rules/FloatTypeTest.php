@@ -16,11 +16,18 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\FloatType
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Reginaldo Junior <76regi@gmail.com>
  */
-class FloatTypeTest extends RuleTestCase
+final class FloatTypeTest extends RuleTestCase
 {
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new FloatType();
@@ -36,6 +43,9 @@ class FloatTypeTest extends RuleTestCase
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new FloatType();

@@ -2,7 +2,7 @@
 
 - `FloatType()`
 
-Validates whether the type of a value is float.
+Validates whether the type of the input is [float](http://php.net/types.float).
 
 ```php
 v::floatType()->validate(1.5); // true
