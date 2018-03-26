@@ -16,6 +16,12 @@ return PhpCsFixer\Config::create()
         'array_syntax' => ['syntax' => 'short'],
         'no_short_echo_tag' => true,
     ])
+    ->setCacheFile(
+        sprintf(
+            '%s/.php_cs.cache',
+            getenv('TRAVIS') ? getenv('HOME').'/.php-cs-fixer' : __DIR__
+        )
+    )
     ->setFinder(
         PhpCsFixer\Finder::create()
             ->in(['library', 'tests'])
