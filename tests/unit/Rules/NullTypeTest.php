@@ -13,47 +13,45 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\NullType
- * @covers \Respect\Validation\Exceptions\NullTypeException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
  */
-class NullTypeTest extends TestCase
+final class NullTypeTest extends RuleTestCase
 {
-    protected $object;
-
-    protected function setUp(): void
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
-        $this->object = new NullType();
-    }
+        $rule = new NullType();
 
-    public function testNullValue(): void
-    {
-        $this->object->assert(null);
-        self::assertTrue($this->object->__invoke(null));
-        $this->object->check(null);
+        return [
+            [$rule, null],
+        ];
     }
 
     /**
-     * @dataProvider providerForNotNull
-     * @expectedException \Respect\Validation\Exceptions\NullTypeException
+     * {@inheritdoc}
      */
-    public function testNotNull($input): void
+    public function providerForInvalidInput(): array
     {
-        self::assertFalse($this->object->__invoke($input));
-        $this->object->assert($input);
-    }
+        $rule = new NullType();
 
-    public function providerForNotNull()
-    {
         return [
-            [''],
-            [0],
-            ['w poiur'],
-            [' '],
-            ['Foo'],
+            [$rule, ''],
+            [$rule, false],
+            [$rule, []],
+            [$rule, 0],
+            [$rule, 'w poiur'],
         ];
     }
 }
