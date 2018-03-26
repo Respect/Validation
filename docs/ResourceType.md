@@ -2,7 +2,7 @@
 
 - `ResourceType()`
 
-Validates if the input is a resource.
+Validates whether the input is a [resource](http://php.net/types.resource).
 
 ```php
 v::resourceType()->validate(fopen('/path/to/file.txt', 'w')); // true

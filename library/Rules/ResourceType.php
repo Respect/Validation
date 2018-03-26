@@ -13,10 +13,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function is_resource;
+
 /**
+ * Validates whether the input is a resource.
+ *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ResourceType extends AbstractRule
+final class ResourceType extends AbstractRule
 {
     /**
      * {@inheritdoc}

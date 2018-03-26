@@ -14,12 +14,14 @@ declare(strict_types=1);
 namespace Respect\Validation\Exceptions;
 
 /**
+ * Exception class for ResourceType.
+ *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ResourceTypeException extends ValidationException
+final class ResourceTypeException extends ValidationException
 {
     /**
-     * @var array
+     * {@inheritdoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

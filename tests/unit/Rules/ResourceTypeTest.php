@@ -13,66 +13,51 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
+use stdClass;
+use function stream_context_create;
+use function tmpfile;
+use function xml_parser_create;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\ResourceType
- * @covers \Respect\Validation\Exceptions\ResourceTypeException
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ResourceTypeTest extends TestCase
+final class ResourceTypeTest extends RuleTestCase
 {
-    protected $rule;
-
-    protected function setUp(): void
-    {
-        $this->rule = new ResourceType();
-    }
-
     /**
-     * @dataProvider providerForResource
+     * {@inheritdoc}
      */
-    public function testShouldValidateResourceNumbers($input): void
+    public function providerForValidInput(): array
     {
-        self::assertTrue($this->rule->validate($input));
-    }
+        $rule = new ResourceType();
 
-    /**
-     * @dataProvider providerForNonResource
-     */
-    public function testShouldNotValidateNonResourceNumbers($input): void
-    {
-        self::assertFalse($this->rule->validate($input));
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\ResourceTypeException
-     * @expectedExceptionMessage "Something" must be a resource
-     */
-    public function testShouldThrowResourceExceptionWhenChecking(): void
-    {
-        $this->rule->check('Something');
-    }
-
-    public function providerForResource()
-    {
         return [
-            [stream_context_create()],
-            [tmpfile()],
-            [xml_parser_create()],
+            [$rule, stream_context_create()],
+            [$rule, tmpfile()],
+            [$rule, xml_parser_create()],
         ];
     }
 
-    public function providerForNonResource()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
+        $rule = new ResourceType();
+
         return [
-            ['String'],
-            [123],
-            [[]],
-            [function (): void {
+            [$rule, 'String'],
+            [$rule, 123],
+            [$rule, []],
+            [$rule, function (): void {
             }],
-            [new \stdClass()],
-            [null],
+            [$rule, new stdClass()],
+            [$rule, null],
         ];
     }
 }
