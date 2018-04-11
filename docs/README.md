@@ -53,6 +53,34 @@ Note that we used `v::stringType()` and `v::dateTime()` in the beginning of the 
 Although is not mandatory, it is a good practice to use the type of the
 validated object as the first node in the chain.
 
+## Validating array keys and values
+
+Validating array keys into another array is also possible using [Key](Key.md).
+
+If we got the array below:
+
+```php
+$data = [
+    'parentKey' => [
+        'field1' => 'value1',
+        'field2' => 'value2'
+        'field3' => true,
+    ]
+];
+```
+
+Using the next combination of rules, we can validate child keys.
+
+```php
+v::key(
+    'parentKey',
+    v::key('field1', v::stringType())
+        ->key('field2', v::stringType())
+        ->key('field3', v::boolType())
+    )
+    ->assert($data); // You can also use check() or validate()
+```
+
 ## Input optional
 
 On oldest versions of Respect\Validation all validators treat input as optional
