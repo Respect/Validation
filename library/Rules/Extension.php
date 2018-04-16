@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use SplFileInfo;
@@ -36,16 +38,16 @@ class Extension extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input)
+    public function validate($input): bool
     {
         if ($input instanceof SplFileInfo) {
-            return ($input->getExtension() == $this->extension);
+            return $input->getExtension() == $this->extension;
         }
 
         if (!is_string($input)) {
             return false;
         }
 
-        return (pathinfo($input, PATHINFO_EXTENSION) == $this->extension);
+        return pathinfo($input, PATHINFO_EXTENSION) == $this->extension;
     }
 }

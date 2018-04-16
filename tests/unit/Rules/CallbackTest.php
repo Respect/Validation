@@ -9,18 +9,23 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Callback
- * @covers Respect\Validation\Exceptions\CallbackException
+ * @covers \Respect\Validation\Rules\Callback
+ * @covers \Respect\Validation\Exceptions\CallbackException
  */
-class CallbackTest extends \PHPUnit_Framework_TestCase
+class CallbackTest extends TestCase
 {
-    private $truthy, $falsy;
+    private $truthy;
+    private $falsy;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->truthy = new Callback(function () {
             return true;
@@ -35,52 +40,61 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
         return true;
     }
 
-    public function testShouldBeAbleToDefineLatestArgumentsOnConstructor()
+    public function testShouldBeAbleToDefineLatestArgumentsOnConstructor(): void
     {
         $rule = new Callback('is_a', 'stdClass');
 
-        $this->assertTrue($rule->validate(new \stdClass()));
+        self::assertTrue($rule->validate(new \stdClass()));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\CallbackException
+     * @expectedException \Respect\Validation\Exceptions\CallbackException
      */
-    public function testCallbackValidatorShouldReturnFalseForEmptyString()
+    public function testCallbackValidatorShouldReturnFalseForEmptyString(): void
     {
         $this->falsy->assert('');
     }
 
-    public function testCallbackValidatorShouldReturnTrueIfCallbackReturnsTrue()
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testCallbackValidatorShouldReturnTrueIfCallbackReturnsTrue(): void
     {
-        $this->assertTrue($this->truthy->assert('wpoiur'));
+        $this->truthy->assert('wpoiur');
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\CallbackException
+     * @expectedException \Respect\Validation\Exceptions\CallbackException
      */
-    public function testCallbackValidatorShouldReturnFalseIfCallbackReturnsFalse()
+    public function testCallbackValidatorShouldReturnFalseIfCallbackReturnsFalse(): void
     {
-        $this->assertTrue($this->falsy->assert('w poiur'));
+        self::assertTrue($this->falsy->assert('w poiur'));
     }
 
-    public function testCallbackValidatorShouldAcceptArrayCallbackDefinitions()
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testCallbackValidatorShouldAcceptArrayCallbackDefinitions(): void
     {
         $v = new Callback([$this, 'thisIsASampleCallbackUsedInsideThisTest']);
-        $this->assertTrue($v->assert('test'));
-    }
-
-    public function testCallbackValidatorShouldAcceptFunctionNamesAsString()
-    {
-        $v = new Callback('is_string');
-        $this->assertTrue($v->assert('test'));
+        $v->assert('test');
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @doesNotPerformAssertions
      */
-    public function testInvalidCallbacksShouldRaiseComponentExceptionUponInstantiation()
+    public function testCallbackValidatorShouldAcceptFunctionNamesAsString(): void
+    {
+        $v = new Callback('is_string');
+        $v->assert('test');
+    }
+
+    /**
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
+     */
+    public function testInvalidCallbacksShouldRaiseComponentExceptionUponInstantiation(): void
     {
         $v = new Callback(new \stdClass());
-        $this->assertTrue($v->assert('w poiur'));
+        $v->assert('w poiur');
     }
 }

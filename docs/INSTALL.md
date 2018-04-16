@@ -7,7 +7,7 @@ you can install it using [Composer](http://getcomposer.org).
 composer require respect/validation
 ```
 
-[PHP](https://php.net) 5.4+ or [HHVM](http://hhvm.com) 3.3+ are required.
+Works on PHP 7.0 or above.
 
 ***
 See also:

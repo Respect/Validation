@@ -9,11 +9,13 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Cnpj extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         if (!is_scalar($input)) {
             return false;
@@ -27,7 +29,7 @@ class Cnpj extends AbstractRule
             return false;
         }
 
-        if (mb_strlen($cleanInput) != 14) {
+        if (14 != mb_strlen($cleanInput)) {
             return false;
         }
 

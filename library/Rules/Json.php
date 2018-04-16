@@ -9,11 +9,13 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Json extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         if (!is_string($input) || '' === $input) {
             return false;
@@ -21,6 +23,6 @@ class Json extends AbstractRule
 
         json_decode($input);
 
-        return (json_last_error() === JSON_ERROR_NONE);
+        return JSON_ERROR_NONE === json_last_error();
     }
 }

@@ -1,6 +1,6 @@
 # Infinite
 
-- `v::infinite()`
+- `Infinite()`
 
 Validates if the input is an infinite number.
 
@@ -8,10 +8,16 @@ Validates if the input is an infinite number.
 v::infinite()->validate(INF); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 
-  * [Digit](Digit.md)
-  * [Finite](Finite.md)
-  * [IntVal](IntVal.md)
-  * [Numeric](Numeric.md)
+- [Digit](Digit.md)
+- [Finite](Finite.md)
+- [IntVal](IntVal.md)
+- [NumericVal](NumericVal.md)

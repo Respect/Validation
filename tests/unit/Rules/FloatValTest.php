@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\FloatVal
- * @covers Respect\Validation\Exceptions\FloatValException
+ * @covers \Respect\Validation\Rules\FloatVal
+ * @covers \Respect\Validation\Exceptions\FloatValException
  */
-class FloatValTest extends \PHPUnit_Framework_TestCase
+class FloatValTest extends TestCase
 {
     protected $floatValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->floatValidator = new FloatVal();
     }
@@ -28,21 +32,21 @@ class FloatValTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForFloat
      */
-    public function testFloatNumbersShouldPass($input)
+    public function testFloatNumbersShouldPass($input): void
     {
-        $this->assertTrue($this->floatValidator->assert($input));
-        $this->assertTrue($this->floatValidator->__invoke($input));
-        $this->assertTrue($this->floatValidator->check($input));
+        $this->floatValidator->assert($input);
+        self::assertTrue($this->floatValidator->__invoke($input));
+        $this->floatValidator->check($input);
     }
 
     /**
      * @dataProvider providerForNotFloat
-     * @expectedException Respect\Validation\Exceptions\FloatValException
+     * @expectedException \Respect\Validation\Exceptions\FloatValException
      */
-    public function testNotFloatNumbersShouldFail($input)
+    public function testNotFloatNumbersShouldFail($input): void
     {
-        $this->assertFalse($this->floatValidator->__invoke($input));
-        $this->assertFalse($this->floatValidator->assert($input));
+        self::assertFalse($this->floatValidator->__invoke($input));
+        $this->floatValidator->assert($input);
     }
 
     public function providerForFloat()

@@ -9,40 +9,44 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Punct
- * @covers Respect\Validation\Exceptions\PunctException
+ * @covers \Respect\Validation\Rules\Punct
+ * @covers \Respect\Validation\Exceptions\PunctException
  */
-class PunctTest extends \PHPUnit_Framework_TestCase
+class PunctTest extends TestCase
 {
     /**
      * @dataProvider providerForValidPunct
      */
-    public function testValidDataWithPunctShouldReturnTrue($validPunct, $additional = '')
+    public function testValidDataWithPunctShouldReturnTrue($validPunct, $additional = ''): void
     {
         $validator = new Punct($additional);
-        $this->assertTrue($validator->validate($validPunct));
+        self::assertTrue($validator->validate($validPunct));
     }
 
     /**
      * @dataProvider providerForInvalidPunct
-     * @expectedException Respect\Validation\Exceptions\PunctException
+     * @expectedException \Respect\Validation\Exceptions\PunctException
      */
-    public function testInvalidPunctShouldFailAndThrowPunctException($invalidPunct, $additional = '')
+    public function testInvalidPunctShouldFailAndThrowPunctException($invalidPunct, $additional = ''): void
     {
         $validator = new Punct($additional);
-        $this->assertFalse($validator->validate($invalidPunct));
-        $this->assertFalse($validator->assert($invalidPunct));
+        self::assertFalse($validator->validate($invalidPunct));
+        $validator->assert($invalidPunct);
     }
 
     /**
      * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
     {
         $validator = new Punct($additional);
     }
@@ -50,10 +54,10 @@ class PunctTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Punct($additional);
-        $this->assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($query));
     }
 
     public function providerAdditionalChars()

@@ -1,6 +1,6 @@
 # Finite
 
-- `v::finite()`
+- `Finite()`
 
 Validates if the input is a finite number.
 
@@ -9,10 +9,16 @@ v::finite()->validate('10'); // true
 v::finite()->validate(10); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 
-  * [Digit](Digit.md)
-  * [Infinite](Infinite.md)
-  * [IntVal](IntVal.md)
-  * [Numeric](Numeric.md)
+- [Digit](Digit.md)
+- [Infinite](Infinite.md)
+- [IntVal](IntVal.md)
+- [NumericVal](NumericVal.md)

@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Finite
- * @covers Respect\Validation\Exceptions\FiniteException
+ * @covers \Respect\Validation\Rules\Finite
+ * @covers \Respect\Validation\Exceptions\FiniteException
  */
-class FiniteTest extends \PHPUnit_Framework_TestCase
+class FiniteTest extends TestCase
 {
     protected $rule;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->rule = new Finite();
     }
@@ -28,24 +32,24 @@ class FiniteTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForFinite
      */
-    public function testShouldValidateFiniteNumbers($input)
+    public function testShouldValidateFiniteNumbers($input): void
     {
-        $this->assertTrue($this->rule->validate($input));
+        self::assertTrue($this->rule->validate($input));
     }
 
     /**
      * @dataProvider providerForNonFinite
      */
-    public function testShouldNotValidateNonFiniteNumbers($input)
+    public function testShouldNotValidateNonFiniteNumbers($input): void
     {
-        $this->assertFalse($this->rule->validate($input));
+        self::assertFalse($this->rule->validate($input));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\FiniteException
-     * @expectedExceptionMessage INF must be a finite number
+     * @expectedException \Respect\Validation\Exceptions\FiniteException
+     * @expectedExceptionMessage `INF` must be a finite number
      */
-    public function testShouldThrowFiniteExceptionWhenChecking()
+    public function testShouldThrowFiniteExceptionWhenChecking(): void
     {
         $this->rule->check(INF);
     }

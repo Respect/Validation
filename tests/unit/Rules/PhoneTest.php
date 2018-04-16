@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Phone
- * @covers Respect\Validation\Exceptions\PhoneException
+ * @covers \Respect\Validation\Rules\Phone
+ * @covers \Respect\Validation\Exceptions\PhoneException
  */
-class PhoneTest extends \PHPUnit_Framework_TestCase
+class PhoneTest extends TestCase
 {
     protected $phoneValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->phoneValidator = new Phone();
     }
@@ -28,21 +32,21 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForPhone
      */
-    public function testValidPhoneShouldReturnTrue($input)
+    public function testValidPhoneShouldReturnTrue($input): void
     {
-        $this->assertTrue($this->phoneValidator->__invoke($input));
-        $this->assertTrue($this->phoneValidator->assert($input));
-        $this->assertTrue($this->phoneValidator->check($input));
+        self::assertTrue($this->phoneValidator->__invoke($input));
+        $this->phoneValidator->assert($input);
+        $this->phoneValidator->check($input);
     }
 
     /**
      * @dataProvider providerForNotPhone
-     * @expectedException Respect\Validation\Exceptions\PhoneException
+     * @expectedException \Respect\Validation\Exceptions\PhoneException
      */
-    public function testInvalidPhoneShouldThrowPhoneException($input)
+    public function testInvalidPhoneShouldThrowPhoneException($input): void
     {
-        $this->assertFalse($this->phoneValidator->__invoke($input));
-        $this->assertFalse($this->phoneValidator->assert($input));
+        self::assertFalse($this->phoneValidator->__invoke($input));
+        $this->phoneValidator->assert($input);
     }
 
     public function providerForPhone()

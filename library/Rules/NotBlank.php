@@ -9,16 +9,18 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use stdClass;
 
 class NotBlank extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         if (is_numeric($input)) {
-            return $input != 0;
+            return 0 != $input;
         }
 
         if (is_string($input)) {

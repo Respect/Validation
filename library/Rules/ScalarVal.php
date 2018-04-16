@@ -9,17 +9,23 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+use function is_scalar;
+
 /**
+ * Validates whether the input is a scalar value or not.
+ *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ScalarVal extends AbstractRule
+final class ScalarVal extends AbstractRule
 {
     /**
      * {@inheritdoc}
      */
-    public function validate($input)
+    public function validate($input): bool
     {
         return is_scalar($input);
     }

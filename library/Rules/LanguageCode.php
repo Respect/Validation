@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
@@ -22,7 +24,7 @@ class LanguageCode extends AbstractRule
     const ALPHA3 = 'alpha-3';
 
     /**
-     * @link http://www.loc.gov/standards/iso639-2/ISO-639-2_utf-8.txt
+     * @see http://www.loc.gov/standards/iso639-2/ISO-639-2_utf-8.txt
      *
      * @var array
      */
@@ -549,14 +551,14 @@ class LanguageCode extends AbstractRule
         return $languageList;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         if (!is_string($input) || '' === $input) {
             return false;
         }
 
         return in_array(
-            strtoupper($input),
+            mb_strtoupper($input),
             $this->getLanguageCodeList($this->index),
             true
         );

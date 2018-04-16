@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Regex extends AbstractRule
@@ -20,12 +22,12 @@ class Regex extends AbstractRule
         $this->regex = $regex;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         if (!is_scalar($input)) {
             return false;
         }
 
-        return (bool) preg_match($this->regex, $input);
+        return (bool) preg_match($this->regex, (string) $input);
     }
 }

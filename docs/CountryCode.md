@@ -1,6 +1,6 @@
 # CountryCode
 
-- `v::countryCode()`
+- `CountryCode()`
 
 Validates an ISO country code like US or BR.
 
@@ -8,7 +8,13 @@ Validates an ISO country code like US or BR.
 v::countryCode()->validate('BR'); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.5.0 | Created
+
 ***
 See also:
 
-  * [Tld](Tld.md)
+- [Tld](Tld.md)

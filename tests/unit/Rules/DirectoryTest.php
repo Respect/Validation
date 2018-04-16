@@ -9,45 +9,49 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Directory
- * @covers Respect\Validation\Exceptions\DirectoryException
+ * @covers \Respect\Validation\Rules\Directory
+ * @covers \Respect\Validation\Exceptions\DirectoryException
  */
-class DirectoryTest extends \PHPUnit_Framework_TestCase
+class DirectoryTest extends TestCase
 {
     /**
      * @dataProvider providerForValidDirectory
      */
-    public function testValidDirectoryShouldReturnTrue($input)
+    public function testValidDirectoryShouldReturnTrue($input): void
     {
         $rule = new Directory();
-        $this->assertTrue($rule->__invoke($input));
-        $this->assertTrue($rule->assert($input));
-        $this->assertTrue($rule->check($input));
+        self::assertTrue($rule->__invoke($input));
+        $rule->assert($input);
+        $rule->check($input);
     }
 
     /**
      * @dataProvider providerForInvalidDirectory
-     * @expectedException Respect\Validation\Exceptions\DirectoryException
+     * @expectedException \Respect\Validation\Exceptions\DirectoryException
      */
-    public function testInvalidDirectoryShouldThrowException($input)
+    public function testInvalidDirectoryShouldThrowException($input): void
     {
         $rule = new Directory();
-        $this->assertFalse($rule->__invoke($input));
-        $this->assertFalse($rule->assert($input));
-        $this->assertFalse($rule->check($input));
+        self::assertFalse($rule->__invoke($input));
+        $rule->assert($input);
+        $rule->check($input);
     }
 
     /**
      * @dataProvider providerForDirectoryObjects
      */
-    public function testDirectoryWithObjects($object, $valid)
+    public function testDirectoryWithObjects($object, $valid): void
     {
         $rule = new Directory();
-        $this->assertEquals($valid, $rule->validate($object));
+        self::assertEquals($valid, $rule->validate($object));
     }
 
     public function providerForDirectoryObjects()

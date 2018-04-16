@@ -7,12 +7,12 @@ use Respect\Validation\Exceptions\PhoneException;
 use Respect\Validation\Validator as v;
 
 $work = new stdClass();
-$work->number = "+61.(03) 4546 5498";
+$work->number = '+61.(03) 4546 5498';
 $work->countryCode = 61;
 $work->primary = true;
 
 $personal = new stdClass();
-$personal->number = "+61.0406 464 890";
+$personal->number = '+61.0406 464 890';
 $personal->country = 61;
 $personal->primary = false;
 
@@ -31,7 +31,6 @@ try {
         ->keyNested('phoneNumbers.work.number', v::phone(), false)
         ->keyNested('phoneNumbers.work.primary', v::boolType(), false)
         ->check($validateThis);
-
 } catch (PhoneException $exception) {
     echo $exception->getMainMessage();
 }

@@ -9,56 +9,60 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Length
- * @covers Respect\Validation\Exceptions\LengthException
+ * @covers \Respect\Validation\Rules\Length
+ * @covers \Respect\Validation\Exceptions\LengthException
  */
-class LengthTest extends \PHPUnit_Framework_TestCase
+class LengthTest extends TestCase
 {
     /**
      * @dataProvider providerForValidLengthInclusive
      */
-    public function testLengthInsideBoundsForInclusiveCasesReturnTrue($string, $min, $max)
+    public function testLengthInsideBoundsForInclusiveCasesReturnTrue($string, $min, $max): void
     {
         $validator = new Length($min, $max, true);
-        $this->assertTrue($validator->validate($string));
+        self::assertTrue($validator->validate($string));
     }
 
     /**
      * @dataProvider providerForValidLengthNonInclusive
      */
-    public function testLengthInsideBoundsForNonInclusiveCasesShouldReturnTrue($string, $min, $max)
+    public function testLengthInsideBoundsForNonInclusiveCasesShouldReturnTrue($string, $min, $max): void
     {
         $validator = new Length($min, $max, false);
-        $this->assertTrue($validator->validate($string));
+        self::assertTrue($validator->validate($string));
     }
 
     /**
      * @dataProvider providerForInvalidLengthInclusive
      */
-    public function testLengthOutsideBoundsForInclusiveCasesReturnFalse($string, $min, $max)
+    public function testLengthOutsideBoundsForInclusiveCasesReturnFalse($string, $min, $max): void
     {
         $validator = new Length($min, $max, true);
-        $this->assertfalse($validator->validate($string));
+        self::assertfalse($validator->validate($string));
     }
 
     /**
      * @dataProvider providerForInvalidLengthNonInclusive
      */
-    public function testLengthOutsideBoundsForNonInclusiveCasesReturnFalse($string, $min, $max)
+    public function testLengthOutsideBoundsForNonInclusiveCasesReturnFalse($string, $min, $max): void
     {
         $validator = new Length($min, $max, false);
-        $this->assertfalse($validator->validate($string));
+        self::assertfalse($validator->validate($string));
     }
 
     /**
      * @dataProvider providerForComponentException
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testComponentExceptionsForInvalidParameters($min, $max)
+    public function testComponentExceptionsForInvalidParameters($min, $max): void
     {
         $buggyValidator = new Length($min, $max);
     }

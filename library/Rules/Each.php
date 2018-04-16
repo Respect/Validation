@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
@@ -25,7 +27,7 @@ class Each extends IterableType
         $this->keyValidator = $keyValidator;
     }
 
-    public function assert($input)
+    public function assert($input): void
     {
         $exceptions = [];
 
@@ -54,11 +56,9 @@ class Each extends IterableType
         if (!empty($exceptions)) {
             throw $this->reportError($input)->setRelated($exceptions);
         }
-
-        return true;
     }
 
-    public function check($input)
+    public function check($input): void
     {
         if (!parent::validate($input)) {
             throw $this->reportError($input);
@@ -73,11 +73,9 @@ class Each extends IterableType
                 $this->keyValidator->check($key);
             }
         }
-
-        return true;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         if (!parent::validate($input)) {
             return false;

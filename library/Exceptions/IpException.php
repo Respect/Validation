@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
 class IpException extends ValidationException
@@ -49,8 +51,8 @@ class IpException extends ValidationException
     {
         if (!$this->getParam('networkRange')) {
             return static::STANDARD;
-        } else {
-            return static::NETWORK_RANGE;
         }
+
+        return static::NETWORK_RANGE;
     }
 }

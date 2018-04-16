@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class StartsWith extends AbstractRule
@@ -22,7 +24,7 @@ class StartsWith extends AbstractRule
         $this->identical = $identical;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         if ($this->identical) {
             return $this->validateIdentical($input);

@@ -9,16 +9,25 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
-class ArrayTypeException extends ValidationException
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class ArrayTypeException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be of the type array',
+            self::STANDARD => '{{name}} must be of type array',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be of the type array',
+            self::STANDARD => '{{name}} must not be of type array',
         ],
     ];
 }

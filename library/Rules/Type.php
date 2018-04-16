@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
@@ -33,7 +35,7 @@ class Type extends AbstractRule
 
     public function __construct($type)
     {
-        $lowerType = strtolower($type);
+        $lowerType = mb_strtolower($type);
         if (!isset($this->availableTypes[$lowerType])) {
             throw new ComponentException(sprintf('"%s" is not a valid type', print_r($type, true)));
         }
@@ -41,13 +43,13 @@ class Type extends AbstractRule
         $this->type = $type;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
-        $lowerType = strtolower($this->type);
+        $lowerType = mb_strtolower($this->type);
         if ('callable' === $lowerType) {
             return is_callable($input);
         }
 
-        return ($this->availableTypes[$lowerType] === gettype($input));
+        return $this->availableTypes[$lowerType] === gettype($input);
     }
 }

@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Infinite
- * @covers Respect\Validation\Exceptions\InfiniteException
+ * @covers \Respect\Validation\Rules\Infinite
+ * @covers \Respect\Validation\Exceptions\InfiniteException
  */
-class InfiniteTest extends \PHPUnit_Framework_TestCase
+class InfiniteTest extends TestCase
 {
     protected $rule;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->rule = new Infinite();
     }
@@ -28,24 +32,24 @@ class InfiniteTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForInfinite
      */
-    public function testShouldValidateInfiniteNumbers($input)
+    public function testShouldValidateInfiniteNumbers($input): void
     {
-        $this->assertTrue($this->rule->validate($input));
+        self::assertTrue($this->rule->validate($input));
     }
 
     /**
      * @dataProvider providerForNonInfinite
      */
-    public function testShouldNotValidateNonInfiniteNumbers($input)
+    public function testShouldNotValidateNonInfiniteNumbers($input): void
     {
-        $this->assertFalse($this->rule->validate($input));
+        self::assertFalse($this->rule->validate($input));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\InfiniteException
+     * @expectedException \Respect\Validation\Exceptions\InfiniteException
      * @expectedExceptionMessage 123456 must be an infinite number
      */
-    public function testShouldThrowInfiniteExceptionWhenChecking()
+    public function testShouldThrowInfiniteExceptionWhenChecking(): void
     {
         $this->rule->check(123456);
     }

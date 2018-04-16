@@ -9,7 +9,11 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 $GLOBALS['is_executable'] = null;
 
@@ -26,37 +30,37 @@ function is_executable($executable)
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Executable
- * @covers Respect\Validation\Exceptions\ExecutableException
+ * @covers \Respect\Validation\Rules\Executable
+ * @covers \Respect\Validation\Exceptions\ExecutableException
  */
-class ExecutableTest extends \PHPUnit_Framework_TestCase
+class ExecutableTest extends TestCase
 {
-    public function testValidExecutableFileShouldReturnTrue()
+    public function testValidExecutableFileShouldReturnTrue(): void
     {
         $GLOBALS['is_executable'] = true;
 
         $rule = new Executable();
         $input = '/path/of/a/valid/executable/file.txt';
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
-    public function testInvalidExecutableFileShouldReturnFalse()
+    public function testInvalidExecutableFileShouldReturnFalse(): void
     {
         $GLOBALS['is_executable'] = false;
 
         $rule = new Executable();
         $input = '/path/of/an/invalid/executable/file.txt';
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
-    public function testShouldValidateObjects()
+    public function testShouldValidateObjects(): void
     {
         $rule = new Executable();
-        $object = $this->getMock('SplFileInfo', ['isExecutable'], ['somefile.txt']);
+        $object = $this->createMock('SplFileInfo', ['isExecutable'], ['somefile.txt']);
         $object->expects($this->once())
                 ->method('isExecutable')
                 ->will($this->returnValue(true));
 
-        $this->assertTrue($rule->validate($object));
+        self::assertTrue($rule->validate($object));
     }
 }

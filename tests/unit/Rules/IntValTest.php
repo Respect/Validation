@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\IntVal
- * @covers Respect\Validation\Exceptions\IntValException
+ * @covers \Respect\Validation\Rules\IntVal
+ * @covers \Respect\Validation\Exceptions\IntValException
  */
-class IntValTest extends \PHPUnit_Framework_TestCase
+class IntValTest extends TestCase
 {
     protected $intValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->intValidator = new IntVal();
     }
@@ -28,21 +32,21 @@ class IntValTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForInt
      */
-    public function testValidIntegersShouldReturnTrue($input)
+    public function testValidIntegersShouldReturnTrue($input): void
     {
-        $this->assertTrue($this->intValidator->__invoke($input));
-        $this->assertTrue($this->intValidator->check($input));
-        $this->assertTrue($this->intValidator->assert($input));
+        self::assertTrue($this->intValidator->__invoke($input));
+        $this->intValidator->check($input);
+        $this->intValidator->assert($input);
     }
 
     /**
      * @dataProvider providerForNotInt
-     * @expectedException Respect\Validation\Exceptions\IntValException
+     * @expectedException \Respect\Validation\Exceptions\IntValException
      */
-    public function testInvalidIntegersShouldThrowIntException($input)
+    public function testInvalidIntegersShouldThrowIntException($input): void
     {
-        $this->assertFalse($this->intValidator->__invoke($input));
-        $this->assertFalse($this->intValidator->assert($input));
+        self::assertFalse($this->intValidator->__invoke($input));
+        $this->intValidator->assert($input);
     }
 
     public function providerForInt()

@@ -9,27 +9,31 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class AbstractRegexRuleTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class AbstractRegexRuleTest extends TestCase
 {
-    public function testValidateCleanShouldReturnOneIfPatternIsFound()
+    public function testValidateCleanShouldReturnOneIfPatternIsFound(): void
     {
-        $regexRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractRegexRule');
+        $regexRuleMock = $this->getMockForAbstractClass(AbstractRegexRule::class);
         $regexRuleMock->expects($this->once())
             ->method('getPregFormat')
             ->will($this->returnValue('/^Respect$/'));
 
-        $this->assertEquals(1, $regexRuleMock->validateClean('Respect'));
+        self::assertEquals(1, $regexRuleMock->validateClean('Respect'));
     }
 
-    public function testValidateCleanShouldReturnZeroIfPatternIsNotFound()
+    public function testValidateCleanShouldReturnZeroIfPatternIsNotFound(): void
     {
-        $regexRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractRegexRule');
+        $regexRuleMock = $this->getMockForAbstractClass(AbstractRegexRule::class);
         $regexRuleMock->expects($this->once())
             ->method('getPregFormat')
             ->will($this->returnValue('/^Respect$/'));
 
-        $this->assertEquals(0, $regexRuleMock->validateClean('Validation'));
+        self::assertEquals(0, $regexRuleMock->validateClean('Validation'));
     }
 }

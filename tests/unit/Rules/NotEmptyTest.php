@@ -9,37 +9,43 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\NotEmpty
- * @covers Respect\Validation\Exceptions\NotEmptyException
+ * @covers \Respect\Validation\Rules\NotEmpty
+ * @covers \Respect\Validation\Exceptions\NotEmptyException
  */
-class NotEmptyTest extends \PHPUnit_Framework_TestCase
+class NotEmptyTest extends TestCase
 {
     protected $object;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new NotEmpty();
     }
 
     /**
+     * @doesNotPerformAssertions
+     *
      * @dataProvider providerForNotEmpty
      */
-    public function testStringNotEmpty($input)
+    public function testStringNotEmpty($input): void
     {
-        $this->assertTrue($this->object->assert($input));
+        $this->object->assert($input);
     }
 
     /**
      * @dataProvider providerForEmpty
-     * @expectedException Respect\Validation\Exceptions\NotEmptyException
+     * @expectedException \Respect\Validation\Exceptions\NotEmptyException
      */
-    public function testStringEmpty($input)
+    public function testStringEmpty($input): void
     {
-        $this->assertFalse($this->object->assert($input));
+        $this->object->assert($input);
     }
 
     public function providerForNotEmpty()

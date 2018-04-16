@@ -9,40 +9,44 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Alnum
- * @covers Respect\Validation\Exceptions\AlnumException
+ * @covers \Respect\Validation\Rules\Alnum
+ * @covers \Respect\Validation\Exceptions\AlnumException
  */
-class AlnumTest extends \PHPUnit_Framework_TestCase
+class AlnumTest extends TestCase
 {
     /**
      * @dataProvider providerForValidAlnum
      */
-    public function testValidAlnumCharsShouldReturnTrue($validAlnum, $additional)
+    public function testValidAlnumCharsShouldReturnTrue($validAlnum, $additional): void
     {
         $validator = new Alnum($additional);
-        $this->assertTrue($validator->validate($validAlnum));
+        self::assertTrue($validator->validate($validAlnum));
     }
 
     /**
      * @dataProvider providerForInvalidAlnum
-     * @expectedException Respect\Validation\Exceptions\AlnumException
+     * @expectedException \Respect\Validation\Exceptions\AlnumException
      */
-    public function testInvalidAlnumCharsShouldThrowAlnumExceptionAndReturnFalse($invalidAlnum, $additional)
+    public function testInvalidAlnumCharsShouldThrowAlnumExceptionAndReturnFalse($invalidAlnum, $additional): void
     {
         $validator = new Alnum($additional);
-        $this->assertFalse($validator->validate($invalidAlnum));
-        $this->assertFalse($validator->assert($invalidAlnum));
+        self::assertFalse($validator->validate($invalidAlnum));
+        $validator->assert($invalidAlnum);
     }
 
     /**
      * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
     {
         $validator = new Alnum($additional);
     }
@@ -50,10 +54,10 @@ class AlnumTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Alnum($additional);
-        $this->assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($query));
     }
 
     public function providerAdditionalChars()

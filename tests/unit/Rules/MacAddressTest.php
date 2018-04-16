@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\MacAddress
- * @covers Respect\Validation\Exceptions\MacAddressException
+ * @covers \Respect\Validation\Rules\MacAddress
+ * @covers \Respect\Validation\Exceptions\MacAddressException
  */
-class MacAddressTest extends \PHPUnit_Framework_TestCase
+class MacAddressTest extends TestCase
 {
     protected $macaddressValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->macaddressValidator = new MacAddress();
     }
@@ -28,21 +32,21 @@ class MacAddressTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForMacAddress
      */
-    public function testValidMacaddressesShouldReturnTrue($input)
+    public function testValidMacaddressesShouldReturnTrue($input): void
     {
-        $this->assertTrue($this->macaddressValidator->__invoke($input));
-        $this->assertTrue($this->macaddressValidator->assert($input));
-        $this->assertTrue($this->macaddressValidator->check($input));
+        self::assertTrue($this->macaddressValidator->__invoke($input));
+        $this->macaddressValidator->assert($input);
+        $this->macaddressValidator->check($input);
     }
 
     /**
      * @dataProvider providerForNotMacAddress
-     * @expectedException Respect\Validation\Exceptions\MacAddressException
+     * @expectedException \Respect\Validation\Exceptions\MacAddressException
      */
-    public function testInvalidMacaddressShouldThrowMacAddressException($input)
+    public function testInvalidMacaddressShouldThrowMacAddressException($input): void
     {
-        $this->assertFalse($this->macaddressValidator->__invoke($input));
-        $this->assertFalse($this->macaddressValidator->assert($input));
+        self::assertFalse($this->macaddressValidator->__invoke($input));
+        $this->macaddressValidator->assert($input);
     }
 
     public function providerForMacAddress()

@@ -8,7 +8,7 @@ use Respect\Validation\Validator;
 function translatorCallback($message)
 {
     $messages = [
-        '{{name}} must be a string' => '{{name}} deve ser uma string',
+        '{{name}} must be of type string' => '{{name}} deve ser do tipo string',
     ];
 
     return $messages[$message];
@@ -23,4 +23,4 @@ try {
 }
 ?>
 --EXPECTF--
-0 deve ser uma string
+0 deve ser do tipo string

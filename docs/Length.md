@@ -1,9 +1,9 @@
 # Length
 
-- `v::length(int $min, int $max)`
-- `v::length(int $min, null)`
-- `v::length(null, int $max)`
-- `v::length(int $min, int $max, boolean $inclusive = true)`
+- `Length(int $min, int $max)`
+- `Length(int $min, null)`
+- `Length(null, int $max)`
+- `Length(int $min, int $max, bool $inclusive)`
 
 Validates lengths. Most simple example:
 
@@ -38,7 +38,13 @@ v::stringType()->length(1, 5, true)->validate('a'); // true
 
 Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [Between](Between.md)
+- [Between](Between.md)

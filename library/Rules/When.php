@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\AlwaysInvalidException;
@@ -32,7 +34,7 @@ class When extends AbstractRule
         $this->else = $else;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         if ($this->when->validate($input)) {
             return $this->then->validate($input);
@@ -41,21 +43,25 @@ class When extends AbstractRule
         return $this->else->validate($input);
     }
 
-    public function assert($input)
+    public function assert($input): void
     {
         if ($this->when->validate($input)) {
-            return $this->then->assert($input);
+            $this->then->assert($input);
+
+            return;
         }
 
-        return $this->else->assert($input);
+        $this->else->assert($input);
     }
 
-    public function check($input)
+    public function check($input): void
     {
         if ($this->when->validate($input)) {
-            return $this->then->check($input);
+            $this->then->check($input);
+
+            return;
         }
 
-        return $this->else->check($input);
+        $this->else->check($input);
     }
 }

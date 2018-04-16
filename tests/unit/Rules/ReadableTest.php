@@ -9,7 +9,11 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 $GLOBALS['is_readable'] = null;
 
@@ -26,46 +30,46 @@ function is_readable($readable)
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Readable
- * @covers Respect\Validation\Exceptions\ReadableException
+ * @covers \Respect\Validation\Rules\Readable
+ * @covers \Respect\Validation\Exceptions\ReadableException
  */
-class ReadableTest extends \PHPUnit_Framework_TestCase
+class ReadableTest extends TestCase
 {
     /**
-     * @covers Respect\Validation\Rules\Readable::validate
+     * @covers \Respect\Validation\Rules\Readable::validate
      */
-    public function testValidReadableFileShouldReturnTrue()
+    public function testValidReadableFileShouldReturnTrue(): void
     {
         $GLOBALS['is_readable'] = true;
 
         $rule = new Readable();
         $input = '/path/of/a/valid/readable/file.txt';
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
-     * @covers Respect\Validation\Rules\Readable::validate
+     * @covers \Respect\Validation\Rules\Readable::validate
      */
-    public function testInvalidReadableFileShouldReturnFalse()
+    public function testInvalidReadableFileShouldReturnFalse(): void
     {
         $GLOBALS['is_readable'] = false;
 
         $rule = new Readable();
         $input = '/path/of/an/invalid/readable/file.txt';
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     /**
-     * @covers Respect\Validation\Rules\Readable::validate
+     * @covers \Respect\Validation\Rules\Readable::validate
      */
-    public function testShouldValidateObjects()
+    public function testShouldValidateObjects(): void
     {
         $rule = new Readable();
-        $object = $this->getMock('SplFileInfo', ['isReadable'], ['somefile.txt']);
+        $object = $this->createMock('SplFileInfo', ['isReadable'], ['somefile.txt']);
         $object->expects($this->once())
                 ->method('isReadable')
                 ->will($this->returnValue(true));
 
-        $this->assertTrue($rule->validate($object));
+        self::assertTrue($rule->validate($object));
     }
 }

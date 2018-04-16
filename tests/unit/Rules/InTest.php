@@ -9,42 +9,46 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\In
- * @covers Respect\Validation\Exceptions\InException
+ * @covers \Respect\Validation\Rules\In
+ * @covers \Respect\Validation\Exceptions\InException
  */
-class InTest extends \PHPUnit_Framework_TestCase
+class InTest extends TestCase
 {
     /**
      * @dataProvider providerForIn
      */
-    public function testSuccessInValidatorCases($input, $options = null)
+    public function testSuccessInValidatorCases($input, $options = null): void
     {
         $v = new In($options);
-        $this->assertTrue($v->__invoke($input));
-        $this->assertTrue($v->check($input));
-        $this->assertTrue($v->assert($input));
+        self::assertTrue($v->__invoke($input));
+        $v->check($input);
+        $v->assert($input);
     }
 
     /**
      * @dataProvider providerForNotIn
-     * @expectedException Respect\Validation\Exceptions\InException
+     * @expectedException \Respect\Validation\Exceptions\InException
      */
-    public function testInvalidInChecksShouldThrowInException($input, $options, $strict = false)
+    public function testInvalidInChecksShouldThrowInException($input, $options, $strict = false): void
     {
         $v = new In($options, $strict);
-        $this->assertFalse($v->__invoke($input));
-        $this->assertFalse($v->assert($input));
+        self::assertFalse($v->__invoke($input));
+        $v->assert($input);
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\InException
-     * @expectedExceptionMessage "x" must be in { "foo", "bar" }
+     * @expectedException \Respect\Validation\Exceptions\InException
+     * @expectedExceptionMessage "x" must be in `{ "foo", "bar" }`
      */
-    public function testInCheckExceptionMessageWithArray()
+    public function testInCheckExceptionMessageWithArray(): void
     {
         $v = new In(['foo', 'bar']);
         $v->assert('x');

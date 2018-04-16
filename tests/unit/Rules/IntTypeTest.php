@@ -9,51 +9,49 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Test\RuleTestCase;
+
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\IntType
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\IntType
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class IntTypeTest extends \PHPUnit_Framework_TestCase
+final class IntTypeTest extends RuleTestCase
 {
-    public function providerForValidIntType()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
+        $rule = new IntType();
+
         return [
-            [0],
-            [123456],
-            [PHP_INT_MAX],
-            [PHP_INT_MAX * -1],
+            [$rule, 0],
+            [$rule, 123456],
+            [$rule, PHP_INT_MAX],
+            [$rule, PHP_INT_MAX * -1],
         ];
     }
 
     /**
-     * @dataProvider providerForValidIntType
+     * {@inheritdoc}
      */
-    public function testShouldValidateInputWhenItIsAValidIntType($input)
+    public function providerForInvalidInput(): array
     {
         $rule = new IntType();
 
-        $this->assertTrue($rule->validate($input));
-    }
-
-    public function providerForInvalidIntType()
-    {
         return [
-            ['1'],
-            [1.0],
-            [PHP_INT_MAX + 1],
-            [true],
+            [$rule, '1'],
+            [$rule, 1.0],
+            [$rule, PHP_INT_MAX + 1],
+            [$rule, true],
         ];
-    }
-
-    /**
-     * @dataProvider providerForInvalidIntType
-     */
-    public function testShouldInvalidateInputWhenItIsNotAValidIntType($input)
-    {
-        $rule = new IntType();
-
-        $this->assertFalse($rule->validate($input));
     }
 }

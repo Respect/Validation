@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Multiple extends AbstractRule
@@ -20,12 +22,12 @@ class Multiple extends AbstractRule
         $this->multipleOf = $multipleOf;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
-        if ($this->multipleOf == 0) {
-            return ($input == 0);
+        if (0 == $this->multipleOf) {
+            return 0 == $input;
         }
 
-        return ($input % $this->multipleOf == 0);
+        return 0 == $input % $this->multipleOf;
     }
 }

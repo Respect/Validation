@@ -9,16 +9,18 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Directory extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         if ($input instanceof \SplFileInfo) {
             return $input->isDir();
         }
 
-        return (is_string($input) && is_dir($input));
+        return is_string($input) && is_dir($input);
     }
 }

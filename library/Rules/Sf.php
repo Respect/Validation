@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use ReflectionClass;
@@ -23,13 +25,13 @@ class Sf extends AbstractRule
     public $name;
     private $constraint;
 
-    public function __construct($name, $params = [])
+    public function __construct($name, array $params = [])
     {
         $this->name = ucfirst($name);
         $this->constraint = $this->createSymfonyConstraint($this->name, $params);
     }
 
-    private function createSymfonyConstraint($constraintName, $constraintConstructorParameters = [])
+    private function createSymfonyConstraint($constraintName, array $constraintConstructorParameters = [])
     {
         $fullClassName = sprintf(self::SYMFONY_CONSTRAINT_NAMESPACE, $constraintName);
         try {
@@ -50,20 +52,20 @@ class Sf extends AbstractRule
     {
         $validator = Validation::createValidator(); // You gotta love those Symfony namings
 
-        return $validator->validateValue($valueToValidate, $symfonyConstraint);
+        return $validator->validate($valueToValidate, $symfonyConstraint);
     }
 
-    public function assert($input)
+    public function assert($input): void
     {
         $violations = $this->returnViolationsForConstraint($input, $this->constraint);
-        if (count($violations) == 0) {
-            return true;
+        if (0 == count($violations)) {
+            return;
         }
 
         throw $this->reportError((string) $violations);
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         $violations = $this->returnViolationsForConstraint($input, $this->constraint);
         if (count($violations)) {

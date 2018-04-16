@@ -1,6 +1,6 @@
 # NotOptional
 
-- `v::notOptional()`
+- `NotOptional()`
 
 Validates if the given input is not optional. By _optional_ we consider `null`
 or an empty string (`''`).
@@ -29,11 +29,17 @@ v::notOptional()->validate([[''), [0]]); // true
 v::notOptional()->validate(new stdClass()); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 
-  * [NoWhitespace](NoWhitespace.md)
-  * [NotBlank](NotBlank.md)
-  * [NotEmpty](NotEmpty.md)
-  * [NullType](NullType.md)
-  * [Optional](Optional.md)
+- [NoWhitespace](NoWhitespace.md)
+- [NotBlank](NotBlank.md)
+- [NotEmpty](NotEmpty.md)
+- [NullType](NullType.md)
+- [Optional](Optional.md)

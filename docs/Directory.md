@@ -1,6 +1,6 @@
 # Directory
 
-- `v::directory()`
+- `Directory()`
 
 Validates directories.
 
@@ -15,16 +15,22 @@ This validator will consider SplFileInfo instances, so you can do something like
 v::directory()->validate(new \SplFileInfo($directory));
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.4.4 | Created
+
 ***
 See also:
 
-  * [Executable](Executable.md)
-  * [Exists](Exists.md)
-  * [Extension](Extension.md)
-  * [File](File.md)
-  * [Mimetype](Mimetype.md)
-  * [Readable](Readable.md)
-  * [Size](Size.md)
-  * [SymbolicLink](SymbolicLink.md)
-  * [Uploaded](Uploaded.md)
-  * [Writable](Writable.md)
+- [Executable](Executable.md)
+- [Exists](Exists.md)
+- [Extension](Extension.md)
+- [File](File.md)
+- [Mimetype](Mimetype.md)
+- [Readable](Readable.md)
+- [Size](Size.md)
+- [SymbolicLink](SymbolicLink.md)
+- [Uploaded](Uploaded.md)
+- [Writable](Writable.md)

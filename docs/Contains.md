@@ -1,7 +1,9 @@
 # Contains
 
-- `v::contains(mixed $value)`
-- `v::contains(mixed $value, boolean $identical = false)`
+- `Contains(mixed $expectedValue)`
+- `Contains(mixed $expectedValue, bool $identical)`
+
+Validates if the input contains some value.
 
 For strings:
 
@@ -20,9 +22,15 @@ of equal comparison.
 
 Message template for this validator includes `{{containsValue}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [StartsWith](StartsWith.md)
-  * [EndsWith](EndsWith.md)
-  * [In](In.md)
+- [StartsWith](StartsWith.md)
+- [EndsWith](EndsWith.md)
+- [In](In.md)

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
 class LanguageCodeException extends ValidationException
@@ -19,6 +21,6 @@ class LanguageCodeException extends ValidationException
         ],
         self::MODE_NEGATIVE => [
             self::STANDARD => '{{name}} must not be a valid language',
-        ]
+        ],
     ];
 }

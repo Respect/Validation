@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
@@ -24,7 +26,7 @@ class Length extends AbstractRule
         $this->minValue = $min;
         $this->maxValue = $max;
         $this->inclusive = $inclusive;
-        $paramValidator = new OneOf(new Numeric(), new NullType());
+        $paramValidator = new AnyOf(new NumericVal(), new NullType());
         if (!$paramValidator->validate($min)) {
             throw new ComponentException(
                 sprintf('%s is not a valid numeric length', $min)
@@ -44,7 +46,7 @@ class Length extends AbstractRule
         }
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         $length = $this->extractLength($input);
 
@@ -66,7 +68,7 @@ class Length extends AbstractRule
         }
 
         if (is_int($input)) {
-            return strlen((string)$input);
+            return mb_strlen((string) $input);
         }
 
         return false;

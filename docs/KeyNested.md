@@ -1,8 +1,8 @@
 # KeyNested
 
-- `v::keyNested(string $name)`
-- `v::keyNested(string $name, v $validator)`
-- `v::keyNested(string $name, v $validator, boolean $mandatory = true)`
+- `KeyNested(string $name)`
+- `KeyNested(string $name, Validatable $rule)`
+- `KeyNested(string $name, Validatable $rule, bool $mandatory)`
 
 Validates an array key or an object property using `.` to represent nested data.
 
@@ -30,11 +30,17 @@ v::keyNested('foo.bar')->validate($object); // true
 
 This rule was inspired by [Yii2 ArrayHelper][].
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 
-  * [Attribute](Attribute.md)
-  * [Key](Key.md)
+- [Attribute](Attribute.md)
+- [Key](Key.md)
 
 
 [Yii2 ArrayHelper]: https://github.com/yiisoft/yii2/blob/68c30c1/framework/helpers/BaseArrayHelper.php "Yii2 ArrayHelper"

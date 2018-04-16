@@ -9,11 +9,13 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class NoneOf extends AbstractComposite
 {
-    public function assert($input)
+    public function assert($input): void
     {
         $exceptions = $this->validateRules($input);
         $numRules = count($this->getRules());
@@ -21,11 +23,9 @@ class NoneOf extends AbstractComposite
         if ($numRules !== $numExceptions) {
             throw $this->reportError($input)->setRelated($exceptions);
         }
-
-        return true;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         foreach ($this->getRules() as $rule) {
             if ($rule->validate($input)) {

@@ -9,7 +9,11 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 $GLOBALS['is_file'] = null;
 
@@ -26,46 +30,46 @@ function is_file($file)
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\File
- * @covers Respect\Validation\Exceptions\FileException
+ * @covers \Respect\Validation\Rules\File
+ * @covers \Respect\Validation\Exceptions\FileException
  */
-class FileTest extends \PHPUnit_Framework_TestCase
+class FileTest extends TestCase
 {
     /**
-     * @covers Respect\Validation\Rules\File::validate
+     * @covers \Respect\Validation\Rules\File::validate
      */
-    public function testValidFileShouldReturnTrue()
+    public function testValidFileShouldReturnTrue(): void
     {
         $GLOBALS['is_file'] = true;
 
         $rule = new File();
         $input = '/path/of/a/valid/file.txt';
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
-     * @covers Respect\Validation\Rules\File::validate
+     * @covers \Respect\Validation\Rules\File::validate
      */
-    public function testInvalidFileShouldReturnFalse()
+    public function testInvalidFileShouldReturnFalse(): void
     {
         $GLOBALS['is_file'] = false;
 
         $rule = new File();
         $input = '/path/of/an/invalid/file.txt';
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     /**
-     * @covers Respect\Validation\Rules\File::validate
+     * @covers \Respect\Validation\Rules\File::validate
      */
-    public function testShouldValidateObjects()
+    public function testShouldValidateObjects(): void
     {
         $rule = new File();
-        $object = $this->getMock('SplFileInfo', ['isFile'], ['somefile.txt']);
+        $object = $this->createMock('SplFileInfo', ['isFile'], ['somefile.txt']);
         $object->expects($this->once())
                 ->method('isFile')
                 ->will($this->returnValue(true));
 
-        $this->assertTrue($rule->validate($object));
+        self::assertTrue($rule->validate($object));
     }
 }

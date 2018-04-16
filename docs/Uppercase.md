@@ -1,6 +1,6 @@
 # Uppercase
 
-- `v::uppercase()`
+- `Uppercase()`
 
 Validates if string characters are uppercase in the input:
 
@@ -8,7 +8,13 @@ Validates if string characters are uppercase in the input:
 v::stringType()->uppercase()->validate('W3C'); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [Lowercase](Lowercase.md)
+- [Lowercase](Lowercase.md)

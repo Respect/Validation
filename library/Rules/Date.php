@@ -9,48 +9,56 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use DateTime;
-use DateTimeInterface;
+use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Helpers\DateTimeHelper;
+use function is_scalar;
+use function preg_match;
+use function sprintf;
 
-class Date extends AbstractRule
+/**
+ * Validates if input is a date.
+ *
+ * @author Bruno Luiz da Silva <contato@brunoluiz.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class Date extends AbstractRule
 {
-    public $format = null;
+    use DateTimeHelper;
 
-    public function __construct($format = null)
+    /**
+     * @var string
+     */
+    private $format;
+
+    /**
+     * Initializes the rule.
+     *
+     * @param string $format
+     *
+     * @throws ComponentException
+     */
+    public function __construct(string $format = 'Y-m-d')
     {
+        if (!preg_match('/^[djSFmMnYy\W]+$/', $format)) {
+            throw new ComponentException(sprintf('"%s" is not a valid date format', $format));
+        }
+
         $this->format = $format;
     }
 
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
-        if ($input instanceof DateTimeInterface
-            || $input instanceof DateTime) {
-            return true;
-        }
-
         if (!is_scalar($input)) {
             return false;
         }
 
-        $inputString = (string) $input;
-
-        if (is_null($this->format)) {
-            return false !== strtotime($inputString);
-        }
-
-        $exceptionalFormats = [
-            'c' => 'Y-m-d\TH:i:sP',
-            'r' => 'D, d M Y H:i:s O',
-        ];
-
-        if (in_array($this->format, array_keys($exceptionalFormats))) {
-            $this->format = $exceptionalFormats[$this->format];
-        }
-
-        $info = date_parse_from_format($this->format, $inputString);
-
-        return ($info['error_count'] === 0 && $info['warning_count'] === 0);
+        return $this->isDateTime($this->format, (string) $input);
     }
 }

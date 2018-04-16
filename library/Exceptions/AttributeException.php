@@ -9,9 +9,11 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
-class AttributeException extends NestedValidationException
+class AttributeException extends NestedValidationException implements NonOmissibleExceptionInterface
 {
     const NOT_PRESENT = 0;
     const INVALID = 1;

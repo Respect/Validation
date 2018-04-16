@@ -9,14 +9,17 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
 use DirectoryIterator;
+use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 
-class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
+class CheckExceptionsTest extends TestCase
 {
-    protected $deprecateds = ['Iterable'];
+    protected $deprecateds = [];
 
     public function provideListOfRuleNames()
     {
@@ -28,9 +31,9 @@ class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
                 continue;
             }
 
-            $ruleName = substr($fileInfo->getBasename(), 0, -4);
+            $ruleName = mb_substr($fileInfo->getBasename(), 0, -4);
             $ruleIsDeprecated = in_array($ruleName, $this->deprecateds);
-            $isRuleClassFile = (bool) ($fileInfo->getExtension() !== 'php');
+            $isRuleClassFile = (bool) ('php' !== $fileInfo->getExtension());
             if ($ruleIsDeprecated || $isRuleClassFile) {
                 continue;
             }
@@ -50,23 +53,23 @@ class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider provideListOfRuleNames
      */
-    public function testRuleHasAnExceptionWhichHasValidApi($ruleName)
+    public function testRuleHasAnExceptionWhichHasValidApi($ruleName): void
     {
         $exceptionClass = 'Respect\\Validation\\Exceptions\\'.$ruleName.'Exception';
-        $this->assertTrue(
+        self::assertTrue(
             class_exists($exceptionClass),
             sprintf('Expected exception class to exist: %s.', $ruleName)
         );
 
         $expectedMessage = 'Test exception message.';
         $exceptionObject = new $exceptionClass($expectedMessage);
-        $this->assertInstanceOf(
+        self::assertInstanceOf(
             'Exception',
             $exceptionObject,
             'Every exception should extend an Exception class.'
         );
-        $this->assertInstanceOf(
-            'Respect\Validation\Exceptions\ValidationException',
+        self::assertInstanceOf(
+            ValidationException::class,
             $exceptionObject,
             'Every Respect/Validation exception must extend ValidationException.'
         );

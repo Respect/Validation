@@ -9,19 +9,21 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use DateTime;
+use DateTimeInterface;
 
 class LeapYear extends AbstractRule
 {
-    public function validate($year)
+    public function validate($year): bool
     {
         if (is_numeric($year)) {
             $year = (int) $year;
         } elseif (is_string($year)) {
-            $year = (int) date('Y', strtotime($year));
-        } elseif ($year instanceof DateTime) {
+            $year = (int) date('Y', (int) strtotime($year));
+        } elseif ($year instanceof DateTimeInterface) {
             $year = (int) $year->format('Y');
         } else {
             return false;
@@ -29,6 +31,6 @@ class LeapYear extends AbstractRule
 
         $date = strtotime(sprintf('%d-02-29', $year));
 
-        return (bool) date('L', $date);
+        return (bool) date('L', (int) $date);
     }
 }

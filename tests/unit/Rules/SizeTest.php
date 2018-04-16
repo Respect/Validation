@@ -9,20 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use org\bovigo\vfs\content\LargeFileContent;
 use org\bovigo\vfs\vfsStream;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use SplFileInfo;
 
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @group  rule
- * @covers Respect\Validation\Rules\Size
- * @covers Respect\Validation\Exceptions\SizeException
+ * @covers \Respect\Validation\Rules\Size
+ * @covers \Respect\Validation\Exceptions\SizeException
  */
-class SizeTest extends PHPUnit_Framework_TestCase
+class SizeTest extends TestCase
 {
     public function validSizeProvider()
     {
@@ -73,18 +75,18 @@ class SizeTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider validSizeProvider
      */
-    public function testShouldConvertUnitonConstructor($size, $bytes)
+    public function testShouldConvertUnitonConstructor($size, $bytes): void
     {
         $rule = new Size($size);
 
-        $this->assertEquals($bytes, $rule->minValue);
+        self::assertEquals($bytes, $rule->minValue);
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "42jb" is not a recognized file size
      */
-    public function testShouldThrowsAnExceptionWhenSizeIsNotValid()
+    public function testShouldThrowsAnExceptionWhenSizeIsNotValid(): void
     {
         new Size('42jb');
     }
@@ -92,14 +94,14 @@ class SizeTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider validFileProvider
      */
-    public function testShouldValidateFile($filename, $minSize, $maxSize, $expectedValidation)
+    public function testShouldValidateFile($filename, $minSize, $maxSize, $expectedValidation): void
     {
         $rule = new Size($minSize, $maxSize);
 
-        $this->assertEquals($expectedValidation, $rule->validate($filename));
+        self::assertEquals($expectedValidation, $rule->validate($filename));
     }
 
-    public function testShouldValidateSplFileInfo()
+    public function testShouldValidateSplFileInfo(): void
     {
         $root = vfsStream::setup();
         $file1Gb = vfsStream::newFile('1gb.txt')->withContent(LargeFileContent::withGigabytes(1))->at($root);
@@ -107,14 +109,14 @@ class SizeTest extends PHPUnit_Framework_TestCase
 
         $rule = new Size('1MB', '2GB');
 
-        $this->assertTrue($rule->validate($file1GbObject));
+        self::assertTrue($rule->validate($file1GbObject));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\SizeException
+     * @expectedException \Respect\Validation\Exceptions\SizeException
      * @expectedExceptionMessageRegExp #"vfs:.?/.?/root.?/1gb.txt" must be greater than "2pb"#
      */
-    public function testShouldThrowsSizeExceptionWhenAsserting()
+    public function testShouldThrowsSizeExceptionWhenAsserting(): void
     {
         $root = vfsStream::setup();
         $file1Gb = vfsStream::newFile('1gb.txt')->withContent(LargeFileContent::withGigabytes(1))->at($root);

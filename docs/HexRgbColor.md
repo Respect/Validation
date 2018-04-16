@@ -1,6 +1,6 @@
 # HexRgbColor
 
-- `v::hexRgbColor()`
+- `HexRgbColor()`
 
 Validates a hex RGB color
 
@@ -10,7 +10,13 @@ v::hexRgbColor()->validate('123123'); // true
 v::hexRgbColor()->validate('FCD'); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.7.0 | Created
+
 ***
 See also:
 
-  * [Vxdigit](Vxdigit.md)
+- [Vxdigit](Vxdigit.md)

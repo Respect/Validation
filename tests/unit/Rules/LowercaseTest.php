@@ -9,35 +9,39 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Lowercase
- * @covers Respect\Validation\Exceptions\LowercaseException
+ * @covers \Respect\Validation\Rules\Lowercase
+ * @covers \Respect\Validation\Exceptions\LowercaseException
  */
-class LowercaseTest extends \PHPUnit_Framework_TestCase
+class LowercaseTest extends TestCase
 {
     /**
      * @dataProvider providerForValidLowercase
      */
-    public function testValidLowercaseShouldReturnTrue($input)
+    public function testValidLowercaseShouldReturnTrue($input): void
     {
         $lowercase = new Lowercase();
-        $this->assertTrue($lowercase->__invoke($input));
-        $this->assertTrue($lowercase->assert($input));
-        $this->assertTrue($lowercase->check($input));
+        self::assertTrue($lowercase->__invoke($input));
+        $lowercase->assert($input);
+        $lowercase->check($input);
     }
 
     /**
      * @dataProvider providerForInvalidLowercase
-     * @expectedException Respect\Validation\Exceptions\LowercaseException
+     * @expectedException \Respect\Validation\Exceptions\LowercaseException
      */
-    public function testInvalidLowercaseShouldThrowException($input)
+    public function testInvalidLowercaseShouldThrowException($input): void
     {
         $lowercase = new Lowercase();
-        $this->assertFalse($lowercase->__invoke($input));
-        $this->assertFalse($lowercase->assert($input));
+        self::assertFalse($lowercase->__invoke($input));
+        $lowercase->assert($input);
     }
 
     public function providerForValidLowercase()

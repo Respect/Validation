@@ -1,6 +1,6 @@
 # Identical
 
-- `v::identical(mixed $value)`
+- `Identical(mixed $value)`
 
 Validates if the input is identical to some value.
 
@@ -11,8 +11,14 @@ v::identical(42)->validate('42'); // false
 
 Message template for this validator includes `{{compareTo}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 
-  * [Contains](Contains.md)
-  * [Equals](Equals.md)
+- [Contains](Contains.md)
+- [Equals](Equals.md)

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
@@ -31,7 +33,7 @@ class Callback extends AbstractRule
         $this->arguments = $arguments;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         $params = $this->arguments;
         array_unshift($params, $input);

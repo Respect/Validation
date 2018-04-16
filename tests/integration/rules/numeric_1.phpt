@@ -4,8 +4,8 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator as v;
 
-v::numeric()->assert(123);
-v::numeric()->check(123);
+v::numericVal()->assert(123);
+v::numericVal()->check(123);
 
 ?>
 --EXPECTF--

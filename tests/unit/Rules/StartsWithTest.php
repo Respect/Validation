@@ -9,35 +9,39 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\StartsWith
- * @covers Respect\Validation\Exceptions\StartsWithException
+ * @covers \Respect\Validation\Rules\StartsWith
+ * @covers \Respect\Validation\Exceptions\StartsWithException
  */
-class StartsWithTest extends \PHPUnit_Framework_TestCase
+class StartsWithTest extends TestCase
 {
     /**
      * @dataProvider providerForStartsWith
      */
-    public function testStartsWith($start, $input)
+    public function testStartsWith($start, $input): void
     {
         $v = new StartsWith($start);
-        $this->assertTrue($v->__invoke($input));
-        $this->assertTrue($v->check($input));
-        $this->assertTrue($v->assert($input));
+        self::assertTrue($v->__invoke($input));
+        $v->check($input);
+        $v->assert($input);
     }
 
     /**
      * @dataProvider providerForNotStartsWith
-     * @expectedException Respect\Validation\Exceptions\StartsWithException
+     * @expectedException \Respect\Validation\Exceptions\StartsWithException
      */
-    public function testNotStartsWith($start, $input, $caseSensitive = false)
+    public function testNotStartsWith($start, $input, $caseSensitive = false): void
     {
         $v = new StartsWith($start, $caseSensitive);
-        $this->assertFalse($v->__invoke($input));
-        $this->assertFalse($v->assert($input));
+        self::assertFalse($v->__invoke($input));
+        $v->assert($input);
     }
 
     public function providerForStartsWith()

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use finfo;
@@ -23,7 +25,7 @@ class Image extends AbstractRule
         $this->fileInfo = $fileInfo ?: new finfo(FILEINFO_MIME_TYPE);
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         if ($input instanceof SplFileInfo) {
             $input = $input->getPathname();
@@ -37,6 +39,6 @@ class Image extends AbstractRule
             return false;
         }
 
-        return (0 === strpos($this->fileInfo->file($input), 'image/'));
+        return 0 === mb_strpos($this->fileInfo->file($input), 'image/');
     }
 }

@@ -9,16 +9,20 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\PhpLabel
- * @covers Respect\Validation\Exceptions\PhpLabelException
+ * @covers \Respect\Validation\Rules\PhpLabel
+ * @covers \Respect\Validation\Exceptions\PhpLabelException
  */
 class PhpLabelTest extends RuleTestCase
 {
-    public function providerForValidInput()
+    public function providerForValidInput(): array
     {
         $rule = new PhpLabel();
 
@@ -28,12 +32,12 @@ class PhpLabelTest extends RuleTestCase
             [$rule, 'f00'],
             [$rule, uniqid('_')],
             [$rule, uniqid('a')],
-            [$rule, strtoupper(uniqid('_'))],
-            [$rule, strtoupper(uniqid('a'))],
+            [$rule, mb_strtoupper(uniqid('_'))],
+            [$rule, mb_strtoupper(uniqid('a'))],
         ];
     }
 
-    public function providerForInvalidInput()
+    public function providerForInvalidInput(): array
     {
         $rule = new PhpLabel();
 
@@ -49,7 +53,7 @@ class PhpLabelTest extends RuleTestCase
             [$rule, 'f o o'],
             [$rule, '0ne'],
             [$rule, '0_ne'],
-            [$rule, uniqid(mt_rand(0, 9))],
+            [$rule, uniqid((string) random_int(0, 9))],
             [$rule, null],
             [$rule, mt_rand()],
             [$rule, 0],

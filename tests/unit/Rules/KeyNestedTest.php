@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use ArrayObject;
+use PHPUnit\Framework\TestCase;
+use Respect\Validation\Validatable;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\KeyNested
- * @covers Respect\Validation\Exceptions\KeyNestedException
+ * @covers \Respect\Validation\Rules\KeyNested
+ * @covers \Respect\Validation\Exceptions\KeyNestedException
  */
-class KeyNestedTest extends \PHPUnit_Framework_TestCase
+class KeyNestedTest extends TestCase
 {
-    public function testArrayWithPresentKeysWillReturnTrueForFullPathValidator()
+    public function testArrayWithPresentKeysWillReturnTrueForFullPathValidator(): void
     {
         $array = [
             'bar' => [
@@ -35,21 +39,26 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
 
         $rule = new KeyNested('bar.foo.baz');
 
-        $this->assertTrue($rule->validate($array));
+        self::assertTrue($rule->validate($array));
     }
 
-    public function testArrayWithNumericKeysWillReturnTrueForFullPathValidator()
+    public function testArrayWithNumericKeysWillReturnTrueForFullPathValidator(): void
     {
         $array = [
             0 => 'Zero, the hero!',
         ];
 
-        $rule = new KeyNested(0, new Equals('Zero, the hero!'));
+        $validatable = $this->createMock(Validatable::class);
+        $validatable
+            ->expects($this->once())
+            ->method('check')
+            ->with($array[0]);
 
-        $this->assertTrue($rule->check($array));
+        $rule = new KeyNested(0, $validatable);
+        $rule->check($array);
     }
 
-    public function testArrayWithPresentKeysWillReturnTrueForHalfPathValidator()
+    public function testArrayWithPresentKeysWillReturnTrueForHalfPathValidator(): void
     {
         $array = [
             'bar' => [
@@ -64,10 +73,10 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
 
         $rule = new KeyNested('bar.foo');
 
-        $this->assertTrue($rule->validate($array));
+        self::assertTrue($rule->validate($array));
     }
 
-    public function testObjectWithPresentPropertiesWillReturnTrueForDirtyPathValidator()
+    public function testObjectWithPresentPropertiesWillReturnTrueForDirtyPathValidator(): void
     {
         $object = (object) [
             'bar' => (object) [
@@ -82,46 +91,46 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
 
         $rule = new KeyNested('bar.foooo.');
 
-        $this->assertTrue($rule->validate($object));
+        self::assertTrue($rule->validate($object));
     }
 
-    public function testEmptyInputMustReturnFalse()
+    public function testEmptyInputMustReturnFalse(): void
     {
         $rule = new KeyNested('bar.foo.baz');
 
-        $this->assertFalse($rule->validate(''));
+        self::assertFalse($rule->validate(''));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeyNestedException
+     * @expectedException \Respect\Validation\Exceptions\KeyNestedException
      */
-    public function testEmptyInputMustNotAssert()
+    public function testEmptyInputMustNotAssert(): void
     {
         $rule = new KeyNested('bar.foo.baz');
         $rule->assert('');
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeyNestedException
+     * @expectedException \Respect\Validation\Exceptions\KeyNestedException
      */
-    public function testEmptyInputMustNotCheck()
+    public function testEmptyInputMustNotCheck(): void
     {
         $rule = new KeyNested('bar.foo.baz');
         $rule->check('');
     }
 
-    public function testArrayWithEmptyKeyShouldReturnTrue()
+    public function testArrayWithEmptyKeyShouldReturnTrue(): void
     {
         $rule = new KeyNested('emptyKey');
         $input = ['emptyKey' => ''];
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeyNestedException
+     * @expectedException \Respect\Validation\Exceptions\KeyNestedException
      */
-    public function testArrayWithAbsentKeyShouldThrowNestedKeyException()
+    public function testArrayWithAbsentKeyShouldThrowNestedKeyException(): void
     {
         $validator = new KeyNested('bar.bar');
         $object = [
@@ -129,20 +138,23 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
                 'bar' => 'foo',
             ],
         ];
-        $this->assertTrue($validator->assert($object));
+        $validator->assert($object);
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeyNestedException
+     * @expectedException \Respect\Validation\Exceptions\KeyNestedException
      */
-    public function testNotArrayShouldThrowKeyException()
+    public function testNotArrayShouldThrowKeyException(): void
     {
         $validator = new KeyNested('baz.bar');
         $object = 123;
-        $this->assertFalse($validator->assert($object));
+        $validator->assert($object);
     }
 
-    public function testExtraValidatorShouldValidateKey()
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testExtraValidatorShouldValidateKey(): void
     {
         $subValidator = new Length(3, 7);
         $validator = new KeyNested('bar.foo.baz', $subValidator);
@@ -153,18 +165,18 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
                 ],
             ],
         ];
-        $this->assertTrue($validator->assert($object));
+        $validator->assert($object);
     }
 
-    public function testNotMandatoryExtraValidatorShouldPassWithAbsentKey()
+    public function testNotMandatoryExtraValidatorShouldPassWithAbsentKey(): void
     {
         $subValidator = new Length(1, 3);
         $validator = new KeyNested('bar.rab', $subValidator, false);
         $object = new \stdClass();
-        $this->assertTrue($validator->validate($object));
+        self::assertTrue($validator->validate($object));
     }
 
-    public function testArrayAccessWithPresentKeysWillReturnTrue()
+    public function testArrayAccessWithPresentKeysWillReturnTrue(): void
     {
         $arrayAccess = new ArrayObject([
             'bar' => [
@@ -179,6 +191,6 @@ class KeyNestedTest extends \PHPUnit_Framework_TestCase
 
         $rule = new KeyNested('bar.foo.baz');
 
-        $this->assertTrue($rule->validate($arrayAccess));
+        self::assertTrue($rule->validate($arrayAccess));
     }
 }

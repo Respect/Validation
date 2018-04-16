@@ -9,40 +9,44 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Graph
- * @covers Respect\Validation\Exceptions\GraphException
+ * @covers \Respect\Validation\Rules\Graph
+ * @covers \Respect\Validation\Exceptions\GraphException
  */
-class GraphTest extends \PHPUnit_Framework_TestCase
+class GraphTest extends TestCase
 {
     /**
      * @dataProvider providerForValidGraph
      */
-    public function testValidDataWithGraphCharsShouldReturnTrue($validGraph, $additional = '')
+    public function testValidDataWithGraphCharsShouldReturnTrue($validGraph, $additional = ''): void
     {
         $validator = new Graph($additional);
-        $this->assertTrue($validator->validate($validGraph));
+        self::assertTrue($validator->validate($validGraph));
     }
 
     /**
      * @dataProvider providerForInvalidGraph
-     * @expectedException Respect\Validation\Exceptions\GraphException
+     * @expectedException \Respect\Validation\Exceptions\GraphException
      */
-    public function testInvalidGraphShouldFailAndThrowGraphException($invalidGraph, $additional = '')
+    public function testInvalidGraphShouldFailAndThrowGraphException($invalidGraph, $additional = ''): void
     {
         $validator = new Graph($additional);
-        $this->assertFalse($validator->validate($invalidGraph));
-        $this->assertFalse($validator->assert($invalidGraph));
+        self::assertFalse($validator->validate($invalidGraph));
+        $validator->assert($invalidGraph);
     }
 
     /**
      * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
     {
         $validator = new Graph($additional);
     }
@@ -50,10 +54,10 @@ class GraphTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Graph($additional);
-        $this->assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($query));
     }
 
     public function providerAdditionalChars()

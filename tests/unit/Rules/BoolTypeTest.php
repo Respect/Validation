@@ -9,45 +9,53 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Test\RuleTestCase;
+use stdClass;
+
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\BoolType
- * @covers Respect\Validation\Exceptions\BoolTypeException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\BoolType
+ *
+ * @author Devin Torres <devin@devintorres.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class BoolTypeTest extends \PHPUnit_Framework_TestCase
+final class BoolTypeTest extends RuleTestCase
 {
-    public function testBooleanValuesONLYShouldReturnTrue()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
-        $validator = new BoolType();
-        $this->assertTrue($validator->__invoke(true));
-        $this->assertTrue($validator->__invoke(false));
-        $this->assertTrue($validator->assert(true));
-        $this->assertTrue($validator->assert(false));
-        $this->assertTrue($validator->check(true));
-        $this->assertTrue($validator->check(false));
+        $rule = new BoolType();
+
+        return [
+            [$rule, true],
+            [$rule, false],
+        ];
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\BoolTypeException
+     * {@inheritdoc}
      */
-    public function testInvalidBooleanShouldRaiseException()
+    public function providerForInvalidInput(): array
     {
-        $validator = new BoolType();
-        $this->assertFalse($validator->check('foo'));
-    }
+        $rule = new BoolType();
 
-    public function testInvalidBooleanValuesShouldReturnFalse()
-    {
-        $validator = new BoolType();
-        $this->assertFalse($validator->__invoke(''));
-        $this->assertFalse($validator->__invoke('foo'));
-        $this->assertFalse($validator->__invoke(123123));
-        $this->assertFalse($validator->__invoke(new \stdClass()));
-        $this->assertFalse($validator->__invoke([]));
-        $this->assertFalse($validator->__invoke(1));
-        $this->assertFalse($validator->__invoke(0));
-        $this->assertFalse($validator->__invoke(null));
+        return [
+            [$rule, ''],
+            [$rule, 'foo'],
+            [$rule, 123123],
+            [$rule, new stdClass()],
+            [$rule, []],
+            [$rule, 1],
+            [$rule, 0],
+            [$rule, null],
+        ];
     }
 }

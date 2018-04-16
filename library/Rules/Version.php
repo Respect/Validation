@@ -9,14 +9,16 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 /**
- * @link http://semver.org/
+ * @see http://semver.org/
  */
 class Version extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         $pattern = '/^[0-9]+\.[0-9]+\.[0-9]+([+-][^+-][0-9A-Za-z-.]*)?$/';
 

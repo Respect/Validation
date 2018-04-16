@@ -9,37 +9,41 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class AbstractFilterRuleTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class AbstractFilterRuleTest extends TestCase
 {
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Invalid list of additional characters to be loaded
      */
-    public function testConstructorShouldThrowExceptionIfParamIsNotString()
+    public function testConstructorShouldThrowExceptionIfParamIsNotString(): void
     {
-        $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractFilterRule', [1]);
+        $this->getMockForAbstractClass(AbstractFilterRule::class, [1]);
     }
 
-    public function testValidateShouldReturnTrueForValidArguments()
+    public function testValidateShouldReturnTrueForValidArguments(): void
     {
-        $filterRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractFilterRule');
+        $filterRuleMock = $this->getMockForAbstractClass(AbstractFilterRule::class);
         $filterRuleMock->expects($this->any())
             ->method('validateClean')
             ->will($this->returnValue(true));
 
-        $this->assertTrue($filterRuleMock->validate('hey'));
+        self::assertTrue($filterRuleMock->validate('hey'));
     }
 
-    public function testValidateShouldReturnFalseForInvalidArguments()
+    public function testValidateShouldReturnFalseForInvalidArguments(): void
     {
-        $filterRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractFilterRule');
+        $filterRuleMock = $this->getMockForAbstractClass(AbstractFilterRule::class);
         $filterRuleMock->expects($this->any())
             ->method('validateClean')
             ->will($this->returnValue(true));
 
-        $this->assertFalse($filterRuleMock->validate(''));
-        $this->assertFalse($filterRuleMock->validate([]));
+        self::assertFalse($filterRuleMock->validate(''));
+        self::assertFalse($filterRuleMock->validate([]));
     }
 }

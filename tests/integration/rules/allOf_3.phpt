@@ -13,5 +13,5 @@ try {
 ?>
 --EXPECTF--
 - All of the required rules must pass for 42
-  - 42 must be a string
+  - 42 must be of type string
   - 42 must contain only consonants

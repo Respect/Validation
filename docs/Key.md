@@ -1,8 +1,8 @@
 # Key
 
-- `v::key(string $name)`
-- `v::key(string $name, v $validator)`
-- `v::key(string $name, v $validator, boolean $mandatory = true)`
+- `Key(mixed $key)`
+- `Key(mixed $key, Validatable $rule)`
+- `Key(mixed $key, Validatable $rule, bool $mandatory)`
 
 Validates an array key.
 
@@ -28,7 +28,13 @@ v::key('lorem', v::stringType(), false)->validate($dict); // true
 
 The name of this validator is automatically set to the key name.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [Attribute](Attribute.md)
+- [Attribute](Attribute.md)

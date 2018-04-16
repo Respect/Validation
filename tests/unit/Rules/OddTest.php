@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Odd
- * @covers Respect\Validation\Exceptions\OddException
+ * @covers \Respect\Validation\Rules\Odd
+ * @covers \Respect\Validation\Exceptions\OddException
  */
-class OddTest extends \PHPUnit_Framework_TestCase
+class OddTest extends TestCase
 {
     protected $object;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new Odd();
     }
@@ -28,21 +32,21 @@ class OddTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForOdd
      */
-    public function testOdd($input)
+    public function testOdd($input): void
     {
-        $this->assertTrue($this->object->assert($input));
-        $this->assertTrue($this->object->__invoke($input));
-        $this->assertTrue($this->object->check($input));
+        $this->object->assert($input);
+        self::assertTrue($this->object->__invoke($input));
+        $this->object->check($input);
     }
 
     /**
      * @dataProvider providerForNotOdd
-     * @expectedException Respect\Validation\Exceptions\OddException
+     * @expectedException \Respect\Validation\Exceptions\OddException
      */
-    public function testNotOdd($input)
+    public function testNotOdd($input): void
     {
-        $this->assertFalse($this->object->__invoke($input));
-        $this->assertFalse($this->object->assert($input));
+        self::assertFalse($this->object->__invoke($input));
+        $this->object->assert($input);
     }
 
     public function providerForOdd()

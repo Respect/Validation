@@ -9,37 +9,40 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use DateTime;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Min
- * @covers Respect\Validation\Exceptions\MinException
+ * @covers \Respect\Validation\Rules\Min
+ * @covers \Respect\Validation\Exceptions\MinException
  */
-class MinTest extends \PHPUnit_Framework_TestCase
+class MinTest extends TestCase
 {
     /**
      * @dataProvider providerForValidMin
      */
-    public function testValidMinShouldReturnTrue($minValue, $inclusive, $input)
+    public function testValidMinShouldReturnTrue($minValue, $inclusive, $input): void
     {
         $min = new Min($minValue, $inclusive);
-        $this->assertTrue($min->__invoke($input));
-        $this->assertTrue($min->check($input));
-        $this->assertTrue($min->assert($input));
+        self::assertTrue($min->__invoke($input));
+        $min->check($input);
+        $min->assert($input);
     }
 
     /**
      * @dataProvider providerForInvalidMin
-     * @expectedException Respect\Validation\Exceptions\MinException
+     * @expectedException \Respect\Validation\Exceptions\MinException
      */
-    public function testInvalidMinShouldThrowMinException($minValue, $inclusive, $input)
+    public function testInvalidMinShouldThrowMinException($minValue, $inclusive, $input): void
     {
         $min = new Min($minValue, $inclusive);
-        $this->assertFalse($min->__invoke($input));
-        $this->assertFalse($min->assert($input));
+        self::assertFalse($min->__invoke($input));
+        $min->assert($input);
     }
 
     public function providerForValidMin()

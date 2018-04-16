@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\ObjectType
- * @covers Respect\Validation\Exceptions\ObjectTypeException
+ * @covers \Respect\Validation\Rules\ObjectType
+ * @covers \Respect\Validation\Exceptions\ObjectTypeException
  */
-class ObjectTypeTest extends \PHPUnit_Framework_TestCase
+class ObjectTypeTest extends TestCase
 {
     protected $object;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new ObjectType();
     }
@@ -28,21 +32,21 @@ class ObjectTypeTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForObject
      */
-    public function testObject($input)
+    public function testObject($input): void
     {
-        $this->assertTrue($this->object->__invoke($input));
-        $this->assertTrue($this->object->assert($input));
-        $this->assertTrue($this->object->check($input));
+        self::assertTrue($this->object->__invoke($input));
+        $this->object->assert($input);
+        $this->object->check($input);
     }
 
     /**
      * @dataProvider providerForNotObject
-     * @expectedException Respect\Validation\Exceptions\ObjectTypeException
+     * @expectedException \Respect\Validation\Exceptions\ObjectTypeException
      */
-    public function testNotObject($input)
+    public function testNotObject($input): void
     {
-        $this->assertFalse($this->object->__invoke($input));
-        $this->assertFalse($this->object->assert($input));
+        self::assertFalse($this->object->__invoke($input));
+        $this->object->assert($input);
     }
 
     public function providerForObject()

@@ -9,35 +9,39 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Version
- * @covers Respect\Validation\Exceptions\VersionException
+ * @covers \Respect\Validation\Rules\Version
+ * @covers \Respect\Validation\Exceptions\VersionException
  */
-class VersionTest extends \PHPUnit_Framework_TestCase
+class VersionTest extends TestCase
 {
     /**
      * @dataProvider providerForValidVersion
      */
-    public function testValidVersionShouldReturnTrue($input)
+    public function testValidVersionShouldReturnTrue($input): void
     {
         $rule = new Version();
-        $this->assertTrue($rule->__invoke($input));
-        $this->assertTrue($rule->assert($input));
-        $this->assertTrue($rule->check($input));
+        self::assertTrue($rule->__invoke($input));
+        $rule->assert($input);
+        $rule->check($input);
     }
 
     /**
      * @dataProvider providerForInvalidVersion
-     * @expectedException Respect\Validation\Exceptions\VersionException
+     * @expectedException \Respect\Validation\Exceptions\VersionException
      */
-    public function testInvalidVersionShouldThrowException($input)
+    public function testInvalidVersionShouldThrowException($input): void
     {
         $rule = new Version();
-        $this->assertFalse($rule->__invoke($input));
-        $this->assertFalse($rule->assert($input));
+        self::assertFalse($rule->__invoke($input));
+        $rule->assert($input);
     }
 
     public function providerForValidVersion()

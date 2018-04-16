@@ -1,7 +1,7 @@
 # No
 
-- `v::no()`
-- `v::no(boolean $locale)`
+- `No()`
+- `No(bool $locale)`
 
 Validates if value is considered as "No".
 
@@ -18,7 +18,13 @@ This rule is case insensitive.
 
 If `$locale` is TRUE, uses the value of [nl_langinfo()](http://php.net/nl_langinfo) with `NOEXPR` constant.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.7.0 | Created
+
 ***
 See also:
 
-  * [Yes](Yes.md)
+- [Yes](Yes.md)

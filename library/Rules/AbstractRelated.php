@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
@@ -54,7 +56,7 @@ abstract class AbstractRelated extends AbstractRule
                 || $this->validator->$type($this->getReferenceValue($input)));
     }
 
-    public function assert($input)
+    public function assert($input): void
     {
         $hasReference = $this->hasReference($input);
         if ($this->mandatory && !$hasReference) {
@@ -62,7 +64,7 @@ abstract class AbstractRelated extends AbstractRule
         }
 
         try {
-            return $this->decision('assert', $hasReference, $input);
+            $this->decision('assert', $hasReference, $input);
         } catch (ValidationException $e) {
             throw $this
                 ->reportError($this->reference, ['hasReference' => true])
@@ -70,17 +72,17 @@ abstract class AbstractRelated extends AbstractRule
         }
     }
 
-    public function check($input)
+    public function check($input): void
     {
         $hasReference = $this->hasReference($input);
         if ($this->mandatory && !$hasReference) {
             throw $this->reportError($input, ['hasReference' => false]);
         }
 
-        return $this->decision('check', $hasReference, $input);
+        $this->decision('check', $hasReference, $input);
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         $hasReference = $this->hasReference($input);
         if ($this->mandatory && !$hasReference) {

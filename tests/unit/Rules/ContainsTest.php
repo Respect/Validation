@@ -9,49 +9,53 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Contains
- * @covers Respect\Validation\Exceptions\ContainsException
+ * @covers \Respect\Validation\Rules\Contains
+ * @covers \Respect\Validation\Exceptions\ContainsException
  */
-class ContainsTest extends \PHPUnit_Framework_TestCase
+class ContainsTest extends TestCase
 {
     /**
      * @dataProvider providerForContainsIdentical
      */
-    public function testStringsContainingExpectedIdenticalValueShouldPass($start, $input)
+    public function testStringsContainingExpectedIdenticalValueShouldPass($start, $input): void
     {
         $v = new Contains($start, true);
-        $this->assertTrue($v->validate($input));
+        self::assertTrue($v->validate($input));
     }
 
     /**
      * @dataProvider providerForContains
      */
-    public function testStringsContainingExpectedValueShouldPass($start, $input)
+    public function testStringsContainingExpectedValueShouldPass($start, $input): void
     {
         $v = new Contains($start, false);
-        $this->assertTrue($v->validate($input));
+        self::assertTrue($v->validate($input));
     }
 
     /**
      * @dataProvider providerForNotContainsIdentical
      */
-    public function testStringsNotContainsExpectedIdenticalValueShouldNotPass($start, $input)
+    public function testStringsNotContainsExpectedIdenticalValueShouldNotPass($start, $input): void
     {
         $v = new Contains($start, true);
-        $this->assertFalse($v->validate($input));
+        self::assertFalse($v->validate($input));
     }
 
     /**
      * @dataProvider providerForNotContains
      */
-    public function testStringsNotContainsExpectedValueShouldNotPass($start, $input)
+    public function testStringsNotContainsExpectedValueShouldNotPass($start, $input): void
     {
         $v = new Contains($start, false);
-        $this->assertFalse($v->validate($input));
+        self::assertFalse($v->validate($input));
     }
 
     public function providerForContains()

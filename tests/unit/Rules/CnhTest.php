@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Cnh
- * @covers Respect\Validation\Exceptions\CnhException
+ * @covers \Respect\Validation\Rules\Cnh
+ * @covers \Respect\Validation\Exceptions\CnhException
  */
-class CnhTest extends \PHPUnit_Framework_TestCase
+class CnhTest extends TestCase
 {
     protected $cnhValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->cnhValidator = new Cnh();
     }
@@ -28,41 +32,41 @@ class CnhTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider validCnhProvider
      */
-    public function testValidCnh($cnh)
+    public function testValidCnh($cnh): void
     {
-        $this->assertTrue($this->cnhValidator->assert($cnh));
-        $this->assertTrue($this->cnhValidator->__invoke($cnh));
-        $this->assertTrue($this->cnhValidator->check($cnh));
+        $this->cnhValidator->assert($cnh);
+        self::assertTrue($this->cnhValidator->__invoke($cnh));
+        $this->cnhValidator->check($cnh);
     }
 
     /**
      * @dataProvider invalidCnhProvider
-     * @expectedException Respect\Validation\Exceptions\CnhException
+     * @expectedException \Respect\Validation\Exceptions\CnhException
      */
-    public function testInvalidCnh($cnh)
+    public function testInvalidCnh($cnh): void
     {
         $expectedInvalid = $this->cnhValidator->assert($cnh);
-        $this->assertFalse($expectedInvalid);
+        self::assertFalse($expectedInvalid);
     }
 
     /**
      * @dataProvider notIntegerCnhProvider
-     * @expectedException Respect\Validation\Exceptions\CnhException
+     * @expectedException \Respect\Validation\Exceptions\CnhException
      */
-    public function testNotIntegerCnh($cnh)
+    public function testNotIntegerCnh($cnh): void
     {
         $expectedInvalid = $this->cnhValidator->assert($cnh);
-        $this->assertFalse($expectedInvalid);
+        self::assertFalse($expectedInvalid);
     }
 
     /**
      * @dataProvider invalidCnhLengthProvider
-     * @expectedException Respect\Validation\Exceptions\CnhException
+     * @expectedException \Respect\Validation\Exceptions\CnhException
      */
-    public function testInvalidLengthCnh($cnh)
+    public function testInvalidLengthCnh($cnh): void
     {
         $expectedInvalid = $this->cnhValidator->assert($cnh);
-        $this->assertFalse($expectedInvalid);
+        self::assertFalse($expectedInvalid);
     }
 
     public function validCnhProvider()

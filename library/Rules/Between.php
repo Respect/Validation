@@ -9,29 +9,48 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Helpers\ComparisonHelper;
 
-class Between extends AllOf
+/**
+ * Validates whether the input is between two other values.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class Between extends AbstractEnvelope
 {
-    public $minValue;
-    public $maxValue;
+    use ComparisonHelper;
 
-    public function __construct($min = null, $max = null, $inclusive = true)
+    /**
+     * Initializes the rule.
+     *
+     * @param mixed $minimum
+     * @param mixed $maximum
+     * @param bool $inclusive
+     *
+     * @throws ComponentException
+     */
+    public function __construct($minimum, $maximum, bool $inclusive = true)
     {
-        $this->minValue = $min;
-        $this->maxValue = $max;
-        if (!is_null($min) && !is_null($max) && $min > $max) {
-            throw new ComponentException(sprintf('%s cannot be less than  %s for validation', $min, $max));
+        if ($this->toComparable($minimum) >= $this->toComparable($maximum)) {
+            throw new ComponentException('Minimum cannot be less than or equals to maximum');
         }
 
-        if (!is_null($min)) {
-            $this->addRule(new Min($min, $inclusive));
-        }
-
-        if (!is_null($max)) {
-            $this->addRule(new Max($max, $inclusive));
-        }
+        parent::__construct(
+            new AllOf(
+                new Min($minimum, $inclusive),
+                new Max($maximum, $inclusive)
+            ),
+            [
+                'minimum' => $minimum,
+                'maximum' => $maximum,
+                'inclusive' => $inclusive,
+            ]
+        );
     }
 }

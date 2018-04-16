@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 /**
@@ -23,13 +25,13 @@ class Bsn extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input)
+    public function validate($input): bool
     {
         if (!ctype_digit($input)) {
             return false;
         }
 
-        if (strlen($input) !== 9) {
+        if (9 !== mb_strlen($input)) {
             return false;
         }
 
@@ -38,6 +40,6 @@ class Bsn extends AbstractRule
             $sum += $i * $input[9 - $i];
         }
 
-        return $sum !== 0 && $sum % 11 === 0;
+        return 0 !== $sum && 0 === $sum % 11;
     }
 }

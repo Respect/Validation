@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Imei extends AbstractRule
@@ -22,23 +24,17 @@ class Imei extends AbstractRule
      *
      * @return bool
      */
-    public function validate($input)
+    public function validate($input): bool
     {
         if (!is_scalar($input)) {
             return false;
         }
 
         $numbers = preg_replace('/\D/', '', $input);
-        if (strlen($numbers) != self::IMEI_SIZE) {
+        if (self::IMEI_SIZE != mb_strlen($numbers)) {
             return false;
         }
 
-        $sum = 0;
-        for ($position = 0; $position < (self::IMEI_SIZE - 1); ++$position) {
-            $number = $numbers[$position] * (($position % 2) + 1);
-            $sum += ($number % 10) + intval($number / 10);
-        }
-
-        return ((ceil($sum / 10) * 10) - $sum == $numbers[14]);
+        return (new Luhn())->validate($numbers);
     }
 }

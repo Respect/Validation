@@ -9,40 +9,44 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Digit
- * @covers Respect\Validation\Exceptions\DigitException
+ * @covers \Respect\Validation\Rules\Digit
+ * @covers \Respect\Validation\Exceptions\DigitException
  */
-class DigitTest extends \PHPUnit_Framework_TestCase
+class DigitTest extends TestCase
 {
     /**
      * @dataProvider providerForValidDigits
      */
-    public function testValidDataWithDigitsShouldReturnTrue($validDigits, $additional = '')
+    public function testValidDataWithDigitsShouldReturnTrue($validDigits, $additional = ''): void
     {
         $validator = new Digit($additional);
-        $this->assertTrue($validator->validate($validDigits));
+        self::assertTrue($validator->validate($validDigits));
     }
 
     /**
      * @dataProvider providerForInvalidDigits
-     * @expectedException Respect\Validation\Exceptions\DigitException
+     * @expectedException \Respect\Validation\Exceptions\DigitException
      */
-    public function testInvalidDigitsShouldFailAndThrowDigitException($invalidDigits, $additional = '')
+    public function testInvalidDigitsShouldFailAndThrowDigitException($invalidDigits, $additional = ''): void
     {
         $validator = new Digit($additional);
-        $this->assertFalse($validator->validate($invalidDigits));
-        $this->assertFalse($validator->assert($invalidDigits));
+        self::assertFalse($validator->validate($invalidDigits));
+        $validator->assert($invalidDigits);
     }
 
     /**
      * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
     {
         $validator = new Digit($additional);
     }
@@ -50,10 +54,10 @@ class DigitTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerAdditionalChars
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function testAdditionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Digit($additional);
-        $this->assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($query));
     }
 
     public function providerAdditionalChars()

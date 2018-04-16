@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\NfeAccessKey
- * @covers Respect\Validation\Exceptions\NfeAccessKeyException
+ * @covers \Respect\Validation\Rules\NfeAccessKey
+ * @covers \Respect\Validation\Exceptions\NfeAccessKeyException
  */
-class NfeAccessKeyTest extends \PHPUnit_Framework_TestCase
+class NfeAccessKeyTest extends TestCase
 {
     protected $nfeValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->nfeValidator = new NfeAccessKey();
     }
@@ -28,29 +32,29 @@ class NfeAccessKeyTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider validAccessKeyProvider
      */
-    public function testValidAccessKey($aK)
+    public function testValidAccessKey($aK): void
     {
-        $this->assertTrue($this->nfeValidator->assert($aK));
-        $this->assertTrue($this->nfeValidator->__invoke($aK));
-        $this->assertTrue($this->nfeValidator->check($aK));
+        $this->nfeValidator->assert($aK);
+        self::assertTrue($this->nfeValidator->__invoke($aK));
+        $this->nfeValidator->check($aK);
     }
 
     /**
      * @dataProvider invalidAccessKeyProvider
-     * @expectedException Respect\Validation\Exceptions\NfeAccessKeyException
+     * @expectedException \Respect\Validation\Exceptions\NfeAccessKeyException
      */
-    public function testInvalidAccessKey($aK)
+    public function testInvalidAccessKey($aK): void
     {
-        $this->assertFalse($this->nfeValidator->assert($aK));
+        $this->nfeValidator->assert($aK);
     }
 
     /**
      * @dataProvider invalidAccessKeyLengthProvider
-     * @expectedException Respect\Validation\Exceptions\NfeAccessKeyException
+     * @expectedException \Respect\Validation\Exceptions\NfeAccessKeyException
      */
-    public function testInvalidLengthCnh($aK)
+    public function testInvalidLengthCnh($aK): void
     {
-        $this->assertFalse($this->nfeValidator->assert($aK));
+        $this->nfeValidator->assert($aK);
     }
 
     public function validAccessKeyProvider()

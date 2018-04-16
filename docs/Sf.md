@@ -1,6 +1,6 @@
 # Sf
 
-- `v::sf(string $validator)`
+- `Sf(string $validatorName)`
 
 Use Symfony2 validators inside Respect\Validation flow. Messages
 are preserved.
@@ -9,11 +9,14 @@ are preserved.
 v::sf('Time')->validate('15:00:00');
 ```
 
+## Changelog
 
-You must add `"symfony/validator": "~2.6"` to your `require` property on composer.json file.
-
+Version | Description
+--------|-------------
+  2.0.0 | Upgraded support to version >=3.0.0 of Symfony Validator
+  0.3.9 | Created
 
 ***
 See also:
 
-  * [Zend](Zend.md)
+- [Zend](Zend.md)

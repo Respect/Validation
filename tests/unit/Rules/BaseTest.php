@@ -9,57 +9,61 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Base
- * @covers Respect\Validation\Exceptions\BaseException
+ * @covers \Respect\Validation\Rules\Base
+ * @covers \Respect\Validation\Exceptions\BaseException
  */
-class BaseTest extends \PHPUnit_Framework_TestCase
+class BaseTest extends TestCase
 {
     protected $object;
 
     /**
      * @dataProvider providerForBase
      */
-    public function testBase($base, $input)
+    public function testBase($base, $input): void
     {
         $object = new Base($base);
-        $this->assertTrue($object->__invoke($input));
-        $this->assertTrue($object->check($input));
-        $this->assertTrue($object->assert($input));
+        self::assertTrue($object->__invoke($input));
+        $object->check($input);
+        $object->assert($input);
     }
 
     /**
      * @dataProvider providerForInvalidBase
      */
-    public function testInvalidBase($base, $input)
+    public function testInvalidBase($base, $input): void
     {
         $object = new Base($base);
-        $this->assertFalse($object->__invoke($input));
+        self::assertFalse($object->__invoke($input));
     }
 
     /**
      * @dataProvider providerForExceptionBase
-     * @expectedException Respect\Validation\Exceptions\BaseException
+     * @expectedException \Respect\Validation\Exceptions\BaseException
      */
-    public function testExceptionBase($base, $input)
+    public function testExceptionBase($base, $input): void
     {
         $object = new Base($base);
-        $this->assertTrue($object->__invoke($input));
-        $this->assertTrue($object->assert($input));
+        self::assertTrue($object->__invoke($input));
+        $object->assert($input);
     }
 
     /**
      * @dataProvider providerForCustomBase
      */
-    public function testCustomBase($base, $custom, $input)
+    public function testCustomBase($base, $custom, $input): void
     {
         $object = new Base($base, $custom);
-        $this->assertTrue($object->__invoke($input));
-        $this->assertTrue($object->check($input));
-        $this->assertTrue($object->assert($input));
+        self::assertTrue($object->__invoke($input));
+        $object->check($input);
+        $object->assert($input);
     }
 
     public function providerForBase()

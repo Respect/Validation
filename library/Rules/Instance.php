@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Instance extends AbstractRule
@@ -25,7 +27,7 @@ class Instance extends AbstractRule
         return parent::reportError($input, $extraParams);
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         return $input instanceof $this->instanceName;
     }

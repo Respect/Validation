@@ -9,35 +9,39 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Multiple
- * @covers Respect\Validation\Exceptions\MultipleException
+ * @covers \Respect\Validation\Rules\Multiple
+ * @covers \Respect\Validation\Exceptions\MultipleException
  */
-class MultipleTest extends \PHPUnit_Framework_TestCase
+class MultipleTest extends TestCase
 {
     /**
      * @dataProvider providerForMultiple
      */
-    public function testValidNumberMultipleOf($multipleOf, $input)
+    public function testValidNumberMultipleOf($multipleOf, $input): void
     {
         $multiple = new Multiple($multipleOf);
-        $this->assertTrue($multiple->validate($input));
-        $this->assertTrue($multiple->assert($input));
-        $this->assertTrue($multiple->check($input));
+        self::assertTrue($multiple->validate($input));
+        $multiple->assert($input);
+        $multiple->check($input);
     }
 
     /**
      * @dataProvider providerForNotMultiple
-     * @expectedException Respect\Validation\Exceptions\MultipleException
+     * @expectedException \Respect\Validation\Exceptions\MultipleException
      */
-    public function testNotMultipleShouldThrowMultipleException($multipleOf, $input)
+    public function testNotMultipleShouldThrowMultipleException($multipleOf, $input): void
     {
         $multiple = new Multiple($multipleOf);
-        $this->assertFalse($multiple->validate($input));
-        $this->assertFalse($multiple->assert($input));
+        self::assertFalse($multiple->validate($input));
+        $multiple->assert($input);
     }
 
     public function providerForMultiple()

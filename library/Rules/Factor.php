@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
@@ -31,16 +33,16 @@ class Factor extends AbstractRule
         $this->dividend = (int) $dividend;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         // Every integer is a factor of zero, and zero is the only integer that
         // has zero for a factor.
-        if ($this->dividend === 0) {
+        if (0 === $this->dividend) {
             return true;
         }
 
         // Factors must be integers that are not zero.
-        if (!is_numeric($input) || (int) $input != $input || $input == 0) {
+        if (!is_numeric($input) || (int) $input != $input || 0 == $input) {
             return false;
         }
 

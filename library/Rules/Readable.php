@@ -9,16 +9,18 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 class Readable extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         if ($input instanceof \SplFileInfo) {
             return $input->isReadable();
         }
 
-        return (is_string($input) && is_readable($input));
+        return is_string($input) && is_readable($input);
     }
 }

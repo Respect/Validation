@@ -1,6 +1,6 @@
 # AlwaysInvalid
 
-- `v::alwaysInvalid()`
+- `AlwaysInvalid()`
 
 Always return false.
 
@@ -8,7 +8,13 @@ Always return false.
 v::alwaysInvalid()->validate($whatever); // false
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.5.0 | Created
+
 ***
 See also:
 
-  * [AlwaysValid](AlwaysValid.md)
+- [AlwaysValid](AlwaysValid.md)

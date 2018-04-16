@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Negative
- * @covers Respect\Validation\Exceptions\NegativeException
+ * @covers \Respect\Validation\Rules\Negative
+ * @covers \Respect\Validation\Exceptions\NegativeException
  */
-class NegativeTest extends \PHPUnit_Framework_TestCase
+class NegativeTest extends TestCase
 {
     protected $negativeValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->negativeValidator = new Negative();
     }
@@ -28,21 +32,21 @@ class NegativeTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerForNegative
      */
-    public function testNegativeShouldPass($input)
+    public function testNegativeShouldPass($input): void
     {
-        $this->assertTrue($this->negativeValidator->assert($input));
-        $this->assertTrue($this->negativeValidator->__invoke($input));
-        $this->assertTrue($this->negativeValidator->check($input));
+        $this->negativeValidator->assert($input);
+        self::assertTrue($this->negativeValidator->__invoke($input));
+        $this->negativeValidator->check($input);
     }
 
     /**
      * @dataProvider providerForNotNegative
-     * @expectedException Respect\Validation\Exceptions\NegativeException
+     * @expectedException \Respect\Validation\Exceptions\NegativeException
      */
-    public function testNotNegativeNumbersShouldThrowNegativeException($input)
+    public function testNotNegativeNumbersShouldThrowNegativeException($input): void
     {
-        $this->assertFalse($this->negativeValidator->__invoke($input));
-        $this->assertFalse($this->negativeValidator->assert($input));
+        self::assertFalse($this->negativeValidator->__invoke($input));
+        $this->negativeValidator->assert($input);
     }
 
     public function providerForNegative()

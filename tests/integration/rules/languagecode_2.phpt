@@ -9,25 +9,25 @@ use Respect\Validation\Validator as v;
 try {
     v::languageCode('alpha-3')->check('pt');
 } catch (LanguageCodeException $e) {
-    echo $e->getMainMessage() . PHP_EOL;
+    echo $e->getMainMessage().PHP_EOL;
 }
 
 try {
     v::languageCode()->assert('eng');
 } catch (AllOfException $e) {
-    echo $e->getFullMessage() . PHP_EOL;
+    echo $e->getFullMessage().PHP_EOL;
 }
 
 try {
     v::not(v::languageCode())->assert('en');
 } catch (AllOfException $e) {
-    echo $e->getFullMessage() . PHP_EOL;
+    echo $e->getFullMessage().PHP_EOL;
 }
 
 try {
     v::not(v::languageCode())->check('pt');
 } catch (LanguageCodeException $e) {
-    echo $e->getMainMessage() . PHP_EOL;
+    echo $e->getMainMessage().PHP_EOL;
 }
 
 ?>

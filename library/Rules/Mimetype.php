@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use finfo;
@@ -44,7 +46,7 @@ class Mimetype extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input)
+    public function validate($input): bool
     {
         if ($input instanceof SplFileInfo) {
             $input = $input->getPathname();
@@ -58,6 +60,6 @@ class Mimetype extends AbstractRule
             return false;
         }
 
-        return ($this->fileInfo->file($input) == $this->mimetype);
+        return $this->fileInfo->file($input) == $this->mimetype;
     }
 }

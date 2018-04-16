@@ -9,26 +9,30 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\No
- * @covers Respect\Validation\Exceptions\NoException
+ * @covers \Respect\Validation\Rules\No
+ * @covers \Respect\Validation\Exceptions\NoException
  */
-class NoTest extends \PHPUnit_Framework_TestCase
+class NoTest extends TestCase
 {
-    public function testShouldUseDefaultPattern()
+    public function testShouldUseDefaultPattern(): void
     {
         $rule = new No();
 
         $actualPattern = $rule->regex;
         $expectedPattern = '/^n(o(t|pe)?|ix|ay)?$/i';
 
-        $this->assertEquals($expectedPattern, $actualPattern);
+        self::assertEquals($expectedPattern, $actualPattern);
     }
 
-    public function testShouldUseLocalPatternForNoExpressionWhenDefined()
+    public function testShouldUseLocalPatternForNoExpressionWhenDefined(): void
     {
         if (!defined('NOEXPR')) {
             $this->markTestSkipped('Constant NOEXPR is not defined');
@@ -41,17 +45,17 @@ class NoTest extends \PHPUnit_Framework_TestCase
         $actualPattern = $rule->regex;
         $expectedPattern = '/'.nl_langinfo(NOEXPR).'/i';
 
-        $this->assertEquals($expectedPattern, $actualPattern);
+        self::assertEquals($expectedPattern, $actualPattern);
     }
 
     /**
      * @dataProvider validNoProvider
      */
-    public function testShouldValidatePatternAccordingToTheDefinedLocale($input)
+    public function testShouldValidatePatternAccordingToTheDefinedLocale($input): void
     {
         $rule = new No();
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     public function validNoProvider()
@@ -69,11 +73,11 @@ class NoTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider invalidNoProvider
      */
-    public function testShouldNotValidatePatternAccordingToTheDefinedLocale($input)
+    public function testShouldNotValidatePatternAccordingToTheDefinedLocale($input): void
     {
         $rule = new No();
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     public function invalidNoProvider()
