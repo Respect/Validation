@@ -38,19 +38,60 @@ $user->name = 'Alexandre';
 $user->birthdate = '1987-07-01';
 ```
 
-Is possible to validate its attributes in a single chain:
+There are 3 flexible API styles to validate its attributes:
+
+#### the fluent API (for end users):
 
 ```php
-$userValidator = v::attribute('name', v::stringType()->length(1,32))
-                  ->attribute('birthdate', v::date()->age(18));
+$userValidator = v::attribute('name', v::stringType()->length(1, 32))
+                  ->attribute('birthdate', v::minimumAge(18));
 
 $userValidator->validate($user); // true
 ```
 
+#### the builder API (when building tools that use dynamic rules):
+
+```php
+$userValidator = v;
+
+$userValidator = $userValidator->buildRule(
+    'attribute', 
+    array('name', v::buildRule('stringType')->buildRule('length', array(1, 32)))
+);
+$userValidator = $userValidator->buildRule(
+    'attribute', 
+    array('birthdate', v::buildRule('minimumAge', array(18)))
+);
+
+$userValidator->validate($user); // true
+```
+
+#### the concrete api (best suited for DI containers and out-of-scope reuse):
+
+```php
+// Importing Rules Namespace
+use \Respect\Validation\Rules as Rule;
+
+// Building the validator for string type
+$stringType = new Rule\StringType();
+// Building the validator for length, string type dependent
+$stringLength = $stringType->length(1, 32);
+// Building the validator for age
+$minimumAge = new Rule\MinimumAge(18);
+
+// Building the validator with attributes bound to our validators
+$userValidator = new Rule\Attribute('name', $stringLength)
+                     ->attribute('birthdate', $minimumAge);
+
+$userValidator->validate($user); // true
+```
+
+All three examples run the exact same validation code, the only difference is in the API.
+
 Validating array keys is also possible using `v::key()`
 
-Note that we used `v::stringType()` and `v::date()` in the beginning of the validator.
-Although is not mandatory, it is a good practice to use the type of the
+Note that we used `v::stringType()` in the beginning of the `name` validator.
+Although it is not mandatory, it is good practice to use the type of the
 validated object as the first node in the chain.
 
 ## Input optional
