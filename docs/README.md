@@ -52,16 +52,19 @@ $userValidator->validate($user); // true
 #### the builder API (when building tools that use dynamic rules):
 
 ```php
-$userValidator = v;
+$stringLength = v::buildRule('allOf');
+$stringLength->addRule(v::buildRule('stringType'));
+$stringLength->addRule(v::buildRule('length', array(1, 32)));
 
-$userValidator = $userValidator->buildRule(
-    'attribute', 
-    array('name', v::buildRule('stringType')->buildRule('length', array(1, 32)))
-);
-$userValidator = $userValidator->buildRule(
-    'attribute', 
+$userValidator = v::buildRule('allOf');
+$userValidator->addRule(v::buildRule(
+    'attribute',
+    array('name', $stringLength)
+));
+$userValidator->addRule(v::buildRule(
+    'attribute',
     array('birthdate', v::buildRule('minimumAge', array(18)))
-);
+));
 
 $userValidator->validate($user); // true
 ```
@@ -72,16 +75,21 @@ $userValidator->validate($user); // true
 // Importing Rules Namespace
 use \Respect\Validation\Rules as Rule;
 
-// Building the validator for string type
-$stringType = new Rule\StringType();
-// Building the validator for length, string type dependent
-$stringLength = $stringType->length(1, 32);
+// Building the validator for string type length
+$stringLength = new Rule\AllOf();
+// Adding validator for string type
+$stringLength->addRule(new Rule\StringType());
+// Adding validator for length
+$stringLength->addRule(new Rule\Length(1, 32));
 // Building the validator for age
 $minimumAge = new Rule\MinimumAge(18);
 
 // Building the validator with attributes bound to our validators
-$userValidator = new Rule\Attribute('name', $stringLength)
-                     ->attribute('birthdate', $minimumAge);
+$userValidator = new Rule\AllOf();
+// Adding attribute validator for name
+$userValidator->addRule(new Rule\Attribute('name', $stringLength));
+// Adding attribute validator for birthdate
+$userValidator->addRule(new Rule\Attribute('birthdate', $minimumAge));
 
 $userValidator->validate($user); // true
 ```
