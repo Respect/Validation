@@ -13,61 +13,41 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
  * @covers \Respect\Validation\Rules\NotEmpty
- * @covers \Respect\Validation\Exceptions\NotEmptyException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class NotEmptyTest extends TestCase
+final class NotEmptyTest extends RuleTestCase
 {
-    protected $object;
-
-    protected function setUp(): void
+    public function providerForValidInput(): array
     {
-        $this->object = new NotEmpty();
-    }
+        $rule = new NotEmpty();
 
-    /**
-     * @doesNotPerformAssertions
-     *
-     * @dataProvider providerForNotEmpty
-     */
-    public function testStringNotEmpty($input): void
-    {
-        $this->object->assert($input);
-    }
-
-    /**
-     * @dataProvider providerForEmpty
-     * @expectedException \Respect\Validation\Exceptions\NotEmptyException
-     */
-    public function testStringEmpty($input): void
-    {
-        $this->object->assert($input);
-    }
-
-    public function providerForNotEmpty()
-    {
         return [
-            [1],
-            [' oi'],
-            [[5]],
-            [[0]],
-            [new \stdClass()],
+            [$rule, 1],
+            [$rule, ' oi'],
+            [$rule, [5]],
+            [$rule, [0]],
+            [$rule, new \stdClass()],
         ];
     }
 
-    public function providerForEmpty()
+    public function providerForInvalidInput(): array
     {
+        $rule = new NotEmpty();
+
         return [
-            [''],
-            ['    '],
-            ["\n"],
-            [false],
-            [null],
-            [[]],
+            [$rule, ''],
+            [$rule, '    '],
+            [$rule, "\n"],
+            [$rule, false],
+            [$rule, null],
+            [$rule, []],
         ];
     }
 }

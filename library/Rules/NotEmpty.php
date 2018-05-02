@@ -13,8 +13,17 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+/**
+ * Validates whether the input is not empty
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class NotEmpty extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (is_string($input)) {

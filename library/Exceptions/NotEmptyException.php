@@ -13,7 +13,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class NotEmptyException extends ValidationException
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class NotEmptyException extends ValidationException
 {
     const STANDARD = 0;
     const NAMED = 1;
