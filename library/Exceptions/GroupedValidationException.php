@@ -15,8 +15,8 @@ namespace Respect\Validation\Exceptions;
 
 class GroupedValidationException extends NestedValidationException
 {
-    const NONE = 0;
-    const SOME = 1;
+    public const NONE = 0;
+    public const SOME = 1;
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

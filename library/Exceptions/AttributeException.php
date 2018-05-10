@@ -15,8 +15,8 @@ namespace Respect\Validation\Exceptions;
 
 class AttributeException extends NestedValidationException implements NonOmissibleExceptionInterface
 {
-    const NOT_PRESENT = 0;
-    const INVALID = 1;
+    public const NOT_PRESENT = 0;
+    public const INVALID = 1;
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::NOT_PRESENT => 'Attribute {{name}} must be present',

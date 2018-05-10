@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class Imei extends AbstractRule
 {
-    const IMEI_SIZE = 15;
+    public const IMEI_SIZE = 15;
 
     /**
      * @see https://en.wikipedia.org/wiki/International_Mobile_Station_Equipment_Identity

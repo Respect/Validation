@@ -15,10 +15,10 @@ namespace Respect\Validation\Exceptions;
 
 class LengthException extends ValidationException
 {
-    const BOTH = 0;
-    const LOWER = 1;
-    const GREATER = 2;
-    const EXACT = 3;
+    public const BOTH = 0;
+    public const LOWER = 1;
+    public const GREATER = 2;
+    public const EXACT = 3;
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

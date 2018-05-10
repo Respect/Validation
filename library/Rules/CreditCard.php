@@ -17,12 +17,12 @@ use Respect\Validation\Exceptions\ComponentException;
 
 class CreditCard extends AbstractRule
 {
-    const AMERICAN_EXPRESS = 'American Express';
-    const DINERS_CLUB = 'Diners Club';
-    const DISCOVER = 'Discover';
-    const JCB = 'JCB';
-    const MASTERCARD = 'MasterCard';
-    const VISA = 'Visa';
+    public const AMERICAN_EXPRESS = 'American Express';
+    public const DINERS_CLUB = 'Diners Club';
+    public const DISCOVER = 'Discover';
+    public const JCB = 'JCB';
+    public const MASTERCARD = 'MasterCard';
+    public const VISA = 'Visa';
 
     /**
      * @var string

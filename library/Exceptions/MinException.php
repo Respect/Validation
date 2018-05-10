@@ -15,7 +15,7 @@ namespace Respect\Validation\Exceptions;
 
 class MinException extends ValidationException
 {
-    const INCLUSIVE = 1;
+    public const INCLUSIVE = 1;
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

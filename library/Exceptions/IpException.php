@@ -15,8 +15,8 @@ namespace Respect\Validation\Exceptions;
 
 class IpException extends ValidationException
 {
-    const STANDARD = 0;
-    const NETWORK_RANGE = 1;
+    public const STANDARD = 0;
+    public const NETWORK_RANGE = 1;
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

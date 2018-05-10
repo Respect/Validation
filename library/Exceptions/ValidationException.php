@@ -20,9 +20,9 @@ use function Respect\Stringifier\stringify;
 
 class ValidationException extends InvalidArgumentException implements ExceptionInterface
 {
-    const MODE_DEFAULT = 1;
-    const MODE_NEGATIVE = 2;
-    const STANDARD = 0;
+    public const MODE_DEFAULT = 1;
+    public const MODE_NEGATIVE = 2;
+    public const STANDARD = 0;
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be valid',

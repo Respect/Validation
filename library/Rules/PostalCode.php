@@ -17,7 +17,7 @@ use Respect\Validation\Exceptions\ComponentException;
 
 class PostalCode extends Regex
 {
-    const DEFAULT_PATTERN = '/^$/';
+    public const DEFAULT_PATTERN = '/^$/';
 
     /**
      * @see http://download.geonames.org/export/dump/countryInfo.txt

@@ -15,7 +15,7 @@ namespace Respect\Validation\Exceptions;
 
 class KeyValueException extends ValidationException
 {
-    const COMPONENT = 1;
+    public const COMPONENT = 1;
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

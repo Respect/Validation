@@ -15,7 +15,7 @@ namespace Respect\Validation\Exceptions;
 
 class CreditCardException extends ValidationException
 {
-    const BRANDED = 1;
+    public const BRANDED = 1;
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

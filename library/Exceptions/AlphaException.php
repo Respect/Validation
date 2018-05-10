@@ -15,7 +15,7 @@ namespace Respect\Validation\Exceptions;
 
 class AlphaException extends ValidationException
 {
-    const EXTRA = 1;
+    public const EXTRA = 1;
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

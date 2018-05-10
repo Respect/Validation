@@ -15,7 +15,7 @@ namespace Respect\Validation\Exceptions;
 
 class KeySetException extends GroupedValidationException implements NonOmissibleExceptionInterface
 {
-    const STRUCTURE = 2;
+    public const STRUCTURE = 2;
 
     /**
      * @var array

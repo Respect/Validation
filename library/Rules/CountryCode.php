@@ -20,9 +20,9 @@ use Respect\Validation\Exceptions\ComponentException;
  */
 class CountryCode extends AbstractRule
 {
-    const ALPHA2 = 'alpha-2';
-    const ALPHA3 = 'alpha-3';
-    const NUMERIC = 'numeric';
+    public const ALPHA2 = 'alpha-2';
+    public const ALPHA3 = 'alpha-3';
+    public const NUMERIC = 'numeric';
 
     /**
      * @see http://download.geonames.org/export/dump/countryInfo.txt

@@ -15,7 +15,7 @@ namespace Respect\Validation\Exceptions;
 
 class VideoUrlException extends ValidationException
 {
-    const SERVICE = 1;
+    public const SERVICE = 1;
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

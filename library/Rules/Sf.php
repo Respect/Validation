@@ -21,7 +21,7 @@ use Symfony\Component\Validator\Validation;
 
 class Sf extends AbstractRule
 {
-    const SYMFONY_CONSTRAINT_NAMESPACE = 'Symfony\Component\Validator\Constraints\%s';
+    public const SYMFONY_CONSTRAINT_NAMESPACE = 'Symfony\Component\Validator\Constraints\%s';
     public $name;
     private $constraint;
 
