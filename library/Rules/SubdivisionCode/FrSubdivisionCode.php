@@ -19,32 +19,27 @@ use Respect\Validation\Rules\AbstractSearcher;
  * ISO 3166-1 alpha-2: FR
  *
  * @link http://www.geonames.org/FR/administrative-division-france.html
+ * @link https://www.iso.org/obp/ui/en/#iso:code:3166:FR
  */
 class FrSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'A', // Alsace
-        'B', // Aquitaine
-        'C', // Auvergne
-        'D', // Bourgogne
-        'E', // Bretagne
-        'F', // Centre
-        'G', // Champagne-Ardenne
-        'H', // Territorial Collectivity of Corsica
-        'I', // Franche-Comté
-        'J', // Île-de-France
-        'K', // Languedoc-Roussillon
-        'L', // Limousin
-        'M', // Lorraine
-        'N', // Midi-Pyrénées
-        'O', // Nord-Pas-de-Calais
-        'P', // Basse-Normandie
-        'Q', // Haute-Normandie
-        'R', // Pays de la Loire
-        'S', // Picardie
-        'T', // Poitou-Charentes
-        'U', // Provence-Alpes-Côte d'Azur
-        'V', // Rhône-Alpes
+        'ARA', // Auvergne-Rhône-Alpes
+        'BFC', // Bourgogne-Franche-Comté
+        'BRE', // Bretagne
+        'CVL', // Centre-Val de Loire
+        'COR', // Corse
+        'GES', // Grand Est
+        'GUA', // Guadeloupe
+        'HDF', // Hauts-de-France
+        'IDF', // Île-de-France
+        'MAY', // Mayotte
+        'NOR', // Normandie
+        'NAQ', // Nouvelle-Aquitaine
+        'OCC', // Occitanie
+        'PDL', // Pays de la Loire
+        'PAC', // Provence-Alpes-Côte d'Azur
+        'LRE', // La Réunion
         '01', // Ain
         '02', // Aisne
         '03', // Allier
@@ -143,10 +138,14 @@ class FrSubdivisionCode extends AbstractSearcher
         '95', // Val-d'Oise
         'BL', // Saint Barthélemy (see also separate ISO 3166-1 entry under BL)
         'CP', // Clipperton
+        'GF', // Guyane (française) (see also separate country code entry under GF)
+        'GP', // Guadeloupe (see also separate country code entry under GP)
         'MF', // Saint Martin (see also separate ISO 3166-1 entry under MF)
+        'MQ', // Martinique (see also separate country code entry under MQ)
         'NC', // Nouvelle-Calédonie (see also separate ISO 3166-1 entry under NC)
         'PF', // Polynésie française (see also separate ISO 3166-1 entry under PF)
         'PM', // Saint-Pierre-et-Miquelon (see also separate ISO 3166-1 entry under PM)
+        'RE', // La Réunion (see also separate country code entry under RE)
         'TF', // Terres Australes Françaises (see also separate ISO 3166-1 entry under TF)
         'WF', // Wallis et Futuna (see also separate ISO 3166-1 entry under WF)
         'YT', // Mayotte (see also separate ISO 3166-1 entry under YT)
