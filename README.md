@@ -23,4 +23,3 @@
 - [License](LICENSE.md)
 - [Validators](docs/VALIDATORS.md)
 - [Changelog](CHANGELOG.md)
-- [Support](https://github.com/Respect/Validation/issues?utf8=✓&q=label%3ASupport+)
