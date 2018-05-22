@@ -3,8 +3,8 @@
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ArrayValException;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
 try {
