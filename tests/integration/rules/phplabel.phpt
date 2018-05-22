@@ -11,7 +11,7 @@ try {
     v::phpLabel()->check('topic01');
     v::phpLabel()->assert('access');
 } catch (AllOfException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--

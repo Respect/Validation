@@ -8,7 +8,7 @@ use Respect\Validation\Validator as v;
 try {
     v::currencyCode()->check('batman');
 } catch (CurrencyCodeException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--

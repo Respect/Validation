@@ -131,7 +131,7 @@ $usernameValidator->validate('#$%');                //false
   - Thrown when the `check()` fails
   - All validation exceptions extend this class
   - Available methods:
-    - `getMainMessage()`;
+    - `getMessage()`;
     - `setMode($mode)`;
     - `setName($name)`;
     - `setParam($name, $value)`;
@@ -249,7 +249,7 @@ $exception->setParam('translator', 'gettext');
 The example above uses `gettext()` but you can use any other callable value, like
 `[$translator, 'trans']` or `you_custom_function()`.
 
-After that, if you call `getMainMessage()` or `getFullMessage()` (for nested),
+After that, if you call `getMessage()` or `getFullMessage()` (for nested),
 the message will be translated.
 
 Note that `getMessage()` will keep the original message.
@@ -359,7 +359,7 @@ use Respect\Validation\Exceptions\ValidationException;
 try {
     $usernameValidator->check('really messed up screen#name');
 } catch(ValidationException $exception) {
-    echo $exception->getMainMessage();
+    echo $exception->getMessage();
 }
 ```
 

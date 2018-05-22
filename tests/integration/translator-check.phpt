@@ -19,7 +19,7 @@ try {
 } catch (ValidationException $exception) {
     $exception->setParam('translator', 'translatorCallback');
 
-    echo $exception->getMainMessage();
+    echo $exception->getMessage();
 }
 ?>
 --EXPECTF--

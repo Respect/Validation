@@ -9,13 +9,13 @@ use Respect\Validation\Validator as v;
 try {
     v::nullType()->check('');
 } catch (NullTypeException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {
     v::not(v::nullType())->check(null);
 } catch (NullTypeException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {

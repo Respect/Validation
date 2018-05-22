@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::iterableType())->check([2, 3]);
 } catch (IterableTypeException $exception) {
-    echo $exception->getMainMessage();
+    echo $exception->getMessage();
 }
 ?>
 --EXPECTF--

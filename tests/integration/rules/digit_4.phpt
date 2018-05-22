@@ -8,7 +8,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::digit())->check(1);
 } catch (DigitException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--

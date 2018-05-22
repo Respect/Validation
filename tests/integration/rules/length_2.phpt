@@ -9,19 +9,19 @@ use Respect\Validation\Validator as v;
 try {
     v::length(0, 5)->check('nawarian');
 } catch (LengthException $e) {
-    echo $e->getMainMessage().PHP_EOL;
+    echo $e->getMessage().PHP_EOL;
 }
 
 try {
     v::length(13, null)->check('phpsp.org.br');
 } catch (LengthException $e) {
-    echo $e->getMainMessage().PHP_EOL;
+    echo $e->getMessage().PHP_EOL;
 }
 
 try {
     v::not(v::length(5, 20))->check('phpsp.org.br');
 } catch (LengthException $e) {
-    echo $e->getMainMessage().PHP_EOL;
+    echo $e->getMessage().PHP_EOL;
 }
 
 ?>

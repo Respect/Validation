@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::alnum())->check('adsfASDF123');
 } catch (AlnumException $exception) {
-    echo $exception->getMainMessage();
+    echo $exception->getMessage();
 }
 
 ?>

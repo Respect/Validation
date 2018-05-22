@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::countable())->check([]);
 } catch (CountableException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--

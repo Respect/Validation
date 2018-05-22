@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::identityCard('PL'))->check('AYE205410');
 } catch (IdentityCardException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--

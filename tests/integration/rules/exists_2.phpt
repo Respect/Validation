@@ -8,7 +8,7 @@ use Respect\Validation\Validator as v;
 try {
     v::exists()->check('/path/of/a/non-existent/file');
 } catch (ExistsException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--

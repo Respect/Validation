@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::alnum()->check('Bla %123');
 } catch (AlnumException $exception) {
-    echo $exception->getMainMessage();
+    echo $exception->getMessage();
 }
 
 ?>

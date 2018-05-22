@@ -8,7 +8,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::email())->check('bruce.wayne@gothancity.com');
 } catch (EmailException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--

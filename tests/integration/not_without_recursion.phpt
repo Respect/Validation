@@ -13,7 +13,7 @@ try {
     );
     $validator->check(2);
 } catch (ValidationException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 ?>
 --EXPECTF--

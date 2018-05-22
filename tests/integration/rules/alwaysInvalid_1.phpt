@@ -10,7 +10,7 @@ use Respect\Validation\Validator;
 try {
     Validator::alwaysInvalid()->check('whatever');
 } catch (AlwaysInvalidException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--

@@ -9,13 +9,13 @@ use Respect\Validation\Validator as v;
 try {
     v::objectType()->check([]);
 } catch (ObjectTypeException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {
     v::not(v::objectType())->check(new stdClass());
 } catch (ObjectTypeException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {

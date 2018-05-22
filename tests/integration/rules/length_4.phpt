@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::length(5, 5)->check('123456');
 } catch (LengthException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--

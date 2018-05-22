@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::notBlank()->setName('Field')->check(null);
 } catch (NotBlankException $e) {
-    echo $e->getMainMessage().PHP_EOL;
+    echo $e->getMessage().PHP_EOL;
 }
 
 try {

@@ -9,13 +9,13 @@ use Respect\Validation\Validator as v;
 try {
     v::floatType()->check('42.33');
 } catch (FloatTypeException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {
     v::not(v::floatType())->check(INF);
 } catch (FloatTypeException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {

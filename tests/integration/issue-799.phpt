@@ -25,7 +25,7 @@ try {
         )
         ->assert($input);
 } catch (AllOfException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {
@@ -38,7 +38,7 @@ try {
         )
         ->assert($input);
 } catch (AllOfException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 ?>
 --EXPECTF--

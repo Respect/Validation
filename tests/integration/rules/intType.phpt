@@ -9,13 +9,13 @@ use Respect\Validation\Validator as v;
 try {
     v::intType()->check(new stdClass());
 } catch (IntTypeException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {
     v::not(v::intType())->check(42);
 } catch (IntTypeException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {

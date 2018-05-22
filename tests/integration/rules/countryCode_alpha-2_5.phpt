@@ -8,7 +8,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::countryCode())->check('BR');
 } catch (CountryCodeException $exception) {
-    echo $exception->getMainMessage();
+    echo $exception->getMessage();
 }
 ?>
 --EXPECTF--

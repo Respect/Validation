@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::vatin('PL'))->check('1645865777');
 } catch (VatinException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--

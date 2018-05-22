@@ -13,7 +13,7 @@ $data = [
 try {
     v::keyValue('password', 'equals', 'password_confirmation')->check($data);
 } catch (EqualsException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--

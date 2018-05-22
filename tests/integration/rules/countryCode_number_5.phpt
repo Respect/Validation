@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::countryCode(CountryCode::NUMERIC))->check('076');
 } catch (CountryCodeException $exception) {
-    echo $exception->getMainMessage();
+    echo $exception->getMessage();
 }
 ?>
 --EXPECTF--

@@ -9,13 +9,13 @@ use Respect\Validation\Validator as v;
 try {
     v::boolVal()->check('ok');
 } catch (BoolValException $e) {
-    echo $e->getMainMessage().PHP_EOL;
+    echo $e->getMessage().PHP_EOL;
 }
 
 try {
     v::not(v::boolVal())->check('yes');
 } catch (BoolValException $e) {
-    echo $e->getMainMessage().PHP_EOL;
+    echo $e->getMessage().PHP_EOL;
 }
 
 try {

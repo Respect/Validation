@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::pis()->check('this thing');
 } catch (PisException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 
 ?>

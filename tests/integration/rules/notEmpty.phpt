@@ -25,7 +25,7 @@ v::notEmpty()->check([1]);
 try {
     v::notEmpty()->check(null);
 } catch (NotEmptyException $e) {
-    echo $e->getMainMessage().PHP_EOL;
+    echo $e->getMessage().PHP_EOL;
 }
 
 try {
@@ -37,7 +37,7 @@ try {
 try {
     v::notEmpty()->setName('Field')->check(null);
 } catch (NotEmptyException $e) {
-    echo $e->getMainMessage().PHP_EOL;
+    echo $e->getMessage().PHP_EOL;
 }
 
 try {
@@ -49,7 +49,7 @@ try {
 try {
     v::not(v::notEmpty())->check(1);
 } catch (NotEmptyException $e) {
-    echo $e->getMainMessage().PHP_EOL;
+    echo $e->getMessage().PHP_EOL;
 }
 
 try {

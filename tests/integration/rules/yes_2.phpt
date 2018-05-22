@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::yes()->check('si');
 } catch (YesException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--

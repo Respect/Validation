@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::pesel())->check('21120209256');
 } catch (PeselException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--

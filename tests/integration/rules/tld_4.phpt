@@ -8,7 +8,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::tld())->check('com');
 } catch (TldException $exception) {
-    echo $exception->getMainMessage();
+    echo $exception->getMessage();
 }
 ?>
 --EXPECTF--

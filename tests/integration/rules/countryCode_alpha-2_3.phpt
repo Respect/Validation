@@ -8,7 +8,7 @@ use Respect\Validation\Validator as v;
 try {
     v::countryCode()->check('1');
 } catch (CountryCodeException $exception) {
-    echo $exception->getMainMessage();
+    echo $exception->getMessage();
 }
 ?>
 --EXPECTF--

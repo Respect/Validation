@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::alpha())->check('a');
 } catch (AlphaException $e) {
-    echo $e->getMainMessage().PHP_EOL;
+    echo $e->getMessage().PHP_EOL;
 }
 
 try {

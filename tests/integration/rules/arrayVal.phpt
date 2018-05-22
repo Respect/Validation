@@ -10,13 +10,13 @@ use Respect\Validation\Validator as v;
 try {
     v::arrayVal()->check('Bla %123');
 } catch (ArrayValException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {
     v::not(v::arrayVal())->check([42]);
 } catch (ArrayValException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {

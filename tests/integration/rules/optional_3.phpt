@@ -8,7 +8,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::optional(v::equals('foo'))->setName('My field'))->check(null);
 } catch (OptionalException $e) {
-    echo $e->getMainMessage().PHP_EOL;
+    echo $e->getMessage().PHP_EOL;
 }
 ?>
 --EXPECTF--

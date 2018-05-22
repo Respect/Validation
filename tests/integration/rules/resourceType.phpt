@@ -9,13 +9,13 @@ use Respect\Validation\Validator as v;
 try {
     v::resourceType()->check('test');
 } catch (ResourceTypeException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {
     v::not(v::resourceType())->check(tmpfile());
 } catch (ResourceTypeException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {

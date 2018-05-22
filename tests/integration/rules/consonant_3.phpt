@@ -8,7 +8,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::consonant())->check('ddd');
 } catch (ConsonantException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--

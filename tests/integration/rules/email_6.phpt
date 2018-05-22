@@ -8,7 +8,7 @@ use Respect\Validation\Validator as v;
 try {
     v::email()->check('iambatman@gothancity..com');
 } catch (EmailException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--

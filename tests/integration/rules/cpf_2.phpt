@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::cpf()->check('this thing');
 } catch (CpfException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 
 ?>

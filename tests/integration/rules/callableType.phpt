@@ -9,13 +9,13 @@ use Respect\Validation\Validator as v;
 try {
     v::callableType()->check([]);
 } catch (CallableTypeException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {
     v::not(v::callableType())->check('trim');
 } catch (CallableTypeException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {

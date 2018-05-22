@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::image())->check('tests/fixtures/valid-image.png');
 } catch (ImageException $exception) {
-    echo $exception->getMainMessage();
+    echo $exception->getMessage();
 }
 ?>
 --EXPECTF--

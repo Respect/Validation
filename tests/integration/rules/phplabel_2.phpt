@@ -10,13 +10,13 @@ use Respect\Validation\Validator as v;
 try {
     v::phpLabel()->check('f o o');
 } catch (PhpLabelException $e) {
-    echo $e->getMainMessage().PHP_EOL;
+    echo $e->getMessage().PHP_EOL;
 }
 
 try {
     v::not(v::phpLabel())->check('correctOne');
 } catch (PhpLabelException $e) {
-    echo $e->getMainMessage().PHP_EOL;
+    echo $e->getMessage().PHP_EOL;
 }
 ?>
 --EXPECTF--

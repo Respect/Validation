@@ -10,7 +10,7 @@ $input = ['email' => 'not an email'];
 try {
     v::key('email', v::email()->setName('Email'))->setName('Foo')->check($input);
 } catch (ValidationException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {
@@ -18,13 +18,13 @@ try {
     // from the `Key` rule but it's actually from the `Validator`.
     v::key('email', v::email())->setName('Email')->check($input);
 } catch (ValidationException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {
     v::key('email', v::email())->check($input);
 } catch (ValidationException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 ?>
 --EXPECTF--

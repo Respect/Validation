@@ -12,7 +12,7 @@ $rule = Validator::callback('is_int')->setTemplate('{{name}} is not tasty');
 try {
     $rule->assert('something');
 } catch (NestedValidationException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 
 echo PHP_EOL;
@@ -20,7 +20,7 @@ echo PHP_EOL;
 try {
     $rule->check('something');
 } catch (NestedValidationException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--

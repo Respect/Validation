@@ -8,7 +8,7 @@ use Respect\Validation\Validator as v;
 try {
     v::unique()->check([1, 2, 3, 1]);
 } catch (UniqueException $exception) {
-    echo $exception->getMainMessage();
+    echo $exception->getMessage();
 }
 ?>
 --EXPECTF--

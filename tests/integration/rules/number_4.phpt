@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::number())->check(42);
 } catch (NumberException $exception) {
-    echo $exception->getMainMessage();
+    echo $exception->getMessage();
 }
 
 ?>

@@ -10,7 +10,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::base64())->check('c3VyZS4=');
 } catch (Base64Exception $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {

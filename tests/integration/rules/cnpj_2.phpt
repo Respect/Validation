@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::cnpj()->check('não cnpj');
 } catch (CnpjException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--;

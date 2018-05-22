@@ -8,7 +8,7 @@ use Respect\Validation\Validator as v;
 try {
     v::tld()->check('42');
 } catch (TldException $exception) {
-    echo $exception->getMainMessage();
+    echo $exception->getMessage();
 }
 ?>
 --EXPECTF--

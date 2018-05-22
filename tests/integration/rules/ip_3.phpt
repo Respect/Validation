@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::ip()->check('foo');
 } catch (IpException $e) {
-    echo $e->getMainMessage().PHP_EOL;
+    echo $e->getMessage().PHP_EOL;
 }
 
 try {

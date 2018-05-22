@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::nif()->check('06357771Q');
 } catch (NifException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--

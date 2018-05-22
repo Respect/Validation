@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::slug())->check('good-and-valid-slug');
 } catch (SlugException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--

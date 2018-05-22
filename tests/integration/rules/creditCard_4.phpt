@@ -8,7 +8,7 @@ use Respect\Validation\Validator as v;
 try {
     v::creditCard('Visa')->check(3566002020360505);
 } catch (CreditCardException $e) {
-    echo $e->getMainMessage().PHP_EOL;
+    echo $e->getMessage().PHP_EOL;
 }
 
 ?>

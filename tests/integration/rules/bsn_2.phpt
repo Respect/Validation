@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::bsn()->check('acb');
 } catch (BsnException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--

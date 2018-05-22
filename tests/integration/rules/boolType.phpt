@@ -9,13 +9,13 @@ use Respect\Validation\Validator as v;
 try {
     v::boolType()->check('teste');
 } catch (BoolTypeException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {
     v::not(v::boolType())->check(true);
 } catch (BoolTypeException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {

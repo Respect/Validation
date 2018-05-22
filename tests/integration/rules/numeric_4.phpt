@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::numericVal())->check('1');
 } catch (NumericValException $e) {
-    echo $e->getMainMessage().PHP_EOL;
+    echo $e->getMessage().PHP_EOL;
 }
 
 try {

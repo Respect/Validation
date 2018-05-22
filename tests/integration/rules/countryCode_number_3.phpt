@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::countryCode(CountryCode::NUMERIC)->check('BRA');
 } catch (CountryCodeException $exception) {
-    echo $exception->getMainMessage();
+    echo $exception->getMessage();
 }
 ?>
 --EXPECTF--

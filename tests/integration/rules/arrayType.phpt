@@ -9,13 +9,13 @@ use Respect\Validation\Validator as v;
 try {
     v::arrayType()->check('teste');
 } catch (ArrayTypeException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {
     v::not(v::arrayType())->check([]);
 } catch (ArrayTypeException $exception) {
-    echo $exception->getMainMessage().PHP_EOL;
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {

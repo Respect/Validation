@@ -32,7 +32,7 @@ try {
         ->keyNested('phoneNumbers.work.primary', v::boolType(), false)
         ->check($validateThis);
 } catch (PhoneException $exception) {
-    echo $exception->getMainMessage();
+    echo $exception->getMessage();
 }
 ?>
 --EXPECTF--

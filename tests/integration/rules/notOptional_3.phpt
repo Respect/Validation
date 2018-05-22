@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 try {
     v::notOptional()->setName('Field')->check(null);
 } catch (NotOptionalException $e) {
-    echo $e->getMainMessage().PHP_EOL;
+    echo $e->getMessage().PHP_EOL;
 }
 
 try {

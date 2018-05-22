@@ -8,7 +8,7 @@ use Respect\Validation\Validator as v;
 try {
     v::consonant()->check('top nos falsetes');
 } catch (ConsonantException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
 --EXPECTF--
