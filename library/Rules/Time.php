@@ -34,6 +34,11 @@ final class Time extends AbstractRule
     private $format;
 
     /**
+     * @var string
+     */
+    private $sample;
+
+    /**
      * Initializes the rule.
      *
      * @param string $format
@@ -47,6 +52,7 @@ final class Time extends AbstractRule
         }
 
         $this->format = $format;
+        $this->sample = date($format, strtotime('23:59:59'));
     }
 
     /**

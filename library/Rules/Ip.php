@@ -19,6 +19,7 @@ class Ip extends AbstractRule
 {
     public $ipOptions;
 
+    public $range;
     public $networkRange;
 
     public function __construct($ipOptions = null)
@@ -30,6 +31,28 @@ class Ip extends AbstractRule
         }
 
         $this->networkRange = $this->parseRange($ipOptions);
+        $this->range = $this->createRange();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function createRange(): ?string
+    {
+        if (!$this->networkRange) {
+            return null;
+        }
+
+        $range = $this->networkRange;
+        $message = $range['min'];
+
+        if (isset($range['max'])) {
+            $message .= '-'.$range['max'];
+        } else {
+            $message .= '/'.long2ip((int) $range['mask']);
+        }
+
+        return $message;
     }
 
     protected function parseRange($input)

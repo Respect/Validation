@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-use function strtotime;
-
 /**
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
@@ -36,19 +34,6 @@ final class DateTimeException extends ValidationException
             self::FORMAT => '{{name}} must not be a valid date/time in the format {{sample}}',
         ],
     ];
-
-    /**
-     * {@inheritdoc}
-     */
-    public function configure($name, array $params = [])
-    {
-        $params['sample'] = date(
-            (string) $params['format'],
-            strtotime('2005-12-30 01:02:03')
-        );
-
-        return parent::configure($name, $params);
-    }
 
     /**
      * {@inheritdoc}

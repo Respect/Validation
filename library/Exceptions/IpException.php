@@ -28,24 +28,6 @@ class IpException extends ValidationException
         ],
     ];
 
-    public function configure($name, array $params = [])
-    {
-        if ($params['networkRange']) {
-            $range = $params['networkRange'];
-            $message = $range['min'];
-
-            if (isset($range['max'])) {
-                $message .= '-'.$range['max'];
-            } else {
-                $message .= '/'.long2ip((int) $range['mask']);
-            }
-
-            $params['range'] = $message;
-        }
-
-        return parent::configure($name, $params);
-    }
-
     public function chooseTemplate(): string
     {
         if (!$this->getParam('networkRange')) {

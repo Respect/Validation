@@ -29,17 +29,4 @@ final class TimeException extends ValidationException
             self::STANDARD => '{{name}} must not be a valid time in the format {{sample}}',
         ],
     ];
-
-    /**
-     * {@inheritdoc}
-     */
-    public function configure($name, array $params = [])
-    {
-        $params['sample'] = date(
-            $params['format'],
-            strtotime('23:59:59')
-        );
-
-        return parent::configure($name, $params);
-    }
 }

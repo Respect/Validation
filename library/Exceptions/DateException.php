@@ -30,17 +30,4 @@ final class DateException extends ValidationException
             self::STANDARD => '{{name}} must not be a valid date in the format {{sample}}',
         ],
     ];
-
-    /**
-     * {@inheritdoc}
-     */
-    public function configure($name, array $params = [])
-    {
-        $params['sample'] = date(
-            $params['format'],
-            strtotime('2005-12-30')
-        );
-
-        return parent::configure($name, $params);
-    }
 }

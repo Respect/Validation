@@ -35,6 +35,11 @@ final class Date extends AbstractRule
     private $format;
 
     /**
+     * @var string
+     */
+    private $sample;
+
+    /**
      * Initializes the rule.
      *
      * @param string $format
@@ -48,6 +53,7 @@ final class Date extends AbstractRule
         }
 
         $this->format = $format;
+        $this->sample = date($format, strtotime('2005-12-30'));
     }
 
     /**
