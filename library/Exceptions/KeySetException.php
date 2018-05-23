@@ -15,7 +15,7 @@ namespace Respect\Validation\Exceptions;
 
 class KeySetException extends GroupedValidationException implements NonOmissibleExceptionInterface
 {
-    public const STRUCTURE = 2;
+    public const STRUCTURE = 'structure';
 
     /**
      * @var array
@@ -36,7 +36,7 @@ class KeySetException extends GroupedValidationException implements NonOmissible
     /**
      * {@inheritdoc}
      */
-    public function chooseTemplate()
+    public function chooseTemplate(): string
     {
         if (0 === $this->getRelated()->count()) {
             return static::STRUCTURE;

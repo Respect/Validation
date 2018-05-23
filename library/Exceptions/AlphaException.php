@@ -15,7 +15,7 @@ namespace Respect\Validation\Exceptions;
 
 class AlphaException extends ValidationException
 {
-    public const EXTRA = 1;
+    public const EXTRA = 'extra';
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -28,7 +28,7 @@ class AlphaException extends ValidationException
         ],
     ];
 
-    public function chooseTemplate()
+    public function chooseTemplate(): string
     {
         return $this->getParam('additionalChars') ? static::EXTRA : static::STANDARD;
     }

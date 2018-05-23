@@ -19,8 +19,8 @@ namespace Respect\Validation\Exceptions;
  */
 final class NotEmptyException extends ValidationException
 {
-    public const STANDARD = 0;
-    public const NAMED = 1;
+    public const NAMED = 'named';
+
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => 'The value must not be empty',
@@ -32,7 +32,7 @@ final class NotEmptyException extends ValidationException
         ],
     ];
 
-    public function chooseTemplate()
+    public function chooseTemplate(): string
     {
         return $this->hasName() ? static::NAMED : static::STANDARD;
     }

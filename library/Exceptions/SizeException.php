@@ -20,9 +20,9 @@ namespace Respect\Validation\Exceptions;
  */
 class SizeException extends NestedValidationException
 {
-    public const BOTH = 0;
-    public const LOWER = 1;
-    public const GREATER = 2;
+    public const BOTH = 'both';
+    public const LOWER = 'lower';
+    public const GREATER = 'greater';
 
     /**
      * {@inheritdoc}
@@ -43,7 +43,7 @@ class SizeException extends NestedValidationException
     /**
      * {@inheritdoc}
      */
-    public function chooseTemplate(): int
+    public function chooseTemplate(): string
     {
         if (!$this->getParam('minValue')) {
             return static::GREATER;

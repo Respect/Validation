@@ -21,7 +21,7 @@ use function strtotime;
  */
 final class DateTimeException extends ValidationException
 {
-    public const FORMAT = 1;
+    public const FORMAT = 'format';
 
     /**
      * {@inheritdoc}
@@ -53,7 +53,7 @@ final class DateTimeException extends ValidationException
     /**
      * {@inheritdoc}
      */
-    public function chooseTemplate()
+    public function chooseTemplate(): string
     {
         return $this->getParam('format') ? static::FORMAT : static::STANDARD;
     }

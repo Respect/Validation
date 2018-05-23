@@ -15,7 +15,7 @@ namespace Respect\Validation\Exceptions;
 
 class CreditCardException extends ValidationException
 {
-    public const BRANDED = 1;
+    public const BRANDED = 'branded';
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -28,7 +28,7 @@ class CreditCardException extends ValidationException
         ],
     ];
 
-    public function chooseTemplate()
+    public function chooseTemplate(): string
     {
         if (!$this->getParam('brand')) {
             return static::STANDARD;

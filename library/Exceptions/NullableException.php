@@ -18,8 +18,7 @@ namespace Respect\Validation\Exceptions;
  */
 final class NullableException extends ValidationException
 {
-    public const STANDARD = 0;
-    public const NAMED = 1;
+    public const NAMED = 'named';
 
     /**
      * {@inheritdoc}
@@ -38,7 +37,7 @@ final class NullableException extends ValidationException
     /**
      * {@inheritdoc}
      */
-    public function chooseTemplate()
+    public function chooseTemplate(): string
     {
         return $this->hasName() ? static::NAMED : static::STANDARD;
     }

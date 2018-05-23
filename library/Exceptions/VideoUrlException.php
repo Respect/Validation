@@ -15,7 +15,7 @@ namespace Respect\Validation\Exceptions;
 
 class VideoUrlException extends ValidationException
 {
-    public const SERVICE = 1;
+    public const SERVICE = 'service';
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -31,7 +31,7 @@ class VideoUrlException extends ValidationException
     /**
      * {@inheritdoc}
      */
-    public function chooseTemplate()
+    public function chooseTemplate(): string
     {
         if (false !== $this->getParam('service')) {
             return self::SERVICE;

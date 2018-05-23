@@ -15,8 +15,7 @@ namespace Respect\Validation\Exceptions;
 
 class NotOptionalException extends ValidationException
 {
-    public const STANDARD = 0;
-    public const NAMED = 1;
+    public const NAMED = 'named';
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -29,7 +28,7 @@ class NotOptionalException extends ValidationException
         ],
     ];
 
-    public function chooseTemplate()
+    public function chooseTemplate(): string
     {
         return $this->hasName() ? static::NAMED : static::STANDARD;
     }

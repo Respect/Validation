@@ -15,7 +15,7 @@ namespace Respect\Validation\Exceptions;
 
 class KeyValueException extends ValidationException
 {
-    public const COMPONENT = 1;
+    public const COMPONENT = 'component';
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -28,7 +28,7 @@ class KeyValueException extends ValidationException
         ],
     ];
 
-    public function chooseTemplate()
+    public function chooseTemplate(): string
     {
         return $this->getParam('component') ? static::COMPONENT : static::STANDARD;
     }

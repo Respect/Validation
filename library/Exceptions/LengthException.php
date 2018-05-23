@@ -15,10 +15,10 @@ namespace Respect\Validation\Exceptions;
 
 class LengthException extends ValidationException
 {
-    public const BOTH = 0;
-    public const LOWER = 1;
-    public const GREATER = 2;
-    public const EXACT = 3;
+    public const BOTH = 'both';
+    public const LOWER = 'lower';
+    public const GREATER = 'greater';
+    public const EXACT = 'exact';
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -35,7 +35,7 @@ class LengthException extends ValidationException
         ],
     ];
 
-    public function chooseTemplate()
+    public function chooseTemplate(): string
     {
         if (!$this->getParam('minValue')) {
             return static::GREATER;

@@ -15,8 +15,8 @@ namespace Respect\Validation\Exceptions;
 
 class GroupedValidationException extends NestedValidationException
 {
-    public const NONE = 0;
-    public const SOME = 1;
+    public const NONE = 'none';
+    public const SOME = 'some';
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -29,7 +29,7 @@ class GroupedValidationException extends NestedValidationException
         ],
     ];
 
-    public function chooseTemplate()
+    public function chooseTemplate(): string
     {
         $numRules = $this->getParam('passed');
         $numFailed = $this->getRelated()->count();

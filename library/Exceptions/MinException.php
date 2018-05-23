@@ -15,7 +15,7 @@ namespace Respect\Validation\Exceptions;
 
 class MinException extends ValidationException
 {
-    public const INCLUSIVE = 1;
+    public const INCLUSIVE = 'inclusive';
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -28,7 +28,7 @@ class MinException extends ValidationException
         ],
     ];
 
-    public function chooseTemplate()
+    public function chooseTemplate(): string
     {
         return $this->getParam('inclusive') ? static::INCLUSIVE : static::STANDARD;
     }
