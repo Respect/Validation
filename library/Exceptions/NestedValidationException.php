@@ -37,80 +37,6 @@ class NestedValidationException extends ValidationException implements IteratorA
     }
 
     /**
-     * @param string              $path
-     * @param ValidationException $exception
-     *
-     * @return ValidationException
-     */
-    private function getExceptionForPath($path, ValidationException $exception)
-    {
-        if ($path === $exception->guessId()) {
-            return $exception;
-        }
-
-        if (!$exception instanceof self) {
-            return $exception;
-        }
-
-        foreach ($exception as $subException) {
-            return $subException;
-        }
-
-        return $exception;
-    }
-
-    /**
-     * @param array $paths
-     *
-     * @return string[]
-     */
-    public function findMessages(array $paths)
-    {
-        $messages = [];
-
-        foreach ($paths as $key => $value) {
-            $numericKey = is_numeric($key);
-            $path = $numericKey ? $value : $key;
-
-            if (!($exception = $this->getRelatedByName($path))) {
-                $exception = $this->findRelated($path);
-            }
-
-            $path = str_replace('.', '_', $path);
-
-            if (!$exception) {
-                $messages[$path] = '';
-                continue;
-            }
-
-            $exception = $this->getExceptionForPath($path, $exception);
-            if (!$numericKey) {
-                $exception->setTemplate($value);
-            }
-
-            $messages[$path] = $exception->getMainMessage();
-        }
-
-        return $messages;
-    }
-
-    /**
-     * @return Exception
-     */
-    public function findRelated($path)
-    {
-        $target = $this;
-        $pieces = explode('.', $path);
-
-        while (!empty($pieces) && $target) {
-            $piece = array_shift($pieces);
-            $target = $target->getRelatedByName($piece);
-        }
-
-        return $target;
-    }
-
-    /**
      * @return RecursiveIteratorIterator
      */
     private function getRecursiveIterator()
@@ -261,30 +187,6 @@ class NestedValidationException extends ValidationException implements IteratorA
         parent::setParam($name, $value);
 
         return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    private function isRelated($name, ValidationException $exception)
-    {
-        return $exception->getId() === $name || $exception->getName() === $name;
-    }
-
-    /**
-     * @return ValidationException
-     */
-    public function getRelatedByName($name)
-    {
-        if ($this->isRelated($name, $this)) {
-            return $this;
-        }
-
-        foreach ($this->getRecursiveIterator() as $exception) {
-            if ($this->isRelated($name, $exception)) {
-                return $exception;
-            }
-        }
     }
 
     /**

@@ -44,26 +44,4 @@ class NestedValidationExceptionTest extends TestCase
         self::assertEquals(1, count($composite->getRelated(true)));
         self::assertContainsOnly($node, $composite->getRelated());
     }
-
-    public function testFindRelatedShouldFindCompositeExceptions(): void
-    {
-        $foo = new AttributeException();
-        $bar = new AttributeException();
-        $baz = new AttributeException();
-        $bat = new AttributeException();
-        $foo->configure('foo');
-        $bar->configure('bar');
-        $baz->configure('baz');
-        $bat->configure('bat');
-        $foo->addRelated($bar);
-        $bar->addRelated($baz);
-        $baz->addRelated($bat);
-        self::assertSame($bar, $foo->findRelated('bar'));
-        self::assertSame($baz, $foo->findRelated('baz'));
-        self::assertSame($baz, $foo->findRelated('bar.baz'));
-        self::assertSame($baz, $foo->findRelated('baz'));
-        self::assertSame($bat, $foo->findRelated('bar.bat'));
-        self::assertNull($foo->findRelated('none'));
-        self::assertNull($foo->findRelated('bar.none'));
-    }
 }

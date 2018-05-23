@@ -141,7 +141,6 @@ $usernameValidator->validate('#$%');                //false
   - Extends the `Respect\Validation\Exceptions\ValidationException` class
   - Usually thrown when the `assert()` fails
   - Available methods:
-    - `findMessages()`;
     - `getFullMessage()`;
     - `getMessages()`;
     - more...
@@ -195,46 +194,6 @@ Array
     [2] => "really messed up screen#name" must have a length between 1 and 15
 )
 ```
-
-## Getting messages as an array by name
-
-If you want to get specific message by name you can use `findMessages()` passing
-the names of the rules you want:
-
-```php
-try {
-    $usernameValidator->assert('really messed up screen#name');
-} catch(NestedValidationException $exception) {
-    print_r($exception->findMessages(['alnum', 'noWhitespace']));
-}
-```
-
-The `findMessages()` returns an array with messages from the requested validators,
-like this:
-
-```no-highlight
-Array
-(
-    [alnum] => "really messed up screen#name" must contain only letters (a-z) and digits (0-9)
-    [noWhitespace] => "really messed up screen#name" must not contain whitespace
-)
-```
-
-## Custom messages
-
-Getting messages as an array is fine, but sometimes you need to customize them in order
-to present them to the user. This is possible using the `findMessages()` method as well:
-
-```php
-$errors = $exception->findMessages([
-    'alnum' => '{{name}} must contain only letters and digits',
-    'length' => '{{name}} must not have more than 15 chars',
-    'noWhitespace' => '{{name}} cannot contain spaces'
-]);
-```
-
-For all messages, the `{{name}}` variable is available for templates. If you
-do not define a name it uses the input to replace this placeholder.
 
 ## Message localization
 
