@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-interface NonOmissibleExceptionInterface extends ExceptionInterface
+use Throwable;
+
+interface Exception extends Throwable
 {
 }

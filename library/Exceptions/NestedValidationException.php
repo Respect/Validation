@@ -53,11 +53,11 @@ class NestedValidationException extends ValidationException implements IteratorA
     /**
      * Returns weather an exception should be omitted or not.
      *
-     * @param ExceptionInterface $exception
+     * @param Exception $exception
      *
      * @return bool
      */
-    private function isOmissible(ExceptionInterface $exception)
+    private function isOmissible(Exception $exception)
     {
         if (!$exception instanceof self) {
             return false;
@@ -67,7 +67,7 @@ class NestedValidationException extends ValidationException implements IteratorA
         $relatedExceptions->rewind();
         $childException = $relatedExceptions->current();
 
-        return 1 === $relatedExceptions->count() && !$childException instanceof NonOmissibleExceptionInterface;
+        return 1 === $relatedExceptions->count() && !$childException instanceof NonOmissibleException;
     }
 
     /**

@@ -18,7 +18,7 @@ use function in_array;
 use function is_numeric;
 use function Respect\Stringifier\stringify;
 
-class ValidationException extends InvalidArgumentException implements ExceptionInterface
+class ValidationException extends InvalidArgumentException implements Exception
 {
     public const MODE_DEFAULT = 'default';
     public const MODE_NEGATIVE = 'negative';

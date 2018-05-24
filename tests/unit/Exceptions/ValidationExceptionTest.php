@@ -20,7 +20,7 @@ class ValidationExceptionTest extends TestCase
     public function testItImplementsExceptionInterface(): void
     {
         $validationException = new ValidationException();
-        self::assertInstanceOf(ExceptionInterface::class, $validationException);
+        self::assertInstanceOf(Exception::class, $validationException);
     }
 
     /**

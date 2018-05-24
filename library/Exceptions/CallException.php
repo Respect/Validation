@@ -13,6 +13,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class CallException extends GroupedValidationException implements NonOmissibleExceptionInterface
+class CallException extends GroupedValidationException implements NonOmissibleException
 {
 }

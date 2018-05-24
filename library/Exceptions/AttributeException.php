@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class AttributeException extends NestedValidationException implements NonOmissibleExceptionInterface
+class AttributeException extends NestedValidationException implements NonOmissibleException
 {
     public const NOT_PRESENT = 'not_present';
     public const INVALID = 'invalid';
