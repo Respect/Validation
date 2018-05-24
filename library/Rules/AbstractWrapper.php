@@ -64,7 +64,7 @@ abstract class AbstractWrapper extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function setName($name)
+    public function setName(string $name): Validatable
     {
         $this->validatable->setName($name);
 

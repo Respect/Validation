@@ -25,7 +25,7 @@ class Not extends AbstractRule
         $this->rule = $rule;
     }
 
-    public function setName($name)
+    public function setName(string $name): Validatable
     {
         $this->rule->setName($name);
 

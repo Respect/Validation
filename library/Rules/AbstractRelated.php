@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
+use function is_scalar;
 
 abstract class AbstractRelated extends AbstractRule
 {
@@ -28,9 +29,11 @@ abstract class AbstractRelated extends AbstractRule
 
     public function __construct($reference, Validatable $validator = null, $mandatory = true)
     {
-        $this->setName($reference);
-        if ($validator && !$validator->getName()) {
-            $validator->setName($reference);
+        if (is_scalar($reference)) {
+            $this->setName((string) $reference);
+            if ($validator && !$validator->getName()) {
+                $validator->setName((string) $reference);
+            }
         }
 
         $this->reference = $reference;
@@ -38,7 +41,7 @@ abstract class AbstractRelated extends AbstractRule
         $this->mandatory = $mandatory;
     }
 
-    public function setName($name)
+    public function setName(string $name): Validatable
     {
         parent::setName($name);
 

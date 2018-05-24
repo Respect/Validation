@@ -20,11 +20,11 @@ interface Validatable
 
     public function check($input): void;
 
-    public function getName();
+    public function getName(): ?string;
 
     public function reportError($input, array $relatedExceptions = []);
 
-    public function setName($name);
+    public function setName(string $name): Validatable;
 
     public function setTemplate($template);
 

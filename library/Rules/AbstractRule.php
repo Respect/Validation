@@ -40,7 +40,7 @@ abstract class AbstractRule implements Validatable
         $this->assert($input);
     }
 
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -50,7 +50,7 @@ abstract class AbstractRule implements Validatable
         return Factory::getDefaultInstance()->exception($this, $input, $extraParams);
     }
 
-    public function setName($name)
+    public function setName(string $name): Validatable
     {
         $this->name = $name;
 
