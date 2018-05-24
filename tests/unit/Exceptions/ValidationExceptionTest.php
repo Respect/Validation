@@ -15,62 +15,180 @@ namespace Respect\Validation\Exceptions;
 
 use PHPUnit\Framework\TestCase;
 
-class ValidationExceptionTest extends TestCase
+/**
+ * @group core
+ * @covers \Respect\Validation\Exceptions\ValidationException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class ValidationExceptionTest extends TestCase
 {
-    public function testItImplementsExceptionInterface(): void
+    /**
+     * @test
+     */
+    public function itShouldImplementException(): void
     {
-        $validationException = new ValidationException();
-        self::assertInstanceOf(Exception::class, $validationException);
+        $sut = new ValidationException('input', 'id', [], 'trim');
+
+        self::assertInstanceOf(Exception::class, $sut);
     }
 
     /**
-     * @dataProvider providerForFormat
+     * @test
      */
-    public function testFormatShouldReplacePlaceholdersProperly($template, $result, $vars): void
+    public function itShouldRetrieveId(): void
     {
+        $id = 'my id';
+        $sut = new ValidationException('input', $id, [], 'trim');
+
+        self::assertSame($id, $sut->getId());
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldRetrieveParams(): void
+    {
+        $params = ['foo' => true, 'bar' => 23];
+
+        $sut = new ValidationException('input', 'id', $params, 'trim');
+
+        self::assertSame($params, $sut->getParams());
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldRetrieveASingleParameter(): void
+    {
+        $name = 'any name';
+        $value = 'any value';
+
+        $sut = new ValidationException('input', 'id', [$name => $value], 'trim');
+
+        self::assertSame($value, $sut->getParam($name));
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldReturnNullWhenParameterCanNotBeFound(): void
+    {
+        $sut = new ValidationException('input', 'id', [], 'trim');
+
+        self::assertNull($sut->getParam('foo'));
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldHaveADefaultTemplate(): void
+    {
+        $sut = new ValidationException('input', 'id', [], 'trim');
+
+        self::assertSame('"input" must be valid', $sut->getMessage());
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldUpdateMode(): void
+    {
+        $sut = new ValidationException('input', 'id', [], 'trim');
+        $sut->updateMode(ValidationException::MODE_NEGATIVE);
+
+        self::assertSame('"input" must not be valid', $sut->getMessage());
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldUpdateTemplate(): void
+    {
+        $template = 'This is my new template';
+
+        $sut = new ValidationException('input', 'id', [], 'trim');
+        $sut->updateTemplate($template);
+
+        self::assertEquals($template, $sut->getMessage());
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldTellWhenHasAsCustomUpdateTemplate(): void
+    {
+        $sut = new ValidationException('input', 'id', [], 'trim');
+
+        self::assertFalse($sut->hasCustomTemplate());
+
+        $sut->updateTemplate('This is my new template');
+
+        self::assertTrue($sut->hasCustomTemplate());
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldUseTranslator(): void
+    {
+        $template = ' This is my new template ';
+        $expected = trim($template);
+
+        $sut = new ValidationException('input', 'id', [], 'trim');
+        $sut->updateTemplate($template);
+
+        self::assertEquals($expected, $sut->getMessage());
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldReplacePlaceholders(): void
+    {
+        $sut = new ValidationException('foo', 'id', ['bar' => 1, 'baz' => 2], 'trim');
+        $sut->updateTemplate('{{name}} {{bar}} {{baz}}');
+
         self::assertEquals(
-            $result,
-            ValidationException::format($template, $vars)
+            '"foo" 1 2',
+            $sut->getMessage()
         );
     }
 
-    public function testGetMainMessageShouldApplyTemplatePlaceholders(): void
+    /**
+     * @test
+     */
+    public function itShouldKeepPlaceholdersThatCanNotReplace(): void
     {
-        $sampleValidationException = new ValidationException();
-        $sampleValidationException->configure('foo', ['bar' => 1, 'baz' => 2]);
-        $sampleValidationException->setTemplate('{{name}} {{bar}} {{baz}}');
+        $sut = new ValidationException('foo', 'id', ['foo' => 1], 'trim');
+        $sut->updateTemplate('{{name}} {{foo}} {{bar}}');
+
         self::assertEquals(
-            'foo 1 2',
-            $sampleValidationException->getMainMessage()
+            '"foo" 1 {{bar}}',
+            $sut->getMessage()
         );
     }
 
-    public function testSettingTemplates(): void
+    /**
+     * @test
+     */
+    public function itShouldUpdateParams(): void
     {
-        $x = new ValidationException();
-        $x->configure('bar');
-        $x->setTemplate('foo');
-        self::assertEquals('foo', $x->getTemplate());
+        $sut = new ValidationException('input', 'id', ['foo' => 1], 'trim');
+        $sut->updateTemplate('{{foo}}');
+        $sut->updateParams(['foo' => 2]);
+
+        self::assertEquals('2', $sut->getMessage());
     }
 
-    public function providerForFormat()
+    /**
+     * @test
+     */
+    public function itShouldConvertToString(): void
     {
-        return [
-            [
-                '{{foo}} {{bar}} {{baz}}',
-                '"hello" "world" "respect"',
-                ['foo' => 'hello', 'bar' => 'world', 'baz' => 'respect'],
-            ],
-            [
-                '{{foo}} {{bar}} {{baz}}',
-                '"hello" {{bar}} "respect"',
-                ['foo' => 'hello', 'baz' => 'respect'],
-            ],
-            [
-                '{{foo}} {{bar}} {{baz}}',
-                '"hello" {{bar}} "respect"',
-                ['foo' => 'hello', 'bot' => 111, 'baz' => 'respect'],
-            ],
-        ];
+        $sut = new ValidationException('input', 'id', [], 'trim');
+
+        self::assertSame('"input" must be valid', (string) $sut);
     }
 }

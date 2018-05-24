@@ -46,7 +46,7 @@ class BaseTest extends TestCase
 
     /**
      * @dataProvider providerForExceptionBase
-     * @expectedException \Respect\Validation\Exceptions\BaseException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      */
     public function testExceptionBase($base, $input): void
     {

@@ -101,7 +101,7 @@ class AbstractRuleTest extends TestCase
             ->expects($this->once())
             ->method('reportError')
             ->with($input)
-            ->will($this->throwException(new ValidationException()));
+            ->will($this->throwException(new ValidationException($input, 'abstract', [], 'trim')));
 
         $abstractRuleMock->assert($input);
     }

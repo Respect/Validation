@@ -28,7 +28,7 @@ class IpException extends ValidationException
         ],
     ];
 
-    public function chooseTemplate(): string
+    protected function chooseTemplate(): string
     {
         if (!$this->getParam('networkRange')) {
             return static::STANDARD;

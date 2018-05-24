@@ -28,7 +28,7 @@ class KeyValueException extends ValidationException
         ],
     ];
 
-    public function chooseTemplate(): string
+    protected function chooseTemplate(): string
     {
         return $this->getParam('component') ? static::COMPONENT : static::STANDARD;
     }

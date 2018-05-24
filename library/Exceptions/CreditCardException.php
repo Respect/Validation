@@ -28,7 +28,7 @@ class CreditCardException extends ValidationException
         ],
     ];
 
-    public function chooseTemplate(): string
+    protected function chooseTemplate(): string
     {
         if (!$this->getParam('brand')) {
             return static::STANDARD;

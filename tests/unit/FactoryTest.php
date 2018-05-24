@@ -37,7 +37,7 @@ final class FactoryTest extends TestCase
      */
     public function shouldCreateARuleByNameBasedOnNamespace(): void
     {
-        $factory = new Factory([self::TEST_RULES_NAMESPACE], []);
+        $factory = new Factory([self::TEST_RULES_NAMESPACE], [], 'trim');
 
         self::assertInstanceOf(Valid::class, $factory->rule('valid'));
     }
@@ -47,7 +47,7 @@ final class FactoryTest extends TestCase
      */
     public function shouldLookUpToAllNamespacesUntilRuleIsFound(): void
     {
-        $factory = new Factory([__NAMESPACE__, self::TEST_RULES_NAMESPACE], []);
+        $factory = new Factory([__NAMESPACE__, self::TEST_RULES_NAMESPACE], [], 'trim');
 
         self::assertInstanceOf(Valid::class, $factory->rule('valid'));
     }
@@ -59,7 +59,7 @@ final class FactoryTest extends TestCase
     {
         $constructorArguments = [true, false, true, false];
 
-        $factory = new Factory([self::TEST_RULES_NAMESPACE], []);
+        $factory = new Factory([self::TEST_RULES_NAMESPACE], [], 'trim');
         $rule = $factory->rule('stub', $constructorArguments);
 
         self::assertSame($constructorArguments, $rule->validations);
@@ -70,7 +70,7 @@ final class FactoryTest extends TestCase
      */
     public function shouldThrowsAnExceptionWhenRuleIsInvalid(): void
     {
-        $factory = new Factory([self::TEST_RULES_NAMESPACE], []);
+        $factory = new Factory([self::TEST_RULES_NAMESPACE], [], 'trim');
 
         $this->expectException(InvalidClassException::class);
         $this->expectExceptionMessage(sprintf('"%s" must be an instance of "%s"', Invalid::class, Validatable::class));
@@ -83,7 +83,7 @@ final class FactoryTest extends TestCase
      */
     public function shouldThrowsAnExceptionWhenRuleIsNotInstantiable(): void
     {
-        $factory = new Factory([self::TEST_RULES_NAMESPACE], []);
+        $factory = new Factory([self::TEST_RULES_NAMESPACE], [], 'trim');
 
         $this->expectException(InvalidClassException::class);
         $this->expectExceptionMessage(sprintf('"%s" must be instantiable', AbstractClass::class));
@@ -96,7 +96,7 @@ final class FactoryTest extends TestCase
      */
     public function shouldThrowsAnExceptionWhenRuleIsNotFound(): void
     {
-        $factory = new Factory([self::TEST_RULES_NAMESPACE], []);
+        $factory = new Factory([self::TEST_RULES_NAMESPACE], [], 'trim');
 
         $this->expectException(ComponentException::class);
         $this->expectExceptionMessage('"notFoundRule" is not a valid rule name');
@@ -109,7 +109,7 @@ final class FactoryTest extends TestCase
      */
     public function shouldCreateExceptionBasedOnRule(): void
     {
-        $factory = new Factory([], [self::TEST_EXCEPTIONS_NAMESPACE]);
+        $factory = new Factory([], [self::TEST_EXCEPTIONS_NAMESPACE], 'trim');
 
         $rule = new Stub();
         $input = 2;
@@ -122,7 +122,7 @@ final class FactoryTest extends TestCase
      */
     public function shouldLookUpToAllNamespacesUntilExceptionIsCreated(): void
     {
-        $factory = new Factory([], [__NAMESPACE__, self::TEST_EXCEPTIONS_NAMESPACE]);
+        $factory = new Factory([], [__NAMESPACE__, self::TEST_EXCEPTIONS_NAMESPACE], 'trim');
 
         $rule = new Stub();
         $input = 2;
@@ -135,7 +135,7 @@ final class FactoryTest extends TestCase
      */
     public function shouldCreateValidationExceptionWhenExceptionIsNotFound(): void
     {
-        $factory = new Factory([], []);
+        $factory = new Factory([], [], 'trim');
         $input = 'input';
         $rule = new Stub();
 
@@ -147,7 +147,7 @@ final class FactoryTest extends TestCase
      */
     public function shouldSetInputAsParameterOfCreatedException(): void
     {
-        $factory = new Factory([], [self::TEST_EXCEPTIONS_NAMESPACE]);
+        $factory = new Factory([], [self::TEST_EXCEPTIONS_NAMESPACE], 'trim');
 
         $rule = new Stub();
         $input = 2;
@@ -162,7 +162,7 @@ final class FactoryTest extends TestCase
      */
     public function shouldPassPropertiesToCreatedException(): void
     {
-        $factory = new Factory([], [self::TEST_EXCEPTIONS_NAMESPACE]);
+        $factory = new Factory([], [self::TEST_EXCEPTIONS_NAMESPACE], 'trim');
 
         $validations = [true, false, true, true];
         $rule = new Stub(...$validations);
@@ -178,7 +178,7 @@ final class FactoryTest extends TestCase
      */
     public function shouldSetTemplateWhenTemplateKeyIsDefined(): void
     {
-        $factory = new Factory([], [self::TEST_EXCEPTIONS_NAMESPACE]);
+        $factory = new Factory([], [self::TEST_EXCEPTIONS_NAMESPACE], 'trim');
 
         $extraParams = [
             'template' => 'This is my template',
@@ -190,7 +190,7 @@ final class FactoryTest extends TestCase
 
         $exception = $factory->exception($rule, $input, $extraParams);
 
-        self::assertSame($extraParams['template'], $exception->getTemplate());
+        self::assertSame($extraParams['template'], $exception->getMessage());
     }
 
     /**
@@ -206,7 +206,7 @@ final class FactoryTest extends TestCase
      */
     public function shouldBeAbleToOverwriteDefaultInstance(): void
     {
-        $factory = new Factory([], []);
+        $factory = new Factory([], [], 'trim');
 
         $defaultInstance = Factory::getDefaultInstance();
 

@@ -32,8 +32,12 @@ final class NotEmptyException extends ValidationException
         ],
     ];
 
-    public function chooseTemplate(): string
+    protected function chooseTemplate(): string
     {
-        return $this->hasName() ? static::NAMED : static::STANDARD;
+        if ($this->getParam('input') || $this->getParam('name')) {
+            return self::NAMED;
+        }
+
+        return self::STANDARD;
     }
 }

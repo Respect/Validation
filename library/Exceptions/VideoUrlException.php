@@ -31,9 +31,9 @@ class VideoUrlException extends ValidationException
     /**
      * {@inheritdoc}
      */
-    public function chooseTemplate(): string
+    protected function chooseTemplate(): string
     {
-        if (false !== $this->getParam('service')) {
+        if ($this->getParam('service')) {
             return self::SERVICE;
         }
 

@@ -14,10 +14,15 @@ declare(strict_types=1);
 namespace Respect\Validation\Exceptions;
 
 use InvalidArgumentException;
-use function in_array;
-use function is_numeric;
+use function call_user_func;
 use function Respect\Stringifier\stringify;
 
+/**
+ * Default exception class for rule validations.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class ValidationException extends InvalidArgumentException implements Exception
 {
     public const MODE_DEFAULT = 'default';
@@ -38,14 +43,114 @@ class ValidationException extends InvalidArgumentException implements Exception
         ],
     ];
 
-    protected $id = 'validation';
-    protected $mode = self::MODE_DEFAULT;
-    protected $name = '';
-    protected $template = '';
-    protected $params = [];
-    private $customTemplate = false;
+    /**
+     * @var mixed
+     */
+    private $input;
 
-    public static function format($template, array $vars = [])
+    /**
+     * @var string
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $mode = self::MODE_DEFAULT;
+
+    /**
+     * @var array
+     */
+    private $params = [];
+
+    /**
+     * @var callable
+     */
+    private $translator;
+
+    /**
+     * @var string
+     */
+    private $template;
+
+    public function __construct($input, string $id, array $params, callable $translator)
+    {
+        $this->input = $input;
+        $this->id = $id;
+        $this->params = $params;
+        $this->translator = $translator;
+        $this->template = $this->chooseTemplate();
+        $this->message = $this->createMessage();
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    public function getParams(): array
+    {
+        return $this->params;
+    }
+
+    public function getParam($name)
+    {
+        return $this->params[$name] ?? null;
+    }
+
+    public function updateMode(string $mode): void
+    {
+        $this->mode = $mode;
+        $this->message = $this->createMessage();
+    }
+
+    public function updateTemplate(string $template): void
+    {
+        $this->template = $template;
+        $this->message = $this->createMessage();
+    }
+
+    public function updateParams(array $params): void
+    {
+        $this->params = $params;
+        $this->message = $this->createMessage();
+    }
+
+    public function hasCustomTemplate(): bool
+    {
+        return false === isset(static::$defaultTemplates[$this->mode][$this->template]);
+    }
+
+    public function __toString(): string
+    {
+        return $this->getMessage();
+    }
+
+    protected function chooseTemplate(): string
+    {
+        return key(static::$defaultTemplates[$this->mode]);
+    }
+
+    private function createMessage(): string
+    {
+        $template = $this->createTemplate($this->mode, $this->template);
+        $params = $this->getParams();
+        $params['name'] = $params['name'] ?? stringify($this->input);
+        $params['input'] = $this->input;
+
+        return $this->format($template, $params);
+    }
+
+    private function createTemplate(string $mode, string $template): string
+    {
+        if (isset(static::$defaultTemplates[$mode][$template])) {
+            $template = static::$defaultTemplates[$mode][$template];
+        }
+
+        return call_user_func($this->translator, $template);
+    }
+
+    private function format($template, array $vars = []): string
     {
         return preg_replace_callback(
             '/{{(\w+)}}/',
@@ -63,168 +168,5 @@ class ValidationException extends InvalidArgumentException implements Exception
             },
             $template
         );
-    }
-
-    public function __toString()
-    {
-        return $this->getMainMessage();
-    }
-
-    public function chooseTemplate(): string
-    {
-        return key(static::$defaultTemplates[$this->mode]);
-    }
-
-    public function configure($name, array $params = [])
-    {
-        $this->setName($name);
-        $this->setId($this->guessId());
-        $this->setParams($params);
-
-        return $this;
-    }
-
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    protected function hasName(): bool
-    {
-        $name = $this->getName();
-        if (is_numeric($name)) {
-            return (bool) (float) $name;
-        }
-
-        return !in_array($name, ['`FALSE`', '`NULL`', '`{ }`', '""', '']);
-    }
-
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    public function getMainMessage()
-    {
-        $vars = $this->getParams();
-        $vars['name'] = $this->getName();
-        $template = $this->getTemplate();
-        if (isset($vars['translator']) && is_callable($vars['translator'])) {
-            $template = call_user_func($vars['translator'], $template);
-        }
-
-        return static::format($template, $vars);
-    }
-
-    public function getParam($name)
-    {
-        return $this->hasParam($name) ? $this->params[$name] : false;
-    }
-
-    public function getParams()
-    {
-        return $this->params;
-    }
-
-    public function getTemplate()
-    {
-        if (!empty($this->template)) {
-            return $this->template;
-        }
-
-        return $this->template = $this->buildTemplate();
-    }
-
-    public function hasParam($name)
-    {
-        return isset($this->params[$name]);
-    }
-
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    public function setMode($mode)
-    {
-        $this->mode = $mode;
-        $this->template = $this->buildTemplate();
-
-        $this->buildMessage();
-
-        return $this;
-    }
-
-    public function setParam($key, $value)
-    {
-        $this->params[$key] = $value;
-
-        $this->buildMessage();
-
-        return $this;
-    }
-
-    public function setParams(array $params)
-    {
-        foreach ($params as $key => $value) {
-            $this->params[$key] = $value;
-        }
-
-        $this->buildMessage();
-
-        return $this;
-    }
-
-    public function hasCustomTemplate()
-    {
-        return true === $this->customTemplate;
-    }
-
-    public function setTemplate($template)
-    {
-        $this->customTemplate = true;
-        if (isset(static::$defaultTemplates[$this->mode][$template])) {
-            $template = static::$defaultTemplates[$this->mode][$template];
-        }
-        $this->template = $template;
-
-        $this->buildMessage();
-
-        return $this;
-    }
-
-    private function buildMessage(): void
-    {
-        $this->message = $this->getMainMessage();
-    }
-
-    protected function buildTemplate()
-    {
-        $templateKey = $this->chooseTemplate();
-
-        return static::$defaultTemplates[$this->mode][$templateKey];
-    }
-
-    public function guessId()
-    {
-        if (!empty($this->id) && 'validation' != $this->id) {
-            return $this->id;
-        }
-
-        $pieces = explode('\\', get_called_class());
-        $exceptionClassShortName = end($pieces);
-        $ruleClassShortName = str_replace('Exception', '', $exceptionClassShortName);
-        $ruleName = lcfirst($ruleClassShortName);
-
-        return $ruleName;
     }
 }

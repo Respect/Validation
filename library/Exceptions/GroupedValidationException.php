@@ -29,7 +29,7 @@ class GroupedValidationException extends NestedValidationException
         ],
     ];
 
-    public function chooseTemplate(): string
+    protected function chooseTemplate(): string
     {
         $numRules = $this->getParam('passed');
         $numFailed = $this->getRelated()->count();

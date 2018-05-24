@@ -60,8 +60,9 @@ class KeyValue extends AbstractRule
 
             $params[$key] = $this->baseKey;
         }
+        $params['name'] = $this->comparedKey;
 
-        $exception->configure($this->comparedKey, $params);
+        $exception->updateParams($params);
 
         return $exception;
     }

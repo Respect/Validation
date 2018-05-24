@@ -170,7 +170,7 @@ class Validator extends AllOf
             parent::check($input);
         } catch (ValidationException $exception) {
             if (1 == count($this->getRules()) && $this->template) {
-                $exception->setTemplate($this->template);
+                $exception->updateTemplate($this->template);
             }
 
             throw $exception;

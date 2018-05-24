@@ -37,8 +37,12 @@ final class NullableException extends ValidationException
     /**
      * {@inheritdoc}
      */
-    public function chooseTemplate(): string
+    protected function chooseTemplate(): string
     {
-        return $this->hasName() ? static::NAMED : static::STANDARD;
+        if ($this->getParam('input') || $this->getParam('name')) {
+            return self::NAMED;
+        }
+
+        return self::STANDARD;
     }
 }

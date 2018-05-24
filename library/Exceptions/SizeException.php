@@ -43,7 +43,7 @@ class SizeException extends NestedValidationException
     /**
      * {@inheritdoc}
      */
-    public function chooseTemplate(): string
+    protected function chooseTemplate(): string
     {
         if (!$this->getParam('minValue')) {
             return static::GREATER;

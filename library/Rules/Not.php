@@ -48,9 +48,10 @@ class Not extends AbstractRule
             $rule = $this->absorbAllOf($rule, $input);
         }
 
-        throw $rule
-            ->reportError($input)
-            ->setMode(ValidationException::MODE_NEGATIVE);
+        $exception = $rule->reportError($input);
+        $exception->updateMode(ValidationException::MODE_NEGATIVE);
+
+        throw $exception;
     }
 
     private function absorbAllOf(AllOf $rule, $input)

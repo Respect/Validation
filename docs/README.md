@@ -132,18 +132,14 @@ $usernameValidator->validate('#$%');                //false
   - All validation exceptions extend this class
   - Available methods:
     - `getMessage()`;
-    - `setMode($mode)`;
-    - `setName($name)`;
-    - `setParam($name, $value)`;
-    - `setTemplate($template)`;
-    - more...
+    - `updateMode($mode)`;
+    - `updateTemplate($template)`;
 - `Respect\Validation\Exceptions\NestedValidationException`:
   - Extends the `Respect\Validation\Exceptions\ValidationException` class
   - Usually thrown when the `assert()` fails
   - Available methods:
     - `getFullMessage()`;
     - `getMessages()`;
-    - more...
 
 ## Informative exceptions
 
@@ -199,19 +195,17 @@ Array
 
 You're also able to translate your message to another language with Validation.
 The only thing one must do is to define the param `translator` as a callable that
-will handle the translation:
+will handle the translation overwriting the default factory:
 
 ```php
-$exception->setParam('translator', 'gettext');
+Factory::setDefaultInstance(new Factory([], [], 'gettext'));
 ```
 
 The example above uses `gettext()` but you can use any other callable value, like
 `[$translator, 'trans']` or `you_custom_function()`.
 
-After that, if you call `getMessage()` or `getFullMessage()` (for nested),
+After that, if you call `getMessage()`, `getMessages()`, or `getFullMessage()`,
 the message will be translated.
-
-Note that `getMessage()` will keep the original message.
 
 ## Custom rules
 

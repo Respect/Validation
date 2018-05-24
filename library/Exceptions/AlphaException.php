@@ -28,7 +28,7 @@ class AlphaException extends ValidationException
         ],
     ];
 
-    public function chooseTemplate(): string
+    protected function chooseTemplate(): string
     {
         return $this->getParam('additionalChars') ? static::EXTRA : static::STANDARD;
     }

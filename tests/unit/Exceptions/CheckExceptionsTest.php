@@ -61,16 +61,9 @@ class CheckExceptionsTest extends TestCase
             sprintf('Expected exception class to exist: %s.', $ruleName)
         );
 
-        $expectedMessage = 'Test exception message.';
-        $exceptionObject = new $exceptionClass($expectedMessage);
-        self::assertInstanceOf(
-            'Exception',
-            $exceptionObject,
-            'Every exception should extend an Exception class.'
-        );
-        self::assertInstanceOf(
-            ValidationException::class,
-            $exceptionObject,
+        $reflectionClass = new ReflectionClass($exceptionClass);
+        self::assertTrue(
+            $reflectionClass->isSubclassOf(ValidationException::class),
             'Every Respect/Validation exception must extend ValidationException.'
         );
     }

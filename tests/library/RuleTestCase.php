@@ -16,6 +16,7 @@ namespace Respect\Validation\Test;
 use PHPUnit\Framework\TestCase;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
+use function sprintf;
 
 /**
  * Abstract class to create TestCases for Rules.
@@ -88,14 +89,28 @@ abstract class RuleTestCase extends TestCase
                 ->method('assert')
                 ->willReturn($expectedResult);
         } else {
+            $checkException = new ValidationException(
+                'validatable',
+                'input',
+                [],
+                'trim'
+            );
+            $checkException->updateTemplate(sprintf('Exception for %s:check() method', $mockClassName));
             $validatableMocked
                 ->expects($this->any())
                 ->method('check')
-                ->willThrowException(new ValidationException('Exception for '.$mockClassName.':check() method'));
+                ->willThrowException($checkException);
+            $assertException = new ValidationException(
+                'validatable',
+                'input',
+                [],
+                'trim'
+            );
+            $assertException->updateTemplate(sprintf('Exception for %s:assert() method', $mockClassName));
             $validatableMocked
                 ->expects($this->any())
                 ->method('assert')
-                ->willThrowException(new ValidationException('Exception for '.$mockClassName.':assert() method'));
+                ->willThrowException($assertException);
         }
 
         return $validatableMocked;

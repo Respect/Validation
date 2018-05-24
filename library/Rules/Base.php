@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\BaseException;
+use Respect\Validation\Exceptions\ComponentException;
 
 class Base extends AbstractRule
 {
@@ -28,7 +28,7 @@ class Base extends AbstractRule
 
         $max = mb_strlen($this->chars);
         if (!is_numeric($base) || $base > $max) {
-            throw new BaseException(sprintf('a base between 1 and %s is required', $max));
+            throw new ComponentException(sprintf('a base between 1 and %s is required', $max));
         }
         $this->base = $base;
     }

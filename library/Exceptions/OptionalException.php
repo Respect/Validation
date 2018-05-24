@@ -28,8 +28,8 @@ class OptionalException extends ValidationException
         ],
     ];
 
-    public function chooseTemplate(): string
+    protected function chooseTemplate(): string
     {
-        return $this->hasName() ? static::NAMED : static::STANDARD;
+        return $this->getParam('name') ? static::NAMED : static::STANDARD;
     }
 }

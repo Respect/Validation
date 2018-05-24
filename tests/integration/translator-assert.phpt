@@ -3,10 +3,10 @@
 require 'vendor/autoload.php';
 
 use Respect\Validation\Exceptions\NestedValidationException;
+use Respect\Validation\Factory;
 use Respect\Validation\Validator;
 
-function translatorCallback($message)
-{
+Factory::setDefaultInstance(new Factory([], [], function (string $message): string {
     $messages = [
         'All of the required rules must pass for {{name}}' => 'Todas as regras requeridas devem passar para {{name}}',
         '{{name}} must be of type string' => '{{name}} deve ser do tipo string',
@@ -14,13 +14,11 @@ function translatorCallback($message)
     ];
 
     return $messages[$message];
-}
+}));
 
 try {
     Validator::stringType()->length(2, 15)->assert(0);
 } catch (NestedValidationException $exception) {
-    $exception->setParam('translator', 'translatorCallback');
-
     echo $exception->getFullMessage();
 }
 ?>

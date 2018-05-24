@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation;
 
 use ReflectionClass;
+use ReflectionException;
 use ReflectionObject;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
@@ -22,7 +23,7 @@ use function array_map;
 use function array_merge;
 use function array_unique;
 use function class_exists;
-use function Respect\Stringifier\stringify;
+use function lcfirst;
 
 /**
  * Factory of objects.
@@ -59,6 +60,11 @@ final class Factory
     private $exceptionsNamespaces = [];
 
     /**
+     * @var callable
+     */
+    private $translator;
+
+    /**
      * Initializes the factory with the defined namespaces.
      *
      * If the default namespace is not in the array, it will be add to the end
@@ -67,10 +73,14 @@ final class Factory
      * @param string[] $rulesNamespaces
      * @param string[] $exceptionsNamespaces
      */
-    public function __construct(array $rulesNamespaces, array $exceptionsNamespaces)
-    {
+    public function __construct(
+        array $rulesNamespaces,
+        array $exceptionsNamespaces,
+        callable $translator
+    ) {
         $this->rulesNamespaces = $this->filterNamespaces($rulesNamespaces, self::DEFAULT_RULES_NAMESPACES);
         $this->exceptionsNamespaces = $this->filterNamespaces($exceptionsNamespaces, self::DEFAULT_EXCEPTIONS_NAMESPACES);
+        $this->translator = $translator;
     }
 
     /**
@@ -91,7 +101,13 @@ final class Factory
     public static function getDefaultInstance(): self
     {
         if (null === self::$defaultInstance) {
-            self::$defaultInstance = new self(self::DEFAULT_RULES_NAMESPACES, self::DEFAULT_EXCEPTIONS_NAMESPACES);
+            self::$defaultInstance = new self(
+                self::DEFAULT_RULES_NAMESPACES,
+                self::DEFAULT_EXCEPTIONS_NAMESPACES,
+                function (string $message): string {
+                    return $message;
+                }
+            );
         }
 
         return self::$defaultInstance;
@@ -137,18 +153,21 @@ final class Factory
     {
         $reflection = new ReflectionObject($validatable);
         $ruleName = $reflection->getShortName();
-        $name = $validatable->getName() ?: stringify($input);
         $params = ['input' => $input] + $extraParams + $this->extractPropertiesValues($validatable, $reflection);
+        $id = lcfirst($ruleName);
+        if ($validatable->getName()) {
+            $id = $params['name'] = $validatable->getName();
+        }
         foreach ($this->exceptionsNamespaces as $namespace) {
             $exceptionName = sprintf('%s\\%sException', $namespace, $ruleName);
             if (!class_exists($exceptionName)) {
                 continue;
             }
 
-            return $this->createValidationException($exceptionName, $name, $params);
+            return $this->createValidationException($exceptionName, $id, $input, $params);
         }
 
-        return $this->createValidationException(ValidationException::class, $name, $params);
+        return $this->createValidationException(ValidationException::class, $id, $input, $params);
     }
 
     /**
@@ -159,6 +178,7 @@ final class Factory
      * @param string $parentName
      *
      * @throws InvalidClassException
+     * @throws ReflectionException
      *
      * @return ReflectionClass
      */
@@ -204,17 +224,22 @@ final class Factory
      * Creates a Validation exception.
      *
      * @param string $exceptionName
-     * @param mixed $name
+     * @param string $id
+     * @param mixed $input
      * @param array $params
+     *
+     * @throws InvalidClassException
+     * @throws ReflectionException
      *
      * @return ValidationException
      */
-    private function createValidationException(string $exceptionName, $name, array $params): ValidationException
+    private function createValidationException(string $exceptionName, string $id, $input, array $params): ValidationException
     {
-        $exception = $this->createReflectionClass($exceptionName, ValidationException::class)->newInstance();
-        $exception->configure($name, $params);
+        /* @var ValidationException $exception */
+        $exception = $this->createReflectionClass($exceptionName, ValidationException::class)
+            ->newInstance($input, $id, $params, $this->translator);
         if (isset($params['template'])) {
-            $exception->setTemplate($params['template']);
+            $exception->updateTemplate($params['template']);
         }
 
         return $exception;
@@ -232,7 +257,12 @@ final class Factory
         foreach ($reflection->getProperties() as $property) {
             $property->setAccessible(true);
 
-            $values[$property->getName()] = $property->getValue($validatable);
+            $propertyValue = $property->getValue($validatable);
+            if (null === $propertyValue) {
+                continue;
+            }
+
+            $values[$property->getName()] = $propertyValue;
         }
 
         if (($parentReflection = $reflection->getParentClass())) {

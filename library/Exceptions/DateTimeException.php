@@ -38,7 +38,7 @@ final class DateTimeException extends ValidationException
     /**
      * {@inheritdoc}
      */
-    public function chooseTemplate(): string
+    protected function chooseTemplate(): string
     {
         return $this->getParam('format') ? static::FORMAT : static::STANDARD;
     }

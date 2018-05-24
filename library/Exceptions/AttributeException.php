@@ -29,7 +29,7 @@ class AttributeException extends NestedValidationException implements NonOmissib
         ],
     ];
 
-    public function chooseTemplate(): string
+    protected function chooseTemplate(): string
     {
         return $this->getParam('hasReference') ? static::INVALID : static::NOT_PRESENT;
     }

@@ -15,20 +15,12 @@ namespace Respect\Validation\Exceptions;
 
 use PHPUnit\Framework\TestCase;
 
-/**
- * phpunit has an issue with mocking exceptions when in HHVM:
- * https://github.com/sebastianbergmann/phpunit-mock-objects/issues/207.
- */
-class PrivateNestedValidationException extends NestedValidationException
-{
-}
-
 class NestedValidationExceptionTest extends TestCase
 {
     public function testGetRelatedShouldReturnExceptionAddedByAddRelated(): void
     {
-        $composite = new AttributeException();
-        $node = new IntValException();
+        $composite = new AttributeException('input', 'id', [], 'trim');
+        $node = new IntValException('input', 'id', [], 'trim');
         $composite->addRelated($node);
         self::assertEquals(1, count($composite->getRelated(true)));
         self::assertContainsOnly($node, $composite->getRelated());
@@ -36,8 +28,8 @@ class NestedValidationExceptionTest extends TestCase
 
     public function testAddingTheSameInstanceShouldAddJustASingleReference(): void
     {
-        $composite = new AttributeException();
-        $node = new IntValException();
+        $composite = new AttributeException('input', 'id', [], 'trim');
+        $node = new IntValException('input', 'id', [], 'trim');
         $composite->addRelated($node);
         $composite->addRelated($node);
         $composite->addRelated($node);
