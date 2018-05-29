@@ -2,7 +2,7 @@
 
 - `Even()`
 
-Validates an even number.
+Validates whether the input is an even number or not.
 
 ```php
 v::intVal()->even()->validate(2); // true

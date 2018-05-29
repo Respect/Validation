@@ -13,10 +13,27 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Even extends AbstractRule
+use const FILTER_VALIDATE_INT;
+use function filter_var;
+
+/**
+ * Validates whether the input is an even number or not.
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
+ * @author Paul Karikari <paulkarikari1@gmail.com>
+ */
+final class Even extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
+        if (false === filter_var($input, FILTER_VALIDATE_INT)) {
+            return false;
+        }
+
         return 0 === (int) $input % 2;
     }
 }
