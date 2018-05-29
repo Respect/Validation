@@ -13,10 +13,24 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Even extends AbstractRule
+/**
+ * Validates an even number.
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
+ * @author Paul karikari <paulkarikari1@gmail.com>
+ */
+final class Even extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
+        if (!is_numeric($input)) {
+            return false;
+        }
+
         return 0 === (int) $input % 2;
     }
 }

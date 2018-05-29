@@ -13,60 +13,37 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group  rule
+ *
  * @covers \Respect\Validation\Rules\Even
- * @covers \Respect\Validation\Exceptions\EvenException
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
+ * @author Paul karikari <paulkarikari1@gmail.com>
  */
-class EvenTest extends TestCase
+final class EvenTest extends RuleTestCase
 {
-    protected $evenValidator;
-
-    protected function setUp(): void
-    {
-        $this->evenValidator = new Even();
-    }
-
-    /**
-     * @dataProvider providerForEven
-     */
-    public function testEvenNumbersShouldPass($input): void
-    {
-        self::assertTrue($this->evenValidator->validate($input));
-        $this->evenValidator->check($input);
-        $this->evenValidator->assert($input);
-    }
-
-    /**
-     * @dataProvider providerForNotEven
-     * @expectedException \Respect\Validation\Exceptions\EvenException
-     */
-    public function testNotEvenNumbersShouldFail($input): void
-    {
-        self::assertFalse($this->evenValidator->validate($input));
-        $this->evenValidator->assert($input);
-    }
-
-    public function providerForEven()
+    public function providerForValidInput(): array
     {
         return [
-            [''],
-            [-2],
-            [-0],
-            [0],
-            [32],
+            [new Even(), -2],
+            [new Even(), -0],
+            [new Even(), 0],
+            [new Even(), 32],
         ];
     }
 
-    public function providerForNotEven()
+    public function providerForInvalidInput(): array
     {
         return [
-            [-5],
-            [-1],
-            [1],
-            [13],
+            [new Even(), ''],
+            [new Even(), -5],
+            [new Even(), -1],
+            [new Even(), 1],
+            [new Even(), 13],
         ];
     }
 }
