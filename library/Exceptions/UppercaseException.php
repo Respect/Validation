@@ -13,8 +13,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class UppercaseException extends ValidationException
+/**
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
+ */
+final class UppercaseException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be uppercase',
