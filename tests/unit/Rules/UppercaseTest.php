@@ -13,58 +13,48 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group  rule
+ *
  * @covers \Respect\Validation\Rules\Uppercase
  * @covers \Respect\Validation\Exceptions\UppercaseException
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
  */
-class UppercaseTest extends TestCase
+final class UppercaseTest extends RuleTestCase
 {
-    /**
-     * @dataProvider providerForValidUppercase
-     */
-    public function testValidUppercaseShouldReturnTrue($input): void
-    {
-        $uppercase = new Uppercase();
-        self::assertTrue($uppercase->validate($input));
-        $uppercase->assert($input);
-        $uppercase->check($input);
-    }
-
-    /**
-     * @dataProvider providerForInvalidUppercase
-     * @expectedException \Respect\Validation\Exceptions\UppercaseException
-     */
-    public function testInvalidUppercaseShouldThrowException($input): void
-    {
-        $lowercase = new Uppercase();
-        self::assertFalse($lowercase->validate($input));
-        $lowercase->assert($input);
-    }
-
-    public function providerForValidUppercase()
+    /*
+    * {@inheritdoc}
+    */
+    public function providerForValidInput(): array
     {
         return [
-            [''],
-            ['UPPERCASE'],
-            ['UPPERCASE-WITH-DASHES'],
-            ['UPPERCASE WITH SPACES'],
-            ['UPPERCASE WITH NUMBERS 123'],
-            ['UPPERCASE WITH SPECIALS CHARACTERS LIKE Ã Ç Ê'],
-            ['WITH SPECIALS CHARACTERS LIKE # $ % & * +'],
-            ['ΤΆΧΙΣΤΗ ΑΛΏΠΗΞ ΒΑΦΉΣ ΨΗΜΈΝΗ ΓΗ, ΔΡΑΣΚΕΛΊΖΕΙ ΥΠΈΡ ΝΩΘΡΟΎ ΚΥΝΌΣ'],
+            [new Uppercase(), ''],
+            [new Uppercase(), 'UPPERCASE'],
+            [new Uppercase(), 'UPPERCASE-WITH-DASHES'],
+            [new Uppercase(), 'UPPERCASE WITH SPACES'],
+            [new Uppercase(), 'UPPERCASE WITH NUMBERS 123'],
+            [new Uppercase(), 'UPPERCASE WITH SPECIALS CHARACTERS LIKE Ã Ç Ê'],
+            [new Uppercase(), 'WITH SPECIALS CHARACTERS LIKE # $ % & * +'],
+            [new Uppercase(), 'ΤΆΧΙΣΤΗ ΑΛΏΠΗΞ ΒΑΦΉΣ ΨΗΜΈΝΗ ΓΗ, ΔΡΑΣΚΕΛΊΖΕΙ ΥΠΈΡ ΝΩΘΡΟΎ ΚΥΝΌΣ'],
         ];
     }
 
-    public function providerForInvalidUppercase()
+    /*
+    * {@inheritdoc}
+    */
+    public function providerForInvalidInput(): array
     {
         return [
-            ['lowercase'],
-            ['CamelCase'],
-            ['First Character Uppercase'],
-            ['With Numbers 1 2 3'],
+            [new Uppercase(), 'lowercase'],
+            [new Uppercase(), 'CamelCase'],
+            [new Uppercase(), 'First Character Uppercase'],
+            [new Uppercase(), 'With Numbers 1 2 3'],
         ];
     }
 }
