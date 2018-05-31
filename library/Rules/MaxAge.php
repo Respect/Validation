@@ -14,19 +14,18 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 /**
- * Validates a minimum age for a given date.
+ * Validates a maximum age for a given date.
  *
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jean Pimentel <jeanfap@gmail.com>
- * @author Kennedy Tedesco <kennedyt.tw@gmail.com>
  */
-final class MinimumAge extends AbstractAge
+final class MaxAge extends AbstractAge
 {
     /**
      * {@inheritdoc}
      */
     protected function compare(int $baseDate, int $givenDate): bool
     {
-        return $baseDate >= $givenDate;
+        return $baseDate <= $givenDate;
     }
 }

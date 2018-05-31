@@ -45,7 +45,7 @@ See also:
 
 - [Date](Date.md)
 - [Between](Between.md)
-- [MinimumAge](MinimumAge.md)
+- [MinAge](MinAge.md)
 - [LeapDate](LeapDate.md)
 - [LeapYear](LeapYear.md)
 - [Time](Time.md)

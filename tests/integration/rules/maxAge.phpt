@@ -2,30 +2,30 @@
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\MaximumAgeException;
+use Respect\Validation\Exceptions\MaxAgeException;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::maximumAge(12)->check('50 years ago');
-} catch (MaximumAgeException $exception) {
+    v::maxAge(12)->check('50 years ago');
+} catch (MaxAgeException $exception) {
     echo $exception->getMessage().PHP_EOL;
 }
 
 try {
-    v::not(v::maximumAge(12))->check('11 years ago');
-} catch (MaximumAgeException $exception) {
+    v::not(v::maxAge(12))->check('11 years ago');
+} catch (MaxAgeException $exception) {
     echo $exception->getMessage().PHP_EOL;
 }
 
 try {
-    v::maximumAge(12, 'Y-m-d')->assert('1988-09-09');
+    v::maxAge(12, 'Y-m-d')->assert('1988-09-09');
 } catch (NestedValidationException $exception) {
     echo $exception->getFullMessage().PHP_EOL;
 }
 
 try {
-    v::not(v::maximumAge(12, 'Y-m-d'))->assert('2018-01-01');
+    v::not(v::maxAge(12, 'Y-m-d'))->assert('2018-01-01');
 } catch (NestedValidationException $exception) {
     echo $exception->getFullMessage().PHP_EOL;
 }

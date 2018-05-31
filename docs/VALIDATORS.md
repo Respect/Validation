@@ -136,7 +136,8 @@
 - [DateTime](DateTime.md)
 - [LeapDate](LeapDate.md)
 - [LeapYear](LeapYear.md)
-- [MinimumAge](MinimumAge.md)
+- [MaxAge](MaxAge.md)
+- [MinAge](MinAge.md)
 - [Time](Time.md)
 
 ## Group Validators
@@ -293,7 +294,7 @@
 - [Max](Max.md)
 - [Mimetype](Mimetype.md)
 - [Min](Min.md)
-- [MinimumAge](MinimumAge.md)
+- [MinAge](MinAge.md)
 - [Multiple](Multiple.md)
 - [Negative](Negative.md)
 - [NfeAccessKey](NfeAccessKey.md)

@@ -1,18 +1,18 @@
-# MinimumAge
+# MinAge
 
-- `MinimumAge(int $age)`
-- `MinimumAge(int $age, string $format)`
+- `MinAge(int $age)`
+- `MinAge(int $age, string $format)`
 
 Validates a minimum age for a given date. The `$format` argument should be in
 accordance to PHP's [date()][] function. When `$format` is not  given this rule
 accepts [Supported Date and Time Formats][] by PHP (see [strtotime()][]).
 
 ```php
-v::minimumAge(18)->validate('18 years ago'); // true
-v::minimumAge(18, 'Y-m-d')->validate('1987-01-01'); // true
+v::minAge(18)->validate('18 years ago'); // true
+v::minAge(18, 'Y-m-d')->validate('1987-01-01'); // true
 
-v::minimumAge(18)->validate('17 years ago'); // false
-v::minimumAge(18, 'Y-m-d')->validate('2010-09-07'); // false
+v::minAge(18)->validate('17 years ago'); // false
+v::minAge(18, 'Y-m-d')->validate('2010-09-07'); // false
 ```
 
 Using [Date](Date.md) before is a best-practice.
@@ -29,7 +29,7 @@ See also:
 
 - [Date](Date.md)
 - [Max](Max.md)
-- [MaximumAge](MaximumAge.md)
+- [MaxAge](MaxAge.md)
 - [Min](Min.md)
 
 [date()]: http://php.net/date
