@@ -1,43 +1,49 @@
 # Max
 
-- `Max(mixed $maxValue)`
-- `Max(mixed $maxValue, bool $inclusive)`
+- `Max(mixed $compareTo)`
 
-Validates if the input doesn't exceed the maximum value.
-
-```php
-v::intVal()->max(15)->validate(20); // false
-v::intVal()->max(20)->validate(20); // false
-v::intVal()->max(20, true)->validate(20); // true
-```
-
-Also accepts dates:
+Validates whether the input is less than or equal to a value.
 
 ```php
-v::dateTime()->max('2012-01-01')->validate('2010-01-01'); // true
+v::max(10)->validate(9); // true
+v::max(10)->validate(10); // true
+v::max(10)->validate(11); // false
 ```
 
-Also date intervals:
+You can also validate:
 
 ```php
-// Same of minimum age validation
-v::dateTime()->max('-18 years')->validate('1988-09-09'); // true
+// Dates
+v::dateTime()->max('2010-01-01')->validate('2000-01-01'); // true
+v::dateTime()->max('2010-01-01')->validate('2020-01-01'); // false
+
+// DateTimeInterface
+v::dateTime()->max(new DateTime('today'))->validate(new DateTimeImmutable('yesterday')); // true
+v::dateTime()->max(new DateTimeImmutable('today'))->validate(new DateTime('tomorrow')); // false
+
+// Date intervals
+v::dateTime()->max('18 years ago')->validate('1988-09-09'); // true
+v::dateTime()->max('now')->validate('+1 minute'); // false
+
+// Single character strings
+v::stringType()->lowercase()->max('z')->validate('a'); // true
+v::stringType()->uppercase()->max('B')->validate('C'); // false
 ```
 
-`true` may be passed as a parameter to indicate that inclusive
-values must be used.
-
-Message template for this validator includes `{{maxValue}}`.
+Message template for this validator includes `{{compareTo}}`.
 
 ## Changelog
 
 Version | Description
 --------|-------------
+  2.0.0 | Became always inclusive
   1.0.0 | Became inclusive by default
   0.3.9 | Created
 
 ***
 See also:
 
-- [Min](Min.md)
 - [Between](Between.md)
+- [GreaterThan](GreaterThan.md)
+- [LessThan](LessThan.md)
+- [Min](Min.md)

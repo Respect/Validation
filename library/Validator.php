@@ -98,7 +98,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator lessThan($compareTo)
  * @method static Validator luhn()
  * @method static Validator macAddress()
- * @method static Validator max($maxValue, bool $inclusive = true)
+ * @method static Validator max($compareTo)
  * @method static Validator maximumAge(int $age, string $format = null)
  * @method static Validator mimetype(string $mimetype)
  * @method static Validator min($minValue, bool $inclusive = true)

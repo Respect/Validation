@@ -13,59 +13,46 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use DateTime;
+use DateTimeImmutable;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Max
- * @covers \Respect\Validation\Exceptions\MaxException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class MaxTest extends TestCase
+final class MaxTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForValidMax
+     * {@inheritdoc}
      */
-    public function testValidMaxInputShouldReturnTrue($maxValue, $inclusive, $input): void
-    {
-        $max = new Max($maxValue, $inclusive);
-        self::assertTrue($max->validate($input));
-        $max->check($input);
-        $max->assert($input);
-    }
-
-    /**
-     * @dataProvider providerForInvalidMax
-     * @expectedException \Respect\Validation\Exceptions\MaxException
-     */
-    public function testInvalidMaxValueShouldThrowMaxException($maxValue, $inclusive, $input): void
-    {
-        $max = new Max($maxValue, $inclusive);
-        self::assertFalse($max->validate($input));
-        $max->assert($input);
-    }
-
-    public function providerForValidMax()
+    public function providerForValidInput(): array
     {
         return [
-            [200, false, ''],
-            [200, false, 165.0],
-            [200, false, -200],
-            [200, true, 200],
-            [200, false, 0],
-            ['-18 years', true, '1988-09-09'],
-            ['z', true, 'z'],
-            ['z', false, 'y'],
-            ['tomorrow', true, 'now'],
+            [new Max(10), 9],
+            [new Max(10), 10],
+            [new Max('2010-01-01'), '2000-01-01'],
+            [new Max(new DateTime('today')), new DateTimeImmutable('yesterday')],
+            [new Max('18 years ago'), '1988-09-09'],
+            [new Max('z'), 'a'],
         ];
     }
 
-    public function providerForInvalidMax()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         return [
-            [200, false, 300],
-            [200, false, 250],
-            [200, false, 1500],
-            [200, false, 200],
+            [new Max(10), 11],
+            [new Max(new DateTimeImmutable('today')), new DateTime('tomorrow')],
+            [new Max('now'), '+1 minute'],
+            [new Max('B'), 'C'],
         ];
     }
 }
