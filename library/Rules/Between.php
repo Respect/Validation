@@ -29,27 +29,25 @@ final class Between extends AbstractEnvelope
     /**
      * Initializes the rule.
      *
-     * @param mixed $minimum
-     * @param mixed $maximum
-     * @param bool $inclusive
+     * @param mixed $minValue
+     * @param mixed $maxValue
      *
      * @throws ComponentException
      */
-    public function __construct($minimum, $maximum, bool $inclusive = true)
+    public function __construct($minValue, $maxValue)
     {
-        if ($this->toComparable($minimum) >= $this->toComparable($maximum)) {
+        if ($this->toComparable($minValue) >= $this->toComparable($maxValue)) {
             throw new ComponentException('Minimum cannot be less than or equals to maximum');
         }
 
         parent::__construct(
             new AllOf(
-                new Min($minimum, $inclusive),
-                new Max($maximum, $inclusive)
+                new Min($minValue, true),
+                new Max($maxValue, true)
             ),
             [
-                'minimum' => $minimum,
-                'maximum' => $maximum,
-                'inclusive' => $inclusive,
+                'minValue' => $minValue,
+                'maxValue' => $maxValue,
             ]
         );
     }

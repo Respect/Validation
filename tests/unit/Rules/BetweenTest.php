@@ -29,14 +29,14 @@ final class BetweenTest extends RuleTestCase
     public function providerForValidInput(): array
     {
         return [
-            [new Between(0, 1, true), 1],
-            [new Between(0, 1, true), 0],
-            [new Between(10, 20, false), 15],
-            [new Between(10, 20, true), 20],
-            [new Between(-10, 20, false), -5],
-            [new Between(-10, 20, false), 0],
-            [new Between('a', 'z', false), 'j'],
-            [new Between(new DateTime('yesterday'), new DateTime('tomorrow'), false), new DateTime('now')],
+            [new Between(0, 1), 1],
+            [new Between(0, 1), 0],
+            [new Between(10, 20), 15],
+            [new Between(10, 20), 20],
+            [new Between(-10, 20), -5],
+            [new Between(-10, 20), 0],
+            [new Between('a', 'z'), 'j'],
+            [new Between(new DateTime('yesterday'), new DateTime('tomorrow')), new DateTime('now')],
         ];
     }
 
@@ -46,17 +46,14 @@ final class BetweenTest extends RuleTestCase
     public function providerForInvalidInput(): array
     {
         return [
-            [new Between(10, 20, false), ''],
-            [new Between(10, 20, true), ''],
-            [new Between(0, 1, false), 0],
-            [new Between(0, 1, false), 1],
-            [new Between(0, 1, false), 2],
-            [new Between(0, 1, false), -1],
-            [new Between(10, 20, false), 999],
-            [new Between(10, 20, false), 20],
-            [new Between(-10, 20, false), -11],
-            [new Between('a', 'j', false), 'z'],
-            [new Between(new DateTime('yesterday'), new DateTime('now'), false), new DateTime('tomorrow')],
+            [new Between(10, 20), ''],
+            [new Between(10, 20), ''],
+            [new Between(0, 1), 2],
+            [new Between(0, 1), -1],
+            [new Between(10, 20), 999],
+            [new Between(-10, 20), -11],
+            [new Between('a', 'j'), 'z'],
+            [new Between(new DateTime('yesterday'), new DateTime('now')), new DateTime('tomorrow')],
         ];
     }
 
