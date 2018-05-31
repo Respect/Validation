@@ -13,93 +13,57 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Contains
- * @covers \Respect\Validation\Exceptions\ContainsException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nawarian <nickolas@phpsp.org.br>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class ContainsTest extends TestCase
+final class ContainsTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForContainsIdentical
+     * {@inheritdoc}
      */
-    public function testStringsContainingExpectedIdenticalValueShouldPass($start, $input): void
-    {
-        $v = new Contains($start, true);
-        self::assertTrue($v->validate($input));
-    }
-
-    /**
-     * @dataProvider providerForContains
-     */
-    public function testStringsContainingExpectedValueShouldPass($start, $input): void
-    {
-        $v = new Contains($start, false);
-        self::assertTrue($v->validate($input));
-    }
-
-    /**
-     * @dataProvider providerForNotContainsIdentical
-     */
-    public function testStringsNotContainsExpectedIdenticalValueShouldNotPass($start, $input): void
-    {
-        $v = new Contains($start, true);
-        self::assertFalse($v->validate($input));
-    }
-
-    /**
-     * @dataProvider providerForNotContains
-     */
-    public function testStringsNotContainsExpectedValueShouldNotPass($start, $input): void
-    {
-        $v = new Contains($start, false);
-        self::assertFalse($v->validate($input));
-    }
-
-    public function providerForContains()
+    public function providerForValidInput(): array
     {
         return [
-            ['foo', ['bar', 'foo']],
-            ['foo', 'barbazFOO'],
-            ['foo', 'barbazfoo'],
-            ['foo', 'foobazfoO'],
-            ['1', [2, 3, 1]],
-            ['1', [2, 3, '1']],
+            [new Contains('foo', false), ['bar', 'foo']],
+            [new Contains('foo', false), 'barbazFOO'],
+            [new Contains('foo', false), 'barbazfoo'],
+            [new Contains('foo', false), 'foobazfoO'],
+            [new Contains('1', false), [2, 3, 1]],
+            [new Contains('1', false), [2, 3, '1']],
+            [new Contains('foo'), ['fool', 'foo']],
+            [new Contains('foo'), 'barbazfoo'],
+            [new Contains('foo'), 'foobazfoo'],
+            [new Contains('1'), [2, 3, (string) 1]],
+            [new Contains('1'), [2, 3, '1']],
         ];
     }
 
-    public function providerForContainsIdentical()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         return [
-            ['foo', ['fool', 'foo']],
-            ['foo', 'barbazfoo'],
-            ['foo', 'foobazfoo'],
-            ['1', [2, 3, (string) 1]],
-            ['1', [2, 3, '1']],
-        ];
-    }
-
-    public function providerForNotContains()
-    {
-        return [
-            ['foo', ''],
-            ['bat', ['bar', 'foo']],
-            ['foo', 'barfaabaz'],
-            ['foo', 'faabarbaz'],
-        ];
-    }
-
-    public function providerForNotContainsIdentical()
-    {
-        return [
-            ['foo', ''],
-            ['bat', ['BAT', 'foo']],
-            ['bat', ['BaT', 'Batata']],
-            ['foo', 'barfaabaz'],
-            ['foo', 'barbazFOO'],
-            ['foo', 'faabarbaz'],
+            [new Contains('foo', false), ''],
+            [new Contains('bat', false), ['bar', 'foo']],
+            [new Contains('foo', false), 'barfaabaz'],
+            [new Contains('foo', false), 'faabarbaz'],
+            [new Contains('foo', true), ''],
+            [new Contains('bat', true), ['BAT', 'foo']],
+            [new Contains('bat', true), ['BaT', 'Batata']],
+            [new Contains('foo', true), 'barfaabaz'],
+            [new Contains('foo', true), 'barbazFOO'],
+            [new Contains('foo', true), 'faabarbaz'],
         ];
     }
 }

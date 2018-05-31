@@ -13,8 +13,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class ContainsException extends ValidationException
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class ContainsException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must contain the value "{{containsValue}}"',

@@ -13,17 +13,41 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Contains extends AbstractRule
+/**
+ * Validates if the input contains some value.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Marcelo Araujo <msaraujo@php.net>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class Contains extends AbstractRule
 {
-    public $containsValue;
-    public $identical;
+    /**
+     * @var mixed
+     */
+    private $containsValue;
 
-    public function __construct($containsValue, $identical = false)
+    /**
+     * @var bool
+     */
+    private $identical;
+
+    /**
+     * Initializes the Contains rule.
+     *
+     * @param mixed $containsValue Value that will be sought
+     * @param bool $identical Defines whether the value is identical, default is false
+     */
+    public function __construct($containsValue, bool $identical = false)
     {
         $this->containsValue = (string) $containsValue;
         $this->identical = $identical;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if ($this->identical) {
@@ -33,7 +57,7 @@ class Contains extends AbstractRule
         return $this->validateEquals($input);
     }
 
-    protected function validateEquals($input)
+    private function validateEquals($input): bool
     {
         if (is_array($input)) {
             return in_array($this->containsValue, $input);
@@ -44,7 +68,7 @@ class Contains extends AbstractRule
         return false !== mb_stripos($inputString, $this->containsValue, 0, mb_detect_encoding($inputString));
     }
 
-    protected function validateIdentical($input)
+    private function validateIdentical($input): bool
     {
         if (is_array($input)) {
             return in_array($this->containsValue, $input, true);
