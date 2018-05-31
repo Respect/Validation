@@ -45,6 +45,7 @@
 - [Between](Between.md)
 - [Equals](Equals.md)
 - [Identical](Identical.md)
+- [LessThan](LessThan.md)
 - [Max](Max.md)
 - [Min](Min.md)
 
@@ -283,6 +284,7 @@
 - [LeapDate](LeapDate.md)
 - [LeapYear](LeapYear.md)
 - [Length](Length.md)
+- [LessThan](LessThan.md)
 - [Lowercase](Lowercase.md)
 - [Luhn](Luhn.md)
 - [MacAddress](MacAddress.md)
