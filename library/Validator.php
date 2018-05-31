@@ -72,6 +72,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator floatVal()
  * @method static Validator floatType()
  * @method static Validator graph(string $additionalChars = null)
+ * @method static Validator greaterThan($compareTo)
  * @method static Validator hexRgbColor()
  * @method static Validator identical($value)
  * @method static Validator identityCard(string $countryCode)
