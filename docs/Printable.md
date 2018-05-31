@@ -1,12 +1,12 @@
-# Prnt
+# Printable
 
-- `Prnt()`
-- `Prnt(string $additionalChars)`
+- `Printable()`
+- `Printable(string $additionalChars)`
 
 Similar to `Graph` but accepts whitespace.
 
 ```php
-v::prnt()->validate('LMKA0$% _123'); // true
+v::printable()->validate('LMKA0$% _123'); // true
 ```
 
 ## Changelog

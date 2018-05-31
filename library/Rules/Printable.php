@@ -13,8 +13,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Prnt extends AbstractCtypeRule
+/**
+ * Validates whether an input is printable character(s).
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class Printable extends AbstractCtypeRule
 {
+    /**
+     * {@inheritdoc}
+     */
     protected function ctypeFunction($input)
     {
         return ctype_print($input);

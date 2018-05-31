@@ -19,5 +19,5 @@ Version | Description
 See also:
 
 - [Alnum](Alnum.md)
-- [Prnt](Prnt.md)
+- [Printable](Printable.md)
 - [Space](Space.md)

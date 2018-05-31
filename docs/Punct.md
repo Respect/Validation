@@ -20,4 +20,4 @@ See also:
 
 - [Cntrl](Cntrl.md)
 - [Graph](Graph.md)
-- [Prnt](Prnt.md)
+- [Printable](Printable.md)

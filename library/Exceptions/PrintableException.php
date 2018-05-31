@@ -13,8 +13,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class PrntException extends AlphaException
+/**
+ * Exceptions to be thrown by the Printable Rule.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class PrintableException extends AlphaException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must contain only printable characters',

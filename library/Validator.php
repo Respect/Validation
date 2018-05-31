@@ -129,7 +129,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator positive()
  * @method static Validator postalCode(string $countryCode)
  * @method static Validator primeNumber()
- * @method static Validator prnt(string $additionalChars = null)
+ * @method static Validator printable(string $additionalChars = null)
  * @method static Validator punct(string $additionalChars = null)
  * @method static Validator readable()
  * @method static Validator regex(string $regex)

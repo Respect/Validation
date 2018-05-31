@@ -18,4 +18,4 @@ Version | Description
 ***
 See also:
 
-- [Prnt](Prnt.md)
+- [Printable](Printable.md)
