@@ -13,14 +13,38 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Min extends AbstractInterval
+use Respect\Validation\Helpers\ComparisonHelper;
+
+/**
+ * Validates whether the input is greater than or equal to a value.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class Min extends AbstractRule
 {
+    use ComparisonHelper;
+
+    /**
+     * @var mixed
+     */
+    private $compareTo;
+
+    /**
+     * Initializes the rule by setting the value to be compared to the input.
+     *
+     * @param mixed $compareTo
+     */
+    public function __construct($compareTo)
+    {
+        $this->compareTo = $compareTo;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
-        if ($this->inclusive) {
-            return $this->filterInterval($input) >= $this->filterInterval($this->interval);
-        }
-
-        return $this->filterInterval($input) > $this->filterInterval($this->interval);
+        return $this->toComparable($input) >= $this->toComparable($this->compareTo);
     }
 }

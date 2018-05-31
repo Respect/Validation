@@ -14,65 +14,68 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use DateTime;
-use PHPUnit\Framework\TestCase;
+use DateTimeImmutable;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Min
- * @covers \Respect\Validation\Exceptions\MinException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class MinTest extends TestCase
+final class MinTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForValidMin
+     * {@inheritdoc}
      */
-    public function testValidMinShouldReturnTrue($minValue, $inclusive, $input): void
-    {
-        $min = new Min($minValue, $inclusive);
-        self::assertTrue($min->__invoke($input));
-        $min->check($input);
-        $min->assert($input);
-    }
-
-    /**
-     * @dataProvider providerForInvalidMin
-     * @expectedException \Respect\Validation\Exceptions\MinException
-     */
-    public function testInvalidMinShouldThrowMinException($minValue, $inclusive, $input): void
-    {
-        $min = new Min($minValue, $inclusive);
-        self::assertFalse($min->__invoke($input));
-        $min->assert($input);
-    }
-
-    public function providerForValidMin()
+    public function providerForValidInput(): array
     {
         return [
-            [100, false, 165.0],
-            [-100, false, 200],
-            [200, true, 200],
-            [200, false, 300],
-            ['a', true, 'a'],
-            ['a', true, 'c'],
-            ['yesterday', true, 'now'],
+            // From documentation
+            [new Min(10), 10],
+            [new Min(10), 11],
+            [new Min('2010-01-01'), '2010-01-01'],
+            [new Min(new DateTime('yesterday')), new DateTimeImmutable('tomorrow')],
+            [new Min('1988-09-09'), '18 years ago'],
+            [new Min('a'), 'b'],
 
+            [new Min(100), 165.0],
+            [new Min(-100), 200],
+            [new Min(200), 200],
+            [new Min(200), 300],
+            [new Min('a'), 'a'],
+            [new Min('a'), 'c'],
+            [new Min('yesterday'), 'now'],
             // Samples from issue #178
-            ['13-05-2014 03:16', true, '20-05-2014 03:16'],
-            [new DateTime('13-05-2014 03:16'), true, new DateTime('20-05-2014 03:16')],
-            ['13-05-2014 03:16', true, new DateTime('20-05-2014 03:16')],
-            [new DateTime('13-05-2014 03:16'), true, '20-05-2014 03:16'],
+            [new Min('13-05-2014 03:16'), '20-05-2014 03:16'],
+            [new Min(new DateTime('13-05-2014 03:16')), new DateTime('20-05-2014 03:16')],
+            [new Min('13-05-2014 03:16'), new DateTime('20-05-2014 03:16')],
+            [new Min(new DateTime('13-05-2014 03:16')), '20-05-2014 03:16'],
+            [new Min(50), 50],
         ];
     }
 
-    public function providerForInvalidMin()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         return [
-            [100, true, ''],
-            [100, false, ''],
-            [500, false, 300],
-            [0, false, -250],
-            [0, false, -50],
-            [50, false, 50],
+            // From documentation
+            [new Min(10), 9],
+            [new Min('2011-01-01'), '2009-01-01'],
+            [new Min(new DateTimeImmutable('+1 month')), new DateTime('today')],
+            [new Min('+1 minute'), new DateTime('now')],
+            [new Min('C'), 'A'],
+
+            [new Min(100), ''],
+            [new Min(100), ''],
+            [new Min(500), 300],
+            [new Min(0), -250],
+            [new Min(0), -50],
         ];
     }
 }

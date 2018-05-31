@@ -42,7 +42,7 @@ final class Between extends AbstractEnvelope
 
         parent::__construct(
             new AllOf(
-                new Min($minValue, true),
+                new Min($minValue),
                 new Max($maxValue)
             ),
             [
