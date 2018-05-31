@@ -16,6 +16,7 @@ namespace Respect\Validation\Rules;
 use DateTime;
 use DateTimeImmutable;
 use Respect\Validation\Test\RuleTestCase;
+use Respect\Validation\Test\Stubs\CountableStub;
 
 /**
  * @group rule
@@ -40,6 +41,7 @@ final class MaxTest extends RuleTestCase
             [new Max(new DateTime('today')), new DateTimeImmutable('yesterday')],
             [new Max('18 years ago'), '1988-09-09'],
             [new Max('z'), 'a'],
+            [new Max(new CountableStub(3)), 2],
         ];
     }
 
@@ -53,6 +55,7 @@ final class MaxTest extends RuleTestCase
             [new Max(new DateTimeImmutable('today')), new DateTime('tomorrow')],
             [new Max('now'), '+1 minute'],
             [new Max('B'), 'C'],
+            [new Max(new CountableStub(3)), 4],
         ];
     }
 }

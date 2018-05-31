@@ -10,28 +10,8 @@ v::intVal()->min(10)->validate(10); // true
 v::intVal()->min(10)->validate(11); // true
 ```
 
-You can also validate:
-
-```php
-// Dates
-v::dateTime()->min('2010-01-01')->validate('2010-01-01'); // true
-v::dateTime()->min('2011-01-01')->validate('2010-01-01'); // false
-
-// DateTimeInterface
-v::dateTime()->min(new DateTime('yesterday'))->validate(new DateTimeImmutable('tomorrow')); // true
-v::dateTime()->min(new DateTimeImmutable('+1 month'))->validate(new DateTime('today')); // false
-
-// Date intervals
-v::dateTime()->min('1988-09-09')->validate('18 years ago'); // true
-v::dateTime()->min('+1 minute')->validate('now'); // false
-
-// Single character strings
-v::stringType()->lowercase()->min('a')->validate('b'); // true
-v::stringType()->uppercase()->min('C')->validate('A'); // false
-```
-
-`true` may be passed as a parameter to indicate that inclusive
-values must be used.
+Validation makes comparison easier, check out our supported 
+[comparable values](ComparableValues.md).
 
 Message template for this validator includes `{{compareTo}}`.
 

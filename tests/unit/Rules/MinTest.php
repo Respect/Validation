@@ -16,6 +16,7 @@ namespace Respect\Validation\Rules;
 use DateTime;
 use DateTimeImmutable;
 use Respect\Validation\Test\RuleTestCase;
+use Respect\Validation\Test\Stubs\CountableStub;
 
 /**
  * @group rule
@@ -55,6 +56,7 @@ final class MinTest extends RuleTestCase
             [new Min('13-05-2014 03:16'), new DateTime('20-05-2014 03:16')],
             [new Min(new DateTime('13-05-2014 03:16')), '20-05-2014 03:16'],
             [new Min(50), 50],
+            [new Min(new CountableStub(10)), 10],
         ];
     }
 
@@ -76,6 +78,7 @@ final class MinTest extends RuleTestCase
             [new Min(500), 300],
             [new Min(0), -250],
             [new Min(0), -50],
+            [new Min(new CountableStub(1)), 0],
         ];
     }
 }

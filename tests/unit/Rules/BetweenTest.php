@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use DateTime;
 use Respect\Validation\Test\RuleTestCase;
+use Respect\Validation\Test\Stubs\CountableStub;
 
 /**
  * @group rule
@@ -37,6 +38,7 @@ final class BetweenTest extends RuleTestCase
             [new Between(-10, 20), 0],
             [new Between('a', 'z'), 'j'],
             [new Between(new DateTime('yesterday'), new DateTime('tomorrow')), new DateTime('now')],
+            [new Between(new CountableStub(1), new CountableStub(10)), 5],
         ];
     }
 
@@ -54,6 +56,7 @@ final class BetweenTest extends RuleTestCase
             [new Between(-10, 20), -11],
             [new Between('a', 'j'), 'z'],
             [new Between(new DateTime('yesterday'), new DateTime('now')), new DateTime('tomorrow')],
+            [new Between(new CountableStub(1), new CountableStub(10)), 11],
         ];
     }
 

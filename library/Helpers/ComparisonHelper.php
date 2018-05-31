@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Helpers;
 
+use Countable;
 use DateTimeImmutable;
 use DateTimeInterface;
 use Exception;
@@ -36,6 +37,10 @@ trait ComparisonHelper
      */
     private function toComparable($value)
     {
+        if ($value instanceof Countable) {
+            return $value->count();
+        }
+
         if ($value instanceof DateTimeInterface || !is_string($value) || is_numeric($value) || empty($value)) {
             return $value;
         }

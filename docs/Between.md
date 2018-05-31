@@ -10,24 +10,8 @@ v::intVal()->between(10, 20)->validate(15); // true
 v::intVal()->between(10, 20)->validate(20); // true
 ```
 
-The type as the first validator in a chain is a good practice,
-since between accepts many types:
-
-```php
-v::stringType()->between('a', 'f')->validate('c'); // true
-```
-
-Also very powerful with dates:
-
-```php
-v::dateTime()->between('2009-01-01', '2013-01-01')->validate('2010-01-01'); // true
-```
-
-Date ranges accept date intervals:
-
-```php
-v::dateTime()->between('yesterday', 'tomorrow')->validate('now'); // true
-```
+Validation makes comparison easier, check out our supported 
+[comparable values](ComparableValues.md).
 
 Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.
 

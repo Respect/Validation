@@ -9,21 +9,8 @@ v::lessThan(10)->validate(9); // true
 v::lessThan(10)->validate(10); // false
 ```
 
-You can also validate:
-
-```php
-// Dates
-v::dateTime()->lessThan('2010-01-01')->validate('2000-01-01'); // true
-v::dateTime()->lessThan('2010-01-01')->validate('2020-01-01'); // false
-
-// Date intervals
-v::dateTime()->lessThan('today')->validate('3 days ago'); // true
-v::dateTime()->lessThan('yesterday')->validate('tomorrow'); // false
-
-// Single character strings
-v::dateTime()->lessThan('b')->validate('a'); // true
-v::dateTime()->lessThan('a')->validate('z'); // false
-```
+Validation makes comparison easier, check out our supported 
+[comparable values](ComparableValues.md).
 
 Message template for this validator includes `{{compareTo}}`.
 

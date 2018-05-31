@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
+use Respect\Validation\Test\Stubs\CountableStub;
 
 /**
  * @group rule
@@ -34,6 +35,7 @@ final class LessThanTest extends RuleTestCase
             [new LessThan('2010-01-01'), '2000-01-01'],
             [new LessThan('today'), '3 days ago'],
             [new LessThan('b'), 'a'],
+            [new LessThan(new CountableStub(5)), 4],
         ];
     }
 
@@ -47,6 +49,7 @@ final class LessThanTest extends RuleTestCase
             [new LessThan('2010-01-01'), '2020-01-01'],
             [new LessThan('yesterday'), 'tomorrow'],
             [new LessThan('a'), 'z'],
+            [new LessThan(new CountableStub(5)), 6],
         ];
     }
 }
