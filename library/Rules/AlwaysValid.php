@@ -13,8 +13,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class AlwaysValid extends AbstractRule
+/**
+ * Always returns true.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class AlwaysValid extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         return true;
