@@ -13,8 +13,21 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Cpf extends AbstractRule
+/**
+ * Validates whether the input is a CPF (Brazilian Natural Persons Register) number.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jair Henrique <jair.henrique@gmail.com>
+ * @author Jayson Reis <jayson.reis@sabbre.com.br>
+ * @author Jean Pimentel <jeanfap@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class Cpf extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         // Code ported from jsfromhell.com
