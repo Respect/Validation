@@ -2,7 +2,7 @@
 
 - `AlwaysValid()`
 
-Always returns true.
+Validates any input as valid.
 
 ```php
 v::alwaysValid()->validate($whatever); // true

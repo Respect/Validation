@@ -17,11 +17,17 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
+ *
  * @covers \Respect\Validation\Rules\AlwaysValid
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Paulo Eduardo <pauloelr@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class AlwaysValidTest extends TestCase
+final class AlwaysValidTest extends TestCase
 {
-    public function providerForValidAlwaysValid()
+    public function providerForValidInput(): array
     {
         return [
             [0],
@@ -37,9 +43,11 @@ class AlwaysValidTest extends TestCase
     }
 
     /**
-     * @dataProvider providerForValidAlwaysValid
+     * @test
+     *
+     * @dataProvider providerForValidInput
      */
-    public function testShouldValidateInputWhenItIsAValidAlwaysValid($input): void
+    public function itShouldValidateInputWhenItIsAValidAlwaysValid($input): void
     {
         $rule = new AlwaysValid();
 
