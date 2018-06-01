@@ -16,10 +16,10 @@ namespace Respect\Validation\Rules;
 /**
  * Validates if the input is uppercase.
  *
+ * @author Alexandre Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jean Pimentel <jeanfap@gmail.com>
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Alexandre Gaigalas <alexandre@gaigalas.net>
  */
 final class Uppercase extends AbstractRule
 {

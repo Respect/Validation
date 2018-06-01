@@ -14,9 +14,9 @@ declare(strict_types=1);
 namespace Respect\Validation\Exceptions;
 
 /**
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jean Pimentel <jeanfap@gmail.com>
- * @author Danilo Benevides <danilobenevides01@gmail.com>
  */
 final class UppercaseException extends ValidationException
 {

@@ -16,15 +16,15 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
  *
  * @covers \Respect\Validation\Rules\Uppercase
  * @covers \Respect\Validation\Exceptions\UppercaseException
  *
- * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Jean Pimentel <jeanfap@gmail.com>
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
  */
 final class UppercaseTest extends RuleTestCase
 {
