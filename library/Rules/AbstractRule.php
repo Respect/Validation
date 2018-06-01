@@ -58,7 +58,7 @@ abstract class AbstractRule implements Validatable
         return $this;
     }
 
-    public function setTemplate($template)
+    public function setTemplate(string $template): Validatable
     {
         $this->template = $template;
 

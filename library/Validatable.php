@@ -28,7 +28,7 @@ interface Validatable
 
     public function setName(string $name): Validatable;
 
-    public function setTemplate($template);
+    public function setTemplate(string $template): Validatable;
 
     public function validate($input): bool;
 }
