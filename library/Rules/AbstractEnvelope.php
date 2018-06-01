@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
 
 /**
@@ -58,7 +59,7 @@ abstract class AbstractEnvelope extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function reportError($input, array $extraParameters = [])
+    public function reportError($input, array $extraParameters = []): ValidationException
     {
         return parent::reportError($input, $extraParameters + $this->parameters);
     }

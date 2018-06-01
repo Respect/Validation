@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
+use Respect\Validation\Exceptions\ValidationException;
+
 /** Interface for validation rules */
 interface Validatable
 {
@@ -22,7 +24,7 @@ interface Validatable
 
     public function getName(): ?string;
 
-    public function reportError($input, array $relatedExceptions = []);
+    public function reportError($input, array $relatedExceptions = []): ValidationException;
 
     public function setName(string $name): Validatable;
 
