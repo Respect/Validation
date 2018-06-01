@@ -13,8 +13,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Countable extends AbstractRule
+/**
+ * Validates if the input is countable
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author João Torquato <joao.otl@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class Countable extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         return is_array($input) || $input instanceof \Countable;
