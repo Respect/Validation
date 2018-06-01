@@ -13,13 +13,19 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use ArrayIterator;
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\IterableType
+ *
+ * @author Guilherme Siani <guilherme@siani.com.br>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class IterableTypeTest extends RuleTestCase
+final class IterableTypeTest extends RuleTestCase
 {
     public function providerForValidInput(): array
     {
@@ -27,8 +33,8 @@ class IterableTypeTest extends RuleTestCase
 
         return [
             [$rule, [1, 2, 3]],
-            [$rule, new \stdClass()],
-            [$rule, new \ArrayIterator()],
+            [$rule, new stdClass()],
+            [$rule, new ArrayIterator()],
         ];
     }
 

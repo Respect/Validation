@@ -2,8 +2,9 @@
 
 - `IterableType()`
 
-Validates if the input is iterable, in other words, if you're able to iterate
-over it with [foreach](http://php.net/foreach) language construct.
+Validates whether the pseudo-type of the input is iterable or not, in other words,
+if you're able to iterate over it with [foreach](http://php.net/foreach) language
+construct.
 
 ```php
 v::iterableType()->validate([]); // true

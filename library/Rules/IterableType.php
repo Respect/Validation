@@ -13,12 +13,22 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class IterableType extends AbstractRule
+use Respect\Validation\Helpers\CanValidateIterable;
+
+/**
+ * Validates whether the pseudo-type of the input is iterable or not.
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class IterableType extends AbstractRule
 {
+    use CanValidateIterable;
+
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
-        return is_array($input) ||
-            $input instanceof \stdClass ||
-            $input instanceof \Traversable;
+        return $this->isIterable($input);
     }
 }

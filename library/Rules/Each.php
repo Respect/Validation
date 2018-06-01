@@ -14,10 +14,13 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Helpers\CanValidateIterable;
 use Respect\Validation\Validatable;
 
-class Each extends IterableType
+class Each extends AbstractRule
 {
+    use CanValidateIterable;
+
     public $itemValidator;
     public $keyValidator;
 
@@ -31,7 +34,7 @@ class Each extends IterableType
     {
         $exceptions = [];
 
-        if (!parent::validate($input)) {
+        if (!$this->isIterable($input)) {
             throw $this->reportError($input);
         }
 
@@ -60,7 +63,7 @@ class Each extends IterableType
 
     public function check($input): void
     {
-        if (!parent::validate($input)) {
+        if (!$this->isIterable($input)) {
             throw $this->reportError($input);
         }
 
@@ -77,7 +80,7 @@ class Each extends IterableType
 
     public function validate($input): bool
     {
-        if (!parent::validate($input)) {
+        if (!$this->isIterable($input)) {
             return false;
         }
 
