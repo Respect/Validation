@@ -13,123 +13,68 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Cpf
- * @covers \Respect\Validation\Exceptions\CpfException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jair Henrique <jair.henrique@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class CpfTest extends TestCase
+final class CpfTest extends RuleTestCase
 {
-    protected $cpfValidator;
-
-    protected function setUp(): void
-    {
-        $this->cpfValidator = new Cpf();
-    }
-
     /**
-     * @doesNotPerformAssertions
-     *
-     * @dataProvider providerValidFormattedCpf
+     * {@inheritdoc}
      */
-    public function testFormattedCpfsShouldValidate($input): void
+    public function providerForValidInput(): array
     {
-        $this->cpfValidator->assert($input);
-    }
+        $rule = new Cpf();
 
-    /**
-     * @doesNotPerformAssertions
-     *
-     * @dataProvider providerValidUnformattedCpf
-     */
-    public function testUnformattedCpfsShouldValidates($input): void
-    {
-        $this->cpfValidator->assert($input);
-    }
-
-    /**
-     * @dataProvider providerInvalidFormattedCpf
-     * @expectedException \Respect\Validation\Exceptions\CpfException
-     */
-    public function testInvalidCpfShouldFailWhenFormatted($input): void
-    {
-        $this->cpfValidator->assert($input);
-    }
-
-    /**
-     * @dataProvider providerInvalidUnformattedCpf
-     * @expectedException \Respect\Validation\Exceptions\CpfException
-     */
-    public function testInvalidCpfShouldFailWhenNotFormatted($input): void
-    {
-        $this->cpfValidator->assert($input);
-    }
-
-    /**
-     * @dataProvider providerInvalidFormattedAndUnformattedCpfLength
-     * @expectedException \Respect\Validation\Exceptions\CpfException
-     */
-    public function testCpfsWithIncorrectLengthShouldFail($input): void
-    {
-        $this->cpfValidator->assert($input);
-    }
-
-    public function providerValidFormattedCpf()
-    {
         return [
-            ['342.444.198-88'],
-            ['342.444.198.88'],
-            ['350.45261819'],
-            ['693-319-118-40'],
-            ['3.6.8.8.9.2.5.5.4.8.8'],
+            [$rule, '342.444.198-88'],
+            [$rule, '342.444.198.88'],
+            [$rule, '350.45261819'],
+            [$rule, '693-319-118-40'],
+            [$rule, '3.6.8.8.9.2.5.5.4.8.8'],
+            [$rule, '11598647644'],
+            [$rule, '86734718697'],
+            [$rule, '86223423284'],
+            [$rule, '24845408333'],
+            [$rule, '95574461102'],
         ];
     }
 
-    public function providerValidUnformattedCpf()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
-        return [
-            ['11598647644'],
-            ['86734718697'],
-            ['86223423284'],
-            ['24845408333'],
-            ['95574461102'],
-        ];
-    }
+        $rule = new Cpf();
 
-    public function providerInvalidFormattedCpf()
-    {
         return [
-            [''],
-            ['000.000.000-00'],
-            ['111.222.444-05'],
-            ['999999999.99'],
-            ['8.8.8.8.8.8.8.8.8.8.8'],
-            ['693-319-110-40'],
-            ['698.111-111.00'],
-        ];
-    }
-
-    public function providerInvalidUnformattedCpf()
-    {
-        return [
-            ['11111111111'],
-            ['22222222222'],
-            ['12345678900'],
-            ['99299929384'],
-            ['84434895894'],
-            ['44242340000'],
-        ];
-    }
-
-    public function providerInvalidFormattedAndUnformattedCpfLength()
-    {
-        return [
-            ['1'],
-            ['22'],
-            ['123'],
-            ['992999999999929384'],
+            [$rule, ''],
+            [$rule, '000.000.000-00'],
+            [$rule, '111.222.444-05'],
+            [$rule, '999999999.99'],
+            [$rule, '8.8.8.8.8.8.8.8.8.8.8'],
+            [$rule, '693-319-110-40'],
+            [$rule, '698.111-111.00'],
+            [$rule, '11111111111'],
+            [$rule, '22222222222'],
+            [$rule, '12345678900'],
+            [$rule, '99299929384'],
+            [$rule, '84434895894'],
+            [$rule, '44242340000'],
+            [$rule, '1'],
+            [$rule, '22'],
+            [$rule, '123'],
+            [$rule, '992999999999929384'],
         ];
     }
 }
