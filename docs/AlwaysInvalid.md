@@ -2,7 +2,7 @@
 
 - `AlwaysInvalid()`
 
-Always return false.
+Validates any input as invalid.
 
 ```php
 v::alwaysInvalid()->validate($whatever); // false
