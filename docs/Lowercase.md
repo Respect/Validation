@@ -2,7 +2,7 @@
 
 - `Lowercase()`
 
-Validates if string characters are lowercase in the input:
+Validates whether the characters in the input are lowercase.
 
 ```php
 v::stringType()->lowercase()->validate('xkcd'); // true
