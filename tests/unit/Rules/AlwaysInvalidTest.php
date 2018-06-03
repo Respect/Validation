@@ -16,12 +16,21 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\AlwaysInvalid
+ *
+ * @author Andreas Wolf <dev@a-w.io>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class AlwaysInvalidTest extends TestCase
+final class AlwaysInvalidTest extends TestCase
 {
-    public function providerForValidAlwaysInvalid()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidAlwaysInvalid(): array
     {
         return [
             [0],
