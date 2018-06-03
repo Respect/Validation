@@ -17,11 +17,20 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
+ *
  * @covers \Respect\Validation\Rules\AlwaysValid
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Paulo Eduardo <pauloelr@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class AlwaysValidTest extends TestCase
+final class AlwaysValidTest extends TestCase
 {
-    public function providerForValidAlwaysValid()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidAlwaysValid(): array
     {
         return [
             [0],
