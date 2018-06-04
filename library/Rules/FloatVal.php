@@ -16,7 +16,7 @@ namespace Respect\Validation\Rules;
 use function is_float;
 
 /**
- * Validates whether the characters in the input are uppercase.
+ * Validate whether the input value is float.
  *
  * @author Alexandre <alexandre@gaigalas.net>
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
