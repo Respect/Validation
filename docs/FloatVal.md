@@ -2,7 +2,7 @@
 
 - `FloatVal()`
 
-Validates a floating point number.
+Validate whether the input value is float.
 
 ```php
 v::floatVal()->validate(1.5); // true
