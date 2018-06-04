@@ -101,4 +101,14 @@ class DomainTest extends TestCase
             sprintf('Domain "%s" should be valid. (Check TLD: %s)', $validDomain, var_export($checkTLD, true))
         );
     }
+
+    /**
+     * @dataProvider providerForNotDomain
+     */
+    public function testBuilderShouldReturnFalse($inValidDomain, $checkTLD = true): void
+    {
+        self::assertFalse(
+            v::domain($checkTLD)->validate($inValidDomain)
+        );
+    }
 }

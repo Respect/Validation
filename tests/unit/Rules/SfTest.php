@@ -85,4 +85,11 @@ EOF;
         $fantasyValue = '8GW';
         v::sf($fantasyConstraintName)->validate($fantasyValue);
     }
+
+    public function testAssertEmptyStringShouldReturnNull(): void
+    {
+        $constraintName = 'Time';
+        $validConstraintValue = '';
+        self::assertNull(v::sf($constraintName)->assert($validConstraintValue));
+    }
 }

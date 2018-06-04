@@ -33,6 +33,14 @@ class InTest extends TestCase
         $v->assert($input);
     }
 
+    public function testValidateIdenticalShouldReturnFalse(): void
+    {
+        $v = new In('haystack', true);
+
+        self::assertFalse($v->validate('stringhaystack'));
+        self::assertTrue($v->validate('h'));
+    }
+
     /**
      * @dataProvider providerForNotIn
      * @expectedException \Respect\Validation\Exceptions\InException

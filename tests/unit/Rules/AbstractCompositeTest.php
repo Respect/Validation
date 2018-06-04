@@ -216,6 +216,18 @@ class AbstractCompositeTest extends TestCase
         self::assertTrue($compositeRuleMock->hasRule($simpleRuleMock));
     }
 
+    public function testAddRulesWithNestedRuleArray(): void
+    {
+        $zendRuleMock = $this->createMock(Zend::class);
+
+        $compositeRuleMock = $this->getMockForAbstractClass(AbstractComposite::class);
+        $compositeRuleMock->addRules([
+            'zend' => [$zendRuleMock]
+        ]);
+
+        self::assertCount(1, $compositeRuleMock->getRules());    
+    }
+
     public function testShouldAddRulesByPassingThroughConstructor(): void
     {
         $simpleRuleMock = $this->createMock(Validatable::class);

@@ -54,6 +54,16 @@ final class AbstractRelatedTest extends TestCase
         self::assertTrue($relatedRuleMock->$method('foo'));
     }
 
+    /**
+     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedExceptionMessageRegExp /Cannot find exception for "\w+" rule/
+     */
+    public function testCheckShouldThrowComponentException()
+    {
+        $abstractRelatedMock = $this->getMockForAbstractClass(AbstractRelated::class, ['foo']);
+        $abstractRelatedMock->check('invalid_input');
+    }
+
     public function testValidateShouldReturnFalseWhenIsMandatoryAndThereIsNoReference(): void
     {
         $relatedRuleMock = $this->getMockForAbstractClass(AbstractRelated::class, ['foo']);

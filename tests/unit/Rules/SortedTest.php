@@ -32,6 +32,14 @@ class SortedTest extends TestCase
         $rule->check($arr);
     }
 
+    public function testValidateInputCounterIsLessThan2ShouldReturnTrue(): void
+    {
+        $arr = [];
+        $rule = new Sorted();
+
+        self::assertTrue($rule->validate($arr));
+    }
+
     public function testPassesWithEqualValues(): void
     {
         $arr = [1, 2, 2, 3];
