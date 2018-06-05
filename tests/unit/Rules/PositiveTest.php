@@ -13,65 +13,53 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Positive
- * @covers \Respect\Validation\Exceptions\PositiveException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ismael Elias <ismael.esq@hotmail.com>
  */
-class PositiveTest extends TestCase
+final class PositiveTest extends RuleTestCase
 {
-    protected $object;
-
-    protected function setUp(): void
+    /*
+    * {@inheritdoc}
+    */
+    public function providerForValidInput(): array
     {
-        $this->object = new Positive();
-    }
+        $rule = new Positive();
 
-    /**
-     * @dataProvider providerForPositive
-     */
-    public function testPositive($input): void
-    {
-        self::assertTrue($this->object->__invoke($input));
-        $this->object->check($input);
-        $this->object->assert($input);
-    }
-
-    /**
-     * @dataProvider providerForNotPositive
-     * @expectedException \Respect\Validation\Exceptions\PositiveException
-     */
-    public function testNotPositive($input): void
-    {
-        self::assertFalse($this->object->__invoke($input));
-        $this->object->assert($input);
-    }
-
-    public function providerForPositive()
-    {
         return [
-            [16],
-            ['165'],
-            [123456],
-            [1e10],
+            [$rule, 16],
+            [$rule, '165'],
+            [$rule, 123456],
+            [$rule, 1e10],
         ];
     }
 
-    public function providerForNotPositive()
+    /*
+    * {@inheritdoc}
+    */
+    public function providerForInvalidInput(): array
     {
+        $rule = new Positive();
+
         return [
-            [''],
-            [null],
-            ['a'],
-            [' '],
-            ['Foo'],
-            ['-1.44'],
-            [-1e-5],
-            [0],
-            [-0],
-            [-10],
+            [$rule, ''],
+            [$rule, null],
+            [$rule, 'a'],
+            [$rule, ' '],
+            [$rule, 'Foo'],
+            [$rule, '-1.44'],
+            [$rule, -1e-5],
+            [$rule, 0],
+            [$rule, -0],
+            [$rule, -10],
         ];
     }
 }
