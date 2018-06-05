@@ -13,8 +13,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Positive extends AbstractRule
+/**
+ * Validates whether the characters in the input are positive.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ismael Elias <ismael.esq@hotmail.com>
+ */
+final class Positive extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         return $input > 0;
