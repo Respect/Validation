@@ -2,7 +2,7 @@
 
 - `Odd()`
 
-Validates an odd number.
+Validates whether the input is an odd number or not.
 
 ```php
 v::intVal()->odd()->validate(3); // true
