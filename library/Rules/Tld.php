@@ -83,7 +83,7 @@ class Tld extends AbstractRule
         'sener', 'services', 'sew', 'sex', 'sexy', 'shiksha', 'shoes', 'show', 'shriram',
         'singles', 'site', 'sj', 'ski', 'sky', 'skype', 'sncf', 'soccer', 'social',
         'software', 'sohu', 'solar', 'solutions', 'sony', 'soy', 'space', 'spiegel',
-        'spreadbetting', 'starhub', 'statoil', 'study', 'style', 'sucks', 'supplies',
+        'spreadbetting', 'starhub', 'statoil', 'studio', 'study', 'style', 'sucks', 'supplies',
         'supply', 'support', 'surf', 'surgery', 'suzuki', 'swatch', 'swiss', 'sx', 'sydney',
         'systems', 'taipei', 'tatar', 'tattoo', 'tax', 'taxi', 'team', 'tech', 'technology',
         'telefonica', 'temasek', 'tennis', 'thd', 'theater', 'tickets', 'tienda', 'tips',
