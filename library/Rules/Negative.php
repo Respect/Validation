@@ -13,10 +13,26 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Negative extends AbstractRule
+use function is_numeric;
+
+/**
+ * Validates whether the input is a negative number.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ismael Elias <ismael.esq@hotmail.com>
+ */
+final class Negative extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
+        if (!is_numeric($input)) {
+            return false;
+        }
+
         return $input < 0;
     }
 }
