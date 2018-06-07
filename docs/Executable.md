@@ -5,7 +5,7 @@
 Validates if a file is an executable.
 
 ```php
-v::email()->executable('script.sh'); // true
+v::executable()->validate('script.sh'); // true
 ```
 
 ## Changelog

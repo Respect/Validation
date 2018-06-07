@@ -7,7 +7,7 @@ Validates whether the pseudo-type of the input is [callable](http://php.net/type
 ```php
 v::callableType()->validate(function () {}); // true
 v::callableType()->validate('trim'); // true
-v::callableType()->validate([new ObjectType, 'methodName']); // true
+v::callableType()->validate([new DateTime(), 'format']); // true
 ```
 
 ## Changelog

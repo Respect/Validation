@@ -5,20 +5,20 @@
 Validates a Brazillian CPF number.
 
 ```php
-v::cpf()->validate('44455566820'); // true
+v::cpf()->validate('11598647644'); // true
 ```
 
 It ignores any non-digit char:
 
 ```php
-v::cpf()->validate('444.555.668-20'); // true
+v::cpf()->validate('693.319.118-40'); // true
 ```
 
 If you need to validate digits only, add `->digit()` to
 the chain:
 
 ```php
-v::digit()->cpf()->validate('44455566820'); // true
+v::digit()->cpf()->validate('11598647644'); // true
 ```
 
 ## Changelog

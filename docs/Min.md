@@ -14,20 +14,20 @@ You can also validate:
 
 ```php
 // Dates
-v::dateTime()->max('2010-01-01')->validate('2010-01-01'); // true
-v::dateTime()->max('2010-01-01')->validate('2011-01-01'); // false
+v::dateTime()->min('2010-01-01')->validate('2010-01-01'); // true
+v::dateTime()->min('2011-01-01')->validate('2010-01-01'); // false
 
 // DateTimeInterface
-v::dateTime()->max(new DateTime('tomorrow'))->validate(new DateTimeImmutable('yesterday')); // true
-v::dateTime()->max(new DateTimeImmutable('+1 month'))->validate(new DateTime('today')); // false
+v::dateTime()->min(new DateTime('yesterday'))->validate(new DateTimeImmutable('tomorrow')); // true
+v::dateTime()->min(new DateTimeImmutable('+1 month'))->validate(new DateTime('today')); // false
 
 // Date intervals
-v::dateTime()->max('1988-09-09')->validate('18 years ago'); // true
-v::dateTime()->max('+1 minute')->validate('now'); // false
+v::dateTime()->min('1988-09-09')->validate('18 years ago'); // true
+v::dateTime()->min('+1 minute')->validate('now'); // false
 
 // Single character strings
-v::stringType()->lowercase()->max('a')->validate('b'); // true
-v::stringType()->uppercase()->max('C')->validate('A'); // false
+v::stringType()->lowercase()->min('a')->validate('b'); // true
+v::stringType()->uppercase()->min('C')->validate('A'); // false
 ```
 
 `true` may be passed as a parameter to indicate that inclusive

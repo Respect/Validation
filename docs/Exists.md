@@ -12,7 +12,7 @@ v::exists()->validate(__DIR__); // true
 This validator will consider SplFileInfo instances, so you can do something like:
 
 ```php
-v::exists()->validate(new \SplFileInfo($file));
+v::exists()->validate(new SplFileInfo('file.txt'));
 ```
 
 ## Changelog

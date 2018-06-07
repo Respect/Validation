@@ -10,8 +10,8 @@ another key value and that may cause some ugly code since you need the input
 before the validation, making some checking manually:
 
 ```php
-v::key('password')->check($_POST);
-v::key('password_confirmation', v::equals($_POST['password']))->check($_POST);
+v::key('password', v::notEmpty())->validate($_POST);
+v::key('password_confirmation', v::equals($_POST['password'] ?? null))->validate($_POST);
 ```
 
 The problem with the above code is because you do not know if `password` is a
@@ -44,7 +44,11 @@ When using `assert()` or `check()` methods and the rule do not pass, it overwrit
 all values in the validation exceptions with `$baseKey` and `$comparedKey`.
 
 ```php
-v::keyValue('password_confirmation', 'equals', 'password')->check($input);
+try {
+    v::keyValue('password_confirmation', 'equals', 'password')->check($_POST);
+} catch (ValidationException $exception) {
+    // ..
+}
 ```
 
 The above code may generate the message:

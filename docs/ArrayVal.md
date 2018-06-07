@@ -8,7 +8,7 @@ Validates if the input is an array or if the input can be used as an array
 ```php
 v::arrayVal()->validate([]); // true
 v::arrayVal()->validate(new ArrayObject); // true
-v::arrayVal()->validate(new SimpleXMLElement($xml)); // true
+v::arrayVal()->validate(new SimpleXMLElement('<xml></xml>')); // true
 ```
 
 ## Changelog
