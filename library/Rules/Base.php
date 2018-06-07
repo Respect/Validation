@@ -14,25 +14,52 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use function is_null;
+use function mb_strlen;
+use function preg_match;
+use function sprintf;
 
-class Base extends AbstractRule
+/**
+ * Validate numbers in any base, even with non regular bases.
+ *
+ * @author Carlos André Ferrari <caferrari@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class Base extends AbstractRule
 {
-    public $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    public $base;
+    /**
+     * @var string
+     */
+    private $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-    public function __construct($base = null, $chars = null)
+    /**
+     * @var int
+     */
+    private $base;
+
+    /**
+     * Initializes the Base rule.
+     *
+     * @param int $base
+     * @param string $chars
+     */
+    public function __construct(int $base, $chars = null)
     {
         if (!is_null($chars)) {
             $this->chars = $chars;
         }
 
         $max = mb_strlen($this->chars);
-        if (!is_numeric($base) || $base > $max) {
+        if ($base > $max) {
             throw new ComponentException(sprintf('a base between 1 and %s is required', $max));
         }
         $this->base = $base;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         $valid = mb_substr($this->chars, 0, $this->base);
