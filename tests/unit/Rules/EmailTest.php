@@ -15,9 +15,9 @@ namespace Respect\Validation\Rules;
 
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
-function class_exists($className)
+function class_exists(string $className): bool
 {
     if (isset($GLOBALS['class_exists'][$className])) {
         return $GLOBALS['class_exists'][$className];
@@ -25,13 +25,16 @@ function class_exists($className)
 
     return \class_exists($className);
 }
-
 /**
  * @group  rule
+ *
  * @covers \Respect\Validation\Rules\Email
- * @covers \Respect\Validation\Exceptions\EmailException
+ *
+ * @author Eduardo Gulias Davis <me@egulias.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Paul Karikari <paulkarikari1@gmail.com>
  */
-class EmailTest extends TestCase
+final class EmailTest extends RuleTestCase
 {
     private function setEmailValidatorExists($value): void
     {
@@ -54,17 +57,26 @@ class EmailTest extends TestCase
         return $emailValidatorMock;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function setUp(): void
     {
         $this->setEmailValidatorExists(false);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function tearDown(): void
     {
         $this->resetClassExists();
     }
 
-    public function testShouldAcceptInstanceOfEmailValidatorOnConstructor(): void
+    /**
+     * @test
+     */
+    public function shouldAcceptInstanceOfEmailValidatorOnConstructor(): void
     {
         $this->resetClassExists();
 
@@ -75,7 +87,10 @@ class EmailTest extends TestCase
         self::assertSame($emailValidator, $rule->getEmailValidator());
     }
 
-    public function testShouldHaveADefaultInstanceOfEmailValidator(): void
+    /**
+     * @test
+     */
+    public function shouldHaveADefaultInstanceOfEmailValidator(): void
     {
         $this->resetClassExists();
 
@@ -84,7 +99,10 @@ class EmailTest extends TestCase
         self::assertInstanceOf(EmailValidator::class, $rule->getEmailValidator());
     }
 
-    public function testShouldUseEmailValidatorWhenDefined(): void
+    /**
+     * @test
+     */
+    public function shouldUseEmailValidatorWhenDefined(): void
     {
         $this->resetClassExists();
 
@@ -103,52 +121,38 @@ class EmailTest extends TestCase
     }
 
     /**
-     * @dataProvider providerForValidEmail
+     * {@inheritdoc}
      */
-    public function testValidEmailShouldPass($validEmail): void
+    public function providerForValidInput(): array
     {
-        $validator = new Email();
-        self::assertTrue($validator->__invoke($validEmail));
-        $validator->check($validEmail);
-        $validator->assert($validEmail);
-    }
+        $email = new Email();
 
-    /**
-     * @dataProvider providerForInvalidEmail
-     * @expectedException \Respect\Validation\Exceptions\EmailException
-     */
-    public function testInvalidEmailsShouldFailValidation($invalidEmail): void
-    {
-        $validator = new Email();
-        self::assertFalse($validator->__invoke($invalidEmail));
-        $validator->assert($invalidEmail);
-    }
-
-    public function providerForValidEmail()
-    {
         return [
-            ['test@test.com'],
-            ['mail+mail@gmail.com'],
-            ['mail.email@e.test.com'],
-            ['a@a.a'],
+            [$email, 'test@test.com'],
+            [$email, 'mail+mail@gmail.com'],
+            [$email, 'mail.email@e.test.com'],
+            [$email, 'a@a.a'],
         ];
     }
 
-    public function providerForInvalidEmail()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
+        $email = new Email();
+
         return [
-            [''],
-            ['test@test'],
-            ['test'],
-            ['test@тест.рф'],
-            ['@test.com'],
-            ['mail@test@test.com'],
-            ['test.test@'],
-            ['test.@test.com'],
-            ['test@.test.com'],
-            ['test@test..com'],
-            ['test@test.com.'],
-            ['.test@test.com'],
+            [$email, ''],
+            [$email, 'test'],
+            [$email, '@test.com'],
+            [$email, 'mail@test@test.com'],
+            [$email, 'test.test@'],
+            [$email, 'test.@test.com'],
+            [$email, 'test@.test.com'],
+            [$email, 'test@test..com'],
+            [$email, 'test@test.com.'],
+            [$email, '.test@test.com'],
         ];
     }
 }
