@@ -14,12 +14,37 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use function is_null;
+use function is_numeric;
+use function mb_strlen;
+use function preg_match;
+use function sprintf;
 
-class Base extends AbstractRule
+/**
+ * Validate numbers in any base, even with non regular bases.
+ *
+ * @author Carlos André Ferrari <caferrari@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <not.committed.yet>
+ */
+final class Base extends AbstractRule
 {
-    public $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    public $base;
+    /**
+     * @var string
+     */
+    private $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
+    /**
+     * @var int
+     */
+    private $base;
+
+    /**
+     * Initializes the Base rule.
+     *
+     * @param int $base
+     * @param string $chars
+     */
     public function __construct($base = null, $chars = null)
     {
         if (!is_null($chars)) {
@@ -33,6 +58,9 @@ class Base extends AbstractRule
         $this->base = $base;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         $valid = mb_substr($this->chars, 0, $this->base);

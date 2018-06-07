@@ -13,6 +13,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class BaseException extends ValidationException
+/**
+ * @author Carlos André Ferrari <caferrari@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <not.committed.yet>
+ */
+final class BaseException extends ValidationException
 {
 }
