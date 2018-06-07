@@ -15,14 +15,35 @@ namespace Respect\Validation\Rules;
 
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
+use const FILTER_VALIDATE_EMAIL;
+use function class_exists;
+use function filter_var;
+use function is_string;
 
-class Email extends AbstractRule
+/**
+ * Validates an email address.
+ *
+ * @author Eduardo Gulias Davis <me@egulias.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Paul Karikari <paulkarikari1@gmail.com>
+ */
+final class Email extends AbstractRule
 {
+    /**
+     * Assigns email validator.
+     *
+     * @param EmailValidator $emailValidator
+     */
     public function __construct(EmailValidator $emailValidator = null)
     {
         $this->emailValidator = $emailValidator;
     }
 
+    /**
+     * Gets email validator.
+     *
+     * @return EmailValidator | null
+     */
     public function getEmailValidator()
     {
         if (class_exists(EmailValidator::class)
@@ -33,6 +54,9 @@ class Email extends AbstractRule
         return $this->emailValidator;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         $emailValidator = $this->getEmailValidator();
