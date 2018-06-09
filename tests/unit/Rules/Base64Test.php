@@ -16,11 +16,19 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Base64
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jens Segers <segers.jens@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class Base64Test extends RuleTestCase
+final class Base64Test extends RuleTestCase
 {
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new Base64();
@@ -50,6 +58,9 @@ class Base64Test extends RuleTestCase
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new Base64();
