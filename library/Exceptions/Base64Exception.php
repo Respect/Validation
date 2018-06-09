@@ -13,8 +13,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class Base64Exception extends ValidationException
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jens Segers <segers.jens@gmail.com>
+ * @author William Espindola <not.committed.yet>
+ */
+final class Base64Exception extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be Base64-encoded',
