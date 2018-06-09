@@ -2,32 +2,32 @@
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Exceptions\BoolValException;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
 try {
     v::boolVal()->check('ok');
-} catch (BoolValException $e) {
-    echo $e->getMessage().PHP_EOL;
+} catch (BoolValException $exception) {
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {
     v::not(v::boolVal())->check('yes');
-} catch (BoolValException $e) {
-    echo $e->getMessage().PHP_EOL;
+} catch (BoolValException $exception) {
+    echo $exception->getMessage().PHP_EOL;
 }
 
 try {
     v::boolVal()->assert('yep');
-} catch (AllOfException $e) {
-    echo $e->getFullMessage().PHP_EOL;
+} catch (NestedValidationException $exception) {
+    echo $exception->getFullMessage().PHP_EOL;
 }
 
 try {
     v::not(v::boolVal())->assert('on');
-} catch (AllOfException $e) {
-    echo $e->getFullMessage().PHP_EOL;
+} catch (NestedValidationException $exception) {
+    echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
 --EXPECTF--
