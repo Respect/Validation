@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 function class_exists($className)
 {
@@ -25,13 +25,16 @@ function class_exists($className)
 
     return \class_exists($className);
 }
-
 /**
  * @group  rule
+ *
  * @covers \Respect\Validation\Rules\Email
- * @covers \Respect\Validation\Exceptions\EmailException
+ *
+ * @author Eduardo Gulias Davis <me@egulias.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Paul Karikari <paulkarikari1@gmail.com>
  */
-class EmailTest extends TestCase
+final class EmailTest extends RuleTestCase
 {
     private function setEmailValidatorExists($value): void
     {
@@ -102,53 +105,29 @@ class EmailTest extends TestCase
         self::assertTrue($rule->validate($input));
     }
 
-    /**
-     * @dataProvider providerForValidEmail
-     */
-    public function testValidEmailShouldPass($validEmail): void
-    {
-        $validator = new Email();
-        self::assertTrue($validator->__invoke($validEmail));
-        $validator->check($validEmail);
-        $validator->assert($validEmail);
-    }
-
-    /**
-     * @dataProvider providerForInvalidEmail
-     * @expectedException \Respect\Validation\Exceptions\EmailException
-     */
-    public function testInvalidEmailsShouldFailValidation($invalidEmail): void
-    {
-        $validator = new Email();
-        self::assertFalse($validator->__invoke($invalidEmail));
-        $validator->assert($invalidEmail);
-    }
-
-    public function providerForValidEmail()
+    public function providerForValidInput(): array
     {
         return [
-            ['test@test.com'],
-            ['mail+mail@gmail.com'],
-            ['mail.email@e.test.com'],
-            ['a@a.a'],
+            [new Email(), 'test@test.com'],
+            [new Email(), 'mail+mail@gmail.com'],
+            [new Email(), 'mail.email@e.test.com'],
+            [new Email(), 'a@a.a'],
         ];
     }
 
-    public function providerForInvalidEmail()
+    public function providerForInvalidInput(): array
     {
         return [
-            [''],
-            ['test@test'],
-            ['test'],
-            ['test@тест.рф'],
-            ['@test.com'],
-            ['mail@test@test.com'],
-            ['test.test@'],
-            ['test.@test.com'],
-            ['test@.test.com'],
-            ['test@test..com'],
-            ['test@test.com.'],
-            ['.test@test.com'],
+            [new Email(), ''],
+            [new Email(), 'test'],
+            [new Email(), '@test.com'],
+            [new Email(), 'mail@test@test.com'],
+            [new Email(), 'test.test@'],
+            [new Email(), 'test.@test.com'],
+            [new Email(), 'test@.test.com'],
+            [new Email(), 'test@test..com'],
+            [new Email(), 'test@test.com.'],
+            [new Email(), '.test@test.com'],
         ];
     }
 }
