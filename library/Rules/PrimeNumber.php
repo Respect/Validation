@@ -13,8 +13,22 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class PrimeNumber extends AbstractRule
+use function is_numeric;
+
+/**
+ * Validates whether the input is a prime number.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Camilo Teixeira de Melo <kmilotxm@users.noreply.github.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ismael Elias <ismael.esq@hotmail.com>
+ * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
+ */
+final class PrimeNumber extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (!is_numeric($input) || $input <= 1) {
