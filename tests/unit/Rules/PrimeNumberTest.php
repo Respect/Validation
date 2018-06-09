@@ -13,70 +13,58 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\PrimeNumber
- * @covers \Respect\Validation\Exceptions\PrimeNumberException
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ismael Elias <ismael.esq@hotmail.com>
+ * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
  */
-class PrimeNumberTest extends TestCase
+final class PrimeNumberTest extends RuleTestCase
 {
-    protected $object;
-
-    protected function setUp(): void
+    /*
+    * {@inheritdoc}
+    */
+    public function providerForValidInput(): array
     {
-        $this->object = new PrimeNumber();
-    }
+        $rule = new PrimeNumber();
 
-    /**
-     * @dataProvider providerForPrimeNumber
-     */
-    public function testPrimeNumber($input): void
-    {
-        self::assertTrue($this->object->__invoke($input));
-        $this->object->check($input);
-        $this->object->assert($input);
-    }
-
-    /**
-     * @dataProvider providerForNotPrimeNumber
-     * @expectedException \Respect\Validation\Exceptions\PrimeNumberException
-     */
-    public function testNotPrimeNumber($input): void
-    {
-        self::assertFalse($this->object->__invoke($input));
-        $this->object->assert($input);
-    }
-
-    public function providerForPrimeNumber()
-    {
         return [
-            [3],
-            [5],
-            [7],
-            ['3'],
-            ['5'],
-            ['+7'],
+            [$rule, 3],
+            [$rule, 5],
+            [$rule, 7],
+            [$rule, '3'],
+            [$rule, '5'],
+            [$rule, '+7'],
         ];
     }
 
-    public function providerForNotPrimeNumber()
+    /*
+    * {@inheritdoc}
+    */
+    public function providerForInvalidInput(): array
     {
+        $rule = new PrimeNumber();
+
         return [
-            [''],
-            [null],
-            [0],
-            [10],
-            [25],
-            [36],
-            [-1],
-            ['-1'],
-            ['25'],
-            ['0'],
-            ['a'],
-            [' '],
-            ['Foo'],
+            [$rule, ''],
+            [$rule, null],
+            [$rule, 0],
+            [$rule, 10],
+            [$rule, 25],
+            [$rule, 36],
+            [$rule, -1],
+            [$rule, '-1'],
+            [$rule, '25'],
+            [$rule, '0'],
+            [$rule, 'a'],
+            [$rule, ' '],
+            [$rule, 'Foo'],
         ];
     }
 }
