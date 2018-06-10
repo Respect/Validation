@@ -2,7 +2,7 @@
 
 - `Cnh()`
 
-Validates a Brazillian driver's license.
+Validates a Brazilian driver's license.
 
 ```php
 v::cnh()->validate('02650306461'); // true

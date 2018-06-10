@@ -13,8 +13,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class CnhException extends ValidationException
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Kinn Coelho Julião <kinncj@gmail.com>
+ */
+final class CnhException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a valid CNH number',
