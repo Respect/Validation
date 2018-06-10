@@ -13,14 +13,19 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function ctype_digit;
+use function mb_strlen;
+
 /**
  * Validates a Dutch citizen service number (BSN).
  *
- * @author Ronald Drenth <ronalddrenth@gmail.com>
- *
  * @see https://nl.wikipedia.org/wiki/Burgerservicenummer
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ronald Drenth <ronalddrenth@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class Bsn extends AbstractRule
+final class Bsn extends AbstractRule
 {
     /**
      * {@inheritdoc}
