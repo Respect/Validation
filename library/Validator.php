@@ -40,7 +40,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator call()
  * @method static Validator callableType()
  * @method static Validator callback(callable $callback)
- * @method static Validator charset($charset)
+ * @method static Validator charset(string ...$charset)
  * @method static Validator cnh()
  * @method static Validator cnpj()
  * @method static Validator consonant(string $additionalChars = null)
