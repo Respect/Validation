@@ -13,78 +13,48 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
+use function mb_convert_encoding;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Charset
- * @covers \Respect\Validation\Exceptions\CharsetException
+ *
+ * @author Alexandre Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class CharsetTest extends TestCase
+final class CharsetTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForValidCharset
+     * {@inheritdoc}
      */
-    public function testValidDataWithCharsetShouldReturnTrue($charset, $input): void
-    {
-        $validator = new Charset($charset);
-        self::assertTrue($validator->__invoke($input));
-    }
-
-    /**
-     * @dataProvider providerForInvalidCharset
-     * @expectedException \Respect\Validation\Exceptions\CharsetException
-     */
-    public function testInvalidCharsetShouldFailAndThrowCharsetException($charset, $input): void
-    {
-        $validator = new Charset($charset);
-        self::assertFalse($validator->__invoke($input));
-        $validator->assert($input);
-    }
-
-    /**
-     * @dataProvider providerForInvalidParams
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($charset): void
-    {
-        $validator = new Charset($charset);
-    }
-
-    public function providerForInvalidParams()
+    public function providerForValidInput(): array
     {
         return [
-            [new \stdClass()],
-            [[]],
-            [null],
-            ['16'],
-            ['aeiou'],
-            ['a'],
-            ['Foo'],
-            ['basic'],
-            [10],
+            [new Charset('UTF-8'), ''],
+            [new Charset('ISO-8859-1'), mb_convert_encoding('açaí', 'ISO-8859-1')],
+            [new Charset(['UTF-8', 'ASCII']), 'strawberry'],
+            [new Charset('ASCII'), mb_convert_encoding('strawberry', 'ASCII')],
+            [new Charset('UTF-8'), '日本国'],
+            [new Charset(['ISO-8859-1', 'EUC-JP']), '日本国'],
+            [new Charset('UTF-8'), 'açaí'],
+            [new Charset('ISO-8859-1'), 'açaí'],
         ];
     }
 
-    public function providerForValidCharset()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
-        return [
-            ['UTF-8', ''],
-            ['ISO-8859-1', mb_convert_encoding('açaí', 'ISO-8859-1')],
-            [['UTF-8', 'ASCII'], 'strawberry'],
-            ['ASCII', mb_convert_encoding('strawberry', 'ASCII')],
-            ['UTF-8', '日本国'],
-            [['ISO-8859-1', 'EUC-JP'], '日本国'],
-            ['UTF-8', 'açaí'],
-            ['ISO-8859-1', 'açaí'],
-        ];
-    }
+        $rule = new Charset('ASCII');
 
-    public function providerForInvalidCharset()
-    {
         return [
-            ['ASCII', '日本国'],
-            ['ASCII', 'açaí'],
+            [$rule, '日本国'],
+            [$rule, 'açaí'],
         ];
     }
 }
