@@ -13,19 +13,35 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ComponentException;
+use function array_shift;
+use function array_unshift;
+use function call_user_func_array;
+use function func_get_args;
 
+/**
+ * This is a wildcard validator, it uses a function name, method or closure.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
 class Callback extends AbstractRule
 {
+    /**
+     * @var callable
+     */
     public $callback;
+
+    /**
+     * @var array
+     */
     public $arguments;
 
-    public function __construct($callback)
+    /**
+     * @param callable $callback
+     */
+    public function __construct(callable $callback, ...$arguments)
     {
-        if (!is_callable($callback)) {
-            throw new ComponentException('Invalid callback');
-        }
-
         $arguments = func_get_args();
         array_shift($arguments);
 
@@ -33,6 +49,9 @@ class Callback extends AbstractRule
         $this->arguments = $arguments;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         $params = $this->arguments;
