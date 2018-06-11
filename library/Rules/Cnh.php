@@ -13,8 +13,24 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Cnh extends AbstractRule
+use function intval;
+use function is_scalar;
+use function mb_strlen;
+use function preg_replace;
+
+/**
+ * Validates a Brazillian driver's license.
+ *
+ * @author Gabriel Pedro <gpedro@users.noreply.github.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Kinn Coelho Juli  o <kinncj@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class Cnh extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (!is_scalar($input)) {
