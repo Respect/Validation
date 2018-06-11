@@ -2,16 +2,15 @@
 
 - `Callback(callable $callback)`
 
-This is a wildcard validator, it uses a function name, method or closure
-to validate something:
+Validates the input using the return of a given callable.
 
 ```php
-v::callback('is_int')->validate(10); // true
+v::callback(
+    function (int $input): bool {
+        return $input + ($input / 2) == 15;
+    }
+)->validate(10); // true
 ```
-
-(Please note that this is a sample, the `IntVal()` validator is much better).
-
-As in `Call()`, you can pass a method or closure to it.
 
 ## Changelog
 
