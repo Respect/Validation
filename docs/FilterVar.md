@@ -3,7 +3,7 @@
 - `FilterVar(int $filter)`
 - `FilterVar(int $filter, mixed $options)`
 
-A wrapper for PHP's [filter_var()](http://php.net/filter_var) function.
+Validates the input with the PHP's [filter_var()](http://php.net/filter_var) function.
 
 ```php
 v::filterVar(FILTER_VALIDATE_EMAIL)->validate('bob@example.com'); // true

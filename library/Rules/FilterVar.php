@@ -14,37 +14,45 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use const FILTER_VALIDATE_BOOLEAN;
+use const FILTER_VALIDATE_EMAIL;
+use const FILTER_VALIDATE_FLOAT;
+use const FILTER_VALIDATE_INT;
+use const FILTER_VALIDATE_IP;
+use const FILTER_VALIDATE_REGEXP;
+use const FILTER_VALIDATE_URL;
 
-class FilterVar extends Callback
+/**
+ * Validates the input with the PHP's filter_var() function.
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class FilterVar extends AbstractEnvelope
 {
-    public function __construct()
-    {
-        $arguments = func_get_args();
-        if (!isset($arguments[0])) {
-            throw new ComponentException('Cannot validate without filter flag');
-        }
+    private const ALLOWED_FILTERS = [
+        FILTER_VALIDATE_BOOLEAN,
+        FILTER_VALIDATE_EMAIL,
+        FILTER_VALIDATE_FLOAT,
+        FILTER_VALIDATE_INT,
+        FILTER_VALIDATE_IP,
+        FILTER_VALIDATE_REGEXP,
+        FILTER_VALIDATE_URL,
+    ];
 
-        if (!$this->isValidFilter($arguments[0])) {
+    /**
+     * Initializes the rule.
+     *
+     * @param int $filter
+     * @param mixed $options
+     *
+     * @throws ComponentException
+     */
+    public function __construct(int $filter, $options = null)
+    {
+        if (!in_array($filter, self::ALLOWED_FILTERS)) {
             throw new ComponentException('Cannot accept the given filter');
         }
 
-        $this->callback = 'filter_var';
-        $this->arguments = $arguments;
-    }
-
-    private function isValidFilter($filter)
-    {
-        return in_array(
-            $filter,
-            [
-                FILTER_VALIDATE_BOOLEAN,
-                FILTER_VALIDATE_EMAIL,
-                FILTER_VALIDATE_FLOAT,
-                FILTER_VALIDATE_INT,
-                FILTER_VALIDATE_IP,
-                FILTER_VALIDATE_REGEXP,
-                FILTER_VALIDATE_URL,
-            ]
-        );
+        parent::__construct(new Callback('filter_var', $filter, $options), []);
     }
 }
