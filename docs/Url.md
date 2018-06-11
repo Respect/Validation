@@ -2,7 +2,7 @@
 
 - `Url()`
 
-Validates if input is an URL:
+Validates whether the input is a URL.
 
 ```php
 v::url()->validate('http://example.com'); // true
@@ -11,8 +11,6 @@ v::url()->validate('ldap://[::1]'); // true
 v::url()->validate('mailto:john.doe@example.com'); // true
 v::url()->validate('news:new.example.com'); // true
 ```
-
-This rule uses [FilterVar](FilterVar.md)
 
 ## Changelog
 
