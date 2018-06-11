@@ -14,11 +14,29 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use function array_filter;
+use function in_array;
+use function is_array;
+use function mb_detect_encoding;
+use function mb_list_encodings;
 
-class Charset extends AbstractRule
+/**
+ * Validates if a string is in a specific charset.
+ *
+ * @author Alexandre Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class Charset extends AbstractRule
 {
+    /**
+     * @var mixed The list of or a character encoding name
+     */
     public $charset = null;
 
+    /**
+     * @param mixed The list of or a character encoding name
+     */
     public function __construct($charset)
     {
         $available = mb_list_encodings();
@@ -35,6 +53,9 @@ class Charset extends AbstractRule
         $this->charset = $charset;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         $detectedEncoding = mb_detect_encoding($input, $this->charset, true);
