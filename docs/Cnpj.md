@@ -2,8 +2,8 @@
 
 - `Cnpj()`
 
-Validates the Brazillian CNPJ number. Ignores non-digit chars, so
-use `->digit()` if needed.
+Validates if the input is a Brazilian National Registry of Legal Entities (CNPJ) number.
+Ignores non-digit chars, so use `->digit()` if needed.
 
 ## Changelog
 
