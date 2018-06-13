@@ -17,35 +17,33 @@ use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\CreditCard
+ *
+ * @author Andy Snell <andysnell@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class CreditCardTest extends RuleTestCase
+final class CreditCardTest extends RuleTestCase
 {
-    public function testShouldHaveNoCreditCardBrandByDefault(): void
-    {
-        $rule = new CreditCard();
-
-        self::assertNull($rule->brand);
-    }
-
-    public function testShouldAcceptCreditCardBrandOnConstructor(): void
-    {
-        $rule = new CreditCard(CreditCard::VISA);
-
-        self::assertSame(CreditCard::VISA, $rule->brand);
-    }
-
-    public function testShouldThrowExceptionWhenCreditCardBrandIsNotValid(): void
+    /**
+     * @test
+     */
+    public function itShouldThrowExceptionWhenCreditCardBrandIsNotValid(): void
     {
         $message = '"RespectCard" is not a valid credit card brand';
-        $message .= ' (Available: American Express, Diners Club, Discover, JCB, MasterCard, Visa).';
+        $message .= ' (Available: Any, American Express, Diners Club, Discover, JCB, MasterCard, Visa)';
 
         $this->expectException(ComponentException::class, $message);
 
         new CreditCard('RespectCard');
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $general = new CreditCard();
@@ -57,6 +55,7 @@ class CreditCardTest extends RuleTestCase
         $visa = new CreditCard(CreditCard::VISA);
 
         return [
+            [$general, 5555444433331111], // MasterCard 5 BIN Range
             [$general, '5376 7473 9720 8720'], // MasterCard 5 BIN Range
             [$master, '5376 7473 9720 8720'],
             [$general, '2223000048400011'], // MasterCard 2 BIN Range
@@ -76,6 +75,9 @@ class CreditCardTest extends RuleTestCase
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $general = new CreditCard();

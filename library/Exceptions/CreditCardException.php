@@ -13,10 +13,20 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class CreditCardException extends ValidationException
+use Respect\Validation\Rules\CreditCard;
+
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class CreditCardException extends ValidationException
 {
     public const BRANDED = 'branded';
 
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a valid Credit Card number',
@@ -28,9 +38,12 @@ class CreditCardException extends ValidationException
         ],
     ];
 
+    /**
+     * {@inheritdoc}
+     */
     protected function chooseTemplate(): string
     {
-        if (!$this->getParam('brand')) {
+        if (CreditCard::ANY === $this->getParam('brand')) {
             return static::STANDARD;
         }
 

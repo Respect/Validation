@@ -14,25 +14,64 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use function array_keys;
+use function implode;
+use function is_scalar;
+use function preg_match;
+use function preg_replace;
 
-class CreditCard extends AbstractRule
+/**
+ * Validates whether the input is a credit card number.
+ *
+ * @author Andy Snell <andysnell@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
+ * @author Alexander <mazanax@yandex.ru>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class CreditCard extends AbstractRule
 {
-    public const AMERICAN_EXPRESS = 'American Express';
-    public const DINERS_CLUB = 'Diners Club';
-    public const DISCOVER = 'Discover';
-    public const JCB = 'JCB';
-    public const MASTERCARD = 'MasterCard';
-    public const VISA = 'Visa';
+    /**
+     * @var string
+     */
+    public const ANY = 'Any';
 
     /**
      * @var string
      */
-    public $brand;
+    public const AMERICAN_EXPRESS = 'American Express';
+
+    /**
+     * @var string
+     */
+    public const DINERS_CLUB = 'Diners Club';
+
+    /**
+     * @var string
+     */
+    public const DISCOVER = 'Discover';
+
+    /**
+     * @var string
+     */
+    public const JCB = 'JCB';
+
+    /**
+     * @var string
+     */
+    public const MASTERCARD = 'MasterCard';
+
+    /**
+     * @var string
+     */
+    public const VISA = 'Visa';
 
     /**
      * @var array
      */
-    private $brands = [
+    private const BRAND_REGEX_LIST = [
+        self::ANY => '/^[0-9]+$/',
         self::AMERICAN_EXPRESS => '/^3[47]\d{13}$/',
         self::DINERS_CLUB => '/^3(?:0[0-5]|[68]\d)\d{11}$/',
         self::DISCOVER => '/^6(?:011|5\d{2})\d{12}$/',
@@ -42,14 +81,27 @@ class CreditCard extends AbstractRule
     ];
 
     /**
-     * @param string $brand Optional credit card brand
+     * @var string
      */
-    public function __construct($brand = null)
+    private $brand;
+
+    /**
+     * Initializes the rule.
+     *
+     * @param string $brand
+     *
+     * @throws ComponentException
+     */
+    public function __construct(string $brand = self::ANY)
     {
-        if (null !== $brand && !isset($this->brands[$brand])) {
-            $brands = implode(', ', array_keys($this->brands));
-            $message = sprintf('"%s" is not a valid credit card brand (Available: %s).', $brand, $brands);
-            throw new ComponentException($message);
+        if (!isset(self::BRAND_REGEX_LIST[$brand])) {
+            throw new ComponentException(
+                sprintf(
+                    '"%s" is not a valid credit card brand (Available: %s)',
+                    $brand,
+                    implode(', ', array_keys(self::BRAND_REGEX_LIST))
+                )
+            );
         }
 
         $this->brand = $brand;
@@ -60,34 +112,15 @@ class CreditCard extends AbstractRule
      */
     public function validate($input): bool
     {
-        $input = preg_replace('([^0-9])', '', $input);
-
-        if (empty($input)) {
+        if (!is_scalar($input)) {
             return false;
         }
 
+        $input = preg_replace('/[ .-]/', '', (string) $input);
         if (!(new Luhn())->validate($input)) {
             return false;
         }
 
-        return $this->verifyBrand($input);
-    }
-
-    /**
-     * Returns whether the input matches the defined credit card brand or not.
-     *
-     * @param string $input
-     *
-     * @return bool
-     */
-    private function verifyBrand($input)
-    {
-        if (null === $this->brand) {
-            return true;
-        }
-
-        $pattern = $this->brands[$this->brand];
-
-        return preg_match($pattern, $input) > 0;
+        return preg_match(self::BRAND_REGEX_LIST[$this->brand], $input) > 0;
     }
 }
