@@ -14,22 +14,60 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use function array_column;
+use function array_keys;
+use function implode;
 
 /**
- * Validates countries in ISO 3166-1.
+ * Validates whether the input is a country code in ISO 3166-1 standard.
+ *
+ * This rule supports the three sets of country codes (alpha-2, alpha-3, and numeric).
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Felipe Martins <me@fefas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class CountryCode extends AbstractRule
+final class CountryCode extends AbstractSearcher
 {
+    /**
+     * The ISO representation of a country code.
+     *
+     * @var string
+     */
     public const ALPHA2 = 'alpha-2';
+
+    /**
+     * The ISO3 representation of a country code.
+     *
+     * @var string
+     */
     public const ALPHA3 = 'alpha-3';
+
+    /**
+     * The ISO-number representation of a country code.
+     *
+     * @var string
+     */
     public const NUMERIC = 'numeric';
+
+    /**
+     * Position of the indexes of each set in the list of country codes.
+     *
+     * @var array
+     */
+    private const SET_INDEXES = [
+        self::ALPHA2 => 0,
+        self::ALPHA3 => 1,
+        self::NUMERIC => 2,
+    ];
 
     /**
      * @see http://download.geonames.org/export/dump/countryInfo.txt
      *
      * @var array
      */
-    protected $countryCodeList = [
+    private const COUNTRY_CODES = [
         ['AD', 'AND', '020'], // Andorra
         ['AE', 'ARE', '784'], // United Arab Emirates
         ['AF', 'AFG', '004'], // Afghanistan
@@ -284,45 +322,38 @@ class CountryCode extends AbstractRule
         ['ZW', 'ZWE', '716'], // Zimbabwe
     ];
 
-    public $set;
-    public $index;
+    /**
+     * @var string
+     */
+    private $set;
 
-    public function __construct($set = self::ALPHA2)
+    /**
+     * Initializes the rule.
+     *
+     * @param string $set
+     *
+     * @throws ComponentException If $set is not a valid set
+     */
+    public function __construct(string $set = self::ALPHA2)
     {
-        $index = array_search($set, self::getAvailableSets(), true);
-        if (false === $index) {
-            throw new ComponentException(sprintf('"%s" is not a valid country set for ISO 3166-1', $set));
+        if (!isset(self::SET_INDEXES[$set])) {
+            throw new ComponentException(
+                sprintf(
+                    '"%s" is not a valid set for ISO 3166-1 (Available: %s)',
+                    $set,
+                    implode(', ', array_keys(self::SET_INDEXES))
+                )
+            );
         }
 
         $this->set = $set;
-        $this->index = $index;
     }
 
-    public static function getAvailableSets()
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
     {
-        return [
-            self::ALPHA2,
-            self::ALPHA3,
-            self::NUMERIC,
-        ];
-    }
-
-    private function getCountryCodeList($index)
-    {
-        $countryList = [];
-        foreach ($this->countryCodeList as $country) {
-            $countryList[] = $country[$index];
-        }
-
-        return $countryList;
-    }
-
-    public function validate($input): bool
-    {
-        return in_array(
-            mb_strtoupper($input),
-            $this->getCountryCodeList($this->index),
-            true
-        );
+        return array_column(self::COUNTRY_CODES, self::SET_INDEXES[$this->set]);
     }
 }

@@ -46,7 +46,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator consonant(string $additionalChars = null)
  * @method static Validator contains($containsValue, bool $identical = false)
  * @method static Validator countable()
- * @method static Validator countryCode()
+ * @method static Validator countryCode(string $set = null)
  * @method static Validator currencyCode()
  * @method static Validator cpf()
  * @method static Validator creditCard(string $brand = null)

@@ -34,14 +34,6 @@ class PostalCodeTest extends TestCase
         self::assertEquals($expectedPattern, $actualPattern);
     }
 
-    public function testShouldNotBeCaseSensitiveWhenChoosingPatternAccordingToCountryCode(): void
-    {
-        $rule1 = new PostalCode('BR');
-        $rule2 = new PostalCode('br');
-
-        self::assertEquals($rule1->regex, $rule2->regex);
-    }
-
     public function testShouldUseDefaultPatternWhenCountryCodeDoesNotHavePostalCode(): void
     {
         $rule = new PostalCode('ZW');
