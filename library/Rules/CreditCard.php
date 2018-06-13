@@ -15,19 +15,52 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 
-class CreditCard extends AbstractRule
+/**
+ * Validates a credit card number.
+ *
+ * @author Andy Snell <andysnell@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
+ * @author Alexander <mazanax@yandex.ru>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class CreditCard extends AbstractRule
 {
+    /**
+     *  @var string
+     */
     public const AMERICAN_EXPRESS = 'American Express';
+
+    /**
+     *  @var string
+     */
     public const DINERS_CLUB = 'Diners Club';
+
+    /**
+     *  @var string
+     */
     public const DISCOVER = 'Discover';
+
+    /**
+     *  @var string
+     */
     public const JCB = 'JCB';
+
+    /**
+     *  @var string
+     */
     public const MASTERCARD = 'MasterCard';
+
+    /**
+     *  @var string
+     */
     public const VISA = 'Visa';
 
     /**
      * @var string
      */
-    public $brand;
+    private $brand;
 
     /**
      * @var array
@@ -44,7 +77,7 @@ class CreditCard extends AbstractRule
     /**
      * @param string $brand Optional credit card brand
      */
-    public function __construct($brand = null)
+    public function __construct(string $brand = null)
     {
         if (null !== $brand && !isset($this->brands[$brand])) {
             $brands = implode(', ', array_keys($this->brands));
@@ -80,7 +113,7 @@ class CreditCard extends AbstractRule
      *
      * @return bool
      */
-    private function verifyBrand($input)
+    private function verifyBrand($input): bool
     {
         if (null === $this->brand) {
             return true;

@@ -17,25 +17,18 @@ use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\CreditCard
+ *
+ * @author Andy Snell <andysnell@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
 class CreditCardTest extends RuleTestCase
 {
-    public function testShouldHaveNoCreditCardBrandByDefault(): void
-    {
-        $rule = new CreditCard();
-
-        self::assertNull($rule->brand);
-    }
-
-    public function testShouldAcceptCreditCardBrandOnConstructor(): void
-    {
-        $rule = new CreditCard(CreditCard::VISA);
-
-        self::assertSame(CreditCard::VISA, $rule->brand);
-    }
-
     public function testShouldThrowExceptionWhenCreditCardBrandIsNotValid(): void
     {
         $message = '"RespectCard" is not a valid credit card brand';
@@ -46,6 +39,9 @@ class CreditCardTest extends RuleTestCase
         new CreditCard('RespectCard');
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $general = new CreditCard();
@@ -55,6 +51,7 @@ class CreditCardTest extends RuleTestCase
         $jcb = new CreditCard(CreditCard::JCB);
         $master = new CreditCard(CreditCard::MASTERCARD);
         $visa = new CreditCard(CreditCard::VISA);
+        $rule = new CreditCard();
 
         return [
             [$general, '5376 7473 9720 8720'], // MasterCard 5 BIN Range
@@ -76,6 +73,9 @@ class CreditCardTest extends RuleTestCase
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $general = new CreditCard();
