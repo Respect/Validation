@@ -16,12 +16,28 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\ComponentException;
 
 /**
- * Validates countries in ISO 3166-1.
+ * Validates an ISO country code like US or BR.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Felipe Martins <me@fefas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class CountryCode extends AbstractRule
+final class CountryCode extends AbstractRule
 {
+    /**
+     * @var string The ISO representation of a country code
+     */
     public const ALPHA2 = 'alpha-2';
+
+    /**
+     * @var string The ISO3 representation of a country code
+     */
     public const ALPHA3 = 'alpha-3';
+
+    /**
+     * @var string The ISO-number representation of a country code
+     */
     public const NUMERIC = 'numeric';
 
     /**
@@ -29,7 +45,7 @@ class CountryCode extends AbstractRule
      *
      * @var array
      */
-    protected $countryCodeList = [
+    private $countryCodeList = [
         ['AD', 'AND', '020'], // Andorra
         ['AE', 'ARE', '784'], // United Arab Emirates
         ['AF', 'AFG', '004'], // Afghanistan
@@ -284,10 +300,20 @@ class CountryCode extends AbstractRule
         ['ZW', 'ZWE', '716'], // Zimbabwe
     ];
 
-    public $set;
-    public $index;
+    /**
+     * @var string
+     */
+    private $set;
 
-    public function __construct($set = self::ALPHA2)
+    /**
+     * @var int The index of country in the country list
+     */
+    private $index;
+
+    /**
+     * @param string $set
+     */
+    public function __construct(string $set = self::ALPHA2)
     {
         $index = array_search($set, self::getAvailableSets(), true);
         if (false === $index) {
@@ -298,7 +324,7 @@ class CountryCode extends AbstractRule
         $this->index = $index;
     }
 
-    public static function getAvailableSets()
+    private static function getAvailableSets(): array
     {
         return [
             self::ALPHA2,
@@ -307,7 +333,7 @@ class CountryCode extends AbstractRule
         ];
     }
 
-    private function getCountryCodeList($index)
+    private function getCountryCodeList(int $index): array
     {
         $countryList = [];
         foreach ($this->countryCodeList as $country) {
@@ -317,6 +343,9 @@ class CountryCode extends AbstractRule
         return $countryList;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         return in_array(
