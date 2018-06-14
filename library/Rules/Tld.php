@@ -13,7 +13,19 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Tld extends AbstractRule
+use function in_array;
+use function is_string;
+use function mb_strtoupper;
+
+/**
+ * Validates a top-level domain.
+ *
+ * @author Bogus <g.predl@edis.at>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Alexandre <alexandre@gaigalas.net>
+ * @author Paul Karikari <paulkarikari1@gmail.com>
+ */
+final class Tld extends AbstractRule
 {
     /**
      * List extracted from http://data.iana.org/TLD/tlds-alpha-by-domain.txt
@@ -1552,8 +1564,15 @@ class Tld extends AbstractRule
         'ZW',
     ];
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
+        if (!is_string($input)) {
+            return false;
+        }
+
         return in_array(mb_strtoupper((string) $input), $this->tldList);
     }
 }

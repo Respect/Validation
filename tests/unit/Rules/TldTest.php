@@ -13,54 +13,43 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group  rule
+ *
  * @covers \Respect\Validation\Rules\Tld
+ *
+ * @author Eduardo Gulias Davis <me@egulias.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Paul Karikari <paulkarikari1@gmail.com>
  */
-class TldTest extends TestCase
+final class TldTest extends RuleTestCase
 {
-    public function providerForValidTld()
-    {
-        return [
-            ['br'],
-            ['cafe'],
-            ['com'],
-            ['democrat'],
-            ['eu'],
-            ['gmbh'],
-            ['us'],
-        ];
-    }
-
-    /**
-     * @dataProvider providerForValidTld
-     */
-    public function testShouldValidateInputWhenItIsAValidTld($input): void
+    public function providerForValidInput(): array
     {
         $rule = new Tld();
 
-        self::assertTrue($rule->validate($input));
-    }
-
-    public function providerForInvalidTld()
-    {
         return [
-            ['1'],
-            [1.0],
-            ['wrongtld'],
-            [true],
+            [$rule, 'br'],
+            [$rule, 'cafe'],
+            [$rule, 'com'],
+            [$rule, 'democrat'],
+            [$rule, 'eu'],
+            [$rule, 'gmbh'],
+            [$rule, 'us'],
         ];
     }
 
-    /**
-     * @dataProvider providerForInvalidTld
-     */
-    public function testShouldInvalidateInputWhenItIsNotAValidTld($input): void
+    public function providerForInvalidInput(): array
     {
         $rule = new Tld();
 
-        self::assertFalse($rule->validate($input));
+        return [
+            [$rule, '1'],
+            [$rule, 1.0],
+            [$rule, 'wrongtld'],
+            [$rule, true],
+        ];
     }
 }

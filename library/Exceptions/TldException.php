@@ -13,7 +13,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class TldException extends ValidationException
+/**
+ * Exceptions thrown by Tld Rule.
+ *
+ * @author Bogus <g.predl@edis.at>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Alexandre <alexandre@gaigalas.net>
+ * @author Paul Karikari <paulkarikari1@gmail.com>
+ */
+final class TldException extends ValidationException
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
