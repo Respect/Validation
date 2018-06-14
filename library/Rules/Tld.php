@@ -13,7 +13,19 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Tld extends AbstractRule
+use function in_array;
+use function is_scalar;
+use function mb_strtoupper;
+
+/**
+ * Validates whether the input is a top-level domain.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Bogus <g.predl@edis.at>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Paul Karikari <paulkarikari1@gmail.com>
+ */
+final class Tld extends AbstractRule
 {
     /**
      * List extracted from http://data.iana.org/TLD/tlds-alpha-by-domain.txt
@@ -21,7 +33,7 @@ class Tld extends AbstractRule
      *
      * @var array
      */
-    protected $tldList = [
+    private const TLD_LIST = [
         'AAA',
         'AARP',
         'ABARTH',
@@ -1552,8 +1564,15 @@ class Tld extends AbstractRule
         'ZW',
     ];
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
-        return in_array(mb_strtoupper((string) $input), $this->tldList);
+        if (!is_scalar($input)) {
+            return false;
+        }
+
+        return in_array(mb_strtoupper((string) $input), self::TLD_LIST);
     }
 }

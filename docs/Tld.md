@@ -2,7 +2,7 @@
 
 - `Tld()`
 
-Validates a top-level domain
+Validates whether the input is a top-level domain.
 
 ```php
 v::tld()->validate('com'); // true

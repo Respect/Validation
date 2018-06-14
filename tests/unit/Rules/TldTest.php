@@ -13,54 +13,54 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Tld
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Paulo Eduardo <pauloelr@gmail.com>
+ * @author Paul Karikari <paulkarikari1@gmail.com>
  */
-class TldTest extends TestCase
+final class TldTest extends RuleTestCase
 {
-    public function providerForValidTld()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
+        $rule = new Tld();
+
         return [
-            ['br'],
-            ['cafe'],
-            ['com'],
-            ['democrat'],
-            ['eu'],
-            ['gmbh'],
-            ['us'],
+            [$rule, 'br'],
+            [$rule, 'cafe'],
+            [$rule, 'com'],
+            [$rule, 'democrat'],
+            [$rule, 'eu'],
+            [$rule, 'gmbh'],
+            [$rule, 'us'],
         ];
     }
 
     /**
-     * @dataProvider providerForValidTld
+     * {@inheritdoc}
      */
-    public function testShouldValidateInputWhenItIsAValidTld($input): void
+    public function providerForInvalidInput(): array
     {
         $rule = new Tld();
 
-        self::assertTrue($rule->validate($input));
-    }
-
-    public function providerForInvalidTld()
-    {
         return [
-            ['1'],
-            [1.0],
-            ['wrongtld'],
-            [true],
+            [$rule, '1'],
+            [$rule, 1.0],
+            [$rule, 'wrongtld'],
+            [$rule, []],
+            [$rule, new stdClass()],
+            [$rule, true],
         ];
-    }
-
-    /**
-     * @dataProvider providerForInvalidTld
-     */
-    public function testShouldInvalidateInputWhenItIsNotAValidTld($input): void
-    {
-        $rule = new Tld();
-
-        self::assertFalse($rule->validate($input));
     }
 }
