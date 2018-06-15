@@ -14,11 +14,34 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use function gettype;
+use function is_callable;
+use function mb_strtolower;
+use function print_r;
+use function sprintf;
 
-class Type extends AbstractRule
+/**
+ * Validates the type of input.
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Paul Karikari<paulkarikari1@gmail.com>
+ */
+final class Type extends AbstractRule
 {
-    public $type;
-    public $availableTypes = [
+    /**
+     * Type to validate input against.
+     *
+     * @var string
+     */
+    private $type;
+
+    /**
+     * Collection of available types for validation.
+     *
+     * @var array
+     */
+    private $availableTypes = [
         'array' => 'array',
         'bool' => 'boolean',
         'boolean' => 'boolean',
@@ -33,7 +56,12 @@ class Type extends AbstractRule
         'string' => 'string',
     ];
 
-    public function __construct($type)
+    /**
+     * Creates new Type rule instance.
+     *
+     * @param string $type
+     */
+    public function __construct(string $type)
     {
         $lowerType = mb_strtolower($type);
         if (!isset($this->availableTypes[$lowerType])) {
@@ -43,6 +71,9 @@ class Type extends AbstractRule
         $this->type = $type;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         $lowerType = mb_strtolower($this->type);
