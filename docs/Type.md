@@ -14,6 +14,7 @@ v::type('object')->validate(new stdClass()); // true
 
 Version | Description
 --------|-------------
+  2.0.0 | Became case-sensitive
   0.8.0 | Created
 
 ***

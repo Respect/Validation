@@ -13,34 +13,23 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 use stdClass;
+use function tmpfile;
 
 /**
  * @group  rule
+ *
  * @covers \Respect\Validation\Rules\Type
- * @covers \Respect\Validation\Exceptions\TypeException
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Paul Karikari <paulkarikari1@gmail.com>
  */
-class TypeTest extends TestCase
+class TypeTest extends RuleTestCase
 {
-    public function testShouldDefineTypeOnConstructor(): void
-    {
-        $type = 'int';
-        $rule = new Type($type);
-
-        self::assertSame($type, $rule->type);
-    }
-
-    public function testShouldNotBeCaseSensitive(): void
-    {
-        $rule = new Type('InTeGeR');
-
-        self::assertTrue($rule->validate(42));
-    }
-
     /**
      * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage "whatever" is not a valid type
+     * @expectedExceptionMessage "whatever" is not a valid type (Available: array, bool, boolean, callable, double, float, int, integer, null, object, resource, string)
      */
     public function testShouldThrowExceptionWhenTypeIsNotValid(): void
     {
@@ -48,59 +37,35 @@ class TypeTest extends TestCase
     }
 
     /**
-     * @dataProvider providerForValidType
+     * {@inheritdoc}
      */
-    public function testShouldValidateValidTypes($type, $input): void
-    {
-        $rule = new Type($type);
-
-        self::assertTrue($rule->validate($input));
-    }
-
-    /**
-     * @dataProvider providerForInvalidType
-     */
-    public function testShouldNotValidateInvalidTypes($type, $input): void
-    {
-        $rule = new Type($type);
-
-        self::assertFalse($rule->validate($input));
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\TypeException
-     * @expectedExceptionMessage "Something" must be "integer"
-     */
-    public function testShouldThrowTypeExceptionWhenCheckingAnInvalidInput(): void
-    {
-        $rule = new Type('integer');
-        $rule->check('Something');
-    }
-
-    public function providerForValidType()
+    public function providerForValidInput(): array
     {
         return [
-            ['array', []],
-            ['bool', true],
-            ['boolean', false],
-            ['callable', function (): void {
+            [new Type('array'), []],
+            [new Type('bool'), true],
+            [new Type('boolean'), false],
+            [new Type('callable'), function (): void {
             }],
-            ['double', 0.8],
-            ['float', 1.0],
-            ['int', 42],
-            ['integer', 13],
-            ['null', null],
-            ['object', new stdClass()],
-            ['resource', tmpfile()],
-            ['string', 'Something'],
+            [new Type('double'), 0.8],
+            [new Type('float'), 1.0],
+            [new Type('int'), 42],
+            [new Type('integer'), 13],
+            [new Type('null'), null],
+            [new Type('object'), new stdClass()],
+            [new Type('resource'), tmpfile()],
+            [new Type('string'), 'Something'],
         ];
     }
 
-    public function providerForInvalidType()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         return [
-            ['int', '1'],
-            ['bool', '1'],
+            [new Type('int'), '1'],
+            [new Type('bool'), '1'],
         ];
     }
 }
