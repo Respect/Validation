@@ -13,8 +13,19 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class TldException extends ValidationException
+/**
+ * Exceptions thrown by Tld Rule.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author nickl- <github@jigsoft.co.za>
+ * @author Paul Karikari <paulkarikari1@gmail.com>
+ */
+final class TldException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a valid top-level domain name',
