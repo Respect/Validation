@@ -13,65 +13,59 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\TrueVal
- * @covers \Respect\Validation\Exceptions\TrueValException
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Paul Karikari <paulkarikari1@gmail.com>
  */
-class TrueValTest extends TestCase
+final class TrueValTest extends RuleTestCase
 {
     /**
-     * @dataProvider validTrueProvider
+     * {@inheritdoc}
      */
-    public function testShouldValidatePatternAccordingToTheDefinedLocale($input): void
+    public function providerForValidInput(): array
     {
         $rule = new TrueVal();
 
-        self::assertTrue($rule->validate($input));
-    }
-
-    public function validTrueProvider()
-    {
         return [
-            [true],
-            [1],
-            ['1'],
-            ['true'],
-            ['on'],
-            ['yes'],
-            ['TRUE'],
-            ['ON'],
-            ['YES'],
-            ['True'],
-            ['On'],
-            ['Yes'],
+            [$rule, true],
+            [$rule, 1],
+            [$rule, '1'],
+            [$rule, 'true'],
+            [$rule, 'on'],
+            [$rule, 'yes'],
+            [$rule, 'TRUE'],
+            [$rule, 'ON'],
+            [$rule, 'YES'],
+            [$rule, 'True'],
+            [$rule, 'On'],
+            [$rule, 'Yes'],
         ];
     }
 
     /**
-     * @dataProvider invalidTrueProvider
+     * {@inheritdoc}
      */
-    public function testShouldNotValidatePatternAccordingToTheDefinedLocale($input): void
+    public function providerForInvalidInput(): array
     {
         $rule = new TrueVal();
 
-        self::assertFalse($rule->validate($input));
-    }
-
-    public function invalidTrueProvider()
-    {
         return [
-            [false],
-            [0],
-            [0.5],
-            [2],
-            ['0'],
-            ['false'],
-            ['off'],
-            ['no'],
-            ['truth'],
+            [$rule, false],
+            [$rule, 0],
+            [$rule, 0.5],
+            [$rule, 2],
+            [$rule, '0'],
+            [$rule, 'false'],
+            [$rule, 'off'],
+            [$rule, 'no'],
+            [$rule, 'truth'],
         ];
     }
 }
