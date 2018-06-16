@@ -16,11 +16,19 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Unique
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Krzysztof Śmiałek <admin@avensome.net>
+ * @author Paul Karikari <paulkarikari1@gmail.com>
  */
-class UniqueTest extends RuleTestCase
+final class UniqueTest extends RuleTestCase
 {
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new Unique();
@@ -36,6 +44,9 @@ class UniqueTest extends RuleTestCase
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new Unique();

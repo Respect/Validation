@@ -13,8 +13,22 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Unique extends AbstractRule
+use const SORT_REGULAR;
+use function array_unique;
+use function is_array;
+
+/**
+ * Validates whether the input array contains only unique values.
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Krzysztof Śmiałek <admin@avensome.net>
+ * @author Paul Karikari <paulkarikari1@gmail.com>
+ */
+final class Unique extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (!is_array($input)) {
