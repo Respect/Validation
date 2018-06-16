@@ -13,61 +13,29 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
+use function array_map;
+use function is_dir;
+use function mkdir;
+use function realpath;
+use function SplFileObject;
+use function sys_get_temp_dir;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Directory
- * @covers \Respect\Validation\Exceptions\DirectoryException
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespidolacom.br>
  */
-class DirectoryTest extends TestCase
+final class DirectoryTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForValidDirectory
+     * {@inheritdoc}
      */
-    public function testValidDirectoryShouldReturnTrue($input): void
-    {
-        $rule = new Directory();
-        self::assertTrue($rule->__invoke($input));
-        $rule->assert($input);
-        $rule->check($input);
-    }
-
-    /**
-     * @dataProvider providerForInvalidDirectory
-     * @expectedException \Respect\Validation\Exceptions\DirectoryException
-     */
-    public function testInvalidDirectoryShouldThrowException($input): void
-    {
-        $rule = new Directory();
-        self::assertFalse($rule->__invoke($input));
-        $rule->assert($input);
-        $rule->check($input);
-    }
-
-    /**
-     * @dataProvider providerForDirectoryObjects
-     */
-    public function testDirectoryWithObjects($object, $valid): void
-    {
-        $rule = new Directory();
-        self::assertEquals($valid, $rule->validate($object));
-    }
-
-    public function providerForDirectoryObjects()
-    {
-        return [
-            [new \SplFileInfo(__DIR__), true],
-            [new \SplFileInfo(__FILE__), false],
-            /*
-             * PHP 5.4 does not allows to use SplFileObject with directories.
-             * array(new \SplFileObject(__DIR__), true),
-             */
-            [new \SplFileObject(__FILE__), false],
-        ];
-    }
-
-    public function providerForValidDirectory()
+    public function providerForValidInput(): array
     {
         $directories = [
             sys_get_temp_dir().DIRECTORY_SEPARATOR.'dataprovider-1',
@@ -77,30 +45,43 @@ class DirectoryTest extends TestCase
             sys_get_temp_dir().DIRECTORY_SEPARATOR.'dataprovider-5',
         ];
 
-        return array_map(
-            function ($directory) {
+        $rule = new Directory();
+
+        $directories = array_map(
+            function ($directory) use ($rule) {
                 if (!is_dir($directory)) {
                     mkdir($directory, 0766, true);
                 }
 
-                return [realpath($directory)];
+                return [$rule, realpath($directory)];
             },
             $directories
         );
+
+        $directories = $directories + [$rule, new \SplFileInfo(__DIR__)];
+
+        return $directories;
     }
 
-    public function providerForInvalidDirectory()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
-        return array_chunk(
-            [
-                '',
-                __FILE__,
-                __DIR__.'/../../../../../README.md',
-                __DIR__.'/../../../../../composer.json',
-                new \stdClass(),
-                [__DIR__],
-            ],
-            1
-        );
+        $rule = new Directory();
+
+        return [
+            /*
+             * PHP 5.4 does not allows to use SplFileObject with directories.
+             * array(new \SplFileObject(__DIR__), true),
+             */
+            [$rule, new \SplFileObject(__FILE__)],
+            [$rule, ''],
+            [$rule, __FILE__],
+            [$rule, __DIR__.'/../../../../../README.md'],
+            [$rule, __DIR__.'/../../../../../composer.json'],
+            [$rule, new \stdClass()],
+            [$rule, [__DIR__]],
+        ];
     }
 }
