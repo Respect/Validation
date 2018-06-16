@@ -16,12 +16,20 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Each
- * @covers \Respect\Validation\Exceptions\EachException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class EachTest extends RuleTestCase
+final class EachTest extends RuleTestCase
 {
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $ruleNotEmpty = new Each($this->createValidatableMock(true));
@@ -48,6 +56,9 @@ class EachTest extends RuleTestCase
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new Each($this->createValidatableMock(false));
@@ -59,73 +70,9 @@ class EachTest extends RuleTestCase
             [$rule, null],
             [$rule, false],
             [$rule, ['', 2, 3, 4, 5]],
+            [$rule, ['a', 2, 3, 4, 5]],
             [$ruleOnlyKeyValidation, ['age' => 22]],
+            [$ruleOnlyKeyValidation, ['a', 'b', 'c', 'd', 'e']],
         ];
-    }
-
-    /**
-     * @doesNotPerformAssertions
-     */
-    public function testValidatorShouldPassIfEveryArrayItemPass(): void
-    {
-        $v = new Each($this->createValidatableMock(true));
-        $v->check([1, 2, 3, 4, 5]);
-        $v->assert([1, 2, 3, 4, 5]);
-    }
-
-    /**
-     * @doesNotPerformAssertions
-     */
-    public function testValidatorShouldPassIfEveryArrayItemAndKeyPass(): void
-    {
-        $v = new Each($this->createValidatableMock(true), $this->createValidatableMock(true));
-        $v->check(['a', 'b', 'c', 'd', 'e']);
-        $v->assert(['a', 'b', 'c', 'd', 'e']);
-    }
-
-    /**
-     * @doesNotPerformAssertions
-     */
-    public function testValidatorShouldPassWithOnlyKeyValidation(): void
-    {
-        $v = new Each(null, $this->createValidatableMock(true));
-        $v->check(['a', 'b', 'c', 'd', 'e']);
-        $v->assert(['a', 'b', 'c', 'd', 'e']);
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\EachException
-     */
-    public function testValidatorShouldNotPassWithOnlyKeyValidation(): void
-    {
-        $v = new Each(null, $this->createValidatableMock(false));
-        $v->assert(['a', 'b', 'c', 'd', 'e']);
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\EachException
-     */
-    public function testAssertShouldFailOnInvalidItem(): void
-    {
-        $v = new Each($this->createValidatableMock(false));
-        $v->assert(['a', 2, 3, 4, 5]);
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\EachException
-     */
-    public function testAssertShouldFailWithNonIterableInput(): void
-    {
-        $v = new Each($this->createValidatableMock(false));
-        $v->assert('a');
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\EachException
-     */
-    public function testCheckShouldFailWithNonIterableInput(): void
-    {
-        $v = new Each($this->createValidatableMock(false));
-        $v->check(null);
     }
 }

@@ -17,19 +17,42 @@ use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Helpers\CanValidateIterable;
 use Respect\Validation\Validatable;
 
-class Each extends AbstractRule
+/**
+ * Iterates over an array or Iterator and validates the value or key
+ * of each entry:
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class Each extends AbstractRule
 {
     use CanValidateIterable;
 
-    public $itemValidator;
-    public $keyValidator;
+    /**
+     * @var Validatable
+     */
+    private $itemValidator;
 
+    /**
+     * @var Validatable
+     */
+    private $keyValidator;
+
+    /**
+     * @param Validatable $keyValidator
+     * @param Validatable $itemValidator
+     */
     public function __construct(Validatable $itemValidator = null, Validatable $keyValidator = null)
     {
         $this->itemValidator = $itemValidator;
         $this->keyValidator = $keyValidator;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function assert($input): void
     {
         $exceptions = [];
@@ -61,6 +84,9 @@ class Each extends AbstractRule
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function check($input): void
     {
         if (!$this->isIterable($input)) {
@@ -78,6 +104,9 @@ class Each extends AbstractRule
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (!$this->isIterable($input)) {
