@@ -13,94 +13,49 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
+use SplFileInfo;
+use SplFileObject;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Directory
- * @covers \Respect\Validation\Exceptions\DirectoryException
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespidolacom.br>
  */
-class DirectoryTest extends TestCase
+final class DirectoryTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForValidDirectory
+     * {@inheritdoc}
      */
-    public function testValidDirectoryShouldReturnTrue($input): void
+    public function providerForValidInput(): array
     {
         $rule = new Directory();
-        self::assertTrue($rule->__invoke($input));
-        $rule->assert($input);
-        $rule->check($input);
-    }
 
-    /**
-     * @dataProvider providerForInvalidDirectory
-     * @expectedException \Respect\Validation\Exceptions\DirectoryException
-     */
-    public function testInvalidDirectoryShouldThrowException($input): void
-    {
-        $rule = new Directory();
-        self::assertFalse($rule->__invoke($input));
-        $rule->assert($input);
-        $rule->check($input);
-    }
-
-    /**
-     * @dataProvider providerForDirectoryObjects
-     */
-    public function testDirectoryWithObjects($object, $valid): void
-    {
-        $rule = new Directory();
-        self::assertEquals($valid, $rule->validate($object));
-    }
-
-    public function providerForDirectoryObjects()
-    {
         return [
-            [new \SplFileInfo(__DIR__), true],
-            [new \SplFileInfo(__FILE__), false],
-            /*
-             * PHP 5.4 does not allows to use SplFileObject with directories.
-             * array(new \SplFileObject(__DIR__), true),
-             */
-            [new \SplFileObject(__FILE__), false],
+            [$rule, __DIR__],
+            [$rule, new SplFileInfo(__DIR__)],
+            [$rule, dir(__DIR__)],
         ];
     }
 
-    public function providerForValidDirectory()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
-        $directories = [
-            sys_get_temp_dir().DIRECTORY_SEPARATOR.'dataprovider-1',
-            sys_get_temp_dir().DIRECTORY_SEPARATOR.'dataprovider-2',
-            sys_get_temp_dir().DIRECTORY_SEPARATOR.'dataprovider-3',
-            sys_get_temp_dir().DIRECTORY_SEPARATOR.'dataprovider-4',
-            sys_get_temp_dir().DIRECTORY_SEPARATOR.'dataprovider-5',
+        $rule = new Directory();
+
+        return [
+            [$rule, new SplFileInfo(__FILE__)],
+            [$rule, new SplFileObject(__FILE__)],
+            [$rule, ''],
+            [$rule, __FILE__],
+            [$rule, new \stdClass()],
+            [$rule, [__DIR__]],
         ];
-
-        return array_map(
-            function ($directory) {
-                if (!is_dir($directory)) {
-                    mkdir($directory, 0766, true);
-                }
-
-                return [realpath($directory)];
-            },
-            $directories
-        );
-    }
-
-    public function providerForInvalidDirectory()
-    {
-        return array_chunk(
-            [
-                '',
-                __FILE__,
-                __DIR__.'/../../../../../README.md',
-                __DIR__.'/../../../../../composer.json',
-                new \stdClass(),
-                [__DIR__],
-            ],
-            1
-        );
     }
 }

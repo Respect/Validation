@@ -2,7 +2,7 @@
 
 - `Directory()`
 
-Validates directories.
+Validates if the given path is a directory.
 
 ```php
 v::directory()->validate(__DIR__); // true
@@ -13,12 +13,14 @@ This validator will consider SplFileInfo instances, so you can do something like
 
 ```php
 v::directory()->validate(new SplFileInfo('library/'));
+v::directory()->validate(dir('/'));
 ```
 
 ## Changelog
 
 Version | Description
 --------|-------------
+  2.0.0 | Validates PHP's `Directory` class
   0.4.4 | Created
 
 ***
