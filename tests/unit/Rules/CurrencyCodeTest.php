@@ -16,11 +16,19 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\CurrencyCode
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Justin Hook <justinhook88@yahoo.co.uk>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class CurrencyCodeTest extends RuleTestCase
+final class CurrencyCodeTest extends RuleTestCase
 {
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new CurrencyCode();
@@ -29,11 +37,14 @@ class CurrencyCodeTest extends RuleTestCase
             [$rule, 'EUR'],
             [$rule, 'GBP'],
             [$rule, 'XAU'],
-            [$rule, 'xba'],
-            [$rule, 'xxx'],
+            [$rule, 'XBA'],
+            [$rule, 'XXX'],
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new CurrencyCode();
@@ -42,6 +53,7 @@ class CurrencyCodeTest extends RuleTestCase
             [$rule, 'BTC'],
             [$rule, 'GGP'],
             [$rule, 'USA'],
+            [$rule, 'xxx'],
         ];
     }
 }

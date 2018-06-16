@@ -12,6 +12,7 @@ v::currencyCode()->validate('GBP'); // true
 
 Version | Description
 --------|-------------
+  2.0.0 | Became case-sensitive
   1.0.0 | Created
 
 ***
