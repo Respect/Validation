@@ -17,42 +17,48 @@ use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Helpers\CanValidateIterable;
 use Respect\Validation\Validatable;
 
-class Each extends AbstractRule
+/**
+ * Validates whether each value in the input is valid according to another rule.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class Each extends AbstractRule
 {
     use CanValidateIterable;
 
-    public $itemValidator;
-    public $keyValidator;
+    /**
+     * @var Validatable
+     */
+    private $rule;
 
-    public function __construct(Validatable $itemValidator = null, Validatable $keyValidator = null)
+    /**
+     * Initializes the constructor.
+     *
+     * @param mixed $rule
+     */
+    public function __construct(Validatable $rule)
     {
-        $this->itemValidator = $itemValidator;
-        $this->keyValidator = $keyValidator;
+        $this->rule = $rule;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function assert($input): void
     {
-        $exceptions = [];
-
         if (!$this->isIterable($input)) {
             throw $this->reportError($input);
         }
 
-        foreach ($input as $key => $item) {
-            if (isset($this->itemValidator)) {
-                try {
-                    $this->itemValidator->assert($item);
-                } catch (ValidationException $e) {
-                    $exceptions[] = $e;
-                }
-            }
-
-            if (isset($this->keyValidator)) {
-                try {
-                    $this->keyValidator->assert($key);
-                } catch (ValidationException $e) {
-                    $exceptions[] = $e;
-                }
+        $exceptions = [];
+        foreach ($input as $value) {
+            try {
+                $this->rule->check($value);
+            } catch (ValidationException $exception) {
+                $exceptions[] = $exception;
             }
         }
 
@@ -61,37 +67,15 @@ class Each extends AbstractRule
         }
     }
 
-    public function check($input): void
-    {
-        if (!$this->isIterable($input)) {
-            throw $this->reportError($input);
-        }
-
-        foreach ($input as $key => $item) {
-            if (isset($this->itemValidator)) {
-                $this->itemValidator->check($item);
-            }
-
-            if (isset($this->keyValidator)) {
-                $this->keyValidator->check($key);
-            }
-        }
-    }
-
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
-        if (!$this->isIterable($input)) {
+        try {
+            $this->assert($input);
+        } catch (ValidationException $exception) {
             return false;
-        }
-
-        foreach ($input as $key => $item) {
-            if (isset($this->itemValidator) && !$this->itemValidator->validate($item)) {
-                return false;
-            }
-
-            if (isset($this->keyValidator) && !$this->keyValidator->validate($key)) {
-                return false;
-            }
         }
 
         return true;

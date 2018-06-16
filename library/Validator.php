@@ -55,7 +55,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator digit(string $additionalChars = null)
  * @method static Validator directory()
  * @method static Validator domain(bool $tldCheck = true)
- * @method static Validator each(Validatable $itemValidator = null, Validatable $keyValidator = null)
+ * @method static Validator each(Validatable $rule)
  * @method static Validator email()
  * @method static Validator endsWith($endValue, bool $identical = false)
  * @method static Validator equals($compareTo)

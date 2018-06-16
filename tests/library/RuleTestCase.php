@@ -126,7 +126,7 @@ abstract class RuleTestCase extends TestCase
      */
     public function shouldValidateValidInput(Validatable $validator, $input): void
     {
-        self::assertTrue($validator->validate($input));
+        self::assertValidInput($validator, $input);
     }
 
     /**
@@ -139,6 +139,16 @@ abstract class RuleTestCase extends TestCase
      */
     public function shouldValidateInvalidInput(Validatable $validator, $input): void
     {
-        self::assertFalse($validator->validate($input));
+        self::assertInvalidInput($validator, $input);
+    }
+
+    public static function assertValidInput(Validatable $rule, $input): void
+    {
+        self::assertTrue($rule->validate($input));
+    }
+
+    public static function assertInvalidInput(Validatable $rule, $input): void
+    {
+        self::assertFalse($rule->validate($input));
     }
 }
