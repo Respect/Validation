@@ -13,8 +13,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class ExecutableException extends ValidationException
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class ExecutableException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be an executable file',
