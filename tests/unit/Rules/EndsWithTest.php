@@ -13,60 +13,50 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\EndsWith
- * @covers \Respect\Validation\Exceptions\EndsWithException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class EndsWithTest extends TestCase
+final class EndsWithTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForEndsWith
+     * {@inheritdoc}
      */
-    public function testStringsEndingWithExpectedValueShouldPass($start, $input): void
-    {
-        $v = new EndsWith($start);
-        self::assertTrue($v->__invoke($input));
-        $v->check($input);
-        $v->assert($input);
-    }
-
-    /**
-     * @dataProvider providerForNotEndsWith
-     * @expectedException \Respect\Validation\Exceptions\EndsWithException
-     */
-    public function testStringsNotEndingWithExpectedValueShouldNotPass($start, $input, $caseSensitive = false): void
-    {
-        $v = new EndsWith($start, $caseSensitive);
-        self::assertFalse($v->__invoke($input));
-        $v->assert($input);
-    }
-
-    public function providerForEndsWith()
+    public function providerForValidInput(): array
     {
         return [
-            ['foo', ['bar', 'foo']],
-            ['foo', 'barbazFOO'],
-            ['foo', 'barbazfoo'],
-            ['foo', 'foobazfoo'],
-            ['1', [2, 3, 1]],
-            ['1', [2, 3, '1'], true],
+            [new EndsWith('foo'), ['bar', 'foo']],
+            [new EndsWith('foo'), 'barbazFOO'],
+            [new EndsWith('foo'), 'barbazfoo'],
+            [new EndsWith('foo'), 'foobazfoo'],
+            [new EndsWith('1'), [2, 3, 1]],
+            [new EndsWith(1), [2, 3, 1]],
+            [new EndsWith('1', true), [2, 3, '1']],
         ];
     }
 
-    public function providerForNotEndsWith()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         return [
-            ['foo', ''],
-            ['bat', ['bar', 'foo']],
-            ['foo', 'barfaabaz'],
-            ['foo', 'barbazFOO', true],
-            ['foo', 'faabarbaz'],
-            ['foo', 'baabazfaa'],
-            ['foo', 'baafoofaa'],
-            ['1', [1, '1', 3], true],
+            [new EndsWith('foo'), ''],
+            [new EndsWith('bat'), ['bar', 'foo']],
+            [new EndsWith('foo'), 'barfaabaz'],
+            [new EndsWith('foo', true), 'barbazFOO'],
+            [new EndsWith('foo'), 'faabarbaz'],
+            [new EndsWith('foo'), 'baabazfaa'],
+            [new EndsWith('foo'), 'baafoofaa'],
+            [new EndsWith('1', true), [1, '1', 3]],
         ];
     }
 }
