@@ -13,14 +13,31 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Executable extends AbstractRule
+use SplFileInfo;
+use function is_executable;
+use function is_scalar;
+
+/**
+ * Validates if a file is an executable.
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class Executable extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
-        if ($input instanceof \SplFileInfo) {
+        if ($input instanceof SplFileInfo) {
             return $input->isExecutable();
         }
 
-        return is_string($input) && is_executable($input);
+        if (!is_scalar($input)) {
+            return false;
+        }
+
+        return is_executable((string) $input);
     }
 }

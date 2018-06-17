@@ -13,54 +13,47 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
-
-$GLOBALS['is_executable'] = null;
-
-function is_executable($executable)
-{
-    $return = \is_executable($executable); // Running the real function
-    if (null !== $GLOBALS['is_executable']) {
-        $return = $GLOBALS['is_executable'];
-        $GLOBALS['is_executable'] = null;
-    }
-
-    return $return;
-}
+use Respect\Validation\Test\RuleTestCase;
+use SplFileInfo;
+use SplFileObject;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Executable
- * @covers \Respect\Validation\Exceptions\ExecutableException
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Royall Spence <royall@royall.us>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class ExecutableTest extends TestCase
+final class ExecutableTest extends RuleTestCase
 {
-    public function testValidExecutableFileShouldReturnTrue(): void
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
-        $GLOBALS['is_executable'] = true;
-
         $rule = new Executable();
-        $input = '/path/of/a/valid/executable/file.txt';
-        self::assertTrue($rule->validate($input));
+
+        return [
+            [$rule, 'tests/fixtures/executable'],
+            [$rule, new SplFileInfo('tests/fixtures/executable')],
+            [$rule, new SplFileObject('tests/fixtures/executable')],
+        ];
     }
 
-    public function testInvalidExecutableFileShouldReturnFalse(): void
-    {
-        $GLOBALS['is_executable'] = false;
-
-        $rule = new Executable();
-        $input = '/path/of/an/invalid/executable/file.txt';
-        self::assertFalse($rule->validate($input));
-    }
-
-    public function testShouldValidateObjects(): void
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         $rule = new Executable();
-        $object = $this->createMock('SplFileInfo', ['isExecutable'], ['somefile.txt']);
-        $object->expects($this->once())
-                ->method('isExecutable')
-                ->will($this->returnValue(true));
 
-        self::assertTrue($rule->validate($object));
+        return [
+            [$rule, 'tests/fixtures/valid-image.gif'],
+            [$rule, new SplFileInfo('tests/fixtures/valid-image.jpg')],
+            [$rule, new SplFileObject('tests/fixtures/valid-image.png')],
+        ];
     }
 }
