@@ -19,6 +19,7 @@ matrix:
   fast_finish: true
 
 before_script:
+  - pecl install uopz || echo "Cound not install uopz" 1>&2
   - composer update --prefer-dist ${COMPOSER_ARGUMENTS}
 
 script:
