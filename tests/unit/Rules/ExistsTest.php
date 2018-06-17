@@ -13,55 +13,46 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use org\bovigo\vfs\content\LargeFileContent;
-use org\bovigo\vfs\vfsStream;
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
+use SplFileObject;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Exists
- * @covers \Respect\Validation\Exceptions\ExistsException
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Kennedy Tedesco <kennedyt.tw@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class ExistsTest extends TestCase
+final class ExistsTest extends RuleTestCase
 {
     /**
-     * @dataProvider fileProvider
-     * @covers \Respect\Validation\Rules\Exists::validate
+     * {@inheritdoc}
      */
-    public function testExistentFileShouldReturnTrue($file): void
+    public function providerForValidInput(): array
     {
         $rule = new Exists();
-        self::assertTrue($rule->validate($file->url()));
-    }
-
-    /**
-     * @covers \Respect\Validation\Rules\Exists::validate
-     */
-    public function testNonExistentFileShouldReturnFalse(): void
-    {
-        $rule = new Exists();
-        self::assertFalse($rule->validate('/path/of/a/non-existent/file'));
-    }
-
-    /**
-     * @dataProvider fileProvider
-     * @covers \Respect\Validation\Rules\Exists::validate
-     */
-    public function testShouldValidateObjects($file): void
-    {
-        $rule = new Exists();
-        $object = new SplFileInfo($file->url());
-        self::assertTrue($rule->validate($object));
-    }
-
-    public function fileProvider()
-    {
-        $root = vfsStream::setup();
-        $file = vfsStream::newFile('2kb.txt')->withContent(LargeFileContent::withKilobytes(2))->at($root);
 
         return [
-            [$file],
+            [$rule, __FILE__],
+            [$rule, new SplFileInfo(__FILE__)],
+            [$rule, new SplFileObject(__FILE__)],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
+    {
+        $rule = new Exists();
+
+        return [
+            [$rule, 'path/of/a/non-existent/file'],
+            [$rule, new SplFileInfo('path/of/a/non-existent/file')],
         ];
     }
 }
