@@ -13,8 +13,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class UploadedException extends ValidationException
+/**
+ * Exceptions thrown by Uploaded rule.
+ *
+ * @author FKhairil <fajar90alone@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Paul Karikari <paulkarikari1@gmail.com>
+ */
+final class UploadedException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be an uploaded file',
