@@ -13,17 +13,25 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function in_array;
+use function mb_strtoupper;
+
 /**
  * Validates currency codes in ISO 4217.
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Justin Hook <justinhook88@yahoo.co.uk>
+ * @author Tim Strijdhorst <tstrijdhorst@users.noreply.github.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class CurrencyCode extends AbstractRule
+final class CurrencyCode extends AbstractRule
 {
     /**
      * @see http://www.currency-iso.org/en/home/tables/table-a1.html
      *
      * @var array
      */
-    private $currencyCodes = [
+    private const CURRENCY_CODES = [
         'AED', // UAE Dirham
         'AFN', // Afghani
         'ALL', // Lek
@@ -204,8 +212,11 @@ class CurrencyCode extends AbstractRule
         'ZWL', // Zimbabwe Dollar
     ];
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
-        return in_array(mb_strtoupper($input), $this->currencyCodes, true);
+        return in_array(mb_strtoupper($input), self::CURRENCY_CODES, true);
     }
 }
