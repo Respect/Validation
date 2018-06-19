@@ -2,7 +2,7 @@
 
 - `Directory()`
 
-Validates directories.
+Validates if the given path is a directory.
 
 ```php
 v::directory()->validate(__DIR__); // true
