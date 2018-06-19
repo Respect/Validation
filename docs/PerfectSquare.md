@@ -2,7 +2,7 @@
 
 - `PerfectSquare()`
 
-Validates a perfect square.
+Validates whether the input is a perfect square.
 
 ```php
 v::perfectSquare()->validate(25); // true (5*5)
