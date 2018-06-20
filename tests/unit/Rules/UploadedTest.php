@@ -29,11 +29,15 @@ function is_uploaded_file($uploaded)
 }
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Uploaded
- * @covers \Respect\Validation\Exceptions\UploadedException
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Paul Karikari <paulkarikari1@gmail.com>
  */
-class UploadedTest extends TestCase
+final class UploadedTest extends TestCase
 {
     /**
      * @covers \Respect\Validation\Rules\Uploaded::validate
