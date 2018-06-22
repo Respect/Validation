@@ -13,7 +13,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class IntVal extends AbstractRule
+use function is_numeric;
+
+/**
+ * Validates if the input is an integer.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class IntVal extends AbstractRule
 {
     public function validate($input): bool
     {
