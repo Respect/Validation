@@ -13,62 +13,50 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\IntVal
- * @covers \Respect\Validation\Exceptions\IntValException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class IntValTest extends TestCase
+final class IntValTest extends RuleTestCase
 {
-    protected $intValidator;
-
-    protected function setUp(): void
+    /*
+    * {@inheritdoc}
+    */
+    public function providerForValidInput(): array
     {
-        $this->intValidator = new IntVal();
-    }
+        $rule = new IntVal();
 
-    /**
-     * @dataProvider providerForInt
-     */
-    public function testValidIntegersShouldReturnTrue($input): void
-    {
-        self::assertTrue($this->intValidator->__invoke($input));
-        $this->intValidator->check($input);
-        $this->intValidator->assert($input);
-    }
-
-    /**
-     * @dataProvider providerForNotInt
-     * @expectedException \Respect\Validation\Exceptions\IntValException
-     */
-    public function testInvalidIntegersShouldThrowIntException($input): void
-    {
-        self::assertFalse($this->intValidator->__invoke($input));
-        $this->intValidator->assert($input);
-    }
-
-    public function providerForInt()
-    {
         return [
-            [16],
-            ['165'],
-            [123456],
-            [PHP_INT_MAX],
+            [$rule, 16],
+            [$rule, '165'],
+            [$rule, 123456],
+            [$rule, PHP_INT_MAX],
         ];
     }
 
-    public function providerForNotInt()
+    /*
+    * {@inheritdoc}
+    */
+    public function providerForInvalidInput(): array
     {
+        $rule = new IntVal();
+
         return [
-            [''],
-            [null],
-            ['a'],
-            [' '],
-            ['Foo'],
-            ['1.44'],
-            [1e-5],
+            [$rule, ''],
+            [$rule, null],
+            [$rule, 'a'],
+            [$rule, ' '],
+            [$rule, 'Foo'],
+            [$rule, '1.44'],
+            [$rule, 1e-5],
         ];
     }
 }
