@@ -15,6 +15,10 @@ class IntVal extends AbstractRule
 {
     public function validate($input)
     {
-        return is_numeric($input) && (int) $input == $input;
+        if (is_float($input)) {
+            return false;
+        }
+
+        return false !== filter_var($input, FILTER_VALIDATE_INT);
     }
 }
