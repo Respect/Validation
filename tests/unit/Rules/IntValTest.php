@@ -65,6 +65,8 @@ class IntValTest extends TestCase
             [''],
             [null],
             ['a'],
+            ['1.0'],
+            [1.0],
             [' '],
             ['Foo'],
             ['1.44'],
