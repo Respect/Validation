@@ -44,6 +44,7 @@
 - [Age](Age.md)
 - [Between](Between.md)
 - [Equals](Equals.md)
+- [Equivalent](Equivalent.md)
 - [GreaterThan](GreaterThan.md)
 - [Identical](Identical.md)
 - [LessThan](LessThan.md)

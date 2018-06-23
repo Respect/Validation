@@ -59,6 +59,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator email()
  * @method static Validator endsWith($endValue, bool $identical = false)
  * @method static Validator equals($compareTo)
+ * @method static Validator equivalent($compareTo)
  * @method static Validator even()
  * @method static Validator executable()
  * @method static Validator exists()

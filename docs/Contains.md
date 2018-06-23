@@ -33,4 +33,5 @@ See also:
 
 - [StartsWith](StartsWith.md)
 - [EndsWith](EndsWith.md)
+- [Equivalent](Equivalent.md)
 - [In](In.md)

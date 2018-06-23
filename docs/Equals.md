@@ -21,4 +21,5 @@ Version | Description
 See also:
 
 - [Contains](Contains.md)
+- [Equivalent](Equivalent.md)
 - [Identical](Identical.md)
