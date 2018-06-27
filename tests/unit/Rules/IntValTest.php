@@ -64,6 +64,8 @@ class IntValTest extends \PHPUnit_Framework_TestCase
             ['1.0'],
             [1.0],
             [' '],
+            [true],
+            [false],
             ['Foo'],
             ['1.44'],
             [1e-5],
