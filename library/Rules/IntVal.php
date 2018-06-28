@@ -19,6 +19,10 @@ class IntVal extends AbstractRule
             return false;
         }
 
+        if (is_bool($input)) {
+            return false;
+        }
+
         return false !== filter_var($input, FILTER_VALIDATE_INT);
     }
 }
