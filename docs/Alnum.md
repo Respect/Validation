@@ -9,10 +9,10 @@ Validates alphanumeric characters from a-Z and 0-9.
 v::alnum()->validate('foo 123'); // true
 ```
 
-A parameter for extra characters can be used:
+A parameter for extra characters can be used, you can also separate arguments with a space:
 
 ```php
-v::alnum('-')->validate('foo - 123'); // true
+v::alnum('- ! :')->validate('foo :- 123 !'); // true
 ```
 
 This validator allows whitespace, if you want to
