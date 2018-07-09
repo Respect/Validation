@@ -189,13 +189,7 @@ class Validator extends AllOf
      */
     public static function __callStatic($ruleName, $arguments)
     {
-        if ('allOf' === $ruleName) {
-            return static::buildRule($ruleName, $arguments);
-        }
-
-        $validator = new static();
-
-        return $validator->__call($ruleName, $arguments);
+        return (new static())->__call($ruleName, $arguments);
     }
 
     /**

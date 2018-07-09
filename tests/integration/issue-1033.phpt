@@ -21,7 +21,7 @@ try {
 }
 ?>
 --EXPECTF--
-- Each item in { "A", "B", "B" } must be valid
-  - "A" must be equals 1
-  - "B" must be equals 1
-  - "B" must be equals 1
+- Each item in `{ "A", "B", "B" }` must be valid
+  - "A" must equal 1
+  - "B" must equal 1
+  - "B" must equal 1

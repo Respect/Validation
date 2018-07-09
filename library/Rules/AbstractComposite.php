@@ -103,6 +103,8 @@ abstract class AbstractComposite extends AbstractRule
                     try {
                         $rule->assert($input);
                     } catch (ValidationException $exception) {
+                        $this->updateExceptionTemplate($exception);
+
                         return $exception;
                     }
 
@@ -123,20 +125,20 @@ abstract class AbstractComposite extends AbstractRule
         return null !== $rule->getName();
     }
 
-    private function setExceptionTemplate(ValidationException $exception)
+    private function updateExceptionTemplate(ValidationException $exception): void
     {
         if (null === $this->template || $exception->hasCustomTemplate()) {
             return;
         }
 
-        $exception->setTemplate($this->template);
+        $exception->updateTemplate($this->template);
 
         if (!$exception instanceof NestedValidationException) {
             return;
         }
 
         foreach ($exception->getRelated() as $relatedException) {
-            $this->setExceptionTemplate($relatedException);
+            $this->updateExceptionTemplate($relatedException);
         }
     }
 }

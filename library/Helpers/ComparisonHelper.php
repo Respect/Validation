@@ -55,4 +55,17 @@ trait ComparisonHelper
             return $value;
         }
     }
+
+    /**
+     * Returns whether the values can be compared or not.
+     *
+     * @param mixed $left
+     * @param mixed $right
+     *
+     * @return bool
+     */
+    private function isAbleToCompareValues($left, $right)
+    {
+        return is_scalar($left) === is_scalar($right);
+    }
 }

@@ -25,5 +25,7 @@ try {
 }
 ?>
 --EXPECTF--
-- Key reference must be present
-- Key age must be present
+- These rules must pass for `{ "age": 1 }`
+  - Key reference must be present
+- These rules must pass for `{ "reference": "QSF1234" }`
+  - Key age must be present

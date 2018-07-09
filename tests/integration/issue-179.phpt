@@ -7,7 +7,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 $config = [
-    'host' => 'my_host',
+    'host' => 1,
     'password' => 'my_password',
     'schema' => 'my_schema',
 ];
@@ -26,4 +26,6 @@ try {
 }
 ?>
 --EXPECTF--
-- Key user must be present
+- These rules must pass for Settings
+  - host must be of type string
+  - Key user must be present

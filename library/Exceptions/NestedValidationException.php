@@ -16,8 +16,11 @@ namespace Respect\Validation\Exceptions;
 use IteratorAggregate;
 use RecursiveIteratorIterator;
 use SplObjectStorage;
+use const PHP_EOL;
 use function count;
+use function implode;
 use function is_array;
+use function str_repeat;
 
 class NestedValidationException extends ValidationException implements IteratorAggregate
 {
@@ -59,20 +62,7 @@ class NestedValidationException extends ValidationException implements IteratorA
      *
      * @return bool
      */
-    private function isOmissible(Exception $exception)
-    {
-        if (!$exception instanceof self) {
-            return false;
-        }
-
-        $relatedExceptions = $exception->getRelated();
-        $relatedExceptions->rewind();
-        $childException = $relatedExceptions->current();
-
-        return 1 === $relatedExceptions->count() && !$childException instanceof NonOmissibleException;
-    }
-
-    private function isSkippable(ValidationException $exception)
+    private function isOmissible(Exception $exception): bool
     {
         if (!$exception instanceof self) {
             return false;
@@ -82,19 +72,17 @@ class NestedValidationException extends ValidationException implements IteratorA
             return false;
         }
 
-        if (!$exception->hasCustomTemplate()) {
+        $exception->getRelated()->rewind();
+        $childException = $exception->getRelated()->current();
+        if ($childException->getMessage() === $exception->getMessage()) {
             return true;
         }
 
-        return $this->hasChildTemplate($exception);
-    }
+        if ($exception->hasCustomTemplate()) {
+            return $childException->hasCustomTemplate();
+        }
 
-    private function hasChildTemplate(self $exception)
-    {
-        $exception->getRelated()->rewind();
-        $childException = $exception->getRelated()->current();
-
-        return $childException->getMessage() === $exception->getMessage();
+        return !$childException instanceof NonOmissibleException;
     }
 
     /**
@@ -105,7 +93,6 @@ class NestedValidationException extends ValidationException implements IteratorA
         $childrenExceptions = new SplObjectStorage();
 
         $recursiveIteratorIterator = $this->getRecursiveIterator();
-        $exceptionIterator = $recursiveIteratorIterator->getInnerIterator();
 
         $lastDepth = 0;
         $lastDepthOriginal = 0;
@@ -181,7 +168,7 @@ class NestedValidationException extends ValidationException implements IteratorA
         $messages = [];
         $leveler = 1;
 
-        if (!$this->isSkippable($this)) {
+        if (!$this->isOmissible($this)) {
             $leveler = 0;
             $messages[] = sprintf('- %s', $this->getMessage());
         }

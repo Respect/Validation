@@ -9,7 +9,7 @@ use Respect\Validation\Rules\Instance;
 try {
     (new Instance('stdClass'))->setTemplate('invalid object')->assert('test');
 } catch (ValidationException $exception) {
-    print_r($exception->getMainMessage());
+    print_r($exception->getMessage());
 }
 ?>
 --EXPECTF--

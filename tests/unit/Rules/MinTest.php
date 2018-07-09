@@ -21,6 +21,7 @@ use Respect\Validation\Test\Stubs\CountableStub;
 /**
  * @group rule
  *
+ * @covers \Respect\Validation\Rules\AbstractComparison
  * @covers \Respect\Validation\Rules\Min
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>

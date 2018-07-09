@@ -15,5 +15,5 @@ try {
 --EXPECTF--
 Array
 (
-    [0] => WRONG EMAIL!!!!!!
+    [email] => WRONG EMAIL!!!!!!
 )

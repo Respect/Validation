@@ -19,6 +19,7 @@ use Respect\Validation\Test\Stubs\CountableStub;
 /**
  * @group rule
  *
+ * @covers \Respect\Validation\Rules\AbstractComparison
  * @covers \Respect\Validation\Rules\LessThan
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
@@ -50,6 +51,8 @@ final class LessThanTest extends RuleTestCase
             [new LessThan('yesterday'), 'tomorrow'],
             [new LessThan('a'), 'z'],
             [new LessThan(new CountableStub(5)), 6],
+            [new LessThan(1900), '2018-01-25'],
+            [new LessThan(10.5), '2018-01-25'],
         ];
     }
 }

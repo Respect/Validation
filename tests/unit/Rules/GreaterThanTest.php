@@ -19,6 +19,7 @@ use Respect\Validation\Test\Stubs\CountableStub;
 /**
  * @group rule
  *
+ * @covers \Respect\Validation\Rules\AbstractComparison
  * @covers \Respect\Validation\Rules\GreaterThan
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
@@ -50,6 +51,8 @@ final class GreaterThanTest extends RuleTestCase
             [new GreaterThan('18 years ago'), '5 days later'],
             [new GreaterThan('c'), 'a'],
             [new GreaterThan(new CountableStub(3)), 3],
+            [new GreaterThan(1900), '2018-01-25'],
+            [new GreaterThan(10.5), '2018-01-25'],
         ];
     }
 }
