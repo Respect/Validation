@@ -13,65 +13,53 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Multiple
- * @covers \Respect\Validation\Exceptions\MultipleException
+ *
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
  */
-class MultipleTest extends TestCase
+final class MultipleTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForMultiple
+     * {@inheritdoc}
      */
-    public function testValidNumberMultipleOf($multipleOf, $input): void
-    {
-        $multiple = new Multiple($multipleOf);
-        self::assertTrue($multiple->validate($input));
-        $multiple->assert($input);
-        $multiple->check($input);
-    }
-
-    /**
-     * @dataProvider providerForNotMultiple
-     * @expectedException \Respect\Validation\Exceptions\MultipleException
-     */
-    public function testNotMultipleShouldThrowMultipleException($multipleOf, $input): void
-    {
-        $multiple = new Multiple($multipleOf);
-        self::assertFalse($multiple->validate($input));
-        $multiple->assert($input);
-    }
-
-    public function providerForMultiple()
+    public function providerForValidInput(): array
     {
         return [
-            ['', ''],
-            [5, 20],
-            [5, 5],
-            [5, 0],
-            [5, -500],
-            [1, 0],
-            [1, 1],
-            [1, 2],
-            [1, 3],
-            [0, 0], // Only 0 is multiple of 0
+            [new Multiple(5), 20],
+            [new Multiple(5), 5],
+            [new Multiple(5), 0],
+            [new Multiple(5), -500],
+            [new Multiple(1), 0],
+            [new Multiple(1), 1],
+            [new Multiple(1), 2],
+            [new Multiple(1), 3],
+            [new Multiple(0), 0], // Only 0 is multiple of 0
         ];
     }
 
-    public function providerForNotMultiple()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         return [
-            [5, 11],
-            [5, 3],
-            [5, -1],
-            [3, 4],
-            [10, -8],
-            [10, 57],
-            [10, 21],
-            [0, 1],
-            [0, 2],
+            [new Multiple(5), 11],
+            [new Multiple(5), 3],
+            [new Multiple(5), -1],
+            [new Multiple(3), 4],
+            [new Multiple(10), -8],
+            [new Multiple(10), 57],
+            [new Multiple(10), 21],
+            [new Multiple(0), 1],
+            [new Multiple(0), 2],
         ];
     }
 }

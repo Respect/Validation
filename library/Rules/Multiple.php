@@ -13,15 +13,29 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Multiple extends AbstractRule
+/**
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
+ */
+final class Multiple extends AbstractRule
 {
+    /**
+     * @var int
+     */
     public $multipleOf;
 
-    public function __construct($multipleOf)
+    /**
+     * @param int $multipleOf
+     */
+    public function __construct(int $multipleOf)
     {
         $this->multipleOf = $multipleOf;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (0 == $this->multipleOf) {
