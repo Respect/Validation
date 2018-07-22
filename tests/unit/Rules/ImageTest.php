@@ -14,62 +14,75 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use finfo;
+use realpath;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use SplFileObject;
 
 /**
  * @group rule
+ *
  * @covers \Respect\Validation\Rules\Image
+ *
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Guilherme Siani <guilherme@siani.com.br>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ImageTest extends RuleTestCase
+final class ImageTest extends RuleTestCase
 {
     /**
-     * @test
+     * {@inheritdoc}
      */
-    public function shouldAcceptAnInstanceOfFinfoOnConstructor(): void
-    {
-        $finfo = new finfo(FILEINFO_MIME_TYPE);
-        $rule = new Image($finfo);
-
-        self::assertSame($rule->fileInfo, $finfo);
-    }
-
-    /**
-     * @test
-     */
-    public function shouldHaveAnInstanceOfFinfoByDefault(): void
-    {
-        $rule = new Image();
-
-        self::assertInstanceOf('finfo', $rule->fileInfo);
-    }
-
     public function providerForValidInput(): array
     {
         $rule = new Image();
-        $fixturesDirectory = realpath(__DIR__.'/../../fixtures/');
 
         return [
-            [$rule, $fixturesDirectory.'/valid-image.gif'],
-            [$rule, $fixturesDirectory.'/valid-image.jpg'],
-            [$rule, $fixturesDirectory.'/valid-image.png'],
-            [$rule, new SplFileInfo($fixturesDirectory.'/valid-image.gif')],
-            [$rule, new SplFileInfo($fixturesDirectory.'/valid-image.jpg')],
-            [$rule, new SplFileObject($fixturesDirectory.'/valid-image.png')],
+            [$rule, $this->getFixtureDirectory().'/valid-image.gif'],
+            [$rule, $this->getFixtureDirectory().'/valid-image.jpg'],
+            [$rule, $this->getFixtureDirectory().'/valid-image.png'],
+            [$rule, new SplFileInfo($this->getFixtureDirectory().'/valid-image.gif')],
+            [$rule, new SplFileInfo($this->getFixtureDirectory().'/valid-image.jpg')],
+            [$rule, new SplFileObject($this->getFixtureDirectory().'/valid-image.png')],
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new Image();
-        $fixturesDirectory = realpath(__DIR__.'/../../fixtures/');
 
         return [
-            [$rule, $fixturesDirectory.'/invalid-image.png'],
+            [$rule, $this->getFixtureDirectory().'/invalid-image.png'],
             [$rule, 'asdf'],
             [$rule, 1],
             [$rule, true],
         ];
+    }
+
+    /**
+     * @test
+     */
+    public function shouldValidateWithDefinedInstanceOfFileInfo(): void
+    {
+        $input = $this->getFixtureDirectory().'/valid-image.gif';
+
+        $finfo = $this->createMock(finfo::class);
+        $finfo
+            ->expects(self::once())
+            ->method('file')
+            ->with($input)
+            ->will(self::returnValue('image/gif'));
+
+        $rule = new Image($finfo);
+
+        self::assertTrue($rule->validate($input));
+    }
+
+    private function getFixtureDirectory(): string
+    {
+        return realpath(__DIR__.'/../../fixtures');
     }
 }
