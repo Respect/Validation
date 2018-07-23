@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use finfo;
+use realpath;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use SplFileObject;
@@ -21,8 +22,12 @@ use SplFileObject;
 /**
  * @group rule
  * @covers \Respect\Validation\Rules\Image
+ *
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Guilherme Siani <guilherme@siani.com.br>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ImageTest extends RuleTestCase
+final class ImageTest extends RuleTestCase
 {
     /**
      * @test
@@ -45,6 +50,9 @@ class ImageTest extends RuleTestCase
         self::assertInstanceOf('finfo', $rule->fileInfo);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new Image();
@@ -60,6 +68,9 @@ class ImageTest extends RuleTestCase
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new Image();
