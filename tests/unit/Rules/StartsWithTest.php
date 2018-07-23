@@ -17,15 +17,17 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\StartsWith
  * @covers \Respect\Validation\Exceptions\StartsWithException
+ * @covers \Respect\Validation\Rules\StartsWith
  */
 class StartsWithTest extends TestCase
 {
     /**
      * @dataProvider providerForStartsWith
+     *
+     * @test
      */
-    public function testStartsWith($start, $input): void
+    public function startsWith($start, $input): void
     {
         $v = new StartsWith($start);
         self::assertTrue($v->__invoke($input));
@@ -36,8 +38,10 @@ class StartsWithTest extends TestCase
     /**
      * @dataProvider providerForNotStartsWith
      * @expectedException \Respect\Validation\Exceptions\StartsWithException
+     *
+     * @test
      */
-    public function testNotStartsWith($start, $input, $caseSensitive = false): void
+    public function notStartsWith($start, $input, $caseSensitive = false): void
     {
         $v = new StartsWith($start, $caseSensitive);
         self::assertFalse($v->__invoke($input));

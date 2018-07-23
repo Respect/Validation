@@ -15,6 +15,17 @@ return PhpCsFixer\Config::create()
         'phpdoc_order' => true,
         'array_syntax' => ['syntax' => 'short'],
         'no_short_echo_tag' => true,
+        'php_unit_construct' => true,
+        'php_unit_dedicate_assert' => true,
+        'php_unit_expectation' => true,
+        'php_unit_mock' => true,
+        'php_unit_namespaced' => true,
+        'php_unit_ordered_covers' => true,
+        'php_unit_set_up_tear_down_visibility' => true,
+        'php_unit_test_annotation' => [
+            'style' => 'annotation',
+        ],
+        'php_unit_test_case_static_method_calls' => ['call_type' => 'self'],
     ])
     ->setCacheFile(
         sprintf(

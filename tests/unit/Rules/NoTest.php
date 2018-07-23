@@ -17,12 +17,15 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\No
  * @covers \Respect\Validation\Exceptions\NoException
+ * @covers \Respect\Validation\Rules\No
  */
 class NoTest extends TestCase
 {
-    public function testShouldUseDefaultPattern(): void
+    /**
+     * @test
+     */
+    public function shouldUseDefaultPattern(): void
     {
         $rule = new No();
 
@@ -32,10 +35,13 @@ class NoTest extends TestCase
         self::assertEquals($expectedPattern, $actualPattern);
     }
 
-    public function testShouldUseLocalPatternForNoExpressionWhenDefined(): void
+    /**
+     * @test
+     */
+    public function shouldUseLocalPatternForNoExpressionWhenDefined(): void
     {
         if (!defined('NOEXPR')) {
-            $this->markTestSkipped('Constant NOEXPR is not defined');
+            self::markTestSkipped('Constant NOEXPR is not defined');
 
             return;
         }
@@ -50,8 +56,10 @@ class NoTest extends TestCase
 
     /**
      * @dataProvider validNoProvider
+     *
+     * @test
      */
-    public function testShouldValidatePatternAccordingToTheDefinedLocale($input): void
+    public function shouldValidatePatternAccordingToTheDefinedLocale($input): void
     {
         $rule = new No();
 
@@ -72,8 +80,10 @@ class NoTest extends TestCase
 
     /**
      * @dataProvider invalidNoProvider
+     *
+     * @test
      */
-    public function testShouldNotValidatePatternAccordingToTheDefinedLocale($input): void
+    public function shouldNotValidatePatternAccordingToTheDefinedLocale($input): void
     {
         $rule = new No();
 

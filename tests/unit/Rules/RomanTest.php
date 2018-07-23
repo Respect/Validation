@@ -17,8 +17,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Roman
  * @covers \Respect\Validation\Exceptions\RomanException
+ * @covers \Respect\Validation\Rules\Roman
  */
 class RomanTest extends TestCase
 {
@@ -31,8 +31,10 @@ class RomanTest extends TestCase
 
     /**
      * @dataProvider providerForRoman
+     *
+     * @test
      */
-    public function testValidRomansShouldReturnTrue($input): void
+    public function validRomansShouldReturnTrue($input): void
     {
         self::assertTrue($this->romanValidator->__invoke($input));
         $this->romanValidator->assert($input);
@@ -42,8 +44,10 @@ class RomanTest extends TestCase
     /**
      * @dataProvider providerForNotRoman
      * @expectedException \Respect\Validation\Exceptions\RomanException
+     *
+     * @test
      */
-    public function testInvalidRomansShouldThrowRomanException($input): void
+    public function invalidRomansShouldThrowRomanException($input): void
     {
         self::assertFalse($this->romanValidator->__invoke($input));
         $this->romanValidator->assert($input);

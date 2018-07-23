@@ -17,15 +17,17 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Ip
  * @covers \Respect\Validation\Exceptions\IpException
+ * @covers \Respect\Validation\Rules\Ip
  */
 class IpTest extends TestCase
 {
     /**
      * @dataProvider providerForIp
+     *
+     * @test
      */
-    public function testValidIpsShouldReturnTrue($input, $options = null): void
+    public function validIpsShouldReturnTrue($input, $options = null): void
     {
         $ipValidator = new Ip($options);
         self::assertTrue($ipValidator->__invoke($input));
@@ -35,8 +37,10 @@ class IpTest extends TestCase
 
     /**
      * @dataProvider providerForIpBetweenRange
+     *
+     * @test
      */
-    public function testIpsBetweenRangeShouldReturnTrue($input, $networkRange): void
+    public function ipsBetweenRangeShouldReturnTrue($input, $networkRange): void
     {
         $ipValidator = new Ip($networkRange);
         self::assertTrue($ipValidator->__invoke($input));
@@ -47,8 +51,10 @@ class IpTest extends TestCase
     /**
      * @dataProvider providerForNotIp
      * @expectedException \Respect\Validation\Exceptions\IpException
+     *
+     * @test
      */
-    public function testInvalidIpsShouldThrowIpException($input, $options = null): void
+    public function invalidIpsShouldThrowIpException($input, $options = null): void
     {
         $ipValidator = new Ip($options);
         self::assertFalse($ipValidator->__invoke($input));
@@ -58,8 +64,10 @@ class IpTest extends TestCase
     /**
      * @dataProvider providerForIpOutsideRange
      * @expectedException \Respect\Validation\Exceptions\IpException
+     *
+     * @test
      */
-    public function testIpsOutsideRangeShouldReturnFalse($input, $networkRange): void
+    public function ipsOutsideRangeShouldReturnFalse($input, $networkRange): void
     {
         $ipValidator = new Ip($networkRange);
         self::assertFalse($ipValidator->__invoke($input));
@@ -126,8 +134,10 @@ class IpTest extends TestCase
     /**
      * @dataProvider providerForInvalidRanges
      * @expectedException \Respect\Validation\Exceptions\ComponentException
+     *
+     * @test
      */
-    public function testInvalidRangeShouldRaiseException($range): void
+    public function invalidRangeShouldRaiseException($range): void
     {
         $o = new Ip($range);
     }

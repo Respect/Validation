@@ -22,7 +22,10 @@ use Respect\Validation\Validatable;
  */
 final class VatinTest extends TestCase
 {
-    public function testShouldAcceptCountryCodeOnConstructor(): void
+    /**
+     * @test
+     */
+    public function shouldAcceptCountryCodeOnConstructor(): void
     {
         $countryCode = 'PL';
         $rule = new Vatin($countryCode);
@@ -33,8 +36,10 @@ final class VatinTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "BR" is not a supported country code
+     *
+     * @test
      */
-    public function testShouldThrowAnExceptionWhenCountryCodeIsNotSupported(): void
+    public function shouldThrowAnExceptionWhenCountryCodeIsNotSupported(): void
     {
         new Vatin('BR');
     }

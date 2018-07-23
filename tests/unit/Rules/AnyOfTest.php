@@ -17,12 +17,15 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\AnyOf
  * @covers \Respect\Validation\Exceptions\AnyOfException
+ * @covers \Respect\Validation\Rules\AnyOf
  */
 class AnyOfTest extends TestCase
 {
-    public function testValid(): void
+    /**
+     * @test
+     */
+    public function valid(): void
     {
         $valid1 = new Callback(function () {
             return false;
@@ -41,8 +44,10 @@ class AnyOfTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\AnyOfException
+     *
+     * @test
      */
-    public function testInvalid(): void
+    public function invalid(): void
     {
         $valid1 = new Callback(function () {
             return false;
@@ -60,8 +65,10 @@ class AnyOfTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\XdigitException
+     *
+     * @test
      */
-    public function testInvalidCheck(): void
+    public function invalidCheck(): void
     {
         $o = new AnyOf(new Xdigit(), new Alnum());
         self::assertFalse($o->validate(-10));

@@ -20,8 +20,8 @@ use function Respect\Stringifier\stringify;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Factor
  * @covers \Respect\Validation\Exceptions\FactorException
+ * @covers \Respect\Validation\Rules\Factor
  *
  * @author David Meister <thedavidmeister@gmail.com>
  */
@@ -29,8 +29,10 @@ class FactorTest extends TestCase
 {
     /**
      * @dataProvider providerForValidFactor
+     *
+     * @test
      */
-    public function testValidFactorShouldReturnTrue($dividend, $input): void
+    public function validFactorShouldReturnTrue($dividend, $input): void
     {
         $min = new Factor($dividend);
         self::assertTrue($min->__invoke($input));
@@ -40,8 +42,10 @@ class FactorTest extends TestCase
 
     /**
      * @dataProvider providerForInvalidFactor
+     *
+     * @test
      */
-    public function testInvalidFactorShouldThrowFactorException($dividend, $input): void
+    public function invalidFactorShouldThrowFactorException($dividend, $input): void
     {
         $this->expectException(
             FactorException::class,
@@ -55,8 +59,10 @@ class FactorTest extends TestCase
 
     /**
      * @dataProvider providerForInvalidFactorDividend
+     *
+     * @test
      */
-    public function testInvalidDividentShouldThrowComponentException($dividend, $input): void
+    public function invalidDividentShouldThrowComponentException($dividend, $input): void
     {
         $this->expectException(
             ComponentException::class,

@@ -19,12 +19,15 @@ use Respect\Validation\Validator as v;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Sf
  * @covers \Respect\Validation\Exceptions\SfException
+ * @covers \Respect\Validation\Rules\Sf
  */
 class SfTest extends TestCase
 {
-    public function testValidationWithAnExistingValidationConstraint(): void
+    /**
+     * @test
+     */
+    public function validationWithAnExistingValidationConstraint(): void
     {
         $constraintName = 'Time';
         $validConstraintValue = '04:20:00';
@@ -42,9 +45,11 @@ class SfTest extends TestCase
     /**
      * @doesNotPerformAssertions
      *
-     * @depends testValidationWithAnExistingValidationConstraint
+     * @depends validationWithAnExistingValidationConstraint
+     *
+     * @test
      */
-    public function testAssertionWithAnExistingValidationConstraint(): void
+    public function assertionWithAnExistingValidationConstraint(): void
     {
         $constraintName = 'Time';
         $validConstraintValue = '04:20:00';
@@ -52,9 +57,11 @@ class SfTest extends TestCase
     }
 
     /**
-     * @depends testAssertionWithAnExistingValidationConstraint
+     * @depends assertionWithAnExistingValidationConstraint
+     *
+     * @test
      */
-    public function testAssertionMessageWithAnExistingValidationConstraint()
+    public function assertionMessageWithAnExistingValidationConstraint()
     {
         $constraintName = 'Time';
         $invalidConstraintValue = '34:90:70';
@@ -72,14 +79,16 @@ EOF;
                 'Exception message is different from the one expected.'
             );
         }
-        $this->fail('Validation exception expected to compare message.');
+        self::fail('Validation exception expected to compare message.');
     }
 
     /**
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Symfony/Validator constraint "FluxCapacitor" does not exist.
+     *
+     * @test
      */
-    public function testValidationWithNonExistingConstraint(): void
+    public function validationWithNonExistingConstraint(): void
     {
         $fantasyConstraintName = 'FluxCapacitor';
         $fantasyValue = '8GW';

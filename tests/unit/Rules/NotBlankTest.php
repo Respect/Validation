@@ -18,15 +18,17 @@ use stdClass;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\NotBlank
  * @covers \Respect\Validation\Exceptions\NotBlankException
+ * @covers \Respect\Validation\Rules\NotBlank
  */
 class NotBlankTest extends TestCase
 {
     /**
      * @dataProvider providerForNotBlank
+     *
+     * @test
      */
-    public function testShouldValidateWhenNotBlank($input): void
+    public function shouldValidateWhenNotBlank($input): void
     {
         $rule = new NotBlank();
 
@@ -35,8 +37,10 @@ class NotBlankTest extends TestCase
 
     /**
      * @dataProvider providerForBlank
+     *
+     * @test
      */
-    public function testShouldNotValidateWhenBlank($input): void
+    public function shouldNotValidateWhenBlank($input): void
     {
         $rule = new NotBlank();
 
@@ -46,8 +50,10 @@ class NotBlankTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\NotBlankException
      * @expectedExceptionMessage The value must not be blank
+     *
+     * @test
      */
-    public function testShouldThrowExceptionWhenFailure(): void
+    public function shouldThrowExceptionWhenFailure(): void
     {
         $rule = new NotBlank();
         $rule->check(0);
@@ -56,8 +62,10 @@ class NotBlankTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\NotBlankException
      * @expectedExceptionMessage whatever must not be blank
+     *
+     * @test
      */
-    public function testShouldThrowExceptionWhenFailureAndDoesHaveAName(): void
+    public function shouldThrowExceptionWhenFailureAndDoesHaveAName(): void
     {
         $rule = new NotBlank();
         $rule->setName('whatever');

@@ -18,8 +18,8 @@ use Respect\Validation\Validator as v;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Domain
  * @covers \Respect\Validation\Exceptions\DomainException
+ * @covers \Respect\Validation\Rules\Domain
  */
 class DomainTest extends TestCase
 {
@@ -32,8 +32,10 @@ class DomainTest extends TestCase
 
     /**
      * @dataProvider providerForDomain
+     *
+     * @test
      */
-    public function testValidDomainsShouldReturnTrue($input, $tldcheck = true): void
+    public function validDomainsShouldReturnTrue($input, $tldcheck = true): void
     {
         $this->object->tldCheck($tldcheck);
         self::assertTrue($this->object->__invoke($input));
@@ -44,8 +46,10 @@ class DomainTest extends TestCase
     /**
      * @dataProvider providerForNotDomain
      * @expectedException \Respect\Validation\Exceptions\ValidationException
+     *
+     * @test
      */
-    public function testNotDomain($input, $tldcheck = true): void
+    public function notDomain($input, $tldcheck = true): void
     {
         $this->object->tldCheck($tldcheck);
         $this->object->check($input);
@@ -54,8 +58,10 @@ class DomainTest extends TestCase
     /**
      * @dataProvider providerForNotDomain
      * @expectedException \Respect\Validation\Exceptions\DomainException
+     *
+     * @test
      */
-    public function testNotDomainCheck($input, $tldcheck = true): void
+    public function notDomainCheck($input, $tldcheck = true): void
     {
         $this->object->tldCheck($tldcheck);
         $this->object->assert($input);
@@ -93,8 +99,10 @@ class DomainTest extends TestCase
 
     /**
      * @dataProvider providerForDomain
+     *
+     * @test
      */
-    public function testBuilder($validDomain, $checkTLD = true): void
+    public function builder($validDomain, $checkTLD = true): void
     {
         self::assertTrue(
             v::domain($checkTLD)->validate($validDomain),

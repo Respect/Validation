@@ -17,15 +17,17 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Cntrl
  * @covers \Respect\Validation\Exceptions\CntrlException
+ * @covers \Respect\Validation\Rules\Cntrl
  */
 class CntrlTest extends TestCase
 {
     /**
      * @dataProvider providerForValidCntrl
+     *
+     * @test
      */
-    public function testValidDataWithCntrlShouldReturnTrue($validCntrl, $additional = ''): void
+    public function validDataWithCntrlShouldReturnTrue($validCntrl, $additional = ''): void
     {
         $validator = new Cntrl($additional);
         self::assertTrue($validator->validate($validCntrl));
@@ -34,8 +36,10 @@ class CntrlTest extends TestCase
     /**
      * @dataProvider providerForInvalidCntrl
      * @expectedException \Respect\Validation\Exceptions\CntrlException
+     *
+     * @test
      */
-    public function testInvalidCntrlShouldFailAndThrowCntrlException($invalidCntrl, $additional = ''): void
+    public function invalidCntrlShouldFailAndThrowCntrlException($invalidCntrl, $additional = ''): void
     {
         $validator = new Cntrl($additional);
         self::assertFalse($validator->validate($invalidCntrl));
@@ -45,16 +49,20 @@ class CntrlTest extends TestCase
     /**
      * @dataProvider providerForInvalidParams
      * @expectedException \Respect\Validation\Exceptions\ComponentException
+     *
+     * @test
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
+    public function invalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
     {
         $validator = new Cntrl($additional);
     }
 
     /**
      * @dataProvider providerAdditionalChars
+     *
+     * @test
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query): void
+    public function additionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Cntrl($additional);
         self::assertTrue($validator->validate($query));

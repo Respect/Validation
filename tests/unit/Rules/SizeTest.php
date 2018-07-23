@@ -21,8 +21,8 @@ use SplFileInfo;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @group  rule
- * @covers \Respect\Validation\Rules\Size
  * @covers \Respect\Validation\Exceptions\SizeException
+ * @covers \Respect\Validation\Rules\Size
  */
 class SizeTest extends TestCase
 {
@@ -74,8 +74,10 @@ class SizeTest extends TestCase
 
     /**
      * @dataProvider validSizeProvider
+     *
+     * @test
      */
-    public function testShouldConvertUnitonConstructor($size, $bytes): void
+    public function shouldConvertUnitonConstructor($size, $bytes): void
     {
         $rule = new Size($size);
 
@@ -85,23 +87,30 @@ class SizeTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "42jb" is not a recognized file size
+     *
+     * @test
      */
-    public function testShouldThrowsAnExceptionWhenSizeIsNotValid(): void
+    public function shouldThrowsAnExceptionWhenSizeIsNotValid(): void
     {
         new Size('42jb');
     }
 
     /**
      * @dataProvider validFileProvider
+     *
+     * @test
      */
-    public function testShouldValidateFile($filename, $minSize, $maxSize, $expectedValidation): void
+    public function shouldValidateFile($filename, $minSize, $maxSize, $expectedValidation): void
     {
         $rule = new Size($minSize, $maxSize);
 
         self::assertEquals($expectedValidation, $rule->validate($filename));
     }
 
-    public function testShouldValidateSplFileInfo(): void
+    /**
+     * @test
+     */
+    public function shouldValidateSplFileInfo(): void
     {
         $root = vfsStream::setup();
         $file1Gb = vfsStream::newFile('1gb.txt')->withContent(LargeFileContent::withGigabytes(1))->at($root);
@@ -115,8 +124,10 @@ class SizeTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\SizeException
      * @expectedExceptionMessageRegExp #"vfs:.?/.?/root.?/1gb.txt" must be greater than "2pb"#
+     *
+     * @test
      */
-    public function testShouldThrowsSizeExceptionWhenAsserting(): void
+    public function shouldThrowsSizeExceptionWhenAsserting(): void
     {
         $root = vfsStream::setup();
         $file1Gb = vfsStream::newFile('1gb.txt')->withContent(LargeFileContent::withGigabytes(1))->at($root);

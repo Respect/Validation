@@ -52,8 +52,10 @@ class CheckExceptionsTest extends TestCase
 
     /**
      * @dataProvider provideListOfRuleNames
+     *
+     * @test
      */
-    public function testRuleHasAnExceptionWhichHasValidApi($ruleName): void
+    public function ruleHasAnExceptionWhichHasValidApi($ruleName): void
     {
         $exceptionClass = 'Respect\\Validation\\Exceptions\\'.$ruleName.'Exception';
         self::assertTrue(

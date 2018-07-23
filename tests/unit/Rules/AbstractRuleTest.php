@@ -29,8 +29,10 @@ class AbstractRuleTest extends TestCase
     /**
      * @dataProvider providerForTrueAndFalse
      * @covers       \Respect\Validation\Rules\AbstractRule::__invoke
+     *
+     * @test
      */
-    public function testMagicMethodInvokeCallsValidateWithInput($booleanResult): void
+    public function magicMethodInvokeCallsValidateWithInput($booleanResult): void
     {
         $input = 'something';
 
@@ -40,10 +42,10 @@ class AbstractRuleTest extends TestCase
             ->getMockForAbstractClass();
 
         $abstractRuleMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('validate')
             ->with($input)
-            ->will($this->returnValue($booleanResult));
+            ->will(self::returnValue($booleanResult));
 
         self::assertEquals(
             $booleanResult,
@@ -55,8 +57,10 @@ class AbstractRuleTest extends TestCase
 
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::assert
+     *
+     * @test
      */
-    public function testAssertInvokesValidateOnSuccess(): void
+    public function assertInvokesValidateOnSuccess(): void
     {
         $input = 'something';
 
@@ -66,13 +70,13 @@ class AbstractRuleTest extends TestCase
             ->getMockForAbstractClass();
 
         $abstractRuleMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('validate')
             ->with($input)
-            ->will($this->returnValue(true));
+            ->will(self::returnValue(true));
 
         $abstractRuleMock
-            ->expects($this->never())
+            ->expects(self::never())
             ->method('reportError');
 
         $abstractRuleMock->assert($input);
@@ -81,8 +85,10 @@ class AbstractRuleTest extends TestCase
     /**
      * @covers            \Respect\Validation\Rules\AbstractRule::assert
      * @expectedException \Respect\Validation\Exceptions\ValidationException
+     *
+     * @test
      */
-    public function testAssertInvokesValidateAndReportErrorOnFailure(): void
+    public function assertInvokesValidateAndReportErrorOnFailure(): void
     {
         $input = 'something';
 
@@ -92,24 +98,26 @@ class AbstractRuleTest extends TestCase
             ->getMockForAbstractClass();
 
         $abstractRuleMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('validate')
             ->with($input)
-            ->will($this->returnValue(false));
+            ->will(self::returnValue(false));
 
         $abstractRuleMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('reportError')
             ->with($input)
-            ->will($this->throwException(new ValidationException($input, 'abstract', [], 'trim')));
+            ->will(self::throwException(new ValidationException($input, 'abstract', [], 'trim')));
 
         $abstractRuleMock->assert($input);
     }
 
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::check
+     *
+     * @test
      */
-    public function testCheckInvokesAssertToPerformTheValidationByDefault(): void
+    public function checkInvokesAssertToPerformTheValidationByDefault(): void
     {
         $input = 'something';
 
@@ -119,7 +127,7 @@ class AbstractRuleTest extends TestCase
             ->getMockForAbstractClass();
 
         $abstractRuleMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('assert')
             ->with($input);
 
@@ -128,8 +136,10 @@ class AbstractRuleTest extends TestCase
 
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::setTemplate
+     *
+     * @test
      */
-    public function testShouldReturnTheCurrentObjectWhenDefinigTemplate(): void
+    public function shouldReturnTheCurrentObjectWhenDefinigTemplate(): void
     {
         $abstractRuleMock = $this
             ->getMockBuilder(AbstractRule::class)
@@ -140,8 +150,10 @@ class AbstractRuleTest extends TestCase
 
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::setName
+     *
+     * @test
      */
-    public function testShouldReturnTheCurrentObjectWhenDefinigName(): void
+    public function shouldReturnTheCurrentObjectWhenDefinigName(): void
     {
         $abstractRuleMock = $this
             ->getMockBuilder(AbstractRule::class)
@@ -151,10 +163,12 @@ class AbstractRuleTest extends TestCase
     }
 
     /**
-     * @covers \Respect\Validation\Rules\AbstractRule::setName
      * @covers \Respect\Validation\Rules\AbstractRule::getName
+     * @covers \Respect\Validation\Rules\AbstractRule::setName
+     *
+     * @test
      */
-    public function testShouldBeAbleToDefineAndRetrivedRuleName(): void
+    public function shouldBeAbleToDefineAndRetrivedRuleName(): void
     {
         $abstractRuleMock = $this
             ->getMockBuilder(AbstractRule::class)

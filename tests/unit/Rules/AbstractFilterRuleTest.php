@@ -20,28 +20,36 @@ class AbstractFilterRuleTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Invalid list of additional characters to be loaded
+     *
+     * @test
      */
-    public function testConstructorShouldThrowExceptionIfParamIsNotString(): void
+    public function constructorShouldThrowExceptionIfParamIsNotString(): void
     {
         $this->getMockForAbstractClass(AbstractFilterRule::class, [1]);
     }
 
-    public function testValidateShouldReturnTrueForValidArguments(): void
+    /**
+     * @test
+     */
+    public function validateShouldReturnTrueForValidArguments(): void
     {
         $filterRuleMock = $this->getMockForAbstractClass(AbstractFilterRule::class);
-        $filterRuleMock->expects($this->any())
+        $filterRuleMock->expects(self::any())
             ->method('validateClean')
-            ->will($this->returnValue(true));
+            ->will(self::returnValue(true));
 
         self::assertTrue($filterRuleMock->validate('hey'));
     }
 
-    public function testValidateShouldReturnFalseForInvalidArguments(): void
+    /**
+     * @test
+     */
+    public function validateShouldReturnFalseForInvalidArguments(): void
     {
         $filterRuleMock = $this->getMockForAbstractClass(AbstractFilterRule::class);
-        $filterRuleMock->expects($this->any())
+        $filterRuleMock->expects(self::any())
             ->method('validateClean')
-            ->will($this->returnValue(true));
+            ->will(self::returnValue(true));
 
         self::assertFalse($filterRuleMock->validate(''));
         self::assertFalse($filterRuleMock->validate([]));

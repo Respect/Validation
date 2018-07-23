@@ -17,15 +17,17 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Version
  * @covers \Respect\Validation\Exceptions\VersionException
+ * @covers \Respect\Validation\Rules\Version
  */
 class VersionTest extends TestCase
 {
     /**
      * @dataProvider providerForValidVersion
+     *
+     * @test
      */
-    public function testValidVersionShouldReturnTrue($input): void
+    public function validVersionShouldReturnTrue($input): void
     {
         $rule = new Version();
         self::assertTrue($rule->__invoke($input));
@@ -36,8 +38,10 @@ class VersionTest extends TestCase
     /**
      * @dataProvider providerForInvalidVersion
      * @expectedException \Respect\Validation\Exceptions\VersionException
+     *
+     * @test
      */
-    public function testInvalidVersionShouldThrowException($input): void
+    public function invalidVersionShouldThrowException($input): void
     {
         $rule = new Version();
         self::assertFalse($rule->__invoke($input));

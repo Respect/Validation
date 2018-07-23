@@ -17,12 +17,15 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Sorted
  * @covers \Respect\Validation\Exceptions\SortedException
+ * @covers \Respect\Validation\Rules\Sorted
  */
 class SortedTest extends TestCase
 {
-    public function testPasses(): void
+    /**
+     * @test
+     */
+    public function passes(): void
     {
         $arr = [1, 2, 3];
         $rule = new Sorted();
@@ -32,7 +35,10 @@ class SortedTest extends TestCase
         $rule->check($arr);
     }
 
-    public function testPassesWithEqualValues(): void
+    /**
+     * @test
+     */
+    public function passesWithEqualValues(): void
     {
         $arr = [1, 2, 2, 3];
         $rule = new Sorted();
@@ -44,8 +50,10 @@ class SortedTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\SortedException
+     *
+     * @test
      */
-    public function testNotPasses(): void
+    public function notPasses(): void
     {
         $arr = [1, 2, 4, 3];
         $rule = new Sorted();
@@ -54,7 +62,10 @@ class SortedTest extends TestCase
         $rule->check($arr);
     }
 
-    public function testPassesDescending(): void
+    /**
+     * @test
+     */
+    public function passesDescending(): void
     {
         $arr = [10, 9, 8];
         $rule = new Sorted(null, false);
@@ -64,7 +75,10 @@ class SortedTest extends TestCase
         $rule->check($arr);
     }
 
-    public function testPassesDescendingWithEqualValues(): void
+    /**
+     * @test
+     */
+    public function passesDescendingWithEqualValues(): void
     {
         $arr = [10, 9, 9, 8];
         $rule = new Sorted(null, false);
@@ -74,7 +88,10 @@ class SortedTest extends TestCase
         $rule->check($arr);
     }
 
-    public function testPassesByFunction(): void
+    /**
+     * @test
+     */
+    public function passesByFunction(): void
     {
         $arr = [
             [
@@ -98,8 +115,10 @@ class SortedTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\SortedException
+     *
+     * @test
      */
-    public function testNotPassesByFunction(): void
+    public function notPassesByFunction(): void
     {
         $arr = [
             [

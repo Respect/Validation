@@ -18,8 +18,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\LeapYear
  * @covers \Respect\Validation\Exceptions\LeapYearException
+ * @covers \Respect\Validation\Rules\LeapYear
  */
 class LeapYearTest extends TestCase
 {
@@ -30,7 +30,10 @@ class LeapYearTest extends TestCase
         $this->leapYearValidator = new LeapYear();
     }
 
-    public function testValidLeapDate(): void
+    /**
+     * @test
+     */
+    public function validLeapDate(): void
     {
         self::assertTrue($this->leapYearValidator->__invoke('2008'));
         self::assertTrue($this->leapYearValidator->__invoke('2008-02-29'));
@@ -39,7 +42,10 @@ class LeapYearTest extends TestCase
             new DateTime('2008-02-29')));
     }
 
-    public function testInvalidLeapDate(): void
+    /**
+     * @test
+     */
+    public function invalidLeapDate(): void
     {
         self::assertFalse($this->leapYearValidator->__invoke(''));
         self::assertFalse($this->leapYearValidator->__invoke('2009'));

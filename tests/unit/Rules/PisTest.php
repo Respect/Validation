@@ -18,8 +18,8 @@ use stdClass;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Pis
  * @covers \Respect\Validation\Exceptions\PisException
+ * @covers \Respect\Validation\Rules\Pis
  *
  * @author Bruno Koga <brunokoga187@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>

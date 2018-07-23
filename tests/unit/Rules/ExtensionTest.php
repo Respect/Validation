@@ -19,8 +19,8 @@ use SplFileInfo;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @group  rule
- * @covers \Respect\Validation\Rules\Extension
  * @covers \Respect\Validation\Exceptions\ExtensionException
+ * @covers \Respect\Validation\Rules\Extension
  */
 class ExtensionTest extends TestCase
 {
@@ -36,15 +36,20 @@ class ExtensionTest extends TestCase
 
     /**
      * @dataProvider providerValidExtension
+     *
+     * @test
      */
-    public function testShouldValidateExtension($filename, $extension): void
+    public function shouldValidateExtension($filename, $extension): void
     {
         $rule = new Extension($extension);
 
         self::assertTrue($rule->validate($filename));
     }
 
-    public function testShouldAcceptSplFileInfo(): void
+    /**
+     * @test
+     */
+    public function shouldAcceptSplFileInfo(): void
     {
         $fileInfo = new SplFileInfo(__FILE__);
 
@@ -53,7 +58,10 @@ class ExtensionTest extends TestCase
         self::assertTrue($rule->validate($fileInfo));
     }
 
-    public function testShouldInvalidWhenNotStringNorSplFileInfo(): void
+    /**
+     * @test
+     */
+    public function shouldInvalidWhenNotStringNorSplFileInfo(): void
     {
         $nonFile = [__FILE__];
 
@@ -65,8 +73,10 @@ class ExtensionTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\ExtensionException
      * @expectedExceptionMessage "filename.jpg" must have "png" extension
+     *
+     * @test
      */
-    public function testShouldThrowExtensionExceptionWhenCheckingValue(): void
+    public function shouldThrowExtensionExceptionWhenCheckingValue(): void
     {
         $rule = new Extension('png');
         $rule->check('filename.jpg');

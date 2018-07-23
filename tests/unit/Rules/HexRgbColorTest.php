@@ -17,15 +17,17 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\HexRgbColor
  * @covers \Respect\Validation\Exceptions\HexRgbColorException
+ * @covers \Respect\Validation\Rules\HexRgbColor
  */
 class HexRgbColorTest extends TestCase
 {
     /**
      * @dataProvider providerForValidHexRgbColor
+     *
+     * @test
      */
-    public function testHexRgbColorValuesONLYShouldReturnTrue($validHexRgbColor): void
+    public function hexRgbColorValuesONLYShouldReturnTrue($validHexRgbColor): void
     {
         $validator = new HexRgbColor();
 
@@ -34,8 +36,10 @@ class HexRgbColorTest extends TestCase
 
     /**
      * @dataProvider providerForInvalidHexRgbColor
+     *
+     * @test
      */
-    public function testInvalidHexRgbColorValuesShouldReturnFalse($invalidHexRgbColor): void
+    public function invalidHexRgbColorValuesShouldReturnFalse($invalidHexRgbColor): void
     {
         $validator = new HexRgbColor();
 

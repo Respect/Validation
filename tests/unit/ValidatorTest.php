@@ -18,12 +18,18 @@ use Respect\Validation\Exceptions\ComponentException;
 
 class ValidatorTest extends TestCase
 {
-    public function testStaticCreateShouldReturnNewValidator(): void
+    /**
+     * @test
+     */
+    public function staticCreateShouldReturnNewValidator(): void
     {
         self::assertInstanceOf(Validator::class, Validator::create());
     }
 
-    public function testInvalidRuleClassShouldThrowComponentException(): void
+    /**
+     * @test
+     */
+    public function invalidRuleClassShouldThrowComponentException(): void
     {
         $this->expectException(ComponentException::class);
         Validator::iDoNotExistSoIShouldThrowException();
@@ -31,8 +37,10 @@ class ValidatorTest extends TestCase
 
     /**
      * Regression test #174.
+     *
+     * @test
      */
-    public function testShouldReturnValidatorInstanceWhenTheNotRuleIsCalledWithArguments(): void
+    public function shouldReturnValidatorInstanceWhenTheNotRuleIsCalledWithArguments(): void
     {
         $validator = new Validator();
 

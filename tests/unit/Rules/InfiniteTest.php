@@ -17,8 +17,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Infinite
  * @covers \Respect\Validation\Exceptions\InfiniteException
+ * @covers \Respect\Validation\Rules\Infinite
  */
 class InfiniteTest extends TestCase
 {
@@ -31,16 +31,20 @@ class InfiniteTest extends TestCase
 
     /**
      * @dataProvider providerForInfinite
+     *
+     * @test
      */
-    public function testShouldValidateInfiniteNumbers($input): void
+    public function shouldValidateInfiniteNumbers($input): void
     {
         self::assertTrue($this->rule->validate($input));
     }
 
     /**
      * @dataProvider providerForNonInfinite
+     *
+     * @test
      */
-    public function testShouldNotValidateNonInfiniteNumbers($input): void
+    public function shouldNotValidateNonInfiniteNumbers($input): void
     {
         self::assertFalse($this->rule->validate($input));
     }
@@ -48,8 +52,10 @@ class InfiniteTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\InfiniteException
      * @expectedExceptionMessage 123456 must be an infinite number
+     *
+     * @test
      */
-    public function testShouldThrowInfiniteExceptionWhenChecking(): void
+    public function shouldThrowInfiniteExceptionWhenChecking(): void
     {
         $this->rule->check(123456);
     }

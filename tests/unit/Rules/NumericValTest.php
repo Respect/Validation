@@ -17,8 +17,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\NumericVal
  * @covers \Respect\Validation\Exceptions\NumericValException
+ * @covers \Respect\Validation\Rules\NumericVal
  */
 class NumericValTest extends TestCase
 {
@@ -31,8 +31,10 @@ class NumericValTest extends TestCase
 
     /**
      * @dataProvider providerForNumeric
+     *
+     * @test
      */
-    public function testNumeric($input): void
+    public function numeric($input): void
     {
         self::assertTrue($this->object->__invoke($input));
         $this->object->check($input);
@@ -42,8 +44,10 @@ class NumericValTest extends TestCase
     /**
      * @dataProvider providerForNotNumeric
      * @expectedException \Respect\Validation\Exceptions\NumericValException
+     *
+     * @test
      */
-    public function testNotNumeric($input): void
+    public function notNumeric($input): void
     {
         self::assertFalse($this->object->__invoke($input));
         $this->object->assert($input);

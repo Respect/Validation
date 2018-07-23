@@ -34,7 +34,7 @@ final class AbstractSearcherTest extends TestCase
 
         $rule = $this->getMockForAbstractClass(AbstractSearcher::class);
         $rule
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getDataSource')
             ->willReturn(['foo', $input, 'baz']);
 
@@ -50,7 +50,7 @@ final class AbstractSearcherTest extends TestCase
 
         $rule = $this->getMockForAbstractClass(AbstractSearcher::class);
         $rule
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getDataSource')
             ->willReturn([1, (int) $input, 3]);
 
@@ -65,7 +65,7 @@ final class AbstractSearcherTest extends TestCase
     {
         $rule = $this->getMockForAbstractClass(AbstractSearcher::class);
         $rule
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getDataSource')
             ->willReturn([]);
 
@@ -80,7 +80,7 @@ final class AbstractSearcherTest extends TestCase
     {
         $rule = $this->getMockForAbstractClass(AbstractSearcher::class);
         $rule
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getDataSource')
             ->willReturn([]);
 

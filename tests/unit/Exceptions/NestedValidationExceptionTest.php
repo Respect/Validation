@@ -17,23 +17,29 @@ use PHPUnit\Framework\TestCase;
 
 class NestedValidationExceptionTest extends TestCase
 {
-    public function testGetRelatedShouldReturnExceptionAddedByAddRelated(): void
+    /**
+     * @test
+     */
+    public function getRelatedShouldReturnExceptionAddedByAddRelated(): void
     {
         $composite = new AttributeException('input', 'id', [], 'trim');
         $node = new IntValException('input', 'id', [], 'trim');
         $composite->addRelated($node);
-        self::assertEquals(1, count($composite->getRelated(true)));
+        self::assertCount(1, $composite->getRelated(true));
         self::assertContainsOnly($node, $composite->getRelated());
     }
 
-    public function testAddingTheSameInstanceShouldAddJustASingleReference(): void
+    /**
+     * @test
+     */
+    public function addingTheSameInstanceShouldAddJustASingleReference(): void
     {
         $composite = new AttributeException('input', 'id', [], 'trim');
         $node = new IntValException('input', 'id', [], 'trim');
         $composite->addRelated($node);
         $composite->addRelated($node);
         $composite->addRelated($node);
-        self::assertEquals(1, count($composite->getRelated(true)));
+        self::assertCount(1, $composite->getRelated(true));
         self::assertContainsOnly($node, $composite->getRelated());
     }
 }

@@ -18,8 +18,8 @@ use Respect\Validation\Validator;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Not
  * @covers \Respect\Validation\Exceptions\NotException
+ * @covers \Respect\Validation\Rules\Not
  */
 class NotTest extends TestCase
 {
@@ -27,8 +27,10 @@ class NotTest extends TestCase
      * @doesNotPerformAssertions
      *
      * @dataProvider providerForValidNot
+     *
+     * @test
      */
-    public function testNot($v, $input): void
+    public function not($v, $input): void
     {
         $not = new Not($v);
         $not->assert($input);
@@ -37,8 +39,10 @@ class NotTest extends TestCase
     /**
      * @dataProvider providerForInvalidNot
      * @expectedException \Respect\Validation\Exceptions\ValidationException
+     *
+     * @test
      */
-    public function testNotNotHaha($v, $input): void
+    public function notNotHaha($v, $input): void
     {
         $not = new Not($v);
         $not->assert($input);
@@ -46,8 +50,10 @@ class NotTest extends TestCase
 
     /**
      * @dataProvider providerForSetName
+     *
+     * @test
      */
-    public function testNotSetName($v): void
+    public function notSetName($v): void
     {
         $not = new Not($v);
         $not->setName('Foo');

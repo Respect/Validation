@@ -75,17 +75,17 @@ abstract class RuleTestCase extends TestCase
             ->getMock();
 
         $validatableMocked
-            ->expects($this->any())
+            ->expects(self::any())
             ->method('validate')
             ->willReturn($expectedResult);
 
         if ($expectedResult) {
             $validatableMocked
-                ->expects($this->any())
+                ->expects(self::any())
                 ->method('check')
                 ->willReturn($expectedResult);
             $validatableMocked
-                ->expects($this->any())
+                ->expects(self::any())
                 ->method('assert')
                 ->willReturn($expectedResult);
         } else {
@@ -97,7 +97,7 @@ abstract class RuleTestCase extends TestCase
             );
             $checkException->updateTemplate(sprintf('Exception for %s:check() method', $mockClassName));
             $validatableMocked
-                ->expects($this->any())
+                ->expects(self::any())
                 ->method('check')
                 ->willThrowException($checkException);
             $assertException = new ValidationException(
@@ -108,7 +108,7 @@ abstract class RuleTestCase extends TestCase
             );
             $assertException->updateTemplate(sprintf('Exception for %s:assert() method', $mockClassName));
             $validatableMocked
-                ->expects($this->any())
+                ->expects(self::any())
                 ->method('assert')
                 ->willThrowException($assertException);
         }

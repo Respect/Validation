@@ -54,12 +54,14 @@ class OptionalTest extends TestCase
 
     /**
      * @dataProvider providerForOptional
+     *
+     * @test
      */
-    public function testShouldNotValidateRuleWhenInputIsOptional($input): void
+    public function shouldNotValidateRuleWhenInputIsOptional($input): void
     {
         $validatable = $this->createMock(Validatable::class);
         $validatable
-            ->expects($this->never())
+            ->expects(self::never())
             ->method('validate');
 
         $rule = new Optional($validatable);
@@ -69,26 +71,31 @@ class OptionalTest extends TestCase
 
     /**
      * @dataProvider providerForNotOptional
+     *
+     * @test
      */
-    public function testShouldValidateRuleWhenInputIsNotOptional($input): void
+    public function shouldValidateRuleWhenInputIsNotOptional($input): void
     {
         $validatable = $this->createMock(Validatable::class);
         $validatable
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('validate')
             ->with($input)
-            ->will($this->returnValue(true));
+            ->will(self::returnValue(true));
 
         $rule = new Optional($validatable);
 
         self::assertTrue($rule->validate($input));
     }
 
-    public function testShouldNotAssertRuleWhenInputIsOptional(): void
+    /**
+     * @test
+     */
+    public function shouldNotAssertRuleWhenInputIsOptional(): void
     {
         $validatable = $this->createMock(Validatable::class);
         $validatable
-            ->expects($this->never())
+            ->expects(self::never())
             ->method('assert');
 
         $rule = new Optional($validatable);
@@ -96,27 +103,33 @@ class OptionalTest extends TestCase
         $rule->assert('');
     }
 
-    public function testShouldAssertRuleWhenInputIsNotOptional(): void
+    /**
+     * @test
+     */
+    public function shouldAssertRuleWhenInputIsNotOptional(): void
     {
         $input = 'foo';
 
         $validatable = $this->createMock(Validatable::class);
         $validatable
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('assert')
             ->with($input)
-            ->will($this->returnValue(true));
+            ->will(self::returnValue(true));
 
         $rule = new Optional($validatable);
 
         $rule->assert($input);
     }
 
-    public function testShouldNotCheckRuleWhenInputIsOptional(): void
+    /**
+     * @test
+     */
+    public function shouldNotCheckRuleWhenInputIsOptional(): void
     {
         $validatable = $this->createMock(Validatable::class);
         $validatable
-            ->expects($this->never())
+            ->expects(self::never())
             ->method('check');
 
         $rule = new Optional($validatable);
@@ -124,16 +137,19 @@ class OptionalTest extends TestCase
         $rule->check('');
     }
 
-    public function testShouldCheckRuleWhenInputIsNotOptional(): void
+    /**
+     * @test
+     */
+    public function shouldCheckRuleWhenInputIsNotOptional(): void
     {
         $input = 'foo';
 
         $validatable = $this->createMock(Validatable::class);
         $validatable
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('check')
             ->with($input)
-            ->will($this->returnValue(true));
+            ->will(self::returnValue(true));
 
         $rule = new Optional($validatable);
 

@@ -110,10 +110,10 @@ final class EmailTest extends RuleTestCase
 
         $emailValidator = $this->getEmailValidatorMock();
         $emailValidator
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('isValid')
-            ->with($input, $this->isInstanceOf(RFCValidation::class))
-            ->will($this->returnValue(true));
+            ->with($input, self::isInstanceOf(RFCValidation::class))
+            ->will(self::returnValue(true));
 
         $rule = new Email($emailValidator);
 

@@ -30,15 +30,17 @@ function is_readable($readable)
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Readable
  * @covers \Respect\Validation\Exceptions\ReadableException
+ * @covers \Respect\Validation\Rules\Readable
  */
 class ReadableTest extends TestCase
 {
     /**
      * @covers \Respect\Validation\Rules\Readable::validate
+     *
+     * @test
      */
-    public function testValidReadableFileShouldReturnTrue(): void
+    public function validReadableFileShouldReturnTrue(): void
     {
         $GLOBALS['is_readable'] = true;
 
@@ -49,8 +51,10 @@ class ReadableTest extends TestCase
 
     /**
      * @covers \Respect\Validation\Rules\Readable::validate
+     *
+     * @test
      */
-    public function testInvalidReadableFileShouldReturnFalse(): void
+    public function invalidReadableFileShouldReturnFalse(): void
     {
         $GLOBALS['is_readable'] = false;
 
@@ -61,14 +65,16 @@ class ReadableTest extends TestCase
 
     /**
      * @covers \Respect\Validation\Rules\Readable::validate
+     *
+     * @test
      */
-    public function testShouldValidateObjects(): void
+    public function shouldValidateObjects(): void
     {
         $rule = new Readable();
         $object = $this->createMock('SplFileInfo', ['isReadable'], ['somefile.txt']);
-        $object->expects($this->once())
+        $object->expects(self::once())
                 ->method('isReadable')
-                ->will($this->returnValue(true));
+                ->will(self::returnValue(true));
 
         self::assertTrue($rule->validate($object));
     }

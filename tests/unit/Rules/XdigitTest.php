@@ -17,8 +17,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Xdigit
  * @covers \Respect\Validation\Exceptions\XdigitException
+ * @covers \Respect\Validation\Rules\Xdigit
  */
 class XdigitTest extends TestCase
 {
@@ -31,8 +31,10 @@ class XdigitTest extends TestCase
 
     /**
      * @dataProvider providerForXdigit
+     *
+     * @test
      */
-    public function testValidateValidHexasdecimalDigits($input): void
+    public function validateValidHexasdecimalDigits($input): void
     {
         $this->xdigitsValidator->assert($input);
         $this->xdigitsValidator->check($input);
@@ -42,8 +44,10 @@ class XdigitTest extends TestCase
     /**
      * @dataProvider providerForNotXdigit
      * @expectedException \Respect\Validation\Exceptions\XdigitException
+     *
+     * @test
      */
-    public function testInvalidHexadecimalDigitsShouldThrowXdigitException($input): void
+    public function invalidHexadecimalDigitsShouldThrowXdigitException($input): void
     {
         self::assertFalse($this->xdigitsValidator->validate($input));
         $this->xdigitsValidator->assert($input);
@@ -51,8 +55,10 @@ class XdigitTest extends TestCase
 
     /**
      * @dataProvider providerAdditionalChars
+     *
+     * @test
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query): void
+    public function additionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Xdigit($additional);
         self::assertTrue($validator->validate($query));

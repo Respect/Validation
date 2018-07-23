@@ -68,15 +68,15 @@ final class EachTest extends RuleTestCase
         $validatable = $this->createMock(Validatable::class);
 
         $validatable
-            ->expects($this->at(0))
+            ->expects(self::at(0))
             ->method('check')
             ->with('A');
         $validatable
-            ->expects($this->at(1))
+            ->expects(self::at(1))
             ->method('check')
             ->with('B');
         $validatable
-            ->expects($this->at(2))
+            ->expects(self::at(2))
             ->method('check')
             ->with('C');
 
@@ -98,15 +98,15 @@ final class EachTest extends RuleTestCase
         $validatable = $this->createMock(Validatable::class);
 
         $validatable
-            ->expects($this->at(0))
+            ->expects(self::at(0))
             ->method('check')
             ->with(1);
         $validatable
-            ->expects($this->at(1))
+            ->expects(self::at(1))
             ->method('check')
             ->with(2);
         $validatable
-            ->expects($this->at(2))
+            ->expects(self::at(2))
             ->method('check')
             ->with(3);
 

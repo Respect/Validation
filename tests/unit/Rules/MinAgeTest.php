@@ -23,8 +23,8 @@ use function strtotime;
 /**
  * @group rule
  *
- * @covers \Respect\Validation\Rules\MinAge
  * @covers \Respect\Validation\Rules\AbstractAge
+ * @covers \Respect\Validation\Rules\MinAge
  *
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>

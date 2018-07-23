@@ -17,22 +17,28 @@ use PHPUnit\Framework\TestCase;
 
 class AbstractRegexRuleTest extends TestCase
 {
-    public function testValidateCleanShouldReturnOneIfPatternIsFound(): void
+    /**
+     * @test
+     */
+    public function validateCleanShouldReturnOneIfPatternIsFound(): void
     {
         $regexRuleMock = $this->getMockForAbstractClass(AbstractRegexRule::class);
-        $regexRuleMock->expects($this->once())
+        $regexRuleMock->expects(self::once())
             ->method('getPregFormat')
-            ->will($this->returnValue('/^Respect$/'));
+            ->will(self::returnValue('/^Respect$/'));
 
         self::assertEquals(1, $regexRuleMock->validateClean('Respect'));
     }
 
-    public function testValidateCleanShouldReturnZeroIfPatternIsNotFound(): void
+    /**
+     * @test
+     */
+    public function validateCleanShouldReturnZeroIfPatternIsNotFound(): void
     {
         $regexRuleMock = $this->getMockForAbstractClass(AbstractRegexRule::class);
-        $regexRuleMock->expects($this->once())
+        $regexRuleMock->expects(self::once())
             ->method('getPregFormat')
-            ->will($this->returnValue('/^Respect$/'));
+            ->will(self::returnValue('/^Respect$/'));
 
         self::assertEquals(0, $regexRuleMock->validateClean('Validation'));
     }

@@ -17,15 +17,17 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Space
  * @covers \Respect\Validation\Exceptions\SpaceException
+ * @covers \Respect\Validation\Rules\Space
  */
 class SpaceTest extends TestCase
 {
     /**
      * @dataProvider providerForValidSpace
+     *
+     * @test
      */
-    public function testValidDataWithSpaceShouldReturnTrue($validSpace, $additional = ''): void
+    public function validDataWithSpaceShouldReturnTrue($validSpace, $additional = ''): void
     {
         $validator = new Space($additional);
         self::assertTrue($validator->validate($validSpace));
@@ -34,8 +36,10 @@ class SpaceTest extends TestCase
     /**
      * @dataProvider providerForInvalidSpace
      * @expectedException \Respect\Validation\Exceptions\SpaceException
+     *
+     * @test
      */
-    public function testInvalidSpaceShouldFailAndThrowSpaceException($invalidSpace, $additional = ''): void
+    public function invalidSpaceShouldFailAndThrowSpaceException($invalidSpace, $additional = ''): void
     {
         $validator = new Space($additional);
         self::assertFalse($validator->validate($invalidSpace));
@@ -45,16 +49,20 @@ class SpaceTest extends TestCase
     /**
      * @dataProvider providerForInvalidParams
      * @expectedException \Respect\Validation\Exceptions\ComponentException
+     *
+     * @test
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
+    public function invalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
     {
         $validator = new Space($additional);
     }
 
     /**
      * @dataProvider providerAdditionalChars
+     *
+     * @test
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query): void
+    public function additionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Space($additional);
         self::assertTrue($validator->validate($query));

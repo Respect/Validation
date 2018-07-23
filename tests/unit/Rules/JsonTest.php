@@ -17,8 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Json
  * @covers \Respect\Validation\Exceptions\JsonException
+ * @covers \Respect\Validation\Rules\Json
  */
 class JsonTest extends RuleTestCase
 {

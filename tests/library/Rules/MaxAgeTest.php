@@ -24,8 +24,8 @@ use function strtotime;
 /**
  * @group rule
  *
- * @covers \Respect\Validation\Rules\MaxAge
  * @covers \Respect\Validation\Rules\AbstractAge
+ * @covers \Respect\Validation\Rules\MaxAge
  *
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>

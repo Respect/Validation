@@ -23,8 +23,10 @@ class SlugTest extends TestCase
 {
     /**
      * @dataProvider providerValidSlug
+     *
+     * @test
      */
-    public function testValidSlug($input): void
+    public function validSlug($input): void
     {
         $rule = new Slug();
 
@@ -33,8 +35,10 @@ class SlugTest extends TestCase
 
     /**
      * @dataProvider providerInvalidSlug
+     *
+     * @test
      */
-    public function testInvalidSlug($input): void
+    public function invalidSlug($input): void
     {
         $rule = new Slug();
 

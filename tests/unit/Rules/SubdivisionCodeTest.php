@@ -16,16 +16,18 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Respect\Validation\Rules\SubdivisionCode
  * @covers \Respect\Validation\Exceptions\SubdivisionCodeException
+ * @covers \Respect\Validation\Rules\SubdivisionCode
  */
 class SubdivisionCodeTest extends TestCase
 {
     /**
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "whatever" is not a supported country code
+     *
+     * @test
      */
-    public function testShouldThrowsExceptionWhenInvalidFormat(): void
+    public function shouldThrowsExceptionWhenInvalidFormat(): void
     {
         new SubdivisionCode('whatever');
     }
@@ -33,13 +35,18 @@ class SubdivisionCodeTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "JK" is not a supported country code
+     *
+     * @test
      */
-    public function testShouldNotAcceptWrongNamesOnConstructor(): void
+    public function shouldNotAcceptWrongNamesOnConstructor(): void
     {
         new SubdivisionCode('JK');
     }
 
-    public function testShouldDefineASubdivisionCodeFormatOnConstructor(): void
+    /**
+     * @test
+     */
+    public function shouldDefineASubdivisionCodeFormatOnConstructor(): void
     {
         $countryCode = 'US';
         $countrySubdivision = new SubdivisionCode($countryCode);
@@ -60,8 +67,10 @@ class SubdivisionCodeTest extends TestCase
 
     /**
      * @dataProvider providerForValidSubdivisionCodeInformation
+     *
+     * @test
      */
-    public function testShouldValidateValidSubdivisionCodeInformation($countryCode, $input): void
+    public function shouldValidateValidSubdivisionCodeInformation($countryCode, $input): void
     {
         $countrySubdivision = new SubdivisionCode($countryCode);
 
@@ -79,8 +88,10 @@ class SubdivisionCodeTest extends TestCase
 
     /**
      * @dataProvider providerForInvalidSubdivisionCodeInformation
+     *
+     * @test
      */
-    public function testShouldNotValidateInvalidSubdivisionCodeInformation($countryCode, $input): void
+    public function shouldNotValidateInvalidSubdivisionCodeInformation($countryCode, $input): void
     {
         $countrySubdivision = new SubdivisionCode($countryCode);
 
@@ -90,8 +101,10 @@ class SubdivisionCodeTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\Locale\BrSubdivisionCodeException
      * @expectedExceptionMessage "CA" must be a subdivision code of Brazil
+     *
+     * @test
      */
-    public function testShouldThrowsSubdivisionCodeException(): void
+    public function shouldThrowsSubdivisionCodeException(): void
     {
         $countrySubdivision = new SubdivisionCode('BR');
         $countrySubdivision->assert('CA');

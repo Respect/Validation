@@ -17,15 +17,17 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Alpha
  * @covers \Respect\Validation\Exceptions\AlphaException
+ * @covers \Respect\Validation\Rules\Alpha
  */
 class AlphaTest extends TestCase
 {
     /**
      * @dataProvider providerForValidAlpha
+     *
+     * @test
      */
-    public function testValidAlphanumericCharsShouldReturnTrue($validAlpha, $additional): void
+    public function validAlphanumericCharsShouldReturnTrue($validAlpha, $additional): void
     {
         $validator = new Alpha($additional);
         self::assertTrue($validator->validate($validAlpha));
@@ -36,8 +38,10 @@ class AlphaTest extends TestCase
     /**
      * @dataProvider providerForInvalidAlpha
      * @expectedException \Respect\Validation\Exceptions\AlphaException
+     *
+     * @test
      */
-    public function testInvalidAlphanumericCharsShouldThrowAlphaException($invalidAlpha, $additional): void
+    public function invalidAlphanumericCharsShouldThrowAlphaException($invalidAlpha, $additional): void
     {
         $validator = new Alpha($additional);
         self::assertFalse($validator->validate($invalidAlpha));
@@ -47,16 +51,20 @@ class AlphaTest extends TestCase
     /**
      * @dataProvider providerForInvalidParams
      * @expectedException \Respect\Validation\Exceptions\ComponentException
+     *
+     * @test
      */
-    public function testInvalidConstructorParamsShouldThrowComponentException($additional): void
+    public function invalidConstructorParamsShouldThrowComponentException($additional): void
     {
         $validator = new Alpha($additional);
     }
 
     /**
      * @dataProvider providerAdditionalChars
+     *
+     * @test
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query): void
+    public function additionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Alpha($additional);
         self::assertTrue($validator->validate($query));

@@ -19,8 +19,8 @@ use SplFileInfo;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @group  rule
- * @covers \Respect\Validation\Rules\Mimetype
  * @covers \Respect\Validation\Exceptions\MimetypeException
+ * @covers \Respect\Validation\Rules\Mimetype
  */
 class MimetypeTest extends TestCase
 {
@@ -29,7 +29,7 @@ class MimetypeTest extends TestCase
     protected function setUp()
     {
         if (defined('HHVM_VERSION')) {
-            return $this->markTestSkipped('If you are a HHVM user, and you are in the mood, please fix it');
+            return self::markTestSkipped('If you are a HHVM user, and you are in the mood, please fix it');
         }
 
         $this->filename = sprintf('%s/validation.txt', sys_get_temp_dir());
@@ -42,7 +42,10 @@ class MimetypeTest extends TestCase
         unlink($this->filename);
     }
 
-    public function testShouldValidateMimetype(): void
+    /**
+     * @test
+     */
+    public function shouldValidateMimetype(): void
     {
         $mimetype = 'plain/text';
 
@@ -53,17 +56,20 @@ class MimetypeTest extends TestCase
             ->getMock();
 
         $fileInfoMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('file')
             ->with($this->filename)
-            ->will($this->returnValue($mimetype));
+            ->will(self::returnValue($mimetype));
 
         $rule = new Mimetype($mimetype, $fileInfoMock);
 
         $rule->validate($this->filename);
     }
 
-    public function testShouldValidateSplFileInfoMimetype(): void
+    /**
+     * @test
+     */
+    public function shouldValidateSplFileInfoMimetype(): void
     {
         $fileInfo = new SplFileInfo($this->filename);
         $mimetype = 'plain/text';
@@ -75,24 +81,30 @@ class MimetypeTest extends TestCase
             ->getMock();
 
         $fileInfoMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('file')
             ->with($fileInfo->getPathname())
-            ->will($this->returnValue($mimetype));
+            ->will(self::returnValue($mimetype));
 
         $rule = new Mimetype($mimetype, $fileInfoMock);
 
         self::assertTrue($rule->validate($fileInfo));
     }
 
-    public function testShouldInvalidateWhenNotStringNorSplFileInfo(): void
+    /**
+     * @test
+     */
+    public function shouldInvalidateWhenNotStringNorSplFileInfo(): void
     {
         $rule = new Mimetype('application/octet-stream');
 
         self::assertFalse($rule->validate([__FILE__]));
     }
 
-    public function testShouldInvalidateWhenItIsNotAValidFile(): void
+    /**
+     * @test
+     */
+    public function shouldInvalidateWhenItIsNotAValidFile(): void
     {
         $rule = new Mimetype('application/octet-stream');
 
@@ -102,8 +114,10 @@ class MimetypeTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\MimetypeException
      * @expectedExceptionMessageRegExp #".+MimetypeTest.php" must have "application.?/json" mimetype#
+     *
+     * @test
      */
-    public function testShouldThrowMimetypeExceptionWhenCheckingValue(): void
+    public function shouldThrowMimetypeExceptionWhenCheckingValue(): void
     {
         $rule = new Mimetype('application/json');
         $rule->check(__FILE__);

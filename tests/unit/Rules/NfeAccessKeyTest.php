@@ -17,8 +17,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\NfeAccessKey
  * @covers \Respect\Validation\Exceptions\NfeAccessKeyException
+ * @covers \Respect\Validation\Rules\NfeAccessKey
  */
 class NfeAccessKeyTest extends TestCase
 {
@@ -31,8 +31,10 @@ class NfeAccessKeyTest extends TestCase
 
     /**
      * @dataProvider validAccessKeyProvider
+     *
+     * @test
      */
-    public function testValidAccessKey($aK): void
+    public function validAccessKey($aK): void
     {
         $this->nfeValidator->assert($aK);
         self::assertTrue($this->nfeValidator->__invoke($aK));
@@ -42,8 +44,10 @@ class NfeAccessKeyTest extends TestCase
     /**
      * @dataProvider invalidAccessKeyProvider
      * @expectedException \Respect\Validation\Exceptions\NfeAccessKeyException
+     *
+     * @test
      */
-    public function testInvalidAccessKey($aK): void
+    public function invalidAccessKey($aK): void
     {
         $this->nfeValidator->assert($aK);
     }
@@ -51,8 +55,10 @@ class NfeAccessKeyTest extends TestCase
     /**
      * @dataProvider invalidAccessKeyLengthProvider
      * @expectedException \Respect\Validation\Exceptions\NfeAccessKeyException
+     *
+     * @test
      */
-    public function testInvalidLengthCnh($aK): void
+    public function invalidLengthCnh($aK): void
     {
         $this->nfeValidator->assert($aK);
     }

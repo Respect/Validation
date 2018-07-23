@@ -30,15 +30,17 @@ function is_file($file)
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\File
  * @covers \Respect\Validation\Exceptions\FileException
+ * @covers \Respect\Validation\Rules\File
  */
 class FileTest extends TestCase
 {
     /**
      * @covers \Respect\Validation\Rules\File::validate
+     *
+     * @test
      */
-    public function testValidFileShouldReturnTrue(): void
+    public function validFileShouldReturnTrue(): void
     {
         $GLOBALS['is_file'] = true;
 
@@ -49,8 +51,10 @@ class FileTest extends TestCase
 
     /**
      * @covers \Respect\Validation\Rules\File::validate
+     *
+     * @test
      */
-    public function testInvalidFileShouldReturnFalse(): void
+    public function invalidFileShouldReturnFalse(): void
     {
         $GLOBALS['is_file'] = false;
 
@@ -61,14 +65,16 @@ class FileTest extends TestCase
 
     /**
      * @covers \Respect\Validation\Rules\File::validate
+     *
+     * @test
      */
-    public function testShouldValidateObjects(): void
+    public function shouldValidateObjects(): void
     {
         $rule = new File();
         $object = $this->createMock('SplFileInfo', ['isFile'], ['somefile.txt']);
-        $object->expects($this->once())
+        $object->expects(self::once())
                 ->method('isFile')
-                ->will($this->returnValue(true));
+                ->will(self::returnValue(true));
 
         self::assertTrue($rule->validate($object));
     }

@@ -17,15 +17,17 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Length
  * @covers \Respect\Validation\Exceptions\LengthException
+ * @covers \Respect\Validation\Rules\Length
  */
 class LengthTest extends TestCase
 {
     /**
      * @dataProvider providerForValidLengthInclusive
+     *
+     * @test
      */
-    public function testLengthInsideBoundsForInclusiveCasesReturnTrue($string, $min, $max): void
+    public function lengthInsideBoundsForInclusiveCasesReturnTrue($string, $min, $max): void
     {
         $validator = new Length($min, $max, true);
         self::assertTrue($validator->validate($string));
@@ -33,8 +35,10 @@ class LengthTest extends TestCase
 
     /**
      * @dataProvider providerForValidLengthNonInclusive
+     *
+     * @test
      */
-    public function testLengthInsideBoundsForNonInclusiveCasesShouldReturnTrue($string, $min, $max): void
+    public function lengthInsideBoundsForNonInclusiveCasesShouldReturnTrue($string, $min, $max): void
     {
         $validator = new Length($min, $max, false);
         self::assertTrue($validator->validate($string));
@@ -42,8 +46,10 @@ class LengthTest extends TestCase
 
     /**
      * @dataProvider providerForInvalidLengthInclusive
+     *
+     * @test
      */
-    public function testLengthOutsideBoundsForInclusiveCasesReturnFalse($string, $min, $max): void
+    public function lengthOutsideBoundsForInclusiveCasesReturnFalse($string, $min, $max): void
     {
         $validator = new Length($min, $max, true);
         self::assertfalse($validator->validate($string));
@@ -51,8 +57,10 @@ class LengthTest extends TestCase
 
     /**
      * @dataProvider providerForInvalidLengthNonInclusive
+     *
+     * @test
      */
-    public function testLengthOutsideBoundsForNonInclusiveCasesReturnFalse($string, $min, $max): void
+    public function lengthOutsideBoundsForNonInclusiveCasesReturnFalse($string, $min, $max): void
     {
         $validator = new Length($min, $max, false);
         self::assertfalse($validator->validate($string));
@@ -61,8 +69,10 @@ class LengthTest extends TestCase
     /**
      * @dataProvider providerForComponentException
      * @expectedException \Respect\Validation\Exceptions\ComponentException
+     *
+     * @test
      */
-    public function testComponentExceptionsForInvalidParameters($min, $max): void
+    public function componentExceptionsForInvalidParameters($min, $max): void
     {
         $buggyValidator = new Length($min, $max);
     }

@@ -19,12 +19,15 @@ use Respect\Validation\Validatable;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\KeyNested
  * @covers \Respect\Validation\Exceptions\KeyNestedException
+ * @covers \Respect\Validation\Rules\KeyNested
  */
 class KeyNestedTest extends TestCase
 {
-    public function testArrayWithPresentKeysWillReturnTrueForFullPathValidator(): void
+    /**
+     * @test
+     */
+    public function arrayWithPresentKeysWillReturnTrueForFullPathValidator(): void
     {
         $array = [
             'bar' => [
@@ -42,7 +45,10 @@ class KeyNestedTest extends TestCase
         self::assertTrue($rule->validate($array));
     }
 
-    public function testArrayWithNumericKeysWillReturnTrueForFullPathValidator(): void
+    /**
+     * @test
+     */
+    public function arrayWithNumericKeysWillReturnTrueForFullPathValidator(): void
     {
         $array = [
             0 => 'Zero, the hero!',
@@ -50,7 +56,7 @@ class KeyNestedTest extends TestCase
 
         $validatable = $this->createMock(Validatable::class);
         $validatable
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('check')
             ->with($array[0]);
 
@@ -58,7 +64,10 @@ class KeyNestedTest extends TestCase
         $rule->check($array);
     }
 
-    public function testArrayWithPresentKeysWillReturnTrueForHalfPathValidator(): void
+    /**
+     * @test
+     */
+    public function arrayWithPresentKeysWillReturnTrueForHalfPathValidator(): void
     {
         $array = [
             'bar' => [
@@ -76,7 +85,10 @@ class KeyNestedTest extends TestCase
         self::assertTrue($rule->validate($array));
     }
 
-    public function testObjectWithPresentPropertiesWillReturnTrueForDirtyPathValidator(): void
+    /**
+     * @test
+     */
+    public function objectWithPresentPropertiesWillReturnTrueForDirtyPathValidator(): void
     {
         $object = (object) [
             'bar' => (object) [
@@ -94,7 +106,10 @@ class KeyNestedTest extends TestCase
         self::assertTrue($rule->validate($object));
     }
 
-    public function testEmptyInputMustReturnFalse(): void
+    /**
+     * @test
+     */
+    public function emptyInputMustReturnFalse(): void
     {
         $rule = new KeyNested('bar.foo.baz');
 
@@ -103,8 +118,10 @@ class KeyNestedTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\KeyNestedException
+     *
+     * @test
      */
-    public function testEmptyInputMustNotAssert(): void
+    public function emptyInputMustNotAssert(): void
     {
         $rule = new KeyNested('bar.foo.baz');
         $rule->assert('');
@@ -112,14 +129,19 @@ class KeyNestedTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\KeyNestedException
+     *
+     * @test
      */
-    public function testEmptyInputMustNotCheck(): void
+    public function emptyInputMustNotCheck(): void
     {
         $rule = new KeyNested('bar.foo.baz');
         $rule->check('');
     }
 
-    public function testArrayWithEmptyKeyShouldReturnTrue(): void
+    /**
+     * @test
+     */
+    public function arrayWithEmptyKeyShouldReturnTrue(): void
     {
         $rule = new KeyNested('emptyKey');
         $input = ['emptyKey' => ''];
@@ -129,8 +151,10 @@ class KeyNestedTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\KeyNestedException
+     *
+     * @test
      */
-    public function testArrayWithAbsentKeyShouldThrowNestedKeyException(): void
+    public function arrayWithAbsentKeyShouldThrowNestedKeyException(): void
     {
         $validator = new KeyNested('bar.bar');
         $object = [
@@ -143,8 +167,10 @@ class KeyNestedTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\KeyNestedException
+     *
+     * @test
      */
-    public function testNotArrayShouldThrowKeyException(): void
+    public function notArrayShouldThrowKeyException(): void
     {
         $validator = new KeyNested('baz.bar');
         $object = 123;
@@ -153,8 +179,10 @@ class KeyNestedTest extends TestCase
 
     /**
      * @doesNotPerformAssertions
+     *
+     * @test
      */
-    public function testExtraValidatorShouldValidateKey(): void
+    public function extraValidatorShouldValidateKey(): void
     {
         $subValidator = new Length(3, 7);
         $validator = new KeyNested('bar.foo.baz', $subValidator);
@@ -168,7 +196,10 @@ class KeyNestedTest extends TestCase
         $validator->assert($object);
     }
 
-    public function testNotMandatoryExtraValidatorShouldPassWithAbsentKey(): void
+    /**
+     * @test
+     */
+    public function notMandatoryExtraValidatorShouldPassWithAbsentKey(): void
     {
         $subValidator = new Length(1, 3);
         $validator = new KeyNested('bar.rab', $subValidator, false);
@@ -176,7 +207,10 @@ class KeyNestedTest extends TestCase
         self::assertTrue($validator->validate($object));
     }
 
-    public function testArrayAccessWithPresentKeysWillReturnTrue(): void
+    /**
+     * @test
+     */
+    public function arrayAccessWithPresentKeysWillReturnTrue(): void
     {
         $arrayAccess = new ArrayObject([
             'bar' => [

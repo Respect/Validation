@@ -17,12 +17,15 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\OneOf
  * @covers \Respect\Validation\Exceptions\OneOfException
+ * @covers \Respect\Validation\Rules\OneOf
  */
 class OneOfTest extends TestCase
 {
-    public function testValid(): void
+    /**
+     * @test
+     */
+    public function valid(): void
     {
         $valid1 = new Callback(function () {
             return false;
@@ -43,8 +46,10 @@ class OneOfTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\OneOfException
+     *
+     * @test
      */
-    public function testEmptyChain(): void
+    public function emptyChain(): void
     {
         $rule = new OneOf();
 
@@ -54,8 +59,10 @@ class OneOfTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\OneOfException
+     *
+     * @test
      */
-    public function testInvalid(): void
+    public function invalid(): void
     {
         $valid1 = new Callback(function () {
             return false;
@@ -73,8 +80,10 @@ class OneOfTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\OneOfException
+     *
+     * @test
      */
-    public function testInvalidMultipleAssert(): void
+    public function invalidMultipleAssert(): void
     {
         $valid1 = new Callback(function () {
             return true;
@@ -93,8 +102,10 @@ class OneOfTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\CallbackException
+     *
+     * @test
      */
-    public function testInvalidMultipleCheck(): void
+    public function invalidMultipleCheck(): void
     {
         $valid1 = new Callback(function () {
             return true;
@@ -114,8 +125,10 @@ class OneOfTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\OneOfException
+     *
+     * @test
      */
-    public function testInvalidMultipleCheckAllValid(): void
+    public function invalidMultipleCheckAllValid(): void
     {
         $valid1 = new Callback(function () {
             return true;
@@ -135,8 +148,10 @@ class OneOfTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\XdigitException
+     *
+     * @test
      */
-    public function testInvalidCheck(): void
+    public function invalidCheck(): void
     {
         $rule = new OneOf(new Xdigit(), new Alnum());
         self::assertFalse($rule->validate(-10));

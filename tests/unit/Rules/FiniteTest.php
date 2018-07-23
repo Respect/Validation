@@ -17,8 +17,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Finite
  * @covers \Respect\Validation\Exceptions\FiniteException
+ * @covers \Respect\Validation\Rules\Finite
  */
 class FiniteTest extends TestCase
 {
@@ -31,16 +31,20 @@ class FiniteTest extends TestCase
 
     /**
      * @dataProvider providerForFinite
+     *
+     * @test
      */
-    public function testShouldValidateFiniteNumbers($input): void
+    public function shouldValidateFiniteNumbers($input): void
     {
         self::assertTrue($this->rule->validate($input));
     }
 
     /**
      * @dataProvider providerForNonFinite
+     *
+     * @test
      */
-    public function testShouldNotValidateNonFiniteNumbers($input): void
+    public function shouldNotValidateNonFiniteNumbers($input): void
     {
         self::assertFalse($this->rule->validate($input));
     }
@@ -48,8 +52,10 @@ class FiniteTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\FiniteException
      * @expectedExceptionMessage `INF` must be a finite number
+     *
+     * @test
      */
-    public function testShouldThrowFiniteExceptionWhenChecking(): void
+    public function shouldThrowFiniteExceptionWhenChecking(): void
     {
         $this->rule->check(INF);
     }

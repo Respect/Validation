@@ -30,15 +30,17 @@ function is_link($link)
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\SymbolicLink
  * @covers \Respect\Validation\Exceptions\SymbolicLinkException
+ * @covers \Respect\Validation\Rules\SymbolicLink
  */
 class SymbolicLinkTest extends TestCase
 {
     /**
      * @covers \Respect\Validation\Rules\SymbolicLink::validate
+     *
+     * @test
      */
-    public function testValidSymbolicLinkShouldReturnTrue(): void
+    public function validSymbolicLinkShouldReturnTrue(): void
     {
         $GLOBALS['is_link'] = true;
 
@@ -49,8 +51,10 @@ class SymbolicLinkTest extends TestCase
 
     /**
      * @covers \Respect\Validation\Rules\SymbolicLink::validate
+     *
+     * @test
      */
-    public function testInvalidSymbolicLinkShouldThrowException(): void
+    public function invalidSymbolicLinkShouldThrowException(): void
     {
         $GLOBALS['is_link'] = false;
 
@@ -61,14 +65,16 @@ class SymbolicLinkTest extends TestCase
 
     /**
      * @covers \Respect\Validation\Rules\SymbolicLink::validate
+     *
+     * @test
      */
-    public function testShouldValidateObjects(): void
+    public function shouldValidateObjects(): void
     {
         $rule = new SymbolicLink();
         $object = $this->createMock('SplFileInfo', ['isLink'], ['somelink.lnk']);
-        $object->expects($this->once())
+        $object->expects(self::once())
                 ->method('isLink')
-                ->will($this->returnValue(true));
+                ->will(self::returnValue(true));
 
         self::assertTrue($rule->validate($object));
     }

@@ -46,10 +46,10 @@ final class AbstractWrapperTest extends TestCase
 
         $validatable = $this->createMock(Validatable::class);
         $validatable
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('validate')
             ->with($input)
-            ->will($this->returnValue(true));
+            ->will(self::returnValue(true));
 
         $wrapper = $this->getMockForAbstractClass(AbstractWrapper::class, [$validatable]);
 
@@ -65,10 +65,10 @@ final class AbstractWrapperTest extends TestCase
 
         $validatable = $this->createMock(Validatable::class);
         $validatable
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('assert')
             ->with($input)
-            ->will($this->returnValue(true));
+            ->will(self::returnValue(true));
 
         $wrapper = $this->getMockForAbstractClass(AbstractWrapper::class, [$validatable]);
 
@@ -84,10 +84,10 @@ final class AbstractWrapperTest extends TestCase
 
         $validatable = $this->createMock(Validatable::class);
         $validatable
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('check')
             ->with($input)
-            ->will($this->returnValue(true));
+            ->will(self::returnValue(true));
 
         $wrapper = $this->getMockForAbstractClass(AbstractWrapper::class, [$validatable]);
 
@@ -103,10 +103,10 @@ final class AbstractWrapperTest extends TestCase
 
         $validatable = $this->createMock(Validatable::class);
         $validatable
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('setName')
             ->with($name)
-            ->will($this->returnValue($validatable));
+            ->will(self::returnValue($validatable));
 
         $wrapper = $this->getMockForAbstractClass(AbstractWrapper::class, [$validatable]);
 

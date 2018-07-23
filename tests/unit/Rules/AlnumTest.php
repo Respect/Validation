@@ -17,15 +17,17 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Alnum
  * @covers \Respect\Validation\Exceptions\AlnumException
+ * @covers \Respect\Validation\Rules\Alnum
  */
 class AlnumTest extends TestCase
 {
     /**
      * @dataProvider providerForValidAlnum
+     *
+     * @test
      */
-    public function testValidAlnumCharsShouldReturnTrue($validAlnum, $additional): void
+    public function validAlnumCharsShouldReturnTrue($validAlnum, $additional): void
     {
         $validator = new Alnum($additional);
         self::assertTrue($validator->validate($validAlnum));
@@ -34,8 +36,10 @@ class AlnumTest extends TestCase
     /**
      * @dataProvider providerForInvalidAlnum
      * @expectedException \Respect\Validation\Exceptions\AlnumException
+     *
+     * @test
      */
-    public function testInvalidAlnumCharsShouldThrowAlnumExceptionAndReturnFalse($invalidAlnum, $additional): void
+    public function invalidAlnumCharsShouldThrowAlnumExceptionAndReturnFalse($invalidAlnum, $additional): void
     {
         $validator = new Alnum($additional);
         self::assertFalse($validator->validate($invalidAlnum));
@@ -45,16 +49,20 @@ class AlnumTest extends TestCase
     /**
      * @dataProvider providerForInvalidParams
      * @expectedException \Respect\Validation\Exceptions\ComponentException
+     *
+     * @test
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
+    public function invalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
     {
         $validator = new Alnum($additional);
     }
 
     /**
      * @dataProvider providerAdditionalChars
+     *
+     * @test
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query): void
+    public function additionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Alnum($additional);
         self::assertTrue($validator->validate($query));

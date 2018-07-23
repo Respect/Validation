@@ -17,8 +17,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Phone
  * @covers \Respect\Validation\Exceptions\PhoneException
+ * @covers \Respect\Validation\Rules\Phone
  */
 class PhoneTest extends TestCase
 {
@@ -31,8 +31,10 @@ class PhoneTest extends TestCase
 
     /**
      * @dataProvider providerForPhone
+     *
+     * @test
      */
-    public function testValidPhoneShouldReturnTrue($input): void
+    public function validPhoneShouldReturnTrue($input): void
     {
         self::assertTrue($this->phoneValidator->__invoke($input));
         $this->phoneValidator->assert($input);
@@ -42,8 +44,10 @@ class PhoneTest extends TestCase
     /**
      * @dataProvider providerForNotPhone
      * @expectedException \Respect\Validation\Exceptions\PhoneException
+     *
+     * @test
      */
-    public function testInvalidPhoneShouldThrowPhoneException($input): void
+    public function invalidPhoneShouldThrowPhoneException($input): void
     {
         self::assertFalse($this->phoneValidator->__invoke($input));
         $this->phoneValidator->assert($input);

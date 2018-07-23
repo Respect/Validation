@@ -17,8 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\PhpLabel
  * @covers \Respect\Validation\Exceptions\PhpLabelException
+ * @covers \Respect\Validation\Rules\PhpLabel
  */
 class PhpLabelTest extends RuleTestCase
 {

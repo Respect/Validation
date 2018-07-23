@@ -30,15 +30,17 @@ function is_writable($writable)
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Writable
  * @covers \Respect\Validation\Exceptions\WritableException
+ * @covers \Respect\Validation\Rules\Writable
  */
 class WritableTest extends TestCase
 {
     /**
      * @covers \Respect\Validation\Rules\Writable::validate
+     *
+     * @test
      */
-    public function testValidWritableFileShouldReturnTrue(): void
+    public function validWritableFileShouldReturnTrue(): void
     {
         $GLOBALS['is_writable'] = true;
 
@@ -49,8 +51,10 @@ class WritableTest extends TestCase
 
     /**
      * @covers \Respect\Validation\Rules\Writable::validate
+     *
+     * @test
      */
-    public function testInvalidWritableFileShouldReturnFalse(): void
+    public function invalidWritableFileShouldReturnFalse(): void
     {
         $GLOBALS['is_writable'] = false;
 
@@ -61,14 +65,16 @@ class WritableTest extends TestCase
 
     /**
      * @covers \Respect\Validation\Rules\Writable::validate
+     *
+     * @test
      */
-    public function testShouldValidateObjects(): void
+    public function shouldValidateObjects(): void
     {
         $rule = new Writable();
         $object = $this->createMock('SplFileInfo', ['isWritable'], ['somefile.txt']);
-        $object->expects($this->once())
+        $object->expects(self::once())
                 ->method('isWritable')
-                ->will($this->returnValue(true));
+                ->will(self::returnValue(true));
 
         self::assertTrue($rule->validate($object));
     }

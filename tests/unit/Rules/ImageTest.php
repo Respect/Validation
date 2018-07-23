@@ -24,7 +24,10 @@ use SplFileObject;
  */
 class ImageTest extends RuleTestCase
 {
-    public function testShouldAcceptAnInstanceOfFinfoOnConstructor(): void
+    /**
+     * @test
+     */
+    public function shouldAcceptAnInstanceOfFinfoOnConstructor(): void
     {
         $finfo = new finfo(FILEINFO_MIME_TYPE);
         $rule = new Image($finfo);
@@ -32,7 +35,10 @@ class ImageTest extends RuleTestCase
         self::assertSame($rule->fileInfo, $finfo);
     }
 
-    public function testShouldHaveAnInstanceOfFinfoByDefault(): void
+    /**
+     * @test
+     */
+    public function shouldHaveAnInstanceOfFinfoByDefault(): void
     {
         $rule = new Image();
 

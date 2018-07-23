@@ -17,12 +17,15 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Yes
  * @covers \Respect\Validation\Exceptions\YesException
+ * @covers \Respect\Validation\Rules\Yes
  */
 class YesTest extends TestCase
 {
-    public function testShouldUseDefaultPattern(): void
+    /**
+     * @test
+     */
+    public function shouldUseDefaultPattern(): void
     {
         $rule = new Yes();
 
@@ -32,10 +35,13 @@ class YesTest extends TestCase
         self::assertEquals($expectedPattern, $actualPattern);
     }
 
-    public function testShouldUseLocalPatternForYesExpressionWhenDefined(): void
+    /**
+     * @test
+     */
+    public function shouldUseLocalPatternForYesExpressionWhenDefined(): void
     {
         if (!defined('YESEXPR')) {
-            $this->markTestSkipped('Constant YESEXPR is not defined');
+            self::markTestSkipped('Constant YESEXPR is not defined');
 
             return;
         }
@@ -50,8 +56,10 @@ class YesTest extends TestCase
 
     /**
      * @dataProvider validYesProvider
+     *
+     * @test
      */
-    public function testShouldValidatePatternAccordingToTheDefinedLocale($input): void
+    public function shouldValidatePatternAccordingToTheDefinedLocale($input): void
     {
         $rule = new Yes();
 
@@ -71,8 +79,10 @@ class YesTest extends TestCase
 
     /**
      * @dataProvider invalidYesProvider
+     *
+     * @test
      */
-    public function testShouldNotValidatePatternAccordingToTheDefinedLocale($input): void
+    public function shouldNotValidatePatternAccordingToTheDefinedLocale($input): void
     {
         $rule = new Yes();
 

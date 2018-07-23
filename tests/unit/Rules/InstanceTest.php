@@ -17,8 +17,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Instance
  * @covers \Respect\Validation\Exceptions\InstanceException
+ * @covers \Respect\Validation\Rules\Instance
  */
 class InstanceTest extends TestCase
 {
@@ -29,28 +29,38 @@ class InstanceTest extends TestCase
         $this->instanceValidator = new Instance('ArrayObject');
     }
 
-    public function testInstanceValidationShouldReturnFalseForEmpty(): void
+    /**
+     * @test
+     */
+    public function instanceValidationShouldReturnFalseForEmpty(): void
     {
         self::assertFalse($this->instanceValidator->__invoke(''));
     }
 
     /**
      * @expectedException \Respect\Validation\Exceptions\InstanceException
+     *
+     * @test
      */
-    public function testInstanceValidationShouldNotAssertEmpty(): void
+    public function instanceValidationShouldNotAssertEmpty(): void
     {
         $this->instanceValidator->assert('');
     }
 
     /**
      * @expectedException \Respect\Validation\Exceptions\InstanceException
+     *
+     * @test
      */
-    public function testInstanceValidationShouldNotCheckEmpty(): void
+    public function instanceValidationShouldNotCheckEmpty(): void
     {
         $this->instanceValidator->check('');
     }
 
-    public function testInstanceValidationShouldReturnTrueForValidInstances(): void
+    /**
+     * @test
+     */
+    public function instanceValidationShouldReturnTrueForValidInstances(): void
     {
         self::assertTrue($this->instanceValidator->__invoke(new \ArrayObject()));
         $this->instanceValidator->assert(new \ArrayObject());
@@ -59,8 +69,10 @@ class InstanceTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\InstanceException
+     *
+     * @test
      */
-    public function testInvalidInstancesShouldThrowInstanceException(): void
+    public function invalidInstancesShouldThrowInstanceException(): void
     {
         self::assertFalse($this->instanceValidator->validate(new \stdClass()));
         $this->instanceValidator->assert(new \stdClass());

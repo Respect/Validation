@@ -17,15 +17,17 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Digit
  * @covers \Respect\Validation\Exceptions\DigitException
+ * @covers \Respect\Validation\Rules\Digit
  */
 class DigitTest extends TestCase
 {
     /**
      * @dataProvider providerForValidDigits
+     *
+     * @test
      */
-    public function testValidDataWithDigitsShouldReturnTrue($validDigits, $additional = ''): void
+    public function validDataWithDigitsShouldReturnTrue($validDigits, $additional = ''): void
     {
         $validator = new Digit($additional);
         self::assertTrue($validator->validate($validDigits));
@@ -34,8 +36,10 @@ class DigitTest extends TestCase
     /**
      * @dataProvider providerForInvalidDigits
      * @expectedException \Respect\Validation\Exceptions\DigitException
+     *
+     * @test
      */
-    public function testInvalidDigitsShouldFailAndThrowDigitException($invalidDigits, $additional = ''): void
+    public function invalidDigitsShouldFailAndThrowDigitException($invalidDigits, $additional = ''): void
     {
         $validator = new Digit($additional);
         self::assertFalse($validator->validate($invalidDigits));
@@ -45,16 +49,20 @@ class DigitTest extends TestCase
     /**
      * @dataProvider providerForInvalidParams
      * @expectedException \Respect\Validation\Exceptions\ComponentException
+     *
+     * @test
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
+    public function invalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
     {
         $validator = new Digit($additional);
     }
 
     /**
      * @dataProvider providerAdditionalChars
+     *
+     * @test
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query): void
+    public function additionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Digit($additional);
         self::assertTrue($validator->validate($query));

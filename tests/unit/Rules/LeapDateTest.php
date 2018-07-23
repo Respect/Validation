@@ -18,8 +18,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\LeapDate
  * @covers \Respect\Validation\Exceptions\LeapDateException
+ * @covers \Respect\Validation\Rules\LeapDate
  */
 class LeapDateTest extends TestCase
 {
@@ -30,29 +30,44 @@ class LeapDateTest extends TestCase
         $this->leapDateValidator = new LeapDate('Y-m-d');
     }
 
-    public function testValidLeapDate_with_string(): void
+    /**
+     * @test
+     */
+    public function validLeapDate_with_string(): void
     {
         self::assertTrue($this->leapDateValidator->validate('1988-02-29'));
     }
 
-    public function testValidLeapDate_with_date_time(): void
+    /**
+     * @test
+     */
+    public function validLeapDate_with_date_time(): void
     {
         self::assertTrue($this->leapDateValidator->validate(
             new DateTime('1988-02-29')));
     }
 
-    public function testInvalidLeapDate_with_string(): void
+    /**
+     * @test
+     */
+    public function invalidLeapDate_with_string(): void
     {
         self::assertFalse($this->leapDateValidator->validate('1989-02-29'));
     }
 
-    public function testInvalidLeapDate_with_date_time(): void
+    /**
+     * @test
+     */
+    public function invalidLeapDate_with_date_time(): void
     {
         self::assertFalse($this->leapDateValidator->validate(
             new DateTime('1989-02-29')));
     }
 
-    public function testInvalidLeapDate_input(): void
+    /**
+     * @test
+     */
+    public function invalidLeapDate_input(): void
     {
         self::assertFalse($this->leapDateValidator->validate([]));
     }

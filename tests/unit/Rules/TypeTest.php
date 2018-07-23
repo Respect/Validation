@@ -30,8 +30,10 @@ class TypeTest extends RuleTestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "whatever" is not a valid type (Available: array, bool, boolean, callable, double, float, int, integer, null, object, resource, string)
+     *
+     * @test
      */
-    public function testShouldThrowExceptionWhenTypeIsNotValid(): void
+    public function shouldThrowExceptionWhenTypeIsNotValid(): void
     {
         new Type('whatever');
     }

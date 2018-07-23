@@ -17,15 +17,17 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\FalseVal
  * @covers \Respect\Validation\Exceptions\FalseValException
+ * @covers \Respect\Validation\Rules\FalseVal
  */
 class FalseValTest extends TestCase
 {
     /**
      * @dataProvider validFalseProvider
+     *
+     * @test
      */
-    public function testShouldValidatePatternAccordingToTheDefinedLocale($input): void
+    public function shouldValidatePatternAccordingToTheDefinedLocale($input): void
     {
         $rule = new FalseVal();
 
@@ -52,8 +54,10 @@ class FalseValTest extends TestCase
 
     /**
      * @dataProvider invalidFalseProvider
+     *
+     * @test
      */
-    public function testShouldNotValidatePatternAccordingToTheDefinedLocale($input): void
+    public function shouldNotValidatePatternAccordingToTheDefinedLocale($input): void
     {
         $rule = new FalseVal();
 

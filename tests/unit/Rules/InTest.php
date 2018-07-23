@@ -17,15 +17,17 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\In
  * @covers \Respect\Validation\Exceptions\InException
+ * @covers \Respect\Validation\Rules\In
  */
 class InTest extends TestCase
 {
     /**
      * @dataProvider providerForIn
+     *
+     * @test
      */
-    public function testSuccessInValidatorCases($input, $options = null): void
+    public function successInValidatorCases($input, $options = null): void
     {
         $v = new In($options);
         self::assertTrue($v->__invoke($input));
@@ -36,8 +38,10 @@ class InTest extends TestCase
     /**
      * @dataProvider providerForNotIn
      * @expectedException \Respect\Validation\Exceptions\InException
+     *
+     * @test
      */
-    public function testInvalidInChecksShouldThrowInException($input, $options, $strict = false): void
+    public function invalidInChecksShouldThrowInException($input, $options, $strict = false): void
     {
         $v = new In($options, $strict);
         self::assertFalse($v->__invoke($input));
@@ -47,8 +51,10 @@ class InTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\InException
      * @expectedExceptionMessage "x" must be in `{ "foo", "bar" }`
+     *
+     * @test
      */
-    public function testInCheckExceptionMessageWithArray(): void
+    public function inCheckExceptionMessageWithArray(): void
     {
         $v = new In(['foo', 'bar']);
         $v->assert('x');

@@ -20,12 +20,15 @@ use Zend\Validator\ValidatorInterface;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Zend
  * @covers \Respect\Validation\Exceptions\ZendException
+ * @covers \Respect\Validation\Rules\Zend
  */
 class ZendTest extends TestCase
 {
-    public function testConstructorWithValidatorName(): void
+    /**
+     * @test
+     */
+    public function constructorWithValidatorName(): void
     {
         $v = new Zend('Date');
         self::assertAttributeInstanceOf(
@@ -36,9 +39,11 @@ class ZendTest extends TestCase
     }
 
     /**
-     * @depends testConstructorWithValidatorName
+     * @depends constructorWithValidatorName
+     *
+     * @test
      */
-    public function testConstructorWithValidatorClassName(): void
+    public function constructorWithValidatorClassName(): void
     {
         $v = new Zend(ZendDate::class);
         self::assertAttributeInstanceOf(
@@ -48,7 +53,10 @@ class ZendTest extends TestCase
         );
     }
 
-    public function testConstructorWithZendValidatorInstance(): void
+    /**
+     * @test
+     */
+    public function constructorWithZendValidatorInstance(): void
     {
         $zendInstance = new ZendDate();
         $v = new Zend($zendInstance);
@@ -60,9 +68,11 @@ class ZendTest extends TestCase
     }
 
     /**
-     * @depends testConstructorWithZendValidatorInstance
+     * @depends constructorWithZendValidatorInstance
+     *
+     * @test
      */
-    public function testUserlandValidatorExtendingZendInterface(): void
+    public function userlandValidatorExtendingZendInterface(): void
     {
         $v = new Zend(new MyValidator());
         self::assertAttributeInstanceOf(
@@ -72,7 +82,10 @@ class ZendTest extends TestCase
         );
     }
 
-    public function testConstructorWithZendValidatorPartialNamespace(): void
+    /**
+     * @test
+     */
+    public function constructorWithZendValidatorPartialNamespace(): void
     {
         $v = new Zend('Sitemap\Lastmod');
         self::assertAttributeInstanceOf(
@@ -83,10 +96,12 @@ class ZendTest extends TestCase
     }
 
     /**
-     * @depends testConstructorWithValidatorName
-     * @depends testConstructorWithZendValidatorPartialNamespace
+     * @depends constructorWithValidatorName
+     * @depends constructorWithZendValidatorPartialNamespace
+     *
+     * @test
      */
-    public function testConstructorWithValidatorName_and_params(): void
+    public function constructorWithValidatorName_and_params(): void
     {
         $zendValidatorName = 'StringLength';
         $zendValidatorParams = ['min' => 10, 'max' => 25];
@@ -98,9 +113,11 @@ class ZendTest extends TestCase
     }
 
     /**
-     * @depends testConstructorWithValidatorName
+     * @depends constructorWithValidatorName
+     *
+     * @test
      */
-    public function testZendDateValidatorWithRespectMethods(): void
+    public function zendDateValidatorWithRespectMethods(): void
     {
         $v = new Zend('Date');
         $date = new DateTime();
@@ -109,11 +126,13 @@ class ZendTest extends TestCase
     }
 
     /**
-     * @depends testConstructorWithValidatorName
-     * @depends testZendDateValidatorWithRespectMethods
+     * @depends constructorWithValidatorName
+     * @depends zendDateValidatorWithRespectMethods
      * @expectedException \Respect\Validation\Exceptions\ZendException
+     *
+     * @test
      */
-    public function testRespectExceptionForFailedValidation(): void
+    public function respectExceptionForFailedValidation(): void
     {
         $v = new Zend('Date');
         $notValid = 'a';
@@ -127,12 +146,14 @@ class ZendTest extends TestCase
     }
 
     /**
-     * @depends testConstructorWithValidatorName
-     * @depends testConstructorWithValidatorName_and_params
-     * @depends testZendDateValidatorWithRespectMethods
+     * @depends constructorWithValidatorName
+     * @depends constructorWithValidatorName_and_params
+     * @depends zendDateValidatorWithRespectMethods
      * @expectedException \Respect\Validation\Exceptions\ZendException
+     *
+     * @test
      */
-    public function testParamsNot(): void
+    public function paramsNot(): void
     {
         $v = new Zend('StringLength', ['min' => 10, 'max' => 25]);
         $v->assert('aw');

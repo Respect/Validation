@@ -17,16 +17,18 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\VideoUrl
  * @covers \Respect\Validation\Exceptions\VideoUrlException
+ * @covers \Respect\Validation\Rules\VideoUrl
  */
 class VideoUrlTest extends TestCase
 {
     /**
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "teste" is not a recognized video service.
+     *
+     * @test
      */
-    public function testShouldThrowsAnExceptionWhenProviderIsNotValid(): void
+    public function shouldThrowsAnExceptionWhenProviderIsNotValid(): void
     {
         new VideoUrl('teste');
     }
@@ -66,8 +68,10 @@ class VideoUrlTest extends TestCase
 
     /**
      * @dataProvider validVideoUrlProvider
+     *
+     * @test
      */
-    public function testShouldValidateVideoUrl($service, $input): void
+    public function shouldValidateVideoUrl($service, $input): void
     {
         $rule = new VideoUrl($service);
 
@@ -76,8 +80,10 @@ class VideoUrlTest extends TestCase
 
     /**
      * @dataProvider invalidVideoUrlProvider
+     *
+     * @test
      */
-    public function testShouldInvalidateNonVideoUrl($service, $input): void
+    public function shouldInvalidateNonVideoUrl($service, $input): void
     {
         $rule = new VideoUrl($service);
 
@@ -87,8 +93,10 @@ class VideoUrlTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\VideoUrlException
      * @expectedExceptionMessage "exemplo.com" must be a valid video URL
+     *
+     * @test
      */
-    public function testUseAProperExceptionMessageWhenVideoUrlIsNotValid(): void
+    public function useAProperExceptionMessageWhenVideoUrlIsNotValid(): void
     {
         $rule = new VideoUrl();
         $rule->check('exemplo.com');
@@ -97,8 +105,10 @@ class VideoUrlTest extends TestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\VideoUrlException
      * @expectedExceptionMessage "exemplo.com" must be a valid "YouTube" video URL
+     *
+     * @test
      */
-    public function testUseAProperExceptionMessageWhenVideoUrlIsNotValidForTheDefinedProvider(): void
+    public function useAProperExceptionMessageWhenVideoUrlIsNotValidForTheDefinedProvider(): void
     {
         $rule = new VideoUrl('YouTube');
         $rule->check('exemplo.com');

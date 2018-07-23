@@ -18,8 +18,8 @@ use Respect\Validation\Validatable;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Attribute
  * @covers \Respect\Validation\Exceptions\AttributeException
+ * @covers \Respect\Validation\Rules\Attribute
  */
 final class AttributeTest extends RuleTestCase
 {

@@ -17,12 +17,15 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\NoneOf
  * @covers \Respect\Validation\Exceptions\NoneOfException
+ * @covers \Respect\Validation\Rules\NoneOf
  */
 class NoneOfTest extends TestCase
 {
-    public function testValid(): void
+    /**
+     * @test
+     */
+    public function valid(): void
     {
         $valid1 = new Callback(function () {
             return false;
@@ -41,8 +44,10 @@ class NoneOfTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\NoneOfException
+     *
+     * @test
      */
-    public function testInvalid(): void
+    public function invalid(): void
     {
         $valid1 = new Callback(function () {
             return false;

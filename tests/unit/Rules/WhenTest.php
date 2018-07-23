@@ -21,14 +21,20 @@ use Respect\Validation\Test\RuleTestCase;
  */
 class WhenTest extends RuleTestCase
 {
-    public function testShouldConstructAnObjectWithoutElseRule(): void
+    /**
+     * @test
+     */
+    public function shouldConstructAnObjectWithoutElseRule(): void
     {
         $rule = new When($this->createValidatableMock(true), $this->createValidatableMock(true));
 
         self::assertInstanceOf(AlwaysInvalid::class, $rule->else);
     }
 
-    public function testShouldConstructAnObjectWithElseRule(): void
+    /**
+     * @test
+     */
+    public function shouldConstructAnObjectWithElseRule(): void
     {
         $rule = new When($this->createValidatableMock(true), $this->createValidatableMock(true), $this->createValidatableMock(true));
 
@@ -38,8 +44,10 @@ class WhenTest extends RuleTestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\ValidationException
      * @expectedExceptionMessage Exception for ThenNotValid:assert() method
+     *
+     * @test
      */
-    public function testShouldThrowExceptionForTheThenRuleWhenTheIfRuleIsValidAndTheThenRuleIsNotOnAssertMethod(): void
+    public function shouldThrowExceptionForTheThenRuleWhenTheIfRuleIsValidAndTheThenRuleIsNotOnAssertMethod(): void
     {
         $if = $this->createValidatableMock(true);
         $then = $this->createValidatableMock(false, 'ThenNotValid');
@@ -52,8 +60,10 @@ class WhenTest extends RuleTestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\ValidationException
      * @expectedExceptionMessage Exception for ThenNotValid:check() method
+     *
+     * @test
      */
-    public function testShouldThrowExceptionForTheThenRuleWhenTheIfRuleIsValidAndTheThenRuleIsNotOnCheckMethod(): void
+    public function shouldThrowExceptionForTheThenRuleWhenTheIfRuleIsValidAndTheThenRuleIsNotOnCheckMethod(): void
     {
         $if = $this->createValidatableMock(true);
         $then = $this->createValidatableMock(false, 'ThenNotValid');
@@ -66,8 +76,10 @@ class WhenTest extends RuleTestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\ValidationException
      * @expectedExceptionMessage Exception for ElseNotValid:assert() method
+     *
+     * @test
      */
-    public function testShouldThrowExceptionForTheElseRuleWhenTheIfRuleIsNotValidAndTheElseRuleIsNotOnAssertMethod(): void
+    public function shouldThrowExceptionForTheElseRuleWhenTheIfRuleIsNotValidAndTheElseRuleIsNotOnAssertMethod(): void
     {
         $if = $this->createValidatableMock(false);
         $then = $this->createValidatableMock(false);
@@ -80,8 +92,10 @@ class WhenTest extends RuleTestCase
     /**
      * @expectedException \Respect\Validation\Exceptions\ValidationException
      * @expectedExceptionMessage Exception for ElseNotValid:check() method
+     *
+     * @test
      */
-    public function testShouldThrowExceptionForTheElseRuleWhenTheIfRuleIsNotValidAndTheElseRuleIsNotOnCheckMethod(): void
+    public function shouldThrowExceptionForTheElseRuleWhenTheIfRuleIsNotValidAndTheElseRuleIsNotOnCheckMethod(): void
     {
         $if = $this->createValidatableMock(false);
         $then = $this->createValidatableMock(false);

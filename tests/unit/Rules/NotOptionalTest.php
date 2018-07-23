@@ -24,8 +24,10 @@ class NotOptionalTest extends TestCase
 {
     /**
      * @dataProvider providerForNotOptional
+     *
+     * @test
      */
-    public function testShouldValidateWhenNotOptional($input): void
+    public function shouldValidateWhenNotOptional($input): void
     {
         $rule = new NotOptional();
 
@@ -34,8 +36,10 @@ class NotOptionalTest extends TestCase
 
     /**
      * @dataProvider providerForOptional
+     *
+     * @test
      */
-    public function testShouldNotValidateWhenOptional($input): void
+    public function shouldNotValidateWhenOptional($input): void
     {
         $rule = new NotOptional();
 

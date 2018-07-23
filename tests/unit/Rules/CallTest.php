@@ -18,8 +18,8 @@ use Respect\Validation\Validatable;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Call
  * @covers \Respect\Validation\Exceptions\CallException
+ * @covers \Respect\Validation\Rules\Call
  */
 class CallTest extends TestCase
 {
@@ -30,11 +30,14 @@ class CallTest extends TestCase
         return self::CALLBACK_RETURN;
     }
 
-    public function testCallbackValidatorShouldAcceptEmptyString(): void
+    /**
+     * @test
+     */
+    public function callbackValidatorShouldAcceptEmptyString(): void
     {
         $validatable = $this->createMock(Validatable::class);
         $validatable
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('assert')
             ->with(['']);
 
@@ -42,11 +45,14 @@ class CallTest extends TestCase
         $v->assert('');
     }
 
-    public function testCallbackValidatorShouldAcceptStringWithFunctionName(): void
+    /**
+     * @test
+     */
+    public function callbackValidatorShouldAcceptStringWithFunctionName(): void
     {
         $validatable = $this->createMock(Validatable::class);
         $validatable
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('assert')
             ->with(['t', 'e', 's', 't']);
 
@@ -54,11 +60,14 @@ class CallTest extends TestCase
         $v->assert('test');
     }
 
-    public function testCallbackValidatorShouldAcceptArrayCallbackDefinition(): void
+    /**
+     * @test
+     */
+    public function callbackValidatorShouldAcceptArrayCallbackDefinition(): void
     {
         $validatable = $this->createMock(Validatable::class);
         $validatable
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('assert')
             ->with(self::CALLBACK_RETURN);
 
@@ -66,13 +75,16 @@ class CallTest extends TestCase
         $v->assert('test');
     }
 
-    public function testCallbackValidatorShouldAcceptClosures(): void
+    /**
+     * @test
+     */
+    public function callbackValidatorShouldAcceptClosures(): void
     {
         $return = [];
 
         $validatable = $this->createMock(Validatable::class);
         $validatable
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('assert')
             ->with($return);
 
@@ -87,8 +99,10 @@ class CallTest extends TestCase
 
     /**
      * @expectedException \Respect\Validation\Exceptions\CallException
+     *
+     * @test
      */
-    public function testCallbackFailedShouldThrowCallException(): void
+    public function callbackFailedShouldThrowCallException(): void
     {
         $v = new Call('strrev', new ArrayVal());
         self::assertFalse($v->validate('test'));

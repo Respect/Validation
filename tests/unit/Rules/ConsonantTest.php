@@ -17,15 +17,17 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Consonant
  * @covers \Respect\Validation\Exceptions\ConsonantException
+ * @covers \Respect\Validation\Rules\Consonant
  */
 class ConsonantTest extends TestCase
 {
     /**
      * @dataProvider providerForValidConsonants
+     *
+     * @test
      */
-    public function testValidDataWithConsonantsShouldReturnTrue($validConsonants, $additional = ''): void
+    public function validDataWithConsonantsShouldReturnTrue($validConsonants, $additional = ''): void
     {
         $validator = new Consonant($additional);
         self::assertTrue($validator->validate($validConsonants));
@@ -34,8 +36,10 @@ class ConsonantTest extends TestCase
     /**
      * @dataProvider providerForInvalidConsonants
      * @expectedException \Respect\Validation\Exceptions\ConsonantException
+     *
+     * @test
      */
-    public function testInvalidConsonantsShouldFailAndThrowConsonantException($invalidConsonants, $additional = ''): void
+    public function invalidConsonantsShouldFailAndThrowConsonantException($invalidConsonants, $additional = ''): void
     {
         $validator = new Consonant($additional);
         self::assertFalse($validator->validate($invalidConsonants));
@@ -45,16 +49,20 @@ class ConsonantTest extends TestCase
     /**
      * @dataProvider providerForInvalidParams
      * @expectedException \Respect\Validation\Exceptions\ComponentException
+     *
+     * @test
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
+    public function invalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
     {
         $validator = new Consonant($additional);
     }
 
     /**
      * @dataProvider providerAdditionalChars
+     *
+     * @test
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query): void
+    public function additionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Consonant($additional);
         self::assertTrue($validator->validate($query));

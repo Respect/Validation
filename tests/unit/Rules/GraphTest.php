@@ -17,15 +17,17 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\Graph
  * @covers \Respect\Validation\Exceptions\GraphException
+ * @covers \Respect\Validation\Rules\Graph
  */
 class GraphTest extends TestCase
 {
     /**
      * @dataProvider providerForValidGraph
+     *
+     * @test
      */
-    public function testValidDataWithGraphCharsShouldReturnTrue($validGraph, $additional = ''): void
+    public function validDataWithGraphCharsShouldReturnTrue($validGraph, $additional = ''): void
     {
         $validator = new Graph($additional);
         self::assertTrue($validator->validate($validGraph));
@@ -34,8 +36,10 @@ class GraphTest extends TestCase
     /**
      * @dataProvider providerForInvalidGraph
      * @expectedException \Respect\Validation\Exceptions\GraphException
+     *
+     * @test
      */
-    public function testInvalidGraphShouldFailAndThrowGraphException($invalidGraph, $additional = ''): void
+    public function invalidGraphShouldFailAndThrowGraphException($invalidGraph, $additional = ''): void
     {
         $validator = new Graph($additional);
         self::assertFalse($validator->validate($invalidGraph));
@@ -45,16 +49,20 @@ class GraphTest extends TestCase
     /**
      * @dataProvider providerForInvalidParams
      * @expectedException \Respect\Validation\Exceptions\ComponentException
+     *
+     * @test
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
+    public function invalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
     {
         $validator = new Graph($additional);
     }
 
     /**
      * @dataProvider providerAdditionalChars
+     *
+     * @test
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query): void
+    public function additionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Graph($additional);
         self::assertTrue($validator->validate($query));

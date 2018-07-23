@@ -17,22 +17,28 @@ use PHPUnit\Framework\TestCase;
 
 class AbstractCtypeRuleTest extends TestCase
 {
-    public function testValidateCleanShouldReturnTrueWhenCtypeFunctionReturnsTrue(): void
+    /**
+     * @test
+     */
+    public function validateCleanShouldReturnTrueWhenCtypeFunctionReturnsTrue(): void
     {
         $ctypeRuleMock = $this->getMockForAbstractClass(AbstractCtypeRule::class);
-        $ctypeRuleMock->expects($this->once())
+        $ctypeRuleMock->expects(self::once())
             ->method('ctypeFunction')
-            ->will($this->returnValue(true));
+            ->will(self::returnValue(true));
 
         self::assertTrue($ctypeRuleMock->validateClean('anything'));
     }
 
-    public function testValidateCleanShouldReturnFalseWhenCtypeFunctionReturnsFalse(): void
+    /**
+     * @test
+     */
+    public function validateCleanShouldReturnFalseWhenCtypeFunctionReturnsFalse(): void
     {
         $ctypeRuleMock = $this->getMockForAbstractClass(AbstractCtypeRule::class);
-        $ctypeRuleMock->expects($this->once())
+        $ctypeRuleMock->expects(self::once())
             ->method('ctypeFunction')
-            ->will($this->returnValue(false));
+            ->will(self::returnValue(false));
 
         self::assertFalse($ctypeRuleMock->validateClean('anything'));
     }

@@ -17,8 +17,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group  rule
- * @covers \Respect\Validation\Rules\MacAddress
  * @covers \Respect\Validation\Exceptions\MacAddressException
+ * @covers \Respect\Validation\Rules\MacAddress
  */
 class MacAddressTest extends TestCase
 {
@@ -31,8 +31,10 @@ class MacAddressTest extends TestCase
 
     /**
      * @dataProvider providerForMacAddress
+     *
+     * @test
      */
-    public function testValidMacaddressesShouldReturnTrue($input): void
+    public function validMacaddressesShouldReturnTrue($input): void
     {
         self::assertTrue($this->macaddressValidator->__invoke($input));
         $this->macaddressValidator->assert($input);
@@ -42,8 +44,10 @@ class MacAddressTest extends TestCase
     /**
      * @dataProvider providerForNotMacAddress
      * @expectedException \Respect\Validation\Exceptions\MacAddressException
+     *
+     * @test
      */
-    public function testInvalidMacaddressShouldThrowMacAddressException($input): void
+    public function invalidMacaddressShouldThrowMacAddressException($input): void
     {
         self::assertFalse($this->macaddressValidator->__invoke($input));
         $this->macaddressValidator->assert($input);
