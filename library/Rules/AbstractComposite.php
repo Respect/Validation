@@ -15,17 +15,35 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
-use Respect\Validation\Validator;
+use function array_filter;
+use function array_map;
 
+/**
+ * Abstract class for rules that are composed by other rules.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 abstract class AbstractComposite extends AbstractRule
 {
-    protected $rules = [];
+    /**
+     * @var Validatable[]
+     */
+    private $rules = [];
 
-    public function __construct(...$rule)
+    /**
+     * Initializes the rule adding other rules to the stack.
+     *
+     * @param Validatable ...$rules
+     */
+    public function __construct(Validatable ...$rules)
     {
-        $this->addRules($rule);
+        $this->rules = $rules;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setName(string $name): Validatable
     {
         $parentName = $this->getName();
@@ -41,86 +59,66 @@ abstract class AbstractComposite extends AbstractRule
         return parent::setName($name);
     }
 
-    public function addRule($validator, $arguments = [])
+    /**
+     * Append a rule into the stack of rules.
+     *
+     * @param Validatable $rule
+     *
+     * @return AbstractComposite
+     */
+    public function addRule(Validatable $rule): self
     {
-        if (!$validator instanceof Validatable) {
-            $this->appendRule(Validator::buildRule($validator, $arguments));
-        } else {
-            $this->appendRule($validator);
+        if ($this->shouldHaveNameOverwritten($rule)) {
+            $rule->setName($this->getName());
         }
+
+        $this->rules[] = $rule;
 
         return $this;
     }
 
-    public function removeRules(): void
-    {
-        $this->rules = [];
-    }
-
-    public function addRules(array $validators)
-    {
-        foreach ($validators as $key => $spec) {
-            if ($spec instanceof Validatable) {
-                $this->appendRule($spec);
-            } elseif (is_numeric($key) && is_array($spec)) {
-                $this->addRules($spec);
-            } elseif (is_array($spec)) {
-                $this->addRule($key, $spec);
-            } else {
-                $this->addRule($spec);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getRules()
+    /**
+     * Returns all the rules in the stack.
+     *
+     * @return Validatable[]
+     */
+    public function getRules(): array
     {
         return $this->rules;
     }
 
-    public function hasRule($validator)
+    /**
+     * Returns all the exceptions throw when asserting all rules.
+     *
+     * @param mixed $input
+     *
+     * @return ValidationException[]
+     */
+    protected function getAllThrownExceptions($input): array
     {
-        if (empty($this->rules)) {
-            return false;
-        }
+        return array_filter(
+            array_map(
+                function (Validatable $rule) use ($input): ?ValidationException {
+                    try {
+                        $rule->assert($input);
+                    } catch (ValidationException $exception) {
+                        return $exception;
+                    }
 
-        if ($validator instanceof Validatable) {
-            return isset($this->rules[spl_object_hash($validator)]);
-        }
-
-        if (is_string($validator)) {
-            foreach ($this->rules as $rule) {
-                if (get_class($rule) == __NAMESPACE__.'\\'.$validator) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
+                    return null;
+                },
+                $this->getRules()
+            )
+        );
     }
 
-    protected function appendRule(Validatable $validator): void
+    private function shouldHaveNameOverwritten(Validatable $rule): bool
     {
-        if (!$validator->getName() && $this->getName()) {
-            $validator->setName($this->getName());
-        }
-
-        $this->rules[spl_object_hash($validator)] = $validator;
+        return $this->hasName($this) && !$this->hasName($rule);
     }
 
-    protected function validateRules($input)
+    private function hasName(Validatable $rule): bool
     {
-        $validators = $this->getRules();
-        $exceptions = [];
-        foreach ($validators as $v) {
-            try {
-                $v->assert($input);
-            } catch (ValidationException $e) {
-                $exceptions[] = $e;
-            }
-        }
-
-        return $exceptions;
+        return null !== $rule->getName();
     }
 }

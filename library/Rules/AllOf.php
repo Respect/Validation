@@ -17,8 +17,8 @@ class AllOf extends AbstractComposite
 {
     public function assert($input): void
     {
-        $exceptions = $this->validateRules($input);
-        $numRules = count($this->rules);
+        $exceptions = $this->getAllThrownExceptions($input);
+        $numRules = count($this->getRules());
         $numExceptions = count($exceptions);
         $summary = [
             'total' => $numRules,

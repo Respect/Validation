@@ -25,41 +25,6 @@ class AllOfTest extends TestCase
     /**
      * @test
      */
-    public function removeRulesShouldRemoveAllRules(): void
-    {
-        $o = new AllOf(new IntVal(), new Positive());
-        $o->removeRules();
-        self::assertCount(0, $o->getRules());
-    }
-
-    /**
-     * @test
-     */
-    public function addRulesUsingArrayOfRules(): void
-    {
-        $o = new AllOf();
-        $o->addRules(
-            [
-                [$x = new IntVal(), new Positive()],
-            ]
-        );
-        self::assertTrue($o->hasRule($x));
-        self::assertTrue($o->hasRule('Positive'));
-    }
-
-    /**
-     * @test
-     */
-    public function addRulesUsingSpecificationArray(): void
-    {
-        $o = new AllOf();
-        $o->addRules(['Between' => [1, 2]]);
-        self::assertTrue($o->hasRule('Between'));
-    }
-
-    /**
-     * @test
-     */
     public function validationShouldWorkIfAllRulesReturnTrue(): void
     {
         $valid1 = new Callback(function () {

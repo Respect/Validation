@@ -17,7 +17,7 @@ class NoneOf extends AbstractComposite
 {
     public function assert($input): void
     {
-        $exceptions = $this->validateRules($input);
+        $exceptions = $this->getAllThrownExceptions($input);
         $numRules = count($this->getRules());
         $numExceptions = count($exceptions);
         if ($numRules !== $numExceptions) {
