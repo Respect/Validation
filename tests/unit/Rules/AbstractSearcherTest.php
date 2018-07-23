@@ -19,6 +19,8 @@ use Respect\Validation\Test\DataProvider\UndefinedProvider;
 /**
  * @group core
  *
+ * @covers \Respect\Validation\Rules\AbstractSearcher
+ *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class AbstractSearcherTest extends TestCase

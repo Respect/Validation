@@ -16,6 +16,9 @@ namespace Respect\Validation;
 use PHPUnit\Framework\TestCase;
 use Respect\Validation\Exceptions\ComponentException;
 
+/**
+ * @covers \Respect\Validation\Validator
+ */
 class ValidatorTest extends TestCase
 {
     /**

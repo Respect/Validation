@@ -17,6 +17,9 @@ use DirectoryIterator;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 
+/**
+ * @coversNothing
+ */
 class CheckExceptionsTest extends TestCase
 {
     protected $deprecateds = [];

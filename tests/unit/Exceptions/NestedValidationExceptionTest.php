@@ -15,6 +15,9 @@ namespace Respect\Validation\Exceptions;
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \Respect\Validation\Exceptions\NestedValidationException
+ */
 class NestedValidationExceptionTest extends TestCase
 {
     /**

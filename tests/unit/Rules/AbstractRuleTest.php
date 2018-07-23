@@ -16,6 +16,9 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\TestCase;
 use Respect\Validation\Exceptions\ValidationException;
 
+/**
+ * @covers \Respect\Validation\Rules\AbstractRule
+ */
 class AbstractRuleTest extends TestCase
 {
     public function providerForTrueAndFalse()

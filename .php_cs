@@ -26,6 +26,7 @@ return PhpCsFixer\Config::create()
             'style' => 'annotation',
         ],
         'php_unit_test_case_static_method_calls' => ['call_type' => 'self'],
+        'php_unit_test_class_requires_covers' => true,
     ])
     ->setCacheFile(
         sprintf(

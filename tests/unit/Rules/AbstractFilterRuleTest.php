@@ -15,6 +15,9 @@ namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \Respect\Validation\Rules\AbstractFilterRule
+ */
 class AbstractFilterRuleTest extends TestCase
 {
     /**
