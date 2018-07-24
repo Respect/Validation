@@ -15,7 +15,6 @@ namespace Respect\Validation;
 
 use finfo;
 use ReflectionClass;
-use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Rules\AllOf;
 use Respect\Validation\Rules\Key;
@@ -193,21 +192,6 @@ class Validator extends AllOf
     }
 
     /**
-     * @param mixed $ruleSpec
-     * @param array $arguments
-     *
-     * @return Validatable
-     */
-    public static function buildRule($ruleSpec, $arguments = [])
-    {
-        try {
-            return Factory::getDefaultInstance()->rule($ruleSpec, $arguments);
-        } catch (\Exception $exception) {
-            throw new ComponentException($exception->getMessage(), $exception->getCode(), $exception);
-        }
-    }
-
-    /**
      * @param string $method
      * @param array  $arguments
      *
@@ -215,7 +199,7 @@ class Validator extends AllOf
      */
     public function __call($method, $arguments)
     {
-        return $this->addRule(static::buildRule($method, $arguments));
+        return $this->addRule(Factory::getDefaultInstance()->rule($method, $arguments));
     }
 
     /**
