@@ -93,6 +93,8 @@ class PostalCodeTest extends \PHPUnit_Framework_TestCase
             ['PL', '99-300'],
             ['NL', '1012 GX'],
             ['NL', '1012GX'],
+            ['PT', '3660606'],
+            ['PT', '3660-606'],
         ];
     }
 
