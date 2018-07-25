@@ -22,7 +22,6 @@ use Respect\Validation\Exceptions\ValidationException;
 use function array_map;
 use function array_merge;
 use function array_unique;
-use function class_exists;
 use function lcfirst;
 
 /**
@@ -126,12 +125,13 @@ final class Factory
     public function rule(string $ruleName, array $arguments = []): Validatable
     {
         foreach ($this->rulesNamespaces as $namespace) {
-            $className = sprintf('%s\\%s', $namespace, ucfirst($ruleName));
-            if (!class_exists($className)) {
+            try {
+                return $this
+                    ->createReflectionClass($namespace.'\\'.ucfirst($ruleName), Validatable::class)
+                    ->newInstanceArgs($arguments);
+            } catch (ReflectionException $exception) {
                 continue;
             }
-
-            return $this->createReflectionClass($className, Validatable::class)->newInstanceArgs($arguments);
         }
 
         throw new ComponentException(sprintf('"%s" is not a valid rule name', $ruleName));
@@ -159,15 +159,14 @@ final class Factory
             $id = $params['name'] = $validatable->getName();
         }
         foreach ($this->exceptionsNamespaces as $namespace) {
-            $exceptionName = sprintf('%s\\%sException', $namespace, $ruleName);
-            if (!class_exists($exceptionName)) {
+            try {
+                return $this->createValidationException($namespace.'\\'.$ruleName.'Exception', $id, $input, $params);
+            } catch (ReflectionException $exception) {
                 continue;
             }
-
-            return $this->createValidationException($exceptionName, $id, $input, $params);
         }
 
-        return $this->createValidationException(ValidationException::class, $id, $input, $params);
+        return new ValidationException($input, $id, $params, $this->translator);
     }
 
     /**
