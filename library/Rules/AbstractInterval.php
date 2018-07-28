@@ -25,6 +25,11 @@ abstract class AbstractInterval extends AbstractRule
         $this->inclusive = $inclusive;
     }
 
+    protected function isAbleToCompareValues($left, $right)
+    {
+        return is_scalar($left) === is_scalar($right);
+    }
+
     protected function filterInterval($value)
     {
         if (!is_string($value) || is_numeric($value) || empty($value)) {

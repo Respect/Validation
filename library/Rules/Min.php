@@ -15,10 +15,17 @@ class Min extends AbstractInterval
 {
     public function validate($input)
     {
-        if ($this->inclusive) {
-            return $this->filterInterval($input) >= $this->filterInterval($this->interval);
+        $filteredInput = $this->filterInterval($input);
+        $filteredInterval = $this->filterInterval($this->interval);
+
+        if (!$this->isAbleToCompareValues($filteredInput, $filteredInterval)) {
+            return false;
         }
 
-        return $this->filterInterval($input) > $this->filterInterval($this->interval);
+        if ($this->inclusive) {
+            return $filteredInput >= $filteredInterval;
+        }
+
+        return $filteredInput > $filteredInterval;
     }
 }

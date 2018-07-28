@@ -70,6 +70,8 @@ class MinTest extends \PHPUnit_Framework_TestCase
             [0, false, -250],
             [0, false, -50],
             [50, false, 50],
+            [2040, false, '2018-01-25'],
+            [10.5, false, '2018-01-25'],
         ];
     }
 }

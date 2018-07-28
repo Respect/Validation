@@ -62,6 +62,8 @@ class MaxTest extends \PHPUnit_Framework_TestCase
             [200, false, 250],
             [200, false, 1500],
             [200, false, 200],
+            [1900, false, '2018-01-25'],
+            [10.5, false, '2018-01-25'],
         ];
     }
 }
