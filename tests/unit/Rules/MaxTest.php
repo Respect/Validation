@@ -56,6 +56,8 @@ final class MaxTest extends RuleTestCase
             [new Max('now'), '+1 minute'],
             [new Max('B'), 'C'],
             [new Max(new CountableStub(3)), 4],
+            [new Max(1900), '2018-01-25'],
+            [new Max(10.5), '2018-01-25'],
         ];
     }
 }

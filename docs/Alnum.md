@@ -7,12 +7,15 @@ Validates alphanumeric characters from a-Z and 0-9.
 
 ```php
 v::alnum()->validate('foo 123'); // true
+v::alnum()->validate('number 100%'); // false
+v::alnum('%')->validate('number 100%'); // true
 ```
 
-A parameter for extra characters can be used:
+Because this rule allows whitespaces by default, you can separate additional
+characters with a whitespace:
 
 ```php
-v::alnum('-')->validate('foo - 123'); // true
+v::alnum('- ! :')->validate('foo :- 123 !'); // true
 ```
 
 This validator allows whitespace, if you want to

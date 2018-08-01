@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
 use function array_filter;
@@ -120,5 +121,22 @@ abstract class AbstractComposite extends AbstractRule
     private function hasName(Validatable $rule): bool
     {
         return null !== $rule->getName();
+    }
+
+    private function setExceptionTemplate(ValidationException $exception)
+    {
+        if (null === $this->template || $exception->hasCustomTemplate()) {
+            return;
+        }
+
+        $exception->setTemplate($this->template);
+
+        if (!$exception instanceof NestedValidationException) {
+            return;
+        }
+
+        foreach ($exception->getRelated() as $relatedException) {
+            $this->setExceptionTemplate($relatedException);
+        }
     }
 }

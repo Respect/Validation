@@ -15,4 +15,3 @@ try {
 ?>
 --EXPECTF--
 - "something" is not tasty
-  - "something" must be between 1 and 2

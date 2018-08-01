@@ -27,7 +27,7 @@ final class IntVal extends AbstractRule
 {
     public function validate($input): bool
     {
-        if (is_float($input)) {
+        if (is_float($input) || is_bool($input)) {
             return false;
         }
 
