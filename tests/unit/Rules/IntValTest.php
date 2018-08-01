@@ -39,6 +39,8 @@ final class IntValTest extends RuleTestCase
             [$rule, '165'],
             [$rule, 123456],
             [$rule, PHP_INT_MAX],
+            [$rule, '06'],
+            [$rule, '0'],
         ];
     }
 

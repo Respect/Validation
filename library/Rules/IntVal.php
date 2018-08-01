@@ -31,6 +31,6 @@ final class IntVal extends AbstractRule
             return false;
         }
 
-        return false !== filter_var($input, FILTER_VALIDATE_INT);
+        return false !== filter_var($input, FILTER_VALIDATE_INT, FILTER_FLAG_ALLOW_OCTAL);
     }
 }
