@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation;
 
 use finfo;
-use ReflectionClass;
+use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Rules\AllOf;
 use Respect\Validation\Rules\Key;
@@ -165,8 +165,11 @@ use Respect\Validation\Rules\Key;
  * @method static Validator yes($useLocale = false)
  * @method static Validator zend($validator, array $params = null)
  */
-class Validator extends AllOf
+final class Validator extends AllOf
 {
+    /**
+     * {@inheritdoc}
+     */
     public function check($input): void
     {
         try {
@@ -181,25 +184,33 @@ class Validator extends AllOf
     }
 
     /**
-     * @param string $ruleName
-     * @param array  $arguments
+     * Creates a new Validator instance with a rule that was called on the static method.
      *
-     * @return Validator
-     */
-    public static function __callStatic($ruleName, $arguments)
-    {
-        return (new static())->__call($ruleName, $arguments);
-    }
-
-    /**
-     * @param string $method
-     * @param array  $arguments
+     * @param string $ruleName
+     * @param array $arguments
+     *
+     * @throws ComponentException
      *
      * @return self
      */
-    public function __call($method, $arguments)
+    public static function __callStatic(string $ruleName, array $arguments): self
     {
-        return $this->addRule(Factory::getDefaultInstance()->rule($method, $arguments));
+        return self::create()->__call($ruleName, $arguments);
+    }
+
+    /**
+     * Create a new rule by the name of the method and adds the rule to the chain.
+     *
+     * @param string $ruleName
+     * @param array $arguments
+     *
+     * @throws ComponentException
+     *
+     * @return self
+     */
+    public function __call(string $ruleName, array $arguments): self
+    {
+        return $this->addRule(Factory::getDefaultInstance()->rule($ruleName, $arguments));
     }
 
     /**
@@ -207,10 +218,8 @@ class Validator extends AllOf
      *
      * @return Validator
      */
-    public static function create()
+    public static function create(): self
     {
-        $ref = new ReflectionClass(__CLASS__);
-
-        return $ref->newInstanceArgs(func_get_args());
+        return new self();
     }
 }
