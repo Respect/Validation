@@ -16,11 +16,19 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Imei
+ *
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Diego Oliveira <contato@diegoholiveira.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ImeiTest extends RuleTestCase
+final class ImeiTest extends RuleTestCase
 {
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new Imei();
@@ -37,6 +45,9 @@ class ImeiTest extends RuleTestCase
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new Imei();

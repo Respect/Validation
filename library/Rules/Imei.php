@@ -13,16 +13,26 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Imei extends AbstractRule
+use function is_scalar;
+use function mb_strlen;
+use function preg_replace;
+
+/**
+ * Validates is the input is a valid IMEI.
+ *
+ * @author Alexander Gorshkov <mazanax@yandex.ru>
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Diego Oliveira <contato@diegoholiveira.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class Imei extends AbstractRule
 {
-    public const IMEI_SIZE = 15;
+    private const IMEI_SIZE = 15;
 
     /**
      * @see https://en.wikipedia.org/wiki/International_Mobile_Station_Equipment_Identity
      *
-     * @param string $input
-     *
-     * @return bool
+     * {@inheritdoc}
      */
     public function validate($input): bool
     {
