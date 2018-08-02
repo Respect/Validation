@@ -91,7 +91,6 @@ class NestedValidationException extends ValidationException implements IteratorA
     public function getIterator()
     {
         $childrenExceptions = new SplObjectStorage();
-
         $recursiveIteratorIterator = $this->getRecursiveIterator();
 
         $lastDepth = 0;
@@ -118,15 +117,7 @@ class NestedValidationException extends ValidationException implements IteratorA
             $lastDepth = $currentDepth;
             $lastDepthOriginal = $currentDepthOriginal;
 
-            $childrenExceptions->attach(
-                $childException,
-                [
-                    'depth' => $currentDepth,
-                    'depth_original' => $currentDepthOriginal,
-                    'previous_depth' => $lastDepth,
-                    'previous_depth_original' => $lastDepthOriginal,
-                ]
-            );
+            $childrenExceptions->attach($childException, $currentDepth);
         }
 
         return $childrenExceptions;
@@ -177,7 +168,7 @@ class NestedValidationException extends ValidationException implements IteratorA
         foreach ($exceptions as $exception) {
             $messages[] = sprintf(
                 '%s- %s',
-                str_repeat(' ', ($exceptions[$exception]['depth'] - $leveler) * 2),
+                str_repeat(' ', ($exceptions[$exception] - $leveler) * 2),
                 $exception->getMessage()
             );
         }
