@@ -13,9 +13,19 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Imei extends AbstractRule
+use function is_scalar;
+use function mb_strlen;
+use function preg_replace;
+
+/**
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Diego Oliveira <contato@diegoholiveira.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Alexander Gorshkov <mazanax@yandex.ru>
+ */
+final class Imei extends AbstractRule
 {
-    public const IMEI_SIZE = 15;
+    private const IMEI_SIZE = 15;
 
     /**
      * @see https://en.wikipedia.org/wiki/International_Mobile_Station_Equipment_Identity
