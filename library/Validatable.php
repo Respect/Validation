@@ -24,7 +24,7 @@ interface Validatable
 
     public function getName(): ?string;
 
-    public function reportError($input, array $relatedExceptions = []): ValidationException;
+    public function reportError($input, array $extraParameters = []): ValidationException;
 
     public function setName(string $name): Validatable;
 

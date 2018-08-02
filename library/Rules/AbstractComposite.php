@@ -137,8 +137,8 @@ abstract class AbstractComposite extends AbstractRule
             return;
         }
 
-        foreach ($exception->getRelated() as $relatedException) {
-            $this->updateExceptionTemplate($relatedException);
+        foreach ($exception->getChildren() as $childException) {
+            $this->updateExceptionTemplate($childException);
         }
     }
 }

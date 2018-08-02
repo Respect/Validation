@@ -46,7 +46,7 @@ class NestedValidationException extends ValidationException implements IteratorA
      *
      * @return SplObjectStorage|ValidationException[]
      */
-    public function getRelated(): SplObjectStorage
+    public function getChildren(): SplObjectStorage
     {
         if (!$this->exceptions instanceof SplObjectStorage) {
             $this->exceptions = new SplObjectStorage();
@@ -62,9 +62,9 @@ class NestedValidationException extends ValidationException implements IteratorA
      *
      * @return self
      */
-    public function addRelated(ValidationException $exception): self
+    public function addChild(ValidationException $exception): self
     {
-        $this->getRelated()->attach($exception);
+        $this->getChildren()->attach($exception);
 
         return $this;
     }
@@ -76,10 +76,10 @@ class NestedValidationException extends ValidationException implements IteratorA
      *
      * @return self
      */
-    public function setRelated(array $exceptions): self
+    public function addChildren(array $exceptions): self
     {
         foreach ($exceptions as $exception) {
-            $this->addRelated($exception);
+            $this->addChild($exception);
         }
 
         return $this;
@@ -139,7 +139,7 @@ class NestedValidationException extends ValidationException implements IteratorA
     public function getMessages(array $templates = []): array
     {
         $messages = [$this->getId() => $this->renderMessage($this, $templates)];
-        foreach ($this->getRelated() as $exception) {
+        foreach ($this->getChildren() as $exception) {
             $id = $exception->getId();
             if (!$exception instanceof self) {
                 $messages[$id] = $this->renderMessage(
@@ -205,12 +205,12 @@ class NestedValidationException extends ValidationException implements IteratorA
             return false;
         }
 
-        if (1 !== $exception->getRelated()->count()) {
+        if (1 !== $exception->getChildren()->count()) {
             return false;
         }
 
-        $exception->getRelated()->rewind();
-        $childException = $exception->getRelated()->current();
+        $exception->getChildren()->rewind();
+        $childException = $exception->getChildren()->current();
         if ($childException->getMessage() === $exception->getMessage()) {
             return true;
         }

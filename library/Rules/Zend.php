@@ -59,7 +59,7 @@ class Zend extends AbstractRule
             $exceptions[] = $this->reportError($m, get_object_vars($this));
         }
 
-        throw $this->reportError($input)->setRelated($exceptions);
+        throw $this->reportError($input)->addChildren($exceptions);
     }
 
     public function validate($input): bool

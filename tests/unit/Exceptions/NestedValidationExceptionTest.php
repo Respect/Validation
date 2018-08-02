@@ -23,13 +23,13 @@ class NestedValidationExceptionTest extends TestCase
     /**
      * @test
      */
-    public function getRelatedShouldReturnExceptionAddedByAddRelated(): void
+    public function getChildrenShouldReturnExceptionAddedByAddRelated(): void
     {
         $composite = new AttributeException('input', 'id', [], 'trim');
         $node = new IntValException('input', 'id', [], 'trim');
-        $composite->addRelated($node);
-        self::assertCount(1, $composite->getRelated(true));
-        self::assertContainsOnly($node, $composite->getRelated());
+        $composite->addChild($node);
+        self::assertCount(1, $composite->getChildren(true));
+        self::assertContainsOnly($node, $composite->getChildren());
     }
 
     /**
@@ -39,10 +39,10 @@ class NestedValidationExceptionTest extends TestCase
     {
         $composite = new AttributeException('input', 'id', [], 'trim');
         $node = new IntValException('input', 'id', [], 'trim');
-        $composite->addRelated($node);
-        $composite->addRelated($node);
-        $composite->addRelated($node);
-        self::assertCount(1, $composite->getRelated(true));
-        self::assertContainsOnly($node, $composite->getRelated());
+        $composite->addChild($node);
+        $composite->addChild($node);
+        $composite->addChild($node);
+        self::assertCount(1, $composite->getChildren(true));
+        self::assertContainsOnly($node, $composite->getChildren());
     }
 }

@@ -24,7 +24,7 @@ class AnyOf extends AbstractComposite
         $numRules = count($validators);
         $numExceptions = count($exceptions);
         if ($numExceptions === $numRules) {
-            throw $this->reportError($input)->setRelated($exceptions);
+            throw $this->reportError($input)->addChildren($exceptions);
         }
     }
 

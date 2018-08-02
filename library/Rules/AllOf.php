@@ -26,7 +26,7 @@ class AllOf extends AbstractComposite
             'passed' => $numRules - $numExceptions,
         ];
         if (!empty($exceptions)) {
-            throw $this->reportError($input, $summary)->setRelated($exceptions);
+            throw $this->reportError($input, $summary)->addChildren($exceptions);
         }
     }
 

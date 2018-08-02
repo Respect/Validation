@@ -95,7 +95,7 @@ class Domain extends AbstractComposite
         }
 
         if (count($e)) {
-            throw $this->reportError($input)->setRelated($e);
+            throw $this->reportError($input)->addChildren($e);
         }
     }
 

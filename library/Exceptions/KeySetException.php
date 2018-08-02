@@ -38,7 +38,7 @@ class KeySetException extends GroupedValidationException implements NonOmissible
      */
     protected function chooseTemplate(): string
     {
-        if (0 === $this->getRelated()->count()) {
+        if (0 === $this->getChildren()->count()) {
             return static::STRUCTURE;
         }
 

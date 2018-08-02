@@ -64,7 +64,7 @@ abstract class AbstractRelated extends AbstractRule
         } catch (ValidationException $e) {
             throw $this
                 ->reportError($this->reference, ['hasReference' => true])
-                ->addRelated($e);
+                ->addChild($e);
         }
     }
 

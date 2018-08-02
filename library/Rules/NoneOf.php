@@ -21,7 +21,7 @@ class NoneOf extends AbstractComposite
         $numRules = count($this->getRules());
         $numExceptions = count($exceptions);
         if ($numRules !== $numExceptions) {
-            throw $this->reportError($input)->setRelated($exceptions);
+            throw $this->reportError($input)->addChildren($exceptions);
         }
     }
 

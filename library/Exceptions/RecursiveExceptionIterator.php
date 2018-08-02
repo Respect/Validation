@@ -22,7 +22,7 @@ class RecursiveExceptionIterator implements RecursiveIterator, Countable
 
     public function __construct(NestedValidationException $parent)
     {
-        $this->exceptions = $parent->getRelated();
+        $this->exceptions = $parent->getChildren();
     }
 
     public function count()

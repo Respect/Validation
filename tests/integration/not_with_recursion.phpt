@@ -1,5 +1,5 @@
 --TEST--
-not() with recursion should update mode from related rules
+not() with recursion should update mode of its children
 --FILE--
 <?php
 require 'vendor/autoload.php';
