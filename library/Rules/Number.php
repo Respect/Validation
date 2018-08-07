@@ -13,8 +13,21 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Number extends AbstractRule
+use function is_nan;
+use function is_numeric;
+
+/**
+ * Validates if the input is a number.
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ismael Elias <ismael.esq@hotmail.com>
+ * @author Vitaliy <reboot.m@gmail.com>
+ */
+final class Number extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (!is_numeric($input)) {

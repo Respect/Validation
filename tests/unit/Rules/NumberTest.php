@@ -15,13 +15,26 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
+use const INF;
+use const NAN;
+use const PHP_INT_MAX;
+use function acos;
+use function sqrt;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Number
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ismael Elias <ismael.esq@hotmail.com>
+ * @author Vitaliy <reboot.m@gmail.com>
  */
-class NumberTest extends RuleTestCase
+final class NumberTest extends RuleTestCase
 {
+    /*
+    * {@inheritdoc}
+    */
     public function providerForValidInput(): array
     {
         $rule = new Number();
@@ -38,6 +51,9 @@ class NumberTest extends RuleTestCase
         ];
     }
 
+    /*
+    * {@inheritdoc}
+    */
     public function providerForInvalidInput(): array
     {
         $rule = new Number();
