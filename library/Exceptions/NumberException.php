@@ -13,8 +13,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class NumberException extends ValidationException
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ismael Elias <ismael.esq@hotmail.com>
+ * @author Vitaliy <reboot.m@gmail.com>
+ */
+final class NumberException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a number',
