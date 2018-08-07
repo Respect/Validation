@@ -13,74 +13,49 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\InfiniteException
+ * @group rule
  * @covers \Respect\Validation\Rules\Infinite
+ *
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class InfiniteTest extends TestCase
+final class InfiniteTest extends RuleTestCase
 {
-    protected $rule;
-
-    protected function setUp(): void
-    {
-        $this->rule = new Infinite();
-    }
-
     /**
-     * @dataProvider providerForInfinite
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function shouldValidateInfiniteNumbers($input): void
+    public function providerForValidInput(): array
     {
-        self::assertTrue($this->rule->validate($input));
-    }
+        $rule = new Infinite();
 
-    /**
-     * @dataProvider providerForNonInfinite
-     *
-     * @test
-     */
-    public function shouldNotValidateNonInfiniteNumbers($input): void
-    {
-        self::assertFalse($this->rule->validate($input));
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\InfiniteException
-     * @expectedExceptionMessage 123456 must be an infinite number
-     *
-     * @test
-     */
-    public function shouldThrowInfiniteExceptionWhenChecking(): void
-    {
-        $this->rule->check(123456);
-    }
-
-    public function providerForInfinite()
-    {
         return [
-            [INF],
-            [INF * -1],
+            [$rule, INF],
+            [$rule, INF * -1],
         ];
     }
 
-    public function providerForNonInfinite()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
+        $rule = new Infinite();
+
         return [
-            [' '],
-            [[]],
-            [new \stdClass()],
-            [null],
-            ['123456'],
-            [-9],
-            [0],
-            [16],
-            [2],
-            [PHP_INT_MAX],
+            [$rule, ' '],
+            [$rule, []],
+            [$rule, new \stdClass()],
+            [$rule, null],
+            [$rule, '123456'],
+            [$rule, -9],
+            [$rule, 0],
+            [$rule, 16],
+            [$rule, 2],
+            [$rule, PHP_INT_MAX],
         ];
     }
 }
