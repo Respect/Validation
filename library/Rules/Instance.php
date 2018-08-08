@@ -13,9 +13,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Instance extends AbstractRule
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class Instance extends AbstractRule
 {
-    public $instanceName;
+    private $instanceName;
 
     public function __construct($instanceName)
     {
