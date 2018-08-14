@@ -121,6 +121,12 @@ class Tld extends AbstractRule
 
     public function validate($input)
     {
-        return in_array(strtolower($input), $this->tldList);
+        // prefere LayerShifter\TLDDatabase if available
+        if (class_exists('\LayerShifter\TLDDatabase\Store')) {
+            $tldDb = new \LayerShifter\TLDDatabase\Store();
+            return $tldDb->isExists(strtolower($input));
+        } else {
+            return in_array(strtolower($input), $this->tldList);
+        }
     }
 }
