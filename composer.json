@@ -28,7 +28,8 @@
         "egulias/email-validator": "Strict (RFC compliant) email validation",
         "symfony/validator": "Use Symfony validator through Respect\\Validation",
         "zendframework/zend-validator": "Use Zend Framework validator through Respect\\Validation",
-        "friendsofphp/php-cs-fixer": "Fix PSR2 and other coding style issues"
+        "friendsofphp/php-cs-fixer": "Fix PSR2 and other coding style issues",
+        "layershifter/tld-database": "Database abstraction for Public Suffix List"
     },
     "autoload": {
         "psr-4": {
