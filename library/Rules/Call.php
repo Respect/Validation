@@ -13,15 +13,85 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Call extends AbstractRelated
+use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Validatable;
+use function call_user_func;
+use function restore_error_handler;
+use function set_error_handler;
+
+/**
+ * Validates the return of a callable for a given input.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class Call extends AbstractRule
 {
-    public function getReferenceValue($input)
+    /**
+     * @var callable
+     */
+    private $callable;
+
+    /**
+     * @var Validatable
+     */
+    private $rule;
+
+    /**
+     * Initializes the rule with the callable to be executed after the input is passed.
+     *
+     * @param callable $callable
+     * @param Validatable $rule
+     */
+    public function __construct(callable $callable, Validatable $rule)
     {
-        return call_user_func_array($this->reference, [&$input]);
+        $this->callable = $callable;
+        $this->rule = $rule;
     }
 
-    public function hasReference($input): bool
+    /**
+     * {@inheritdoc}
+     */
+    public function assert($input): void
     {
-        return is_callable($this->reference);
+        $this->setErrorHandler($input);
+
+        $this->rule->assert(call_user_func($this->callable, $input));
+
+        restore_error_handler();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function check($input): void
+    {
+        $this->setErrorHandler($input);
+
+        $this->rule->check(call_user_func($this->callable, $input));
+
+        restore_error_handler();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
+    {
+        try {
+            $this->check($input);
+        } catch (ValidationException $exception) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private function setErrorHandler($input): void
+    {
+        set_error_handler(function () use ($input): void {
+            throw $this->reportError($input);
+        });
     }
 }

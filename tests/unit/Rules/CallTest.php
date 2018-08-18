@@ -14,98 +14,169 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
+use Respect\Validation\Exceptions\AlwaysInvalidException;
+use Respect\Validation\Exceptions\CallException;
 use Respect\Validation\Validatable;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\CallException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Call
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
  */
-class CallTest extends TestCase
+final class CallTest extends TestCase
 {
-    private const CALLBACK_RETURN = [];
-
-    public function thisIsASampleCallbackUsedInsideThisTest()
-    {
-        return self::CALLBACK_RETURN;
-    }
-
     /**
      * @test
      */
-    public function callbackValidatorShouldAcceptEmptyString(): void
+    public function assertShouldExecuteCallable(): void
     {
-        $validatable = $this->createMock(Validatable::class);
-        $validatable
+        $input = ' input ';
+        $callable = 'trim';
+
+        $rule = $this->createMock(Validatable::class);
+        $rule
             ->expects(self::once())
             ->method('assert')
-            ->with(['']);
+            ->with($callable($input));
 
-        $v = new Call('str_split', $validatable);
-        $v->assert('');
+        $sut = new Call($callable, $rule);
+        $sut->assert($input);
     }
 
     /**
      * @test
      */
-    public function callbackValidatorShouldAcceptStringWithFunctionName(): void
+    public function assertShouldThrowCallExceptionWhenPhpTriggersAnError(): void
     {
-        $validatable = $this->createMock(Validatable::class);
-        $validatable
+        $input = [];
+        $callable = 'trim';
+
+        $rule = $this->createMock(Validatable::class);
+        $rule
+            ->expects(self::never())
+            ->method('assert');
+
+        $this->expectException(CallException::class);
+
+        $sut = new Call($callable, $rule);
+        $sut->assert($input);
+    }
+
+    /**
+     * @test
+     */
+    public function assertShouldThrowExceptionOfTheDefinedRule(): void
+    {
+        $input = 'something';
+        $callable = 'trim';
+
+        $rule = new AlwaysInvalid();
+
+        $this->expectException(AlwaysInvalidException::class);
+
+        $sut = new Call($callable, $rule);
+        $sut->assert($input);
+    }
+
+    /**
+     * @test
+     */
+    public function checkShouldExecuteCallable(): void
+    {
+        $input = ' input ';
+        $callable = 'trim';
+
+        $rule = $this->createMock(Validatable::class);
+        $rule
             ->expects(self::once())
-            ->method('assert')
-            ->with(['t', 'e', 's', 't']);
+            ->method('check')
+            ->with($callable($input));
 
-        $v = new Call('str_split', $validatable);
-        $v->assert('test');
+        $sut = new Call($callable, $rule);
+        $sut->check($input);
     }
 
     /**
      * @test
      */
-    public function callbackValidatorShouldAcceptArrayCallbackDefinition(): void
+    public function checkShouldThrowCallExceptionWhenPhpTriggersAnError(): void
     {
-        $validatable = $this->createMock(Validatable::class);
-        $validatable
+        $input = [];
+        $callable = 'trim';
+
+        $rule = $this->createMock(Validatable::class);
+        $rule
+            ->expects(self::never())
+            ->method('check');
+
+        $this->expectException(CallException::class);
+
+        $sut = new Call($callable, $rule);
+        $sut->assert($input);
+    }
+
+    /**
+     * @test
+     */
+    public function checkShouldThrowExceptionOfTheDefinedRule(): void
+    {
+        $rule = new AlwaysInvalid();
+
+        $this->expectException(AlwaysInvalidException::class);
+
+        $sut = new Call('trim', $rule);
+        $sut->check('something');
+    }
+
+    /**
+     * @test
+     */
+    public function validateShouldExecuteCallable(): void
+    {
+        $input = ' input ';
+        $callable = 'trim';
+
+        $rule = $this->createMock(Validatable::class);
+        $rule
             ->expects(self::once())
-            ->method('assert')
-            ->with(self::CALLBACK_RETURN);
+            ->method('check')
+            ->with($callable($input));
 
-        $v = new Call([$this, 'thisIsASampleCallbackUsedInsideThisTest'], $validatable);
-        $v->assert('test');
+        $sut = new Call($callable, $rule);
+
+        self::assertTrue($sut->validate($input));
     }
 
     /**
      * @test
      */
-    public function callbackValidatorShouldAcceptClosures(): void
+    public function validateShouldReturnFalseWhenPhpTriggersAnError(): void
     {
-        $return = [];
+        $input = [];
+        $callable = 'trim';
 
-        $validatable = $this->createMock(Validatable::class);
-        $validatable
-            ->expects(self::once())
-            ->method('assert')
-            ->with($return);
+        $rule = $this->createMock(Validatable::class);
+        $rule
+            ->expects(self::never())
+            ->method('check');
 
-        $v = new Call(
-            function () use ($return) {
-                return $return;
-            },
-            $validatable
-        );
-        $v->assert('test');
+        $sut = new Call($callable, $rule);
+
+        self::assertFalse($sut->validate($input));
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\CallException
-     *
      * @test
      */
-    public function callbackFailedShouldThrowCallException(): void
+    public function validateShouldReturnFalseWhenDefinedRuleFails(): void
     {
-        $v = new Call('strrev', new ArrayVal());
-        self::assertFalse($v->validate('test'));
-        $v->assert('test');
+        $sut = new Call('trim', new AlwaysInvalid());
+
+        self::assertFalse($sut->validate('something'));
     }
 }

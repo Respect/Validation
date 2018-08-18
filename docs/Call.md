@@ -2,8 +2,9 @@
 
 - `Call(callable $callable, Rule $rule)`
 
-This is a very low level validator. It calls a function, method or closure
-for the input and then validates it. Consider the following variable:
+Validates the return of a [callable][] for a given input.
+
+Consider the following variable:
 
 ```php
 $url = 'http://www.google.com/search?q=respect.github.com';
@@ -49,3 +50,5 @@ Version | Description
 See also:
 
 - [Callback](Callback.md)
+
+- [callable]: http://php.net/callable

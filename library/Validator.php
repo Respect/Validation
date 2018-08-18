@@ -36,7 +36,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator boolType()
  * @method static Validator boolVal()
  * @method static Validator bsn()
- * @method static Validator call()
+ * @method static Validator call(callable $callable, Validatable $rule)
  * @method static Validator callableType()
  * @method static Validator callback(callable $callback)
  * @method static Validator charset(string ...$charset)
