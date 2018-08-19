@@ -13,85 +13,58 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\InException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\In
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class InTest extends TestCase
+final class InTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForIn
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function successInValidatorCases($input, $options = null): void
-    {
-        $v = new In($options);
-        self::assertTrue($v->__invoke($input));
-        $v->check($input);
-        $v->assert($input);
-    }
-
-    /**
-     * @dataProvider providerForNotIn
-     * @expectedException \Respect\Validation\Exceptions\InException
-     *
-     * @test
-     */
-    public function invalidInChecksShouldThrowInException($input, $options, $strict = false): void
-    {
-        $v = new In($options, $strict);
-        self::assertFalse($v->__invoke($input));
-        $v->assert($input);
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\InException
-     * @expectedExceptionMessage "x" must be in `{ "foo", "bar" }`
-     *
-     * @test
-     */
-    public function inCheckExceptionMessageWithArray(): void
-    {
-        $v = new In(['foo', 'bar']);
-        $v->assert('x');
-    }
-
-    public function providerForIn()
+    public function providerForValidInput(): array
     {
         return [
-            ['', ['']],
-            [null, [null]],
-            ['0', ['0']],
-            [0, [0]],
-            ['foo', ['foo', 'bar']],
-            ['foo', 'barfoobaz'],
-            ['foo', 'foobarbaz'],
-            ['foo', 'barbazfoo'],
-            ['1', [1, 2, 3]],
-            ['1', ['1', 2, 3], true],
+            [new In(''), ''],
+            [new In([null]), null],
+            [new In(['0']), '0'],
+            [new In([0]), 0],
+            [new In(['foo', 'bar']), 'foo'],
+            [new In('barfoobaz'), 'foo'],
+            [new In('foobarbaz'), 'foo'],
+            [new In('barbazfoo'), 'foo'],
+            [new In([1, 2, 3]), '1'],
+            [new In(['1', 2, 3], true), '1'],
         ];
     }
 
-    public function providerForNotIn()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         return [
-            [null, '0'],
-            [null, 0, true],
-            [null, '', true],
-            [null, []],
-            ['', 'barfoobaz'],
-            [null, 'barfoobaz'],
-            [0, 'barfoobaz'],
-            ['0', 'barfoobaz'],
-            ['bat', ['foo', 'bar']],
-            ['foo', 'barfaabaz'],
-            ['foo', 'faabarbaz'],
-            ['foo', 'baabazfaa'],
-            ['1', [1, 2, 3], true],
+            [new In('0'), null],
+            [new In(0, true), null],
+            [new In('', true), null],
+            [new In([], true), null],
+            [new In('barfoobaz'), ''],
+            [new In('barfoobaz'), null],
+            [new In('barfoobaz'), 0],
+            [new In('barfoobaz'), '0'],
+            [new In(['foo', 'bar']), 'bat'],
+            [new In('barfaabaz'), 'foo'],
+            [new In('faabarbaz'), 'foo'],
+            [new In('baabazfaa'), 'foo'],
+            [new In([1, 2, 3], true), '1'],
         ];
     }
 }
