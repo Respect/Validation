@@ -30,28 +30,20 @@ use function is_string;
 final class Email extends AbstractRule
 {
     /**
-     * Assigns email validator.
-     *
-     * @param EmailValidator $emailValidator
+     * @var EmailValidator
      */
-    public function __construct(EmailValidator $emailValidator = null)
-    {
-        $this->emailValidator = $emailValidator;
-    }
+    private $validator;
 
     /**
-     * Gets email validator.
+     * Initializes the rule assigning the EmailValidator instance.
      *
-     * @return EmailValidator | null
+     * If the EmailValidator instance is not defined, tries to create one.
+     *
+     * @param EmailValidator $validator
      */
-    public function getEmailValidator()
+    public function __construct(EmailValidator $validator = null)
     {
-        if (class_exists(EmailValidator::class)
-            && !$this->emailValidator instanceof EmailValidator) {
-            $this->emailValidator = new EmailValidator();
-        }
-
-        return $this->emailValidator;
+        $this->validator = $validator ?: $this->createEmailValidator();
     }
 
     /**
@@ -59,15 +51,23 @@ final class Email extends AbstractRule
      */
     public function validate($input): bool
     {
-        $emailValidator = $this->getEmailValidator();
-        if (!$emailValidator instanceof EmailValidator) {
-            return is_string($input) && filter_var($input, FILTER_VALIDATE_EMAIL);
+        if (!is_string($input)) {
+            return false;
         }
 
-        if (!class_exists(RFCValidation::class)) {
-            return $emailValidator->isValid($input);
+        if (null !== $this->validator) {
+            return $this->validator->isValid($input, new RFCValidation());
         }
 
-        return $emailValidator->isValid($input, new RFCValidation());
+        return (bool) filter_var($input, FILTER_VALIDATE_EMAIL);
+    }
+
+    private function createEmailValidator(): ?EmailValidator
+    {
+        if (class_exists(EmailValidator::class)) {
+            return null;
+        }
+
+        return new EmailValidator();
     }
 }

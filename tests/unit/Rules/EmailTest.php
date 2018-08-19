@@ -15,16 +15,10 @@ namespace Respect\Validation\Rules;
 
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
+use ReflectionException;
+use ReflectionProperty;
 use Respect\Validation\Test\RuleTestCase;
 
-function class_exists(string $className): bool
-{
-    if (isset($GLOBALS['class_exists'][$className])) {
-        return $GLOBALS['class_exists'][$className];
-    }
-
-    return \class_exists($className);
-}
 /**
  * @group  rule
  *
@@ -36,123 +30,80 @@ function class_exists(string $className): bool
  */
 final class EmailTest extends RuleTestCase
 {
-    private function setEmailValidatorExists($value): void
-    {
-        $GLOBALS['class_exists'][EmailValidator::class] = (bool) $value;
-        $GLOBALS['class_exists'][RFCValidation::class] = (bool) $value;
-    }
-
-    private function resetClassExists(): void
-    {
-        unset($GLOBALS['class_exists']);
-    }
-
-    private function getEmailValidatorMock()
-    {
-        $emailValidatorMock = $this
-            ->getMockBuilder(EmailValidator::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        return $emailValidatorMock;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp(): void
-    {
-        $this->setEmailValidatorExists(false);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function tearDown(): void
-    {
-        $this->resetClassExists();
-    }
-
     /**
      * @test
      */
-    public function shouldAcceptInstanceOfEmailValidatorOnConstructor(): void
+    public function shouldUseEmailValidatorToValidate(): void
     {
-        $this->resetClassExists();
-
-        $emailValidator = $this->getEmailValidatorMock();
-
-        $rule = new Email($emailValidator);
-
-        self::assertSame($emailValidator, $rule->getEmailValidator());
-    }
-
-    /**
-     * @test
-     */
-    public function shouldHaveADefaultInstanceOfEmailValidator(): void
-    {
-        $this->resetClassExists();
-
-        $rule = new Email();
-
-        self::assertInstanceOf(EmailValidator::class, $rule->getEmailValidator());
-    }
-
-    /**
-     * @test
-     */
-    public function shouldUseEmailValidatorWhenDefined(): void
-    {
-        $this->resetClassExists();
-
         $input = 'example@example.com';
 
-        $emailValidator = $this->getEmailValidatorMock();
+        $emailValidator = $this->getMockBuilder(EmailValidator::class)
+            ->disableOriginalConstructor()
+            ->getMock();
         $emailValidator
             ->expects(self::once())
             ->method('isValid')
             ->with($input, self::isInstanceOf(RFCValidation::class))
             ->will(self::returnValue(true));
 
-        $rule = new Email($emailValidator);
+        $sut = new Email($emailValidator);
 
-        self::assertTrue($rule->validate($input));
+        self::assertTrue($sut->validate($input));
     }
 
     /**
      * {@inheritdoc}
+     *
+     * @throws ReflectionException
      */
     public function providerForValidInput(): array
     {
-        $email = new Email();
+        $sut = $this->createSutWithoutEmailValidator();
 
         return [
-            [$email, 'test@test.com'],
-            [$email, 'mail+mail@gmail.com'],
-            [$email, 'mail.email@e.test.com'],
-            [$email, 'a@a.a'],
+            [$sut, 'test@test.com'],
+            [$sut, 'mail+mail@gmail.com'],
+            [$sut, 'mail.email@e.test.com'],
+            [$sut, 'a@a.a'],
         ];
     }
 
     /**
      * {@inheritdoc}
+     *
+     * @throws ReflectionException
      */
     public function providerForInvalidInput(): array
     {
-        $email = new Email();
+        $sut = $this->createSutWithoutEmailValidator();
 
         return [
-            [$email, ''],
-            [$email, 'test'],
-            [$email, '@test.com'],
-            [$email, 'mail@test@test.com'],
-            [$email, 'test.test@'],
-            [$email, 'test.@test.com'],
-            [$email, 'test@.test.com'],
-            [$email, 'test@test..com'],
-            [$email, 'test@test.com.'],
-            [$email, '.test@test.com'],
+            [$sut, ''],
+            [$sut, 'test'],
+            [$sut, '@test.com'],
+            [$sut, 'mail@test@test.com'],
+            [$sut, 'test.test@'],
+            [$sut, 'test.@test.com'],
+            [$sut, 'test@.test.com'],
+            [$sut, 'test@test..com'],
+            [$sut, 'test@test.com.'],
+            [$sut, '.test@test.com'],
         ];
+    }
+
+    /**
+     * @throws ReflectionException
+     *
+     * @return Email
+     */
+    private function createSutWithoutEmailValidator(): Email
+    {
+        $rule = new Email();
+
+        $reflection = new ReflectionProperty(Email::class, 'validator');
+        $reflection->setAccessible(true);
+        $reflection->setValue($rule, null);
+
+        return $rule;
     }
 }
