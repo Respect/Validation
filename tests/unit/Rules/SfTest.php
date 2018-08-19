@@ -14,84 +14,70 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
-use Respect\Validation\Exceptions\AllOfException;
-use Respect\Validation\Validator as v;
+use stdClass;
+use Symfony\Component\Validator\Constraints\IsFalse;
+use Symfony\Component\Validator\Constraints\IsNull;
+use Symfony\Component\Validator\Validation;
+use Symfony\Component\Validator\Validator\TraceableValidator;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\SfException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Sf
+ *
+ * @author Augusto Pascutti <augusto@phpsp.org.br>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SfTest extends TestCase
+final class SfTest extends TestCase
 {
     /**
      * @test
      */
-    public function validationWithAnExistingValidationConstraint(): void
+    public function itShouldValidateWithDefinedConstraintAndValidator(): void
     {
-        $constraintName = 'Time';
-        $validConstraintValue = '04:20:00';
-        $invalidConstraintValue = 'yada';
-        self::assertTrue(
-            v::sf($constraintName)->validate($validConstraintValue),
-            sprintf('"%s" should be valid under "%s" constraint.', $validConstraintValue, $constraintName)
-        );
-        self::assertFalse(
-            v::sf($constraintName)->validate($invalidConstraintValue),
-            sprintf('"%s" should be invalid under "%s" constraint.', $invalidConstraintValue, $constraintName)
-        );
+        $sut = new Sf(new IsNull());
+
+        self::assertTrue($sut->validate(null));
     }
 
     /**
-     * @doesNotPerformAssertions
-     *
-     * @depends validationWithAnExistingValidationConstraint
-     *
      * @test
      */
-    public function assertionWithAnExistingValidationConstraint(): void
+    public function itShouldInvalidateWithDefinedConstraintAndValidator(): void
     {
-        $constraintName = 'Time';
-        $validConstraintValue = '04:20:00';
-        v::sf($constraintName)->assert($validConstraintValue);
+        $sut = new Sf(new IsFalse());
+
+        self::assertFalse($sut->validate(true));
     }
 
     /**
-     * @depends assertionWithAnExistingValidationConstraint
-     *
      * @test
      */
-    public function assertionMessageWithAnExistingValidationConstraint()
+    public function itShouldHaveAValidatorByDefault(): void
     {
-        $constraintName = 'Time';
-        $invalidConstraintValue = '34:90:70';
-        try {
-            v::sf($constraintName)->assert($invalidConstraintValue);
-        } catch (AllOfException $exception) {
-            $fullValidationMessage = $exception->getFullMessage();
-            $expectedValidationException = <<<'EOF'
-- Time
-EOF;
+        $sut = new Sf(new IsNull());
 
-            return self::assertEquals(
-                $expectedValidationException,
-                $fullValidationMessage,
-                'Exception message is different from the one expected.'
-            );
+        self::assertAttributeInstanceOf(ValidatorInterface::class, 'validator', $sut);
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldUseTheDefinedValidatorToValidate(): void
+    {
+        if (!class_exists(TraceableValidator::class)) {
+            self::markTestSkipped('The current version of Symfony Validator does not have '.TraceableValidator::class);
         }
-        self::fail('Validation exception expected to compare message.');
-    }
 
-    /**
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage Symfony/Validator constraint "FluxCapacitor" does not exist.
-     *
-     * @test
-     */
-    public function validationWithNonExistingConstraint(): void
-    {
-        $fantasyConstraintName = 'FluxCapacitor';
-        $fantasyValue = '8GW';
-        v::sf($fantasyConstraintName)->validate($fantasyValue);
+        $input = new stdClass();
+
+        $validator = new TraceableValidator(Validation::createValidator());
+
+        $sut = new Sf(new IsNull(), $validator);
+        $sut->validate($input);
+
+        self::assertSame($input, $validator->getCollectedData()[0]['context']['value']);
     }
 }

@@ -18,6 +18,8 @@ use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Rules\AllOf;
 use Respect\Validation\Rules\Key;
+use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * @method static Validator allOf(Validatable ...$rule)
@@ -136,7 +138,7 @@ use Respect\Validation\Rules\Key;
  * @method static Validator resourceType()
  * @method static Validator roman()
  * @method static Validator scalarVal()
- * @method static Validator sf(string $name, array $params = null)
+ * @method static Validator sf(Constraint $constraint, ValidatorInterface $validator = null)
  * @method static Validator size(string $minSize = null, string $maxSize = null)
  * @method static Validator slug()
  * @method static Validator space(string $additionalChars = null)
