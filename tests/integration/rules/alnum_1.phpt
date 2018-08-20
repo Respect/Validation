@@ -1,5 +1,5 @@
 --FILE--
-<?php 
+<?php
 
 require 'vendor/autoload.php';
 

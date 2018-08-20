@@ -1,7 +1,6 @@
 --FILE--
 <?php
 
-
 require 'vendor/autoload.php';
 
 use Respect\Validation\Exceptions\AllOfException;
