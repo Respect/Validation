@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Exception;
 use PHPUnit\Framework\TestCase;
 use Respect\Validation\Exceptions\AlwaysInvalidException;
 use Respect\Validation\Exceptions\CallException;
@@ -70,6 +71,27 @@ final class CallTest extends TestCase
     /**
      * @test
      */
+    public function assertShouldThrowCallExceptionWhenCallableThrowsAnException(): void
+    {
+        $input = [];
+        $callable = function (): void {
+            throw new Exception();
+        };
+
+        $rule = $this->createMock(Validatable::class);
+        $rule
+            ->expects(self::never())
+            ->method('assert');
+
+        $this->expectException(CallException::class);
+
+        $sut = new Call($callable, $rule);
+        $sut->assert($input);
+    }
+
+    /**
+     * @test
+     */
     public function assertShouldThrowExceptionOfTheDefinedRule(): void
     {
         $input = 'something';
@@ -108,6 +130,27 @@ final class CallTest extends TestCase
     {
         $input = [];
         $callable = 'trim';
+
+        $rule = $this->createMock(Validatable::class);
+        $rule
+            ->expects(self::never())
+            ->method('check');
+
+        $this->expectException(CallException::class);
+
+        $sut = new Call($callable, $rule);
+        $sut->assert($input);
+    }
+
+    /**
+     * @test
+     */
+    public function checkShouldThrowCallExceptionWhenCallableThrowsAnException(): void
+    {
+        $input = [];
+        $callable = function (): void {
+            throw new Exception();
+        };
 
         $rule = $this->createMock(Validatable::class);
         $rule
