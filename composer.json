@@ -22,7 +22,7 @@
         "malukenho/docheader": "^0.1.4",
         "mikey179/vfsStream": "^1.6",
         "phpstan/phpstan": "^0.10.3",
-        "phpunit/phpunit": "^6.4",
+        "phpunit/phpunit": "^7.3",
         "symfony/validator": "^3.0||^4.0",
         "zendframework/zend-validator": "^2.0"
     },

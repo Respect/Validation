@@ -29,7 +29,7 @@ class NestedValidationExceptionTest extends TestCase
         $node = new IntValException('input', 'id', [], 'trim');
         $composite->addChild($node);
         self::assertCount(1, $composite->getChildren(true));
-        self::assertContainsOnly($node, $composite->getChildren());
+        self::assertContainsOnly(IntValException::class, $composite->getChildren());
     }
 
     /**
@@ -43,6 +43,6 @@ class NestedValidationExceptionTest extends TestCase
         $composite->addChild($node);
         $composite->addChild($node);
         self::assertCount(1, $composite->getChildren(true));
-        self::assertContainsOnly($node, $composite->getChildren());
+        self::assertContainsOnly(IntValException::class, $composite->getChildren());
     }
 }

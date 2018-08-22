@@ -26,10 +26,10 @@ class MimetypeTest extends TestCase
 {
     private $filename;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         if (defined('HHVM_VERSION')) {
-            return self::markTestSkipped('If you are a HHVM user, and you are in the mood, please fix it');
+            self::markTestSkipped('If you are a HHVM user, and you are in the mood, please fix it');
         }
 
         $this->filename = sprintf('%s/validation.txt', sys_get_temp_dir());
