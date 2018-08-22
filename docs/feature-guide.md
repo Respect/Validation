@@ -74,7 +74,7 @@ v::optional(v::alpha())->validate(null); // true
 
 By _optional_ we consider `null` or an empty string (`''`).
 
-See more on [Optional](Optional.md).
+See more on [Optional](rules/Optional.md).
 
 ## Negating rules
 
@@ -299,12 +299,3 @@ Message:
 ```no-highlight
 "really messed up screen#name" must contain only letters (a-z) and digits (0-9)
 ```
-
-***
-See also:
-
-- [Contributing](../CONTRIBUTING.md)
-- [Installation](INSTALL.md)
-- [License](../LICENSE.md)
-- [Validators](VALIDATORS.md)
-- [Changelog](../CHANGELOG.md)

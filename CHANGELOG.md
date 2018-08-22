@@ -101,8 +101,6 @@ All notable changes of the Respect\Validation releases are documented in this fi
 ***
 See also:
 
+- [README](README.md)
 - [Contributing](CONTRIBUTING.md)
-- [Feature Guide](docs/README.md)
-- [Installation](docs/INSTALL.md)
 - [License](LICENSE.md)
-- [Validators](docs/VALIDATORS.md)
