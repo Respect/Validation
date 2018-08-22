@@ -4,22 +4,15 @@
 require 'vendor/autoload.php';
 
 use Respect\Validation\Exceptions\AllOfException;
+use Respect\Validation\Test\Stubs\CountableStub;
 use Respect\Validation\Validator as v;
-
-class MyClass
-{
-    public function parse($url)
-    {
-        return parse_url($url);
-    }
-}
 
 $input = 'http://www.google.com/search?q=respect.github.com';
 
 try {
     v::create()
         ->call(
-            [new MyClass(), 'parse'],
+            [new CountableStub(1), 'count'],
             v::arrayVal()->key('scheme', v::startsWith('https'))
         )
         ->assert($input);

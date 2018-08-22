@@ -52,6 +52,6 @@ final class Stub extends AbstractRule
     {
         $this->inputs[] = $input;
 
-        return (bool) array_shift($validations);
+        return (bool) array_shift($this->validations);
     }
 }

@@ -1,0 +1,11 @@
+parameters:
+  fileExtensions:
+    - php
+    - phpt
+  ignoreErrors:
+    - '/Call to an undefined static method Respect\\Validation\\Validator::iDoNotExistSoIShouldThrowException/'
+    - '/Function Respect\\Validation\\Rules\\is_(file|readable|link|writable) not found/'
+  level: 1
+  paths:
+    - library/
+    - tests/

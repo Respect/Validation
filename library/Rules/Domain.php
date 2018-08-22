@@ -38,6 +38,8 @@ class Domain extends AbstractComposite
             ),
             new Not(new EndsWith('-'))
         );
+
+        parent::__construct();
     }
 
     public function tldCheck($do = true)

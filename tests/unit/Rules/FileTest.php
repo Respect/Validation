@@ -71,7 +71,7 @@ class FileTest extends TestCase
     public function shouldValidateObjects(): void
     {
         $rule = new File();
-        $object = $this->createMock('SplFileInfo', ['isFile'], ['somefile.txt']);
+        $object = $this->createMock('SplFileInfo');
         $object->expects(self::once())
                 ->method('isFile')
                 ->will(self::returnValue(true));

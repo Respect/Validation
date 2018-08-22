@@ -59,7 +59,7 @@ class PhpLabelTest extends RuleTestCase
             [$rule, 0],
             [$rule, 1],
             [$rule, []],
-            [$rule, new \StdClass()],
+            [$rule, new \stdClass()],
             [$rule, new \DateTime()],
         ];
     }

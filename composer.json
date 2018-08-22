@@ -21,6 +21,7 @@
         "friendsofphp/php-cs-fixer": "^2.8",
         "malukenho/docheader": "^0.1.4",
         "mikey179/vfsStream": "^1.6",
+        "phpstan/phpstan": "^0.10.3",
         "phpunit/phpunit": "^6.4",
         "symfony/validator": "^3.0||^4.0",
         "zendframework/zend-validator": "^2.0"
@@ -41,6 +42,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "Respect\\Validation\\": "tests/unit/",
             "Respect\\Validation\\Test\\": "tests/library/"
         }
     },

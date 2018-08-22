@@ -47,10 +47,8 @@ class FactorTest extends TestCase
      */
     public function invalidFactorShouldThrowFactorException($dividend, $input): void
     {
-        $this->expectException(
-            FactorException::class,
-            stringify($input).' must be a factor of '.$dividend
-        );
+        $this->expectException(FactorException::class);
+        $this->expectExceptionMessage(stringify($input).' must be a factor of '.$dividend);
 
         $min = new Factor($dividend);
         self::assertFalse($min->__invoke($input));
@@ -64,10 +62,8 @@ class FactorTest extends TestCase
      */
     public function invalidDividentShouldThrowComponentException($dividend, $input): void
     {
-        $this->expectException(
-            ComponentException::class,
-            'Dividend '.stringify($dividend).' must be an integer'
-        );
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage('Dividend '.stringify($dividend).' must be an integer');
 
         // It is enough to simply create a new Factor to trigger the dividend
         // exceptions in __construct.
@@ -168,7 +164,7 @@ class FactorTest extends TestCase
             uniqid('a'),
             // Non-scalars.
             [],
-            new \StdClass(),
+            new \stdClass(),
             new \DateTime(),
             null,
             true,

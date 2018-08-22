@@ -71,7 +71,7 @@ class SymbolicLinkTest extends TestCase
     public function shouldValidateObjects(): void
     {
         $rule = new SymbolicLink();
-        $object = $this->createMock('SplFileInfo', ['isLink'], ['somelink.lnk']);
+        $object = $this->createMock('SplFileInfo');
         $object->expects(self::once())
                 ->method('isLink')
                 ->will(self::returnValue(true));

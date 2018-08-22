@@ -71,7 +71,7 @@ class WritableTest extends TestCase
     public function shouldValidateObjects(): void
     {
         $rule = new Writable();
-        $object = $this->createMock('SplFileInfo', ['isWritable'], ['somefile.txt']);
+        $object = $this->createMock('SplFileInfo');
         $object->expects(self::once())
                 ->method('isWritable')
                 ->will(self::returnValue(true));

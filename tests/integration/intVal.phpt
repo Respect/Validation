@@ -2,19 +2,19 @@
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\intValException;
+use Respect\Validation\Exceptions\IntValException;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
 try {
     v::intVal()->check('42.33');
-} catch (intValException $exception) {
+} catch (IntValException $exception) {
     echo $exception->getMessage().PHP_EOL;
 }
 
 try {
     v::not(v::intVal())->check(2);
-} catch (intValException $exception) {
+} catch (IntValException $exception) {
     echo $exception->getMessage().PHP_EOL;
 }
 

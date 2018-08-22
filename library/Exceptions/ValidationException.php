@@ -80,7 +80,8 @@ class ValidationException extends InvalidArgumentException implements Exception
         $this->params = $params;
         $this->translator = $translator;
         $this->template = $this->chooseTemplate();
-        $this->message = $this->createMessage();
+
+        parent::__construct($this->createMessage());
     }
 
     public function getId(): string

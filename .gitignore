@@ -2,5 +2,6 @@
 .couscous/
 composer.lock
 Makefile
+phpstan.neon
 phpunit.xml
 vendor/

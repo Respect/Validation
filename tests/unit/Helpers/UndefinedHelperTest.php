@@ -11,10 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Test\Helpers;
+namespace Respect\Validation\Helpers;
 
 use PHPUnit\Framework\TestCase;
-use Respect\Validation\Helpers\UndefinedHelper;
 use Respect\Validation\Test\DataProvider\UndefinedProvider;
 
 /**

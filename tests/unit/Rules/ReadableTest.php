@@ -71,7 +71,7 @@ class ReadableTest extends TestCase
     public function shouldValidateObjects(): void
     {
         $rule = new Readable();
-        $object = $this->createMock('SplFileInfo', ['isReadable'], ['somefile.txt']);
+        $object = $this->createMock('SplFileInfo');
         $object->expects(self::once())
                 ->method('isReadable')
                 ->will(self::returnValue(true));
