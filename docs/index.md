@@ -1,4 +1,4 @@
-# Respect\Validation
+# Overview
 
 [![Build Status](https://img.shields.io/travis/Respect/Validation/master.svg?style=flat-square)](http://travis-ci.org/Respect/Validation)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/Respect/Validation/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/Respect/Validation/?branch=master)
@@ -10,17 +10,6 @@
 [The most awesome validation engine ever created for PHP.](http://bit.ly/1a1oeQv)
 
 - Complex rules made simple: `v::numericVal()->positive()->between(1, 255)->validate($input)`.
-- Granularity control for advanced reporting.
-- More than 130 (fully tested) validation rules.
-- A concrete API for non fluent usage.
-
-## Documentation
-
-Documentation can be found in https://respect-validation.readthedocs.io
-and also in the [docs/](docs/) folder.
-
-## Table of contents
-
-- [Contributing](CONTRIBUTING.md)
-- [License](LICENSE.md)
-- [Changelog](CHANGELOG.md)
+- [Granularity control](feature-guide.md#validation-methods) for advanced reporting.
+- [More than 130](list-of-rules.md) (fully tested) validation rules.
+- [A concrete API](concrete-api.md) for non fluent usage.

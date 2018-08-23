@@ -55,7 +55,7 @@ validated object as the first node in the chain.
 
 ## Validating array keys and values
 
-Validating array keys into another array is also possible using [Key](Key.md).
+Validating array keys into another array is also possible using [Key](rules/Key.md).
 
 If we got the array below:
 
@@ -102,7 +102,7 @@ v::optional(v::alpha())->validate(null); // true
 
 By _optional_ we consider `null` or an empty string (`''`).
 
-See more on [Optional](Optional.md).
+See more on [Optional](rules/Optional.md).
 
 ## Negating rules
 
@@ -179,8 +179,8 @@ try {
 ```
 
 The `getMessages()` returns an array in which the keys are the name of the
-validators, or its reference in case you are using [Key](Key.md) or
-[Attribute](Attribute.md) rule:
+validators, or its reference in case you are using [Key](rules/Key.md) or
+[Attribute](rules/Attribute.md) rule:
 
 ```no-highlight
 Array
@@ -358,12 +358,3 @@ Message:
 ```no-highlight
 "really messed up screen#name" must contain only letters (a-z) and digits (0-9)
 ```
-
-***
-See also:
-
-- [Contributing](../CONTRIBUTING.md)
-- [Installation](INSTALL.md)
-- [License](../LICENSE.md)
-- [Validators](VALIDATORS.md)
-- [Changelog](../CHANGELOG.md)

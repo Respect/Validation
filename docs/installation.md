@@ -8,11 +8,3 @@ composer require respect/validation
 ```
 
 Works on PHP 7.0 or above.
-
-***
-See also:
-
-- [Contributing](../CONTRIBUTING.md)
-- [Feature Guide](README.md)
-- [License](../LICENSE.md)
-- [Validators](VALIDATORS.md)

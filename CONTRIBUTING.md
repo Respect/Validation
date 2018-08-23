@@ -69,7 +69,7 @@ namespace Respect\Validation\Rules;
 
 /**
  * Explain in one sentence what this rule does.
- * 
+ *
  * @author Your Name <youremail@yourdomain.tld>
  */
 final class HelloWorld extends AbstractRule
@@ -160,9 +160,9 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- * 
+ *
  * @covers \Respect\Validation\Rules\HelloWorld
- * 
+ *
  * @author Your Name <youremail@yourdomain.tld>
  */
 final class HelloWorldTest extends RuleTestCase
@@ -267,10 +267,8 @@ $ vendor/bin/php-cs-fixer fix
 ***
 See also:
 
-- [Feature Guide](docs/README.md)
-- [Installation](docs/INSTALL.md)
+- [README](README.md)
 - [License](LICENSE.md)
-- [Validators](docs/VALIDATORS.md)
 - [Changelog](CHANGELOG.md)
 
 
