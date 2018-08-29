@@ -49,8 +49,39 @@ class Date extends AbstractRule
             $this->format = $exceptionalFormats[$this->format];
         }
 
-        $info = date_parse_from_format($this->format, $inputString);
+        return $this->isValidForFormatProvided($input);
+    }
 
+    private function isValidForFormatProvided($input)
+    {
+        $info = date_parse_from_format($this->format, $input);
+        if (!$this->isParsable($info)) {
+            return false;
+        }
+
+        if ($this->hasDateFormat()) {
+            return $this->hasValidDate($info);
+        }
+
+        return true;
+    }
+
+    private function isParsable(array $info)
+    {
         return ($info['error_count'] === 0 && $info['warning_count'] === 0);
+    }
+
+    private function hasDateFormat()
+    {
+        return preg_match('/[djSFmMnYy]/', $this->format) > 0;
+    }
+
+    private function hasValidDate(array $info)
+    {
+        if ($info['day']) {
+            return checkdate((int) $info['month'], $info['day'], (int) $info['year']);
+        }
+
+        return checkdate($info['month'] ?: 1, $info['day'] ?: 1, $info['year'] ?: 1);
     }
 }
