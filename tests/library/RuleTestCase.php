@@ -68,7 +68,7 @@ abstract class RuleTestCase extends TestCase
             ->disableOriginalConstructor()
             ->setMethods(
                 [
-                    'assert', 'check', 'getName', 'reportError', 'setName', 'setTemplate', 'validate',
+                    'assert', 'check', 'getName', 'reportError', 'setName', 'setTemplate', 'isValid',
                 ]
             )
             ->setMockClassName($mockClassName)
@@ -76,7 +76,7 @@ abstract class RuleTestCase extends TestCase
 
         $validatableMocked
             ->expects(self::any())
-            ->method('validate')
+            ->method('isValid')
             ->willReturn($expectedResult);
 
         if ($expectedResult) {
@@ -144,11 +144,11 @@ abstract class RuleTestCase extends TestCase
 
     public static function assertValidInput(Validatable $rule, $input): void
     {
-        self::assertTrue($rule->validate($input));
+        self::assertTrue($rule->isValid($input));
     }
 
     public static function assertInvalidInput(Validatable $rule, $input): void
     {
-        self::assertFalse($rule->validate($input));
+        self::assertFalse($rule->isValid($input));
     }
 }

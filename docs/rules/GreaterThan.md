@@ -5,8 +5,8 @@
 Validates whether the input is greater than a value.
 
 ```php
-v::greaterThan(10)->validate(11); // true
-v::greaterThan(10)->validate(9); // false
+v::greaterThan(10)->isValid(11); // true
+v::greaterThan(10)->isValid(9); // false
 ```
 
 Validation makes comparison easier, check out our supported 

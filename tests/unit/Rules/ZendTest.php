@@ -107,7 +107,7 @@ class ZendTest extends TestCase
         $zendValidatorParams = ['min' => 10, 'max' => 25];
         $v = new Zend($zendValidatorName, $zendValidatorParams);
         self::assertTrue(
-            $v->validate('12345678901'),
+            $v->isValid('12345678901'),
             'The value should be valid for Zend\'s validator'
         );
     }
@@ -121,7 +121,7 @@ class ZendTest extends TestCase
     {
         $v = new Zend('Date');
         $date = new DateTime();
-        self::assertTrue($v->validate($date));
+        self::assertTrue($v->isValid($date));
         $v->assert($date);
     }
 
@@ -137,7 +137,7 @@ class ZendTest extends TestCase
         $v = new Zend('Date');
         $notValid = 'a';
         self::assertFalse(
-            $v->validate($notValid),
+            $v->isValid($notValid),
             'The validator returned true for an invalid value, this won\'t cause an exception later on.'
         );
         self::assertFalse(

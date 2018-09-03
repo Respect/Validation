@@ -38,7 +38,7 @@ class Extension extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if ($input instanceof SplFileInfo) {
             return $input->getExtension() == $this->extension;

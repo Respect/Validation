@@ -36,7 +36,7 @@ class FiniteTest extends TestCase
      */
     public function shouldValidateFiniteNumbers($input): void
     {
-        self::assertTrue($this->rule->validate($input));
+        self::assertTrue($this->rule->isValid($input));
     }
 
     /**
@@ -46,7 +46,7 @@ class FiniteTest extends TestCase
      */
     public function shouldNotValidateNonFiniteNumbers($input): void
     {
-        self::assertFalse($this->rule->validate($input));
+        self::assertFalse($this->rule->isValid($input));
     }
 
     /**

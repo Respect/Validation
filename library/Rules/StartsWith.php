@@ -24,7 +24,7 @@ class StartsWith extends AbstractRule
         $this->identical = $identical;
     }
 
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if ($this->identical) {
             return $this->validateIdentical($input);

@@ -6,30 +6,30 @@
 Validates alphanumeric characters from a-Z and 0-9.
 
 ```php
-v::alnum()->validate('foo 123'); // true
-v::alnum()->validate('number 100%'); // false
-v::alnum('%')->validate('number 100%'); // true
+v::alnum()->isValid('foo 123'); // true
+v::alnum()->isValid('number 100%'); // false
+v::alnum('%')->isValid('number 100%'); // true
 ```
 
 Because this rule allows whitespaces by default, you can separate additional
 characters with a whitespace:
 
 ```php
-v::alnum('- ! :')->validate('foo :- 123 !'); // true
+v::alnum('- ! :')->isValid('foo :- 123 !'); // true
 ```
 
 This validator allows whitespace, if you want to
 remove them add `->noWhitespace()` to the chain:
 
 ```php
-v::alnum()->noWhitespace()->validate('foo 123'); // false
+v::alnum()->noWhitespace()->isValid('foo 123'); // false
 ```
 
 You can restrict case using the `->lowercase()` and
 `->uppercase()` validators:
 
 ```php
-v::alnum()->uppercase()->validate('aaa'); // false
+v::alnum()->uppercase()->isValid('aaa'); // false
 ```
 
 Message template for this validator includes `{{additionalChars}}` as

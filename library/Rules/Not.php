@@ -32,14 +32,14 @@ class Not extends AbstractRule
         return parent::setName($name);
     }
 
-    public function validate($input): bool
+    public function isValid($input): bool
     {
-        return false === $this->rule->validate($input);
+        return false === $this->rule->isValid($input);
     }
 
     public function assert($input): void
     {
-        if ($this->validate($input)) {
+        if ($this->isValid($input)) {
             return;
         }
 
@@ -63,7 +63,7 @@ class Not extends AbstractRule
                 continue;
             }
 
-            if (!$rule->validate($input)) {
+            if (!$rule->isValid($input)) {
                 continue;
             }
 

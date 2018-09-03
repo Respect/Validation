@@ -181,7 +181,7 @@ class PostalCode extends Regex
     public function __construct($countryCode, CountryCode $countryCodeRule = null)
     {
         $countryCodeRule = $countryCodeRule ?: new CountryCode();
-        if (!$countryCodeRule->validate($countryCode)) {
+        if (!$countryCodeRule->isValid($countryCode)) {
             throw new ComponentException(sprintf('Cannot validate postal code from "%s" country', $countryCode));
         }
 

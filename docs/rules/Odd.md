@@ -5,8 +5,8 @@
 Validates whether the input is an odd number or not.
 
 ```php
-v::odd()->validate(0); // false
-v::odd()->validate(3); // true
+v::odd()->isValid(0); // false
+v::odd()->isValid(3); // true
 ```
 
 Using `intVal()` before `odd()` is a best practice.

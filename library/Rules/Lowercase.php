@@ -30,7 +30,7 @@ final class Lowercase extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if (!is_string($input)) {
             return false;

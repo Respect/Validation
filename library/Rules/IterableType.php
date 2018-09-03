@@ -27,7 +27,7 @@ final class IterableType extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         return $this->isIterable($input);
     }

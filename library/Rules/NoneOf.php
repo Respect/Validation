@@ -25,10 +25,10 @@ class NoneOf extends AbstractComposite
         }
     }
 
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         foreach ($this->getRules() as $rule) {
-            if ($rule->validate($input)) {
+            if ($rule->isValid($input)) {
                 return false;
             }
         }

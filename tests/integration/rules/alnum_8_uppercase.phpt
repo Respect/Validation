@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator as v;
 
-if (!v::alnum()->uppercase()->validate('ASDF')) {
+if (!v::alnum()->uppercase()->isValid('ASDF')) {
     echo 'ok';
 }
 

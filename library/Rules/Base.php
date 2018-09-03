@@ -60,7 +60,7 @@ final class Base extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         $valid = mb_substr($this->chars, 0, $this->base);
 

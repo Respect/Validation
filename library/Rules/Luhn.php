@@ -21,16 +21,16 @@ class Luhn extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
-        if (!(new Digit())->validate($input)) {
+        if (!(new Digit())->isValid($input)) {
             return false;
         }
 
-        return $this->isValid($input);
+        return $this->isLuhn($input);
     }
 
-    private function isValid($input): bool
+    private function isLuhn($input): bool
     {
         $sum = 0;
         $numDigits = mb_strlen($input);

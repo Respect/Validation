@@ -8,13 +8,13 @@ Validates if the input is contained in a specific haystack.
 For strings:
 
 ```php
-v::in('lorem ipsum')->validate('ipsum'); // true
+v::in('lorem ipsum')->isValid('ipsum'); // true
 ```
 
 For arrays:
 
 ```php
-v::in(['lorem', 'ipsum'])->validate('lorem'); // true
+v::in(['lorem', 'ipsum'])->isValid('lorem'); // true
 ```
 
 A second parameter may be passed for identical comparison instead

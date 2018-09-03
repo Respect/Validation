@@ -179,7 +179,7 @@ final class CallTest extends TestCase
     /**
      * @test
      */
-    public function validateShouldExecuteCallable(): void
+    public function isValidShouldExecuteCallable(): void
     {
         $input = ' input ';
         $callable = 'trim';
@@ -192,13 +192,13 @@ final class CallTest extends TestCase
 
         $sut = new Call($callable, $rule);
 
-        self::assertTrue($sut->validate($input));
+        self::assertTrue($sut->isValid($input));
     }
 
     /**
      * @test
      */
-    public function validateShouldReturnFalseWhenPhpTriggersAnError(): void
+    public function isValidShouldReturnFalseWhenPhpTriggersAnError(): void
     {
         $input = [];
         $callable = 'trim';
@@ -210,16 +210,16 @@ final class CallTest extends TestCase
 
         $sut = new Call($callable, $rule);
 
-        self::assertFalse($sut->validate($input));
+        self::assertFalse($sut->isValid($input));
     }
 
     /**
      * @test
      */
-    public function validateShouldReturnFalseWhenDefinedRuleFails(): void
+    public function isValidShouldReturnFalseWhenDefinedRuleFails(): void
     {
         $sut = new Call('trim', new AlwaysInvalid());
 
-        self::assertFalse($sut->validate('something'));
+        self::assertFalse($sut->isValid('something'));
     }
 }

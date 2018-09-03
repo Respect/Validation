@@ -6,7 +6,7 @@
 Accepts only whitespace:
 
 ```php
-v::space()->validate('    '); // true
+v::space()->isValid('    '); // true
 ```
 
 ## Changelog

@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class Slug extends AbstractRule
 {
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if (mb_strstr($input, '--')) {
             return false;

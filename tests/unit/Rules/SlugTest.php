@@ -30,7 +30,7 @@ class SlugTest extends TestCase
     {
         $rule = new Slug();
 
-        self::assertTrue($rule->validate($input));
+        self::assertTrue($rule->isValid($input));
     }
 
     /**
@@ -42,7 +42,7 @@ class SlugTest extends TestCase
     {
         $rule = new Slug();
 
-        self::assertFalse($rule->validate($input));
+        self::assertFalse($rule->isValid($input));
     }
 
     public function providerValidSlug()

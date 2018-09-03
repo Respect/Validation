@@ -35,13 +35,13 @@ final class AbstractEnvelopeTest extends TestCase
         $innerRule = $this->createMock(Validatable::class);
         $innerRule
             ->expects(self::once())
-            ->method('validate')
+            ->method('isValid')
             ->with($input)
             ->willReturn(true);
 
         $rule = $this->getMockForAbstractClass(AbstractEnvelope::class, [$innerRule, []]);
 
-        self::assertTrue($rule->validate($input));
+        self::assertTrue($rule->isValid($input));
     }
 
     /**
@@ -54,13 +54,13 @@ final class AbstractEnvelopeTest extends TestCase
         $innerRule = $this->createMock(Validatable::class);
         $innerRule
             ->expects(self::once())
-            ->method('validate')
+            ->method('isValid')
             ->with($input)
             ->willReturn(false);
 
         $rule = $this->getMockForAbstractClass(AbstractEnvelope::class, [$innerRule, []]);
 
-        self::assertFalse($rule->validate($input));
+        self::assertFalse($rule->isValid($input));
     }
 
     /**

@@ -28,7 +28,7 @@ class NfeAccessKey extends AbstractRule
      *
      * @return bool
      */
-    public function validate($aK): bool
+    public function isValid($aK): bool
     {
         if (44 !== mb_strlen($aK)) {
             return false;

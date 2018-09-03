@@ -30,7 +30,7 @@ class AlphaTest extends TestCase
     public function validAlphanumericCharsShouldReturnTrue($validAlpha, $additional): void
     {
         $validator = new Alpha($additional);
-        self::assertTrue($validator->validate($validAlpha));
+        self::assertTrue($validator->isValid($validAlpha));
         $validator->check($validAlpha);
         $validator->assert($validAlpha);
     }
@@ -44,7 +44,7 @@ class AlphaTest extends TestCase
     public function invalidAlphanumericCharsShouldThrowAlphaException($invalidAlpha, $additional): void
     {
         $validator = new Alpha($additional);
-        self::assertFalse($validator->validate($invalidAlpha));
+        self::assertFalse($validator->isValid($invalidAlpha));
         $validator->assert($invalidAlpha);
     }
 
@@ -67,7 +67,7 @@ class AlphaTest extends TestCase
     public function additionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Alpha($additional);
-        self::assertTrue($validator->validate($query));
+        self::assertTrue($validator->isValid($query));
     }
 
     public function providerAdditionalChars()

@@ -25,7 +25,7 @@ class LeapDate extends AbstractRule
         $this->format = $format;
     }
 
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if (is_string($input)) {
             $date = DateTimeImmutable::createFromFormat($this->format, $input);

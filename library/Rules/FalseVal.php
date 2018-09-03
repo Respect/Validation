@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class FalseVal extends AbstractRule
 {
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if (false === $input) { // PHP 5.3 workaround
             return true;

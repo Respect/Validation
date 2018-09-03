@@ -117,7 +117,7 @@ final class KeySetTest extends TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        self::assertFalse($keySet->validate($input));
+        self::assertFalse($keySet->isValid($input));
     }
 
     /**
@@ -134,7 +134,7 @@ final class KeySetTest extends TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        self::assertTrue($keySet->validate($input));
+        self::assertTrue($keySet->isValid($input));
     }
 
     /**
@@ -153,7 +153,7 @@ final class KeySetTest extends TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        self::assertFalse($keySet->validate($input));
+        self::assertFalse($keySet->isValid($input));
     }
 
     /**
@@ -168,7 +168,7 @@ final class KeySetTest extends TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        self::assertFalse($keySet->validate($input));
+        self::assertFalse($keySet->isValid($input));
     }
 
     /**

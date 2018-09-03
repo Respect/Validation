@@ -25,7 +25,7 @@ use function is_numeric;
  */
 final class Odd extends AbstractRule
 {
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if (!is_numeric($input)) {
             return false;

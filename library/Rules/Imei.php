@@ -34,7 +34,7 @@ final class Imei extends AbstractRule
      *
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if (!is_scalar($input)) {
             return false;
@@ -45,6 +45,6 @@ final class Imei extends AbstractRule
             return false;
         }
 
-        return (new Luhn())->validate($numbers);
+        return (new Luhn())->isValid($numbers);
     }
 }

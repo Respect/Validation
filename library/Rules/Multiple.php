@@ -36,7 +36,7 @@ final class Multiple extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if (0 == $this->multipleOf) {
             return 0 == $input;

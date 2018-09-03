@@ -30,5 +30,5 @@ interface Validatable
 
     public function setTemplate(string $template): Validatable;
 
-    public function validate($input): bool;
+    public function isValid($input): bool;
 }

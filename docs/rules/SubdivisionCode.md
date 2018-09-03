@@ -7,8 +7,8 @@ Validates subdivision country codes according to [ISO 3166-2][].
 The `$countryCode` must be a country in [ISO 3166-1 alpha-2][] format.
 
 ```php
-v::subdivisionCode('BR')->validate('SP'); // true
-v::subdivisionCode('US')->validate('CA'); // true
+v::subdivisionCode('BR')->isValid('SP'); // true
+v::subdivisionCode('US')->isValid('CA'); // true
 ```
 
 This rule is case sensitive.

@@ -262,7 +262,7 @@ final class Tld extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if (!is_scalar($input)) {
             return false;

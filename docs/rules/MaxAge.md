@@ -8,11 +8,11 @@ accordance to PHP's [date()][] function. When `$format` is not  given this rule
 accepts [Supported Date and Time Formats][] by PHP (see [strtotime()][]).
 
 ```php
-v::maxAge(12)->validate('12 years ago'); // true
-v::maxAge(12, 'Y-m-d')->validate('2013-07-31'); // true
+v::maxAge(12)->isValid('12 years ago'); // true
+v::maxAge(12, 'Y-m-d')->isValid('2013-07-31'); // true
 
-v::maxAge(12)->validate('13 years ago'); // false
-v::maxAge(18, 'Y-m-d')->validate('1988-09-09'); // false
+v::maxAge(12)->isValid('13 years ago'); // false
+v::maxAge(18, 'Y-m-d')->isValid('1988-09-09'); // false
 ```
 
 Using [Date](Date.md) before is a best-practice.

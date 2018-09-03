@@ -31,7 +31,7 @@ class FalseValTest extends TestCase
     {
         $rule = new FalseVal();
 
-        self::assertTrue($rule->validate($input));
+        self::assertTrue($rule->isValid($input));
     }
 
     public function validFalseProvider()
@@ -61,7 +61,7 @@ class FalseValTest extends TestCase
     {
         $rule = new FalseVal();
 
-        self::assertFalse($rule->validate($input));
+        self::assertFalse($rule->isValid($input));
     }
 
     public function invalidFalseProvider()

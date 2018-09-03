@@ -36,7 +36,7 @@ function is_readable($readable)
 class ReadableTest extends TestCase
 {
     /**
-     * @covers \Respect\Validation\Rules\Readable::validate
+     * @covers \Respect\Validation\Rules\Readable::isValid
      *
      * @test
      */
@@ -46,11 +46,11 @@ class ReadableTest extends TestCase
 
         $rule = new Readable();
         $input = '/path/of/a/valid/readable/file.txt';
-        self::assertTrue($rule->validate($input));
+        self::assertTrue($rule->isValid($input));
     }
 
     /**
-     * @covers \Respect\Validation\Rules\Readable::validate
+     * @covers \Respect\Validation\Rules\Readable::isValid
      *
      * @test
      */
@@ -60,11 +60,11 @@ class ReadableTest extends TestCase
 
         $rule = new Readable();
         $input = '/path/of/an/invalid/readable/file.txt';
-        self::assertFalse($rule->validate($input));
+        self::assertFalse($rule->isValid($input));
     }
 
     /**
-     * @covers \Respect\Validation\Rules\Readable::validate
+     * @covers \Respect\Validation\Rules\Readable::isValid
      *
      * @test
      */
@@ -76,6 +76,6 @@ class ReadableTest extends TestCase
                 ->method('isReadable')
                 ->will(self::returnValue(true));
 
-        self::assertTrue($rule->validate($object));
+        self::assertTrue($rule->isValid($object));
     }
 }

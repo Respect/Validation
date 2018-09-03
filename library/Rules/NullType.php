@@ -26,7 +26,7 @@ final class NullType extends NotEmpty
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         return is_null($input);
     }

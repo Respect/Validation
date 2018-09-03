@@ -24,7 +24,7 @@ final class AbstractRelatedTest extends TestCase
     public function providerForOperations()
     {
         return [
-            ['validate'],
+            ['isValid'],
         ];
     }
 
@@ -65,14 +65,14 @@ final class AbstractRelatedTest extends TestCase
     /**
      * @test
      */
-    public function validateShouldReturnFalseWhenIsMandatoryAndThereIsNoReference(): void
+    public function isValidShouldReturnFalseWhenIsMandatoryAndThereIsNoReference(): void
     {
         $relatedRuleMock = $this->getMockForAbstractClass(AbstractRelated::class, ['foo']);
         $relatedRuleMock->expects(self::any())
             ->method('hasReference')
             ->will(self::returnValue(false));
 
-        self::assertFalse($relatedRuleMock->validate('foo'));
+        self::assertFalse($relatedRuleMock->isValid('foo'));
     }
 
     /**

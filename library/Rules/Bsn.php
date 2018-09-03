@@ -30,7 +30,7 @@ final class Bsn extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if (!ctype_digit($input)) {
             return false;

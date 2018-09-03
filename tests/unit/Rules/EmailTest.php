@@ -48,7 +48,7 @@ final class EmailTest extends RuleTestCase
 
         $sut = new Email($emailValidator);
 
-        self::assertTrue($sut->validate($input));
+        self::assertTrue($sut->isValid($input));
     }
 
     /**

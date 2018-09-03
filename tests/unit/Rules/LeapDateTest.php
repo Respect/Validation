@@ -35,7 +35,7 @@ class LeapDateTest extends TestCase
      */
     public function validLeapDate_with_string(): void
     {
-        self::assertTrue($this->leapDateValidator->validate('1988-02-29'));
+        self::assertTrue($this->leapDateValidator->isValid('1988-02-29'));
     }
 
     /**
@@ -43,7 +43,7 @@ class LeapDateTest extends TestCase
      */
     public function validLeapDate_with_date_time(): void
     {
-        self::assertTrue($this->leapDateValidator->validate(
+        self::assertTrue($this->leapDateValidator->isValid(
             new DateTime('1988-02-29')));
     }
 
@@ -52,7 +52,7 @@ class LeapDateTest extends TestCase
      */
     public function invalidLeapDate_with_string(): void
     {
-        self::assertFalse($this->leapDateValidator->validate('1989-02-29'));
+        self::assertFalse($this->leapDateValidator->isValid('1989-02-29'));
     }
 
     /**
@@ -60,7 +60,7 @@ class LeapDateTest extends TestCase
      */
     public function invalidLeapDate_with_date_time(): void
     {
-        self::assertFalse($this->leapDateValidator->validate(
+        self::assertFalse($this->leapDateValidator->isValid(
             new DateTime('1989-02-29')));
     }
 
@@ -69,6 +69,6 @@ class LeapDateTest extends TestCase
      */
     public function invalidLeapDate_input(): void
     {
-        self::assertFalse($this->leapDateValidator->validate([]));
+        self::assertFalse($this->leapDateValidator->isValid([]));
     }
 }

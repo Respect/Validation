@@ -54,7 +54,7 @@ class VideoUrl extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if (isset($this->services[$this->serviceKey])) {
             return preg_match($this->services[$this->serviceKey], (string) $input) > 0;

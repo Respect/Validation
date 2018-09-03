@@ -59,7 +59,7 @@ class MimetypeTest extends TestCase
 
         $rule = new Mimetype($mimetype, $fileInfoMock);
 
-        $rule->validate($this->filename);
+        $rule->isValid($this->filename);
     }
 
     /**
@@ -84,7 +84,7 @@ class MimetypeTest extends TestCase
 
         $rule = new Mimetype($mimetype, $fileInfoMock);
 
-        self::assertTrue($rule->validate($fileInfo));
+        self::assertTrue($rule->isValid($fileInfo));
     }
 
     /**
@@ -94,7 +94,7 @@ class MimetypeTest extends TestCase
     {
         $rule = new Mimetype('application/octet-stream');
 
-        self::assertFalse($rule->validate([__FILE__]));
+        self::assertFalse($rule->isValid([__FILE__]));
     }
 
     /**
@@ -104,7 +104,7 @@ class MimetypeTest extends TestCase
     {
         $rule = new Mimetype('application/octet-stream');
 
-        self::assertFalse($rule->validate(__DIR__));
+        self::assertFalse($rule->isValid(__DIR__));
     }
 
     /**

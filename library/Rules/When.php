@@ -34,18 +34,18 @@ class When extends AbstractRule
         $this->else = $else;
     }
 
-    public function validate($input): bool
+    public function isValid($input): bool
     {
-        if ($this->when->validate($input)) {
-            return $this->then->validate($input);
+        if ($this->when->isValid($input)) {
+            return $this->then->isValid($input);
         }
 
-        return $this->else->validate($input);
+        return $this->else->isValid($input);
     }
 
     public function assert($input): void
     {
-        if ($this->when->validate($input)) {
+        if ($this->when->isValid($input)) {
             $this->then->assert($input);
 
             return;
@@ -56,7 +56,7 @@ class When extends AbstractRule
 
     public function check($input): void
     {
-        if ($this->when->validate($input)) {
+        if ($this->when->isValid($input)) {
             $this->then->check($input);
 
             return;

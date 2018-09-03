@@ -43,7 +43,7 @@ class ExtensionTest extends TestCase
     {
         $rule = new Extension($extension);
 
-        self::assertTrue($rule->validate($filename));
+        self::assertTrue($rule->isValid($filename));
     }
 
     /**
@@ -55,7 +55,7 @@ class ExtensionTest extends TestCase
 
         $rule = new Extension('php');
 
-        self::assertTrue($rule->validate($fileInfo));
+        self::assertTrue($rule->isValid($fileInfo));
     }
 
     /**
@@ -67,7 +67,7 @@ class ExtensionTest extends TestCase
 
         $rule = new Extension('php');
 
-        self::assertFalse($rule->validate($nonFile));
+        self::assertFalse($rule->isValid($nonFile));
     }
 
     /**

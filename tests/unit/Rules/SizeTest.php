@@ -104,7 +104,7 @@ class SizeTest extends TestCase
     {
         $rule = new Size($minSize, $maxSize);
 
-        self::assertEquals($expectedValidation, $rule->validate($filename));
+        self::assertEquals($expectedValidation, $rule->isValid($filename));
     }
 
     /**
@@ -118,7 +118,7 @@ class SizeTest extends TestCase
 
         $rule = new Size('1MB', '2GB');
 
-        self::assertTrue($rule->validate($file1GbObject));
+        self::assertTrue($rule->isValid($file1GbObject));
     }
 
     /**

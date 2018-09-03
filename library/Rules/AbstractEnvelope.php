@@ -51,9 +51,9 @@ abstract class AbstractEnvelope extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
-        return $this->validatable->validate($input);
+        return $this->validatable->isValid($input);
     }
 
     /**

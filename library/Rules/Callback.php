@@ -49,7 +49,7 @@ final class Callback extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         return (bool) call_user_func($this->callback, $input, ...$this->arguments);
     }

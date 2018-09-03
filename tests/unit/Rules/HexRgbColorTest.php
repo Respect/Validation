@@ -31,7 +31,7 @@ class HexRgbColorTest extends TestCase
     {
         $validator = new HexRgbColor();
 
-        self::assertTrue($validator->validate($validHexRgbColor));
+        self::assertTrue($validator->isValid($validHexRgbColor));
     }
 
     /**
@@ -43,7 +43,7 @@ class HexRgbColorTest extends TestCase
     {
         $validator = new HexRgbColor();
 
-        self::assertFalse($validator->validate($invalidHexRgbColor));
+        self::assertFalse($validator->isValid($invalidHexRgbColor));
     }
 
     public function providerForValidHexRgbColor()

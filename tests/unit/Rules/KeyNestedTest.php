@@ -42,7 +42,7 @@ class KeyNestedTest extends TestCase
 
         $rule = new KeyNested('bar.foo.baz');
 
-        self::assertTrue($rule->validate($array));
+        self::assertTrue($rule->isValid($array));
     }
 
     /**
@@ -82,7 +82,7 @@ class KeyNestedTest extends TestCase
 
         $rule = new KeyNested('bar.foo');
 
-        self::assertTrue($rule->validate($array));
+        self::assertTrue($rule->isValid($array));
     }
 
     /**
@@ -103,7 +103,7 @@ class KeyNestedTest extends TestCase
 
         $rule = new KeyNested('bar.foooo.');
 
-        self::assertTrue($rule->validate($object));
+        self::assertTrue($rule->isValid($object));
     }
 
     /**
@@ -113,7 +113,7 @@ class KeyNestedTest extends TestCase
     {
         $rule = new KeyNested('bar.foo.baz');
 
-        self::assertFalse($rule->validate(''));
+        self::assertFalse($rule->isValid(''));
     }
 
     /**
@@ -146,7 +146,7 @@ class KeyNestedTest extends TestCase
         $rule = new KeyNested('emptyKey');
         $input = ['emptyKey' => ''];
 
-        self::assertTrue($rule->validate($input));
+        self::assertTrue($rule->isValid($input));
     }
 
     /**
@@ -204,7 +204,7 @@ class KeyNestedTest extends TestCase
         $subValidator = new Length(1, 3);
         $validator = new KeyNested('bar.rab', $subValidator, false);
         $object = new \stdClass();
-        self::assertTrue($validator->validate($object));
+        self::assertTrue($validator->isValid($object));
     }
 
     /**
@@ -225,6 +225,6 @@ class KeyNestedTest extends TestCase
 
         $rule = new KeyNested('bar.foo.baz');
 
-        self::assertTrue($rule->validate($arrayAccess));
+        self::assertTrue($rule->isValid($arrayAccess));
     }
 }

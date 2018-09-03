@@ -78,7 +78,7 @@ final class ImageTest extends RuleTestCase
 
         $rule = new Image($finfo);
 
-        self::assertTrue($rule->validate($input));
+        self::assertTrue($rule->isValid($input));
     }
 
     private function getFixtureDirectory(): string

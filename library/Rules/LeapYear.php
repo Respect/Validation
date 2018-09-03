@@ -17,7 +17,7 @@ use DateTimeInterface;
 
 class LeapYear extends AbstractRule
 {
-    public function validate($year): bool
+    public function isValid($year): bool
     {
         if (is_numeric($year)) {
             $year = (int) $year;

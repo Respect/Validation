@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class File extends AbstractRule
 {
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if ($input instanceof \SplFileInfo) {
             return $input->isFile();

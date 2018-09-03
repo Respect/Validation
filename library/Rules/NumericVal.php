@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class NumericVal extends AbstractRule
 {
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         return is_numeric($input);
     }

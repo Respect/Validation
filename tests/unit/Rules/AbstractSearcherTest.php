@@ -40,7 +40,7 @@ final class AbstractSearcherTest extends TestCase
             ->method('getDataSource')
             ->willReturn(['foo', $input, 'baz']);
 
-        self::assertTrue($rule->validate($input));
+        self::assertTrue($rule->isValid($input));
     }
 
     /**
@@ -56,7 +56,7 @@ final class AbstractSearcherTest extends TestCase
             ->method('getDataSource')
             ->willReturn([1, (int) $input, 3]);
 
-        self::assertFalse($rule->validate($input));
+        self::assertFalse($rule->isValid($input));
     }
 
     /**
@@ -71,7 +71,7 @@ final class AbstractSearcherTest extends TestCase
             ->method('getDataSource')
             ->willReturn([]);
 
-        self::assertTrue($rule->validate($input));
+        self::assertTrue($rule->isValid($input));
     }
 
     /**
@@ -86,6 +86,6 @@ final class AbstractSearcherTest extends TestCase
             ->method('getDataSource')
             ->willReturn([]);
 
-        self::assertFalse($rule->validate($input));
+        self::assertFalse($rule->isValid($input));
     }
 }

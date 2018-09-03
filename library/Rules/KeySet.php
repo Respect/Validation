@@ -132,12 +132,12 @@ final class KeySet extends AbstractWrapper
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if (!$this->hasValidStructure($input)) {
             return false;
         }
 
-        return parent::validate($input);
+        return parent::isValid($input);
     }
 }

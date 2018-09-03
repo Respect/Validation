@@ -61,11 +61,11 @@ final class NullableTest extends TestCase
         $validatable = $this->createMock(Validatable::class);
         $validatable
             ->expects(self::never())
-            ->method('validate');
+            ->method('isValid');
 
         $rule = new Nullable($validatable);
 
-        self::assertTrue($rule->validate(null));
+        self::assertTrue($rule->isValid(null));
     }
 
     /**
@@ -80,13 +80,13 @@ final class NullableTest extends TestCase
         $validatable = $this->createMock(Validatable::class);
         $validatable
             ->expects(self::once())
-            ->method('validate')
+            ->method('isValid')
             ->with($input)
             ->will(self::returnValue(true));
 
         $rule = new Nullable($validatable);
 
-        self::assertTrue($rule->validate($input));
+        self::assertTrue($rule->isValid($input));
     }
 
     /**

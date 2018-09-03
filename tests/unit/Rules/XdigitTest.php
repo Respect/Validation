@@ -38,7 +38,7 @@ class XdigitTest extends TestCase
     {
         $this->xdigitsValidator->assert($input);
         $this->xdigitsValidator->check($input);
-        self::assertTrue($this->xdigitsValidator->validate($input));
+        self::assertTrue($this->xdigitsValidator->isValid($input));
     }
 
     /**
@@ -49,7 +49,7 @@ class XdigitTest extends TestCase
      */
     public function invalidHexadecimalDigitsShouldThrowXdigitException($input): void
     {
-        self::assertFalse($this->xdigitsValidator->validate($input));
+        self::assertFalse($this->xdigitsValidator->isValid($input));
         $this->xdigitsValidator->assert($input);
     }
 
@@ -61,7 +61,7 @@ class XdigitTest extends TestCase
     public function additionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Xdigit($additional);
-        self::assertTrue($validator->validate($query));
+        self::assertTrue($validator->isValid($query));
     }
 
     public function providerAdditionalChars()

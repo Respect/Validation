@@ -59,21 +59,21 @@ class Domain extends AbstractComposite
         return true;
     }
 
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         foreach ($this->checks as $chk) {
-            if (!$chk->validate($input)) {
+            if (!$chk->isValid($input)) {
                 return false;
             }
         }
 
         if (count($parts = explode('.', (string) $input)) < 2
-            || !$this->tld->validate(array_pop($parts))) {
+            || !$this->tld->isValid(array_pop($parts))) {
             return false;
         }
 
         foreach ($parts as $p) {
-            if (!$this->otherParts->validate($p)) {
+            if (!$this->otherParts->isValid($p)) {
                 return false;
             }
         }

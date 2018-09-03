@@ -41,12 +41,12 @@ class AbstractRuleTest extends TestCase
 
         $abstractRuleMock = $this
             ->getMockBuilder(AbstractRule::class)
-            ->setMethods(['validate'])
+            ->setMethods(['isValid'])
             ->getMockForAbstractClass();
 
         $abstractRuleMock
             ->expects(self::once())
-            ->method('validate')
+            ->method('isValid')
             ->with($input)
             ->will(self::returnValue($booleanResult));
 
@@ -54,7 +54,7 @@ class AbstractRuleTest extends TestCase
             $booleanResult,
             // Invoking it to trigger __invoke
             $abstractRuleMock($input),
-            'When invoking an instance of AbstractRule, the method validate should be called with the same input and return the same result.'
+            'When invoking an instance of AbstractRule, the method isValid should be called with the same input and return the same result.'
         );
     }
 
@@ -69,12 +69,12 @@ class AbstractRuleTest extends TestCase
 
         $abstractRuleMock = $this
             ->getMockBuilder(AbstractRule::class)
-            ->setMethods(['validate', 'reportError'])
+            ->setMethods(['isValid', 'reportError'])
             ->getMockForAbstractClass();
 
         $abstractRuleMock
             ->expects(self::once())
-            ->method('validate')
+            ->method('isValid')
             ->with($input)
             ->will(self::returnValue(true));
 
@@ -97,12 +97,12 @@ class AbstractRuleTest extends TestCase
 
         $abstractRuleMock = $this
             ->getMockBuilder(AbstractRule::class)
-            ->setMethods(['validate', 'reportError'])
+            ->setMethods(['isValid', 'reportError'])
             ->getMockForAbstractClass();
 
         $abstractRuleMock
             ->expects(self::once())
-            ->method('validate')
+            ->method('isValid')
             ->with($input)
             ->will(self::returnValue(false));
 

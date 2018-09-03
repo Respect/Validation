@@ -17,7 +17,7 @@ use stdClass;
 
 class NotBlank extends AbstractRule
 {
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if (is_numeric($input)) {
             return 0 != $input;

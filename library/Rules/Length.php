@@ -27,13 +27,13 @@ class Length extends AbstractRule
         $this->maxValue = $max;
         $this->inclusive = $inclusive;
         $paramValidator = new AnyOf(new NumericVal(), new NullType());
-        if (!$paramValidator->validate($min)) {
+        if (!$paramValidator->isValid($min)) {
             throw new ComponentException(
                 sprintf('%s is not a valid numeric length', $min)
             );
         }
 
-        if (!$paramValidator->validate($max)) {
+        if (!$paramValidator->isValid($max)) {
             throw new ComponentException(
                 sprintf('%s is not a valid numeric length', $max)
             );
@@ -46,7 +46,7 @@ class Length extends AbstractRule
         }
     }
 
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         $length = $this->extractLength($input);
 

@@ -41,7 +41,7 @@ final class Equivalent extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if (is_scalar($input)) {
             return $this->isStringEquivalent((string) $input);
