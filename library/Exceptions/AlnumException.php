@@ -13,8 +13,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class AlnumException extends AlphaException
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class AlnumException extends AlphaException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must contain only letters (a-z) and digits (0-9)',

@@ -13,14 +13,24 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Alnum extends AbstractCtypeRule
-{
-    protected function filter($input)
-    {
-        return $this->filterWhiteSpaceOption($input);
-    }
+use function ctype_alnum;
 
-    protected function ctypeFunction($input)
+/**
+ * Validates whether the input is alphanumeric or not.
+ *
+ * Alphanumeric is a combination of alphabetic (a-z and A-Z) and numeric (0-9)
+ * characters.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ */
+final class Alnum extends AbstractFilterRule
+{
+    /**
+     * {@inheritdoc}
+     */
+    protected function validateClean($input)
     {
         return ctype_alnum($input);
     }
