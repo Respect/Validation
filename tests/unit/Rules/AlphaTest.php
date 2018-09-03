@@ -13,41 +13,22 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\AlphaException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Alpha
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ * @author Pascal Borreli <pascal@borreli.com>
  */
-class AlphaTest extends TestCase
+final class AlphaTest extends RuleTestCase
 {
-    /**
-     * @dataProvider providerForValidAlpha
-     *
-     * @test
-     */
-    public function validAlphanumericCharsShouldReturnTrue($validAlpha, $additional): void
-    {
-        $validator = new Alpha($additional);
-        self::assertTrue($validator->validate($validAlpha));
-        $validator->check($validAlpha);
-        $validator->assert($validAlpha);
-    }
-
-    /**
-     * @dataProvider providerForInvalidAlpha
-     * @expectedException \Respect\Validation\Exceptions\AlphaException
-     *
-     * @test
-     */
-    public function invalidAlphanumericCharsShouldThrowAlphaException($invalidAlpha, $additional): void
-    {
-        $validator = new Alpha($additional);
-        self::assertFalse($validator->validate($invalidAlpha));
-        $validator->assert($invalidAlpha);
-    }
-
     /**
      * @dataProvider providerForInvalidParams
      * @expectedException \Respect\Validation\Exceptions\ComponentException
@@ -56,71 +37,66 @@ class AlphaTest extends TestCase
      */
     public function invalidConstructorParamsShouldThrowComponentException($additional): void
     {
-        $validator = new Alpha($additional);
+        new Alpha($additional);
     }
 
-    /**
-     * @dataProvider providerAdditionalChars
-     *
-     * @test
-     */
-    public function additionalCharsShouldBeRespected($additional, $query): void
-    {
-        $validator = new Alpha($additional);
-        self::assertTrue($validator->validate($query));
-    }
-
-    public function providerAdditionalChars()
+    public function providerForInvalidParams(): array
     {
         return [
-            ['!@#$%^&*(){}', '!@#$%^&*(){} abc'],
-            ['[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n abc"],
-        ];
-    }
-
-    public function providerForInvalidParams()
-    {
-        return [
-            [new \stdClass()],
+            [new stdClass()],
             [[]],
             [0x2],
         ];
     }
 
-    public function providerForValidAlpha()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
         return [
-            ['alganet', ''],
-            ['alganet', 'alganet'],
-            ['0alg-anet0', '0-9'],
-            ['a', ''],
-            ["\t", ''],
-            ["\n", ''],
-            ['foobar', ''],
-            ['rubinho_', '_'],
-            ['google.com', '.'],
-            ['alganet alganet', ''],
-            ["\nabc", ''],
-            ["\tdef", ''],
-            ["\nabc \t", ''],
+            [new Alpha(), 'alganet'],
+            [new Alpha('alganet'), 'alganet'],
+            [new Alpha('0-9'), '0alg-anet0'],
+            [new Alpha(), 'a'],
+            [new Alpha("\t"), "\t"],
+            [new Alpha("\n"), "\n"],
+            [new Alpha(), 'foobar'],
+            [new Alpha('_'), 'rubinho_'],
+            [new Alpha('.'), 'google.com'],
+            [new Alpha(' '), 'alganet alganet'],
+            [new Alpha("\n"), "\nabc"],
+            [new Alpha("\t"), "\tdef"],
+            [new Alpha("\n\t "), "\nabc \t"],
+            [new Alpha('!@#$%^&*(){} abc'), '!@#$%^&*(){}'],
+            [new Alpha("[]?+=/\\-_|\"',<>. \t \n abc"), '[]?+=/\\-_|"\',<>.'],
         ];
     }
 
-    public function providerForInvalidAlpha()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         return [
-            ['', ''],
-            ['@#$', ''],
-            ['_', ''],
-            ['dgç', ''],
-            ['122al', ''],
-            ['122', ''],
-            [11123, ''],
-            [1e21, ''],
-            [0, ''],
-            [null, ''],
-            [new \stdClass(), ''],
-            [[], ''],
+            [new Alpha(), ''],
+            [new Alpha(), '@#$'],
+            [new Alpha(), '_'],
+            [new Alpha(), 'dgç'],
+            [new Alpha(), '122al'],
+            [new Alpha(), '122'],
+            [new Alpha(), 11123],
+            [new Alpha(), 1e21],
+            [new Alpha(), 0],
+            [new Alpha(), null],
+            [new Alpha(), new stdClass()],
+            [new Alpha(), []],
+            [new Alpha(), "\nabc"],
+            [new Alpha(), "\tdef"],
+            [new Alpha(), "\nabc \t"],
+            [new Alpha(), "\t"],
+            [new Alpha(), "\n"],
+            [new Alpha(), 'alganet alganet'],
         ];
     }
 }
