@@ -8,7 +8,7 @@ Validates if NONE of the given validators validate:
 v::noneOf(
     v::intVal(),
     v::floatVal()
-)->validate('foo'); // true
+)->isValid('foo'); // true
 ```
 
 In the sample above, 'foo' isn't a integer nor a float, so noneOf returns true.

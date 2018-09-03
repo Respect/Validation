@@ -53,7 +53,7 @@ final class Charset extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         $detectedEncoding = mb_detect_encoding($input, $this->charset, true);
 

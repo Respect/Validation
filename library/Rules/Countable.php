@@ -28,7 +28,7 @@ final class Countable extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         return is_array($input) || $input instanceof CountableInterface;
     }

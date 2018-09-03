@@ -82,7 +82,7 @@ final class In extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if ($this->compareIdentical) {
             return $this->validateIdentical($input);

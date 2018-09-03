@@ -47,13 +47,13 @@ final class AbstractWrapperTest extends TestCase
         $validatable = $this->createMock(Validatable::class);
         $validatable
             ->expects(self::once())
-            ->method('validate')
+            ->method('isValid')
             ->with($input)
             ->will(self::returnValue(true));
 
         $wrapper = $this->getMockForAbstractClass(AbstractWrapper::class, [$validatable]);
 
-        self::assertTrue($wrapper->validate($input));
+        self::assertTrue($wrapper->isValid($input));
     }
 
     /**

@@ -42,7 +42,7 @@ final class Subset extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if (!is_array($input)) {
             return false;

@@ -24,7 +24,7 @@ class Sorted extends AbstractRule
         $this->ascending = $ascending;
     }
 
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         $count = count($input);
         if ($count < 2) {

@@ -5,8 +5,8 @@
 Validates on any numeric value.
 
 ```php
-v::numericVal()->validate(-12); // true
-v::numericVal()->validate('135.0'); // true
+v::numericVal()->isValid(-12); // true
+v::numericVal()->isValid('135.0'); // true
 ```
 
 This rule doesn't validate if the data is a valid number, for that purpose

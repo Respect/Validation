@@ -63,7 +63,7 @@ class NoTest extends TestCase
     {
         $rule = new No();
 
-        self::assertTrue($rule->validate($input));
+        self::assertTrue($rule->isValid($input));
     }
 
     public function validNoProvider()
@@ -87,7 +87,7 @@ class NoTest extends TestCase
     {
         $rule = new No();
 
-        self::assertFalse($rule->validate($input));
+        self::assertFalse($rule->isValid($input));
     }
 
     public function invalidNoProvider()

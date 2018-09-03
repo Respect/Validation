@@ -42,7 +42,7 @@ abstract class AbstractComparison extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         $left = $this->toComparable($input);
         $right = $this->toComparable($this->compareTo);

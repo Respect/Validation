@@ -8,7 +8,7 @@ Validate the input with a Symfony Validator (>=4.0 or >=3.0) Constraint.
 ```php
 use Symfony\Component\Validator\Constraint\Iban;
 
-v::sf(new Iban())->validate('NL39 RABO 0300 0652 64'); // true
+v::sf(new Iban())->isValid('NL39 RABO 0300 0652 64'); // true
 ```
 
 This rule will keep all the messages returned from Symfony.

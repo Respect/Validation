@@ -32,7 +32,7 @@ class NotBlankTest extends TestCase
     {
         $rule = new NotBlank();
 
-        self::assertTrue($rule->validate($input));
+        self::assertTrue($rule->isValid($input));
     }
 
     /**
@@ -44,7 +44,7 @@ class NotBlankTest extends TestCase
     {
         $rule = new NotBlank();
 
-        self::assertFalse($rule->validate($input));
+        self::assertFalse($rule->isValid($input));
     }
 
     /**

@@ -48,7 +48,7 @@ final class Stub extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         $this->inputs[] = $input;
 

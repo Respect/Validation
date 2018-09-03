@@ -30,7 +30,7 @@ class KeyTest extends TestCase
         $validator = new Key('bar');
         $someArray = [];
         $someArray['bar'] = 'foo';
-        self::assertTrue($validator->validate($someArray));
+        self::assertTrue($validator->isValid($someArray));
     }
 
     /**
@@ -41,7 +41,7 @@ class KeyTest extends TestCase
         $validator = new Key(0);
         $someArray = [];
         $someArray[0] = 'foo';
-        self::assertTrue($validator->validate($someArray));
+        self::assertTrue($validator->isValid($someArray));
     }
 
     /**
@@ -52,7 +52,7 @@ class KeyTest extends TestCase
         $validator = new Key('someEmptyKey');
         $input = '';
 
-        self::assertFalse($validator->validate($input));
+        self::assertFalse($validator->isValid($input));
     }
 
     /**
@@ -86,7 +86,7 @@ class KeyTest extends TestCase
         $input = [];
         $input['someEmptyKey'] = '';
 
-        self::assertTrue($validator->validate($input));
+        self::assertTrue($validator->isValid($input));
     }
 
     /**
@@ -109,7 +109,7 @@ class KeyTest extends TestCase
         } catch (\Exception $e) {
         }
 
-        self::assertFalse($rule->validate($input));
+        self::assertFalse($rule->isValid($input));
     }
 
     /**
@@ -169,6 +169,6 @@ class KeyTest extends TestCase
         $subValidator = new Length(1, 3);
         $validator = new Key('bar', $subValidator, false);
         $someArray = [];
-        self::assertTrue($validator->validate($someArray));
+        self::assertTrue($validator->isValid($someArray));
     }
 }

@@ -32,7 +32,7 @@ final class Cpf extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         // Code ported from jsfromhell.com
         $c = preg_replace('/\D/', '', $input);

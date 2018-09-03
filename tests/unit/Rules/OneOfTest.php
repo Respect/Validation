@@ -39,7 +39,7 @@ class OneOfTest extends TestCase
 
         $rule = new OneOf($valid1, $valid2, $valid3);
 
-        self::assertTrue($rule->validate('any'));
+        self::assertTrue($rule->isValid('any'));
         $rule->assert('any');
         $rule->check('any');
     }
@@ -53,7 +53,7 @@ class OneOfTest extends TestCase
     {
         $rule = new OneOf();
 
-        self::assertFalse($rule->validate('any'));
+        self::assertFalse($rule->isValid('any'));
         $rule->check('any');
     }
 
@@ -74,7 +74,7 @@ class OneOfTest extends TestCase
             return false;
         });
         $rule = new OneOf($valid1, $valid2, $valid3);
-        self::assertFalse($rule->validate('any'));
+        self::assertFalse($rule->isValid('any'));
         $rule->assert('any');
     }
 
@@ -95,7 +95,7 @@ class OneOfTest extends TestCase
             return false;
         });
         $rule = new OneOf($valid1, $valid2, $valid3);
-        self::assertFalse($rule->validate('any'));
+        self::assertFalse($rule->isValid('any'));
 
         $rule->assert('any');
     }
@@ -118,7 +118,7 @@ class OneOfTest extends TestCase
         });
 
         $rule = new OneOf($valid1, $valid2, $valid3);
-        self::assertFalse($rule->validate('any'));
+        self::assertFalse($rule->isValid('any'));
 
         $rule->check('any');
     }
@@ -141,7 +141,7 @@ class OneOfTest extends TestCase
         });
 
         $rule = new OneOf($valid1, $valid2, $valid3);
-        self::assertFalse($rule->validate('any'));
+        self::assertFalse($rule->isValid('any'));
 
         $rule->check('any');
     }
@@ -154,7 +154,7 @@ class OneOfTest extends TestCase
     public function invalidCheck(): void
     {
         $rule = new OneOf(new Xdigit(), new Alnum());
-        self::assertFalse($rule->validate(-10));
+        self::assertFalse($rule->isValid(-10));
 
         $rule->check(-10);
     }

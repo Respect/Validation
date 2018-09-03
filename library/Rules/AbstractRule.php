@@ -24,12 +24,12 @@ abstract class AbstractRule implements Validatable
 
     public function __invoke($input)
     {
-        return $this->validate($input);
+        return $this->isValid($input);
     }
 
     public function assert($input): void
     {
-        if ($this->validate($input)) {
+        if ($this->isValid($input)) {
             return;
         }
 

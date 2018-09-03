@@ -39,7 +39,7 @@ final class SfTest extends TestCase
     {
         $sut = new Sf(new IsNull());
 
-        self::assertTrue($sut->validate(null));
+        self::assertTrue($sut->isValid(null));
     }
 
     /**
@@ -49,7 +49,7 @@ final class SfTest extends TestCase
     {
         $sut = new Sf(new IsFalse());
 
-        self::assertFalse($sut->validate(true));
+        self::assertFalse($sut->isValid(true));
     }
 
     /**
@@ -76,7 +76,7 @@ final class SfTest extends TestCase
         $validator = new TraceableValidator(Validation::createValidator());
 
         $sut = new Sf(new IsNull(), $validator);
-        $sut->validate($input);
+        $sut->isValid($input);
 
         self::assertSame($input, $validator->getCollectedData()[0]['context']['value']);
     }

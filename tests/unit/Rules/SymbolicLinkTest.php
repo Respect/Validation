@@ -36,7 +36,7 @@ function is_link($link)
 class SymbolicLinkTest extends TestCase
 {
     /**
-     * @covers \Respect\Validation\Rules\SymbolicLink::validate
+     * @covers \Respect\Validation\Rules\SymbolicLink::isValid
      *
      * @test
      */
@@ -46,11 +46,11 @@ class SymbolicLinkTest extends TestCase
 
         $rule = new SymbolicLink();
         $input = '/path/of/a/valid/link.lnk';
-        self::assertTrue($rule->validate($input));
+        self::assertTrue($rule->isValid($input));
     }
 
     /**
-     * @covers \Respect\Validation\Rules\SymbolicLink::validate
+     * @covers \Respect\Validation\Rules\SymbolicLink::isValid
      *
      * @test
      */
@@ -60,11 +60,11 @@ class SymbolicLinkTest extends TestCase
 
         $rule = new SymbolicLink();
         $input = '/path/of/an/invalid/link.lnk';
-        self::assertFalse($rule->validate($input));
+        self::assertFalse($rule->isValid($input));
     }
 
     /**
-     * @covers \Respect\Validation\Rules\SymbolicLink::validate
+     * @covers \Respect\Validation\Rules\SymbolicLink::isValid
      *
      * @test
      */
@@ -76,6 +76,6 @@ class SymbolicLinkTest extends TestCase
                 ->method('isLink')
                 ->will(self::returnValue(true));
 
-        self::assertTrue($rule->validate($object));
+        self::assertTrue($rule->isValid($object));
     }
 }

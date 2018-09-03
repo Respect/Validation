@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractRule;
  */
 final class PlVatin extends AbstractRule
 {
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if (!is_scalar($input)) {
             return false;

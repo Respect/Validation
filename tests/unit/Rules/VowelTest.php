@@ -30,7 +30,7 @@ class VowelTest extends TestCase
     public function validDataWithVowelsShouldReturnTrue($validVowels, $additional = ''): void
     {
         $validator = new Vowel($additional);
-        self::assertTrue($validator->validate($validVowels));
+        self::assertTrue($validator->isValid($validVowels));
     }
 
     /**
@@ -42,7 +42,7 @@ class VowelTest extends TestCase
     public function invalidVowelsShouldFailAndThrowVowelException($invalidVowels, $additional = ''): void
     {
         $validator = new Vowel($additional);
-        self::assertFalse($validator->validate($invalidVowels));
+        self::assertFalse($validator->isValid($invalidVowels));
         $validator->assert($invalidVowels);
     }
 
@@ -65,7 +65,7 @@ class VowelTest extends TestCase
     public function additionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Vowel($additional);
-        self::assertTrue($validator->validate($query));
+        self::assertTrue($validator->isValid($query));
     }
 
     public function providerAdditionalChars()

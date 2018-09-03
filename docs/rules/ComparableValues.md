@@ -16,15 +16,15 @@ that can be parsed by PHP
 Below you can see some examples:
 
 ```php
-v::min(100)->validate($collection); // true if it has at least 100 items
+v::min(100)->isValid($collection); // true if it has at least 100 items
 
 v::dateTime()
     ->between(new DateTime('yesterday'), new DateTime('tomorrow'))
-    ->validate(new DateTime('now')); // true
+    ->isValid(new DateTime('now')); // true
 
-v::numericVal()->max(10)->validate(5); // true
+v::numericVal()->max(10)->isValid(5); // true
 
-v::stringVal()->between('a', 'f')->validate('d'); // true
+v::stringVal()->between('a', 'f')->isValid('d'); // true
 
-v::dateTime()->between('yesterday', 'tomorrow')->validate('now'); // true
+v::dateTime()->between('yesterday', 'tomorrow')->isValid('now'); // true
 ```

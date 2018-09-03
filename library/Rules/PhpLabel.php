@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class PhpLabel extends AbstractRule
 {
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         return is_string($input) && preg_match('/^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*$/', $input);
     }

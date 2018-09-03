@@ -32,7 +32,7 @@ final class AttributeTest extends RuleTestCase
         $obj->bar = 'foo';
 
         $extraValidator = $this->createMock(Validatable::class);
-        $extraValidator->method('validate')
+        $extraValidator->method('isValid')
             ->willReturn(true);
 
         return [
@@ -53,7 +53,7 @@ final class AttributeTest extends RuleTestCase
         $obj->bar = 'foo';
 
         $extraValidatorMock = $this->createMock(Validatable::class);
-        $extraValidatorMock->method('validate')->willReturn(false);
+        $extraValidatorMock->method('isValid')->willReturn(false);
 
         return [
             'Is not valid when attribute is absent without extra validator' => [new Attribute('barr'), $obj],

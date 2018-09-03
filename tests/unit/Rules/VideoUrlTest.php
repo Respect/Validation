@@ -75,7 +75,7 @@ class VideoUrlTest extends TestCase
     {
         $rule = new VideoUrl($service);
 
-        self::assertTrue($rule->validate($input));
+        self::assertTrue($rule->isValid($input));
     }
 
     /**
@@ -87,7 +87,7 @@ class VideoUrlTest extends TestCase
     {
         $rule = new VideoUrl($service);
 
-        self::assertFalse($rule->validate($input));
+        self::assertFalse($rule->isValid($input));
     }
 
     /**

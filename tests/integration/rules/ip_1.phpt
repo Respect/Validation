@@ -7,11 +7,11 @@ use Respect\Validation\Rules\Ip;
 $ip = new Ip();
 
 var_dump(
-    $ip->validate('10.0.0.1'),
-    $ip->validate('192.168.1.150'),
-    $ip->validate('127.0.0.1'),
-    $ip->validate('10,0.0.1'),
-    $ip->validate(null)
+    $ip->isValid('10.0.0.1'),
+    $ip->isValid('192.168.1.150'),
+    $ip->isValid('127.0.0.1'),
+    $ip->isValid('10,0.0.1'),
+    $ip->isValid(null)
 );
 
 ?>

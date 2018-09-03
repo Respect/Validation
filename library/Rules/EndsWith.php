@@ -53,7 +53,7 @@ final class EndsWith extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if ($this->identical) {
             return $this->validateIdentical($input);

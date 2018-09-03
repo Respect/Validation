@@ -34,27 +34,27 @@ class AbstractFilterRuleTest extends TestCase
     /**
      * @test
      */
-    public function validateShouldReturnTrueForValidArguments(): void
+    public function isValidShouldReturnTrueForValidArguments(): void
     {
         $filterRuleMock = $this->getMockForAbstractClass(AbstractFilterRule::class);
         $filterRuleMock->expects(self::any())
             ->method('validateClean')
             ->will(self::returnValue(true));
 
-        self::assertTrue($filterRuleMock->validate('hey'));
+        self::assertTrue($filterRuleMock->isValid('hey'));
     }
 
     /**
      * @test
      */
-    public function validateShouldReturnFalseForInvalidArguments(): void
+    public function isValidShouldReturnFalseForInvalidArguments(): void
     {
         $filterRuleMock = $this->getMockForAbstractClass(AbstractFilterRule::class);
         $filterRuleMock->expects(self::any())
             ->method('validateClean')
             ->will(self::returnValue(true));
 
-        self::assertFalse($filterRuleMock->validate(''));
-        self::assertFalse($filterRuleMock->validate([]));
+        self::assertFalse($filterRuleMock->isValid(''));
+        self::assertFalse($filterRuleMock->isValid([]));
     }
 }

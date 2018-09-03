@@ -32,11 +32,11 @@ class OneOf extends AbstractComposite
         }
     }
 
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         $rulesPassedCount = 0;
         foreach ($this->getRules() as $rule) {
-            if (!$rule->validate($input)) {
+            if (!$rule->isValid($input)) {
                 continue;
             }
 

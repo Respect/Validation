@@ -30,7 +30,7 @@ class AlnumTest extends TestCase
     public function validAlnumCharsShouldReturnTrue($validAlnum, $additional): void
     {
         $validator = new Alnum($additional);
-        self::assertTrue($validator->validate($validAlnum));
+        self::assertTrue($validator->isValid($validAlnum));
     }
 
     /**
@@ -42,7 +42,7 @@ class AlnumTest extends TestCase
     public function invalidAlnumCharsShouldThrowAlnumExceptionAndReturnFalse($invalidAlnum, $additional): void
     {
         $validator = new Alnum($additional);
-        self::assertFalse($validator->validate($invalidAlnum));
+        self::assertFalse($validator->isValid($invalidAlnum));
         $validator->assert($invalidAlnum);
     }
 
@@ -65,7 +65,7 @@ class AlnumTest extends TestCase
     public function additionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Alnum($additional);
-        self::assertTrue($validator->validate($query));
+        self::assertTrue($validator->isValid($query));
     }
 
     public function providerAdditionalChars()

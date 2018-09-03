@@ -36,7 +36,7 @@ function is_writable($writable)
 class WritableTest extends TestCase
 {
     /**
-     * @covers \Respect\Validation\Rules\Writable::validate
+     * @covers \Respect\Validation\Rules\Writable::isValid
      *
      * @test
      */
@@ -46,11 +46,11 @@ class WritableTest extends TestCase
 
         $rule = new Writable();
         $input = '/path/of/a/valid/writable/file.txt';
-        self::assertTrue($rule->validate($input));
+        self::assertTrue($rule->isValid($input));
     }
 
     /**
-     * @covers \Respect\Validation\Rules\Writable::validate
+     * @covers \Respect\Validation\Rules\Writable::isValid
      *
      * @test
      */
@@ -60,11 +60,11 @@ class WritableTest extends TestCase
 
         $rule = new Writable();
         $input = '/path/of/an/invalid/writable/file.txt';
-        self::assertFalse($rule->validate($input));
+        self::assertFalse($rule->isValid($input));
     }
 
     /**
-     * @covers \Respect\Validation\Rules\Writable::validate
+     * @covers \Respect\Validation\Rules\Writable::isValid
      *
      * @test
      */
@@ -76,6 +76,6 @@ class WritableTest extends TestCase
                 ->method('isWritable')
                 ->will(self::returnValue(true));
 
-        self::assertTrue($rule->validate($object));
+        self::assertTrue($rule->isValid($object));
     }
 }

@@ -63,7 +63,7 @@ class YesTest extends TestCase
     {
         $rule = new Yes();
 
-        self::assertTrue($rule->validate($input));
+        self::assertTrue($rule->isValid($input));
     }
 
     public function validYesProvider()
@@ -86,7 +86,7 @@ class YesTest extends TestCase
     {
         $rule = new Yes();
 
-        self::assertFalse($rule->validate($input));
+        self::assertFalse($rule->isValid($input));
     }
 
     public function invalidYesProvider()

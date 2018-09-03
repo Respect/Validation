@@ -45,7 +45,7 @@ create a validator that validates if a string is equal to "Hello World".
 
 The rule itself needs to implement the `Validatable` interface but, it is
 convenient to just extend the `AbstractRule` class.
-Doing that, you'll only need to declare one method: `validate($input)`.
+Doing that, you'll only need to declare one method: `isValid($input)`.
 This method must return `true` or `false`.
 
 If your validator class is `HelloWorld`, it will be available as `v::helloWorld()`
@@ -77,7 +77,7 @@ final class HelloWorld extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         return $input === 'Hello World';
     }
@@ -137,8 +137,8 @@ are able to use any methods of it. By extending `RuleTestCase` you should
 implement two methods that should return a [data provider][] with the rule as
 first item of the arrays:
 
-- `providerForValidInput`: Will test when `validate()` should return `true`
-- `providerForInvalidInput`: Will test when `validate()` should return `false`
+- `providerForValidInput`: Will test when `isValid()` should return `true`
+- `providerForInvalidInput`: Will test when `isValid()` should return `false`
 
 ```php
 <?php

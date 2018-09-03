@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator as v;
 
-if (!v::alnum('-')->validate('bla - bla')) {
+if (!v::alnum('-')->isValid('bla - bla')) {
     echo 'ok';
 }
 

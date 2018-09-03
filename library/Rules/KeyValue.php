@@ -89,7 +89,7 @@ class KeyValue extends AbstractRule
         }
     }
 
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         try {
             $rule = $this->getRule($input);
@@ -97,6 +97,6 @@ class KeyValue extends AbstractRule
             return false;
         }
 
-        return $rule->validate($input[$this->comparedKey]);
+        return $rule->isValid($input[$this->comparedKey]);
     }
 }

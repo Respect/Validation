@@ -30,7 +30,7 @@ class DigitTest extends TestCase
     public function validDataWithDigitsShouldReturnTrue($validDigits, $additional = ''): void
     {
         $validator = new Digit($additional);
-        self::assertTrue($validator->validate($validDigits));
+        self::assertTrue($validator->isValid($validDigits));
     }
 
     /**
@@ -42,7 +42,7 @@ class DigitTest extends TestCase
     public function invalidDigitsShouldFailAndThrowDigitException($invalidDigits, $additional = ''): void
     {
         $validator = new Digit($additional);
-        self::assertFalse($validator->validate($invalidDigits));
+        self::assertFalse($validator->isValid($invalidDigits));
         $validator->assert($invalidDigits);
     }
 
@@ -65,7 +65,7 @@ class DigitTest extends TestCase
     public function additionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Digit($additional);
-        self::assertTrue($validator->validate($query));
+        self::assertTrue($validator->isValid($query));
     }
 
     public function providerAdditionalChars()

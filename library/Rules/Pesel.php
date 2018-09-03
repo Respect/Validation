@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class Pesel extends AbstractRule
 {
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if (!preg_match('/^\d{11}$/', (string) $input)) {
             return false;

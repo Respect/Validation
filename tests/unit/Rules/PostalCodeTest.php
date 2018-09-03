@@ -57,7 +57,7 @@ class PostalCodeTest extends TestCase
     {
         $rule = new PostalCode('ZW');
 
-        self::assertTrue($rule->validate(''));
+        self::assertTrue($rule->isValid(''));
     }
 
     /**
@@ -67,7 +67,7 @@ class PostalCodeTest extends TestCase
     {
         $rule = new PostalCode('ZW');
 
-        self::assertFalse($rule->validate(' '));
+        self::assertFalse($rule->isValid(' '));
     }
 
     /**
@@ -90,7 +90,7 @@ class PostalCodeTest extends TestCase
     {
         $rule = new PostalCode($countryCode);
 
-        self::assertTrue($rule->validate($postalCode));
+        self::assertTrue($rule->isValid($postalCode));
     }
 
     public function validPostalCodesProvider()
@@ -119,7 +119,7 @@ class PostalCodeTest extends TestCase
     {
         $rule = new PostalCode($countryCode);
 
-        self::assertFalse($rule->validate($postalCode));
+        self::assertFalse($rule->isValid($postalCode));
     }
 
     /**

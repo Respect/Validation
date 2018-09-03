@@ -47,12 +47,12 @@ final class Nullable extends AbstractWrapper
     /**
      * {@inheritdoc}
      */
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if (null === $input) {
             return true;
         }
 
-        return parent::validate($input);
+        return parent::isValid($input);
     }
 }

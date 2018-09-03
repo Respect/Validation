@@ -6,7 +6,7 @@
 Similar to `Alnum()`. Validates strings that contain only consonants:
 
 ```php
-v::consonant()->validate('xkcd'); // true
+v::consonant()->isValid('xkcd'); // true
 ```
 
 ## Changelog

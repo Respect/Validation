@@ -22,7 +22,7 @@ use Respect\Validation\Rules\AbstractRule;
  */
 class PlIdentityCard extends AbstractRule
 {
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if (!preg_match('/^[A-Z0-9]{9}$/', $input)) {
             return false;

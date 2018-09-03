@@ -5,7 +5,7 @@
 Evaluates a regex on the input and validates if matches
 
 ```php
-v::regex('/[a-z]/')->validate('a'); // true
+v::regex('/[a-z]/')->isValid('a'); // true
 ```
 
 Message template for this validator includes `{{regex}}`

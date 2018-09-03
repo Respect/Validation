@@ -105,7 +105,7 @@ class DomainTest extends TestCase
     public function builder($validDomain, $checkTLD = true): void
     {
         self::assertTrue(
-            v::domain($checkTLD)->validate($validDomain),
+            v::domain($checkTLD)->isValid($validDomain),
             sprintf('Domain "%s" should be valid. (Check TLD: %s)', $validDomain, var_export($checkTLD, true))
         );
     }

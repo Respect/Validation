@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class SymbolicLink extends AbstractRule
 {
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if ($input instanceof \SplFileInfo) {
             return $input->isLink();

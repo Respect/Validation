@@ -551,7 +551,7 @@ class LanguageCode extends AbstractRule
         return $languageList;
     }
 
-    public function validate($input): bool
+    public function isValid($input): bool
     {
         if (!is_string($input) || '' === $input) {
             return false;

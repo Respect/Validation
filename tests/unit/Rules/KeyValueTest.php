@@ -45,7 +45,7 @@ class KeyValueTest extends TestCase
     {
         $rule = new KeyValue('foo', 'equals', 'bar');
 
-        self::assertFalse($rule->validate(['bar' => 42]));
+        self::assertFalse($rule->isValid(['bar' => 42]));
     }
 
     /**
@@ -55,7 +55,7 @@ class KeyValueTest extends TestCase
     {
         $rule = new KeyValue('foo', 'equals', 'bar');
 
-        self::assertFalse($rule->validate(['foo' => true]));
+        self::assertFalse($rule->isValid(['foo' => true]));
     }
 
     /**
@@ -65,7 +65,7 @@ class KeyValueTest extends TestCase
     {
         $rule = new KeyValue('foo', 'probably_not_a_rule', 'bar');
 
-        self::assertFalse($rule->validate(['foo' => true, 'bar' => false]));
+        self::assertFalse($rule->isValid(['foo' => true, 'bar' => false]));
     }
 
     /**
@@ -75,7 +75,7 @@ class KeyValueTest extends TestCase
     {
         $rule = new KeyValue('foo', 'equals', 'bar');
 
-        self::assertTrue($rule->validate(['foo' => 42, 'bar' => 42]));
+        self::assertTrue($rule->isValid(['foo' => 42, 'bar' => 42]));
     }
 
     /**
@@ -85,7 +85,7 @@ class KeyValueTest extends TestCase
     {
         $rule = new KeyValue('foo', 'equals', 'bar');
 
-        self::assertFalse($rule->validate(['foo' => 43, 'bar' => 42]));
+        self::assertFalse($rule->isValid(['foo' => 43, 'bar' => 42]));
     }
 
     /**

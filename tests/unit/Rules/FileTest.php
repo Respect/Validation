@@ -36,7 +36,7 @@ function is_file($file)
 class FileTest extends TestCase
 {
     /**
-     * @covers \Respect\Validation\Rules\File::validate
+     * @covers \Respect\Validation\Rules\File::isValid
      *
      * @test
      */
@@ -46,11 +46,11 @@ class FileTest extends TestCase
 
         $rule = new File();
         $input = '/path/of/a/valid/file.txt';
-        self::assertTrue($rule->validate($input));
+        self::assertTrue($rule->isValid($input));
     }
 
     /**
-     * @covers \Respect\Validation\Rules\File::validate
+     * @covers \Respect\Validation\Rules\File::isValid
      *
      * @test
      */
@@ -60,11 +60,11 @@ class FileTest extends TestCase
 
         $rule = new File();
         $input = '/path/of/an/invalid/file.txt';
-        self::assertFalse($rule->validate($input));
+        self::assertFalse($rule->isValid($input));
     }
 
     /**
-     * @covers \Respect\Validation\Rules\File::validate
+     * @covers \Respect\Validation\Rules\File::isValid
      *
      * @test
      */
@@ -76,6 +76,6 @@ class FileTest extends TestCase
                 ->method('isFile')
                 ->will(self::returnValue(true));
 
-        self::assertTrue($rule->validate($object));
+        self::assertTrue($rule->isValid($object));
     }
 }
