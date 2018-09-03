@@ -18,13 +18,13 @@ use Respect\Validation\Test\TestCase;
 /**
  * @group helper
  *
- * @covers \Respect\Validation\Helpers\DateTimeHelper
+ * @covers \Respect\Validation\Helpers\CanValidateDateTime
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class DateTimeHelperTest extends TestCase
+final class CanValidateDateTimeTest extends TestCase
 {
-    use DateTimeHelper;
+    use CanValidateDateTime;
 
     public function providerForValidDateTime(): array
     {

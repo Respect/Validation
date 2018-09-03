@@ -27,7 +27,7 @@ use function mb_strlen;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-trait ComparisonHelper
+trait CanCompareValues
 {
     /**
      * Tries to convert a value into something that can be compared with PHP operators.

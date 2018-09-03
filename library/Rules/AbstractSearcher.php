@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Helpers\UndefinedHelper;
+use Respect\Validation\Helpers\CanValidateUndefined;
 
 /**
  * Abstract class for searches into arrays.
@@ -22,7 +22,7 @@ use Respect\Validation\Helpers\UndefinedHelper;
  */
 abstract class AbstractSearcher extends AbstractRule
 {
-    use UndefinedHelper;
+    use CanValidateUndefined;
 
     /**
      * @return array

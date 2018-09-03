@@ -18,7 +18,7 @@ namespace Respect\Validation\Helpers;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-trait UndefinedHelper
+trait CanValidateUndefined
 {
     /**
      * Finds whether the value is undefined or not.

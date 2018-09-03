@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Helpers\ComparisonHelper;
+use Respect\Validation\Helpers\CanCompareValues;
 
 /**
  * Validates whether the input is between two other values.
@@ -24,7 +24,7 @@ use Respect\Validation\Helpers\ComparisonHelper;
  */
 final class Between extends AbstractEnvelope
 {
-    use ComparisonHelper;
+    use CanCompareValues;
 
     /**
      * Initializes the rule.

@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use DateTimeInterface;
-use Respect\Validation\Helpers\DateTimeHelper;
+use Respect\Validation\Helpers\CanValidateDateTime;
 use function is_scalar;
 use function strtotime;
 
@@ -25,7 +25,7 @@ use function strtotime;
  */
 final class DateTime extends AbstractRule
 {
-    use DateTimeHelper;
+    use CanValidateDateTime;
 
     /**
      * @var string|null

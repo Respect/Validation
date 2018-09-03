@@ -13,14 +13,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Helpers\UndefinedHelper;
+use Respect\Validation\Helpers\CanValidateUndefined;
 
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class Optional extends AbstractWrapper
 {
-    use UndefinedHelper;
+    use CanValidateUndefined;
 
     public function assert($input): void
     {

@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Helpers\ComparisonHelper;
+use Respect\Validation\Helpers\CanCompareValues;
 
 /**
  * Abstract class to help on creating rules that compare value.
@@ -22,7 +22,7 @@ use Respect\Validation\Helpers\ComparisonHelper;
  */
 abstract class AbstractComparison extends AbstractRule
 {
-    use ComparisonHelper;
+    use CanCompareValues;
 
     /**
      * @var mixed

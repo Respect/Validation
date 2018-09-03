@@ -19,13 +19,13 @@ use Respect\Validation\Test\TestCase;
 /**
  * @group helper
  *
- * @covers \Respect\Validation\Helpers\UndefinedHelper
+ * @covers \Respect\Validation\Helpers\CanValidateUndefined
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class UndefinedHelperTest extends TestCase
+final class CanValidateUndefinedTest extends TestCase
 {
-    use UndefinedHelper,
+    use CanValidateUndefined,
         UndefinedProvider;
 
     /**

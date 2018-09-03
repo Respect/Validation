@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Helpers\DateTimeHelper;
+use Respect\Validation\Helpers\CanValidateDateTime;
 use function is_scalar;
 use function preg_match;
 use function sprintf;
@@ -26,7 +26,7 @@ use function sprintf;
  */
 final class Time extends AbstractRule
 {
-    use DateTimeHelper;
+    use CanValidateDateTime;
 
     /**
      * @var string

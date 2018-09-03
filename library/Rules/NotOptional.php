@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Helpers\UndefinedHelper;
+use Respect\Validation\Helpers\CanValidateUndefined;
 
 /**
  * Validates if the given input is not optional.
@@ -25,7 +25,7 @@ use Respect\Validation\Helpers\UndefinedHelper;
  */
 final class NotOptional extends AbstractRule
 {
-    use UndefinedHelper;
+    use CanValidateUndefined;
 
     /**
      * {@inheritdoc}

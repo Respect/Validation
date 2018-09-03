@@ -18,7 +18,7 @@ namespace Respect\Validation\Helpers;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-trait DateTimeHelper
+trait CanValidateDateTime
 {
     /**
      * Finds whether a value is a valid date/time in a specific format.
