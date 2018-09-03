@@ -13,14 +13,21 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Alpha extends AbstractCtypeRule
-{
-    protected function filter($input)
-    {
-        return $this->filterWhiteSpaceOption($input);
-    }
+use function ctype_alpha;
 
-    protected function ctypeFunction($input)
+/**
+ * Validates whether the input contains only alphabetic characters.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ */
+final class Alpha extends AbstractFilterRule
+{
+    /**
+     * {@inheritdoc}
+     */
+    protected function validateClean($input)
     {
         return ctype_alpha($input);
     }
