@@ -13,8 +13,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class NumericVal extends AbstractRule
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class NumericVal extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         return is_numeric($input);
