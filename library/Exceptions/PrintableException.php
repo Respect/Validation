@@ -20,7 +20,7 @@ namespace Respect\Validation\Exceptions;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class PrintableException extends AlphaException
+final class PrintableException extends FilteredValidationException
 {
     /**
      * {@inheritdoc}

@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class PunctException extends AlphaException
+class PunctException extends FilteredValidationException
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

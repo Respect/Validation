@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class ConsonantException extends AlphaException
+class ConsonantException extends FilteredValidationException
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
