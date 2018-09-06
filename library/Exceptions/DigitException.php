@@ -13,16 +13,23 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class DigitException extends FilteredValidationException
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class DigitException extends FilteredValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must contain only digits (0-9)',
-            self::EXTRA => '{{name}} must contain only digits (0-9) and "{{additionalChars}}"',
+            self::EXTRA => '{{name}} must contain only digits (0-9) and {{additionalChars}}',
         ],
         self::MODE_NEGATIVE => [
             self::STANDARD => '{{name}} must not contain digits (0-9)',
-            self::EXTRA => '{{name}} must not contain digits (0-9) or "{{additionalChars}}"',
+            self::EXTRA => '{{name}} must not contain digits (0-9) and {{additionalChars}}',
         ],
     ];
 }

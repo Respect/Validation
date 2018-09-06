@@ -13,14 +13,21 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Digit extends AbstractCtypeRule
-{
-    protected function filter($input)
-    {
-        return $this->filterWhiteSpaceOption($input);
-    }
+use function ctype_digit;
 
-    protected function ctypeFunction($input)
+/**
+ * Validates whether the input contains only digits.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ */
+final class Digit extends AbstractFilterRule
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function validateClean($input)
     {
         return ctype_digit($input);
     }
