@@ -15,13 +15,33 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 
-class Length extends AbstractRule
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Blake Hair <blake.hair@gmail.com>
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Hugo Hamon <hugo.hamon@sensiolabs.com>
+ * @author João Torquato <joao.otl@gmail.com>
+ * @author Marcelo Araujo <msaraujo@php.net>
+ */
+final class Length extends AbstractRule
 {
-    public $minValue;
-    public $maxValue;
-    public $inclusive;
+    /**
+     * @var int
+     */
+    private $minValue;
 
-    public function __construct($min = null, $max = null, $inclusive = true)
+    /**
+     * @var int
+     */
+    private $maxValue;
+
+    /**
+     * @var bool
+     */
+    private $inclusive;
+
+    public function __construct(int $min = null, int $max = null, $inclusive = true)
     {
         $this->minValue = $min;
         $this->maxValue = $max;
@@ -46,6 +66,9 @@ class Length extends AbstractRule
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         $length = $this->extractLength($input);
