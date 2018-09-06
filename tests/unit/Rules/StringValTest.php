@@ -18,10 +18,17 @@ use stdClass;
 
 /**
  * @group  rule
+ *
  * @covers \Respect\Validation\Rules\StringVal
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class StringValTest extends RuleTestCase
+final class StringValTest extends RuleTestCase
 {
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new StringVal();
@@ -37,6 +44,9 @@ class StringValTest extends RuleTestCase
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new StringVal();
@@ -52,7 +62,11 @@ class StringValTest extends RuleTestCase
     }
 }
 
-class ClassWithToString
+/**
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class ClassWithToString
 {
     public function __toString()
     {
