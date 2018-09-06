@@ -11,24 +11,20 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Rules;
-
-use function ctype_alpha;
+namespace Respect\Validation\Exceptions;
 
 /**
- * Validates whether the input contains only alphabetic characters.
- *
- * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
  */
-final class Alpha extends AbstractFilterRule
+class FilterValidationException extends ValidationException
 {
+    public const EXTRA = 'extra';
+
     /**
      * {@inheritdoc}
      */
-    protected function validateClean($input)
+    protected function chooseTemplate(): string
     {
-        return ctype_alpha($input);
+        return $this->getParam('additionalChars') ? static::EXTRA : static::STANDARD;
     }
 }
