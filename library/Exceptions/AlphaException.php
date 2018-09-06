@@ -13,10 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class AlphaException extends ValidationException
+class AlphaException extends FilterValidationException
 {
-    public const EXTRA = 'extra';
-
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must contain only letters (a-z)',
@@ -27,9 +25,4 @@ class AlphaException extends ValidationException
             self::EXTRA => '{{name}} must not contain letters (a-z) or "{{additionalChars}}"',
         ],
     ];
-
-    protected function chooseTemplate(): string
-    {
-        return $this->getParam('additionalChars') ? static::EXTRA : static::STANDARD;
-    }
 }

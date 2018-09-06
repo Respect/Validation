@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class VowelException extends AlphaException
+class VowelException extends FilterValidationException
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

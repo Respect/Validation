@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class DigitException extends AlphaException
+class DigitException extends FilterValidationException
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
