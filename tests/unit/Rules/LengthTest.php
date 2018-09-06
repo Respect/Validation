@@ -13,120 +13,57 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group  rule
+ *
  * @covers \Respect\Validation\Exceptions\LengthException
  * @covers \Respect\Validation\Rules\Length
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Augusto Pascutti <contato@augustopascutti.com>
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class LengthTest extends TestCase
+final class LengthTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForValidLengthInclusive
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function lengthInsideBoundsForInclusiveCasesReturnTrue($string, $min, $max): void
-    {
-        $validator = new Length($min, $max, true);
-        self::assertTrue($validator->validate($string));
-    }
-
-    /**
-     * @dataProvider providerForValidLengthNonInclusive
-     *
-     * @test
-     */
-    public function lengthInsideBoundsForNonInclusiveCasesShouldReturnTrue($string, $min, $max): void
-    {
-        $validator = new Length($min, $max, false);
-        self::assertTrue($validator->validate($string));
-    }
-
-    /**
-     * @dataProvider providerForInvalidLengthInclusive
-     *
-     * @test
-     */
-    public function lengthOutsideBoundsForInclusiveCasesReturnFalse($string, $min, $max): void
-    {
-        $validator = new Length($min, $max, true);
-        self::assertfalse($validator->validate($string));
-    }
-
-    /**
-     * @dataProvider providerForInvalidLengthNonInclusive
-     *
-     * @test
-     */
-    public function lengthOutsideBoundsForNonInclusiveCasesReturnFalse($string, $min, $max): void
-    {
-        $validator = new Length($min, $max, false);
-        self::assertfalse($validator->validate($string));
-    }
-
-    /**
-     * @dataProvider providerForComponentException
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     *
-     * @test
-     */
-    public function componentExceptionsForInvalidParameters($min, $max): void
-    {
-        $buggyValidator = new Length($min, $max);
-    }
-
-    public function providerForValidLengthInclusive()
+    public function providerForValidInput(): array
     {
         return [
-            ['alganet', 1, 15],
-            ['ççççç', 4, 6],
-            [range(1, 20), 1, 30],
-            [(object) ['foo' => 'bar', 'bar' => 'baz'], 0, 2],
-            ['alganet', 1, null], //null is a valid max length, means "no maximum",
-            ['alganet', null, 15], //null is a valid min length, means "no minimum"
+            [new Length(1, 15, true), 'alganet'],
+            [new Length(4, 6, true), 'ççççç'],
+            [new Length(1, 30, true), range(1, 20)],
+            [new Length(0, 2, true), (object) ['foo' => 'bar', 'bar' => 'baz']],
+            [new Length(1, null, true), 'alganet'], //null is a valid max length, means "no maximum",
+            [new Length(null, 15, true), 'alganet'], //null is a valid min length, means "no minimum"
+            [new Length(1, 15, false), 'alganet'],
+            [new Length(4, 6, false), 'ççççç'],
+            [new Length(1, 30, false), range(1, 20)],
+            [new Length(1, 3, false), (object) ['foo' => 'bar', 'bar' => 'baz']],
+            [new Length(1, null, false), 'alganet'], //null is a valid max length, means "no maximum",
+            [new Length(null, 15, false), 'alganet'], //null is a valid min length, means "no minimum"
         ];
     }
 
-    public function providerForValidLengthNonInclusive()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         return [
-            ['alganet', 1, 15],
-            ['ççççç', 4, 6],
-            [range(1, 20), 1, 30],
-            [(object) ['foo' => 'bar', 'bar' => 'baz'], 1, 3],
-            ['alganet', 1, null], //null is a valid max length, means "no maximum",
-            ['alganet', null, 15], //null is a valid min length, means "no minimum"
-        ];
-    }
-
-    public function providerForInvalidLengthInclusive()
-    {
-        return [
-            ['', 1, 15],
-            ['alganet', 1, 6],
-            [range(1, 20), 1, 19],
-            ['alganet', 8, null], //null is a valid max length, means "no maximum",
-            ['alganet', null, 6], //null is a valid min length, means "no minimum"
-        ];
-    }
-
-    public function providerForInvalidLengthNonInclusive()
-    {
-        return [
-            ['alganet', 1, 7],
-            [(object) ['foo' => 'bar', 'bar' => 'baz'], 3, 5],
-            [range(1, 50), 1, 30],
-        ];
-    }
-
-    public function providerForComponentException()
-    {
-        return [
-            ['a', 15],
-            [1, 'abc d'],
-            [10, 1],
+            [new Length(1, 15, true), ''],
+            [new Length(1, 6, true), 'alganet'],
+            [new Length(1, 19, true), range(1, 20)],
+            [new Length(8, null, true), 'alganet'], //null is a valid max length, means "no maximum",
+            [new Length(null, 6, true), 'alganet'], //null is a valid min length, means "no minimum"
+            [new Length(1, 7, false), 'alganet'],
+            [new Length(3, 5, false), (object) ['foo' => 'bar', 'bar' => 'baz']],
+            [new Length(1, 30, false), range(1, 50)],
         ];
     }
 }

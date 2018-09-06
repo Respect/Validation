@@ -13,13 +13,21 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class LengthException extends ValidationException
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class LengthException extends ValidationException
 {
     public const BOTH = 'both';
     public const LOWER = 'lower';
     public const GREATER = 'greater';
     public const EXACT = 'exact';
 
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::BOTH => '{{name}} must have a length between {{minValue}} and {{maxValue}}',
