@@ -14,14 +14,23 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
+use Respect\Validation\Test\Stubs\ToStringStub;
 use stdClass;
+use function tmpfile;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\StringVal
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class StringValTest extends RuleTestCase
+final class StringValTest extends RuleTestCase
 {
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new StringVal();
@@ -33,10 +42,13 @@ class StringValTest extends RuleTestCase
             [$rule, 42],
             [$rule, false],
             [$rule, true],
-            [$rule, new ClassWithToString()],
+            [$rule, new ToStringStub('something')],
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new StringVal();
@@ -49,13 +61,5 @@ class StringValTest extends RuleTestCase
             [$rule, null],
             [$rule, tmpfile()],
         ];
-    }
-}
-
-class ClassWithToString
-{
-    public function __toString()
-    {
-        return self::class;
     }
 }
