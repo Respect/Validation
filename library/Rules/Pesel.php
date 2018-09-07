@@ -13,8 +13,20 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Pesel extends AbstractRule
+use function preg_match;
+
+/**
+ * Validates PESEL (Polish human identification number).
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Tomasz Regdos <tomek@regdos.com>
+ */
+final class Pesel extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (!preg_match('/^\d{11}$/', (string) $input)) {
