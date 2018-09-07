@@ -15,16 +15,36 @@ namespace Respect\Validation\Rules;
 
 use DateTimeImmutable;
 use DateTimeInterface;
+use function is_string;
 
-class LeapDate extends AbstractRule
+/**
+ * Validates if a date is leap.
+ *
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jayson Reis <jayson.reis@sabbre.com.br>
+ * @author Jayson Reis <santosdosreis@gmail.com>
+ */
+final class LeapDate extends AbstractRule
 {
-    public $format = null;
+    /**
+     * @var string
+     */
+    private $format = null;
 
-    public function __construct($format)
+    /**
+     * Initializes the rule with the expected format.
+     *
+     * @param string $format
+     */
+    public function __construct(string $format)
     {
         $this->format = $format;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (is_string($input)) {
