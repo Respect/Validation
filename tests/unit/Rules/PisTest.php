@@ -17,14 +17,15 @@ use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\PisException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Pis
  *
  * @author Bruno Koga <brunokoga187@gmail.com>
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class PisTest extends RuleTestCase
+final class PisTest extends RuleTestCase
 {
     /**
      * {@inheritdoc}

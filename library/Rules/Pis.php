@@ -13,13 +13,19 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function is_scalar;
+use function mb_strlen;
+use function preg_match;
+use function preg_replace;
+
 /**
  * Validates a Brazilian PIS/NIS number.
  *
  * @author Bruno Koga <brunokoga187@gmail.com>
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class Pis extends AbstractRule
+final class Pis extends AbstractRule
 {
     /**
      * {@inheritdoc}
