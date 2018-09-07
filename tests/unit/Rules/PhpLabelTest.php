@@ -14,14 +14,25 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
+use function mb_strtoupper;
+use function mt_rand;
+use function random_int;
+use function uniqid;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\PhpLabelException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\PhpLabel
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Emmerson <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class PhpLabelTest extends RuleTestCase
+final class PhpLabelTest extends RuleTestCase
 {
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new PhpLabel();
@@ -37,6 +48,9 @@ class PhpLabelTest extends RuleTestCase
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new PhpLabel();
