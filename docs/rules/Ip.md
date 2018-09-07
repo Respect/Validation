@@ -22,7 +22,7 @@ v::ip(FILTER_FLAG_NO_PRIV_RANGE)->validate('192.168.0.1'); // false
 
 Version | Description
 --------|-------------
-  0.5.0 | Implemented IP range validatio
+  0.5.0 | Implemented IP range validation
   0.3.9 | Created
 
 ***

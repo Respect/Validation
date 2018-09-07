@@ -14,14 +14,46 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use function bccomp;
+use function explode;
+use function filter_var;
+use function ip2long;
+use function is_int;
+use function long2ip;
+use function mb_strpos;
+use function mb_substr_count;
+use function sprintf;
+use function str_replace;
+use function strtr;
 
-class Ip extends AbstractRule
+/**
+ * Validates IP Addresses. This validator uses the native filter_var() PHP function.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Luís Otávio Cobucci Oblonczyk <lcobucci@gmail.com>
+ */
+final class Ip extends AbstractRule
 {
-    public $ipOptions;
+    /**
+     * @var int|string
+     */
+    private $ipOptions;
 
-    public $range;
-    public $networkRange;
+    /**
+     * @var array
+     */
+    private $range;
 
+    /**
+     * @var string
+     */
+    private $networkRange;
+
+    /**
+     * @param int|string $ipOptions
+     */
     public function __construct($ipOptions = null)
     {
         if (is_int($ipOptions)) {
@@ -34,10 +66,7 @@ class Ip extends AbstractRule
         $this->range = $this->createRange();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function createRange(): ?string
+    private function createRange(): ?string
     {
         if (!$this->networkRange) {
             return null;
@@ -55,7 +84,7 @@ class Ip extends AbstractRule
         return $message;
     }
 
-    protected function parseRange($input)
+    private function parseRange($input)
     {
         if (null === $input || '*' == $input || '*.*.*.*' == $input
             || '0.0.0.0-255.255.255.255' == $input) {
@@ -85,14 +114,14 @@ class Ip extends AbstractRule
         return $range;
     }
 
-    protected function fillAddress(&$input, $char = '*'): void
+    private function fillAddress(&$input, $char = '*'): void
     {
         while (mb_substr_count($input, '.') < 3) {
             $input .= '.'.$char;
         }
     }
 
-    protected function parseRangeUsingWildcards($input, &$range): void
+    private function parseRangeUsingWildcards($input, &$range): void
     {
         $this->fillAddress($input);
 
@@ -100,7 +129,7 @@ class Ip extends AbstractRule
         $range['max'] = str_replace('*', '255', $input);
     }
 
-    protected function parseRangeUsingCidr($input, &$range): void
+    private function parseRangeUsingCidr($input, &$range): void
     {
         $input = explode('/', $input);
         $this->fillAddress($input[0], '0');
@@ -121,12 +150,15 @@ class Ip extends AbstractRule
         $range['mask'] = sprintf('%032b', ip2long(long2ip(~(2 ** (32 - $input[1]) - 1))));
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         return $this->verifyAddress($input) && $this->verifyNetwork($input);
     }
 
-    protected function verifyAddress($address)
+    private function verifyAddress($address)
     {
         return (bool) filter_var(
             $address,
@@ -137,7 +169,7 @@ class Ip extends AbstractRule
         );
     }
 
-    protected function verifyNetwork($input)
+    private function verifyNetwork($input)
     {
         if (null === $this->networkRange) {
             return true;
@@ -153,7 +185,7 @@ class Ip extends AbstractRule
                && bccomp($input, sprintf('%u', ip2long($this->networkRange['max']))) <= 0;
     }
 
-    protected function belongsToSubnet($input)
+    private function belongsToSubnet($input)
     {
         $range = $this->networkRange;
         $min = sprintf('%032b', ip2long($range['min']));
