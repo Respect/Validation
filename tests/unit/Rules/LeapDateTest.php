@@ -14,61 +14,44 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use DateTime;
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\LeapDateException
+ * @group rule
  * @covers \Respect\Validation\Rules\LeapDate
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jayson Reis <jayson.reis@sabbre.com.br>
+ * @author Jayson Reis <santosdosreis@gmail.com>
  */
-class LeapDateTest extends TestCase
+final class LeapDateTest extends RuleTestCase
 {
-    protected $leapDateValidator;
-
-    protected function setUp(): void
+    /*
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
-        $this->leapDateValidator = new LeapDate('Y-m-d');
+        return [
+            [new LeapDate('Y-m-d'), '1988-02-29'],
+            [new LeapDate('Y-m-d'), '1992-02-29'],
+            [new LeapDate('Y-m-d'), new DateTime('1988-02-29')],
+            [new LeapDate('Y-m-d'), new DateTime('1992-02-29')],
+        ];
     }
 
-    /**
-     * @test
+    /*
+     * {@inheritdoc}
      */
-    public function validLeapDate_with_string(): void
+    public function providerForInvalidInput(): array
     {
-        self::assertTrue($this->leapDateValidator->validate('1988-02-29'));
-    }
-
-    /**
-     * @test
-     */
-    public function validLeapDate_with_date_time(): void
-    {
-        self::assertTrue($this->leapDateValidator->validate(
-            new DateTime('1988-02-29')));
-    }
-
-    /**
-     * @test
-     */
-    public function invalidLeapDate_with_string(): void
-    {
-        self::assertFalse($this->leapDateValidator->validate('1989-02-29'));
-    }
-
-    /**
-     * @test
-     */
-    public function invalidLeapDate_with_date_time(): void
-    {
-        self::assertFalse($this->leapDateValidator->validate(
-            new DateTime('1989-02-29')));
-    }
-
-    /**
-     * @test
-     */
-    public function invalidLeapDate_input(): void
-    {
-        self::assertFalse($this->leapDateValidator->validate([]));
+        return [
+            [new LeapDate('Y-m-d'), '1989-02-29'],
+            [new LeapDate('Y-m-d'), '1993-02-29'],
+            [new LeapDate('Y-m-d'), new DateTime('1989-02-29')],
+            [new LeapDate('Y-m-d'), new DateTime('1993-02-29')],
+            [new LeapDate('Y-m-d'), []],
+        ];
     }
 }
