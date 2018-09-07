@@ -13,10 +13,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class PeselException extends ValidationException
+/**
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Tomasz Regdos <tomek@regdos.com>
+ */
+final class PeselException extends ValidationException
 {
     /**
-     * @var array
+     * {@inheritdoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
