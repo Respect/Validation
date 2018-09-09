@@ -26,38 +26,6 @@ use Respect\Validation\Test\TestCase;
 class NoTest extends TestCase
 {
     /**
-     * @test
-     */
-    public function shouldUseDefaultPattern(): void
-    {
-        $rule = new No();
-
-        $actualPattern = $rule->regex;
-        $expectedPattern = '/^n(o(t|pe)?|ix|ay)?$/i';
-
-        self::assertEquals($expectedPattern, $actualPattern);
-    }
-
-    /**
-     * @test
-     */
-    public function shouldUseLocalPatternForNoExpressionWhenDefined(): void
-    {
-        if (!defined('NOEXPR')) {
-            self::markTestSkipped('Constant NOEXPR is not defined');
-
-            return;
-        }
-
-        $rule = new No(true);
-
-        $actualPattern = $rule->regex;
-        $expectedPattern = '/'.nl_langinfo(NOEXPR).'/i';
-
-        self::assertEquals($expectedPattern, $actualPattern);
-    }
-
-    /**
      * @dataProvider validNoProvider
      *
      * @test

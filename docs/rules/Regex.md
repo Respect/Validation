@@ -2,13 +2,13 @@
 
 - `Regex(string $regex)`
 
-Evaluates a regex on the input and validates if matches
+Validates whether the input matches a defined regular expression.
 
 ```php
 v::regex('/[a-z]/')->validate('a'); // true
 ```
 
-Message template for this validator includes `{{regex}}`
+Message template for this validator includes `{{regex}}`.
 
 ## Changelog
 

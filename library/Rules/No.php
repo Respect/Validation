@@ -16,7 +16,7 @@ namespace Respect\Validation\Rules;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class No extends Regex
+class No extends AbstractEnvelope
 {
     public function __construct($useLocale = false)
     {
@@ -25,6 +25,6 @@ class No extends Regex
             $pattern = nl_langinfo(NOEXPR);
         }
 
-        parent::__construct('/'.$pattern.'/i');
+        parent::__construct(new Regex('/'.$pattern.'/i'));
     }
 }

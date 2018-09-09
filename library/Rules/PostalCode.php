@@ -18,7 +18,7 @@ use Respect\Validation\Exceptions\ComponentException;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class PostalCode extends Regex
+class PostalCode extends AbstractEnvelope
 {
     public const DEFAULT_PATTERN = '/^$/';
 
@@ -188,8 +188,6 @@ class PostalCode extends Regex
         'ZM' => '/^(\d{5})$/',
     ];
 
-    public $countryCode;
-
     public function __construct($countryCode, CountryCode $countryCodeRule = null)
     {
         $countryCodeRule = $countryCodeRule ?: new CountryCode();
@@ -203,8 +201,6 @@ class PostalCode extends Regex
             $regex = $this->postalCodes[$upperCountryCode];
         }
 
-        $this->countryCode = $countryCode;
-
-        parent::__construct($regex);
+        parent::__construct(new Regex($regex), ['countryCode' => $countryCode]);
     }
 }
