@@ -13,15 +13,36 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function is_scalar;
+use function preg_match;
+
+/**
+ * Evaluates a regex on the input and validates if matches.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class Regex extends AbstractRule
 {
+    /**
+     * @var string
+     */
     public $regex;
 
-    public function __construct($regex)
+    /**
+     * Initializes the rule.
+     *
+     * @param string $regex
+     */
+    public function __construct(string $regex)
     {
         $this->regex = $regex;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (!is_scalar($input)) {

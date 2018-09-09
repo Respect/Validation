@@ -14,10 +14,15 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Regex
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class RegexTest extends RuleTestCase
 {
@@ -40,7 +45,7 @@ final class RegexTest extends RuleTestCase
     {
         return [
             [new Regex('/^w+$/'), 'w poiur'],
-            [new Regex('/^w+$/'), new \stdClass()],
+            [new Regex('/^w+$/'), new stdClass()],
             [new Regex('/^w+$/'), []],
         ];
     }
