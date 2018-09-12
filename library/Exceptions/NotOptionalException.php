@@ -13,10 +13,17 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class NotOptionalException extends ValidationException
+/**
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class NotOptionalException extends ValidationException
 {
     public const NAMED = 'named';
 
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => 'The value must not be optional',
@@ -28,6 +35,9 @@ class NotOptionalException extends ValidationException
         ],
     ];
 
+    /**
+     * {@inheritdoc}
+     */
     protected function chooseTemplate(): string
     {
         if ($this->getParam('input') || $this->getParam('name')) {

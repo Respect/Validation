@@ -15,10 +15,21 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Helpers\UndefinedHelper;
 
-class NotOptional extends AbstractRule
+/**
+ * Validates if the given input is not optional.
+ *
+ * By optional we consider null or an empty string ('').
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class NotOptional extends AbstractRule
 {
     use UndefinedHelper;
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         return false === $this->isUndefined($input);

@@ -13,64 +13,54 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\NotOptional
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class NotOptionalTest extends TestCase
+final class NotOptionalTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForNotOptional
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function shouldValidateWhenNotOptional($input): void
+    public function providerForValidInput(): array
     {
         $rule = new NotOptional();
 
-        self::assertTrue($rule->validate($input));
-    }
-
-    /**
-     * @dataProvider providerForOptional
-     *
-     * @test
-     */
-    public function shouldNotValidateWhenOptional($input): void
-    {
-        $rule = new NotOptional();
-
-        self::assertFalse($rule->validate($input));
-    }
-
-    public function providerForNotOptional()
-    {
         return [
-            [[]],
-            [' '],
-            [0],
-            ['0'],
-            [0],
-            ['0.0'],
-            [false],
-            [['']],
-            [[' ']],
-            [[0]],
-            [['0']],
-            [[false]],
-            [[[''], [0]]],
-            [new stdClass()],
+            [$rule, []],
+            [$rule, ' '],
+            [$rule, 0],
+            [$rule, '0'],
+            [$rule, 0],
+            [$rule, '0.0'],
+            [$rule, false],
+            [$rule, ['']],
+            [$rule, [' ']],
+            [$rule, [0]],
+            [$rule, ['0']],
+            [$rule, [false]],
+            [$rule, [[''], [0]]],
+            [$rule, new stdClass()],
         ];
     }
 
-    public function providerForOptional()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
+        $rule = new NotOptional();
+
         return [
-            [null],
-            [''],
+            [$rule, null],
+            [$rule, ''],
         ];
     }
 }
