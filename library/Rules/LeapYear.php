@@ -14,9 +14,24 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use DateTimeInterface;
+use function date;
+use function is_numeric;
+use function is_string;
+use function sprintf;
+use function strtotime;
 
-class LeapYear extends AbstractRule
+/**
+ * Validates if a year is leap.
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jayson Reis <santosdosreis@gmail.com>
+ */
+final class LeapYear extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($year): bool
     {
         if (is_numeric($year)) {
