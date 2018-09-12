@@ -14,23 +14,40 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use DateTimeInterface;
+use function date;
+use function is_numeric;
+use function is_scalar;
+use function sprintf;
+use function strtotime;
 
-class LeapYear extends AbstractRule
+/**
+ * Validates if a year is leap.
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jayson Reis <santosdosreis@gmail.com>
+ */
+final class LeapYear extends AbstractRule
 {
-    public function validate($year): bool
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
-        if (is_numeric($year)) {
-            $year = (int) $year;
-        } elseif (is_string($year)) {
-            $year = (int) date('Y', (int) strtotime($year));
-        } elseif ($year instanceof DateTimeInterface) {
-            $year = (int) $year->format('Y');
-        } else {
-            return false;
+        if (is_numeric($input)) {
+            $date = strtotime(sprintf('%d-02-29', (int) $input));
+
+            return (bool) date('L', (int) $date);
         }
 
-        $date = strtotime(sprintf('%d-02-29', $year));
+        if (is_scalar($input)) {
+            return $this->validate((int) date('Y', (int) strtotime((string) $input)));
+        }
 
-        return (bool) date('L', (int) $date);
+        if ($input instanceof DateTimeInterface) {
+            return $this->validate($input->format('Y'));
+        }
+
+        return false;
     }
 }
