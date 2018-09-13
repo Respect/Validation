@@ -16,6 +16,7 @@ namespace Respect\Validation\Test;
 use PHPUnit\Framework\TestCase;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
+use function realpath;
 use function sprintf;
 
 /**
@@ -51,6 +52,16 @@ abstract class RuleTestCase extends TestCase
      * @return array[]
      */
     abstract public function providerForInvalidInput(): array;
+
+    /**
+     * Returns the directory used to store test fixtures.
+     *
+     * @return string
+     */
+    public function getFixtureDirectory(): string
+    {
+        return realpath(__DIR__.'/../fixtures');
+    }
 
     /**
      * Create a mock of a Validatable.

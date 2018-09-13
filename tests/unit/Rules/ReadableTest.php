@@ -13,69 +13,46 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
-
-$GLOBALS['is_readable'] = null;
-
-function is_readable($readable)
-{
-    $return = \is_readable($readable); // Running the real function
-    if (null !== $GLOBALS['is_readable']) {
-        $return = $GLOBALS['is_readable'];
-        $GLOBALS['is_readable'] = null;
-    }
-
-    return $return;
-}
+use Respect\Validation\Test\RuleTestCase;
+use SplFileInfo;
+use stdClass;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\ReadableException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Readable
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ReadableTest extends TestCase
+final class ReadableTest extends RuleTestCase
 {
     /**
-     * @covers \Respect\Validation\Rules\Readable::validate
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function validReadableFileShouldReturnTrue(): void
+    public function providerForValidInput(): array
     {
-        $GLOBALS['is_readable'] = true;
-
+        $file = $this->getFixtureDirectory().'/valid-image.gif';
         $rule = new Readable();
-        $input = '/path/of/a/valid/readable/file.txt';
-        self::assertTrue($rule->validate($input));
+
+        return [
+            [$rule, $file],
+            [$rule, new SplFileInfo($file)],
+        ];
     }
 
     /**
-     * @covers \Respect\Validation\Rules\Readable::validate
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function invalidReadableFileShouldReturnFalse(): void
+    public function providerForInvalidInput(): array
     {
-        $GLOBALS['is_readable'] = false;
-
+        $file = $this->getFixtureDirectory().'/invalid-image.gif';
         $rule = new Readable();
-        $input = '/path/of/an/invalid/readable/file.txt';
-        self::assertFalse($rule->validate($input));
-    }
 
-    /**
-     * @covers \Respect\Validation\Rules\Readable::validate
-     *
-     * @test
-     */
-    public function shouldValidateObjects(): void
-    {
-        $rule = new Readable();
-        $object = $this->createMock('SplFileInfo');
-        $object->expects(self::once())
-                ->method('isReadable')
-                ->will(self::returnValue(true));
-
-        self::assertTrue($rule->validate($object));
+        return [
+            [$rule, $file],
+            [$rule, new SplFileInfo($file)],
+            [$rule, new stdClass()],
+        ];
     }
 }

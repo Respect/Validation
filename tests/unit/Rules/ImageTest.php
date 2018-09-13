@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use finfo;
-use realpath;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use SplFileObject;
@@ -79,10 +78,5 @@ final class ImageTest extends RuleTestCase
         $rule = new Image($finfo);
 
         self::assertTrue($rule->validate($input));
-    }
-
-    private function getFixtureDirectory(): string
-    {
-        return realpath(__DIR__.'/../../fixtures');
     }
 }
