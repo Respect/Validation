@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Xdigit extends AbstractCtypeRule
+class Xdigit extends AbstractFilterRule
 {
-    public function ctypeFunction($input)
+    public function validateClean($input)
     {
         return ctype_xdigit($input);
     }

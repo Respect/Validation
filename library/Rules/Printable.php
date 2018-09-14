@@ -20,12 +20,12 @@ namespace Respect\Validation\Rules;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Printable extends AbstractCtypeRule
+final class Printable extends AbstractFilterRule
 {
     /**
      * {@inheritdoc}
      */
-    protected function ctypeFunction($input)
+    protected function validateClean($input)
     {
         return ctype_print($input);
     }

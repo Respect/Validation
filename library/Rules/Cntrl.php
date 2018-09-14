@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Cntrl extends AbstractCtypeRule
+class Cntrl extends AbstractFilterRule
 {
-    protected function ctypeFunction($input)
+    protected function validateClean($input)
     {
         return ctype_cntrl($input);
     }
