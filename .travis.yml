@@ -20,6 +20,9 @@ matrix:
   fast_finish: true
 
 before_script:
+  - sudo locale-gen --no-purge --lang nl_NL.UTF-8
+  - sudo locale-gen --no-purge --lang pt_BR.UTF-8
+  - sudo locale-gen --no-purge --lang ru_RU.UTF-8
   - pecl install uopz || echo "Cound not install uopz" 1>&2
   - composer update --prefer-dist ${COMPOSER_ARGUMENTS}
 
