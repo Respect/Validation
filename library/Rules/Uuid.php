@@ -13,10 +13,19 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Uuid extends AbstractRegexRule
+use function is_scalar;
+use function preg_match;
+
+class Uuid extends AbstractRule
 {
-    protected function getPregFormat()
+    private const PATTERN = '/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i';
+
+    public function validate($input): bool
     {
-        return '/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i';
+        if (!is_scalar($input)) {
+            return false;
+        }
+
+        return preg_match(self::PATTERN, (string) $input) > 0;
     }
 }

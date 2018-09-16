@@ -13,10 +13,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Vowel extends AbstractRegexRule
+use function preg_match;
+
+class Vowel extends AbstractFilterRule
 {
-    protected function getPregFormat()
+    protected function validateClean($input)
     {
-        return '/^(\s|[aeiouAEIOU])*$/';
+        return preg_match('/^(\s|[aeiouAEIOU])*$/', $input) > 0;
     }
 }

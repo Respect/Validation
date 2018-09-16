@@ -13,10 +13,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Consonant extends AbstractRegexRule
+use function preg_match;
+
+class Consonant extends AbstractFilterRule
 {
-    protected function getPregFormat()
+    protected function validateClean($input)
     {
-        return '/^(\s|[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z])*$/';
+        return preg_match('/^(\s|[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z])*$/', $input) > 0;
     }
 }

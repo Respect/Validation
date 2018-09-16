@@ -13,27 +13,28 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class Phone extends AbstractRegexRule
+use function is_scalar;
+use function preg_match;
+use function sprintf;
+
+class Phone extends AbstractRule
 {
     protected function getPregFormat()
     {
-        return $this->replaceParams(
-            '/^\+?({part1})? ?(?(?=\()(\({part2}\) ?{part3})|([. -]?({part2}[. -]*)?{part3}))$/',
-            [
-                'part1' => '\d{0,3}',
-                'part2' => '\d{1,3}',
-                'part3' => '((\d{3,5})[. -]?(\d{4})|(\d{2}[. -]?){4})',
-            ]
+        return sprintf(
+            '/^\+?(%1$s)? ?(?(?=\()(\(%2$s\) ?%3$s)|([. -]?(%2$s[. -]*)?%3$s))$/',
+            '\d{0,3}',
+            '\d{1,3}',
+            '((\d{3,5})[. -]?(\d{4})|(\d{2}[. -]?){4})'
         );
     }
 
-    private function replaceParams($format, array $params)
+    public function validate($input): bool
     {
-        $string = $format;
-        foreach ($params as $name => $value) {
-            $string = str_replace('{'.$name.'}', $value, $string);
+        if (!is_scalar($input)) {
+            return false;
         }
 
-        return $string;
+        return preg_match($this->getPregFormat(), (string) $input) > 0;
     }
 }
