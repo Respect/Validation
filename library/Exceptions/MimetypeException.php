@@ -16,19 +16,20 @@ namespace Respect\Validation\Exceptions;
 /**
  * Exception class for Mimetype rule.
  *
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class MimetypeException extends ValidationException
+final class MimetypeException extends ValidationException
 {
     /**
-     * @var array
+     * {@inheritdoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must have {{mimetype}} mimetype',
+            self::STANDARD => '{{name}} must have {{mimetype}} MIME type',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not have {{mimetype}} mimetype',
+            self::STANDARD => '{{name}} must not have {{mimetype}} MIME type',
         ],
     ];
 }

@@ -2,7 +2,7 @@
 
 - `Mimetype(string $mimetype)`
 
-Validates if the file mimetype matches the expected one:
+Validates if the input is a file and if its MIME type matches the expected one.
 
 ```php
 v::mimetype('image/png')->validate('image.png'); // true

@@ -15,18 +15,22 @@ namespace Respect\Validation\Rules;
 
 use finfo;
 use SplFileInfo;
+use const FILEINFO_MIME_TYPE;
+use function is_file;
+use function is_string;
 
 /**
- * Validate file mimetypes.
+ * Validates if the input is a file and if its MIME type matches the expected one.
  *
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class Mimetype extends AbstractRule
+final class Mimetype extends AbstractRule
 {
     /**
      * @var string
      */
-    public $mimetype;
+    private $mimetype;
 
     /**
      * @var finfo
@@ -34,13 +38,15 @@ class Mimetype extends AbstractRule
     private $fileInfo;
 
     /**
+     * Initializes the rule by defining the expected mimetype from the input.
+     *
      * @param string $mimetype
-     * @param finfo  $fileInfo
+     * @param finfo $fileInfo
      */
-    public function __construct($mimetype, finfo $fileInfo = null)
+    public function __construct(string $mimetype, finfo $fileInfo = null)
     {
         $this->mimetype = $mimetype;
-        $this->fileInfo = $fileInfo ?: new finfo(FILEINFO_MIME_TYPE);
+        $this->fileInfo = $fileInfo ?: new finfo();
     }
 
     /**
@@ -49,7 +55,7 @@ class Mimetype extends AbstractRule
     public function validate($input): bool
     {
         if ($input instanceof SplFileInfo) {
-            $input = $input->getPathname();
+            return $this->validate($input->getPathname());
         }
 
         if (!is_string($input)) {
@@ -60,6 +66,6 @@ class Mimetype extends AbstractRule
             return false;
         }
 
-        return $this->fileInfo->file($input) == $this->mimetype;
+        return $this->mimetype === $this->fileInfo->file($input, FILEINFO_MIME_TYPE);
     }
 }
