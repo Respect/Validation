@@ -13,8 +13,21 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class MacAddress extends AbstractRule
+use function preg_match;
+
+/**
+ * Validates a Mac Address.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Fábio da Silva Ribeiro <fabiorphp@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class MacAddress extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         return !empty($input) && preg_match('/^(([0-9a-fA-F]{2}-){5}|([0-9a-fA-F]{2}:){5})[0-9a-fA-F]{2}$/', $input);

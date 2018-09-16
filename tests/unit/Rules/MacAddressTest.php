@@ -13,64 +13,48 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\MacAddressException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\MacAddress
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Fábio da Silva Ribeiro <fabiorphp@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class MacAddressTest extends TestCase
+final class MacAddressTest extends RuleTestCase
 {
-    protected $macaddressValidator;
-
-    protected function setUp(): void
-    {
-        $this->macaddressValidator = new MacAddress();
-    }
-
     /**
-     * @dataProvider providerForMacAddress
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function validMacaddressesShouldReturnTrue($input): void
+    public function providerForValidInput(): array
     {
-        self::assertTrue($this->macaddressValidator->__invoke($input));
-        $this->macaddressValidator->assert($input);
-        $this->macaddressValidator->check($input);
-    }
+        $rule = new MacAddress();
 
-    /**
-     * @dataProvider providerForNotMacAddress
-     * @expectedException \Respect\Validation\Exceptions\MacAddressException
-     *
-     * @test
-     */
-    public function invalidMacaddressShouldThrowMacAddressException($input): void
-    {
-        self::assertFalse($this->macaddressValidator->__invoke($input));
-        $this->macaddressValidator->assert($input);
-    }
-
-    public function providerForMacAddress()
-    {
         return [
-            ['00:11:22:33:44:55'],
-            ['66-77-88-99-aa-bb'],
-            ['AF:0F:bd:12:44:ba'],
-            ['90-bc-d3-1a-dd-cc'],
+            [$rule, '00:11:22:33:44:55'],
+            [$rule, '66-77-88-99-aa-bb'],
+            [$rule, 'AF:0F:bd:12:44:ba'],
+            [$rule, '90-bc-d3-1a-dd-cc'],
         ];
     }
 
-    public function providerForNotMacAddress()
+    /**
+     * {@inheditdoc}
+     */
+    public function providerForInvalidInput(): array
     {
+        $rule = new MacAddress();
+
         return [
-            [''],
-            ['00-1122:33:44:55'],
-            ['66-77--99-jj-bb'],
-            ['HH:0F-bd:12:44:ba'],
-            ['90-bc-nk:1a-dd-cc'],
+            [$rule, ''],
+            [$rule, '00-1122:33:44:55'],
+            [$rule, '66-77--99-jj-bb'],
+            [$rule, 'HH:0F-bd:12:44:ba'],
+            [$rule, '90-bc-nk:1a-dd-cc'],
         ];
     }
 }
