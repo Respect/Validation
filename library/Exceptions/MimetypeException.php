@@ -18,10 +18,10 @@ namespace Respect\Validation\Exceptions;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class MimetypeException extends ValidationException
+final class MimetypeException extends ValidationException
 {
     /**
-     * @var array
+     * {@inheritdoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

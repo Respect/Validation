@@ -15,18 +15,21 @@ namespace Respect\Validation\Rules;
 
 use finfo;
 use SplFileInfo;
+use function is_file;
+use function is_string;
 
 /**
  * Validate file mimetypes.
  *
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class Mimetype extends AbstractRule
+final class Mimetype extends AbstractRule
 {
     /**
      * @var string
      */
-    public $mimetype;
+    private $mimetype;
 
     /**
      * @var finfo
