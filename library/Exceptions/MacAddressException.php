@@ -13,8 +13,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class MacAddressException extends ValidationException
+/**
+ * Exception class for MacAddress rule.
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Fábio da Silva Ribeiro <fabiorphp@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class MacAddressException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a valid mac address',
