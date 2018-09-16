@@ -13,14 +13,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group  rule
+ *
  * @covers \Respect\Validation\Exceptions\YesException
  * @covers \Respect\Validation\Rules\Yes
+ *
+ * @author Cameron Hall <me@chall.id.au>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class YesTest extends TestCase
+final class YesTest extends RuleTestCase
 {
     /**
      * @test
@@ -55,48 +59,34 @@ class YesTest extends TestCase
     }
 
     /**
-     * @dataProvider validYesProvider
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function shouldValidatePatternAccordingToTheDefinedLocale($input): void
+    public function providerForValidInput(): array
     {
-        $rule = new Yes();
+        $yes = new Yes();
 
-        self::assertTrue($rule->validate($input));
-    }
-
-    public function validYesProvider()
-    {
         return [
-            ['Y'],
-            ['Yea'],
-            ['Yeah'],
-            ['Yep'],
-            ['Yes'],
+            [$yes, 'Y'],
+            [$yes, 'Yea'],
+            [$yes, 'Yeah'],
+            [$yes, 'Yep'],
+            [$yes, 'Yes'],
         ];
     }
 
     /**
-     * @dataProvider invalidYesProvider
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function shouldNotValidatePatternAccordingToTheDefinedLocale($input): void
+    public function providerForInvalidInput(): array
     {
-        $rule = new Yes();
+        $yes = new Yes();
 
-        self::assertFalse($rule->validate($input));
-    }
-
-    public function invalidYesProvider()
-    {
         return [
-            ['Si'],
-            ['Sim'],
-            ['Yoo'],
-            ['Young'],
-            ['Yy'],
+            [$yes, 'Si'],
+            [$yes, 'Sim'],
+            [$yes, 'Yoo'],
+            [$yes, 'Young'],
+            [$yes, 'Yy'],
         ];
     }
 }
