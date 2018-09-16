@@ -13,109 +13,51 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
+use finfo;
+use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 
 /**
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @group  rule
- * @covers \Respect\Validation\Exceptions\MimetypeException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Mimetype
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class MimetypeTest extends TestCase
+final class Mimetype1Test extends RuleTestCase
 {
-    private $filename;
-
-    protected function setUp(): void
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
-        $this->filename = sprintf('%s/validation.txt', sys_get_temp_dir());
+        $splFileInfo = new SplFileInfo($this->getFixtureDirectory().'/valid-image.png');
 
-        file_put_contents($this->filename, 'File content');
-    }
-
-    protected function tearDown(): void
-    {
-        unlink($this->filename);
+        return [
+            [new Mimetype('image/png', new finfo(FILEINFO_MIME_TYPE)), $splFileInfo],
+            [new Mimetype('image/gif', new finfo(FILEINFO_MIME_TYPE)), $this->getFixtureDirectory().'/valid-image.gif'],
+            [new Mimetype('image/png'), $this->getFixtureDirectory().'/valid-image.png'],
+        ];
     }
 
     /**
-     * @test
+     * {@inheritdoc}
      */
-    public function shouldValidateMimetype(): void
+    public function providerForInvalidInput(): array
     {
-        $mimetype = 'plain/text';
+        $splFileInfo = new SplFileInfo($this->getFixtureDirectory().'/valid-image.png');
 
-        $fileInfoMock = $this
-            ->getMockBuilder('finfo')
-            ->disableOriginalConstructor()
-            ->setMethods(['file'])
-            ->getMock();
-
-        $fileInfoMock
-            ->expects(self::once())
-            ->method('file')
-            ->with($this->filename)
-            ->will(self::returnValue($mimetype));
-
-        $rule = new Mimetype($mimetype, $fileInfoMock);
-
-        $rule->validate($this->filename);
-    }
-
-    /**
-     * @test
-     */
-    public function shouldValidateSplFileInfoMimetype(): void
-    {
-        $fileInfo = new SplFileInfo($this->filename);
-        $mimetype = 'plain/text';
-
-        $fileInfoMock = $this
-            ->getMockBuilder('finfo')
-            ->disableOriginalConstructor()
-            ->setMethods(['file'])
-            ->getMock();
-
-        $fileInfoMock
-            ->expects(self::once())
-            ->method('file')
-            ->with($fileInfo->getPathname())
-            ->will(self::returnValue($mimetype));
-
-        $rule = new Mimetype($mimetype, $fileInfoMock);
-
-        self::assertTrue($rule->validate($fileInfo));
-    }
-
-    /**
-     * @test
-     */
-    public function shouldInvalidateWhenNotStringNorSplFileInfo(): void
-    {
-        $rule = new Mimetype('application/octet-stream');
-
-        self::assertFalse($rule->validate([__FILE__]));
-    }
-
-    /**
-     * @test
-     */
-    public function shouldInvalidateWhenItIsNotAValidFile(): void
-    {
-        $rule = new Mimetype('application/octet-stream');
-
-        self::assertFalse($rule->validate(__DIR__));
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\MimetypeException
-     * @expectedExceptionMessageRegExp #".+MimetypeTest.php" must have "application.?/json" mimetype#
-     *
-     * @test
-     */
-    public function shouldThrowMimetypeExceptionWhenCheckingValue(): void
-    {
-        $rule = new Mimetype('application/json');
-        $rule->check(__FILE__);
+        return [
+            [new Mimetype('image/png'), $this->getFixtureDirectory().'/invalid-image.png'],
+            [new Mimetype('image/gif'), $this->getFixtureDirectory().'/valid-image.png'],
+            [new Mimetype('image/gif'), $splFileInfo],
+            [new Mimetype('image/png', new finfo(FILEINFO_MIME_TYPE)), $this->getFixtureDirectory().'/invalid-image.png'],
+            [new Mimetype('image/gif', new finfo(FILEINFO_MIME_TYPE)), $this->getFixtureDirectory().'/valid-image.png'],
+            [new Mimetype('image/gif', new finfo(FILEINFO_MIME_TYPE)), $splFileInfo],
+            [new Mimetype('application/octet-stream'), __DIR__],
+            [new Mimetype('application/octet-stream'), [__FILE__]],
+        ];
     }
 }
