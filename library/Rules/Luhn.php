@@ -13,10 +13,19 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function mb_strlen;
+use function mb_substr;
+
 /**
+ * Validate whether a given input is a Luhn number.
+ *
  * @see https://en.wikipedia.org/wiki/Luhn_algorithm
+ *
+ * @author Alexander Gorshkov <mazanax@yandex.ru>
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class Luhn extends AbstractRule
+final class Luhn extends AbstractRule
 {
     /**
      * {@inheritdoc}
@@ -27,10 +36,10 @@ class Luhn extends AbstractRule
             return false;
         }
 
-        return $this->isValid($input);
+        return $this->isValid((string) $input);
     }
 
-    private function isValid($input): bool
+    private function isValid(string $input): bool
     {
         $sum = 0;
         $numDigits = mb_strlen($input);
