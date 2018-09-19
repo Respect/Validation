@@ -13,10 +13,19 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function mb_strlen;
+use function mb_substr;
+
 /**
+ * Validates a variety of identification numbers, such as credit card numbers, IMEI numbers.
+ *
  * @see https://en.wikipedia.org/wiki/Luhn_algorithm
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author mazanax <mazanax@yandex.ru>
  */
-class Luhn extends AbstractRule
+final class Luhn extends AbstractRule
 {
     /**
      * {@inheritdoc}
