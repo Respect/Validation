@@ -14,23 +14,29 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use SplFileInfo;
+use const PATHINFO_EXTENSION;
+use function is_string;
+use function pathinfo;
 
 /**
  * Validate file extensions.
  *
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class Extension extends AbstractRule
+final class Extension extends AbstractRule
 {
     /**
      * @var string
      */
-    public $extension;
+    private $extension;
 
     /**
+     * Initializes the rule.
+     *
      * @param string $extension
      */
-    public function __construct($extension)
+    public function __construct(string $extension)
     {
         $this->extension = $extension;
     }
