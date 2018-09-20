@@ -52,6 +52,17 @@
         }
     },
     "scripts": {
-        "test": "./vendor/bin/phpunit"
+        "docheader": "docheader check library/ tests/",
+        "php-cs-fixer": "php-cs-fixer fix",
+        "phpstan": "phpstan analyze",
+        "phpunit": "phpunit",
+        "phpunit-integration": "phpunit --testsuite=integration",
+        "phpunit-unit": "phpunit --testsuite=unit",
+        "qa": [
+            "@docheader",
+            "@php-cs-fixer",
+            "@phpstan",
+            "@phpunit"
+        ]
     }
 }
