@@ -16,12 +16,13 @@ namespace Respect\Validation\Exceptions;
 /**
  * Exception class for Extension rule.
  *
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ExtensionException extends ValidationException
+final class ExtensionException extends ValidationException
 {
     /**
-     * @var array
+     * {@inheritdoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
