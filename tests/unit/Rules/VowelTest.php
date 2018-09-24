@@ -18,6 +18,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @group  rule
  * @covers \Respect\Validation\Exceptions\VowelException
+ * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Vowel
  */
 class VowelTest extends TestCase
@@ -47,17 +48,6 @@ class VowelTest extends TestCase
     }
 
     /**
-     * @dataProvider providerForInvalidParams
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     *
-     * @test
-     */
-    public function invalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
-    {
-        $validator = new Vowel($additional);
-    }
-
-    /**
      * @dataProvider providerAdditionalChars
      *
      * @test
@@ -73,15 +63,6 @@ class VowelTest extends TestCase
         return [
             ['!@#$%^&*(){}', '!@#$%^&*(){} aeo iu'],
             ['[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n aeo iu"],
-        ];
-    }
-
-    public function providerForInvalidParams()
-    {
-        return [
-            [new \stdClass()],
-            [[]],
-            [0x2],
         ];
     }
 

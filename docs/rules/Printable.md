@@ -1,7 +1,7 @@
 # Printable
 
 - `Printable()`
-- `Printable(string $additionalChars)`
+- `Printable(string ...$additionalChars)`
 
 Similar to `Graph` but accepts whitespace.
 

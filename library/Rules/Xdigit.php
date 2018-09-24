@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class Xdigit extends AbstractFilterRule
 {
-    public function validateClean($input)
+    protected function validateFilteredInput(string $input): bool
     {
         return ctype_xdigit($input);
     }

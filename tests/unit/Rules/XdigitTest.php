@@ -18,6 +18,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @group  rule
  * @covers \Respect\Validation\Exceptions\XdigitException
+ * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Xdigit
  */
 class XdigitTest extends TestCase

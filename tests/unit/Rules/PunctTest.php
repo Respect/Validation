@@ -18,6 +18,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @group  rule
  * @covers \Respect\Validation\Exceptions\PunctException
+ * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Punct
  */
 class PunctTest extends TestCase
@@ -47,17 +48,6 @@ class PunctTest extends TestCase
     }
 
     /**
-     * @dataProvider providerForInvalidParams
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     *
-     * @test
-     */
-    public function invalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
-    {
-        $validator = new Punct($additional);
-    }
-
-    /**
      * @dataProvider providerAdditionalChars
      *
      * @test
@@ -73,15 +63,6 @@ class PunctTest extends TestCase
         return [
             ['abc123 ', '!@#$%^&*(){} abc 123'],
             ["abc123 \t\n", "[]?+=/\\-_|\"',<>. \t \n abc 123"],
-        ];
-    }
-
-    public function providerForInvalidParams()
-    {
-        return [
-            [new \stdClass()],
-            [[]],
-            [0x2],
         ];
     }
 

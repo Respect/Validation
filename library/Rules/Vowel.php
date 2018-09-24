@@ -17,7 +17,7 @@ use function preg_match;
 
 class Vowel extends AbstractFilterRule
 {
-    protected function validateClean($input)
+    protected function validateFilteredInput(string $input): bool
     {
         return preg_match('/^(\s|[aeiouAEIOU])*$/', $input) > 0;
     }

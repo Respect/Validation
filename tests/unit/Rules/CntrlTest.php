@@ -18,6 +18,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @group  rule
  * @covers \Respect\Validation\Exceptions\CntrlException
+ * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Cntrl
  */
 class CntrlTest extends TestCase
@@ -47,17 +48,6 @@ class CntrlTest extends TestCase
     }
 
     /**
-     * @dataProvider providerForInvalidParams
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     *
-     * @test
-     */
-    public function invalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
-    {
-        $validator = new Cntrl($additional);
-    }
-
-    /**
      * @dataProvider providerAdditionalChars
      *
      * @test
@@ -73,15 +63,6 @@ class CntrlTest extends TestCase
         return [
             ['!@#$%^&*(){} ', '!@#$%^&*(){} '],
             ['[]?+=/\\-_|"\',<>. ', "[]?+=/\\-_|\"',<>. \t \n"],
-        ];
-    }
-
-    public function providerForInvalidParams()
-    {
-        return [
-            [new \stdClass()],
-            [[]],
-            [0x2],
         ];
     }
 

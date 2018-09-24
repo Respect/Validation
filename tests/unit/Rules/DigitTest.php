@@ -14,11 +14,11 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
-use stdClass;
 
 /**
  * @group rule
  *
+ * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Digit
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
@@ -29,29 +29,6 @@ use stdClass;
  */
 final class DigitTest extends RuleTestCase
 {
-    /**
-     * @test
-     *
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     *
-     * @dataProvider providerForInvalidParams
-     *
-     * @param mixed $additional
-     */
-    public function invalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
-    {
-        new Digit($additional);
-    }
-
-    public function providerForInvalidParams(): array
-    {
-        return [
-            [new stdClass()],
-            [[]],
-            [0x2],
-        ];
-    }
-
     /**
      * @throws \Respect\Validation\Exceptions\ComponentException
      *
@@ -65,6 +42,7 @@ final class DigitTest extends RuleTestCase
             'positive string-integer with one exception' => [new Digit('-'), '16-50'],
             'positive string-integer with multiple exceptions' => [new Digit('.-'), '16-5.0'],
             'only exceptions' => [new Digit('!@#$%^&*(){}'), '!@#$%^&*(){}'],
+            'multiple exceptions' => [new Digit('.', '-'), '012.071.070-69'],
             'float' => [new Digit(), 1.0],
             'boolean true' => [new Digit(), true],
             'octal' => [new Digit(), 01],

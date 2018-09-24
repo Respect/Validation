@@ -1,7 +1,7 @@
 # Digit
 
 - `Digit()`
-- `Digit(string $additionalChars)`
+- `Digit(string ...$additionalChars)`
 
 Validates whether the input contains only digits.
 
@@ -9,7 +9,7 @@ Validates whether the input contains only digits.
 v::digit()->validate('020 612 1851'); // false
 v::digit(' ')->validate('020 612 1851'); // true
 v::digit()->validate('172.655.537-21'); // false
-v::digit('.-')->validate('172.655.537-21'); // true
+v::digit('.', '-')->validate('172.655.537-21'); // true
 ```
 
 ## Changelog

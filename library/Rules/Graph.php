@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class Graph extends AbstractFilterRule
 {
-    protected function validateClean($input)
+    protected function validateFilteredInput(string $input): bool
     {
         return ctype_graph($input);
     }

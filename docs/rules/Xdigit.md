@@ -1,6 +1,7 @@
 # Xdigit
 
 - `Xdigit()`
+- `Xdigit(string ...$additionalChars)`
 
 Accepts an hexadecimal number:
 

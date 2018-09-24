@@ -19,6 +19,7 @@ use stdClass;
 /**
  * @group rule
  *
+ * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Alnum
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
@@ -30,26 +31,6 @@ use stdClass;
  */
 final class AlnumTest extends RuleTestCase
 {
-    /**
-     * @dataProvider providerForInvalidParams
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     *
-     * @test
-     */
-    public function invalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
-    {
-        new Alnum($additional);
-    }
-
-    public function providerForInvalidParams()
-    {
-        return [
-            [new stdClass()],
-            [[]],
-            [0x2],
-        ];
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -69,6 +50,7 @@ final class AlnumTest extends RuleTestCase
             [new Alnum('!@#$%^&*(){}'), '!@#$%^&*(){}abc123'],
             [new Alnum('[]?+=/\\-_|"\',<>.'), '[]?+=/\\-_|"\',<>.abc123'],
             [new Alnum("[]?+=/\\-_|\"',<>. \t\n"), "abc[]?+=/\\-_|\"',<>. \t\n123"],
+            [new Alnum('-', '*'), 'a-1*d'],
         ];
     }
 
