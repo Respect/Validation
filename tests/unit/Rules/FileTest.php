@@ -13,69 +13,53 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
-
-$GLOBALS['is_file'] = null;
-
-function is_file($file)
-{
-    $return = \is_file($file); // Running the real function
-    if (null !== $GLOBALS['is_file']) {
-        $return = $GLOBALS['is_file'];
-        $GLOBALS['is_file'] = null;
-    }
-
-    return $return;
-}
+use Respect\Validation\Test\RuleTestCase;
+use SplFileInfo;
+use SplFileObject;
+use stdClass;
+use const PHP_INT_MAX;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\FileException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\File
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class FileTest extends TestCase
+final class FileTest extends RuleTestCase
 {
     /**
-     * @covers \Respect\Validation\Rules\File::validate
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function validFileShouldReturnTrue(): void
+    public function providerForValidInput(): array
     {
-        $GLOBALS['is_file'] = true;
+        $sut = new File();
 
-        $rule = new File();
-        $input = '/path/of/a/valid/file.txt';
-        self::assertTrue($rule->validate($input));
+        return [
+            'filename' => [$sut, __FILE__],
+            'SplFileInfo' => [$sut, new SplFileInfo($this->getFixtureDirectory().'/valid-image.png')],
+            'SplFileObject' => [$sut, new SplFileObject($this->getFixtureDirectory().'/invalid-image.png')],
+        ];
     }
 
     /**
-     * @covers \Respect\Validation\Rules\File::validate
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function invalidFileShouldReturnFalse(): void
+    public function providerForInvalidInput(): array
     {
-        $GLOBALS['is_file'] = false;
+        $sut = new File();
 
-        $rule = new File();
-        $input = '/path/of/an/invalid/file.txt';
-        self::assertFalse($rule->validate($input));
-    }
-
-    /**
-     * @covers \Respect\Validation\Rules\File::validate
-     *
-     * @test
-     */
-    public function shouldValidateObjects(): void
-    {
-        $rule = new File();
-        $object = $this->createMock('SplFileInfo');
-        $object->expects(self::once())
-                ->method('isFile')
-                ->will(self::returnValue(true));
-
-        self::assertTrue($rule->validate($object));
+        return [
+            'directory' => [$sut, __DIR__],
+            'object' => [$sut, new stdClass()],
+            'array' => [$sut, []],
+            'invalid filename' => [$sut, 'not-a-file-at-all'],
+            'integer' => [$sut, PHP_INT_MAX],
+            'float' => [$sut, 1.222],
+            'boolean true' => [$sut, true],
+            'boolean false' => [$sut, false],
+        ];
     }
 }

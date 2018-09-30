@@ -2,7 +2,7 @@
 
 - `File()`
 
-Validates files.
+Validates whether file input is as a regular filename.
 
 ```php
 v::file()->validate(__FILE__); // true
