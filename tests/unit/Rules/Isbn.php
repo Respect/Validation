@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
  * @group  rule
  * @covers Respect\Validation\Rules\ISBN
  */
-class ISBNTest extends RuleTestCase
+class IsbnTest extends RuleTestCase
 {
     public function providerForValidInput()
     {

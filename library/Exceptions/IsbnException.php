@@ -11,14 +11,14 @@
 
 namespace Respect\Validation\Exceptions;
 
-class ISBNException extends ValidationException
+class ISbnException extends ValidationException
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a ISBN',
+            self::STANDARD => '{{name}} must be a valid isbn',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a ISBN',
-        ]
+            self::STANDARD => '{{name}} must not be a valid isbn',
+        ],
     ];
 }
