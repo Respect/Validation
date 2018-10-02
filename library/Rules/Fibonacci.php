@@ -13,10 +13,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function is_numeric;
+
 /**
- * @author Samuel Heinzmann <samuel.heinzman@swisscom.com>
+ * Validates whether the input follows the Fibonacci integer sequence.
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Samuel Heinzmann <samuel.heinzmann@swisscom.com>
  */
-class Fibonacci extends AbstractRule
+final class Fibonacci extends AbstractRule
 {
     /**
      * {@inheritdoc}
