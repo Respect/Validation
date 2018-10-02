@@ -13,15 +13,28 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function is_string;
+use function preg_match;
+
 /**
+ * Validates version numbers using Semantic Versioning.
+ *
  * @see http://semver.org/
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class Version extends AbstractRule
+final class Version extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
-        $pattern = '/^[0-9]+\.[0-9]+\.[0-9]+([+-][^+-][0-9A-Za-z-.]*)?$/';
+        if (!is_string($input)) {
+            return false;
+        }
 
-        return (bool) preg_match($pattern, $input);
+        return preg_match('/^[0-9]+\.[0-9]+\.[0-9]+([+-][^+-][0-9A-Za-z-.]*)?$/', $input) > 0;
     }
 }
