@@ -13,223 +13,99 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
-use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Exceptions\FactorException;
-use function Respect\Stringifier\stringify;
+use DateTime;
+use Respect\Validation\Test\RuleTestCase;
+use stdClass;
+use function mt_getrandmax;
+use function mt_rand;
+use function uniqid;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\FactorException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Factor
  *
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author David Meister <thedavidmeister@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class FactorTest extends TestCase
+final class FactorTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForValidFactor
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function validFactorShouldReturnTrue($dividend, $input): void
-    {
-        $min = new Factor($dividend);
-        self::assertTrue($min->__invoke($input));
-        $min->check($input);
-        $min->assert($input);
-    }
-
-    /**
-     * @dataProvider providerForInvalidFactor
-     *
-     * @test
-     */
-    public function invalidFactorShouldThrowFactorException($dividend, $input): void
-    {
-        $this->expectException(FactorException::class);
-        $this->expectExceptionMessage(stringify($input).' must be a factor of '.$dividend);
-
-        $min = new Factor($dividend);
-        self::assertFalse($min->__invoke($input));
-        $min->assert($input);
-    }
-
-    /**
-     * @dataProvider providerForInvalidFactorDividend
-     *
-     * @test
-     */
-    public function invalidDividentShouldThrowComponentException($dividend, $input): void
-    {
-        $this->expectException(ComponentException::class);
-        $this->expectExceptionMessage('Dividend '.stringify($dividend).' must be an integer');
-
-        // It is enough to simply create a new Factor to trigger the dividend
-        // exceptions in __construct.
-        new Factor($dividend);
-    }
-
-    public function providerForValidFactor()
-    {
-        $tests = [
-            // Run through the first few integers.
-            [1, 1],
-            [2, 1],
-            [2, 2],
-            [3, 1],
-            [3, 3],
-            [4, 1],
-            [4, 2],
-            [4, 4],
-            [5, 1],
-            [5, 5],
-            [6, 1],
-            [6, 2],
-            [6, 3],
-            [6, 6],
-            // Zero as a dividend is always a pass.
-            [0, 0],
-            [0, 1],
-            [0, mt_rand()],
-        ];
-
-        $tests = $this->generateNegativeCombinations($tests);
-
-        $tests = $this->generateStringAndFloatCombinations($tests);
-
-        return $tests;
-    }
-
-    public function providerForInvalidFactor()
-    {
-        $tests = [
-            // Run through the first few integers.
-            [3, 2],
-            [4, 3],
-            [5, 2],
-            [5, 3],
-            [5, 4],
-            // Zeros.
-            [1, 0],
-            [2, 0],
-        ];
-
-        $tests = $this->generateNegativeCombinations($tests);
-
-        $tests = $this->generateStringAndFloatCombinations($tests);
-
-        // Valid (but random) dividends, invalid inputs.
-        $extra_tests = array_map(
-            function ($test) {
-                return [mt_rand(), $test];
-            },
-            $this->thingsThatAreNotIntegers()
-        );
-        $tests = array_merge($tests, $extra_tests);
-
-        return $tests;
-    }
-
-    public function providerForInvalidFactorDividend()
-    {
-        // Invalid dividends, valid (but random) inputs.
-        $tests = array_map(
-            function ($test) {
-                return [$test, mt_rand()];
-            },
-            $this->thingsThatAreNotIntegers()
-        );
-
-        // Also check for an empty dividend string.
-        $tests[] = ['', mt_rand()];
-
-        return $tests;
-    }
-
-    private function thingsThatAreNotIntegers()
+    public function providerForValidInput(): array
     {
         return [
-            0.5,
-            1.5,
-            -0.5,
-            -1.5,
-            PHP_INT_MAX + 1,
-            // Non integer values.
-            $this->randomFloatBeweenZeroAndOne(),
-            -$this->randomFloatBeweenZeroAndOne(),
-            'a',
-            'foo',
-            // Randomish string.
-            uniqid('a'),
-            // Non-scalars.
-            [],
-            new \stdClass(),
-            new \DateTime(),
-            null,
-            true,
-            false,
+            '1 is factor 1' => [new Factor(1), 1],
+            '1 is factor 2' => [new Factor(2), 1],
+            '3 is factor 3' => [new Factor(3), 3],
+            '4 is factor 2' => [new Factor(4), 2],
+            '4 is factor 4' => [new Factor(4), 4],
+            '5 is factor 1' => [new Factor(5), 1],
+            '5 is factor 5' => [new Factor(5), 5],
+            '6 is factor 1' => [new Factor(6), 1],
+            '6 is factor 2' => [new Factor(6), 2],
+            '0 is factor 0' => [new Factor(0), 0],
+            '0 is factor 1' => [new Factor(0), 1],
+            '0 is factor mt_rand()' => [new Factor(0), mt_rand()],
+            '-0 is factor 1' => [new Factor(-0), 1],
+            '-6 is factor 2' => [new Factor(-6), 2],
+            '-3 is factor 3' => [new Factor(-3), 3],
+            '-5 is factor 1' => [new Factor(-5), 1],
+            '-0 is factor mt_rand' => [new Factor(-0), mt_rand()],
+            '-5 is factor -1' => [new Factor(-5), -1],
+            '-6 is factor -1' => [new Factor(-6), -1],
+            '-3 is factor -3' => [new Factor(-3), -3],
+            '-0 is factor -mt_rand()' => [new Factor(-0), -mt_rand()],
+            '6 is factor \'1\'' => [new Factor(6), '1'],
+            '6 is factor \'2\'' => [new Factor(6), '2'],
+            '4 is factor 2.00' => [new Factor(4), 2.0],
+            '-0 is factor -5.000000' => [new Factor(-0), -5.000000],
+            '-0 is factor (float) -mt_rand()' => [new Factor(-0), (float) -mt_rand()],
         ];
     }
 
-    private function randomFloatBeweenZeroAndOne()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
-        return mt_rand(1, mt_getrandmax() - 1) / mt_getrandmax();
-    }
-
-    private function generateNegativeCombinations($tests)
-    {
-        // Negate all the dividends.
-        $tests = array_merge(
-            $tests,
-            array_map(
-                function ($test) {
-                    return [-$test[0], $test[1]];
-                },
-                $tests
-            )
-        );
-
-        // Negate all the inputs.
-        $tests = array_merge(
-            $tests,
-            array_map(
-                function ($test) {
-                    return [$test[0], -$test[1]];
-                },
-                $tests
-            )
-        );
-
-        return $tests;
-    }
-
-    private function generateStringAndFloatCombinations($tests)
-    {
-        $base_tests = $tests;
-
-        // Test everything again as a string.
-        $tests = array_merge(
-            $tests,
-            array_map(
-                function ($test) {
-                    return [(string) $test[0], (string) $test[1]];
-                },
-                $base_tests
-            )
-        );
-
-        // Test everything again as a float.
-        $tests = array_merge(
-            $tests,
-            array_map(
-                function ($test) {
-                    return [(float) $test[0], (float) $test[1]];
-                },
-                $base_tests
-            )
-        );
-
-        return $tests;
+        return [
+            '3 is not factor 2' => [new Factor(3), 2],
+            '4 is not factor 3' => [new Factor(4), 3],
+            '5 is not factor 2' => [new Factor(5), 2],
+            '5 is not factor 3' => [new Factor(5), 3],
+            '5 is not factor 4' => [new Factor(5), 4],
+            '1 is not factor 0' => [new Factor(1), 0],
+            '2 is not factor 0' => [new Factor(2), 0],
+            '-2 is not factor 0' => [new Factor(-2), 0],
+            '-5 is not factor 4' => [new Factor(-5), 4],
+            '-4 is not factor 3' => [new Factor(-4), 3],
+            '-3 is not factor -2' => [new Factor(-3), -2],
+            '-5 is not factor -2' => [new Factor(-5), -2],
+            '-2 is not factor -0' => [new Factor(-2), -0],
+            '-2 is not factor \'-0.0000\'' => [new Factor(-2), '-0.0000'],
+            '-2 is not factor 0.00' => [new Factor(-2), 0.00],
+            '3 is not factor 2.0' => [new Factor(3), 2.0],
+            '5 is not factor 2.000000' => [new Factor(5), 2.000000],
+            'mt_rand is not factor 0.5' => [new Factor(mt_rand()), 0.5],
+            'mt_rand is not factor 1.5' => [new Factor(mt_rand()), 1.5],
+            'mt_rand is not factor -0.5' => [new Factor(mt_rand()), -0.5],
+            'mt_rand is not factor -1.5' => [new Factor(mt_rand()), -1.5],
+            'mt_rand is not factor PHP_INT_MAX + 1' => [new Factor(mt_rand()), PHP_INT_MAX + 1],
+            'mt_rand is not factor calc' => [new Factor(mt_rand()), mt_rand(1, mt_getrandmax() - 1) / mt_getrandmax()],
+            'mt_rand is not factor -calc' => [new Factor(mt_rand()), -(mt_rand(1, mt_getrandmax() - 1) / mt_getrandmax())],
+            'mt_rand is not factor \'a\'' => [new Factor(mt_rand()), 'a'],
+            'mt_rand is not factor \'foo\'' => [new Factor(mt_rand()), 'foo'],
+            'mt_rand is not factor uniqid(\'a\')' => [new Factor(mt_rand()), uniqid('a')],
+            'mt_rand is not factor []' => [new Factor(mt_rand()), []],
+            'mt_rand is not factor stdClass' => [new Factor(mt_rand()), new stdClass()],
+            'mt_rand is not factor Datetime' => [new Factor(mt_rand()), new DateTime()],
+            'mt_rand is not factor null' => [new Factor(mt_rand()), null],
+            'mt_rand is not factor true' => [new Factor(mt_rand()), true],
+            'mt_rand is not factor false' => [new Factor(mt_rand()), false],
+        ];
     }
 }
