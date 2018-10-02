@@ -13,8 +13,21 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-class FalseVal extends AbstractRule
+use const FILTER_NULL_ON_FAILURE;
+use const FILTER_VALIDATE_BOOLEAN;
+use function filter_var;
+
+/**
+ * Validates if a value is considered as false.
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class FalseVal extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (false === $input) { // PHP 5.3 workaround
