@@ -14,12 +14,13 @@ declare(strict_types=1);
 namespace Respect\Validation\Exceptions;
 
 /**
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class FiniteException extends ValidationException
+final class FiniteException extends ValidationException
 {
     /**
-     * @var array
+     * {@inheritdoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
