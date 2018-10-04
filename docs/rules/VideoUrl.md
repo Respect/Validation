@@ -3,7 +3,7 @@
 - `VideoUrl()`
 - `VideoUrl(string $service)`
 
-Validates if the input is a video URL value:
+Validates if the input is a video URL value.
 
 ```php
 v::videoUrl()->validate('https://player.vimeo.com/video/71787467'); // true
