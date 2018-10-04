@@ -14,8 +14,18 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use function mb_strtolower;
+use function preg_match;
+use function sprintf;
 
-class VideoUrl extends AbstractRule
+/**
+ * Validates if the input is a video URL value:
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ricardo Gobbo <ricardo@clicknow.com.br>
+ */
+final class VideoUrl extends AbstractRule
 {
     /**
      * @var string
