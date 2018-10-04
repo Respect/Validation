@@ -51,9 +51,8 @@ class UuidTest extends RuleTestCase
      * @dataProvider provideValidUuidConstructorParams
      *
      * @param mixed $version The version passed to the constructor
-     * @return void
      */
-    public function testInstantiate($version)
+    public function instantiate($version): void
     {
         self::expectNotToPerformAssertions();
         new Uuid($version);
@@ -80,9 +79,8 @@ class UuidTest extends RuleTestCase
      * @dataProvider provideInvalidUuidConstructorParams
      *
      * @param mixed $version The version passed to the constructor
-     * @return void
      */
-    public function testInstantiationError($version)
+    public function instantiationError($version): void
     {
         $expectedMessage = sprintf('invalid version %s given, possible: [1-5], 1, 2, 3, 4, 5', $version);
         self::expectException(ComponentException::class);

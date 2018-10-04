@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ComponentException;
 use function is_scalar;
 use function preg_match;
-use Respect\Validation\Exceptions\ComponentException;
 
 /**
  * This class validates UUIDs.
@@ -56,12 +56,13 @@ class Uuid extends AbstractRule
     /**
      * Uuid constructor.
      *
-     * @param string $version Use one of the Uuid class constants.
+     * @param string $version use one of the Uuid class constants
+     *
      * @throws ComponentException
      */
     public function __construct(string $version = self::VERSION_ALL)
     {
-        if (in_array($version, self::VERSIONS) === false) {
+        if (false === in_array($version, self::VERSIONS)) {
             $message = sprintf('invalid version %s given, possible: %s', $version, join(', ', self::VERSIONS));
             throw new ComponentException($message);
         }
@@ -72,7 +73,8 @@ class Uuid extends AbstractRule
     /**
      * Validates whether input is an UUID.
      *
-     * @param mixed $input The value to test.
+     * @param mixed $input the value to test
+     *
      * @return bool
      */
     public function validate($input): bool
@@ -82,6 +84,7 @@ class Uuid extends AbstractRule
         }
 
         $pattern = sprintf(self::PATTERN, $this->version);
+
         return preg_match($pattern, (string) $input) > 0;
     }
 }
