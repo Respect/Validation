@@ -13,43 +13,69 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\LanguageCode
+ *
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class LanguageCodeTest extends RuleTestCase
+final class LanguageCodeTest extends RuleTestCase
 {
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
-        $ruleAlpha2 = new LanguageCode();
-        $ruleAlpha3 = new LanguageCode('alpha-3');
+        $sutAlpha2 = new LanguageCode(LanguageCode::ALPHA2);
+        $sutAlpha3 = new LanguageCode(LanguageCode::ALPHA3);
 
         return [
-            [$ruleAlpha2, 'pt'],
-            [$ruleAlpha3, 'por'],
-            [$ruleAlpha2, 'en'],
-            [$ruleAlpha3, 'eng'],
-            [$ruleAlpha2, 'it'],
-            [$ruleAlpha3, 'ita'],
-            [$ruleAlpha2, 'la'],
-            [$ruleAlpha3, 'lat'],
+            'alpha-2: en' => [$sutAlpha2, 'en'],
+            'alpha-2: it' => [$sutAlpha2, 'it'],
+            'alpha-2: la' => [$sutAlpha2, 'la'],
+            'alpha-2: pt' => [$sutAlpha2, 'pt'],
+            'alpha-3: eng' => [$sutAlpha3, 'eng'],
+            'alpha-3: ita' => [$sutAlpha3, 'ita'],
+            'alpha-3: lat' => [$sutAlpha3, 'lat'],
+            'alpha-3: por' => [$sutAlpha3, 'por'],
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
-        $ruleAlpha2 = new LanguageCode();
-        $ruleAlpha3 = new LanguageCode('alpha-3');
+        $sutAlpha2 = new LanguageCode(LanguageCode::ALPHA2);
+        $sutAlpha3 = new LanguageCode(LanguageCode::ALPHA3);
 
         return [
-            [$ruleAlpha2, 'por'],
-            [$ruleAlpha2, ''],
-            [$ruleAlpha2, null],
-            [$ruleAlpha2, false],
-            [$ruleAlpha2, []],
-            [$ruleAlpha3, 'pt'],
+            'alpha-2: alpha-3 code' => [$sutAlpha2, 'por'],
+            'alpha-2: boolean' => [$sutAlpha2, false],
+            'alpha-2: empty array' => [$sutAlpha2, []],
+            'alpha-2: empty' => [$sutAlpha2, ''],
+            'alpha-2: null' => [$sutAlpha2, null],
+            'alpha-3: alpha-2 code' => [$sutAlpha3, 'pt'],
+            'alpha-3: boolean' => [$sutAlpha3, true],
+            'alpha-3: empty array' => [$sutAlpha3, []],
+            'alpha-3: empty' => [$sutAlpha3, ''],
+            'alpha-3: null' => [$sutAlpha3, ''],
         ];
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldThrowAnExceptionWhenSetIsInvalid(): void
+    {
+        $this->expectExceptionObject(new ComponentException('"foo" is not a valid language set for ISO 639'));
+
+        new LanguageCode('foo');
     }
 }

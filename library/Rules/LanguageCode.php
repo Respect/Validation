@@ -14,553 +14,539 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use function array_column;
+use function array_filter;
+use function array_search;
 
 /**
- * Validates languages in ISO 639.
+ * Validates whether the input is language code based on ISO 639.
+ *
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Emmerson <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class LanguageCode extends AbstractRule
+final class LanguageCode extends AbstractEnvelope
 {
     public const ALPHA2 = 'alpha-2';
     public const ALPHA3 = 'alpha-3';
+    public const AVAILABLE_SETS = [
+        self::ALPHA2,
+        self::ALPHA3,
+    ];
 
     /**
      * @see http://www.loc.gov/standards/iso639-2/ISO-639-2_utf-8.txt
      *
      * @var array
      */
-    protected $languageCodeList = [
-        ['AA', '﻿AAR'], // AFAR
-        ['AB', 'ABK'], // ABKHAZIAN
-        ['', 'ACE'], // ACHINESE
-        ['', 'ACH'], // ACOLI
-        ['', 'ADA'], // ADANGME
-        ['', 'ADY'], // ADYGHE; ADYGEI
-        ['', 'AFA'], // AFRO-ASIATIC LANGUAGES
-        ['', 'AFH'], // AFRIHILI
-        ['AF', 'AFR'], // AFRIKAANS
-        ['', 'AIN'], // AINU
-        ['AK', 'AKA'], // AKAN
-        ['', 'AKK'], // AKKADIAN
-        ['SQ', 'ALB'], // ALBANIAN
-        ['', 'ALE'], // ALEUT
-        ['', 'ALG'], // ALGONQUIAN LANGUAGES
-        ['', 'ALT'], // SOUTHERN ALTAI
-        ['AM', 'AMH'], // AMHARIC
-        ['', 'ANG'], // ENGLISH, OLD (CA.450-1100)
-        ['', 'ANP'], // ANGIKA
-        ['', 'APA'], // APACHE LANGUAGES
-        ['AR', 'ARA'], // ARABIC
-        ['', 'ARC'], // OFFICIAL ARAMAIC (700-300 BCE); IMPERIAL ARAMAIC (700-300 BCE)
-        ['AN', 'ARG'], // ARAGONESE
-        ['HY', 'ARM'], // ARMENIAN
-        ['', 'ARN'], // MAPUDUNGUN; MAPUCHE
-        ['', 'ARP'], // ARAPAHO
-        ['', 'ART'], // ARTIFICIAL LANGUAGES
-        ['', 'ARW'], // ARAWAK
-        ['AS', 'ASM'], // ASSAMESE
-        ['', 'AST'], // ASTURIAN; BABLE; LEONESE; ASTURLEONESE
-        ['', 'ATH'], // ATHAPASCAN LANGUAGES
-        ['', 'AUS'], // AUSTRALIAN LANGUAGES
-        ['AV', 'AVA'], // AVARIC
-        ['AE', 'AVE'], // AVESTAN
-        ['', 'AWA'], // AWADHI
-        ['AY', 'AYM'], // AYMARA
-        ['AZ', 'AZE'], // AZERBAIJANI
-        ['', 'BAD'], // BANDA LANGUAGES
-        ['', 'BAI'], // BAMILEKE LANGUAGES
-        ['BA', 'BAK'], // BASHKIR
-        ['', 'BAL'], // BALUCHI
-        ['BM', 'BAM'], // BAMBARA
-        ['', 'BAN'], // BALINESE
-        ['EU', 'BAQ'], // BASQUE
-        ['', 'BAS'], // BASA
-        ['', 'BAT'], // BALTIC LANGUAGES
-        ['', 'BEJ'], // BEJA; BEDAWIYET
-        ['BE', 'BEL'], // BELARUSIAN
-        ['', 'BEM'], // BEMBA
-        ['BN', 'BEN'], // BENGALI
-        ['', 'BER'], // BERBER LANGUAGES
-        ['', 'BHO'], // BHOJPURI
-        ['BH', 'BIH'], // BIHARI LANGUAGES
-        ['', 'BIK'], // BIKOL
-        ['', 'BIN'], // BINI; EDO
-        ['BI', 'BIS'], // BISLAMA
-        ['', 'BLA'], // SIKSIKA
-        ['', 'BNT'], // BANTU (OTHER)
-        ['BS', 'BOS'], // BOSNIAN
-        ['', 'BRA'], // BRAJ
-        ['BR', 'BRE'], // BRETON
-        ['', 'BTK'], // BATAK LANGUAGES
-        ['', 'BUA'], // BURIAT
-        ['', 'BUG'], // BUGINESE
-        ['BG', 'BUL'], // BULGARIAN
-        ['MY', 'BUR'], // BURMESE
-        ['', 'BYN'], // BLIN; BILIN
-        ['', 'CAD'], // CADDO
-        ['', 'CAI'], // CENTRAL AMERICAN INDIAN LANGUAGES
-        ['', 'CAR'], // GALIBI CARIB
-        ['CA', 'CAT'], // CATALAN; VALENCIAN
-        ['', 'CAU'], // CAUCASIAN LANGUAGES
-        ['', 'CEB'], // CEBUANO
-        ['', 'CEL'], // CELTIC LANGUAGES
-        ['CH', 'CHA'], // CHAMORRO
-        ['', 'CHB'], // CHIBCHA
-        ['CE', 'CHE'], // CHECHEN
-        ['', 'CHG'], // CHAGATAI
-        ['ZH', 'CHI'], // CHINESE
-        ['', 'CHK'], // CHUUKESE
-        ['', 'CHM'], // MARI
-        ['', 'CHN'], // CHINOOK JARGON
-        ['', 'CHO'], // CHOCTAW
-        ['', 'CHP'], // CHIPEWYAN; DENE SULINE
-        ['', 'CHR'], // CHEROKEE
-        ['CU', 'CHU'], // CHURCH SLAVIC; OLD SLAVONIC; CHURCH SLAVONIC; OLD BULGARIAN; OLD CHURCH SLAVONIC
-        ['CV', 'CHV'], // CHUVASH
-        ['', 'CHY'], // CHEYENNE
-        ['', 'CMC'], // CHAMIC LANGUAGES
-        ['', 'COP'], // COPTIC
-        ['KW', 'COR'], // CORNISH
-        ['CO', 'COS'], // CORSICAN
-        ['', 'CPE'], // CREOLES AND PIDGINS, ENGLISH BASED
-        ['', 'CPF'], // CREOLES AND PIDGINS, FRENCH-BASED
-        ['', 'CPP'], // CREOLES AND PIDGINS, PORTUGUESE-BASED
-        ['CR', 'CRE'], // CREE
-        ['', 'CRH'], // CRIMEAN TATAR; CRIMEAN TURKISH
-        ['', 'CRP'], // CREOLES AND PIDGINS
-        ['', 'CSB'], // KASHUBIAN
-        ['', 'CUS'], // CUSHITIC LANGUAGES
-        ['CS', 'CZE'], // CZECH
-        ['', 'DAK'], // DAKOTA
-        ['DA', 'DAN'], // DANISH
-        ['', 'DAR'], // DARGWA
-        ['', 'DAY'], // LAND DAYAK LANGUAGES
-        ['', 'DEL'], // DELAWARE
-        ['', 'DEN'], // SLAVE (ATHAPASCAN)
-        ['', 'DGR'], // DOGRIB
-        ['', 'DIN'], // DINKA
-        ['DV', 'DIV'], // DIVEHI; DHIVEHI; MALDIVIAN
-        ['', 'DOI'], // DOGRI
-        ['', 'DRA'], // DRAVIDIAN LANGUAGES
-        ['', 'DSB'], // LOWER SORBIAN
-        ['', 'DUA'], // DUALA
-        ['', 'DUM'], // DUTCH, MIDDLE (CA.1050-1350)
-        ['NL', 'DUT'], // DUTCH; FLEMISH
-        ['', 'DYU'], // DYULA
-        ['DZ', 'DZO'], // DZONGKHA
-        ['', 'EFI'], // EFIK
-        ['', 'EGY'], // EGYPTIAN (ANCIENT)
-        ['', 'EKA'], // EKAJUK
-        ['', 'ELX'], // ELAMITE
-        ['EN', 'ENG'], // ENGLISH
-        ['', 'ENM'], // ENGLISH, MIDDLE (1100-1500)
-        ['EO', 'EPO'], // ESPERANTO
-        ['ET', 'EST'], // ESTONIAN
-        ['EE', 'EWE'], // EWE
-        ['', 'EWO'], // EWONDO
-        ['', 'FAN'], // FANG
-        ['FO', 'FAO'], // FAROESE
-        ['', 'FAT'], // FANTI
-        ['FJ', 'FIJ'], // FIJIAN
-        ['', 'FIL'], // FILIPINO; PILIPINO
-        ['FI', 'FIN'], // FINNISH
-        ['', 'FIU'], // FINNO-UGRIAN LANGUAGES
-        ['', 'FON'], // FON
-        ['FR', 'FRE'], // FRENCH
-        ['', 'FRM'], // FRENCH, MIDDLE (CA.1400-1600)
-        ['', 'FRO'], // FRENCH, OLD (842-CA.1400)
-        ['', 'FRR'], // NORTHERN FRISIAN
-        ['', 'FRS'], // EASTERN FRISIAN
-        ['FY', 'FRY'], // WESTERN FRISIAN
-        ['FF', 'FUL'], // FULAH
-        ['', 'FUR'], // FRIULIAN
-        ['', 'GAA'], // GA
-        ['', 'GAY'], // GAYO
-        ['', 'GBA'], // GBAYA
-        ['', 'GEM'], // GERMANIC LANGUAGES
-        ['KA', 'GEO'], // GEORGIAN
-        ['DE', 'GER'], // GERMAN
-        ['', 'GEZ'], // GEEZ
-        ['', 'GIL'], // GILBERTESE
-        ['GD', 'GLA'], // GAELIC; SCOTTISH GAELIC
-        ['GA', 'GLE'], // IRISH
-        ['GL', 'GLG'], // GALICIAN
-        ['GV', 'GLV'], // MANX
-        ['', 'GMH'], // GERMAN, MIDDLE HIGH (CA.1050-1500)
-        ['', 'GOH'], // GERMAN, OLD HIGH (CA.750-1050)
-        ['', 'GON'], // GONDI
-        ['', 'GOR'], // GORONTALO
-        ['', 'GOT'], // GOTHIC
-        ['', 'GRB'], // GREBO
-        ['', 'GRC'], // GREEK, ANCIENT (TO 1453)
-        ['EL', 'GRE'], // GREEK, MODERN (1453-)
-        ['GN', 'GRN'], // GUARANI
-        ['', 'GSW'], // SWISS GERMAN; ALEMANNIC; ALSATIAN
-        ['GU', 'GUJ'], // GUJARATI
-        ['', 'GWI'], // GWICH'IN
-        ['', 'HAI'], // HAIDA
-        ['HT', 'HAT'], // HAITIAN; HAITIAN CREOLE
-        ['HA', 'HAU'], // HAUSA
-        ['', 'HAW'], // HAWAIIAN
-        ['HE', 'HEB'], // HEBREW
-        ['HZ', 'HER'], // HERERO
-        ['', 'HIL'], // HILIGAYNON
-        ['', 'HIM'], // HIMACHALI LANGUAGES; WESTERN PAHARI LANGUAGES
-        ['HI', 'HIN'], // HINDI
-        ['', 'HIT'], // HITTITE
-        ['', 'HMN'], // HMONG; MONG
-        ['HO', 'HMO'], // HIRI MOTU
-        ['HR', 'HRV'], // CROATIAN
-        ['', 'HSB'], // UPPER SORBIAN
-        ['HU', 'HUN'], // HUNGARIAN
-        ['', 'HUP'], // HUPA
-        ['', 'IBA'], // IBAN
-        ['IG', 'IBO'], // IGBO
-        ['IS', 'ICE'], // ICELANDIC
-        ['IO', 'IDO'], // IDO
-        ['II', 'III'], // SICHUAN YI; NUOSU
-        ['', 'IJO'], // IJO LANGUAGES
-        ['IU', 'IKU'], // INUKTITUT
-        ['IE', 'ILE'], // INTERLINGUE; OCCIDENTAL
-        ['', 'ILO'], // ILOKO
-        ['IA', 'INA'], // INTERLINGUA (INTERNATIONAL AUXILIARY LANGUAGE ASSOCIATION)
-        ['', 'INC'], // INDIC LANGUAGES
-        ['ID', 'IND'], // INDONESIAN
-        ['', 'INE'], // INDO-EUROPEAN LANGUAGES
-        ['', 'INH'], // INGUSH
-        ['IK', 'IPK'], // INUPIAQ
-        ['', 'IRA'], // IRANIAN LANGUAGES
-        ['', 'IRO'], // IROQUOIAN LANGUAGES
-        ['IT', 'ITA'], // ITALIAN
-        ['JV', 'JAV'], // JAVANESE
-        ['', 'JBO'], // LOJBAN
-        ['JA', 'JPN'], // JAPANESE
-        ['', 'JPR'], // JUDEO-PERSIAN
-        ['', 'JRB'], // JUDEO-ARABIC
-        ['', 'KAA'], // KARA-KALPAK
-        ['', 'KAB'], // KABYLE
-        ['', 'KAC'], // KACHIN; JINGPHO
-        ['KL', 'KAL'], // KALAALLISUT; GREENLANDIC
-        ['', 'KAM'], // KAMBA
-        ['KN', 'KAN'], // KANNADA
-        ['', 'KAR'], // KAREN LANGUAGES
-        ['KS', 'KAS'], // KASHMIRI
-        ['KR', 'KAU'], // KANURI
-        ['', 'KAW'], // KAWI
-        ['KK', 'KAZ'], // KAZAKH
-        ['', 'KBD'], // KABARDIAN
-        ['', 'KHA'], // KHASI
-        ['', 'KHI'], // KHOISAN LANGUAGES
-        ['KM', 'KHM'], // CENTRAL KHMER
-        ['', 'KHO'], // KHOTANESE; SAKAN
-        ['KI', 'KIK'], // KIKUYU; GIKUYU
-        ['RW', 'KIN'], // KINYARWANDA
-        ['KY', 'KIR'], // KIRGHIZ; KYRGYZ
-        ['', 'KMB'], // KIMBUNDU
-        ['', 'KOK'], // KONKANI
-        ['KV', 'KOM'], // KOMI
-        ['KG', 'KON'], // KONGO
-        ['KO', 'KOR'], // KOREAN
-        ['', 'KOS'], // KOSRAEAN
-        ['', 'KPE'], // KPELLE
-        ['', 'KRC'], // KARACHAY-BALKAR
-        ['', 'KRL'], // KARELIAN
-        ['', 'KRO'], // KRU LANGUAGES
-        ['', 'KRU'], // KURUKH
-        ['KJ', 'KUA'], // KUANYAMA; KWANYAMA
-        ['', 'KUM'], // KUMYK
-        ['KU', 'KUR'], // KURDISH
-        ['', 'KUT'], // KUTENAI
-        ['', 'LAD'], // LADINO
-        ['', 'LAH'], // LAHNDA
-        ['', 'LAM'], // LAMBA
-        ['LO', 'LAO'], // LAO
-        ['LA', 'LAT'], // LATIN
-        ['LV', 'LAV'], // LATVIAN
-        ['', 'LEZ'], // LEZGHIAN
-        ['LI', 'LIM'], // LIMBURGAN; LIMBURGER; LIMBURGISH
-        ['LN', 'LIN'], // LINGALA
-        ['LT', 'LIT'], // LITHUANIAN
-        ['', 'LOL'], // MONGO
-        ['', 'LOZ'], // LOZI
-        ['LB', 'LTZ'], // LUXEMBOURGISH; LETZEBURGESCH
-        ['', 'LUA'], // LUBA-LULUA
-        ['LU', 'LUB'], // LUBA-KATANGA
-        ['LG', 'LUG'], // GANDA
-        ['', 'LUI'], // LUISENO
-        ['', 'LUN'], // LUNDA
-        ['', 'LUO'], // LUO (KENYA AND TANZANIA)
-        ['', 'LUS'], // LUSHAI
-        ['MK', 'MAC'], // MACEDONIAN
-        ['', 'MAD'], // MADURESE
-        ['', 'MAG'], // MAGAHI
-        ['MH', 'MAH'], // MARSHALLESE
-        ['', 'MAI'], // MAITHILI
-        ['', 'MAK'], // MAKASAR
-        ['ML', 'MAL'], // MALAYALAM
-        ['', 'MAN'], // MANDINGO
-        ['MI', 'MAO'], // MAORI
-        ['', 'MAP'], // AUSTRONESIAN LANGUAGES
-        ['MR', 'MAR'], // MARATHI
-        ['', 'MAS'], // MASAI
-        ['MS', 'MAY'], // MALAY
-        ['', 'MDF'], // MOKSHA
-        ['', 'MDR'], // MANDAR
-        ['', 'MEN'], // MENDE
-        ['', 'MGA'], // IRISH, MIDDLE (900-1200)
-        ['', 'MIC'], // MI'KMAQ; MICMAC
-        ['', 'MIN'], // MINANGKABAU
-        ['', 'MIS'], // UNCODED LANGUAGES
-        ['', 'MKH'], // MON-KHMER LANGUAGES
-        ['MG', 'MLG'], // MALAGASY
-        ['MT', 'MLT'], // MALTESE
-        ['', 'MNC'], // MANCHU
-        ['', 'MNI'], // MANIPURI
-        ['', 'MNO'], // MANOBO LANGUAGES
-        ['', 'MOH'], // MOHAWK
-        ['MN', 'MON'], // MONGOLIAN
-        ['', 'MOS'], // MOSSI
-        ['', 'MUL'], // MULTIPLE LANGUAGES
-        ['', 'MUN'], // MUNDA LANGUAGES
-        ['', 'MUS'], // CREEK
-        ['', 'MWL'], // MIRANDESE
-        ['', 'MWR'], // MARWARI
-        ['', 'MYN'], // MAYAN LANGUAGES
-        ['', 'MYV'], // ERZYA
-        ['', 'NAH'], // NAHUATL LANGUAGES
-        ['', 'NAI'], // NORTH AMERICAN INDIAN LANGUAGES
-        ['', 'NAP'], // NEAPOLITAN
-        ['NA', 'NAU'], // NAURU
-        ['NV', 'NAV'], // NAVAJO; NAVAHO
-        ['NR', 'NBL'], // NDEBELE, SOUTH; SOUTH NDEBELE
-        ['ND', 'NDE'], // NDEBELE, NORTH; NORTH NDEBELE
-        ['NG', 'NDO'], // NDONGA
-        ['', 'NDS'], // LOW GERMAN; LOW SAXON; GERMAN, LOW; SAXON, LOW
-        ['NE', 'NEP'], // NEPALI
-        ['', 'NEW'], // NEPAL BHASA; NEWARI
-        ['', 'NIA'], // NIAS
-        ['', 'NIC'], // NIGER-KORDOFANIAN LANGUAGES
-        ['', 'NIU'], // NIUEAN
-        ['NN', 'NNO'], // NORWEGIAN NYNORSK; NYNORSK, NORWEGIAN
-        ['NB', 'NOB'], // BOKMÅL, NORWEGIAN; NORWEGIAN BOKMÅL
-        ['', 'NOG'], // NOGAI
-        ['', 'NON'], // NORSE, OLD
-        ['NO', 'NOR'], // NORWEGIAN
-        ['', 'NQO'], // N'KO
-        ['', 'NSO'], // PEDI; SEPEDI; NORTHERN SOTHO
-        ['', 'NUB'], // NUBIAN LANGUAGES
-        ['', 'NWC'], // CLASSICAL NEWARI; OLD NEWARI; CLASSICAL NEPAL BHASA
-        ['NY', 'NYA'], // CHICHEWA; CHEWA; NYANJA
-        ['', 'NYM'], // NYAMWEZI
-        ['', 'NYN'], // NYANKOLE
-        ['', 'NYO'], // NYORO
-        ['', 'NZI'], // NZIMA
-        ['OC', 'OCI'], // OCCITAN (POST 1500); PROVENÇAL
-        ['OJ', 'OJI'], // OJIBWA
-        ['OR', 'ORI'], // ORIYA
-        ['OM', 'ORM'], // OROMO
-        ['', 'OSA'], // OSAGE
-        ['OS', 'OSS'], // OSSETIAN; OSSETIC
-        ['', 'OTA'], // TURKISH, OTTOMAN (1500-1928)
-        ['', 'OTO'], // OTOMIAN LANGUAGES
-        ['', 'PAA'], // PAPUAN LANGUAGES
-        ['', 'PAG'], // PANGASINAN
-        ['', 'PAL'], // PAHLAVI
-        ['', 'PAM'], // PAMPANGA; KAPAMPANGAN
-        ['PA', 'PAN'], // PANJABI; PUNJABI
-        ['', 'PAP'], // PAPIAMENTO
-        ['', 'PAU'], // PALAUAN
-        ['', 'PEO'], // PERSIAN, OLD (CA.600-400 B.C.)
-        ['FA', 'PER'], // PERSIAN
-        ['', 'PHI'], // PHILIPPINE LANGUAGES
-        ['', 'PHN'], // PHOENICIAN
-        ['PI', 'PLI'], // PALI
-        ['PL', 'POL'], // POLISH
-        ['', 'PON'], // POHNPEIAN
-        ['PT', 'POR'], // PORTUGUESE
-        ['', 'PRA'], // PRAKRIT LANGUAGES
-        ['', 'PRO'], // PROVENÇAL, OLD (TO 1500)
-        ['PS', 'PUS'], // PUSHTO; PASHTO
-        ['', 'QAA-QTZ'], // RESERVED FOR LOCAL USE
-        ['QU', 'QUE'], // QUECHUA
-        ['', 'RAJ'], // RAJASTHANI
-        ['', 'RAP'], // RAPANUI
-        ['', 'RAR'], // RAROTONGAN; COOK ISLANDS MAORI
-        ['', 'ROA'], // ROMANCE LANGUAGES
-        ['RM', 'ROH'], // ROMANSH
-        ['', 'ROM'], // ROMANY
-        ['RO', 'RUM'], // ROMANIAN; MOLDAVIAN; MOLDOVAN
-        ['RN', 'RUN'], // RUNDI
-        ['', 'RUP'], // AROMANIAN; ARUMANIAN; MACEDO-ROMANIAN
-        ['RU', 'RUS'], // RUSSIAN
-        ['', 'SAD'], // SANDAWE
-        ['SG', 'SAG'], // SANGO
-        ['', 'SAH'], // YAKUT
-        ['', 'SAI'], // SOUTH AMERICAN INDIAN (OTHER)
-        ['', 'SAL'], // SALISHAN LANGUAGES
-        ['', 'SAM'], // SAMARITAN ARAMAIC
-        ['SA', 'SAN'], // SANSKRIT
-        ['', 'SAS'], // SASAK
-        ['', 'SAT'], // SANTALI
-        ['', 'SCN'], // SICILIAN
-        ['', 'SCO'], // SCOTS
-        ['', 'SEL'], // SELKUP
-        ['', 'SEM'], // SEMITIC LANGUAGES
-        ['', 'SGA'], // IRISH, OLD (TO 900)
-        ['', 'SGN'], // SIGN LANGUAGES
-        ['', 'SHN'], // SHAN
-        ['', 'SID'], // SIDAMO
-        ['SI', 'SIN'], // SINHALA; SINHALESE
-        ['', 'SIO'], // SIOUAN LANGUAGES
-        ['', 'SIT'], // SINO-TIBETAN LANGUAGES
-        ['', 'SLA'], // SLAVIC LANGUAGES
-        ['SK', 'SLO'], // SLOVAK
-        ['SL', 'SLV'], // SLOVENIAN
-        ['', 'SMA'], // SOUTHERN SAMI
-        ['SE', 'SME'], // NORTHERN SAMI
-        ['', 'SMI'], // SAMI LANGUAGES
-        ['', 'SMJ'], // LULE SAMI
-        ['', 'SMN'], // INARI SAMI
-        ['SM', 'SMO'], // SAMOAN
-        ['', 'SMS'], // SKOLT SAMI
-        ['SN', 'SNA'], // SHONA
-        ['SD', 'SND'], // SINDHI
-        ['', 'SNK'], // SONINKE
-        ['', 'SOG'], // SOGDIAN
-        ['SO', 'SOM'], // SOMALI
-        ['', 'SON'], // SONGHAI LANGUAGES
-        ['ST', 'SOT'], // SOTHO, SOUTHERN
-        ['ES', 'SPA'], // SPANISH; CASTILIAN
-        ['SC', 'SRD'], // SARDINIAN
-        ['', 'SRN'], // SRANAN TONGO
-        ['SR', 'SRP'], // SERBIAN
-        ['', 'SRR'], // SERER
-        ['', 'SSA'], // NILO-SAHARAN LANGUAGES
-        ['SS', 'SSW'], // SWATI
-        ['', 'SUK'], // SUKUMA
-        ['SU', 'SUN'], // SUNDANESE
-        ['', 'SUS'], // SUSU
-        ['', 'SUX'], // SUMERIAN
-        ['SW', 'SWA'], // SWAHILI
-        ['SV', 'SWE'], // SWEDISH
-        ['', 'SYC'], // CLASSICAL SYRIAC
-        ['', 'SYR'], // SYRIAC
-        ['TY', 'TAH'], // TAHITIAN
-        ['', 'TAI'], // TAI LANGUAGES
-        ['TA', 'TAM'], // TAMIL
-        ['TT', 'TAT'], // TATAR
-        ['TE', 'TEL'], // TELUGU
-        ['', 'TEM'], // TIMNE
-        ['', 'TER'], // TERENO
-        ['', 'TET'], // TETUM
-        ['TG', 'TGK'], // TAJIK
-        ['TL', 'TGL'], // TAGALOG
-        ['TH', 'THA'], // THAI
-        ['BO', 'TIB'], // TIBETAN
-        ['', 'TIG'], // TIGRE
-        ['TI', 'TIR'], // TIGRINYA
-        ['', 'TIV'], // TIV
-        ['', 'TKL'], // TOKELAU
-        ['', 'TLH'], // KLINGON; TLHINGAN-HOL
-        ['', 'TLI'], // TLINGIT
-        ['', 'TMH'], // TAMASHEK
-        ['', 'TOG'], // TONGA (NYASA)
-        ['TO', 'TON'], // TONGA (TONGA ISLANDS)
-        ['', 'TPI'], // TOK PISIN
-        ['', 'TSI'], // TSIMSHIAN
-        ['TN', 'TSN'], // TSWANA
-        ['TS', 'TSO'], // TSONGA
-        ['TK', 'TUK'], // TURKMEN
-        ['', 'TUM'], // TUMBUKA
-        ['', 'TUP'], // TUPI LANGUAGES
-        ['TR', 'TUR'], // TURKISH
-        ['', 'TUT'], // ALTAIC LANGUAGES
-        ['', 'TVL'], // TUVALU
-        ['TW', 'TWI'], // TWI
-        ['', 'TYV'], // TUVINIAN
-        ['', 'UDM'], // UDMURT
-        ['', 'UGA'], // UGARITIC
-        ['UG', 'UIG'], // UIGHUR; UYGHUR
-        ['UK', 'UKR'], // UKRAINIAN
-        ['', 'UMB'], // UMBUNDU
-        ['', 'UND'], // UNDETERMINED
-        ['UR', 'URD'], // URDU
-        ['UZ', 'UZB'], // UZBEK
-        ['', 'VAI'], // VAI
-        ['VE', 'VEN'], // VENDA
-        ['VI', 'VIE'], // VIETNAMESE
-        ['VO', 'VOL'], // VOLAPÜK
-        ['', 'VOT'], // VOTIC
-        ['', 'WAK'], // WAKASHAN LANGUAGES
-        ['', 'WAL'], // WALAMO
-        ['', 'WAR'], // WARAY
-        ['', 'WAS'], // WASHO
-        ['CY', 'WEL'], // WELSH
-        ['', 'WEN'], // SORBIAN LANGUAGES
-        ['WA', 'WLN'], // WALLOON
-        ['WO', 'WOL'], // WOLOF
-        ['', 'XAL'], // KALMYK; OIRAT
-        ['XH', 'XHO'], // XHOSA
-        ['', 'YAO'], // YAO
-        ['', 'YAP'], // YAPESE
-        ['YI', 'YID'], // YIDDISH
-        ['YO', 'YOR'], // YORUBA
-        ['', 'YPK'], // YUPIK LANGUAGES
-        ['', 'ZAP'], // ZAPOTEC
-        ['', 'ZBL'], // BLISSYMBOLS; BLISSYMBOLICS; BLISS
-        ['', 'ZEN'], // ZENAGA
-        ['', 'ZGH'], // STANDARD MOROCCAN TAMAZIGHT
-        ['ZA', 'ZHA'], // ZHUANG; CHUANG
-        ['', 'ZND'], // ZANDE LANGUAGES
-        ['ZU', 'ZUL'], // ZULU
-        ['', 'ZUN'], // ZUNI
-        ['', 'ZXX'], // NO LINGUISTIC CONTENT; NOT APPLICABLE
-        ['', 'ZZA'], // ZAZA; DIMILI; DIMLI; KIRDKI; KIRMANJKI; ZAZAKI
+    public const LANGUAGE_CODES = [
+        ['aa', '﻿aar'], // Afar
+        ['ab', 'abk'], // Abkhazian
+        ['', 'ace'], // Achinese
+        ['', 'ach'], // Acoli
+        ['', 'ada'], // Adangme
+        ['', 'ady'], // Adyghe; Adygei
+        ['', 'afa'], // Afro-asiatic languages
+        ['', 'afh'], // Afrihili
+        ['af', 'afr'], // Afrikaans
+        ['', 'ain'], // Ainu
+        ['ak', 'aka'], // Akan
+        ['', 'akk'], // Akkadian
+        ['sq', 'alb'], // Albanian
+        ['', 'ale'], // Aleut
+        ['', 'alg'], // Algonquian languages
+        ['', 'alt'], // Southern altai
+        ['am', 'amh'], // Amharic
+        ['', 'ang'], // English, old (ca.450-1100)
+        ['', 'anp'], // Angika
+        ['', 'apa'], // Apache languages
+        ['ar', 'ara'], // Arabic
+        ['', 'arc'], // Official aramaic (700-300 bce); Imperial aramaic (700-300 bce)
+        ['an', 'arg'], // Aragonese
+        ['hy', 'arm'], // Armenian
+        ['', 'arn'], // Mapudungun; Mapuche
+        ['', 'arp'], // Arapaho
+        ['', 'art'], // Artificial languages
+        ['', 'arw'], // Arawak
+        ['as', 'asm'], // Assamese
+        ['', 'ast'], // Asturian; Bable; Leonese; Asturleonese
+        ['', 'ath'], // Athapascan languages
+        ['', 'aus'], // Australian languages
+        ['av', 'ava'], // Avaric
+        ['ae', 'ave'], // Avestan
+        ['', 'awa'], // Awadhi
+        ['ay', 'aym'], // Aymara
+        ['az', 'aze'], // Azerbaijani
+        ['', 'bad'], // Banda languages
+        ['', 'bai'], // Bamileke languages
+        ['ba', 'bak'], // Bashkir
+        ['', 'bal'], // Baluchi
+        ['bm', 'bam'], // Bambara
+        ['', 'ban'], // Balinese
+        ['eu', 'baq'], // Basque
+        ['', 'bas'], // Basa
+        ['', 'bat'], // Baltic languages
+        ['', 'bej'], // Beja; Bedawiyet
+        ['be', 'bel'], // Belarusian
+        ['', 'bem'], // Bemba
+        ['bn', 'ben'], // Bengali
+        ['', 'ber'], // Berber languages
+        ['', 'bho'], // Bhojpuri
+        ['bh', 'bih'], // Bihari languages
+        ['', 'bik'], // Bikol
+        ['', 'bin'], // Bini; Edo
+        ['bi', 'bis'], // Bislama
+        ['', 'bla'], // Siksika
+        ['', 'bnt'], // Bantu (other)
+        ['bs', 'bos'], // Bosnian
+        ['', 'bra'], // Braj
+        ['br', 'bre'], // Breton
+        ['', 'btk'], // Batak languages
+        ['', 'bua'], // Buriat
+        ['', 'bug'], // Buginese
+        ['bg', 'bul'], // Bulgarian
+        ['my', 'bur'], // Burmese
+        ['', 'byn'], // Blin; Bilin
+        ['', 'cad'], // Caddo
+        ['', 'cai'], // Central american indian languages
+        ['', 'car'], // Galibi carib
+        ['ca', 'cat'], // Catalan; Valencian
+        ['', 'cau'], // Caucasian languages
+        ['', 'ceb'], // Cebuano
+        ['', 'cel'], // Celtic languages
+        ['ch', 'cha'], // Chamorro
+        ['', 'chb'], // Chibcha
+        ['ce', 'che'], // Chechen
+        ['', 'chg'], // Chagatai
+        ['zh', 'chi'], // Chinese
+        ['', 'chk'], // Chuukese
+        ['', 'chm'], // Mari
+        ['', 'chn'], // Chinook jargon
+        ['', 'cho'], // Choctaw
+        ['', 'chp'], // Chipewyan; Dene suline
+        ['', 'chr'], // Cherokee
+        ['cu', 'chu'], // Church slavic; Old slavonic; Church slavonic; Old bulgarian; Old church slavonic
+        ['cv', 'chv'], // Chuvash
+        ['', 'chy'], // Cheyenne
+        ['', 'cmc'], // Chamic languages
+        ['', 'cop'], // Coptic
+        ['kw', 'cor'], // Cornish
+        ['co', 'cos'], // Corsican
+        ['', 'cpe'], // Creoles and pidgins, english based
+        ['', 'cpf'], // Creoles and pidgins, french-based
+        ['', 'cpp'], // Creoles and pidgins, portuguese-based
+        ['cr', 'cre'], // Cree
+        ['', 'crh'], // Crimean tatar; Crimean turkish
+        ['', 'crp'], // Creoles and pidgins
+        ['', 'csb'], // Kashubian
+        ['', 'cus'], // Cushitic languages
+        ['cs', 'cze'], // Czech
+        ['', 'dak'], // Dakota
+        ['da', 'dan'], // Danish
+        ['', 'dar'], // Dargwa
+        ['', 'day'], // Land dayak languages
+        ['', 'del'], // Delaware
+        ['', 'den'], // Slave (athapascan)
+        ['', 'dgr'], // Dogrib
+        ['', 'din'], // Dinka
+        ['dv', 'div'], // Divehi; Dhivehi; Maldivian
+        ['', 'doi'], // Dogri
+        ['', 'dra'], // Dravidian languages
+        ['', 'dsb'], // Lower sorbian
+        ['', 'dua'], // Duala
+        ['', 'dum'], // Dutch, middle (ca.1050-1350)
+        ['nl', 'dut'], // Dutch; Flemish
+        ['', 'dyu'], // Dyula
+        ['dz', 'dzo'], // Dzongkha
+        ['', 'efi'], // Efik
+        ['', 'egy'], // Egyptian (ancient)
+        ['', 'eka'], // Ekajuk
+        ['', 'elx'], // Elamite
+        ['en', 'eng'], // English
+        ['', 'enm'], // English, middle (1100-1500)
+        ['eo', 'epo'], // Esperanto
+        ['et', 'est'], // Estonian
+        ['ee', 'ewe'], // Ewe
+        ['', 'ewo'], // Ewondo
+        ['', 'fan'], // Fang
+        ['fo', 'fao'], // Faroese
+        ['', 'fat'], // Fanti
+        ['fj', 'fij'], // Fijian
+        ['', 'fil'], // Filipino; Pilipino
+        ['fi', 'fin'], // Finnish
+        ['', 'fiu'], // Finno-ugrian languages
+        ['', 'fon'], // Fon
+        ['fr', 'fre'], // French
+        ['', 'frm'], // French, middle (ca.1400-1600)
+        ['', 'fro'], // French, old (842-ca.1400)
+        ['', 'frr'], // Northern frisian
+        ['', 'frs'], // Eastern frisian
+        ['fy', 'fry'], // Western frisian
+        ['ff', 'ful'], // Fulah
+        ['', 'fur'], // Friulian
+        ['', 'gaa'], // Ga
+        ['', 'gay'], // Gayo
+        ['', 'gba'], // Gbaya
+        ['', 'gem'], // Germanic languages
+        ['ka', 'geo'], // Georgian
+        ['de', 'ger'], // German
+        ['', 'gez'], // Geez
+        ['', 'gil'], // Gilbertese
+        ['gd', 'gla'], // Gaelic; Scottish gaelic
+        ['ga', 'gle'], // Irish
+        ['gl', 'glg'], // Galician
+        ['gv', 'glv'], // Manx
+        ['', 'gmh'], // German, middle high (ca.1050-1500)
+        ['', 'goh'], // German, old high (ca.750-1050)
+        ['', 'gon'], // Gondi
+        ['', 'gor'], // Gorontalo
+        ['', 'got'], // Gothic
+        ['', 'grb'], // Grebo
+        ['', 'grc'], // Greek, ancient (to 1453)
+        ['el', 'gre'], // Greek, modern (1453-)
+        ['gn', 'grn'], // Guarani
+        ['', 'gsw'], // Swiss german; Alemannic; Alsatian
+        ['gu', 'guj'], // Gujarati
+        ['', 'gwi'], // Gwich'in
+        ['', 'hai'], // Haida
+        ['ht', 'hat'], // Haitian; Haitian creole
+        ['ha', 'hau'], // Hausa
+        ['', 'haw'], // Hawaiian
+        ['he', 'heb'], // Hebrew
+        ['hz', 'her'], // Herero
+        ['', 'hil'], // Hiligaynon
+        ['', 'him'], // Himachali languages; Western pahari languages
+        ['hi', 'hin'], // Hindi
+        ['', 'hit'], // Hittite
+        ['', 'hmn'], // Hmong; Mong
+        ['ho', 'hmo'], // Hiri motu
+        ['hr', 'hrv'], // Croatian
+        ['', 'hsb'], // Upper sorbian
+        ['hu', 'hun'], // Hungarian
+        ['', 'hup'], // Hupa
+        ['', 'iba'], // Iban
+        ['ig', 'ibo'], // Igbo
+        ['is', 'ice'], // Icelandic
+        ['io', 'ido'], // Ido
+        ['ii', 'iii'], // Sichuan yi; Nuosu
+        ['', 'ijo'], // Ijo languages
+        ['iu', 'iku'], // Inuktitut
+        ['ie', 'ile'], // Interlingue; Occidental
+        ['', 'ilo'], // Iloko
+        ['ia', 'ina'], // Interlingua (international auxiliary language association)
+        ['', 'inc'], // Indic languages
+        ['id', 'ind'], // Indonesian
+        ['', 'ine'], // Indo-european languages
+        ['', 'inh'], // Ingush
+        ['ik', 'ipk'], // Inupiaq
+        ['', 'ira'], // Iranian languages
+        ['', 'iro'], // Iroquoian languages
+        ['it', 'ita'], // Italian
+        ['jv', 'jav'], // Javanese
+        ['', 'jbo'], // Lojban
+        ['ja', 'jpn'], // Japanese
+        ['', 'jpr'], // Judeo-persian
+        ['', 'jrb'], // Judeo-arabic
+        ['', 'kaa'], // Kara-kalpak
+        ['', 'kab'], // Kabyle
+        ['', 'kac'], // Kachin; Jingpho
+        ['kl', 'kal'], // Kalaallisut; Greenlandic
+        ['', 'kam'], // Kamba
+        ['kn', 'kan'], // Kannada
+        ['', 'kar'], // Karen languages
+        ['ks', 'kas'], // Kashmiri
+        ['kr', 'kau'], // Kanuri
+        ['', 'kaw'], // Kawi
+        ['kk', 'kaz'], // Kazakh
+        ['', 'kbd'], // Kabardian
+        ['', 'kha'], // Khasi
+        ['', 'khi'], // Khoisan languages
+        ['km', 'khm'], // Central khmer
+        ['', 'kho'], // Khotanese; Sakan
+        ['ki', 'kik'], // Kikuyu; Gikuyu
+        ['rw', 'kin'], // Kinyarwanda
+        ['ky', 'kir'], // Kirghiz; Kyrgyz
+        ['', 'kmb'], // Kimbundu
+        ['', 'kok'], // Konkani
+        ['kv', 'kom'], // Komi
+        ['kg', 'kon'], // Kongo
+        ['ko', 'kor'], // Korean
+        ['', 'kos'], // Kosraean
+        ['', 'kpe'], // Kpelle
+        ['', 'krc'], // Karachay-balkar
+        ['', 'krl'], // Karelian
+        ['', 'kro'], // Kru languages
+        ['', 'kru'], // Kurukh
+        ['kj', 'kua'], // Kuanyama; Kwanyama
+        ['', 'kum'], // Kumyk
+        ['ku', 'kur'], // Kurdish
+        ['', 'kut'], // Kutenai
+        ['', 'lad'], // Ladino
+        ['', 'lah'], // Lahnda
+        ['', 'lam'], // Lamba
+        ['lo', 'lao'], // Lao
+        ['la', 'lat'], // Latin
+        ['lv', 'lav'], // Latvian
+        ['', 'lez'], // Lezghian
+        ['li', 'lim'], // Limburgan; Limburger; Limburgish
+        ['ln', 'lin'], // Lingala
+        ['lt', 'lit'], // Lithuanian
+        ['', 'lol'], // Mongo
+        ['', 'loz'], // Lozi
+        ['lb', 'ltz'], // Luxembourgish; Letzeburgesch
+        ['', 'lua'], // Luba-lulua
+        ['lu', 'lub'], // Luba-katanga
+        ['lg', 'lug'], // Ganda
+        ['', 'lui'], // Luiseno
+        ['', 'lun'], // Lunda
+        ['', 'luo'], // Luo (kenya and tanzania)
+        ['', 'lus'], // Lushai
+        ['mk', 'mac'], // Macedonian
+        ['', 'mad'], // Madurese
+        ['', 'mag'], // Magahi
+        ['mh', 'mah'], // Marshallese
+        ['', 'mai'], // Maithili
+        ['', 'mak'], // Makasar
+        ['ml', 'mal'], // Malayalam
+        ['', 'man'], // Mandingo
+        ['mi', 'mao'], // Maori
+        ['', 'map'], // Austronesian languages
+        ['mr', 'mar'], // Marathi
+        ['', 'mas'], // Masai
+        ['ms', 'may'], // Malay
+        ['', 'mdf'], // Moksha
+        ['', 'mdr'], // Mandar
+        ['', 'men'], // Mende
+        ['', 'mga'], // Irish, middle (900-1200)
+        ['', 'mic'], // Mi'kmaq; Micmac
+        ['', 'min'], // Minangkabau
+        ['', 'mis'], // Uncoded languages
+        ['', 'mkh'], // Mon-khmer languages
+        ['mg', 'mlg'], // Malagasy
+        ['mt', 'mlt'], // Maltese
+        ['', 'mnc'], // Manchu
+        ['', 'mni'], // Manipuri
+        ['', 'mno'], // Manobo languages
+        ['', 'moh'], // Mohawk
+        ['mn', 'mon'], // Mongolian
+        ['', 'mos'], // Mossi
+        ['', 'mul'], // Multiple languages
+        ['', 'mun'], // Munda languages
+        ['', 'mus'], // Creek
+        ['', 'mwl'], // Mirandese
+        ['', 'mwr'], // Marwari
+        ['', 'myn'], // Mayan languages
+        ['', 'myv'], // Erzya
+        ['', 'nah'], // Nahuatl languages
+        ['', 'nai'], // North american indian languages
+        ['', 'nap'], // Neapolitan
+        ['na', 'nau'], // Nauru
+        ['nv', 'nav'], // Navajo; Navaho
+        ['nr', 'nbl'], // Ndebele, south; South ndebele
+        ['nd', 'nde'], // Ndebele, north; North ndebele
+        ['ng', 'ndo'], // Ndonga
+        ['', 'nds'], // Low german; Low saxon; German, low; Saxon, low
+        ['ne', 'nep'], // Nepali
+        ['', 'new'], // Nepal bhasa; Newari
+        ['', 'nia'], // Nias
+        ['', 'nic'], // Niger-kordofanian languages
+        ['', 'niu'], // Niuean
+        ['nn', 'nno'], // Norwegian nynorsk; Nynorsk, norwegian
+        ['nb', 'nob'], // Bokmål, norwegian; Norwegian bokmål
+        ['', 'nog'], // Nogai
+        ['', 'non'], // Norse, old
+        ['no', 'nor'], // Norwegian
+        ['', 'nqo'], // N'ko
+        ['', 'nso'], // Pedi; Sepedi; Northern sotho
+        ['', 'nub'], // Nubian languages
+        ['', 'nwc'], // Classical newari; Old newari; Classical nepal bhasa
+        ['ny', 'nya'], // Chichewa; Chewa; Nyanja
+        ['', 'nym'], // Nyamwezi
+        ['', 'nyn'], // Nyankole
+        ['', 'nyo'], // Nyoro
+        ['', 'nzi'], // Nzima
+        ['oc', 'oci'], // Occitan (post 1500); Provençal
+        ['oj', 'oji'], // Ojibwa
+        ['or', 'ori'], // Oriya
+        ['om', 'orm'], // Oromo
+        ['', 'osa'], // Osage
+        ['os', 'oss'], // Ossetian; Ossetic
+        ['', 'ota'], // Turkish, ottoman (1500-1928)
+        ['', 'oto'], // Otomian languages
+        ['', 'paa'], // Papuan languages
+        ['', 'pag'], // Pangasinan
+        ['', 'pal'], // Pahlavi
+        ['', 'pam'], // Pampanga; Kapampangan
+        ['pa', 'pan'], // Panjabi; Punjabi
+        ['', 'pap'], // Papiamento
+        ['', 'pau'], // Palauan
+        ['', 'peo'], // Persian, old (ca.600-400 b.c.)
+        ['fa', 'per'], // Persian
+        ['', 'phi'], // Philippine languages
+        ['', 'phn'], // Phoenician
+        ['pi', 'pli'], // Pali
+        ['pl', 'pol'], // Polish
+        ['', 'pon'], // Pohnpeian
+        ['pt', 'por'], // Portuguese
+        ['', 'pra'], // Prakrit languages
+        ['', 'pro'], // Provençal, old (to 1500)
+        ['ps', 'pus'], // Pushto; Pashto
+        ['', 'qaa-qtz'], // Reserved for local use
+        ['qu', 'que'], // Quechua
+        ['', 'raj'], // Rajasthani
+        ['', 'rap'], // Rapanui
+        ['', 'rar'], // Rarotongan; Cook islands maori
+        ['', 'roa'], // Romance languages
+        ['rm', 'roh'], // Romansh
+        ['', 'rom'], // Romany
+        ['ro', 'rum'], // Romanian; Moldavian; Moldovan
+        ['rn', 'run'], // Rundi
+        ['', 'rup'], // Aromanian; Arumanian; Macedo-romanian
+        ['ru', 'rus'], // Russian
+        ['', 'sad'], // Sandawe
+        ['sg', 'sag'], // Sango
+        ['', 'sah'], // Yakut
+        ['', 'sai'], // South american indian (other)
+        ['', 'sal'], // Salishan languages
+        ['', 'sam'], // Samaritan aramaic
+        ['sa', 'san'], // Sanskrit
+        ['', 'sas'], // Sasak
+        ['', 'sat'], // Santali
+        ['', 'scn'], // Sicilian
+        ['', 'sco'], // Scots
+        ['', 'sel'], // Selkup
+        ['', 'sem'], // Semitic languages
+        ['', 'sga'], // Irish, old (to 900)
+        ['', 'sgn'], // Sign languages
+        ['', 'shn'], // Shan
+        ['', 'sid'], // Sidamo
+        ['si', 'sin'], // Sinhala; Sinhalese
+        ['', 'sio'], // Siouan languages
+        ['', 'sit'], // Sino-tibetan languages
+        ['', 'sla'], // Slavic languages
+        ['sk', 'slo'], // Slovak
+        ['sl', 'slv'], // Slovenian
+        ['', 'sma'], // Southern sami
+        ['se', 'sme'], // Northern sami
+        ['', 'smi'], // Sami languages
+        ['', 'smj'], // Lule sami
+        ['', 'smn'], // Inari sami
+        ['sm', 'smo'], // Samoan
+        ['', 'sms'], // Skolt sami
+        ['sn', 'sna'], // Shona
+        ['sd', 'snd'], // Sindhi
+        ['', 'snk'], // Soninke
+        ['', 'sog'], // Sogdian
+        ['so', 'som'], // Somali
+        ['', 'son'], // Songhai languages
+        ['st', 'sot'], // Sotho, southern
+        ['es', 'spa'], // Spanish; Castilian
+        ['sc', 'srd'], // Sardinian
+        ['', 'srn'], // Sranan tongo
+        ['sr', 'srp'], // Serbian
+        ['', 'srr'], // Serer
+        ['', 'ssa'], // Nilo-saharan languages
+        ['ss', 'ssw'], // Swati
+        ['', 'suk'], // Sukuma
+        ['su', 'sun'], // Sundanese
+        ['', 'sus'], // Susu
+        ['', 'sux'], // Sumerian
+        ['sw', 'swa'], // Swahili
+        ['sv', 'swe'], // Swedish
+        ['', 'syc'], // Classical syriac
+        ['', 'syr'], // Syriac
+        ['ty', 'tah'], // Tahitian
+        ['', 'tai'], // Tai languages
+        ['ta', 'tam'], // Tamil
+        ['tt', 'tat'], // Tatar
+        ['te', 'tel'], // Telugu
+        ['', 'tem'], // Timne
+        ['', 'ter'], // Tereno
+        ['', 'tet'], // Tetum
+        ['tg', 'tgk'], // Tajik
+        ['tl', 'tgl'], // Tagalog
+        ['th', 'tha'], // Thai
+        ['bo', 'tib'], // Tibetan
+        ['', 'tig'], // Tigre
+        ['ti', 'tir'], // Tigrinya
+        ['', 'tiv'], // Tiv
+        ['', 'tkl'], // Tokelau
+        ['', 'tlh'], // Klingon; Tlhingan-hol
+        ['', 'tli'], // Tlingit
+        ['', 'tmh'], // Tamashek
+        ['', 'tog'], // Tonga (nyasa)
+        ['to', 'ton'], // Tonga (tonga islands)
+        ['', 'tpi'], // Tok pisin
+        ['', 'tsi'], // Tsimshian
+        ['tn', 'tsn'], // Tswana
+        ['ts', 'tso'], // Tsonga
+        ['tk', 'tuk'], // Turkmen
+        ['', 'tum'], // Tumbuka
+        ['', 'tup'], // Tupi languages
+        ['tr', 'tur'], // Turkish
+        ['', 'tut'], // Altaic languages
+        ['', 'tvl'], // Tuvalu
+        ['tw', 'twi'], // Twi
+        ['', 'tyv'], // Tuvinian
+        ['', 'udm'], // Udmurt
+        ['', 'uga'], // Ugaritic
+        ['ug', 'uig'], // Uighur; Uyghur
+        ['uk', 'ukr'], // Ukrainian
+        ['', 'umb'], // Umbundu
+        ['', 'und'], // Undetermined
+        ['ur', 'urd'], // Urdu
+        ['uz', 'uzb'], // Uzbek
+        ['', 'vai'], // Vai
+        ['ve', 'ven'], // Venda
+        ['vi', 'vie'], // Vietnamese
+        ['vo', 'vol'], // Volapük
+        ['', 'vot'], // Votic
+        ['', 'wak'], // Wakashan languages
+        ['', 'wal'], // Walamo
+        ['', 'war'], // Waray
+        ['', 'was'], // Washo
+        ['cy', 'wel'], // Welsh
+        ['', 'wen'], // Sorbian languages
+        ['wa', 'wln'], // Walloon
+        ['wo', 'wol'], // Wolof
+        ['', 'xal'], // Kalmyk; Oirat
+        ['xh', 'xho'], // Xhosa
+        ['', 'yao'], // Yao
+        ['', 'yap'], // Yapese
+        ['yi', 'yid'], // Yiddish
+        ['yo', 'yor'], // Yoruba
+        ['', 'ypk'], // Yupik languages
+        ['', 'zap'], // Zapotec
+        ['', 'zbl'], // Blissymbols; Blissymbolics; Bliss
+        ['', 'zen'], // Zenaga
+        ['', 'zgh'], // Standard moroccan tamazight
+        ['za', 'zha'], // Zhuang; Chuang
+        ['', 'znd'], // Zande languages
+        ['zu', 'zul'], // Zulu
+        ['', 'zun'], // Zuni
+        ['', 'zxx'], // No linguistic content; Not applicable
+        ['', 'zza'], // Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki
     ];
 
-    public $set;
-    public $index;
-
-    public function __construct($set = self::ALPHA2)
+    /**
+     * Initializes the rule defining the ISO 639 set.
+     *
+     * @param string $set
+     *
+     * @throws ComponentException
+     */
+    public function __construct(string $set = self::ALPHA2)
     {
-        $index = array_search($set, self::getAvailableSets(), true);
-
+        $index = array_search($set, self::AVAILABLE_SETS, true);
         if (false === $index) {
             throw new ComponentException(sprintf('"%s" is not a valid language set for ISO 639', $set));
         }
 
-        $this->set = $set;
-        $this->index = $index;
+        parent::__construct(new In($this->getHaystack($index), true), ['set' => $set]);
     }
 
-    public static function getAvailableSets()
+    private function getHaystack(int $index): array
     {
-        return [
-            self::ALPHA2,
-            self::ALPHA3,
-        ];
-    }
-
-    private function getLanguageCodeList($index)
-    {
-        $languageList = [];
-
-        foreach ($this->languageCodeList as $language) {
-            $languageList[] = $language[$index];
-        }
-
-        return $languageList;
-    }
-
-    public function validate($input): bool
-    {
-        if (!is_string($input) || '' === $input) {
-            return false;
-        }
-
-        return in_array(
-            mb_strtoupper($input),
-            $this->getLanguageCodeList($this->index),
-            true
-        );
+        return array_filter(array_column(self::LANGUAGE_CODES, $index));
     }
 }
