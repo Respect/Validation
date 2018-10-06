@@ -14,21 +14,29 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use function array_search;
+use function in_array;
+use function is_string;
+use function mb_strtoupper;
 
 /**
  * Validates languages in ISO 639.
+ *
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Emmerson <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class LanguageCode extends AbstractRule
+final class LanguageCode extends AbstractRule
 {
-    public const ALPHA2 = 'alpha-2';
-    public const ALPHA3 = 'alpha-3';
+    private const ALPHA2 = 'alpha-2';
+    private const ALPHA3 = 'alpha-3';
 
     /**
      * @see http://www.loc.gov/standards/iso639-2/ISO-639-2_utf-8.txt
      *
      * @var array
      */
-    protected $languageCodeList = [
+    private $languageCodeList = [
         ['AA', '﻿AAR'], // AFAR
         ['AB', 'ABK'], // ABKHAZIAN
         ['', 'ACE'], // ACHINESE
@@ -517,9 +525,19 @@ class LanguageCode extends AbstractRule
         ['', 'ZZA'], // ZAZA; DIMILI; DIMLI; KIRDKI; KIRMANJKI; ZAZAKI
     ];
 
-    public $set;
-    public $index;
+    /**
+     * @var string
+     */
+    private $set;
 
+    /**
+     * @var int
+     */
+    private $index;
+
+    /**
+     * @param string $set
+     */
     public function __construct($set = self::ALPHA2)
     {
         $index = array_search($set, self::getAvailableSets(), true);
@@ -551,6 +569,9 @@ class LanguageCode extends AbstractRule
         return $languageList;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (!is_string($input) || '' === $input) {

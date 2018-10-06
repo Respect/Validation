@@ -16,11 +16,18 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
  * @covers \Respect\Validation\Rules\LanguageCode
+ *
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Emmerson <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class LanguageCodeTest extends RuleTestCase
+final class LanguageCodeTest extends RuleTestCase
 {
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $ruleAlpha2 = new LanguageCode();
@@ -38,6 +45,9 @@ class LanguageCodeTest extends RuleTestCase
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $ruleAlpha2 = new LanguageCode();

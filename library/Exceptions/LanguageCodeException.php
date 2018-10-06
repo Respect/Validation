@@ -13,14 +13,22 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class LanguageCodeException extends ValidationException
+/**
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Emmerson <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class LanguageCodeException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a valid language',
+            self::STANDARD => '{{name}} must be a valid language code set for ISO 639',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a valid language',
+            self::STANDARD => '{{name}} must not be a valid language code set for ISO 639',
         ],
     ];
 }
