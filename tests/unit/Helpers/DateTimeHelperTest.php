@@ -29,7 +29,6 @@ final class DateTimeHelperTest extends TestCase
     public function providerForValidDateTime(): array
     {
         return [
-            ['Y-m-d', '0000-01-01'],
             ['Y-m-d', '2009-09-09'],
             ['Y-m-d', '2020-02-29'],
             ['Ymd', '20090909'],
@@ -57,6 +56,7 @@ final class DateTimeHelperTest extends TestCase
     public function providerForInvalidDateTime(): array
     {
         return [
+            ['Y-m-d', '0000-01-01'],
             ['Y-m-d', '2021-02-29'],
             ['y-m-d', '2009-09-12'],
             ['Y-m-d', '0000-00-31'],

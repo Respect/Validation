@@ -37,6 +37,33 @@ trait DateTimeHelper
 
         $info = date_parse_from_format($exceptionalFormats[$format] ?? $format, $value);
 
-        return ($info['error_count'] + $info['warning_count']) === 0;
+        if (!$this->isDateTimeParsable($info)) {
+            return false;
+        }
+
+        if ($this->isDateFormat($format)) {
+            return $this->isDateInformation($info);
+        }
+
+        return true;
+    }
+
+    private function isDateTimeParsable(array $info)
+    {
+        return 0 === $info['error_count'] && 0 === $info['warning_count'];
+    }
+
+    private function isDateFormat(string $format): bool
+    {
+        return preg_match('/[djSFmMnYy]/', $format) > 0;
+    }
+
+    private function isDateInformation(array $info)
+    {
+        if ($info['day']) {
+            return checkdate((int) $info['month'], $info['day'], (int) $info['year']);
+        }
+
+        return checkdate($info['month'] ?: 1, $info['day'] ?: 1, $info['year'] ?: 1);
     }
 }

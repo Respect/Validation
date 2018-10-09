@@ -48,12 +48,24 @@ final class DateTest extends RuleTestCase
     public function providerForInvalidInput(): array
     {
         return [
+            [new Date(), 'not-a-date'],
+            [new Date(), []],
+            [new Date(), true],
+            [new Date(), false],
+            [new Date(), null],
+            [new Date(), ''],
             [new Date(), '1988-02-30'],
             [new Date('d/m/y'), '12/31/17'],
             [new Date(), '2019-02-29'],
             [new Date(), new DateTime()],
             [new Date(), new DateTimeImmutable()],
             [new Date(), ''],
+            [new Date('Y-m-d'), '2009-12-00'],
+            [new Date('Y-m-d'), '2018-02-29'],
+            [new Date(), '2014-99'],
+            [new Date('d'), 1],
+            [new Date('Y-m'), '2014-99'],
+            [new Date('m'), '99'],
         ];
     }
 
