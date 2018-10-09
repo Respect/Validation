@@ -13,69 +13,57 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
-
-$GLOBALS['is_writable'] = null;
-
-function is_writable($writable)
-{
-    $return = \is_writable($writable); // Running the real function
-    if (null !== $GLOBALS['is_writable']) {
-        $return = $GLOBALS['is_writable'];
-        $GLOBALS['is_writable'] = null;
-    }
-
-    return $return;
-}
+use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\WritableException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Writable
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class WritableTest extends TestCase
+final class WritableTest extends RuleTestCase
 {
     /**
-     * @covers \Respect\Validation\Rules\Writable::validate
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function validWritableFileShouldReturnTrue(): void
-    {
-        $GLOBALS['is_writable'] = true;
-
-        $rule = new Writable();
-        $input = '/path/of/a/valid/writable/file.txt';
-        self::assertTrue($rule->validate($input));
-    }
-
-    /**
-     * @covers \Respect\Validation\Rules\Writable::validate
-     *
-     * @test
-     */
-    public function invalidWritableFileShouldReturnFalse(): void
-    {
-        $GLOBALS['is_writable'] = false;
-
-        $rule = new Writable();
-        $input = '/path/of/an/invalid/writable/file.txt';
-        self::assertFalse($rule->validate($input));
-    }
-
-    /**
-     * @covers \Respect\Validation\Rules\Writable::validate
-     *
-     * @test
-     */
-    public function shouldValidateObjects(): void
+    public function providerForValidInput(): array
     {
         $rule = new Writable();
         $object = $this->createMock('SplFileInfo');
         $object->expects(self::once())
-                ->method('isWritable')
-                ->will(self::returnValue(true));
+            ->method('isWritable')
+            ->will(self::returnValue(true));
 
-        self::assertTrue($rule->validate($object));
+        return [
+            'directory and file valid' => [$rule, $this->getFixtureDirectory().'/valid-image.png'],
+            'directory and file invalid' => [$rule, $this->getFixtureDirectory().'/invalid-image.png'],
+            'instance SplFileInfo' => [$rule, $object],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
+    {
+        $rule = new Writable();
+        $object = $this->createMock('SplFileInfo');
+        $object->expects(self::once())
+            ->method('isWritable')
+            ->will(self::returnValue(false));
+
+        return [
+            'directory and fake file' => [$rule, '/path/of/a/valid/writable/file.txt'],
+            'false file' => [$rule, 'new-file.txt'],
+            'splFileInfo' => [$rule, $object],
+            'integer' => [$rule, 123456],
+            'float' => [$rule, 1.1111],
+            'instancie stdClass' => [$rule, new stdClass()],
+            'array empty' => [$rule, []],
+        ];
     }
 }
