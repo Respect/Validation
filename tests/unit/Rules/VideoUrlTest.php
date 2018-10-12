@@ -41,11 +41,15 @@ class VideoUrlTest extends TestCase
             ['youtube', 'https://www.youtube.com/embed/netHLn9TScY'],
             ['youtube', 'https://www.youtube.com/watch?v=netHLn9TScY'],
             ['youtube', 'https://youtu.be/netHLn9TScY'],
+            ['twitch:video', 'https://www.twitch.tv/videos/320689092'],
+            ['twitch:clip', 'https://clips.twitch.tv/BitterLazyMangetoutHumbleLife'],
             [null, 'https://player.vimeo.com/video/71787467'],
             [null, 'https://vimeo.com/71787467'],
             [null, 'https://www.youtube.com/embed/netHLn9TScY'],
             [null, 'https://www.youtube.com/watch?v=netHLn9TScY'],
             [null, 'https://youtu.be/netHLn9TScY'],
+            [null, 'https://www.twitch.tv/videos/320689092'],
+            [null, 'https://clips.twitch.tv/BitterLazyMangetoutHumbleLife'],
         ];
     }
 
@@ -54,6 +58,8 @@ class VideoUrlTest extends TestCase
         return [
             ['vimeo', 'https://www.youtube.com/watch?v=netHLn9TScY'],
             ['youtube', 'https://vimeo.com/71787467'],
+            ['twitch:clip', 'https://www.twitch.tv/videos/320689092'],
+            ['twitch:video', 'https://clips.twitch.tv/BitterLazyMangetoutHumbleLife'],
             [null, 'example.com'],
             [null, 'ftp://youtu.be/netHLn9TScY'],
             [null, 'https:/example.com/'],
@@ -63,6 +69,10 @@ class VideoUrlTest extends TestCase
             [null, 'https://www.google.com'],
             [null, 'tel:+1-816-555-1212'],
             [null, 'text'],
+            [null, 'https://twitch.tv/'],
+            [null, 'https://www.twitch.tv/yabbadabbado'],
+            [null, 'https://clips.twitch.tv/90210'],
+            [null, 'https://clips.twitch.tv/'],
         ];
     }
 

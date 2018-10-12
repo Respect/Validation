@@ -33,6 +33,8 @@ class VideoUrl extends AbstractRule
     private $services = [
         'youtube' => '@^https?://(www\.)?(?:youtube\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^\"&?/]{11})@i',
         'vimeo' => '@^https?://(www\.)?(player\.)?(vimeo\.com/)((channels/[A-z]+/)|(groups/[A-z]+/videos/)|(video/))?([0-9]+)@i',
+        'twitch:video' => '@^https?://(www\.)?(twitch\.tv/videos/)([0-9]+)@i',
+        'twitch:clip' => '@^https?://(clips\.twitch\.tv/)([A-z]+)@i',
     ];
 
     /**
