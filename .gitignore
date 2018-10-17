@@ -5,3 +5,4 @@ Makefile
 phpstan.neon
 phpunit.xml
 vendor/
+.idea
