@@ -1,24 +1,24 @@
-# Contains
+# ContainsAny
 
-- `Contains(mixed $expectedValue)`
-- `Contains(mixed $expectedValue, bool $identical)`
+- `ContainsAny(array $needles)`
+- `ContainsAny(array $needles, bool $strictCompareArray)`
 
-Validates if the input contains some value.
+Validates if the input contains at least one of presented values.
 
-For strings:
+For strings (comparing is case insensitive):
 
 ```php
-v::contains('ipsum')->validate('lorem ipsum'); // true
+v::containsAny(['lorem', 'dolor'])->validate('lorem ipsum'); // true
 ```
 
-For arrays:
+For arrays (comparing is case sensitive to respect "contains" behavior):
 
 ```php
-v::contains('ipsum')->validate(['ipsum', 'lorem']); // true
+v::containsAny(['lorem', 'dolor'])->validate(['ipsum', 'lorem']); // true
 ```
 
 A second parameter may be passed for identical comparison instead
-of equal comparison.
+of equal comparison for arrays.
 
 Message template for this validator includes `{{containsValue}}`.
 
@@ -26,12 +26,11 @@ Message template for this validator includes `{{containsValue}}`.
 
 Version | Description
 --------|-------------
-  0.3.9 | Created
+ 1.1.19 | Created
 
 ***
 See also:
 
-- [StartsWith](StartsWith.md)
-- [EndsWith](EndsWith.md)
+- [Contains](Contains.md)
 - [Equivalent](Equivalent.md)
 - [In](In.md)
