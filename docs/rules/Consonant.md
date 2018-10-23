@@ -1,7 +1,7 @@
 # Consonant
 
 - `Consonant()`
-- `Consonant(string $additionalChars)`
+- `Consonant(string ...$additionalChars)`
 
 Similar to `Alnum()`. Validates strings that contain only consonants:
 

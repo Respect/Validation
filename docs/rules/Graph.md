@@ -1,7 +1,7 @@
 # Graph
 
 - `Graph()`
-- `Graph(string $additionalChars)`
+- `Graph(string ...$additionalChars)`
 
 Validates all characters that are graphically represented.
 

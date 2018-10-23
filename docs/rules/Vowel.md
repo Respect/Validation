@@ -1,6 +1,7 @@
 # Vowel
 
 - `Vowel()`
+- `Vowel(string ...$additionalChars)`
 
 Similar to `Alnum()`. Validates strings that contains only vowels:
 

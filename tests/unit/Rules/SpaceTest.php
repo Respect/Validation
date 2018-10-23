@@ -18,6 +18,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @group  rule
  * @covers \Respect\Validation\Exceptions\SpaceException
+ * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Space
  */
 class SpaceTest extends TestCase
@@ -47,17 +48,6 @@ class SpaceTest extends TestCase
     }
 
     /**
-     * @dataProvider providerForInvalidParams
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     *
-     * @test
-     */
-    public function invalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
-    {
-        $validator = new Space($additional);
-    }
-
-    /**
      * @dataProvider providerAdditionalChars
      *
      * @test
@@ -73,15 +63,6 @@ class SpaceTest extends TestCase
         return [
             ['!@#$%^&*(){}', '!@#$%^&*(){} '],
             ['[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n "],
-        ];
-    }
-
-    public function providerForInvalidParams()
-    {
-        return [
-            [new \stdClass()],
-            [[]],
-            [0x2],
         ];
     }
 

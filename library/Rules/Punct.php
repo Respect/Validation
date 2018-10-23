@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class Punct extends AbstractFilterRule
 {
-    protected function validateClean($input)
+    protected function validateFilteredInput(string $input): bool
     {
         return ctype_punct($input);
     }

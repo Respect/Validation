@@ -30,7 +30,7 @@ final class Alnum extends AbstractFilterRule
     /**
      * {@inheritdoc}
      */
-    protected function validateClean($input)
+    protected function validateFilteredInput(string $input): bool
     {
         return ctype_alnum($input);
     }

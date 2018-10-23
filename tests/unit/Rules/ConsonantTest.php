@@ -18,6 +18,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @group  rule
  * @covers \Respect\Validation\Exceptions\ConsonantException
+ * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Consonant
  */
 class ConsonantTest extends TestCase
@@ -47,17 +48,6 @@ class ConsonantTest extends TestCase
     }
 
     /**
-     * @dataProvider providerForInvalidParams
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     *
-     * @test
-     */
-    public function invalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
-    {
-        $validator = new Consonant($additional);
-    }
-
-    /**
      * @dataProvider providerAdditionalChars
      *
      * @test
@@ -73,15 +63,6 @@ class ConsonantTest extends TestCase
         return [
             ['!@#$%^&*(){}', '!@#$%^&*(){} bc dfg'],
             ['[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n bc dfg"],
-        ];
-    }
-
-    public function providerForInvalidParams()
-    {
-        return [
-            [new \stdClass()],
-            [[]],
-            [0x2],
         ];
     }
 

@@ -19,6 +19,7 @@ use stdClass;
 /**
  * @group rule
  *
+ * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Alpha
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
@@ -30,26 +31,6 @@ use stdClass;
 final class AlphaTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForInvalidParams
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     *
-     * @test
-     */
-    public function invalidConstructorParamsShouldThrowComponentException($additional): void
-    {
-        new Alpha($additional);
-    }
-
-    public function providerForInvalidParams(): array
-    {
-        return [
-            [new stdClass()],
-            [[]],
-            [0x2],
-        ];
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function providerForValidInput(): array
@@ -59,6 +40,7 @@ final class AlphaTest extends RuleTestCase
             'alphabetic with one exception' => [new Alpha('.'), 'google.com'],
             'alphabetic with multiple exceptions' => [new Alpha('0-9'), '0alg-anet9'],
             'non-alphabetic with only exceptions' => [new Alpha('!@#$%^&*(){}'), '!@#$%^&*(){}'],
+            'multiple characters to ignore' => [new Alpha('-', ' '), 'a-b c'],
         ];
     }
 

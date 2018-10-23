@@ -1,7 +1,7 @@
 # Punct
 
 - `Punct()`
-- `Punct(string $additionalChars)`
+- `Punct(string ...$additionalChars)`
 
 Accepts only punctuation characters:
 

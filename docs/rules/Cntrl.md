@@ -1,7 +1,7 @@
 # Cntrl
 
 - `Cntrl()`
-- `Cntrl(string $additionalChars)`
+- `Cntrl(string ...$additionalChars)`
 
 This is similar to `Alnum()`, but only accepts control characters:
 

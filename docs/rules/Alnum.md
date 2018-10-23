@@ -1,7 +1,7 @@
 # Alnum
 
 - `Alnum()`
-- `Alnum(string $additionalChars)`
+- `Alnum(string ...$additionalChars)`
 
 Validates whether the input is alphanumeric or not.
 
@@ -13,6 +13,7 @@ v::alnum()->validate('foo 123'); // false
 v::alnum(' ')->validate('foo 123'); // true
 v::alnum()->validate('100%'); // false
 v::alnum('%')->validate('100%'); // true
+v::alnum('%', ',')->validate('10,5%'); // true
 ```
 
 You can restrict case using the [Lowercase](Lowercase.md) and

@@ -18,6 +18,7 @@ use Respect\Validation\Test\RuleTestCase;
 /**
  * @group rule
  *
+ * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Printable
  */
 final class PrintableTest extends RuleTestCase
@@ -54,27 +55,6 @@ final class PrintableTest extends RuleTestCase
             [$rule, null],
             [$rule, 'foo'.chr(7).'bar'],
             [$rule, 'foo'.chr(10).'bar'],
-        ];
-    }
-
-    /**
-     * @test
-     *
-     * @dataProvider providerForInvalidParams
-     *
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     */
-    public function invalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional): void
-    {
-        (new Printable($additional));
-    }
-
-    public function providerForInvalidParams(): array
-    {
-        return [
-            [new \stdClass()],
-            [[]],
-            [0x2],
         ];
     }
 }

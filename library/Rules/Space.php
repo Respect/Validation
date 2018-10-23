@@ -15,7 +15,7 @@ namespace Respect\Validation\Rules;
 
 class Space extends AbstractFilterRule
 {
-    protected function validateClean($input)
+    protected function validateFilteredInput(string $input): bool
     {
         return ctype_space($input);
     }

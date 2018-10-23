@@ -27,7 +27,7 @@ final class Digit extends AbstractFilterRule
     /**
      * {@inheritdoc}
      */
-    public function validateClean($input)
+    protected function validateFilteredInput(string $input): bool
     {
         return ctype_digit($input);
     }

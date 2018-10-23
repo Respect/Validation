@@ -1,7 +1,7 @@
 # Space
 
 - `Space()`
-- `Space(string $additionalChars)`
+- `Space(string ...$additionalChars)`
 
 Accepts only whitespace:
 
