@@ -11,18 +11,25 @@ v::videoUrl()->validate('https://vimeo.com/71787467'); // true
 v::videoUrl()->validate('https://www.youtube.com/embed/netHLn9TScY'); // true
 v::videoUrl()->validate('https://www.youtube.com/watch?v=netHLn9TScY'); // true
 v::videoUrl()->validate('https://youtu.be/netHLn9TScY'); // true
+v::videoUrl()->validate('https://www.twitch.tv/videos/320689092'); // true
+v::videoUrl()->validate('https://clips.twitch.tv/BitterLazyMangetoutHumbleLife'); // true
 
 v::videoUrl('youtube')->validate('https://www.youtube.com/watch?v=netHLn9TScY'); // true
 v::videoUrl('vimeo')->validate('https://vimeo.com/71787467'); // true
+v::videoUrl('twitch')->validate('https://www.twitch.tv/videos/320689092'); // true
+v::videoUrl('twitch')->validate('https://clips.twitch.tv/BitterLazyMangetoutHumbleLife'); // true
 
 v::videoUrl()->validate('https://youtube.com'); // false
 v::videoUrl('youtube')->validate('https://vimeo.com/71787467'); // false
+v::videoUrl('twitch')->validate('https://clips.twitch.tv/videos/90210'); // false
+v::videoUrl('twitch')->validate('https://twitch.tv/TakeTeaAndNoTea'); // false
 ```
 
 The services accepted are:
 
 - YouTube
 - Vimeo
+- Twitch (videos and clips)
 
 The `$service` value is not case-sensitive.
 
