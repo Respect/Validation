@@ -260,6 +260,27 @@ v::with('My\\Validation\\Rules', true);
 v::alnum(); // Try to use "My\Validation\Rules\Alnum" if any
 ```
 
+If you're using the `assert()` or `check()` methods you also need to create an
+Exception to declare the messages returned:
+
+```php
+namespace My\Validation\Rules;
+
+use Respect\Validation\Exceptions\ValidationException;
+
+class MyRuleException extends ValidationException
+{
+    public static $defaultTemplates = [
+        self::MODE_DEFAULT => [
+            self::STANDARD => '{{name}} must pass my rules',
+        ],
+        self::MODE_NEGATIVE => [
+            self::STANDARD => '{{name}} must not pass my rules',
+        ]
+    ];
+}
+```
+
 ## Validator name
 
 On `v::attribute()` and `v::key()`, `{{name}}` is the attribute/key name. For others,
