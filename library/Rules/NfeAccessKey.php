@@ -9,15 +9,18 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 /**
- * Rule restrict to Brasil.
+ * Validates the access key of the Brazilian electronic invoice (NFe).
  *
- * Valida chave de acesso de NFe.
- * Mais especificamente, relacionada ao DANFE.
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Luís Otávio Cobucci Oblonczyk <lcobucci@gmail.com>
  */
-class NfeAccessKey extends AbstractRule
+final class NfeAccessKey extends AbstractRule
 {
     /**
      * @see Manual de Integração do Contribuinte v4.0.1 (http://www.nfe.fazenda.gov.br)
@@ -26,7 +29,7 @@ class NfeAccessKey extends AbstractRule
      *
      * @return bool
      */
-    public function validate($aK)
+    public function validate($aK): bool
     {
         if (strlen($aK) !== 44) {
             return false;

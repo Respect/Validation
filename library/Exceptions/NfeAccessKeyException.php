@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Exceptions;
 
-class NfeAccessKeyException extends ValidationException
+final class NfeAccessKeyException extends ValidationException
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
