@@ -14,41 +14,49 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use function array_keys;
+use function is_string;
+use function mb_strtolower;
+use function preg_match;
+use function sprintf;
 
-class VideoUrl extends AbstractRule
+/**
+ * Validates if the input is a video URL value.
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ricardo Gobbo <ricardo@clicknow.com.br>
+ */
+final class VideoUrl extends AbstractRule
 {
     /**
      * @var string
      */
-    public $service;
-
-    /**
-     * @var string
-     */
-    private $serviceKey;
+    private $service;
 
     /**
      * @var array
      */
-    private $services = [
+    private const SERVICES = [
         'youtube' => '@^https?://(www\.)?(?:youtube\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^\"&?/]{11})@i',
         'vimeo' => '@^https?://(www\.)?(player\.)?(vimeo\.com/)((channels/[A-z]+/)|(groups/[A-z]+/videos/)|(video/))?([0-9]+)@i',
+        'twitch' => '@^https?://(((www\.)?twitch\.tv/videos/[0-9]+)|clips\.twitch\.tv/[a-zA-Z]+)$@i',
     ];
 
     /**
      * Create a new instance VideoUrl.
      *
-     * @param string $service
+     * @param string|null $service
+     *
+     * @throws ComponentException when the given service is not supported
      */
     public function __construct(string $service = null)
     {
-        $serviceKey = mb_strtolower((string) $service);
-        if (null !== $service && !isset($this->services[$serviceKey])) {
+        if (null !== $service && !$this->isSupportedService($service)) {
             throw new ComponentException(sprintf('"%s" is not a recognized video service.', $service));
         }
 
         $this->service = $service;
-        $this->serviceKey = $serviceKey;
     }
 
     /**
@@ -56,12 +64,16 @@ class VideoUrl extends AbstractRule
      */
     public function validate($input): bool
     {
-        if (isset($this->services[$this->serviceKey])) {
-            return preg_match($this->services[$this->serviceKey], (string) $input) > 0;
+        if (!is_string($input)) {
+            return false;
         }
 
-        foreach ($this->services as $pattern) {
-            if (0 === preg_match($pattern, (string) $input)) {
+        if (null !== $this->service) {
+            return $this->isValid($this->service, $input);
+        }
+
+        foreach (array_keys(self::SERVICES) as $service) {
+            if (!$this->isValid($service, $input)) {
                 continue;
             }
 
@@ -69,5 +81,15 @@ class VideoUrl extends AbstractRule
         }
 
         return false;
+    }
+
+    private function isSupportedService(string $service): bool
+    {
+        return isset(self::SERVICES[mb_strtolower($service)]);
+    }
+
+    private function isValid(string $service, string $input): bool
+    {
+        return preg_match(self::SERVICES[mb_strtolower($service)], $input) > 0;
     }
 }

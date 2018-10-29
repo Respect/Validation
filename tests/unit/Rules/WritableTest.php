@@ -13,69 +13,65 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
-
-$GLOBALS['is_writable'] = null;
-
-function is_writable($writable)
-{
-    $return = \is_writable($writable); // Running the real function
-    if (null !== $GLOBALS['is_writable']) {
-        $return = $GLOBALS['is_writable'];
-        $GLOBALS['is_writable'] = null;
-    }
-
-    return $return;
-}
+use Respect\Validation\Test\RuleTestCase;
+use SplFileInfo;
+use SplFileObject;
+use stdClass;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\WritableException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Writable
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class WritableTest extends TestCase
+final class WritableTest extends RuleTestCase
 {
     /**
-     * @covers \Respect\Validation\Rules\Writable::validate
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function validWritableFileShouldReturnTrue(): void
+    public function providerForValidInput(): array
     {
-        $GLOBALS['is_writable'] = true;
+        $sut = new Writable();
+        $filename = $this->getFixtureDirectory().'/valid-image.png';
 
-        $rule = new Writable();
-        $input = '/path/of/a/valid/writable/file.txt';
-        self::assertTrue($rule->validate($input));
+        return [
+            'writable file' => [$sut, $filename],
+            'writable directory' => [$sut, $this->getFixtureDirectory()],
+            'writable SplFileInfo file' => [$sut, new SplFileInfo($filename)],
+            'writable SplFileObject file' => [$sut, new SplFileObject($filename)],
+        ];
     }
 
     /**
-     * @covers \Respect\Validation\Rules\Writable::validate
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function invalidWritableFileShouldReturnFalse(): void
+    public function providerForInvalidInput(): array
     {
-        $GLOBALS['is_writable'] = false;
-
         $rule = new Writable();
-        $input = '/path/of/an/invalid/writable/file.txt';
-        self::assertFalse($rule->validate($input));
+        $filename = $this->getFixtureDirectory().'/non-writable';
+
+        $this->changeFileModeToUnwritable($filename);
+
+        return [
+            'unwritable filename' => [$rule, $filename],
+            'unwritable SplFileInfo file' => [$rule, new SplFileInfo($filename)],
+            'unwritable SplFileObject file' => [$rule, new SplFileObject($filename)],
+            'invalid filename' => [$rule, '/path/of/a/valid/writable/file.txt'],
+            'empty string' => [$rule, ''],
+            'boolean true' => [$rule, true],
+            'boolean false' => [$rule, false],
+            'integer' => [$rule, 123456],
+            'float' => [$rule, 1.1111],
+            'instance of stdClass' => [$rule, new stdClass()],
+            'array' => [$rule, []],
+        ];
     }
 
-    /**
-     * @covers \Respect\Validation\Rules\Writable::validate
-     *
-     * @test
-     */
-    public function shouldValidateObjects(): void
+    private function changeFileModeToUnwritable(string $filename): void
     {
-        $rule = new Writable();
-        $object = $this->createMock('SplFileInfo');
-        $object->expects(self::once())
-                ->method('isWritable')
-                ->will(self::returnValue(true));
-
-        self::assertTrue($rule->validate($object));
+        chmod($filename, 0555);
     }
 }
