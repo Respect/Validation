@@ -66,7 +66,8 @@ final class ContainsAny extends AbstractRule
             if (false !== mb_stripos($inputString, (string) $needle, 0, mb_detect_encoding($inputString))) {
                 return true;
             }
-        } unset ($needle);
+        }
+        unset($needle);
 
         return false;
     }
@@ -77,7 +78,8 @@ final class ContainsAny extends AbstractRule
             if (in_array($needle, $inputArray, $this->strictCompareArray)) {
                 return true;
             }
-        } unset ($needle);
+        }
+        unset($needle);
 
         return false;
     }
