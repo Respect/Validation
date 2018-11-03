@@ -41,7 +41,7 @@ class PostalCode extends Regex
         'BN' => '/^([A-Z]{2}\d{4})$/',
         'BR' => '/^\d{5}-?\d{3}$/',
         'BY' => '/^(\d{6})$/',
-        'CA' => '/^([ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]) ?(\d[ABCEGHJKLMNPRSTVWXYZ]\d)$ /',
+        'CA' => '/^([ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]) ?(\d[ABCEGHJKLMNPRSTVWXYZ]\d)$/',
         'CH' => '/^(\d{4})$/',
         'CL' => '/^(\d{7})$/',
         'CN' => '/^(\d{6})$/',
