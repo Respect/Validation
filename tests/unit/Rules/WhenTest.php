@@ -16,154 +16,66 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\When
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Antonio Spinelli <tonicospinelli85@gmail.com>
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class WhenTest extends RuleTestCase
+final class WhenTest extends RuleTestCase
 {
     /**
-     * @test
-     */
-    public function shouldConstructAnObjectWithoutElseRule(): void
-    {
-        $rule = new When($this->createValidatableMock(true), $this->createValidatableMock(true));
-
-        self::assertInstanceOf(AlwaysInvalid::class, $rule->else);
-    }
-
-    /**
-     * @test
-     */
-    public function shouldConstructAnObjectWithElseRule(): void
-    {
-        $rule = new When($this->createValidatableMock(true), $this->createValidatableMock(true), $this->createValidatableMock(true));
-
-        self::assertNotNull($rule->else);
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\ValidationException
-     * @expectedExceptionMessage Exception for ThenNotValid:assert() method
-     *
-     * @test
-     */
-    public function shouldThrowExceptionForTheThenRuleWhenTheIfRuleIsValidAndTheThenRuleIsNotOnAssertMethod(): void
-    {
-        $if = $this->createValidatableMock(true);
-        $then = $this->createValidatableMock(false, 'ThenNotValid');
-        $else = $this->createValidatableMock(true);
-
-        $rule = new When($if, $then, $else);
-        $rule->assert('');
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\ValidationException
-     * @expectedExceptionMessage Exception for ThenNotValid:check() method
-     *
-     * @test
-     */
-    public function shouldThrowExceptionForTheThenRuleWhenTheIfRuleIsValidAndTheThenRuleIsNotOnCheckMethod(): void
-    {
-        $if = $this->createValidatableMock(true);
-        $then = $this->createValidatableMock(false, 'ThenNotValid');
-        $else = $this->createValidatableMock(true);
-
-        $rule = new When($if, $then, $else);
-        $rule->check('');
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\ValidationException
-     * @expectedExceptionMessage Exception for ElseNotValid:assert() method
-     *
-     * @test
-     */
-    public function shouldThrowExceptionForTheElseRuleWhenTheIfRuleIsNotValidAndTheElseRuleIsNotOnAssertMethod(): void
-    {
-        $if = $this->createValidatableMock(false);
-        $then = $this->createValidatableMock(false);
-        $else = $this->createValidatableMock(false, 'ElseNotValid');
-
-        $rule = new When($if, $then, $else);
-        $rule->assert('');
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\ValidationException
-     * @expectedExceptionMessage Exception for ElseNotValid:check() method
-     *
-     * @test
-     */
-    public function shouldThrowExceptionForTheElseRuleWhenTheIfRuleIsNotValidAndTheElseRuleIsNotOnCheckMethod(): void
-    {
-        $if = $this->createValidatableMock(false);
-        $then = $this->createValidatableMock(false);
-        $else = $this->createValidatableMock(false, 'ElseNotValid');
-
-        $rule = new When($if, $then, $else);
-        $rule->check('');
-    }
-
-    /**
-     * It is to provide constructor arguments and.
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function providerForValidInput(): array
     {
         return [
-            'int (all true)' => [
-                new When($this->createValidatableMock(true), $this->createValidatableMock(true), $this->createValidatableMock(true)),
-                42,
-            ],
-            'bool (all true)' => [
+            'all true' => [
                 new When($this->createValidatableMock(true), $this->createValidatableMock(true), $this->createValidatableMock(true)),
                 true,
             ],
-            'empty (all true)' => [
-                new When($this->createValidatableMock(true), $this->createValidatableMock(true), $this->createValidatableMock(true)),
-                '',
-            ],
-            'object (all true)' => [
-                new When($this->createValidatableMock(true), $this->createValidatableMock(true), $this->createValidatableMock(true)),
-                new \stdClass(),
-            ],
-            'empty array (all true)' => [
-                new When($this->createValidatableMock(true), $this->createValidatableMock(true), $this->createValidatableMock(true)),
-                [],
-            ],
-            'not empty array (all true)' => [
-                new When($this->createValidatableMock(true), $this->createValidatableMock(true), $this->createValidatableMock(true)),
-                ['test'],
-            ],
-            'when = true, then = false, else = true' => [
+            'bool (when = true, then = true, else = false)' => [
                 new When($this->createValidatableMock(true), $this->createValidatableMock(true), $this->createValidatableMock(false)),
-                false,
+                true,
+            ],
+            'bool (when = false, then = true, else = true)' => [
+                new When($this->createValidatableMock(false), $this->createValidatableMock(true), $this->createValidatableMock(true)),
+                true,
+            ],
+            'bool (when = false, then = false, else = true)' => [
+                new When($this->createValidatableMock(false), $this->createValidatableMock(false), $this->createValidatableMock(true)),
+                true,
+            ],
+            'bool (when = false, then = true, else = null)' => [
+                new When($this->createValidatableMock(true), $this->createValidatableMock(true), null),
+                true,
             ],
         ];
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public function providerForInvalidInput(): array
     {
         return [
-            'when = true, then = false, else = false' => [
+            'bool (when = true, then = false, else = false)' => [
                 new When($this->createValidatableMock(true), $this->createValidatableMock(false), $this->createValidatableMock(false)),
                 false,
             ],
-            'when = true, then = false, else = true' => [
+            'bool (when = true, then = false, else = true)' => [
                 new When($this->createValidatableMock(true), $this->createValidatableMock(false), $this->createValidatableMock(true)),
                 false,
             ],
-            'when = false, then = false, else = false' => [
+            'bool (when = false, then = false, else = false)' => [
                 new When($this->createValidatableMock(false), $this->createValidatableMock(false), $this->createValidatableMock(false)),
+                false,
+            ],
+            'bool (when = true, then = false, else = null)' => [
+                new When($this->createValidatableMock(true), $this->createValidatableMock(false), null),
                 false,
             ],
         ];

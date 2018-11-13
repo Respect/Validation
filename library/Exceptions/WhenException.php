@@ -15,16 +15,9 @@ namespace Respect\Validation\Exceptions;
 
 /**
  * @author Antonio Spinelli <tonicospinelli85@gmail.com>
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class WhenException extends ValidationException
+final class WhenException extends ValidationException
 {
-    public static $defaultTemplates = [
-        self::MODE_DEFAULT => [
-            self::STANDARD => 'Data validation failed for {{name}}',
-        ],
-        self::MODE_NEGATIVE => [
-            self::STANDARD => 'Data validation failed for {{name}}',
-        ],
-    ];
 }
