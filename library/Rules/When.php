@@ -16,11 +16,30 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\AlwaysInvalidException;
 use Respect\Validation\Validatable;
 
-class When extends AbstractRule
+/**
+ * A ternary validator that accepts three parameters.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Hugo Hamon <hugo.hamon@sensiolabs.com>
+ */
+final class When extends AbstractRule
 {
-    public $when;
-    public $then;
-    public $else;
+    /**
+     * @var \Respect\Validation\Validatable
+     */
+    private $when;
+
+    /**
+     * @var \Respect\Validation\Validatable
+     */
+    private $then;
+
+    /**
+     * @var \Respect\Validation\Validatable
+     */
+    private $else;
 
     public function __construct(Validatable $when, Validatable $then, Validatable $else = null)
     {
@@ -34,6 +53,9 @@ class When extends AbstractRule
         $this->else = $else;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if ($this->when->validate($input)) {
@@ -43,6 +65,9 @@ class When extends AbstractRule
         return $this->else->validate($input);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function assert($input): void
     {
         if ($this->when->validate($input)) {
@@ -54,6 +79,9 @@ class When extends AbstractRule
         $this->else->assert($input);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function check($input): void
     {
         if ($this->when->validate($input)) {
