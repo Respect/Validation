@@ -18,6 +18,7 @@ use Respect\Validation\Test\RuleTestCase;
 /**
  * @group rule
  *
+ * @covers \Respect\Validation\Rules\AbstractEnvelope
  * @covers \Respect\Validation\Rules\Url
  *
  * @author Gabriel Caruso <carusogabriel34@gmail.com>

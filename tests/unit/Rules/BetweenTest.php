@@ -20,6 +20,7 @@ use Respect\Validation\Test\Stubs\CountableStub;
 /**
  * @group rule
  *
+ * @covers \Respect\Validation\Rules\AbstractEnvelope
  * @covers \Respect\Validation\Rules\Between
  */
 final class BetweenTest extends RuleTestCase

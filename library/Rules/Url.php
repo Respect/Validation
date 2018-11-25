@@ -30,6 +30,6 @@ final class Url extends AbstractEnvelope
      */
     public function __construct()
     {
-        parent::__construct(new FilterVar(FILTER_VALIDATE_URL), []);
+        parent::__construct(new FilterVar(FILTER_VALIDATE_URL));
     }
 }

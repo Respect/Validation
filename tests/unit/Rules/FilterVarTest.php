@@ -24,6 +24,7 @@ use const FILTER_VALIDATE_URL;
 /**
  * @group rule
  *
+ * @covers \Respect\Validation\Rules\AbstractEnvelope
  * @covers \Respect\Validation\Rules\FilterVar
  *
  * @author Gabriel Caruso <carusogabriel34@gmail.com>

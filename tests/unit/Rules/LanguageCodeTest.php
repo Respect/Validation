@@ -19,6 +19,7 @@ use Respect\Validation\Test\RuleTestCase;
 /**
  * @group rule
  *
+ * @covers \Respect\Validation\Rules\AbstractEnvelope
  * @covers \Respect\Validation\Rules\LanguageCode
  *
  * @author Danilo Benevides <danilobenevides01@gmail.com>

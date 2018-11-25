@@ -53,6 +53,6 @@ final class FilterVar extends AbstractEnvelope
             throw new ComponentException('Cannot accept the given filter');
         }
 
-        parent::__construct(new Callback('filter_var', $filter, $options), []);
+        parent::__construct(new Callback('filter_var', $filter, $options));
     }
 }

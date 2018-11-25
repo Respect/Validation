@@ -42,7 +42,7 @@ abstract class AbstractEnvelope extends AbstractRule
      * @param Validatable $validatable
      * @param array $parameters
      */
-    public function __construct(Validatable $validatable, array $parameters)
+    public function __construct(Validatable $validatable, array $parameters = [])
     {
         $this->validatable = $validatable;
         $this->parameters = $parameters;
