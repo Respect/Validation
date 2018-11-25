@@ -20,7 +20,7 @@ use function preg_match;
  * Validates if a value is considered a valid PHP Label, so that it can be used as a variable, function or class name.
  *
  * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Emmerson <emmersonsiqueira@gmail.com>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class PhpLabel extends AbstractRule

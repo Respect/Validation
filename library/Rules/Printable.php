@@ -17,8 +17,10 @@ namespace Respect\Validation\Rules;
  * Validates whether an input is printable character(s).
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Andre Ramaciotti <andre@ramaciotti.com>
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
  */
 final class Printable extends AbstractFilterRule
 {

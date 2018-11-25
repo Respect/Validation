@@ -20,6 +20,8 @@ use PHPUnit\Framework\TestCase;
  * @covers \Respect\Validation\Exceptions\ValidationException
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Andy Wendt <andy@awendt.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class ValidationExceptionTest extends TestCase

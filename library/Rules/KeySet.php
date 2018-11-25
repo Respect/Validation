@@ -24,8 +24,8 @@ use function is_array;
 /**
  * Validates a keys in a defined structure.
  *
- * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class KeySet extends AbstractWrapper
 {

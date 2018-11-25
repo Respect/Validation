@@ -20,7 +20,7 @@ use Respect\Validation\Test\RuleTestCase;
  *
  * @covers \Respect\Validation\Rules\BoolVal
  *
- * @author Emmerson <emmersonsiqueira@gmail.com>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */

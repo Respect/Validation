@@ -19,9 +19,9 @@ use function array_shift;
 /**
  * Stub to help testing rules.
  *
- * @author Henrique Moody <henriquemoody@gmail.com>
- *
  * @since 2.0.0
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class Stub extends AbstractRule
 {

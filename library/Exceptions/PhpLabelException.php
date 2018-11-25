@@ -15,7 +15,7 @@ namespace Respect\Validation\Exceptions;
 
 /**
  * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Emmerson <emmersonsiqueira@gmail.com>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class PhpLabelException extends ValidationException

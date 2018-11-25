@@ -15,7 +15,9 @@ namespace Respect\Validation\Exceptions;
 
 /**
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author João Torquato <joao.otl@gmail.com>
  */
 final class ArrayTypeException extends ValidationException
 {

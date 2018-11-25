@@ -15,6 +15,7 @@ namespace Respect\Validation\Exceptions;
 
 /**
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Bram Van der Sype <bram.vandersype@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class NotEmptyException extends ValidationException

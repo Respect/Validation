@@ -26,6 +26,7 @@ use function setlocale;
  * @covers \Respect\Validation\Rules\Yes
  *
  * @author Cameron Hall <me@chall.id.au>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class YesTest extends RuleTestCase

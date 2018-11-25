@@ -16,7 +16,7 @@ namespace Respect\Validation\Exceptions;
 /**
  * @author Carlos André Ferrari <caferrari@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
- * @author William Espindola <not.committed.yet>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
 final class BaseException extends ValidationException
 {

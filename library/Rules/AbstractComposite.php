@@ -24,6 +24,7 @@ use function array_map;
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Wojciech Frącz <fraczwojciech@gmail.com>
  */
 abstract class AbstractComposite extends AbstractRule
 {

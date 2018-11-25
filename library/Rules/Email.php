@@ -23,6 +23,7 @@ use function is_string;
 /**
  * Validates an email address.
  *
+ * @author Andrey Kolyshkin <a.kolyshkin@semrush.com>
  * @author Eduardo Gulias Davis <me@egulias.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Paul Karikari <paulkarikari1@gmail.com>

@@ -20,6 +20,8 @@ use Respect\Validation\Test\RuleTestCase;
  * @covers \Respect\Validation\Rules\NotEmpty
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Bram Van der Sype <bram.vandersype@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class NotEmptyTest extends RuleTestCase

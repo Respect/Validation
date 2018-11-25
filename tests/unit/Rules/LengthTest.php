@@ -29,6 +29,7 @@ use function tmpfile;
  * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Níckolas Daniel da Silva <nickolas@phpsp.org.br>
  */
 final class LengthTest extends RuleTestCase
 {

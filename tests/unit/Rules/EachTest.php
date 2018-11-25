@@ -24,7 +24,7 @@ use stdClass;
  * @covers \Respect\Validation\Rules\Each
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
- * @author Emmerson <emmersonsiqueira@gmail.com>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */

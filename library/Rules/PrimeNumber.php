@@ -21,7 +21,7 @@ use function sqrt;
  * Validates whether the input is a prime number.
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
- * @author Camilo Teixeira de Melo <kmilotxm@users.noreply.github.com>
+ * @author Camilo Teixeira de Melo <kmilotxm@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Ismael Elias <ismael.esq@hotmail.com>
  * @author Kleber Hamada Sato <kleberhs007@yahoo.com>

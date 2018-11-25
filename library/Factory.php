@@ -27,6 +27,7 @@ use function lcfirst;
 /**
  * Factory of objects.
  *
+ * @author Augusto Pascutti <augusto@phpsp.org.br>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class Factory

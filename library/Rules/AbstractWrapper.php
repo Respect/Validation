@@ -18,6 +18,7 @@ use Respect\Validation\Validatable;
 /**
  * Abstract class to help on creating rules that wrap rules.
  *
+ * @author Alasdair North <alasdair@runway.io>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
 abstract class AbstractWrapper extends AbstractRule

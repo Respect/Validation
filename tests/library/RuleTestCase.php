@@ -22,10 +22,13 @@ use function sprintf;
 /**
  * Abstract class to create TestCases for Rules.
  *
- * @author Antonio Spinelli <tonicospinelli85@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- *
  * @since 1.0.0
+ *
+ * @author Antonio Spinelli <tonicospinelli85@gmail.com>
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
 abstract class RuleTestCase extends TestCase
 {

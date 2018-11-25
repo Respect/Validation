@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Exceptions;
 
 /**
+ * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jens Segers <segers.jens@gmail.com>
  */
 final class NullableException extends ValidationException

@@ -22,7 +22,7 @@ use function preg_match;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jens Segers <segers.jens@gmail.com>
- * @author William Espindola <oi@william.espindola.com.br>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
 final class Base64 extends AbstractRule
 {

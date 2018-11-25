@@ -19,10 +19,12 @@ use PHPUnit\Framework\TestCase;
 use SplFileInfo;
 
 /**
- * @author Henrique Moody <henriquemoody@gmail.com>
  * @group  rule
  * @covers \Respect\Validation\Exceptions\SizeException
  * @covers \Respect\Validation\Rules\Size
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class SizeTest extends TestCase
 {

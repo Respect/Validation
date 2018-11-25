@@ -25,7 +25,7 @@ use function sprintf;
  *
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Paul Karikari<paulkarikari1@gmail.com>
+ * @author Paul Karikari <paulkarikari1@gmail.com>
  */
 final class Type extends AbstractRule
 {

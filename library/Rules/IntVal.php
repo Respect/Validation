@@ -19,7 +19,9 @@ use function is_float;
 /**
  * Validates if the input is an integer.
  *
+ * @author Adam Benson <adam.benson@bigcommerce.com>
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Andrei Drulchenko <andrdru@gmail.com>
  * @author Danilo Benevides <danilobenevides01@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */

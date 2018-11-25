@@ -16,7 +16,7 @@ namespace Respect\Validation\Exceptions;
 /**
  * Exceptions thrown by Uploaded rule.
  *
- * @author FKhairil <fajar90alone@gmail.com>
+ * @author Fajar Khairil <fajar.khairil@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Paul Karikari <paulkarikari1@gmail.com>
  */

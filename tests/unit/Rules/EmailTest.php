@@ -24,6 +24,7 @@ use Respect\Validation\Test\RuleTestCase;
  *
  * @covers \Respect\Validation\Rules\Email
  *
+ * @author Andrey Kolyshkin <a.kolyshkin@semrush.com>
  * @author Eduardo Gulias Davis <me@egulias.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Paul Karikari <paulkarikari1@gmail.com>

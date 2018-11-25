@@ -23,7 +23,7 @@ use function preg_replace;
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jair Henrique <jair.henrique@gmail.com>
- * @author Jayson Reis <jayson.reis@sabbre.com.br>
+ * @author Jayson Reis <santosdosreis@gmail.com>
  * @author Jean Pimentel <jeanfap@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */

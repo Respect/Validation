@@ -22,6 +22,7 @@ use stdClass;
  *
  * @covers \Respect\Validation\Rules\Nullable
  *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jens Segers <segers.jens@gmail.com>
  */
 final class NullableTest extends TestCase

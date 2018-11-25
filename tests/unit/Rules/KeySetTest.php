@@ -20,8 +20,9 @@ use PHPUnit\Framework\TestCase;
  *
  * @covers \Respect\Validation\Rules\KeySet
  *
- * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class KeySetTest extends TestCase
 {

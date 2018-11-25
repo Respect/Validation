@@ -25,6 +25,7 @@ use Respect\Validation\Test\Stubs\CountableStub;
  * @covers \Respect\Validation\Rules\Max
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */

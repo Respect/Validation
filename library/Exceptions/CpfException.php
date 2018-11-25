@@ -16,7 +16,7 @@ namespace Respect\Validation\Exceptions;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jair Henrique <jair.henrique@gmail.com>
- * @author Wiliam Espindola <oi@williamespindola.com.br>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
 final class CpfException extends ValidationException
 {

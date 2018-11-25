@@ -16,6 +16,7 @@ namespace Respect\Validation\Exceptions;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Kinn Coelho Julião <kinncj@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
 final class CnhException extends ValidationException
 {

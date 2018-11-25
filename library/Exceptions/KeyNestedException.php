@@ -18,6 +18,7 @@ namespace Respect\Validation\Exceptions;
  *
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ivan Zinovyev <vanyazin@gmail.com>
  */
 final class KeyNestedException extends NestedValidationException implements NonOmissibleException
 {

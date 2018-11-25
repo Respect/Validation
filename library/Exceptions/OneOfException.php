@@ -15,6 +15,7 @@ namespace Respect\Validation\Exceptions;
 
 /**
  * @author Bradyn Poulsen <bradyn@bradynpoulsen.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class OneOfException extends NestedValidationException
 {

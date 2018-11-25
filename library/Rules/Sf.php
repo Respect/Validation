@@ -25,6 +25,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Augusto Pascutti <augusto@phpsp.org.br>
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Hugo Hamon <hugo.hamon@sensiolabs.com>
  */
 final class Sf extends AbstractRule
 {

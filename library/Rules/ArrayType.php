@@ -17,7 +17,9 @@ namespace Respect\Validation\Rules;
  * Validates whether the type of an input is array.
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author João Torquato <joao.otl@gmail.com>
  */
 final class ArrayType extends AbstractRule
 {

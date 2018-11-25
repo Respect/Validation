@@ -22,6 +22,7 @@ use Respect\Validation\Test\Stubs\CountableStub;
  * @covers \Respect\Validation\Rules\AbstractComparison
  * @covers \Respect\Validation\Rules\GreaterThan
  *
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class GreaterThanTest extends RuleTestCase

@@ -18,7 +18,7 @@ namespace Respect\Validation\Exceptions;
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
- * @author nickl- <github@jigsoft.co.za>
+ * @author Nick Lombard <github@jigsoft.co.za>
  * @author Paul Karikari <paulkarikari1@gmail.com>
  */
 final class TldException extends ValidationException

@@ -16,9 +16,9 @@ namespace Respect\Validation\Exceptions;
 /**
  * Exception for invalid classes.
  *
- * @author Henrique Moody <henriquemoody@gmail.com>
- *
  * @since 2.0.0
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class InvalidClassException extends ComponentException
 {

@@ -20,6 +20,7 @@ use SimpleXMLElement;
  * Validates if the input is an array or if the input can be used as an array (instance of `ArrayAccess` or `SimpleXMLElement`).
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class ArrayVal extends AbstractRule

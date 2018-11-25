@@ -17,6 +17,7 @@ namespace Respect\Validation\Rules;
  * Validates whether the input is not empty
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Bram Van der Sype <bram.vandersype@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class NotEmpty extends AbstractRule

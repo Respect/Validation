@@ -17,6 +17,7 @@ namespace Respect\Validation\Exceptions;
  * Exceptions to be thrown by the Printable Rule.
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Andre Ramaciotti <andre@ramaciotti.com>
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */

@@ -25,7 +25,10 @@ use function date_default_timezone_set;
  * @covers \Respect\Validation\Rules\DateTime
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Eduardo Reveles <me@osiux.ws>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author qrazi <qrazi.sivlingworkz@gmail.com>
  */
 final class DateTimeTest extends RuleTestCase
 {

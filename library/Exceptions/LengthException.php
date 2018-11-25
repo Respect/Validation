@@ -15,7 +15,7 @@ namespace Respect\Validation\Exceptions;
 
 /**
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
- * @author Danilo Correa <dcorrea@autodoc.com.br>
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class LengthException extends ValidationException

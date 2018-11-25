@@ -23,10 +23,10 @@ use function preg_replace;
 /**
  * Validates whether the input is a credit card number.
  *
+ * @author Alexander Gorshkov <mazanax@yandex.ru>
  * @author Andy Snell <andysnell@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jean Pimentel <jeanfap@gmail.com>
- * @author Alexander <mazanax@yandex.ru>
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author William Espindola <oi@williamespindola.com.br>
  */

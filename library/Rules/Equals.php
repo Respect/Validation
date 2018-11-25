@@ -18,6 +18,7 @@ namespace Respect\Validation\Rules;
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Hugo Hamon <hugo.hamon@sensiolabs.com>
  */
 final class Equals extends AbstractRule
 {

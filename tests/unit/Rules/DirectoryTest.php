@@ -24,7 +24,7 @@ use SplFileObject;
  *
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
- * @author William Espindola <oi@williamespidolacom.br>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
 final class DirectoryTest extends RuleTestCase
 {

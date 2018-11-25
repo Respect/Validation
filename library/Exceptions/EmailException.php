@@ -16,6 +16,8 @@ namespace Respect\Validation\Exceptions;
 /**
  * Exceptions thrown by email rule.
  *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Andrey Kolyshkin <a.kolyshkin@semrush.com>
  * @author Eduardo Gulias Davis <me@egulias.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Paul Karikari <paulkarikari1@gmail.com>

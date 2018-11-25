@@ -22,7 +22,7 @@ use function array_search;
  * Validates whether the input is language code based on ISO 639.
  *
  * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Emmerson <emmersonsiqueira@gmail.com>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class LanguageCode extends AbstractEnvelope

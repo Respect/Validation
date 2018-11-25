@@ -16,6 +16,7 @@ namespace Respect\Validation\Exceptions;
 /**
  * Exceptions to be thrown by the Attribute Rule.
  *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */

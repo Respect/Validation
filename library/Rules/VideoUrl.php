@@ -24,6 +24,7 @@ use function sprintf;
  * Validates if the input is a video URL value.
  *
  * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Ricardo Gobbo <ricardo@clicknow.com.br>
  */

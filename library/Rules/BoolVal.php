@@ -21,7 +21,7 @@ use function is_bool;
 /**
  * Validates if the input results in a boolean value.
  *
- * @author Emmerson <emmersonsiqueira@gmail.com>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */

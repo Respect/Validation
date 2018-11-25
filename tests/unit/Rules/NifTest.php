@@ -19,7 +19,9 @@ use Respect\Validation\Test\RuleTestCase;
  * @group  rule
  * @covers \Respect\Validation\Rules\Nif
  *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Julián Gutiérrez <juliangut@gmail.com>
+ * @author Senén <senen@instasent.com>
  */
 final class NifTest extends RuleTestCase
 {

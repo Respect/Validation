@@ -20,11 +20,11 @@ use function preg_replace;
 /**
  * Validates if the input is a Brazilian National Registry of Legal Entities (CNPJ) number.
  *
- * @author Alexandre Gaigalas <alexandre@gaigalas.net>
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jayson Reis <jayson.reis@sabbre.com.br>
- * @author Renato Moura <renato@naturalweb.com.br>
+ * @author Jayson Reis <santosdosreis@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
+ * @author Renato Moura <renato@naturalweb.com.br>
  * @author William Espindola <oi@williamespindola.com.br>
  */
 final class Cnpj extends AbstractRule

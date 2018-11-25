@@ -16,6 +16,7 @@ namespace Respect\Validation\Exceptions;
 /**
  * @author Dick van der Heiden <d.vanderheiden@inthere.nl>
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Michael Weimann <mail@michael-weimann.eu>
  */
 final class UuidException extends ValidationException
 {

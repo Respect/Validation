@@ -22,7 +22,7 @@ use Respect\Validation\Test\RuleTestCase;
  *
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jayson Reis <jayson.reis@sabbre.com.br>
+ * @author Jayson Reis <santosdosreis@gmail.com>
  * @author Renato Moura <renato@naturalweb.com.br>
  * @author William Espindola <oi@williamespindola.com.br>
  */

@@ -23,7 +23,7 @@ use Respect\Validation\Test\RuleTestCase;
  * @author Felipe Martins <me@fefas.net>
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
- * @author William espindola <oi@williamespindola.com.br>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
 final class CountryCodeTest extends RuleTestCase
 {

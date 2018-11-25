@@ -24,6 +24,7 @@ use function mb_strlen;
 /**
  * Helps to deal with comparable values.
  *
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
 trait ComparisonHelper

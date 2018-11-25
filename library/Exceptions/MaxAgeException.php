@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Exceptions;
 
 /**
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class MaxAgeException extends ValidationException

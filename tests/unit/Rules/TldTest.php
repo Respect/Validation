@@ -24,8 +24,8 @@ use stdClass;
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Paulo Eduardo <pauloelr@gmail.com>
  * @author Paul Karikari <paulkarikari1@gmail.com>
+ * @author Paulo Eduardo <pauloelr@gmail.com>
  */
 final class TldTest extends RuleTestCase
 {
