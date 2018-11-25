@@ -20,6 +20,11 @@ use Respect\Validation\Validator;
  * @group  rule
  * @covers \Respect\Validation\Exceptions\NotException
  * @covers \Respect\Validation\Rules\Not
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Caio César Tavares <caiotava@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class NotTest extends TestCase
 {

@@ -15,6 +15,9 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class PostalCode extends Regex
 {
     public const DEFAULT_PATTERN = '/^$/';

@@ -17,6 +17,10 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Respect\Validation\Exceptions\NestedValidationException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class NestedValidationExceptionTest extends TestCase
 {

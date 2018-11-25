@@ -19,6 +19,11 @@ use ReflectionClass;
 
 /**
  * @coversNothing
+ *
+ * @author Andy Wendt <andy@awendt.com>
+ * @author Augusto Pascutti <augusto@phpsp.org.br>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class CheckExceptionsTest extends TestCase
 {

@@ -18,6 +18,10 @@ use Respect\Validation\Validatable;
 
 /**
  * @covers \Respect\Validation\Rules\AbstractRelated
+ *
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class AbstractRelatedTest extends TestCase
 {

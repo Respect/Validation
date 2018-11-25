@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class SymbolicLinkException extends ValidationException
 {
     public static $defaultTemplates = [

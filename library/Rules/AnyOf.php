@@ -15,6 +15,10 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
 
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class AnyOf extends AbstractComposite
 {
     public function assert($input): void

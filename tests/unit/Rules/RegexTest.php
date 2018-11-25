@@ -18,6 +18,9 @@ use Respect\Validation\Test\RuleTestCase;
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Regex
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class RegexTest extends RuleTestCase
 {

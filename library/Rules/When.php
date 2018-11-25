@@ -16,6 +16,11 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\AlwaysInvalidException;
 use Respect\Validation\Validatable;
 
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Hugo Hamon <hugo.hamon@sensiolabs.com>
+ */
 class When extends AbstractRule
 {
     public $when;

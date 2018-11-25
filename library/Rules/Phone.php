@@ -17,6 +17,10 @@ use function is_scalar;
 use function preg_match;
 use function sprintf;
 
+/**
+ * @author Graham Campbell <graham@mineuk.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class Phone extends AbstractRule
 {
     protected function getPregFormat()

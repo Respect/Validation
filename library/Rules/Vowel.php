@@ -15,6 +15,10 @@ namespace Respect\Validation\Rules;
 
 use function preg_match;
 
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ */
 class Vowel extends AbstractFilterRule
 {
     protected function validateFilteredInput(string $input): bool

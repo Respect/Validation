@@ -15,6 +15,13 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
 
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Mehmet Tolga Avcioglu <mehmet@activecom.net>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ * @author Róbert Nagy <vrnagy@gmail.com>
+ */
 class Domain extends AbstractComposite
 {
     protected $tld;

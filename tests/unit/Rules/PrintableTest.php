@@ -20,6 +20,9 @@ use Respect\Validation\Test\RuleTestCase;
  *
  * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Printable
+ *
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class PrintableTest extends RuleTestCase
 {

@@ -15,6 +15,10 @@ namespace Respect\Validation\Exceptions\Locale;
 
 use Respect\Validation\Exceptions\ValidationException;
 
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Tomasz Regdos <tomek@regdos.com>
+ */
 final class PlVatinException extends ValidationException
 {
     /**

@@ -22,6 +22,12 @@ use Zend\Validator\ValidatorInterface;
  * @group  rule
  * @covers \Respect\Validation\Exceptions\ZendException
  * @covers \Respect\Validation\Rules\Zend
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Augusto Pascutti <augusto@phpsp.org.br>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
  */
 class ZendTest extends TestCase
 {

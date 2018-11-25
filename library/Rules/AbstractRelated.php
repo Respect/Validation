@@ -17,6 +17,12 @@ use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
 use function is_scalar;
 
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ */
 abstract class AbstractRelated extends AbstractRule
 {
     public $mandatory = true;

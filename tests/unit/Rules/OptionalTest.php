@@ -20,6 +20,9 @@ use stdClass;
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Optional
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class OptionalTest extends TestCase
 {

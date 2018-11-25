@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+/**
+ * @author Andre Ramaciotti <andre@ramaciotti.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class GraphException extends FilteredValidationException
 {
     public static $defaultTemplates = [

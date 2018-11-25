@@ -19,6 +19,10 @@ use Respect\Validation\Validatable;
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Vatin
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Tomasz Regdos <tomek@regdos.com>
  */
 final class VatinTest extends TestCase
 {

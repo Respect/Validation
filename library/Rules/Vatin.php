@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Tomasz Regdos <tomek@regdos.com>
+ */
 final class Vatin extends AbstractLocaleWrapper
 {
     /**

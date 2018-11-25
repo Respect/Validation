@@ -18,6 +18,10 @@ use Respect\Validation\Test\RuleTestCase;
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\When
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Antonio Spinelli <tonicospinelli85@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class WhenTest extends RuleTestCase
 {

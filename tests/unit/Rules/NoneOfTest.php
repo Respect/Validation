@@ -19,6 +19,10 @@ use PHPUnit\Framework\TestCase;
  * @group  rule
  * @covers \Respect\Validation\Exceptions\NoneOfException
  * @covers \Respect\Validation\Rules\NoneOf
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class NoneOfTest extends TestCase
 {

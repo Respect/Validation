@@ -15,6 +15,9 @@ namespace Respect\Validation\Test\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
 
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 final class Valid extends AbstractRule
 {
     /**

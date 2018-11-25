@@ -17,6 +17,12 @@ use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Factory;
 use Respect\Validation\Validatable;
 
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ * @author Vicente Mendoza <vicentemmor@yahoo.com.mx>
+ */
 abstract class AbstractRule implements Validatable
 {
     protected $name;

@@ -19,6 +19,10 @@ use PHPUnit\Framework\TestCase;
  * @group  rule
  * @covers \Respect\Validation\Exceptions\SortedException
  * @covers \Respect\Validation\Rules\Sorted
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Mikhail Vyrtsev <reeywhaar@gmail.com>
  */
 class SortedTest extends TestCase
 {

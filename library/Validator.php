@@ -168,6 +168,9 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  * @method static Validator xdigit(string ...$additionalChars)
  * @method static Validator yes($useLocale = false)
  * @method static Validator zend($validator, array $params = null)
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class Validator extends AllOf
 {

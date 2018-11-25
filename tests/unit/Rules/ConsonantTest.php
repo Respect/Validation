@@ -20,6 +20,12 @@ use PHPUnit\Framework\TestCase;
  * @covers \Respect\Validation\Exceptions\ConsonantException
  * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Consonant
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ * @author Pascal Borreli <pascal@borreli.com>
  */
 class ConsonantTest extends TestCase
 {

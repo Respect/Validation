@@ -13,6 +13,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @author Alexander Wühr <wuehr@sc-networks.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
+ */
 class Roman extends Regex
 {
     public function __construct()

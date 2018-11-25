@@ -13,6 +13,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Marcelo Araujo <msaraujo@php.net>
+ */
 class StartsWith extends AbstractRule
 {
     public $startValue;

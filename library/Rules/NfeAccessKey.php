@@ -18,6 +18,9 @@ namespace Respect\Validation\Rules;
  *
  * Valida chave de acesso de NFe.
  * Mais especificamente, relacionada ao DANFE.
+ *
+ * @author Andrey Knupp Vital <andreykvital@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class NfeAccessKey extends AbstractRule
 {

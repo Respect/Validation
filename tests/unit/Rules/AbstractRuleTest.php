@@ -18,6 +18,10 @@ use Respect\Validation\Exceptions\ValidationException;
 
 /**
  * @covers \Respect\Validation\Rules\AbstractRule
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class AbstractRuleTest extends TestCase
 {

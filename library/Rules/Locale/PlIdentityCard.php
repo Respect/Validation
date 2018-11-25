@@ -19,6 +19,8 @@ use Respect\Validation\Rules\AbstractRule;
  * Validator for Polish identity card.
  *
  * @see https://en.wikipedia.org/wiki/Polish_identity_card
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class PlIdentityCard extends AbstractRule
 {

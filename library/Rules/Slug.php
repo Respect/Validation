@@ -13,6 +13,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @author Carlos André Ferrari <caferrari@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ */
 class Slug extends AbstractRule
 {
     public function validate($input): bool

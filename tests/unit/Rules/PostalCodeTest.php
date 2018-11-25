@@ -19,6 +19,11 @@ use PHPUnit\Framework\TestCase;
  * @group  rule
  * @covers \Respect\Validation\Exceptions\PostalCodeException
  * @covers \Respect\Validation\Rules\PostalCode
+ *
+ * @author Axel Wargnier <axel@axessweb.fr>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Sebastian <me@sebastianpontow.de>
  */
 class PostalCodeTest extends TestCase
 {

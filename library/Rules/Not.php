@@ -16,6 +16,11 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
 
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Caio César Tavares <caiotava@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class Not extends AbstractRule
 {
     public $rule;

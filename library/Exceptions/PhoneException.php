@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Michael Firsikov <michael.firsikov@gmail.com>
+ */
 class PhoneException extends ValidationException
 {
     public static $defaultTemplates = [

@@ -20,6 +20,11 @@ use Respect\Validation\Validatable;
  * @group  rule
  * @covers \Respect\Validation\Exceptions\AttributeException
  * @covers \Respect\Validation\Rules\Attribute
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class AttributeTest extends RuleTestCase
 {

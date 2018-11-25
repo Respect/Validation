@@ -19,6 +19,10 @@ use PHPUnit\Framework\TestCase;
  * @group  rule
  * @covers \Respect\Validation\Exceptions\KeyValueException
  * @covers \Respect\Validation\Rules\KeyValue
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ian Nisbet <ian@glutenite.co.uk>
  */
 class KeyValueTest extends TestCase
 {

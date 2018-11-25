@@ -16,6 +16,9 @@ namespace Respect\Validation\Exceptions;
 use Countable;
 use RecursiveIterator;
 
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class RecursiveExceptionIterator implements RecursiveIterator, Countable
 {
     private $exceptions;

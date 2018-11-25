@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Tomasz Regdos <tomek@regdos.com>
+ */
 final class VatinException extends ValidationException
 {
     /**

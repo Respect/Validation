@@ -19,6 +19,9 @@ use PHPUnit\Framework\TestCase;
  * @group  rule
  * @covers \Respect\Validation\Exceptions\NoException
  * @covers \Respect\Validation\Rules\No
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class NoTest extends TestCase
 {

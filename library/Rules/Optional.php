@@ -15,6 +15,9 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Helpers\UndefinedHelper;
 
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class Optional extends AbstractWrapper
 {
     use UndefinedHelper;

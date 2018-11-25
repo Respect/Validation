@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 final class IdentityCard extends AbstractLocaleWrapper
 {
     /**

@@ -17,6 +17,9 @@ use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validator;
 
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class KeyValue extends AbstractRule
 {
     public $comparedKey;

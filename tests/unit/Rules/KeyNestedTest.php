@@ -21,6 +21,11 @@ use Respect\Validation\Validatable;
  * @group  rule
  * @covers \Respect\Validation\Exceptions\KeyNestedException
  * @covers \Respect\Validation\Rules\KeyNested
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ivan Zinovyev <vanyazin@gmail.com>
  */
 class KeyNestedTest extends TestCase
 {

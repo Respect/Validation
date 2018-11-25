@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class GroupedValidationException extends NestedValidationException
 {
     public const NONE = 'none';

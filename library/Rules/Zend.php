@@ -16,6 +16,11 @@ namespace Respect\Validation\Rules;
 use ReflectionClass;
 use Respect\Validation\Exceptions\ComponentException;
 
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Hugo Hamon <hugo.hamon@sensiolabs.com>
+ */
 class Zend extends AbstractRule
 {
     protected $messages = [];

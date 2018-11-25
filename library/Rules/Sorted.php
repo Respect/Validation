@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Mikhail Vyrtsev <reeywhaar@gmail.com>
+ */
 class Sorted extends AbstractRule
 {
     public $fn = null;

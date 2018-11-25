@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+/**
+ * @author Andrey Knupp Vital <andreykvital@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class NfeAccessKeyException extends ValidationException
 {
     public static $defaultTemplates = [

@@ -18,6 +18,11 @@ use Respect\Validation\Exceptions\ComponentException;
 
 /**
  * @covers \Respect\Validation\Validator
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
  */
 class ValidatorTest extends TestCase
 {

@@ -18,6 +18,8 @@ use Respect\Validation\Test\RuleTestCase;
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Locale\PlIdentityCard
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class PlIdentityCardTest extends RuleTestCase
 {

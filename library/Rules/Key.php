@@ -16,6 +16,11 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Validatable;
 
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class Key extends AbstractRelated
 {
     public function __construct($reference, Validatable $referenceValidator = null, $mandatory = true)

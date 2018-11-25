@@ -19,6 +19,11 @@ use Respect\Validation\Test\RuleTestCase;
  * @group rule
  *
  * @covers \Respect\Validation\Rules\StringType
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Marcel dos Santos <marcelgsantos@gmail.com>
  */
 final class StringTypeTest extends RuleTestCase
 {

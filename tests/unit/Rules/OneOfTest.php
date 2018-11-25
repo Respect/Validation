@@ -19,6 +19,10 @@ use PHPUnit\Framework\TestCase;
  * @group  rule
  * @covers \Respect\Validation\Exceptions\OneOfException
  * @covers \Respect\Validation\Rules\OneOf
+ *
+ * @author Bradyn Poulsen <bradyn@bradynpoulsen.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class OneOfTest extends TestCase
 {

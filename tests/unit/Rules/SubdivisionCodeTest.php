@@ -18,6 +18,9 @@ use PHPUnit\Framework\TestCase;
 /**
  * @covers \Respect\Validation\Exceptions\SubdivisionCodeException
  * @covers \Respect\Validation\Rules\SubdivisionCode
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class SubdivisionCodeTest extends TestCase
 {

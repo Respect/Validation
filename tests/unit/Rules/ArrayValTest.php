@@ -21,6 +21,11 @@ use stdClass;
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\ArrayVal
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Guilherme Siani <guilherme@siani.com.br>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class ArrayValTest extends RuleTestCase
 {

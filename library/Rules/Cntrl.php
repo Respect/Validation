@@ -13,6 +13,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @author Andre Ramaciotti <andre@ramaciotti.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ */
 class Cntrl extends AbstractFilterRule
 {
     protected function validateFilteredInput(string $input): bool

@@ -19,6 +19,11 @@ use PHPUnit\Framework\TestCase;
  * @group  rule
  * @covers \Respect\Validation\Exceptions\PhoneException
  * @covers \Respect\Validation\Rules\Phone
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Michael Firsikov <michael.firsikov@gmail.com>
+ * @author Roman Derevianko <roman.derevianko@gmail.com>
  */
 class PhoneTest extends TestCase
 {

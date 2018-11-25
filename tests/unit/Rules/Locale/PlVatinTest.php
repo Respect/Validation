@@ -19,6 +19,9 @@ use stdClass;
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Locale\PlVatin
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Tomasz Regdos <tomek@regdos.com>
  */
 class PlVatinTest extends RuleTestCase
 {

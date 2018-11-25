@@ -15,6 +15,9 @@ namespace Respect\Validation\Exceptions\Locale;
 
 use Respect\Validation\Exceptions\ValidationException;
 
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class PlIdentityCardException extends ValidationException
 {
     /**

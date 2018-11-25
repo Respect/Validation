@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+/**
+ * @author Antonio Spinelli <tonicospinelli85@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class WhenException extends ValidationException
 {
     public static $defaultTemplates = [

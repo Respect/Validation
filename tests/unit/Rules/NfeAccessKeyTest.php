@@ -19,6 +19,10 @@ use PHPUnit\Framework\TestCase;
  * @group  rule
  * @covers \Respect\Validation\Exceptions\NfeAccessKeyException
  * @covers \Respect\Validation\Rules\NfeAccessKey
+ *
+ * @author Andrey Knupp Vital <andreykvital@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class NfeAccessKeyTest extends TestCase
 {

@@ -16,6 +16,12 @@ namespace Respect\Validation\Rules;
 use ArrayAccess;
 use Respect\Validation\Exceptions\ComponentException;
 
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ivan Zinovyev <vanyazin@gmail.com>
+ */
 class KeyNested extends AbstractRelated
 {
     public function hasReference($input): bool

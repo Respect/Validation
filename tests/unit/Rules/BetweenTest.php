@@ -22,6 +22,10 @@ use Respect\Validation\Test\Stubs\CountableStub;
  *
  * @covers \Respect\Validation\Rules\AbstractEnvelope
  * @covers \Respect\Validation\Rules\Between
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class BetweenTest extends RuleTestCase
 {

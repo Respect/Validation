@@ -18,6 +18,10 @@ use Respect\Validation\Test\RuleTestCase;
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\ArrayType
+ *
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author João Torquato <joao.otl@gmail.com>
  */
 final class ArrayTypeTest extends RuleTestCase
 {

@@ -19,6 +19,10 @@ use PHPUnit\Framework\TestCase;
  * @group  rule
  * @covers \Respect\Validation\Exceptions\HexRgbColorException
  * @covers \Respect\Validation\Rules\HexRgbColor
+ *
+ * @author Davide Pastore <pasdavide@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class HexRgbColorTest extends TestCase
 {

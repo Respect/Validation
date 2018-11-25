@@ -16,6 +16,10 @@ namespace Respect\Validation;
 use Respect\Validation\Exceptions\ValidationException;
 
 /** Interface for validation rules */
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 interface Validatable
 {
     public function assert($input): void;

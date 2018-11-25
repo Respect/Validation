@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+/**
+ * @author Davide Pastore <pasdavide@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class HexRgbColor extends Xdigit
 {
     public function validate($input): bool

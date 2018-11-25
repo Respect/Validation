@@ -19,6 +19,9 @@ use Respect\Validation\Rules\AbstractRule;
  * Validator for Polish VAT identification number (NIP).
  *
  * @see https://en.wikipedia.org/wiki/VAT_identification_number
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Tomasz Regdos <tomek@regdos.com>
  */
 final class PlVatin extends AbstractRule
 {

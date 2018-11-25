@@ -32,6 +32,9 @@ function is_link($link)
  * @group  rule
  * @covers \Respect\Validation\Exceptions\SymbolicLinkException
  * @covers \Respect\Validation\Rules\SymbolicLink
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class SymbolicLinkTest extends TestCase
 {
