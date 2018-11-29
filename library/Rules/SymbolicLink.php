@@ -16,8 +16,11 @@ namespace Respect\Validation\Rules;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SymbolicLink extends AbstractRule
+final class SymbolicLink extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if ($input instanceof \SplFileInfo) {
