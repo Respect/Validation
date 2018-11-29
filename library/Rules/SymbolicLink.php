@@ -13,14 +13,24 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use SplFileInfo;
+use function is_link;
+use function is_string;
+
 /**
+ * Validates if the given input is a symbolic link.
+ *
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Gus Antoniassi <gus.antoniassi@gmail.com>
  */
-class SymbolicLink extends AbstractRule
+final class SymbolicLink extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
-        if ($input instanceof \SplFileInfo) {
+        if ($input instanceof SplFileInfo) {
             return $input->isLink();
         }
 

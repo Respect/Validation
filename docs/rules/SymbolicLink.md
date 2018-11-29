@@ -2,10 +2,12 @@
 
 - `SymbolicLink()`
 
-Validates if the given data is a path of a valid symbolic link.
+Validates if the given input is a symbolic link.
 
 ```php
 v::symbolicLink()->validate('/path/of/valid/symbolic/link'); // true
+v::symbolicLink()->validate(new SplFileInfo('/path/of/valid/symbolic/link)); // true
+v::symbolicLink()->validate(new SplFileObject('/path/of/valid/symbolic/link')); // true
 ```
 
 ## Changelog
