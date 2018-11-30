@@ -1,3 +1,5 @@
+--CREDITS--
+Marcel dos Santos <marcelgsantos@gmail.com>
 --FILE--
 <?php
 

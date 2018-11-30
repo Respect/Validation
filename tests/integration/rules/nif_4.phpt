@@ -1,3 +1,6 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
+Julián Gutiérrez <juliangut@gmail.com>
 --FILE--
 <?php
 

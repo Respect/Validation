@@ -1,3 +1,5 @@
+--CREDITS--
+Tomasz Regdos <tomek@regdos.com>
 --FILE--
 <?php
 

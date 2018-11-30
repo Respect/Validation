@@ -1,3 +1,7 @@
+--CREDITS--
+Edson Lima <dddwebdeveloper@gmail.com>
+Henrique Moody <henriquemoody@gmail.com>
+Ian Nisbet <ian@glutenite.co.uk>
 --FILE--
 <?php
 require 'vendor/autoload.php';

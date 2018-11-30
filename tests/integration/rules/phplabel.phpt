@@ -1,3 +1,6 @@
+--CREDITS--
+Danilo Correa <danilosilva87@gmail.com>
+Emmerson Siqueira <emmersonsiqueira@gmail.com>
 --TEST--
 PhpLabel rule exception should not be thrown for valid inputs
 --FILE--

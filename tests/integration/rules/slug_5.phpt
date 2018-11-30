@@ -1,3 +1,6 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
+Marcel dos Santos <marcelgsantos@gmail.com>
 --FILE--
 <?php
 

@@ -1,3 +1,7 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
+Jens Segers <segers.jens@gmail.com>
+William Espindola <oi@williamespindola.com.br>
 --FILE--
 <?php
 

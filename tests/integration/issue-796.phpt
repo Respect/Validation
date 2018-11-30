@@ -1,3 +1,6 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
+Jonathan Stewmon <jstewmon@rmn.com>
 --FILE--
 <?php
 require 'vendor/autoload.php';

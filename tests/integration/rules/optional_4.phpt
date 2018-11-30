@@ -1,3 +1,5 @@
+--CREDITS--
+Rafael Bartalotti <rafael_bartalotti@hotmail.com>
 --FILE--
 <?php
 require 'vendor/autoload.php';

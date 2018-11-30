@@ -1,3 +1,5 @@
+--CREDITS--
+Paul Karikari <paulkarikari1@gmail.com>
 --FILE--
 <?php
 require 'vendor/autoload.php';
