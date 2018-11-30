@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\AllOf
  * @covers Respect\Validation\Exceptions\AllOfException
  */
-class AllOfTest extends \PHPUnit_Framework_TestCase
+class AllOfTest extends TestCase
 {
     public function testRemoveRulesShouldRemoveAllRules()
     {
@@ -47,14 +49,14 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
     public function testValidationShouldWorkIfAllRulesReturnTrue()
     {
         $valid1 = new Callback(function () {
-                    return true;
-                });
+            return true;
+        });
         $valid2 = new Callback(function () {
-                    return true;
-                });
+            return true;
+        });
         $valid3 = new Callback(function () {
-                    return true;
-                });
+            return true;
+        });
         $o = new AllOf($valid1, $valid2, $valid3);
         $this->assertTrue($o->__invoke('any'));
         $this->assertTrue($o->check('any'));
@@ -108,14 +110,14 @@ class AllOfTest extends \PHPUnit_Framework_TestCase
     public function providerStaticDummyRules()
     {
         $theInvalidOne = new Callback(function () {
-                    return false;
-                });
+            return false;
+        });
         $valid1 = new Callback(function () {
-                    return true;
-                });
+            return true;
+        });
         $valid2 = new Callback(function () {
-                    return true;
-                });
+            return true;
+        });
 
         return [
             [$theInvalidOne, $valid1, $valid2],

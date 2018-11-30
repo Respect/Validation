@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Space
  * @covers Respect\Validation\Exceptions\SpaceException
  */
-class SpaceTest extends \PHPUnit_Framework_TestCase
+class SpaceTest extends TestCase
 {
     /**
      * @dataProvider providerForValidSpace

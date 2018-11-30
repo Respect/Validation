@@ -11,13 +11,13 @@
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit_Framework_TestCase;
+use Respect\Validation\TestCase;
 
 /**
  * @covers Respect\Validation\Rules\SubdivisionCode
  * @covers Respect\Validation\Exceptions\SubdivisionCodeException
  */
-class SubdivisionCodeTest extends PHPUnit_Framework_TestCase
+class SubdivisionCodeTest extends TestCase
 {
     /**
      * @expectedException Respect\Validation\Exceptions\ComponentException

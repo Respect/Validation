@@ -11,7 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit_Framework_TestCase;
+use Respect\Validation\TestCase;
 use SplFileInfo;
 
 /**
@@ -20,7 +20,7 @@ use SplFileInfo;
  * @covers Respect\Validation\Rules\Extension
  * @covers Respect\Validation\Exceptions\ExtensionException
  */
-class ExtensionTest extends PHPUnit_Framework_TestCase
+class ExtensionTest extends TestCase
 {
     public function providerValidExtension()
     {

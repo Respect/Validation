@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Max
  * @covers Respect\Validation\Exceptions\MaxException
  */
-class MaxTest extends \PHPUnit_Framework_TestCase
+class MaxTest extends TestCase
 {
     /**
      * @dataProvider providerForValidMax

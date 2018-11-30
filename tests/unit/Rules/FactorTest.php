@@ -11,6 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
 use Respect\Validation\Exceptions\ValidationException;
 
 /**
@@ -20,7 +21,7 @@ use Respect\Validation\Exceptions\ValidationException;
  *
  * @author David Meister <thedavidmeister@gmail.com>
  */
-class FactorTest extends \PHPUnit_Framework_TestCase
+class FactorTest extends TestCase
 {
     /**
      * @dataProvider providerForValidFactor

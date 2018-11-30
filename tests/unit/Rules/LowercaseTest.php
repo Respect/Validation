@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Lowercase
  * @covers Respect\Validation\Exceptions\LowercaseException
  */
-class LowercaseTest extends \PHPUnit_Framework_TestCase
+class LowercaseTest extends TestCase
 {
     /**
      * @dataProvider providerForValidLowercase

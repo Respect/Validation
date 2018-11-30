@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Cnh
  * @covers Respect\Validation\Exceptions\CnhException
  */
-class CnhTest extends \PHPUnit_Framework_TestCase
+class CnhTest extends TestCase
 {
     protected $cnhValidator;
 

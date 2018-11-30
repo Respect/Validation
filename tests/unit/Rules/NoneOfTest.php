@@ -11,24 +11,26 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\NoneOf
  * @covers Respect\Validation\Exceptions\NoneOfException
  */
-class NoneOfTest extends \PHPUnit_Framework_TestCase
+class NoneOfTest extends TestCase
 {
     public function testValid()
     {
         $valid1 = new Callback(function () {
-                    return false;
-                });
+            return false;
+        });
         $valid2 = new Callback(function () {
-                    return false;
-                });
+            return false;
+        });
         $valid3 = new Callback(function () {
-                    return false;
-                });
+            return false;
+        });
         $o = new NoneOf($valid1, $valid2, $valid3);
         $this->assertTrue($o->validate('any'));
         $this->assertTrue($o->assert('any'));
@@ -41,14 +43,14 @@ class NoneOfTest extends \PHPUnit_Framework_TestCase
     public function testInvalid()
     {
         $valid1 = new Callback(function () {
-                    return false;
-                });
+            return false;
+        });
         $valid2 = new Callback(function () {
-                    return false;
-                });
+            return false;
+        });
         $valid3 = new Callback(function () {
-                    return true;
-                });
+            return true;
+        });
         $o = new NoneOf($valid1, $valid2, $valid3);
         $this->assertFalse($o->validate('any'));
         $this->assertFalse($o->assert('any'));

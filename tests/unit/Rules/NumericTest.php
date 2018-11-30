@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Numeric
  * @covers Respect\Validation\Exceptions\NumericException
  */
-class NumericTest extends \PHPUnit_Framework_TestCase
+class NumericTest extends TestCase
 {
     protected $object;
 

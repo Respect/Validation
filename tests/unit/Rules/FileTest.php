@@ -11,6 +11,9 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
+use SplFileInfo;
+
 $GLOBALS['is_file'] = null;
 
 function is_file($file)
@@ -29,7 +32,7 @@ function is_file($file)
  * @covers Respect\Validation\Rules\File
  * @covers Respect\Validation\Exceptions\FileException
  */
-class FileTest extends \PHPUnit_Framework_TestCase
+class FileTest extends TestCase
 {
     /**
      * @covers Respect\Validation\Rules\File::validate
@@ -61,10 +64,7 @@ class FileTest extends \PHPUnit_Framework_TestCase
     public function testShouldValidateObjects()
     {
         $rule = new File();
-        $object = $this->getMock('SplFileInfo', ['isFile'], ['somefile.txt']);
-        $object->expects($this->once())
-                ->method('isFile')
-                ->will($this->returnValue(true));
+        $object = new SplFileInfo('tests/fixtures/valid-image.png');
 
         $this->assertTrue($rule->validate($object));
     }

@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Yes
  * @covers Respect\Validation\Exceptions\YesException
  */
-class YesTest extends \PHPUnit_Framework_TestCase
+class YesTest extends TestCase
 {
     public function testShouldUseDefaultPattern()
     {

@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Uppercase
  * @covers Respect\Validation\Exceptions\UppercaseException
  */
-class UppercaseTest extends \PHPUnit_Framework_TestCase
+class UppercaseTest extends TestCase
 {
     /**
      * @dataProvider providerForValidUppercase

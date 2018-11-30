@@ -12,13 +12,14 @@
 namespace Respect\Validation\Rules;
 
 use DateTime;
+use Respect\Validation\TestCase;
 
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Age
  * @covers Respect\Validation\Exceptions\AgeException
  */
-class AgeTest extends \PHPUnit_Framework_TestCase
+class AgeTest extends TestCase
 {
     /**
      * @expectedException Respect\Validation\Exceptions\ComponentException

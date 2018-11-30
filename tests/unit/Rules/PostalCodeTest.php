@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\PostalCode
  * @covers Respect\Validation\Exceptions\PostalCodeException
  */
-class PostalCodeTest extends \PHPUnit_Framework_TestCase
+class PostalCodeTest extends TestCase
 {
     public function testShouldUsePatternAccordingToCountryCode()
     {

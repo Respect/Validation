@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\NoWhitespace
  * @covers Respect\Validation\Exceptions\NoWhitespaceException
  */
-class NoWhitespaceTest extends \PHPUnit_Framework_TestCase
+class NoWhitespaceTest extends TestCase
 {
     protected $noWhitespaceValidator;
 

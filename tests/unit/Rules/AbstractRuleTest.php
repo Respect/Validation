@@ -12,8 +12,9 @@
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\TestCase;
 
-class AbstractRuleTest extends \PHPUnit_Framework_TestCase
+class AbstractRuleTest extends TestCase
 {
     public function providerForTrueAndFalse()
     {
@@ -67,10 +68,6 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
             ->method('validate')
             ->with($input)
             ->will($this->returnValue(true));
-
-        $abstractRuleMock
-            ->expects($this->never())
-            ->method('reportError');
 
         $abstractRuleMock->assert($input);
     }
@@ -129,10 +126,6 @@ class AbstractRuleTest extends \PHPUnit_Framework_TestCase
      */
     public function testShouldCreateExceptionBasedOnTheCurrentClassName()
     {
-        if (defined('HHVM_VERSION')) {
-            return $this->markTestSkipped('If you are a HHVM user, and you are in the mood, please fix it');
-        }
-
         $exceptionMock = $this
             ->getMockBuilder('Respect\Validation\Exceptions\ValidationException')
             ->setMockClassName('MockRule1Exception')

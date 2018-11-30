@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\IntVal
  * @covers Respect\Validation\Exceptions\IntValException
  */
-class IntValTest extends \PHPUnit_Framework_TestCase
+class IntValTest extends TestCase
 {
     protected $intValidator;
 

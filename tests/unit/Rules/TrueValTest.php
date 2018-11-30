@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\TrueVal
  * @covers Respect\Validation\Exceptions\TrueValException
  */
-class TrueValTest extends \PHPUnit_Framework_TestCase
+class TrueValTest extends TestCase
 {
     /**
      * @dataProvider validTrueProvider

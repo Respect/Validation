@@ -13,7 +13,7 @@
 - Granularity control for advanced reporting.
 - More than 100 (fully tested) validators.
 - A concrete API for non fluent usage.
-- Works on PHP 5.4+ or HHVM 3.3+
+- Works on PHP 5.4+
 
 ## Documentation
 

@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Graph
  * @covers Respect\Validation\Exceptions\GraphException
  */
-class GraphTest extends \PHPUnit_Framework_TestCase
+class GraphTest extends TestCase
 {
     /**
      * @dataProvider providerForValidGraph

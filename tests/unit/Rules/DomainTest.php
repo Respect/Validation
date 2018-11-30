@@ -11,6 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
 use Respect\Validation\Validator as v;
 
 /**
@@ -18,7 +19,7 @@ use Respect\Validation\Validator as v;
  * @covers Respect\Validation\Rules\Domain
  * @covers Respect\Validation\Exceptions\DomainException
  */
-class DomainTest extends \PHPUnit_Framework_TestCase
+class DomainTest extends TestCase
 {
     protected $object;
 

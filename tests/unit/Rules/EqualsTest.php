@@ -11,6 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
 use stdClass;
 
 /**
@@ -18,7 +19,7 @@ use stdClass;
  * @covers Respect\Validation\Rules\Equals
  * @covers Respect\Validation\Exceptions\EqualsException
  */
-class EqualsTest extends \PHPUnit_Framework_TestCase
+class EqualsTest extends TestCase
 {
     /**
      * @dataProvider providerForEquals

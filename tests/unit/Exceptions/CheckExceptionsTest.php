@@ -13,8 +13,9 @@ namespace Respect\Validation\Exceptions;
 
 use DirectoryIterator;
 use ReflectionClass;
+use Respect\Validation\TestCase;
 
-class CheckExceptionsTest extends \PHPUnit_Framework_TestCase
+class CheckExceptionsTest extends TestCase
 {
     protected $deprecateds = ['Iterable'];
 

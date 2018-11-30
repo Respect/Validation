@@ -11,6 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
 use DateTime;
 
 /**
@@ -18,7 +19,7 @@ use DateTime;
  * @covers Respect\Validation\Rules\LeapDate
  * @covers Respect\Validation\Exceptions\LeapDateException
  */
-class LeapDateTest extends \PHPUnit_Framework_TestCase
+class LeapDateTest extends TestCase
 {
     protected $leapDateValidator;
 
@@ -35,7 +36,8 @@ class LeapDateTest extends \PHPUnit_Framework_TestCase
     public function testValidLeapDate_with_date_time()
     {
         $this->assertTrue($this->leapDateValidator->validate(
-            new DateTime('1988-02-29')));
+            new DateTime('1988-02-29')
+        ));
     }
 
     public function testInvalidLeapDate_with_string()
@@ -46,7 +48,8 @@ class LeapDateTest extends \PHPUnit_Framework_TestCase
     public function testInvalidLeapDate_with_date_time()
     {
         $this->assertFalse($this->leapDateValidator->validate(
-            new DateTime('1989-02-29')));
+            new DateTime('1989-02-29')
+        ));
     }
     public function testInvalidLeapDate_input()
     {

@@ -11,6 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
 use DateTime;
 
 /**
@@ -18,7 +19,7 @@ use DateTime;
  * @covers Respect\Validation\Rules\Zend
  * @covers Respect\Validation\Exceptions\ZendException
  */
-class ZendTest extends \PHPUnit_Framework_TestCase
+class ZendTest extends TestCase
 {
     public function testConstructorWithValidatorName()
     {

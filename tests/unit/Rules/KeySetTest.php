@@ -11,14 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit_Framework_TestCase;
+use Respect\Validation\TestCase;
 
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\KeySet
  * @covers Respect\Validation\Exceptions\KeySetException
  */
-class KeySetTest extends PHPUnit_Framework_TestCase
+class KeySetTest extends TestCase
 {
     public function testShouldAcceptKeyRule()
     {

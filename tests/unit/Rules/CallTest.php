@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\Call
  * @covers Respect\Validation\Exceptions\CallException
  */
-class CallTest extends \PHPUnit_Framework_TestCase
+class CallTest extends TestCase
 {
     public function thisIsASampleCallbackUsedInsideThisTest()
     {
@@ -44,8 +46,8 @@ class CallTest extends \PHPUnit_Framework_TestCase
     public function testCallbackValidatorShouldAcceptClosures()
     {
         $v = new Call(function () {
-                    return [];
-                }, new ArrayVal());
+            return [];
+        }, new ArrayVal());
         $this->assertTrue($v->assert('test'));
     }
 

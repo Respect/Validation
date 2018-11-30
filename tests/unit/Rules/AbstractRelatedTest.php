@@ -11,7 +11,9 @@
 
 namespace Respect\Validation\Rules;
 
-final class AbstractRelatedTest extends \PHPUnit_Framework_TestCase
+use Respect\Validation\TestCase;
+
+final class AbstractRelatedTest extends TestCase
 {
     const NAME = 'Respect\\Validation\\Rules\\AbstractRelated';
 
@@ -26,7 +28,7 @@ final class AbstractRelatedTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructionOfAbstractRelatedClass()
     {
-        $validatableMock = $this->getMock('Respect\\Validation\\Validatable');
+        $validatableMock = $this->createMock('Respect\\Validation\\Validatable');
         $relatedRuleMock = $this->getMockForAbstractClass('Respect\\Validation\\Rules\\AbstractRelated', ['foo', $validatableMock]);
 
         $this->assertEquals('foo', $relatedRuleMock->getName());
@@ -40,7 +42,7 @@ final class AbstractRelatedTest extends \PHPUnit_Framework_TestCase
      */
     public function testOperationsShouldReturnTrueWhenReferenceValidatesItsValue($method)
     {
-        $validatableMock = $this->getMock('Respect\\Validation\\Validatable');
+        $validatableMock = $this->createMock('Respect\\Validation\\Validatable');
         $validatableMock->expects($this->any())
             ->method($method)
             ->will($this->returnValue(true));
@@ -87,7 +89,7 @@ final class AbstractRelatedTest extends \PHPUnit_Framework_TestCase
 
     public function testShouldAcceptReferenceAndRuleOnConstructor()
     {
-        $ruleMock = $this->getMock('Respect\\Validation\\Validatable');
+        $ruleMock = $this->createMock('Respect\\Validation\\Validatable');
 
         $abstractMock = $this
             ->getMockBuilder(self::NAME)
@@ -101,7 +103,7 @@ final class AbstractRelatedTest extends \PHPUnit_Framework_TestCase
     {
         $reference = 'something';
 
-        $ruleMock = $this->getMock('Respect\\Validation\\Validatable');
+        $ruleMock = $this->createMock('Respect\\Validation\\Validatable');
         $ruleMock
             ->expects($this->at(0))
             ->method('getName')
@@ -123,7 +125,7 @@ final class AbstractRelatedTest extends \PHPUnit_Framework_TestCase
     {
         $reference = 'something';
 
-        $ruleMock = $this->getMock('Respect\\Validation\\Validatable');
+        $ruleMock = $this->createMock('Respect\\Validation\\Validatable');
         $ruleMock
             ->expects($this->at(0))
             ->method('getName')
@@ -146,7 +148,7 @@ final class AbstractRelatedTest extends \PHPUnit_Framework_TestCase
 
         $abstractMock = $this
             ->getMockBuilder(self::NAME)
-            ->setConstructorArgs(['something', $this->getMock('Respect\\Validation\\Validatable'), $mandatory])
+            ->setConstructorArgs(['something', $this->createMock('Respect\\Validation\\Validatable'), $mandatory])
             ->getMock();
 
         $this->assertSame($mandatory, $abstractMock->mandatory);
@@ -157,7 +159,7 @@ final class AbstractRelatedTest extends \PHPUnit_Framework_TestCase
         $name = 'My new name';
         $reference = 'something';
 
-        $ruleMock = $this->getMock('Respect\\Validation\\Validatable');
+        $ruleMock = $this->createMock('Respect\\Validation\\Validatable');
         $ruleMock
             ->expects($this->at(0))
             ->method('getName')

@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\MacAddress
  * @covers Respect\Validation\Exceptions\MacAddressException
  */
-class MacAddressTest extends \PHPUnit_Framework_TestCase
+class MacAddressTest extends TestCase
 {
     protected $macaddressValidator;
 

@@ -11,12 +11,14 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
+
 /**
  * @group  rule
  * @covers Respect\Validation\Rules\FilterVar
  * @covers Respect\Validation\Exceptions\FilterVarException
  */
-class FilterVarTest extends \PHPUnit_Framework_TestCase
+class FilterVarTest extends TestCase
 {
     /**
      * @expectedException Respect\Validation\Exceptions\ComponentException

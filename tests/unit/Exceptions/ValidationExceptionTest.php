@@ -14,10 +14,11 @@ namespace Respect\Validation\Exceptions;
 use ArrayIterator;
 use DateTime;
 use Exception;
+use Respect\Validation\TestCase;
 use SplFileInfo;
 use stdClass;
 
-class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
+class ValidationExceptionTest extends TestCase
 {
     public function testItImplementsExceptionInterface()
     {

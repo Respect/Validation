@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 use org\bovigo\vfs\content\LargeFileContent;
 use org\bovigo\vfs\vfsStream;
-use PHPUnit_Framework_TestCase;
+use Respect\Validation\TestCase;
 use SplFileInfo;
 
 /**
@@ -22,7 +22,7 @@ use SplFileInfo;
  * @covers Respect\Validation\Rules\Size
  * @covers Respect\Validation\Exceptions\SizeException
  */
-class SizeTest extends PHPUnit_Framework_TestCase
+class SizeTest extends TestCase
 {
     public function validSizeProvider()
     {

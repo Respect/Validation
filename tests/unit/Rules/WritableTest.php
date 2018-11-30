@@ -11,6 +11,9 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
+use SplFileInfo;
+
 $GLOBALS['is_writable'] = null;
 
 function is_writable($writable)
@@ -29,7 +32,7 @@ function is_writable($writable)
  * @covers Respect\Validation\Rules\Writable
  * @covers Respect\Validation\Exceptions\WritableException
  */
-class WritableTest extends \PHPUnit_Framework_TestCase
+class WritableTest extends TestCase
 {
     /**
      * @covers Respect\Validation\Rules\Writable::validate
@@ -61,10 +64,7 @@ class WritableTest extends \PHPUnit_Framework_TestCase
     public function testShouldValidateObjects()
     {
         $rule = new Writable();
-        $object = $this->getMock('SplFileInfo', ['isWritable'], ['somefile.txt']);
-        $object->expects($this->once())
-                ->method('isWritable')
-                ->will($this->returnValue(true));
+        $object = new SplFileInfo('tests/fixtures/valid-image.jpg');
 
         $this->assertTrue($rule->validate($object));
     }

@@ -11,6 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
 use DateTime;
 
 /**
@@ -18,7 +19,7 @@ use DateTime;
  * @covers Respect\Validation\Rules\LeapYear
  * @covers Respect\Validation\Exceptions\LeapYearException
  */
-class LeapYearTest extends \PHPUnit_Framework_TestCase
+class LeapYearTest extends TestCase
 {
     protected $leapYearValidator;
 
@@ -33,7 +34,8 @@ class LeapYearTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->leapYearValidator->__invoke('2008-02-29'));
         $this->assertTrue($this->leapYearValidator->__invoke(2008));
         $this->assertTrue($this->leapYearValidator->__invoke(
-            new DateTime('2008-02-29')));
+            new DateTime('2008-02-29')
+        ));
     }
 
     public function testInvalidLeapDate()
@@ -43,7 +45,8 @@ class LeapYearTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->leapYearValidator->__invoke('2009-02-29'));
         $this->assertFalse($this->leapYearValidator->__invoke(2009));
         $this->assertFalse($this->leapYearValidator->__invoke(
-            new DateTime('2009-02-29')));
+            new DateTime('2009-02-29')
+        ));
         $this->assertFalse($this->leapYearValidator->__invoke([]));
     }
 }

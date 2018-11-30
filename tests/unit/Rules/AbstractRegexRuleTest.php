@@ -11,7 +11,9 @@
 
 namespace Respect\Validation\Rules;
 
-class AbstractRegexRuleTest extends \PHPUnit_Framework_TestCase
+use Respect\Validation\TestCase;
+
+class AbstractRegexRuleTest extends TestCase
 {
     public function testValidateCleanShouldReturnOneIfPatternIsFound()
     {

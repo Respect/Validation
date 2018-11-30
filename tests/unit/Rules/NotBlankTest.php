@@ -11,6 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
 use stdClass;
 
 /**
@@ -18,7 +19,7 @@ use stdClass;
  * @covers Respect\Validation\Rules\NotBlank
  * @covers Respect\Validation\Exceptions\NotBlankException
  */
-class NotBlankTest extends \PHPUnit_Framework_TestCase
+class NotBlankTest extends TestCase
 {
     /**
      * @dataProvider providerForNotBlank

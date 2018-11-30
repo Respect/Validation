@@ -13,7 +13,7 @@ namespace Respect\Validation\Rules;
 
 use org\bovigo\vfs\content\LargeFileContent;
 use org\bovigo\vfs\vfsStream;
-use PHPUnit_Framework_TestCase;
+use Respect\Validation\TestCase;
 use SplFileInfo;
 
 /**
@@ -21,7 +21,7 @@ use SplFileInfo;
  * @covers Respect\Validation\Rules\Exists
  * @covers Respect\Validation\Exceptions\ExistsException
  */
-class ExistsTest extends PHPUnit_Framework_TestCase
+class ExistsTest extends TestCase
 {
     /**
      * @dataProvider fileProvider

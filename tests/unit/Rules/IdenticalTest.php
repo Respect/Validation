@@ -11,6 +11,7 @@
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\TestCase;
 use stdClass;
 
 /**
@@ -18,7 +19,7 @@ use stdClass;
  * @covers Respect\Validation\Rules\Identical
  * @covers Respect\Validation\Exceptions\IdenticalException
  */
-class IdenticalTest extends \PHPUnit_Framework_TestCase
+class IdenticalTest extends TestCase
 {
     /**
      * @dataProvider providerForIdentical

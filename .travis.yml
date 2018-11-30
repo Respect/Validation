@@ -1,30 +1,32 @@
-sudo:
-  false
+sudo: false
 
-language:
-  php
+language: php
 
-php:
-  - 5.4
-  - 5.5
-  - 5.6
-  - 7.0
-  - 7.1
-  - hhvm
+matrix:
+  include:
+    - php: 5.4
+      env: COMPOSER_ARGUMENTS="--prefer-lowest --prefer-stable"
+    - php: 5.4
+    - php: 5.5
+    - php: 5.6
+    - php: 7.1
+    - php: 7.2
+      env: PHPUNIT_COVERAGE_ARGUMENT="--coverage-clover=coverage.clover"
+    - php: 7.3
+    - php: nightly
+  allow_failures:
+    - php: nightly
+  fast_finish: true
 
 before_script:
-  - composer self-update
-  - composer install --no-interaction --prefer-source
+  - composer update --prefer-dist ${COMPOSER_ARGUMENTS}
 
 script:
-  - vendor/bin/phpunit --configuration phpunit.xml.dist --colors --coverage-clover=coverage.clover
+  - vendor/bin/phpunit --configuration phpunit.xml.dist --verbose --colors ${PHPUNIT_COVERAGE_ARGUMENT}
 
 after_script:
-  - test "5.6" == "${TRAVIS_PHP_VERSION}" && wget https://scrutinizer-ci.com/ocular.phar
-  - test -f ocular.phar && php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-
-notifications:
-  irc:
-    channels:
-      - "irc.freenode.org#php-respect"
-    use_notice: true
+  - |
+    if [[ ! -z "${PHPUNIT_COVERAGE_ARGUMENT}" ]]; then
+      wget https://scrutinizer-ci.com/ocular.phar
+      php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+    fi
