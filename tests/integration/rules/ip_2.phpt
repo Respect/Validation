@@ -1,3 +1,5 @@
+--CREDITS--
+Emmerson Siqueira <emmersonsiqueira@gmail.com>
 --FILE--
 <?php
 require 'vendor/autoload.php';

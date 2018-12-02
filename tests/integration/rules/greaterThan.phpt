@@ -1,3 +1,5 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 require 'vendor/autoload.php';

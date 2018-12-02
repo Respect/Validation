@@ -1,3 +1,6 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
+Wojciech Frącz <fraczwojciech@gmail.com>
 --FILE--
 <?php
 

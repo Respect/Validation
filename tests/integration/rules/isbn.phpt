@@ -1,3 +1,5 @@
+--CREDITS--
+Moritz Fromm <moritzgitfromm@gmail.com>
 --FILE--
 <?php
 require 'vendor/autoload.php';

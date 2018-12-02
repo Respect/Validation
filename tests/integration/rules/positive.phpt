@@ -1,3 +1,5 @@
+--CREDITS--
+Ismael Elias <ismael.esq@hotmail.com>
 --FILE--
 <?php
 require 'vendor/autoload.php';

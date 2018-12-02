@@ -1,3 +1,6 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
+Tomasz Regdos <tomek@regdos.com>
 --FILE--
 <?php
 

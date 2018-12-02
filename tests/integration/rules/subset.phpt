@@ -1,3 +1,5 @@
+--CREDITS--
+Singwai Chan <singwai.chan@live.com>
 --FILE--
 <?php
 require 'vendor/autoload.php';

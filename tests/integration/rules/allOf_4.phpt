@@ -1,3 +1,6 @@
+--CREDITS--
+Edson Lima <dddwebdeveloper@gmail.com>
+Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 require 'vendor/autoload.php';

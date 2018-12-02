@@ -1,3 +1,5 @@
+--CREDITS--
+Paul Karikari <paulkarikari1@gmail.com>
 --SKIPIF--
 <?php
 if (!extension_loaded('uopz')) {

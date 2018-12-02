@@ -1,3 +1,5 @@
+--CREDITS--
+Julián Gutiérrez <juliangut@gmail.com>
 --FILE--
 <?php
 

@@ -1,3 +1,5 @@
+--CREDITS--
+William Espindola <oi@williamespindola.com.br>
 --FILE--
 <?php
 

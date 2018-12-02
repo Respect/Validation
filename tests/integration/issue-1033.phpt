@@ -1,3 +1,5 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
 --DESCRIPTION--
 The previous output was:
 

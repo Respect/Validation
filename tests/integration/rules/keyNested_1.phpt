@@ -1,3 +1,7 @@
+--CREDITS--
+Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+Henrique Moody <henriquemoody@gmail.com>
+Ivan Zinovyev <vanyazin@gmail.com>
 --TEST--
 keyNested()
 --FILE--

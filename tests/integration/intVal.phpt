@@ -1,3 +1,6 @@
+--CREDITS--
+Danilo Benevides <danilobenevides01@gmail.com>
+Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 require 'vendor/autoload.php';
