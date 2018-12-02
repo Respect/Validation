@@ -14,9 +14,13 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\TestCase;
+use Respect\Validation\Validatable;
 
 $GLOBALS['is_link'] = null;
 
+// This override is only needed for the test, since 
+// symbolic links cannot be mocked properly in PHP.
+// See this issue for more info: https://github.com/mikey179/vfsStream/issues/89
 function is_link($link)
 {
     $return = \is_link($link);
@@ -29,56 +33,87 @@ function is_link($link)
 }
 
 /**
- * @group  rule
+ * @group rule
  * @covers \Respect\Validation\Exceptions\SymbolicLinkException
  * @covers \Respect\Validation\Rules\SymbolicLink
  *
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Gus Antoniassi <gus.antoniassi@gmail.com>
  */
 class SymbolicLinkTest extends TestCase
 {
     /**
-     * @covers \Respect\Validation\Rules\SymbolicLink::validate
+     * Data providers for valid symbolic links, both as text and as SplFileInfo.
      *
-     * @test
-     */
-    public function validSymbolicLinkShouldReturnTrue(): void
-    {
-        $GLOBALS['is_link'] = true;
-
-        $rule = new SymbolicLink();
-        $input = '/path/of/a/valid/link.lnk';
-        self::assertTrue($rule->validate($input));
-    }
-
-    /**
-     * @covers \Respect\Validation\Rules\SymbolicLink::validate
+     * It returns an array of arrays. Each array contains an instance of Validatable
+     * as the first element and an input in which the validation SHOULD pass.
      *
-     * @test
+     * @return array[]
      */
-    public function invalidSymbolicLinkShouldThrowException(): void
-    {
-        $GLOBALS['is_link'] = false;
-
-        $rule = new SymbolicLink();
-        $input = '/path/of/an/invalid/link.lnk';
-        self::assertFalse($rule->validate($input));
-    }
-
-    /**
-     * @covers \Respect\Validation\Rules\SymbolicLink::validate
-     *
-     * @test
-     */
-    public function shouldValidateObjects(): void
+    public function providerForValidLink()
     {
         $rule = new SymbolicLink();
-        $object = $this->createMock('SplFileInfo');
-        $object->expects(self::once())
+        $validObject = $this->createMock('SplFileInfo');
+        $validObject->expects(self::once())
                 ->method('isLink')
                 ->will(self::returnValue(true));
 
-        self::assertTrue($rule->validate($object));
+        return [
+            [$rule, '/path/of/a/valid/link.lnk'],
+            [$rule, $validObject],
+        ];
+    }
+
+    /**
+     * Data providers for invalid symbolic links, both as text and as SplFileInfo.
+     *
+     * It returns an array of arrays. Each array contains an instance of Validatable
+     * as the first element and an input in which the validation SHOULD NOT pass.
+     *
+     * @return array[]
+     */
+    public function providerForInvalidLink()
+    {
+        $rule = new SymbolicLink();
+        $invalidObject = $this->createMock('SplFileInfo');
+        $invalidObject->expects(self::once())
+                ->method('isLink')
+                ->will(self::returnValue(false));
+
+        return [
+            [$rule, '/path/of/an/invalid/link.lnk'],
+            [$rule, $invalidObject],
+        ];
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider providerForValidLink
+     *
+     * @param Validatable $validator
+     * @param mixed       $input
+     */
+    public function validSymbolicLinkShouldReturnTrue(Validatable $validator, $input): void
+    {
+        $GLOBALS['is_link'] = true;
+
+        self::assertTrue($validator->validate($input));
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider providerForInvalidLink
+     *
+     * @param Validatable $validator
+     * @param mixed       $input
+     */
+    public function invalidSymbolicLinkShouldThrowException(Validatable $validator, $input): void
+    {
+        $GLOBALS['is_link'] = false;
+
+        self::assertFalse($validator->validate($input));
     }
 }
