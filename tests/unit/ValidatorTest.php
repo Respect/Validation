@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
-use PHPUnit\Framework\TestCase;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Test\TestCase;
 
 /**
  * @covers \Respect\Validation\Validator

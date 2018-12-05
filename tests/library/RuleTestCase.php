@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test;
 
-use PHPUnit\Framework\TestCase;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
 use function realpath;

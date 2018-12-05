@@ -18,6 +18,8 @@ use Egulias\EmailValidator\Validation\RFCValidation;
 use ReflectionException;
 use ReflectionProperty;
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
+use function tmpfile;
 
 /**
  * @group  rule
@@ -89,6 +91,10 @@ final class EmailTest extends RuleTestCase
             [$sut, 'test@test..com'],
             [$sut, 'test@test.com.'],
             [$sut, '.test@test.com'],
+            [$sut, []],
+            [$sut, new stdClass()],
+            [$sut, null],
+            [$sut, tmpfile()],
         ];
     }
 

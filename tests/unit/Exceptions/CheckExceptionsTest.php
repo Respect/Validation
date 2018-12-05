@@ -14,8 +14,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Exceptions;
 
 use DirectoryIterator;
-use PHPUnit\Framework\TestCase;
 use ReflectionClass;
+use Respect\Validation\Test\TestCase;
 
 /**
  * @coversNothing

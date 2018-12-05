@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Helpers;
 
-use PHPUnit\Framework\TestCase;
 use Respect\Validation\Test\DataProvider\UndefinedProvider;
+use Respect\Validation\Test\TestCase;
 
 /**
  * @group helper

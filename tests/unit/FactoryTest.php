@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
-use PHPUnit\Framework\TestCase;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
 use Respect\Validation\Exceptions\ValidationException;
@@ -22,6 +21,7 @@ use Respect\Validation\Test\Rules\AbstractClass;
 use Respect\Validation\Test\Rules\Invalid;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\Rules\Valid;
+use Respect\Validation\Test\TestCase;
 use function sprintf;
 
 /**

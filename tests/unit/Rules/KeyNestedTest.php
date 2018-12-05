@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use ArrayObject;
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
 
 /**

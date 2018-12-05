@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\TestCase;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Test\TestCase;
 
 /**
  * @covers \Respect\Validation\Rules\AbstractRule

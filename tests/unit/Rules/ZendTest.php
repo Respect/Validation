@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use DateTime;
-use PHPUnit\Framework\TestCase;
+use Respect\Validation\Test\TestCase;
 use Zend\Validator\Date as ZendDate;
 use Zend\Validator\ValidatorInterface;
 

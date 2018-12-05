@@ -13,6 +13,7 @@ matrix:
       env: COMPOSER_ARGUMENTS="--prefer-lowest --prefer-stable"
     - php: 7.1
     - php: 7.2
+      env: PHPUNIT_COVERAGE_ARGUMENT="--coverage-clover=coverage.clover"
     - php: 7.3
       env: COMPOSER_ARGUMENTS="--ignore-platform-reqs"
     - php: nightly
@@ -29,7 +30,7 @@ before_script:
   - composer update --prefer-dist ${COMPOSER_ARGUMENTS}
 
 script:
-  - vendor/bin/phpunit --configuration phpunit.xml.dist --colors --coverage-clover=coverage.clover
+  - vendor/bin/phpunit --configuration phpunit.xml.dist --verbose --colors ${PHPUNIT_COVERAGE_ARGUMENT}
   - |
     if [[ "${TRAVIS_PHP_VERSION}" == "7.2" ]]; then
       vendor/bin/docheader check library tests
@@ -45,7 +46,7 @@ script:
 
 after_script:
   - |
-    if [[ "${TRAVIS_PHP_VERSION}" == "7.2" ]]; then
+    if [[ ! -z "${PHPUNIT_COVERAGE_ARGUMENT}" ]]; then
       wget https://scrutinizer-ci.com/ocular.phar
       php ocular.phar code-coverage:upload --format=php-clover coverage.clover
     fi

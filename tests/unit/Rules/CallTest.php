@@ -14,9 +14,9 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Exception;
-use PHPUnit\Framework\TestCase;
 use Respect\Validation\Exceptions\AlwaysInvalidException;
 use Respect\Validation\Exceptions\CallException;
+use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
 
 /**
