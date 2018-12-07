@@ -15,13 +15,17 @@ namespace Respect\Validation\Exceptions;
 
 /**
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Luís Otávio Cobucci Oblonczyk <lcobucci@gmail.com>
  */
-class IpException extends ValidationException
+final class IpException extends ValidationException
 {
     public const NETWORK_RANGE = 'network_range';
 
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be an IP address',
@@ -33,6 +37,9 @@ class IpException extends ValidationException
         ],
     ];
 
+    /**
+     * {@inheritdoc}
+     */
     protected function chooseTemplate(): string
     {
         if (!$this->getParam('networkRange')) {

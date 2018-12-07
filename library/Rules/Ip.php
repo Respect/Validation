@@ -14,19 +14,52 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use function bccomp;
+use function explode;
+use function filter_var;
+use function ip2long;
+use function is_int;
+use function long2ip;
+use function mb_strpos;
+use function mb_substr_count;
+use function sprintf;
+use function str_replace;
+use function strtr;
 
 /**
+ * Validates whether the input is a valid IP address.
+ *
+ * This validator uses the native filter_var() PHP function.
+ *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Luís Otávio Cobucci Oblonczyk <lcobucci@gmail.com>
  */
-class Ip extends AbstractRule
+final class Ip extends AbstractRule
 {
-    public $ipOptions;
+    /**
+     * @var int|null
+     */
+    private $ipOptions;
 
-    public $range;
-    public $networkRange;
+    /**
+     * @var string|null
+     */
+    private $range;
 
+    /**
+     * @var array|null
+     */
+    private $networkRange;
+
+    /**
+     * Initializes the rule defining the range or options for filter_var().
+     *
+     * @param int|string $ipOptions
+     *
+     * @throws ComponentException In case the range is invalid
+     */
     public function __construct($ipOptions = null)
     {
         if (is_int($ipOptions)) {
@@ -42,7 +75,12 @@ class Ip extends AbstractRule
     /**
      * {@inheritdoc}
      */
-    public function createRange(): ?string
+    public function validate($input): bool
+    {
+        return $this->verifyAddress($input) && $this->verifyNetwork($input);
+    }
+
+    private function createRange(): ?string
     {
         if (!$this->networkRange) {
             return null;
@@ -60,11 +98,11 @@ class Ip extends AbstractRule
         return $message;
     }
 
-    protected function parseRange($input)
+    private function parseRange(?string $input): ?array
     {
         if (null === $input || '*' == $input || '*.*.*.*' == $input
             || '0.0.0.0-255.255.255.255' == $input) {
-            return;
+            return null;
         }
 
         $range = ['min' => null, 'max' => null, 'mask' => null];
@@ -90,14 +128,14 @@ class Ip extends AbstractRule
         return $range;
     }
 
-    protected function fillAddress(&$input, $char = '*'): void
+    private function fillAddress(&$input, $char = '*'): void
     {
         while (mb_substr_count($input, '.') < 3) {
             $input .= '.'.$char;
         }
     }
 
-    protected function parseRangeUsingWildcards($input, &$range): void
+    private function parseRangeUsingWildcards($input, &$range): void
     {
         $this->fillAddress($input);
 
@@ -105,7 +143,7 @@ class Ip extends AbstractRule
         $range['max'] = str_replace('*', '255', $input);
     }
 
-    protected function parseRangeUsingCidr($input, &$range): void
+    private function parseRangeUsingCidr($input, &$range): void
     {
         $input = explode('/', $input);
         $this->fillAddress($input[0], '0');
@@ -126,12 +164,7 @@ class Ip extends AbstractRule
         $range['mask'] = sprintf('%032b', ip2long(long2ip(~(2 ** (32 - $input[1]) - 1))));
     }
 
-    public function validate($input): bool
-    {
-        return $this->verifyAddress($input) && $this->verifyNetwork($input);
-    }
-
-    protected function verifyAddress($address)
+    private function verifyAddress($address): bool
     {
         return (bool) filter_var(
             $address,
@@ -142,7 +175,7 @@ class Ip extends AbstractRule
         );
     }
 
-    protected function verifyNetwork($input)
+    private function verifyNetwork($input): bool
     {
         if (null === $this->networkRange) {
             return true;
@@ -158,7 +191,7 @@ class Ip extends AbstractRule
                && bccomp($input, sprintf('%u', ip2long($this->networkRange['max']))) <= 0;
     }
 
-    protected function belongsToSubnet($input)
+    private function belongsToSubnet($input): bool
     {
         $range = $this->networkRange;
         $min = sprintf('%032b', ip2long($range['min']));

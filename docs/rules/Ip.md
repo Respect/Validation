@@ -1,10 +1,12 @@
 # Ip
 
 - `Ip()`
-- `Ip(mixed $options)`
+- `Ip(string $range)`
+- `Ip(int $options)`
 
-Validates IP Addresses. This validator uses the native filter_var()
-PHP function.
+Validates whether the input is a valid IP address.
+
+This validator uses the native [filter_var()][] PHP function.
 
 ```php
 v::ip()->validate('127.0.0.1'); // true
@@ -12,7 +14,7 @@ v::ip('220.78.168.0/21')->validate('220.78.173.2'); // true
 v::ip('220.78.168.0/21')->validate('220.78.176.2'); // false
 ```
 
-You can pass a parameter with filter_var flags for IP.
+You can pass a parameter with [filter_var()][] flags for IP.
 
 ```php
 v::ip(FILTER_FLAG_NO_PRIV_RANGE)->validate('192.168.0.1'); // false
@@ -22,7 +24,7 @@ v::ip(FILTER_FLAG_NO_PRIV_RANGE)->validate('192.168.0.1'); // false
 
 Version | Description
 --------|-------------
-  0.5.0 | Implemented IP range validatio
+  0.5.0 | Implemented IP range validation
   0.3.9 | Created
 
 ***
@@ -31,3 +33,5 @@ See also:
 - [Domain](Domain.md)
 - [MacAddress](MacAddress.md)
 - [Tld](Tld.md)
+
+[filter_var()]: https://php.net/filter_var
