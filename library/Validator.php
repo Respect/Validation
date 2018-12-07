@@ -86,7 +86,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  * @method static Validator instance(string $instanceName)
  * @method static Validator intVal()
  * @method static Validator intType()
- * @method static Validator ip($ipOptions = null)
+ * @method static Validator ip(string $range = '*', int $options = null)
  * @method static Validator isbn()
  * @method static Validator iterableType()
  * @method static Validator json()

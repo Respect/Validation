@@ -18,11 +18,12 @@ use function bccomp;
 use function explode;
 use function filter_var;
 use function ip2long;
-use function is_int;
+use function is_string;
 use function long2ip;
 use function mb_strpos;
 use function mb_substr_count;
 use function sprintf;
+use function str_repeat;
 use function str_replace;
 use function strtr;
 
@@ -39,37 +40,43 @@ use function strtr;
 final class Ip extends AbstractRule
 {
     /**
-     * @var int|null
-     */
-    private $ipOptions;
-
-    /**
      * @var string|null
      */
     private $range;
 
     /**
-     * @var array|null
+     * @var int|null
      */
-    private $networkRange;
+    private $options;
 
     /**
-     * Initializes the rule defining the range or options for filter_var().
+     * @var string|null
+     */
+    private $startAddress;
+
+    /**
+     * @var string|null
+     */
+    private $endAddress;
+
+    /**
+     * @var string|null
+     */
+    private $mask;
+
+    /**
+     * Initializes the rule defining the range and some options for filter_var().
      *
-     * @param int|string $ipOptions
+     * @param string $range
+     * @param int|null $options
      *
      * @throws ComponentException In case the range is invalid
      */
-    public function __construct($ipOptions = null)
+    public function __construct(string $range = '*', int $options = null)
     {
-        if (is_int($ipOptions)) {
-            $this->ipOptions = $ipOptions;
-
-            return;
-        }
-
-        $this->networkRange = $this->parseRange($ipOptions);
+        $this->parseRange($range);
         $this->range = $this->createRange();
+        $this->options = $options;
     }
 
     /**
@@ -77,126 +84,124 @@ final class Ip extends AbstractRule
      */
     public function validate($input): bool
     {
-        return $this->verifyAddress($input) && $this->verifyNetwork($input);
+        if (!is_string($input)) {
+            return false;
+        }
+
+        if (!$this->verifyAddress($input)) {
+            return false;
+        }
+
+        if ($this->mask) {
+            return $this->belongsToSubnet($input);
+        }
+
+        if ($this->startAddress && $this->endAddress) {
+            return $this->verifyNetwork($input);
+        }
+
+        return true;
     }
 
     private function createRange(): ?string
     {
-        if (!$this->networkRange) {
-            return null;
+        if ($this->endAddress && $this->endAddress) {
+            return $this->startAddress.'-'.$this->endAddress;
         }
 
-        $range = $this->networkRange;
-        $message = $range['min'];
-
-        if (isset($range['max'])) {
-            $message .= '-'.$range['max'];
-        } else {
-            $message .= '/'.long2ip((int) $range['mask']);
+        if ($this->startAddress && $this->mask) {
+            return $this->startAddress.'/'.long2ip((int) $this->mask);
         }
 
-        return $message;
+        return null;
     }
 
-    private function parseRange(?string $input): ?array
+    private function parseRange(string $input): void
     {
-        if (null === $input || '*' == $input || '*.*.*.*' == $input
-            || '0.0.0.0-255.255.255.255' == $input) {
-            return null;
+        if ('*' == $input || '*.*.*.*' == $input || '0.0.0.0-255.255.255.255' == $input) {
+            return;
         }
-
-        $range = ['min' => null, 'max' => null, 'mask' => null];
 
         if (false !== mb_strpos($input, '-')) {
-            list($range['min'], $range['max']) = explode('-', $input);
-        } elseif (false !== mb_strpos($input, '*')) {
-            $this->parseRangeUsingWildcards($input, $range);
-        } elseif (false !== mb_strpos($input, '/')) {
-            $this->parseRangeUsingCidr($input, $range);
-        } else {
-            throw new ComponentException('Invalid network range');
-        }
+            list($this->startAddress, $this->endAddress) = explode('-', $input);
 
-        if (!$this->verifyAddress($range['min'])) {
-            throw new ComponentException('Invalid network range');
-        }
+            if (!$this->verifyAddress($this->startAddress)) {
+                throw new ComponentException('Invalid network range');
+            }
 
-        if (isset($range['max']) && !$this->verifyAddress($range['max'])) {
-            throw new ComponentException('Invalid network range');
-        }
-
-        return $range;
-    }
-
-    private function fillAddress(&$input, $char = '*'): void
-    {
-        while (mb_substr_count($input, '.') < 3) {
-            $input .= '.'.$char;
-        }
-    }
-
-    private function parseRangeUsingWildcards($input, &$range): void
-    {
-        $this->fillAddress($input);
-
-        $range['min'] = strtr($input, '*', '0');
-        $range['max'] = str_replace('*', '255', $input);
-    }
-
-    private function parseRangeUsingCidr($input, &$range): void
-    {
-        $input = explode('/', $input);
-        $this->fillAddress($input[0], '0');
-
-        $range['min'] = $input[0];
-        $isAddressMask = false !== mb_strpos($input[1], '.');
-
-        if ($isAddressMask && $this->verifyAddress($input[1])) {
-            $range['mask'] = sprintf('%032b', ip2long($input[1]));
+            if (!$this->verifyAddress($this->endAddress)) {
+                throw new ComponentException('Invalid network range');
+            }
 
             return;
         }
 
-        if ($isAddressMask || $input[1] < 8 || $input[1] > 30) {
+        if (false !== mb_strpos($input, '*')) {
+            $this->parseRangeUsingWildcards($input);
+
+            return;
+        }
+
+        if (false !== mb_strpos($input, '/')) {
+            $this->parseRangeUsingCidr($input);
+
+            return;
+        }
+
+        throw new ComponentException('Invalid network range');
+    }
+
+    private function fillAddress(string $address, string $fill = '*'): string
+    {
+        return $address.str_repeat('.'.$fill, 3 - mb_substr_count($address, '.'));
+    }
+
+    private function parseRangeUsingWildcards(string $input): void
+    {
+        $address = $this->fillAddress($input);
+
+        $this->startAddress = strtr($address, '*', '0');
+        $this->endAddress = str_replace('*', '255', $address);
+    }
+
+    private function parseRangeUsingCidr(string $input): void
+    {
+        $parts = explode('/', $input);
+
+        $this->startAddress = $this->fillAddress($parts[0], '0');
+        $isAddressMask = false !== mb_strpos($parts[1], '.');
+
+        if ($isAddressMask && $this->verifyAddress($parts[1])) {
+            $this->mask = sprintf('%032b', ip2long($parts[1]));
+
+            return;
+        }
+
+        if ($isAddressMask || $parts[1] < 8 || $parts[1] > 30) {
             throw new ComponentException('Invalid network mask');
         }
 
-        $range['mask'] = sprintf('%032b', ip2long(long2ip(~(2 ** (32 - $input[1]) - 1))));
+        $this->mask = sprintf('%032b', ip2long(long2ip(~(2 ** (32 - $parts[1]) - 1))));
     }
 
-    private function verifyAddress($address): bool
+    private function verifyAddress(string $address): bool
     {
-        return (bool) filter_var(
-            $address,
-            FILTER_VALIDATE_IP,
-            [
-                'flags' => $this->ipOptions,
-            ]
-        );
+        return false !== filter_var($address, FILTER_VALIDATE_IP, ['flags' => $this->options]);
     }
 
-    private function verifyNetwork($input): bool
+    private function verifyNetwork(string $input): bool
     {
-        if (null === $this->networkRange) {
-            return true;
-        }
-
-        if (isset($this->networkRange['mask'])) {
-            return $this->belongsToSubnet($input);
-        }
-
         $input = sprintf('%u', ip2long($input));
 
-        return bccomp($input, sprintf('%u', ip2long($this->networkRange['min']))) >= 0
-               && bccomp($input, sprintf('%u', ip2long($this->networkRange['max']))) <= 0;
+        return bccomp($input, sprintf('%u', ip2long($this->startAddress))) >= 0
+               && bccomp($input, sprintf('%u', ip2long($this->endAddress))) <= 0;
     }
 
-    private function belongsToSubnet($input): bool
+    private function belongsToSubnet(string $input): bool
     {
-        $range = $this->networkRange;
-        $min = sprintf('%032b', ip2long($range['min']));
+        $min = sprintf('%032b', ip2long($this->startAddress));
         $input = sprintf('%032b', ip2long($input));
 
-        return ($input & $range['mask']) === ($min & $range['mask']);
+        return ($input & $this->mask) === ($min & $this->mask);
     }
 }

@@ -54,6 +54,7 @@ final class IpTest extends RuleTestCase
             [new Ip('220.78.168/21'), '220.78.173.2'],
             [new Ip('220.78.168.0/21'), '220.78.173.2'],
             [new Ip('220.78.168.0/255.255.248.0'), '220.78.173.2'],
+            [new Ip('*', FILTER_FLAG_IPV6), '2001:0db8:85a3:08d3:1319:8a2e:0370:7334'],
         ];
     }
 
@@ -71,7 +72,7 @@ final class IpTest extends RuleTestCase
            [new Ip(), 'j'],
            [new Ip(), ' '],
            [new Ip(), 'Foo'],
-           [new Ip(FILTER_FLAG_NO_PRIV_RANGE), '192.168.0.1'],
+           [new Ip('*', FILTER_FLAG_NO_PRIV_RANGE), '192.168.0.1'],
            [new Ip('127.0.1.*'), '127.0.0.1'],
            [new Ip('192.163.*.*'), '192.168.2.6'],
            [new Ip('193.*.*.*'), '192.10.2.6'],
