@@ -19,11 +19,16 @@ Version | Description
 See also:
 
 - [Alnum](Alnum.md)
+- [ArrayType](ArrayType.md)
 - [BoolType](BoolType.md)
+- [BoolVal](BoolVal.md)
 - [CallableType](CallableType.md)
 - [FloatType](FloatType.md)
 - [IntType](IntType.md)
 - [NullType](NullType.md)
+- [Number](Number.md)
 - [ObjectType](ObjectType.md)
 - [ResourceType](ResourceType.md)
+- [ScalarVal](ScalarVal.md)
+- [StringVal](StringVal.md)
 - [Type](Type.md)

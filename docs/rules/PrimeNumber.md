@@ -18,5 +18,6 @@ Version | Description
 See also:
 
 - [Factor](Factor.md)
+- [Fibonacci](Fibonacci.md)
+- [Multiple](Multiple.md)
 - [PerfectSquare](PerfectSquare.md)
-- [PrimeNumber](PrimeNumber.md)

@@ -22,5 +22,5 @@ Version | Description
 ***
 See also:
 
-  * [Digit](Digit.md)
-  * [Base](Base.md)
+- [Base](Base.md)
+- [Digit](Digit.md)

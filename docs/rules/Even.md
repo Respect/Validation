@@ -19,5 +19,5 @@ Version | Description
 ***
 See also:
 
-- [Odd](Odd.md)
 - [Multiple](Multiple.md)
+- [Odd](Odd.md)

@@ -23,6 +23,12 @@ Version | Description
 See also:
 
 - [Digit](Digit.md)
+- [Factor](Factor.md)
 - [Finite](Finite.md)
+- [FloatType](FloatType.md)
 - [Infinite](Infinite.md)
+- [IntType](IntType.md)
 - [IntVal](IntVal.md)
+- [Number](Number.md)
+- [ScalarVal](ScalarVal.md)
+- [Uppercase](Uppercase.md)

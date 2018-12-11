@@ -23,6 +23,8 @@ Version | Description
 ***
 See also:
 
+- [ArrayType](ArrayType.md)
 - [ArrayVal](ArrayVal.md)
 - [Countable](Countable.md)
+- [Each](Each.md)
 - [Instance](Instance.md)

@@ -32,6 +32,11 @@ Version | Description
 See also:
 
 - [Alnum](Alnum.md)
-- [Digit](Digit.md)
+- [Charset](Charset.md)
 - [Consonant](Consonant.md)
+- [Digit](Digit.md)
+- [Lowercase](Lowercase.md)
+- [NoWhitespace](NoWhitespace.md)
+- [Regex](Regex.md)
+- [Uppercase](Uppercase.md)
 - [Vowel](Vowel.md)

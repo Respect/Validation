@@ -37,6 +37,15 @@ Version | Description
 See also:
 
 - [Alpha](Alpha.md)
-- [Digit](Digit.md)
+- [Charset](Charset.md)
+- [Cntrl](Cntrl.md)
 - [Consonant](Consonant.md)
+- [Digit](Digit.md)
+- [Lowercase](Lowercase.md)
+- [NoWhitespace](NoWhitespace.md)
+- [Regex](Regex.md)
+- [StringType](StringType.md)
+- [StringVal](StringVal.md)
+- [Uppercase](Uppercase.md)
 - [Vowel](Vowel.md)
+- [Xdigit](Xdigit.md)

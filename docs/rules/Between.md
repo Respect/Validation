@@ -26,6 +26,7 @@ Version | Description
 ***
 See also:
 
+- [DateTime](DateTime.md)
 - [GreaterThan](GreaterThan.md)
 - [Length](Length.md)
 - [LessThan](LessThan.md)

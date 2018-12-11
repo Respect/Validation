@@ -18,5 +18,5 @@ Version | Description
 ***
 See also:
 
-- [ArrayVal](ArrayVal.md)
 - [ArrayType](ArrayType.md)
+- [ArrayVal](ArrayVal.md)

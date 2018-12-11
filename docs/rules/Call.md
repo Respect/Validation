@@ -50,5 +50,4 @@ Version | Description
 See also:
 
 - [Callback](Callback.md)
-
-- [callable]: http://php.net/callable
+- [Each](Each.md)

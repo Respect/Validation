@@ -30,5 +30,10 @@ Version | Description
 ***
 See also:
 
-- [Cnpj](Cnpj.md)
+- [Bsn](Bsn.md)
 - [Cnh](Cnh.md)
+- [Cnpj](Cnpj.md)
+- [Imei](Imei.md)
+- [NfeAccessKey](NfeAccessKey.md)
+- [Nif](Nif.md)
+- [Pis](Pis.md)

@@ -19,5 +19,5 @@ Version | Description
 ***
 See also:
 
-- [PrimeNumber](PrimeNumber.md)
 - [PerfectSquare](PerfectSquare.md)
+- [PrimeNumber](PrimeNumber.md)

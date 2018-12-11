@@ -19,4 +19,5 @@ Version | Description
 See also:
 
 - [Factor](Factor.md)
+- [Fibonacci](Fibonacci.md)
 - [PrimeNumber](PrimeNumber.md)

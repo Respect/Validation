@@ -18,14 +18,17 @@ Version | Description
 ***
 See also:
 
+- [ArrayType](ArrayType.md)
 - [Attribute](Attribute.md)
 - [BoolType](BoolType.md)
+- [BoolVal](BoolVal.md)
 - [CallableType](CallableType.md)
 - [FloatType](FloatType.md)
 - [Instance](Instance.md)
 - [IntType](IntType.md)
 - [NullType](NullType.md)
-- [ObjectType](ObjectType.md)
+- [Number](Number.md)
 - [ResourceType](ResourceType.md)
 - [StringType](StringType.md)
+- [StringVal](StringVal.md)
 - [Type](Type.md)

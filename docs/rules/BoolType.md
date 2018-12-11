@@ -20,15 +20,18 @@ Version | Description
 See also:
 
 - [ArrayType](ArrayType.md)
+- [BoolVal](BoolVal.md)
 - [CallableType](CallableType.md)
 - [FloatType](FloatType.md)
 - [FloatVal](FloatVal.md)
 - [IntType](IntType.md)
 - [No](No.md)
 - [NullType](NullType.md)
+- [Number](Number.md)
 - [ObjectType](ObjectType.md)
 - [ResourceType](ResourceType.md)
 - [StringType](StringType.md)
+- [StringVal](StringVal.md)
 - [TrueVal](TrueVal.md)
 - [Type](Type.md)
 - [Yes](Yes.md)

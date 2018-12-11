@@ -28,5 +28,7 @@ Version | Description
 See also:
 
 - [Alnum](Alnum.md)
+- [Alpha](Alpha.md)
 - [Lowercase](Lowercase.md)
 - [NumericVal](NumericVal.md)
+- [Roman](Roman.md)

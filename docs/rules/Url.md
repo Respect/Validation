@@ -25,4 +25,5 @@ See also:
 - [Email](Email.md)
 - [FilterVar](FilterVar.md)
 - [Phone](Phone.md)
+- [Slug](Slug.md)
 - [VideoUrl](VideoUrl.md)

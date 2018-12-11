@@ -47,6 +47,7 @@ See also:
 - [Exists](Exists.md)
 - [Extension](Extension.md)
 - [File](File.md)
+- [Image](Image.md)
 - [Mimetype](Mimetype.md)
 - [Readable](Readable.md)
 - [SymbolicLink](SymbolicLink.md)

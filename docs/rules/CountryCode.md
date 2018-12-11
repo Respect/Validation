@@ -31,7 +31,10 @@ Version | Description
 ***
 See also:
 
+- [CurrencyCode](CurrencyCode.md)
+- [LanguageCode](LanguageCode.md)
+- [PostalCode](PostalCode.md)
+- [SubdivisionCode](SubdivisionCode.md)
 - [Tld](Tld.md)
-
 
 [ISO 3166-1]: https://wikipedia.org/wiki/ISO_3166-1

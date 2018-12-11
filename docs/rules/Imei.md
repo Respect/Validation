@@ -22,5 +22,7 @@ See also:
 - [Cnh](Cnh.md)
 - [Cnpj](Cnpj.md)
 - [Cpf](Cpf.md)
+- [Isbn](Isbn.md)
+- [Luhn](Luhn.md)
 
 [IMEI]: https://en.wikipedia.org/wiki/International_Mobile_Station_Equipment_Identity "International Mobile Station Equipment Identity"

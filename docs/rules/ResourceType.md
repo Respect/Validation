@@ -17,11 +17,16 @@ Version | Description
 ***
 See also:
 
+- [ArrayType](ArrayType.md)
 - [BoolType](BoolType.md)
+- [BoolVal](BoolVal.md)
 - [CallableType](CallableType.md)
 - [FloatType](FloatType.md)
 - [IntType](IntType.md)
 - [NullType](NullType.md)
+- [Number](Number.md)
 - [ObjectType](ObjectType.md)
+- [PhpLabel](PhpLabel.md)
 - [StringType](StringType.md)
+- [StringVal](StringVal.md)
 - [Type](Type.md)

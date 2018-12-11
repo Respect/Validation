@@ -43,9 +43,9 @@ Version | Description
 ***
 See also:
 
-- [Date](Date.md)
 - [Between](Between.md)
-- [MinAge](MinAge.md)
+- [Date](Date.md)
 - [LeapDate](LeapDate.md)
 - [LeapYear](LeapYear.md)
+- [MinAge](MinAge.md)
 - [Time](Time.md)

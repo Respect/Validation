@@ -42,4 +42,5 @@ See also:
 - [NotBlank](NotBlank.md)
 - [NotEmpty](NotEmpty.md)
 - [NullType](NullType.md)
+- [Number](Number.md)
 - [Optional](Optional.md)

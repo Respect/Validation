@@ -18,4 +18,6 @@ Version | Description
 ***
 See also:
 
+- [Cntrl](Cntrl.md)
 - [Graph](Graph.md)
+- [Punct](Punct.md)

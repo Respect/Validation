@@ -31,7 +31,11 @@ Version | Description
 ***
 See also:
 
-- [StartsWith](StartsWith.md)
 - [EndsWith](EndsWith.md)
+- [Equals](Equals.md)
 - [Equivalent](Equivalent.md)
+- [Identical](Identical.md)
 - [In](In.md)
+- [Regex](Regex.md)
+- [StartsWith](StartsWith.md)
+- [Unique](Unique.md)

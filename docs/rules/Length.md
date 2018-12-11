@@ -50,3 +50,4 @@ Version | Description
 See also:
 
 - [Between](Between.md)
+- [Min](Min.md)

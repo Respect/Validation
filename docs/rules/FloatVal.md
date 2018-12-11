@@ -18,6 +18,9 @@ Version | Description
 ***
 See also:
 
+- [BoolType](BoolType.md)
+- [BoolVal](BoolVal.md)
 - [FloatType](FloatType.md)
 - [IntType](IntType.md)
 - [IntVal](IntVal.md)
+- [Type](Type.md)

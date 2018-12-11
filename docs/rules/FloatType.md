@@ -19,7 +19,9 @@ Version | Description
 ***
 See also:
 
+- [ArrayType](ArrayType.md)
 - [BoolType](BoolType.md)
+- [BoolVal](BoolVal.md)
 - [CallableType](CallableType.md)
 - [FloatVal](FloatVal.md)
 - [IntType](IntType.md)
@@ -30,4 +32,5 @@ See also:
 - [ObjectType](ObjectType.md)
 - [ResourceType](ResourceType.md)
 - [StringType](StringType.md)
+- [StringVal](StringVal.md)
 - [Type](Type.md)

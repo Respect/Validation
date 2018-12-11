@@ -21,4 +21,5 @@ Version | Description
 ***
 See also:
 
-- [BaseAccount](BaseAccount.md)
+- [Base64](Base64.md)
+- [Uuid](Uuid.md)

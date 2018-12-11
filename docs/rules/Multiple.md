@@ -17,4 +17,6 @@ Version | Description
 ***
 See also:
 
+- [Even](Even.md)
+- [Odd](Odd.md)
 - [PrimeNumber](PrimeNumber.md)

@@ -21,6 +21,6 @@ Version | Description
 ***
 See also:
 
-- [Cpf](Cpf.md)
-- [Cnpj](Cnpj.md)
 - [Cnh](Cnh.md)
+- [Cnpj](Cnpj.md)
+- [Cpf](Cpf.md)

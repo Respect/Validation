@@ -45,3 +45,5 @@ See also:
 - [Call](Call.md)
 - [IterableType](IterableType.md)
 - [Key](Key.md)
+- [NotEmpty](NotEmpty.md)
+- [Unique](Unique.md)

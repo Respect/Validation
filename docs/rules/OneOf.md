@@ -26,3 +26,4 @@ See also:
 - [AllOf](AllOf.md)
 - [AnyOf](AnyOf.md)
 - [NoneOf](NoneOf.md)
+- [When](When.md)

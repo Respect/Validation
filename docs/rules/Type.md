@@ -20,8 +20,10 @@ Version | Description
 ***
 See also:
 
+- [ArrayType](ArrayType.md)
 - [ArrayVal](ArrayVal.md)
 - [BoolType](BoolType.md)
+- [BoolVal](BoolVal.md)
 - [CallableType](CallableType.md)
 - [Finite](Finite.md)
 - [FloatType](FloatType.md)
@@ -31,8 +33,9 @@ See also:
 - [IntType](IntType.md)
 - [IntVal](IntVal.md)
 - [NullType](NullType.md)
+- [Number](Number.md)
 - [ObjectType](ObjectType.md)
 - [ResourceType](ResourceType.md)
 - [ScalarVal](ScalarVal.md)
 - [StringType](StringType.md)
-- [Type](Type.md)
+- [StringVal](StringVal.md)

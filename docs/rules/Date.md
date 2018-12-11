@@ -40,7 +40,8 @@ Version | Description
 See also:
 
 - [DateTime](DateTime.md)
-- [MinAge](MinAge.md)
 - [LeapDate](LeapDate.md)
 - [LeapYear](LeapYear.md)
+- [MaxAge](MaxAge.md)
+- [MinAge](MinAge.md)
 - [Time](Time.md)

@@ -19,5 +19,5 @@ Version | Description
 ***
 See also:
 
-  * [Optional](Optional.md)
-  * [NullType](NullType.md)
+- [NullType](NullType.md)
+- [Optional](Optional.md)

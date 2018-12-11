@@ -22,6 +22,8 @@ See also:
 
 - [Alnum](Alnum.md)
 - [Alpha](Alpha.md)
+- [CreditCard](CreditCard.md)
 - [NotBlank](NotBlank.md)
 - [NotEmpty](NotEmpty.md)
 - [NotOptional](NotOptional.md)
+- [Optional](Optional.md)

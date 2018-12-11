@@ -28,6 +28,7 @@ Version | Description
 See also:
 
 - [Date](Date.md)
+- [DateTime](DateTime.md)
 - [Max](Max.md)
 - [MaxAge](MaxAge.md)
 - [Min](Min.md)

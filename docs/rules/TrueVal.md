@@ -25,4 +25,6 @@ Version | Description
 ***
 See also:
 
+- [BoolType](BoolType.md)
+- [BoolVal](BoolVal.md)
 - [FalseVal](FalseVal.md)

@@ -17,4 +17,6 @@ Version | Description
 ***
 See also:
 
+- [Alnum](Alnum.md)
+- [Alpha](Alpha.md)
 - [Uppercase](Uppercase.md)

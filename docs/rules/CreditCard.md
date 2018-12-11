@@ -47,3 +47,4 @@ See also:
 - [Digit](Digit.md)
 - [Luhn](Luhn.md)
 - [NoWhitespace](NoWhitespace.md)
+- [Regex](Regex.md)

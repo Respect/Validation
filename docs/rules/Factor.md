@@ -23,3 +23,5 @@ See also:
 - [Finite](Finite.md)
 - [Infinite](Infinite.md)
 - [NumericVal](NumericVal.md)
+- [PerfectSquare](PerfectSquare.md)
+- [PrimeNumber](PrimeNumber.md)

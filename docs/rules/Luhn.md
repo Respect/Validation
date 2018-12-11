@@ -21,3 +21,6 @@ See also:
 
 - [CreditCard](CreditCard.md)
 - [Imei](Imei.md)
+- [Isbn](Isbn.md)
+
+[Luhn]: https://en.wikipedia.org/wiki/Luhn_algorithm

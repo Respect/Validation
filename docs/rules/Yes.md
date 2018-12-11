@@ -46,6 +46,8 @@ Version | Description
 ***
 See also:
 
+- [BoolType](BoolType.md)
+- [BoolVal](BoolVal.md)
 - [No](No.md)
 
 [nl_langinfo]: http://php.net/nl_langinfo

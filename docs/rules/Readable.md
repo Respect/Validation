@@ -22,6 +22,7 @@ See also:
 - [Exists](Exists.md)
 - [Extension](Extension.md)
 - [File](File.md)
+- [Image](Image.md)
 - [Mimetype](Mimetype.md)
 - [Size](Size.md)
 - [SymbolicLink](SymbolicLink.md)

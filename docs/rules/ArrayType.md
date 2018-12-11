@@ -30,4 +30,6 @@ See also:
 - [ObjectType](ObjectType.md)
 - [ResourceType](ResourceType.md)
 - [StringType](StringType.md)
+- [Subset](Subset.md)
 - [Type](Type.md)
+- [Unique](Unique.md)
