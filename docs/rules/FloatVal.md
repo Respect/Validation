@@ -12,6 +12,9 @@ v::floatVal()->validate('1e5'); // true
 ***
 See also:
 
+  * [BoolType](BoolType.md)
+  * [BoolVal](BoolVal.md)
   * [FloatType](FloatType.md)
   * [IntType](IntType.md)
   * [IntVal](IntVal.md)
+  * [Type](Type.md)

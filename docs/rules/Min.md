@@ -25,5 +25,6 @@ Message template for this validator includes `{{minValue}}`.
 ***
 See also:
 
-  * [Max](Max.md)
+  * [Age](Age.md)
   * [Between](Between.md)
+  * [Max](Max.md)

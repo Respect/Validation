@@ -22,6 +22,7 @@ See also:
   * [Executable](Executable.md)
   * [Exists](Exists.md)
   * [Extension](Extension.md)
+  * [Image](Image.md)
   * [Mimetype](Mimetype.md)
   * [Readable](Readable.md)
   * [Size](Size.md)

@@ -13,5 +13,6 @@ v::slug()->validate('my-wordpress-title-'); // false
 ***
 See also:
 
+  * [PhpLabel](PhpLabel.md)
   * [Url](Url.md)
   * [VideoUrl](VideoUrl.md)

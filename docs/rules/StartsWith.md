@@ -26,6 +26,7 @@ Message template for this validator includes `{{startValue}}`.
 ***
 See also:
 
-  * [EndsWith](EndsWith.md)
   * [Contains](Contains.md)
+  * [EndsWith](EndsWith.md)
   * [In](In.md)
+  * [Regex](Regex.md)

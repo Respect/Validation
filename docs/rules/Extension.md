@@ -17,6 +17,7 @@ See also:
   * [Executable](Executable.md)
   * [Exists](Exists.md)
   * [File](File.md)
+  * [Image](Image.md)
   * [Mimetype](Mimetype.md)
   * [Readable](Readable.md)
   * [Size](Size.md)

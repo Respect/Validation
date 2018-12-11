@@ -13,6 +13,7 @@ v::boolType()->validate(false); // true
 See also:
 
   * [ArrayType](ArrayType.md)
+  * [BoolVal](BoolVal.md)
   * [CallableType](CallableType.md)
   * [FloatType](FloatType.md)
   * [FloatVal](FloatVal.md)

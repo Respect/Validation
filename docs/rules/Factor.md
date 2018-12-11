@@ -17,3 +17,5 @@ See also:
   * [Finite](Finite.md)
   * [Infinite](Infinite.md)
   * [Numeric](Numeric.md)
+  * [PerfectSquare](PerfectSquare.md)
+  * [PrimeNumber](PrimeNumber.md)

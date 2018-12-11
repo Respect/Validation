@@ -13,6 +13,9 @@ v::finite()->validate(10); // true
 See also:
 
   * [Digit](Digit.md)
+  * [Factor](Factor.md)
   * [Infinite](Infinite.md)
+  * [IntType](IntType.md)
   * [IntVal](IntVal.md)
   * [Numeric](Numeric.md)
+  * [Type](Type.md)

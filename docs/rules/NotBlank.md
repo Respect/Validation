@@ -31,4 +31,6 @@ See also:
 
   * [NoWhitespace](NoWhitespace.md)
   * [NotEmpty](NotEmpty.md)
+  * [NotOptional](NotOptional.md)
   * [NullType](NullType.md)
+  * [Optional](Optional.md)

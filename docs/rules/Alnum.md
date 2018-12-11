@@ -39,6 +39,12 @@ the string of extra chars passed as the parameter.
 See also:
 
   * [Alpha](Alpha.md)
-  * [Digit](Digit.md)
+  * [Charset](Charset.md)
+  * [Cntrl](Cntrl.md)
   * [Consonant](Consonant.md)
+  * [Digit](Digit.md)
+  * [NoWhitespace](NoWhitespace.md)
+  * [Regex](Regex.md)
+  * [StringType](StringType.md)
   * [Vowel](Vowel.md)
+  * [Xdigit](Xdigit.md)

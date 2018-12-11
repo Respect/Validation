@@ -23,5 +23,5 @@ Using `arrayVal()` before `each()` is a best practice.
 ***
 See also:
 
-  * [Key](Key.md)
   * [ArrayVal](ArrayVal.md)
+  * [Key](Key.md)

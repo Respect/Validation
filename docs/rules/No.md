@@ -21,4 +21,6 @@ If `$locale` is TRUE, uses the value of [nl_langinfo()](http://php.net/nl_langin
 ***
 See also:
 
+  * [BoolType](BoolType.md)
+  * [BoolVal](BoolVal.md)
   * [Yes](Yes.md)

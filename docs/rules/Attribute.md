@@ -31,3 +31,5 @@ The name of this validator is automatically set to the attribute name.
 See also:
 
   * [Key](Key.md)
+  * [KeyNested](KeyNested.md)
+  * [ObjectType](ObjectType.md)

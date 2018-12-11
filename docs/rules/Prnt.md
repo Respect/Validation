@@ -12,4 +12,6 @@ v::prnt()->validate('LMKA0$% _123'); // true
 ***
 See also:
 
+  * [Cntrl](Cntrl.md)
   * [Graph](Graph.md)
+  * [Punct](Punct.md)

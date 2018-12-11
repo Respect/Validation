@@ -18,6 +18,7 @@ See also:
   * [Exists](Exists.md)
   * [Extension](Extension.md)
   * [File](File.md)
+  * [Image](Image.md)
   * [Readable](Readable.md)
   * [Size](Size.md)
   * [SymbolicLink](SymbolicLink.md)

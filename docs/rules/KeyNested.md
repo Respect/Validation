@@ -35,6 +35,6 @@ See also:
 
   * [Attribute](Attribute.md)
   * [Key](Key.md)
-
+  * [KeyValue](KeyValue.md)
 
 [Yii2 ArrayHelper]: https://github.com/yiisoft/yii2/blob/68c30c1/framework/helpers/BaseArrayHelper.php "Yii2 ArrayHelper"

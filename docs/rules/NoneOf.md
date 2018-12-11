@@ -16,6 +16,7 @@ In the sample above, 'foo' isn't a integer nor a float, so noneOf returns true.
 ***
 See also:
 
-  * [Not](Not.md)
   * [AllOf](AllOf.md)
+  * [Not](Not.md)
   * [OneOf](OneOf.md)
+  * [When](When.md)

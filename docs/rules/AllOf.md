@@ -25,6 +25,6 @@ v::allOf(
 ***
 See also:
 
-  * [OneOf](OneOf.md)
   * [NoneOf](NoneOf.md)
+  * [OneOf](OneOf.md)
   * [When](When.md)

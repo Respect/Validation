@@ -275,8 +275,10 @@ All data was extrated from [GeoNames][] which is licensed under a
 See also:
 
   * [CountryCode](CountryCode.md)
+  * [CurrencyCode](CurrencyCode.md)
+  * [IdentityCard](IdentityCard.md)
+  * [KeyValue](KeyValue.md)
   * [Tld](Tld.md)
-
 
 [Creative Commons Attribution 3.0 License]: http://creativecommons.org/licenses/by/3.0 "Creative Commons Attribution 3.0 License"
 [GeoNames]: http://www.geonames.org "GetNames"

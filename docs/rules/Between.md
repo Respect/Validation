@@ -39,6 +39,8 @@ Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.
 ***
 See also:
 
+  * [Age](Age.md)
+  * [Date](Date.md)
   * [Length](Length.md)
-  * [Min](Min.md)
   * [Max](Max.md)
+  * [Min](Min.md)

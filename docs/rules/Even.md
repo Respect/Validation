@@ -13,5 +13,5 @@ Using `int()` before `even()` is a best practice.
 ***
 See also:
 
-  * [Odd](Odd.md)
   * [Multiple](Multiple.md)
+  * [Odd](Odd.md)

@@ -48,4 +48,6 @@ The keys' order is not considered in the validation.
 ***
 See also:
 
+  * [ArrayVal](ArrayVal.md)
   * [Key](Key.md)
+  * [KeyValue](KeyValue.md)

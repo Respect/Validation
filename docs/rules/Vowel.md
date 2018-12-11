@@ -12,6 +12,6 @@ v::vowel()->validate('aei'); // true
 See also:
 
   * [Alnum](Alnum.md)
-  * [Digit](Digit.md)
   * [Alpha](Alpha.md)
   * [Consonant](Consonant.md)
+  * [Digit](Digit.md)

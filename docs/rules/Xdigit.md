@@ -17,6 +17,6 @@ v::xdigit()->validate('0x1f'); // false
 ***
 See also:
 
-  * [Digit](Digit.md)
   * [Alnum](Alnum.md)
+  * [Digit](Digit.md)
   * [HexRgbColor](HexRgbColor.md)
