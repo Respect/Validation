@@ -32,6 +32,7 @@ Version | Description
 See also:
 
 - [Contains](Contains.md)
+- [ContainsAny](ContainsAny.md)
 - [EndsWith](EndsWith.md)
 - [Roman](Roman.md)
 - [StartsWith](StartsWith.md)

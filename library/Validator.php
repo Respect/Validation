@@ -47,6 +47,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  * @method static Validator cntrl(string ...$additionalChars)
  * @method static Validator consonant(string ...$additionalChars)
  * @method static Validator contains($containsValue, bool $identical = false)
+ * @method static Validator containsAny(array $needles, bool $strictCompareArray = false)
  * @method static Validator countable()
  * @method static Validator countryCode(string $set = null)
  * @method static Validator currencyCode()

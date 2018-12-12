@@ -24,6 +24,7 @@ Version | Description
 See also:
 
 - [AllOf](AllOf.md)
+- [ContainsAny](ContainsAny.md)
 - [NoneOf](NoneOf.md)
 - [OneOf](OneOf.md)
 - [When](When.md)

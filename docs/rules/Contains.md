@@ -31,6 +31,7 @@ Version | Description
 ***
 See also:
 
+- [ContainsAny](ContainsAny.md)
 - [EndsWith](EndsWith.md)
 - [Equals](Equals.md)
 - [Equivalent](Equivalent.md)

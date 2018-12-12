@@ -25,5 +25,6 @@ Version | Description
 See also:
 
 - [Contains](Contains.md)
+- [ContainsAny](ContainsAny.md)
 - [Equals](Equals.md)
 - [Identical](Identical.md)
