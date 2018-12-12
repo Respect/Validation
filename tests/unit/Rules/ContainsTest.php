@@ -45,6 +45,7 @@ final class ContainsTest extends RuleTestCase
             [new Contains('foo'), 'foobazfoo'],
             [new Contains('1'), [2, 3, (string) 1]],
             [new Contains('1'), [2, 3, '1']],
+            [new Contains(1), [2, 3, 1]],
         ];
     }
 
@@ -64,6 +65,7 @@ final class ContainsTest extends RuleTestCase
             [new Contains('foo', true), 'barfaabaz'],
             [new Contains('foo', true), 'barbazFOO'],
             [new Contains('foo', true), 'faabarbaz'],
+            [new Contains(1, true), ['1', 2, 3]],
         ];
     }
 }

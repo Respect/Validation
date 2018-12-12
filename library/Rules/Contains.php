@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use function in_array;
 use function is_array;
+use function is_scalar;
 use function mb_detect_encoding;
 use function mb_stripos;
 use function mb_strpos;
@@ -47,7 +48,7 @@ final class Contains extends AbstractRule
      */
     public function __construct($containsValue, bool $identical = false)
     {
-        $this->containsValue = (string) $containsValue;
+        $this->containsValue = $containsValue;
         $this->identical = $identical;
     }
 
@@ -56,32 +57,28 @@ final class Contains extends AbstractRule
      */
     public function validate($input): bool
     {
+        if (is_array($input)) {
+            return in_array($this->containsValue, $input, $this->identical);
+        }
+
+        if (!is_scalar($input) || !is_scalar($this->containsValue)) {
+            return false;
+        }
+
+        return $this->validateString((string) $input, (string) $this->containsValue);
+    }
+
+    private function validateString(string $haystack, string $needle): bool
+    {
+        if ('' === $needle) {
+            return false;
+        }
+
+        $encoding = mb_detect_encoding($haystack);
         if ($this->identical) {
-            return $this->validateIdentical($input);
+            return false !== mb_strpos($haystack, $needle, 0, $encoding);
         }
 
-        return $this->validateEquals($input);
-    }
-
-    private function validateEquals($input): bool
-    {
-        if (is_array($input)) {
-            return in_array($this->containsValue, $input);
-        }
-
-        $inputString = (string) $input;
-
-        return false !== mb_stripos($inputString, $this->containsValue, 0, mb_detect_encoding($inputString));
-    }
-
-    private function validateIdentical($input): bool
-    {
-        if (is_array($input)) {
-            return in_array($this->containsValue, $input, true);
-        }
-
-        $inputString = (string) $input;
-
-        return false !== mb_strpos($inputString, $this->containsValue, 0, mb_detect_encoding($inputString));
+        return false !== mb_stripos($haystack, $needle, 0, $encoding);
     }
 }
