@@ -56,7 +56,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "example.com" must be a valid video URL
 "example.com" must be a valid "YouTube" video URL
 "https://player.vimeo.com/video/7178746722" must not be a valid video URL

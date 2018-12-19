@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "tests/fixtures/invalid-image.jpg" must be readable
 "tests/fixtures/valid-image.png" must not be readable
 - `[object] (stdClass: { })` must be readable

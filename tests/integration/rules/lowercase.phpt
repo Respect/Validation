@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 "UPPERCASE" must be lowercase
 "lowercase" must not be lowercase
 - "UPPERCASE" must be lowercase

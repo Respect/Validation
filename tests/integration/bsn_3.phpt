@@ -15,5 +15,5 @@ try {
     echo $e->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 `NULL` must be a BSN

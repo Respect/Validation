@@ -34,7 +34,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "Bla %123" must be an array value
 `{ 42 }` must not be an array value
 - `[object] (stdClass: { })` must be an array value

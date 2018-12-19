@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "açaí" must be in the `{ "ASCII" }` charset
 "açaí" must not be in the `{ "UTF-8" }` charset
 - "açaí" must be in the `{ "ASCII" }` charset

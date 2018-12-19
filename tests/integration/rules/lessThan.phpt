@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 21 must be less than 12
 "yesterday" must not be less than "today"
 - "2018-09-09" must be less than "1988-09-09"

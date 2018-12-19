@@ -42,7 +42,7 @@ try {
     print_r($exception->getMessages());
 }
 ?>
---EXPECTF--
+--EXPECT--
 Array
 (
     [mysql] => Array

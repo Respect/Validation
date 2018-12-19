@@ -33,7 +33,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "teste" must be of type array
 `{ }` must not be of type array
 - `[traversable] (ArrayObject: { })` must be of type array

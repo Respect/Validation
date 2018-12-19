@@ -15,5 +15,5 @@ try {
     echo $e->getFullMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 - "wrong slug" must be a valid slug

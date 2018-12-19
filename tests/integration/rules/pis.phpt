@@ -33,7 +33,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "this thing" must be a valid PIS number
 "120.6671.406-4" must not be a valid PIS number
 - "your mother" must be a valid PIS number

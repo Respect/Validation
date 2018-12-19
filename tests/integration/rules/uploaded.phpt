@@ -43,7 +43,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "filename" must be an uploaded file
 "filename" must not be an uploaded file
 - "filename" must be an uploaded file

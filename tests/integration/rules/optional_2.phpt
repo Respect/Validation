@@ -13,5 +13,5 @@ try {
     echo $e->getMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 The value must not be optional

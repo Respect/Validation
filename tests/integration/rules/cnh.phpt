@@ -32,7 +32,7 @@ try {
     echo $e->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "batman" must be a valid CNH number
 "02650306461" must not be a valid CNH number
 - "bruce wayne" must be a valid CNH number

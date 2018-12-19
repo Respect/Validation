@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 10 must be a valid prime number
 3 must not be a valid prime number
 - "Foo" must be a valid prime number

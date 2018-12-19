@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 2 must be a factor of 3
 300 must not be a factor of 0
 - 3 must be a factor of 5

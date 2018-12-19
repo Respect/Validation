@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "" must be an instance of "DateTime"
 `[traversable] (ArrayObject: { })` must not be an instance of "Traversable"
 - `[object] (stdClass: { })` must be an instance of "ArrayIterator"

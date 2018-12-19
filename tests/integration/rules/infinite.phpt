@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 -9 must be an infinite number
 `INF` must not be an infinite number
 - `[object] (stdClass: { })` must be an infinite number

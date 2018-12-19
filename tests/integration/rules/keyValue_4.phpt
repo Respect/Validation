@@ -18,5 +18,5 @@ try {
     echo $e->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 Key `{ "password": "123", "invalid_passwords": { "123", "secreta" } }` must not be present

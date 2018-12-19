@@ -14,5 +14,5 @@ try {
     echo $e->getFullMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 - "bb" must not contain consonants

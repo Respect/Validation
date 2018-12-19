@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 0 must be between 1 and 2
 "today" must not be between "yesterday" and "tomorrow"
 - "d" must be between "a" and "c"

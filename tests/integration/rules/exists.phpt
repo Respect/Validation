@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "/path/of/a/non-existent/file" must exists
 "tests/fixtures/valid-image.gif" must not exists
 - "/path/of/a/non-existent/file" must exists

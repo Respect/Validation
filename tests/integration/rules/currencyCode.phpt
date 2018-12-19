@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "batman" must be a valid currency
 "BRL" must not be a valid currency
 - "ppz" must be a valid currency

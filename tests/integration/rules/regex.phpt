@@ -30,7 +30,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "w poiur" must validate against "/^w+$/"
 "wpoiur" must not validate against "/^[a-z]+$/"
 - `[object] (stdClass: { })` must validate against "/^w+$/"

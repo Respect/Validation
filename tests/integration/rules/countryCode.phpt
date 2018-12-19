@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "1" must be a valid country
 "BR" must not be a valid country
 - "1" must be a valid country

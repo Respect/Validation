@@ -20,7 +20,7 @@ try {
     );
 }
 ?>
---EXPECTF--
+--EXPECT--
 Array
 (
     [alnum] => "really messed up screen#name" must contain only letters and digits

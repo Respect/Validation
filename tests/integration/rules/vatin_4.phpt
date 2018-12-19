@@ -15,5 +15,5 @@ try {
     echo $e->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 "1645865777" must not be a valid VAT identification number for "PL"

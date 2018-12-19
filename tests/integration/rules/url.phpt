@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 "example.com" must be a URL
 "http://example.com" must not be a URL
 - "example.com" must be a URL

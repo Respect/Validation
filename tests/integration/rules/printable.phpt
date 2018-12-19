@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "" must contain only printable characters
 "abc" must not contain printable characters
 - "foo\nbar" must contain only printable characters

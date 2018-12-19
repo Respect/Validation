@@ -19,5 +19,5 @@ try {
     echo $e->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 All of the required rules must pass for `{ "password": "shazam", "password_confirmation": "batman" }`

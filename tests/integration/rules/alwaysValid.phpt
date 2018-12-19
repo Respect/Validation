@@ -21,6 +21,6 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 `TRUE` is always invalid
 - `TRUE` is always invalid

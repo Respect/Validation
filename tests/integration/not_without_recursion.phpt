@@ -18,5 +18,5 @@ try {
     echo $exception->getMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 2 must not be positive

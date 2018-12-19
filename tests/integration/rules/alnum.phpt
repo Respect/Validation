@@ -57,7 +57,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "abc%1" must contain only letters (a-z) and digits (0-9)
 "abc%2" must contain only letters (a-z), digits (0-9) and " "
 "abcd3" must not contain letters (a-z) or digits (0-9)

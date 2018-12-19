@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 `[object] (stdClass: { })` must be of type integer
 42 must not be of type integer
 - `INF` must be of type integer

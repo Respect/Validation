@@ -14,5 +14,5 @@ try {
     echo $e->getFullMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 - "AYE205411" must be a valid Polish Identity Card number

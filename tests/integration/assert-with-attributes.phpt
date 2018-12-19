@@ -48,7 +48,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 - All of the required rules must pass for the given data
   - These rules must pass for mysql
     - host must be of type string

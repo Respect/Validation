@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 42 must be of type string
 "foo" must not be of type string
 - `TRUE` must be of type string

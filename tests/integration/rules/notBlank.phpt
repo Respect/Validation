@@ -44,7 +44,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 The value must not be blank
 Field must not be blank
 1 must be blank

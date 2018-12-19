@@ -22,5 +22,5 @@ try {
     echo $exception->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 0 deve ser do tipo string

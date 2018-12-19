@@ -10,4 +10,4 @@ v::optional(v::alpha())->validate('');
 v::optional(v::alpha())->validate(null);
 
 ?>
---EXPECTF--
+--EXPECT--

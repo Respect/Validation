@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 `FALSE` is not considered as "True"
 1 is considered as "True"
 - 0 is not considered as "True"

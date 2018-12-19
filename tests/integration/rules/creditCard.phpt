@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 3566002020360505 must be a valid "Discover" Credit Card number
 4024007153361885 must not be a valid "Visa" Credit Card number
 - 3566002020360505 must be a valid "MasterCard" Credit Card number

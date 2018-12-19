@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 4 must be a valid Fibonacci number
 5 must not be a valid Fibonacci number
 - 16 must be a valid Fibonacci number

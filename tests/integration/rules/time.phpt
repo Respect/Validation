@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "2018-01-30" must be a valid time in the format "23:59:59"
 "09:25:46" must not be a valid time in the format "23:59:59"
 - "2018-01-30" must be a valid time in the format "23:59:59"

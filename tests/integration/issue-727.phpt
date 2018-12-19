@@ -37,5 +37,5 @@ try {
     echo $exception->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 phoneNumbers.personal.number must be a valid telephone number

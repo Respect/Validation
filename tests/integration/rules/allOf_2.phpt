@@ -14,5 +14,5 @@ try {
     echo $e->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 "Luke i'm your father" must contain only consonants

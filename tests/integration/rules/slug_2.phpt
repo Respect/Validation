@@ -16,5 +16,5 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 "wrong slug" must be a valid slug

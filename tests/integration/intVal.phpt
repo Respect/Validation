@@ -33,7 +33,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "42.33" must be an integer number
 2 must not be an integer number
 - "Foo" must be an integer number

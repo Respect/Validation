@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 -1 must be an even number
 - 5 must be an even number
 6 must not be an even number

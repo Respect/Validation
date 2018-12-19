@@ -33,7 +33,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 `{ }` must be callable
 "trim" must not be callable
 - `TRUE` must be callable

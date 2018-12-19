@@ -35,6 +35,6 @@ try {
     echo $exception->getMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 All of the required rules must pass for "http://www.google.com/search?q=respect.github.com"
 All of the required rules must pass for "http://www.google.com/search?q=respect.github.com"

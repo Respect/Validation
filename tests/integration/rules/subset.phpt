@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 `{ 1, 2, 3 }` must be subset of `{ 1, 2 }`
 `{ 1, 2 }` must not be subset of `{ 1, 2, 3 }`
 - `{ "B", "C" }` must be subset of `{ "A", "B" }`

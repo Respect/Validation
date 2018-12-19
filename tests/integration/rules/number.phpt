@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 `NaN` must be a number
 42 must not be a number
 - `NaN` must be a number

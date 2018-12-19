@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 `{ }` must be of type object
 `[object] (stdClass: { })` must not be of type object
 - "test" must be of type object

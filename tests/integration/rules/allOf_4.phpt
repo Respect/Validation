@@ -14,5 +14,5 @@ try {
     echo $e->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 42 must not be of type integer

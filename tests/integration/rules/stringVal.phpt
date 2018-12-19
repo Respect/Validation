@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 `{ }` must be a string
 `TRUE` must not be string
 - `[object] (stdClass: { })` must be a string

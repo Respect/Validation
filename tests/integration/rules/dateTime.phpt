@@ -57,7 +57,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 "FooBarBazz" must be a valid date/time
 "06-12-1995" must be a valid date/time in the format "2005-12-30T01:02:03+00:00"
 - "QuxQuuxx" must be a valid date/time

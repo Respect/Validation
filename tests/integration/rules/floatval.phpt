@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 "a" must be a float number
 165.0 must not be a float number
 - "a" must be a float number

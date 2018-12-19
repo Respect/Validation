@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 1.0 must be countable
 `{ }` must not be countable
 - "Not countable!" must be countable

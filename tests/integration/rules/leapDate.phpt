@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "1989-02-29" must be leap date
 "1988-02-29" must not be leap date
 - "1990-02-29" must be leap date

@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 `{ }` must be a scalar value
 `TRUE` must not be a scalar value
 - `[object] (stdClass: { })` must be a scalar value

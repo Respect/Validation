@@ -14,5 +14,5 @@ try {
     echo $e->getFullMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 - "a" must not be between "a" and "b"

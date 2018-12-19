@@ -33,7 +33,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "Z01xSsg5675hic20dj" must be a number in the base 61
 - "" must be a number in the base 2
 "011010001" must not be a number in the base 2

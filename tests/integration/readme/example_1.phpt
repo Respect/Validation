@@ -19,4 +19,4 @@ $userValidator = v::attribute('name', v::stringType()->length(1, 32))
 
 $userValidator->assert($user);
 ?>
---EXPECTF--
+--EXPECT--

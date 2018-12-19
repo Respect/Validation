@@ -27,7 +27,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 - These rules must pass for Settings
   - host must be of type string
   - Key user must be present

@@ -10,5 +10,5 @@ use Respect\Validation\Validator;
 
 var_dump(Validator::not(Validator::intVal())->validate(10));
 ?>
---EXPECTF--
+--EXPECT--
 bool(false)

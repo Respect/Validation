@@ -15,5 +15,5 @@ try {
     echo $e->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 "good-and-valid-slug" must not be a valid slug

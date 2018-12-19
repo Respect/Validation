@@ -14,5 +14,5 @@ try {
     echo $e->getFullMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 - "Frank Zappa is fantastic" must not be of type string

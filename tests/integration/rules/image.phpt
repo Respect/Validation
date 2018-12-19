@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 "tests/fixtures/invalid-image.png" must be a valid image
 "tests/fixtures/valid-image.png" must not be a valid image
 - `[object] (stdClass: { })` must be a valid image

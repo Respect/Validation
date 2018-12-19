@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 "/path/of/a/valid/writable/file.txt" must be writable
 "tests/fixtures/valid-image.png" must not be writable
 - `{ }` must be writable

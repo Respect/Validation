@@ -35,7 +35,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "=c3VyZS4" must be Base64-encoded
 "c3VyZS4=" must not be Base64-encoded
 - "=c3VyZS4" must be Base64-encoded

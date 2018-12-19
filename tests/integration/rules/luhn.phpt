@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "2222400041240021" must be a valid Luhn number
 "2223000048400011" must not be a valid Luhn number
 - "340316193809334" must be a valid Luhn number

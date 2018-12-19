@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 `FALSE` must be a valid JSON string
 "{\"foo\": \"bar\", \"number\":1}" must not be a valid JSON string
 - `[object] (stdClass: { })` must be a valid JSON string

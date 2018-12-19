@@ -33,7 +33,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "não cnpj" must be a valid CNPJ number
 "65.150.175/0001-20" must not be a valid CNPJ number
 - "test" must be a valid CNPJ number

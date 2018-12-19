@@ -20,5 +20,5 @@ try {
     echo $e->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 password must equal "password_confirmation"

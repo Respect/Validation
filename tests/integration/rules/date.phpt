@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "2018-01-29T08:32:54+00:00" must be a valid date in the format "2005-12-30"
 "2018-01-29" must not be a valid date in the format "2005-12-30"
 - "2018-01-29T08:32:54+00:00" must be a valid date in the format "2005-12-30"

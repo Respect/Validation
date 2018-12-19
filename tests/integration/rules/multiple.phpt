@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 22 must be multiple of 3
 9 must not be multiple of 3
 - 5 must be multiple of 2

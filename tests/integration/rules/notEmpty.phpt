@@ -62,7 +62,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 The value must not be empty
 - The value must not be empty
 Field must not be empty

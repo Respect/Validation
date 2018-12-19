@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 -10 must be positive
 16 must not be positive
 - "a" must be positive

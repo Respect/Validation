@@ -57,7 +57,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "257.0.0.1" must be an IP address
 "127.0.0.1" must not be an IP address
 "127.0.0.1" must be an IP address in the "127.0.1.0-127.0.1.255" range

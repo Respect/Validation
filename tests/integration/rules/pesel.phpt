@@ -33,7 +33,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--;
+--EXPECT--;
 "21120209251" must be a valid PESEL
 "21120209256" must not be a valid PESEL
 - "21120209251" must be a valid PESEL

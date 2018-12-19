@@ -26,5 +26,5 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 - These rules must not pass for 2

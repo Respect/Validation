@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 "bar" must be an executable file
 "tests/fixtures/executable" must not be an executable file
 - "bar" must be an executable file

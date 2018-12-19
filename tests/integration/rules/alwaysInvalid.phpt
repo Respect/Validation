@@ -20,6 +20,6 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "whatever" is always invalid
 - "" is always invalid

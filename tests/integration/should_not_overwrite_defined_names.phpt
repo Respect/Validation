@@ -29,7 +29,7 @@ try {
     echo $exception->getMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 Email must be valid email
 email must be valid email
 email must be valid email

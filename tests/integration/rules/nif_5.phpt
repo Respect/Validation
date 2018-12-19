@@ -14,5 +14,5 @@ try {
     echo $e->getFullMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 - "R1332622H" must not be a NIF

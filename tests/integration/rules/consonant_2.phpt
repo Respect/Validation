@@ -14,5 +14,5 @@ try {
     echo $e->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 "top nos falsetes" must contain only consonants

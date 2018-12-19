@@ -33,7 +33,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "acb" must be a BSN
 "612890053" must not be a BSN
 - "abc" must be a BSN

@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 1 must be in `{ 3, 2 }`
 "foo" must not be in "foobar"
 - "2" must be in `{ 2, "1", 3 }`

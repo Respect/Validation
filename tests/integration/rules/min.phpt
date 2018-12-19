@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 10 must be greater than or equal to `INF`
 `INF` must not be greater than or equal to 5
 - "yesterday" must be greater than or equal to "today"

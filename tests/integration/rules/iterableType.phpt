@@ -33,7 +33,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 3 must be iterable
 `{ 2, 3 }` must not be iterable
 - "String" must be iterable

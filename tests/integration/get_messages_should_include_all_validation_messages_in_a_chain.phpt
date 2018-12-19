@@ -28,7 +28,7 @@ try {
     print_r($e->getMessages());
 }
 ?>
---EXPECTF--
+--EXPECT--
 Array
 (
     [username] => username must have a length between 2 and 32

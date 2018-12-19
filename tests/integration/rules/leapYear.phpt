@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 "2009" must be a leap year
 "2008" must not be a leap year
 - "2009-02-29" must be a leap year

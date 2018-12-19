@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "teste" must be of type boolean
 `TRUE` must not be of type boolean
 - `{ }` must be of type boolean

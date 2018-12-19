@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "00-11222:33:44:55" must be a valid MAC address
 "00:11:22:33:44:55" must not be a valid MAC address
 - "90-bc-nk:1a-dd-cc" must be a valid MAC address

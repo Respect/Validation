@@ -34,7 +34,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "ok" must be a boolean value
 "yes" must not be a boolean value
 - "yep" must be a boolean value

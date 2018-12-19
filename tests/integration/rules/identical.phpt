@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 321 must be identical as 123
 321 must not be identical as 321
 - 321 must be identical as 123

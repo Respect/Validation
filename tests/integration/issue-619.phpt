@@ -15,5 +15,5 @@ try {
     print_r($exception->getMessage());
 }
 ?>
---EXPECTF--
+--EXPECT--
 invalid object

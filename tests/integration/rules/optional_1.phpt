@@ -13,7 +13,7 @@ var_dump(
     v::optional(v::alpha())->validate(null)
 );
 ?>
---EXPECTF--
+--EXPECT--
 bool(false)
 bool(false)
 bool(true)

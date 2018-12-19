@@ -32,7 +32,7 @@ try {
     echo $e->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "batman" must be valid email
 "bruce.wayne@gothancity.com" must not be an email
 - "bruce wayne" must be valid email

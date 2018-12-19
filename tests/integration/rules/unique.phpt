@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 `{ 1, 2, 2, 3 }` must not contain duplicates
 `{ 1, 2, 3, 4 }` must contain duplicates
 - "test" must not contain duplicates

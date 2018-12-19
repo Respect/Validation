@@ -19,5 +19,5 @@ try {
     echo $e->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 "really messed up screen#name" must contain only letters (a-z), digits (0-9) and "_"

@@ -15,5 +15,5 @@ try {
     echo $e->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 "71110316C" must not be a NIF

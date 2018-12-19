@@ -18,5 +18,5 @@ try {
     echo $exception->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 "abc123" não deve conter letras (a-z) ou dígitos (0-9)

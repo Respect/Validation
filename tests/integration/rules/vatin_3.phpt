@@ -15,5 +15,5 @@ try {
     echo $e->getFullMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 - "1645865778" must be a valid Polish VAT identification number

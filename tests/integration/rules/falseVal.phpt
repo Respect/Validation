@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 `TRUE` is not considered as "False"
 "false" is considered as "False"
 - 1 is not considered as "False"

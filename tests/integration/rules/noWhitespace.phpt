@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 "w poiur" must not contain whitespace
 "wpoiur" must not not contain whitespace
 - "w poiur" must not contain whitespace

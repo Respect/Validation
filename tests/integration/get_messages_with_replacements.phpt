@@ -50,7 +50,7 @@ try {
     ]));
 }
 ?>
---EXPECTF--
+--EXPECT--
 Array
 (
     [mysql] => Array

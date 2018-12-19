@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "42" must be "integer"
 "foo" must not be "string"
 - 20 must be "double"

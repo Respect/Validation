@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "test" must be a resource
 `[resource] (stream)` must not be a resource
 - `{ }` must be a resource

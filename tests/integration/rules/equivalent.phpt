@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 `FALSE` must be equivalent to `TRUE`
 "someThing" must not be equivalent to "Something"
 - "true" must be equivalent to 123

@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 "490154203237512" must be a valid IMEI
 "350077523237513" must not be a valid IMEI
 - `NULL` must be a valid IMEI

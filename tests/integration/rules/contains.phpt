@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 "bar" must contain the value "foo"
 "fool" must not contain the value "foo"
 - `{ "bar" }` must contain the value "foo"

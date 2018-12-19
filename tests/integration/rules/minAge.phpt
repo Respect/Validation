@@ -35,7 +35,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "17 years ago" must be 18 years or more
 "-30 years" must not be 18 years or more
 - "yesterday" must be 18 years or more

@@ -35,7 +35,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "f o o" must be a valid PHP label
 "correctOne" must not be a valid PHP label
 - "0wner" must be a valid PHP label

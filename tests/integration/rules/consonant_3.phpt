@@ -14,5 +14,5 @@ try {
     echo $e->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 "ddd" must not contain consonants

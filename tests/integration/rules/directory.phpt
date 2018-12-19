@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "batman" must be a directory
 "/" must not be a directory
 - "ppz" must be a directory

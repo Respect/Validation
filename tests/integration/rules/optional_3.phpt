@@ -13,5 +13,5 @@ try {
     echo $e->getMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 My field must not be optional

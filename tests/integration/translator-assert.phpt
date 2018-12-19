@@ -24,7 +24,7 @@ try {
     echo $exception->getFullMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 - Todas as regras requeridas devem passar para 0
   - 0 deve ser do tipo string
   - 0 deve possuir de 2 a 15 caracteres

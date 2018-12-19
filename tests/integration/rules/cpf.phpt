@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "this thing" must be a valid CPF number
 "276.865.775-11" must not be a valid CPF number
 - "your mother" must be a valid CPF number

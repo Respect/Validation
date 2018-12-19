@@ -56,7 +56,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 The value must not be optional
 The value must be optional
 Field must not be optional

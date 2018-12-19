@@ -33,7 +33,7 @@ try {
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 "1.3.7--" must be a version
 "1.0.0-alpha" must not be a version
 - "1.2.3.4-beta" must be a version

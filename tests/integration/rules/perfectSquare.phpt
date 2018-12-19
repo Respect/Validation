@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 250 must be a valid perfect square
 9 must not be a valid perfect square
 - 7 must be a valid perfect square

@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "42.33" must be of type float
 `INF` must not be of type float
 - `TRUE` must be of type float

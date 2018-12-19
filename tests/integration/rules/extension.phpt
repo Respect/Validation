@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "filename.txt" must have "png" extension
 "filename.gif" must not have "gif" extension
 - "filename.wav" must have "mp3" extension

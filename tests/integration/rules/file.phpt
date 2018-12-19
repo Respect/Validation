@@ -32,7 +32,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 "tests/fixtures/non-existent.sh" must be a file
 "tests/fixtures/valid-image.png" must not be a file
 - "tests/fixtures/non-existent.sh" must be a file

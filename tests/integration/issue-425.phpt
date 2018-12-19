@@ -26,7 +26,7 @@ try {
     echo $e->getFullMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 - These rules must pass for `{ "age": 1 }`
   - Key reference must be present
 - These rules must pass for `{ "reference": "QSF1234" }`

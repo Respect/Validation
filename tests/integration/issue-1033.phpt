@@ -22,7 +22,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 - Each item in `{ "A", "B", "B" }` must be valid
   - "A" must equal 1
   - "B" must equal 1

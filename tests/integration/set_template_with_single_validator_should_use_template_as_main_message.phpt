@@ -25,6 +25,6 @@ try {
     echo $e->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 "something" is not tasty
 "something" is not tasty
