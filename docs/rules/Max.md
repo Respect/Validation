@@ -1,37 +1,34 @@
 # Max
 
-- `v::max(mixed $maxValue)`
-- `v::max(mixed $maxValue, boolean $inclusive = true)`
+- `Max(mixed $compareTo)`
 
-Validates if the input doesn't exceed the maximum value.
-
-```php
-v::intVal()->max(15)->validate(20); // false
-v::intVal()->max(20)->validate(20); // false
-v::intVal()->max(20, true)->validate(20); // true
-```
-
-Also accepts dates:
+Validates whether the input is less than or equal to a value.
 
 ```php
-v::date()->max('2012-01-01')->validate('2010-01-01'); // true
+v::max(10)->validate(9); // true
+v::max(10)->validate(10); // true
+v::max(10)->validate(11); // false
 ```
 
-Also date intervals:
+Validation makes comparison easier, check out our supported 
+[comparable values](ComparableValues.md).
 
-```php
-// Same of minimum age validation
-v::date()->max('-18 years')->validate('1988-09-09'); // true
-```
+Message template for this validator includes `{{compareTo}}`.
 
-`true` may be passed as a parameter to indicate that inclusive
-values must be used.
+## Changelog
 
-Message template for this validator includes `{{maxValue}}`.
+Version | Description
+--------|-------------
+  2.0.0 | Became always inclusive
+  1.0.0 | Became inclusive by default
+  0.3.9 | Created
 
 ***
 See also:
 
-  * [Age](Age.md)
-  * [Between](Between.md)
-  * [Min](Min.md)
+- [Between](Between.md)
+- [GreaterThan](GreaterThan.md)
+- [LessThan](LessThan.md)
+- [MaxAge](MaxAge.md)
+- [Min](Min.md)
+- [MinAge](MinAge.md)

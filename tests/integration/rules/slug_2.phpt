@@ -1,3 +1,6 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
+Marcel dos Santos <marcelgsantos@gmail.com>
 --FILE--
 <?php
 
@@ -9,9 +12,9 @@ use Respect\Validation\Validator as v;
 try {
     v::slug()->check('wrong slug');
 } catch (SlugException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 
 ?>
---EXPECTF--
+--EXPECT--
 "wrong slug" must be a valid slug

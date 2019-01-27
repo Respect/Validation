@@ -9,13 +9,20 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+/**
+ * @author Carlos André Ferrari <caferrari@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ */
 class Slug extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
-        if (strstr($input, '--')) {
+        if (mb_strstr($input, '--')) {
             return false;
         }
 

@@ -1,3 +1,5 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 
@@ -9,7 +11,7 @@ use Respect\Validation\Validator as v;
 try {
     v::when(v::alwaysInvalid(), v::alwaysValid())->check('foo');
 } catch (ValidationException $exception) {
-    echo $exception->getMainMessage();
+    echo $exception->getMessage();
 }
 ?>
 --EXPECT--

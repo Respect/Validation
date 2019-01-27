@@ -1,19 +1,27 @@
 # Sf
 
-- `v::sf(string $validator)`
+- `Sf(Constraint $constraint)`
+- `Sf(Constraint $constraint, ValidatorInterface $validator)`
 
-Use Symfony2 validators inside Respect\Validation flow. Messages
-are preserved.
+Validate the input with a Symfony Validator (>=4.0 or >=3.0) Constraint.
 
 ```php
-v::sf('Time')->validate('15:00:00');
+use Symfony\Component\Validator\Constraint\Iban;
+
+v::sf(new Iban())->validate('NL39 RABO 0300 0652 64'); // true
 ```
 
+This rule will keep all the messages returned from Symfony.
 
-You must add `"symfony/validator": "~2.6"` to your `require` property on composer.json file.
+## Changelog
 
+Version | Description
+--------|-------------
+  2.0.0 | Do not create constraints anymore
+  2.0.0 | Upgraded support to version >=4.0 or >=3.0 of Symfony Validator
+  0.3.9 | Created
 
 ***
 See also:
 
-  * [Zend](Zend.md)
+- [Zend](Zend.md)

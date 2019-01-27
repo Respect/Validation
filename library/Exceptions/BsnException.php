@@ -9,15 +9,19 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
 /**
+ * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Ronald Drenth <ronalddrenth@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class BsnException extends ValidationException
+final class BsnException extends ValidationException
 {
     /**
-     * @var array
+     * {@inheritdoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

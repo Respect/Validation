@@ -1,3 +1,5 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 
@@ -12,5 +14,5 @@ try {
     echo $e->getFullMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 - "AYE205410" must not be a valid Identity Card number for "PL"

@@ -9,99 +9,69 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\Digit
- * @covers Respect\Validation\Exceptions\DigitException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\AbstractFilterRule
+ * @covers \Respect\Validation\Rules\Digit
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ * @author Pascal Borreli <pascal@borreli.com>
  */
-class DigitTest extends TestCase
+final class DigitTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForValidDigits
+     * @throws \Respect\Validation\Exceptions\ComponentException
+     *
+     * @return array
      */
-    public function testValidDataWithDigitsShouldReturnTrue($validDigits, $additional = '')
-    {
-        $validator = new Digit($additional);
-        $this->assertTrue($validator->validate($validDigits));
-    }
-
-    /**
-     * @dataProvider providerForInvalidDigits
-     * @expectedException Respect\Validation\Exceptions\DigitException
-     */
-    public function testInvalidDigitsShouldFailAndThrowDigitException($invalidDigits, $additional = '')
-    {
-        $validator = new Digit($additional);
-        $this->assertFalse($validator->validate($invalidDigits));
-        $this->assertFalse($validator->assert($invalidDigits));
-    }
-
-    /**
-     * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
-     */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
-    {
-        $validator = new Digit($additional);
-    }
-
-    /**
-     * @dataProvider providerAdditionalChars
-     */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
-    {
-        $validator = new Digit($additional);
-        $this->assertTrue($validator->validate($query));
-    }
-
-    public function providerAdditionalChars()
+    public function providerForValidInput(): array
     {
         return [
-            ['!@#$%^&*(){}', '!@#$%^&*(){} 123'],
-            ['[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n 123"],
+            'positive integer' => [new Digit(), 165],
+            'positive string-integer' => [new Digit(), '01650'],
+            'positive string-integer with one exception' => [new Digit('-'), '16-50'],
+            'positive string-integer with multiple exceptions' => [new Digit('.-'), '16-5.0'],
+            'only exceptions' => [new Digit('!@#$%^&*(){}'), '!@#$%^&*(){}'],
+            'multiple exceptions' => [new Digit('.', '-'), '012.071.070-69'],
+            'float' => [new Digit(), 1.0],
+            'boolean true' => [new Digit(), true],
+            'octal' => [new Digit(), 01],
+            'string-octal' => [new Digit(), '01'],
         ];
     }
 
-    public function providerForInvalidParams()
+    /**
+     * {@inheritdoc}
+     *
+     * @throws \Respect\Validation\Exceptions\ComponentException
+     */
+    public function providerForInvalidInput(): array
     {
         return [
-            [new \stdClass()],
-            [[]],
-            [0x2],
-        ];
-    }
-
-    public function providerForValidDigits()
-    {
-        return [
-            ["\n\t"],
-            [' '],
-            [165],
-            [1650],
-            ['01650'],
-            ['165'],
-            ['1650'],
-            ['16 50'],
-            ["\n5\t"],
-            ['16-50', '-'],
-        ];
-    }
-
-    public function providerForInvalidDigits()
-    {
-        return [
-            [''],
-            [null],
-            ['16-50'],
-            ['a'],
-            ['Foo'],
-            ['12.1'],
-            ['-12'],
-            [-12],
+            'empty' => [new Digit(), ''],
+            'with spaces' => [new Digit(), '16 50'],
+            'with tabs' => [new Digit(), "1\t1"],
+            'with newlines' => [new Digit(), "1\n1"],
+            'null' => [new Digit(), null],
+            'with non-numeric' => [new Digit(), '16-50'],
+            'alphabetic' => [new Digit(), 'a'],
+            'alphanumeric' => [new Digit(), 'a1'],
+            'negative integer' => [new Digit(), -12],
+            'negative string-integer' => [new Digit(), '-12'],
+            'float-string' => [new Digit(), '1.0'],
+            'negative float' => [new Digit(), -1.1],
+            'negative string-float' => [new Digit(), '-1.1'],
+            'boolean false' => [new Digit(), false],
         ];
     }
 }

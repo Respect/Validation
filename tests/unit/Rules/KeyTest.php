@@ -9,130 +9,170 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Key
- * @covers Respect\Validation\Exceptions\KeyException
+ * @covers \Respect\Validation\Exceptions\KeyException
+ * @covers \Respect\Validation\Rules\Key
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class KeyTest extends TestCase
 {
-    public function testArrayWithPresentKeyShouldReturnTrue()
+    /**
+     * @test
+     */
+    public function arrayWithPresentKeyShouldReturnTrue(): void
     {
         $validator = new Key('bar');
         $someArray = [];
         $someArray['bar'] = 'foo';
-        $this->assertTrue($validator->validate($someArray));
+        self::assertTrue($validator->validate($someArray));
     }
 
-    public function testArrayWithNumericKeyShouldReturnTrue()
+    /**
+     * @test
+     */
+    public function arrayWithNumericKeyShouldReturnTrue(): void
     {
         $validator = new Key(0);
         $someArray = [];
         $someArray[0] = 'foo';
-        $this->assertTrue($validator->validate($someArray));
+        self::assertTrue($validator->validate($someArray));
     }
 
-    public function testEmptyInputMustReturnFalse()
+    /**
+     * @test
+     */
+    public function emptyInputMustReturnFalse(): void
     {
         $validator = new Key('someEmptyKey');
         $input = '';
 
-        $this->assertFalse($validator->validate($input));
+        self::assertFalse($validator->validate($input));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeyException
+     * @expectedException \Respect\Validation\Exceptions\KeyException
+     *
+     * @test
      */
-    public function testEmptyInputMustNotAssert()
+    public function emptyInputMustNotAssert(): void
     {
         $validator = new Key('someEmptyKey');
         $validator->assert('');
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeyException
+     * @expectedException \Respect\Validation\Exceptions\KeyException
+     *
+     * @test
      */
-    public function testEmptyInputMustNotCheck()
+    public function emptyInputMustNotCheck(): void
     {
         $validator = new Key('someEmptyKey');
         $validator->check('');
     }
 
-    public function testArrayWithEmptyKeyShouldReturnTrue()
+    /**
+     * @test
+     */
+    public function arrayWithEmptyKeyShouldReturnTrue(): void
     {
         $validator = new Key('someEmptyKey');
         $input = [];
         $input['someEmptyKey'] = '';
 
-        $this->assertTrue($validator->validate($input));
+        self::assertTrue($validator->validate($input));
     }
 
-    public function testShouldHaveTheSameReturnValueForAllValidators()
+    /**
+     * @test
+     */
+    public function shouldHaveTheSameReturnValueForAllValidators(): void
     {
         $rule = new Key('key', new NotEmpty());
         $input = ['key' => ''];
 
         try {
             $rule->assert($input);
-            $this->fail('`assert()` must throws exception');
+            self::fail('`assert()` must throws exception');
         } catch (\Exception $e) {
         }
 
         try {
             $rule->check($input);
-            $this->fail('`check()` must throws exception');
+            self::fail('`check()` must throws exception');
         } catch (\Exception $e) {
         }
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeyException
+     * @expectedException \Respect\Validation\Exceptions\KeyException
+     *
+     * @test
      */
-    public function testArrayWithAbsentKeyShouldThrowKeyException()
+    public function arrayWithAbsentKeyShouldThrowKeyException(): void
     {
         $validator = new Key('bar');
         $someArray = [];
         $someArray['baraaaaaa'] = 'foo';
-        $this->assertTrue($validator->assert($someArray));
+        $validator->assert($someArray);
     }
+
     /**
-     * @expectedException Respect\Validation\Exceptions\KeyException
+     * @expectedException \Respect\Validation\Exceptions\KeyException
+     *
+     * @test
      */
-    public function testNotArrayShouldThrowKeyException()
+    public function notArrayShouldThrowKeyException(): void
     {
         $validator = new Key('bar');
         $someArray = 123;
-        $this->assertFalse($validator->assert($someArray));
+        $validator->assert($someArray);
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
+     *
+     * @test
      */
-    public function testInvalidConstructorParametersShouldThrowComponentExceptionUponInstantiation()
+    public function invalidConstructorParametersShouldThrowComponentExceptionUponInstantiation(): void
     {
-        $validator = new Key(['invalid']);
+        new Key(['invalid']);
     }
 
-    public function testExtraValidatorShouldValidateKey()
+    /**
+     * @doesNotPerformAssertions
+     *
+     * @test
+     */
+    public function extraValidatorShouldValidateKey(): void
     {
         $subValidator = new Length(1, 3);
         $validator = new Key('bar', $subValidator);
         $someArray = [];
         $someArray['bar'] = 'foo';
-        $this->assertTrue($validator->assert($someArray));
+        $validator->assert($someArray);
     }
 
-    public function testNotMandatoryExtraValidatorShouldPassWithAbsentKey()
+    /**
+     * @test
+     */
+    public function notMandatoryExtraValidatorShouldPassWithAbsentKey(): void
     {
         $subValidator = new Length(1, 3);
         $validator = new Key('bar', $subValidator, false);
         $someArray = [];
-        $this->assertTrue($validator->validate($someArray));
+        self::assertTrue($validator->validate($someArray));
     }
 }

@@ -1,17 +1,25 @@
 # Odd
 
-- `v::odd()`
+- `Odd()`
 
-Validates an odd number.
+Validates whether the input is an odd number or not.
 
 ```php
-v::intVal()->odd()->validate(3); // true
+v::odd()->validate(0); // false
+v::odd()->validate(3); // true
 ```
 
-Using `int()` before `odd()` is a best practice.
+Using `intVal()` before `odd()` is a best practice.
+
+## Changelog
+
+Version | Description
+--------|-------------
+  2.0.0 | Only validates integers
+  0.3.9 | Created
 
 ***
 See also:
 
-  * [Even](Even.md)
-  * [Multiple](Multiple.md)
+- [Even](Even.md)
+- [Multiple](Multiple.md)

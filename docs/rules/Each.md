@@ -1,11 +1,8 @@
 # Each
 
-- `v::each(v $validatorForValue)`
-- `v::each(null, v $validatorForKey)`
-- `v::each(v $validatorForValue, v $validatorForKey)`
+- `Each(Validatable $rule)`
 
-Iterates over an array or Iterator and validates the value or key
-of each entry:
+Validates whether each value in the input is valid according to another rule.
 
 ```php
 $releaseDates = [
@@ -14,14 +11,39 @@ $releaseDates = [
     'relational' => '2011-02-05',
 ];
 
-v::arrayVal()->each(v::date())->validate($releaseDates); // true
-v::arrayVal()->each(v::date(), v::stringType()->lowercase())->validate($releaseDates); // true
+v::each(v::dateTime())->validate($releaseDates); // true
 ```
 
-Using `arrayVal()` before `each()` is a best practice.
+You can also validate array keys combining this rule with [Call](Call.md):
+
+```php
+v::call('array_keys', v::each(v::stringType()))->validate($releaseDates); // true
+```
+
+This rule will not validate values that are not iterable, to have a more detailed
+error message, add [IterableType](IterableType.md) to your chain, for example.
+
+If the input is empty this rule will consider the value as valid, you use
+[NotEmpty](NotEmpty.md) if convenient:
+
+```php
+v::each(v::dateTime())->validate([]); // true
+v::notEmpty()->each(v::dateTime())->validate([]); // false
+```
+
+## Changelog
+
+Version | Description
+--------|-------------
+  2.0.0 | Remove support for key validation
+  0.3.9 | Created
 
 ***
 See also:
 
-  * [ArrayVal](ArrayVal.md)
-  * [Key](Key.md)
+- [ArrayVal](ArrayVal.md)
+- [Call](Call.md)
+- [IterableType](IterableType.md)
+- [Key](Key.md)
+- [NotEmpty](NotEmpty.md)
+- [Unique](Unique.md)

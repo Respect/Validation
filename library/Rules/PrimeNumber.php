@@ -9,22 +9,40 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class PrimeNumber extends AbstractRule
+use function ceil;
+use function is_numeric;
+use function sqrt;
+
+/**
+ * Validates whether the input is a prime number.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Camilo Teixeira de Melo <kmilotxm@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ismael Elias <ismael.esq@hotmail.com>
+ * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
+ */
+final class PrimeNumber extends AbstractRule
 {
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
         if (!is_numeric($input) || $input <= 1) {
             return false;
         }
 
-        if ($input != 2 && ($input % 2) ==  0) {
+        if (2 != $input && 0 == ($input % 2)) {
             return false;
         }
 
-        for ($i = 3; $i <= ceil(sqrt($input)); $i += 2) {
-            if (($input % $i) == 0) {
+        for ($i = 3; $i <= ceil(sqrt((float) $input)); $i += 2) {
+            if (0 == ($input % $i)) {
                 return false;
             }
         }

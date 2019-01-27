@@ -9,51 +9,66 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Xdigit
- * @covers Respect\Validation\Exceptions\XdigitException
+ * @covers \Respect\Validation\Exceptions\XdigitException
+ * @covers \Respect\Validation\Rules\AbstractFilterRule
+ * @covers \Respect\Validation\Rules\Xdigit
+ *
+ * @author Andre Ramaciotti <andre@ramaciotti.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ * @author Pascal Borreli <pascal@borreli.com>
  */
 class XdigitTest extends TestCase
 {
     protected $xdigitsValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->xdigitsValidator = new Xdigit();
     }
 
     /**
      * @dataProvider providerForXdigit
+     *
+     * @test
      */
-    public function testValidateValidHexasdecimalDigits($input)
+    public function validateValidHexasdecimalDigits($input): void
     {
-        $this->assertTrue($this->xdigitsValidator->assert($input));
-        $this->assertTrue($this->xdigitsValidator->check($input));
-        $this->assertTrue($this->xdigitsValidator->validate($input));
+        $this->xdigitsValidator->assert($input);
+        $this->xdigitsValidator->check($input);
+        self::assertTrue($this->xdigitsValidator->validate($input));
     }
 
     /**
      * @dataProvider providerForNotXdigit
-     * @expectedException Respect\Validation\Exceptions\XdigitException
+     * @expectedException \Respect\Validation\Exceptions\XdigitException
+     *
+     * @test
      */
-    public function testInvalidHexadecimalDigitsShouldThrowXdigitException($input)
+    public function invalidHexadecimalDigitsShouldThrowXdigitException($input): void
     {
-        $this->assertFalse($this->xdigitsValidator->validate($input));
-        $this->assertFalse($this->xdigitsValidator->assert($input));
+        self::assertFalse($this->xdigitsValidator->validate($input));
+        $this->xdigitsValidator->assert($input);
     }
 
     /**
      * @dataProvider providerAdditionalChars
+     *
+     * @test
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function additionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Xdigit($additional);
-        $this->assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($query));
     }
 
     public function providerAdditionalChars()

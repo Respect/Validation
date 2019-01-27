@@ -9,24 +9,47 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use finfo;
 use SplFileInfo;
+use function is_file;
+use function is_string;
+use function mb_strpos;
 
-class Image extends AbstractRule
+/**
+ * Validates if the file is a valid image by checking its MIME type.
+ *
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Guilherme Siani <guilherme@siani.com.br>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class Image extends AbstractRule
 {
-    public $fileInfo;
+    /**
+     * @var finfo
+     */
+    private $fileInfo;
 
+    /**
+     * Initializes the rule.
+     *
+     * @param finfo|null $fileInfo
+     */
     public function __construct(finfo $fileInfo = null)
     {
         $this->fileInfo = $fileInfo ?: new finfo(FILEINFO_MIME_TYPE);
     }
 
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
         if ($input instanceof SplFileInfo) {
-            $input = $input->getPathname();
+            return $this->validate($input->getPathname());
         }
 
         if (!is_string($input)) {
@@ -37,6 +60,6 @@ class Image extends AbstractRule
             return false;
         }
 
-        return (0 === strpos($this->fileInfo->file($input), 'image/'));
+        return 0 === mb_strpos($this->fileInfo->file($input), 'image/');
     }
 }

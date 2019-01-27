@@ -9,53 +9,59 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Cntrl
- * @covers Respect\Validation\Exceptions\CntrlException
+ * @covers \Respect\Validation\Exceptions\CntrlException
+ * @covers \Respect\Validation\Rules\AbstractFilterRule
+ * @covers \Respect\Validation\Rules\Cntrl
+ *
+ * @author Andre Ramaciotti <andre@ramaciotti.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ * @author Pascal Borreli <pascal@borreli.com>
  */
 class CntrlTest extends TestCase
 {
     /**
      * @dataProvider providerForValidCntrl
+     *
+     * @test
      */
-    public function testValidDataWithCntrlShouldReturnTrue($validCntrl, $additional = '')
+    public function validDataWithCntrlShouldReturnTrue($validCntrl, $additional = ''): void
     {
         $validator = new Cntrl($additional);
-        $this->assertTrue($validator->validate($validCntrl));
+        self::assertTrue($validator->validate($validCntrl));
     }
 
     /**
      * @dataProvider providerForInvalidCntrl
-     * @expectedException Respect\Validation\Exceptions\CntrlException
+     * @expectedException \Respect\Validation\Exceptions\CntrlException
+     *
+     * @test
      */
-    public function testInvalidCntrlShouldFailAndThrowCntrlException($invalidCntrl, $additional = '')
+    public function invalidCntrlShouldFailAndThrowCntrlException($invalidCntrl, $additional = ''): void
     {
         $validator = new Cntrl($additional);
-        $this->assertFalse($validator->validate($invalidCntrl));
-        $this->assertFalse($validator->assert($invalidCntrl));
-    }
-
-    /**
-     * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
-     */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
-    {
-        $validator = new Cntrl($additional);
+        self::assertFalse($validator->validate($invalidCntrl));
+        $validator->assert($invalidCntrl);
     }
 
     /**
      * @dataProvider providerAdditionalChars
+     *
+     * @test
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function additionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Cntrl($additional);
-        $this->assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($query));
     }
 
     public function providerAdditionalChars()
@@ -63,15 +69,6 @@ class CntrlTest extends TestCase
         return [
             ['!@#$%^&*(){} ', '!@#$%^&*(){} '],
             ['[]?+=/\\-_|"\',<>. ', "[]?+=/\\-_|\"',<>. \t \n"],
-        ];
-    }
-
-    public function providerForInvalidParams()
-    {
-        return [
-            [new \stdClass()],
-            [[]],
-            [0x2],
         ];
     }
 

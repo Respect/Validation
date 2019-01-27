@@ -9,79 +9,62 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use DateTime;
-use DateTimeInterface;
+use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Helpers\CanValidateDateTime;
+use function is_scalar;
+use function preg_match;
+use function sprintf;
 
-class Date extends AbstractRule
+/**
+ * Validates if input is a date.
+ *
+ * @author Bruno Luiz da Silva <contato@brunoluiz.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class Date extends AbstractRule
 {
-    public $format = null;
+    use CanValidateDateTime;
 
-    public function __construct($format = null)
-    {
-        $this->format = $format;
-    }
+    /**
+     * @var string
+     */
+    private $format;
 
-    public function validate($input)
+    /**
+     * @var string
+     */
+    private $sample;
+
+    /**
+     * Initializes the rule.
+     *
+     * @param string $format
+     *
+     * @throws ComponentException
+     */
+    public function __construct(string $format = 'Y-m-d')
     {
-        if ($input instanceof DateTimeInterface
-            || $input instanceof DateTime) {
-            return true;
+        if (!preg_match('/^[djSFmMnYy\W]+$/', $format)) {
+            throw new ComponentException(sprintf('"%s" is not a valid date format', $format));
         }
 
+        $this->format = $format;
+        $this->sample = date($format, strtotime('2005-12-30'));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
+    {
         if (!is_scalar($input)) {
             return false;
         }
 
-        $inputString = (string) $input;
-
-        if (is_null($this->format)) {
-            return false !== strtotime($inputString);
-        }
-
-        $exceptionalFormats = [
-            'c' => 'Y-m-d\TH:i:sP',
-            'r' => 'D, d M Y H:i:s O',
-        ];
-
-        if (in_array($this->format, array_keys($exceptionalFormats))) {
-            $this->format = $exceptionalFormats[$this->format];
-        }
-
-        return $this->isValidForFormatProvided($input);
-    }
-
-    private function isValidForFormatProvided($input)
-    {
-        $info = date_parse_from_format($this->format, $input);
-        if (!$this->isParsable($info)) {
-            return false;
-        }
-
-        if ($this->hasDateFormat()) {
-            return $this->hasValidDate($info);
-        }
-
-        return true;
-    }
-
-    private function isParsable(array $info)
-    {
-        return ($info['error_count'] === 0 && $info['warning_count'] === 0);
-    }
-
-    private function hasDateFormat()
-    {
-        return preg_match('/[djSFmMnYy]/', $this->format) > 0;
-    }
-
-    private function hasValidDate(array $info)
-    {
-        if ($info['day']) {
-            return checkdate((int) $info['month'], $info['day'], (int) $info['year']);
-        }
-
-        return checkdate($info['month'] ?: 1, $info['day'] ?: 1, $info['year'] ?: 1);
+        return $this->isDateTime($this->format, (string) $input);
     }
 }

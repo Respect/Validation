@@ -9,12 +9,20 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class Consonant extends AbstractRegexRule
+use function preg_match;
+
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ */
+class Consonant extends AbstractFilterRule
 {
-    protected function getPregFormat()
+    protected function validateFilteredInput(string $input): bool
     {
-        return '/^(\s|[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z])*$/';
+        return preg_match('/^(\s|[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z])*$/', $input) > 0;
     }
 }

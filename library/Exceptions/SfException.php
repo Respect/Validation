@@ -9,16 +9,25 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
-class SfException extends ValidationException
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class SfException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}}',
+            self::STANDARD => '{{name}} must be valid for {{constraint}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}}',
+            self::STANDARD => '{{name}} must not be valid for {{constraint}}',
         ],
     ];
 }

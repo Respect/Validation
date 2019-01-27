@@ -1,15 +1,18 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 
 require_once 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\AllOfException;
+use Respect\Validation\Validator as v;
 
 try {
-	v::identityCard('PL')->assert('AYE205411');
+    v::identityCard('PL')->assert('AYE205411');
 } catch (AllOfException $e) {
-	echo $e->getFullMessage();
+    echo $e->getFullMessage();
 }
---EXPECTF--
+?>
+--EXPECT--
 - "AYE205411" must be a valid Polish Identity Card number

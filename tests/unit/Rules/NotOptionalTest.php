@@ -9,62 +9,58 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\NotOptional
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\NotOptional
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class NotOptionalTest extends TestCase
+final class NotOptionalTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForNotOptional
+     * {@inheritdoc}
      */
-    public function testShouldValidateWhenNotOptional($input)
+    public function providerForValidInput(): array
     {
         $rule = new NotOptional();
 
-        $this->assertTrue($rule->validate($input));
-    }
-
-    /**
-     * @dataProvider providerForOptional
-     */
-    public function testShouldNotValidateWhenOptional($input)
-    {
-        $rule = new NotOptional();
-
-        $this->assertFalse($rule->validate($input));
-    }
-
-    public function providerForNotOptional()
-    {
         return [
-            [[]],
-            [' '],
-            [0],
-            ['0'],
-            [0],
-            ['0.0'],
-            [false],
-            [['']],
-            [[' ']],
-            [[0]],
-            [['0']],
-            [[false]],
-            [[[''], [0]]],
-            [new stdClass()],
+            [$rule, []],
+            [$rule, ' '],
+            [$rule, 0],
+            [$rule, '0'],
+            [$rule, 0],
+            [$rule, '0.0'],
+            [$rule, false],
+            [$rule, ['']],
+            [$rule, [' ']],
+            [$rule, [0]],
+            [$rule, ['0']],
+            [$rule, [false]],
+            [$rule, [[''], [0]]],
+            [$rule, new stdClass()],
         ];
     }
 
-    public function providerForOptional()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
+        $rule = new NotOptional();
+
         return [
-            [null],
-            [''],
+            [$rule, null],
+            [$rule, ''],
         ];
     }
 }

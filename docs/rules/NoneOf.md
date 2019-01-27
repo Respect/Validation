@@ -1,6 +1,6 @@
 # NoneOf
 
-- `v::noneOf(v $v1, v $v2, v $v3...)`
+- `NoneOf(Validatable ...$rule)`
 
 Validates if NONE of the given validators validate:
 
@@ -13,10 +13,17 @@ v::noneOf(
 
 In the sample above, 'foo' isn't a integer nor a float, so noneOf returns true.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [AllOf](AllOf.md)
-  * [Not](Not.md)
-  * [OneOf](OneOf.md)
-  * [When](When.md)
+- [AllOf](AllOf.md)
+- [AnyOf](AnyOf.md)
+- [Not](Not.md)
+- [OneOf](OneOf.md)
+- [When](When.md)

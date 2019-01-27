@@ -9,15 +9,17 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ScalarValException extends ValidationException
+final class ScalarValException extends ValidationException
 {
     /**
-     * @var array
+     * {@inheritdoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

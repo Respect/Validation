@@ -1,3 +1,6 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
+Wojciech Frącz <fraczwojciech@gmail.com>
 --FILE--
 <?php
 
@@ -9,8 +12,8 @@ use Respect\Validation\Rules\Instance;
 try {
     (new Instance('stdClass'))->setTemplate('invalid object')->assert('test');
 } catch (ValidationException $exception) {
-    print_r($exception->getMainMessage());
+    print_r($exception->getMessage());
 }
 ?>
---EXPECTF--
+--EXPECT--
 invalid object

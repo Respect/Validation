@@ -9,16 +9,25 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
-class StringTypeException extends ValidationException
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class StringTypeException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a string',
+            self::STANDARD => '{{name}} must be of type string',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be string',
+            self::STANDARD => '{{name}} must not be of type string',
         ],
     ];
 }

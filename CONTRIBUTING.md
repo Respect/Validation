@@ -36,6 +36,11 @@ A common validator (rule) on Respect\Validation is composed of three classes:
 The classes are pretty straightforward. In the sample below, we're going to
 create a validator that validates if a string is equal to "Hello World".
 
+- Classes should be `final` unless they are used in a different scope;
+- Properties should be `private` unless they are used in a different scope;
+- Classes should use strict typing;
+- Docblocks are required.
+
 ### Creating the rule
 
 The rule itself needs to implement the `Validatable` interface but, it is
@@ -58,19 +63,26 @@ and will natively have support for chaining and everything else.
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class HelloWorld extends AbstractRule
+/**
+ * Explain in one sentence what this rule does.
+ *
+ * @author Your Name <youremail@yourdomain.tld>
+ */
+final class HelloWorld extends AbstractRule
 {
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
         return $input === 'Hello World';
     }
 }
 ```
-
-Docblocks with `@param`, `@return`, `{@inheritdoc}`, `@author` and other
-annotations for classes and methods are encouraged but not required.
 
 ### Creating the rule exception
 
@@ -91,10 +103,18 @@ library will show the appropriate message.
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
-class HelloWorldException extends ValidationException
+/**
+ * @author Your Name <youremail@yourdomain.tld>
+ */
+final class HelloWorldException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a Hello World',
@@ -110,9 +130,9 @@ class HelloWorldException extends ValidationException
 
 Finally, we need to test if everything is running smooth. We have `RuleTestCase`
 that allows us to make easier to test rules, but you fell free to use the
-`PHPUnit_Framework_TestCase` if you want or you need it's necessary.
+`PHPUnit\Framework\TestCase` if you want or you need it's necessary.
 
-The `RuleTestCase` extends PHPUnit's `PHPUnit_Framework_TestCase` class, so you
+The `RuleTestCase` extends PHPUnit's `PHPUnit\Framework\TestCase` class, so you
 are able to use any methods of it. By extending `RuleTestCase` you should
 implement two methods that should return a [data provider][] with the rule as
 first item of the arrays:
@@ -132,15 +152,25 @@ first item of the arrays:
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Test\RuleTestCase;
+
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\HelloWorld
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\HelloWorld
+ *
+ * @author Your Name <youremail@yourdomain.tld>
  */
-class HelloWorldTest extends RuleTestCase
+final class HelloWorldTest extends RuleTestCase
 {
-    public function providerForValidInput()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
         $rule = new HelloWorld();
 
@@ -149,7 +179,10 @@ class HelloWorldTest extends RuleTestCase
         ];
     }
 
-    public function providerForInvalidInput()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         $rule = new HelloWorld();
 
@@ -179,8 +212,8 @@ As we already said, none of them are required but you will help us a lot.
 ## Documentation
 
 Our docs at http://respect.github.io/Validation are generated from our Markdown
-files using [Read the Docs][]. Add your brand new rule there and everything will
-be updated automatically.
+files using [Couscous][]. Add your brand new rule there and everything will be
+updated as soon as possible.
 
 ## Running Tests
 
@@ -240,7 +273,7 @@ See also:
 
 
 [ArrayType]: https://github.com/Respect/Validation/commit/f08a1fa
-[Read the Docs]: https://readthedocs.org/ "Read the Docs"
+[Couscous]: http://couscous.io/ "Couscous"
 [data provider]: https://phpunit.de/manual/current/en/writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers "PHPUnit Data Providers"
 [open an issue]: http://github.com/Respect/Validation/issues
 [php-cs-fixer]: https://github.com/FriendsOfPHP/PHP-CS-Fixer "PHP Coding Standard Fixer"

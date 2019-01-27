@@ -9,62 +9,50 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\Even
- * @covers Respect\Validation\Exceptions\EvenException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\Even
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
+ * @author Paul Karikari <paulkarikari1@gmail.com>
  */
-class EvenTest extends TestCase
+final class EvenTest extends RuleTestCase
 {
-    protected $evenValidator;
-
-    protected function setUp()
-    {
-        $this->evenValidator = new Even();
-    }
-
     /**
-     * @dataProvider providerForEven
+     * {@inheritdoc}
      */
-    public function testEvenNumbersShouldPass($input)
-    {
-        $this->assertTrue($this->evenValidator->validate($input));
-        $this->assertTrue($this->evenValidator->check($input));
-        $this->assertTrue($this->evenValidator->assert($input));
-    }
-
-    /**
-     * @dataProvider providerForNotEven
-     * @expectedException Respect\Validation\Exceptions\EvenException
-     */
-    public function testNotEvenNumbersShouldFail($input)
-    {
-        $this->assertFalse($this->evenValidator->validate($input));
-        $this->assertFalse($this->evenValidator->assert($input));
-    }
-
-    public function providerForEven()
+    public function providerForValidInput(): array
     {
         return [
-            [''],
-            [-2],
-            [-0],
-            [0],
-            [32],
+            [new Even(), 2],
+            [new Even(), -2],
+            [new Even(), 0],
+            [new Even(), 32],
         ];
     }
 
-    public function providerForNotEven()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         return [
-            [-5],
-            [-1],
-            [1],
-            [13],
+            [new Even(), ''],
+            [new Even(), INF],
+            [new Even(), 2.2],
+            [new Even(), -5],
+            [new Even(), -1],
+            [new Even(), 1],
+            [new Even(), 13],
         ];
     }
 }

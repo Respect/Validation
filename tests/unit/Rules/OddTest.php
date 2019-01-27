@@ -9,62 +9,58 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
+use stdClass;
+use function tmpfile;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\Odd
- * @covers Respect\Validation\Exceptions\OddException
+ * @group rule
+ * @covers \Respect\Validation\Rules\Odd
+ *
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
  */
-class OddTest extends TestCase
+final class OddTest extends RuleTestCase
 {
-    protected $object;
-
-    protected function setUp()
+    /*
+    * {@inheritdoc}
+    */
+    public function providerForValidInput(): array
     {
-        $this->object = new Odd();
-    }
+        $rule = new Odd();
 
-    /**
-     * @dataProvider providerForOdd
-     */
-    public function testOdd($input)
-    {
-        $this->assertTrue($this->object->assert($input));
-        $this->assertTrue($this->object->__invoke($input));
-        $this->assertTrue($this->object->check($input));
-    }
-
-    /**
-     * @dataProvider providerForNotOdd
-     * @expectedException Respect\Validation\Exceptions\OddException
-     */
-    public function testNotOdd($input)
-    {
-        $this->assertFalse($this->object->__invoke($input));
-        $this->assertFalse($this->object->assert($input));
-    }
-
-    public function providerForOdd()
-    {
         return [
-            [-5],
-            [-1],
-            [1],
-            [13],
+            [$rule, -5],
+            [$rule, -1],
+            [$rule, 1],
+            [$rule, 13],
         ];
     }
 
-    public function providerForNotOdd()
+    /*
+    * {@inheritdoc}
+    */
+    public function providerForInvalidInput(): array
     {
+        $rule = new Odd();
+
         return [
-            [''],
-            [-2],
-            [-0],
-            [0],
-            [32],
+            [$rule, []],
+            [$rule, new stdClass()],
+            [$rule, tmpfile()],
+            [$rule, true],
+            [$rule, false],
+            [$rule, ''],
+            [$rule, -2],
+            [$rule, -0],
+            [$rule, 0],
+            [$rule, 32],
         ];
     }
 }

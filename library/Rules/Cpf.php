@@ -9,16 +9,35 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class Cpf extends AbstractRule
+use function mb_strlen;
+use function preg_match;
+use function preg_replace;
+
+/**
+ * Validates whether the input is a CPF (Brazilian Natural Persons Register) number.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jair Henrique <jair.henrique@gmail.com>
+ * @author Jayson Reis <santosdosreis@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class Cpf extends AbstractRule
 {
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
         // Code ported from jsfromhell.com
         $c = preg_replace('/\D/', '', $input);
 
-        if (strlen($c) != 11 || preg_match("/^{$c[0]}{11}$/", $c)) {
+        if (11 != mb_strlen($c) || preg_match("/^{$c[0]}{11}$/", $c)) {
             return false;
         }
 

@@ -1,8 +1,8 @@
 # Size
 
-- `v::size(string $minSize)`
-- `v::size(string $minSize, string $maxSize)`
-- `v::size(null, string $maxSize)`
+- `Size(string $minSize)`
+- `Size(string $minSize, string $maxSize)`
+- `Size(null, string $maxSize)`
 
 Validates file sizes:
 
@@ -33,17 +33,23 @@ v::size('1.5mb')->validate($fileInfo); // Will return true or false
 
 Message template for this validator includes `{{minSize}}` and `{{maxSize}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 
-  * [Directory](Directory.md)
-  * [Executable](Executable.md)
-  * [Exists](Exists.md)
-  * [Extension](Extension.md)
-  * [File](File.md)
-  * [Image](Image.md)
-  * [Mimetype](Mimetype.md)
-  * [Readable](Readable.md)
-  * [SymbolicLink](SymbolicLink.md)
-  * [Uploaded](Uploaded.md)
-  * [Writable](Writable.md)
+- [Directory](Directory.md)
+- [Executable](Executable.md)
+- [Exists](Exists.md)
+- [Extension](Extension.md)
+- [File](File.md)
+- [Image](Image.md)
+- [Mimetype](Mimetype.md)
+- [Readable](Readable.md)
+- [SymbolicLink](SymbolicLink.md)
+- [Uploaded](Uploaded.md)
+- [Writable](Writable.md)

@@ -9,11 +9,18 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
 
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Caio César Tavares <caiotava@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class Not extends AbstractRule
 {
     public $rule;
@@ -23,22 +30,22 @@ class Not extends AbstractRule
         $this->rule = $rule;
     }
 
-    public function setName($name)
+    public function setName(string $name): Validatable
     {
         $this->rule->setName($name);
 
         return parent::setName($name);
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
-        return (false == $this->rule->validate($input));
+        return false === $this->rule->validate($input);
     }
 
-    public function assert($input)
+    public function assert($input): void
     {
         if ($this->validate($input)) {
-            return true;
+            return;
         }
 
         $rule = $this->rule;
@@ -46,9 +53,10 @@ class Not extends AbstractRule
             $rule = $this->absorbAllOf($rule, $input);
         }
 
-        throw $rule
-            ->reportError($input)
-            ->setMode(ValidationException::MODE_NEGATIVE);
+        $exception = $rule->reportError($input);
+        $exception->updateMode(ValidationException::MODE_NEGATIVE);
+
+        throw $exception;
     }
 
     private function absorbAllOf(AllOf $rule, $input)

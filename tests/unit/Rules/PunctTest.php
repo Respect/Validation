@@ -9,53 +9,59 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Punct
- * @covers Respect\Validation\Exceptions\PunctException
+ * @covers \Respect\Validation\Exceptions\PunctException
+ * @covers \Respect\Validation\Rules\AbstractFilterRule
+ * @covers \Respect\Validation\Rules\Punct
+ *
+ * @author Andre Ramaciotti <andre@ramaciotti.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ * @author Pascal Borreli <pascal@borreli.com>
  */
 class PunctTest extends TestCase
 {
     /**
      * @dataProvider providerForValidPunct
+     *
+     * @test
      */
-    public function testValidDataWithPunctShouldReturnTrue($validPunct, $additional = '')
+    public function validDataWithPunctShouldReturnTrue($validPunct, $additional = ''): void
     {
         $validator = new Punct($additional);
-        $this->assertTrue($validator->validate($validPunct));
+        self::assertTrue($validator->validate($validPunct));
     }
 
     /**
      * @dataProvider providerForInvalidPunct
-     * @expectedException Respect\Validation\Exceptions\PunctException
+     * @expectedException \Respect\Validation\Exceptions\PunctException
+     *
+     * @test
      */
-    public function testInvalidPunctShouldFailAndThrowPunctException($invalidPunct, $additional = '')
+    public function invalidPunctShouldFailAndThrowPunctException($invalidPunct, $additional = ''): void
     {
         $validator = new Punct($additional);
-        $this->assertFalse($validator->validate($invalidPunct));
-        $this->assertFalse($validator->assert($invalidPunct));
-    }
-
-    /**
-     * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
-     */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
-    {
-        $validator = new Punct($additional);
+        self::assertFalse($validator->validate($invalidPunct));
+        $validator->assert($invalidPunct);
     }
 
     /**
      * @dataProvider providerAdditionalChars
+     *
+     * @test
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function additionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Punct($additional);
-        $this->assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($query));
     }
 
     public function providerAdditionalChars()
@@ -63,15 +69,6 @@ class PunctTest extends TestCase
         return [
             ['abc123 ', '!@#$%^&*(){} abc 123'],
             ["abc123 \t\n", "[]?+=/\\-_|\"',<>. \t \n abc 123"],
-        ];
-    }
-
-    public function providerForInvalidParams()
-    {
-        return [
-            [new \stdClass()],
-            [[]],
-            [0x2],
         ];
     }
 

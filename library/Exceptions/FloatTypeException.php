@@ -9,16 +9,27 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
-class FloatTypeException extends ValidationException
+/**
+ * Exception class for FloatType rule.
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Reginaldo Junior <76regi@gmail.com>
+ */
+final class FloatTypeException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be of the type float',
+            self::STANDARD => '{{name}} must be of type float',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be of the type float',
+            self::STANDARD => '{{name}} must not be of type float',
         ],
     ];
 }

@@ -9,15 +9,27 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Test\RuleTestCase;
+
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\Pesel
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\Pesel
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Tomasz Regdos <tomek@regdos.com>
  */
-class PeselTest extends RuleTestCase
+final class PeselTest extends RuleTestCase
 {
-    public function providerForValidInput()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
         $rule = new Pesel();
 
@@ -29,11 +41,14 @@ class PeselTest extends RuleTestCase
             [$rule, '50083014540'],
             [$rule, '69090515504'],
             [$rule, '21120209256'],
-            [$rule, '01320613891']
+            [$rule, '01320613891'],
         ];
     }
 
-    public function providerForInvalidInput()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         $rule = new Pesel();
 
@@ -46,7 +61,7 @@ class PeselTest extends RuleTestCase
             [$rule, '690905155.4'],
             [$rule, '21120209251'],
             [$rule, '21120209250'],
-            [$rule, '01320613890']
+            [$rule, '01320613890'],
         ];
     }
 }

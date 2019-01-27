@@ -9,10 +9,19 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
 
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Mehmet Tolga Avcioglu <mehmet@activecom.net>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ * @author Róbert Nagy <vrnagy@gmail.com>
+ */
 class Domain extends AbstractComposite
 {
     protected $tld;
@@ -28,19 +37,21 @@ class Domain extends AbstractComposite
         $this->otherParts = new AllOf(
             new Alnum('-'),
             new Not(new StartsWith('-')),
-            new OneOf(
+            new AnyOf(
                 new Not(new Contains('--')),
                 new Callback(function ($str) {
-                    return substr_count($str, '--') == 1;
+                    return 1 == mb_substr_count($str, '--');
                 })
             ),
             new Not(new EndsWith('-'))
         );
+
+        parent::__construct();
     }
 
     public function tldCheck($do = true)
     {
-        if ($do === true) {
+        if (true === $do) {
             $this->tld = new Tld();
         } else {
             $this->tld = new AllOf(
@@ -55,7 +66,7 @@ class Domain extends AbstractComposite
         return true;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         foreach ($this->checks as $chk) {
             if (!$chk->validate($input)) {
@@ -63,7 +74,7 @@ class Domain extends AbstractComposite
             }
         }
 
-        if (count($parts = explode('.', $input)) < 2
+        if (count($parts = explode('.', (string) $input)) < 2
             || !$this->tld->validate(array_pop($parts))) {
             return false;
         }
@@ -77,14 +88,14 @@ class Domain extends AbstractComposite
         return true;
     }
 
-    public function assert($input)
+    public function assert($input): void
     {
         $e = [];
         foreach ($this->checks as $chk) {
             $this->collectAssertException($e, $chk, $input);
         }
 
-        if (count($parts = explode('.', $input)) >= 2) {
+        if (count($parts = explode('.', (string) $input)) >= 2) {
             $this->collectAssertException($e, $this->tld, array_pop($parts));
         }
 
@@ -93,13 +104,11 @@ class Domain extends AbstractComposite
         }
 
         if (count($e)) {
-            throw $this->reportError($input)->setRelated($e);
+            throw $this->reportError($input)->addChildren($e);
         }
-
-        return true;
     }
 
-    protected function collectAssertException(&$exceptions, $validator, $input)
+    protected function collectAssertException(&$exceptions, $validator, $input): void
     {
         try {
             $validator->assert($input);
@@ -108,7 +117,7 @@ class Domain extends AbstractComposite
         }
     }
 
-    public function check($input)
+    public function check($input): void
     {
         foreach ($this->checks as $chk) {
             $chk->check($input);
@@ -121,7 +130,5 @@ class Domain extends AbstractComposite
         foreach ($parts as $p) {
             $this->otherParts->check($p);
         }
-
-        return true;
     }
 }

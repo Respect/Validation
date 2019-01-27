@@ -9,27 +9,34 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use function ctype_digit;
+use function mb_strlen;
 
 /**
  * Validates a Dutch citizen service number (BSN).
  *
- * @author Ronald Drenth <ronalddrenth@gmail.com>
- *
  * @see https://nl.wikipedia.org/wiki/Burgerservicenummer
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ronald Drenth <ronalddrenth@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class Bsn extends AbstractRule
+final class Bsn extends AbstractRule
 {
     /**
      * {@inheritdoc}
      */
-    public function validate($input)
+    public function validate($input): bool
     {
         if (!ctype_digit($input)) {
             return false;
         }
 
-        if (strlen($input) !== 9) {
+        if (9 !== mb_strlen($input)) {
             return false;
         }
 
@@ -38,6 +45,6 @@ class Bsn extends AbstractRule
             $sum += $i * $input[9 - $i];
         }
 
-        return $sum !== 0 && $sum % 11 === 0;
+        return 0 !== $sum && 0 === $sum % 11;
     }
 }

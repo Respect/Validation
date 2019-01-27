@@ -1,3 +1,5 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 
@@ -9,8 +11,8 @@ use Respect\Validation\Validator as v;
 try {
     v::identityCard('PL')->check('AYE205411');
 } catch (PlIdentityCardException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 "AYE205411" must be a valid Polish Identity Card number

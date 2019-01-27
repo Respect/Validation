@@ -9,86 +9,81 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
 use DateTime;
+use Respect\Validation\Test\RuleTestCase;
+use Respect\Validation\Test\Stubs\CountableStub;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\Between
- * @covers Respect\Validation\Exceptions\BetweenException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\AbstractEnvelope
+ * @covers \Respect\Validation\Rules\Between
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class BetweenTest extends TestCase
+final class BetweenTest extends RuleTestCase
 {
-    public function providerValid()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
         return [
-            [0, 1, true, 0],
-            [0, 1, true, 1],
-            [10, 20, false, 15],
-            [10, 20, true, 20],
-            [-10, 20, false, -5],
-            [-10, 20, false, 0],
-            ['a', 'z', false, 'j'],
-            [
-                new DateTime('yesterday'),
-                new DateTime('tomorrow'),
-                false,
-                new DateTime('now'),
-            ],
-        ];
-    }
-
-    public function providerInvalid()
-    {
-        return [
-            [10, 20, false, ''],
-            [10, 20, true, ''],
-            [0, 1, false, 0],
-            [0, 1, false, 1],
-            [0, 1, false, 2],
-            [0, 1, false, -1],
-            [10, 20, false, 999],
-            [10, 20, false, 20],
-            [-10, 20, false, -11],
-            ['a', 'j', false, 'z'],
-            [
-                new DateTime('yesterday'),
-                new DateTime('now'),
-                false,
-                new DateTime('tomorrow'),
-            ],
+            [new Between(0, 1), 1],
+            [new Between(0, 1), 0],
+            [new Between(10, 20), 15],
+            [new Between(10, 20), 20],
+            [new Between(-10, 20), -5],
+            [new Between(-10, 20), 0],
+            [new Between('a', 'z'), 'j'],
+            [new Between(new DateTime('yesterday'), new DateTime('tomorrow')), new DateTime('now')],
+            [new Between(new CountableStub(1), new CountableStub(10)), 5],
         ];
     }
 
     /**
-     * @dataProvider providerValid
+     * {@inheritdoc}
      */
-    public function testValuesBetweenBoundsShouldPass($min, $max, $inclusive, $input)
+    public function providerForInvalidInput(): array
     {
-        $o = new Between($min, $max, $inclusive);
-        $this->assertTrue($o->__invoke($input));
-        $this->assertTrue($o->assert($input));
-        $this->assertTrue($o->check($input));
+        return [
+            [new Between(10, 20), ''],
+            [new Between(10, 20), ''],
+            [new Between(0, 1), 2],
+            [new Between(0, 1), -1],
+            [new Between(10, 20), 999],
+            [new Between(-10, 20), -11],
+            [new Between('a', 'j'), 'z'],
+            [new Between(new DateTime('yesterday'), new DateTime('now')), new DateTime('tomorrow')],
+            [new Between(new CountableStub(1), new CountableStub(10)), 11],
+        ];
     }
 
     /**
-     * @dataProvider providerInvalid
-     * @expectedException Respect\Validation\Exceptions\BetweenException
+     * @test
+     *
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
+     * @expectedExceptionMessage Minimum cannot be less than or equals to maximum
      */
-    public function testValuesOutBoundsShouldRaiseException($min, $max, $inclusive, $input)
+    public function minimumValueShouldNotBeGreaterThanMaximumValue(): void
     {
-        $o = new Between($min, $max, $inclusive);
-        $this->assertFalse($o->__invoke($input));
-        $this->assertFalse($o->assert($input));
+        new Between(10, 5);
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @test
+     *
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
+     * @expectedExceptionMessage Minimum cannot be less than or equals to maximum
      */
-    public function testInvalidConstructionParamsShouldRaiseException()
+    public function minimumValueShouldNotBeEqualsToMaximumValue(): void
     {
-        $o = new Between(10, 5);
+        new Between(5, 5);
     }
 }

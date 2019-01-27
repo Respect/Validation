@@ -9,10 +9,20 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
-class CountableException extends ValidationException
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author João Torquato <joao.otl@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class CountableException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be countable',

@@ -9,16 +9,32 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use stdClass;
+use function array_filter;
+use function is_array;
+use function is_numeric;
+use function is_string;
+use function trim;
 
-class NotBlank extends AbstractRule
+/**
+ * Validates if the given input is not a blank value (null, zeros, empty strings or empty arrays, recursively).
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class NotBlank extends AbstractRule
 {
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
         if (is_numeric($input)) {
-            return $input != 0;
+            return 0 != $input;
         }
 
         if (is_string($input)) {

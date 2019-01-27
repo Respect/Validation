@@ -9,43 +9,66 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
+use const FILTER_VALIDATE_EMAIL;
+use function class_exists;
+use function filter_var;
+use function is_string;
 
-class Email extends AbstractRule
+/**
+ * Validates an email address.
+ *
+ * @author Andrey Kolyshkin <a.kolyshkin@semrush.com>
+ * @author Eduardo Gulias Davis <me@egulias.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Paul Karikari <paulkarikari1@gmail.com>
+ */
+final class Email extends AbstractRule
 {
-    public function __construct(EmailValidator $emailValidator = null)
+    /**
+     * @var EmailValidator
+     */
+    private $validator;
+
+    /**
+     * Initializes the rule assigning the EmailValidator instance.
+     *
+     * If the EmailValidator instance is not defined, tries to create one.
+     *
+     * @param EmailValidator $validator
+     */
+    public function __construct(EmailValidator $validator = null)
     {
-        $this->emailValidator = $emailValidator;
+        $this->validator = $validator ?: $this->createEmailValidator();
     }
 
-    public function getEmailValidator()
-    {
-        if (!$this->emailValidator instanceof EmailValidator
-            && class_exists('Egulias\\EmailValidator\\EmailValidator')) {
-            $this->emailValidator = new EmailValidator();
-        }
-
-        return $this->emailValidator;
-    }
-
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
         if (!is_string($input)) {
             return false;
         }
 
-        $emailValidator = $this->getEmailValidator();
-        if (!$emailValidator instanceof EmailValidator) {
-            return (bool) filter_var($input, FILTER_VALIDATE_EMAIL);
+        if (null !== $this->validator) {
+            return $this->validator->isValid($input, new RFCValidation());
         }
 
-        if (!class_exists('Egulias\\EmailValidator\\Validation\\RFCValidation')) {
-            return $emailValidator->isValid($input);
+        return (bool) filter_var($input, FILTER_VALIDATE_EMAIL);
+    }
+
+    private function createEmailValidator(): ?EmailValidator
+    {
+        if (class_exists(EmailValidator::class)) {
+            return null;
         }
 
-        return $emailValidator->isValid($input, new RFCValidation());
+        return new EmailValidator();
     }
 }

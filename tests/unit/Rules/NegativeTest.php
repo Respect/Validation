@@ -9,67 +9,60 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\Negative
- * @covers Respect\Validation\Exceptions\NegativeException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\Negative
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ismael Elias <ismael.esq@hotmail.com>
  */
-class NegativeTest extends TestCase
+final class NegativeTest extends RuleTestCase
 {
-    protected $negativeValidator;
-
-    protected function setUp()
+    /*
+    * {@inheritdoc}
+    */
+    public function providerForValidInput(): array
     {
-        $this->negativeValidator = new Negative();
-    }
+        $rule = new Negative();
 
-    /**
-     * @dataProvider providerForNegative
-     */
-    public function testNegativeShouldPass($input)
-    {
-        $this->assertTrue($this->negativeValidator->assert($input));
-        $this->assertTrue($this->negativeValidator->__invoke($input));
-        $this->assertTrue($this->negativeValidator->check($input));
-    }
-
-    /**
-     * @dataProvider providerForNotNegative
-     * @expectedException Respect\Validation\Exceptions\NegativeException
-     */
-    public function testNotNegativeNumbersShouldThrowNegativeException($input)
-    {
-        $this->assertFalse($this->negativeValidator->__invoke($input));
-        $this->assertFalse($this->negativeValidator->assert($input));
-    }
-
-    public function providerForNegative()
-    {
         return [
-            ['-1.44'],
-            [-1e-5],
-            [-10],
+            [$rule, '-1.44'],
+            [$rule, -1e-5],
+            [$rule, -10],
         ];
     }
 
-    public function providerForNotNegative()
+    /*
+    * {@inheritdoc}
+    */
+    public function providerForInvalidInput(): array
     {
+        $rule = new Negative();
+
         return [
-            [''],
-            [0],
-            [-0],
-            [null],
-            ['a'],
-            [' '],
-            ['Foo'],
-            [16],
-            ['165'],
-            [123456],
-            [1e10],
+            [$rule, ''],
+            [$rule, []],
+            [$rule, new stdClass()],
+            [$rule, 0],
+            [$rule, -0],
+            [$rule, null],
+            [$rule, 'a'],
+            [$rule, ' '],
+            [$rule, 'Foo'],
+            [$rule, 16],
+            [$rule, '165'],
+            [$rule, 123456],
+            [$rule, 1e10],
         ];
     }
 }

@@ -9,53 +9,59 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Graph
- * @covers Respect\Validation\Exceptions\GraphException
+ * @covers \Respect\Validation\Exceptions\GraphException
+ * @covers \Respect\Validation\Rules\AbstractFilterRule
+ * @covers \Respect\Validation\Rules\Graph
+ *
+ * @author Andre Ramaciotti <andre@ramaciotti.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ * @author Pascal Borreli <pascal@borreli.com>
  */
 class GraphTest extends TestCase
 {
     /**
      * @dataProvider providerForValidGraph
+     *
+     * @test
      */
-    public function testValidDataWithGraphCharsShouldReturnTrue($validGraph, $additional = '')
+    public function validDataWithGraphCharsShouldReturnTrue($validGraph, $additional = ''): void
     {
         $validator = new Graph($additional);
-        $this->assertTrue($validator->validate($validGraph));
+        self::assertTrue($validator->validate($validGraph));
     }
 
     /**
      * @dataProvider providerForInvalidGraph
-     * @expectedException Respect\Validation\Exceptions\GraphException
+     * @expectedException \Respect\Validation\Exceptions\GraphException
+     *
+     * @test
      */
-    public function testInvalidGraphShouldFailAndThrowGraphException($invalidGraph, $additional = '')
+    public function invalidGraphShouldFailAndThrowGraphException($invalidGraph, $additional = ''): void
     {
         $validator = new Graph($additional);
-        $this->assertFalse($validator->validate($invalidGraph));
-        $this->assertFalse($validator->assert($invalidGraph));
-    }
-
-    /**
-     * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
-     */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
-    {
-        $validator = new Graph($additional);
+        self::assertFalse($validator->validate($invalidGraph));
+        $validator->assert($invalidGraph);
     }
 
     /**
      * @dataProvider providerAdditionalChars
+     *
+     * @test
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function additionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Graph($additional);
-        $this->assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($query));
     }
 
     public function providerAdditionalChars()
@@ -63,15 +69,6 @@ class GraphTest extends TestCase
         return [
             [' ', '!@#$%^&*(){} abc 123'],
             [" \t\n", "[]?+=/\\-_|\"',<>. \t \n abc 123"],
-        ];
-    }
-
-    public function providerForInvalidParams()
-    {
-        return [
-            [new \stdClass()],
-            [[]],
-            [0x2],
         ];
     }
 

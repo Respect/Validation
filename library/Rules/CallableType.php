@@ -9,17 +9,23 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+use function is_callable;
+
 /**
+ * Validates whether the pseudo-type of the input is callable.
+ *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class CallableType extends AbstractRule
+final class CallableType extends AbstractRule
 {
     /**
      * {@inheritdoc}
      */
-    public function validate($input)
+    public function validate($input): bool
     {
         return is_callable($input);
     }

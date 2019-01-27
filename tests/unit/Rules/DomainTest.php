@@ -9,54 +9,67 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validator as v;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Domain
- * @covers Respect\Validation\Exceptions\DomainException
+ * @covers \Respect\Validation\Exceptions\DomainException
+ * @covers \Respect\Validation\Rules\Domain
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Mehmet Tolga Avcioglu <mehmet@activecom.net>
  */
 class DomainTest extends TestCase
 {
     protected $object;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new Domain();
     }
 
     /**
      * @dataProvider providerForDomain
+     *
+     * @test
      */
-    public function testValidDomainsShouldReturnTrue($input, $tldcheck = true)
+    public function validDomainsShouldReturnTrue($input, $tldcheck = true): void
     {
         $this->object->tldCheck($tldcheck);
-        $this->assertTrue($this->object->__invoke($input));
-        $this->assertTrue($this->object->assert($input));
-        $this->assertTrue($this->object->check($input));
+        self::assertTrue($this->object->__invoke($input));
+        $this->object->assert($input);
+        $this->object->check($input);
     }
 
     /**
      * @dataProvider providerForNotDomain
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException \Respect\Validation\Exceptions\ValidationException
+     *
+     * @test
      */
-    public function testNotDomain($input, $tldcheck = true)
+    public function notDomain($input, $tldcheck = true): void
     {
         $this->object->tldCheck($tldcheck);
-        $this->assertFalse($this->object->check($input));
+        $this->object->check($input);
     }
 
     /**
      * @dataProvider providerForNotDomain
-     * @expectedException Respect\Validation\Exceptions\DomainException
+     * @expectedException \Respect\Validation\Exceptions\DomainException
+     *
+     * @test
      */
-    public function testNotDomainCheck($input, $tldcheck = true)
+    public function notDomainCheck($input, $tldcheck = true): void
     {
         $this->object->tldCheck($tldcheck);
-        $this->assertFalse($this->object->assert($input));
+        $this->object->assert($input);
     }
 
     public function providerForDomain()
@@ -91,10 +104,12 @@ class DomainTest extends TestCase
 
     /**
      * @dataProvider providerForDomain
+     *
+     * @test
      */
-    public function testBuilder($validDomain, $checkTLD = true)
+    public function builder($validDomain, $checkTLD = true): void
     {
-        $this->assertTrue(
+        self::assertTrue(
             v::domain($checkTLD)->validate($validDomain),
             sprintf('Domain "%s" should be valid. (Check TLD: %s)', $validDomain, var_export($checkTLD, true))
         );

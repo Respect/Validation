@@ -9,20 +9,51 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class EndsWith extends AbstractRule
+use function end;
+use function is_array;
+use function mb_detect_encoding;
+use function mb_strlen;
+use function mb_strripos;
+use function mb_strrpos;
+
+/**
+ * Validates only if the value is at the end of the input.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Hugo Hamon <hugo.hamon@sensiolabs.com>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class EndsWith extends AbstractRule
 {
+    /**
+     * @var mixed
+     */
     public $endValue;
+
+    /**
+     * @var bool
+     */
     public $identical;
 
-    public function __construct($endValue, $identical = false)
+    /**
+     * @param mixed $endValue
+     * @param bool $identical
+     */
+    public function __construct($endValue, bool $identical = false)
     {
         $this->endValue = $endValue;
         $this->identical = $identical;
     }
 
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
         if ($this->identical) {
             return $this->validateIdentical($input);
@@ -31,7 +62,7 @@ class EndsWith extends AbstractRule
         return $this->validateEquals($input);
     }
 
-    protected function validateEquals($input)
+    private function validateEquals($input): bool
     {
         if (is_array($input)) {
             return end($input) == $this->endValue;
@@ -41,7 +72,7 @@ class EndsWith extends AbstractRule
             === mb_strlen($input, $enc) - mb_strlen($this->endValue, $enc);
     }
 
-    protected function validateIdentical($input)
+    private function validateIdentical($input): bool
     {
         if (is_array($input)) {
             return end($input) === $this->endValue;

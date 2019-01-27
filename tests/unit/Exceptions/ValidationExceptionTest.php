@@ -9,154 +9,188 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
-use ArrayIterator;
-use DateTime;
-use Exception;
-use Respect\Validation\TestCase;
-use SplFileInfo;
-use stdClass;
+use Respect\Validation\Test\TestCase;
 
-class ValidationExceptionTest extends TestCase
+/**
+ * @group core
+ * @covers \Respect\Validation\Exceptions\ValidationException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Andy Wendt <andy@awendt.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class ValidationExceptionTest extends TestCase
 {
-    public function testItImplementsExceptionInterface()
+    /**
+     * @test
+     */
+    public function itShouldImplementException(): void
     {
-        $validationException = new ValidationException();
-        $this->assertInstanceOf('Respect\Validation\Exceptions\ExceptionInterface', $validationException);
+        $sut = new ValidationException('input', 'id', [], 'trim');
+
+        self::assertInstanceOf(Exception::class, $sut);
     }
 
     /**
-     * @dataProvider providerForFormat
+     * @test
      */
-    public function testFormatShouldReplacePlaceholdersProperly($template, $result, $vars)
+    public function itShouldRetrieveId(): void
     {
-        $this->assertEquals(
-            $result,
-            ValidationException::format($template, $vars)
+        $id = 'my id';
+        $sut = new ValidationException('input', $id, [], 'trim');
+
+        self::assertSame($id, $sut->getId());
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldRetrieveParams(): void
+    {
+        $params = ['foo' => true, 'bar' => 23];
+
+        $sut = new ValidationException('input', 'id', $params, 'trim');
+
+        self::assertSame($params, $sut->getParams());
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldRetrieveASingleParameter(): void
+    {
+        $name = 'any name';
+        $value = 'any value';
+
+        $sut = new ValidationException('input', 'id', [$name => $value], 'trim');
+
+        self::assertSame($value, $sut->getParam($name));
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldReturnNullWhenParameterCanNotBeFound(): void
+    {
+        $sut = new ValidationException('input', 'id', [], 'trim');
+
+        self::assertNull($sut->getParam('foo'));
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldHaveADefaultTemplate(): void
+    {
+        $sut = new ValidationException('input', 'id', [], 'trim');
+
+        self::assertSame('"input" must be valid', $sut->getMessage());
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldUpdateMode(): void
+    {
+        $sut = new ValidationException('input', 'id', [], 'trim');
+        $sut->updateMode(ValidationException::MODE_NEGATIVE);
+
+        self::assertSame('"input" must not be valid', $sut->getMessage());
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldUpdateTemplate(): void
+    {
+        $template = 'This is my new template';
+
+        $sut = new ValidationException('input', 'id', [], 'trim');
+        $sut->updateTemplate($template);
+
+        self::assertEquals($template, $sut->getMessage());
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldTellWhenHasAsCustomUpdateTemplate(): void
+    {
+        $sut = new ValidationException('input', 'id', [], 'trim');
+
+        self::assertFalse($sut->hasCustomTemplate());
+
+        $sut->updateTemplate('This is my new template');
+
+        self::assertTrue($sut->hasCustomTemplate());
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldUseTranslator(): void
+    {
+        $template = ' This is my new template ';
+        $expected = trim($template);
+
+        $sut = new ValidationException('input', 'id', [], 'trim');
+        $sut->updateTemplate($template);
+
+        self::assertEquals($expected, $sut->getMessage());
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldReplacePlaceholders(): void
+    {
+        $sut = new ValidationException('foo', 'id', ['bar' => 1, 'baz' => 2], 'trim');
+        $sut->updateTemplate('{{name}} {{bar}} {{baz}}');
+
+        self::assertEquals(
+            '"foo" 1 2',
+            $sut->getMessage()
         );
     }
 
     /**
-     * @dataProvider providerForStringify
+     * @test
      */
-    public function testStringifyShouldConvertStringsProperly($input, $result)
+    public function itShouldKeepPlaceholdersThatCanNotReplace(): void
     {
-        $this->assertStringMatchesFormat(
-            $result,
-            ValidationException::stringify($input)
+        $sut = new ValidationException('foo', 'id', ['foo' => 1], 'trim');
+        $sut->updateTemplate('{{name}} {{foo}} {{bar}}');
+
+        self::assertEquals(
+            '"foo" 1 {{bar}}',
+            $sut->getMessage()
         );
     }
 
-    public function testGetMainMessageShouldApplyTemplatePlaceholders()
+    /**
+     * @test
+     */
+    public function itShouldUpdateParams(): void
     {
-        $sampleValidationException = new ValidationException();
-        $sampleValidationException->configure('foo', ['bar' => 1, 'baz' => 2]);
-        $sampleValidationException->setTemplate('{{name}} {{bar}} {{baz}}');
-        $this->assertEquals(
-            'foo 1 2',
-            $sampleValidationException->getMainMessage()
-        );
+        $sut = new ValidationException('input', 'id', ['foo' => 1], 'trim');
+        $sut->updateTemplate('{{foo}}');
+        $sut->updateParams(['foo' => 2]);
+
+        self::assertEquals('2', $sut->getMessage());
     }
 
-    public function testSettingTemplates()
+    /**
+     * @test
+     */
+    public function itShouldConvertToString(): void
     {
-        $x = new ValidationException();
-        $x->configure('bar');
-        $x->setTemplate('foo');
-        $this->assertEquals('foo', $x->getTemplate());
-    }
+        $sut = new ValidationException('input', 'id', [], 'trim');
 
-    public function providerForStringify()
-    {
-        $object1 = new SplFileInfo('stringify.phpt'); // __toString()
-
-        $object2 = new DateTime('1988-09-09 23:59:59');
-
-        $object3 = new stdClass();
-
-        $object4 = new stdClass();
-        $object4->foo = 1;
-        $object4->bar = false;
-
-        $object5 = new stdClass();
-        $objectRecursive = $object5;
-        for ($i = 0; $i < 10; ++$i) {
-            $objectRecursive->name = new stdClass();
-            $objectRecursive = $objectRecursive->name;
-        }
-
-        $exception = new Exception('My message');
-
-        $iterator1 = new ArrayIterator([1, 2, 3]);
-        $iterator2 = new ArrayIterator(['a' => 1, 'b' => 2, 'c' => 3]);
-
-        return [
-            ['', '""'],
-            ['foo', '"foo"'],
-            [INF, 'INF'],
-            [-INF, '-INF'],
-            [acos(4), 'NaN'],
-            [123, '123'],
-            [123.456, '123.456'],
-            [[], '{ }'],
-            [[false], '{ false }'],
-            [[1,2,3,4,5,6,7,8,9,10], '{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }'],
-            [range(1, 80), '{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ... }'],
-            [
-                ['foo' => true, 'bar' => ['baz' => 123, 'qux' => [1, 2, 3]]],
-                '{ "foo": true, "bar": { "baz": 123, "qux": { 1, 2, 3 } } }',
-            ],
-            [
-                ['foo' => true, 'bar' => ['baz' => 123, 'qux' => ['norf' => [1,2,3]]]],
-                '{ "foo": true, "bar": { "baz": 123, "qux": { "norf": ... } } }',
-            ],
-            [[[], 'foo'], '{ { }, "foo" }'],
-            [[[1], 'foo'], '{ { 1 }, "foo" }'],
-            [[1, [2, [3]]], '{ 1, { 2, { 3 } } }'],
-            [[1, [2, [3, [4]]]], '{ 1, { 2, { 3, ... } } }'],
-            [[1, [2, [3, [4, [5]]]]], '{ 1, { 2, { 3, ... } } }'],
-            [['foo', 'bar'], '{ "foo", "bar" }'],
-            [['foo', -1], '{ "foo", -1 }'],
-            [$object1, '"stringify.phpt"'],
-            [$object2, sprintf('"%s"', $object2->format('Y-m-d H:i:s'))],
-            [$object3, '`[object] (stdClass: { })`'],
-            [$object4, '`[object] (stdClass: { "foo": 1, "bar": false })`'],
-            [$object5, '`[object] (stdClass: { "name": [object] (stdClass: ...) })`'],
-            [
-                $exception,
-                '`[exception] (Exception: { "message": "My message", "code": 0, "file": "%s:%d" })`',
-            ],
-            [$iterator1, '`[traversable] (ArrayIterator: { 1, 2, 3 })`'],
-            [$iterator2, '`[traversable] (ArrayIterator: { "a": 1, "b": 2, "c": 3 })`'],
-            [stream_context_create(), '`[resource] (stream-context)`'],
-            [tmpfile(), '`[resource] (stream)`'],
-            [xml_parser_create(), '`[resource] (xml)`'],
-            [
-                [$object4, [42, 43], true, null, tmpfile()],
-                '{ `[object] (stdClass: { "foo": 1, "bar": false })`, { 42, 43 }, true, null, `[resource] (stream)` }',
-            ],
-        ];
-    }
-
-    public function providerForFormat()
-    {
-        return [
-            [
-                '{{foo}} {{bar}} {{baz}}',
-                '"hello" "world" "respect"',
-                ['foo' => 'hello', 'bar' => 'world', 'baz' => 'respect'],
-            ],
-            [
-                '{{foo}} {{bar}} {{baz}}',
-                '"hello" {{bar}} "respect"',
-                ['foo' => 'hello', 'baz' => 'respect'],
-            ],
-            [
-                '{{foo}} {{bar}} {{baz}}',
-                '"hello" {{bar}} "respect"',
-                ['foo' => 'hello', 'bot' => 111, 'baz' => 'respect'],
-            ],
-        ];
+        self::assertSame('"input" must be valid', (string) $sut);
     }
 }

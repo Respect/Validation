@@ -9,45 +9,46 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Test\RuleTestCase;
+use Respect\Validation\Validatable;
+use SplStack;
+use stdClass;
+
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\Each
- * @covers Respect\Validation\Exceptions\EachException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\Each
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class EachTest extends RuleTestCase
+final class EachTest extends RuleTestCase
 {
-    public function providerForValidInput()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
-        $ruleNotEmpty = new Each($this->getRuleMock(true));
-        $ruleAlphaItemIntKey = new Each($this->getRuleMock(true), $this->getRuleMock(true));
-        $ruleOnlyKeyValidation = new Each(null, $this->getRuleMock(true));
-
-        $intStack = new \SplStack();
-        $intStack->push(1);
-        $intStack->push(2);
-        $intStack->push(3);
-        $intStack->push(4);
-        $intStack->push(5);
-
-        $stdClass = new \stdClass;
-        $stdClass->name = 'Emmerson';
-        $stdClass->age = 22;
+        $rule = new Each($this->createValidatableMock(true));
 
         return [
-            [$ruleNotEmpty, [1, 2, 3, 4, 5]],
-            [$ruleNotEmpty, $intStack],
-            [$ruleNotEmpty, $stdClass],
-            [$ruleAlphaItemIntKey, ['a', 'b', 'c', 'd', 'e']],
-            [$ruleOnlyKeyValidation, ['a', 'b', 'c', 'd', 'e']],
+            [$rule, []],
+            [$rule, [1, 2, 3, 4, 5]],
         ];
     }
 
-    public function providerForInvalidInput()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
-        $rule = new Each($this->getRuleMock(false));
-        $ruleOnlyKeyValidation = new Each(null, $this->getRuleMock(false));
+        $rule = new Each($this->createValidatableMock(false));
 
         return [
             [$rule, 123],
@@ -55,70 +56,67 @@ class EachTest extends RuleTestCase
             [$rule, null],
             [$rule, false],
             [$rule, ['', 2, 3, 4, 5]],
-            [$ruleOnlyKeyValidation, ['age' => 22]],
+            [$rule, ['a', 2, 3, 4, 5]],
         ];
     }
 
-    public function testValidatorShouldPassIfEveryArrayItemPass()
+    /**
+     * @test
+     */
+    public function itShouldValidateTraversable(): void
     {
-        $v = new Each($this->getRuleMock(true));
-        $result = $v->check([1, 2, 3, 4, 5]);
-        $this->assertTrue($result);
-        $result = $v->assert([1, 2, 3, 4, 5]);
-        $this->assertTrue($result);
-    }
+        $validatable = $this->createMock(Validatable::class);
 
-    public function testValidatorShouldPassIfEveryArrayItemAndKeyPass()
-    {
-        $v = new Each($this->getRuleMock(true), $this->getRuleMock(true));
-        $result = $v->check(['a', 'b', 'c', 'd', 'e']);
-        $this->assertTrue($result);
-        $result = $v->assert(['a', 'b', 'c', 'd', 'e']);
-        $this->assertTrue($result);
-    }
+        $validatable
+            ->expects(self::at(0))
+            ->method('check')
+            ->with('A');
+        $validatable
+            ->expects(self::at(1))
+            ->method('check')
+            ->with('B');
+        $validatable
+            ->expects(self::at(2))
+            ->method('check')
+            ->with('C');
 
-    public function testValidatorShouldPassWithOnlyKeyValidation()
-    {
-        $v = new Each(null, $this->getRuleMock(true));
-        $result = $v->check(['a', 'b', 'c', 'd', 'e']);
-        $this->assertTrue($result);
-        $result = $v->assert(['a', 'b', 'c', 'd', 'e']);
-        $this->assertTrue($result);
+        $rule = new Each($validatable);
+
+        $input = new SplStack();
+        $input->push('C');
+        $input->push('B');
+        $input->push('A');
+
+        self::assertValidInput($rule, $input);
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\EachException
+     * @test
      */
-    public function testValidatorShouldNotPassWithOnlyKeyValidation()
+    public function itShouldValidateStdClass(): void
     {
-        $v = new Each(null, $this->getRuleMock(false));
-        $v->assert(['a', 'b', 'c', 'd', 'e']);
-    }
+        $validatable = $this->createMock(Validatable::class);
 
-    /**
-     * @expectedException Respect\Validation\Exceptions\EachException
-     */
-    public function testAssertShouldFailOnInvalidItem()
-    {
-        $v = new Each($this->getRuleMock(false));
-        $v->assert(['a', 2, 3, 4, 5]);
-    }
+        $validatable
+            ->expects(self::at(0))
+            ->method('check')
+            ->with(1);
+        $validatable
+            ->expects(self::at(1))
+            ->method('check')
+            ->with(2);
+        $validatable
+            ->expects(self::at(2))
+            ->method('check')
+            ->with(3);
 
-    /**
-     * @expectedException Respect\Validation\Exceptions\EachException
-     */
-    public function testAssertShouldFailWithNonIterableInput()
-    {
-        $v = new Each($this->getRuleMock(false));
-        $v->assert('a');
-    }
+        $rule = new Each($validatable);
 
-    /**
-     * @expectedException Respect\Validation\Exceptions\EachException
-     */
-    public function testCheckShouldFailWithNonIterableInput()
-    {
-        $v = new Each($this->getRuleMock(false));
-        $v->check(null);
+        $input = new stdClass();
+        $input->foo = 1;
+        $input->bar = 2;
+        $input->baz = 3;
+
+        self::assertValidInput($rule, $input);
     }
 }

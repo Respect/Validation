@@ -9,63 +9,55 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
-
-$GLOBALS['is_link'] = null;
-
-function is_link($link)
-{
-    $return = \is_link($link);
-    if (null !== $GLOBALS['is_link']) {
-        $return = $GLOBALS['is_link'];
-        $GLOBALS['is_link'] = null;
-    }
-
-    return $return;
-}
+use SplFileObject;
+use function tmpfile;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\SymbolicLink
- * @covers Respect\Validation\Exceptions\SymbolicLinkException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\SymbolicLink
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Gus Antoniassi <gus.antoniassi@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SymbolicLinkTest extends TestCase
+final class SymbolicLinkTest extends RuleTestCase
 {
     /**
-     * @covers Respect\Validation\Rules\SymbolicLink::validate
+     * {@inheritdoc}
      */
-    public function testValidSymbolicLinkShouldReturnTrue()
+    public function providerForValidInput(): array
     {
-        $GLOBALS['is_link'] = true;
+        $sut = new SymbolicLink();
 
-        $rule = new SymbolicLink();
-        $input = '/path/of/a/valid/link.lnk';
-        $this->assertTrue($rule->validate($input));
+        return [
+            'filename' => [$sut, $this->getFixtureDirectory().'/symbolic-link'],
+            'SplFileInfo' => [$sut, new SplFileInfo($this->getFixtureDirectory().'/symbolic-link')],
+            'SplFileObject' => [$sut, new SplFileObject($this->getFixtureDirectory().'/symbolic-link')],
+        ];
     }
 
     /**
-     * @covers Respect\Validation\Rules\SymbolicLink::validate
+     * {@inheritdoc}
      */
-    public function testInvalidSymbolicLinkShouldThrowException()
+    public function providerForInvalidInput(): array
     {
-        $GLOBALS['is_link'] = false;
+        $sut = new SymbolicLink();
 
-        $rule = new SymbolicLink();
-        $input = '/path/of/an/invalid/link.lnk';
-        $this->assertFalse($rule->validate($input));
-    }
-
-    /**
-     * @covers Respect\Validation\Rules\SymbolicLink::validate
-     */
-    public function testShouldValidateObjects()
-    {
-        $rule = new SymbolicLink();
-        $object = new SplFileInfo('tests/fixtures/symbolic-link');
-
-        $this->assertTrue($rule->validate($object));
+        return [
+            'no existing filename' => [$sut, $this->getFixtureDirectory().'/non-existing-symbolic-link'],
+            'no existing SplFileInfo' => [$sut, new SplFileInfo($this->getFixtureDirectory().'/non-existing-symbolic-link')],
+            'bool true' => [$sut, true],
+            'bool false' => [$sut, false],
+            'empty string' => [$sut, ''],
+            'array' => [$sut, []],
+            'resource' => [$sut, tmpfile()],
+        ];
     }
 }

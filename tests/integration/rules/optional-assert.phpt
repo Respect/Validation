@@ -1,3 +1,5 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 
@@ -9,5 +11,5 @@ v::optional(v::alpha())->assert('');
 v::optional(v::alpha())->assert(null);
 ?>
 ===DONE===
---EXPECTF--
+--EXPECT--
 ===DONE===

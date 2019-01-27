@@ -9,60 +9,62 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\Uppercase
- * @covers Respect\Validation\Exceptions\UppercaseException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\Uppercase
+ *
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
  */
-class UppercaseTest extends TestCase
+final class UppercaseTest extends RuleTestCase
 {
-    /**
-     * @dataProvider providerForValidUppercase
-     */
-    public function testValidUppercaseShouldReturnTrue($input)
+    /*
+    * {@inheritdoc}
+    */
+    public function providerForValidInput(): array
     {
-        $uppercase = new Uppercase();
-        $this->assertTrue($uppercase->validate($input));
-        $this->assertTrue($uppercase->assert($input));
-        $this->assertTrue($uppercase->check($input));
-    }
+        $rule = new Uppercase();
 
-    /**
-     * @dataProvider providerForInvalidUppercase
-     * @expectedException Respect\Validation\Exceptions\UppercaseException
-     */
-    public function testInvalidUppercaseShouldThrowException($input)
-    {
-        $lowercase = new Uppercase();
-        $this->assertFalse($lowercase->validate($input));
-        $this->assertFalse($lowercase->assert($input));
-    }
-
-    public function providerForValidUppercase()
-    {
         return [
-            [''],
-            ['UPPERCASE'],
-            ['UPPERCASE-WITH-DASHES'],
-            ['UPPERCASE WITH SPACES'],
-            ['UPPERCASE WITH NUMBERS 123'],
-            ['UPPERCASE WITH SPECIALS CHARACTERS LIKE Ã Ç Ê'],
-            ['WITH SPECIALS CHARACTERS LIKE # $ % & * +'],
-            ['ΤΆΧΙΣΤΗ ΑΛΏΠΗΞ ΒΑΦΉΣ ΨΗΜΈΝΗ ΓΗ, ΔΡΑΣΚΕΛΊΖΕΙ ΥΠΈΡ ΝΩΘΡΟΎ ΚΥΝΌΣ'],
+            [$rule, ''],
+            [$rule, 'UPPERCASE'],
+            [$rule, 'UPPERCASE-WITH-DASHES'],
+            [$rule, 'UPPERCASE WITH SPACES'],
+            [$rule, 'UPPERCASE WITH NUMBERS 123'],
+            [$rule, 'UPPERCASE WITH SPECIALS CHARACTERS LIKE Ã Ç Ê'],
+            [$rule, 'WITH SPECIALS CHARACTERS LIKE # $ % & * +'],
+            [$rule, 'ΤΆΧΙΣΤΗ ΑΛΏΠΗΞ ΒΑΦΉΣ ΨΗΜΈΝΗ ΓΗ, ΔΡΑΣΚΕΛΊΖΕΙ ΥΠΈΡ ΝΩΘΡΟΎ ΚΥΝΌΣ'],
+            // Uppercase should not restrict these
+            [$rule, '42'],
+            [$rule, '!@#$%^'],
         ];
     }
 
-    public function providerForInvalidUppercase()
+    /*
+    * {@inheritdoc}
+    */
+    public function providerForInvalidInput(): array
     {
+        $rule = new Uppercase();
+
         return [
-            ['lowercase'],
-            ['CamelCase'],
-            ['First Character Uppercase'],
-            ['With Numbers 1 2 3'],
+            [$rule, 42],
+            [$rule, []],
+            [$rule, new stdClass()],
+            [$rule, 'lowercase'],
+            [$rule, 'CamelCase'],
+            [$rule, 'First Character Uppercase'],
+            [$rule, 'With Numbers 1 2 3'],
         ];
     }
 }

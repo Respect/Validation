@@ -9,17 +9,32 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-/**
- * @link http://semver.org/
- */
-class Version extends AbstractRule
-{
-    public function validate($input)
-    {
-        $pattern = '/^[0-9]+\.[0-9]+\.[0-9]+([+-][^+-][0-9A-Za-z-.]*)?$/';
+use function is_string;
+use function preg_match;
 
-        return (bool) preg_match($pattern, $input);
+/**
+ * Validates version numbers using Semantic Versioning.
+ *
+ * @see http://semver.org/
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class Version extends AbstractRule
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
+    {
+        if (!is_string($input)) {
+            return false;
+        }
+
+        return preg_match('/^[0-9]+\.[0-9]+\.[0-9]+([+-][^+-][0-9A-Za-z-.]*)?$/', $input) > 0;
     }
 }

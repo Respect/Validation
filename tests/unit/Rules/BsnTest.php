@@ -9,88 +9,66 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\Bsn
- * @covers Respect\Validation\Exceptions\BsnException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\Bsn
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ronald Drenth <ronalddrenth@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class BsnTest extends TestCase
+final class BsnTest extends RuleTestCase
 {
-    /**
-     * @var Bsn
-     */
-    private $rule;
-
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    public function providerForValidInput(): array
     {
-        $this->rule = new Bsn();
-    }
+        $rule = new Bsn();
 
-    /**
-     * @dataProvider providerForBsn
-     *
-     * @param string $input
-     */
-    public function testShouldValidateBsn($input)
-    {
-        $this->assertTrue($this->rule->validate($input));
-    }
-
-    /**
-     * @dataProvider providerForInvalidBsn
-     *
-     * @param string $input
-     */
-    public function testShouldNotValidateBsn($input)
-    {
-        $this->assertFalse($this->rule->validate($input));
-    }
-
-    /**
-     * @return array
-     */
-    public function providerForBsn()
-    {
         return [
-            ['612890053'],
-            ['087880532'],
-            ['386625918'],
-            ['601608021'],
-            ['254650703'],
-            ['478063441'],
-            ['478063441'],
-            ['187368429'],
-            ['541777348'],
-            ['254283883'],
+            [$rule, '612890053'],
+            [$rule, '087880532'],
+            [$rule, '386625918'],
+            [$rule, '601608021'],
+            [$rule, '254650703'],
+            [$rule, '478063441'],
+            [$rule, '478063441'],
+            [$rule, '187368429'],
+            [$rule, '541777348'],
+            [$rule, '254283883'],
         ];
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
-    public function providerForInvalidBsn()
+    public function providerForInvalidInput(): array
     {
+        $rule = new Bsn();
+
         return [
-            ['1234567890'],
-            ['0987654321'],
-            ['13579024'],
-            ['612890054'],
-            ['854650703'],
-            ['283958721'],
-            ['231859081'],
-            ['189023323'],
-            ['238150912'],
-            ['382409678'],
-            ['38240.678'],
-            ['38240a678'],
-            ['abcdefghi'],
+            [$rule, '1234567890'],
+            [$rule, '0987654321'],
+            [$rule, '13579024'],
+            [$rule, '612890054'],
+            [$rule, '854650703'],
+            [$rule, '283958721'],
+            [$rule, '231859081'],
+            [$rule, '189023323'],
+            [$rule, '238150912'],
+            [$rule, '382409678'],
+            [$rule, '38240.678'],
+            [$rule, '38240a678'],
+            [$rule, 'abcdefghi'],
         ];
     }
 }

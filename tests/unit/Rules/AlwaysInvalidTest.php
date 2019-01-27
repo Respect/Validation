@@ -9,17 +9,25 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\TestCase;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\AlwaysInvalid
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\AlwaysInvalid
+ *
+ * @author Andreas Wolf <dev@a-w.io>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class AlwaysInvalidTest extends TestCase
+final class AlwaysInvalidTest extends TestCase
 {
-    public function providerForValidAlwaysInvalid()
+    public function providerForInvalidInput(): array
     {
         return [
             [0],
@@ -35,12 +43,14 @@ class AlwaysInvalidTest extends TestCase
     }
 
     /**
-     * @dataProvider providerForValidAlwaysInvalid
+     * @test
+     *
+     * @dataProvider providerForInvalidInput
      */
-    public function testShouldValidateInputWhenItIsAValidAlwaysInvalid($input)
+    public function itShouldValidateInputWhenItIsAValidAlwaysInvalid($input): void
     {
         $rule = new AlwaysInvalid();
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 }

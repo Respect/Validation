@@ -1,3 +1,5 @@
+--CREDITS--
+William Espindola <oi@williamespindola.com.br>
 --FILE--
 <?php
 
@@ -7,4 +9,4 @@ use Respect\Validation\Validator as v;
 
 v::bsn()->check('612890053');
 ?>
---EXPECTF--
+--EXPECT--

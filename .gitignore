@@ -1,5 +1,7 @@
+.php_cs.cache
 .couscous/
 composer.lock
 Makefile
+phpstan.neon
 phpunit.xml
 vendor/

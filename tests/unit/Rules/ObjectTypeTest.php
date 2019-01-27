@@ -9,61 +9,52 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use ArrayObject;
+use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\ObjectType
- * @covers Respect\Validation\Exceptions\ObjectTypeException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\ObjectType
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ObjectTypeTest extends TestCase
+final class ObjectTypeTest extends RuleTestCase
 {
-    protected $object;
-
-    protected function setUp()
-    {
-        $this->object = new ObjectType();
-    }
-
     /**
-     * @dataProvider providerForObject
+     * {@inheritdoc}
      */
-    public function testObject($input)
+    public function providerForValidInput(): array
     {
-        $this->assertTrue($this->object->__invoke($input));
-        $this->assertTrue($this->object->assert($input));
-        $this->assertTrue($this->object->check($input));
-    }
+        $rule = new ObjectType();
 
-    /**
-     * @dataProvider providerForNotObject
-     * @expectedException Respect\Validation\Exceptions\ObjectTypeException
-     */
-    public function testNotObject($input)
-    {
-        $this->assertFalse($this->object->__invoke($input));
-        $this->assertFalse($this->object->assert($input));
-    }
-
-    public function providerForObject()
-    {
         return [
-            [new \stdClass()],
-            [new \ArrayObject()],
+            [$rule, new stdClass()],
+            [$rule, new ArrayObject()],
         ];
     }
 
-    public function providerForNotObject()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
+        $rule = new ObjectType();
+
         return [
-            [''],
-            [null],
-            [121],
-            [[]],
-            ['Foo'],
-            [false],
+            [$rule, ''],
+            [$rule, null],
+            [$rule, 121],
+            [$rule, []],
+            [$rule, 'Foo'],
+            [$rule, false],
         ];
     }
 }

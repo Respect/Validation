@@ -1,3 +1,6 @@
+--CREDITS--
+Edson Lima <dddwebdeveloper@gmail.com>
+Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 require 'vendor/autoload.php';
@@ -11,5 +14,5 @@ try {
     echo $e->getFullMessage();
 }
 ?>
---EXPECTF--
-- "Frank Zappa is fantastic" must not be string
+--EXPECT--
+- "Frank Zappa is fantastic" must not be of type string

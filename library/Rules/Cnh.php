@@ -9,11 +9,28 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class Cnh extends AbstractRule
+use function is_scalar;
+use function mb_strlen;
+use function preg_replace;
+
+/**
+ * Validates a Brazilian driver's license.
+ *
+ * @author Gabriel Pedro <gpedro@users.noreply.github.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Kinn Coelho Julião <kinncj@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class Cnh extends AbstractRule
 {
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
         if (!is_scalar($input)) {
             return false;
@@ -23,14 +40,14 @@ class Cnh extends AbstractRule
         $input = preg_replace('{\D}', '', (string) $input);
 
         // Validate length and invalid numbers
-        if ((strlen($input) != 11) || (intval($input) == 0)) {
+        if ((11 != mb_strlen($input)) || (0 === (int) $input)) {
             return false;
         }
 
         // Validate check digits using a modulus 11 algorithm
         for ($c = $s1 = $s2 = 0, $p = 9; $c < 9; $c++, $p--) {
-            $s1 += intval($input[$c]) * $p;
-            $s2 += intval($input[$c]) * (10 - $p);
+            $s1 += (int) $input[$c] * $p;
+            $s2 += (int) $input[$c] * (10 - $p);
         }
 
         if ($input[9] != (($dv1 = $s1 % 11) > 9) ? 0 : $dv1) {

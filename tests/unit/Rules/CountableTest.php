@@ -9,15 +9,27 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Test\RuleTestCase;
+
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\Countable
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\Countable
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author João Torquato <joao.otl@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class CountableTest extends RuleTestCase
+final class CountableTest extends RuleTestCase
 {
-    public function providerForValidInput()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
         $rule = new Countable();
 
@@ -28,7 +40,10 @@ class CountableTest extends RuleTestCase
         ];
     }
 
-    public function providerForInvalidInput()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         $rule = new Countable();
 

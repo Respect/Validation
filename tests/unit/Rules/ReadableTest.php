@@ -9,63 +9,50 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
-
-$GLOBALS['is_readable'] = null;
-
-function is_readable($readable)
-{
-    $return = \is_readable($readable); // Running the real function
-    if (null !== $GLOBALS['is_readable']) {
-        $return = $GLOBALS['is_readable'];
-        $GLOBALS['is_readable'] = null;
-    }
-
-    return $return;
-}
+use stdClass;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\Readable
- * @covers Respect\Validation\Exceptions\ReadableException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\Readable
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class ReadableTest extends TestCase
+final class ReadableTest extends RuleTestCase
 {
     /**
-     * @covers Respect\Validation\Rules\Readable::validate
+     * {@inheritdoc}
      */
-    public function testValidReadableFileShouldReturnTrue()
+    public function providerForValidInput(): array
     {
-        $GLOBALS['is_readable'] = true;
-
+        $file = $this->getFixtureDirectory().'/valid-image.gif';
         $rule = new Readable();
-        $input = '/path/of/a/valid/readable/file.txt';
-        $this->assertTrue($rule->validate($input));
+
+        return [
+            [$rule, $file],
+            [$rule, new SplFileInfo($file)],
+        ];
     }
 
     /**
-     * @covers Respect\Validation\Rules\Readable::validate
+     * {@inheritdoc}
      */
-    public function testInvalidReadableFileShouldReturnFalse()
+    public function providerForInvalidInput(): array
     {
-        $GLOBALS['is_readable'] = false;
-
+        $file = $this->getFixtureDirectory().'/invalid-image.gif';
         $rule = new Readable();
-        $input = '/path/of/an/invalid/readable/file.txt';
-        $this->assertFalse($rule->validate($input));
-    }
 
-    /**
-     * @covers Respect\Validation\Rules\Readable::validate
-     */
-    public function testShouldValidateObjects()
-    {
-        $rule = new Readable();
-        $object = new SplFileInfo('tests/fixtures/valid-image.gif');
-
-        $this->assertTrue($rule->validate($object));
+        return [
+            [$rule, $file],
+            [$rule, new SplFileInfo($file)],
+            [$rule, new stdClass()],
+        ];
     }
 }

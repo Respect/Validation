@@ -9,16 +9,26 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
-class IntTypeException extends ValidationException
+/**
+ * Exception class for IntType rule.
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class IntTypeException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be of the type integer',
+            self::STANDARD => '{{name}} must be of type integer',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be of the type integer',
+            self::STANDARD => '{{name}} must not be of type integer',
         ],
     ];
 }

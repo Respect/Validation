@@ -1,3 +1,5 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 require 'vendor/autoload.php';
@@ -12,7 +14,7 @@ try {
     echo $exception->getFullMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 - All of the required rules must pass for "really messed up screen#name"
   - "really messed up screen#name" must contain only letters (a-z) and digits (0-9)
   - "really messed up screen#name" must not contain whitespace

@@ -9,67 +9,67 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
+use stdClass;
+use const PHP_INT_MAX;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\FalseVal
- * @covers Respect\Validation\Exceptions\FalseValException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\FalseVal
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class FalseValTest extends TestCase
+final class FalseValTest extends RuleTestCase
 {
     /**
-     * @dataProvider validFalseProvider
+     * {@inheritdoc}
      */
-    public function testShouldValidatePatternAccordingToTheDefinedLocale($input)
+    public function providerForValidInput(): array
     {
-        $rule = new FalseVal();
+        $sut = new FalseVal();
 
-        $this->assertTrue($rule->validate($input));
-    }
-
-    public function validFalseProvider()
-    {
         return [
-            [false],
-            [0],
-            ['0'],
-            ['false'],
-            ['off'],
-            ['no'],
-            ['FALSE'],
-            ['OFF'],
-            ['NO'],
-            ['False'],
-            ['Off'],
-            ['No'],
+            'boolean false' => [$sut, false],
+            'empty string' => [$sut, ''],
+            'integer 0' => [$sut, 0],
+            '0' => [$sut, '0'],
+            'false' => [$sut, 'false'],
+            'FALSE' => [$sut, 'FALSE'],
+            'False' => [$sut, 'False'],
+            'no' => [$sut, 'no'],
+            'NO' => [$sut, 'NO'],
+            'No' => [$sut, 'No'],
+            'off' => [$sut, 'off'],
+            'OFF' => [$sut, 'OFF'],
+            'Off' => [$sut, 'Off'],
         ];
     }
 
     /**
-     * @dataProvider invalidFalseProvider
+     * {@inheritdoc}
      */
-    public function testShouldNotValidatePatternAccordingToTheDefinedLocale($input)
+    public function providerForInvalidInput(): array
     {
-        $rule = new FalseVal();
+        $sut = new FalseVal();
 
-        $this->assertFalse($rule->validate($input));
-    }
-
-    public function invalidFalseProvider()
-    {
         return [
-            [true],
-            [1],
-            ['1'],
-            [0.5],
-            [2],
-            ['true'],
-            ['on'],
-            ['yes'],
-            ['anything'],
+            'boolean true' => [$sut, true],
+            'integer bigger than 1' => [$sut, random_int(1, PHP_INT_MAX)],
+            'integer-string bigger than 1' => [$sut, (string) random_int(1, PHP_INT_MAX)],
+            'float bigger than 0' => [$sut, 0.5],
+            'true' => [$sut, 'true'],
+            'on' => [$sut, 'on'],
+            'yes' => [$sut, 'yes'],
+            'anything' => [$sut, 'anything'],
+            'empty array' => [$sut, []],
+            'object' => [$sut, new stdClass()],
         ];
     }
 }

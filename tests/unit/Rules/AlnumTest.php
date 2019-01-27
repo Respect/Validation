@@ -9,106 +9,74 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\Alnum
- * @covers Respect\Validation\Exceptions\AlnumException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\AbstractFilterRule
+ * @covers \Respect\Validation\Rules\Alnum
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Islam Elshobokshy <islam20088@hotmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ * @author Pascal Borreli <pascal@borreli.com>
  */
-class AlnumTest extends TestCase
+final class AlnumTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForValidAlnum
+     * {@inheritdoc}
      */
-    public function testValidAlnumCharsShouldReturnTrue($validAlnum, $additional)
-    {
-        $validator = new Alnum($additional);
-        $this->assertTrue($validator->validate($validAlnum));
-    }
-
-    /**
-     * @dataProvider providerForInvalidAlnum
-     * @expectedException Respect\Validation\Exceptions\AlnumException
-     */
-    public function testInvalidAlnumCharsShouldThrowAlnumExceptionAndReturnFalse($invalidAlnum, $additional)
-    {
-        $validator = new Alnum($additional);
-        $this->assertFalse($validator->validate($invalidAlnum));
-        $this->assertFalse($validator->assert($invalidAlnum));
-    }
-
-    /**
-     * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
-     */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
-    {
-        $validator = new Alnum($additional);
-    }
-
-    /**
-     * @dataProvider providerAdditionalChars
-     */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
-    {
-        $validator = new Alnum($additional);
-        $this->assertTrue($validator->validate($query));
-    }
-
-    public function providerAdditionalChars()
+    public function providerForValidInput(): array
     {
         return [
-            ['!@#$%^&*(){}', '!@#$%^&*(){} abc 123'],
-            ['[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n abc 123"],
+            [new Alnum(), 'alganet'],
+            [new Alnum('- ! :'), 'foo :- 123 !'],
+            [new Alnum('0-9'), '0alg-anet0'],
+            [new Alnum(), '1'],
+            [new Alnum(), 'a'],
+            [new Alnum(), 'foobar'],
+            [new Alnum('_'), 'rubinho_'],
+            [new Alnum('.'), 'google.com'],
+            [new Alnum(' '), 'alganet alganet'],
+            [new Alnum(), 0],
+            [new Alnum('!@#$%^&*(){}'), '!@#$%^&*(){}abc123'],
+            [new Alnum('[]?+=/\\-_|"\',<>.'), '[]?+=/\\-_|"\',<>.abc123'],
+            [new Alnum("[]?+=/\\-_|\"',<>. \t\n"), "abc[]?+=/\\-_|\"',<>. \t\n123"],
+            [new Alnum('-', '*'), 'a-1*d'],
         ];
     }
 
-    public function providerForInvalidParams()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         return [
-            [new \stdClass()],
-            [[]],
-            [0x2],
-        ];
-    }
-
-    public function providerForValidAlnum()
-    {
-        return [
-            ['alganet', ''],
-            ['foo :- 123 !', '- ! :'],
-            ['number 100%', '%'],
-            ['0alg-anet0', '0-9'],
-            ['1', ''],
-            ["\t", ''],
-            ["\n", ''],
-            ['a', ''],
-            ['foobar', ''],
-            ['rubinho_', '_'],
-            ['google.com', '.'],
-            ['alganet alganet', ''],
-            ["\nabc", ''],
-            ["\tdef", ''],
-            ["\nabc \t", ''],
-            [0, ''],
-        ];
-    }
-
-    public function providerForInvalidAlnum()
-    {
-        return [
-            ['', ''],
-            ['number 100%', ''],
-            ['@#$', ''],
-            ['_', ''],
-            ['dgç', ''],
-            [1e21, ''], //evaluates to "1.0E+21"
-            [null, ''],
-            [new \stdClass(), ''],
-            [[], ''],
+            [new Alnum(), ''],
+            [new Alnum(), 'number 100%'],
+            [new Alnum('%'), 'number 100%'],
+            [new Alnum(), '@#$'],
+            [new Alnum(), '_'],
+            [new Alnum(), 'dgç'],
+            [new Alnum(), 1e21],
+            [new Alnum(), null],
+            [new Alnum(), new stdClass()],
+            [new Alnum(), []],
+            [new Alnum('%'), 'number 100%'],
+            [new Alnum(), "\t"],
+            [new Alnum(), "\n"],
+            [new Alnum(), "\nabc"],
+            [new Alnum(), "\tdef"],
+            [new Alnum(), "\nabc \t"],
+            [new Alnum(), 'alganet alganet'],
         ];
     }
 }

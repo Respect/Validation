@@ -9,28 +9,49 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation;
 
+use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Test\TestCase;
+
+/**
+ * @covers \Respect\Validation\Validator
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ */
 class ValidatorTest extends TestCase
 {
-    public function testStaticCreateShouldReturnNewValidator()
+    /**
+     * @test
+     */
+    public function staticCreateShouldReturnNewValidator(): void
     {
-        $this->assertInstanceOf('Respect\Validation\Validator', Validator::create());
+        self::assertInstanceOf(Validator::class, Validator::create());
     }
 
-    public function testInvalidRuleClassShouldThrowComponentException()
+    /**
+     * @test
+     */
+    public function invalidRuleClassShouldThrowComponentException(): void
     {
-        $this->setExpectedException('Respect\Validation\Exceptions\ComponentException');
+        $this->expectException(ComponentException::class);
         Validator::iDoNotExistSoIShouldThrowException();
     }
 
     /**
      * Regression test #174.
+     *
+     * @test
      */
-    public function testShouldReturnValidatorInstanceWhenTheNotRuleIsCalledWithArguments()
+    public function shouldReturnValidatorInstanceWhenTheNotRuleIsCalledWithArguments(): void
     {
         $validator = new Validator();
 
-        $this->assertSame($validator, $validator->not($validator->notEmpty()));
+        self::assertSame($validator, $validator->not($validator->notEmpty()));
     }
 }

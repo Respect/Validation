@@ -9,11 +9,16 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class KeyValueException extends ValidationException
 {
-    const COMPONENT = 1;
+    public const COMPONENT = 'component';
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -26,7 +31,7 @@ class KeyValueException extends ValidationException
         ],
     ];
 
-    public function chooseTemplate()
+    protected function chooseTemplate(): string
     {
         return $this->getParam('component') ? static::COMPONENT : static::STANDARD;
     }

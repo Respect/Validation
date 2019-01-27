@@ -9,12 +9,25 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
-class AttributeException extends NestedValidationException
+/**
+ * Exceptions to be thrown by the Attribute Rule.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class AttributeException extends NestedValidationException implements NonOmissibleException
 {
-    const NOT_PRESENT = 0;
-    const INVALID = 1;
+    public const NOT_PRESENT = 'not_present';
+    public const INVALID = 'invalid';
+
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::NOT_PRESENT => 'Attribute {{name}} must be present',
@@ -26,7 +39,10 @@ class AttributeException extends NestedValidationException
         ],
     ];
 
-    public function chooseTemplate()
+    /**
+     * {@inheritdoc}
+     */
+    protected function chooseTemplate(): string
     {
         return $this->getParam('hasReference') ? static::INVALID : static::NOT_PRESENT;
     }

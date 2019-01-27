@@ -1,3 +1,6 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
+Wojciech Frącz <fraczwojciech@gmail.com>
 --FILE--
 <?php
 
@@ -12,8 +15,8 @@ try {
     print_r($exception->getMessages());
 }
 ?>
---EXPECTF--
+--EXPECT--
 Array
 (
-    [0] => WRONG EMAIL!!!!!!
+    [email] => WRONG EMAIL!!!!!!
 )

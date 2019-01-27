@@ -9,70 +9,60 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\IntVal
- * @covers Respect\Validation\Exceptions\IntValException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\IntVal
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class IntValTest extends TestCase
+final class IntValTest extends RuleTestCase
 {
-    protected $intValidator;
-
-    protected function setUp()
+    /*
+    * {@inheritdoc}
+    */
+    public function providerForValidInput(): array
     {
-        $this->intValidator = new IntVal();
-    }
+        $rule = new IntVal();
 
-    /**
-     * @dataProvider providerForInt
-     */
-    public function testValidIntegersShouldReturnTrue($input)
-    {
-        $this->assertTrue($this->intValidator->__invoke($input));
-        $this->assertTrue($this->intValidator->check($input));
-        $this->assertTrue($this->intValidator->assert($input));
-    }
-
-    /**
-     * @dataProvider providerForNotInt
-     * @expectedException Respect\Validation\Exceptions\IntValException
-     */
-    public function testInvalidIntegersShouldThrowIntException($input)
-    {
-        $this->assertFalse($this->intValidator->__invoke($input));
-        $this->assertFalse($this->intValidator->assert($input));
-    }
-
-    public function providerForInt()
-    {
         return [
-            [16],
-            ['165'],
-            [123456],
-            [PHP_INT_MAX],
-            ['06'],
-            ['0']
+            [$rule, 16],
+            [$rule, '165'],
+            [$rule, 123456],
+            [$rule, PHP_INT_MAX],
+            [$rule, '06'],
+            [$rule, '0'],
         ];
     }
 
-    public function providerForNotInt()
+    /*
+    * {@inheritdoc}
+    */
+    public function providerForInvalidInput(): array
     {
+        $rule = new IntVal();
+
         return [
-            [''],
-            [null],
-            ['a'],
-            ['1.0'],
-            [1.0],
-            [' '],
-            [true],
-            [false],
-            ['Foo'],
-            ['1.44'],
-            [1e-5],
+            [$rule, ''],
+            [$rule, null],
+            [$rule, 'a'],
+            [$rule, '1.0'],
+            [$rule, 1.0],
+            [$rule, ' '],
+            [$rule, true],
+            [$rule, false],
+            [$rule, 'Foo'],
+            [$rule, '1.44'],
+            [$rule, 1e-5],
         ];
     }
 }

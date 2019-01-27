@@ -9,52 +9,49 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\StringType
- * @covers Respect\Validation\Exceptions\StringTypeException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\StringType
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Marcel dos Santos <marcelgsantos@gmail.com>
  */
-class StringTypeTest extends TestCase
+final class StringTypeTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForString
+     * {@inheritdoc}
      */
-    public function testString($input)
+    public function providerForValidInput(): array
     {
         $rule = new StringType();
 
-        $this->assertTrue($rule->validate($input));
-    }
-
-    /**
-     * @dataProvider providerForNotString
-     */
-    public function testNotString($input)
-    {
-        $rule = new StringType();
-
-        $this->assertFalse($rule->validate($input));
-    }
-
-    public function providerForString()
-    {
         return [
-            [''],
-            ['165.7'],
+            [$rule, ''],
+            [$rule, '165.7'],
         ];
     }
 
-    public function providerForNotString()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
+        $rule = new StringType();
+
         return [
-            [null],
-            [[]],
-            [new \stdClass()],
-            [150],
+            [$rule, null],
+            [$rule, []],
+            [$rule, new \stdClass()],
+            [$rule, 150],
         ];
     }
 }

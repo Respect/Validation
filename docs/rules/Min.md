@@ -1,30 +1,35 @@
 # Min
 
-- `v::min(mixed $minValue)`
-- `v::min(mixed $minValue, boolean $inclusive = true)`
+- `Min(mixed $compareTo)`
 
-Validates if the input is greater than the minimum value.
-
-```php
-v::intVal()->min(15)->validate(5); // false
-v::intVal()->min(5)->validate(5); // false
-v::intVal()->min(5, true)->validate(5); // true
-```
-
-Also accepts dates:
+Validates whether the input is greater than or equal to a value.
 
 ```php
-v::date()->min('2012-01-01')->validate('2015-01-01'); // true
+v::intVal()->min(10)->validate(9); // false
+v::intVal()->min(10)->validate(10); // true
+v::intVal()->min(10)->validate(11); // true
 ```
 
-`true` may be passed as a parameter to indicate that inclusive
-values must be used.
+Validation makes comparison easier, check out our supported 
+[comparable values](ComparableValues.md).
 
-Message template for this validator includes `{{minValue}}`.
+Message template for this validator includes `{{compareTo}}`.
+
+## Changelog
+
+Version | Description
+--------|-------------
+  2.0.0 | Became always inclusive
+  1.0.0 | Became inclusive by default
+  0.3.9 | Created
 
 ***
 See also:
 
-  * [Age](Age.md)
-  * [Between](Between.md)
-  * [Max](Max.md)
+- [Between](Between.md)
+- [GreaterThan](GreaterThan.md)
+- [Length](Length.md)
+- [LessThan](LessThan.md)
+- [Max](Max.md)
+- [MaxAge](MaxAge.md)
+- [MinAge](MinAge.md)

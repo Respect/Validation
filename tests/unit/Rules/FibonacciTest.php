@@ -9,15 +9,27 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Test\RuleTestCase;
+
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\Fibonacci
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\Fibonacci
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Samuel Heinzmann <samuel.heinzmann@swisscom.com>
  */
-class FibonacciTest extends RuleTestCase
+final class FibonacciTest extends RuleTestCase
 {
-    public function providerForValidInput()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
         $rule = new Fibonacci();
 
@@ -38,7 +50,10 @@ class FibonacciTest extends RuleTestCase
         ];
     }
 
-    public function providerForInvalidInput()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         $rule = new Fibonacci();
 

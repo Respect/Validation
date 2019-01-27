@@ -1,3 +1,5 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 
@@ -7,7 +9,7 @@ use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 $config = [
-    'host' => 'my_host',
+    'host' => 1,
     'password' => 'my_password',
     'schema' => 'my_schema',
 ];
@@ -25,5 +27,7 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
-- Key user must be present
+--EXPECT--
+- These rules must pass for Settings
+  - host must be of type string
+  - Key user must be present

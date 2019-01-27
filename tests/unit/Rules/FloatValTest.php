@@ -9,67 +9,57 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\FloatVal
- * @covers Respect\Validation\Exceptions\FloatValException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\FloatVal
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class FloatValTest extends TestCase
+final class FloatValTest extends RuleTestCase
 {
-    protected $floatValidator;
-
-    protected function setUp()
+    /*
+    * {@inheritdoc}
+    */
+    public function providerForValidInput(): array
     {
-        $this->floatValidator = new FloatVal();
-    }
+        $rule = new FloatVal();
 
-    /**
-     * @dataProvider providerForFloat
-     */
-    public function testFloatNumbersShouldPass($input)
-    {
-        $this->assertTrue($this->floatValidator->assert($input));
-        $this->assertTrue($this->floatValidator->__invoke($input));
-        $this->assertTrue($this->floatValidator->check($input));
-    }
-
-    /**
-     * @dataProvider providerForNotFloat
-     * @expectedException Respect\Validation\Exceptions\FloatValException
-     */
-    public function testNotFloatNumbersShouldFail($input)
-    {
-        $this->assertFalse($this->floatValidator->__invoke($input));
-        $this->assertFalse($this->floatValidator->assert($input));
-    }
-
-    public function providerForFloat()
-    {
         return [
-            [165],
-            [1],
-            [0],
-            [0.0],
-            ['1'],
-            ['19347e12'],
-            [165.0],
-            ['165.7'],
-            [1e12],
+            [$rule, 165],
+            [$rule, 1],
+            [$rule, 0],
+            [$rule, 0.0],
+            [$rule, '1'],
+            [$rule, '19347e12'],
+            [$rule, 165.0],
+            [$rule, '165.7'],
+            [$rule, 1e12],
         ];
     }
 
-    public function providerForNotFloat()
+    /*
+    * {@inheritdoc}
+    */
+    public function providerForInvalidInput(): array
     {
+        $rule = new FloatVal();
+
         return [
-            [''],
-            [null],
-            ['a'],
-            [' '],
-            ['Foo'],
+            [$rule, ''],
+            [$rule, null],
+            [$rule, 'a'],
+            [$rule, ' '],
+            [$rule, 'Foo'],
         ];
     }
 }

@@ -9,8 +9,14 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
+/**
+ * @author Carlos André Ferrari <caferrari@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class SlugException extends ValidationException
 {
     public static $defaultTemplates = [

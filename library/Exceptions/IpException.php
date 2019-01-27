@@ -9,13 +9,23 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
-class IpException extends ValidationException
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Luís Otávio Cobucci Oblonczyk <lcobucci@gmail.com>
+ */
+final class IpException extends ValidationException
 {
-    const STANDARD = 0;
-    const NETWORK_RANGE = 1;
+    public const NETWORK_RANGE = 'network_range';
 
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be an IP address',
@@ -27,31 +37,15 @@ class IpException extends ValidationException
         ],
     ];
 
-    public function configure($name, array $params = [])
+    /**
+     * {@inheritdoc}
+     */
+    protected function chooseTemplate(): string
     {
-        $params += ['networkRange' => null, 'min' => null];
-        if ($params['networkRange']) {
-            $range = $params['networkRange'];
-            $message = $range['min'];
-
-            if (isset($range['max'])) {
-                $message .= '-'.$range['max'];
-            } else {
-                $message .= '/'.long2ip((int) $range['mask']);
-            }
-
-            $params['range'] = $message;
-        }
-
-        return parent::configure($name, $params);
-    }
-
-    public function chooseTemplate()
-    {
-        if (!$this->getParam('networkRange')) {
+        if (!$this->getParam('range')) {
             return static::STANDARD;
-        } else {
-            return static::NETWORK_RANGE;
         }
+
+        return static::NETWORK_RANGE;
     }
 }

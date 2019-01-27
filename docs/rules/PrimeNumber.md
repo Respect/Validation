@@ -1,6 +1,6 @@
 # PrimeNumber
 
-- `v::primeNumber()`
+- `PrimeNumber()`
 
 Validates a prime number
 
@@ -8,10 +8,16 @@ Validates a prime number
 v::primeNumber()->validate(7); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [Factor](Factor.md)
-  * [Fibonacci](Fibonacci.md)
-  * [Multiple](Multiple.md)
-  * [PerfectSquare](PerfectSquare.md)
+- [Factor](Factor.md)
+- [Fibonacci](Fibonacci.md)
+- [Multiple](Multiple.md)
+- [PerfectSquare](PerfectSquare.md)

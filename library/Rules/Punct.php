@@ -9,11 +9,18 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class Punct extends AbstractCtypeRule
+/**
+ * @author Andre Ramaciotti <andre@ramaciotti.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ */
+class Punct extends AbstractFilterRule
 {
-    protected function ctypeFunction($input)
+    protected function validateFilteredInput(string $input): bool
     {
         return ctype_punct($input);
     }

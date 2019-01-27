@@ -9,53 +9,59 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Consonant
- * @covers Respect\Validation\Exceptions\ConsonantException
+ * @covers \Respect\Validation\Exceptions\ConsonantException
+ * @covers \Respect\Validation\Rules\AbstractFilterRule
+ * @covers \Respect\Validation\Rules\Consonant
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ * @author Pascal Borreli <pascal@borreli.com>
  */
 class ConsonantTest extends TestCase
 {
     /**
      * @dataProvider providerForValidConsonants
+     *
+     * @test
      */
-    public function testValidDataWithConsonantsShouldReturnTrue($validConsonants, $additional = '')
+    public function validDataWithConsonantsShouldReturnTrue($validConsonants, $additional = ''): void
     {
         $validator = new Consonant($additional);
-        $this->assertTrue($validator->validate($validConsonants));
+        self::assertTrue($validator->validate($validConsonants));
     }
 
     /**
      * @dataProvider providerForInvalidConsonants
-     * @expectedException Respect\Validation\Exceptions\ConsonantException
+     * @expectedException \Respect\Validation\Exceptions\ConsonantException
+     *
+     * @test
      */
-    public function testInvalidConsonantsShouldFailAndThrowConsonantException($invalidConsonants, $additional = '')
+    public function invalidConsonantsShouldFailAndThrowConsonantException($invalidConsonants, $additional = ''): void
     {
         $validator = new Consonant($additional);
-        $this->assertFalse($validator->validate($invalidConsonants));
-        $this->assertFalse($validator->assert($invalidConsonants));
-    }
-
-    /**
-     * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
-     */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
-    {
-        $validator = new Consonant($additional);
+        self::assertFalse($validator->validate($invalidConsonants));
+        $validator->assert($invalidConsonants);
     }
 
     /**
      * @dataProvider providerAdditionalChars
+     *
+     * @test
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function additionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Consonant($additional);
-        $this->assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($query));
     }
 
     public function providerAdditionalChars()
@@ -63,15 +69,6 @@ class ConsonantTest extends TestCase
         return [
             ['!@#$%^&*(){}', '!@#$%^&*(){} bc dfg'],
             ['[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n bc dfg"],
-        ];
-    }
-
-    public function providerForInvalidParams()
-    {
-        return [
-            [new \stdClass()],
-            [[]],
-            [0x2],
         ];
     }
 
@@ -83,7 +80,7 @@ class ConsonantTest extends TestCase
             ['d'],
             ['w'],
             ['y'],
-            ['y',''],
+            ['y', ''],
             ['bcdfghklmnp'],
             ['bcdfghklm np'],
             ['qrst'],

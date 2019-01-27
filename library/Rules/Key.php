@@ -9,11 +9,18 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Validatable;
 
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class Key extends AbstractRelated
 {
     public function __construct($reference, Validatable $referenceValidator = null, $mandatory = true)
@@ -29,7 +36,7 @@ class Key extends AbstractRelated
         return $input[$this->reference];
     }
 
-    public function hasReference($input)
+    public function hasReference($input): bool
     {
         return is_array($input) && array_key_exists($this->reference, $input);
     }

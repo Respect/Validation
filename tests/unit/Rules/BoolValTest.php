@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of Respect/Validation.
  *
@@ -8,15 +9,27 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Test\RuleTestCase;
+
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\BoolVal
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\BoolVal
+ *
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class BoolValTest extends RuleTestCase
+final class BoolValTest extends RuleTestCase
 {
-    public function providerForValidInput()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
         $rule = new BoolVal();
 
@@ -33,7 +46,10 @@ class BoolValTest extends RuleTestCase
         ];
     }
 
-    public function providerForInvalidInput()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         $rule = new BoolVal();
 

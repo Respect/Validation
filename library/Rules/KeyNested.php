@@ -9,14 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use ArrayAccess;
 use Respect\Validation\Exceptions\ComponentException;
 
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ivan Zinovyev <vanyazin@gmail.com>
+ */
 class KeyNested extends AbstractRelated
 {
-    public function hasReference($input)
+    public function hasReference($input): bool
     {
         try {
             $this->getReferenceValue($input);
@@ -29,7 +37,7 @@ class KeyNested extends AbstractRelated
 
     private function getReferencePieces()
     {
-        return explode('.', rtrim($this->reference, '.'));
+        return explode('.', rtrim((string) $this->reference, '.'));
     }
 
     private function getValueFromArray($array, $key)

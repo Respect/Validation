@@ -1,17 +1,23 @@
 # MacAddress
 
-- `v::macAddress()`
+- `MacAddress()`
 
-Validates a Mac Address.
+Validates whether the input is a valid MAC address.
 
 ```php
 v::macAddress()->validate('00:11:22:33:44:55'); // true
 v::macAddress()->validate('af-AA-22-33-44-55'); // true
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [Domain](Domain.md)
-  * [Ip](Ip.md)
-  * [Tld](Tld.md)
+- [Domain](Domain.md)
+- [Ip](Ip.md)
+- [Tld](Tld.md)

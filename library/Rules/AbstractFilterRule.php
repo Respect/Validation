@@ -9,31 +9,42 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ComponentException;
+use function implode;
+use function is_scalar;
+use function str_replace;
+use function str_split;
 
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ */
 abstract class AbstractFilterRule extends AbstractRule
 {
-    public $additionalChars = '';
+    /**
+     * @var string
+     */
+    private $additionalChars;
 
-    abstract protected function validateClean($input);
-
-    public function __construct($additionalChars = '')
+    /**
+     * Initializes the rule with a list of characters to be ignored by the validation.
+     *
+     * @param string ...$additionalChars
+     */
+    public function __construct(string ...$additionalChars)
     {
-        if (!is_string($additionalChars)) {
-            throw new ComponentException('Invalid list of additional characters to be loaded');
-        }
-
-        $this->additionalChars .= $additionalChars;
+        $this->additionalChars = implode($additionalChars);
     }
 
-    protected function filter($input)
-    {
-        return str_replace(str_split($this->additionalChars), '', $input);
-    }
+    abstract protected function validateFilteredInput(string $input): bool;
 
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
         if (!is_scalar($input)) {
             return false;
@@ -44,8 +55,13 @@ abstract class AbstractFilterRule extends AbstractRule
             return false;
         }
 
-        $cleanInput = $this->filter($stringInput);
+        $filteredInput = $this->filter($stringInput);
 
-        return $cleanInput === '' || $this->validateClean($cleanInput);
+        return '' === $filteredInput || $this->validateFilteredInput($filteredInput);
+    }
+
+    private function filter(string $input): string
+    {
+        return str_replace(str_split($this->additionalChars), '', $input);
     }
 }

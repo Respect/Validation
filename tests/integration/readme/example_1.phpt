@@ -1,3 +1,6 @@
+--CREDITS--
+Emmerson Siqueira <emmersonsiqueira@gmail.com>
+Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 
@@ -12,8 +15,8 @@ $user->name = 'Alexandre';
 $user->birthdate = '1987-07-01';
 
 $userValidator = v::attribute('name', v::stringType()->length(1, 32))
-                  ->attribute('birthdate', v::date()->age(18));
+                  ->attribute('birthdate', v::dateTime()->minAge(18));
 
 $userValidator->assert($user);
 ?>
---EXPECTF--
+--EXPECT--

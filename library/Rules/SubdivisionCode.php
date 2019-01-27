@@ -9,29 +9,25 @@
  * file that was distributed with this source code.
  */
 
-namespace Respect\Validation\Rules;
+declare(strict_types=1);
 
-use Respect\Validation\Exceptions\ComponentException;
+namespace Respect\Validation\Rules;
 
 /**
  * Validates country subdivision codes according to ISO 3166-2.
  *
- * @link http://en.wikipedia.org/wiki/ISO_3166-2
- * @link http://www.geonames.org/countries/
+ * @see http://en.wikipedia.org/wiki/ISO_3166-2
+ * @see http://www.geonames.org/countries/
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SubdivisionCode extends AbstractWrapper
+final class SubdivisionCode extends AbstractLocaleWrapper
 {
-    public $countryCode;
-
-    public function __construct($countryCode)
+    /**
+     * {@inheritdoc}
+     */
+    protected function getSuffix(): string
     {
-        $shortName = ucfirst(strtolower($countryCode)).'SubdivisionCode';
-        $className = __NAMESPACE__.'\\SubdivisionCode\\'.$shortName;
-        if (!class_exists($className)) {
-            throw new ComponentException(sprintf('"%s" is not a valid country code in ISO 3166-2', $countryCode));
-        }
-
-        $this->countryCode = $countryCode;
-        $this->validatable = new $className();
+        return 'SubdivisionCode';
     }
 }

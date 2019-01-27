@@ -9,42 +9,52 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Roman
- * @covers Respect\Validation\Exceptions\RomanException
+ * @covers \Respect\Validation\Exceptions\RomanException
+ * @covers \Respect\Validation\Rules\Roman
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jean Pimentel <jeanfap@gmail.com>
  */
 class RomanTest extends TestCase
 {
     protected $romanValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->romanValidator = new Roman();
     }
 
     /**
      * @dataProvider providerForRoman
+     *
+     * @test
      */
-    public function testValidRomansShouldReturnTrue($input)
+    public function validRomansShouldReturnTrue($input): void
     {
-        $this->assertTrue($this->romanValidator->__invoke($input));
-        $this->assertTrue($this->romanValidator->assert($input));
-        $this->assertTrue($this->romanValidator->check($input));
+        self::assertTrue($this->romanValidator->__invoke($input));
+        $this->romanValidator->assert($input);
+        $this->romanValidator->check($input);
     }
 
     /**
      * @dataProvider providerForNotRoman
-     * @expectedException Respect\Validation\Exceptions\RomanException
+     * @expectedException \Respect\Validation\Exceptions\RomanException
+     *
+     * @test
      */
-    public function testInvalidRomansShouldThrowRomanException($input)
+    public function invalidRomansShouldThrowRomanException($input): void
     {
-        $this->assertFalse($this->romanValidator->__invoke($input));
-        $this->assertFalse($this->romanValidator->assert($input));
+        self::assertFalse($this->romanValidator->__invoke($input));
+        $this->romanValidator->assert($input);
     }
 
     public function providerForRoman()
@@ -72,7 +82,7 @@ class RomanTest extends TestCase
             [' '],
             ['IIII'],
             ['IVVVX'],
-            ['CCDC'], //
+            ['CCDC'],
             ['MXM'],
             ['XIIIIIIII'],
             ['MIMIMI'],

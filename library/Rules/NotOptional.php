@@ -9,12 +9,29 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class NotOptional extends AbstractRule
+use Respect\Validation\Helpers\CanValidateUndefined;
+
+/**
+ * Validates if the given input is not optional.
+ *
+ * By optional we consider null or an empty string ('').
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class NotOptional extends AbstractRule
 {
-    public function validate($input)
+    use CanValidateUndefined;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
-        return (false === in_array($input, [null, ''], true));
+        return false === $this->isUndefined($input);
     }
 }

@@ -9,12 +9,20 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class Vowel extends AbstractRegexRule
+use function preg_match;
+
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ */
+class Vowel extends AbstractFilterRule
 {
-    protected function getPregFormat()
+    protected function validateFilteredInput(string $input): bool
     {
-        return '/^(\s|[aeiouAEIOU])*$/';
+        return preg_match('/^(\s|[aeiouAEIOU])*$/', $input) > 0;
     }
 }

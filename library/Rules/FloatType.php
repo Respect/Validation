@@ -9,11 +9,24 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class FloatType extends AbstractRule
+use function is_float;
+
+/**
+ * Validates whether the type of the input is float.
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Reginaldo Junior <76regi@gmail.com>
+ */
+final class FloatType extends AbstractRule
 {
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
         return is_float($input);
     }

@@ -1,3 +1,6 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
+William Espindola <oi@williamespindola.com.br>
 --FILE--
 <?php
 
@@ -9,8 +12,8 @@ use Respect\Validation\Validator as v;
 try {
     v::bsn()->check('acb');
 } catch (BsnException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 "acb" must be a BSN

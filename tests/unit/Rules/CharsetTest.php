@@ -9,80 +9,63 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
+use function mb_convert_encoding;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\Charset
- * @covers Respect\Validation\Exceptions\CharsetException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\Charset
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class CharsetTest extends TestCase
+final class CharsetTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForValidCharset
+     * @test
+     *
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
+     * @expectedExceptionMessage Invalid charset
      */
-    public function testValidDataWithCharsetShouldReturnTrue($charset, $input)
+    public function itShouldThrowsExceptionWhenCharsetIsNotValid(): void
     {
-        $validator = new Charset($charset);
-        $this->assertTrue($validator->__invoke($input));
+        new Charset('UTF-8', 'UTF-9');
     }
 
     /**
-     * @dataProvider providerForInvalidCharset
-     * @expectedException Respect\Validation\Exceptions\CharsetException
+     * {@inheritdoc}
      */
-    public function testInvalidCharsetShouldFailAndThrowCharsetException($charset, $input)
+    public function providerForValidInput(): array
     {
-        $validator = new Charset($charset);
-        $this->assertFalse($validator->__invoke($input));
-        $this->assertFalse($validator->assert($input));
+        return [
+            [new Charset('UTF-8'), ''],
+            [new Charset('ISO-8859-1'), mb_convert_encoding('açaí', 'ISO-8859-1')],
+            [new Charset('UTF-8', 'ASCII'), 'strawberry'],
+            [new Charset('ASCII'), mb_convert_encoding('strawberry', 'ASCII')],
+            [new Charset('UTF-8'), '日本国'],
+            [new Charset('ISO-8859-1', 'EUC-JP'), '日本国'],
+            [new Charset('UTF-8'), 'açaí'],
+            [new Charset('ISO-8859-1'), 'açaí'],
+        ];
     }
 
     /**
-     * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * {@inheritdoc}
      */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($charset)
+    public function providerForInvalidInput(): array
     {
-        $validator = new Charset($charset);
-    }
+        $rule = new Charset('ASCII');
 
-    public function providerForInvalidParams()
-    {
         return [
-            [new \stdClass()],
-            [[]],
-            [null],
-            ['16'],
-            ['aeiou'],
-            ['a'],
-            ['Foo'],
-            ['basic'],
-            [10],
-        ];
-    }
-
-    public function providerForValidCharset()
-    {
-        return [
-            ['UTF-8', ''],
-            ['ISO-8859-1', mb_convert_encoding('açaí', 'ISO-8859-1')],
-            [['UTF-8', 'ASCII'], 'strawberry'],
-            ['ASCII', mb_convert_encoding('strawberry', 'ASCII')],
-            ['UTF-8', '日本国'],
-            [['ISO-8859-1', 'EUC-JP'], '日本国'],
-            ['UTF-8', 'açaí'],
-            ['ISO-8859-1', 'açaí'],
-        ];
-    }
-
-    public function providerForInvalidCharset()
-    {
-        return [
-            ['ASCII', '日本国'],
-            ['ASCII', 'açaí'],
+            [$rule, '日本国'],
+            [$rule, 'açaí'],
         ];
     }
 }

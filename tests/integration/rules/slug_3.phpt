@@ -1,3 +1,6 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
+Marcel dos Santos <marcelgsantos@gmail.com>
 --FILE--
 <?php
 
@@ -12,5 +15,5 @@ try {
     echo $e->getFullMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 - "wrong slug" must be a valid slug

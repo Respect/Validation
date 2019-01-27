@@ -9,53 +9,59 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Vowel
- * @covers Respect\Validation\Exceptions\VowelException
+ * @covers \Respect\Validation\Exceptions\VowelException
+ * @covers \Respect\Validation\Rules\AbstractFilterRule
+ * @covers \Respect\Validation\Rules\Vowel
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ * @author Pascal Borreli <pascal@borreli.com>
  */
 class VowelTest extends TestCase
 {
     /**
      * @dataProvider providerForValidVowels
+     *
+     * @test
      */
-    public function testValidDataWithVowelsShouldReturnTrue($validVowels, $additional = '')
+    public function validDataWithVowelsShouldReturnTrue($validVowels, $additional = ''): void
     {
         $validator = new Vowel($additional);
-        $this->assertTrue($validator->validate($validVowels));
+        self::assertTrue($validator->validate($validVowels));
     }
 
     /**
      * @dataProvider providerForInvalidVowels
-     * @expectedException Respect\Validation\Exceptions\VowelException
+     * @expectedException \Respect\Validation\Exceptions\VowelException
+     *
+     * @test
      */
-    public function testInvalidVowelsShouldFailAndThrowVowelException($invalidVowels, $additional = '')
+    public function invalidVowelsShouldFailAndThrowVowelException($invalidVowels, $additional = ''): void
     {
         $validator = new Vowel($additional);
-        $this->assertFalse($validator->validate($invalidVowels));
-        $this->assertFalse($validator->assert($invalidVowels));
-    }
-
-    /**
-     * @dataProvider providerForInvalidParams
-     * @expectedException Respect\Validation\Exceptions\ComponentException
-     */
-    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($additional)
-    {
-        $validator = new Vowel($additional);
+        self::assertFalse($validator->validate($invalidVowels));
+        $validator->assert($invalidVowels);
     }
 
     /**
      * @dataProvider providerAdditionalChars
+     *
+     * @test
      */
-    public function testAdditionalCharsShouldBeRespected($additional, $query)
+    public function additionalCharsShouldBeRespected($additional, $query): void
     {
         $validator = new Vowel($additional);
-        $this->assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($query));
     }
 
     public function providerAdditionalChars()
@@ -63,15 +69,6 @@ class VowelTest extends TestCase
         return [
             ['!@#$%^&*(){}', '!@#$%^&*(){} aeo iu'],
             ['[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n aeo iu"],
-        ];
-    }
-
-    public function providerForInvalidParams()
-    {
-        return [
-            [new \stdClass()],
-            [[]],
-            [0x2],
         ];
     }
 

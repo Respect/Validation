@@ -9,54 +9,51 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
-
-$GLOBALS['is_executable'] = null;
-
-function is_executable($executable)
-{
-    $return = \is_executable($executable); // Running the real function
-    if (null !== $GLOBALS['is_executable']) {
-        $return = $GLOBALS['is_executable'];
-        $GLOBALS['is_executable'] = null;
-    }
-
-    return $return;
-}
+use SplFileObject;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\Executable
- * @covers Respect\Validation\Exceptions\ExecutableException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\Executable
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Royall Spence <royall@royall.us>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class ExecutableTest extends TestCase
+final class ExecutableTest extends RuleTestCase
 {
-    public function testValidExecutableFileShouldReturnTrue()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
-        $GLOBALS['is_executable'] = true;
-
         $rule = new Executable();
-        $input = '/path/of/a/valid/executable/file.txt';
-        $this->assertTrue($rule->validate($input));
+
+        return [
+            [$rule, 'tests/fixtures/executable'],
+            [$rule, new SplFileInfo('tests/fixtures/executable')],
+            [$rule, new SplFileObject('tests/fixtures/executable')],
+        ];
     }
 
-    public function testInvalidExecutableFileShouldReturnFalse()
-    {
-        $GLOBALS['is_executable'] = false;
-
-        $rule = new Executable();
-        $input = '/path/of/an/invalid/executable/file.txt';
-        $this->assertFalse($rule->validate($input));
-    }
-
-    public function testShouldValidateObjects()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         $rule = new Executable();
-        $object = new SplFileInfo('tests/fixtures/executable');
 
-        $this->assertTrue($rule->validate($object));
+        return [
+            [$rule, 'tests/fixtures/valid-image.gif'],
+            [$rule, new SplFileInfo('tests/fixtures/valid-image.jpg')],
+            [$rule, new SplFileObject('tests/fixtures/valid-image.png')],
+        ];
     }
 }

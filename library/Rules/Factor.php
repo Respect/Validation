@@ -9,38 +9,51 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Exceptions\ValidationException;
+use function abs;
+use function is_integer;
+use function is_numeric;
 
 /**
+ * Validates if the input is a factor of the defined dividend.
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author David Meister <thedavidmeister@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class Factor extends AbstractRule
+final class Factor extends AbstractRule
 {
-    public $dividend;
+    /**
+     * @var int
+     */
+    private $dividend;
 
-    public function __construct($dividend)
+    /**
+     * Initializes the rule.
+     *
+     * @param int $dividend
+     */
+    public function __construct(int $dividend)
     {
-        if (!is_numeric($dividend) || (int) $dividend != $dividend) {
-            $message = 'Dividend %s must be an integer';
-            throw new ComponentException(sprintf($message, ValidationException::stringify($dividend)));
-        }
-
-        $this->dividend = (int) $dividend;
+        $this->dividend = $dividend;
     }
 
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
         // Every integer is a factor of zero, and zero is the only integer that
         // has zero for a factor.
-        if ($this->dividend === 0) {
+        if (0 === $this->dividend) {
             return true;
         }
 
         // Factors must be integers that are not zero.
-        if (!is_numeric($input) || (int) $input != $input || $input == 0) {
+        if (!is_numeric($input) || (int) $input != $input || 0 == $input) {
             return false;
         }
 

@@ -9,16 +9,37 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\AlwaysInvalidException;
 use Respect\Validation\Validatable;
 
-class When extends AbstractRule
+/**
+ * A ternary validator that accepts three parameters.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Hugo Hamon <hugo.hamon@sensiolabs.com>
+ */
+final class When extends AbstractRule
 {
-    public $when;
-    public $then;
-    public $else;
+    /**
+     * @var Validatable
+     */
+    private $when;
+
+    /**
+     * @var Validatable
+     */
+    private $then;
+
+    /**
+     * @var Validatable
+     */
+    private $else;
 
     public function __construct(Validatable $when, Validatable $then, Validatable $else = null)
     {
@@ -32,7 +53,10 @@ class When extends AbstractRule
         $this->else = $else;
     }
 
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
         if ($this->when->validate($input)) {
             return $this->then->validate($input);
@@ -41,21 +65,31 @@ class When extends AbstractRule
         return $this->else->validate($input);
     }
 
-    public function assert($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function assert($input): void
     {
         if ($this->when->validate($input)) {
-            return $this->then->assert($input);
+            $this->then->assert($input);
+
+            return;
         }
 
-        return $this->else->assert($input);
+        $this->else->assert($input);
     }
 
-    public function check($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function check($input): void
     {
         if ($this->when->validate($input)) {
-            return $this->then->check($input);
+            $this->then->check($input);
+
+            return;
         }
 
-        return $this->else->check($input);
+        $this->else->check($input);
     }
 }

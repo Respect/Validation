@@ -9,80 +9,54 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\NoWhitespace
- * @covers Respect\Validation\Exceptions\NoWhitespaceException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\NoWhitespace
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
  */
-class NoWhitespaceTest extends TestCase
+final class NoWhitespaceTest extends RuleTestCase
 {
-    protected $noWhitespaceValidator;
+    /*
+    * {@inheritdoc}
+    */
+    public function providerForValidInput(): array
+    {
+        $rule = new NoWhitespace();
 
-    protected function setUp()
-    {
-        $this->noWhitespaceValidator = new NoWhitespace();
-    }
-
-    /**
-     * @dataProvider providerForPass
-     */
-    public function testStringWithNoWhitespaceShouldPass($input)
-    {
-        $this->assertTrue($this->noWhitespaceValidator->__invoke($input));
-        $this->assertTrue($this->noWhitespaceValidator->check($input));
-        $this->assertTrue($this->noWhitespaceValidator->assert($input));
-    }
-
-    /**
-     * @dataProvider providerForFail
-     * @expectedException Respect\Validation\Exceptions\NoWhitespaceException
-     */
-    public function testStringWithWhitespaceShouldFail($input)
-    {
-        $this->assertFalse($this->noWhitespaceValidator->__invoke($input));
-        $this->assertFalse($this->noWhitespaceValidator->assert($input));
-    }
-    /**
-     * @expectedException Respect\Validation\Exceptions\NoWhitespaceException
-     */
-    public function testStringWithLineBreaksShouldFail()
-    {
-        $this->assertFalse($this->noWhitespaceValidator->__invoke("w\npoiur"));
-        $this->assertFalse($this->noWhitespaceValidator->assert("w\npoiur"));
-    }
-
-    public function providerForPass()
-    {
         return [
-            [''],
-            [null],
-            [0],
-            ['wpoiur'],
-            ['Foo'],
+            [$rule, ''],
+            [$rule, null],
+            [$rule, 0],
+            [$rule, 'wpoiur'],
+            [$rule, 'Foo'],
         ];
     }
 
-    public function providerForFail()
-    {
-        return [
-            [' '],
-            ['w poiur'],
-            ['      '],
-            ["Foo\nBar"],
-            ["Foo\tBar"],
-        ];
-    }
-
-    /**
-     * @issue 346
-     * @expectedException Respect\Validation\Exceptions\NoWhitespaceException
+    /*
+     * {@inheritdoc}
      */
-    public function testArrayDoesNotThrowAWarning()
+    public function providerForInvalidInput(): array
     {
-        $this->noWhitespaceValidator->assert([]);
+        $rule = new NoWhitespace();
+
+        return [
+            [$rule, ' '],
+            [$rule, 'w poiur'],
+            [$rule, '      '],
+            [$rule, "Foo\nBar"],
+            [$rule, "Foo\tBar"],
+        ];
     }
 }

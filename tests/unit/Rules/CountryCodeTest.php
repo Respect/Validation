@@ -9,77 +9,62 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\CountryCode
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\CountryCode
+ *
+ * @author Felipe Martins <me@fefas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class CountryCodeTest extends TestCase
+final class CountryCodeTest extends RuleTestCase
 {
     /**
-     * @expectedException        Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage "whatever" is not a valid country set
+     * @test
+     *
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
+     * @expectedExceptionMessage "whatever" is not a valid set for ISO 3166-1 (Available: alpha-2, alpha-3, numeric)
      */
-    public function testShouldThrowsExceptionWhenInvalidFormat()
+    public function itShouldThrowsExceptionWhenInvalidFormat(): void
     {
         new CountryCode('whatever');
     }
 
-    public function testShouldUseISO3166Alpha2ByDefault()
-    {
-        $country = new CountryCode();
-        $this->assertEquals(CountryCode::ALPHA2, $country->set);
-    }
-    public function testShouldDefineACountryFormatOnConstructor()
-    {
-        $country = new CountryCode(CountryCode::NUMERIC);
-        $this->assertEquals(CountryCode::NUMERIC, $country->set);
-    }
-
-    public function providerForValidCountryCode()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
         return [
-            [CountryCode::ALPHA2,  'BR'],
-            [CountryCode::ALPHA3,  'BRA'],
-            [CountryCode::NUMERIC, '076'],
-            [CountryCode::ALPHA2,  'DE'],
-            [CountryCode::ALPHA3,  'DEU'],
-            [CountryCode::NUMERIC, '276'],
-            [CountryCode::ALPHA2,  'US'],
-            [CountryCode::ALPHA3,  'USA'],
-            [CountryCode::NUMERIC, '840'],
-        ];
-    }
-
-    public function providerForInvalidCountryCode()
-    {
-        return [
-            [CountryCode::ALPHA2,  'USA'],
-            [CountryCode::ALPHA3,  'US'],
-            [CountryCode::NUMERIC, '000'],
+            [new CountryCode(CountryCode::ALPHA2),  'BR'],
+            [new CountryCode(CountryCode::ALPHA3),  'BRA'],
+            [new CountryCode(CountryCode::NUMERIC), '076'],
+            [new CountryCode(CountryCode::ALPHA2),  'DE'],
+            [new CountryCode(CountryCode::ALPHA3),  'DEU'],
+            [new CountryCode(CountryCode::NUMERIC), '276'],
+            [new CountryCode(CountryCode::ALPHA2),  'US'],
+            [new CountryCode(CountryCode::ALPHA3),  'USA'],
+            [new CountryCode(CountryCode::NUMERIC), '840'],
         ];
     }
 
     /**
-     * @dataProvider providerForValidCountryCode
+     * {@inheritdoc}
      */
-    public function testValidContryCodes($format, $input)
+    public function providerForInvalidInput(): array
     {
-        $rule = new CountryCode($format);
-
-        $this->assertTrue($rule->validate($input));
-    }
-
-    /**
-     * @dataProvider providerForInvalidCountryCode
-     */
-    public function testInvalidContryCodes($format, $input)
-    {
-        $rule = new CountryCode($format);
-
-        $this->assertFalse($rule->validate($input));
+        return [
+            [new CountryCode(CountryCode::ALPHA2),  'USA'],
+            [new CountryCode(CountryCode::ALPHA3),  'US'],
+            [new CountryCode(CountryCode::NUMERIC), '000'],
+        ];
     }
 }

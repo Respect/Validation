@@ -9,16 +9,21 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 
-class PostalCode extends Regex
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+class PostalCode extends AbstractEnvelope
 {
-    const DEFAULT_PATTERN = '/^$/';
+    public const DEFAULT_PATTERN = '/^$/';
 
     /**
-     * @link http://download.geonames.org/export/dump/countryInfo.txt
+     * @see http://download.geonames.org/export/dump/countryInfo.txt
      */
     public $postalCodes = [
         'AD' => '/^(?:AD)*(\d{3})$/',
@@ -183,8 +188,6 @@ class PostalCode extends Regex
         'ZM' => '/^(\d{5})$/',
     ];
 
-    public $countryCode;
-
     public function __construct($countryCode, CountryCode $countryCodeRule = null)
     {
         $countryCodeRule = $countryCodeRule ?: new CountryCode();
@@ -193,13 +196,11 @@ class PostalCode extends Regex
         }
 
         $regex = self::DEFAULT_PATTERN;
-        $upperCountryCode = strtoupper($countryCode);
+        $upperCountryCode = mb_strtoupper($countryCode);
         if (isset($this->postalCodes[$upperCountryCode])) {
             $regex = $this->postalCodes[$upperCountryCode];
         }
 
-        $this->countryCode = $countryCode;
-
-        parent::__construct($regex);
+        parent::__construct(new Regex($regex), ['countryCode' => $countryCode]);
     }
 }

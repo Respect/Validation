@@ -9,12 +9,30 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class Positive extends AbstractRule
+use function is_numeric;
+
+/**
+ * Validates whether the input is a positive number.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ismael Elias <ismael.esq@hotmail.com>
+ */
+final class Positive extends AbstractRule
 {
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
+        if (!is_numeric($input)) {
+            return false;
+        }
+
         return $input > 0;
     }
 }

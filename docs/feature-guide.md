@@ -15,7 +15,7 @@ The Hello World validator is something like this:
 
 ```php
 $number = 123;
-v::numeric()->validate($number); // true
+v::numericVal()->validate($number); // true
 ```
 
 ## Chained validation
@@ -42,16 +42,44 @@ Is possible to validate its attributes in a single chain:
 
 ```php
 $userValidator = v::attribute('name', v::stringType()->length(1,32))
-                  ->attribute('birthdate', v::date()->age(18));
+                  ->attribute('birthdate', v::dateTime()->age(18));
 
 $userValidator->validate($user); // true
 ```
 
 Validating array keys is also possible using `v::key()`
 
-Note that we used `v::stringType()` and `v::date()` in the beginning of the validator.
+Note that we used `v::stringType()` and `v::dateTime()` in the beginning of the validator.
 Although is not mandatory, it is a good practice to use the type of the
 validated object as the first node in the chain.
+
+## Validating array keys and values
+
+Validating array keys into another array is also possible using [Key](rules/Key.md).
+
+If we got the array below:
+
+```php
+$data = [
+    'parentKey' => [
+        'field1' => 'value1',
+        'field2' => 'value2'
+        'field3' => true,
+    ]
+];
+```
+
+Using the next combination of rules, we can validate child keys.
+
+```php
+v::key(
+    'parentKey',
+    v::key('field1', v::stringType())
+        ->key('field2', v::stringType())
+        ->key('field3', v::boolType())
+    )
+    ->assert($data); // You can also use check() or validate()
+```
 
 ## Input optional
 
@@ -96,27 +124,22 @@ $usernameValidator->validate('#$%');                //false
 
 ## Exception types
 
-* `Respect\Validation\Exceptions\ExceptionInterface`:
-    * All exceptions implement this interface;
-* `Respect\Validation\Exceptions\ValidationException`:
-    * Implements the `Respect\Validation\Exceptions\ExceptionInterface` interface
-    * Thrown when the `check()` fails
-    * All validation exceptions extend this class
-    * Available methods:
-        * `getMainMessage()`;
-        * `setMode($mode)`;
-        * `setName($name)`;
-        * `setParam($name, $value)`;
-        * `setTemplate($template)`;
-        * more...
-* `Respect\Validation\Exceptions\NestedValidationException`:
-    * Extends the `Respect\Validation\Exceptions\ValidationException` class
-    * Usually thrown when the `assert()` fails
-    * Available methods:
-        * `findMessages()`;
-        * `getFullMessage()`;
-        * `getMessages()`;
-        * more...
+- `Respect\Validation\Exceptions\Exception`:
+  - All exceptions implement this interface;
+- `Respect\Validation\Exceptions\ValidationException`:
+  - Implements the `Respect\Validation\Exceptions\Exception` interface
+  - Thrown when the `check()` fails
+  - All validation exceptions extend this class
+  - Available methods:
+    - `getMessage()`;
+    - `updateMode($mode)`;
+    - `updateTemplate($template)`;
+- `Respect\Validation\Exceptions\NestedValidationException`:
+  - Extends the `Respect\Validation\Exceptions\ValidationException` class
+  - Usually thrown when the `assert()` fails
+  - Available methods:
+    - `getFullMessage()`;
+    - `getMessages()`;
 
 ## Informative exceptions
 
@@ -144,10 +167,8 @@ The printed message is exactly this, as a nested Markdown list:
 
 ## Getting all messages as an array
 
-The Markdown list is fine, but unusable on a HTML form or something more custom.
-For that you can use `getMessages()`.
-
-It will return all messages from the rules that did not pass the validation.
+If you want to get all the messages as an array you can use `getMessages()` for
+that. The `getMessages()` method returns an array with all the messages.
 
 ```php
 try {
@@ -157,78 +178,80 @@ try {
 }
 ```
 
-The code above may display something like:
-
-```no-highlight
-Array
-(
-    [0] => "really messed up screen#name" must contain only letters (a-z) and digits (0-9)
-    [1] => "really messed up screen#name" must not contain whitespace
-    [2] => "really messed up screen#name" must have a length between 1 and 15
-)
-```
-
-## Getting messages as an array by name
-
-If you want to get specific message by name you can use `findMessages()` passing
-the names of the rules you want:
-
-```php
-try {
-    $usernameValidator->assert('really messed up screen#name');
-} catch(NestedValidationException $exception) {
-    print_r($exception->findMessages(['alnum', 'noWhitespace']));
-}
-```
-
-The `findMessages()` returns an array with messages from the requested validators,
-like this:
+The `getMessages()` returns an array in which the keys are the name of the
+validators, or its reference in case you are using [Key](rules/Key.md) or
+[Attribute](rules/Attribute.md) rule:
 
 ```no-highlight
 Array
 (
     [alnum] => "really messed up screen#name" must contain only letters (a-z) and digits (0-9)
     [noWhitespace] => "really messed up screen#name" must not contain whitespace
+    [length] => "really messed up screen#name" must have a length between 1 and 15
 )
 ```
 
 ## Custom messages
 
-Getting messages as an array is fine, but sometimes you need to customize them in order
-to present them to the user. This is possible using the `findMessages()` method as well:
+Getting messages as an array is fine, but sometimes you need to customize them
+in order to present them to the user. This is possible using the `getMessages()`
+method as well by passing the templates as an argument:
 
 ```php
-$errors = $exception->findMessages([
-    'alnum' => '{{name}} must contain only letters and digits',
-    'length' => '{{name}} must not have more than 15 chars',
-    'noWhitespace' => '{{name}} cannot contain spaces'
-]);
+try {
+    $usernameValidator->assert('really messed up screen#name');
+} catch(NestedValidationException $exception) {
+    print_r(
+        $exception->getMessages([
+            'alnum' => '{{name}} must contain only letters and digits',
+            'noWhitespace' => '{{name}} cannot contain spaces',
+            'length' => '{{name}} must not have more than 15 chars',
+        ])
+    );
+}
 ```
 
-For all messages, the `{{name}}` variable is available for templates. If you
-do not define a name it uses the input to replace this placeholder.
+For all messages, the `{{name}}` variable is available for templates. If you do
+not define a name it uses the input to replace this placeholder.
+
+The result of the code above will be:
+
+```no-highlight
+Array
+(
+    [alnum] => "really messed up screen#name" must contain only letters and digits
+    [noWhitespace] => "really messed up screen#name" cannot contain spaces
+    [length] => "really messed up screen#name" must not have more than 15 chars
+)
+```
+
+Note that `getMessage()` will only return a message when the specific validation
+in the chain fails.
 
 ## Message localization
 
 You're also able to translate your message to another language with Validation.
 The only thing one must do is to define the param `translator` as a callable that
-will handle the translation:
+will handle the translation overwriting the default factory:
 
 ```php
-$exception->setParam('translator', 'gettext');
+Factory::setDefaultInstance(new Factory([], [], 'gettext'));
 ```
 
 The example above uses `gettext()` but you can use any other callable value, like
 `[$translator, 'trans']` or `you_custom_function()`.
 
-After that, if you call `getMainMessage()` or `getFullMessage()` (for nested),
+After that, if you call `getMessage()`, `getMessages()`, or `getFullMessage()`,
 the message will be translated.
-
-Note that `getMessage()` will keep the original message.
 
 ## Custom rules
 
-You also can use your own rules:
+You can also create and use your own rules. To do this, you will need to create
+a rule and an exception to go with the rule.
+
+To create a rule, you need to create a class that extends the AbstractRule class
+and is within the Rules `namespace`. When the rule is called the logic inside the
+validate method will be executed. Here's how the class should look:
 
 ```php
 namespace My\Validation\Rules;
@@ -237,52 +260,64 @@ use Respect\Validation\Rules\AbstractRule;
 
 class MyRule extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         // Do something here with the $input and return a boolean value
     }
 }
 ```
 
-If you do want Validation to execute you rule (or rules) in the chain, you must
-use `v::with()` passing your rule's namespace as an argument:
-
-```php
-v::with('My\\Validation\\Rules\\');
-v::myRule(); // Try to load "My\Validation\Rules\MyRule" if any
-```
-
-By default `with()` appends the given prefix, but you can change this behavior
-in order to overwrite default rules:
-
-```php
-v::with('My\\Validation\\Rules', true);
-v::alnum(); // Try to use "My\Validation\Rules\Alnum" if any
-```
-
-If you're using the `assert()` or `check()` methods you also need to create an
-Exception to declare the messages returned:
+Each rule must have an Exception to go with it. Exceptions should be named
+with the name of the rule followed by the word Exception. The process of creating
+an Exception is similar to creating a rule but there are no methods in the
+Exception class. Instead, you create one static property that includes an
+array with the information below:
 
 ```php
 namespace My\Validation\Exceptions;
 
-use Respect\Validation\Exceptions\ValidationException;
+use \Respect\Validation\Exceptions\ValidationException;
 
 class MyRuleException extends ValidationException
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must pass my rules',
+            self::STANDARD => 'Validation message if MyRule fails validation.',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not pass my rules',
-        ]
+            self::STANDARD => 'Validation message if the negative of MyRule is called and fails validation.',
+        ],
     ];
 }
 ```
 
-Notice that while the namespace of the rule is `My\Validation\Rules` the
-namespace of the exception is `My\Validation\Exceptions`.
+So in the end, the folder structure for your Rules and Exceptions should look
+something like the structure below. Note that the folders (and namespaces) are
+plural but the actual Rules and Exceptions are singular.
+
+```
+My
+ +-- Validation
+     +-- Exceptions
+         +-- MyRuleException.php
+     +-- Rules
+         +-- MyRule.php
+```
+
+All classes in Validation are created by the `Factory` class. If you want
+Validation to execute your rule (or rules) in the chain, you must overwrite the
+default `Factory`.
+
+```php
+Factory::setDefaultInstance(
+    new Factory(
+      ['My\\Validation\\Rules'],
+      ['My\\Validation\\Exceptions']
+    )
+);
+v::myRule(); // Try to load "My\Validation\Rules\MyRule" if any
+v::alnum(); // Try to use "My\Validation\Rules\Alnum" if any, or else "Respect\Validation\Rules\Alnum"
+```
 
 ## Validator name
 
@@ -290,7 +325,7 @@ On `v::attribute()` and `v::key()`, `{{name}}` is the attribute/key name. For ot
 is the same as the input. You can customize a validator name using:
 
 ```php
-v::date('Y-m-d')->between('1980-02-02', 'now')->setName('Member Since');
+v::dateTime('Y-m-d')->between('1980-02-02', 'now')->setName('Member Since');
 ```
 
 ## Zend/Symfony validators
@@ -314,7 +349,7 @@ use Respect\Validation\Exceptions\ValidationException;
 try {
     $usernameValidator->check('really messed up screen#name');
 } catch(ValidationException $exception) {
-    echo $exception->getMainMessage();
+    echo $exception->getMessage();
 }
 ```
 

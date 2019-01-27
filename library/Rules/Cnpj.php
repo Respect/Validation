@@ -9,11 +9,30 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class Cnpj extends AbstractRule
+use function is_scalar;
+use function mb_strlen;
+use function preg_replace;
+
+/**
+ * Validates if the input is a Brazilian National Registry of Legal Entities (CNPJ) number.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jayson Reis <santosdosreis@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
+ * @author Renato Moura <renato@naturalweb.com.br>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class Cnpj extends AbstractRule
 {
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
         if (!is_scalar($input)) {
             return false;
@@ -27,7 +46,7 @@ class Cnpj extends AbstractRule
             return false;
         }
 
-        if (mb_strlen($cleanInput) != 14) {
+        if (14 != mb_strlen($cleanInput)) {
             return false;
         }
 

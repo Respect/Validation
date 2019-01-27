@@ -9,12 +9,17 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validator;
 
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class KeyValue extends AbstractRule
 {
     public $comparedKey;
@@ -58,13 +63,14 @@ class KeyValue extends AbstractRule
 
             $params[$key] = $this->baseKey;
         }
+        $params['name'] = $this->comparedKey;
 
-        $exception->configure($this->comparedKey, $params);
+        $exception->updateParams($params);
 
         return $exception;
     }
 
-    public function assert($input)
+    public function assert($input): void
     {
         $rule = $this->getRule($input);
 
@@ -73,11 +79,9 @@ class KeyValue extends AbstractRule
         } catch (ValidationException $exception) {
             throw $this->overwriteExceptionParams($exception);
         }
-
-        return true;
     }
 
-    public function check($input)
+    public function check($input): void
     {
         $rule = $this->getRule($input);
 
@@ -86,11 +90,9 @@ class KeyValue extends AbstractRule
         } catch (ValidationException $exception) {
             throw $this->overwriteExceptionParams($exception);
         }
-
-        return true;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         try {
             $rule = $this->getRule($input);

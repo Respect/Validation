@@ -9,111 +9,215 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation;
 
+use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidClassException;
+use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Test\Exceptions\StubException;
+use Respect\Validation\Test\Rules\AbstractClass;
+use Respect\Validation\Test\Rules\Invalid;
+use Respect\Validation\Test\Rules\Stub;
+use Respect\Validation\Test\Rules\Valid;
+use Respect\Validation\Test\TestCase;
+use function sprintf;
+
 /**
- * @covers Respect\Validation\Factory
+ * @covers \Respect\Validation\Factory
+ *
+ * @author Augusto Pascutti <augusto@phpsp.org.br>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class FactoryTest extends TestCase
+final class FactoryTest extends TestCase
 {
-    public function testShouldHaveRulePrefixesByDefault()
-    {
-        $factory = new Factory();
+    private const TEST_RULES_NAMESPACE = 'Respect\\Validation\\Test\\Rules';
+    private const TEST_EXCEPTIONS_NAMESPACE = 'Respect\\Validation\\Test\\Exceptions';
 
-        $this->assertEquals(['Respect\\Validation\\Rules\\'], $factory->getRulePrefixes());
+    /**
+     * @test
+     */
+    public function shouldCreateARuleByNameBasedOnNamespace(): void
+    {
+        $factory = new Factory([self::TEST_RULES_NAMESPACE], [], 'trim');
+
+        self::assertInstanceOf(Valid::class, $factory->rule('valid'));
     }
 
     /**
-     * @dataProvider provideRulePrefixes
+     * @test
      */
-    public function testShouldBeAbleToAppendANewPrefix($namespace, $expectedNamespace)
+    public function shouldLookUpToAllNamespacesUntilRuleIsFound(): void
     {
-        $factory = new Factory();
-        $factory->appendRulePrefix($namespace);
+        $factory = new Factory([__NAMESPACE__, self::TEST_RULES_NAMESPACE], [], 'trim');
 
-        $currentRulePrefixes = $factory->getRulePrefixes();
-
-        $this->assertSame(
-            $expectedNamespace,
-            array_pop($currentRulePrefixes),
-            'Appended namespace rule was not found as expected into the prefix list.' . PHP_EOL .
-            sprintf(
-                'Appended "%s", current list is ' . PHP_EOL . '%s',
-                $namespace,
-                implode(PHP_EOL, $factory->getRulePrefixes())
-            )
-        );
+        self::assertInstanceOf(Valid::class, $factory->rule('valid'));
     }
 
     /**
-     * @dataProvider provideRulePrefixes
+     * @test
      */
-    public function testShouldBeAbleToPrependANewRulePrefix($namespace, $expectedNamespace)
+    public function shouldDefineConstructorArgumentsWhenCreatingARule(): void
     {
-        $factory = new Factory();
-        $factory->prependRulePrefix($namespace);
+        $constructorArguments = [true, false, true, false];
 
-        $currentRulePrefixes = $factory->getRulePrefixes();
+        $factory = new Factory([self::TEST_RULES_NAMESPACE], [], 'trim');
+        $rule = $factory->rule('stub', $constructorArguments);
 
-        $this->assertContains(
-            $expectedNamespace,
-            array_shift($currentRulePrefixes),
-            'Prepended namespace rule was not found as expected into the prefix list.' . PHP_EOL .
-            sprintf(
-                'Prepended "%s", current list is ' . PHP_EOL . '%s',
-                $namespace,
-                implode(PHP_EOL, $factory->getRulePrefixes())
-            )
-        );
+        self::assertSame($constructorArguments, $rule->validations);
     }
 
-    public function provideRulePrefixes()
+    /**
+     * @test
+     */
+    public function shouldThrowsAnExceptionWhenRuleIsInvalid(): void
     {
-        return [
-            'Namespace with trailing separator' => [
-                'namespace' => 'My\\Validation\\Rules\\',
-                'expected' => 'My\\Validation\\Rules\\'
-            ],
-            'Namespace without trailing separator' => [
-                'namespace' => 'My\\Validation\\Rules',
-                'expected' => 'My\\Validation\\Rules\\'
-            ]
+        $factory = new Factory([self::TEST_RULES_NAMESPACE], [], 'trim');
+
+        $this->expectException(InvalidClassException::class);
+        $this->expectExceptionMessage(sprintf('"%s" must be an instance of "%s"', Invalid::class, Validatable::class));
+
+        $factory->rule('invalid');
+    }
+
+    /**
+     * @test
+     */
+    public function shouldThrowsAnExceptionWhenRuleIsNotInstantiable(): void
+    {
+        $factory = new Factory([self::TEST_RULES_NAMESPACE], [], 'trim');
+
+        $this->expectException(InvalidClassException::class);
+        $this->expectExceptionMessage(sprintf('"%s" must be instantiable', AbstractClass::class));
+
+        $factory->rule('abstractClass');
+    }
+
+    /**
+     * @test
+     */
+    public function shouldThrowsAnExceptionWhenRuleIsNotFound(): void
+    {
+        $factory = new Factory([self::TEST_RULES_NAMESPACE], [], 'trim');
+
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage('"notFoundRule" is not a valid rule name');
+
+        $factory->rule('notFoundRule');
+    }
+
+    /**
+     * @test
+     */
+    public function shouldCreateExceptionBasedOnRule(): void
+    {
+        $factory = new Factory([], [self::TEST_EXCEPTIONS_NAMESPACE], 'trim');
+
+        $rule = new Stub();
+        $input = 2;
+
+        self::assertInstanceOf(StubException::class, $factory->exception($rule, $input));
+    }
+
+    /**
+     * @test
+     */
+    public function shouldLookUpToAllNamespacesUntilExceptionIsCreated(): void
+    {
+        $factory = new Factory([], [__NAMESPACE__, self::TEST_EXCEPTIONS_NAMESPACE], 'trim');
+
+        $rule = new Stub();
+        $input = 2;
+
+        self::assertInstanceOf(StubException::class, $factory->exception($rule, $input));
+    }
+
+    /**
+     * @test
+     */
+    public function shouldCreateValidationExceptionWhenExceptionIsNotFound(): void
+    {
+        $factory = new Factory([], [], 'trim');
+        $input = 'input';
+        $rule = new Stub();
+
+        self::assertInstanceOf(ValidationException::class, $factory->exception($rule, $input));
+    }
+
+    /**
+     * @test
+     */
+    public function shouldSetInputAsParameterOfCreatedException(): void
+    {
+        $factory = new Factory([], [self::TEST_EXCEPTIONS_NAMESPACE], 'trim');
+
+        $rule = new Stub();
+        $input = 2;
+
+        $exception = $factory->exception($rule, $input);
+
+        self::assertSame($input, $exception->getParam('input'));
+    }
+
+    /**
+     * @test
+     */
+    public function shouldPassPropertiesToCreatedException(): void
+    {
+        $factory = new Factory([], [self::TEST_EXCEPTIONS_NAMESPACE], 'trim');
+
+        $validations = [true, false, true, true];
+        $rule = new Stub(...$validations);
+        $input = 2;
+
+        $exception = $factory->exception($rule, $input);
+
+        self::assertSame($validations, $exception->getParam('validations'));
+    }
+
+    /**
+     * @test
+     */
+    public function shouldSetTemplateWhenTemplateKeyIsDefined(): void
+    {
+        $factory = new Factory([], [self::TEST_EXCEPTIONS_NAMESPACE], 'trim');
+
+        $extraParams = [
+            'template' => 'This is my template',
         ];
-    }
 
-    public function testShouldCreateARuleByName()
-    {
-        $factory = new Factory();
+        $validations = [true, false, true, true];
+        $rule = new Stub(...$validations);
+        $input = 2;
 
-        $this->assertInstanceOf('Respect\\Validation\\Rules\\Uppercase', $factory->rule('uppercase'));
-    }
+        $exception = $factory->exception($rule, $input, $extraParams);
 
-    public function testShouldDefineConstructorArgumentsWhenCreatingARule()
-    {
-        $factory = new Factory();
-        $rule = $factory->rule('date', ['Y-m-d']);
-
-        $this->assertEquals('Y-m-d', $rule->format);
+        self::assertSame($extraParams['template'], $exception->getMessage());
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage "uterere" is not a valid rule name
+     * @test
      */
-    public function testShouldThrowsAnExceptionWhenRuleNameIsNotValid()
+    public function shouldAlwaysReturnTheSameDefaultInstance(): void
     {
-        $factory = new Factory();
-        $factory->rule('uterere');
+        self::assertSame(Factory::getDefaultInstance(), Factory::getDefaultInstance());
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage "Respect\Validation\Exceptions\AgeException" is not a valid respect rule
+     * @test
      */
-    public function testShouldThrowsAnExceptionWhenRuleIsNotInstanceOfRuleInterface()
+    public function shouldBeAbleToOverwriteDefaultInstance(): void
     {
-        $factory = new Factory();
-        $factory->appendRulePrefix('Respect\\Validation\\Exceptions\\');
-        $factory->rule('AgeException');
+        $factory = new Factory([], [], 'trim');
+
+        $defaultInstance = Factory::getDefaultInstance();
+
+        Factory::setDefaultInstance($factory);
+
+        self::assertSame($factory, Factory::getDefaultInstance());
+
+        Factory::setDefaultInstance($defaultInstance);
     }
 }

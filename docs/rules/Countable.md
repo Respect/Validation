@@ -1,6 +1,6 @@
 # Countable
 
-- `v::countable()`
+- `Countable()`
 
 Validates if the input is countable, in other words, if you're allowed to use
 [count()](http://php.net/count) function on it.
@@ -11,10 +11,16 @@ v::countable()->validate(new ArrayObject()); // true
 v::countable()->validate('string'); // false
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created from `ArrayVal`
+
 ***
 See also:
 
-  * [ArrayType](ArrayType.md)
-  * [ArrayVal](ArrayVal.md)
-  * [Instance](Instance.md)
-  * [IterableType](IterableType.md)
+- [ArrayType](ArrayType.md)
+- [ArrayVal](ArrayVal.md)
+- [Instance](Instance.md)
+- [IterableType](IterableType.md)

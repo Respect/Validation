@@ -9,30 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Respect\Validation;
+declare(strict_types=1);
 
-use PHPUnit_Framework_MockObject_MockObject;
-use PHPUnit_Framework_TestCase;
+namespace Respect\Validation\Test;
 
-abstract class TestCase extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase as PHPUnitTestCase;
+
+abstract class TestCase extends PHPUnitTestCase
 {
-    /**
-     * Returns a test double for the specified class.
-     *
-     * This method is created to keep compatibility with PHPUnit ~4.0.
-     *
-     * @param string $originalClassName
-     *
-     * @return PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function createMock($originalClassName)
-    {
-        if (!class_exists('PHPUnit_Framework_Constraint_IsFinite')) {
-            return $this->getMockBuilder($originalClassName)
-                ->disableOriginalConstructor()
-                ->getMock();
-        }
-
-        return parent::createMock($originalClassName);
-    }
 }

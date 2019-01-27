@@ -9,10 +9,15 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions\Locale;
 
 use Respect\Validation\Exceptions\ValidationException;
 
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class PlIdentityCardException extends ValidationException
 {
     /**

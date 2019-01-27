@@ -9,9 +9,15 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
-class ConsonantException extends AlphaException
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
+ */
+class ConsonantException extends FilteredValidationException
 {
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

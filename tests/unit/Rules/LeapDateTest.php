@@ -9,50 +9,49 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
 use DateTime;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\LeapDate
- * @covers Respect\Validation\Exceptions\LeapDateException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\LeapDate
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Jayson Reis <santosdosreis@gmail.com>
  */
-class LeapDateTest extends TestCase
+final class LeapDateTest extends RuleTestCase
 {
-    protected $leapDateValidator;
-
-    protected function setUp()
+    /*
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
-        $this->leapDateValidator = new LeapDate('Y-m-d');
+        return [
+            [new LeapDate('Y-m-d'), '1988-02-29'],
+            [new LeapDate('Y-m-d'), '1992-02-29'],
+            [new LeapDate('Y-m-d'), new DateTime('1988-02-29')],
+            [new LeapDate('Y-m-d'), new DateTime('1992-02-29')],
+        ];
     }
 
-    public function testValidLeapDate_with_string()
+    /*
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
-        $this->assertTrue($this->leapDateValidator->validate('1988-02-29'));
-    }
-
-    public function testValidLeapDate_with_date_time()
-    {
-        $this->assertTrue($this->leapDateValidator->validate(
-            new DateTime('1988-02-29')
-        ));
-    }
-
-    public function testInvalidLeapDate_with_string()
-    {
-        $this->assertFalse($this->leapDateValidator->validate('1989-02-29'));
-    }
-
-    public function testInvalidLeapDate_with_date_time()
-    {
-        $this->assertFalse($this->leapDateValidator->validate(
-            new DateTime('1989-02-29')
-        ));
-    }
-    public function testInvalidLeapDate_input()
-    {
-        $this->assertFalse($this->leapDateValidator->validate([]));
+        return [
+            [new LeapDate('Y-m-d'), '1989-02-29'],
+            [new LeapDate('Y-m-d'), '1993-02-29'],
+            [new LeapDate('Y-m-d'), new DateTime('1989-02-29')],
+            [new LeapDate('Y-m-d'), new DateTime('1993-02-29')],
+            [new LeapDate('Y-m-d'), []],
+        ];
     }
 }

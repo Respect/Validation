@@ -9,8 +9,15 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Marcelo Araujo <msaraujo@php.net>
+ */
 class StartsWith extends AbstractRule
 {
     public $startValue;
@@ -22,7 +29,7 @@ class StartsWith extends AbstractRule
         $this->identical = $identical;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         if ($this->identical) {
             return $this->validateIdentical($input);

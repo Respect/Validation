@@ -1,6 +1,6 @@
 # Instance
 
-- `v::instance(string $instanceName)`
+- `Instance(string $instanceName)`
 
 Validates if the input is an instance of the given class or interface.
 
@@ -11,10 +11,16 @@ v::instance('Traversable')->validate(new ArrayObject); // true
 
 Message template for this validator includes `{{instanceName}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [Countable](Countable.md)
-  * [IterableType](IterableType.md)
-  * [ObjectType](ObjectType.md)
-  * [Type](Type.md)
+- [Countable](Countable.md)
+- [IterableType](IterableType.md)
+- [ObjectType](ObjectType.md)
+- [Type](Type.md)

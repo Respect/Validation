@@ -9,42 +9,53 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Phone
- * @covers Respect\Validation\Exceptions\PhoneException
+ * @covers \Respect\Validation\Exceptions\PhoneException
+ * @covers \Respect\Validation\Rules\Phone
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Michael Firsikov <michael.firsikov@gmail.com>
+ * @author Roman Derevianko <roman.derevianko@gmail.com>
  */
 class PhoneTest extends TestCase
 {
     protected $phoneValidator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->phoneValidator = new Phone();
     }
 
     /**
      * @dataProvider providerForPhone
+     *
+     * @test
      */
-    public function testValidPhoneShouldReturnTrue($input)
+    public function validPhoneShouldReturnTrue($input): void
     {
-        $this->assertTrue($this->phoneValidator->__invoke($input));
-        $this->assertTrue($this->phoneValidator->assert($input));
-        $this->assertTrue($this->phoneValidator->check($input));
+        self::assertTrue($this->phoneValidator->__invoke($input));
+        $this->phoneValidator->assert($input);
+        $this->phoneValidator->check($input);
     }
 
     /**
      * @dataProvider providerForNotPhone
-     * @expectedException Respect\Validation\Exceptions\PhoneException
+     * @expectedException \Respect\Validation\Exceptions\PhoneException
+     *
+     * @test
      */
-    public function testInvalidPhoneShouldThrowPhoneException($input)
+    public function invalidPhoneShouldThrowPhoneException($input): void
     {
-        $this->assertFalse($this->phoneValidator->__invoke($input));
-        $this->assertFalse($this->phoneValidator->assert($input));
+        self::assertFalse($this->phoneValidator->__invoke($input));
+        $this->phoneValidator->assert($input);
     }
 
     public function providerForPhone()

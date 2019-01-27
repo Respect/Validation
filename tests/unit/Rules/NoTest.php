@@ -9,51 +9,32 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\No
- * @covers Respect\Validation\Exceptions\NoException
+ * @covers \Respect\Validation\Exceptions\NoException
+ * @covers \Respect\Validation\Rules\No
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class NoTest extends TestCase
 {
-    public function testShouldUseDefaultPattern()
-    {
-        $rule = new No();
-
-        $actualPattern = $rule->regex;
-        $expectedPattern = '/^n(o(t|pe)?|ix|ay)?$/i';
-
-        $this->assertEquals($expectedPattern, $actualPattern);
-    }
-
-    public function testShouldUseLocalPatternForNoExpressionWhenDefined()
-    {
-        if (!defined('NOEXPR')) {
-            $this->markTestSkipped('Constant NOEXPR is not defined');
-
-            return;
-        }
-
-        $rule = new No(true);
-
-        $actualPattern = $rule->regex;
-        $expectedPattern = '/'.nl_langinfo(NOEXPR).'/i';
-
-        $this->assertEquals($expectedPattern, $actualPattern);
-    }
-
     /**
      * @dataProvider validNoProvider
+     *
+     * @test
      */
-    public function testShouldValidatePatternAccordingToTheDefinedLocale($input)
+    public function shouldValidatePatternAccordingToTheDefinedLocale($input): void
     {
         $rule = new No();
 
-        $this->assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate($input));
     }
 
     public function validNoProvider()
@@ -70,12 +51,14 @@ class NoTest extends TestCase
 
     /**
      * @dataProvider invalidNoProvider
+     *
+     * @test
      */
-    public function testShouldNotValidatePatternAccordingToTheDefinedLocale($input)
+    public function shouldNotValidatePatternAccordingToTheDefinedLocale($input): void
     {
         $rule = new No();
 
-        $this->assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate($input));
     }
 
     public function invalidNoProvider()

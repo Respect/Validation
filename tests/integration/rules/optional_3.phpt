@@ -1,3 +1,5 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 require 'vendor/autoload.php';
@@ -8,8 +10,8 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::optional(v::equals('foo'))->setName('My field'))->check(null);
 } catch (OptionalException $e) {
-    echo $e->getMainMessage().PHP_EOL;
+    echo $e->getMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 My field must not be optional

@@ -9,12 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
-class VideoUrlException extends ValidationException
+/**
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ricardo Gobbo <ricardo@clicknow.com.br>
+ */
+final class VideoUrlException extends ValidationException
 {
-    const SERVICE = 1;
+    public const SERVICE = 'service';
 
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a valid video URL',
@@ -29,9 +39,9 @@ class VideoUrlException extends ValidationException
     /**
      * {@inheritdoc}
      */
-    public function chooseTemplate()
+    protected function chooseTemplate(): string
     {
-        if (false !== $this->getParam('service')) {
+        if ($this->getParam('service')) {
             return self::SERVICE;
         }
 

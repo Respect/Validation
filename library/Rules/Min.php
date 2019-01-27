@@ -9,23 +9,23 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class Min extends AbstractInterval
+/**
+ * Validates whether the input is greater than or equal to a value.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class Min extends AbstractComparison
 {
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    protected function compare($left, $right): bool
     {
-        $filteredInput = $this->filterInterval($input);
-        $filteredInterval = $this->filterInterval($this->interval);
-
-        if (!$this->isAbleToCompareValues($filteredInput, $filteredInterval)) {
-            return false;
-        }
-
-        if ($this->inclusive) {
-            return $filteredInput >= $filteredInterval;
-        }
-
-        return $filteredInput > $filteredInterval;
+        return $left >= $right;
     }
 }

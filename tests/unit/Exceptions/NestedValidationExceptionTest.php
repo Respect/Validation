@@ -9,51 +9,44 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\TestCase;
 
+/**
+ * @covers \Respect\Validation\Exceptions\NestedValidationException
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class NestedValidationExceptionTest extends TestCase
 {
-    public function testGetRelatedShouldReturnExceptionAddedByAddRelated()
+    /**
+     * @test
+     */
+    public function getChildrenShouldReturnExceptionAddedByAddRelated(): void
     {
-        $composite = new AttributeException();
-        $node = new IntValException();
-        $composite->addRelated($node);
-        $this->assertEquals(1, count($composite->getRelated(true)));
-        $this->assertContainsOnly($node, $composite->getRelated());
+        $composite = new AttributeException('input', 'id', [], 'trim');
+        $node = new IntValException('input', 'id', [], 'trim');
+        $composite->addChild($node);
+        self::assertCount(1, $composite->getChildren(true));
+        self::assertContainsOnly(IntValException::class, $composite->getChildren());
     }
 
-    public function testAddingTheSameInstanceShouldAddJustASingleReference()
+    /**
+     * @test
+     */
+    public function addingTheSameInstanceShouldAddJustASingleReference(): void
     {
-        $composite = new AttributeException();
-        $node = new IntValException();
-        $composite->addRelated($node);
-        $composite->addRelated($node);
-        $composite->addRelated($node);
-        $this->assertEquals(1, count($composite->getRelated(true)));
-        $this->assertContainsOnly($node, $composite->getRelated());
-    }
-
-    public function testFindRelatedShouldFindCompositeExceptions()
-    {
-        $foo = new AttributeException();
-        $bar = new AttributeException();
-        $baz = new AttributeException();
-        $bat = new AttributeException();
-        $foo->configure('foo');
-        $bar->configure('bar');
-        $baz->configure('baz');
-        $bat->configure('bat');
-        $foo->addRelated($bar);
-        $bar->addRelated($baz);
-        $baz->addRelated($bat);
-        $this->assertSame($bar, $foo->findRelated('bar'));
-        $this->assertSame($baz, $foo->findRelated('baz'));
-        $this->assertSame($baz, $foo->findRelated('bar.baz'));
-        $this->assertSame($baz, $foo->findRelated('baz'));
-        $this->assertSame($bat, $foo->findRelated('bar.bat'));
-        $this->assertNull($foo->findRelated('none'));
-        $this->assertNull($foo->findRelated('bar.none'));
+        $composite = new AttributeException('input', 'id', [], 'trim');
+        $node = new IntValException('input', 'id', [], 'trim');
+        $composite->addChild($node);
+        $composite->addChild($node);
+        $composite->addChild($node);
+        self::assertCount(1, $composite->getChildren(true));
+        self::assertContainsOnly(IntValException::class, $composite->getChildren());
     }
 }

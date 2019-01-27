@@ -9,31 +9,51 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use function array_diff;
+use function in_array;
+use function mb_detect_encoding;
+use function mb_list_encodings;
 
-class Charset extends AbstractRule
+/**
+ * Validates if a string is in a specific charset.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class Charset extends AbstractRule
 {
-    public $charset = null;
+    /**
+     * @var string[]
+     */
+    private $charset;
 
-    public function __construct($charset)
+    /**
+     * Initializes the rule.
+     *
+     * @param string ...$charset
+     *
+     * @throws ComponentException
+     */
+    public function __construct(string ...$charset)
     {
         $available = mb_list_encodings();
-        $charset = is_array($charset) ? $charset : [$charset];
-        $charset = array_filter($charset, function ($c) use ($available) {
-            return in_array($c, $available, true);
-        });
-
-        if (!$charset) {
-            throw new ComponentException(
-                'Invalid charset'
-            );
+        if (!empty(array_diff($charset, $available))) {
+            throw new ComponentException('Invalid charset');
         }
+
         $this->charset = $charset;
     }
 
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
         $detectedEncoding = mb_detect_encoding($input, $this->charset, true);
 

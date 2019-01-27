@@ -9,74 +9,64 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\PerfectSquare
- * @covers Respect\Validation\Exceptions\PerfectSquareException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\PerfectSquare
+ *
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
  */
-class PerfectSquareTest extends TestCase
+final class PerfectSquareTest extends RuleTestCase
 {
-    protected $object;
-
-    protected function setUp()
-    {
-        $this->object = new PerfectSquare();
-    }
-
     /**
-     * @dataProvider providerForPerfectSquare
+     * {@inheritdoc}
      */
-    public function testPerfectSquare($input)
+    public function providerForValidInput(): array
     {
-        $this->assertTrue($this->object->__invoke($input));
-        $this->assertTrue($this->object->check($input));
-        $this->assertTrue($this->object->assert($input));
-    }
+        $rule = new PerfectSquare();
 
-    /**
-     * @dataProvider providerForNotPerfectSquare
-     * @expectedException Respect\Validation\Exceptions\PerfectSquareException
-     */
-    public function testNotPerfectSquare($input)
-    {
-        $this->assertFalse($this->object->__invoke($input));
-        $this->assertFalse($this->object->assert($input));
-    }
-
-    public function providerForPerfectSquare()
-    {
         return [
-            [1],
-            [9],
-            [25],
-            ['25'],
-            [400],
-            ['400'],
-            ['0'],
-            [81],
-            [0],
-            [2500],
+            [$rule, 1],
+            [$rule, 9],
+            [$rule, 25],
+            [$rule, '25'],
+            [$rule, 400],
+            [$rule, '400'],
+            [$rule, '0'],
+            [$rule, 81],
+            [$rule, 0],
+            [$rule, 2500],
         ];
     }
 
-    public function providerForNotPerfectSquare()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
+        $rule = new PerfectSquare();
+
         return [
-            [250],
-            [''],
-            [null],
-            [7],
-            [-1],
-            [6],
-            [2],
-            ['-1'],
-            ['a'],
-            [' '],
-            ['Foo'],
+            [$rule, 250],
+            [$rule, ''],
+            [$rule, null],
+            [$rule, 7],
+            [$rule, -1],
+            [$rule, 6],
+            [$rule, 2],
+            [$rule, '-1'],
+            [$rule, 'a'],
+            [$rule, ' '],
+            [$rule, 'Foo'],
         ];
     }
 }

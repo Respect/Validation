@@ -9,66 +9,62 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\RuleTestCase;
+use const FILTER_FLAG_QUERY_REQUIRED;
+use const FILTER_VALIDATE_BOOLEAN;
+use const FILTER_VALIDATE_EMAIL;
+use const FILTER_VALIDATE_FLOAT;
+use const FILTER_VALIDATE_INT;
+use const FILTER_VALIDATE_URL;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\FilterVar
- * @covers Respect\Validation\Exceptions\FilterVarException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\AbstractEnvelope
+ * @covers \Respect\Validation\Rules\FilterVar
+ *
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class FilterVarTest extends TestCase
+final class FilterVarTest extends RuleTestCase
 {
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage Cannot validate without filter flag
-     */
-    public function testShouldThrowsExceptionWhenFilterIsNotDefined()
-    {
-        new FilterVar();
-    }
-
-    /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @test
+     *
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage Cannot accept the given filter
      */
-    public function testShouldThrowsExceptionWhenFilterIsNotValid()
+    public function itShouldThrowsExceptionWhenFilterIsNotValid(): void
     {
         new FilterVar(FILTER_SANITIZE_EMAIL);
     }
 
-    public function testShouldDefineFilterOnConstructor()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
-        $rule = new FilterVar(FILTER_VALIDATE_REGEXP);
-
-        $actualArguments = $rule->arguments;
-        $expectedArguments = [FILTER_VALIDATE_REGEXP];
-
-        $this->assertEquals($expectedArguments, $actualArguments);
+        return [
+            [new FilterVar(FILTER_VALIDATE_INT), '12345'],
+            [new FilterVar(FILTER_VALIDATE_EMAIL), 'example@example.com'],
+            [new FilterVar(FILTER_VALIDATE_FLOAT), 1.5],
+            [new FilterVar(FILTER_VALIDATE_BOOLEAN), 'On'],
+            [new FilterVar(FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED), 'http://example.com?foo=bar'],
+        ];
     }
 
-    public function testShouldDefineFilterOptionsOnConstructor()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
-        $rule = new FilterVar(FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED);
-
-        $actualArguments = $rule->arguments;
-        $expectedArguments = [FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED];
-
-        $this->assertEquals($expectedArguments, $actualArguments);
-    }
-
-    public function testShouldUseDefineFilterToValidate()
-    {
-        $rule = new FilterVar(FILTER_VALIDATE_EMAIL);
-
-        $this->assertTrue($rule->validate('henriquemoody@users.noreply.github.com'));
-    }
-
-    public function testShouldUseDefineFilterOptionsToValidate()
-    {
-        $rule = new FilterVar(FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED);
-
-        $this->assertTrue($rule->validate('http://example.com?foo=bar'));
+        return [
+            [new FilterVar(FILTER_VALIDATE_INT), 1.4],
+            [new FilterVar(FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED), 'http://example.com'],
+        ];
     }
 }

@@ -9,23 +9,35 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+use ReflectionException;
 use ReflectionProperty;
-use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Validatable;
 
-class Attribute extends AbstractRelated
+/**
+ * Validates an object attribute, event private ones.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class Attribute extends AbstractRelated
 {
-    public function __construct($reference, Validatable $validator = null, $mandatory = true)
+    public function __construct(string $reference, Validatable $validator = null, $mandatory = true)
     {
-        if (!is_string($reference) || empty($reference)) {
-            throw new ComponentException('Invalid attribute/property name');
-        }
-
         parent::__construct($reference, $validator, $mandatory);
     }
 
+    /**
+     * @param object $input
+     *
+     * @throws ReflectionException
+     *
+     * @return mixed
+     */
     public function getReferenceValue($input)
     {
         $propertyMirror = new ReflectionProperty($input, $this->reference);
@@ -34,7 +46,10 @@ class Attribute extends AbstractRelated
         return $propertyMirror->getValue($input);
     }
 
-    public function hasReference($input)
+    /**
+     * @param object $input
+     */
+    public function hasReference($input): bool
     {
         return is_object($input) && property_exists($input, $this->reference);
     }

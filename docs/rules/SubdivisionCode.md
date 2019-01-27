@@ -1,6 +1,6 @@
 # SubdivisionCode
 
-- `v::subdivisionCode(string $countryCode)`
+- `SubdivisionCode(string $countryCode)`
 
 Validates subdivision country codes according to [ISO 3166-2][].
 
@@ -271,14 +271,22 @@ This rule is case sensitive.
 All data was extrated from [GeoNames][] which is licensed under a
 [Creative Commons Attribution 3.0 License][].
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 
-  * [CountryCode](CountryCode.md)
-  * [CurrencyCode](CurrencyCode.md)
-  * [IdentityCard](IdentityCard.md)
-  * [KeyValue](KeyValue.md)
-  * [Tld](Tld.md)
+- [CountryCode](CountryCode.md)
+- [CurrencyCode](CurrencyCode.md)
+- [IdentityCard](IdentityCard.md)
+- [KeyValue](KeyValue.md)
+- [Pesel](Pesel.md)
+- [Tld](Tld.md)
+- [Vatin](Vatin.md)
 
 [Creative Commons Attribution 3.0 License]: http://creativecommons.org/licenses/by/3.0 "Creative Commons Attribution 3.0 License"
 [GeoNames]: http://www.geonames.org "GetNames"

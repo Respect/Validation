@@ -9,18 +9,27 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\NoneOf
- * @covers Respect\Validation\Exceptions\NoneOfException
+ * @covers \Respect\Validation\Exceptions\NoneOfException
+ * @covers \Respect\Validation\Rules\NoneOf
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class NoneOfTest extends TestCase
 {
-    public function testValid()
+    /**
+     * @test
+     */
+    public function valid(): void
     {
         $valid1 = new Callback(function () {
             return false;
@@ -32,15 +41,17 @@ class NoneOfTest extends TestCase
             return false;
         });
         $o = new NoneOf($valid1, $valid2, $valid3);
-        $this->assertTrue($o->validate('any'));
-        $this->assertTrue($o->assert('any'));
-        $this->assertTrue($o->check('any'));
+        self::assertTrue($o->validate('any'));
+        $o->assert('any');
+        $o->check('any');
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\NoneOfException
+     * @expectedException \Respect\Validation\Exceptions\NoneOfException
+     *
+     * @test
      */
-    public function testInvalid()
+    public function invalid(): void
     {
         $valid1 = new Callback(function () {
             return false;
@@ -52,7 +63,7 @@ class NoneOfTest extends TestCase
             return true;
         });
         $o = new NoneOf($valid1, $valid2, $valid3);
-        $this->assertFalse($o->validate('any'));
-        $this->assertFalse($o->assert('any'));
+        self::assertFalse($o->validate('any'));
+        $o->assert('any');
     }
 }

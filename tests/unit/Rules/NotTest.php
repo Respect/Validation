@@ -9,47 +9,62 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validator;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Not
- * @covers Respect\Validation\Exceptions\NotException
+ * @covers \Respect\Validation\Exceptions\NotException
+ * @covers \Respect\Validation\Rules\Not
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Caio César Tavares <caiotava@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class NotTest extends TestCase
 {
     /**
+     * @doesNotPerformAssertions
+     *
      * @dataProvider providerForValidNot
+     *
+     * @test
      */
-    public function testNot($v, $input)
+    public function not($v, $input): void
     {
         $not = new Not($v);
-        $this->assertTrue($not->assert($input));
+        $not->assert($input);
     }
 
     /**
      * @dataProvider providerForInvalidNot
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException \Respect\Validation\Exceptions\ValidationException
+     *
+     * @test
      */
-    public function testNotNotHaha($v, $input)
+    public function notNotHaha($v, $input): void
     {
         $not = new Not($v);
-        $this->assertFalse($not->assert($input));
+        $not->assert($input);
     }
 
     /**
      * @dataProvider providerForSetName
+     *
+     * @test
      */
-    public function testNotSetName($v)
+    public function notSetName($v): void
     {
         $not = new Not($v);
         $not->setName('Foo');
 
-        $this->assertEquals('Foo', $not->getName());
-        $this->assertEquals('Foo', $v->getName());
+        self::assertEquals('Foo', $not->getName());
+        self::assertEquals('Foo', $v->getName());
     }
 
     public function providerForValidNot()
@@ -60,9 +75,9 @@ class NotTest extends TestCase
             [new AllOf(new NoWhitespace(), new Digit()), 'as df'],
             [new AllOf(new NoWhitespace(), new Digit()), '12 34'],
             [new AllOf(new AllOf(new NoWhitespace(), new Digit())), '12 34'],
-            [new AllOf(new NoneOf(new Numeric(), new IntVal())), 13.37],
-            [new NoneOf(new Numeric(), new IntVal()), 13.37],
-            [Validator::noneOf(Validator::numeric(), Validator::intVal()), 13.37],
+            [new AllOf(new NoneOf(new NumericVal(), new IntVal())), 13.37],
+            [new NoneOf(new NumericVal(), new IntVal()), 13.37],
+            [Validator::noneOf(Validator::numericVal(), Validator::intVal()), 13.37],
         ];
     }
 
@@ -70,9 +85,9 @@ class NotTest extends TestCase
     {
         return [
             [new IntVal(), 123],
-            [new AllOf(new OneOf(new Numeric(), new IntVal())), 13.37],
-            [new OneOf(new Numeric(), new IntVal()), 13.37],
-            [Validator::oneOf(Validator::numeric(), Validator::intVal()), 13.37],
+            [new AllOf(new AnyOf(new NumericVal(), new IntVal())), 13.37],
+            [new AnyOf(new NumericVal(), new IntVal()), 13.37],
+            [Validator::anyOf(Validator::numericVal(), Validator::intVal()), 13.37],
         ];
     }
 
@@ -80,10 +95,10 @@ class NotTest extends TestCase
     {
         return [
             [new IntVal()],
-            [new AllOf(new Numeric, new IntVal)],
+            [new AllOf(new NumericVal(), new IntVal())],
             [new Not(new Not(new IntVal()))],
             [Validator::intVal()->setName('Bar')],
-            [Validator::noneOf(Validator::numeric(), Validator::intVal())],
+            [Validator::noneOf(Validator::numericVal(), Validator::intVal())],
         ];
     }
 }

@@ -9,58 +9,51 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use ArrayIterator;
+use ArrayObject;
+use DateTime;
+use Respect\Validation\Test\RuleTestCase;
+use SplFileInfo;
+use stdClass;
+use Traversable;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\Instance
- * @covers Respect\Validation\Exceptions\InstanceException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\Instance
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class InstanceTest extends TestCase
+final class InstanceTest extends RuleTestCase
 {
-    protected $instanceValidator;
-
-    protected function setUp()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
-        $this->instanceValidator = new Instance('ArrayObject');
-    }
-
-    public function testInstanceValidationShouldReturnFalseForEmpty()
-    {
-        $this->assertFalse($this->instanceValidator->__invoke(''));
+        return [
+            [new Instance(DateTime::class), new DateTime()],
+            [new Instance(Traversable::class), new ArrayObject()],
+            [new Instance(ArrayIterator::class), new ArrayIterator()],
+        ];
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\InstanceException
+     * {@inheritdoc}
      */
-    public function testInstanceValidationShouldNotAssertEmpty()
+    public function providerForInvalidInput(): array
     {
-        $this->instanceValidator->assert('');
-    }
-
-    /**
-     * @expectedException Respect\Validation\Exceptions\InstanceException
-     */
-    public function testInstanceValidationShouldNotCheckEmpty()
-    {
-        $this->instanceValidator->check('');
-    }
-
-    public function testInstanceValidationShouldReturnTrueForValidInstances()
-    {
-        $this->assertTrue($this->instanceValidator->__invoke(new \ArrayObject()));
-        $this->assertTrue($this->instanceValidator->assert(new \ArrayObject()));
-        $this->assertTrue($this->instanceValidator->check(new \ArrayObject()));
-    }
-
-    /**
-     * @expectedException Respect\Validation\Exceptions\InstanceException
-     */
-    public function testInvalidInstancesShouldThrowInstanceException()
-    {
-        $this->assertFalse($this->instanceValidator->validate(new \stdClass()));
-        $this->assertFalse($this->instanceValidator->assert(new \stdClass()));
+        return [
+            [new Instance(DateTime::class), ''],
+            [new Instance(Traversable::class), null],
+            [new Instance(SplFileInfo::class), new stdClass()],
+        ];
     }
 }

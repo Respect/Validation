@@ -1,3 +1,6 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
+William Espindola <oi@williamespindola.com.br>
 --FILE--
 <?php
 
@@ -9,8 +12,8 @@ use Respect\Validation\Validator as v;
 try {
     v::bsn()->check(null);
 } catch (BsnException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
---EXPECTF--
-null must be a BSN
+--EXPECT--
+`NULL` must be a BSN

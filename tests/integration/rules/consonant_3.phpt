@@ -1,14 +1,18 @@
+--CREDITS--
+Edson Lima <dddwebdeveloper@gmail.com>
+Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\ConsonantException;
+use Respect\Validation\Validator as v;
 
 try {
     v::not(v::consonant())->check('ddd');
 } catch (ConsonantException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
---EXPECTF--
+?>
+--EXPECT--
 "ddd" must not contain consonants

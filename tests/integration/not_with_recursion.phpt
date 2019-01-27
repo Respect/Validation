@@ -1,5 +1,7 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
 --TEST--
-not() with recursion should update mode from related rules
+not() with recursion should update mode of its children
 --FILE--
 <?php
 require 'vendor/autoload.php';
@@ -24,5 +26,5 @@ try {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
---EXPECTF--
+--EXPECT--
 - These rules must not pass for 2

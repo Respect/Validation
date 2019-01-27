@@ -9,43 +9,53 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\TestCase;
 
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\KeySet
- * @covers Respect\Validation\Exceptions\KeySetException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\KeySet
+ *
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class KeySetTest extends TestCase
+final class KeySetTest extends TestCase
 {
-    public function testShouldAcceptKeyRule()
+    /**
+     * @test
+     */
+    public function shouldAcceptKeyRule(): void
     {
         $key = new Key('foo', new AlwaysValid(), false);
         $keySet = new KeySet($key);
 
-        $rules = $keySet->getRules();
-
-        $this->assertSame(current($rules), $key);
+        self::assertAttributeSame([$key], 'keyRules', $keySet);
     }
 
-    public function testShouldAcceptAllOfWithOneKeyRule()
+    /**
+     * @test
+     */
+    public function shouldAcceptAllOfWithOneKeyRule(): void
     {
         $key = new Key('foo', new AlwaysValid(), false);
         $allOf = new AllOf($key);
         $keySet = new KeySet($allOf);
 
-        $rules = $keySet->getRules();
-
-        $this->assertSame(current($rules), $key);
+        self::assertAttributeSame([$key], 'keyRules', $keySet);
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage AllOf rule must have only one Key rule
+     * @test
+     *
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
+     * @expectedExceptionMessage KeySet rule accepts only Key rules
      */
-    public function testShouldNotAcceptAllOfWithMoreThanOneKeyRule()
+    public function shouldNotAcceptAllOfWithMoreThanOneKeyRule(): void
     {
         $key1 = new Key('foo', new AlwaysValid(), false);
         $key2 = new Key('bar', new AlwaysValid(), false);
@@ -55,10 +65,12 @@ class KeySetTest extends TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @test
+     *
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage KeySet rule accepts only Key rules
      */
-    public function testShouldNotAcceptAllOfWithANonKeyRule()
+    public function shouldNotAcceptAllOfWithANonKeyRule(): void
     {
         $alwaysValid = new AlwaysValid();
         $allOf = new AllOf($alwaysValid);
@@ -67,27 +79,35 @@ class KeySetTest extends TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\ComponentException
+     * @test
+     *
+     * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage KeySet rule accepts only Key rules
      */
-    public function testShouldNotAcceptANonKeyRule()
+    public function shouldNotAcceptANonKeyRule(): void
     {
         $alwaysValid = new AlwaysValid();
 
         new KeySet($alwaysValid);
     }
 
-    public function testShouldReturnKeys()
+    /**
+     * @test
+     */
+    public function shouldReturnKeys(): void
     {
         $key1 = new Key('foo', new AlwaysValid(), true);
         $key2 = new Key('bar', new AlwaysValid(), false);
 
         $keySet = new KeySet($key1, $key2);
 
-        $this->assertEquals(['foo', 'bar'], $keySet->getKeys());
+        self::assertAttributeSame(['foo', 'bar'], 'keys', $keySet);
     }
 
-    public function testShouldValidateKeysWhenThereAreMissingRequiredKeys()
+    /**
+     * @test
+     */
+    public function shouldValidateKeysWhenThereAreMissingRequiredKeys(): void
     {
         $input = [
             'foo' => 42,
@@ -98,10 +118,13 @@ class KeySetTest extends TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        $this->assertFalse($keySet->validate($input));
+        self::assertFalse($keySet->validate($input));
     }
 
-    public function testShouldValidateKeysWhenThereAreMissingNonRequiredKeys()
+    /**
+     * @test
+     */
+    public function shouldValidateKeysWhenThereAreMissingNonRequiredKeys(): void
     {
         $input = [
             'foo' => 42,
@@ -112,10 +135,13 @@ class KeySetTest extends TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        $this->assertTrue($keySet->validate($input));
+        self::assertTrue($keySet->validate($input));
     }
 
-    public function testShouldValidateKeysWhenThereAreMoreKeys()
+    /**
+     * @test
+     */
+    public function shouldValidateKeysWhenThereAreMoreKeys(): void
     {
         $input = [
             'foo' => 42,
@@ -128,10 +154,13 @@ class KeySetTest extends TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        $this->assertFalse($keySet->validate($input));
+        self::assertFalse($keySet->validate($input));
     }
 
-    public function testShouldValidateKeysWhenEmpty()
+    /**
+     * @test
+     */
+    public function shouldValidateKeysWhenEmpty(): void
     {
         $input = [];
 
@@ -140,14 +169,16 @@ class KeySetTest extends TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        $this->assertFalse($keySet->validate($input));
+        self::assertFalse($keySet->validate($input));
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeySetException
-     * @expectedExceptionMessage Must have keys { "foo", "bar" }
+     * @test
+     *
+     * @expectedException \Respect\Validation\Exceptions\KeySetException
+     * @expectedExceptionMessage Must have keys `{ "foo", "bar" }`
      */
-    public function testShouldCheckKeys()
+    public function shouldCheckKeys(): void
     {
         $input = [];
 
@@ -159,10 +190,12 @@ class KeySetTest extends TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeySetException
-     * @expectedExceptionMessage Must have keys { "foo", "bar" }
+     * @test
+     *
+     * @expectedException \Respect\Validation\Exceptions\KeySetException
+     * @expectedExceptionMessage Must have keys `{ "foo", "bar" }`
      */
-    public function testShouldAssertKeys()
+    public function shouldAssertKeys(): void
     {
         $input = [];
 
@@ -174,23 +207,26 @@ class KeySetTest extends TestCase
     }
 
     /**
-     * @expectedException Respect\Validation\Exceptions\KeySetException
-     * @expectedExceptionMessage Must have keys { "name" }
+     * @test
+     *
      * @dataProvider providerForInvalidArguments
+     *
+     * @expectedException \Respect\Validation\Exceptions\KeySetException
+     * @expectedExceptionMessage Must have keys `{ "name" }`
      */
-    public function testShouldThrowExceptionInCaseArgumentIsAnythingOtherThanArray($input)
+    public function shouldThrowExceptionInCaseArgumentIsAnythingOtherThanArray($input): void
     {
         $keySet = new KeySet(new Key('name'));
         $keySet->assert($input);
     }
 
-    public function providerForInvalidArguments()
+    public function providerForInvalidArguments(): array
     {
         return [
             [''],
             [null],
             [0],
-            [new \stdClass()]
+            [new \stdClass()],
         ];
     }
 }

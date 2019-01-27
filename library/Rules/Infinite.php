@@ -9,18 +9,26 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+use function is_infinite;
+use function is_numeric;
+
 /**
+ * Validates if the input is an infinite number
+ *
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class Infinite extends AbstractRule
+final class Infinite extends AbstractRule
 {
     /**
      * {@inheritdoc}
      */
-    public function validate($input)
+    public function validate($input): bool
     {
-        return is_numeric($input) && is_infinite($input);
+        return is_numeric($input) && is_infinite((float) $input);
     }
 }

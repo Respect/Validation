@@ -1,3 +1,6 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
+Marcel dos Santos <marcelgsantos@gmail.com>
 --FILE--
 <?php
 
@@ -9,8 +12,8 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::slug())->check('good-and-valid-slug');
 } catch (SlugException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 "good-and-valid-slug" must not be a valid slug

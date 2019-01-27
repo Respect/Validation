@@ -9,44 +9,28 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
+use Respect\Validation\Test\TestCase;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\AllOf
- * @covers Respect\Validation\Exceptions\AllOfException
+ * @covers \Respect\Validation\Exceptions\AllOfException
+ * @covers \Respect\Validation\Rules\AllOf
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
  */
 class AllOfTest extends TestCase
 {
-    public function testRemoveRulesShouldRemoveAllRules()
-    {
-        $o = new AllOf(new IntVal(), new Positive());
-        $o->removeRules();
-        $this->assertEquals(0, count($o->getRules()));
-    }
-
-    public function testAddRulesUsingArrayOfRules()
-    {
-        $o = new AllOf();
-        $o->addRules(
-            [
-                [$x = new IntVal(), new Positive()],
-            ]
-        );
-        $this->assertTrue($o->hasRule($x));
-        $this->assertTrue($o->hasRule('Positive'));
-    }
-
-    public function testAddRulesUsingSpecificationArray()
-    {
-        $o = new AllOf();
-        $o->addRules(['Between' => [1, 2]]);
-        $this->assertTrue($o->hasRule('Between'));
-    }
-
-    public function testValidationShouldWorkIfAllRulesReturnTrue()
+    /**
+     * @test
+     */
+    public function validationShouldWorkIfAllRulesReturnTrue(): void
     {
         $valid1 = new Callback(function () {
             return true;
@@ -58,53 +42,61 @@ class AllOfTest extends TestCase
             return true;
         });
         $o = new AllOf($valid1, $valid2, $valid3);
-        $this->assertTrue($o->__invoke('any'));
-        $this->assertTrue($o->check('any'));
-        $this->assertTrue($o->assert('any'));
-        $this->assertTrue($o->__invoke(''));
-        $this->assertTrue($o->check(''));
-        $this->assertTrue($o->assert(''));
+        self::assertTrue($o->__invoke('any'));
+        $o->check('any');
+        $o->assert('any');
+        self::assertTrue($o->__invoke(''));
+        $o->check('');
+        $o->assert('');
     }
 
     /**
      * @dataProvider providerStaticDummyRules
-     * @expectedException Respect\Validation\Exceptions\AllOfException
+     * @expectedException \Respect\Validation\Exceptions\AllOfException
+     *
+     * @test
      */
-    public function testValidationAssertShouldFailIfAnyRuleFailsAndReturnAllExceptionsFailed($v1, $v2, $v3)
+    public function validationAssertShouldFailIfAnyRuleFailsAndReturnAllExceptionsFailed($v1, $v2, $v3): void
     {
         $o = new AllOf($v1, $v2, $v3);
-        $this->assertFalse($o->__invoke('any'));
-        $this->assertFalse($o->assert('any'));
+        self::assertFalse($o->__invoke('any'));
+        $o->assert('any');
     }
 
     /**
      * @dataProvider providerStaticDummyRules
-     * @expectedException Respect\Validation\Exceptions\CallbackException
+     * @expectedException \Respect\Validation\Exceptions\CallbackException
+     *
+     * @test
      */
-    public function testValidationCheckShouldFailIfAnyRuleFailsAndThrowTheFirstExceptionOnly($v1, $v2, $v3)
+    public function validationCheckShouldFailIfAnyRuleFailsAndThrowTheFirstExceptionOnly($v1, $v2, $v3): void
     {
         $o = new AllOf($v1, $v2, $v3);
-        $this->assertFalse($o->__invoke('any'));
-        $this->assertFalse($o->check('any'));
+        self::assertFalse($o->__invoke('any'));
+        $o->check('any');
     }
 
     /**
      * @dataProvider providerStaticDummyRules
-     * @expectedException Respect\Validation\Exceptions\ValidationException
+     * @expectedException \Respect\Validation\Exceptions\ValidationException
+     *
+     * @test
      */
-    public function testValidationCheckShouldFailOnEmptyInput($v1, $v2, $v3)
+    public function validationCheckShouldFailOnEmptyInput($v1, $v2, $v3): void
     {
         $o = new AllOf($v1, $v2, $v3);
-        $this->assertTrue($o->check(''));
+        $o->check('');
     }
 
     /**
      * @dataProvider providerStaticDummyRules
+     *
+     * @test
      */
-    public function testValidationShouldFailIfAnyRuleFails($v1, $v2, $v3)
+    public function validationShouldFailIfAnyRuleFails($v1, $v2, $v3): void
     {
         $o = new AllOf($v1, $v2, $v3);
-        $this->assertFalse($o->__invoke('any'));
+        self::assertFalse($o->__invoke('any'));
     }
 
     public function providerStaticDummyRules()

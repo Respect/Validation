@@ -1,50 +1,51 @@
 # Alnum
 
-- `v::alnum()`
-- `v::alnum(string $additionalChars)`
+- `Alnum()`
+- `Alnum(string ...$additionalChars)`
 
-Validates alphanumeric characters from a-Z and 0-9.
+Validates whether the input is alphanumeric or not.
 
-```php
-v::alnum()->validate('foo 123'); // true
-v::alnum()->validate('number 100%'); // false
-v::alnum('%')->validate('number 100%'); // true
-```
-
-Because this rule allows whitespaces by default, you can separate additional
-characters with a whitespace:
+Alphanumeric is a combination of alphabetic (a-z and A-Z) and numeric (0-9)
+characters.
 
 ```php
-v::alnum('- ! :')->validate('foo :- 123 !'); // true
+v::alnum()->validate('foo 123'); // false
+v::alnum(' ')->validate('foo 123'); // true
+v::alnum()->validate('100%'); // false
+v::alnum('%')->validate('100%'); // true
+v::alnum('%', ',')->validate('10,5%'); // true
 ```
 
-This validator allows whitespace, if you want to
-remove them add `->noWhitespace()` to the chain:
+You can restrict case using the [Lowercase](Lowercase.md) and
+[Uppercase](Uppercase.md) rules.
 
 ```php
-v::alnum()->noWhitespace()->validate('foo 123'); // false
+v::alnum()->uppercase()->validate('example'); // false
 ```
 
-You can restrict case using the `->lowercase()` and
-`->uppercase()` validators:
+Message template for this validator includes `{{additionalChars}}` as the string
+of extra chars passed as the parameter.
 
-```php
-v::alnum()->uppercase()->validate('aaa'); // false
-```
+## Changelog
 
-Message template for this validator includes `{{additionalChars}}` as
-the string of extra chars passed as the parameter.
+Version | Description
+--------|-------------
+  2.0.0 | Removed support to whitespaces by default
+  0.3.9 | Created
 
 ***
 See also:
 
-  * [Alpha](Alpha.md)
-  * [Charset](Charset.md)
-  * [Cntrl](Cntrl.md)
-  * [Consonant](Consonant.md)
-  * [Digit](Digit.md)
-  * [NoWhitespace](NoWhitespace.md)
-  * [Regex](Regex.md)
-  * [StringType](StringType.md)
-  * [Vowel](Vowel.md)
-  * [Xdigit](Xdigit.md)
+- [Alpha](Alpha.md)
+- [Charset](Charset.md)
+- [Cntrl](Cntrl.md)
+- [Consonant](Consonant.md)
+- [Digit](Digit.md)
+- [Lowercase](Lowercase.md)
+- [NoWhitespace](NoWhitespace.md)
+- [Regex](Regex.md)
+- [StringType](StringType.md)
+- [StringVal](StringVal.md)
+- [Uppercase](Uppercase.md)
+- [Vowel](Vowel.md)
+- [Xdigit](Xdigit.md)

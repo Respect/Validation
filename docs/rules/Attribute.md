@@ -1,10 +1,10 @@
 # Attribute
 
-- `v::attribute(string $name)`
-- `v::attribute(string $name, v $validator)`
-- `v::attribute(string $name, v $validator, boolean $mandatory = true)`
+- `Attribute(string $name)`
+- `Attribute(string $name, Validatable $rule)`
+- `Attribute(string $name, Validatable $rule, bool $mandatory)`
 
-Validates an object attribute.
+Validates an object attribute, even private ones.
 
 ```php
 $obj = new stdClass;
@@ -27,9 +27,15 @@ v::attribute('lorem', v::stringType(), false)->validate($obj); // true
 
 The name of this validator is automatically set to the attribute name.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [Key](Key.md)
-  * [KeyNested](KeyNested.md)
-  * [ObjectType](ObjectType.md)
+- [Key](Key.md)
+- [KeyNested](KeyNested.md)
+- [ObjectType](ObjectType.md)

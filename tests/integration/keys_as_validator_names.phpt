@@ -1,3 +1,5 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
 --TEST--
 keys as validator names
 --FILE--
@@ -12,14 +14,14 @@ use Respect\Validation\Validator;
 
 try {
     Validator::key('username', Validator::length(2, 32))
-             ->key('birthdate', Validator::date())
+             ->key('birthdate', Validator::dateTime())
              ->setName('User Subscription Form')
              ->assert(['username' => '0', 'birthdate' => 'Whatever']);
 } catch (NestedValidationException $e) {
     echo $e->getFullMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 - All of the required rules must pass for User Subscription Form
   - username must have a length between 2 and 32
-  - birthdate must be a valid date
+  - birthdate must be a valid date/time

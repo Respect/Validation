@@ -9,11 +9,25 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class IntVal extends AbstractRule
+use function filter_var;
+use function is_float;
+
+/**
+ * Validates if the input is an integer.
+ *
+ * @author Adam Benson <adam.benson@bigcommerce.com>
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Andrei Drulchenko <andrdru@gmail.com>
+ * @author Danilo Benevides <danilobenevides01@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class IntVal extends AbstractRule
 {
-    public function validate($input)
+    public function validate($input): bool
     {
         if (is_float($input) || is_bool($input)) {
             return false;

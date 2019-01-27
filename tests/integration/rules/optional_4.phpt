@@ -1,3 +1,5 @@
+--CREDITS--
+Rafael Bartalotti <rafael_bartalotti@hotmail.com>
 --FILE--
 <?php
 require 'vendor/autoload.php';
@@ -8,4 +10,4 @@ v::optional(v::alpha())->validate('');
 v::optional(v::alpha())->validate(null);
 
 ?>
---EXPECTF--
+--EXPECT--

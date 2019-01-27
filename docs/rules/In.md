@@ -1,7 +1,7 @@
 # In
 
-- `v::in(mixed $haystack)`
-- `v::in(mixed $haystack, boolean $identical = false)`
+- `In(mixed $haystack)`
+- `In(mixed $haystack, bool $identical)`
 
 Validates if the input is contained in a specific haystack.
 
@@ -22,10 +22,17 @@ of equal comparison.
 
 Message template for this validator includes `{{haystack}}`.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  0.3.9 | Created
+
 ***
 See also:
 
-  * [Contains](Contains.md)
-  * [EndsWith](EndsWith.md)
-  * [Roman](Roman.md)
-  * [StartsWith](StartsWith.md)
+- [Contains](Contains.md)
+- [ContainsAny](ContainsAny.md)
+- [EndsWith](EndsWith.md)
+- [Roman](Roman.md)
+- [StartsWith](StartsWith.md)

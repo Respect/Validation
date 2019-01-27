@@ -9,11 +9,17 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class Xdigit extends AbstractCtypeRule
+/**
+ * @author Andre Ramaciotti <andre@ramaciotti.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+class Xdigit extends AbstractFilterRule
 {
-    public function ctypeFunction($input)
+    protected function validateFilteredInput(string $input): bool
     {
         return ctype_xdigit($input);
     }

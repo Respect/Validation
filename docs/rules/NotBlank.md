@@ -1,6 +1,6 @@
 # NotBlank
 
-- `v::notBlank()`
+- `NotBlank()`
 
 Validates if the given input is not a blank value (`null`, zeros, empty strings
 or empty arrays, recursively).
@@ -26,11 +26,18 @@ v::notBlank()->validate(new stdClass()); // false
 
 It's similar to [NotEmpty](NotEmpty.md) but it's way more strict.
 
+## Changelog
+
+Version | Description
+--------|-------------
+  1.0.0 | Created
+
 ***
 See also:
 
-  * [NoWhitespace](NoWhitespace.md)
-  * [NotEmpty](NotEmpty.md)
-  * [NotOptional](NotOptional.md)
-  * [NullType](NullType.md)
-  * [Optional](Optional.md)
+- [NoWhitespace](NoWhitespace.md)
+- [NotEmpty](NotEmpty.md)
+- [NotOptional](NotOptional.md)
+- [NullType](NullType.md)
+- [Number](Number.md)
+- [Optional](Optional.md)

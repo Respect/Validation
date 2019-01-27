@@ -9,16 +9,26 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Exceptions;
 
-class EndsWithException extends ValidationException
+/**
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class EndsWithException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must end with ({{endValue}})',
+            self::STANDARD => '{{name}} must end with {{endValue}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not end with ({{endValue}})',
+            self::STANDARD => '{{name}} must not end with {{endValue}}',
         ],
     ];
 }

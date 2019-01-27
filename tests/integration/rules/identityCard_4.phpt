@@ -1,3 +1,5 @@
+--CREDITS--
+Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 
@@ -9,8 +11,8 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::identityCard('PL'))->check('AYE205410');
 } catch (IdentityCardException $e) {
-    echo $e->getMainMessage();
+    echo $e->getMessage();
 }
 ?>
---EXPECTF--
+--EXPECT--
 "AYE205410" must not be a valid Identity Card number for "PL"

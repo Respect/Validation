@@ -9,16 +9,31 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class Writable extends AbstractRule
+use SplFileInfo;
+use function is_string;
+use function is_writable;
+
+/**
+ * Validates if the given input is writable file.
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class Writable extends AbstractRule
 {
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
-        if ($input instanceof \SplFileInfo) {
+        if ($input instanceof SplFileInfo) {
             return $input->isWritable();
         }
 
-        return (is_string($input) && is_writable($input));
+        return is_string($input) && is_writable($input);
     }
 }

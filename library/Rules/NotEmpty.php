@@ -9,11 +9,23 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+/**
+ * Validates whether the input is not empty
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Bram Van der Sype <bram.vandersype@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
 class NotEmpty extends AbstractRule
 {
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
         if (is_string($input)) {
             $input = trim($input);

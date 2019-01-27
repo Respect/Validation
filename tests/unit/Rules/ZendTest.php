@@ -9,46 +9,64 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\TestCase;
 use DateTime;
+use Respect\Validation\Test\TestCase;
+use Zend\Validator\Date as ZendDate;
+use Zend\Validator\ValidatorInterface;
 
 /**
  * @group  rule
- * @covers Respect\Validation\Rules\Zend
- * @covers Respect\Validation\Exceptions\ZendException
+ * @covers \Respect\Validation\Exceptions\ZendException
+ * @covers \Respect\Validation\Rules\Zend
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Augusto Pascutti <augusto@phpsp.org.br>
+ * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Nick Lombard <github@jigsoft.co.za>
  */
 class ZendTest extends TestCase
 {
-    public function testConstructorWithValidatorName()
+    /**
+     * @test
+     */
+    public function constructorWithValidatorName(): void
     {
         $v = new Zend('Date');
-        $this->assertAttributeInstanceOf(
-            $instanceOf = 'Zend\Validator\ValidatorInterface',
+        self::assertAttributeInstanceOf(
+            $instanceOf = ValidatorInterface::class,
             $attribute = 'zendValidator',
             $instance = $v
         );
     }
 
     /**
-     * @depends testConstructorWithValidatorName
+     * @depends constructorWithValidatorName
+     *
+     * @test
      */
-    public function testConstructorWithValidatorClassName()
+    public function constructorWithValidatorClassName(): void
     {
-        $v = new Zend('Zend\Validator\Date');
-        $this->assertAttributeInstanceOf(
-            $instanceOf = 'Zend\Validator\ValidatorInterface',
+        $v = new Zend(ZendDate::class);
+        self::assertAttributeInstanceOf(
+            $instanceOf = ValidatorInterface::class,
             $attribute = 'zendValidator',
             $instance = $v
         );
     }
 
-    public function testConstructorWithZendValidatorInstance()
+    /**
+     * @test
+     */
+    public function constructorWithZendValidatorInstance(): void
     {
-        $zendInstance = new \Zend\Validator\Date();
+        $zendInstance = new ZendDate();
         $v = new Zend($zendInstance);
-        $this->assertAttributeSame(
+        self::assertAttributeSame(
             $expected = $zendInstance,
             $attribute = 'zendValidator',
             $instance = $v
@@ -56,88 +74,101 @@ class ZendTest extends TestCase
     }
 
     /**
-     * @depends testConstructorWithZendValidatorInstance
+     * @depends constructorWithZendValidatorInstance
+     *
+     * @test
      */
-    public function testUserlandValidatorExtendingZendInterface()
+    public function userlandValidatorExtendingZendInterface(): void
     {
         $v = new Zend(new MyValidator());
-        $this->assertAttributeInstanceOf(
-            $instanceOf = 'Zend\Validator\ValidatorInterface',
-            $attribute = 'zendValidator',
-            $instance = $v
-        );
-    }
-
-    public function testConstructorWithZendValidatorPartialNamespace()
-    {
-        $v = new Zend('Sitemap\Lastmod');
-        $this->assertAttributeInstanceOf(
-            $instanceOf = 'Zend\Validator\ValidatorInterface',
+        self::assertAttributeInstanceOf(
+            $instanceOf = ValidatorInterface::class,
             $attribute = 'zendValidator',
             $instance = $v
         );
     }
 
     /**
-     * @depends testConstructorWithValidatorName
-     * @depends testConstructorWithZendValidatorPartialNamespace
+     * @test
      */
-    public function testConstructorWithValidatorName_and_params()
+    public function constructorWithZendValidatorPartialNamespace(): void
+    {
+        $v = new Zend('Sitemap\Lastmod');
+        self::assertAttributeInstanceOf(
+            $instanceOf = ValidatorInterface::class,
+            $attribute = 'zendValidator',
+            $instance = $v
+        );
+    }
+
+    /**
+     * @depends constructorWithValidatorName
+     * @depends constructorWithZendValidatorPartialNamespace
+     *
+     * @test
+     */
+    public function constructorWithValidatorName_and_params(): void
     {
         $zendValidatorName = 'StringLength';
         $zendValidatorParams = ['min' => 10, 'max' => 25];
         $v = new Zend($zendValidatorName, $zendValidatorParams);
-        $this->assertTrue(
+        self::assertTrue(
             $v->validate('12345678901'),
             'The value should be valid for Zend\'s validator'
         );
     }
 
     /**
-     * @depends testConstructorWithValidatorName
+     * @depends constructorWithValidatorName
+     *
+     * @test
      */
-    public function testZendDateValidatorWithRespectMethods()
+    public function zendDateValidatorWithRespectMethods(): void
     {
         $v = new Zend('Date');
         $date = new DateTime();
-        $this->assertTrue($v->validate($date));
-        $this->assertTrue($v->assert($date));
+        self::assertTrue($v->validate($date));
+        $v->assert($date);
     }
 
     /**
-     * @depends testConstructorWithValidatorName
-     * @depends testZendDateValidatorWithRespectMethods
-     * @expectedException Respect\Validation\Exceptions\ZendException
+     * @depends constructorWithValidatorName
+     * @depends zendDateValidatorWithRespectMethods
+     * @expectedException \Respect\Validation\Exceptions\ZendException
+     *
+     * @test
      */
-    public function testRespectExceptionForFailedValidation()
+    public function respectExceptionForFailedValidation(): void
     {
         $v = new Zend('Date');
         $notValid = 'a';
-        $this->assertFalse(
+        self::assertFalse(
             $v->validate($notValid),
             'The validator returned true for an invalid value, this won\'t cause an exception later on.'
         );
-        $this->assertFalse(
+        self::assertFalse(
             $v->assert($notValid)
         );
     }
 
     /**
-     * @depends testConstructorWithValidatorName
-     * @depends testConstructorWithValidatorName_and_params
-     * @depends testZendDateValidatorWithRespectMethods
-     * @expectedException Respect\Validation\Exceptions\ZendException
+     * @depends constructorWithValidatorName
+     * @depends constructorWithValidatorName_and_params
+     * @depends zendDateValidatorWithRespectMethods
+     * @expectedException \Respect\Validation\Exceptions\ZendException
+     *
+     * @test
      */
-    public function testParamsNot()
+    public function paramsNot(): void
     {
         $v = new Zend('StringLength', ['min' => 10, 'max' => 25]);
-        $this->assertFalse($v->assert('aw'));
+        $v->assert('aw');
     }
 }
 
 // Stubs
-if (class_exists('\Zend\Validator\Date')) {
-    class MyValidator extends \Zend\Validator\Date
+if (class_exists(ZendDate::class)) {
+    class MyValidator extends ZendDate
     {
     }
 }

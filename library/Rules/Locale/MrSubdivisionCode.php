@@ -1,0 +1,52 @@
+<?php
+
+/*
+ * This file is part of Respect/Validation.
+ *
+ * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ *
+ * For the full copyright and license information, please view the "LICENSE.md"
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
+namespace Respect\Validation\Rules\Locale;
+
+use Respect\Validation\Rules\AbstractSearcher;
+
+/**
+ * Validates whether an input is subdivision code of Mauritania or not.
+ *
+ * ISO 3166-1 alpha-2: MR
+ *
+ * @see http://www.geonames.org/MR/administrative-division-mauritania.html
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class MrSubdivisionCode extends AbstractSearcher
+{
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDataSource(): array
+    {
+        return [
+           '01', // Hodh Ech Chargui
+           '02', // Hodh El Gharbi
+           '03', // Assaba
+           '04', // Gorgol
+           '05', // Brakna
+           '06', // Trarza
+           '07', // Adrar
+           '08', // Dakhlet Nouadhibou
+           '09', // Tagant
+           '10', // Guidimaka
+           '11', // Tiris Zemmour
+           '12', // Inchiri
+           '13', // Nouakchott-Ouest
+           '14', // Nouakchott-Nord
+           '15', // Nouakchott-Sud
+       ];
+    }
+}
