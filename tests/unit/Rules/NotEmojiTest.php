@@ -18,7 +18,7 @@ use Respect\Validation\Test\RuleTestCase;
 /**
  * @group rule
  *
- * @covers \Respect\Validation\Rules\HelloWorld
+ * @covers \Respect\Validation\Rules\NotEmoji
  *
  * @author  Mazen Touati <mazen_touati@hotmail.com>
  */
