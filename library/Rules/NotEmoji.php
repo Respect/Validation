@@ -9,13 +9,22 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
-class NotEmoji extends AbstractRule
+/**
+ * Validates whether the input does not contain emoji or not
+ *
+ * @author Mazen Touati <mazen_touati@hotmail.com>
+ */
+final class NotEmoji extends AbstractRule
 {
-    public function validate($input)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate($input): bool
     {
-
       // Emoji hex ranges
       // The following data has been gathered, scrapped, organized and treated based on the Unicode V11 specification : https://unicode.org/Public/emoji/11.0/emoji-test.txt
 

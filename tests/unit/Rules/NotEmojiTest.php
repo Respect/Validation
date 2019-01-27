@@ -9,15 +9,25 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Test\RuleTestCase;
+
 /**
- * @group  rule
- * @covers Respect\Validation\Rules\HelloWorld
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\HelloWorld
+ *
+ * @author  Mazen Touati <mazen_touati@hotmail.com>
  */
-class NotEmojiTest extends RuleTestCase
+final class NotEmojiTest extends RuleTestCase
 {
-    public function providerForValidInput()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForValidInput(): array
     {
         $rule = new NotEmoji();
         
@@ -32,7 +42,10 @@ class NotEmojiTest extends RuleTestCase
         ];
     }
 
-    public function providerForInvalidInput()
+    /**
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
     {
         $rule = new NotEmoji();
 
