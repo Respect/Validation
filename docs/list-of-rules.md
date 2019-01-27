@@ -87,6 +87,7 @@
   * [Length](rules/Length.md)
   * [Lowercase](rules/Lowercase.md)
   * [NotEmpty](rules/NotEmpty.md)
+  * [NotEmoji](rules/NotEmoji.md)
   * [NoWhitespace](rules/NoWhitespace.md)
   * [PhpLabel](rules/PhpLabel.md)
   * [Prnt](rules/Prnt.md)
