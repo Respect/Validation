@@ -43,6 +43,7 @@ See also:
 - [Digit](Digit.md)
 - [Lowercase](Lowercase.md)
 - [NoWhitespace](NoWhitespace.md)
+- [NotEmoji](NotEmoji.md)
 - [Regex](Regex.md)
 - [StringType](StringType.md)
 - [StringVal](StringVal.md)

@@ -115,6 +115,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  * @method static Validator noneOf(Validatable ...$rule)
  * @method static Validator not(Validatable $rule)
  * @method static Validator notBlank()
+ * @method static Validator notEmoji()
  * @method static Validator notEmpty()
  * @method static Validator notOptional()
  * @method static Validator noWhitespace()
