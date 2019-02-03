@@ -18,7 +18,6 @@
     },
     "require-dev": {
         "egulias/email-validator": "^2.0",
-        "friendsofphp/php-cs-fixer": "^2.8",
         "malukenho/docheader": "^0.1.4",
         "mikey179/vfsStream": "^1.6",
         "phpstan/phpstan": "^0.10.3",
@@ -32,8 +31,7 @@
         "ext-mbstring": "Multibyte String Functions",
         "egulias/email-validator": "Strict (RFC compliant) email validation",
         "symfony/validator": "Use Symfony validator through Respect\\Validation",
-        "zendframework/zend-validator": "Use Zend Framework validator through Respect\\Validation",
-        "friendsofphp/php-cs-fixer": "Fix PSR2 and other coding style issues"
+        "zendframework/zend-validator": "Use Zend Framework validator through Respect\\Validation"
     },
     "autoload": {
         "psr-4": {
@@ -53,14 +51,12 @@
     },
     "scripts": {
         "docheader": "docheader check library/ tests/",
-        "php-cs-fixer": "php-cs-fixer fix",
         "phpstan": "phpstan analyze",
         "phpunit": "phpunit",
         "phpunit-integration": "phpunit --testsuite=integration",
         "phpunit-unit": "phpunit --testsuite=unit",
         "qa": [
             "@docheader",
-            "@php-cs-fixer",
             "@phpstan",
             "@phpunit"
         ]
