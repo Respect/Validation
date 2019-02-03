@@ -35,6 +35,6 @@ try {
 ?>
 --EXPECT--
 "w poiur" must not contain whitespace
-"wpoiur" must not not contain whitespace
+"wpoiur" must contain whitespace
 - "w poiur" must not contain whitespace
-- "wpoiur" must not not contain whitespace
+- "wpoiur" must contain whitespace
