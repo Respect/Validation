@@ -50,11 +50,11 @@
         }
     },
     "scripts": {
-        "docheader": "docheader check library/ tests/",
-        "phpstan": "phpstan analyze",
-        "phpunit": "phpunit",
-        "phpunit-integration": "phpunit --testsuite=integration",
-        "phpunit-unit": "phpunit --testsuite=unit",
+        "docheader": "vendor/bin/docheader check library/ tests/",
+        "phpstan": "vendor/bin/phpstan analyze",
+        "phpunit": "vendor/bin/phpunit",
+        "phpunit-integration": "vendor/bin/phpunit --testsuite=integration",
+        "phpunit-unit": "vendor/bin/phpunit --testsuite=unit",
         "qa": [
             "@docheader",
             "@phpstan",
