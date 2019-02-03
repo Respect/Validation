@@ -7,7 +7,8 @@ parameters:
     - phpt
   ignoreErrors:
     - '/Call to an undefined static method Respect\\Validation\\Validator::iDoNotExistSoIShouldThrowException/'
-  level: 3
+    - '/Parameter #2 $locale of function setlocale expects array|string|null, int given./'
+  level: 5
   paths:
     - library/
     - tests/

@@ -40,7 +40,7 @@ final class In extends AbstractRule
     /**
      * Initializes the rule with the haystack and optionally compareIdentical flag.
      *
-     * @param array|string $haystack
+     * @param mixed $haystack
      * @param bool $compareIdentical
      */
     public function __construct($haystack, bool $compareIdentical = false)
