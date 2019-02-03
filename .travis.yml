@@ -5,7 +5,6 @@ language: php
 cache:
   directories:
     - $HOME/.composer/cache
-    - $HOME/.php-cs-fixer
 
 matrix:
   include:
@@ -37,7 +36,7 @@ script:
     fi
   - |
     if [[ "${TRAVIS_PHP_VERSION}" == "7.2" ]]; then
-      vendor/bin/php-cs-fixer --diff --dry-run --verbose fix
+      vendor/bin/phpcs
     fi
   - |
     if [[ "${TRAVIS_PHP_VERSION}" == "7.2" ]]; then

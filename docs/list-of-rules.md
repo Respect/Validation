@@ -190,6 +190,7 @@
 - [Cpf](rules/Cpf.md)
 - [Domain](rules/Domain.md)
 - [Email](rules/Email.md)
+- [Emoji](rules/Emoji.md)
 - [HexRgbColor](rules/HexRgbColor.md)
 - [Imei](rules/Imei.md)
 - [Ip](rules/Ip.md)

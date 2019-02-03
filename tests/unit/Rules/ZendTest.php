@@ -80,7 +80,7 @@ class ZendTest extends TestCase
      */
     public function userlandValidatorExtendingZendInterface(): void
     {
-        $v = new Zend(new MyValidator());
+        $v = new Zend(new ZendDate());
         self::assertAttributeInstanceOf(
             $instanceOf = ValidatorInterface::class,
             $attribute = 'zendValidator',
@@ -107,7 +107,7 @@ class ZendTest extends TestCase
      *
      * @test
      */
-    public function constructorWithValidatorName_and_params(): void
+    public function constructorWithValidatorNameAndParams(): void
     {
         $zendValidatorName = 'StringLength';
         $zendValidatorParams = ['min' => 10, 'max' => 25];
@@ -153,7 +153,7 @@ class ZendTest extends TestCase
 
     /**
      * @depends constructorWithValidatorName
-     * @depends constructorWithValidatorName_and_params
+     * @depends constructorWithValidatorNameAndParams
      * @depends zendDateValidatorWithRespectMethods
      * @expectedException \Respect\Validation\Exceptions\ZendException
      *
@@ -163,12 +163,5 @@ class ZendTest extends TestCase
     {
         $v = new Zend('StringLength', ['min' => 10, 'max' => 25]);
         $v->assert('aw');
-    }
-}
-
-// Stubs
-if (class_exists(ZendDate::class)) {
-    class MyValidator extends ZendDate
-    {
     }
 }

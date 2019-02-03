@@ -59,6 +59,6 @@ final class UaSubdivisionCode extends AbstractSearcher
            '71', // Cherkasy
            '74', // Chernihiv
            '77', // Chernivtsi
-       ];
+        ];
     }
 }

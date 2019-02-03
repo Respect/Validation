@@ -36,6 +36,6 @@ final class CsSubdivisionCode extends AbstractSearcher
            'MON', // Montenegro
            'SER', // Serbia
            'VOJ', // Vojvodina
-       ];
+        ];
     }
 }

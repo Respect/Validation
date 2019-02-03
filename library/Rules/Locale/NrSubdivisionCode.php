@@ -46,6 +46,6 @@ final class NrSubdivisionCode extends AbstractSearcher
            '12', // Nibok
            '13', // Uaboe
            '14', // Yaren
-       ];
+        ];
     }
 }

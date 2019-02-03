@@ -54,6 +54,6 @@ final class LySubdivisionCode extends AbstractSearcher
            'WD', // Wādī al Ḩayāt
            'WS', // Wādī ash Shāţi´
            'ZA', // Az Zawiyah
-       ];
+        ];
     }
 }

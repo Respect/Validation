@@ -64,6 +64,6 @@ final class MxSubdivisionCode extends AbstractSearcher
            'VER', // Veracruz
            'YUC', // Yucatan
            'ZAC', // Zacatecas
-       ];
+        ];
     }
 }

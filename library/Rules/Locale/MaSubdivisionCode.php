@@ -107,6 +107,6 @@ final class MaSubdivisionCode extends AbstractSearcher
            'TNG', // Tanger-Assilah
            'TNT', // Tan-Tan
            'ZAG', // Zagora
-       ];
+        ];
     }
 }

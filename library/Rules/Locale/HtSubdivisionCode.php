@@ -42,6 +42,6 @@ final class HtSubdivisionCode extends AbstractSearcher
            'OU', // Ouest
            'SD', // Sud
            'SE', // Sud-Est
-       ];
+        ];
     }
 }

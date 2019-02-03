@@ -58,6 +58,6 @@ final class ChSubdivisionCode extends AbstractSearcher
            'VS', // Valais
            'ZG', // Zug
            'ZH', // Zurich
-       ];
+        ];
     }
 }

@@ -56,6 +56,6 @@ final class CvSubdivisionCode extends AbstractSearcher
            'SV', // Sao Vicente
            'TA', // Tarrafal
            'TS', // Tarrafal de São Nicolau
-       ];
+        ];
     }
 }

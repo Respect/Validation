@@ -35,6 +35,7 @@ final class VideoUrl extends AbstractRule
      */
     private $service;
 
+    // phpcs:disable Generic.Files.LineLength.TooLong
     /**
      * @var array
      */
@@ -43,6 +44,7 @@ final class VideoUrl extends AbstractRule
         'vimeo' => '@^https?://(www\.)?(player\.)?(vimeo\.com/)((channels/[A-z]+/)|(groups/[A-z]+/videos/)|(video/))?([0-9]+)@i',
         'twitch' => '@^https?://(((www\.)?twitch\.tv/videos/[0-9]+)|clips\.twitch\.tv/[a-zA-Z]+)$@i',
     ];
+    // phpcs:enable Generic.Files.LineLength.TooLong
 
     /**
      * Create a new instance VideoUrl.

@@ -40,6 +40,6 @@ final class IsSubdivisionCode extends AbstractSearcher
            '6', // Norðurland Eystra
            '7', // Austurland
            '8', // Suðurland
-       ];
+        ];
     }
 }

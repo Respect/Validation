@@ -58,6 +58,6 @@ final class CdSubdivisionCode extends AbstractSearcher
            'TA', // Tanganyika
            'TO', // Tshopo
            'TU', // Tshuapa
-       ];
+        ];
     }
 }

@@ -35,6 +35,6 @@ final class ViSubdivisionCode extends AbstractSearcher
            'C', // Saint Croix
            'J', // Saint John
            'T', // Saint Thomas
-       ];
+        ];
     }
 }

@@ -54,6 +54,6 @@ final class GtSubdivisionCode extends AbstractSearcher
            'SU', // Suchitepequez
            'TO', // Totonicapan
            'ZA', // Zacapa
-       ];
+        ];
     }
 }

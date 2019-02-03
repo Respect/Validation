@@ -150,6 +150,6 @@ final class UgSubdivisionCode extends AbstractSearcher
            'E', // Eastern
            'N', // Northern
            'W', // Western
-       ];
+        ];
     }
 }

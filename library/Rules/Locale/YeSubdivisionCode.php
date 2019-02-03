@@ -54,6 +54,6 @@ final class YeSubdivisionCode extends AbstractSearcher
            'SN', // San'a
            'SU', // Socotra
            'TA', // Ta'izz
-       ];
+        ];
     }
 }

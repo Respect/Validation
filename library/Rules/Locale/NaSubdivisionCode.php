@@ -46,6 +46,6 @@ final class NaSubdivisionCode extends AbstractSearcher
            'OS', // Omusati
            'OT', // Oshikoto
            'OW', // Ohangwena
-       ];
+        ];
     }
 }

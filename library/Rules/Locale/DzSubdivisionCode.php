@@ -80,6 +80,6 @@ final class DzSubdivisionCode extends AbstractSearcher
            '46', // Ain Temouchent
            '47', // Ghardaia
            '48', // Relizane
-       ];
+        ];
     }
 }

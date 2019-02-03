@@ -45,6 +45,6 @@ final class PaSubdivisionCode extends AbstractSearcher
            'EM', // Comarca Emberá-Wounaan
            'KY', // Comarca de Kuna Yala
            'NB', // Ngöbe-Buglé
-       ];
+        ];
     }
 }

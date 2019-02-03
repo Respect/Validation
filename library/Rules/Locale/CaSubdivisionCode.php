@@ -45,6 +45,6 @@ final class CaSubdivisionCode extends AbstractSearcher
            'QC', // Quebec
            'SK', // Saskatchewan
            'YT', // Yukon Territory
-       ];
+        ];
     }
 }

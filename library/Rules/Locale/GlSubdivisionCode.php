@@ -36,6 +36,6 @@ final class GlSubdivisionCode extends AbstractSearcher
            'QA', // Qaasuitsup
            'QE', // Qeqqata
            'SM', // Sermersooq
-       ];
+        ];
     }
 }

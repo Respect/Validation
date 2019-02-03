@@ -73,6 +73,6 @@ final class GnSubdivisionCode extends AbstractSearcher
            'TE', // Telimele
            'TO', // Tougue
            'YO', // Yomou
-       ];
+        ];
     }
 }

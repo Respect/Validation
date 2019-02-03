@@ -47,6 +47,6 @@ final class MmSubdivisionCode extends AbstractSearcher
            '16', // Rakhine State
            '17', // Shan State
            '18', // Nay Pyi Taw
-       ];
+        ];
     }
 }

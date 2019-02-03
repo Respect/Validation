@@ -41,6 +41,6 @@ final class ZaSubdivisionCode extends AbstractSearcher
            'NL', // KwaZulu-Natal
            'NW', // North West
            'WC', // Western Cape
-       ];
+        ];
     }
 }

@@ -42,6 +42,6 @@ final class ZmSubdivisionCode extends AbstractSearcher
            '08', // Copperbelt Province
            '09', // Lusaka Province
            '10', // Muchinga
-       ];
+        ];
     }
 }

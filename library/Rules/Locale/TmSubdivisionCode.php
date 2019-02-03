@@ -38,6 +38,6 @@ final class TmSubdivisionCode extends AbstractSearcher
            'L', // Lebap Welayaty
            'M', // Mary Welayaty
            'S', // Aşgabat
-       ];
+        ];
     }
 }

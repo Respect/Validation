@@ -151,6 +151,6 @@ final class LvSubdivisionCode extends AbstractSearcher
            'RIX', // Riga
            'VEN', // Ventspils
            'VMR', // Valmiera
-       ];
+        ];
     }
 }

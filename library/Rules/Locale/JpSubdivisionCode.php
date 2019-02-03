@@ -79,6 +79,6 @@ final class JpSubdivisionCode extends AbstractSearcher
            '45', // Miyazaki
            '46', // Kagosima (Kagoshima)
            '47', // Okinawa
-       ];
+        ];
     }
 }

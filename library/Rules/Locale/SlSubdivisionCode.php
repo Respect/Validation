@@ -36,6 +36,6 @@ final class SlSubdivisionCode extends AbstractSearcher
            'N', // Northern
            'S', // Southern
            'W', // Western
-       ];
+        ];
     }
 }

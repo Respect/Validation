@@ -63,6 +63,6 @@ final class IrSubdivisionCode extends AbstractSearcher
            '30', // Razavi Khorasan
            '31', // North Khorasan
            '32', // Alborz
-       ];
+        ];
     }
 }

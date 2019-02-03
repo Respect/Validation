@@ -44,6 +44,6 @@ final class CgSubdivisionCode extends AbstractSearcher
            '8', // Cuvette
            '9', // Niari
            'BZV', // Brazzaville
-       ];
+        ];
     }
 }

@@ -46,6 +46,6 @@ final class UzSubdivisionCode extends AbstractSearcher
            'TK', // Toshkent city
            'TO', // Toshkent region
            'XO', // Xorazm
-       ];
+        ];
     }
 }

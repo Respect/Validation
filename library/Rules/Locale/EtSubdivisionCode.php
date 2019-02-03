@@ -43,6 +43,6 @@ final class EtSubdivisionCode extends AbstractSearcher
            'SN', // Southern Nations - Nationalities and Peoples Region
            'SO', // Somali
            'TI', // Tigray
-       ];
+        ];
     }
 }

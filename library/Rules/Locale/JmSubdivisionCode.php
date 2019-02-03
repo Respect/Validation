@@ -46,6 +46,6 @@ final class JmSubdivisionCode extends AbstractSearcher
            '12', // Manchester Parish
            '13', // Clarendon Parish
            '14', // Saint Catherine Parish
-       ];
+        ];
     }
 }

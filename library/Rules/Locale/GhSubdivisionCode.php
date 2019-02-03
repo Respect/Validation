@@ -42,6 +42,6 @@ final class GhSubdivisionCode extends AbstractSearcher
            'UE', // Upper East Region
            'UW', // Upper West Region
            'WP', // Western Region
-       ];
+        ];
     }
 }

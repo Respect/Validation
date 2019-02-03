@@ -50,6 +50,6 @@ final class AoSubdivisionCode extends AbstractSearcher
            'NAM', // Namibe
            'UIG', // Uige
            'ZAI', // Zaire
-       ];
+        ];
     }
 }

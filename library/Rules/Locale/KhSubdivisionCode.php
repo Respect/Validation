@@ -57,6 +57,6 @@ final class KhSubdivisionCode extends AbstractSearcher
            '7', // Kampot
            '8', // Kandal
            '9', // Kaoh Kong
-       ];
+        ];
     }
 }

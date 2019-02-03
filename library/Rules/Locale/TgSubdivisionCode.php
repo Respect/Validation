@@ -37,6 +37,6 @@ final class TgSubdivisionCode extends AbstractSearcher
            'M', // Maritime
            'P', // Plateaux
            'S', // Savanes
-       ];
+        ];
     }
 }

@@ -40,6 +40,6 @@ final class PkSubdivisionCode extends AbstractSearcher
            'PB', // Punjab
            'SD', // Sindh
            'TA', // Federally Administered Tribal Areas
-       ];
+        ];
     }
 }

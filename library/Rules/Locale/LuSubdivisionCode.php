@@ -44,6 +44,6 @@ final class LuSubdivisionCode extends AbstractSearcher
            'RM', // Canton de Remich
            'VD', // Canton de Vianden
            'WI', // Canton de Wiltz
-       ];
+        ];
     }
 }

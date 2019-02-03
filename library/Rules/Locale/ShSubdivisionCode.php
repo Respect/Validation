@@ -35,6 +35,6 @@ final class ShSubdivisionCode extends AbstractSearcher
            'AC', // Ascension
            'HL', // Saint Helena
            'TA', // Tristan da Cunha
-       ];
+        ];
     }
 }

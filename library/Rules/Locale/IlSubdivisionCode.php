@@ -38,6 +38,6 @@ final class IlSubdivisionCode extends AbstractSearcher
            'M', // Central
            'TA', // Tel Aviv
            'Z', // Northern
-       ];
+        ];
     }
 }

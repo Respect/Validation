@@ -50,6 +50,6 @@ final class HnSubdivisionCode extends AbstractSearcher
            'SB', // Santa Barbara
            'VA', // Valle
            'YO', // Yoro
-       ];
+        ];
     }
 }

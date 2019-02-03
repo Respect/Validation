@@ -58,6 +58,6 @@ final class MhSubdivisionCode extends AbstractSearcher
            'UTI', // Utirik
            'WTH', // Wotho
            'WTJ', // Wotje
-       ];
+        ];
     }
 }

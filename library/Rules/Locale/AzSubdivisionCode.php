@@ -110,6 +110,6 @@ final class AzSubdivisionCode extends AbstractSearcher
            'ZAN', // Zangilan
            'ZAQ', // Zaqatala
            'ZAR', // Zardab
-       ];
+        ];
     }
 }

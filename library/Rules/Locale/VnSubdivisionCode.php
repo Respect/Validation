@@ -95,6 +95,6 @@ final class VnSubdivisionCode extends AbstractSearcher
            'HN', // Ha Noi
            'HP', // Hai Phong
            'SG', // Ho Chi Minh
-       ];
+        ];
     }
 }

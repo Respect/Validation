@@ -45,6 +45,6 @@ final class BeSubdivisionCode extends AbstractSearcher
            'WLG', // Liege
            'WLX', // Luxembourg
            'WNA', // Namur
-       ];
+        ];
     }
 }

@@ -38,6 +38,6 @@ final class KwSubdivisionCode extends AbstractSearcher
            'JA', // Al Jahra
            'KU', // Al Asimah
            'MU', // Mubārak al Kabīr
-       ];
+        ];
     }
 }

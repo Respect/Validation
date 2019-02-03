@@ -49,6 +49,6 @@ final class MuSubdivisionCode extends AbstractSearcher
            'RR', // Riviere du Rempart
            'SA', // Savanne
            'VP', // Vacoas-Phoenix
-       ];
+        ];
     }
 }

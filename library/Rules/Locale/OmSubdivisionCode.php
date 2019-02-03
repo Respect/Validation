@@ -43,6 +43,6 @@ final class OmSubdivisionCode extends AbstractSearcher
            'WU', // Al Wusta
            'ZA', // Az Zahirah
            'ZU', // Zufar
-       ];
+        ];
     }
 }

@@ -157,6 +157,6 @@ final class FrSubdivisionCode extends AbstractSearcher
             'TF', // Terres Australes Françaises (see also separate ISO 3166-1 entry under TF)
             'WF', // Wallis et Futuna (see also separate ISO 3166-1 entry under WF)
             'YT', // Mayotte (see also separate ISO 3166-1 entry under YT)
-       ];
+        ];
     }
 }

@@ -56,6 +56,6 @@ final class EcSubdivisionCode extends AbstractSearcher
            'X', // Cotopaxi
            'Y', // Pastaza
            'Z', // Zamora-Chinchipe
-       ];
+        ];
     }
 }

@@ -110,6 +110,6 @@ final class ThSubdivisionCode extends AbstractSearcher
            '95', // Yala
            '96', // Narathiwat
            'S', // Pattaya
-       ];
+        ];
     }
 }

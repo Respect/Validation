@@ -50,6 +50,6 @@ final class SdSubdivisionCode extends AbstractSearcher
            'NW', // An Nīl al Abyaḑ
            'RS', // Al Baḩr al Aḩmar
            'SI', // Sinnār
-       ];
+        ];
     }
 }

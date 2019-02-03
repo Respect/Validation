@@ -37,6 +37,6 @@ final class SgSubdivisionCode extends AbstractSearcher
            '03', // North West
            '04', // South East
            '05', // South West
-       ];
+        ];
     }
 }

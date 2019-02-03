@@ -74,6 +74,6 @@ final class RoSubdivisionCode extends AbstractSearcher
            'VL', // Vilcea
            'VN', // Vrancea
            'VS', // Vaslui
-       ];
+        ];
     }
 }

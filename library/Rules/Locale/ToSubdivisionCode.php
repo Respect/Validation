@@ -37,6 +37,6 @@ final class ToSubdivisionCode extends AbstractSearcher
            '03', // Niuas
            '04', // Tongatapu
            '05', // Vava'u
-       ];
+        ];
     }
 }

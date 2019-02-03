@@ -79,6 +79,6 @@ final class KeSubdivisionCode extends AbstractSearcher
            '45', // Vihiga
            '46', // Wajir
            '47', // West Pokot
-       ];
+        ];
     }
 }

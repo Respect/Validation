@@ -41,6 +41,6 @@ final class SmSubdivisionCode extends AbstractSearcher
            '07', // Citta di San Marino
            '08', // Montegiardino
            '09', // Serravalle
-       ];
+        ];
     }
 }

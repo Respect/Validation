@@ -47,6 +47,6 @@ final class LrSubdivisionCode extends AbstractSearcher
            'RG', // River Gee
            'RI', // River Cess
            'SI', // Sinoe
-       ];
+        ];
     }
 }

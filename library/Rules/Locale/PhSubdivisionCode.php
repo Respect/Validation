@@ -130,6 +130,6 @@ final class PhSubdivisionCode extends AbstractSearcher
            'ZAS', // Zamboanga del Sur
            'ZMB', // Zambales
            'ZSI', // Zamboanga Sibugay
-       ];
+        ];
     }
 }

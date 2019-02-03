@@ -37,9 +37,9 @@ final class SymbolicLinkTest extends RuleTestCase
         $sut = new SymbolicLink();
 
         return [
-            'filename' => [$sut, $this->getFixtureDirectory().'/symbolic-link'],
-            'SplFileInfo' => [$sut, new SplFileInfo($this->getFixtureDirectory().'/symbolic-link')],
-            'SplFileObject' => [$sut, new SplFileObject($this->getFixtureDirectory().'/symbolic-link')],
+            'filename' => [$sut, 'tests/fixtures/symbolic-link'],
+            'SplFileInfo' => [$sut, new SplFileInfo('tests/fixtures/symbolic-link')],
+            'SplFileObject' => [$sut, new SplFileObject('tests/fixtures/symbolic-link')],
         ];
     }
 
@@ -51,8 +51,8 @@ final class SymbolicLinkTest extends RuleTestCase
         $sut = new SymbolicLink();
 
         return [
-            'no existing filename' => [$sut, $this->getFixtureDirectory().'/non-existing-symbolic-link'],
-            'no existing SplFileInfo' => [$sut, new SplFileInfo($this->getFixtureDirectory().'/non-existing-symbolic-link')],
+            'no existing filename' => [$sut, 'tests/fixtures/non-existing-symbolic-link'],
+            'no existing SplFileInfo' => [$sut, new SplFileInfo('tests/fixtures/non-existing-symbolic-link')],
             'bool true' => [$sut, true],
             'bool false' => [$sut, false],
             'empty string' => [$sut, ''],

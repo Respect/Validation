@@ -61,6 +61,6 @@ final class IeSubdivisionCode extends AbstractSearcher
            'WH', // Westmeath
            'WW', // Wicklow
            'WX', // Wexford
-       ];
+        ];
     }
 }

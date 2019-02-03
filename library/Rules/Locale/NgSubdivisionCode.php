@@ -69,6 +69,6 @@ final class NgSubdivisionCode extends AbstractSearcher
            'TA', // Taraba
            'YO', // Yobe
            'ZA', // Zamfara
-       ];
+        ];
     }
 }

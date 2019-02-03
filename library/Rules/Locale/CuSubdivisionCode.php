@@ -48,6 +48,6 @@ final class CuSubdivisionCode extends AbstractSearcher
            '15', // Artemisa
            '16', // Mayabeque
            '99', // Isla de la Juventud
-       ];
+        ];
     }
 }

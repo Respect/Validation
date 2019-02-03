@@ -48,6 +48,6 @@ final class MySubdivisionCode extends AbstractSearcher
            '14', // Kuala Lumpur
            '15', // Labuan
            '16', // Putrajaya
-       ];
+        ];
     }
 }

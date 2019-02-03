@@ -89,6 +89,6 @@ final class UsSubdivisionCode extends AbstractSearcher
            'WI', // Wisconsin
            'WV', // West Virginia
            'WY', // Wyoming
-       ];
+        ];
     }
 }

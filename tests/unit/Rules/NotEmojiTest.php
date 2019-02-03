@@ -14,13 +14,15 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
  * @group rule
  *
  * @covers \Respect\Validation\Rules\NotEmoji
  *
- * @author  Mazen Touati <mazen_touati@hotmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Mazen Touati <mazen_touati@hotmail.com>
  */
 final class NotEmojiTest extends RuleTestCase
 {
@@ -29,16 +31,16 @@ final class NotEmojiTest extends RuleTestCase
      */
     public function providerForValidInput(): array
     {
-        $rule = new NotEmoji();
-        
+        $sut = new NotEmoji();
+
         return [
-          [$rule, 'Hello World'],
-          [$rule, '0123456789'],
-          [$rule, 'ABCDEFGHIKLMNOPQRSTVXYZabcdefghiklmnopqrstvxyz'],
-          [$rule, '&"\'(-_)@-*/+.'],
-          [$rule, 'çàéè⁊ǷÞÐÆ'],
-          [$rule, 'ضصثقفغعهخحجشسيبلاتنمكطئءؤرلاىةوزظذ'],
-          [$rule, 'ろぬふあうえおやゆよわ゛へちついすかんなにらせれせ゜たqとしはきくまのりもろむてさそひこみねるめ!'],
+            'Numbers' => [$sut, '0123456789'],
+            'Alpha' => [$sut, 'ABCDEFGHIKLMNOPQRSTVXYZabcdefghiklmnopqrstvxyz'],
+            'Symbols' => [$sut, '&"\'(-_)@-*/+.'],
+            'Unicode symbols' => [$sut, 'çàéè⁊ǷÞÐÆ'],
+            'Arabic' => [$sut, 'ضصثقفغعهخحجشسيبلاتنمكطئءؤرلاىةوزظذ'],
+            'Russian' => [$sut, 'русский'],
+            'Japanese' => [$sut, 'ろぬふあうえおやゆよわ゛へちついすかんなにらせれせ゜たqとしはきくまのりもろむてさそひこみねるめ!'],
         ];
     }
 
@@ -47,44 +49,30 @@ final class NotEmojiTest extends RuleTestCase
      */
     public function providerForInvalidInput(): array
     {
-        $rule = new NotEmoji();
+        $sut = new NotEmoji();
 
         return [
-            //Smileys & People
-            [$rule, '🤣'],
-              // with modifier
-              [$rule, '👉🏿'],
-              [$rule, '🎅🏾'],
-              [$rule, '🙍🏻‍♂'],
-
-            // Animals & Nature
-            [$rule, '🐵'],
-
-            // Food & Drink
-            [$rule, '🍎'],
-
-            // Travel & Places
-            [$rule, '⛰️'],
-
-            // Activities
-            [$rule, '🎈'],
-
-            // Objects
-            [$rule, '📢'],
-
-            // Symbols: symbols are cancer as they are not necessarly within a range; their unicodes are spread...
-            [$rule, '⚠️'],
-            [$rule, '⏺'],
-            [$rule, '✅'],
-
-            // Flags
-            [$rule, '🇹🇳'],
-            [$rule, '🏴󠁧󠁢󠁥󠁮󠁧󠁿'],
-            [$rule, '🏳‍🌈󠁧󠁢󠁥󠁮󠁧󠁿'],
-            [$rule, '🏴‍☠️󠁧󠁢󠁥󠁮󠁧󠁿'],
-
-            // Mixed with text
-            [$rule, 'this is a pizza 🍕'],
+            'Smileys & People' => [$sut, '🤣'],
+            'Backhand Index Pointing Right with modifier' => [$sut, '👉🏿'],
+            'Santa Claus with modifier' => [$sut, '🎅🏾'],
+            'Man Frowning with modifier' => [$sut, '🙍🏻‍♂️'],
+            'Animals & Nature' => [$sut, '🐵'],
+            'Food & Drink' => [$sut, '🍎'],
+            'Travel & Places' => [$sut, '⛰️'],
+            'Activities' => [$sut, '🎈'],
+            'Objects' => [$sut, '📢'],
+            'Symbols from Unicode 4.0' => [$sut, '⚠️'],
+            'Symbols from Unicode 7.0' => [$sut, '⏺️'],
+            'Symbols from Unicode 6.0' => [$sut, '✅'],
+            'Flags Emoji 1.0' => [$sut, '🇹🇳'],
+            'Flags Emoji 4.0' => [$sut, '🏳️‍🌈'],
+            'Flags Emoji 5.0' => [$sut, '🏴󠁧󠁢󠁥󠁮󠁧󠁿'],
+            'Flags Emoji 11.0' => [$sut, '🏴‍☠️'],
+            'Flags' => [$sut, '🇹🇳'],
+            'Mixed with text' => [$sut, 'this is a pizza 🍕'],
+            'Array' => [$sut, []],
+            'Bool' => [$sut, true],
+            'Object' => [$sut, new stdClass()],
         ];
     }
 }

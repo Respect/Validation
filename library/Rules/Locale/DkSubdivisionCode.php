@@ -37,6 +37,6 @@ final class DkSubdivisionCode extends AbstractSearcher
            '83', // Region Syddanmark
            '84', // Region Hovedstaden
            '85', // Region Sjæland
-       ];
+        ];
     }
 }

@@ -22,6 +22,7 @@ class PostalCode extends AbstractEnvelope
 {
     public const DEFAULT_PATTERN = '/^$/';
 
+    // phpcs:disable Generic.Files.LineLength.TooLong
     /**
      * @see http://download.geonames.org/export/dump/countryInfo.txt
      */
@@ -187,6 +188,7 @@ class PostalCode extends AbstractEnvelope
         'ZA' => '/^(\d{4})$/',
         'ZM' => '/^(\d{5})$/',
     ];
+    // phpcs:enable Generic.Files.LineLength.TooLong
 
     public function __construct($countryCode, CountryCode $countryCodeRule = null)
     {

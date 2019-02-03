@@ -17,7 +17,9 @@ use ArrayAccess;
 use SimpleXMLElement;
 
 /**
- * Validates if the input is an array or if the input can be used as an array (instance of `ArrayAccess` or `SimpleXMLElement`).
+ * Validates if the input is an array or if the input can be used as an array.
+ *
+ * Instance of `ArrayAccess` or `SimpleXMLElement` are also considered as valid.
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>

@@ -36,6 +36,6 @@ final class BhSubdivisionCode extends AbstractSearcher
            '14', // Southern
            '15', // Muharraq
            '17', // Northern
-       ];
+        ];
     }
 }

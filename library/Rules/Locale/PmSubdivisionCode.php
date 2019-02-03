@@ -34,6 +34,6 @@ final class PmSubdivisionCode extends AbstractSearcher
         return [
            'M', // Miquelon
            'P', // Saint Pierre
-       ];
+        ];
     }
 }

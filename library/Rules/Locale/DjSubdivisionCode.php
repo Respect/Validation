@@ -38,6 +38,6 @@ final class DjSubdivisionCode extends AbstractSearcher
            'DJ', // Djibouti
            'OB', // Obock
            'TA', // Tadjoura
-       ];
+        ];
     }
 }

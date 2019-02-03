@@ -36,6 +36,6 @@ final class HmSubdivisionCode extends AbstractSearcher
            'H', // Heard Island
            'M', // McDonald Island
            'S', // Shag Island
-       ];
+        ];
     }
 }

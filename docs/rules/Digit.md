@@ -32,6 +32,7 @@ See also:
 - [Infinite](Infinite.md)
 - [IntType](IntType.md)
 - [IntVal](IntVal.md)
+- [NotEmoji](NotEmoji.md)
 - [NumericVal](NumericVal.md)
 - [Regex](Regex.md)
 - [Uuid](Uuid.md)

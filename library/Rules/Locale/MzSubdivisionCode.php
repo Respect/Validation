@@ -43,6 +43,6 @@ final class MzSubdivisionCode extends AbstractSearcher
            'Q', // Zambezia
            'S', // Sofala
            'T', // Tete
-       ];
+        ];
     }
 }

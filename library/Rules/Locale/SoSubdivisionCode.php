@@ -50,6 +50,6 @@ final class SoSubdivisionCode extends AbstractSearcher
            'SO', // Sool
            'TO', // Togdheer
            'WO', // Woqooyi Galbeed
-       ];
+        ];
     }
 }

@@ -37,6 +37,6 @@ final class RwSubdivisionCode extends AbstractSearcher
            '03', // Nord
            '04', // Ouest
            '05', // Sud
-       ];
+        ];
     }
 }

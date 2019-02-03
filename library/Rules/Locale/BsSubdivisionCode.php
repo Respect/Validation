@@ -64,6 +64,6 @@ final class BsSubdivisionCode extends AbstractSearcher
            'SS', // San Salvador
            'SW', // Spanish Wells
            'WG', // West Grand Bahama
-       ];
+        ];
     }
 }

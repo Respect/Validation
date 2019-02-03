@@ -49,6 +49,6 @@ final class NzSubdivisionCode extends AbstractSearcher
            'WGN', // Wellington
            'WKO', // Waikato
            'WTC', // West Coast
-       ];
+        ];
     }
 }

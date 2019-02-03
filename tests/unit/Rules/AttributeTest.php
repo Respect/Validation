@@ -41,11 +41,17 @@ final class AttributeTest extends RuleTestCase
             ->willReturn(true);
 
         return [
-            'Is valid when attribute is present without extra validator' => [new Attribute('bar'), $obj],
-            'Is valid when private attribute is present without extra validator' => [new Attribute('bar'), $this->objectWithPrivateProperty()],
-            'Is valid when attribute is present with extra validator' => [new Attribute('bar', $extraValidator), $obj],
-            'Is valid when non mandatory attribute is not present' => [new Attribute('foo', null, false), $obj],
-            'Is valid when non mandatory attribute is not present with extra validator' => [new Attribute('foo', $extraValidator, false), $obj],
+            'attribute is present without extra validator' => [new Attribute('bar'), $obj],
+            'private attribute is present without extra validator' => [
+                new Attribute('bar'),
+                $this->objectWithPrivateProperty()
+            ],
+            'attribute is present with extra validator' => [new Attribute('bar', $extraValidator), $obj],
+            'non mandatory attribute is not present' => [new Attribute('foo', null, false), $obj],
+            'non mandatory attribute is not present with extra validator' => [
+                new Attribute('foo', $extraValidator, false),
+                $obj
+            ],
         ];
     }
 
@@ -61,10 +67,13 @@ final class AttributeTest extends RuleTestCase
         $extraValidatorMock->method('validate')->willReturn(false);
 
         return [
-            'Is not valid when attribute is absent without extra validator' => [new Attribute('barr'), $obj],
-            'Is not valid when private attribute is not valid based on extra validator' => [new Attribute('bar', $extraValidatorMock), $this->objectWithPrivateProperty()],
-            'Is not valid when value provided is an empty string' => [new Attribute('barr'), ''],
-            'Is not valid when validator related to attribute does not validate' => [new Attribute('bar', $extraValidatorMock), $obj],
+            'attribute is absent without extra validator' => [new Attribute('barr'), $obj],
+            'private attribute is not valid based on extra validator' => [
+                new Attribute('bar', $extraValidatorMock),
+                $this->objectWithPrivateProperty()
+            ],
+            'value provided is an empty string' => [new Attribute('barr'), ''],
+            'validator related to attribute does not validate' => [new Attribute('bar', $extraValidatorMock), $obj],
         ];
     }
 

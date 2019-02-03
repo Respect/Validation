@@ -41,6 +41,6 @@ final class KgSubdivisionCode extends AbstractSearcher
            'O', // Osh
            'T', // Talas
            'Y', // Ysyk-Kol
-       ];
+        ];
     }
 }

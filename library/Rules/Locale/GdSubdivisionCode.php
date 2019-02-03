@@ -39,6 +39,6 @@ final class GdSubdivisionCode extends AbstractSearcher
            '05', // Saint Mark
            '06', // Saint Patrick
            '10', // Southern Grenadine Islands
-       ];
+        ];
     }
 }

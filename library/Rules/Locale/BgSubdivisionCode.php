@@ -60,6 +60,6 @@ final class BgSubdivisionCode extends AbstractSearcher
            '26', // Khaskovo
            '27', // Shumen
            '28', // Yambol
-       ];
+        ];
     }
 }

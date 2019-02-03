@@ -51,6 +51,6 @@ final class UySubdivisionCode extends AbstractSearcher
            'SO', // Soriano
            'TA', // Tacuarembó
            'TT', // Treinta y Tres
-       ];
+        ];
     }
 }

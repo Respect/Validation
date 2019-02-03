@@ -40,6 +40,6 @@ final class AuSubdivisionCode extends AbstractSearcher
            'TAS', // Tasmania
            'VIC', // Victoria
            'WA', // Western Australia
-       ];
+        ];
     }
 }

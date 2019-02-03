@@ -38,6 +38,6 @@ final class BzSubdivisionCode extends AbstractSearcher
            'OW', // Orange Walk District
            'SC', // Stann Creek District
            'TOL', // Toledo District
-       ];
+        ];
     }
 }

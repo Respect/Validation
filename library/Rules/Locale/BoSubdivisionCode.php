@@ -41,6 +41,6 @@ final class BoSubdivisionCode extends AbstractSearcher
            'P', // Departmento Potosi
            'S', // Departmento Santa Cruz
            'T', // Departmento Tarija
-       ];
+        ];
     }
 }

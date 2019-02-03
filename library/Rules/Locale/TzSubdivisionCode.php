@@ -62,6 +62,6 @@ final class TzSubdivisionCode extends AbstractSearcher
            '28', // Katavi
            '29', // Njombe
            '30', // Simiyu
-       ];
+        ];
     }
 }

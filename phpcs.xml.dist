@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<ruleset
+    name="PHPCS Coding Standards for Respect"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd"
+>
+    <arg name="basepath" value="." />
+    <arg name="cache" value=".phpcs.cache" />
+    <arg name="colors" />
+    <arg name="extensions" value="php,phpt" />
+    <arg value="p" />
+
+    <file>library/</file>
+    <file>tests/</file>
+
+    <rule ref="PSR1" />
+    <rule ref="PSR2" />
+</ruleset>

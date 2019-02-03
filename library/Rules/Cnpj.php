@@ -50,13 +50,19 @@ final class Cnpj extends AbstractRule
             return false;
         }
 
-        for ($i = 0, $n = 0; $i < 12; $n += $cleanInput[$i] * $b[++$i]);
+        $n = 0;
+        for ($i = 0; $i < 12; ++$i) {
+            $n += $cleanInput[$i] * $b[$i+1];
+        }
 
         if ($cleanInput[12] != ((($n %= 11) < 2) ? 0 : 11 - $n)) {
             return false;
         }
 
-        for ($i = 0, $n = 0; $i <= 12; $n += $cleanInput[$i] * $b[$i++]);
+        $n = 0;
+        for ($i = 0; $i <= 12; ++$i) {
+            $n += $cleanInput[$i] * $b[$i];
+        }
 
         if ($cleanInput[13] != ((($n %= 11) < 2) ? 0 : 11 - $n)) {
             return false;

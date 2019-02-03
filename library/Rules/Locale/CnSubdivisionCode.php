@@ -66,6 +66,6 @@ final class CnSubdivisionCode extends AbstractSearcher
            'XZ', // Xizang Zìzhìqu (Tibet)
            'YN', // Yunnan
            'ZJ', // Zhejiang
-       ];
+        ];
     }
 }

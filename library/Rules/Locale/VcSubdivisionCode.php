@@ -38,6 +38,6 @@ final class VcSubdivisionCode extends AbstractSearcher
            '04', // Saint George
            '05', // Saint Patrick
            '06', // Grenadines
-       ];
+        ];
     }
 }

@@ -49,6 +49,6 @@ final class KzSubdivisionCode extends AbstractSearcher
            'YUZ', // Ongtustik Qazaqstan
            'ZAP', // Baty Qazaqstan
            'ZHA', // Zhambyl
-       ];
+        ];
     }
 }

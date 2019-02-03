@@ -54,6 +54,6 @@ final class PgSubdivisionCode extends AbstractSearcher
            'WBK', // West New Britain
            'WHM', // Western Highlands
            'WPD', // Western
-       ];
+        ];
     }
 }

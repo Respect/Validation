@@ -66,6 +66,6 @@ final class AfSubdivisionCode extends AbstractSearcher
            'URU', // Uruzgān province
            'WAR', // Wardak province
            'ZAB', // Zabol province
-       ];
+        ];
     }
 }

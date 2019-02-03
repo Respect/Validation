@@ -40,6 +40,6 @@ final class LbSubdivisionCode extends AbstractSearcher
            'JA', // Liban-Sud
            'JL', // Mont-Liban
            'NA', // Nabatîyé
-       ];
+        ];
     }
 }

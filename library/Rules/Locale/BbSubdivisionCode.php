@@ -43,6 +43,6 @@ final class BbSubdivisionCode extends AbstractSearcher
            '09', // Saint Peter
            '10', // Saint Philip
            '11', // Saint Thomas
-       ];
+        ];
     }
 }

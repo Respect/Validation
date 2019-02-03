@@ -253,6 +253,6 @@ final class GbSubdivisionCode extends AbstractSearcher
            'WSX', // West Sussex
            'YOR', // York
            'ZET', // Shetland Islands
-       ];
+        ];
     }
 }

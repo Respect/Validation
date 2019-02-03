@@ -52,6 +52,6 @@ final class PtSubdivisionCode extends AbstractSearcher
            '18', // Viseu
            '20', // Acores (Azores)
            '30', // Madeira
-       ];
+        ];
     }
 }

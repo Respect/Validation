@@ -45,6 +45,6 @@ final class TlSubdivisionCode extends AbstractSearcher
            'MT', // Manatuto
            'OE', // Oecussi
            'VI', // Viqueque
-       ];
+        ];
     }
 }

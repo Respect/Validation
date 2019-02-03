@@ -53,6 +53,6 @@ final class HrSubdivisionCode extends AbstractSearcher
            '19', // Dubrovnik-Neretva county
            '20', // Medjimurje county
            '21', // Zagreb (city)
-       ];
+        ];
     }
 }

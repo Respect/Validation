@@ -101,6 +101,6 @@ final class EsSubdivisionCode extends AbstractSearcher
            'VI', // Álava
            'Z', // Zaragoza
            'ZA', // Zamora
-       ];
+        ];
     }
 }
