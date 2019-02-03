@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use ArrayIterator;
 use Countable;
 use RecursiveIterator;
 
@@ -25,15 +26,15 @@ class RecursiveExceptionIterator implements RecursiveIterator, Countable
 
     public function __construct(NestedValidationException $parent)
     {
-        $this->exceptions = $parent->getChildren();
+        $this->exceptions = new ArrayIterator($parent->getChildren());
     }
 
-    public function count()
+    public function count(): int
     {
         return $this->exceptions->count();
     }
 
-    public function hasChildren()
+    public function hasChildren(): bool
     {
         if (!$this->valid()) {
             return false;
@@ -42,12 +43,15 @@ class RecursiveExceptionIterator implements RecursiveIterator, Countable
         return $this->current() instanceof NestedValidationException;
     }
 
-    public function getChildren()
+    public function getChildren(): self
     {
         return new static($this->current());
     }
 
-    public function current()
+    /**
+     * @return ValidationException|NestedValidationException
+     */
+    public function current(): ValidationException
     {
         return $this->exceptions->current();
     }

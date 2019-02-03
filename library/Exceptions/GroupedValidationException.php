@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use function count;
+
 /**
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
@@ -36,7 +38,7 @@ class GroupedValidationException extends NestedValidationException
     protected function chooseTemplate(): string
     {
         $numRules = $this->getParam('passed');
-        $numFailed = $this->getChildren()->count();
+        $numFailed = count($this->getChildren());
 
         return $numRules === $numFailed ? static::NONE : static::SOME;
     }

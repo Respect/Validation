@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use function count;
+
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
@@ -41,7 +43,7 @@ class KeySetException extends GroupedValidationException implements NonOmissible
      */
     protected function chooseTemplate(): string
     {
-        if (0 === $this->getChildren()->count()) {
+        if (0 === count($this->getChildren())) {
             return static::STRUCTURE;
         }
 

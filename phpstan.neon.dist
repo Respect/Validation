@@ -7,7 +7,7 @@ parameters:
     - phpt
   ignoreErrors:
     - '/Call to an undefined static method Respect\\Validation\\Validator::iDoNotExistSoIShouldThrowException/'
-  level: 2
+  level: 3
   paths:
     - library/
     - tests/

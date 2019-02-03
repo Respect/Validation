@@ -133,9 +133,12 @@ final class Factory
     {
         foreach ($this->rulesNamespaces as $namespace) {
             try {
-                return $this
+                /** @var Validatable $rule */
+                $rule = $this
                     ->createReflectionClass($namespace.'\\'.ucfirst($ruleName), Validatable::class)
                     ->newInstanceArgs($arguments);
+
+                return $rule;
             } catch (ReflectionException $exception) {
                 continue;
             }

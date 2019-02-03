@@ -219,7 +219,9 @@ final class Validator extends AllOf
      */
     public function __call(string $ruleName, array $arguments): self
     {
-        return $this->addRule(Factory::getDefaultInstance()->rule($ruleName, $arguments));
+        $this->addRule(Factory::getDefaultInstance()->rule($ruleName, $arguments));
+
+        return $this;
     }
 
     /**

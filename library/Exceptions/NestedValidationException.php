@@ -13,8 +13,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use function current;
 use IteratorAggregate;
 use RecursiveIteratorIterator;
+use function spl_object_hash;
 use SplObjectStorage;
 use const PHP_EOL;
 use function count;
@@ -37,21 +39,17 @@ use function str_repeat;
 class NestedValidationException extends ValidationException implements IteratorAggregate
 {
     /**
-     * @var SplObjectStorage
+     * @var ValidationException[]
      */
-    private $exceptions;
+    private $exceptions = [];
 
     /**
      * Returns the exceptions that are children of the exception.
      *
-     * @return SplObjectStorage|ValidationException[]
+     * @return ValidationException[]
      */
-    public function getChildren(): SplObjectStorage
+    public function getChildren(): array
     {
-        if (!$this->exceptions instanceof SplObjectStorage) {
-            $this->exceptions = new SplObjectStorage();
-        }
-
         return $this->exceptions;
     }
 
@@ -64,7 +62,7 @@ class NestedValidationException extends ValidationException implements IteratorA
      */
     public function addChild(ValidationException $exception): self
     {
-        $this->getChildren()->attach($exception);
+        $this->exceptions[spl_object_hash($exception)] = $exception;
 
         return $this;
     }
@@ -86,7 +84,7 @@ class NestedValidationException extends ValidationException implements IteratorA
     }
 
     /**
-     * @return SplObjectStorage|ValidationException[]
+     * @return SplObjectStorage
      */
     public function getIterator(): SplObjectStorage
     {
@@ -205,13 +203,12 @@ class NestedValidationException extends ValidationException implements IteratorA
             return false;
         }
 
-        if (1 !== $exception->getChildren()->count()) {
+        if (1 !== count($exception->getChildren())) {
             return false;
         }
 
-        $exception->getChildren()->rewind();
         /** @var ValidationException $childException */
-        $childException = $exception->getChildren()->current();
+        $childException = current($exception->getChildren());
         if ($childException->getMessage() === $exception->getMessage()) {
             return true;
         }
