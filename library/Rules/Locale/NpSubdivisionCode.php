@@ -51,6 +51,6 @@ final class NpSubdivisionCode extends AbstractSearcher
            'RA', // Rapti
            'SA', // Sagarmatha
            'SE', // Seti
-       ];
+        ];
     }
 }

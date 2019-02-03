@@ -41,6 +41,6 @@ final class GqSubdivisionCode extends AbstractSearcher
            'KN', // Provincia Kie-Ntem
            'LI', // Provincia Litoral
            'WN', // Provincia Wele-Nzas
-       ];
+        ];
     }
 }

@@ -37,6 +37,6 @@ final class PfSubdivisionCode extends AbstractSearcher
            'S', // Iles Sous-le-Vent
            'T', // Tuamotu-Gambier
            'V', // Iles du Vent
-       ];
+        ];
     }
 }

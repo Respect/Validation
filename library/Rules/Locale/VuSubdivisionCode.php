@@ -38,6 +38,6 @@ final class VuSubdivisionCode extends AbstractSearcher
            'SEE', // Shefa
            'TAE', // Tafea
            'TOB', // Torba
-       ];
+        ];
     }
 }

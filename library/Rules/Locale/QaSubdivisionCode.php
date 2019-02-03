@@ -40,6 +40,6 @@ final class QaSubdivisionCode extends AbstractSearcher
            'US', // Umm Salal
            'WA', // Al Wakrah
            'ZA', // Az Z a‘āyin
-       ];
+        ];
     }
 }

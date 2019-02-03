@@ -48,6 +48,6 @@ final class PsSubdivisionCode extends AbstractSearcher
            'SLT', // Salfit [conventional] / Salfīt [Arabic]
            'TBS', // Tubas [conventional] / Ţūbās [Arabic]
            'TKM', // Tulkarm [conventional] /Ţūlkarm [Arabic]
-       ];
+        ];
     }
 }

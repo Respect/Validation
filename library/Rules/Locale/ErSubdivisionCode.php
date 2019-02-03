@@ -38,6 +38,6 @@ final class ErSubdivisionCode extends AbstractSearcher
            'GB', // Gash-Barka (Barentu)
            'MA', // Central (Maekel)
            'SK', // Northern Red Sea (Semien-Keih-Bahri)
-       ];
+        ];
     }
 }

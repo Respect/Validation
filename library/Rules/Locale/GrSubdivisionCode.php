@@ -97,6 +97,6 @@ final class GrSubdivisionCode extends AbstractSearcher
            'K', // Voreio Aigaio
            'L', // Notio Aigaio
            'M', // Kriti
-       ];
+        ];
     }
 }

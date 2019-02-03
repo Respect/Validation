@@ -36,6 +36,6 @@ final class MpSubdivisionCode extends AbstractSearcher
            'R', // Rota
            'S', // Saipan
            'T', // Tinian
-       ];
+        ];
     }
 }

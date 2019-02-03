@@ -47,6 +47,6 @@ final class ClSubdivisionCode extends AbstractSearcher
            'RM', // Region Metropolitana (RM)
            'TA', // Tarapaca (I)
            'VS', // Valparaiso (V)
-       ];
+        ];
     }
 }

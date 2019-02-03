@@ -52,6 +52,6 @@ final class MvSubdivisionCode extends AbstractSearcher
            '27', // Gaafu Alifu / Huvadhu Atholhu Uthuruburi
            '28', // Gaafu Dhaalu / Huvadhu Atholhu Dhekunuburi
            '29', // Gnaviyani / Fuvammulah
-       ];
+        ];
     }
 }

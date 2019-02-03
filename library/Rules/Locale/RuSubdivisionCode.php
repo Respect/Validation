@@ -115,6 +115,6 @@ final class RuSubdivisionCode extends AbstractSearcher
            'YAR', // Yaroslavl
            'YEV', // Jewish Oblast
            'ZAB', // Zabaykal'skiy kray
-       ];
+        ];
     }
 }

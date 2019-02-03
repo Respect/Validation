@@ -38,6 +38,6 @@ final class GmSubdivisionCode extends AbstractSearcher
            'N', // North Bank
            'U', // Upper River
            'W', // Western
-       ];
+        ];
     }
 }

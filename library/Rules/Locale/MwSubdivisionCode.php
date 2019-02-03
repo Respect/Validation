@@ -63,6 +63,6 @@ final class MwSubdivisionCode extends AbstractSearcher
            'SA', // Salima
            'TH', // Thyolo
            'ZO', // Zomba
-       ];
+        ];
     }
 }

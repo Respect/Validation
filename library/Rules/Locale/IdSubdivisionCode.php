@@ -73,6 +73,6 @@ final class IdSubdivisionCode extends AbstractSearcher
            'ST', // Sulawesi Tengah
            'SU', // Sumatera Utara
            'YO', // Yogyakarta
-       ];
+        ];
     }
 }

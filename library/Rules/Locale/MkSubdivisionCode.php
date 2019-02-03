@@ -117,6 +117,6 @@ final class MkSubdivisionCode extends AbstractSearcher
            '83', // Sopište
            '84', // Staro Nagoričane
            '85', // Skopje
-       ];
+        ];
     }
 }

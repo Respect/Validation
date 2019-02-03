@@ -35,6 +35,6 @@ final class BqSubdivisionCode extends AbstractSearcher
            'BO', // Bonaire
            'SA', // Saba
            'SE', // Sint Eustatius
-       ];
+        ];
     }
 }

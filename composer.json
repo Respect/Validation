@@ -11,6 +11,9 @@
             "homepage": "https://github.com/Respect/Validation/graphs/contributors"
         }
     ],
+    "config": {
+        "sort-packages": true
+    },
     "require": {
         "php": ">=7.1",
         "respect/stringifier": "^0.2.0",
@@ -22,6 +25,7 @@
         "mikey179/vfsStream": "^1.6",
         "phpstan/phpstan": "^0.10.3",
         "phpunit/phpunit": "^7.3",
+        "squizlabs/php_codesniffer": "^3.4",
         "symfony/validator": "^3.0||^4.0",
         "zendframework/zend-validator": "^2.0"
     },
@@ -51,12 +55,14 @@
     },
     "scripts": {
         "docheader": "vendor/bin/docheader check library/ tests/",
+        "phpcs": "vendor/bin/phpcs",
         "phpstan": "vendor/bin/phpstan analyze",
         "phpunit": "vendor/bin/phpunit",
         "phpunit-integration": "vendor/bin/phpunit --testsuite=integration",
         "phpunit-unit": "vendor/bin/phpunit --testsuite=unit",
         "qa": [
             "@docheader",
+            "@phpcs",
             "@phpstan",
             "@phpunit"
         ]

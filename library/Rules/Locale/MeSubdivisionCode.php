@@ -55,6 +55,6 @@ final class MeSubdivisionCode extends AbstractSearcher
            '21', // Opština Žabljak
            '22', // Gusinje
            '23', // Petnjica
-       ];
+        ];
     }
 }

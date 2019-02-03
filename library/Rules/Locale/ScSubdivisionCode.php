@@ -57,6 +57,6 @@ final class ScSubdivisionCode extends AbstractSearcher
            '23', // Takamaka
            '24', // Les Mamelles
            '25', // Roche Caïman
-       ];
+        ];
     }
 }

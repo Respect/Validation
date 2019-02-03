@@ -48,6 +48,6 @@ final class KnSubdivisionCode extends AbstractSearcher
            '15', // Trinity Palmetto Point
            'K', // Saint Kitts
            'N', // Nevis
-       ];
+        ];
     }
 }

@@ -57,6 +57,6 @@ final class VeSubdivisionCode extends AbstractSearcher
            'X', // Vargas
            'Y', // Delta Amacuro
            'Z', // Amazonas
-       ];
+        ];
     }
 }

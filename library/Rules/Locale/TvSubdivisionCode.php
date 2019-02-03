@@ -40,6 +40,6 @@ final class TvSubdivisionCode extends AbstractSearcher
            'NMG', // Nanumanga
            'NUI', // Nui
            'VAI', // Vaitupu
-       ];
+        ];
     }
 }

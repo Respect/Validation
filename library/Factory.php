@@ -78,8 +78,14 @@ final class Factory
         array $exceptionsNamespaces,
         callable $translator
     ) {
-        $this->rulesNamespaces = $this->filterNamespaces($rulesNamespaces, self::DEFAULT_RULES_NAMESPACES);
-        $this->exceptionsNamespaces = $this->filterNamespaces($exceptionsNamespaces, self::DEFAULT_EXCEPTIONS_NAMESPACES);
+        $this->rulesNamespaces = $this->filterNamespaces(
+            $rulesNamespaces,
+            self::DEFAULT_RULES_NAMESPACES
+        );
+        $this->exceptionsNamespaces = $this->filterNamespaces(
+            $exceptionsNamespaces,
+            self::DEFAULT_EXCEPTIONS_NAMESPACES
+        );
         $this->translator = $translator;
     }
 
@@ -233,8 +239,12 @@ final class Factory
      *
      * @return ValidationException
      */
-    private function createValidationException(string $exceptionName, string $id, $input, array $params): ValidationException
-    {
+    private function createValidationException(
+        string $exceptionName,
+        string $id,
+        $input,
+        array $params
+    ): ValidationException {
         /* @var ValidationException $exception */
         $exception = $this->createReflectionClass($exceptionName, ValidationException::class)
             ->newInstance($input, $id, $params, $this->translator);

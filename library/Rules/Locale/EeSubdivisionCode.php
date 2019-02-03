@@ -47,6 +47,6 @@ final class EeSubdivisionCode extends AbstractSearcher
            '82', // Valga County
            '84', // Viljandi County
            '86', // Võru County
-       ];
+        ];
     }
 }

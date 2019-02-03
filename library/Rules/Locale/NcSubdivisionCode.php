@@ -35,6 +35,6 @@ final class NcSubdivisionCode extends AbstractSearcher
            'L', // Iles Loyaute
            'N', // Nord
            'S', // Sud
-       ];
+        ];
     }
 }

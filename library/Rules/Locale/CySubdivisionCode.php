@@ -38,6 +38,6 @@ final class CySubdivisionCode extends AbstractSearcher
            '04', // Ammóchostos
            '05', // Páfos
            '06', // Kerýneia
-       ];
+        ];
     }
 }

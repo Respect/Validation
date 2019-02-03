@@ -48,6 +48,6 @@ final class PwSubdivisionCode extends AbstractSearcher
            '228', // Ngiwal
            '350', // Peleliu
            '370', // Sonsorol
-       ];
+        ];
     }
 }

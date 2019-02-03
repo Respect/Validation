@@ -54,6 +54,6 @@ final class MnSubdivisionCode extends AbstractSearcher
            '071', // Bayan-Olgiy
            '073', // Arhangay
            '1', // Ulanbaatar
-       ];
+        ];
     }
 }

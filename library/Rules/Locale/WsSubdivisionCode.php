@@ -43,6 +43,6 @@ final class WsSubdivisionCode extends AbstractSearcher
            'TU', // Tuamasaga
            'VF', // Va'a-o-Fonoti
            'VS', // Vaisigano
-       ];
+        ];
     }
 }

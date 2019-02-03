@@ -42,6 +42,6 @@ final class CmSubdivisionCode extends AbstractSearcher
            'OU', // West Province (Ouest)
            'SU', // South Province (Sud)
            'SW', // Southwest Province (Sud-Ouest).
-       ];
+        ];
     }
 }

@@ -39,6 +39,6 @@ final class AdSubdivisionCode extends AbstractSearcher
            '06', // Sant Julia de Lòria
            '07', // Andorra la Vella
            '08', // Escaldes-Engordany
-       ];
+        ];
     }
 }

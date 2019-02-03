@@ -144,6 +144,6 @@ final class CzSubdivisionCode extends AbstractSearcher
            '804', // Nový Jičín
            '805', // Opava
            '806', // Ostrava - město
-       ];
+        ];
     }
 }

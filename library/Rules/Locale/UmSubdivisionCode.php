@@ -41,6 +41,6 @@ final class UmSubdivisionCode extends AbstractSearcher
            '86', // Jarvis Island
            '89', // Kingman Reef
            '95', // Palmyra Atoll
-       ];
+        ];
     }
 }

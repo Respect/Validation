@@ -54,6 +54,6 @@ final class TwSubdivisionCode extends AbstractSearcher
            'TTT', // Taitung
            'TXG', // Taichung
            'YUN', // Yunlin
-       ];
+        ];
     }
 }

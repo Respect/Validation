@@ -46,6 +46,6 @@ final class SvSubdivisionCode extends AbstractSearcher
            'SV', // San Vicente
            'UN', // La Union
            'US', // Usulutan
-       ];
+        ];
     }
 }

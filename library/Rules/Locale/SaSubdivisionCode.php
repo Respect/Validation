@@ -45,6 +45,6 @@ final class SaSubdivisionCode extends AbstractSearcher
            '11', // Al Bahah
            '12', // Al Jawf
            '14', // 'Asir
-       ];
+        ];
     }
 }

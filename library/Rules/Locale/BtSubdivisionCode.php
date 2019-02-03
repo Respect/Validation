@@ -52,6 +52,6 @@ final class BtSubdivisionCode extends AbstractSearcher
            '45', // Samdrup Jongkhar
            'GA', // Gasa
            'TY', // Trashi Yangste
-       ];
+        ];
     }
 }

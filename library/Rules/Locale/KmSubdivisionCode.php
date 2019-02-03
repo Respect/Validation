@@ -35,6 +35,6 @@ final class KmSubdivisionCode extends AbstractSearcher
            'A', // Anjouan
            'G', // Grande Comore
            'M', // Moheli
-       ];
+        ];
     }
 }

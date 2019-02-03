@@ -44,6 +44,6 @@ final class GwSubdivisionCode extends AbstractSearcher
            'QU', // Quinara Region
            'S', // Sul
            'TO', // Tombali Region
-       ];
+        ];
     }
 }

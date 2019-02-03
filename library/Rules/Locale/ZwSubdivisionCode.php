@@ -42,6 +42,6 @@ final class ZwSubdivisionCode extends AbstractSearcher
            'MS', // Matabeleland South
            'MV', // Masvingo
            'MW', // Mashonaland West
-       ];
+        ];
     }
 }

@@ -42,6 +42,6 @@ final class GySubdivisionCode extends AbstractSearcher
            'PT', // Potaro-Siparuni
            'UD', // Upper Demerara-Berbice
            'UT', // Upper Takutu-Upper Essequibo
-       ];
+        ];
     }
 }

@@ -41,6 +41,6 @@ final class MlSubdivisionCode extends AbstractSearcher
            '7', // Gao
            '8', // Kidal
            'BKO', // Bamako Capital District
-       ];
+        ];
     }
 }

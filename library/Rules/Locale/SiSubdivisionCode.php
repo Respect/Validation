@@ -244,6 +244,6 @@ final class SiSubdivisionCode extends AbstractSearcher
            '211', // Šentrupert
            '212', // Mirna
            '213', // Ankaran
-       ];
+        ];
     }
 }

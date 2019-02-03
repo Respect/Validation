@@ -35,6 +35,6 @@ final class KiSubdivisionCode extends AbstractSearcher
            'G', // Gilbert Islands
            'L', // Line Islands
            'P', // Phoenix Islands
-       ];
+        ];
     }
 }

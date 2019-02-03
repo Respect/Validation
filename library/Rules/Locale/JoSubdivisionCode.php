@@ -44,6 +44,6 @@ final class JoSubdivisionCode extends AbstractSearcher
            'MA', // Al Mafraq
            'MD', // Madaba
            'MN', // Ma'an
-       ];
+        ];
     }
 }

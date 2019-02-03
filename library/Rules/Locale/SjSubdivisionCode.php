@@ -34,6 +34,6 @@ final class SjSubdivisionCode extends AbstractSearcher
         return [
            '21', // Svalbard
            '22', // Jan Mayen
-       ];
+        ];
     }
 }

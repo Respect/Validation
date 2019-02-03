@@ -90,6 +90,6 @@ final class BfSubdivisionCode extends AbstractSearcher
            'ZIR', // Ziro
            'ZON', // Zondoma
            'ZOU', // Zoundweogo
-       ];
+        ];
     }
 }

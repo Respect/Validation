@@ -66,6 +66,6 @@ final class LkSubdivisionCode extends AbstractSearcher
            '9', // Sabaragamuwa
            '91', // Ratnapura
            '92', // Kægalla
-       ];
+        ];
     }
 }

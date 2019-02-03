@@ -39,6 +39,6 @@ final class AeSubdivisionCode extends AbstractSearcher
            'RK', // R'as al Khaymah
            'SH', // Ash Shariqah
            'UQ', // Umm al Qaywayn
-       ];
+        ];
     }
 }

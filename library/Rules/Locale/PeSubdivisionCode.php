@@ -58,6 +58,6 @@ final class PeSubdivisionCode extends AbstractSearcher
            'TAC', // Tacna
            'TUM', // Tumbes
            'UCA', // Ucayali
-       ];
+        ];
     }
 }

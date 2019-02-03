@@ -39,6 +39,6 @@ final class CrSubdivisionCode extends AbstractSearcher
            'L', // Limon
            'P', // Puntarenas
            'SJ', // San Jose
-       ];
+        ];
     }
 }

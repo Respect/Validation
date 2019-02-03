@@ -113,6 +113,6 @@ final class TrSubdivisionCode extends AbstractSearcher
            '79', // Kilis
            '80', // Osmaniye
            '81', // Duzce
-       ];
+        ];
     }
 }

@@ -50,6 +50,6 @@ final class LaSubdivisionCode extends AbstractSearcher
            'XE', // Xekong
            'XI', // Xiangkhoang
            'XS', // Xaisômboun
-       ];
+        ];
     }
 }

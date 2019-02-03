@@ -46,6 +46,6 @@ final class TcSubdivisionCode extends AbstractSearcher
            'SC', // South Caicos
            'SL', // Salt Cay
            'WC', // West Caicos
-       ];
+        ];
     }
 }

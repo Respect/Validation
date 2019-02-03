@@ -42,6 +42,6 @@ final class SbSubdivisionCode extends AbstractSearcher
            'RB', // Rennell and Bellona
            'TE', // Temotu
            'WE', // Western
-       ];
+        ];
     }
 }

@@ -42,6 +42,6 @@ final class LsSubdivisionCode extends AbstractSearcher
            'H', // Qacha's Nek
            'J', // Mokhotlong
            'K', // Thaba-Tseka
-       ];
+        ];
     }
 }

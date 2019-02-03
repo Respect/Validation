@@ -36,6 +36,10 @@ script:
     fi
   - |
     if [[ "${TRAVIS_PHP_VERSION}" == "7.2" ]]; then
+      vendor/bin/phpcs
+    fi
+  - |
+    if [[ "${TRAVIS_PHP_VERSION}" == "7.2" ]]; then
       vendor/bin/phpstan analyze
     fi
 

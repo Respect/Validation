@@ -56,6 +56,6 @@ final class ArSubdivisionCode extends AbstractSearcher
            'X', // Cordoba
            'Y', // Jujuy
            'Z', // Santa Cruz
-       ];
+        ];
     }
 }

@@ -46,6 +46,6 @@ final class SnSubdivisionCode extends AbstractSearcher
            'TC', // Tambacounda
            'TH', // Thies
            'ZG', // Ziguinchor
-       ];
+        ];
     }
 }

@@ -50,6 +50,6 @@ final class IqSubdivisionCode extends AbstractSearcher
            'SD', // Salah ad Din
            'SU', // As Sulaymānīyah
            'WA', // Wasit
-       ];
+        ];
     }
 }

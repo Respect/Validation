@@ -44,6 +44,6 @@ final class NlSubdivisionCode extends AbstractSearcher
            'UT', // Utrecht
            'ZE', // Zeeland
            'ZH', // Zuid Holland
-       ];
+        ];
     }
 }

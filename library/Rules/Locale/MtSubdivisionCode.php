@@ -100,6 +100,6 @@ final class MtSubdivisionCode extends AbstractSearcher
            '66', // Żebbuġ Malta
            '67', // Zejtun
            '68', // Zurrieq
-       ];
+        ];
     }
 }

@@ -50,6 +50,6 @@ final class BiSubdivisionCode extends AbstractSearcher
            'RM', // Rumonge
            'RT', // Rutana
            'RY', // Ruyigi
-       ];
+        ];
     }
 }

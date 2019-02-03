@@ -64,6 +64,6 @@ final class RsSubdivisionCode extends AbstractSearcher
            '29', // Kosovsko-Pomoravski okrug
            'KM', // Kosovo
            'VO', // Vojvodina
-       ];
+        ];
     }
 }

@@ -41,6 +41,6 @@ final class AtSubdivisionCode extends AbstractSearcher
            '7', // Tirol
            '8', // Vorarlberg
            '9', // Wien
-       ];
+        ];
     }
 }

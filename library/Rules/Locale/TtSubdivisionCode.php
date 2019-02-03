@@ -47,6 +47,6 @@ final class TtSubdivisionCode extends AbstractSearcher
            'SJL', // San Juan/Laventille
            'TOB', // Tobago
            'TUP', // Tunapuna/Piarco
-       ];
+        ];
     }
 }

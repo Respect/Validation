@@ -158,6 +158,6 @@ final class ItSubdivisionCode extends AbstractSearcher
            'VR', // Verona
            'VT', // Viterbo
            'VV', // Vibo Valentia
-       ];
+        ];
     }
 }

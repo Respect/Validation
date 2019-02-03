@@ -46,6 +46,6 @@ final class SySubdivisionCode extends AbstractSearcher
            'RD', // Rif Dimashq
            'SU', // As Suwayda
            'TA', // Tartus
-       ];
+        ];
     }
 }

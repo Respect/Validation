@@ -53,6 +53,6 @@ final class SeSubdivisionCode extends AbstractSearcher
            'X', // Gavleborgs
            'Y', // Vasternorrlands
            'Z', // Jamtlands
-       ];
+        ];
     }
 }

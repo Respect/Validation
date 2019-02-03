@@ -40,6 +40,6 @@ final class SkSubdivisionCode extends AbstractSearcher
            'TA', // Trnavsky
            'TC', // Trenciansky
            'ZI', // Zilinsky
-       ];
+        ];
     }
 }

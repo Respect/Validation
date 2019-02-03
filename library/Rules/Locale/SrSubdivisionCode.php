@@ -42,6 +42,6 @@ final class SrSubdivisionCode extends AbstractSearcher
            'SA', // Saramacca
            'SI', // Sipaliwini
            'WA', // Wanica
-       ];
+        ];
     }
 }

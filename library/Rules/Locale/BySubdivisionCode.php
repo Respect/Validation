@@ -39,6 +39,6 @@ final class BySubdivisionCode extends AbstractSearcher
            'MA', // Mahilyow voblast
            'MI', // Minsk voblast
            'VI', // Vitsebsk voblast
-       ];
+        ];
     }
 }

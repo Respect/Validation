@@ -65,6 +65,6 @@ final class CoSubdivisionCode extends AbstractSearcher
            'VAC', // Valle del Cauca
            'VAU', // Vaupes
            'VID', // Vichada
-       ];
+        ];
     }
 }

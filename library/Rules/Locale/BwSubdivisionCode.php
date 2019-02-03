@@ -48,6 +48,6 @@ final class BwSubdivisionCode extends AbstractSearcher
            'SO', // Southern
            'SP', // Selibe Phikwe
            'ST', // Sowa Town
-       ];
+        ];
     }
 }

@@ -50,6 +50,6 @@ final class PySubdivisionCode extends AbstractSearcher
            '8', // Misiones
            '9', // Paraguari
            'ASU', // Asuncion
-       ];
+        ];
     }
 }

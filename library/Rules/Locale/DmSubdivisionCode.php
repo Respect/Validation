@@ -42,6 +42,6 @@ final class DmSubdivisionCode extends AbstractSearcher
            '09', // Saint Patrick Parish
            '10', // Saint Paul Parish
            '11', // Saint Peter Parish
-       ];
+        ];
     }
 }

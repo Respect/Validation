@@ -37,6 +37,6 @@ final class AsSubdivisionCode extends AbstractSearcher
            'R', // Rose Island
            'S', // Swains Island
            'W', // Western
-       ];
+        ];
     }
 }

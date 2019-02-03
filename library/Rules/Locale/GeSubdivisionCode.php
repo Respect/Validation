@@ -44,6 +44,6 @@ final class GeSubdivisionCode extends AbstractSearcher
            'SK', // Shida Kartli
            'SZ', // Samegrelo-Zemo Svaneti
            'TB', // Tbilisi
-       ];
+        ];
     }
 }

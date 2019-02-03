@@ -43,6 +43,6 @@ final class KpSubdivisionCode extends AbstractSearcher
            '09', // Hamgyong-bukto
            '10', // Ryanggang-do (Yanggang-do)
            '13', // Nasŏn (Najin-Sŏnbong)
-       ];
+        ];
     }
 }

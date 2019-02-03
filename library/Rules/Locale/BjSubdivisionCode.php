@@ -44,6 +44,6 @@ final class BjSubdivisionCode extends AbstractSearcher
            'OU', // Oueme
            'PL', // Plateau
            'ZO', // Zou
-       ];
+        ];
     }
 }

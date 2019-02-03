@@ -41,6 +41,6 @@ final class GaSubdivisionCode extends AbstractSearcher
            '7', // Ogooue-Lolo
            '8', // Ogooue-Maritime
            '9', // Woleu-Ntem
-       ];
+        ];
     }
 }

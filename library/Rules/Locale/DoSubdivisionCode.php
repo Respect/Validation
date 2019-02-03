@@ -64,6 +64,6 @@ final class DoSubdivisionCode extends AbstractSearcher
            '30', // Hato Mayor
            '31', // San Jose de Ocoa
            '32', // Santo Domingo
-       ];
+        ];
     }
 }

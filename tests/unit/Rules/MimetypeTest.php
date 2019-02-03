@@ -40,7 +40,7 @@ final class MimetypeTest extends RuleTestCase
     public function itShouldValidateWithDefinedFinfoInstance(): void
     {
         $mimetype = 'application/octet-stream';
-        $filename = $this->getFixtureDirectory().'/valid-image.png';
+        $filename = 'tests/fixtures/valid-image.png';
 
         $fileInfoMock = $this
             ->getMockBuilder(finfo::class)
@@ -65,12 +65,12 @@ final class MimetypeTest extends RuleTestCase
     public function providerForValidInput(): array
     {
         return [
-            'image/png' => [new Mimetype('image/png'), $this->getFixtureDirectory().'/valid-image.png'],
-            'image/gif' => [new Mimetype('image/gif'), $this->getFixtureDirectory().'/valid-image.gif'],
-            'image/jpeg' => [new Mimetype('image/jpeg'), $this->getFixtureDirectory().'/valid-image.jpg'],
-            'text/plain' => [new Mimetype('text/plain'), $this->getFixtureDirectory().'/executable'],
-            'SplFileInfo' => [new Mimetype('image/png'), new SplFileInfo($this->getFixtureDirectory().'/valid-image.png')],
-            'SplFileObject' => [new Mimetype('image/png'), new SplFileObject($this->getFixtureDirectory().'/valid-image.png')],
+            'image/png' => [new Mimetype('image/png'), 'tests/fixtures/valid-image.png'],
+            'image/gif' => [new Mimetype('image/gif'), 'tests/fixtures/valid-image.gif'],
+            'image/jpeg' => [new Mimetype('image/jpeg'), 'tests/fixtures/valid-image.jpg'],
+            'text/plain' => [new Mimetype('text/plain'), 'tests/fixtures/executable'],
+            'SplFileInfo' => [new Mimetype('image/png'), new SplFileInfo('tests/fixtures/valid-image.png')],
+            'SplFileObject' => [new Mimetype('image/png'), new SplFileObject('tests/fixtures/valid-image.png')],
         ];
     }
 
@@ -80,8 +80,8 @@ final class MimetypeTest extends RuleTestCase
     public function providerForInvalidInput(): array
     {
         return [
-            'invalid file' => [new Mimetype('image/png'), $this->getFixtureDirectory().'/invalid-image.png'],
-            'mismatch' => [new Mimetype('image/gif'), $this->getFixtureDirectory().'/valid-image.png'],
+            'invalid file' => [new Mimetype('image/png'), 'tests/fixtures/invalid-image.png'],
+            'mismatch' => [new Mimetype('image/gif'), 'tests/fixtures/valid-image.png'],
             'directory' => [new Mimetype('application/octet-stream'), __DIR__],
             'boolean' => [new Mimetype('application/octet-stream'), true],
             'array' => [new Mimetype('application/octet-stream'), [__FILE__]],

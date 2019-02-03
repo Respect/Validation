@@ -45,6 +45,6 @@ final class BaSubdivisionCode extends AbstractSearcher
            'BIH', // Federacija Bosna i Hercegovina
            'BRC', // Brcko District
            'SRP', // Republika Srpska
-       ];
+        ];
     }
 }

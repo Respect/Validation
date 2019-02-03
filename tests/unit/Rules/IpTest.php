@@ -82,7 +82,7 @@ final class IpTest extends RuleTestCase
            [new Ip('220.78.168/21'), '220.78.176.1'],
            [new Ip('220.78.168.0/21'), '220.78.176.2'],
            [new Ip('220.78.168.0/255.255.248.0'), '220.78.176.3'],
-       ];
+        ];
     }
 
     public function providerForInvalidRanges(): array

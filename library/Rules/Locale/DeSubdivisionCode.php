@@ -48,6 +48,6 @@ final class DeSubdivisionCode extends AbstractSearcher
            'SN', // Sachsen
            'ST', // Sachsen-Anhalt
            'TH', // Thüringen
-       ];
+        ];
     }
 }

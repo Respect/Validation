@@ -35,6 +35,6 @@ final class TkSubdivisionCode extends AbstractSearcher
            'A', // Atafu
            'F', // Fakaofo
            'N', // Nukunonu
-       ];
+        ];
     }
 }

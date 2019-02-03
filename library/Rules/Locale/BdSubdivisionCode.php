@@ -104,6 +104,6 @@ final class BdSubdivisionCode extends AbstractSearcher
            'F', // Rangpur
            'G', // Sylhet
            'H', // Mymensingh Division
-       ];
+        ];
     }
 }

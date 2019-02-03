@@ -40,6 +40,6 @@ final class NeSubdivisionCode extends AbstractSearcher
            '6', // Tillabéri
            '7', // Zinder
            '8', // Niamey
-       ];
+        ];
     }
 }

@@ -36,6 +36,6 @@ final class BnSubdivisionCode extends AbstractSearcher
            'BM', // Brunei and Muara
            'TE', // Temburong
            'TU', // Tutong
-       ];
+        ];
     }
 }

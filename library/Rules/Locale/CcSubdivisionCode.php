@@ -37,6 +37,6 @@ final class CcSubdivisionCode extends AbstractSearcher
            'O', // Horsburgh Island
            'S', // South Island
            'W', // West Island
-       ];
+        ];
     }
 }

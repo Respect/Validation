@@ -59,6 +59,6 @@ final class EgSubdivisionCode extends AbstractSearcher
            'SIN', // Shamal Sina'
            'SUZ', // As Suways
            'WAD', // Al Wadi al Jadid
-       ];
+        ];
     }
 }

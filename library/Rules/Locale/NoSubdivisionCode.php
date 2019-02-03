@@ -53,6 +53,6 @@ final class NoSubdivisionCode extends AbstractSearcher
            '20', // Finnmark
            '21', // Svalbard
            '22', // Jan Mayen
-       ];
+        ];
     }
 }

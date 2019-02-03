@@ -48,6 +48,6 @@ final class PlSubdivisionCode extends AbstractSearcher
            'WN', // Warminsko-Mazurskie
            'WP', // Wielkopolskie
            'ZP', // Zachodniopomorskie
-       ];
+        ];
     }
 }

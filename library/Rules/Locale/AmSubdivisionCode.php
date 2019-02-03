@@ -43,6 +43,6 @@ final class AmSubdivisionCode extends AbstractSearcher
            'SU', // Syunik'
            'TV', // Tavush
            'VD', // Vayots' Dzor
-       ];
+        ];
     }
 }

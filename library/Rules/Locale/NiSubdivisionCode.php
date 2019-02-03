@@ -49,6 +49,6 @@ final class NiSubdivisionCode extends AbstractSearcher
            'NS', // Nueva Segovia
            'RI', // Rivas
            'SJ', // Rio San Juan
-       ];
+        ];
     }
 }

@@ -46,6 +46,6 @@ final class CiSubdivisionCode extends AbstractSearcher
            'WR', // Woroba
            'YM', // Yamoussoukro Autonomous District
            'ZZ', // Zanzan
-       ];
+        ];
     }
 }

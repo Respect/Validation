@@ -36,6 +36,6 @@ final class SzSubdivisionCode extends AbstractSearcher
            'LU', // Lubombo
            'MA', // Manzini
            'SH', // Shishelweni
-       ];
+        ];
     }
 }

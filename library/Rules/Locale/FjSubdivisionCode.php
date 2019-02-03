@@ -51,6 +51,6 @@ final class FjSubdivisionCode extends AbstractSearcher
            'N', // Northern Division
            'R', // Rotuma
            'W', // Western Division
-       ];
+        ];
     }
 }

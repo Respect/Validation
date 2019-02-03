@@ -80,6 +80,6 @@ final class AlSubdivisionCode extends AbstractSearcher
            'TP', // Tropoje
            'TR', // Tirane
            'VL', // Vlore
-       ];
+        ];
     }
 }

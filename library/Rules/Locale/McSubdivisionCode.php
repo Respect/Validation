@@ -49,6 +49,6 @@ final class McSubdivisionCode extends AbstractSearcher
            'SP', // Spélugues
            'SR', // Saint-Roman
            'VR', // Vallon de la Rousse
-       ];
+        ];
     }
 }

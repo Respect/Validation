@@ -43,6 +43,6 @@ final class BmSubdivisionCode extends AbstractSearcher
            'SH', // Southampton
            'SM', // Smith's
            'WA', // Warwick
-       ];
+        ];
     }
 }

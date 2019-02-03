@@ -56,6 +56,6 @@ final class TnSubdivisionCode extends AbstractSearcher
            '81', // Gabès
            '82', // Medenine
            '83', // Tataouine
-       ];
+        ];
     }
 }

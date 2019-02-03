@@ -51,6 +51,6 @@ final class FiSubdivisionCode extends AbstractSearcher
            '17', // Satakunta [Finnish and Swedish]
            '18', // Uusimaa [Finnish] / Nyland [Swedish]
            '19', // Varsinais-Suomi [Finnish] / Egentliga Finland [Swedish]
-       ];
+        ];
     }
 }

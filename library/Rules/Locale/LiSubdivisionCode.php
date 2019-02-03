@@ -43,6 +43,6 @@ final class LiSubdivisionCode extends AbstractSearcher
            '09', // Triesen
            '10', // Triesenberg
            '11', // Vaduz
-       ];
+        ];
     }
 }

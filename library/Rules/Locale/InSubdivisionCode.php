@@ -68,6 +68,6 @@ final class InSubdivisionCode extends AbstractSearcher
            'UP', // Uttar Pradesh
            'UT', // Uttarakhand
            'WB', // West Bengal
-       ];
+        ];
     }
 }

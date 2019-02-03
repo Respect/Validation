@@ -49,6 +49,6 @@ final class CfSubdivisionCode extends AbstractSearcher
            'SE', // Sangha-Mbaere
            'UK', // Ouaka
            'VK', // Vakaga
-       ];
+        ];
     }
 }

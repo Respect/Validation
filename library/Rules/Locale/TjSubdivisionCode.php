@@ -37,6 +37,6 @@ final class TjSubdivisionCode extends AbstractSearcher
            'KT', // Khatlon
            'RA', // Nohiyahoi Tobei Jumhurí
            'SU', // Sughd
-       ];
+        ];
     }
 }

@@ -102,6 +102,6 @@ final class LtSubdivisionCode extends AbstractSearcher
            'TE', // Telsiai
            'UT', // Utena
            'VL', // Vilnius
-       ];
+        ];
     }
 }

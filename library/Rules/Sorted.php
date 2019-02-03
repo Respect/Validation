@@ -24,7 +24,9 @@ class Sorted extends AbstractRule
 
     public function __construct(callable $fn = null, bool $ascending = true)
     {
-        $this->fn = $fn ?? function ($x) { return $x; };
+        $this->fn = $fn ?? function ($x) {
+            return $x;
+        };
         $this->ascending = $ascending;
     }
 
@@ -35,8 +37,7 @@ class Sorted extends AbstractRule
             return true;
         }
         for ($i = 1; $i < $count; ++$i) {
-            if (
-                ($this->ascending && ($this->fn)($input[$i]) < ($this->fn)($input[$i - 1]))
+            if (($this->ascending && ($this->fn)($input[$i]) < ($this->fn)($input[$i - 1]))
                 || (!$this->ascending && ($this->fn)($input[$i]) > ($this->fn)($input[$i - 1]))
             ) {
                 return false;

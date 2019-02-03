@@ -34,6 +34,6 @@ final class StSubdivisionCode extends AbstractSearcher
         return [
            'P', // Principe
            'S', // Sao Tome
-       ];
+        ];
     }
 }

@@ -75,6 +75,6 @@ final class HuSubdivisionCode extends AbstractSearcher
            'VM', // Veszprém
            'ZA', // Zala megye
            'ZE', // Zalaegerszeg
-       ];
+        ];
     }
 }

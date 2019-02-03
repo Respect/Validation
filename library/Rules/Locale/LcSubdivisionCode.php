@@ -42,6 +42,6 @@ final class LcSubdivisionCode extends AbstractSearcher
            '10', // Soufriere
            '11', // Vieux-Fort
            '12', // Canaries
-       ];
+        ];
     }
 }

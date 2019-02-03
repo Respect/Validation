@@ -40,6 +40,6 @@ final class IoSubdivisionCode extends AbstractSearcher
            'PB', // Peros Banhos
            'SI', // Salomon Islands
            'TB', // Three Brothers
-       ];
+        ];
     }
 }

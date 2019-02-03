@@ -55,6 +55,6 @@ final class TdSubdivisionCode extends AbstractSearcher
            'TA', // Tandjile
            'TI', // Tibesti
            'WF', // Wadi Fira
-       ];
+        ];
     }
 }

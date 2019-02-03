@@ -35,6 +35,6 @@ final class WfSubdivisionCode extends AbstractSearcher
            'AL', // Alo
            'SG', // Sigave
            'UV', // ʻUvea
-       ];
+        ];
     }
 }

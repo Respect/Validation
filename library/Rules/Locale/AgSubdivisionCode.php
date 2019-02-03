@@ -40,6 +40,6 @@ final class AgSubdivisionCode extends AbstractSearcher
            '08', // Saint Philip
            '10', // Barbuda
            '11', // Redonda
-       ];
+        ];
     }
 }

@@ -36,6 +36,6 @@ final class FmSubdivisionCode extends AbstractSearcher
            'PNI', // Pohnpei
            'TRK', // Chuuk
            'YAP', // Yap
-       ];
+        ];
     }
 }

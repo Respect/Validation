@@ -59,6 +59,6 @@ final class BrSubdivisionCode extends AbstractSearcher
            'SE', // Sergipe
            'SP', // Sao Paulo
            'TO', // Tocantins
-       ];
+        ];
     }
 }

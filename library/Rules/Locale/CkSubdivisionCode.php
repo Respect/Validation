@@ -47,6 +47,6 @@ final class CkSubdivisionCode extends AbstractSearcher
            'RR', // Rarotonga
            'SU', // Surwarrow
            'TA', // Takutea
-       ];
+        ];
     }
 }

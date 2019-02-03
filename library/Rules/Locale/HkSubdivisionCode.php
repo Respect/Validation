@@ -50,6 +50,6 @@ final class HkSubdivisionCode extends AbstractSearcher
            'NTP', // Tai Po New Territories
            'NTW', // Tsuen Wan New Territories
            'NYL', // Yuen Long New Territories
-       ];
+        ];
     }
 }

@@ -69,6 +69,6 @@ final class MdSubdivisionCode extends AbstractSearcher
            'TA', // Raionul Taraclia
            'TE', // Teleneşti
            'UN', // Raionul Ungheni
-       ];
+        ];
     }
 }
