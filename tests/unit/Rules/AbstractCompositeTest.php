@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
 

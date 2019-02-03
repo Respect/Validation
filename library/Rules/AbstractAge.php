@@ -54,7 +54,7 @@ abstract class AbstractAge extends AbstractRule
     {
         $this->age = $age;
         $this->format = $format;
-        $this->baseDate = date('Ymd') - $this->age * 10000;
+        $this->baseDate = (int) date('Ymd') - $this->age * 10000;
     }
 
     /**

@@ -13,8 +13,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use function mb_strlen;
-use function mb_substr;
+use function array_map;
+use function count;
+use function str_split;
 
 /**
  * Validate whether a given input is a Luhn number.
@@ -42,10 +43,11 @@ final class Luhn extends AbstractRule
     private function isValid(string $input): bool
     {
         $sum = 0;
-        $numDigits = mb_strlen($input);
+        $digits = array_map('intval', str_split($input));
+        $numDigits = count($digits);
         $parity = $numDigits % 2;
         for ($i = 0; $i < $numDigits; ++$i) {
-            $digit = mb_substr($input, $i, 1);
+            $digit = $digits[$i];
             if ($parity == ($i % 2)) {
                 $digit <<= 1;
                 if (9 < $digit) {

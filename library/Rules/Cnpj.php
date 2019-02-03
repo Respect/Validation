@@ -13,8 +13,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function array_map;
+use function array_sum;
+use function count;
 use function is_scalar;
-use function mb_strlen;
 use function preg_replace;
 
 /**
@@ -39,35 +41,48 @@ final class Cnpj extends AbstractRule
         }
 
         // Code ported from jsfromhell.com
-        $cleanInput = preg_replace('/\D/', '', $input);
-        $b = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+        $bases = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+        $digits = $this->getDigits((string) $input);
 
-        if ($cleanInput < 1) {
+        if (array_sum($digits) < 1) {
             return false;
         }
 
-        if (14 != mb_strlen($cleanInput)) {
+        if (14 !== count($digits)) {
             return false;
         }
 
         $n = 0;
         for ($i = 0; $i < 12; ++$i) {
-            $n += $cleanInput[$i] * $b[$i+1];
+            $n += $digits[$i] * $bases[$i+1];
         }
 
-        if ($cleanInput[12] != ((($n %= 11) < 2) ? 0 : 11 - $n)) {
+        if ($digits[12] != ((($n %= 11) < 2) ? 0 : 11 - $n)) {
             return false;
         }
 
         $n = 0;
         for ($i = 0; $i <= 12; ++$i) {
-            $n += $cleanInput[$i] * $b[$i];
+            $n += $digits[$i] * $bases[$i];
         }
 
-        if ($cleanInput[13] != ((($n %= 11) < 2) ? 0 : 11 - $n)) {
+        if ($digits[13] != ((($n %= 11) < 2) ? 0 : 11 - $n)) {
             return false;
         }
 
         return true;
+    }
+
+    /**
+     * @return int[]
+     */
+    private function getDigits(string $input): array
+    {
+        return array_map(
+            'intval',
+            str_split(
+                preg_replace('/\D/', '', $input)
+            )
+        );
     }
 }

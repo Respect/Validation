@@ -14,12 +14,12 @@ $config = [
     'schema' => 'my_schema',
 ];
 
-$validator = v::arrayType()
-    ->setName('Settings')
-    ->key('host', v::stringType())
-    ->key('user', v::stringType())
-    ->key('password', v::stringType())
-    ->key('schema', v::stringType());
+$validator = v::arrayType();
+$validator->setName('Settings');
+$validator->key('host', v::stringType());
+$validator->key('user', v::stringType());
+$validator->key('password', v::stringType());
+$validator->key('schema', v::stringType());
 
 try {
     $validator->assert($config);

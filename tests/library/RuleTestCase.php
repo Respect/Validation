@@ -70,8 +70,8 @@ abstract class RuleTestCase extends TestCase
      *
      * @api
      *
-     * @param bool             $expectedResult
-     * @param string[optional] $mockClassName
+     * @param bool $expectedResult
+     * @param string $mockClassName
      *
      * @return Validatable
      */

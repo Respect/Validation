@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use ReflectionClass;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\ZendException;
 
 /**
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
@@ -64,7 +65,11 @@ class Zend extends AbstractRule
             $exceptions[] = $this->reportError($m, get_object_vars($this));
         }
 
-        throw $this->reportError($input)->addChildren($exceptions);
+        /** @var ZendException $zendException */
+        $zendException = $this->reportError($input);
+        $zendException->addChildren($exceptions);
+
+        throw $zendException;
     }
 
     public function validate($input): bool

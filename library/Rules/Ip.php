@@ -26,6 +26,7 @@ use function sprintf;
 use function str_repeat;
 use function str_replace;
 use function strtr;
+use function var_dump;
 
 /**
  * Validates whether the input is a valid IP address.
@@ -181,7 +182,7 @@ final class Ip extends AbstractRule
             throw new ComponentException('Invalid network mask');
         }
 
-        $this->mask = sprintf('%032b', ip2long(long2ip(~(2 ** (32 - $parts[1]) - 1))));
+        $this->mask = sprintf('%032b', ip2long(long2ip(~(2 ** (32 - (int) $parts[1]) - 1))));
     }
 
     private function verifyAddress(string $address): bool
@@ -199,6 +200,10 @@ final class Ip extends AbstractRule
 
     private function belongsToSubnet(string $input): bool
     {
+        if (null === $this->mask) {
+            return false;
+        }
+
         $min = sprintf('%032b', ip2long($this->startAddress));
         $input = sprintf('%032b', ip2long($input));
 

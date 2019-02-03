@@ -64,6 +64,7 @@ final class FactoryTest extends TestCase
         $constructorArguments = [true, false, true, false];
 
         $factory = new Factory([self::TEST_RULES_NAMESPACE], [], 'trim');
+        /** @var Stub $rule */
         $rule = $factory->rule('stub', $constructorArguments);
 
         self::assertSame($constructorArguments, $rule->validations);

@@ -146,9 +146,7 @@ class ZendTest extends TestCase
             $v->validate($notValid),
             'The validator returned true for an invalid value, this won\'t cause an exception later on.'
         );
-        self::assertFalse(
-            $v->assert($notValid)
-        );
+        $v->assert($notValid);
     }
 
     /**

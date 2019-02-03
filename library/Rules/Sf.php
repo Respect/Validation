@@ -16,6 +16,7 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\SfException;
 use Respect\Validation\Exceptions\ValidationException;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -58,6 +59,7 @@ final class Sf extends AbstractRule
      */
     public function assert($input): void
     {
+        /** @var ConstraintViolationList $violations */
         $violations = $this->validator->validate($input, $this->constraint);
         if (0 === $violations->count()) {
             return;
@@ -67,7 +69,7 @@ final class Sf extends AbstractRule
             throw $this->reportError($input, ['violations' => $violations[0]->getMessage()]);
         }
 
-        throw $this->reportError($input, ['violations' => trim((string) $violations)]);
+        throw $this->reportError($input, ['violations' => trim($violations->__toString())]);
     }
 
     /**

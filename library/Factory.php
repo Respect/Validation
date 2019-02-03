@@ -245,7 +245,7 @@ final class Factory
         $input,
         array $params
     ): ValidationException {
-        /* @var ValidationException $exception */
+        /** @var ValidationException $exception */
         $exception = $this->createReflectionClass($exceptionName, ValidationException::class)
             ->newInstance($input, $id, $params, $this->translator);
         if (isset($params['template'])) {

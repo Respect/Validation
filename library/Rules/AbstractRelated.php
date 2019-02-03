@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
 use function is_scalar;
@@ -67,10 +68,12 @@ abstract class AbstractRelated extends AbstractRule
 
         try {
             $this->decision('assert', $hasReference, $input);
-        } catch (ValidationException $e) {
-            throw $this
-                ->reportError($this->reference, ['hasReference' => true])
-                ->addChild($e);
+        } catch (ValidationException $validationException) {
+            /** @var NestedValidationException $nestedValidationException */
+            $nestedValidationException = $this->reportError($this->reference, ['hasReference' => true]);
+            $nestedValidationException->addChild($validationException);
+
+            throw $nestedValidationException;
         }
     }
 

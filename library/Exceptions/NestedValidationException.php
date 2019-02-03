@@ -86,7 +86,7 @@ class NestedValidationException extends ValidationException implements IteratorA
     }
 
     /**
-     * @return SplObjectStorage
+     * @return SplObjectStorage|ValidationException[]
      */
     public function getIterator(): SplObjectStorage
     {
@@ -210,6 +210,7 @@ class NestedValidationException extends ValidationException implements IteratorA
         }
 
         $exception->getChildren()->rewind();
+        /** @var ValidationException $childException */
         $childException = $exception->getChildren()->current();
         if ($childException->getMessage() === $exception->getMessage()) {
             return true;

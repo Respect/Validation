@@ -35,7 +35,7 @@ final class Nif extends AbstractRule
         }
 
         if (preg_match('/^(\d{8})([A-Z])$/', $input, $matches)) {
-            return $this->validateDni($matches[1], $matches[2]);
+            return $this->validateDni((int) $matches[1], $matches[2]);
         }
 
         if (preg_match('/^([KLMXYZ])(\d{7})([A-Z])$/', $input, $matches)) {
@@ -49,41 +49,29 @@ final class Nif extends AbstractRule
         return false;
     }
 
-    /**
-     * @param int $number
-     * @param int $control
-     */
-    private function validateDni($number, $control)
+    private function validateDni(int $number, string $control): bool
     {
         return mb_substr('TRWAGMYFPDXBNJZSQVHLCKE', ($number % 23), 1) === $control;
     }
 
-    /**
-     * @param string $prefix
-     * @param int    $number
-     * @param int    $control
-     */
-    private function validateNie($prefix, $number, $control)
+    private function validateNie(string $prefix, string $number, string $control): bool
     {
         if ('Y' === $prefix) {
-            return $this->validateDni('1'.$number, $control);
+            return $this->validateDni((int) ('1'.$number), $control);
         }
 
         if ('Z' === $prefix) {
-            return $this->validateDni('2'.$number, $control);
+            return $this->validateDni((int) ('2'.$number), $control);
         }
 
-        return $this->validateDni($number, $control);
+        return $this->validateDni((int) $number, $control);
     }
 
-    /**
-     * @param int    $number
-     * @param string $control
-     */
-    private function validateCif(string $number, $control)
+    private function validateCif(string $number, string $control)
     {
         $code = 0;
         $position = 1;
+        /** @var int $digit */
         foreach (str_split($number) as $digit) {
             $increaser = $digit;
             if (0 !== $position % 2) {

@@ -13,7 +13,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules\Locale;
 
+use function array_map;
 use Respect\Validation\Rules\AbstractRule;
+use function str_split;
 
 /**
  * Validator for Polish VAT identification number (NIP).
@@ -36,12 +38,13 @@ final class PlVatin extends AbstractRule
         }
 
         $weights = [6, 5, 7, 2, 3, 4, 5, 6, 7];
+        $digits = array_map('intval', str_split($input));
 
-        $targetControlNumber = $input[9];
+        $targetControlNumber = $digits[9];
         $calculateControlNumber = 0;
 
         for ($i = 0; $i < 9; ++$i) {
-            $calculateControlNumber += $input[$i] * $weights[$i];
+            $calculateControlNumber += $digits[$i] * $weights[$i];
         }
 
         $calculateControlNumber = $calculateControlNumber % 11;

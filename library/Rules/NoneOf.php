@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\NoneOfException;
+
 /**
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
@@ -25,7 +27,11 @@ class NoneOf extends AbstractComposite
         $numRules = count($this->getRules());
         $numExceptions = count($exceptions);
         if ($numRules !== $numExceptions) {
-            throw $this->reportError($input)->addChildren($exceptions);
+            /** @var NoneOfException $noneOfException */
+            $noneOfException = $this->reportError($input);
+            $noneOfException->addChildren($exceptions);
+
+            throw $noneOfException;
         }
     }
 

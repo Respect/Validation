@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\AllOfException;
+use Respect\Validation\Exceptions\GroupedValidationException;
+
 /**
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
@@ -30,7 +33,11 @@ class AllOf extends AbstractComposite
             'passed' => $numRules - $numExceptions,
         ];
         if (!empty($exceptions)) {
-            throw $this->reportError($input, $summary)->addChildren($exceptions);
+            /** @var AllOfException $allOfException */
+            $allOfException = $this->reportError($input, $summary);
+            $allOfException->addChildren($exceptions);
+
+            throw $allOfException;
         }
     }
 

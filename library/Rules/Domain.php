@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\DomainException;
 use Respect\Validation\Exceptions\ValidationException;
 
 /**
@@ -90,21 +91,25 @@ class Domain extends AbstractComposite
 
     public function assert($input): void
     {
-        $e = [];
+        $exceptions = [];
         foreach ($this->checks as $chk) {
-            $this->collectAssertException($e, $chk, $input);
+            $this->collectAssertException($exceptions, $chk, $input);
         }
 
         if (count($parts = explode('.', (string) $input)) >= 2) {
-            $this->collectAssertException($e, $this->tld, array_pop($parts));
+            $this->collectAssertException($exceptions, $this->tld, array_pop($parts));
         }
 
         foreach ($parts as $p) {
-            $this->collectAssertException($e, $this->otherParts, $p);
+            $this->collectAssertException($exceptions, $this->otherParts, $p);
         }
 
-        if (count($e)) {
-            throw $this->reportError($input)->addChildren($e);
+        if (count($exceptions)) {
+            /** @var DomainException $domainException */
+            $domainException = $this->reportError($input);
+            $domainException->addChildren($exceptions);
+
+            throw $domainException;
         }
     }
 

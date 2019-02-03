@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\AnyOfException;
+use Respect\Validation\Exceptions\GroupedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 
 /**
@@ -28,7 +30,11 @@ class AnyOf extends AbstractComposite
         $numRules = count($validators);
         $numExceptions = count($exceptions);
         if ($numExceptions === $numRules) {
-            throw $this->reportError($input)->addChildren($exceptions);
+            /** @var AnyOfException $anyOfException */
+            $anyOfException = $this->reportError($input);
+            $anyOfException->addChildren($exceptions);
+
+            throw $anyOfException;
         }
     }
 

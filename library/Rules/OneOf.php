@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\OneOfException;
 use Respect\Validation\Exceptions\ValidationException;
 
 /**
@@ -28,7 +29,11 @@ class OneOf extends AbstractComposite
         $numRules = count($validators);
         $numExceptions = count($exceptions);
         if ($numExceptions !== $numRules - 1) {
-            throw $this->reportError($input)->addChildren($exceptions);
+            /** @var OneOfException $oneOfException */
+            $oneOfException = $this->reportError($input);
+            $oneOfException->addChildren($exceptions);
+
+            throw $oneOfException;
         }
     }
 

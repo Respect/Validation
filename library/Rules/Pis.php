@@ -45,7 +45,7 @@ final class Pis extends AbstractRule
 
         $summation = 0;
         for ($position = 0; $position < 10; ++$position) {
-            $summation += $digits[$position] * $multipliers[$position];
+            $summation += (int) $digits[$position] * $multipliers[$position];
         }
 
         $checkDigit = (int) $digits[10];

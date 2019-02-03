@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\EachException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Helpers\CanValidateIterable;
 use Respect\Validation\Validatable;
@@ -37,7 +38,7 @@ final class Each extends AbstractRule
     /**
      * Initializes the constructor.
      *
-     * @param mixed $rule
+     * @param Validatable $rule
      */
     public function __construct(Validatable $rule)
     {
@@ -63,7 +64,11 @@ final class Each extends AbstractRule
         }
 
         if (!empty($exceptions)) {
-            throw $this->reportError($input)->addChildren($exceptions);
+            /** @var EachException $eachException */
+            $eachException = $this->reportError($input);
+            $eachException->addChildren($exceptions);
+
+            throw $eachException;
         }
     }
 
