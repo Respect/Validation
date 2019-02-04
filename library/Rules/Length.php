@@ -37,12 +37,12 @@ use function mb_strlen;
 final class Length extends AbstractRule
 {
     /**
-     * @var int
+     * @var int|null
      */
     private $minValue;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $maxValue;
 
@@ -60,7 +60,7 @@ final class Length extends AbstractRule
      *
      * @throws ComponentException
      */
-    public function __construct(int $min = null, int $max = null, $inclusive = true)
+    public function __construct(int $min = null, int $max = null, bool $inclusive = true)
     {
         $this->minValue = $min;
         $this->maxValue = $max;

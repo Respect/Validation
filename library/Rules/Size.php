@@ -29,7 +29,7 @@ class Size extends AbstractRule
     public $minSize;
 
     /**
-     * @var float
+     * @var float|null
      */
     public $minValue;
 
@@ -39,7 +39,7 @@ class Size extends AbstractRule
     public $maxSize;
 
     /**
-     * @var float
+     * @var float|null
      */
     public $maxValue;
 

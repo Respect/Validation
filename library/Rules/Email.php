@@ -31,7 +31,7 @@ use function is_string;
 final class Email extends AbstractRule
 {
     /**
-     * @var EmailValidator
+     * @var EmailValidator|null
      */
     private $validator;
 
