@@ -19,5 +19,6 @@ Version | Description
 See also:
 
 - [Domain](Domain.md)
+- [Iban](Iban.md)
 - [Ip](Ip.md)
 - [Tld](Tld.md)

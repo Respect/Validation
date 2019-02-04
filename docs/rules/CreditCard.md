@@ -45,6 +45,7 @@ Version | Description
 See also:
 
 - [Digit](Digit.md)
+- [Iban](Iban.md)
 - [Luhn](Luhn.md)
 - [NoWhitespace](NoWhitespace.md)
 - [Regex](Regex.md)
