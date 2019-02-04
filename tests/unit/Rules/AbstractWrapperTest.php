@@ -30,18 +30,6 @@ final class AbstractWrapperTest extends TestCase
     /**
      * @test
      */
-    public function shouldReturnDefinedValidatable(): void
-    {
-        $validatable = $this->createMock(Validatable::class);
-
-        $wrapper = $this->getMockForAbstractClass(AbstractWrapper::class, [$validatable]);
-
-        self::assertAttributeSame($validatable, 'validatable', $wrapper);
-    }
-
-    /**
-     * @test
-     */
     public function shouldUseWrappedToValidate(): void
     {
         $input = 'Whatever';

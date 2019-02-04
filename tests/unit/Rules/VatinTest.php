@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
-use Respect\Validation\Validatable;
 use stdClass;
 
 /**
@@ -62,17 +61,6 @@ final class VatinTest extends RuleTestCase
             [$rule, '1298727532'],
             [$rule, '1234567890'],
         ];
-    }
-
-    /**
-     * @test
-     */
-    public function shouldAcceptCountryCodeOnConstructor(): void
-    {
-        $countryCode = 'PL';
-        $rule = new Vatin($countryCode);
-
-        self::assertAttributeInstanceOf(Validatable::class, 'validatable', $rule);
     }
 
     /**

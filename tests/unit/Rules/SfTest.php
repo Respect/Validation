@@ -19,7 +19,6 @@ use Symfony\Component\Validator\Constraints\IsFalse;
 use Symfony\Component\Validator\Constraints\IsNull;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\TraceableValidator;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 use function class_exists;
 
 /**
@@ -51,16 +50,6 @@ final class SfTest extends TestCase
         $sut = new Sf(new IsFalse());
 
         self::assertFalse($sut->validate(true));
-    }
-
-    /**
-     * @test
-     */
-    public function itShouldHaveTheValidatorByDefault(): void
-    {
-        $sut = new Sf(new IsNull());
-
-        self::assertAttributeInstanceOf(ValidatorInterface::class, 'validator', $sut);
     }
 
     /**

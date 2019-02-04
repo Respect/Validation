@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
+use function array_intersect_key;
 
 /**
  * @test core
@@ -78,6 +79,6 @@ final class AbstractEnvelopeTest extends TestCase
 
         $exception = $rule->reportError($input);
 
-        self::assertArraySubset($parameters, $exception->getParams());
+        self::assertEquals($parameters, array_intersect_key($parameters, $exception->getParams()));
     }
 }

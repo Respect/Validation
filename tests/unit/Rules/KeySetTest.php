@@ -29,29 +29,6 @@ final class KeySetTest extends TestCase
 {
     /**
      * @test
-     */
-    public function shouldAcceptKeyRule(): void
-    {
-        $key = new Key('foo', new AlwaysValid(), false);
-        $keySet = new KeySet($key);
-
-        self::assertAttributeSame([$key], 'keyRules', $keySet);
-    }
-
-    /**
-     * @test
-     */
-    public function shouldAcceptAllOfWithOneKeyRule(): void
-    {
-        $key = new Key('foo', new AlwaysValid(), false);
-        $allOf = new AllOf($key);
-        $keySet = new KeySet($allOf);
-
-        self::assertAttributeSame([$key], 'keyRules', $keySet);
-    }
-
-    /**
-     * @test
      *
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage KeySet rule accepts only Key rules
@@ -90,19 +67,6 @@ final class KeySetTest extends TestCase
         $alwaysValid = new AlwaysValid();
 
         new KeySet($alwaysValid);
-    }
-
-    /**
-     * @test
-     */
-    public function shouldReturnKeys(): void
-    {
-        $key1 = new Key('foo', new AlwaysValid(), true);
-        $key2 = new Key('bar', new AlwaysValid(), false);
-
-        $keySet = new KeySet($key1, $key2);
-
-        self::assertAttributeSame(['foo', 'bar'], 'keys', $keySet);
     }
 
     /**
