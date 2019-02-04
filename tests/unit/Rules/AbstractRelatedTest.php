@@ -184,7 +184,7 @@ final class AbstractRelatedTest extends TestCase
             ->setConstructorArgs(['something', $this->createMock(Validatable::class), $mandatory])
             ->getMock();
 
-        self::assertSame($mandatory, $abstractMock->mandatory);
+        self::assertFalse($abstractMock->mandatory);
     }
 
     /**
