@@ -179,6 +179,7 @@
 ## Banking
 
 - [CreditCard](rules/CreditCard.md)
+- [IBAN](rules/IBAN.md)
 
 ## Other
 
@@ -273,6 +274,7 @@
 - [Graph](rules/Graph.md)
 - [GreaterThan](rules/GreaterThan.md)
 - [HexRgbColor](rules/HexRgbColor.md)
+- [IBAN](rules/IBAN.md)
 - [INSTALL](installation.md)
 - [Identical](rules/Identical.md)
 - [IdentityCard](rules/IdentityCard.md)

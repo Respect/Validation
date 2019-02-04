@@ -78,6 +78,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  * @method static Validator graph(string ...$additionalChars)
  * @method static Validator greaterThan($compareTo)
  * @method static Validator hexRgbColor()
+ * @method static Validator IBAN()
  * @method static Validator identical($value)
  * @method static Validator identityCard(string $countryCode)
  * @method static Validator image(finfo $fileInfo = null)
