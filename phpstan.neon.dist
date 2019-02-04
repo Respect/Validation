@@ -8,7 +8,7 @@ parameters:
   ignoreErrors:
     - '/Call to an undefined static method Respect\\Validation\\Validator::iDoNotExistSoIShouldThrowException/'
     - '/Parameter #2 $locale of function setlocale expects array|string|null, int given./'
-  level: 5
+  level: 6
   paths:
     - library/
     - tests/

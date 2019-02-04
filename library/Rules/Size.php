@@ -29,7 +29,7 @@ class Size extends AbstractRule
     public $minSize;
 
     /**
-     * @var int
+     * @var float
      */
     public $minValue;
 
@@ -39,7 +39,7 @@ class Size extends AbstractRule
     public $maxSize;
 
     /**
-     * @var int
+     * @var float
      */
     public $maxValue;
 
@@ -60,9 +60,9 @@ class Size extends AbstractRule
      *
      * @param mixed $size
      *
-     * @return int
+     * @return float
      */
-    private function toBytes($size)
+    private function toBytes($size): float
     {
         $value = $size;
         $units = ['b', 'kb', 'mb', 'gb', 'tb', 'pb', 'eb', 'zb', 'yb'];
@@ -75,18 +75,18 @@ class Size extends AbstractRule
         }
 
         if (!is_numeric($value)) {
-            throw new ComponentException(sprintf('"%s" is not a recognized file size.', $size));
+            throw new ComponentException(sprintf('"%s" is not a recognized file size.', (string) $size));
         }
 
-        return $value;
+        return (float) $value;
     }
 
     /**
-     * @param int $size
+     * @param float $size
      *
      * @return bool
      */
-    private function isValidSize($size)
+    private function isValidSize(float $size): bool
     {
         if (null !== $this->minValue && null !== $this->maxValue) {
             return $size >= $this->minValue && $size <= $this->maxValue;
@@ -109,7 +109,7 @@ class Size extends AbstractRule
         }
 
         if (is_string($input)) {
-            return $this->isValidSize(filesize($input));
+            return $this->isValidSize((int) filesize($input));
         }
 
         return false;
