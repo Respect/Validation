@@ -41,7 +41,7 @@ $user->birthdate = '1987-07-01';
 Is possible to validate its attributes in a single chain:
 
 ```php
-$userValidator = v::attribute('name', v::stringType()->length(1,32))
+$userValidator = v::attribute('name', v::stringType()->length(1, 32))
                   ->attribute('birthdate', v::date()->age(18));
 
 $userValidator->validate($user); // true
