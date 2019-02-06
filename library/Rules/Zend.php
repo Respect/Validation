@@ -16,16 +16,25 @@ namespace Respect\Validation\Rules;
 use ReflectionClass;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ZendException;
+use function get_object_vars;
+use function is_object;
+use function is_string;
+use function mb_stripos;
 
 /**
+ * Use Zend validators inside Respect\Validation flow. Messages are preserved.
+ *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Hugo Hamon <hugo.hamon@sensiolabs.com>
  */
-class Zend extends AbstractRule
+final class Zend extends AbstractRule
 {
-    protected $messages = [];
-    protected $zendValidator;
+    /**
+     * @var mixed
+     */
+    private $zendValidator;
 
     public function __construct($validator, $params = [])
     {
@@ -53,6 +62,9 @@ class Zend extends AbstractRule
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function assert($input): void
     {
         $validator = clone $this->zendValidator;
@@ -60,11 +72,10 @@ class Zend extends AbstractRule
         if ($validator->isValid($input)) {
             return;
         }
-
-        $exceptions = [];
-        foreach ($validator->getMessages() as $m) {
-            $exceptions[] = $this->reportError($m, get_object_vars($this));
-        }
+        
+        $exceptions = array_map(function ($message) {
+            return $this->reportError($message, get_object_vars($this));
+        }, $validator->getMessages());
 
         /** @var ZendException $zendException */
         $zendException = $this->reportError($input);
@@ -73,10 +84,12 @@ class Zend extends AbstractRule
         throw $zendException;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         $validator = clone $this->zendValidator;
-
         return $validator->isValid($input);
     }
 }
