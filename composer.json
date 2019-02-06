@@ -30,7 +30,7 @@
         "slevomat/coding-standard": "^5.0",
         "squizlabs/php_codesniffer": "^3.4",
         "symfony/validator": "^3.0||^4.0",
-        "zendframework/zend-validator": "^2.0"
+        "zendframework/zend-validator": "^2.1"
     },
     "suggest": {
         "ext-bcmath": "Arbitrary Precision Mathematics",
