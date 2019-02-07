@@ -62,6 +62,7 @@
     <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing" />
     <rule ref="SlevomatCodingStandard.Variables.DuplicateAssignmentToVariable" />
     <rule ref="SlevomatCodingStandard.Variables.UselessVariable" />
+    <rule ref="Squiz.PHP.CommentedOutCode" />
     <rule ref="Squiz.WhiteSpace.FunctionSpacing">
         <properties>
             <property name="spacing" value="1" />

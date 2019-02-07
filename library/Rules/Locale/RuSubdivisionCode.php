@@ -73,8 +73,8 @@ final class RuSubdivisionCode extends AbstractSearcher
             'MAG', // Magadan
             'ME', // Mari El
             'MO', // Mordovia
-            'MOS', // Moscow (Province)
-            'MOW', // Moscow (City)
+            'MOS', // Moscow - Province
+            'MOW', // Moscow - City
             'MUR', // Murmansk
             'NEN', // Nenetsia
             'NGR', // Novgorod

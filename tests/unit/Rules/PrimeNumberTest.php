@@ -27,9 +27,9 @@ use Respect\Validation\Test\RuleTestCase;
  */
 final class PrimeNumberTest extends RuleTestCase
 {
-    /*
-    * {@inheritdoc}
-    */
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new PrimeNumber();
@@ -44,9 +44,9 @@ final class PrimeNumberTest extends RuleTestCase
         ];
     }
 
-    /*
-    * {@inheritdoc}
-    */
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new PrimeNumber();

@@ -35,7 +35,7 @@ final class SaSubdivisionCode extends AbstractSearcher
             '01', // Ar Riyad
             '02', // Makkah
             '03', // Al Madinah
-            '04', // Ash Sharqiyah (Eastern Province)
+            '04', // Ash Sharqiyah - Eastern Province
             '05', // Al Qasim
             '06', // Ha'il
             '07', // Tabuk

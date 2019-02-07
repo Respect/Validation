@@ -28,9 +28,9 @@ use Respect\Validation\Test\RuleTestCase;
  */
 final class NoWhitespaceTest extends RuleTestCase
 {
-    /*
-    * {@inheritdoc}
-    */
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new NoWhitespace();
@@ -44,7 +44,7 @@ final class NoWhitespaceTest extends RuleTestCase
         ];
     }
 
-    /*
+    /**
      * {@inheritdoc}
      */
     public function providerForInvalidInput(): array

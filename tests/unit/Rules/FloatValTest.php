@@ -27,9 +27,9 @@ use Respect\Validation\Test\RuleTestCase;
  */
 final class FloatValTest extends RuleTestCase
 {
-    /*
-    * {@inheritdoc}
-    */
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new FloatVal();
@@ -47,9 +47,9 @@ final class FloatValTest extends RuleTestCase
         ];
     }
 
-    /*
-    * {@inheritdoc}
-    */
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new FloatVal();

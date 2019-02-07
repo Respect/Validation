@@ -131,7 +131,7 @@ final class CurrencyCode extends AbstractSearcher
             'MVR', // Rufiyaa
             'MWK', // Kwacha
             'MXN', // Mexican Peso
-            'MXV', // Mexican Unidad de Inversion (UDI)
+            'MXV', // Mexican Unidad de Inversion - UDI
             'MYR', // Malaysian Ringgit
             'MZN', // Mozambique Metical
             'NAD', // Namibia Dollar
@@ -180,8 +180,8 @@ final class CurrencyCode extends AbstractSearcher
             'UAH', // Hryvnia
             'UGX', // Uganda Shilling
             'USD', // US Dollar
-            'USN', // US Dollar (Next day)
-            'UYI', // Uruguay Peso en Unidades Indexadas (URUIURUI)
+            'USN', // US Dollar - Next day
+            'UYI', // Uruguay Peso en Unidades Indexadas - URUIURUI
             'UYU', // Peso Uruguayo
             'UZS', // Uzbekistan Sum
             'VEF', // Bolivar
@@ -191,12 +191,12 @@ final class CurrencyCode extends AbstractSearcher
             'XAF', // CFA Franc BEAC
             'XAG', // Silver
             'XAU', // Gold
-            'XBA', // Bond Markets Unit European Composite Unit (EURCO)
-            'XBB', // Bond Markets Unit European Monetary Unit (E.M.U.-6)
-            'XBC', // Bond Markets Unit European Unit of Account 9 (E.U.A.-9)
-            'XBD', // Bond Markets Unit European Unit of Account 17 (E.U.A.-17)
+            'XBA', // Bond Markets Unit European Composite Unit - EURCO
+            'XBB', // Bond Markets Unit European Monetary Unit - E.M.U.-6
+            'XBC', // Bond Markets Unit European Unit of Account 9 - E.U.A.-9
+            'XBD', // Bond Markets Unit European Unit of Account 17 - E.U.A.-17
             'XCD', // East Caribbean Dollar
-            'XDR', // SDR (Special Drawing Right)
+            'XDR', // SDR - Special Drawing Right
             'XOF', // CFA Franc BCEAO
             'XPD', // Palladium
             'XPF', // CFP Franc

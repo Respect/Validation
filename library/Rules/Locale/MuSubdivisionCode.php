@@ -35,7 +35,7 @@ final class MuSubdivisionCode extends AbstractSearcher
             'AG', // Agalega Islands
             'BL', // Black River
             'BR', // Beau Bassin-Rose Hill
-            'CC', // Cargados Carajos Shoals (Saint Brandon Islands)
+            'CC', // Cargados Carajos Shoals - Saint Brandon Islands
             'CU', // Curepipe
             'FL', // Flacq
             'GP', // Grand Port

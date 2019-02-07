@@ -45,13 +45,13 @@ final class MaSubdivisionCode extends AbstractSearcher
             '11', // Laâyoune-Sakia El Hamra
             '12', // Dakhla-Oued Ed-Dahab
             'AGD', // Agadir-Ida-Outanane
-            'AOU', // Aousserd (EH)
+            'AOU', // Aousserd - EH
             'ASZ', // Assa-Zag
             'AZI', // Azilal
             'BEM', // Beni Mellal
             'BER', // Berkane
             'BES', // Ben Slimane
-            'BOD', // Boujdour (EH)
+            'BOD', // Boujdour - EH
             'BOM', // Boulemane
             'CAS', // Casablanca [Dar el Beïda]
             'CHE', // Chefchaouen
@@ -59,7 +59,7 @@ final class MaSubdivisionCode extends AbstractSearcher
             'CHT', // Chtouka-Ait Baha
             'ERR', // Errachidia
             'ESI', // Essaouira
-            'ESM', // Es Smara (EH)
+            'ESM', // Es Smara - EH
             'FAH', // Fahs-Beni Makada
             'FES', // Fès-Dar-Dbibegh
             'FIG', // Figuig
@@ -87,7 +87,7 @@ final class MaSubdivisionCode extends AbstractSearcher
             'NAD', // Nador
             'NOU', // Nouaceur
             'OUA', // Ouarzazate
-            'OUD', // Oued ed Dahab (EH)
+            'OUD', // Oued ed Dahab - EH
             'OUJ', // Oujda-Angad
             'RAB', // Rabat
             'SAF', // Safi

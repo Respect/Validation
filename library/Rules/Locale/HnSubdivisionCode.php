@@ -41,7 +41,7 @@ final class HnSubdivisionCode extends AbstractSearcher
             'EP', // El Paraiso
             'FM', // Francisco Morazan
             'GD', // Gracias a Dios
-            'IB', // Islas de la Bahia (Bay Islands)
+            'IB', // Islas de la Bahia - Bay Islands
             'IN', // Intibuca
             'LE', // Lempira
             'LP', // La Paz

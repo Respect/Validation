@@ -32,8 +32,8 @@ final class ZwSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-            'BU', // Bulawayo (city)
-            'HA', // Harare (city)
+            'BU', // Bulawayo - city
+            'HA', // Harare - city
             'MA', // Manicaland
             'MC', // Mashonaland Central
             'ME', // Mashonaland East

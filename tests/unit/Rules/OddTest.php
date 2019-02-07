@@ -28,9 +28,9 @@ use function tmpfile;
  */
 final class OddTest extends RuleTestCase
 {
-    /*
-    * {@inheritdoc}
-    */
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new Odd();
@@ -43,9 +43,9 @@ final class OddTest extends RuleTestCase
         ];
     }
 
-    /*
-    * {@inheritdoc}
-    */
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new Odd();

@@ -28,9 +28,9 @@ use stdClass;
  */
 final class NegativeTest extends RuleTestCase
 {
-    /*
-    * {@inheritdoc}
-    */
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new Negative();
@@ -42,9 +42,9 @@ final class NegativeTest extends RuleTestCase
         ];
     }
 
-    /*
-    * {@inheritdoc}
-    */
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new Negative();

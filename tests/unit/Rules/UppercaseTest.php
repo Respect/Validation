@@ -28,9 +28,9 @@ use stdClass;
  */
 final class UppercaseTest extends RuleTestCase
 {
-    /*
-    * {@inheritdoc}
-    */
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new Uppercase();
@@ -50,9 +50,9 @@ final class UppercaseTest extends RuleTestCase
         ];
     }
 
-    /*
-    * {@inheritdoc}
-    */
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new Uppercase();

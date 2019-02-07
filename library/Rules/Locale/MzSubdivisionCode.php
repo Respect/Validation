@@ -37,7 +37,7 @@ final class MzSubdivisionCode extends AbstractSearcher
             'G', // Gaza
             'I', // Inhambane
             'L', // Maputo
-            'MPM', // Maputo (city)
+            'MPM', // Maputo - city
             'N', // Nampula
             'P', // Cabo Delgado
             'Q', // Zambezia

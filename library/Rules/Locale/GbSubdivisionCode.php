@@ -75,7 +75,7 @@ final class GbSubdivisionCode extends AbstractSearcher
             'CMD', // Camden
             'CMN', // Carmarthenshire
             'CON', // Cornwall
-            'COV', // Coventry (West Midlands district)
+            'COV', // Coventry - West Midlands district
             'CRF', // Cardiff
             'CRY', // Croydon
             'CWY', // Conwy
@@ -89,7 +89,7 @@ final class GbSubdivisionCode extends AbstractSearcher
             'DND', // Dundee
             'DOR', // Dorset
             'DRS', // Derry City and Strabane
-            'DUD', // Dudley (West Midlands district)
+            'DUD', // Dudley - West Midlands district
             'DUR', // Durham
             'EAL', // Ealing
             'EAY', // East Ayrshire

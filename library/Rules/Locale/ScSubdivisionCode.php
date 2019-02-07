@@ -44,8 +44,8 @@ final class ScSubdivisionCode extends AbstractSearcher
             '10', // Bel Ombre
             '11', // Cascade
             '12', // Glacis
-            '13', // Grand' Anse (on Mahe)
-            '14', // Grand' Anse (on Praslin)
+            '13', // Grand' Anse - on Mahe
+            '14', // Grand' Anse - on Praslin
             '15', // La Digue
             '16', // La Riviere Anglaise
             '17', // Mont Buxton

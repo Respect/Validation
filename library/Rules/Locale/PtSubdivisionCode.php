@@ -50,7 +50,7 @@ final class PtSubdivisionCode extends AbstractSearcher
             '16', // Viana do Castelo
             '17', // Vila Real
             '18', // Viseu
-            '20', // Acores (Azores)
+            '20', // Acores - Azores
             '30', // Madeira
         ];
     }

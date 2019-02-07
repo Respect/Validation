@@ -79,7 +79,6 @@ class CntrlTest extends TestCase
             ["\r"],
             ["\t"],
             ["\n\r\t"],
-//            array("\n \n", ' '), TODO Verify this
         ];
     }
 

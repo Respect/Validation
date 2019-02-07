@@ -48,7 +48,7 @@ final class DoSubdivisionCode extends AbstractSearcher
             '14', // Maria Trinidad Sanchez
             '15', // Monte Cristi
             '16', // Pedernales
-            '17', // Peravia (Bani)
+            '17', // Peravia - Bani
             '18', // Puerto Plata
             '19', // Salcedo
             '20', // Samana

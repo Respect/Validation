@@ -27,9 +27,9 @@ use Respect\Validation\Test\RuleTestCase;
  */
 final class IntValTest extends RuleTestCase
 {
-    /*
-    * {@inheritdoc}
-    */
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new IntVal();
@@ -44,9 +44,9 @@ final class IntValTest extends RuleTestCase
         ];
     }
 
-    /*
-    * {@inheritdoc}
-    */
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new IntVal();

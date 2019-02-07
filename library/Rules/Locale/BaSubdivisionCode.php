@@ -41,7 +41,7 @@ final class BaSubdivisionCode extends AbstractSearcher
             '07', // Hercegovačko-neretvanski kanton
             '08', // Zapadnohercegovački kanton
             '09', // Kanton Sarajevo
-            '10', // Kanton br. 10 (Livanjski kanton)
+            '10', // Kanton br. 10 - Livanjski kanton
             'BIH', // Federacija Bosna i Hercegovina
             'BRC', // Brcko District
             'SRP', // Republika Srpska

@@ -28,7 +28,7 @@ use Respect\Validation\Test\RuleTestCase;
  */
 final class LeapDateTest extends RuleTestCase
 {
-    /*
+    /**
      * {@inheritdoc}
      */
     public function providerForValidInput(): array
@@ -41,7 +41,7 @@ final class LeapDateTest extends RuleTestCase
         ];
     }
 
-    /*
+    /**
      * {@inheritdoc}
      */
     public function providerForInvalidInput(): array

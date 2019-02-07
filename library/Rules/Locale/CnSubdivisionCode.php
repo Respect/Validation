@@ -63,7 +63,7 @@ final class CnSubdivisionCode extends AbstractSearcher
             'TJ', // Tianjin
             'TW', // Taiwan
             'XJ', // Xinjiang
-            'XZ', // Xizang Zìzhìqu (Tibet)
+            'XZ', // Xizang Zìzhìqu - Tibet
             'YN', // Yunnan
             'ZJ', // Zhejiang
         ];

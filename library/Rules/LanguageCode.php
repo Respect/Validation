@@ -57,11 +57,11 @@ final class LanguageCode extends AbstractEnvelope
         ['', 'alg'], // Algonquian languages
         ['', 'alt'], // Southern altai
         ['am', 'amh'], // Amharic
-        ['', 'ang'], // English, old (ca.450-1100)
+        ['', 'ang'], // English, old - ca.450-1100
         ['', 'anp'], // Angika
         ['', 'apa'], // Apache languages
         ['ar', 'ara'], // Arabic
-        ['', 'arc'], // Official aramaic (700-300 bce); Imperial aramaic (700-300 bce)
+        ['', 'arc'], // Official aramaic - 700-300 bce; Imperial aramaic - 700-300 bce
         ['an', 'arg'], // Aragonese
         ['hy', 'arm'], // Armenian
         ['', 'arn'], // Mapudungun; Mapuche
@@ -97,7 +97,7 @@ final class LanguageCode extends AbstractEnvelope
         ['', 'bin'], // Bini; Edo
         ['bi', 'bis'], // Bislama
         ['', 'bla'], // Siksika
-        ['', 'bnt'], // Bantu (other)
+        ['', 'bnt'], // Bantu - other
         ['bs', 'bos'], // Bosnian
         ['', 'bra'], // Braj
         ['br', 'bre'], // Breton
@@ -146,7 +146,7 @@ final class LanguageCode extends AbstractEnvelope
         ['', 'dar'], // Dargwa
         ['', 'day'], // Land dayak languages
         ['', 'del'], // Delaware
-        ['', 'den'], // Slave (athapascan)
+        ['', 'den'], // Slave - athapascan
         ['', 'dgr'], // Dogrib
         ['', 'din'], // Dinka
         ['dv', 'div'], // Divehi; Dhivehi; Maldivian
@@ -154,16 +154,16 @@ final class LanguageCode extends AbstractEnvelope
         ['', 'dra'], // Dravidian languages
         ['', 'dsb'], // Lower sorbian
         ['', 'dua'], // Duala
-        ['', 'dum'], // Dutch, middle (ca.1050-1350)
+        ['', 'dum'], // Dutch, middle - ca.1050-1350
         ['nl', 'dut'], // Dutch; Flemish
         ['', 'dyu'], // Dyula
         ['dz', 'dzo'], // Dzongkha
         ['', 'efi'], // Efik
-        ['', 'egy'], // Egyptian (ancient)
+        ['', 'egy'], // Egyptian - ancient
         ['', 'eka'], // Ekajuk
         ['', 'elx'], // Elamite
         ['en', 'eng'], // English
-        ['', 'enm'], // English, middle (1100-1500)
+        ['', 'enm'], // English, middle - 1100-1500
         ['eo', 'epo'], // Esperanto
         ['et', 'est'], // Estonian
         ['ee', 'ewe'], // Ewe
@@ -177,8 +177,8 @@ final class LanguageCode extends AbstractEnvelope
         ['', 'fiu'], // Finno-ugrian languages
         ['', 'fon'], // Fon
         ['fr', 'fre'], // French
-        ['', 'frm'], // French, middle (ca.1400-1600)
-        ['', 'fro'], // French, old (842-ca.1400)
+        ['', 'frm'], // French, middle - ca.1400-1600
+        ['', 'fro'], // French, old - 842-ca.1400
         ['', 'frr'], // Northern frisian
         ['', 'frs'], // Eastern frisian
         ['fy', 'fry'], // Western frisian
@@ -196,14 +196,14 @@ final class LanguageCode extends AbstractEnvelope
         ['ga', 'gle'], // Irish
         ['gl', 'glg'], // Galician
         ['gv', 'glv'], // Manx
-        ['', 'gmh'], // German, middle high (ca.1050-1500)
-        ['', 'goh'], // German, old high (ca.750-1050)
+        ['', 'gmh'], // German, middle high - ca.1050-1500
+        ['', 'goh'], // German, old high - ca.750-1050
         ['', 'gon'], // Gondi
         ['', 'gor'], // Gorontalo
         ['', 'got'], // Gothic
         ['', 'grb'], // Grebo
-        ['', 'grc'], // Greek, ancient (to 1453)
-        ['el', 'gre'], // Greek, modern (1453-)
+        ['', 'grc'], // Greek, ancient - to 1453
+        ['el', 'gre'], // Greek, modern - 1453-
         ['gn', 'grn'], // Guarani
         ['', 'gsw'], // Swiss german; Alemannic; Alsatian
         ['gu', 'guj'], // Gujarati
@@ -233,7 +233,7 @@ final class LanguageCode extends AbstractEnvelope
         ['iu', 'iku'], // Inuktitut
         ['ie', 'ile'], // Interlingue; Occidental
         ['', 'ilo'], // Iloko
-        ['ia', 'ina'], // Interlingua (international auxiliary language association)
+        ['ia', 'ina'], // Interlingua - international auxiliary language association
         ['', 'inc'], // Indic languages
         ['id', 'ind'], // Indonesian
         ['', 'ine'], // Indo-european languages
@@ -299,7 +299,7 @@ final class LanguageCode extends AbstractEnvelope
         ['lg', 'lug'], // Ganda
         ['', 'lui'], // Luiseno
         ['', 'lun'], // Lunda
-        ['', 'luo'], // Luo (kenya and tanzania)
+        ['', 'luo'], // Luo - kenya and tanzania
         ['', 'lus'], // Lushai
         ['mk', 'mac'], // Macedonian
         ['', 'mad'], // Madurese
@@ -317,7 +317,7 @@ final class LanguageCode extends AbstractEnvelope
         ['', 'mdf'], // Moksha
         ['', 'mdr'], // Mandar
         ['', 'men'], // Mende
-        ['', 'mga'], // Irish, middle (900-1200)
+        ['', 'mga'], // Irish, middle - 900-1200
         ['', 'mic'], // Mi'kmaq; Micmac
         ['', 'min'], // Minangkabau
         ['', 'mis'], // Uncoded languages
@@ -365,13 +365,13 @@ final class LanguageCode extends AbstractEnvelope
         ['', 'nyn'], // Nyankole
         ['', 'nyo'], // Nyoro
         ['', 'nzi'], // Nzima
-        ['oc', 'oci'], // Occitan (post 1500); Provençal
+        ['oc', 'oci'], // Occitan - post 1500; Provençal
         ['oj', 'oji'], // Ojibwa
         ['or', 'ori'], // Oriya
         ['om', 'orm'], // Oromo
         ['', 'osa'], // Osage
         ['os', 'oss'], // Ossetian; Ossetic
-        ['', 'ota'], // Turkish, ottoman (1500-1928)
+        ['', 'ota'], // Turkish, ottoman - 1500-1928
         ['', 'oto'], // Otomian languages
         ['', 'paa'], // Papuan languages
         ['', 'pag'], // Pangasinan
@@ -380,7 +380,7 @@ final class LanguageCode extends AbstractEnvelope
         ['pa', 'pan'], // Panjabi; Punjabi
         ['', 'pap'], // Papiamento
         ['', 'pau'], // Palauan
-        ['', 'peo'], // Persian, old (ca.600-400 b.c.)
+        ['', 'peo'], // Persian, old - ca.600-400 b.c.
         ['fa', 'per'], // Persian
         ['', 'phi'], // Philippine languages
         ['', 'phn'], // Phoenician
@@ -389,7 +389,7 @@ final class LanguageCode extends AbstractEnvelope
         ['', 'pon'], // Pohnpeian
         ['pt', 'por'], // Portuguese
         ['', 'pra'], // Prakrit languages
-        ['', 'pro'], // Provençal, old (to 1500)
+        ['', 'pro'], // Provençal, old - to 1500
         ['ps', 'pus'], // Pushto; Pashto
         ['', 'qaa-qtz'], // Reserved for local use
         ['qu', 'que'], // Quechua
@@ -406,7 +406,7 @@ final class LanguageCode extends AbstractEnvelope
         ['', 'sad'], // Sandawe
         ['sg', 'sag'], // Sango
         ['', 'sah'], // Yakut
-        ['', 'sai'], // South american indian (other)
+        ['', 'sai'], // South american indian - other
         ['', 'sal'], // Salishan languages
         ['', 'sam'], // Samaritan aramaic
         ['sa', 'san'], // Sanskrit
@@ -416,7 +416,7 @@ final class LanguageCode extends AbstractEnvelope
         ['', 'sco'], // Scots
         ['', 'sel'], // Selkup
         ['', 'sem'], // Semitic languages
-        ['', 'sga'], // Irish, old (to 900)
+        ['', 'sga'], // Irish, old - to 900
         ['', 'sgn'], // Sign languages
         ['', 'shn'], // Shan
         ['', 'sid'], // Sidamo
@@ -474,8 +474,8 @@ final class LanguageCode extends AbstractEnvelope
         ['', 'tlh'], // Klingon; Tlhingan-hol
         ['', 'tli'], // Tlingit
         ['', 'tmh'], // Tamashek
-        ['', 'tog'], // Tonga (nyasa)
-        ['to', 'ton'], // Tonga (tonga islands)
+        ['', 'tog'], // Tonga - nyasa
+        ['to', 'ton'], // Tonga - tonga islands
         ['', 'tpi'], // Tok pisin
         ['', 'tsi'], // Tsimshian
         ['tn', 'tsn'], // Tswana

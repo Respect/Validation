@@ -41,7 +41,7 @@ final class KhSubdivisionCode extends AbstractSearcher
             '15', // Pursat
             '16', // Rôtânôkiri
             '17', // Siemreap
-            '18', // Preah Seihanu (Kompong Som or Sihanoukville)
+            '18', // Preah Seihanu - Kompong Som or Sihanoukville
             '19', // Stung Treng
             '2', // Battambang
             '20', // Svay Rieng

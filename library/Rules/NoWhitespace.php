@@ -27,9 +27,9 @@ use function preg_match;
  */
 final class NoWhitespace extends AbstractRule
 {
-    /*
-    * {@inheritdoc}
-    */
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (is_null($input)) {

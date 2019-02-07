@@ -32,7 +32,7 @@ final class CzSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-            '10', // Prague - the Capital (Praha - hlavni mesto)
+            '10', // Prague - the Capital - Praha - hlavni mesto
             '101', // Praha 1
             '102', // Praha 2
             '103', // Praha 3
@@ -55,7 +55,7 @@ final class CzSubdivisionCode extends AbstractSearcher
             '120', // Praha 20
             '121', // Praha 21
             '122', // Praha 22
-            '20', // Central Bohemian Region (Stredocesky kraj)
+            '20', // Central Bohemian Region - Stredocesky kraj
             '201', // Benešov
             '202', // Beroun
             '203', // Kladno
@@ -68,7 +68,7 @@ final class CzSubdivisionCode extends AbstractSearcher
             '20A', // Praha-západ
             '20B', // Příbram
             '20C', // Rakovník
-            '31', // South Bohemian Region (Jihocesky kraj)
+            '31', // South Bohemian Region - Jihocesky kraj
             '311', // České Budějovice
             '312', // Český Krumlov
             '313', // Jindřichův Hradec
@@ -84,11 +84,11 @@ final class CzSubdivisionCode extends AbstractSearcher
             '325', // Plzeň-sever
             '326', // Rokycany
             '327', // Tachov
-            '41', // Carlsbad Region  (Karlovarsky kraj)
+            '41', // Carlsbad Region  - Karlovarsky kraj
             '411', // Cheb
             '412', // Karlovy Vary
             '413', // Sokolov
-            '42', // Usti nad Labem Region (Ustecky kraj)
+            '42', // Usti nad Labem Region - Ustecky kraj
             '421', // Děčín
             '422', // Chomutov
             '423', // Litoměřice
@@ -96,29 +96,29 @@ final class CzSubdivisionCode extends AbstractSearcher
             '425', // Most
             '426', // Teplice
             '427', // Ústí nad Labem
-            '51', // Liberec Region (Liberecky kraj)
+            '51', // Liberec Region - Liberecky kraj
             '511', // Česká Lípa
             '512', // Jablonec nad Nisou
             '513', // Liberec
             '514', // Semily
-            '52', // Hradec Kralove Region (Kralovehradecky kraj)
+            '52', // Hradec Kralove Region - Kralovehradecky kraj
             '521', // Hradec Králové
             '522', // Jičín
             '523', // Náchod
             '524', // Rychnov nad Kněžnou
             '525', // Trutnov
-            '53', // Pardubice Region (Pardubicky kraj)
+            '53', // Pardubice Region - Pardubicky kraj
             '531', // Chrudim
             '532', // Pardubice
             '533', // Svitavy
             '534', // Ústí nad Orlicí
-            '63', // Vysocina Region (kraj Vysocina)
+            '63', // Vysocina Region - kraj Vysocina
             '631', // Havlíčkův Brod
             '632', // Jihlava
             '633', // Pelhřimov
             '634', // Třebíč
             '635', // Žd’ár nad Sázavou
-            '64', // South Moravian Region (Jihomoravsky kraj)
+            '64', // South Moravian Region - Jihomoravsky kraj
             '641', // Blansko
             '642', // Brno-město
             '643', // Brno-venkov
@@ -126,18 +126,18 @@ final class CzSubdivisionCode extends AbstractSearcher
             '645', // Hodonín
             '646', // Vyškov
             '647', // Znojmo
-            '71', // Olomouc Region (Olomoucky kraj)
+            '71', // Olomouc Region - Olomoucky kraj
             '711', // Jeseník
             '712', // Olomouc
             '713', // Prostĕjov
             '714', // Přerov
             '715', // Šumperk
-            '72', // Zlin Region (Zlinsky kraj)
+            '72', // Zlin Region - Zlinsky kraj
             '721', // Kromĕříž
             '722', // Uherské Hradištĕ
             '723', // Vsetín
             '724', // Zlín
-            '80', // Moravian-Silesian Region (Moravskoslezsky kraj)
+            '80', // Moravian-Silesian Region - Moravskoslezsky kraj
             '801', // Bruntál
             '802', // Frýdek - Místek
             '803', // Karviná

@@ -20,9 +20,9 @@ namespace Respect\Validation\Exceptions;
  */
 final class NoWhitespaceException extends ValidationException
 {
-    /*
-    * {@inheritdoc}
-    */
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must not contain whitespace',
