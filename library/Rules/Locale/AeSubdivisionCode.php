@@ -26,19 +26,21 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class AeSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AJ', // 'Ajman
+        'AZ', // Abu Zaby
+        'DU', // Dubayy
+        'FU', // Al Fujayrah
+        'RK', // R'as al Khaymah
+        'SH', // Ash Shariqah
+        'UQ', // Umm al Qaywayn
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AJ', // 'Ajman
-           'AZ', // Abu Zaby
-           'DU', // Dubayy
-           'FU', // Al Fujayrah
-           'RK', // R'as al Khaymah
-           'SH', // Ash Shariqah
-           'UQ', // Umm al Qaywayn
-        ];
+        return self::DATA;
     }
 }

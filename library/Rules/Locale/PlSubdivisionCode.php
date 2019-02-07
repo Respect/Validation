@@ -26,28 +26,30 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class PlSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'DS', // Dolnoslaskie
+        'KP', // Kujawsko-Pomorskie
+        'LB', // Lubuskie
+        'LD', // Lodzkie
+        'LU', // Lubelskie
+        'MA', // Malopolskie
+        'MZ', // Mazowieckie
+        'OP', // Opolskie
+        'PD', // Podlaskie
+        'PK', // Podkarpackie
+        'PM', // Pomorskie
+        'SK', // Swietokrzyskie
+        'SL', // Slaskie
+        'WN', // Warminsko-Mazurskie
+        'WP', // Wielkopolskie
+        'ZP', // Zachodniopomorskie
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'DS', // Dolnoslaskie
-           'KP', // Kujawsko-Pomorskie
-           'LB', // Lubuskie
-           'LD', // Lodzkie
-           'LU', // Lubelskie
-           'MA', // Malopolskie
-           'MZ', // Mazowieckie
-           'OP', // Opolskie
-           'PD', // Podlaskie
-           'PK', // Podkarpackie
-           'PM', // Pomorskie
-           'SK', // Swietokrzyskie
-           'SL', // Slaskie
-           'WN', // Warminsko-Mazurskie
-           'WP', // Wielkopolskie
-           'ZP', // Zachodniopomorskie
-        ];
+        return self::DATA;
     }
 }

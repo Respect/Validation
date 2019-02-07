@@ -26,29 +26,31 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class CfSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AC', // Ouham
+        'BB', // Bamingui-Bangoran
+        'BGF', // Bangui
+        'BK', // Basse-Kotto
+        'HK', // Haute-Kotto
+        'HM', // Haut-Mbomou
+        'HS', // Mambere-Kadeï
+        'KB', // Nana-Grebizi
+        'KG', // Kemo
+        'LB', // Lobaye
+        'MB', // Mbomou
+        'MP', // Ombella-M'Poko
+        'NM', // Nana-Mambere
+        'OP', // Ouham-Pende
+        'SE', // Sangha-Mbaere
+        'UK', // Ouaka
+        'VK', // Vakaga
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AC', // Ouham
-           'BB', // Bamingui-Bangoran
-           'BGF', // Bangui
-           'BK', // Basse-Kotto
-           'HK', // Haute-Kotto
-           'HM', // Haut-Mbomou
-           'HS', // Mambere-Kadeï
-           'KB', // Nana-Grebizi
-           'KG', // Kemo
-           'LB', // Lobaye
-           'MB', // Mbomou
-           'MP', // Ombella-M'Poko
-           'NM', // Nana-Mambere
-           'OP', // Ouham-Pende
-           'SE', // Sangha-Mbaere
-           'UK', // Ouaka
-           'VK', // Vakaga
-        ];
+        return self::DATA;
     }
 }

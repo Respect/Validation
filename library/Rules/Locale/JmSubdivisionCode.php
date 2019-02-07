@@ -26,26 +26,28 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class JmSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '01', // Kingston Parish
+        '02', // Saint Andrew Parish
+        '03', // Saint Thomas Parish
+        '04', // Portland Parish
+        '05', // Saint Mary Parish
+        '06', // Saint Ann Parish
+        '07', // Trelawny Parish
+        '08', // Saint James Parish
+        '09', // Hanover Parish
+        '10', // Westmoreland Parish
+        '11', // Saint Elizabeth Parish
+        '12', // Manchester Parish
+        '13', // Clarendon Parish
+        '14', // Saint Catherine Parish
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '01', // Kingston Parish
-           '02', // Saint Andrew Parish
-           '03', // Saint Thomas Parish
-           '04', // Portland Parish
-           '05', // Saint Mary Parish
-           '06', // Saint Ann Parish
-           '07', // Trelawny Parish
-           '08', // Saint James Parish
-           '09', // Hanover Parish
-           '10', // Westmoreland Parish
-           '11', // Saint Elizabeth Parish
-           '12', // Manchester Parish
-           '13', // Clarendon Parish
-           '14', // Saint Catherine Parish
-        ];
+        return self::DATA;
     }
 }

@@ -26,22 +26,24 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class SbSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'CE', // Central
+        'CH', // Choiseul
+        'CT', // Capital Territory
+        'GU', // Guadalcanal
+        'IS', // Isabel
+        'MK', // Makira
+        'ML', // Malaita
+        'RB', // Rennell and Bellona
+        'TE', // Temotu
+        'WE', // Western
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'CE', // Central
-           'CH', // Choiseul
-           'CT', // Capital Territory
-           'GU', // Guadalcanal
-           'IS', // Isabel
-           'MK', // Makira
-           'ML', // Malaita
-           'RB', // Rennell and Bellona
-           'TE', // Temotu
-           'WE', // Western
-        ];
+        return self::DATA;
     }
 }

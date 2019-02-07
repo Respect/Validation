@@ -26,16 +26,18 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class SzSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'HH', // Hhohho
+        'LU', // Lubombo
+        'MA', // Manzini
+        'SH', // Shishelweni
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'HH', // Hhohho
-           'LU', // Lubombo
-           'MA', // Manzini
-           'SH', // Shishelweni
-        ];
+        return self::DATA;
     }
 }

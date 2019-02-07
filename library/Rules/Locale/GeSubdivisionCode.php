@@ -26,24 +26,26 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class GeSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AB', // Abkhazia
+        'AJ', // Ajaria
+        'GU', // Guria
+        'IM', // Imereti
+        'KA', // Kakheti
+        'KK', // Kvemo Kartli
+        'MM', // Mtskheta-Mtianeti
+        'RL', // Racha Lechkhumi and Kvemo Svaneti
+        'SJ', // Samtskhe-Javakheti
+        'SK', // Shida Kartli
+        'SZ', // Samegrelo-Zemo Svaneti
+        'TB', // Tbilisi
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AB', // Abkhazia
-           'AJ', // Ajaria
-           'GU', // Guria
-           'IM', // Imereti
-           'KA', // Kakheti
-           'KK', // Kvemo Kartli
-           'MM', // Mtskheta-Mtianeti
-           'RL', // Racha Lechkhumi and Kvemo Svaneti
-           'SJ', // Samtskhe-Javakheti
-           'SK', // Shida Kartli
-           'SZ', // Samegrelo-Zemo Svaneti
-           'TB', // Tbilisi
-        ];
+        return self::DATA;
     }
 }

@@ -26,18 +26,20 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class VuSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'MAP', // Malampa
+        'PAM', // Penama
+        'SAM', // Sanma
+        'SEE', // Shefa
+        'TAE', // Tafea
+        'TOB', // Torba
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'MAP', // Malampa
-           'PAM', // Penama
-           'SAM', // Sanma
-           'SEE', // Shefa
-           'TAE', // Tafea
-           'TOB', // Torba
-        ];
+        return self::DATA;
     }
 }

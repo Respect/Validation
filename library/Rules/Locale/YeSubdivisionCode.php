@@ -26,34 +26,36 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class YeSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AB', // Abyan
+        'AD', // Adan
+        'AM', // Amran
+        'BA', // Al Bayda
+        'DA', // Ad Dali
+        'DH', // Dhamar
+        'HD', // Hadramawt
+        'HJ', // Hajjah
+        'HU', // Al Hudaydah
+        'IB', // Ibb
+        'JA', // Al Jawf
+        'LA', // Lahij
+        'MA', // Ma'rib
+        'MR', // Al Mahrah
+        'MW', // Al Mahwit
+        'RA', // Raymah
+        'SA', // Amanat Al Asimah
+        'SD', // Sa'dah
+        'SH', // Shabwah
+        'SN', // San'a
+        'SU', // Socotra
+        'TA', // Ta'izz
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AB', // Abyan
-           'AD', // Adan
-           'AM', // Amran
-           'BA', // Al Bayda
-           'DA', // Ad Dali
-           'DH', // Dhamar
-           'HD', // Hadramawt
-           'HJ', // Hajjah
-           'HU', // Al Hudaydah
-           'IB', // Ibb
-           'JA', // Al Jawf
-           'LA', // Lahij
-           'MA', // Ma'rib
-           'MR', // Al Mahrah
-           'MW', // Al Mahwit
-           'RA', // Raymah
-           'SA', // Amanat Al Asimah
-           'SD', // Sa'dah
-           'SH', // Shabwah
-           'SN', // San'a
-           'SU', // Socotra
-           'TA', // Ta'izz
-        ];
+        return self::DATA;
     }
 }

@@ -26,19 +26,21 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class GdSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '01', // Saint Andrew
+        '02', // Saint David
+        '03', // Saint George
+        '04', // Saint John
+        '05', // Saint Mark
+        '06', // Saint Patrick
+        '10', // Southern Grenadine Islands
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '01', // Saint Andrew
-           '02', // Saint David
-           '03', // Saint George
-           '04', // Saint John
-           '05', // Saint Mark
-           '06', // Saint Patrick
-           '10', // Southern Grenadine Islands
-        ];
+        return self::DATA;
     }
 }

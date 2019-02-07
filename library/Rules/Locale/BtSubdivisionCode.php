@@ -26,32 +26,34 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class BtSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '11', // Paro
+        '12', // Chukha
+        '13', // Haa
+        '14', // Samtse
+        '15', // Thimphu
+        '21', // Tsirang
+        '22', // Dagana
+        '23', // Punakha
+        '24', // Wangdue Phodrang
+        '31', // Sarpang
+        '32', // Trongsa
+        '33', // Bumthang
+        '34', // Zhemgang
+        '41', // Trashigang
+        '42', // Mongar
+        '43', // Pemagatshel
+        '44', // Lhuntse
+        '45', // Samdrup Jongkhar
+        'GA', // Gasa
+        'TY', // Trashi Yangste
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '11', // Paro
-           '12', // Chukha
-           '13', // Haa
-           '14', // Samtse
-           '15', // Thimphu
-           '21', // Tsirang
-           '22', // Dagana
-           '23', // Punakha
-           '24', // Wangdue Phodrang
-           '31', // Sarpang
-           '32', // Trongsa
-           '33', // Bumthang
-           '34', // Zhemgang
-           '41', // Trashigang
-           '42', // Mongar
-           '43', // Pemagatshel
-           '44', // Lhuntse
-           '45', // Samdrup Jongkhar
-           'GA', // Gasa
-           'TY', // Trashi Yangste
-        ];
+        return self::DATA;
     }
 }

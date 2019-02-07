@@ -26,29 +26,31 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class KzSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AKM', // Aqmola
+        'AKT', // Aqtobe
+        'ALA', // Almaty
+        'ALM', // Almaty
+        'AST', // Astana
+        'ATY', // Atyrau
+        'BAY', // Baykonyr
+        'KAR', // Qaraghandy
+        'KUS', // Qustanay
+        'KZY', // Qyzylorda
+        'MAN', // Mangghystau
+        'PAV', // Paylodar
+        'SEV', // Soltustik Qazaqstan
+        'VOS', // Shyghys Qazaqstan
+        'YUZ', // Ongtustik Qazaqstan
+        'ZAP', // Baty Qazaqstan
+        'ZHA', // Zhambyl
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AKM', // Aqmola
-           'AKT', // Aqtobe
-           'ALA', // Almaty
-           'ALM', // Almaty
-           'AST', // Astana
-           'ATY', // Atyrau
-           'BAY', // Baykonyr
-           'KAR', // Qaraghandy
-           'KUS', // Qustanay
-           'KZY', // Qyzylorda
-           'MAN', // Mangghystau
-           'PAV', // Paylodar
-           'SEV', // Soltustik Qazaqstan
-           'VOS', // Shyghys Qazaqstan
-           'YUZ', // Ongtustik Qazaqstan
-           'ZAP', // Baty Qazaqstan
-           'ZHA', // Zhambyl
-        ];
+        return self::DATA;
     }
 }

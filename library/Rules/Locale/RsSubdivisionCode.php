@@ -26,44 +26,46 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class RsSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '00', // Beograd
+        '01', // Severnobački okrug
+        '02', // Srednjebanatski okrug
+        '03', // Severnobanatski okrug
+        '04', // Južnobanatski okrug
+        '05', // Zapadno-Bački Okrug
+        '06', // Južnobački okrug
+        '07', // Srem
+        '08', // Mačvanski okrug
+        '09', // Kolubarski okrug
+        '10', // Podunavski okrug
+        '11', // Braničevski okrug
+        '12', // Šumadija
+        '13', // Pomoravski okrug
+        '14', // Borski okrug
+        '15', // Zaječarski okrug
+        '16', // Zlatibor
+        '17', // Moravički okrug
+        '18', // Raški okrug
+        '19', // Rasinski okrug
+        '20', // Nišavski okrug
+        '21', // Toplica
+        '22', // Pirotski okrug
+        '23', // Jablanički okrug
+        '24', // Pčinjski okrug
+        '25', // Kosovski okrug
+        '26', // Pećki okrug
+        '27', // Prizrenski okrug
+        '28', // Kosovsko-Mitrovački okrug
+        '29', // Kosovsko-Pomoravski okrug
+        'KM', // Kosovo
+        'VO', // Vojvodina
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '00', // Beograd
-           '01', // Severnobački okrug
-           '02', // Srednjebanatski okrug
-           '03', // Severnobanatski okrug
-           '04', // Južnobanatski okrug
-           '05', // Zapadno-Bački Okrug
-           '06', // Južnobački okrug
-           '07', // Srem
-           '08', // Mačvanski okrug
-           '09', // Kolubarski okrug
-           '10', // Podunavski okrug
-           '11', // Braničevski okrug
-           '12', // Šumadija
-           '13', // Pomoravski okrug
-           '14', // Borski okrug
-           '15', // Zaječarski okrug
-           '16', // Zlatibor
-           '17', // Moravički okrug
-           '18', // Raški okrug
-           '19', // Rasinski okrug
-           '20', // Nišavski okrug
-           '21', // Toplica
-           '22', // Pirotski okrug
-           '23', // Jablanički okrug
-           '24', // Pčinjski okrug
-           '25', // Kosovski okrug
-           '26', // Pećki okrug
-           '27', // Prizrenski okrug
-           '28', // Kosovsko-Mitrovački okrug
-           '29', // Kosovsko-Pomoravski okrug
-           'KM', // Kosovo
-           'VO', // Vojvodina
-        ];
+        return self::DATA;
     }
 }

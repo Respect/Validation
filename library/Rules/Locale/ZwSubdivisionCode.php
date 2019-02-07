@@ -26,22 +26,24 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class ZwSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'BU', // Bulawayo (city)
+        'HA', // Harare (city)
+        'MA', // Manicaland
+        'MC', // Mashonaland Central
+        'ME', // Mashonaland East
+        'MI', // Midlands
+        'MN', // Matabeleland North
+        'MS', // Matabeleland South
+        'MV', // Masvingo
+        'MW', // Mashonaland West
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'BU', // Bulawayo (city)
-           'HA', // Harare (city)
-           'MA', // Manicaland
-           'MC', // Mashonaland Central
-           'ME', // Mashonaland East
-           'MI', // Midlands
-           'MN', // Matabeleland North
-           'MS', // Matabeleland South
-           'MV', // Masvingo
-           'MW', // Mashonaland West
-        ];
+        return self::DATA;
     }
 }

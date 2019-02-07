@@ -26,26 +26,28 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class SvSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AH', // Ahuachapan
+        'CA', // Cabanas
+        'CH', // Chalatenango
+        'CU', // Cuscatlan
+        'LI', // La Libertad
+        'MO', // Morazan
+        'PA', // La Paz
+        'SA', // Santa Ana
+        'SM', // San Miguel
+        'SO', // Sonsonate
+        'SS', // San Salvador
+        'SV', // San Vicente
+        'UN', // La Union
+        'US', // Usulutan
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AH', // Ahuachapan
-           'CA', // Cabanas
-           'CH', // Chalatenango
-           'CU', // Cuscatlan
-           'LI', // La Libertad
-           'MO', // Morazan
-           'PA', // La Paz
-           'SA', // Santa Ana
-           'SM', // San Miguel
-           'SO', // Sonsonate
-           'SS', // San Salvador
-           'SV', // San Vicente
-           'UN', // La Union
-           'US', // Usulutan
-        ];
+        return self::DATA;
     }
 }

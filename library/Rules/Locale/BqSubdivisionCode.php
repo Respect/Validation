@@ -26,15 +26,17 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class BqSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'BO', // Bonaire
+        'SA', // Saba
+        'SE', // Sint Eustatius
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'BO', // Bonaire
-           'SA', // Saba
-           'SE', // Sint Eustatius
-        ];
+        return self::DATA;
     }
 }

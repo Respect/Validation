@@ -26,26 +26,28 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class UzSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AN', // Andijon
+        'BU', // Buxoro
+        'FA', // Farg'ona
+        'JI', // Jizzax
+        'NG', // Namangan
+        'NW', // Navoiy
+        'QA', // Qashqadaryo
+        'QR', // Qoraqalpog'iston Republikasi
+        'SA', // Samarqand
+        'SI', // Sirdaryo
+        'SU', // Surxondaryo
+        'TK', // Toshkent city
+        'TO', // Toshkent region
+        'XO', // Xorazm
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AN', // Andijon
-           'BU', // Buxoro
-           'FA', // Farg'ona
-           'JI', // Jizzax
-           'NG', // Namangan
-           'NW', // Navoiy
-           'QA', // Qashqadaryo
-           'QR', // Qoraqalpog'iston Republikasi
-           'SA', // Samarqand
-           'SI', // Sirdaryo
-           'SU', // Surxondaryo
-           'TK', // Toshkent city
-           'TO', // Toshkent region
-           'XO', // Xorazm
-        ];
+        return self::DATA;
     }
 }

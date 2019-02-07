@@ -26,21 +26,23 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class MlSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '1', // Kayes
+        '2', // Koulikoro
+        '3', // Sikasso
+        '4', // Segou
+        '5', // Mopti
+        '6', // Tombouctou
+        '7', // Gao
+        '8', // Kidal
+        'BKO', // Bamako Capital District
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '1', // Kayes
-           '2', // Koulikoro
-           '3', // Sikasso
-           '4', // Segou
-           '5', // Mopti
-           '6', // Tombouctou
-           '7', // Gao
-           '8', // Kidal
-           'BKO', // Bamako Capital District
-        ];
+        return self::DATA;
     }
 }

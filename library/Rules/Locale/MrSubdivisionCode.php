@@ -26,27 +26,29 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class MrSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '01', // Hodh Ech Chargui
+        '02', // Hodh El Gharbi
+        '03', // Assaba
+        '04', // Gorgol
+        '05', // Brakna
+        '06', // Trarza
+        '07', // Adrar
+        '08', // Dakhlet Nouadhibou
+        '09', // Tagant
+        '10', // Guidimaka
+        '11', // Tiris Zemmour
+        '12', // Inchiri
+        '13', // Nouakchott-Ouest
+        '14', // Nouakchott-Nord
+        '15', // Nouakchott-Sud
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '01', // Hodh Ech Chargui
-           '02', // Hodh El Gharbi
-           '03', // Assaba
-           '04', // Gorgol
-           '05', // Brakna
-           '06', // Trarza
-           '07', // Adrar
-           '08', // Dakhlet Nouadhibou
-           '09', // Tagant
-           '10', // Guidimaka
-           '11', // Tiris Zemmour
-           '12', // Inchiri
-           '13', // Nouakchott-Ouest
-           '14', // Nouakchott-Nord
-           '15', // Nouakchott-Sud
-        ];
+        return self::DATA;
     }
 }

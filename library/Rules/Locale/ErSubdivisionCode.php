@@ -26,18 +26,20 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class ErSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AN', // Anseba (Keren)
+        'DK', // Southern Red Sea (Debub-Keih-Bahri)
+        'DU', // Southern (Debub)
+        'GB', // Gash-Barka (Barentu)
+        'MA', // Central (Maekel)
+        'SK', // Northern Red Sea (Semien-Keih-Bahri)
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AN', // Anseba (Keren)
-           'DK', // Southern Red Sea (Debub-Keih-Bahri)
-           'DU', // Southern (Debub)
-           'GB', // Gash-Barka (Barentu)
-           'MA', // Central (Maekel)
-           'SK', // Northern Red Sea (Semien-Keih-Bahri)
-        ];
+        return self::DATA;
     }
 }

@@ -26,24 +26,26 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class NlSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'DR', // Drenthe
+        'FL', // Flevoland
+        'FR', // Friesland
+        'GE', // Gelderland
+        'GR', // Groningen
+        'LI', // Limburg
+        'NB', // Noord Brabant
+        'NH', // Noord Holland
+        'OV', // Overijssel
+        'UT', // Utrecht
+        'ZE', // Zeeland
+        'ZH', // Zuid Holland
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'DR', // Drenthe
-           'FL', // Flevoland
-           'FR', // Friesland
-           'GE', // Gelderland
-           'GR', // Groningen
-           'LI', // Limburg
-           'NB', // Noord Brabant
-           'NH', // Noord Holland
-           'OV', // Overijssel
-           'UT', // Utrecht
-           'ZE', // Zeeland
-           'ZH', // Zuid Holland
-        ];
+        return self::DATA;
     }
 }

@@ -26,17 +26,19 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class TjSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'DU', // Dushanbe
+        'GB', // Gorno-Badakhstan
+        'KT', // Khatlon
+        'RA', // Nohiyahoi Tobei Jumhurí
+        'SU', // Sughd
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'DU', // Dushanbe
-           'GB', // Gorno-Badakhstan
-           'KT', // Khatlon
-           'RA', // Nohiyahoi Tobei Jumhurí
-           'SU', // Sughd
-        ];
+        return self::DATA;
     }
 }

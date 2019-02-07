@@ -26,24 +26,26 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class BjSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AK', // Atakora
+        'AL', // Alibori
+        'AQ', // Atlantique
+        'BO', // Borgou
+        'CO', // Collines
+        'DO', // Donga
+        'KO', // Kouffo
+        'LI', // Littoral
+        'MO', // Mono
+        'OU', // Oueme
+        'PL', // Plateau
+        'ZO', // Zou
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AK', // Atakora
-           'AL', // Alibori
-           'AQ', // Atlantique
-           'BO', // Borgou
-           'CO', // Collines
-           'DO', // Donga
-           'KO', // Kouffo
-           'LI', // Littoral
-           'MO', // Mono
-           'OU', // Oueme
-           'PL', // Plateau
-           'ZO', // Zou
-        ];
+        return self::DATA;
     }
 }

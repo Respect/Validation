@@ -26,16 +26,18 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class MpSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'N', // Northern Islands
+        'R', // Rota
+        'S', // Saipan
+        'T', // Tinian
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'N', // Northern Islands
-           'R', // Rota
-           'S', // Saipan
-           'T', // Tinian
-        ];
+        return self::DATA;
     }
 }

@@ -26,21 +26,23 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class AtSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '1', // Burgenland
+        '2', // Karnten
+        '3', // Niederosterreich
+        '4', // Oberosterreich
+        '5', // Salzburg
+        '6', // Steiermark
+        '7', // Tirol
+        '8', // Vorarlberg
+        '9', // Wien
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '1', // Burgenland
-           '2', // Karnten
-           '3', // Niederosterreich
-           '4', // Oberosterreich
-           '5', // Salzburg
-           '6', // Steiermark
-           '7', // Tirol
-           '8', // Vorarlberg
-           '9', // Wien
-        ];
+        return self::DATA;
     }
 }

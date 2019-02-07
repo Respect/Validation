@@ -26,23 +26,25 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class BmSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'DS', // Devonshire
+        'GC', // Saint George
+        'HA', // Hamilton
+        'HC', // Hamilton City
+        'PB', // Pembroke
+        'PG', // Paget
+        'SA', // Sandys
+        'SG', // Saint George's
+        'SH', // Southampton
+        'SM', // Smith's
+        'WA', // Warwick
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'DS', // Devonshire
-           'GC', // Saint George
-           'HA', // Hamilton
-           'HC', // Hamilton City
-           'PB', // Pembroke
-           'PG', // Paget
-           'SA', // Sandys
-           'SG', // Saint George's
-           'SH', // Southampton
-           'SM', // Smith's
-           'WA', // Warwick
-        ];
+        return self::DATA;
     }
 }

@@ -26,11 +26,13 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class GiSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [];
+        return self::DATA;
     }
 }

@@ -26,21 +26,23 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class BoSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'B', // Departmento Beni
+        'C', // Departmento Cochabamba
+        'H', // Departmento Chuquisaca
+        'L', // Departmento La Paz
+        'N', // Departmento Pando
+        'O', // Departmento Oruro
+        'P', // Departmento Potosi
+        'S', // Departmento Santa Cruz
+        'T', // Departmento Tarija
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'B', // Departmento Beni
-           'C', // Departmento Cochabamba
-           'H', // Departmento Chuquisaca
-           'L', // Departmento La Paz
-           'N', // Departmento Pando
-           'O', // Departmento Oruro
-           'P', // Departmento Potosi
-           'S', // Departmento Santa Cruz
-           'T', // Departmento Tarija
-        ];
+        return self::DATA;
     }
 }

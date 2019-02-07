@@ -26,23 +26,25 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class EtSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AA', // Addis Ababa
+        'AF', // Afar
+        'AM', // Amhara
+        'BE', // Benishangul-Gumaz
+        'DD', // Dire Dawa
+        'GA', // Gambela
+        'HA', // Hariai
+        'OR', // Oromia
+        'SN', // Southern Nations - Nationalities and Peoples Region
+        'SO', // Somali
+        'TI', // Tigray
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AA', // Addis Ababa
-           'AF', // Afar
-           'AM', // Amhara
-           'BE', // Benishangul-Gumaz
-           'DD', // Dire Dawa
-           'GA', // Gambela
-           'HA', // Hariai
-           'OR', // Oromia
-           'SN', // Southern Nations - Nationalities and Peoples Region
-           'SO', // Somali
-           'TI', // Tigray
-        ];
+        return self::DATA;
     }
 }

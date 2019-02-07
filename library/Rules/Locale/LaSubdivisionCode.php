@@ -26,30 +26,32 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class LaSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AT', // Attapu
+        'BK', // Bokeo
+        'BL', // Bolikhamxai
+        'CH', // Champasak
+        'HO', // Houaphan
+        'KH', // Khammouan
+        'LM', // Louang Namtha
+        'LP', // Louangphabang
+        'OU', // Oudomxai
+        'PH', // Phongsali
+        'SL', // Salavan
+        'SV', // Savannakhet
+        'VI', // Vientiane
+        'VT', // Vientiane
+        'XA', // Xaignabouli
+        'XE', // Xekong
+        'XI', // Xiangkhoang
+        'XS', // Xaisômboun
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AT', // Attapu
-           'BK', // Bokeo
-           'BL', // Bolikhamxai
-           'CH', // Champasak
-           'HO', // Houaphan
-           'KH', // Khammouan
-           'LM', // Louang Namtha
-           'LP', // Louangphabang
-           'OU', // Oudomxai
-           'PH', // Phongsali
-           'SL', // Salavan
-           'SV', // Savannakhet
-           'VI', // Vientiane
-           'VT', // Vientiane
-           'XA', // Xaignabouli
-           'XE', // Xekong
-           'XI', // Xiangkhoang
-           'XS', // Xaisômboun
-        ];
+        return self::DATA;
     }
 }

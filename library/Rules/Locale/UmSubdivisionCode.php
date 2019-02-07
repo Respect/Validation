@@ -26,21 +26,23 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class UmSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '67', // Johnston Atoll
+        '71', // Midway Atoll
+        '76', // Navassa Island
+        '79', // Wake Island
+        '81', // Baker Island
+        '84', // Howland Island
+        '86', // Jarvis Island
+        '89', // Kingman Reef
+        '95', // Palmyra Atoll
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '67', // Johnston Atoll
-           '71', // Midway Atoll
-           '76', // Navassa Island
-           '79', // Wake Island
-           '81', // Baker Island
-           '84', // Howland Island
-           '86', // Jarvis Island
-           '89', // Kingman Reef
-           '95', // Palmyra Atoll
-        ];
+        return self::DATA;
     }
 }

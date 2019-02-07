@@ -26,21 +26,23 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class GqSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AN', // Provincia Annobon
+        'BN', // Provincia Bioko Norte
+        'BS', // Provincia Bioko Sur
+        'C', // Región Continental
+        'CS', // Provincia Centro Sur
+        'I', // Región Insular
+        'KN', // Provincia Kie-Ntem
+        'LI', // Provincia Litoral
+        'WN', // Provincia Wele-Nzas
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AN', // Provincia Annobon
-           'BN', // Provincia Bioko Norte
-           'BS', // Provincia Bioko Sur
-           'C', // Región Continental
-           'CS', // Provincia Centro Sur
-           'I', // Región Insular
-           'KN', // Provincia Kie-Ntem
-           'LI', // Provincia Litoral
-           'WN', // Provincia Wele-Nzas
-        ];
+        return self::DATA;
     }
 }

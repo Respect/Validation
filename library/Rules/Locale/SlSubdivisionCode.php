@@ -26,16 +26,18 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class SlSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'E', // Eastern
+        'N', // Northern
+        'S', // Southern
+        'W', // Western
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'E', // Eastern
-           'N', // Northern
-           'S', // Southern
-           'W', // Western
-        ];
+        return self::DATA;
     }
 }

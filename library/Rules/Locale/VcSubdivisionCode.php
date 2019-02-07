@@ -26,18 +26,20 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class VcSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '01', // Charlotte
+        '02', // Saint Andrew
+        '03', // Saint David
+        '04', // Saint George
+        '05', // Saint Patrick
+        '06', // Grenadines
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '01', // Charlotte
-           '02', // Saint Andrew
-           '03', // Saint David
-           '04', // Saint George
-           '05', // Saint Patrick
-           '06', // Grenadines
-        ];
+        return self::DATA;
     }
 }

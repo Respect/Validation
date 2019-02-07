@@ -26,27 +26,29 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class ClSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AI', // Aisen del General Carlos Ibanez del Campo (XI)
+        'AN', // Antofagasta (II)
+        'AP', // Arica y Parinacota
+        'AR', // Araucania (IX)
+        'AT', // Atacama (III)
+        'BI', // Bio-Bio (VIII)
+        'CO', // Coquimbo (IV)
+        'LI', // Libertador General Bernardo O'Higgins (VI)
+        'LL', // Los Lagos (X)
+        'LR', // Los Ríos
+        'MA', // Magallanes (XII)
+        'ML', // Maule (VII)
+        'RM', // Region Metropolitana (RM)
+        'TA', // Tarapaca (I)
+        'VS', // Valparaiso (V)
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AI', // Aisen del General Carlos Ibanez del Campo (XI)
-           'AN', // Antofagasta (II)
-           'AP', // Arica y Parinacota
-           'AR', // Araucania (IX)
-           'AT', // Atacama (III)
-           'BI', // Bio-Bio (VIII)
-           'CO', // Coquimbo (IV)
-           'LI', // Libertador General Bernardo O'Higgins (VI)
-           'LL', // Los Lagos (X)
-           'LR', // Los Ríos
-           'MA', // Magallanes (XII)
-           'ML', // Maule (VII)
-           'RM', // Region Metropolitana (RM)
-           'TA', // Tarapaca (I)
-           'VS', // Valparaiso (V)
-        ];
+        return self::DATA;
     }
 }

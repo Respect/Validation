@@ -26,28 +26,30 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class KnSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '01', // Christ Church Nichola Town
+        '02', // Saint Anne Sandy Point
+        '03', // Saint George Basseterre
+        '04', // Saint George Gingerland
+        '05', // Saint James Windward
+        '06', // Saint John Capesterre
+        '07', // Saint John Figtree
+        '08', // Saint Mary Cayon
+        '09', // Saint Paul Capesterre
+        '10', // Saint Paul Charlestown
+        '11', // Saint Peter Basseterre
+        '12', // Saint Thomas Lowland
+        '13', // Saint Thomas Middle Island
+        '15', // Trinity Palmetto Point
+        'K', // Saint Kitts
+        'N', // Nevis
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '01', // Christ Church Nichola Town
-           '02', // Saint Anne Sandy Point
-           '03', // Saint George Basseterre
-           '04', // Saint George Gingerland
-           '05', // Saint James Windward
-           '06', // Saint John Capesterre
-           '07', // Saint John Figtree
-           '08', // Saint Mary Cayon
-           '09', // Saint Paul Capesterre
-           '10', // Saint Paul Charlestown
-           '11', // Saint Peter Basseterre
-           '12', // Saint Thomas Lowland
-           '13', // Saint Thomas Middle Island
-           '15', // Trinity Palmetto Point
-           'K', // Saint Kitts
-           'N', // Nevis
-        ];
+        return self::DATA;
     }
 }

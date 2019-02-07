@@ -26,18 +26,20 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class KwSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AH', // Al Ahmadi
+        'FA', // Al Farwaniyah
+        'HA', // Hawalli
+        'JA', // Al Jahra
+        'KU', // Al Asimah
+        'MU', // Mubārak al Kabīr
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AH', // Al Ahmadi
-           'FA', // Al Farwaniyah
-           'HA', // Hawalli
-           'JA', // Al Jahra
-           'KU', // Al Asimah
-           'MU', // Mubārak al Kabīr
-        ];
+        return self::DATA;
     }
 }

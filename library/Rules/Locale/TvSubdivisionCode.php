@@ -26,20 +26,22 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class TvSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'FUN', // Funafuti
+        'NIT', // Niutao
+        'NKF', // Nukufetau
+        'NKL', // Nukulaelae
+        'NMA', // Nanumea
+        'NMG', // Nanumanga
+        'NUI', // Nui
+        'VAI', // Vaitupu
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'FUN', // Funafuti
-           'NIT', // Niutao
-           'NKF', // Nukufetau
-           'NKL', // Nukulaelae
-           'NMA', // Nanumea
-           'NMG', // Nanumanga
-           'NUI', // Nui
-           'VAI', // Vaitupu
-        ];
+        return self::DATA;
     }
 }

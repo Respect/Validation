@@ -26,15 +26,17 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class ShSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AC', // Ascension
+        'HL', // Saint Helena
+        'TA', // Tristan da Cunha
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AC', // Ascension
-           'HL', // Saint Helena
-           'TA', // Tristan da Cunha
-        ];
+        return self::DATA;
     }
 }

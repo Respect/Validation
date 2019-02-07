@@ -26,16 +26,18 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class BhSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '13', // Capital
+        '14', // Southern
+        '15', // Muharraq
+        '17', // Northern
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '13', // Capital
-           '14', // Southern
-           '15', // Muharraq
-           '17', // Northern
-        ];
+        return self::DATA;
     }
 }

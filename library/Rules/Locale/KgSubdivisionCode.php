@@ -26,21 +26,23 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class KgSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'B', // Batken
+        'C', // Chu
+        'GB', // Bishkek
+        'GO', // Osh City
+        'J', // Jalal-Abad
+        'N', // Naryn
+        'O', // Osh
+        'T', // Talas
+        'Y', // Ysyk-Kol
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'B', // Batken
-           'C', // Chu
-           'GB', // Bishkek
-           'GO', // Osh City
-           'J', // Jalal-Abad
-           'N', // Naryn
-           'O', // Osh
-           'T', // Talas
-           'Y', // Ysyk-Kol
-        ];
+        return self::DATA;
     }
 }

@@ -26,16 +26,18 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class HmSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'F', // Flat Island
+        'H', // Heard Island
+        'M', // McDonald Island
+        'S', // Shag Island
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'F', // Flat Island
-           'H', // Heard Island
-           'M', // McDonald Island
-           'S', // Shag Island
-        ];
+        return self::DATA;
     }
 }

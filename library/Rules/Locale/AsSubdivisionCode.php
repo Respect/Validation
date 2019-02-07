@@ -26,17 +26,19 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class AsSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'E', // Eastern
+        'M', // Manu'a
+        'R', // Rose Island
+        'S', // Swains Island
+        'W', // Western
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'E', // Eastern
-           'M', // Manu'a
-           'R', // Rose Island
-           'S', // Swains Island
-           'W', // Western
-        ];
+        return self::DATA;
     }
 }

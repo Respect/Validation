@@ -26,18 +26,20 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class IlSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'D', // Southern
+        'HA', // Haifa
+        'JM', // Jerusalem
+        'M', // Central
+        'TA', // Tel Aviv
+        'Z', // Northern
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'D', // Southern
-           'HA', // Haifa
-           'JM', // Jerusalem
-           'M', // Central
-           'TA', // Tel Aviv
-           'Z', // Northern
-        ];
+        return self::DATA;
     }
 }

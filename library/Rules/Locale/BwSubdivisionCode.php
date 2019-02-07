@@ -26,28 +26,30 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class BwSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'CE', // Central
+        'CH', // Chobe
+        'FR', // Francistown
+        'GA', // Gaborone
+        'GH', // Ghanzi
+        'JW', // Jwaneng
+        'KG', // Kgalagadi
+        'KL', // Kgatleng
+        'KW', // Kweneng
+        'LO', // Lobatse
+        'NE', // North East
+        'NW', // North West
+        'SE', // South East
+        'SO', // Southern
+        'SP', // Selibe Phikwe
+        'ST', // Sowa Town
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'CE', // Central
-           'CH', // Chobe
-           'FR', // Francistown
-           'GA', // Gaborone
-           'GH', // Ghanzi
-           'JW', // Jwaneng
-           'KG', // Kgalagadi
-           'KL', // Kgatleng
-           'KW', // Kweneng
-           'LO', // Lobatse
-           'NE', // North East
-           'NW', // North West
-           'SE', // South East
-           'SO', // Southern
-           'SP', // Selibe Phikwe
-           'ST', // Sowa Town
-        ];
+        return self::DATA;
     }
 }

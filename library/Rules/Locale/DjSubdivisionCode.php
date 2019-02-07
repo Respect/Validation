@@ -26,18 +26,20 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class DjSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AR', // Arta
+        'AS', // 'Ali Sabih
+        'DI', // Dikhil
+        'DJ', // Djibouti
+        'OB', // Obock
+        'TA', // Tadjoura
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AR', // Arta
-           'AS', // 'Ali Sabih
-           'DI', // Dikhil
-           'DJ', // Djibouti
-           'OB', // Obock
-           'TA', // Tadjoura
-        ];
+        return self::DATA;
     }
 }

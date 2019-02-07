@@ -26,17 +26,19 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class TgSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'C', // Centrale
+        'K', // Kara
+        'M', // Maritime
+        'P', // Plateaux
+        'S', // Savanes
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'C', // Centrale
-           'K', // Kara
-           'M', // Maritime
-           'P', // Plateaux
-           'S', // Savanes
-        ];
+        return self::DATA;
     }
 }

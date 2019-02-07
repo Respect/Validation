@@ -26,23 +26,25 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class WsSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AA', // A'ana
+        'AL', // Aiga-i-le-Tai
+        'AT', // Atua
+        'FA', // Fa'asaleleaga
+        'GE', // Gaga'emauga
+        'GI', // Gagaifomauga
+        'PA', // Palauli
+        'SA', // Satupa'itea
+        'TU', // Tuamasaga
+        'VF', // Va'a-o-Fonoti
+        'VS', // Vaisigano
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AA', // A'ana
-           'AL', // Aiga-i-le-Tai
-           'AT', // Atua
-           'FA', // Fa'asaleleaga
-           'GE', // Gaga'emauga
-           'GI', // Gagaifomauga
-           'PA', // Palauli
-           'SA', // Satupa'itea
-           'TU', // Tuamasaga
-           'VF', // Va'a-o-Fonoti
-           'VS', // Vaisigano
-        ];
+        return self::DATA;
     }
 }

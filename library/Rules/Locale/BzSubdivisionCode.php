@@ -26,18 +26,20 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class BzSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'BZ', // Belize District
+        'CY', // Cayo District
+        'CZL', // Corozal District
+        'OW', // Orange Walk District
+        'SC', // Stann Creek District
+        'TOL', // Toledo District
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'BZ', // Belize District
-           'CY', // Cayo District
-           'CZL', // Corozal District
-           'OW', // Orange Walk District
-           'SC', // Stann Creek District
-           'TOL', // Toledo District
-        ];
+        return self::DATA;
     }
 }

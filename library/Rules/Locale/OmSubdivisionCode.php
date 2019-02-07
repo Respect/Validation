@@ -26,23 +26,25 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class OmSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'BJ', // Al Batinah South
+        'BS', // Shamāl al Bāţinah
+        'BU', // Al Buraymī
+        'DA', // Ad Dakhiliyah
+        'MA', // Masqat
+        'MU', // Musandam
+        'SJ', // Ash Sharqiyah South
+        'SS', // Shamāl ash Sharqīyah
+        'WU', // Al Wusta
+        'ZA', // Az Zahirah
+        'ZU', // Zufar
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'BJ', // Al Batinah South
-           'BS', // Shamāl al Bāţinah
-           'BU', // Al Buraymī
-           'DA', // Ad Dakhiliyah
-           'MA', // Masqat
-           'MU', // Musandam
-           'SJ', // Ash Sharqiyah South
-           'SS', // Shamāl ash Sharqīyah
-           'WU', // Al Wusta
-           'ZA', // Az Zahirah
-           'ZU', // Zufar
-        ];
+        return self::DATA;
     }
 }

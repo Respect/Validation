@@ -26,20 +26,22 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class PkSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'BA', // Balochistan
+        'GB', // Gilgit-Baltistan
+        'IS', // Islamabad Capital Territory
+        'JK', // Azad Kashmir
+        'KP', // Khyber Pakhtunkhwa
+        'PB', // Punjab
+        'SD', // Sindh
+        'TA', // Federally Administered Tribal Areas
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'BA', // Balochistan
-           'GB', // Gilgit-Baltistan
-           'IS', // Islamabad Capital Territory
-           'JK', // Azad Kashmir
-           'KP', // Khyber Pakhtunkhwa
-           'PB', // Punjab
-           'SD', // Sindh
-           'TA', // Federally Administered Tribal Areas
-        ];
+        return self::DATA;
     }
 }

@@ -26,27 +26,29 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class CkSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AI', // Aitutaki
+        'AT', // Atiu
+        'MA', // Manuae
+        'MG', // Mangaia
+        'MK', // Manihiki
+        'MT', // Mitiaro
+        'MU', // Mauke
+        'NI', // Nassau Island
+        'PA', // Palmerston
+        'PE', // Penrhyn
+        'PU', // Pukapuka
+        'RK', // Rakahanga
+        'RR', // Rarotonga
+        'SU', // Surwarrow
+        'TA', // Takutea
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AI', // Aitutaki
-           'AT', // Atiu
-           'MA', // Manuae
-           'MG', // Mangaia
-           'MK', // Manihiki
-           'MT', // Mitiaro
-           'MU', // Mauke
-           'NI', // Nassau Island
-           'PA', // Palmerston
-           'PE', // Penrhyn
-           'PU', // Pukapuka
-           'RK', // Rakahanga
-           'RR', // Rarotonga
-           'SU', // Surwarrow
-           'TA', // Takutea
-        ];
+        return self::DATA;
     }
 }

@@ -26,22 +26,24 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class LcSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '01', // Anse-la-Raye
+        '02', // Castries
+        '03', // Choiseul
+        '05', // Dennery
+        '06', // Gros-Islet
+        '07', // Laborie
+        '08', // Micoud
+        '10', // Soufriere
+        '11', // Vieux-Fort
+        '12', // Canaries
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '01', // Anse-la-Raye
-           '02', // Castries
-           '03', // Choiseul
-           '05', // Dennery
-           '06', // Gros-Islet
-           '07', // Laborie
-           '08', // Micoud
-           '10', // Soufriere
-           '11', // Vieux-Fort
-           '12', // Canaries
-        ];
+        return self::DATA;
     }
 }

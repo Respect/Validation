@@ -26,20 +26,22 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class LbSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AK', // Aakkâr
+        'AS', // Liban-Nord
+        'BA', // Beyrouth
+        'BH', // Baalbek-Hermel
+        'BI', // Béqaa
+        'JA', // Liban-Sud
+        'JL', // Mont-Liban
+        'NA', // Nabatîyé
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AK', // Aakkâr
-           'AS', // Liban-Nord
-           'BA', // Beyrouth
-           'BH', // Baalbek-Hermel
-           'BI', // Béqaa
-           'JA', // Liban-Sud
-           'JL', // Mont-Liban
-           'NA', // Nabatîyé
-        ];
+        return self::DATA;
     }
 }

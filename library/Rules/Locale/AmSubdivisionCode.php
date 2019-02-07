@@ -26,23 +26,25 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class AmSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AG', // Aragatsotn
+        'AR', // Ararat
+        'AV', // Armavir
+        'ER', // Yerevan
+        'GR', // Geghark'unik'
+        'KT', // Kotayk'
+        'LO', // Lorri
+        'SH', // Shirak
+        'SU', // Syunik'
+        'TV', // Tavush
+        'VD', // Vayots' Dzor
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AG', // Aragatsotn
-           'AR', // Ararat
-           'AV', // Armavir
-           'ER', // Yerevan
-           'GR', // Geghark'unik'
-           'KT', // Kotayk'
-           'LO', // Lorri
-           'SH', // Shirak
-           'SU', // Syunik'
-           'TV', // Tavush
-           'VD', // Vayots' Dzor
-        ];
+        return self::DATA;
     }
 }

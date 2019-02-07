@@ -26,18 +26,20 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class TmSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'A', // Ahal Welayaty
+        'B', // Balkan Welayaty
+        'D', // Dashhowuz Welayaty
+        'L', // Lebap Welayaty
+        'M', // Mary Welayaty
+        'S', // Aşgabat
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'A', // Ahal Welayaty
-           'B', // Balkan Welayaty
-           'D', // Dashhowuz Welayaty
-           'L', // Lebap Welayaty
-           'M', // Mary Welayaty
-           'S', // Aşgabat
-        ];
+        return self::DATA;
     }
 }

@@ -26,22 +26,24 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class GySubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'BA', // Barima-Waini
+        'CU', // Cuyuni-Mazaruni
+        'DE', // Demerara-Mahaica
+        'EB', // East Berbice-Corentyne
+        'ES', // Essequibo Islands-West Demerara
+        'MA', // Mahaica-Berbice
+        'PM', // Pomeroon-Supenaam
+        'PT', // Potaro-Siparuni
+        'UD', // Upper Demerara-Berbice
+        'UT', // Upper Takutu-Upper Essequibo
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'BA', // Barima-Waini
-           'CU', // Cuyuni-Mazaruni
-           'DE', // Demerara-Mahaica
-           'EB', // East Berbice-Corentyne
-           'ES', // Essequibo Islands-West Demerara
-           'MA', // Mahaica-Berbice
-           'PM', // Pomeroon-Supenaam
-           'PT', // Potaro-Siparuni
-           'UD', // Upper Demerara-Berbice
-           'UT', // Upper Takutu-Upper Essequibo
-        ];
+        return self::DATA;
     }
 }

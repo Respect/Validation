@@ -26,22 +26,24 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class SrSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'BR', // Brokopondo
+        'CM', // Commewijne
+        'CR', // Coronie
+        'MA', // Marowijne
+        'NI', // Nickerie
+        'PM', // Paramaribo
+        'PR', // Para
+        'SA', // Saramacca
+        'SI', // Sipaliwini
+        'WA', // Wanica
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'BR', // Brokopondo
-           'CM', // Commewijne
-           'CR', // Coronie
-           'MA', // Marowijne
-           'NI', // Nickerie
-           'PM', // Paramaribo
-           'PR', // Para
-           'SA', // Saramacca
-           'SI', // Sipaliwini
-           'WA', // Wanica
-        ];
+        return self::DATA;
     }
 }

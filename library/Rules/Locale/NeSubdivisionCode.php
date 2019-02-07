@@ -26,20 +26,22 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class NeSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '1', // Agadez
+        '2', // Diffa
+        '3', // Dosso
+        '4', // Maradi
+        '5', // Tahoua
+        '6', // Tillabéri
+        '7', // Zinder
+        '8', // Niamey
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '1', // Agadez
-           '2', // Diffa
-           '3', // Dosso
-           '4', // Maradi
-           '5', // Tahoua
-           '6', // Tillabéri
-           '7', // Zinder
-           '8', // Niamey
-        ];
+        return self::DATA;
     }
 }

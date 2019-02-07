@@ -26,15 +26,17 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class NcSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'L', // Iles Loyaute
+        'N', // Nord
+        'S', // Sud
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'L', // Iles Loyaute
-           'N', // Nord
-           'S', // Sud
-        ];
+        return self::DATA;
     }
 }

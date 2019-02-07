@@ -26,21 +26,23 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class SmSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '01', // Acquaviva
+        '02', // Chiesanuova
+        '03', // Domagnano
+        '04', // Faetano
+        '05', // Fiorentino
+        '06', // Borgo Maggiore
+        '07', // Citta di San Marino
+        '08', // Montegiardino
+        '09', // Serravalle
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '01', // Acquaviva
-           '02', // Chiesanuova
-           '03', // Domagnano
-           '04', // Faetano
-           '05', // Fiorentino
-           '06', // Borgo Maggiore
-           '07', // Citta di San Marino
-           '08', // Montegiardino
-           '09', // Serravalle
-        ];
+        return self::DATA;
     }
 }

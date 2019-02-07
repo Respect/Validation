@@ -26,23 +26,25 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class MzSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'A', // Niassa
+        'B', // Manica
+        'G', // Gaza
+        'I', // Inhambane
+        'L', // Maputo
+        'MPM', // Maputo (city)
+        'N', // Nampula
+        'P', // Cabo Delgado
+        'Q', // Zambezia
+        'S', // Sofala
+        'T', // Tete
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'A', // Niassa
-           'B', // Manica
-           'G', // Gaza
-           'I', // Inhambane
-           'L', // Maputo
-           'MPM', // Maputo (city)
-           'N', // Nampula
-           'P', // Cabo Delgado
-           'Q', // Zambezia
-           'S', // Sofala
-           'T', // Tete
-        ];
+        return self::DATA;
     }
 }

@@ -26,20 +26,22 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class AuSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'ACT', // Australian Capital Territory
+        'NSW', // New South Wales
+        'NT', // Northern Territory
+        'QLD', // Queensland
+        'SA', // South Australia
+        'TAS', // Tasmania
+        'VIC', // Victoria
+        'WA', // Western Australia
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'ACT', // Australian Capital Territory
-           'NSW', // New South Wales
-           'NT', // Northern Territory
-           'QLD', // Queensland
-           'SA', // South Australia
-           'TAS', // Tasmania
-           'VIC', // Victoria
-           'WA', // Western Australia
-        ];
+        return self::DATA;
     }
 }

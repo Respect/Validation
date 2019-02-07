@@ -26,28 +26,30 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class MySubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '01', // Johor
+        '02', // Kedah
+        '03', // Kelantan
+        '04', // Melaka
+        '05', // Negeri Sembilan
+        '06', // Pahang
+        '07', // Pinang
+        '08', // Perak
+        '09', // Perlis
+        '10', // Selangor
+        '11', // Terengganu
+        '12', // Sabah
+        '13', // Sarawak
+        '14', // Kuala Lumpur
+        '15', // Labuan
+        '16', // Putrajaya
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '01', // Johor
-           '02', // Kedah
-           '03', // Kelantan
-           '04', // Melaka
-           '05', // Negeri Sembilan
-           '06', // Pahang
-           '07', // Pinang
-           '08', // Perak
-           '09', // Perlis
-           '10', // Selangor
-           '11', // Terengganu
-           '12', // Sabah
-           '13', // Sarawak
-           '14', // Kuala Lumpur
-           '15', // Labuan
-           '16', // Putrajaya
-        ];
+        return self::DATA;
     }
 }

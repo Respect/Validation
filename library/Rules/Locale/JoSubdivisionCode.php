@@ -26,24 +26,26 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class JoSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AJ', // Ajlun
+        'AM', // 'Amman
+        'AQ', // Al 'Aqabah
+        'AT', // At Tafilah
+        'AZ', // Az Zarqa'
+        'BA', // Al Balqa'
+        'IR', // Irbid
+        'JA', // Jarash
+        'KA', // Al Karak
+        'MA', // Al Mafraq
+        'MD', // Madaba
+        'MN', // Ma'an
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AJ', // Ajlun
-           'AM', // 'Amman
-           'AQ', // Al 'Aqabah
-           'AT', // At Tafilah
-           'AZ', // Az Zarqa'
-           'BA', // Al Balqa'
-           'IR', // Irbid
-           'JA', // Jarash
-           'KA', // Al Karak
-           'MA', // Al Mafraq
-           'MD', // Madaba
-           'MN', // Ma'an
-        ];
+        return self::DATA;
     }
 }

@@ -26,15 +26,17 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class KiSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'G', // Gilbert Islands
+        'L', // Line Islands
+        'P', // Phoenix Islands
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'G', // Gilbert Islands
-           'L', // Line Islands
-           'P', // Phoenix Islands
-        ];
+        return self::DATA;
     }
 }

@@ -26,17 +26,19 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class RwSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '01', // Kigali
+        '02', // Est
+        '03', // Nord
+        '04', // Ouest
+        '05', // Sud
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '01', // Kigali
-           '02', // Est
-           '03', // Nord
-           '04', // Ouest
-           '05', // Sud
-        ];
+        return self::DATA;
     }
 }

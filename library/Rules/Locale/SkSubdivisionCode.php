@@ -26,20 +26,22 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class SkSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'BC', // Banskobystricky
+        'BL', // Bratislavsky
+        'KI', // Kosicky
+        'NI', // Nitriansky
+        'PV', // Presovsky
+        'TA', // Trnavsky
+        'TC', // Trenciansky
+        'ZI', // Zilinsky
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'BC', // Banskobystricky
-           'BL', // Bratislavsky
-           'KI', // Kosicky
-           'NI', // Nitriansky
-           'PV', // Presovsky
-           'TA', // Trnavsky
-           'TC', // Trenciansky
-           'ZI', // Zilinsky
-        ];
+        return self::DATA;
     }
 }

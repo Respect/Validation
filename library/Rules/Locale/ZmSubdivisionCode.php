@@ -26,22 +26,24 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class ZmSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '01', // Western Province
+        '02', // Central Province
+        '03', // Eastern Province
+        '04', // Luapula Province
+        '05', // Northern Province
+        '06', // North-Western Province
+        '07', // Southern Province
+        '08', // Copperbelt Province
+        '09', // Lusaka Province
+        '10', // Muchinga
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '01', // Western Province
-           '02', // Central Province
-           '03', // Eastern Province
-           '04', // Luapula Province
-           '05', // Northern Province
-           '06', // North-Western Province
-           '07', // Southern Province
-           '08', // Copperbelt Province
-           '09', // Lusaka Province
-           '10', // Muchinga
-        ];
+        return self::DATA;
     }
 }

@@ -26,30 +26,32 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class BiSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'BB', // Bubanza
+        'BL', // Bujumbura Rural
+        'BM', // Bujumbura Mairie
+        'BR', // Bururi
+        'CA', // Cankuzo
+        'CI', // Cibitoke
+        'GI', // Gitega
+        'KI', // Kirundo
+        'KR', // Karuzi
+        'KY', // Kayanza
+        'MA', // Makamba
+        'MU', // Muramvya
+        'MW', // Mwaro
+        'MY', // Muyinga
+        'NG', // Ngozi
+        'RM', // Rumonge
+        'RT', // Rutana
+        'RY', // Ruyigi
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'BB', // Bubanza
-           'BL', // Bujumbura Rural
-           'BM', // Bujumbura Mairie
-           'BR', // Bururi
-           'CA', // Cankuzo
-           'CI', // Cibitoke
-           'GI', // Gitega
-           'KI', // Kirundo
-           'KR', // Karuzi
-           'KY', // Kayanza
-           'MA', // Makamba
-           'MU', // Muramvya
-           'MW', // Mwaro
-           'MY', // Muyinga
-           'NG', // Ngozi
-           'RM', // Rumonge
-           'RT', // Rutana
-           'RY', // Ruyigi
-        ];
+        return self::DATA;
     }
 }

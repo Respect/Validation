@@ -26,18 +26,20 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class GmSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'B', // Banjul
+        'L', // Lower River
+        'M', // Central River
+        'N', // North Bank
+        'U', // Upper River
+        'W', // Western
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'B', // Banjul
-           'L', // Lower River
-           'M', // Central River
-           'N', // North Bank
-           'U', // Upper River
-           'W', // Western
-        ];
+        return self::DATA;
     }
 }

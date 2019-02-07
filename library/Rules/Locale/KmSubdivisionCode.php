@@ -26,15 +26,17 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class KmSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'A', // Anjouan
+        'G', // Grande Comore
+        'M', // Moheli
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'A', // Anjouan
-           'G', // Grande Comore
-           'M', // Moheli
-        ];
+        return self::DATA;
     }
 }

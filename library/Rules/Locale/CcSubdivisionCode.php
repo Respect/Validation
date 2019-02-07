@@ -26,17 +26,19 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class CcSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'D', // Direction Island
+        'H', // Home Island
+        'O', // Horsburgh Island
+        'S', // South Island
+        'W', // West Island
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'D', // Direction Island
-           'H', // Home Island
-           'O', // Horsburgh Island
-           'S', // South Island
-           'W', // West Island
-        ];
+        return self::DATA;
     }
 }

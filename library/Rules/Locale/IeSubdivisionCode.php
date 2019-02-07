@@ -26,41 +26,43 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class IeSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'C', // Connaught
+        'CE', // Clare
+        'CN', // Cavan
+        'CO', // Cork
+        'CW', // Carlow
+        'DL', // Donegal
+        'G', // Galway
+        'KE', // Kildare
+        'KK', // Kilkenny
+        'KY', // Kerry
+        'L', // Leinster
+        'LD', // Longford
+        'LH', // Louth
+        'LK', // Limerick, City and County
+        'LM', // Leitrim
+        'LS', // Laois
+        'M', // Munster
+        'MH', // Meath
+        'MN', // Monaghan
+        'MO', // Mayo
+        'OY', // Offaly
+        'RN', // Roscommon
+        'SO', // Sligo
+        'TA', // Tipperary
+        'U', // Ulster
+        'WD', // Waterford, City and County
+        'WH', // Westmeath
+        'WW', // Wicklow
+        'WX', // Wexford
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'C', // Connaught
-           'CE', // Clare
-           'CN', // Cavan
-           'CO', // Cork
-           'CW', // Carlow
-           'DL', // Donegal
-           'G', // Galway
-           'KE', // Kildare
-           'KK', // Kilkenny
-           'KY', // Kerry
-           'L', // Leinster
-           'LD', // Longford
-           'LH', // Louth
-           'LK', // Limerick, City and County
-           'LM', // Leitrim
-           'LS', // Laois
-           'M', // Munster
-           'MH', // Meath
-           'MN', // Monaghan
-           'MO', // Mayo
-           'OY', // Offaly
-           'RN', // Roscommon
-           'SO', // Sligo
-           'TA', // Tipperary
-           'U', // Ulster
-           'WD', // Waterford, City and County
-           'WH', // Westmeath
-           'WW', // Wicklow
-           'WX', // Wexford
-        ];
+        return self::DATA;
     }
 }

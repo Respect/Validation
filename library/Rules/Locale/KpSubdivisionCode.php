@@ -26,23 +26,25 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class KpSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '01', // P'yongyang Special City
+        '02', // P'yongan-namdo
+        '03', // P'yongan-bukto
+        '04', // Chagang-do
+        '05', // Hwanghae-namdo
+        '06', // Hwanghae-bukto
+        '07', // Kangwon-do
+        '08', // Hamgyong-namdo
+        '09', // Hamgyong-bukto
+        '10', // Ryanggang-do (Yanggang-do)
+        '13', // Nasŏn (Najin-Sŏnbong)
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '01', // P'yongyang Special City
-           '02', // P'yongan-namdo
-           '03', // P'yongan-bukto
-           '04', // Chagang-do
-           '05', // Hwanghae-namdo
-           '06', // Hwanghae-bukto
-           '07', // Kangwon-do
-           '08', // Hamgyong-namdo
-           '09', // Hamgyong-bukto
-           '10', // Ryanggang-do (Yanggang-do)
-           '13', // Nasŏn (Najin-Sŏnbong)
-        ];
+        return self::DATA;
     }
 }

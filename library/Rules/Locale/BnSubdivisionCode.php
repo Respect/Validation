@@ -26,16 +26,18 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class BnSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'BE', // Belait
+        'BM', // Brunei and Muara
+        'TE', // Temburong
+        'TU', // Tutong
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'BE', // Belait
-           'BM', // Brunei and Muara
-           'TE', // Temburong
-           'TU', // Tutong
-        ];
+        return self::DATA;
     }
 }

@@ -26,31 +26,33 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class FjSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '01', // Ba Province
+        '02', // Bua Province
+        '03', // Cakaudrove Province
+        '04', // Kadavu Province
+        '05', // Lau Province
+        '06', // Lomaiviti Province
+        '07', // Mathuata Province
+        '08', // Nandronga and Navosa Province
+        '09', // Naitasiri Province
+        '10', // Namosi Province
+        '11', // Ra Province
+        '12', // Rewa Province
+        '13', // Serua Province
+        '14', // Tailevu Province
+        'C', // Central Division
+        'E', // Eastern Division
+        'N', // Northern Division
+        'R', // Rotuma
+        'W', // Western Division
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '01', // Ba Province
-           '02', // Bua Province
-           '03', // Cakaudrove Province
-           '04', // Kadavu Province
-           '05', // Lau Province
-           '06', // Lomaiviti Province
-           '07', // Mathuata Province
-           '08', // Nandronga and Navosa Province
-           '09', // Naitasiri Province
-           '10', // Namosi Province
-           '11', // Ra Province
-           '12', // Rewa Province
-           '13', // Serua Province
-           '14', // Tailevu Province
-           'C', // Central Division
-           'E', // Eastern Division
-           'N', // Northern Division
-           'R', // Rotuma
-           'W', // Western Division
-        ];
+        return self::DATA;
     }
 }

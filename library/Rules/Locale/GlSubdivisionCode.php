@@ -26,16 +26,18 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class GlSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'KU', // Kujalleq
+        'QA', // Qaasuitsup
+        'QE', // Qeqqata
+        'SM', // Sermersooq
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'KU', // Kujalleq
-           'QA', // Qaasuitsup
-           'QE', // Qeqqata
-           'SM', // Sermersooq
-        ];
+        return self::DATA;
     }
 }

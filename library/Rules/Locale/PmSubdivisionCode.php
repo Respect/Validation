@@ -26,14 +26,16 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class PmSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'M', // Miquelon
+        'P', // Saint Pierre
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'M', // Miquelon
-           'P', // Saint Pierre
-        ];
+        return self::DATA;
     }
 }

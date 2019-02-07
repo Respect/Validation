@@ -26,18 +26,20 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class CySubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '01', // Lefkosía
+        '02', // Lemesós
+        '03', // Lárnaka
+        '04', // Ammóchostos
+        '05', // Páfos
+        '06', // Kerýneia
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '01', // Lefkosía
-           '02', // Lemesós
-           '03', // Lárnaka
-           '04', // Ammóchostos
-           '05', // Páfos
-           '06', // Kerýneia
-        ];
+        return self::DATA;
     }
 }

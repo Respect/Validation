@@ -26,26 +26,28 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class SnSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'DB', // Diourbel
+        'DK', // Dakar
+        'FK', // Fatick
+        'KA', // Kaffrine
+        'KD', // Kolda
+        'KE', // Kédougou
+        'KL', // Kaolack
+        'LG', // Louga
+        'MT', // Matam
+        'SE', // Sédhiou
+        'SL', // Saint-Louis
+        'TC', // Tambacounda
+        'TH', // Thies
+        'ZG', // Ziguinchor
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'DB', // Diourbel
-           'DK', // Dakar
-           'FK', // Fatick
-           'KA', // Kaffrine
-           'KD', // Kolda
-           'KE', // Kédougou
-           'KL', // Kaolack
-           'LG', // Louga
-           'MT', // Matam
-           'SE', // Sédhiou
-           'SL', // Saint-Louis
-           'TC', // Tambacounda
-           'TH', // Thies
-           'ZG', // Ziguinchor
-        ];
+        return self::DATA;
     }
 }

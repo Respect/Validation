@@ -26,60 +26,62 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class AlSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '01', // Berat
+        '02', // Durres
+        '03', // Elbasan
+        '04', // Fier
+        '05', // Gjirokaster
+        '06', // Korce
+        '07', // Kukes
+        '08', // Lezhe
+        '09', // Diber
+        '10', // Shkoder
+        '11', // Tirane
+        '12', // Vlore
+        'BR', // Berat
+        'BU', // Bulqize
+        'DI', // Diber
+        'DL', // Delvine
+        'DR', // Durres
+        'DV', // Devoll
+        'EL', // Elbasan
+        'ER', // Kolonje
+        'FR', // Fier
+        'GJ', // Gjirokaster
+        'GR', // Gramsh
+        'HA', // Has
+        'KA', // Kavaje
+        'KB', // Kurbin
+        'KC', // Kucove
+        'KO', // Korce
+        'KR', // Kruje
+        'KU', // Kukes
+        'LB', // Librazhd
+        'LE', // Lezhe
+        'LU', // Lushnje
+        'MK', // Mallakaster
+        'MM', // Malesi e Madhe
+        'MR', // Mirdite
+        'MT', // Mat
+        'PG', // Pogradec
+        'PQ', // Peqin
+        'PR', // Permet
+        'PU', // Puke
+        'SH', // Shkoder
+        'SK', // Skrapar
+        'SR', // Sarande
+        'TE', // Tepelene
+        'TP', // Tropoje
+        'TR', // Tirane
+        'VL', // Vlore
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '01', // Berat
-           '02', // Durres
-           '03', // Elbasan
-           '04', // Fier
-           '05', // Gjirokaster
-           '06', // Korce
-           '07', // Kukes
-           '08', // Lezhe
-           '09', // Diber
-           '10', // Shkoder
-           '11', // Tirane
-           '12', // Vlore
-           'BR', // Berat
-           'BU', // Bulqize
-           'DI', // Diber
-           'DL', // Delvine
-           'DR', // Durres
-           'DV', // Devoll
-           'EL', // Elbasan
-           'ER', // Kolonje
-           'FR', // Fier
-           'GJ', // Gjirokaster
-           'GR', // Gramsh
-           'HA', // Has
-           'KA', // Kavaje
-           'KB', // Kurbin
-           'KC', // Kucove
-           'KO', // Korce
-           'KR', // Kruje
-           'KU', // Kukes
-           'LB', // Librazhd
-           'LE', // Lezhe
-           'LU', // Lushnje
-           'MK', // Mallakaster
-           'MM', // Malesi e Madhe
-           'MR', // Mirdite
-           'MT', // Mat
-           'PG', // Pogradec
-           'PQ', // Peqin
-           'PR', // Permet
-           'PU', // Puke
-           'SH', // Shkoder
-           'SK', // Skrapar
-           'SR', // Sarande
-           'TE', // Tepelene
-           'TP', // Tropoje
-           'TR', // Tirane
-           'VL', // Vlore
-        ];
+        return self::DATA;
     }
 }

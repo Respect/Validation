@@ -26,16 +26,18 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class FmSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'KSA', // Kosrae
+        'PNI', // Pohnpei
+        'TRK', // Chuuk
+        'YAP', // Yap
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'KSA', // Kosrae
-           'PNI', // Pohnpei
-           'TRK', // Chuuk
-           'YAP', // Yap
-        ];
+        return self::DATA;
     }
 }

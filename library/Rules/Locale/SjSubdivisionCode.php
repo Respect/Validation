@@ -26,14 +26,16 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class SjSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '21', // Svalbard
+        '22', // Jan Mayen
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '21', // Svalbard
-           '22', // Jan Mayen
-        ];
+        return self::DATA;
     }
 }

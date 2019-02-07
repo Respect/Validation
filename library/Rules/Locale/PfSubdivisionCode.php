@@ -26,17 +26,19 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class PfSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'I', // Austral Islands
+        'M', // Marquesas Islands
+        'S', // Iles Sous-le-Vent
+        'T', // Tuamotu-Gambier
+        'V', // Iles du Vent
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'I', // Austral Islands
-           'M', // Marquesas Islands
-           'S', // Iles Sous-le-Vent
-           'T', // Tuamotu-Gambier
-           'V', // Iles du Vent
-        ];
+        return self::DATA;
     }
 }

@@ -26,26 +26,28 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class TcSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AC', // Ambergris Cays
+        'DC', // Dellis Cay
+        'EC', // East Caicos
+        'FC', // French Cay
+        'GT', // Grand Turk
+        'LW', // Little Water Cay
+        'MC', // Middle Caicos
+        'NC', // North Caicos
+        'PN', // Pine Cay
+        'PR', // Providenciales
+        'RC', // Parrot Cay
+        'SC', // South Caicos
+        'SL', // Salt Cay
+        'WC', // West Caicos
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AC', // Ambergris Cays
-           'DC', // Dellis Cay
-           'EC', // East Caicos
-           'FC', // French Cay
-           'GT', // Grand Turk
-           'LW', // Little Water Cay
-           'MC', // Middle Caicos
-           'NC', // North Caicos
-           'PN', // Pine Cay
-           'PR', // Providenciales
-           'RC', // Parrot Cay
-           'SC', // South Caicos
-           'SL', // Salt Cay
-           'WC', // West Caicos
-        ];
+        return self::DATA;
     }
 }

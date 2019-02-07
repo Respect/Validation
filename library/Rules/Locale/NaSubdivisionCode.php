@@ -26,26 +26,28 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class NaSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'CA', // Caprivi
+        'ER', // Erongo
+        'HA', // Hardap
+        'KA', // Karas
+        'KE', // Kavango East
+        'KH', // Khomas
+        'KU', // Kunene
+        'KW', // Kavango West
+        'OD', // Otjozondjupa
+        'OH', // Omaheke
+        'ON', // Oshana
+        'OS', // Omusati
+        'OT', // Oshikoto
+        'OW', // Ohangwena
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'CA', // Caprivi
-           'ER', // Erongo
-           'HA', // Hardap
-           'KA', // Karas
-           'KE', // Kavango East
-           'KH', // Khomas
-           'KU', // Kunene
-           'KW', // Kavango West
-           'OD', // Otjozondjupa
-           'OH', // Omaheke
-           'ON', // Oshana
-           'OS', // Omusati
-           'OT', // Oshikoto
-           'OW', // Ohangwena
-        ];
+        return self::DATA;
     }
 }

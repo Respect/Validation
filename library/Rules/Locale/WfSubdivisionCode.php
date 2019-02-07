@@ -26,15 +26,17 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class WfSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AL', // Alo
+        'SG', // Sigave
+        'UV', // ʻUvea
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AL', // Alo
-           'SG', // Sigave
-           'UV', // ʻUvea
-        ];
+        return self::DATA;
     }
 }

@@ -26,17 +26,19 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class ToSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '01', // Eua
+        '02', // Ha'apai
+        '03', // Niuas
+        '04', // Tongatapu
+        '05', // Vava'u
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '01', // Eua
-           '02', // Ha'apai
-           '03', // Niuas
-           '04', // Tongatapu
-           '05', // Vava'u
-        ];
+        return self::DATA;
     }
 }

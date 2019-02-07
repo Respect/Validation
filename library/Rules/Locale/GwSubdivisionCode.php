@@ -26,24 +26,26 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class GwSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'BA', // Bafata Region
+        'BL', // Bolama Region
+        'BM', // Biombo Region
+        'BS', // Bissau Region
+        'CA', // Cacheu Region
+        'GA', // Gabu Region
+        'L', // Leste
+        'N', // Norte
+        'OI', // Oio Region
+        'QU', // Quinara Region
+        'S', // Sul
+        'TO', // Tombali Region
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'BA', // Bafata Region
-           'BL', // Bolama Region
-           'BM', // Biombo Region
-           'BS', // Bissau Region
-           'CA', // Cacheu Region
-           'GA', // Gabu Region
-           'L', // Leste
-           'N', // Norte
-           'OI', // Oio Region
-           'QU', // Quinara Region
-           'S', // Sul
-           'TO', // Tombali Region
-        ];
+        return self::DATA;
     }
 }

@@ -26,14 +26,16 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class StSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'P', // Principe
+        'S', // Sao Tome
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'P', // Principe
-           'S', // Sao Tome
-        ];
+        return self::DATA;
     }
 }

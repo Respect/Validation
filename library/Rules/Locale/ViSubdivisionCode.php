@@ -26,15 +26,17 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class ViSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'C', // Saint Croix
+        'J', // Saint John
+        'T', // Saint Thomas
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'C', // Saint Croix
-           'J', // Saint John
-           'T', // Saint Thomas
-        ];
+        return self::DATA;
     }
 }

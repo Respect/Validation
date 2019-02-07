@@ -26,29 +26,31 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class NzSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AUK', // Auckland
+        'BOP', // Bay of Plenty
+        'CAN', // Canterbury
+        'CIT', // Chatham Islands
+        'GIS', // Gisborne
+        'HKB', // Hawke's Bay
+        'MBH', // Marlborough
+        'MWT', // Manawatu-Wanganui
+        'NSN', // Nelson
+        'NTL', // Northland
+        'OTA', // Otago
+        'STL', // Southland
+        'TAS', // Tasman
+        'TKI', // Taranaki
+        'WGN', // Wellington
+        'WKO', // Waikato
+        'WTC', // West Coast
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AUK', // Auckland
-           'BOP', // Bay of Plenty
-           'CAN', // Canterbury
-           'CIT', // Chatham Islands
-           'GIS', // Gisborne
-           'HKB', // Hawke's Bay
-           'MBH', // Marlborough
-           'MWT', // Manawatu-Wanganui
-           'NSN', // Nelson
-           'NTL', // Northland
-           'OTA', // Otago
-           'STL', // Southland
-           'TAS', // Tasman
-           'TKI', // Taranaki
-           'WGN', // Wellington
-           'WKO', // Waikato
-           'WTC', // West Coast
-        ];
+        return self::DATA;
     }
 }

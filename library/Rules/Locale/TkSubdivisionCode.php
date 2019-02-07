@@ -26,15 +26,17 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class TkSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'A', // Atafu
+        'F', // Fakaofo
+        'N', // Nukunonu
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'A', // Atafu
-           'F', // Fakaofo
-           'N', // Nukunonu
-        ];
+        return self::DATA;
     }
 }

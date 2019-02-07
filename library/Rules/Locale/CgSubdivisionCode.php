@@ -26,24 +26,26 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class CgSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '11', // Bouenza
+        '12', // Pool
+        '13', // Sangha
+        '14', // Plateaux
+        '15', // Cuvette-Ouest
+        '16', // Pointe-Noire
+        '2', // Lekoumou
+        '5', // Kouilou
+        '7', // Likouala
+        '8', // Cuvette
+        '9', // Niari
+        'BZV', // Brazzaville
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '11', // Bouenza
-           '12', // Pool
-           '13', // Sangha
-           '14', // Plateaux
-           '15', // Cuvette-Ouest
-           '16', // Pointe-Noire
-           '2', // Lekoumou
-           '5', // Kouilou
-           '7', // Likouala
-           '8', // Cuvette
-           '9', // Niari
-           'BZV', // Brazzaville
-        ];
+        return self::DATA;
     }
 }

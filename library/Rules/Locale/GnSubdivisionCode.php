@@ -26,53 +26,55 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class GnSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'B', // Boké
+        'BE', // Beyla
+        'BF', // Boffa
+        'BK', // Boke
+        'C', // Conakry
+        'CO', // Coyah
+        'D', // Kindia
+        'DB', // Dabola
+        'DI', // Dinguiraye
+        'DL', // Dalaba
+        'DU', // Dubreka
+        'F', // Faranah
+        'FA', // Faranah
+        'FO', // Forecariah
+        'FR', // Fria
+        'GA', // Gaoual
+        'GU', // Gueckedou
+        'K', // Kankan
+        'KA', // Kankan
+        'KB', // Koubia
+        'KD', // Kindia
+        'KE', // Kerouane
+        'KN', // Koundara
+        'KO', // Kouroussa
+        'KS', // Kissidougou
+        'L', // Labé
+        'LA', // Labe
+        'LE', // Lelouma
+        'LO', // Lola
+        'M', // Mamou
+        'MC', // Macenta
+        'MD', // Mandiana
+        'ML', // Mali
+        'MM', // Mamou
+        'N', // Nzérékoré
+        'NZ', // Nzerekore
+        'PI', // Pita
+        'SI', // Siguiri
+        'TE', // Telimele
+        'TO', // Tougue
+        'YO', // Yomou
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'B', // Boké
-           'BE', // Beyla
-           'BF', // Boffa
-           'BK', // Boke
-           'C', // Conakry
-           'CO', // Coyah
-           'D', // Kindia
-           'DB', // Dabola
-           'DI', // Dinguiraye
-           'DL', // Dalaba
-           'DU', // Dubreka
-           'F', // Faranah
-           'FA', // Faranah
-           'FO', // Forecariah
-           'FR', // Fria
-           'GA', // Gaoual
-           'GU', // Gueckedou
-           'K', // Kankan
-           'KA', // Kankan
-           'KB', // Koubia
-           'KD', // Kindia
-           'KE', // Kerouane
-           'KN', // Koundara
-           'KO', // Kouroussa
-           'KS', // Kissidougou
-           'L', // Labé
-           'LA', // Labe
-           'LE', // Lelouma
-           'LO', // Lola
-           'M', // Mamou
-           'MC', // Macenta
-           'MD', // Mandiana
-           'ML', // Mali
-           'MM', // Mamou
-           'N', // Nzérékoré
-           'NZ', // Nzerekore
-           'PI', // Pita
-           'SI', // Siguiri
-           'TE', // Telimele
-           'TO', // Tougue
-           'YO', // Yomou
-        ];
+        return self::DATA;
     }
 }

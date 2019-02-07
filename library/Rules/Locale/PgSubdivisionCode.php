@@ -26,34 +26,36 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class PgSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'CPK', // Chimbu
+        'CPM', // Central
+        'EBR', // East New Britain
+        'EHG', // Eastern Highlands
+        'EPW', // Enga
+        'ESW', // East Sepik
+        'GPK', // Gulf
+        'HLA', // Hela
+        'JWK', // Jiwaka
+        'MBA', // Milne Bay
+        'MPL', // Morobe
+        'MPM', // Madang
+        'MRL', // Manus
+        'NCD', // National Capital
+        'NIK', // New Ireland
+        'NPP', // Northern
+        'NSB', // Bougainville
+        'SAN', // Sandaun
+        'SHM', // Southern Highlands
+        'WBK', // West New Britain
+        'WHM', // Western Highlands
+        'WPD', // Western
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'CPK', // Chimbu
-           'CPM', // Central
-           'EBR', // East New Britain
-           'EHG', // Eastern Highlands
-           'EPW', // Enga
-           'ESW', // East Sepik
-           'GPK', // Gulf
-           'HLA', // Hela
-           'JWK', // Jiwaka
-           'MBA', // Milne Bay
-           'MPL', // Morobe
-           'MPM', // Madang
-           'MRL', // Manus
-           'NCD', // National Capital
-           'NIK', // New Ireland
-           'NPP', // Northern
-           'NSB', // Bougainville
-           'SAN', // Sandaun
-           'SHM', // Southern Highlands
-           'WBK', // West New Britain
-           'WHM', // Western Highlands
-           'WPD', // Western
-        ];
+        return self::DATA;
     }
 }

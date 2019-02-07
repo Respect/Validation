@@ -26,25 +26,27 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class PaSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '1', // Bocas del Toro
+        '10', // Panamá Oeste Province
+        '2', // Cocle
+        '3', // Colon
+        '4', // Chiriqui
+        '5', // Darien
+        '6', // Herrera
+        '7', // Los Santos
+        '8', // Panama
+        '9', // Veraguas
+        'EM', // Comarca Emberá-Wounaan
+        'KY', // Comarca de Kuna Yala
+        'NB', // Ngöbe-Buglé
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '1', // Bocas del Toro
-           '10', // Panamá Oeste Province
-           '2', // Cocle
-           '3', // Colon
-           '4', // Chiriqui
-           '5', // Darien
-           '6', // Herrera
-           '7', // Los Santos
-           '8', // Panama
-           '9', // Veraguas
-           'EM', // Comarca Emberá-Wounaan
-           'KY', // Comarca de Kuna Yala
-           'NB', // Ngöbe-Buglé
-        ];
+        return self::DATA;
     }
 }

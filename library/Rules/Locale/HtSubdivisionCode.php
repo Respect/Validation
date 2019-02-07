@@ -26,22 +26,24 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class HtSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AR', // Artibonite
+        'CE', // Centre
+        'GA', // Grand'Anse
+        'ND', // Nord
+        'NE', // Nord-Est
+        'NI', // Nippes
+        'NO', // Nord-Ouest
+        'OU', // Ouest
+        'SD', // Sud
+        'SE', // Sud-Est
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AR', // Artibonite
-           'CE', // Centre
-           'GA', // Grand'Anse
-           'ND', // Nord
-           'NE', // Nord-Est
-           'NI', // Nippes
-           'NO', // Nord-Ouest
-           'OU', // Ouest
-           'SD', // Sud
-           'SE', // Sud-Est
-        ];
+        return self::DATA;
     }
 }

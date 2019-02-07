@@ -26,19 +26,21 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class CrSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'A', // Alajuela
+        'C', // Cartago
+        'G', // Guanacaste
+        'H', // Heredia
+        'L', // Limon
+        'P', // Puntarenas
+        'SJ', // San Jose
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'A', // Alajuela
-           'C', // Cartago
-           'G', // Guanacaste
-           'H', // Heredia
-           'L', // Limon
-           'P', // Puntarenas
-           'SJ', // San Jose
-        ];
+        return self::DATA;
     }
 }

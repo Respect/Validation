@@ -26,30 +26,32 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class PySubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '1', // Concepcion
+        '10', // Alto Parana
+        '11', // Central
+        '12', // Neembucu
+        '13', // Amambay
+        '14', // Canindeyu
+        '15', // Presidente Hayes
+        '16', // Alto Paraguay
+        '19', // Boqueron
+        '2', // San Pedro
+        '3', // Cordillera
+        '4', // Guaira
+        '5', // Caaguazu
+        '6', // Caazapa
+        '7', // Itapua
+        '8', // Misiones
+        '9', // Paraguari
+        'ASU', // Asuncion
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '1', // Concepcion
-           '10', // Alto Parana
-           '11', // Central
-           '12', // Neembucu
-           '13', // Amambay
-           '14', // Canindeyu
-           '15', // Presidente Hayes
-           '16', // Alto Paraguay
-           '19', // Boqueron
-           '2', // San Pedro
-           '3', // Cordillera
-           '4', // Guaira
-           '5', // Caaguazu
-           '6', // Caazapa
-           '7', // Itapua
-           '8', // Misiones
-           '9', // Paraguari
-           'ASU', // Asuncion
-        ];
+        return self::DATA;
     }
 }

@@ -26,20 +26,22 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class IsSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '1', // Höfuðborgarsvæði
+        '2', // Suðurnes
+        '3', // Vesturland
+        '4', // Vestfirðir
+        '5', // Norðurland Vestra
+        '6', // Norðurland Eystra
+        '7', // Austurland
+        '8', // Suðurland
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '1', // Höfuðborgarsvæði
-           '2', // Suðurnes
-           '3', // Vesturland
-           '4', // Vestfirðir
-           '5', // Norðurland Vestra
-           '6', // Norðurland Eystra
-           '7', // Austurland
-           '8', // Suðurland
-        ];
+        return self::DATA;
     }
 }

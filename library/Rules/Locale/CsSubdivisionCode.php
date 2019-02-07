@@ -26,16 +26,18 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class CsSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'KOS', // Kosovo
+        'MON', // Montenegro
+        'SER', // Serbia
+        'VOJ', // Vojvodina
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'KOS', // Kosovo
-           'MON', // Montenegro
-           'SER', // Serbia
-           'VOJ', // Vojvodina
-        ];
+        return self::DATA;
     }
 }

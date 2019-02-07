@@ -26,21 +26,23 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class ZaSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'EC', // Eastern Cape
+        'FS', // Free State
+        'GT', // Gauteng
+        'LP', // Limpopo
+        'MP', // Mpumalanga
+        'NC', // Northern Cape
+        'NL', // KwaZulu-Natal
+        'NW', // North West
+        'WC', // Western Cape
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'EC', // Eastern Cape
-           'FS', // Free State
-           'GT', // Gauteng
-           'LP', // Limpopo
-           'MP', // Mpumalanga
-           'NC', // Northern Cape
-           'NL', // KwaZulu-Natal
-           'NW', // North West
-           'WC', // Western Cape
-        ];
+        return self::DATA;
     }
 }

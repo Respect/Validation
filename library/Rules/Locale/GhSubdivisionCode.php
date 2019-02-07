@@ -26,22 +26,24 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class GhSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AA', // Greater Accra Region
+        'AH', // Ashanti Region
+        'BA', // Brong-Ahafo Region
+        'CP', // Central Region
+        'EP', // Eastern Region
+        'NP', // Northern Region
+        'TV', // Volta Region
+        'UE', // Upper East Region
+        'UW', // Upper West Region
+        'WP', // Western Region
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AA', // Greater Accra Region
-           'AH', // Ashanti Region
-           'BA', // Brong-Ahafo Region
-           'CP', // Central Region
-           'EP', // Eastern Region
-           'NP', // Northern Region
-           'TV', // Volta Region
-           'UE', // Upper East Region
-           'UW', // Upper West Region
-           'WP', // Western Region
-        ];
+        return self::DATA;
     }
 }

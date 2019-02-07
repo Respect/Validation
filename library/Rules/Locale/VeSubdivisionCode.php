@@ -26,37 +26,39 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class VeSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'A', // Federal Capital
+        'B', // Anzoategui
+        'C', // Apure
+        'D', // Aragua
+        'E', // Barinas
+        'F', // Bolivar
+        'G', // Carabobo
+        'H', // Cojedes
+        'I', // Falcon
+        'J', // Guarico
+        'K', // Lara
+        'L', // Merida
+        'M', // Miranda
+        'N', // Monagas
+        'O', // Nueva Esparta
+        'P', // Portuguesa
+        'R', // Sucre
+        'S', // Tachira
+        'T', // Trujillo
+        'U', // Yaracuy
+        'V', // Zulia
+        'W', // Federal Dependency
+        'X', // Vargas
+        'Y', // Delta Amacuro
+        'Z', // Amazonas
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'A', // Federal Capital
-           'B', // Anzoategui
-           'C', // Apure
-           'D', // Aragua
-           'E', // Barinas
-           'F', // Bolivar
-           'G', // Carabobo
-           'H', // Cojedes
-           'I', // Falcon
-           'J', // Guarico
-           'K', // Lara
-           'L', // Merida
-           'M', // Miranda
-           'N', // Monagas
-           'O', // Nueva Esparta
-           'P', // Portuguesa
-           'R', // Sucre
-           'S', // Tachira
-           'T', // Trujillo
-           'U', // Yaracuy
-           'V', // Zulia
-           'W', // Federal Dependency
-           'X', // Vargas
-           'Y', // Delta Amacuro
-           'Z', // Amazonas
-        ];
+        return self::DATA;
     }
 }

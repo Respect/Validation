@@ -26,19 +26,21 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class BySubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'BR', // Brest voblast
+        'HM', // Horad Minsk
+        'HO', // Homyel voblast
+        'HR', // Hrodna voblast
+        'MA', // Mahilyow voblast
+        'MI', // Minsk voblast
+        'VI', // Vitsebsk voblast
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'BR', // Brest voblast
-           'HM', // Horad Minsk
-           'HO', // Homyel voblast
-           'HR', // Hrodna voblast
-           'MA', // Mahilyow voblast
-           'MI', // Minsk voblast
-           'VI', // Vitsebsk voblast
-        ];
+        return self::DATA;
     }
 }

@@ -26,25 +26,27 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class BaSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        '01', // Unsko-sanski kanton
+        '02', // Posavski kanton
+        '03', // Tuzlanski kanton
+        '04', // Zeničko-dobojski kanton
+        '05', // Bosansko-podrinjski kanton
+        '06', // Srednjobosanski kantonn
+        '07', // Hercegovačko-neretvanski kanton
+        '08', // Zapadnohercegovački kanton
+        '09', // Kanton Sarajevo
+        '10', // Kanton br. 10 (Livanjski kanton)
+        'BIH', // Federacija Bosna i Hercegovina
+        'BRC', // Brcko District
+        'SRP', // Republika Srpska
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           '01', // Unsko-sanski kanton
-           '02', // Posavski kanton
-           '03', // Tuzlanski kanton
-           '04', // Zeničko-dobojski kanton
-           '05', // Bosansko-podrinjski kanton
-           '06', // Srednjobosanski kantonn
-           '07', // Hercegovačko-neretvanski kanton
-           '08', // Zapadnohercegovački kanton
-           '09', // Kanton Sarajevo
-           '10', // Kanton br. 10 (Livanjski kanton)
-           'BIH', // Federacija Bosna i Hercegovina
-           'BRC', // Brcko District
-           'SRP', // Republika Srpska
-        ];
+        return self::DATA;
     }
 }

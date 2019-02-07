@@ -26,20 +26,22 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class IoSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'DG', // Diego Garcia
+        'DI', // Danger Island
+        'EA', // Eagle Islands
+        'EG', // Egmont Islands
+        'NI', // Nelsons Island
+        'PB', // Peros Banhos
+        'SI', // Salomon Islands
+        'TB', // Three Brothers
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'DG', // Diego Garcia
-           'DI', // Danger Island
-           'EA', // Eagle Islands
-           'EG', // Egmont Islands
-           'NI', // Nelsons Island
-           'PB', // Peros Banhos
-           'SI', // Salomon Islands
-           'TB', // Three Brothers
-        ];
+        return self::DATA;
     }
 }

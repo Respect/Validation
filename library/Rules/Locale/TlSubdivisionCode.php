@@ -26,25 +26,27 @@ use Respect\Validation\Rules\AbstractSearcher;
  */
 final class TlSubdivisionCode extends AbstractSearcher
 {
+    private const DATA = [
+        'AL', // Aileu
+        'AN', // Ainaro
+        'BA', // Baucau
+        'BO', // Bobonaro
+        'CO', // Cova Lima
+        'DI', // Dili
+        'ER', // Ermera
+        'LA', // Lautem
+        'LI', // Liquica
+        'MF', // Manufahi
+        'MT', // Manatuto
+        'OE', // Oecussi
+        'VI', // Viqueque
+    ];
+    
     /**
      * {@inheritdoc}
      */
     protected function getDataSource(): array
     {
-        return [
-           'AL', // Aileu
-           'AN', // Ainaro
-           'BA', // Baucau
-           'BO', // Bobonaro
-           'CO', // Cova Lima
-           'DI', // Dili
-           'ER', // Ermera
-           'LA', // Lautem
-           'LI', // Liquica
-           'MF', // Manufahi
-           'MT', // Manatuto
-           'OE', // Oecussi
-           'VI', // Viqueque
-        ];
+        return self::DATA;
     }
 }
