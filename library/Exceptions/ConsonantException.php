@@ -17,7 +17,7 @@ namespace Respect\Validation\Exceptions;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
  */
-class ConsonantException extends FilteredValidationException
+final class ConsonantException extends FilteredValidationException
 {
     /**
      * {@inheritdoc}
