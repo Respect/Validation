@@ -3,7 +3,8 @@
 - `Cntrl()`
 - `Cntrl(string ...$additionalChars)`
 
-This is similar to `Alnum()`, but only accepts control characters:
+Validates if all of the characters in the provided string, are control
+characters.
 
 ```php
 v::cntrl()->validate("\n\r\t"); // true

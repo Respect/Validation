@@ -15,9 +15,10 @@ namespace Respect\Validation\Exceptions;
 
 /**
  * @author Andre Ramaciotti <andre@ramaciotti.com>
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class CntrlException extends FilteredValidationException
+final class CntrlException extends FilteredValidationException
 {
     /**
      * {@inheritdoc}
@@ -25,11 +26,11 @@ class CntrlException extends FilteredValidationException
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must contain only control characters',
-            self::EXTRA => '{{name}} must contain only control characters and "{{additionalChars}}"',
+            self::EXTRA => '{{name}} must contain only control characters and {{additionalChars}}',
         ],
         self::MODE_NEGATIVE => [
             self::STANDARD => '{{name}} must not contain control characters',
-            self::EXTRA => '{{name}} must not contain control characters or "{{additionalChars}}"',
+            self::EXTRA => '{{name}} must not contain control characters or {{additionalChars}}',
         ],
     ];
 }
