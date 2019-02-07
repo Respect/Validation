@@ -18,7 +18,7 @@ namespace Respect\Validation\Rules;
  */
 class No extends AbstractEnvelope
 {
-    public function __construct($useLocale = false)
+    public function __construct(bool $useLocale = false)
     {
         $pattern = '^n(o(t|pe)?|ix|ay)?$';
         if ($useLocale && defined('NOEXPR')) {

@@ -42,7 +42,6 @@ final class FilterVar extends AbstractEnvelope
     /**
      * Initializes the rule.
      *
-     * @param int $filter
      * @param mixed $options
      *
      * @throws ComponentException

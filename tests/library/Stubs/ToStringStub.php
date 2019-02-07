@@ -28,8 +28,6 @@ final class ToStringStub
     /**
      * Initializes the object with the value that will be returned when the
      * object is converted to string.
-     *
-     * @param string $value
      */
     public function __construct(string $value)
     {
@@ -38,8 +36,6 @@ final class ToStringStub
 
     /**
      * Returns the value defined in the constructor.
-     *
-     * @return string
      */
     public function __toString(): string
     {

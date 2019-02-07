@@ -26,6 +26,9 @@ use Respect\Validation\Test\TestCase;
  */
 class NfeAccessKeyTest extends TestCase
 {
+    /**
+     * @var NfeAccessKey
+     */
     protected $nfeValidator;
 
     protected function setUp(): void
@@ -38,11 +41,11 @@ class NfeAccessKeyTest extends TestCase
      *
      * @test
      */
-    public function validAccessKey($aK): void
+    public function validAccessKey(string $input): void
     {
-        $this->nfeValidator->assert($aK);
-        self::assertTrue($this->nfeValidator->__invoke($aK));
-        $this->nfeValidator->check($aK);
+        $this->nfeValidator->assert($input);
+        self::assertTrue($this->nfeValidator->__invoke($input));
+        $this->nfeValidator->check($input);
     }
 
     /**
@@ -51,9 +54,9 @@ class NfeAccessKeyTest extends TestCase
      *
      * @test
      */
-    public function invalidAccessKey($aK): void
+    public function invalidAccessKey(string $input): void
     {
-        $this->nfeValidator->assert($aK);
+        $this->nfeValidator->assert($input);
     }
 
     /**
@@ -62,19 +65,25 @@ class NfeAccessKeyTest extends TestCase
      *
      * @test
      */
-    public function invalidLengthCnh($aK): void
+    public function invalidLengthCnh(string $input): void
     {
-        $this->nfeValidator->assert($aK);
+        $this->nfeValidator->assert($input);
     }
 
-    public function validAccessKeyProvider()
+    /**
+     * @return mixed[][]
+     */
+    public function validAccessKeyProvider(): array
     {
         return [
             ['52060433009911002506550120000007800267301615'],
         ];
     }
 
-    public function invalidAccessKeyProvider()
+    /**
+     * @return mixed[][]
+     */
+    public function invalidAccessKeyProvider(): array
     {
         return [
             ['31841136830118868211870485416765268625116906'],
@@ -89,7 +98,10 @@ class NfeAccessKeyTest extends TestCase
         ];
     }
 
-    public function invalidAccessKeyLengthProvider()
+    /**
+     * @return mixed[][]
+     */
+    public function invalidAccessKeyLengthProvider(): array
     {
         return [
             ['11145573386990252067204852181837301'],

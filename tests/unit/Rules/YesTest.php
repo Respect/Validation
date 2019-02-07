@@ -88,6 +88,9 @@ final class YesTest extends RuleTestCase
         ];
     }
 
+    /**
+     * @return string[][]
+     */
     public function providerForValidInputWithLocale(): array
     {
         return [
@@ -97,6 +100,9 @@ final class YesTest extends RuleTestCase
         ];
     }
 
+    /**
+     * @return string[][]
+     */
     public function providerForInvalidInputWithLocale(): array
     {
         return [
@@ -110,9 +116,6 @@ final class YesTest extends RuleTestCase
      * @test
      *
      * @dataProvider providerForValidInputWithLocale
-     *
-     * @param string $locale
-     * @param string $input
      */
     public function itShouldValidateValidInputAccordingToTheLocale(string $locale, string $input): void
     {
@@ -128,9 +131,6 @@ final class YesTest extends RuleTestCase
      * @test
      *
      * @dataProvider providerForInvalidInputWithLocale
-     *
-     * @param string $locale
-     * @param string $input
      */
     public function itShouldValidateInvalidInputAccordingToTheLocale(string $locale, string $input): void
     {

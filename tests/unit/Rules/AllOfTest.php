@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\TestCase;
+use Respect\Validation\Validatable;
 
 /**
  * @group  rule
@@ -56,9 +57,12 @@ class AllOfTest extends TestCase
      *
      * @test
      */
-    public function validationAssertShouldFailIfAnyRuleFailsAndReturnAllExceptionsFailed($v1, $v2, $v3): void
-    {
-        $o = new AllOf($v1, $v2, $v3);
+    public function validationAssertShouldFailIfAnyRuleFailsAndReturnAllExceptionsFailed(
+        Validatable $rule1,
+        Validatable $rule2,
+        Validatable $rule3
+    ): void {
+        $o = new AllOf($rule1, $rule2, $rule3);
         self::assertFalse($o->__invoke('any'));
         $o->assert('any');
     }
@@ -69,9 +73,12 @@ class AllOfTest extends TestCase
      *
      * @test
      */
-    public function validationCheckShouldFailIfAnyRuleFailsAndThrowTheFirstExceptionOnly($v1, $v2, $v3): void
-    {
-        $o = new AllOf($v1, $v2, $v3);
+    public function validationCheckShouldFailIfAnyRuleFailsAndThrowTheFirstExceptionOnly(
+        Validatable $rule1,
+        Validatable $rule2,
+        Validatable $rule3
+    ): void {
+        $o = new AllOf($rule1, $rule2, $rule3);
         self::assertFalse($o->__invoke('any'));
         $o->check('any');
     }
@@ -82,9 +89,12 @@ class AllOfTest extends TestCase
      *
      * @test
      */
-    public function validationCheckShouldFailOnEmptyInput($v1, $v2, $v3): void
-    {
-        $o = new AllOf($v1, $v2, $v3);
+    public function validationCheckShouldFailOnEmptyInput(
+        Validatable $rule1,
+        Validatable $rule2,
+        Validatable $rule3
+    ): void {
+        $o = new AllOf($rule1, $rule2, $rule3);
         $o->check('');
     }
 
@@ -93,13 +103,19 @@ class AllOfTest extends TestCase
      *
      * @test
      */
-    public function validationShouldFailIfAnyRuleFails($v1, $v2, $v3): void
-    {
-        $o = new AllOf($v1, $v2, $v3);
+    public function validationShouldFailIfAnyRuleFails(
+        Validatable $rule1,
+        Validatable $rule2,
+        Validatable $rule3
+    ): void {
+        $o = new AllOf($rule1, $rule2, $rule3);
         self::assertFalse($o->__invoke('any'));
     }
 
-    public function providerStaticDummyRules()
+    /**
+     * @return Validatable[][]
+     */
+    public function providerStaticDummyRules(): array
     {
         $theInvalidOne = new Callback(function () {
             return false;

@@ -41,8 +41,6 @@ final class Time extends AbstractRule
     /**
      * Initializes the rule.
      *
-     * @param string $format
-     *
      * @throws ComponentException
      */
     public function __construct(string $format = 'H:i:s')

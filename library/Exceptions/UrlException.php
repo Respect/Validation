@@ -18,6 +18,9 @@ namespace Respect\Validation\Exceptions;
  */
 class UrlException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a URL',

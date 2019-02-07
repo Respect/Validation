@@ -26,7 +26,7 @@ final class ContainsAny extends AbstractEnvelope
     /**
      * Initializes the rule.
      *
-     * @param array $needles At least one of the values provided must be found in input string or array
+     * @param mixed[] $needles At least one of the values provided must be found in input string or array
      * @param bool $identical Defines whether the value should be compared strictly, when validating array
      */
     public function __construct(array $needles, bool $identical = false)
@@ -37,6 +37,11 @@ final class ContainsAny extends AbstractEnvelope
         );
     }
 
+    /**
+     * @param mixed[] $needles
+     *
+     * @return Contains[]
+     */
     private function getRules(array $needles, bool $identical): array
     {
         return array_map(

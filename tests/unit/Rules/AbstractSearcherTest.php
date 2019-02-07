@@ -64,6 +64,8 @@ final class AbstractSearcherTest extends TestCase
     /**
      * @test
      * @dataProvider providerForUndefined
+     *
+     * @param mixed $input
      */
     public function shouldValidateWhenValueIsUndefinedAndDataSourceIsEmpty($input): void
     {
@@ -79,6 +81,8 @@ final class AbstractSearcherTest extends TestCase
     /**
      * @test
      * @dataProvider providerForNotUndefined
+     *
+     * @param mixed $input
      */
     public function shouldNotValidateWhenValueIsNotUndefinedAndDataSourceNotEmpty($input): void
     {

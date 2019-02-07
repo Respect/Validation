@@ -18,6 +18,9 @@ namespace Respect\Validation\Exceptions;
  */
 class PostalCodeException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a valid postal code on {{countryCode}}',

@@ -30,8 +30,6 @@ use Respect\Validation\Test\RuleTestCase;
 final class IpTest extends RuleTestCase
 {
     /**
-     * @throws ComponentException
-     *
      * {@inheritdoc}
      */
     public function providerForValidInput(): array
@@ -59,8 +57,6 @@ final class IpTest extends RuleTestCase
     }
 
     /**
-     * @throws ComponentException
-     *
      * {@inheritdoc}
      */
     public function providerForInvalidInput(): array
@@ -85,6 +81,9 @@ final class IpTest extends RuleTestCase
         ];
     }
 
+    /**
+     * @return string[][]
+     */
     public function providerForInvalidRanges(): array
     {
         return [
@@ -102,8 +101,6 @@ final class IpTest extends RuleTestCase
      * @test
      *
      * @dataProvider providerForInvalidRanges
-     *
-     * @param string $range
      *
      * @throws ComponentException
      */

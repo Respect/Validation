@@ -23,6 +23,9 @@ use Respect\Validation\Validatable;
  */
 class Not extends AbstractRule
 {
+    /**
+     * @var Validatable
+     */
     public $rule;
 
     public function __construct(Validatable $rule)
@@ -37,11 +40,17 @@ class Not extends AbstractRule
         return parent::setName($name);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         return false === $this->rule->validate($input);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function assert($input): void
     {
         if ($this->validate($input)) {
@@ -59,7 +68,10 @@ class Not extends AbstractRule
         throw $exception;
     }
 
-    private function absorbAllOf(AllOf $rule, $input)
+    /**
+     * @param mixed $input
+     */
+    private function absorbAllOf(AllOf $rule, $input): Validatable
     {
         $rules = $rule->getRules();
         while (($current = array_shift($rules))) {

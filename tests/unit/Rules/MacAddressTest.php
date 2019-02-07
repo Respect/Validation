@@ -46,7 +46,7 @@ final class MacAddressTest extends RuleTestCase
     }
 
     /**
-     * {@inheditdoc}
+     * {@inheritdoc}
      */
     public function providerForInvalidInput(): array
     {

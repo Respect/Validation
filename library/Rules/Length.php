@@ -54,10 +54,6 @@ final class Length extends AbstractRule
     /**
      * Creates the rule with a minimum and maximum value.
      *
-     * @param int|null $min
-     * @param int|null $max
-     * @param bool $inclusive TRUE by default
-     *
      * @throws ComponentException
      */
     public function __construct(int $min = null, int $max = null, bool $inclusive = true)
@@ -84,6 +80,9 @@ final class Length extends AbstractRule
         return $this->validateMin($length) && $this->validateMax($length);
     }
 
+    /**
+     * @param mixed $input
+     */
     private function extractLength($input): ?int
     {
         if (is_string($input)) {

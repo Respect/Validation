@@ -34,8 +34,6 @@ abstract class AbstractLocaleWrapper extends AbstractWrapper
     /**
      * Initializes the rule.
      *
-     * @param string $countryCode
-     *
      * @throws ComponentException when country is not supported
      */
     public function __construct(string $countryCode)
@@ -52,8 +50,6 @@ abstract class AbstractLocaleWrapper extends AbstractWrapper
 
     /**
      * Returns the class name based on the identifier.
-     *
-     * @return string
      */
     abstract protected function getSuffix(): string;
 }

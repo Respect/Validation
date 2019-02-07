@@ -55,10 +55,6 @@ class NestedValidationException extends ValidationException implements IteratorA
 
     /**
      * Adds a child to the exception.
-     *
-     * @param ValidationException $exception
-     *
-     * @return self
      */
     public function addChild(ValidationException $exception): self
     {
@@ -71,8 +67,6 @@ class NestedValidationException extends ValidationException implements IteratorA
      * Adds children to the exception.
      *
      * @param ValidationException[] $exceptions
-     *
-     * @return self
      */
     public function addChildren(array $exceptions): self
     {
@@ -83,9 +77,6 @@ class NestedValidationException extends ValidationException implements IteratorA
         return $this;
     }
 
-    /**
-     * @return SplObjectStorage
-     */
     public function getIterator(): SplObjectStorage
     {
         $childrenExceptions = new SplObjectStorage();
@@ -130,9 +121,9 @@ class NestedValidationException extends ValidationException implements IteratorA
      * Once templates are passed it overwrites the templates of the given
      * messages.
      *
-     * @param array $templates
+     * @param string[]|string[][] $templates
      *
-     * @return array
+     * @return string[]
      */
     public function getMessages(array $templates = []): array
     {
@@ -164,8 +155,6 @@ class NestedValidationException extends ValidationException implements IteratorA
 
     /**
      * Returns a string with all the messages of the exception.
-     *
-     * @return string
      */
     public function getFullMessage(): string
     {
@@ -221,6 +210,9 @@ class NestedValidationException extends ValidationException implements IteratorA
         return !$childException instanceof NonOmissibleException;
     }
 
+    /**
+     * @param string[] $templates
+     */
     private function renderMessage(ValidationException $exception, array $templates): string
     {
         if (isset($templates[$exception->getId()])) {
@@ -230,6 +222,12 @@ class NestedValidationException extends ValidationException implements IteratorA
         return $exception->getMessage();
     }
 
+    /**
+     * @param string[] $templates
+     * @param mixed ...$ids
+     *
+     * @return string[]
+     */
     private function findTemplates(array $templates, ...$ids): array
     {
         while (count($ids) > 0) {

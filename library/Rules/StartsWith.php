@@ -20,16 +20,28 @@ namespace Respect\Validation\Rules;
  */
 class StartsWith extends AbstractRule
 {
+    /**
+     * @var mixed
+     */
     public $startValue;
 
+    /**
+     * @var bool
+     */
     public $identical;
 
-    public function __construct($startValue, $identical = false)
+    /**
+     * @param mixed $startValue
+     */
+    public function __construct($startValue, bool $identical = false)
     {
         $this->startValue = $startValue;
         $this->identical = $identical;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if ($this->identical) {
@@ -39,7 +51,10 @@ class StartsWith extends AbstractRule
         return $this->validateEquals($input);
     }
 
-    protected function validateEquals($input)
+    /**
+     * @param mixed $input
+     */
+    protected function validateEquals($input): bool
     {
         if (is_array($input)) {
             return reset($input) == $this->startValue;
@@ -48,7 +63,10 @@ class StartsWith extends AbstractRule
         return 0 === mb_stripos($input, $this->startValue, 0, mb_detect_encoding($input));
     }
 
-    protected function validateIdentical($input)
+    /**
+     * @param mixed $input
+     */
+    protected function validateIdentical($input): bool
     {
         if (is_array($input)) {
             return reset($input) === $this->startValue;

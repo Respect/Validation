@@ -531,8 +531,6 @@ final class LanguageCode extends AbstractEnvelope
     /**
      * Initializes the rule defining the ISO 639 set.
      *
-     * @param string $set
-     *
      * @throws ComponentException
      */
     public function __construct(string $set = self::ALPHA2)
@@ -545,6 +543,9 @@ final class LanguageCode extends AbstractEnvelope
         parent::__construct(new In($this->getHaystack($index), true), ['set' => $set]);
     }
 
+    /**
+     * @return string[]
+     */
     private function getHaystack(int $index): array
     {
         return array_filter(array_column(self::LANGUAGE_CODES, $index));

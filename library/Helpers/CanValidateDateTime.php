@@ -22,11 +22,6 @@ trait CanValidateDateTime
 {
     /**
      * Finds whether a value is a valid date/time in a specific format.
-     *
-     * @param string $format
-     * @param string $value
-     *
-     * @return bool
      */
     private function isDateTime(string $format, string $value): bool
     {
@@ -48,7 +43,10 @@ trait CanValidateDateTime
         return true;
     }
 
-    private function isDateTimeParsable(array $info)
+    /**
+     * @param int[] $info
+     */
+    private function isDateTimeParsable(array $info): bool
     {
         return 0 === $info['error_count'] && 0 === $info['warning_count'];
     }
@@ -58,7 +56,10 @@ trait CanValidateDateTime
         return preg_match('/[djSFmMnYy]/', $format) > 0;
     }
 
-    private function isDateInformation(array $info)
+    /**
+     * @param mixed[] $info
+     */
+    private function isDateInformation(array $info): bool
     {
         if ($info['day']) {
             return checkdate((int) $info['month'], $info['day'], (int) $info['year']);

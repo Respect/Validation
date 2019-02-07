@@ -26,6 +26,9 @@ final class CanValidateDateTimeTest extends TestCase
 {
     use CanValidateDateTime;
 
+    /**
+     * @return mixed[][]
+     */
     public function providerForValidDateTime(): array
     {
         return [
@@ -44,15 +47,15 @@ final class CanValidateDateTimeTest extends TestCase
      * @test
      *
      * @dataProvider providerForValidDateTime
-     *
-     * @param string $format
-     * @param string $value
      */
     public function shouldFindWhenValueIsDateTime(string $format, string $value): void
     {
         self::assertTrue($this->isDateTime($format, $value));
     }
 
+    /**
+     * @return mixed[][]
+     */
     public function providerForInvalidDateTime(): array
     {
         return [
@@ -69,9 +72,6 @@ final class CanValidateDateTimeTest extends TestCase
      * @test
      *
      * @dataProvider providerForInvalidDateTime
-     *
-     * @param string $format
-     * @param string $value
      */
     public function shouldFindWhenValueIsNotDateTime(string $format, string $value): void
     {

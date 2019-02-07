@@ -21,6 +21,9 @@ use Respect\Validation\Exceptions\NoneOfException;
  */
 class NoneOf extends AbstractComposite
 {
+    /**
+     * {@inheritdoc}
+     */
     public function assert($input): void
     {
         $exceptions = $this->getAllThrownExceptions($input);
@@ -35,6 +38,9 @@ class NoneOf extends AbstractComposite
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         foreach ($this->getRules() as $rule) {

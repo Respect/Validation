@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Validatable;
 use Respect\Validation\Validator;
 
 /**
@@ -22,20 +23,36 @@ use Respect\Validation\Validator;
  */
 class KeyValue extends AbstractRule
 {
+    /**
+     * @var int|string
+     */
     public $comparedKey;
 
+    /**
+     * @var string
+     */
     public $ruleName;
 
+    /**
+     * @var int|string
+     */
     public $baseKey;
 
-    public function __construct($comparedKey, $ruleName, $baseKey)
+    /**
+     * @param int|string $comparedKey
+     * @param int|string $baseKey
+     */
+    public function __construct($comparedKey, string $ruleName, $baseKey)
     {
         $this->comparedKey = $comparedKey;
         $this->ruleName = $ruleName;
         $this->baseKey = $baseKey;
     }
 
-    private function getRule($input)
+    /**
+     * @param mixed $input
+     */
+    private function getRule($input): Validatable
     {
         if (!isset($input[$this->comparedKey])) {
             throw $this->reportError($this->comparedKey);
@@ -55,7 +72,7 @@ class KeyValue extends AbstractRule
         return $rule;
     }
 
-    private function overwriteExceptionParams(ValidationException $exception)
+    private function overwriteExceptionParams(ValidationException $exception): ValidationException
     {
         $params = [];
         foreach ($exception->getParams() as $key => $value) {
@@ -72,6 +89,9 @@ class KeyValue extends AbstractRule
         return $exception;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function assert($input): void
     {
         $rule = $this->getRule($input);
@@ -83,6 +103,9 @@ class KeyValue extends AbstractRule
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function check($input): void
     {
         $rule = $this->getRule($input);
@@ -94,6 +117,9 @@ class KeyValue extends AbstractRule
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         try {

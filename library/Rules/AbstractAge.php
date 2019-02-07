@@ -46,9 +46,6 @@ abstract class AbstractAge extends AbstractRule
 
     /**
      * Initializes the rule.
-     *
-     * @param int $age
-     * @param string|null $format
      */
     public function __construct(int $age, string $format = null)
     {
@@ -61,11 +58,6 @@ abstract class AbstractAge extends AbstractRule
      * Should compare the current base date with the given one.
      *
      * The dates are represented as integers in the format "Ymd".
-     *
-     * @param int $baseDate
-     * @param int $givenDate
-     *
-     * @return bool
      */
     abstract protected function compare(int $baseDate, int $givenDate): bool;
 

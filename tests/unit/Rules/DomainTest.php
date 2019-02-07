@@ -28,6 +28,9 @@ use Respect\Validation\Validator as v;
  */
 class DomainTest extends TestCase
 {
+    /**
+     * @var Domain
+     */
     protected $object;
 
     protected function setUp(): void
@@ -39,8 +42,10 @@ class DomainTest extends TestCase
      * @dataProvider providerForDomain
      *
      * @test
+     *
+     * @param mixed $input
      */
-    public function validDomainsShouldReturnTrue($input, $tldcheck = true): void
+    public function validDomainsShouldReturnTrue($input, bool $tldcheck = true): void
     {
         $this->object->tldCheck($tldcheck);
         self::assertTrue($this->object->__invoke($input));
@@ -53,8 +58,10 @@ class DomainTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\ValidationException
      *
      * @test
+     *
+     * @param mixed $input
      */
-    public function notDomain($input, $tldcheck = true): void
+    public function notDomain($input, bool $tldcheck = true): void
     {
         $this->object->tldCheck($tldcheck);
         $this->object->check($input);
@@ -65,14 +72,19 @@ class DomainTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\DomainException
      *
      * @test
+     *
+     * @param mixed $input
      */
-    public function notDomainCheck($input, $tldcheck = true): void
+    public function notDomainCheck($input, bool $tldcheck = true): void
     {
         $this->object->tldCheck($tldcheck);
         $this->object->assert($input);
     }
 
-    public function providerForDomain()
+    /**
+     * @return mixed[][]
+     */
+    public function providerForDomain(): array
     {
         return [
             ['111111111111domain.local', false],
@@ -87,7 +99,10 @@ class DomainTest extends TestCase
         ];
     }
 
-    public function providerForNotDomain()
+    /**
+     * @return mixed[][]
+     */
+    public function providerForNotDomain(): array
     {
         return [
             [null],
@@ -107,7 +122,7 @@ class DomainTest extends TestCase
      *
      * @test
      */
-    public function builder($validDomain, $checkTLD = true): void
+    public function builder(string $validDomain, bool $checkTLD = true): void
     {
         self::assertTrue(
             v::domain($checkTLD)->validate($validDomain),

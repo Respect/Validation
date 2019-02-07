@@ -26,6 +26,9 @@ use Respect\Validation\Test\RuleTestCase;
  */
 final class NotEmptyTest extends RuleTestCase
 {
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new NotEmpty();
@@ -39,6 +42,9 @@ final class NotEmptyTest extends RuleTestCase
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new NotEmpty();

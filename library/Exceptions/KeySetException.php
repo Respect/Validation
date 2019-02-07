@@ -23,7 +23,7 @@ class KeySetException extends GroupedValidationException implements NonOmissible
     public const STRUCTURE = 'structure';
 
     /**
-     * @var array
+     * {@inheritdoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

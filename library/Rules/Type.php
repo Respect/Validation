@@ -59,8 +59,6 @@ final class Type extends AbstractRule
     /**
      * Initializes the rule.
      *
-     * @param string $type
-     *
      * @throws ComponentException When $type is not a valid one
      */
     public function __construct(string $type)

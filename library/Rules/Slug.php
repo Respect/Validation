@@ -20,6 +20,9 @@ namespace Respect\Validation\Rules;
  */
 class Slug extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (mb_strstr($input, '--')) {

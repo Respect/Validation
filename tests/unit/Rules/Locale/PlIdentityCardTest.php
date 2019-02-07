@@ -23,6 +23,9 @@ use Respect\Validation\Test\RuleTestCase;
  */
 class PlIdentityCardTest extends RuleTestCase
 {
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new PlIdentityCard();
@@ -34,6 +37,9 @@ class PlIdentityCardTest extends RuleTestCase
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new PlIdentityCard();

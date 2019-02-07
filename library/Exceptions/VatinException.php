@@ -20,7 +20,7 @@ namespace Respect\Validation\Exceptions;
 final class VatinException extends ValidationException
 {
     /**
-     * @var array
+     * {@inheritdoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

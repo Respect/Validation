@@ -330,8 +330,6 @@ final class CountryCode extends AbstractSearcher
     /**
      * Initializes the rule.
      *
-     * @param string $set
-     *
      * @throws ComponentException If $set is not a valid set
      */
     public function __construct(string $set = self::ALPHA2)

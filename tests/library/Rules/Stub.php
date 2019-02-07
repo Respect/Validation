@@ -26,12 +26,12 @@ use function array_shift;
 final class Stub extends AbstractRule
 {
     /**
-     * @var array
+     * @var bool[]
      */
     public $validations;
 
     /**
-     * @var array
+     * @var mixed[]
      */
     public $inputs;
 

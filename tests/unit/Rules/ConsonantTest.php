@@ -34,9 +34,9 @@ class ConsonantTest extends TestCase
      *
      * @test
      */
-    public function validDataWithConsonantsShouldReturnTrue($validConsonants, $additional = ''): void
+    public function validDataWithConsonantsShouldReturnTrue(string $validConsonants): void
     {
-        $validator = new Consonant($additional);
+        $validator = new Consonant();
         self::assertTrue($validator->validate($validConsonants));
     }
 
@@ -45,10 +45,12 @@ class ConsonantTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\ConsonantException
      *
      * @test
+     *
+     * @param mixed $invalidConsonants
      */
-    public function invalidConsonantsShouldFailAndThrowConsonantException($invalidConsonants, $additional = ''): void
+    public function invalidConsonantsShouldFailAndThrowConsonantException($invalidConsonants): void
     {
-        $validator = new Consonant($additional);
+        $validator = new Consonant();
         self::assertFalse($validator->validate($invalidConsonants));
         $validator->assert($invalidConsonants);
     }
@@ -58,13 +60,16 @@ class ConsonantTest extends TestCase
      *
      * @test
      */
-    public function additionalCharsShouldBeRespected($additional, $query): void
+    public function additionalCharsShouldBeRespected(string $additional, string $input): void
     {
         $validator = new Consonant($additional);
-        self::assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($input));
     }
 
-    public function providerAdditionalChars()
+    /**
+     * @return string[][]
+     */
+    public function providerAdditionalChars(): array
     {
         return [
             ['!@#$%^&*(){}', '!@#$%^&*(){} bc dfg'],
@@ -72,7 +77,10 @@ class ConsonantTest extends TestCase
         ];
     }
 
-    public function providerForValidConsonants()
+    /**
+     * @return string[][]
+     */
+    public function providerForValidConsonants(): array
     {
         return [
             ['b'],
@@ -89,7 +97,10 @@ class ConsonantTest extends TestCase
         ];
     }
 
-    public function providerForInvalidConsonants()
+    /**
+     * @return mixed[][]
+     */
+    public function providerForInvalidConsonants(): array
     {
         return [
             [''],

@@ -39,8 +39,6 @@ final class Email extends AbstractRule
      * Initializes the rule assigning the EmailValidator instance.
      *
      * If the EmailValidator instance is not defined, tries to create one.
-     *
-     * @param EmailValidator $validator
      */
     public function __construct(EmailValidator $validator = null)
     {

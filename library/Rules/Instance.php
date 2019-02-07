@@ -29,8 +29,6 @@ final class Instance extends AbstractRule
 
     /**
      * Initializes the rule with the expected instance name.
-     *
-     * @param string $instanceName
      */
     public function __construct(string $instanceName)
     {

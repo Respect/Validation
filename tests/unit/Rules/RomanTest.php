@@ -26,6 +26,9 @@ use Respect\Validation\Test\TestCase;
  */
 class RomanTest extends TestCase
 {
+    /**
+     * @var Roman
+     */
     protected $romanValidator;
 
     protected function setUp(): void
@@ -38,7 +41,7 @@ class RomanTest extends TestCase
      *
      * @test
      */
-    public function validRomansShouldReturnTrue($input): void
+    public function validRomansShouldReturnTrue(string $input): void
     {
         self::assertTrue($this->romanValidator->__invoke($input));
         $this->romanValidator->assert($input);
@@ -51,13 +54,16 @@ class RomanTest extends TestCase
      *
      * @test
      */
-    public function invalidRomansShouldThrowRomanException($input): void
+    public function invalidRomansShouldThrowRomanException(string $input): void
     {
         self::assertFalse($this->romanValidator->__invoke($input));
         $this->romanValidator->assert($input);
     }
 
-    public function providerForRoman()
+    /**
+     * @return string[][]
+     */
+    public function providerForRoman(): array
     {
         return [
             [''],
@@ -76,7 +82,10 @@ class RomanTest extends TestCase
         ];
     }
 
-    public function providerForNotRoman()
+    /**
+     * @return string[][]
+     */
+    public function providerForNotRoman(): array
     {
         return [
             [' '],

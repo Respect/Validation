@@ -213,6 +213,8 @@ final class KeySetTest extends TestCase
      *
      * @expectedException \Respect\Validation\Exceptions\KeySetException
      * @expectedExceptionMessage Must have keys `{ "name" }`
+     *
+     * @param mixed $input
      */
     public function shouldThrowExceptionInCaseArgumentIsAnythingOtherThanArray($input): void
     {
@@ -220,6 +222,9 @@ final class KeySetTest extends TestCase
         $keySet->assert($input);
     }
 
+    /**
+     * @return mixed[][]
+     */
     public function providerForInvalidArguments(): array
     {
         return [

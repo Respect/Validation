@@ -30,8 +30,10 @@ class StartsWithTest extends TestCase
      * @dataProvider providerForStartsWith
      *
      * @test
+     *
+     * @param mixed $input
      */
-    public function startsWith($start, $input): void
+    public function startsWith(string $start, $input): void
     {
         $v = new StartsWith($start);
         self::assertTrue($v->__invoke($input));
@@ -44,15 +46,20 @@ class StartsWithTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\StartsWithException
      *
      * @test
+     *
+     * @param mixed $input
      */
-    public function notStartsWith($start, $input, $caseSensitive = false): void
+    public function notStartsWith(string $start, $input, bool $caseSensitive = false): void
     {
         $v = new StartsWith($start, $caseSensitive);
         self::assertFalse($v->__invoke($input));
         $v->assert($input);
     }
 
-    public function providerForStartsWith()
+    /**
+     * @return mixed[][]
+     */
+    public function providerForStartsWith(): array
     {
         return [
             ['foo', ['foo', 'bar']],
@@ -64,7 +71,10 @@ class StartsWithTest extends TestCase
         ];
     }
 
-    public function providerForNotStartsWith()
+    /**
+     * @return mixed[][]
+     */
+    public function providerForNotStartsWith(): array
     {
         return [
             ['foo', ''],

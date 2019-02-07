@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use a;
 use Respect\Validation\Test\TestCase;
 
 /**
@@ -34,10 +35,10 @@ class CntrlTest extends TestCase
      *
      * @test
      */
-    public function validDataWithCntrlShouldReturnTrue($validCntrl, $additional = ''): void
+    public function validDataWithCntrlShouldReturnTrue(string $input): void
     {
-        $validator = new Cntrl($additional);
-        self::assertTrue($validator->validate($validCntrl));
+        $validator = new Cntrl();
+        self::assertTrue($validator->validate($input));
     }
 
     /**
@@ -45,12 +46,14 @@ class CntrlTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\CntrlException
      *
      * @test
+     *
+     * @param mixed $input
      */
-    public function invalidCntrlShouldFailAndThrowCntrlException($invalidCntrl, $additional = ''): void
+    public function invalidCntrlShouldFailAndThrowCntrlException($input): void
     {
-        $validator = new Cntrl($additional);
-        self::assertFalse($validator->validate($invalidCntrl));
-        $validator->assert($invalidCntrl);
+        $validator = new Cntrl();
+        self::assertFalse($validator->validate($input));
+        $validator->assert($input);
     }
 
     /**
@@ -58,13 +61,16 @@ class CntrlTest extends TestCase
      *
      * @test
      */
-    public function additionalCharsShouldBeRespected($additional, $query): void
+    public function additionalCharsShouldBeRespected(string $additional, string $input): void
     {
         $validator = new Cntrl($additional);
-        self::assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($input));
     }
 
-    public function providerAdditionalChars()
+    /**
+     * @return string[][]
+     */
+    public function providerAdditionalChars(): array
     {
         return [
             ['!@#$%^&*(){} ', '!@#$%^&*(){} '],
@@ -72,7 +78,10 @@ class CntrlTest extends TestCase
         ];
     }
 
-    public function providerForValidCntrl()
+    /**
+     * @return string[][]
+     */
+    public function providerForValidCntrl(): array
     {
         return [
             ["\n"],
@@ -82,7 +91,10 @@ class CntrlTest extends TestCase
         ];
     }
 
-    public function providerForInvalidCntrl()
+    /**
+     * @return mixed[][]
+     */
+    public function providerForInvalidCntrl(): array
     {
         return [
             [''],

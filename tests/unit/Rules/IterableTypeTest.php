@@ -27,6 +27,9 @@ use stdClass;
  */
 final class IterableTypeTest extends RuleTestCase
 {
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new IterableType();
@@ -38,6 +41,9 @@ final class IterableTypeTest extends RuleTestCase
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new IterableType();

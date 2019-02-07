@@ -39,9 +39,6 @@ final class Mimetype extends AbstractRule
 
     /**
      * Initializes the rule by defining the expected mimetype from the input.
-     *
-     * @param string $mimetype
-     * @param finfo $fileInfo
      */
     public function __construct(string $mimetype, finfo $fileInfo = null)
     {

@@ -33,8 +33,6 @@ final class LeapDate extends AbstractRule
 
     /**
      * Initializes the rule with the expected format.
-     *
-     * @param string $format
      */
     public function __construct(string $format)
     {

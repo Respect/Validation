@@ -24,6 +24,9 @@ use Respect\Validation\Exceptions\ComponentException;
  */
 class KeyNested extends AbstractRelated
 {
+    /**
+     * {@inheritdoc}
+     */
     public function hasReference($input): bool
     {
         try {
@@ -35,12 +38,21 @@ class KeyNested extends AbstractRelated
         return true;
     }
 
-    private function getReferencePieces()
+    /**
+     * @return string[]
+     */
+    private function getReferencePieces(): array
     {
         return explode('.', rtrim((string) $this->reference, '.'));
     }
 
-    private function getValueFromArray($array, $key)
+    /**
+     * @param mixed[] $array
+     * @param mixed $key
+     *
+     * @return mixed
+     */
+    private function getValueFromArray(array $array, $key)
     {
         if (!array_key_exists($key, $array)) {
             $message = sprintf('Cannot select the key %s from the given array', $this->reference);
@@ -50,7 +62,29 @@ class KeyNested extends AbstractRelated
         return $array[$key];
     }
 
-    private function getValueFromObject($object, $property)
+    /**
+     * @param mixed $key
+     *
+     * @return mixed
+     */
+    private function getValueFromArrayAccess(ArrayAccess $array, $key)
+    {
+        if (!$array->offsetExists($key)) {
+            $message = sprintf('Cannot select the key %s from the given array', $this->reference);
+            throw new ComponentException($message);
+        }
+
+        return $array->offsetGet($key);
+    }
+
+    /**
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
+     *
+     * @param object $object
+     *
+     * @return mixed
+     */
+    private function getValueFromObject($object, string $property)
     {
         if (empty($property) || !property_exists($object, $property)) {
             $message = sprintf('Cannot select the property %s from the given object', $this->reference);
@@ -60,10 +94,20 @@ class KeyNested extends AbstractRelated
         return $object->{$property};
     }
 
+    /**
+     * @param mixed $value
+     * @param mixed $key
+     *
+     * @return mixed
+     */
     private function getValue($value, $key)
     {
-        if (is_array($value) || $value instanceof ArrayAccess) {
+        if (is_array($value)) {
             return $this->getValueFromArray($value, $key);
+        }
+
+        if ($value instanceof ArrayAccess) {
+            return $this->getValueFromArrayAccess($value, $key);
         }
 
         if (is_object($value)) {
@@ -74,6 +118,9 @@ class KeyNested extends AbstractRelated
         throw new ComponentException($message);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getReferenceValue($input)
     {
         if (is_scalar($input)) {

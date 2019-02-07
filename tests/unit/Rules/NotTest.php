@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\TestCase;
+use Respect\Validation\Validatable;
 use Respect\Validation\Validator;
 
 /**
@@ -34,10 +35,12 @@ class NotTest extends TestCase
      * @dataProvider providerForValidNot
      *
      * @test
+     *
+     * @param mixed $input
      */
-    public function not($v, $input): void
+    public function not(Validatable $rule, $input): void
     {
-        $not = new Not($v);
+        $not = new Not($rule);
         $not->assert($input);
     }
 
@@ -46,10 +49,12 @@ class NotTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\ValidationException
      *
      * @test
+     *
+     * @param mixed $input
      */
-    public function notNotHaha($v, $input): void
+    public function notNotHaha(Validatable $rule, $input): void
     {
-        $not = new Not($v);
+        $not = new Not($rule);
         $not->assert($input);
     }
 
@@ -58,16 +63,19 @@ class NotTest extends TestCase
      *
      * @test
      */
-    public function notSetName($v): void
+    public function notSetName(Validatable $rule): void
     {
-        $not = new Not($v);
+        $not = new Not($rule);
         $not->setName('Foo');
 
         self::assertEquals('Foo', $not->getName());
-        self::assertEquals('Foo', $v->getName());
+        self::assertEquals('Foo', $rule->getName());
     }
 
-    public function providerForValidNot()
+    /**
+     * @return mixed[][]
+     */
+    public function providerForValidNot(): array
     {
         return [
             [new IntVal(), ''],
@@ -81,7 +89,10 @@ class NotTest extends TestCase
         ];
     }
 
-    public function providerForInvalidNot()
+    /**
+     * @return mixed[][]
+     */
+    public function providerForInvalidNot(): array
     {
         return [
             [new IntVal(), 123],
@@ -91,7 +102,10 @@ class NotTest extends TestCase
         ];
     }
 
-    public function providerForSetName()
+    /**
+     * @return Validatable[][]
+     */
+    public function providerForSetName(): array
     {
         return [
             [new IntVal()],

@@ -39,7 +39,7 @@ abstract class RuleTestCase extends TestCase
      *
      * @api
      *
-     * @return array[]
+     * @return mixed[][]
      */
     abstract public function providerForValidInput(): array;
 
@@ -51,14 +51,12 @@ abstract class RuleTestCase extends TestCase
      *
      * @api
      *
-     * @return array[]
+     * @return mixed[][]
      */
     abstract public function providerForInvalidInput(): array;
 
     /**
      * Returns the directory used to store test fixtures.
-     *
-     * @return string
      */
     public function getFixtureDirectory(): string
     {
@@ -69,11 +67,6 @@ abstract class RuleTestCase extends TestCase
      * Create a mock of a Validatable.
      *
      * @api
-     *
-     * @param bool $expectedResult
-     * @param string $mockClassName
-     *
-     * @return Validatable
      */
     public function createValidatableMock(bool $expectedResult, string $mockClassName = ''): Validatable
     {
@@ -134,7 +127,6 @@ abstract class RuleTestCase extends TestCase
      *
      * @dataProvider providerForValidInput
      *
-     * @param Validatable $validator
      * @param mixed       $input
      */
     public function shouldValidateValidInput(Validatable $validator, $input): void
@@ -147,7 +139,6 @@ abstract class RuleTestCase extends TestCase
      *
      * @dataProvider providerForInvalidInput
      *
-     * @param Validatable $validator
      * @param mixed       $input
      */
     public function shouldValidateInvalidInput(Validatable $validator, $input): void
@@ -155,11 +146,17 @@ abstract class RuleTestCase extends TestCase
         self::assertInvalidInput($validator, $input);
     }
 
+    /**
+     * @param mixed $input
+     */
     public static function assertValidInput(Validatable $rule, $input): void
     {
         self::assertTrue($rule->validate($input));
     }
 
+    /**
+     * @param mixed $input
+     */
     public static function assertInvalidInput(Validatable $rule, $input): void
     {
         self::assertFalse($rule->validate($input));

@@ -26,17 +26,15 @@ use Respect\Validation\Validatable;
  */
 final class Attribute extends AbstractRelated
 {
-    public function __construct(string $reference, Validatable $validator = null, $mandatory = true)
+    public function __construct(string $reference, Validatable $validator = null, bool $mandatory = true)
     {
         parent::__construct($reference, $validator, $mandatory);
     }
 
     /**
-     * @param object $input
+     * {@inheritdoc}
      *
      * @throws ReflectionException
-     *
-     * @return mixed
      */
     public function getReferenceValue($input)
     {
@@ -47,7 +45,7 @@ final class Attribute extends AbstractRelated
     }
 
     /**
-     * @param object $input
+     * {@inheritdoc}
      */
     public function hasReference($input): bool
     {

@@ -22,6 +22,9 @@ class Optional extends AbstractWrapper
 {
     use CanValidateUndefined;
 
+    /**
+     * {@inheritdoc}
+     */
     public function assert($input): void
     {
         if ($this->isUndefined($input)) {
@@ -31,6 +34,9 @@ class Optional extends AbstractWrapper
         parent::assert($input);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function check($input): void
     {
         if ($this->isUndefined($input)) {
@@ -40,6 +46,9 @@ class Optional extends AbstractWrapper
         parent::check($input);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if ($this->isUndefined($input)) {

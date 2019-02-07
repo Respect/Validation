@@ -33,8 +33,6 @@ final class Yes extends AbstractRule
 
     /**
      * Initializes the rule.
-     *
-     * @param bool $useLocale
      */
     public function __construct(bool $useLocale = false)
     {

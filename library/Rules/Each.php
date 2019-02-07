@@ -37,8 +37,6 @@ final class Each extends AbstractRule
 
     /**
      * Initializes the constructor.
-     *
-     * @param Validatable $rule
      */
     public function __construct(Validatable $rule)
     {

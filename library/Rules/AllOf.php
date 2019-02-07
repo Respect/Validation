@@ -22,6 +22,9 @@ use Respect\Validation\Exceptions\GroupedValidationException;
  */
 class AllOf extends AbstractComposite
 {
+    /**
+     * {@inheritdoc}
+     */
     public function assert($input): void
     {
         $exceptions = $this->getAllThrownExceptions($input);
@@ -41,6 +44,9 @@ class AllOf extends AbstractComposite
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function check($input): void
     {
         foreach ($this->getRules() as $rule) {
@@ -48,6 +54,9 @@ class AllOf extends AbstractComposite
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         foreach ($this->getRules() as $rule) {

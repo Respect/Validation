@@ -19,8 +19,14 @@ namespace Respect\Validation\Rules;
  */
 class Sorted extends AbstractRule
 {
+    /**
+     * @var callable
+     */
     public $fn = null;
 
+    /**
+     * @var bool
+     */
     public $ascending = true;
 
     public function __construct(callable $fn = null, bool $ascending = true)
@@ -31,6 +37,9 @@ class Sorted extends AbstractRule
         $this->ascending = $ascending;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         $count = count($input);

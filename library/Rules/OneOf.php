@@ -22,6 +22,9 @@ use Respect\Validation\Exceptions\ValidationException;
  */
 class OneOf extends AbstractComposite
 {
+    /**
+     * {@inheritdoc}
+     */
     public function assert($input): void
     {
         $validators = $this->getRules();
@@ -37,6 +40,9 @@ class OneOf extends AbstractComposite
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         $rulesPassedCount = 0;
@@ -51,6 +57,9 @@ class OneOf extends AbstractComposite
         return 1 === $rulesPassedCount;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function check($input): void
     {
         $exceptions = [];

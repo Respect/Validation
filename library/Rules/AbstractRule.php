@@ -25,15 +25,27 @@ use Respect\Validation\Validatable;
  */
 abstract class AbstractRule implements Validatable
 {
+    /**
+     * @var string|null
+     */
     protected $name;
 
+    /**
+     * @var string|null
+     */
     protected $template;
 
-    public function __invoke($input)
+    /**
+     * @param mixed$input
+     */
+    public function __invoke($input): bool
     {
         return $this->validate($input);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function assert($input): void
     {
         if ($this->validate($input)) {
@@ -43,21 +55,33 @@ abstract class AbstractRule implements Validatable
         throw $this->reportError($input);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function check($input): void
     {
         $this->assert($input);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function reportError($input, array $extraParams = []): ValidationException
     {
         return Factory::getDefaultInstance()->exception($this, $input, $extraParams);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setName(string $name): Validatable
     {
         $this->name = $name;
@@ -65,6 +89,9 @@ abstract class AbstractRule implements Validatable
         return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setTemplate(string $template): Validatable
     {
         $this->template = $template;

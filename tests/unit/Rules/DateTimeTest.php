@@ -91,6 +91,9 @@ final class DateTimeTest extends RuleTestCase
         self::assertSame($format, $exception->getParam('format'));
     }
 
+    /**
+     * @return mixed[][]
+     */
     public function providerForDateTimeWithTimezone(): array
     {
         return [
@@ -112,10 +115,6 @@ final class DateTimeTest extends RuleTestCase
      * @test
      *
      * @dataProvider providerForDateTimeWithTimezone
-     *
-     * @param string $format
-     * @param string $input
-     * @param string $timezone
      */
     public function shouldValidateNoMatterTimezone(string $format, string $input, string $timezone): void
     {

@@ -34,9 +34,9 @@ class VowelTest extends TestCase
      *
      * @test
      */
-    public function validDataWithVowelsShouldReturnTrue($validVowels, $additional = ''): void
+    public function validDataWithVowelsShouldReturnTrue(string $validVowels): void
     {
-        $validator = new Vowel($additional);
+        $validator = new Vowel();
         self::assertTrue($validator->validate($validVowels));
     }
 
@@ -45,10 +45,12 @@ class VowelTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\VowelException
      *
      * @test
+     *
+     * @param mixed $invalidVowels
      */
-    public function invalidVowelsShouldFailAndThrowVowelException($invalidVowels, $additional = ''): void
+    public function invalidVowelsShouldFailAndThrowVowelException($invalidVowels): void
     {
-        $validator = new Vowel($additional);
+        $validator = new Vowel();
         self::assertFalse($validator->validate($invalidVowels));
         $validator->assert($invalidVowels);
     }
@@ -58,13 +60,16 @@ class VowelTest extends TestCase
      *
      * @test
      */
-    public function additionalCharsShouldBeRespected($additional, $query): void
+    public function additionalCharsShouldBeRespected(string $additional, string $input): void
     {
         $validator = new Vowel($additional);
-        self::assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($input));
     }
 
-    public function providerAdditionalChars()
+    /**
+     * @return string[][]
+     */
+    public function providerAdditionalChars(): array
     {
         return [
             ['!@#$%^&*(){}', '!@#$%^&*(){} aeo iu'],
@@ -72,7 +77,10 @@ class VowelTest extends TestCase
         ];
     }
 
-    public function providerForValidVowels()
+    /**
+     * @return string[][]
+     */
+    public function providerForValidVowels(): array
     {
         return [
             ['a'],
@@ -87,7 +95,10 @@ class VowelTest extends TestCase
         ];
     }
 
-    public function providerForInvalidVowels()
+    /**
+     * @return mixed[][]
+     */
+    public function providerForInvalidVowels(): array
     {
         return [
             [''],

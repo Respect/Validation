@@ -19,6 +19,9 @@ namespace Respect\Validation\Exceptions;
  */
 class SlugException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a valid slug',

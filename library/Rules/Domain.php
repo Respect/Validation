@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\DomainException;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Validatable;
 
 /**
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
@@ -25,13 +26,23 @@ use Respect\Validation\Exceptions\ValidationException;
  */
 class Domain extends AbstractComposite
 {
+    /**
+     * @var Validatable
+     */
     protected $tld;
 
+    /**
+     * @var Validatable[]
+     */
     protected $checks = [];
 
+    /**
+     * @var AllOf
+     *
+     */
     protected $otherParts;
 
-    public function __construct($tldCheck = true)
+    public function __construct(bool $tldCheck = true)
     {
         $this->checks[] = new NoWhitespace();
         $this->checks[] = new Contains('.');
@@ -52,7 +63,7 @@ class Domain extends AbstractComposite
         parent::__construct();
     }
 
-    public function tldCheck($do = true)
+    public function tldCheck(bool $do = true): void
     {
         if (true === $do) {
             $this->tld = new Tld();
@@ -65,10 +76,11 @@ class Domain extends AbstractComposite
                 new Length(2, null)
             );
         }
-
-        return true;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         foreach ($this->checks as $chk) {
@@ -91,6 +103,9 @@ class Domain extends AbstractComposite
         return true;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function assert($input): void
     {
         $exceptions = [];
@@ -115,7 +130,11 @@ class Domain extends AbstractComposite
         }
     }
 
-    protected function collectAssertException(&$exceptions, $validator, $input): void
+    /**
+     * @param ValidationException[] $exceptions
+     * @param mixed $input
+     */
+    protected function collectAssertException(array &$exceptions, Validatable $validator, $input): void
     {
         try {
             $validator->assert($input);
@@ -124,6 +143,9 @@ class Domain extends AbstractComposite
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function check($input): void
     {
         foreach ($this->checks as $chk) {

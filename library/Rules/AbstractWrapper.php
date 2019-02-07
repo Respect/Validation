@@ -30,8 +30,6 @@ abstract class AbstractWrapper extends AbstractRule
 
     /**
      * Initializes the rule.
-     *
-     * @param Validatable $validatable
      */
     public function __construct(Validatable $validatable)
     {

@@ -46,7 +46,7 @@ final class CallbackTest extends RuleTestCase
         ];
     }
 
-    public function sampleCallbackUsedInsideThisTest()
+    public function sampleCallbackUsedInsideThisTest(): bool
     {
         return true;
     }

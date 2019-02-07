@@ -32,8 +32,6 @@ final class Regex extends AbstractRule
 
     /**
      * Initializes the rule.
-     *
-     * @param string $regex
      */
     public function __construct(string $regex)
     {

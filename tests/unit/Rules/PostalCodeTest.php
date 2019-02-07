@@ -63,14 +63,17 @@ class PostalCodeTest extends TestCase
      *
      * @test
      */
-    public function shouldValidatePatternAccordingToTheDefinedCountryCode($countryCode, $postalCode): void
+    public function shouldValidatePatternAccordingToTheDefinedCountryCode(string $countryCode, string $postalCode): void
     {
         $rule = new PostalCode($countryCode);
 
         self::assertTrue($rule->validate($postalCode));
     }
 
-    public function validPostalCodesProvider()
+    /**
+     * @return string[][]
+     */
+    public function validPostalCodesProvider(): array
     {
         return [
             ['BR', '02179-000'],
@@ -95,8 +98,10 @@ class PostalCodeTest extends TestCase
      *
      * @test
      */
-    public function shouldNotValidatePatternAccordingToTheDefinedCountryCode($countryCode, $postalCode): void
-    {
+    public function shouldNotValidatePatternAccordingToTheDefinedCountryCode(
+        string $countryCode,
+        string $postalCode
+    ): void {
         $rule = new PostalCode($countryCode);
 
         self::assertFalse($rule->validate($postalCode));
@@ -114,7 +119,10 @@ class PostalCodeTest extends TestCase
         $rule->check('02179-000');
     }
 
-    public function invalidPostalCodesProvider()
+    /**
+     * @return string[][]
+     */
+    public function invalidPostalCodesProvider(): array
     {
         return [
             ['BR', '02179'],

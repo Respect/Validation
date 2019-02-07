@@ -22,6 +22,9 @@ use RecursiveIterator;
  */
 class RecursiveExceptionIterator implements RecursiveIterator, Countable
 {
+    /**
+     * @var ArrayIterator|ValidationException[]
+     */
     private $exceptions;
 
     public function __construct(NestedValidationException $parent)
@@ -56,7 +59,7 @@ class RecursiveExceptionIterator implements RecursiveIterator, Countable
         return $this->exceptions->current();
     }
 
-    public function key()
+    public function key(): int
     {
         return $this->exceptions->key();
     }
@@ -71,7 +74,7 @@ class RecursiveExceptionIterator implements RecursiveIterator, Countable
         $this->exceptions->rewind();
     }
 
-    public function valid()
+    public function valid(): bool
     {
         return $this->exceptions->valid();
     }

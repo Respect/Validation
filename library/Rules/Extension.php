@@ -33,8 +33,6 @@ final class Extension extends AbstractRule
 
     /**
      * Initializes the rule.
-     *
-     * @param string $extension
      */
     public function __construct(string $extension)
     {

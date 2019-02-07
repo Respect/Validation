@@ -68,9 +68,6 @@ final class Ip extends AbstractRule
     /**
      * Initializes the rule defining the range and some options for filter_var().
      *
-     * @param string $range
-     * @param int|null $options
-     *
      * @throws ComponentException In case the range is invalid
      */
     public function __construct(string $range = '*', int $options = null)

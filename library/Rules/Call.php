@@ -41,9 +41,6 @@ final class Call extends AbstractRule
 
     /**
      * Initializes the rule with the callable to be executed after the input is passed.
-     *
-     * @param callable $callable
-     * @param Validatable $rule
      */
     public function __construct(callable $callable, Validatable $rule)
     {
@@ -101,6 +98,9 @@ final class Call extends AbstractRule
         return true;
     }
 
+    /**
+     * @param mixed $input
+     */
     private function setErrorHandler($input): void
     {
         set_error_handler(function () use ($input): void {

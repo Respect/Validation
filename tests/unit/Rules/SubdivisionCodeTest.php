@@ -57,7 +57,10 @@ class SubdivisionCodeTest extends TestCase
         self::assertAttributeEquals($countryCode, 'countryCode', $countrySubdivision);
     }
 
-    public function providerForValidSubdivisionCodeInformation()
+    /**
+     * @return mixed[][]
+     */
+    public function providerForValidSubdivisionCodeInformation(): array
     {
         return [
             ['AQ',  null],
@@ -73,14 +76,17 @@ class SubdivisionCodeTest extends TestCase
      *
      * @test
      */
-    public function shouldValidateValidSubdivisionCodeInformation($countryCode, $input): void
+    public function shouldValidateValidSubdivisionCodeInformation(string $countryCode, ?string $input): void
     {
         $countrySubdivision = new SubdivisionCode($countryCode);
 
         self::assertTrue($countrySubdivision->validate($input));
     }
 
-    public function providerForInvalidSubdivisionCodeInformation()
+    /**
+     * @return mixed[][]
+     */
+    public function providerForInvalidSubdivisionCodeInformation(): array
     {
         return [
             ['BR',  'CA'],
@@ -93,8 +99,10 @@ class SubdivisionCodeTest extends TestCase
      * @dataProvider providerForInvalidSubdivisionCodeInformation
      *
      * @test
+     *
+     * @param mixed $input
      */
-    public function shouldNotValidateInvalidSubdivisionCodeInformation($countryCode, $input): void
+    public function shouldNotValidateInvalidSubdivisionCodeInformation(string $countryCode, $input): void
     {
         $countrySubdivision = new SubdivisionCode($countryCode);
 

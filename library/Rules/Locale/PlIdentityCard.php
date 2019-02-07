@@ -24,6 +24,9 @@ use Respect\Validation\Rules\AbstractRule;
  */
 class PlIdentityCard extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (!preg_match('/^[A-Z0-9]{9}$/', $input)) {

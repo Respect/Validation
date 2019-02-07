@@ -20,6 +20,9 @@ class OptionalException extends ValidationException
 {
     public const NAMED = 'named';
 
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => 'The value must be optional',

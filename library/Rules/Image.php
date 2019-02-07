@@ -35,8 +35,6 @@ final class Image extends AbstractRule
 
     /**
      * Initializes the rule.
-     *
-     * @param finfo|null $fileInfo
      */
     public function __construct(finfo $fileInfo = null)
     {

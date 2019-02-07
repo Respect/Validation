@@ -44,8 +44,8 @@ class Size extends AbstractRule
     public $maxValue;
 
     /**
-     * @param string $minSize
-     * @param string $maxSize
+     * @param string|int|null $minSize
+     * @param string|int|null $maxSize
      */
     public function __construct($minSize = null, $maxSize = null)
     {
@@ -59,8 +59,6 @@ class Size extends AbstractRule
      * @todo Move it to a trait
      *
      * @param mixed $size
-     *
-     * @return float
      */
     private function toBytes($size): float
     {
@@ -81,11 +79,6 @@ class Size extends AbstractRule
         return (float) $value;
     }
 
-    /**
-     * @param float $size
-     *
-     * @return bool
-     */
     private function isValidSize(float $size): bool
     {
         if (null !== $this->minValue && null !== $this->maxValue) {

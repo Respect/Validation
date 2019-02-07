@@ -20,6 +20,9 @@ class KeyValueException extends ValidationException
 {
     public const COMPONENT = 'component';
 
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => 'Key {{name}} must be present',

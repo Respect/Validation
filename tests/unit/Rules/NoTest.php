@@ -30,14 +30,17 @@ class NoTest extends TestCase
      *
      * @test
      */
-    public function shouldValidatePatternAccordingToTheDefinedLocale($input): void
+    public function shouldValidatePatternAccordingToTheDefinedLocale(string $input): void
     {
         $rule = new No();
 
         self::assertTrue($rule->validate($input));
     }
 
-    public function validNoProvider()
+    /**
+     * @return string[][]
+     */
+    public function validNoProvider(): array
     {
         return [
             ['N'],
@@ -54,14 +57,17 @@ class NoTest extends TestCase
      *
      * @test
      */
-    public function shouldNotValidatePatternAccordingToTheDefinedLocale($input): void
+    public function shouldNotValidatePatternAccordingToTheDefinedLocale(string $input): void
     {
         $rule = new No();
 
         self::assertFalse($rule->validate($input));
     }
 
-    public function invalidNoProvider()
+    /**
+     * @return string[][]
+     */
+    public function invalidNoProvider(): array
     {
         return [
             ['Donnot'],

@@ -32,7 +32,7 @@ class ValidationException extends InvalidArgumentException implements Exception
     /**
      * Contains the default templates for exception message.
      *
-     * @var array
+     * @var string[][]
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -59,7 +59,7 @@ class ValidationException extends InvalidArgumentException implements Exception
     private $mode = self::MODE_DEFAULT;
 
     /**
-     * @var array
+     * @var mixed[]
      */
     private $params = [];
 
@@ -73,6 +73,10 @@ class ValidationException extends InvalidArgumentException implements Exception
      */
     private $template;
 
+    /**
+     * @param mixed $input
+     * @param mixed[] $params
+     */
     public function __construct($input, string $id, array $params, callable $translator)
     {
         $this->input = $input;
@@ -89,12 +93,18 @@ class ValidationException extends InvalidArgumentException implements Exception
         return $this->id;
     }
 
+    /**
+     * @return mixed[]
+     */
     public function getParams(): array
     {
         return $this->params;
     }
 
-    public function getParam($name)
+    /**
+     * @return mixed|null
+     */
+    public function getParam(string $name)
     {
         return $this->params[$name] ?? null;
     }
@@ -111,6 +121,9 @@ class ValidationException extends InvalidArgumentException implements Exception
         $this->message = $this->createMessage();
     }
 
+    /**
+     * @param mixed[] $params
+     */
     public function updateParams(array $params): void
     {
         $this->params = $params;
@@ -151,7 +164,10 @@ class ValidationException extends InvalidArgumentException implements Exception
         return call_user_func($this->translator, $template);
     }
 
-    private function format($template, array $vars = []): string
+    /**
+     * @param mixed[] $vars
+     */
+    private function format(string $template, array $vars = []): string
     {
         return preg_replace_callback(
             '/{{(\w+)}}/',

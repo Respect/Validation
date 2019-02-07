@@ -34,9 +34,9 @@ class PunctTest extends TestCase
      *
      * @test
      */
-    public function validDataWithPunctShouldReturnTrue($validPunct, $additional = ''): void
+    public function validDataWithPunctShouldReturnTrue(string $validPunct): void
     {
-        $validator = new Punct($additional);
+        $validator = new Punct();
         self::assertTrue($validator->validate($validPunct));
     }
 
@@ -45,10 +45,12 @@ class PunctTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\PunctException
      *
      * @test
+     *
+     * @param mixed $invalidPunct
      */
-    public function invalidPunctShouldFailAndThrowPunctException($invalidPunct, $additional = ''): void
+    public function invalidPunctShouldFailAndThrowPunctException($invalidPunct): void
     {
-        $validator = new Punct($additional);
+        $validator = new Punct();
         self::assertFalse($validator->validate($invalidPunct));
         $validator->assert($invalidPunct);
     }
@@ -58,13 +60,16 @@ class PunctTest extends TestCase
      *
      * @test
      */
-    public function additionalCharsShouldBeRespected($additional, $query): void
+    public function additionalCharsShouldBeRespected(string $additional, string $input): void
     {
         $validator = new Punct($additional);
-        self::assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($input));
     }
 
-    public function providerAdditionalChars()
+    /**
+     * @return string[][]
+     */
+    public function providerAdditionalChars(): array
     {
         return [
             ['abc123 ', '!@#$%^&*(){} abc 123'],
@@ -72,7 +77,10 @@ class PunctTest extends TestCase
         ];
     }
 
-    public function providerForValidPunct()
+    /**
+     * @return string[][]
+     */
+    public function providerForValidPunct(): array
     {
         return [
             ['.'],
@@ -82,7 +90,10 @@ class PunctTest extends TestCase
         ];
     }
 
-    public function providerForInvalidPunct()
+    /**
+     * @return mixed[][]
+     */
+    public function providerForInvalidPunct(): array
     {
         return [
             [''],

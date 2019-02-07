@@ -35,8 +35,6 @@ abstract class AbstractComposite extends AbstractRule
 
     /**
      * Initializes the rule adding other rules to the stack.
-     *
-     * @param Validatable ...$rules
      */
     public function __construct(Validatable ...$rules)
     {
@@ -63,8 +61,6 @@ abstract class AbstractComposite extends AbstractRule
 
     /**
      * Append a rule into the stack of rules.
-     *
-     * @param Validatable $rule
      *
      * @return AbstractComposite
      */

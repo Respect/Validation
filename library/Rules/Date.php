@@ -42,8 +42,6 @@ final class Date extends AbstractRule
     /**
      * Initializes the rule.
      *
-     * @param string $format
-     *
      * @throws ComponentException
      */
     public function __construct(string $format = 'Y-m-d')

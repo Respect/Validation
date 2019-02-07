@@ -49,8 +49,6 @@ final class VideoUrl extends AbstractRule
     /**
      * Create a new instance VideoUrl.
      *
-     * @param string|null $service
-     *
      * @throws ComponentException when the given service is not supported
      */
     public function __construct(string $service = null)

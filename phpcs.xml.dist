@@ -62,6 +62,12 @@
     <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing" />
     <rule ref="SlevomatCodingStandard.Variables.DuplicateAssignmentToVariable" />
     <rule ref="SlevomatCodingStandard.Variables.UselessVariable" />
+    <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
+        <properties>
+            <property name="allAnnotationsAreUseful" value="true" />
+            <property name="enableEachParameterAndReturnInspection" value="true" />
+        </properties>
+    </rule>
     <rule ref="Squiz.PHP.CommentedOutCode" />
     <rule ref="Squiz.WhiteSpace.FunctionSpacing">
         <properties>

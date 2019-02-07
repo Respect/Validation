@@ -31,8 +31,6 @@ abstract class AbstractFilterRule extends AbstractRule
 
     /**
      * Initializes the rule with a list of characters to be ignored by the validation.
-     *
-     * @param string ...$additionalChars
      */
     public function __construct(string ...$additionalChars)
     {

@@ -30,7 +30,7 @@ final class NullableTest extends TestCase
     /**
      * Data provider for not nullable values.
      *
-     * @return array
+     * @return mixed[][]
      */
     public function providerForNotNullable(): array
     {

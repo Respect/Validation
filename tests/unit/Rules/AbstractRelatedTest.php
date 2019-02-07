@@ -25,7 +25,10 @@ use Respect\Validation\Validatable;
  */
 final class AbstractRelatedTest extends TestCase
 {
-    public function providerForOperations()
+    /**
+     * @return string[][]
+     */
+    public function providerForOperations(): array
     {
         return [
             ['validate'],
@@ -51,7 +54,7 @@ final class AbstractRelatedTest extends TestCase
      *
      * @test
      */
-    public function operationsShouldReturnTrueWhenReferenceValidatesItsValue($method): void
+    public function operationsShouldReturnTrueWhenReferenceValidatesItsValue(string $method): void
     {
         $validatableMock = $this->createMock(Validatable::class);
         $validatableMock->expects(self::any())

@@ -19,6 +19,9 @@ namespace Respect\Validation\Exceptions;
  */
 class AnyOfException extends NestedValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => 'At least one of these rules must pass for {{name}}',

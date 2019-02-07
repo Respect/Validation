@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use a;
 use Respect\Validation\Test\TestCase;
 
 /**
@@ -31,26 +32,31 @@ class HexRgbColorTest extends TestCase
      *
      * @test
      */
-    public function hexRgbColorValuesOnlyShouldReturnTrue($validHexRgbColor): void
+    public function hexRgbColorValuesOnlyShouldReturnTrue(string $input): void
     {
         $validator = new HexRgbColor();
 
-        self::assertTrue($validator->validate($validHexRgbColor));
+        self::assertTrue($validator->validate($input));
     }
 
     /**
      * @dataProvider providerForInvalidHexRgbColor
      *
      * @test
+     *
+     * @param mixed $input
      */
-    public function invalidHexRgbColorValuesShouldReturnFalse($invalidHexRgbColor): void
+    public function invalidHexRgbColorValuesShouldReturnFalse($input): void
     {
         $validator = new HexRgbColor();
 
-        self::assertFalse($validator->validate($invalidHexRgbColor));
+        self::assertFalse($validator->validate($input));
     }
 
-    public function providerForValidHexRgbColor()
+    /**
+     * @return string[][]
+     */
+    public function providerForValidHexRgbColor(): array
     {
         return [
             ['#000'],
@@ -63,7 +69,10 @@ class HexRgbColorTest extends TestCase
         ];
     }
 
-    public function providerForInvalidHexRgbColor()
+    /**
+     * @return mixed[][]
+     */
+    public function providerForInvalidHexRgbColor(): array
     {
         return [
             ['#0'],

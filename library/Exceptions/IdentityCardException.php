@@ -19,7 +19,7 @@ namespace Respect\Validation\Exceptions;
 class IdentityCardException extends ValidationException
 {
     /**
-     * @var array
+     * {@inheritdoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

@@ -23,7 +23,7 @@ trait UndefinedProvider
     /**
      * Returns values that are considered as "undefined"
      *
-     * @return array
+     * @return mixed[][]
      */
     public function providerForUndefined(): array
     {
@@ -36,7 +36,7 @@ trait UndefinedProvider
     /**
      * Returns values that are not considered as "undefined"
      *
-     * @return array
+     * @return mixed[][]
      */
     public function providerForNotUndefined(): array
     {

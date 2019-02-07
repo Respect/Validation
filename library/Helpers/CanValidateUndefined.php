@@ -24,8 +24,6 @@ trait CanValidateUndefined
      * Finds whether the value is undefined or not.
      *
      * @param mixed $value
-     *
-     * @return bool
      */
     private function isUndefined($value): bool
     {

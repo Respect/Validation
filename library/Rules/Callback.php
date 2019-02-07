@@ -30,14 +30,13 @@ final class Callback extends AbstractRule
     public $callback;
 
     /**
-     * @var array
+     * @var mixed[]
      */
     public $arguments;
 
     /**
      * Initializes the rule.
      *
-     * @param callable $callback
      * @param mixed ...$arguments
      */
     public function __construct(callable $callback, ...$arguments)

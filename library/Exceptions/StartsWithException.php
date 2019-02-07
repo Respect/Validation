@@ -19,6 +19,9 @@ namespace Respect\Validation\Exceptions;
  */
 class StartsWithException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must start with ({{startValue}})',

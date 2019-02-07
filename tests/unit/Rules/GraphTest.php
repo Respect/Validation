@@ -34,9 +34,9 @@ class GraphTest extends TestCase
      *
      * @test
      */
-    public function validDataWithGraphCharsShouldReturnTrue($validGraph, $additional = ''): void
+    public function validDataWithGraphCharsShouldReturnTrue(string $validGraph): void
     {
-        $validator = new Graph($additional);
+        $validator = new Graph();
         self::assertTrue($validator->validate($validGraph));
     }
 
@@ -45,10 +45,12 @@ class GraphTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\GraphException
      *
      * @test
+     *
+     * @param mixed $invalidGraph
      */
-    public function invalidGraphShouldFailAndThrowGraphException($invalidGraph, $additional = ''): void
+    public function invalidGraphShouldFailAndThrowGraphException($invalidGraph): void
     {
-        $validator = new Graph($additional);
+        $validator = new Graph();
         self::assertFalse($validator->validate($invalidGraph));
         $validator->assert($invalidGraph);
     }
@@ -58,13 +60,16 @@ class GraphTest extends TestCase
      *
      * @test
      */
-    public function additionalCharsShouldBeRespected($additional, $query): void
+    public function additionalCharsShouldBeRespected(string $additional, string $input): void
     {
         $validator = new Graph($additional);
-        self::assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($input));
     }
 
-    public function providerAdditionalChars()
+    /**
+     * @return string[][]
+     */
+    public function providerAdditionalChars(): array
     {
         return [
             [' ', '!@#$%^&*(){} abc 123'],
@@ -72,7 +77,10 @@ class GraphTest extends TestCase
         ];
     }
 
-    public function providerForValidGraph()
+    /**
+     * @return string[][]
+     */
+    public function providerForValidGraph(): array
     {
         return [
             ['LKA#@%.54'],
@@ -83,7 +91,10 @@ class GraphTest extends TestCase
         ];
     }
 
-    public function providerForInvalidGraph()
+    /**
+     * @return mixed[][]
+     */
+    public function providerForInvalidGraph(): array
     {
         return [
             [''],

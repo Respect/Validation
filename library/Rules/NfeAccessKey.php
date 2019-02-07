@@ -22,17 +22,15 @@ use function str_split;
  * Valida chave de acesso de NFe.
  * Mais especificamente, relacionada ao DANFE.
  *
+ * @see Manual de Integração do Contribuinte v4.0.1 (http://www.nfe.fazenda.gov.br)
+ *
  * @author Andrey Knupp Vital <andreykvital@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
 class NfeAccessKey extends AbstractRule
 {
     /**
-     * @see Manual de Integração do Contribuinte v4.0.1 (http://www.nfe.fazenda.gov.br)
-     *
-     * @param string $input access key
-     *
-     * @return bool
+     * {@inheritdoc}
      */
     public function validate($input): bool
     {

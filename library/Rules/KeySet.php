@@ -30,7 +30,7 @@ use function is_array;
 final class KeySet extends AbstractWrapper
 {
     /**
-     * @var array
+     * @var mixed[]
      */
     private $keys;
 
@@ -53,11 +53,7 @@ final class KeySet extends AbstractWrapper
     }
 
     /**
-     * @param Validatable $validatable
-     *
      * @throws ComponentException
-     *
-     * @return Key
      */
     private function getKeyRule(Validatable $validatable): Key
     {
@@ -74,8 +70,6 @@ final class KeySet extends AbstractWrapper
     }
 
     /**
-     * @param Key $rule
-     *
      * @return mixed
      */
     private function getKeyReference(Key $rule)
@@ -84,11 +78,9 @@ final class KeySet extends AbstractWrapper
     }
 
     /**
-     * @param array $input
-     *
-     * @return bool
+     * @param mixed $input
      */
-    private function hasValidStructure($input)
+    private function hasValidStructure($input): bool
     {
         if (!is_array($input)) {
             return false;

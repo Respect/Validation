@@ -39,8 +39,6 @@ final class DateTime extends AbstractRule
 
     /**
      * Initializes the rule.
-     *
-     * @param string|null $format
      */
     public function __construct(string $format = null)
     {

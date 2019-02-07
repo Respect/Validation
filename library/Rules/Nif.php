@@ -67,7 +67,7 @@ final class Nif extends AbstractRule
         return $this->validateDni((int) $number, $control);
     }
 
-    private function validateCif(string $number, string $control)
+    private function validateCif(string $number, string $control): bool
     {
         $code = 0;
         $position = 1;

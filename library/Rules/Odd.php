@@ -25,6 +25,9 @@ use function is_numeric;
  */
 final class Odd extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (!is_numeric($input)) {

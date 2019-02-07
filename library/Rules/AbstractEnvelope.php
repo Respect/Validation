@@ -32,15 +32,14 @@ abstract class AbstractEnvelope extends AbstractRule
     private $validatable;
 
     /**
-     * @var array
+     * @var mixed[]
      */
     private $parameters;
 
     /**
      * Initializes the rule.
      *
-     * @param Validatable $validatable
-     * @param array $parameters
+     * @param mixed[] $parameters
      */
     public function __construct(Validatable $validatable, array $parameters = [])
     {

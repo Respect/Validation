@@ -25,7 +25,7 @@ abstract class AbstractSearcher extends AbstractRule
     use CanValidateUndefined;
 
     /**
-     * @return array
+     * @return mixed[]
      */
     abstract protected function getDataSource(): array;
 

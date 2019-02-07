@@ -195,12 +195,9 @@ final class Validator extends AllOf
     /**
      * Creates a new Validator instance with a rule that was called on the static method.
      *
-     * @param string $ruleName
-     * @param array $arguments
+     * @param mixed[] $arguments
      *
      * @throws ComponentException
-     *
-     * @return self
      */
     public static function __callStatic(string $ruleName, array $arguments): self
     {
@@ -210,12 +207,9 @@ final class Validator extends AllOf
     /**
      * Create a new rule by the name of the method and adds the rule to the chain.
      *
-     * @param string $ruleName
-     * @param array $arguments
+     * @param mixed[] $arguments
      *
      * @throws ComponentException
-     *
-     * @return self
      */
     public function __call(string $ruleName, array $arguments): self
     {
@@ -226,8 +220,6 @@ final class Validator extends AllOf
 
     /**
      * Create instance validator.
-     *
-     * @return Validator
      */
     public static function create(): self
     {

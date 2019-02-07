@@ -42,7 +42,6 @@ final class EndsWith extends AbstractRule
 
     /**
      * @param mixed $endValue
-     * @param bool $identical
      */
     public function __construct($endValue, bool $identical = false)
     {
@@ -62,6 +61,9 @@ final class EndsWith extends AbstractRule
         return $this->validateEquals($input);
     }
 
+    /**
+     * @param mixed $input
+     */
     private function validateEquals($input): bool
     {
         if (is_array($input)) {
@@ -74,6 +76,9 @@ final class EndsWith extends AbstractRule
         return mb_strripos($input, $this->endValue, -1, $encoding) === $endPosition;
     }
 
+    /**
+     * @param mixed $input
+     */
     private function validateIdentical($input): bool
     {
         if (is_array($input)) {

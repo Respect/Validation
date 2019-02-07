@@ -16,6 +16,7 @@ namespace Respect\Validation\Rules;
 use ReflectionClass;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ZendException;
+use Zend\Validator\ValidatorInterface as ZendValidator;
 
 /**
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
@@ -24,13 +25,23 @@ use Respect\Validation\Exceptions\ZendException;
  */
 class Zend extends AbstractRule
 {
+    /**
+     * @var string[]
+     */
     protected $messages = [];
 
+    /**
+     * @var ZendValidator
+     */
     protected $zendValidator;
 
-    public function __construct($validator, $params = [])
+    /**
+     * @param string|ZendValidator $validator
+     * @param mixed[] $params
+     */
+    public function __construct($validator, array $params = [])
     {
-        if (is_object($validator)) {
+        if ($validator instanceof ZendValidator) {
             $this->zendValidator = $validator;
             return;
         }
@@ -39,21 +50,31 @@ class Zend extends AbstractRule
             throw new ComponentException('Invalid Validator Construct');
         }
 
-        if (false === mb_stripos($validator, 'Zend')) {
-            $validator = "Zend\\Validator\\{$validator}";
-        } else {
-            $validator = "\\{$validator}";
-        }
-
-        $zendMirror = new ReflectionClass($validator);
-
-        if ($zendMirror->hasMethod('__construct')) {
-            $this->zendValidator = $zendMirror->newInstanceArgs($params);
-        } else {
-            $this->zendValidator = $zendMirror->newInstance();
-        }
+        $this->zendValidator = $this->createZendValidator($validator, $params);
     }
 
+    /**
+     * @param mixed[] $params
+     */
+    private function createZendValidator(string $name, array $params): ZendValidator
+    {
+        if (false === mb_stripos($name, 'Zend')) {
+            $name = "Zend\\Validator\\{$name}";
+        } else {
+            $name = "\\{$name}";
+        }
+
+        $reflection = new ReflectionClass($name);
+
+        /** @var ZendValidator $validator */
+        $validator = $reflection->newInstanceArgs($params);
+
+        return $validator;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function assert($input): void
     {
         $validator = clone $this->zendValidator;
@@ -74,6 +95,9 @@ class Zend extends AbstractRule
         throw $zendException;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         $validator = clone $this->zendValidator;

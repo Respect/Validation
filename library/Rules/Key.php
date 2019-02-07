@@ -23,7 +23,10 @@ use Respect\Validation\Validatable;
  */
 class Key extends AbstractRelated
 {
-    public function __construct($reference, Validatable $referenceValidator = null, $mandatory = true)
+    /**
+     * @param mixed $reference
+     */
+    public function __construct($reference, Validatable $referenceValidator = null, bool $mandatory = true)
     {
         if (!is_scalar($reference) || '' === $reference) {
             throw new ComponentException('Invalid array key name');
@@ -31,11 +34,17 @@ class Key extends AbstractRelated
         parent::__construct($reference, $referenceValidator, $mandatory);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getReferenceValue($input)
     {
         return $input[$this->reference];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function hasReference($input): bool
     {
         return is_array($input) && array_key_exists($this->reference, $input);

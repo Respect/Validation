@@ -28,7 +28,10 @@ use SplFileInfo;
  */
 class SizeTest extends TestCase
 {
-    public function validSizeProvider()
+    /**
+     * @return mixed[][]
+     */
+    public function validSizeProvider(): array
     {
         return [
             [42, 42],
@@ -44,7 +47,10 @@ class SizeTest extends TestCase
         ];
     }
 
-    public function validFileProvider()
+    /**
+     * @return mixed[][]
+     */
+    public function validFileProvider(): array
     {
         $root = vfsStream::setup();
 
@@ -78,6 +84,9 @@ class SizeTest extends TestCase
      * @dataProvider validSizeProvider
      *
      * @test
+     *
+     * @param mixed $size
+     * @param mixed $bytes
      */
     public function shouldConvertUnitonConstructor($size, $bytes): void
     {
@@ -102,8 +111,12 @@ class SizeTest extends TestCase
      *
      * @test
      */
-    public function shouldValidateFile($filename, $minSize, $maxSize, $expectedValidation): void
-    {
+    public function shouldValidateFile(
+        string $filename,
+        ?string $minSize,
+        ?string $maxSize,
+        bool $expectedValidation
+    ): void {
         $rule = new Size($minSize, $maxSize);
 
         self::assertEquals($expectedValidation, $rule->validate($filename));

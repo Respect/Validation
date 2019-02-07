@@ -26,7 +26,10 @@ use stdClass;
  */
 class OptionalTest extends TestCase
 {
-    public function providerForOptional()
+    /**
+     * @return mixed[][]
+     */
+    public function providerForOptional(): array
     {
         return [
             [null],
@@ -34,7 +37,10 @@ class OptionalTest extends TestCase
         ];
     }
 
-    public function providerForNotOptional()
+    /**
+     * @return mixed[][]
+     */
+    public function providerForNotOptional(): array
     {
         return [
             [1],
@@ -59,6 +65,8 @@ class OptionalTest extends TestCase
      * @dataProvider providerForOptional
      *
      * @test
+     *
+     * @param mixed $input
      */
     public function shouldNotValidateRuleWhenInputIsOptional($input): void
     {
@@ -76,6 +84,8 @@ class OptionalTest extends TestCase
      * @dataProvider providerForNotOptional
      *
      * @test
+     *
+     * @param mixed $input
      */
     public function shouldValidateRuleWhenInputIsNotOptional($input): void
     {

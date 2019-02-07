@@ -44,8 +44,6 @@ final class Uuid extends AbstractRule
     /**
      * Initializes the rule with the desired version.
      *
-     * @param int|null $version
-     *
      * @throws ComponentException when the version is not valid
      */
     public function __construct(int $version = null)

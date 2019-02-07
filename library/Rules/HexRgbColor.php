@@ -19,6 +19,9 @@ namespace Respect\Validation\Rules;
  */
 class HexRgbColor extends Xdigit
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (!is_string($input)) {

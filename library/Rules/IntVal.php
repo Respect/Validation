@@ -27,6 +27,9 @@ use function is_float;
  */
 final class IntVal extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (is_float($input) || is_bool($input)) {

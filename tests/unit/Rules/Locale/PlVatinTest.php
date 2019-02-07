@@ -25,6 +25,9 @@ use stdClass;
  */
 class PlVatinTest extends RuleTestCase
 {
+    /**
+     * {@inheritdoc}
+     */
     public function providerForValidInput(): array
     {
         $rule = new PlVatin();
@@ -36,6 +39,9 @@ class PlVatinTest extends RuleTestCase
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         $rule = new PlVatin();

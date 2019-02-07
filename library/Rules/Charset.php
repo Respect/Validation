@@ -36,8 +36,6 @@ final class Charset extends AbstractRule
     /**
      * Initializes the rule.
      *
-     * @param string ...$charset
-     *
      * @throws ComponentException
      */
     public function __construct(string ...$charset)

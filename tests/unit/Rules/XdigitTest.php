@@ -29,6 +29,9 @@ use Respect\Validation\Test\TestCase;
  */
 class XdigitTest extends TestCase
 {
+    /**
+     * @var Xdigit
+     */
     protected $xdigitsValidator;
 
     protected function setUp(): void
@@ -40,6 +43,8 @@ class XdigitTest extends TestCase
      * @dataProvider providerForXdigit
      *
      * @test
+     *
+     * @param mixed $input
      */
     public function validateValidHexasdecimalDigits($input): void
     {
@@ -53,6 +58,8 @@ class XdigitTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\XdigitException
      *
      * @test
+     *
+     * @param mixed $input
      */
     public function invalidHexadecimalDigitsShouldThrowXdigitException($input): void
     {
@@ -65,13 +72,16 @@ class XdigitTest extends TestCase
      *
      * @test
      */
-    public function additionalCharsShouldBeRespected($additional, $query): void
+    public function additionalCharsShouldBeRespected(string $additional, string $input): void
     {
         $validator = new Xdigit($additional);
-        self::assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($input));
     }
 
-    public function providerAdditionalChars()
+    /**
+     * @return string[][]
+     */
+    public function providerAdditionalChars(): array
     {
         return [
             ['!@#$%^&*(){} ', '!@#$%^&*(){} abc 123'],
@@ -79,7 +89,10 @@ class XdigitTest extends TestCase
         ];
     }
 
-    public function providerForXdigit()
+    /**
+     * @return mixed[][]
+     */
+    public function providerForXdigit(): array
     {
         return [
             ['FFF'],
@@ -90,7 +103,10 @@ class XdigitTest extends TestCase
         ];
     }
 
-    public function providerForNotXdigit()
+    /**
+     * @return mixed[][]
+     */
+    public function providerForNotXdigit(): array
     {
         return [
             [''],

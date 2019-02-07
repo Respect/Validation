@@ -25,7 +25,10 @@ use Respect\Validation\Test\TestCase;
  */
 class AbstractRuleTest extends TestCase
 {
-    public function providerForTrueAndFalse()
+    /**
+     * @return bool[][]
+     */
+    public function providerForTrueAndFalse(): array
     {
         return [
             [true],
@@ -39,7 +42,7 @@ class AbstractRuleTest extends TestCase
      *
      * @test
      */
-    public function magicMethodInvokeCallsValidateWithInput($booleanResult): void
+    public function magicMethodInvokeCallsValidateWithInput(bool $booleanResult): void
     {
         $input = 'something';
 

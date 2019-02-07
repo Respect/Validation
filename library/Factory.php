@@ -91,8 +91,6 @@ final class Factory
 
     /**
      * Define the default instance of the Factory.
-     *
-     * @param Factory $defaultInstance
      */
     public static function setDefaultInstance(self $defaultInstance): void
     {
@@ -101,8 +99,6 @@ final class Factory
 
     /**
      * Returns the default instance of the Factory.
-     *
-     * @return Factory
      */
     public static function getDefaultInstance(): self
     {
@@ -122,12 +118,9 @@ final class Factory
     /**
      * Creates a rule.
      *
-     * @param string $ruleName
-     * @param array $arguments
+     * @param mixed[] $arguments
      *
      * @throws ComponentException
-     *
-     * @return Validatable
      */
     public function rule(string $ruleName, array $arguments = []): Validatable
     {
@@ -150,14 +143,10 @@ final class Factory
     /**
      * Creates an exception.
      *
-     *
-     * @param Validatable $validatable
      * @param mixed $input
-     * @param array $extraParams
+     * @param mixed[] $extraParams
      *
      * @throws ComponentException
-     *
-     * @return ValidationException
      */
     public function exception(Validatable $validatable, $input, array $extraParams = []): ValidationException
     {
@@ -182,14 +171,8 @@ final class Factory
     /**
      * Creates a reflection based on class name.
      *
-     *
-     * @param string $name
-     * @param string $parentName
-     *
      * @throws InvalidClassException
      * @throws ReflectionException
-     *
-     * @return ReflectionClass
      */
     private function createReflectionClass(string $name, string $parentName): ReflectionClass
     {
@@ -210,10 +193,10 @@ final class Factory
      *
      * Ensure namespaces are in the right format and contain the default namespaces.
      *
-     * @param array $namespaces
-     * @param array $defaultNamespaces
+     * @param string[] $namespaces
+     * @param string[] $defaultNamespaces
      *
-     * @return array
+     * @return string[]
      */
     private function filterNamespaces(array $namespaces, array $defaultNamespaces): array
     {
@@ -232,15 +215,11 @@ final class Factory
     /**
      * Creates a Validation exception.
      *
-     * @param string $exceptionName
-     * @param string $id
      * @param mixed $input
-     * @param array $params
+     * @param mixed[] $params
      *
      * @throws InvalidClassException
      * @throws ReflectionException
-     *
-     * @return ValidationException
      */
     private function createValidationException(
         string $exceptionName,
@@ -259,10 +238,7 @@ final class Factory
     }
 
     /**
-     * @param Validatable $validatable
-     * @param ReflectionClass $reflection
-     *
-     * @return array
+     * @return mixed[]
      */
     private function extractPropertiesValues(Validatable $validatable, ReflectionClass $reflection): array
     {

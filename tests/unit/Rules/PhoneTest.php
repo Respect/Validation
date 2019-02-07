@@ -27,6 +27,9 @@ use Respect\Validation\Test\TestCase;
  */
 class PhoneTest extends TestCase
 {
+    /**
+     * @var Phone
+     */
     protected $phoneValidator;
 
     protected function setUp(): void
@@ -39,7 +42,7 @@ class PhoneTest extends TestCase
      *
      * @test
      */
-    public function validPhoneShouldReturnTrue($input): void
+    public function validPhoneShouldReturnTrue(string $input): void
     {
         self::assertTrue($this->phoneValidator->__invoke($input));
         $this->phoneValidator->assert($input);
@@ -52,13 +55,16 @@ class PhoneTest extends TestCase
      *
      * @test
      */
-    public function invalidPhoneShouldThrowPhoneException($input): void
+    public function invalidPhoneShouldThrowPhoneException(string $input): void
     {
         self::assertFalse($this->phoneValidator->__invoke($input));
         $this->phoneValidator->assert($input);
     }
 
-    public function providerForPhone()
+    /**
+     * @return string[][]
+     */
+    public function providerForPhone(): array
     {
         return [
             ['+5-555-555-5555'],
@@ -110,7 +116,10 @@ class PhoneTest extends TestCase
         ];
     }
 
-    public function providerForNotPhone()
+    /**
+     * @return string[][]
+     */
+    public function providerForNotPhone(): array
     {
         return [
             [''],

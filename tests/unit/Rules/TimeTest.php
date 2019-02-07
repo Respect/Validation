@@ -59,6 +59,9 @@ final class TimeTest extends RuleTestCase
         ];
     }
 
+    /**
+     * @return mixed[][]
+     */
     public function invalidFormatsProvider(): array
     {
         return [
@@ -71,8 +74,6 @@ final class TimeTest extends RuleTestCase
      * @test
      *
      * @dataProvider invalidFormatsProvider
-     *
-     * @param string $format
      */
     public function shouldThrowAnExceptionWhenFormatIsNotValid(string $format): void
     {

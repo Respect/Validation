@@ -33,8 +33,6 @@ final class Factor extends AbstractRule
 
     /**
      * Initializes the rule.
-     *
-     * @param int $dividend
      */
     public function __construct(int $dividend)
     {

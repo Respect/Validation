@@ -34,9 +34,9 @@ class SpaceTest extends TestCase
      *
      * @test
      */
-    public function validDataWithSpaceShouldReturnTrue($validSpace, $additional = ''): void
+    public function validDataWithSpaceShouldReturnTrue(string $validSpace): void
     {
-        $validator = new Space($additional);
+        $validator = new Space();
         self::assertTrue($validator->validate($validSpace));
     }
 
@@ -45,10 +45,12 @@ class SpaceTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\SpaceException
      *
      * @test
+     *
+     * @param mixed $invalidSpace
      */
-    public function invalidSpaceShouldFailAndThrowSpaceException($invalidSpace, $additional = ''): void
+    public function invalidSpaceShouldFailAndThrowSpaceException($invalidSpace): void
     {
-        $validator = new Space($additional);
+        $validator = new Space();
         self::assertFalse($validator->validate($invalidSpace));
         $validator->assert($invalidSpace);
     }
@@ -58,13 +60,16 @@ class SpaceTest extends TestCase
      *
      * @test
      */
-    public function additionalCharsShouldBeRespected($additional, $query): void
+    public function additionalCharsShouldBeRespected(string $additional, string $input): void
     {
         $validator = new Space($additional);
-        self::assertTrue($validator->validate($query));
+        self::assertTrue($validator->validate($input));
     }
 
-    public function providerAdditionalChars()
+    /**
+     * @return string[][]
+     */
+    public function providerAdditionalChars(): array
     {
         return [
             ['!@#$%^&*(){}', '!@#$%^&*(){} '],
@@ -72,7 +77,10 @@ class SpaceTest extends TestCase
         ];
     }
 
-    public function providerForValidSpace()
+    /**
+     * @return string[][]
+     */
+    public function providerForValidSpace(): array
     {
         return [
             ["\n"],
@@ -83,7 +91,10 @@ class SpaceTest extends TestCase
         ];
     }
 
-    public function providerForInvalidSpace()
+    /**
+     * @return mixed[][]
+     */
+    public function providerForInvalidSpace(): array
     {
         return [
             [''],

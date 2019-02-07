@@ -88,8 +88,6 @@ final class CreditCard extends AbstractRule
     /**
      * Initializes the rule.
      *
-     * @param string $brand
-     *
      * @throws ComponentException
      */
     public function __construct(string $brand = self::ANY)

@@ -27,6 +27,9 @@ use Respect\Validation\Test\TestCase;
  */
 final class AlwaysInvalidTest extends TestCase
 {
+    /**
+     * {@inheritdoc}
+     */
     public function providerForInvalidInput(): array
     {
         return [
@@ -46,6 +49,8 @@ final class AlwaysInvalidTest extends TestCase
      * @test
      *
      * @dataProvider providerForInvalidInput
+     *
+     * @param mixed $input
      */
     public function itShouldAlwaysBeInvalid($input): void
     {

@@ -28,6 +28,13 @@ use Respect\Validation\Validatable;
  */
 final class AttributeTest extends RuleTestCase
 {
+    public const PROPERTY_VALUE = 'foo';
+
+    /**
+     * @var string
+     */
+    private $bar = self::PROPERTY_VALUE;
+
     /**
      * {@inheritdoc}
      */
@@ -44,7 +51,7 @@ final class AttributeTest extends RuleTestCase
             'attribute is present without extra validator' => [new Attribute('bar'), $obj],
             'private attribute is present without extra validator' => [
                 new Attribute('bar'),
-                $this->objectWithPrivateProperty()
+                $this
             ],
             'attribute is present with extra validator' => [new Attribute('bar', $extraValidator), $obj],
             'non mandatory attribute is not present' => [new Attribute('foo', null, false), $obj],
@@ -70,19 +77,10 @@ final class AttributeTest extends RuleTestCase
             'attribute is absent without extra validator' => [new Attribute('barr'), $obj],
             'private attribute is not valid based on extra validator' => [
                 new Attribute('bar', $extraValidatorMock),
-                $this->objectWithPrivateProperty()
+                $this
             ],
             'value provided is an empty string' => [new Attribute('barr'), ''],
             'validator related to attribute does not validate' => [new Attribute('bar', $extraValidatorMock), $obj],
         ];
-    }
-
-    private function objectWithPrivateProperty()
-    {
-        return new class() {
-            public const PROPERTY_VALUE = 'foo';
-
-            private $bar = self::PROPERTY_VALUE;
-        };
     }
 }

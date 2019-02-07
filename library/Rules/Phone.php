@@ -23,7 +23,7 @@ use function sprintf;
  */
 class Phone extends AbstractRule
 {
-    protected function getPregFormat()
+    protected function getPregFormat(): string
     {
         return sprintf(
             '/^\+?(%1$s)? ?(?(?=\()(\(%2$s\) ?%3$s)|([. -]?(%2$s[. -]*)?%3$s))$/',
@@ -33,6 +33,9 @@ class Phone extends AbstractRule
         );
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (!is_scalar($input)) {

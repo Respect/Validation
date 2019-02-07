@@ -19,6 +19,9 @@ namespace Respect\Validation\Exceptions;
  */
 class GraphException extends FilteredValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must contain only graphical characters',

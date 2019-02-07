@@ -31,7 +31,7 @@ class SlugTest extends TestCase
      *
      * @test
      */
-    public function validSlug($input): void
+    public function validSlug(string $input): void
     {
         $rule = new Slug();
 
@@ -43,14 +43,17 @@ class SlugTest extends TestCase
      *
      * @test
      */
-    public function invalidSlug($input): void
+    public function invalidSlug(string $input): void
     {
         $rule = new Slug();
 
         self::assertFalse($rule->validate($input));
     }
 
-    public function providerValidSlug()
+    /**
+     * @return string[][]
+     */
+    public function providerValidSlug(): array
     {
         return [
             ['o-rato-roeu-o-rei-de-roma'],
@@ -60,7 +63,10 @@ class SlugTest extends TestCase
         ];
     }
 
-    public function providerInvalidSlug()
+    /**
+     * @return string[][]
+     */
+    public function providerInvalidSlug(): array
     {
         return [
             [''],

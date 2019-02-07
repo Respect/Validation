@@ -28,8 +28,6 @@ trait CanValidateIterable
      * Returns whether the value is iterable or not.
      *
      * @param mixed $value
-     *
-     * @return bool
      */
     public function isIterable($value): bool
     {

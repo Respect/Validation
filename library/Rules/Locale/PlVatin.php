@@ -27,6 +27,9 @@ use function str_split;
  */
 final class PlVatin extends AbstractRule
 {
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         if (!is_scalar($input)) {

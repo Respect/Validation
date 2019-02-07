@@ -44,9 +44,6 @@ final class Sf extends AbstractRule
      * Initializes the rule with the Constraint and the Validator.
      *
      * In the the Validator is not defined, tries to create one.
-     *
-     * @param Constraint $constraint
-     * @param ValidatorInterface|null $validator
      */
     public function __construct(Constraint $constraint, ValidatorInterface $validator = null)
     {

@@ -69,6 +69,9 @@ final class DateTest extends RuleTestCase
         ];
     }
 
+    /**
+     * @return string[][]
+     */
     public function validFormatsProvider(): array
     {
         return [

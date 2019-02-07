@@ -40,11 +40,8 @@ final class Base extends AbstractRule
 
     /**
      * Initializes the Base rule.
-     *
-     * @param int $base
-     * @param string $chars
      */
-    public function __construct(int $base, $chars = null)
+    public function __construct(int $base, string $chars = null)
     {
         if (!is_null($chars)) {
             $this->chars = $chars;

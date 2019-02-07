@@ -26,17 +26,37 @@ use function is_scalar;
  */
 abstract class AbstractRelated extends AbstractRule
 {
+    /**
+     * @var bool
+     */
     public $mandatory = true;
 
+    /**
+     * @var mixed
+     */
     public $reference = '';
 
+    /**
+     * @var Validatable|null
+     */
     public $validator;
 
+    /**
+     * @param mixed $input
+     */
     abstract public function hasReference($input): bool;
 
+    /**
+     * @param mixed $input
+     *
+     * @return mixed
+     */
     abstract public function getReferenceValue($input);
 
-    public function __construct($reference, Validatable $validator = null, $mandatory = true)
+    /**
+     * @param mixed $reference
+     */
+    public function __construct($reference, Validatable $validator = null, bool $mandatory = true)
     {
         if (is_scalar($reference)) {
             $this->setName((string) $reference);
@@ -50,6 +70,9 @@ abstract class AbstractRelated extends AbstractRule
         $this->mandatory = $mandatory;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setName(string $name): Validatable
     {
         parent::setName($name);
@@ -61,6 +84,9 @@ abstract class AbstractRelated extends AbstractRule
         return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function assert($input): void
     {
         $hasReference = $this->hasReference($input);
@@ -79,6 +105,9 @@ abstract class AbstractRelated extends AbstractRule
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function check($input): void
     {
         $hasReference = $this->hasReference($input);
@@ -89,6 +118,9 @@ abstract class AbstractRelated extends AbstractRule
         $this->decision('check', $hasReference, $input);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         $hasReference = $this->hasReference($input);
@@ -99,7 +131,10 @@ abstract class AbstractRelated extends AbstractRule
         return $this->decision('validate', $hasReference, $input);
     }
 
-    private function decision(string $type, bool $hasReference, $input)
+    /**
+     * @param mixed $input
+     */
+    private function decision(string $type, bool $hasReference, $input): bool
     {
         return (!$this->mandatory && !$hasReference)
             || (is_null($this->validator)

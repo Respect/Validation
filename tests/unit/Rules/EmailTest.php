@@ -56,8 +56,6 @@ final class EmailTest extends RuleTestCase
 
     /**
      * {@inheritdoc}
-     *
-     * @throws ReflectionException
      */
     public function providerForValidInput(): array
     {
@@ -73,8 +71,6 @@ final class EmailTest extends RuleTestCase
 
     /**
      * {@inheritdoc}
-     *
-     * @throws ReflectionException
      */
     public function providerForInvalidInput(): array
     {
@@ -100,8 +96,6 @@ final class EmailTest extends RuleTestCase
 
     /**
      * @throws ReflectionException
-     *
-     * @return Email
      */
     private function createSutWithoutEmailValidator(): Email
     {

@@ -18,6 +18,9 @@ namespace Respect\Validation\Exceptions;
  */
 class NoException extends ValidationException
 {
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} is not considered as "No"',

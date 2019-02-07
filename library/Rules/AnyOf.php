@@ -23,6 +23,9 @@ use Respect\Validation\Exceptions\ValidationException;
  */
 class AnyOf extends AbstractComposite
 {
+    /**
+     * {@inheritdoc}
+     */
     public function assert($input): void
     {
         $validators = $this->getRules();
@@ -38,6 +41,9 @@ class AnyOf extends AbstractComposite
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function validate($input): bool
     {
         foreach ($this->getRules() as $v) {
@@ -49,6 +55,9 @@ class AnyOf extends AbstractComposite
         return false;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function check($input): void
     {
         foreach ($this->getRules() as $v) {

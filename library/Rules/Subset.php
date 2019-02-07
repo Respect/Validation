@@ -25,14 +25,14 @@ use function is_array;
 final class Subset extends AbstractRule
 {
     /**
-     * @var array
+     * @var mixed[]
      */
     private $superset;
 
     /**
      * Initializes the rule.
      *
-     * @param array $superset
+     * @param mixed[] $superset
      */
     public function __construct(array $superset)
     {

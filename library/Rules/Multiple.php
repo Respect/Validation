@@ -25,9 +25,6 @@ final class Multiple extends AbstractRule
      */
     public $multipleOf;
 
-    /**
-     * @param int $multipleOf
-     */
     public function __construct(int $multipleOf)
     {
         $this->multipleOf = $multipleOf;

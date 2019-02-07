@@ -62,10 +62,8 @@ trait CanCompareValues
      *
      * @param mixed $left
      * @param mixed $right
-     *
-     * @return bool
      */
-    private function isAbleToCompareValues($left, $right)
+    private function isAbleToCompareValues($left, $right): bool
     {
         return is_scalar($left) === is_scalar($right);
     }

@@ -59,8 +59,6 @@ abstract class AbstractComparison extends AbstractRule
      *
      * @param mixed $left
      * @param mixed $right
-     *
-     * @return bool
      */
     abstract protected function compare($left, $right): bool;
 }

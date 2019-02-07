@@ -22,6 +22,9 @@ final class NotEmptyException extends ValidationException
 {
     public const NAMED = 'named';
 
+    /**
+     * {@inheritdoc}
+     */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => 'The value must not be empty',
@@ -33,6 +36,9 @@ final class NotEmptyException extends ValidationException
         ],
     ];
 
+    /**
+     * {@inheritdoc}
+     */
     protected function chooseTemplate(): string
     {
         if ($this->getParam('input') || $this->getParam('name')) {

@@ -27,9 +27,10 @@ use Respect\Validation\Test\TestCase;
  */
 class CheckExceptionsTest extends TestCase
 {
-    protected $deprecateds = [];
-
-    public function provideListOfRuleNames()
+    /**
+     * @return string[][]
+     */
+    public function provideListOfRuleNames(): array
     {
         $rulesDirectory = 'library/Rules';
         $rulesDirectoryIterator = new DirectoryIterator($rulesDirectory);
@@ -40,9 +41,7 @@ class CheckExceptionsTest extends TestCase
             }
 
             $ruleName = mb_substr($fileInfo->getBasename(), 0, -4);
-            $ruleIsDeprecated = in_array($ruleName, $this->deprecateds);
-            $isRuleClassFile = (bool) ('php' !== $fileInfo->getExtension());
-            if ($ruleIsDeprecated || $isRuleClassFile) {
+            if (('php' !== $fileInfo->getExtension())) {
                 continue;
             }
 
@@ -63,7 +62,7 @@ class CheckExceptionsTest extends TestCase
      *
      * @test
      */
-    public function ruleHasAnExceptionWhichHasValidApi($ruleName): void
+    public function ruleHasAnExceptionWhichHasValidApi(string $ruleName): void
     {
         $exceptionClass = 'Respect\\Validation\\Exceptions\\'.$ruleName.'Exception';
         self::assertTrue(
