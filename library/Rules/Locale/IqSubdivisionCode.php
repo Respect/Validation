@@ -32,24 +32,24 @@ final class IqSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AN', // Al Anbar
-           'AR', // Arbīl
-           'BA', // Al Basrah
-           'BB', // Babil
-           'BG', // Baghdad
-           'DA', // Dahūk
-           'DI', // Diyala
-           'DQ', // Dhi Qar
-           'KA', // Al Karbala
-           'KI', // Kirkūk
-           'MA', // Maysan
-           'MU', // Al Muthanna
-           'NA', // An Najaf
-           'NI', // Ninawa
-           'QA', // Al Qadisyah
-           'SD', // Salah ad Din
-           'SU', // As Sulaymānīyah
-           'WA', // Wasit
+            'AN', // Al Anbar
+            'AR', // Arbīl
+            'BA', // Al Basrah
+            'BB', // Babil
+            'BG', // Baghdad
+            'DA', // Dahūk
+            'DI', // Diyala
+            'DQ', // Dhi Qar
+            'KA', // Al Karbala
+            'KI', // Kirkūk
+            'MA', // Maysan
+            'MU', // Al Muthanna
+            'NA', // An Najaf
+            'NI', // Ninawa
+            'QA', // Al Qadisyah
+            'SD', // Salah ad Din
+            'SU', // As Sulaymānīyah
+            'WA', // Wasit
         ];
     }
 }

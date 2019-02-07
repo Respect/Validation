@@ -32,20 +32,20 @@ final class SvSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AH', // Ahuachapan
-           'CA', // Cabanas
-           'CH', // Chalatenango
-           'CU', // Cuscatlan
-           'LI', // La Libertad
-           'MO', // Morazan
-           'PA', // La Paz
-           'SA', // Santa Ana
-           'SM', // San Miguel
-           'SO', // Sonsonate
-           'SS', // San Salvador
-           'SV', // San Vicente
-           'UN', // La Union
-           'US', // Usulutan
+            'AH', // Ahuachapan
+            'CA', // Cabanas
+            'CH', // Chalatenango
+            'CU', // Cuscatlan
+            'LI', // La Libertad
+            'MO', // Morazan
+            'PA', // La Paz
+            'SA', // Santa Ana
+            'SM', // San Miguel
+            'SO', // Sonsonate
+            'SS', // San Salvador
+            'SV', // San Vicente
+            'UN', // La Union
+            'US', // Usulutan
         ];
     }
 }

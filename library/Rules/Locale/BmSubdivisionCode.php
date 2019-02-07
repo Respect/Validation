@@ -32,17 +32,17 @@ final class BmSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'DS', // Devonshire
-           'GC', // Saint George
-           'HA', // Hamilton
-           'HC', // Hamilton City
-           'PB', // Pembroke
-           'PG', // Paget
-           'SA', // Sandys
-           'SG', // Saint George's
-           'SH', // Southampton
-           'SM', // Smith's
-           'WA', // Warwick
+            'DS', // Devonshire
+            'GC', // Saint George
+            'HA', // Hamilton
+            'HC', // Hamilton City
+            'PB', // Pembroke
+            'PG', // Paget
+            'SA', // Sandys
+            'SG', // Saint George's
+            'SH', // Southampton
+            'SM', // Smith's
+            'WA', // Warwick
         ];
     }
 }

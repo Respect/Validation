@@ -37,9 +37,12 @@ final class CallbackTest extends RuleTestCase
             [new Callback('is_a', 'stdClass'), new \stdClass()],
             [new Callback([$this, 'thisIsASampleCallbackUsedInsideThisTest']), 'test'],
             [new Callback('is_string'), 'test'],
-            [new Callback(function () {
-                return true;
-            }), 'wpoiur'],
+            [
+                new Callback(function () {
+                    return true;
+                }),
+                'wpoiur'
+            ],
         ];
     }
 
@@ -54,12 +57,18 @@ final class CallbackTest extends RuleTestCase
     public function providerForInvalidInput(): array
     {
         return [
-            [new Callback(function () {
-                return false;
-            }), 'w poiur'],
-            [new Callback(function () {
-                return false;
-            }), ''],
+            [
+                new Callback(function () {
+                    return false;
+                }),
+                'w poiur'
+            ],
+            [
+                new Callback(function () {
+                    return false;
+                }),
+                ''
+            ],
         ];
     }
 }

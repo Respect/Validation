@@ -32,9 +32,9 @@ final class KmSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'A', // Anjouan
-           'G', // Grande Comore
-           'M', // Moheli
+            'A', // Anjouan
+            'G', // Grande Comore
+            'M', // Moheli
         ];
     }
 }

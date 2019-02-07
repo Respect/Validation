@@ -32,14 +32,14 @@ final class NeSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           '1', // Agadez
-           '2', // Diffa
-           '3', // Dosso
-           '4', // Maradi
-           '5', // Tahoua
-           '6', // Tillabéri
-           '7', // Zinder
-           '8', // Niamey
+            '1', // Agadez
+            '2', // Diffa
+            '3', // Dosso
+            '4', // Maradi
+            '5', // Tahoua
+            '6', // Tillabéri
+            '7', // Zinder
+            '8', // Niamey
         ];
     }
 }

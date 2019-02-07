@@ -32,9 +32,9 @@ final class ShSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AC', // Ascension
-           'HL', // Saint Helena
-           'TA', // Tristan da Cunha
+            'AC', // Ascension
+            'HL', // Saint Helena
+            'TA', // Tristan da Cunha
         ];
     }
 }

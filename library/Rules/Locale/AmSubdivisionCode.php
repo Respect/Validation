@@ -32,17 +32,17 @@ final class AmSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AG', // Aragatsotn
-           'AR', // Ararat
-           'AV', // Armavir
-           'ER', // Yerevan
-           'GR', // Geghark'unik'
-           'KT', // Kotayk'
-           'LO', // Lorri
-           'SH', // Shirak
-           'SU', // Syunik'
-           'TV', // Tavush
-           'VD', // Vayots' Dzor
+            'AG', // Aragatsotn
+            'AR', // Ararat
+            'AV', // Armavir
+            'ER', // Yerevan
+            'GR', // Geghark'unik'
+            'KT', // Kotayk'
+            'LO', // Lorri
+            'SH', // Shirak
+            'SU', // Syunik'
+            'TV', // Tavush
+            'VD', // Vayots' Dzor
         ];
     }
 }

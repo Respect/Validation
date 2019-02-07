@@ -32,12 +32,12 @@ final class CySubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           '01', // Lefkosía
-           '02', // Lemesós
-           '03', // Lárnaka
-           '04', // Ammóchostos
-           '05', // Páfos
-           '06', // Kerýneia
+            '01', // Lefkosía
+            '02', // Lemesós
+            '03', // Lárnaka
+            '04', // Ammóchostos
+            '05', // Páfos
+            '06', // Kerýneia
         ];
     }
 }

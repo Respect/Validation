@@ -32,17 +32,17 @@ final class KpSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           '01', // P'yongyang Special City
-           '02', // P'yongan-namdo
-           '03', // P'yongan-bukto
-           '04', // Chagang-do
-           '05', // Hwanghae-namdo
-           '06', // Hwanghae-bukto
-           '07', // Kangwon-do
-           '08', // Hamgyong-namdo
-           '09', // Hamgyong-bukto
-           '10', // Ryanggang-do (Yanggang-do)
-           '13', // Nasŏn (Najin-Sŏnbong)
+            '01', // P'yongyang Special City
+            '02', // P'yongan-namdo
+            '03', // P'yongan-bukto
+            '04', // Chagang-do
+            '05', // Hwanghae-namdo
+            '06', // Hwanghae-bukto
+            '07', // Kangwon-do
+            '08', // Hamgyong-namdo
+            '09', // Hamgyong-bukto
+            '10', // Ryanggang-do (Yanggang-do)
+            '13', // Nasŏn (Najin-Sŏnbong)
         ];
     }
 }

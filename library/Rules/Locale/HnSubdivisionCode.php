@@ -32,24 +32,24 @@ final class HnSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AT', // Atlantida
-           'CH', // Choluteca
-           'CL', // Colon
-           'CM', // Comayagua
-           'CP', // Copan
-           'CR', // Cortes
-           'EP', // El Paraiso
-           'FM', // Francisco Morazan
-           'GD', // Gracias a Dios
-           'IB', // Islas de la Bahia (Bay Islands)
-           'IN', // Intibuca
-           'LE', // Lempira
-           'LP', // La Paz
-           'OC', // Ocotepeque
-           'OL', // Olancho
-           'SB', // Santa Barbara
-           'VA', // Valle
-           'YO', // Yoro
+            'AT', // Atlantida
+            'CH', // Choluteca
+            'CL', // Colon
+            'CM', // Comayagua
+            'CP', // Copan
+            'CR', // Cortes
+            'EP', // El Paraiso
+            'FM', // Francisco Morazan
+            'GD', // Gracias a Dios
+            'IB', // Islas de la Bahia (Bay Islands)
+            'IN', // Intibuca
+            'LE', // Lempira
+            'LP', // La Paz
+            'OC', // Ocotepeque
+            'OL', // Olancho
+            'SB', // Santa Barbara
+            'VA', // Valle
+            'YO', // Yoro
         ];
     }
 }

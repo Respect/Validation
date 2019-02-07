@@ -32,13 +32,13 @@ final class AeSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AJ', // 'Ajman
-           'AZ', // Abu Zaby
-           'DU', // Dubayy
-           'FU', // Al Fujayrah
-           'RK', // R'as al Khaymah
-           'SH', // Ash Shariqah
-           'UQ', // Umm al Qaywayn
+            'AJ', // 'Ajman
+            'AZ', // Abu Zaby
+            'DU', // Dubayy
+            'FU', // Al Fujayrah
+            'RK', // R'as al Khaymah
+            'SH', // Ash Shariqah
+            'UQ', // Umm al Qaywayn
         ];
     }
 }

@@ -32,22 +32,22 @@ final class PlSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'DS', // Dolnoslaskie
-           'KP', // Kujawsko-Pomorskie
-           'LB', // Lubuskie
-           'LD', // Lodzkie
-           'LU', // Lubelskie
-           'MA', // Malopolskie
-           'MZ', // Mazowieckie
-           'OP', // Opolskie
-           'PD', // Podlaskie
-           'PK', // Podkarpackie
-           'PM', // Pomorskie
-           'SK', // Swietokrzyskie
-           'SL', // Slaskie
-           'WN', // Warminsko-Mazurskie
-           'WP', // Wielkopolskie
-           'ZP', // Zachodniopomorskie
+            'DS', // Dolnoslaskie
+            'KP', // Kujawsko-Pomorskie
+            'LB', // Lubuskie
+            'LD', // Lodzkie
+            'LU', // Lubelskie
+            'MA', // Malopolskie
+            'MZ', // Mazowieckie
+            'OP', // Opolskie
+            'PD', // Podlaskie
+            'PK', // Podkarpackie
+            'PM', // Pomorskie
+            'SK', // Swietokrzyskie
+            'SL', // Slaskie
+            'WN', // Warminsko-Mazurskie
+            'WP', // Wielkopolskie
+            'ZP', // Zachodniopomorskie
         ];
     }
 }

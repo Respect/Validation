@@ -32,12 +32,12 @@ final class VcSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           '01', // Charlotte
-           '02', // Saint Andrew
-           '03', // Saint David
-           '04', // Saint George
-           '05', // Saint Patrick
-           '06', // Grenadines
+            '01', // Charlotte
+            '02', // Saint Andrew
+            '03', // Saint David
+            '04', // Saint George
+            '05', // Saint Patrick
+            '06', // Grenadines
         ];
     }
 }

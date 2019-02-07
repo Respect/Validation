@@ -32,16 +32,16 @@ final class HtSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AR', // Artibonite
-           'CE', // Centre
-           'GA', // Grand'Anse
-           'ND', // Nord
-           'NE', // Nord-Est
-           'NI', // Nippes
-           'NO', // Nord-Ouest
-           'OU', // Ouest
-           'SD', // Sud
-           'SE', // Sud-Est
+            'AR', // Artibonite
+            'CE', // Centre
+            'GA', // Grand'Anse
+            'ND', // Nord
+            'NE', // Nord-Est
+            'NI', // Nippes
+            'NO', // Nord-Ouest
+            'OU', // Ouest
+            'SD', // Sud
+            'SE', // Sud-Est
         ];
     }
 }

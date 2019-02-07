@@ -32,8 +32,8 @@ final class StSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'P', // Principe
-           'S', // Sao Tome
+            'P', // Principe
+            'S', // Sao Tome
         ];
     }
 }

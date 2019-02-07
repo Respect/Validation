@@ -32,32 +32,32 @@ final class ChSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AG', // Aargau
-           'AI', // Appenzell Innerhoden
-           'AR', // Appenzell Ausserrhoden
-           'BE', // Bern
-           'BL', // Basel-Landschaft
-           'BS', // Basel-Stadt
-           'FR', // Fribourg
-           'GE', // Geneva
-           'GL', // Glarus
-           'GR', // Graubunden
-           'JU', // Jura
-           'LU', // Lucerne
-           'NE', // Neuchâtel
-           'NW', // Nidwalden
-           'OW', // Obwalden
-           'SG', // St. Gallen
-           'SH', // Schaffhausen
-           'SO', // Solothurn
-           'SZ', // Schwyz
-           'TG', // Thurgau
-           'TI', // Ticino
-           'UR', // Uri
-           'VD', // Vaud
-           'VS', // Valais
-           'ZG', // Zug
-           'ZH', // Zurich
+            'AG', // Aargau
+            'AI', // Appenzell Innerhoden
+            'AR', // Appenzell Ausserrhoden
+            'BE', // Bern
+            'BL', // Basel-Landschaft
+            'BS', // Basel-Stadt
+            'FR', // Fribourg
+            'GE', // Geneva
+            'GL', // Glarus
+            'GR', // Graubunden
+            'JU', // Jura
+            'LU', // Lucerne
+            'NE', // Neuchâtel
+            'NW', // Nidwalden
+            'OW', // Obwalden
+            'SG', // St. Gallen
+            'SH', // Schaffhausen
+            'SO', // Solothurn
+            'SZ', // Schwyz
+            'TG', // Thurgau
+            'TI', // Ticino
+            'UR', // Uri
+            'VD', // Vaud
+            'VS', // Valais
+            'ZG', // Zug
+            'ZH', // Zurich
         ];
     }
 }

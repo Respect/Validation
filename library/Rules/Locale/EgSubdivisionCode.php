@@ -32,33 +32,33 @@ final class EgSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'ALX', // Al Iskandariyah
-           'ASN', // Aswan
-           'AST', // Asyut
-           'BA', // Al Bahr al Ahmar
-           'BH', // Al Buhayrah
-           'BNS', // Bani Suwayf
-           'C', // Al Qahirah
-           'DK', // Ad Daqahliyah
-           'DT', // Dumyat
-           'FYM', // Al Fayyum
-           'GH', // Al Gharbiyah
-           'GZ', // Al Jizah
-           'IS', // Al Isma'iliyah
-           'JS', // Janub Sina'
-           'KB', // Al Qalyubiyah
-           'KFS', // Kafr ash Shaykh
-           'KN', // Qina
-           'LX', // Al Uqşur
-           'MN', // Al Minya
-           'MNF', // Al Minufiyah
-           'MT', // Matruh
-           'PTS', // Bur Sa'id
-           'SHG', // Suhaj
-           'SHR', // Ash Sharqiyah
-           'SIN', // Shamal Sina'
-           'SUZ', // As Suways
-           'WAD', // Al Wadi al Jadid
+            'ALX', // Al Iskandariyah
+            'ASN', // Aswan
+            'AST', // Asyut
+            'BA', // Al Bahr al Ahmar
+            'BH', // Al Buhayrah
+            'BNS', // Bani Suwayf
+            'C', // Al Qahirah
+            'DK', // Ad Daqahliyah
+            'DT', // Dumyat
+            'FYM', // Al Fayyum
+            'GH', // Al Gharbiyah
+            'GZ', // Al Jizah
+            'IS', // Al Isma'iliyah
+            'JS', // Janub Sina'
+            'KB', // Al Qalyubiyah
+            'KFS', // Kafr ash Shaykh
+            'KN', // Qina
+            'LX', // Al Uqşur
+            'MN', // Al Minya
+            'MNF', // Al Minufiyah
+            'MT', // Matruh
+            'PTS', // Bur Sa'id
+            'SHG', // Suhaj
+            'SHR', // Ash Sharqiyah
+            'SIN', // Shamal Sina'
+            'SUZ', // As Suways
+            'WAD', // Al Wadi al Jadid
         ];
     }
 }

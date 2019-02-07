@@ -32,16 +32,16 @@ final class LsSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'A', // Maseru
-           'B', // Butha-Buthe
-           'C', // Leribe
-           'D', // Berea
-           'E', // Mafeteng
-           'F', // Mohale's Hoek
-           'G', // Quthing
-           'H', // Qacha's Nek
-           'J', // Mokhotlong
-           'K', // Thaba-Tseka
+            'A', // Maseru
+            'B', // Butha-Buthe
+            'C', // Leribe
+            'D', // Berea
+            'E', // Mafeteng
+            'F', // Mohale's Hoek
+            'G', // Quthing
+            'H', // Qacha's Nek
+            'J', // Mokhotlong
+            'K', // Thaba-Tseka
         ];
     }
 }

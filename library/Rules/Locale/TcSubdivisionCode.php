@@ -32,20 +32,20 @@ final class TcSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AC', // Ambergris Cays
-           'DC', // Dellis Cay
-           'EC', // East Caicos
-           'FC', // French Cay
-           'GT', // Grand Turk
-           'LW', // Little Water Cay
-           'MC', // Middle Caicos
-           'NC', // North Caicos
-           'PN', // Pine Cay
-           'PR', // Providenciales
-           'RC', // Parrot Cay
-           'SC', // South Caicos
-           'SL', // Salt Cay
-           'WC', // West Caicos
+            'AC', // Ambergris Cays
+            'DC', // Dellis Cay
+            'EC', // East Caicos
+            'FC', // French Cay
+            'GT', // Grand Turk
+            'LW', // Little Water Cay
+            'MC', // Middle Caicos
+            'NC', // North Caicos
+            'PN', // Pine Cay
+            'PR', // Providenciales
+            'RC', // Parrot Cay
+            'SC', // South Caicos
+            'SL', // Salt Cay
+            'WC', // West Caicos
         ];
     }
 }

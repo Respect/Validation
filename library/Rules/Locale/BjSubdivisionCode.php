@@ -32,18 +32,18 @@ final class BjSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AK', // Atakora
-           'AL', // Alibori
-           'AQ', // Atlantique
-           'BO', // Borgou
-           'CO', // Collines
-           'DO', // Donga
-           'KO', // Kouffo
-           'LI', // Littoral
-           'MO', // Mono
-           'OU', // Oueme
-           'PL', // Plateau
-           'ZO', // Zou
+            'AK', // Atakora
+            'AL', // Alibori
+            'AQ', // Atlantique
+            'BO', // Borgou
+            'CO', // Collines
+            'DO', // Donga
+            'KO', // Kouffo
+            'LI', // Littoral
+            'MO', // Mono
+            'OU', // Oueme
+            'PL', // Plateau
+            'ZO', // Zou
         ];
     }
 }

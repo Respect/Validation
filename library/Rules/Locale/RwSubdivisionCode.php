@@ -32,11 +32,11 @@ final class RwSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           '01', // Kigali
-           '02', // Est
-           '03', // Nord
-           '04', // Ouest
-           '05', // Sud
+            '01', // Kigali
+            '02', // Est
+            '03', // Nord
+            '04', // Ouest
+            '05', // Sud
         ];
     }
 }

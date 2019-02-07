@@ -32,14 +32,14 @@ final class SkSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'BC', // Banskobystricky
-           'BL', // Bratislavsky
-           'KI', // Kosicky
-           'NI', // Nitriansky
-           'PV', // Presovsky
-           'TA', // Trnavsky
-           'TC', // Trenciansky
-           'ZI', // Zilinsky
+            'BC', // Banskobystricky
+            'BL', // Bratislavsky
+            'KI', // Kosicky
+            'NI', // Nitriansky
+            'PV', // Presovsky
+            'TA', // Trnavsky
+            'TC', // Trenciansky
+            'ZI', // Zilinsky
         ];
     }
 }

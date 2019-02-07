@@ -32,12 +32,12 @@ final class KwSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AH', // Al Ahmadi
-           'FA', // Al Farwaniyah
-           'HA', // Hawalli
-           'JA', // Al Jahra
-           'KU', // Al Asimah
-           'MU', // Mubārak al Kabīr
+            'AH', // Al Ahmadi
+            'FA', // Al Farwaniyah
+            'HA', // Hawalli
+            'JA', // Al Jahra
+            'KU', // Al Asimah
+            'MU', // Mubārak al Kabīr
         ];
     }
 }

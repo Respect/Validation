@@ -32,9 +32,9 @@ final class BqSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'BO', // Bonaire
-           'SA', // Saba
-           'SE', // Sint Eustatius
+            'BO', // Bonaire
+            'SA', // Saba
+            'SE', // Sint Eustatius
         ];
     }
 }

@@ -47,8 +47,11 @@ class TypeTest extends RuleTestCase
             [new Type('array'), []],
             [new Type('bool'), true],
             [new Type('boolean'), false],
-            [new Type('callable'), function (): void {
-            }],
+            [
+                new Type('callable'),
+                function (): void {
+                }
+            ],
             [new Type('double'), 0.8],
             [new Type('float'), 1.0],
             [new Type('int'), 42],

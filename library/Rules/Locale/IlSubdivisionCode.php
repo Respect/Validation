@@ -32,12 +32,12 @@ final class IlSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'D', // Southern
-           'HA', // Haifa
-           'JM', // Jerusalem
-           'M', // Central
-           'TA', // Tel Aviv
-           'Z', // Northern
+            'D', // Southern
+            'HA', // Haifa
+            'JM', // Jerusalem
+            'M', // Central
+            'TA', // Tel Aviv
+            'Z', // Northern
         ];
     }
 }

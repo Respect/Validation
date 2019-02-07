@@ -32,18 +32,18 @@ final class GwSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'BA', // Bafata Region
-           'BL', // Bolama Region
-           'BM', // Biombo Region
-           'BS', // Bissau Region
-           'CA', // Cacheu Region
-           'GA', // Gabu Region
-           'L', // Leste
-           'N', // Norte
-           'OI', // Oio Region
-           'QU', // Quinara Region
-           'S', // Sul
-           'TO', // Tombali Region
+            'BA', // Bafata Region
+            'BL', // Bolama Region
+            'BM', // Biombo Region
+            'BS', // Bissau Region
+            'CA', // Cacheu Region
+            'GA', // Gabu Region
+            'L', // Leste
+            'N', // Norte
+            'OI', // Oio Region
+            'QU', // Quinara Region
+            'S', // Sul
+            'TO', // Tombali Region
         ];
     }
 }

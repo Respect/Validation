@@ -32,24 +32,24 @@ final class AoSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'BGO', // Bengo
-           'BGU', // Benguela province
-           'BIE', // Bie
-           'CAB', // Cabinda
-           'CCU', // Cuando-Cubango
-           'CNN', // Cunene
-           'CNO', // Cuanza Norte
-           'CUS', // Cuanza Sul
-           'HUA', // Huambo province
-           'HUI', // Huila province
-           'LNO', // Lunda Norte
-           'LSU', // Lunda Sul
-           'LUA', // Luanda
-           'MAL', // Malange
-           'MOX', // Moxico
-           'NAM', // Namibe
-           'UIG', // Uige
-           'ZAI', // Zaire
+            'BGO', // Bengo
+            'BGU', // Benguela province
+            'BIE', // Bie
+            'CAB', // Cabinda
+            'CCU', // Cuando-Cubango
+            'CNN', // Cunene
+            'CNO', // Cuanza Norte
+            'CUS', // Cuanza Sul
+            'HUA', // Huambo province
+            'HUI', // Huila province
+            'LNO', // Lunda Norte
+            'LSU', // Lunda Sul
+            'LUA', // Luanda
+            'MAL', // Malange
+            'MOX', // Moxico
+            'NAM', // Namibe
+            'UIG', // Uige
+            'ZAI', // Zaire
         ];
     }
 }

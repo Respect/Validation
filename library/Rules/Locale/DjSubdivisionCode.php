@@ -32,12 +32,12 @@ final class DjSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AR', // Arta
-           'AS', // 'Ali Sabih
-           'DI', // Dikhil
-           'DJ', // Djibouti
-           'OB', // Obock
-           'TA', // Tadjoura
+            'AR', // Arta
+            'AS', // 'Ali Sabih
+            'DI', // Dikhil
+            'DJ', // Djibouti
+            'OB', // Obock
+            'TA', // Tadjoura
         ];
     }
 }

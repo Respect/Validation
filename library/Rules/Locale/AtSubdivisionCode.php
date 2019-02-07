@@ -32,15 +32,15 @@ final class AtSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           '1', // Burgenland
-           '2', // Karnten
-           '3', // Niederosterreich
-           '4', // Oberosterreich
-           '5', // Salzburg
-           '6', // Steiermark
-           '7', // Tirol
-           '8', // Vorarlberg
-           '9', // Wien
+            '1', // Burgenland
+            '2', // Karnten
+            '3', // Niederosterreich
+            '4', // Oberosterreich
+            '5', // Salzburg
+            '6', // Steiermark
+            '7', // Tirol
+            '8', // Vorarlberg
+            '9', // Wien
         ];
     }
 }

@@ -32,24 +32,24 @@ final class LaSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AT', // Attapu
-           'BK', // Bokeo
-           'BL', // Bolikhamxai
-           'CH', // Champasak
-           'HO', // Houaphan
-           'KH', // Khammouan
-           'LM', // Louang Namtha
-           'LP', // Louangphabang
-           'OU', // Oudomxai
-           'PH', // Phongsali
-           'SL', // Salavan
-           'SV', // Savannakhet
-           'VI', // Vientiane
-           'VT', // Vientiane
-           'XA', // Xaignabouli
-           'XE', // Xekong
-           'XI', // Xiangkhoang
-           'XS', // Xaisômboun
+            'AT', // Attapu
+            'BK', // Bokeo
+            'BL', // Bolikhamxai
+            'CH', // Champasak
+            'HO', // Houaphan
+            'KH', // Khammouan
+            'LM', // Louang Namtha
+            'LP', // Louangphabang
+            'OU', // Oudomxai
+            'PH', // Phongsali
+            'SL', // Salavan
+            'SV', // Savannakhet
+            'VI', // Vientiane
+            'VT', // Vientiane
+            'XA', // Xaignabouli
+            'XE', // Xekong
+            'XI', // Xiangkhoang
+            'XS', // Xaisômboun
         ];
     }
 }

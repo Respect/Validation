@@ -32,23 +32,23 @@ final class NiSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AN', // Region Autonoma del Atlantico Norte
-           'AS', // Region Autonoma del Atlantico Sur
-           'BO', // Boaco
-           'CA', // Carazo
-           'CI', // Chinandega
-           'CO', // Chontales
-           'ES', // Esteli
-           'GR', // Granada
-           'JI', // Jinotega
-           'LE', // Leon
-           'MD', // Madriz
-           'MN', // Managua
-           'MS', // Masaya
-           'MT', // Matagalpa
-           'NS', // Nueva Segovia
-           'RI', // Rivas
-           'SJ', // Rio San Juan
+            'AN', // Region Autonoma del Atlantico Norte
+            'AS', // Region Autonoma del Atlantico Sur
+            'BO', // Boaco
+            'CA', // Carazo
+            'CI', // Chinandega
+            'CO', // Chontales
+            'ES', // Esteli
+            'GR', // Granada
+            'JI', // Jinotega
+            'LE', // Leon
+            'MD', // Madriz
+            'MN', // Managua
+            'MS', // Masaya
+            'MT', // Matagalpa
+            'NS', // Nueva Segovia
+            'RI', // Rivas
+            'SJ', // Rio San Juan
         ];
     }
 }

@@ -32,14 +32,14 @@ final class PkSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'BA', // Balochistan
-           'GB', // Gilgit-Baltistan
-           'IS', // Islamabad Capital Territory
-           'JK', // Azad Kashmir
-           'KP', // Khyber Pakhtunkhwa
-           'PB', // Punjab
-           'SD', // Sindh
-           'TA', // Federally Administered Tribal Areas
+            'BA', // Balochistan
+            'GB', // Gilgit-Baltistan
+            'IS', // Islamabad Capital Territory
+            'JK', // Azad Kashmir
+            'KP', // Khyber Pakhtunkhwa
+            'PB', // Punjab
+            'SD', // Sindh
+            'TA', // Federally Administered Tribal Areas
         ];
     }
 }

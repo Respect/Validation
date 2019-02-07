@@ -32,8 +32,8 @@ final class SjSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           '21', // Svalbard
-           '22', // Jan Mayen
+            '21', // Svalbard
+            '22', // Jan Mayen
         ];
     }
 }

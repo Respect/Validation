@@ -32,12 +32,12 @@ final class BzSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'BZ', // Belize District
-           'CY', // Cayo District
-           'CZL', // Corozal District
-           'OW', // Orange Walk District
-           'SC', // Stann Creek District
-           'TOL', // Toledo District
+            'BZ', // Belize District
+            'CY', // Cayo District
+            'CZL', // Corozal District
+            'OW', // Orange Walk District
+            'SC', // Stann Creek District
+            'TOL', // Toledo District
         ];
     }
 }

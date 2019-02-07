@@ -32,40 +32,40 @@ final class CnSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AH', // Anhui
-           'BJ', // Beijing
-           'CQ', // Chongqìng
-           'FJ', // Fujian
-           'GD', // Guangdong
-           'GS', // Gansu
-           'GX', // Guangxi
-           'GZ', // Guizhou
-           'HA', // Henan
-           'HB', // Hubei
-           'HE', // Hebei
-           'HI', // Hainan
-           'HK', // Xianggang
-           'HL', // Heilongjiang
-           'HN', // Hunan
-           'JL', // Jilin
-           'JS', // Jiangsu
-           'JX', // Jiangxi
-           'LN', // Liaoning
-           'MO', // Aomen
-           'NM', // Nei Mongol
-           'NX', // Ningxia
-           'QH', // Qinghai
-           'SC', // Sichuan
-           'SD', // Shandong
-           'SH', // Shanghai
-           'SN', // Shaanxi
-           'SX', // Shanxi
-           'TJ', // Tianjin
-           'TW', // Taiwan
-           'XJ', // Xinjiang
-           'XZ', // Xizang Zìzhìqu (Tibet)
-           'YN', // Yunnan
-           'ZJ', // Zhejiang
+            'AH', // Anhui
+            'BJ', // Beijing
+            'CQ', // Chongqìng
+            'FJ', // Fujian
+            'GD', // Guangdong
+            'GS', // Gansu
+            'GX', // Guangxi
+            'GZ', // Guizhou
+            'HA', // Henan
+            'HB', // Hubei
+            'HE', // Hebei
+            'HI', // Hainan
+            'HK', // Xianggang
+            'HL', // Heilongjiang
+            'HN', // Hunan
+            'JL', // Jilin
+            'JS', // Jiangsu
+            'JX', // Jiangxi
+            'LN', // Liaoning
+            'MO', // Aomen
+            'NM', // Nei Mongol
+            'NX', // Ningxia
+            'QH', // Qinghai
+            'SC', // Sichuan
+            'SD', // Shandong
+            'SH', // Shanghai
+            'SN', // Shaanxi
+            'SX', // Shanxi
+            'TJ', // Tianjin
+            'TW', // Taiwan
+            'XJ', // Xinjiang
+            'XZ', // Xizang Zìzhìqu (Tibet)
+            'YN', // Yunnan
+            'ZJ', // Zhejiang
         ];
     }
 }

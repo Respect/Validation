@@ -32,20 +32,20 @@ final class UzSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AN', // Andijon
-           'BU', // Buxoro
-           'FA', // Farg'ona
-           'JI', // Jizzax
-           'NG', // Namangan
-           'NW', // Navoiy
-           'QA', // Qashqadaryo
-           'QR', // Qoraqalpog'iston Republikasi
-           'SA', // Samarqand
-           'SI', // Sirdaryo
-           'SU', // Surxondaryo
-           'TK', // Toshkent city
-           'TO', // Toshkent region
-           'XO', // Xorazm
+            'AN', // Andijon
+            'BU', // Buxoro
+            'FA', // Farg'ona
+            'JI', // Jizzax
+            'NG', // Namangan
+            'NW', // Navoiy
+            'QA', // Qashqadaryo
+            'QR', // Qoraqalpog'iston Republikasi
+            'SA', // Samarqand
+            'SI', // Sirdaryo
+            'SU', // Surxondaryo
+            'TK', // Toshkent city
+            'TO', // Toshkent region
+            'XO', // Xorazm
         ];
     }
 }

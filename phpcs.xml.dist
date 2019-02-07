@@ -9,12 +9,14 @@
     <arg name="colors" />
     <arg name="extensions" value="php,phpt" />
     <arg value="p" />
+    <arg value="s" />
 
     <file>library/</file>
     <file>tests/</file>
 
     <rule ref="PSR1" />
     <rule ref="PSR2" />
+    <rule ref="Generic.Arrays.ArrayIndent" />
     <rule ref="Generic.Arrays.DisallowLongArraySyntax" />
     <rule ref="Generic.Formatting.SpaceAfterNot">
         <properties>

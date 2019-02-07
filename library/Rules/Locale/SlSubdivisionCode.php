@@ -32,10 +32,10 @@ final class SlSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'E', // Eastern
-           'N', // Northern
-           'S', // Southern
-           'W', // Western
+            'E', // Eastern
+            'N', // Northern
+            'S', // Southern
+            'W', // Western
         ];
     }
 }

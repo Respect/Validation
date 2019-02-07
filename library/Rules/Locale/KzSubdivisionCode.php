@@ -32,23 +32,23 @@ final class KzSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AKM', // Aqmola
-           'AKT', // Aqtobe
-           'ALA', // Almaty
-           'ALM', // Almaty
-           'AST', // Astana
-           'ATY', // Atyrau
-           'BAY', // Baykonyr
-           'KAR', // Qaraghandy
-           'KUS', // Qustanay
-           'KZY', // Qyzylorda
-           'MAN', // Mangghystau
-           'PAV', // Paylodar
-           'SEV', // Soltustik Qazaqstan
-           'VOS', // Shyghys Qazaqstan
-           'YUZ', // Ongtustik Qazaqstan
-           'ZAP', // Baty Qazaqstan
-           'ZHA', // Zhambyl
+            'AKM', // Aqmola
+            'AKT', // Aqtobe
+            'ALA', // Almaty
+            'ALM', // Almaty
+            'AST', // Astana
+            'ATY', // Atyrau
+            'BAY', // Baykonyr
+            'KAR', // Qaraghandy
+            'KUS', // Qustanay
+            'KZY', // Qyzylorda
+            'MAN', // Mangghystau
+            'PAV', // Paylodar
+            'SEV', // Soltustik Qazaqstan
+            'VOS', // Shyghys Qazaqstan
+            'YUZ', // Ongtustik Qazaqstan
+            'ZAP', // Baty Qazaqstan
+            'ZHA', // Zhambyl
         ];
     }
 }

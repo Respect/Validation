@@ -32,13 +32,13 @@ final class BySubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'BR', // Brest voblast
-           'HM', // Horad Minsk
-           'HO', // Homyel voblast
-           'HR', // Hrodna voblast
-           'MA', // Mahilyow voblast
-           'MI', // Minsk voblast
-           'VI', // Vitsebsk voblast
+            'BR', // Brest voblast
+            'HM', // Horad Minsk
+            'HO', // Homyel voblast
+            'HR', // Hrodna voblast
+            'MA', // Mahilyow voblast
+            'MI', // Minsk voblast
+            'VI', // Vitsebsk voblast
         ];
     }
 }

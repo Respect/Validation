@@ -32,15 +32,15 @@ final class GaSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           '1', // Estuaire
-           '2', // Haut-Ogooue
-           '3', // Moyen-Ogooue
-           '4', // Ngounie
-           '5', // Nyanga
-           '6', // Ogooue-Ivindo
-           '7', // Ogooue-Lolo
-           '8', // Ogooue-Maritime
-           '9', // Woleu-Ntem
+            '1', // Estuaire
+            '2', // Haut-Ogooue
+            '3', // Moyen-Ogooue
+            '4', // Ngounie
+            '5', // Nyanga
+            '6', // Ogooue-Ivindo
+            '7', // Ogooue-Lolo
+            '8', // Ogooue-Maritime
+            '9', // Woleu-Ntem
         ];
     }
 }

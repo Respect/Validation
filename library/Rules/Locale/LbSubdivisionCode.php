@@ -32,14 +32,14 @@ final class LbSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AK', // Aakkâr
-           'AS', // Liban-Nord
-           'BA', // Beyrouth
-           'BH', // Baalbek-Hermel
-           'BI', // Béqaa
-           'JA', // Liban-Sud
-           'JL', // Mont-Liban
-           'NA', // Nabatîyé
+            'AK', // Aakkâr
+            'AS', // Liban-Nord
+            'BA', // Beyrouth
+            'BH', // Baalbek-Hermel
+            'BI', // Béqaa
+            'JA', // Liban-Sud
+            'JL', // Mont-Liban
+            'NA', // Nabatîyé
         ];
     }
 }

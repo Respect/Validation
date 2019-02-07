@@ -32,11 +32,11 @@ final class ToSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           '01', // Eua
-           '02', // Ha'apai
-           '03', // Niuas
-           '04', // Tongatapu
-           '05', // Vava'u
+            '01', // Eua
+            '02', // Ha'apai
+            '03', // Niuas
+            '04', // Tongatapu
+            '05', // Vava'u
         ];
     }
 }

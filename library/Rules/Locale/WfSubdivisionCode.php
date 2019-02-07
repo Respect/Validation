@@ -32,9 +32,9 @@ final class WfSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AL', // Alo
-           'SG', // Sigave
-           'UV', // ʻUvea
+            'AL', // Alo
+            'SG', // Sigave
+            'UV', // ʻUvea
         ];
     }
 }

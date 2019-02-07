@@ -32,17 +32,17 @@ final class EtSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AA', // Addis Ababa
-           'AF', // Afar
-           'AM', // Amhara
-           'BE', // Benishangul-Gumaz
-           'DD', // Dire Dawa
-           'GA', // Gambela
-           'HA', // Hariai
-           'OR', // Oromia
-           'SN', // Southern Nations - Nationalities and Peoples Region
-           'SO', // Somali
-           'TI', // Tigray
+            'AA', // Addis Ababa
+            'AF', // Afar
+            'AM', // Amhara
+            'BE', // Benishangul-Gumaz
+            'DD', // Dire Dawa
+            'GA', // Gambela
+            'HA', // Hariai
+            'OR', // Oromia
+            'SN', // Southern Nations - Nationalities and Peoples Region
+            'SO', // Somali
+            'TI', // Tigray
         ];
     }
 }

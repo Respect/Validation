@@ -32,19 +32,19 @@ final class TlSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AL', // Aileu
-           'AN', // Ainaro
-           'BA', // Baucau
-           'BO', // Bobonaro
-           'CO', // Cova Lima
-           'DI', // Dili
-           'ER', // Ermera
-           'LA', // Lautem
-           'LI', // Liquica
-           'MF', // Manufahi
-           'MT', // Manatuto
-           'OE', // Oecussi
-           'VI', // Viqueque
+            'AL', // Aileu
+            'AN', // Ainaro
+            'BA', // Baucau
+            'BO', // Bobonaro
+            'CO', // Cova Lima
+            'DI', // Dili
+            'ER', // Ermera
+            'LA', // Lautem
+            'LI', // Liquica
+            'MF', // Manufahi
+            'MT', // Manatuto
+            'OE', // Oecussi
+            'VI', // Viqueque
         ];
     }
 }

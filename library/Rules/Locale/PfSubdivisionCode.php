@@ -32,11 +32,11 @@ final class PfSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'I', // Austral Islands
-           'M', // Marquesas Islands
-           'S', // Iles Sous-le-Vent
-           'T', // Tuamotu-Gambier
-           'V', // Iles du Vent
+            'I', // Austral Islands
+            'M', // Marquesas Islands
+            'S', // Iles Sous-le-Vent
+            'T', // Tuamotu-Gambier
+            'V', // Iles du Vent
         ];
     }
 }

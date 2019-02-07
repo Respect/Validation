@@ -32,10 +32,10 @@ final class MpSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'N', // Northern Islands
-           'R', // Rota
-           'S', // Saipan
-           'T', // Tinian
+            'N', // Northern Islands
+            'R', // Rota
+            'S', // Saipan
+            'T', // Tinian
         ];
     }
 }

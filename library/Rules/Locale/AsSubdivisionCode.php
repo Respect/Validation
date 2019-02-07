@@ -32,11 +32,11 @@ final class AsSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'E', // Eastern
-           'M', // Manu'a
-           'R', // Rose Island
-           'S', // Swains Island
-           'W', // Western
+            'E', // Eastern
+            'M', // Manu'a
+            'R', // Rose Island
+            'S', // Swains Island
+            'W', // Western
         ];
     }
 }

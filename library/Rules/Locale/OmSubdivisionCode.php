@@ -32,17 +32,17 @@ final class OmSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'BJ', // Al Batinah South
-           'BS', // Shamāl al Bāţinah
-           'BU', // Al Buraymī
-           'DA', // Ad Dakhiliyah
-           'MA', // Masqat
-           'MU', // Musandam
-           'SJ', // Ash Sharqiyah South
-           'SS', // Shamāl ash Sharqīyah
-           'WU', // Al Wusta
-           'ZA', // Az Zahirah
-           'ZU', // Zufar
+            'BJ', // Al Batinah South
+            'BS', // Shamāl al Bāţinah
+            'BU', // Al Buraymī
+            'DA', // Ad Dakhiliyah
+            'MA', // Masqat
+            'MU', // Musandam
+            'SJ', // Ash Sharqiyah South
+            'SS', // Shamāl ash Sharqīyah
+            'WU', // Al Wusta
+            'ZA', // Az Zahirah
+            'ZU', // Zufar
         ];
     }
 }

@@ -32,16 +32,16 @@ final class SbSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'CE', // Central
-           'CH', // Choiseul
-           'CT', // Capital Territory
-           'GU', // Guadalcanal
-           'IS', // Isabel
-           'MK', // Makira
-           'ML', // Malaita
-           'RB', // Rennell and Bellona
-           'TE', // Temotu
-           'WE', // Western
+            'CE', // Central
+            'CH', // Choiseul
+            'CT', // Capital Territory
+            'GU', // Guadalcanal
+            'IS', // Isabel
+            'MK', // Makira
+            'ML', // Malaita
+            'RB', // Rennell and Bellona
+            'TE', // Temotu
+            'WE', // Western
         ];
     }
 }

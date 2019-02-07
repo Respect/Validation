@@ -32,20 +32,20 @@ final class SySubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'DI', // Dimashq
-           'DR', // Dara
-           'DY', // Dayr az Zawr
-           'HA', // Al Hasakah
-           'HI', // Hims
-           'HL', // Halab
-           'HM', // Hamah
-           'ID', // Idlib
-           'LA', // Al Ladhiqiyah
-           'QU', // Al Qunaytirah
-           'RA', // Ar Raqqah
-           'RD', // Rif Dimashq
-           'SU', // As Suwayda
-           'TA', // Tartus
+            'DI', // Dimashq
+            'DR', // Dara
+            'DY', // Dayr az Zawr
+            'HA', // Al Hasakah
+            'HI', // Hims
+            'HL', // Halab
+            'HM', // Hamah
+            'ID', // Idlib
+            'LA', // Al Ladhiqiyah
+            'QU', // Al Qunaytirah
+            'RA', // Ar Raqqah
+            'RD', // Rif Dimashq
+            'SU', // As Suwayda
+            'TA', // Tartus
         ];
     }
 }

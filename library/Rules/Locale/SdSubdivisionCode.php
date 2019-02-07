@@ -32,24 +32,24 @@ final class SdSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'DC', // Wasaţ Dārfūr
-           'DE', // Sharq Dārfūr
-           'DN', // Shamāl Dārfūr
-           'DS', // Janūb Dārfūr
-           'DW', // Gharb Dārfūr
-           'GD', // Al Qaḑārif
-           'GK', // West Kurdufan
-           'GZ', // Al Jazīrah
-           'KA', // Kassalā
-           'KH', // Al Kharţūm
-           'KN', // Shamāl Kurdufān
-           'KS', // Janūb Kurdufān
-           'NB', // An Nīl al Azraq
-           'NO', // Ash Shamālīyah
-           'NR', // An Nīl
-           'NW', // An Nīl al Abyaḑ
-           'RS', // Al Baḩr al Aḩmar
-           'SI', // Sinnār
+            'DC', // Wasaţ Dārfūr
+            'DE', // Sharq Dārfūr
+            'DN', // Shamāl Dārfūr
+            'DS', // Janūb Dārfūr
+            'DW', // Gharb Dārfūr
+            'GD', // Al Qaḑārif
+            'GK', // West Kurdufan
+            'GZ', // Al Jazīrah
+            'KA', // Kassalā
+            'KH', // Al Kharţūm
+            'KN', // Shamāl Kurdufān
+            'KS', // Janūb Kurdufān
+            'NB', // An Nīl al Azraq
+            'NO', // Ash Shamālīyah
+            'NR', // An Nīl
+            'NW', // An Nīl al Abyaḑ
+            'RS', // Al Baḩr al Aḩmar
+            'SI', // Sinnār
         ];
     }
 }

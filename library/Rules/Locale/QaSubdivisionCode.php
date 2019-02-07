@@ -32,14 +32,14 @@ final class QaSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'DA', // Ad Dawhah
-           'KH', // Al Khawr wa adh Dhakhīrah
-           'MS', // Ash Shamāl
-           'RA', // Ar Rayyan
-           'SH', // Al-Shahaniya
-           'US', // Umm Salal
-           'WA', // Al Wakrah
-           'ZA', // Az Z a‘āyin
+            'DA', // Ad Dawhah
+            'KH', // Al Khawr wa adh Dhakhīrah
+            'MS', // Ash Shamāl
+            'RA', // Ar Rayyan
+            'SH', // Al-Shahaniya
+            'US', // Umm Salal
+            'WA', // Al Wakrah
+            'ZA', // Az Z a‘āyin
         ];
     }
 }

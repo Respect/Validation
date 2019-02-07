@@ -32,10 +32,10 @@ final class HmSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'F', // Flat Island
-           'H', // Heard Island
-           'M', // McDonald Island
-           'S', // Shag Island
+            'F', // Flat Island
+            'H', // Heard Island
+            'M', // McDonald Island
+            'S', // Shag Island
         ];
     }
 }

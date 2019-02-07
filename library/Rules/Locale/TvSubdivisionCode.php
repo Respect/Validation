@@ -32,14 +32,14 @@ final class TvSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'FUN', // Funafuti
-           'NIT', // Niutao
-           'NKF', // Nukufetau
-           'NKL', // Nukulaelae
-           'NMA', // Nanumea
-           'NMG', // Nanumanga
-           'NUI', // Nui
-           'VAI', // Vaitupu
+            'FUN', // Funafuti
+            'NIT', // Niutao
+            'NKF', // Nukufetau
+            'NKL', // Nukulaelae
+            'NMA', // Nanumea
+            'NMG', // Nanumanga
+            'NUI', // Nui
+            'VAI', // Vaitupu
         ];
     }
 }

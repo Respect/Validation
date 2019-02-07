@@ -32,16 +32,16 @@ final class SrSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'BR', // Brokopondo
-           'CM', // Commewijne
-           'CR', // Coronie
-           'MA', // Marowijne
-           'NI', // Nickerie
-           'PM', // Paramaribo
-           'PR', // Para
-           'SA', // Saramacca
-           'SI', // Sipaliwini
-           'WA', // Wanica
+            'BR', // Brokopondo
+            'CM', // Commewijne
+            'CR', // Coronie
+            'MA', // Marowijne
+            'NI', // Nickerie
+            'PM', // Paramaribo
+            'PR', // Para
+            'SA', // Saramacca
+            'SI', // Sipaliwini
+            'WA', // Wanica
         ];
     }
 }

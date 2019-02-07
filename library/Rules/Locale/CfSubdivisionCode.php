@@ -32,23 +32,23 @@ final class CfSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AC', // Ouham
-           'BB', // Bamingui-Bangoran
-           'BGF', // Bangui
-           'BK', // Basse-Kotto
-           'HK', // Haute-Kotto
-           'HM', // Haut-Mbomou
-           'HS', // Mambere-Kadeï
-           'KB', // Nana-Grebizi
-           'KG', // Kemo
-           'LB', // Lobaye
-           'MB', // Mbomou
-           'MP', // Ombella-M'Poko
-           'NM', // Nana-Mambere
-           'OP', // Ouham-Pende
-           'SE', // Sangha-Mbaere
-           'UK', // Ouaka
-           'VK', // Vakaga
+            'AC', // Ouham
+            'BB', // Bamingui-Bangoran
+            'BGF', // Bangui
+            'BK', // Basse-Kotto
+            'HK', // Haute-Kotto
+            'HM', // Haut-Mbomou
+            'HS', // Mambere-Kadeï
+            'KB', // Nana-Grebizi
+            'KG', // Kemo
+            'LB', // Lobaye
+            'MB', // Mbomou
+            'MP', // Ombella-M'Poko
+            'NM', // Nana-Mambere
+            'OP', // Ouham-Pende
+            'SE', // Sangha-Mbaere
+            'UK', // Ouaka
+            'VK', // Vakaga
         ];
     }
 }

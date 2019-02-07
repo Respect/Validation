@@ -32,15 +32,15 @@ final class ZaSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'EC', // Eastern Cape
-           'FS', // Free State
-           'GT', // Gauteng
-           'LP', // Limpopo
-           'MP', // Mpumalanga
-           'NC', // Northern Cape
-           'NL', // KwaZulu-Natal
-           'NW', // North West
-           'WC', // Western Cape
+            'EC', // Eastern Cape
+            'FS', // Free State
+            'GT', // Gauteng
+            'LP', // Limpopo
+            'MP', // Mpumalanga
+            'NC', // Northern Cape
+            'NL', // KwaZulu-Natal
+            'NW', // North West
+            'WC', // Western Cape
         ];
     }
 }

@@ -32,10 +32,10 @@ final class FmSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'KSA', // Kosrae
-           'PNI', // Pohnpei
-           'TRK', // Chuuk
-           'YAP', // Yap
+            'KSA', // Kosrae
+            'PNI', // Pohnpei
+            'TRK', // Chuuk
+            'YAP', // Yap
         ];
     }
 }

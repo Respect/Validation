@@ -32,10 +32,10 @@ final class BnSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'BE', // Belait
-           'BM', // Brunei and Muara
-           'TE', // Temburong
-           'TU', // Tutong
+            'BE', // Belait
+            'BM', // Brunei and Muara
+            'TE', // Temburong
+            'TU', // Tutong
         ];
     }
 }

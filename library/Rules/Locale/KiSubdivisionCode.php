@@ -32,9 +32,9 @@ final class KiSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'G', // Gilbert Islands
-           'L', // Line Islands
-           'P', // Phoenix Islands
+            'G', // Gilbert Islands
+            'L', // Line Islands
+            'P', // Phoenix Islands
         ];
     }
 }

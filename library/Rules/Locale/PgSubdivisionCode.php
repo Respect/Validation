@@ -32,28 +32,28 @@ final class PgSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'CPK', // Chimbu
-           'CPM', // Central
-           'EBR', // East New Britain
-           'EHG', // Eastern Highlands
-           'EPW', // Enga
-           'ESW', // East Sepik
-           'GPK', // Gulf
-           'HLA', // Hela
-           'JWK', // Jiwaka
-           'MBA', // Milne Bay
-           'MPL', // Morobe
-           'MPM', // Madang
-           'MRL', // Manus
-           'NCD', // National Capital
-           'NIK', // New Ireland
-           'NPP', // Northern
-           'NSB', // Bougainville
-           'SAN', // Sandaun
-           'SHM', // Southern Highlands
-           'WBK', // West New Britain
-           'WHM', // Western Highlands
-           'WPD', // Western
+            'CPK', // Chimbu
+            'CPM', // Central
+            'EBR', // East New Britain
+            'EHG', // Eastern Highlands
+            'EPW', // Enga
+            'ESW', // East Sepik
+            'GPK', // Gulf
+            'HLA', // Hela
+            'JWK', // Jiwaka
+            'MBA', // Milne Bay
+            'MPL', // Morobe
+            'MPM', // Madang
+            'MRL', // Manus
+            'NCD', // National Capital
+            'NIK', // New Ireland
+            'NPP', // Northern
+            'NSB', // Bougainville
+            'SAN', // Sandaun
+            'SHM', // Southern Highlands
+            'WBK', // West New Britain
+            'WHM', // Western Highlands
+            'WPD', // Western
         ];
     }
 }

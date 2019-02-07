@@ -32,10 +32,10 @@ final class SzSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'HH', // Hhohho
-           'LU', // Lubombo
-           'MA', // Manzini
-           'SH', // Shishelweni
+            'HH', // Hhohho
+            'LU', // Lubombo
+            'MA', // Manzini
+            'SH', // Shishelweni
         ];
     }
 }

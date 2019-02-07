@@ -54,8 +54,11 @@ final class ResourceTypeTest extends RuleTestCase
             [$rule, 'String'],
             [$rule, 123],
             [$rule, []],
-            [$rule, function (): void {
-            }],
+            [
+                $rule,
+                function (): void {
+                }
+            ],
             [$rule, new stdClass()],
             [$rule, null],
         ];

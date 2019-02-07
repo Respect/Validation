@@ -32,11 +32,11 @@ final class DkSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           '81', // Region Nordjylland
-           '82', // Region Midtjylland
-           '83', // Region Syddanmark
-           '84', // Region Hovedstaden
-           '85', // Region Sjæland
+            '81', // Region Nordjylland
+            '82', // Region Midtjylland
+            '83', // Region Syddanmark
+            '84', // Region Hovedstaden
+            '85', // Region Sjæland
         ];
     }
 }

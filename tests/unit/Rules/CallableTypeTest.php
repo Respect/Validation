@@ -35,8 +35,11 @@ final class CallableTypeTest extends RuleTestCase
         $rule = new CallableType();
 
         return [
-            [$rule, function (): void {
-            }],
+            [
+                $rule,
+                function (): void {
+                }
+            ],
             [$rule, 'trim'],
             [$rule, __METHOD__],
             [$rule, [$this, __FUNCTION__]],

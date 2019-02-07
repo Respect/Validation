@@ -32,11 +32,11 @@ final class TgSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'C', // Centrale
-           'K', // Kara
-           'M', // Maritime
-           'P', // Plateaux
-           'S', // Savanes
+            'C', // Centrale
+            'K', // Kara
+            'M', // Maritime
+            'P', // Plateaux
+            'S', // Savanes
         ];
     }
 }

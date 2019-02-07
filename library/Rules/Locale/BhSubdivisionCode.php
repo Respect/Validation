@@ -32,10 +32,10 @@ final class BhSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           '13', // Capital
-           '14', // Southern
-           '15', // Muharraq
-           '17', // Northern
+            '13', // Capital
+            '14', // Southern
+            '15', // Muharraq
+            '17', // Northern
         ];
     }
 }

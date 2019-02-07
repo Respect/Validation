@@ -32,32 +32,32 @@ final class CdSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'BC', // Kongo Central
-           'BU', // Bas-Uélé
-           'EQ', // Equateur
-           'HK', // Haut-Katanga
-           'HL', // Haut-Lomami
-           'HU', // Haut-Uélé
-           'IT', // Ituri
-           'KC', // Kasaï Central
-           'KE', // Kasai-Oriental
-           'KG', // Kwango
-           'KL', // Kwilu
-           'KN', // Kinshasa
-           'KS', // Kasaï
-           'LO', // Lomami
-           'LU', // Lualaba
-           'MA', // Maniema
-           'MN', // Mai-Ndombe
-           'MO', // Mongala
-           'NK', // Nord-Kivu
-           'NU', // Nord-Ubangi
-           'SA', // Sankuru
-           'SK', // Sud-Kivu
-           'SU', // Sud-Ubangi
-           'TA', // Tanganyika
-           'TO', // Tshopo
-           'TU', // Tshuapa
+            'BC', // Kongo Central
+            'BU', // Bas-Uélé
+            'EQ', // Equateur
+            'HK', // Haut-Katanga
+            'HL', // Haut-Lomami
+            'HU', // Haut-Uélé
+            'IT', // Ituri
+            'KC', // Kasaï Central
+            'KE', // Kasai-Oriental
+            'KG', // Kwango
+            'KL', // Kwilu
+            'KN', // Kinshasa
+            'KS', // Kasaï
+            'LO', // Lomami
+            'LU', // Lualaba
+            'MA', // Maniema
+            'MN', // Mai-Ndombe
+            'MO', // Mongala
+            'NK', // Nord-Kivu
+            'NU', // Nord-Ubangi
+            'SA', // Sankuru
+            'SK', // Sud-Kivu
+            'SU', // Sud-Ubangi
+            'TA', // Tanganyika
+            'TO', // Tshopo
+            'TU', // Tshuapa
         ];
     }
 }

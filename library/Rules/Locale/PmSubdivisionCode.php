@@ -32,8 +32,8 @@ final class PmSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'M', // Miquelon
-           'P', // Saint Pierre
+            'M', // Miquelon
+            'P', // Saint Pierre
         ];
     }
 }

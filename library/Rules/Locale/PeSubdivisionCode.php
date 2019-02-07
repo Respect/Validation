@@ -32,32 +32,32 @@ final class PeSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AMA', // Amazonas
-           'ANC', // Ancash
-           'APU', // Apurimac
-           'ARE', // Arequipa
-           'AYA', // Ayacucho
-           'CAJ', // Cajamarca
-           'CAL', // Callao
-           'CUS', // Cusco
-           'HUC', // Huanuco
-           'HUV', // Huancavelica
-           'ICA', // Ica
-           'JUN', // Junin
-           'LAL', // La Libertad
-           'LAM', // Lambayeque
-           'LIM', // Lima
-           'LMA', // Municipalidad Metropolitana de Lima
-           'LOR', // Loreto
-           'MDD', // Madre de Dios
-           'MOQ', // Moquegua
-           'PAS', // Pasco
-           'PIU', // Piura
-           'PUN', // Puno
-           'SAM', // San Martin
-           'TAC', // Tacna
-           'TUM', // Tumbes
-           'UCA', // Ucayali
+            'AMA', // Amazonas
+            'ANC', // Ancash
+            'APU', // Apurimac
+            'ARE', // Arequipa
+            'AYA', // Ayacucho
+            'CAJ', // Cajamarca
+            'CAL', // Callao
+            'CUS', // Cusco
+            'HUC', // Huanuco
+            'HUV', // Huancavelica
+            'ICA', // Ica
+            'JUN', // Junin
+            'LAL', // La Libertad
+            'LAM', // Lambayeque
+            'LIM', // Lima
+            'LMA', // Municipalidad Metropolitana de Lima
+            'LOR', // Loreto
+            'MDD', // Madre de Dios
+            'MOQ', // Moquegua
+            'PAS', // Pasco
+            'PIU', // Piura
+            'PUN', // Puno
+            'SAM', // San Martin
+            'TAC', // Tacna
+            'TUM', // Tumbes
+            'UCA', // Ucayali
         ];
     }
 }

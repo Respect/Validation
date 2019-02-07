@@ -32,11 +32,11 @@ final class TjSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'DU', // Dushanbe
-           'GB', // Gorno-Badakhstan
-           'KT', // Khatlon
-           'RA', // Nohiyahoi Tobei Jumhurí
-           'SU', // Sughd
+            'DU', // Dushanbe
+            'GB', // Gorno-Badakhstan
+            'KT', // Khatlon
+            'RA', // Nohiyahoi Tobei Jumhurí
+            'SU', // Sughd
         ];
     }
 }

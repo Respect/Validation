@@ -32,14 +32,14 @@ final class IoSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'DG', // Diego Garcia
-           'DI', // Danger Island
-           'EA', // Eagle Islands
-           'EG', // Egmont Islands
-           'NI', // Nelsons Island
-           'PB', // Peros Banhos
-           'SI', // Salomon Islands
-           'TB', // Three Brothers
+            'DG', // Diego Garcia
+            'DI', // Danger Island
+            'EA', // Eagle Islands
+            'EG', // Egmont Islands
+            'NI', // Nelsons Island
+            'PB', // Peros Banhos
+            'SI', // Salomon Islands
+            'TB', // Three Brothers
         ];
     }
 }

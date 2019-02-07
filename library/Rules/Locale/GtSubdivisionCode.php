@@ -32,28 +32,28 @@ final class GtSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AV', // Alta Verapaz
-           'BV', // Baja Verapaz
-           'CM', // Chimaltenango
-           'CQ', // Chiquimula
-           'ES', // Escuintla
-           'GU', // Guatemala
-           'HU', // Huehuetenango
-           'IZ', // Izabal
-           'JA', // Jalapa
-           'JU', // Jutiapa
-           'PE', // El Peten
-           'PR', // El Progreso
-           'QC', // El Quiche
-           'QZ', // Quetzaltenango
-           'RE', // Retalhuleu
-           'SA', // Sacatepequez
-           'SM', // San Marcos
-           'SO', // Solola
-           'SR', // Santa Rosa
-           'SU', // Suchitepequez
-           'TO', // Totonicapan
-           'ZA', // Zacapa
+            'AV', // Alta Verapaz
+            'BV', // Baja Verapaz
+            'CM', // Chimaltenango
+            'CQ', // Chiquimula
+            'ES', // Escuintla
+            'GU', // Guatemala
+            'HU', // Huehuetenango
+            'IZ', // Izabal
+            'JA', // Jalapa
+            'JU', // Jutiapa
+            'PE', // El Peten
+            'PR', // El Progreso
+            'QC', // El Quiche
+            'QZ', // Quetzaltenango
+            'RE', // Retalhuleu
+            'SA', // Sacatepequez
+            'SM', // San Marcos
+            'SO', // Solola
+            'SR', // Santa Rosa
+            'SU', // Suchitepequez
+            'TO', // Totonicapan
+            'ZA', // Zacapa
         ];
     }
 }

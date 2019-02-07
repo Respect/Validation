@@ -32,18 +32,18 @@ final class JoSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AJ', // Ajlun
-           'AM', // 'Amman
-           'AQ', // Al 'Aqabah
-           'AT', // At Tafilah
-           'AZ', // Az Zarqa'
-           'BA', // Al Balqa'
-           'IR', // Irbid
-           'JA', // Jarash
-           'KA', // Al Karak
-           'MA', // Al Mafraq
-           'MD', // Madaba
-           'MN', // Ma'an
+            'AJ', // Ajlun
+            'AM', // 'Amman
+            'AQ', // Al 'Aqabah
+            'AT', // At Tafilah
+            'AZ', // Az Zarqa'
+            'BA', // Al Balqa'
+            'IR', // Irbid
+            'JA', // Jarash
+            'KA', // Al Karak
+            'MA', // Al Mafraq
+            'MD', // Madaba
+            'MN', // Ma'an
         ];
     }
 }

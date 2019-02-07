@@ -32,14 +32,14 @@ final class IsSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           '1', // Höfuðborgarsvæði
-           '2', // Suðurnes
-           '3', // Vesturland
-           '4', // Vestfirðir
-           '5', // Norðurland Vestra
-           '6', // Norðurland Eystra
-           '7', // Austurland
-           '8', // Suðurland
+            '1', // Höfuðborgarsvæði
+            '2', // Suðurnes
+            '3', // Vesturland
+            '4', // Vestfirðir
+            '5', // Norðurland Vestra
+            '6', // Norðurland Eystra
+            '7', // Austurland
+            '8', // Suðurland
         ];
     }
 }

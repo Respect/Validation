@@ -32,13 +32,13 @@ final class CrSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'A', // Alajuela
-           'C', // Cartago
-           'G', // Guanacaste
-           'H', // Heredia
-           'L', // Limon
-           'P', // Puntarenas
-           'SJ', // San Jose
+            'A', // Alajuela
+            'C', // Cartago
+            'G', // Guanacaste
+            'H', // Heredia
+            'L', // Limon
+            'P', // Puntarenas
+            'SJ', // San Jose
         ];
     }
 }

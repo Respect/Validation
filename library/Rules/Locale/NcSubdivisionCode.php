@@ -32,9 +32,9 @@ final class NcSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'L', // Iles Loyaute
-           'N', // Nord
-           'S', // Sud
+            'L', // Iles Loyaute
+            'N', // Nord
+            'S', // Sud
         ];
     }
 }

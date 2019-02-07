@@ -32,10 +32,10 @@ final class CsSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'KOS', // Kosovo
-           'MON', // Montenegro
-           'SER', // Serbia
-           'VOJ', // Vojvodina
+            'KOS', // Kosovo
+            'MON', // Montenegro
+            'SER', // Serbia
+            'VOJ', // Vojvodina
         ];
     }
 }

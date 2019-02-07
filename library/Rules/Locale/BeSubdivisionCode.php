@@ -32,19 +32,19 @@ final class BeSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'BRU', // Brussels
-           'VAN', // Antwerpen
-           'VBR', // Vlaams Brabant
-           'VLG', // Flanders
-           'VLI', // Limburg
-           'VOV', // Oost-Vlaanderen
-           'VWV', // West-Vlaanderen
-           'WAL', // Wallonia
-           'WBR', // Brabant Wallon
-           'WHT', // Hainaut
-           'WLG', // Liege
-           'WLX', // Luxembourg
-           'WNA', // Namur
+            'BRU', // Brussels
+            'VAN', // Antwerpen
+            'VBR', // Vlaams Brabant
+            'VLG', // Flanders
+            'VLI', // Limburg
+            'VOV', // Oost-Vlaanderen
+            'VWV', // West-Vlaanderen
+            'WAL', // Wallonia
+            'WBR', // Brabant Wallon
+            'WHT', // Hainaut
+            'WLG', // Liege
+            'WLX', // Luxembourg
+            'WNA', // Namur
         ];
     }
 }

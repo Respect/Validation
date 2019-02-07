@@ -32,9 +32,9 @@ final class ViSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'C', // Saint Croix
-           'J', // Saint John
-           'T', // Saint Thomas
+            'C', // Saint Croix
+            'J', // Saint John
+            'T', // Saint Thomas
         ];
     }
 }

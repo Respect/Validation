@@ -32,10 +32,10 @@ final class GlSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'KU', // Kujalleq
-           'QA', // Qaasuitsup
-           'QE', // Qeqqata
-           'SM', // Sermersooq
+            'KU', // Kujalleq
+            'QA', // Qaasuitsup
+            'QE', // Qeqqata
+            'SM', // Sermersooq
         ];
     }
 }

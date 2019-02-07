@@ -32,20 +32,20 @@ final class CiSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'AB', // Abidjan
-           'BS', // Bas-Sassandra
-           'CM', // Comoé
-           'DN', // Denguélé
-           'GD', // Gôh-Djiboua
-           'LC', // Lacs
-           'LG', // Lagunes
-           'MG', // Montagnes
-           'SM', // Sassandra-Marahoué
-           'SV', // Savanes
-           'VB', // Vallée du Bandama
-           'WR', // Woroba
-           'YM', // Yamoussoukro Autonomous District
-           'ZZ', // Zanzan
+            'AB', // Abidjan
+            'BS', // Bas-Sassandra
+            'CM', // Comoé
+            'DN', // Denguélé
+            'GD', // Gôh-Djiboua
+            'LC', // Lacs
+            'LG', // Lagunes
+            'MG', // Montagnes
+            'SM', // Sassandra-Marahoué
+            'SV', // Savanes
+            'VB', // Vallée du Bandama
+            'WR', // Woroba
+            'YM', // Yamoussoukro Autonomous District
+            'ZZ', // Zanzan
         ];
     }
 }

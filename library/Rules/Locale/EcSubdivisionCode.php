@@ -32,30 +32,30 @@ final class EcSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'A', // Azuay
-           'B', // Bolivar
-           'C', // Carchi
-           'D', // Orellana
-           'E', // Esmeraldas
-           'F', // Canar
-           'G', // Guayas
-           'H', // Chimborazo
-           'I', // Imbabura
-           'L', // Loja
-           'M', // Manabi
-           'N', // Napo
-           'O', // El Oro
-           'P', // Pichincha
-           'R', // Los Rios
-           'S', // Morona-Santiago
-           'SD', // Santo Domingo de los Tsáchilas
-           'SE', // Santa Elena
-           'T', // Tungurahua
-           'U', // Sucumbios
-           'W', // Galapagos
-           'X', // Cotopaxi
-           'Y', // Pastaza
-           'Z', // Zamora-Chinchipe
+            'A', // Azuay
+            'B', // Bolivar
+            'C', // Carchi
+            'D', // Orellana
+            'E', // Esmeraldas
+            'F', // Canar
+            'G', // Guayas
+            'H', // Chimborazo
+            'I', // Imbabura
+            'L', // Loja
+            'M', // Manabi
+            'N', // Napo
+            'O', // El Oro
+            'P', // Pichincha
+            'R', // Los Rios
+            'S', // Morona-Santiago
+            'SD', // Santo Domingo de los Tsáchilas
+            'SE', // Santa Elena
+            'T', // Tungurahua
+            'U', // Sucumbios
+            'W', // Galapagos
+            'X', // Cotopaxi
+            'Y', // Pastaza
+            'Z', // Zamora-Chinchipe
         ];
     }
 }

@@ -32,11 +32,11 @@ final class SgSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           '01', // Central Singapore
-           '02', // North East
-           '03', // North West
-           '04', // South East
-           '05', // South West
+            '01', // Central Singapore
+            '02', // North East
+            '03', // North West
+            '04', // South East
+            '05', // South West
         ];
     }
 }

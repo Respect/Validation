@@ -61,8 +61,11 @@ final class MacAddressTest extends RuleTestCase
             'float' => [$sut, random_int(1, 9) / 10],
             'null' => [$sut, null],
             'resource' => [$sut, tmpfile()],
-            'callable' => [$sut, function (): void {
-            }],
+            'callable' => [
+                $sut,
+                function (): void {
+                }
+            ],
         ];
     }
 }

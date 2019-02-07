@@ -32,11 +32,11 @@ final class CcSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'D', // Direction Island
-           'H', // Home Island
-           'O', // Horsburgh Island
-           'S', // South Island
-           'W', // West Island
+            'D', // Direction Island
+            'H', // Home Island
+            'O', // Horsburgh Island
+            'S', // South Island
+            'W', // West Island
         ];
     }
 }

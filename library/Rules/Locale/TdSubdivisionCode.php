@@ -32,29 +32,29 @@ final class TdSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'BA', // Batha
-           'BG', // Barh el Ghazel
-           'BO', // Borkou
-           'CB', // Chari-Baguirmi
-           'EE', // Ennedi Est
-           'EO', // Ennedi Quest
-           'GR', // Guéra
-           'HL', // Hadjer-Lamis
-           'KA', // Kanem
-           'LC', // Lac
-           'LO', // Logone Occidental
-           'LR', // Logone Oriental
-           'MA', // Mandoul
-           'MC', // Moyen-Chari
-           'ME', // Mayo-Kebbi Est
-           'MO', // Mayo-Kebbi Ouest
-           'ND', // Ville de N'Djamena
-           'OD', // Ouaddaï
-           'SA', // Salamat
-           'SI', // Sila
-           'TA', // Tandjile
-           'TI', // Tibesti
-           'WF', // Wadi Fira
+            'BA', // Batha
+            'BG', // Barh el Ghazel
+            'BO', // Borkou
+            'CB', // Chari-Baguirmi
+            'EE', // Ennedi Est
+            'EO', // Ennedi Quest
+            'GR', // Guéra
+            'HL', // Hadjer-Lamis
+            'KA', // Kanem
+            'LC', // Lac
+            'LO', // Logone Occidental
+            'LR', // Logone Oriental
+            'MA', // Mandoul
+            'MC', // Moyen-Chari
+            'ME', // Mayo-Kebbi Est
+            'MO', // Mayo-Kebbi Ouest
+            'ND', // Ville de N'Djamena
+            'OD', // Ouaddaï
+            'SA', // Salamat
+            'SI', // Sila
+            'TA', // Tandjile
+            'TI', // Tibesti
+            'WF', // Wadi Fira
         ];
     }
 }

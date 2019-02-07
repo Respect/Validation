@@ -32,12 +32,12 @@ final class GmSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'B', // Banjul
-           'L', // Lower River
-           'M', // Central River
-           'N', // North Bank
-           'U', // Upper River
-           'W', // Western
+            'B', // Banjul
+            'L', // Lower River
+            'M', // Central River
+            'N', // North Bank
+            'U', // Upper River
+            'W', // Western
         ];
     }
 }

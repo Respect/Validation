@@ -32,12 +32,12 @@ final class VuSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'MAP', // Malampa
-           'PAM', // Penama
-           'SAM', // Sanma
-           'SEE', // Shefa
-           'TAE', // Tafea
-           'TOB', // Torba
+            'MAP', // Malampa
+            'PAM', // Penama
+            'SAM', // Sanma
+            'SEE', // Shefa
+            'TAE', // Tafea
+            'TOB', // Torba
         ];
     }
 }

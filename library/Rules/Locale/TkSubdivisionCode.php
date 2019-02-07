@@ -32,9 +32,9 @@ final class TkSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           'A', // Atafu
-           'F', // Fakaofo
-           'N', // Nukunonu
+            'A', // Atafu
+            'F', // Fakaofo
+            'N', // Nukunonu
         ];
     }
 }

@@ -32,19 +32,19 @@ final class SaSubdivisionCode extends AbstractSearcher
     protected function getDataSource(): array
     {
         return [
-           '01', // Ar Riyad
-           '02', // Makkah
-           '03', // Al Madinah
-           '04', // Ash Sharqiyah (Eastern Province)
-           '05', // Al Qasim
-           '06', // Ha'il
-           '07', // Tabuk
-           '08', // Al Hudud ash Shamaliyah
-           '09', // Jizan
-           '10', // Najran
-           '11', // Al Bahah
-           '12', // Al Jawf
-           '14', // 'Asir
+            '01', // Ar Riyad
+            '02', // Makkah
+            '03', // Al Madinah
+            '04', // Ash Sharqiyah (Eastern Province)
+            '05', // Al Qasim
+            '06', // Ha'il
+            '07', // Tabuk
+            '08', // Al Hudud ash Shamaliyah
+            '09', // Jizan
+            '10', // Najran
+            '11', // Al Bahah
+            '12', // Al Jawf
+            '14', // 'Asir
         ];
     }
 }
