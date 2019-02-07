@@ -27,7 +27,9 @@ use function is_scalar;
 abstract class AbstractRelated extends AbstractRule
 {
     public $mandatory = true;
+
     public $reference = '';
+
     public $validator;
 
     abstract public function hasReference($input): bool;

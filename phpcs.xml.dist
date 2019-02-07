@@ -68,6 +68,11 @@
             <property name="spacing" value="1" />
             <property name="spacingBeforeFirst" value="0" />
             <property name="spacingAfterLast" value="0" />
+    </rule>
+    <rule ref="Squiz.WhiteSpace.MemberVarSpacing">
+        <properties>
+            <property name="spacing" value="1" />
+            <property name="spacingBeforeFirst" value="0" />
         </properties>
     </rule>
 </ruleset>

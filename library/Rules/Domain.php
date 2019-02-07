@@ -26,7 +26,9 @@ use Respect\Validation\Exceptions\ValidationException;
 class Domain extends AbstractComposite
 {
     protected $tld;
+
     protected $checks = [];
+
     protected $otherParts;
 
     public function __construct($tldCheck = true)

@@ -23,7 +23,9 @@ use Respect\Validation\Validator;
 class KeyValue extends AbstractRule
 {
     public $comparedKey;
+
     public $ruleName;
+
     public $baseKey;
 
     public function __construct($comparedKey, $ruleName, $baseKey)

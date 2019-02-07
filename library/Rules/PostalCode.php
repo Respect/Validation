@@ -22,6 +22,7 @@ class PostalCode extends AbstractEnvelope
 {
     public const DEFAULT_PATTERN = '/^$/';
 
+    // phpcs:disable Squiz.WhiteSpace.MemberVarSpacing.Incorrect
     // phpcs:disable Generic.Files.LineLength.TooLong
     /**
      * @see http://download.geonames.org/export/dump/countryInfo.txt

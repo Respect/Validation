@@ -26,6 +26,7 @@ use Respect\Validation\Validatable;
 abstract class AbstractRule implements Validatable
 {
     protected $name;
+
     protected $template;
 
     public function __invoke($input)

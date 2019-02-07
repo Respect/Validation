@@ -25,6 +25,7 @@ use Respect\Validation\Exceptions\ZendException;
 class Zend extends AbstractRule
 {
     protected $messages = [];
+
     protected $zendValidator;
 
     public function __construct($validator, $params = [])

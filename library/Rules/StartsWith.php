@@ -21,6 +21,7 @@ namespace Respect\Validation\Rules;
 class StartsWith extends AbstractRule
 {
     public $startValue;
+
     public $identical;
 
     public function __construct($startValue, $identical = false)

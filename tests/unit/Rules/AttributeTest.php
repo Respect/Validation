@@ -81,6 +81,7 @@ final class AttributeTest extends RuleTestCase
     {
         return new class() {
             public const PROPERTY_VALUE = 'foo';
+
             private $bar = self::PROPERTY_VALUE;
         };
     }
