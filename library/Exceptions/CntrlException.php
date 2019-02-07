@@ -17,7 +17,7 @@ namespace Respect\Validation\Exceptions;
  * @author Andre Ramaciotti <andre@ramaciotti.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class CntrlException extends FilteredValidationException
+final class CntrlException extends FilteredValidationException
 {
     /**
      * {@inheritdoc}
