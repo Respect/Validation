@@ -39,7 +39,7 @@ class NestedValidationExceptionTest extends TestCase
     /**
      * @test
      */
-    public function addingTheSameInstanceShouldAddJustASingleReference(): void
+    public function addingTheSameInstanceShouldAddJustOneSingleReference(): void
     {
         $composite = new AttributeException('input', 'id', [], 'trim');
         $node = new IntValException('input', 'id', [], 'trim');

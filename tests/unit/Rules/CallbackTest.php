@@ -35,7 +35,7 @@ final class CallbackTest extends RuleTestCase
     {
         return [
             [new Callback('is_a', 'stdClass'), new \stdClass()],
-            [new Callback([$this, 'thisIsASampleCallbackUsedInsideThisTest']), 'test'],
+            [new Callback([$this, 'sampleCallbackUsedInsideThisTest']), 'test'],
             [new Callback('is_string'), 'test'],
             [
                 new Callback(function () {
@@ -46,7 +46,7 @@ final class CallbackTest extends RuleTestCase
         ];
     }
 
-    public function thisIsASampleCallbackUsedInsideThisTest()
+    public function sampleCallbackUsedInsideThisTest()
     {
         return true;
     }

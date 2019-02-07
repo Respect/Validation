@@ -70,7 +70,7 @@ final class KeySetTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage KeySet rule accepts only Key rules
      */
-    public function shouldNotAcceptAllOfWithANonKeyRule(): void
+    public function shouldNotAcceptAllOfWithNonKeyRule(): void
     {
         $alwaysValid = new AlwaysValid();
         $allOf = new AllOf($alwaysValid);
@@ -84,7 +84,7 @@ final class KeySetTest extends TestCase
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage KeySet rule accepts only Key rules
      */
-    public function shouldNotAcceptANonKeyRule(): void
+    public function shouldNotAcceptNonKeyRule(): void
     {
         $alwaysValid = new AlwaysValid();
 

@@ -47,7 +47,7 @@ final class AlwaysValidTest extends TestCase
      *
      * @dataProvider providerForValidInput
      */
-    public function itShouldValidateInputWhenItIsAValidAlwaysValid($input): void
+    public function itAlwaysBeValid($input): void
     {
         $rule = new AlwaysValid();
 

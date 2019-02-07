@@ -39,7 +39,7 @@ final class FactoryTest extends TestCase
     /**
      * @test
      */
-    public function shouldCreateARuleByNameBasedOnNamespace(): void
+    public function shouldCreateRuleByNameBasedOnNamespace(): void
     {
         $factory = new Factory([self::TEST_RULES_NAMESPACE], [], 'trim');
 
@@ -59,7 +59,7 @@ final class FactoryTest extends TestCase
     /**
      * @test
      */
-    public function shouldDefineConstructorArgumentsWhenCreatingARule(): void
+    public function shouldDefineConstructorArgumentsWhenCreatingRule(): void
     {
         $constructorArguments = [true, false, true, false];
 

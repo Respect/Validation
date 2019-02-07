@@ -92,7 +92,7 @@ final class AbstractCompositeTest extends TestCase
     /**
      * @test
      */
-    public function shouldNotUpdateInternalRuleAlreadyHasAName(): void
+    public function shouldNotUpdateInternalRuleWhenItAlreadyHasName(): void
     {
         $rule = $this->createMock(Validatable::class);
         $rule
@@ -140,7 +140,7 @@ final class AbstractCompositeTest extends TestCase
     /**
      * @test
      */
-    public function shouldDefineNameForInternalRulesWhenItHasNotAName(): void
+    public function shouldDefineNameForInternalRulesWhenItDoesNotHaveName(): void
     {
         $ruleName = 'something';
 
@@ -166,7 +166,7 @@ final class AbstractCompositeTest extends TestCase
     /**
      * @test
      */
-    public function shouldNotDefineNameForInternalRulesWhenItHasAName(): void
+    public function shouldNotDefineNameForInternalRulesWhenItAlreadyHasName(): void
     {
         $ruleName = 'something';
 

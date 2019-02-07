@@ -62,7 +62,7 @@ final class ValidationExceptionTest extends TestCase
     /**
      * @test
      */
-    public function itShouldRetrieveASingleParameter(): void
+    public function itShouldRetrieveOneSingleParameter(): void
     {
         $name = 'any name';
         $value = 'any value';
@@ -85,7 +85,7 @@ final class ValidationExceptionTest extends TestCase
     /**
      * @test
      */
-    public function itShouldHaveADefaultTemplate(): void
+    public function itShouldHaveTemplateByDefault(): void
     {
         $sut = new ValidationException('input', 'id', [], 'trim');
 

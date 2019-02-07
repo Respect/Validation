@@ -55,7 +55,7 @@ final class SfTest extends TestCase
     /**
      * @test
      */
-    public function itShouldHaveAValidatorByDefault(): void
+    public function itShouldHaveTheValidatorByDefault(): void
     {
         $sut = new Sf(new IsNull());
 

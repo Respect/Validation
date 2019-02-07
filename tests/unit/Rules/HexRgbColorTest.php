@@ -31,7 +31,7 @@ class HexRgbColorTest extends TestCase
      *
      * @test
      */
-    public function hexRgbColorValuesONLYShouldReturnTrue($validHexRgbColor): void
+    public function hexRgbColorValuesOnlyShouldReturnTrue($validHexRgbColor): void
     {
         $validator = new HexRgbColor();
 

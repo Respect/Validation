@@ -23,6 +23,7 @@
             <property name="spacing" value="0" />
         </properties>
     </rule>
+    <rule ref="Generic.NamingConventions.CamelCapsFunctionName" />
     <rule ref="Generic.PHP.NoSilencedErrors" />
     <rule ref="Generic.Strings.UnnecessaryStringConcat">
         <properties>

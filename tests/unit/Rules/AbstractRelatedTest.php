@@ -125,7 +125,7 @@ final class AbstractRelatedTest extends TestCase
     /**
      * @test
      */
-    public function shouldDefineRuleNameAsReferenceWhenRuleDoesNotHaveAName(): void
+    public function shouldDefineRuleNameAsReferenceWhenRuleDoesNotHaveName(): void
     {
         $reference = 'something';
 
@@ -150,7 +150,7 @@ final class AbstractRelatedTest extends TestCase
     /**
      * @test
      */
-    public function shouldNotDefineRuleNameAsReferenceWhenRuleDoesHaveAName(): void
+    public function shouldNotDefineRuleNameAsReferenceWhenRuleDoesHaveName(): void
     {
         $reference = 'something';
 

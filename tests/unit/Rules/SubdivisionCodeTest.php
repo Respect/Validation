@@ -49,7 +49,7 @@ class SubdivisionCodeTest extends TestCase
     /**
      * @test
      */
-    public function shouldDefineASubdivisionCodeFormatOnConstructor(): void
+    public function shouldDefineSubdivisionCodeFormatOnConstructor(): void
     {
         $countryCode = 'US';
         $countrySubdivision = new SubdivisionCode($countryCode);
