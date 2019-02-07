@@ -19,11 +19,12 @@ try {
         'password' => '',
     ];
 
-    Validator::key('username', Validator::length(2, 32))
-             ->key('birthdate', Validator::dateTime())
-             ->key('password', Validator::notEmpty())
-             ->key('email', Validator::email())
-             ->assert($input);
+    Validator::create()
+        ->key('username', Validator::length(2, 32))
+        ->key('birthdate', Validator::dateTime())
+        ->key('password', Validator::notEmpty())
+        ->key('email', Validator::email())
+        ->assert($input);
 } catch (NestedValidationException $e) {
     print_r($e->getMessages());
 }

@@ -31,6 +31,7 @@
         </properties>
     </rule>
     <rule ref="Generic.WhiteSpace.ArbitraryParenthesesSpacing" />
+    <rule ref="PEAR.WhiteSpace.ObjectOperatorIndent" />
     <rule ref="SlevomatCodingStandard.Arrays.DisallowImplicitArrayCreation" />
     <rule ref="SlevomatCodingStandard.Classes.ClassConstantVisibility" />
     <rule ref="SlevomatCodingStandard.Classes.ModernClassNameReference" />
