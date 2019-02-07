@@ -3,7 +3,7 @@
 - `Consonant()`
 - `Consonant(string ...$additionalChars)`
 
-Similar to `Alnum()`. Validates strings that contain only consonants:
+Validates if the input contains only consonants.
 
 ```php
 v::consonant()->validate('xkcd'); // true
