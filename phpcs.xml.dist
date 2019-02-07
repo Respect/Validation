@@ -75,4 +75,5 @@
             <property name="spacingBeforeFirst" value="0" />
         </properties>
     </rule>
+    <rule ref="Squiz.WhiteSpace.OperatorSpacing" />
 </ruleset>

@@ -68,8 +68,10 @@ final class EndsWith extends AbstractRule
             return end($input) == $this->endValue;
         }
 
-        return mb_strripos($input, $this->endValue, -1, $enc = mb_detect_encoding($input))
-            === mb_strlen($input, $enc) - mb_strlen($this->endValue, $enc);
+        $encoding = mb_detect_encoding($input);
+        $endPosition = mb_strlen($input, $encoding) - mb_strlen($this->endValue, $encoding);
+
+        return mb_strripos($input, $this->endValue, -1, $encoding) === $endPosition;
     }
 
     private function validateIdentical($input): bool
@@ -78,7 +80,9 @@ final class EndsWith extends AbstractRule
             return end($input) === $this->endValue;
         }
 
-        return mb_strrpos($input, $this->endValue, 0, $enc = mb_detect_encoding($input))
-            === mb_strlen($input, $enc) - mb_strlen($this->endValue, $enc);
+        $encoding = mb_detect_encoding($input);
+        $endPosition = mb_strlen($input, $encoding) - mb_strlen($this->endValue, $encoding);
+
+        return mb_strrpos($input, $this->endValue, 0, $encoding) === $endPosition;
     }
 }

@@ -54,7 +54,7 @@ final class Cnpj extends AbstractRule
 
         $n = 0;
         for ($i = 0; $i < 12; ++$i) {
-            $n += $digits[$i] * $bases[$i+1];
+            $n += $digits[$i] * $bases[$i + 1];
         }
 
         if ($digits[12] != ((($n %= 11) < 2) ? 0 : 11 - $n)) {
