@@ -16,10 +16,10 @@ namespace Respect\Validation\Helpers;
 use Countable;
 use DateTimeImmutable;
 use DateTimeInterface;
-use Exception;
 use function is_numeric;
 use function is_string;
 use function mb_strlen;
+use Throwable;
 
 /**
  * Helps to deal with comparable values.
@@ -52,7 +52,7 @@ trait CanCompareValues
 
         try {
             return new DateTimeImmutable($value);
-        } catch (Exception $e) {
+        } catch (Throwable $e) {
             return $value;
         }
     }

@@ -14,7 +14,7 @@ $data = [
 
 try {
     v::not(v::keyValue('password', 'in', 'invalid_passwords'))->check($data);
-} catch (Exception $e) {
+} catch (Throwable $e) {
     echo $e->getMessage();
 }
 ?>

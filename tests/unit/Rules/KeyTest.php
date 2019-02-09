@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\TestCase;
+use Throwable;
 
 /**
  * @group  rule
@@ -104,13 +105,13 @@ class KeyTest extends TestCase
         try {
             $rule->assert($input);
             self::fail('`assert()` must throws exception');
-        } catch (\Exception $e) {
+        } catch (Throwable $e) {
         }
 
         try {
             $rule->check($input);
             self::fail('`check()` must throws exception');
-        } catch (\Exception $e) {
+        } catch (Throwable $e) {
         }
 
         self::assertFalse($rule->validate($input));

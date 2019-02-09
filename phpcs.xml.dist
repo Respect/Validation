@@ -48,6 +48,7 @@
     <rule ref="SlevomatCodingStandard.ControlStructures.RequireShortTernaryOperator" />
     <rule ref="SlevomatCodingStandard.ControlStructures.UselessTernaryOperator" />
     <rule ref="SlevomatCodingStandard.Exceptions.DeadCatch" />
+    <rule ref="SlevomatCodingStandard.Exceptions.ReferenceThrowableOnly" />
     <rule ref="SlevomatCodingStandard.Functions.UselessParameterDefaultValue" />
     <rule ref="SlevomatCodingStandard.Namespaces.DisallowGroupUse" />
     <rule ref="SlevomatCodingStandard.Namespaces.NamespaceDeclaration" />

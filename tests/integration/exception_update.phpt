@@ -14,7 +14,7 @@ Factory::setDefaultInstance(new Factory([], [], function (string $message): stri
 
 try {
     v::not(v::alnum())->check('abc123');
-} catch (Exception $exception) {
+} catch (Throwable $exception) {
     echo $exception->getMessage();
 }
 ?>
