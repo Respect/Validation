@@ -33,10 +33,6 @@ class Slug extends AbstractRule
             return false;
         }
 
-        if (preg_match('@^-|-$@', $input)) {
-            return false;
-        }
-
-        return true;
+        return preg_match('@^-|-$@', $input) === 0;
     }
 }

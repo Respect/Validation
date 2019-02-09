@@ -56,10 +56,8 @@ final class Cnh extends AbstractRule
         }
 
         $dv2 = $s2 % 11 - ($dv1 > 9 ? 2 : 0);
-        if ($input[10] != (($dv2 < 0 ? $dv2 + 11 : $dv2) > 9) ? 0 : $dv2) {
-            return false;
-        }
+        $check = $dv2 < 0 ? $dv2 + 11 : $dv2 > 9 ? 0 : $dv2;
 
-        return true;
+        return $input[10] == $check;
     }
 }

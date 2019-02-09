@@ -43,11 +43,7 @@ final class UploadedTest extends RuleTestCase
         uopz_set_return(
             'is_uploaded_file',
             static function (string $filename): bool {
-                if ($filename === UploadedTest::UPLOADED_FILENAME) {
-                    return true;
-                }
-
-                return false;
+                return $filename === UploadedTest::UPLOADED_FILENAME;
             },
             true
         );
