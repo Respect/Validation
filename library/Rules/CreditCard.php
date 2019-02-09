@@ -32,44 +32,20 @@ use function preg_replace;
  */
 final class CreditCard extends AbstractRule
 {
-    /**
-     * @var string
-     */
     public const ANY = 'Any';
 
-    /**
-     * @var string
-     */
     public const AMERICAN_EXPRESS = 'American Express';
 
-    /**
-     * @var string
-     */
     public const DINERS_CLUB = 'Diners Club';
 
-    /**
-     * @var string
-     */
     public const DISCOVER = 'Discover';
 
-    /**
-     * @var string
-     */
     public const JCB = 'JCB';
 
-    /**
-     * @var string
-     */
     public const MASTERCARD = 'MasterCard';
 
-    /**
-     * @var string
-     */
     public const VISA = 'Visa';
 
-    /**
-     * @var array
-     */
     private const BRAND_REGEX_LIST = [
         self::ANY => '/^[0-9]+$/',
         self::AMERICAN_EXPRESS => '/^3[47]\d{13}$/',

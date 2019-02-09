@@ -36,9 +36,6 @@ final class VideoUrl extends AbstractRule
     private $service;
 
     // phpcs:disable Generic.Files.LineLength.TooLong
-    /**
-     * @var array
-     */
     private const SERVICES = [
         'youtube' => '@^https?://(www\.)?(?:youtube\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^\"&?/]{11})@i',
         'vimeo' => '@^https?://(www\.)?(player\.)?(vimeo\.com/)((channels/[A-z]+/)|(groups/[A-z]+/videos/)|(video/))?([0-9]+)@i',

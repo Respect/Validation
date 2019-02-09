@@ -32,7 +32,6 @@ final class Type extends AbstractRule
     /**
      * Collection of available types for validation.
      *
-     * @var array
      */
     private const AVAILABLE_TYPES = [
         'array' => 'array',

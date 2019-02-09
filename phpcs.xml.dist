@@ -68,6 +68,7 @@
             <property name="enableEachParameterAndReturnInspection" value="true" />
         </properties>
     </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.UselessConstantTypeHint" />
     <rule ref="Squiz.PHP.CommentedOutCode" />
     <rule ref="Squiz.WhiteSpace.FunctionSpacing">
         <properties>

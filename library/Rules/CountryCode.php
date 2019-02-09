@@ -33,28 +33,24 @@ final class CountryCode extends AbstractSearcher
     /**
      * The ISO representation of a country code.
      *
-     * @var string
      */
     public const ALPHA2 = 'alpha-2';
 
     /**
      * The ISO3 representation of a country code.
      *
-     * @var string
      */
     public const ALPHA3 = 'alpha-3';
 
     /**
      * The ISO-number representation of a country code.
      *
-     * @var string
      */
     public const NUMERIC = 'numeric';
 
     /**
      * Position of the indexes of each set in the list of country codes.
      *
-     * @var array
      */
     private const SET_INDEXES = [
         self::ALPHA2 => 0,
@@ -65,7 +61,6 @@ final class CountryCode extends AbstractSearcher
     /**
      * @see http://download.geonames.org/export/dump/countryInfo.txt
      *
-     * @var array
      */
     private const COUNTRY_CODES = [
         ['AD', 'AND', '020'], // Andorra

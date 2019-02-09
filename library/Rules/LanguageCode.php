@@ -37,7 +37,6 @@ final class LanguageCode extends AbstractEnvelope
     /**
      * @see http://www.loc.gov/standards/iso639-2/ISO-639-2_utf-8.txt
      *
-     * @var array
      */
     public const LANGUAGE_CODES = [
         ['aa', '﻿aar'], // Afar
