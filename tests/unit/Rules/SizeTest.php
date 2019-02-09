@@ -26,7 +26,7 @@ use SplFileInfo;
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SizeTest extends TestCase
+final class SizeTest extends TestCase
 {
     /**
      * @return mixed[][]

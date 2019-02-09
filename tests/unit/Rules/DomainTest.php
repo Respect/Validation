@@ -26,7 +26,7 @@ use Respect\Validation\Validator as v;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Mehmet Tolga Avcioglu <mehmet@activecom.net>
  */
-class DomainTest extends TestCase
+final class DomainTest extends TestCase
 {
     /**
      * @var Domain

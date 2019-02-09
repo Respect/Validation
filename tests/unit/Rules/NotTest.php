@@ -27,7 +27,7 @@ use Respect\Validation\Validator;
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class NotTest extends TestCase
+final class NotTest extends TestCase
 {
     /**
      * @doesNotPerformAssertions

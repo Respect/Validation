@@ -21,7 +21,7 @@ use Respect\Validation\Test\RuleTestCase;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class PlIdentityCardTest extends RuleTestCase
+final class PlIdentityCardTest extends RuleTestCase
 {
     /**
      * {@inheritdoc}

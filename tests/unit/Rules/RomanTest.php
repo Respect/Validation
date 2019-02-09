@@ -24,7 +24,7 @@ use Respect\Validation\Test\TestCase;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jean Pimentel <jeanfap@gmail.com>
  */
-class RomanTest extends TestCase
+final class RomanTest extends TestCase
 {
     /**
      * @var Roman

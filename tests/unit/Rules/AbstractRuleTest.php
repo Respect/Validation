@@ -23,7 +23,7 @@ use Respect\Validation\Test\TestCase;
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class AbstractRuleTest extends TestCase
+final class AbstractRuleTest extends TestCase
 {
     /**
      * @return bool[][]

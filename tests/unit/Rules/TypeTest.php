@@ -25,7 +25,7 @@ use function tmpfile;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Paul Karikari <paulkarikari1@gmail.com>
  */
-class TypeTest extends RuleTestCase
+final class TypeTest extends RuleTestCase
 {
     /**
      * @expectedException \Respect\Validation\Exceptions\ComponentException

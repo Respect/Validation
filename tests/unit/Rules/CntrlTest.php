@@ -27,7 +27,7 @@ use Respect\Validation\Test\TestCase;
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author Pascal Borreli <pascal@borreli.com>
  */
-class CntrlTest extends TestCase
+final class CntrlTest extends TestCase
 {
     /**
      * @dataProvider providerForValidCntrl

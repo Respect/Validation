@@ -24,7 +24,7 @@ use Respect\Validation\Test\TestCase;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Ian Nisbet <ian@glutenite.co.uk>
  */
-class KeyValueTest extends TestCase
+final class KeyValueTest extends TestCase
 {
     /**
      * @test

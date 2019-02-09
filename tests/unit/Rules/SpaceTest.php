@@ -27,7 +27,7 @@ use Respect\Validation\Test\TestCase;
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author Pascal Borreli <pascal@borreli.com>
  */
-class SpaceTest extends TestCase
+final class SpaceTest extends TestCase
 {
     /**
      * @dataProvider providerForValidSpace

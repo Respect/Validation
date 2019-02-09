@@ -25,7 +25,7 @@ use Respect\Validation\Test\TestCase;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Sebastian <me@sebastianpontow.de>
  */
-class PostalCodeTest extends TestCase
+final class PostalCodeTest extends TestCase
 {
     /**
      * @test

@@ -22,7 +22,7 @@ use Respect\Validation\Test\TestCase;
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class NestedValidationExceptionTest extends TestCase
+final class NestedValidationExceptionTest extends TestCase
 {
     /**
      * @test

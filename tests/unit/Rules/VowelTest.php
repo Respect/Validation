@@ -27,7 +27,7 @@ use Respect\Validation\Test\TestCase;
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author Pascal Borreli <pascal@borreli.com>
  */
-class VowelTest extends TestCase
+final class VowelTest extends TestCase
 {
     /**
      * @dataProvider providerForValidVowels

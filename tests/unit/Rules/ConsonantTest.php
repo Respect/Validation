@@ -27,7 +27,7 @@ use Respect\Validation\Test\TestCase;
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author Pascal Borreli <pascal@borreli.com>
  */
-class ConsonantTest extends TestCase
+final class ConsonantTest extends TestCase
 {
     /**
      * @dataProvider providerForValidConsonants

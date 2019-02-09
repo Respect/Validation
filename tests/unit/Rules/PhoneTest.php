@@ -25,7 +25,7 @@ use Respect\Validation\Test\TestCase;
  * @author Michael Firsikov <michael.firsikov@gmail.com>
  * @author Roman Derevianko <roman.derevianko@gmail.com>
  */
-class PhoneTest extends TestCase
+final class PhoneTest extends TestCase
 {
     /**
      * @var Phone

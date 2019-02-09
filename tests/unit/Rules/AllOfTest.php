@@ -26,7 +26,7 @@ use Respect\Validation\Validatable;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
-class AllOfTest extends TestCase
+final class AllOfTest extends TestCase
 {
     /**
      * @test

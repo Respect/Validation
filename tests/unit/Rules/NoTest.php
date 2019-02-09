@@ -23,7 +23,7 @@ use Respect\Validation\Test\TestCase;
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class NoTest extends TestCase
+final class NoTest extends TestCase
 {
     /**
      * @dataProvider validNoProvider

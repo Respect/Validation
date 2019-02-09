@@ -27,7 +27,7 @@ use Respect\Validation\Test\TestCase;
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author Pascal Borreli <pascal@borreli.com>
  */
-class PunctTest extends TestCase
+final class PunctTest extends TestCase
 {
     /**
      * @dataProvider providerForValidPunct

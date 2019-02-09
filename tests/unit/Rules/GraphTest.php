@@ -27,7 +27,7 @@ use Respect\Validation\Test\TestCase;
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author Pascal Borreli <pascal@borreli.com>
  */
-class GraphTest extends TestCase
+final class GraphTest extends TestCase
 {
     /**
      * @dataProvider providerForValidGraph

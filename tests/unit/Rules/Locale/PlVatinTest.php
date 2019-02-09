@@ -23,7 +23,7 @@ use stdClass;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Tomasz Regdos <tomek@regdos.com>
  */
-class PlVatinTest extends RuleTestCase
+final class PlVatinTest extends RuleTestCase
 {
     /**
      * {@inheritdoc}

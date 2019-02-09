@@ -25,7 +25,7 @@ use Respect\Validation\Test\TestCase;
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class CheckExceptionsTest extends TestCase
+final class CheckExceptionsTest extends TestCase
 {
     /**
      * @return string[][]

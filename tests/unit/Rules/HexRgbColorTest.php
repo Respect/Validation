@@ -25,7 +25,7 @@ use stdClass;
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class HexRgbColorTest extends TestCase
+final class HexRgbColorTest extends TestCase
 {
     /**
      * @dataProvider providerForValidHexRgbColor

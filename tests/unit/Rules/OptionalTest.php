@@ -24,7 +24,7 @@ use stdClass;
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class OptionalTest extends TestCase
+final class OptionalTest extends TestCase
 {
     /**
      * @return mixed[][]

@@ -24,7 +24,7 @@ use Respect\Validation\Test\TestCase;
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class OneOfTest extends TestCase
+final class OneOfTest extends TestCase
 {
     /**
      * @test

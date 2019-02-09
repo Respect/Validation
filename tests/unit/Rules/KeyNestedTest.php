@@ -28,7 +28,7 @@ use stdClass;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Ivan Zinovyev <vanyazin@gmail.com>
  */
-class KeyNestedTest extends TestCase
+final class KeyNestedTest extends TestCase
 {
     /**
      * @test

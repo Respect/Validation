@@ -24,7 +24,7 @@ use Respect\Validation\Test\TestCase;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Marcel dos Santos <marcelgsantos@gmail.com>
  */
-class SlugTest extends TestCase
+final class SlugTest extends TestCase
 {
     /**
      * @dataProvider providerValidSlug

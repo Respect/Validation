@@ -24,7 +24,7 @@ use Respect\Validation\Test\TestCase;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
-class ValidatorTest extends TestCase
+final class ValidatorTest extends TestCase
 {
     /**
      * @test

@@ -24,7 +24,7 @@ use Respect\Validation\Test\TestCase;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Mikhail Vyrtsev <reeywhaar@gmail.com>
  */
-class SortedTest extends TestCase
+final class SortedTest extends TestCase
 {
     /**
      * @test

@@ -22,7 +22,7 @@ use Respect\Validation\Test\TestCase;
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SubdivisionCodeTest extends TestCase
+final class SubdivisionCodeTest extends TestCase
 {
     /**
      * @expectedException \Respect\Validation\Exceptions\ComponentException
