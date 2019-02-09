@@ -120,7 +120,7 @@ final class Ip extends AbstractRule
         }
 
         if (mb_strpos($input, '-') !== false) {
-            list($this->startAddress, $this->endAddress) = explode('-', $input);
+            [$this->startAddress, $this->endAddress] = explode('-', $input);
 
             if (!$this->verifyAddress($this->startAddress)) {
                 throw new ComponentException('Invalid network range');
