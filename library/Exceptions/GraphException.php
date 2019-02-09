@@ -17,7 +17,7 @@ namespace Respect\Validation\Exceptions;
  * @author Andre Ramaciotti <andre@ramaciotti.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class GraphException extends FilteredValidationException
+final class GraphException extends FilteredValidationException
 {
     /**
      * {@inheritdoc}
