@@ -34,6 +34,7 @@
     <rule ref="PEAR.WhiteSpace.ObjectOperatorIndent" />
     <rule ref="SlevomatCodingStandard.Arrays.DisallowImplicitArrayCreation" />
     <rule ref="SlevomatCodingStandard.Classes.ClassConstantVisibility" />
+    <rule ref="SlevomatCodingStandard.Classes.DisallowLateStaticBindingForConstants" />
     <rule ref="SlevomatCodingStandard.Classes.ModernClassNameReference" />
     <rule ref="SlevomatCodingStandard.Classes.SuperfluousInterfaceNaming" />
     <rule ref="SlevomatCodingStandard.Classes.SuperfluousTraitNaming" />

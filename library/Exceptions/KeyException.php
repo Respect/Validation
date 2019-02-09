@@ -44,6 +44,6 @@ final class KeyException extends NestedValidationException implements NonOmissib
      */
     protected function chooseTemplate(): string
     {
-        return $this->getParam('hasReference') ? static::INVALID : static::NOT_PRESENT;
+        return $this->getParam('hasReference') ? self::INVALID : self::NOT_PRESENT;
     }
 }

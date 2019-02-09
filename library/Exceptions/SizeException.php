@@ -46,11 +46,11 @@ class SizeException extends NestedValidationException
     protected function chooseTemplate(): string
     {
         if (!$this->getParam('minValue')) {
-            return static::GREATER;
+            return self::GREATER;
         } elseif (!$this->getParam('maxValue')) {
-            return static::LOWER;
+            return self::LOWER;
         }
 
-        return static::BOTH;
+        return self::BOTH;
     }
 }

@@ -44,9 +44,9 @@ final class CreditCardException extends ValidationException
     protected function chooseTemplate(): string
     {
         if (CreditCard::ANY === $this->getParam('brand')) {
-            return static::STANDARD;
+            return self::STANDARD;
         }
 
-        return static::BRANDED;
+        return self::BRANDED;
     }
 }

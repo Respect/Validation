@@ -46,6 +46,6 @@ class GroupedValidationException extends NestedValidationException
         $numRules = $this->getParam('passed');
         $numFailed = count($this->getChildren());
 
-        return $numRules === $numFailed ? static::NONE : static::SOME;
+        return $numRules === $numFailed ? self::NONE : self::SOME;
     }
 }

@@ -40,6 +40,6 @@ final class DateTimeException extends ValidationException
      */
     protected function chooseTemplate(): string
     {
-        return $this->getParam('format') ? static::FORMAT : static::STANDARD;
+        return $this->getParam('format') ? self::FORMAT : self::STANDARD;
     }
 }

@@ -43,9 +43,9 @@ final class IpException extends ValidationException
     protected function chooseTemplate(): string
     {
         if (!$this->getParam('range')) {
-            return static::STANDARD;
+            return self::STANDARD;
         }
 
-        return static::NETWORK_RANGE;
+        return self::NETWORK_RANGE;
     }
 }

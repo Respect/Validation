@@ -44,6 +44,6 @@ final class AttributeException extends NestedValidationException implements NonO
      */
     protected function chooseTemplate(): string
     {
-        return $this->getParam('hasReference') ? static::INVALID : static::NOT_PRESENT;
+        return $this->getParam('hasReference') ? self::INVALID : self::NOT_PRESENT;
     }
 }

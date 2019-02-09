@@ -25,6 +25,6 @@ class FilteredValidationException extends ValidationException
      */
     protected function chooseTemplate(): string
     {
-        return $this->getParam('additionalChars') ? static::EXTRA : static::STANDARD;
+        return $this->getParam('additionalChars') ? self::EXTRA : self::STANDARD;
     }
 }

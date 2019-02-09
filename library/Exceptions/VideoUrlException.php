@@ -45,6 +45,6 @@ final class VideoUrlException extends ValidationException
             return self::SERVICE;
         }
 
-        return static::STANDARD;
+        return self::STANDARD;
     }
 }

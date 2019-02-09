@@ -49,17 +49,17 @@ final class LengthException extends ValidationException
     protected function chooseTemplate(): string
     {
         if (!$this->getParam('minValue')) {
-            return static::GREATER;
+            return self::GREATER;
         }
 
         if (!$this->getParam('maxValue')) {
-            return static::LOWER;
+            return self::LOWER;
         }
 
         if ($this->getParam('minValue') == $this->getParam('maxValue')) {
             return self::EXACT;
         }
 
-        return static::BOTH;
+        return self::BOTH;
     }
 }

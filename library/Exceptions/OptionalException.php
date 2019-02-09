@@ -36,6 +36,6 @@ class OptionalException extends ValidationException
 
     protected function chooseTemplate(): string
     {
-        return $this->getParam('name') ? static::NAMED : static::STANDARD;
+        return $this->getParam('name') ? self::NAMED : self::STANDARD;
     }
 }
