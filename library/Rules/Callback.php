@@ -13,7 +13,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use function call_user_func;
+use function array_merge;
+use function call_user_func_array;
+use function count;
 
 /**
  * Validates the input using the return of a given callable.
@@ -50,6 +52,11 @@ final class Callback extends AbstractRule
      */
     public function validate($input): bool
     {
-        return (bool) call_user_func($this->callback, $input, ...$this->arguments);
+        $arguments = [$input];
+        if (count($this->arguments) > 0) {
+            $arguments = array_merge($arguments, $this->arguments);
+        }
+
+        return (bool) call_user_func_array($this->callback, $arguments);
     }
 }
