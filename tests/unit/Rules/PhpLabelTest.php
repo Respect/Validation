@@ -13,7 +13,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use DateTime;
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 use function mb_strtoupper;
 use function mt_rand;
 use function random_int;
@@ -73,8 +75,8 @@ final class PhpLabelTest extends RuleTestCase
             [$rule, 0],
             [$rule, 1],
             [$rule, []],
-            [$rule, new \stdClass()],
-            [$rule, new \DateTime()],
+            [$rule, new stdClass()],
+            [$rule, new DateTime()],
         ];
     }
 }

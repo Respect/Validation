@@ -16,6 +16,7 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use SplFileObject;
+use stdClass;
 
 /**
  * @group rule
@@ -54,7 +55,7 @@ final class DirectoryTest extends RuleTestCase
             [$rule, new SplFileObject(__FILE__)],
             [$rule, ''],
             [$rule, __FILE__],
-            [$rule, new \stdClass()],
+            [$rule, new stdClass()],
             [$rule, [__DIR__]],
         ];
     }

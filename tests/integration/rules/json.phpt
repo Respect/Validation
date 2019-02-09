@@ -24,7 +24,7 @@ try {
 }
 
 try {
-    v::json()->assert(new \stdClass());
+    v::json()->assert(new stdClass());
 } catch (NestedValidationException $exception) {
     echo $exception->getFullMessage().PHP_EOL;
 }

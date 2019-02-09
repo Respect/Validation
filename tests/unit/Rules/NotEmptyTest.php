@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
  * @group rule
@@ -38,7 +39,7 @@ final class NotEmptyTest extends RuleTestCase
             [$rule, ' oi'],
             [$rule, [5]],
             [$rule, [0]],
-            [$rule, new \stdClass()],
+            [$rule, new stdClass()],
         ];
     }
 

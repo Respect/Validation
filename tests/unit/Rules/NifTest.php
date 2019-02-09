@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
  * @group  rule
@@ -101,7 +102,7 @@ final class NifTest extends RuleTestCase
             [$rule, 1],
             [$rule, 0.5],
             [$rule, null],
-            [$rule, new \stdClass()],
+            [$rule, new stdClass()],
             [$rule, stream_context_create()],
         ];
     }

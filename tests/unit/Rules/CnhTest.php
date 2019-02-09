@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
  * @group rule
@@ -73,7 +74,7 @@ final class CnhTest extends RuleTestCase
 
         return [
             [$rule, []],
-            [$rule, new \stdClass()],
+            [$rule, new stdClass()],
             [$rule, '0265131640'],
             [$rule, '0439732280'],
             [$rule, '0437571130'],

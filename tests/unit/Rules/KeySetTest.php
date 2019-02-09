@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\TestCase;
+use stdClass;
 
 /**
  * @group rule
@@ -231,7 +232,7 @@ final class KeySetTest extends TestCase
             [''],
             [null],
             [0],
-            [new \stdClass()],
+            [new stdClass()],
         ];
     }
 }

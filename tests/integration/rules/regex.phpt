@@ -22,7 +22,7 @@ try {
 }
 
 try {
-    v::regex('/^w+$/')->assert(new \stdClass());
+    v::regex('/^w+$/')->assert(new stdClass());
 } catch (NestedValidationException $exception) {
     echo $exception->getFullMessage().PHP_EOL;
 }

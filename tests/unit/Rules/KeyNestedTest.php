@@ -16,6 +16,7 @@ namespace Respect\Validation\Rules;
 use ArrayObject;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
+use stdClass;
 
 /**
  * @group  rule
@@ -208,7 +209,7 @@ class KeyNestedTest extends TestCase
     {
         $subValidator = new Length(1, 3);
         $validator = new KeyNested('bar.rab', $subValidator, false);
-        $object = new \stdClass();
+        $object = new stdClass();
         self::assertTrue($validator->validate($object));
     }
 

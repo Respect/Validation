@@ -18,7 +18,7 @@ try {
 }
 
 try {
-    v::not(v::instance(Traversable::class))->check(new \ArrayObject());
+    v::not(v::instance(Traversable::class))->check(new ArrayObject());
 } catch (InstanceException $exception) {
     echo $exception->getMessage().PHP_EOL;
 }

@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use ArrayIterator;
+use ArrayObject;
 use Respect\Validation\Test\RuleTestCase;
 
 /**
@@ -50,8 +52,8 @@ final class ArrayTypeTest extends RuleTestCase
             [$rule, 1],
             [$rule, 1.0],
             [$rule, true],
-            [$rule, new \ArrayObject()],
-            [$rule, new \ArrayIterator()],
+            [$rule, new ArrayObject()],
+            [$rule, new ArrayIterator()],
         ];
     }
 }

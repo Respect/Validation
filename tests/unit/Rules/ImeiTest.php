@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
  * @group rule
@@ -56,7 +57,7 @@ final class ImeiTest extends RuleTestCase
             [$rule, ''],
             [$rule, null],
             [$rule, 1.0],
-            [$rule, new \stdClass()],
+            [$rule, new stdClass()],
             [$rule, '490154203237512'],
             [$rule, '4901542032375125'],
             [$rule, 'Whateveeeeeerrr'],

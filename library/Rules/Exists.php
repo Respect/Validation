@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use SplFileInfo;
 use function file_exists;
 use function is_string;
 
@@ -27,7 +28,7 @@ final class Exists extends AbstractRule
      */
     public function validate($input): bool
     {
-        if ($input instanceof \SplFileInfo) {
+        if ($input instanceof SplFileInfo) {
             $input = $input->getPathname();
         }
 

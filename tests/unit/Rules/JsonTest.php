@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
  * @group rule
@@ -57,7 +58,7 @@ final class JsonTest extends RuleTestCase
 
         return [
             [$json, false],
-            [$json, new \stdClass()],
+            [$json, new stdClass()],
             [$json, []],
             [$json, ''],
             [$json, 'a'],

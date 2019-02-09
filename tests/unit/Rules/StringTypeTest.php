@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
  * @group rule
@@ -50,7 +51,7 @@ final class StringTypeTest extends RuleTestCase
         return [
             [$rule, null],
             [$rule, []],
-            [$rule, new \stdClass()],
+            [$rule, new stdClass()],
             [$rule, 150],
         ];
     }

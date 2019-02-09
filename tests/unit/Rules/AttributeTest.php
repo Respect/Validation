@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Validatable;
+use stdClass;
 
 /**
  * @group  rule
@@ -40,7 +41,7 @@ final class AttributeTest extends RuleTestCase
      */
     public function providerForValidInput(): array
     {
-        $obj = new \stdClass();
+        $obj = new stdClass();
         $obj->bar = 'foo';
 
         $extraValidator = $this->createMock(Validatable::class);
@@ -67,7 +68,7 @@ final class AttributeTest extends RuleTestCase
      */
     public function providerForInvalidInput(): array
     {
-        $obj = new \stdClass();
+        $obj = new stdClass();
         $obj->bar = 'foo';
 
         $extraValidatorMock = $this->createMock(Validatable::class);

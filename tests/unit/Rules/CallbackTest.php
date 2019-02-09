@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
  * @group rule
@@ -34,7 +35,7 @@ final class CallbackTest extends RuleTestCase
     public function providerForValidInput(): array
     {
         return [
-            [new Callback('is_a', 'stdClass'), new \stdClass()],
+            [new Callback('is_a', 'stdClass'), new stdClass()],
             [new Callback([$this, 'sampleCallbackUsedInsideThisTest']), 'test'],
             [new Callback('is_string'), 'test'],
             [

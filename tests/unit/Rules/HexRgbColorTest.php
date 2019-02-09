@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\TestCase;
+use stdClass;
 
 /**
  * @group  rule
@@ -87,7 +88,7 @@ class HexRgbColorTest extends TestCase
             [1],
             [443],
             [[]],
-            [new \stdClass()],
+            [new stdClass()],
             [null],
         ];
     }
