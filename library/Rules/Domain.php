@@ -65,17 +65,13 @@ class Domain extends AbstractComposite
 
     public function tldCheck(bool $do = true): void
     {
-        if (true === $do) {
-            $this->tld = new Tld();
-        } else {
-            $this->tld = new AllOf(
-                new Not(
-                    new StartsWith('-')
-                ),
-                new NoWhitespace(),
-                new Length(2, null)
-            );
-        }
+        $this->tld = $do ? new Tld() : new AllOf(
+            new Not(
+                new StartsWith('-')
+            ),
+            new NoWhitespace(),
+            new Length(2, null)
+        );
     }
 
     /**
