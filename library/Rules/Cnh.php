@@ -50,11 +50,13 @@ final class Cnh extends AbstractRule
             $s2 += (int) $input[$c] * (10 - $p);
         }
 
-        if ($input[9] != (($dv1 = $s1 % 11) > 9) ? 0 : $dv1) {
+        $dv1 = $s1 % 11;
+        if ($input[9] != ($dv1 > 9) ? 0 : $dv1) {
             return false;
         }
 
-        if ($input[10] != (((($dv2 = ($s2 % 11) - (($dv1 > 9) ? 2 : 0)) < 0) ? $dv2 + 11 : $dv2) > 9) ? 0 : $dv2) {
+        $dv2 = ($s2 % 11) - (($dv1 > 9) ? 2 : 0);
+        if ($input[10] != ((($dv2 < 0) ? $dv2 + 11 : $dv2) > 9) ? 0 : $dv2) {
             return false;
         }
 

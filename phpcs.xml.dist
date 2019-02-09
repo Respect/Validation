@@ -43,6 +43,7 @@
             <property name="linesCountBeforeFirstUse" value="0" />
         </properties>
     </rule>
+    <rule ref="SlevomatCodingStandard.ControlStructures.AssignmentInCondition" />
     <rule ref="SlevomatCodingStandard.ControlStructures.DisallowContinueWithoutIntegerOperandInSwitch" />
     <rule ref="SlevomatCodingStandard.ControlStructures.NewWithParentheses" />
     <rule ref="SlevomatCodingStandard.ControlStructures.RequireNullCoalesceOperator" />

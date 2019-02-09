@@ -254,7 +254,8 @@ final class Factory
             $values[$property->getName()] = $propertyValue;
         }
 
-        if (($parentReflection = $reflection->getParentClass())) {
+        $parentReflection = $reflection->getParentClass();
+        if (false !== $parentReflection) {
             return $values + $this->extractPropertiesValues($validatable, $parentReflection);
         }
 
