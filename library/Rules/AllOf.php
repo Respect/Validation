@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\AllOfException;
-use Respect\Validation\Exceptions\GroupedValidationException;
 
 /**
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>

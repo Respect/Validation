@@ -10,7 +10,6 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Rules\Callback;
 use Respect\Validation\Validator;
 
 $rule = Validator::callback('is_int')->setTemplate('{{name}} is not tasty');

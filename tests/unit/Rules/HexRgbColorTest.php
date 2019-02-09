@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use a;
 use Respect\Validation\Test\TestCase;
 
 /**

@@ -58,6 +58,11 @@
     <rule ref="SlevomatCodingStandard.Namespaces.NamespaceDeclaration" />
     <rule ref="SlevomatCodingStandard.Namespaces.NamespaceSpacing" />
     <rule ref="SlevomatCodingStandard.Namespaces.RequireOneNamespaceInFile" />
+    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
+        <properties>
+            <property name="searchAnnotations" value="true" />
+        </properties>
+    </rule>
     <rule ref="SlevomatCodingStandard.Namespaces.UseDoesNotStartWithBackslash" />
     <rule ref="SlevomatCodingStandard.Namespaces.UseFromSameNamespace" />
     <rule ref="SlevomatCodingStandard.Namespaces.UselessAlias" />

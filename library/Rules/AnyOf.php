@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\AnyOfException;
-use Respect\Validation\Exceptions\GroupedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 
 /**

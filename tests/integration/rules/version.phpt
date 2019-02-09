@@ -18,7 +18,7 @@ try {
 }
 
 try {
-    V::not(v::version())->check('1.0.0-alpha');
+    v::not(v::version())->check('1.0.0-alpha');
 } catch (VersionException $exception) {
     echo $exception->getMessage().PHP_EOL;
 }

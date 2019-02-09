@@ -18,7 +18,7 @@ try {
 }
 
 try {
-    V::not(v::unique())->check([1, 2, 3, 4]);
+    v::not(v::unique())->check([1, 2, 3, 4]);
 } catch (UniqueException $exception) {
     echo $exception->getMessage().PHP_EOL;
 }
