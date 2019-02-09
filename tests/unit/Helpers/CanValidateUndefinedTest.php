@@ -25,8 +25,8 @@ use Respect\Validation\Test\TestCase;
  */
 final class CanValidateUndefinedTest extends TestCase
 {
-    use CanValidateUndefined,
-        UndefinedProvider;
+    use CanValidateUndefined;
+    use UndefinedProvider;
 
     /**
      * @test
