@@ -3,7 +3,8 @@
 - `Graph()`
 - `Graph(string ...$additionalChars)`
 
-Validates all characters that are graphically represented.
+Validates if all characters in the input are printable and actually creates
+visible output (no white space).
 
 ```php
 v::graph()->validate('LKM@#$%4;'); // true

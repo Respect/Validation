@@ -13,11 +13,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\GraphException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Graph
  *
@@ -27,82 +27,46 @@ use Respect\Validation\Test\TestCase;
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author Pascal Borreli <pascal@borreli.com>
  */
-final class GraphTest extends TestCase
+final class GraphTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForValidGraph
-     *
-     * @test
+     * @inheritdoc
      */
-    public function validDataWithGraphCharsShouldReturnTrue(string $validGraph): void
+    public function providerForValidInput(): array
     {
-        $validator = new Graph();
-        self::assertTrue($validator->validate($validGraph));
-    }
-
-    /**
-     * @dataProvider providerForInvalidGraph
-     * @expectedException \Respect\Validation\Exceptions\GraphException
-     *
-     * @test
-     *
-     * @param mixed $invalidGraph
-     */
-    public function invalidGraphShouldFailAndThrowGraphException($invalidGraph): void
-    {
-        $validator = new Graph();
-        self::assertFalse($validator->validate($invalidGraph));
-        $validator->assert($invalidGraph);
-    }
-
-    /**
-     * @dataProvider providerAdditionalChars
-     *
-     * @test
-     */
-    public function additionalCharsShouldBeRespected(string $additional, string $input): void
-    {
-        $validator = new Graph($additional);
-        self::assertTrue($validator->validate($input));
-    }
-
-    /**
-     * @return string[][]
-     */
-    public function providerAdditionalChars(): array
-    {
+        $graph = new Graph();
+        
         return [
-            [' ', '!@#$%^&*(){} abc 123'],
-            [" \t\n", "[]?+=/\\-_|\"',<>. \t \n abc 123"],
+            'String with special characters "LKA#@%.54"' => [$graph, 'LKA#@%.54'],
+            'String "foobar"' => [$graph, 'foobar'],
+            'String 16-50' => [$graph, '16-50'],
+            'String 123' => [$graph, '123'],
+            'String with special characters "#$%&*_"' => [$graph, '#$%&*_'],
+            'Ignoring control characters "\n"' => [new Graph("\n"), "#$%&*_\n~"],
+            'Ignoring control characters "\n#\t&\r"' => [new Graph("\n#\t&\r"), "#$%&*_\n~\t**\r"],
+            'Ignoring character "_"' => [new Graph("_"), "abc\#$%&*_"],
+            'Ignoring characters "# $"' => [new Graph("# $"), "#$%&*_"],
+            'Ignoring character with space' => [new Graph(' '), '!@#$%^&*(){} abc 123'],
+            'Ignoring control characters " \t\n"' => [new Graph(" \t\n"), "[]?+=/\\-_|\"',<>. \t \n abc 123"],
         ];
     }
 
     /**
-     * @return string[][]
+     * {@inheritdoc}
      */
-    public function providerForValidGraph(): array
+    public function providerForInvalidInput(): array
     {
-        return [
-            ['LKA#@%.54'],
-            ['foobar'],
-            ['16-50'],
-            ['123'],
-            ['#$%&*_'],
-        ];
-    }
+        $graph = new Graph();
 
-    /**
-     * @return mixed[][]
-     */
-    public function providerForInvalidGraph(): array
-    {
         return [
-            [''],
-            [null],
-            ["foo\nbar"],
-            ["foo\tbar"],
-            ['foo bar'],
-            [' '],
+            'String empty' => [$graph, ''],
+            'Parameter null' => [$graph, null],
+            'String with "\n"' => [$graph, "foo\nbar"],
+            'String with "\t"' => [$graph, "foo\tbar"],
+            'String with "foo bar"' => [$graph, 'foo bar'],
+            'String with space' => [$graph, ' '],
+            'Igonring space' => [new Graph(' '), "@__§¬¬¬\n"],
+            'Ignoring control characters "foo\nbar"' => [new Graph("foo\nbar"), "foo\nbar\ree"],
         ];
     }
 }
