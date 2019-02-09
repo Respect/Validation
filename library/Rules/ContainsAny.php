@@ -45,7 +45,7 @@ final class ContainsAny extends AbstractEnvelope
     private function getRules(array $needles, bool $identical): array
     {
         return array_map(
-            function ($needle) use ($identical): Contains {
+            static function ($needle) use ($identical): Contains {
                 return new Contains($needle, $identical);
             },
             $needles

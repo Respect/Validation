@@ -11,7 +11,7 @@ use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Factory;
 use Respect\Validation\Validator;
 
-Factory::setDefaultInstance(new Factory([], [], function (string $message): string {
+Factory::setDefaultInstance(new Factory([], [], static function (string $message): string {
     $messages = [
         '{{name}} must be of type string' => '{{name}} deve ser do tipo string',
     ];

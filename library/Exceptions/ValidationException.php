@@ -171,7 +171,7 @@ class ValidationException extends InvalidArgumentException implements Exception
     {
         return preg_replace_callback(
             '/{{(\w+)}}/',
-            function ($match) use ($vars) {
+            static function ($match) use ($vars) {
                 if (!isset($vars[$match[1]])) {
                     return $match[0];
                 }

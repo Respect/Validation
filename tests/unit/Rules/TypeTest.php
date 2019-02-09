@@ -49,7 +49,7 @@ class TypeTest extends RuleTestCase
             [new Type('boolean'), false],
             [
                 new Type('callable'),
-                function (): void {
+                static function (): void {
                 }
             ],
             [new Type('double'), 0.8],

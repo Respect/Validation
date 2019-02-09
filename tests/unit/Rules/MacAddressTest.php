@@ -63,7 +63,7 @@ final class MacAddressTest extends RuleTestCase
             'resource' => [$sut, tmpfile()],
             'callable' => [
                 $sut,
-                function (): void {
+                static function (): void {
                 }
             ],
         ];

@@ -27,7 +27,7 @@ try {
 try {
     v::create()
         ->call(
-            function ($url) {
+            static function ($url) {
                 return parse_url($url);
             },
             v::arrayVal()->key('scheme', v::startsWith('https'))

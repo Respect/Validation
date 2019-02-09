@@ -74,7 +74,7 @@ final class CallTest extends TestCase
     public function assertShouldThrowCallExceptionWhenCallableThrowsAnException(): void
     {
         $input = [];
-        $callable = function (): void {
+        $callable = static function (): void {
             throw new Exception();
         };
 
@@ -148,7 +148,7 @@ final class CallTest extends TestCase
     public function checkShouldThrowCallExceptionWhenCallableThrowsAnException(): void
     {
         $input = [];
-        $callable = function (): void {
+        $callable = static function (): void {
             throw new Exception();
         };
 

@@ -57,7 +57,7 @@ final class StringValTest extends RuleTestCase
             [$rule, []],
             [
                 $rule,
-                function (): void {
+                static function (): void {
                 },
             ],
             [$rule, new stdClass()],

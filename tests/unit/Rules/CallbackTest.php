@@ -38,7 +38,7 @@ final class CallbackTest extends RuleTestCase
             [new Callback([$this, 'sampleCallbackUsedInsideThisTest']), 'test'],
             [new Callback('is_string'), 'test'],
             [
-                new Callback(function () {
+                new Callback(static function () {
                     return true;
                 }),
                 'wpoiur'
@@ -58,13 +58,13 @@ final class CallbackTest extends RuleTestCase
     {
         return [
             [
-                new Callback(function () {
+                new Callback(static function () {
                     return false;
                 }),
                 'w poiur'
             ],
             [
-                new Callback(function () {
+                new Callback(static function () {
                     return false;
                 }),
                 ''

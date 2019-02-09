@@ -31,7 +31,7 @@ class Sorted extends AbstractRule
 
     public function __construct(callable $fn = null, bool $ascending = true)
     {
-        $this->fn = $fn ?? function ($x) {
+        $this->fn = $fn ?? static function ($x) {
             return $x;
         };
         $this->ascending = $ascending;

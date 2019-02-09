@@ -37,7 +37,7 @@ final class CallableTypeTest extends RuleTestCase
         return [
             [
                 $rule,
-                function (): void {
+                static function (): void {
                 }
             ],
             [$rule, 'trim'],

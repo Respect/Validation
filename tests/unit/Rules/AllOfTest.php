@@ -33,13 +33,13 @@ class AllOfTest extends TestCase
      */
     public function validationShouldWorkIfAllRulesReturnTrue(): void
     {
-        $valid1 = new Callback(function () {
+        $valid1 = new Callback(static function () {
             return true;
         });
-        $valid2 = new Callback(function () {
+        $valid2 = new Callback(static function () {
             return true;
         });
-        $valid3 = new Callback(function () {
+        $valid3 = new Callback(static function () {
             return true;
         });
         $o = new AllOf($valid1, $valid2, $valid3);
@@ -117,13 +117,13 @@ class AllOfTest extends TestCase
      */
     public function providerStaticDummyRules(): array
     {
-        $theInvalidOne = new Callback(function () {
+        $theInvalidOne = new Callback(static function () {
             return false;
         });
-        $valid1 = new Callback(function () {
+        $valid1 = new Callback(static function () {
             return true;
         });
-        $valid2 = new Callback(function () {
+        $valid2 = new Callback(static function () {
             return true;
         });
 

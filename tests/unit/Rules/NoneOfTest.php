@@ -31,13 +31,13 @@ class NoneOfTest extends TestCase
      */
     public function valid(): void
     {
-        $valid1 = new Callback(function () {
+        $valid1 = new Callback(static function () {
             return false;
         });
-        $valid2 = new Callback(function () {
+        $valid2 = new Callback(static function () {
             return false;
         });
-        $valid3 = new Callback(function () {
+        $valid3 = new Callback(static function () {
             return false;
         });
         $o = new NoneOf($valid1, $valid2, $valid3);
@@ -53,13 +53,13 @@ class NoneOfTest extends TestCase
      */
     public function invalid(): void
     {
-        $valid1 = new Callback(function () {
+        $valid1 = new Callback(static function () {
             return false;
         });
-        $valid2 = new Callback(function () {
+        $valid2 = new Callback(static function () {
             return false;
         });
-        $valid3 = new Callback(function () {
+        $valid3 = new Callback(static function () {
             return true;
         });
         $o = new NoneOf($valid1, $valid2, $valid3);

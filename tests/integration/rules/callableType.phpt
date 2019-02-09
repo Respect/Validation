@@ -30,7 +30,7 @@ try {
 }
 
 try {
-    v::not(v::callableType())->assert(function (): void {
+    v::not(v::callableType())->assert(static function (): void {
     });
 } catch (NestedValidationException $exception) {
     echo $exception->getFullMessage().PHP_EOL;

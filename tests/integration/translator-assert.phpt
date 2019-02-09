@@ -11,7 +11,7 @@ use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Factory;
 use Respect\Validation\Validator;
 
-Factory::setDefaultInstance(new Factory([], [], function (string $message): string {
+Factory::setDefaultInstance(new Factory([], [], static function (string $message): string {
     $messages = [
         'All of the required rules must pass for {{name}}'
             => 'Todas as regras requeridas devem passar para {{name}}',

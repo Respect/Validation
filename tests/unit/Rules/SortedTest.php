@@ -108,7 +108,7 @@ class SortedTest extends TestCase
                 'key' => 5,
             ],
         ];
-        $rule = new Sorted(function ($x) {
+        $rule = new Sorted(static function ($x) {
             return $x['key'];
         });
 
@@ -135,7 +135,7 @@ class SortedTest extends TestCase
                 'key' => 5,
             ],
         ];
-        $rule = new Sorted(function ($x) {
+        $rule = new Sorted(static function ($x) {
             return $x['key'];
         });
 

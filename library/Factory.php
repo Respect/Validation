@@ -106,7 +106,7 @@ final class Factory
             self::$defaultInstance = new self(
                 self::DEFAULT_RULES_NAMESPACES,
                 self::DEFAULT_EXCEPTIONS_NAMESPACES,
-                function (string $message): string {
+                static function (string $message): string {
                     return $message;
                 }
             );
@@ -200,7 +200,7 @@ final class Factory
      */
     private function filterNamespaces(array $namespaces, array $defaultNamespaces): array
     {
-        $filter = function (string $namespace): string {
+        $filter = static function (string $namespace): string {
             return trim($namespace, '\\');
         };
 
