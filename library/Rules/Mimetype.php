@@ -15,9 +15,9 @@ namespace Respect\Validation\Rules;
 
 use finfo;
 use SplFileInfo;
-use const FILEINFO_MIME_TYPE;
 use function is_file;
 use function is_string;
+use const FILEINFO_MIME_TYPE;
 
 /**
  * Validates if the input is a file and if its MIME type matches the expected one.

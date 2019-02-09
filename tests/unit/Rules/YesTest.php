@@ -15,10 +15,10 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
-use const LC_ALL;
-use const PHP_INT_MAX;
 use function random_int;
 use function setlocale;
+use const LC_ALL;
+use const PHP_INT_MAX;
 
 /**
  * @group rule

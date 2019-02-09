@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use const SORT_REGULAR;
 use function array_unique;
 use function is_array;
+use const SORT_REGULAR;
 
 /**
  * Validates whether the input array contains only unique values.

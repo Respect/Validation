@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function filter_var;
 use const FILTER_NULL_ON_FAILURE;
 use const FILTER_VALIDATE_BOOLEAN;
-use function filter_var;
 
 /**
  * Validates if a value is considered as false.

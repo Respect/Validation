@@ -66,6 +66,7 @@
     <rule ref="SlevomatCodingStandard.Exceptions.ReferenceThrowableOnly" />
     <rule ref="SlevomatCodingStandard.Functions.StaticClosure" />
     <rule ref="SlevomatCodingStandard.Functions.UselessParameterDefaultValue" />
+    <rule ref="SlevomatCodingStandard.Namespaces.AlphabeticallySortedUses" />
     <rule ref="SlevomatCodingStandard.Namespaces.DisallowGroupUse" />
     <rule ref="SlevomatCodingStandard.Namespaces.NamespaceDeclaration" />
     <rule ref="SlevomatCodingStandard.Namespaces.NamespaceSpacing" />

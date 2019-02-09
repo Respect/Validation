@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use const FILTER_NULL_ON_FAILURE;
-use const FILTER_VALIDATE_BOOLEAN;
 use function filter_var;
 use function is_bool;
+use const FILTER_NULL_ON_FAILURE;
+use const FILTER_VALIDATE_BOOLEAN;
 
 /**
  * Validates if the input results in a boolean value.

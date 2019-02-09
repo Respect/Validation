@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use const FILTER_VALIDATE_INT;
 use function filter_var;
+use const FILTER_VALIDATE_INT;
 
 /**
  * Validates whether the input is an even number or not.

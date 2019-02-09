@@ -13,16 +13,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-use function current;
 use IteratorAggregate;
 use RecursiveIteratorIterator;
-use function spl_object_hash;
 use SplObjectStorage;
-use const PHP_EOL;
 use function count;
+use function current;
 use function implode;
 use function is_array;
+use function spl_object_hash;
 use function str_repeat;
+use const PHP_EOL;
 
 /**
  * Exception for nested validations.

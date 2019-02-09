@@ -15,10 +15,10 @@ namespace Respect\Validation\Rules;
 
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
-use const FILTER_VALIDATE_EMAIL;
 use function class_exists;
 use function filter_var;
 use function is_string;
+use const FILTER_VALIDATE_EMAIL;
 
 /**
  * Validates an email address.

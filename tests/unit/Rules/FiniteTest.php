@@ -15,9 +15,9 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
+use function acos;
 use const INF;
 use const PHP_INT_MAX;
-use function acos;
 
 /**
  * @group rule

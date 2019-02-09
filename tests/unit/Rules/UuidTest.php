@@ -16,9 +16,9 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
+use function random_int;
 use const PHP_INT_MAX;
 use const PHP_INT_MIN;
-use function random_int;
 
 /**
  * @group rule

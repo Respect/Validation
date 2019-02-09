@@ -13,11 +13,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use function array_keys;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
 use Respect\Validation\Validator;
+use function array_keys;
 
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>

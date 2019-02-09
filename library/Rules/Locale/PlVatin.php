@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules\Locale;
 
-use function array_map;
 use Respect\Validation\Rules\AbstractRule;
+use function array_map;
 use function str_split;
 
 /**

@@ -16,10 +16,10 @@ namespace Respect\Validation\Helpers;
 use Countable;
 use DateTimeImmutable;
 use DateTimeInterface;
+use Throwable;
 use function is_numeric;
 use function is_string;
 use function mb_strlen;
-use Throwable;
 
 /**
  * Helps to deal with comparable values.

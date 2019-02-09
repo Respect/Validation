@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use const YESEXPR;
 use function is_string;
 use function nl_langinfo;
 use function preg_match;
+use const YESEXPR;
 
 /**
  * Validates if the input considered as "Yes".
