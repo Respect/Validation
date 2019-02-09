@@ -7,6 +7,7 @@ Jonathan Stewmon <jstewmon@rmn.com>
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
+
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 

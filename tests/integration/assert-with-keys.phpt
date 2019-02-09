@@ -6,6 +6,7 @@ Henrique Moody <henriquemoody@gmail.com>
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
+
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
