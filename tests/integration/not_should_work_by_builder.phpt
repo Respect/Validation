@@ -4,6 +4,9 @@ Henrique Moody <henriquemoody@gmail.com>
 not() should work by builder
 --FILE--
 <?php
+
+declare(strict_types=1);
+
 require 'vendor/autoload.php';
 
 use Respect\Validation\Validator;

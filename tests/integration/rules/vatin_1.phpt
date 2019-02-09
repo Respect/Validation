@@ -3,6 +3,8 @@ Tomasz Regdos <tomek@regdos.com>
 --FILE--
 <?php
 
+declare(strict_types=1);
+
 require_once 'vendor/autoload.php';
 
 use Respect\Validation\Validator as v;

@@ -4,6 +4,9 @@ Henrique Moody <henriquemoody@gmail.com>
 setTemplate() with multiple validators should use template as full message
 --FILE--
 <?php
+
+declare(strict_types=1);
+
 require 'vendor/autoload.php';
 
 use Respect\Validation\Exceptions\NestedValidationException;

@@ -4,6 +4,9 @@ Henrique Moody <henriquemoody@gmail.com>
 Do not rely on nested validation exception interface for check
 --FILE--
 <?php
+
+declare(strict_types=1);
+
 require 'vendor/autoload.php';
 
 use Respect\Validation\Exceptions\NestedValidationException;

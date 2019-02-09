@@ -3,6 +3,8 @@ Danilo Correa <danilosilva87@gmail.com>
 --FILE--
 <?php
 
+declare(strict_types=1);
+
 require_once 'vendor/autoload.php';
 
 use Respect\Validation\Exceptions\LengthException;

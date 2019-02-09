@@ -2,6 +2,9 @@
 Paul Karikari <paulkarikari1@gmail.com>
 --SKIPIF--
 <?php
+
+declare(strict_types=1);
+
 if (!extension_loaded('uopz')) {
     echo 'skip: Extension "uopz" is required to test "Uploaded" rule';
 }

@@ -4,6 +4,9 @@ Henrique Moody <henriquemoody@gmail.com>
 not() with recursion should update mode of its children
 --FILE--
 <?php
+
+declare(strict_types=1);
+
 require 'vendor/autoload.php';
 
 use Respect\Validation\Exceptions\NestedValidationException;

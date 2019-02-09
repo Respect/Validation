@@ -61,8 +61,12 @@
     <rule ref="SlevomatCodingStandard.PHP.UselessSemicolon" />
     <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHintSpacing" />
     <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing" />
-    <rule ref="SlevomatCodingStandard.Variables.DuplicateAssignmentToVariable" />
-    <rule ref="SlevomatCodingStandard.Variables.UselessVariable" />
+    <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
+        <properties>
+            <property name="newlinesCountBetweenOpenTagAndDeclare" value="2" />
+            <property name="spacesCountAroundEqualsSign" value="0" />
+        </properties>
+    </rule>
     <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
         <properties>
             <property name="allAnnotationsAreUseful" value="true" />
@@ -70,6 +74,8 @@
         </properties>
     </rule>
     <rule ref="SlevomatCodingStandard.TypeHints.UselessConstantTypeHint" />
+    <rule ref="SlevomatCodingStandard.Variables.DuplicateAssignmentToVariable" />
+    <rule ref="SlevomatCodingStandard.Variables.UselessVariable" />
     <rule ref="Squiz.PHP.CommentedOutCode" />
     <rule ref="Squiz.WhiteSpace.FunctionSpacing">
         <properties>

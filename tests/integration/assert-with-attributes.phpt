@@ -3,6 +3,9 @@ Henrique Moody <henriquemoody@gmail.com>
 Jonathan Stewmon <jstewmon@rmn.com>
 --FILE--
 <?php
+
+declare(strict_types=1);
+
 require 'vendor/autoload.php';
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;

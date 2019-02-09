@@ -4,6 +4,9 @@ Henrique Moody <henriquemoody@gmail.com>
 getFullMessage() should include all validation messages in a chain
 --FILE--
 <?php
+
+declare(strict_types=1);
+
 require 'vendor/autoload.php';
 
 use Respect\Validation\Exceptions\NestedValidationException;
