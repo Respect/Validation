@@ -64,7 +64,7 @@ final class MacAddressTest extends RuleTestCase
             'callable' => [
                 $sut,
                 static function (): void {
-                }
+                },
             ],
         ];
     }

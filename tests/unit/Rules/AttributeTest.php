@@ -51,13 +51,13 @@ final class AttributeTest extends RuleTestCase
             'attribute is present without extra validator' => [new Attribute('bar'), $obj],
             'private attribute is present without extra validator' => [
                 new Attribute('bar'),
-                $this
+                $this,
             ],
             'attribute is present with extra validator' => [new Attribute('bar', $extraValidator), $obj],
             'non mandatory attribute is not present' => [new Attribute('foo', null, false), $obj],
             'non mandatory attribute is not present with extra validator' => [
                 new Attribute('foo', $extraValidator, false),
-                $obj
+                $obj,
             ],
         ];
     }
@@ -77,7 +77,7 @@ final class AttributeTest extends RuleTestCase
             'attribute is absent without extra validator' => [new Attribute('barr'), $obj],
             'private attribute is not valid based on extra validator' => [
                 new Attribute('bar', $extraValidatorMock),
-                $this
+                $this,
             ],
             'value provided is an empty string' => [new Attribute('barr'), ''],
             'validator related to attribute does not validate' => [new Attribute('bar', $extraValidatorMock), $obj],

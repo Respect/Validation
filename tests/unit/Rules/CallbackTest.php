@@ -41,7 +41,7 @@ final class CallbackTest extends RuleTestCase
                 new Callback(static function () {
                     return true;
                 }),
-                'wpoiur'
+                'wpoiur',
             ],
         ];
     }
@@ -61,13 +61,13 @@ final class CallbackTest extends RuleTestCase
                 new Callback(static function () {
                     return false;
                 }),
-                'w poiur'
+                'w poiur',
             ],
             [
                 new Callback(static function () {
                     return false;
                 }),
-                ''
+                '',
             ],
         ];
     }

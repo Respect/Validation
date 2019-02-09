@@ -50,7 +50,7 @@ class TypeTest extends RuleTestCase
             [
                 new Type('callable'),
                 static function (): void {
-                }
+                },
             ],
             [new Type('double'), 0.8],
             [new Type('float'), 1.0],

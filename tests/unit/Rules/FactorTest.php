@@ -98,7 +98,7 @@ final class FactorTest extends RuleTestCase
             'mt_rand is not factor calc' => [new Factor(mt_rand()), mt_rand(1, mt_getrandmax() - 1) / mt_getrandmax()],
             'mt_rand is not factor -calc' => [
                 new Factor(mt_rand()),
-                -(mt_rand(1, mt_getrandmax() - 1) / mt_getrandmax())
+                -(mt_rand(1, mt_getrandmax() - 1) / mt_getrandmax()),
             ],
             'mt_rand is not factor \'a\'' => [new Factor(mt_rand()), 'a'],
             'mt_rand is not factor \'foo\'' => [new Factor(mt_rand()), 'foo'],

@@ -54,7 +54,7 @@ final class ScalarValTest extends RuleTestCase
             [
                 $rule,
                 static function (): void {
-                }
+                },
             ],
             [$rule, new \stdClass()],
             [$rule, null],
