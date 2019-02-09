@@ -78,6 +78,6 @@ class OneOf extends AbstractComposite
             return;
         }
 
-        throw (array_shift($exceptions) ?: $this->reportError($input));
+        throw array_shift($exceptions) ?: $this->reportError($input);
     }
 }
