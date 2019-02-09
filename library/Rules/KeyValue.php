@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function array_keys;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
@@ -75,7 +76,7 @@ class KeyValue extends AbstractRule
     private function overwriteExceptionParams(ValidationException $exception): ValidationException
     {
         $params = [];
-        foreach ($exception->getParams() as $key => $value) {
+        foreach (array_keys($exception->getParams()) as $key) {
             if (in_array($key, ['template', 'translator'])) {
                 continue;
             }

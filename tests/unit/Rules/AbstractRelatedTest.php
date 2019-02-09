@@ -155,8 +155,6 @@ final class AbstractRelatedTest extends TestCase
      */
     public function shouldNotDefineRuleNameAsReferenceWhenRuleDoesHaveName(): void
     {
-        $reference = 'something';
-
         $ruleMock = $this->createMock(Validatable::class);
         $ruleMock
             ->expects(self::at(0))
@@ -195,8 +193,6 @@ final class AbstractRelatedTest extends TestCase
     public function shouldDefineChildNameWhenDefiningTheNameOfTheParent(): void
     {
         $name = 'My new name';
-        $reference = 'something';
-
         $ruleMock = $this->createMock(Validatable::class);
         $ruleMock
             ->expects(self::at(0))
@@ -207,7 +203,7 @@ final class AbstractRelatedTest extends TestCase
             ->method('setName')
             ->with($name);
 
-        $abstractMock = $this
+        $this
             ->getMockBuilder(AbstractRelated::class)
             ->setConstructorArgs(['something', $ruleMock])
             ->getMock();

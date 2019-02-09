@@ -86,6 +86,7 @@
     </rule>
     <rule ref="SlevomatCodingStandard.TypeHints.UselessConstantTypeHint" />
     <rule ref="SlevomatCodingStandard.Variables.DuplicateAssignmentToVariable" />
+    <rule ref="SlevomatCodingStandard.Variables.UnusedVariable" />
     <rule ref="SlevomatCodingStandard.Variables.UselessVariable" />
     <rule ref="Squiz.PHP.CommentedOutCode" />
     <rule ref="Squiz.WhiteSpace.FunctionSpacing">
