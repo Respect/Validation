@@ -24,6 +24,11 @@ use Respect\Validation\Rules\AbstractRule;
  */
 class PlIdentityCard extends AbstractRule
 {
+    private const ASCII_CODE_0 = 48;
+    private const ASCII_CODE_7 = 55;
+    private const ASCII_CODE_9 = 57;
+    private const ASCII_CODE_A = 65;
+
     /**
      * {@inheritdoc}
      */
@@ -37,15 +42,15 @@ class PlIdentityCard extends AbstractRule
         $weightedSum = 0;
         for ($i = 0; $i < 9; ++$i) {
             $code = ord($input[$i]);
-            if ($i < 3 && $code <= 57) { // 57 is "9"
+            if ($i < 3 && $code <= self::ASCII_CODE_9) {
                 return false;
             }
 
-            if ($i > 2 && $code >= 65) { // 65 is "A"
+            if ($i > 2 && $code >= self::ASCII_CODE_A) {
                 return false;
             }
 
-            $difference = $code <= 57 ? 48 : 55; // 48 is "0"
+            $difference = $code <= self::ASCII_CODE_9 ? self::ASCII_CODE_0 : self::ASCII_CODE_7;
             $weightedSum += ($code - $difference) * $weights[$i];
         }
 

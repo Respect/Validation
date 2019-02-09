@@ -43,6 +43,7 @@ class Zend extends AbstractRule
     {
         if ($validator instanceof ZendValidator) {
             $this->zendValidator = $validator;
+
             return;
         }
 

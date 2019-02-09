@@ -46,6 +46,13 @@
         </properties>
     </rule>
     <rule ref="SlevomatCodingStandard.ControlStructures.AssignmentInCondition" />
+    <rule ref="SlevomatCodingStandard.ControlStructures.ControlStructureSpacing">
+        <properties>
+            <property name="tokensToCheck" type="array">
+                <element value="T_RETURN" />
+            </property>
+        </properties>
+    </rule>
     <rule ref="SlevomatCodingStandard.ControlStructures.DisallowContinueWithoutIntegerOperandInSwitch" />
     <rule ref="SlevomatCodingStandard.ControlStructures.EarlyExit" />
     <rule ref="SlevomatCodingStandard.ControlStructures.NewWithParentheses" />
