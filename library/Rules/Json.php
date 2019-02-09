@@ -30,12 +30,12 @@ final class Json extends AbstractRule
      */
     public function validate($input): bool
     {
-        if (!is_string($input) || '' === $input) {
+        if (!is_string($input) || $input === '') {
             return false;
         }
 
         json_decode($input);
 
-        return JSON_ERROR_NONE === json_last_error();
+        return json_last_error() === JSON_ERROR_NONE;
     }
 }

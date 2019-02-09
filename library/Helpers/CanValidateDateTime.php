@@ -48,7 +48,7 @@ trait CanValidateDateTime
      */
     private function isDateTimeParsable(array $info): bool
     {
-        return 0 === $info['error_count'] && 0 === $info['warning_count'];
+        return $info['error_count'] === 0 && $info['warning_count'] === 0;
     }
 
     private function isDateFormat(string $format): bool

@@ -36,7 +36,7 @@ final class Bsn extends AbstractRule
             return false;
         }
 
-        if (9 !== mb_strlen($input)) {
+        if (mb_strlen($input) !== 9) {
             return false;
         }
 
@@ -45,6 +45,6 @@ final class Bsn extends AbstractRule
             $sum += $i * $input[9 - $i];
         }
 
-        return 0 !== $sum && 0 === $sum % 11;
+        return $sum !== 0 && $sum % 11 === 0;
     }
 }

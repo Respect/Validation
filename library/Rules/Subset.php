@@ -48,6 +48,6 @@ final class Subset extends AbstractRule
             return false;
         }
 
-        return [] === array_diff($input, $this->superset);
+        return array_diff($input, $this->superset) === [];
     }
 }

@@ -30,10 +30,10 @@ final class Even extends AbstractRule
      */
     public function validate($input): bool
     {
-        if (false === filter_var($input, FILTER_VALIDATE_INT)) {
+        if (filter_var($input, FILTER_VALIDATE_INT) === false) {
             return false;
         }
 
-        return 0 === (int) $input % 2;
+        return (int) $input % 2 === 0;
     }
 }

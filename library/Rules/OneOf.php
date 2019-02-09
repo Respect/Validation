@@ -54,7 +54,7 @@ class OneOf extends AbstractComposite
             ++$rulesPassedCount;
         }
 
-        return 1 === $rulesPassedCount;
+        return $rulesPassedCount === 1;
     }
 
     /**
@@ -74,7 +74,7 @@ class OneOf extends AbstractComposite
             }
         }
 
-        if (1 === $rulesPassedCount) {
+        if ($rulesPassedCount === 1) {
             return;
         }
 

@@ -41,7 +41,7 @@ class CheckExceptionsTest extends TestCase
             }
 
             $ruleName = mb_substr($fileInfo->getBasename(), 0, -4);
-            if (('php' !== $fileInfo->getExtension())) {
+            if (($fileInfo->getExtension() !== 'php')) {
                 continue;
             }
 

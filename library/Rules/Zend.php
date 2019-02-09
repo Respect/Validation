@@ -59,7 +59,7 @@ class Zend extends AbstractRule
      */
     private function createZendValidator(string $name, array $params): ZendValidator
     {
-        $name = false === mb_stripos($name, 'Zend') ? "Zend\\Validator\\{$name}" : "\\{$name}";
+        $name = mb_stripos($name, 'Zend') === false ? "Zend\\Validator\\{$name}" : "\\{$name}";
 
         $reflection = new ReflectionClass($name);
 

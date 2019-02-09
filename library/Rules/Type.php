@@ -80,7 +80,7 @@ final class Type extends AbstractRule
      */
     public function validate($input): bool
     {
-        if ('callable' === $this->type) {
+        if ($this->type === 'callable') {
             return is_callable($input);
         }
 

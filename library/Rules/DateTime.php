@@ -52,15 +52,15 @@ final class DateTime extends AbstractRule
     public function validate($input): bool
     {
         if ($input instanceof DateTimeInterface) {
-            return null === $this->format;
+            return $this->format === null;
         }
 
         if (!is_scalar($input)) {
             return false;
         }
 
-        if (null === $this->format) {
-            return false !== strtotime((string) $input);
+        if ($this->format === null) {
+            return strtotime((string) $input) !== false;
         }
 
         return $this->isDateTime($this->format, (string) $input);

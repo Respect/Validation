@@ -45,7 +45,7 @@ class Not extends AbstractRule
      */
     public function validate($input): bool
     {
-        return false === $this->rule->validate($input);
+        return $this->rule->validate($input) === false;
     }
 
     /**

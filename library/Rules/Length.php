@@ -62,7 +62,7 @@ final class Length extends AbstractRule
         $this->maxValue = $max;
         $this->inclusive = $inclusive;
 
-        if (null !== $max && $min > $max) {
+        if ($max !== null && $min > $max) {
             throw new ComponentException(sprintf('%d cannot be less than %d for validation', $min, $max));
         }
     }
@@ -73,7 +73,7 @@ final class Length extends AbstractRule
     public function validate($input): bool
     {
         $length = $this->extractLength($input);
-        if (null === $length) {
+        if ($length === null) {
             return false;
         }
 
@@ -106,7 +106,7 @@ final class Length extends AbstractRule
 
     private function validateMin(int $length): bool
     {
-        if (null === $this->minValue) {
+        if ($this->minValue === null) {
             return true;
         }
 
@@ -119,7 +119,7 @@ final class Length extends AbstractRule
 
     private function validateMax(int $length): bool
     {
-        if (null === $this->maxValue) {
+        if ($this->maxValue === null) {
             return true;
         }
 

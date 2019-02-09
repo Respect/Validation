@@ -25,7 +25,7 @@ final class Nullable extends AbstractWrapper
      */
     public function assert($input): void
     {
-        if (null === $input) {
+        if ($input === null) {
             return;
         }
 
@@ -37,7 +37,7 @@ final class Nullable extends AbstractWrapper
      */
     public function check($input): void
     {
-        if (null === $input) {
+        if ($input === null) {
             return;
         }
 
@@ -49,7 +49,7 @@ final class Nullable extends AbstractWrapper
      */
     public function validate($input): bool
     {
-        if (null === $input) {
+        if ($input === null) {
             return true;
         }
 

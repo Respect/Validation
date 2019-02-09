@@ -48,7 +48,7 @@ final class Cnpj extends AbstractRule
             return false;
         }
 
-        if (14 !== count($digits)) {
+        if (count($digits) !== 14) {
             return false;
         }
 

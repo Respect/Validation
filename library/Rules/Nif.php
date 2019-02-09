@@ -56,11 +56,11 @@ final class Nif extends AbstractRule
 
     private function validateNie(string $prefix, string $number, string $control): bool
     {
-        if ('Y' === $prefix) {
+        if ($prefix === 'Y') {
             return $this->validateDni((int) ('1'.$number), $control);
         }
 
-        if ('Z' === $prefix) {
+        if ($prefix === 'Z') {
             return $this->validateDni((int) ('2'.$number), $control);
         }
 
@@ -74,7 +74,7 @@ final class Nif extends AbstractRule
         /** @var int $digit */
         foreach (str_split($number) as $digit) {
             $increaser = $digit;
-            if (0 !== $position % 2) {
+            if ($position % 2 !== 0) {
                 $increaser = array_sum(str_split((string) ($digit * 2)));
             }
 
@@ -84,7 +84,7 @@ final class Nif extends AbstractRule
 
         $digits = str_split((string) $code);
         $lastDigit = (int) array_pop($digits);
-        $key = 0 === $lastDigit ? 0 : (10 - $lastDigit);
+        $key = $lastDigit === 0 ? 0 : (10 - $lastDigit);
 
         if (is_numeric($control)) {
             return (int) $key === (int) $control;

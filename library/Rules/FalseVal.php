@@ -30,6 +30,6 @@ final class FalseVal extends AbstractRule
      */
     public function validate($input): bool
     {
-        return false === filter_var($input, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+        return filter_var($input, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE) === false;
     }
 }

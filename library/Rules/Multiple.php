@@ -35,10 +35,10 @@ final class Multiple extends AbstractRule
      */
     public function validate($input): bool
     {
-        if (0 == $this->multipleOf) {
-            return 0 == $input;
+        if ($this->multipleOf == 0) {
+            return $input == 0;
         }
 
-        return 0 == $input % $this->multipleOf;
+        return $input % $this->multipleOf == 0;
     }
 }

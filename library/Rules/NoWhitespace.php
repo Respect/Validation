@@ -36,7 +36,7 @@ final class NoWhitespace extends AbstractRule
             return true;
         }
 
-        if (false === is_scalar($input)) {
+        if (is_scalar($input) === false) {
             return false;
         }
 

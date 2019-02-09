@@ -102,7 +102,7 @@ final class Factory
      */
     public static function getDefaultInstance(): self
     {
-        if (null === self::$defaultInstance) {
+        if (self::$defaultInstance === null) {
             self::$defaultInstance = new self(
                 self::DEFAULT_RULES_NAMESPACES,
                 self::DEFAULT_EXCEPTIONS_NAMESPACES,
@@ -247,7 +247,7 @@ final class Factory
             $property->setAccessible(true);
 
             $propertyValue = $property->getValue($validatable);
-            if (null === $propertyValue) {
+            if ($propertyValue === null) {
                 continue;
             }
 
@@ -255,7 +255,7 @@ final class Factory
         }
 
         $parentReflection = $reflection->getParentClass();
-        if (false !== $parentReflection) {
+        if ($parentReflection !== false) {
             return $values + $this->extractPropertiesValues($validatable, $parentReflection);
         }
 

@@ -43,7 +43,7 @@ final class CreditCardException extends ValidationException
      */
     protected function chooseTemplate(): string
     {
-        if (CreditCard::ANY === $this->getParam('brand')) {
+        if ($this->getParam('brand') === CreditCard::ANY) {
             return self::STANDARD;
         }
 

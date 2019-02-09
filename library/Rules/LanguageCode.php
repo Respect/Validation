@@ -535,7 +535,7 @@ final class LanguageCode extends AbstractEnvelope
     public function __construct(string $set = self::ALPHA2)
     {
         $index = array_search($set, self::AVAILABLE_SETS, true);
-        if (false === $index) {
+        if ($index === false) {
             throw new ComponentException(sprintf('"%s" is not a valid language set for ISO 639', $set));
         }
 

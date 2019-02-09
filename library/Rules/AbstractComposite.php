@@ -119,12 +119,12 @@ abstract class AbstractComposite extends AbstractRule
 
     private function hasName(Validatable $rule): bool
     {
-        return null !== $rule->getName();
+        return $rule->getName() !== null;
     }
 
     private function updateExceptionTemplate(ValidationException $exception): void
     {
-        if (null === $this->template || $exception->hasCustomTemplate()) {
+        if ($this->template === null || $exception->hasCustomTemplate()) {
             return;
         }
 

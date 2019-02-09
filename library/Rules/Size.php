@@ -81,11 +81,11 @@ class Size extends AbstractRule
 
     private function isValidSize(float $size): bool
     {
-        if (null !== $this->minValue && null !== $this->maxValue) {
+        if ($this->minValue !== null && $this->maxValue !== null) {
             return $size >= $this->minValue && $size <= $this->maxValue;
         }
 
-        if (null !== $this->minValue) {
+        if ($this->minValue !== null) {
             return $size >= $this->minValue;
         }
 

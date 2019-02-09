@@ -45,7 +45,7 @@ final class LeapDate extends AbstractRule
     public function validate($input): bool
     {
         if ($input instanceof DateTimeInterface) {
-            return '02-29' === $input->format('m-d');
+            return $input->format('m-d') === '02-29';
         }
 
         if (is_scalar($input)) {

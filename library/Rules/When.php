@@ -45,7 +45,7 @@ final class When extends AbstractRule
     {
         $this->when = $when;
         $this->then = $then;
-        if (null === $else) {
+        if ($else === null) {
             $else = new AlwaysInvalid();
             $else->setTemplate(AlwaysInvalidException::SIMPLE);
         }

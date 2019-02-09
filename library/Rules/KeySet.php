@@ -62,7 +62,7 @@ final class KeySet extends AbstractWrapper
         }
 
         if (!$validatable instanceof AllOf
-            || 1 !== count($validatable->getRules())) {
+            || count($validatable->getRules()) !== 1) {
             throw new ComponentException('KeySet rule accepts only Key rules');
         }
 
@@ -94,7 +94,7 @@ final class KeySet extends AbstractWrapper
             unset($input[$keyRule->reference]);
         }
 
-        return 0 == count($input);
+        return count($input) == 0;
     }
 
     /**

@@ -49,13 +49,13 @@ abstract class AbstractFilterRule extends AbstractRule
         }
 
         $stringInput = (string) $input;
-        if ('' === $stringInput) {
+        if ($stringInput === '') {
             return false;
         }
 
         $filteredInput = $this->filter($stringInput);
 
-        return '' === $filteredInput || $this->validateFilteredInput($filteredInput);
+        return $filteredInput === '' || $this->validateFilteredInput($filteredInput);
     }
 
     private function filter(string $input): string

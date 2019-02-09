@@ -70,7 +70,7 @@ abstract class AbstractAge extends AbstractRule
             return false;
         }
 
-        if (null === $this->format) {
+        if ($this->format === null) {
             return $this->isValidWithoutFormat((string) $input);
         }
 
@@ -80,7 +80,7 @@ abstract class AbstractAge extends AbstractRule
     private function isValidWithoutFormat(string $dateTime): bool
     {
         $timestamp = strtotime($dateTime);
-        if (false === $timestamp) {
+        if ($timestamp === false) {
             return false;
         }
 

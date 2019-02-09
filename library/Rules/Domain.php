@@ -54,7 +54,7 @@ class Domain extends AbstractComposite
             new AnyOf(
                 new Not(new Contains('--')),
                 new Callback(static function ($str) {
-                    return 1 == mb_substr_count($str, '--');
+                    return mb_substr_count($str, '--') == 1;
                 })
             ),
             new Not(new EndsWith('-'))

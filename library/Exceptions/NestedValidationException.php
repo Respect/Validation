@@ -193,7 +193,7 @@ class NestedValidationException extends ValidationException implements IteratorA
             return false;
         }
 
-        if (1 !== count($exception->getChildren())) {
+        if (count($exception->getChildren()) !== 1) {
             return false;
         }
 

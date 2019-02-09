@@ -58,11 +58,11 @@ final class Sf extends AbstractRule
     {
         /** @var ConstraintViolationList $violations */
         $violations = $this->validator->validate($input, $this->constraint);
-        if (0 === $violations->count()) {
+        if ($violations->count() === 0) {
             return;
         }
 
-        if (1 === $violations->count()) {
+        if ($violations->count() === 1) {
             throw $this->reportError($input, ['violations' => $violations[0]->getMessage()]);
         }
 

@@ -184,7 +184,7 @@ final class Validator extends AllOf
         try {
             parent::check($input);
         } catch (ValidationException $exception) {
-            if (1 == count($this->getRules()) && $this->template) {
+            if (count($this->getRules()) == 1 && $this->template) {
                 $exception->updateTemplate($this->template);
             }
 

@@ -46,7 +46,7 @@ trait CanCompareValues
             return $value;
         }
 
-        if (1 === mb_strlen($value)) {
+        if (mb_strlen($value) === 1) {
             return $value;
         }
 

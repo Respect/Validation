@@ -38,6 +38,6 @@ final class Odd extends AbstractRule
             return false;
         }
 
-        return 0 !== (int) $input % 2;
+        return (int) $input % 2 !== 0;
     }
 }

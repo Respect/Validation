@@ -115,11 +115,11 @@ final class Ip extends AbstractRule
 
     private function parseRange(string $input): void
     {
-        if ('*' == $input || '*.*.*.*' == $input || '0.0.0.0-255.255.255.255' == $input) {
+        if ($input == '*' || $input == '*.*.*.*' || $input == '0.0.0.0-255.255.255.255') {
             return;
         }
 
-        if (false !== mb_strpos($input, '-')) {
+        if (mb_strpos($input, '-') !== false) {
             list($this->startAddress, $this->endAddress) = explode('-', $input);
 
             if (!$this->verifyAddress($this->startAddress)) {
@@ -133,13 +133,13 @@ final class Ip extends AbstractRule
             return;
         }
 
-        if (false !== mb_strpos($input, '*')) {
+        if (mb_strpos($input, '*') !== false) {
             $this->parseRangeUsingWildcards($input);
 
             return;
         }
 
-        if (false !== mb_strpos($input, '/')) {
+        if (mb_strpos($input, '/') !== false) {
             $this->parseRangeUsingCidr($input);
 
             return;
@@ -166,7 +166,7 @@ final class Ip extends AbstractRule
         $parts = explode('/', $input);
 
         $this->startAddress = $this->fillAddress($parts[0], '0');
-        $isAddressMask = false !== mb_strpos($parts[1], '.');
+        $isAddressMask = mb_strpos($parts[1], '.') !== false;
 
         if ($isAddressMask && $this->verifyAddress($parts[1])) {
             $this->mask = sprintf('%032b', ip2long($parts[1]));
@@ -183,7 +183,7 @@ final class Ip extends AbstractRule
 
     private function verifyAddress(string $address): bool
     {
-        return false !== filter_var($address, FILTER_VALIDATE_IP, ['flags' => $this->options]);
+        return filter_var($address, FILTER_VALIDATE_IP, ['flags' => $this->options]) !== false;
     }
 
     private function verifyNetwork(string $input): bool
@@ -196,7 +196,7 @@ final class Ip extends AbstractRule
 
     private function belongsToSubnet(string $input): bool
     {
-        if (null === $this->mask) {
+        if ($this->mask === null) {
             return false;
         }
 

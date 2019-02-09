@@ -32,6 +32,6 @@ final class NotOptional extends AbstractRule
      */
     public function validate($input): bool
     {
-        return false === $this->isUndefined($input);
+        return $this->isUndefined($input) === false;
     }
 }

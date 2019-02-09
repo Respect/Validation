@@ -48,7 +48,7 @@ final class Uuid extends AbstractRule
      */
     public function __construct(int $version = null)
     {
-        if (null !== $version && !$this->isSupportedVersion($version)) {
+        if ($version !== null && !$this->isSupportedVersion($version)) {
             throw new ComponentException(sprintf('Only versions 1, 3, 4, and 5 are supported: %d given', $version));
         }
 
@@ -69,12 +69,12 @@ final class Uuid extends AbstractRule
 
     private function isSupportedVersion(int $version): bool
     {
-        return $version >= 1 && $version <= 5 && 2 !== $version;
+        return $version >= 1 && $version <= 5 && $version !== 2;
     }
 
     private function getPattern(): string
     {
-        if (null !== $this->version) {
+        if ($this->version !== null) {
             return sprintf(self::PATTERN_FORMAT, $this->version);
         }
 

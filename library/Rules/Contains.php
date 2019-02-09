@@ -70,15 +70,15 @@ final class Contains extends AbstractRule
 
     private function validateString(string $haystack, string $needle): bool
     {
-        if ('' === $needle) {
+        if ($needle === '') {
             return false;
         }
 
         $encoding = mb_detect_encoding($haystack);
         if ($this->identical) {
-            return false !== mb_strpos($haystack, $needle, 0, $encoding);
+            return mb_strpos($haystack, $needle, 0, $encoding) !== false;
         }
 
-        return false !== mb_stripos($haystack, $needle, 0, $encoding);
+        return mb_stripos($haystack, $needle, 0, $encoding) !== false;
     }
 }

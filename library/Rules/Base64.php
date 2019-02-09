@@ -39,6 +39,6 @@ final class Base64 extends AbstractRule
             return false;
         }
 
-        return 0 === mb_strlen($input) % 4;
+        return mb_strlen($input) % 4 === 0;
     }
 }

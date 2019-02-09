@@ -57,6 +57,6 @@ final class Luhn extends AbstractRule
             $sum += $digit;
         }
 
-        return 0 == ($sum % 10);
+        return ($sum % 10) == 0;
     }
 }

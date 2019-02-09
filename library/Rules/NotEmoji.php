@@ -162,6 +162,6 @@ final class NotEmoji extends AbstractRule
             return false;
         }
 
-        return 0 === preg_match('/'.implode('|', self::GROUPS).'/mu', $input);
+        return preg_match('/'.implode('|', self::GROUPS).'/mu', $input) === 0;
     }
 }

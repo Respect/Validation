@@ -40,7 +40,7 @@ final class Cnh extends AbstractRule
         $input = preg_replace('{\D}', '', (string) $input);
 
         // Validate length and invalid numbers
-        if (11 != mb_strlen($input) || (0 === (int) $input)) {
+        if (mb_strlen($input) != 11 || ((int) $input === 0)) {
             return false;
         }
 

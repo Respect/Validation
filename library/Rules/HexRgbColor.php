@@ -28,12 +28,12 @@ class HexRgbColor extends Xdigit
             return false;
         }
 
-        if (0 === mb_strpos($input, '#')) {
+        if (mb_strpos($input, '#') === 0) {
             $input = mb_substr($input, 1);
         }
 
         $length = mb_strlen($input);
-        if (3 != $length && 6 != $length) {
+        if ($length != 3 && $length != 6) {
             return false;
         }
 

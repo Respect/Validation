@@ -132,7 +132,7 @@ class ValidationException extends InvalidArgumentException implements Exception
 
     public function hasCustomTemplate(): bool
     {
-        return false === isset(static::$defaultTemplates[$this->mode][$this->template]);
+        return isset(static::$defaultTemplates[$this->mode][$this->template]) === false;
     }
 
     public function __toString(): string
@@ -177,7 +177,7 @@ class ValidationException extends InvalidArgumentException implements Exception
                 }
 
                 $value = $vars[$match[1]];
-                if ('name' == $match[1] && is_string($value)) {
+                if ($match[1] == 'name' && is_string($value)) {
                     return $value;
                 }
 

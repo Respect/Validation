@@ -37,7 +37,7 @@ final class Cpf extends AbstractRule
         // Code ported from jsfromhell.com
         $c = preg_replace('/\D/', '', $input);
 
-        if (11 != mb_strlen($c) || preg_match("/^{$c[0]}{11}$/", $c)) {
+        if (mb_strlen($c) != 11 || preg_match("/^{$c[0]}{11}$/", $c)) {
             return false;
         }
 

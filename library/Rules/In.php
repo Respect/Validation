@@ -57,13 +57,13 @@ final class In extends AbstractRule
             return in_array($input, $this->haystack);
         }
 
-        if (null === $input || '' === $input) {
+        if ($input === null || $input === '') {
             return $input == $this->haystack;
         }
 
         $inputString = (string) $input;
 
-        return false !== mb_stripos($this->haystack, $inputString, 0, mb_detect_encoding($inputString));
+        return mb_stripos($this->haystack, $inputString, 0, mb_detect_encoding($inputString)) !== false;
     }
 
     /**
@@ -75,13 +75,13 @@ final class In extends AbstractRule
             return in_array($input, $this->haystack, true);
         }
 
-        if (null === $input || '' === $input) {
+        if ($input === null || $input === '') {
             return $input === $this->haystack;
         }
 
         $inputString = (string) $input;
 
-        return false !== mb_strpos($this->haystack, $inputString, 0, mb_detect_encoding($inputString));
+        return mb_strpos($this->haystack, $inputString, 0, mb_detect_encoding($inputString)) !== false;
     }
 
     /**

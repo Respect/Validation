@@ -46,12 +46,12 @@ final class Factor extends AbstractRule
     {
         // Every integer is a factor of zero, and zero is the only integer that
         // has zero for a factor.
-        if (0 === $this->dividend) {
+        if ($this->dividend === 0) {
             return true;
         }
 
         // Factors must be integers that are not zero.
-        if (!is_numeric($input) || (int) $input != $input || 0 == $input) {
+        if (!is_numeric($input) || (int) $input != $input || $input == 0) {
             return false;
         }
 
