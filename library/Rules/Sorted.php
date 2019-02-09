@@ -29,7 +29,7 @@ class Sorted extends AbstractRule
      */
     public $ascending = true;
 
-    public function __construct(callable $fn = null, bool $ascending = true)
+    public function __construct(?callable $fn = null, bool $ascending = true)
     {
         $this->fn = $fn ?? static function ($x) {
             return $x;

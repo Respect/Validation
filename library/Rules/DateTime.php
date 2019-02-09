@@ -40,7 +40,7 @@ final class DateTime extends AbstractRule
     /**
      * Initializes the rule.
      */
-    public function __construct(string $format = null)
+    public function __construct(?string $format = null)
     {
         $this->format = $format;
         $this->sample = date($format ?: 'c', strtotime('2005-12-30 01:02:03'));

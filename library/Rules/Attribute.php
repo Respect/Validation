@@ -26,7 +26,7 @@ use Respect\Validation\Validatable;
  */
 final class Attribute extends AbstractRelated
 {
-    public function __construct(string $reference, Validatable $validator = null, bool $mandatory = true)
+    public function __construct(string $reference, ?Validatable $validator = null, bool $mandatory = true)
     {
         parent::__construct($reference, $validator, $mandatory);
     }

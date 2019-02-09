@@ -56,7 +56,7 @@ final class Length extends AbstractRule
      *
      * @throws ComponentException
      */
-    public function __construct(int $min = null, int $max = null, bool $inclusive = true)
+    public function __construct(?int $min = null, ?int $max = null, bool $inclusive = true)
     {
         $this->minValue = $min;
         $this->maxValue = $max;

@@ -41,7 +41,7 @@ final class When extends AbstractRule
      */
     private $else;
 
-    public function __construct(Validatable $when, Validatable $then, Validatable $else = null)
+    public function __construct(Validatable $when, Validatable $then, ?Validatable $else = null)
     {
         $this->when = $when;
         $this->then = $then;

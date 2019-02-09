@@ -193,7 +193,7 @@ class PostalCode extends AbstractEnvelope
     ];
     // phpcs:enable Generic.Files.LineLength.TooLong
 
-    public function __construct(string $countryCode, CountryCode $countryCodeRule = null)
+    public function __construct(string $countryCode, ?CountryCode $countryCodeRule = null)
     {
         $countryCodeRule = $countryCodeRule ?: new CountryCode();
         if (!$countryCodeRule->validate($countryCode)) {

@@ -47,7 +47,7 @@ abstract class AbstractAge extends AbstractRule
     /**
      * Initializes the rule.
      */
-    public function __construct(int $age, string $format = null)
+    public function __construct(int $age, ?string $format = null)
     {
         $this->age = $age;
         $this->format = $format;

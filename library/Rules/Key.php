@@ -26,7 +26,7 @@ class Key extends AbstractRelated
     /**
      * @param mixed $reference
      */
-    public function __construct($reference, Validatable $referenceValidator = null, bool $mandatory = true)
+    public function __construct($reference, ?Validatable $referenceValidator = null, bool $mandatory = true)
     {
         if (!is_scalar($reference) || $reference === '') {
             throw new ComponentException('Invalid array key name');

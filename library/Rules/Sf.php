@@ -45,7 +45,7 @@ final class Sf extends AbstractRule
      *
      * In the the Validator is not defined, tries to create one.
      */
-    public function __construct(Constraint $constraint, ValidatorInterface $validator = null)
+    public function __construct(Constraint $constraint, ?ValidatorInterface $validator = null)
     {
         $this->constraint = $constraint;
         $this->validator = $validator ?: Validation::createValidator();

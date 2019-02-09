@@ -93,6 +93,7 @@
             <property name="spacesCountAroundEqualsSign" value="0" />
         </properties>
     </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue" />
     <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
         <properties>
             <property name="allAnnotationsAreUseful" value="true" />

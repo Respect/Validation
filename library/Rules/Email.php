@@ -40,7 +40,7 @@ final class Email extends AbstractRule
      *
      * If the EmailValidator instance is not defined, tries to create one.
      */
-    public function __construct(EmailValidator $validator = null)
+    public function __construct(?EmailValidator $validator = null)
     {
         $this->validator = $validator ?: $this->createEmailValidator();
     }

@@ -56,7 +56,7 @@ abstract class AbstractRelated extends AbstractRule
     /**
      * @param mixed $reference
      */
-    public function __construct($reference, Validatable $validator = null, bool $mandatory = true)
+    public function __construct($reference, ?Validatable $validator = null, bool $mandatory = true)
     {
         if (is_scalar($reference)) {
             $this->setName((string) $reference);

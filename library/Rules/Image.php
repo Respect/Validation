@@ -36,7 +36,7 @@ final class Image extends AbstractRule
     /**
      * Initializes the rule.
      */
-    public function __construct(finfo $fileInfo = null)
+    public function __construct(?finfo $fileInfo = null)
     {
         $this->fileInfo = $fileInfo ?: new finfo(FILEINFO_MIME_TYPE);
     }
