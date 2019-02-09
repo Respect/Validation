@@ -67,6 +67,7 @@
     <rule ref="SlevomatCodingStandard.Namespaces.UseFromSameNamespace" />
     <rule ref="SlevomatCodingStandard.Namespaces.UselessAlias" />
     <rule ref="SlevomatCodingStandard.PHP.TypeCast" />
+    <rule ref="SlevomatCodingStandard.PHP.UselessParentheses" />
     <rule ref="SlevomatCodingStandard.PHP.UselessSemicolon" />
     <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHintSpacing" />
     <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing" />

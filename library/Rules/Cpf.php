@@ -46,7 +46,7 @@ final class Cpf extends AbstractRule
             $n += $c[$i] * $s;
         }
 
-        if ($c[9] != ((($n %= 11) < 2) ? 0 : 11 - $n)) {
+        if ($c[9] != (($n %= 11) < 2 ? 0 : 11 - $n)) {
             return false;
         }
 
@@ -55,7 +55,7 @@ final class Cpf extends AbstractRule
             $n += $c[$i] * $s;
         }
 
-        if ($c[10] != ((($n %= 11) < 2) ? 0 : 11 - $n)) {
+        if ($c[10] != (($n %= 11) < 2 ? 0 : 11 - $n)) {
             return false;
         }
 

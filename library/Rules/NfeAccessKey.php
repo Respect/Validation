@@ -41,7 +41,7 @@ class NfeAccessKey extends AbstractRule
         $digits = array_map('intval', str_split($input));
         $w = [];
         for ($i = 0, $z = 5, $m = 43; $i <= $m; ++$i) {
-            $z = ($i < $m) ? 1 == ($z - 1) ? 9 : ($z - 1) : 0;
+            $z = $i < $m ? 1 == ($z - 1) ? 9 : ($z - 1) : 0;
             $w[] = $z;
         }
 
@@ -49,8 +49,8 @@ class NfeAccessKey extends AbstractRule
             $s += $digits[$i] * $w[$i];
         }
 
-        $s -= (11 * floor($s / 11));
-        $v = (0 == $s || 1 == $s) ? 0 : (11 - $s);
+        $s -= 11 * floor($s / 11);
+        $v = 0 == $s || 1 == $s ? 0 : (11 - $s);
 
         return $v == $digits[43];
     }

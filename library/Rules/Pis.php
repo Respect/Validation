@@ -52,6 +52,6 @@ final class Pis extends AbstractRule
 
         $modulo = $summation % 11;
 
-        return $checkDigit === (($modulo < 2) ? 0 : 11 - $modulo);
+        return $checkDigit === ($modulo < 2 ? 0 : 11 - $modulo);
     }
 }

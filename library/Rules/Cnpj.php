@@ -57,7 +57,7 @@ final class Cnpj extends AbstractRule
             $n += $digits[$i] * $bases[$i + 1];
         }
 
-        if ($digits[12] != ((($n %= 11) < 2) ? 0 : 11 - $n)) {
+        if ($digits[12] != (($n %= 11) < 2 ? 0 : 11 - $n)) {
             return false;
         }
 
@@ -66,7 +66,7 @@ final class Cnpj extends AbstractRule
             $n += $digits[$i] * $bases[$i];
         }
 
-        if ($digits[13] != ((($n %= 11) < 2) ? 0 : 11 - $n)) {
+        if ($digits[13] != (($n %= 11) < 2 ? 0 : 11 - $n)) {
             return false;
         }
 
