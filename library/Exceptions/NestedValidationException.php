@@ -232,9 +232,15 @@ class NestedValidationException extends ValidationException implements IteratorA
     {
         while (count($ids) > 0) {
             $id = array_shift($ids);
-            if (isset($templates[$id]) && is_array($templates[$id])) {
-                $templates = $templates[$id];
+            if (!isset($templates[$id])) {
+                continue;
             }
+
+            if (!is_array($templates[$id])) {
+                continue;
+            }
+
+            $templates = $templates[$id];
         }
 
         return $templates;

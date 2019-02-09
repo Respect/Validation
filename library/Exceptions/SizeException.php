@@ -47,7 +47,9 @@ class SizeException extends NestedValidationException
     {
         if (!$this->getParam('minValue')) {
             return self::GREATER;
-        } elseif (!$this->getParam('maxValue')) {
+        }
+
+        if (!$this->getParam('maxValue')) {
             return self::LOWER;
         }
 
