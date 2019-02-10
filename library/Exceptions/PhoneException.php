@@ -14,10 +14,11 @@ declare(strict_types=1);
 namespace Respect\Validation\Exceptions;
 
 /**
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Michael Firsikov <michael.firsikov@gmail.com>
  */
-class PhoneException extends ValidationException
+final class PhoneException extends ValidationException
 {
     /**
      * {@inheritdoc}

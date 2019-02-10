@@ -18,10 +18,13 @@ use function preg_match;
 use function sprintf;
 
 /**
+ * Validates a valid 7, 10, 11 digit phone number (North America, Europe and most Asian and Middle East countries)
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Graham Campbell <graham@mineuk.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class Phone extends AbstractRule
+final class Phone extends AbstractRule
 {
     protected function getPregFormat(): string
     {
