@@ -13,11 +13,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\PunctException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Punct
  *
@@ -27,84 +27,42 @@ use Respect\Validation\Test\TestCase;
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author Pascal Borreli <pascal@borreli.com>
  */
-final class PunctTest extends TestCase
+final class PunctTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForValidPunct
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function validDataWithPunctShouldReturnTrue(string $validPunct): void
+    public function providerForValidInput(): array
     {
-        $validator = new Punct();
-        self::assertTrue($validator->validate($validPunct));
-    }
+        $punct = new Punct();
 
-    /**
-     * @dataProvider providerForInvalidPunct
-     * @expectedException \Respect\Validation\Exceptions\PunctException
-     *
-     * @test
-     *
-     * @param mixed $invalidPunct
-     */
-    public function invalidPunctShouldFailAndThrowPunctException($invalidPunct): void
-    {
-        $validator = new Punct();
-        self::assertFalse($validator->validate($invalidPunct));
-        $validator->assert($invalidPunct);
-    }
-
-    /**
-     * @dataProvider providerAdditionalChars
-     *
-     * @test
-     */
-    public function additionalCharsShouldBeRespected(string $additional, string $input): void
-    {
-        $validator = new Punct($additional);
-        self::assertTrue($validator->validate($input));
-    }
-
-    /**
-     * @return string[][]
-     */
-    public function providerAdditionalChars(): array
-    {
         return [
-            ['abc123 ', '!@#$%^&*(){} abc 123'],
-            ["abc123 \t\n", "[]?+=/\\-_|\"',<>. \t \n abc 123"],
+            [$punct, '.'],
+            [$punct, ',;:'],
+            [$punct, '-@#$*'],
+            [$punct, '()[]{}'],
+            [new Punct('abc123 '), '!@#$%^&*(){} abc 123'],
+            [new Punct("abc123 \t\n"), "[]?+=/\\-_|\"',<>. \t \n abc 123"],
         ];
     }
 
     /**
-     * @return string[][]
+     * {@inheritdoc}
      */
-    public function providerForValidPunct(): array
+    public function providerForInvalidInput(): array
     {
-        return [
-            ['.'],
-            [',;:'],
-            ['-@#$*'],
-            ['()[]{}'],
-        ];
-    }
+        $punct = new Punct();
 
-    /**
-     * @return mixed[][]
-     */
-    public function providerForInvalidPunct(): array
-    {
         return [
-            [''],
-            ['16-50'],
-            ['a'],
-            [' '],
-            ['Foo'],
-            ['12.1'],
-            ['-12'],
-            [-12],
-            ['( )_{}'],
+            [$punct, ''],
+            [$punct, '16-50'],
+            [$punct, 'a'],
+            [$punct, ' '],
+            [$punct, 'Foo'],
+            [$punct, '12.1'],
+            [$punct, '-12'],
+            [$punct, -12],
+            [$punct, '( )_{}'],
         ];
     }
 }
