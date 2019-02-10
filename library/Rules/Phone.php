@@ -18,12 +18,19 @@ use function preg_match;
 use function sprintf;
 
 /**
+ * Validates whether the input is a valid phone number.
+ *
+ * Validates a valid 7, 10, 11 digit phone number (North America, Europe and
+ * most Asian and Middle East countries), supporting country and area codes (in
+ * dot,space or dashed notations)
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Graham Campbell <graham@mineuk.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class Phone extends AbstractRule
+final class Phone extends AbstractRule
 {
-    protected function getPregFormat(): string
+    private function getPregFormat(): string
     {
         return sprintf(
             '/^\+?(%1$s)? ?(?(?=\()(\(%2$s\) ?%3$s)|([. -]?(%2$s[. -]*)?%3$s))$/',

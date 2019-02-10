@@ -2,6 +2,8 @@
 
 - `Phone()`
 
+Validates whether the input is a valid phone number.
+
 Validates a valid 7, 10, 11 digit phone number (North America, Europe and most
 Asian and Middle East countries), supporting country and area codes (in dot,
 space or dashed notations) such as:
