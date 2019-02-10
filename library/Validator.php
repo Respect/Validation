@@ -111,6 +111,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  * @method static Validator minAge(int $age, string $format = null)
  * @method static Validator multiple(int $multipleOf)
  * @method static Validator negative()
+ * @method static Validator nfeAccessKey()
  * @method static Validator nif()
  * @method static Validator no($useLocale = false)
  * @method static Validator noneOf(Validatable ...$rule)
