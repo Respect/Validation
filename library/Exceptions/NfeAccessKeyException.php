@@ -15,9 +15,10 @@ namespace Respect\Validation\Exceptions;
 
 /**
  * @author Andrey Knupp Vital <andreykvital@gmail.com>
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class NfeAccessKeyException extends ValidationException
+final class NfeAccessKeyException extends ValidationException
 {
     /**
      * {@inheritdoc}
