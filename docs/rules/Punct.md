@@ -3,7 +3,7 @@
 - `Punct()`
 - `Punct(string ...$additionalChars)`
 
-Accepts only punctuation characters:
+Validates whether the input composed by only punctuation characters.
 
 ```php
 v::punct()->validate('&,.;[]'); // true
