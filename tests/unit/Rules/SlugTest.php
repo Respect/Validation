@@ -13,72 +13,62 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Slug
  *
  * @author Carlos André Ferrari <caferrari@gmail.com>
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Marcel dos Santos <marcelgsantos@gmail.com>
  */
-final class SlugTest extends TestCase
+final class SlugTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerValidSlug
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function validSlug(string $input): void
+    public function providerForValidInput(): array
     {
-        $rule = new Slug();
+        $slug = new Slug();
 
-        self::assertTrue($rule->validate($input));
-    }
-
-    /**
-     * @dataProvider providerInvalidSlug
-     *
-     * @test
-     */
-    public function invalidSlug(string $input): void
-    {
-        $rule = new Slug();
-
-        self::assertFalse($rule->validate($input));
-    }
-
-    /**
-     * @return string[][]
-     */
-    public function providerValidSlug(): array
-    {
         return [
-            ['o-rato-roeu-o-rei-de-roma'],
-            ['o-alganet-e-um-feio'],
-            ['a-e-i-o-u'],
-            ['anticonstitucionalissimamente'],
+            [$slug, 'o-rato-roeu-o-rei-de-roma'],
+            [$slug, 'o-alganet-e-um-feio'],
+            [$slug, 'a-e-i-o-u'],
+            [$slug, 'anticonstitucionalissimamente'],
         ];
     }
 
     /**
-     * @return string[][]
+     * {@inheritdoc}
      */
-    public function providerInvalidSlug(): array
+    public function providerForInvalidInput(): array
     {
+        $slug = new Slug();
+
         return [
-            [''],
-            ['o-alganet-é-um-feio'],
-            ['á-é-í-ó-ú'],
-            ['-assim-nao-pode'],
-            ['assim-tambem-nao-'],
-            ['nem--assim'],
-            ['--nem-assim'],
-            ['Nem mesmo Assim'],
-            ['Ou-ate-assim'],
-            ['-Se juntar-tudo-Então-'],
+            [$slug, ''],
+            [$slug, 'o-alganet-é-um-feio'],
+            [$slug, 'á-é-í-ó-ú'],
+            [$slug, '-assim-nao-pode'],
+            [$slug, 'assim-tambem-nao-'],
+            [$slug, 'nem--assim'],
+            [$slug, '--nem-assim'],
+            [$slug, 'Nem mesmo Assim'],
+            [$slug, 'Ou-ate-assim'],
+            [$slug, '-Se juntar-tudo-Então-'],
+            [$slug, 'eAssim-vai'],
+            [$slug, '@-!teste-teste'],
+            [$slug, '*teste-teste'],
+            [$slug, 123],
+            [$slug, []],
+            [$slug, 123.321],
+            [$slug, new stdClass()],
         ];
     }
 }

@@ -15,9 +15,10 @@ namespace Respect\Validation\Exceptions;
 
 /**
  * @author Carlos André Ferrari <caferrari@gmail.com>
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SlugException extends ValidationException
+final class SlugException extends ValidationException
 {
     /**
      * {@inheritdoc}
