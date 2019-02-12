@@ -2,7 +2,7 @@
 
 - `Slug()`
 
-Validates slug-like strings:
+Validates whether the input is a valid slug.
 
 ```php
 v::slug()->validate('my-wordpress-title'); // true
