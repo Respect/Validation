@@ -2,7 +2,7 @@
 
 - `PostalCode(string $countryCode)`
 
-Validates a postal code according to the given country code.
+Validates whether the input is a valid postal code or not.
 
 ```php
 v::postalCode('BR')->validate('02179000'); // true

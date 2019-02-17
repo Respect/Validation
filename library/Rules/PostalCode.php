@@ -16,20 +16,17 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\ComponentException;
 
 /**
+ * Validates whether the input is a valid postal code or not.
+ *
+ * @see http://download.geonames.org/export/dump/countryInfo.txt
+ *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class PostalCode extends AbstractEnvelope
+final class PostalCode extends AbstractEnvelope
 {
-    public const DEFAULT_PATTERN = '/^$/';
-
-    // phpcs:disable Squiz.WhiteSpace.MemberVarSpacing.Incorrect
-    // phpcs:disable Generic.Files.LineLength.TooLong
-    /**
-     * @see http://download.geonames.org/export/dump/countryInfo.txt
-     *
-     * @var string[]
-     */
-    public $postalCodes = [
+    private const DEFAULT_PATTERN = '/^$/';
+    private const POSTAL_CODES = [
+        // phpcs:disable Generic.Files.LineLength.TooLong
         'AD' => '/^(?:AD)*(\d{3})$/',
         'AL' => '/^(\d{4})$/',
         'AM' => '/^(\d{6})$/',
@@ -190,22 +187,19 @@ class PostalCode extends AbstractEnvelope
         'YT' => '/^(\d{5})$/',
         'ZA' => '/^(\d{4})$/',
         'ZM' => '/^(\d{5})$/',
+        // phpcs:enable Generic.Files.LineLength.TooLong
     ];
-    // phpcs:enable Generic.Files.LineLength.TooLong
 
-    public function __construct(string $countryCode, ?CountryCode $countryCodeRule = null)
+    public function __construct(string $countryCode)
     {
-        $countryCodeRule = $countryCodeRule ?: new CountryCode();
+        $countryCodeRule = new CountryCode();
         if (!$countryCodeRule->validate($countryCode)) {
             throw new ComponentException(sprintf('Cannot validate postal code from "%s" country', $countryCode));
         }
 
-        $regex = self::DEFAULT_PATTERN;
-        $upperCountryCode = mb_strtoupper($countryCode);
-        if (isset($this->postalCodes[$upperCountryCode])) {
-            $regex = $this->postalCodes[$upperCountryCode];
-        }
-
-        parent::__construct(new Regex($regex), ['countryCode' => $countryCode]);
+        parent::__construct(
+            new Regex(self::POSTAL_CODES[$countryCode] ?? self::DEFAULT_PATTERN),
+            ['countryCode' => $countryCode]
+        );
     }
 }
