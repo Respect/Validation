@@ -15,6 +15,16 @@ namespace Respect\Validation\Rules;
 
 use ArrayAccess;
 use Respect\Validation\Exceptions\ComponentException;
+use function array_key_exists;
+use function array_shift;
+use function explode;
+use function is_array;
+use function is_null;
+use function is_object;
+use function is_scalar;
+use function property_exists;
+use function rtrim;
+use function sprintf;
 
 /**
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>

@@ -35,7 +35,7 @@ final class GraphTest extends RuleTestCase
     public function providerForValidInput(): array
     {
         $graph = new Graph();
-        
+
         return [
             'String with special characters "LKA#@%.54"' => [$graph, 'LKA#@%.54'],
             'String "foobar"' => [$graph, 'foobar'],
@@ -44,8 +44,8 @@ final class GraphTest extends RuleTestCase
             'String with special characters "#$%&*_"' => [$graph, '#$%&*_'],
             'Ignoring control characters "\n"' => [new Graph("\n"), "#$%&*_\n~"],
             'Ignoring control characters "\n#\t&\r"' => [new Graph("\n#\t&\r"), "#$%&*_\n~\t**\r"],
-            'Ignoring character "_"' => [new Graph("_"), "abc\#$%&*_"],
-            'Ignoring characters "# $"' => [new Graph("# $"), "#$%&*_"],
+            'Ignoring character "_"' => [new Graph('_'), 'abc\#$%&*_'],
+            'Ignoring characters "# $"' => [new Graph('# $'), '#$%&*_'],
             'Ignoring character with space' => [new Graph(' '), '!@#$%^&*(){} abc 123'],
             'Ignoring control characters " \t\n"' => [new Graph(" \t\n"), "[]?+=/\\-_|\"',<>. \t \n abc 123"],
         ];

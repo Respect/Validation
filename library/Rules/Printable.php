@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function ctype_print;
+
 /**
  * Validates whether an input is printable character(s).
  *

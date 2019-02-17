@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
 use const FILTER_FLAG_QUERY_REQUIRED;
+use const FILTER_SANITIZE_EMAIL;
 use const FILTER_VALIDATE_BOOLEAN;
 use const FILTER_VALIDATE_EMAIL;
 use const FILTER_VALIDATE_FLOAT;

@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function is_array;
+
 /**
  * Validates whether the type of an input is array.
  *

@@ -17,6 +17,7 @@ use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use SplFileObject;
 use stdClass;
+use function dir;
 
 /**
  * @group rule

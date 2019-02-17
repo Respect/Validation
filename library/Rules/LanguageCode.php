@@ -17,6 +17,7 @@ use Respect\Validation\Exceptions\ComponentException;
 use function array_column;
 use function array_filter;
 use function array_search;
+use function sprintf;
 
 /**
  * Validates whether the input is language code based on ISO 639.

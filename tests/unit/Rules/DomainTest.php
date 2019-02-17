@@ -15,6 +15,8 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validator as v;
+use function sprintf;
+use function var_export;
 
 /**
  * @group  rule

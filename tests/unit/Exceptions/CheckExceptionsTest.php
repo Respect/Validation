@@ -16,6 +16,9 @@ namespace Respect\Validation\Exceptions;
 use DirectoryIterator;
 use ReflectionClass;
 use Respect\Validation\Test\TestCase;
+use function class_exists;
+use function mb_substr;
+use function sprintf;
 
 /**
  * @coversNothing

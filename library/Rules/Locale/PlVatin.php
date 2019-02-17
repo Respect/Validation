@@ -15,6 +15,8 @@ namespace Respect\Validation\Rules\Locale;
 
 use Respect\Validation\Rules\AbstractRule;
 use function array_map;
+use function is_scalar;
+use function preg_match;
 use function str_split;
 
 /**

@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use ArrayAccess;
 use SimpleXMLElement;
+use function is_array;
 
 /**
  * Validates if the input is an array or if the input can be used as an array.

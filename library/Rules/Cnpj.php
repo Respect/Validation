@@ -18,6 +18,7 @@ use function array_sum;
 use function count;
 use function is_scalar;
 use function preg_replace;
+use function str_split;
 
 /**
  * Validates if the input is a Brazilian National Registry of Legal Entities (CNPJ) number.

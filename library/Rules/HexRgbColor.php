@@ -13,6 +13,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function is_string;
+use function mb_strlen;
+use function mb_strpos;
+use function mb_substr;
+
 /**
  * @author Davide Pastore <pasdavide@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>

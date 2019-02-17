@@ -13,6 +13,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function is_array;
+use function mb_detect_encoding;
+use function mb_stripos;
+use function mb_strpos;
+use function reset;
+
 /**
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>

@@ -18,6 +18,7 @@ use SplFileInfo;
 use function is_file;
 use function is_string;
 use function mb_strpos;
+use const FILEINFO_MIME_TYPE;
 
 /**
  * Validates if the file is a valid image by checking its MIME type.

@@ -23,6 +23,9 @@ use function array_map;
 use function array_merge;
 use function array_unique;
 use function lcfirst;
+use function sprintf;
+use function trim;
+use function ucfirst;
 
 /**
  * Factory of objects.

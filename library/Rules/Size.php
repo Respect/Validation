@@ -15,6 +15,11 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 use SplFileInfo;
+use function filesize;
+use function is_numeric;
+use function is_string;
+use function preg_match;
+use function sprintf;
 
 /**
  * Validate file size.
@@ -65,7 +70,7 @@ class Size extends AbstractRule
         $value = $size;
         $units = ['b', 'kb', 'mb', 'gb', 'tb', 'pb', 'eb', 'zb', 'yb'];
         foreach ($units as $exponent => $unit) {
-            if (!preg_match("/^(\d+(.\d+)?){$unit}$/i", (string) $size, $matches)) {
+            if (!preg_match('/^(\d+(.\d+)?)'.$unit.'$/i', (string) $size, $matches)) {
                 continue;
             }
             $value = $matches[1] * 1024 ** $exponent;

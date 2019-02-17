@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Helpers;
 
+use function in_array;
+
 /**
  * Helper to identify values that Validation consider as "undefined".
  *

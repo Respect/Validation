@@ -15,6 +15,8 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
+use const FILTER_FLAG_IPV6;
+use const FILTER_FLAG_NO_PRIV_RANGE;
 
 /**
  * @group rule

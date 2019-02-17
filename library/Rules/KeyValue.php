@@ -18,6 +18,7 @@ use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
 use Respect\Validation\Validator;
 use function array_keys;
+use function in_array;
 
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>

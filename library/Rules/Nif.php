@@ -13,6 +13,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function array_pop;
+use function array_sum;
+use function is_numeric;
+use function is_string;
+use function mb_substr;
+use function preg_match;
+use function str_split;
+
 /**
  * Validates Spain's fiscal identification number (NIF).
  *

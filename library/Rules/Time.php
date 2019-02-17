@@ -15,9 +15,11 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Helpers\CanValidateDateTime;
+use function date;
 use function is_scalar;
 use function preg_match;
 use function sprintf;
+use function strtotime;
 
 /**
  * Validates whether an input is a time or not

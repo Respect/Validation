@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function count;
+
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Mikhail Vyrtsev <reeywhaar@gmail.com>

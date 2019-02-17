@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function defined;
+use function nl_langinfo;
+use const NOEXPR;
+
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */

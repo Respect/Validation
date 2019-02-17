@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
+use function tmpfile;
 
 /**
  * @group rule

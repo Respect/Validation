@@ -16,12 +16,14 @@ namespace Respect\Validation\Rules;
 use Countable as CountableInterface;
 use Respect\Validation\Exceptions\ComponentException;
 use function count;
+use function get_object_vars;
 use function is_array;
 use function is_int;
 use function is_object;
 use function is_string;
 use function mb_detect_encoding;
 use function mb_strlen;
+use function sprintf;
 
 /**
  * Validates the length of the given input.

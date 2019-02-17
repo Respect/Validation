@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use function sprintf;
 
 /**
  * Validates whether the input is a valid postal code or not.

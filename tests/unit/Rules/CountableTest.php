@@ -17,6 +17,7 @@ use ArrayIterator;
 use ArrayObject;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
+use const PHP_INT_MAX;
 
 /**
  * @group rule

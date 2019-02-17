@@ -24,7 +24,7 @@ try {
 }
 
 try {
-    v::not(v::graph())->check("foobar");
+    v::not(v::graph())->check('foobar');
 } catch (GraphException $exception) {
     echo $exception->getMessage().PHP_EOL;
 }
@@ -48,7 +48,7 @@ try {
 }
 
 try {
-    v::not(v::graph())->assert("foobar");
+    v::not(v::graph())->assert('foobar');
 } catch (NestedValidationException $exception) {
     echo $exception->getFullMessage().PHP_EOL;
 }

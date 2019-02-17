@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function is_string;
+use function trim;
+
 /**
  * Validates whether the input is not empty
  *

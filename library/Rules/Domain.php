@@ -16,6 +16,10 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\DomainException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
+use function array_pop;
+use function count;
+use function explode;
+use function mb_substr_count;
 
 /**
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>

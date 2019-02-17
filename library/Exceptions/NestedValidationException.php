@@ -16,11 +16,13 @@ namespace Respect\Validation\Exceptions;
 use IteratorAggregate;
 use RecursiveIteratorIterator;
 use SplObjectStorage;
+use function array_shift;
 use function count;
 use function current;
 use function implode;
 use function is_array;
 use function spl_object_hash;
+use function sprintf;
 use function str_repeat;
 use const PHP_EOL;
 

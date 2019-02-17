@@ -19,6 +19,7 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use function trim;
 
 /**
  * Validate the input with a Symfony Validator (>=4.0 or >=3.0) Constraint.

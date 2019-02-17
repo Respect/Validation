@@ -17,6 +17,8 @@ use PHPUnit\Framework\SkippedTestError;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use stdClass;
+use function extension_loaded;
+use function uopz_set_return;
 
 /**
  * @group rule

@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function ctype_xdigit;
+
 /**
  * @author Andre Ramaciotti <andre@ramaciotti.com>
  * @author Henrique Moody <henriquemoody@gmail.com>

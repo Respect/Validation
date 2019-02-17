@@ -17,6 +17,9 @@ use ReflectionClass;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ZendException;
 use Zend\Validator\ValidatorInterface as ZendValidator;
+use function get_object_vars;
+use function is_string;
+use function mb_stripos;
 
 /**
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
@@ -59,7 +62,7 @@ class Zend extends AbstractRule
      */
     private function createZendValidator(string $name, array $params): ZendValidator
     {
-        $name = mb_stripos($name, 'Zend') === false ? "Zend\\Validator\\{$name}" : "\\{$name}";
+        $name = mb_stripos($name, 'Zend') === false ? 'Zend\\Validator\\'.$name : '\\'.$name;
 
         $reflection = new ReflectionClass($name);
 

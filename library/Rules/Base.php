@@ -16,6 +16,7 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\ComponentException;
 use function is_null;
 use function mb_strlen;
+use function mb_substr;
 use function preg_match;
 use function sprintf;
 
@@ -61,6 +62,6 @@ final class Base extends AbstractRule
     {
         $valid = mb_substr($this->chars, 0, $this->base);
 
-        return (bool) preg_match("@^[$valid]+$@", (string) $input);
+        return (bool) preg_match('@^['.$valid.']+$@', (string) $input);
     }
 }

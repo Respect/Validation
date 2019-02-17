@@ -15,6 +15,9 @@ namespace Respect\Validation\Exceptions;
 
 use InvalidArgumentException;
 use function call_user_func;
+use function is_string;
+use function key;
+use function preg_replace_callback;
 use function Respect\Stringifier\stringify;
 
 /**

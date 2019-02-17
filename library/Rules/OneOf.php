@@ -15,6 +15,8 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\OneOfException;
 use Respect\Validation\Exceptions\ValidationException;
+use function array_shift;
+use function count;
 
 /**
  * @author Bradyn Poulsen <bradyn@bradynpoulsen.com>

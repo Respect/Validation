@@ -19,6 +19,7 @@ use stdClass;
 use function mt_getrandmax;
 use function mt_rand;
 use function uniqid;
+use const PHP_INT_MAX;
 
 /**
  * @group rule

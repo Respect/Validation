@@ -14,7 +14,10 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use function filter_var;
+use function is_bool;
 use function is_float;
+use const FILTER_FLAG_ALLOW_OCTAL;
+use const FILTER_VALIDATE_INT;
 
 /**
  * Validates if the input is an integer.

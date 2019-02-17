@@ -14,6 +14,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules\Locale;
 
 use Respect\Validation\Rules\AbstractRule;
+use function ord;
+use function preg_match;
 
 /**
  * Validator for Polish identity card.

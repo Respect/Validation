@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Helpers;
 
+use function checkdate;
+use function date_parse_from_format;
+use function preg_match;
+
 /**
  * Helper to handle date/time.
  *

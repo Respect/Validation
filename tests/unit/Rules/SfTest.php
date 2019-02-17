@@ -20,6 +20,7 @@ use Symfony\Component\Validator\Constraints\IsNull;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\TraceableValidator;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use function class_exists;
 
 /**
  * @group rule

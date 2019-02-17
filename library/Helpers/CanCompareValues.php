@@ -18,6 +18,7 @@ use DateTimeImmutable;
 use DateTimeInterface;
 use Throwable;
 use function is_numeric;
+use function is_scalar;
 use function is_string;
 use function mb_strlen;
 

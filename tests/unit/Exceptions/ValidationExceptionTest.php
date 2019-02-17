@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Exceptions;
 
 use Respect\Validation\Test\TestCase;
+use function trim;
 
 /**
  * @group core

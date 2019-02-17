@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use function in_array;
 use const FILTER_VALIDATE_BOOLEAN;
 use const FILTER_VALIDATE_EMAIL;
 use const FILTER_VALIDATE_FLOAT;

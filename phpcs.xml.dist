@@ -31,6 +31,7 @@
         </properties>
     </rule>
     <rule ref="Generic.WhiteSpace.ArbitraryParenthesesSpacing" />
+    <rule ref="Generic.WhiteSpace.IncrementDecrementSpacing" />
     <rule ref="PEAR.WhiteSpace.ObjectOperatorIndent" />
     <rule ref="SlevomatCodingStandard.Arrays.DisallowImplicitArrayCreation" />
     <rule ref="SlevomatCodingStandard.Arrays.TrailingArrayComma" />
@@ -73,7 +74,15 @@
     <rule ref="SlevomatCodingStandard.Namespaces.NamespaceSpacing" />
     <rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly">
         <properties>
-            <property name="searchAnnotations" value="true" />
+            <property name="allowFallbackGlobalConstants" value="false"/>
+            <property name="allowFallbackGlobalFunctions" value="false"/>
+            <property name="allowFullyQualifiedGlobalClasses" value="false"/>
+            <property name="allowFullyQualifiedGlobalConstants" value="false"/>
+            <property name="allowFullyQualifiedGlobalFunctions" value="false"/>
+            <property name="allowFullyQualifiedNameForCollidingClasses" value="true"/>
+            <property name="allowFullyQualifiedNameForCollidingConstants" value="true"/>
+            <property name="allowFullyQualifiedNameForCollidingFunctions" value="true"/>
+            <property name="searchAnnotations" value="true"/>
         </properties>
     </rule>
     <rule ref="SlevomatCodingStandard.Namespaces.RequireOneNamespaceInFile" />
@@ -124,11 +133,31 @@
             <property name="ignoreNewlines" value="true" />
         </properties>
     </rule>
+    <rule ref="Squiz.Strings.DoubleQuoteUsage"/>
+    <rule ref="Squiz.Strings.DoubleQuoteUsage.ContainsVar">
+        <message>Variable "%s" not allowed in double quoted string; use sprintf() or concatenation instead</message>
+    </rule>
     <rule ref="Squiz.WhiteSpace.MemberVarSpacing">
         <properties>
             <property name="spacing" value="1" />
             <property name="spacingBeforeFirst" value="0" />
         </properties>
     </rule>
+    <rule ref="Squiz.WhiteSpace.LanguageConstructSpacing" />
+    <rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing" />
+    <rule ref="Squiz.WhiteSpace.ObjectOperatorSpacing">
+        <properties>
+            <property name="ignoreNewlines" value="true" />
+        </properties>
+    </rule>
     <rule ref="Squiz.WhiteSpace.OperatorSpacing" />
+    <rule ref="Squiz.WhiteSpace.SemicolonSpacing" />
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
+        <properties>
+            <property name="ignoreBlankLines" value="false" />
+        </properties>
+    </rule>
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines">
+        <severity>5</severity>
+    </rule>
 </ruleset>

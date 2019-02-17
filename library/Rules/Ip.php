@@ -26,6 +26,7 @@ use function sprintf;
 use function str_repeat;
 use function str_replace;
 use function strtr;
+use const FILTER_VALIDATE_IP;
 
 /**
  * Validates whether the input is a valid IP address.
