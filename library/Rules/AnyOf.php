@@ -21,7 +21,7 @@ use function count;
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class AnyOf extends AbstractComposite
+final class AnyOf extends AbstractComposite
 {
     /**
      * {@inheritdoc}

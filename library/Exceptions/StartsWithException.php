@@ -17,7 +17,7 @@ namespace Respect\Validation\Exceptions;
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class StartsWithException extends ValidationException
+final class StartsWithException extends ValidationException
 {
     /**
      * {@inheritdoc}

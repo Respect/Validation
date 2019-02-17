@@ -24,17 +24,17 @@ use function reset;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Marcelo Araujo <msaraujo@php.net>
  */
-class StartsWith extends AbstractRule
+final class StartsWith extends AbstractRule
 {
     /**
      * @var mixed
      */
-    public $startValue;
+    private $startValue;
 
     /**
      * @var bool
      */
-    public $identical;
+    private $identical;
 
     /**
      * @param mixed $startValue

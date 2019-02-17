@@ -37,9 +37,9 @@ final class KeyValueTest extends TestCase
 
         $rule = new KeyValue($comparedKey, $ruleName, $baseKey);
 
-        self::assertSame($comparedKey, $rule->comparedKey);
-        self::assertSame($ruleName, $rule->ruleName);
-        self::assertSame($baseKey, $rule->baseKey);
+        self::assertAttributeSame($comparedKey, 'comparedKey', $rule);
+        self::assertAttributeSame($ruleName, 'ruleName', $rule);
+        self::assertAttributeSame($baseKey, 'baseKey', $rule);
     }
 
     /**

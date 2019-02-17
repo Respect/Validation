@@ -23,22 +23,22 @@ use function in_array;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class KeyValue extends AbstractRule
+final class KeyValue extends AbstractRule
 {
     /**
      * @var int|string
      */
-    public $comparedKey;
+    private $comparedKey;
 
     /**
      * @var string
      */
-    public $ruleName;
+    private $ruleName;
 
     /**
      * @var int|string
      */
-    public $baseKey;
+    private $baseKey;
 
     /**
      * @param int|string $comparedKey

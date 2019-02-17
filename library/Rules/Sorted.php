@@ -19,17 +19,17 @@ use function count;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Mikhail Vyrtsev <reeywhaar@gmail.com>
  */
-class Sorted extends AbstractRule
+final class Sorted extends AbstractRule
 {
     /**
      * @var callable
      */
-    public $fn = null;
+    private $fn = null;
 
     /**
      * @var bool
      */
-    public $ascending = true;
+    private $ascending = true;
 
     public function __construct(?callable $fn = null, bool $ascending = true)
     {

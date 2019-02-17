@@ -26,27 +26,27 @@ use function sprintf;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class Size extends AbstractRule
+final class Size extends AbstractRule
 {
     /**
      * @var string
      */
-    public $minSize;
+    private $minSize;
 
     /**
      * @var float|null
      */
-    public $minValue;
+    private $minValue;
 
     /**
      * @var string
      */
-    public $maxSize;
+    private $maxSize;
 
     /**
      * @var float|null
      */
-    public $maxValue;
+    private $maxValue;
 
     /**
      * @param string|int|null $minSize

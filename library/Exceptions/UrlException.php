@@ -16,7 +16,7 @@ namespace Respect\Validation\Exceptions;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class UrlException extends ValidationException
+final class UrlException extends ValidationException
 {
     /**
      * {@inheritdoc}

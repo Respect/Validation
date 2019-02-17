@@ -33,12 +33,12 @@ final class EndsWith extends AbstractRule
     /**
      * @var mixed
      */
-    public $endValue;
+    private $endValue;
 
     /**
      * @var bool
      */
-    public $identical;
+    private $identical;
 
     /**
      * @param mixed $endValue

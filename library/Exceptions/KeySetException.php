@@ -18,7 +18,7 @@ use function count;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class KeySetException extends GroupedValidationException implements NonOmissibleException
+final class KeySetException extends GroupedValidationException implements NonOmissibleException
 {
     public const STRUCTURE = 'structure';
 

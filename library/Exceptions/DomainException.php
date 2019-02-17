@@ -17,7 +17,7 @@ namespace Respect\Validation\Exceptions;
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class DomainException extends NestedValidationException
+final class DomainException extends NestedValidationException
 {
     /**
      * {@inheritdoc}

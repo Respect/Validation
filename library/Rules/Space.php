@@ -20,7 +20,7 @@ use function ctype_space;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
-class Space extends AbstractFilterRule
+final class Space extends AbstractFilterRule
 {
     protected function validateFilteredInput(string $input): bool
     {

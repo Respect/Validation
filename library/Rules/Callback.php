@@ -29,12 +29,12 @@ final class Callback extends AbstractRule
     /**
      * @var callable
      */
-    public $callback;
+    private $callback;
 
     /**
      * @var mixed[]
      */
-    public $arguments;
+    private $arguments;
 
     /**
      * Initializes the rule.

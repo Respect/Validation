@@ -18,7 +18,7 @@ namespace Respect\Validation\Exceptions;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SizeException extends NestedValidationException
+final class SizeException extends NestedValidationException
 {
     public const BOTH = 'both';
     public const LOWER = 'lower';

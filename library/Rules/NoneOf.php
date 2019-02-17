@@ -20,7 +20,7 @@ use function count;
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class NoneOf extends AbstractComposite
+final class NoneOf extends AbstractComposite
 {
     /**
      * {@inheritdoc}

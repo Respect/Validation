@@ -20,7 +20,7 @@ use const NOEXPR;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class No extends AbstractEnvelope
+final class No extends AbstractEnvelope
 {
     public function __construct(bool $useLocale = false)
     {

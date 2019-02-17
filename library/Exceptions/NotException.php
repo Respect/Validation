@@ -17,6 +17,6 @@ namespace Respect\Validation\Exceptions;
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class NotException extends GroupedValidationException
+final class NotException extends GroupedValidationException
 {
 }

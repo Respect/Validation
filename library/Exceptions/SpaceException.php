@@ -17,7 +17,7 @@ namespace Respect\Validation\Exceptions;
  * @author Andre Ramaciotti <andre@ramaciotti.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class SpaceException extends FilteredValidationException
+final class SpaceException extends FilteredValidationException
 {
     /**
      * {@inheritdoc}

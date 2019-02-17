@@ -32,7 +32,7 @@ use function sprintf;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Ivan Zinovyev <vanyazin@gmail.com>
  */
-class KeyNested extends AbstractRelated
+final class KeyNested extends AbstractRelated
 {
     /**
      * {@inheritdoc}

@@ -17,7 +17,7 @@ namespace Respect\Validation\Exceptions;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jean Pimentel <jeanfap@gmail.com>
  */
-class RomanException extends ValidationException
+final class RomanException extends ValidationException
 {
     /**
      * {@inheritdoc}

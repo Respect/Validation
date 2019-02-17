@@ -22,12 +22,12 @@ use function array_shift;
  * @author Caio César Tavares <caiotava@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class Not extends AbstractRule
+final class Not extends AbstractRule
 {
     /**
      * @var Validatable
      */
-    public $rule;
+    private $rule;
 
     public function __construct(Validatable $rule)
     {

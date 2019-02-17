@@ -28,23 +28,23 @@ use function mb_substr_count;
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author Róbert Nagy <vrnagy@gmail.com>
  */
-class Domain extends AbstractComposite
+final class Domain extends AbstractComposite
 {
     /**
      * @var Validatable
      */
-    protected $tld;
+    private $tld;
 
     /**
      * @var Validatable[]
      */
-    protected $checks = [];
+    private $checks = [];
 
     /**
      * @var AllOf
      *
      */
-    protected $otherParts;
+    private $otherParts;
 
     public function __construct(bool $tldCheck = true)
     {

@@ -16,7 +16,7 @@ namespace Respect\Validation\Exceptions;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class NoException extends ValidationException
+final class NoException extends ValidationException
 {
     /**
      * {@inheritdoc}

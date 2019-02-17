@@ -16,7 +16,7 @@ namespace Respect\Validation\Exceptions;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class PostalCodeException extends ValidationException
+final class PostalCodeException extends ValidationException
 {
     /**
      * {@inheritdoc}

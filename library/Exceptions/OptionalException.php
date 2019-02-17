@@ -16,7 +16,7 @@ namespace Respect\Validation\Exceptions;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class OptionalException extends ValidationException
+final class OptionalException extends ValidationException
 {
     public const NAMED = 'named';
 

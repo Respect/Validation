@@ -23,7 +23,7 @@ final class Multiple extends AbstractRule
     /**
      * @var int
      */
-    public $multipleOf;
+    private $multipleOf;
 
     public function __construct(int $multipleOf)
     {

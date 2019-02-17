@@ -17,7 +17,7 @@ namespace Respect\Validation\Exceptions;
  * @author Andre Ramaciotti <andre@ramaciotti.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class XdigitException extends FilteredValidationException
+final class XdigitException extends FilteredValidationException
 {
     /**
      * {@inheritdoc}

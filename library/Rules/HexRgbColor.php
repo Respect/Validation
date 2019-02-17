@@ -22,7 +22,7 @@ use function mb_substr;
  * @author Davide Pastore <pasdavide@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class HexRgbColor extends Xdigit
+final class HexRgbColor extends Xdigit
 {
     /**
      * {@inheritdoc}

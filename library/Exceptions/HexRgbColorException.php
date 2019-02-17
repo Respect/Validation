@@ -17,7 +17,7 @@ namespace Respect\Validation\Exceptions;
  * @author Davide Pastore <pasdavide@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class HexRgbColorException extends ValidationException
+final class HexRgbColorException extends ValidationException
 {
     /**
      * {@inheritdoc}

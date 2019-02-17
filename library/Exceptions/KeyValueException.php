@@ -16,7 +16,7 @@ namespace Respect\Validation\Exceptions;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class KeyValueException extends ValidationException
+final class KeyValueException extends ValidationException
 {
     public const COMPONENT = 'component';
 

@@ -92,7 +92,7 @@ final class SizeTest extends TestCase
     {
         $rule = new Size($size);
 
-        self::assertEquals($bytes, $rule->minValue);
+        self::assertAttributeEquals($bytes, 'minValue', $rule);
     }
 
     /**

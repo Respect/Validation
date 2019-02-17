@@ -18,7 +18,7 @@ use Respect\Validation\Exceptions\ValidationException;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class PlIdentityCardException extends ValidationException
+final class PlIdentityCardException extends ValidationException
 {
     /**
      * {@inheritdoc}

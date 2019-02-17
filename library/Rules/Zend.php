@@ -26,17 +26,17 @@ use function mb_stripos;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Hugo Hamon <hugo.hamon@sensiolabs.com>
  */
-class Zend extends AbstractRule
+final class Zend extends AbstractRule
 {
     /**
      * @var string[]
      */
-    protected $messages = [];
+    private $messages = [];
 
     /**
      * @var ZendValidator
      */
-    protected $zendValidator;
+    private $zendValidator;
 
     /**
      * @param string|ZendValidator $validator

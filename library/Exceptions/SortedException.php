@@ -17,7 +17,7 @@ namespace Respect\Validation\Exceptions;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Mikhail Vyrtsev <reeywhaar@gmail.com>
  */
-class SortedException extends ValidationException
+final class SortedException extends ValidationException
 {
     /**
      * {@inheritdoc}

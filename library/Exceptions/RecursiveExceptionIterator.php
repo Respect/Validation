@@ -20,7 +20,7 @@ use RecursiveIterator;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class RecursiveExceptionIterator implements RecursiveIterator, Countable
+final class RecursiveExceptionIterator implements RecursiveIterator, Countable
 {
     /**
      * @var ArrayIterator|ValidationException[]
