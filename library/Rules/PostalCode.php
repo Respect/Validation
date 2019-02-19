@@ -81,7 +81,7 @@ class PostalCode extends Regex
         'HT' => '/^(?:HT)*(\d{4})$/',
         'HU' => '/^(\d{4})$/',
         'ID' => '/^(\d{5})$/',
-        'IE' => '/^[A-Z]\d{2}$|^[A-Z]{3}[A-Z]{4}$/',
+        'IE' => '/^([AC-FHKNPRTV-Y][0-9]{2}|D6W) ?[0-9AC-FHKNPRTV-Y]{4}$/',
         'IL' => '/^(\d{5})$/',
         'IM' => '/^((?:(?:[A-PR-UWYZ][A-HK-Y]\d[ABEHMNPRV-Y0-9]|[A-PR-UWYZ]\d[A-HJKPS-UW0-9])\s\d[ABD-HJLNP-UW-Z]{2})|GIR\s?0AA)$/',
         'IN' => '/^(\d{6})$/',
