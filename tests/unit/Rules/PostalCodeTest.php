@@ -100,6 +100,7 @@ class PostalCodeTest extends TestCase
             ['PT', '3660606'],
             ['CO', '110231'],
             ['KR', '03187'],
+            ['IE', 'D14 YD91']
         ];
     }
 
