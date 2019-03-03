@@ -13,78 +13,49 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\StartsWithException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\StartsWith
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class StartsWithTest extends TestCase
+final class StartsWithTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForStartsWith
-     *
-     * @test
-     *
-     * @param mixed $input
+     * {@inheritdoc}
      */
-    public function startsWith(string $start, $input): void
-    {
-        $v = new StartsWith($start);
-        self::assertTrue($v->__invoke($input));
-        $v->check($input);
-        $v->assert($input);
-    }
-
-    /**
-     * @dataProvider providerForNotStartsWith
-     * @expectedException \Respect\Validation\Exceptions\StartsWithException
-     *
-     * @test
-     *
-     * @param mixed $input
-     */
-    public function notStartsWith(string $start, $input, bool $caseSensitive = false): void
-    {
-        $v = new StartsWith($start, $caseSensitive);
-        self::assertFalse($v->__invoke($input));
-        $v->assert($input);
-    }
-
-    /**
-     * @return mixed[][]
-     */
-    public function providerForStartsWith(): array
+    public function providerForValidInput(): array
     {
         return [
-            ['foo', ['foo', 'bar']],
-            ['foo', 'FOObarbaz'],
-            ['foo', 'foobarbaz'],
-            ['foo', 'foobazfoo'],
-            ['1', [1, 2, 3]],
-            ['1', ['1', 2, 3], true],
+            [new StartsWith('foo'), ['foo', 'bar']],
+            [new StartsWith('foo') ,'FOObarbaz'],
+            [new StartsWith('foo') , 'foobarbaz'],
+            [new StartsWith('foo') ,'foobazfoo'],
+            [new StartsWith('1'), [1, 2, 3]],
+            [new StartsWith('1', true), ['1', 2, 3]],
         ];
     }
 
     /**
-     * @return mixed[][]
+     * {@inheritdoc}
      */
-    public function providerForNotStartsWith(): array
+    public function providerForInvalidInput(): array
     {
         return [
-            ['foo', ''],
-            ['bat', ['foo', 'bar']],
-            ['foo', 'barfaabaz'],
-            ['foo', 'FOObarbaz', true],
-            ['foo', 'faabarbaz'],
-            ['foo', 'baabazfaa'],
-            ['foo', 'baafoofaa'],
-            ['1', [1, '1', 3], true],
+            [new StartsWith('foo'), ''],
+            [new StartsWith('bat'), ['foo', 'bar']],
+            [new StartsWith('foo'), 'barfaabaz'],
+            [new StartsWith('foo', true), 'FOObarbaz'],
+            [new StartsWith('foo'), 'faabarbaz'],
+            [new StartsWith('foo'), 'baabazfaa'],
+            [new StartsWith('foo'), 'baafoofaa'],
+            [new StartsWith('1', true), [1, '1', 3]],
         ];
     }
 }
