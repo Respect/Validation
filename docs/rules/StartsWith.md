@@ -3,8 +3,10 @@
 - `StartsWith(mixed $value)`
 - `StartsWith(mixed $value, bool $identical)`
 
-This validator is similar to `Contains()`, but validates
-only if the value is at the beginning of the input.
+Validates whether the input starts with a given value.
+
+This validator is similar to [Contains](Contains.md), but validates only
+if the value is at the beginning of the input.
 
 For strings:
 

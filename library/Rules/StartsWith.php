@@ -20,6 +20,8 @@ use function mb_strpos;
 use function reset;
 
 /**
+ * Validates whether the input starts with a given value.
+ *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Marcelo Araujo <msaraujo@php.net>
