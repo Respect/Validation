@@ -13,98 +13,56 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\SpaceException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Space
  *
  * @author Andre Ramaciotti <andre@ramaciotti.com>
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
- * @author Pascal Borreli <pascal@borreli.com>
  */
-final class SpaceTest extends TestCase
+final class SpaceTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForValidSpace
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function validDataWithSpaceShouldReturnTrue(string $validSpace): void
+    public function providerForValidInput(): array
     {
-        $validator = new Space();
-        self::assertTrue($validator->validate($validSpace));
-    }
+        $space = new Space();
 
-    /**
-     * @dataProvider providerForInvalidSpace
-     * @expectedException \Respect\Validation\Exceptions\SpaceException
-     *
-     * @test
-     *
-     * @param mixed $invalidSpace
-     */
-    public function invalidSpaceShouldFailAndThrowSpaceException($invalidSpace): void
-    {
-        $validator = new Space();
-        self::assertFalse($validator->validate($invalidSpace));
-        $validator->assert($invalidSpace);
-    }
-
-    /**
-     * @dataProvider providerAdditionalChars
-     *
-     * @test
-     */
-    public function additionalCharsShouldBeRespected(string $additional, string $input): void
-    {
-        $validator = new Space($additional);
-        self::assertTrue($validator->validate($input));
-    }
-
-    /**
-     * @return string[][]
-     */
-    public function providerAdditionalChars(): array
-    {
         return [
-            ['!@#$%^&*(){}', '!@#$%^&*(){} '],
-            ['[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n "],
+            'new line' => [$space, "\n"],
+            '1 space' => [$space, ' '],
+            '4 spaces' => [$space, '    '],
+            'tab' => [$space, "\t"],
+            '2 spaces' => [$space, '  '],
+            'characters "!@#$%^&*(){} "' => [new Space('!@#$%^&*(){}'), '!@#$%^&*(){} '],
+            'characters "[]?+=/\\-_|\"\',<>. \t \n "' => [new Space('[]?+=/\\-_|"\',<>.'), "[]?+=/\\-_|\"',<>. \t \n "],
         ];
     }
 
     /**
-     * @return string[][]
+     * {@inheritdoc}
      */
-    public function providerForValidSpace(): array
+    public function providerForInvalidInput(): array
     {
-        return [
-            ["\n"],
-            [' '],
-            ['    '],
-            ["\t"],
-            ['	'],
-        ];
-    }
+        $space = new Space();
 
-    /**
-     * @return mixed[][]
-     */
-    public function providerForInvalidSpace(): array
-    {
         return [
-            [''],
-            ['16-50'],
-            ['a'],
-            ['Foo'],
-            ['12.1'],
-            ['-12'],
-            [-12],
-            ['_'],
+            'string empty' => [$space, ''],
+            'string 16-56' => [$space, '16-50'],
+            'string a' => [$space, 'a'],
+            'string Foo' => [$space, 'Foo'],
+            'string negative float' => [$space, '12.1'],
+            'string negative number' => [$space, '-12'],
+            'negative number ' => [$space, -12],
+            'underline' => [$space, '_'],
         ];
     }
 }
