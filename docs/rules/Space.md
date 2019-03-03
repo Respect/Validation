@@ -3,7 +3,7 @@
 - `Space()`
 - `Space(string ...$additionalChars)`
 
-Accepts only whitespace:
+Validates whether the input contains only whitespaces characters.
 
 ```php
 v::space()->validate('    '); // true
