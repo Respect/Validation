@@ -24,12 +24,13 @@ use function sprintf;
 /**
  * Validate file size.
  *
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class Size extends AbstractRule
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $minSize;
 
@@ -39,7 +40,7 @@ final class Size extends AbstractRule
     private $minValue;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $maxSize;
 
