@@ -4,7 +4,7 @@
 - `Size(string $minSize, string $maxSize)`
 - `Size(null, string $maxSize)`
 
-Validates file sizes:
+Validates whether the input is a file that is of a certain size or not.
 
 ```php
 v::size('1KB')->validate($filename); // Must have at least 1KB size
@@ -27,8 +27,7 @@ Sizes are not case-sensitive and the accepted values are:
 This validator will consider `SplFileInfo` instances, like:
 
 ```php
-$fileInfo = new SplFileInfo($filename);
-v::size('1.5mb')->validate($fileInfo); // Will return true or false
+v::size('1.5mb')->validate(new SplFileInfo($filename)); // Will return true or false
 ```
 
 Message template for this validator includes `{{minSize}}` and `{{maxSize}}`.

@@ -15,84 +15,72 @@ namespace Respect\Validation\Rules;
 
 use org\bovigo\vfs\content\LargeFileContent;
 use org\bovigo\vfs\vfsStream;
-use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\SizeException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Size
  *
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class SizeTest extends TestCase
+final class SizeTest extends RuleTestCase
 {
     /**
-     * @return mixed[][]
+     * {@inheritdoc}
      */
-    public function validSizeProvider(): array
-    {
-        return [
-            [42, 42],
-            ['1b', 1],
-            ['1kb', 1024],
-            ['1mb', 1048576],
-            ['1gb', 1073741824],
-            ['1tb', 1099511627776],
-            ['1pb', 1125899906842624],
-            ['1eb', 1152921504606846976],
-            ['1zb', 1.1805916207174113E+21],
-            ['1yb', 1.2089258196146292E+24],
-        ];
-    }
-
-    /**
-     * @return mixed[][]
-     */
-    public function validFileProvider(): array
+    public function providerForValidInput(): array
     {
         $root = vfsStream::setup();
-
-        $file2Kb = vfsStream::newFile('2kb.txt')->withContent(LargeFileContent::withKilobytes(2))->at($root);
-        $file2Mb = vfsStream::newFile('2mb.txt')->withContent(LargeFileContent::withMegabytes(2))->at($root);
+        $file2Kb = vfsStream::newFile('2kb.txt')
+            ->withContent(LargeFileContent::withKilobytes(2))
+            ->at($root);
+        $file2Mb = vfsStream::newFile('2mb.txt')
+            ->withContent(LargeFileContent::withMegabytes(2))
+            ->at($root);
 
         return [
-            // Valid data
-            [$file2Kb->url(), '1kb', null, true],
-            [$file2Kb->url(), '2kb', null, true],
-            [$file2Kb->url(), null, '2kb', true],
-            [$file2Kb->url(), null, '3kb', true],
-            [$file2Kb->url(), '1kb', '3kb', true],
-            [$file2Mb->url(), '1mb', null, true],
-            [$file2Mb->url(), '2mb', null, true],
-            [$file2Mb->url(), null, '2mb', true],
-            [$file2Mb->url(), null, '3mb', true],
-            [$file2Mb->url(), '1mb', '3mb', true],
-            // Invalid data
-            [$file2Kb->url(), '3kb', null, false],
-            [$file2Kb->url(), null, '1kb', false],
-            [$file2Kb->url(), '1kb', '1.5kb', false],
-            [$file2Mb->url(), '2.5mb', null, false],
-            [$file2Mb->url(), '3gb', null, false],
-            [$file2Mb->url(), null, '1b', false],
-            [$file2Mb->url(), '1pb', '3pb', false],
+            'file with at least 1kb' => [new Size('1kb', null), $file2Kb->url()],
+            'file with at least 2k' => [new Size('2kb', null), $file2Kb->url()],
+            'file with up to 2kb' => [new Size(null, '2kb'), $file2Kb->url()],
+            'file with up to 3kb' => [new Size(null, '3kb'), $file2Kb->url()],
+            'file between 1kb and 3kb' => [new Size('1kb', '3kb'), $file2Kb->url()],
+            'file with at least 1mb' => [new Size('1mb', null), $file2Mb->url()],
+            'file with at least 2mb' => [new Size('2mb', null), $file2Mb->url()],
+            'file with up to 2mb' => [new Size(null, '2mb'), $file2Mb->url()],
+            'file with up to 3mb' => [new Size(null, '3mb'), $file2Mb->url()],
+            'file between 1mb and 3mb' => [new Size('1mb', '3mb'), $file2Mb->url()],
+            'SplFileInfo instance' => [new Size('1mb', '3mb'), new SplFileInfo($file2Mb->url())],
         ];
     }
 
     /**
-     * @dataProvider validSizeProvider
-     *
-     * @test
-     *
-     * @param mixed $size
-     * @param mixed $bytes
+     * {@inheritdoc}
      */
-    public function shouldConvertUnitonConstructor($size, $bytes): void
+    public function providerForInvalidInput(): array
     {
-        $rule = new Size($size);
+        $root = vfsStream::setup();
+        $file2Kb = vfsStream::newFile('2kb.txt')
+            ->withContent(LargeFileContent::withKilobytes(2))
+            ->at($root);
+        $file2Mb = vfsStream::newFile('2mb.txt')
+            ->withContent(LargeFileContent::withMegabytes(2))
+            ->at($root);
 
-        self::assertAttributeEquals($bytes, 'minValue', $rule);
+        return [
+            'file with at least 3kb' => [new Size('3kb', null), $file2Kb->url()],
+            'file with up to 1kb' => [new Size(null, '1kb'), $file2Kb->url()],
+            'file between 1kb and 1.5kb' => [new Size('1kb', '1.5kb'), $file2Kb->url()],
+            'file with at least 2.5mb' => [new Size('2.5mb', null), $file2Mb->url()],
+            'file with at least 3gb' => [new Size('3gb', null), $file2Mb->url()],
+            'file with up to 1b' => [new Size(null, '1b'), $file2Mb->url()],
+            'file between 1pb and 3pb' => [new Size('1pb', '3pb'), $file2Mb->url()],
+            'SplFileInfo instancia' => [new Size('1pb', '3pb'), new SplFileInfo($file2Mb->url())],
+            'parameter invalid' => [new Size('1pb', '3pb'), []],
+        ];
     }
 
     /**
@@ -104,50 +92,5 @@ final class SizeTest extends TestCase
     public function shouldThrowsAnExceptionWhenSizeIsNotValid(): void
     {
         new Size('42jb');
-    }
-
-    /**
-     * @dataProvider validFileProvider
-     *
-     * @test
-     */
-    public function shouldValidateFile(
-        string $filename,
-        ?string $minSize,
-        ?string $maxSize,
-        bool $expectedValidation
-    ): void {
-        $rule = new Size($minSize, $maxSize);
-
-        self::assertEquals($expectedValidation, $rule->validate($filename));
-    }
-
-    /**
-     * @test
-     */
-    public function shouldValidateSplFileInfo(): void
-    {
-        $root = vfsStream::setup();
-        $file1Gb = vfsStream::newFile('1gb.txt')->withContent(LargeFileContent::withGigabytes(1))->at($root);
-        $file1GbObject = new SplFileInfo($file1Gb->url());
-
-        $rule = new Size('1MB', '2GB');
-
-        self::assertTrue($rule->validate($file1GbObject));
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\SizeException
-     * @expectedExceptionMessageRegExp #"vfs:.?/.?/root.?/1gb.txt" must be greater than "2pb"#
-     *
-     * @test
-     */
-    public function shouldThrowsSizeExceptionWhenAsserting(): void
-    {
-        $root = vfsStream::setup();
-        $file1Gb = vfsStream::newFile('1gb.txt')->withContent(LargeFileContent::withGigabytes(1))->at($root);
-
-        $rule = new Size('2pb');
-        $rule->assert($file1Gb->url());
     }
 }
