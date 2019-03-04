@@ -148,6 +148,7 @@ use function count;
  * @method static Validator sf(Constraint $constraint, ValidatorInterface $validator = null)
  * @method static Validator size(string $minSize = null, string $maxSize = null)
  * @method static Validator slug()
+ * @method static Validator sorted(string $direction)
  * @method static Validator space(string ...$additionalChars)
  * @method static Validator startsWith($startValue, bool $identical = false)
  * @method static Validator stringType()

@@ -13,133 +13,62 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Test\TestCase;
+use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\SortedException
+ * @group rules
+ *
  * @covers \Respect\Validation\Rules\Sorted
  *
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Mikhail Vyrtsev <reeywhaar@gmail.com>
  */
-final class SortedTest extends TestCase
+final class SortedTest extends RuleTestCase
 {
     /**
-     * @test
+     * {@inheritdoc}
      */
-    public function passes(): void
+    public function providerForValidInput(): array
     {
-        $arr = [1, 2, 3];
-        $rule = new Sorted();
-
-        self::assertTrue($rule->validate($arr));
-        $rule->assert($arr);
-        $rule->check($arr);
-    }
-
-    /**
-     * @test
-     */
-    public function passesWithEqualValues(): void
-    {
-        $arr = [1, 2, 2, 3];
-        $rule = new Sorted();
-
-        self::assertTrue($rule->validate($arr));
-        $rule->assert($arr);
-        $rule->check($arr);
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\SortedException
-     *
-     * @test
-     */
-    public function notPasses(): void
-    {
-        $arr = [1, 2, 4, 3];
-        $rule = new Sorted();
-
-        self::assertFalse($rule->validate($arr));
-        $rule->check($arr);
-    }
-
-    /**
-     * @test
-     */
-    public function passesDescending(): void
-    {
-        $arr = [10, 9, 8];
-        $rule = new Sorted(null, false);
-
-        self::assertTrue($rule->validate($arr));
-        $rule->assert($arr);
-        $rule->check($arr);
-    }
-
-    /**
-     * @test
-     */
-    public function passesDescendingWithEqualValues(): void
-    {
-        $arr = [10, 9, 9, 8];
-        $rule = new Sorted(null, false);
-
-        self::assertTrue($rule->validate($arr));
-        $rule->assert($arr);
-        $rule->check($arr);
-    }
-
-    /**
-     * @test
-     */
-    public function passesByFunction(): void
-    {
-        $arr = [
-            [
-                'key' => 1,
-            ],
-            [
-                'key' => 2,
-            ],
-            [
-                'key' => 5,
-            ],
+        return [
+            'empty' => [new Sorted('ASC'), []],
+            'one item' => [new Sorted('ASC'), [1]],
+            'one character' => [new Sorted('ASC'), 'z'],
+            'ASC array-sequence' => [new Sorted('ASC'), [1, 3, 5]],
+            'ASC sequence in associative array' => [new Sorted('ASC'), ['foo' => 1, 'bar' => 3, 'baz' => 5]],
+            'ASC string-sequence' => [new Sorted('ASC'), 'ABCD'],
+            'DESC array-sequence ' => [new Sorted('DESC'), [10, 9, 8]],
+            'DESC string-sequence ' => [new Sorted('DESC'), 'zyx'],
         ];
-        $rule = new Sorted(static function ($x) {
-            return $x['key'];
-        });
-
-        self::assertTrue($rule->validate($arr));
-        $rule->assert($arr);
-        $rule->check($arr);
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\SortedException
-     *
+     * {@inheritdoc}
+     */
+    public function providerForInvalidInput(): array
+    {
+        return [
+            'duplicate' => [new Sorted('ASC'), [1, 1, 1]],
+            'wrong ASC array-sequence' => [new Sorted('ASC'), [1, 3, 2]],
+            'wrong ASC string-sequence' => [new Sorted('ASC'), 'xzy'],
+            'wrong DESC array-sequence' => [new Sorted('DESC'), [1, 3, 2]],
+            'wrong DESC string-sequence' => [new Sorted('DESC'), 'jml'],
+            'DESC array-sequence with ASC validation' => [new Sorted('ASC'), [3, 2, 1]],
+            'DESC string-sequence with ASC validation' => [new Sorted('ASC'), '321'],
+            'ASC array-sequence with DESC validation' => [new Sorted('DESC'), [1, 2, 3]],
+            'ASC string-sequence with DESC validation' => [new Sorted('DESC'), 'abc'],
+        ];
+    }
+
+    /**
      * @test
      */
-    public function notPassesByFunction(): void
+    public function itShouldNotAcceptWrongSortingDirection(): void
     {
-        $arr = [
-            [
-                'key' => 1,
-            ],
-            [
-                'key' => 8,
-            ],
-            [
-                'key' => 5,
-            ],
-        ];
-        $rule = new Sorted(static function ($x) {
-            return $x['key'];
-        });
+        $this->expectExceptionObject(new ComponentException('Direction should be either "ASC" or "DESC"'));
 
-        self::assertFalse($rule->validate($arr));
-        $rule->check($arr);
+        new Sorted('something');
     }
 }
