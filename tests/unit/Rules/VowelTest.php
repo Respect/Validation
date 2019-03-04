@@ -13,11 +13,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\VowelException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Vowel
  *
@@ -27,88 +27,46 @@ use Respect\Validation\Test\TestCase;
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author Pascal Borreli <pascal@borreli.com>
  */
-final class VowelTest extends TestCase
+final class VowelTest extends RuleTestCase
 {
     /**
-     * @dataProvider providerForValidVowels
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function validDataWithVowelsShouldReturnTrue(string $validVowels): void
+    public function providerForValidInput(): array
     {
-        $validator = new Vowel();
-        self::assertTrue($validator->validate($validVowels));
-    }
+        $vowel = new Vowel();
 
-    /**
-     * @dataProvider providerForInvalidVowels
-     * @expectedException \Respect\Validation\Exceptions\VowelException
-     *
-     * @test
-     *
-     * @param mixed $invalidVowels
-     */
-    public function invalidVowelsShouldFailAndThrowVowelException($invalidVowels): void
-    {
-        $validator = new Vowel();
-        self::assertFalse($validator->validate($invalidVowels));
-        $validator->assert($invalidVowels);
-    }
-
-    /**
-     * @dataProvider providerAdditionalChars
-     *
-     * @test
-     */
-    public function additionalCharsShouldBeRespected(string $additional, string $input): void
-    {
-        $validator = new Vowel($additional);
-        self::assertTrue($validator->validate($input));
-    }
-
-    /**
-     * @return string[][]
-     */
-    public function providerAdditionalChars(): array
-    {
         return [
-            ['!@#$%^&*(){}', '!@#$%^&*(){} aeo iu'],
-            ['[]?+=/\\-_|"\',<>.', "[]?+=/\\-_|\"',<>. \t \n aeo iu"],
+            [$vowel, 'a'],
+            [$vowel, 'e'],
+            [$vowel, 'i'],
+            [$vowel, 'o'],
+            [$vowel, 'u'],
+            [$vowel, 'aeiou'],
+            [$vowel, 'aei ou'],
+            [$vowel, "\na\t"],
+            [$vowel, 'uoiea'],
+            [new Vowel('!@#$%^&*(){}'), '!@#$%^&*(){} aeo iu'],
+            [new Vowel('[]?+=/\\-_|"\',<>.'), "[]?+=/\\-_|\"',<>. \t \n aeo iu"],
         ];
     }
 
     /**
-     * @return string[][]
+     * {@inheritdoc}
      */
-    public function providerForValidVowels(): array
+    public function providerForInvalidInput(): array
     {
-        return [
-            ['a'],
-            ['e'],
-            ['i'],
-            ['o'],
-            ['u'],
-            ['aeiou'],
-            ['aei ou'],
-            ["\na\t"],
-            ['uoiea'],
-        ];
-    }
+        $vowel = new Vowel();
 
-    /**
-     * @return mixed[][]
-     */
-    public function providerForInvalidVowels(): array
-    {
         return [
-            [''],
-            [null],
-            ['16'],
-            ['F'],
-            ['g'],
-            ['Foo'],
-            [-50],
-            ['basic'],
+            [$vowel, ''],
+            [$vowel, null],
+            [$vowel, '16'],
+            [$vowel, 'F'],
+            [$vowel, 'g'],
+            [$vowel, 'Foo'],
+            [$vowel, -50],
+            [$vowel, 'basic'],
         ];
     }
 }
