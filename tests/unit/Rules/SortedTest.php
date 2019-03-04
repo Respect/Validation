@@ -13,133 +13,51 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\SortedException
+ * @group rules
+ *
  * @covers \Respect\Validation\Rules\Sorted
  *
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Mikhail Vyrtsev <reeywhaar@gmail.com>
  */
-final class SortedTest extends TestCase
+final class SortedTest extends RuleTestCase
 {
     /**
-     * @test
+     * {@inheritdoc}
      */
-    public function passes(): void
+    public function providerForValidInput(): array
     {
-        $arr = [1, 2, 3];
-        $rule = new Sorted();
-
-        self::assertTrue($rule->validate($arr));
-        $rule->assert($arr);
-        $rule->check($arr);
-    }
-
-    /**
-     * @test
-     */
-    public function passesWithEqualValues(): void
-    {
-        $arr = [1, 2, 2, 3];
-        $rule = new Sorted();
-
-        self::assertTrue($rule->validate($arr));
-        $rule->assert($arr);
-        $rule->check($arr);
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\SortedException
-     *
-     * @test
-     */
-    public function notPasses(): void
-    {
-        $arr = [1, 2, 4, 3];
-        $rule = new Sorted();
-
-        self::assertFalse($rule->validate($arr));
-        $rule->check($arr);
-    }
-
-    /**
-     * @test
-     */
-    public function passesDescending(): void
-    {
-        $arr = [10, 9, 8];
-        $rule = new Sorted(null, false);
-
-        self::assertTrue($rule->validate($arr));
-        $rule->assert($arr);
-        $rule->check($arr);
-    }
-
-    /**
-     * @test
-     */
-    public function passesDescendingWithEqualValues(): void
-    {
-        $arr = [10, 9, 9, 8];
-        $rule = new Sorted(null, false);
-
-        self::assertTrue($rule->validate($arr));
-        $rule->assert($arr);
-        $rule->check($arr);
-    }
-
-    /**
-     * @test
-     */
-    public function passesByFunction(): void
-    {
-        $arr = [
-            [
-                'key' => 1,
-            ],
-            [
-                'key' => 2,
-            ],
-            [
-                'key' => 5,
-            ],
-        ];
-        $rule = new Sorted(static function ($x) {
+        $fn = static function ($x) {
             return $x['key'];
-        });
+        };
 
-        self::assertTrue($rule->validate($arr));
-        $rule->assert($arr);
-        $rule->check($arr);
+        return [
+            [new Sorted(), [1]],
+            [new Sorted(), [1, 2, 3]],
+            [new Sorted(), [1, 2, 2, 3]],
+            [new Sorted(null, false), [10, 9, 8]],
+            [new Sorted(null, false), [10, 9, 9, 8]],
+            [new Sorted($fn, true), [['key' => 1, ], ['key' => 2, ], ['key' => 5]]],
+        ];
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\SortedException
-     *
-     * @test
+     * {@inheritdoc}
      */
-    public function notPassesByFunction(): void
+    public function providerForInvalidInput(): array
     {
-        $arr = [
-            [
-                'key' => 1,
-            ],
-            [
-                'key' => 8,
-            ],
-            [
-                'key' => 5,
-            ],
-        ];
-        $rule = new Sorted(static function ($x) {
+        $fn = static function ($x) {
             return $x['key'];
-        });
+        };
 
-        self::assertFalse($rule->validate($arr));
-        $rule->check($arr);
+        return [
+            [new Sorted(), [1, 2, 4, 3]],
+            [new Sorted(), [1, 2, 4, 4, 3]],
+            [new Sorted($fn), [['key' => 1], ['key' => 8], ['key' => 5]]],
+        ];
     }
 }
