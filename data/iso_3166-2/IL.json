@@ -1,0 +1,12 @@
+{
+  "source": "http://www.geonames.org/IL/administrative-division-israel.html",
+  "country": "Israel",
+  "subdivisions": {
+    "D": "Southern",
+    "HA": "Haifa",
+    "JM": "Jerusalem",
+    "M": "Central",
+    "TA": "Tel Aviv",
+    "Z": "Northern"
+  }
+}

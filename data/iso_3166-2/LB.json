@@ -1,0 +1,14 @@
+{
+  "source": "http://www.geonames.org/LB/administrative-division-lebanon.html",
+  "country": "Lebanon",
+  "subdivisions": {
+    "AK": "Aakkâr",
+    "AS": "Liban-Nord",
+    "BA": "Beyrouth",
+    "BH": "Baalbek-Hermel",
+    "BI": "Béqaa",
+    "JA": "Liban-Sud",
+    "JL": "Mont-Liban",
+    "NA": "Nabatîyé"
+  }
+}

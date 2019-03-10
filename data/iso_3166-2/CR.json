@@ -1,0 +1,13 @@
+{
+  "source": "http://www.geonames.org/CR/administrative-division-costa-rica.html",
+  "country": "Costa Rica",
+  "subdivisions": {
+    "A": "Alajuela",
+    "C": "Cartago",
+    "G": "Guanacaste",
+    "H": "Heredia",
+    "L": "Limon",
+    "P": "Puntarenas",
+    "SJ": "San Jose"
+  }
+}

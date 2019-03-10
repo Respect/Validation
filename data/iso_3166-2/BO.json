@@ -1,0 +1,15 @@
+{
+  "source": "http://www.geonames.org/BO/administrative-division-bolivia.html",
+  "country": "Bolivia",
+  "subdivisions": {
+    "B": "Departmento Beni",
+    "C": "Departmento Cochabamba",
+    "H": "Departmento Chuquisaca",
+    "L": "Departmento La Paz",
+    "N": "Departmento Pando",
+    "O": "Departmento Oruro",
+    "P": "Departmento Potosi",
+    "S": "Departmento Santa Cruz",
+    "T": "Departmento Tarija"
+  }
+}

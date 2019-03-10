@@ -1,0 +1,10 @@
+{
+  "source": "http://www.geonames.org/BN/administrative-division-brunei.html",
+  "country": "Brunei",
+  "subdivisions": {
+    "BE": "Belait",
+    "BM": "Brunei and Muara",
+    "TE": "Temburong",
+    "TU": "Tutong"
+  }
+}

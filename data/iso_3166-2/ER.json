@@ -1,0 +1,12 @@
+{
+  "source": "http://www.geonames.org/ER/administrative-division-eritrea.html",
+  "country": "Eritrea",
+  "subdivisions": {
+    "AN": "Anseba (Keren)",
+    "DK": "Southern Red Sea (Debub-Keih-Bahri)",
+    "DU": "Southern (Debub)",
+    "GB": "Gash-Barka (Barentu)",
+    "MA": "Central (Maekel)",
+    "SK": "Northern Red Sea (Semien-Keih-Bahri)"
+  }
+}

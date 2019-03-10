@@ -1,0 +1,21 @@
+{
+  "source": "http://www.geonames.org/CK/administrative-division-cook-islands.html",
+  "country": "Cook Islands",
+  "subdivisions": {
+    "AI": "Aitutaki",
+    "AT": "Atiu",
+    "MA": "Manuae",
+    "MG": "Mangaia",
+    "MK": "Manihiki",
+    "MT": "Mitiaro",
+    "MU": "Mauke",
+    "NI": "Nassau Island",
+    "PA": "Palmerston",
+    "PE": "Penrhyn",
+    "PU": "Pukapuka",
+    "RK": "Rakahanga",
+    "RR": "Rarotonga",
+    "SU": "Surwarrow",
+    "TA": "Takutea"
+  }
+}

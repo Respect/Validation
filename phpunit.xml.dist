@@ -16,12 +16,4 @@
             <directory suffix=".phpt">tests/integration/</directory>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="false">
-            <directory>library/</directory>
-            <exclude>
-                <directory suffix="SubdivisionCode.php">library/Rules/Locale</directory>
-            </exclude>
-        </whitelist>
-    </filter>
 </phpunit>

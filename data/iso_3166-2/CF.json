@@ -1,0 +1,23 @@
+{
+  "source": "http://www.geonames.org/CF/administrative-division-central-african-republic.html",
+  "country": "Central African Republic",
+  "subdivisions": {
+    "AC": "Ouham",
+    "BB": "Bamingui-Bangoran",
+    "BGF": "Bangui",
+    "BK": "Basse-Kotto",
+    "HK": "Haute-Kotto",
+    "HM": "Haut-Mbomou",
+    "HS": "Mambere-Kadeï",
+    "KB": "Nana-Grebizi",
+    "KG": "Kemo",
+    "LB": "Lobaye",
+    "MB": "Mbomou",
+    "MP": "Ombella-M'Poko",
+    "NM": "Nana-Mambere",
+    "OP": "Ouham-Pende",
+    "SE": "Sangha-Mbaere",
+    "UK": "Ouaka",
+    "VK": "Vakaga"
+  }
+}

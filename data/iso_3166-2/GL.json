@@ -1,0 +1,11 @@
+{
+  "source": "http://www.geonames.org/GL/administrative-division-greenland.html",
+  "country": "Greenland",
+  "subdivisions": {
+    "AV": "Avannaata",
+    "KU": "Kujalleq",
+    "QE": "Qeqqata",
+    "QT": "Qeqertalik",
+    "SM": "Sermersooq"
+  }
+}

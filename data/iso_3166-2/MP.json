@@ -1,0 +1,10 @@
+{
+  "source": "http://www.geonames.org/MP/administrative-division-northern-mariana-islands.html",
+  "country": "Northern Mariana Islands",
+  "subdivisions": {
+    "N": "Northern Islands",
+    "R": "Rota",
+    "S": "Saipan",
+    "T": "Tinian"
+  }
+}

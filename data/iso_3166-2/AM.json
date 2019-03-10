@@ -1,0 +1,17 @@
+{
+  "source": "http://www.geonames.org/AM/administrative-division-armenia.html",
+  "country": "Armenia",
+  "subdivisions": {
+    "AG": "Aragatsotn",
+    "AR": "Ararat",
+    "AV": "Armavir",
+    "ER": "Yerevan",
+    "GR": "Geghark'unik'",
+    "KT": "Kotayk'",
+    "LO": "Lorri",
+    "SH": "Shirak",
+    "SU": "Syunik'",
+    "TV": "Tavush",
+    "VD": "Vayots' Dzor"
+  }
+}

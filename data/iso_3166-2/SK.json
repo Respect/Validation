@@ -1,0 +1,14 @@
+{
+  "source": "http://www.geonames.org/SK/administrative-division-slovakia.html",
+  "country": "Slovakia",
+  "subdivisions": {
+    "BC": "Banskobystricky",
+    "BL": "Bratislavsky",
+    "KI": "Kosicky",
+    "NI": "Nitriansky",
+    "PV": "Presovsky",
+    "TA": "Trnavsky",
+    "TC": "Trenciansky",
+    "ZI": "Zilinsky"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "source": "http://www.geonames.org/VI/administrative-division-u-s-virgin-islands.html",
+  "country": "U.S. Virgin Islands",
+  "subdivisions": {
+    "C": "Saint Croix",
+    "J": "Saint John",
+    "T": "Saint Thomas"
+  }
+}

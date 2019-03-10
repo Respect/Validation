@@ -1,0 +1,9 @@
+{
+  "source": "http://www.geonames.org/KI/administrative-division-kiribati.html",
+  "country": "Kiribati",
+  "subdivisions": {
+    "G": "Gilbert Islands",
+    "L": "Line Islands",
+    "P": "Phoenix Islands"
+  }
+}
