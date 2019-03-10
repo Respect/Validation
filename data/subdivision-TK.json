@@ -1,0 +1,10 @@
+{
+  "source": "http://www.geonames.org/TK/administrative-division-tokelau.html",
+  "country_code": "TK",
+  "country_name": "Tokelau",
+  "subdivisions": {
+    "A": "Atafu",
+    "F": "Fakaofo",
+    "N": "Nukunonu"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "source": "http://www.geonames.org/SH/administrative-division-saint-helena.html",
+  "country_code": "SH",
+  "country_name": "Saint Helena",
+  "subdivisions": {
+    "AC": "Ascension",
+    "HL": "Saint Helena",
+    "TA": "Tristan da Cunha"
+  }
+}

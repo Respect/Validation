@@ -1,0 +1,12 @@
+{
+  "source": "http://www.geonames.org/CC/administrative-division-cocos-islands.html",
+  "country_code": "CC",
+  "country_name": "Cocos [Keeling] Islands",
+  "subdivisions": {
+    "D": "Direction Island",
+    "H": "Home Island",
+    "O": "Horsburgh Island",
+    "S": "South Island",
+    "W": "West Island"
+  }
+}

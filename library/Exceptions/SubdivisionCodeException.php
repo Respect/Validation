@@ -23,10 +23,10 @@ class SubdivisionCodeException extends ValidationException
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a valid subdivision code for {{countryCode}}',
+            self::STANDARD => '{{name}} must be a subdivision code of {{countryName}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a valid subdivision code for {{countryCode}}',
+            self::STANDARD => '{{name}} must not be a subdivision code of {{countryName}}',
         ],
     ];
 }

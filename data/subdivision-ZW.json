@@ -1,0 +1,17 @@
+{
+  "source": "http://www.geonames.org/ZW/administrative-division-zimbabwe.html",
+  "country_code": "ZW",
+  "country_name": "Zimbabwe",
+  "subdivisions": {
+    "BU": "Bulawayo (city)",
+    "HA": "Harare (city)",
+    "MA": "Manicaland",
+    "MC": "Mashonaland Central",
+    "ME": "Mashonaland East",
+    "MI": "Midlands",
+    "MN": "Matabeleland North",
+    "MS": "Matabeleland South",
+    "MV": "Masvingo",
+    "MW": "Mashonaland West"
+  }
+}

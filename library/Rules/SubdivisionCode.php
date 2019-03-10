@@ -13,6 +13,13 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ComponentException;
+use function array_keys;
+use function file_exists;
+use function file_get_contents;
+use function json_decode;
+use function sprintf;
+
 /**
  * Validates country subdivision codes according to ISO 3166-2.
  *
@@ -21,13 +28,49 @@ namespace Respect\Validation\Rules;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class SubdivisionCode extends AbstractLocaleWrapper
+final class SubdivisionCode extends AbstractSearcher
 {
     /**
-     * {@inheritdoc}
+     * @var string
      */
-    protected function getSuffix(): string
+    private $countryName;
+
+    /**
+     * @var string[]
+     */
+    private $subdivisions;
+
+    /**
+     * @throws ComponentException
+     */
+    public function __construct(string $countryCode)
     {
-        return 'SubdivisionCode';
+        $data = $this->getDataFromCountryCode($countryCode);
+
+        $this->countryName = $data['country_name'];
+        $this->subdivisions = array_keys($data['subdivisions']);
+    }
+
+    /**
+     * @return mixed[]
+     */
+    protected function getDataSource(): array
+    {
+        return $this->subdivisions;
+    }
+
+    /**
+     * @return string[]
+     *
+     * @throws ComponentException
+     */
+    private function getDataFromCountryCode(string $countryCode): array
+    {
+        $filename = sprintf('%s/../../data/subdivision-%s.json', __DIR__, $countryCode);
+        if (!file_exists($filename)) {
+            throw new ComponentException(sprintf('"%s" is not a supported country code', $countryCode));
+        }
+
+        return json_decode(file_get_contents($filename), true);
     }
 }

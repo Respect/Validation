@@ -1,0 +1,9 @@
+{
+  "source": "http://www.geonames.org/ST/administrative-division-sao-tome-and-principe.html",
+  "country_code": "ST",
+  "country_name": "São Tomé and Príncipe",
+  "subdivisions": {
+    "P": "Principe",
+    "S": "Sao Tome"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "source": "http://www.geonames.org/SJ/administrative-division-svalbard-and-jan-mayen.html",
+  "country_code": "SJ",
+  "country_name": "Svalbard and Jan Mayen",
+  "subdivisions": {
+    "21": "Svalbard",
+    "22": "Jan Mayen"
+  }
+}

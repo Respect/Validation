@@ -1,0 +1,13 @@
+{
+  "source": "http://www.geonames.org/CY/administrative-division-cyprus.html",
+  "country_code": "CY",
+  "country_name": "Cyprus",
+  "subdivisions": {
+    "01": "Lefkosía",
+    "02": "Lemesós",
+    "03": "Lárnaka",
+    "04": "Ammóchostos",
+    "05": "Páfos",
+    "06": "Kerýneia"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "source": "http://www.geonames.org/SR/administrative-division-suriname.html",
+  "country_code": "SR",
+  "country_name": "Suriname",
+  "subdivisions": {
+    "BR": "Brokopondo",
+    "CM": "Commewijne",
+    "CR": "Coronie",
+    "MA": "Marowijne",
+    "NI": "Nickerie",
+    "PM": "Paramaribo",
+    "PR": "Para",
+    "SA": "Saramacca",
+    "SI": "Sipaliwini",
+    "WA": "Wanica"
+  }
+}

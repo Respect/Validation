@@ -1,0 +1,12 @@
+{
+  "source": "http://www.geonames.org/SG/administrative-division-singapore.html",
+  "country_code": "SG",
+  "country_name": "Singapore",
+  "subdivisions": {
+    "01": "Central Singapore",
+    "02": "North East",
+    "03": "North West",
+    "04": "South East",
+    "05": "South West"
+  }
+}

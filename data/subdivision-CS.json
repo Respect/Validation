@@ -1,0 +1,11 @@
+{
+  "source": "http://www.geonames.org/CS/administrative-division-serbia-and-montenegro.html",
+  "country_code": "CS",
+  "country_name": "Serbia And Montenegro",
+  "subdivisions": {
+    "KOS": "Kosovo",
+    "MON": "Montenegro",
+    "SER": "Serbia",
+    "VOJ": "Vojvodina"
+  }
+}

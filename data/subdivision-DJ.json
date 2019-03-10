@@ -1,0 +1,13 @@
+{
+  "source": "http://www.geonames.org/DJ/administrative-division-djibouti.html",
+  "country_code": "DJ",
+  "country_name": "Djibouti",
+  "subdivisions": {
+    "AR": "Arta",
+    "AS": "'Ali Sabih",
+    "DI": "Dikhil",
+    "DJ": "Djibouti",
+    "OB": "Obock",
+    "TA": "Tadjoura"
+  }
+}

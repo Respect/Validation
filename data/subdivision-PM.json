@@ -1,0 +1,9 @@
+{
+  "source": "http://www.geonames.org/PM/administrative-division-saint-pierre-and-miquelon.html",
+  "country_code": "PM",
+  "country_name": "Saint Pierre and Miquelon",
+  "subdivisions": {
+    "M": "Miquelon",
+    "P": "Saint Pierre"
+  }
+}

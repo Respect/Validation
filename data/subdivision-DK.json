@@ -1,0 +1,12 @@
+{
+  "source": "http://www.geonames.org/DK/administrative-division-denmark.html",
+  "country_code": "DK",
+  "country_name": "Denmark",
+  "subdivisions": {
+    "81": "Region Nordjylland",
+    "82": "Region Midtjylland",
+    "83": "Region Syddanmark",
+    "84": "Region Hovedstaden",
+    "85": "Region Sjæland"
+  }
+}

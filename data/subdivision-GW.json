@@ -1,0 +1,19 @@
+{
+  "source": "http://www.geonames.org/GW/administrative-division-guinea-bissau.html",
+  "country_code": "GW",
+  "country_name": "Guinea-Bissau",
+  "subdivisions": {
+    "BA": "Bafata Region",
+    "BL": "Bolama Region",
+    "BM": "Biombo Region",
+    "BS": "Bissau Region",
+    "CA": "Cacheu Region",
+    "GA": "Gabu Region",
+    "L": "Leste",
+    "N": "Norte",
+    "OI": "Oio Region",
+    "QU": "Quinara Region",
+    "S": "Sul",
+    "TO": "Tombali Region"
+  }
+}

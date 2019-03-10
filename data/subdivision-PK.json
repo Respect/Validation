@@ -1,0 +1,15 @@
+{
+  "source": "http://www.geonames.org/PK/administrative-division-pakistan.html",
+  "country_code": "PK",
+  "country_name": "Pakistan",
+  "subdivisions": {
+    "BA": "Balochistan",
+    "GB": "Gilgit-Baltistan",
+    "IS": "Islamabad Capital Territory",
+    "JK": "Azad Kashmir",
+    "KP": "Khyber Pakhtunkhwa",
+    "PB": "Punjab",
+    "SD": "Sindh",
+    "TA": "Federally Administered Tribal Areas"
+  }
+}

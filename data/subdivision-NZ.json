@@ -1,0 +1,24 @@
+{
+  "source": "http://www.geonames.org/NZ/administrative-division-new-zealand.html",
+  "country_code": "NZ",
+  "country_name": "New Zealand",
+  "subdivisions": {
+    "AUK": "Auckland",
+    "BOP": "Bay of Plenty",
+    "CAN": "Canterbury",
+    "CIT": "Chatham Islands",
+    "GIS": "Gisborne",
+    "HKB": "Hawke's Bay",
+    "MBH": "Marlborough",
+    "MWT": "Manawatu-Wanganui",
+    "NSN": "Nelson",
+    "NTL": "Northland",
+    "OTA": "Otago",
+    "STL": "Southland",
+    "TAS": "Tasman",
+    "TKI": "Taranaki",
+    "WGN": "Wellington",
+    "WKO": "Waikato",
+    "WTC": "West Coast"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "source": "http://www.geonames.org/HM/administrative-division-heard-island-and-mcdonald-islands.html",
+  "country_code": "HM",
+  "country_name": "Heard Island and McDonald Islands",
+  "subdivisions": {
+    "F": "Flat Island",
+    "H": "Heard Island",
+    "M": "McDonald Island",
+    "S": "Shag Island"
+  }
+}

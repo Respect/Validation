@@ -1,0 +1,10 @@
+{
+  "source": "http://www.geonames.org/WF/administrative-division-wallis-and-futuna.html",
+  "country_code": "WF",
+  "country_name": "Wallis and Futuna",
+  "subdivisions": {
+    "AL": "Alo",
+    "SG": "Sigave",
+    "UV": "ʻUvea"
+  }
+}

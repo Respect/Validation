@@ -1,0 +1,13 @@
+{
+  "source": "http://www.geonames.org/BZ/administrative-division-belize.html",
+  "country_code": "BZ",
+  "country_name": "Belize",
+  "subdivisions": {
+    "BZ": "Belize District",
+    "CY": "Cayo District",
+    "CZL": "Corozal District",
+    "OW": "Orange Walk District",
+    "SC": "Stann Creek District",
+    "TOL": "Toledo District"
+  }
+}

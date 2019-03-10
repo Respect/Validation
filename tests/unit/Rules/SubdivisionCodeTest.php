@@ -47,17 +47,6 @@ final class SubdivisionCodeTest extends TestCase
     }
 
     /**
-     * @test
-     */
-    public function shouldDefineSubdivisionCodeFormatOnConstructor(): void
-    {
-        $countryCode = 'US';
-        $countrySubdivision = new SubdivisionCode($countryCode);
-
-        self::assertAttributeEquals($countryCode, 'countryCode', $countrySubdivision);
-    }
-
-    /**
      * @return mixed[][]
      */
     public function providerForValidSubdivisionCodeInformation(): array
@@ -110,8 +99,8 @@ final class SubdivisionCodeTest extends TestCase
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\Locale\BrSubdivisionCodeException
-     * @expectedExceptionMessage "CA" must be a subdivision code of Brazil
+     * @expectedException \Respect\Validation\Exceptions\SubdivisionCodeException
+     * @expectedExceptionMessage "CA" must be a subdivision code of "Brazil"
      *
      * @test
      */

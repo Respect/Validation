@@ -1,0 +1,11 @@
+{
+  "source": "http://www.geonames.org/BH/administrative-division-bahrain.html",
+  "country_code": "BH",
+  "country_name": "Bahrain",
+  "subdivisions": {
+    "13": "Capital",
+    "14": "Southern",
+    "15": "Muharraq",
+    "17": "Northern"
+  }
+}

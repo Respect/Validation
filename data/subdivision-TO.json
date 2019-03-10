@@ -1,0 +1,12 @@
+{
+  "source": "http://www.geonames.org/TO/administrative-division-tonga.html",
+  "country_code": "TO",
+  "country_name": "Tonga",
+  "subdivisions": {
+    "01": "Eua",
+    "02": "Ha'apai",
+    "03": "Niuas",
+    "04": "Tongatapu",
+    "05": "Vava'u"
+  }
+}
