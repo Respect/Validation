@@ -17,6 +17,7 @@ use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 use function random_int;
 use function setlocale;
+use function sprintf;
 use const LC_ALL;
 use const PHP_INT_MAX;
 
@@ -121,10 +122,11 @@ final class YesTest extends RuleTestCase
     {
         setlocale(LC_ALL, $locale);
 
-        $rule = new Yes(true);
+        if ($locale !== setlocale(LC_ALL, 0)) {
+            $this->markTestSkipped(sprintf('Could not set locale information to "%s"', $locale));
+        }
 
-        self::assertEquals($locale, setlocale(LC_ALL, 0));
-        self::assertTrue($rule->validate($input));
+        self::assertValidInput(new Yes(true), $input);
     }
 
     /**
@@ -136,9 +138,10 @@ final class YesTest extends RuleTestCase
     {
         setlocale(LC_ALL, $locale);
 
-        $rule = new Yes(true);
+        if ($locale !== setlocale(LC_ALL, 0)) {
+            $this->markTestSkipped(sprintf('Could not set locale information to "%s"', $locale));
+        }
 
-        self::assertEquals($locale, setlocale(LC_ALL, 0));
-        self::assertFalse($rule->validate($input));
+        self::assertInvalidInput(new Yes(true), $input);
     }
 }

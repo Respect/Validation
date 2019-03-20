@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
 use function setlocale;
+use function sprintf;
 use const LC_ALL;
 
 /**
@@ -114,7 +115,10 @@ final class NoTest extends RuleTestCase
     {
         setlocale(LC_ALL, $locale);
 
-        self::assertEquals($locale, setlocale(LC_ALL, 0));
+        if ($locale !== setlocale(LC_ALL, 0)) {
+            $this->markTestSkipped(sprintf('Could not set locale information to "%s"', $locale));
+        }
+
         self::assertValidInput(new No(true), $input);
     }
 
@@ -127,7 +131,10 @@ final class NoTest extends RuleTestCase
     {
         setlocale(LC_ALL, $locale);
 
-        self::assertEquals($locale, setlocale(LC_ALL, 0));
+        if ($locale !== setlocale(LC_ALL, 0)) {
+            $this->markTestSkipped(sprintf('Could not set locale information to "%s"', $locale));
+        }
+
         self::assertInvalidInput(new No(true), $input);
     }
 }

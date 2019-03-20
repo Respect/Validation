@@ -1,51 +1,55 @@
 sudo: false
-
 language: php
+
+php:
+  - 7.1
+  - 7.2
+  - 7.3
+  - nightly
 
 cache:
   directories:
     - $HOME/.composer/cache
 
-matrix:
-  include:
-    - php: 7.1
-      env: COMPOSER_ARGUMENTS="--prefer-lowest --prefer-stable"
-    - php: 7.1
-    - php: 7.2
-      env: PHPUNIT_COVERAGE_ARGUMENT="--coverage-clover=coverage.clover"
-    - php: 7.3
-      env: COMPOSER_ARGUMENTS="--ignore-platform-reqs"
-    - php: nightly
-      env: COMPOSER_ARGUMENTS="--ignore-platform-reqs"
-  allow_failures:
-    - php: nightly
-  fast_finish: true
+before_install:
+  - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{,.disabled} || echo "xdebug not available"
 
-before_script:
+install:
+  - travis_retry composer install
   - sudo locale-gen --no-purge --lang nl_NL.UTF-8
   - sudo locale-gen --no-purge --lang pt_BR.UTF-8
   - sudo locale-gen --no-purge --lang ru_RU.UTF-8
   - pecl install uopz || echo "Cound not install uopz" 1>&2
-  - composer update --prefer-dist ${COMPOSER_ARGUMENTS}
 
 script:
-  - vendor/bin/phpunit --configuration phpunit.xml.dist --verbose --colors ${PHPUNIT_COVERAGE_ARGUMENT}
-  - |
-    if [[ "${TRAVIS_PHP_VERSION}" == "7.2" ]]; then
-      vendor/bin/docheader check library tests
-    fi
-  - |
-    if [[ "${TRAVIS_PHP_VERSION}" == "7.2" ]]; then
-      vendor/bin/phpcs
-    fi
-  - |
-    if [[ "${TRAVIS_PHP_VERSION}" == "7.2" ]]; then
-      vendor/bin/phpstan analyze
-    fi
+  - vendor/bin/phpunit --testsuite=unit --verbose --colors
+  - vendor/bin/phpunit --testsuite=integration --verbose --colors
 
-after_script:
-  - |
-    if [[ ! -z "${PHPUNIT_COVERAGE_ARGUMENT}" ]]; then
-      wget https://scrutinizer-ci.com/ocular.phar
-      php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-    fi
+jobs:
+  allow_failures:
+    - php: nightly
+
+  include:
+    - stage: Quality assurance
+      env: CODE_COVERAGE
+      before_script:
+        - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{.disabled,}
+        - if [[ ! $(php -m | grep -si xdebug) ]]; then echo "xdebug required for coverage"; exit 1; fi
+      script: vendor/bin/phpunit --coverage-clover ./clover.xml
+      after_script: wget https://scrutinizer-ci.com/ocular.phar
+        - php ocular.phar code-coverage:upload --format=php-clover ./clover.xml
+
+    - stage: Quality assurance
+      env: DOCHEADER
+      install: travis_retry composer install
+      script: vendor/bin/docheader check library/ tests/
+
+    - stage: Quality assurance
+      env: CODE_STANDARD
+      install: travis_retry composer install
+      script: vendor/bin/phpcs
+
+    - stage: Quality assurance
+      env: STATIC_ANALYSIS
+      install: travis_retry composer install
+      script: vendor/bin/phpstan analyze
