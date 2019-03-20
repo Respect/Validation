@@ -14,10 +14,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
-use function array_keys;
-use function file_exists;
-use function file_get_contents;
-use function json_decode;
+use Respect\Validation\Helpers\Data\Data;
+use Respect\Validation\Helpers\Data\DataException;
 use function sprintf;
 
 /**
@@ -27,6 +25,7 @@ use function sprintf;
  * @see http://www.geonames.org/countries/
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Mazen Touati <mazen_touati@hotmail.com>
  */
 final class SubdivisionCode extends AbstractSearcher
 {
@@ -47,8 +46,12 @@ final class SubdivisionCode extends AbstractSearcher
     {
         $data = $this->getDataFromCountryCode($countryCode);
 
-        $this->countryName = $data['country_name'];
-        $this->subdivisions = array_keys($data['subdivisions']);
+        try {
+            $this->countryName = $data->get('country_name');
+            $this->subdivisions = $data->get('subdivisions', 'array_keys');
+        } catch (DataException $e) {
+            throw new ComponentException(sprintf('Missing data for the following country code "%s".', $countryCode));
+        }
     }
 
     /**
@@ -60,17 +63,20 @@ final class SubdivisionCode extends AbstractSearcher
     }
 
     /**
-     * @return string[]
      *
      * @throws ComponentException
      */
-    private function getDataFromCountryCode(string $countryCode): array
+    private function getDataFromCountryCode(string $countryCode): Data
     {
-        $filename = sprintf('%s/../../data/subdivision-%s.json', __DIR__, $countryCode);
-        if (!file_exists($filename)) {
+        $data = new Data();
+        $filename = sprintf('subdivision-%s.json', $countryCode);
+
+        try {
+            $data->load($filename);
+        } catch (DataException $e) {
             throw new ComponentException(sprintf('"%s" is not a supported country code', $countryCode));
         }
 
-        return json_decode(file_get_contents($filename), true);
+        return $data;
     }
 }
