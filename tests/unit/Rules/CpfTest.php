@@ -108,6 +108,7 @@ class CpfTest extends TestCase
     public function providerInvalidUnformattedCpf()
     {
         return [
+            ['01234567890'],
             ['11111111111'],
             ['22222222222'],
             ['12345678900'],
