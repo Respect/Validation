@@ -59,6 +59,7 @@ final class CpfTest extends RuleTestCase
 
         return [
             [$rule, ''],
+            [$rule, '01234567890'],
             [$rule, '000.000.000-00'],
             [$rule, '111.222.444-05'],
             [$rule, '999999999.99'],
