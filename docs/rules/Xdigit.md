@@ -3,7 +3,7 @@
 - `Xdigit()`
 - `Xdigit(string ...$additionalChars)`
 
-Accepts an hexadecimal number:
+Validates whether the input is an hexadecimal number or not.
 
 ```php
 v::xdigit()->validate('abc123'); // true

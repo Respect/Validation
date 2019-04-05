@@ -13,11 +13,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\XdigitException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Xdigit
  *
@@ -27,94 +27,37 @@ use Respect\Validation\Test\TestCase;
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author Pascal Borreli <pascal@borreli.com>
  */
-final class XdigitTest extends TestCase
+final class XdigitTest extends RuleTestCase
 {
     /**
-     * @var Xdigit
+     * {@inheritDoc}
      */
-    protected $xdigitsValidator;
-
-    protected function setUp(): void
-    {
-        $this->xdigitsValidator = new Xdigit();
-    }
-
-    /**
-     * @dataProvider providerForXdigit
-     *
-     * @test
-     *
-     * @param mixed $input
-     */
-    public function validateValidHexasdecimalDigits($input): void
-    {
-        $this->xdigitsValidator->assert($input);
-        $this->xdigitsValidator->check($input);
-        self::assertTrue($this->xdigitsValidator->validate($input));
-    }
-
-    /**
-     * @dataProvider providerForNotXdigit
-     * @expectedException \Respect\Validation\Exceptions\XdigitException
-     *
-     * @test
-     *
-     * @param mixed $input
-     */
-    public function invalidHexadecimalDigitsShouldThrowXdigitException($input): void
-    {
-        self::assertFalse($this->xdigitsValidator->validate($input));
-        $this->xdigitsValidator->assert($input);
-    }
-
-    /**
-     * @dataProvider providerAdditionalChars
-     *
-     * @test
-     */
-    public function additionalCharsShouldBeRespected(string $additional, string $input): void
-    {
-        $validator = new Xdigit($additional);
-        self::assertTrue($validator->validate($input));
-    }
-
-    /**
-     * @return string[][]
-     */
-    public function providerAdditionalChars(): array
+    public function providerForValidInput(): array
     {
         return [
-            ['!@#$%^&*(){} ', '!@#$%^&*(){} abc 123'],
-            ["[]?+=/\\-_|\"',<>. \t\n", "[]?+=/\\-_|\"',<>. \t \n abc 123"],
+            [new Xdigit(), 'FFF'],
+            [new Xdigit(), '15'],
+            [new Xdigit(), 'DE12FA'],
+            [new Xdigit(), '1234567890abcdef'],
+            [new Xdigit(), 443],
+            [new Xdigit(), 0x123],
+            [new Xdigit('!@#$%^&*(){} '), '!@#$%^&*(){} abc 123'],
+            [new Xdigit("[]?+=/\\-_|\"',<>. \t\n"), "[]?+=/\\-_|\"',<>. \t \n abc 123"],
         ];
     }
 
     /**
-     * @return mixed[][]
+     * {@inheritDoc}
      */
-    public function providerForXdigit(): array
+    public function providerForInvalidInput(): array
     {
         return [
-            ['FFF'],
-            ['15'],
-            ['DE12FA'],
-            ['1234567890abcdef'],
-            [0x123],
-        ];
-    }
-
-    /**
-     * @return mixed[][]
-     */
-    public function providerForNotXdigit(): array
-    {
-        return [
-            [''],
-            [null],
-            ['j'],
-            [' '],
-            ['Foo'],
-            ['1.5'],
+            [new Xdigit(), ''],
+            [new Xdigit(), null],
+            [new Xdigit(), 'j'],
+            [new Xdigit(), ' '],
+            [new Xdigit(), 'Foo'],
+            [new Xdigit(), '1.5'],
         ];
     }
 }

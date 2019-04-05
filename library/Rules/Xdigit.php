@@ -19,8 +19,11 @@ use function ctype_xdigit;
  * @author Andre Ramaciotti <andre@ramaciotti.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class Xdigit extends AbstractFilterRule
+final class Xdigit extends AbstractFilterRule
 {
+    /**
+     * {@inheritDoc}
+     */
     protected function validateFilteredInput(string $input): bool
     {
         return ctype_xdigit($input);
