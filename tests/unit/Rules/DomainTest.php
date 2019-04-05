@@ -13,14 +13,13 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Test\TestCase;
-use Respect\Validation\Validator as v;
-use function sprintf;
-use function var_export;
+use Respect\Validation\Test\RuleTestCase;
+use Respect\Validation\Test\Stubs\ToStringStub;
+use stdClass;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\DomainException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Domain
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
@@ -28,107 +27,45 @@ use function var_export;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Mehmet Tolga Avcioglu <mehmet@activecom.net>
  */
-final class DomainTest extends TestCase
+final class DomainTest extends RuleTestCase
 {
     /**
-     * @var Domain
+     * {@inheritDoc}
      */
-    protected $object;
-
-    protected function setUp(): void
-    {
-        $this->object = new Domain();
-    }
-
-    /**
-     * @dataProvider providerForDomain
-     *
-     * @test
-     *
-     * @param mixed $input
-     */
-    public function validDomainsShouldReturnTrue($input, bool $tldcheck = true): void
-    {
-        $this->object->tldCheck($tldcheck);
-        self::assertTrue($this->object->__invoke($input));
-        $this->object->assert($input);
-        $this->object->check($input);
-    }
-
-    /**
-     * @dataProvider providerForNotDomain
-     * @expectedException \Respect\Validation\Exceptions\ValidationException
-     *
-     * @test
-     *
-     * @param mixed $input
-     */
-    public function notDomain($input, bool $tldcheck = true): void
-    {
-        $this->object->tldCheck($tldcheck);
-        $this->object->check($input);
-    }
-
-    /**
-     * @dataProvider providerForNotDomain
-     * @expectedException \Respect\Validation\Exceptions\DomainException
-     *
-     * @test
-     *
-     * @param mixed $input
-     */
-    public function notDomainCheck($input, bool $tldcheck = true): void
-    {
-        $this->object->tldCheck($tldcheck);
-        $this->object->assert($input);
-    }
-
-    /**
-     * @return mixed[][]
-     */
-    public function providerForDomain(): array
+    public function providerForValidInput(): array
     {
         return [
-            ['111111111111domain.local', false],
-            ['111111111111.domain.local', false],
-            ['example.com'],
-            ['xn--bcher-kva.ch'],
-            ['mail.xn--bcher-kva.ch'],
-            ['example-hyphen.com'],
-            ['example--valid.com'],
-            ['std--a.com'],
-            ['r--w.com'],
+            [new Domain(false), '111111111111domain.local'],
+            [new Domain(false), '111111111111.domain.local'],
+            [new Domain(), 'example.com'],
+            [new Domain(), 'xn--bcher-kva.ch'],
+            [new Domain(), 'mail.xn--bcher-kva.ch'],
+            [new Domain(), 'example-hyphen.com'],
+            [new Domain(), 'example--valid.com'],
+            [new Domain(), 'std--a.com'],
+            [new Domain(), 'r--w.com'],
         ];
     }
 
     /**
-     * @return mixed[][]
+     * {@inheritDoc}
      */
-    public function providerForNotDomain(): array
+    public function providerForInvalidInput(): array
     {
         return [
-            [null],
-            [''],
-            ['2222222domain.local'],
-            ['-example-invalid.com'],
-            ['example.invalid.-com'],
-            ['xn--bcher--kva.ch'],
-            ['example.invalid-.com'],
-            ['1.2.3.256'],
-            ['1.2.3.4'],
+            [new Domain(), null],
+            [new Domain(), new stdClass()],
+            [new Domain(), []],
+            [new Domain(), new ToStringStub('google.com')],
+            [new Domain(), ''],
+            [new Domain(), 'no dots'],
+            [new Domain(), '2222222domain.local'],
+            [new Domain(), '-example-invalid.com'],
+            [new Domain(), 'example.invalid.-com'],
+            [new Domain(), 'xn--bcher--kva.ch'],
+            [new Domain(), 'example.invalid-.com'],
+            [new Domain(), '1.2.3.256'],
+            [new Domain(), '1.2.3.4'],
         ];
-    }
-
-    /**
-     * @dataProvider providerForDomain
-     *
-     * @test
-     */
-    public function builder(string $validDomain, bool $checkTLD = true): void
-    {
-        self::assertTrue(
-            v::domain($checkTLD)->validate($validDomain),
-            sprintf('Domain "%s" should be valid. (Check TLD: %s)', $validDomain, var_export($checkTLD, true))
-        );
     }
 }

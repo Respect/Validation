@@ -3,7 +3,7 @@
 - `Domain()`
 - `Domain(bool $tldCheck)`
 
-Validates domain names.
+Validates whether the input is a valid domain name or not.
 
 ```php
 v::domain()->validate('google.com');

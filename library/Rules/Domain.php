@@ -14,45 +14,146 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\DomainException;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
+use function array_merge;
 use function array_pop;
 use function count;
 use function explode;
+use function iterator_to_array;
 use function mb_substr_count;
 
 /**
+ * Validates whether the input is a valid domain name or not.
+ *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Mehmet Tolga Avcioglu <mehmet@activecom.net>
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author Róbert Nagy <vrnagy@gmail.com>
  */
-final class Domain extends AbstractComposite
+final class Domain extends AbstractRule
 {
     /**
      * @var Validatable
      */
-    private $tld;
+    private $genericRule;
 
     /**
-     * @var Validatable[]
+     * @var Validatable
      */
-    private $checks = [];
+    private $tldRule;
 
     /**
-     * @var AllOf
-     *
+     * @var Validatable
      */
-    private $otherParts;
+    private $partsRule;
 
     public function __construct(bool $tldCheck = true)
     {
-        $this->checks[] = new NoWhitespace();
-        $this->checks[] = new Contains('.');
-        $this->checks[] = new Length(3, null);
-        $this->tldCheck($tldCheck);
-        $this->otherParts = new AllOf(
+        $this->genericRule = $this->createGenericRule();
+        $this->tldRule = $this->createTldRule($tldCheck);
+        $this->partsRule = $this->createPartsRule();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function assert($input): void
+    {
+        $exceptions = [];
+
+        $this->collectAssertException($exceptions, $this->genericRule, $input);
+        $this->throwExceptions($exceptions, $input);
+
+        $parts = explode('.', (string) $input);
+        if (count($parts) >= 2) {
+            $this->collectAssertException($exceptions, $this->tldRule, array_pop($parts));
+        }
+
+        foreach ($parts as $part) {
+            $this->collectAssertException($exceptions, $this->partsRule, $part);
+        }
+
+        $this->throwExceptions($exceptions, $input);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function validate($input): bool
+    {
+        try {
+            $this->assert($input);
+        } catch (ValidationException $exception) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * @param ValidationException[] $exceptions
+     * @param mixed $input
+     */
+    private function collectAssertException(array &$exceptions, Validatable $validator, $input): void
+    {
+        try {
+            $validator->assert($input);
+        } catch (NestedValidationException $nestedValidationException) {
+            $exceptions = array_merge(
+                $exceptions,
+                iterator_to_array($nestedValidationException)
+            );
+        } catch (ValidationException $validationException) {
+            $exceptions[] = $validationException;
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function check($input): void
+    {
+        try {
+            $this->assert($input);
+        } catch (NestedValidationException $exception) {
+            /** @var ValidationException $childException */
+            foreach ($exception as $childException) {
+                throw $childException;
+            }
+
+            throw $exception;
+        }
+    }
+
+    private function createGenericRule(): Validatable
+    {
+        return new AllOf(
+            new StringType(),
+            new NoWhitespace(),
+            new Contains('.'),
+            new Length(3)
+        );
+    }
+
+    private function createTldRule(bool $realTldCheck): Validatable
+    {
+        if ($realTldCheck) {
+            return new Tld();
+        }
+
+        return new AllOf(
+            new Not(new StartsWith('-')),
+            new NoWhitespace(),
+            new Length(2)
+        );
+    }
+
+    private function createPartsRule(): Validatable
+    {
+        return new AllOf(
             new Alnum('-'),
             new Not(new StartsWith('-')),
             new AnyOf(
@@ -63,105 +164,20 @@ final class Domain extends AbstractComposite
             ),
             new Not(new EndsWith('-'))
         );
-
-        parent::__construct();
-    }
-
-    public function tldCheck(bool $do = true): void
-    {
-        $this->tld = $do ? new Tld() : new AllOf(
-            new Not(
-                new StartsWith('-')
-            ),
-            new NoWhitespace(),
-            new Length(2, null)
-        );
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function validate($input): bool
-    {
-        foreach ($this->checks as $chk) {
-            if (!$chk->validate($input)) {
-                return false;
-            }
-        }
-
-        $parts = explode('.', (string) $input);
-
-        if (count($parts) < 2
-            || !$this->tld->validate(array_pop($parts))) {
-            return false;
-        }
-
-        foreach ($parts as $p) {
-            if (!$this->otherParts->validate($p)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function assert($input): void
-    {
-        $exceptions = [];
-        foreach ($this->checks as $chk) {
-            $this->collectAssertException($exceptions, $chk, $input);
-        }
-
-        $parts = explode('.', (string) $input);
-        if (count($parts) >= 2) {
-            $this->collectAssertException($exceptions, $this->tld, array_pop($parts));
-        }
-
-        foreach ($parts as $p) {
-            $this->collectAssertException($exceptions, $this->otherParts, $p);
-        }
-
-        if (count($exceptions)) {
-            /** @var DomainException $domainException */
-            $domainException = $this->reportError($input);
-            $domainException->addChildren($exceptions);
-
-            throw $domainException;
-        }
     }
 
     /**
      * @param ValidationException[] $exceptions
      * @param mixed $input
      */
-    protected function collectAssertException(array &$exceptions, Validatable $validator, $input): void
+    private function throwExceptions(array $exceptions, $input): void
     {
-        try {
-            $validator->assert($input);
-        } catch (ValidationException $e) {
-            $exceptions[] = $e;
-        }
-    }
+        if (count($exceptions)) {
+            /** @var DomainException $domainException */
+            $domainException = $this->reportError($input);
+            $domainException->addChildren($exceptions);
 
-    /**
-     * {@inheritdoc}
-     */
-    public function check($input): void
-    {
-        foreach ($this->checks as $chk) {
-            $chk->check($input);
-        }
-
-        $parts = explode('.', $input);
-        if (count($parts) >= 2) {
-            $this->tld->check(array_pop($parts));
-        }
-
-        foreach ($parts as $p) {
-            $this->otherParts->check($p);
+            throw $domainException;
         }
     }
 }
