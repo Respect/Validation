@@ -1,33 +1,40 @@
 --CREDITS--
 Henrique Moody <henriquemoody@gmail.com>
---TEST--
-not() with recursion should update mode of its children
 --FILE--
 <?php
 
-declare(strict_types=1);
+ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
 use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Validator;
+use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Validator as v;
 
-try {
-    $validator = Validator::not(
-        Validator::not(
-            Validator::not(
-                Validator::not(
-                    Validator::not(
-                        Validator::intVal()->positive()
-                    )
+$validator = v::not(
+    v::not(
+        v::not(
+            v::not(
+                v::not(
+                    v::intVal()->positive()
                 )
             )
         )
-    );
+    )
+);
+
+try {
     $validator->check(2);
+} catch (ValidationException $exception) {
+    echo $exception->getMessage().PHP_EOL;
+}
+
+try {
+    $validator->assert(2);
 } catch (NestedValidationException $exception) {
     echo $exception->getFullMessage().PHP_EOL;
 }
 ?>
 --EXPECT--
-- These rules must not pass for 2
+2 must not be positive
+- 2 must not be positive

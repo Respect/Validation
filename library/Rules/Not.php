@@ -16,6 +16,8 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
 use function array_shift;
+use function count;
+use function current;
 
 /**
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
@@ -31,7 +33,12 @@ final class Not extends AbstractRule
 
     public function __construct(Validatable $rule)
     {
-        $this->rule = $rule;
+        $this->rule = $this->extractNegatedRule($rule);
+    }
+
+    public function getNegatedRule(): Validatable
+    {
+        return $this->rule;
     }
 
     public function setName(string $name): Validatable
@@ -86,6 +93,24 @@ final class Not extends AbstractRule
             }
 
             $rules = $rule->getRules();
+        }
+
+        return $rule;
+    }
+
+    private function extractNegatedRule(Validatable $rule): Validatable
+    {
+        if ($rule instanceof self && $rule->getNegatedRule() instanceof self) {
+            return $this->extractNegatedRule($rule->getNegatedRule()->getNegatedRule());
+        }
+
+        if (!$rule instanceof AllOf) {
+            return $rule;
+        }
+
+        $rules = $rule->getRules();
+        if (count($rules) === 1) {
+            return $this->extractNegatedRule(current($rules));
         }
 
         return $rule;

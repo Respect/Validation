@@ -69,7 +69,7 @@ final class NotTest extends TestCase
         $not->setName('Foo');
 
         self::assertEquals('Foo', $not->getName());
-        self::assertEquals('Foo', $rule->getName());
+        self::assertEquals('Foo', $not->getNegatedRule()->getName());
     }
 
     /**
@@ -108,11 +108,11 @@ final class NotTest extends TestCase
     public function providerForSetName(): array
     {
         return [
-            [new IntVal()],
-            [new AllOf(new NumericVal(), new IntVal())],
-            [new Not(new Not(new IntVal()))],
-            [Validator::intVal()->setName('Bar')],
-            [Validator::noneOf(Validator::numericVal(), Validator::intVal())],
+            'non-allOf' => [new IntVal()],
+            'allOf' => [new AllOf(new NumericVal(), new IntVal())],
+            'not' => [new Not(new Not(new IntVal()))],
+            'allOf with name' => [Validator::intVal()->setName('Bar')],
+            'noneOf' => [Validator::noneOf(Validator::numericVal(), Validator::intVal())],
         ];
     }
 }
