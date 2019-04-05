@@ -18,7 +18,8 @@ use Respect\Validation\Validatable;
 use stdClass;
 
 /**
- * @group  rule
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Optional
  *
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
