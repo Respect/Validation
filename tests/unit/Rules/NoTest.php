@@ -13,7 +13,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\RuleTestCase;
+use function setlocale;
+use const LC_ALL;
 
 /**
  * @group  rule
@@ -23,58 +25,109 @@ use Respect\Validation\Test\TestCase;
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class NoTest extends TestCase
+final class NoTest extends RuleTestCase
 {
     /**
-     * @dataProvider validNoProvider
-     *
-     * @test
+     * @var string
      */
-    public function shouldValidatePatternAccordingToTheDefinedLocale(string $input): void
-    {
-        $rule = new No();
+    private $locale;
 
-        self::assertTrue($rule->validate($input));
+    /**
+     * {@inheritDoc}
+     */
+    protected function setUp(): void
+    {
+        $this->locale = setlocale(LC_ALL, 0);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function tearDown(): void
+    {
+        setlocale(LC_ALL, $this->locale);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function providerForValidInput(): array
+    {
+        $sut = new No();
+
+        return [
+            [$sut, 'N'],
+            [$sut, 'Nay'],
+            [$sut, 'Nix'],
+            [$sut, 'No'],
+            [$sut, 'Nope'],
+            [$sut, 'Not'],
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function providerForInvalidInput(): array
+    {
+        $sut = new No();
+
+        return [
+            [$sut, 'Donnot'],
+            [$sut, 'Never'],
+            [$sut, 'Niet'],
+            [$sut, 'Noooooooo'],
+            [$sut, 'Não'],
+        ];
     }
 
     /**
      * @return string[][]
      */
-    public function validNoProvider(): array
+    public function providerForValidInputWithLocale(): array
     {
         return [
-            ['N'],
-            ['Nay'],
-            ['Nix'],
-            ['No'],
-            ['Nope'],
-            ['Not'],
+            'nl' => ['nl_NL.UTF-8', 'Nee'],
+            'pt' => ['pt_BR.UTF-8', 'Não'],
+            'ru' => ['ru_RU.UTF-8', 'нет'],
         ];
-    }
-
-    /**
-     * @dataProvider invalidNoProvider
-     *
-     * @test
-     */
-    public function shouldNotValidatePatternAccordingToTheDefinedLocale(string $input): void
-    {
-        $rule = new No();
-
-        self::assertFalse($rule->validate($input));
     }
 
     /**
      * @return string[][]
      */
-    public function invalidNoProvider(): array
+    public function providerForInvalidInputWithLocale(): array
     {
         return [
-            ['Donnot'],
-            ['Never'],
-            ['Niet'],
-            ['Noooooooo'],
-            ['Não'],
+            'nl' => ['nl_NL.UTF-8', 'Ez'],
+            'pt' => ['pt_BR.UTF-8', 'нет'],
+            'ru' => ['pt_BR.UTF-8', 'Οχι'],
         ];
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider providerForValidInputWithLocale
+     */
+    public function itShouldValidateInputAccordingToTheLocale(string $locale, string $input): void
+    {
+        setlocale(LC_ALL, $locale);
+
+        self::assertEquals($locale, setlocale(LC_ALL, 0));
+        self::assertValidInput(new No(true), $input);
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider providerForInvalidInputWithLocale
+     */
+    public function itShouldInvalidateInputAccordingToTheLocale(string $locale, string $input): void
+    {
+        setlocale(LC_ALL, $locale);
+
+        self::assertEquals($locale, setlocale(LC_ALL, 0));
+        self::assertInvalidInput(new No(true), $input);
     }
 }
