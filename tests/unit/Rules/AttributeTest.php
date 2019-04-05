@@ -37,7 +37,7 @@ final class AttributeTest extends RuleTestCase
     private $bar = self::PROPERTY_VALUE;
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -64,7 +64,7 @@ final class AttributeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

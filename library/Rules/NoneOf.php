@@ -23,7 +23,7 @@ use function count;
 final class NoneOf extends AbstractComposite
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function assert($input): void
     {
@@ -40,7 +40,7 @@ final class NoneOf extends AbstractComposite
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

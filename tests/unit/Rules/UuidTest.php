@@ -37,7 +37,7 @@ final class UuidTest extends RuleTestCase
     private const UUID_VERSION_5 = 'c4a760a8-dbcf-5254-a0d9-6a4474bd1b62';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -56,7 +56,7 @@ final class UuidTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

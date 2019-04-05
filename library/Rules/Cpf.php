@@ -30,7 +30,7 @@ use function preg_replace;
 final class Cpf extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

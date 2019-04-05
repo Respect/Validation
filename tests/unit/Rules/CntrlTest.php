@@ -31,7 +31,7 @@ use stdClass;
 final class CntrlTest extends RuleTestCase
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -48,7 +48,7 @@ final class CntrlTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

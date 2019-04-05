@@ -21,7 +21,7 @@ namespace Respect\Validation\Exceptions;
 final class CountableException extends ValidationException
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

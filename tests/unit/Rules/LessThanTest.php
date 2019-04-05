@@ -28,7 +28,7 @@ use Respect\Validation\Test\Stubs\CountableStub;
 final class LessThanTest extends RuleTestCase
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -42,7 +42,7 @@ final class LessThanTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

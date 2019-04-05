@@ -23,7 +23,7 @@ final class KeySetException extends GroupedValidationException implements NonOmi
     public const STRUCTURE = 'structure';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -39,7 +39,7 @@ final class KeySetException extends GroupedValidationException implements NonOmi
     ];
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function chooseTemplate(): string
     {

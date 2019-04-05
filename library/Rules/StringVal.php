@@ -26,7 +26,7 @@ use function method_exists;
 final class StringVal extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

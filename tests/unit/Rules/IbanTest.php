@@ -26,7 +26,7 @@ use stdClass;
 final class IbanTest extends RuleTestCase
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -48,7 +48,7 @@ final class IbanTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

@@ -25,7 +25,7 @@ use function mb_substr;
 final class HexRgbColor extends Xdigit
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

@@ -28,7 +28,7 @@ use function mb_strtoupper;
 final class Uppercase extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

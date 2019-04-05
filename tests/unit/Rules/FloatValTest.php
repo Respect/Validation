@@ -28,7 +28,7 @@ use Respect\Validation\Test\RuleTestCase;
 final class FloatValTest extends RuleTestCase
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -48,7 +48,7 @@ final class FloatValTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

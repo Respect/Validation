@@ -56,7 +56,7 @@ final class Time extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

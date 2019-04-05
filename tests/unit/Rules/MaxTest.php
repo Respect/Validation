@@ -32,7 +32,7 @@ use Respect\Validation\Test\Stubs\CountableStub;
 final class MaxTest extends RuleTestCase
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -48,7 +48,7 @@ final class MaxTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

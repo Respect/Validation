@@ -48,7 +48,7 @@ final class StartsWith extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

@@ -34,7 +34,7 @@ final class UploadedTest extends RuleTestCase
     public const UPLOADED_FILENAME = 'uploaded.ext';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function setUp(): void
     {
@@ -52,7 +52,7 @@ final class UploadedTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -65,7 +65,7 @@ final class UploadedTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

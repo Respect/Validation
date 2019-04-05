@@ -27,7 +27,7 @@ use function ctype_print;
 final class Printable extends AbstractFilterRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function validateFilteredInput(string $input): bool
     {

@@ -21,7 +21,7 @@ namespace Respect\Validation\Exceptions;
 final class IntTypeException extends ValidationException
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

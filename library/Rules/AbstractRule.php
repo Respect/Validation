@@ -44,7 +44,7 @@ abstract class AbstractRule implements Validatable
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function assert($input): void
     {
@@ -56,7 +56,7 @@ abstract class AbstractRule implements Validatable
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function check($input): void
     {
@@ -64,7 +64,7 @@ abstract class AbstractRule implements Validatable
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function getName(): ?string
     {
@@ -72,7 +72,7 @@ abstract class AbstractRule implements Validatable
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function reportError($input, array $extraParams = []): ValidationException
     {
@@ -80,7 +80,7 @@ abstract class AbstractRule implements Validatable
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function setName(string $name): Validatable
     {
@@ -90,7 +90,7 @@ abstract class AbstractRule implements Validatable
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function setTemplate(string $template): Validatable
     {

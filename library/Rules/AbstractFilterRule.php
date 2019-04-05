@@ -40,7 +40,7 @@ abstract class AbstractFilterRule extends AbstractRule
     abstract protected function validateFilteredInput(string $input): bool;
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

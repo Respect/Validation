@@ -39,7 +39,7 @@ final class Regex extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

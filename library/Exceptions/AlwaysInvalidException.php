@@ -23,7 +23,7 @@ final class AlwaysInvalidException extends ValidationException
     public const SIMPLE = 'simple';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

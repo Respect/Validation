@@ -21,7 +21,7 @@ final class KeyValueException extends ValidationException
     public const COMPONENT = 'component';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

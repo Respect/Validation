@@ -28,7 +28,7 @@ use function mb_strtolower;
 final class Lowercase extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

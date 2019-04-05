@@ -49,7 +49,7 @@ final class Sorted extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

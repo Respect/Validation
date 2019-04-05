@@ -70,7 +70,7 @@ final class Length extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

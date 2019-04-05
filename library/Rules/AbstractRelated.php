@@ -72,7 +72,7 @@ abstract class AbstractRelated extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function setName(string $name): Validatable
     {
@@ -86,7 +86,7 @@ abstract class AbstractRelated extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function assert($input): void
     {
@@ -107,7 +107,7 @@ abstract class AbstractRelated extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function check($input): void
     {
@@ -120,7 +120,7 @@ abstract class AbstractRelated extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

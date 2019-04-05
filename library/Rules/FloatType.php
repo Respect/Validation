@@ -24,7 +24,7 @@ use function is_float;
 final class FloatType extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

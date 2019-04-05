@@ -26,7 +26,7 @@ use Respect\Validation\Test\RuleTestCase;
 final class SubsetTest extends RuleTestCase
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -42,7 +42,7 @@ final class SubsetTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

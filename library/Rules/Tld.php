@@ -258,7 +258,7 @@ final class Tld extends AbstractRule
     ];
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

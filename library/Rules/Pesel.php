@@ -25,7 +25,7 @@ use function preg_match;
 final class Pesel extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

@@ -28,7 +28,7 @@ final class NotOptional extends AbstractRule
     use CanValidateUndefined;
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

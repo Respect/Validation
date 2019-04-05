@@ -19,7 +19,7 @@ namespace Respect\Validation\Exceptions;
 final class IbanException extends ValidationException
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

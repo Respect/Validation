@@ -22,7 +22,7 @@ final class NotOptionalException extends ValidationException
     public const NAMED = 'named';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -36,7 +36,7 @@ final class NotOptionalException extends ValidationException
     ];
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function chooseTemplate(): string
     {

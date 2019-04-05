@@ -26,7 +26,7 @@ use Respect\Validation\Test\RuleTestCase;
 final class IsbnTest extends RuleTestCase
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -44,7 +44,7 @@ final class IsbnTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

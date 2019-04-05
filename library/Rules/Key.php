@@ -38,7 +38,7 @@ final class Key extends AbstractRelated
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function getReferenceValue($input)
     {
@@ -46,7 +46,7 @@ final class Key extends AbstractRelated
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function hasReference($input): bool
     {

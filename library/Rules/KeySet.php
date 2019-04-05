@@ -98,7 +98,7 @@ final class KeySet extends AbstractWrapper
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function assert($input): void
     {
@@ -110,7 +110,7 @@ final class KeySet extends AbstractWrapper
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function check($input): void
     {
@@ -122,7 +122,7 @@ final class KeySet extends AbstractWrapper
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

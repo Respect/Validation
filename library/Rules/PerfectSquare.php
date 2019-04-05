@@ -28,7 +28,7 @@ use function sqrt;
 final class PerfectSquare extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

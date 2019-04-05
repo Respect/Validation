@@ -23,7 +23,7 @@ final class Optional extends AbstractWrapper
     use CanValidateUndefined;
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function assert($input): void
     {
@@ -35,7 +35,7 @@ final class Optional extends AbstractWrapper
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function check($input): void
     {
@@ -47,7 +47,7 @@ final class Optional extends AbstractWrapper
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

@@ -20,7 +20,7 @@ namespace Respect\Validation\Exceptions;
 class AllOfException extends GroupedValidationException
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

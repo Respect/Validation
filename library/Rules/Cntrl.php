@@ -26,7 +26,7 @@ use function ctype_cntrl;
 final class Cntrl extends AbstractFilterRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function validateFilteredInput(string $input): bool
     {

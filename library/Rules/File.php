@@ -26,7 +26,7 @@ use function is_string;
 final class File extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

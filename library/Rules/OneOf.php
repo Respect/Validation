@@ -25,7 +25,7 @@ use function count;
 final class OneOf extends AbstractComposite
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function assert($input): void
     {
@@ -43,7 +43,7 @@ final class OneOf extends AbstractComposite
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {
@@ -60,7 +60,7 @@ final class OneOf extends AbstractComposite
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function check($input): void
     {

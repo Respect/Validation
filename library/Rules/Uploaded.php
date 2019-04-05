@@ -26,7 +26,7 @@ use function is_uploaded_file;
 final class Uploaded extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

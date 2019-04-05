@@ -24,7 +24,7 @@ use function is_null;
 final class NullType extends NotEmpty
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

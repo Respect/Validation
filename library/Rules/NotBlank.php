@@ -29,7 +29,7 @@ use function trim;
 final class NotBlank extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

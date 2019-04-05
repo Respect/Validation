@@ -34,7 +34,7 @@ use function str_split;
 final class Nif extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

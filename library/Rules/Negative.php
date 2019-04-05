@@ -25,7 +25,7 @@ use function is_numeric;
 final class Negative extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

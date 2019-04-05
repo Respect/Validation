@@ -42,7 +42,7 @@ abstract class AbstractComposite extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function setName(string $name): Validatable
     {

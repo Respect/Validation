@@ -32,7 +32,7 @@ final class Imei extends AbstractRule
     /**
      * @see https://en.wikipedia.org/wiki/International_Mobile_Station_Equipment_Identity
      *
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

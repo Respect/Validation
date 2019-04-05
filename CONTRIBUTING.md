@@ -75,7 +75,7 @@ namespace Respect\Validation\Rules;
 final class HelloWorld extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {
@@ -113,7 +113,7 @@ namespace Respect\Validation\Exceptions;
 final class HelloWorldException extends ValidationException
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -168,7 +168,7 @@ use Respect\Validation\Test\RuleTestCase;
 final class HelloWorldTest extends RuleTestCase
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -180,7 +180,7 @@ final class HelloWorldTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

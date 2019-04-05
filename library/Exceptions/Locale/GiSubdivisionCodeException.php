@@ -25,7 +25,7 @@ use Respect\Validation\Exceptions\SubdivisionCodeException;
 final class GiSubdivisionCodeException extends SubdivisionCodeException
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

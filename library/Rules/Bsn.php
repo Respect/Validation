@@ -28,7 +28,7 @@ use function mb_strlen;
 final class Bsn extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

@@ -28,7 +28,7 @@ use const FILTER_VALIDATE_BOOLEAN;
 final class BoolVal extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

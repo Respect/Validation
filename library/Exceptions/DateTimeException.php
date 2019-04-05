@@ -22,7 +22,7 @@ final class DateTimeException extends ValidationException
     public const FORMAT = 'format';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -36,7 +36,7 @@ final class DateTimeException extends ValidationException
     ];
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function chooseTemplate(): string
     {

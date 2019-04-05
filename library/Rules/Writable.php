@@ -26,7 +26,7 @@ use function is_writable;
 final class Writable extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

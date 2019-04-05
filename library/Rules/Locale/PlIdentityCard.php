@@ -32,7 +32,7 @@ final class PlIdentityCard extends AbstractRule
     private const ASCII_CODE_A = 65;
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

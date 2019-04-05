@@ -28,7 +28,7 @@ use function preg_replace;
 final class Pis extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

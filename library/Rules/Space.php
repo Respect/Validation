@@ -26,7 +26,7 @@ use function ctype_space;
 final class Space extends AbstractFilterRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function validateFilteredInput(string $input): bool
     {

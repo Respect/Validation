@@ -25,7 +25,7 @@ final class IterableType extends AbstractRule
     use CanValidateIterable;
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

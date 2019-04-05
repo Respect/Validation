@@ -24,7 +24,7 @@ use Respect\Validation\Test\RuleTestCase;
 final class PlIdentityCardTest extends RuleTestCase
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -38,7 +38,7 @@ final class PlIdentityCardTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

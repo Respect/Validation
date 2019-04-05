@@ -36,7 +36,7 @@ final class Isbn extends AbstractRule
     ];
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

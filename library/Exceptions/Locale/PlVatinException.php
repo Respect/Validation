@@ -22,7 +22,7 @@ use Respect\Validation\Exceptions\ValidationException;
 final class PlVatinException extends ValidationException
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

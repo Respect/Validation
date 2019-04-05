@@ -23,7 +23,7 @@ namespace Respect\Validation\Exceptions;
 final class UniqueException extends ValidationException
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

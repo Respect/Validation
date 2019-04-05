@@ -29,7 +29,7 @@ use Respect\Validation\Test\RuleTestCase;
 final class LanguageCodeTest extends RuleTestCase
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -49,7 +49,7 @@ final class LanguageCodeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

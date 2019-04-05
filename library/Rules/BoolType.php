@@ -24,7 +24,7 @@ use function is_bool;
 final class BoolType extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

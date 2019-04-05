@@ -31,7 +31,7 @@ use const FILTER_VALIDATE_INT;
 final class IntVal extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

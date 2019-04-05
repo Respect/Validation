@@ -27,7 +27,7 @@ use function preg_match;
 final class Version extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

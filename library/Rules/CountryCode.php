@@ -344,7 +344,7 @@ final class CountryCode extends AbstractSearcher
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function getDataSource(): array
     {

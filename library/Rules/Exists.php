@@ -24,7 +24,7 @@ use function is_string;
 final class Exists extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

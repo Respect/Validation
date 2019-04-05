@@ -23,7 +23,7 @@ use function is_scalar;
 final class ScalarVal extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

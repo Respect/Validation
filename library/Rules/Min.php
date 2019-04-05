@@ -22,7 +22,7 @@ namespace Respect\Validation\Rules;
 final class Min extends AbstractComparison
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function compare($left, $right): bool
     {

@@ -18,7 +18,7 @@ use Zend\Validator\ValidatorInterface;
 final class ZendValidator implements ValidatorInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function isValid($value)
     {
@@ -26,7 +26,7 @@ final class ZendValidator implements ValidatorInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function getMessages()
     {

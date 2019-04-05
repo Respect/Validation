@@ -26,7 +26,7 @@ use function ctype_graph;
 final class Graph extends AbstractFilterRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function validateFilteredInput(string $input): bool
     {

@@ -23,7 +23,7 @@ namespace Respect\Validation\Rules;
 final class AlwaysValid extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

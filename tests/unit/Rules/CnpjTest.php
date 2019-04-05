@@ -29,7 +29,7 @@ use Respect\Validation\Test\RuleTestCase;
 final class CnpjTest extends RuleTestCase
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -51,7 +51,7 @@ final class CnpjTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

@@ -26,7 +26,7 @@ final class KeyException extends NestedValidationException implements NonOmissib
     public const INVALID = 'invalid';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -40,7 +40,7 @@ final class KeyException extends NestedValidationException implements NonOmissib
     ];
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function chooseTemplate(): string
     {

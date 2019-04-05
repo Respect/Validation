@@ -23,7 +23,7 @@ use function count;
 class AllOf extends AbstractComposite
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function assert($input): void
     {
@@ -45,7 +45,7 @@ class AllOf extends AbstractComposite
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function check($input): void
     {
@@ -55,7 +55,7 @@ class AllOf extends AbstractComposite
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

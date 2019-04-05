@@ -26,7 +26,7 @@ final class CurrencyCode extends AbstractSearcher
     /**
      * @see @see http://www.currency-iso.org/en/home/tables/table-a1.html
      *
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function getDataSource(): array
     {

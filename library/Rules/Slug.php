@@ -28,7 +28,7 @@ use function preg_match;
 final class Slug extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

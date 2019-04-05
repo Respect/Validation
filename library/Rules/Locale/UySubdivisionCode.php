@@ -27,7 +27,7 @@ use Respect\Validation\Rules\AbstractSearcher;
 final class UySubdivisionCode extends AbstractSearcher
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function getDataSource(): array
     {

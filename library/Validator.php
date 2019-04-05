@@ -181,7 +181,7 @@ use function count;
 final class Validator extends AllOf
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function check($input): void
     {

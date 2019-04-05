@@ -28,7 +28,7 @@ use const FILTER_VALIDATE_FLOAT;
 final class FloatVal extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

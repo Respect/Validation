@@ -24,7 +24,7 @@ use function is_object;
 final class ObjectType extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

@@ -25,7 +25,7 @@ final class SizeException extends NestedValidationException
     public const GREATER = 'greater';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -41,7 +41,7 @@ final class SizeException extends NestedValidationException
     ];
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function chooseTemplate(): string
     {

@@ -32,7 +32,7 @@ use const FILTER_FLAG_NO_PRIV_RANGE;
 final class IpTest extends RuleTestCase
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -59,7 +59,7 @@ final class IpTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

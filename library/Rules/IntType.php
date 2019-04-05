@@ -23,7 +23,7 @@ use function is_int;
 final class IntType extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

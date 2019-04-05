@@ -27,7 +27,7 @@ use Respect\Validation\Test\RuleTestCase;
 final class UrlTest extends RuleTestCase
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -50,7 +50,7 @@ final class UrlTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

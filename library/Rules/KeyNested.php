@@ -35,7 +35,7 @@ use function sprintf;
 final class KeyNested extends AbstractRelated
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function hasReference($input): bool
     {
@@ -129,7 +129,7 @@ final class KeyNested extends AbstractRelated
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function getReferenceValue($input)
     {

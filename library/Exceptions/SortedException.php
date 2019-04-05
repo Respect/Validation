@@ -25,7 +25,7 @@ final class SortedException extends ValidationException
     public const DESCENDING = 'descending';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -39,7 +39,7 @@ final class SortedException extends ValidationException
     ];
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function chooseTemplate(): string
     {

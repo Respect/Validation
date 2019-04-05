@@ -28,7 +28,7 @@ use Respect\Validation\Test\RuleTestCase;
 final class PerfectSquareTest extends RuleTestCase
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -49,7 +49,7 @@ final class PerfectSquareTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

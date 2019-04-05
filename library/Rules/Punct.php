@@ -26,7 +26,7 @@ use function ctype_punct;
 final class Punct extends AbstractFilterRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function validateFilteredInput(string $input): bool
     {

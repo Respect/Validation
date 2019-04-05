@@ -37,7 +37,7 @@ abstract class AbstractWrapper extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function assert($input): void
     {
@@ -45,7 +45,7 @@ abstract class AbstractWrapper extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function check($input): void
     {
@@ -53,7 +53,7 @@ abstract class AbstractWrapper extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {
@@ -61,7 +61,7 @@ abstract class AbstractWrapper extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function setName(string $name): Validatable
     {

@@ -27,7 +27,7 @@ use const FILTER_VALIDATE_INT;
 final class Odd extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

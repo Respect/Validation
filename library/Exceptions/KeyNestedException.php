@@ -26,7 +26,7 @@ final class KeyNestedException extends NestedValidationException implements NonO
     public const INVALID = 'invalid';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -40,7 +40,7 @@ final class KeyNestedException extends NestedValidationException implements NonO
     ];
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function chooseTemplate(): string
     {

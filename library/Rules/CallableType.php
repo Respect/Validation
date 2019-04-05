@@ -23,7 +23,7 @@ use function is_callable;
 final class CallableType extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

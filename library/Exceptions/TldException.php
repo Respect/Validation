@@ -24,7 +24,7 @@ namespace Respect\Validation\Exceptions;
 final class TldException extends ValidationException
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

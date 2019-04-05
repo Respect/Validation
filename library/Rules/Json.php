@@ -27,7 +27,7 @@ use const JSON_ERROR_NONE;
 final class Json extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

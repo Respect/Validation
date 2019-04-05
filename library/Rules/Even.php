@@ -26,7 +26,7 @@ use const FILTER_VALIDATE_INT;
 final class Even extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

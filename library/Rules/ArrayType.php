@@ -26,7 +26,7 @@ use function is_array;
 final class ArrayType extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

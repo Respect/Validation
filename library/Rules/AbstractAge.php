@@ -62,7 +62,7 @@ abstract class AbstractAge extends AbstractRule
     abstract protected function compare(int $baseDate, int $givenDate): bool;
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

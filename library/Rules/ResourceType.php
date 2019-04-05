@@ -23,7 +23,7 @@ use function is_resource;
 final class ResourceType extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

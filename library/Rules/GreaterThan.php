@@ -21,7 +21,7 @@ namespace Respect\Validation\Rules;
 final class GreaterThan extends AbstractComparison
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function compare($left, $right): bool
     {

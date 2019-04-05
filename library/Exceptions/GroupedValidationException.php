@@ -25,7 +25,7 @@ class GroupedValidationException extends NestedValidationException
     public const SOME = 'some';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -39,7 +39,7 @@ class GroupedValidationException extends NestedValidationException
     ];
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function chooseTemplate(): string
     {

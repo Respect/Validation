@@ -19,7 +19,7 @@ namespace Respect\Validation\Rules;
 final class IdentityCard extends AbstractLocaleWrapper
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function getSuffix(): string
     {

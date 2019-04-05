@@ -24,7 +24,7 @@ namespace Respect\Validation\Rules;
 final class SubdivisionCode extends AbstractLocaleWrapper
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function getSuffix(): string
     {

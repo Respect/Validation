@@ -53,7 +53,7 @@ final class Sf extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function assert($input): void
     {
@@ -71,7 +71,7 @@ final class Sf extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function reportError($input, array $extraParams = []): ValidationException
     {
@@ -84,7 +84,7 @@ final class Sf extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

@@ -27,7 +27,7 @@ use const SORT_REGULAR;
 final class Unique extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

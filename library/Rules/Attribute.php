@@ -34,7 +34,7 @@ final class Attribute extends AbstractRelated
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @throws ReflectionException
      */
@@ -47,7 +47,7 @@ final class Attribute extends AbstractRelated
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function hasReference($input): bool
     {

@@ -27,7 +27,7 @@ use function is_scalar;
 final class Directory extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

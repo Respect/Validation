@@ -23,7 +23,7 @@ final class UuidException extends ValidationException
     public const VERSION = 'version';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -37,7 +37,7 @@ final class UuidException extends ValidationException
     ];
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function chooseTemplate(): string
     {

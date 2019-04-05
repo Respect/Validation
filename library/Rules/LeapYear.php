@@ -30,7 +30,7 @@ use function strtotime;
 final class LeapYear extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

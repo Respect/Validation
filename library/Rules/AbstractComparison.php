@@ -40,7 +40,7 @@ abstract class AbstractComparison extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

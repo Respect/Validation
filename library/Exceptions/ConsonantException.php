@@ -21,7 +21,7 @@ namespace Respect\Validation\Exceptions;
 final class ConsonantException extends FilteredValidationException
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

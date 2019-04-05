@@ -27,7 +27,7 @@ use Respect\Validation\Test\RuleTestCase;
 final class TrueValTest extends RuleTestCase
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -50,7 +50,7 @@ final class TrueValTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

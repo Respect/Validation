@@ -25,7 +25,7 @@ use function ctype_digit;
 final class Digit extends AbstractFilterRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function validateFilteredInput(string $input): bool
     {

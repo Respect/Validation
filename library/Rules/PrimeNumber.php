@@ -29,7 +29,7 @@ use function sqrt;
 final class PrimeNumber extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

@@ -21,7 +21,7 @@ final class OptionalException extends ValidationException
     public const NAMED = 'named';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

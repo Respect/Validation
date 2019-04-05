@@ -20,7 +20,7 @@ namespace Respect\Validation\Rules;
 final class Vatin extends AbstractLocaleWrapper
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function getSuffix(): string
     {

@@ -33,7 +33,7 @@ use function str_split;
 final class NfeAccessKey extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

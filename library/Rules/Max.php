@@ -22,7 +22,7 @@ namespace Respect\Validation\Rules;
 final class Max extends AbstractComparison
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function compare($left, $right): bool
     {

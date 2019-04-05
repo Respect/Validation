@@ -25,7 +25,7 @@ use function ctype_alpha;
 final class Alpha extends AbstractFilterRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function validateFilteredInput(string $input): bool
     {

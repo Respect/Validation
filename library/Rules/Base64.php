@@ -27,7 +27,7 @@ use function preg_match;
 final class Base64 extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

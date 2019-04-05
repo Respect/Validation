@@ -29,7 +29,7 @@ final class LengthException extends ValidationException
     public const EXACT = 'exact';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -51,7 +51,7 @@ final class LengthException extends ValidationException
     ];
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function chooseTemplate(): string
     {

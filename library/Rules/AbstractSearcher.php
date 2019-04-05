@@ -31,7 +31,7 @@ abstract class AbstractSearcher extends AbstractRule
     abstract protected function getDataSource(): array;
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

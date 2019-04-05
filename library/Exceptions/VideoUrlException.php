@@ -23,7 +23,7 @@ final class VideoUrlException extends ValidationException
     public const SERVICE = 'service';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
@@ -37,7 +37,7 @@ final class VideoUrlException extends ValidationException
     ];
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function chooseTemplate(): string
     {

@@ -32,7 +32,7 @@ use Respect\Validation\Test\Stubs\CountableStub;
 final class MinTest extends RuleTestCase
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -63,7 +63,7 @@ final class MinTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

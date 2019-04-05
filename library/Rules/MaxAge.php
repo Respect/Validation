@@ -22,7 +22,7 @@ namespace Respect\Validation\Rules;
 final class MaxAge extends AbstractAge
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function compare(int $baseDate, int $givenDate): bool
     {

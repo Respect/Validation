@@ -48,7 +48,7 @@ abstract class AbstractEnvelope extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {
@@ -56,7 +56,7 @@ abstract class AbstractEnvelope extends AbstractRule
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function reportError($input, array $extraParameters = []): ValidationException
     {

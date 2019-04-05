@@ -26,7 +26,7 @@ use function trim;
 class NotEmpty extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

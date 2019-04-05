@@ -30,7 +30,7 @@ use Respect\Validation\Test\RuleTestCase;
 final class DigitTest extends RuleTestCase
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
@@ -49,7 +49,7 @@ final class DigitTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function providerForInvalidInput(): array
     {

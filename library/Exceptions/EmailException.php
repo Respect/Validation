@@ -25,7 +25,7 @@ namespace Respect\Validation\Exceptions;
 final class EmailException extends ValidationException
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

@@ -21,7 +21,7 @@ class FilteredValidationException extends ValidationException
     public const EXTRA = 'extra';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function chooseTemplate(): string
     {

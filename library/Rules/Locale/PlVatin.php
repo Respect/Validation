@@ -30,7 +30,7 @@ use function str_split;
 final class PlVatin extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

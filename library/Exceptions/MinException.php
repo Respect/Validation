@@ -22,7 +22,7 @@ final class MinException extends ValidationException
     public const INCLUSIVE = 'inclusive';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [

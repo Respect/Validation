@@ -105,7 +105,7 @@ final class Iban extends AbstractRule
     ];
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

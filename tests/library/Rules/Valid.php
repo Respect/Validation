@@ -21,7 +21,7 @@ use Respect\Validation\Rules\AbstractRule;
 final class Valid extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {

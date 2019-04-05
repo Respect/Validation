@@ -20,7 +20,7 @@ namespace Respect\Validation\Exceptions;
 final class ExistsException extends ValidationException
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
