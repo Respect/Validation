@@ -21,7 +21,7 @@ use function is_null;
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class NullType extends NotEmpty
+final class NullType extends AbstractRule
 {
     /**
      * {@inheritDoc}

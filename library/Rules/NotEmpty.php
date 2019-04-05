@@ -23,7 +23,7 @@ use function trim;
  * @author Bram Van der Sype <bram.vandersype@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-class NotEmpty extends AbstractRule
+final class NotEmpty extends AbstractRule
 {
     /**
      * {@inheritDoc}
