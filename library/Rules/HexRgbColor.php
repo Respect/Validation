@@ -13,35 +13,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use function is_string;
-use function mb_strlen;
-use function mb_strpos;
-use function mb_substr;
-
 /**
+ * Validates weather the input is a hex RGB color or not.
+ *
  * @author Davide Pastore <pasdavide@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class HexRgbColor extends Xdigit
+final class HexRgbColor extends AbstractEnvelope
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function __construct()
     {
-        if (!is_string($input)) {
-            return false;
-        }
-
-        if (mb_strpos($input, '#') === 0) {
-            $input = mb_substr($input, 1);
-        }
-
-        $length = mb_strlen($input);
-        if ($length != 3 && $length != 6) {
-            return false;
-        }
-
-        return parent::validate($input);
+        parent::__construct(new Regex('/^#?([0-9A-F]{3}|[0-9A-F]{6})$/'));
     }
 }
