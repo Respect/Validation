@@ -13,88 +13,58 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\RomanException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\Roman
  *
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jean Pimentel <jeanfap@gmail.com>
  */
-final class RomanTest extends TestCase
+final class RomanTest extends RuleTestCase
 {
     /**
-     * @var Roman
+     * {@inheritDoc}
      */
-    protected $romanValidator;
-
-    protected function setUp(): void
+    public function providerForValidInput(): array
     {
-        $this->romanValidator = new Roman();
-    }
+        $sut = new Roman();
 
-    /**
-     * @dataProvider providerForRoman
-     *
-     * @test
-     */
-    public function validRomansShouldReturnTrue(string $input): void
-    {
-        self::assertTrue($this->romanValidator->__invoke($input));
-        $this->romanValidator->assert($input);
-        $this->romanValidator->check($input);
-    }
-
-    /**
-     * @dataProvider providerForNotRoman
-     * @expectedException \Respect\Validation\Exceptions\RomanException
-     *
-     * @test
-     */
-    public function invalidRomansShouldThrowRomanException(string $input): void
-    {
-        self::assertFalse($this->romanValidator->__invoke($input));
-        $this->romanValidator->assert($input);
-    }
-
-    /**
-     * @return string[][]
-     */
-    public function providerForRoman(): array
-    {
         return [
-            [''],
-            ['III'],
-            ['IV'],
-            ['VI'],
-            ['XIX'],
-            ['XLII'],
-            ['LXII'],
-            ['CXLIX'],
-            ['CLIII'],
-            ['MCCXXXIV'],
-            ['MMXXIV'],
-            ['MCMLXXV'],
-            ['MMMMCMXCIX'],
+            [$sut, 'III'],
+            [$sut, 'IV'],
+            [$sut, 'VI'],
+            [$sut, 'XIX'],
+            [$sut, 'XLII'],
+            [$sut, 'LXII'],
+            [$sut, 'CXLIX'],
+            [$sut, 'CLIII'],
+            [$sut, 'MCCXXXIV'],
+            [$sut, 'MMXXIV'],
+            [$sut, 'MCMLXXV'],
+            [$sut, 'MMMMCMXCIX'],
         ];
     }
 
     /**
-     * @return string[][]
+     * {@inheritDoc}
      */
-    public function providerForNotRoman(): array
+    public function providerForInvalidInput(): array
     {
+        $sut = new Roman();
+
         return [
-            [' '],
-            ['IIII'],
-            ['IVVVX'],
-            ['CCDC'],
-            ['MXM'],
-            ['XIIIIIIII'],
-            ['MIMIMI'],
+            [$sut, ''],
+            [$sut, ' '],
+            [$sut, 'IIII'],
+            [$sut, 'IVVVX'],
+            [$sut, 'CCDC'],
+            [$sut, 'MXM'],
+            [$sut, 'XIIIIIIII'],
+            [$sut, 'MIMIMI'],
         ];
     }
 }
