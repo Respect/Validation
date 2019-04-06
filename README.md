@@ -11,7 +11,7 @@
 
 - Complex rules made simple: `v::numericVal()->positive()->between(1, 255)->validate($input)`.
 - Granularity control for advanced reporting.
-- More than 130 (fully tested) validation rules.
+- More than 150 (fully tested) validation rules.
 - A concrete API for non fluent usage.
 
 ## Documentation
