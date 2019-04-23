@@ -13,140 +13,48 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\KeyValueException
+ * @group rule
+ *
  * @covers \Respect\Validation\Rules\KeyValue
  *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
+ * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Ian Nisbet <ian@glutenite.co.uk>
  */
-final class KeyValueTest extends TestCase
+final class KeyValueTest extends RuleTestCase
 {
     /**
-     * @test
+     * {@inheritdoc}
      */
-    public function shouldDefineValuesOnConstructor(): void
+    public function providerForValidInput(): array
     {
-        $comparedKey = 'foo';
-        $ruleName = 'equals';
-        $baseKey = 'bar';
-
-        $rule = new KeyValue($comparedKey, $ruleName, $baseKey);
-
-        self::assertAttributeSame($comparedKey, 'comparedKey', $rule);
-        self::assertAttributeSame($ruleName, 'ruleName', $rule);
-        self::assertAttributeSame($baseKey, 'baseKey', $rule);
+        return [
+            'Equal values' => [new KeyValue('foo', 'equals', 'bar'), ['foo' => 42, 'bar' => 42]],
+            'A value contained in an array' => [
+                new KeyValue('password', 'in', 'valid_passwords'),
+                [
+                    'password' => 'shuberry',
+                    'password_confirmation' => 'shuberry',
+                    'valid_passwords' => ['shuberry', 'monty-python'],
+                ],
+            ],
+        ];
     }
 
     /**
-     * @test
+     * {@inheritdoc}
      */
-    public function shouldNotValidateWhenComparedKeyDoesNotExist(): void
+    public function providerForInvalidInput(): array
     {
-        $rule = new KeyValue('foo', 'equals', 'bar');
+        $keyValue = new KeyValue('foo', 'equals', 'bar');
 
-        self::assertFalse($rule->validate(['bar' => 42]));
-    }
-
-    /**
-     * @test
-     */
-    public function shouldNotValidateWhenBaseKeyDoesNotExist(): void
-    {
-        $rule = new KeyValue('foo', 'equals', 'bar');
-
-        self::assertFalse($rule->validate(['foo' => true]));
-    }
-
-    /**
-     * @test
-     */
-    public function shouldNotValidateRuleIsNotValid(): void
-    {
-        $rule = new KeyValue('foo', 'probably_not_a_rule', 'bar');
-
-        self::assertFalse($rule->validate(['foo' => true, 'bar' => false]));
-    }
-
-    /**
-     * @test
-     */
-    public function shouldValidateWhenDefinedValuesMatch(): void
-    {
-        $rule = new KeyValue('foo', 'equals', 'bar');
-
-        self::assertTrue($rule->validate(['foo' => 42, 'bar' => 42]));
-    }
-
-    /**
-     * @test
-     */
-    public function shouldValidateWhenDefinedValuesDoesNotMatch(): void
-    {
-        $rule = new KeyValue('foo', 'equals', 'bar');
-
-        self::assertFalse($rule->validate(['foo' => 43, 'bar' => 42]));
-    }
-
-    /**
-     * @doesNotPerformAssertions
-     *
-     * @test
-     */
-    public function shouldAssertWhenDefinedValuesMatch(): void
-    {
-        $rule = new KeyValue('foo', 'equals', 'bar');
-        $rule->assert(['foo' => 42, 'bar' => 42]);
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\AllOfException
-     * @expectedExceptionMessage All of the required rules must pass for foo
-     *
-     * @test
-     */
-    public function shouldAssertWhenDefinedValuesDoesNotMatch(): void
-    {
-        $rule = new KeyValue('foo', 'equals', 'bar');
-        $rule->assert(['foo' => 43, 'bar' => 42]);
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\KeyValueException
-     * @expectedExceptionMessage "bar" must be valid to validate "foo"
-     *
-     * @test
-     */
-    public function shouldNotAssertWhenRuleIsNotValid(): void
-    {
-        $rule = new KeyValue('foo', 'probably_not_a_rule', 'bar');
-        $rule->assert(['foo' => 43, 'bar' => 42]);
-    }
-
-    /**
-     * @doesNotPerformAssertions
-     *
-     * @test
-     */
-    public function shouldCheckWhenDefinedValuesMatch(): void
-    {
-        $rule = new KeyValue('foo', 'equals', 'bar');
-        $rule->check(['foo' => 42, 'bar' => 42]);
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\EqualsException
-     * @expectedExceptionMessage foo must equal "bar"
-     *
-     * @test
-     */
-    public function shouldCheckWhenDefinedValuesDoesNotMatch(): void
-    {
-        $rule = new KeyValue('foo', 'equals', 'bar');
-        $rule->check(['foo' => 43, 'bar' => 42]);
+        return [
+            'Different values' => [$keyValue, ['foo' => 43, 'bar' => 42]],
+            'Comparison key does not exist' => [$keyValue, ['bar' => 42]],
+            'Base key does not exist' => [$keyValue, ['foo' => true]],
+            'Rule is not valid' => [new KeyValue('foo', 'probably_not_a_rule', 'bar'), ['foo' => true, 'bar' => false]],
+        ];
     }
 }

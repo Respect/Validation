@@ -15,8 +15,8 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Factory;
 use Respect\Validation\Validatable;
-use Respect\Validation\Validator;
 use function array_keys;
 use function in_array;
 
@@ -57,18 +57,18 @@ final class KeyValue extends AbstractRule
     private function getRule($input): Validatable
     {
         if (!isset($input[$this->comparedKey])) {
-            throw $this->reportError($this->comparedKey);
+            throw parent::reportError($this->comparedKey);
         }
 
         if (!isset($input[$this->baseKey])) {
-            throw $this->reportError($this->baseKey);
+            throw parent::reportError($this->baseKey);
         }
 
         try {
-            $rule = Validator::__callStatic($this->ruleName, [$input[$this->baseKey]]);
+            $rule = Factory::getDefaultInstance()->rule($this->ruleName, [$input[$this->baseKey]]);
             $rule->setName($this->comparedKey);
         } catch (ComponentException $exception) {
-            throw $this->reportError($input, ['component' => true]);
+            throw parent::reportError($input, ['component' => true]);
         }
 
         return $rule;
@@ -131,5 +131,17 @@ final class KeyValue extends AbstractRule
         }
 
         return $rule->validate($input[$this->comparedKey]);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function reportError($input, array $extraParams = []): ValidationException
+    {
+        try {
+            return $this->overwriteExceptionParams($this->getRule($input)->reportError($input));
+        } catch (ValidationException $exception) {
+            return $this->overwriteExceptionParams($exception);
+        }
     }
 }
