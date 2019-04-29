@@ -19,6 +19,7 @@ use ReflectionObject;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Message\Formatter;
 use function lcfirst;
 use function sprintf;
 use function trim;
@@ -148,7 +149,7 @@ final class Factory
             }
         }
 
-        return new ValidationException($input, $id, $params, $this->translator);
+        return new ValidationException($input, $id, $params, new Formatter($this->translator));
     }
 
     /**
@@ -188,7 +189,7 @@ final class Factory
     ): ValidationException {
         /** @var ValidationException $exception */
         $exception = $this->createReflectionClass($exceptionName, ValidationException::class)
-            ->newInstance($input, $id, $params, $this->translator);
+            ->newInstance($input, $id, $params, new Formatter($this->translator));
         if (isset($params['template'])) {
             $exception->updateTemplate($params['template']);
         }

@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Message\Formatter;
 use Respect\Validation\Test\TestCase;
 
 /**
@@ -29,8 +30,8 @@ final class NestedValidationExceptionTest extends TestCase
      */
     public function getChildrenShouldReturnExceptionAddedByAddRelated(): void
     {
-        $composite = new AttributeException('input', 'id', [], 'trim');
-        $node = new IntValException('input', 'id', [], 'trim');
+        $composite = new AttributeException('input', 'id', [], new Formatter('strval'));
+        $node = new IntValException('input', 'id', [], new Formatter('strval'));
         $composite->addChild($node);
         self::assertCount(1, $composite->getChildren());
         self::assertContainsOnly(IntValException::class, $composite->getChildren());
@@ -41,8 +42,8 @@ final class NestedValidationExceptionTest extends TestCase
      */
     public function addingTheSameInstanceShouldAddJustOneSingleReference(): void
     {
-        $composite = new AttributeException('input', 'id', [], 'trim');
-        $node = new IntValException('input', 'id', [], 'trim');
+        $composite = new AttributeException('input', 'id', [], new Formatter('strval'));
+        $node = new IntValException('input', 'id', [], new Formatter('strval'));
         $composite->addChild($node);
         $composite->addChild($node);
         $composite->addChild($node);

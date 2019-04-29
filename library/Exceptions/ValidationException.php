@@ -14,11 +14,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Exceptions;
 
 use InvalidArgumentException;
-use function call_user_func;
-use function is_string;
+use Respect\Validation\Message\Formatter;
 use function key;
-use function preg_replace_callback;
-use function Respect\Stringifier\stringify;
 
 /**
  * Default exception class for rule validations.
@@ -67,9 +64,9 @@ class ValidationException extends InvalidArgumentException implements Exception
     private $params = [];
 
     /**
-     * @var callable
+     * @var Formatter
      */
-    private $translator;
+    private $formatter;
 
     /**
      * @var string
@@ -80,12 +77,12 @@ class ValidationException extends InvalidArgumentException implements Exception
      * @param mixed $input
      * @param mixed[] $params
      */
-    public function __construct($input, string $id, array $params, callable $translator)
+    public function __construct($input, string $id, array $params, Formatter $formatter)
     {
         $this->input = $input;
         $this->id = $id;
         $this->params = $params;
-        $this->translator = $translator;
+        $this->formatter = $formatter;
         $this->template = $this->chooseTemplate();
 
         parent::__construct($this->createMessage());
@@ -150,43 +147,10 @@ class ValidationException extends InvalidArgumentException implements Exception
 
     private function createMessage(): string
     {
-        $template = $this->createTemplate($this->mode, $this->template);
-        $params = $this->getParams();
-        $params['name'] = $params['name'] ?? stringify($this->input);
-        $params['input'] = $this->input;
-
-        return $this->format($template, $params);
-    }
-
-    private function createTemplate(string $mode, string $template): string
-    {
-        if (isset($this->defaultTemplates[$mode][$template])) {
-            $template = $this->defaultTemplates[$mode][$template];
-        }
-
-        return call_user_func($this->translator, $template);
-    }
-
-    /**
-     * @param mixed[] $vars
-     */
-    private function format(string $template, array $vars = []): string
-    {
-        return preg_replace_callback(
-            '/{{(\w+)}}/',
-            static function ($match) use ($vars) {
-                if (!isset($vars[$match[1]])) {
-                    return $match[0];
-                }
-
-                $value = $vars[$match[1]];
-                if ($match[1] == 'name' && is_string($value)) {
-                    return $value;
-                }
-
-                return stringify($value);
-            },
-            $template
+        return $this->formatter->format(
+            $this->defaultTemplates[$this->mode][$this->template] ?? $this->template,
+            $this->input,
+            $this->params
         );
     }
 }
