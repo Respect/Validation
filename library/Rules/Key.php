@@ -29,12 +29,13 @@ final class Key extends AbstractRelated
     /**
      * @param mixed $reference
      */
-    public function __construct($reference, ?Validatable $referenceValidator = null, bool $mandatory = true)
+    public function __construct($reference, ?Validatable $rule = null, bool $mandatory = true)
     {
         if (!is_scalar($reference) || $reference === '') {
             throw new ComponentException('Invalid array key name');
         }
-        parent::__construct($reference, $referenceValidator, $mandatory);
+
+        parent::__construct($reference, $rule, $mandatory);
     }
 
     /**
@@ -42,7 +43,7 @@ final class Key extends AbstractRelated
      */
     public function getReferenceValue($input)
     {
-        return $input[$this->reference];
+        return $input[$this->getReference()];
     }
 
     /**
@@ -50,6 +51,6 @@ final class Key extends AbstractRelated
      */
     public function hasReference($input): bool
     {
-        return is_array($input) && array_key_exists($this->reference, $input);
+        return is_array($input) && array_key_exists($this->getReference(), $input);
     }
 }

@@ -19,8 +19,9 @@ use Respect\Validation\Validatable;
 use stdClass;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\KeyNestedException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\AbstractRelated
  * @covers \Respect\Validation\Rules\KeyNested
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>

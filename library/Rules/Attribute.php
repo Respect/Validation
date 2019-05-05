@@ -28,9 +28,9 @@ use function property_exists;
  */
 final class Attribute extends AbstractRelated
 {
-    public function __construct(string $reference, ?Validatable $validator = null, bool $mandatory = true)
+    public function __construct(string $reference, ?Validatable $rule = null, bool $mandatory = true)
     {
-        parent::__construct($reference, $validator, $mandatory);
+        parent::__construct($reference, $rule, $mandatory);
     }
 
     /**
@@ -40,7 +40,7 @@ final class Attribute extends AbstractRelated
      */
     public function getReferenceValue($input)
     {
-        $propertyMirror = new ReflectionProperty($input, $this->reference);
+        $propertyMirror = new ReflectionProperty($input, (string) $this->getReference());
         $propertyMirror->setAccessible(true);
 
         return $propertyMirror->getValue($input);
@@ -51,6 +51,6 @@ final class Attribute extends AbstractRelated
      */
     public function hasReference($input): bool
     {
-        return is_object($input) && property_exists($input, $this->reference);
+        return is_object($input) && property_exists($input, (string) $this->getReference());
     }
 }

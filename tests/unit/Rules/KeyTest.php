@@ -17,8 +17,9 @@ use Respect\Validation\Test\TestCase;
 use Throwable;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\KeyException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\AbstractRelated
  * @covers \Respect\Validation\Rules\Key
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>

@@ -16,7 +16,6 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
-use function is_null;
 use function is_scalar;
 
 /**
@@ -30,17 +29,17 @@ abstract class AbstractRelated extends AbstractRule
     /**
      * @var bool
      */
-    public $mandatory = true;
+    private $mandatory = true;
 
     /**
      * @var mixed
      */
-    public $reference = '';
+    private $reference;
 
     /**
      * @var Validatable|null
      */
-    public $validator;
+    private $rule;
 
     /**
      * @param mixed $input
@@ -57,18 +56,31 @@ abstract class AbstractRelated extends AbstractRule
     /**
      * @param mixed $reference
      */
-    public function __construct($reference, ?Validatable $validator = null, bool $mandatory = true)
+    public function __construct($reference, ?Validatable $rule = null, bool $mandatory = true)
     {
         if (is_scalar($reference)) {
             $this->setName((string) $reference);
-            if ($validator && !$validator->getName()) {
-                $validator->setName((string) $reference);
+            if ($rule && !$rule->getName()) {
+                $rule->setName((string) $reference);
             }
         }
 
         $this->reference = $reference;
-        $this->validator = $validator;
+        $this->rule = $rule;
         $this->mandatory = $mandatory;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    public function isMandatory(): bool
+    {
+        return $this->mandatory;
     }
 
     /**
@@ -78,8 +90,8 @@ abstract class AbstractRelated extends AbstractRule
     {
         parent::setName($name);
 
-        if ($this->validator instanceof Validatable) {
-            $this->validator->setName($name);
+        if ($this->rule instanceof Validatable) {
+            $this->rule->setName($name);
         }
 
         return $this;
@@ -95,8 +107,12 @@ abstract class AbstractRelated extends AbstractRule
             throw $this->reportError($input, ['hasReference' => false]);
         }
 
+        if ($this->rule === null || !$hasReference) {
+            return;
+        }
+
         try {
-            $this->decision('assert', $hasReference, $input);
+            $this->rule->assert($this->getReferenceValue($input));
         } catch (ValidationException $validationException) {
             /** @var NestedValidationException $nestedValidationException */
             $nestedValidationException = $this->reportError($this->reference, ['hasReference' => true]);
@@ -116,7 +132,11 @@ abstract class AbstractRelated extends AbstractRule
             throw $this->reportError($input, ['hasReference' => false]);
         }
 
-        $this->decision('check', $hasReference, $input);
+        if ($this->rule === null || !$hasReference) {
+            return;
+        }
+
+        $this->rule->check($this->getReferenceValue($input));
     }
 
     /**
@@ -129,16 +149,10 @@ abstract class AbstractRelated extends AbstractRule
             return false;
         }
 
-        return $this->decision('validate', $hasReference, $input);
-    }
+        if ($this->rule === null || !$hasReference) {
+            return true;
+        }
 
-    /**
-     * @param mixed $input
-     */
-    private function decision(string $type, bool $hasReference, $input): bool
-    {
-        return (!$this->mandatory && !$hasReference)
-            || (is_null($this->validator)
-                || $this->validator->$type($this->getReferenceValue($input)));
+        return $this->rule->validate($this->getReferenceValue($input));
     }
 }

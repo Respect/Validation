@@ -18,8 +18,9 @@ use Respect\Validation\Validatable;
 use stdClass;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\AttributeException
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\AbstractRelated
  * @covers \Respect\Validation\Rules\Attribute
  *
  * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>

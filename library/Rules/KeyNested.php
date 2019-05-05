@@ -53,7 +53,7 @@ final class KeyNested extends AbstractRelated
      */
     private function getReferencePieces(): array
     {
-        return explode('.', rtrim((string) $this->reference, '.'));
+        return explode('.', rtrim((string) $this->getReference(), '.'));
     }
 
     /**
@@ -65,7 +65,7 @@ final class KeyNested extends AbstractRelated
     private function getValueFromArray(array $array, $key)
     {
         if (!array_key_exists($key, $array)) {
-            $message = sprintf('Cannot select the key %s from the given array', $this->reference);
+            $message = sprintf('Cannot select the key %s from the given array', $this->getReference());
             throw new ComponentException($message);
         }
 
@@ -80,7 +80,7 @@ final class KeyNested extends AbstractRelated
     private function getValueFromArrayAccess(ArrayAccess $array, $key)
     {
         if (!$array->offsetExists($key)) {
-            $message = sprintf('Cannot select the key %s from the given array', $this->reference);
+            $message = sprintf('Cannot select the key %s from the given array', $this->getReference());
             throw new ComponentException($message);
         }
 
@@ -97,7 +97,7 @@ final class KeyNested extends AbstractRelated
     private function getValueFromObject($object, string $property)
     {
         if (empty($property) || !property_exists($object, $property)) {
-            $message = sprintf('Cannot select the property %s from the given object', $this->reference);
+            $message = sprintf('Cannot select the property %s from the given object', $this->getReference());
             throw new ComponentException($message);
         }
 
@@ -124,7 +124,7 @@ final class KeyNested extends AbstractRelated
             return $this->getValueFromObject($value, $key);
         }
 
-        $message = sprintf('Cannot select the property %s from the given data', $this->reference);
+        $message = sprintf('Cannot select the property %s from the given data', $this->getReference());
         throw new ComponentException($message);
     }
 
@@ -134,7 +134,7 @@ final class KeyNested extends AbstractRelated
     public function getReferenceValue($input)
     {
         if (is_scalar($input)) {
-            $message = sprintf('Cannot select the %s in the given data', $this->reference);
+            $message = sprintf('Cannot select the %s in the given data', $this->getReference());
             throw new ComponentException($message);
         }
 

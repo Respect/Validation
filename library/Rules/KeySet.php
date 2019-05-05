@@ -74,7 +74,7 @@ final class KeySet extends AbstractWrapper
      */
     private function getKeyReference(Key $rule)
     {
-        return $rule->reference;
+        return $rule->getReference();
     }
 
     /**
@@ -87,11 +87,11 @@ final class KeySet extends AbstractWrapper
         }
 
         foreach ($this->keyRules as $keyRule) {
-            if (!array_key_exists($keyRule->reference, $input) && $keyRule->mandatory) {
+            if (!array_key_exists($keyRule->getReference(), $input) && $keyRule->isMandatory()) {
                 return false;
             }
 
-            unset($input[$keyRule->reference]);
+            unset($input[$keyRule->getReference()]);
         }
 
         return count($input) == 0;
