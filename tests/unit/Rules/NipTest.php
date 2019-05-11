@@ -19,22 +19,19 @@ use stdClass;
 /**
  * @group rule
  *
- * @covers \Respect\Validation\Rules\Vatin
+ * @covers \Respect\Validation\Rules\Nip
  *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Tomasz Regdos <tomek@regdos.com>
  */
-final class VatinTest extends RuleTestCase
+final class NipTest extends RuleTestCase
 {
     /**
      * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
-        $countryCode = 'PL';
-        $rule = new Vatin($countryCode);
+        $rule = new Nip();
 
         return [
             [$rule, '1645865777'],
@@ -48,8 +45,7 @@ final class VatinTest extends RuleTestCase
      */
     public function providerForInvalidInput(): array
     {
-        $countryCode = 'PL';
-        $rule = new Vatin($countryCode);
+        $rule = new Nip();
 
         return [
             [$rule, []],
@@ -61,16 +57,5 @@ final class VatinTest extends RuleTestCase
             [$rule, '1298727532'],
             [$rule, '1234567890'],
         ];
-    }
-
-    /**
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage "BR" is not a supported country code
-     *
-     * @test
-     */
-    public function shouldThrowAnExceptionWhenCountryCodeIsNotSupported(): void
-    {
-        new Vatin('BR');
     }
 }

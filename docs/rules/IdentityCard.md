@@ -26,6 +26,6 @@ Version | Description
 ***
 See also:
 
+- [Nip](Nip.md)
 - [Pesel](Pesel.md)
 - [SubdivisionCode](SubdivisionCode.md)
-- [Vatin](Vatin.md)

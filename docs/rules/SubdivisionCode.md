@@ -289,9 +289,9 @@ See also:
 - [CurrencyCode](CurrencyCode.md)
 - [IdentityCard](IdentityCard.md)
 - [KeyValue](KeyValue.md)
+- [Nip](Nip.md)
 - [Pesel](Pesel.md)
 - [Tld](Tld.md)
-- [Vatin](Vatin.md)
 
 [Creative Commons Attribution 3.0 License]: http://creativecommons.org/licenses/by/3.0 "Creative Commons Attribution 3.0 License"
 [GeoNames]: http://www.geonames.org "GetNames"

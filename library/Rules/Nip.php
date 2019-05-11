@@ -11,23 +11,22 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Rules\Locale;
+namespace Respect\Validation\Rules;
 
-use Respect\Validation\Rules\AbstractRule;
 use function array_map;
 use function is_scalar;
 use function preg_match;
 use function str_split;
 
 /**
- * Validator for Polish VAT identification number (NIP).
+ * Validates whether the input is a Polish VAT identification number (NIP).
  *
  * @see https://en.wikipedia.org/wiki/VAT_identification_number
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Tomasz Regdos <tomek@regdos.com>
  */
-final class PlVatin extends AbstractRule
+final class Nip extends AbstractRule
 {
     /**
      * {@inheritDoc}

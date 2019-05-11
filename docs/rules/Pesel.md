@@ -25,5 +25,5 @@ Version | Description
 See also:
 
 - [IdentityCard](IdentityCard.md)
+- [Nip](Nip.md)
 - [SubdivisionCode](SubdivisionCode.md)
-- [Vatin](Vatin.md)

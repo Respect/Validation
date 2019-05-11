@@ -42,8 +42,8 @@ See also:
 
 - [Alpha](Alpha.md)
 - [Charset](Charset.md)
-- [Control](Control.md)
 - [Consonant](Consonant.md)
+- [Control](Control.md)
 - [Digit](Digit.md)
 - [Lowercase](Lowercase.md)
 - [NoWhitespace](NoWhitespace.md)

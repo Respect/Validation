@@ -17,17 +17,17 @@ namespace Respect\Validation\Exceptions;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Tomasz Regdos <tomek@regdos.com>
  */
-final class VatinException extends ValidationException
+final class NipException extends ValidationException
 {
     /**
      * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a valid VAT identification number for {{countryCode}}',
+            self::STANDARD => '{{name}} must be a valid Polish VAT identification number',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a valid VAT identification number for {{countryCode}}',
+            self::STANDARD => '{{name}} must not be a valid Polish VAT identification number',
         ],
     ];
 }
