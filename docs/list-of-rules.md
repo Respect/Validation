@@ -102,7 +102,6 @@
 - [Cnh](rules/Cnh.md)
 - [Cnpj](rules/Cnpj.md)
 - [Cpf](rules/Cpf.md)
-- [IdentityCard](rules/IdentityCard.md)
 - [Imei](rules/Imei.md)
 - [Isbn](rules/Isbn.md)
 - [Luhn](rules/Luhn.md)
@@ -112,6 +111,7 @@
 - [Nip](rules/Nip.md)
 - [Pesel](rules/Pesel.md)
 - [Pis](rules/Pis.md)
+- [PolishIdCard](rules/PolishIdCard.md)
 
 ## Integrations
 
@@ -326,7 +326,6 @@
 - [HexRgbColor](rules/HexRgbColor.md)
 - [Iban](rules/Iban.md)
 - [Identical](rules/Identical.md)
-- [IdentityCard](rules/IdentityCard.md)
 - [Image](rules/Image.md)
 - [Imei](rules/Imei.md)
 - [In](rules/In.md)
@@ -381,6 +380,7 @@
 - [Phone](rules/Phone.md)
 - [PhpLabel](rules/PhpLabel.md)
 - [Pis](rules/Pis.md)
+- [PolishIdCard](rules/PolishIdCard.md)
 - [Positive](rules/Positive.md)
 - [PostalCode](rules/PostalCode.md)
 - [PrimeNumber](rules/PrimeNumber.md)

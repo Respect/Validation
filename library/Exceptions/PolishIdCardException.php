@@ -16,17 +16,17 @@ namespace Respect\Validation\Exceptions;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class IdentityCardException extends ValidationException
+final class PolishIdCardException extends ValidationException
 {
     /**
      * {@inheritDoc}
      */
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a valid Identity Card number for {{countryCode}}',
+            self::STANDARD => '{{name}} must be a valid Polish Identity Card number',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a valid Identity Card number for {{countryCode}}',
+            self::STANDARD => '{{name}} must not be a valid Polish Identity Card number',
         ],
     ];
 }

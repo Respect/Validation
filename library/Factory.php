@@ -35,15 +35,8 @@ use function ucfirst;
  */
 final class Factory
 {
-    private const DEFAULT_RULES_NAMESPACES = [
-        'Respect\\Validation\\Rules',
-        'Respect\\Validation\\Rules\\Locale',
-    ];
-
-    private const DEFAULT_EXCEPTIONS_NAMESPACES = [
-        'Respect\\Validation\\Exceptions',
-        'Respect\\Validation\\Exceptions\\Locale',
-    ];
+    private const DEFAULT_RULES_NAMESPACES = ['Respect\\Validation\\Rules'];
+    private const DEFAULT_EXCEPTIONS_NAMESPACES = ['Respect\\Validation\\Exceptions'];
 
     /**
      * Default instance of the Factory.

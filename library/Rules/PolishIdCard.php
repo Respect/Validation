@@ -11,20 +11,19 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Rules\Locale;
+namespace Respect\Validation\Rules;
 
-use Respect\Validation\Rules\AbstractRule;
 use function ord;
 use function preg_match;
 
 /**
- * Validator for Polish identity card.
+ * Validates whether the input is a Polish identity card (Dowód Osobisty).
  *
  * @see https://en.wikipedia.org/wiki/Polish_identity_card
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class PlIdentityCard extends AbstractRule
+final class PolishIdCard extends AbstractRule
 {
     private const ASCII_CODE_0 = 48;
     private const ASCII_CODE_7 = 55;

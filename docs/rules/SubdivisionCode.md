@@ -287,10 +287,10 @@ See also:
 
 - [CountryCode](CountryCode.md)
 - [CurrencyCode](CurrencyCode.md)
-- [IdentityCard](IdentityCard.md)
 - [KeyValue](KeyValue.md)
 - [Nip](Nip.md)
 - [Pesel](Pesel.md)
+- [PolishIdCard](PolishIdCard.md)
 - [Tld](Tld.md)
 
 [Creative Commons Attribution 3.0 License]: http://creativecommons.org/licenses/by/3.0 "Creative Commons Attribution 3.0 License"

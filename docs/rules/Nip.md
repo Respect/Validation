@@ -25,6 +25,6 @@ Version | Description
 ***
 See also:
 
-- [IdentityCard](IdentityCard.md)
 - [Pesel](Pesel.md)
+- [PolishIdCard](PolishIdCard.md)
 - [SubdivisionCode](SubdivisionCode.md)

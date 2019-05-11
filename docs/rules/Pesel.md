@@ -24,6 +24,6 @@ Version | Description
 ***
 See also:
 
-- [IdentityCard](IdentityCard.md)
 - [Nip](Nip.md)
+- [PolishIdCard](PolishIdCard.md)
 - [SubdivisionCode](SubdivisionCode.md)

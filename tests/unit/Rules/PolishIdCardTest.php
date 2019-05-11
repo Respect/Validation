@@ -11,24 +11,25 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Rules\Locale;
+namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
 
 /**
- * @group  rule
- * @covers \Respect\Validation\Rules\Locale\PlIdentityCard
+ * @group rule
+ *
+ * @covers \Respect\Validation\Rules\PolishIdCard
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class PlIdentityCardTest extends RuleTestCase
+final class PolishIdCardTest extends RuleTestCase
 {
     /**
      * {@inheritDoc}
      */
     public function providerForValidInput(): array
     {
-        $rule = new PlIdentityCard();
+        $rule = new PolishIdCard();
 
         return [
             [$rule, 'APH505567'],
@@ -42,7 +43,7 @@ final class PlIdentityCardTest extends RuleTestCase
      */
     public function providerForInvalidInput(): array
     {
-        $rule = new PlIdentityCard();
+        $rule = new PolishIdCard();
 
         return [
             [$rule, 'AAAAAAAAA'],
