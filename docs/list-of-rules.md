@@ -1,116 +1,9 @@
 # List of rules
 
-## Types
-
-- [ArrayVal](rules/ArrayVal.md)
-- [ArrayType](rules/ArrayType.md)
-- [BoolVal](rules/BoolVal.md)
-- [BoolType](rules/BoolType.md)
-- [CallableType](rules/CallableType.md)
-- [Countable](rules/Countable.md)
-- [DateTime](rules/DateTime.md)
-- [FalseVal](rules/FalseVal.md)
-- [FloatVal](rules/FloatVal.md)
-- [FloatType](rules/FloatType.md)
-- [Instance](rules/Instance.md)
-- [IntVal](rules/IntVal.md)
-- [IntType](rules/IntType.md)
-- [IterableType](rules/IterableType.md)
-- [NullType](rules/NullType.md)
-- [NumericVal](rules/NumericVal.md)
-- [ObjectType](rules/ObjectType.md)
-- [ResourceType](rules/ResourceType.md)
-- [ScalarVal](rules/ScalarVal.md)
-- [StringType](rules/StringType.md)
-- [StringVal](rules/StringVal.md)
-- [TrueVal](rules/TrueVal.md)
-- [Type](rules/Type.md)
-- [Xdigit](rules/Xdigit.md)
-
-## Generics
-
-- [AlwaysInvalid](rules/AlwaysInvalid.md)
-- [AlwaysValid](rules/AlwaysValid.md)
-- [Call](rules/Call.md)
-- [Callback](rules/Callback.md)
-- [FilterVar](rules/FilterVar.md)
-- [Not](rules/Not.md)
-- [Optional](rules/Optional.md)
-- [Type](rules/Type.md)
-- [When](rules/When.md)
-
-## Comparing Values
-
-- [Between](rules/Between.md)
-- [Equals](rules/Equals.md)
-- [Equivalent](rules/Equivalent.md)
-- [GreaterThan](rules/GreaterThan.md)
-- [Identical](rules/Identical.md)
-- [LessThan](rules/LessThan.md)
-- [Max](rules/Max.md)
-- [Min](rules/Min.md)
-
-## Numeric
-
-- [Base](rules/Base.md)
-- [Between](rules/Between.md)
-- [BoolType](rules/BoolType.md)
-- [Even](rules/Even.md)
-- [Factor](rules/Factor.md)
-- [Fibonacci](rules/Fibonacci.md)
-- [Finite](rules/Finite.md)
-- [FloatVal](rules/FloatVal.md)
-- [FloatType](rules/FloatType.md)
-- [Infinite](rules/Infinite.md)
-- [IntVal](rules/IntVal.md)
-- [IntType](rules/IntType.md)
-- [Multiple](rules/Multiple.md)
-- [Negative](rules/Negative.md)
-- [NotEmpty](rules/NotEmpty.md)
-- [Number](rules/Number.md)
-- [NumericVal](rules/NumericVal.md)
-- [Odd](rules/Odd.md)
-- [PerfectSquare](rules/PerfectSquare.md)
-- [Positive](rules/Positive.md)
-- [PrimeNumber](rules/PrimeNumber.md)
-- [Roman](rules/Roman.md)
-- [Xdigit](rules/Xdigit.md)
-
-## String
-
-- [Alnum](rules/Alnum.md)
-- [Alpha](rules/Alpha.md)
-- [Between](rules/Between.md)
-- [Charset](rules/Charset.md)
-- [Cntrl](rules/Cntrl.md)
-- [Consonant](rules/Consonant.md)
-- [Contains](rules/Contains.md)
-- [ContainsAny](rules/ContainsAny.md)
-- [Digit](rules/Digit.md)
-- [EndsWith](rules/EndsWith.md)
-- [Graph](rules/Graph.md)
-- [In](rules/In.md)
-- [Length](rules/Length.md)
-- [Lowercase](rules/Lowercase.md)
-- [NotEmpty](rules/NotEmpty.md)
-- [NoWhitespace](rules/NoWhitespace.md)
-- [PhpLabel](rules/PhpLabel.md)
-- [Printable](rules/Printable.md)
-- [Punct](rules/Punct.md)
-- [Regex](rules/Regex.md)
-- [ResourceType](rules/ResourceType.md)
-- [Slug](rules/Slug.md)
-- [Space](rules/Space.md)
-- [StartsWith](rules/StartsWith.md)
-- [Uppercase](rules/Uppercase.md)
-- [Version](rules/Version.md)
-- [Vowel](rules/Vowel.md)
-- [Xdigit](rules/Xdigit.md)
-
 ## Arrays
 
-- [ArrayVal](rules/ArrayVal.md)
 - [ArrayType](rules/ArrayType.md)
+- [ArrayVal](rules/ArrayVal.md)
 - [Contains](rules/Contains.md)
 - [ContainsAny](rules/ContainsAny.md)
 - [Each](rules/Each.md)
@@ -120,20 +13,59 @@
 - [KeyNested](rules/KeyNested.md)
 - [KeySet](rules/KeySet.md)
 - [KeyValue](rules/KeyValue.md)
-- [Length](rules/Length.md)
-- [NotEmpty](rules/NotEmpty.md)
+- [Sorted](rules/Sorted.md)
 - [StartsWith](rules/StartsWith.md)
 - [Subset](rules/Subset.md)
+- [Unique](rules/Unique.md)
 
-## Objects
+## Banking
 
-- [Attribute](rules/Attribute.md)
-- [Instance](rules/Instance.md)
-- [Length](rules/Length.md)
+- [CreditCard](rules/CreditCard.md)
+- [Iban](rules/Iban.md)
+
+## Booleans
+
+- [AlwaysInvalid](rules/AlwaysInvalid.md)
+- [AlwaysValid](rules/AlwaysValid.md)
+- [BoolType](rules/BoolType.md)
+- [BoolVal](rules/BoolVal.md)
+- [FalseVal](rules/FalseVal.md)
+- [No](rules/No.md)
+- [TrueVal](rules/TrueVal.md)
+- [Yes](rules/Yes.md)
+
+## Callables
+
+- [Call](rules/Call.md)
+- [CallableType](rules/CallableType.md)
+- [Callback](rules/Callback.md)
+
+## Comparisons
+
+- [Between](rules/Between.md)
+- [Equals](rules/Equals.md)
+- [Equivalent](rules/Equivalent.md)
+- [GreaterThan](rules/GreaterThan.md)
+- [Identical](rules/Identical.md)
+- [In](rules/In.md)
+- [LessThan](rules/LessThan.md)
+- [Max](rules/Max.md)
+- [Min](rules/Min.md)
+
+## Composite
+
+- [AllOf](rules/AllOf.md)
+- [AnyOf](rules/AnyOf.md)
+- [NoneOf](rules/NoneOf.md)
+- [OneOf](rules/OneOf.md)
+
+## Conditions
+
+- [Not](rules/Not.md)
+- [When](rules/When.md)
 
 ## Date and Time
 
-- [Between](rules/Between.md)
 - [Date](rules/Date.md)
 - [DateTime](rules/DateTime.md)
 - [LeapDate](rules/LeapDate.md)
@@ -142,24 +74,7 @@
 - [MinAge](rules/MinAge.md)
 - [Time](rules/Time.md)
 
-## Group Validators
-
-- [AllOf](rules/AllOf.md)
-- [AnyOf](rules/AnyOf.md)
-- [NoneOf](rules/NoneOf.md)
-- [OneOf](rules/OneOf.md)
-
-## Regional
-
-- [CountryCode](rules/CountryCode.md)
-- [CurrencyCode](rules/CurrencyCode.md)
-- [IdentityCard](rules/IdentityCard.md)
-- [LanguageCode](rules/LanguageCode.md)
-- [PostalCode](rules/PostalCode.md)
-- [SubdivisionCode](rules/SubdivisionCode.md)
-- [Tld](rules/Tld.md)
-
-## Files
+## File system
 
 - [Directory](rules/Directory.md)
 - [Executable](rules/Executable.md)
@@ -174,46 +89,183 @@
 - [Uploaded](rules/Uploaded.md)
 - [Writable](rules/Writable.md)
 
-## Banking
+## ISO codes
 
-- [CreditCard](rules/CreditCard.md)
-- [Iban](rules/Iban.md)
+- [CountryCode](rules/CountryCode.md)
+- [CurrencyCode](rules/CurrencyCode.md)
+- [LanguageCode](rules/LanguageCode.md)
+- [SubdivisionCode](rules/SubdivisionCode.md)
 
-## Other
+## Identifications
 
-- [Base64](rules/Base64.md)
 - [Bsn](rules/Bsn.md)
 - [Cnh](rules/Cnh.md)
 - [Cnpj](rules/Cnpj.md)
 - [Cpf](rules/Cpf.md)
-- [Domain](rules/Domain.md)
-- [Email](rules/Email.md)
-- [HexRgbColor](rules/HexRgbColor.md)
+- [IdentityCard](rules/IdentityCard.md)
 - [Imei](rules/Imei.md)
-- [Ip](rules/Ip.md)
 - [Isbn](rules/Isbn.md)
-- [Json](rules/Json.md)
 - [Luhn](rules/Luhn.md)
 - [MacAddress](rules/MacAddress.md)
 - [NfeAccessKey](rules/NfeAccessKey.md)
 - [Nif](rules/Nif.md)
-- [NotBlank](rules/NotBlank.md)
-- [NotEmoji](rules/NotEmoji.md)
-- [NotOptional](rules/NotOptional.md)
 - [Pesel](rules/Pesel.md)
-- [Phone](rules/Phone.md)
 - [Pis](rules/Pis.md)
-- [Sf](rules/Sf.md)
-- [Url](rules/Url.md)
-- [Uuid](rules/Uuid.md)
 - [Vatin](rules/Vatin.md)
-- [VideoUrl](rules/VideoUrl.md)
+
+## Integrations
+
+- [Sf](rules/Sf.md)
 - [Zend](rules/Zend.md)
 
-## Yes/No
+## Internet
 
-- [No](rules/No.md)
-- [Yes](rules/Yes.md)
+- [Domain](rules/Domain.md)
+- [Email](rules/Email.md)
+- [Ip](rules/Ip.md)
+- [Tld](rules/Tld.md)
+- [Url](rules/Url.md)
+- [VideoUrl](rules/VideoUrl.md)
+
+## Localization
+
+- [CountryCode](rules/CountryCode.md)
+- [CurrencyCode](rules/CurrencyCode.md)
+- [LanguageCode](rules/LanguageCode.md)
+- [PostalCode](rules/PostalCode.md)
+- [SubdivisionCode](rules/SubdivisionCode.md)
+
+## Math
+
+- [Factor](rules/Factor.md)
+- [Fibonacci](rules/Fibonacci.md)
+- [Finite](rules/Finite.md)
+- [Infinite](rules/Infinite.md)
+- [Multiple](rules/Multiple.md)
+- [Negative](rules/Negative.md)
+- [PerfectSquare](rules/PerfectSquare.md)
+- [Positive](rules/Positive.md)
+- [PrimeNumber](rules/PrimeNumber.md)
+
+## Miscellaneous
+
+- [FilterVar](rules/FilterVar.md)
+- [NotBlank](rules/NotBlank.md)
+- [NotEmpty](rules/NotEmpty.md)
+- [NotOptional](rules/NotOptional.md)
+
+## Nesting
+
+- [AllOf](rules/AllOf.md)
+- [AnyOf](rules/AnyOf.md)
+- [Attribute](rules/Attribute.md)
+- [Call](rules/Call.md)
+- [Each](rules/Each.md)
+- [Key](rules/Key.md)
+- [KeyNested](rules/KeyNested.md)
+- [KeySet](rules/KeySet.md)
+- [KeyValue](rules/KeyValue.md)
+- [NoneOf](rules/NoneOf.md)
+- [Not](rules/Not.md)
+- [Nullable](rules/Nullable.md)
+- [OneOf](rules/OneOf.md)
+- [Optional](rules/Optional.md)
+- [When](rules/When.md)
+
+## Numbers
+
+- [Base](rules/Base.md)
+- [Digit](rules/Digit.md)
+- [Even](rules/Even.md)
+- [Factor](rules/Factor.md)
+- [Fibonacci](rules/Fibonacci.md)
+- [Finite](rules/Finite.md)
+- [FloatType](rules/FloatType.md)
+- [FloatVal](rules/FloatVal.md)
+- [Infinite](rules/Infinite.md)
+- [IntType](rules/IntType.md)
+- [IntVal](rules/IntVal.md)
+- [Multiple](rules/Multiple.md)
+- [Negative](rules/Negative.md)
+- [Number](rules/Number.md)
+- [NumericVal](rules/NumericVal.md)
+- [Odd](rules/Odd.md)
+- [PerfectSquare](rules/PerfectSquare.md)
+- [Positive](rules/Positive.md)
+- [PrimeNumber](rules/PrimeNumber.md)
+- [Roman](rules/Roman.md)
+
+## Objects
+
+- [Attribute](rules/Attribute.md)
+- [Instance](rules/Instance.md)
+- [ObjectType](rules/ObjectType.md)
+
+## Strings
+
+- [Alnum](rules/Alnum.md)
+- [Alpha](rules/Alpha.md)
+- [Base64](rules/Base64.md)
+- [Charset](rules/Charset.md)
+- [Cntrl](rules/Cntrl.md)
+- [Consonant](rules/Consonant.md)
+- [Contains](rules/Contains.md)
+- [ContainsAny](rules/ContainsAny.md)
+- [Digit](rules/Digit.md)
+- [EndsWith](rules/EndsWith.md)
+- [Graph](rules/Graph.md)
+- [HexRgbColor](rules/HexRgbColor.md)
+- [In](rules/In.md)
+- [Json](rules/Json.md)
+- [Lowercase](rules/Lowercase.md)
+- [NoWhitespace](rules/NoWhitespace.md)
+- [NotEmoji](rules/NotEmoji.md)
+- [Phone](rules/Phone.md)
+- [PhpLabel](rules/PhpLabel.md)
+- [PostalCode](rules/PostalCode.md)
+- [Printable](rules/Printable.md)
+- [Punct](rules/Punct.md)
+- [Regex](rules/Regex.md)
+- [Slug](rules/Slug.md)
+- [Sorted](rules/Sorted.md)
+- [Space](rules/Space.md)
+- [StartsWith](rules/StartsWith.md)
+- [StringType](rules/StringType.md)
+- [StringVal](rules/StringVal.md)
+- [Uppercase](rules/Uppercase.md)
+- [Uuid](rules/Uuid.md)
+- [Version](rules/Version.md)
+- [Vowel](rules/Vowel.md)
+- [Xdigit](rules/Xdigit.md)
+
+## Structures
+
+- [Attribute](rules/Attribute.md)
+- [Key](rules/Key.md)
+- [KeyNested](rules/KeyNested.md)
+- [KeySet](rules/KeySet.md)
+
+## Types
+
+- [ArrayType](rules/ArrayType.md)
+- [ArrayVal](rules/ArrayVal.md)
+- [BoolType](rules/BoolType.md)
+- [BoolVal](rules/BoolVal.md)
+- [CallableType](rules/CallableType.md)
+- [Countable](rules/Countable.md)
+- [FloatType](rules/FloatType.md)
+- [FloatVal](rules/FloatVal.md)
+- [IntType](rules/IntType.md)
+- [IntVal](rules/IntVal.md)
+- [IterableType](rules/IterableType.md)
+- [NullType](rules/NullType.md)
+- [NumericVal](rules/NumericVal.md)
+- [ObjectType](rules/ObjectType.md)
+- [ResourceType](rules/ResourceType.md)
+- [ScalarVal](rules/ScalarVal.md)
+- [StringType](rules/StringType.md)
+- [StringVal](rules/StringVal.md)
+- [Type](rules/Type.md)
 
 ## Alphabetically
 
@@ -256,6 +308,7 @@
 - [Email](rules/Email.md)
 - [EndsWith](rules/EndsWith.md)
 - [Equals](rules/Equals.md)
+- [Equivalent](rules/Equivalent.md)
 - [Even](rules/Even.md)
 - [Executable](rules/Executable.md)
 - [Exists](rules/Exists.md)
@@ -272,7 +325,6 @@
 - [GreaterThan](rules/GreaterThan.md)
 - [HexRgbColor](rules/HexRgbColor.md)
 - [Iban](rules/Iban.md)
-- [INSTALL](installation.md)
 - [Identical](rules/Identical.md)
 - [IdentityCard](rules/IdentityCard.md)
 - [Image](rules/Image.md)
@@ -299,6 +351,7 @@
 - [Luhn](rules/Luhn.md)
 - [MacAddress](rules/MacAddress.md)
 - [Max](rules/Max.md)
+- [MaxAge](rules/MaxAge.md)
 - [Mimetype](rules/Mimetype.md)
 - [Min](rules/Min.md)
 - [MinAge](rules/MinAge.md)
@@ -315,6 +368,7 @@
 - [NotEmpty](rules/NotEmpty.md)
 - [NotOptional](rules/NotOptional.md)
 - [NullType](rules/NullType.md)
+- [Nullable](rules/Nullable.md)
 - [Number](rules/Number.md)
 - [NumericVal](rules/NumericVal.md)
 - [ObjectType](rules/ObjectType.md)
@@ -339,6 +393,7 @@
 - [Sf](rules/Sf.md)
 - [Size](rules/Size.md)
 - [Slug](rules/Slug.md)
+- [Sorted](rules/Sorted.md)
 - [Space](rules/Space.md)
 - [StartsWith](rules/StartsWith.md)
 - [StringType](rules/StringType.md)
@@ -350,6 +405,7 @@
 - [Tld](rules/Tld.md)
 - [TrueVal](rules/TrueVal.md)
 - [Type](rules/Type.md)
+- [Unique](rules/Unique.md)
 - [Uploaded](rules/Uploaded.md)
 - [Uppercase](rules/Uppercase.md)
 - [Url](rules/Url.md)
