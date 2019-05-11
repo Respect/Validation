@@ -11,6 +11,12 @@ v::unique()->validate([1, 2, 2, 3]); // false
 v::unique()->validate([1, 2, 3, 1]); // false
 ```
 
+## Changelog
+
+Version | Description
+--------|-------------
+  2.0.0 | Created
+
 ***
 See also:
 
