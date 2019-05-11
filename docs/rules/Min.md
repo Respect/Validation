@@ -11,7 +11,7 @@ v::intVal()->min(10)->validate(11); // true
 ```
 
 Validation makes comparison easier, check out our supported 
-[comparable values](ComparableValues.md).
+[comparable values](../comparable-values.md).
 
 Message template for this validator includes `{{compareTo}}`.
 

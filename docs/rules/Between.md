@@ -11,7 +11,7 @@ v::intVal()->between(10, 20)->validate(20); // true
 ```
 
 Validation makes comparison easier, check out our supported 
-[comparable values](ComparableValues.md).
+[comparable values](../comparable-values.md).
 
 Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.
 
