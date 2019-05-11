@@ -42,7 +42,7 @@ See also:
 
 - [Alpha](Alpha.md)
 - [Charset](Charset.md)
-- [Cntrl](Cntrl.md)
+- [Control](Control.md)
 - [Consonant](Consonant.md)
 - [Digit](Digit.md)
 - [Lowercase](Lowercase.md)

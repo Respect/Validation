@@ -7,54 +7,54 @@ declare(strict_types=1);
 
 require_once 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\CntrlException;
+use Respect\Validation\Exceptions\ControlException;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
 try {
-    v::cntrl()->check('16-50');
-} catch (CntrlException $exception) {
+    v::control()->check('16-50');
+} catch (ControlException $exception) {
     echo $exception->getMessage().PHP_EOL;
 }
 
 try {
-    v::cntrl('16')->check('16-50');
-} catch (CntrlException $exception) {
+    v::control('16')->check('16-50');
+} catch (ControlException $exception) {
     echo $exception->getMessage().PHP_EOL;
 }
 
 try {
-    v::not(v::cntrl())->check("\n");
-} catch (CntrlException $exception) {
+    v::not(v::control())->check("\n");
+} catch (ControlException $exception) {
     echo $exception->getMessage().PHP_EOL;
 }
 
 try {
-    v::not(v::cntrl('16'))->check("16\n");
-} catch (CntrlException $exception) {
+    v::not(v::control('16'))->check("16\n");
+} catch (ControlException $exception) {
     echo $exception->getMessage().PHP_EOL;
 }
 
 try {
-    v::cntrl()->assert('Foo');
+    v::control()->assert('Foo');
 } catch (NestedValidationException $exception) {
     echo $exception->getFullMessage().PHP_EOL;
 }
 
 try {
-    v::cntrl('Bar')->assert('Foo');
+    v::control('Bar')->assert('Foo');
 } catch (NestedValidationException $exception) {
     echo $exception->getFullMessage().PHP_EOL;
 }
 
 try {
-    v::not(v::cntrl())->assert("\n");
+    v::not(v::control())->assert("\n");
 } catch (NestedValidationException $exception) {
     echo $exception->getFullMessage().PHP_EOL;
 }
 
 try {
-    v::not(v::cntrl('Bar'))->assert("Bar\n");
+    v::not(v::control('Bar'))->assert("Bar\n");
 } catch (NestedValidationException $exception) {
     echo $exception->getFullMessage().PHP_EOL;
 }

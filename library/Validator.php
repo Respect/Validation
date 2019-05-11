@@ -45,7 +45,7 @@ use function count;
  * @method static Validator charset(string ...$charset)
  * @method static Validator cnh()
  * @method static Validator cnpj()
- * @method static Validator cntrl(string ...$additionalChars)
+ * @method static Validator control(string ...$additionalChars)
  * @method static Validator consonant(string ...$additionalChars)
  * @method static Validator contains($containsValue, bool $identical = false)
  * @method static Validator containsAny(array $needles, bool $strictCompareArray = false)

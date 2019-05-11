@@ -1,13 +1,13 @@
-# Cntrl
+# Control
 
-- `Cntrl()`
-- `Cntrl(string ...$additionalChars)`
+- `Control()`
+- `Control(string ...$additionalChars)`
 
 Validates if all of the characters in the provided string, are control
 characters.
 
 ```php
-v::cntrl()->validate("\n\r\t"); // true
+v::control()->validate("\n\r\t"); // true
 ```
 
 ## Categorization
@@ -18,6 +18,7 @@ v::cntrl()->validate("\n\r\t"); // true
 
 Version | Description
 --------|-------------
+  2.0.0 | Renamed from `Cntrl` to `Control`
   0.5.0 | Created
 
 ***

@@ -22,6 +22,6 @@ Version | Description
 ***
 See also:
 
-- [Cntrl](Cntrl.md)
+- [Control](Control.md)
 - [Graph](Graph.md)
 - [Printable](Printable.md)

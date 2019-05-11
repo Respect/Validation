@@ -22,4 +22,4 @@ Version | Description
 ***
 See also:
 
-- [Cntrl](Cntrl.md)
+- [Control](Control.md)
