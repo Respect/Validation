@@ -41,7 +41,6 @@
 
 ## Comparing Values
 
-- [Age](rules/Age.md)
 - [Between](rules/Between.md)
 - [Equals](rules/Equals.md)
 - [Equivalent](rules/Equivalent.md)
@@ -134,7 +133,6 @@
 
 ## Date and Time
 
-- [Age](rules/Age.md)
 - [Between](rules/Between.md)
 - [Date](rules/Date.md)
 - [DateTime](rules/DateTime.md)
@@ -183,7 +181,7 @@
 
 ## Other
 
-- [Base64](Base64.md)
+- [Base64](rules/Base64.md)
 - [Bsn](rules/Bsn.md)
 - [Cnh](rules/Cnh.md)
 - [Cnpj](rules/Cnpj.md)
@@ -219,7 +217,6 @@
 
 ## Alphabetically
 
-- [Age](rules/Age.md)
 - [AllOf](rules/AllOf.md)
 - [Alnum](rules/Alnum.md)
 - [Alpha](rules/Alpha.md)
@@ -230,7 +227,7 @@
 - [ArrayVal](rules/ArrayVal.md)
 - [Attribute](rules/Attribute.md)
 - [Base](rules/Base.md)
-- [Base64](Base64.md)
+- [Base64](rules/Base64.md)
 - [Between](rules/Between.md)
 - [BoolType](rules/BoolType.md)
 - [BoolVal](rules/BoolVal.md)
