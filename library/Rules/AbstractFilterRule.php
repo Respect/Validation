@@ -37,8 +37,6 @@ abstract class AbstractFilterRule extends AbstractRule
         $this->additionalChars = implode($additionalChars);
     }
 
-    abstract protected function validateFilteredInput(string $input): bool;
-
     /**
      * {@inheritDoc}
      */
@@ -57,6 +55,8 @@ abstract class AbstractFilterRule extends AbstractRule
 
         return $filteredInput === '' || $this->validateFilteredInput($filteredInput);
     }
+
+    abstract protected function validateFilteredInput(string $input): bool;
 
     private function filter(string $input): string
     {

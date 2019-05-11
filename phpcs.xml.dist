@@ -160,4 +160,5 @@
     <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines">
         <severity>5</severity>
     </rule>
+    <rule ref="Symfony.Functions.ScopeOrder" />
 </ruleset>

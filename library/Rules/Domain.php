@@ -94,6 +94,23 @@ final class Domain extends AbstractRule
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public function check($input): void
+    {
+        try {
+            $this->assert($input);
+        } catch (NestedValidationException $exception) {
+            /** @var ValidationException $childException */
+            foreach ($exception as $childException) {
+                throw $childException;
+            }
+
+            throw $exception;
+        }
+    }
+
+    /**
      * @param ValidationException[] $exceptions
      * @param mixed $input
      */
@@ -108,23 +125,6 @@ final class Domain extends AbstractRule
             );
         } catch (ValidationException $validationException) {
             $exceptions[] = $validationException;
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function check($input): void
-    {
-        try {
-            $this->assert($input);
-        } catch (NestedValidationException $exception) {
-            /** @var ValidationException $childException */
-            foreach ($exception as $childException) {
-                throw $childException;
-            }
-
-            throw $exception;
         }
     }
 

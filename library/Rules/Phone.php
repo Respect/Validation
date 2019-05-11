@@ -30,16 +30,6 @@ use function sprintf;
  */
 final class Phone extends AbstractRule
 {
-    private function getPregFormat(): string
-    {
-        return sprintf(
-            '/^\+?(%1$s)? ?(?(?=\()(\(%2$s\) ?%3$s)|([. -]?(%2$s[. -]*)?%3$s))$/',
-            '\d{0,3}',
-            '\d{1,3}',
-            '((\d{3,5})[. -]?(\d{4})|(\d{2}[. -]?){4})'
-        );
-    }
-
     /**
      * {@inheritDoc}
      */
@@ -50,5 +40,15 @@ final class Phone extends AbstractRule
         }
 
         return preg_match($this->getPregFormat(), (string) $input) > 0;
+    }
+
+    private function getPregFormat(): string
+    {
+        return sprintf(
+            '/^\+?(%1$s)? ?(?(?=\()(\(%2$s\) ?%3$s)|([. -]?(%2$s[. -]*)?%3$s))$/',
+            '\d{0,3}',
+            '\d{1,3}',
+            '((\d{3,5})[. -]?(\d{4})|(\d{2}[. -]?){4})'
+        );
     }
 }

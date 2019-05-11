@@ -49,6 +49,25 @@ final class KeyNested extends AbstractRelated
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public function getReferenceValue($input)
+    {
+        if (is_scalar($input)) {
+            $message = sprintf('Cannot select the %s in the given data', $this->getReference());
+            throw new ComponentException($message);
+        }
+
+        $keys = $this->getReferencePieces();
+        $value = $input;
+        while (!is_null($key = array_shift($keys))) {
+            $value = $this->getValue($value, $key);
+        }
+
+        return $value;
+    }
+
+    /**
      * @return string[]
      */
     private function getReferencePieces(): array
@@ -126,24 +145,5 @@ final class KeyNested extends AbstractRelated
 
         $message = sprintf('Cannot select the property %s from the given data', $this->getReference());
         throw new ComponentException($message);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getReferenceValue($input)
-    {
-        if (is_scalar($input)) {
-            $message = sprintf('Cannot select the %s in the given data', $this->getReference());
-            throw new ComponentException($message);
-        }
-
-        $keys = $this->getReferencePieces();
-        $value = $input;
-        while (!is_null($key = array_shift($keys))) {
-            $value = $this->getValue($value, $key);
-        }
-
-        return $value;
     }
 }

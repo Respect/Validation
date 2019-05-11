@@ -50,6 +50,18 @@ final class In extends AbstractRule
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public function validate($input): bool
+    {
+        if ($this->compareIdentical) {
+            return $this->validateIdentical($input);
+        }
+
+        return $this->validateEquals($input);
+    }
+
+    /**
      * @param mixed $input
      */
     private function validateEquals($input): bool
@@ -83,17 +95,5 @@ final class In extends AbstractRule
         $inputString = (string) $input;
 
         return mb_strpos($this->haystack, $inputString, 0, mb_detect_encoding($inputString)) !== false;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
-    {
-        if ($this->compareIdentical) {
-            return $this->validateIdentical($input);
-        }
-
-        return $this->validateEquals($input);
     }
 }

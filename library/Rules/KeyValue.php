@@ -52,46 +52,6 @@ final class KeyValue extends AbstractRule
     }
 
     /**
-     * @param mixed $input
-     */
-    private function getRule($input): Validatable
-    {
-        if (!isset($input[$this->comparedKey])) {
-            throw parent::reportError($this->comparedKey);
-        }
-
-        if (!isset($input[$this->baseKey])) {
-            throw parent::reportError($this->baseKey);
-        }
-
-        try {
-            $rule = Factory::getDefaultInstance()->rule($this->ruleName, [$input[$this->baseKey]]);
-            $rule->setName($this->comparedKey);
-        } catch (ComponentException $exception) {
-            throw parent::reportError($input, ['component' => true]);
-        }
-
-        return $rule;
-    }
-
-    private function overwriteExceptionParams(ValidationException $exception): ValidationException
-    {
-        $params = [];
-        foreach (array_keys($exception->getParams()) as $key) {
-            if (in_array($key, ['template', 'translator'])) {
-                continue;
-            }
-
-            $params[$key] = $this->baseKey;
-        }
-        $params['name'] = $this->comparedKey;
-
-        $exception->updateParams($params);
-
-        return $exception;
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function assert($input): void
@@ -143,5 +103,45 @@ final class KeyValue extends AbstractRule
         } catch (ValidationException $exception) {
             return $this->overwriteExceptionParams($exception);
         }
+    }
+
+    /**
+     * @param mixed $input
+     */
+    private function getRule($input): Validatable
+    {
+        if (!isset($input[$this->comparedKey])) {
+            throw parent::reportError($this->comparedKey);
+        }
+
+        if (!isset($input[$this->baseKey])) {
+            throw parent::reportError($this->baseKey);
+        }
+
+        try {
+            $rule = Factory::getDefaultInstance()->rule($this->ruleName, [$input[$this->baseKey]]);
+            $rule->setName($this->comparedKey);
+        } catch (ComponentException $exception) {
+            throw parent::reportError($input, ['component' => true]);
+        }
+
+        return $rule;
+    }
+
+    private function overwriteExceptionParams(ValidationException $exception): ValidationException
+    {
+        $params = [];
+        foreach (array_keys($exception->getParams()) as $key) {
+            if (in_array($key, ['template', 'translator'])) {
+                continue;
+            }
+
+            $params[$key] = $this->baseKey;
+        }
+        $params['name'] = $this->comparedKey;
+
+        $exception->updateParams($params);
+
+        return $exception;
     }
 }

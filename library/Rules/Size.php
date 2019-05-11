@@ -62,6 +62,22 @@ final class Size extends AbstractRule
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public function validate($input): bool
+    {
+        if ($input instanceof SplFileInfo) {
+            return $this->isValidSize($input->getSize());
+        }
+
+        if (is_string($input)) {
+            return $this->isValidSize((int) filesize($input));
+        }
+
+        return false;
+    }
+
+    /**
      * @todo Move it to a trait
      *
      * @param mixed $size
@@ -96,21 +112,5 @@ final class Size extends AbstractRule
         }
 
         return $size <= $this->maxValue;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
-    {
-        if ($input instanceof SplFileInfo) {
-            return $this->isValidSize($input->getSize());
-        }
-
-        if (is_string($input)) {
-            return $this->isValidSize((int) filesize($input));
-        }
-
-        return false;
     }
 }

@@ -53,6 +53,42 @@ final class KeySet extends AbstractWrapper
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public function assert($input): void
+    {
+        if (!$this->hasValidStructure($input)) {
+            throw $this->reportError($input);
+        }
+
+        parent::assert($input);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function check($input): void
+    {
+        if (!$this->hasValidStructure($input)) {
+            throw $this->reportError($input);
+        }
+
+        parent::check($input);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function validate($input): bool
+    {
+        if (!$this->hasValidStructure($input)) {
+            return false;
+        }
+
+        return parent::validate($input);
+    }
+
+    /**
      * @throws ComponentException
      */
     private function getKeyRule(Validatable $validatable): Key
@@ -95,41 +131,5 @@ final class KeySet extends AbstractWrapper
         }
 
         return count($input) == 0;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function assert($input): void
-    {
-        if (!$this->hasValidStructure($input)) {
-            throw $this->reportError($input);
-        }
-
-        parent::assert($input);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function check($input): void
-    {
-        if (!$this->hasValidStructure($input)) {
-            throw $this->reportError($input);
-        }
-
-        parent::check($input);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
-    {
-        if (!$this->hasValidStructure($input)) {
-            return false;
-        }
-
-        return parent::validate($input);
     }
 }

@@ -55,13 +55,6 @@ abstract class AbstractAge extends AbstractRule
     }
 
     /**
-     * Should compare the current base date with the given one.
-     *
-     * The dates are represented as integers in the format "Ymd".
-     */
-    abstract protected function compare(int $baseDate, int $givenDate): bool;
-
-    /**
      * {@inheritDoc}
      */
     public function validate($input): bool
@@ -76,6 +69,13 @@ abstract class AbstractAge extends AbstractRule
 
         return $this->isValidWithFormat($this->format, (string) $input);
     }
+
+    /**
+     * Should compare the current base date with the given one.
+     *
+     * The dates are represented as integers in the format "Ymd".
+     */
+    abstract protected function compare(int $baseDate, int $givenDate): bool;
 
     private function isValidWithoutFormat(string $dateTime): bool
     {

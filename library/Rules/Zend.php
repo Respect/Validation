@@ -54,36 +54,6 @@ final class Zend extends AbstractRule
     }
 
     /**
-     * @param mixed $validator
-     * @param mixed[] $params
-     *
-     * @throws ComponentException
-     */
-    private function zendValidator($validator, array $params = []): ValidatorInterface
-    {
-        if ($validator instanceof ValidatorInterface) {
-            return $validator;
-        }
-
-        if (!is_string($validator)) {
-            throw new ComponentException('The given argument is not a valid Zend Validator');
-        }
-
-        $className = stripos($validator, 'Zend') === false ? 'Zend\\Validator\\'.$validator : '\\'.$validator;
-
-        try {
-            $reflection = new ReflectionClass($className);
-            if (!$reflection->isInstantiable()) {
-                throw new ComponentException(sprintf('"%s" is not instantiable', $className));
-            }
-
-            return $this->zendValidator($reflection->newInstanceArgs($params));
-        } catch (Throwable $exception) {
-            throw new ComponentException(sprintf('Could not create "%s"', $validator), 0, $exception);
-        }
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function assert($input): void
@@ -133,5 +103,35 @@ final class Zend extends AbstractRule
     public function validate($input): bool
     {
         return (clone $this->zendValidator)->isValid($input);
+    }
+
+    /**
+     * @param mixed $validator
+     * @param mixed[] $params
+     *
+     * @throws ComponentException
+     */
+    private function zendValidator($validator, array $params = []): ValidatorInterface
+    {
+        if ($validator instanceof ValidatorInterface) {
+            return $validator;
+        }
+
+        if (!is_string($validator)) {
+            throw new ComponentException('The given argument is not a valid Zend Validator');
+        }
+
+        $className = stripos($validator, 'Zend') === false ? 'Zend\\Validator\\'.$validator : '\\'.$validator;
+
+        try {
+            $reflection = new ReflectionClass($className);
+            if (!$reflection->isInstantiable()) {
+                throw new ComponentException(sprintf('"%s" is not instantiable', $className));
+            }
+
+            return $this->zendValidator($reflection->newInstanceArgs($params));
+        } catch (Throwable $exception) {
+            throw new ComponentException(sprintf('Could not create "%s"', $validator), 0, $exception);
+        }
     }
 }
