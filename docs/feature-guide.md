@@ -235,7 +235,9 @@ The only thing one must do is to define the param `translator` as a callable tha
 will handle the translation overwriting the default factory:
 
 ```php
-Factory::setDefaultInstance(new Factory([], [], 'gettext'));
+Factory::setDefaultInstance(
+    (new Factory())->withTranslator('gettext')
+);
 ```
 
 The example above uses `gettext()` but you can use any other callable value, like
@@ -310,10 +312,9 @@ default `Factory`.
 
 ```php
 Factory::setDefaultInstance(
-    new Factory(
-      ['My\\Validation\\Rules'],
-      ['My\\Validation\\Exceptions']
-    )
+    (new Factory())
+        ->withRuleNamespace('My\\Validation\\Rules')
+        ->withExceptionNamespace('My\\Validation\\Exceptions')
 );
 v::myRule(); // Try to load "My\Validation\Rules\MyRule" if any
 v::alnum(); // Try to use "My\Validation\Rules\Alnum" if any, or else "Respect\Validation\Rules\Alnum"

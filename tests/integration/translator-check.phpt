@@ -11,13 +11,14 @@ use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Factory;
 use Respect\Validation\Validator;
 
-Factory::setDefaultInstance(new Factory([], [], static function (string $message): string {
-    $messages = [
-        '{{name}} must be of type string' => '{{name}} deve ser do tipo string',
-    ];
-
-    return $messages[$message];
-}));
+Factory::setDefaultInstance(
+    (new Factory())
+        ->withTranslator(static function (string $message): string {
+            return [
+                '{{name}} must be of type string' => '{{name}} deve ser do tipo string',
+            ][$message];
+        })
+);
 
 try {
     Validator::stringType()->length(2, 15)->check(0);

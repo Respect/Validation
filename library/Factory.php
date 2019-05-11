@@ -19,9 +19,6 @@ use ReflectionObject;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
 use Respect\Validation\Exceptions\ValidationException;
-use function array_map;
-use function array_merge;
-use function array_unique;
 use function lcfirst;
 use function sprintf;
 use function trim;
@@ -35,9 +32,6 @@ use function ucfirst;
  */
 final class Factory
 {
-    private const DEFAULT_RULES_NAMESPACES = ['Respect\\Validation\\Rules'];
-    private const DEFAULT_EXCEPTIONS_NAMESPACES = ['Respect\\Validation\\Exceptions'];
-
     /**
      * Default instance of the Factory.
      *
@@ -48,41 +42,40 @@ final class Factory
     /**
      * @var string[]
      */
-    private $rulesNamespaces = [];
+    private $rulesNamespaces = ['Respect\\Validation\\Rules'];
 
     /**
      * @var string[]
      */
-    private $exceptionsNamespaces = [];
+    private $exceptionsNamespaces = ['Respect\\Validation\\Exceptions'];
 
     /**
      * @var callable
      */
-    private $translator;
+    private $translator = 'strval';
 
-    /**
-     * Initializes the factory with the defined namespaces.
-     *
-     * If the default namespace is not in the array, it will be add to the end
-     * of the array.
-     *
-     * @param string[] $rulesNamespaces
-     * @param string[] $exceptionsNamespaces
-     */
-    public function __construct(
-        array $rulesNamespaces,
-        array $exceptionsNamespaces,
-        callable $translator
-    ) {
-        $this->rulesNamespaces = $this->filterNamespaces(
-            $rulesNamespaces,
-            self::DEFAULT_RULES_NAMESPACES
-        );
-        $this->exceptionsNamespaces = $this->filterNamespaces(
-            $exceptionsNamespaces,
-            self::DEFAULT_EXCEPTIONS_NAMESPACES
-        );
-        $this->translator = $translator;
+    public function withRuleNamespace(string $rulesNamespace): self
+    {
+        $clone = clone $this;
+        $clone->rulesNamespaces[] = trim($rulesNamespace, '\\');
+
+        return $clone;
+    }
+
+    public function withExceptionNamespace(string $exceptionsNamespace): self
+    {
+        $clone = clone $this;
+        $clone->exceptionsNamespaces[] = trim($exceptionsNamespace, '\\');
+
+        return $clone;
+    }
+
+    public function withTranslator(callable $translator): self
+    {
+        $clone = clone $this;
+        $clone->translator = $translator;
+
+        return $clone;
     }
 
     /**
@@ -99,13 +92,7 @@ final class Factory
     public static function getDefaultInstance(): self
     {
         if (self::$defaultInstance === null) {
-            self::$defaultInstance = new self(
-                self::DEFAULT_RULES_NAMESPACES,
-                self::DEFAULT_EXCEPTIONS_NAMESPACES,
-                static function (string $message): string {
-                    return $message;
-                }
-            );
+            self::$defaultInstance = new self();
         }
 
         return self::$defaultInstance;
@@ -182,30 +169,6 @@ final class Factory
         }
 
         return $reflection;
-    }
-
-    /**
-     * Filters namespaces.
-     *
-     * Ensure namespaces are in the right format and contain the default namespaces.
-     *
-     * @param string[] $namespaces
-     * @param string[] $defaultNamespaces
-     *
-     * @return string[]
-     */
-    private function filterNamespaces(array $namespaces, array $defaultNamespaces): array
-    {
-        $filter = static function (string $namespace): string {
-            return trim($namespace, '\\');
-        };
-
-        return array_unique(
-            array_merge(
-                array_map($filter, $namespaces),
-                array_map($filter, $defaultNamespaces)
-            )
-        );
     }
 
     /**
