@@ -38,7 +38,8 @@ v::date('Ydm')->validate(20173112); // true
 
 Version | Description
 --------|-------------
-  2.0.0 | Created
+  2.0.0 | Changed to only validate dates
+  0.3.9 | Created as `Date`
 
 ***
 See also:

@@ -22,8 +22,7 @@ so `AnyOf()` returns true.
 
 Version | Description
 --------|-------------
-  2.0.0 | Renamed from `OneOf` to `AnyOf`
-  0.3.9 | Created
+  2.0.0 | Created
 
 ***
 See also:

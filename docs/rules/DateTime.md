@@ -41,8 +41,7 @@ Message template for this validator includes `{{format}}`.
 
 Version | Description
 --------|-------------
-  2.0.0 | Renamed from `Date` to `DateTime`
-  0.3.9 | Created as `Date`
+  2.0.0 | Created
 
 ***
 See also:

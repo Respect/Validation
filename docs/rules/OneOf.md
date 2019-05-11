@@ -23,7 +23,8 @@ character, one or the other, but not neither nor both.
 
 Version | Description
 --------|-------------
-  2.0.0 | Created (see [AnyOf](AnyOf.md))
+  2.0.0 | Changed to pass if only one inner validator passes
+  0.3.9 | Created
 
 ***
 See also:
