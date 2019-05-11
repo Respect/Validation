@@ -23,7 +23,7 @@ final class NumberException extends ValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a number',
         ],

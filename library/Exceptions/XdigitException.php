@@ -22,7 +22,7 @@ final class XdigitException extends FilteredValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} contain only hexadecimal digits',
             self::EXTRA => '{{name}} contain only hexadecimal digits and {{additionalChars}}',

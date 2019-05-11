@@ -23,7 +23,7 @@ final class LanguageCodeException extends ValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a valid ISO 639 {{set}} language code',
         ],

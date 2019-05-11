@@ -27,7 +27,7 @@ final class SizeException extends NestedValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::BOTH => '{{name}} must be between {{minSize}} and {{maxSize}}',
             self::LOWER => '{{name}} must be greater than {{minSize}}',

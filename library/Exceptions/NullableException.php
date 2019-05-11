@@ -24,7 +24,7 @@ final class NullableException extends ValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => 'The value must be nullable',
             self::NAMED => '{{name}} must be nullable',

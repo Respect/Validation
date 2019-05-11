@@ -21,7 +21,7 @@ final class PostalCodeException extends ValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a valid postal code on {{countryCode}}',
         ],

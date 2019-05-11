@@ -23,7 +23,7 @@ final class KeyValueException extends ValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => 'Key {{name}} must be present',
             self::COMPONENT => '{{baseKey}} must be valid to validate {{comparedKey}}',

@@ -22,7 +22,7 @@ final class NoneOfException extends NestedValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => 'None of these rules must pass for {{name}}',
         ],

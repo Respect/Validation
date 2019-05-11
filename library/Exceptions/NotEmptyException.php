@@ -25,7 +25,7 @@ final class NotEmptyException extends ValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => 'The value must not be empty',
             self::NAMED => '{{name}} must not be empty',

@@ -28,7 +28,7 @@ final class KeyException extends NestedValidationException implements NonOmissib
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::NOT_PRESENT => 'Key {{name}} must be present',
             self::INVALID => 'Key {{name}} must be valid',

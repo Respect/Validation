@@ -25,7 +25,7 @@ final class AlwaysInvalidException extends ValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} is always invalid',
             self::SIMPLE => '{{name}} is not valid',

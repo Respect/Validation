@@ -26,7 +26,7 @@ final class IpException extends ValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be an IP address',
             self::NETWORK_RANGE => '{{name}} must be an IP address in the {{range}} range',

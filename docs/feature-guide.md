@@ -280,7 +280,7 @@ use \Respect\Validation\Exceptions\ValidationException;
 
 class MyRuleException extends ValidationException
 {
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => 'Validation message if MyRule fails validation.',
         ],

@@ -22,7 +22,7 @@ final class AlnumException extends FilteredValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must contain only letters (a-z) and digits (0-9)',
             self::EXTRA => '{{name}} must contain only letters (a-z), digits (0-9) and {{additionalChars}}',

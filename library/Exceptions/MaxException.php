@@ -23,7 +23,7 @@ final class MaxException extends ValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be less than or equal to {{compareTo}}',
         ],

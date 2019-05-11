@@ -23,7 +23,7 @@ final class GraphException extends FilteredValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must contain only graphical characters',
             self::EXTRA => '{{name}} must contain only graphical characters and {{additionalChars}}',

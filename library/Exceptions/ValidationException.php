@@ -37,7 +37,7 @@ class ValidationException extends InvalidArgumentException implements Exception
      *
      * @var string[][]
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be valid',
         ],
@@ -135,7 +135,7 @@ class ValidationException extends InvalidArgumentException implements Exception
 
     public function hasCustomTemplate(): bool
     {
-        return isset(static::$defaultTemplates[$this->mode][$this->template]) === false;
+        return isset($this->defaultTemplates[$this->mode][$this->template]) === false;
     }
 
     public function __toString(): string
@@ -145,7 +145,7 @@ class ValidationException extends InvalidArgumentException implements Exception
 
     protected function chooseTemplate(): string
     {
-        return key(static::$defaultTemplates[$this->mode]);
+        return (string) key($this->defaultTemplates[$this->mode]);
     }
 
     private function createMessage(): string
@@ -160,8 +160,8 @@ class ValidationException extends InvalidArgumentException implements Exception
 
     private function createTemplate(string $mode, string $template): string
     {
-        if (isset(static::$defaultTemplates[$mode][$template])) {
-            $template = static::$defaultTemplates[$mode][$template];
+        if (isset($this->defaultTemplates[$mode][$template])) {
+            $template = $this->defaultTemplates[$mode][$template];
         }
 
         return call_user_func($this->translator, $template);

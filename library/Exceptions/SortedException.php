@@ -27,7 +27,7 @@ final class SortedException extends ValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::ASCENDING => '{{name}} must be sorted in ascending order',
             self::DESCENDING => '{{name}} must be sorted in descending order',

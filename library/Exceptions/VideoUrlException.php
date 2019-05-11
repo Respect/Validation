@@ -25,7 +25,7 @@ final class VideoUrlException extends ValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a valid video URL',
             self::SERVICE => '{{name}} must be a valid {{service}} video URL',

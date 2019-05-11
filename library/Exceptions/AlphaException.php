@@ -22,7 +22,7 @@ final class AlphaException extends FilteredValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must contain only letters (a-z)',
             self::EXTRA => '{{name}} must contain only letters (a-z) and {{additionalChars}}',

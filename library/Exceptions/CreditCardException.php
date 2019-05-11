@@ -27,7 +27,7 @@ final class CreditCardException extends ValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a valid Credit Card number',
             self::BRANDED => '{{name}} must be a valid {{brand}} Credit Card number',

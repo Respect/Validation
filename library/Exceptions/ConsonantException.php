@@ -23,7 +23,7 @@ final class ConsonantException extends FilteredValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must contain only consonants',
             self::EXTRA => '{{name}} must contain only consonants and {{additionalChars}}',

@@ -24,7 +24,7 @@ final class NotBlankException extends ValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => 'The value must not be blank',
             self::NAMED => '{{name}} must not be blank',

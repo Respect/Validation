@@ -28,7 +28,7 @@ final class KeyNestedException extends NestedValidationException implements NonO
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::NOT_PRESENT => 'No items were found for key chain {{name}}',
             self::INVALID => 'Key chain {{name}} is not valid',

@@ -23,7 +23,7 @@ final class EachException extends NestedValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => 'Each item in {{name}} must be valid',
         ],

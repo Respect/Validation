@@ -24,7 +24,7 @@ final class MimetypeException extends ValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must have {{mimetype}} MIME type',
         ],

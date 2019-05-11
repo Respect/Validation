@@ -31,7 +31,7 @@ final class LengthException extends ValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::BOTH => '{{name}} must have a length between {{minValue}} and {{maxValue}}',
             self::LOWER => '{{name}} must have a length greater than {{minValue}}',

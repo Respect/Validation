@@ -28,7 +28,7 @@ final class AttributeException extends NestedValidationException implements NonO
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::NOT_PRESENT => 'Attribute {{name}} must be present',
             self::INVALID => 'Attribute {{name}} must be valid',

@@ -23,7 +23,7 @@ final class OptionalException extends ValidationException
     /**
      * {@inheritDoc}
      */
-    public static $defaultTemplates = [
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => 'The value must be optional',
             self::NAMED => '{{name}} must be optional',
