@@ -15,6 +15,10 @@ Notice, however, that it doesn't accept strings starting with 0x:
 v::xdigit()->validate('0x1f'); // false
 ```
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

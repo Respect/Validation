@@ -8,6 +8,10 @@ Validates version numbers using Semantic Versioning.
 v::version()->validate('1.0.0');
 ```
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

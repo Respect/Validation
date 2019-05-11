@@ -57,6 +57,11 @@ The above code may generate the message:
 password_confirmation must equal "password"
 ```
 
+## Categorization
+
+- Arrays
+- Nesting
+
 ## Changelog
 
 Version | Description

@@ -11,6 +11,10 @@ v::zend('Hostname')->validate('google.com');
 
 Respect\Validation supports version >=2.0.3 of Zend\Validator.
 
+## Categorization
+
+- Integrations
+
 ## Changelog
 
 Version | Description

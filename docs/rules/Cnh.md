@@ -8,6 +8,10 @@ Validates a Brazilian driver's license.
 v::cnh()->validate('02650306461'); // true
 ```
 
+## Categorization
+
+- Identifications
+
 ## Changelog
 
 Version | Description

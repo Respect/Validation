@@ -8,6 +8,10 @@ Validates a Dutch citizen service number ([BSN](https://nl.wikipedia.org/wiki/Bu
 v::bsn()->validate('612890053'); // true
 ```
 
+## Categorization
+
+- Identifications
+
 ## Changelog
 
 Version | Description

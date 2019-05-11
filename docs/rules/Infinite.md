@@ -8,6 +8,11 @@ Validates if the input is an infinite number.
 v::infinite()->validate(INF); // true
 ```
 
+## Categorization
+
+- Math
+- Numbers
+
 ## Changelog
 
 Version | Description

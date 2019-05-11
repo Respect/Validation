@@ -8,6 +8,10 @@ Validates whether the input is a [resource](http://php.net/types.resource).
 v::resourceType()->validate(fopen('/path/to/file.txt', 'w')); // true
 ```
 
+## Categorization
+
+- Types
+
 ## Changelog
 
 Version | Description

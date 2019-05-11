@@ -11,6 +11,10 @@ v::instance('Traversable')->validate(new ArrayObject); // true
 
 Message template for this validator includes `{{instanceName}}`.
 
+## Categorization
+
+- Objects
+
 ## Changelog
 
 Version | Description

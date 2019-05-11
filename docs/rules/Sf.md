@@ -13,6 +13,10 @@ v::sf(new Iban())->validate('NL39 RABO 0300 0652 64'); // true
 
 This rule will keep all the messages returned from Symfony.
 
+## Categorization
+
+- Integrations
+
 ## Changelog
 
 Version | Description

@@ -9,6 +9,10 @@ v::base64()->validate('cmVzcGVjdCE='); // true
 v::base64()->validate('respect!'); // false
 ```
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

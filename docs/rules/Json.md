@@ -8,6 +8,10 @@ Validates if the given input is a valid JSON.
 v::json()->validate('{"foo":"bar"}'); // true
 ```
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

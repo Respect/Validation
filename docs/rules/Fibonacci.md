@@ -10,6 +10,11 @@ v::fibonacci()->validate('34'); // true
 v::fibonacci()->validate(6); // false
 ```
 
+## Categorization
+
+- Math
+- Numbers
+
 ## Changelog
 
 Version | Description

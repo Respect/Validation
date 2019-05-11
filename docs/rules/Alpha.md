@@ -21,6 +21,10 @@ You can restrict case using the [Lowercase](Lowercase.md) and
 v::alpha()->uppercase()->validate('example'); // false
 ```
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

@@ -20,7 +20,7 @@ Format  | Description                                        | Values
 `a`     | Lowercase Ante meridiem and Post meridiem          | am or pm
 `A`     | Uppercase Ante meridiem and Post meridiem          | AM or PM
 
-When a `$format` is not given its default value is `H:i:s`. 
+When a `$format` is not given its default value is `H:i:s`.
 
 ```php
 v::time()->validate('00:00:00'); // true
@@ -33,6 +33,10 @@ v::time()->validate('24:00:00'); // false
 v::time()->validate(new DateTime()); // false
 v::time()->validate(new DateTimeImmutable()); // false
 ```
+
+## Categorization
+
+- Date and Time
 
 ## Changelog
 

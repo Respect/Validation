@@ -16,6 +16,10 @@ space or dashed notations) such as:
 - +33(020)7777 7777
 - 03-6106666
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

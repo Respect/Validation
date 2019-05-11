@@ -34,6 +34,10 @@ It ignores any non-numeric characters, use [Digit](Digit.md),
 v::digit()->creditCard()->validate('5376747397208720'); // true
 ```
 
+## Categorization
+
+- Banking
+
 ## Changelog
 
 Version | Description

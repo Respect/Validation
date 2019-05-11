@@ -8,6 +8,11 @@ Validates whether the input is a negative number.
 v::numericVal()->negative()->validate(-15); // true
 ```
 
+## Categorization
+
+- Math
+- Numbers
+
 ## Changelog
 
 Version | Description

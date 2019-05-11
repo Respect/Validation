@@ -10,6 +10,10 @@ v::equals('alganet')->validate('alganet'); // true
 
 Message template for this validator includes `{{compareTo}}`.
 
+## Categorization
+
+- Comparisons
+
 ## Changelog
 
 Version | Description

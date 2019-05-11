@@ -12,6 +12,10 @@ v::charset('ISO-8859-1', 'EUC-JP')->validate('日本国'); // true
 
 The array format is a logic OR, not AND.
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

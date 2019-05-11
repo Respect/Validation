@@ -10,6 +10,10 @@ v::leapYear()->validate('1988'); // true
 
 This validator accepts DateTime instances as well.
 
+## Categorization
+
+- Date and Time
+
 ## Changelog
 
 Version | Description

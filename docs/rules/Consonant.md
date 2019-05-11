@@ -9,6 +9,10 @@ Validates if the input contains only consonants.
 v::consonant()->validate('xkcd'); // true
 ```
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

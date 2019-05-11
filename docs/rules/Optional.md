@@ -10,6 +10,10 @@ v::optional(v::alpha())->validate(''); // true
 v::optional(v::digit())->validate(null); // true
 ```
 
+## Categorization
+
+- Nesting
+
 ## Changelog
 
 Version | Description

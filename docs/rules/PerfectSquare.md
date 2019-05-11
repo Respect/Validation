@@ -9,6 +9,11 @@ v::perfectSquare()->validate(25); // true (5*5)
 v::perfectSquare()->validate(9); // true (3*3)
 ```
 
+## Categorization
+
+- Math
+- Numbers
+
 ## Changelog
 
 Version | Description

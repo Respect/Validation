@@ -15,6 +15,10 @@ This validator will consider SplFileInfo instances, so you can do something like
 v::exists()->validate(new SplFileInfo('file.txt'));
 ```
 
+## Categorization
+
+- File system
+
 ## Changelog
 
 Version | Description

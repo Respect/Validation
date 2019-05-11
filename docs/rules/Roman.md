@@ -8,6 +8,10 @@ Validates if the input is a Roman numeral.
 v::roman()->validate('IV'); // true
 ```
 
+## Categorization
+
+- Numbers
+
 ## Changelog
 
 Version | Description

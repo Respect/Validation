@@ -12,6 +12,11 @@ v::numericVal()->validate('135.0'); // true
 This rule doesn't validate if the input is a valid number, for that
 purpose use the [Number](Number.md) rule.
 
+## Categorization
+
+- Numbers
+- Types
+
 ## Changelog
 
 Version | Description

@@ -37,6 +37,10 @@ setlocale(LC_ALL, 'ru_RU');
 v::yes(true)->validate('Yes'); // true
 ```
 
+## Categorization
+
+- Booleans
+
 ## Changelog
 
 Version | Description

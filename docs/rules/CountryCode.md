@@ -21,6 +21,11 @@ This rule supports the three sets of country codes:
 
 When no set is defined the rule uses `'alpha-2'` (`CountryCode::ALPHA2`).
 
+## Categorization
+
+- ISO codes
+- Localization
+
 ## Changelog
 
 Version | Description

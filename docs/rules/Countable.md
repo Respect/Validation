@@ -11,6 +11,10 @@ v::countable()->validate(new ArrayObject()); // true
 v::countable()->validate('string'); // false
 ```
 
+## Categorization
+
+- Types
+
 ## Changelog
 
 Version | Description

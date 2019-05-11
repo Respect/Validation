@@ -8,6 +8,10 @@ Validates if the given input is writable file.
 v::writable()->validate('file.txt'); // true
 ```
 
+## Categorization
+
+- File system
+
 ## Changelog
 
 Version | Description

@@ -10,6 +10,11 @@ v::callableType()->validate('trim'); // true
 v::callableType()->validate([new DateTime(), 'format']); // true
 ```
 
+## Categorization
+
+- Callables
+- Types
+
 ## Changelog
 
 Version | Description

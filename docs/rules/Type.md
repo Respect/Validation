@@ -10,6 +10,10 @@ v::type('callable')->validate(function (){}); // true
 v::type('object')->validate(new stdClass()); // true
 ```
 
+## Categorization
+
+- Types
+
 ## Changelog
 
 Version | Description

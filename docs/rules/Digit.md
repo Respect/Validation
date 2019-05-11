@@ -12,6 +12,11 @@ v::digit()->validate('172.655.537-21'); // false
 v::digit('.', '-')->validate('172.655.537-21'); // true
 ```
 
+## Categorization
+
+- Numbers
+- Strings
+
 ## Changelog
 
 Version | Description

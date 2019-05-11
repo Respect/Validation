@@ -12,6 +12,10 @@ v::url()->validate('mailto:john.doe@example.com'); // true
 v::url()->validate('news:new.example.com'); // true
 ```
 
+## Categorization
+
+- Internet
+
 ## Changelog
 
 Version | Description

@@ -14,6 +14,10 @@ v::phpLabel()->validate('foo'); //true
 v::phpLabel()->validate('4ccess'); //false
 ```
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

@@ -10,6 +10,10 @@ v::symbolicLink()->validate(new SplFileInfo('/path/of/valid/symbolic/link)); // 
 v::symbolicLink()->validate(new SplFileObject('/path/of/valid/symbolic/link')); // true
 ```
 
+## Categorization
+
+- File system
+
 ## Changelog
 
 Version | Description

@@ -12,6 +12,10 @@ v::base(16)->validate('012a34f5675c20d'); // true
 v::base(2)->validate('0120122001'); // false
 ```
 
+## Categorization
+
+- Numbers
+
 ## Changelog
 
 Version | Description

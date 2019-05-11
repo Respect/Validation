@@ -11,6 +11,10 @@ v::identical(42)->validate('42'); // false
 
 Message template for this validator includes `{{compareTo}}`.
 
+## Categorization
+
+- Comparisons
+
 ## Changelog
 
 Version | Description

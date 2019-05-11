@@ -11,6 +11,11 @@ v::arrayVal()->validate(new ArrayObject); // true
 v::arrayVal()->validate(new SimpleXMLElement('<xml></xml>')); // true
 ```
 
+## Categorization
+
+- Arrays
+- Types
+
 ## Changelog
 
 Version | Description

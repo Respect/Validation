@@ -8,6 +8,10 @@ Validates if a file is an executable.
 v::executable()->validate('script.sh'); // true
 ```
 
+## Categorization
+
+- File system
+
 ## Changelog
 
 Version | Description

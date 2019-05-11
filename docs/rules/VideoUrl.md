@@ -35,6 +35,10 @@ The `$service` value is not case-sensitive.
 
 Message template for this validator includes `{{service}}`.
 
+## Categorization
+
+- Internet
+
 ## Changelog
 
 Version | Description

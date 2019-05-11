@@ -9,13 +9,16 @@ v::luhn()->validate('2222400041240011'); // true
 v::luhn()->validate('respect!'); // false
 ```
 
+## Categorization
+
+- Identifications
+
 ## Changelog
 
 Version | Description
 --------|-------------
   2.0.0 | Created
 
-[Luhn]: https://en.wikipedia.org/wiki/Luhn_algorithm
 ***
 See also:
 

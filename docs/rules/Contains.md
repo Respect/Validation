@@ -22,6 +22,11 @@ of equal comparison.
 
 Message template for this validator includes `{{containsValue}}`.
 
+## Categorization
+
+- Arrays
+- Strings
+
 ## Changelog
 
 Version | Description

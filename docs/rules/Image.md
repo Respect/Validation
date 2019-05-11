@@ -16,6 +16,10 @@ or of the MIME doesn't match with the file extension.
 
 This rule relies on [fileinfo](http://php.net/fileinfo) PHP extension.
 
+## Categorization
+
+- File system
+
 ## Changelog
 
 Version | Description

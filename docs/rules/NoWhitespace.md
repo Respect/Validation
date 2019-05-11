@@ -11,6 +11,10 @@ v::noWhitespace()->validate("foo\nbar"); // false
 
 This is most useful when chaining with other validators such as `Alnum()`
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

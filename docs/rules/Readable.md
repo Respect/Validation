@@ -8,6 +8,10 @@ Validates if the given data is a file exists and is readable.
 v::readable()->validate('file.txt'); // true
 ```
 
+## Categorization
+
+- File system
+
 ## Changelog
 
 Version | Description

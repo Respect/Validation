@@ -10,6 +10,11 @@ v::arrayType()->validate([1, 2, 3]); // true
 v::arrayType()->validate(new ArrayObject()); // false
 ```
 
+## Categorization
+
+- Arrays
+- Types
+
 ## Changelog
 
 Version | Description

@@ -9,6 +9,10 @@ Validates whether the input contains only whitespaces characters.
 v::space()->validate('    '); // true
 ```
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

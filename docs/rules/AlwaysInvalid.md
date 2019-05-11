@@ -8,6 +8,10 @@ Validates any input as invalid.
 v::alwaysInvalid()->validate('whatever'); // false
 ```
 
+## Categorization
+
+- Booleans
+
 ## Changelog
 
 Version | Description

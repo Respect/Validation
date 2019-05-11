@@ -9,6 +9,10 @@ v::nif()->validate('49294492H'); // true
 v::nif()->validate('P6437358A'); // false
 ```
 
+## Categorization
+
+- Identifications
+
 ## Changelog
 
 Version | Description

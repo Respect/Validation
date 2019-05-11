@@ -10,6 +10,10 @@ visible output (no white space).
 v::graph()->validate('LKM@#$%4;'); // true
 ```
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

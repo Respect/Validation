@@ -10,6 +10,11 @@ v::factor(4)->validate(2); // true
 v::factor(4)->validate(3); // false
 ```
 
+## Categorization
+
+- Math
+- Numbers
+
 ## Changelog
 
 Version | Description

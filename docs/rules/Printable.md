@@ -9,6 +9,10 @@ Similar to `Graph` but accepts whitespace.
 v::printable()->validate('LMKA0$% _123'); // true
 ```
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

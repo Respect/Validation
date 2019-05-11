@@ -13,6 +13,10 @@ v::uuid(1)->validate('eb3115e5-bd16-4939-ab12-2b95745a30f3'); // false
 v::uuid(4)->validate('eb3115e5-bd16-4939-ab12-2b95745a30f3'); // true
 ```
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

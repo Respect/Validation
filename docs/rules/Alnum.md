@@ -26,6 +26,10 @@ v::alnum()->uppercase()->validate('example'); // false
 Message template for this validator includes `{{additionalChars}}` as the string
 of extra chars passed as the parameter.
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

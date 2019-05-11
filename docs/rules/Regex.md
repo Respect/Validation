@@ -10,6 +10,10 @@ v::regex('/[a-z]/')->validate('a'); // true
 
 Message template for this validator includes `{{regex}}`.
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

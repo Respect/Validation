@@ -12,6 +12,10 @@ v::callback(
 )->validate(10); // true
 ```
 
+## Categorization
+
+- Callables
+
 ## Changelog
 
 Version | Description

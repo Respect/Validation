@@ -8,6 +8,10 @@ Validates whether the input is [null](http://php.net/types.null).
 v::nullType()->validate(null); // true
 ```
 
+## Categorization
+
+- Types
+
 ## Changelog
 
 Version | Description

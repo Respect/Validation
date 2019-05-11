@@ -15,6 +15,10 @@ comparisons.
 
 Message template for this validator includes `{{compareTo}}`.
 
+## Categorization
+
+- Comparisons
+
 ## Changelog
 
 Version | Description

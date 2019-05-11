@@ -9,6 +9,11 @@ v::boolType()->validate(true); // true
 v::boolType()->validate(false); // true
 ```
 
+## Categorization
+
+- Booleans
+- Types
+
 ## Changelog
 
 Version | Description

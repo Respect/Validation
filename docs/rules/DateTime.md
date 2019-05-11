@@ -33,6 +33,10 @@ Format has no effect when validating DateTime instances.
 
 Message template for this validator includes `{{format}}`.
 
+## Categorization
+
+- Date and Time
+
 ## Changelog
 
 Version | Description

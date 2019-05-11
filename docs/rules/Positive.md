@@ -10,6 +10,11 @@ v::positive()->validate(0); // false
 v::positive()->validate(-15); // false
 ```
 
+## Categorization
+
+- Math
+- Numbers
+
 ## Changelog
 
 Version | Description

@@ -10,6 +10,10 @@ v::tld()->validate('ly'); // true
 v::tld()->validate('org'); // true
 ```
 
+## Categorization
+
+- Internet
+
 ## Changelog
 
 Version | Description

@@ -9,6 +9,10 @@ v::imei()->validate('35-209900-176148-1'); // true
 v::imei()->validate('490154203237518'); // true
 ```
 
+## Categorization
+
+- Identifications
+
 ## Changelog
 
 Version | Description

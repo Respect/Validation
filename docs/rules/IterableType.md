@@ -13,6 +13,10 @@ v::iterableType()->validate(new stdClass()); // true
 v::iterableType()->validate('string'); // false
 ```
 
+## Categorization
+
+- Types
+
 ## Changelog
 
 Version | Description

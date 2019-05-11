@@ -8,6 +8,11 @@ Validates if the input is a multiple of the given parameter
 v::intVal()->multiple(3)->validate(9); // true
 ```
 
+## Categorization
+
+- Math
+- Numbers
+
 ## Changelog
 
 Version | Description

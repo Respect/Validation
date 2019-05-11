@@ -10,6 +10,10 @@ v::nullable(v::email())->validate('example@example.com'); // true
 v::nullable(v::email())->validate('not an email'); // false
 ```
 
+## Categorization
+
+- Nesting
+
 ## Changelog
 
 Version | Description

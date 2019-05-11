@@ -21,6 +21,10 @@ the chain:
 v::digit()->cpf()->validate('11598647644'); // true
 ```
 
+## Categorization
+
+- Identifications
+
 ## Changelog
 
 Version | Description

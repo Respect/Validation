@@ -10,6 +10,10 @@ v::intVal()->even()->validate(2); // true
 
 Using `int()` before `even()` is a best practice.
 
+## Categorization
+
+- Numbers
+
 ## Changelog
 
 Version | Description

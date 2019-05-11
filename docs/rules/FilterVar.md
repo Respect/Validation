@@ -12,6 +12,10 @@ v::filterVar(FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)->validate('http://e
 v::filterVar(FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)->validate('http://example.com/path'); // true
 ```
 
+## Categorization
+
+- Miscellaneous
+
 ## Changelog
 
 Version | Description

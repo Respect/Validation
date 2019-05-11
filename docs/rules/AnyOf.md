@@ -13,6 +13,11 @@ so `AnyOf()` returns true.
 
 `AnyOf()` returns true if at least one inner validator passes.
 
+## Categorization
+
+- Composite
+- Nesting
+
 ## Changelog
 
 Version | Description

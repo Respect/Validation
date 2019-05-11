@@ -9,6 +9,10 @@ v::scalarVal()->validate([]); // false
 v::scalarVal()->validate(135.0); // true
 ```
 
+## Categorization
+
+- Types
+
 ## Changelog
 
 Version | Description

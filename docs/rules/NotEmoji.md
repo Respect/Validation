@@ -22,6 +22,10 @@ first emoji or until it checks the whole text.
 Unicode V11 check the following link for more details
 [Unicode v11](https://unicode.org/emoji/charts/full-emoji-list.html)*
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

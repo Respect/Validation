@@ -13,6 +13,10 @@ v::number()->validate(acos(8)); // false
 > representing an undefined or unrepresentable value, especially in
 > floating-point calculations." [Wikipedia](https://en.wikipedia.org/wiki/NaN)
 
+## Categorization
+
+- Numbers
+
 ## Changelog
 
 Version | Description

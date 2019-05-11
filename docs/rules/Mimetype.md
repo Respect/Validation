@@ -11,6 +11,10 @@ v::mimetype('image/jpeg')->validate('image.jpg'); // true
 
 This rule is case-sensitive and requires [fileinfo](http://php.net/fileinfo) PHP extension.
 
+## Categorization
+
+- File system
+
 ## Changelog
 
 Version | Description

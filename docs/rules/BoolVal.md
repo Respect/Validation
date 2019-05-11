@@ -13,6 +13,11 @@ v::boolVal()->validate(1); // true
 v::boolVal()->validate(0); // true
 ```
 
+## Categorization
+
+- Booleans
+- Types
+
 ## Changelog
 
 Version | Description

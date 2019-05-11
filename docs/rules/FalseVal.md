@@ -15,6 +15,10 @@ v::falseVal()->validate('0.5'); // false
 v::falseVal()->validate('2'); // false
 ```
 
+## Categorization
+
+- Booleans
+
 ## Changelog
 
 Version | Description

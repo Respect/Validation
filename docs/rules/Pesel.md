@@ -11,6 +11,10 @@ v::pesel()->validate('97072704801'); // false
 v::pesel()->validate('PESEL123456'); // false
 ```
 
+## Categorization
+
+- Identifications
+
 ## Changelog
 
 Version | Description

@@ -8,6 +8,10 @@ Validates an email address.
 v::email()->validate('alexandre@gaigalas.net'); // true
 ```
 
+## Categorization
+
+- Internet
+
 ## Changelog
 
 Version | Description

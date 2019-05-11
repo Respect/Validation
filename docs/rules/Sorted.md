@@ -31,6 +31,11 @@ v::call('strval', v::sorted('DESC'))->validate(4321); // true
 v::call('iterator_to_array', v::sorted())->validate(new ArrayIterator([1, 7, 4])); // false
 ```
 
+## Categorization
+
+- Arrays
+- Strings
+
 ## Changelog
 
 Version | Description
@@ -44,5 +49,5 @@ Version | Description
 ***
 See also:
 
-- [Call](Call.md)
 - [ArrayVal](ArrayVal.md)
+- [Call](Call.md)

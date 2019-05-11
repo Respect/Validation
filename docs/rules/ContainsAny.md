@@ -22,6 +22,11 @@ of equal comparison for arrays.
 
 Message template for this validator includes `{{needles}}`.
 
+## Categorization
+
+- Arrays
+- Strings
+
 ## Changelog
 
 Version | Description

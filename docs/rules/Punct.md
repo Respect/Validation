@@ -9,6 +9,10 @@ Validates whether the input composed by only punctuation characters.
 v::punct()->validate('&,.;[]'); // true
 ```
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

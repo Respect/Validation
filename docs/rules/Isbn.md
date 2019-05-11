@@ -11,6 +11,10 @@ v::isbn()->validate('ISBN-12: 978-0-596-52068-7'); // false
 v::isbn()->validate('978 10 596 52068 7'); // false
 ```
 
+## Categorization
+
+- Identifications
+
 ## Changelog
 
 Version | Description

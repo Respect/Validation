@@ -32,6 +32,10 @@ v::size('1.5mb')->validate(new SplFileInfo($filename)); // Will return true or f
 
 Message template for this validator includes `{{minSize}}` and `{{maxSize}}`.
 
+## Categorization
+
+- File system
+
 ## Changelog
 
 Version | Description

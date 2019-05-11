@@ -16,6 +16,10 @@ v::directory()->validate(new SplFileInfo('library/'));
 v::directory()->validate(dir('/'));
 ```
 
+## Categorization
+
+- File system
+
 ## Changelog
 
 Version | Description

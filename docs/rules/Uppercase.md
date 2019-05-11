@@ -18,6 +18,10 @@ v::alnum()->uppercase()->validate('#$%!'); // false
 v::not(v::numericVal())->alnum()->uppercase()->validate('W3C'); // true
 ```
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

@@ -38,6 +38,10 @@ setlocale(LC_ALL, 'es_ES');
 v::no(true)->validate('Yes'); // true
 ```
 
+## Categorization
+
+- Booleans
+
 ## Changelog
 
 Version | Description

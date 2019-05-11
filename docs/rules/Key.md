@@ -28,6 +28,12 @@ v::key('lorem', v::stringType(), false)->validate($dict); // true
 
 The name of this validator is automatically set to the key name.
 
+## Categorization
+
+- Arrays
+- Nesting
+- Structures
+
 ## Changelog
 
 Version | Description

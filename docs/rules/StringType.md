@@ -8,6 +8,11 @@ Validates whether the type of an input is string or not.
 v::stringType()->validate('hi'); // true
 ```
 
+## Categorization
+
+- Strings
+- Types
+
 ## Changelog
 
 Version | Description

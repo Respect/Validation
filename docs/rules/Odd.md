@@ -11,6 +11,10 @@ v::odd()->validate(3); // true
 
 Using `intVal()` before `odd()` is a best practice.
 
+## Categorization
+
+- Numbers
+
 ## Changelog
 
 Version | Description

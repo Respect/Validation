@@ -10,6 +10,10 @@ v::slug()->validate('my-wordpress--title'); // false
 v::slug()->validate('my-wordpress-title-'); // false
 ```
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

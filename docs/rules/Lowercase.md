@@ -8,6 +8,10 @@ Validates whether the characters in the input are lowercase.
 v::stringType()->lowercase()->validate('xkcd'); // true
 ```
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

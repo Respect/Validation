@@ -35,6 +35,10 @@ v::stringType()->notEmpty()->validate('        ');  //false
 v::stringType()->notEmpty()->validate("\t \n \r");  //false
 ```
 
+## Categorization
+
+- Miscellaneous
+
 ## Changelog
 
 Version | Description

@@ -25,6 +25,11 @@ instead of equal.
 
 Message template for this validator includes `{{startValue}}`.
 
+## Categorization
+
+- Arrays
+- Strings
+
 ## Changelog
 
 Version | Description

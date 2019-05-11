@@ -30,6 +30,12 @@ v::keyNested('foo.bar')->validate($object); // true
 
 This rule was inspired by [Yii2 ArrayHelper][].
 
+## Categorization
+
+- Arrays
+- Nesting
+- Structures
+
 ## Changelog
 
 Version | Description

@@ -9,10 +9,14 @@ v::lessThan(10)->validate(9); // true
 v::lessThan(10)->validate(10); // false
 ```
 
-Validation makes comparison easier, check out our supported 
+Validation makes comparison easier, check out our supported
 [comparable values](../comparable-values.md).
 
 Message template for this validator includes `{{compareTo}}`.
+
+## Categorization
+
+- Comparisons
 
 ## Changelog
 

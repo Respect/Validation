@@ -10,6 +10,10 @@ v::hexRgbColor()->validate('123123'); // true
 v::hexRgbColor()->validate('FCD'); // true
 ```
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

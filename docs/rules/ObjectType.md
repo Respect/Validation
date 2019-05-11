@@ -8,6 +8,11 @@ Validates whether the input is an [object](http://php.net/types.object).
 v::objectType()->validate(new stdClass); // true
 ```
 
+## Categorization
+
+- Objects
+- Types
+
 ## Changelog
 
 Version | Description

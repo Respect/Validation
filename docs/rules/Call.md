@@ -40,6 +40,11 @@ v::call(
 )->validate($url);
 ```
 
+## Categorization
+
+- Callables
+- Nesting
+
 ## Changelog
 
 Version | Description
@@ -51,3 +56,4 @@ See also:
 
 - [Callback](Callback.md)
 - [Each](Each.md)
+- [Sorted](Sorted.md)

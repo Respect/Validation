@@ -45,6 +45,12 @@ v::keySet(
 
 The keys' order is not considered in the validation.
 
+## Categorization
+
+- Arrays
+- Nesting
+- Structures
+
 ## Changelog
 
 Version | Description

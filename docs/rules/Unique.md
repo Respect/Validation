@@ -11,6 +11,10 @@ v::unique()->validate([1, 2, 2, 3]); // false
 v::unique()->validate([1, 2, 3, 1]); // false
 ```
 
+## Categorization
+
+- Arrays
+
 ## Changelog
 
 Version | Description

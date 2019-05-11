@@ -9,6 +9,11 @@ v::floatVal()->validate(1.5); // true
 v::floatVal()->validate('1e5'); // true
 ```
 
+## Categorization
+
+- Numbers
+- Types
+
 ## Changelog
 
 Version | Description

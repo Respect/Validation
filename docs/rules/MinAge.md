@@ -18,6 +18,10 @@ v::minAge(18, 'Y-m-d')->validate('2010-09-07'); // false
 Using [Date](Date.md) before is a best-practice.
 This rule does not accepts instances of [DateTimeInterface][].
 
+## Categorization
+
+- Date and Time
+
 ## Changelog
 
 Version | Description

@@ -29,6 +29,10 @@ internally:
 
 Messages for this validator will reflect rules above.
 
+## Categorization
+
+- Internet
+
 ## Changelog
 
 Version | Description

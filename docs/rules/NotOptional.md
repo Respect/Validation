@@ -29,6 +29,10 @@ v::notOptional()->validate([[''), [0]]); // true
 v::notOptional()->validate(new stdClass()); // true
 ```
 
+## Categorization
+
+- Miscellaneous
+
 ## Changelog
 
 Version | Description

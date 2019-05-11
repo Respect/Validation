@@ -31,6 +31,11 @@ v::each(v::dateTime())->validate([]); // true
 v::notEmpty()->each(v::dateTime())->validate([]); // false
 ```
 
+## Categorization
+
+- Arrays
+- Nesting
+
 ## Changelog
 
 Version | Description

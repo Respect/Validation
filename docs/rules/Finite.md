@@ -9,6 +9,11 @@ v::finite()->validate('10'); // true
 v::finite()->validate(10); // true
 ```
 
+## Categorization
+
+- Math
+- Numbers
+
 ## Changelog
 
 Version | Description

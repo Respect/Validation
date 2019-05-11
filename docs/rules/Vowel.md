@@ -9,6 +9,10 @@ Validates whether the input contains only vowels.
 v::vowel()->validate('aei'); // true
 ```
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

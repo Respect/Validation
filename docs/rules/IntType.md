@@ -9,6 +9,11 @@ v::intType()->validate(42); // true
 v::intType()->validate('10'); // false
 ```
 
+## Categorization
+
+- Numbers
+- Types
+
 ## Changelog
 
 Version | Description

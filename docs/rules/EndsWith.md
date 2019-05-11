@@ -23,6 +23,11 @@ of equal comparison.
 
 Message template for this validator includes `{{endValue}}`.
 
+## Categorization
+
+- Arrays
+- Strings
+
 ## Changelog
 
 Version | Description

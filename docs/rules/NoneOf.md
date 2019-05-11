@@ -13,6 +13,11 @@ v::noneOf(
 
 In the sample above, 'foo' isn't a integer nor a float, so noneOf returns true.
 
+## Categorization
+
+- Composite
+- Nesting
+
 ## Changelog
 
 Version | Description

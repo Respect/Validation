@@ -14,6 +14,10 @@ v::iban()->validate(123456789); // false
 v::iban()->validate(''); // false
 ```
 
+## Categorization
+
+- Banking
+
 ## Changelog
 
 Version | Description

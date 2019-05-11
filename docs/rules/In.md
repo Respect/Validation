@@ -22,6 +22,12 @@ of equal comparison.
 
 Message template for this validator includes `{{haystack}}`.
 
+## Categorization
+
+- Arrays
+- Comparisons
+- Strings
+
 ## Changelog
 
 Version | Description

@@ -8,6 +8,11 @@ Will validate if all inner validators validates.
 v::allOf(v::intVal(), v::positive())->validate(15); // true
 ```
 
+## Categorization
+
+- Composite
+- Nesting
+
 ## Changelog
 
 Version | Description

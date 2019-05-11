@@ -9,6 +9,10 @@ v::subset([1, 2, 3])->validate([1, 2]); // true
 v::subset([1, 2])->validate([1, 2, 3]); // false
 ```
 
+## Categorization
+
+- Arrays
+
 ## Changelog
 
 Version | Description

@@ -10,6 +10,10 @@ characters.
 v::cntrl()->validate("\n\r\t"); // true
 ```
 
+## Categorization
+
+- Strings
+
 ## Changelog
 
 Version | Description

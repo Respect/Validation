@@ -10,6 +10,10 @@ v::extension('png')->validate('image.png'); // true
 
 This rule is case-sensitive.
 
+## Categorization
+
+- File system
+
 ## Changelog
 
 Version | Description
