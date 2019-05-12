@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Respect\Validation\Message;
 
 use function call_user_func;
-use function is_string;
 use function preg_replace_callback;
 use function Respect\Stringifier\stringify;
 
@@ -25,9 +24,15 @@ final class Formatter
      */
     private $translator;
 
-    public function __construct(callable $translator)
+    /**
+     * @var ParameterStringifier
+     */
+    private $parameterStringifier;
+
+    public function __construct(callable $translator, ParameterStringifier $parameterStringifier)
     {
         $this->translator = $translator;
+        $this->parameterStringifier = $parameterStringifier;
     }
 
     /**
@@ -40,17 +45,12 @@ final class Formatter
 
         return preg_replace_callback(
             '/{{(\w+)}}/',
-            static function ($match) use ($parameters) {
+            function ($match) use ($parameters) {
                 if (!isset($parameters[$match[1]])) {
                     return $match[0];
                 }
 
-                $value = $parameters[$match[1]];
-                if ($match[1] == 'name' && is_string($value)) {
-                    return $value;
-                }
-
-                return stringify($value);
+                return $this->parameterStringifier->stringify($match[1], $parameters[$match[1]]);
             },
             call_user_func($this->translator, $template)
         );

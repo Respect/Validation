@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\Formatter;
+use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
 use Respect\Validation\Test\TestCase;
 
 /**
@@ -120,7 +121,7 @@ final class AbstractRuleTest extends TestCase
             ->method('reportError')
             ->with($input)
             ->will(self::throwException(
-                new ValidationException($input, 'abstract', [], new Formatter('strval'))
+                new ValidationException($input, 'abstract', [], new Formatter('strval', new KeepOriginalStringName()))
             ));
 
         $abstractRuleMock->assert($input);

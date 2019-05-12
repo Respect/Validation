@@ -15,6 +15,7 @@ namespace Respect\Validation\Test;
 
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\Formatter;
+use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
 use Respect\Validation\Validatable;
 use function realpath;
 use function sprintf;
@@ -100,7 +101,7 @@ abstract class RuleTestCase extends TestCase
                 'validatable',
                 'input',
                 [],
-                new Formatter('strval')
+                new Formatter('strval', new KeepOriginalStringName())
             );
             $checkException->updateTemplate(sprintf('Exception for %s:check() method', $mockClassName));
             $validatableMocked
@@ -111,7 +112,7 @@ abstract class RuleTestCase extends TestCase
                 'validatable',
                 'input',
                 [],
-                new Formatter('strval')
+                new Formatter('strval', new KeepOriginalStringName())
             );
             $assertException->updateTemplate(sprintf('Exception for %s:assert() method', $mockClassName));
             $validatableMocked

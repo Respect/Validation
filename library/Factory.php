@@ -20,6 +20,8 @@ use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\Formatter;
+use Respect\Validation\Message\ParameterStringifier;
+use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
 use function lcfirst;
 use function sprintf;
 use function trim;
@@ -55,6 +57,16 @@ final class Factory
      */
     private $translator = 'strval';
 
+    /**
+     * @var ParameterStringifier
+     */
+    private $parameterStringifier;
+
+    public function __construct()
+    {
+        $this->parameterStringifier = new KeepOriginalStringName();
+    }
+
     public function withRuleNamespace(string $rulesNamespace): self
     {
         $clone = clone $this;
@@ -75,6 +87,14 @@ final class Factory
     {
         $clone = clone $this;
         $clone->translator = $translator;
+
+        return $clone;
+    }
+
+    public function withParameterStringifier(ParameterStringifier $parameterStringifier): self
+    {
+        $clone = clone $this;
+        $clone->parameterStringifier = $parameterStringifier;
 
         return $clone;
     }
@@ -134,6 +154,7 @@ final class Factory
      */
     public function exception(Validatable $validatable, $input, array $extraParams = []): ValidationException
     {
+        $formatter = new Formatter($this->translator, $this->parameterStringifier);
         $reflection = new ReflectionObject($validatable);
         $ruleName = $reflection->getShortName();
         $params = ['input' => $input] + $extraParams + $this->extractPropertiesValues($validatable, $reflection);
@@ -143,13 +164,19 @@ final class Factory
         }
         foreach ($this->exceptionsNamespaces as $namespace) {
             try {
-                return $this->createValidationException($namespace.'\\'.$ruleName.'Exception', $id, $input, $params);
+                return $this->createValidationException(
+                    $namespace.'\\'.$ruleName.'Exception',
+                    $id,
+                    $input,
+                    $params,
+                    $formatter
+                );
             } catch (ReflectionException $exception) {
                 continue;
             }
         }
 
-        return new ValidationException($input, $id, $params, new Formatter($this->translator));
+        return new ValidationException($input, $id, $params, $formatter);
     }
 
     /**
@@ -185,11 +212,13 @@ final class Factory
         string $exceptionName,
         string $id,
         $input,
-        array $params
+        array $params,
+        Formatter $formatter
     ): ValidationException {
         /** @var ValidationException $exception */
-        $exception = $this->createReflectionClass($exceptionName, ValidationException::class)
-            ->newInstance($input, $id, $params, new Formatter($this->translator));
+        $exception = $this
+            ->createReflectionClass($exceptionName, ValidationException::class)
+            ->newInstance($input, $id, $params, $formatter);
         if (isset($params['template'])) {
             $exception->updateTemplate($params['template']);
         }
