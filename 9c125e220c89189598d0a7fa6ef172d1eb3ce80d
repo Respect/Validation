@@ -1,3 +1,22 @@
-This is an exemple
+1.1.0 - 2016-04-24
 
-Somehih
+Added
+=====
+
+- Create "Fibonacci" rule
+- Create "IdentityCard" rule
+- Create "Image" rule
+- Create "LanguageCode" rule
+- Create "Pesel" rule
+- Create "PhpLabel" rule
+
+Changed
+=====
+
+- Allow the define brands for credit card validation
+- Define names for the child of Not rule
+- Ensure namespace separator on appended prefixes
+- Length gets length of integers
+- Set template for the only rule in the chain
+- Throw an exception when age is not an integer
+- Use "{less/greater} than or equal to" phrasing
