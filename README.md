@@ -9,6 +9,8 @@
 
 [The most awesome validation engine ever created for PHP.](http://bit.ly/1a1oeQv)
 
+> ⚠️ The last stable version is [1.1][]. This version is not **stable**. ⚠️
+
 ## Documentation
 
 Documentation can be found in https://respect-validation.readthedocs.io and also
@@ -19,3 +21,5 @@ in the [docs/](docs/) folder.
 - [Contributing](CONTRIBUTING.md)
 - [License](LICENSE.md)
 - [Changelog](CHANGELOG.md)
+
+[1.1]: https://github.com/Respect/Validation/tree/1.1
