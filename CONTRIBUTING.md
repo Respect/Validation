@@ -3,9 +3,8 @@
 Contributions to Respect\Validation are always welcome. You make our lives
 easier by sending us your contributions through [pull requests][].
 
-Pull requests for bug fixes must be based on the oldest supported version's
-branch (see [Release Cycle and Support][]) whereas pull requests for new features
-must be based on the `master` branch.
+Pull requests for bug fixes must be based on the oldest stable version's branch
+whereas pull requests for new features must be based on the `master` branch.
 
 Due to time constraints, we are not always able to respond as quickly as we
 would like. Please do not take delays personal and feel free to remind us here,
@@ -39,7 +38,7 @@ create a validator that validates if a string is equal to "Hello World".
 - Classes should be `final` unless they are used in a different scope;
 - Properties should be `private` unless they are used in a different scope;
 - Classes should use strict typing;
-- Docblocks are required.
+- Some docblocks are required.
 
 ### Creating the rule
 
@@ -211,9 +210,8 @@ As we already said, none of them are required but you will help us a lot.
 
 ## Documentation
 
-Our docs at http://respect.github.io/Validation are generated from our Markdown
-files using [Couscous][]. Add your brand new rule there and everything will be
-updated as soon as possible.
+Our docs at https://respect-validation.readthedocs.io are generated from our
+Markdown files. Add your brand new rule and it should be soon available.
 
 ## Running Tests
 
@@ -229,7 +227,7 @@ $ vendor/bin/phpunit
 or
 
 ```sh
-$ composer test
+$ composer phpunit
 ```
 
 ### Windows
@@ -242,7 +240,7 @@ You can test the project using the commands:
 or
 
 ```sh
-> composer test
+> composer phpunit
 ```
 
 No test should fail.
@@ -251,13 +249,8 @@ You can tweak the PHPUnit's settings by copying `phpunit.xml.dist` to `phpunit.x
 and changing it according to your needs.
 
 [ArrayType]: https://github.com/Respect/Validation/commit/f08a1fa
-[Couscous]: http://couscous.io/ "Couscous"
 [data provider]: https://phpunit.de/manual/current/en/writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers "PHPUnit Data Providers"
 [open an issue]: http://github.com/Respect/Validation/issues
-[php-cs-fixer]: https://github.com/FriendsOfPHP/PHP-CS-Fixer "PHP Coding Standard Fixer"
 [PHP-FIG]: http://www.php-fig.org "PHP Framework Interop Group"
-[project documentation]: http://respect.github.io/Validation "Respect\Validation documentation"
-[PSR-2]: http://www.php-fig.org/psr/psr-2 "PHP Standard Recommendation: Coding Style Guide"
-[PSR-4]: http://www.php-fig.org/psr/psr-4 "PHP Standard Recommendation: Autoloader"
+[project documentation]: https://respect-validation.readthedocs.io/ "Respect\Validation documentation"
 [pull requests]: http://help.github.com/pull-requests "GitHub pull requests"
-[Release Cycle and Support]: https://github.com/Respect/Validation/wiki/Release-Cycle-and-Support
