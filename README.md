@@ -16,10 +16,4 @@
 Documentation can be found in https://respect-validation.readthedocs.io and also
 in the [docs/](docs/) folder.
 
-## Table of contents
-
-- [Contributing](CONTRIBUTING.md)
-- [License](LICENSE.md)
-- [Changelog](CHANGELOG.md)
-
 [1.1]: https://github.com/Respect/Validation/tree/1.1

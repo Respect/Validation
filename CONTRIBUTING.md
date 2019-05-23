@@ -250,14 +250,6 @@ No test should fail.
 You can tweak the PHPUnit's settings by copying `phpunit.xml.dist` to `phpunit.xml`
 and changing it according to your needs.
 
-***
-See also:
-
-- [README](README.md)
-- [License](LICENSE.md)
-- [Changelog](CHANGELOG.md)
-
-
 [ArrayType]: https://github.com/Respect/Validation/commit/f08a1fa
 [Couscous]: http://couscous.io/ "Couscous"
 [data provider]: https://phpunit.de/manual/current/en/writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers "PHPUnit Data Providers"
