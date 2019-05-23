@@ -11,9 +11,7 @@
 
 > ⚠️ The last stable version is [1.1][]. This version is not **stable**. ⚠️
 
-## Documentation
-
-Documentation can be found in https://respect-validation.readthedocs.io and also
-in the [docs/](docs/) folder.
+* [Documentation](https://respect-validation.readthedocs.io)
+* [How to contribute](CONTRIBUTING.md)
 
 [1.1]: https://github.com/Respect/Validation/tree/1.1
