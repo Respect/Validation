@@ -1,0 +1,124 @@
+#!/usr/bin/env bash
+# Usage: {script} DOCS_DIREECTORY
+# Update list of rules and link related rules.
+
+set -eo pipefail
+
+declare -r IFS=$'\n'
+declare -r DOCS_DIREECTORY="${1}"
+
+declare -A RULES_BY_CATEGORIZATION=()
+declare -A RELATED_RULES=()
+
+list_rules()
+{
+  find "${DOCS_DIREECTORY}/rules" -type f |
+    sed "s,${DOCS_DIREECTORY}/,," |
+    cut -d '/' -f 2 |
+    cut -d '.' -f 1 |
+    sort
+}
+
+list_categories()
+{
+  while read rule; do
+    declare filename="${DOCS_DIREECTORY}/rules/${rule}.md"
+    sed -n '/## Categorization/,/## Changelog/p' "${filename}"
+  done < <(list_rules) |
+    grep '^-' |
+    sort -u |
+    sed 's,- ,,'
+}
+
+create_rule_documentation()
+{
+  # Usage: create_rule_documentation RULE RELATED_RULES
+  local rule=${1}
+  local related_rules=${2}
+  local filename="${DOCS_DIREECTORY}/rules/${rule}.md"
+  local links=$(egrep '^\[.+\]: .+' "${filename}")
+  local related_links=$(
+    tr ':' '\n' <<< ${related_rules} |
+      sort -u |
+      grep -v '^$' |
+      grep -v "^${rule}$" |
+      sed -E "s,(.+),- [\1](\1.md),g"
+  )
+
+  # "Description" section
+  sed -nE '/^# /,/^## Changelog/p' "${filename}" | egrep -v '^## Changelog'
+
+  # "Changelog" section
+  sed -nE '/^## Changelog/,/^\*\*\*/p' "${filename}" | fgrep -v '***'
+
+  # "See also" section
+  echo "***"
+  echo "See also:"
+  echo
+  echo "${related_links}"
+
+  # Index of links
+  if [[ ! -z "${links}" ]]; then
+    echo
+    echo "${links}"
+  fi
+}
+
+create_list_of_rules()
+{
+  echo "Building list of rules per categorization"
+  while read rule; do
+    declare filename="${DOCS_DIREECTORY}/rules/${rule}.md"
+    for category in $(sed -n '/## Categorization/,/## Changelog/p' "${filename}" |
+                        grep '^-' |
+                        sed 's,- ,,'); do
+      RULES_BY_CATEGORIZATION[${category}]=${RULES_BY_CATEGORIZATION[${category}]}:${rule}
+    done
+  done < <(list_rules)
+
+  echo "Creating list of rules"
+  {
+    echo "# List of rules"
+    echo
+    for category in $(list_categories); do
+      echo "## ${category}"
+      sed -E 's,:,\n- ,g' <<< "${RULES_BY_CATEGORIZATION[${category}]}" |
+        sort -u |
+        sed -E 's,- (.+),- [\1](rules/\1.md),'
+      echo
+    done
+
+    echo "## Alphabetically"
+    echo
+    ls -1 "${DOCS_DIREECTORY}/rules/" | sort | sed -E 's,^(.+).md$,- [\1](rules/\1.md),'
+  } > "${DOCS_DIREECTORY}/list-of-rules.md"
+}
+
+link_related_rules()
+{
+  local temporaty=$(mktemp)
+
+  echo "Building list of related rules"
+  for rule in $(list_rules); do
+    declare filename="${DOCS_DIREECTORY}/rules/${rule}.md"
+    declare related_rules=$(egrep '\[.+\]\(.+\.md\)' "${filename}" |
+                              sed -E 's,.*\[.+\]\((.+)\.md\).*,\1,' |
+                              grep -v 'comparable-values')
+
+    for related_rule in ${related_rules}; do
+      RELATED_RULES[${related_rule}]=${RELATED_RULES[${related_rule}]}:${rule}
+    done
+
+    RELATED_RULES[${rule}]="${RELATED_RULES[${rule}]}:$(tr '\n' ':' <<< ${related_rules})"
+  done
+
+  echo "Recreating rule documentations with related rules"
+  for rule in $(list_rules); do
+    echo "- ${rule}"
+    create_rule_documentation "${rule}" "${RELATED_RULES[${rule}]}" > "${temporaty}"
+    cat "${temporaty}" > "${DOCS_DIREECTORY}/rules/${rule}.md"
+  done
+}
+
+create_list_of_rules
+link_related_rules
