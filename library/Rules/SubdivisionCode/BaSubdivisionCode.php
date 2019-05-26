@@ -18,24 +18,24 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: BA
  *
- * @link http://www.geonames.org/BA/administrative-division-bosnia-and-herzegovina.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class BaSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'BIH', // Federacija Bosna i Hercegovina
-        'BRC', // Brcko District
-        'SRP', // Republika Srpska
         '01', // Unsko-sanski kanton
         '02', // Posavski kanton
         '03', // Tuzlanski kanton
         '04', // Zeničko-dobojski kanton
         '05', // Bosansko-podrinjski kanton
-        '06', // Srednjobosanski kantonn
+        '06', // Srednjobosanski kanton
         '07', // Hercegovačko-neretvanski kanton
         '08', // Zapadnohercegovački kanton
         '09', // Kanton Sarajevo
         '10', // Kanton br. 10 (Livanjski kanton)
+        'BIH', // Federacija Bosne i Hercegovine
+        'BRC', // Brčko distrikt
+        'SRP', // Republika Srpska
     ];
 
     public $compareIdentical = true;

@@ -18,36 +18,30 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: FI
  *
- * @link http://www.geonames.org/FI/administrative-division-finland.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class FiSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        '01', // Ahvenanmaa [Finnish] / Åland [Swedish]
-        '02', // Etelä-Karjala [Finnish] / Södra Karelen [Swedish]
-        '03', // Etelä-Pohjanmaa [Finnish] / Södra Österbotten [Swedish]
-        '04', // Etelä-Savo [Finnish] / Södra Savolax [Swedish]
-        '05', // Kainuu [Finnish] / Kajanaland [Swedish]
-        '06', // Kanta-Häme [Finnish] / Egentliga Tavastland [Swedish]
-        '07', // Keski-Pohjanmaa [Finnish] / Mellersta Österbotten [Swedish]
-        '08', // Keski-Suomi [Finnish] / Mellersta Finland [Swedish]
-        '09', // Kymenlaakso [Finnish] / Kymmenedalen [Swedish]
-        '10', // Lappi [Finnish] / Lappland [Swedish]
-        '11', // Pirkanmaa [Finnish] / Birkaland [Swedish]
-        '12', // Pohjanmaa [Finnish] / Österbotten [Swedish]
-        '13', // Pohjois-Karjala [Finnish] / Norra Karelen [Swedish]
-        '14', // Pohjois-Pohjanmaa [Finnish] / Norra Österbotten [Swedish]
-        '15', // Pohjois-Savo [Finnish] / Norra Savolax [Swedish]
-        '16', // Päijät-Häme [Finnish] / Päijänne-Tavastland [Swedish]
-        '17', // Satakunta [Finnish and Swedish]
-        '18', // Uusimaa [Finnish] / Nyland [Swedish]
-        '19', // Varsinais-Suomi [Finnish] / Egentliga Finland [Swedish]
-        'AL', // Ahvenanmaan laani
-        'ES', // Etela-Suomen laani
-        'IS', // Ita-Suomen laani
-        'LL', // Lapin laani
-        'LS', // Lansi-Suomen laani
-        'OL', // Oulun laani
+        '01', // Ahvenanmaan maakunta
+        '02', // Etelä-Karjala
+        '03', // Etelä-Pohjanmaa
+        '04', // Etelä-Savo
+        '05', // Kainuu
+        '06', // Kanta-Häme
+        '07', // Keski-Pohjanmaa
+        '08', // Keski-Suomi
+        '09', // Kymenlaakso
+        '10', // Lappi
+        '11', // Pirkanmaa
+        '12', // Pohjanmaa
+        '13', // Pohjois-Karjala
+        '14', // Pohjois-Pohjanmaa
+        '15', // Pohjois-Savo
+        '16', // Päijät-Häme
+        '17', // Satakunta
+        '18', // Uusimaa
+        '19', // Varsinais-Suomi
     ];
 
     public $compareIdentical = true;

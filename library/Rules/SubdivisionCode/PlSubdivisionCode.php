@@ -18,25 +18,25 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: PL
  *
- * @link http://www.geonames.org/PL/administrative-division-poland.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class PlSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'DS', // Dolnoslaskie
-        'KP', // Kujawsko-Pomorskie
+        'DS', // Dolnośląskie
+        'KP', // Kujawsko-pomorskie
         'LB', // Lubuskie
-        'LD', // Lodzkie
+        'LD', // Łódzkie
         'LU', // Lubelskie
-        'MA', // Malopolskie
+        'MA', // Małopolskie
         'MZ', // Mazowieckie
         'OP', // Opolskie
         'PD', // Podlaskie
         'PK', // Podkarpackie
         'PM', // Pomorskie
-        'SK', // Swietokrzyskie
-        'SL', // Slaskie
-        'WN', // Warminsko-Mazurskie
+        'SK', // Świętokrzyskie
+        'SL', // Śląskie
+        'WN', // Warmińsko-mazurskie
         'WP', // Wielkopolskie
         'ZP', // Zachodniopomorskie
     ];

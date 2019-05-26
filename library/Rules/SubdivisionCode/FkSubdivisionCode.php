@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: FK
  *
- * @link http://www.geonames.org/FK/administrative-division-falkland-islands.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class FkSubdivisionCode extends AbstractSearcher
 {

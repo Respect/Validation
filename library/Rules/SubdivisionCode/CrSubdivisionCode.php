@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: CR
  *
- * @link http://www.geonames.org/CR/administrative-division-costa-rica.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class CrSubdivisionCode extends AbstractSearcher
 {
@@ -27,9 +27,9 @@ class CrSubdivisionCode extends AbstractSearcher
         'C', // Cartago
         'G', // Guanacaste
         'H', // Heredia
-        'L', // Limon
+        'L', // Limón
         'P', // Puntarenas
-        'SJ', // San Jose
+        'SJ', // San José
     ];
 
     public $compareIdentical = true;

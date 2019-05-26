@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: MM
  *
- * @link http://www.geonames.org/MM/administrative-division-myanmar.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class MmSubdivisionCode extends AbstractSearcher
 {
@@ -30,13 +30,13 @@ class MmSubdivisionCode extends AbstractSearcher
         '05', // Tanintharyi
         '06', // Yangon
         '07', // Ayeyarwady
-        '11', // Kachin State
-        '12', // Kayah State
-        '13', // Kayin State
-        '14', // Chin State
-        '15', // Mon State
-        '16', // Rakhine State
-        '17', // Shan State
+        '11', // Kachin
+        '12', // Kayah
+        '13', // Kayin
+        '14', // Chin
+        '15', // Mon
+        '16', // Rakhine
+        '17', // Shan
     ];
 
     public $compareIdentical = true;

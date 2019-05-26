@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: NA
  *
- * @link http://www.geonames.org/NA/administrative-division-namibia.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class NaSubdivisionCode extends AbstractSearcher
 {
@@ -31,11 +31,11 @@ class NaSubdivisionCode extends AbstractSearcher
         'KU', // Kunene
         'OD', // Otjozondjupa
         'OH', // Omaheke
+        'OK', // Okavango
         'ON', // Oshana
         'OS', // Omusati
         'OT', // Oshikoto
         'OW', // Ohangwena
-        'OK', // Kavango
     ];
 
     public $compareIdentical = true;

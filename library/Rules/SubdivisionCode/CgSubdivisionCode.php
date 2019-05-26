@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: CG
  *
- * @link http://www.geonames.org/CG/administrative-division-republic-of-the-congo.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class CgSubdivisionCode extends AbstractSearcher
 {
@@ -28,8 +28,7 @@ class CgSubdivisionCode extends AbstractSearcher
         '13', // Sangha
         '14', // Plateaux
         '15', // Cuvette-Ouest
-        '16', // Pointe-Noire
-        '2', // Lekoumou
+        '2', // Lékoumou
         '5', // Kouilou
         '7', // Likouala
         '8', // Cuvette

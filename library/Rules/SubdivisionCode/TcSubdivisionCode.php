@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: TC
  *
- * @link http://www.geonames.org/TC/administrative-division-turks-and-caicos-islands.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class TcSubdivisionCode extends AbstractSearcher
 {

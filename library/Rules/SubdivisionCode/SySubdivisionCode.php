@@ -18,16 +18,16 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: SY
  *
- * @link http://www.geonames.org/SY/administrative-division-syria.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class SySubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         'DI', // Dimashq
-        'DR', // Dara
+        'DR', // Dar'a
         'DY', // Dayr az Zawr
         'HA', // Al Hasakah
-        'HI', // Hims
+        'HI', // Homs
         'HL', // Halab
         'HM', // Hamah
         'ID', // Idlib
@@ -35,7 +35,7 @@ class SySubdivisionCode extends AbstractSearcher
         'QU', // Al Qunaytirah
         'RA', // Ar Raqqah
         'RD', // Rif Dimashq
-        'SU', // As Suwayda
+        'SU', // As Suwayda'
         'TA', // Tartus
     ];
 

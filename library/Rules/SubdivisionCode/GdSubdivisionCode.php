@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: GD
  *
- * @link http://www.geonames.org/GD/administrative-division-grenada.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class GdSubdivisionCode extends AbstractSearcher
 {

@@ -18,13 +18,13 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: TN
  *
- * @link http://www.geonames.org/TN/administrative-division-tunisia.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class TnSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         '11', // Tunis
-        '12', // L'Ariana
+        '12', // Ariana
         '13', // Ben Arous
         '14', // La Manouba
         '21', // Nabeul

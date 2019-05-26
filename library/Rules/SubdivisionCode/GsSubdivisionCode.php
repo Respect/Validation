@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: GS
  *
- * @link http://www.geonames.org/GS/administrative-division-south-georgia-and-the-south-sandwich-islands.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class GsSubdivisionCode extends AbstractSearcher
 {

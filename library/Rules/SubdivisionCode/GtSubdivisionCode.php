@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: GT
  *
- * @link http://www.geonames.org/GT/administrative-division-guatemala.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class GtSubdivisionCode extends AbstractSearcher
 {
@@ -33,17 +33,17 @@ class GtSubdivisionCode extends AbstractSearcher
         'IZ', // Izabal
         'JA', // Jalapa
         'JU', // Jutiapa
-        'PE', // El Peten
+        'PE', // Petén
         'PR', // El Progreso
-        'QC', // El Quiche
+        'QC', // Quiché
         'QZ', // Quetzaltenango
         'RE', // Retalhuleu
-        'SA', // Sacatepequez
+        'SA', // Sacatepéquez
         'SM', // San Marcos
-        'SO', // Solola
+        'SO', // Sololá
         'SR', // Santa Rosa
-        'SU', // Suchitepequez
-        'TO', // Totonicapan
+        'SU', // Suchitepéquez
+        'TO', // Totonicapán
         'ZA', // Zacapa
     ];
 

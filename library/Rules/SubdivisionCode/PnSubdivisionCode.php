@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: PN
  *
- * @link http://www.geonames.org/PN/administrative-division-pitcairn-islands.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class PnSubdivisionCode extends AbstractSearcher
 {

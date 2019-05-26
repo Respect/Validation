@@ -18,21 +18,21 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: DM
  *
- * @link http://www.geonames.org/DM/administrative-division-dominica.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class DmSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        '02', // Saint Andrew Parish
-        '03', // Saint David Parish
-        '04', // Saint George Parish
-        '05', // Saint John Parish
-        '06', // Saint Joseph Parish
-        '07', // Saint Luke Parish
-        '08', // Saint Mark Parish
-        '09', // Saint Patrick Parish
-        '10', // Saint Paul Parish
-        '11', // Saint Peter Parish
+        '01', // Saint Peter
+        '02', // Saint Andrew
+        '03', // Saint David
+        '04', // Saint George
+        '05', // Saint John
+        '06', // Saint Joseph
+        '07', // Saint Luke
+        '08', // Saint Mark
+        '09', // Saint Patrick
+        '10', // Saint Paul
     ];
 
     public $compareIdentical = true;

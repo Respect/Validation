@@ -18,32 +18,32 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: HR
  *
- * @link http://www.geonames.org/HR/administrative-division-croatia.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class HrSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        '01', // Zagreb county
-        '02', // Krapina-Zagorje county
-        '03', // Sisak-Moslavina county
-        '04', // Karlovac county
-        '05', // Varazdin county
-        '06', // Koprivnica-Krizevci county
-        '07', // Bjelovar-Bilogora county
-        '08', // Primorje-Gorski Kotar county
-        '09', // Lika-Senj county
-        '10', // Virovitica-Podravina county
-        '11', // Pozega-Slavonia county
-        '12', // Brod-Posavina county
-        '13', // Zadar county
-        '14', // Osijek-Baranja county
-        '15', // Sibenik-Knin county
-        '16', // Vukovar-Srijem county
-        '17', // Split-Dalmatia county
-        '18', // Istria county
-        '19', // Dubrovnik-Neretva county
-        '20', // Medjimurje county
-        '21', // Zagreb (city)
+        '01', // Zagrebačka županija
+        '02', // Krapinsko-zagorska županija
+        '03', // Sisačko-moslavačka županija
+        '04', // Karlovačka županija
+        '05', // Varaždinska županija
+        '06', // Koprivničko-križevačka županija
+        '07', // Bjelovarsko-bilogorska županija
+        '08', // Primorsko-goranska županija
+        '09', // Ličko-senjska županija
+        '10', // Virovitičko-podravska županija
+        '11', // Požeško-slavonska županija
+        '12', // Brodsko-posavska županija
+        '13', // Zadarska županija
+        '14', // Osječko-baranjska županija
+        '15', // Šibensko-kninska županija
+        '16', // Vukovarsko-srijemska županija
+        '17', // Splitsko-dalmatinska županija
+        '18', // Istarska županija
+        '19', // Dubrovačko-neretvanska županija
+        '20', // Međimurska županija
+        '21', // Grad Zagreb
     ];
 
     public $compareIdentical = true;

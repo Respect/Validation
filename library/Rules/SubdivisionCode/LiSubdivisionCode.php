@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: LI
  *
- * @link http://www.geonames.org/LI/administrative-division-liechtenstein.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class LiSubdivisionCode extends AbstractSearcher
 {

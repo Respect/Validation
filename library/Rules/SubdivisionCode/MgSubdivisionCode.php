@@ -18,17 +18,17 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: MG
  *
- * @link http://www.geonames.org/MG/administrative-division-madagascar.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class MgSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'A', // Toamasina province
-        'D', // Antsiranana province
-        'F', // Fianarantsoa province
-        'M', // Mahajanga province
-        'T', // Antananarivo province
-        'U', // Toliara province
+        'A', // Toamasina
+        'D', // Antsiranana
+        'F', // Fianarantsoa
+        'M', // Mahajanga
+        'T', // Antananarivo
+        'U', // Toliara
     ];
 
     public $compareIdentical = true;

@@ -18,33 +18,34 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: LY
  *
- * @link http://www.geonames.org/LY/administrative-division-libya.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class LySubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'BA', // Banghazi
+        'BA', // Banghāzī
         'BU', // Al Buţnān
         'DR', // Darnah
         'GT', // Ghāt
-        'JA', // Al Jabal al Akhdar
+        'JA', // Al Jabal al Akhḑar
+        'JB', // Jaghbūb
         'JG', // Al Jabal al Gharbī
         'JI', // Al Jifārah
         'JU', // Al Jufrah
         'KF', // Al Kufrah
         'MB', // Al Marqab
-        'MI', // Misratah
-        'MJ', // Al Maraj
+        'MI', // Mişrātah
+        'MJ', // Al Marj
         'MQ', // Murzuq
         'NL', // Nālūt
-        'NQ', // An Nuqat al Khams
-        'SB', // Sabha
+        'NQ', // An Nuqaţ al Khams
+        'SB', // Sabhā
         'SR', // Surt
         'TB', // Ţarābulus
         'WA', // Al Wāḩāt
         'WD', // Wādī al Ḩayāt
-        'WS', // Wādī ash Shāţi´
-        'ZA', // Az Zawiyah
+        'WS', // Wādī ash Shāţiʾ
+        'ZA', // Az Zāwiyah
     ];
 
     public $compareIdentical = true;

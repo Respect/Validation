@@ -18,21 +18,21 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: ET
  *
- * @link http://www.geonames.org/ET/administrative-division-ethiopia.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class EtSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'AA', // Addis Ababa
-        'AF', // Afar
-        'AM', // Amhara
-        'BE', // Benishangul-Gumaz
-        'DD', // Dire Dawa
-        'GA', // Gambela
-        'HA', // Hariai
-        'OR', // Oromia
-        'SN', // Southern Nations - Nationalities and Peoples Region
-        'SO', // Somali
+        'AA', // Ādīs Ābeba
+        'AF', // Āfar
+        'AM', // Āmara
+        'BE', // Bīnshangul Gumuz
+        'DD', // Dirē Dawa
+        'GA', // Gambēla Hizboch
+        'HA', // Hārerī Hizb
+        'OR', // Oromīya
+        'SN', // YeDebub Bihēroch Bihēreseboch na Hizboch
+        'SO', // Sumalē
         'TI', // Tigray
     ];
 

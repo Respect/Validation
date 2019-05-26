@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: AS
  *
- * @link http://www.geonames.org/AS/administrative-division-american-samoa.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class AsSubdivisionCode extends AbstractSearcher
 {

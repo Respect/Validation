@@ -18,28 +18,28 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: AO
  *
- * @link http://www.geonames.org/AO/administrative-division-angola.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class AoSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         'BGO', // Bengo
-        'BGU', // Benguela province
-        'BIE', // Bie
+        'BGU', // Benguela
+        'BIE', // Bié
         'CAB', // Cabinda
         'CCU', // Cuando-Cubango
         'CNN', // Cunene
         'CNO', // Cuanza Norte
         'CUS', // Cuanza Sul
-        'HUA', // Huambo province
-        'HUI', // Huila province
+        'HUA', // Huambo
+        'HUI', // Huíla
         'LNO', // Lunda Norte
         'LSU', // Lunda Sul
         'LUA', // Luanda
         'MAL', // Malange
         'MOX', // Moxico
         'NAM', // Namibe
-        'UIG', // Uige
+        'UIG', // Uíge
         'ZAI', // Zaire
     ];
 

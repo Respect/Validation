@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: MS
  *
- * @link http://www.geonames.org/MS/administrative-division-montserrat.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class MsSubdivisionCode extends AbstractSearcher
 {

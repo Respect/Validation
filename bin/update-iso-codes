@@ -51,5 +51,48 @@ update_country_codes()
   mv "${temporary_filename}" "${country_rule_filename}"
 }
 
+rule_from_country_code()
+{
+  local country_code=${1,,}
+
+  echo "${LIBRARY_DIRECTORY}/Rules/SubdivisionCode/${country_code^}SubdivisionCode.php"
+}
+
+update_subdivision_codes()
+{
+  local -r iso_3166_2_filename="${REPOSITORY_DIRECTORY}/data/iso_3166-2.json"
+  local -r iso_3166_2_count=$(grep --word-regexp "code" "${iso_3166_2_filename}" | wc --lines)
+  local -r temporary_filename=$(mktemp)
+  local last_country_code=""
+  local last_country_rule=""
+
+  echo "Updating subdivision codes using ISO 3166-2"
+
+  for index in $(seq 0 $[iso_3166_2_count - 1]); do
+    local json=$(jq ".[][${index}]" < "${iso_3166_2_filename}")
+    local code=$(jq -r ".code" <<< "${json}")
+    local name=$(jq -r ".name" <<< "${json}")
+
+    local current_country_code=$(cut --delimiter "-" --fields 1 <<< "${code}")
+    local current_country_rule=$(rule_from_country_code ${current_country_code})
+
+    if [[ ${last_country_code} != ${current_country_code} ]] && [[ ! -z "${last_country_code}" ]]; then
+      sed -n '/^    \]/,/^}/p' "${last_country_rule}" >> "${temporary_filename}"
+      cat "${temporary_filename}" > "${last_country_rule}"
+    fi
+
+    if [[ ${last_country_code} != ${current_country_code} ]]; then
+      echo "- Updating ${current_country_code}"
+      sed -n '/^</,/public \$haystack = \[/p' "${current_country_rule}" > "${temporary_filename}"
+    fi
+
+    echo "        '$(cut --delimiter "-" --fields 2 <<<  ${code})', // ${name}" >> "${temporary_filename}"
+
+    last_country_code=${current_country_code}
+    last_country_rule=${current_country_rule}
+  done
+}
+
 clone_repository
 update_country_codes
+update_subdivision_codes

@@ -18,16 +18,16 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: FJ
  *
- * @link http://www.geonames.org/FJ/administrative-division-fiji.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class FjSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'C', // Central Division
-        'E', // Eastern Division
-        'N', // Northern Division
+        'C', // Central
+        'E', // Eastern
+        'N', // Northern
         'R', // Rotuma
-        'W', // Western Division
+        'W', // Western
     ];
 
     public $compareIdentical = true;

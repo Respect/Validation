@@ -18,31 +18,31 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: IT
  *
- * @link http://www.geonames.org/IT/administrative-division-italy.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class ItSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        '21', // Piedmont
-        '23', // Regione Autonoma Valle d'Aosta
-        '25', // Lombardy
-        '32', // Regione Autonoma Trentino-Alto Adige
-        '34', // Regione del Veneto
-        '36', // Regione Autonoma Friuli-Venezia Giulia
-        '42', // Regione Liguria
-        '45', // Regione Emilia-Romagna
-        '52', // Tuscany
-        '55', // Regione Umbria
-        '57', // Regione Marche
-        '62', // Regione Lazio
-        '65', // Regione Abruzzo
-        '67', // Regione Molise
-        '72', // Regione Campania
-        '75', // Regione Puglia
-        '77', // Regione Basilicata
-        '78', // Regione Calabria
-        '82', // Regione Autonoma Siciliana
-        '88', // Regione Autonoma della Sardegna
+        '21', // Piemonte
+        '23', // Valle d'Aosta
+        '25', // Lombardia
+        '32', // Trentino-Alto Adige
+        '34', // Veneto
+        '36', // Friuli-Venezia Giulia
+        '42', // Liguria
+        '45', // Emilia-Romagna
+        '52', // Toscana
+        '55', // Umbria
+        '57', // Marche
+        '62', // Lazio
+        '65', // Abruzzo
+        '67', // Molise
+        '72', // Campania
+        '75', // Puglia
+        '77', // Basilicata
+        '78', // Calabria
+        '82', // Sicilia
+        '88', // Sardegna
         'AG', // Agrigento
         'AL', // Alessandria
         'AN', // Ancona

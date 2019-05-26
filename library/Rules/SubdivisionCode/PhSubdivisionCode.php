@@ -18,28 +18,28 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: PH
  *
- * @link http://www.geonames.org/PH/administrative-division-philippines.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class PhSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         '00', // National Capital Region
-        '01', // Ilocos
-        '02', // Cagayan Valley
-        '03', // Central Luzon
-        '05', // Bicol
-        '06', // Western Visayas
-        '07', // Central Visayas
-        '08', // Eastern Visayas
-        '09', // Zamboanga Peninsula
-        '10', // Northern Mindanao
-        '11', // Davao
-        '12', // Soccsksargen
-        '13', // Caraga
-        '14', // Autonomous Region in Muslim Mindanao
-        '15', // Cordillera Administrative Region
-        '40', // Calabarzon
-        '41', // Mimaropa
+        '01', // Ilocos (Region I)
+        '02', // Cagayan Valley (Region II)
+        '03', // Central Luzon (Region III)
+        '05', // Bicol (Region V)
+        '06', // Western Visayas (Region VI)
+        '07', // Central Visayas (Region VII)
+        '08', // Eastern Visayas (Region VIII)
+        '09', // Zamboanga Peninsula (Region IX)
+        '10', // Northern Mindanao (Region X)
+        '11', // Davao (Region XI)
+        '12', // Soccsksargen (Region XII)
+        '13', // Caraga (Region XIII)
+        '14', // Autonomous Region in Muslim Mindanao (ARMM)
+        '15', // Cordillera Administrative Region (CAR)
+        '40', // CALABARZON (Region IV-A)
+        '41', // MIMAROPA (Region IV-B)
         'ABR', // Abra
         'AGN', // Agusan del Norte
         'AGS', // Agusan del Sur
@@ -48,7 +48,7 @@ class PhSubdivisionCode extends AbstractSearcher
         'ANT', // Antique
         'APA', // Apayao
         'AUR', // Aurora
-        'BAN', // Bataan
+        'BAN', // Batasn
         'BAS', // Basilan
         'BEN', // Benguet
         'BIL', // Biliran
@@ -77,7 +77,7 @@ class PhSubdivisionCode extends AbstractSearcher
         'ILN', // Ilocos Norte
         'ILS', // Ilocos Sur
         'ISA', // Isabela
-        'KAL', // Kalinga
+        'KAL', // Kalinga-Apayso
         'LAG', // Laguna
         'LAN', // Lanao del Norte
         'LAS', // Lanao del Sur

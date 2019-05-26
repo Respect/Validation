@@ -18,15 +18,11 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: UG
  *
- * @link http://www.geonames.org/UG/administrative-division-uganda.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class UgSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'C', // Central
-        'E', // Eastern
-        'N', // Northern
-        'W', // Western
         '101', // Kalangala
         '102', // Kampala
         '103', // Kiboga
@@ -107,6 +103,10 @@ class UgSubdivisionCode extends AbstractSearcher
         '417', // Isingiro
         '418', // Kiruhura
         '419', // Buliisa
+        'C', // Central
+        'E', // Eastern
+        'N', // Northern
+        'W', // Western
     ];
 
     public $compareIdentical = true;

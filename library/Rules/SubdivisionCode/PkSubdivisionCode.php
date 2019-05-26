@@ -18,16 +18,16 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: PK
  *
- * @link http://www.geonames.org/PK/administrative-division-pakistan.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class PkSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         'BA', // Balochistan
-        'IS', // Islamabad Capital Territory
+        'GB', // Gilgit-Baltistan
+        'IS', // Islamabad
         'JK', // Azad Kashmir
-        'NA', // Gilgit-Baltistan
-        'NW', // Khyber Pakhtunkhwa
+        'KP', // Khyber Pakhtunkhwa
         'PB', // Punjab
         'SD', // Sindh
         'TA', // Federally Administered Tribal Areas

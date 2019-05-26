@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: FM
  *
- * @link http://www.geonames.org/FM/administrative-division-micronesia.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class FmSubdivisionCode extends AbstractSearcher
 {

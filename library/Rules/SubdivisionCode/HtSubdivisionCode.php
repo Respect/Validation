@@ -18,14 +18,14 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: HT
  *
- * @link http://www.geonames.org/HT/administrative-division-haiti.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class HtSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         'AR', // Artibonite
         'CE', // Centre
-        'GA', // Grand'Anse
+        'GA', // Grande-Anse
         'ND', // Nord
         'NE', // Nord-Est
         'NO', // Nord-Ouest

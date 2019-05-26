@@ -18,11 +18,75 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: BD
  *
- * @link http://www.geonames.org/BD/administrative-division-bangladesh.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class BdSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
+        '01', // Bandarban
+        '02', // Barguna
+        '03', // Bogra
+        '04', // Brahmanbaria
+        '05', // Bagerhat
+        '06', // Barisal
+        '07', // Bhola
+        '08', // Comilla
+        '09', // Chandpur
+        '10', // Chittagong
+        '11', // Cox's Bazar
+        '12', // Chuadanga
+        '13', // Dhaka
+        '14', // Dinajpur
+        '15', // Faridpur
+        '16', // Feni
+        '17', // Gopalganj
+        '18', // Gazipur
+        '19', // Gaibandha
+        '20', // Habiganj
+        '21', // Jamalpur
+        '22', // Jessore
+        '23', // Jhenaidah
+        '24', // Jaipurhat
+        '25', // Jhalakati
+        '26', // Kishorganj
+        '27', // Khulna
+        '28', // Kurigram
+        '29', // Khagrachari
+        '30', // Kushtia
+        '31', // Lakshmipur
+        '32', // Lalmonirhat
+        '33', // Manikganj
+        '34', // Mymensingh
+        '35', // Munshiganj
+        '36', // Madaripur
+        '37', // Magura
+        '38', // Moulvibazar
+        '39', // Meherpur
+        '40', // Narayanganj
+        '41', // Netrakona
+        '42', // Narsingdi
+        '43', // Narail
+        '44', // Natore
+        '45', // Nawabganj
+        '46', // Nilphamari
+        '47', // Noakhali
+        '48', // Naogaon
+        '49', // Pabna
+        '50', // Pirojpur
+        '51', // Patuakhali
+        '52', // Panchagarh
+        '53', // Rajbari
+        '54', // Rajshahi
+        '55', // Rangpur
+        '56', // Rangamati
+        '57', // Sherpur
+        '58', // Satkhira
+        '59', // Sirajganj
+        '60', // Sylhet
+        '61', // Sunamganj
+        '62', // Shariatpur
+        '63', // Tangail
+        '64', // Thakurgaon
         'A', // Barisal
         'B', // Chittagong
         'C', // Dhaka
@@ -30,70 +94,6 @@ class BdSubdivisionCode extends AbstractSearcher
         'E', // Rajshahi
         'F', // Rangpur
         'G', // Sylhet
-        '01', // Bandarban zila
-        '02', // Barguna zila
-        '03', // Bogra zila
-        '04', // Brahmanbaria zila
-        '05', // Bagerhat zila
-        '06', // Barisal zila
-        '07', // Bhola zila
-        '08', // Comilla zila
-        '09', // Chandpur zila
-        '10', // Chittagong zila
-        '11', // Cox's Bazar zila
-        '12', // Chuadanga zila
-        '13', // Dhaka zila
-        '14', // Dinajpur zila
-        '15', // Faridpur zila
-        '16', // Feni zila
-        '17', // Gopalganj zila
-        '18', // Gazipur zila
-        '19', // Gaibandha zila
-        '20', // Habiganj zila
-        '21', // Jamalpur zila
-        '22', // Jessore zila
-        '23', // Jhenaidah zila
-        '24', // Jaipurhat zila
-        '25', // Jhalakati zila
-        '26', // Kishoreganj zila
-        '27', // Khulna zila
-        '28', // Kurigram zila
-        '29', // Khagrachari zila
-        '30', // Kushtia zila
-        '31', // Lakshmipur zila
-        '32', // Lalmonirhat zila
-        '33', // Manikganj zila
-        '34', // Mymensingh zila
-        '35', // Munshiganj zila
-        '36', // Madaripur zila
-        '37', // Magura zila
-        '38', // Moulvibazar zila
-        '39', // Meherpur zila
-        '40', // Narayanganj zila
-        '41', // Netrakona zila
-        '42', // Narsingdi zila
-        '43', // Narail zila
-        '44', // Natore zila
-        '45', // Nawabganj zila
-        '46', // Nilphamari zila
-        '47', // Noakhali zila
-        '48', // Naogaon zila
-        '49', // Pabna zila
-        '50', // Pirojpur zila
-        '51', // Patuakhali zila
-        '52', // Panchagarh zila
-        '53', // Rajbari zila
-        '54', // Rajshahi zila
-        '55', // Rangpur zila
-        '56', // Rangamati zila
-        '57', // Sherpur zila
-        '58', // Satkhira zila
-        '59', // Sirajganj zila
-        '60', // Sylhet zila
-        '61', // Sunamganj zila
-        '62', // Shariatpur zila
-        '63', // Tangail zila
-        '64', // Thakurgaon zila
     ];
 
     public $compareIdentical = true;

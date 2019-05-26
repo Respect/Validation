@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: SI
  *
- * @link http://www.geonames.org/SI/administrative-division-slovenia.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class SiSubdivisionCode extends AbstractSearcher
 {
@@ -49,7 +49,7 @@ class SiSubdivisionCode extends AbstractSearcher
         '024', // Dornava
         '025', // Dravograd
         '026', // Duplek
-        '027', // Gorenja Vas-Poljane
+        '027', // Gorenja vas-Poljane
         '028', // Gorišnica
         '029', // Gornja Radgona
         '030', // Gornji Grad
@@ -87,7 +87,7 @@ class SiSubdivisionCode extends AbstractSearcher
         '062', // Ljubno
         '063', // Ljutomer
         '064', // Logatec
-        '065', // Loška Dolina
+        '065', // Loška dolina
         '066', // Loški Potok
         '067', // Luče
         '068', // Lukovica
@@ -107,7 +107,7 @@ class SiSubdivisionCode extends AbstractSearcher
         '082', // Naklo
         '083', // Nazarje
         '084', // Nova Gorica
-        '085', // Novo Mesto
+        '085', // Novo mesto
         '086', // Odranci
         '087', // Ormož
         '088', // Osilnica
@@ -137,6 +137,7 @@ class SiSubdivisionCode extends AbstractSearcher
         '112', // Slovenj Gradec
         '113', // Slovenska Bistrica
         '114', // Slovenske Konjice
+        '115', // Starče
         '116', // Sveti Jurij
         '117', // Šenčur
         '118', // Šentilj
@@ -176,7 +177,7 @@ class SiSubdivisionCode extends AbstractSearcher
         '153', // Cerkvenjak
         '154', // Dobje
         '155', // Dobrna
-        '156', // Dobrovnik-Dobronak
+        '156', // Dobrovnik/Dobronak
         '157', // Dolenjske Toplice
         '158', // Grad
         '159', // Hajdina
@@ -202,7 +203,7 @@ class SiSubdivisionCode extends AbstractSearcher
         '179', // Sodražica
         '180', // Solčava
         '181', // Sveta Ana
-        '182', // Sveti Andraž v Slovenskih goricah
+        '182', // Sveta Andraž v Slovenskih Goricah
         '183', // Šempeter-Vrtojba
         '184', // Tabor
         '185', // Trnovska vas
@@ -226,13 +227,12 @@ class SiSubdivisionCode extends AbstractSearcher
         '203', // Straža
         '204', // Sveta Trojica v Slovenskih Goricah
         '205', // Sveti Tomaž
-        '206', // Šmarješke Toplice
+        '206', // Šmarjeske Topliče
         '207', // Gorje
         '208', // Log-Dragomer
         '209', // Rečica ob Savinji
         '210', // Sveti Jurij v Slovenskih Goricah
         '211', // Šentrupert
-        '215', // Starše
     ];
 
     public $compareIdentical = true;

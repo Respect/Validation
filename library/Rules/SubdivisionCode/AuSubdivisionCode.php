@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: AU
  *
- * @link http://www.geonames.org/AU/administrative-division-australia.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class AuSubdivisionCode extends AbstractSearcher
 {

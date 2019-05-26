@@ -18,20 +18,20 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: OM
  *
- * @link http://www.geonames.org/OM/administrative-division-oman.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class OmSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'BA', // Al Batinah South
+        'BA', // Al Bāţinah
         'BU', // Al Buraymī
-        'DA', // Ad Dakhiliyah
-        'MA', // Masqat
+        'DA', // Ad Dākhilīya
+        'MA', // Masqaţ
         'MU', // Musandam
-        'SH', // Ash Sharqiyah South
-        'WU', // Al Wusta
-        'ZA', // Az Zahirah
-        'ZU', // Zufar
+        'SH', // Ash Sharqīyah
+        'WU', // Al Wusţá
+        'ZA', // Az̧ Z̧āhirah
+        'ZU', // Z̧ufār
     ];
 
     public $compareIdentical = true;

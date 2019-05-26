@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: CK
  *
- * @link http://www.geonames.org/CK/administrative-division-cook-islands.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class CkSubdivisionCode extends AbstractSearcher
 {

@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: RE
  *
- * @link http://www.geonames.org/RE/administrative-division-reunion.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class ReSubdivisionCode extends AbstractSearcher
 {

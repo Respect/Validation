@@ -18,21 +18,21 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: GH
  *
- * @link http://www.geonames.org/GH/administrative-division-ghana.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class GhSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'AA', // Greater Accra Region
-        'AH', // Ashanti Region
-        'BA', // Brong-Ahafo Region
-        'CP', // Central Region
-        'EP', // Eastern Region
-        'NP', // Northern Region
-        'TV', // Volta Region
-        'UE', // Upper East Region
-        'UW', // Upper West Region
-        'WP', // Western Region
+        'AA', // Greater Accra
+        'AH', // Ashanti
+        'BA', // Brong-Ahafo
+        'CP', // Central
+        'EP', // Eastern
+        'NP', // Northern
+        'TV', // Volta
+        'UE', // Upper East
+        'UW', // Upper West
+        'WP', // Western
     ];
 
     public $compareIdentical = true;

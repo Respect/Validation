@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: GM
  *
- * @link http://www.geonames.org/GM/administrative-division-gambia.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class GmSubdivisionCode extends AbstractSearcher
 {

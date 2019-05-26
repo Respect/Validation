@@ -18,21 +18,21 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: LT
  *
- * @link http://www.geonames.org/LT/administrative-division-lithuania.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class LtSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'AL', // Alytus
-        'KL', // Klaipeda
-        'KU', // Kaunas
-        'MR', // Marijampole
-        'PN', // Panevezys
-        'SA', // Siauliai
-        'TA', // Taurage
-        'TE', // Telsiai
-        'UT', // Utena
-        'VL', // Vilnius
+        'AL', // Alytaus Apskritis
+        'KL', // Klaipėdos Apskritis
+        'KU', // Kauno Apskritis
+        'MR', // Marijampolės Apskritis
+        'PN', // Panevėžio Apskritis
+        'SA', // Šiaulių Apskritis
+        'TA', // Tauragés Apskritis
+        'TE', // Telšių Apskritis
+        'UT', // Utenos Apskritis
+        'VL', // Vilniaus Apskritis
     ];
 
     public $compareIdentical = true;

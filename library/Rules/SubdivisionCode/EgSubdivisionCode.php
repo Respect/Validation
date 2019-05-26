@@ -18,40 +18,39 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: EG
  *
- * @link http://www.geonames.org/EG/administrative-division-egypt.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class EgSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'ALX', // Al Iskandariyah
-        'ASN', // Aswan
-        'AST', // Asyut
+        'ALX', // Al Iskandarīyah
+        'ASN', // Aswān
+        'AST', // Asyūt
         'BA', // Al Bahr al Ahmar
         'BH', // Al Buhayrah
-        'BNS', // Bani Suwayf
-        'C', // Al Qahirah
-        'DK', // Ad Daqahliyah
-        'DT', // Dumyat
-        'FYM', // Al Fayyum
-        'GH', // Al Gharbiyah
-        'GZ', // Al Jizah
-        'IS', // Al Isma'iliyah
-        'JS', // Janub Sina'
-        'KB', // Al Qalyubiyah
+        'BNS', // Banī Suwayf
+        'C', // Al Qāhirah
+        'DK', // Ad Daqahlīyah
+        'DT', // Dumyāt
+        'FYM', // Al Fayyūm
+        'GH', // Al Gharbīyah
+        'GZ', // Al Jīzah
+        'HU', // Ḩulwān
+        'IS', // Al Ismā`īlīyah
+        'JS', // Janūb Sīnā'
+        'KB', // Al Qalyūbīyah
         'KFS', // Kafr ash Shaykh
-        'KN', // Qina
-        'LX', // Al Uqşur
-        'MN', // Al Minya
-        'MNF', // Al Minufiyah
-        'MT', // Matruh
-        'PTS', // Bur Sa'id
-        'SHG', // Suhaj
-        'SHR', // Ash Sharqiyah
-        'SIN', // Shamal Sina'
-        'SUZ', // As Suways
-        'WAD', // Al Wadi al Jadid
-        'HU', // Helwan
+        'KN', // Qinā
+        'MN', // Al Minyā
+        'MNF', // Al Minūfīyah
+        'MT', // Matrūh
+        'PTS', // Būr Sa`īd
+        'SHG', // Sūhāj
+        'SHR', // Ash Sharqīyah
+        'SIN', // Shamal Sīnā'
         'SU', // As Sādis min Uktūbar
+        'SUZ', // As Suways
+        'WAD', // Al Wādī al Jadīd
     ];
 
     public $compareIdentical = true;

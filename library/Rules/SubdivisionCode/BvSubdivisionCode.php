@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: BV
  *
- * @link http://www.geonames.org/BV/administrative-division-bouvet-island.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class BvSubdivisionCode extends AbstractSearcher
 {

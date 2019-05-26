@@ -18,20 +18,20 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: ZA
  *
- * @link http://www.geonames.org/ZA/administrative-division-south-africa.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class ZaSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         'EC', // Eastern Cape
         'FS', // Free State
-        'GP', // Gauteng
+        'GT', // Gauteng
         'LP', // Limpopo
         'MP', // Mpumalanga
         'NC', // Northern Cape
-        'NW', // North West
+        'NL', // Kwazulu-Natal
+        'NW', // North-West (South Africa)
         'WC', // Western Cape
-        'ZN', // KwaZulu-Natal
     ];
 
     public $compareIdentical = true;

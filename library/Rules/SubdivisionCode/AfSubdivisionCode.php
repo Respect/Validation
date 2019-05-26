@@ -18,45 +18,45 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: AF
  *
- * @link http://www.geonames.org/AF/administrative-division-afghanistan.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class AfSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'BAL', // Balkh province
-        'BAM', // Bamian province
-        'BDG', // Badghis province
-        'BDS', // Badakhshan province
-        'BGL', // Baghlan province
+        'BAL', // Balkh
+        'BAM', // Bāmyān
+        'BDG', // Bādghīs
+        'BDS', // Badakhshān
+        'BGL', // Baghlān
         'DAY', // Dāykundī
-        'FRA', // Farah province
-        'FYB', // Faryab province
-        'GHA', // Ghazni province
-        'GHO', // Ghowr province
-        'HEL', // Helmand province
-        'HER', // Herat province
-        'JOW', // Jowzjan province
-        'KAB', // Kabul province
-        'KAN', // Kandahar province
-        'KAP', // Kapisa province
-        'KDZ', // Kondoz province
-        'KHO', // Khost province
-        'KNR', // Konar province
-        'LAG', // Laghman province
-        'LOW', // Lowgar province
-        'NAN', // Nangrahar province
-        'NIM', // Nimruz province
-        'NUR', // Nurestan province
-        'ORU', // Oruzgan province
-        'PAN', // Panjshir
-        'PAR', // Parwan province
-        'PIA', // Paktia province
-        'PKA', // Paktika province
-        'SAM', // Samangan province
-        'SAR', // Sar-e Pol province
-        'TAK', // Takhar province
-        'WAR', // Wardak province
-        'ZAB', // Zabol province
+        'FRA', // Farāh
+        'FYB', // Fāryāb
+        'GHA', // Ghaznī
+        'GHO', // Ghōr
+        'HEL', // Helmand
+        'HER', // Herāt
+        'JOW', // Jowzjān
+        'KAB', // Kābul
+        'KAN', // Kandahār
+        'KAP', // Kāpīsā
+        'KDZ', // Kunduz
+        'KHO', // Khōst
+        'KNR', // Kunar
+        'LAG', // Laghmān
+        'LOG', // Lōgar
+        'NAN', // Nangarhār
+        'NIM', // Nīmrōz
+        'NUR', // Nūristān
+        'PAN', // Panjshayr
+        'PAR', // Parwān
+        'PIA', // Paktiyā
+        'PKA', // Paktīkā
+        'SAM', // Samangān
+        'SAR', // Sar-e Pul
+        'TAK', // Takhār
+        'URU', // Uruzgān
+        'WAR', // Wardak
+        'ZAB', // Zābul
     ];
 
     public $compareIdentical = true;

@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: DE
  *
- * @link http://www.geonames.org/DE/administrative-division-germany.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class DeSubdivisionCode extends AbstractSearcher
 {

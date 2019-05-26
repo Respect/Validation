@@ -18,32 +18,34 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: TW
  *
- * @link http://www.geonames.org/TW/administrative-division-taiwan.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class TwSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         'CHA', // Changhua
-        'CYI', // Chiayi
+        'CYI', // Chiay City
         'CYQ', // Chiayi
         'HSQ', // Hsinchu
-        'HSZ', // Hsinchu
+        'HSZ', // Hsinchui City
         'HUA', // Hualien
         'ILA', // Ilan
-        'KEE', // Keelung
-        'KHH', // Kaohsiung
+        'KEE', // Keelung City
+        'KHH', // Kaohsiung City
+        'KHQ', // Kaohsiung
         'MIA', // Miaoli
         'NAN', // Nantou
         'PEN', // Penghu
         'PIF', // Pingtung
         'TAO', // Taoyuan
-        'TNN', // Tainan
-        'TPE', // Taipei
-        'TPQ', // New Taipei
+        'TNN', // Tainan City
+        'TNQ', // Tainan
+        'TPE', // Taipei City
+        'TPQ', // Taipei
         'TTT', // Taitung
-        'TXG', // Taichung
+        'TXG', // Taichung City
+        'TXQ', // Taichung
         'YUN', // Yunlin
-        'TXQ', // Taichung County
     ];
 
     public $compareIdentical = true;

@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: SC
  *
- * @link http://www.geonames.org/SC/administrative-division-seychelles.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class ScSubdivisionCode extends AbstractSearcher
 {
@@ -35,19 +35,19 @@ class ScSubdivisionCode extends AbstractSearcher
         '10', // Bel Ombre
         '11', // Cascade
         '12', // Glacis
-        '13', // Grand' Anse (on Mahe)
-        '14', // Grand' Anse (on Praslin)
+        '13', // Grand Anse Mahe
+        '14', // Grand Anse Praslin
         '15', // La Digue
-        '16', // La Riviere Anglaise
+        '16', // English River
         '17', // Mont Buxton
         '18', // Mont Fleuri
         '19', // Plaisance
-        '20', // Pointe La Rue
+        '20', // Pointe Larue
         '21', // Port Glaud
         '22', // Saint Louis
         '23', // Takamaka
         '24', // Les Mamelles
-        '25', // Roche Caïman
+        '25', // Roche Caiman
     ];
 
     public $compareIdentical = true;

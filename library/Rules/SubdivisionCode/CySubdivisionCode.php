@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: CY
  *
- * @link http://www.geonames.org/CY/administrative-division-cyprus.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class CySubdivisionCode extends AbstractSearcher
 {

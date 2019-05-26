@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: PT
  *
- * @link http://www.geonames.org/PT/administrative-division-portugal.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class PtSubdivisionCode extends AbstractSearcher
 {
@@ -26,23 +26,23 @@ class PtSubdivisionCode extends AbstractSearcher
         '01', // Aveiro
         '02', // Beja
         '03', // Braga
-        '04', // Braganca
+        '04', // Bragança
         '05', // Castelo Branco
         '06', // Coimbra
-        '07', // Evora
+        '07', // Évora
         '08', // Faro
         '09', // Guarda
         '10', // Leiria
         '11', // Lisboa
         '12', // Portalegre
         '13', // Porto
-        '14', // Santarem
-        '15', // Setubal
+        '14', // Santarém
+        '15', // Setúbal
         '16', // Viana do Castelo
         '17', // Vila Real
         '18', // Viseu
-        '20', // Acores (Azores)
-        '30', // Madeira
+        '20', // Região Autónoma dos Açores
+        '30', // Região Autónoma da Madeira
     ];
 
     public $compareIdentical = true;

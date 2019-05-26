@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: PR
  *
- * @link http://www.geonames.org/PR/administrative-division-puerto-rico.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class PrSubdivisionCode extends AbstractSearcher
 {

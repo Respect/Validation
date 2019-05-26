@@ -18,49 +18,48 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: ID
  *
- * @link http://www.geonames.org/ID/administrative-division-indonesia.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class IdSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'IJ', // Papua
-        'JW', // Java
-        'KA', // Kalimantan
-        'MA', // Maluku
-        'NU', // Nusa Tenggara
-        'SL', // Sulawesi
-        'SM', // Sumatera
         'AC', // Aceh
         'BA', // Bali
-        'BB', // Bangka-Belitung
+        'BB', // Bangka Belitung
         'BE', // Bengkulu
         'BT', // Banten
         'GO', // Gorontalo
+        'IJ', // Papua
         'JA', // Jambi
         'JB', // Jawa Barat
         'JI', // Jawa Timur
         'JK', // Jakarta Raya
         'JT', // Jawa Tengah
+        'JW', // Jawa
+        'KA', // Kalimantan
         'KB', // Kalimantan Barat
         'KI', // Kalimantan Timur
-        'KI', // Kalimantan Utara
         'KR', // Kepulauan Riau
         'KS', // Kalimantan Selatan
         'KT', // Kalimantan Tengah
         'LA', // Lampung
         'MA', // Maluku
+        'ML', // Maluku
         'MU', // Maluku Utara
         'NB', // Nusa Tenggara Barat
         'NT', // Nusa Tenggara Timur
+        'NU', // Nusa Tenggara
         'PA', // Papua
         'PB', // Papua Barat
         'RI', // Riau
         'SA', // Sulawesi Utara
-        'SB', // Sumatera Barat
+        'SB', // Sumatra Barat
         'SG', // Sulawesi Tenggara
+        'SL', // Sulawesi
+        'SM', // Sumatera
         'SN', // Sulawesi Selatan
         'SR', // Sulawesi Barat
-        'SS', // Sumatera Selatan
+        'SS', // Sumatra Selatan
         'ST', // Sulawesi Tengah
         'SU', // Sumatera Utara
         'YO', // Yogyakarta

@@ -18,25 +18,25 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: JM
  *
- * @link http://www.geonames.org/JM/administrative-division-jamaica.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class JmSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        '01', // Kingston Parish
-        '02', // Saint Andrew Parish
-        '03', // Saint Thomas Parish
-        '04', // Portland Parish
-        '05', // Saint Mary Parish
-        '06', // Saint Ann Parish
-        '07', // Trelawny Parish
-        '08', // Saint James Parish
-        '09', // Hanover Parish
-        '10', // Westmoreland Parish
-        '11', // Saint Elizabeth Parish
-        '12', // Manchester Parish
-        '13', // Clarendon Parish
-        '14', // Saint Catherine Parish
+        '01', // Kingston
+        '02', // Saint Andrew
+        '03', // Saint Thomas
+        '04', // Portland
+        '05', // Saint Mary
+        '06', // Saint Ann
+        '07', // Trelawny
+        '08', // Saint James
+        '09', // Hanover
+        '10', // Westmoreland
+        '11', // Saint Elizabeth
+        '12', // Manchester
+        '13', // Clarendon
+        '14', // Saint Catherine
     ];
 
     public $compareIdentical = true;

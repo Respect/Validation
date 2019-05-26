@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: PG
  *
- * @link http://www.geonames.org/PG/administrative-division-papua-new-guinea.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class PgSubdivisionCode extends AbstractSearcher
 {
@@ -34,10 +34,10 @@ class PgSubdivisionCode extends AbstractSearcher
         'MPL', // Morobe
         'MPM', // Madang
         'MRL', // Manus
-        'NCD', // National Capital
+        'NCD', // National Capital District (Port Moresby)
         'NIK', // New Ireland
         'NPP', // Northern
-        'NSA', // Bougainville
+        'NSB', // Bougainville
         'SAN', // Sandaun
         'SHM', // Southern Highlands
         'WBK', // West New Britain

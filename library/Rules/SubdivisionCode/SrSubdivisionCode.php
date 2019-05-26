@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: SR
  *
- * @link http://www.geonames.org/SR/administrative-division-suriname.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class SrSubdivisionCode extends AbstractSearcher
 {

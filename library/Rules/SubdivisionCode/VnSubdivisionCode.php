@@ -18,75 +18,75 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: VN
  *
- * @link http://www.geonames.org/VN/administrative-division-vietnam.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class VnSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        '01', // Lai Chau
-        '02', // Lao Cai
-        '03', // Ha Giang
-        '04', // Cao Bang
-        '05', // Son La
-        '06', // Yen Bai
-        '07', // Tuyen Quang
-        '09', // Lang Son
-        '13', // Quang Ninh
-        '14', // Hoa Binh
-        '18', // Ninh Binh
-        '20', // Thai Binh
-        '21', // Thanh Hoa
-        '22', // Nghe An
-        '23', // Ha Tinh
-        '24', // Quang Binh
-        '25', // Quang Tri
-        '26', // Thua Thien-Hue
-        '27', // Quang Nam
+        '01', // Lai Châu
+        '02', // Lào Cai
+        '03', // Hà Giang
+        '04', // Cao Bằng
+        '05', // Sơn La
+        '06', // Yên Bái
+        '07', // Tuyên Quang
+        '09', // Lạng Sơn
+        '13', // Quảng Ninh
+        '14', // Hoà Bình
+        '15', // Hà Tây
+        '18', // Ninh Bình
+        '20', // Thái Bình
+        '21', // Thanh Hóa
+        '22', // Nghệ An
+        '23', // Hà Tỉnh
+        '24', // Quảng Bình
+        '25', // Quảng Trị
+        '26', // Thừa Thiên-Huế
+        '27', // Quảng Nam
         '28', // Kon Tum
-        '29', // Quang Ngai
+        '29', // Quảng Ngãi
         '30', // Gia Lai
-        '31', // Binh Dinh
-        '32', // Phu Yen
-        '33', // Dak Lak
-        '34', // Khanh Hoa
-        '35', // Lam Dong
-        '36', // Ninh Thuan
-        '37', // Tay Ninh
-        '39', // Dong Nai
-        '40', // Binh Thuan
+        '31', // Bình Định
+        '32', // Phú Yên
+        '33', // Đắc Lắk
+        '34', // Khánh Hòa
+        '35', // Lâm Đồng
+        '36', // Ninh Thuận
+        '37', // Tây Ninh
+        '39', // Đồng Nai
+        '40', // Bình Thuận
         '41', // Long An
-        '43', // Ba Ria-Vung Tau
+        '43', // Bà Rịa-Vũng Tàu
         '44', // An Giang
-        '45', // Dong Thap
-        '46', // Tien Giang
-        '47', // Kien Giang
-        '48', // Can Tho
-        '49', // Vinh Long
-        '50', // Ben Tre
-        '51', // Tra Vinh
-        '52', // Soc Trang
-        '53', // Bac Can
-        '54', // Bac Giang
-        '55', // Bac Lieu
-        '56', // Bac Ninh
-        '57', // Binh Duong
-        '58', // Binh Phuoc
-        '59', // Ca Mau
-        '60', // Da Nang
-        '61', // Hai Duong
-        '62', // Hai Phong
-        '63', // Ha Nam
-        '64', // Ha Noi
-        '65', // Ho Chi Minh
-        '66', // Hung Yen
-        '67', // Nam Dinh
-        '68', // Phu Tho
-        '69', // Thai Nguyen
-        '70', // Vinh Phuc
-        '71', // Dien Bien
-        '72', // Dak Nong
-        '73', // Hau Giang
-        '15', // Ha Tay
+        '45', // Đồng Tháp
+        '46', // Tiền Giang
+        '47', // Kiên Giang
+        '49', // Vĩnh Long
+        '50', // Bến Tre
+        '51', // Trà Vinh
+        '52', // Sóc Trăng
+        '53', // Bắc Kạn
+        '54', // Bắc Giang
+        '55', // Bạc Liêu
+        '56', // Bắc Ninh
+        '57', // Bình Dương
+        '58', // Bình Phước
+        '59', // Cà Mau
+        '61', // Hải Duong
+        '63', // Hà Nam
+        '66', // Hưng Yên
+        '67', // Nam Định
+        '68', // Phú Thọ
+        '69', // Thái Nguyên
+        '70', // Vĩnh Phúc
+        '71', // Điện Biên
+        '72', // Đắk Nông
+        '73', // Hậu Giang
+        'CT', // Cần Thơ
+        'DN', // Đà Nẵng
+        'HN', // Hà Nội
+        'HP', // Hải Phòng
+        'SG', // Hồ Chí Minh [Sài Gòn]
     ];
 
     public $compareIdentical = true;

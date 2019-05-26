@@ -18,20 +18,20 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: BO
  *
- * @link http://www.geonames.org/BO/administrative-division-bolivia.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class BoSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'B', // Departmento Beni
-        'C', // Departmento Cochabamba
-        'H', // Departmento Chuquisaca
-        'L', // Departmento La Paz
-        'N', // Departmento Pando
-        'O', // Departmento Oruro
-        'P', // Departmento Potosi
-        'S', // Departmento Santa Cruz
-        'T', // Departmento Tarija
+        'B', // El Beni
+        'C', // Cochabamba
+        'H', // Chuquisaca
+        'L', // La Paz
+        'N', // Pando
+        'O', // Oruro
+        'P', // Potosí
+        'S', // Santa Cruz
+        'T', // Tarija
     ];
 
     public $compareIdentical = true;

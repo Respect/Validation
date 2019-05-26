@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: DZ
  *
- * @link http://www.geonames.org/DZ/administrative-division-algeria.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class DzSubdivisionCode extends AbstractSearcher
 {
@@ -26,38 +26,38 @@ class DzSubdivisionCode extends AbstractSearcher
         '01', // Adrar
         '02', // Chlef
         '03', // Laghouat
-        '04', // Oum el-Bouaghi
+        '04', // Oum el Bouaghi
         '05', // Batna
-        '06', // Bejaia
+        '06', // Béjaïa
         '07', // Biskra
-        '08', // Bechar
+        '08', // Béchar
         '09', // Blida
         '10', // Bouira
         '11', // Tamanghasset
-        '12', // Tebessa
+        '12', // Tébessa
         '13', // Tlemcen
         '14', // Tiaret
         '15', // Tizi Ouzou
         '16', // Alger
         '17', // Djelfa
         '18', // Jijel
-        '19', // Setif
-        '20', // Saida
+        '19', // Sétif
+        '20', // Saïda
         '21', // Skikda
-        '22', // Sidi Bel Abbes
+        '22', // Sidi Bel Abbès
         '23', // Annaba
         '24', // Guelma
         '25', // Constantine
-        '26', // Medea
+        '26', // Médéa
         '27', // Mostaganem
-        '28', // M'Sila
-        '29', // Muaskar
+        '28', // Msila
+        '29', // Mascara
         '30', // Ouargla
         '31', // Oran
         '32', // El Bayadh
         '33', // Illizi
-        '34', // Bordj Bou Arreridj
-        '35', // Boumerdes
+        '34', // Bordj Bou Arréridj
+        '35', // Boumerdès
         '36', // El Tarf
         '37', // Tindouf
         '38', // Tissemsilt
@@ -66,10 +66,10 @@ class DzSubdivisionCode extends AbstractSearcher
         '41', // Souk Ahras
         '42', // Tipaza
         '43', // Mila
-        '44', // Ain Defla
+        '44', // Aïn Defla
         '45', // Naama
-        '46', // Ain Temouchent
-        '47', // Ghardaia
+        '46', // Aïn Témouchent
+        '47', // Ghardaïa
         '48', // Relizane
     ];
 

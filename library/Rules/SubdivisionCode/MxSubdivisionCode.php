@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: MX
  *
- * @link http://www.geonames.org/MX/administrative-division-mexico.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class MxSubdivisionCode extends AbstractSearcher
 {
@@ -29,31 +29,31 @@ class MxSubdivisionCode extends AbstractSearcher
         'CAM', // Campeche
         'CHH', // Chihuahua
         'CHP', // Chiapas
-        'COA', // Coahuila
+        'CMX', // Ciudad de México
+        'COA', // Coahuila de Zaragoza
         'COL', // Colima
-        'DIF', // Distrito Federal
         'DUR', // Durango
         'GRO', // Guerrero
         'GUA', // Guanajuato
         'HID', // Hidalgo
         'JAL', // Jalisco
-        'MEX', // Mexico
-        'MIC', // Michoacan
+        'MEX', // México
+        'MIC', // Michoacán de Ocampo
         'MOR', // Morelos
         'NAY', // Nayarit
-        'NLE', // Nuevo Leon
+        'NLE', // Nuevo León
         'OAX', // Oaxaca
         'PUE', // Puebla
-        'QUE', // Queretaro
+        'QUE', // Querétaro
         'ROO', // Quintana Roo
         'SIN', // Sinaloa
-        'SLP', // San Luis Potosi
+        'SLP', // San Luis Potosí
         'SON', // Sonora
         'TAB', // Tabasco
         'TAM', // Tamaulipas
         'TLA', // Tlaxcala
-        'VER', // Veracruz
-        'YUC', // Yucatan
+        'VER', // Veracruz de Ignacio de la Llave
+        'YUC', // Yucatán
         'ZAC', // Zacatecas
     ];
 

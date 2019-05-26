@@ -18,42 +18,41 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: IR
  *
- * @link http://www.geonames.org/IR/administrative-division-iran.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class IrSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        '01', // East Azarbaijan
-        '02', // West Azarbaijan
-        '03', // Ardabil
-        '04', // Esfahan
-        '05', // Ilam
-        '06', // Bushehr
-        '07', // Tehran
-        '08', // Chahar Mahaal and Bakhtiari
-        '10', // Khuzestan
-        '11', // Zanjan
-        '12', // Semnan
-        '13', // Sistan and Baluchistan
-        '14', // Fars
-        '15', // Kerman
-        '16', // Kurdistan
-        '17', // Kermanshah
-        '18', // Kohkiluyeh and Buyer Ahmad
-        '19', // Gilan
-        '20', // Lorestan
-        '21', // Mazandaran
-        '22', // Markazi
-        '23', // Hormozgan
-        '24', // Hamadan
+        '01', // Āzarbāyjān-e Sharqī
+        '02', // Āzarbāyjān-e Gharbī
+        '03', // Ardabīl
+        '04', // Eşfahān
+        '05', // Īlām
+        '06', // Būshehr
+        '07', // Tehrān
+        '08', // Chahār Mahāll va Bakhtīārī
+        '10', // Khūzestān
+        '11', // Zanjān
+        '12', // Semnān
+        '13', // Sīstān va Balūchestān
+        '14', // Fārs
+        '15', // Kermān
+        '16', // Kordestān
+        '17', // Kermānshāh
+        '18', // Kohgīlūyeh va Būyer Ahmad
+        '19', // Gīlān
+        '20', // Lorestān
+        '21', // Māzandarān
+        '22', // Markazī
+        '23', // Hormozgān
+        '24', // Hamadān
         '25', // Yazd
         '26', // Qom
-        '27', // Golestan
-        '28', // Qazvin
-        '29', // South Khorasan
-        '30', // Razavi Khorasan
-        '31', // North Khorasan
-        '09', // Khorāsān
+        '27', // Golestān
+        '28', // Qazvīn
+        '29', // Khorāsān-e Janūbī
+        '30', // Khorāsān-e Razavī
+        '31', // Khorāsān-e Shemālī
     ];
 
     public $compareIdentical = true;

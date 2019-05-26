@@ -18,27 +18,27 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: KR
  *
- * @link http://www.geonames.org/KR/administrative-division-south-korea.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class KrSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        '11', // Seoul Special City
-        '26', // Busan Metropolitan City
-        '27', // Daegu Metropolitan City
-        '28', // Incheon Metropolitan City
-        '29', // Gwangju Metropolitan City
-        '30', // Daejeon Metropolitan City
-        '31', // Ulsan Metropolitan City
-        '41', // Gyeonggi-do
-        '42', // Gangwon-do
-        '43', // Chungcheongbuk-do
-        '44', // Chungcheongnam-do
-        '45', // Jeollabuk-do
-        '46', // Jeollanam-do
-        '47', // Gyeongsangbuk-do
-        '48', // Gyeongsangnam-do
-        '49', // Jeju-do
+        '11', // Seoul Teugbyeolsi
+        '26', // Busan Gwang'yeogsi
+        '27', // Daegu Gwang'yeogsi
+        '28', // Incheon Gwang'yeogsi
+        '29', // Gwangju Gwang'yeogsi
+        '30', // Daejeon Gwang'yeogsi
+        '31', // Ulsan Gwang'yeogsi
+        '41', // Gyeonggido
+        '42', // Gang'weondo
+        '43', // Chungcheongbukdo
+        '44', // Chungcheongnamdo
+        '45', // Jeonrabukdo
+        '46', // Jeonranamdo
+        '47', // Gyeongsangbukdo
+        '48', // Gyeongsangnamdo
+        '49', // Jejudo
     ];
 
     public $compareIdentical = true;

@@ -18,13 +18,13 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: ST
  *
- * @link http://www.geonames.org/ST/administrative-division-sao-tome-and-principe.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class StSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'P', // Principe
-        'S', // Sao Tome
+        'P', // Príncipe
+        'S', // São Tomé
     ];
 
     public $compareIdentical = true;

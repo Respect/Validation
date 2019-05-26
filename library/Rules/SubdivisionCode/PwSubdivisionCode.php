@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: PW
  *
- * @link http://www.geonames.org/PW/administrative-division-palau.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class PwSubdivisionCode extends AbstractSearcher
 {
@@ -26,7 +26,7 @@ class PwSubdivisionCode extends AbstractSearcher
         '002', // Aimeliik
         '004', // Airai
         '010', // Angaur
-        '050', // Hatohobei
+        '050', // Hatobohei
         '100', // Kayangel
         '150', // Koror
         '212', // Melekeok

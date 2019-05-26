@@ -18,32 +18,32 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: EC
  *
- * @link http://www.geonames.org/EC/administrative-division-ecuador.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class EcSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         'A', // Azuay
-        'B', // Bolivar
+        'B', // Bolívar
         'C', // Carchi
         'D', // Orellana
         'E', // Esmeraldas
-        'F', // Canar
+        'F', // Cañar
         'G', // Guayas
         'H', // Chimborazo
         'I', // Imbabura
         'L', // Loja
-        'M', // Manabi
+        'M', // Manabí
         'N', // Napo
         'O', // El Oro
         'P', // Pichincha
-        'R', // Los Rios
+        'R', // Los Ríos
         'S', // Morona-Santiago
         'SD', // Santo Domingo de los Tsáchilas
         'SE', // Santa Elena
         'T', // Tungurahua
-        'U', // Sucumbios
-        'W', // Galapagos
+        'U', // Sucumbíos
+        'W', // Galápagos
         'X', // Cotopaxi
         'Y', // Pastaza
         'Z', // Zamora-Chinchipe

@@ -18,13 +18,13 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: BS
  *
- * @link http://www.geonames.org/BS/administrative-division-bahamas.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class BsSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'AK', // Acklins Islands
-        'BI', // Bimini and Cat Cay
+        'AK', // Acklins
+        'BI', // Bimini
         'BP', // Black Point
         'BY', // Berry Islands
         'CE', // Central Eleuthera
@@ -45,7 +45,6 @@ class BsSubdivisionCode extends AbstractSearcher
         'MI', // Moore's Island
         'NE', // North Eleuthera
         'NO', // North Abaco
-        'NP', // New Providence
         'NS', // North Andros
         'RC', // Rum Cay
         'RI', // Ragged Island
@@ -55,14 +54,6 @@ class BsSubdivisionCode extends AbstractSearcher
         'SS', // San Salvador
         'SW', // Spanish Wells
         'WG', // West Grand Bahama
-        'CO', // Governor’s Harbour
-        'FC', // Fresh Creek
-        'GT', // Green Turtle Cay
-        'HR', // High Rock District
-        'KE', // Kemps Bay District
-        'MH', // Marsh Harbour District
-        'RS', // Rock Sound
-        'SP', // Sandy Point
     ];
 
     public $compareIdentical = true;

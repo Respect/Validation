@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: MT
  *
- * @link http://www.geonames.org/MT/administrative-division-malta.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class MtSubdivisionCode extends AbstractSearcher
 {
@@ -27,24 +27,24 @@ class MtSubdivisionCode extends AbstractSearcher
         '02', // Balzan
         '03', // Birgu
         '04', // Birkirkara
-        '05', // Birzebbuga
+        '05', // Birżebbuġa
         '06', // Bormla
         '07', // Dingli
         '08', // Fgura
         '09', // Floriana
         '10', // Fontana
         '11', // Gudja
-        '12', // Gzira
-        '13', // Ghajnsielem
-        '14', // Gharb
-        '15', // Gargur
-        '16', // Ghasri
-        '17', // Gaxaq
-        '18', // Hamrun
+        '12', // Gżira
+        '13', // Għajnsielem
+        '14', // Għarb
+        '15', // Għargħur
+        '16', // Għasri
+        '17', // Għaxaq
+        '18', // Ħamrun
         '19', // Iklin
         '20', // Isla
         '21', // Kalkara
-        '22', // Kercem
+        '22', // Kerċem
         '23', // Kirkop
         '24', // Lija
         '25', // Luqa
@@ -52,8 +52,8 @@ class MtSubdivisionCode extends AbstractSearcher
         '27', // Marsaskala
         '28', // Marsaxlokk
         '29', // Mdina
-        '30', // Melliea
-        '31', // Mgarr
+        '30', // Mellieħa
+        '31', // Mġarr
         '32', // Mosta
         '33', // Mqabba
         '34', // Msida
@@ -63,34 +63,34 @@ class MtSubdivisionCode extends AbstractSearcher
         '38', // Naxxar
         '39', // Paola
         '40', // Pembroke
-        '41', // Pieta
+        '41', // Pietà
         '42', // Qala
         '43', // Qormi
         '44', // Qrendi
         '45', // Rabat Għawdex
         '46', // Rabat Malta
         '47', // Safi
-        '48', // San Giljan
-        '49', // San Gwann
+        '48', // San Ġiljan
+        '49', // San Ġwann
         '50', // San Lawrenz
-        '51', // San Pawl il-Bahar
+        '51', // San Pawl il-Baħar
         '52', // Sannat
-        '53', // Santa Lucija
+        '53', // Santa Luċija
         '54', // Santa Venera
-        '55', // Siggiewi
+        '55', // Siġġiewi
         '56', // Sliema
         '57', // Swieqi
-        '58', // Tarxien
-        '59', // Ta Xbiex
+        '58', // Ta’ Xbiex
+        '59', // Tarxien
         '60', // Valletta
-        '61', // Xagra
+        '61', // Xagħra
         '62', // Xewkija
-        '63', // Xgajra
-        '64', // Zabbar
+        '63', // Xgħajra
+        '64', // Żabbar
         '65', // Żebbuġ Għawdex
         '66', // Żebbuġ Malta
-        '67', // Zejtun
-        '68', // Zurrieq
+        '67', // Żejtun
+        '68', // Żurrieq
     ];
 
     public $compareIdentical = true;

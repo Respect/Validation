@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: TK
  *
- * @link http://www.geonames.org/TK/administrative-division-tokelau.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class TkSubdivisionCode extends AbstractSearcher
 {

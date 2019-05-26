@@ -18,51 +18,44 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: ES
  *
- * @link http://www.geonames.org/ES/administrative-division-spain.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class EsSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'AN', // Comunidad Autónoma de Andalucía
-        'AR', // Comunidad Autónoma de Aragón
-        'AS', // Comunidad Autónoma del Principado de Asturias
-        'CB', // Comunidad Autónoma de Cantabria
-        'CE', // Ceuta
-        'CL', // Comunidad Autónoma de Castilla y León
-        'CM', // Comunidad Autónoma de Castilla-La Mancha
-        'CN', // Comunidad Autónoma de Canarias
-        'CT', // Catalunya
-        'EX', // Comunidad Autónoma de Extremadura
-        'GA', // Comunidad Autónoma de Galicia
-        'IB', // Comunidad Autónoma de las Islas Baleares
-        'MC', // Comunidad Autónoma de la Región de Murcia
-        'MD', // Comunidad de Madrid
-        'ML', // Melilla
-        'NC', // Comunidad Foral de Navarra
-        'PV', // Euskal Autonomia Erkidegoa
-        'RI', // Comunidad Autónoma de La Rioja
-        'VC', // Comunidad Valenciana
         'A', // Alicante
         'AB', // Albacete
         'AL', // Almería
+        'AN', // Andalucía
+        'AR', // Aragón
+        'AS', // Asturias, Principado de
         'AV', // Ávila
         'B', // Barcelona
         'BA', // Badajoz
-        'BI', // Vizcaya
+        'BI', // Bizkaia
         'BU', // Burgos
         'C', // A Coruña
         'CA', // Cádiz
+        'CB', // Cantabria
         'CC', // Cáceres
+        'CE', // Ceuta
+        'CL', // Castilla y León
+        'CM', // Castilla-La Mancha
+        'CN', // Canarias
         'CO', // Córdoba
         'CR', // Ciudad Real
         'CS', // Castellón
+        'CT', // Catalunya
         'CU', // Cuenca
+        'EX', // Extremadura
+        'GA', // Galicia
         'GC', // Las Palmas
         'GI', // Girona
         'GR', // Granada
         'GU', // Guadalajara
         'H', // Huelva
         'HU', // Huesca
+        'IB', // Illes Balears
         'J', // Jaén
         'L', // Lleida
         'LE', // León
@@ -70,25 +63,32 @@ class EsSubdivisionCode extends AbstractSearcher
         'LU', // Lugo
         'M', // Madrid
         'MA', // Málaga
+        'MC', // Murcia, Región de
+        'MD', // Madrid, Comunidad de
+        'ML', // Melilla
         'MU', // Murcia
-        'NA', // Navarra
+        'NA', // Navarra / Nafarroa
+        'NC', // Navarra, Comunidad Foral de / Nafarroako Foru Komunitatea
         'O', // Asturias
         'OR', // Ourense
         'P', // Palencia
-        'PM', // Baleares
+        'PM', // Balears
         'PO', // Pontevedra
+        'PV', // País Vasco / Euskal Herria
+        'RI', // La Rioja
         'S', // Cantabria
         'SA', // Salamanca
         'SE', // Sevilla
         'SG', // Segovia
         'SO', // Soria
-        'SS', // Guipúzcoa
+        'SS', // Gipuzkoa
         'T', // Tarragona
         'TE', // Teruel
         'TF', // Santa Cruz de Tenerife
         'TO', // Toledo
-        'V', // Valencia
+        'V', // Valencia / València
         'VA', // Valladolid
+        'VC', // Valenciana, Comunidad / Valenciana, Comunitat
         'VI', // Álava
         'Z', // Zaragoza
         'ZA', // Zamora

@@ -18,14 +18,14 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: SB
  *
- * @link http://www.geonames.org/SB/administrative-division-solomon-islands.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class SbSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         'CE', // Central
         'CH', // Choiseul
-        'CT', // Capital Territory
+        'CT', // Capital Territory (Honiara)
         'GU', // Guadalcanal
         'IS', // Isabel
         'MK', // Makira

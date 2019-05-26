@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: TL
  *
- * @link http://www.geonames.org/TL/administrative-division-east-timor.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class TlSubdivisionCode extends AbstractSearcher
 {
@@ -28,10 +28,10 @@ class TlSubdivisionCode extends AbstractSearcher
         'BA', // Baucau
         'BO', // Bobonaro
         'CO', // Cova Lima
-        'DI', // Dili
+        'DI', // Díli
         'ER', // Ermera
         'LA', // Lautem
-        'LI', // Liquica
+        'LI', // Liquiça
         'MF', // Manufahi
         'MT', // Manatuto
         'OE', // Oecussi

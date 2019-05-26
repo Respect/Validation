@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: SZ
  *
- * @link http://www.geonames.org/SZ/administrative-division-swaziland.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class SzSubdivisionCode extends AbstractSearcher
 {
@@ -26,7 +26,7 @@ class SzSubdivisionCode extends AbstractSearcher
         'HH', // Hhohho
         'LU', // Lubombo
         'MA', // Manzini
-        'SH', // Shishelweni
+        'SH', // Shiselweni
     ];
 
     public $compareIdentical = true;

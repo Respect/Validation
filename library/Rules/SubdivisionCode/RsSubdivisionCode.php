@@ -18,35 +18,33 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: RS
  *
- * @link http://www.geonames.org/RS/administrative-division-serbia.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class RsSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'KM', // Kosovo
-        'VO', // Vojvodina
         '00', // Beograd
         '01', // Severnobački okrug
         '02', // Srednjebanatski okrug
         '03', // Severnobanatski okrug
         '04', // Južnobanatski okrug
-        '05', // Zapadno-Bački Okrug
+        '05', // Zapadnobački okrug
         '06', // Južnobački okrug
-        '07', // Srem
+        '07', // Sremski okrug
         '08', // Mačvanski okrug
         '09', // Kolubarski okrug
         '10', // Podunavski okrug
         '11', // Braničevski okrug
-        '12', // Šumadija
+        '12', // Šumadijski okrug
         '13', // Pomoravski okrug
         '14', // Borski okrug
-        '15', // Zaječar
-        '16', // Zlatibor
+        '15', // Zaječarski okrug
+        '16', // Zlatiborski okrug
         '17', // Moravički okrug
         '18', // Raški okrug
         '19', // Rasinski okrug
         '20', // Nišavski okrug
-        '21', // Toplica
+        '21', // Toplički okrug
         '22', // Pirotski okrug
         '23', // Jablanički okrug
         '24', // Pčinjski okrug
@@ -55,6 +53,8 @@ class RsSubdivisionCode extends AbstractSearcher
         '27', // Prizrenski okrug
         '28', // Kosovsko-Mitrovački okrug
         '29', // Kosovsko-Pomoravski okrug
+        'KM', // Kosovo-Metohija
+        'VO', // Vojvodina
     ];
 
     public $compareIdentical = true;

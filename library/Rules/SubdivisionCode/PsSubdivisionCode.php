@@ -18,27 +18,27 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: PS
  *
- * @link http://www.geonames.org/PS/administrative-division-palestine.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class PsSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'DEB', // Bethlehem [conventional] / Bayt Laḩm [Arabic]
-        'DEB', // Deir El Balah [conventional] /Dayr al Balaḩ[Arabic]
-        'GZA', // Gaza [conventional] / Ghazzah[Arabic]
-        'HBN', // Hebron [conventional] / Al Khalīl [Arabic]
-        'JEM', // Jerusalem [conventional] / Al Quds [Arabic]
-        'JEN', // Jenin [conventional] / Janīn [Arabic]
-        'JRH', // Jericho [conventional] / Arīḩā wal Aghwār [Arabic]
-        'KYS', // Khan Yunis [conventional] / Khān Yūnis[Arabic]
-        'NBS', // Nablus [conventional] / Nāblus [Arabic]
-        'NGZ', // North Gaza [conventional] / Shamāl Ghazzah[Arabic]
-        'QQA', // Qalqiyah [conventional] / Qalqīlyah [Arabic]
-        'RBH', // Ramallah and Al Birah [conventional] / Rām Allāh wal Bīrah [Arabic]
-        'RFH', // Rafah [conventional] / Rafaḩ[Arabic]
-        'SLT', // Salfit [conventional] / Salfīt [Arabic]
-        'TBS', // Tubas [conventional] / Ţūbās [Arabic]
-        'TKM', // Tulkarm [conventional] /Ţūlkarm [Arabic]
+        'BTH', // Bethlehem
+        'DEB', // Deir El Balah
+        'GZA', // Gaza
+        'HBN', // Hebron
+        'JEM', // Jerusalem
+        'JEN', // Jenin
+        'JRH', // Jericho - Al Aghwar
+        'KYS', // Khan Yunis
+        'NBS', // Nablus
+        'NGZ', // North Gaza
+        'QQA', // Qalqilya
+        'RBH', // Ramallah
+        'RFH', // Rafah
+        'SLT', // Salfit
+        'TBS', // Tubas
+        'TKM', // Tulkarm
     ];
 
     public $compareIdentical = true;

@@ -18,19 +18,18 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: KE
  *
- * @link http://www.geonames.org/KE/administrative-division-kenya.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class KeSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        '110', // Nairobi Area
+        '110', // Nairobi Municipality
         '200', // Central
         '300', // Coast
         '400', // Eastern
-        '500', // North Eastern
-        '600', // Nyanza
+        '500', // North-Eastern Kaskazini Mashariki
         '700', // Rift Valley
-        '800', // Western
+        '800', // Western Magharibi
     ];
 
     public $compareIdentical = true;

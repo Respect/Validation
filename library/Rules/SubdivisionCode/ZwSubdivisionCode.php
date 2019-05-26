@@ -18,13 +18,13 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: ZW
  *
- * @link http://www.geonames.org/ZW/administrative-division-zimbabwe.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class ZwSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'BU', // Bulawayo (city)
-        'HA', // Harare (city)
+        'BU', // Bulawayo
+        'HA', // Harare
         'MA', // Manicaland
         'MC', // Mashonaland Central
         'ME', // Mashonaland East

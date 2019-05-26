@@ -18,20 +18,19 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: KG
  *
- * @link http://www.geonames.org/KG/administrative-division-kyrgyzstan.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class KgSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         'B', // Batken
-        'C', // Chu
+        'C', // Chü
         'GB', // Bishkek
-        'GO', // Osh City
         'J', // Jalal-Abad
         'N', // Naryn
         'O', // Osh
         'T', // Talas
-        'Y', // Ysyk-Kol
+        'Y', // Ysyk-Köl
     ];
 
     public $compareIdentical = true;

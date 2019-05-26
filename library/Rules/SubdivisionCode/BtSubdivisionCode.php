@@ -18,15 +18,15 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: BT
  *
- * @link http://www.geonames.org/BT/administrative-division-bhutan.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class BtSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         '11', // Paro
-        '12', // Chukha
-        '13', // Haa
-        '14', // Samtse
+        '12', // Chhukha
+        '13', // Ha
+        '14', // Samtee
         '15', // Thimphu
         '21', // Tsirang
         '22', // Dagana
@@ -37,12 +37,12 @@ class BtSubdivisionCode extends AbstractSearcher
         '33', // Bumthang
         '34', // Zhemgang
         '41', // Trashigang
-        '42', // Mongar
+        '42', // Monggar
         '43', // Pemagatshel
-        '44', // Lhuntse
-        '45', // Samdrup Jongkhar
+        '44', // Lhuentse
+        '45', // Samdrup Jongkha
         'GA', // Gasa
-        'TY', // Trashi Yangste
+        'TY', // Trashi Yangtse
     ];
 
     public $compareIdentical = true;

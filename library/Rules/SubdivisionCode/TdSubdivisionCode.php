@@ -18,35 +18,33 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: TD
  *
- * @link http://www.geonames.org/TD/administrative-division-chad.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class TdSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'BA', // Batha
-        'BG', // Barh el Ghazel
-        'BO', // Borkou
-        'CB', // Chari-Baguirmi
-        'EN', // Ennedi Est
-        'EN', // Ennedi Quest
-        'GR', // Guéra
-        'HL', // Hadjer-Lamis
-        'KA', // Kanem
-        'LC', // Lac
-        'LO', // Logone Occidental
-        'LR', // Logone Oriental
-        'MA', // Mandoul
-        'MC', // Moyen-Chari
-        'ME', // Mayo-Kebbi Est
-        'MO', // Mayo-Kebbi Ouest
-        'ND', // Ville de N'Djamena
-        'OD', // Ouaddaï
-        'SA', // Salamat
-        'SI', // Sila
-        'TA', // Tandjile
-        'TI', // Tibesti
-        'WF', // Wadi Fira
-        'EN', // Ennedi
+        'BA', // Al Baṭḩah
+        'BG', // Baḩr al Ghazāl
+        'BO', // Būrkū
+        'CB', // Shārī Bāqirmī
+        'EN', // Innīdī
+        'GR', // Qīrā
+        'HL', // Ḥajjar Lamīs
+        'KA', // Kānim
+        'LC', // Al Buḩayrah
+        'LO', // Lūqūn al Gharbī
+        'LR', // Lūqūn ash Sharqī
+        'MA', // Māndūl
+        'MC', // Shārī al Awsaṭ
+        'ME', // Māyū Kībbī ash Sharqī
+        'MO', // Māyū Kībbī al Gharbī
+        'ND', // Madīnat Injamīnā
+        'OD', // Waddāy
+        'SA', // Salāmāt
+        'SI', // Sīlā
+        'TA', // Tānjilī
+        'TI', // Tibastī
+        'WF', // Wādī Fīrā
     ];
 
     public $compareIdentical = true;

@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: PF
  *
- * @link http://www.geonames.org/PF/administrative-division-french-polynesia.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class PfSubdivisionCode extends AbstractSearcher
 {

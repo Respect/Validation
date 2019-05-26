@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: MY
  *
- * @link http://www.geonames.org/MY/administrative-division-malaysia.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class MySubdivisionCode extends AbstractSearcher
 {
@@ -29,16 +29,16 @@ class MySubdivisionCode extends AbstractSearcher
         '04', // Melaka
         '05', // Negeri Sembilan
         '06', // Pahang
-        '07', // Pinang
+        '07', // Pulau Pinang
         '08', // Perak
         '09', // Perlis
         '10', // Selangor
         '11', // Terengganu
         '12', // Sabah
         '13', // Sarawak
-        '14', // Kuala Lumpur
-        '15', // Labuan
-        '16', // Putrajaya
+        '14', // Wilayah Persekutuan Kuala Lumpur
+        '15', // Wilayah Persekutuan Labuan
+        '16', // Wilayah Persekutuan Putrajaya
     ];
 
     public $compareIdentical = true;

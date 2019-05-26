@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: KY
  *
- * @link http://www.geonames.org/KY/administrative-division-cayman-islands.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class KySubdivisionCode extends AbstractSearcher
 {

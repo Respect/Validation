@@ -18,59 +18,59 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: AL
  *
- * @link http://www.geonames.org/AL/administrative-division-albania.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class AlSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         '01', // Berat
-        '02', // Durres
+        '02', // Durrës
         '03', // Elbasan
         '04', // Fier
-        '05', // Gjirokaster
-        '06', // Korce
-        '07', // Kukes
-        '08', // Lezhe
-        '09', // Diber
-        '10', // Shkoder
-        '11', // Tirane
-        '12', // Vlore
+        '05', // Gjirokastër
+        '06', // Korçë
+        '07', // Kukës
+        '08', // Lezhë
+        '09', // Dibër
+        '10', // Shkodër
+        '11', // Tiranë
+        '12', // Vlorë
         'BR', // Berat
-        'BU', // Bulqize
-        'DI', // Diber
-        'DL', // Delvine
-        'DR', // Durres
+        'BU', // Bulqizë
+        'DI', // Dibër
+        'DL', // Delvinë
+        'DR', // Durrës
         'DV', // Devoll
         'EL', // Elbasan
-        'ER', // Kolonje
+        'ER', // Kolonjë
         'FR', // Fier
-        'GJ', // Gjirokaster
+        'GJ', // Gjirokastër
         'GR', // Gramsh
         'HA', // Has
-        'KA', // Kavaje
+        'KA', // Kavajë
         'KB', // Kurbin
-        'KC', // Kucove
-        'KO', // Korce
-        'KR', // Kruje
-        'KU', // Kukes
+        'KC', // Kuçovë
+        'KO', // Korçë
+        'KR', // Krujë
+        'KU', // Kukës
         'LB', // Librazhd
-        'LE', // Lezhe
-        'LU', // Lushnje
-        'MK', // Mallakaster
-        'MM', // Malesi e Madhe
-        'MR', // Mirdite
+        'LE', // Lezhë
+        'LU', // Lushnjë
+        'MK', // Mallakastër
+        'MM', // Malësi e Madhe
+        'MR', // Mirditë
         'MT', // Mat
         'PG', // Pogradec
         'PQ', // Peqin
-        'PR', // Permet
-        'PU', // Puke
-        'SH', // Shkoder
+        'PR', // Përmet
+        'PU', // Pukë
+        'SH', // Shkodër
         'SK', // Skrapar
-        'SR', // Sarande
-        'TE', // Tepelene
-        'TP', // Tropoje
-        'TR', // Tirane
-        'VL', // Vlore
+        'SR', // Sarandë
+        'TE', // Tepelenë
+        'TP', // Tropojë
+        'TR', // Tiranë
+        'VL', // Vlorë
     ];
 
     public $compareIdentical = true;

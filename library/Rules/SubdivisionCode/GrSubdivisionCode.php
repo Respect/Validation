@@ -18,13 +18,64 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: GR
  *
- * @link http://www.geonames.org/GR/administrative-division-greece.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class GrSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
+        '01', // Aitolia kai Akarnania
+        '03', // Voiotia
+        '04', // Evvoias
+        '05', // Evrytania
+        '06', // Fthiotida
+        '07', // Fokida
+        '11', // Argolida
+        '12', // Arkadia
+        '13', // Achaïa
+        '14', // Ileia
+        '15', // Korinthia
+        '16', // Lakonia
+        '17', // Messinia
+        '21', // Zakynthos
+        '22', // Kerkyra
+        '23', // Kefallonia
+        '24', // Lefkada
+        '31', // Arta
+        '32', // Thesprotia
+        '33', // Ioannina
+        '34', // Preveza
+        '41', // Karditsa
+        '42', // Larisa
+        '43', // Magnisia
+        '44', // Trikala
+        '51', // Grevena
+        '52', // Drama
+        '53', // Imathia
+        '54', // Thessaloniki
+        '55', // Kavala
+        '56', // Kastoria
+        '57', // Kilkis
+        '58', // Kozani
+        '59', // Pella
+        '61', // Pieria
+        '62', // Serres
+        '63', // Florina
+        '64', // Chalkidiki
         '69', // Agio Oros
+        '71', // Evros
+        '72', // Xanthi
+        '73', // Rodopi
+        '81', // Dodekanisos
+        '82', // Kyklades
+        '83', // Lesvos
+        '84', // Samos
+        '85', // Chios
+        '91', // Irakleio
+        '92', // Lasithi
+        '93', // Rethymno
+        '94', // Chania
         'A', // Anatoliki Makedonia kai Thraki
+        'A1', // Attiki
         'B', // Kentriki Makedonia
         'C', // Dytiki Makedonia
         'D', // Ipeiros
@@ -37,57 +88,6 @@ class GrSubdivisionCode extends AbstractSearcher
         'K', // Voreio Aigaio
         'L', // Notio Aigaio
         'M', // Kriti
-        '01', // Nomós Aitolías kai Akarnanías
-        '03', // Nomós Voiotías
-        '04', // Nomós Evvoías
-        '05', // Nomós Evrytanías
-        '06', // Nomós Fthiótidos
-        '07', // Nomós Fokídos
-        '11', // Nomós Argolídos
-        '12', // Nomós Arkadías
-        '13', // Nomós Achaḯas
-        '14', // Nomós Ileías
-        '15', // Nomós Korinthías
-        '16', // Nomós Lakonías
-        '17', // Nomós Messinías
-        '21', // Nomós Zakýnthou
-        '22', // Nomós Kerkýras
-        '23', // Nomós Kefallinías
-        '24', // Nomós Lefkádas
-        '31', // Nomós Ártis
-        '32', // Nomós Thesprotías
-        '33', // Nomós Ioannínon
-        '34', // Nomós Prevézis
-        '41', // Nomós Kardhítsas
-        '42', // Nomós Larísis
-        '43', // Nomós Magnisías
-        '44', // Nomós Trikálon
-        '51', // Nomós Grevenón
-        '52', // Nomós Drámas
-        '53', // Nomós Imathías
-        '54', // Nomós Thessaloníkis
-        '55', // Nomós Kaválas
-        '56', // Nomós Kastoriás
-        '57', // Nomós Kilkís
-        '58', // Nomós Kozánis
-        '59', // Nomós Péllis
-        '61', // Nomós Pierías
-        '62', // Nomós Serrón
-        '63', // Nomós Florínis
-        '64', // Nomós Chalkidikís
-        '71', // Nomós Évrou
-        '72', // Nomós Xánthis
-        '73', // Nomós Rodópis
-        '81', // Nomós Dodekanísou
-        '82', // Nomós Kykládon
-        '83', // Nomós Lésvou
-        '84', // Nomós Sámou
-        '85', // Nomós Chíou
-        '91', // Nomós Irakleíou
-        '92', // Nomós Lasithíou
-        '93', // Nomós Rethýmnis
-        '94', // Nomós Chaniás
-        'A1', // Nomós Attikís
     ];
 
     public $compareIdentical = true;

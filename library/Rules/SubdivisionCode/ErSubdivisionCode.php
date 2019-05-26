@@ -18,17 +18,17 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: ER
  *
- * @link http://www.geonames.org/ER/administrative-division-eritrea.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class ErSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'AN', // Anseba (Keren)
-        'DK', // Southern Red Sea (Debub-Keih-Bahri)
-        'DU', // Southern (Debub)
-        'GB', // Gash-Barka (Barentu)
-        'MA', // Central (Maekel)
-        'SK', // Northern Red Sea (Semien-Keih-Bahri)
+        'AN', // Ansabā
+        'DK', // Janūbī al Baḩrī al Aḩmar
+        'DU', // Al Janūbī
+        'GB', // Qāsh-Barkah
+        'MA', // Al Awsaţ
+        'SK', // Shimālī al Baḩrī al Aḩmar
     ];
 
     public $compareIdentical = true;

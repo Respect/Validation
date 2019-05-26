@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: VI
  *
- * @link http://www.geonames.org/VI/administrative-division-u-s-virgin-islands.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class ViSubdivisionCode extends AbstractSearcher
 {

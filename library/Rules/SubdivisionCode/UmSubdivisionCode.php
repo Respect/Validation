@@ -18,13 +18,13 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: UM
  *
- * @link http://www.geonames.org/UM/administrative-division-united-states-minor-outlying-islands.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class UmSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         '67', // Johnston Atoll
-        '71', // Midway Atoll
+        '71', // Midway Islands
         '76', // Navassa Island
         '79', // Wake Island
         '81', // Baker Island

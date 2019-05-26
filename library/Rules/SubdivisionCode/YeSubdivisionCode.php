@@ -18,32 +18,31 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: YE
  *
- * @link http://www.geonames.org/YE/administrative-division-yemen.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class YeSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'AB', // Abyan
-        'AD', // Adan
-        'AM', // Amran
-        'BA', // Al Bayda
-        'DA', // Ad Dali
-        'DH', // Dhamar
-        'HD', // Hadramawt
-        'HJ', // Hajjah
-        'HU', // Al Hudaydah
+        'AB', // Abyān
+        'AD', // 'Adan
+        'AM', // 'Amrān
+        'BA', // Al Bayḑā'
+        'DA', // Aḑ Ḑāli‘
+        'DH', // Dhamār
+        'HD', // Ḩaḑramawt
+        'HJ', // Ḩajjah
         'IB', // Ibb
         'JA', // Al Jawf
-        'LA', // Lahij
+        'LA', // Laḩij
         'MA', // Ma'rib
         'MR', // Al Mahrah
-        'MW', // Al Mahwit
+        'MU', // Al Ḩudaydah
+        'MW', // Al Maḩwīt
         'RA', // Raymah
-        'SA', // Amanat Al Asimah
-        'SD', // Sa'dah
+        'SD', // Şa'dah
         'SH', // Shabwah
-        'SN', // San'a
-        'TA', // Ta'izz
+        'SN', // Şan'ā'
+        'TA', // Tā'izz
     ];
 
     public $compareIdentical = true;

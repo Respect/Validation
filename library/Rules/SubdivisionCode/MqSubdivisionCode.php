@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: MQ
  *
- * @link http://www.geonames.org/MQ/administrative-division-martinique.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class MqSubdivisionCode extends AbstractSearcher
 {

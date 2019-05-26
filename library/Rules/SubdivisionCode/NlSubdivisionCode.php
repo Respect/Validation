@@ -18,23 +18,29 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: NL
  *
- * @link http://www.geonames.org/NL/administrative-division-netherlands.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class NlSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
+        'AW', // Aruba
+        'BQ1', // Bonaire
+        'BQ2', // Saba
+        'BQ3', // Sint Eustatius
+        'CW', // Curaçao
         'DR', // Drenthe
         'FL', // Flevoland
         'FR', // Friesland
         'GE', // Gelderland
         'GR', // Groningen
         'LI', // Limburg
-        'NB', // Noord Brabant
-        'NH', // Noord Holland
+        'NB', // Noord-Brabant
+        'NH', // Noord-Holland
         'OV', // Overijssel
+        'SX', // Sint Maarten
         'UT', // Utrecht
         'ZE', // Zeeland
-        'ZH', // Zuid Holland
+        'ZH', // Zuid-Holland
     ];
 
     public $compareIdentical = true;

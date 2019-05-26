@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: BJ
  *
- * @link http://www.geonames.org/BJ/administrative-division-benin.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class BjSubdivisionCode extends AbstractSearcher
 {
@@ -32,7 +32,7 @@ class BjSubdivisionCode extends AbstractSearcher
         'KO', // Kouffo
         'LI', // Littoral
         'MO', // Mono
-        'OU', // Oueme
+        'OU', // Ouémé
         'PL', // Plateau
         'ZO', // Zou
     ];

@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: MO
  *
- * @link http://www.geonames.org/MO/administrative-division-macao.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class MoSubdivisionCode extends AbstractSearcher
 {

@@ -18,13 +18,11 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: MH
  *
- * @link http://www.geonames.org/MH/administrative-division-marshall-islands.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class MhSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'L', // Ralik chain
-        'T', // Ratak chain
         'ALK', // Ailuk
         'ALL', // Ailinglaplap
         'ARN', // Arno
@@ -35,6 +33,7 @@ class MhSubdivisionCode extends AbstractSearcher
         'JAL', // Jaluit
         'KIL', // Kili
         'KWA', // Kwajalein
+        'L', // Ralik chain
         'LAE', // Lae
         'LIB', // Lib
         'LIK', // Likiep
@@ -42,13 +41,14 @@ class MhSubdivisionCode extends AbstractSearcher
         'MAL', // Maloelap
         'MEJ', // Mejit
         'MIL', // Mili
-        'NMK', // Namorik
+        'NMK', // Namdrik
         'NMU', // Namu
         'RON', // Rongelap
+        'T', // Ratak chain
         'UJA', // Ujae
         'UTI', // Utirik
-        'WTH', // Wotho
         'WTJ', // Wotje
+        'WTN', // Wotho
     ];
 
     public $compareIdentical = true;

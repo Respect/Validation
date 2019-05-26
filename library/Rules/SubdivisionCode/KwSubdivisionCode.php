@@ -18,16 +18,16 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: KW
  *
- * @link http://www.geonames.org/KW/administrative-division-kuwait.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class KwSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         'AH', // Al Ahmadi
-        'FA', // Al Farwaniyah
-        'HA', // Hawalli
-        'JA', // Al Jahra
-        'KU', // Al Asimah
+        'FA', // Al Farwānīyah
+        'HA', // Hawallī
+        'JA', // Al Jahrrā’
+        'KU', // Al Kuwayt (Al ‘Āşimah)
         'MU', // Mubārak al Kabīr
     ];
 

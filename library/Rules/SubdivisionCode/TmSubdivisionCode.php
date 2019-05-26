@@ -18,16 +18,16 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: TM
  *
- * @link http://www.geonames.org/TM/administrative-division-turkmenistan.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class TmSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'A', // Ahal Welayaty
-        'B', // Balkan Welayaty
-        'D', // Dashhowuz Welayaty
-        'L', // Lebap Welayaty
-        'M', // Mary Welayaty
+        'A', // Ahal
+        'B', // Balkan
+        'D', // Daşoguz
+        'L', // Lebap
+        'M', // Mary
         'S', // Aşgabat
     ];
 

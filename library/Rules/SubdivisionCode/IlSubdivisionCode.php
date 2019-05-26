@@ -18,17 +18,17 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: IL
  *
- * @link http://www.geonames.org/IL/administrative-division-israel.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class IlSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'D', // Southern
-        'HA', // Haifa
-        'JM', // Jerusalem
-        'M', // Central
-        'TA', // Tel Aviv
-        'Z', // Northern
+        'D', // HaDarom
+        'HA', // Hefa
+        'JM', // Yerushalayim Al Quds
+        'M', // HaMerkaz
+        'TA', // Tel-Aviv
+        'Z', // HaZafon
     ];
 
     public $compareIdentical = true;

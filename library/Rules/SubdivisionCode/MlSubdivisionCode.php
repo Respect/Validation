@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: ML
  *
- * @link http://www.geonames.org/ML/administrative-division-mali.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class MlSubdivisionCode extends AbstractSearcher
 {
@@ -26,12 +26,12 @@ class MlSubdivisionCode extends AbstractSearcher
         '1', // Kayes
         '2', // Koulikoro
         '3', // Sikasso
-        '4', // Segou
+        '4', // Ségou
         '5', // Mopti
         '6', // Tombouctou
         '7', // Gao
         '8', // Kidal
-        'BKO', // Bamako Capital District
+        'BK0', // Bamako
     ];
 
     public $compareIdentical = true;

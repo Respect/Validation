@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: TF
  *
- * @link http://www.geonames.org/TF/administrative-division-french-southern-territories.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class TfSubdivisionCode extends AbstractSearcher
 {

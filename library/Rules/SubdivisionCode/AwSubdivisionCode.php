@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: AW
  *
- * @link http://www.geonames.org/AW/administrative-division-aruba.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class AwSubdivisionCode extends AbstractSearcher
 {

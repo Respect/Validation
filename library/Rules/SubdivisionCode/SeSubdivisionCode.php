@@ -18,32 +18,32 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: SE
  *
- * @link http://www.geonames.org/SE/administrative-division-sweden.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class SeSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'AB', // Stockholms
-        'AC', // Vasterbottens
-        'BD', // Norrbottens
-        'C', // Uppsala
-        'D', // Sodermanlands
-        'E', // Ostergotlands
-        'F', // Jonkopings
-        'G', // Kronobergs
-        'H', // Kalmar
-        'I', // Gotlands
-        'K', // Blekinge
-        'M', // Skåne
-        'N', // Hallands
-        'O', // Västra Götaland
-        'S', // Varmlands
-        'T', // Orebro
-        'U', // Vastmanlands
-        'W', // Dalarna
-        'X', // Gavleborgs
-        'Y', // Vasternorrlands
-        'Z', // Jamtlands
+        'AB', // Stockholms län
+        'AC', // Västerbottens län
+        'BD', // Norrbottens län
+        'C', // Uppsala län
+        'D', // Södermanlands län
+        'E', // Östergötlands län
+        'F', // Jönköpings län
+        'G', // Kronobergs län
+        'H', // Kalmar län
+        'I', // Gotlands län
+        'K', // Blekinge län
+        'M', // Skåne län
+        'N', // Hallands län
+        'O', // Västra Götalands län
+        'S', // Värmlands län
+        'T', // Örebro län
+        'U', // Västmanlands län
+        'W', // Dalarnas län
+        'X', // Gävleborgs län
+        'Y', // Västernorrlands län
+        'Z', // Jämtlands län
     ];
 
     public $compareIdentical = true;

@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: BI
  *
- * @link http://www.geonames.org/BI/administrative-division-burundi.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class BiSubdivisionCode extends AbstractSearcher
 {
@@ -36,7 +36,6 @@ class BiSubdivisionCode extends AbstractSearcher
         'MA', // Makamba
         'MU', // Muramvya
         'MW', // Mwaro
-        'MY', // Muyinga
         'NG', // Ngozi
         'RT', // Rutana
         'RY', // Ruyigi

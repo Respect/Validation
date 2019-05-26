@@ -18,19 +18,19 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: SK
  *
- * @link http://www.geonames.org/SK/administrative-division-slovakia.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class SkSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'BC', // Banskobystricky
-        'BL', // Bratislavsky
-        'KI', // Kosicky
-        'NI', // Nitriansky
-        'PV', // Presovsky
-        'TA', // Trnavsky
-        'TC', // Trenciansky
-        'ZI', // Zilinsky
+        'BC', // Banskobystrický kraj
+        'BL', // Bratislavský kraj
+        'KI', // Košický kraj
+        'NI', // Nitriansky kraj
+        'PV', // Prešovský kraj
+        'TA', // Trnavský kraj
+        'TC', // Trenčiansky kraj
+        'ZI', // Žilinský kraj
     ];
 
     public $compareIdentical = true;

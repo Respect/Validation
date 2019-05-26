@@ -18,20 +18,20 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: GQ
  *
- * @link http://www.geonames.org/GQ/administrative-division-equatorial-guinea.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class GqSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
+        'AN', // Annobón
+        'BN', // Bioko Norte
+        'BS', // Bioko Sur
         'C', // Región Continental
+        'CS', // Centro Sur
         'I', // Región Insular
-        'AN', // Provincia Annobon
-        'BN', // Provincia Bioko Norte
-        'BS', // Provincia Bioko Sur
-        'CS', // Provincia Centro Sur
-        'KN', // Provincia Kie-Ntem
-        'LI', // Provincia Litoral
-        'WN', // Provincia Wele-Nzas
+        'KN', // Kié-Ntem
+        'LI', // Litoral
+        'WN', // Wele-Nzas
     ];
 
     public $compareIdentical = true;

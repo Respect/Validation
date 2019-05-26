@@ -18,51 +18,51 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: GN
  *
- * @link http://www.geonames.org/GN/administrative-division-guinea.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class GnSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         'B', // Boké
-        'C', // Conakry
-        'D', // Kindia
-        'F', // Faranah
-        'K', // Kankan
-        'L', // Labé
-        'M', // Mamou
-        'N', // Nzérékoré
         'BE', // Beyla
         'BF', // Boffa
-        'BK', // Boke
+        'BK', // Boké
+        'C', // Conakry
         'CO', // Coyah
+        'D', // Kindia
         'DB', // Dabola
         'DI', // Dinguiraye
         'DL', // Dalaba
-        'DU', // Dubreka
+        'DU', // Dubréka
+        'F', // Faranah
         'FA', // Faranah
-        'FO', // Forecariah
+        'FO', // Forécariah
         'FR', // Fria
         'GA', // Gaoual
-        'GU', // Gueckedou
+        'GU', // Guékédou
+        'K', // Kankan
         'KA', // Kankan
         'KB', // Koubia
         'KD', // Kindia
-        'KE', // Kerouane
+        'KE', // Kérouané
         'KN', // Koundara
         'KO', // Kouroussa
         'KS', // Kissidougou
-        'LA', // Labe
-        'LE', // Lelouma
+        'L', // Labé
+        'LA', // Labé
+        'LE', // Lélouma
         'LO', // Lola
+        'M', // Mamou
         'MC', // Macenta
         'MD', // Mandiana
         'ML', // Mali
         'MM', // Mamou
-        'NZ', // Nzerekore
+        'N', // Nzérékoré
+        'NZ', // Nzérékoré
         'PI', // Pita
         'SI', // Siguiri
-        'TE', // Telimele
-        'TO', // Tougue
+        'TE', // Télimélé
+        'TO', // Tougué
         'YO', // Yomou
     ];
 

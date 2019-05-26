@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: JE
  *
- * @link http://www.geonames.org/JE/administrative-division-jersey.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class JeSubdivisionCode extends AbstractSearcher
 {

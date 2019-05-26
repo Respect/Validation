@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: AD
  *
- * @link http://www.geonames.org/AD/administrative-division-andorra.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class AdSubdivisionCode extends AbstractSearcher
 {
@@ -27,7 +27,7 @@ class AdSubdivisionCode extends AbstractSearcher
         '03', // Encamp
         '04', // La Massana
         '05', // Ordino
-        '06', // Sant Julia de Lòria
+        '06', // Sant Julià de Lòria
         '07', // Andorra la Vella
         '08', // Escaldes-Engordany
     ];

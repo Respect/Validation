@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: GY
  *
- * @link http://www.geonames.org/GY/administrative-division-guyana.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class GySubdivisionCode extends AbstractSearcher
 {

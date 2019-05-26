@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: CO
  *
- * @link http://www.geonames.org/CO/administrative-division-colombia.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class CoSubdivisionCode extends AbstractSearcher
 {
@@ -26,35 +26,35 @@ class CoSubdivisionCode extends AbstractSearcher
         'AMA', // Amazonas
         'ANT', // Antioquia
         'ARA', // Arauca
-        'ATL', // Atlantico
-        'BOL', // Bolivar
-        'BOY', // Boyaca
+        'ATL', // Atlántico
+        'BOL', // Bolívar
+        'BOY', // Boyacá
         'CAL', // Caldas
-        'CAQ', // Caqueta
+        'CAQ', // Caquetá
         'CAS', // Casanare
         'CAU', // Cauca
         'CES', // Cesar
-        'CHO', // Choco
-        'COR', // Cordoba
+        'CHO', // Chocó
+        'COR', // Córdoba
         'CUN', // Cundinamarca
-        'DC', // Bogota D.C.
-        'GUA', // Guainia
+        'DC', // Distrito Capital de Bogotá
+        'GUA', // Guainía
         'GUV', // Guaviare
         'HUI', // Huila
         'LAG', // La Guajira
         'MAG', // Magdalena
         'MET', // Meta
-        'NAR', // Narino
+        'NAR', // Nariño
         'NSA', // Norte de Santander
         'PUT', // Putumayo
-        'QUI', // Quindio
+        'QUI', // Quindío
         'RIS', // Risaralda
         'SAN', // Santander
-        'SAP', // San Andres y Providencia
+        'SAP', // San Andrés, Providencia y Santa Catalina
         'SUC', // Sucre
         'TOL', // Tolima
         'VAC', // Valle del Cauca
-        'VAU', // Vaupes
+        'VAU', // Vaupés
         'VID', // Vichada
     ];
 

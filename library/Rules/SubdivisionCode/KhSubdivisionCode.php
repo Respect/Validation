@@ -18,35 +18,35 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: KH
  *
- * @link http://www.geonames.org/KH/administrative-division-cambodia.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class KhSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        '1', // Banteay Mean Choay
-        '10', // Kratie
-        '11', // Mondul Kiri
+        '1', // Banteay Mean Chey
+        '10', // Krachoh
+        '11', // Mondol Kiri
         '12', // Phnom Penh
         '13', // Preah Vihear
-        '14', // Prey Veng
-        '15', // Pursat
-        '16', // Rôtânôkiri
-        '17', // Siemreap
-        '18', // Preah Seihanu (Kompong Som or Sihanoukville)
-        '19', // Stung Treng
+        '14', // Prey Veaeng
+        '15', // Pousaat
+        '16', // Rotanak Kiri
+        '17', // Siem Reab
+        '18', // Krong Preah Sihanouk
+        '19', // Stueng Traeng
         '2', // Battambang
-        '20', // Svay Rieng
-        '21', // Takeo
-        '22', // Otdar Mean Choay
-        '23', // Keb
-        '24', // Pailin
+        '20', // Svaay Rieng
+        '21', // Taakaev
+        '22', // Otdar Mean Chey
+        '23', // Krong Kaeb
+        '24', // Krong Pailin
         '3', // Kampong Cham
         '4', // Kampong Chhnang
         '5', // Kampong Speu
         '6', // Kampong Thom
         '7', // Kampot
         '8', // Kandal
-        '9', // Kaoh Kong
+        '9', // Kach Kong
     ];
 
     public $compareIdentical = true;

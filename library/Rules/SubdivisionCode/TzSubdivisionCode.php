@@ -18,26 +18,26 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: TZ
  *
- * @link http://www.geonames.org/TZ/administrative-division-tanzania.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class TzSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         '01', // Arusha
-        '02', // Dar es Salaam
+        '02', // Dar-es-Salaam
         '03', // Dodoma
         '04', // Iringa
         '05', // Kagera
-        '06', // Pemba North
-        '07', // Zanzibar North
+        '06', // Kaskazini Pemba
+        '07', // Kaskazini Unguja
         '08', // Kigoma
         '09', // Kilimanjaro
-        '10', // Pemba South
-        '11', // Zanzibar Central/South
+        '10', // Kusini Pemba
+        '11', // Kusini Unguja
         '12', // Lindi
         '13', // Mara
         '14', // Mbeya
-        '15', // Zanzibar Urban/West
+        '15', // Mjini Magharibi
         '16', // Morogoro
         '17', // Mtwara
         '18', // Mwanza

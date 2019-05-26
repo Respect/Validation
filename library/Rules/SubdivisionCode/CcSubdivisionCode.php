@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: CC
  *
- * @link http://www.geonames.org/CC/administrative-division-cocos-islands.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class CcSubdivisionCode extends AbstractSearcher
 {

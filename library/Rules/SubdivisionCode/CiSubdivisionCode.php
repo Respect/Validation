@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: CI
  *
- * @link http://www.geonames.org/CI/administrative-division-ivory-coast.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class CiSubdivisionCode extends AbstractSearcher
 {
@@ -36,7 +36,7 @@ class CiSubdivisionCode extends AbstractSearcher
         '11', // Nzi-Comoé (Région)
         '12', // Marahoué (Région de la)
         '13', // Sud-Comoé (Région du)
-        '14', // Worodougou (Région du)
+        '14', // Worodouqou (Région du)
         '15', // Sud-Bandama (Région du)
         '16', // Agnébi (Région de l')
         '17', // Bafing (Région du)

@@ -18,38 +18,38 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: UA
  *
- * @link http://www.geonames.org/UA/administrative-division-ukraine.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class UaSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        '05', // Vinnytsya
-        '07', // Volyn'
-        '09', // Luhans'k
-        '12', // Dnipropetrovs'k
-        '14', // Donets'k
-        '18', // Zhytomyr
-        '21', // Zakarpattya
-        '23', // Zaporizhzhya
-        '26', // Ivano-Frankivs'k
-        '30', // Kyyiv
-        '32', // Kiev
-        '35', // Kirovohrad
+        '05', // Vinnyts'ka Oblast'
+        '07', // Volyns'ka Oblast'
+        '09', // Luhans'ka Oblast'
+        '12', // Dnipropetrovs'ka Oblast'
+        '14', // Donets'ka Oblast'
+        '18', // Zhytomyrs'ka Oblast'
+        '21', // Zakarpats'ka Oblast'
+        '23', // Zaporiz'ka Oblast'
+        '26', // Ivano-Frankivs'ka Oblast'
+        '30', // Kyïvs'ka mis'ka rada
+        '32', // Kyïvs'ka Oblast'
+        '35', // Kirovohrads'ka Oblast'
         '40', // Sevastopol
-        '43', // Crimea
-        '46', // L'viv
-        '48', // Mykolayiv
-        '51', // Odesa
-        '53', // Poltava
-        '56', // Rivne
-        '59', // Sumy
-        '61', // Ternopil'
-        '63', // Kharkiv
-        '65', // Kherson
-        '68', // Khmel'nyts'kyy
-        '71', // Cherkasy
-        '74', // Chernihiv
-        '77', // Chernivtsi
+        '43', // Respublika Krym
+        '46', // L'vivs'ka Oblast'
+        '48', // Mykolaïvs'ka Oblast'
+        '51', // Odes'ka Oblast'
+        '53', // Poltavs'ka Oblast'
+        '56', // Rivnens'ka Oblast'
+        '59', // Sums 'ka Oblast'
+        '61', // Ternopil's'ka Oblast'
+        '63', // Kharkivs'ka Oblast'
+        '65', // Khersons'ka Oblast'
+        '68', // Khmel'nyts'ka Oblast'
+        '71', // Cherkas'ka Oblast'
+        '74', // Chernihivs'ka Oblast'
+        '77', // Chernivets'ka Oblast'
     ];
 
     public $compareIdentical = true;

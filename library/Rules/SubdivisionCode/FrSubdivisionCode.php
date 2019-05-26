@@ -18,28 +18,12 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: FR
  *
- * @link http://www.geonames.org/FR/administrative-division-france.html
- * @link https://www.iso.org/obp/ui/en/#iso:code:3166:FR
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class FrSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'ARA', // Auvergne-Rhône-Alpes
-        'BFC', // Bourgogne-Franche-Comté
-        'BRE', // Bretagne
-        'CVL', // Centre-Val de Loire
-        'COR', // Corse
-        'GES', // Grand Est
-        'GUA', // Guadeloupe
-        'HDF', // Hauts-de-France
-        'IDF', // Île-de-France
-        'MAY', // Mayotte
-        'NOR', // Normandie
-        'NAQ', // Nouvelle-Aquitaine
-        'OCC', // Occitanie
-        'PDL', // Pays de la Loire
-        'PAC', // Provence-Alpes-Côte d'Azur
-        'LRE', // La Réunion
         '01', // Ain
         '02', // Aisne
         '03', // Allier
@@ -136,19 +120,35 @@ class FrSubdivisionCode extends AbstractSearcher
         '93', // Seine-Saint-Denis
         '94', // Val-de-Marne
         '95', // Val-d'Oise
-        'BL', // Saint Barthélemy (see also separate ISO 3166-1 entry under BL)
+        'ARA', // Auvergne-Rhône-Alpes
+        'BFC', // Bourgogne-Franche-Comté
+        'BL', // Saint-Barthélemy
+        'BRE', // Bretagne
+        'COR', // Corse
         'CP', // Clipperton
-        'GF', // Guyane (française) (see also separate country code entry under GF)
-        'GP', // Guadeloupe (see also separate country code entry under GP)
-        'MF', // Saint Martin (see also separate ISO 3166-1 entry under MF)
-        'MQ', // Martinique (see also separate country code entry under MQ)
-        'NC', // Nouvelle-Calédonie (see also separate ISO 3166-1 entry under NC)
-        'PF', // Polynésie française (see also separate ISO 3166-1 entry under PF)
-        'PM', // Saint-Pierre-et-Miquelon (see also separate ISO 3166-1 entry under PM)
-        'RE', // La Réunion (see also separate country code entry under RE)
-        'TF', // Terres Australes Françaises (see also separate ISO 3166-1 entry under TF)
-        'WF', // Wallis et Futuna (see also separate ISO 3166-1 entry under WF)
-        'YT', // Mayotte (see also separate ISO 3166-1 entry under YT)
+        'CVL', // Centre-Val de Loire
+        'GES', // Grand-Est
+        'GF', // Guyane (française)
+        'GP', // Guadeloupe
+        'GUA', // Guadeloupe
+        'HDF', // Hauts-de-France
+        'IDF', // Île-de-France
+        'LRE', // La Réunion
+        'MAY', // Mayotte
+        'MF', // Saint-Martin
+        'MQ', // Martinique
+        'NAQ', // Nouvelle-Aquitaine
+        'NC', // Nouvelle-Calédonie
+        'NOR', // Normandie
+        'OCC', // Occitanie
+        'PAC', // Provence-Alpes-Côte-d’Azur
+        'PDL', // Pays-de-la-Loire
+        'PF', // Polynésie française
+        'PM', // Saint-Pierre-et-Miquelon
+        'RE', // La Réunion
+        'TF', // Terres australes françaises
+        'WF', // Wallis-et-Futuna
+        'YT', // Mayotte
     ];
 
     public $compareIdentical = true;

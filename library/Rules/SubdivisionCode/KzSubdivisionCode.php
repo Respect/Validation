@@ -18,28 +18,27 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: KZ
  *
- * @link http://www.geonames.org/KZ/administrative-division-kazakhstan.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class KzSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'AKM', // Aqmola
-        'AKT', // Aqtobe
+        'AKM', // Aqmola oblysy
+        'AKT', // Aqtöbe oblysy
         'ALA', // Almaty
-        'ALM', // Almaty
+        'ALM', // Almaty oblysy
         'AST', // Astana
-        'ATY', // Atyrau
-        'BAY', // Baykonyr
-        'KAR', // Qaraghandy
-        'KUS', // Qustanay
-        'KZY', // Qyzylorda
-        'MAN', // Mangghystau
-        'PAV', // Paylodar
-        'SEV', // Soltustik Qazaqstan
-        'VOS', // Shyghys Qazaqstan
-        'YUZ', // Ongtustik Qazaqstan
-        'ZAP', // Baty Qazaqstan
-        'ZHA', // Zhambyl
+        'ATY', // Atyraū oblysy
+        'KAR', // Qaraghandy oblysy
+        'KUS', // Qostanay oblysy
+        'KZY', // Qyzylorda oblysy
+        'MAN', // Mangghystaū oblysy
+        'PAV', // Pavlodar oblysy
+        'SEV', // Soltüstik Quzaqstan oblysy
+        'VOS', // Shyghys Qazaqstan oblysy
+        'YUZ', // Ongtüstik Qazaqstan oblysy
+        'ZAP', // Batys Quzaqstan oblysy
+        'ZHA', // Zhambyl oblysy
     ];
 
     public $compareIdentical = true;

@@ -18,12 +18,12 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: RW
  *
- * @link http://www.geonames.org/RW/administrative-division-rwanda.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class RwSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        '01', // Kigali
+        '01', // Ville de Kigali
         '02', // Est
         '03', // Nord
         '04', // Ouest

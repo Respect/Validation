@@ -18,23 +18,23 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: GW
  *
- * @link http://www.geonames.org/GW/administrative-division-guinea-bissau.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class GwSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
+        'BA', // Bafatá
+        'BL', // Bolama
+        'BM', // Biombo
+        'BS', // Bissau
+        'CA', // Cacheu
+        'GA', // Gabú
         'L', // Leste
         'N', // Norte
+        'OI', // Oio
+        'QU', // Quinara
         'S', // Sul
-        'BA', // Bafata Region
-        'BL', // Bolama Region
-        'BM', // Biombo Region
-        'BS', // Bissau Region
-        'CA', // Cacheu Region
-        'GA', // Gabu Region
-        'OI', // Oio Region
-        'QU', // Quinara Region
-        'TO', // Tombali Region
+        'TO', // Tombali
     ];
 
     public $compareIdentical = true;

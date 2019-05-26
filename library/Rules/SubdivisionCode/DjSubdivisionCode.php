@@ -18,17 +18,17 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: DJ
  *
- * @link http://www.geonames.org/DJ/administrative-division-djibouti.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class DjSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
         'AR', // Arta
-        'AS', // 'Ali Sabih
+        'AS', // Ali Sabieh
         'DI', // Dikhil
         'DJ', // Djibouti
         'OB', // Obock
-        'TA', // Tadjoura
+        'TA', // Tadjourah
     ];
 
     public $compareIdentical = true;

@@ -18,45 +18,45 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: CN
  *
- * @link http://www.geonames.org/CN/administrative-division-china.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class CnSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        '11', // Beijing
-        '12', // Tianjin
-        '13', // Hebei
-        '14', // Shanxi
-        '15', // Nei Mongol
-        '21', // Liaoning
-        '22', // Jilin
-        '23', // Heilongjiang
-        '31', // Shanghai
-        '32', // Jiangsu
-        '33', // Zhejiang
-        '34', // Anhui
-        '35', // Fujian
-        '36', // Jiangxi
-        '37', // Shandong
-        '41', // Henan
-        '42', // Hubei
-        '43', // Hunan
-        '44', // Guangdong
-        '45', // Guangxi
-        '46', // Hainan
-        '50', // Chongqìng
-        '51', // Sichuan
-        '52', // Guizhou
-        '53', // Yunnan
-        '54', // Xizang Zìzhìqu (Tibet)
-        '61', // Shaanxi
-        '62', // Gansu
-        '63', // Qinghai
-        '64', // Ningxia
-        '65', // Xinjiang
-        '71', // Taiwan
-        '91', // Xianggang
-        '92', // Aomen
+        'AH', // Anhui Sheng
+        'BJ', // Beijing Shi
+        'CQ', // Chongqing Shi
+        'FJ', // Fujian Sheng
+        'GD', // Guangdong Sheng
+        'GS', // Gansu Sheng
+        'GX', // Guangxi Zhuangzu Zizhiqu
+        'GZ', // Guizhou Sheng
+        'HA', // Henan Sheng
+        'HB', // Hubei Sheng
+        'HE', // Hebei Sheng
+        'HI', // Hainan Sheng
+        'HK', // Hong Kong SAR (see also separate country code entry under HK)
+        'HL', // Heilongjiang Sheng
+        'HN', // Hunan Sheng
+        'JL', // Jilin Sheng
+        'JS', // Jiangsu Sheng
+        'JX', // Jiangxi Sheng
+        'LN', // Liaoning Sheng
+        'MO', // Macao SAR (see also separate country code entry under MO)
+        'NM', // Nei Mongol Zizhiqu
+        'NX', // Ningxia Huizi Zizhiqu
+        'QH', // Qinghai Sheng
+        'SC', // Sichuan Sheng
+        'SD', // Shandong Sheng
+        'SH', // Shanghai Shi
+        'SN', // Shaanxi Sheng
+        'SX', // Shanxi Sheng
+        'TJ', // Tianjin Shi
+        'TW', // Taiwan Sheng (see also separate country code entry under TW)
+        'XJ', // Xinjiang Uygur Zizhiqu
+        'XZ', // Xizang Zizhiqu
+        'YN', // Yunnan Sheng
+        'ZJ', // Zhejiang Sheng
     ];
 
     public $compareIdentical = true;

@@ -18,21 +18,20 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: MK
  *
- * @link http://www.geonames.org/MK/administrative-division-macedonia.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class MkSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        '01', // Aerodrom †
+        '01', // Aerodrom
         '02', // Aračinovo
         '03', // Berovo
         '04', // Bitola
         '05', // Bogdanci
         '06', // Bogovinje
         '07', // Bosilovo
-        '077', // Centar †
         '08', // Brvenica
-        '09', // Butel †
+        '09', // Butel
         '10', // Valandovo
         '11', // Vasilevo
         '12', // Vevčani
@@ -40,7 +39,7 @@ class MkSubdivisionCode extends AbstractSearcher
         '14', // Vinica
         '15', // Vraneštica
         '16', // Vrapčište
-        '17', // Gazi Baba †
+        '17', // Gazi Baba
         '18', // Gevgelija
         '19', // Gostivar
         '20', // Gradsko
@@ -52,7 +51,7 @@ class MkSubdivisionCode extends AbstractSearcher
         '26', // Dojran
         '27', // Dolneni
         '28', // Drugovo
-        '29', // Gjorče Petrov †
+        '29', // Gjorče Petrov
         '30', // Želino
         '31', // Zajas
         '32', // Zelenikovo
@@ -61,8 +60,8 @@ class MkSubdivisionCode extends AbstractSearcher
         '35', // Jegunovce
         '36', // Kavadarci
         '37', // Karbinci
-        '38', // Karpoš †
-        '39', // Kisela Voda †
+        '38', // Karpoš
+        '39', // Kisela Voda
         '40', // Kičevo
         '41', // Konče
         '42', // Kočani
@@ -91,22 +90,23 @@ class MkSubdivisionCode extends AbstractSearcher
         '65', // Rankovce
         '66', // Resen
         '67', // Rosoman
-        '68', // Saraj †
+        '68', // Saraj
         '69', // Sveti Nikole
-        '70', // Štip
-        '71', // Struga
-        '72', // Strumica
-        '73', // Studeničani
-        '74', // Šuto Orizari †
+        '70', // Sopište
+        '71', // Staro Nagoričane
+        '72', // Struga
+        '73', // Strumica
+        '74', // Studeničani
         '75', // Tearce
         '76', // Tetovo
+        '77', // Centar
         '78', // Centar Župa
-        '79', // Čair †
+        '79', // Čair
         '80', // Čaška
         '81', // Češinovo-Obleševo
         '82', // Čučer Sandevo
-        '83', // Sopište
-        '84', // Staro Nagoričane
+        '83', // Štip
+        '84', // Šuto Orizari
     ];
 
     public $compareIdentical = true;

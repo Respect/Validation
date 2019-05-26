@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: NG
  *
- * @link http://www.geonames.org/NG/administrative-division-nigeria.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class NgSubdivisionCode extends AbstractSearcher
 {
@@ -37,7 +37,7 @@ class NgSubdivisionCode extends AbstractSearcher
         'ED', // Edo
         'EK', // Ekiti
         'EN', // Enugu
-        'FC', // Federal Capital Territory
+        'FC', // Abuja Capital Territory
         'GO', // Gombe
         'IM', // Imo
         'JI', // Jigawa

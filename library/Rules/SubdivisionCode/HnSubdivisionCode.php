@@ -18,27 +18,27 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: HN
  *
- * @link http://www.geonames.org/HN/administrative-division-honduras.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class HnSubdivisionCode extends AbstractSearcher
 {
     public $haystack = [
-        'AT', // Atlantida
+        'AT', // Atlántida
         'CH', // Choluteca
-        'CL', // Colon
+        'CL', // Colón
         'CM', // Comayagua
-        'CP', // Copan
-        'CR', // Cortes
-        'EP', // El Paraiso
-        'FM', // Francisco Morazan
+        'CP', // Copán
+        'CR', // Cortés
+        'EP', // El Paraíso
+        'FM', // Francisco Morazán
         'GD', // Gracias a Dios
-        'IB', // Islas de la Bahia (Bay Islands)
-        'IN', // Intibuca
+        'IB', // Islas de la Bahía
+        'IN', // Intibucá
         'LE', // Lempira
         'LP', // La Paz
         'OC', // Ocotepeque
         'OL', // Olancho
-        'SB', // Santa Barbara
+        'SB', // Santa Bárbara
         'VA', // Valle
         'YO', // Yoro
     ];

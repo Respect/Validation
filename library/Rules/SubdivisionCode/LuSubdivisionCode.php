@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: LU
  *
- * @link http://www.geonames.org/LU/administrative-division-luxembourg.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class LuSubdivisionCode extends AbstractSearcher
 {

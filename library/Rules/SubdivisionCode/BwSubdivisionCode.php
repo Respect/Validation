@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: BW
  *
- * @link http://www.geonames.org/BW/administrative-division-botswana.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class BwSubdivisionCode extends AbstractSearcher
 {
@@ -28,9 +28,9 @@ class BwSubdivisionCode extends AbstractSearcher
         'KG', // Kgalagadi
         'KL', // Kgatleng
         'KW', // Kweneng
-        'NE', // North East
-        'NW', // North West
-        'SE', // South East
+        'NE', // North-East
+        'NW', // North-West
+        'SE', // South-East
         'SO', // Southern
     ];
 

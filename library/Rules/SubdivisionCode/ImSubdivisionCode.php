@@ -18,7 +18,7 @@ use Respect\Validation\Rules\AbstractSearcher;
  *
  * ISO 3166-1 alpha-2: IM
  *
- * @link http://www.geonames.org/IM/administrative-division-isle-of-man.html
+ * @link https://salsa.debian.org/iso-codes-team/iso-codes
  */
 class ImSubdivisionCode extends AbstractSearcher
 {
