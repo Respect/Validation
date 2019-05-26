@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+# Usage: {script} TLD_FILENAME
+# Update list of TLD
+
+set -euo pipefail
+
+declare -r IFS=$'\n'
+declare -r REPOSITORY_URL="https://salsa.debian.org/iso-codes-team/iso-codes.git"
+declare -r REPOSITORY_DIRECTORY=$(mktemp --directory)
+declare -r LIBRARY_DIRECTORY="${1}"
+
+clone_repository()
+{
+  echo "Cloning repository ${REPOSITORY_URL}"
+  git clone --quiet "${REPOSITORY_URL}" "${REPOSITORY_DIRECTORY}"
+}
+
+list_iso_3166()
+{
+  local -r number_of_items=${1}
+  local -r filename=${2}
+
+  for index in $(seq 0 ${number_of_items}); do
+    local json=$(jq ".[][${index}]" < "${filename}")
+    local alpha_2=$(jq ".alpha_2" <<< "${json}" | tr '"' "'")
+    local alpha_3=$(jq ".alpha_3" <<< "${json}" | tr '"' "'")
+    local numeric=$(jq ".numeric" <<< "${json}" | tr '"' "'")
+    local name=$(jq -r ".name" <<< "${json}")
+    echo "        [${alpha_2}, ${alpha_3}, ${numeric}], // ${name}"
+  done
+}
+
+update_country_codes()
+{
+  local -r iso_3166_1_filename="${REPOSITORY_DIRECTORY}/data/iso_3166-1.json"
+  local -r iso_3166_1_count=$(grep "alpha_3" "${iso_3166_1_filename}" | wc --lines)
+  local -r iso_3166_3_filename="${REPOSITORY_DIRECTORY}/data/iso_3166-3.json"
+  local -r iso_3166_3_count=$(grep "alpha_3" "${iso_3166_3_filename}" | wc --lines)
+  local -r temporary_filename=$(mktemp)
+  local -r country_rule_filename="${LIBRARY_DIRECTORY}/Rules/CountryCode.php"
+
+  echo "Updating country codes using ISO 3166-1 and ISO 3166-3"
+  {
+    sed -n '/^</,/    protected/p' "${country_rule_filename}"
+    {
+      list_iso_3166 $[iso_3166_1_count - 1] ${iso_3166_1_filename}
+      list_iso_3166 $[iso_3166_3_count - 1] ${iso_3166_3_filename}
+    } | sort
+    sed -n '/^    ]/,/^}/p' "${country_rule_filename}"
+  } > "${temporary_filename}"
+  mv "${temporary_filename}" "${country_rule_filename}"
+}
+
+clone_repository
+update_country_codes
