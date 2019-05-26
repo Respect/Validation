@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Usage: {script} RULE_FILENAME
+# Update list of language codes (ISO-639-2)
+
+set -euo pipefail
+
+declare -r IFS=$'\n'
+declare -r URL="http://www.loc.gov/standards/iso639-2/ISO-639-2_utf-8.txt"
+declare -r RULE_FILENAME="${1}"
+declare -r TEMPORARY_LIST=$(mktemp)
+
+download_list()
+{
+  echo "Downloading list from '${URL}'"
+  curl --silent --location "${1}" --output "${2}"
+}
+
+update_currency_codes()
+{
+  local -r filename_rule="${1}"
+  local -r filename_list="${2}"
+  local -r temporary_rule=$(mktemp)
+
+  echo "Updating list in '${filename_rule}'"
+  {
+    sed -n '/^</,/    protected/p' "${filename_rule}"
+    while read line; do
+      local alpha_3=$(cut --delimiter '|' --fields 1 <<< "${line}" | tr -cd '[a-z]' | tr '[a-z]' '[A-Z]')
+      local alpha_2=$(cut --delimiter '|' --fields 3 <<< "${line}" | tr '[a-z]' '[A-Z]')
+      local name=$(cut --delimiter '|' --fields 4 <<< "${line}")
+      echo "        ['${alpha_2}', '${alpha_3}'], // ${name}"
+    done < "${filename_list}"
+    sed -n '/^    ]/,/^}/p' "${filename_rule}"
+  } > "${temporary_rule}"
+
+  mv "${temporary_rule}" "${filename_rule}"
+}
+
+download_list "${URL}" "${TEMPORARY_LIST}"
+update_currency_codes "${RULE_FILENAME}" "${TEMPORARY_LIST}"
