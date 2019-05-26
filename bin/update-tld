@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# Usage: {script} TLD_FILENAME
+# Update list of TLD
+
+set -euo pipefail
+
+declare -r IFS=$'\n'
+declare -r URL="https://data.iana.org/TLD/tlds-alpha-by-domain.txt"
+declare -r TEMPORARY_LIST_FILE=$(mktemp)
+declare -r TEMPORARY_RULE_FILE=$(mktemp)
+declare -r TLD_FILENAME="${1}"
+
+echo "Downloading '${URL}'"
+curl -s -L "${URL}" -o "${TEMPORARY_LIST_FILE}"
+
+echo "Updating '${TLD_FILENAME}'"
+{
+  sed -nE '/^</,/^\{/p' "${TLD_FILENAME}"
+  echo "    // List extracted from ${URL}"
+  grep '^#' "${TEMPORARY_LIST_FILE}" | sed 's,#,    //,'
+  echo "    protected \$tldList = ["
+  grep -v '^#' "${TEMPORARY_LIST_FILE}" |
+    tr '[A-Z]' '[a-z]' |
+    sed -E "s,^,',; s/$/', /" |
+    tr -d '\n' |
+    fold -w 72 -s |
+    sed 's,^,        ,g; s, $,,g'
+  echo
+  echo "    ];"
+  echo
+  sed -nE '/^    public function/,/^}/p' "${TLD_FILENAME}"
+} > "${TEMPORARY_RULE_FILE}"
+
+mv "${TEMPORARY_RULE_FILE}" "${TLD_FILENAME}"
