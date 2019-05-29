@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Usage: {script} TLD_FILENAME
+# Update list of TLD
+
+set -euo pipefail
+
+declare -r IFS=$'\n'
+declare -r URL="https://www.currency-iso.org/dam/downloads/lists/list_one.xml"
+declare -r RULE="${1}"
+declare -r TEMPORARY_XML=$(mktemp)
+
+download_list()
+{
+  echo "Downloading list from '${URL}'"
+  curl --silent --location "${1}" --output "${2}"
+}
+
+update_currency_codes()
+{
+  local -r filename_rule="${1}"
+  local -r filename_xml="${2}"
+  local -r number_of_items=$(grep "<CcyNtry>" "${filename_xml}" | wc --lines)
+  local -r temporary_rule=$(mktemp)
+
+  echo "Updating list in '${filename_rule}'"
+  {
+    sed -n '/^</,/    private/p' "${filename_rule}"
+    for index in $(seq 1 ${number_of_items}); do
+      local name=$(xml sel -t -v "//CcyNtry[${index}]/CcyNm" < "${filename_xml}")
+      local code=$(xml sel -t -v "//CcyNtry[${index}]/Ccy" < "${filename_xml}")
+      echo "        '${code}', // ${name}"
+    done
+    sed -n '/^    ]/,/^}/p' "${filename_rule}"
+  } > "${temporary_rule}"
+
+  mv "${temporary_rule}" "${filename_rule}"
+}
+
+download_list "${URL}" "${TEMPORARY_XML}"
+update_currency_codes "${RULE}" "${TEMPORARY_XML}"
