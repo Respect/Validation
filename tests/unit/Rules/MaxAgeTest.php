@@ -11,11 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Test\Rules;
+namespace Respect\Validation\Rules;
 
 use DateTime;
 use DateTimeImmutable;
-use Respect\Validation\Rules\MaxAge;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 use function date;
