@@ -67,7 +67,7 @@ final class Size extends AbstractRule
      */
     public function validate($input): bool
     {
-        if ($input instanceof SplFileInfo ||$input instanceof \Psr\Http\Message\UploadedFileInterface) {
+        if ($input instanceof SplFileInfo || $input instanceof \Psr\Http\Message\UploadedFileInterface) {
             return $this->isValidSize($input->getSize());
         }
 
