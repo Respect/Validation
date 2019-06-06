@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Psr\Http\Message\StreamInterface;
 use SplFileInfo;
 
 use function is_readable;
@@ -32,6 +33,10 @@ final class Readable extends AbstractRule
     public function validate($input): bool
     {
         if ($input instanceof SplFileInfo) {
+            return $input->isReadable();
+        }
+
+        if ($input instanceof StreamInterface) {
             return $input->isReadable();
         }
 

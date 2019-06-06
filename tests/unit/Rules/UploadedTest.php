@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\SkippedTestError;
+use Psr\Http\Message\UploadedFileInterface;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use stdClass;
@@ -44,6 +45,7 @@ final class UploadedTest extends RuleTestCase
         return [
             [$rule, self::UPLOADED_FILENAME],
             [$rule, new SplFileInfo(self::UPLOADED_FILENAME)],
+            [$rule, $this->createMock(UploadedFileInterface::class)],
         ];
     }
 

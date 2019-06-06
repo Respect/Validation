@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use org\bovigo\vfs\content\LargeFileContent;
 use org\bovigo\vfs\vfsStream;
+use Psr\Http\Message\StreamInterface;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
@@ -71,6 +72,9 @@ final class SizeTest extends RuleTestCase
             ->withContent(LargeFileContent::withMegabytes(2))
             ->at($root);
 
+        $psr7Stream1Mb = $this->createMock(StreamInterface::class);
+        $psr7Stream1Mb->expects(self::once())->method('getSize')->willReturn(1024);
+
         return [
             'file with at least 3kb' => [new Size('3kb', null), $file2Kb->url()],
             'file with up to 1kb' => [new Size(null, '1kb'), $file2Kb->url()],
@@ -81,6 +85,7 @@ final class SizeTest extends RuleTestCase
             'file between 1pb and 3pb' => [new Size('1pb', '3pb'), $file2Mb->url()],
             'SplFileInfo instancia' => [new Size('1pb', '3pb'), new SplFileInfo($file2Mb->url())],
             'parameter invalid' => [new Size('1pb', '3pb'), []],
+            'PSR-7 stream' => [new Size('1MB', '1.1MB'), $psr7Stream1Mb],
         ];
     }
 

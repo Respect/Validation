@@ -16,6 +16,7 @@ v::uploaded()->validate('/path/of/an/uploaded/file'); // true
 
 Version | Description
 --------|-------------
+  2.1.0 | Add PSR-7 support
   0.5.0 | Created
 
 ***

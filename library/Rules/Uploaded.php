@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Psr\Http\Message\UploadedFileInterface;
 use SplFileInfo;
 
 use function is_scalar;
@@ -33,6 +34,10 @@ final class Uploaded extends AbstractRule
     {
         if ($input instanceof SplFileInfo) {
             return $this->validate($input->getPathname());
+        }
+
+        if ($input instanceof UploadedFileInterface) {
+            return true;
         }
 
         if (!is_scalar($input)) {

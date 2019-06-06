@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Psr\Http\Message\StreamInterface;
+use Psr\Http\Message\UploadedFileInterface;
 use Respect\Validation\Exceptions\ComponentException;
 use SplFileInfo;
 
@@ -27,6 +29,7 @@ use function sprintf;
  *
  * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Felipe Stival <v0idpwn@gmail.com>
  */
 final class Size extends AbstractRule
 {
@@ -68,6 +71,14 @@ final class Size extends AbstractRule
     public function validate($input): bool
     {
         if ($input instanceof SplFileInfo) {
+            return $this->isValidSize($input->getSize());
+        }
+
+        if ($input instanceof UploadedFileInterface) {
+            return $this->isValidSize($input->getSize());
+        }
+
+        if ($input instanceof StreamInterface) {
             return $this->isValidSize($input->getSize());
         }
 

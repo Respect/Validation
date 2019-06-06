@@ -40,6 +40,7 @@ Message template for this validator includes `{{minSize}}` and `{{maxSize}}`.
 
 Version | Description
 --------|-------------
+  2.1.0 | Add PSR-7 support
   1.0.0 | Created
 
 ***

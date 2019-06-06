@@ -16,6 +16,7 @@ v::writable()->validate('file.txt'); // true
 
 Version | Description
 --------|-------------
+  2.1.0 | Add PSR-7 support
   0.5.0 | Created
 
 ***
