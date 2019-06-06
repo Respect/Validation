@@ -26,6 +26,7 @@ use function sprintf;
  *
  * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Felipe Stival <v0idpwn@gmail.com>
  */
 final class Size extends AbstractRule
 {
@@ -66,7 +67,7 @@ final class Size extends AbstractRule
      */
     public function validate($input): bool
     {
-        if ($input instanceof SplFileInfo) {
+        if ($input instanceof SplFileInfo ||$input instanceof \Psr\Http\Message\UploadedFileInterface) {
             return $this->isValidSize($input->getSize());
         }
 
