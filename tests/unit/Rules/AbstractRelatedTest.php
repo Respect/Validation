@@ -109,7 +109,7 @@ final class AbstractRelatedTest extends TestCase
             ->method('getName')
             ->will($this->returnValue(null));
         $ruleMock
-            ->expects($this->at(1))
+            ->expects($this->never())
             ->method('setName')
             ->with($reference);
 
@@ -161,7 +161,7 @@ final class AbstractRelatedTest extends TestCase
 
         $ruleMock = $this->createMock('Respect\\Validation\\Validatable');
         $ruleMock
-            ->expects($this->at(0))
+            ->expects($this->at(1))
             ->method('getName')
             ->will($this->returnValue('something else'));
         $ruleMock
