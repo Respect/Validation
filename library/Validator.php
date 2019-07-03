@@ -169,7 +169,7 @@ use function count;
  * @method static Validator version()
  * @method static Validator videoUrl(string $service = null)
  * @method static Validator vowel(string ...$additionalChars)
- * @method static Validator when(Validatable $if, Validatable $then, Validatable $when = null)
+ * @method static Validator when(Validatable $if, Validatable $then, Validatable $else = null)
  * @method static Validator writable()
  * @method static Validator xdigit(string ...$additionalChars)
  * @method static Validator yes($useLocale = false)
