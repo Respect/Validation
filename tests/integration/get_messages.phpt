@@ -50,17 +50,17 @@ Array
     [mysql] => Array
         (
             [host] => host must be of type string
-            [user] => Key user must be present
-            [password] => Key password must be present
+            [user] => user must be present
+            [password] => password must be present
             [schema] => schema must be of type string
         )
 
     [postgresql] => Array
         (
-            [host] => Key host must be present
+            [host] => host must be present
             [user] => user must be of type string
             [password] => password must be of type string
-            [schema] => Key schema must be present
+            [schema] => schema must be present
         )
 
 )

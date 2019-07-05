@@ -30,6 +30,6 @@ try {
 ?>
 --EXPECT--
 - These rules must pass for `{ "age": 1 }`
-  - Key reference must be present
+  - reference must be present
 - These rules must pass for `{ "reference": "QSF1234" }`
-  - Key age must be present
+  - age must be present

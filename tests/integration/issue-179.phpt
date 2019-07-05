@@ -32,4 +32,4 @@ try {
 --EXPECT--
 - These rules must pass for Settings
   - host must be of type string
-  - Key user must be present
+  - user must be present

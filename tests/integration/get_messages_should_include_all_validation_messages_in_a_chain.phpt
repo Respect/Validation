@@ -37,5 +37,5 @@ Array
     [username] => username must have a length between 2 and 32
     [birthdate] => birthdate must be a valid date/time
     [password] => password must not be empty
-    [email] => Key email must be present
+    [email] => email must be present
 )
