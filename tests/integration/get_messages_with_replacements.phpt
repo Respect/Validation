@@ -60,13 +60,13 @@ Array
         (
             [host] => 42 should be a MySQL host
             [user] => Value should be a MySQL username
-            [password] => Key password must be present
+            [password] => password must be present
             [schema] => schema must be of type string
         )
 
     [postgresql] => Array
         (
-            [host] => Key host must be present
+            [host] => host must be present
             [user] => user must be of type string
             [password] => password must be of type string
             [schema] => You must provide a valid PostgreSQL schema
