@@ -19,6 +19,16 @@ class IntVal extends AbstractRule
             return false;
         }
 
-        return false !== filter_var($input, FILTER_VALIDATE_INT, FILTER_FLAG_ALLOW_OCTAL);
+        if (is_string($input) && strlen($input) > 0) {
+            // allow leading zeros
+            $input = ltrim($input, '0');
+
+            if ($input === '') {
+                // input contained only zeros
+                return true;
+            }
+        }
+
+        return false !== filter_var($input, FILTER_VALIDATE_INT);
     }
 }

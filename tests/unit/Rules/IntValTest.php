@@ -55,7 +55,9 @@ class IntValTest extends TestCase
             [123456],
             [PHP_INT_MAX],
             ['06'],
-            ['0']
+            ['09'],
+            ['0'],
+            ['00'],
         ];
     }
 

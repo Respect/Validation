@@ -2,7 +2,7 @@
 
 - `v::intVal()`
 
-Validates if the input is an integer.
+Validates if the input is an integer (allowing leading zeros).
 
 ```php
 v::intVal()->validate('10'); // true
