@@ -70,7 +70,7 @@ final class FilterVarTest extends RuleTestCase
             [new FilterVar(FILTER_VALIDATE_INT), 1.4],
             [new FilterVar(FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED), 'http://example.com'],
             [new FilterVar(FILTER_VALIDATE_DOMAIN), '.com'],
-            [new FilterVar(FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME), '-hostname'],
+            [new FilterVar(FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME), '@local'],
         ];
     }
 }
