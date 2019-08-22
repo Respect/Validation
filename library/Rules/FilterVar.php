@@ -18,6 +18,7 @@ use Respect\Validation\Exceptions\ComponentException;
 use function in_array;
 
 use const FILTER_VALIDATE_BOOLEAN;
+use const FILTER_VALIDATE_DOMAIN;
 use const FILTER_VALIDATE_EMAIL;
 use const FILTER_VALIDATE_FLOAT;
 use const FILTER_VALIDATE_INT;
@@ -34,6 +35,7 @@ final class FilterVar extends AbstractEnvelope
 {
     private const ALLOWED_FILTERS = [
         FILTER_VALIDATE_BOOLEAN,
+        FILTER_VALIDATE_DOMAIN,
         FILTER_VALIDATE_EMAIL,
         FILTER_VALIDATE_FLOAT,
         FILTER_VALIDATE_INT,
