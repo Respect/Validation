@@ -81,6 +81,8 @@ final class PostalCodeTest extends RuleTestCase
             [new PostalCode('IE'), 'D14 YD91'],
             [new PostalCode('IE'), 'D6W 3333'],
             [new PostalCode('EC'), '170515'],
+            [new PostalCode('IL'), '7019900'],
+            [new PostalCode('IL'), '94142'],
         ];
     }
 
