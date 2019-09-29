@@ -105,6 +105,7 @@ final class PostalCode extends AbstractEnvelope
         'KP' => '/^(\d{6})$/',
         'KR' => '/^(\d{5})$/',
         'KW' => '/^(\d{5})$/',
+		'KY' => '^KY\d-\d{4}$',
         'KZ' => '/^(\d{6})$/',
         'LA' => '/^(\d{5})$/',
         'LB' => '/^(\d{4}(\d{4})?)$/',
