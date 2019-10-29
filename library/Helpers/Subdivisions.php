@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Helpers;
 
 use Respect\Validation\Exceptions\ComponentException;
+
 use function file_exists;
 use function file_get_contents;
 use function json_decode;
