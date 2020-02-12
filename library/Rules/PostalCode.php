@@ -30,7 +30,7 @@ final class PostalCode extends AbstractEnvelope
         // phpcs:disable Generic.Files.LineLength.TooLong
         'AD' => '/^(?:AD)*(\d{3})$/',
         'AL' => '/^(\d{4})$/',
-        'AM' => '/^(\d{6})$/',
+        'AM' => '/^(\d{4})$/',
         'AR' => '/^[A-Z]?\d{4}[A-Z]{0,3}$/',
         'AS' => '/96799/',
         'AT' => '/^(\d{4})$/',
