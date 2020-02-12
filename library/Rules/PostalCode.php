@@ -13,7 +13,7 @@ class PostalCode extends Regex
      */
     public $postalCodes = array(
         "AD" => "/^(?:AD)*(\d{3})$/",
-        "AM" => "/^(\d{6})$/",
+        "AM" => "/^(\d{4})$/",
         "AR" => "/^([A-Z]\d{4}[A-Z]{3})$/",
         "AT" => "/^(\d{4})$/",
         "AU" => "/^(\d{4})$/",
