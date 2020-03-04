@@ -13,6 +13,7 @@ matrix:
     - php: 7.2
       env: PHPUNIT_COVERAGE_ARGUMENT="--coverage-clover=coverage.clover"
     - php: 7.3
+    - php: 7.4
     - php: nightly
   allow_failures:
     - php: nightly
