@@ -52,11 +52,6 @@
             "Respect\\Validation\\Test\\": "tests/library/"
         }
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.0-dev"
-        }
-    },
     "scripts": {
         "docheader": "vendor/bin/docheader check library/ tests/",
         "phpcs": "vendor/bin/phpcs",
