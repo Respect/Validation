@@ -7,4 +7,4 @@ you can install it using [Composer](http://getcomposer.org).
 composer require respect/validation
 ```
 
-Works on PHP 7.1 or above.
+Works on PHP 7.3 or above.
