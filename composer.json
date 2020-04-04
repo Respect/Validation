@@ -15,7 +15,7 @@
         "sort-packages": true
     },
     "require": {
-        "php": ">=7.3",
+        "php": ">=7.2",
         "respect/stringifier": "^0.2.0",
         "symfony/polyfill-mbstring": "^1.2"
     },
