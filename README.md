@@ -9,9 +9,5 @@
 
 [The most awesome validation engine ever created for PHP.](http://bit.ly/1a1oeQv)
 
-> ⚠️ The last stable version is [1.1][]. This version is not **stable**. ⚠️
-
 * [Documentation](https://respect-validation.readthedocs.io)
 * [How to contribute](CONTRIBUTING.md)
-
-[1.1]: https://github.com/Respect/Validation/tree/1.1
