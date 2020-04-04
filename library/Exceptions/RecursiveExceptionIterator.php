@@ -16,6 +16,7 @@ namespace Respect\Validation\Exceptions;
 use ArrayIterator;
 use Countable;
 use RecursiveIterator;
+use UnexpectedValueException;
 
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
@@ -48,7 +49,12 @@ final class RecursiveExceptionIterator implements RecursiveIterator, Countable
 
     public function getChildren(): self
     {
-        return new static($this->current());
+        $exception = $this->current();
+        if (!$exception instanceof NestedValidationException) {
+            throw new UnexpectedValueException();
+        }
+
+        return new static($exception);
     }
 
     /**
