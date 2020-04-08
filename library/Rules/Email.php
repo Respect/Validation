@@ -64,9 +64,9 @@ final class Email extends AbstractRule
     private function createEmailValidator(): ?EmailValidator
     {
         if (class_exists(EmailValidator::class)) {
-            return null;
+            return new EmailValidator();
         }
 
-        return new EmailValidator();
+        return null;
     }
 }
