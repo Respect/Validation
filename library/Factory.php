@@ -162,7 +162,14 @@ final class Factory
         if ($validatable->getName()) {
             $id = $params['name'] = $validatable->getName();
         }
-        foreach ($this->exceptionsNamespaces as $namespace) {
+
+        $namespaces = $this->exceptionsNamespaces;
+        $namespace = $reflection->getNamespaceName();
+        if (substr($namespace, -6) === '\Rules') {
+            $namespaces[] = str_replace("\\Rules", "\\Exceptions", $reflection->getNamespaceName());
+        }
+
+        foreach ($namespaces as $namespace) {
             try {
                 return $this->createValidationException(
                     $namespace.'\\'.$ruleName.'Exception',

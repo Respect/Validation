@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
+use Custom\Exceptions\CustomRuleException;
+use Custom\Rules\CustomRule;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
 use Respect\Validation\Exceptions\ValidationException;
@@ -225,5 +227,36 @@ final class FactoryTest extends TestCase
         self::assertSame($factory, Factory::getDefaultInstance());
 
         Factory::setDefaultInstance($defaultInstance);
+    }
+
+    /**
+     * @test
+     * @runTestsInSeparateProcesses
+     */
+    public function shouldAutoResolveExceptionIfNamespacePatternMatchesAndExceptionClassFound(): void
+    {
+        $this->expectException(CustomRuleException::class);
+        $fixtureDir = realpath(__DIR__ . '/../fixtures/Custom');
+        require_once($fixtureDir . '/Rules/CustomRule.php');
+        require_once($fixtureDir . '/Exceptions/CustomRuleException.php');
+
+        $rule = new CustomRule(false);
+        $rule->assert('test');
+    }
+
+    /**
+     * @test
+     * @runTestsInSeparateProcesses
+     */
+    public function shouldUseDefaultExceptionIfCustomExceptionNotFound(): void
+    {
+        $this->expectException(ValidationException::class);
+        $this->expectExceptionMessage('INVALID');
+
+        $fixtureDir = realpath(__DIR__ . '/../fixtures/Custom');
+        require_once($fixtureDir . '/Rules/CustomRule.php');
+
+        $rule = new CustomRule(false);
+        $rule->assert('test');
     }
 }
