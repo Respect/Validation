@@ -14,10 +14,12 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Exception;
+use PHPUnit\Framework\Error\Error;
 use Respect\Validation\Exceptions\AlwaysInvalidException;
 use Respect\Validation\Exceptions\CallException;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
+use function call_user_func;
 
 /**
  * @group rule
@@ -66,6 +68,26 @@ final class CallTest extends TestCase
 
         $sut = new Call($callable, $rule);
         $sut->assert($input);
+    }
+
+    /**
+     * @test
+     */
+    public function assertShouldRestorePreviousPhpErrorHandler(): void
+    {
+        $callable = 'trim';
+
+        $rule = $this->createMock(Validatable::class);
+        $rule
+            ->expects(self::once())
+            ->method('assert');
+
+        $sut = new Call($callable, $rule);
+        $sut->assert('');
+
+        self::expectException(Error::class);
+
+        call_user_func('trim', []);
     }
 
     /**
@@ -140,6 +162,26 @@ final class CallTest extends TestCase
 
         $sut = new Call($callable, $rule);
         $sut->assert($input);
+    }
+
+    /**
+     * @test
+     */
+    public function checkShouldRestorePreviousPhpErrorHandler(): void
+    {
+        $callable = 'trim';
+
+        $rule = $this->createMock(Validatable::class);
+        $rule
+            ->expects(self::once())
+            ->method('check');
+
+        $sut = new Call($callable, $rule);
+        $sut->check('');
+
+        self::expectException(Error::class);
+
+        call_user_func('trim', []);
     }
 
     /**
