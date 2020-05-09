@@ -64,7 +64,7 @@ final class PostalCode extends AbstractEnvelope
         'DK' => '/^(\d{4})$/',
         'DO' => '/^(\d{5})$/',
         'DZ' => '/^(\d{5})$/',
-        'EC' => '/^([a-zA-Z]\d{4}[a-zA-Z])$/',
+        'EC' => '/^(\d{6})$/',
         'EE' => '/^(\d{5})$/',
         'EG' => '/^(\d{5})$/',
         'ES' => '/^(\d{5})$/',
