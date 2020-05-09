@@ -83,8 +83,6 @@ final class OneOfTest extends TestCase
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\OneOfException
-     *
      * @test
      */
     public function invalidMultipleAssert(): void
@@ -99,14 +97,12 @@ final class OneOfTest extends TestCase
             return false;
         });
         $rule = new OneOf($valid1, $valid2, $valid3);
-        self::assertFalse($rule->validate('any'));
+        self::assertTrue($rule->validate('any'));
 
         $rule->assert('any');
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\CallbackException
-     *
      * @test
      */
     public function invalidMultipleCheck(): void
@@ -122,14 +118,12 @@ final class OneOfTest extends TestCase
         });
 
         $rule = new OneOf($valid1, $valid2, $valid3);
-        self::assertFalse($rule->validate('any'));
+        self::assertTrue($rule->validate('any'));
 
         $rule->check('any');
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\OneOfException
-     *
      * @test
      */
     public function invalidMultipleCheckAllValid(): void
@@ -145,7 +139,7 @@ final class OneOfTest extends TestCase
         });
 
         $rule = new OneOf($valid1, $valid2, $valid3);
-        self::assertFalse($rule->validate('any'));
+        self::assertTrue($rule->validate('any'));
 
         $rule->check('any');
     }

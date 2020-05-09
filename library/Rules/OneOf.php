@@ -33,7 +33,7 @@ final class OneOf extends AbstractComposite
         $exceptions = $this->getAllThrownExceptions($input);
         $numRules = count($validators);
         $numExceptions = count($exceptions);
-        if ($numExceptions !== $numRules - 1) {
+        if ($numExceptions >= $numRules) {
             /** @var OneOfException $oneOfException */
             $oneOfException = $this->reportError($input);
             $oneOfException->addChildren($exceptions);
@@ -56,7 +56,7 @@ final class OneOf extends AbstractComposite
             ++$rulesPassedCount;
         }
 
-        return $rulesPassedCount === 1;
+        return $rulesPassedCount > 0;
     }
 
     /**
@@ -76,7 +76,7 @@ final class OneOf extends AbstractComposite
             }
         }
 
-        if ($rulesPassedCount === 1) {
+        if ($rulesPassedCount > 0) {
             return;
         }
 
