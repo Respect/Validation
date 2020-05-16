@@ -55,7 +55,7 @@ final class Each extends AbstractRule
         $exceptions = [];
         foreach ($input as $value) {
             try {
-                $this->rule->check($value);
+                $this->rule->assert($value);
             } catch (ValidationException $exception) {
                 $exceptions[] = $exception;
             }
