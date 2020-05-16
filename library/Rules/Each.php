@@ -55,7 +55,7 @@ final class Each extends AbstractRule
         $exceptions = [];
         foreach ($input as $value) {
             try {
-                $this->rule->check($value);
+                $this->rule->assert($value);
             } catch (ValidationException $exception) {
                 $exceptions[] = $exception;
             }
@@ -73,10 +73,24 @@ final class Each extends AbstractRule
     /**
      * {@inheritDoc}
      */
+    public function check($input): void
+    {
+        if (!$this->isIterable($input)) {
+            throw $this->reportError($input);
+        }
+
+        foreach ($input as $value) {
+            $this->rule->check($value);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function validate($input): bool
     {
         try {
-            $this->assert($input);
+            $this->check($input);
         } catch (ValidationException $exception) {
             return false;
         }
