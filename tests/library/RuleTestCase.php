@@ -18,6 +18,7 @@ use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
 use Respect\Validation\Validatable;
 use function realpath;
+use function Respect\Stringifier\stringify;
 use function sprintf;
 
 /**
@@ -153,7 +154,10 @@ abstract class RuleTestCase extends TestCase
      */
     public static function assertValidInput(Validatable $rule, $input): void
     {
-        self::assertTrue($rule->validate($input));
+        self::assertTrue(
+            $rule->validate($input),
+            sprintf('Validation with input %s is expected to pass', stringify($input))
+        );
     }
 
     /**
@@ -161,6 +165,9 @@ abstract class RuleTestCase extends TestCase
      */
     public static function assertInvalidInput(Validatable $rule, $input): void
     {
-        self::assertFalse($rule->validate($input));
+        self::assertFalse(
+            $rule->validate($input),
+            sprintf('Validation with input %s it not expected to pass', stringify($input))
+        );
     }
 }
