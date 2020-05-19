@@ -16,7 +16,9 @@ namespace Respect\Validation\Rules;
 use function filter_var;
 use function is_bool;
 use function is_float;
-use const FILTER_FLAG_ALLOW_OCTAL;
+use function is_string;
+use function ltrim;
+use function strlen;
 use const FILTER_VALIDATE_INT;
 
 /**
@@ -39,6 +41,16 @@ final class IntVal extends AbstractRule
             return false;
         }
 
-        return filter_var($input, FILTER_VALIDATE_INT, FILTER_FLAG_ALLOW_OCTAL) !== false;
+        if (is_string($input) && strlen($input) > 0) {
+            // allow leading zeros
+            $input = ltrim($input, '0');
+
+            if ($input === '') {
+                // input contained only zeros
+                return true;
+            }
+        }
+
+        return filter_var($input, FILTER_VALIDATE_INT) !== false;
     }
 }
