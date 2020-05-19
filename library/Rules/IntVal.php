@@ -13,11 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use function filter_var;
-use function is_bool;
-use function is_float;
-use const FILTER_FLAG_ALLOW_OCTAL;
-use const FILTER_VALIDATE_INT;
+use function ctype_digit;
+use function is_int;
 
 /**
  * Validates if the input is an integer.
@@ -35,10 +32,10 @@ final class IntVal extends AbstractRule
      */
     public function validate($input): bool
     {
-        if (is_float($input) || is_bool($input)) {
-            return false;
+        if (is_int($input)) {
+            return true;
         }
 
-        return filter_var($input, FILTER_VALIDATE_INT, FILTER_FLAG_ALLOW_OCTAL) !== false;
+        return ctype_digit($input);
     }
 }

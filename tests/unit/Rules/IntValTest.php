@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 use const PHP_INT_MAX;
 
 /**
@@ -41,7 +42,12 @@ final class IntValTest extends RuleTestCase
             [$rule, 123456],
             [$rule, PHP_INT_MAX],
             [$rule, '06'],
+            [$rule, '09'],
             [$rule, '0'],
+            [$rule, '00'],
+            [$rule, 0b101010],
+            [$rule, 0x2a],
+            [$rule, '089'],
         ];
     }
 
@@ -54,6 +60,8 @@ final class IntValTest extends RuleTestCase
 
         return [
             [$rule, ''],
+            [$rule, new stdClass()],
+            [$rule, []],
             [$rule, null],
             [$rule, 'a'],
             [$rule, '1.0'],
@@ -64,6 +72,7 @@ final class IntValTest extends RuleTestCase
             [$rule, 'Foo'],
             [$rule, '1.44'],
             [$rule, 1e-5],
+            [$rule, '089ab'],
         ];
     }
 }
