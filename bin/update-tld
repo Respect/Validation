@@ -1,34 +1,43 @@
 #!/usr/bin/env bash
-# Usage: {script} TLD_FILENAME
+# Usage: {script} RULE_FILENAME
 # Update list of TLD
 
 set -euo pipefail
 
 declare -r IFS=$'\n'
-declare -r URL="https://data.iana.org/TLD/tlds-alpha-by-domain.txt"
-declare -r TEMPORARY_LIST_FILE=$(mktemp)
-declare -r TEMPORARY_RULE_FILE=$(mktemp)
-declare -r TLD_FILENAME="${1}"
 
-echo "Downloading '${URL}'"
-curl -s -L "${URL}" -o "${TEMPORARY_LIST_FILE}"
+declare -r LIST_URL="https://data.iana.org/TLD/tlds-alpha-by-domain.txt"
+declare -r LIST_FILENAME=$(mktemp)
 
-echo "Updating '${TLD_FILENAME}'"
+declare -r RULE_FILENAME=$(dirname "${BASH_SOURCE}")/../library/Rules/Tld.php
+declare -r RULE_FILENAME_TEMPORARY=$(mktemp)
+
+echo "- Downloading list"
+curl --silent --location "${LIST_URL}" --output  "${LIST_FILENAME}"
+
+echo "- Creating temporary file"
 {
-  sed -nE '/^</,/^\{/p' "${TLD_FILENAME}"
-  echo "    // List extracted from ${URL}"
-  grep '^#' "${TEMPORARY_LIST_FILE}" | sed 's,#,    //,'
-  echo "    protected \$tldList = ["
-  grep -v '^#' "${TEMPORARY_LIST_FILE}" |
-    tr '[A-Z]' '[a-z]' |
-    sed -E "s,^,',; s/$/', /" |
-    tr -d '\n' |
-    fold -w 72 -s |
-    sed 's,^,        ,g; s, $,,g'
+  sed --silent --regexp-extended "/^</,/^\{/p" "${RULE_FILENAME}"
+  echo "    /**"
+  echo "     * List extracted from ${LIST_URL}"
+  echo "     * $(grep "^#" "${LIST_FILENAME}" | sed "s,# ,,")"
+  echo "     */"
+  echo "    private const TLD_LIST = ["
+  grep --invert-match "^#" "${LIST_FILENAME}" |
+      sed --regexp-extended "s,^,',; s/$/', /" |
+      tr --delete "\n" |
+      fold --width=72 --spaces |
+      sed "s,^,        ,g; s, $,,g"
   echo
   echo "    ];"
   echo
-  sed -nE '/^    public function/,/^}/p' "${TLD_FILENAME}"
-} > "${TEMPORARY_RULE_FILE}"
+  echo "    /**"
+  echo "     * {@inheritDoc}"
+  echo "     */"
+  sed --silent --regexp-extended "/^    public function/,/^}/p" "${RULE_FILENAME}"
+} > "${RULE_FILENAME_TEMPORARY}"
 
-mv "${TEMPORARY_RULE_FILE}" "${TLD_FILENAME}"
+echo "- Updating content of '$(basename ${RULE_FILENAME})'"
+mv "${RULE_FILENAME_TEMPORARY}" "${RULE_FILENAME}"
+
+echo "Finished!"

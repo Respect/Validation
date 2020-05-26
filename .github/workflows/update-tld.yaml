@@ -1,0 +1,30 @@
+name: Update top-level domains
+
+on:
+  schedule:
+    - cron:  '0 0 * * 0'
+
+jobs:
+  update-tld:
+    name: Update top-level domains
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: "2.0"
+
+      - name: Execute script
+        run: bin/update-tld
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v2
+        with:
+          committer: The Respect Panda <therespectpanda@gmail.com>
+          author: The Respect Panda <therespectpanda@gmail.com>
+          commit-message: Update list of top-level domains
+          title: Update list of top-level domains
+          base: "2.0"
+          branch: "workflows/update-tld"
