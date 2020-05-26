@@ -30,10 +30,8 @@ final class LanguageCode extends AbstractEnvelope
 {
     public const ALPHA2 = 'alpha-2';
     public const ALPHA3 = 'alpha-3';
-    public const AVAILABLE_SETS = [
-        self::ALPHA2,
-        self::ALPHA3,
-    ];
+
+    public const AVAILABLE_SETS = [self::ALPHA2, self::ALPHA3];
 
     /**
      * @see http://www.loc.gov/standards/iso639-2/ISO-639-2_utf-8.txt
