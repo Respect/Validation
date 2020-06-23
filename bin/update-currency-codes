@@ -1,40 +1,39 @@
 #!/usr/bin/env bash
-# Usage: {script} TLD_FILENAME
-# Update list of TLD
+# Usage: {script}
+# Update the list of currency codes
 
 set -euo pipefail
 
 declare -r IFS=$'\n'
-declare -r URL="https://www.currency-iso.org/dam/downloads/lists/list_one.xml"
-declare -r RULE="${1}"
-declare -r TEMPORARY_XML=$(mktemp)
 
-download_list()
+declare -r LIST_URL="https://www.currency-iso.org/dam/downloads/lists/list_one.xml"
+declare -r LIST_FILENAME=$(mktemp)
+
+declare -r RULE_FILENAME=$(dirname "${BASH_SOURCE}")/../library/Rules/CurrencyCode.php
+declare -r RULE_FILENAME_TEMPORARY=$(mktemp)
+
+echo "- Downloading list"
+curl --silent --location "${LIST_URL}" --output "${LIST_FILENAME}"
+
+declare -r CURRENCY_CODES_COUNT=$(grep "<CcyNtry>" "${LIST_FILENAME}" | wc --lines)
+
+echo "- Creating temporary file"
 {
-  echo "Downloading list from '${URL}'"
-  curl --silent --location "${1}" --output "${2}"
-}
+  sed -n "/^</,/        return \[/p" "${RULE_FILENAME}"
+  for index in $(seq 1 ${CURRENCY_CODES_COUNT}); do
+    declare name=$(xmlstarlet sel --template --value-of "//CcyNtry[${index}]/CcyNm" < "${LIST_FILENAME}")
+    declare code=$(xmlstarlet sel --template --value-of "//CcyNtry[${index}]/Ccy" < "${LIST_FILENAME}")
 
-update_currency_codes()
-{
-  local -r filename_rule="${1}"
-  local -r filename_xml="${2}"
-  local -r number_of_items=$(grep "<CcyNtry>" "${filename_xml}" | wc --lines)
-  local -r temporary_rule=$(mktemp)
+    if [[ -z "${code}" ]]; then
+      continue
+    fi
 
-  echo "Updating list in '${filename_rule}'"
-  {
-    sed -n '/^</,/    private/p' "${filename_rule}"
-    for index in $(seq 1 ${number_of_items}); do
-      local name=$(xml sel -t -v "//CcyNtry[${index}]/CcyNm" < "${filename_xml}")
-      local code=$(xml sel -t -v "//CcyNtry[${index}]/Ccy" < "${filename_xml}")
-      echo "        '${code}', // ${name}"
-    done
-    sed -n '/^    ]/,/^}/p' "${filename_rule}"
-  } > "${temporary_rule}"
+    echo "            '${code}', //" $(sed --regexp-extended 's, +$,,' <<< "${name}")
+  done | sort --unique
+  sed --silent '/^        \]/,/^}/p' "${RULE_FILENAME}"
+} > "${RULE_FILENAME_TEMPORARY}"
 
-  mv "${temporary_rule}" "${filename_rule}"
-}
+echo "- Updating content of '$(basename ${RULE_FILENAME})'"
+mv "${RULE_FILENAME_TEMPORARY}" "${RULE_FILENAME}"
 
-download_list "${URL}" "${TEMPORARY_XML}"
-update_currency_codes "${RULE}" "${TEMPORARY_XML}"
+echo "Finished!"

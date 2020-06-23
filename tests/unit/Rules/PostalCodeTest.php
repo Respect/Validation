@@ -80,6 +80,14 @@ final class PostalCodeTest extends RuleTestCase
             [new PostalCode('KR'), '03187'],
             [new PostalCode('IE'), 'D14 YD91'],
             [new PostalCode('IE'), 'D6W 3333'],
+            [new PostalCode('EC'), '170515'],
+            [new PostalCode('IL'), '7019900'],
+            [new PostalCode('IL'), '94142'],
+            [new PostalCode('KY'), 'KY1-1102'],
+            [new PostalCode('KY'), 'KY2-2001'],
+            [new PostalCode('KY'), 'KY2-2001'],
+            [new PostalCode('KY'), 'KY3-2500'],
+            [new PostalCode('AM'), '0010'],
         ];
     }
 
@@ -100,6 +108,9 @@ final class PostalCodeTest extends RuleTestCase
             [new PostalCode('PL'), '99300'],
             [new PostalCode('KR'), '548940'],
             [new PostalCode('KR'), '548-940'],
+            [new PostalCode('EC'), 'A1234B'],
+            [new PostalCode('KY'), 'KY4-2500'],
+            [new PostalCode('AM'), '375010'],
         ];
     }
 }
