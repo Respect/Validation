@@ -11,6 +11,8 @@ use Respect\Validation\Exceptions\DateTimeException;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
+date_default_timezone_set('UTC');
+
 try {
     v::dateTime()->check('FooBarBazz');
 } catch (DateTimeException $exception) {

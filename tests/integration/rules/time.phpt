@@ -11,6 +11,8 @@ use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\TimeException;
 use Respect\Validation\Validator as v;
 
+date_default_timezone_set('UTC');
+
 try {
     v::time()->check('2018-01-30');
 } catch (TimeException $exception) {
