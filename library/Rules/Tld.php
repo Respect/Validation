@@ -29,15 +29,15 @@ final class Tld extends AbstractRule
 {
     /**
      * List extracted from https://data.iana.org/TLD/tlds-alpha-by-domain.txt
-     * Version 2020060600, Last Updated Sat Jun  6 07:07:01 2020 UTC
+     * Version 2020071001, Last Updated Sat Jul 11 07:07:01 2020 UTC
      */
     private const TLD_LIST = [
         'AAA', 'AARP', 'ABARTH', 'ABB', 'ABBOTT', 'ABBVIE', 'ABC', 'ABLE',
         'ABOGADO', 'ABUDHABI', 'AC', 'ACADEMY', 'ACCENTURE', 'ACCOUNTANT',
         'ACCOUNTANTS', 'ACO', 'ACTOR', 'AD', 'ADAC', 'ADS', 'ADULT', 'AE',
         'AEG', 'AERO', 'AETNA', 'AF', 'AFAMILYCOMPANY', 'AFL', 'AFRICA', 'AG',
-        'AGAKHAN', 'AGENCY', 'AI', 'AIG', 'AIGO', 'AIRBUS', 'AIRFORCE',
-        'AIRTEL', 'AKDN', 'AL', 'ALFAROMEO', 'ALIBABA', 'ALIPAY', 'ALLFINANZ',
+        'AGAKHAN', 'AGENCY', 'AI', 'AIG', 'AIRBUS', 'AIRFORCE', 'AIRTEL',
+        'AKDN', 'AL', 'ALFAROMEO', 'ALIBABA', 'ALIPAY', 'ALLFINANZ',
         'ALLSTATE', 'ALLY', 'ALSACE', 'ALSTOM', 'AM', 'AMAZON',
         'AMERICANEXPRESS', 'AMERICANFAMILY', 'AMEX', 'AMFAM', 'AMICA',
         'AMSTERDAM', 'ANALYTICS', 'ANDROID', 'ANQUAN', 'ANZ', 'AO', 'AOL',
@@ -229,7 +229,7 @@ final class Tld extends AbstractRule
         'XN--H2BRJ9C8C', 'XN--HXT814E', 'XN--I1B6B1A6A2E', 'XN--IMR513N',
         'XN--IO0A7I', 'XN--J1AEF', 'XN--J1AMH', 'XN--J6W193G',
         'XN--JLQ480N2RG', 'XN--JLQ61U9W7B', 'XN--JVR189M', 'XN--KCRX77D1X4A',
-        'XN--KPRW13D', 'XN--KPRY57D', 'XN--KPU716F', 'XN--KPUT3I', 'XN--L1ACC',
+        'XN--KPRW13D', 'XN--KPRY57D', 'XN--KPUT3I', 'XN--L1ACC',
         'XN--LGBBAT1AD8J', 'XN--MGB9AWBF', 'XN--MGBA3A3EJT', 'XN--MGBA3A4F16A',
         'XN--MGBA7C0BBN0A', 'XN--MGBAAKC7DVF', 'XN--MGBAAM7A8H',
         'XN--MGBAB2BD', 'XN--MGBAH1A3HJKRD', 'XN--MGBAI9AZGQP6J',
@@ -239,11 +239,11 @@ final class Tld extends AbstractRule
         'XN--MGBTX2B', 'XN--MGBX4CD0AB', 'XN--MIX891F', 'XN--MK1BU44C',
         'XN--MXTQ1M', 'XN--NGBC5AZD', 'XN--NGBE9E0A', 'XN--NGBRX', 'XN--NODE',
         'XN--NQV7F', 'XN--NQV7FS00EMA', 'XN--NYQY26A', 'XN--O3CW4H',
-        'XN--OGBPF8FL', 'XN--OTU796D', 'XN--P1ACF', 'XN--P1AI', 'XN--PBT977C',
-        'XN--PGBS0DH', 'XN--PSSY2U', 'XN--Q7CE6A', 'XN--Q9JYB4C',
-        'XN--QCKA1PMC', 'XN--QXA6A', 'XN--QXAM', 'XN--RHQV96G', 'XN--ROVU88B',
-        'XN--RVC1E0AM3E', 'XN--S9BRJ9C', 'XN--SES554G', 'XN--T60B56A',
-        'XN--TCKWE', 'XN--TIQ49XQYJ', 'XN--UNUP4Y', 'XN--VERMGENSBERATER-CTB',
+        'XN--OGBPF8FL', 'XN--OTU796D', 'XN--P1ACF', 'XN--P1AI', 'XN--PGBS0DH',
+        'XN--PSSY2U', 'XN--Q7CE6A', 'XN--Q9JYB4C', 'XN--QCKA1PMC', 'XN--QXA6A',
+        'XN--QXAM', 'XN--RHQV96G', 'XN--ROVU88B', 'XN--RVC1E0AM3E',
+        'XN--S9BRJ9C', 'XN--SES554G', 'XN--T60B56A', 'XN--TCKWE',
+        'XN--TIQ49XQYJ', 'XN--UNUP4Y', 'XN--VERMGENSBERATER-CTB',
         'XN--VERMGENSBERATUNG-PWB', 'XN--VHQUV', 'XN--VUQ861B',
         'XN--W4R85EL8FHU5DNRA', 'XN--W4RS40L', 'XN--WGBH1C', 'XN--WGBL6A',
         'XN--XHQ521B', 'XN--XKC2AL3HYE2A', 'XN--XKC2DL3A5EE0H', 'XN--Y9A3AQ',
