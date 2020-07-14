@@ -13,13 +13,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use ErrorException;
 use Exception;
-use PHPUnit\Framework\Error\Error;
 use Respect\Validation\Exceptions\AlwaysInvalidException;
 use Respect\Validation\Exceptions\CallException;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
-use function call_user_func;
+use function restore_error_handler;
+use function set_error_handler;
+use function trigger_error;
 
 /**
  * @group rule
@@ -33,6 +35,31 @@ use function call_user_func;
  */
 final class CallTest extends TestCase
 {
+    /**
+     * @var ErrorException
+     */
+    private $errorException;
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function setUp(): void
+    {
+        $this->errorException = new ErrorException('This is a PHP error');
+
+        set_error_handler(function (): void {
+            throw $this->errorException;
+        });
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function tearDown(): void
+    {
+        restore_error_handler();
+    }
+
     /**
      * @test
      */
@@ -85,9 +112,9 @@ final class CallTest extends TestCase
         $sut = new Call($callable, $rule);
         $sut->assert('');
 
-        self::expectException(Error::class);
+        self::expectExceptionObject($this->errorException);
 
-        call_user_func('trim', []);
+        trigger_error('Forcing PHP to trigger an error');
     }
 
     /**
@@ -179,9 +206,9 @@ final class CallTest extends TestCase
         $sut = new Call($callable, $rule);
         $sut->check('');
 
-        self::expectException(Error::class);
+        self::expectExceptionObject($this->errorException);
 
-        call_user_func('trim', []);
+        trigger_error('Forcing PHP to trigger an error');
     }
 
     /**
@@ -263,5 +290,25 @@ final class CallTest extends TestCase
         $sut = new Call('trim', new AlwaysInvalid());
 
         self::assertFalse($sut->validate('something'));
+    }
+
+    /**
+     * @test
+     */
+    public function validateShouldRestorePreviousPhpErrorHandler(): void
+    {
+        $callable = 'trim';
+
+        $rule = $this->createMock(Validatable::class);
+        $rule
+            ->expects(self::once())
+            ->method('check');
+
+        $sut = new Call($callable, $rule);
+        $sut->validate('');
+
+        self::expectExceptionObject($this->errorException);
+
+        trigger_error('Forcing PHP to trigger an error');
     }
 }
