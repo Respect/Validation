@@ -88,6 +88,7 @@ final class PostalCodeTest extends RuleTestCase
             [new PostalCode('KY'), 'KY2-2001'],
             [new PostalCode('KY'), 'KY3-2500'],
             [new PostalCode('AM'), '0010'],
+            [new PostalCode('RS'), '24430'],
         ];
     }
 
@@ -111,6 +112,7 @@ final class PostalCodeTest extends RuleTestCase
             [new PostalCode('EC'), 'A1234B'],
             [new PostalCode('KY'), 'KY4-2500'],
             [new PostalCode('AM'), '375010'],
+            [new PostalCode('RS'), '244300'],
         ];
     }
 }
