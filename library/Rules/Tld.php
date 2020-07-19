@@ -29,7 +29,7 @@ final class Tld extends AbstractRule
 {
     /**
      * List extracted from https://data.iana.org/TLD/tlds-alpha-by-domain.txt
-     * Version 2020071001, Last Updated Sat Jul 11 07:07:01 2020 UTC
+     * Version 2020071800, Last Updated Sat Jul 18 07:07:01 2020 UTC
      */
     private const TLD_LIST = [
         'AAA', 'AARP', 'ABARTH', 'ABB', 'ABBOTT', 'ABBVIE', 'ABC', 'ABLE',
@@ -187,9 +187,9 @@ final class Tld extends AbstractRule
         'STCGROUP', 'STOCKHOLM', 'STORAGE', 'STORE', 'STREAM', 'STUDIO',
         'STUDY', 'STYLE', 'SU', 'SUCKS', 'SUPPLIES', 'SUPPLY', 'SUPPORT',
         'SURF', 'SURGERY', 'SUZUKI', 'SV', 'SWATCH', 'SWIFTCOVER', 'SWISS',
-        'SX', 'SY', 'SYDNEY', 'SYMANTEC', 'SYSTEMS', 'SZ', 'TAB', 'TAIPEI',
-        'TALK', 'TAOBAO', 'TARGET', 'TATAMOTORS', 'TATAR', 'TATTOO', 'TAX',
-        'TAXI', 'TC', 'TCI', 'TD', 'TDK', 'TEAM', 'TECH', 'TECHNOLOGY', 'TEL',
+        'SX', 'SY', 'SYDNEY', 'SYSTEMS', 'SZ', 'TAB', 'TAIPEI', 'TALK',
+        'TAOBAO', 'TARGET', 'TATAMOTORS', 'TATAR', 'TATTOO', 'TAX', 'TAXI',
+        'TC', 'TCI', 'TD', 'TDK', 'TEAM', 'TECH', 'TECHNOLOGY', 'TEL',
         'TEMASEK', 'TENNIS', 'TEVA', 'TF', 'TG', 'TH', 'THD', 'THEATER',
         'THEATRE', 'TIAA', 'TICKETS', 'TIENDA', 'TIFFANY', 'TIPS', 'TIRES',
         'TIROL', 'TJ', 'TJMAXX', 'TJX', 'TK', 'TKMAXX', 'TL', 'TM', 'TMALL',
