@@ -14,25 +14,25 @@ use Respect\Validation\Validator as v;
 try {
     v::primeNumber()->check(10);
 } catch (PrimeNumberException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::primeNumber())->check(3);
 } catch (PrimeNumberException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::primeNumber()->assert('Foo');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::primeNumber())->assert('+7');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 ?>
 --EXPECT--

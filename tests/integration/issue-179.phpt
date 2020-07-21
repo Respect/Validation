@@ -26,7 +26,7 @@ $validator->key('schema', v::stringType());
 try {
     $validator->assert($config);
 } catch (AllOfException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 ?>
 --EXPECT--

@@ -14,25 +14,25 @@ use Respect\Validation\Validator as v;
 try {
     v::tld()->check('42');
 } catch (TldException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::tld())->check('com');
 } catch (TldException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::tld()->assert('1984');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::tld())->assert('com');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 ?>

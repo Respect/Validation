@@ -14,25 +14,25 @@ use Respect\Validation\Validator as v;
 try {
     v::not(v::yes())->check('Yes');
 } catch (YesException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::yes()->check('si');
 } catch (YesException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::yes())->assert('Yes');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::yes()->assert('si');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 ?>
 --EXPECT--

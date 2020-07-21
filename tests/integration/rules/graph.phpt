@@ -14,49 +14,49 @@ use Respect\Validation\Validator as v;
 try {
     v::graph()->check("foo\nbar");
 } catch (GraphException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::graph('foo')->check("foo\nbar");
 } catch (GraphException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::graph())->check('foobar');
 } catch (GraphException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::graph("\n"))->check("foo\nbar");
 } catch (GraphException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::graph()->assert("foo\nbar");
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::graph('foo')->assert("foo\nbar");
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::graph())->assert('foobar');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::graph("\n"))->assert("foo\nbar");
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 ?>

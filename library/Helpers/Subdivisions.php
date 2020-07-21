@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Helpers;
 
 use Respect\Validation\Exceptions\ComponentException;
+
 use function file_exists;
 use function file_get_contents;
 use function json_decode;
@@ -28,7 +29,7 @@ final class Subdivisions
 
     public function __construct(string $countryCode)
     {
-        $filename = __DIR__.'/../../data/iso_3166-2/'.$countryCode.'.json';
+        $filename = __DIR__ . '/../../data/iso_3166-2/' . $countryCode . '.json';
         if (!file_exists($filename)) {
             throw new ComponentException(sprintf('"%s" is not a supported country code', $countryCode));
         }

@@ -14,25 +14,25 @@ use Respect\Validation\Validator as v;
 try {
     v::macAddress()->check('00-11222:33:44:55');
 } catch (MacAddressException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::macAddress())->check('00:11:22:33:44:55');
 } catch (MacAddressException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::macAddress()->assert('90-bc-nk:1a-dd-cc');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::macAddress())->assert('AF:0F:bd:12:44:ba');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 ?>
 --EXPECT--

@@ -16,6 +16,7 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
+
 use function array_filter;
 use function array_map;
 

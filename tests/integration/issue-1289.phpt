@@ -58,7 +58,7 @@ $input = [
 try {
     $validator->check($input);
 } catch (ValidationException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {

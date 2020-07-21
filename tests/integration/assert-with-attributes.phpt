@@ -49,7 +49,7 @@ try {
         ->setName('the given data')
         ->assert($object);
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 ?>
 --EXPECT--

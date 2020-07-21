@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use ArrayAccess;
 use SimpleXMLElement;
+
 use function is_array;
 
 /**

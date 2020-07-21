@@ -17,6 +17,7 @@ use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use SplFileObject;
 use stdClass;
+
 use function chmod;
 
 /**
@@ -36,7 +37,7 @@ final class WritableTest extends RuleTestCase
     public function providerForValidInput(): array
     {
         $sut = new Writable();
-        $filename = $this->getFixtureDirectory().'/valid-image.png';
+        $filename = $this->getFixtureDirectory() . '/valid-image.png';
 
         return [
             'writable file' => [$sut, $filename],
@@ -52,7 +53,7 @@ final class WritableTest extends RuleTestCase
     public function providerForInvalidInput(): array
     {
         $rule = new Writable();
-        $filename = $this->getFixtureDirectory().'/non-writable';
+        $filename = $this->getFixtureDirectory() . '/non-writable';
 
         $this->changeFileModeToUnwritable($filename);
 

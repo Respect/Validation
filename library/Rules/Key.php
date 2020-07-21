@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Validatable;
+
 use function array_key_exists;
 use function is_array;
 use function is_scalar;

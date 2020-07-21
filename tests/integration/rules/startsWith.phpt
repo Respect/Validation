@@ -14,25 +14,25 @@ use Respect\Validation\Validator as v;
 try {
     v::startsWith('b')->check(['a', 'b']);
 } catch (StartsWithException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::startsWith(1.1))->check([1.1, 2.2]);
 } catch (StartsWithException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::startsWith('3.3', true)->assert([3.3, 4.4]);
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::startsWith('c'))->assert(['c', 'd']);
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 ?>
 --EXPECT--

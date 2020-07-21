@@ -16,6 +16,7 @@ namespace Respect\Validation\Rules;
 use function is_string;
 use function json_decode;
 use function json_last_error;
+
 use const JSON_ERROR_NONE;
 
 /**

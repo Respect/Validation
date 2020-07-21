@@ -14,25 +14,25 @@ use Respect\Validation\Validator as v;
 try {
     v::mimetype('image/png')->check('image.png');
 } catch (MimetypeException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::mimetype('image/png'))->check('tests/fixtures/valid-image.png');
 } catch (MimetypeException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::mimetype('image/png')->assert('tests/fixtures/invalid-image.png');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::mimetype('image/png'))->assert('tests/fixtures/valid-image.png');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 ?>
 --EXPECT--

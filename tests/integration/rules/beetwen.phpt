@@ -14,25 +14,25 @@ use Respect\Validation\Validator as v;
 try {
     v::between(1, 2)->check(0);
 } catch (BetweenException $e) {
-    echo $e->getMessage().PHP_EOL;
+    echo $e->getMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::between('yesterday', 'tomorrow'))->check('today');
 } catch (BetweenException $e) {
-    echo $e->getMessage().PHP_EOL;
+    echo $e->getMessage() . PHP_EOL;
 }
 
 try {
     v::between('a', 'c')->assert('d');
 } catch (NestedValidationException $e) {
-    echo $e->getFullMessage().PHP_EOL;
+    echo $e->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::between(-INF, INF))->assert(0);
 } catch (NestedValidationException $e) {
-    echo $e->getFullMessage().PHP_EOL;
+    echo $e->getFullMessage() . PHP_EOL;
 }
 
 ?>

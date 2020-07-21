@@ -22,6 +22,7 @@ use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\ParameterStringifier;
 use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
+
 use function lcfirst;
 use function sprintf;
 use function trim;
@@ -132,7 +133,7 @@ final class Factory
             try {
                 /** @var Validatable $rule */
                 $rule = $this
-                    ->createReflectionClass($namespace.'\\'.ucfirst($ruleName), Validatable::class)
+                    ->createReflectionClass($namespace . '\\' . ucfirst($ruleName), Validatable::class)
                     ->newInstanceArgs($arguments);
 
                 return $rule;
@@ -165,7 +166,7 @@ final class Factory
         foreach ($this->exceptionsNamespaces as $namespace) {
             try {
                 return $this->createValidationException(
-                    $namespace.'\\'.$ruleName.'Exception',
+                    $namespace . '\\' . $ruleName . 'Exception',
                     $id,
                     $input,
                     $params,

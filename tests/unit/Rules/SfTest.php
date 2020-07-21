@@ -19,6 +19,7 @@ use Symfony\Component\Validator\Constraints\IsFalse;
 use Symfony\Component\Validator\Constraints\IsNull;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\TraceableValidator;
+
 use function class_exists;
 
 /**
@@ -58,7 +59,9 @@ final class SfTest extends TestCase
     public function itShouldUseTheDefinedValidatorToValidate(): void
     {
         if (!class_exists(TraceableValidator::class)) {
-            self::markTestSkipped('The current version of Symfony Validator does not have '.TraceableValidator::class);
+            self::markTestSkipped(
+                'The current version of Symfony Validator does not have ' . TraceableValidator::class
+            );
         }
 
         $input = new stdClass();

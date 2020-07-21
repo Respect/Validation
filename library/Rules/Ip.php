@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+
 use function bccomp;
 use function explode;
 use function filter_var;
@@ -26,6 +27,7 @@ use function sprintf;
 use function str_repeat;
 use function str_replace;
 use function strtr;
+
 use const FILTER_VALIDATE_IP;
 
 /**
@@ -104,11 +106,11 @@ final class Ip extends AbstractRule
     private function createRange(): ?string
     {
         if ($this->endAddress && $this->endAddress) {
-            return $this->startAddress.'-'.$this->endAddress;
+            return $this->startAddress . '-' . $this->endAddress;
         }
 
         if ($this->startAddress && $this->mask) {
-            return $this->startAddress.'/'.long2ip((int) $this->mask);
+            return $this->startAddress . '/' . long2ip((int) $this->mask);
         }
 
         return null;
@@ -151,7 +153,7 @@ final class Ip extends AbstractRule
 
     private function fillAddress(string $address, string $fill = '*'): string
     {
-        return $address.str_repeat('.'.$fill, 3 - mb_substr_count($address, '.'));
+        return $address . str_repeat('.' . $fill, 3 - mb_substr_count($address, '.'));
     }
 
     private function parseRangeUsingWildcards(string $input): void

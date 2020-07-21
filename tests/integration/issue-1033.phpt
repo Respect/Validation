@@ -21,7 +21,7 @@ use Respect\Validation\Validator as v;
 try {
     v::each(v::equals(1))->assert(['A', 'B', 'B']);
 } catch (AllOfException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 ?>
 --EXPECT--

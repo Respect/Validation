@@ -14,25 +14,25 @@ use Respect\Validation\Validator as v;
 try {
     v::endsWith('foo')->check('bar');
 } catch (EndsWithException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::endsWith('foo'))->check(['bar', 'foo']);
 } catch (EndsWithException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::endsWith('foo')->assert('');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::endsWith('foo'))->assert(['bar', 'foo']);
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 ?>

@@ -14,25 +14,25 @@ use Respect\Validation\Validator as v;
 try {
     v::instance(DateTime::class)->check('');
 } catch (InstanceException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::instance(Traversable::class))->check(new ArrayObject());
 } catch (InstanceException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::instance(ArrayIterator::class)->assert(new stdClass());
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::instance(stdClass::class))->assert(new stdClass());
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 ?>
 --EXPECT--

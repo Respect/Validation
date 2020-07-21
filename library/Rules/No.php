@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use function nl_langinfo;
+
 use const NOEXPR;
 
 /**
@@ -30,6 +31,6 @@ final class No extends AbstractEnvelope
             $pattern = nl_langinfo(NOEXPR);
         }
 
-        parent::__construct(new Regex('/'.$pattern.'/i'));
+        parent::__construct(new Regex('/' . $pattern . '/i'));
     }
 }

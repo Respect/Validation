@@ -16,6 +16,7 @@ namespace Respect\Validation\Exceptions;
 use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
 use Respect\Validation\Test\TestCase;
+
 use function trim;
 
 /**

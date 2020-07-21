@@ -15,6 +15,7 @@ namespace Respect\Validation\Exceptions;
 
 use InvalidArgumentException;
 use Respect\Validation\Message\Formatter;
+
 use function key;
 
 /**

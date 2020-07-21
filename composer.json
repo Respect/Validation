@@ -20,7 +20,6 @@
         "symfony/polyfill-mbstring": "^1.2"
     },
     "require-dev": {
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
         "egulias/email-validator": "^2.1",
         "malukenho/docheader": "^0.1",
         "mikey179/vfsstream": "^1.6",
@@ -28,7 +27,7 @@
         "phpstan/phpstan-deprecation-rules": "^0.11.0",
         "phpstan/phpstan-phpunit": "^0.11.0",
         "phpunit/phpunit": "^7.5",
-        "respect/coding-standard": "^1.0",
+        "respect/coding-standard": "^2.1",
         "squizlabs/php_codesniffer": "^3.5",
         "symfony/validator": "^3.0||^4.0",
         "zendframework/zend-validator": "^2.1"

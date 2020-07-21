@@ -16,6 +16,7 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\CountableStub;
+
 use function range;
 use function tmpfile;
 

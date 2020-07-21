@@ -14,25 +14,25 @@ use Respect\Validation\Validator as v;
 try {
     v::writable()->check('/path/of/a/valid/writable/file.txt');
 } catch (WritableException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::writable())->check('tests/fixtures/valid-image.png');
 } catch (WritableException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::writable()->assert([]);
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::writable())->assert('tests/fixtures/invalid-image.png');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 ?>

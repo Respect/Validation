@@ -65,11 +65,11 @@ final class Nif extends AbstractRule
     private function validateNie(string $prefix, string $number, string $control): bool
     {
         if ($prefix === 'Y') {
-            return $this->validateDni((int) ('1'.$number), $control);
+            return $this->validateDni((int) ('1' . $number), $control);
         }
 
         if ($prefix === 'Z') {
-            return $this->validateDni((int) ('2'.$number), $control);
+            return $this->validateDni((int) ('2' . $number), $control);
         }
 
         return $this->validateDni((int) $number, $control);

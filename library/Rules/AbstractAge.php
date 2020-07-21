@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Helpers\CanValidateDateTime;
+
 use function date;
 use function date_parse_from_format;
 use function is_scalar;

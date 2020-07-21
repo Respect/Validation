@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Helpers\Subdivisions;
+
 use function array_keys;
 
 /**

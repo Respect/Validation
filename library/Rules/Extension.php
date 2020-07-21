@@ -14,8 +14,10 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use SplFileInfo;
+
 use function is_string;
 use function pathinfo;
+
 use const PATHINFO_EXTENSION;
 
 /**

@@ -15,9 +15,11 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
+
 use function random_int;
 use function setlocale;
 use function sprintf;
+
 use const LC_ALL;
 use const PHP_INT_MAX;
 

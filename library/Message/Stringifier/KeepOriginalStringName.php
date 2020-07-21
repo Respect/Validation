@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Message\Stringifier;
 
 use Respect\Validation\Message\ParameterStringifier;
+
 use function is_string;
 use function Respect\Stringifier\stringify;
 

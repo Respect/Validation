@@ -15,6 +15,7 @@ namespace Respect\Validation\Helpers;
 
 use stdClass;
 use Traversable;
+
 use function is_array;
 
 /**

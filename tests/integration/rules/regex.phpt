@@ -12,25 +12,25 @@ use Respect\Validation\Validator as v;
 try {
     v::regex('/^w+$/')->check('w poiur');
 } catch (RegexException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::regex('/^[a-z]+$/'))->check('wpoiur');
 } catch (RegexException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::regex('/^w+$/')->assert(new stdClass());
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::regex('/^[a-z]+$/i'))->assert('wPoiur');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 ?>
 --EXPECT--

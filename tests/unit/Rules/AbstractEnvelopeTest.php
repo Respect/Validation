@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
+
 use function array_intersect_key;
 
 /**

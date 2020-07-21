@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
+
 use function array_shift;
 use function count;
 use function current;

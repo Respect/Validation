@@ -16,7 +16,9 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
+
 use function random_int;
+
 use const PHP_INT_MAX;
 use const PHP_INT_MIN;
 
@@ -110,7 +112,7 @@ final class UuidTest extends RuleTestCase
         $version = random_int(6, PHP_INT_MAX);
 
         self::expectException(ComponentException::class);
-        self::expectExceptionMessage('Only versions 1, 3, 4, and 5 are supported: '.$version.' given');
+        self::expectExceptionMessage('Only versions 1, 3, 4, and 5 are supported: ' . $version . ' given');
 
         new Uuid($version);
     }
@@ -123,7 +125,7 @@ final class UuidTest extends RuleTestCase
         $version = random_int(PHP_INT_MIN, 0);
 
         self::expectException(ComponentException::class);
-        self::expectExceptionMessage('Only versions 1, 3, 4, and 5 are supported: '.$version.' given');
+        self::expectExceptionMessage('Only versions 1, 3, 4, and 5 are supported: ' . $version . ' given');
 
         new Uuid($version);
     }

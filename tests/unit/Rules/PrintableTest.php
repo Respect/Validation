@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
+
 use function chr;
 
 /**
@@ -57,8 +58,8 @@ final class PrintableTest extends RuleTestCase
         return [
             [$rule, ''],
             [$rule, null],
-            [$rule, 'foo'.chr(7).'bar'],
-            [$rule, 'foo'.chr(10).'bar'],
+            [$rule, 'foo' . chr(7) . 'bar'],
+            [$rule, 'foo' . chr(10) . 'bar'],
         ];
     }
 }

@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use function array_unique;
 use function is_array;
+
 use const SORT_REGULAR;
 
 /**

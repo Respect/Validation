@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Validatable;
+
 use function array_key_exists;
 use function array_map;
 use function count;
@@ -97,8 +98,7 @@ final class KeySet extends AbstractWrapper
             return $validatable;
         }
 
-        if (!$validatable instanceof AllOf
-            || count($validatable->getRules()) !== 1) {
+        if (!$validatable instanceof AllOf || count($validatable->getRules()) !== 1) {
             throw new ComponentException('KeySet rule accepts only Key rules');
         }
 

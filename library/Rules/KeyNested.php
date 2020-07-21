@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use ArrayAccess;
 use Respect\Validation\Exceptions\ComponentException;
+
 use function array_key_exists;
 use function array_shift;
 use function explode;

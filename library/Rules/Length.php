@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use Countable as CountableInterface;
 use Respect\Validation\Exceptions\ComponentException;
+
 use function count;
 use function get_object_vars;
 use function is_array;

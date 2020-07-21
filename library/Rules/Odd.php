@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use function filter_var;
 use function is_numeric;
+
 use const FILTER_VALIDATE_INT;
 
 /**

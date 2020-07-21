@@ -22,28 +22,28 @@ uopz_set_return('is_uploaded_file', false);
 try {
     v::uploaded()->check('filename');
 } catch (UploadedException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 uopz_set_return('is_uploaded_file', true);
 try {
     v::not(v::uploaded())->check('filename');
 } catch (UploadedException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 uopz_set_return('is_uploaded_file', false);
 try {
     v::uploaded()->assert('filename');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 uopz_set_return('is_uploaded_file', true);
 try {
     v::not(v::uploaded())->assert('filename');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 ?>
 --EXPECT--

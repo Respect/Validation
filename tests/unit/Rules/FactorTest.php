@@ -16,9 +16,11 @@ namespace Respect\Validation\Rules;
 use DateTime;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
+
 use function mt_getrandmax;
 use function mt_rand;
 use function uniqid;
+
 use const PHP_INT_MAX;
 
 /**

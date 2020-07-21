@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use Directory as NativeDirectory;
 use SplFileInfo;
+
 use function is_dir;
 use function is_scalar;
 

@@ -16,6 +16,7 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use SplFileObject;
+
 use function tmpfile;
 
 /**

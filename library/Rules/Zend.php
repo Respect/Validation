@@ -19,6 +19,7 @@ use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Exceptions\ZendException;
 use Throwable;
 use Zend\Validator\ValidatorInterface;
+
 use function array_map;
 use function current;
 use function is_string;
@@ -121,7 +122,7 @@ final class Zend extends AbstractRule
             throw new ComponentException('The given argument is not a valid Zend Validator');
         }
 
-        $className = stripos($validator, 'Zend') === false ? 'Zend\\Validator\\'.$validator : '\\'.$validator;
+        $className = stripos($validator, 'Zend') === false ? 'Zend\\Validator\\' . $validator : '\\' . $validator;
 
         try {
             $reflection = new ReflectionClass($className);

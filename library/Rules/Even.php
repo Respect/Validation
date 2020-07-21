@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use function filter_var;
+
 use const FILTER_VALIDATE_INT;
 
 /**

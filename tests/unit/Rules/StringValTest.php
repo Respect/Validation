@@ -16,6 +16,7 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\ToStringStub;
 use stdClass;
+
 use function tmpfile;
 
 /**

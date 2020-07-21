@@ -14,25 +14,25 @@ use Respect\Validation\Validator as v;
 try {
     v::nfeAccessKey()->check('31841136830118868211870485416765268625116906');
 } catch (NfeAccessKeyException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::nfeAccessKey())->check('52060433009911002506550120000007800267301615');
 } catch (NfeAccessKeyException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::nfeAccessKey()->assert('31841136830118868211870485416765268625116906');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::nfeAccessKey())->assert('52060433009911002506550120000007800267301615');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 ?>

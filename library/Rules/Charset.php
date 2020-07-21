@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+
 use function array_diff;
 use function in_array;
 use function mb_detect_encoding;

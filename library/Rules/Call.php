@@ -16,6 +16,7 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
 use Throwable;
+
 use function call_user_func;
 use function restore_error_handler;
 use function set_error_handler;

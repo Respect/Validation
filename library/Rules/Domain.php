@@ -17,6 +17,7 @@ use Respect\Validation\Exceptions\DomainException;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
+
 use function array_merge;
 use function array_pop;
 use function count;

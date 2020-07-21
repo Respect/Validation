@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use DateTimeInterface;
+
 use function date;
 use function is_numeric;
 use function is_scalar;

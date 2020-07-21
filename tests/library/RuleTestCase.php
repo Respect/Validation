@@ -17,6 +17,7 @@ use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
 use Respect\Validation\Validatable;
+
 use function realpath;
 use function Respect\Stringifier\stringify;
 use function sprintf;
@@ -63,7 +64,7 @@ abstract class RuleTestCase extends TestCase
      */
     public function getFixtureDirectory(): string
     {
-        return realpath(__DIR__.'/../fixtures');
+        return realpath(__DIR__ . '/../fixtures');
     }
 
     /**

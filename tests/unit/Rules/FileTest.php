@@ -17,6 +17,7 @@ use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use SplFileObject;
 use stdClass;
+
 use const PHP_INT_MAX;
 
 /**
@@ -39,8 +40,8 @@ final class FileTest extends RuleTestCase
 
         return [
             'filename' => [$sut, __FILE__],
-            'SplFileInfo' => [$sut, new SplFileInfo($this->getFixtureDirectory().'/valid-image.png')],
-            'SplFileObject' => [$sut, new SplFileObject($this->getFixtureDirectory().'/invalid-image.png')],
+            'SplFileInfo' => [$sut, new SplFileInfo($this->getFixtureDirectory() . '/valid-image.png')],
+            'SplFileObject' => [$sut, new SplFileObject($this->getFixtureDirectory() . '/invalid-image.png')],
         ];
     }
 

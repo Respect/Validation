@@ -15,8 +15,10 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
+
 use function acos;
 use function sqrt;
+
 use const INF;
 use const NAN;
 use const PHP_INT_MAX;

@@ -15,8 +15,10 @@ namespace Respect\Validation\Rules;
 
 use finfo;
 use SplFileInfo;
+
 use function is_file;
 use function is_string;
+
 use const FILEINFO_MIME_TYPE;
 
 /**

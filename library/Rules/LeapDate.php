@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use DateTimeImmutable;
 use DateTimeInterface;
+
 use function is_scalar;
 
 /**

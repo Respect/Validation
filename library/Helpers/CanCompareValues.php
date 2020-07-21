@@ -17,6 +17,7 @@ use Countable;
 use DateTimeImmutable;
 use DateTimeInterface;
 use Throwable;
+
 use function is_numeric;
 use function is_scalar;
 use function is_string;

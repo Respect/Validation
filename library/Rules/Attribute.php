@@ -16,6 +16,7 @@ namespace Respect\Validation\Rules;
 use ReflectionException;
 use ReflectionProperty;
 use Respect\Validation\Validatable;
+
 use function is_object;
 use function property_exists;
 

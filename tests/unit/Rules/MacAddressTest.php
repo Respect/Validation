@@ -14,8 +14,10 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
+
 use function random_int;
 use function tmpfile;
+
 use const PHP_INT_MAX;
 
 /**

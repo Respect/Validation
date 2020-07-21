@@ -19,6 +19,7 @@ use ReflectionException;
 use ReflectionProperty;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
+
 use function tmpfile;
 
 /**

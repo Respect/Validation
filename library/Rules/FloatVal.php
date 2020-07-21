@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use function filter_var;
 use function is_float;
+
 use const FILTER_VALIDATE_FLOAT;
 
 /**

@@ -14,25 +14,25 @@ use Respect\Validation\Validator as v;
 try {
     v::cnh()->check('batman');
 } catch (CnhException $e) {
-    echo $e->getMessage().PHP_EOL;
+    echo $e->getMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::cnh())->check('02650306461');
 } catch (CnhException $e) {
-    echo $e->getMessage().PHP_EOL;
+    echo $e->getMessage() . PHP_EOL;
 }
 
 try {
     v::cnh()->assert('bruce wayne');
 } catch (NestedValidationException $e) {
-    echo $e->getFullMessage().PHP_EOL;
+    echo $e->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::cnh())->assert('02650306461');
 } catch (NestedValidationException $e) {
-    echo $e->getFullMessage().PHP_EOL;
+    echo $e->getFullMessage() . PHP_EOL;
 }
 ?>
 --EXPECT--

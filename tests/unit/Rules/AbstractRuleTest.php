@@ -63,7 +63,7 @@ final class AbstractRuleTest extends TestCase
             $booleanResult,
             // Invoking it to trigger __invoke
             $abstractRuleMock($input),
-            'When invoking an instance of AbstractRule, the method validate should'.
+            'When invoking an instance of AbstractRule, the method validate should' .
             'be called with the same input and return the same result.'
         );
     }

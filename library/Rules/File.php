@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use SplFileInfo;
+
 use function is_file;
 use function is_string;
 

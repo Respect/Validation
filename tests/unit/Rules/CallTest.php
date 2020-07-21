@@ -19,6 +19,7 @@ use Respect\Validation\Exceptions\AlwaysInvalidException;
 use Respect\Validation\Exceptions\CallException;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
+
 use function restore_error_handler;
 use function set_error_handler;
 use function trigger_error;

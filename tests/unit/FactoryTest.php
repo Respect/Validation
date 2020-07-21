@@ -22,6 +22,7 @@ use Respect\Validation\Test\Rules\Invalid;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\Rules\Valid;
 use Respect\Validation\Test\TestCase;
+
 use function sprintf;
 
 /**

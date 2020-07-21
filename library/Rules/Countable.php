@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Countable as CountableInterface;
+
 use function is_array;
 
 /**

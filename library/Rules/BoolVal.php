@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use function filter_var;
 use function is_bool;
+
 use const FILTER_NULL_ON_FAILURE;
 use const FILTER_VALIDATE_BOOLEAN;
 

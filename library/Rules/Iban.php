@@ -125,7 +125,7 @@ final class Iban extends AbstractRule
 
         $checkDigits = substr($iban, 2, 2);
         $bban = substr($iban, 4);
-        $rearranged = $bban.$countryCode.$checkDigits;
+        $rearranged = $bban . $countryCode . $checkDigits;
 
         return bcmod($this->convertToInteger($rearranged), '97') === '1';
     }

@@ -15,25 +15,25 @@ use Respect\Validation\Validator as v;
 try {
     v::symbolicLink()->check('tests/fixtures/fake-filename');
 } catch (SymbolicLinkException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::symbolicLink())->check('tests/fixtures/symbolic-link');
 } catch (SymbolicLinkException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::symbolicLink()->assert('tests/fixtures/fake-filename');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::symbolicLink())->assert('tests/fixtures/symbolic-link');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 ?>
 --EXPECT--

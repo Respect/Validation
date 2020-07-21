@@ -16,6 +16,7 @@ namespace Respect\Validation\Rules;
 use DateTime;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
+
 use function mb_strtoupper;
 use function mt_rand;
 use function random_int;

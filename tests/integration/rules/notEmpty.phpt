@@ -15,37 +15,37 @@ use Respect\Validation\Validator as v;
 try {
     v::notEmpty()->check(null);
 } catch (NotEmptyException $e) {
-    echo $e->getMessage().PHP_EOL;
+    echo $e->getMessage() . PHP_EOL;
 }
 
 try {
     v::notEmpty()->setName('Field')->check(null);
 } catch (NotEmptyException $e) {
-    echo $e->getMessage().PHP_EOL;
+    echo $e->getMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::notEmpty())->check(1);
 } catch (NotEmptyException $e) {
-    echo $e->getMessage().PHP_EOL;
+    echo $e->getMessage() . PHP_EOL;
 }
 
 try {
     v::notEmpty()->assert('');
 } catch (NestedValidationException $e) {
-    echo $e->getFullMessage().PHP_EOL;
+    echo $e->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::notEmpty()->setName('Field')->assert('');
 } catch (NestedValidationException $e) {
-    echo $e->getFullMessage().PHP_EOL;
+    echo $e->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::notEmpty())->assert([1]);
 } catch (NestedValidationException $e) {
-    echo $e->getFullMessage().PHP_EOL;
+    echo $e->getFullMessage() . PHP_EOL;
 }
 
 ?>

@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use stdClass;
+
 use function array_filter;
 use function is_array;
 use function is_numeric;

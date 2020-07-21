@@ -14,13 +14,13 @@ use Respect\Validation\Validator as v;
 try {
     v::alwaysInvalid()->check('whatever');
 } catch (AlwaysInvalidException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::alwaysInvalid()->assert('');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 ?>
 --EXPECT--

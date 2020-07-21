@@ -16,6 +16,7 @@ namespace Respect\Validation\Rules;
 use function is_string;
 use function nl_langinfo;
 use function preg_match;
+
 use const YESEXPR;
 
 /**
@@ -54,7 +55,7 @@ final class Yes extends AbstractRule
     private function getPattern(): string
     {
         if ($this->useLocale) {
-            return '/'.nl_langinfo(YESEXPR).'/';
+            return '/' . nl_langinfo(YESEXPR) . '/';
         }
 
         return '/^y(eah?|ep|es)?$/i';

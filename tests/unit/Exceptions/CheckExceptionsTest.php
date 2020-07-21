@@ -16,6 +16,7 @@ namespace Respect\Validation\Exceptions;
 use DirectoryIterator;
 use ReflectionClass;
 use Respect\Validation\Test\TestCase;
+
 use function class_exists;
 use function mb_substr;
 use function sprintf;
@@ -48,7 +49,7 @@ final class CheckExceptionsTest extends TestCase
                 continue;
             }
 
-            $className = 'Respect\\Validation\\Rules\\'.$ruleName;
+            $className = 'Respect\\Validation\\Rules\\' . $ruleName;
             $reflectionClass = new ReflectionClass($className);
             if ($reflectionClass->isAbstract() || $reflectionClass->isInterface()) {
                 continue;
@@ -67,7 +68,7 @@ final class CheckExceptionsTest extends TestCase
      */
     public function ruleHasAnExceptionWhichHasValidApi(string $ruleName): void
     {
-        $exceptionClass = 'Respect\\Validation\\Exceptions\\'.$ruleName.'Exception';
+        $exceptionClass = 'Respect\\Validation\\Exceptions\\' . $ruleName . 'Exception';
         self::assertTrue(
             class_exists($exceptionClass),
             sprintf('Expected exception class to exist: %s.', $ruleName)

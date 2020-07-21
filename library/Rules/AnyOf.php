@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\AnyOfException;
 use Respect\Validation\Exceptions\ValidationException;
+
 use function count;
 
 /**

@@ -14,25 +14,25 @@ use Respect\Validation\Validator as v;
 try {
     v::printable()->check('');
 } catch (PrintableException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::printable())->check('abc');
 } catch (PrintableException $exception) {
-    echo $exception->getMessage().PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
 }
 
 try {
-    v::printable()->assert('foo'.chr(10).'bar');
+    v::printable()->assert('foo' . chr(10) . 'bar');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 
 try {
     v::not(v::printable())->assert('$%asd');
 } catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage().PHP_EOL;
+    echo $exception->getFullMessage() . PHP_EOL;
 }
 ?>
 --EXPECT--
