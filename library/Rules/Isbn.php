@@ -44,6 +44,6 @@ final class Isbn extends AbstractRule
             return false;
         }
 
-        return preg_match(sprintf('/%s/', implode(self::PIECES)), $input) > 0;
+        return preg_match(sprintf('/%s/', implode(self::PIECES)), (string) $input) > 0;
     }
 }

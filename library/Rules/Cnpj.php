@@ -80,7 +80,7 @@ final class Cnpj extends AbstractRule
         return array_map(
             'intval',
             str_split(
-                preg_replace('/\D/', '', $input)
+                (string) preg_replace('/\D/', '', $input)
             )
         );
     }

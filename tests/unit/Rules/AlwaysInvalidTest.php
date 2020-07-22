@@ -28,7 +28,7 @@ use Respect\Validation\Test\TestCase;
 final class AlwaysInvalidTest extends TestCase
 {
     /**
-     * {@inheritDoc}
+     * @return mixed[][]
      */
     public function providerForInvalidInput(): array
     {

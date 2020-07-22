@@ -34,7 +34,7 @@ final class Subdivisions
             throw new ComponentException(sprintf('"%s" is not a supported country code', $countryCode));
         }
 
-        $this->data = (array) json_decode(file_get_contents($filename), true);
+        $this->data = (array) json_decode((string) file_get_contents($filename), true);
     }
 
     public function getCountry(): string

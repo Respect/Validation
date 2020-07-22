@@ -92,8 +92,6 @@ final class ZendTest extends RuleTestCase
      * @test
      *
      * @dataProvider providerForUnbuildableValidator
-     *
-     * @param mixed $validator
      */
     public function itShouldThrowAnExceptionWhenValidatorCannotBeCreated(string $validator): void
     {

@@ -37,7 +37,7 @@ final class Cnh extends AbstractRule
         }
 
         // Canonicalize input
-        $input = preg_replace('{\D}', '', (string) $input);
+        $input = (string) preg_replace('{\D}', '', (string) $input);
 
         // Validate length and invalid numbers
         if (mb_strlen($input) != 11 || ((int) $input === 0)) {

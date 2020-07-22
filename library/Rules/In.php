@@ -29,7 +29,7 @@ use function mb_strpos;
 final class In extends AbstractRule
 {
     /**
-     * @var mixed[]|string
+     * @var mixed[]|mixed
      */
     private $haystack;
 
@@ -41,7 +41,7 @@ final class In extends AbstractRule
     /**
      * Initializes the rule with the haystack and optionally compareIdentical flag.
      *
-     * @param mixed[]|string $haystack
+     * @param mixed[]|mixed $haystack
      */
     public function __construct($haystack, bool $compareIdentical = false)
     {
@@ -76,7 +76,7 @@ final class In extends AbstractRule
 
         $inputString = (string) $input;
 
-        return mb_stripos($this->haystack, $inputString, 0, mb_detect_encoding($inputString)) !== false;
+        return mb_stripos($this->haystack, $inputString, 0, (string) mb_detect_encoding($inputString)) !== false;
     }
 
     /**
@@ -94,6 +94,6 @@ final class In extends AbstractRule
 
         $inputString = (string) $input;
 
-        return mb_strpos($this->haystack, $inputString, 0, mb_detect_encoding($inputString)) !== false;
+        return mb_strpos($this->haystack, $inputString, 0, (string) mb_detect_encoding($inputString)) !== false;
     }
 }

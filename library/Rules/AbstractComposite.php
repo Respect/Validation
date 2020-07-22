@@ -67,7 +67,7 @@ abstract class AbstractComposite extends AbstractRule
      */
     public function addRule(Validatable $rule): self
     {
-        if ($this->shouldHaveNameOverwritten($rule)) {
+        if ($this->shouldHaveNameOverwritten($rule) && $this->getName() !== null) {
             $rule->setName($this->getName());
         }
 

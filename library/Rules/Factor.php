@@ -55,7 +55,7 @@ final class Factor extends AbstractRule
             return false;
         }
 
-        $input = (int) abs($input);
+        $input = (int) abs((int) $input);
         $dividend = (int) abs($this->dividend);
 
         // The dividend divided by the input must be an integer if input is a

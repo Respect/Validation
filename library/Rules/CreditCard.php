@@ -92,7 +92,7 @@ final class CreditCard extends AbstractRule
             return false;
         }
 
-        $input = preg_replace('/[ .-]/', '', (string) $input);
+        $input = (string) preg_replace('/[ .-]/', '', (string) $input);
         if (!(new Luhn())->validate($input)) {
             return false;
         }

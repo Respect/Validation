@@ -61,6 +61,6 @@ final class Image extends AbstractRule
             return false;
         }
 
-        return mb_strpos($this->fileInfo->file($input), 'image/') === 0;
+        return mb_strpos((string) $this->fileInfo->file($input), 'image/') === 0;
     }
 }

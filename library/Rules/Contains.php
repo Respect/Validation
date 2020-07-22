@@ -74,7 +74,7 @@ final class Contains extends AbstractRule
             return false;
         }
 
-        $encoding = mb_detect_encoding($haystack);
+        $encoding = (string) mb_detect_encoding($haystack);
         if ($this->identical) {
             return mb_strpos($haystack, $needle, 0, $encoding) !== false;
         }

@@ -50,6 +50,10 @@ final class CheckExceptionsTest extends TestCase
             }
 
             $className = 'Respect\\Validation\\Rules\\' . $ruleName;
+            if (!class_exists($className)) {
+                continue;
+            }
+
             $reflectionClass = new ReflectionClass($className);
             if ($reflectionClass->isAbstract() || $reflectionClass->isInterface()) {
                 continue;

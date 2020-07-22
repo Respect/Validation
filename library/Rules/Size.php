@@ -31,7 +31,7 @@ use function sprintf;
 final class Size extends AbstractRule
 {
     /**
-     * @var string|null
+     * @var string|int|null
      */
     private $minSize;
 
@@ -41,7 +41,7 @@ final class Size extends AbstractRule
     private $minValue;
 
     /**
-     * @var string|null
+     * @var string|int|null
      */
     private $maxSize;
 

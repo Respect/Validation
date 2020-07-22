@@ -26,7 +26,7 @@ try {
             'schema' => 'schema',
         ],
     ];
-    $object = json_decode(json_encode($array));
+    $object = json_decode((string) json_encode($array));
     v::create()
         ->attribute(
             'mysql',

@@ -40,7 +40,7 @@ final class Imei extends AbstractRule
             return false;
         }
 
-        $numbers = preg_replace('/\D/', '', $input);
+        $numbers = (string) preg_replace('/\D/', '', (string) $input);
         if (mb_strlen($numbers) != self::IMEI_SIZE) {
             return false;
         }

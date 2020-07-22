@@ -52,11 +52,20 @@ final class Callback extends AbstractRule
      */
     public function validate($input): bool
     {
+        return (bool) call_user_func_array($this->callback, $this->getArguments($input));
+    }
+
+    /**
+     * @param mixed $input
+     * @return mixed[]
+     */
+    private function getArguments($input): array
+    {
         $arguments = [$input];
-        if (count($this->arguments) > 0) {
-            $arguments = array_merge($arguments, $this->arguments);
+        if (count($this->arguments) === 0) {
+            return $arguments;
         }
 
-        return (bool) call_user_func_array($this->callback, $arguments);
+        return array_merge($arguments, $this->arguments);
     }
 }

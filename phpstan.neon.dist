@@ -7,9 +7,20 @@ parameters:
   fileExtensions:
     - php
     - phpt
+  checkGenericClassInNonGenericObjectType: false
+  checkMissingIterableValueType: false
   ignoreErrors:
-    - '/Call to an undefined static method Respect\\Validation\\Validator::iDoNotExistSoIShouldThrowException/'
-    - '/Parameter #2 $locale of function setlocale expects array|string|null, int given./'
+    -
+      message: '/Instanceof between mixed and SimpleXMLElement will always evaluate to false\./'
+      path: library/Rules/ArrayVal.php
+    -
+      message: '/Parameter #1 \$error_handler of function set_error_handler expects \(callable\(int, string, string, int, array\): bool\)\|null, Closure\(\): void given\./'
+      paths:
+        - library/Rules/Call.php
+        - tests/unit/Rules/CallTest.php
+    -
+      message: '/Call to an undefined static method Respect\\Validation\\Validator::iDoNotExistSoIShouldThrowException/'
+      path: tests/unit/ValidatorTest.php
   level: 7
   paths:
     - library/

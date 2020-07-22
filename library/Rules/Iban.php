@@ -141,7 +141,7 @@ final class Iban extends AbstractRule
 
     private function convertToInteger(string $reArrangedIban): string
     {
-        return preg_replace_callback(
+        return (string) preg_replace_callback(
             '/[A-Z]/',
             static function (array $match): int {
                 return ord($match[0]) - 55;

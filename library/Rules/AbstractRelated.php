@@ -63,7 +63,7 @@ abstract class AbstractRelated extends AbstractRule
         $this->rule = $rule;
         $this->mandatory = $mandatory;
 
-        if ($rule && $rule->getName()) {
+        if ($rule && $rule->getName() !== null) {
             $this->setName($rule->getName());
         } elseif (is_scalar($reference)) {
             $this->setName((string) $reference);

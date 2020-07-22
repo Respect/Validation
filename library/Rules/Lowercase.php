@@ -36,6 +36,6 @@ final class Lowercase extends AbstractRule
             return false;
         }
 
-        return $input === mb_strtolower($input, mb_detect_encoding($input));
+        return $input === mb_strtolower($input, (string) mb_detect_encoding($input));
     }
 }

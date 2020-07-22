@@ -27,8 +27,10 @@ final class ZendValidator implements ValidatorInterface
 
     /**
      * {@inheritDoc}
+     *
+     * @return string[]
      */
-    public function getMessages()
+    public function getMessages(): array
     {
         return [];
     }

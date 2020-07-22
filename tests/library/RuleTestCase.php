@@ -64,7 +64,7 @@ abstract class RuleTestCase extends TestCase
      */
     public function getFixtureDirectory(): string
     {
-        return realpath(__DIR__ . '/../fixtures');
+        return (string) realpath(__DIR__ . '/../fixtures');
     }
 
     /**

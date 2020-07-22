@@ -70,7 +70,7 @@ final class EndsWith extends AbstractRule
             return end($input) == $this->endValue;
         }
 
-        $encoding = mb_detect_encoding($input);
+        $encoding = (string) mb_detect_encoding($input);
         $endPosition = mb_strlen($input, $encoding) - mb_strlen($this->endValue, $encoding);
 
         return mb_strripos($input, $this->endValue, -1, $encoding) === $endPosition;
@@ -85,7 +85,7 @@ final class EndsWith extends AbstractRule
             return end($input) === $this->endValue;
         }
 
-        $encoding = mb_detect_encoding($input);
+        $encoding = (string) mb_detect_encoding($input);
         $endPosition = mb_strlen($input, $encoding) - mb_strlen($this->endValue, $encoding);
 
         return mb_strrpos($input, $this->endValue, 0, $encoding) === $endPosition;

@@ -40,7 +40,7 @@ final class NoTest extends RuleTestCase
      */
     protected function setUp(): void
     {
-        $this->locale = setlocale(LC_ALL, 0);
+        $this->locale = (string) setlocale(LC_ALL, '0');
     }
 
     /**
@@ -117,7 +117,7 @@ final class NoTest extends RuleTestCase
     {
         setlocale(LC_ALL, $locale);
 
-        if ($locale !== setlocale(LC_ALL, 0)) {
+        if ($locale !== setlocale(LC_ALL, '0')) {
             $this->markTestSkipped(sprintf('Could not set locale information to "%s"', $locale));
         }
 
@@ -133,7 +133,7 @@ final class NoTest extends RuleTestCase
     {
         setlocale(LC_ALL, $locale);
 
-        if ($locale !== setlocale(LC_ALL, 0)) {
+        if ($locale !== setlocale(LC_ALL, '0')) {
             $this->markTestSkipped(sprintf('Could not set locale information to "%s"', $locale));
         }
 

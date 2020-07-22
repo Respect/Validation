@@ -68,7 +68,7 @@ final class StartsWith extends AbstractRule
             return reset($input) == $this->startValue;
         }
 
-        return mb_stripos($input, $this->startValue, 0, mb_detect_encoding($input)) === 0;
+        return mb_stripos($input, $this->startValue, 0, (string) mb_detect_encoding($input)) === 0;
     }
 
     /**
@@ -80,6 +80,6 @@ final class StartsWith extends AbstractRule
             return reset($input) === $this->startValue;
         }
 
-        return mb_strpos($input, $this->startValue, 0, mb_detect_encoding($input)) === 0;
+        return mb_strpos($input, $this->startValue, 0, (string) mb_detect_encoding($input)) === 0;
     }
 }

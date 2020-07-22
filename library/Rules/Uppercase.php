@@ -36,6 +36,6 @@ final class Uppercase extends AbstractRule
             return false;
         }
 
-        return $input === mb_strtoupper($input, mb_detect_encoding($input));
+        return $input === mb_strtoupper($input, (string) mb_detect_encoding($input));
     }
 }

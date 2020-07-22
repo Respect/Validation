@@ -125,11 +125,11 @@ final class Ip extends AbstractRule
         if (mb_strpos($input, '-') !== false) {
             [$this->startAddress, $this->endAddress] = explode('-', $input);
 
-            if (!$this->verifyAddress($this->startAddress)) {
+            if ($this->startAddress !== null && !$this->verifyAddress($this->startAddress)) {
                 throw new ComponentException('Invalid network range');
             }
 
-            if (!$this->verifyAddress($this->endAddress)) {
+            if ($this->endAddress !== null && !$this->verifyAddress($this->endAddress)) {
                 throw new ComponentException('Invalid network range');
             }
 
@@ -193,13 +193,15 @@ final class Ip extends AbstractRule
     {
         $input = sprintf('%u', ip2long($input));
 
-        return bccomp($input, sprintf('%u', ip2long($this->startAddress))) >= 0
-               && bccomp($input, sprintf('%u', ip2long($this->endAddress))) <= 0;
+        return $this->startAddress !== null
+            && $this->endAddress !== null
+            && bccomp($input, sprintf('%u', ip2long($this->startAddress))) >= 0
+            && bccomp($input, sprintf('%u', ip2long($this->endAddress))) <= 0;
     }
 
     private function belongsToSubnet(string $input): bool
     {
-        if ($this->mask === null) {
+        if ($this->mask === null || $this->startAddress === null) {
             return false;
         }
 

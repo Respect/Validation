@@ -32,7 +32,7 @@ use function sprintf;
 final class VideoUrl extends AbstractRule
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $service;
 
