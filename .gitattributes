@@ -1,5 +1,6 @@
+/*.dist export-ignore
+/*.yml export-ignore
 /.* export-ignore
-/couscous.yml export-ignore
+/bin export-ignore
 /docs export-ignore
-/phpunit.xml.dist export-ignore
 /tests export-ignore
