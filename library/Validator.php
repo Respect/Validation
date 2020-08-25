@@ -230,4 +230,22 @@ final class Validator extends AllOf
     {
         return new self();
     }
+
+    /**
+     * 按照规则检查输入，如果不符合规则则抛出异常
+     *
+     * @param array $input
+     * @param array $rules
+     * @return array
+     */
+    public static function input(array $input, array $rules)
+    {
+        $values = [];
+        foreach ($rules as $field => $rule) {
+            $value = $input[$field] ?? null;
+            $rule->check($value);
+            $values[$field] = $value;
+        }
+        return $values;
+    }
 }
