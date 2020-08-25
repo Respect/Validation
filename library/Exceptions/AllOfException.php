@@ -24,12 +24,12 @@ class AllOfException extends GroupedValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::NONE => '所有必需的规则都必须传递给 {{name}}',
-            self::SOME => '这些规则必须传递给 {{name}}',
+            self::NONE => '{{name}} 必需符合以下规则',
+            self::SOME => '{{name}} 必需符合以下规则',
         ],
         self::MODE_NEGATIVE => [
-            self::NONE => '这些规则都不能传递给 {{name}}',
-            self::SOME => '这些规则不能传递给 {{name}}',
+            self::NONE => '{{name}} 不能符合以下规则',
+            self::SOME => '{{name}} 不能符合以下规则',
         ],
     ];
 }
