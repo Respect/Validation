@@ -24,10 +24,10 @@ final class LeapDateException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be leap date',
+            self::STANDARD => '{{name}} 必须是闰日',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be leap date',
+            self::STANDARD => '{{name}} 不能是闰日',
         ],
     ];
 }

@@ -28,12 +28,12 @@ final class PrintableException extends FilteredValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must contain only printable characters',
-            self::EXTRA => '{{name}} must contain only printable characters and "{{additionalChars}}"',
+            self::STANDARD => '{{name}} 只能包含可打印字符',
+            self::EXTRA => '{{name}} 只能包含可打印字符和 "{{additionalChars}}"',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not contain printable characters',
-            self::EXTRA => '{{name}} must not contain printable characters or "{{additionalChars}}"',
+            self::STANDARD => '{{name}} 不能包含可打印字符',
+            self::EXTRA => '{{name}} 不能包含可打印字符或 "{{additionalChars}}"',
         ],
     ];
 }

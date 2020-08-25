@@ -24,10 +24,10 @@ final class StringValException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a string',
+            self::STANDARD => '{{name}} 必须是字符串',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be string',
+            self::STANDARD => '{{name}} 不能是字符串',
         ],
     ];
 }

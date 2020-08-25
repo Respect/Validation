@@ -33,20 +33,20 @@ final class LengthException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::BOTH => '{{name}} must have a length between {{minValue}} and {{maxValue}}',
-            self::LOWER => '{{name}} must have a length greater than {{minValue}}',
-            self::LOWER_INCLUSIVE => '{{name}} must have a length greater than or equal to {{minValue}}',
-            self::GREATER => '{{name}} must have a length lower than {{maxValue}}',
-            self::GREATER_INCLUSIVE => '{{name}} must have a length lower than or equal to {{maxValue}}',
-            self::EXACT => '{{name}} must have a length of {{maxValue}}',
+            self::BOTH => '{{name}} 长度必须在 {{minValue}} 与 {{maxValue}} 之间',
+            self::LOWER => '{{name}} 长度必须大于 {{minValue}}',
+            self::LOWER_INCLUSIVE => '{{name}} 的长度必须大于或等于 {{minValue}}',
+            self::GREATER => '{{name}} 长度必须小于 {{maxValue}}',
+            self::GREATER_INCLUSIVE => '{{name}} 长度必须小于或等于 {{maxValue}}',
+            self::EXACT => '{{name}} 长度必须是 {{maxValue}}',
         ],
         self::MODE_NEGATIVE => [
-            self::BOTH => '{{name}} must not have a length between {{minValue}} and {{maxValue}}',
-            self::LOWER => '{{name}} must not have a length greater than {{minValue}}',
-            self::LOWER_INCLUSIVE => '{{name}} must not have a length greater than or equal to {{minValue}}',
-            self::GREATER => '{{name}} must not have a length lower than {{maxValue}}',
-            self::GREATER_INCLUSIVE => '{{name}} must not have a length lower than or equal to {{maxValue}}',
-            self::EXACT => '{{name}} must not have a length of {{maxValue}}',
+            self::BOTH => '{{name}} 的长度不能介于 {{minValue}} 和 {{maxValue}} 之间',
+            self::LOWER => '{{name}} 长度不能大于 {{minValue}}',
+            self::LOWER_INCLUSIVE => '{{name}} 长度不能大于或等于 {{minValue}}',
+            self::GREATER => '{{name}} 长度不得小于 {{maxValue}}',
+            self::GREATER_INCLUSIVE => '{{name}} 长度不能小于或等于 {{maxValue}}',
+            self::EXACT => '{{name}} 长度不能是 {{maxValue}}',
         ],
     ];
 

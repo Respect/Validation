@@ -26,10 +26,10 @@ final class MimetypeException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must have {{mimetype}} MIME type',
+            self::STANDARD => '{{name}} 必须具有 {{mimetype}} MIME类型',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not have {{mimetype}} MIME type',
+            self::STANDARD => '{{name}} 不能有 {{mimetype}} MIME类型',
         ],
     ];
 }

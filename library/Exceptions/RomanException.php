@@ -24,10 +24,10 @@ final class RomanException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a valid Roman numeral',
+            self::STANDARD => '{{name}} 必须是有效的罗马数字',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a valid Roman numeral',
+            self::STANDARD => '{{name}} 不能是有效的罗马数字',
         ],
     ];
 }

@@ -25,10 +25,10 @@ final class BaseException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a number in the base {{base}}',
+            self::STANDARD => '{{name}} 必须是基于 {{base}} 中的数字',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a number in the base {{base}}',
+            self::STANDARD => '{{name}} 不能是基于 {{base}} 中的数字',
         ],
     ];
 }

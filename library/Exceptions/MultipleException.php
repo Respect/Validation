@@ -25,10 +25,10 @@ final class MultipleException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be multiple of {{multipleOf}}',
+            self::STANDARD => '{{name}} 必须是 {{multipleOf}} 的倍数',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be multiple of {{multipleOf}}',
+            self::STANDARD => '{{name}} 不能是 {{multipleOf}} 的倍数',
         ],
     ];
 }

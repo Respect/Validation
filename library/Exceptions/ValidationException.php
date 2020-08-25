@@ -37,10 +37,10 @@ class ValidationException extends InvalidArgumentException implements Exception
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be valid',
+            self::STANDARD => '{{name}} 必须有效',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be valid',
+            self::STANDARD => '{{name}} 不能有效',
         ],
     ];
 

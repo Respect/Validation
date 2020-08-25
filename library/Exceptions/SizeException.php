@@ -29,14 +29,14 @@ final class SizeException extends NestedValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::BOTH => '{{name}} must be between {{minSize}} and {{maxSize}}',
-            self::LOWER => '{{name}} must be greater than {{minSize}}',
-            self::GREATER => '{{name}} must be lower than {{maxSize}}',
+            self::BOTH => '{{name}} 必须介于 {{minSize}} 和 {{maxSize}} 之间',
+            self::LOWER => '{{name}} 必须大于 {{minSize}}',
+            self::GREATER => '{{name}} 必须小于 {{maxSize}}',
         ],
         self::MODE_NEGATIVE => [
-            self::BOTH => '{{name}} must not be between {{minSize}} and {{maxSize}}',
-            self::LOWER => '{{name}} must not be greater than {{minSize}}',
-            self::GREATER => '{{name}} must not be lower than {{maxSize}}',
+            self::BOTH => '{{name}} 不能介于 {{minSize}} 和 {{maxSize}} 之间',
+            self::LOWER => '{{name}} 不能大于 {{minSize}}',
+            self::GREATER => '{{name}} 不能小于 {{maxSize}}',
         ],
     ];
 

@@ -23,10 +23,10 @@ final class LessThanException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be less than {{compareTo}}',
+            self::STANDARD => '{{name}} 必须小于 {{compareTo}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be less than {{compareTo}}',
+            self::STANDARD => '{{name}} 不能小于 {{compareTo}}',
         ],
     ];
 }

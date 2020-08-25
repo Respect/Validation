@@ -28,10 +28,10 @@ final class TldException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a valid top-level domain name',
+            self::STANDARD => '{{name}} 必须是有效的顶级域名',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a valid top-level domain name',
+            self::STANDARD => '{{name}} 不能是有效的顶级域名',
         ],
     ];
 }

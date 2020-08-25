@@ -23,10 +23,10 @@ final class UrlException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a URL',
+            self::STANDARD => '{{name}} 必须是URL',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a URL',
+            self::STANDARD => '{{name}} 不能是URL',
         ],
     ];
 }

@@ -29,12 +29,12 @@ final class SortedException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::ASCENDING => '{{name}} must be sorted in ascending order',
-            self::DESCENDING => '{{name}} must be sorted in descending order',
+            self::ASCENDING => '{{name}} 必须按升序排序',
+            self::DESCENDING => '{{name}} 必须按降序排序',
         ],
         self::MODE_NEGATIVE => [
-            self::ASCENDING => '{{name}} must not be sorted in ascending order',
-            self::DESCENDING => '{{name}} must not be sorted in descending order',
+            self::ASCENDING => '{{name}} 不能按升序排序',
+            self::DESCENDING => '{{name}} 不能按降序排序',
         ],
     ];
 

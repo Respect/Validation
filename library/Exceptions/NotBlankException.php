@@ -26,12 +26,12 @@ final class NotBlankException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => 'The value must not be blank',
-            self::NAMED => '{{name}} must not be blank',
+            self::STANDARD => '值不能为空',
+            self::NAMED => '{{name}} 不能为空',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => 'The value must be blank',
-            self::NAMED => '{{name}} must be blank',
+            self::STANDARD => '值必须为空',
+            self::NAMED => '{{name}} 必须为空',
         ],
     ];
 

@@ -23,10 +23,10 @@ final class EquivalentException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be equivalent to {{compareTo}}',
+            self::STANDARD => '{{name}} 必须与 {{compareTo}} 相等',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be equivalent to {{compareTo}}',
+            self::STANDARD => '{{name}} 不能与 {{compareTo}} 相等',
         ],
     ];
 }

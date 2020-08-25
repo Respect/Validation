@@ -23,10 +23,10 @@ final class PolishIdCardException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a valid Polish Identity Card number',
+            self::STANDARD => '{{name}} 必须是有效的波兰身份证号码',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a valid Polish Identity Card number',
+            self::STANDARD => '{{name}} 不能是有效的波兰身份证号码r',
         ],
     ];
 }

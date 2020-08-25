@@ -25,12 +25,12 @@ final class OptionalException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => 'The value must be optional',
-            self::NAMED => '{{name}} must be optional',
+            self::STANDARD => '该值必须是可选的',
+            self::NAMED => '{{name}} 必须是可选的',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => 'The value must not be optional',
-            self::NAMED => '{{name}} must not be optional',
+            self::STANDARD => '该值不能是可选的',
+            self::NAMED => '{{name}} 不能是可选的',
         ],
     ];
 

@@ -24,10 +24,10 @@ final class InfiniteException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be an infinite number',
+            self::STANDARD => '{{name}} 必须是无穷大的数字',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be an infinite number',
+            self::STANDARD => '{{name}} 不能是无穷大的数字',
         ],
     ];
 }

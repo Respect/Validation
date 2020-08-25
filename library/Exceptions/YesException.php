@@ -24,10 +24,10 @@ final class YesException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} is not considered as "Yes"',
+            self::STANDARD => '{{name}} 不被认为是 "Yes"',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} is considered as "Yes"',
+            self::STANDARD => '{{name}} 被认为是 "Yes"',
         ],
     ];
 }

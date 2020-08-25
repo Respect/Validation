@@ -25,10 +25,10 @@ final class PerfectSquareException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a valid perfect square',
+            self::STANDARD => '{{name}} 必须是有效的完全正方形',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a valid perfect square',
+            self::STANDARD => '{{name}} 不能是有效的完全正方形',
         ],
     ];
 }

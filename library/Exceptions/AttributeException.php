@@ -30,12 +30,12 @@ final class AttributeException extends NestedValidationException implements NonO
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::NOT_PRESENT => 'Attribute {{name}} must be present',
-            self::INVALID => 'Attribute {{name}} must be valid',
+            self::NOT_PRESENT => '属性 {{name}} 必须存在',
+            self::INVALID => '属性 {{name}} 必须有效',
         ],
         self::MODE_NEGATIVE => [
-            self::NOT_PRESENT => 'Attribute {{name}} must not be present',
-            self::INVALID => 'Attribute {{name}} must not validate',
+            self::NOT_PRESENT => '属性 {{name}} 不能存在',
+            self::INVALID => '属性 {{name}} 必须无效',
         ],
     ];
 

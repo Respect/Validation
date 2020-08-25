@@ -23,10 +23,10 @@ final class NoException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} is not considered as "No"',
+            self::STANDARD => '{{name}} 不被视为 "否"',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} is considered as "No"',
+            self::STANDARD => '{{name}} 被认为是 "否"',
         ],
     ];
 }

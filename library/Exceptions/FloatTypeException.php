@@ -26,10 +26,10 @@ final class FloatTypeException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be of type float',
+            self::STANDARD => '{{name}} 必须是float类型',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be of type float',
+            self::STANDARD => '{{name}} 不能是float类型',
         ],
     ];
 }

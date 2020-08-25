@@ -24,12 +24,12 @@ final class AlphaException extends FilteredValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must contain only letters (a-z)',
-            self::EXTRA => '{{name}} must contain only letters (a-z) and {{additionalChars}}',
+            self::STANDARD => '{{name}} 只能包含字母（a-z）',
+            self::EXTRA => '{{name}} 只能包含字母（a-z）和 {{additionalChars}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not contain letters (a-z)',
-            self::EXTRA => '{{name}} must not contain letters (a-z) or {{additionalChars}}',
+            self::STANDARD => '{{name}} 不能包含字母（a-z）',
+            self::EXTRA => '{{name}} 不能包含字母（a-z）或 {{additionalChars}}',
         ],
     ];
 }

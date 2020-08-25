@@ -24,10 +24,10 @@ final class ReadableException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be readable',
+            self::STANDARD => '{{name}} 必须可读',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be readable',
+            self::STANDARD => '{{name}} 不能可读',
         ],
     ];
 }

@@ -26,10 +26,10 @@ final class MinException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be greater than or equal to {{compareTo}}',
+            self::STANDARD => '{{name}} 必须大于或等于 {{compareTo}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be greater than or equal to {{compareTo}}',
+            self::STANDARD => '{{name}} 不能大于或等于 {{compareTo}}',
         ],
     ];
 }

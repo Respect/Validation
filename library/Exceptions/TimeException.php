@@ -23,10 +23,10 @@ final class TimeException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a valid time in the format {{sample}}',
+            self::STANDARD => '{{name}} 必须是格式为 {{sample}} 的有效时间',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a valid time in the format {{sample}}',
+            self::STANDARD => '{{name}} 不能是格式为 {{sample}} 的有效时间',
         ],
     ];
 }

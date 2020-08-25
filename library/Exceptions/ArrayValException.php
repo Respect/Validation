@@ -25,10 +25,10 @@ final class ArrayValException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be an array value',
+            self::STANDARD => '{{name}} 必须是数组',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be an array value',
+            self::STANDARD => '{{name}} 不能是数组',
         ],
     ];
 }

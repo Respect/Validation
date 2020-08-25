@@ -25,10 +25,10 @@ final class InstanceException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be an instance of {{instanceName}}',
+            self::STANDARD => '{{name}} 必须是 {{instanceName}} 的实例',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be an instance of {{instanceName}}',
+            self::STANDARD => '{{name}} 不能是 {{instanceName}} 的实例',
         ],
     ];
 }

@@ -24,10 +24,10 @@ final class AnyOfException extends NestedValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => 'At least one of these rules must pass for {{name}}',
+            self::STANDARD => '这些规则中至少有一个必须传递给 {{name}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => 'At least one of these rules must not pass for {{name}}',
+            self::STANDARD => '这些规则中至少有一个不能传递给 {{name}}',
         ],
     ];
 }

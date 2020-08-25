@@ -23,10 +23,10 @@ final class ScalarValException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a scalar value',
+            self::STANDARD => '{{name}} 必须是标量值',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a scalar value',
+            self::STANDARD => '{{name}} 不能是标量值',
         ],
     ];
 }

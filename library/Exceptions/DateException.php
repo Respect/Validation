@@ -24,10 +24,10 @@ final class DateException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a valid date in the format {{sample}}',
+            self::STANDARD => '{{name}} 必须是格式为 {{sample}} 的有效日期',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a valid date in the format {{sample}}',
+            self::STANDARD => '{{name}} 不能是格式为 {{sample}} 的日期',
         ],
     ];
 }

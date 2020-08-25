@@ -24,12 +24,12 @@ final class AlnumException extends FilteredValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must contain only letters (a-z) and digits (0-9)',
-            self::EXTRA => '{{name}} must contain only letters (a-z), digits (0-9) and {{additionalChars}}',
+            self::STANDARD => '{{name}} 只能包含字母（a-z）和数字（0-9）',
+            self::EXTRA => '{{name}} 只能包含字母（a-z）、数字（0-9）和 {{additionalChars}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not contain letters (a-z) or digits (0-9)',
-            self::EXTRA => '{{name}} must not contain letters (a-z), digits (0-9) or {{additionalChars}}',
+            self::STANDARD => '{{name}} 不能包含字母（a-z）或数字（0-9）',
+            self::EXTRA => '{{name}} 不能包含字母（a-z）、数字（0-9）或 {{additionalChars}}',
         ],
     ];
 }

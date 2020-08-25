@@ -25,10 +25,10 @@ final class NoWhitespaceException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must not contain whitespace',
+            self::STANDARD => '{{name}} 不能包含空格',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must contain whitespace',
+            self::STANDARD => '{{name}} 必须包含空格',
         ],
     ];
 }

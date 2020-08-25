@@ -29,12 +29,12 @@ class GroupedValidationException extends NestedValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::NONE => 'All of the required rules must pass for {{name}}',
-            self::SOME => 'These rules must pass for {{name}}',
+            self::NONE => '所有必需的规则都必须传递给 {{name}}',
+            self::SOME => '这些规则必须传递给 {{name}}',
         ],
         self::MODE_NEGATIVE => [
-            self::NONE => 'None of there rules must pass for {{name}}',
-            self::SOME => 'These rules must not pass for {{name}}',
+            self::NONE => '所有规则都不能传递给 {{name}}',
+            self::SOME => '这些规则不能传递给 {{name}}',
         ],
     ];
 

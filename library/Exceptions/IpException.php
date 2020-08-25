@@ -28,12 +28,12 @@ final class IpException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be an IP address',
-            self::NETWORK_RANGE => '{{name}} must be an IP address in the {{range}} range',
+            self::STANDARD => '{{name}} 必须是IP地址',
+            self::NETWORK_RANGE => '{{name}} 必须是 {{range}} 范围内的IP地址',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be an IP address',
-            self::NETWORK_RANGE => '{{name}} must not be an IP address in the {{range}} range',
+            self::STANDARD => '{{name}} 不能是IP地址',
+            self::NETWORK_RANGE => '{{name}} 不能是 {{range}} 范围内的IP地址',
         ],
     ];
 

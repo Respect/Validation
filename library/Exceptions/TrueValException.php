@@ -26,10 +26,10 @@ final class TrueValException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} is not considered as "True"',
+            self::STANDARD => '{{name}} 不被视为 "True"',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} is considered as "True"',
+            self::STANDARD => '{{name}} 被视为 "True"',
         ],
     ];
 }

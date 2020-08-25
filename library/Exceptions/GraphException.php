@@ -25,12 +25,12 @@ final class GraphException extends FilteredValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must contain only graphical characters',
-            self::EXTRA => '{{name}} must contain only graphical characters and {{additionalChars}}',
+            self::STANDARD => '{{name}} 只能包含图形字符',
+            self::EXTRA => '{{name}} 只能包含图形字符和 {{additionalChars}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not contain graphical characters',
-            self::EXTRA => '{{name}} must not contain graphical characters or {{additionalChars}}',
+            self::STANDARD => '{{name}} 不能包含图形字符',
+            self::EXTRA => '{{name}} 不能包含图形字符或 {{additionalChars}}',
         ],
     ];
 }

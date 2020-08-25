@@ -163,7 +163,7 @@ final class Factory
         $params = ['input' => $input] + $extraParams + $this->extractPropertiesValues($validatable, $reflection);
         $id = lcfirst($ruleName);
         if ($validatable->getName() !== null) {
-            $id = $params['name'] = $validatable->getName();
+            /*$id = */$params['name'] = $validatable->getName();
         }
         foreach ($this->exceptionsNamespaces as $namespace) {
             try {

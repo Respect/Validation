@@ -24,10 +24,10 @@ final class NipException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a valid Polish VAT identification number',
+            self::STANDARD => '{{name}} 必须是有效的波兰增值税标识号',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a valid Polish VAT identification number',
+            self::STANDARD => '{{name}} 不能是有效的波兰增值税标识号',
         ],
     ];
 }

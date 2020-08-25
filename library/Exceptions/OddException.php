@@ -25,10 +25,10 @@ final class OddException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be an odd number',
+            self::STANDARD => '{{name}} 必须是奇数',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be an odd number',
+            self::STANDARD => '{{name}} 不能是奇数',
         ],
     ];
 }

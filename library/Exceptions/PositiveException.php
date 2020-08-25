@@ -25,10 +25,10 @@ final class PositiveException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be positive',
+            self::STANDARD => '{{name}} 必须为正',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be positive',
+            self::STANDARD => '{{name}} 不能为正',
         ],
     ];
 }

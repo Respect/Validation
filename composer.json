@@ -1,6 +1,6 @@
 {
-    "name": "respect/validation",
-    "description": "The most awesome validation engine ever created for PHP",
+    "name": "workerman/validation",
+    "description": "The most awesome validation engine ever created for PHP. Respect/Validation 汉化版本",
     "keywords": ["respect", "validation", "validator"],
     "type": "library",
     "homepage": "http://respect.github.io/Validation/",

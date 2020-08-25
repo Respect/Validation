@@ -23,10 +23,10 @@ final class IbanException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a valid IBAN',
+            self::STANDARD => '{{name}} 必须是有效的IBAN',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a valid IBAN',
+            self::STANDARD => '{{name}} 不能是有效的IBAN',
         ],
     ];
 }

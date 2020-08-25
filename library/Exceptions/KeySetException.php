@@ -27,14 +27,14 @@ final class KeySetException extends GroupedValidationException implements NonOmi
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::NONE => 'All of the required rules must pass for {{name}}',
-            self::SOME => 'These rules must pass for {{name}}',
-            self::STRUCTURE => 'Must have keys {{keys}}',
+            self::NONE => '所有必需的规则都必须传递给 {{name}}',
+            self::SOME => '这些规则必须传递给 {{name}}',
+            self::STRUCTURE => '必须有键 {{keys}}',
         ],
         self::MODE_NEGATIVE => [
-            self::NONE => 'None of these rules must pass for {{name}}',
-            self::SOME => 'These rules must not pass for {{name}}',
-            self::STRUCTURE => 'Must not have keys {{keys}}',
+            self::NONE => '这些规则都不能传递给 {{name}}',
+            self::SOME => '这些规则不能传递给 {{name}}',
+            self::STRUCTURE => '不能有键 {{keys}}',
         ],
     ];
 

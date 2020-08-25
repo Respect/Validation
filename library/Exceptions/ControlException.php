@@ -25,12 +25,12 @@ final class ControlException extends FilteredValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must contain only control characters',
-            self::EXTRA => '{{name}} must contain only control characters and {{additionalChars}}',
+            self::STANDARD => '{{name}} 只能包含控制字符',
+            self::EXTRA => '{{name}} 只能包含控制字符和 {{additionalChars}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not contain control characters',
-            self::EXTRA => '{{name}} must not contain control characters or {{additionalChars}}',
+            self::STANDARD => '{{name}} 不能包含控制字符',
+            self::EXTRA => '{{name}} 不能包含控制字符或 {{additionalChars}}',
         ],
     ];
 }

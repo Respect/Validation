@@ -24,12 +24,12 @@ final class VowelException extends FilteredValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must contain only vowels',
-            self::EXTRA => '{{name}} must contain only vowels and {{additionalChars}}',
+            self::STANDARD => '{{name}} 只能包含元音',
+            self::EXTRA => '{{name}} 只能包含元音和 {{additionalChars}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not contain vowels',
-            self::EXTRA => '{{name}} must not contain vowels or {{additionalChars}}',
+            self::STANDARD => '{{name}} 不能包含元音',
+            self::EXTRA => '{{name}} 不能包含元音或 {{additionalChars}}',
         ],
     ];
 }

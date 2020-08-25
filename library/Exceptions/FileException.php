@@ -24,10 +24,10 @@ final class FileException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a file',
+            self::STANDARD => '{{name}} 必须是文件',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a file',
+            self::STANDARD => '{{name}} 不能是文件',
         ],
     ];
 }

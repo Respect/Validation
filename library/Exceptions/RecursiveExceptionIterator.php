@@ -24,7 +24,7 @@ use UnexpectedValueException;
 final class RecursiveExceptionIterator implements RecursiveIterator, Countable
 {
     /**
-     * @var ArrayIterator<int, ValidationException>
+     * @var ArrayIterator|ValidationException[]
      */
     private $exceptions;
 
@@ -67,7 +67,7 @@ final class RecursiveExceptionIterator implements RecursiveIterator, Countable
 
     public function key(): int
     {
-        return (int) $this->exceptions->key();
+        return $this->exceptions->key();
     }
 
     public function next(): void

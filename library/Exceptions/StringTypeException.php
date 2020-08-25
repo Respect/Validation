@@ -24,10 +24,10 @@ final class StringTypeException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be of type string',
+            self::STANDARD => '{{name}} 必须是string类型',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be of type string',
+            self::STANDARD => '{{name}} 不能是string类型',
         ],
     ];
 }

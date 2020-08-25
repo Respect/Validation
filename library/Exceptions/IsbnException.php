@@ -24,10 +24,10 @@ final class IsbnException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a ISBN',
+            self::STANDARD => '{{name}} 必须是ISBN',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a ISBN',
+            self::STANDARD => '{{name}} 不能是ISBN',
         ],
     ];
 }

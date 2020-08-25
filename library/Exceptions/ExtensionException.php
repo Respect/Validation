@@ -26,10 +26,10 @@ final class ExtensionException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must have {{extension}} extension',
+            self::STANDARD => '{{name}} 必须是 {{extension}} 后缀',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not have {{extension}} extension',
+            self::STANDARD => '{{name}} 不能是 {{extension}} 后缀',
         ],
     ];
 }

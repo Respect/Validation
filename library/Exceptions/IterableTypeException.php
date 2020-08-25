@@ -23,10 +23,10 @@ final class IterableTypeException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be iterable',
+            self::STANDARD => '{{name}} 必须是可迭代的',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be iterable',
+            self::STANDARD => '{{name}} 不能是可迭代的',
         ],
     ];
 }

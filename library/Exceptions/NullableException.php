@@ -26,12 +26,12 @@ final class NullableException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => 'The value must be nullable',
-            self::NAMED => '{{name}} must be nullable',
+            self::STANDARD => '值必须为nullable',
+            self::NAMED => '{{name}} 必须为nullable',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => 'The value must not be null',
-            self::NAMED => '{{name}} must not be null',
+            self::STANDARD => '值不能为null',
+            self::NAMED => '{{name}} 不能为null',
         ],
     ];
 

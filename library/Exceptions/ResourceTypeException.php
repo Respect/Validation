@@ -25,10 +25,10 @@ final class ResourceTypeException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a resource',
+            self::STANDARD => '{{name}} 必须是资源',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a resource',
+            self::STANDARD => '{{name}} 不能是资源',
         ],
     ];
 }

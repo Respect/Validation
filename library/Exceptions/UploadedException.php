@@ -27,10 +27,10 @@ final class UploadedException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be an uploaded file',
+            self::STANDARD => '{{name}} 必须是上传的文件',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be an uploaded file',
+            self::STANDARD => '{{name}} 不能是上传的文件',
         ],
     ];
 }

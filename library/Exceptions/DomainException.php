@@ -24,10 +24,10 @@ final class DomainException extends NestedValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a valid domain',
+            self::STANDARD => '{{name}} 必须是有效域名',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a valid domain',
+            self::STANDARD => '{{name}} 不能是有效域名',
         ],
     ];
 }

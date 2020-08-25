@@ -25,10 +25,10 @@ final class PrimeNumberException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a valid prime number',
+            self::STANDARD => '{{name}} 必须是有效的质数',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a valid prime number',
+            self::STANDARD => '{{name}} 不能是有效的质数',
         ],
     ];
 }

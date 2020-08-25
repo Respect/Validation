@@ -24,12 +24,12 @@ final class SpaceException extends FilteredValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must contain only space characters',
-            self::EXTRA => '{{name}} must contain only space characters and {{additionalChars}}',
+            self::STANDARD => '{{name}} 只能包含空格字符',
+            self::EXTRA => '{{name}} 只能包含空格字符和 {{additionalChars}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not contain space characters',
-            self::EXTRA => '{{name}} must not contain space characters or {{additionalChars}}',
+            self::STANDARD => '{{name}} 不能包含空格字符',
+            self::EXTRA => '{{name}} 不能包含空格字符或 {{additionalChars}}',
         ],
     ];
 }

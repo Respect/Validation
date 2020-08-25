@@ -24,10 +24,10 @@ final class WritableException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be writable',
+            self::STANDARD => '{{name}} 必须是可写的',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be writable',
+            self::STANDARD => '{{name}} 不能是可写的',
         ],
     ];
 }

@@ -24,10 +24,10 @@ final class SymbolicLinkException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a symbolic link',
+            self::STANDARD => '{{name}} 必须是符号链接',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a symbolic link',
+            self::STANDARD => '{{name}} 不能是符号链接',
         ],
     ];
 }

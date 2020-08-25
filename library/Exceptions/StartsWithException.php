@@ -24,10 +24,10 @@ final class StartsWithException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must start with {{startValue}}',
+            self::STANDARD => '{{name}} 必须以 {{startValue}} 开头',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not start with {{startValue}}',
+            self::STANDARD => '{{name}} 不能以 {{startValue}} 开头',
         ],
     ];
 }
