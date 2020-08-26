@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 
 use function mb_convert_encoding;
@@ -31,12 +32,12 @@ final class CharsetTest extends RuleTestCase
 {
     /**
      * @test
-     *
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage Invalid charset
      */
     public function itShouldThrowsExceptionWhenCharsetIsNotValid(): void
     {
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage('Invalid charset');
+
         new Charset('UTF-8', 'UTF-9');
     }
 

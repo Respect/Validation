@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
 use Respect\Validation\Validator;
@@ -46,7 +47,6 @@ final class NotTest extends TestCase
 
     /**
      * @dataProvider providerForInvalidNot
-     * @expectedException \Respect\Validation\Exceptions\ValidationException
      *
      * @test
      *
@@ -55,6 +55,9 @@ final class NotTest extends TestCase
     public function notNotHaha(Validatable $rule, $input): void
     {
         $not = new Not($rule);
+
+        $this->expectException(ValidationException::class);
+
         $not->assert($input);
     }
 

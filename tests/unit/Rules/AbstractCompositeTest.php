@@ -46,7 +46,6 @@ final class AbstractCompositeTest extends TestCase
 
         $sut = $this
             ->getMockBuilder(AbstractComposite::class)
-            ->setMethods(['validate'])
             ->getMockForAbstractClass();
 
         $sut->setName($ruleName);
@@ -63,26 +62,17 @@ final class AbstractCompositeTest extends TestCase
 
         $rule = $this->createMock(Validatable::class);
         $rule
-            ->expects(self::at(0))
+            ->expects(self::exactly(2))
             ->method('getName')
-            ->will(self::returnValue(null));
-        $rule
-            ->expects(self::at(2))
-            ->method('getName')
-            ->will(self::returnValue($ruleName1));
-        $rule
-            ->expects(self::at(1))
-            ->method('setName')
-            ->with($ruleName1);
-        $rule
-            ->expects(self::at(3))
-            ->method('setName')
-            ->with($ruleName2);
+            ->willReturnOnConsecutiveCalls(
+                null,
+                $ruleName1
+            );
 
         $sut = $this
             ->getMockBuilder(AbstractComposite::class)
-            ->setMethods(['validate'])
             ->getMockForAbstractClass();
+
         $sut->setName($ruleName1);
         $sut->addRule($rule);
         $sut->setName($ruleName2);
@@ -104,7 +94,6 @@ final class AbstractCompositeTest extends TestCase
 
         $sut = $this
             ->getMockBuilder(AbstractComposite::class)
-            ->setMethods(['validate'])
             ->getMockForAbstractClass();
         $sut->addRule($rule);
         $sut->setName('Whatever');
@@ -129,7 +118,6 @@ final class AbstractCompositeTest extends TestCase
 
         $sut = $this
             ->getMockBuilder(AbstractComposite::class)
-            ->setMethods(['validate'])
             ->getMockForAbstractClass();
 
         $sut->addRule($rule);
@@ -155,7 +143,6 @@ final class AbstractCompositeTest extends TestCase
 
         $sut = $this
             ->getMockBuilder(AbstractComposite::class)
-            ->setMethods(['validate'])
             ->getMockForAbstractClass();
 
         $sut->addRule($rule);
@@ -180,7 +167,6 @@ final class AbstractCompositeTest extends TestCase
 
         $sut = $this
             ->getMockBuilder(AbstractComposite::class)
-            ->setMethods(['validate'])
             ->getMockForAbstractClass();
 
         $sut->addRule($rule);

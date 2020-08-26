@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\AllOfException;
+use Respect\Validation\Exceptions\CallbackException;
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
 
@@ -53,7 +56,6 @@ final class AllOfTest extends TestCase
 
     /**
      * @dataProvider providerStaticDummyRules
-     * @expectedException \Respect\Validation\Exceptions\AllOfException
      *
      * @test
      */
@@ -64,12 +66,13 @@ final class AllOfTest extends TestCase
     ): void {
         $o = new AllOf($rule1, $rule2, $rule3);
         self::assertFalse($o->__invoke('any'));
+
+        $this->expectException(AllOfException::class);
         $o->assert('any');
     }
 
     /**
      * @dataProvider providerStaticDummyRules
-     * @expectedException \Respect\Validation\Exceptions\CallbackException
      *
      * @test
      */
@@ -80,12 +83,14 @@ final class AllOfTest extends TestCase
     ): void {
         $o = new AllOf($rule1, $rule2, $rule3);
         self::assertFalse($o->__invoke('any'));
+
+        $this->expectException(CallbackException::class);
         $o->check('any');
     }
 
     /**
      * @dataProvider providerStaticDummyRules
-     * @expectedException \Respect\Validation\Exceptions\ValidationException
+     * @expectedException \Respect\Validation\Exceptions\
      *
      * @test
      */
@@ -95,6 +100,8 @@ final class AllOfTest extends TestCase
         Validatable $rule3
     ): void {
         $o = new AllOf($rule1, $rule2, $rule3);
+
+        $this->expectException(ValidationException::class);
         $o->check('');
     }
 

@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\SubdivisionCodeException;
 use Respect\Validation\Test\TestCase;
 
 /**
@@ -32,17 +34,20 @@ final class SubdivisionCodeTest extends TestCase
      */
     public function shouldThrowsExceptionWhenInvalidFormat(): void
     {
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage('"whatever" is not a supported country code');
+
         new SubdivisionCode('whatever');
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage "JK" is not a supported country code
-     *
      * @test
      */
     public function shouldNotAcceptWrongNamesOnConstructor(): void
     {
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage('"JK" is not a supported country code');
+
         new SubdivisionCode('JK');
     }
 
@@ -99,14 +104,15 @@ final class SubdivisionCodeTest extends TestCase
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\SubdivisionCodeException
-     * @expectedExceptionMessage "CA" must be a subdivision code of "Brazil"
-     *
      * @test
      */
     public function shouldThrowsSubdivisionCodeException(): void
     {
         $countrySubdivision = new SubdivisionCode('BR');
+
+        $this->expectException(SubdivisionCodeException::class);
+        $this->expectExceptionMessage('"CA" must be a subdivision code of "Brazil"');
+
         $countrySubdivision->assert('CA');
     }
 }

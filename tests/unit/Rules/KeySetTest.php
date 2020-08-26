@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\KeySetException;
 use Respect\Validation\Test\TestCase;
 use stdClass;
 
@@ -29,9 +31,6 @@ final class KeySetTest extends TestCase
 {
     /**
      * @test
-     *
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage KeySet rule accepts only Key rules
      */
     public function shouldNotAcceptAllOfWithMoreThanOneKeyRule(): void
     {
@@ -39,32 +38,35 @@ final class KeySetTest extends TestCase
         $key2 = new Key('bar', new AlwaysValid(), false);
         $allOf = new AllOf($key1, $key2);
 
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage('KeySet rule accepts only Key rules');
+
         new KeySet($allOf);
     }
 
     /**
      * @test
-     *
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage KeySet rule accepts only Key rules
      */
     public function shouldNotAcceptAllOfWithNonKeyRule(): void
     {
         $alwaysValid = new AlwaysValid();
         $allOf = new AllOf($alwaysValid);
 
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage('KeySet rule accepts only Key rules');
+
         new KeySet($allOf);
     }
 
     /**
      * @test
-     *
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage KeySet rule accepts only Key rules
      */
     public function shouldNotAcceptNonKeyRule(): void
     {
         $alwaysValid = new AlwaysValid();
+
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage('KeySet rule accepts only Key rules');
 
         new KeySet($alwaysValid);
     }
@@ -139,9 +141,6 @@ final class KeySetTest extends TestCase
 
     /**
      * @test
-     *
-     * @expectedException \Respect\Validation\Exceptions\KeySetException
-     * @expectedExceptionMessage Must have keys `{ "foo", "bar" }`
      */
     public function shouldCheckKeys(): void
     {
@@ -151,14 +150,15 @@ final class KeySetTest extends TestCase
         $key2 = new Key('bar', new AlwaysValid(), true);
 
         $keySet = new KeySet($key1, $key2);
+
+        $this->expectException(KeySetException::class);
+        $this->expectExceptionMessage('Must have keys `{ "foo", "bar" }`');
+
         $keySet->check($input);
     }
 
     /**
      * @test
-     *
-     * @expectedException \Respect\Validation\Exceptions\KeySetException
-     * @expectedExceptionMessage Must have keys `{ "foo", "bar" }`
      */
     public function shouldAssertKeys(): void
     {
@@ -168,6 +168,10 @@ final class KeySetTest extends TestCase
         $key2 = new Key('bar', new AlwaysValid(), true);
 
         $keySet = new KeySet($key1, $key2);
+
+        $this->expectException(KeySetException::class);
+        $this->expectExceptionMessage('Must have keys `{ "foo", "bar" }`');
+
         $keySet->assert($input);
     }
 
@@ -176,14 +180,15 @@ final class KeySetTest extends TestCase
      *
      * @dataProvider providerForInvalidArguments
      *
-     * @expectedException \Respect\Validation\Exceptions\KeySetException
-     * @expectedExceptionMessage Must have keys `{ "name" }`
-     *
      * @param mixed $input
      */
     public function shouldThrowExceptionInCaseArgumentIsAnythingOtherThanArray($input): void
     {
         $keySet = new KeySet(new Key('name'));
+
+        $this->expectException(KeySetException::class);
+        $this->expectExceptionMessage('Must have keys `{ "name" }`');
+
         $keySet->assert($input);
     }
 

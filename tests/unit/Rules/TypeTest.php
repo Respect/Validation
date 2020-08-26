@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
@@ -29,13 +30,13 @@ use function tmpfile;
 final class TypeTest extends RuleTestCase
 {
     /**
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessageRegExp /"whatever" is not a valid type \(Available: .+\)/
-     *
      * @test
      */
     public function shouldThrowExceptionWhenTypeIsNotValid(): void
     {
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessageMatches('/"whatever" is not a valid type \(Available: .+\)/');
+
         new Type('whatever');
     }
 

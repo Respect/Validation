@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 
 /**
@@ -48,13 +49,13 @@ final class PostalCodeTest extends RuleTestCase
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage Cannot validate postal code from "Whatever" country
-     *
      * @test
      */
     public function shouldThrowsExceptionWhenCountryCodeIsNotValid(): void
     {
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage('Cannot validate postal code from "Whatever" country');
+
         new PostalCode('Whatever');
     }
 

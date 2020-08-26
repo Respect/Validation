@@ -50,7 +50,6 @@ final class AbstractRuleTest extends TestCase
 
         $abstractRuleMock = $this
             ->getMockBuilder(AbstractRule::class)
-            ->setMethods(['validate'])
             ->getMockForAbstractClass();
 
         $abstractRuleMock
@@ -79,7 +78,7 @@ final class AbstractRuleTest extends TestCase
 
         $abstractRuleMock = $this
             ->getMockBuilder(AbstractRule::class)
-            ->setMethods(['validate', 'reportError'])
+            ->onlyMethods(['validate', 'reportError'])
             ->getMockForAbstractClass();
 
         $abstractRuleMock
@@ -96,18 +95,23 @@ final class AbstractRuleTest extends TestCase
     }
 
     /**
-     * @covers            \Respect\Validation\Rules\AbstractRule::assert
-     * @expectedException \Respect\Validation\Exceptions\ValidationException
+     * @covers \Respect\Validation\Rules\AbstractRule::assert
      *
      * @test
      */
     public function assertInvokesValidateAndReportErrorOnFailure(): void
     {
         $input = 'something';
+        $exception = new ValidationException(
+            $input,
+            'abstract',
+            [],
+            new Formatter('strval', new KeepOriginalStringName())
+        );
 
         $abstractRuleMock = $this
             ->getMockBuilder(AbstractRule::class)
-            ->setMethods(['validate', 'reportError'])
+            ->onlyMethods(['validate', 'reportError'])
             ->getMockForAbstractClass();
 
         $abstractRuleMock
@@ -120,9 +124,9 @@ final class AbstractRuleTest extends TestCase
             ->expects(self::once())
             ->method('reportError')
             ->with($input)
-            ->will(self::throwException(
-                new ValidationException($input, 'abstract', [], new Formatter('strval', new KeepOriginalStringName()))
-            ));
+            ->will(self::throwException($exception));
+
+        $this->expectExceptionObject($exception);
 
         $abstractRuleMock->assert($input);
     }
@@ -138,7 +142,7 @@ final class AbstractRuleTest extends TestCase
 
         $abstractRuleMock = $this
             ->getMockBuilder(AbstractRule::class)
-            ->setMethods(['assert'])
+            ->onlyMethods(['assert'])
             ->getMockForAbstractClass();
 
         $abstractRuleMock

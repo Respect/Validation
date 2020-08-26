@@ -47,7 +47,6 @@ final class MimetypeTest extends RuleTestCase
         $fileInfoMock = $this
             ->getMockBuilder(finfo::class)
             ->disableOriginalConstructor()
-            ->setMethods(['file'])
             ->getMock();
 
         $fileInfoMock

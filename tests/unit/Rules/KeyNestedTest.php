@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use ArrayObject;
+use Respect\Validation\Exceptions\KeyNestedException;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
 use stdClass;
@@ -124,24 +125,22 @@ final class KeyNestedTest extends TestCase
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\KeyNestedException
-     *
      * @test
      */
     public function emptyInputMustNotAssert(): void
     {
         $rule = new KeyNested('bar.foo.baz');
+        $this->expectException(KeyNestedException::class);
         $rule->assert('');
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\KeyNestedException
-     *
      * @test
      */
     public function emptyInputMustNotCheck(): void
     {
         $rule = new KeyNested('bar.foo.baz');
+        $this->expectException(KeyNestedException::class);
         $rule->check('');
     }
 
@@ -157,8 +156,6 @@ final class KeyNestedTest extends TestCase
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\KeyNestedException
-     *
      * @test
      */
     public function arrayWithAbsentKeyShouldThrowNestedKeyException(): void
@@ -169,18 +166,18 @@ final class KeyNestedTest extends TestCase
                 'bar' => 'foo',
             ],
         ];
+        $this->expectException(KeyNestedException::class);
         $validator->assert($object);
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\KeyNestedException
-     *
      * @test
      */
     public function notArrayShouldThrowKeyException(): void
     {
         $validator = new KeyNested('baz.bar');
         $object = 123;
+        $this->expectException(KeyNestedException::class);
         $validator->assert($object);
     }
 

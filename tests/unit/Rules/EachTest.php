@@ -73,19 +73,10 @@ final class EachTest extends RuleTestCase
     public function itShouldAssertEachValue(): void
     {
         $validatable = $this->createMock(Validatable::class);
-
         $validatable
-            ->expects(self::at(0))
+            ->expects(self::exactly(3))
             ->method('assert')
-            ->with(1);
-        $validatable
-            ->expects(self::at(1))
-            ->method('assert')
-            ->with(2);
-        $validatable
-            ->expects(self::at(2))
-            ->method('assert')
-            ->with(3);
+            ->withConsecutive([1], [2], [3]);
 
         $rule = new Each($validatable);
         $rule->assert(range(1, 3));
@@ -97,19 +88,10 @@ final class EachTest extends RuleTestCase
     public function itShouldCheckEachValue(): void
     {
         $validatable = $this->createMock(Validatable::class);
-
         $validatable
-            ->expects(self::at(0))
+            ->expects(self::exactly(3))
             ->method('check')
-            ->with(1);
-        $validatable
-            ->expects(self::at(1))
-            ->method('check')
-            ->with(2);
-        $validatable
-            ->expects(self::at(2))
-            ->method('check')
-            ->with(3);
+            ->withConsecutive([1], [2], [3]);
 
         $rule = new Each($validatable);
         $rule->check(range(1, 3));

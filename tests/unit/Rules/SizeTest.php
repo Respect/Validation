@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use org\bovigo\vfs\content\LargeFileContent;
 use org\bovigo\vfs\vfsStream;
+use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 
@@ -84,13 +85,13 @@ final class SizeTest extends RuleTestCase
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage "42jb" is not a recognized file size
-     *
      * @test
      */
     public function shouldThrowsAnExceptionWhenSizeIsNotValid(): void
     {
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage('"42jb" is not a recognized file size');
+
         new Size('42jb');
     }
 }

@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\KeyException;
 use Respect\Validation\Test\TestCase;
 use Throwable;
 
@@ -62,24 +64,26 @@ final class KeyTest extends TestCase
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\KeyException
-     *
      * @test
      */
     public function emptyInputMustNotAssert(): void
     {
         $validator = new Key('someEmptyKey');
+
+        $this->expectException(KeyException::class);
+
         $validator->assert('');
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\KeyException
-     *
      * @test
      */
     public function emptyInputMustNotCheck(): void
     {
         $validator = new Key('someEmptyKey');
+
+        $this->expectException(KeyException::class);
+
         $validator->check('');
     }
 
@@ -119,8 +123,6 @@ final class KeyTest extends TestCase
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\KeyException
-     *
      * @test
      */
     public function arrayWithAbsentKeyShouldThrowKeyException(): void
@@ -128,28 +130,32 @@ final class KeyTest extends TestCase
         $validator = new Key('bar');
         $someArray = [];
         $someArray['baraaaaaa'] = 'foo';
+
+        $this->expectException(KeyException::class);
+
         $validator->assert($someArray);
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\KeyException
-     *
      * @test
      */
     public function notArrayShouldThrowKeyException(): void
     {
         $validator = new Key('bar');
         $someArray = 123;
+
+        $this->expectException(KeyException::class);
+
         $validator->assert($someArray);
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     *
      * @test
      */
     public function invalidConstructorParametersShouldThrowComponentExceptionUponInstantiation(): void
     {
+        $this->expectException(ComponentException::class);
+
         new Key(['invalid']);
     }
 

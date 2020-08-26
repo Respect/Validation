@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\AnyOfException;
+use Respect\Validation\Exceptions\XdigitException;
 use Respect\Validation\Test\TestCase;
 
 /**
@@ -47,8 +49,6 @@ final class AnyOfTest extends TestCase
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\AnyOfException
-     *
      * @test
      */
     public function invalid(): void
@@ -64,18 +64,20 @@ final class AnyOfTest extends TestCase
         });
         $o = new AnyOf($valid1, $valid2, $valid3);
         self::assertFalse($o->validate('any'));
+
+        $this->expectException(AnyOfException::class);
         $o->assert('any');
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\XdigitException
-     *
      * @test
      */
     public function invalidCheck(): void
     {
         $o = new AnyOf(new Xdigit(), new Alnum());
         self::assertFalse($o->validate(-10));
+
+        $this->expectException(XdigitException::class);
         $o->check(-10);
     }
 }

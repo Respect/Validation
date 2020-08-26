@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use DateTime;
+use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\CountableStub;
 
@@ -67,23 +68,21 @@ final class BetweenTest extends RuleTestCase
 
     /**
      * @test
-     *
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage Minimum cannot be less than or equals to maximum
      */
     public function minimumValueShouldNotBeGreaterThanMaximumValue(): void
     {
+        $this->expectExceptionObject(new ComponentException('Minimum cannot be less than or equals to maximum'));
+
         new Between(10, 5);
     }
 
     /**
      * @test
-     *
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage Minimum cannot be less than or equals to maximum
      */
     public function minimumValueShouldNotBeEqualsToMaximumValue(): void
     {
+        $this->expectExceptionObject(new ComponentException('Minimum cannot be less than or equals to maximum'));
+
         new Between(5, 5);
     }
 }

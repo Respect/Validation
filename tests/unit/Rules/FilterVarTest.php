@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 
 use const FILTER_FLAG_HOSTNAME;
@@ -38,12 +39,12 @@ final class FilterVarTest extends RuleTestCase
 {
     /**
      * @test
-     *
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage Cannot accept the given filter
      */
     public function itShouldThrowsExceptionWhenFilterIsNotValid(): void
     {
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage('Cannot accept the given filter');
+
         new FilterVar(FILTER_SANITIZE_EMAIL);
     }
 

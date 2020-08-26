@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 
 /**
@@ -29,12 +30,14 @@ final class CountryCodeTest extends RuleTestCase
 {
     /**
      * @test
-     *
-     * @expectedException \Respect\Validation\Exceptions\ComponentException
-     * @expectedExceptionMessage "whatever" is not a valid set for ISO 3166-1 (Available: alpha-2, alpha-3, numeric)
      */
     public function itShouldThrowsExceptionWhenInvalidFormat(): void
     {
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage(
+            '"whatever" is not a valid set for ISO 3166-1 (Available: alpha-2, alpha-3, numeric)'
+        );
+
         new CountryCode('whatever');
     }
 

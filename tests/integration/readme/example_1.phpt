@@ -20,5 +20,8 @@ $userValidator = v::attribute('name', v::stringType()->length(1, 32))
                   ->attribute('birthdate', v::dateTime()->minAge(18));
 
 $userValidator->assert($user);
+
+echo 'Nothing to fail';
 ?>
 --EXPECT--
+Nothing to fail

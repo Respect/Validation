@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\NoneOfException;
 use Respect\Validation\Test\TestCase;
 
 /**
@@ -47,8 +48,6 @@ final class NoneOfTest extends TestCase
     }
 
     /**
-     * @expectedException \Respect\Validation\Exceptions\NoneOfException
-     *
      * @test
      */
     public function invalid(): void
@@ -64,6 +63,8 @@ final class NoneOfTest extends TestCase
         });
         $o = new NoneOf($valid1, $valid2, $valid3);
         self::assertFalse($o->validate('any'));
+
+        $this->expectException(NoneOfException::class);
         $o->assert('any');
     }
 }

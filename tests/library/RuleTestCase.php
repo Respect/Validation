@@ -76,11 +76,6 @@ abstract class RuleTestCase extends TestCase
     {
         $validatableMocked = $this->getMockBuilder(Validatable::class)
             ->disableOriginalConstructor()
-            ->setMethods(
-                [
-                    'assert', 'check', 'getName', 'reportError', 'setName', 'setTemplate', 'validate',
-                ]
-            )
             ->setMockClassName($mockClassName)
             ->getMock();
 
@@ -92,12 +87,10 @@ abstract class RuleTestCase extends TestCase
         if ($expectedResult) {
             $validatableMocked
                 ->expects(self::any())
-                ->method('check')
-                ->willReturn($expectedResult);
+                ->method('check');
             $validatableMocked
                 ->expects(self::any())
-                ->method('assert')
-                ->willReturn($expectedResult);
+                ->method('assert');
         } else {
             $checkException = new ValidationException(
                 'validatable',
