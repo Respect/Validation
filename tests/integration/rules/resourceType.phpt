@@ -30,7 +30,7 @@ try {
 }
 
 try {
-    v::not(v::resourceType())->assert(xml_parser_create());
+    v::not(v::resourceType())->assert(tmpfile());
 } catch (NestedValidationException $exception) {
     echo $exception->getFullMessage() . PHP_EOL;
 }
@@ -39,4 +39,4 @@ try {
 "test" must be a resource
 `[resource] (stream)` must not be a resource
 - `{ }` must be a resource
-- `[resource] (xml)` must not be a resource
+- `[resource] (stream)` must not be a resource

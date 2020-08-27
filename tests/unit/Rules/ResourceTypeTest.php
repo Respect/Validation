@@ -40,8 +40,19 @@ final class ResourceTypeTest extends RuleTestCase
         return [
             [$rule, stream_context_create()],
             [$rule, tmpfile()],
-            [$rule, xml_parser_create()],
         ];
+    }
+
+    /**
+     * @test
+     *
+     * @requires PHP < 8.0
+     */
+    public function itShouldTestXmlResource(): void
+    {
+        $rule = new ResourceType();
+
+        self::assertValidInput($rule, xml_parser_create());
     }
 
     /**

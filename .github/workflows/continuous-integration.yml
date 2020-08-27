@@ -21,6 +21,9 @@ jobs:
         php-version:
           - "7.3"
           - "7.4"
+        include:
+          - php-version: "8.0"
+            composer-extra-arguments: --ignore-platform-reqs
 
     steps:
       - name: Checkout
@@ -41,7 +44,7 @@ jobs:
           sudo locale-gen --no-purge --lang ru_RU.UTF-8
 
       - name: Install dependencies
-        run: composer install --prefer-dist
+        run: composer install --prefer-dist ${{ matrix.composer-extra-arguments }}
 
       - name: Run unit tests
         run: vendor/bin/phpunit --testsuite=unit

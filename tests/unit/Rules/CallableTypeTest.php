@@ -42,7 +42,7 @@ final class CallableTypeTest extends RuleTestCase
                 },
             ],
             [$rule, 'trim'],
-            [$rule, __METHOD__],
+            [$rule, self::class . '::staticMethod'],
             [$rule, [$this, __FUNCTION__]],
         ];
     }
@@ -61,5 +61,10 @@ final class CallableTypeTest extends RuleTestCase
             [$rule, new stdClass()],
             [$rule, null],
         ];
+    }
+
+    public static function staticMethod(): void
+    {
+        // This is a static method example
     }
 }
