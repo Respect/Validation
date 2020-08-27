@@ -15,17 +15,12 @@ jobs:
     name: Tests
 
     runs-on: ubuntu-latest
-    continue-on-error: ${{ matrix.experimental }}
 
     strategy:
       matrix:
         php-version:
           - "7.3"
           - "7.4"
-        experimental: [false]
-        include:
-          - php-version: 8.0
-            experimental: true
 
     steps:
       - name: Checkout
