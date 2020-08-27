@@ -1,0 +1,116 @@
+name: Continuous Integration
+
+on:
+  push:
+    paths-ignore:
+      - 'bin/**'
+      - 'docs/**'
+  pull_request:
+    paths-ignore:
+      - 'bin/**'
+      - 'docs/**'
+
+jobs:
+  tests:
+    name: Tests
+
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental }}
+
+    strategy:
+      matrix:
+        php-version:
+          - "7.3"
+          - "7.4"
+        experimental: [false]
+        include:
+          - php-version: 8.0
+            experimental: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: none
+          extensions: uopz
+          tools: pecl
+
+      - name: Install localisation files
+        run: |
+          sudo locale-gen --no-purge --lang nl_NL.UTF-8
+          sudo locale-gen --no-purge --lang pt_BR.UTF-8
+          sudo locale-gen --no-purge --lang ru_RU.UTF-8
+
+      - name: Install dependencies
+        run: composer install --prefer-dist
+
+      - name: Run unit tests
+        run: vendor/bin/phpunit --testsuite=unit
+
+      - name: Run integration tests
+        run: vendor/bin/phpunit --testsuite=integration
+
+  code-coverage:
+    name: Code coverage
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          coverage: pcov
+          extensions: uopz
+          tools: pecl
+
+      - name: Install localisation files
+        run: |
+          sudo locale-gen --no-purge --lang nl_NL.UTF-8
+          sudo locale-gen --no-purge --lang pt_BR.UTF-8
+          sudo locale-gen --no-purge --lang ru_RU.UTF-8
+
+      - name: Install dependencies
+        run: composer install --prefer-dist
+
+      - name: Generating code coverage report
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+
+      - name: Send code coverage report to Codecov.io
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  static-analysis:
+    name: Static analysis
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          coverage: none
+
+      - name: Install dependencies
+        run: composer install --prefer-dist
+
+      - name: Run DocHeader
+        run: vendor/bin/docheader check library/ tests/
+
+      - name: Run PHP_CodeSniffer
+        run: vendor/bin/phpcs
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyze

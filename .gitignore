@@ -1,5 +1,6 @@
 .couscous/
 .phpcs.cache
+.phpunit.result.cache
 composer.lock
 Makefile
 phpcs.xml
