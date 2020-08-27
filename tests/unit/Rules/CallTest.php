@@ -42,26 +42,6 @@ final class CallTest extends TestCase
     private $errorException;
 
     /**
-     * {@inheritDoc}
-     */
-    protected function setUp(): void
-    {
-        $this->errorException = new ErrorException('This is a PHP error');
-
-        set_error_handler(function (): void {
-            throw $this->errorException;
-        });
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    protected function tearDown(): void
-    {
-        restore_error_handler();
-    }
-
-    /**
      * @test
      */
     public function assertShouldExecuteCallable(): void
@@ -311,5 +291,25 @@ final class CallTest extends TestCase
         self::expectExceptionObject($this->errorException);
 
         trigger_error('Forcing PHP to trigger an error');
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function setUp(): void
+    {
+        $this->errorException = new ErrorException('This is a PHP error');
+
+        set_error_handler(function (): void {
+            throw $this->errorException;
+        });
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function tearDown(): void
+    {
+        restore_error_handler();
     }
 }

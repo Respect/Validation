@@ -29,6 +29,8 @@ abstract class AbstractFilterRule extends AbstractRule
      */
     private $additionalChars;
 
+    abstract protected function validateFilteredInput(string $input): bool;
+
     /**
      * Initializes the rule with a list of characters to be ignored by the validation.
      */
@@ -55,8 +57,6 @@ abstract class AbstractFilterRule extends AbstractRule
 
         return $filteredInput === '' || $this->validateFilteredInput($filteredInput);
     }
-
-    abstract protected function validateFilteredInput(string $input): bool;
 
     private function filter(string $input): string
     {

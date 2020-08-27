@@ -42,7 +42,7 @@ final class PrimeNumber extends AbstractRule
         }
 
         for ($i = 3; $i <= ceil(sqrt((float) $input)); $i += 2) {
-            if (($input % $i) == 0) {
+            if ($input % $i == 0) {
                 return false;
             }
         }

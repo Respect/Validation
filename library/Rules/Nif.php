@@ -59,7 +59,7 @@ final class Nif extends AbstractRule
 
     private function validateDni(int $number, string $control): bool
     {
-        return mb_substr('TRWAGMYFPDXBNJZSQVHLCKE', ($number % 23), 1) === $control;
+        return mb_substr('TRWAGMYFPDXBNJZSQVHLCKE', $number % 23, 1) === $control;
     }
 
     private function validateNie(string $prefix, string $number, string $control): bool
@@ -92,12 +92,12 @@ final class Nif extends AbstractRule
 
         $digits = str_split((string) $code);
         $lastDigit = (int) array_pop($digits);
-        $key = $lastDigit === 0 ? 0 : (10 - $lastDigit);
+        $key = $lastDigit === 0 ? 0 : 10 - $lastDigit;
 
         if (is_numeric($control)) {
             return (int) $key === (int) $control;
         }
 
-        return mb_substr('JABCDEFGHI', ($key % 10), 1) === $control;
+        return mb_substr('JABCDEFGHI', $key % 10, 1) === $control;
     }
 }

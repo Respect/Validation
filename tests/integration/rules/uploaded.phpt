@@ -1,16 +1,9 @@
 --CREDITS--
 Paul Karikari <paulkarikari1@gmail.com>
---SKIPIF--
+--FILE--
 <?php
 
 declare(strict_types=1);
-
-if (!extension_loaded('uopz')) {
-    echo 'skip: Extension "uopz" is required to test "Uploaded" rule';
-}
-?>
---FILE--
-<?php
 
 require 'vendor/autoload.php';
 
@@ -44,6 +37,12 @@ try {
     v::not(v::uploaded())->assert('filename');
 } catch (NestedValidationException $exception) {
     echo $exception->getFullMessage() . PHP_EOL;
+}
+?>
+--SKIPIF--
+<?php
+if (!extension_loaded('uopz')) {
+    echo 'skip: Extension "uopz" is required to test "Uploaded" rule';
 }
 ?>
 --EXPECT--

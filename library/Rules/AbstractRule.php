@@ -36,14 +36,6 @@ abstract class AbstractRule implements Validatable
     protected $template;
 
     /**
-     * @param mixed$input
-     */
-    public function __invoke($input): bool
-    {
-        return $this->validate($input);
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function assert($input): void
@@ -97,5 +89,13 @@ abstract class AbstractRule implements Validatable
         $this->template = $template;
 
         return $this;
+    }
+
+    /**
+     * @param mixed$input
+     */
+    public function __invoke($input): bool
+    {
+        return $this->validate($input);
     }
 }

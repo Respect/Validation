@@ -27,6 +27,11 @@ abstract class AbstractSearcher extends AbstractRule
     use CanValidateUndefined;
 
     /**
+     * @return mixed[]
+     */
+    abstract protected function getDataSource(): array;
+
+    /**
      * {@inheritDoc}
      */
     public function validate($input): bool
@@ -38,9 +43,4 @@ abstract class AbstractSearcher extends AbstractRule
 
         return in_array($input, $dataSource, true);
     }
-
-    /**
-     * @return mixed[]
-     */
-    abstract protected function getDataSource(): array;
 }

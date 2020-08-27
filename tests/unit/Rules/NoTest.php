@@ -38,22 +38,6 @@ final class NoTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    protected function setUp(): void
-    {
-        $this->locale = (string) setlocale(LC_ALL, '0');
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    protected function tearDown(): void
-    {
-        setlocale(LC_ALL, $this->locale);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function providerForValidInput(): array
     {
         $sut = new No();
@@ -138,5 +122,21 @@ final class NoTest extends RuleTestCase
         }
 
         self::assertInvalidInput(new No(true), $input);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function setUp(): void
+    {
+        $this->locale = (string) setlocale(LC_ALL, '0');
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function tearDown(): void
+    {
+        setlocale(LC_ALL, $this->locale);
     }
 }

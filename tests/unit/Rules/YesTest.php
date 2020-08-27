@@ -42,22 +42,6 @@ final class YesTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    protected function setUp(): void
-    {
-        $this->locale = (string) setlocale(LC_ALL, '0');
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    protected function tearDown(): void
-    {
-        setlocale(LC_ALL, $this->locale);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function providerForValidInput(): array
     {
         $sut = new Yes();
@@ -145,5 +129,21 @@ final class YesTest extends RuleTestCase
         }
 
         self::assertInvalidInput(new Yes(true), $input);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function setUp(): void
+    {
+        $this->locale = (string) setlocale(LC_ALL, '0');
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function tearDown(): void
+    {
+        setlocale(LC_ALL, $this->locale);
     }
 }

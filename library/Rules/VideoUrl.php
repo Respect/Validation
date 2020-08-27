@@ -31,18 +31,18 @@ use function sprintf;
  */
 final class VideoUrl extends AbstractRule
 {
+    private const SERVICES = [
+        // phpcs:disable Generic.Files.LineLength.TooLong
+        'youtube' => '@^https?://(www\.)?(?:youtube\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^\"&?/]{11})@i',
+        'vimeo' => '@^https?://(www\.)?(player\.)?(vimeo\.com/)((channels/[A-z]+/)|(groups/[A-z]+/videos/)|(video/))?([0-9]+)@i',
+        'twitch' => '@^https?://(((www\.)?twitch\.tv/videos/[0-9]+)|clips\.twitch\.tv/[a-zA-Z]+)$@i',
+        // phpcs:enable Generic.Files.LineLength.TooLong
+    ];
+
     /**
      * @var string|null
      */
     private $service;
-
-    // phpcs:disable Generic.Files.LineLength.TooLong
-    private const SERVICES = [
-        'youtube' => '@^https?://(www\.)?(?:youtube\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^\"&?/]{11})@i',
-        'vimeo' => '@^https?://(www\.)?(player\.)?(vimeo\.com/)((channels/[A-z]+/)|(groups/[A-z]+/videos/)|(video/))?([0-9]+)@i',
-        'twitch' => '@^https?://(((www\.)?twitch\.tv/videos/[0-9]+)|clips\.twitch\.tv/[a-zA-Z]+)$@i',
-    ];
-    // phpcs:enable Generic.Files.LineLength.TooLong
 
     /**
      * Create a new instance VideoUrl.

@@ -182,6 +182,14 @@ use function count;
 final class Validator extends AllOf
 {
     /**
+     * Create instance validator.
+     */
+    public static function create(): self
+    {
+        return new self();
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function check($input): void
@@ -221,13 +229,5 @@ final class Validator extends AllOf
         $this->addRule(Factory::getDefaultInstance()->rule($ruleName, $arguments));
 
         return $this;
-    }
-
-    /**
-     * Create instance validator.
-     */
-    public static function create(): self
-    {
-        return new self();
     }
 }

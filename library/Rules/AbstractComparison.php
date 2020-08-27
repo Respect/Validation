@@ -30,6 +30,14 @@ abstract class AbstractComparison extends AbstractRule
     private $compareTo;
 
     /**
+     * Compare both values and return whether the comparison is valid or not.
+     *
+     * @param mixed $left
+     * @param mixed $right
+     */
+    abstract protected function compare($left, $right): bool;
+
+    /**
      * Initializes the rule by setting the value to be compared to the input.
      *
      * @param mixed $maxValue
@@ -53,12 +61,4 @@ abstract class AbstractComparison extends AbstractRule
 
         return $this->compare($left, $right);
     }
-
-    /**
-     * Compare both values and return whether the comparison is valid or not.
-     *
-     * @param mixed $left
-     * @param mixed $right
-     */
-    abstract protected function compare($left, $right): bool;
 }
