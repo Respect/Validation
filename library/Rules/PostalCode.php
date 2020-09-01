@@ -80,7 +80,7 @@ final class PostalCode extends AbstractEnvelope
         'GG' => '/^((?:(?:[A-PR-UWYZ][A-HK-Y]\d[ABEHMNPRV-Y0-9]|[A-PR-UWYZ]\d[A-HJKPS-UW0-9])\s\d[ABD-HJLNP-UW-Z]{2})|GIR\s?0AA)$/',
         'GL' => '/^(\d{4})$/',
         'GP' => '/^((97|98)\d{3})$/',
-        'GR' => '/^(\d{5})$/',
+        'GR' => '/^(\d{3}\s?\d{2})$/',
         'GT' => '/^(\d{5})$/',
         'GU' => '/^(969\d{2})$/',
         'GW' => '/^(\d{4})$/',
