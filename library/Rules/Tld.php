@@ -29,7 +29,7 @@ final class Tld extends AbstractRule
 {
     /**
      * List extracted from https://data.iana.org/TLD/tlds-alpha-by-domain.txt
-     * Version 2020082200, Last Updated Sat Aug 22 07:07:01 2020 UTC
+     * Version 2020090500, Last Updated Sat Sep  5 07:07:01 2020 UTC
      */
     private const TLD_LIST = [
         'AAA', 'AARP', 'ABARTH', 'ABB', 'ABBOTT', 'ABBVIE', 'ABC', 'ABLE',
