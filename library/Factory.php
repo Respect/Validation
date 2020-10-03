@@ -23,8 +23,10 @@ use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\ParameterStringifier;
 use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
 
+use function array_merge;
 use function lcfirst;
 use function sprintf;
+use function str_replace;
 use function trim;
 use function ucfirst;
 
@@ -157,7 +159,8 @@ final class Factory
         if ($validatable->getName() !== null) {
             $id = $params['name'] = $validatable->getName();
         }
-        foreach ($this->exceptionsNamespaces as $namespace) {
+        $exceptionNamespace = str_replace('\\Rules', '\\Exceptions', $reflection->getNamespaceName());
+        foreach (array_merge([$exceptionNamespace], $this->exceptionsNamespaces) as $namespace) {
             try {
                 /** @var class-string<ValidationException> $exceptionName */
                 $exceptionName = $namespace . '\\' . $ruleName . 'Exception';
