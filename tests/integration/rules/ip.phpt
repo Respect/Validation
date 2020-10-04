@@ -60,6 +60,12 @@ try {
     echo $exception->getFullMessage() . PHP_EOL;
 }
 ?>
+--SKIPIF--
+<?php
+if (!extension_loaded('bcmath')) {
+    echo 'skip: Extension "bcmath" is required to execute this test';
+}
+?>
 --EXPECT--
 "257.0.0.1" must be an IP address
 "127.0.0.1" must not be an IP address

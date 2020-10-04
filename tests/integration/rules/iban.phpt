@@ -35,6 +35,12 @@ try {
     echo $exception->getFullMessage() . PHP_EOL;
 }
 ?>
+--SKIPIF--
+<?php
+if (!extension_loaded('bcmath')) {
+    echo 'skip: Extension "bcmath" is required to execute this test';
+}
+?>
 --EXPECT--
 "SE35 5000 5880 7742" must be a valid IBAN
 "GB82 WEST 1234 5698 7654 32" must not be a valid IBAN

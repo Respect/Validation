@@ -16,6 +16,8 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 
+use function extension_loaded;
+
 use const FILTER_FLAG_IPV6;
 use const FILTER_FLAG_NO_PRIV_RANGE;
 
@@ -112,5 +114,17 @@ final class IpTest extends RuleTestCase
         $this->expectException(ComponentException::class);
 
         new Ip($range);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function setUp(): void
+    {
+        if (extension_loaded('bcmath')) {
+            return;
+        }
+
+        $this->markTestSkipped('You need bcmath to execute this test');
     }
 }
