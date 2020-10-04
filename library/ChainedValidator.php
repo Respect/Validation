@@ -101,6 +101,8 @@ interface ChainedValidator extends Validatable
 
     public function dateTime(?string $format = null): ChainedValidator;
 
+    public function decimal(int $decimals): ChainedValidator;
+
     public function digit(string ...$additionalChars): ChainedValidator;
 
     public function directory(): ChainedValidator;

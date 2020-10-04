@@ -101,6 +101,8 @@ interface StaticValidator
 
     public static function dateTime(?string $format = null): ChainedValidator;
 
+    public static function decimal(int $decimals): ChainedValidator;
+
     public static function digit(string ...$additionalChars): ChainedValidator;
 
     public static function directory(): ChainedValidator;
