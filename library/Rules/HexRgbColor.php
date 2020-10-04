@@ -23,6 +23,6 @@ final class HexRgbColor extends AbstractEnvelope
 {
     public function __construct()
     {
-        parent::__construct(new Regex('/^#?([0-9A-F]{3}|[0-9A-F]{6})$/'));
+        parent::__construct(new Regex('/^#?([0-9A-F]{3}|[0-9A-F]{6})$/i'));
     }
 }

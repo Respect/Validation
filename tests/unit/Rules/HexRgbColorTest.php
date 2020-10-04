@@ -37,11 +37,14 @@ final class HexRgbColorTest extends RuleTestCase
         return [
             [$sut, '#000'],
             [$sut, '#00000F'],
+            [$sut, '#00000f'],
             [$sut, '#123'],
             [$sut, '#123456'],
             [$sut, '#FFFFFF'],
+            [$sut, '#ffffff'],
             [$sut, '123123'],
             [$sut, 'FFFFFF'],
+            [$sut, 'ffffff'],
             [$sut, 443],
         ];
     }
