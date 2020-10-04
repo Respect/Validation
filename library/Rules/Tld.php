@@ -29,7 +29,7 @@ final class Tld extends AbstractRule
 {
     /**
      * List extracted from https://data.iana.org/TLD/tlds-alpha-by-domain.txt
-     * Version 2020082200, Last Updated Sat Aug 22 07:07:01 2020 UTC
+     * Version 2020100300, Last Updated Sat Oct  3 07:07:01 2020 UTC
      */
     private const TLD_LIST = [
         'AAA', 'AARP', 'ABARTH', 'ABB', 'ABBOTT', 'ABBVIE', 'ABC', 'ABLE',
@@ -137,9 +137,9 @@ final class Tld extends AbstractRule
         'MANAGEMENT', 'MANGO', 'MAP', 'MARKET', 'MARKETING', 'MARKETS',
         'MARRIOTT', 'MARSHALLS', 'MASERATI', 'MATTEL', 'MBA', 'MC', 'MCKINSEY',
         'MD', 'ME', 'MED', 'MEDIA', 'MEET', 'MELBOURNE', 'MEME', 'MEMORIAL',
-        'MEN', 'MENU', 'MERCKMSD', 'METLIFE', 'MG', 'MH', 'MIAMI', 'MICROSOFT',
-        'MIL', 'MINI', 'MINT', 'MIT', 'MITSUBISHI', 'MK', 'ML', 'MLB', 'MLS',
-        'MM', 'MMA', 'MN', 'MO', 'MOBI', 'MOBILE', 'MODA', 'MOE', 'MOI', 'MOM',
+        'MEN', 'MENU', 'MERCKMSD', 'MG', 'MH', 'MIAMI', 'MICROSOFT', 'MIL',
+        'MINI', 'MINT', 'MIT', 'MITSUBISHI', 'MK', 'ML', 'MLB', 'MLS', 'MM',
+        'MMA', 'MN', 'MO', 'MOBI', 'MOBILE', 'MODA', 'MOE', 'MOI', 'MOM',
         'MONASH', 'MONEY', 'MONSTER', 'MORMON', 'MORTGAGE', 'MOSCOW', 'MOTO',
         'MOTORCYCLES', 'MOV', 'MOVIE', 'MP', 'MQ', 'MR', 'MS', 'MSD', 'MT',
         'MTN', 'MTR', 'MU', 'MUSEUM', 'MUTUAL', 'MV', 'MW', 'MX', 'MY', 'MZ',
