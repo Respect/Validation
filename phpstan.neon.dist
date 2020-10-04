@@ -21,6 +21,10 @@ parameters:
     -
       message: '/Call to an undefined static method Respect\\Validation\\Validator::iDoNotExistSoIShouldThrowException/'
       path: tests/unit/ValidatorTest.php
+
+    -
+      message: '/Call to static method PHPUnit\\Framework\\Assert::assertSame\(\) with Respect\\Validation\\Validator and Respect\\Validation\\ChainedValidator will always evaluate to false./'
+      path: tests/unit/ValidatorTest.php
   level: 7
   paths:
     - library/
