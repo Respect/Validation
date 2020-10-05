@@ -27,4 +27,5 @@ See also:
 - [Alnum](Alnum.md)
 - [Alpha](Alpha.md)
 - [Consonant](Consonant.md)
+- [Decimal](Decimal.md)
 - [Digit](Digit.md)

@@ -27,6 +27,7 @@ See also:
 - [Alpha](Alpha.md)
 - [Contains](Contains.md)
 - [CreditCard](CreditCard.md)
+- [Decimal](Decimal.md)
 - [Digit](Digit.md)
 - [EndsWith](EndsWith.md)
 - [PhpLabel](PhpLabel.md)

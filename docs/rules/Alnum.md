@@ -44,6 +44,7 @@ See also:
 - [Charset](Charset.md)
 - [Consonant](Consonant.md)
 - [Control](Control.md)
+- [Decimal](Decimal.md)
 - [Digit](Digit.md)
 - [Lowercase](Lowercase.md)
 - [NoWhitespace](NoWhitespace.md)

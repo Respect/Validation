@@ -25,5 +25,6 @@ See also:
 
 - [Alnum](Alnum.md)
 - [Alpha](Alpha.md)
+- [Decimal](Decimal.md)
 - [Digit](Digit.md)
 - [Vowel](Vowel.md)

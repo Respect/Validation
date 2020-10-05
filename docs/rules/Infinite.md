@@ -22,6 +22,7 @@ Version | Description
 ***
 See also:
 
+- [Decimal](Decimal.md)
 - [Digit](Digit.md)
 - [Factor](Factor.md)
 - [Finite](Finite.md)

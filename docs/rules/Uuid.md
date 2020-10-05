@@ -27,4 +27,5 @@ Version | Description
 See also:
 
 - [Base](Base.md)
+- [Decimal](Decimal.md)
 - [Digit](Digit.md)

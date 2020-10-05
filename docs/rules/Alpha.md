@@ -38,6 +38,7 @@ See also:
 - [Alnum](Alnum.md)
 - [Charset](Charset.md)
 - [Consonant](Consonant.md)
+- [Decimal](Decimal.md)
 - [Digit](Digit.md)
 - [Lowercase](Lowercase.md)
 - [NoWhitespace](NoWhitespace.md)

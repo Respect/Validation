@@ -48,6 +48,7 @@ Version | Description
 ***
 See also:
 
+- [Decimal](Decimal.md)
 - [Digit](Digit.md)
 - [Iban](Iban.md)
 - [Luhn](Luhn.md)

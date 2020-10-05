@@ -40,6 +40,7 @@ Version  | Description
 ***
 See also:
 
+- [Decimal](Decimal.md)
 - [Digit](Digit.md)
 - [Finite](Finite.md)
 - [FloatType](FloatType.md)

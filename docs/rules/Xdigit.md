@@ -29,5 +29,6 @@ Version | Description
 See also:
 
 - [Alnum](Alnum.md)
+- [Decimal](Decimal.md)
 - [Digit](Digit.md)
 - [HexRgbColor](HexRgbColor.md)

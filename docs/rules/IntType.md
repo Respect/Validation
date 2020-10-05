@@ -27,6 +27,7 @@ See also:
 - [BoolType](BoolType.md)
 - [BoolVal](BoolVal.md)
 - [CallableType](CallableType.md)
+- [Decimal](Decimal.md)
 - [Digit](Digit.md)
 - [Finite](Finite.md)
 - [FloatType](FloatType.md)
