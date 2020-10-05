@@ -20,7 +20,6 @@ ending zeros and because of that, validations like the ones below will pass.
 v::decimal(1)->validate(1.50); // true
 ```
 
-
 ## Categorization
 
 - Numbers
@@ -29,9 +28,7 @@ v::decimal(1)->validate(1.50); // true
 
 Version | Description
 --------|-------------
-  2.0.0 | Removed support to whitespaces by default
-  0.5.0 | Renamed from `Digits` to `Digit`
-  0.3.9 | Created as `Digits`
+  2.0.0 | Created
 
 ***
 See also:
