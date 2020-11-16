@@ -332,6 +332,7 @@ final class CountryCode extends AbstractSearcher
         ['WF', 'WLF', '876'], // Wallis and Futuna
         ['WK', 'WAK', '872'], // Wake Island
         ['WS', 'WSM', '882'], // Samoa
+        ['XK', 'XKX', null], // Kosovo
         ['YD', 'YMD', '720'], // Yemen, Democratic, People's Democratic Republic of
         ['YE', 'YEM', '887'], // Yemen
         ['YT', 'MYT', '175'], // Mayotte
