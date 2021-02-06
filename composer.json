@@ -17,6 +17,7 @@
     "require": {
         "php": "^7.3 || ^8.0",
         "respect/stringifier": "^0.2.0",
+        "sokil/php-isocodes": "^3.3",
         "symfony/polyfill-mbstring": "^1.2"
     },
     "require-dev": {
@@ -38,6 +39,7 @@
         "ext-fileinfo": "File Information",
         "ext-mbstring": "Multibyte String Functions",
         "egulias/email-validator": "Strict (RFC compliant) email validation",
+        "sokil/php-isocodes": "To enable ISO codes validations",
         "symfony/validator": "Use Symfony validator through Respect\\Validation",
         "zendframework/zend-validator": "Use Zend Framework validator through Respect\\Validation"
     },

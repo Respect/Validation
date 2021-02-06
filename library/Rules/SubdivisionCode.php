@@ -13,9 +13,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Helpers\Subdivisions;
+use Respect\Validation\Exceptions\ComponentException;
+use Sokil\IsoCodes\IsoCodesFactory;
+use Sokil\IsoCodes\TranslationDriver\DummyDriver;
 
-use function array_keys;
+use function is_string;
+use function sprintf;
 
 /**
  * Validates country subdivision codes according to ISO 3166-2.
@@ -26,31 +29,45 @@ use function array_keys;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Mazen Touati <mazen_touati@hotmail.com>
  */
-final class SubdivisionCode extends AbstractSearcher
+final class SubdivisionCode extends AbstractRule
 {
+    /**
+     * @var string
+     */
+    private $countryCode;
+
     /**
      * @var string
      */
     private $countryName;
 
     /**
-     * @var string[]
+     * @var IsoCodesFactory
      */
-    private $subdivisions;
+    private $factory;
 
     public function __construct(string $countryCode)
     {
-        $subdivisions = new Subdivisions($countryCode);
+        $factory = new IsoCodesFactory(null, new DummyDriver());
+        $country = $factory->getCountries()->getByAlpha2($countryCode);
+        if ($country === null) {
+            throw new ComponentException(sprintf('"%s" is not a supported country code', $countryCode));
+        }
 
-        $this->countryName = $subdivisions->getCountry();
-        $this->subdivisions = array_keys($subdivisions->getSubdivisions());
+        $this->factory = $factory;
+        $this->countryCode = $countryCode;
+        $this->countryName = $country->getName();
     }
 
     /**
      * {@inheritDoc}
      */
-    protected function getDataSource(): array
+    public function validate($input): bool
     {
-        return $this->subdivisions;
+        if (!is_string($input)) {
+            return false;
+        }
+
+        return $this->factory->getSubdivisions()->getByCode($this->countryCode . '-' . $input) !== null;
     }
 }
