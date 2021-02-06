@@ -11,13 +11,17 @@ parameters:
   checkMissingIterableValueType: false
   ignoreErrors:
     -
+      message: '/Ternary operator condition is always false\./'
+      path: library/Helpers/CanValidateDateTime.php
+
+    -
       message: '/Instanceof between mixed and SimpleXMLElement will always evaluate to false\./'
       path: library/Rules/ArrayVal.php
+
     -
-      message: '/Parameter #1 \$error_handler of function set_error_handler expects \(callable\(int, string, string, int, array\): bool\)\|null, Closure\(\): void given\./'
-      paths:
-        - library/Rules/Call.php
-        - tests/unit/Rules/CallTest.php
+      message: '/Return type \(SplObjectStorage\) of method Respect\\Validation\\Exceptions\\NestedValidationException::getIterator\(\)/'
+      path: library/Exceptions/NestedValidationException.php
+
     -
       message: '/Call to an undefined static method Respect\\Validation\\Validator::iDoNotExistSoIShouldThrowException/'
       path: tests/unit/ValidatorTest.php

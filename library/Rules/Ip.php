@@ -181,7 +181,7 @@ final class Ip extends AbstractRule
             throw new ComponentException('Invalid network mask');
         }
 
-        $this->mask = sprintf('%032b', ip2long(long2ip(~(2 ** (32 - (int) $parts[1]) - 1))));
+        $this->mask = sprintf('%032b', ip2long((string) long2ip(~(2 ** (32 - (int) $parts[1]) - 1))));
     }
 
     private function verifyAddress(string $address): bool
