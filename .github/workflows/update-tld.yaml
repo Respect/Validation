@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: "2.0"
+          ref: ${{ secrets.LAST_MINOR_VERSION }}
 
       - name: Execute script
         run: bin/update-tld
@@ -26,5 +26,5 @@ jobs:
           author: The Respect Panda <therespectpanda@gmail.com>
           commit-message: Update list of top-level domains
           title: Update list of top-level domains
-          base: "2.0"
+          base: ${{ secrets.LAST_MINOR_VERSION }}
           branch: "workflows/update-tld"

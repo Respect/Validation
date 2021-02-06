@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: "2.0"
+          ref: ${{ secrets.LAST_MINOR_VERSION }}
 
       - name: Execute script
         run: bin/update-language-codes
@@ -26,5 +26,5 @@ jobs:
           author: The Respect Panda <therespectpanda@gmail.com>
           commit-message: Update list of language codes
           title: Update list of language codes
-          base: "2.0"
+          base: ${{ secrets.LAST_MINOR_VERSION }}
           branch: "workflows/update-language-codes"
