@@ -21,7 +21,7 @@
         "symfony/polyfill-mbstring": "^1.2"
     },
     "require-dev": {
-        "egulias/email-validator": "^2.1",
+        "egulias/email-validator": "^3.0",
         "malukenho/docheader": "^0.1",
         "mikey179/vfsstream": "^1.6",
         "phpstan/phpstan": "^0.12",
