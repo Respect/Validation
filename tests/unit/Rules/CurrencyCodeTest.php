@@ -31,14 +31,15 @@ final class CurrencyCodeTest extends RuleTestCase
      */
     public function providerForValidInput(): array
     {
-        $rule = new CurrencyCode();
-
         return [
-            [$rule, 'EUR'],
-            [$rule, 'GBP'],
-            [$rule, 'XAU'],
-            [$rule, 'XBA'],
-            [$rule, 'XXX'],
+            [new CurrencyCode(), 'EUR'],
+            [new CurrencyCode(), 'GBP'],
+            [new CurrencyCode(), 'XAU'],
+            [new CurrencyCode(CurrencyCode::ALPHA3), 'XBA'],
+            [new CurrencyCode(CurrencyCode::ALPHA3), 'XXX'],
+            [new CurrencyCode(CurrencyCode::NUMERIC), '784'],
+            [new CurrencyCode(CurrencyCode::NUMERIC), '971'],
+            [new CurrencyCode(CurrencyCode::NUMERIC), '008'],
         ];
     }
 
@@ -47,13 +48,11 @@ final class CurrencyCodeTest extends RuleTestCase
      */
     public function providerForInvalidInput(): array
     {
-        $rule = new CurrencyCode();
-
         return [
-            [$rule, 'BTC'],
-            [$rule, 'GGP'],
-            [$rule, 'USA'],
-            [$rule, 'xxx'],
+            [new CurrencyCode(), 'BTC'],
+            [new CurrencyCode(), 'GGP'],
+            [new CurrencyCode(), 'USA'],
+            [new CurrencyCode(), 'xxx'],
         ];
     }
 }
