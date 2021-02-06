@@ -15,7 +15,6 @@ namespace Respect\Validation\Rules;
 
 use function end;
 use function is_array;
-use function mb_detect_encoding;
 use function mb_strlen;
 use function mb_strripos;
 use function mb_strrpos;
@@ -70,10 +69,7 @@ final class EndsWith extends AbstractRule
             return end($input) == $this->endValue;
         }
 
-        $encoding = (string) mb_detect_encoding($input);
-        $endPosition = mb_strlen($input, $encoding) - mb_strlen($this->endValue, $encoding);
-
-        return mb_strripos($input, $this->endValue, 0, $encoding) === $endPosition;
+        return mb_strripos($input, $this->endValue) === mb_strlen($input) - mb_strlen($this->endValue);
     }
 
     /**
@@ -85,9 +81,6 @@ final class EndsWith extends AbstractRule
             return end($input) === $this->endValue;
         }
 
-        $encoding = (string) mb_detect_encoding($input);
-        $endPosition = mb_strlen($input, $encoding) - mb_strlen($this->endValue, $encoding);
-
-        return mb_strrpos($input, $this->endValue, 0, $encoding) === $endPosition;
+        return mb_strrpos($input, $this->endValue) === mb_strlen($input) - mb_strlen($this->endValue);
     }
 }

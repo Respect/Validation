@@ -54,8 +54,6 @@ final class Charset extends AbstractRule
      */
     public function validate($input): bool
     {
-        $detectedEncoding = mb_detect_encoding($input, $this->charset, true);
-
-        return in_array($detectedEncoding, $this->charset, true);
+        return in_array(mb_detect_encoding($input, $this->charset, true), $this->charset, true);
     }
 }

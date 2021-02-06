@@ -22,7 +22,6 @@ use function is_array;
 use function is_int;
 use function is_object;
 use function is_string;
-use function mb_detect_encoding;
 use function mb_strlen;
 use function sprintf;
 
@@ -89,7 +88,7 @@ final class Length extends AbstractRule
     private function extractLength($input): ?int
     {
         if (is_string($input)) {
-            return (int) mb_strlen($input, (string) mb_detect_encoding($input));
+            return (int) mb_strlen($input);
         }
 
         if (is_array($input) || $input instanceof CountableInterface) {

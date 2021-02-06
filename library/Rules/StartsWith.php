@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use function is_array;
-use function mb_detect_encoding;
 use function mb_stripos;
 use function mb_strpos;
 use function reset;
@@ -68,7 +67,7 @@ final class StartsWith extends AbstractRule
             return reset($input) == $this->startValue;
         }
 
-        return mb_stripos($input, $this->startValue, 0, (string) mb_detect_encoding($input)) === 0;
+        return mb_stripos($input, $this->startValue) === 0;
     }
 
     /**
@@ -80,6 +79,6 @@ final class StartsWith extends AbstractRule
             return reset($input) === $this->startValue;
         }
 
-        return mb_strpos($input, $this->startValue, 0, (string) mb_detect_encoding($input)) === 0;
+        return mb_strpos($input, $this->startValue) === 0;
     }
 }

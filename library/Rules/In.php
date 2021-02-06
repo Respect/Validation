@@ -15,7 +15,6 @@ namespace Respect\Validation\Rules;
 
 use function in_array;
 use function is_array;
-use function mb_detect_encoding;
 use function mb_stripos;
 use function mb_strpos;
 
@@ -74,9 +73,7 @@ final class In extends AbstractRule
             return $input == $this->haystack;
         }
 
-        $inputString = (string) $input;
-
-        return mb_stripos($this->haystack, $inputString, 0, (string) mb_detect_encoding($inputString)) !== false;
+        return mb_stripos($this->haystack, (string) $input) !== false;
     }
 
     /**
@@ -92,8 +89,6 @@ final class In extends AbstractRule
             return $input === $this->haystack;
         }
 
-        $inputString = (string) $input;
-
-        return mb_strpos($this->haystack, $inputString, 0, (string) mb_detect_encoding($inputString)) !== false;
+        return mb_strpos($this->haystack, (string) $input) !== false;
     }
 }

@@ -16,7 +16,6 @@ namespace Respect\Validation\Rules;
 use function in_array;
 use function is_array;
 use function is_scalar;
-use function mb_detect_encoding;
 use function mb_stripos;
 use function mb_strpos;
 
@@ -74,11 +73,10 @@ final class Contains extends AbstractRule
             return false;
         }
 
-        $encoding = (string) mb_detect_encoding($haystack);
         if ($this->identical) {
-            return mb_strpos($haystack, $needle, 0, $encoding) !== false;
+            return mb_strpos($haystack, $needle) !== false;
         }
 
-        return mb_stripos($haystack, $needle, 0, $encoding) !== false;
+        return mb_stripos($haystack, $needle) !== false;
     }
 }

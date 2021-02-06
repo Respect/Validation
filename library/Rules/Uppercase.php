@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use function is_string;
-use function mb_detect_encoding;
 use function mb_strtoupper;
 
 /**
@@ -36,6 +35,6 @@ final class Uppercase extends AbstractRule
             return false;
         }
 
-        return $input === mb_strtoupper($input, (string) mb_detect_encoding($input));
+        return $input === mb_strtoupper($input);
     }
 }
