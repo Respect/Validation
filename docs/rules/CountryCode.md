@@ -21,7 +21,7 @@ This rule supports the three sets of country codes:
 
 When no set is defined the rule uses `'alpha-2'` (`CountryCode::ALPHA2`).
 
-This rules uses data from [iso-codes][].
+This rule uses data from [sokil/php-isocodes][].
 
 ## Categorization
 
@@ -45,4 +45,4 @@ See also:
 - [Tld](Tld.md)
 
 [ISO 3166-1]: https://wikipedia.org/wiki/ISO_3166-1
-[iso-codes]: https://salsa.debian.org/iso-codes-team/iso-codes
+[sokil/php-isocodes]: https://github.com/sokil/php-isocodes
