@@ -60,7 +60,7 @@ final class PostalCode extends AbstractEnvelope
         'CV' => '/^(\d{4})$/',
         'CX' => '/^(\d{4})$/',
         'CY' => '/^(\d{4})$/',
-        'CZ' => '/^\d{3}\s?\d{2}$/',
+        'CZ' => '/^\d{3}\s\d{2}$/',
         'DE' => '/^(\d{5})$/',
         'DK' => '/^(\d{4})$/',
         'DO' => '/^(\d{5})$/',
