@@ -1,0 +1,24 @@
+{
+  "source": "http://www.geonames.org/SD/administrative-division-sudan.html",
+  "country": "Sudan",
+  "subdivisions": {
+    "DC": "Wasaţ Dārfūr",
+    "DE": "Sharq Dārfūr",
+    "DN": "Shamāl Dārfūr",
+    "DS": "Janūb Dārfūr",
+    "DW": "Gharb Dārfūr",
+    "GD": "Al Qaḑārif",
+    "GK": "West Kurdufan",
+    "GZ": "Al Jazīrah",
+    "KA": "Kassalā",
+    "KH": "Al Kharţūm",
+    "KN": "Shamāl Kurdufān",
+    "KS": "Janūb Kurdufān",
+    "NB": "An Nīl al Azraq",
+    "NO": "Ash Shamālīyah",
+    "NR": "An Nīl",
+    "NW": "An Nīl al Abyaḑ",
+    "RS": "Al Baḩr al Aḩmar",
+    "SI": "Sinnār"
+  }
+}

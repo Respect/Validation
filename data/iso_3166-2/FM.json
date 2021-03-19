@@ -1,0 +1,10 @@
+{
+  "source": "http://www.geonames.org/FM/administrative-division-micronesia.html",
+  "country": "Micronesia",
+  "subdivisions": {
+    "KSA": "Kosrae",
+    "PNI": "Pohnpei",
+    "TRK": "Chuuk",
+    "YAP": "Yap"
+  }
+}

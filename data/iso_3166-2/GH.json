@@ -1,0 +1,16 @@
+{
+  "source": "http://www.geonames.org/GH/administrative-division-ghana.html",
+  "country": "Ghana",
+  "subdivisions": {
+    "AA": "Greater Accra Region",
+    "AH": "Ashanti Region",
+    "BA": "Brong-Ahafo Region",
+    "CP": "Central Region",
+    "EP": "Eastern Region",
+    "NP": "Northern Region",
+    "TV": "Volta Region",
+    "UE": "Upper East Region",
+    "UW": "Upper West Region",
+    "WP": "Western Region"
+  }
+}

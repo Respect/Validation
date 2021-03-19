@@ -1,0 +1,12 @@
+{
+  "source": "http://www.geonames.org/TM/administrative-division-turkmenistan.html",
+  "country": "Turkmenistan",
+  "subdivisions": {
+    "A": "Ahal Welayaty",
+    "B": "Balkan Welayaty",
+    "D": "Dashhowuz Welayaty",
+    "L": "Lebap Welayaty",
+    "M": "Mary Welayaty",
+    "S": "Aşgabat"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "source": "http://www.geonames.org/TV/administrative-division-tuvalu.html",
+  "country": "Tuvalu",
+  "subdivisions": {
+    "FUN": "Funafuti",
+    "NIT": "Niutao",
+    "NKF": "Nukufetau",
+    "NKL": "Nukulaelae",
+    "NMA": "Nanumea",
+    "NMG": "Nanumanga",
+    "NUI": "Nui",
+    "VAI": "Vaitupu"
+  }
+}

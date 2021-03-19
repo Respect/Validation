@@ -1,0 +1,20 @@
+{
+  "source": "http://www.geonames.org/TC/administrative-division-turks-and-caicos-islands.html",
+  "country": "Turks and Caicos Islands",
+  "subdivisions": {
+    "AC": "Ambergris Cays",
+    "DC": "Dellis Cay",
+    "EC": "East Caicos",
+    "FC": "French Cay",
+    "GT": "Grand Turk",
+    "LW": "Little Water Cay",
+    "MC": "Middle Caicos",
+    "NC": "North Caicos",
+    "PN": "Pine Cay",
+    "PR": "Providenciales",
+    "RC": "Parrot Cay",
+    "SC": "South Caicos",
+    "SL": "Salt Cay",
+    "WC": "West Caicos"
+  }
+}

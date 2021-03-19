@@ -1,0 +1,20 @@
+{
+  "source": "http://www.geonames.org/SV/administrative-division-el-salvador.html",
+  "country": "El Salvador",
+  "subdivisions": {
+    "AH": "Ahuachapan",
+    "CA": "Cabanas",
+    "CH": "Chalatenango",
+    "CU": "Cuscatlan",
+    "LI": "La Libertad",
+    "MO": "Morazan",
+    "PA": "La Paz",
+    "SA": "Santa Ana",
+    "SM": "San Miguel",
+    "SO": "Sonsonate",
+    "SS": "San Salvador",
+    "SV": "San Vicente",
+    "UN": "La Union",
+    "US": "Usulutan"
+  }
+}

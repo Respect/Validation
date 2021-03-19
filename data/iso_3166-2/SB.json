@@ -1,0 +1,16 @@
+{
+  "source": "http://www.geonames.org/SB/administrative-division-solomon-islands.html",
+  "country": "Solomon Islands",
+  "subdivisions": {
+    "CE": "Central",
+    "CH": "Choiseul",
+    "CT": "Capital Territory",
+    "GU": "Guadalcanal",
+    "IS": "Isabel",
+    "MK": "Makira",
+    "ML": "Malaita",
+    "RB": "Rennell and Bellona",
+    "TE": "Temotu",
+    "WE": "Western"
+  }
+}

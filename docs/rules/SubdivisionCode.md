@@ -11,7 +11,7 @@ v::subdivisionCode('BR')->validate('SP'); // true
 v::subdivisionCode('US')->validate('CA'); // true
 ```
 
-This rule uses data from [sokil/php-isocodes][].
+This rules uses data from [iso-codes][].
 
 ## Categorization
 
@@ -35,6 +35,6 @@ See also:
 - [PolishIdCard](PolishIdCard.md)
 - [Tld](Tld.md)
 
-[sokil/php-isocodes]: https://github.com/sokil/php-isocodes
+[iso-codes]: https://salsa.debian.org/iso-codes-team/iso-codes
 [ISO 3166-1 alpha-2]: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 "ISO 3166-1 alpha-2"
 [ISO 3166-2]: http://en.wikipedia.org/wiki/ISO_3166-2 "ISO 3166-2"

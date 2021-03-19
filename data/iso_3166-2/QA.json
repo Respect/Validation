@@ -1,0 +1,14 @@
+{
+  "source": "http://www.geonames.org/QA/administrative-division-qatar.html",
+  "country": "Qatar",
+  "subdivisions": {
+    "DA": "Ad Dawhah",
+    "KH": "Al Khawr wa adh Dhakhīrah",
+    "MS": "Ash Shamāl",
+    "RA": "Ar Rayyan",
+    "SH": "Al-Shahaniya",
+    "US": "Umm Salal",
+    "WA": "Al Wakrah",
+    "ZA": "Az Z a‘āyin"
+  }
+}

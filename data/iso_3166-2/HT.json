@@ -1,0 +1,16 @@
+{
+  "source": "http://www.geonames.org/HT/administrative-division-haiti.html",
+  "country": "Haiti",
+  "subdivisions": {
+    "AR": "Artibonite",
+    "CE": "Centre",
+    "GA": "Grand'Anse",
+    "ND": "Nord",
+    "NE": "Nord-Est",
+    "NI": "Nippes",
+    "NO": "Nord-Ouest",
+    "OU": "Ouest",
+    "SD": "Sud",
+    "SE": "Sud-Est"
+  }
+}

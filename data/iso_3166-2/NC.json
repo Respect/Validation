@@ -1,0 +1,9 @@
+{
+  "source": "http://www.geonames.org/NC/administrative-division-new-caledonia.html",
+  "country": "New Caledonia",
+  "subdivisions": {
+    "L": "Iles Loyaute",
+    "N": "Nord",
+    "S": "Sud"
+  }
+}

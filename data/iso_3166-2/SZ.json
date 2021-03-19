@@ -1,0 +1,10 @@
+{
+  "source": "http://www.geonames.org/SZ/administrative-division-swaziland.html",
+  "country": "Swaziland",
+  "subdivisions": {
+    "HH": "Hhohho",
+    "LU": "Lubombo",
+    "MA": "Manzini",
+    "SH": "Shishelweni"
+  }
+}
