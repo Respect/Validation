@@ -19,10 +19,6 @@ parameters:
       path: library/Rules/ArrayVal.php
 
     -
-      message: '/Return type \(SplObjectStorage\) of method Respect\\Validation\\Exceptions\\NestedValidationException::getIterator\(\)/'
-      path: library/Exceptions/NestedValidationException.php
-
-    -
       message: '/Call to an undefined static method Respect\\Validation\\Validator::iDoNotExistSoIShouldThrowException/'
       path: tests/unit/ValidatorTest.php
 
