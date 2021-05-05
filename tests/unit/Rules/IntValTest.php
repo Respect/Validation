@@ -49,6 +49,9 @@ final class IntValTest extends RuleTestCase
             [$rule, 0b101010],
             [$rule, 0x2a],
             [$rule, '089'],
+            [$rule, -42],
+            [$rule, '-42'],
+            [$rule, '-042'],
         ];
     }
 

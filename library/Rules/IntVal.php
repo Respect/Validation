@@ -13,8 +13,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use function ctype_digit;
 use function is_int;
+use function is_string;
+use function preg_match;
 
 /**
  * Validates if the input is an integer.
@@ -36,6 +37,10 @@ final class IntVal extends AbstractRule
             return true;
         }
 
-        return ctype_digit($input);
+        if (!is_string($input)) {
+            return false;
+        }
+
+        return preg_match('/^-?\d+$/', $input) === 1;
     }
 }
