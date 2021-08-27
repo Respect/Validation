@@ -92,6 +92,8 @@ final class PostalCodeTest extends RuleTestCase
             [new PostalCode('RS'), '24430'],
             [new PostalCode('GR'), '24430'],
             [new PostalCode('GR'), '244 30'],
+            [new PostalCode('KH'), '12080'],
+            [new PostalCode('KH'), '120802'],
         ];
     }
 
@@ -116,6 +118,7 @@ final class PostalCodeTest extends RuleTestCase
             [new PostalCode('KY'), 'KY4-2500'],
             [new PostalCode('AM'), '375010'],
             [new PostalCode('RS'), '244300'],
+            [new PostalCode('KH'), '1208'],
         ];
     }
 }
