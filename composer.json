@@ -43,7 +43,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Respect\\Validation\\": "library/"
+            "Micgay\\Validation\\": "library/"
         }
     },
     "autoload-dev": {
