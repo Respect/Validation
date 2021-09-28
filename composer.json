@@ -1,5 +1,5 @@
 {
-    "name": "respect/validation",
+    "name": "micgay/validation",
     "description": "The most awesome validation engine ever created for PHP",
     "keywords": ["respect", "validation", "validator"],
     "type": "library",
