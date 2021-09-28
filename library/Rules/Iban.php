@@ -127,7 +127,7 @@ final class Iban extends AbstractRule
         $bban = substr($iban, 4);
         $rearranged = $bban . $countryCode . $checkDigits;
 
-        return bcmod($this->convertToInteger($rearranged), '97') === '1';
+        return bcmod($this->convertToInteger($rearranged), '97') == '1';
     }
 
     private function hasValidCountryLength(string $iban, string $countryCode): bool
