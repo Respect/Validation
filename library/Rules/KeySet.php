@@ -43,7 +43,7 @@ final class KeySet extends AbstractWrapper
     /**
      * Initializes the rule.
      *
-     * @param Validatable[] ...$validatables
+     * @param Validatable ...$validatables
      */
     public function __construct(Validatable ...$validatables)
     {
