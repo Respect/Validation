@@ -105,7 +105,7 @@ final class Ip extends AbstractRule
 
     private function createRange(): ?string
     {
-        if ($this->endAddress && $this->endAddress) {
+        if ($this->startAddress && $this->endAddress) {
             return $this->startAddress . '-' . $this->endAddress;
         }
 
