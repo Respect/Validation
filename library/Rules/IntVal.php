@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use function ctype_digit;
 use function is_int;
+use function is_string;
 
 /**
  * Validates if the input is an integer.
@@ -36,6 +37,6 @@ final class IntVal extends AbstractRule
             return true;
         }
 
-        return ctype_digit($input);
+        return is_string($input) && ctype_digit($input);
     }
 }
