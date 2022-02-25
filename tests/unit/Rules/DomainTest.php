@@ -37,9 +37,12 @@ final class DomainTest extends RuleTestCase
         return [
             [new Domain(false), '111111111111domain.local'],
             [new Domain(false), '111111111111.domain.local'],
+            [new Domain(), 'www.example.com'],
             [new Domain(), 'example.com'],
             [new Domain(), 'xn--bcher-kva.ch'],
             [new Domain(), 'mail.xn--bcher-kva.ch'],
+            [new Domain(), 'xn-----6kcfg.com'],
+            [new Domain(), 'www.example-hyphen.com'],
             [new Domain(), 'example-hyphen.com'],
             [new Domain(), 'example--valid.com'],
             [new Domain(), 'std--a.com'],

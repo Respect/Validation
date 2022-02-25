@@ -160,7 +160,13 @@ final class Domain extends AbstractRule
             new AnyOf(
                 new Not(new Contains('--')),
                 new Callback(static function ($str) {
-                    return mb_substr_count($str, '--') == 1;
+                    $validUtf8 = true;
+                    if (mb_substr_count($str, 'xn--') > 0) {
+                        $utf8 = idn_to_utf8($str);
+                        $validUtf8 = is_string($utf8) && preg_match('/(?<!-).+(?!-)/', $utf8) === 1;
+                    }
+
+                    return mb_substr_count(preg_replace('/^\.?xn-([\-]+)/', '', $str), '--') <= 1 && $validUtf8;
                 })
             ),
             new Not(new EndsWith('-'))
