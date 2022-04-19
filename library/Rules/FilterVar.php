@@ -51,7 +51,7 @@ final class FilterVar extends AbstractEnvelope
      *
      * @throws ComponentException
      */
-    public function __construct(int $filter, $options = null)
+    public function __construct(int $filter, $options = [])
     {
         if (!in_array($filter, self::ALLOWED_FILTERS)) {
             throw new ComponentException('Cannot accept the given filter');
