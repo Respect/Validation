@@ -48,6 +48,10 @@ final class DecimalTest extends RuleTestCase
             [new Decimal(1), 1.1],
             [new Decimal(1), '1.3'],
             [new Decimal(1), 1.50],
+            [new Decimal(1), 10.0],
+            [new Decimal(2), 10.00],
+            [new Decimal(1), 10.50],
+            [new Decimal(2), 10.50],
             [new Decimal(3), '1.000'],
             [new Decimal(3), 123456789.001],
         ];
