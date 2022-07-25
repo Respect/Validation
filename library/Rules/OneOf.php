@@ -17,15 +17,13 @@ class OneOf extends AbstractComposite
 {
     public function assert($input)
     {
-        $validators = $this->getRules();
-        $exceptions = $this->validateRules($input);
-        $numRules = count($validators);
-        $numExceptions = count($exceptions);
-        if ($numExceptions === $numRules) {
-            throw $this->reportError($input)->setRelated($exceptions);
+        if ($this->validate($input)) {
+            return true;
         }
 
-        return true;
+        throw $this
+            ->reportError($input)
+            ->setRelated($this->validateRules($input));
     }
 
     public function validate($input)

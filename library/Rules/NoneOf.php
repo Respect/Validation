@@ -15,14 +15,13 @@ class NoneOf extends AbstractComposite
 {
     public function assert($input)
     {
-        $exceptions = $this->validateRules($input);
-        $numRules = count($this->getRules());
-        $numExceptions = count($exceptions);
-        if ($numRules !== $numExceptions) {
-            throw $this->reportError($input)->setRelated($exceptions);
+        if ($this->validate($input)) {
+            return true;
         }
 
-        return true;
+        throw $this
+            ->reportError($input)
+            ->setRelated($this->validateRules($input));
     }
 
     public function validate($input)
