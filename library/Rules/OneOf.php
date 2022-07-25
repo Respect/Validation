@@ -30,17 +30,16 @@ final class OneOf extends AbstractComposite
      */
     public function assert($input): void
     {
-        $validators = $this->getRules();
-        $exceptions = $this->getAllThrownExceptions($input);
-        $numRules = count($validators);
-        $numExceptions = count($exceptions);
-        if ($numExceptions !== $numRules - 1) {
-            /** @var OneOfException $oneOfException */
-            $oneOfException = $this->reportError($input);
-            $oneOfException->addChildren($exceptions);
-
-            throw $oneOfException;
+        if ($this->validate($input)) {
+            return;
         }
+
+        $exceptions = $this->getAllThrownExceptions($input);
+        /** @var OneOfException $oneOfException */
+        $oneOfException = $this->reportError($input);
+        $oneOfException->addChildren($exceptions);
+
+        throw $oneOfException;
     }
 
     /**

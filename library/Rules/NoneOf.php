@@ -28,16 +28,16 @@ final class NoneOf extends AbstractComposite
      */
     public function assert($input): void
     {
-        $exceptions = $this->getAllThrownExceptions($input);
-        $numRules = count($this->getRules());
-        $numExceptions = count($exceptions);
-        if ($numRules !== $numExceptions) {
-            /** @var NoneOfException $noneOfException */
-            $noneOfException = $this->reportError($input);
-            $noneOfException->addChildren($exceptions);
-
-            throw $noneOfException;
+        if ($this->validate($input)) {
+            return;
         }
+        $exceptions = $this->getAllThrownExceptions($input);
+
+        /** @var NoneOfException $noneOfException */
+        $noneOfException = $this->reportError($input);
+        $noneOfException->addChildren($exceptions);
+
+        throw $noneOfException;
     }
 
     /**
