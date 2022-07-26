@@ -3,3 +3,7 @@ composer.lock
 Makefile
 phpunit.xml
 vendor/
+
+.idea
+.phpcs.cache
+.phpunit.result.cache
