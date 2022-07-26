@@ -8,9 +8,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [Unreleased]
 ### Added
 ### Changed
-- Optimize OneOf and NoneOf rules @Błażej
 ### Deprecated
 ### Removed
 ### Fixed
 ### Security
 
+## [1.1.32] - 2022-07-26
+### Changed
+- Optimize OneOf and NoneOf rules @Błażej
