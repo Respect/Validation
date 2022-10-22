@@ -25,6 +25,7 @@ use Respect\Validation\Test\RuleTestCase;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jean Pimentel <jeanfap@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
+ * @author Rakshit Arora <rakshit087@gmail.com>
  */
 final class CreditCardTest extends RuleTestCase
 {
@@ -54,6 +55,7 @@ final class CreditCardTest extends RuleTestCase
         $jcb = new CreditCard(CreditCard::JCB);
         $master = new CreditCard(CreditCard::MASTERCARD);
         $visa = new CreditCard(CreditCard::VISA);
+        $rupay = new CreditCard(CreditCard::RUPAY);
 
         return [
             [$general, 5555444433331111], // MasterCard 5 BIN Range
@@ -73,6 +75,8 @@ final class CreditCardTest extends RuleTestCase
             [$discover, '6011000990139424'],
             [$general, '3566002020360505'], // JBC
             [$jcb, '3566002020360505'],
+            [$general, '6522447005971501'], // RuPay
+            [$rupay, '6062973831636410'],
         ];
     }
 
