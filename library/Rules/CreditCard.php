@@ -31,6 +31,7 @@ use function sprintf;
  * @author Jean Pimentel <jeanfap@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author William Espindola <oi@williamespindola.com.br>
+ * @author Rakshit Arora <rakshit087@gmail.com>
  */
 final class CreditCard extends AbstractRule
 {
@@ -48,6 +49,8 @@ final class CreditCard extends AbstractRule
 
     public const VISA = 'Visa';
 
+    public const RUPAY = 'RuPay';
+
     private const BRAND_REGEX_LIST = [
         self::ANY => '/^[0-9]+$/',
         self::AMERICAN_EXPRESS => '/^3[47]\d{13}$/',
@@ -56,6 +59,7 @@ final class CreditCard extends AbstractRule
         self::JCB => '/^(?:2131|1800|35\d{3})\d{11}$/',
         self::MASTERCARD => '/(5[1-5]|2[2-7])\d{14}$/',
         self::VISA => '/^4\d{12}(?:\d{3})?$/',
+        self::RUPAY => '/^6(?!011)(?:0[0-9]{14}|52[12][0-9]{12})$/',
     ];
 
     /**
