@@ -36,6 +36,10 @@ final class Json extends AbstractRule
             return false;
         }
 
+        if (function_exists('json_validate')) {
+            return json_validate($input);
+        }
+
         json_decode($input);
 
         return json_last_error() === JSON_ERROR_NONE;
