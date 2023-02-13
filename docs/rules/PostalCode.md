@@ -25,6 +25,7 @@ Extracted from [GeoNames](http://www.geonames.org/).
 
 Version | Description
 --------|-------------
+  2.2.4 | Cambodian postal codes now support 5 and 6 digits
   0.7.0 | Created
 
 ***

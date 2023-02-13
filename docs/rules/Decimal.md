@@ -28,6 +28,7 @@ v::decimal(1)->validate(1.50); // true
 
 Version | Description
 --------|-------------
+  2.2.4 | Float values with trailing zeroes are now valid
   2.0.0 | Created
 
 ***

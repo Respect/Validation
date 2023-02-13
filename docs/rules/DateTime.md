@@ -41,6 +41,7 @@ Message template for this validator includes `{{format}}`.
 
 Version | Description
 --------|-------------
+  2.2.4 | `v::dateTime('z')` is no longer supported.
   2.0.0 | Created
 
 ***

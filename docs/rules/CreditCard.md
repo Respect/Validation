@@ -44,6 +44,7 @@ v::digit()->creditCard()->validate('5376747397208720'); // true
 
 | Version | Description                        |
 | ------- | ---------------------------------- |
+| 2.2.4   | RuPay is now supported as a brand  |
 | 1.1.0   | Allow the define credit card brand |
 | 0.3.9   | Created                            |
 
