@@ -20,6 +20,8 @@
  - Fixed misc phpstan and phpcs errors.
  - v::dateTime('z') is not supported anymore in PHP8, and should not be relied upon
  - Added RuPay card validation (thanks @rakshit087)
+ - Fixed `v::decimal()` for float values (thanks @scruwi)
+ - Added `v::portugueseNif()` to validate _Número de Identificação Fiscal_ in Portugal (thanks @goncalo-andrade).
 
 # Changes in Respect\Validation 1.0
 

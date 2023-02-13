@@ -17,7 +17,7 @@ final class PortugueseNifException extends ValidationException
             self::STANDARD => '{{name}} must be a Portuguese NIF',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a Portuguese NIF'
-        ]
+            self::STANDARD => '{{name}} must not be a Portuguese NIF',
+        ],
     ];
 }
