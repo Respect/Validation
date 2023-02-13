@@ -23,6 +23,7 @@
  - Fixed `v::decimal()` for float values (thanks @scruwi)
  - Added `v::portugueseNif()` to validate _Número de Identificação Fiscal_ in Portugal (thanks @goncalo-andrade).
  - Allow 5-digit and 6-digit postal codes for Cambodia (thanks @omega3000)
+ - `v::intval()` now handles negative values with trailing zeroes better (thanks @l-x)
 
 # Changes in Respect\Validation 1.0
 

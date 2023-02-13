@@ -35,9 +35,23 @@ try {
 } catch (NestedValidationException $exception) {
     echo $exception->getFullMessage() . PHP_EOL;
 }
+
+try {
+    v::not(v::intVal())->assert(-42);
+} catch (NestedValidationException $exception) {
+    echo $exception->getFullMessage() . PHP_EOL;
+}
+
+try {
+    v::not(v::intVal())->assert('-42');
+} catch (NestedValidationException $exception) {
+    echo $exception->getFullMessage() . PHP_EOL;
+}
 ?>
 --EXPECT--
 "42.33" must be an integer number
 2 must not be an integer number
 - "Foo" must be an integer number
 - 3 must not be an integer number
+- -42 must not be an integer number
+- "-42" must not be an integer number

@@ -33,6 +33,7 @@ consider them as valid.
 
 Version  | Description
 ---------|-------------
+  2.2.4  | Improved support for negative values with trailing zeroes
   2.0.14 | Allow leading zeros
   1.0.0  | Renamed from `Int` to `IntVal`
   0.3.9  | Created as `Int`
