@@ -19,6 +19,7 @@
  - Added ignores for phpstan template variables without getters.
  - Fixed misc phpstan and phpcs errors.
  - v::dateTime('z') is not supported anymore in PHP8, and should not be relied upon
+ - Added RuPay card validation (thanks @rakshit087)
 
 # Changes in Respect\Validation 1.0
 

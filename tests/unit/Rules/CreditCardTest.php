@@ -35,7 +35,7 @@ final class CreditCardTest extends RuleTestCase
     public function itShouldThrowExceptionWhenCreditCardBrandIsNotValid(): void
     {
         $message = '"RespectCard" is not a valid credit card brand';
-        $message .= ' (Available: Any, American Express, Diners Club, Discover, JCB, MasterCard, Visa)';
+        $message .= ' (Available: Any, American Express, Diners Club, Discover, JCB, MasterCard, Visa, RuPay)';
 
         $this->expectException(ComponentException::class);
         $this->expectExceptionMessage($message);
