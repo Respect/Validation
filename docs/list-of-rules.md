@@ -116,7 +116,6 @@
 ## Integrations
 
 - [Sf](rules/Sf.md)
-- [Zend](rules/Zend.md)
 
 ## Internet
 
@@ -420,4 +419,3 @@
 - [Writable](rules/Writable.md)
 - [Xdigit](rules/Xdigit.md)
 - [Yes](rules/Yes.md)
-- [Zend](rules/Zend.md)

@@ -1,5 +1,5 @@
 --CREDITS--
-Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+Alexandre Gomes Gaigalas <alganet@gmail.com>
 Henrique Moody <henriquemoody@gmail.com>
 Ivan Zinovyev <vanyazin@gmail.com>
 --TEST--

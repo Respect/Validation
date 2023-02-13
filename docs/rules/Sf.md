@@ -25,7 +25,3 @@ Version | Description
   2.0.0 | Upgraded support to version >=4.0 or >=3.0 of Symfony Validator
   0.3.9 | Created
 
-***
-See also:
-
-- [Zend](Zend.md)

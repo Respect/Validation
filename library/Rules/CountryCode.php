@@ -3,7 +3,7 @@
 /*
  * This file is part of Respect/Validation.
  *
- * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
@@ -25,7 +25,7 @@ use function sprintf;
  *
  * This rule supports the three sets of country codes (alpha-2, alpha-3, and numeric).
  *
- * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  * @author Felipe Martins <me@fefas.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
@@ -60,6 +60,7 @@ final class CountryCode extends AbstractSearcher
      * @see https://salsa.debian.org/iso-codes-team/iso-codes
      */
     private const COUNTRY_CODES = [
+    // begin of auto-generated code
         ['AD', 'AND', '020'], // Andorra
         ['AE', 'ARE', '784'], // United Arab Emirates
         ['AF', 'AFG', '004'], // Afghanistan
@@ -310,7 +311,7 @@ final class CountryCode extends AbstractSearcher
         ['TN', 'TUN', '788'], // Tunisia
         ['TO', 'TON', '776'], // Tonga
         ['TP', 'TMP', '626'], // East Timor
-        ['TR', 'TUR', '792'], // Turkey
+        ['TR', 'TUR', '792'], // Türkiye
         ['TT', 'TTO', '780'], // Trinidad and Tobago
         ['TV', 'TUV', '798'], // Tuvalu
         ['TW', 'TWN', '158'], // Taiwan, Province of China
@@ -340,6 +341,7 @@ final class CountryCode extends AbstractSearcher
         ['ZM', 'ZMB', '894'], // Zambia
         ['ZR', 'ZAR', '180'], // Zaire, Republic of
         ['ZW', 'ZWE', '716'], // Zimbabwe
+    // end of auto-generated code
     ];
 
     /**

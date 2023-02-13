@@ -3,7 +3,7 @@
 /*
  * This file is part of Respect/Validation.
  *
- * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
@@ -19,7 +19,7 @@ use function preg_match;
 /**
  * Validates whether the input is a valid MAC address.
  *
- * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Fábio da Silva Ribeiro <fabiorphp@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>

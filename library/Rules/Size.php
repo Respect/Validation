@@ -3,7 +3,7 @@
 /*
  * This file is part of Respect/Validation.
  *
- * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
@@ -19,6 +19,7 @@ use Respect\Validation\Exceptions\ComponentException;
 use SplFileInfo;
 
 use function filesize;
+use function floatval;
 use function is_numeric;
 use function is_string;
 use function preg_match;
@@ -36,7 +37,7 @@ final class Size extends AbstractRule
     /**
      * @var string|int|null
      */
-    private $minSize;
+    private $minSize; /** @phpstan-ignore-line */
 
     /**
      * @var float|null
@@ -46,7 +47,7 @@ final class Size extends AbstractRule
     /**
      * @var string|int|null
      */
-    private $maxSize;
+    private $maxSize; /** @phpstan-ignore-line */
 
     /**
      * @var float|null
@@ -102,7 +103,7 @@ final class Size extends AbstractRule
             if (!preg_match('/^(\d+(.\d+)?)' . $unit . '$/i', (string) $size, $matches)) {
                 continue;
             }
-            $value = $matches[1] * 1024 ** $exponent;
+            $value = floatval($matches[1]) * 1024 ** $exponent;
             break;
         }
 

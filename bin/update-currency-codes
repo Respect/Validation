@@ -6,7 +6,7 @@ set -euo pipefail
 
 declare -r IFS=$'\n'
 
-declare -r LIST_URL="https://www.currency-iso.org/dam/downloads/lists/list_one.xml"
+declare -r LIST_URL="https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml"
 declare -r LIST_FILENAME=$(mktemp)
 
 declare -r RULE_FILENAME=$(dirname "${BASH_SOURCE}")/../library/Rules/CurrencyCode.php

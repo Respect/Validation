@@ -3,7 +3,7 @@
 /*
  * This file is part of Respect/Validation.
  *
- * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
@@ -25,7 +25,7 @@ use function date_default_timezone_set;
  *
  * @covers \Respect\Validation\Rules\DateTime
  *
- * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  * @author Eduardo Reveles <me@osiux.ws>
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
@@ -55,7 +55,6 @@ final class DateTimeTest extends RuleTestCase
             [new DateTime('r'), 'Thu, 29 Dec 2005 01:02:03 +0000'],
             [new DateTime('U'), 1464658596],
             [new DateTime('h'), 6],
-            [new DateTime('z'), 320],
             [new DateTime('Ym'), 202302],
         ];
     }

@@ -3,7 +3,7 @@
 /*
  * This file is part of Respect/Validation.
  *
- * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
@@ -17,7 +17,6 @@ use finfo;
 use Respect\Validation\Rules\Key;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Validator\ValidatorInterface as SymfonyValidator;
-use Zend\Validator\ValidatorInterface as ZendValidator;
 
 interface ChainedValidator extends Validatable
 {
@@ -380,10 +379,4 @@ interface ChainedValidator extends Validatable
     public function xdigit(string ...$additionalChars): ChainedValidator;
 
     public function yes(bool $useLocale = false): ChainedValidator;
-
-    /**
-     * @param string|ZendValidator $validator
-     * @param mixed[] $params
-     */
-    public function zend($validator, ?array $params = null): ChainedValidator;
 }

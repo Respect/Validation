@@ -1,3 +1,25 @@
+# Changes in Respect\Validation 2.x
+
+## 2.2.4
+
+ - CHANGELOG.md is being written once again to provide an overview
+   of active changes to the API and codebase.
+ - Dropped PHP 7.3 support. 
+ - Added support for PHP 8.0 and PHP 8.1. This will be the
+   last release with PHP 7.4 support. Support for PHP 8.2 is considered
+   experimental, local development should be done at 8.1.
+ - Zend Framework façade validators are no longer supported and were
+   removed.
+ - Symfony façade validators are no longer suggested, and will be
+   removed in release 2.3.
+ - Updated bin/update-currency-codes to fetch XML from another source.
+ - Updated bin/update-iso-codes to new file format.
+ - Updated regionals (CountryCode.php, CurrencyCode.php, Tld.php) (2023-02-13).
+ - Updated licensing email for @alganet.
+ - Added ignores for phpstan template variables without getters.
+ - Fixed misc phpstan and phpcs errors.
+ - v::dateTime('z') is not supported anymore in PHP8, and should not be relied upon
+
 # Changes in Respect\Validation 1.0
 
 All notable changes of the Respect\Validation releases are documented in this file.

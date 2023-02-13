@@ -19,11 +19,10 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "7.3"
           - "7.4"
-        include:
-          - php-version: "8.0"
-            composer-extra-arguments: --ignore-platform-reqs
+          - "8.0"
+          - "8.1"
+          - "8.2"
 
     steps:
       - name: Checkout
@@ -37,20 +36,20 @@ jobs:
           extensions: uopz
           tools: pecl
 
-      - name: Install localisation files
+      - name: Install Localisation Files
         run: |
           sudo locale-gen --no-purge --lang nl_NL.UTF-8
           sudo locale-gen --no-purge --lang pt_BR.UTF-8
           sudo locale-gen --no-purge --lang ru_RU.UTF-8
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: composer install --prefer-dist ${{ matrix.composer-extra-arguments }}
 
-      - name: Run unit tests
-        run: vendor/bin/phpunit --testsuite=unit
+      - name: Run Unit Tests
+        run: ./vendor/phpunit/phpunit/phpunit --testsuite=unit
 
-      - name: Run integration tests
-        run: vendor/bin/phpunit --testsuite=integration
+      - name: Run Integration Tests
+        run: ./vendor/phpunit/phpunit/phpunit --testsuite=integration
 
   code-coverage:
     name: Code coverage
@@ -64,30 +63,30 @@ jobs:
       - name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.1
           coverage: pcov
           extensions: uopz
           tools: pecl
 
-      - name: Install localisation files
+      - name: Install Localisation Files
         run: |
           sudo locale-gen --no-purge --lang nl_NL.UTF-8
           sudo locale-gen --no-purge --lang pt_BR.UTF-8
           sudo locale-gen --no-purge --lang ru_RU.UTF-8
 
-      - name: Install dependencies
-        run: composer install --prefer-dist
+      - name: Install Dependencies
+        run: composer install --prefer-dist ${{ matrix.composer-extra-arguments }}
 
-      - name: Generating code coverage report
-        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+      - name: Generating Code Coverage Report
+        run: ./vendor/phpunit/phpunit/phpunit --coverage-clover=coverage.xml
 
-      - name: Send code coverage report to Codecov.io
+      - name: Send Code Coverage Report to Codecov.io
         uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
   static-analysis:
-    name: Static analysis
+    name: Static Analysis
 
     runs-on: ubuntu-latest
 
@@ -98,7 +97,7 @@ jobs:
       - name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.1
           coverage: none
 
       - name: Install dependencies

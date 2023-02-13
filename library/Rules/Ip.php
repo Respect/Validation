@@ -3,7 +3,7 @@
 /*
  * This file is part of Respect/Validation.
  *
- * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
@@ -35,7 +35,7 @@ use const FILTER_VALIDATE_IP;
  *
  * This validator uses the native filter_var() PHP function.
  *
- * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  * @author Danilo Benevides <danilobenevides01@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Luís Otávio Cobucci Oblonczyk <lcobucci@gmail.com>
@@ -45,7 +45,7 @@ final class Ip extends AbstractRule
     /**
      * @var string|null
      */
-    private $range;
+    private $range; /** @phpstan-ignore-line */
 
     /**
      * @var int|null

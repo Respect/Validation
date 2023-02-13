@@ -3,7 +3,7 @@
 /*
  * This file is part of Respect/Validation.
  *
- * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
@@ -92,7 +92,6 @@ final class CurrencyCode extends AbstractSearcher
             'GYD', // Guyana Dollar
             'HKD', // Hong Kong Dollar
             'HNL', // Lempira
-            'HRK', // Kuna
             'HTG', // Gourde
             'HUF', // Forint
             'IDR', // Rupiah
@@ -160,6 +159,7 @@ final class CurrencyCode extends AbstractSearcher
             'SEK', // Swedish Krona
             'SGD', // Singapore Dollar
             'SHP', // Saint Helena Pound
+            'SLE', // Leone
             'SLL', // Leone
             'SOS', // Somali Shilling
             'SRD', // Surinam Dollar
@@ -185,6 +185,7 @@ final class CurrencyCode extends AbstractSearcher
             'UYU', // Peso Uruguayo
             'UYW', // Unidad Previsional
             'UZS', // Uzbekistan Sum
+            'VED', // Bolívar Soberano
             'VES', // Bolívar Soberano
             'VND', // Dong
             'VUV', // Vatu

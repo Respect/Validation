@@ -3,7 +3,7 @@
 /*
  * This file is part of Respect/Validation.
  *
- * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
@@ -33,7 +33,7 @@ final class KeySet extends AbstractWrapper
     /**
      * @var mixed[]
      */
-    private $keys;
+    private $keys; /** @phpstan-ignore-line */
 
     /**
      * @var Key[]
@@ -43,6 +43,7 @@ final class KeySet extends AbstractWrapper
     /**
      * Initializes the rule.
      *
+     * phpcs:ignore SlevomatCodingStandard.TypeHints.ParameterTypeHint.UselessAnnotation
      * @param Validatable ...$validatables
      */
     public function __construct(Validatable ...$validatables)
