@@ -16,6 +16,7 @@ v::creditCard('Discover')->validate('6011000990139424'); // true
 v::creditCard('JCB')->validate('3566002020360505'); // true
 v::creditCard('Mastercard')->validate('5376747397208720'); // true
 v::creditCard('Visa')->validate('4024007153361885'); // true
+v::creaditCard('RuPay')->validate('6062973831636410') // true
 ```
 
 The current supported brands are:
@@ -26,6 +27,7 @@ The current supported brands are:
 - JCB (`'JCB'` or `CreditCard::JCB`)
 - Mastercard (`'American_Express'` or `CreditCard::MASTERCARD`)
 - Visa (`'Visa'` or `CreditCard::VISA`)
+- RuPay (`'RuPay'` or `CreditCard::RUPAY`)
 
 It ignores any non-numeric characters, use [Digit](Digit.md),
 [NoWhitespace](NoWhitespace.md), or [Regex](Regex.md) when appropriate.
@@ -40,12 +42,13 @@ v::digit()->creditCard()->validate('5376747397208720'); // true
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.1.0 | Allow the define credit card brand
-  0.3.9 | Created
+| Version | Description                        |
+| ------- | ---------------------------------- |
+| 1.1.0   | Allow the define credit card brand |
+| 0.3.9   | Created                            |
 
-***
+---
+
 See also:
 
 - [Decimal](Decimal.md)
