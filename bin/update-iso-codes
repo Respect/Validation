@@ -11,9 +11,9 @@ declare -r LIBRARY_DIRECTORY="library"
 
 clone_repository()
 {
+  echo "Cloning repository ${REPOSITORY_URL}"
   if ! test -d "$REPOSITORY_DIRECTORY"
   then
-    echo "Cloning repository ${REPOSITORY_URL}"
     git clone --quiet "${REPOSITORY_URL}" "${REPOSITORY_DIRECTORY}"
   fi
 }
@@ -65,6 +65,10 @@ update_subdivision_codes()
   local last_country_code=""
   local last_country_rule=""
 
+  rm -rf data/iso_3166-2/*
+
+  echo "Updating subdivision codes using ISO 3166-2"
+
   for index in $(seq 0 $[iso_3166_1_count - 1]); do
     local json=$(jq ".[][${index}]" < "${iso_3166_1_filename}")
     local alpha_1="$(jq ".alpha_2" <<< "${json}" | tr -d '"')"
@@ -88,26 +92,6 @@ update_subdivision_codes()
 
     echo "  }
 }" >> "data/iso_3166-2/${alpha_1}.json"
-  done
-
-  return
-
-  
-
-  echo "Updating subdivision codes using ISO 3166-2"
-
-  for index in $(seq 0 $[iso_3166_2_count - 1]); do
-    local json=$(jq ".[][${index}]" < "${iso_3166_2_filename}")
-    local code=$(jq -r ".code" <<< "${json}")
-    local name=$(jq -r ".name" <<< "${json}")
-
-    local current_country_code=$(cut --delimiter "-" --fields 1 <<< "${code}")
-
-    if [[ ${last_country_code} != ${current_country_code} ]]; then
-      echo "- Updating ${current_country_code}"
-    fi
-
-    last_country_code=${current_country_code}
   done
 }
 
