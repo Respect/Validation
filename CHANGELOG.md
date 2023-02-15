@@ -2,30 +2,41 @@
 
 ## 2.2.4
 
+Meta:
+
  - CHANGELOG.md is being written once again to provide an overview
    of active changes to the API and codebase.
+
+Versioning Changes:
+
  - Dropped PHP 7.3 support. 
  - Added support for PHP 8.0 and PHP 8.1. This will be the
    last release with PHP 7.4 support. Support for PHP 8.2 is considered
    experimental, local development should be done at 8.1.
+
+Deprecations:
+
  - Zend Framework façade validators are no longer supported and were
    removed.
  - Symfony façade validators are no longer suggested, and will be
    removed in release 2.3.
+ - v::dateTime('z') is not supported anymore in PHP8, and should not be relied upon
+
+Fixes:
  - Updated bin/update-currency-codes to fetch XML from another source.
  - Updated bin/update-iso-codes to new file format.
  - Updated regionals (CountryCode.php, CurrencyCode.php, Tld.php) (2023-02-13).
- - Updated licensing email for @alganet.
- - Added ignores for phpstan template variables without getters.
- - Fixed misc phpstan and phpcs errors.
- - v::dateTime('z') is not supported anymore in PHP8, and should not be relied upon
  - Added RuPay card validation (thanks @rakshit087)
  - Fixed `v::decimal()` for float values (thanks @scruwi)
  - Added `v::portugueseNif()` to validate _Número de Identificação Fiscal_ in Portugal (thanks @goncalo-andrade).
  - Allow 5-digit and 6-digit postal codes for Cambodia (thanks @omega3000)
  - `v::intval()` now handles negative values with trailing zeroes better (thanks @l-x)
 
-# Changes in Respect\Validation 1.0
+## 2.2.x
+
+Changelogs between 1.1.0 and 2.2.4 are available only through `git log` and GitHub Releases.
+
+# Changes in Respect\Validation 1.x
 
 All notable changes of the Respect\Validation releases are documented in this file.
 
