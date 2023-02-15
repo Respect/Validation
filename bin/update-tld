@@ -20,7 +20,7 @@ echo "- Creating temporary file"
   sed --silent --regexp-extended "/^</,/^\{/p" "${RULE_FILENAME}"
   echo "    /**"
   echo "     * List extracted from ${LIST_URL}"
-  echo "     * $(grep "^#" "${LIST_FILENAME}" | sed "s,# ,,")"
+  echo "     * $(grep "^#" "${LIST_FILENAME}" | sed "s,# ,," | cut -d"," -f1)"
   echo "     */"
   echo "    private const TLD_LIST = ["
   grep --invert-match "^#" "${LIST_FILENAME}" |
