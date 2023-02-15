@@ -1,12 +1,19 @@
 # Respect\Validation
 
-[![Build Status](https://img.shields.io/github/workflow/status/Respect/Validation/Continuous%20Integration/master?style=flat-square)](https://github.com/Respect/Validation/actions?query=workflow%3A%22Continuous+Integration%22)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/Respect/Validation/continuous-integration.yml?branch=master&style=flat-square)](https://github.com/Respect/Validation/actions/workflows/continuous-integration.yml)
 [![Code Coverage](https://img.shields.io/codecov/c/github/Respect/Validation?style=flat-square)](https://codecov.io/gh/Respect/Validation)
 [![Latest Stable Version](https://img.shields.io/packagist/v/respect/validation.svg?style=flat-square)](https://packagist.org/packages/respect/validation)
 [![Total Downloads](https://img.shields.io/packagist/dt/respect/validation.svg?style=flat-square)](https://packagist.org/packages/respect/validation)
 [![License](https://img.shields.io/packagist/l/respect/validation.svg?style=flat-square)](https://packagist.org/packages/respect/validation)
 
-[The most awesome validation engine ever created for PHP.](http://bit.ly/1a1oeQv)
+The most awesome validation engine ever created for PHP.
+
+- Complex rules made simple: `v::numericVal()->positive()->between(1, 255)->validate($input)`.
+- [Granularity control](feature-guide.md#validation-methods) for advanced reporting.
+- [More than 150](list-of-rules.md) (fully tested) validation rules.
+- [A concrete API](concrete-api.md) for non fluent usage.
+
+Learn More:
 
 * [Documentation](https://respect-validation.readthedocs.io)
 * [How to contribute](CONTRIBUTING.md)
