@@ -1,23 +1,22 @@
 {
-  "source": "http://www.geonames.org/NI/administrative-division-nicaragua.html",
   "country": "Nicaragua",
   "subdivisions": {
-    "AN": "Region Autonoma del Atlantico Norte",
-    "AS": "Region Autonoma del Atlantico Sur",
+    "AN": "Costa Caribe Norte",
+    "AS": "Costa Caribe Sur",
     "BO": "Boaco",
     "CA": "Carazo",
     "CI": "Chinandega",
     "CO": "Chontales",
-    "ES": "Esteli",
+    "ES": "Estelí",
     "GR": "Granada",
     "JI": "Jinotega",
-    "LE": "Leon",
+    "LE": "León",
     "MD": "Madriz",
     "MN": "Managua",
     "MS": "Masaya",
     "MT": "Matagalpa",
     "NS": "Nueva Segovia",
     "RI": "Rivas",
-    "SJ": "Rio San Juan"
+    "SJ": "Río San Juan"
   }
 }

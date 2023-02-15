@@ -1,5 +1,4 @@
 {
-  "source": "http://www.geonames.org/SN/administrative-division-senegal.html",
   "country": "Senegal",
   "subdivisions": {
     "DB": "Diourbel",
@@ -14,7 +13,7 @@
     "SE": "Sédhiou",
     "SL": "Saint-Louis",
     "TC": "Tambacounda",
-    "TH": "Thies",
+    "TH": "Thiès",
     "ZG": "Ziguinchor"
   }
 }

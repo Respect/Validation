@@ -1,5 +1,4 @@
 {
-  "source": "http://www.geonames.org/LT/administrative-division-lithuania.html",
   "country": "Lithuania",
   "subdivisions": {
     "01": "Akmenė",
@@ -62,15 +61,15 @@
     "58": "Vilnius",
     "59": "Visaginas",
     "60": "Zarasai",
-    "AL": "Alytus",
-    "KL": "Klaipeda",
-    "KU": "Kaunas",
-    "MR": "Marijampole",
-    "PN": "Panevezys",
-    "SA": "Siauliai",
-    "TA": "Taurage",
-    "TE": "Telsiai",
-    "UT": "Utena",
-    "VL": "Vilnius"
+    "AL": "Alytaus apskritis",
+    "KL": "Klaipėdos apskritis",
+    "KU": "Kauno apskritis",
+    "MR": "Marijampolės apskritis",
+    "PN": "Panevėžio apskritis",
+    "SA": "Šiaulių apskritis",
+    "TA": "Tauragės apskritis",
+    "TE": "Telšių apskritis",
+    "UT": "Utenos apskritis",
+    "VL": "Vilniaus apskritis"
   }
 }

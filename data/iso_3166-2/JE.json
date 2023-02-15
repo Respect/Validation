@@ -1,5 +1,5 @@
 {
-  "source": "http://www.geonames.org/JE/administrative-division-jersey.html",
   "country": "Jersey",
-  "subdivisions": []
+  "subdivisions": {
+  }
 }

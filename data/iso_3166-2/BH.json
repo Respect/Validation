@@ -1,10 +1,9 @@
 {
-  "source": "http://www.geonames.org/BH/administrative-division-bahrain.html",
   "country": "Bahrain",
   "subdivisions": {
-    "13": "Capital",
-    "14": "Southern",
-    "15": "Muharraq",
-    "17": "Northern"
+    "13": "Al ‘Āşimah",
+    "14": "Al Janūbīyah",
+    "15": "Al Muḩarraq",
+    "17": "Ash Shamālīyah"
   }
 }

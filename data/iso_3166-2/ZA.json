@@ -1,15 +1,14 @@
 {
-  "source": "http://www.geonames.org/ZA/administrative-division-south-africa.html",
   "country": "South Africa",
   "subdivisions": {
     "EC": "Eastern Cape",
     "FS": "Free State",
-    "GT": "Gauteng",
+    "GP": "Gauteng",
+    "KZN": "Kwazulu-Natal",
     "LP": "Limpopo",
     "MP": "Mpumalanga",
     "NC": "Northern Cape",
-    "NL": "KwaZulu-Natal",
-    "NW": "North West",
+    "NW": "North-West",
     "WC": "Western Cape"
   }
 }

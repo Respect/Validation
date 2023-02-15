@@ -1,13 +1,12 @@
 {
-  "source": "http://www.geonames.org/BY/administrative-division-belarus.html",
   "country": "Belarus",
   "subdivisions": {
-    "BR": "Brest voblast",
-    "HM": "Horad Minsk",
-    "HO": "Homyel voblast",
-    "HR": "Hrodna voblast",
-    "MA": "Mahilyow voblast",
-    "MI": "Minsk voblast",
-    "VI": "Vitsebsk voblast"
+    "BR": "Bresckaja voblasć",
+    "HM": "Gorod Minsk",
+    "HO": "Gomel'skaja oblast'",
+    "HR": "Grodnenskaja oblast'",
+    "MA": "Mahilioŭskaja voblasć",
+    "MI": "Minskaja oblast'",
+    "VI": "Viciebskaja voblasć"
   }
 }

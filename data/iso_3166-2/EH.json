@@ -1,5 +1,5 @@
 {
-  "source": "http://www.geonames.org/EH/administrative-division-western-sahara.html",
   "country": "Western Sahara",
-  "subdivisions": []
+  "subdivisions": {
+  }
 }

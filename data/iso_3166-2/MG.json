@@ -1,5 +1,11 @@
 {
-  "source": "http://www.geonames.org/MG/administrative-division-madagascar.html",
   "country": "Madagascar",
-  "subdivisions": []
+  "subdivisions": {
+    "A": "Toamasina",
+    "D": "Antsiranana",
+    "F": "Fianarantsoa",
+    "M": "Mahajanga",
+    "T": "Antananarivo",
+    "U": "Toliara"
+  }
 }

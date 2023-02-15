@@ -1,10 +1,9 @@
 {
-  "source": "http://www.geonames.org/ID/administrative-division-indonesia.html",
   "country": "Indonesia",
   "subdivisions": {
     "AC": "Aceh",
     "BA": "Bali",
-    "BB": "Bangka-Belitung",
+    "BB": "Kepulauan Bangka Belitung",
     "BE": "Bengkulu",
     "BT": "Banten",
     "GO": "Gorontalo",
@@ -13,7 +12,7 @@
     "JI": "Jawa Timur",
     "JK": "Jakarta Raya",
     "JT": "Jawa Tengah",
-    "JW": "Java",
+    "JW": "Jawa",
     "KA": "Kalimantan",
     "KB": "Kalimantan Barat",
     "KI": "Kalimantan Timur",

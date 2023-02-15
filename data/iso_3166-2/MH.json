@@ -1,5 +1,4 @@
 {
-  "source": "http://www.geonames.org/MH/administrative-division-marshall-islands.html",
   "country": "Marshall Islands",
   "subdivisions": {
     "ALK": "Ailuk",
@@ -7,10 +6,10 @@
     "ARN": "Arno",
     "AUR": "Aur",
     "EBO": "Ebon",
-    "ENI": "Enewetak",
+    "ENI": "Enewetak & Ujelang",
     "JAB": "Jabat",
     "JAL": "Jaluit",
-    "KIL": "Kili",
+    "KIL": "Bikini & Kili",
     "KWA": "Kwajalein",
     "L": "Ralik chain",
     "LAE": "Lae",
@@ -20,12 +19,12 @@
     "MAL": "Maloelap",
     "MEJ": "Mejit",
     "MIL": "Mili",
-    "NMK": "Namorik",
+    "NMK": "Namdrik",
     "NMU": "Namu",
     "RON": "Rongelap",
     "T": "Ratak chain",
     "UJA": "Ujae",
-    "UTI": "Utirik",
+    "UTI": "Utrik",
     "WTH": "Wotho",
     "WTJ": "Wotje"
   }

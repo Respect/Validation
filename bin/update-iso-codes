@@ -54,13 +54,64 @@ update_country_codes()
   mv "${temporary_filename}" "${country_rule_filename}"
 }
 
-rule_from_country_code()
-{
-  local country_code=${1,,}
 
-  echo "${LIBRARY_DIRECTORY}/Rules/SubdivisionCode/${country_code^}SubdivisionCode.php"
+update_subdivision_codes()
+{
+  local -r iso_3166_1_filename="${REPOSITORY_DIRECTORY}/data/iso_3166-1.json"
+  local -r iso_3166_1_count=$(grep "\"alpha_3\"" "${iso_3166_1_filename}" | wc --lines)
+  local -r iso_3166_2_filename="${REPOSITORY_DIRECTORY}/data/iso_3166-2.json"
+  local -r iso_3166_2_count=$(grep --word-regexp "\"code\"" "${iso_3166_2_filename}" | wc --lines)
+  local -r temporary_filename=$(mktemp)
+  local last_country_code=""
+  local last_country_rule=""
+
+  for index in $(seq 0 $[iso_3166_1_count - 1]); do
+    local json=$(jq ".[][${index}]" < "${iso_3166_1_filename}")
+    local alpha_1="$(jq ".alpha_2" <<< "${json}" | tr -d '"')"
+    echo "$alpha_1" "$(jq ".name" <<< "${json}" | tr -d '"')"
+  done | while read -r country_line
+  do
+    local alpha_1="${country_line%% *}"
+    local cname="${country_line#$alpha_1 }"
+    local json="$(jq '."3166-2"[]  | select(.code|test("^'"$alpha_1"'"))' < "${iso_3166_2_filename}")"
+
+    echo "{
+  \"country\": \"$cname\",
+  \"subdivisions\": {" > "data/iso_3166-2/${alpha_1}.json"
+
+    jq -r "[.code, .name] | @tsv" <<< "${json}" | while read -r subdiv_line
+    do
+      local alpha_2="${subdiv_line%%	*}"
+      local name="${subdiv_line#$alpha_2	}"
+      echo "    \"${alpha_2#${alpha_1}-}\": \"$name\","
+    done | sed '$ s/.$//' >> "data/iso_3166-2/${alpha_1}.json"
+
+    echo "  }
+}" >> "data/iso_3166-2/${alpha_1}.json"
+  done
+
+  return
+
+  
+
+  echo "Updating subdivision codes using ISO 3166-2"
+
+  for index in $(seq 0 $[iso_3166_2_count - 1]); do
+    local json=$(jq ".[][${index}]" < "${iso_3166_2_filename}")
+    local code=$(jq -r ".code" <<< "${json}")
+    local name=$(jq -r ".name" <<< "${json}")
+
+    local current_country_code=$(cut --delimiter "-" --fields 1 <<< "${code}")
+
+    if [[ ${last_country_code} != ${current_country_code} ]]; then
+      echo "- Updating ${current_country_code}"
+    fi
+
+    last_country_code=${current_country_code}
+  done
 }
 
 clone_repository
 update_country_codes
+update_subdivision_codes
 

@@ -1,9 +1,8 @@
 {
-  "source": "http://www.geonames.org/BS/administrative-division-bahamas.html",
   "country": "Bahamas",
   "subdivisions": {
-    "AK": "Acklins Islands",
-    "BI": "Bimini and Cat Cay",
+    "AK": "Acklins",
+    "BI": "Bimini",
     "BP": "Black Point",
     "BY": "Berry Islands",
     "CE": "Central Eleuthera",

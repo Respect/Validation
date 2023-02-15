@@ -1,15 +1,15 @@
 {
-  "source": "http://www.geonames.org/GQ/administrative-division-equatorial-guinea.html",
   "country": "Equatorial Guinea",
   "subdivisions": {
-    "AN": "Provincia Annobon",
-    "BN": "Provincia Bioko Norte",
-    "BS": "Provincia Bioko Sur",
-    "C": "Región Continental",
-    "CS": "Provincia Centro Sur",
-    "I": "Región Insular",
-    "KN": "Provincia Kie-Ntem",
-    "LI": "Provincia Litoral",
-    "WN": "Provincia Wele-Nzas"
+    "AN": "Annobon",
+    "BN": "Bioko Nord",
+    "BS": "Bioko Sud",
+    "C": "Região Continental",
+    "CS": "Centro Sud",
+    "DJ": "Djibloho",
+    "I": "Região Insular",
+    "KN": "Kié-Ntem",
+    "LI": "Litoral",
+    "WN": "Wele-Nzas"
   }
 }

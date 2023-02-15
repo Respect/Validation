@@ -1,6 +1,5 @@
 {
-  "source": "http://www.geonames.org/TZ/administrative-division-tanzania.html",
-  "country": "Tanzania",
+  "country": "Tanzania, United Republic of",
   "subdivisions": {
     "01": "Arusha",
     "02": "Dar es Salaam",
@@ -12,15 +11,15 @@
     "08": "Kigoma",
     "09": "Kilimanjaro",
     "10": "Pemba South",
-    "11": "Zanzibar Central/South",
+    "11": "Zanzibar South",
     "12": "Lindi",
     "13": "Mara",
     "14": "Mbeya",
-    "15": "Zanzibar Urban/West",
+    "15": "Zanzibar West",
     "16": "Morogoro",
     "17": "Mtwara",
     "18": "Mwanza",
-    "19": "Pwani",
+    "19": "Coast",
     "20": "Rukwa",
     "21": "Ruvuma",
     "22": "Shinyanga",
@@ -31,6 +30,7 @@
     "27": "Geita",
     "28": "Katavi",
     "29": "Njombe",
-    "30": "Simiyu"
+    "30": "Simiyu",
+    "31": "Songwe"
   }
 }

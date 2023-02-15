@@ -1,5 +1,4 @@
 {
-  "source": "http://www.geonames.org/KE/administrative-division-kenya.html",
   "country": "Kenya",
   "subdivisions": {
     "01": "Baringo",
@@ -30,8 +29,8 @@
     "26": "Meru",
     "27": "Migori",
     "28": "Mombasa",
-    "29": "Murang’a",
-    "30": "Nairobi",
+    "29": "Murang'a",
+    "30": "Nairobi City",
     "31": "Nakuru",
     "32": "Nandi",
     "33": "Narok",
@@ -42,7 +41,7 @@
     "38": "Siaya",
     "39": "Taita/Taveta",
     "40": "Tana River",
-    "41": "Tharak-Nithi",
+    "41": "Tharaka-Nithi",
     "42": "Trans Nzoia",
     "43": "Turkana",
     "44": "Uasin Gishu",

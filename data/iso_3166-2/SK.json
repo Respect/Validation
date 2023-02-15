@@ -1,14 +1,13 @@
 {
-  "source": "http://www.geonames.org/SK/administrative-division-slovakia.html",
   "country": "Slovakia",
   "subdivisions": {
-    "BC": "Banskobystricky",
-    "BL": "Bratislavsky",
-    "KI": "Kosicky",
-    "NI": "Nitriansky",
-    "PV": "Presovsky",
-    "TA": "Trnavsky",
-    "TC": "Trenciansky",
-    "ZI": "Zilinsky"
+    "BC": "Banskobystrický kraj",
+    "BL": "Bratislavský kraj",
+    "KI": "Košický kraj",
+    "NI": "Nitriansky kraj",
+    "PV": "Prešovský kraj",
+    "TA": "Trnavský kraj",
+    "TC": "Trenčiansky kraj",
+    "ZI": "Žilinský kraj"
   }
 }

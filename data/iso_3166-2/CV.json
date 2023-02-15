@@ -1,6 +1,5 @@
 {
-  "source": "http://www.geonames.org/CV/administrative-division-cape-verde.html",
-  "country": "Cape Verde",
+  "country": "Cabo Verde",
   "subdivisions": {
     "B": "Ilhas de Barlavento",
     "BR": "Brava",
@@ -17,13 +16,13 @@
     "RG": "Ribeira Grande",
     "RS": "Ribeira Grande de Santiago",
     "S": "Ilhas de Sotavento",
-    "SD": "Sao Domingos",
-    "SF": "Sao Filipe",
+    "SD": "São Domingos",
+    "SF": "São Filipe",
     "SL": "Sal",
     "SM": "São Miguel",
-    "SO": "São Lourenço dos Orgãos",
+    "SO": "São Lourenço dos Órgãos",
     "SS": "São Salvador do Mundo",
-    "SV": "Sao Vicente",
+    "SV": "São Vicente",
     "TA": "Tarrafal",
     "TS": "Tarrafal de São Nicolau"
   }

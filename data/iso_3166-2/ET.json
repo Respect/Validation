@@ -1,17 +1,16 @@
 {
-  "source": "http://www.geonames.org/ET/administrative-division-ethiopia.html",
   "country": "Ethiopia",
   "subdivisions": {
     "AA": "Addis Ababa",
     "AF": "Afar",
-    "AM": "Amhara",
-    "BE": "Benishangul-Gumaz",
+    "AM": "Amara",
+    "BE": "Benshangul-Gumaz",
     "DD": "Dire Dawa",
-    "GA": "Gambela",
-    "HA": "Hariai",
+    "GA": "Gambela Peoples",
+    "HA": "Harari People",
     "OR": "Oromia",
-    "SN": "Southern Nations - Nationalities and Peoples Region",
+    "SN": "Southern Nations, Nationalities and Peoples",
     "SO": "Somali",
-    "TI": "Tigray"
+    "TI": "Tigrai"
   }
 }

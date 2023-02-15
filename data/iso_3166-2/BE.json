@@ -1,18 +1,17 @@
 {
-  "source": "http://www.geonames.org/BE/administrative-division-belgium.html",
   "country": "Belgium",
   "subdivisions": {
-    "BRU": "Brussels",
+    "BRU": "Brussels Hoofdstedelijk Gewest",
     "VAN": "Antwerpen",
-    "VBR": "Vlaams Brabant",
-    "VLG": "Flemish Region",
+    "VBR": "Vlaams-Brabant",
+    "VLG": "Vlaams Gewest",
     "VLI": "Limburg",
     "VOV": "Oost-Vlaanderen",
     "VWV": "West-Vlaanderen",
-    "WAL": "Wallonia",
-    "WBR": "Brabant Wallon",
+    "WAL": "wallonne, Région",
+    "WBR": "Brabant wallon",
     "WHT": "Hainaut",
-    "WLG": "Liege",
+    "WLG": "Liège",
     "WLX": "Luxembourg",
     "WNA": "Namur"
   }

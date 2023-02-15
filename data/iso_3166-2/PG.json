@@ -1,5 +1,4 @@
 {
-  "source": "http://www.geonames.org/PG/administrative-division-papua-new-guinea.html",
   "country": "Papua New Guinea",
   "subdivisions": {
     "CPK": "Chimbu",
@@ -15,11 +14,11 @@
     "MPL": "Morobe",
     "MPM": "Madang",
     "MRL": "Manus",
-    "NCD": "National Capital",
+    "NCD": "National Capital District (Port Moresby)",
     "NIK": "New Ireland",
     "NPP": "Northern",
     "NSB": "Bougainville",
-    "SAN": "Sandaun",
+    "SAN": "West Sepik",
     "SHM": "Southern Highlands",
     "WBK": "West New Britain",
     "WHM": "Western Highlands",

@@ -1,17 +1,16 @@
 {
-  "source": "http://www.geonames.org/BJ/administrative-division-benin.html",
   "country": "Benin",
   "subdivisions": {
-    "AK": "Atakora",
+    "AK": "Atacora",
     "AL": "Alibori",
     "AQ": "Atlantique",
     "BO": "Borgou",
     "CO": "Collines",
     "DO": "Donga",
-    "KO": "Kouffo",
+    "KO": "Couffo",
     "LI": "Littoral",
     "MO": "Mono",
-    "OU": "Oueme",
+    "OU": "Ouémé",
     "PL": "Plateau",
     "ZO": "Zou"
   }

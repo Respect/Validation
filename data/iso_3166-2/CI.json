@@ -1,6 +1,5 @@
 {
-  "source": "http://www.geonames.org/CI/administrative-division-ivory-coast.html",
-  "country": "Ivory Coast",
+  "country": "Côte d'Ivoire",
   "subdivisions": {
     "AB": "Abidjan",
     "BS": "Bas-Sassandra",
@@ -14,7 +13,7 @@
     "SV": "Savanes",
     "VB": "Vallée du Bandama",
     "WR": "Woroba",
-    "YM": "Yamoussoukro Autonomous District",
+    "YM": "Yamoussoukro",
     "ZZ": "Zanzan"
   }
 }

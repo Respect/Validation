@@ -1,9 +1,8 @@
 {
-  "source": "http://www.geonames.org/LS/administrative-division-lesotho.html",
   "country": "Lesotho",
   "subdivisions": {
     "A": "Maseru",
-    "B": "Butha-Buthe",
+    "B": "Botha-Bothe",
     "C": "Leribe",
     "D": "Berea",
     "E": "Mafeteng",

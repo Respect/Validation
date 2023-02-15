@@ -1,5 +1,5 @@
 {
-  "source": "http://www.geonames.org/GP/administrative-division-guadeloupe.html",
   "country": "Guadeloupe",
-  "subdivisions": []
+  "subdivisions": {
+  }
 }

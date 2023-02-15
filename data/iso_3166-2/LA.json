@@ -1,24 +1,23 @@
 {
-  "source": "http://www.geonames.org/LA/administrative-division-laos.html",
-  "country": "Laos",
+  "country": "Lao People's Democratic Republic",
   "subdivisions": {
     "AT": "Attapu",
-    "BK": "Bokeo",
+    "BK": "Bokèo",
     "BL": "Bolikhamxai",
     "CH": "Champasak",
     "HO": "Houaphan",
     "KH": "Khammouan",
     "LM": "Louang Namtha",
     "LP": "Louangphabang",
-    "OU": "Oudomxai",
-    "PH": "Phongsali",
+    "OU": "Oudômxai",
+    "PH": "Phôngsali",
     "SL": "Salavan",
-    "SV": "Savannakhet",
-    "VI": "Vientiane",
-    "VT": "Vientiane",
+    "SV": "Savannakhét",
+    "VI": "Viangchan",
+    "VT": "Viangchan",
     "XA": "Xaignabouli",
-    "XE": "Xekong",
-    "XI": "Xiangkhoang",
+    "XE": "Xékong",
+    "XI": "Xiangkhouang",
     "XS": "Xaisômboun"
   }
 }

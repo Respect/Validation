@@ -1,12 +1,11 @@
 {
-  "source": "http://www.geonames.org/KW/administrative-division-kuwait.html",
   "country": "Kuwait",
   "subdivisions": {
-    "AH": "Al Ahmadi",
-    "FA": "Al Farwaniyah",
-    "HA": "Hawalli",
-    "JA": "Al Jahra",
-    "KU": "Al Asimah",
+    "AH": "Al Aḩmadī",
+    "FA": "Al Farwānīyah",
+    "HA": "Ḩawallī",
+    "JA": "Al Jahrā’",
+    "KU": "Al ‘Āşimah",
     "MU": "Mubārak al Kabīr"
   }
 }

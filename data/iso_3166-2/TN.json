@@ -1,5 +1,4 @@
 {
-  "source": "http://www.geonames.org/TN/administrative-division-tunisia.html",
   "country": "Tunisia",
   "subdivisions": {
     "11": "Tunis",
@@ -22,9 +21,9 @@
     "61": "Sfax",
     "71": "Gafsa",
     "72": "Tozeur",
-    "73": "Kebili",
+    "73": "Kébili",
     "81": "Gabès",
-    "82": "Medenine",
+    "82": "Médenine",
     "83": "Tataouine"
   }
 }

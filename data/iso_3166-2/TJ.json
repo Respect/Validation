@@ -1,11 +1,10 @@
 {
-  "source": "http://www.geonames.org/TJ/administrative-division-tajikistan.html",
   "country": "Tajikistan",
   "subdivisions": {
     "DU": "Dushanbe",
-    "GB": "Gorno-Badakhstan",
+    "GB": "Kŭhistoni Badakhshon",
     "KT": "Khatlon",
-    "RA": "Nohiyahoi Tobei Jumhurí",
+    "RA": "nohiyahoi tobei jumhurí",
     "SU": "Sughd"
   }
 }

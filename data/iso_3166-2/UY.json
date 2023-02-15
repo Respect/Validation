@@ -1,5 +1,4 @@
 {
-  "source": "http://www.geonames.org/UY/administrative-division-uruguay.html",
   "country": "Uruguay",
   "subdivisions": {
     "AR": "Artigas",
@@ -12,12 +11,12 @@
     "LA": "Lavalleja",
     "MA": "Maldonado",
     "MO": "Montevideo",
-    "PA": "Paysandu",
-    "RN": "Rio Negro",
+    "PA": "Paysandú",
+    "RN": "Río Negro",
     "RO": "Rocha",
     "RV": "Rivera",
     "SA": "Salto",
-    "SJ": "San Jose",
+    "SJ": "San José",
     "SO": "Soriano",
     "TA": "Tacuarembó",
     "TT": "Treinta y Tres"

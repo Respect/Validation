@@ -1,18 +1,17 @@
 {
-  "source": "http://www.geonames.org/JO/administrative-division-jordan.html",
   "country": "Jordan",
   "subdivisions": {
-    "AJ": "Ajlun",
-    "AM": "'Amman",
-    "AQ": "Al 'Aqabah",
-    "AT": "At Tafilah",
-    "AZ": "Az Zarqa'",
-    "BA": "Al Balqa'",
+    "AJ": "‘Ajlūn",
+    "AM": "Al ‘A̅şimah",
+    "AQ": "Al ‘Aqabah",
+    "AT": "Aţ Ţafīlah",
+    "AZ": "Az Zarqā’",
+    "BA": "Al Balqā’",
     "IR": "Irbid",
     "JA": "Jarash",
     "KA": "Al Karak",
     "MA": "Al Mafraq",
-    "MD": "Madaba",
-    "MN": "Ma'an"
+    "MD": "Mādabā",
+    "MN": "Ma‘ān"
   }
 }

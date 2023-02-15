@@ -1,12 +1,11 @@
 {
-  "source": "http://www.geonames.org/VU/administrative-division-vanuatu.html",
   "country": "Vanuatu",
   "subdivisions": {
     "MAP": "Malampa",
-    "PAM": "Penama",
+    "PAM": "Pénama",
     "SAM": "Sanma",
-    "SEE": "Shefa",
-    "TAE": "Tafea",
+    "SEE": "Shéfa",
+    "TAE": "Taféa",
     "TOB": "Torba"
   }
 }

@@ -1,10 +1,9 @@
 {
-  "source": "http://www.geonames.org/TG/administrative-division-togo.html",
   "country": "Togo",
   "subdivisions": {
     "C": "Centrale",
     "K": "Kara",
-    "M": "Maritime",
+    "M": "Maritime (Région)",
     "P": "Plateaux",
     "S": "Savanes"
   }

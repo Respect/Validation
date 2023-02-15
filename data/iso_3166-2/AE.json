@@ -1,13 +1,12 @@
 {
-  "source": "http://www.geonames.org/AE/administrative-division-united-arab-emirates.html",
   "country": "United Arab Emirates",
   "subdivisions": {
-    "AJ": "'Ajman",
-    "AZ": "Abu Zaby",
+    "AJ": "‘Ajmān",
+    "AZ": "Abū Z̧aby",
     "DU": "Dubayy",
     "FU": "Al Fujayrah",
-    "RK": "R'as al Khaymah",
-    "SH": "Ash Shariqah",
+    "RK": "Ra’s al Khaymah",
+    "SH": "Ash Shāriqah",
     "UQ": "Umm al Qaywayn"
   }
 }

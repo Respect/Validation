@@ -1,6 +1,5 @@
 {
-  "source": "http://www.geonames.org/TW/administrative-division-taiwan.html",
-  "country": "Taiwan",
+  "country": "Taiwan, Province of China",
   "subdivisions": {
     "CHA": "Changhua",
     "CYI": "Chiayi",
@@ -8,7 +7,7 @@
     "HSQ": "Hsinchu",
     "HSZ": "Hsinchu",
     "HUA": "Hualien",
-    "ILA": "Ilan",
+    "ILA": "Yilan",
     "KEE": "Keelung",
     "KHH": "Kaohsiung",
     "KIN": "Kinmen",

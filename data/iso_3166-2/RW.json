@@ -1,11 +1,10 @@
 {
-  "source": "http://www.geonames.org/RW/administrative-division-rwanda.html",
   "country": "Rwanda",
   "subdivisions": {
-    "01": "Kigali",
-    "02": "Est",
-    "03": "Nord",
-    "04": "Ouest",
-    "05": "Sud"
+    "01": "City of Kigali",
+    "02": "Eastern",
+    "03": "Northern",
+    "04": "Western",
+    "05": "Southern"
   }
 }

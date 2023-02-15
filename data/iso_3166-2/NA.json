@@ -1,11 +1,10 @@
 {
-  "source": "http://www.geonames.org/NA/administrative-division-namibia.html",
   "country": "Namibia",
   "subdivisions": {
-    "CA": "Caprivi",
+    "CA": "Zambezi",
     "ER": "Erongo",
     "HA": "Hardap",
-    "KA": "Karas",
+    "KA": "//Karas",
     "KE": "Kavango East",
     "KH": "Khomas",
     "KU": "Kunene",

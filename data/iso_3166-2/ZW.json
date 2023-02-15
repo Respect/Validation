@@ -1,9 +1,8 @@
 {
-  "source": "http://www.geonames.org/ZW/administrative-division-zimbabwe.html",
   "country": "Zimbabwe",
   "subdivisions": {
-    "BU": "Bulawayo (city)",
-    "HA": "Harare (city)",
+    "BU": "Bulawayo",
+    "HA": "Harare",
     "MA": "Manicaland",
     "MC": "Mashonaland Central",
     "ME": "Mashonaland East",

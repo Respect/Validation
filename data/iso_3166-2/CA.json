@@ -1,5 +1,4 @@
 {
-  "source": "http://www.geonames.org/CA/administrative-division-canada.html",
   "country": "Canada",
   "subdivisions": {
     "AB": "Alberta",
@@ -14,6 +13,6 @@
     "PE": "Prince Edward Island",
     "QC": "Quebec",
     "SK": "Saskatchewan",
-    "YT": "Yukon Territory"
+    "YT": "Yukon"
   }
 }

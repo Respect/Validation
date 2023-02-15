@@ -1,11 +1,10 @@
 {
-  "source": "http://www.geonames.org/AT/administrative-division-austria.html",
   "country": "Austria",
   "subdivisions": {
     "1": "Burgenland",
-    "2": "Karnten",
-    "3": "Niederosterreich",
-    "4": "Oberosterreich",
+    "2": "Kärnten",
+    "3": "Niederösterreich",
+    "4": "Oberösterreich",
     "5": "Salzburg",
     "6": "Steiermark",
     "7": "Tirol",

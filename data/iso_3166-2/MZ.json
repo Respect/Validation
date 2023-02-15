@@ -1,5 +1,4 @@
 {
-  "source": "http://www.geonames.org/MZ/administrative-division-mozambique.html",
   "country": "Mozambique",
   "subdivisions": {
     "A": "Niassa",
@@ -7,10 +6,10 @@
     "G": "Gaza",
     "I": "Inhambane",
     "L": "Maputo",
-    "MPM": "Maputo (city)",
+    "MPM": "Maputo",
     "N": "Nampula",
     "P": "Cabo Delgado",
-    "Q": "Zambezia",
+    "Q": "Zambézia",
     "S": "Sofala",
     "T": "Tete"
   }

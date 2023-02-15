@@ -1,5 +1,4 @@
 {
-  "source": "http://www.geonames.org/NG/administrative-division-nigeria.html",
   "country": "Nigeria",
   "subdivisions": {
     "AB": "Abia",
@@ -16,7 +15,7 @@
     "ED": "Edo",
     "EK": "Ekiti",
     "EN": "Enugu",
-    "FC": "Federal Capital Territory",
+    "FC": "Abuja Federal Capital Territory",
     "GO": "Gombe",
     "IM": "Imo",
     "JI": "Jigawa",
@@ -27,7 +26,7 @@
     "KT": "Katsina",
     "KW": "Kwara",
     "LA": "Lagos",
-    "NA": "Nassarawa",
+    "NA": "Nasarawa",
     "NI": "Niger",
     "OG": "Ogun",
     "ON": "Ondo",

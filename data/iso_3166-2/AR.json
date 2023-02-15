@@ -1,12 +1,11 @@
 {
-  "source": "http://www.geonames.org/AR/administrative-division-argentina.html",
   "country": "Argentina",
   "subdivisions": {
     "A": "Salta",
-    "B": "Buenos Aires Province",
+    "B": "Buenos Aires",
     "C": "Ciudad Autónoma de Buenos Aires",
     "D": "San Luis",
-    "E": "Entre Rios",
+    "E": "Entre Ríos",
     "F": "La Rioja",
     "G": "Santiago del Estero",
     "H": "Chaco",
@@ -16,14 +15,14 @@
     "M": "Mendoza",
     "N": "Misiones",
     "P": "Formosa",
-    "Q": "Neuquen",
-    "R": "Rio Negro",
+    "Q": "Neuquén",
+    "R": "Río Negro",
     "S": "Santa Fe",
-    "T": "Tucuman",
+    "T": "Tucumán",
     "U": "Chubut",
     "V": "Tierra del Fuego",
     "W": "Corrientes",
-    "X": "Cordoba",
+    "X": "Córdoba",
     "Y": "Jujuy",
     "Z": "Santa Cruz"
   }

@@ -1,11 +1,10 @@
 {
-  "source": "http://www.geonames.org/SL/administrative-division-sierra-leone.html",
   "country": "Sierra Leone",
   "subdivisions": {
     "E": "Eastern",
     "N": "Northern",
-    "NW": "North West Province",
+    "NW": "North Western",
     "S": "Southern",
-    "W": "Western"
+    "W": "Western Area (Freetown)"
   }
 }

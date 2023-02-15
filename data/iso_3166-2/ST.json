@@ -1,8 +1,12 @@
 {
-  "source": "http://www.geonames.org/ST/administrative-division-sao-tome-and-principe.html",
-  "country": "São Tomé and Príncipe",
+  "country": "Sao Tome and Principe",
   "subdivisions": {
-    "P": "Principe",
-    "S": "Sao Tome"
+    "01": "Água Grande",
+    "02": "Cantagalo",
+    "03": "Caué",
+    "04": "Lembá",
+    "05": "Lobata",
+    "06": "Mé-Zóchi",
+    "P": "Príncipe"
   }
 }

@@ -1,11 +1,10 @@
 {
-  "source": "http://www.geonames.org/NZ/administrative-division-new-zealand.html",
   "country": "New Zealand",
   "subdivisions": {
     "AUK": "Auckland",
     "BOP": "Bay of Plenty",
     "CAN": "Canterbury",
-    "CIT": "Chatham Islands",
+    "CIT": "Chatham Islands Territory",
     "GIS": "Gisborne",
     "HKB": "Hawke's Bay",
     "MBH": "Marlborough",

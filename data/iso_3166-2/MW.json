@@ -1,10 +1,9 @@
 {
-  "source": "http://www.geonames.org/MW/administrative-division-malawi.html",
   "country": "Malawi",
   "subdivisions": {
     "BA": "Balaka",
     "BL": "Blantyre",
-    "C": "Central",
+    "C": "Central Region",
     "CK": "Chikwawa",
     "CR": "Chiradzulu",
     "CT": "Chitipa",
@@ -20,7 +19,7 @@
     "MU": "Mulanje",
     "MW": "Mwanza",
     "MZ": "Mzimba",
-    "N": "Northern",
+    "N": "Northern Region",
     "NB": "Nkhata Bay",
     "NE": "Neno",
     "NI": "Ntchisi",
@@ -29,7 +28,7 @@
     "NU": "Ntcheu",
     "PH": "Phalombe",
     "RU": "Rumphi",
-    "S": "Southern",
+    "S": "Southern Region",
     "SA": "Salima",
     "TH": "Thyolo",
     "ZO": "Zomba"

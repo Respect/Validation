@@ -1,16 +1,15 @@
 {
-  "source": "http://www.geonames.org/CM/administrative-division-cameroon.html",
   "country": "Cameroon",
   "subdivisions": {
-    "AD": "Adamawa Province (Adamaoua)",
-    "CE": "Centre Province",
-    "EN": "Extreme North Province (Extrême-Nord)",
-    "ES": "East Province (Est)",
-    "LT": "Littoral Province",
-    "NO": "North Province (Nord)",
-    "NW": "Northwest Province (Nord-Ouest)",
-    "OU": "West Province (Ouest)",
-    "SU": "South Province (Sud)",
-    "SW": "Southwest Province (Sud-Ouest)."
+    "AD": "Adamaoua",
+    "CE": "Centre",
+    "EN": "Far North",
+    "ES": "East",
+    "LT": "Littoral",
+    "NO": "North",
+    "NW": "North-West",
+    "OU": "West",
+    "SU": "South",
+    "SW": "South-West"
   }
 }
