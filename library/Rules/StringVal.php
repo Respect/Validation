@@ -23,7 +23,7 @@ use function method_exists;
  * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class StringVal extends AbstractRule
+class StringVal extends AbstractRule
 {
     /**
      * {@inheritDoc}

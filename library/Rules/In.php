@@ -25,7 +25,7 @@ use function mb_strpos;
  * @author Danilo Benevides <danilobenevides01@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class In extends AbstractRule
+class In extends AbstractRule
 {
     /**
      * @var mixed[]|mixed

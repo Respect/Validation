@@ -21,7 +21,7 @@ namespace Respect\Validation\Rules;
  * @author Jean Pimentel <jeanfap@gmail.com>
  * @author Kennedy Tedesco <kennedyt.tw@gmail.com>
  */
-final class MinAge extends AbstractAge
+class MinAge extends AbstractAge
 {
     /**
      * {@inheritDoc}

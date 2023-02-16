@@ -20,7 +20,7 @@ use function is_callable;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class CallableType extends AbstractRule
+class CallableType extends AbstractRule
 {
     /**
      * {@inheritDoc}

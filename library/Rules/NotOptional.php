@@ -23,7 +23,7 @@ use Respect\Validation\Helpers\CanValidateUndefined;
  * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class NotOptional extends AbstractRule
+class NotOptional extends AbstractRule
 {
     use CanValidateUndefined;
 

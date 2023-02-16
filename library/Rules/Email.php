@@ -30,7 +30,7 @@ use const FILTER_VALIDATE_EMAIL;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Paul Karikari <paulkarikari1@gmail.com>
  */
-final class Email extends AbstractRule
+class Email extends AbstractRule
 {
     /**
      * @var EmailValidator|null

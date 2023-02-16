@@ -26,7 +26,7 @@ use const JSON_ERROR_NONE;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Json extends AbstractRule
+class Json extends AbstractRule
 {
     /**
      * {@inheritDoc}

@@ -24,7 +24,7 @@ use function sprintf;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Moritz Fromm <moritzgitfromm@gmail.com>
  */
-final class Isbn extends AbstractRule
+class Isbn extends AbstractRule
 {
     /**
      * @see https://howtodoinjava.com/regex/java-regex-validate-international-standard-book-number-isbns

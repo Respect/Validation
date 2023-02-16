@@ -25,7 +25,7 @@ use function is_scalar;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jayson Reis <santosdosreis@gmail.com>
  */
-final class LeapDate extends AbstractRule
+class LeapDate extends AbstractRule
 {
     /**
      * @var string

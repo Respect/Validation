@@ -40,7 +40,7 @@ use const FILTER_VALIDATE_IP;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Luís Otávio Cobucci Oblonczyk <lcobucci@gmail.com>
  */
-final class Ip extends AbstractRule
+class Ip extends AbstractRule
 {
     /**
      * @var string|null

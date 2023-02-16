@@ -23,7 +23,7 @@ use function ctype_graph;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
-final class Graph extends AbstractFilterRule
+class Graph extends AbstractFilterRule
 {
     /**
      * {@inheritDoc}

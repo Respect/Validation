@@ -20,7 +20,7 @@ use Respect\Validation\Helpers\CanValidateIterable;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class IterableType extends AbstractRule
+class IterableType extends AbstractRule
 {
     use CanValidateIterable;
 

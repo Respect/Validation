@@ -24,7 +24,7 @@ use function preg_match;
  * @author Jens Segers <segers.jens@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
-final class Base64 extends AbstractRule
+class Base64 extends AbstractRule
 {
     /**
      * {@inheritDoc}

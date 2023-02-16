@@ -18,7 +18,7 @@ use Respect\Validation\Helpers\CanValidateUndefined;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Optional extends AbstractWrapper
+class Optional extends AbstractWrapper
 {
     use CanValidateUndefined;
 

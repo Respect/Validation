@@ -27,7 +27,7 @@ use function mb_strpos;
  * @author Marcelo Araujo <msaraujo@php.net>
  * @author William Espindola <oi@williamespindola.com.br>
  */
-final class Contains extends AbstractRule
+class Contains extends AbstractRule
 {
     /**
      * @var mixed

@@ -23,7 +23,7 @@ use function preg_match;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class PhpLabel extends AbstractRule
+class PhpLabel extends AbstractRule
 {
     /**
      * {@inheritDoc}

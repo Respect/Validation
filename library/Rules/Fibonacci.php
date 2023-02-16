@@ -22,7 +22,7 @@ use function is_numeric;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Samuel Heinzmann <samuel.heinzmann@swisscom.com>
  */
-final class Fibonacci extends AbstractRule
+class Fibonacci extends AbstractRule
 {
     /**
      * {@inheritDoc}

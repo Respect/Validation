@@ -28,7 +28,7 @@ use function sprintf;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
-final class Base extends AbstractRule
+class Base extends AbstractRule
 {
     /**
      * @var string

@@ -19,7 +19,7 @@ use function ctype_xdigit;
  * @author Andre Ramaciotti <andre@ramaciotti.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Xdigit extends AbstractFilterRule
+class Xdigit extends AbstractFilterRule
 {
     /**
      * {@inheritDoc}

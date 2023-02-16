@@ -23,7 +23,7 @@ use function ctype_cntrl;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
-final class Control extends AbstractFilterRule
+class Control extends AbstractFilterRule
 {
     /**
      * {@inheritDoc}

@@ -28,7 +28,7 @@ use function sprintf;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Paul Karikari <paulkarikari1@gmail.com>
  */
-final class Type extends AbstractRule
+class Type extends AbstractRule
 {
     /**
      * Collection of available types for validation.

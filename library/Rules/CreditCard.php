@@ -33,7 +33,7 @@ use function sprintf;
  * @author William Espindola <oi@williamespindola.com.br>
  * @author Rakshit Arora <rakshit087@gmail.com>
  */
-final class CreditCard extends AbstractRule
+class CreditCard extends AbstractRule
 {
     public const ANY = 'Any';
 

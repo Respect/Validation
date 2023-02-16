@@ -24,7 +24,7 @@ use function is_string;
  * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class File extends AbstractRule
+class File extends AbstractRule
 {
     /**
      * {@inheritDoc}

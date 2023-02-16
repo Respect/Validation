@@ -24,7 +24,7 @@ use const FILTER_VALIDATE_INT;
  * @author Jean Pimentel <jeanfap@gmail.com>
  * @author Paul Karikari <paulkarikari1@gmail.com>
  */
-final class Even extends AbstractRule
+class Even extends AbstractRule
 {
     /**
      * {@inheritDoc}

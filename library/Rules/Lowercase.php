@@ -24,7 +24,7 @@ use function mb_strtolower;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jean Pimentel <jeanfap@gmail.com>
  */
-final class Lowercase extends AbstractRule
+class Lowercase extends AbstractRule
 {
     /**
      * {@inheritDoc}

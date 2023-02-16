@@ -18,7 +18,7 @@ namespace Respect\Validation\Rules;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class LessThan extends AbstractComparison
+class LessThan extends AbstractComparison
 {
     /**
      * {@inheritDoc}

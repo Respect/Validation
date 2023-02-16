@@ -23,7 +23,7 @@ use function is_array;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author João Torquato <joao.otl@gmail.com>
  */
-final class ArrayType extends AbstractRule
+class ArrayType extends AbstractRule
 {
     /**
      * {@inheritDoc}

@@ -22,7 +22,7 @@ use const FILTER_VALIDATE_URL;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Url extends AbstractEnvelope
+class Url extends AbstractEnvelope
 {
     /**
      * Initializes the rule.

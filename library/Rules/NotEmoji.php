@@ -22,7 +22,7 @@ use function preg_match;
  *
  * @author Mazen Touati <mazen_touati@hotmail.com>
  */
-final class NotEmoji extends AbstractRule
+class NotEmoji extends AbstractRule
 {
     private const RANGES = [
         '\x{0023}\x{FE0F}\x{20E3}',

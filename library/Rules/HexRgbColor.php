@@ -19,7 +19,7 @@ namespace Respect\Validation\Rules;
  * @author Davide Pastore <pasdavide@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class HexRgbColor extends AbstractEnvelope
+class HexRgbColor extends AbstractEnvelope
 {
     public function __construct()
     {

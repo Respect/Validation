@@ -22,7 +22,7 @@ use function is_array;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Singwai Chan <singwai.chan@live.com>
  */
-final class Subset extends AbstractRule
+class Subset extends AbstractRule
 {
     /**
      * @var mixed[]

@@ -27,7 +27,7 @@ use function mb_list_encodings;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
-final class Charset extends AbstractRule
+class Charset extends AbstractRule
 {
     /**
      * @var string[]

@@ -28,7 +28,7 @@ use function strtotime;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jayson Reis <santosdosreis@gmail.com>
  */
-final class LeapYear extends AbstractRule
+class LeapYear extends AbstractRule
 {
     /**
      * {@inheritDoc}

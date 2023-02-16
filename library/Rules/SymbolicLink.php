@@ -24,7 +24,7 @@ use function is_string;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Gus Antoniassi <gus.antoniassi@gmail.com>
  */
-final class SymbolicLink extends AbstractRule
+class SymbolicLink extends AbstractRule
 {
     /**
      * {@inheritDoc}

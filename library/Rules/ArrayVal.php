@@ -27,7 +27,7 @@ use function is_array;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class ArrayVal extends AbstractRule
+class ArrayVal extends AbstractRule
 {
     /**
      * {@inheritDoc}

@@ -23,7 +23,7 @@ use function ctype_space;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
-final class Space extends AbstractFilterRule
+class Space extends AbstractFilterRule
 {
     /**
      * {@inheritDoc}

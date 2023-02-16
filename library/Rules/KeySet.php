@@ -28,7 +28,7 @@ use function is_array;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class KeySet extends AbstractWrapper
+class KeySet extends AbstractWrapper
 {
     /**
      * @var mixed[]

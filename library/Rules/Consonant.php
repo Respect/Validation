@@ -22,7 +22,7 @@ use function preg_match;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
-final class Consonant extends AbstractFilterRule
+class Consonant extends AbstractFilterRule
 {
     /**
      * {@inheritDoc}

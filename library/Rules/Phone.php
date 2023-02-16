@@ -28,7 +28,7 @@ use function sprintf;
  * @author Graham Campbell <graham@mineuk.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Phone extends AbstractRule
+class Phone extends AbstractRule
 {
     /**
      * {@inheritDoc}

@@ -26,7 +26,7 @@ use function array_keys;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Mazen Touati <mazen_touati@hotmail.com>
  */
-final class SubdivisionCode extends AbstractSearcher
+class SubdivisionCode extends AbstractSearcher
 {
     /**
      * @var string

@@ -20,7 +20,7 @@ namespace Respect\Validation\Rules;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
-final class AlwaysValid extends AbstractRule
+class AlwaysValid extends AbstractRule
 {
     /**
      * {@inheritDoc}

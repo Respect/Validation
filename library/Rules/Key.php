@@ -25,7 +25,7 @@ use function is_scalar;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Key extends AbstractRelated
+class Key extends AbstractRelated
 {
     /**
      * @param mixed $reference

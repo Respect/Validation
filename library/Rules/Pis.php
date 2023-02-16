@@ -25,7 +25,7 @@ use function preg_replace;
  * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Pis extends AbstractRule
+class Pis extends AbstractRule
 {
     /**
      * {@inheritDoc}

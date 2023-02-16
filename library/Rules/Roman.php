@@ -20,7 +20,7 @@ namespace Respect\Validation\Rules;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jean Pimentel <jeanfap@gmail.com>
  */
-final class Roman extends AbstractEnvelope
+class Roman extends AbstractEnvelope
 {
     public function __construct()
     {

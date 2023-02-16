@@ -28,7 +28,7 @@ use function set_error_handler;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Call extends AbstractRule
+class Call extends AbstractRule
 {
     /**
      * @var callable

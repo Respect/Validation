@@ -21,7 +21,7 @@ use function array_map;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Kirill Dlussky <kirill@dlussky.ru>
  */
-final class ContainsAny extends AbstractEnvelope
+class ContainsAny extends AbstractEnvelope
 {
     /**
      * Initializes the rule.

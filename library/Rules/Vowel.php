@@ -21,7 +21,7 @@ use function preg_match;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
-final class Vowel extends AbstractFilterRule
+class Vowel extends AbstractFilterRule
 {
     /**
      * {@inheritDoc}

@@ -25,7 +25,7 @@ use const YESEXPR;
  * @author Cameron Hall <me@chall.id.au>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Yes extends AbstractRule
+class Yes extends AbstractRule
 {
     /**
      * @var bool

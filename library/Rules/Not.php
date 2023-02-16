@@ -25,7 +25,7 @@ use function current;
  * @author Caio César Tavares <caiotava@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Not extends AbstractRule
+class Not extends AbstractRule
 {
     /**
      * @var Validatable

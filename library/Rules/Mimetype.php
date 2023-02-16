@@ -27,7 +27,7 @@ use const FILEINFO_MIME_TYPE;
  * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Mimetype extends AbstractRule
+class Mimetype extends AbstractRule
 {
     /**
      * @var string

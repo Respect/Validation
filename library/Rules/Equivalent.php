@@ -21,7 +21,7 @@ use function mb_strtoupper;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Equivalent extends AbstractRule
+class Equivalent extends AbstractRule
 {
     /**
      * @var mixed

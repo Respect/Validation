@@ -29,7 +29,7 @@ use function sprintf;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Ricardo Gobbo <ricardo@clicknow.com.br>
  */
-final class VideoUrl extends AbstractRule
+class VideoUrl extends AbstractRule
 {
     private const SERVICES = [
         // phpcs:disable Generic.Files.LineLength.TooLong

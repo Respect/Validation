@@ -22,7 +22,7 @@ use function is_string;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
-final class Exists extends AbstractRule
+class Exists extends AbstractRule
 {
     /**
      * {@inheritDoc}

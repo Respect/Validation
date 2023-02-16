@@ -28,7 +28,7 @@ use function str_split;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Mikhail Vyrtsev <reeywhaar@gmail.com>
  */
-final class Sorted extends AbstractRule
+class Sorted extends AbstractRule
 {
     public const ASCENDING = 'ASC';
     public const DESCENDING = 'DESC';

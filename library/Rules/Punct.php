@@ -23,7 +23,7 @@ use function ctype_punct;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
-final class Punct extends AbstractFilterRule
+class Punct extends AbstractFilterRule
 {
     /**
      * {@inheritDoc}

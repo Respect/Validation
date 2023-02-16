@@ -36,7 +36,7 @@ use function sprintf;
  * @author João Torquato <joao.otl@gmail.com>
  * @author Marcelo Araujo <msaraujo@php.net>
  */
-final class Length extends AbstractRule
+class Length extends AbstractRule
 {
     /**
      * @var int|null

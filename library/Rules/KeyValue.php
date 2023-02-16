@@ -24,7 +24,7 @@ use function in_array;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class KeyValue extends AbstractRule
+class KeyValue extends AbstractRule
 {
     /**
      * @var int|string

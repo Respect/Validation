@@ -31,7 +31,7 @@ use function str_split;
  * @author Julián Gutiérrez <juliangut@gmail.com>
  * @author Senén <senen@instasent.com>
  */
-final class Nif extends AbstractRule
+class Nif extends AbstractRule
 {
     /**
      * {@inheritDoc}

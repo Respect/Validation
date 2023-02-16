@@ -26,7 +26,7 @@ use function preg_match;
  * @author Danilo Benevides <danilobenevides01@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class IntVal extends AbstractRule
+class IntVal extends AbstractRule
 {
     /**
      * {@inheritDoc}

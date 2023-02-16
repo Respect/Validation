@@ -18,7 +18,7 @@ namespace Respect\Validation\Rules;
  *
  * @author Jens Segers <segers.jens@gmail.com>
  */
-final class Nullable extends AbstractWrapper
+class Nullable extends AbstractWrapper
 {
     /**
      * {@inheritDoc}

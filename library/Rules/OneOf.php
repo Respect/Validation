@@ -23,7 +23,7 @@ use function count;
  * @author Bradyn Poulsen <bradyn@bradynpoulsen.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class OneOf extends AbstractComposite
+class OneOf extends AbstractComposite
 {
     /**
      * {@inheritDoc}

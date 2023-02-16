@@ -30,7 +30,7 @@ use function str_split;
  * @author Renato Moura <renato@naturalweb.com.br>
  * @author William Espindola <oi@williamespindola.com.br>
  */
-final class Cnpj extends AbstractRule
+class Cnpj extends AbstractRule
 {
     /**
      * {@inheritDoc}

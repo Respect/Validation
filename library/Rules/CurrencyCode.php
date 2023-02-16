@@ -21,7 +21,7 @@ namespace Respect\Validation\Rules;
  * @author Tim Strijdhorst <tstrijdhorst@users.noreply.github.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
-final class CurrencyCode extends AbstractSearcher
+class CurrencyCode extends AbstractSearcher
 {
     /**
      * @see http://www.currency-iso.org/en/home/tables/table-a1.html

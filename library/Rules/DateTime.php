@@ -25,7 +25,7 @@ use function strtotime;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class DateTime extends AbstractRule
+class DateTime extends AbstractRule
 {
     use CanValidateDateTime;
 

@@ -25,7 +25,7 @@ use function reset;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Marcelo Araujo <msaraujo@php.net>
  */
-final class StartsWith extends AbstractRule
+class StartsWith extends AbstractRule
 {
     /**
      * @var mixed

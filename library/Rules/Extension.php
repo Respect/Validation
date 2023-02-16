@@ -26,7 +26,7 @@ use const PATHINFO_EXTENSION;
  * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Extension extends AbstractRule
+class Extension extends AbstractRule
 {
     /**
      * @var string

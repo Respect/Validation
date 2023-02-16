@@ -21,7 +21,7 @@ use function count;
  * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class NoneOf extends AbstractComposite
+class NoneOf extends AbstractComposite
 {
     /**
      * {@inheritDoc}

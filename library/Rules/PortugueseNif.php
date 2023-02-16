@@ -31,7 +31,7 @@ use function strlen;
  *
  * @author Gonçalo Andrade <goncalo.andrade95@gmail.com>
  */
-final class PortugueseNif extends AbstractRule
+class PortugueseNif extends AbstractRule
 {
     /**
      * {@inheritDoc}

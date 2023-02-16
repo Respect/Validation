@@ -23,7 +23,7 @@ use function preg_match;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Tomasz Regdos <tomek@regdos.com>
  */
-final class Pesel extends AbstractRule
+class Pesel extends AbstractRule
 {
     /**
      * {@inheritDoc}

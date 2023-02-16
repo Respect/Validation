@@ -25,7 +25,7 @@ use const SORT_REGULAR;
  * @author Krzysztof Śmiałek <admin@avensome.net>
  * @author Paul Karikari <paulkarikari1@gmail.com>
  */
-final class Unique extends AbstractRule
+class Unique extends AbstractRule
 {
     /**
      * {@inheritDoc}

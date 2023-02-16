@@ -26,7 +26,7 @@ use function sqrt;
  * @author Ismael Elias <ismael.esq@hotmail.com>
  * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
  */
-final class PrimeNumber extends AbstractRule
+class PrimeNumber extends AbstractRule
 {
     /**
      * {@inheritDoc}

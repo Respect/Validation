@@ -26,7 +26,7 @@ use const FILTER_VALIDATE_BOOLEAN;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
-final class BoolVal extends AbstractRule
+class BoolVal extends AbstractRule
 {
     /**
      * {@inheritDoc}

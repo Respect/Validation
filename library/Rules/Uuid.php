@@ -28,7 +28,7 @@ use function sprintf;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Michael Weimann <mail@michael-weimann.eu>
  */
-final class Uuid extends AbstractRule
+class Uuid extends AbstractRule
 {
     /**
      * Placeholder in "sprintf()" format used to create the REGEX that validates inputs.

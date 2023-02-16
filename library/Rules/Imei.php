@@ -25,7 +25,7 @@ use function preg_replace;
  * @author Diego Oliveira <contato@diegoholiveira.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Imei extends AbstractRule
+class Imei extends AbstractRule
 {
     private const IMEI_SIZE = 15;
 

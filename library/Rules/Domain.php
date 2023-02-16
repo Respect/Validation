@@ -34,7 +34,7 @@ use function mb_substr_count;
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author Róbert Nagy <vrnagy@gmail.com>
  */
-final class Domain extends AbstractRule
+class Domain extends AbstractRule
 {
     /**
      * @var Validatable

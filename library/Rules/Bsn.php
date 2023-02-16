@@ -27,7 +27,7 @@ use function strval;
  * @author Ronald Drenth <ronalddrenth@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
-final class Bsn extends AbstractRule
+class Bsn extends AbstractRule
 {
     /**
      * {@inheritDoc}

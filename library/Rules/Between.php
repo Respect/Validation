@@ -22,7 +22,7 @@ use Respect\Validation\Helpers\CanCompareValues;
  * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Between extends AbstractEnvelope
+class Between extends AbstractEnvelope
 {
     use CanCompareValues;
 

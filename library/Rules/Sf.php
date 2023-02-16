@@ -30,7 +30,7 @@ use function trim;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Hugo Hamon <hugo.hamon@sensiolabs.com>
  */
-final class Sf extends AbstractRule
+class Sf extends AbstractRule
 {
     /**
      * @var Constraint

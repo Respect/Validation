@@ -30,7 +30,7 @@ use function sprintf;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
-final class CountryCode extends AbstractSearcher
+class CountryCode extends AbstractSearcher
 {
     /**
      * The ISO representation of a country code.

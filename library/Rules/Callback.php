@@ -24,7 +24,7 @@ use function count;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
-final class Callback extends AbstractRule
+class Callback extends AbstractRule
 {
     /**
      * @var callable

@@ -24,7 +24,7 @@ use function ctype_print;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
-final class Printable extends AbstractFilterRule
+class Printable extends AbstractFilterRule
 {
     /**
      * {@inheritDoc}

@@ -18,7 +18,7 @@ namespace Respect\Validation\Rules;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jean Pimentel <jeanfap@gmail.com>
  */
-final class Multiple extends AbstractRule
+class Multiple extends AbstractRule
 {
     /**
      * @var int

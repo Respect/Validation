@@ -20,7 +20,7 @@ namespace Respect\Validation\Rules;
  * @author Danilo Benevides <danilobenevides01@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Instance extends AbstractRule
+class Instance extends AbstractRule
 {
     /**
      * @var string

@@ -24,7 +24,7 @@ use function mb_strtoupper;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jean Pimentel <jeanfap@gmail.com>
  */
-final class Uppercase extends AbstractRule
+class Uppercase extends AbstractRule
 {
     /**
      * {@inheritDoc}

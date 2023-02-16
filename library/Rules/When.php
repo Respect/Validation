@@ -24,7 +24,7 @@ use Respect\Validation\Validatable;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Hugo Hamon <hugo.hamon@sensiolabs.com>
  */
-final class When extends AbstractRule
+class When extends AbstractRule
 {
     /**
      * @var Validatable

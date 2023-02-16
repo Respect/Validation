@@ -25,7 +25,7 @@ use function is_uploaded_file;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Paul Karikari <paulkarikari1@gmail.com>
  */
-final class Uploaded extends AbstractRule
+class Uploaded extends AbstractRule
 {
     /**
      * {@inheritDoc}

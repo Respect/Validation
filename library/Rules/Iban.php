@@ -28,7 +28,7 @@ use function substr;
  *
  * @author Mazen Touati <mazen_touati@hotmail.com>
  */
-final class Iban extends AbstractRule
+class Iban extends AbstractRule
 {
     private const COUNTRIES_LENGTHS = [
         'AL' => 28,

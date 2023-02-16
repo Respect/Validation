@@ -22,7 +22,7 @@ use function ctype_alpha;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
-final class Alpha extends AbstractFilterRule
+class Alpha extends AbstractFilterRule
 {
     /**
      * {@inheritDoc}

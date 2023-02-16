@@ -20,7 +20,7 @@ use function is_scalar;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class ScalarVal extends AbstractRule
+class ScalarVal extends AbstractRule
 {
     /**
      * {@inheritDoc}

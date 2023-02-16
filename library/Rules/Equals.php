@@ -20,7 +20,7 @@ namespace Respect\Validation\Rules;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Hugo Hamon <hugo.hamon@sensiolabs.com>
  */
-final class Equals extends AbstractRule
+class Equals extends AbstractRule
 {
     /**
      * @var mixed

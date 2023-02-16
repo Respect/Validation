@@ -25,7 +25,7 @@ use function is_writable;
  * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Writable extends AbstractRule
+class Writable extends AbstractRule
 {
     /**
      * {@inheritDoc}

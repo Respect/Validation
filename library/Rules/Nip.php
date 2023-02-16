@@ -26,7 +26,7 @@ use function str_split;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Tomasz Regdos <tomek@regdos.com>
  */
-final class Nip extends AbstractRule
+class Nip extends AbstractRule
 {
     /**
      * {@inheritDoc}

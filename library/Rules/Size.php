@@ -32,7 +32,7 @@ use function sprintf;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Felipe Stival <v0idpwn@gmail.com>
  */
-final class Size extends AbstractRule
+class Size extends AbstractRule
 {
     /**
      * @var string|int|null

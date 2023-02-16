@@ -25,7 +25,7 @@ use function is_scalar;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
-final class Directory extends AbstractRule
+class Directory extends AbstractRule
 {
     /**
      * {@inheritDoc}

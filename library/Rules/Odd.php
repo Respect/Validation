@@ -25,7 +25,7 @@ use const FILTER_VALIDATE_INT;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jean Pimentel <jeanfap@gmail.com>
  */
-final class Odd extends AbstractRule
+class Odd extends AbstractRule
 {
     /**
      * {@inheritDoc}

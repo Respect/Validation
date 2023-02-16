@@ -21,7 +21,7 @@ use function is_string;
  * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class StringType extends AbstractRule
+class StringType extends AbstractRule
 {
     /**
      * {@inheritDoc}

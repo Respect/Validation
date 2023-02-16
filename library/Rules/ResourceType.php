@@ -20,7 +20,7 @@ use function is_resource;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class ResourceType extends AbstractRule
+class ResourceType extends AbstractRule
 {
     /**
      * {@inheritDoc}

@@ -19,7 +19,7 @@ namespace Respect\Validation\Rules;
  * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Max extends AbstractComparison
+class Max extends AbstractComparison
 {
     /**
      * {@inheritDoc}

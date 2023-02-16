@@ -23,7 +23,7 @@ use function preg_match;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class PolishIdCard extends AbstractRule
+class PolishIdCard extends AbstractRule
 {
     private const ASCII_CODE_0 = 48;
     private const ASCII_CODE_7 = 55;

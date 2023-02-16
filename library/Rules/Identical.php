@@ -18,7 +18,7 @@ namespace Respect\Validation\Rules;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Identical extends AbstractRule
+class Identical extends AbstractRule
 {
     /**
      * @var mixed

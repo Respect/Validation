@@ -24,7 +24,7 @@ use function sprintf;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class PostalCode extends AbstractEnvelope
+class PostalCode extends AbstractEnvelope
 {
     private const DEFAULT_PATTERN = '/^$/';
     private const POSTAL_CODES = [

@@ -21,7 +21,7 @@ use function is_float;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Reginaldo Junior <76regi@gmail.com>
  */
-final class FloatType extends AbstractRule
+class FloatType extends AbstractRule
 {
     /**
      * {@inheritDoc}

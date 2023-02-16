@@ -24,7 +24,7 @@ use function var_export;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Decimal extends AbstractRule
+class Decimal extends AbstractRule
 {
     /**
      * @var int

@@ -26,7 +26,7 @@ use Respect\Validation\Validatable;
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author William Espindola <oi@williamespindola.com.br>
  */
-final class Each extends AbstractRule
+class Each extends AbstractRule
 {
     use CanValidateIterable;
 

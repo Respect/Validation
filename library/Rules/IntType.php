@@ -20,7 +20,7 @@ use function is_int;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class IntType extends AbstractRule
+class IntType extends AbstractRule
 {
     /**
      * {@inheritDoc}

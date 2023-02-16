@@ -27,7 +27,7 @@ use function sprintf;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class LanguageCode extends AbstractEnvelope
+class LanguageCode extends AbstractEnvelope
 {
     public const ALPHA2 = 'alpha-2';
     public const ALPHA3 = 'alpha-3';

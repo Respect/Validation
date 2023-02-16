@@ -24,7 +24,7 @@ use function is_numeric;
  * @author David Meister <thedavidmeister@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Factor extends AbstractRule
+class Factor extends AbstractRule
 {
     /**
      * @var int

@@ -19,7 +19,7 @@ namespace Respect\Validation\Rules;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class MaxAge extends AbstractAge
+class MaxAge extends AbstractAge
 {
     /**
      * {@inheritDoc}

@@ -33,7 +33,7 @@ use const FILTER_VALIDATE_URL;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class FilterVar extends AbstractEnvelope
+class FilterVar extends AbstractEnvelope
 {
     private const ALLOWED_FILTERS = [
         FILTER_VALIDATE_BOOLEAN,

@@ -24,7 +24,7 @@ use function is_array;
  * @author João Torquato <joao.otl@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
-final class Countable extends AbstractRule
+class Countable extends AbstractRule
 {
     /**
      * {@inheritDoc}

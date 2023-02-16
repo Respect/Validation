@@ -22,7 +22,7 @@ use function ctype_digit;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
-final class Digit extends AbstractFilterRule
+class Digit extends AbstractFilterRule
 {
     /**
      * {@inheritDoc}

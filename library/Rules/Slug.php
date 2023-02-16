@@ -25,7 +25,7 @@ use function preg_match;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
-final class Slug extends AbstractRule
+class Slug extends AbstractRule
 {
     /**
      * {@inheritDoc}

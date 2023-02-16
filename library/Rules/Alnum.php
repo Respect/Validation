@@ -25,7 +25,7 @@ use function ctype_alnum;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
-final class Alnum extends AbstractFilterRule
+class Alnum extends AbstractFilterRule
 {
     /**
      * {@inheritDoc}

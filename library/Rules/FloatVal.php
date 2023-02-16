@@ -26,7 +26,7 @@ use const FILTER_VALIDATE_FLOAT;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jayson Reis <santosdosreis@gmail.com>
  */
-final class FloatVal extends AbstractRule
+class FloatVal extends AbstractRule
 {
     /**
      * {@inheritDoc}

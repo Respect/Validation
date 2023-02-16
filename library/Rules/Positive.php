@@ -22,7 +22,7 @@ use function is_numeric;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Ismael Elias <ismael.esq@hotmail.com>
  */
-final class Positive extends AbstractRule
+class Positive extends AbstractRule
 {
     /**
      * {@inheritDoc}

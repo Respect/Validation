@@ -24,7 +24,7 @@ use function preg_match;
  * @author Fábio da Silva Ribeiro <fabiorphp@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class MacAddress extends AbstractRule
+class MacAddress extends AbstractRule
 {
     /**
      * {@inheritDoc}

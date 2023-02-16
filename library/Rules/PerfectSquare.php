@@ -25,7 +25,7 @@ use function sqrt;
  * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
-final class PerfectSquare extends AbstractRule
+class PerfectSquare extends AbstractRule
 {
     /**
      * {@inheritDoc}

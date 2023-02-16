@@ -28,7 +28,7 @@ use function preg_replace;
  * @author Jean Pimentel <jeanfap@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
-final class Cpf extends AbstractRule
+class Cpf extends AbstractRule
 {
     /**
      * {@inheritDoc}

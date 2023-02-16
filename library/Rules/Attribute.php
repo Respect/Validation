@@ -27,7 +27,7 @@ use function property_exists;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Attribute extends AbstractRelated
+class Attribute extends AbstractRelated
 {
     public function __construct(string $reference, ?Validatable $rule = null, bool $mandatory = true)
     {

@@ -21,7 +21,7 @@ use function is_bool;
  * @author Devin Torres <devin@devintorres.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class BoolType extends AbstractRule
+class BoolType extends AbstractRule
 {
     /**
      * {@inheritDoc}

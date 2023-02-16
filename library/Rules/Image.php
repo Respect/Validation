@@ -29,7 +29,7 @@ use const FILEINFO_MIME_TYPE;
  * @author Guilherme Siani <guilherme@siani.com.br>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class Image extends AbstractRule
+class Image extends AbstractRule
 {
     /**
      * @var finfo

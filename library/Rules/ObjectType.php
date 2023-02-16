@@ -21,7 +21,7 @@ use function is_object;
  * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class ObjectType extends AbstractRule
+class ObjectType extends AbstractRule
 {
     /**
      * {@inheritDoc}
