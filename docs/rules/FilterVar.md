@@ -22,6 +22,7 @@ v::filterVar(FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)->validate('@local'); 
 
 Version  | Description
 ---------|-------------
+  2.3.0  | `v::filterVar(FILTER_VALIDATE_INT)->validate(0)` is no longer false
   2.0.15 | Allow validating domains
    0.8.0 | Created
 

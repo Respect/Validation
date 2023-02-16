@@ -60,6 +60,7 @@ final class FilterVarTest extends RuleTestCase
             [new FilterVar(FILTER_VALIDATE_BOOLEAN), 'On'],
             [new FilterVar(FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED), 'http://example.com?foo=bar'],
             [new FilterVar(FILTER_VALIDATE_DOMAIN), 'example.com'],
+            [new FilterVar(FILTER_VALIDATE_INT), '0'],
         ];
     }
 
