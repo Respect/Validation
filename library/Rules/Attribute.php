@@ -21,7 +21,7 @@ use function is_object;
 use function property_exists;
 
 /**
- * Validates an object attribute, event private ones.
+ * Validates an object attribute, even private ones.
  *
  * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
@@ -52,6 +52,19 @@ final class Attribute extends AbstractRelated
      */
     public function hasReference($input): bool
     {
-        return is_object($input) && property_exists($input, (string) $this->getReference());
+        if (!is_object($input)) {
+            return false;
+        }
+
+        if (!property_exists($input, (string) $this->getReference())) {
+            return false;
+        }
+
+        $propertyMirror = new ReflectionProperty($input, (string) $this->getReference());
+        if (!$propertyMirror->isInitialized($input)) {
+            return false;
+        }
+
+        return true;
     }
 }
