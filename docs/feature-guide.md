@@ -237,14 +237,6 @@ is the same as the input. You can customize a validator name using:
 v::dateTime('Y-m-d')->between('1980-02-02', 'now')->setName('Member Since');
 ```
 
-## Symfony validators
-
-It is also possible to reuse validators from Symfony if they are installed:
-
-```php
-$timeValidator     = v::sf('Time')->assert('22:00:01');
-```
-
 ## Validation methods
 
 We've seen `validate()` that returns true or false and `assert()` that throws a complete

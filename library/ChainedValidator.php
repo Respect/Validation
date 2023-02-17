@@ -11,8 +11,6 @@ namespace Respect\Validation;
 
 use finfo;
 use Respect\Validation\Rules\Key;
-use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\Validator\ValidatorInterface as SymfonyValidator;
 
 interface ChainedValidator extends Validatable
 {
@@ -315,8 +313,6 @@ interface ChainedValidator extends Validatable
     public function roman(): ChainedValidator;
 
     public function scalarVal(): ChainedValidator;
-
-    public function sf(Constraint $constraint, ?SymfonyValidator $validator = null): ChainedValidator;
 
     public function size(?string $minSize = null, ?string $maxSize = null): ChainedValidator;
 
