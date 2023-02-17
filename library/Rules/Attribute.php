@@ -17,7 +17,7 @@ use function is_object;
 use function property_exists;
 
 /**
- * Validates an object attribute, event private ones.
+ * Validates an object attribute, even private ones.
  *
  * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
@@ -38,7 +38,9 @@ final class Attribute extends AbstractRelated
     public function getReferenceValue($input)
     {
         $propertyMirror = new ReflectionProperty($input, (string) $this->getReference());
-        $propertyMirror->setAccessible(true);
+        if ($propertyMirror->isInitialized($input) === false) {
+            return null;
+        }
 
         return $propertyMirror->getValue($input);
     }

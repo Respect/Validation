@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\WithProperties;
+use Respect\Validation\Test\Stubs\WithUninitialized;
 
 /**
  * @group rule
@@ -47,6 +48,10 @@ final class AttributeTest extends RuleTestCase
                 new Attribute('public', new AlwaysValid()),
                 new WithProperties(),
             ],
+            'attribute is present but uninitialized' => [
+                new Attribute('uninitialized'),
+                new WithUninitialized(),
+            ],
             'non mandatory attribute is not present' => [
                 new Attribute('nonexistent', null, false),
                 new WithProperties(),
@@ -54,6 +59,10 @@ final class AttributeTest extends RuleTestCase
             'non mandatory attribute is not present with extra validator' => [
                 new Attribute('nonexistent', new AlwaysValid(), false),
                 new WithProperties(),
+            ],
+            'attribute is present but uninitialized with extra validator' => [
+                new Attribute('uninitialized', new AlwaysValid()),
+                new WithUninitialized(),
             ],
         ];
     }

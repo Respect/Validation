@@ -17,6 +17,7 @@ Fixes:
  - `KeySet` now reports which extra keys are causing the rule to fail.
  - Ensure empty strings are never a valid currency code
  - Do not hide messages on EachException
+ - Dot not throw exception when validating an uninitialized property
 
 Changes:
 
