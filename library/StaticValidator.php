@@ -11,8 +11,6 @@ namespace Respect\Validation;
 
 use finfo;
 use Respect\Validation\Rules\Key;
-use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\Validator\ValidatorInterface as SymfonyValidator;
 
 interface StaticValidator
 {
@@ -315,8 +313,6 @@ interface StaticValidator
     public static function roman(): ChainedValidator;
 
     public static function scalarVal(): ChainedValidator;
-
-    public static function sf(Constraint $constraint, ?SymfonyValidator $validator = null): ChainedValidator;
 
     public static function size(?string $minSize = null, ?string $maxSize = null): ChainedValidator;
 

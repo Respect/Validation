@@ -1,5 +1,17 @@
 # Changes in Respect\Validation 2.x
 
+## 2.3
+
+Versioning Changes:
+
+ - Dropped support for PHP 7.4.
+ - Updated dev dependencies
+
+Deprecations:
+
+ - Symfony façade validators are no longer supported and were
+   removed.
+
 ## 2.2.4
 
 Meta:
