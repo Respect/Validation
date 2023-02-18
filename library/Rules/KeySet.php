@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\NonNegatable;
 use Respect\Validation\Validatable;
 
 use function array_key_exists;
@@ -24,12 +25,17 @@ use function is_array;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class KeySet extends AbstractWrapper
+final class KeySet extends AbstractWrapper implements NonNegatable
 {
     /**
      * @var mixed[]
      */
     private $keys;
+
+    /**
+     * @var mixed[]
+     */
+    private $extraKeys = [];
 
     /**
      * @var Key[]
@@ -125,6 +131,10 @@ final class KeySet extends AbstractWrapper
             }
 
             unset($input[$keyRule->getReference()]);
+        }
+
+        foreach ($input as $extraKey => &$ignoreValue) {
+            $this->extraKeys[] = $extraKey;
         }
 
         return count($input) == 0;

@@ -43,6 +43,8 @@ v::keySet(
 )->validate($dict); // true
 ```
 
+It is not possible to negate `keySet()` rules with `not()`.
+
 The keys' order is not considered in the validation.
 
 ## Categorization
@@ -55,6 +57,7 @@ The keys' order is not considered in the validation.
 
 Version | Description
 --------|-------------
+  2.3.0 | KeySet is NonNegatable, fixed message with extra keys
   1.0.0 | Created
 
 ***
