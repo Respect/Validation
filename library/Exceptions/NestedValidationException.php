@@ -80,8 +80,12 @@ class NestedValidationException extends ValidationException implements IteratorA
         return $this;
     }
 
+    /**
+     * @return SplObjectStorage<ValidationException, int>
+     */
     public function getIterator(): SplObjectStorage
     {
+        /** @var SplObjectStorage<ValidationException, int> */
         $childrenExceptions = new SplObjectStorage();
         $recursiveIteratorIterator = $this->getRecursiveIterator();
 
@@ -182,6 +186,9 @@ class NestedValidationException extends ValidationException implements IteratorA
         return implode(PHP_EOL, $messages);
     }
 
+    /**
+     * @return RecursiveIteratorIterator<RecursiveExceptionIterator>
+     */
     private function getRecursiveIterator(): RecursiveIteratorIterator
     {
         return new RecursiveIteratorIterator(

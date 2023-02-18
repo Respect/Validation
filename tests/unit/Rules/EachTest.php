@@ -93,8 +93,12 @@ final class EachTest extends RuleTestCase
         $rule->check(range(1, 3));
     }
 
+    /**
+     * @return Traversable<int>
+     */
     private function createTraversableInput(int $firstValue, int $lastValue): Traversable
     {
+        /** @var SplStack<int> */
         $input = new SplStack();
         foreach (range($firstValue, $lastValue) as $value) {
             $input->push($value);

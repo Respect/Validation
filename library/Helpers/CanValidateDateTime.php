@@ -65,6 +65,6 @@ trait CanValidateDateTime
             return checkdate((int) $info['month'], $info['day'], (int) $info['year']);
         }
 
-        return checkdate($info['month'] ?: 1, $info['day'] ?: 1, $info['year'] ?: 1);
+        return checkdate($info['month'] ?: 1, 1, $info['year'] ?: 1);
     }
 }

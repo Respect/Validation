@@ -41,7 +41,7 @@ final class Ip extends AbstractRule
     /**
      * @var string|null
      */
-    private $range; /** @phpstan-ignore-line */
+    private $range;
 
     /**
      * @var int|null

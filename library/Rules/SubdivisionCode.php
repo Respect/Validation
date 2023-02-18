@@ -27,7 +27,7 @@ final class SubdivisionCode extends AbstractSearcher
     /**
      * @var string
      */
-    private $countryName; /** @phpstan-ignore-line */
+    private $countryName;
 
     /**
      * @var string[]

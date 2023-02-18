@@ -16,6 +16,8 @@ use UnexpectedValueException;
 
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @implements RecursiveIterator<int, ValidationException>
  */
 final class RecursiveExceptionIterator implements RecursiveIterator, Countable
 {

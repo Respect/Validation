@@ -35,7 +35,7 @@ final class Time extends AbstractRule
     /**
      * @var string
      */
-    private $sample; /** @phpstan-ignore-line */
+    private $sample;
 
     /**
      * Initializes the rule.

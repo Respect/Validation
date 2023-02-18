@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use function is_array;
+use function is_string;
 use function mb_stripos;
 use function mb_strpos;
 use function reset;
@@ -63,7 +64,11 @@ final class StartsWith extends AbstractRule
             return reset($input) == $this->startValue;
         }
 
-        return mb_stripos($input, $this->startValue) === 0;
+        if (is_string($input) && is_string($this->startValue)) {
+            return mb_stripos($input, $this->startValue) === 0;
+        }
+
+        return false;
     }
 
     /**
@@ -75,6 +80,10 @@ final class StartsWith extends AbstractRule
             return reset($input) === $this->startValue;
         }
 
-        return mb_strpos($input, $this->startValue) === 0;
+        if (is_string($input) && is_string($this->startValue)) {
+            return mb_strpos($input, $this->startValue) === 0;
+        }
+
+        return false;
     }
 }

@@ -66,6 +66,6 @@ final class Decimal extends AbstractRule
             return $formatted;
         }
 
-        return preg_replace('/^(\d+\.\d)0*$/', '$1', $formatted);
+        return preg_replace('/^(\d+\.\d)0*$/', '$1', $formatted) ?: '';
     }
 }
