@@ -32,6 +32,9 @@ final class PhoneTest extends RuleTestCase
     {
         return [
             [new Phone(), '+1 650 253 00 00'],
+            [new Phone(), '+7 (999) 999-99-99'],
+            [new Phone(), '+7(999)999-99-99'],
+            [new Phone(), '+7(999)999-9999'],
             [new Phone('BR'), '+55 11 91111 1111'],
             [new Phone('BR'), '11 91111 1111'], // no international prefix
             [new Phone('BR'), '+5511911111111'], // no whitespace
