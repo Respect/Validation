@@ -173,6 +173,36 @@ final class KeySetTest extends TestCase
 
     /**
      * @test
+     */
+    public function shouldWarnOfExtraKeysWithMessage(): void
+    {
+        $input = ['foo' => 123, 'bar' => 456];
+
+        $key1 = new Key('foo', new AlwaysValid(), true);
+
+        $keySet = new KeySet($key1);
+
+        $this->expectException(KeySetException::class);
+        $this->expectExceptionMessage('Must not have keys `{ "bar" }`');
+
+        $keySet->assert($input);
+    }
+
+    /**
+     * @test
+     */
+    public function cannotBeNegated(): void
+    {
+        $key1 = new Key('foo', new AlwaysValid(), true);
+
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage('"Respect\Validation\Rules\KeySet" can not be wrapped in Not()');
+
+        new Not(new KeySet($key1));
+    }
+
+    /**
+     * @test
      *
      * @dataProvider providerForInvalidArguments
      *
