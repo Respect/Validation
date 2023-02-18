@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Helpers\Subdivisions;
+use Respect\Validation\Helpers\CountryInfo;
 
 use function array_keys;
 
@@ -32,14 +32,14 @@ final class SubdivisionCode extends AbstractSearcher
     /**
      * @var string[]
      */
-    private $subdivisions;
+    private $countryInfo;
 
     public function __construct(string $countryCode)
     {
-        $subdivisions = new Subdivisions($countryCode);
+        $countryInfo = new CountryInfo($countryCode);
 
-        $this->countryName = $subdivisions->getCountry();
-        $this->subdivisions = array_keys($subdivisions->getSubdivisions());
+        $this->countryName = $countryInfo->getCountry();
+        $this->countryInfo = array_keys($countryInfo->getSubdivisions());
     }
 
     /**
@@ -47,6 +47,6 @@ final class SubdivisionCode extends AbstractSearcher
      */
     protected function getDataSource(): array
     {
-        return $this->subdivisions;
+        return $this->countryInfo;
     }
 }

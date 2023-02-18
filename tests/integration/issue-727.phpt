@@ -16,7 +16,7 @@ $work->countryCode = 61;
 $work->primary = true;
 
 $personal = new stdClass();
-$personal->number = '+61.0406 464 890';
+$personal->number = '123';
 $personal->country = 61;
 $personal->primary = false;
 
