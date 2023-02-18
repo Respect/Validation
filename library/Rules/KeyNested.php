@@ -89,6 +89,7 @@ final class KeyNested extends AbstractRelated
     }
 
     /**
+     * @param ArrayAccess<mixed, mixed> $array
      * @param mixed $key
      *
      * @return mixed

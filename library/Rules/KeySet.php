@@ -29,7 +29,7 @@ final class KeySet extends AbstractWrapper
     /**
      * @var mixed[]
      */
-    private $keys; /** @phpstan-ignore-line */
+    private $keys;
 
     /**
      * @var Key[]

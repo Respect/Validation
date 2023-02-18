@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function is_scalar;
 use function ord;
 use function preg_match;
 
@@ -31,6 +32,12 @@ final class PolishIdCard extends AbstractRule
      */
     public function validate($input): bool
     {
+        if (!is_scalar($input)) {
+            return false;
+        }
+
+        $input = (string) $input;
+
         if (!preg_match('/^[A-Z0-9]{9}$/', $input)) {
             return false;
         }

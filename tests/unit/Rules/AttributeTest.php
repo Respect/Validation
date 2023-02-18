@@ -31,7 +31,7 @@ final class AttributeTest extends RuleTestCase
     /**
      * @var string
      */
-    private $bar = self::PROPERTY_VALUE;  /** @phpstan-ignore-line */
+    private $bar = self::PROPERTY_VALUE;
 
     /**
      * {@inheritDoc}

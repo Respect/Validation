@@ -192,6 +192,8 @@ final class Factory
      *
      * @throws InvalidClassException
      * @throws ReflectionException
+     *
+     * @return ReflectionClass<ValidationException|Validatable|object>
      */
     private function createReflectionClass(string $name, string $parentName): ReflectionClass
     {
@@ -237,6 +239,7 @@ final class Factory
     }
 
     /**
+     * @param ReflectionObject|ReflectionClass<Validatable> $reflection
      * @return mixed[]
      */
     private function extractPropertiesValues(Validatable $validatable, ReflectionClass $reflection): array
