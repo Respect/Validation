@@ -18,7 +18,7 @@ try {
 }
 
 try {
-    v::not(v::phone())->check('11977777777');
+    v::not(v::phone())->check('+1 650 253 00 00');
 } catch (PhoneException $exception) {
     echo $exception->getMessage() . PHP_EOL;
 }
@@ -30,13 +30,13 @@ try {
 }
 
 try {
-    v::not(v::phone())->assert('+5 555 555 5555');
+    v::not(v::phone())->assert('+55 11 91111 1111');
 } catch (NestedValidationException $exception) {
     echo $exception->getFullMessage() . PHP_EOL;
 }
 ?>
 --EXPECT--
 "123" must be a valid telephone number
-"11977777777" must not be a valid telephone number
+"+1 650 253 00 00" must not be a valid telephone number
 - "(555)5555 555" must be a valid telephone number
-- "+5 555 555 5555" must not be a valid telephone number
+- "+55 11 91111 1111" must not be a valid telephone number

@@ -12,6 +12,18 @@ Deprecations:
  - Symfony façade validators are no longer supported and were
    removed.
 
+Fixes:
+
+ - `KeySet` now reports which extra keys are causing the rule to fail.
+
+Changes:
+
+ - You can no longer wrap `KeySet` in `Not`.
+ - `Phone` now uses `giggsey/libphonenumber-for-php`, this package needs
+   to be installed if you want to use this validator.
+ - `Phone` now supports the parameter `$countryCode` to validate phones
+   of a specific country.
+
 ## 2.2.4
 
 Meta:

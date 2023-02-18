@@ -24,6 +24,7 @@
     },
     "require-dev": {
         "egulias/email-validator": "^3.0",
+        "giggsey/libphonenumber-for-php-lite": "^8.13",
         "malukenho/docheader": "^1.0",
         "mikey179/vfsstream": "^1.6",
         "phpstan/phpstan": "^1.9",
@@ -38,7 +39,8 @@
         "ext-bcmath": "Arbitrary Precision Mathematics",
         "ext-fileinfo": "File Information",
         "ext-mbstring": "Multibyte String Functions",
-        "egulias/email-validator": "Strict (RFC compliant) email validation"
+        "egulias/email-validator": "Improves the Email rule if available",
+        "giggsey/libphonenumber-for-php-lite": "Enables the phone rule if available"
     },
     "autoload": {
         "psr-4": {

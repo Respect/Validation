@@ -14,7 +14,6 @@ use stdClass;
 
 use function stream_context_create;
 use function tmpfile;
-use function xml_parser_create;
 
 /**
  * @group rule
@@ -37,18 +36,6 @@ final class ResourceTypeTest extends RuleTestCase
             [$rule, stream_context_create()],
             [$rule, tmpfile()],
         ];
-    }
-
-    /**
-     * @test
-     *
-     * @requires PHP < 8.0
-     */
-    public function itShouldTestXmlResource(): void
-    {
-        $rule = new ResourceType();
-
-        self::assertValidInput($rule, xml_parser_create());
     }
 
     /**

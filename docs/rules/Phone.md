@@ -2,19 +2,15 @@
 
 - `Phone()`
 
-Validates whether the input is a valid phone number.
+Validates whether the input is a valid phone number. This rule requires
+the `giggsey/libphonenumber-for-php-lite` package.
 
-Validates a valid 7, 10, 11 digit phone number (North America, Europe and most
-Asian and Middle East countries), supporting country and area codes (in dot,
-space or dashed notations) such as:
 
-- (555)555-5555
-- 555 555 5555
-- +5(555)555.5555
-- 33(1)22 22 22 22
-- +33(1)22 22 22 22
-- +33(020)7777 7777
-- 03-6106666
+```php
+v::phone()->validate('+1 650 253 00 00'); // true
+v::phone('BR')->validate('+55 11 91111 1111'); // true
+v::phone('BR')->validate('11 91111 1111'); // false
+```
 
 ## Categorization
 
@@ -24,6 +20,7 @@ space or dashed notations) such as:
 
 Version | Description
 --------|-------------
+  2.3.0 | Updated to use external validator
   0.5.0 | Created
 
 ***

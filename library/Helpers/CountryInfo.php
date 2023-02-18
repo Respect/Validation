@@ -16,7 +16,7 @@ use function file_get_contents;
 use function json_decode;
 use function sprintf;
 
-final class Subdivisions
+final class CountryInfo
 {
     /**
      * @var mixed[]
