@@ -12,8 +12,6 @@ namespace Respect\Validation\Helpers;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function file_exists;
-use function file_get_contents;
-use function json_decode;
 use function sprintf;
 
 final class CountryInfo
@@ -23,14 +21,22 @@ final class CountryInfo
      */
     private $data;
 
+    /**
+     * @var mixed[]
+     */
+    private static $runtimeCache = [];
+
     public function __construct(string $countryCode)
     {
-        $filename = __DIR__ . '/../../data/iso_3166-2/' . $countryCode . '.json';
-        if (!file_exists($filename)) {
-            throw new ComponentException(sprintf('"%s" is not a supported country code', $countryCode));
+        if (!isset(static::$runtimeCache[$countryCode])) {
+            $filename = __DIR__ . '/../../data/iso_3166-2/' . $countryCode . '.php';
+            if (!file_exists($filename)) {
+                throw new ComponentException(sprintf('"%s" is not a supported country code', $countryCode));
+            }
+            static::$runtimeCache[$countryCode] = require $filename;
         }
 
-        $this->data = (array) json_decode((string) file_get_contents($filename), true);
+        $this->data = static::$runtimeCache[$countryCode];
     }
 
     public function getCountry(): string
