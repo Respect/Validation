@@ -9,7 +9,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Helpers;
 
+use DateTime;
+use DateTimeZone;
+
 use function checkdate;
+use function date_default_timezone_get;
 use function date_parse_from_format;
 use function preg_match;
 
@@ -30,13 +34,25 @@ trait CanValidateDateTime
             'r' => 'D, d M Y H:i:s O',
         ];
 
-        $info = date_parse_from_format($exceptionalFormats[$format] ?? $format, $value);
+        $format = $exceptionalFormats[$format] ?? $format;
+
+        $info = date_parse_from_format($format, $value);
 
         if (!$this->isDateTimeParsable($info)) {
             return false;
         }
 
         if ($this->isDateFormat($format)) {
+            $formattedDate = DateTime::createFromFormat(
+                $format,
+                $value,
+                new DateTimeZone(date_default_timezone_get())
+            );
+
+            if ($formattedDate === false || $value !== $formattedDate->format($format)) {
+                return false;
+            }
+
             return $this->isDateInformation($info);
         }
 

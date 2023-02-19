@@ -72,6 +72,7 @@ final class DateTimeTest extends RuleTestCase
             [new DateTime('h'), 24],
             [new DateTime('c'), new DateTimeMutable()],
             [new DateTime('c'), new DateTimeImmutable()],
+            [new DateTime('Y-m-d H:i:s'), '21-3-123:12:01'],
         ];
     }
 
