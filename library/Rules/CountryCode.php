@@ -368,7 +368,7 @@ final class CountryCode extends AbstractSearcher
     /**
      * {@inheritDoc}
      */
-    protected function getDataSource(): array
+    protected function getDataSource($input = null): array
     {
         return array_column(self::COUNTRY_CODES, self::SET_INDEXES[$this->set]);
     }

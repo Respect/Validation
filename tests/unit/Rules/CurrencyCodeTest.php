@@ -49,7 +49,6 @@ final class CurrencyCodeTest extends RuleTestCase
             [$rule, 'BTC'],
             [$rule, 'GGP'],
             [$rule, 'USA'],
-            [$rule, 'xxx'],
         ];
     }
 }

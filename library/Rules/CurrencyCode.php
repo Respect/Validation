@@ -24,7 +24,7 @@ final class CurrencyCode extends AbstractSearcher
      *
      * {@inheritDoc}
      */
-    protected function getDataSource(): array
+    protected function getDataSource($input = null): array
     {
         return [
             'AED', // UAE Dirham
