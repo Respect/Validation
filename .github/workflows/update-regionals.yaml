@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Install xmlstarlet
-        run: sudo apt install xmlstarlet
+        run: sudo apt install xmlstarlet idn2
 
       - name: Checkout
         uses: actions/checkout@v3
