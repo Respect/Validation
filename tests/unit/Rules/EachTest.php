@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Validatable;
 use SplStack;
@@ -91,6 +92,27 @@ final class EachTest extends RuleTestCase
 
         $rule = new Each($validatable);
         $rule->check(range(1, 3));
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldNotOverrideMessages(): void
+    {
+        $rule = new Each(new StringType());
+        try {
+            $rule->assert([1, 2, 3]);
+        } catch (NestedValidationException $e) {
+            $this->assertEquals(
+                $e->getMessages(),
+                [
+                    'each' => 'Each item in `{ 1, 2, 3 }` must be valid',
+                    'stringType.0' => '1 must be of type string',
+                    'stringType.1' => '2 must be of type string',
+                    'stringType.2' => '3 must be of type string',
+                ]
+            );
+        }
     }
 
     /**
