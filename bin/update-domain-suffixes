@@ -55,10 +55,10 @@ cat "$LIST_FILENAME" |
             grep "^$tld_with_suffix " |
             cut -d" " -f2 |
             tr '[:lower:]' '[:upper:]' |
-            sort -u | while read -r suffix
+            LC_ALL=C sort | while read -r suffix
             do
                 echo "    '$suffix.$tld_with_suffix',"
-            done || :)"
+            done | LC_ALL=C sort || :)"
 
         if test -n "$suffixlist"
         then
@@ -73,5 +73,7 @@ $suffixlist
             echo "- Skipping public-suffix/$tld_with_suffix.php"
         fi
     done
+
+wait
 
 echo "Finished!"
