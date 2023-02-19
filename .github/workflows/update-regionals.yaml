@@ -1,4 +1,4 @@
-name: Update currency codes
+name: Update Regional Information
 
 on:
   workflow_dispatch:
@@ -6,8 +6,8 @@ on:
     - cron:  '0 0 * * *'
 
 jobs:
-  update-currency-codes:
-    name: Update currency codes
+  update-regional-information:
+    name: Update Regional Information
 
     runs-on: ubuntu-latest
 
@@ -20,15 +20,24 @@ jobs:
         with:
           ref: ${{ secrets.LAST_MINOR_VERSION }}
 
-      - name: Execute script
+      - name: Update currency codes
         run: bin/update-currency-codes
+
+      - name: Update language codes 
+        run: bin/update-language-codes
+
+      - name: Update top level domains
+        run: bin/update-domain-toplevel
+
+      - name: Update public domain suffixes
+        run: bin/update-domain-suffixes
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v4
         with:
           committer: The Respect Panda <therespectpanda@gmail.com>
           author: The Respect Panda <therespectpanda@gmail.com>
-          commit-message: Update list of currency codes
-          title: Update list of currency codes
+          commit-message: Update Regional Information
+          title: Update Regional Information
           base: ${{ secrets.LAST_MINOR_VERSION }}
-          branch: "workflows/update-currency-codes"
+          branch: "workflows/update-regional-information"
