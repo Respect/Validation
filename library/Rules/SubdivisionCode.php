@@ -45,7 +45,7 @@ final class SubdivisionCode extends AbstractSearcher
     /**
      * {@inheritDoc}
      */
-    protected function getDataSource(): array
+    protected function getDataSource($input = null): array
     {
         return $this->countryInfo;
     }

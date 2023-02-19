@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+# Usage: {script} RULE_FILENAME
+# Update list of TLD
+
+set -euo pipefail
+
+declare -r IFS=$'\n'
+
+declare -r LIST_URL="https://publicsuffix.org/list/public_suffix_list.dat"
+declare -r LIST_FILENAME=$(mktemp)
+
+declare -r RULE_FILENAME_TEMPORARY=$(mktemp)
+
+echo "- Downloading list"
+curl --silent --location "${LIST_URL}" --output  "${LIST_FILENAME}"
+
+echo "- Removing old data"
+rm -Rf data/domain/*
+mkdir -p data/domain/public-suffix
+
+parse_tlds_list () {
+    sed '/^\/\/*/d' |
+    idn2 |
+    tr '[:lower:]' '[:upper:]' |
+    sed '/^$/d' | while read -r suffix
+    do
+        suffix="${suffix#\*\.}"
+        suffix="${suffix#\!}"
+        tld="${suffix##*\.}"
+        if test "$tld" != "$suffix"
+        then
+            prefix="${suffix%.$tld}"
+            echo "$tld $prefix"
+        else
+            prefix=""
+        fi
+    done
+}
+
+echo "- Creating files"
+
+cat "$LIST_FILENAME" |
+    parse_tlds_list | 
+    cut -d" " -f1 |
+    sort -u | while read -r tld_with_suffix
+    do
+        suffixlist="$(cat "$LIST_FILENAME" | while read -r line
+            do
+                if test "// ===END ICANN DOMAINS===" = "$line"
+                then break
+                else echo "$line"
+                fi
+            done |
+            parse_tlds_list |
+            grep "^$tld_with_suffix " |
+            cut -d" " -f2 |
+            tr '[:lower:]' '[:upper:]' |
+            sort -u | while read -r suffix
+            do
+                echo "    '$suffix.$tld_with_suffix',"
+            done || :)"
+
+        if test -n "$suffixlist"
+        then
+            echo "- Creating public-suffix/$tld_with_suffix.php"
+            echo "<?php declare(strict_types=1);
+// Copyright (c) https://publicsuffix.org
+// SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
+return [
+$suffixlist
+];" > "data/domain/public-suffix/$tld_with_suffix.php"
+        else
+            echo "- Skipping public-suffix/$tld_with_suffix.php"
+        fi
+    done
+
+echo "Finished!"

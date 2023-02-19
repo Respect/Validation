@@ -97,6 +97,6 @@ return [
 }
 
 clone_repository
-# update_country_codes
+update_country_codes
 update_subdivision_codes
 

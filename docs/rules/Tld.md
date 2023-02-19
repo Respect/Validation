@@ -8,6 +8,7 @@ Validates whether the input is a top-level domain.
 v::tld()->validate('com'); // true
 v::tld()->validate('ly'); // true
 v::tld()->validate('org'); // true
+v::tld()->validate('COM'); // true
 ```
 
 ## Categorization
@@ -28,3 +29,4 @@ See also:
 - [Ip](Ip.md)
 - [MacAddress](MacAddress.md)
 - [SubdivisionCode](SubdivisionCode.md)
+- [PublicDomainSuffix](PublicDomainSuffix.md)

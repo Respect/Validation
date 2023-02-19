@@ -1,4 +1,4 @@
-name: Update top-level domains
+name: Update domains
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   update-tld:
-    name: Update top-level domains
+    name: Update domains
 
     runs-on: ubuntu-latest
 
@@ -17,15 +17,18 @@ jobs:
         with:
           ref: ${{ secrets.LAST_MINOR_VERSION }}
 
-      - name: Execute script
-        run: bin/update-tld
+      - name: Execute bin/update-domain-toplevel
+        run: bin/update-domain-toplevel
+
+      - name: Execute bin/update-domain-suffixes
+        run: bin/update-domain-suffixes
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v4
         with:
           committer: The Respect Panda <therespectpanda@gmail.com>
           author: The Respect Panda <therespectpanda@gmail.com>
-          commit-message: Update list of top-level domains
-          title: Update list of top-level domains
+          commit-message: Update list of domains
+          title: Update list of domains
           base: ${{ secrets.LAST_MINOR_VERSION }}
           branch: "workflows/update-tld"

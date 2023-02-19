@@ -30,13 +30,13 @@ final class AbstractSearcherTest extends TestCase
      */
     public function shouldValidateFromDataSource(): void
     {
-        $input = 'bar';
+        $input = 'BAZ';
 
         $rule = $this->getMockForAbstractClass(AbstractSearcher::class);
         $rule
             ->expects(self::once())
             ->method('getDataSource')
-            ->willReturn(['foo', $input, 'baz']);
+            ->willReturn(['FOO', $input, 'BAZ']);
 
         self::assertTrue($rule->validate($input));
     }
