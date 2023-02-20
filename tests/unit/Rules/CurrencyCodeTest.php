@@ -46,6 +46,7 @@ final class CurrencyCodeTest extends RuleTestCase
         $rule = new CurrencyCode();
 
         return [
+            [$rule, ''],
             [$rule, 'BTC'],
             [$rule, 'GGP'],
             [$rule, 'USA'],
