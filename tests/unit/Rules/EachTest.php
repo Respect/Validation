@@ -106,7 +106,6 @@ final class EachTest extends RuleTestCase
             $this->assertEquals(
                 $e->getMessages(),
                 [
-                    'each' => 'Each item in `{ 1, 2, 3 }` must be valid',
                     'stringType.0' => '1 must be of type string',
                     'stringType.1' => '2 must be of type string',
                     'stringType.2' => '3 must be of type string',
