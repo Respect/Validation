@@ -150,6 +150,7 @@ class NestedValidationException extends ValidationException implements IteratorA
     /**
      * @return SplObjectStorage
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         $childrenExceptions = new SplObjectStorage();
