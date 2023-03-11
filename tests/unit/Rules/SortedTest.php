@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
  * @group rules
@@ -55,6 +56,10 @@ final class SortedTest extends RuleTestCase
             'DESC string-sequence with ASC validation' => [new Sorted('ASC'), '321'],
             'ASC array-sequence with DESC validation' => [new Sorted('DESC'), [1, 2, 3]],
             'ASC string-sequence with DESC validation' => [new Sorted('DESC'), 'abc'],
+            'unsupported value (integer)' => [new Sorted('DESC'), 1 ],
+            'unsupported value (float)' => [new Sorted('DESC'), 1.2 ],
+            'unsupported value (bool)' => [new Sorted('DESC'), true ],
+            'unsupported value (object)' => [new Sorted('DESC'), new stdClass() ],
         ];
     }
 
