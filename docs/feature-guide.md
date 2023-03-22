@@ -28,7 +28,7 @@ $usernameValidator = v::alnum()->noWhitespace()->length(1, 15);
 $usernameValidator->validate('alganet'); // true
 ```
 
-## Validating object attributes
+## Validating object properties
 
 Given this simple object:
 
@@ -38,11 +38,11 @@ $user->name = 'Alexandre';
 $user->birthdate = '1987-07-01';
 ```
 
-Is possible to validate its attributes in a single chain:
+Is possible to validate its properties in a single chain:
 
 ```php
-$userValidator = v::attribute('name', v::stringType()->length(1, 32))
-                  ->attribute('birthdate', v::date()->minAge(18));
+$userValidator = v::property('name', v::stringType()->length(1, 32))
+                  ->property('birthdate', v::date()->minAge(18));
 
 $userValidator->validate($user); // true
 ```
@@ -180,7 +180,7 @@ try {
 
 The `getMessages()` returns an array in which the keys are the name of the
 validators, or its reference in case you are using [Key](rules/Key.md) or
-[Attribute](rules/Attribute.md) rule:
+[Property](rules/Property.md) rule:
 
 ```no-highlight
 Array
@@ -230,7 +230,7 @@ in the chain fails.
 
 ## Validator name
 
-On `v::attribute()` and `v::key()`, `{{name}}` is the attribute/key name. For others,
+On `v::property()` and `v::key()`, `{{name}}` is the property/key name. For others,
 is the same as the input. You can customize a validator name using:
 
 ```php

@@ -157,7 +157,6 @@
 
 - [AllOf](rules/AllOf.md)
 - [AnyOf](rules/AnyOf.md)
-- [Attribute](rules/Attribute.md)
 - [Call](rules/Call.md)
 - [Each](rules/Each.md)
 - [Key](rules/Key.md)
@@ -169,6 +168,7 @@
 - [Nullable](rules/Nullable.md)
 - [OneOf](rules/OneOf.md)
 - [Optional](rules/Optional.md)
+- [Property](rules/Property.md)
 - [When](rules/When.md)
 
 ## Numbers
@@ -197,9 +197,9 @@
 
 ## Objects
 
-- [Attribute](rules/Attribute.md)
 - [Instance](rules/Instance.md)
 - [ObjectType](rules/ObjectType.md)
+- [Property](rules/Property.md)
 
 ## Strings
 
@@ -240,10 +240,10 @@
 
 ## Structures
 
-- [Attribute](rules/Attribute.md)
 - [Key](rules/Key.md)
 - [KeyNested](rules/KeyNested.md)
 - [KeySet](rules/KeySet.md)
+- [Property](rules/Property.md)
 
 ## Types
 
@@ -277,7 +277,6 @@
 - [AnyOf](rules/AnyOf.md)
 - [ArrayType](rules/ArrayType.md)
 - [ArrayVal](rules/ArrayVal.md)
-- [Attribute](rules/Attribute.md)
 - [Base](rules/Base.md)
 - [Base64](rules/Base64.md)
 - [Between](rules/Between.md)
@@ -386,6 +385,7 @@
 - [PostalCode](rules/PostalCode.md)
 - [PrimeNumber](rules/PrimeNumber.md)
 - [Printable](rules/Printable.md)
+- [Property](rules/Property.md)
 - [Punct](rules/Punct.md)
 - [Readable](rules/Readable.md)
 - [Regex](rules/Regex.md)

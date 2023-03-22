@@ -27,22 +27,22 @@ exceptionFullMessage(static function (): void {
     ];
     $object = json_decode((string) json_encode($array));
     v::create()
-        ->attribute(
+        ->property(
             'mysql',
             v::create()
-                ->attribute('host', v::stringType(), true)
-                ->attribute('user', v::stringType(), true)
-                ->attribute('password', v::stringType(), true)
-                ->attribute('schema', v::stringType(), true),
+                ->property('host', v::stringType(), true)
+                ->property('user', v::stringType(), true)
+                ->property('password', v::stringType(), true)
+                ->property('schema', v::stringType(), true),
             true
         )
-        ->attribute(
+        ->property(
             'postgresql',
             v::create()
-                ->attribute('host', v::stringType(), true)
-                ->attribute('user', v::stringType(), true)
-                ->attribute('password', v::stringType(), true)
-                ->attribute('schema', v::stringType(), true),
+                ->property('host', v::stringType(), true)
+                ->property('user', v::stringType(), true)
+                ->property('password', v::stringType(), true)
+                ->property('schema', v::stringType(), true),
             true
         )
         ->setName('the given data')

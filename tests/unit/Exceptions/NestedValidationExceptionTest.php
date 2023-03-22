@@ -23,7 +23,7 @@ final class NestedValidationExceptionTest extends TestCase
     #[Test]
     public function getChildrenShouldReturnExceptionAddedByAddRelated(): void
     {
-        $composite = new AttributeException('input', 'id', [], new Formatter('strval', new KeepOriginalStringName()));
+        $composite = new PropertyException('input', 'id', [], new Formatter('strval', new KeepOriginalStringName()));
         $node = new IntValException('input', 'id', [], new Formatter('strval', new KeepOriginalStringName()));
         $composite->addChild($node);
         self::assertCount(1, $composite->getChildren());
@@ -33,7 +33,7 @@ final class NestedValidationExceptionTest extends TestCase
     #[Test]
     public function addingTheSameInstanceShouldAddJustOneSingleReference(): void
     {
-        $composite = new AttributeException('input', 'id', [], new Formatter('strval', new KeepOriginalStringName()));
+        $composite = new PropertyException('input', 'id', [], new Formatter('strval', new KeepOriginalStringName()));
         $node = new IntValException('input', 'id', [], new Formatter('strval', new KeepOriginalStringName()));
         $composite->addChild($node);
         $composite->addChild($node);

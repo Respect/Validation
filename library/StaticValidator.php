@@ -29,7 +29,7 @@ interface StaticValidator
 
     public static function arrayVal(): ChainedValidator;
 
-    public static function attribute(
+    public static function property(
         string $reference,
         ?Validatable $validator = null,
         bool $mandatory = true

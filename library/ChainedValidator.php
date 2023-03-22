@@ -30,7 +30,7 @@ interface ChainedValidator extends Validatable
 
     public function arrayVal(): ChainedValidator;
 
-    public function attribute(
+    public function property(
         string $reference,
         ?Validatable $validator = null,
         bool $mandatory = true

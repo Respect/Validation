@@ -24,7 +24,6 @@ Version | Description
 See also:
 
 - [ArrayType](ArrayType.md)
-- [Attribute](Attribute.md)
 - [BoolType](BoolType.md)
 - [BoolVal](BoolVal.md)
 - [CallableType](CallableType.md)
@@ -33,6 +32,7 @@ See also:
 - [IntType](IntType.md)
 - [NullType](NullType.md)
 - [Number](Number.md)
+- [Property](Property.md)
 - [ResourceType](ResourceType.md)
 - [StringType](StringType.md)
 - [StringVal](StringVal.md)

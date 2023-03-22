@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-final class AttributeException extends NestedValidationException implements NonOmissibleException
+final class PropertyException extends NestedValidationException implements NonOmissibleException
 {
     public const NOT_PRESENT = 'not_present';
     public const INVALID = 'invalid';
@@ -19,12 +19,12 @@ final class AttributeException extends NestedValidationException implements NonO
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::NOT_PRESENT => 'Attribute {{name}} must be present',
-            self::INVALID => 'Attribute {{name}} must be valid',
+            self::NOT_PRESENT => 'Property {{name}} must be present',
+            self::INVALID => 'Property {{name}} must be valid',
         ],
         self::MODE_NEGATIVE => [
-            self::NOT_PRESENT => 'Attribute {{name}} must not be present',
-            self::INVALID => 'Attribute {{name}} must not validate',
+            self::NOT_PRESENT => 'Property {{name}} must not be present',
+            self::INVALID => 'Property {{name}} must not validate',
         ],
     ];
 

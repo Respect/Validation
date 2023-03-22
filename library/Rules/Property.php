@@ -15,11 +15,11 @@ use Respect\Validation\Validatable;
 use function is_object;
 use function property_exists;
 
-final class Attribute extends AbstractRelated
+final class Property extends AbstractRelated
 {
-    public function __construct(string $reference, ?Validatable $rule = null, bool $mandatory = true)
+    public function __construct(string $name, ?Validatable $rule = null, bool $mandatory = true)
     {
-        parent::__construct($reference, $rule, $mandatory);
+        parent::__construct($name, $rule, $mandatory);
     }
 
     public function getReferenceValue(mixed $input): mixed
