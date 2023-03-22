@@ -37,7 +37,7 @@ try {
 
 ?>
 --EXPECT--
-`TRUE` is not considered as "False"
-"false" is considered as "False"
-- 1 is not considered as "False"
-- 0 is considered as "False"
+`TRUE` must evaluate to `false`
+"false" must not evaluate to `false`
+- 1 must evaluate to `false`
+- 0 must not evaluate to `false`

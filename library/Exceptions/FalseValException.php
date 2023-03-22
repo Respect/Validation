@@ -20,10 +20,10 @@ final class FalseValException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} is not considered as "False"',
+            self::STANDARD => '{{name}} must evaluate to `false`',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} is considered as "False"',
+            self::STANDARD => '{{name}} must not evaluate to `false`',
         ],
     ];
 }

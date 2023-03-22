@@ -36,7 +36,7 @@ try {
 }
 ?>
 --EXPECT--
-"Yes" is considered as "Yes"
-"si" is not considered as "Yes"
-- "Yes" is considered as "Yes"
-- "si" is not considered as "Yes"
+"Yes" must not be similar to "Yes"
+"si" must be similar to "Yes"
+- "Yes" must not be similar to "Yes"
+- "si" must be similar to "Yes"
