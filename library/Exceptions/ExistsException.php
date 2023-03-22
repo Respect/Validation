@@ -20,10 +20,10 @@ final class ExistsException extends ValidationException
      */
     protected $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must exists',
+            self::STANDARD => '{{name}} must exist',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not exists',
+            self::STANDARD => '{{name}} must not exist',
         ],
     ];
 }

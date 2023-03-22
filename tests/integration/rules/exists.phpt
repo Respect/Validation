@@ -36,7 +36,7 @@ try {
 }
 ?>
 --EXPECT--
-"/path/of/a/non-existent/file" must exists
-"tests/fixtures/valid-image.gif" must not exists
-- "/path/of/a/non-existent/file" must exists
-- "tests/fixtures/valid-image.png" must not exists
+"/path/of/a/non-existent/file" must exist
+"tests/fixtures/valid-image.gif" must not exist
+- "/path/of/a/non-existent/file" must exist
+- "tests/fixtures/valid-image.png" must not exist
