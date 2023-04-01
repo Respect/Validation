@@ -9,58 +9,16 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\ConsonantException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::consonant()->check('aeiou');
-} catch (ConsonantException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::consonant('d')->check('daeiou');
-} catch (ConsonantException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::consonant())->check('bcd');
-} catch (ConsonantException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::consonant('a'))->check('abcd');
-} catch (ConsonantException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::consonant()->assert('aeiou');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::consonant('d')->assert('daeiou');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::consonant())->assert('bcd');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::consonant('a'))->assert('abcd');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
+exceptionMessage(static fn() => v::consonant()->check('aeiou'));
+exceptionMessage(static fn() => v::consonant('d')->check('daeiou'));
+exceptionMessage(static fn() => v::not(v::consonant())->check('bcd'));
+exceptionMessage(static fn() => v::not(v::consonant('a'))->check('abcd'));
+exceptionFullMessage(static fn() => v::consonant()->assert('aeiou'));
+exceptionFullMessage(static fn() => v::consonant('d')->assert('daeiou'));
+exceptionFullMessage(static fn() => v::not(v::consonant())->assert('bcd'));
+exceptionFullMessage(static fn() => v::not(v::consonant('a'))->assert('abcd'));
 ?>
 --EXPECT--
 "aeiou" must contain only consonants

@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\StartsWithException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::startsWith('b')->check(['a', 'b']);
-} catch (StartsWithException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::startsWith(1.1))->check([1.1, 2.2]);
-} catch (StartsWithException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::startsWith('3.3', true)->assert([3.3, 4.4]);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::startsWith('c'))->assert(['c', 'd']);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::startsWith('b')->check(['a', 'b']));
+exceptionMessage(static fn() => v::not(v::startsWith(1.1))->check([1.1, 2.2]));
+exceptionFullMessage(static fn() => v::startsWith('3.3', true)->assert([3.3, 4.4]));
+exceptionFullMessage(static fn() => v::not(v::startsWith('c'))->assert(['c', 'd']));
 ?>
 --EXPECT--
 `{ "a", "b" }` must start with "b"

@@ -7,34 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\VersionException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::version()->check('1.3.7--');
-} catch (VersionException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::version())->check('1.0.0-alpha');
-} catch (VersionException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::version()->assert('1.2.3.4-beta');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::version())->assert('1.3.7-rc.1');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
+exceptionMessage(static fn() => v::version()->check('1.3.7--'));
+exceptionMessage(static fn() => v::not(v::version())->check('1.0.0-alpha'));
+exceptionFullMessage(static fn() => v::version()->assert('1.2.3.4-beta'));
+exceptionFullMessage(static fn() => v::not(v::version())->assert('1.3.7-rc.1'));
 ?>
 --EXPECT--
 "1.3.7--" must be a version

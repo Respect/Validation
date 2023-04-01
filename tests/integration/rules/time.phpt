@@ -7,35 +7,14 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\TimeException;
 use Respect\Validation\Validator as v;
 
 date_default_timezone_set('UTC');
 
-try {
-    v::time()->check('2018-01-30');
-} catch (TimeException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::time())->check('09:25:46');
-} catch (TimeException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::time()->assert('2018-01-30');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::time('g:i A'))->assert('8:13 AM');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::time()->check('2018-01-30'));
+exceptionMessage(static fn() => v::not(v::time())->check('09:25:46'));
+exceptionFullMessage(static fn() => v::time()->assert('2018-01-30'));
+exceptionFullMessage(static fn() => v::not(v::time('g:i A'))->assert('8:13 AM'));
 ?>
 --EXPECT--
 "2018-01-30" must be a valid time in the format "23:59:59"

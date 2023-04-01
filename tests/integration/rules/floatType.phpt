@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\FloatTypeException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::floatType()->check('42.33');
-} catch (FloatTypeException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::floatType())->check(INF);
-} catch (FloatTypeException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::floatType()->assert(true);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::floatType())->assert(2.0);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::floatType()->check('42.33'));
+exceptionMessage(static fn() => v::not(v::floatType())->check(INF));
+exceptionFullMessage(static fn() => v::floatType()->assert(true));
+exceptionFullMessage(static fn() => v::not(v::floatType())->assert(2.0));
 ?>
 --EXPECT--
 "42.33" must be of type float

@@ -7,57 +7,16 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\NotOptionalException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::notOptional()->check(null);
-} catch (NotOptionalException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::notOptional())->check(0);
-} catch (NotOptionalException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::notOptional()->setName('Field')->check(null);
-} catch (NotOptionalException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::notOptional()->setName('Field'))->check([]);
-} catch (NotOptionalException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::notOptional()->assert('');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::notOptional())->assert([]);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::notOptional()->setName('Field')->assert('');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::notOptional()->setName('Field'))->assert([]);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::notOptional()->check(null));
+exceptionMessage(static fn() => v::not(v::notOptional())->check(0));
+exceptionMessage(static fn() => v::notOptional()->setName('Field')->check(null));
+exceptionMessage(static fn() => v::not(v::notOptional()->setName('Field'))->check([]));
+exceptionFullMessage(static fn() => v::notOptional()->assert(''));
+exceptionFullMessage(static fn() => v::not(v::notOptional())->assert([]));
+exceptionFullMessage(static fn() => v::notOptional()->setName('Field')->assert(''));
+exceptionFullMessage(static fn() => v::not(v::notOptional()->setName('Field'))->assert([]));
 ?>
 --EXPECT--
 The value must not be optional

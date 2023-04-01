@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\FiniteException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::finite()->check('');
-} catch (FiniteException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::finite())->check(10);
-} catch (FiniteException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::finite()->assert([12]);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::finite())->assert('123456');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::finite()->check(''));
+exceptionMessage(static fn() => v::not(v::finite())->check(10));
+exceptionFullMessage(static fn() => v::finite()->assert([12]));
+exceptionFullMessage(static fn() => v::not(v::finite())->assert('123456'));
 ?>
 --EXPECT--
 "" must be a finite number

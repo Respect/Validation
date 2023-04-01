@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\ScalarValException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::scalarVal()->check([]);
-} catch (ScalarValException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::scalarVal())->check(true);
-} catch (ScalarValException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::scalarVal()->assert(new stdClass());
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::scalarVal())->assert(42);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::scalarVal()->check([]));
+exceptionMessage(static fn() => v::not(v::scalarVal())->check(true));
+exceptionFullMessage(static fn() => v::scalarVal()->assert(new stdClass()));
+exceptionFullMessage(static fn() => v::not(v::scalarVal())->assert(42));
 ?>
 --EXPECT--
 `{ }` must be a scalar value

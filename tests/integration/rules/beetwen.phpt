@@ -7,34 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\BetweenException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::between(1, 2)->check(0);
-} catch (BetweenException $e) {
-    echo $e->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::between('yesterday', 'tomorrow'))->check('today');
-} catch (BetweenException $e) {
-    echo $e->getMessage() . PHP_EOL;
-}
-
-try {
-    v::between('a', 'c')->assert('d');
-} catch (NestedValidationException $e) {
-    echo $e->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::between(-INF, INF))->assert(0);
-} catch (NestedValidationException $e) {
-    echo $e->getFullMessage() . PHP_EOL;
-}
-
+exceptionMessage(static fn() => v::between(1, 2)->check(0));
+exceptionMessage(static fn() => v::not(v::between('yesterday', 'tomorrow'))->check('today'));
+exceptionFullMessage(static fn() => v::between('a', 'c')->assert('d'));
+exceptionFullMessage(static fn() => v::not(v::between(-INF, INF))->assert(0));
 ?>
 --EXPECT--
 0 must be between 1 and 2

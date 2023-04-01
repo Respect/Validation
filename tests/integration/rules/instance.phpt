@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\InstanceException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::instance(DateTime::class)->check('');
-} catch (InstanceException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::instance(Traversable::class))->check(new ArrayObject());
-} catch (InstanceException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::instance(ArrayIterator::class)->assert(new stdClass());
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::instance(stdClass::class))->assert(new stdClass());
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::instance(DateTime::class)->check(''));
+exceptionMessage(static fn() => v::not(v::instance(Traversable::class))->check(new ArrayObject()));
+exceptionFullMessage(static fn() => v::instance(ArrayIterator::class)->assert(new stdClass()));
+exceptionFullMessage(static fn() => v::not(v::instance(stdClass::class))->assert(new stdClass()));
 ?>
 --EXPECT--
 "" must be an instance of "DateTime"

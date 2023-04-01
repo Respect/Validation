@@ -7,7 +7,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\PhoneException;
 use Respect\Validation\Validator as v;
 
 $work = new stdClass();
@@ -26,7 +25,7 @@ $phoneNumbers->work = $work;
 
 $validateThis = ['phoneNumbers' => $phoneNumbers];
 
-try {
+exceptionMessage(static function () use ($validateThis) {
     v::create()
         ->keyNested('phoneNumbers.personal.country', v::intType(), false)
         ->keyNested('phoneNumbers.personal.number', v::phone(), false)
@@ -35,9 +34,7 @@ try {
         ->keyNested('phoneNumbers.work.number', v::phone(), false)
         ->keyNested('phoneNumbers.work.primary', v::boolType(), false)
         ->check($validateThis);
-} catch (PhoneException $exception) {
-    echo $exception->getMessage();
-}
+});
 ?>
 --EXPECT--
 phoneNumbers.personal.number must be a valid telephone number

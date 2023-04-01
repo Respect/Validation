@@ -7,8 +7,6 @@ Henrique Moody <henriquemoody@gmail.com>
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validator as v;
 
 $validator = v::not(
@@ -23,17 +21,8 @@ $validator = v::not(
     )
 );
 
-try {
-    $validator->check(2);
-} catch (ValidationException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    $validator->assert(2);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => $validator->check(2));
+exceptionFullMessage(static fn() => $validator->assert(2));
 ?>
 --EXPECT--
 2 must not be positive

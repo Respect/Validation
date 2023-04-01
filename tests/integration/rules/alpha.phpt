@@ -7,57 +7,16 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\AlphaException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::alpha()->check('aaa%a');
-} catch (AlphaException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::alpha(' ')->check('bbb%b');
-} catch (AlphaException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::alpha())->check('ccccc');
-} catch (AlphaException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::alpha('% '))->check('ddd%d');
-} catch (AlphaException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::alpha()->assert('eee^e');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::alpha())->assert('fffff');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::alpha('* &%')->assert('ggg^g');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::alpha('^'))->assert('hhh^h');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::alpha()->check('aaa%a'));
+exceptionMessage(static fn() => v::alpha(' ')->check('bbb%b'));
+exceptionMessage(static fn() => v::not(v::alpha())->check('ccccc'));
+exceptionMessage(static fn() => v::not(v::alpha('% '))->check('ddd%d'));
+exceptionFullMessage(static fn() => v::alpha()->assert('eee^e'));
+exceptionFullMessage(static fn() => v::not(v::alpha())->assert('fffff'));
+exceptionFullMessage(static fn() => v::alpha('* &%')->assert('ggg^g'));
+exceptionFullMessage(static fn() => v::not(v::alpha('^'))->assert('hhh^h'));
 ?>
 --EXPECT--
 "aaa%a" must contain only letters (a-z)

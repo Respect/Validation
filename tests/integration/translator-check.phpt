@@ -7,7 +7,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Factory;
 use Respect\Validation\Validator;
 
@@ -20,11 +19,7 @@ Factory::setDefaultInstance(
         })
 );
 
-try {
-    Validator::stringType()->length(2, 15)->check(0);
-} catch (ValidationException $exception) {
-    echo $exception->getMessage();
-}
+exceptionMessage(static fn() => Validator::stringType()->length(2, 15)->check(0));
 ?>
 --EXPECT--
 0 deve ser do tipo string

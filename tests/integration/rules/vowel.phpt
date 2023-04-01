@@ -7,58 +7,16 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\VowelException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::vowel()->check('b');
-} catch (VowelException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::vowel('c')->check('d');
-} catch (VowelException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::vowel())->check('a');
-} catch (VowelException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::vowel('f'))->check('e');
-} catch (VowelException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::vowel()->assert('g');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::vowel('h')->assert('j');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::vowel())->assert('i');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::vowel('k'))->assert('o');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
+exceptionMessage(static fn() => v::vowel()->check('b'));
+exceptionMessage(static fn() => v::vowel('c')->check('d'));
+exceptionMessage(static fn() => v::not(v::vowel())->check('a'));
+exceptionMessage(static fn() => v::not(v::vowel('f'))->check('e'));
+exceptionFullMessage(static fn() => v::vowel()->assert('g'));
+exceptionFullMessage(static fn() => v::vowel('h')->assert('j'));
+exceptionFullMessage(static fn() => v::not(v::vowel())->assert('i'));
+exceptionFullMessage(static fn() => v::not(v::vowel('k'))->assert('o'));
 ?>
 --EXPECT--
 "b" must contain only vowels

@@ -9,14 +9,9 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator;
 
-try {
-    Validator::stringType()->length(2, 15)->assert(0);
-} catch (NestedValidationException $e) {
-    echo $e->getFullMessage();
-}
+exceptionFullMessage(static fn() => Validator::stringType()->length(2, 15)->assert(0));
 ?>
 --EXPECT--
 - All of the required rules must pass for 0

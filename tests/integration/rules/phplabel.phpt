@@ -10,33 +10,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\PhpLabelException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::phpLabel()->check('f o o');
-} catch (PhpLabelException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::phpLabel())->check('correctOne');
-} catch (PhpLabelException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::phpLabel()->assert('0wner');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::phpLabel())->assert('Respect');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::phpLabel()->check('f o o'));
+exceptionMessage(static fn() => v::not(v::phpLabel())->check('correctOne'));
+exceptionFullMessage(static fn() => v::phpLabel()->assert('0wner'));
+exceptionFullMessage(static fn() => v::not(v::phpLabel())->assert('Respect'));
 ?>
 --EXPECT--
 "f o o" must be a valid PHP label

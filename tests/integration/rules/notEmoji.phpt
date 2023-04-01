@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\NotEmojiException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::notEmoji()->check('🍕');
-} catch (NotEmojiException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::notEmoji())->check('AB');
-} catch (NotEmojiException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::notEmoji()->assert('🏄');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::notEmoji())->assert('YZ');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::notEmoji()->check('🍕'));
+exceptionMessage(static fn() => v::not(v::notEmoji())->check('AB'));
+exceptionFullMessage(static fn() => v::notEmoji()->assert('🏄'));
+exceptionFullMessage(static fn() => v::not(v::notEmoji())->assert('YZ'));
 ?>
 --EXPECT--
 "🍕" must not contain an Emoji

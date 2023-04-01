@@ -8,45 +8,14 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\IntValException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::intVal()->check('42.33');
-} catch (IntValException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::intVal())->check(2);
-} catch (IntValException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::intVal()->assert('Foo');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::intVal())->assert(3);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::intVal())->assert(-42);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::intVal())->assert('-42');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::intVal()->check('42.33'));
+exceptionMessage(static fn() => v::not(v::intVal())->check(2));
+exceptionFullMessage(static fn() => v::intVal()->assert('Foo'));
+exceptionFullMessage(static fn() => v::not(v::intVal())->assert(3));
+exceptionFullMessage(static fn() => v::not(v::intVal())->assert(-42));
+exceptionFullMessage(static fn() => v::not(v::intVal())->assert('-42'));
 ?>
 --EXPECT--
 "42.33" must be an integer number

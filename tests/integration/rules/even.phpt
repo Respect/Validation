@@ -7,34 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\EvenException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::even()->check(-1);
-} catch (EvenException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::even()->assert(5);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::even())->check(6);
-} catch (EvenException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::even())->assert(8);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
+exceptionMessage(static fn() => v::even()->check(-1));
+exceptionFullMessage(static fn() => v::even()->assert(5));
+exceptionMessage(static fn() => v::not(v::even())->check(6));
+exceptionFullMessage(static fn() => v::not(v::even())->assert(8));
 ?>
 --EXPECT--
 -1 must be an even number

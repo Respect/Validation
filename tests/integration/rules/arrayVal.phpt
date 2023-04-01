@@ -8,33 +8,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\ArrayValException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::arrayVal()->check('Bla %123');
-} catch (ArrayValException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::arrayVal())->check([42]);
-} catch (ArrayValException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::arrayVal()->assert(new stdClass());
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::arrayVal())->assert(new ArrayObject([2, 3]));
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::arrayVal()->check('Bla %123'));
+exceptionMessage(static fn() => v::not(v::arrayVal())->check([42]));
+exceptionFullMessage(static fn() => v::arrayVal()->assert(new stdClass()));
+exceptionFullMessage(static fn() => v::not(v::arrayVal())->assert(new ArrayObject([2, 3])));
 ?>
 --EXPECT--
 "Bla %123" must be an array value

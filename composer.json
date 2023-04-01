@@ -51,7 +51,10 @@
         "psr-4": {
             "Respect\\Validation\\": "tests/unit/",
             "Respect\\Validation\\Test\\": "tests/library/"
-        }
+        },
+        "files": [
+            "tests/integration/lib/helpers.php"
+        ]
     },
     "scripts": {
         "docheader": "vendor/bin/docheader check library/ tests/",

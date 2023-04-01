@@ -8,33 +8,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\SlugException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::slug()->check('my-Slug');
-} catch (SlugException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::slug())->check('my-slug');
-} catch (SlugException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::slug()->assert('my-Slug');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::slug())->assert('my-slug');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::slug()->check('my-Slug'));
+exceptionMessage(static fn() => v::not(v::slug())->check('my-slug'));
+exceptionFullMessage(static fn() => v::slug()->assert('my-Slug'));
+exceptionFullMessage(static fn() => v::not(v::slug())->assert('my-slug'));
 ?>
 --EXPECT--
 "my-Slug" must be a valid slug

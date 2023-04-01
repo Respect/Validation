@@ -7,34 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\UniqueException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::unique()->check([1, 2, 2, 3]);
-} catch (UniqueException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::unique())->check([1, 2, 3, 4]);
-} catch (UniqueException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::unique()->assert('test');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::unique())->assert(['a', 'b', 'c']);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
+exceptionMessage(static fn() => v::unique()->check([1, 2, 2, 3]));
+exceptionMessage(static fn() => v::not(v::unique())->check([1, 2, 3, 4]));
+exceptionFullMessage(static fn() => v::unique()->assert('test'));
+exceptionFullMessage(static fn() => v::not(v::unique())->assert(['a', 'b', 'c']));
 ?>
 --EXPECT--
 `{ 1, 2, 2, 3 }` must not contain duplicates

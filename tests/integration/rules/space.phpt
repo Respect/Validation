@@ -7,57 +7,16 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\SpaceException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::space()->check('ab');
-} catch (SpaceException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::space('c')->check('cd');
-} catch (SpaceException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::space())->check("\t");
-} catch (SpaceException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::space('def'))->check("\r");
-} catch (SpaceException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::space()->assert('ef');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::space('e')->assert('gh');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::space())->assert("\n");
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::space('yk'))->assert(' k');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::space()->check('ab'));
+exceptionMessage(static fn() => v::space('c')->check('cd'));
+exceptionMessage(static fn() => v::not(v::space())->check("\t"));
+exceptionMessage(static fn() => v::not(v::space('def'))->check("\r"));
+exceptionFullMessage(static fn() => v::space()->assert('ef'));
+exceptionFullMessage(static fn() => v::space('e')->assert('gh'));
+exceptionFullMessage(static fn() => v::not(v::space())->assert("\n"));
+exceptionFullMessage(static fn() => v::not(v::space('yk'))->assert(' k'));
 ?>
 --EXPECT--
 "ab" must contain only space characters

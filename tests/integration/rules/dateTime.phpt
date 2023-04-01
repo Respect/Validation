@@ -7,60 +7,18 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\DateTimeException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
 date_default_timezone_set('UTC');
 
-try {
-    v::dateTime()->check('FooBarBazz');
-} catch (DateTimeException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::dateTime('c')->check('06-12-1995');
-} catch (DateTimeException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::dateTime()->assert('QuxQuuxx');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::dateTime('r')->assert(2018013030);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::dateTime())->check('4 days ago');
-} catch (DateTimeException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::dateTime('Y-m-d'))->check('1988-09-09');
-} catch (DateTimeException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::dateTime())->assert('+3 weeks');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::dateTime('d/m/y'))->assert('23/07/99');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
+exceptionMessage(static fn() => v::dateTime()->check('FooBarBazz'));
+exceptionMessage(static fn() => v::dateTime('c')->check('06-12-1995'));
+exceptionFullMessage(static fn() => v::dateTime()->assert('QuxQuuxx'));
+exceptionFullMessage(static fn() => v::dateTime('r')->assert(2018013030));
+exceptionMessage(static fn() => v::not(v::dateTime())->check('4 days ago'));
+exceptionMessage(static fn() => v::not(v::dateTime('Y-m-d'))->check('1988-09-09'));
+exceptionFullMessage(static fn() => v::not(v::dateTime())->assert('+3 weeks'));
+exceptionFullMessage(static fn() => v::not(v::dateTime('d/m/y'))->assert('23/07/99'));
 ?>
 --EXPECT--
 "FooBarBazz" must be a valid date/time

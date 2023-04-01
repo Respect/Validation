@@ -7,57 +7,16 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\DigitException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::digit()->check('abc');
-} catch (DigitException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::digit('-')->check('a-b');
-} catch (DigitException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::digit())->check('123');
-} catch (DigitException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::digit('-'))->check('1-3');
-} catch (DigitException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::digit()->assert('abc');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::digit('-')->assert('a-b');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::digit())->assert('123');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::digit('-'))->assert('1-3');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::digit()->check('abc'));
+exceptionMessage(static fn() => v::digit('-')->check('a-b'));
+exceptionMessage(static fn() => v::not(v::digit())->check('123'));
+exceptionMessage(static fn() => v::not(v::digit('-'))->check('1-3'));
+exceptionFullMessage(static fn() => v::digit()->assert('abc'));
+exceptionFullMessage(static fn() => v::digit('-')->assert('a-b'));
+exceptionFullMessage(static fn() => v::not(v::digit())->assert('123'));
+exceptionFullMessage(static fn() => v::not(v::digit('-'))->assert('1-3'));
 ?>
 --EXPECT--
 "abc" must contain only digits (0-9)

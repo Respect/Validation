@@ -7,45 +7,14 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\NotBlankException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::notBlank()->check(null);
-} catch (NotBlankException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::notBlank()->setName('Field')->check(null);
-} catch (NotBlankException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::notBlank())->check(1);
-} catch (NotBlankException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::notBlank()->assert('');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::notBlank()->setName('Field')->assert('');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::notBlank())->assert([1]);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::notBlank()->check(null));
+exceptionMessage(static fn() => v::notBlank()->setName('Field')->check(null));
+exceptionMessage(static fn() => v::not(v::notBlank())->check(1));
+exceptionFullMessage(static fn() => v::notBlank()->assert(''));
+exceptionFullMessage(static fn() => v::notBlank()->setName('Field')->assert(''));
+exceptionFullMessage(static fn() => v::not(v::notBlank())->assert([1]));
 ?>
 --EXPECT--
 The value must not be blank

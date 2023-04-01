@@ -7,7 +7,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
 $config = [
@@ -23,11 +22,7 @@ $validator->key('user', v::stringType());
 $validator->key('password', v::stringType());
 $validator->key('schema', v::stringType());
 
-try {
-    $validator->assert($config);
-} catch (AllOfException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionFullMessage(static fn() => $validator->assert($config));
 ?>
 --EXPECT--
 - These rules must pass for Settings

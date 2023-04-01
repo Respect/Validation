@@ -7,10 +7,9 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
+exceptionMessages(static function () {
     v::create()
         ->key(
             'mysql',
@@ -40,9 +39,7 @@ try {
                 'password' => 42,
             ],
         ]);
-} catch (NestedValidationException $exception) {
-    print_r($exception->getMessages());
-}
+});
 ?>
 --EXPECT--
 Array
