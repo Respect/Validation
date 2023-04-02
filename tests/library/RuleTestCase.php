@@ -14,6 +14,8 @@ use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
 use Respect\Validation\Validatable;
 
+use function implode;
+use function ltrim;
 use function realpath;
 use function Respect\Stringifier\stringify;
 use function sprintf;
@@ -54,14 +56,6 @@ abstract class RuleTestCase extends TestCase
      * @return mixed[][]
      */
     abstract public function providerForInvalidInput(): array;
-
-    /**
-     * Returns the directory used to store test fixtures.
-     */
-    public function getFixtureDirectory(): string
-    {
-        return (string) realpath(__DIR__ . '/../fixtures');
-    }
 
     /**
      * Create a mock of a Validatable.
@@ -137,6 +131,19 @@ abstract class RuleTestCase extends TestCase
     public function shouldValidateInvalidInput(Validatable $validator, $input): void
     {
         self::assertInvalidInput($validator, $input);
+    }
+
+    /**
+     * Returns the directory used to store test fixtures.
+     */
+    public static function fixture(?string $filename = null): string
+    {
+        $parts = [(string) realpath(__DIR__ . '/../fixtures')];
+        if ($filename !== null) {
+            $parts[] = ltrim($filename, '/');
+        }
+
+        return implode('/', $parts);
     }
 
     /**

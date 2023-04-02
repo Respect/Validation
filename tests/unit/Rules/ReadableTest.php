@@ -29,7 +29,7 @@ final class ReadableTest extends RuleTestCase
      */
     public function providerForValidInput(): array
     {
-        $file = $this->getFixtureDirectory() . '/valid-image.gif';
+        $file = self::fixture('valid-image.gif');
         $rule = new Readable();
 
         return [
@@ -44,7 +44,7 @@ final class ReadableTest extends RuleTestCase
      */
     public function providerForInvalidInput(): array
     {
-        $file = $this->getFixtureDirectory() . '/invalid-image.gif';
+        $file = self::fixture('invalid-image.gif');
         $rule = new Readable();
 
         return [

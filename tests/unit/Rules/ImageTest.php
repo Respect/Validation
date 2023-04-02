@@ -33,12 +33,12 @@ final class ImageTest extends RuleTestCase
         $rule = new Image();
 
         return [
-            [$rule, $this->getFixtureDirectory() . '/valid-image.gif'],
-            [$rule, $this->getFixtureDirectory() . '/valid-image.jpg'],
-            [$rule, $this->getFixtureDirectory() . '/valid-image.png'],
-            [$rule, new SplFileInfo($this->getFixtureDirectory() . '/valid-image.gif')],
-            [$rule, new SplFileInfo($this->getFixtureDirectory() . '/valid-image.jpg')],
-            [$rule, new SplFileObject($this->getFixtureDirectory() . '/valid-image.png')],
+            [$rule, self::fixture('valid-image.gif')],
+            [$rule, self::fixture('valid-image.jpg')],
+            [$rule, self::fixture('valid-image.png')],
+            [$rule, new SplFileInfo(self::fixture('valid-image.gif'))],
+            [$rule, new SplFileInfo(self::fixture('valid-image.jpg'))],
+            [$rule, new SplFileObject(self::fixture('valid-image.png'))],
         ];
     }
 
@@ -50,7 +50,7 @@ final class ImageTest extends RuleTestCase
         $rule = new Image();
 
         return [
-            [$rule, $this->getFixtureDirectory() . '/invalid-image.png'],
+            [$rule, self::fixture('invalid-image.png')],
             [$rule, 'asdf'],
             [$rule, 1],
             [$rule, true],
@@ -62,7 +62,7 @@ final class ImageTest extends RuleTestCase
      */
     public function shouldValidateWithDefinedInstanceOfFileInfo(): void
     {
-        $input = $this->getFixtureDirectory() . '/valid-image.gif';
+        $input = self::fixture('valid-image.gif');
 
         $finfo = $this->createMock(finfo::class);
         $finfo

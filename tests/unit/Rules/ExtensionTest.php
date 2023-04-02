@@ -33,9 +33,9 @@ final class ExtensionTest extends RuleTestCase
             'inc' => [new Extension('inc'), 'filename.inc'],
             'bz2' => [new Extension('bz2'), 'filename.foo.bar.bz2'],
             'php' => [new Extension('php'), new SplFileInfo(__FILE__)],
-            'png' => [new Extension('png'), $this->getFixtureDirectory() . 'valid-image.png'],
-            'gif' => [new Extension('gif'), $this->getFixtureDirectory() . 'valid-image.gif'],
-            'file-invalid' => [new Extension('png'), $this->getFixtureDirectory() . 'invalid-image.png'],
+            'png' => [new Extension('png'), self::fixture('valid-image.png')],
+            'gif' => [new Extension('gif'), self::fixture('valid-image.gif')],
+            'file-invalid' => [new Extension('png'), self::fixture('invalid-image.png')],
         ];
     }
 

@@ -34,11 +34,15 @@ final class WritableTest extends RuleTestCase
     public function providerForValidInput(): array
     {
         $sut = new Writable();
-        $filename = $this->getFixtureDirectory() . '/valid-image.png';
+        $filename = self::fixture('valid-image.png');
+        $directory = self::fixture();
+
+        chmod($filename, 0644);
+        chmod($directory, 0755);
 
         return [
             'writable file' => [$sut, $filename],
-            'writable directory' => [$sut, $this->getFixtureDirectory()],
+            'writable directory' => [$sut, $directory],
             'writable SplFileInfo file' => [$sut, new SplFileInfo($filename)],
             'writable SplFileObject file' => [$sut, new SplFileObject($filename)],
             'writable PSR-7 stream' => [$sut, $this->createPsr7Stream(true)],
@@ -51,9 +55,9 @@ final class WritableTest extends RuleTestCase
     public function providerForInvalidInput(): array
     {
         $rule = new Writable();
-        $filename = $this->getFixtureDirectory() . '/non-writable';
+        $filename = self::fixture('non-writable');
 
-        $this->changeFileModeToUnwritable($filename);
+        chmod($filename, 0555);
 
         return [
             'unwritable PSR-7 stream' => [$rule, $this->createPsr7Stream(false)],
@@ -77,10 +81,5 @@ final class WritableTest extends RuleTestCase
         $stream->expects(self::any())->method('isWritable')->willReturn($isWritable);
 
         return $stream;
-    }
-
-    private function changeFileModeToUnwritable(string $filename): void
-    {
-        chmod($filename, 0555);
     }
 }
