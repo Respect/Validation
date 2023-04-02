@@ -24,33 +24,6 @@ use stdClass;
 final class NullableTest extends TestCase
 {
     /**
-     * Data provider for not nullable values.
-     *
-     * @return mixed[][]
-     */
-    public function providerForNotNullable(): array
-    {
-        return [
-            [''],
-            [1],
-            [[]],
-            [' '],
-            [0],
-            ['0'],
-            [0],
-            ['0.0'],
-            [false],
-            [['']],
-            [[' ']],
-            [[0]],
-            [['0']],
-            [[false]],
-            [[[''], [0]]],
-            [new stdClass()],
-        ];
-    }
-
-    /**
      * @test
      */
     public function shouldNotValidateRuleWhenInputIsNull(): void
@@ -152,5 +125,32 @@ final class NullableTest extends TestCase
 
         $rule = new Nullable($validatable);
         $rule->check($input);
+    }
+
+    /**
+     * Data provider for not nullable values.
+     *
+     * @return mixed[][]
+     */
+    public static function providerForNotNullable(): array
+    {
+        return [
+            [''],
+            [1],
+            [[]],
+            [' '],
+            [0],
+            ['0'],
+            [0],
+            ['0.0'],
+            [false],
+            [['']],
+            [[' ']],
+            [[0]],
+            [['0']],
+            [[false]],
+            [[[''], [0]]],
+            [new stdClass()],
+        ];
     }
 }

@@ -26,7 +26,7 @@ final class EndsWithTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new EndsWith('foo'), ['bar', 'foo']],
@@ -42,7 +42,7 @@ final class EndsWithTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [new EndsWith('foo'), ''],

@@ -28,7 +28,7 @@ final class CallbackTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new Callback('is_a', 'stdClass'), new stdClass()],
@@ -46,7 +46,7 @@ final class CallbackTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [

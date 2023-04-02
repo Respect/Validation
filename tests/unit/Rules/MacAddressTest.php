@@ -31,7 +31,7 @@ final class MacAddressTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $sut = new MacAddress();
 
@@ -46,7 +46,7 @@ final class MacAddressTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $sut = new MacAddress();
 

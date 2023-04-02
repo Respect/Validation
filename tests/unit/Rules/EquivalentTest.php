@@ -24,7 +24,7 @@ final class EquivalentTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new Equivalent(1), true],
@@ -38,7 +38,7 @@ final class EquivalentTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [new Equivalent(1), false],

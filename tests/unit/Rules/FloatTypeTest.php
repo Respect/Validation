@@ -26,7 +26,7 @@ final class FloatTypeTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $rule = new FloatType();
 
@@ -44,7 +44,7 @@ final class FloatTypeTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $rule = new FloatType();
 

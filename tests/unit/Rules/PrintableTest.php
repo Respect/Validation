@@ -27,7 +27,7 @@ final class PrintableTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $rule = new Printable();
 
@@ -47,7 +47,7 @@ final class PrintableTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $rule = new Printable();
 

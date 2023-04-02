@@ -24,49 +24,6 @@ use Respect\Validation\Test\RuleTestCase;
 final class TimeTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
-     */
-    public function providerForValidInput(): array
-    {
-        return [
-            [new Time(), '00:00:00'],
-            [new Time(), '23:20:59'],
-            [new Time('H:i'), '23:59'],
-            [new Time('g:i A'), '8:13 AM'],
-            [new Time('His'), 232059],
-            [new Time('H:i:s.u'), '08:16:01.000000'],
-            [new Time('ga'), '3am'],
-        ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function providerForInvalidInput(): array
-    {
-        return [
-            [new Time(), '00:00:60'],
-            [new Time(), '00:60:00'],
-            [new Time(), '24:00:00'],
-            [new Time(), '00:00'],
-            [new Time(), new DateTime()],
-            [new Time(), new DateTimeImmutable()],
-            [new Time(), ''],
-        ];
-    }
-
-    /**
-     * @return mixed[][]
-     */
-    public function invalidFormatsProvider(): array
-    {
-        return [
-            ['Y-m-d H:i:s'],
-            ['M g:i A'],
-        ];
-    }
-
-    /**
      * @test
      *
      * @dataProvider invalidFormatsProvider
@@ -88,5 +45,48 @@ final class TimeTest extends RuleTestCase
         $exception = $equals->reportError('input');
 
         self::assertSame($format, $exception->getParam('format'));
+    }
+
+    /**
+     * @return mixed[][]
+     */
+    public static function invalidFormatsProvider(): array
+    {
+        return [
+            ['Y-m-d H:i:s'],
+            ['M g:i A'],
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function providerForValidInput(): array
+    {
+        return [
+            [new Time(), '00:00:00'],
+            [new Time(), '23:20:59'],
+            [new Time('H:i'), '23:59'],
+            [new Time('g:i A'), '8:13 AM'],
+            [new Time('His'), 232059],
+            [new Time('H:i:s.u'), '08:16:01.000000'],
+            [new Time('ga'), '3am'],
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function providerForInvalidInput(): array
+    {
+        return [
+            [new Time(), '00:00:60'],
+            [new Time(), '00:60:00'],
+            [new Time(), '24:00:00'],
+            [new Time(), '00:00'],
+            [new Time(), new DateTime()],
+            [new Time(), new DateTimeImmutable()],
+            [new Time(), ''],
+        ];
     }
 }

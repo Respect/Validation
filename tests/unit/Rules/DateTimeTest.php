@@ -30,9 +30,59 @@ use function date_default_timezone_set;
 final class DateTimeTest extends RuleTestCase
 {
     /**
+     * @test
+     */
+    public function shouldPassFormatToParameterToException(): void
+    {
+        $format = 'F jS, Y';
+        $equals = new DateTime($format);
+        $exception = $equals->reportError('input');
+
+        self::assertSame($format, $exception->getParam('format'));
+    }
+
+    /**
+     * Datetime strings with timezone information are valid independent on the
+     * system's timezone setting.
+     *
+     * @test
+     *
+     * @dataProvider providerForDateTimeWithTimezone
+     */
+    public function shouldValidateNoMatterTimezone(string $format, string $input, string $timezone): void
+    {
+        $currentTimezone = date_default_timezone_get();
+
+        date_default_timezone_set($timezone);
+
+        $rule = new DateTime($format);
+
+        self::assertTrue($rule->validate($input));
+
+        date_default_timezone_set($currentTimezone);
+    }
+
+    /**
+     * @return mixed[][]
+     */
+    public static function providerForDateTimeWithTimezone(): array
+    {
+        return [
+            ['c', '2004-02-12T15:19:21+00:00', 'Europe/Amsterdam'],
+            ['c', '2004-02-12T15:19:21+00:00', 'UTC'],
+            ['d/m/Y', '23/05/1987', 'Europe/Amsterdam'],
+            ['d/m/Y', '23/05/1987', 'UTC'],
+            ['r', 'Thu, 29 Dec 2005 01:02:03 +0000', 'Europe/Amsterdam'],
+            ['r', 'Thu, 29 Dec 2005 01:02:03 +0000', 'UTC'],
+            ['Ym', '202302', 'Europe/Amsterdam'],
+            ['Ym', '202302', 'UTC'],
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new DateTime(), 'now'],
@@ -58,7 +108,7 @@ final class DateTimeTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [new DateTime(), 'not-a-date'],
@@ -74,55 +124,5 @@ final class DateTimeTest extends RuleTestCase
             [new DateTime('c'), new DateTimeImmutable()],
             [new DateTime('Y-m-d H:i:s'), '21-3-123:12:01'],
         ];
-    }
-
-    /**
-     * @test
-     */
-    public function shouldPassFormatToParameterToException(): void
-    {
-        $format = 'F jS, Y';
-        $equals = new DateTime($format);
-        $exception = $equals->reportError('input');
-
-        self::assertSame($format, $exception->getParam('format'));
-    }
-
-    /**
-     * @return mixed[][]
-     */
-    public function providerForDateTimeWithTimezone(): array
-    {
-        return [
-            ['c', '2004-02-12T15:19:21+00:00', 'Europe/Amsterdam'],
-            ['c', '2004-02-12T15:19:21+00:00', 'UTC'],
-            ['d/m/Y', '23/05/1987', 'Europe/Amsterdam'],
-            ['d/m/Y', '23/05/1987', 'UTC'],
-            ['r', 'Thu, 29 Dec 2005 01:02:03 +0000', 'Europe/Amsterdam'],
-            ['r', 'Thu, 29 Dec 2005 01:02:03 +0000', 'UTC'],
-            ['Ym', '202302', 'Europe/Amsterdam'],
-            ['Ym', '202302', 'UTC'],
-        ];
-    }
-
-    /**
-     * Datetime strings with timezone information are valid independent on the
-     * system's timezone setting.
-     *
-     * @test
-     *
-     * @dataProvider providerForDateTimeWithTimezone
-     */
-    public function shouldValidateNoMatterTimezone(string $format, string $input, string $timezone): void
-    {
-        $currentTimezone = date_default_timezone_get();
-
-        date_default_timezone_set($timezone);
-
-        $rule = new DateTime($format);
-
-        self::assertTrue($rule->validate($input));
-
-        date_default_timezone_set($currentTimezone);
     }
 }

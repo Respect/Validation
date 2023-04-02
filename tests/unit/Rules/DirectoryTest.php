@@ -30,7 +30,7 @@ final class DirectoryTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $rule = new Directory();
 
@@ -44,7 +44,7 @@ final class DirectoryTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $rule = new Directory();
 

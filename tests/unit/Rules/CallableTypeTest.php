@@ -28,7 +28,7 @@ final class CallableTypeTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $rule = new CallableType();
 
@@ -43,7 +43,7 @@ final class CallableTypeTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $rule = new CallableType();
 

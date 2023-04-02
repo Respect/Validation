@@ -25,9 +25,19 @@ use stdClass;
 final class SortedTest extends RuleTestCase
 {
     /**
+     * @test
+     */
+    public function itShouldNotAcceptWrongSortingDirection(): void
+    {
+        $this->expectExceptionObject(new ComponentException('Direction should be either "ASC" or "DESC"'));
+
+        new Sorted('something');
+    }
+
+    /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             'empty' => [new Sorted('ASC'), []],
@@ -44,7 +54,7 @@ final class SortedTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             'duplicate' => [new Sorted('ASC'), [1, 1, 1]],
@@ -61,15 +71,5 @@ final class SortedTest extends RuleTestCase
             'unsupported value (bool)' => [new Sorted('DESC'), true ],
             'unsupported value (object)' => [new Sorted('DESC'), new stdClass() ],
         ];
-    }
-
-    /**
-     * @test
-     */
-    public function itShouldNotAcceptWrongSortingDirection(): void
-    {
-        $this->expectExceptionObject(new ComponentException('Direction should be either "ASC" or "DESC"'));
-
-        new Sorted('something');
     }
 }

@@ -118,7 +118,7 @@ final class AllOfTest extends TestCase
     /**
      * @return Validatable[][]
      */
-    public function providerStaticDummyRules(): array
+    public static function providerStaticDummyRules(): array
     {
         $theInvalidOne = new Callback(static function () {
             return false;

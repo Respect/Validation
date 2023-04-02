@@ -26,7 +26,7 @@ final class LessThanTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new LessThan(10), 9],
@@ -40,7 +40,7 @@ final class LessThanTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [new LessThan(10), 10],

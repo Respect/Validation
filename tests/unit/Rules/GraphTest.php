@@ -28,7 +28,7 @@ final class GraphTest extends RuleTestCase
     /**
      * @inheritDoc
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $graph = new Graph();
 
@@ -50,7 +50,7 @@ final class GraphTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $graph = new Graph();
 

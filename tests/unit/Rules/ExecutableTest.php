@@ -28,7 +28,7 @@ final class ExecutableTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $rule = new Executable();
 
@@ -42,7 +42,7 @@ final class ExecutableTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $rule = new Executable();
 

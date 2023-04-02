@@ -25,7 +25,7 @@ final class BoolValTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $rule = new BoolVal();
 
@@ -45,7 +45,7 @@ final class BoolValTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $rule = new BoolVal();
 

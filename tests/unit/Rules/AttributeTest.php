@@ -35,7 +35,7 @@ final class AttributeTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             'attribute is present without extra validator' => [new Attribute('public'), new WithProperties()],
@@ -61,7 +61,7 @@ final class AttributeTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             'attribute is absent without extra validator' => [new Attribute('barr'), new WithProperties()],

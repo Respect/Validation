@@ -25,7 +25,7 @@ final class ExtensionTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             'txt' => [new Extension('txt'), 'filename.txt'],
@@ -42,7 +42,7 @@ final class ExtensionTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             'jpg' => [new Extension('jpg'), 'filename.txt'],

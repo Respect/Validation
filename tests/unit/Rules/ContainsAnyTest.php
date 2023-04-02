@@ -24,7 +24,7 @@ final class ContainsAnyTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new ContainsAny(['Something', 'Else']), 'something else'],
@@ -42,7 +42,7 @@ final class ContainsAnyTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [new ContainsAny(['foo']), ['bar', 'baz']],

@@ -221,7 +221,7 @@ final class KeySetTest extends TestCase
     /**
      * @return mixed[][]
      */
-    public function providerForInvalidArguments(): array
+    public static function providerForInvalidArguments(): array
     {
         return [
             [''],

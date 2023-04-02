@@ -42,7 +42,7 @@ final class CreditCardTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $general = new CreditCard();
         $amex = new CreditCard(CreditCard::AMERICAN_EXPRESS);
@@ -79,7 +79,7 @@ final class CreditCardTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $general = new CreditCard();
         $amex = new CreditCard(CreditCard::AMERICAN_EXPRESS);

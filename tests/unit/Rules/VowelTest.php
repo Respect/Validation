@@ -28,7 +28,7 @@ final class VowelTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $sut = new Vowel();
 
@@ -48,7 +48,7 @@ final class VowelTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $sut = new Vowel();
 

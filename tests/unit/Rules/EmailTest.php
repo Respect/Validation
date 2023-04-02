@@ -54,9 +54,9 @@ final class EmailTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
-        $sut = $this->createSutWithoutEmailValidator();
+        $sut = self::sut();
 
         return [
             [$sut, 'test@test.com'],
@@ -69,9 +69,9 @@ final class EmailTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
-        $sut = $this->createSutWithoutEmailValidator();
+        $sut = self::sut();
 
         return [
             [$sut, ''],
@@ -94,7 +94,7 @@ final class EmailTest extends RuleTestCase
     /**
      * @throws ReflectionException
      */
-    private function createSutWithoutEmailValidator(): Email
+    private static function sut(): Email
     {
         $rule = new Email();
 

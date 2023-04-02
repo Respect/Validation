@@ -29,9 +29,20 @@ use SplFileInfo;
 final class SizeTest extends RuleTestCase
 {
     /**
+     * @test
+     */
+    public function shouldThrowsAnExceptionWhenSizeIsNotValid(): void
+    {
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage('"42jb" is not a recognized file size');
+
+        new Size('42jb');
+    }
+
+    /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $root = vfsStream::setup();
         $file2Kb = vfsStream::newFile('2kb.txt')
@@ -61,7 +72,7 @@ final class SizeTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $root = vfsStream::setup();
         $file2Kb = vfsStream::newFile('2kb.txt')
@@ -84,16 +95,5 @@ final class SizeTest extends RuleTestCase
             'PSR-7 stream' => [new Size('1MB', '1.1MB'), StreamStub::createWithSize(1024)],
             'PSR-7 UploadedFile' => [new Size('1MB', '1.1MB'), UploadedFileStub::createWithSize(1024)],
         ];
-    }
-
-    /**
-     * @test
-     */
-    public function shouldThrowsAnExceptionWhenSizeIsNotValid(): void
-    {
-        $this->expectException(ComponentException::class);
-        $this->expectExceptionMessage('"42jb" is not a recognized file size');
-
-        new Size('42jb');
     }
 }

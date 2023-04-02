@@ -74,7 +74,7 @@ final class NotTest extends TestCase
     /**
      * @return mixed[][]
      */
-    public function providerForValidNot(): array
+    public static function providerForValidNot(): array
     {
         return [
             [new IntVal(), ''],
@@ -91,7 +91,7 @@ final class NotTest extends TestCase
     /**
      * @return mixed[][]
      */
-    public function providerForInvalidNot(): array
+    public static function providerForInvalidNot(): array
     {
         return [
             [new IntVal(), 123],
@@ -104,7 +104,7 @@ final class NotTest extends TestCase
     /**
      * @return Validatable[][]
      */
-    public function providerForSetName(): array
+    public static function providerForSetName(): array
     {
         return [
             'non-allOf' => [new IntVal()],

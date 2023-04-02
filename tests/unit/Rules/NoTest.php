@@ -32,63 +32,6 @@ final class NoTest extends RuleTestCase
     private $locale;
 
     /**
-     * {@inheritDoc}
-     */
-    public function providerForValidInput(): array
-    {
-        $sut = new No();
-
-        return [
-            [$sut, 'N'],
-            [$sut, 'Nay'],
-            [$sut, 'Nix'],
-            [$sut, 'No'],
-            [$sut, 'Nope'],
-            [$sut, 'Not'],
-        ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function providerForInvalidInput(): array
-    {
-        $sut = new No();
-
-        return [
-            [$sut, 'Donnot'],
-            [$sut, 'Never'],
-            [$sut, 'Niet'],
-            [$sut, 'Noooooooo'],
-            [$sut, 'Não'],
-        ];
-    }
-
-    /**
-     * @return string[][]
-     */
-    public function providerForValidInputWithLocale(): array
-    {
-        return [
-            'nl' => ['nl_NL.UTF-8', 'Nee'],
-            'pt' => ['pt_BR.UTF-8', 'Não'],
-            'ru' => ['ru_RU.UTF-8', 'нет'],
-        ];
-    }
-
-    /**
-     * @return string[][]
-     */
-    public function providerForInvalidInputWithLocale(): array
-    {
-        return [
-            'nl' => ['nl_NL.UTF-8', 'Ez'],
-            'pt' => ['pt_BR.UTF-8', 'нет'],
-            'ru' => ['pt_BR.UTF-8', 'Οχι'],
-        ];
-    }
-
-    /**
      * @test
      *
      * @dataProvider providerForValidInputWithLocale
@@ -118,6 +61,63 @@ final class NoTest extends RuleTestCase
         }
 
         self::assertInvalidInput(new No(true), $input);
+    }
+
+    /**
+     * @return string[][]
+     */
+    public static function providerForValidInputWithLocale(): array
+    {
+        return [
+            'nl' => ['nl_NL.UTF-8', 'Nee'],
+            'pt' => ['pt_BR.UTF-8', 'Não'],
+            'ru' => ['ru_RU.UTF-8', 'нет'],
+        ];
+    }
+
+    /**
+     * @return string[][]
+     */
+    public static function providerForInvalidInputWithLocale(): array
+    {
+        return [
+            'nl' => ['nl_NL.UTF-8', 'Ez'],
+            'pt' => ['pt_BR.UTF-8', 'нет'],
+            'ru' => ['pt_BR.UTF-8', 'Οχι'],
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function providerForValidInput(): array
+    {
+        $sut = new No();
+
+        return [
+            [$sut, 'N'],
+            [$sut, 'Nay'],
+            [$sut, 'Nix'],
+            [$sut, 'No'],
+            [$sut, 'Nope'],
+            [$sut, 'Not'],
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function providerForInvalidInput(): array
+    {
+        $sut = new No();
+
+        return [
+            [$sut, 'Donnot'],
+            [$sut, 'Never'],
+            [$sut, 'Niet'],
+            [$sut, 'Noooooooo'],
+            [$sut, 'Não'],
+        ];
     }
 
     /**

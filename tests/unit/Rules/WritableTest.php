@@ -31,7 +31,7 @@ final class WritableTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $sut = new Writable();
         $filename = self::fixture('valid-image.png');
@@ -52,7 +52,7 @@ final class WritableTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $rule = new Writable();
         $filename = self::fixture('non-writable');

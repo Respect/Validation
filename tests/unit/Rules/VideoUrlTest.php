@@ -26,7 +26,7 @@ final class VideoUrlTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             'vimeo service with subdomain' => [new VideoUrl('vimeo'), 'https://player.vimeo.com/video/71787467'],
@@ -47,7 +47,7 @@ final class VideoUrlTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             'vimeo service with youtube url' => [new VideoUrl('vimeo'), 'https://www.youtube.com/watch?v=netHLn9TScY'],

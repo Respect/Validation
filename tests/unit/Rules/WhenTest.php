@@ -26,7 +26,7 @@ final class WhenTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             'all true' => [
@@ -75,7 +75,7 @@ final class WhenTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             'bool (when = true, then = false, else = false)' => [

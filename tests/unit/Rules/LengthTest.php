@@ -31,9 +31,20 @@ use function tmpfile;
 final class LengthTest extends RuleTestCase
 {
     /**
+     * @test
+     */
+    public function isShouldNotNotAcceptInvalidLengths(): void
+    {
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage('10 cannot be less than 1 for validation');
+
+        new Length(10, 1);
+    }
+
+    /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new Length(1, 15), 'alganet'],
@@ -56,7 +67,7 @@ final class LengthTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [new Length(1, 15), ''],
@@ -71,16 +82,5 @@ final class LengthTest extends RuleTestCase
             [new Length(1, 4), new CountableStub(5)],
             [new Length(1, 4), 12345],
         ];
-    }
-
-    /**
-     * @test
-     */
-    public function isShouldNotNotAcceptInvalidLengths(): void
-    {
-        $this->expectException(ComponentException::class);
-        $this->expectExceptionMessage('10 cannot be less than 1 for validation');
-
-        new Length(10, 1);
     }
 }

@@ -25,7 +25,7 @@ final class RegexTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new Regex('/^[a-z]+$/'), 'wpoiur'],
@@ -37,7 +37,7 @@ final class RegexTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [new Regex('/^w+$/'), 'w poiur'],

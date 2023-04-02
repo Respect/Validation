@@ -24,17 +24,6 @@ use Respect\Validation\Test\TestCase;
 final class AbstractRuleTest extends TestCase
 {
     /**
-     * @return bool[][]
-     */
-    public function providerForTrueAndFalse(): array
-    {
-        return [
-            [true],
-            [false],
-        ];
-    }
-
-    /**
      * @dataProvider providerForTrueAndFalse
      * @covers       \Respect\Validation\Rules\AbstractRule::__invoke
      *
@@ -194,5 +183,16 @@ final class AbstractRuleTest extends TestCase
         $abstractRuleMock->setName($name);
 
         self::assertSame($name, $abstractRuleMock->getName());
+    }
+
+    /**
+     * @return bool[][]
+     */
+    public static function providerForTrueAndFalse(): array
+    {
+        return [
+            [true],
+            [false],
+        ];
     }
 }

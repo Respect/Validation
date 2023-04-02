@@ -40,7 +40,7 @@ abstract class RuleTestCase extends TestCase
      *
      * @return mixed[][]
      */
-    abstract public function providerForValidInput(): array;
+    abstract public static function providerForValidInput(): array;
 
     /**
      * Data providers for invalid results.
@@ -52,7 +52,7 @@ abstract class RuleTestCase extends TestCase
      *
      * @return mixed[][]
      */
-    abstract public function providerForInvalidInput(): array;
+    abstract public static function providerForInvalidInput(): array;
 
     /**
      * @test

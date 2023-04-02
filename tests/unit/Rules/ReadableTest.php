@@ -27,7 +27,7 @@ final class ReadableTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $file = self::fixture('valid-image.gif');
         $rule = new Readable();
@@ -42,7 +42,7 @@ final class ReadableTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $file = self::fixture('invalid-image.gif');
         $rule = new Readable();

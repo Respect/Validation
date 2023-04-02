@@ -26,7 +26,7 @@ final class IbanTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $sut = new Iban();
 
@@ -48,7 +48,7 @@ final class IbanTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $sut = new Iban();
 

@@ -33,7 +33,7 @@ final class MinAgeTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new MinAge(18, 'Y-m-d'), date('Y-m-d', strtotime('18 years ago'))],
@@ -46,7 +46,7 @@ final class MinAgeTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [new MinAge(18), new DateTime('18 years ago')],

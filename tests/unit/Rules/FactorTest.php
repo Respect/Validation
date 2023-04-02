@@ -34,7 +34,7 @@ final class FactorTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             '1 is factor 1' => [new Factor(1), 1],
@@ -69,7 +69,7 @@ final class FactorTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             '3 is not factor 2' => [new Factor(3), 2],

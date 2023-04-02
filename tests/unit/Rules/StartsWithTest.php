@@ -26,7 +26,7 @@ final class StartsWithTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new StartsWith('foo'), ['foo', 'bar']],
@@ -41,7 +41,7 @@ final class StartsWithTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [new StartsWith('foo'), ''],

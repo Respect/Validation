@@ -28,7 +28,7 @@ final class DigitTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             'positive integer' => [new Digit(), 165],
@@ -47,7 +47,7 @@ final class DigitTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             'empty' => [new Digit(), ''],
