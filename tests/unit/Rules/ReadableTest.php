@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Psr\Http\Message\StreamInterface;
 use Respect\Validation\Test\RuleTestCase;
+use Respect\Validation\Test\Stubs\StreamStub;
 use SplFileInfo;
 use stdClass;
 
@@ -35,7 +35,7 @@ final class ReadableTest extends RuleTestCase
         return [
             [$rule, $file],
             [$rule, new SplFileInfo($file)],
-            [$rule, $this->createPsr7Stream(true)],
+            [$rule, StreamStub::create()],
         ];
     }
 
@@ -51,15 +51,7 @@ final class ReadableTest extends RuleTestCase
             [$rule, $file],
             [$rule, new SplFileInfo($file)],
             [$rule, new stdClass()],
-            [$rule, $this->createPsr7Stream(false)],
+            [$rule, StreamStub::createUnreadable()],
         ];
-    }
-
-    private function createPsr7Stream(bool $isReadable): StreamInterface
-    {
-        $stream = $this->createMock(StreamInterface::class);
-        $stream->expects(self::any())->method('isReadable')->willReturn($isReadable);
-
-        return $stream;
     }
 }

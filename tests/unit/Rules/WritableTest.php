@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Psr\Http\Message\StreamInterface;
 use Respect\Validation\Test\RuleTestCase;
+use Respect\Validation\Test\Stubs\StreamStub;
 use SplFileInfo;
 use SplFileObject;
 use stdClass;
@@ -45,7 +45,7 @@ final class WritableTest extends RuleTestCase
             'writable directory' => [$sut, $directory],
             'writable SplFileInfo file' => [$sut, new SplFileInfo($filename)],
             'writable SplFileObject file' => [$sut, new SplFileObject($filename)],
-            'writable PSR-7 stream' => [$sut, $this->createPsr7Stream(true)],
+            'writable PSR-7 stream' => [$sut, StreamStub::create()],
         ];
     }
 
@@ -60,7 +60,7 @@ final class WritableTest extends RuleTestCase
         chmod($filename, 0555);
 
         return [
-            'unwritable PSR-7 stream' => [$rule, $this->createPsr7Stream(false)],
+            'unwritable PSR-7 stream' => [$rule, StreamStub::createUnwritable()],
             'unwritable filename' => [$rule, $filename],
             'unwritable SplFileInfo file' => [$rule, new SplFileInfo($filename)],
             'unwritable SplFileObject file' => [$rule, new SplFileObject($filename)],
@@ -73,13 +73,5 @@ final class WritableTest extends RuleTestCase
             'instance of stdClass' => [$rule, new stdClass()],
             'array' => [$rule, []],
         ];
-    }
-
-    private function createPsr7Stream(bool $isWritable): StreamInterface
-    {
-        $stream = $this->createMock(StreamInterface::class);
-        $stream->expects(self::any())->method('isWritable')->willReturn($isWritable);
-
-        return $stream;
     }
 }
