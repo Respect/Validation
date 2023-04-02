@@ -9,9 +9,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test;
 
-use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Message\Formatter;
-use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
 use Respect\Validation\Validatable;
 
 use function implode;
@@ -56,58 +53,6 @@ abstract class RuleTestCase extends TestCase
      * @return mixed[][]
      */
     abstract public function providerForInvalidInput(): array;
-
-    /**
-     * Create a mock of a Validatable.
-     *
-     * @api
-     */
-    public function createValidatableMock(bool $expectedResult, string $mockClassName = ''): Validatable
-    {
-        $validatableMocked = $this->getMockBuilder(Validatable::class)
-            ->disableOriginalConstructor()
-            ->setMockClassName($mockClassName)
-            ->getMock();
-
-        $validatableMocked
-            ->expects(self::any())
-            ->method('validate')
-            ->willReturn($expectedResult);
-
-        if ($expectedResult) {
-            $validatableMocked
-                ->expects(self::any())
-                ->method('check');
-            $validatableMocked
-                ->expects(self::any())
-                ->method('assert');
-        } else {
-            $checkException = new ValidationException(
-                'validatable',
-                'input',
-                [],
-                new Formatter('strval', new KeepOriginalStringName())
-            );
-            $checkException->updateTemplate(sprintf('Exception for %s:check() method', $mockClassName));
-            $validatableMocked
-                ->expects(self::any())
-                ->method('check')
-                ->willThrowException($checkException);
-            $assertException = new ValidationException(
-                'validatable',
-                'input',
-                [],
-                new Formatter('strval', new KeepOriginalStringName())
-            );
-            $assertException->updateTemplate(sprintf('Exception for %s:assert() method', $mockClassName));
-            $validatableMocked
-                ->expects(self::any())
-                ->method('assert')
-                ->willThrowException($assertException);
-        }
-
-        return $validatableMocked;
-    }
 
     /**
      * @test

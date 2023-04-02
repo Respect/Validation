@@ -35,7 +35,7 @@ final class EachTest extends RuleTestCase
      */
     public function providerForValidInput(): array
     {
-        $rule = new Each($this->createValidatableMock(true));
+        $rule = new Each(new AlwaysValid());
 
         return [
             [$rule, []],
@@ -50,7 +50,7 @@ final class EachTest extends RuleTestCase
      */
     public function providerForInvalidInput(): array
     {
-        $rule = new Each($this->createValidatableMock(false));
+        $rule = new Each(new AlwaysInvalid());
 
         return [
             [$rule, 123],
