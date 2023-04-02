@@ -32,7 +32,7 @@ final class CallbackTest extends RuleTestCase
     {
         return [
             [new Callback('is_a', 'stdClass'), new stdClass()],
-            [new Callback([$this, 'sampleCallbackUsedInsideThisTest']), 'test'],
+            [new Callback([new AlwaysValid(), 'validate']), 'test'],
             [new Callback('is_string'), 'test'],
             [
                 new Callback(static function () {
@@ -41,11 +41,6 @@ final class CallbackTest extends RuleTestCase
                 'wpoiur',
             ],
         ];
-    }
-
-    public function sampleCallbackUsedInsideThisTest(): bool
-    {
-        return true;
     }
 
     /**
