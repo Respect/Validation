@@ -10,8 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
-use Respect\Validation\Validatable;
-use stdClass;
+use Respect\Validation\Test\Stubs\WithProperties;
 
 /**
  * @group rule
@@ -38,24 +37,23 @@ final class AttributeTest extends RuleTestCase
      */
     public function providerForValidInput(): array
     {
-        $obj = new stdClass();
-        $obj->bar = 'foo';
-
-        $extraValidator = $this->createMock(Validatable::class);
-        $extraValidator->method('validate')
-            ->willReturn(true);
-
         return [
-            'attribute is present without extra validator' => [new Attribute('bar'), $obj],
+            'attribute is present without extra validator' => [new Attribute('public'), new WithProperties()],
             'private attribute is present without extra validator' => [
-                new Attribute('bar'),
-                $this,
+                new Attribute('private'),
+                new WithProperties(),
             ],
-            'attribute is present with extra validator' => [new Attribute('bar', $extraValidator), $obj],
-            'non mandatory attribute is not present' => [new Attribute('foo', null, false), $obj],
+            'attribute is present with extra validator' => [
+                new Attribute('public', new AlwaysValid()),
+                new WithProperties(),
+            ],
+            'non mandatory attribute is not present' => [
+                new Attribute('nonexistent', null, false),
+                new WithProperties(),
+            ],
             'non mandatory attribute is not present with extra validator' => [
-                new Attribute('foo', $extraValidator, false),
-                $obj,
+                new Attribute('nonexistent', new AlwaysValid(), false),
+                new WithProperties(),
             ],
         ];
     }
@@ -65,20 +63,17 @@ final class AttributeTest extends RuleTestCase
      */
     public function providerForInvalidInput(): array
     {
-        $obj = new stdClass();
-        $obj->bar = 'foo';
-
-        $extraValidatorMock = $this->createMock(Validatable::class);
-        $extraValidatorMock->method('validate')->willReturn(false);
-
         return [
-            'attribute is absent without extra validator' => [new Attribute('barr'), $obj],
+            'attribute is absent without extra validator' => [new Attribute('barr'), new WithProperties()],
             'private attribute is not valid based on extra validator' => [
-                new Attribute('bar', $extraValidatorMock),
-                $this,
+                new Attribute('private', new AlwaysInvalid()),
+                new WithProperties(),
             ],
             'value provided is an empty string' => [new Attribute('barr'), ''],
-            'validator related to attribute does not validate' => [new Attribute('bar', $extraValidatorMock), $obj],
+            'validator related to attribute does not validate' => [
+                new Attribute('public', new AlwaysInvalid()),
+                new WithProperties(),
+            ],
         ];
     }
 }
