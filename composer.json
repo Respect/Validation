@@ -31,7 +31,7 @@
         "phpstan/phpstan-deprecation-rules": "^1.1",
         "phpstan/phpstan-phpunit": "^1.3",
         "phpunit/phpunit": "^10.5",
-        "psr/http-message": "^1.0",
+        "psr/http-message": "^1.0 || ^2.0",
         "respect/coding-standard": "^4.0",
         "sokil/php-isocodes": "^4.2",
         "sokil/php-isocodes-db-only": "^4.0",
