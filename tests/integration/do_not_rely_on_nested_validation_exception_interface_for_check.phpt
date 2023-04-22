@@ -13,7 +13,7 @@ use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validator;
 
-$usernameValidator = Validator::alnum('_')->length(1, 15)->noWhitespace();
+$usernameValidator = Validator::alnum('__')->length(1, 15)->noWhitespace();
 try {
     $usernameValidator->check('really messed up screen#name');
 } catch (NestedValidationException $e) {
@@ -23,4 +23,4 @@ try {
 }
 ?>
 --EXPECT--
-"really messed up screen#name" must contain only letters (a-z), digits (0-9) and "_"
+"really messed up screen#name" must contain only letters (a-z), digits (0-9) and "__"

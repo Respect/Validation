@@ -15,7 +15,7 @@ exceptionFullMessage(static fn() => v::trueVal()->assert(0));
 exceptionFullMessage(static fn() => v::not(v::trueVal())->assert('true'));
 ?>
 --EXPECT--
-`FALSE` must evaluate to `true`
+`false` must evaluate to `true`
 1 must not evaluate to `true`
 - 0 must evaluate to `true`
 - "true" must not evaluate to `true`

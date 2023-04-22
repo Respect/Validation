@@ -16,6 +16,6 @@ exceptionFullMessage(static fn() => v::not(v::nullType())->assert(null));
 ?>
 --EXPECT--
 "" must be null
-`NULL` must not be null
-- `FALSE` must be null
-- `NULL` must not be null
+`null` must not be null
+- `false` must be null
+- `null` must not be null

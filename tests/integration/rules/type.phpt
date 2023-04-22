@@ -18,4 +18,4 @@ exceptionFullMessage(static fn() => v::not(v::type('bool'))->assert(true));
 "42" must be "integer"
 "foo" must not be "string"
 - 20 must be "double"
-- `TRUE` must not be "bool"
+- `true` must not be "bool"

@@ -17,5 +17,5 @@ exceptionFullMessage(static fn() => v::not(v::image())->assert('tests/fixtures/v
 --EXPECT--
 "tests/fixtures/invalid-image.png" must be a valid image
 "tests/fixtures/valid-image.png" must not be a valid image
-- `[object] (stdClass: { })` must be a valid image
+- `stdClass {}` must be a valid image
 - "tests/fixtures/valid-image.gif" must not be a valid image

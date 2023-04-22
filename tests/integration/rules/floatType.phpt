@@ -17,5 +17,5 @@ exceptionFullMessage(static fn() => v::not(v::floatType())->assert(2.0));
 --EXPECT--
 "42.33" must be of type float
 `INF` must not be of type float
-- `TRUE` must be of type float
+- `true` must be of type float
 - 2.0 must not be of type float

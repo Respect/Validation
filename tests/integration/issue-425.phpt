@@ -17,7 +17,7 @@ exceptionFullMessage(static fn() => $validator->assert(['age' => 1]));
 exceptionFullMessage(static fn() => $validator->assert(['reference' => 'QSF1234']));
 ?>
 --EXPECT--
-- These rules must pass for `{ "age": 1 }`
+- These rules must pass for `["age": 1]`
   - reference must be present
-- These rules must pass for `{ "reference": "QSF1234" }`
+- These rules must pass for `["reference": "QSF1234"]`
   - age must be present

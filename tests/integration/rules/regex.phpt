@@ -15,5 +15,5 @@ exceptionFullMessage(static fn() => v::not(v::regex('/^[a-z]+$/i'))->assert('wPo
 --EXPECT--
 "w poiur" must validate against "/^w+$/"
 "wpoiur" must not validate against "/^[a-z]+$/"
-- `[object] (stdClass: { })` must validate against "/^w+$/"
+- `stdClass {}` must validate against "/^w+$/"
 - "wPoiur" must not validate against "/^[a-z]+$/i"

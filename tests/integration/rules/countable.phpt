@@ -16,6 +16,6 @@ exceptionFullMessage(static fn() => v::not(v::countable())->assert(new ArrayObje
 ?>
 --EXPECT--
 1.0 must be countable
-`{ }` must not be countable
+`[]` must not be countable
 - "Not countable!" must be countable
-- `[traversable] (ArrayObject: { })` must not be countable
+- `ArrayObject { getArrayCopy() => [] }` must not be countable

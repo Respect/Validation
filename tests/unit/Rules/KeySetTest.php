@@ -18,6 +18,9 @@ use Respect\Validation\Exceptions\KeySetException;
 use Respect\Validation\Test\TestCase;
 use stdClass;
 
+use function Respect\Stringifier\stringify;
+use function sprintf;
+
 #[Group('rule')]
 #[CoversClass(KeySet::class)]
 final class KeySetTest extends TestCase
@@ -129,7 +132,7 @@ final class KeySetTest extends TestCase
         $keySet = new KeySet($key1, $key2);
 
         $this->expectException(KeySetException::class);
-        $this->expectExceptionMessage('Must have keys `{ "foo", "bar" }`');
+        $this->expectExceptionMessage(sprintf('Must have keys %s', stringify(['foo', 'bar'])));
 
         $keySet->check($input);
     }
@@ -145,7 +148,7 @@ final class KeySetTest extends TestCase
         $keySet = new KeySet($key1, $key2);
 
         $this->expectException(KeySetException::class);
-        $this->expectExceptionMessage('Must have keys `{ "foo", "bar" }`');
+        $this->expectExceptionMessage(sprintf('Must have keys %s', stringify(['foo', 'bar'])));
 
         $keySet->assert($input);
     }
@@ -160,7 +163,7 @@ final class KeySetTest extends TestCase
         $keySet = new KeySet($key1);
 
         $this->expectException(KeySetException::class);
-        $this->expectExceptionMessage('Must not have keys `{ "bar" }`');
+        $this->expectExceptionMessage(sprintf('Must not have keys %s', stringify(['bar'])));
 
         $keySet->assert($input);
     }
@@ -183,7 +186,7 @@ final class KeySetTest extends TestCase
         $keySet = new KeySet(new Key('name'));
 
         $this->expectException(KeySetException::class);
-        $this->expectExceptionMessage('Must have keys `{ "name" }`');
+        $this->expectExceptionMessage(sprintf('Must have keys %s', stringify(['name'])));
 
         $keySet->assert($input);
     }

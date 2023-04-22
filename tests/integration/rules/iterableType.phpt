@@ -16,6 +16,6 @@ exceptionFullMessage(static fn() => v::not(v::iterableType())->assert(new stdCla
 ?>
 --EXPECT--
 3 must be iterable
-`{ 2, 3 }` must not be iterable
+`[2, 3]` must not be iterable
 - "String" must be iterable
-- `[object] (stdClass: { })` must not be iterable
+- `stdClass {}` must not be iterable

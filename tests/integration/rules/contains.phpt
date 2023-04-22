@@ -17,5 +17,5 @@ exceptionFullMessage(static fn() => v::not(v::contains('foo', true))->assert(['b
 --EXPECT--
 "bar" must contain the value "foo"
 "fool" must not contain the value "foo"
-- `{ "bar" }` must contain the value "foo"
-- `{ "bar", "foo" }` must not contain the value "foo"
+- `["bar"]` must contain the value "foo"
+- `["bar", "foo"]` must not contain the value "foo"

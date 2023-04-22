@@ -15,7 +15,7 @@ exceptionFullMessage(static fn() => v::callback('is_string')->assert(true));
 exceptionFullMessage(static fn() => v::not(v::callback('is_string'))->assert('foo'));
 ?>
 --EXPECT--
-`{ }` must be valid
+`[]` must be valid
 "foo" must not be valid
-- `TRUE` must be valid
+- `true` must be valid
 - "foo" must not be valid

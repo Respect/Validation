@@ -13,5 +13,5 @@ exceptionMessage(static fn() => v::not(v::alwaysValid())->check(true));
 exceptionFullMessage(static fn() => v::not(v::alwaysValid())->assert(true));
 ?>
 --EXPECT--
-`TRUE` is always invalid
-- `TRUE` is always invalid
+`true` is always invalid
+- `true` is always invalid

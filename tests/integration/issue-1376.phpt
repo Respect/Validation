@@ -38,7 +38,7 @@ try {
 }
 ?>
 --EXPECT--
-- All of the required rules must pass for `[object] (stdClass: { "author": "foo" })`
+- All of the required rules must pass for `stdClass { +$author="foo" }`
   - Attribute title must be present
   - Attribute description must be present
     - All of the required rules must pass for author

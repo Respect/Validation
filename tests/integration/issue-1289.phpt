@@ -58,7 +58,7 @@ exceptionFullMessage(static fn() => $validator->assert($input));
 ?>
 --EXPECT--
 default must be of type string
-- These rules must pass for `{ "default": 2, "description": { }, "children": { "nope" } }`
+- These rules must pass for `["default": 2, "description": [], "children": ["nope"]]`
   - Only one of these rules must pass for default
     - default must be of type string
     - default must be of type boolean

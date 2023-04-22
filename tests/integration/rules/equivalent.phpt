@@ -15,7 +15,7 @@ exceptionFullMessage(static fn() => v::equivalent(123)->assert('true'));
 exceptionFullMessage(static fn() => v::not(v::equivalent(true))->assert(1));
 ?>
 --EXPECT--
-`FALSE` must be equivalent to `TRUE`
+`false` must be equivalent to `true`
 "someThing" must not be equivalent to "Something"
 - "true" must be equivalent to 123
-- 1 must not be equivalent to `TRUE`
+- 1 must not be equivalent to `true`

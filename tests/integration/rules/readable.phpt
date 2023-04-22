@@ -17,5 +17,5 @@ exceptionFullMessage(static fn() => v::not(v::readable())->assert('tests/fixture
 --EXPECT--
 "tests/fixtures/invalid-image.jpg" must be readable
 "tests/fixtures/valid-image.png" must not be readable
-- `[object] (stdClass: { })` must be readable
+- `stdClass {}` must be readable
 - "tests/fixtures/valid-image.png" must not be readable

@@ -23,4 +23,4 @@ Field must not be empty
 1 must be empty
 - The value must not be empty
 - Field must not be empty
-- `{ 1 }` must be empty
+- `[1]` must be empty
