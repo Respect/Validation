@@ -34,6 +34,7 @@ return [
     'KIROVOGRAD.UA',
     'KM.UA',
     'KR.UA',
+    'KROPYVNYTSKYI.UA',
     'KRYM.UA',
     'KS.UA',
     'KV.UA',
