@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace Respect\Validation;
 
 use finfo;
-use Respect\Validation\Rules\Key;
 
 interface StaticValidator
 {
@@ -201,7 +200,7 @@ interface StaticValidator
         bool $mandatory = true
     ): ChainedValidator;
 
-    public static function keySet(Key ...$rule): ChainedValidator;
+    public static function keySet(Validatable ...$rule): ChainedValidator;
 
     public static function keyValue(string $comparedKey, string $ruleName, string $baseKey): ChainedValidator;
 
