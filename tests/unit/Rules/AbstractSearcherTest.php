@@ -1,12 +1,8 @@
 <?php
 
 /*
- * This file is part of Respect/Validation.
- *
- * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE file
- * that was distributed with this source code.
+ * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-License-Identifier: MIT
  */
 
 declare(strict_types=1);
@@ -34,13 +30,13 @@ final class AbstractSearcherTest extends TestCase
      */
     public function shouldValidateFromDataSource(): void
     {
-        $input = 'bar';
+        $input = 'BAZ';
 
         $rule = $this->getMockForAbstractClass(AbstractSearcher::class);
         $rule
             ->expects(self::once())
             ->method('getDataSource')
-            ->willReturn(['foo', $input, 'baz']);
+            ->willReturn(['FOO', $input, 'BAZ']);
 
         self::assertTrue($rule->validate($input));
     }

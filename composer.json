@@ -18,13 +18,14 @@
         }
     },
     "require": {
-        "php": "^7.4 || ^8.0 || ^8.1 || ^8.2",
+        "php": "^8.0 || ^8.1 || ^8.2",
         "respect/stringifier": "^0.2.0",
         "symfony/polyfill-mbstring": "^1.2"
     },
     "require-dev": {
         "egulias/email-validator": "^3.0",
-        "malukenho/docheader": "^0.1",
+        "giggsey/libphonenumber-for-php-lite": "^8.13",
+        "malukenho/docheader": "^1.0",
         "mikey179/vfsstream": "^1.6",
         "phpstan/phpstan": "^1.9",
         "phpstan/phpstan-deprecation-rules": "^1.1",
@@ -32,14 +33,14 @@
         "phpunit/phpunit": "^9.6",
         "psr/http-message": "^1.0",
         "respect/coding-standard": "^3.0",
-        "squizlabs/php_codesniffer": "^3.7",
-        "symfony/validator": "^3.0||^4.0||^5.0"
+        "squizlabs/php_codesniffer": "^3.7"
     },
     "suggest": {
         "ext-bcmath": "Arbitrary Precision Mathematics",
         "ext-fileinfo": "File Information",
         "ext-mbstring": "Multibyte String Functions",
-        "egulias/email-validator": "Strict (RFC compliant) email validation"
+        "egulias/email-validator": "Improves the Email rule if available",
+        "giggsey/libphonenumber-for-php-lite": "Enables the phone rule if available"
     },
     "autoload": {
         "psr-4": {

@@ -1,18 +1,15 @@
 <?php
 
 /*
- * This file is part of Respect/Validation.
- *
- * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE file
- * that was distributed with this source code.
+ * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-License-Identifier: MIT
  */
 
 declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Validatable;
 use SplStack;
@@ -97,8 +94,32 @@ final class EachTest extends RuleTestCase
         $rule->check(range(1, 3));
     }
 
+    /**
+     * @test
+     */
+    public function itShouldNotOverrideMessages(): void
+    {
+        $rule = new Each(new StringType());
+        try {
+            $rule->assert([1, 2, 3]);
+        } catch (NestedValidationException $e) {
+            $this->assertEquals(
+                $e->getMessages(),
+                [
+                    'stringType.0' => '1 must be of type string',
+                    'stringType.1' => '2 must be of type string',
+                    'stringType.2' => '3 must be of type string',
+                ]
+            );
+        }
+    }
+
+    /**
+     * @return Traversable<int>
+     */
     private function createTraversableInput(int $firstValue, int $lastValue): Traversable
     {
+        /** @var SplStack<int> */
         $input = new SplStack();
         foreach (range($firstValue, $lastValue) as $value) {
             $input->push($value);

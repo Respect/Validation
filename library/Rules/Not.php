@@ -1,24 +1,24 @@
 <?php
 
 /*
- * This file is part of Respect/Validation.
- *
- * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE file
- * that was distributed with this source code.
+ * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-License-Identifier: MIT
  */
 
 declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\NonNegatable;
 use Respect\Validation\Validatable;
 
 use function array_shift;
 use function count;
 use function current;
+use function get_class;
+use function sprintf;
 
 /**
  * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
@@ -101,6 +101,15 @@ final class Not extends AbstractRule
 
     private function extractNegatedRule(Validatable $rule): Validatable
     {
+        if ($rule instanceof NonNegatable) {
+            throw new ComponentException(
+                sprintf(
+                    '"%s" can not be wrapped in Not()',
+                    get_class($rule)
+                )
+            );
+        }
+
         if ($rule instanceof self && $rule->getNegatedRule() instanceof self) {
             return $this->extractNegatedRule($rule->getNegatedRule()->getNegatedRule());
         }

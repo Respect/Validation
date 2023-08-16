@@ -1,12 +1,8 @@
 <?php
 
 /*
- * This file is part of Respect/Validation.
- *
- * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE file
- * that was distributed with this source code.
+ * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-License-Identifier: MIT
  */
 
 declare(strict_types=1);
@@ -16,6 +12,8 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Helpers\CanValidateUndefined;
 
 use function in_array;
+use function is_scalar;
+use function mb_strtoupper;
 
 /**
  * Abstract class for searches into arrays.
@@ -27,20 +25,26 @@ abstract class AbstractSearcher extends AbstractRule
     use CanValidateUndefined;
 
     /**
+     * @param mixed $input
      * @return mixed[]
      */
-    abstract protected function getDataSource(): array;
+    abstract protected function getDataSource($input = null): array;
 
     /**
      * {@inheritDoc}
      */
     public function validate($input): bool
     {
-        $dataSource = $this->getDataSource();
+        $dataSource = $this->getDataSource($input);
+
         if ($this->isUndefined($input) && empty($dataSource)) {
             return true;
         }
 
-        return in_array($input, $dataSource, true);
+        if (!is_scalar($input)) {
+            return false;
+        }
+
+        return in_array(mb_strtoupper((string) $input), $dataSource, true);
     }
 }

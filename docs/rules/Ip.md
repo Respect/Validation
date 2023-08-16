@@ -14,6 +14,13 @@ v::ip('220.78.168.0/21')->validate('220.78.173.2'); // true
 v::ip('220.78.168.0/21')->validate('220.78.176.2'); // false
 ```
 
+Validating ranges:
+
+```php
+v::ip('127.0.0.1-127.0.0.5')->validate('127.0.0.2'); // true
+v::ip('127.0.0.1-127.0.0.5')->validate('127.0.0.10'); // false
+```
+
 You can pass a parameter with [filter_var()][] flags for IP.
 
 ```php

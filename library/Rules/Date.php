@@ -1,12 +1,8 @@
 <?php
 
 /*
- * This file is part of Respect/Validation.
- *
- * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE file
- * that was distributed with this source code.
+ * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-License-Identifier: MIT
  */
 
 declare(strict_types=1);
@@ -40,7 +36,7 @@ final class Date extends AbstractRule
     /**
      * @var string
      */
-    private $sample; /** @phpstan-ignore-line */
+    private $sample;
 
     /**
      * Initializes the rule.

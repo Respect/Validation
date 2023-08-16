@@ -1,12 +1,8 @@
 <?php
 
 /*
- * This file is part of Respect/Validation.
- *
- * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE file
- * that was distributed with this source code.
+ * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-License-Identifier: MIT
  */
 
 declare(strict_types=1);
@@ -14,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\NonNegatable;
 use Respect\Validation\Validatable;
 
 use function array_key_exists;
@@ -28,12 +25,17 @@ use function is_array;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
-final class KeySet extends AbstractWrapper
+final class KeySet extends AbstractWrapper implements NonNegatable
 {
     /**
      * @var mixed[]
      */
-    private $keys; /** @phpstan-ignore-line */
+    private $keys;
+
+    /**
+     * @var mixed[]
+     */
+    private $extraKeys = [];
 
     /**
      * @var Key[]
@@ -129,6 +131,10 @@ final class KeySet extends AbstractWrapper
             }
 
             unset($input[$keyRule->getReference()]);
+        }
+
+        foreach ($input as $extraKey => &$ignoreValue) {
+            $this->extraKeys[] = $extraKey;
         }
 
         return count($input) == 0;

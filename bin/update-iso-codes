@@ -79,19 +79,20 @@ update_subdivision_codes()
     local cname="${country_line#$alpha_1 }"
     local json="$(jq '."3166-2"[]  | select(.code|test("^'"$alpha_1"'"))' < "${iso_3166_2_filename}")"
 
-    echo "{
-  \"country\": \"$cname\",
-  \"subdivisions\": {" > "data/iso_3166-2/${alpha_1}.json"
+    echo "<?php
+return [
+  \"country\" => \"$cname\",
+  \"subdivisions\" => [" > "data/iso_3166-2/${alpha_1}.php"
 
     jq -r "[.code, .name] | @tsv" <<< "${json}" | while read -r subdiv_line
     do
       local alpha_2="${subdiv_line%%	*}"
       local name="${subdiv_line#$alpha_2	}"
-      echo "    \"${alpha_2#${alpha_1}-}\": \"$name\","
-    done | sed '$ s/.$//' >> "data/iso_3166-2/${alpha_1}.json"
+      echo "    \"${alpha_2#${alpha_1}-}\" => \"$name\","
+    done | sed '$ s/.$//' >> "data/iso_3166-2/${alpha_1}.php"
 
-    echo "  }
-}" >> "data/iso_3166-2/${alpha_1}.json"
+    echo "  ]
+];" >> "data/iso_3166-2/${alpha_1}.php"
   done
 }
 

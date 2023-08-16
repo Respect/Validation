@@ -1,19 +1,15 @@
 <?php
 
 /*
- * This file is part of Respect/Validation.
- *
- * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE file
- * that was distributed with this source code.
+ * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-License-Identifier: MIT
  */
 
 declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Helpers\Subdivisions;
+use Respect\Validation\Helpers\CountryInfo;
 
 use function array_keys;
 
@@ -31,26 +27,26 @@ final class SubdivisionCode extends AbstractSearcher
     /**
      * @var string
      */
-    private $countryName; /** @phpstan-ignore-line */
+    private $countryName;
 
     /**
      * @var string[]
      */
-    private $subdivisions;
+    private $countryInfo;
 
     public function __construct(string $countryCode)
     {
-        $subdivisions = new Subdivisions($countryCode);
+        $countryInfo = new CountryInfo($countryCode);
 
-        $this->countryName = $subdivisions->getCountry();
-        $this->subdivisions = array_keys($subdivisions->getSubdivisions());
+        $this->countryName = $countryInfo->getCountry();
+        $this->countryInfo = array_keys($countryInfo->getSubdivisions());
     }
 
     /**
      * {@inheritDoc}
      */
-    protected function getDataSource(): array
+    protected function getDataSource($input = null): array
     {
-        return $this->subdivisions;
+        return $this->countryInfo;
     }
 }

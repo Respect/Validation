@@ -1,12 +1,8 @@
 <?php
 
 /*
- * This file is part of Respect/Validation.
- *
- * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE file
- * that was distributed with this source code.
+ * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-License-Identifier: MIT
  */
 
 declare(strict_types=1);
@@ -108,6 +104,11 @@ class ValidationException extends InvalidArgumentException implements Exception
     public function getParam(string $name)
     {
         return $this->params[$name] ?? null;
+    }
+
+    public function setParam(string $name, mixed $value): void
+    {
+        $this->params[$name] = $value;
     }
 
     public function updateMode(string $mode): void

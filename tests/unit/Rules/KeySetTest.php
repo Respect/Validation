@@ -1,12 +1,8 @@
 <?php
 
 /*
- * This file is part of Respect/Validation.
- *
- * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE file
- * that was distributed with this source code.
+ * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-License-Identifier: MIT
  */
 
 declare(strict_types=1);
@@ -173,6 +169,36 @@ final class KeySetTest extends TestCase
         $this->expectExceptionMessage('Must have keys `{ "foo", "bar" }`');
 
         $keySet->assert($input);
+    }
+
+    /**
+     * @test
+     */
+    public function shouldWarnOfExtraKeysWithMessage(): void
+    {
+        $input = ['foo' => 123, 'bar' => 456];
+
+        $key1 = new Key('foo', new AlwaysValid(), true);
+
+        $keySet = new KeySet($key1);
+
+        $this->expectException(KeySetException::class);
+        $this->expectExceptionMessage('Must not have keys `{ "bar" }`');
+
+        $keySet->assert($input);
+    }
+
+    /**
+     * @test
+     */
+    public function cannotBeNegated(): void
+    {
+        $key1 = new Key('foo', new AlwaysValid(), true);
+
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage('"Respect\Validation\Rules\KeySet" can not be wrapped in Not()');
+
+        new Not(new KeySet($key1));
     }
 
     /**

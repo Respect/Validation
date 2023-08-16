@@ -1,18 +1,15 @@
 <?php
 
 /*
- * This file is part of Respect/Validation.
- *
- * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE file
- * that was distributed with this source code.
+ * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-License-Identifier: MIT
  */
 
 declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function is_scalar;
 use function ord;
 use function preg_match;
 
@@ -35,6 +32,12 @@ final class PolishIdCard extends AbstractRule
      */
     public function validate($input): bool
     {
+        if (!is_scalar($input)) {
+            return false;
+        }
+
+        $input = (string) $input;
+
         if (!preg_match('/^[A-Z0-9]{9}$/', $input)) {
             return false;
         }

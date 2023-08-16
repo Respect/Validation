@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of Respect/Validation.
- *
- * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE file
- * that was distributed with this source code.
+ * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-License-Identifier: MIT
  */
 
 declare(strict_types=1);
 
 namespace Respect\Validation\Helpers;
 
+use DateTime;
+use DateTimeZone;
+
 use function checkdate;
+use function date_default_timezone_get;
 use function date_parse_from_format;
 use function preg_match;
 
@@ -34,13 +34,25 @@ trait CanValidateDateTime
             'r' => 'D, d M Y H:i:s O',
         ];
 
-        $info = date_parse_from_format($exceptionalFormats[$format] ?? $format, $value);
+        $format = $exceptionalFormats[$format] ?? $format;
+
+        $info = date_parse_from_format($format, $value);
 
         if (!$this->isDateTimeParsable($info)) {
             return false;
         }
 
         if ($this->isDateFormat($format)) {
+            $formattedDate = DateTime::createFromFormat(
+                $format,
+                $value,
+                new DateTimeZone(date_default_timezone_get())
+            );
+
+            if ($formattedDate === false || $value !== $formattedDate->format($format)) {
+                return false;
+            }
+
             return $this->isDateInformation($info);
         }
 
@@ -69,6 +81,6 @@ trait CanValidateDateTime
             return checkdate((int) $info['month'], $info['day'], (int) $info['year']);
         }
 
-        return checkdate($info['month'] ?: 1, $info['day'] ?: 1, $info['year'] ?: 1);
+        return checkdate($info['month'] ?: 1, 1, $info['year'] ?: 1);
     }
 }

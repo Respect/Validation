@@ -1,12 +1,8 @@
 <?php
 
 /*
- * This file is part of Respect/Validation.
- *
- * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE file
- * that was distributed with this source code.
+ * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-License-Identifier: MIT
  */
 
 declare(strict_types=1);
@@ -76,6 +72,7 @@ final class DateTimeTest extends RuleTestCase
             [new DateTime('h'), 24],
             [new DateTime('c'), new DateTimeMutable()],
             [new DateTime('c'), new DateTimeImmutable()],
+            [new DateTime('Y-m-d H:i:s'), '21-3-123:12:01'],
         ];
     }
 

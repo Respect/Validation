@@ -1,12 +1,8 @@
 <?php
 
 /*
- * This file is part of Respect/Validation.
- *
- * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE file
- * that was distributed with this source code.
+ * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-License-Identifier: MIT
  */
 
 declare(strict_types=1);
@@ -196,6 +192,8 @@ final class Factory
      *
      * @throws InvalidClassException
      * @throws ReflectionException
+     *
+     * @return ReflectionClass<ValidationException|Validatable|object>
      */
     private function createReflectionClass(string $name, string $parentName): ReflectionClass
     {
@@ -241,6 +239,7 @@ final class Factory
     }
 
     /**
+     * @param ReflectionObject|ReflectionClass<Validatable> $reflection
      * @return mixed[]
      */
     private function extractPropertiesValues(Validatable $validatable, ReflectionClass $reflection): array

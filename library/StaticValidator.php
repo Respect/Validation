@@ -1,12 +1,8 @@
 <?php
 
 /*
- * This file is part of Respect/Validation.
- *
- * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE file
- * that was distributed with this source code.
+ * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-License-Identifier: MIT
  */
 
 declare(strict_types=1);
@@ -15,8 +11,6 @@ namespace Respect\Validation;
 
 use finfo;
 use Respect\Validation\Rules\Key;
-use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\Validator\ValidatorInterface as SymfonyValidator;
 
 interface StaticValidator
 {
@@ -319,8 +313,6 @@ interface StaticValidator
     public static function roman(): ChainedValidator;
 
     public static function scalarVal(): ChainedValidator;
-
-    public static function sf(Constraint $constraint, ?SymfonyValidator $validator = null): ChainedValidator;
 
     public static function size(?string $minSize = null, ?string $maxSize = null): ChainedValidator;
 

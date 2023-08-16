@@ -1,12 +1,8 @@
 <?php
 
 /*
- * This file is part of Respect/Validation.
- *
- * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE file
- * that was distributed with this source code.
+ * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-License-Identifier: MIT
  */
 
 declare(strict_types=1);
@@ -57,6 +53,7 @@ final class IpTest extends RuleTestCase
             [new Ip('220.78.168/21'), '220.78.173.2'],
             [new Ip('220.78.168.0/21'), '220.78.173.2'],
             [new Ip('220.78.168.0/255.255.248.0'), '220.78.173.2'],
+            [new Ip('127.0.0.1-127.0.0.5'), '127.0.0.2'],
             [new Ip('*', FILTER_FLAG_IPV6), '2001:0db8:85a3:08d3:1319:8a2e:0370:7334'],
         ];
     }
@@ -82,6 +79,7 @@ final class IpTest extends RuleTestCase
             [new Ip('193.168.0.0-193.255.255.255'), '192.10.2.6'],
             [new Ip('220.78.168/21'), '220.78.176.1'],
             [new Ip('220.78.168.0/21'), '220.78.176.2'],
+            [new Ip('127.0.0.1-127.0.0.5'), '127.0.0.10'],
             [new Ip('220.78.168.0/255.255.248.0'), '220.78.176.3'],
         ];
     }

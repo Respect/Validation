@@ -1,12 +1,8 @@
 <?php
 
 /*
- * This file is part of Respect/Validation.
- *
- * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE file
- * that was distributed with this source code.
+ * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-License-Identifier: MIT
  */
 
 declare(strict_types=1);
@@ -372,7 +368,7 @@ final class CountryCode extends AbstractSearcher
     /**
      * {@inheritDoc}
      */
-    protected function getDataSource(): array
+    protected function getDataSource($input = null): array
     {
         return array_column(self::COUNTRY_CODES, self::SET_INDEXES[$this->set]);
     }

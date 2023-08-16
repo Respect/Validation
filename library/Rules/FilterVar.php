@@ -1,12 +1,8 @@
 <?php
 
 /*
- * This file is part of Respect/Validation.
- *
- * (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE file
- * that was distributed with this source code.
+ * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-License-Identifier: MIT
  */
 
 declare(strict_types=1);
@@ -15,7 +11,8 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 
-use function in_array;
+use function array_key_exists;
+use function filter_var;
 use function is_array;
 use function is_int;
 
@@ -36,14 +33,14 @@ use const FILTER_VALIDATE_URL;
 final class FilterVar extends AbstractEnvelope
 {
     private const ALLOWED_FILTERS = [
-        FILTER_VALIDATE_BOOLEAN,
-        FILTER_VALIDATE_DOMAIN,
-        FILTER_VALIDATE_EMAIL,
-        FILTER_VALIDATE_FLOAT,
-        FILTER_VALIDATE_INT,
-        FILTER_VALIDATE_IP,
-        FILTER_VALIDATE_REGEXP,
-        FILTER_VALIDATE_URL,
+        FILTER_VALIDATE_BOOLEAN => 'is_bool',
+        FILTER_VALIDATE_DOMAIN => 'is_string',
+        FILTER_VALIDATE_EMAIL => 'is_string',
+        FILTER_VALIDATE_FLOAT => 'is_float',
+        FILTER_VALIDATE_INT => 'is_int',
+        FILTER_VALIDATE_IP => 'is_string',
+        FILTER_VALIDATE_REGEXP => 'is_string',
+        FILTER_VALIDATE_URL => 'is_string',
     ];
 
     /**
@@ -55,7 +52,7 @@ final class FilterVar extends AbstractEnvelope
      */
     public function __construct(int $filter, $options = null)
     {
-        if (!in_array($filter, self::ALLOWED_FILTERS)) {
+        if (!array_key_exists($filter, self::ALLOWED_FILTERS)) {
             throw new ComponentException('Cannot accept the given filter');
         }
 
@@ -64,6 +61,10 @@ final class FilterVar extends AbstractEnvelope
             $arguments[] = $options;
         }
 
-        parent::__construct(new Callback('filter_var', ...$arguments));
+        parent::__construct(new Callback(static function ($input) use ($filter, $arguments) {
+            return (self::ALLOWED_FILTERS[$filter])(
+                filter_var($input, ...$arguments)
+            );
+        }));
     }
 }
