@@ -242,7 +242,7 @@ final class Validator extends AllOf
     {
         $values = [];
         foreach ($rules as $field => $rule) {
-            $value = $input[$field] ?? null;
+            $value = $input[$field] ?? $rule->default;
             $rule->check($value);
             $values[$field] = $value;
         }

@@ -60,6 +60,18 @@ abstract class AbstractComposite extends AbstractRule
         return parent::setName($name);
     }
 
+    public function setDefault(string $name): Validatable
+    {
+        $parentDefault = $this->getDefault();
+        foreach ($this->rules as $rule) {
+            $ruleDefault = $rule->getDefault();
+            if ($ruleDefault && $parentDefault !== $ruleDefault) {
+                continue;
+            }
+            $rule->setDefault($name);
+        }
+        return parent::setDefault($name);
+    }
     /**
      * Append a rule into the stack of rules.
      *
