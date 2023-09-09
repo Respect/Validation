@@ -30,6 +30,10 @@ abstract class AbstractRule implements Validatable
      */
     protected $default;
     /**
+     * @var bool|false
+     */
+    protected $defaultType;
+    /**
      * @var string|null
      */
     protected $name;
@@ -109,9 +113,17 @@ abstract class AbstractRule implements Validatable
     {
         return $this->default;
     }
-    public function setDefault(string $default): Validatable
+    /**
+     * {@inheritDoc}
+     */
+    public function getDefaultType(): ?bool
+    {
+        return $this->defaultType;
+    }
+    public function setDefault(string $default, bool $defaultType=false): Validatable
     {
         $this->default = $default;
+        $this->defaultType = $defaultType;
         return $this;
     }
 }
