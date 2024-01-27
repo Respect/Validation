@@ -23,6 +23,8 @@ final class CurrencyCode extends AbstractSearcher
      * @see http://www.currency-iso.org/en/home/tables/table-a1.html
      *
      * {@inheritDoc}
+     *
+     * @return string[]
      */
     protected function getDataSource($input = null): array
     {
