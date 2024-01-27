@@ -11,8 +11,6 @@ namespace Respect\Validation\Rules;
 
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
-use ReflectionException;
-use ReflectionProperty;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
@@ -50,7 +48,7 @@ final class EmailTest extends RuleTestCase
      */
     public static function providerForValidInput(): array
     {
-        $sut = self::sut();
+        $sut = new Email(null);
 
         return [
             [$sut, 'test@test.com'],
@@ -65,7 +63,7 @@ final class EmailTest extends RuleTestCase
      */
     public static function providerForInvalidInput(): array
     {
-        $sut = self::sut();
+        $sut = new Email(null);
 
         return [
             [$sut, ''],
@@ -83,19 +81,5 @@ final class EmailTest extends RuleTestCase
             [$sut, null],
             [$sut, tmpfile()],
         ];
-    }
-
-    /**
-     * @throws ReflectionException
-     */
-    private static function sut(): Email
-    {
-        $rule = new Email();
-
-        $reflection = new ReflectionProperty(Email::class, 'validator');
-        $reflection->setAccessible(true);
-        $reflection->setValue($rule, null);
-
-        return $rule;
     }
 }

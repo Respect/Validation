@@ -14,17 +14,21 @@ use Egulias\EmailValidator\Validation\RFCValidation;
 
 use function class_exists;
 use function filter_var;
+use function func_num_args;
 use function is_string;
 
 use const FILTER_VALIDATE_EMAIL;
 
 final class Email extends AbstractRule
 {
-    private ?EmailValidator $validator = null;
+    private readonly ?EmailValidator $validator;
 
     public function __construct(?EmailValidator $validator = null)
     {
-        $this->validator = $validator ?: $this->createEmailValidator();
+        if ($validator === null && func_num_args() === 0 && class_exists(EmailValidator::class)) {
+            $validator = new EmailValidator();
+        }
+        $this->validator = $validator;
     }
 
     public function validate(mixed $input): bool
@@ -38,14 +42,5 @@ final class Email extends AbstractRule
         }
 
         return (bool) filter_var($input, FILTER_VALIDATE_EMAIL);
-    }
-
-    private function createEmailValidator(): ?EmailValidator
-    {
-        if (class_exists(EmailValidator::class)) {
-            return new EmailValidator();
-        }
-
-        return null;
     }
 }
