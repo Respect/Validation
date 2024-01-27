@@ -22,13 +22,14 @@ final class Time extends AbstractRule
 {
     use CanValidateDateTime;
 
-    private string $sample;
+    private readonly string $sample;
 
     /**
      * @throws ComponentException
      */
-    public function __construct(private string $format = 'H:i:s')
-    {
+    public function __construct(
+        private readonly string $format = 'H:i:s'
+    ) {
         if (!preg_match('/^[gGhHisuvaA\W]+$/', $format)) {
             throw new ComponentException(sprintf('"%s" is not a valid date format', $format));
         }

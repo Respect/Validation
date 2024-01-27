@@ -40,10 +40,10 @@ class ValidationException extends InvalidArgumentException implements Exception
      * @param mixed[] $params
      */
     public function __construct(
-        private mixed $input,
-        private string $id,
+        private readonly mixed $input,
+        private readonly string $id,
         private array $params,
-        private Formatter $formatter
+        private readonly Formatter $formatter
     ) {
         $this->template = $this->chooseTemplate();
 

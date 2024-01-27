@@ -30,8 +30,9 @@ final class VideoUrl extends AbstractRule
     /**
      * @throws ComponentException when the given service is not supported
      */
-    public function __construct(private ?string $service = null)
-    {
+    public function __construct(
+        private readonly ?string $service = null
+    ) {
         if ($service !== null && !$this->isSupportedService($service)) {
             throw new ComponentException(sprintf('"%s" is not a recognized video service.', $service));
         }

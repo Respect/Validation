@@ -25,7 +25,7 @@ use const PHP_INT_MAX;
  */
 final class YesTest extends RuleTestCase
 {
-    private string $locale;
+    private readonly string $locale;
 
     /**
      * @test

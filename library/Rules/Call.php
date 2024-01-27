@@ -24,8 +24,10 @@ final class Call extends AbstractRule
      */
     private $callable;
 
-    public function __construct(callable $callable, private Validatable $rule)
-    {
+    public function __construct(
+        callable $callable,
+        private readonly Validatable $rule
+    ) {
         $this->callable = $callable;
     }
 

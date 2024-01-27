@@ -15,7 +15,7 @@ abstract class AbstractComparison extends AbstractRule
 {
     use CanCompareValues;
 
-    private mixed $compareTo;
+    private readonly mixed $compareTo;
 
     abstract protected function compare(mixed $left, mixed $right): bool;
 

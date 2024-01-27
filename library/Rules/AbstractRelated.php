@@ -22,9 +22,9 @@ abstract class AbstractRelated extends AbstractRule
     abstract public function getReferenceValue(mixed $input): mixed;
 
     public function __construct(
-        private mixed $reference,
-        private ?Validatable $rule = null,
-        private bool $mandatory = true
+        private readonly mixed $reference,
+        private readonly ?Validatable $rule = null,
+        private readonly bool $mandatory = true
     ) {
 
         if ($rule && $rule->getName() !== null) {

@@ -11,8 +11,9 @@ namespace Respect\Validation\Rules;
 
 final class Instance extends AbstractRule
 {
-    public function __construct(private string $instanceName)
-    {
+    public function __construct(
+        private readonly string $instanceName
+    ) {
     }
 
     public function validate(mixed $input): bool

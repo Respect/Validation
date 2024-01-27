@@ -14,10 +14,13 @@ use Respect\Validation\Validatable;
 
 final class When extends AbstractRule
 {
-    private Validatable $else;
+    private readonly Validatable $else;
 
-    public function __construct(private Validatable $when, private Validatable $then, ?Validatable $else = null)
-    {
+    public function __construct(
+        private readonly Validatable $when,
+        private readonly Validatable $then,
+        ?Validatable $else = null
+    ) {
         if ($else === null) {
             $else = new AlwaysInvalid();
             $else->setTemplate(AlwaysInvalidException::SIMPLE);

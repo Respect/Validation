@@ -21,12 +21,14 @@ abstract class AbstractAge extends AbstractRule
 {
     use CanValidateDateTime;
 
-    private int $baseDate;
+    private readonly int $baseDate;
 
     abstract protected function compare(int $baseDate, int $givenDate): bool;
 
-    public function __construct(private int $age, private ?string $format = null)
-    {
+    public function __construct(
+        private readonly int $age,
+        private readonly ?string $format = null
+    ) {
         $this->baseDate = (int) date('Ymd') - $this->age * 10000;
     }
 

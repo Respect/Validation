@@ -14,8 +14,9 @@ use function preg_match;
 
 final class Regex extends AbstractRule
 {
-    public function __construct(private string $regex)
-    {
+    public function __construct(
+        private readonly string $regex
+    ) {
     }
 
     public function validate(mixed $input): bool

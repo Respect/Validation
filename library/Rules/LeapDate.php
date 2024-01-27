@@ -16,8 +16,9 @@ use function is_scalar;
 
 final class LeapDate extends AbstractRule
 {
-    public function __construct(private string $format)
-    {
+    public function __construct(
+        private readonly string $format
+    ) {
     }
 
     public function validate(mixed $input): bool

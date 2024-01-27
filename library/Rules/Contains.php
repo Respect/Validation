@@ -17,12 +17,10 @@ use function mb_strpos;
 
 final class Contains extends AbstractRule
 {
-    /**
-     * @param mixed $containsValue Value that will be sought
-     * @param bool $identical Defines whether the value is identical, default is false
-     */
-    public function __construct(private mixed $containsValue, private bool $identical = false)
-    {
+    public function __construct(
+        private readonly mixed $containsValue,
+        private readonly bool $identical = false
+    ) {
     }
 
     public function validate(mixed $input): bool

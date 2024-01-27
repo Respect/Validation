@@ -16,8 +16,10 @@ use function mb_strpos;
 
 final class In extends AbstractRule
 {
-    public function __construct(private mixed $haystack, private bool $compareIdentical = false)
-    {
+    public function __construct(
+        private readonly mixed $haystack,
+        private readonly bool $compareIdentical = false
+    ) {
     }
 
     public function validate(mixed $input): bool

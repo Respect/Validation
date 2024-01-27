@@ -11,8 +11,9 @@ namespace Respect\Validation\Rules;
 
 final class Identical extends AbstractRule
 {
-    public function __construct(private mixed $compareTo)
-    {
+    public function __construct(
+        private readonly mixed $compareTo
+    ) {
     }
 
     public function validate(mixed $input): bool

@@ -22,13 +22,14 @@ final class Date extends AbstractRule
 {
     use CanValidateDateTime;
 
-    private string $sample;
+    private readonly string $sample;
 
     /**
      * @throws ComponentException
      */
-    public function __construct(private string $format = 'Y-m-d')
-    {
+    public function __construct(
+        private readonly string $format = 'Y-m-d'
+    ) {
         if (!preg_match('/^[djSFmMnYy\W]+$/', $format)) {
             throw new ComponentException(sprintf('"%s" is not a valid date format', $format));
         }

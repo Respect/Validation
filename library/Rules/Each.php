@@ -18,8 +18,9 @@ final class Each extends AbstractRule
 {
     use CanValidateIterable;
 
-    public function __construct(private Validatable $rule)
-    {
+    public function __construct(
+        private readonly Validatable $rule
+    ) {
     }
 
     public function assert(mixed $input): void

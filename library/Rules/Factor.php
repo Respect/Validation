@@ -15,8 +15,9 @@ use function is_numeric;
 
 final class Factor extends AbstractRule
 {
-    public function __construct(private int $dividend)
-    {
+    public function __construct(
+        private readonly int $dividend
+    ) {
     }
 
     public function validate(mixed $input): bool

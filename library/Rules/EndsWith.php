@@ -17,8 +17,10 @@ use function mb_strrpos;
 
 final class EndsWith extends AbstractRule
 {
-    public function __construct(private mixed $endValue, private bool $identical = false)
-    {
+    public function __construct(
+        private readonly mixed $endValue,
+        private readonly bool $identical = false
+    ) {
     }
 
     public function validate(mixed $input): bool

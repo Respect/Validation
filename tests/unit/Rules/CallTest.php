@@ -26,7 +26,7 @@ use function trigger_error;
  */
 final class CallTest extends TestCase
 {
-    private ErrorException $errorException;
+    private readonly ErrorException $errorException;
 
     /**
      * @test

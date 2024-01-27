@@ -21,7 +21,7 @@ final class Charset extends AbstractRule
     /**
      * @var string[]
      */
-    private array $charset;
+    private readonly array $charset;
 
     /**
      * @throws ComponentException

@@ -13,8 +13,9 @@ use Respect\Validation\Validatable;
 
 abstract class AbstractWrapper extends AbstractRule
 {
-    public function __construct(private Validatable $validatable)
-    {
+    public function __construct(
+        private readonly Validatable $validatable
+    ) {
     }
 
     public function assert(mixed $input): void

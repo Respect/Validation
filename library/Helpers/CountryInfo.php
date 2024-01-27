@@ -19,7 +19,7 @@ final class CountryInfo
     /**
      * @var mixed[]
      */
-    private array $data;
+    private readonly array $data;
 
     /**
      * @var mixed[]

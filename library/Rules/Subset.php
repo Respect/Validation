@@ -17,8 +17,9 @@ final class Subset extends AbstractRule
     /**
      * @param mixed[] $superset
      */
-    public function __construct(private array $superset)
-    {
+    public function __construct(
+        private readonly array $superset
+    ) {
     }
 
     public function validate(mixed $input): bool

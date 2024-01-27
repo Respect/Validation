@@ -20,7 +20,7 @@ use const FILEINFO_MIME_TYPE;
 
 final class Image extends AbstractRule
 {
-    private finfo $fileInfo;
+    private readonly finfo $fileInfo;
 
     public function __construct(?finfo $fileInfo = null)
     {

@@ -19,12 +19,12 @@ use function array_keys;
  */
 final class SubdivisionCode extends AbstractSearcher
 {
-    private string $countryName;
+    private readonly string $countryName;
 
     /**
      * @var string[]
      */
-    private array $countryInfo;
+    private readonly array $countryInfo;
 
     public function __construct(string $countryCode)
     {

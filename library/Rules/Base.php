@@ -11,7 +11,6 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 
-use function is_null;
 use function mb_strlen;
 use function mb_substr;
 use function preg_match;
@@ -19,14 +18,10 @@ use function sprintf;
 
 final class Base extends AbstractRule
 {
-    private string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-    public function __construct(private int $base, ?string $chars = null)
-    {
-        if (!is_null($chars)) {
-            $this->chars = $chars;
-        }
-
+    public function __construct(
+        private readonly int $base,
+        private readonly string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    ) {
         $max = mb_strlen($this->chars);
         if ($base > $max) {
             throw new ComponentException(sprintf('a base between 1 and %s is required', $max));

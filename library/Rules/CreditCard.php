@@ -50,8 +50,9 @@ final class CreditCard extends AbstractRule
     /**
      * @throws ComponentException
      */
-    public function __construct(private string $brand = self::ANY)
-    {
+    public function __construct(
+        private readonly string $brand = self::ANY
+    ) {
         if (!isset(self::BRAND_REGEX_LIST[$brand])) {
             throw new ComponentException(
                 sprintf(

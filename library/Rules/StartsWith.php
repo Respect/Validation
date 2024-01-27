@@ -17,8 +17,10 @@ use function reset;
 
 final class StartsWith extends AbstractRule
 {
-    public function __construct(private mixed $startValue, private bool $identical = false)
-    {
+    public function __construct(
+        private readonly mixed $startValue,
+        private readonly bool $identical = false
+    ) {
     }
 
     public function validate(mixed $input): bool

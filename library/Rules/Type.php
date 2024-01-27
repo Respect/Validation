@@ -37,8 +37,9 @@ final class Type extends AbstractRule
     /**
      * @throws ComponentException When $type is not a valid one
      */
-    public function __construct(private string $type)
-    {
+    public function __construct(
+        private readonly string $type
+    ) {
         if (!isset(self::AVAILABLE_TYPES[$type])) {
             throw new ComponentException(
                 sprintf(

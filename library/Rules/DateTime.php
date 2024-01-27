@@ -20,10 +20,11 @@ final class DateTime extends AbstractRule
 {
     use CanValidateDateTime;
 
-    private string $sample;
+    private readonly string $sample;
 
-    public function __construct(private ?string $format = null)
-    {
+    public function __construct(
+        private readonly ?string $format = null
+    ) {
         $this->sample = date($format ?: 'c', strtotime('2005-12-30 01:02:03'));
     }
 

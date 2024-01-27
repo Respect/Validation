@@ -21,7 +21,7 @@ use function sprintf;
 
 final class Not extends AbstractRule
 {
-    private Validatable $rule;
+    private readonly Validatable $rule;
 
     public function __construct(Validatable $rule)
     {

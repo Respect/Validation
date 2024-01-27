@@ -23,7 +23,7 @@ use const LC_ALL;
  */
 final class NoTest extends RuleTestCase
 {
-    private string $locale;
+    private readonly string $locale;
 
     /**
      * @test

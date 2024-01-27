@@ -20,10 +20,6 @@ use Respect\Validation\Test\Stubs\WithUninitialized;
  */
 final class AttributeTest extends RuleTestCase
 {
-    public const PROPERTY_VALUE = 'foo';
-
-    private string $bar = self::PROPERTY_VALUE;
-
     /**
      * @return array<string, array{Attribute, mixed}>
      */

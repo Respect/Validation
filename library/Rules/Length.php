@@ -23,20 +23,17 @@ use function sprintf;
 
 final class Length extends AbstractRule
 {
-    private ?int $minValue = null;
-
-    private ?int $maxValue = null;
-
     /**
      * @throws ComponentException
      */
-    public function __construct(?int $min = null, ?int $max = null, private bool $inclusive = true)
-    {
-        $this->minValue = $min;
-        $this->maxValue = $max;
+    public function __construct(
+        private readonly ?int $minValue = null,
+        private readonly ?int $maxValue = null,
+        private readonly bool $inclusive = true
+    ) {
 
-        if ($max !== null && $min > $max) {
-            throw new ComponentException(sprintf('%d cannot be less than %d for validation', $min, $max));
+        if ($maxValue !== null && $minValue > $maxValue) {
+            throw new ComponentException(sprintf('%d cannot be less than %d for validation', $minValue, $maxValue));
         }
     }
 

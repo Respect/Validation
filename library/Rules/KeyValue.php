@@ -20,9 +20,9 @@ use function in_array;
 final class KeyValue extends AbstractRule
 {
     public function __construct(
-        private int|string $comparedKey,
-        private string $ruleName,
-        private int|string $baseKey
+        private readonly int|string $comparedKey,
+        private readonly string $ruleName,
+        private readonly int|string $baseKey
     ) {
     }
 

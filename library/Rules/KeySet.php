@@ -24,7 +24,7 @@ final class KeySet extends AbstractWrapper implements NonNegatable
     /**
      * @var mixed[]
      */
-    private array $keys;
+    private readonly array $keys;
 
     /**
      * @var mixed[]
@@ -34,7 +34,7 @@ final class KeySet extends AbstractWrapper implements NonNegatable
     /**
      * @var Key[]
      */
-    private array $keyRules;
+    private readonly array $keyRules;
 
     public function __construct(Validatable ...$validatables)
     {

@@ -17,8 +17,10 @@ abstract class AbstractEnvelope extends AbstractRule
     /**
      * @param mixed[] $parameters
      */
-    public function __construct(private Validatable $validatable, private array $parameters = [])
-    {
+    public function __construct(
+        private readonly Validatable $validatable,
+        private readonly array $parameters = []
+    ) {
     }
 
     public function validate(mixed $input): bool

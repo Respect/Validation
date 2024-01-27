@@ -11,8 +11,9 @@ namespace Respect\Validation\Rules;
 
 final class Multiple extends AbstractRule
 {
-    public function __construct(private int $multipleOf)
-    {
+    public function __construct(
+        private readonly int $multipleOf
+    ) {
     }
 
     public function validate(mixed $input): bool

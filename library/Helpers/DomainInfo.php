@@ -17,7 +17,7 @@ final class DomainInfo
     /**
      * @var mixed[]
      */
-    private array $data;
+    private readonly array $data;
 
     /**
      * @var mixed[]

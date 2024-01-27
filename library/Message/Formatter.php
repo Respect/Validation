@@ -20,8 +20,10 @@ final class Formatter
      */
     private $translator;
 
-    public function __construct(callable $translator, private ParameterStringifier $parameterStringifier)
-    {
+    public function __construct(
+        callable $translator,
+        private readonly ParameterStringifier $parameterStringifier
+    ) {
         $this->translator = $translator;
     }
 

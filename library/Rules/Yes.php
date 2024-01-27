@@ -17,8 +17,9 @@ use const YESEXPR;
 
 final class Yes extends AbstractRule
 {
-    public function __construct(private bool $useLocale = false)
-    {
+    public function __construct(
+        private readonly bool $useLocale = false
+    ) {
     }
 
     public function validate(mixed $input): bool

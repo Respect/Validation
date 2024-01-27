@@ -23,11 +23,11 @@ use function mb_substr_count;
 
 final class Domain extends AbstractRule
 {
-    private Validatable $genericRule;
+    private readonly Validatable $genericRule;
 
-    private Validatable $tldRule;
+    private readonly Validatable $tldRule;
 
-    private Validatable $partsRule;
+    private readonly Validatable $partsRule;
 
     public function __construct(bool $tldCheck = true)
     {

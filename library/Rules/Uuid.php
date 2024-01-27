@@ -22,8 +22,9 @@ final class Uuid extends AbstractRule
     /**
      * @throws ComponentException when the version is not valid
      */
-    public function __construct(private ?int $version = null)
-    {
+    public function __construct(
+        private readonly ?int $version = null
+    ) {
         if ($version !== null && !$this->isSupportedVersion($version)) {
             throw new ComponentException(sprintf('Only versions 1, 3, 4, and 5 are supported: %d given', $version));
         }

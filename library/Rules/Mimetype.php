@@ -19,11 +19,10 @@ use const FILEINFO_MIME_TYPE;
 
 final class Mimetype extends AbstractRule
 {
-    private finfo $fileInfo;
-
-    public function __construct(private string $mimetype, ?finfo $fileInfo = null)
-    {
-        $this->fileInfo = $fileInfo ?: new finfo();
+    public function __construct(
+        private readonly string $mimetype,
+        private readonly finfo $fileInfo = new finfo()
+    ) {
     }
 
     public function validate(mixed $input): bool

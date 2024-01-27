@@ -13,8 +13,9 @@ use Countable;
 
 final class CountableStub implements Countable
 {
-    public function __construct(private int $value)
-    {
+    public function __construct(
+        private readonly int $value
+    ) {
     }
 
     public function count(): int

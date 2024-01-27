@@ -18,8 +18,9 @@ use const PATHINFO_EXTENSION;
 
 final class Extension extends AbstractRule
 {
-    public function __construct(private string $extension)
-    {
+    public function __construct(
+        private readonly string $extension
+    ) {
     }
 
     public function validate(mixed $input): bool

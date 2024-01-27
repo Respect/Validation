@@ -321,8 +321,9 @@ final class CountryCode extends AbstractSearcher
     /**
      * @throws ComponentException If $set is not a valid set
      */
-    public function __construct(private string $set = self::ALPHA2)
-    {
+    public function __construct(
+        private readonly string $set = self::ALPHA2
+    ) {
         if (!isset(self::SET_INDEXES[$set])) {
             throw new ComponentException(
                 sprintf(

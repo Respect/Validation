@@ -23,12 +23,14 @@ use function sprintf;
 
 final class Size extends AbstractRule
 {
-    private ?float $minValue = null;
+    private readonly ?float $minValue;
 
-    private ?float $maxValue = null;
+    private readonly ?float $maxValue;
 
-    public function __construct(private string|int|null $minSize = null, private string|int|null $maxSize = null)
-    {
+    public function __construct(
+        private string|int|null $minSize = null,
+        private string|int|null $maxSize = null
+    ) {
         $this->minValue = $minSize ? $this->toBytes((string) $minSize) : null;
         $this->maxValue = $maxSize ? $this->toBytes((string) $maxSize) : null;
     }

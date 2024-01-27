@@ -17,8 +17,9 @@ use function var_export;
 
 final class Decimal extends AbstractRule
 {
-    public function __construct(private int $decimals)
-    {
+    public function __construct(
+        private readonly int $decimals
+    ) {
     }
 
     public function validate(mixed $input): bool
