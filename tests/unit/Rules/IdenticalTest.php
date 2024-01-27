@@ -14,10 +14,7 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Identical
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class IdenticalTest extends RuleTestCase
 {
@@ -34,7 +31,7 @@ final class IdenticalTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Identical, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -50,7 +47,7 @@ final class IdenticalTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Identical, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

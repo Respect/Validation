@@ -18,17 +18,12 @@ use const PHP_INT_MAX;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Countable
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author João Torquato <joao.otl@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
  */
 final class CountableTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Countable, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -42,7 +37,7 @@ final class CountableTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Countable, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

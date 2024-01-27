@@ -13,17 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Pesel
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Tomasz Regdos <tomek@regdos.com>
  */
 final class PeselTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Pesel, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -42,7 +37,7 @@ final class PeselTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Pesel, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

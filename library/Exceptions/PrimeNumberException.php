@@ -9,17 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Ismael Elias <ismael.esq@hotmail.com>
- * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
- */
 final class PrimeNumberException extends ValidationException
 {
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a valid prime number',
         ],

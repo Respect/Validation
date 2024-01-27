@@ -9,16 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jean Pimentel <jeanfap@gmail.com>
- */
 final class RomanException extends ValidationException
 {
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a valid Roman numeral',
         ],

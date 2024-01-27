@@ -14,17 +14,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\LeapYear
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jayson Reis <santosdosreis@gmail.com>
  */
 final class LeapYearTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{LeapYear, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -40,7 +35,7 @@ final class LeapYearTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{LeapYear, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

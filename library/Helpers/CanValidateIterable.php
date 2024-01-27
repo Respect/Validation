@@ -14,19 +14,9 @@ use Traversable;
 
 use function is_array;
 
-/**
- * Helper to handle iterable values.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 trait CanValidateIterable
 {
-    /**
-     * Returns whether the value is iterable or not.
-     *
-     * @param mixed $value
-     */
-    public function isIterable($value): bool
+    public function isIterable(mixed $value): bool
     {
         return is_array($value) || $value instanceof stdClass || $value instanceof Traversable;
     }

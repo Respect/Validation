@@ -10,7 +10,7 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator as v;
 
-exceptionFullMessage(static function () {
+exceptionFullMessage(static function (): void {
     v::create()
         ->key(
             'mysql',

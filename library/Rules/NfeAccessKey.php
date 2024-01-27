@@ -15,23 +15,11 @@ use function mb_strlen;
 use function str_split;
 
 /**
- * Validates the access key of the Brazilian electronic invoice (NFe).
- *
- *
- * (pt-br) Valida chave de acesso de NFe, mais especificamente, relacionada ao DANFE.
- *
  * @see (pt-br) Manual de Integração do Contribuinte v4.0.1 em http://www.nfe.fazenda.gov.br
- *
- * @author Andrey Knupp Vital <andreykvital@gmail.com>
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class NfeAccessKey extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (mb_strlen($input) !== 44) {
             return false;

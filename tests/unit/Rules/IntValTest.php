@@ -16,18 +16,12 @@ use const PHP_INT_MAX;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\IntVal
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class IntValTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{IntVal, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -52,7 +46,7 @@ final class IntValTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{IntVal, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

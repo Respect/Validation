@@ -13,16 +13,9 @@ use Respect\Validation\Exceptions\ComponentException;
 
 use const FILTER_VALIDATE_URL;
 
-/**
- * Validates whether the input is a URL.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class Url extends AbstractEnvelope
 {
     /**
-     * Initializes the rule.
-     *
      * @throws ComponentException
      */
     public function __construct()

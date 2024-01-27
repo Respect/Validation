@@ -18,37 +18,21 @@ use function is_string;
 use function sprintf;
 use function str_split;
 
-/**
- * Validates whether the input is sorted in a certain order or not.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Mikhail Vyrtsev <reeywhaar@gmail.com>
- */
 final class Sorted extends AbstractRule
 {
     public const ASCENDING = 'ASC';
     public const DESCENDING = 'DESC';
 
-    /**
-     * @var string
-     */
-    private $direction;
-
-    public function __construct(string $direction)
+    public function __construct(private string $direction)
     {
         if ($direction !== self::ASCENDING && $direction !== self::DESCENDING) {
             throw new ComponentException(
                 sprintf('Direction should be either "%s" or "%s"', self::ASCENDING, self::DESCENDING)
             );
         }
-
-        $this->direction = $direction;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_array($input) && !is_string($input)) {
             return false;
@@ -65,11 +49,7 @@ final class Sorted extends AbstractRule
         return true;
     }
 
-    /**
-     * @param mixed $current
-     * @param mixed $last
-     */
-    private function isSorted($current, $last): bool
+    private function isSorted(mixed $current, mixed $last): bool
     {
         if ($this->direction === self::ASCENDING) {
             return $current > $last;
@@ -83,7 +63,7 @@ final class Sorted extends AbstractRule
      *
      * @return mixed[]
      */
-    private function getValues($input): array
+    private function getValues(string|array $input): array
     {
         if (is_array($input)) {
             return array_values($input);

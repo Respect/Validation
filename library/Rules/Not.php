@@ -17,20 +17,11 @@ use Respect\Validation\Validatable;
 use function array_shift;
 use function count;
 use function current;
-use function get_class;
 use function sprintf;
 
-/**
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Caio César Tavares <caiotava@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class Not extends AbstractRule
 {
-    /**
-     * @var Validatable
-     */
-    private $rule;
+    private Validatable $rule;
 
     public function __construct(Validatable $rule)
     {
@@ -49,18 +40,12 @@ final class Not extends AbstractRule
         return parent::setName($name);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         return $this->rule->validate($input) === false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function assert($input): void
+    public function assert(mixed $input): void
     {
         if ($this->validate($input)) {
             return;
@@ -77,10 +62,7 @@ final class Not extends AbstractRule
         throw $exception;
     }
 
-    /**
-     * @param mixed $input
-     */
-    private function absorbAllOf(AllOf $rule, $input): Validatable
+    private function absorbAllOf(AllOf $rule, mixed $input): Validatable
     {
         $rules = $rule->getRules();
         while (($current = array_shift($rules))) {
@@ -105,7 +87,7 @@ final class Not extends AbstractRule
             throw new ComponentException(
                 sprintf(
                     '"%s" can not be wrapped in Not()',
-                    get_class($rule)
+                    $rule::class
                 )
             );
         }

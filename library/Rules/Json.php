@@ -17,18 +17,9 @@ use function json_validate;
 
 use const JSON_ERROR_NONE;
 
-/**
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class Json extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_string($input) || $input === '') {
             return false;

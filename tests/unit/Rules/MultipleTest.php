@@ -13,18 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Multiple
- *
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jean Pimentel <jeanfap@gmail.com>
  */
 final class MultipleTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Multiple, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -42,7 +36,7 @@ final class MultipleTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Multiple, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

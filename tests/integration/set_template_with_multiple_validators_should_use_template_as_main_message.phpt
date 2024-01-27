@@ -11,7 +11,7 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator;
 
-exceptionMessage(static function () {
+exceptionMessage(static function (): void {
     Validator::callback('is_int')->between(1, 2)->setTemplate('{{name}} is not tasty')->assert('something');
 });
 ?>

@@ -14,20 +14,12 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Cnh
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Gabriel Pedro <gpedro@users.noreply.github.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Kinn Coelho Julião <kinncj@gmail.com>
- * @author Pascal Borreli <pascal@borreli.com>
- * @author William Espindola <oi@williamespindola.com.br>
  */
 final class CnhTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Cnh, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -62,7 +54,7 @@ final class CnhTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Cnh, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

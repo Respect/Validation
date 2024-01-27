@@ -17,41 +17,16 @@ use Respect\Validation\Validatable;
 use function array_keys;
 use function in_array;
 
-/**
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class KeyValue extends AbstractRule
 {
-    /**
-     * @var int|string
-     */
-    private $comparedKey;
-
-    /**
-     * @var string
-     */
-    private $ruleName;
-
-    /**
-     * @var int|string
-     */
-    private $baseKey;
-
-    /**
-     * @param int|string $comparedKey
-     * @param int|string $baseKey
-     */
-    public function __construct($comparedKey, string $ruleName, $baseKey)
-    {
-        $this->comparedKey = $comparedKey;
-        $this->ruleName = $ruleName;
-        $this->baseKey = $baseKey;
+    public function __construct(
+        private int|string $comparedKey,
+        private string $ruleName,
+        private int|string $baseKey
+    ) {
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function assert($input): void
+    public function assert(mixed $input): void
     {
         $rule = $this->getRule($input);
 
@@ -62,10 +37,7 @@ final class KeyValue extends AbstractRule
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function check($input): void
+    public function check(mixed $input): void
     {
         $rule = $this->getRule($input);
 
@@ -76,10 +48,7 @@ final class KeyValue extends AbstractRule
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         try {
             $rule = $this->getRule($input);
@@ -91,9 +60,9 @@ final class KeyValue extends AbstractRule
     }
 
     /**
-     * {@inheritDoc}
+     * @param mixed[] $extraParameters
      */
-    public function reportError($input, array $extraParams = []): ValidationException
+    public function reportError(mixed $input, array $extraParameters = []): ValidationException
     {
         try {
             return $this->overwriteExceptionParams($this->getRule($input)->reportError($input));
@@ -102,10 +71,7 @@ final class KeyValue extends AbstractRule
         }
     }
 
-    /**
-     * @param mixed $input
-     */
-    private function getRule($input): Validatable
+    private function getRule(mixed $input): Validatable
     {
         if (!isset($input[$this->comparedKey])) {
             throw parent::reportError($this->comparedKey);

@@ -26,52 +26,35 @@ use function str_replace;
 use function trim;
 use function ucfirst;
 
-/**
- * Factory of objects.
- *
- * @author Augusto Pascutti <augusto@phpsp.org.br>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class Factory
 {
     /**
      * @var string[]
      */
-    private $rulesNamespaces = ['Respect\\Validation\\Rules'];
+    private array $rulesNamespaces = ['Respect\\Validation\\Rules'];
 
     /**
      * @var string[]
      */
-    private $exceptionsNamespaces = ['Respect\\Validation\\Exceptions'];
+    private array $exceptionsNamespaces = ['Respect\\Validation\\Exceptions'];
 
     /**
      * @var callable
      */
     private $translator = 'strval';
 
-    /**
-     * @var ParameterStringifier
-     */
-    private $parameterStringifier;
+    private ParameterStringifier $parameterStringifier;
 
-    /**
-     * Default instance of the Factory.
-     *
-     * @var Factory
-     */
-    private static $defaultInstance;
+    private static Factory $defaultInstance;
 
     public function __construct()
     {
         $this->parameterStringifier = new KeepOriginalStringName();
     }
 
-    /**
-     * Returns the default instance of the Factory.
-     */
     public static function getDefaultInstance(): self
     {
-        if (self::$defaultInstance === null) {
+        if (!isset(self::$defaultInstance)) {
             self::$defaultInstance = new self();
         }
 
@@ -111,8 +94,6 @@ final class Factory
     }
 
     /**
-     * Creates a rule.
-     *
      * @param mixed[] $arguments
      *
      * @throws ComponentException
@@ -138,14 +119,11 @@ final class Factory
     }
 
     /**
-     * Creates an exception.
-     *
-     * @param mixed $input
      * @param mixed[] $extraParams
      *
      * @throws ComponentException
      */
-    public function exception(Validatable $validatable, $input, array $extraParams = []): ValidationException
+    public function exception(Validatable $validatable, mixed $input, array $extraParams = []): ValidationException
     {
         $formatter = new Formatter($this->translator, $this->parameterStringifier);
         $reflection = new ReflectionObject($validatable);
@@ -176,17 +154,12 @@ final class Factory
         return new ValidationException($input, $id, $params, $formatter);
     }
 
-    /**
-     * Define the default instance of the Factory.
-     */
     public static function setDefaultInstance(self $defaultInstance): void
     {
         self::$defaultInstance = $defaultInstance;
     }
 
     /**
-     * Creates a reflection based on class name.
-     *
      * @param class-string $name
      * @param class-string $parentName
      *
@@ -210,11 +183,8 @@ final class Factory
     }
 
     /**
-     * Creates a Validation exception.
-     *
      * @param class-string<ValidationException> $exceptionName
      *
-     * @param mixed $input
      * @param mixed[] $params
      *
      * @throws InvalidClassException
@@ -223,7 +193,7 @@ final class Factory
     private function createValidationException(
         string $exceptionName,
         string $id,
-        $input,
+        mixed $input,
         array $params,
         Formatter $formatter
     ): ValidationException {
@@ -246,7 +216,9 @@ final class Factory
     {
         $values = [];
         foreach ($reflection->getProperties() as $property) {
-            $property->setAccessible(true);
+            if (!$property->isInitialized($validatable)) {
+                continue;
+            }
 
             $propertyValue = $property->getValue($validatable);
             if ($propertyValue === null) {

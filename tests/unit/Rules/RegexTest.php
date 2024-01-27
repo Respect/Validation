@@ -14,16 +14,12 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Regex
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class RegexTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Regex, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -35,7 +31,7 @@ final class RegexTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Regex, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

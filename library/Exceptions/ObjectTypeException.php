@@ -9,18 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * Exception class for ObjectType rule.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class ObjectTypeException extends ValidationException
 {
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be of type object',
         ],

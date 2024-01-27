@@ -14,16 +14,12 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Nip
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Tomasz Regdos <tomek@regdos.com>
  */
 final class NipTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Nip, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -37,7 +33,7 @@ final class NipTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Nip, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

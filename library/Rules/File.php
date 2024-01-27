@@ -14,18 +14,9 @@ use SplFileInfo;
 use function is_file;
 use function is_string;
 
-/**
- * Validates whether file input is as a regular filename.
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class File extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
             return $input->isFile();

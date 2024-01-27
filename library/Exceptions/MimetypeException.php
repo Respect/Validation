@@ -9,18 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * Exception class for Mimetype rule.
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class MimetypeException extends ValidationException
 {
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must have {{mimetype}} MIME type',
         ],

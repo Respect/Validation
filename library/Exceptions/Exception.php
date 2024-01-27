@@ -11,10 +11,6 @@ namespace Respect\Validation\Exceptions;
 
 use Throwable;
 
-/**
- * @author Andy Wendt <andy@awendt.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 interface Exception extends Throwable
 {
 }

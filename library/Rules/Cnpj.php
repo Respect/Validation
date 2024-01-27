@@ -16,22 +16,9 @@ use function is_scalar;
 use function preg_replace;
 use function str_split;
 
-/**
- * Validates if the input is a Brazilian National Registry of Legal Entities (CNPJ) number.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jayson Reis <santosdosreis@gmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
- * @author Renato Moura <renato@naturalweb.com.br>
- * @author William Espindola <oi@williamespindola.com.br>
- */
 final class Cnpj extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

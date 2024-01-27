@@ -14,7 +14,7 @@ $arr = [
     'email' => 'hello@hello.com',
 ];
 
-exceptionMessages(static function () use ($arr) {
+exceptionMessages(static function () use ($arr): void {
     v::create()
         ->key('name', v::length(2, 32))
         ->key('email', v::email())

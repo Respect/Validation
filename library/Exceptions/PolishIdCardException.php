@@ -9,15 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class PolishIdCardException extends ValidationException
 {
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a valid Polish Identity Card number',
         ],

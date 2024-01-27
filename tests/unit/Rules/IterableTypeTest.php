@@ -15,16 +15,12 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\IterableType
- *
- * @author Guilherme Siani <guilherme@siani.com.br>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class IterableTypeTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{IterableType, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -38,7 +34,7 @@ final class IterableTypeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{IterableType, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

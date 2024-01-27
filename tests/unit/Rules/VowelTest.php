@@ -13,20 +13,13 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Vowel
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
- * @author Nick Lombard <github@jigsoft.co.za>
- * @author Pascal Borreli <pascal@borreli.com>
  */
 final class VowelTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Vowel, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -46,7 +39,7 @@ final class VowelTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Vowel, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

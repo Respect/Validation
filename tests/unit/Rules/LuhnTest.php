@@ -14,17 +14,12 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Luhn
- *
- * @author Alexander Gorshkov <mazanax@yandex.ru>
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class LuhnTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Luhn, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -38,7 +33,7 @@ final class LuhnTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Luhn, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

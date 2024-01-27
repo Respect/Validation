@@ -18,17 +18,6 @@ use function preg_match;
 use function preg_replace;
 use function sprintf;
 
-/**
- * Validates whether the input is a credit card number.
- *
- * @author Alexander Gorshkov <mazanax@yandex.ru>
- * @author Andy Snell <andysnell@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jean Pimentel <jeanfap@gmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
- * @author William Espindola <oi@williamespindola.com.br>
- * @author Rakshit Arora <rakshit087@gmail.com>
- */
 final class CreditCard extends AbstractRule
 {
     public const ANY = 'Any';
@@ -59,16 +48,9 @@ final class CreditCard extends AbstractRule
     ];
 
     /**
-     * @var string
-     */
-    private $brand;
-
-    /**
-     * Initializes the rule.
-     *
      * @throws ComponentException
      */
-    public function __construct(string $brand = self::ANY)
+    public function __construct(private string $brand = self::ANY)
     {
         if (!isset(self::BRAND_REGEX_LIST[$brand])) {
             throw new ComponentException(
@@ -79,14 +61,9 @@ final class CreditCard extends AbstractRule
                 )
             );
         }
-
-        $this->brand = $brand;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

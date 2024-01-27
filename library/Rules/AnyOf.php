@@ -14,16 +14,9 @@ use Respect\Validation\Exceptions\ValidationException;
 
 use function count;
 
-/**
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class AnyOf extends AbstractComposite
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function assert($input): void
+    public function assert(mixed $input): void
     {
         $validators = $this->getRules();
         $exceptions = $this->getAllThrownExceptions($input);
@@ -38,10 +31,7 @@ final class AnyOf extends AbstractComposite
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         foreach ($this->getRules() as $v) {
             if ($v->validate($input)) {
@@ -52,10 +42,7 @@ final class AnyOf extends AbstractComposite
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function check($input): void
+    public function check(mixed $input): void
     {
         foreach ($this->getRules() as $v) {
             try {

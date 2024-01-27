@@ -14,17 +14,12 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Imei
- *
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Diego Oliveira <contato@diegoholiveira.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class ImeiTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Imei, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -43,7 +38,7 @@ final class ImeiTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Imei, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

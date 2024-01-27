@@ -19,17 +19,12 @@ use const NAN;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Decimal
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Ismael Elias <ismael.esq@hotmail.com>
- * @author Vitaliy <reboot.m@gmail.com>
  */
 final class DecimalTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Decimal, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -54,7 +49,7 @@ final class DecimalTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Decimal, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

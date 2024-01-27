@@ -9,16 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * @author Bruno Luiz da Silva <contato@brunoluiz.net>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class DateException extends ValidationException
 {
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a valid date in the format {{sample}}',
         ],

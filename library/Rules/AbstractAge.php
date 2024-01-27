@@ -17,51 +17,20 @@ use function is_scalar;
 use function strtotime;
 use function vsprintf;
 
-/**
- * Abstract class to validate ages.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 abstract class AbstractAge extends AbstractRule
 {
     use CanValidateDateTime;
 
-    /**
-     * @var int
-     */
-    private $age;
+    private int $baseDate;
 
-    /**
-     * @var string|null
-     */
-    private $format;
-
-    /**
-     * @var int
-     */
-    private $baseDate;
-
-    /**
-     * Should compare the current base date with the given one.
-     *
-     * The dates are represented as integers in the format "Ymd".
-     */
     abstract protected function compare(int $baseDate, int $givenDate): bool;
 
-    /**
-     * Initializes the rule.
-     */
-    public function __construct(int $age, ?string $format = null)
+    public function __construct(private int $age, private ?string $format = null)
     {
-        $this->age = $age;
-        $this->format = $format;
         $this->baseDate = (int) date('Ymd') - $this->age * 10000;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

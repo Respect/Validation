@@ -18,24 +18,15 @@ use Respect\Validation\Validator;
  * @group  rule
  * @covers \Respect\Validation\Exceptions\NotException
  * @covers \Respect\Validation\Rules\Not
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Caio César Tavares <caiotava@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class NotTest extends TestCase
 {
     /**
      * @doesNotPerformAssertions
-     *
      * @dataProvider providerForValidNot
-     *
      * @test
-     *
-     * @param mixed $input
      */
-    public function not(Validatable $rule, $input): void
+    public function not(Validatable $rule, mixed $input): void
     {
         $not = new Not($rule);
         $not->assert($input);
@@ -43,12 +34,9 @@ final class NotTest extends TestCase
 
     /**
      * @dataProvider providerForInvalidNot
-     *
      * @test
-     *
-     * @param mixed $input
      */
-    public function notNotHaha(Validatable $rule, $input): void
+    public function notNotHaha(Validatable $rule, mixed $input): void
     {
         $not = new Not($rule);
 
@@ -59,7 +47,6 @@ final class NotTest extends TestCase
 
     /**
      * @dataProvider providerForSetName
-     *
      * @test
      */
     public function notSetName(Validatable $rule): void

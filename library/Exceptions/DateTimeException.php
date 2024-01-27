@@ -9,18 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class DateTimeException extends ValidationException
 {
     public const FORMAT = 'format';
 
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a valid date/time',
             self::FORMAT => '{{name}} must be a valid date/time in the format {{sample}}',
@@ -31,9 +27,6 @@ final class DateTimeException extends ValidationException
         ],
     ];
 
-    /**
-     * {@inheritDoc}
-     */
     protected function chooseTemplate(): string
     {
         return $this->getParam('format') ? self::FORMAT : self::STANDARD;

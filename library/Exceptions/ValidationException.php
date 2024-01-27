@@ -14,12 +14,6 @@ use Respect\Validation\Message\Formatter;
 
 use function key;
 
-/**
- * Default exception class for rule validations.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 class ValidationException extends InvalidArgumentException implements Exception
 {
     public const MODE_DEFAULT = 'default';
@@ -27,11 +21,9 @@ class ValidationException extends InvalidArgumentException implements Exception
     public const STANDARD = 'standard';
 
     /**
-     * Contains the default templates for exception message.
-     *
-     * @var string[][]
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be valid',
         ],
@@ -40,46 +32,19 @@ class ValidationException extends InvalidArgumentException implements Exception
         ],
     ];
 
-    /**
-     * @var mixed
-     */
-    private $input;
+    private string $mode = self::MODE_DEFAULT;
+
+    private string $template;
 
     /**
-     * @var string
-     */
-    private $id;
-
-    /**
-     * @var string
-     */
-    private $mode = self::MODE_DEFAULT;
-
-    /**
-     * @var mixed[]
-     */
-    private $params = [];
-
-    /**
-     * @var Formatter
-     */
-    private $formatter;
-
-    /**
-     * @var string
-     */
-    private $template;
-
-    /**
-     * @param mixed $input
      * @param mixed[] $params
      */
-    public function __construct($input, string $id, array $params, Formatter $formatter)
-    {
-        $this->input = $input;
-        $this->id = $id;
-        $this->params = $params;
-        $this->formatter = $formatter;
+    public function __construct(
+        private mixed $input,
+        private string $id,
+        private array $params,
+        private Formatter $formatter
+    ) {
         $this->template = $this->chooseTemplate();
 
         parent::__construct($this->createMessage());
@@ -98,10 +63,7 @@ class ValidationException extends InvalidArgumentException implements Exception
         return $this->params;
     }
 
-    /**
-     * @return mixed|null
-     */
-    public function getParam(string $name)
+    public function getParam(string $name): mixed
     {
         return $this->params[$name] ?? null;
     }

@@ -13,16 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\ContainsAny
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Kirill Dlussky <kirill@dlussky.ru>
  */
 final class ContainsAnyTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{ContainsAny, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -40,7 +36,7 @@ final class ContainsAnyTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{ContainsAny, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

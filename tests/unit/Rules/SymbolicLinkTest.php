@@ -17,17 +17,12 @@ use function tmpfile;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\SymbolicLink
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Gus Antoniassi <gus.antoniassi@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class SymbolicLinkTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{SymbolicLink, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -41,7 +36,7 @@ final class SymbolicLinkTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{SymbolicLink, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

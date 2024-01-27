@@ -26,17 +26,6 @@ use function str_repeat;
 use const PHP_EOL;
 
 /**
- * Exception for nested validations.
- *
- * This exception allows to have exceptions inside itself and providers methods
- * to handle them and to retrieve nested messages based on itself and its
- * children.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jonathan Stewmon <jstewmon@rmn.com>
- * @author Wojciech Frącz <fraczwojciech@gmail.com>
- *
  * @implements IteratorAggregate<ValidationException>
  */
 class NestedValidationException extends ValidationException implements IteratorAggregate
@@ -44,11 +33,9 @@ class NestedValidationException extends ValidationException implements IteratorA
     /**
      * @var ValidationException[]
      */
-    private $exceptions = [];
+    private array $exceptions = [];
 
     /**
-     * Returns the exceptions that are children of the exception.
-     *
      * @return ValidationException[]
      */
     public function getChildren(): array
@@ -56,9 +43,6 @@ class NestedValidationException extends ValidationException implements IteratorA
         return $this->exceptions;
     }
 
-    /**
-     * Adds a child to the exception.
-     */
     public function addChild(ValidationException $exception): self
     {
         $this->exceptions[spl_object_hash($exception)] = $exception;
@@ -67,8 +51,6 @@ class NestedValidationException extends ValidationException implements IteratorA
     }
 
     /**
-     * Adds children to the exception.
-     *
      * @param ValidationException[] $exceptions
      */
     public function addChildren(array $exceptions): self
@@ -160,9 +142,6 @@ class NestedValidationException extends ValidationException implements IteratorA
         return $messages;
     }
 
-    /**
-     * Returns a string with all the messages of the exception.
-     */
     public function getFullMessage(): string
     {
         $messages = [];
@@ -200,11 +179,10 @@ class NestedValidationException extends ValidationException implements IteratorA
 
     /**
      * @param string[]|string[][] $templates
-     * @param mixed ...$ids
      *
      * @return string[]|string[][]
      */
-    protected function findTemplates(array $templates, ...$ids): array
+    protected function findTemplates(array $templates, mixed ...$ids): array
     {
         while (count($ids) > 0) {
             $id = array_shift($ids);

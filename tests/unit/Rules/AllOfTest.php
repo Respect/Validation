@@ -19,11 +19,6 @@ use Respect\Validation\Validatable;
  * @group  rule
  * @covers \Respect\Validation\Exceptions\AllOfException
  * @covers \Respect\Validation\Rules\AllOf
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
  */
 final class AllOfTest extends TestCase
 {
@@ -52,7 +47,6 @@ final class AllOfTest extends TestCase
 
     /**
      * @dataProvider providerStaticDummyRules
-     *
      * @test
      */
     public function validationAssertShouldFailIfAnyRuleFailsAndReturnAllExceptionsFailed(
@@ -69,7 +63,6 @@ final class AllOfTest extends TestCase
 
     /**
      * @dataProvider providerStaticDummyRules
-     *
      * @test
      */
     public function validationCheckShouldFailIfAnyRuleFailsAndThrowTheFirstExceptionOnly(
@@ -87,7 +80,6 @@ final class AllOfTest extends TestCase
     /**
      * @dataProvider providerStaticDummyRules
      * @expectedException \Respect\Validation\Exceptions\
-     *
      * @test
      */
     public function validationCheckShouldFailOnEmptyInput(
@@ -103,7 +95,6 @@ final class AllOfTest extends TestCase
 
     /**
      * @dataProvider providerStaticDummyRules
-     *
      * @test
      */
     public function validationShouldFailIfAnyRuleFails(

@@ -14,12 +14,6 @@ use function is_scalar;
 use function preg_match;
 use function sprintf;
 
-/**
- * Validates whether the input is a valid ISBN (International Standard Book Number) or not.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Moritz Fromm <moritzgitfromm@gmail.com>
- */
 final class Isbn extends AbstractRule
 {
     /**
@@ -31,10 +25,7 @@ final class Isbn extends AbstractRule
         '(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$',
     ];
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

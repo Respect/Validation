@@ -19,22 +19,13 @@ use const FILTER_FLAG_NO_PRIV_RANGE;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Ip
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Luís Otávio Cobucci Oblonczyk <lcobucci@gmail.com>
  */
 final class IpTest extends RuleTestCase
 {
     /**
      * @test
-     *
      * @dataProvider providerForInvalidRanges
-     *
      * @throws ComponentException
      */
     public function invalidRangeShouldRaiseException(string $range): void
@@ -61,7 +52,7 @@ final class IpTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Ip, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -89,7 +80,7 @@ final class IpTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Ip, mixed}>
      */
     public static function providerForInvalidInput(): array
     {
@@ -114,9 +105,6 @@ final class IpTest extends RuleTestCase
         ];
     }
 
-    /**
-     * {@inheritDoc}
-     */
     protected function setUp(): void
     {
         if (extension_loaded('bcmath')) {

@@ -18,11 +18,6 @@ use function trim;
 /**
  * @group core
  * @covers \Respect\Validation\Exceptions\ValidationException
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Andy Wendt <andy@awendt.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class ValidationExceptionTest extends TestCase
 {

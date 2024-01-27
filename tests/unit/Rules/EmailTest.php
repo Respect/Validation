@@ -20,13 +20,7 @@ use function tmpfile;
 
 /**
  * @group  rule
- *
  * @covers \Respect\Validation\Rules\Email
- *
- * @author Andrey Kolyshkin <a.kolyshkin@semrush.com>
- * @author Eduardo Gulias Davis <me@egulias.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Paul Karikari <paulkarikari1@gmail.com>
  */
 final class EmailTest extends RuleTestCase
 {
@@ -52,7 +46,7 @@ final class EmailTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Email, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -67,7 +61,7 @@ final class EmailTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Email, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

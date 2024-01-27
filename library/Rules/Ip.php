@@ -26,59 +26,26 @@ use function strtr;
 
 use const FILTER_VALIDATE_IP;
 
-/**
- * Validates whether the input is a valid IP address.
- *
- * This validator uses the native filter_var() PHP function.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Luís Otávio Cobucci Oblonczyk <lcobucci@gmail.com>
- */
 final class Ip extends AbstractRule
 {
-    /**
-     * @var string|null
-     */
-    private $range;
+    private ?string $range = null;
+
+    private ?string $startAddress = null;
+
+    private ?string $endAddress = null;
+
+    private ?string $mask = null;
 
     /**
-     * @var int|null
-     */
-    private $options;
-
-    /**
-     * @var string|null
-     */
-    private $startAddress;
-
-    /**
-     * @var string|null
-     */
-    private $endAddress;
-
-    /**
-     * @var string|null
-     */
-    private $mask;
-
-    /**
-     * Initializes the rule defining the range and some options for filter_var().
-     *
      * @throws ComponentException In case the range is invalid
      */
-    public function __construct(string $range = '*', ?int $options = null)
+    public function __construct(string $range = '*', private ?int $options = null)
     {
         $this->parseRange($range);
         $this->range = $this->createRange();
-        $this->options = $options;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_string($input)) {
             return false;

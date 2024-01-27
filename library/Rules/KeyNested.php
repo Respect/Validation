@@ -23,18 +23,9 @@ use function property_exists;
 use function rtrim;
 use function sprintf;
 
-/**
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Ivan Zinovyev <vanyazin@gmail.com>
- */
 final class KeyNested extends AbstractRelated
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function hasReference($input): bool
+    public function hasReference(mixed $input): bool
     {
         try {
             $this->getReferenceValue($input);
@@ -45,10 +36,7 @@ final class KeyNested extends AbstractRelated
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getReferenceValue($input)
+    public function getReferenceValue(mixed $input): mixed
     {
         if (is_scalar($input)) {
             $message = sprintf('Cannot select the %s in the given data', $this->getReference());
@@ -74,11 +62,8 @@ final class KeyNested extends AbstractRelated
 
     /**
      * @param mixed[] $array
-     * @param mixed $key
-     *
-     * @return mixed
      */
-    private function getValueFromArray(array $array, $key)
+    private function getValueFromArray(array $array, mixed $key): mixed
     {
         if (!array_key_exists($key, $array)) {
             $message = sprintf('Cannot select the key %s from the given array', $this->getReference());
@@ -90,11 +75,8 @@ final class KeyNested extends AbstractRelated
 
     /**
      * @param ArrayAccess<mixed, mixed> $array
-     * @param mixed $key
-     *
-     * @return mixed
      */
-    private function getValueFromArrayAccess(ArrayAccess $array, $key)
+    private function getValueFromArrayAccess(ArrayAccess $array, mixed $key): mixed
     {
         if (!$array->offsetExists($key)) {
             $message = sprintf('Cannot select the key %s from the given array', $this->getReference());
@@ -106,11 +88,8 @@ final class KeyNested extends AbstractRelated
 
     /**
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-     *
-     *
-     * @return mixed
      */
-    private function getValueFromObject(object $object, string $property)
+    private function getValueFromObject(object $object, string $property): mixed
     {
         if (empty($property) || !property_exists($object, $property)) {
             $message = sprintf('Cannot select the property %s from the given object', $this->getReference());
@@ -120,13 +99,7 @@ final class KeyNested extends AbstractRelated
         return $object->{$property};
     }
 
-    /**
-     * @param mixed $value
-     * @param mixed $key
-     *
-     * @return mixed
-     */
-    private function getValue($value, $key)
+    private function getValue(mixed $value, mixed $key): mixed
     {
         if (is_array($value)) {
             return $this->getValueFromArray($value, $key);

@@ -14,13 +14,11 @@ use Respect\Validation\Test\RuleTestCase;
 /**
  * @covers \Respect\Validation\Exceptions\PublicDomainSuffixException
  * @covers \Respect\Validation\Rules\PublicDomainSuffix
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  */
 final class PublicDomainSuffixTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{PublicDomainSuffix, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -34,7 +32,7 @@ final class PublicDomainSuffixTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{PublicDomainSuffix, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

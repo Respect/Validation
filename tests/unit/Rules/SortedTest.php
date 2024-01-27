@@ -15,12 +15,7 @@ use stdClass;
 
 /**
  * @group rules
- *
  * @covers \Respect\Validation\Rules\Sorted
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Mikhail Vyrtsev <reeywhaar@gmail.com>
  */
 final class SortedTest extends RuleTestCase
 {
@@ -35,7 +30,7 @@ final class SortedTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Sorted, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -52,7 +47,7 @@ final class SortedTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Sorted, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

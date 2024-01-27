@@ -18,14 +18,7 @@ use function date_default_timezone_set;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\DateTime
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Eduardo Reveles <me@osiux.ws>
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author qrazi <qrazi.sivlingworkz@gmail.com>
  */
 final class DateTimeTest extends RuleTestCase
 {
@@ -42,11 +35,7 @@ final class DateTimeTest extends RuleTestCase
     }
 
     /**
-     * Datetime strings with timezone information are valid independent on the
-     * system's timezone setting.
-     *
      * @test
-     *
      * @dataProvider providerForDateTimeWithTimezone
      */
     public function shouldValidateNoMatterTimezone(string $format, string $input, string $timezone): void
@@ -80,7 +69,7 @@ final class DateTimeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{DateTime, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -106,7 +95,7 @@ final class DateTimeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{DateTime, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

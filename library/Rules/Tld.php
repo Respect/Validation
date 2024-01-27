@@ -13,19 +13,9 @@ use function in_array;
 use function is_scalar;
 use function mb_strtoupper;
 
-/**
- * Validates whether the input is a top-level domain.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Bogus <g.predl@edis.at>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Paul Karikari <paulkarikari1@gmail.com>
- */
 final class Tld extends AbstractRule
 {
-    /**
-     * List extracted from https://data.iana.org/TLD/tlds-alpha-by-domain.txt
-     */
+    // List extracted from https://data.iana.org/TLD/tlds-alpha-by-domain.txt
     private const TLD_LIST = [
         'AAA', 'AARP', 'ABB', 'ABBOTT', 'ABBVIE', 'ABC', 'ABLE', 'ABOGADO',
         'ABUDHABI', 'AC', 'ACADEMY', 'ACCENTURE', 'ACCOUNTANT', 'ACCOUNTANTS',
@@ -242,10 +232,7 @@ final class Tld extends AbstractRule
         'ZERO', 'ZIP', 'ZM', 'ZONE', 'ZUERICH', 'ZW',
     ];
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

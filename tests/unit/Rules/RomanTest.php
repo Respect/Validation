@@ -13,17 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Roman
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jean Pimentel <jeanfap@gmail.com>
  */
 final class RomanTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Roman, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -46,7 +41,7 @@ final class RomanTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Roman, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

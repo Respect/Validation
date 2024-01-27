@@ -22,20 +22,11 @@ use function trigger_error;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Call
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
  */
 final class CallTest extends TestCase
 {
-    /**
-     * @var ErrorException
-     */
-    private $errorException;
+    private ErrorException $errorException;
 
     /**
      * @test
@@ -289,9 +280,6 @@ final class CallTest extends TestCase
         trigger_error('Forcing PHP to trigger an error');
     }
 
-    /**
-     * {@inheritDoc}
-     */
     protected function setUp(): void
     {
         $this->errorException = new ErrorException('This is a PHP error');
@@ -301,9 +289,6 @@ final class CallTest extends TestCase
         });
     }
 
-    /**
-     * {@inheritDoc}
-     */
     protected function tearDown(): void
     {
         restore_error_handler();

@@ -11,18 +11,9 @@ namespace Respect\Validation\Rules;
 
 use function is_null;
 
-/**
- * Validates whether the input is null.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class NullType extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         return is_null($input);
     }

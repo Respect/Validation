@@ -16,16 +16,12 @@ use Respect\Validation\Test\TestCase;
 /**
  * @covers \Respect\Validation\Exceptions\SubdivisionCodeException
  * @covers \Respect\Validation\Rules\SubdivisionCode
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class SubdivisionCodeTest extends TestCase
 {
     /**
      * @expectedException \Respect\Validation\Exceptions\ComponentException
      * @expectedExceptionMessage "whatever" is not a supported country code
-     *
      * @test
      */
     public function shouldThrowsExceptionWhenInvalidFormat(): void
@@ -49,7 +45,6 @@ final class SubdivisionCodeTest extends TestCase
 
     /**
      * @dataProvider providerForValidSubdivisionCodeInformation
-     *
      * @test
      */
     public function shouldValidateValidSubdivisionCodeInformation(string $countryCode, ?string $input): void
@@ -61,12 +56,9 @@ final class SubdivisionCodeTest extends TestCase
 
     /**
      * @dataProvider providerForInvalidSubdivisionCodeInformation
-     *
      * @test
-     *
-     * @param mixed $input
      */
-    public function shouldNotValidateInvalidSubdivisionCodeInformation(string $countryCode, $input): void
+    public function shouldNotValidateInvalidSubdivisionCodeInformation(string $countryCode, mixed $input): void
     {
         $countrySubdivision = new SubdivisionCode($countryCode);
 

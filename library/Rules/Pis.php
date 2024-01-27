@@ -14,19 +14,9 @@ use function mb_strlen;
 use function preg_match;
 use function preg_replace;
 
-/**
- * Validates a Brazilian PIS/NIS number.
- *
- * @author Bruno Koga <brunokoga187@gmail.com>
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class Pis extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

@@ -22,13 +22,7 @@ use const PHP_INT_MAX;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Mimetype
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class MimetypeTest extends RuleTestCase
 {
@@ -57,7 +51,7 @@ final class MimetypeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Mimetype, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -72,7 +66,7 @@ final class MimetypeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Mimetype, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

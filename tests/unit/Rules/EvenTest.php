@@ -15,18 +15,12 @@ use const INF;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Even
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jean Pimentel <jeanfap@gmail.com>
- * @author Paul Karikari <paulkarikari1@gmail.com>
  */
 final class EvenTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Even, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -39,7 +33,7 @@ final class EvenTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Even, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

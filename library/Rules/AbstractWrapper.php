@@ -11,54 +11,27 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Validatable;
 
-/**
- * Abstract class to help on creating rules that wrap rules.
- *
- * @author Alasdair North <alasdair@runway.io>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 abstract class AbstractWrapper extends AbstractRule
 {
-    /**
-     * @var Validatable
-     */
-    private $validatable;
-
-    /**
-     * Initializes the rule.
-     */
-    public function __construct(Validatable $validatable)
+    public function __construct(private Validatable $validatable)
     {
-        $this->validatable = $validatable;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function assert($input): void
+    public function assert(mixed $input): void
     {
         $this->validatable->assert($input);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function check($input): void
+    public function check(mixed $input): void
     {
         $this->validatable->check($input);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         return $this->validatable->validate($input);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function setName(string $name): Validatable
     {
         $this->validatable->setName($name);

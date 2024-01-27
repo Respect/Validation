@@ -17,11 +17,7 @@ use function tmpfile;
 
 /**
  * @group  rule
- *
  * @covers \Respect\Validation\Rules\Type
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Paul Karikari <paulkarikari1@gmail.com>
  */
 final class TypeTest extends RuleTestCase
 {
@@ -37,7 +33,7 @@ final class TypeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Type, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -62,7 +58,7 @@ final class TypeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Type, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

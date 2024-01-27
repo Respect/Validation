@@ -19,19 +19,13 @@ use function strtotime;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractAge
  * @covers \Respect\Validation\Rules\MinAge
- *
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jean Pimentel <jeanfap@gmail.com>
- * @author Kennedy Tedesco <kennedyt.tw@gmail.com>
  */
 final class MinAgeTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{MinAge, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -44,7 +38,7 @@ final class MinAgeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{MinAge, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

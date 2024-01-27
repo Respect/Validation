@@ -14,20 +14,11 @@ use function count;
 use function str_split;
 
 /**
- * Validate whether a given input is a Luhn number.
- *
  * @see https://en.wikipedia.org/wiki/Luhn_algorithm
- *
- * @author Alexander Gorshkov <mazanax@yandex.ru>
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class Luhn extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!(new Digit())->validate($input)) {
             return false;

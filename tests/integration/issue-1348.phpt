@@ -16,7 +16,7 @@ $cars = [
     ['manufacturer' => 'Honda', 'model' => 'not valid'],
 ];
 
-exceptionMessages(static function () use ($cars) {
+exceptionMessages(static function () use ($cars): void {
     Validator::arrayType()->each(
         Validator::oneOf(
             Validator::key('manufacturer', Validator::equals('Honda'))

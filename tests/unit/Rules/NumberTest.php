@@ -21,17 +21,12 @@ use const PHP_INT_MAX;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Number
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Ismael Elias <ismael.esq@hotmail.com>
- * @author Vitaliy <reboot.m@gmail.com>
  */
 final class NumberTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Number, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -50,7 +45,7 @@ final class NumberTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Number, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

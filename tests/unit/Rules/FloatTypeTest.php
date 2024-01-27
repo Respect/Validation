@@ -15,16 +15,12 @@ use const PHP_INT_MAX;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\FloatType
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Reginaldo Junior <76regi@gmail.com>
  */
 final class FloatTypeTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{FloatType, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -42,7 +38,7 @@ final class FloatTypeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{FloatType, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

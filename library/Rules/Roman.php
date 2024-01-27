@@ -9,13 +9,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-/**
- * Validates if the input is a Roman numeral.
- *
- * @author Alexander Wühr <wuehr@sc-networks.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jean Pimentel <jeanfap@gmail.com>
- */
 final class Roman extends AbstractEnvelope
 {
     public function __construct()

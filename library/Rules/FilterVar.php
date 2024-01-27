@@ -25,11 +25,6 @@ use const FILTER_VALIDATE_IP;
 use const FILTER_VALIDATE_REGEXP;
 use const FILTER_VALIDATE_URL;
 
-/**
- * Validates the input with the PHP's filter_var() function.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class FilterVar extends AbstractEnvelope
 {
     private const ALLOWED_FILTERS = [
@@ -44,13 +39,9 @@ final class FilterVar extends AbstractEnvelope
     ];
 
     /**
-     * Initializes the rule.
-     *
-     * @param mixed $options
-     *
      * @throws ComponentException
      */
-    public function __construct(int $filter, $options = null)
+    public function __construct(int $filter, mixed $options = null)
     {
         if (!array_key_exists($filter, self::ALLOWED_FILTERS)) {
             throw new ComponentException('Cannot accept the given filter');

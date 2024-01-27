@@ -14,13 +14,8 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractEnvelope
  * @covers \Respect\Validation\Rules\LanguageCode
- *
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class LanguageCodeTest extends RuleTestCase
 {
@@ -35,7 +30,7 @@ final class LanguageCodeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{LanguageCode, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -55,7 +50,7 @@ final class LanguageCodeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{LanguageCode, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

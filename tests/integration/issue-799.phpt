@@ -12,7 +12,7 @@ use Respect\Validation\Validator as v;
 
 $input = 'http://www.google.com/search?q=respect.github.com';
 
-exceptionMessage(static function () use ($input) {
+exceptionMessage(static function () use ($input): void {
     v::create()
         ->call(
             [new CountableStub(1), 'count'],
@@ -21,7 +21,7 @@ exceptionMessage(static function () use ($input) {
         ->assert($input);
 });
 
-exceptionMessage(static function () use ($input) {
+exceptionMessage(static function () use ($input): void {
     v::create()
         ->call(
             static function ($url) {

@@ -9,21 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * Exceptions thrown by email rule.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Andrey Kolyshkin <a.kolyshkin@semrush.com>
- * @author Eduardo Gulias Davis <me@egulias.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Paul Karikari <paulkarikari1@gmail.com>
- */
 final class EmailException extends ValidationException
 {
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be valid email',
         ],

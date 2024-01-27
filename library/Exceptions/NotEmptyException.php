@@ -9,19 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Bram Van der Sype <bram.vandersype@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class NotEmptyException extends ValidationException
 {
     public const NAMED = 'named';
 
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => 'The value must not be empty',
             self::NAMED => '{{name}} must not be empty',
@@ -32,9 +27,6 @@ final class NotEmptyException extends ValidationException
         ],
     ];
 
-    /**
-     * {@inheritDoc}
-     */
     protected function chooseTemplate(): string
     {
         if ($this->getParam('input') || $this->getParam('name')) {

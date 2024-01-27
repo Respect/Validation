@@ -13,17 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Unique
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Krzysztof Śmiałek <admin@avensome.net>
- * @author Paul Karikari <paulkarikari1@gmail.com>
  */
 final class UniqueTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Unique, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -41,7 +36,7 @@ final class UniqueTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Unique, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

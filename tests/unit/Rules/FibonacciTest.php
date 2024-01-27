@@ -13,17 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Fibonacci
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Samuel Heinzmann <samuel.heinzmann@swisscom.com>
  */
 final class FibonacciTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Fibonacci, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -47,7 +42,7 @@ final class FibonacciTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Fibonacci, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

@@ -17,7 +17,7 @@ use function stream_context_create;
 final class PortugueseNifTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{PortugueseNif, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -47,7 +47,7 @@ final class PortugueseNifTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{PortugueseNif, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

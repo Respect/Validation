@@ -21,54 +21,26 @@ use function is_string;
 use function mb_strlen;
 use function sprintf;
 
-/**
- * Validates the length of the given input.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Blake Hair <blake.hair@gmail.com>
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Hugo Hamon <hugo.hamon@sensiolabs.com>
- * @author João Torquato <joao.otl@gmail.com>
- * @author Marcelo Araujo <msaraujo@php.net>
- */
 final class Length extends AbstractRule
 {
-    /**
-     * @var int|null
-     */
-    private $minValue;
+    private ?int $minValue = null;
+
+    private ?int $maxValue = null;
 
     /**
-     * @var int|null
-     */
-    private $maxValue;
-
-    /**
-     * @var bool
-     */
-    private $inclusive;
-
-    /**
-     * Creates the rule with a minimum and maximum value.
-     *
      * @throws ComponentException
      */
-    public function __construct(?int $min = null, ?int $max = null, bool $inclusive = true)
+    public function __construct(?int $min = null, ?int $max = null, private bool $inclusive = true)
     {
         $this->minValue = $min;
         $this->maxValue = $max;
-        $this->inclusive = $inclusive;
 
         if ($max !== null && $min > $max) {
             throw new ComponentException(sprintf('%d cannot be less than %d for validation', $min, $max));
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         $length = $this->extractLength($input);
         if ($length === null) {
@@ -78,10 +50,7 @@ final class Length extends AbstractRule
         return $this->validateMin($length) && $this->validateMax($length);
     }
 
-    /**
-     * @param mixed $input
-     */
-    private function extractLength($input): ?int
+    private function extractLength(mixed $input): ?int
     {
         if (is_string($input)) {
             return (int) mb_strlen($input);

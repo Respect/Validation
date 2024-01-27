@@ -14,19 +14,9 @@ use function is_array;
 
 use const SORT_REGULAR;
 
-/**
- * Validates whether the input array contains only unique values.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Krzysztof Śmiałek <admin@avensome.net>
- * @author Paul Karikari <paulkarikari1@gmail.com>
- */
 final class Unique extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_array($input)) {
             return false;

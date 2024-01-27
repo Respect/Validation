@@ -14,16 +14,9 @@ use SplFileInfo;
 use function file_exists;
 use function is_string;
 
-/**
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
- */
 final class Exists extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
             $input = $input->getPathname();

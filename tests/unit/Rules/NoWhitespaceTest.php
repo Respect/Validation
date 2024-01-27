@@ -13,19 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\NoWhitespace
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
  */
 final class NoWhitespaceTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{NoWhitespace, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -41,7 +34,7 @@ final class NoWhitespaceTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{NoWhitespace, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

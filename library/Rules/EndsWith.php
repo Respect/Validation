@@ -15,39 +15,13 @@ use function mb_strlen;
 use function mb_strripos;
 use function mb_strrpos;
 
-/**
- * Validates only if the value is at the end of the input.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Hugo Hamon <hugo.hamon@sensiolabs.com>
- * @author William Espindola <oi@williamespindola.com.br>
- */
 final class EndsWith extends AbstractRule
 {
-    /**
-     * @var mixed
-     */
-    private $endValue;
-
-    /**
-     * @var bool
-     */
-    private $identical;
-
-    /**
-     * @param mixed $endValue
-     */
-    public function __construct($endValue, bool $identical = false)
+    public function __construct(private mixed $endValue, private bool $identical = false)
     {
-        $this->endValue = $endValue;
-        $this->identical = $identical;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if ($this->identical) {
             return $this->validateIdentical($input);
@@ -56,10 +30,7 @@ final class EndsWith extends AbstractRule
         return $this->validateEquals($input);
     }
 
-    /**
-     * @param mixed $input
-     */
-    private function validateEquals($input): bool
+    private function validateEquals(mixed $input): bool
     {
         if (is_array($input)) {
             return end($input) == $this->endValue;
@@ -68,10 +39,7 @@ final class EndsWith extends AbstractRule
         return mb_strripos($input, $this->endValue) === mb_strlen($input) - mb_strlen($this->endValue);
     }
 
-    /**
-     * @param mixed $input
-     */
-    private function validateIdentical($input): bool
+    private function validateIdentical(mixed $input): bool
     {
         if (is_array($input)) {
             return end($input) === $this->endValue;

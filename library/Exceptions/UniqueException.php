@@ -9,19 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * Exceptions thrown by Unique rule.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Krzysztof Śmiałek <admin@avensome.net>
- * @author Paul Karikari <paulkarikari1@gmail.com>
- */
 final class UniqueException extends ValidationException
 {
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must not contain duplicates',
         ],

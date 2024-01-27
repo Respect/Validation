@@ -17,17 +17,12 @@ use const PHP_INT_MAX;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Infinite
- *
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class InfiniteTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Infinite, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -40,7 +35,7 @@ final class InfiniteTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Infinite, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

@@ -14,11 +14,6 @@ use Respect\Validation\Test\TestCase;
 
 /**
  * @covers \Respect\Validation\Validator
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
  */
 final class ValidatorTest extends TestCase
 {
@@ -40,8 +35,6 @@ final class ValidatorTest extends TestCase
     }
 
     /**
-     * Regression test #174.
-     *
      * @test
      */
     public function shouldReturnValidatorInstanceWhenTheNotRuleIsCalledWithArguments(): void

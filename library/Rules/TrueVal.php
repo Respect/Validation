@@ -14,18 +14,9 @@ use function filter_var;
 use const FILTER_NULL_ON_FAILURE;
 use const FILTER_VALIDATE_BOOLEAN;
 
-/**
- * Validates if a value is considered as true.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Paul Karikari <paulkarikari1@gmail.com>
- */
 final class TrueVal extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         return filter_var($input, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE) === true;
     }

@@ -14,19 +14,12 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Callback
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
- * @author William Espindola <oi@williamespindola.com.br>
  */
 final class CallbackTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Callback, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -44,7 +37,7 @@ final class CallbackTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Callback, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

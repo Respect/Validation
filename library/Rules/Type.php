@@ -17,19 +17,8 @@ use function implode;
 use function is_callable;
 use function sprintf;
 
-/**
- * Validates the type of input.
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Paul Karikari <paulkarikari1@gmail.com>
- */
 final class Type extends AbstractRule
 {
-    /**
-     * Collection of available types for validation.
-     *
-     */
     private const AVAILABLE_TYPES = [
         'array' => 'array',
         'bool' => 'boolean',
@@ -46,18 +35,9 @@ final class Type extends AbstractRule
     ];
 
     /**
-     * Type to validate input against.
-     *
-     * @var string
-     */
-    private $type;
-
-    /**
-     * Initializes the rule.
-     *
      * @throws ComponentException When $type is not a valid one
      */
-    public function __construct(string $type)
+    public function __construct(private string $type)
     {
         if (!isset(self::AVAILABLE_TYPES[$type])) {
             throw new ComponentException(
@@ -68,14 +48,9 @@ final class Type extends AbstractRule
                 )
             );
         }
-
-        $this->type = $type;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if ($this->type === 'callable') {
             return is_callable($input);

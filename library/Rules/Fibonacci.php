@@ -11,19 +11,9 @@ namespace Respect\Validation\Rules;
 
 use function is_numeric;
 
-/**
- * Validates whether the input follows the Fibonacci integer sequence.
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Samuel Heinzmann <samuel.heinzmann@swisscom.com>
- */
 final class Fibonacci extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_numeric($input)) {
             return false;

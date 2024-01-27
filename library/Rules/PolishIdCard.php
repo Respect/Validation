@@ -14,11 +14,7 @@ use function ord;
 use function preg_match;
 
 /**
- * Validates whether the input is a Polish identity card (Dowód Osobisty).
- *
  * @see https://en.wikipedia.org/wiki/Polish_identity_card
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class PolishIdCard extends AbstractRule
 {
@@ -27,10 +23,7 @@ final class PolishIdCard extends AbstractRule
     private const ASCII_CODE_9 = 57;
     private const ASCII_CODE_A = 65;
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

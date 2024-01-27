@@ -11,19 +11,11 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Helpers\CanValidateIterable;
 
-/**
- * Validates whether the pseudo-type of the input is iterable or not.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class IterableType extends AbstractRule
 {
     use CanValidateIterable;
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         return $this->isIterable($input);
     }

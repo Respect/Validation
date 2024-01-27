@@ -18,17 +18,12 @@ use const PHP_INT_MAX;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\FalseVal
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class FalseValTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{FalseVal, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -52,7 +47,7 @@ final class FalseValTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{FalseVal, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

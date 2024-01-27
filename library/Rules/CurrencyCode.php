@@ -9,24 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-/**
- * Validates currency codes in ISO 4217.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Justin Hook <justinhook88@yahoo.co.uk>
- * @author Tim Strijdhorst <tstrijdhorst@users.noreply.github.com>
- * @author William Espindola <oi@williamespindola.com.br>
- */
 final class CurrencyCode extends AbstractSearcher
 {
     /**
      * @see http://www.currency-iso.org/en/home/tables/table-a1.html
      *
-     * {@inheritDoc}
-     *
      * @return string[]
      */
-    protected function getDataSource($input = null): array
+    protected function getDataSource(mixed $input = null): array
     {
         return [
             'AED', // UAE Dirham

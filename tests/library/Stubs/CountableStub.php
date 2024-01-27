@@ -11,19 +11,10 @@ namespace Respect\Validation\Test\Stubs;
 
 use Countable;
 
-/**
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- */
 final class CountableStub implements Countable
 {
-    /**
-     * @var int
-     */
-    private $value;
-
-    public function __construct(int $value)
+    public function __construct(private int $value)
     {
-        $this->value = $value;
     }
 
     public function count(): int

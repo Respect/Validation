@@ -13,19 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Cnpj
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jayson Reis <santosdosreis@gmail.com>
- * @author Renato Moura <renato@naturalweb.com.br>
- * @author William Espindola <oi@williamespindola.com.br>
  */
 final class CnpjTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Cnpj, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -47,7 +40,7 @@ final class CnpjTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Cnpj, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

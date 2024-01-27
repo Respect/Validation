@@ -13,21 +13,9 @@ use function is_int;
 use function is_string;
 use function preg_match;
 
-/**
- * Validates if the input is an integer.
- *
- * @author Adam Benson <adam.benson@bigcommerce.com>
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Andrei Drulchenko <andrdru@gmail.com>
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class IntVal extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (is_int($input)) {
             return true;

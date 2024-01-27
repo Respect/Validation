@@ -14,27 +14,21 @@ use Respect\Validation\Rules\AbstractRule;
 use function array_shift;
 
 /**
- * Stub to help testing rules.
- *
  * @since 2.0.0
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class Stub extends AbstractRule
 {
     /**
      * @var bool[]
      */
-    public $validations;
+    public array $validations;
 
     /**
      * @var mixed[]
      */
-    public $inputs;
+    public array $inputs;
 
     /**
-     * Initializes the rule.
-     *
      * @param bool[] ...$validations
      */
     public function __construct(bool ...$validations)
@@ -42,10 +36,7 @@ final class Stub extends AbstractRule
         $this->validations = $validations;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         $this->inputs[] = $input;
 

@@ -20,17 +20,12 @@ use function uniqid;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\PhpLabel
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class PhpLabelTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{PhpLabel, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -48,7 +43,7 @@ final class PhpLabelTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{PhpLabel, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

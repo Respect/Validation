@@ -14,31 +14,18 @@ use function is_scalar;
 use function str_replace;
 use function str_split;
 
-/**
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
- */
 abstract class AbstractFilterRule extends AbstractRule
 {
-    /**
-     * @var string
-     */
-    private $additionalChars;
+    private string $additionalChars;
 
     abstract protected function validateFilteredInput(string $input): bool;
 
-    /**
-     * Initializes the rule with a list of characters to be ignored by the validation.
-     */
     public function __construct(string ...$additionalChars)
     {
         $this->additionalChars = implode($additionalChars);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

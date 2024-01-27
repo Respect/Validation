@@ -11,19 +11,9 @@ namespace Respect\Validation\Rules;
 
 use function is_numeric;
 
-/**
- * Validates whether the input is numeric.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class NumericVal extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         return is_numeric($input);
     }

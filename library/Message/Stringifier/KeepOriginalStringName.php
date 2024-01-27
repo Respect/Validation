@@ -16,10 +16,7 @@ use function Respect\Stringifier\stringify;
 
 final class KeepOriginalStringName implements ParameterStringifier
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function stringify(string $name, $value): string
+    public function stringify(string $name, mixed $value): string
     {
         if ($name === 'name' && is_string($value)) {
             return $value;

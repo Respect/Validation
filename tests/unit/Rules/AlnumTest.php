@@ -14,21 +14,13 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Alnum
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Islam Elshobokshy <islam20088@hotmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
- * @author Pascal Borreli <pascal@borreli.com>
  */
 final class AlnumTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Alnum, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -51,7 +43,7 @@ final class AlnumTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Alnum, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

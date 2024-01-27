@@ -18,17 +18,12 @@ use function dir;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Directory
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
  */
 final class DirectoryTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Directory, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -42,7 +37,7 @@ final class DirectoryTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Directory, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

@@ -16,16 +16,12 @@ use function tmpfile;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\ScalarVal
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class ScalarValTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{ScalarVal, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -42,7 +38,7 @@ final class ScalarValTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{ScalarVal, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

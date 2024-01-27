@@ -19,18 +19,12 @@ use Traversable;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Instance
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class InstanceTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Instance, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -42,7 +36,7 @@ final class InstanceTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Instance, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

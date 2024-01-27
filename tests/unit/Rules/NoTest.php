@@ -20,20 +20,13 @@ use const LC_ALL;
  * @group  rule
  * @covers \Respect\Validation\Exceptions\NoException
  * @covers \Respect\Validation\Rules\No
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class NoTest extends RuleTestCase
 {
-    /**
-     * @var string
-     */
-    private $locale;
+    private string $locale;
 
     /**
      * @test
-     *
      * @dataProvider providerForValidInputWithLocale
      */
     public function itShouldValidateInputAccordingToTheLocale(string $locale, string $input): void
@@ -49,7 +42,6 @@ final class NoTest extends RuleTestCase
 
     /**
      * @test
-     *
      * @dataProvider providerForInvalidInputWithLocale
      */
     public function itShouldInvalidateInputAccordingToTheLocale(string $locale, string $input): void
@@ -88,7 +80,7 @@ final class NoTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{No, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -105,7 +97,7 @@ final class NoTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{No, mixed}>
      */
     public static function providerForInvalidInput(): array
     {
@@ -120,17 +112,11 @@ final class NoTest extends RuleTestCase
         ];
     }
 
-    /**
-     * {@inheritDoc}
-     */
     protected function setUp(): void
     {
         $this->locale = (string) setlocale(LC_ALL, '0');
     }
 
-    /**
-     * {@inheritDoc}
-     */
     protected function tearDown(): void
     {
         setlocale(LC_ALL, $this->locale);

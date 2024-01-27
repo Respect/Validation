@@ -13,16 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\KeyValue
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class KeyValueTest extends RuleTestCase
 {
     /**
-     * {@inheritdoc}
+     * @return array<string, array{KeyValue, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -40,7 +36,7 @@ final class KeyValueTest extends RuleTestCase
     }
 
     /**
-     * {@inheritdoc}
+     * @return array<string, array{KeyValue, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

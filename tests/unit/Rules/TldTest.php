@@ -14,19 +14,12 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Tld
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Paul Karikari <paulkarikari1@gmail.com>
- * @author Paulo Eduardo <pauloelr@gmail.com>
  */
 final class TldTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Tld, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -44,7 +37,7 @@ final class TldTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Tld, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

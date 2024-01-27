@@ -9,11 +9,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * Exception class for Size rule.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class SizeException extends NestedValidationException
 {
     public const BOTH = 'both';
@@ -21,9 +16,9 @@ final class SizeException extends NestedValidationException
     public const GREATER = 'greater';
 
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::BOTH => '{{name}} must be between {{minSize}} and {{maxSize}}',
             self::LOWER => '{{name}} must be greater than {{minSize}}',
@@ -36,9 +31,6 @@ final class SizeException extends NestedValidationException
         ],
     ];
 
-    /**
-     * {@inheritDoc}
-     */
     protected function chooseTemplate(): string
     {
         if (!$this->getParam('minValue')) {

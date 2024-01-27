@@ -14,18 +14,9 @@ use SplFileInfo;
 use function is_link;
 use function is_string;
 
-/**
- * Validates if the given input is a symbolic link.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Gus Antoniassi <gus.antoniassi@gmail.com>
- */
 final class SymbolicLink extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
             return $input->isLink();

@@ -13,16 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Isbn
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Moritz Fromm <moritzgitfromm@gmail.com>
  */
 final class IsbnTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Isbn, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -40,7 +36,7 @@ final class IsbnTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Isbn, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

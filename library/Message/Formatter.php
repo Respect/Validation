@@ -20,22 +20,15 @@ final class Formatter
      */
     private $translator;
 
-    /**
-     * @var ParameterStringifier
-     */
-    private $parameterStringifier;
-
-    public function __construct(callable $translator, ParameterStringifier $parameterStringifier)
+    public function __construct(callable $translator, private ParameterStringifier $parameterStringifier)
     {
         $this->translator = $translator;
-        $this->parameterStringifier = $parameterStringifier;
     }
 
     /**
-     * @param mixed $input
      * @param mixed[] $parameters
      */
-    public function format(string $template, $input, array $parameters): string
+    public function format(string $template, mixed $input, array $parameters): string
     {
         $parameters['name'] = $parameters['name'] ?? stringify($input);
 

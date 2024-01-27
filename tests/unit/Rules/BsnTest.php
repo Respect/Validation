@@ -13,18 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Bsn
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Ronald Drenth <ronalddrenth@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
  */
 final class BsnTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Bsn, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -45,7 +39,7 @@ final class BsnTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Bsn, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

@@ -11,19 +11,15 @@ namespace Respect\Validation\Exceptions;
 
 use function count;
 
-/**
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 class GroupedValidationException extends NestedValidationException
 {
     public const NONE = 'none';
     public const SOME = 'some';
 
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::NONE => 'All of the required rules must pass for {{name}}',
             self::SOME => 'These rules must pass for {{name}}',
@@ -34,9 +30,6 @@ class GroupedValidationException extends NestedValidationException
         ],
     ];
 
-    /**
-     * {@inheritDoc}
-     */
     protected function chooseTemplate(): string
     {
         $numRules = $this->getParam('passed');

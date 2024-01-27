@@ -17,14 +17,6 @@ use function mb_strtolower;
 use function preg_match;
 use function sprintf;
 
-/**
- * Validates if the input is a video URL value.
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Ricardo Gobbo <ricardo@clicknow.com.br>
- */
 final class VideoUrl extends AbstractRule
 {
     private const SERVICES = [
@@ -36,28 +28,16 @@ final class VideoUrl extends AbstractRule
     ];
 
     /**
-     * @var string|null
-     */
-    private $service;
-
-    /**
-     * Create a new instance VideoUrl.
-     *
      * @throws ComponentException when the given service is not supported
      */
-    public function __construct(?string $service = null)
+    public function __construct(private ?string $service = null)
     {
         if ($service !== null && !$this->isSupportedService($service)) {
             throw new ComponentException(sprintf('"%s" is not a recognized video service.', $service));
         }
-
-        $this->service = $service;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_string($input)) {
             return false;

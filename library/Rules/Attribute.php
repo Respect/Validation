@@ -9,20 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use ReflectionException;
 use ReflectionProperty;
 use Respect\Validation\Validatable;
 
 use function is_object;
 use function property_exists;
 
-/**
- * Validates an object attribute, even private ones.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class Attribute extends AbstractRelated
 {
     public function __construct(string $reference, ?Validatable $rule = null, bool $mandatory = true)
@@ -30,12 +22,7 @@ final class Attribute extends AbstractRelated
         parent::__construct($reference, $rule, $mandatory);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ReflectionException
-     */
-    public function getReferenceValue($input)
+    public function getReferenceValue(mixed $input): mixed
     {
         $propertyMirror = new ReflectionProperty($input, (string) $this->getReference());
         if ($propertyMirror->isInitialized($input) === false) {
@@ -45,10 +32,7 @@ final class Attribute extends AbstractRelated
         return $propertyMirror->getValue($input);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function hasReference($input): bool
+    public function hasReference(mixed $input): bool
     {
         return is_object($input) && property_exists($input, (string) $this->getReference());
     }

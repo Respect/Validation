@@ -9,19 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Ricardo Gobbo <ricardo@clicknow.com.br>
- */
 final class VideoUrlException extends ValidationException
 {
     public const SERVICE = 'service';
 
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a valid video URL',
             self::SERVICE => '{{name}} must be a valid {{service}} video URL',
@@ -32,9 +27,6 @@ final class VideoUrlException extends ValidationException
         ],
     ];
 
-    /**
-     * {@inheritDoc}
-     */
     protected function chooseTemplate(): string
     {
         if ($this->getParam('service')) {

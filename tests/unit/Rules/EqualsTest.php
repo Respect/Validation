@@ -14,11 +14,7 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Equals
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class EqualsTest extends RuleTestCase
 {
@@ -35,7 +31,7 @@ final class EqualsTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Equals, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -49,7 +45,7 @@ final class EqualsTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Equals, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

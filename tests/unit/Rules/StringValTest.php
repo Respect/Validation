@@ -17,16 +17,12 @@ use function tmpfile;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\StringVal
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class StringValTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{StringVal, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -44,7 +40,7 @@ final class StringValTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{StringVal, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

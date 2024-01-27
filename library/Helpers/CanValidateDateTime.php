@@ -17,16 +17,8 @@ use function date_default_timezone_get;
 use function date_parse_from_format;
 use function preg_match;
 
-/**
- * Helper to handle date/time.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 trait CanValidateDateTime
 {
-    /**
-     * Finds whether a value is a valid date/time in a specific format.
-     */
     private function isDateTime(string $format, string $value): bool
     {
         $exceptionalFormats = [

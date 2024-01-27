@@ -14,19 +14,12 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Json
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
  */
 final class JsonTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Json, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -46,7 +39,7 @@ final class JsonTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Json, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

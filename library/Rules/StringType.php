@@ -11,18 +11,9 @@ namespace Respect\Validation\Rules;
 
 use function is_string;
 
-/**
- * Validates whether the type of an input is string or not.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class StringType extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         return is_string($input);
     }

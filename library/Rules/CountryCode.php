@@ -16,36 +16,14 @@ use function array_keys;
 use function implode;
 use function sprintf;
 
-/**
- * Validates whether the input is a country code in ISO 3166-1 standard.
- *
- * This rule supports the three sets of country codes (alpha-2, alpha-3, and numeric).
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Felipe Martins <me@fefas.net>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
- */
 final class CountryCode extends AbstractSearcher
 {
-    /**
-     * The ISO representation of a country code.
-     */
     public const ALPHA2 = 'alpha-2';
 
-    /**
-     * The ISO3 representation of a country code.
-     */
     public const ALPHA3 = 'alpha-3';
 
-    /**
-     * The ISO-number representation of a country code.
-     */
     public const NUMERIC = 'numeric';
 
-    /**
-     * Position of the indexes of each set in the list of country codes.
-     */
     private const SET_INDEXES = [
         self::ALPHA2 => 0,
         self::ALPHA3 => 1,
@@ -341,16 +319,9 @@ final class CountryCode extends AbstractSearcher
     ];
 
     /**
-     * @var string
-     */
-    private $set;
-
-    /**
-     * Initializes the rule.
-     *
      * @throws ComponentException If $set is not a valid set
      */
-    public function __construct(string $set = self::ALPHA2)
+    public function __construct(private string $set = self::ALPHA2)
     {
         if (!isset(self::SET_INDEXES[$set])) {
             throw new ComponentException(
@@ -361,14 +332,12 @@ final class CountryCode extends AbstractSearcher
                 )
             );
         }
-
-        $this->set = $set;
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<int, string|null>
      */
-    protected function getDataSource($input = null): array
+    protected function getDataSource(mixed $input = null): array
     {
         return array_column(self::COUNTRY_CODES, self::SET_INDEXES[$this->set]);
     }

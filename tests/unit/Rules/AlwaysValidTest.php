@@ -13,24 +13,15 @@ use Respect\Validation\Test\TestCase;
 
 /**
  * @group  rule
- *
  * @covers \Respect\Validation\Rules\AlwaysValid
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Paulo Eduardo <pauloelr@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
  */
 final class AlwaysValidTest extends TestCase
 {
     /**
      * @test
-     *
      * @dataProvider providerForValidInput
-     *
-     * @param mixed $input
      */
-    public function itAlwaysBeValid($input): void
+    public function itAlwaysBeValid(mixed $input): void
     {
         $rule = new AlwaysValid();
 

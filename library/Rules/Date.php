@@ -18,45 +18,25 @@ use function preg_match;
 use function sprintf;
 use function strtotime;
 
-/**
- * Validates if input is a date.
- *
- * @author Bruno Luiz da Silva <contato@brunoluiz.net>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class Date extends AbstractRule
 {
     use CanValidateDateTime;
 
-    /**
-     * @var string
-     */
-    private $format;
+    private string $sample;
 
     /**
-     * @var string
-     */
-    private $sample;
-
-    /**
-     * Initializes the rule.
-     *
      * @throws ComponentException
      */
-    public function __construct(string $format = 'Y-m-d')
+    public function __construct(private string $format = 'Y-m-d')
     {
         if (!preg_match('/^[djSFmMnYy\W]+$/', $format)) {
             throw new ComponentException(sprintf('"%s" is not a valid date format', $format));
         }
 
-        $this->format = $format;
         $this->sample = date($format, strtotime('2005-12-30'));
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

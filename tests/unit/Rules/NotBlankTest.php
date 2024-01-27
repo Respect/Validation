@@ -14,17 +14,12 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\NotBlank
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class NotBlankTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{NotBlank, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -43,7 +38,7 @@ final class NotBlankTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{NotBlank, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

@@ -14,13 +14,7 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\CountryCode
- *
- * @author Felipe Martins <me@fefas.net>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
  */
 final class CountryCodeTest extends RuleTestCase
 {
@@ -38,7 +32,7 @@ final class CountryCodeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{CountryCode, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -56,7 +50,7 @@ final class CountryCodeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{CountryCode, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

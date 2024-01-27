@@ -17,13 +17,6 @@ use function call_user_func;
 use function restore_error_handler;
 use function set_error_handler;
 
-/**
- * Validates the return of a callable for a given input.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class Call extends AbstractRule
 {
     /**
@@ -31,24 +24,12 @@ final class Call extends AbstractRule
      */
     private $callable;
 
-    /**
-     * @var Validatable
-     */
-    private $rule;
-
-    /**
-     * Initializes the rule with the callable to be executed after the input is passed.
-     */
-    public function __construct(callable $callable, Validatable $rule)
+    public function __construct(callable $callable, private Validatable $rule)
     {
         $this->callable = $callable;
-        $this->rule = $rule;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function assert($input): void
+    public function assert(mixed $input): void
     {
         $this->setErrorHandler($input);
 
@@ -63,10 +44,7 @@ final class Call extends AbstractRule
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function check($input): void
+    public function check(mixed $input): void
     {
         $this->setErrorHandler($input);
 
@@ -81,10 +59,7 @@ final class Call extends AbstractRule
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         try {
             $this->check($input);
@@ -95,10 +70,7 @@ final class Call extends AbstractRule
         return true;
     }
 
-    /**
-     * @param mixed $input
-     */
-    private function setErrorHandler($input): void
+    private function setErrorHandler(mixed $input): void
     {
         set_error_handler(function () use ($input): void {
             throw $this->reportError($input);

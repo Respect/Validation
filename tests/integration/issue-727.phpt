@@ -25,7 +25,7 @@ $phoneNumbers->work = $work;
 
 $validateThis = ['phoneNumbers' => $phoneNumbers];
 
-exceptionMessage(static function () use ($validateThis) {
+exceptionMessage(static function () use ($validateThis): void {
     v::create()
         ->keyNested('phoneNumbers.personal.country', v::intType(), false)
         ->keyNested('phoneNumbers.personal.number', v::phone(), false)

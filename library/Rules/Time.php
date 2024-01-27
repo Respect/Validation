@@ -18,44 +18,25 @@ use function preg_match;
 use function sprintf;
 use function strtotime;
 
-/**
- * Validates whether an input is a time or not
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class Time extends AbstractRule
 {
     use CanValidateDateTime;
 
-    /**
-     * @var string
-     */
-    private $format;
+    private string $sample;
 
     /**
-     * @var string
-     */
-    private $sample;
-
-    /**
-     * Initializes the rule.
-     *
      * @throws ComponentException
      */
-    public function __construct(string $format = 'H:i:s')
+    public function __construct(private string $format = 'H:i:s')
     {
         if (!preg_match('/^[gGhHisuvaA\W]+$/', $format)) {
             throw new ComponentException(sprintf('"%s" is not a valid date format', $format));
         }
 
-        $this->format = $format;
         $this->sample = date($format, strtotime('23:59:59'));
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

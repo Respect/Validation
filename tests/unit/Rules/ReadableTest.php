@@ -16,16 +16,12 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Readable
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class ReadableTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Readable, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -40,7 +36,7 @@ final class ReadableTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Readable, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

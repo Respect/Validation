@@ -11,7 +11,7 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator;
 
-exceptionFullMessage(static function () {
+exceptionFullMessage(static function (): void {
     Validator::callback('is_string')->between(1, 2)->setTemplate('{{name}} is not tasty')->assert('something');
 });
 ?>

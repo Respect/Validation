@@ -14,15 +14,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Equivalent
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class EquivalentTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Equivalent, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -36,7 +33,7 @@ final class EquivalentTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Equivalent, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

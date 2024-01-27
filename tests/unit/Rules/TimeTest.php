@@ -16,16 +16,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Time
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class TimeTest extends RuleTestCase
 {
     /**
      * @test
-     *
      * @dataProvider invalidFormatsProvider
      */
     public function shouldThrowAnExceptionWhenFormatIsNotValid(string $format): void
@@ -59,7 +55,7 @@ final class TimeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Time, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -75,7 +71,7 @@ final class TimeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Time, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

@@ -9,9 +9,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class ValidatorException extends AllOfException
 {
 }

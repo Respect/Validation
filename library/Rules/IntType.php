@@ -11,17 +11,9 @@ namespace Respect\Validation\Rules;
 
 use function is_int;
 
-/**
- * Validates whether the type of the input is integer.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class IntType extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         return is_int($input);
     }

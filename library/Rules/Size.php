@@ -21,51 +21,19 @@ use function is_string;
 use function preg_match;
 use function sprintf;
 
-/**
- * Validates whether the input is a file that is of a certain size or not.
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Felipe Stival <v0idpwn@gmail.com>
- */
 final class Size extends AbstractRule
 {
-    /**
-     * @var string|int|null
-     */
-    private $minSize;
+    private ?float $minValue = null;
 
-    /**
-     * @var float|null
-     */
-    private $minValue;
+    private ?float $maxValue = null;
 
-    /**
-     * @var string|int|null
-     */
-    private $maxSize;
-
-    /**
-     * @var float|null
-     */
-    private $maxValue;
-
-    /**
-     * @param string|int|null $minSize
-     * @param string|int|null $maxSize
-     */
-    public function __construct($minSize = null, $maxSize = null)
+    public function __construct(private string|int|null $minSize = null, private string|int|null $maxSize = null)
     {
-        $this->minSize = $minSize;
         $this->minValue = $minSize ? $this->toBytes((string) $minSize) : null;
-        $this->maxSize = $maxSize;
         $this->maxValue = $maxSize ? $this->toBytes((string) $maxSize) : null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
             return $this->isValidSize((float) $input->getSize());
@@ -88,7 +56,6 @@ final class Size extends AbstractRule
 
     /**
      * @todo Move it to a trait
-     *
      */
     private function toBytes(string $size): float
     {

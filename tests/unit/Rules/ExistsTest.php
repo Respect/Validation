@@ -15,18 +15,12 @@ use SplFileObject;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Exists
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Kennedy Tedesco <kennedyt.tw@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
  */
 final class ExistsTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Exists, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -40,7 +34,7 @@ final class ExistsTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Exists, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

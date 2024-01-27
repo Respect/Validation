@@ -12,20 +12,9 @@ namespace Respect\Validation\Rules;
 use function is_string;
 use function preg_match;
 
-/**
- * Validates whether the input is a valid MAC address.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Fábio da Silva Ribeiro <fabiorphp@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class MacAddress extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_string($input)) {
             return false;

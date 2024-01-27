@@ -14,12 +14,7 @@ use Respect\Validation\Test\TestCase;
 
 /**
  * @group core
- *
  * @covers \Respect\Validation\Rules\AbstractSearcher
- *
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class AbstractSearcherTest extends TestCase
 {
@@ -60,10 +55,8 @@ final class AbstractSearcherTest extends TestCase
     /**
      * @test
      * @dataProvider providerForUndefined
-     *
-     * @param mixed $input
      */
-    public function shouldValidateWhenValueIsUndefinedAndDataSourceIsEmpty($input): void
+    public function shouldValidateWhenValueIsUndefinedAndDataSourceIsEmpty(mixed $input): void
     {
         $rule = $this->getMockForAbstractClass(AbstractSearcher::class);
         $rule
@@ -77,10 +70,8 @@ final class AbstractSearcherTest extends TestCase
     /**
      * @test
      * @dataProvider providerForNotUndefined
-     *
-     * @param mixed $input
      */
-    public function shouldNotValidateWhenValueIsNotUndefinedAndDataSourceNotEmpty($input): void
+    public function shouldNotValidateWhenValueIsNotUndefinedAndDataSourceNotEmpty(mixed $input): void
     {
         $rule = $this->getMockForAbstractClass(AbstractSearcher::class);
         $rule

@@ -9,22 +9,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * Exceptions to be thrown by the Attribute Rule.
- *
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Ivan Zinovyev <vanyazin@gmail.com>
- */
 final class KeyNestedException extends NestedValidationException implements NonOmissibleException
 {
     public const NOT_PRESENT = 'not_present';
     public const INVALID = 'invalid';
 
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::NOT_PRESENT => 'No items were found for key chain {{name}}',
             self::INVALID => 'Key chain {{name}} is not valid',
@@ -35,9 +28,6 @@ final class KeyNestedException extends NestedValidationException implements NonO
         ],
     ];
 
-    /**
-     * {@inheritDoc}
-     */
     protected function chooseTemplate(): string
     {
         return $this->getParam('hasReference') ? self::INVALID : self::NOT_PRESENT;

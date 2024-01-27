@@ -18,26 +18,10 @@ use function is_null;
 use function is_scalar;
 use function sprintf;
 
-/**
- * Validates whether the input is a valid phone number.
- *
- * Validates an international or country-specific telephone number
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- */
 final class Phone extends AbstractRule
 {
-    /**
-     * @var ?string
-     */
-    private $countryCode;
-
-    /**
-     * {@inheritDoc}
-     */
-    public function __construct(?string $countryCode = null)
+    public function __construct(private ?string $countryCode = null)
     {
-        $this->countryCode = $countryCode;
 
         if (!is_null($countryCode) && !(new CountryCode())->validate($countryCode)) {
             throw new ComponentException(
@@ -53,10 +37,7 @@ final class Phone extends AbstractRule
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

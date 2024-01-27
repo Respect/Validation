@@ -13,20 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Cpf
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jair Henrique <jair.henrique@gmail.com>
- * @author Jean Pimentel <jeanfap@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
  */
 final class CpfTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Cpf, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -47,7 +39,7 @@ final class CpfTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Cpf, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

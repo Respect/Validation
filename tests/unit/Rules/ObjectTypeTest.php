@@ -15,17 +15,12 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\ObjectType
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class ObjectTypeTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{ObjectType, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -38,7 +33,7 @@ final class ObjectTypeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{ObjectType, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

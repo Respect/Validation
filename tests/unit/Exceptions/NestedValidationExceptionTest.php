@@ -15,10 +15,6 @@ use Respect\Validation\Test\TestCase;
 
 /**
  * @covers \Respect\Validation\Exceptions\NestedValidationException
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class NestedValidationExceptionTest extends TestCase
 {

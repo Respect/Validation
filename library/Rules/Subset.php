@@ -12,33 +12,16 @@ namespace Respect\Validation\Rules;
 use function array_diff;
 use function is_array;
 
-/**
- * Validates whether the input is a subset of a given value.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Singwai Chan <singwai.chan@live.com>
- */
 final class Subset extends AbstractRule
 {
     /**
-     * @var mixed[]
-     */
-    private $superset;
-
-    /**
-     * Initializes the rule.
-     *
      * @param mixed[] $superset
      */
-    public function __construct(array $superset)
+    public function __construct(private array $superset)
     {
-        $this->superset = $superset;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_array($input)) {
             return false;

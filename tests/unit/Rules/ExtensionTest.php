@@ -14,16 +14,12 @@ use SplFileInfo;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Extension
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class ExtensionTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Extension, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -40,7 +36,7 @@ final class ExtensionTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Extension, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

@@ -15,42 +15,17 @@ use function is_scalar;
 use function mb_stripos;
 use function mb_strpos;
 
-/**
- * Validates if the input contains some value.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Marcelo Araujo <msaraujo@php.net>
- * @author William Espindola <oi@williamespindola.com.br>
- */
 final class Contains extends AbstractRule
 {
     /**
-     * @var mixed
-     */
-    private $containsValue;
-
-    /**
-     * @var bool
-     */
-    private $identical;
-
-    /**
-     * Initializes the Contains rule.
-     *
      * @param mixed $containsValue Value that will be sought
      * @param bool $identical Defines whether the value is identical, default is false
      */
-    public function __construct($containsValue, bool $identical = false)
+    public function __construct(private mixed $containsValue, private bool $identical = false)
     {
-        $this->containsValue = $containsValue;
-        $this->identical = $identical;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (is_array($input)) {
             return in_array($this->containsValue, $input, $this->identical);

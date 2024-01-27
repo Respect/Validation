@@ -13,19 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Contains
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Nawarian <nickolas@phpsp.org.br>
- * @author William Espindola <oi@williamespindola.com.br>
  */
 final class ContainsTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Contains, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -46,7 +39,7 @@ final class ContainsTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Contains, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

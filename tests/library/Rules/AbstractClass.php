@@ -11,9 +11,6 @@ namespace Respect\Validation\Test\Rules;
 
 use Respect\Validation\Validatable;
 
-/**
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 abstract class AbstractClass implements Validatable
 {
 }

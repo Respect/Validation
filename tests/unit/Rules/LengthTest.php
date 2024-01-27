@@ -18,15 +18,7 @@ use function tmpfile;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Length
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Augusto Pascutti <contato@augustopascutti.com>
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Níckolas Daniel da Silva <nickolas@phpsp.org.br>
  */
 final class LengthTest extends RuleTestCase
 {
@@ -42,7 +34,7 @@ final class LengthTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Length, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -65,7 +57,7 @@ final class LengthTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Length, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

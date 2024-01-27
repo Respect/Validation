@@ -16,17 +16,12 @@ use Respect\Validation\Test\TestCase;
 
 /**
  * @covers \Respect\Validation\Rules\AbstractRule
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class AbstractRuleTest extends TestCase
 {
     /**
      * @dataProvider providerForTrueAndFalse
      * @covers       \Respect\Validation\Rules\AbstractRule::__invoke
-     *
      * @test
      */
     public function magicMethodInvokeCallsValidateWithInput(bool $booleanResult): void
@@ -54,7 +49,6 @@ final class AbstractRuleTest extends TestCase
 
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::assert
-     *
      * @test
      */
     public function assertInvokesValidateOnSuccess(): void
@@ -81,7 +75,6 @@ final class AbstractRuleTest extends TestCase
 
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::assert
-     *
      * @test
      */
     public function assertInvokesValidateAndReportErrorOnFailure(): void
@@ -118,7 +111,6 @@ final class AbstractRuleTest extends TestCase
 
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::check
-     *
      * @test
      */
     public function checkInvokesAssertToPerformTheValidationByDefault(): void
@@ -140,7 +132,6 @@ final class AbstractRuleTest extends TestCase
 
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::setTemplate
-     *
      * @test
      */
     public function shouldReturnTheCurrentObjectWhenDefinigTemplate(): void
@@ -154,7 +145,6 @@ final class AbstractRuleTest extends TestCase
 
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::setName
-     *
      * @test
      */
     public function shouldReturnTheCurrentObjectWhenDefinigName(): void
@@ -169,7 +159,6 @@ final class AbstractRuleTest extends TestCase
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::getName
      * @covers \Respect\Validation\Rules\AbstractRule::setName
-     *
      * @test
      */
     public function shouldBeAbleToDefineAndRetrivedRuleName(): void

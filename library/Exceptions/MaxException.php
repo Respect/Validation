@@ -9,17 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Andrew Peters <amp343@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class MaxException extends ValidationException
 {
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be less than or equal to {{compareTo}}',
         ],

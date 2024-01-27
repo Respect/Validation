@@ -40,11 +40,7 @@ interface StaticValidator
 
     public static function base64(): ChainedValidator;
 
-    /**
-     * @param mixed $minimum
-     * @param mixed $maximum
-     */
-    public static function between($minimum, $maximum): ChainedValidator;
+    public static function between(mixed $minimum, mixed $maximum): ChainedValidator;
 
     public static function bic(string $countryCode): ChainedValidator;
 
@@ -70,10 +66,7 @@ interface StaticValidator
 
     public static function consonant(string ...$additionalChars): ChainedValidator;
 
-    /**
-     * @param mixed $containsValue
-     */
-    public static function contains($containsValue, bool $identical = false): ChainedValidator;
+    public static function contains(mixed $containsValue, bool $identical = false): ChainedValidator;
 
     /**
      * @param mixed[] $needles
@@ -106,20 +99,11 @@ interface StaticValidator
 
     public static function email(): ChainedValidator;
 
-    /**
-     * @param mixed $endValue
-     */
-    public static function endsWith($endValue, bool $identical = false): ChainedValidator;
+    public static function endsWith(mixed $endValue, bool $identical = false): ChainedValidator;
 
-    /**
-     * @param mixed $compareTo
-     */
-    public static function equals($compareTo): ChainedValidator;
+    public static function equals(mixed $compareTo): ChainedValidator;
 
-    /**
-     * @param mixed $compareTo
-     */
-    public static function equivalent($compareTo): ChainedValidator;
+    public static function equivalent(mixed $compareTo): ChainedValidator;
 
     public static function even(): ChainedValidator;
 
@@ -140,7 +124,7 @@ interface StaticValidator
     /**
      * @param mixed[]|int $options
      */
-    public static function filterVar(int $filter, $options = null): ChainedValidator;
+    public static function filterVar(int $filter, array|int|null $options = null): ChainedValidator;
 
     public static function finite(): ChainedValidator;
 
@@ -150,28 +134,19 @@ interface StaticValidator
 
     public static function graph(string ...$additionalChars): ChainedValidator;
 
-    /**
-     * @param mixed $compareTo
-     */
-    public static function greaterThan($compareTo): ChainedValidator;
+    public static function greaterThan(mixed $compareTo): ChainedValidator;
 
     public static function hexRgbColor(): ChainedValidator;
 
     public static function iban(): ChainedValidator;
 
-    /**
-     * @param mixed $compareTo
-     */
-    public static function identical($compareTo): ChainedValidator;
+    public static function identical(mixed $compareTo): ChainedValidator;
 
     public static function image(?finfo $fileInfo = null): ChainedValidator;
 
     public static function imei(): ChainedValidator;
 
-    /**
-     * @param mixed[]|mixed $haystack
-     */
-    public static function in($haystack, bool $compareIdentical = false): ChainedValidator;
+    public static function in(mixed $haystack, bool $compareIdentical = false): ChainedValidator;
 
     public static function infinite(): ChainedValidator;
 
@@ -215,28 +190,19 @@ interface StaticValidator
 
     public static function lowercase(): ChainedValidator;
 
-    /**
-     * @param mixed $compareTo
-     */
-    public static function lessThan($compareTo): ChainedValidator;
+    public static function lessThan(mixed $compareTo): ChainedValidator;
 
     public static function luhn(): ChainedValidator;
 
     public static function macAddress(): ChainedValidator;
 
-    /**
-     * @param mixed $compareTo
-     */
-    public static function max($compareTo): ChainedValidator;
+    public static function max(mixed $compareTo): ChainedValidator;
 
     public static function maxAge(int $age, ?string $format = null): ChainedValidator;
 
     public static function mimetype(string $mimetype): ChainedValidator;
 
-    /**
-     * @param mixed $compareTo
-     */
-    public static function min($compareTo): ChainedValidator;
+    public static function min(mixed $compareTo): ChainedValidator;
 
     public static function minAge(int $age, ?string $format = null): ChainedValidator;
 
@@ -322,10 +288,7 @@ interface StaticValidator
 
     public static function space(string ...$additionalChars): ChainedValidator;
 
-    /**
-     * @param mixed $startValue
-     */
-    public static function startsWith($startValue, bool $identical = false): ChainedValidator;
+    public static function startsWith(mixed $startValue, bool $identical = false): ChainedValidator;
 
     public static function stringType(): ChainedValidator;
 

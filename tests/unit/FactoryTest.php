@@ -24,10 +24,6 @@ use function sprintf;
 
 /**
  * @covers \Respect\Validation\Factory
- *
- * @author Augusto Pascutti <augusto@phpsp.org.br>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class FactoryTest extends TestCase
 {

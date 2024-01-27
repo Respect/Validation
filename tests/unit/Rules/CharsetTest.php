@@ -16,13 +16,7 @@ use function mb_convert_encoding;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Charset
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
  */
 final class CharsetTest extends RuleTestCase
 {
@@ -38,7 +32,7 @@ final class CharsetTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Charset, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -55,7 +49,7 @@ final class CharsetTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Charset, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

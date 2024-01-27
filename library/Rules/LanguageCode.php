@@ -16,13 +16,6 @@ use function array_filter;
 use function array_search;
 use function sprintf;
 
-/**
- * Validates whether the input is language code based on ISO 639.
- *
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class LanguageCode extends AbstractEnvelope
 {
     public const ALPHA2 = 'alpha-2';
@@ -525,8 +518,6 @@ final class LanguageCode extends AbstractEnvelope
     ];
 
     /**
-     * Initializes the rule defining the ISO 639 set.
-     *
      * @throws ComponentException
      */
     public function __construct(string $set = self::ALPHA2)

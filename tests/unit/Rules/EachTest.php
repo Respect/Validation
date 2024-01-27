@@ -20,13 +20,7 @@ use function range;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Each
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
  */
 final class EachTest extends RuleTestCase
 {
@@ -81,7 +75,7 @@ final class EachTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Each, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -96,7 +90,7 @@ final class EachTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Each, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

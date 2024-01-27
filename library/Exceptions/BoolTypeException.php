@@ -9,18 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * Exception class for BoolType rule.
- *
- * @author Devin Torres <devin@devintorres.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class BoolTypeException extends ValidationException
 {
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be of type boolean',
         ],

@@ -11,17 +11,9 @@ namespace Respect\Validation\Rules;
 
 use function is_scalar;
 
-/**
- * Validates whether the input is a scalar value or not.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class ScalarVal extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         return is_scalar($input);
     }

@@ -14,35 +14,15 @@ use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Helpers\CanValidateIterable;
 use Respect\Validation\Validatable;
 
-/**
- * Validates whether each value in the input is valid according to another rule.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
- * @author William Espindola <oi@williamespindola.com.br>
- */
 final class Each extends AbstractRule
 {
     use CanValidateIterable;
 
-    /**
-     * @var Validatable
-     */
-    private $rule;
-
-    /**
-     * Initializes the constructor.
-     */
-    public function __construct(Validatable $rule)
+    public function __construct(private Validatable $rule)
     {
-        $this->rule = $rule;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function assert($input): void
+    public function assert(mixed $input): void
     {
         if (!$this->isIterable($input)) {
             throw $this->reportError($input);
@@ -66,10 +46,7 @@ final class Each extends AbstractRule
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function check($input): void
+    public function check(mixed $input): void
     {
         if (!$this->isIterable($input)) {
             throw $this->reportError($input);
@@ -80,10 +57,7 @@ final class Each extends AbstractRule
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         try {
             $this->check($input);

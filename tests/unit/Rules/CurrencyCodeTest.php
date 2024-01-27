@@ -13,17 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\CurrencyCode
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Justin Hook <justinhook88@yahoo.co.uk>
- * @author William Espindola <oi@williamespindola.com.br>
  */
 final class CurrencyCodeTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{CurrencyCode, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -39,7 +34,7 @@ final class CurrencyCodeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{CurrencyCode, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

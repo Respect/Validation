@@ -17,15 +17,11 @@ use function stream_context_create;
 /**
  * @group  rule
  * @covers \Respect\Validation\Rules\Nif
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Julián Gutiérrez <juliangut@gmail.com>
- * @author Senén <senen@instasent.com>
  */
 final class NifTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Nif, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -57,7 +53,7 @@ final class NifTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Nif, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

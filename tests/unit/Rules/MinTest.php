@@ -16,19 +16,13 @@ use Respect\Validation\Test\Stubs\CountableStub;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractComparison
  * @covers \Respect\Validation\Rules\Min
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class MinTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Min, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -59,7 +53,7 @@ final class MinTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Min, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

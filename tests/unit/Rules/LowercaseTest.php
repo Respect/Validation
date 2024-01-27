@@ -14,18 +14,12 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Lowercase
- *
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jean Pimentel <jeanfap@gmail.com>
  */
 final class LowercaseTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Lowercase, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -46,7 +40,7 @@ final class LowercaseTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Lowercase, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

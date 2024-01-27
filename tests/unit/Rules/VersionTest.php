@@ -15,17 +15,12 @@ use function uniqid;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Version
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class VersionTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Version, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -43,7 +38,7 @@ final class VersionTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Version, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

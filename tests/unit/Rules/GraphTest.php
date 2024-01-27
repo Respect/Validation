@@ -13,15 +13,8 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Graph
- *
- * @author Andre Ramaciotti <andre@ramaciotti.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
- * @author Pascal Borreli <pascal@borreli.com>
  */
 final class GraphTest extends RuleTestCase
 {
@@ -48,7 +41,7 @@ final class GraphTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Graph, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

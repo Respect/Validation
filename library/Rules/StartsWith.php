@@ -15,38 +15,13 @@ use function mb_stripos;
 use function mb_strpos;
 use function reset;
 
-/**
- * Validates whether the input starts with a given value.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Marcelo Araujo <msaraujo@php.net>
- */
 final class StartsWith extends AbstractRule
 {
-    /**
-     * @var mixed
-     */
-    private $startValue;
-
-    /**
-     * @var bool
-     */
-    private $identical;
-
-    /**
-     * @param mixed $startValue
-     */
-    public function __construct($startValue, bool $identical = false)
+    public function __construct(private mixed $startValue, private bool $identical = false)
     {
-        $this->startValue = $startValue;
-        $this->identical = $identical;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if ($this->identical) {
             return $this->validateIdentical($input);
@@ -55,10 +30,7 @@ final class StartsWith extends AbstractRule
         return $this->validateEquals($input);
     }
 
-    /**
-     * @param mixed $input
-     */
-    protected function validateEquals($input): bool
+    protected function validateEquals(mixed $input): bool
     {
         if (is_array($input)) {
             return reset($input) == $this->startValue;
@@ -71,10 +43,7 @@ final class StartsWith extends AbstractRule
         return false;
     }
 
-    /**
-     * @param mixed $input
-     */
-    protected function validateIdentical($input): bool
+    protected function validateIdentical(mixed $input): bool
     {
         if (is_array($input)) {
             return reset($input) === $this->startValue;

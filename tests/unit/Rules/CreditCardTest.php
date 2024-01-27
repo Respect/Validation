@@ -14,14 +14,7 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\CreditCard
- *
- * @author Andy Snell <andysnell@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jean Pimentel <jeanfap@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
- * @author Rakshit Arora <rakshit087@gmail.com>
  */
 final class CreditCardTest extends RuleTestCase
 {
@@ -40,7 +33,7 @@ final class CreditCardTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{CreditCard, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -77,7 +70,7 @@ final class CreditCardTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{CreditCard, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

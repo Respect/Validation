@@ -19,17 +19,13 @@ use function strtotime;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractAge
  * @covers \Respect\Validation\Rules\MaxAge
- *
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class MaxAgeTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{MaxAge, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -42,7 +38,7 @@ final class MaxAgeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{MaxAge, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

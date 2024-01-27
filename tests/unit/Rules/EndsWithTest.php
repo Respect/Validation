@@ -13,18 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\EndsWith
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
  */
 final class EndsWithTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{EndsWith, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -40,7 +34,7 @@ final class EndsWithTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{EndsWith, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

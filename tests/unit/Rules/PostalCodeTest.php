@@ -14,13 +14,7 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\PostalCode
- *
- * @author Axel Wargnier <axel@axessweb.fr>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Sebastian <me@sebastianpontow.de>
  */
 final class PostalCodeTest extends RuleTestCase
 {
@@ -56,7 +50,7 @@ final class PostalCodeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{PostalCode, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -96,7 +90,7 @@ final class PostalCodeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{PostalCode, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

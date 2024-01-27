@@ -14,19 +14,12 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Slug
- *
- * @author Carlos André Ferrari <caferrari@gmail.com>
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Marcel dos Santos <marcelgsantos@gmail.com>
  */
 final class SlugTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Slug, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -41,7 +34,7 @@ final class SlugTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Slug, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

@@ -9,17 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class OptionalException extends ValidationException
 {
     public const NAMED = 'named';
 
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => 'The value must be optional',
             self::NAMED => '{{name}} must be optional',

@@ -14,16 +14,12 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\NotEmoji
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Mazen Touati <mazen_touati@hotmail.com>
  */
 final class NotEmojiTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{NotEmoji, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -41,7 +37,7 @@ final class NotEmojiTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{NotEmoji, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

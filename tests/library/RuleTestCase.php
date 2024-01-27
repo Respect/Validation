@@ -18,15 +18,7 @@ use function Respect\Stringifier\stringify;
 use function sprintf;
 
 /**
- * Abstract class to create TestCases for Rules.
- *
  * @since 1.0.0
- *
- * @author Antonio Spinelli <tonicospinelli85@gmail.com>
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
  */
 abstract class RuleTestCase extends TestCase
 {
@@ -37,7 +29,6 @@ abstract class RuleTestCase extends TestCase
      * as the first element and an input in which the validation SHOULD pass.
      *
      * @api
-     *
      * @return mixed[][]
      */
     abstract public static function providerForValidInput(): array;
@@ -49,38 +40,28 @@ abstract class RuleTestCase extends TestCase
      * as the first element and an input in which the validation SHOULD NOT pass.
      *
      * @api
-     *
      * @return mixed[][]
      */
     abstract public static function providerForInvalidInput(): array;
 
     /**
      * @test
-     *
      * @dataProvider providerForValidInput
-     *
-     * @param mixed       $input
      */
-    public function shouldValidateValidInput(Validatable $validator, $input): void
+    public function shouldValidateValidInput(Validatable $validator, mixed $input): void
     {
         self::assertValidInput($validator, $input);
     }
 
     /**
      * @test
-     *
      * @dataProvider providerForInvalidInput
-     *
-     * @param mixed       $input
      */
-    public function shouldValidateInvalidInput(Validatable $validator, $input): void
+    public function shouldValidateInvalidInput(Validatable $validator, mixed $input): void
     {
         self::assertInvalidInput($validator, $input);
     }
 
-    /**
-     * Returns the directory used to store test fixtures.
-     */
     public static function fixture(?string $filename = null): string
     {
         $parts = [(string) realpath(__DIR__ . '/../fixtures')];
@@ -91,10 +72,7 @@ abstract class RuleTestCase extends TestCase
         return implode('/', $parts);
     }
 
-    /**
-     * @param mixed $input
-     */
-    public static function assertValidInput(Validatable $rule, $input): void
+    public static function assertValidInput(Validatable $rule, mixed $input): void
     {
         self::assertTrue(
             $rule->validate($input),
@@ -102,10 +80,7 @@ abstract class RuleTestCase extends TestCase
         );
     }
 
-    /**
-     * @param mixed $input
-     */
-    public static function assertInvalidInput(Validatable $rule, $input): void
+    public static function assertInvalidInput(Validatable $rule, mixed $input): void
     {
         self::assertFalse(
             $rule->validate($input),

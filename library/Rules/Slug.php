@@ -13,20 +13,9 @@ use function is_string;
 use function mb_strstr;
 use function preg_match;
 
-/**
- * Validates whether the input is a valid slug.
- *
- * @author Carlos André Ferrari <caferrari@gmail.com>
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
- */
 final class Slug extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_string($input) || mb_strstr($input, '--')) {
             return false;

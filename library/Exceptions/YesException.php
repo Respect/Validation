@@ -9,16 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * @author Cameron Hall <me@chall.id.au>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class YesException extends ValidationException
 {
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be similar to "Yes"',
         ],

@@ -14,22 +14,9 @@ use function mb_strlen;
 use function preg_match;
 use function preg_replace;
 
-/**
- * Validates whether the input is a CPF (Brazilian Natural Persons Register) number.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jair Henrique <jair.henrique@gmail.com>
- * @author Jayson Reis <santosdosreis@gmail.com>
- * @author Jean Pimentel <jeanfap@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
- */
 final class Cpf extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         // Code ported from jsfromhell.com
         $c = preg_replace('/\D/', '', $input);

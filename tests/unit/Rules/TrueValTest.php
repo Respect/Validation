@@ -13,17 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\TrueVal
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Paul Karikari <paulkarikari1@gmail.com>
  */
 final class TrueValTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{TrueVal, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -46,7 +41,7 @@ final class TrueValTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{TrueVal, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

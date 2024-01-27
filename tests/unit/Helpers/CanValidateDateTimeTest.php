@@ -13,10 +13,7 @@ use Respect\Validation\Test\TestCase;
 
 /**
  * @group helper
- *
  * @covers \Respect\Validation\Helpers\CanValidateDateTime
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class CanValidateDateTimeTest extends TestCase
 {
@@ -24,7 +21,6 @@ final class CanValidateDateTimeTest extends TestCase
 
     /**
      * @test
-     *
      * @dataProvider providerForValidDateTime
      */
     public function shouldFindWhenValueIsDateTime(string $format, string $value): void
@@ -34,7 +30,6 @@ final class CanValidateDateTimeTest extends TestCase
 
     /**
      * @test
-     *
      * @dataProvider providerForInvalidDateTime
      */
     public function shouldFindWhenValueIsNotDateTime(string $format, string $value): void

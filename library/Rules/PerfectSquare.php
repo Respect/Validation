@@ -13,20 +13,9 @@ use function floor;
 use function is_numeric;
 use function sqrt;
 
-/**
- * Validates whether the input is a perfect square.
- *
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
- * @author Nick Lombard <github@jigsoft.co.za>
- */
 final class PerfectSquare extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         return is_numeric($input) && floor(sqrt((float) $input)) == sqrt((float) $input);
     }

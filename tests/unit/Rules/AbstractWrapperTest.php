@@ -14,12 +14,7 @@ use Respect\Validation\Validatable;
 
 /**
  * @test core
- *
  * @covers \Respect\Validation\Rules\AbstractWrapper
- *
- * @author Alasdair North <alasdair@runway.io>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class AbstractWrapperTest extends TestCase
 {

@@ -11,19 +11,9 @@ namespace Respect\Validation\Rules;
 
 use function is_numeric;
 
-/**
- * Validates whether the input is a negative number.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Ismael Elias <ismael.esq@hotmail.com>
- */
 final class Negative extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_numeric($input)) {
             return false;

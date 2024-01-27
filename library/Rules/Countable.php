@@ -13,19 +13,9 @@ use Countable as CountableInterface;
 
 use function is_array;
 
-/**
- * Validates if the input is countable.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author João Torquato <joao.otl@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
- */
 final class Countable extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         return is_array($input) || $input instanceof CountableInterface;
     }

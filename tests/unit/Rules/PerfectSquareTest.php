@@ -13,18 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\PerfectSquare
- *
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
  */
 final class PerfectSquareTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{PerfectSquare, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -45,7 +39,7 @@ final class PerfectSquareTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{PerfectSquare, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

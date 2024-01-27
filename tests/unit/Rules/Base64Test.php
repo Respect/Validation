@@ -15,17 +15,12 @@ use function implode;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Base64
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jens Segers <segers.jens@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
  */
 final class Base64Test extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Base64, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -57,7 +52,7 @@ final class Base64Test extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Base64, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

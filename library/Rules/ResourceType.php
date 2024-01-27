@@ -11,17 +11,9 @@ namespace Respect\Validation\Rules;
 
 use function is_resource;
 
-/**
- * Validates whether the input is a resource.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class ResourceType extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         return is_resource($input);
     }

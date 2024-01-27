@@ -14,17 +14,12 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Pis
- *
- * @author Bruno Koga <brunokoga187@gmail.com>
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class PisTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Pis, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -46,7 +41,7 @@ final class PisTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Pis, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

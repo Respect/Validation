@@ -13,11 +13,6 @@ use function nl_langinfo;
 
 use const NOEXPR;
 
-/**
- * Validates if value is considered as "No".
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class No extends AbstractEnvelope
 {
     public function __construct(bool $useLocale = false)

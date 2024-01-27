@@ -20,19 +20,11 @@ use function str_split;
 use function strlen;
 
 /**
- * Validates Portugal's fiscal identification number (NIF)
- *
- *
  * @see https://pt.wikipedia.org/wiki/N%C3%BAmero_de_identifica%C3%A7%C3%A3o_fiscal
- *
- * @author Gonçalo Andrade <goncalo.andrade95@gmail.com>
  */
 final class PortugueseNif extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         // Validate format and length
         if (!is_string($input)) {

@@ -12,32 +12,13 @@ namespace Respect\Validation\Rules;
 use function is_scalar;
 use function mb_strtoupper;
 
-/**
- * Validates if the input is equivalent to some value.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class Equivalent extends AbstractRule
 {
-    /**
-     * @var mixed
-     */
-    private $compareTo;
-
-    /**
-     * Initializes the rule.
-     *
-     * @param mixed $compareTo
-     */
-    public function __construct($compareTo)
+    public function __construct(private mixed $compareTo)
     {
-        $this->compareTo = $compareTo;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (is_scalar($input)) {
             return $this->isStringEquivalent((string) $input);

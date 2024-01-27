@@ -13,18 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\VideoUrl
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Ricardo Gobbo <ricardo@clicknow.com.br>
  */
 final class VideoUrlTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{VideoUrl, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -45,7 +39,7 @@ final class VideoUrlTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{VideoUrl, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

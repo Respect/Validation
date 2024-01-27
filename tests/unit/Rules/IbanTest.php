@@ -16,15 +16,12 @@ use function extension_loaded;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Iban
- *
- * @author Mazen Touati <mazen_touati@hotmail.com>
  */
 final class IbanTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Iban, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -46,7 +43,7 @@ final class IbanTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Iban, mixed}>
      */
     public static function providerForInvalidInput(): array
     {
@@ -67,9 +64,6 @@ final class IbanTest extends RuleTestCase
         ];
     }
 
-    /**
-     * {@inheritDoc}
-     */
     protected function setUp(): void
     {
         if (extension_loaded('bcmath')) {

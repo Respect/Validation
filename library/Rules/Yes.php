@@ -15,31 +15,13 @@ use function preg_match;
 
 use const YESEXPR;
 
-/**
- * Validates if the input considered as "Yes".
- *
- * @author Cameron Hall <me@chall.id.au>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class Yes extends AbstractRule
 {
-    /**
-     * @var bool
-     */
-    private $useLocale;
-
-    /**
-     * Initializes the rule.
-     */
-    public function __construct(bool $useLocale = false)
+    public function __construct(private bool $useLocale = false)
     {
-        $this->useLocale = $useLocale;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_string($input)) {
             return false;

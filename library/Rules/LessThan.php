@@ -9,17 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-/**
- * Validates whether the input is less than a value.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class LessThan extends AbstractComparison
 {
-    /**
-     * {@inheritDoc}
-     */
-    protected function compare($left, $right): bool
+    protected function compare(mixed $left, mixed $right): bool
     {
         return $left < $right;
     }

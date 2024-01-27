@@ -15,18 +15,9 @@ use SplFileInfo;
 use function is_dir;
 use function is_scalar;
 
-/**
- * Validates if the given path is a directory.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
- */
 final class Directory extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
             return $input->isDir();

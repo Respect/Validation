@@ -14,10 +14,7 @@ use Respect\Validation\Test\TestCase;
 
 /**
  * @group helper
- *
  * @covers \Respect\Validation\Helpers\CanValidateUndefined
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class CanValidateUndefinedTest extends TestCase
 {
@@ -27,10 +24,8 @@ final class CanValidateUndefinedTest extends TestCase
     /**
      * @test
      * @dataProvider providerForUndefined
-     *
-     * @param mixed $value
      */
-    public function shouldFindWhenValueIsUndefined($value): void
+    public function shouldFindWhenValueIsUndefined(mixed $value): void
     {
         self::assertTrue($this->isUndefined($value));
     }
@@ -38,10 +33,8 @@ final class CanValidateUndefinedTest extends TestCase
     /**
      * @test
      * @dataProvider providerForNotUndefined
-     *
-     * @param mixed $value
      */
-    public function shouldFindWhenValueIsNotUndefined($value): void
+    public function shouldFindWhenValueIsNotUndefined(mixed $value): void
     {
         self::assertFalse($this->isUndefined($value));
     }

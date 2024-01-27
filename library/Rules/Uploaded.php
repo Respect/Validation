@@ -15,18 +15,9 @@ use SplFileInfo;
 use function is_scalar;
 use function is_uploaded_file;
 
-/**
- * Validates if the given data is a file that was uploaded via HTTP POST.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Paul Karikari <paulkarikari1@gmail.com>
- */
 final class Uploaded extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
             return $this->validate($input->getPathname());

@@ -36,10 +36,7 @@ final class UploadedFileStub implements UploadedFileInterface
         return StreamStub::create();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function moveTo($targetPath): void
+    public function moveTo(string $targetPath): void
     {
     }
 

@@ -14,20 +14,13 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Control
- *
- * @author Andre Ramaciotti <andre@ramaciotti.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
- * @author Pascal Borreli <pascal@borreli.com>
  */
 final class ControlTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Control, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -44,7 +37,7 @@ final class ControlTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Control, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

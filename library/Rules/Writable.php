@@ -15,18 +15,9 @@ use SplFileInfo;
 use function is_string;
 use function is_writable;
 
-/**
- * Validates if the given input is writable file.
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class Writable extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
             return $input->isWritable();

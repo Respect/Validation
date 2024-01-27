@@ -13,21 +13,13 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Space
- *
- * @author Andre Ramaciotti <andre@ramaciotti.com>
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
- * @author Pascal Borreli <pascal@borreli.com>
  */
 final class SpaceTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Space, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -45,7 +37,7 @@ final class SpaceTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Space, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

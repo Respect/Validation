@@ -15,22 +15,15 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Optional
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class OptionalTest extends TestCase
 {
     /**
      * @dataProvider providerForOptional
-     *
      * @test
-     *
-     * @param mixed $input
      */
-    public function shouldNotValidateRuleWhenInputIsOptional($input): void
+    public function shouldNotValidateRuleWhenInputIsOptional(mixed $input): void
     {
         $validatable = $this->createMock(Validatable::class);
         $validatable
@@ -44,12 +37,9 @@ final class OptionalTest extends TestCase
 
     /**
      * @dataProvider providerForNotOptional
-     *
      * @test
-     *
-     * @param mixed $input
      */
-    public function shouldValidateRuleWhenInputIsNotOptional($input): void
+    public function shouldValidateRuleWhenInputIsNotOptional(mixed $input): void
     {
         $validatable = $this->createMock(Validatable::class);
         $validatable

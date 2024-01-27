@@ -15,25 +15,16 @@ use function in_array;
 use function is_scalar;
 use function mb_strtoupper;
 
-/**
- * Abstract class for searches into arrays.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 abstract class AbstractSearcher extends AbstractRule
 {
     use CanValidateUndefined;
 
     /**
-     * @param mixed $input
      * @return mixed[]
      */
-    abstract protected function getDataSource($input = null): array;
+    abstract protected function getDataSource(mixed $input = null): array;
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         $dataSource = $this->getDataSource($input);
 

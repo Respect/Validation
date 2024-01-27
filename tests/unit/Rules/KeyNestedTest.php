@@ -17,14 +17,8 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractRelated
  * @covers \Respect\Validation\Rules\KeyNested
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Ivan Zinovyev <vanyazin@gmail.com>
  */
 final class KeyNestedTest extends TestCase
 {
@@ -179,7 +173,6 @@ final class KeyNestedTest extends TestCase
 
     /**
      * @doesNotPerformAssertions
-     *
      * @test
      */
     public function extraValidatorShouldValidateKey(): void

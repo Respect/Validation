@@ -15,17 +15,13 @@ use function chr;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Printable
- *
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class PrintableTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Printable, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -45,7 +41,7 @@ final class PrintableTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Printable, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

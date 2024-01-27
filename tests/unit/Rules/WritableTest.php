@@ -19,17 +19,12 @@ use function chmod;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Writable
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class WritableTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Writable, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -50,7 +45,7 @@ final class WritableTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Writable, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

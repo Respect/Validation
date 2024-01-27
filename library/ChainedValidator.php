@@ -40,11 +40,7 @@ interface ChainedValidator extends Validatable
 
     public function base64(): ChainedValidator;
 
-    /**
-     * @param mixed $minimum
-     * @param mixed $maximum
-     */
-    public function between($minimum, $maximum): ChainedValidator;
+    public function between(mixed $minimum, mixed $maximum): ChainedValidator;
 
     public function boolType(): ChainedValidator;
 
@@ -68,10 +64,7 @@ interface ChainedValidator extends Validatable
 
     public function consonant(string ...$additionalChars): ChainedValidator;
 
-    /**
-     * @param mixed $containsValue
-     */
-    public function contains($containsValue, bool $identical = false): ChainedValidator;
+    public function contains(mixed $containsValue, bool $identical = false): ChainedValidator;
 
     /**
      * @param mixed[] $needles
@@ -104,20 +97,11 @@ interface ChainedValidator extends Validatable
 
     public function email(): ChainedValidator;
 
-    /**
-     * @param mixed $endValue
-     */
-    public function endsWith($endValue, bool $identical = false): ChainedValidator;
+    public function endsWith(mixed $endValue, bool $identical = false): ChainedValidator;
 
-    /**
-     * @param mixed $compareTo
-     */
-    public function equals($compareTo): ChainedValidator;
+    public function equals(mixed $compareTo): ChainedValidator;
 
-    /**
-     * @param mixed $compareTo
-     */
-    public function equivalent($compareTo): ChainedValidator;
+    public function equivalent(mixed $compareTo): ChainedValidator;
 
     public function even(): ChainedValidator;
 
@@ -138,7 +122,7 @@ interface ChainedValidator extends Validatable
     /**
      * @param mixed[]|int $options
      */
-    public function filterVar(int $filter, $options = null): ChainedValidator;
+    public function filterVar(int $filter, array|int|null $options = null): ChainedValidator;
 
     public function finite(): ChainedValidator;
 
@@ -148,28 +132,19 @@ interface ChainedValidator extends Validatable
 
     public function graph(string ...$additionalChars): ChainedValidator;
 
-    /**
-     * @param mixed $compareTo
-     */
-    public function greaterThan($compareTo): ChainedValidator;
+    public function greaterThan(mixed $compareTo): ChainedValidator;
 
     public function hexRgbColor(): ChainedValidator;
 
     public function iban(): ChainedValidator;
 
-    /**
-     * @param mixed $compareTo
-     */
-    public function identical($compareTo): ChainedValidator;
+    public function identical(mixed $compareTo): ChainedValidator;
 
     public function image(?finfo $fileInfo = null): ChainedValidator;
 
     public function imei(): ChainedValidator;
 
-    /**
-     * @param mixed[]|mixed $haystack
-     */
-    public function in($haystack, bool $compareIdentical = false): ChainedValidator;
+    public function in(mixed $haystack, bool $compareIdentical = false): ChainedValidator;
 
     public function infinite(): ChainedValidator;
 
@@ -213,28 +188,19 @@ interface ChainedValidator extends Validatable
 
     public function lowercase(): ChainedValidator;
 
-    /**
-     * @param mixed $compareTo
-     */
-    public function lessThan($compareTo): ChainedValidator;
+    public function lessThan(mixed $compareTo): ChainedValidator;
 
     public function luhn(): ChainedValidator;
 
     public function macAddress(): ChainedValidator;
 
-    /**
-     * @param mixed $compareTo
-     */
-    public function max($compareTo): ChainedValidator;
+    public function max(mixed $compareTo): ChainedValidator;
 
     public function maxAge(int $age, ?string $format = null): ChainedValidator;
 
     public function mimetype(string $mimetype): ChainedValidator;
 
-    /**
-     * @param mixed $compareTo
-     */
-    public function min($compareTo): ChainedValidator;
+    public function min(mixed $compareTo): ChainedValidator;
 
     public function minAge(int $age, ?string $format = null): ChainedValidator;
 
@@ -324,10 +290,7 @@ interface ChainedValidator extends Validatable
 
     public function space(string ...$additionalChars): ChainedValidator;
 
-    /**
-     * @param mixed $startValue
-     */
-    public function startsWith($startValue, bool $identical = false): ChainedValidator;
+    public function startsWith(mixed $startValue, bool $identical = false): ChainedValidator;
 
     public function stringType(): ChainedValidator;
 

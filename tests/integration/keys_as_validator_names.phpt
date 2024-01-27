@@ -13,7 +13,7 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator;
 
-exceptionFullMessage(static function () {
+exceptionFullMessage(static function (): void {
     Validator::create()
         ->key('username', Validator::length(2, 32))
         ->key('birthdate', Validator::dateTime())

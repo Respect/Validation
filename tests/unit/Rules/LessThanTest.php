@@ -14,17 +14,13 @@ use Respect\Validation\Test\Stubs\CountableStub;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractComparison
  * @covers \Respect\Validation\Rules\LessThan
- *
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class LessThanTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{LessThan, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -38,7 +34,7 @@ final class LessThanTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{LessThan, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

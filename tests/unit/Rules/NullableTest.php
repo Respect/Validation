@@ -15,11 +15,7 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Nullable
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jens Segers <segers.jens@gmail.com>
  */
 final class NullableTest extends TestCase
 {
@@ -40,12 +36,9 @@ final class NullableTest extends TestCase
 
     /**
      * @dataProvider providerForNotNullable
-     *
-     * @param mixed $input
-     *
      * @test
      */
-    public function shouldValidateRuleWhenInputIsNotNullable($input): void
+    public function shouldValidateRuleWhenInputIsNotNullable(mixed $input): void
     {
         $validatable = $this->createMock(Validatable::class);
         $validatable
@@ -75,12 +68,9 @@ final class NullableTest extends TestCase
 
     /**
      * @test
-     *
      * @dataProvider providerForNotNullable
-     *
-     * @param mixed $input
      */
-    public function shouldAssertRuleWhenInputIsNotNullable($input): void
+    public function shouldAssertRuleWhenInputIsNotNullable(mixed $input): void
     {
         $validatable = $this->createMock(Validatable::class);
         $validatable
@@ -109,12 +99,9 @@ final class NullableTest extends TestCase
 
     /**
      * @test
-     *
      * @dataProvider providerForNotNullable
-     *
-     * @param mixed $input
      */
-    public function shouldCheckRuleWhenInputIsNotNullable($input): void
+    public function shouldCheckRuleWhenInputIsNotNullable(mixed $input): void
     {
         $validatable = $this->createMock(Validatable::class);
         $validatable
@@ -128,8 +115,6 @@ final class NullableTest extends TestCase
     }
 
     /**
-     * Data provider for not nullable values.
-     *
      * @return mixed[][]
      */
     public static function providerForNotNullable(): array

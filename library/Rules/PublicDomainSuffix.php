@@ -19,12 +19,12 @@ final class PublicDomainSuffix extends AbstractSearcher
     /**
      * @var string[]
      */
-    private $domainInfo;
+    private array $domainInfo;
 
     /**
-     * {@inheritDoc}
+     * @return string[]
      */
-    protected function getDataSource($input = null): array
+    protected function getDataSource(mixed $input = null): array
     {
         $parts = explode('.', $input);
         $tld = array_pop($parts);

@@ -11,17 +11,11 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Helpers\CanValidateUndefined;
 
-/**
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class Optional extends AbstractWrapper
 {
     use CanValidateUndefined;
 
-    /**
-     * {@inheritDoc}
-     */
-    public function assert($input): void
+    public function assert(mixed $input): void
     {
         if ($this->isUndefined($input)) {
             return;
@@ -30,10 +24,7 @@ final class Optional extends AbstractWrapper
         parent::assert($input);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function check($input): void
+    public function check(mixed $input): void
     {
         if ($this->isUndefined($input)) {
             return;
@@ -42,10 +33,7 @@ final class Optional extends AbstractWrapper
         parent::check($input);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if ($this->isUndefined($input)) {
             return true;

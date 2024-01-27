@@ -20,12 +20,7 @@ use const PHP_INT_MIN;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Uuid
- *
- * @author Dick van der Heiden <d.vanderheiden@inthere.nl>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Michael Weimann <mail@michael-weimann.eu>
  */
 final class UuidTest extends RuleTestCase
 {
@@ -72,7 +67,7 @@ final class UuidTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Uuid, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -91,7 +86,7 @@ final class UuidTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Uuid, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

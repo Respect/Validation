@@ -14,19 +14,9 @@ use function is_numeric;
 
 use const FILTER_VALIDATE_INT;
 
-/**
- * Validates whether the input is an odd number or not.
- *
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jean Pimentel <jeanfap@gmail.com>
- */
 final class Odd extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_numeric($input)) {
             return false;

@@ -11,7 +11,7 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator;
 
-exceptionMessage(static function () {
+exceptionMessage(static function (): void {
     $validator = Validator::not(
         Validator::intVal()->positive()
     );

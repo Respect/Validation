@@ -17,12 +17,12 @@ final class DomainInfo
     /**
      * @var mixed[]
      */
-    private $data;
+    private array $data;
 
     /**
      * @var mixed[]
      */
-    private static $runtimeCache = [];
+    private static array $runtimeCache = [];
 
     public function __construct(string $tld)
     {

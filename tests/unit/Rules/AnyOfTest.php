@@ -17,10 +17,6 @@ use Respect\Validation\Test\TestCase;
  * @group  rule
  * @covers \Respect\Validation\Exceptions\AnyOfException
  * @covers \Respect\Validation\Rules\AnyOf
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class AnyOfTest extends TestCase
 {

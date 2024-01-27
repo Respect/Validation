@@ -17,37 +17,16 @@ use function is_string;
 
 use const FILEINFO_MIME_TYPE;
 
-/**
- * Validates if the input is a file and if its MIME type matches the expected one.
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class Mimetype extends AbstractRule
 {
-    /**
-     * @var string
-     */
-    private $mimetype;
+    private finfo $fileInfo;
 
-    /**
-     * @var finfo
-     */
-    private $fileInfo;
-
-    /**
-     * Initializes the rule by defining the expected mimetype from the input.
-     */
-    public function __construct(string $mimetype, ?finfo $fileInfo = null)
+    public function __construct(private string $mimetype, ?finfo $fileInfo = null)
     {
-        $this->mimetype = $mimetype;
         $this->fileInfo = $fileInfo ?: new finfo();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
             return $this->validate($input->getPathname());

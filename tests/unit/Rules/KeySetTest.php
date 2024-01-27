@@ -16,12 +16,7 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\KeySet
- *
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class KeySetTest extends TestCase
 {
@@ -203,12 +198,9 @@ final class KeySetTest extends TestCase
 
     /**
      * @test
-     *
      * @dataProvider providerForInvalidArguments
-     *
-     * @param mixed $input
      */
-    public function shouldThrowExceptionInCaseArgumentIsAnythingOtherThanArray($input): void
+    public function shouldThrowExceptionInCaseArgumentIsAnythingOtherThanArray(mixed $input): void
     {
         $keySet = new KeySet(new Key('name'));
 

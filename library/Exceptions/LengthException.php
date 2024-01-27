@@ -9,12 +9,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Mazen Touati <mazen_touati@hotmail.com>
- */
 final class LengthException extends ValidationException
 {
     public const BOTH = 'both';
@@ -25,9 +19,9 @@ final class LengthException extends ValidationException
     public const EXACT = 'exact';
 
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::BOTH => '{{name}} must have a length between {{minValue}} and {{maxValue}}',
             self::LOWER => '{{name}} must have a length greater than {{minValue}}',
@@ -46,9 +40,6 @@ final class LengthException extends ValidationException
         ],
     ];
 
-    /**
-     * {@inheritDoc}
-     */
     protected function chooseTemplate(): string
     {
         $isInclusive = $this->getParam('inclusive');

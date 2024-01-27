@@ -11,17 +11,9 @@ namespace Respect\Validation\Rules;
 
 use function is_callable;
 
-/**
- * Validates whether the pseudo-type of the input is callable.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class CallableType extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         return is_callable($input);
     }

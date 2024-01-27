@@ -19,17 +19,11 @@ use function sprintf;
 
 /**
  * @coversNothing
- *
- * @author Andy Wendt <andy@awendt.com>
- * @author Augusto Pascutti <augusto@phpsp.org.br>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class CheckExceptionsTest extends TestCase
 {
     /**
      * @dataProvider provideListOfRuleNames
-     *
      * @test
      */
     public function ruleHasAnExceptionWhichHasValidApi(string $ruleName): void

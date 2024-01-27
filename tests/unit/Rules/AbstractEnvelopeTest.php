@@ -16,10 +16,7 @@ use function array_intersect_key;
 
 /**
  * @test core
- *
  * @covers \Respect\Validation\Rules\AbstractEnvelope
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class AbstractEnvelopeTest extends TestCase
 {

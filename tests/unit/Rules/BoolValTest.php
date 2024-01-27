@@ -13,17 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\BoolVal
- *
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
  */
 final class BoolValTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{BoolVal, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -43,7 +38,7 @@ final class BoolValTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{BoolVal, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

@@ -20,19 +20,14 @@ use function uopz_set_return;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Uploaded
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Paul Karikari <paulkarikari1@gmail.com>
  */
 final class UploadedTest extends RuleTestCase
 {
     public const UPLOADED_FILENAME = 'uploaded.ext';
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Uploaded, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -46,7 +41,7 @@ final class UploadedTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Uploaded, mixed}>
      */
     public static function providerForInvalidInput(): array
     {
@@ -61,9 +56,6 @@ final class UploadedTest extends RuleTestCase
         ];
     }
 
-    /**
-     * {@inheritDoc}
-     */
     protected function setUp(): void
     {
         if (!extension_loaded('uopz')) {

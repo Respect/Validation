@@ -16,12 +16,7 @@ use SplFileObject;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Image
- *
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Guilherme Siani <guilherme@siani.com.br>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class ImageTest extends RuleTestCase
 {
@@ -45,7 +40,7 @@ final class ImageTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Image, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -62,7 +57,7 @@ final class ImageTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Image, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

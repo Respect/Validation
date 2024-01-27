@@ -18,18 +18,12 @@ use const PHP_INT_MAX;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\MacAddress
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Fábio da Silva Ribeiro <fabiorphp@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class MacAddressTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{MacAddress, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -44,7 +38,7 @@ final class MacAddressTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{MacAddress, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

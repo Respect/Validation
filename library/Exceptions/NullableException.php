@@ -9,18 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jens Segers <segers.jens@gmail.com>
- */
 final class NullableException extends ValidationException
 {
     public const NAMED = 'named';
 
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => 'The value must be nullable',
             self::NAMED => '{{name}} must be nullable',
@@ -31,9 +27,6 @@ final class NullableException extends ValidationException
         ],
     ];
 
-    /**
-     * {@inheritDoc}
-     */
     protected function chooseTemplate(): string
     {
         if ($this->getParam('input') || $this->getParam('name')) {

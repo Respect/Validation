@@ -34,7 +34,10 @@ use Respect\Validation\Exceptions\ValidationException;
 
 final class SomethingException extends ValidationException
 {
-    protected $defaultTemplates = [
+    /**
+     * @var array<string, array<string, string>>
+     */
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => 'Validation message if Something fails validation.',
         ],

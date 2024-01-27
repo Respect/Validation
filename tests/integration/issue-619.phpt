@@ -10,7 +10,7 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Rules\Instance;
 
-exceptionMessage(static function () {
+exceptionMessage(static function (): void {
     (new Instance('stdClass'))->setTemplate('invalid object')->assert('test');
 });
 ?>

@@ -9,20 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * Exceptions to be thrown by the Printable Rule.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Andre Ramaciotti <andre@ramaciotti.com>
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class PrintableException extends FilteredValidationException
 {
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must contain only printable characters',
             self::EXTRA => '{{name}} must contain only printable characters and "{{additionalChars}}"',

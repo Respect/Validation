@@ -15,49 +15,17 @@ use Respect\Validation\Validatable;
 
 use function is_scalar;
 
-/**
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
- */
 abstract class AbstractRelated extends AbstractRule
 {
-    /**
-     * @var bool
-     */
-    private $mandatory = true;
+    abstract public function hasReference(mixed $input): bool;
 
-    /**
-     * @var mixed
-     */
-    private $reference;
+    abstract public function getReferenceValue(mixed $input): mixed;
 
-    /**
-     * @var Validatable|null
-     */
-    private $rule;
-
-    /**
-     * @param mixed $input
-     */
-    abstract public function hasReference($input): bool;
-
-    /**
-     * @param mixed $input
-     *
-     * @return mixed
-     */
-    abstract public function getReferenceValue($input);
-
-    /**
-     * @param mixed $reference
-     */
-    public function __construct($reference, ?Validatable $rule = null, bool $mandatory = true)
-    {
-        $this->reference = $reference;
-        $this->rule = $rule;
-        $this->mandatory = $mandatory;
+    public function __construct(
+        private mixed $reference,
+        private ?Validatable $rule = null,
+        private bool $mandatory = true
+    ) {
 
         if ($rule && $rule->getName() !== null) {
             $this->setName($rule->getName());
@@ -66,10 +34,7 @@ abstract class AbstractRelated extends AbstractRule
         }
     }
 
-    /**
-     * @return mixed
-     */
-    public function getReference()
+    public function getReference(): mixed
     {
         return $this->reference;
     }
@@ -79,9 +44,6 @@ abstract class AbstractRelated extends AbstractRule
         return $this->mandatory;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function setName(string $name): Validatable
     {
         parent::setName($name);
@@ -93,10 +55,7 @@ abstract class AbstractRelated extends AbstractRule
         return $this;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function assert($input): void
+    public function assert(mixed $input): void
     {
         $hasReference = $this->hasReference($input);
         if ($this->mandatory && !$hasReference) {
@@ -118,10 +77,7 @@ abstract class AbstractRelated extends AbstractRule
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function check($input): void
+    public function check(mixed $input): void
     {
         $hasReference = $this->hasReference($input);
         if ($this->mandatory && !$hasReference) {
@@ -135,10 +91,7 @@ abstract class AbstractRelated extends AbstractRule
         $this->rule->check($this->getReferenceValue($input));
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         $hasReference = $this->hasReference($input);
         if ($this->mandatory && !$hasReference) {

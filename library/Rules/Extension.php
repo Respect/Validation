@@ -16,31 +16,13 @@ use function pathinfo;
 
 use const PATHINFO_EXTENSION;
 
-/**
- * Validate file extensions.
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class Extension extends AbstractRule
 {
-    /**
-     * @var string
-     */
-    private $extension;
-
-    /**
-     * Initializes the rule.
-     */
-    public function __construct(string $extension)
+    public function __construct(private string $extension)
     {
-        $this->extension = $extension;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
             return $this->extension === $input->getExtension();

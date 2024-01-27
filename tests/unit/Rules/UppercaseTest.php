@@ -14,18 +14,12 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Uppercase
- *
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jean Pimentel <jeanfap@gmail.com>
  */
 final class UppercaseTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Uppercase, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -47,7 +41,7 @@ final class UppercaseTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Uppercase, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

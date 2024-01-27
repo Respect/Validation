@@ -24,12 +24,8 @@ use const FILTER_VALIDATE_URL;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractEnvelope
  * @covers \Respect\Validation\Rules\FilterVar
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class FilterVarTest extends RuleTestCase
 {
@@ -45,7 +41,7 @@ final class FilterVarTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{FilterVar, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -61,7 +57,7 @@ final class FilterVarTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{FilterVar, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

@@ -14,14 +14,5 @@
     <file>library/</file>
     <file>tests/</file>
 
-    <rule ref="Respect">
-        <exclude name="SlevomatCodingStandard.Commenting.ForbiddenAnnotations.AnnotationForbidden" />
-        <exclude name="SlevomatCodingStandard.Commenting.UselessInheritDocComment.UselessInheritDocComment" />
-        <exclude name="SlevomatCodingStandard.Classes.RequireConstructorPropertyPromotion.RequiredConstructorPropertyPromotion" />
-        <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint" />
-        <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint" />
-        <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint" />
-        <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingAnyTypeHint" />
-        <exclude name="SlevomatCodingStandard.Classes.ModernClassNameReference.ClassNameReferencedViaFunctionCall" />
-    </rule>
+    <rule ref="Respect" />
 </ruleset>

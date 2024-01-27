@@ -9,16 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test\DataProvider;
 
-/**
- * Data provider to use when testing against undefined values.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 trait UndefinedProvider
 {
     /**
-     * Returns values that are considered as "undefined"
-     *
      * @return mixed[][]
      */
     public static function providerForUndefined(): array
@@ -30,8 +23,6 @@ trait UndefinedProvider
     }
 
     /**
-     * Returns values that are not considered as "undefined"
-     *
      * @return mixed[][]
      */
     public static function providerForNotUndefined(): array

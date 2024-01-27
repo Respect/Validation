@@ -13,19 +13,9 @@ use function filter_var;
 
 use const FILTER_VALIDATE_INT;
 
-/**
- * Validates whether the input is an even number or not.
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jean Pimentel <jeanfap@gmail.com>
- * @author Paul Karikari <paulkarikari1@gmail.com>
- */
 final class Even extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (filter_var($input, FILTER_VALIDATE_INT) === false) {
             return false;

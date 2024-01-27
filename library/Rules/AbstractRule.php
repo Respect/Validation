@@ -13,28 +13,13 @@ use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Factory;
 use Respect\Validation\Validatable;
 
-/**
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
- * @author Vicente Mendoza <vicentemmor@yahoo.com.mx>
- */
 abstract class AbstractRule implements Validatable
 {
-    /**
-     * @var string|null
-     */
-    protected $name;
+    protected ?string $name = null;
 
-    /**
-     * @var string|null
-     */
-    protected $template;
+    protected ?string $template = null;
 
-    /**
-     * {@inheritDoc}
-     */
-    public function assert($input): void
+    public function assert(mixed $input): void
     {
         if ($this->validate($input)) {
             return;
@@ -43,33 +28,24 @@ abstract class AbstractRule implements Validatable
         throw $this->reportError($input);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function check($input): void
+    public function check(mixed $input): void
     {
         $this->assert($input);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * {@inheritDoc}
+     * @param mixed[] $extraParameters
      */
-    public function reportError($input, array $extraParams = []): ValidationException
+    public function reportError(mixed $input, array $extraParameters = []): ValidationException
     {
-        return Factory::getDefaultInstance()->exception($this, $input, $extraParams);
+        return Factory::getDefaultInstance()->exception($this, $input, $extraParameters);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function setName(string $name): Validatable
     {
         $this->name = $name;
@@ -77,9 +53,6 @@ abstract class AbstractRule implements Validatable
         return $this;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function setTemplate(string $template): Validatable
     {
         $this->template = $template;
@@ -87,10 +60,7 @@ abstract class AbstractRule implements Validatable
         return $this;
     }
 
-    /**
-     * @param mixed$input
-     */
-    public function __invoke($input): bool
+    public function __invoke(mixed $input): bool
     {
         return $this->validate($input);
     }

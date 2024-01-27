@@ -14,18 +14,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\LeapDate
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jayson Reis <santosdosreis@gmail.com>
  */
 final class LeapDateTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{LeapDate, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -38,7 +32,7 @@ final class LeapDateTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{LeapDate, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

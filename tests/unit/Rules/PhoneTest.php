@@ -14,14 +14,7 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Phone
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Michael Firsikov <michael.firsikov@gmail.com>
- * @author Roman Derevianko <roman.derevianko@gmail.com>
  */
 final class PhoneTest extends RuleTestCase
 {
@@ -46,7 +39,7 @@ final class PhoneTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Phone, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -63,7 +56,7 @@ final class PhoneTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Phone, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

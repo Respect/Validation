@@ -19,11 +19,6 @@ use function strlen;
 use function strval;
 use function substr;
 
-/**
- * Validates whether the input is a valid IBAN (International Bank Account Number) or not.
- *
- * @author Mazen Touati <mazen_touati@hotmail.com>
- */
 final class Iban extends AbstractRule
 {
     private const COUNTRIES_LENGTHS = [
@@ -101,10 +96,7 @@ final class Iban extends AbstractRule
         'VG' => 24,
     ];
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_string($input)) {
             return false;

@@ -16,7 +16,7 @@ exceptionMessage(static fn() => v::not(v::when(v::alwaysInvalid(), v::alwaysVali
 exceptionFullMessage(static fn() => v::when(v::alwaysValid(), v::intVal())->assert('mno'));
 exceptionFullMessage(static fn() => v::when(v::alwaysInvalid(), v::alwaysValid(), v::intVal())->assert('pqr'));
 exceptionFullMessage(static fn() => v::not(v::when(v::alwaysValid(), v::stringVal()))->assert('stu'));
-exceptionFullMessage(static function () {
+exceptionFullMessage(static function (): void {
     v::not(v::when(v::alwaysInvalid(), v::alwaysValid(), v::stringVal()))->assert('vwx');
 });
 ?>

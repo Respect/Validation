@@ -14,17 +14,13 @@ use Respect\Validation\Test\Stubs\CountableStub;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractComparison
  * @covers \Respect\Validation\Rules\GreaterThan
- *
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class GreaterThanTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{GreaterThan, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -38,7 +34,7 @@ final class GreaterThanTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{GreaterThan, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

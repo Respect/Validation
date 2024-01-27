@@ -16,23 +16,14 @@ use function in_array;
 use function mb_detect_encoding;
 use function mb_list_encodings;
 
-/**
- * Validates if a string is in a specific charset.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
- */
 final class Charset extends AbstractRule
 {
     /**
      * @var string[]
      */
-    private $charset;
+    private array $charset;
 
     /**
-     * Initializes the rule.
-     *
      * @throws ComponentException
      */
     public function __construct(string ...$charset)
@@ -45,10 +36,7 @@ final class Charset extends AbstractRule
         $this->charset = $charset;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         return in_array(mb_detect_encoding($input, $this->charset, true), $this->charset, true);
     }

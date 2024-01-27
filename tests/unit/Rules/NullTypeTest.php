@@ -13,18 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\NullType
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
  */
 final class NullTypeTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{NullType, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -36,7 +30,7 @@ final class NullTypeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{NullType, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

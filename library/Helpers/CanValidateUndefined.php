@@ -11,19 +11,9 @@ namespace Respect\Validation\Helpers;
 
 use function in_array;
 
-/**
- * Helper to identify values that Validation consider as "undefined".
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 trait CanValidateUndefined
 {
-    /**
-     * Finds whether the value is undefined or not.
-     *
-     * @param mixed $value
-     */
-    private function isUndefined($value): bool
+    private function isUndefined(mixed $value): bool
     {
         return in_array($value, [null, ''], true);
     }

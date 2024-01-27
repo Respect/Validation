@@ -13,18 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\When
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Antonio Spinelli <tonicospinelli85@gmail.com>
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class WhenTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{When, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -73,7 +67,7 @@ final class WhenTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{When, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

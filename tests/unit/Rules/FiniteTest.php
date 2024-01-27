@@ -19,17 +19,12 @@ use const PHP_INT_MAX;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Finite
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class FiniteTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Finite, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -47,7 +42,7 @@ final class FiniteTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Finite, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

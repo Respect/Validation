@@ -17,18 +17,9 @@ use function is_numeric;
 use function is_string;
 use function trim;
 
-/**
- * Validates if the given input is not a blank value (null, zeros, empty strings or empty arrays, recursively).
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class NotBlank extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (is_numeric($input)) {
             return $input != 0;

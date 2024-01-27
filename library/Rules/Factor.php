@@ -13,32 +13,13 @@ use function abs;
 use function is_integer;
 use function is_numeric;
 
-/**
- * Validates if the input is a factor of the defined dividend.
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author David Meister <thedavidmeister@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class Factor extends AbstractRule
 {
-    /**
-     * @var int
-     */
-    private $dividend;
-
-    /**
-     * Initializes the rule.
-     */
-    public function __construct(int $dividend)
+    public function __construct(private int $dividend)
     {
-        $this->dividend = $dividend;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         // Every integer is a factor of zero, and zero is the only integer that
         // has zero for a factor.

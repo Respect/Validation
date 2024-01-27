@@ -14,11 +14,7 @@ use Respect\Validation\Exceptions\ComponentException;
 use function sprintf;
 
 /**
- * Validates whether the input is a valid postal code or not.
- *
  * @see http://download.geonames.org/export/dump/countryInfo.txt
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class PostalCode extends AbstractEnvelope
 {

@@ -16,17 +16,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Date
- *
- * @author Bruno Luiz da Silva <contato@brunoluiz.net>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class DateTest extends RuleTestCase
 {
     /**
      * @test
-     *
      * @dataProvider validFormatsProvider
      */
     public function shouldThrowAnExceptionWhenFormatIsNotValid(string $format): void
@@ -60,7 +55,7 @@ final class DateTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Date, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -74,7 +69,7 @@ final class DateTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Date, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

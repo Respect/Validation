@@ -17,24 +17,15 @@ use function count;
 
 /**
  * @mixin StaticValidator
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class Validator extends AllOf
 {
-    /**
-     * Create instance validator.
-     */
     public static function create(): self
     {
         return new self();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function check($input): void
+    public function check(mixed $input): void
     {
         try {
             parent::check($input);
@@ -48,8 +39,6 @@ final class Validator extends AllOf
     }
 
     /**
-     * Creates a new Validator instance with a rule that was called on the static method.
-     *
      * @param mixed[] $arguments
      *
      * @throws ComponentException
@@ -60,8 +49,6 @@ final class Validator extends AllOf
     }
 
     /**
-     * Create a new rule by the name of the method and adds the rule to the chain.
-     *
      * @param mixed[] $arguments
      *
      * @throws ComponentException

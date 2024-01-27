@@ -16,13 +16,8 @@ use Throwable;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractRelated
  * @covers \Respect\Validation\Rules\Key
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class KeyTest extends TestCase
 {
@@ -157,7 +152,6 @@ final class KeyTest extends TestCase
 
     /**
      * @doesNotPerformAssertions
-     *
      * @test
      */
     public function extraValidatorShouldValidateKey(): void

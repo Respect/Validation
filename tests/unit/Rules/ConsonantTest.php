@@ -14,20 +14,13 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Consonant
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
- * @author Nick Lombard <github@jigsoft.co.za>
  */
 final class ConsonantTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Consonant, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -52,7 +45,7 @@ final class ConsonantTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Consonant, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

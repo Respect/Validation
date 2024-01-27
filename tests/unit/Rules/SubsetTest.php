@@ -13,16 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Subset
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Singwai Chan <singwai.chan@live.com>
  */
 final class SubsetTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Subset, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -38,7 +34,7 @@ final class SubsetTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Subset, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

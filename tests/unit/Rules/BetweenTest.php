@@ -16,13 +16,8 @@ use Respect\Validation\Test\Stubs\CountableStub;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractEnvelope
  * @covers \Respect\Validation\Rules\Between
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class BetweenTest extends RuleTestCase
 {
@@ -47,7 +42,7 @@ final class BetweenTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Between, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -65,7 +60,7 @@ final class BetweenTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Between, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

@@ -19,22 +19,9 @@ use function is_scalar;
 use function is_string;
 use function mb_strlen;
 
-/**
- * Helps to deal with comparable values.
- *
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 trait CanCompareValues
 {
-    /**
-     * Tries to convert a value into something that can be compared with PHP operators.
-     *
-     * @param mixed $value
-     *
-     * @return mixed
-     */
-    private function toComparable($value)
+    private function toComparable(mixed $value): mixed
     {
         if ($value instanceof Countable) {
             return $value->count();
@@ -55,13 +42,7 @@ trait CanCompareValues
         }
     }
 
-    /**
-     * Returns whether the values can be compared or not.
-     *
-     * @param mixed $left
-     * @param mixed $right
-     */
-    private function isAbleToCompareValues($left, $right): bool
+    private function isAbleToCompareValues(mixed $left, mixed $right): bool
     {
         return is_scalar($left) === is_scalar($right);
     }

@@ -15,26 +15,17 @@ use Respect\Validation\Test\Stubs\WithUninitialized;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractRelated
  * @covers \Respect\Validation\Rules\Attribute
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class AttributeTest extends RuleTestCase
 {
     public const PROPERTY_VALUE = 'foo';
 
-    /**
-     * @var string
-     */
-    private $bar = self::PROPERTY_VALUE;
+    private string $bar = self::PROPERTY_VALUE;
 
     /**
-     * {@inheritDoc}
+     * @return array<string, array{Attribute, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -68,7 +59,7 @@ final class AttributeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<string, array{Attribute, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

@@ -16,31 +16,18 @@ use Respect\Validation\Validatable;
 use function array_filter;
 use function array_map;
 
-/**
- * Abstract class for rules that are composed by other rules.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Wojciech Frącz <fraczwojciech@gmail.com>
- */
 abstract class AbstractComposite extends AbstractRule
 {
     /**
      * @var Validatable[]
      */
-    private $rules = [];
+    private array $rules = [];
 
-    /**
-     * Initializes the rule adding other rules to the stack.
-     */
     public function __construct(Validatable ...$rules)
     {
         $this->rules = $rules;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function setName(string $name): Validatable
     {
         $parentName = $this->getName();
@@ -56,11 +43,6 @@ abstract class AbstractComposite extends AbstractRule
         return parent::setName($name);
     }
 
-    /**
-     * Append a rule into the stack of rules.
-     *
-     * @return AbstractComposite
-     */
     public function addRule(Validatable $rule): self
     {
         if ($this->shouldHaveNameOverwritten($rule) && $this->getName() !== null) {
@@ -73,8 +55,6 @@ abstract class AbstractComposite extends AbstractRule
     }
 
     /**
-     * Returns all the rules in the stack.
-     *
      * @return Validatable[]
      */
     public function getRules(): array
@@ -83,13 +63,9 @@ abstract class AbstractComposite extends AbstractRule
     }
 
     /**
-     * Returns all the exceptions throw when asserting all rules.
-     *
-     * @param mixed $input
-     *
      * @return ValidationException[]
      */
-    protected function getAllThrownExceptions($input): array
+    protected function getAllThrownExceptions(mixed $input): array
     {
         return array_filter(
             array_map(

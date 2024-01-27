@@ -14,32 +14,13 @@ use DateTimeInterface;
 
 use function is_scalar;
 
-/**
- * Validates if a date is leap.
- *
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Jayson Reis <santosdosreis@gmail.com>
- */
 final class LeapDate extends AbstractRule
 {
-    /**
-     * @var string
-     */
-    private $format;
-
-    /**
-     * Initializes the rule with the expected format.
-     */
-    public function __construct(string $format)
+    public function __construct(private string $format)
     {
-        $this->format = $format;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if ($input instanceof DateTimeInterface) {
             return $input->format('m-d') === '02-29';

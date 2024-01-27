@@ -14,18 +14,12 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\Negative
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Ismael Elias <ismael.esq@hotmail.com>
  */
 final class NegativeTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Negative, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -39,7 +33,7 @@ final class NegativeTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Negative, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

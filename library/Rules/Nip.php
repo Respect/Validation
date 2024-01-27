@@ -15,19 +15,11 @@ use function preg_match;
 use function str_split;
 
 /**
- * Validates whether the input is a Polish VAT identification number (NIP).
- *
  * @see https://en.wikipedia.org/wiki/VAT_identification_number
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Tomasz Regdos <tomek@regdos.com>
  */
 final class Nip extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

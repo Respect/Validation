@@ -13,20 +13,9 @@ use function is_scalar;
 use function mb_strlen;
 use function preg_replace;
 
-/**
- * Validates a Brazilian driver's license.
- *
- * @author Gabriel Pedro <gpedro@users.noreply.github.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Kinn Coelho Julião <kinncj@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
- */
 final class Cnh extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

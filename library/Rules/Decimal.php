@@ -15,27 +15,13 @@ use function number_format;
 use function preg_replace;
 use function var_export;
 
-/**
- * Validates the decimal
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class Decimal extends AbstractRule
 {
-    /**
-     * @var int
-     */
-    private $decimals;
-
-    public function __construct(int $decimals)
+    public function __construct(private int $decimals)
     {
-        $this->decimals = $decimals;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_numeric($input)) {
             return false;
@@ -44,10 +30,7 @@ final class Decimal extends AbstractRule
         return $this->toFormattedString($input) === $this->toRawString($input);
     }
 
-    /**
-     * @param mixed $input
-     */
-    private function toRawString($input): string
+    private function toRawString(mixed $input): string
     {
         if (is_string($input)) {
             return $input;
@@ -56,10 +39,7 @@ final class Decimal extends AbstractRule
         return var_export($input, true);
     }
 
-    /**
-     * @param mixed $input
-     */
-    private function toFormattedString($input): string
+    private function toFormattedString(mixed $input): string
     {
         $formatted = number_format((float) $input, $this->decimals, '.', '');
         if (is_string($input)) {

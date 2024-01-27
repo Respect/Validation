@@ -18,21 +18,11 @@ use function preg_match;
 use function str_split;
 
 /**
- * Validates Spain's fiscal identification number (NIF).
- *
- *
  * @see https://es.wikipedia.org/wiki/N%C3%BAmero_de_identificaci%C3%B3n_fiscal
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Julián Gutiérrez <juliangut@gmail.com>
- * @author Senén <senen@instasent.com>
  */
 final class Nif extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_string($input)) {
             return false;

@@ -13,16 +13,9 @@ use Respect\Validation\Exceptions\NoneOfException;
 
 use function count;
 
-/**
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class NoneOf extends AbstractComposite
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function assert($input): void
+    public function assert(mixed $input): void
     {
         $exceptions = $this->getAllThrownExceptions($input);
         $numRules = count($this->getRules());
@@ -36,10 +29,7 @@ final class NoneOf extends AbstractComposite
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         foreach ($this->getRules() as $rule) {
             if ($rule->validate($input)) {

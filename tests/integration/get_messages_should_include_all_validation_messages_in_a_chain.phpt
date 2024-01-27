@@ -13,7 +13,7 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator;
 
-exceptionMessages(static function () {
+exceptionMessages(static function (): void {
     $input = [
         'username' => 'u',
         'birthdate' => 'Not a date',

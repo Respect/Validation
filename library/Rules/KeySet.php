@@ -19,35 +19,23 @@ use function count;
 use function current;
 use function is_array;
 
-/**
- * Validates a keys in a defined structure.
- *
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class KeySet extends AbstractWrapper implements NonNegatable
 {
     /**
      * @var mixed[]
      */
-    private $keys;
+    private array $keys;
 
     /**
      * @var mixed[]
      */
-    private $extraKeys = [];
+    private array $extraKeys = [];
 
     /**
      * @var Key[]
      */
-    private $keyRules;
+    private array $keyRules;
 
-    /**
-     * Initializes the rule.
-     *
-     * phpcs:ignore SlevomatCodingStandard.TypeHints.ParameterTypeHint.UselessAnnotation
-     * @param Validatable ...$validatables
-     */
     public function __construct(Validatable ...$validatables)
     {
         $this->keyRules = array_map([$this, 'getKeyRule'], $validatables);
@@ -56,10 +44,7 @@ final class KeySet extends AbstractWrapper implements NonNegatable
         parent::__construct(new AllOf(...$this->keyRules));
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function assert($input): void
+    public function assert(mixed $input): void
     {
         if (!$this->hasValidStructure($input)) {
             throw $this->reportError($input);
@@ -68,10 +53,7 @@ final class KeySet extends AbstractWrapper implements NonNegatable
         parent::assert($input);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function check($input): void
+    public function check(mixed $input): void
     {
         if (!$this->hasValidStructure($input)) {
             throw $this->reportError($input);
@@ -80,10 +62,7 @@ final class KeySet extends AbstractWrapper implements NonNegatable
         parent::check($input);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!$this->hasValidStructure($input)) {
             return false;
@@ -108,18 +87,12 @@ final class KeySet extends AbstractWrapper implements NonNegatable
         return $this->getKeyRule(current($validatable->getRules()));
     }
 
-    /**
-     * @return mixed
-     */
-    private function getKeyReference(Key $rule)
+    private function getKeyReference(Key $rule): mixed
     {
         return $rule->getReference();
     }
 
-    /**
-     * @param mixed $input
-     */
-    private function hasValidStructure($input): bool
+    private function hasValidStructure(mixed $input): bool
     {
         if (!is_array($input)) {
             return false;

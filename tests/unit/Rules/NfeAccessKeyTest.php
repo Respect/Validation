@@ -13,18 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\NfeAccessKey
- *
- * @author Andrey Knupp Vital <andreykvital@gmail.com>
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class NfeAccessKeyTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{NfeAccessKey, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -36,7 +30,7 @@ final class NfeAccessKeyTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{NfeAccessKey, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

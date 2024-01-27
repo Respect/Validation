@@ -13,15 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\PolishIdCard
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class PolishIdCardTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{PolishIdCard, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -35,7 +32,7 @@ final class PolishIdCardTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{PolishIdCard, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

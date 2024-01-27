@@ -16,10 +16,6 @@ use Respect\Validation\Test\TestCase;
  * @group  rule
  * @covers \Respect\Validation\Exceptions\NoneOfException
  * @covers \Respect\Validation\Rules\NoneOf
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class NoneOfTest extends TestCase
 {

@@ -14,16 +14,12 @@ use stdClass;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\NotOptional
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class NotOptionalTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{NotOptional, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -48,7 +44,7 @@ final class NotOptionalTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{NotOptional, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

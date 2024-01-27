@@ -15,18 +15,9 @@ use SplFileInfo;
 use function is_readable;
 use function is_string;
 
-/**
- * Validates if the given data is a file exists and is readable.
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class Readable extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
             return $input->isReadable();

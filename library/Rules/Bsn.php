@@ -16,20 +16,11 @@ use function mb_strlen;
 use function strval;
 
 /**
- * Validates a Dutch citizen service number (BSN).
- *
  * @see https://nl.wikipedia.org/wiki/Burgerservicenummer
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Ronald Drenth <ronalddrenth@gmail.com>
- * @author William Espindola <oi@williamespindola.com.br>
  */
 final class Bsn extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

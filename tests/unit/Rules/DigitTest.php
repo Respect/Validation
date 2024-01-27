@@ -13,20 +13,13 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractFilterRule
  * @covers \Respect\Validation\Rules\Digit
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Nick Lombard <github@jigsoft.co.za>
- * @author Pascal Borreli <pascal@borreli.com>
  */
 final class DigitTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Digit, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -45,7 +38,7 @@ final class DigitTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Digit, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

@@ -11,8 +11,5 @@ namespace Respect\Validation\Message;
 
 interface ParameterStringifier
 {
-    /**
-     * @param mixed $value
-     */
-    public function stringify(string $name, $value): string;
+    public function stringify(string $name, mixed $value): string;
 }

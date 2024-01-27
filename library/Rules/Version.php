@@ -13,19 +13,11 @@ use function is_string;
 use function preg_match;
 
 /**
- * Validates version numbers using Semantic Versioning.
- *
  * @see http://semver.org/
- *
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class Version extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_string($input)) {
             return false;

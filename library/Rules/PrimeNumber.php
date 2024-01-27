@@ -13,21 +13,9 @@ use function ceil;
 use function is_numeric;
 use function sqrt;
 
-/**
- * Validates whether the input is a prime number.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Camilo Teixeira de Melo <kmilotxm@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Ismael Elias <ismael.esq@hotmail.com>
- * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
- */
 final class PrimeNumber extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_numeric($input) || $input <= 1) {
             return false;

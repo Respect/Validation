@@ -12,35 +12,12 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\AlwaysInvalidException;
 use Respect\Validation\Validatable;
 
-/**
- * A ternary validator that accepts three parameters.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Danilo Correa <danilosilva87@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Hugo Hamon <hugo.hamon@sensiolabs.com>
- */
 final class When extends AbstractRule
 {
-    /**
-     * @var Validatable
-     */
-    private $when;
+    private Validatable $else;
 
-    /**
-     * @var Validatable
-     */
-    private $then;
-
-    /**
-     * @var Validatable
-     */
-    private $else;
-
-    public function __construct(Validatable $when, Validatable $then, ?Validatable $else = null)
+    public function __construct(private Validatable $when, private Validatable $then, ?Validatable $else = null)
     {
-        $this->when = $when;
-        $this->then = $then;
         if ($else === null) {
             $else = new AlwaysInvalid();
             $else->setTemplate(AlwaysInvalidException::SIMPLE);
@@ -49,10 +26,7 @@ final class When extends AbstractRule
         $this->else = $else;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if ($this->when->validate($input)) {
             return $this->then->validate($input);
@@ -61,10 +35,7 @@ final class When extends AbstractRule
         return $this->else->validate($input);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function assert($input): void
+    public function assert(mixed $input): void
     {
         if ($this->when->validate($input)) {
             $this->then->assert($input);
@@ -75,10 +46,7 @@ final class When extends AbstractRule
         $this->else->assert($input);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function check($input): void
+    public function check(mixed $input): void
     {
         if ($this->when->validate($input)) {
             $this->then->check($input);

@@ -9,22 +9,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * Exceptions to be thrown by the Attribute Rule.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class KeyException extends NestedValidationException implements NonOmissibleException
 {
     public const NOT_PRESENT = 'not_present';
     public const INVALID = 'invalid';
 
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::NOT_PRESENT => '{{name}} must be present',
             self::INVALID => '{{name}} must be valid',
@@ -35,9 +28,6 @@ final class KeyException extends NestedValidationException implements NonOmissib
         ],
     ];
 
-    /**
-     * {@inheritDoc}
-     */
     protected function chooseTemplate(): string
     {
         return $this->getParam('hasReference') ? self::INVALID : self::NOT_PRESENT;

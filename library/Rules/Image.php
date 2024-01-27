@@ -18,32 +18,16 @@ use function mb_strpos;
 
 use const FILEINFO_MIME_TYPE;
 
-/**
- * Validates if the file is a valid image by checking its MIME type.
- *
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Guilherme Siani <guilherme@siani.com.br>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class Image extends AbstractRule
 {
-    /**
-     * @var finfo
-     */
-    private $fileInfo;
+    private finfo $fileInfo;
 
-    /**
-     * Initializes the rule.
-     */
     public function __construct(?finfo $fileInfo = null)
     {
         $this->fileInfo = $fileInfo ?: new finfo(FILEINFO_MIME_TYPE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
             return $this->validate($input->getPathname());

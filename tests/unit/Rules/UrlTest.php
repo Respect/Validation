@@ -13,17 +13,13 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\AbstractEnvelope
  * @covers \Respect\Validation\Rules\Url
- *
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class UrlTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{Url, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -46,7 +42,7 @@ final class UrlTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{Url, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

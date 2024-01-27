@@ -21,31 +21,13 @@ use function explode;
 use function iterator_to_array;
 use function mb_substr_count;
 
-/**
- * Validates whether the input is a valid domain name or not.
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Mehmet Tolga Avcioglu <mehmet@activecom.net>
- * @author Nick Lombard <github@jigsoft.co.za>
- * @author Róbert Nagy <vrnagy@gmail.com>
- */
 final class Domain extends AbstractRule
 {
-    /**
-     * @var Validatable
-     */
-    private $genericRule;
+    private Validatable $genericRule;
 
-    /**
-     * @var Validatable
-     */
-    private $tldRule;
+    private Validatable $tldRule;
 
-    /**
-     * @var Validatable
-     */
-    private $partsRule;
+    private Validatable $partsRule;
 
     public function __construct(bool $tldCheck = true)
     {
@@ -54,10 +36,7 @@ final class Domain extends AbstractRule
         $this->partsRule = $this->createPartsRule();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function assert($input): void
+    public function assert(mixed $input): void
     {
         $exceptions = [];
 
@@ -76,10 +55,7 @@ final class Domain extends AbstractRule
         $this->throwExceptions($exceptions, $input);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         try {
             $this->assert($input);
@@ -90,10 +66,7 @@ final class Domain extends AbstractRule
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function check($input): void
+    public function check(mixed $input): void
     {
         try {
             $this->assert($input);
@@ -109,9 +82,8 @@ final class Domain extends AbstractRule
 
     /**
      * @param ValidationException[] $exceptions
-     * @param mixed $input
      */
-    private function collectAssertException(array &$exceptions, Validatable $validator, $input): void
+    private function collectAssertException(array &$exceptions, Validatable $validator, mixed $input): void
     {
         try {
             $validator->assert($input);
@@ -165,9 +137,8 @@ final class Domain extends AbstractRule
 
     /**
      * @param ValidationException[] $exceptions
-     * @param mixed $input
      */
-    private function throwExceptions(array $exceptions, $input): void
+    private function throwExceptions(array $exceptions, mixed $input): void
     {
         if (count($exceptions)) {
             /** @var DomainException $domainException */

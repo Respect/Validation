@@ -13,11 +13,6 @@ use function implode;
 use function is_string;
 use function preg_match;
 
-/**
- * Validates if the input does not contain an emoji.
- *
- * @author Mazen Touati <mazen_touati@hotmail.com>
- */
 final class NotEmoji extends AbstractRule
 {
     private const RANGES = [
@@ -192,10 +187,7 @@ final class NotEmoji extends AbstractRule
         '\x{3299}',
     ];
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_string($input)) {
             return false;

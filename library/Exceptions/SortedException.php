@@ -11,19 +11,15 @@ namespace Respect\Validation\Exceptions;
 
 use Respect\Validation\Rules\Sorted;
 
-/**
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Mikhail Vyrtsev <reeywhaar@gmail.com>
- */
 final class SortedException extends ValidationException
 {
     public const ASCENDING = 'ascending';
     public const DESCENDING = 'descending';
 
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::ASCENDING => '{{name}} must be sorted in ascending order',
             self::DESCENDING => '{{name}} must be sorted in descending order',
@@ -34,9 +30,6 @@ final class SortedException extends ValidationException
         ],
     ];
 
-    /**
-     * {@inheritDoc}
-     */
     protected function chooseTemplate(): string
     {
         return $this->getParam('direction') === Sorted::ASCENDING ? self::ASCENDING : self::DESCENDING;

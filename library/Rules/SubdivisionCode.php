@@ -14,25 +14,17 @@ use Respect\Validation\Helpers\CountryInfo;
 use function array_keys;
 
 /**
- * Validates country subdivision codes according to ISO 3166-2.
- *
  * @see http://en.wikipedia.org/wiki/ISO_3166-2
  * @see http://www.geonames.org/countries/
- *
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Mazen Touati <mazen_touati@hotmail.com>
  */
 final class SubdivisionCode extends AbstractSearcher
 {
-    /**
-     * @var string
-     */
-    private $countryName;
+    private string $countryName;
 
     /**
      * @var string[]
      */
-    private $countryInfo;
+    private array $countryInfo;
 
     public function __construct(string $countryCode)
     {
@@ -43,9 +35,9 @@ final class SubdivisionCode extends AbstractSearcher
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<int, string>
      */
-    protected function getDataSource($input = null): array
+    protected function getDataSource(mixed $input = null): array
     {
         return $this->countryInfo;
     }

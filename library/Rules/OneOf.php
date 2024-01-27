@@ -15,16 +15,9 @@ use Respect\Validation\Exceptions\ValidationException;
 use function array_shift;
 use function count;
 
-/**
- * @author Bradyn Poulsen <bradyn@bradynpoulsen.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
 final class OneOf extends AbstractComposite
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function assert($input): void
+    public function assert(mixed $input): void
     {
         $validators = $this->getRules();
         $exceptions = $this->getAllThrownExceptions($input);
@@ -39,10 +32,7 @@ final class OneOf extends AbstractComposite
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         $rulesPassedCount = 0;
         foreach ($this->getRules() as $rule) {
@@ -56,10 +46,7 @@ final class OneOf extends AbstractComposite
         return $rulesPassedCount === 1;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function check($input): void
+    public function check(mixed $input): void
     {
         $exceptions = [];
         $rulesPassedCount = 0;

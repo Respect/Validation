@@ -13,18 +13,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\FloatVal
- *
- * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
- * @author Danilo Benevides <danilobenevides01@gmail.com>
- * @author Gabriel Caruso <carusogabriel34@gmail.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class FloatValTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{FloatVal, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -44,7 +38,7 @@ final class FloatValTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{FloatVal, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

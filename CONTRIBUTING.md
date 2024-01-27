@@ -62,17 +62,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-/**
- * Explain in one sentence what this rule does.
- *
- * @author Your Name <youremail@yourdomain.tld>
- */
 final class HelloWorld extends AbstractRule
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         return $input === 'Hello World';
     }
@@ -98,15 +90,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-/**
- * @author Your Name <youremail@yourdomain.tld>
- */
 final class HelloWorldException extends ValidationException
 {
     /**
-     * {@inheritDoc}
+     * @var array<string, array<string, string>>
      */
-    protected $defaultTemplates = [
+    protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::STANDARD => '{{name}} must be a Hello World',
         ],
@@ -147,15 +136,12 @@ use Respect\Validation\Test\RuleTestCase;
 
 /**
  * @group rule
- *
  * @covers \Respect\Validation\Rules\HelloWorld
- *
- * @author Your Name <youremail@yourdomain.tld>
  */
 final class HelloWorldTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
+     * @return array<array{HelloWorld, mixed}>
      */
     public static function providerForValidInput(): array
     {
@@ -167,7 +153,7 @@ final class HelloWorldTest extends RuleTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<array{HelloWorld, mixed}>
      */
     public static function providerForInvalidInput(): array
     {

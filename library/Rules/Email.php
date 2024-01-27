@@ -18,35 +18,16 @@ use function is_string;
 
 use const FILTER_VALIDATE_EMAIL;
 
-/**
- * Validates an email address.
- *
- * @author Andrey Kolyshkin <a.kolyshkin@semrush.com>
- * @author Eduardo Gulias Davis <me@egulias.com>
- * @author Henrique Moody <henriquemoody@gmail.com>
- * @author Paul Karikari <paulkarikari1@gmail.com>
- */
 final class Email extends AbstractRule
 {
-    /**
-     * @var EmailValidator|null
-     */
-    private $validator;
+    private ?EmailValidator $validator = null;
 
-    /**
-     * Initializes the rule assigning the EmailValidator instance.
-     *
-     * If the EmailValidator instance is not defined, tries to create one.
-     */
     public function __construct(?EmailValidator $validator = null)
     {
         $this->validator = $validator ?: $this->createEmailValidator();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         if (!is_string($input)) {
             return false;
