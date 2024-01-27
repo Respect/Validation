@@ -27,7 +27,7 @@ final class LeapDateTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new LeapDate('Y-m-d'), '1988-02-29'],
@@ -40,7 +40,7 @@ final class LeapDateTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [new LeapDate('Y-m-d'), '1989-02-29'],

@@ -28,7 +28,7 @@ final class JsonTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $json = new Json();
 
@@ -48,7 +48,7 @@ final class JsonTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $json = new Json();
 

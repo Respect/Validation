@@ -10,8 +10,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\SkippedTestError;
-use Psr\Http\Message\UploadedFileInterface;
 use Respect\Validation\Test\RuleTestCase;
+use Respect\Validation\Test\Stubs\UploadedFileStub;
 use SplFileInfo;
 use stdClass;
 
@@ -34,21 +34,21 @@ final class UploadedTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $rule = new Uploaded();
 
         return [
             [$rule, self::UPLOADED_FILENAME],
             [$rule, new SplFileInfo(self::UPLOADED_FILENAME)],
-            [$rule, $this->createMock(UploadedFileInterface::class)],
+            [$rule, UploadedFileStub::create()],
         ];
     }
 
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $rule = new Uploaded();
 

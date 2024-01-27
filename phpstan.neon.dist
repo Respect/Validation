@@ -25,7 +25,14 @@ parameters:
       # Why: StaticValidator is a stub interface that types __callStatic
       message: '/Call to static method PHPUnit\\Framework\\Assert::assertSame\(\) with Respect\\Validation\\Validator and Respect\\Validation\\ChainedValidator will always evaluate to false./'
       path: tests/unit/ValidatorTest.php
+
+    -
+        # Why: I don't want to make changes to the code just to make phpstan happy
+        message: '/Parameter #2 \$values of function vsprintf expects array<bool\|float\|int\|string\|null>, array<string, array<bool\|int\|string>\|bool\|float\|int\|string> given./'
+        path: library/Rules/AbstractAge.php
   level: 8
   paths:
     - library/
     - tests/
+  excludePaths:
+    - tests/integration/

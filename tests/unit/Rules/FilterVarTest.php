@@ -47,7 +47,7 @@ final class FilterVarTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new FilterVar(FILTER_VALIDATE_INT), '12345'],
@@ -63,7 +63,7 @@ final class FilterVarTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [new FilterVar(FILTER_VALIDATE_INT), 1.4],

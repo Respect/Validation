@@ -7,34 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\ImeiException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::imei()->check('490154203237512');
-} catch (ImeiException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::imei())->check('350077523237513');
-} catch (ImeiException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::imei()->assert(null);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::imei())->assert('356938035643809');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
+exceptionMessage(static fn() => v::imei()->check('490154203237512'));
+exceptionMessage(static fn() => v::not(v::imei())->check('350077523237513'));
+exceptionFullMessage(static fn() => v::imei()->assert(null));
+exceptionFullMessage(static fn() => v::not(v::imei())->assert('356938035643809'));
 ?>
 --EXPECT--
 "490154203237512" must be a valid IMEI

@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Test\Rules\Envelop;
 use Respect\Validation\Test\TestCase;
-use Respect\Validation\Validatable;
 
 use function array_intersect_key;
 
@@ -28,18 +28,9 @@ final class AbstractEnvelopeTest extends TestCase
      */
     public function itShouldValidateUsingTheInnerRule(): void
     {
-        $input = 'value';
+        $rule = new Envelop(new AlwaysValid(), []);
 
-        $innerRule = $this->createMock(Validatable::class);
-        $innerRule
-            ->expects(self::once())
-            ->method('validate')
-            ->with($input)
-            ->willReturn(true);
-
-        $rule = $this->getMockForAbstractClass(AbstractEnvelope::class, [$innerRule, []]);
-
-        self::assertTrue($rule->validate($input));
+        self::assertTrue($rule->validate('something'));
     }
 
     /**
@@ -47,33 +38,20 @@ final class AbstractEnvelopeTest extends TestCase
      */
     public function itShouldInvalidateUsingTheInnerRule(): void
     {
-        $input = 'value';
+        $rule = new Envelop(new AlwaysInvalid(), []);
 
-        $innerRule = $this->createMock(Validatable::class);
-        $innerRule
-            ->expects(self::once())
-            ->method('validate')
-            ->with($input)
-            ->willReturn(false);
-
-        $rule = $this->getMockForAbstractClass(AbstractEnvelope::class, [$innerRule, []]);
-
-        self::assertFalse($rule->validate($input));
+        self::assertFalse($rule->validate('something'));
     }
 
     /**
      * @test
      */
-    public function itShouldReportErrorUringProperties(): void
+    public function itShouldReportErrorUsingProperties(): void
     {
         $input = 'value';
         $parameters = ['foo' => true, 'bar' => false, 'baz' => 42];
 
-        $rule = $this->getMockForAbstractClass(
-            AbstractEnvelope::class,
-            [$this->createMock(Validatable::class), $parameters]
-        );
-
+        $rule = new Envelop(new AlwaysInvalid(), $parameters);
         $exception = $rule->reportError($input);
 
         self::assertEquals($parameters, array_intersect_key($parameters, $exception->getParams()));

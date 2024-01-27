@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\CurrencyCodeException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::currencyCode()->check('batman');
-} catch (CurrencyCodeException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::currencyCode())->check('BRL');
-} catch (CurrencyCodeException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::currencyCode()->assert('ppz');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::currencyCode())->assert('GBP');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::currencyCode()->check('batman'));
+exceptionMessage(static fn() => v::not(v::currencyCode())->check('BRL'));
+exceptionFullMessage(static fn() => v::currencyCode()->assert('ppz'));
+exceptionFullMessage(static fn() => v::not(v::currencyCode())->assert('GBP'));
 ?>
 --EXPECT--
 "batman" must be a valid currency

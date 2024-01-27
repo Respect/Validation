@@ -25,7 +25,7 @@ final class NotEmojiTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $sut = new NotEmoji();
 
@@ -43,7 +43,7 @@ final class NotEmojiTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $sut = new NotEmoji();
 

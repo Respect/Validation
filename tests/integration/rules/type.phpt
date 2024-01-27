@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\TypeException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::type('integer')->check('42');
-} catch (TypeException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::type('string'))->check('foo');
-} catch (TypeException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::type('double')->assert(20);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::type('bool'))->assert(true);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::type('integer')->check('42'));
+exceptionMessage(static fn() => v::not(v::type('string'))->check('foo'));
+exceptionFullMessage(static fn() => v::type('double')->assert(20));
+exceptionFullMessage(static fn() => v::not(v::type('bool'))->assert(true));
 ?>
 --EXPECT--
 "42" must be "integer"

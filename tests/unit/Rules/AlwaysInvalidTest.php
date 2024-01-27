@@ -24,9 +24,23 @@ use Respect\Validation\Test\TestCase;
 final class AlwaysInvalidTest extends TestCase
 {
     /**
+     * @test
+     *
+     * @dataProvider providerForInvalidInput
+     *
+     * @param mixed $input
+     */
+    public function itShouldAlwaysBeInvalid($input): void
+    {
+        $rule = new AlwaysInvalid();
+
+        self::assertFalse($rule->validate($input));
+    }
+
+    /**
      * @return mixed[][]
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [0],
@@ -39,19 +53,5 @@ final class AlwaysInvalidTest extends TestCase
             [[]],
             [['array_full']],
         ];
-    }
-
-    /**
-     * @test
-     *
-     * @dataProvider providerForInvalidInput
-     *
-     * @param mixed $input
-     */
-    public function itShouldAlwaysBeInvalid($input): void
-    {
-        $rule = new AlwaysInvalid();
-
-        self::assertFalse($rule->validate($input));
     }
 }

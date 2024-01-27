@@ -28,7 +28,7 @@ final class XdigitTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new Xdigit(), 'FFF'],
@@ -45,7 +45,7 @@ final class XdigitTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [new Xdigit(), ''],

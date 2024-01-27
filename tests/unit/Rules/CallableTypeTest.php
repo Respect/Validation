@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\RuleTestCase;
+use Respect\Validation\Test\Stubs\WithMethods;
 use stdClass;
 
 use const INF;
@@ -27,26 +28,22 @@ final class CallableTypeTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $rule = new CallableType();
 
         return [
-            [
-                $rule,
-                static function (): void {
-                },
-            ],
+            [$rule, static fn() => null],
             [$rule, 'trim'],
-            [$rule, self::class . '::staticMethod'],
-            [$rule, [$this, __FUNCTION__]],
+            [$rule, WithMethods::class . '::publicStaticMethod'],
+            [$rule, [new WithMethods(), 'publicMethod']],
         ];
     }
 
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $rule = new CallableType();
 
@@ -57,10 +54,5 @@ final class CallableTypeTest extends RuleTestCase
             [$rule, new stdClass()],
             [$rule, null],
         ];
-    }
-
-    public static function staticMethod(): void
-    {
-        // This is a static method example
     }
 }

@@ -8,14 +8,11 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Rules\Instance;
 
-try {
+exceptionMessage(static function () {
     (new Instance('stdClass'))->setTemplate('invalid object')->assert('test');
-} catch (ValidationException $exception) {
-    print_r($exception->getMessage());
-}
+});
 ?>
 --EXPECT--
 invalid object

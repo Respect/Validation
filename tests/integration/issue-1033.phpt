@@ -15,14 +15,9 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::each(v::equals(1))->assert(['A', 'B', 'B']);
-} catch (AllOfException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionFullMessage(static fn() => v::each(v::equals(1))->assert(['A', 'B', 'B']));
 ?>
 --EXPECT--
 - Each item in `{ "A", "B", "B" }` must be valid

@@ -25,34 +25,6 @@ use Respect\Validation\Test\RuleTestCase;
  */
 final class PhoneTest extends RuleTestCase
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function providerForValidInput(): array
-    {
-        return [
-            [new Phone(), '+1 650 253 00 00'],
-            [new Phone(), '+7 (999) 999-99-99'],
-            [new Phone(), '+7(999)999-99-99'],
-            [new Phone(), '+7(999)999-9999'],
-            [new Phone('BR'), '+55 11 91111 1111'],
-            [new Phone('BR'), '11 91111 1111'], // no international prefix
-            [new Phone('BR'), '+5511911111111'], // no whitespace
-            [new Phone('BR'), '11911111111'], // no prefix, no whitespace
-        ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function providerForInvalidInput(): array
-    {
-        return [
-            [new Phone(), '+1-650-253-00-0'],
-            [new Phone('BR'), '+1 11 91111 1111'], // invalid + code for BR
-        ];
-    }
-
     public function testThrowsExceptionWithCountryName(): void
     {
         $phoneValidator = new Phone('BR');
@@ -71,5 +43,33 @@ final class PhoneTest extends RuleTestCase
         $this->expectExceptionMessage('"abc" must be a valid telephone number');
 
         $phoneValidator->assert('abc');
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function providerForValidInput(): array
+    {
+        return [
+            [new Phone(), '+1 650 253 00 00'],
+            [new Phone(), '+7 (999) 999-99-99'],
+            [new Phone(), '+7(999)999-99-99'],
+            [new Phone(), '+7(999)999-9999'],
+            [new Phone('BR'), '+55 11 91111 1111'],
+            [new Phone('BR'), '11 91111 1111'], // no international prefix
+            [new Phone('BR'), '+5511911111111'], // no whitespace
+            [new Phone('BR'), '11911111111'], // no prefix, no whitespace
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function providerForInvalidInput(): array
+    {
+        return [
+            [new Phone(), '+1-650-253-00-0'],
+            [new Phone('BR'), '+1 11 91111 1111'], // invalid + code for BR
+        ];
     }
 }

@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\CnhException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::cnh()->check('batman');
-} catch (CnhException $e) {
-    echo $e->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::cnh())->check('02650306461');
-} catch (CnhException $e) {
-    echo $e->getMessage() . PHP_EOL;
-}
-
-try {
-    v::cnh()->assert('bruce wayne');
-} catch (NestedValidationException $e) {
-    echo $e->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::cnh())->assert('02650306461');
-} catch (NestedValidationException $e) {
-    echo $e->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::cnh()->check('batman'));
+exceptionMessage(static fn() => v::not(v::cnh())->check('02650306461'));
+exceptionFullMessage(static fn() => v::cnh()->assert('bruce wayne'));
+exceptionFullMessage(static fn() => v::not(v::cnh())->assert('02650306461'));
 ?>
 --EXPECT--
 "batman" must be a valid CNH number

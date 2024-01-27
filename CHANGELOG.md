@@ -4,7 +4,7 @@
 
 Versioning Changes:
 
- - Dropped support for PHP 7.4.
+ - Dropped support for PHP 8.0 and below.
  - Updated dev dependencies
 
 Deprecations:
@@ -15,6 +15,9 @@ Deprecations:
 Fixes:
 
  - `KeySet` now reports which extra keys are causing the rule to fail.
+ - Ensure empty strings are never a valid currency code
+ - Do not hide messages on EachException
+ - Dot not throw exception when validating an uninitialized property
 
 Changes:
 

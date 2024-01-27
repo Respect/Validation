@@ -7,7 +7,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
 $arr = [
@@ -15,14 +14,12 @@ $arr = [
     'email' => 'hello@hello.com',
 ];
 
-try {
+exceptionMessages(static function () use ($arr) {
     v::create()
         ->key('name', v::length(2, 32))
         ->key('email', v::email())
         ->assert($arr);
-} catch (NestedValidationException $e) {
-    print_r($e->getMessages());
-}
+});
 ?>
 --EXPECT--
 Array

@@ -31,7 +31,7 @@ final class MaxAgeTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new MaxAge(30, 'Y-m-d'), date('Y-m-d', strtotime('30 years ago'))],
@@ -44,7 +44,7 @@ final class MaxAgeTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [new MaxAge(30), new DateTime('30 years ago')],

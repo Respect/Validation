@@ -31,40 +31,6 @@ use function range;
 final class EachTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
-     */
-    public function providerForValidInput(): array
-    {
-        $rule = new Each($this->createValidatableMock(true));
-
-        return [
-            [$rule, []],
-            [$rule, [1, 2, 3, 4, 5]],
-            [$rule, $this->createTraversableInput(1, 5)],
-            [$rule, $this->createStdClassInput(1, 5)],
-        ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function providerForInvalidInput(): array
-    {
-        $rule = new Each($this->createValidatableMock(false));
-
-        return [
-            [$rule, 123],
-            [$rule, ''],
-            [$rule, null],
-            [$rule, false],
-            [$rule, ['', 2, 3, 4, 5]],
-            [$rule, ['a', 2, 3, 4, 5]],
-            [$rule, $this->createTraversableInput(1, 5)],
-            [$rule, $this->createStdClassInput(1, 5)],
-        ];
-    }
-
-    /**
      * @test
      */
     public function itShouldAssertEachValue(): void
@@ -115,9 +81,43 @@ final class EachTest extends RuleTestCase
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public static function providerForValidInput(): array
+    {
+        $rule = new Each(new AlwaysValid());
+
+        return [
+            [$rule, []],
+            [$rule, [1, 2, 3, 4, 5]],
+            [$rule, self::createTraversableInput(1, 5)],
+            [$rule, self::createStdClassInput(1, 5)],
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function providerForInvalidInput(): array
+    {
+        $rule = new Each(new AlwaysInvalid());
+
+        return [
+            [$rule, 123],
+            [$rule, ''],
+            [$rule, null],
+            [$rule, false],
+            [$rule, ['', 2, 3, 4, 5]],
+            [$rule, ['a', 2, 3, 4, 5]],
+            [$rule, self::createTraversableInput(1, 5)],
+            [$rule, self::createStdClassInput(1, 5)],
+        ];
+    }
+
+    /**
      * @return Traversable<int>
      */
-    private function createTraversableInput(int $firstValue, int $lastValue): Traversable
+    private static function createTraversableInput(int $firstValue, int $lastValue): Traversable
     {
         /** @var SplStack<int> */
         $input = new SplStack();
@@ -128,7 +128,7 @@ final class EachTest extends RuleTestCase
         return $input;
     }
 
-    private function createStdClassInput(int $firstValue, int $lastValue): stdClass
+    private static function createStdClassInput(int $firstValue, int $lastValue): stdClass
     {
         $input = [];
         foreach (range($firstValue, $lastValue) as $value) {

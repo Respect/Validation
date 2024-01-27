@@ -29,7 +29,7 @@ final class AlphaTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             'alphabetic' => [new Alpha(), 'alganet'],
@@ -43,7 +43,7 @@ final class AlphaTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             'empty string' => [new Alpha(), ''],

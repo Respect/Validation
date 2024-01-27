@@ -28,11 +28,11 @@ final class CallbackTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new Callback('is_a', 'stdClass'), new stdClass()],
-            [new Callback([$this, 'sampleCallbackUsedInsideThisTest']), 'test'],
+            [new Callback([new AlwaysValid(), 'validate']), 'test'],
             [new Callback('is_string'), 'test'],
             [
                 new Callback(static function () {
@@ -43,15 +43,10 @@ final class CallbackTest extends RuleTestCase
         ];
     }
 
-    public function sampleCallbackUsedInsideThisTest(): bool
-    {
-        return true;
-    }
-
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [

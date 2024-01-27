@@ -48,20 +48,6 @@ final class SubdivisionCodeTest extends TestCase
     }
 
     /**
-     * @return mixed[][]
-     */
-    public function providerForValidSubdivisionCodeInformation(): array
-    {
-        return [
-            ['AQ',  null],
-            ['BR',  'SP'],
-            ['MV',  '00'],
-            ['US',  'CA'],
-            ['YT',  ''],
-        ];
-    }
-
-    /**
      * @dataProvider providerForValidSubdivisionCodeInformation
      *
      * @test
@@ -71,18 +57,6 @@ final class SubdivisionCodeTest extends TestCase
         $countrySubdivision = new SubdivisionCode($countryCode);
 
         self::assertTrue($countrySubdivision->validate($input));
-    }
-
-    /**
-     * @return mixed[][]
-     */
-    public function providerForInvalidSubdivisionCodeInformation(): array
-    {
-        return [
-            ['BR',  'CA'],
-            ['MV',  0],
-            ['US',  'CE'],
-        ];
     }
 
     /**
@@ -110,5 +84,31 @@ final class SubdivisionCodeTest extends TestCase
         $this->expectExceptionMessage('"CA" must be a subdivision code of "Brazil"');
 
         $countrySubdivision->assert('CA');
+    }
+
+    /**
+     * @return mixed[][]
+     */
+    public static function providerForValidSubdivisionCodeInformation(): array
+    {
+        return [
+            ['AQ',  null],
+            ['BR',  'SP'],
+            ['MV',  '00'],
+            ['US',  'CA'],
+            ['YT',  ''],
+        ];
+    }
+
+    /**
+     * @return mixed[][]
+     */
+    public static function providerForInvalidSubdivisionCodeInformation(): array
+    {
+        return [
+            ['BR',  'CA'],
+            ['MV',  0],
+            ['US',  'CE'],
+        ];
     }
 }

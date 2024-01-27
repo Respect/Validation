@@ -26,7 +26,7 @@ final class MultipleTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new Multiple(5), 20],
@@ -44,7 +44,7 @@ final class MultipleTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [new Multiple(5), 11],

@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\RomanException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::roman()->check(1234);
-} catch (RomanException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::roman())->check('XL');
-} catch (RomanException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::roman()->assert('e2');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::roman())->assert('IV');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::roman()->check(1234));
+exceptionMessage(static fn() => v::not(v::roman())->check('XL'));
+exceptionFullMessage(static fn() => v::roman()->assert('e2'));
+exceptionFullMessage(static fn() => v::not(v::roman())->assert('IV'));
 ?>
 --EXPECT--
 1234 must be a valid Roman numeral

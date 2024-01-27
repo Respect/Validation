@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\CpfException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::cpf()->check('this thing');
-} catch (CpfException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::cpf())->check('276.865.775-11');
-} catch (CpfException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::cpf()->assert('your mother');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::cpf())->assert('61836182848');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::cpf()->check('this thing'));
+exceptionMessage(static fn() => v::not(v::cpf())->check('276.865.775-11'));
+exceptionFullMessage(static fn() => v::cpf()->assert('your mother'));
+exceptionFullMessage(static fn() => v::not(v::cpf())->assert('61836182848'));
 ?>
 --EXPECT--
 "this thing" must be a valid CPF number

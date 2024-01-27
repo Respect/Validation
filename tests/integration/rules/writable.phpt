@@ -7,34 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\WritableException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::writable()->check('/path/of/a/valid/writable/file.txt');
-} catch (WritableException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::writable())->check('tests/fixtures/valid-image.png');
-} catch (WritableException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::writable()->assert([]);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::writable())->assert('tests/fixtures/invalid-image.png');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
+exceptionMessage(static fn() => v::writable()->check('/path/of/a/valid/writable/file.txt'));
+exceptionMessage(static fn() => v::not(v::writable())->check('tests/fixtures/valid-image.png'));
+exceptionFullMessage(static fn() => v::writable()->assert([]));
+exceptionFullMessage(static fn() => v::not(v::writable())->assert('tests/fixtures/invalid-image.png'));
 ?>
 --EXPECT--
 "/path/of/a/valid/writable/file.txt" must be writable

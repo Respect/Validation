@@ -8,34 +8,14 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\AllOfException;
-use Respect\Validation\Exceptions\ConsonantException;
-use Respect\Validation\Exceptions\IntTypeException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::not(v::allOf(v::intType(), v::positive()))->check(42);
-} catch (IntTypeException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::allOf(v::stringType(), v::consonant())->check('Luke i\'m your father');
-} catch (ConsonantException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::allOf(v::stringType(), v::consonant())->assert(42);
-} catch (AllOfException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
+exceptionMessage(static fn() => v::not(v::allOf(v::intType(), v::positive()))->check(42));
+exceptionMessage(static fn() => v::allOf(v::stringType(), v::consonant())->check('Luke i\'m your father'));
+exceptionFullMessage(static fn() => v::allOf(v::stringType(), v::consonant())->assert(42));
+exceptionFullMessage(static function () {
     v::not(v::allOf(v::stringType(), v::length(10)))->assert('Frank Zappa is fantastic');
-} catch (AllOfException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+});
 ?>
 --EXPECT--
 42 must not be of type integer

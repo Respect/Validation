@@ -7,34 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NegativeException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::negative()->check(16);
-} catch (NegativeException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::negative())->check(-10);
-} catch (NegativeException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::negative()->assert('a');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::negative())->assert('-144');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
+exceptionMessage(static fn() => v::negative()->check(16));
+exceptionMessage(static fn() => v::not(v::negative())->check(-10));
+exceptionFullMessage(static fn() => v::negative()->assert('a'));
+exceptionFullMessage(static fn() => v::not(v::negative())->assert('-144'));
 ?>
 --EXPECT--
 16 must be negative

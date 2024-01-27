@@ -7,34 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\OddException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::odd()->check(2);
-} catch (OddException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::odd())->check(7);
-} catch (OddException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::odd()->assert(2);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::odd())->assert(9);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
+exceptionMessage(static fn() => v::odd()->check(2));
+exceptionMessage(static fn() => v::not(v::odd())->check(7));
+exceptionFullMessage(static fn() => v::odd()->assert(2));
+exceptionFullMessage(static fn() => v::not(v::odd())->assert(9));
 ?>
 --EXPECT--
 2 must be an odd number

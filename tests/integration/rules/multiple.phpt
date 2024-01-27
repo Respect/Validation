@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\MultipleException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::multiple(3)->check(22);
-} catch (MultipleException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::multiple(3))->check(9);
-} catch (MultipleException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::multiple(2)->assert(5);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::multiple(5))->assert(25);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::multiple(3)->check(22));
+exceptionMessage(static fn() => v::not(v::multiple(3))->check(9));
+exceptionFullMessage(static fn() => v::multiple(2)->assert(5));
+exceptionFullMessage(static fn() => v::not(v::multiple(5))->assert(25));
 ?>
 --EXPECT--
 22 must be multiple of 3

@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::domain()->check('batman');
-} catch (ValidationException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::domain())->check('r--w.com');
-} catch (ValidationException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::domain()->assert('p-éz-.kk');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::domain())->assert('github.com');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::domain()->check('batman'));
+exceptionMessage(static fn() => v::not(v::domain())->check('r--w.com'));
+exceptionFullMessage(static fn() => v::domain()->assert('p-éz-.kk'));
+exceptionFullMessage(static fn() => v::not(v::domain())->assert('github.com'));
 ?>
 --EXPECT--
 "batman" must contain the value "."

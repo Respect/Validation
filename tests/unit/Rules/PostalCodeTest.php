@@ -58,7 +58,7 @@ final class PostalCodeTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new PostalCode('BR'), '02179-000'],
@@ -98,7 +98,7 @@ final class PostalCodeTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [new PostalCode('BR'), '02179'],

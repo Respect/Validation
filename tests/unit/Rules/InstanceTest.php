@@ -32,7 +32,7 @@ final class InstanceTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new Instance(DateTime::class), new DateTime()],
@@ -44,7 +44,7 @@ final class InstanceTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [new Instance(DateTime::class), ''],

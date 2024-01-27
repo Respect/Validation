@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 /**
  * @group rules
@@ -24,9 +25,19 @@ use Respect\Validation\Test\RuleTestCase;
 final class SortedTest extends RuleTestCase
 {
     /**
+     * @test
+     */
+    public function itShouldNotAcceptWrongSortingDirection(): void
+    {
+        $this->expectExceptionObject(new ComponentException('Direction should be either "ASC" or "DESC"'));
+
+        new Sorted('something');
+    }
+
+    /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             'empty' => [new Sorted('ASC'), []],
@@ -43,7 +54,7 @@ final class SortedTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             'duplicate' => [new Sorted('ASC'), [1, 1, 1]],
@@ -55,16 +66,10 @@ final class SortedTest extends RuleTestCase
             'DESC string-sequence with ASC validation' => [new Sorted('ASC'), '321'],
             'ASC array-sequence with DESC validation' => [new Sorted('DESC'), [1, 2, 3]],
             'ASC string-sequence with DESC validation' => [new Sorted('DESC'), 'abc'],
+            'unsupported value (integer)' => [new Sorted('DESC'), 1 ],
+            'unsupported value (float)' => [new Sorted('DESC'), 1.2 ],
+            'unsupported value (bool)' => [new Sorted('DESC'), true ],
+            'unsupported value (object)' => [new Sorted('DESC'), new stdClass() ],
         ];
-    }
-
-    /**
-     * @test
-     */
-    public function itShouldNotAcceptWrongSortingDirection(): void
-    {
-        $this->expectExceptionObject(new ComponentException('Direction should be either "ASC" or "DESC"'));
-
-        new Sorted('something');
     }
 }

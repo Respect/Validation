@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\EquivalentException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::equivalent(true)->check(false);
-} catch (EquivalentException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::equivalent('Something'))->check('someThing');
-} catch (EquivalentException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::equivalent(123)->assert('true');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::equivalent(true))->assert(1);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::equivalent(true)->check(false));
+exceptionMessage(static fn() => v::not(v::equivalent('Something'))->check('someThing'));
+exceptionFullMessage(static fn() => v::equivalent(123)->assert('true'));
+exceptionFullMessage(static fn() => v::not(v::equivalent(true))->assert(1));
 ?>
 --EXPECT--
 `FALSE` must be equivalent to `TRUE`

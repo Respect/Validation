@@ -46,8 +46,6 @@ interface ChainedValidator extends Validatable
      */
     public function between($minimum, $maximum): ChainedValidator;
 
-    public function bic(string $countryCode): ChainedValidator;
-
     public function boolType(): ChainedValidator;
 
     public function boolVal(): ChainedValidator;
@@ -294,6 +292,8 @@ interface ChainedValidator extends Validatable
 
     public function polishIdCard(): ChainedValidator;
 
+    public function portugueseNif(): ChainedValidator;
+
     public function positive(): ChainedValidator;
 
     public function postalCode(string $countryCode): ChainedValidator;
@@ -301,6 +301,8 @@ interface ChainedValidator extends Validatable
     public function primeNumber(): ChainedValidator;
 
     public function printable(string ...$additionalChars): ChainedValidator;
+
+    public function publicDomainSuffix(): ChainedValidator;
 
     public function punct(string ...$additionalChars): ChainedValidator;
 

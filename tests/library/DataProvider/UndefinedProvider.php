@@ -21,7 +21,7 @@ trait UndefinedProvider
      *
      * @return mixed[][]
      */
-    public function providerForUndefined(): array
+    public static function providerForUndefined(): array
     {
         return [
             [null],
@@ -34,7 +34,7 @@ trait UndefinedProvider
      *
      * @return mixed[][]
      */
-    public function providerForNotUndefined(): array
+    public static function providerForNotUndefined(): array
     {
         return [
             [0],

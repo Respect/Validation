@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\GreaterThanException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::greaterThan(21)->check(12);
-} catch (GreaterThanException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::greaterThan('yesterday'))->check('today');
-} catch (GreaterThanException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::greaterThan('2018-09-09')->assert('1988-09-09');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::greaterThan('a'))->assert('ba');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::greaterThan(21)->check(12));
+exceptionMessage(static fn() => v::not(v::greaterThan('yesterday'))->check('today'));
+exceptionFullMessage(static fn() => v::greaterThan('2018-09-09')->assert('1988-09-09'));
+exceptionFullMessage(static fn() => v::not(v::greaterThan('a'))->assert('ba'));
 ?>
 --EXPECT--
 12 must be greater than 21

@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\MaxException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::max(10)->check(11);
-} catch (MaxException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::max(10))->check(5);
-} catch (MaxException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::max('today')->assert('tomorrow');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::max('b'))->assert('a');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::max(10)->check(11));
+exceptionMessage(static fn() => v::not(v::max(10))->check(5));
+exceptionFullMessage(static fn() => v::max('today')->assert('tomorrow'));
+exceptionFullMessage(static fn() => v::not(v::max('b'))->assert('a'));
 ?>
 --EXPECT--
 11 must be less than or equal to 10

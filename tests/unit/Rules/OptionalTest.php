@@ -24,41 +24,6 @@ use stdClass;
 final class OptionalTest extends TestCase
 {
     /**
-     * @return mixed[][]
-     */
-    public function providerForOptional(): array
-    {
-        return [
-            [null],
-            [''],
-        ];
-    }
-
-    /**
-     * @return mixed[][]
-     */
-    public function providerForNotOptional(): array
-    {
-        return [
-            [1],
-            [[]],
-            [' '],
-            [0],
-            ['0'],
-            [0],
-            ['0.0'],
-            [false],
-            [['']],
-            [[' ']],
-            [[0]],
-            [['0']],
-            [[false]],
-            [[[''], [0]]],
-            [new stdClass()],
-        ];
-    }
-
-    /**
      * @dataProvider providerForOptional
      *
      * @test
@@ -164,5 +129,40 @@ final class OptionalTest extends TestCase
         $rule = new Optional($validatable);
 
         $rule->check($input);
+    }
+
+    /**
+     * @return mixed[][]
+     */
+    public static function providerForOptional(): array
+    {
+        return [
+            [null],
+            [''],
+        ];
+    }
+
+    /**
+     * @return mixed[][]
+     */
+    public static function providerForNotOptional(): array
+    {
+        return [
+            [1],
+            [[]],
+            [' '],
+            [0],
+            ['0'],
+            [0],
+            ['0.0'],
+            [false],
+            [['']],
+            [[' ']],
+            [[0]],
+            [['0']],
+            [[false]],
+            [[[''], [0]]],
+            [new stdClass()],
+        ];
     }
 }

@@ -7,34 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\TldException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::tld()->check('42');
-} catch (TldException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::tld())->check('com');
-} catch (TldException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::tld()->assert('1984');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::tld())->assert('com');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
+exceptionMessage(static fn() => v::tld()->check('42'));
+exceptionMessage(static fn() => v::not(v::tld())->check('com'));
+exceptionFullMessage(static fn() => v::tld()->assert('1984'));
+exceptionFullMessage(static fn() => v::not(v::tld())->assert('com'));
 ?>
 --EXPECT--
 "42" must be a valid top-level domain name

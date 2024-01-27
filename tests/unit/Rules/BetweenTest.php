@@ -27,42 +27,6 @@ use Respect\Validation\Test\Stubs\CountableStub;
 final class BetweenTest extends RuleTestCase
 {
     /**
-     * {@inheritDoc}
-     */
-    public function providerForValidInput(): array
-    {
-        return [
-            [new Between(0, 1), 1],
-            [new Between(0, 1), 0],
-            [new Between(10, 20), 15],
-            [new Between(10, 20), 20],
-            [new Between(-10, 20), -5],
-            [new Between(-10, 20), 0],
-            [new Between('a', 'z'), 'j'],
-            [new Between(new DateTime('yesterday'), new DateTime('tomorrow')), new DateTime('now')],
-            [new Between(new CountableStub(1), new CountableStub(10)), 5],
-        ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function providerForInvalidInput(): array
-    {
-        return [
-            [new Between(10, 20), ''],
-            [new Between(10, 20), ''],
-            [new Between(0, 1), 2],
-            [new Between(0, 1), -1],
-            [new Between(10, 20), 999],
-            [new Between(-10, 20), -11],
-            [new Between('a', 'j'), 'z'],
-            [new Between(new DateTime('yesterday'), new DateTime('now')), new DateTime('tomorrow')],
-            [new Between(new CountableStub(1), new CountableStub(10)), 11],
-        ];
-    }
-
-    /**
      * @test
      */
     public function minimumValueShouldNotBeGreaterThanMaximumValue(): void
@@ -80,5 +44,41 @@ final class BetweenTest extends RuleTestCase
         $this->expectExceptionObject(new ComponentException('Minimum cannot be less than or equals to maximum'));
 
         new Between(5, 5);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function providerForValidInput(): array
+    {
+        return [
+            [new Between(0, 1), 1],
+            [new Between(0, 1), 0],
+            [new Between(10, 20), 15],
+            [new Between(10, 20), 20],
+            [new Between(-10, 20), -5],
+            [new Between(-10, 20), 0],
+            [new Between('a', 'z'), 'j'],
+            [new Between(new DateTime('yesterday'), new DateTime('tomorrow')), new DateTime('now')],
+            [new Between(new CountableStub(1), new CountableStub(10)), 5],
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function providerForInvalidInput(): array
+    {
+        return [
+            [new Between(10, 20), ''],
+            [new Between(10, 20), ''],
+            [new Between(0, 1), 2],
+            [new Between(0, 1), -1],
+            [new Between(10, 20), 999],
+            [new Between(-10, 20), -11],
+            [new Between('a', 'j'), 'z'],
+            [new Between(new DateTime('yesterday'), new DateTime('now')), new DateTime('tomorrow')],
+            [new Between(new CountableStub(1), new CountableStub(10)), 11],
+        ];
     }
 }

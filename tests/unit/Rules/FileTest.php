@@ -30,21 +30,21 @@ final class FileTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $sut = new File();
 
         return [
             'filename' => [$sut, __FILE__],
-            'SplFileInfo' => [$sut, new SplFileInfo($this->getFixtureDirectory() . '/valid-image.png')],
-            'SplFileObject' => [$sut, new SplFileObject($this->getFixtureDirectory() . '/invalid-image.png')],
+            'SplFileInfo' => [$sut, new SplFileInfo(self::fixture('valid-image.png'))],
+            'SplFileObject' => [$sut, new SplFileObject(self::fixture('invalid-image.png'))],
         ];
     }
 
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $sut = new File();
 

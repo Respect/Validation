@@ -27,7 +27,7 @@ final class NumericValTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $numericVal = new NumericVal();
 
@@ -44,7 +44,7 @@ final class NumericValTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $numericVal = new NumericVal();
 

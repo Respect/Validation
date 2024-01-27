@@ -29,7 +29,7 @@ final class ConsonantTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $consonant = new Consonant();
 
@@ -54,7 +54,7 @@ final class ConsonantTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $consonant = new Consonant();
 

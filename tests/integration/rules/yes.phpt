@@ -7,36 +7,15 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\YesException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::not(v::yes())->check('Yes');
-} catch (YesException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::yes()->check('si');
-} catch (YesException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::yes())->assert('Yes');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::yes()->assert('si');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::not(v::yes())->check('Yes'));
+exceptionMessage(static fn() => v::yes()->check('si'));
+exceptionFullMessage(static fn() => v::not(v::yes())->assert('Yes'));
+exceptionFullMessage(static fn() => v::yes()->assert('si'));
 ?>
 --EXPECT--
-"Yes" is considered as "Yes"
-"si" is not considered as "Yes"
-- "Yes" is considered as "Yes"
-- "si" is not considered as "Yes"
+"Yes" must not be similar to "Yes"
+"si" must be similar to "Yes"
+- "Yes" must not be similar to "Yes"
+- "si" must be similar to "Yes"

@@ -10,8 +10,6 @@ default must be of type string
 
 declare(strict_types=1);
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Rules\ArrayType;
 use Respect\Validation\Rules\BoolType;
 use Respect\Validation\Rules\Each;
@@ -55,17 +53,8 @@ $input = [
         'children' => ['nope'],
     ],
 ];
-try {
-    $validator->check($input);
-} catch (ValidationException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    $validator->assert($input);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage();
-}
+exceptionMessage(static fn() => $validator->check($input));
+exceptionFullMessage(static fn() => $validator->assert($input));
 ?>
 --EXPECT--
 default must be of type string

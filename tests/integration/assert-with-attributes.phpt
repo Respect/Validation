@@ -8,10 +8,9 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
+exceptionFullMessage(static function () {
     $array = [
         'mysql' => [
             'host' => 42,
@@ -48,9 +47,7 @@ try {
         )
         ->setName('the given data')
         ->assert($object);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+});
 ?>
 --EXPECT--
 - All of the required rules must pass for the given data

@@ -23,9 +23,21 @@ use stdClass;
 final class EqualsTest extends RuleTestCase
 {
     /**
+     * @test
+     */
+    public function shouldPassCompareToParameterToException(): void
+    {
+        $compareTo = new stdClass();
+        $equals = new Equals($compareTo);
+        $exception = $equals->reportError('input');
+
+        self::assertSame($compareTo, $exception->getParam('compareTo'));
+    }
+
+    /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new Equals('foo'), 'foo'],
@@ -39,23 +51,11 @@ final class EqualsTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [new Equals('foo'), ''],
             [new Equals('foo'), 'bar'],
         ];
-    }
-
-    /**
-     * @test
-     */
-    public function shouldPassCompareToParameterToException(): void
-    {
-        $compareTo = new stdClass();
-        $equals = new Equals($compareTo);
-        $exception = $equals->reportError('input');
-
-        self::assertSame($compareTo, $exception->getParam('compareTo'));
     }
 }

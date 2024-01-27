@@ -7,57 +7,16 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\AlnumException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::alnum()->check('abc%1');
-} catch (AlnumException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::alnum(' ')->check('abc%2');
-} catch (AlnumException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::alnum())->check('abcd3');
-} catch (AlnumException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::alnum('% '))->check('abc%4');
-} catch (AlnumException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::alnum()->assert('abc^1');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::alnum())->assert('abcd2');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::alnum('* &%')->assert('abc^3');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::alnum('^'))->assert('abc^4');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::alnum()->check('abc%1'));
+exceptionMessage(static fn() => v::alnum(' ')->check('abc%2'));
+exceptionMessage(static fn() => v::not(v::alnum())->check('abcd3'));
+exceptionMessage(static fn() => v::not(v::alnum('% '))->check('abc%4'));
+exceptionFullMessage(static fn() => v::alnum()->assert('abc^1'));
+exceptionFullMessage(static fn() => v::not(v::alnum())->assert('abcd2'));
+exceptionFullMessage(static fn() => v::alnum('* &%')->assert('abc^3'));
+exceptionFullMessage(static fn() => v::not(v::alnum('^'))->assert('abc^4'));
 ?>
 --EXPECT--
 "abc%1" must contain only letters (a-z) and digits (0-9)

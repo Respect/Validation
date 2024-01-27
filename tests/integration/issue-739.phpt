@@ -7,14 +7,9 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::when(v::alwaysInvalid(), v::alwaysValid())->check('foo');
-} catch (ValidationException $exception) {
-    echo $exception->getMessage();
-}
+exceptionMessage(static fn() => v::when(v::alwaysInvalid(), v::alwaysValid())->check('foo'));
 ?>
 --EXPECT--
 "foo" is not valid

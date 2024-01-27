@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\ReadableException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::readable()->check('tests/fixtures/invalid-image.jpg');
-} catch (ReadableException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::readable())->check('tests/fixtures/valid-image.png');
-} catch (ReadableException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::readable()->assert(new stdClass());
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::readable())->assert('tests/fixtures/valid-image.png');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::readable()->check('tests/fixtures/invalid-image.jpg'));
+exceptionMessage(static fn() => v::not(v::readable())->check('tests/fixtures/valid-image.png'));
+exceptionFullMessage(static fn() => v::readable()->assert(new stdClass()));
+exceptionFullMessage(static fn() => v::not(v::readable())->assert('tests/fixtures/valid-image.png'));
 ?>
 --EXPECT--
 "tests/fixtures/invalid-image.jpg" must be readable

@@ -31,9 +31,39 @@ use const FILTER_FLAG_NO_PRIV_RANGE;
 final class IpTest extends RuleTestCase
 {
     /**
+     * @test
+     *
+     * @dataProvider providerForInvalidRanges
+     *
+     * @throws ComponentException
+     */
+    public function invalidRangeShouldRaiseException(string $range): void
+    {
+        $this->expectException(ComponentException::class);
+
+        new Ip($range);
+    }
+
+    /**
+     * @return string[][]
+     */
+    public static function providerForInvalidRanges(): array
+    {
+        return [
+            ['192.168'],
+            ['asd'],
+            ['192.168.0.0-192.168.0.256'],
+            ['192.168.0.0-192.168.0.1/4'],
+            ['192.168.0/1'],
+            ['192.168.2.0/256.256.256.256'],
+            ['192.168.2.0/8.256.256.256'],
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new Ip('127.*'), '127.0.0.1'],
@@ -61,7 +91,7 @@ final class IpTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [new Ip('127.*'), '192.0.1.0'],
@@ -82,36 +112,6 @@ final class IpTest extends RuleTestCase
             [new Ip('127.0.0.1-127.0.0.5'), '127.0.0.10'],
             [new Ip('220.78.168.0/255.255.248.0'), '220.78.176.3'],
         ];
-    }
-
-    /**
-     * @return string[][]
-     */
-    public function providerForInvalidRanges(): array
-    {
-        return [
-            ['192.168'],
-            ['asd'],
-            ['192.168.0.0-192.168.0.256'],
-            ['192.168.0.0-192.168.0.1/4'],
-            ['192.168.0/1'],
-            ['192.168.2.0/256.256.256.256'],
-            ['192.168.2.0/8.256.256.256'],
-        ];
-    }
-
-    /**
-     * @test
-     *
-     * @dataProvider providerForInvalidRanges
-     *
-     * @throws ComponentException
-     */
-    public function invalidRangeShouldRaiseException(string $range): void
-    {
-        $this->expectException(ComponentException::class);
-
-        new Ip($range);
     }
 
     /**

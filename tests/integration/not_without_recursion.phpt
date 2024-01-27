@@ -9,17 +9,14 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validator;
 
-try {
+exceptionMessage(static function () {
     $validator = Validator::not(
         Validator::intVal()->positive()
     );
     $validator->check(2);
-} catch (ValidationException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
+});
 ?>
 --EXPECT--
 2 must not be positive

@@ -26,45 +26,45 @@ final class WhenTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             'all true' => [
                 new When(
-                    $this->createValidatableMock(true),
-                    $this->createValidatableMock(true),
-                    $this->createValidatableMock(true)
+                    new AlwaysValid(),
+                    new AlwaysValid(),
+                    new AlwaysValid()
                 ),
                 true,
             ],
             'bool (when = true, then = true, else = false)' => [
                 new When(
-                    $this->createValidatableMock(true),
-                    $this->createValidatableMock(true),
-                    $this->createValidatableMock(false)
+                    new AlwaysValid(),
+                    new AlwaysValid(),
+                    new AlwaysInvalid()
                 ),
                 true,
             ],
             'bool (when = false, then = true, else = true)' => [
                 new When(
-                    $this->createValidatableMock(false),
-                    $this->createValidatableMock(true),
-                    $this->createValidatableMock(true)
+                    new AlwaysInvalid(),
+                    new AlwaysValid(),
+                    new AlwaysValid()
                 ),
                 true,
             ],
             'bool (when = false, then = false, else = true)' => [
                 new When(
-                    $this->createValidatableMock(false),
-                    $this->createValidatableMock(false),
-                    $this->createValidatableMock(true)
+                    new AlwaysInvalid(),
+                    new AlwaysInvalid(),
+                    new AlwaysValid()
                 ),
                 true,
             ],
             'bool (when = false, then = true, else = null)' => [
                 new When(
-                    $this->createValidatableMock(true),
-                    $this->createValidatableMock(true),
+                    new AlwaysValid(),
+                    new AlwaysValid(),
                     null
                 ),
                 true,
@@ -75,37 +75,37 @@ final class WhenTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             'bool (when = true, then = false, else = false)' => [
                 new When(
-                    $this->createValidatableMock(true),
-                    $this->createValidatableMock(false),
-                    $this->createValidatableMock(false)
+                    new AlwaysValid(),
+                    new AlwaysInvalid(),
+                    new AlwaysInvalid()
                 ),
                 false,
             ],
             'bool (when = true, then = false, else = true)' => [
                 new When(
-                    $this->createValidatableMock(true),
-                    $this->createValidatableMock(false),
-                    $this->createValidatableMock(true)
+                    new AlwaysValid(),
+                    new AlwaysInvalid(),
+                    new AlwaysValid()
                 ),
                 false,
             ],
             'bool (when = false, then = false, else = false)' => [
                 new When(
-                    $this->createValidatableMock(false),
-                    $this->createValidatableMock(false),
-                    $this->createValidatableMock(false)
+                    new AlwaysInvalid(),
+                    new AlwaysInvalid(),
+                    new AlwaysInvalid()
                 ),
                 false,
             ],
             'bool (when = true, then = false, else = null)' => [
                 new When(
-                    $this->createValidatableMock(true),
-                    $this->createValidatableMock(false),
+                    new AlwaysValid(),
+                    new AlwaysInvalid(),
                     null
                 ),
                 false,

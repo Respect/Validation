@@ -13,6 +13,7 @@ use function function_exists;
 use function is_string;
 use function json_decode;
 use function json_last_error;
+use function json_validate;
 
 use const JSON_ERROR_NONE;
 

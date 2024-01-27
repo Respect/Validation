@@ -18,7 +18,7 @@
         }
     },
     "require": {
-        "php": "^8.0 || ^8.1 || ^8.2",
+        "php": "^8.1 || ^8.2",
         "respect/stringifier": "^0.2.0",
         "symfony/polyfill-mbstring": "^1.2"
     },
@@ -32,7 +32,7 @@
         "phpstan/phpstan-phpunit": "^1.3",
         "phpunit/phpunit": "^9.6",
         "psr/http-message": "^1.0",
-        "respect/coding-standard": "^3.0",
+        "respect/coding-standard": "^4.0",
         "squizlabs/php_codesniffer": "^3.7"
     },
     "suggest": {
@@ -51,7 +51,10 @@
         "psr-4": {
             "Respect\\Validation\\": "tests/unit/",
             "Respect\\Validation\\Test\\": "tests/library/"
-        }
+        },
+        "files": [
+            "tests/integration/lib/helpers.php"
+        ]
     },
     "scripts": {
         "docheader": "vendor/bin/docheader check library/ tests/",

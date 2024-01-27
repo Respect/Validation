@@ -26,7 +26,7 @@ final class NfeAccessKeyTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $nfe = new NfeAccessKey();
 
@@ -38,7 +38,7 @@ final class NfeAccessKeyTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $nfe = new NfeAccessKey();
 

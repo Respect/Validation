@@ -7,57 +7,16 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\XdigitException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::xdigit()->check('aaa%a');
-} catch (XdigitException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::xdigit(' ')->check('bbb%b');
-} catch (XdigitException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::xdigit())->check('ccccc');
-} catch (XdigitException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::xdigit('% '))->check('ddd%d');
-} catch (XdigitException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::xdigit()->assert('eee^e');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::xdigit())->assert('fffff');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::xdigit('* &%')->assert('000^0');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::xdigit('^'))->assert('111^1');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::xdigit()->check('aaa%a'));
+exceptionMessage(static fn() => v::xdigit(' ')->check('bbb%b'));
+exceptionMessage(static fn() => v::not(v::xdigit())->check('ccccc'));
+exceptionMessage(static fn() => v::not(v::xdigit('% '))->check('ddd%d'));
+exceptionFullMessage(static fn() => v::xdigit()->assert('eee^e'));
+exceptionFullMessage(static fn() => v::not(v::xdigit())->assert('fffff'));
+exceptionFullMessage(static fn() => v::xdigit('* &%')->assert('000^0'));
+exceptionFullMessage(static fn() => v::not(v::xdigit('^'))->assert('111^1'));
 ?>
 --EXPECT--
 "aaa%a" contain only hexadecimal digits

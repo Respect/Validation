@@ -35,61 +35,6 @@ final class UuidTest extends RuleTestCase
     private const UUID_VERSION_5 = 'c4a760a8-dbcf-5254-a0d9-6a4474bd1b62';
 
     /**
-     * {@inheritDoc}
-     */
-    public function providerForValidInput(): array
-    {
-        $sut = new Uuid();
-
-        return [
-            'any version with version 1' => [$sut, self::UUID_VERSION_1],
-            'any version with version 3' => [$sut, self::UUID_VERSION_3],
-            'any version with version 4' => [$sut, self::UUID_VERSION_4],
-            'any version with version 5' => [$sut, self::UUID_VERSION_5],
-            'version 1 with version 1' => [new Uuid(1), self::UUID_VERSION_1],
-            'version 3 with version 3' => [new Uuid(3), self::UUID_VERSION_3],
-            'version 4 with version 4' => [new Uuid(4), self::UUID_VERSION_4],
-            'version 5 with version 5' => [new Uuid(5), self::UUID_VERSION_5],
-        ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function providerForInvalidInput(): array
-    {
-        $sut = new Uuid();
-        $sutVersion1 = new Uuid(1);
-        $sutVersion3 = new Uuid(3);
-        $sutVersion4 = new Uuid(4);
-        $sutVersion5 = new Uuid(5);
-
-        return [
-            'empty' => [$sut, ''],
-            'nil/empty' => [$sut, '00000000-0000-0000-0000-000000000000'],
-            'not UUID' => [$sut, 'Not an UUID'],
-            'invalid UUID' => [$sut, 'g71a18f4-3a13-11e7-a919-92ebcb67fe33'],
-            'invalid format' => [$sut, 'a71a18f43a1311e7a91992ebcb67fe33'],
-            'version 1 with version 3' => [$sutVersion1, self::UUID_VERSION_3],
-            'version 1 with version 4' => [$sutVersion1, self::UUID_VERSION_4],
-            'version 1 with version 5' => [$sutVersion1, self::UUID_VERSION_5],
-            'version 3 with version 1' => [$sutVersion3, self::UUID_VERSION_1],
-            'version 3 with version 4' => [$sutVersion3, self::UUID_VERSION_4],
-            'version 3 with version 5' => [$sutVersion3, self::UUID_VERSION_5],
-            'version 4 with version 1' => [$sutVersion4, self::UUID_VERSION_1],
-            'version 4 with version 3' => [$sutVersion4, self::UUID_VERSION_3],
-            'version 4 with version 5' => [$sutVersion4, self::UUID_VERSION_5],
-            'version 5 with version 1' => [$sutVersion5, self::UUID_VERSION_1],
-            'version 5 with version 3' => [$sutVersion5, self::UUID_VERSION_3],
-            'version 5 with version 4' => [$sutVersion5, self::UUID_VERSION_4],
-            'array' => [$sut, []],
-            'boolean true' => [$sut, true],
-            'boolean false' => [$sut, false],
-            'object' => [$sut, new stdClass()],
-        ];
-    }
-
-    /**
      * @test
      */
     public function itShouldThrowExceptionWhenVersionIsTwo(): void
@@ -124,5 +69,60 @@ final class UuidTest extends RuleTestCase
         self::expectExceptionMessage('Only versions 1, 3, 4, and 5 are supported: ' . $version . ' given');
 
         new Uuid($version);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function providerForValidInput(): array
+    {
+        $sut = new Uuid();
+
+        return [
+            'any version with version 1' => [$sut, self::UUID_VERSION_1],
+            'any version with version 3' => [$sut, self::UUID_VERSION_3],
+            'any version with version 4' => [$sut, self::UUID_VERSION_4],
+            'any version with version 5' => [$sut, self::UUID_VERSION_5],
+            'version 1 with version 1' => [new Uuid(1), self::UUID_VERSION_1],
+            'version 3 with version 3' => [new Uuid(3), self::UUID_VERSION_3],
+            'version 4 with version 4' => [new Uuid(4), self::UUID_VERSION_4],
+            'version 5 with version 5' => [new Uuid(5), self::UUID_VERSION_5],
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function providerForInvalidInput(): array
+    {
+        $sut = new Uuid();
+        $sutVersion1 = new Uuid(1);
+        $sutVersion3 = new Uuid(3);
+        $sutVersion4 = new Uuid(4);
+        $sutVersion5 = new Uuid(5);
+
+        return [
+            'empty' => [$sut, ''],
+            'nil/empty' => [$sut, '00000000-0000-0000-0000-000000000000'],
+            'not UUID' => [$sut, 'Not an UUID'],
+            'invalid UUID' => [$sut, 'g71a18f4-3a13-11e7-a919-92ebcb67fe33'],
+            'invalid format' => [$sut, 'a71a18f43a1311e7a91992ebcb67fe33'],
+            'version 1 with version 3' => [$sutVersion1, self::UUID_VERSION_3],
+            'version 1 with version 4' => [$sutVersion1, self::UUID_VERSION_4],
+            'version 1 with version 5' => [$sutVersion1, self::UUID_VERSION_5],
+            'version 3 with version 1' => [$sutVersion3, self::UUID_VERSION_1],
+            'version 3 with version 4' => [$sutVersion3, self::UUID_VERSION_4],
+            'version 3 with version 5' => [$sutVersion3, self::UUID_VERSION_5],
+            'version 4 with version 1' => [$sutVersion4, self::UUID_VERSION_1],
+            'version 4 with version 3' => [$sutVersion4, self::UUID_VERSION_3],
+            'version 4 with version 5' => [$sutVersion4, self::UUID_VERSION_5],
+            'version 5 with version 1' => [$sutVersion5, self::UUID_VERSION_1],
+            'version 5 with version 3' => [$sutVersion5, self::UUID_VERSION_3],
+            'version 5 with version 4' => [$sutVersion5, self::UUID_VERSION_4],
+            'array' => [$sut, []],
+            'boolean true' => [$sut, true],
+            'boolean false' => [$sut, false],
+            'object' => [$sut, new stdClass()],
+        ];
     }
 }

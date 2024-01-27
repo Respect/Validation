@@ -28,9 +28,29 @@ use function sprintf;
 final class CheckExceptionsTest extends TestCase
 {
     /**
+     * @dataProvider provideListOfRuleNames
+     *
+     * @test
+     */
+    public function ruleHasAnExceptionWhichHasValidApi(string $ruleName): void
+    {
+        $exceptionClass = 'Respect\\Validation\\Exceptions\\' . $ruleName . 'Exception';
+        self::assertTrue(
+            class_exists($exceptionClass),
+            sprintf('Expected exception class to exist: %s.', $ruleName)
+        );
+
+        $reflectionClass = new ReflectionClass($exceptionClass);
+        self::assertTrue(
+            $reflectionClass->isSubclassOf(ValidationException::class),
+            'Every Respect/Validation exception must extend ValidationException.'
+        );
+    }
+
+    /**
      * @return string[][]
      */
-    public function provideListOfRuleNames(): array
+    public static function provideListOfRuleNames(): array
     {
         $rulesDirectory = 'library/Rules';
         $rulesDirectoryIterator = new DirectoryIterator($rulesDirectory);
@@ -59,25 +79,5 @@ final class CheckExceptionsTest extends TestCase
         }
 
         return $ruleNames;
-    }
-
-    /**
-     * @dataProvider provideListOfRuleNames
-     *
-     * @test
-     */
-    public function ruleHasAnExceptionWhichHasValidApi(string $ruleName): void
-    {
-        $exceptionClass = 'Respect\\Validation\\Exceptions\\' . $ruleName . 'Exception';
-        self::assertTrue(
-            class_exists($exceptionClass),
-            sprintf('Expected exception class to exist: %s.', $ruleName)
-        );
-
-        $reflectionClass = new ReflectionClass($exceptionClass);
-        self::assertTrue(
-            $reflectionClass->isSubclassOf(ValidationException::class),
-            'Every Respect/Validation exception must extend ValidationException.'
-        );
     }
 }

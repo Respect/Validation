@@ -7,34 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\FloatValException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::floatVal()->check('a');
-} catch (FloatValException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::floatVal())->check(165.0);
-} catch (FloatValException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::floatVal()->assert('a');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::floatVal())->assert('165.7');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
+exceptionMessage(static fn() => v::floatVal()->check('a'));
+exceptionMessage(static fn() => v::not(v::floatVal())->check(165.0));
+exceptionFullMessage(static fn() => v::floatVal()->assert('a'));
+exceptionFullMessage(static fn() => v::not(v::floatVal())->assert('165.7'));
 ?>
 --EXPECT--
 "a" must be a float number

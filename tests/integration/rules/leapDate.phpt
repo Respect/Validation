@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\LeapDateException;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::leapDate('Y-m-d')->check('1989-02-29');
-} catch (LeapDateException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::leapDate('Y-m-d'))->check('1988-02-29');
-} catch (LeapDateException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::leapDate('Y-m-d')->assert('1990-02-29');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::leapDate('Y-m-d'))->assert('1992-02-29');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::leapDate('Y-m-d')->check('1989-02-29'));
+exceptionMessage(static fn() => v::not(v::leapDate('Y-m-d'))->check('1988-02-29'));
+exceptionFullMessage(static fn() => v::leapDate('Y-m-d')->assert('1990-02-29'));
+exceptionFullMessage(static fn() => v::not(v::leapDate('Y-m-d'))->assert('1992-02-29'));
 ?>
 --EXPECT--
 "1989-02-29" must be leap date

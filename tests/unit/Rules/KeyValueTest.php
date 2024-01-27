@@ -24,7 +24,7 @@ final class KeyValueTest extends RuleTestCase
     /**
      * {@inheritdoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             'Equal values' => [new KeyValue('foo', 'equals', 'bar'), ['foo' => 42, 'bar' => 42]],
@@ -42,7 +42,7 @@ final class KeyValueTest extends RuleTestCase
     /**
      * {@inheritdoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $keyValue = new KeyValue('foo', 'equals', 'bar');
 

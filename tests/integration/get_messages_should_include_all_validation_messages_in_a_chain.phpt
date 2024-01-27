@@ -11,10 +11,9 @@ date_default_timezone_set('UTC');
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator;
 
-try {
+exceptionMessages(static function () {
     $input = [
         'username' => 'u',
         'birthdate' => 'Not a date',
@@ -27,9 +26,7 @@ try {
         ->key('password', Validator::notEmpty())
         ->key('email', Validator::email())
         ->assert($input);
-} catch (NestedValidationException $e) {
-    print_r($e->getMessages());
-}
+});
 ?>
 --EXPECT--
 Array

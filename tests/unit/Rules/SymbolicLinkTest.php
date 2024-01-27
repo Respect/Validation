@@ -29,7 +29,7 @@ final class SymbolicLinkTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $sut = new SymbolicLink();
 
@@ -43,7 +43,7 @@ final class SymbolicLinkTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $sut = new SymbolicLink();
 

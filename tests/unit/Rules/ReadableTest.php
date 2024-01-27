@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Psr\Http\Message\StreamInterface;
 use Respect\Validation\Test\RuleTestCase;
+use Respect\Validation\Test\Stubs\StreamStub;
 use SplFileInfo;
 use stdClass;
 
@@ -27,39 +27,31 @@ final class ReadableTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
-        $file = $this->getFixtureDirectory() . '/valid-image.gif';
+        $file = self::fixture('valid-image.gif');
         $rule = new Readable();
 
         return [
             [$rule, $file],
             [$rule, new SplFileInfo($file)],
-            [$rule, $this->createPsr7Stream(true)],
+            [$rule, StreamStub::create()],
         ];
     }
 
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
-        $file = $this->getFixtureDirectory() . '/invalid-image.gif';
+        $file = self::fixture('invalid-image.gif');
         $rule = new Readable();
 
         return [
             [$rule, $file],
             [$rule, new SplFileInfo($file)],
             [$rule, new stdClass()],
-            [$rule, $this->createPsr7Stream(false)],
+            [$rule, StreamStub::createUnreadable()],
         ];
-    }
-
-    private function createPsr7Stream(bool $isReadable): StreamInterface
-    {
-        $stream = $this->createMock(StreamInterface::class);
-        $stream->expects(self::any())->method('isReadable')->willReturn($isReadable);
-
-        return $stream;
     }
 }

@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\StringTypeException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::stringType()->check(42);
-} catch (StringTypeException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::stringType())->check('foo');
-} catch (StringTypeException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::stringType()->assert(true);
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::stringType())->assert('bar');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::stringType()->check(42));
+exceptionMessage(static fn() => v::not(v::stringType())->check('foo'));
+exceptionFullMessage(static fn() => v::stringType()->assert(true));
+exceptionFullMessage(static fn() => v::not(v::stringType())->assert('bar'));
 ?>
 --EXPECT--
 42 must be of type string

@@ -25,7 +25,7 @@ final class NotOptionalTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $rule = new NotOptional();
 
@@ -50,7 +50,7 @@ final class NotOptionalTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $rule = new NotOptional();
 

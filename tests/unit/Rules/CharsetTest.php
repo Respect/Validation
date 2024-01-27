@@ -40,7 +40,7 @@ final class CharsetTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new Charset('UTF-8'), ''],
@@ -57,7 +57,7 @@ final class CharsetTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $rule = new Charset('ASCII');
 

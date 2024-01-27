@@ -59,7 +59,7 @@ final class MimetypeTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             'image/png' => [new Mimetype('image/png'), 'tests/fixtures/valid-image.png'],
@@ -74,7 +74,7 @@ final class MimetypeTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             'invalid file' => [new Mimetype('image/png'), 'tests/fixtures/invalid-image.png'],

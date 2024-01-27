@@ -27,7 +27,7 @@ final class CnpjTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $rule = new Cnpj();
 
@@ -49,7 +49,7 @@ final class CnpjTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $rule = new Cnpj();
 
@@ -75,6 +75,7 @@ final class CnpjTest extends RuleTestCase
             [$rule, '123'],
             [$rule, '992999999999929384'],
             [$rule, '99-010-0.'],
+            [$rule, null],
         ];
     }
 }

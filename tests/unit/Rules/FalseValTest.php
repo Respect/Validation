@@ -30,7 +30,7 @@ final class FalseValTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         $sut = new FalseVal();
 
@@ -54,7 +54,7 @@ final class FalseValTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         $sut = new FalseVal();
 

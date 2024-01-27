@@ -7,33 +7,12 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\PrimeNumberException;
 use Respect\Validation\Validator as v;
 
-try {
-    v::primeNumber()->check(10);
-} catch (PrimeNumberException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::primeNumber())->check(3);
-} catch (PrimeNumberException $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-}
-
-try {
-    v::primeNumber()->assert('Foo');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-try {
-    v::not(v::primeNumber())->assert('+7');
-} catch (NestedValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
+exceptionMessage(static fn() => v::primeNumber()->check(10));
+exceptionMessage(static fn() => v::not(v::primeNumber())->check(3));
+exceptionFullMessage(static fn() => v::primeNumber()->assert('Foo'));
+exceptionFullMessage(static fn() => v::not(v::primeNumber())->assert('+7'));
 ?>
 --EXPECT--
 10 must be a valid prime number

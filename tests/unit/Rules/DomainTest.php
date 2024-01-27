@@ -28,7 +28,7 @@ final class DomainTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForValidInput(): array
+    public static function providerForValidInput(): array
     {
         return [
             [new Domain(false), '111111111111domain.local'],
@@ -46,7 +46,7 @@ final class DomainTest extends RuleTestCase
     /**
      * {@inheritDoc}
      */
-    public function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): array
     {
         return [
             [new Domain(), null],
