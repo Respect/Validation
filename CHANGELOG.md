@@ -4,7 +4,7 @@
 
 Versioning Changes:
 
- - Dropped support for PHP 7.4.
+ - Dropped support for PHP 8.0 and below.
  - Updated dev dependencies
 
 Deprecations:
