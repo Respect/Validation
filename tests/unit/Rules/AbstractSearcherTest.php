@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Test\DataProvider\UndefinedProvider;
+use Respect\Validation\Test\Rules\SearcherStub;
 use Respect\Validation\Test\TestCase;
 
 /**
@@ -27,11 +28,7 @@ final class AbstractSearcherTest extends TestCase
     {
         $input = 'BAZ';
 
-        $rule = $this->getMockForAbstractClass(AbstractSearcher::class);
-        $rule
-            ->expects(self::once())
-            ->method('getDataSource')
-            ->willReturn(['FOO', $input, 'BAZ']);
+        $rule = new SearcherStub(static fn() => ['FOO', $input, 'BAZ']);
 
         self::assertTrue($rule->validate($input));
     }
@@ -43,11 +40,7 @@ final class AbstractSearcherTest extends TestCase
     {
         $input = 2.0;
 
-        $rule = $this->getMockForAbstractClass(AbstractSearcher::class);
-        $rule
-            ->expects(self::once())
-            ->method('getDataSource')
-            ->willReturn([1, (int) $input, 3]);
+        $rule = new SearcherStub(static fn() => [1, (int) $input, 3]);
 
         self::assertFalse($rule->validate($input));
     }
@@ -58,11 +51,7 @@ final class AbstractSearcherTest extends TestCase
      */
     public function shouldValidateWhenValueIsUndefinedAndDataSourceIsEmpty(mixed $input): void
     {
-        $rule = $this->getMockForAbstractClass(AbstractSearcher::class);
-        $rule
-            ->expects(self::once())
-            ->method('getDataSource')
-            ->willReturn([]);
+        $rule = new SearcherStub(static fn() => []);
 
         self::assertTrue($rule->validate($input));
     }
@@ -73,11 +62,7 @@ final class AbstractSearcherTest extends TestCase
      */
     public function shouldNotValidateWhenValueIsNotUndefinedAndDataSourceNotEmpty(mixed $input): void
     {
-        $rule = $this->getMockForAbstractClass(AbstractSearcher::class);
-        $rule
-            ->expects(self::once())
-            ->method('getDataSource')
-            ->willReturn([]);
+        $rule = new SearcherStub(static fn() => []);
 
         self::assertFalse($rule->validate($input));
     }
