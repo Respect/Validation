@@ -10,9 +10,10 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Message\Formatter;
-use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
+use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
+
+use function random_int;
 
 /**
  * @covers \Respect\Validation\Rules\AbstractRule
@@ -20,168 +21,136 @@ use Respect\Validation\Test\TestCase;
 final class AbstractRuleTest extends TestCase
 {
     /**
-     * @dataProvider providerForTrueAndFalse
-     * @covers       \Respect\Validation\Rules\AbstractRule::__invoke
+     * @covers \Respect\Validation\Rules\AbstractRule::__invoke
      * @test
      */
-    public function magicMethodInvokeCallsValidateWithInput(bool $booleanResult): void
+    public function itShouldValidateSomeValidInputUsingTheInvokeMagicMethod(): void
     {
-        $input = 'something';
+        $sut = new Stub(true);
 
-        $abstractRuleMock = $this
-            ->getMockBuilder(AbstractRule::class)
-            ->getMockForAbstractClass();
+        self::assertTrue($sut('something'));
+    }
 
-        $abstractRuleMock
-            ->expects(self::once())
-            ->method('validate')
-            ->with($input)
-            ->will(self::returnValue($booleanResult));
+    /**
+     * @covers \Respect\Validation\Rules\AbstractRule::__invoke
+     * @test
+     */
+    public function itShouldValidateSomeInvalidInputUsingTheInvokeMagicMethod(): void
+    {
+        $sut = new Stub(false);
 
-        self::assertEquals(
-            $booleanResult,
-            // Invoking it to trigger __invoke
-            $abstractRuleMock($input),
-            'When invoking an instance of AbstractRule, the method validate should' .
-            'be called with the same input and return the same result.'
-        );
+        self::assertFalse($sut('something'));
     }
 
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::assert
      * @test
      */
-    public function assertInvokesValidateOnSuccess(): void
+    public function itShouldThrowAnExceptionOnAssertingSomeInvalidInput(): void
     {
         $input = 'something';
 
-        $abstractRuleMock = $this
-            ->getMockBuilder(AbstractRule::class)
-            ->onlyMethods(['validate', 'reportError'])
-            ->getMockForAbstractClass();
+        $sut = new Stub(false);
 
-        $abstractRuleMock
-            ->expects(self::once())
-            ->method('validate')
-            ->with($input)
-            ->will(self::returnValue(true));
+        $this->expectException(ValidationException::class);
 
-        $abstractRuleMock
-            ->expects(self::never())
-            ->method('reportError');
-
-        $abstractRuleMock->assert($input);
+        $sut->assert($input);
     }
 
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::assert
      * @test
      */
-    public function assertInvokesValidateAndReportErrorOnFailure(): void
+    public function itShouldNotThrowAnExceptionOnAssertingSomeValidInput(): void
     {
         $input = 'something';
-        $exception = new ValidationException(
-            $input,
-            'abstract',
-            [],
-            new Formatter('strval', new KeepOriginalStringName())
-        );
 
-        $abstractRuleMock = $this
-            ->getMockBuilder(AbstractRule::class)
-            ->onlyMethods(['validate', 'reportError'])
-            ->getMockForAbstractClass();
+        $sut = new Stub(true);
 
-        $abstractRuleMock
-            ->expects(self::once())
-            ->method('validate')
-            ->with($input)
-            ->will(self::returnValue(false));
+        $this->expectNotToPerformAssertions();
 
-        $abstractRuleMock
-            ->expects(self::once())
-            ->method('reportError')
-            ->with($input)
-            ->will(self::throwException($exception));
-
-        $this->expectExceptionObject($exception);
-
-        $abstractRuleMock->assert($input);
+        $sut->assert($input);
     }
 
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::check
      * @test
      */
-    public function checkInvokesAssertToPerformTheValidationByDefault(): void
+    public function itShouldThrowAnExceptionOnCheckingSomeInvalidInput(): void
     {
         $input = 'something';
 
-        $abstractRuleMock = $this
-            ->getMockBuilder(AbstractRule::class)
-            ->onlyMethods(['assert'])
-            ->getMockForAbstractClass();
+        $sut = new Stub(false);
 
-        $abstractRuleMock
-            ->expects(self::once())
-            ->method('assert')
-            ->with($input);
+        $this->expectException(ValidationException::class);
 
-        $abstractRuleMock->check($input);
+        $sut->check($input);
+    }
+
+    /**
+     * @covers \Respect\Validation\Rules\AbstractRule::check
+     * @test
+     */
+    public function itShouldNotThrowAnExceptionOnCheckingSomeValidInput(): void
+    {
+        $input = 'something';
+
+        $sut = new Stub(true);
+
+        $this->expectNotToPerformAssertions();
+
+        $sut->check($input);
     }
 
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::setTemplate
      * @test
      */
-    public function shouldReturnTheCurrentObjectWhenDefinigTemplate(): void
+    public function itShouldReturnSelfWhenSettingSomeTemplate(): void
     {
-        $abstractRuleMock = $this
-            ->getMockBuilder(AbstractRule::class)
-            ->getMockForAbstractClass();
+        $sut = new Stub();
 
-        self::assertSame($abstractRuleMock, $abstractRuleMock->setTemplate('whatever'));
+        self::assertSame($sut, $sut->setTemplate('whatever'));
     }
 
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::setName
      * @test
      */
-    public function shouldReturnTheCurrentObjectWhenDefinigName(): void
+    public function itShouldReturnSelfWhenSettingSomeName(): void
     {
-        $abstractRuleMock = $this
-            ->getMockBuilder(AbstractRule::class)
-            ->getMockForAbstractClass();
+        $sut = new Stub();
 
-        self::assertSame($abstractRuleMock, $abstractRuleMock->setName('whatever'));
+        self::assertSame($sut, $sut->setName('whatever'));
     }
 
     /**
      * @covers \Respect\Validation\Rules\AbstractRule::getName
-     * @covers \Respect\Validation\Rules\AbstractRule::setName
      * @test
      */
-    public function shouldBeAbleToDefineAndRetrivedRuleName(): void
+    public function itShouldBeAbleToRetrieveItsName(): void
     {
-        $abstractRuleMock = $this
-            ->getMockBuilder(AbstractRule::class)
-            ->getMockForAbstractClass();
-
         $name = 'something';
 
-        $abstractRuleMock->setName($name);
+        $sut = new Stub();
+        $sut->setName($name);
 
-        self::assertSame($name, $abstractRuleMock->getName());
+        self::assertSame($name, $sut->getName());
     }
 
     /**
-     * @return bool[][]
+     * @covers \Respect\Validation\Rules\AbstractRule::getName
+     * @test
      */
-    public static function providerForTrueAndFalse(): array
+    public function itShouldReportErrorWithExtraParameters(): void
     {
-        return [
-            [true],
-            [false],
-        ];
+        $extraParameterName = 'foo';
+        $extraParameterValue = random_int(1, 100);
+
+        $sut = new Stub();
+
+        $exception = $sut->reportError('input', [$extraParameterName => $extraParameterValue]);
+
+        self::assertSame($extraParameterValue, $exception->getParam($extraParameterName));
     }
 }
