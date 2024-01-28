@@ -68,11 +68,6 @@ class ValidationException extends InvalidArgumentException implements Exception
         return $this->params[$name] ?? null;
     }
 
-    public function setParam(string $name, mixed $value): void
-    {
-        $this->params[$name] = $value;
-    }
-
     public function updateMode(string $mode): void
     {
         $this->mode = $mode;

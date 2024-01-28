@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-use Respect\Validation\Helpers\CountryInfo;
-
 final class PhoneException extends ValidationException
 {
     public const FOR_COUNTRY = 'for_country';
@@ -37,9 +35,6 @@ final class PhoneException extends ValidationException
         if (!$countryCode) {
             return self::INTERNATIONAL;
         }
-
-        $countryInfo = new CountryInfo($countryCode);
-        $this->setParam('countryName', $countryInfo->getCountry());
 
         return self::FOR_COUNTRY;
     }

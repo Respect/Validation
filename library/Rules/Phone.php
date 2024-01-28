@@ -12,6 +12,7 @@ namespace Respect\Validation\Rules;
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumberUtil;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Helpers\CountryInfo;
 
 use function class_exists;
 use function is_null;
@@ -20,9 +21,10 @@ use function sprintf;
 
 final class Phone extends AbstractRule
 {
-    public function __construct(private ?string $countryCode = null)
-    {
+    private readonly ?string $countryName;
 
+    public function __construct(private readonly ?string $countryCode = null)
+    {
         if (!is_null($countryCode) && !(new CountryCode())->validate($countryCode)) {
             throw new ComponentException(
                 sprintf(
@@ -35,6 +37,8 @@ final class Phone extends AbstractRule
         if (!class_exists(PhoneNumberUtil::class)) {
             throw new ComponentException('The phone validator requires giggsey/libphonenumber-for-php');
         }
+
+        $this->countryName = $countryCode === null ? null : (new CountryInfo($countryCode))->getCountry();
     }
 
     public function validate(mixed $input): bool
