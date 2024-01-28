@@ -17,11 +17,6 @@ use function explode;
 final class PublicDomainSuffix extends AbstractSearcher
 {
     /**
-     * @var string[]
-     */
-    private array $domainInfo;
-
-    /**
      * @return string[]
      */
     protected function getDataSource(mixed $input = null): array
@@ -29,9 +24,6 @@ final class PublicDomainSuffix extends AbstractSearcher
         $parts = explode('.', $input);
         $tld = array_pop($parts);
 
-        $domainInfo = new DomainInfo($tld);
-        $this->domainInfo = $domainInfo->getPublicSuffixes();
-
-        return $this->domainInfo;
+        return (new DomainInfo($tld))->getPublicSuffixes();
     }
 }
