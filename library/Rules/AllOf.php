@@ -17,20 +17,14 @@ class AllOf extends AbstractComposite
 {
     public function assert(mixed $input): void
     {
-        $exceptions = $this->getAllThrownExceptions($input);
-        $numRules = count($this->getRules());
-        $numExceptions = count($exceptions);
-        $summary = [
-            'total' => $numRules,
-            'failed' => $numExceptions,
-            'passed' => $numRules - $numExceptions,
-        ];
-        if (!empty($exceptions)) {
-            /** @var AllOfException $allOfException */
-            $allOfException = $this->reportError($input, $summary);
-            $allOfException->addChildren($exceptions);
+        try {
+            parent::assert($input);
+        } catch (AllOfException $exception) {
+            if (count($exception->getChildren()) === count($this->getRules()) && !$exception->hasCustomTemplate()) {
+                $exception->updateTemplate(AllOfException::NONE);
+            }
 
-            throw $allOfException;
+            throw $exception;
         }
     }
 

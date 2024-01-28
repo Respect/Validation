@@ -18,16 +18,12 @@ final class AnyOf extends AbstractComposite
 {
     public function assert(mixed $input): void
     {
-        $validators = $this->getRules();
-        $exceptions = $this->getAllThrownExceptions($input);
-        $numRules = count($validators);
-        $numExceptions = count($exceptions);
-        if ($numExceptions === $numRules) {
-            /** @var AnyOfException $anyOfException */
-            $anyOfException = $this->reportError($input);
-            $anyOfException->addChildren($exceptions);
-
-            throw $anyOfException;
+        try {
+            parent::assert($input);
+        } catch (AnyOfException $exception) {
+            if (count($exception->getChildren()) === count($this->getRules())) {
+                throw $exception;
+            }
         }
     }
 

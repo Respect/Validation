@@ -24,4 +24,9 @@ class AllOfException extends GroupedValidationException
             self::SOME => 'These rules must not pass for {{name}}',
         ],
     ];
+
+    protected function chooseTemplate(): string
+    {
+        return self::SOME;
+    }
 }

@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-use function count;
-
 class GroupedValidationException extends NestedValidationException
 {
     public const NONE = 'none';
@@ -29,12 +27,4 @@ class GroupedValidationException extends NestedValidationException
             self::SOME => 'These rules must not pass for {{name}}',
         ],
     ];
-
-    protected function chooseTemplate(): string
-    {
-        $numRules = $this->getParam('passed');
-        $numFailed = count($this->getChildren());
-
-        return $numRules === $numFailed ? self::NONE : self::SOME;
-    }
 }

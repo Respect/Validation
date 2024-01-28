@@ -20,7 +20,7 @@ Factory::setDefaultInstance(
                     => '{{name}} deve ser do tipo string',
                 '{{name}} must have a length between {{minValue}} and {{maxValue}}'
                     => '{{name}} deve possuir de {{minValue}} a {{maxValue}} caracteres',
-            ][$message];
+            ][$message] ?? $message;
         })
 );
 

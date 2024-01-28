@@ -9,8 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Test\Exceptions\CompositeStubException;
+use Respect\Validation\Test\Rules\Stub;
+use Respect\Validation\Test\Stubs\CompositeSub;
 use Respect\Validation\Test\TestCase;
-use Respect\Validation\Validatable;
+
+use function current;
 
 /**
  * @group rule
@@ -21,175 +25,173 @@ final class AbstractCompositeTest extends TestCase
     /**
      * @test
      */
-    public function shouldDefineNameForInternalWhenAppendRuleToCompositeRule(): void
+    public function itShouldUpdateTheNameOfTheChildWhenUpdatingItsName(): void
     {
         $ruleName = 'something';
 
-        $rule = $this->createMock(Validatable::class);
-        $rule
-            ->expects(self::once())
-            ->method('getName')
-            ->will(self::returnValue(null));
-        $rule
-            ->expects(self::once())
-            ->method('setName')
-            ->with($ruleName);
+        $child = new Stub();
 
-        $sut = $this
-            ->getMockBuilder(AbstractComposite::class)
-            ->getMockForAbstractClass();
+        $parent = new CompositeSub($child);
 
-        $sut->setName($ruleName);
-        $sut->addRule($rule);
+        self::assertNull($child->getName());
+
+        $parent->setName($ruleName);
+
+        self::assertSame($ruleName, $child->getName());
     }
 
     /**
      * @test
      */
-    public function shouldUpdateInternalRuleNameWhenNameIsUpdated(): void
+    public function itShouldUpdateTheNameOfTheChildWhenAddingIt(): void
+    {
+        $ruleName = 'something';
+
+        $rule = new Stub();
+
+        $sut = new CompositeSub();
+        $sut->setName($ruleName);
+
+        self::assertNull($rule->getName());
+
+        $sut->addRule($rule);
+
+        self::assertSame($ruleName, $rule->getName());
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldNotUpdateTheNameOfTheChildWhenUpdatingItsNameIfTheChildAlreadyHasSomeName(): void
     {
         $ruleName1 = 'something';
         $ruleName2 = 'something else';
 
-        $rule = $this->createMock(Validatable::class);
-        $rule
-            ->expects(self::exactly(2))
-            ->method('getName')
-            ->willReturnOnConsecutiveCalls(
-                null,
-                $ruleName1
-            );
+        $rule = new Stub();
+        $rule->setName($ruleName1);
 
-        $sut = $this
-            ->getMockBuilder(AbstractComposite::class)
-            ->getMockForAbstractClass();
-
-        $sut->setName($ruleName1);
-        $sut->addRule($rule);
+        $sut = new CompositeSub($rule);
         $sut->setName($ruleName2);
+
+        self::assertSame($ruleName1, $rule->getName());
     }
 
     /**
      * @test
      */
-    public function shouldNotUpdateInternalRuleWhenItAlreadyHasName(): void
+    public function itNotShouldUpdateTheNameOfTheChildWhenAddingItIfTheChildAlreadyHasSomeName(): void
     {
-        $rule = $this->createMock(Validatable::class);
-        $rule
-            ->expects(self::any())
-            ->method('getName')
-            ->will(self::returnValue('something'));
-        $rule
-            ->expects(self::never())
-            ->method('setName');
+        $ruleName1 = 'something';
+        $ruleName2 = 'something else';
 
-        $sut = $this
-            ->getMockBuilder(AbstractComposite::class)
-            ->getMockForAbstractClass();
+        $rule = new Stub();
+        $rule->setName($ruleName1);
+
+        $sut = new CompositeSub();
+        $sut->setName($ruleName2);
         $sut->addRule($rule);
-        $sut->setName('Whatever');
+
+        self::assertSame($ruleName1, $rule->getName());
     }
 
     /**
      * @test
      */
-    public function shouldUpdateInternalRuleWhenItsNameIsNull(): void
+    public function itShouldReturnItsChildren(): void
     {
-        $ruleName = 'something';
+        $child1 = new Stub();
+        $child2 = new Stub();
+        $child3 = new Stub();
 
-        $rule = $this->createMock(Validatable::class);
-        $rule
-            ->expects(self::any())
-            ->method('getName')
-            ->will(self::returnValue(null));
-        $rule
-            ->expects(self::once())
-            ->method('setName')
-            ->with($ruleName);
+        $sut = new CompositeSub($child1, $child2, $child3);
+        $children = $sut->getRules();
 
-        $sut = $this
-            ->getMockBuilder(AbstractComposite::class)
-            ->getMockForAbstractClass();
-
-        $sut->addRule($rule);
-        $sut->setName($ruleName);
+        self::assertCount(3, $children);
+        self::assertSame($child1, $children[0]);
+        self::assertSame($child2, $children[1]);
+        self::assertSame($child3, $children[2]);
     }
 
     /**
      * @test
      */
-    public function shouldDefineNameForInternalRulesWhenItDoesNotHaveName(): void
+    public function itShouldAssertWithAllChildrenAndNotThrowAnExceptionWhenThereAreNoIssues(): void
     {
-        $ruleName = 'something';
+        $input = 'something';
 
-        $rule = $this->createMock(Validatable::class);
-        $rule
-            ->expects(self::any())
-            ->method('getName')
-            ->will(self::returnValue(null));
-        $rule
-            ->expects(self::once())
-            ->method('setName')
-            ->with($ruleName);
+        $child1 = new Stub(true);
+        $child2 = new Stub(true);
+        $child3 = new Stub(true);
 
-        $sut = $this
-            ->getMockBuilder(AbstractComposite::class)
-            ->getMockForAbstractClass();
+        $this->expectNotToPerformAssertions();
 
-        $sut->addRule($rule);
-        $sut->setName($ruleName);
+        $sut = new CompositeSub($child1, $child2, $child3);
+        $sut->assert($input);
     }
 
     /**
      * @test
      */
-    public function shouldNotDefineNameForInternalRulesWhenItAlreadyHasName(): void
+    public function itShouldAssertWithAllChildrenAndThrowAnExceptionWhenThereAreIssues(): void
     {
-        $ruleName = 'something';
+        $sut = new CompositeSub(new Stub(false), new Stub(false), new Stub(false));
 
-        $rule = $this->createMock(Validatable::class);
-        $rule
-            ->expects(self::any())
-            ->method('getName')
-            ->will(self::returnValue($ruleName));
-        $rule
-            ->expects(self::never())
-            ->method('setName');
-
-        $sut = $this
-            ->getMockBuilder(AbstractComposite::class)
-            ->getMockForAbstractClass();
-
-        $sut->addRule($rule);
-        $sut->setName($ruleName);
+        try {
+            $sut->assert('something');
+        } catch (CompositeStubException $exception) {
+            self::assertCount(3, $exception->getChildren());
+        }
     }
 
     /**
      * @test
      */
-    public function shouldReturnTheAmountOfAddedRules(): void
+    public function itShouldUpdateTheTemplateOfEveryChildrenWhenAsserting(): void
     {
-        $sut = $this->getMockForAbstractClass(AbstractComposite::class);
-        $sut->addRule($this->createMock(Validatable::class));
-        $sut->addRule($this->createMock(Validatable::class));
-        $sut->addRule($this->createMock(Validatable::class));
+        $template = 'This is my template';
 
-        self::assertCount(3, $sut->getRules());
+        $sut = new CompositeSub(
+            new Stub(false),
+            new Stub(false),
+            new Stub(false)
+        );
+        $sut->setTemplate($template);
+
+        try {
+            $sut->assert('something');
+        } catch (CompositeStubException $exception) {
+            foreach ($exception->getChildren() as $child) {
+                self::assertEquals($template, $child->getMessage());
+            }
+        }
     }
 
     /**
      * @test
      */
-    public function shouldAddRulesByPassingThroughConstructor(): void
+    public function itShouldUpdateTheTemplateOfEveryTheChildrenOfSomeChildWhenAsserting(): void
     {
-        $rule = $this->createMock(Validatable::class);
-        $anotherSimpleRuleMock = $this->createMock(Validatable::class);
+        $template = 'This is my template';
 
-        $sut = $this->getMockForAbstractClass(AbstractComposite::class, [
-            $rule,
-            $anotherSimpleRuleMock,
-        ]);
+        $sut = new CompositeSub(
+            new Stub(false),
+            new Stub(false),
+            new CompositeSub(new Stub(false))
+        );
+        $sut->setTemplate($template);
 
-        self::assertCount(2, $sut->getRules());
+        try {
+            $sut->assert('something');
+        } catch (CompositeStubException $exception) {
+            foreach ($exception->getChildren() as $child) {
+                self::assertEquals($template, $child->getMessage());
+                if (!$child instanceof CompositeStubException) {
+                    continue;
+                }
+
+                self::assertNotFalse(current($child->getChildren()));
+                self::assertEquals($template, current($child->getChildren())->getMessage());
+            }
+        }
     }
 }

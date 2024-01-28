@@ -17,15 +17,12 @@ final class NoneOf extends AbstractComposite
 {
     public function assert(mixed $input): void
     {
-        $exceptions = $this->getAllThrownExceptions($input);
-        $numRules = count($this->getRules());
-        $numExceptions = count($exceptions);
-        if ($numRules !== $numExceptions) {
-            /** @var NoneOfException $noneOfException */
-            $noneOfException = $this->reportError($input);
-            $noneOfException->addChildren($exceptions);
-
-            throw $noneOfException;
+        try {
+            parent::assert($input);
+        } catch (NoneOfException $exception) {
+            if (count($exception->getChildren()) !== count($this->getRules())) {
+                throw $exception;
+            }
         }
     }
 

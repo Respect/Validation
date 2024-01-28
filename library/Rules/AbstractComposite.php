@@ -13,9 +13,6 @@ use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
 
-use function array_filter;
-use function array_map;
-
 abstract class AbstractComposite extends AbstractRule
 {
     /**
@@ -62,27 +59,37 @@ abstract class AbstractComposite extends AbstractRule
         return $this->rules;
     }
 
+    public function assert(mixed $input): void
+    {
+        $exceptions = $this->getAllThrownExceptions($input);
+        if (empty($exceptions)) {
+            return;
+        }
+
+        $exception = $this->reportError($input);
+        if ($exception instanceof NestedValidationException) {
+            $exception->addChildren($exceptions);
+        }
+
+        throw $exception;
+    }
+
     /**
      * @return ValidationException[]
      */
-    protected function getAllThrownExceptions(mixed $input): array
+    private function getAllThrownExceptions(mixed $input): array
     {
-        return array_filter(
-            array_map(
-                function (Validatable $rule) use ($input): ?ValidationException {
-                    try {
-                        $rule->assert($input);
-                    } catch (ValidationException $exception) {
-                        $this->updateExceptionTemplate($exception);
+        $exceptions = [];
+        foreach ($this->getRules() as $rule) {
+            try {
+                $rule->assert($input);
+            } catch (ValidationException $exception) {
+                $this->updateExceptionTemplate($exception);
+                $exceptions[] = $exception;
+            }
+        }
 
-                        return $exception;
-                    }
-
-                    return null;
-                },
-                $this->getRules()
-            )
-        );
+        return $exceptions;
     }
 
     private function shouldHaveNameOverwritten(Validatable $rule): bool
