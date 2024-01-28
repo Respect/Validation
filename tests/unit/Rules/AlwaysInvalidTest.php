@@ -9,18 +9,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\TestCase;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\AlwaysInvalid
- */
+#[Group('rule')]
+#[CoversClass(AlwaysInvalid::class)]
 final class AlwaysInvalidTest extends TestCase
 {
-    /**
-     * @test
-     * @dataProvider providerForInvalidInput
-     */
+    #[Test]
+    #[DataProvider('providerForInvalidInput')]
     public function itShouldAlwaysBeInvalid(mixed $input): void
     {
         $rule = new AlwaysInvalid();

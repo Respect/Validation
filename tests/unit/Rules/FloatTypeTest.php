@@ -9,14 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
 use const PHP_INT_MAX;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\FloatType
- */
+#[Group('rule')]
+#[CoversClass(FloatType::class)]
 final class FloatTypeTest extends RuleTestCase
 {
     /**

@@ -9,29 +9,27 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Helpers;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\TestCase;
 
-/**
- * @group helper
- * @covers \Respect\Validation\Helpers\CanValidateDateTime
- */
+#[Group('helper')]
+#[CoversClass(CanValidateDateTime::class)]
 final class CanValidateDateTimeTest extends TestCase
 {
     use CanValidateDateTime;
 
-    /**
-     * @test
-     * @dataProvider providerForValidDateTime
-     */
+    #[Test]
+    #[DataProvider('providerForValidDateTime')]
     public function shouldFindWhenValueIsDateTime(string $format, string $value): void
     {
         self::assertTrue($this->isDateTime($format, $value));
     }
 
-    /**
-     * @test
-     * @dataProvider providerForInvalidDateTime
-     */
+    #[Test]
+    #[DataProvider('providerForInvalidDateTime')]
     public function shouldFindWhenValueIsNotDateTime(string $format, string $value): void
     {
         self::assertFalse($this->isDateTime($format, $value));

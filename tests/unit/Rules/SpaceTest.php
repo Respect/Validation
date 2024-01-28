@@ -9,13 +9,13 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\AbstractFilterRule
- * @covers \Respect\Validation\Rules\Space
- */
+#[Group('rule')]
+#[CoversClass(AbstractFilterRule::class)]
+#[CoversClass(Space::class)]
 final class SpaceTest extends RuleTestCase
 {
     /**

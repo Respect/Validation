@@ -9,16 +9,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\WithMethods;
 use stdClass;
 
 use const INF;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\CallableType
- */
+#[Group('rule')]
+#[CoversClass(CallableType::class)]
 final class CallableTypeTest extends RuleTestCase
 {
     /**

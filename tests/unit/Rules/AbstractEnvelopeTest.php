@@ -9,20 +9,19 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\Rules\Envelop;
 use Respect\Validation\Test\TestCase;
 
 use function array_intersect_key;
 
-/**
- * @test core
- * @covers \Respect\Validation\Rules\AbstractEnvelope
- */
+#[Group('core')]
+#[CoversClass(AbstractEnvelope::class)]
 final class AbstractEnvelopeTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldValidateUsingTheInnerRule(): void
     {
         $rule = new Envelop(new AlwaysValid(), []);
@@ -30,9 +29,7 @@ final class AbstractEnvelopeTest extends TestCase
         self::assertTrue($rule->validate('something'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldInvalidateUsingTheInnerRule(): void
     {
         $rule = new Envelop(new AlwaysInvalid(), []);
@@ -40,9 +37,7 @@ final class AbstractEnvelopeTest extends TestCase
         self::assertFalse($rule->validate('something'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldReportErrorUsingProperties(): void
     {
         $input = 'value';

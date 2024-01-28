@@ -11,20 +11,20 @@ namespace Respect\Validation\Rules;
 
 use DateTime as DateTimeMutable;
 use DateTimeImmutable;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\RuleTestCase;
 
 use function date_default_timezone_get;
 use function date_default_timezone_set;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\DateTime
- */
+#[Group('rule')]
+#[CoversClass(DateTime::class)]
 final class DateTimeTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldPassFormatToParameterToException(): void
     {
         $format = 'F jS, Y';
@@ -34,10 +34,8 @@ final class DateTimeTest extends RuleTestCase
         self::assertSame($format, $exception->getParam('format'));
     }
 
-    /**
-     * @test
-     * @dataProvider providerForDateTimeWithTimezone
-     */
+    #[Test]
+    #[DataProvider('providerForDateTimeWithTimezone')]
     public function shouldValidateNoMatterTimezone(string $format, string $input, string $timezone): void
     {
         $currentTimezone = date_default_timezone_get();

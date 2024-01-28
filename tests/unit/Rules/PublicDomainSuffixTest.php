@@ -9,12 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use Respect\Validation\Exceptions\PublicDomainSuffixException;
 use Respect\Validation\Test\RuleTestCase;
 
-/**
- * @covers \Respect\Validation\Exceptions\PublicDomainSuffixException
- * @covers \Respect\Validation\Rules\PublicDomainSuffix
- */
+#[Group('rule')]
+#[CoversClass(PublicDomainSuffixException::class)]
+#[CoversClass(PublicDomainSuffix::class)]
 final class PublicDomainSuffixTest extends RuleTestCase
 {
     /**

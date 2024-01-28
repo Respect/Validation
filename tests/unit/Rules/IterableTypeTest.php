@@ -10,13 +10,13 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use ArrayIterator;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\IterableType
- */
+#[Group('rule')]
+#[CoversClass(IterableType::class)]
 final class IterableTypeTest extends RuleTestCase
 {
     /**

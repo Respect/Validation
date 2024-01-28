@@ -9,6 +9,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
@@ -19,18 +23,14 @@ use function sprintf;
 use const LC_ALL;
 use const PHP_INT_MAX;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Yes
- */
+#[Group('rule')]
+#[CoversClass(Yes::class)]
 final class YesTest extends RuleTestCase
 {
     private readonly string $locale;
 
-    /**
-     * @test
-     * @dataProvider providerForValidInputWithLocale
-     */
+    #[Test]
+    #[DataProvider('providerForValidInputWithLocale')]
     public function itShouldValidateValidInputAccordingToTheLocale(string $locale, string $input): void
     {
         setlocale(LC_ALL, $locale);
@@ -42,10 +42,8 @@ final class YesTest extends RuleTestCase
         self::assertValidInput(new Yes(true), $input);
     }
 
-    /**
-     * @test
-     * @dataProvider providerForInvalidInputWithLocale
-     */
+    #[Test]
+    #[DataProvider('providerForInvalidInputWithLocale')]
     public function itShouldValidateInvalidInputAccordingToTheLocale(string $locale, string $input): void
     {
         setlocale(LC_ALL, $locale);

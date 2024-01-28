@@ -9,13 +9,13 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\NotBlank
- */
+#[Group('rule')]
+#[CoversClass(NotBlank::class)]
 final class NotBlankTest extends RuleTestCase
 {
     /**

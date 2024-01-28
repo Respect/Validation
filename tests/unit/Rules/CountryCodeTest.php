@@ -9,18 +9,17 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\CountryCode
- */
+#[Group('rule')]
+#[CoversClass(CountryCode::class)]
 final class CountryCodeTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldThrowsExceptionWhenInvalidFormat(): void
     {
         $this->expectException(ComponentException::class);

@@ -9,21 +9,20 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
 use Respect\Validation\Test\TestCase;
 
 use function trim;
 
-/**
- * @group core
- * @covers \Respect\Validation\Exceptions\ValidationException
- */
+#[Group('core')]
+#[CoversClass(ValidationException::class)]
 final class ValidationExceptionTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldImplementException(): void
     {
         $sut = new ValidationException('input', 'id', [], $this->createFormatter());
@@ -31,9 +30,7 @@ final class ValidationExceptionTest extends TestCase
         self::assertInstanceOf(Exception::class, $sut);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldRetrieveId(): void
     {
         $id = 'my id';
@@ -42,9 +39,7 @@ final class ValidationExceptionTest extends TestCase
         self::assertSame($id, $sut->getId());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldRetrieveParams(): void
     {
         $params = ['foo' => true, 'bar' => 23];
@@ -54,9 +49,7 @@ final class ValidationExceptionTest extends TestCase
         self::assertSame($params, $sut->getParams());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldRetrieveOneSingleParameter(): void
     {
         $name = 'any name';
@@ -67,9 +60,7 @@ final class ValidationExceptionTest extends TestCase
         self::assertSame($value, $sut->getParam($name));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldReturnNullWhenParameterCanNotBeFound(): void
     {
         $sut = new ValidationException('input', 'id', [], $this->createFormatter());
@@ -77,9 +68,7 @@ final class ValidationExceptionTest extends TestCase
         self::assertNull($sut->getParam('foo'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldHaveTemplateByDefault(): void
     {
         $sut = new ValidationException('input', 'id', [], $this->createFormatter());
@@ -87,9 +76,7 @@ final class ValidationExceptionTest extends TestCase
         self::assertSame('"input" must be valid', $sut->getMessage());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldUpdateMode(): void
     {
         $sut = new ValidationException('input', 'id', [], $this->createFormatter());
@@ -98,9 +85,7 @@ final class ValidationExceptionTest extends TestCase
         self::assertSame('"input" must not be valid', $sut->getMessage());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldUpdateTemplate(): void
     {
         $template = 'This is my new template';
@@ -111,9 +96,7 @@ final class ValidationExceptionTest extends TestCase
         self::assertEquals($template, $sut->getMessage());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldTellWhenHasAsCustomUpdateTemplate(): void
     {
         $sut = new ValidationException('input', 'id', [], $this->createFormatter());
@@ -125,9 +108,7 @@ final class ValidationExceptionTest extends TestCase
         self::assertTrue($sut->hasCustomTemplate());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldUseFormatter(): void
     {
         $template = ' This is my new template ';
@@ -139,9 +120,7 @@ final class ValidationExceptionTest extends TestCase
         self::assertEquals($expected, $sut->getMessage());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldReplacePlaceholders(): void
     {
         $sut = new ValidationException('foo', 'id', ['bar' => 1, 'baz' => 2], $this->createFormatter());
@@ -153,9 +132,7 @@ final class ValidationExceptionTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldKeepPlaceholdersThatCanNotReplace(): void
     {
         $sut = new ValidationException('foo', 'id', ['foo' => 1], $this->createFormatter());
@@ -167,9 +144,7 @@ final class ValidationExceptionTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldUpdateParams(): void
     {
         $sut = new ValidationException('input', 'id', ['foo' => 1], $this->createFormatter());
@@ -179,9 +154,7 @@ final class ValidationExceptionTest extends TestCase
         self::assertEquals('2', $sut->getMessage());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldConvertToString(): void
     {
         $sut = new ValidationException('input', 'id', [], $this->createFormatter());

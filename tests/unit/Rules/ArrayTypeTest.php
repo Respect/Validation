@@ -11,12 +11,12 @@ namespace Respect\Validation\Rules;
 
 use ArrayIterator;
 use ArrayObject;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
-/**
- * @group  rule
- * @covers \Respect\Validation\Rules\ArrayType
- */
+#[Group(' rule')]
+#[CoversClass(ArrayType::class)]
 final class ArrayTypeTest extends RuleTestCase
 {
     /**

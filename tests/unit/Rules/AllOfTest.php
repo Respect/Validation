@@ -9,22 +9,22 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\AllOfException;
 use Respect\Validation\Exceptions\CallbackException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
 
-/**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\AllOfException
- * @covers \Respect\Validation\Rules\AllOf
- */
+#[Group('rule')]
+#[CoversClass(AllOfException::class)]
+#[CoversClass(AllOf::class)]
 final class AllOfTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function validationShouldWorkIfAllRulesReturnTrue(): void
     {
         $valid1 = new Callback(static function () {
@@ -45,10 +45,8 @@ final class AllOfTest extends TestCase
         $o->assert('');
     }
 
-    /**
-     * @dataProvider providerStaticDummyRules
-     * @test
-     */
+    #[Test]
+    #[DataProvider('providerStaticDummyRules')]
     public function validationAssertShouldFailIfAnyRuleFailsAndReturnAllExceptionsFailed(
         Validatable $rule1,
         Validatable $rule2,
@@ -61,10 +59,8 @@ final class AllOfTest extends TestCase
         $o->assert('any');
     }
 
-    /**
-     * @dataProvider providerStaticDummyRules
-     * @test
-     */
+    #[Test]
+    #[DataProvider('providerStaticDummyRules')]
     public function validationCheckShouldFailIfAnyRuleFailsAndThrowTheFirstExceptionOnly(
         Validatable $rule1,
         Validatable $rule2,
@@ -77,11 +73,8 @@ final class AllOfTest extends TestCase
         $o->check('any');
     }
 
-    /**
-     * @dataProvider providerStaticDummyRules
-     * @expectedException \Respect\Validation\Exceptions\
-     * @test
-     */
+    #[Test]
+    #[DataProvider('providerStaticDummyRules')]
     public function validationCheckShouldFailOnEmptyInput(
         Validatable $rule1,
         Validatable $rule2,
@@ -93,10 +86,8 @@ final class AllOfTest extends TestCase
         $o->check('');
     }
 
-    /**
-     * @dataProvider providerStaticDummyRules
-     * @test
-     */
+    #[Test]
+    #[DataProvider('providerStaticDummyRules')]
     public function validationShouldFailIfAnyRuleFails(
         Validatable $rule1,
         Validatable $rule2,

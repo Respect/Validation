@@ -9,18 +9,17 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Identical
- */
+#[Group('rule')]
+#[CoversClass(Identical::class)]
 final class IdenticalTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldPassCompareToParameterToException(): void
     {
         $compareTo = new stdClass();

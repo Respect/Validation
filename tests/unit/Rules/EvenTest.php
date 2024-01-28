@@ -9,14 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
 use const INF;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Even
- */
+#[Group('rule')]
+#[CoversClass(Even::class)]
 final class EvenTest extends RuleTestCase
 {
     /**

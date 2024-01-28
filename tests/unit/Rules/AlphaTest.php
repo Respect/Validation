@@ -9,14 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\AbstractFilterRule
- * @covers \Respect\Validation\Rules\Alpha
- */
+#[Group('rule')]
+#[CoversClass(AbstractFilterRule::class)]
+#[CoversClass(Alpha::class)]
 final class AlphaTest extends RuleTestCase
 {
     /**

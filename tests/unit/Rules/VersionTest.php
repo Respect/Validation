@@ -9,14 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
 use function uniqid;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Version
- */
+#[Group('rule')]
+#[CoversClass(Version::class)]
 final class VersionTest extends RuleTestCase
 {
     /**

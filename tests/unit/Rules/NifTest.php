@@ -9,15 +9,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 use function stream_context_create;
 
-/**
- * @group  rule
- * @covers \Respect\Validation\Rules\Nif
- */
+#[Group(' rule')]
+#[CoversClass(Nif::class)]
 final class NifTest extends RuleTestCase
 {
     /**

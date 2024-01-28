@@ -11,14 +11,14 @@ namespace Respect\Validation\Rules;
 
 use DateTime;
 use DateTimeImmutable;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\CountableStub;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\AbstractComparison
- * @covers \Respect\Validation\Rules\Max
- */
+#[Group('rule')]
+#[CoversClass(AbstractComparison::class)]
+#[CoversClass(Max::class)]
 final class MaxTest extends RuleTestCase
 {
     /**

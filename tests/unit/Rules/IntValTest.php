@@ -9,15 +9,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 use const PHP_INT_MAX;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\IntVal
- */
+#[Group('rule')]
+#[CoversClass(IntVal::class)]
 final class IntValTest extends RuleTestCase
 {
     /**

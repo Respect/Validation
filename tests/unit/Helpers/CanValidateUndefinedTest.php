@@ -9,31 +9,29 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Helpers;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\DataProvider\UndefinedProvider;
 use Respect\Validation\Test\TestCase;
 
-/**
- * @group helper
- * @covers \Respect\Validation\Helpers\CanValidateUndefined
- */
+#[Group('helper')]
+#[CoversClass(CanValidateUndefined::class)]
 final class CanValidateUndefinedTest extends TestCase
 {
     use CanValidateUndefined;
     use UndefinedProvider;
 
-    /**
-     * @test
-     * @dataProvider providerForUndefined
-     */
+    #[Test]
+    #[DataProvider('providerForUndefined')]
     public function shouldFindWhenValueIsUndefined(mixed $value): void
     {
         self::assertTrue($this->isUndefined($value));
     }
 
-    /**
-     * @test
-     * @dataProvider providerForNotUndefined
-     */
+    #[Test]
+    #[DataProvider('providerForNotUndefined')]
     public function shouldFindWhenValueIsNotUndefined(mixed $value): void
     {
         self::assertFalse($this->isUndefined($value));

@@ -9,12 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\NoWhitespace
- */
+#[Group('rule')]
+#[CoversClass(NoWhitespace::class)]
 final class NoWhitespaceTest extends RuleTestCase
 {
     /**

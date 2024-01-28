@@ -12,15 +12,15 @@ namespace Respect\Validation\Rules;
 use ArrayIterator;
 use ArrayObject;
 use DateTime;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use stdClass;
 use Traversable;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Instance
- */
+#[Group('rule')]
+#[CoversClass(Instance::class)]
 final class InstanceTest extends RuleTestCase
 {
     /**

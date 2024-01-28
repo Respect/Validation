@@ -9,21 +9,20 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 use function tmpfile;
 
-/**
- * @group  rule
- * @covers \Respect\Validation\Rules\Type
- */
+#[Group(' rule')]
+#[CoversClass(Type::class)]
 final class TypeTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldThrowExceptionWhenTypeIsNotValid(): void
     {
         $this->expectException(ComponentException::class);

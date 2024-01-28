@@ -10,12 +10,12 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use ArrayObject;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Equivalent
- */
+#[Group('rule')]
+#[CoversClass(Equivalent::class)]
 final class EquivalentTest extends RuleTestCase
 {
     /**

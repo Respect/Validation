@@ -9,13 +9,13 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\AbstractFilterRule
- * @covers \Respect\Validation\Rules\Digit
- */
+#[Group('rule')]
+#[CoversClass(AbstractFilterRule::class)]
+#[CoversClass(Digit::class)]
 final class DigitTest extends RuleTestCase
 {
     /**

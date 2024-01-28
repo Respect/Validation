@@ -9,6 +9,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 
@@ -17,17 +21,12 @@ use function extension_loaded;
 use const FILTER_FLAG_IPV6;
 use const FILTER_FLAG_NO_PRIV_RANGE;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Ip
- */
+#[Group('rule')]
+#[CoversClass(Ip::class)]
 final class IpTest extends RuleTestCase
 {
-    /**
-     * @test
-     * @dataProvider providerForInvalidRanges
-     * @throws ComponentException
-     */
+    #[Test]
+    #[DataProvider('providerForInvalidRanges')]
     public function invalidRangeShouldRaiseException(string $range): void
     {
         $this->expectException(ComponentException::class);

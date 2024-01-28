@@ -9,13 +9,13 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Extension
- */
+#[Group('rule')]
+#[CoversClass(Extension::class)]
 final class ExtensionTest extends RuleTestCase
 {
     /**

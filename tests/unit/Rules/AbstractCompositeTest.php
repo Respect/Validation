@@ -9,6 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\Exceptions\CompositeStubException;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\Stubs\CompositeSub;
@@ -16,15 +19,11 @@ use Respect\Validation\Test\TestCase;
 
 use function current;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\AbstractComposite
- */
+#[Group('rule')]
+#[CoversClass(AbstractComposite::class)]
 final class AbstractCompositeTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldUpdateTheNameOfTheChildWhenUpdatingItsName(): void
     {
         $ruleName = 'something';
@@ -40,9 +39,7 @@ final class AbstractCompositeTest extends TestCase
         self::assertSame($ruleName, $child->getName());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldUpdateTheNameOfTheChildWhenAddingIt(): void
     {
         $ruleName = 'something';
@@ -59,9 +56,7 @@ final class AbstractCompositeTest extends TestCase
         self::assertSame($ruleName, $rule->getName());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldNotUpdateTheNameOfTheChildWhenUpdatingItsNameIfTheChildAlreadyHasSomeName(): void
     {
         $ruleName1 = 'something';
@@ -76,9 +71,7 @@ final class AbstractCompositeTest extends TestCase
         self::assertSame($ruleName1, $rule->getName());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itNotShouldUpdateTheNameOfTheChildWhenAddingItIfTheChildAlreadyHasSomeName(): void
     {
         $ruleName1 = 'something';
@@ -94,9 +87,7 @@ final class AbstractCompositeTest extends TestCase
         self::assertSame($ruleName1, $rule->getName());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldReturnItsChildren(): void
     {
         $child1 = new Stub();
@@ -112,9 +103,7 @@ final class AbstractCompositeTest extends TestCase
         self::assertSame($child3, $children[2]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldAssertWithAllChildrenAndNotThrowAnExceptionWhenThereAreNoIssues(): void
     {
         $input = 'something';
@@ -129,9 +118,7 @@ final class AbstractCompositeTest extends TestCase
         $sut->assert($input);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldAssertWithAllChildrenAndThrowAnExceptionWhenThereAreIssues(): void
     {
         $sut = new CompositeSub(new Stub(false), new Stub(false), new Stub(false));
@@ -143,9 +130,7 @@ final class AbstractCompositeTest extends TestCase
         }
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldUpdateTheTemplateOfEveryChildrenWhenAsserting(): void
     {
         $template = 'This is my template';
@@ -166,9 +151,7 @@ final class AbstractCompositeTest extends TestCase
         }
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldUpdateTheTemplateOfEveryTheChildrenOfSomeChildWhenAsserting(): void
     {
         $template = 'This is my template';

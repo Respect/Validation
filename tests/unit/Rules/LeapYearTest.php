@@ -10,12 +10,12 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use DateTime;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\LeapYear
- */
+#[Group('rule')]
+#[CoversClass(LeapYear::class)]
 final class LeapYearTest extends RuleTestCase
 {
     /**

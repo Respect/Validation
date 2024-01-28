@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
@@ -17,10 +19,8 @@ use function sqrt;
 
 use const NAN;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Decimal
- */
+#[Group('rule')]
+#[CoversClass(Decimal::class)]
 final class DecimalTest extends RuleTestCase
 {
     /**

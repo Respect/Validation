@@ -9,21 +9,21 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\DataProvider\UndefinedProvider;
 use Respect\Validation\Test\Rules\SearcherStub;
 use Respect\Validation\Test\TestCase;
 
-/**
- * @group core
- * @covers \Respect\Validation\Rules\AbstractSearcher
- */
+#[Group('core')]
+#[CoversClass(AbstractSearcher::class)]
 final class AbstractSearcherTest extends TestCase
 {
     use UndefinedProvider;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldValidateFromDataSource(): void
     {
         $input = 'BAZ';
@@ -33,9 +33,7 @@ final class AbstractSearcherTest extends TestCase
         self::assertTrue($rule->validate($input));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldNotFindWhenNotIdentical(): void
     {
         $input = 2.0;
@@ -45,10 +43,8 @@ final class AbstractSearcherTest extends TestCase
         self::assertFalse($rule->validate($input));
     }
 
-    /**
-     * @test
-     * @dataProvider providerForUndefined
-     */
+    #[Test]
+    #[DataProvider('providerForUndefined')]
     public function shouldValidateWhenValueIsUndefinedAndDataSourceIsEmpty(mixed $input): void
     {
         $rule = new SearcherStub(static fn() => []);
@@ -56,10 +52,8 @@ final class AbstractSearcherTest extends TestCase
         self::assertTrue($rule->validate($input));
     }
 
-    /**
-     * @test
-     * @dataProvider providerForNotUndefined
-     */
+    #[Test]
+    #[DataProvider('providerForNotUndefined')]
     public function shouldNotValidateWhenValueIsNotUndefinedAndDataSourceNotEmpty(mixed $input): void
     {
         $rule = new SearcherStub(static fn() => []);

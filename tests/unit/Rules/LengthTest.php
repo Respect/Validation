@@ -9,6 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\CountableStub;
@@ -16,15 +19,11 @@ use Respect\Validation\Test\Stubs\CountableStub;
 use function range;
 use function tmpfile;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Length
- */
+#[Group('rule')]
+#[CoversClass(Length::class)]
 final class LengthTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function isShouldNotNotAcceptInvalidLengths(): void
     {
         $this->expectException(ComponentException::class);

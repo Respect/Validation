@@ -9,14 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\ToStringStub;
 use stdClass;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Domain
- */
+#[Group('rule')]
+#[CoversClass(Domain::class)]
 final class DomainTest extends RuleTestCase
 {
     /**

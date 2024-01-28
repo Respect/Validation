@@ -11,15 +11,15 @@ namespace Respect\Validation\Rules;
 
 use ArrayIterator;
 use ArrayObject;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 use const PHP_INT_MAX;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Countable
- */
+#[Group('rule')]
+#[CoversClass(Countable::class)]
 final class CountableTest extends RuleTestCase
 {
     /**

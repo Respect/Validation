@@ -9,18 +9,17 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\PostalCode
- */
+#[Group('rule')]
+#[CoversClass(PostalCode::class)]
 final class PostalCodeTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldValidateEmptyStringsWhenUsingDefaultPattern(): void
     {
         $rule = new PostalCode('ZW');
@@ -28,9 +27,7 @@ final class PostalCodeTest extends RuleTestCase
         self::assertValidInput($rule, '');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldNotValidateNonEmptyStringsWhenUsingDefaultPattern(): void
     {
         $rule = new PostalCode('ZW');
@@ -38,9 +35,7 @@ final class PostalCodeTest extends RuleTestCase
         self::assertInvalidInput($rule, ' ');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldThrowsExceptionWhenCountryCodeIsNotValid(): void
     {
         $this->expectException(ComponentException::class);

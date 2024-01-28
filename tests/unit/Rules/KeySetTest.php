@@ -9,20 +9,20 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\KeySetException;
 use Respect\Validation\Test\TestCase;
 use stdClass;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\KeySet
- */
+#[Group('rule')]
+#[CoversClass(KeySet::class)]
 final class KeySetTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldNotAcceptAllOfWithMoreThanOneKeyRule(): void
     {
         $key1 = new Key('foo', new AlwaysValid(), false);
@@ -35,9 +35,7 @@ final class KeySetTest extends TestCase
         new KeySet($allOf);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldNotAcceptAllOfWithNonKeyRule(): void
     {
         $alwaysValid = new AlwaysValid();
@@ -49,9 +47,7 @@ final class KeySetTest extends TestCase
         new KeySet($allOf);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldNotAcceptNonKeyRule(): void
     {
         $alwaysValid = new AlwaysValid();
@@ -62,9 +58,7 @@ final class KeySetTest extends TestCase
         new KeySet($alwaysValid);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldValidateKeysWhenThereAreMissingRequiredKeys(): void
     {
         $input = [
@@ -79,9 +73,7 @@ final class KeySetTest extends TestCase
         self::assertFalse($keySet->validate($input));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldValidateKeysWhenThereAreMissingNonRequiredKeys(): void
     {
         $input = [
@@ -96,9 +88,7 @@ final class KeySetTest extends TestCase
         self::assertTrue($keySet->validate($input));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldValidateKeysWhenThereAreMoreKeys(): void
     {
         $input = [
@@ -115,9 +105,7 @@ final class KeySetTest extends TestCase
         self::assertFalse($keySet->validate($input));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldValidateKeysWhenEmpty(): void
     {
         $input = [];
@@ -130,9 +118,7 @@ final class KeySetTest extends TestCase
         self::assertFalse($keySet->validate($input));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldCheckKeys(): void
     {
         $input = [];
@@ -148,9 +134,7 @@ final class KeySetTest extends TestCase
         $keySet->check($input);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldAssertKeys(): void
     {
         $input = [];
@@ -166,9 +150,7 @@ final class KeySetTest extends TestCase
         $keySet->assert($input);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldWarnOfExtraKeysWithMessage(): void
     {
         $input = ['foo' => 123, 'bar' => 456];
@@ -183,9 +165,7 @@ final class KeySetTest extends TestCase
         $keySet->assert($input);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function cannotBeNegated(): void
     {
         $key1 = new Key('foo', new AlwaysValid(), true);
@@ -196,10 +176,8 @@ final class KeySetTest extends TestCase
         new Not(new KeySet($key1));
     }
 
-    /**
-     * @test
-     * @dataProvider providerForInvalidArguments
-     */
+    #[Test]
+    #[DataProvider('providerForInvalidArguments')]
     public function shouldThrowExceptionInCaseArgumentIsAnythingOtherThanArray(mixed $input): void
     {
         $keySet = new KeySet(new Key('name'));

@@ -10,6 +10,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use DateTime;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
@@ -18,10 +20,8 @@ use function mt_rand;
 use function random_int;
 use function uniqid;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\PhpLabel
- */
+#[Group('rule')]
+#[CoversClass(PhpLabel::class)]
 final class PhpLabelTest extends RuleTestCase
 {
     /**

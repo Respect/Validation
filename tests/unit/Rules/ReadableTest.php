@@ -9,15 +9,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\StreamStub;
 use SplFileInfo;
 use stdClass;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Readable
- */
+#[Group('rule')]
+#[CoversClass(Readable::class)]
 final class ReadableTest extends RuleTestCase
 {
     /**

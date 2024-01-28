@@ -9,6 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
@@ -18,10 +21,8 @@ use function random_int;
 use const PHP_INT_MAX;
 use const PHP_INT_MIN;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Uuid
- */
+#[Group('rule')]
+#[CoversClass(Uuid::class)]
 final class UuidTest extends RuleTestCase
 {
     private const UUID_VERSION_1 = 'e4eaaaf2-d142-11e1-b3e4-080027620cdd';
@@ -29,9 +30,7 @@ final class UuidTest extends RuleTestCase
     private const UUID_VERSION_4 = '25769c6c-d34d-4bfe-ba98-e0ee856f3e7a';
     private const UUID_VERSION_5 = 'c4a760a8-dbcf-5254-a0d9-6a4474bd1b62';
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldThrowExceptionWhenVersionIsTwo(): void
     {
         self::expectException(ComponentException::class);
@@ -40,9 +39,7 @@ final class UuidTest extends RuleTestCase
         new Uuid(2);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldThrowExceptionWhenVersionIsGreaterThanFive(): void
     {
         $version = random_int(6, PHP_INT_MAX);
@@ -53,9 +50,7 @@ final class UuidTest extends RuleTestCase
         new Uuid($version);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldThrowExceptionWhenVersionIsLessThanOne(): void
     {
         $version = random_int(PHP_INT_MIN, 0);

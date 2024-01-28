@@ -9,18 +9,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
 use Respect\Validation\Test\TestCase;
 
-/**
- * @covers \Respect\Validation\Exceptions\NestedValidationException
- */
+#[Group('core')]
+#[CoversClass(NestedValidationException::class)]
 final class NestedValidationExceptionTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function getChildrenShouldReturnExceptionAddedByAddRelated(): void
     {
         $composite = new AttributeException('input', 'id', [], new Formatter('strval', new KeepOriginalStringName()));
@@ -30,9 +30,7 @@ final class NestedValidationExceptionTest extends TestCase
         self::assertContainsOnly(IntValException::class, $composite->getChildren());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addingTheSameInstanceShouldAddJustOneSingleReference(): void
     {
         $composite = new AttributeException('input', 'id', [], new Formatter('strval', new KeepOriginalStringName()));

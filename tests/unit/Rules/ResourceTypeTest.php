@@ -9,16 +9,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 use function stream_context_create;
 use function tmpfile;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\ResourceType
- */
+#[Group('rule')]
+#[CoversClass(ResourceType::class)]
 final class ResourceTypeTest extends RuleTestCase
 {
     /**

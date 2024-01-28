@@ -11,20 +11,19 @@ namespace Respect\Validation\Rules;
 
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 use function tmpfile;
 
-/**
- * @group  rule
- * @covers \Respect\Validation\Rules\Email
- */
+#[Group(' rule')]
+#[CoversClass(Email::class)]
 final class EmailTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldUseEmailValidatorToValidate(): void
     {
         $input = 'example@example.com';
@@ -36,7 +35,7 @@ final class EmailTest extends RuleTestCase
             ->expects(self::once())
             ->method('isValid')
             ->with($input, self::isInstanceOf(RFCValidation::class))
-            ->will(self::returnValue(true));
+            ->willReturn(true);
 
         $sut = new Email($emailValidator);
 

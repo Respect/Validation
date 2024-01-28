@@ -9,6 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Validatable;
@@ -18,45 +21,35 @@ use Traversable;
 
 use function range;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Each
- */
+#[Group('rule')]
+#[CoversClass(Each::class)]
 final class EachTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldAssertEachValue(): void
     {
         $validatable = $this->createMock(Validatable::class);
         $validatable
             ->expects(self::exactly(3))
-            ->method('assert')
-            ->will($this->onConsecutiveCalls([1], [2], [3]));
+            ->method('assert');
 
         $rule = new Each($validatable);
         $rule->assert(range(1, 3));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldCheckEachValue(): void
     {
         $validatable = $this->createMock(Validatable::class);
         $validatable
             ->expects(self::exactly(3))
-            ->method('check')
-            ->will($this->onConsecutiveCalls([1], [2], [3]));
+            ->method('check');
 
         $rule = new Each($validatable);
         $rule->check(range(1, 3));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldNotOverrideMessages(): void
     {
         $rule = new Each(new StringType());

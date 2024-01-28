@@ -9,14 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\CountableStub;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\AbstractComparison
- * @covers \Respect\Validation\Rules\LessThan
- */
+#[Group('rule')]
+#[CoversClass(AbstractComparison::class)]
+#[CoversClass(LessThan::class)]
 final class LessThanTest extends RuleTestCase
 {
     /**

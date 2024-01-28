@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Validatable;
 
 use function implode;
@@ -17,9 +19,6 @@ use function realpath;
 use function Respect\Stringifier\stringify;
 use function sprintf;
 
-/**
- * @since 1.0.0
- */
 abstract class RuleTestCase extends TestCase
 {
     /**
@@ -29,7 +28,7 @@ abstract class RuleTestCase extends TestCase
      * as the first element and an input in which the validation SHOULD pass.
      *
      * @api
-     * @return mixed[][]
+     * @return array<string|int, array{Validatable, mixed}>
      */
     abstract public static function providerForValidInput(): array;
 
@@ -40,23 +39,19 @@ abstract class RuleTestCase extends TestCase
      * as the first element and an input in which the validation SHOULD NOT pass.
      *
      * @api
-     * @return mixed[][]
+     * @return array<string|int, array{Validatable, mixed}>
      */
     abstract public static function providerForInvalidInput(): array;
 
-    /**
-     * @test
-     * @dataProvider providerForValidInput
-     */
+    #[Test]
+    #[DataProvider('providerForValidInput')]
     public function shouldValidateValidInput(Validatable $validator, mixed $input): void
     {
         self::assertValidInput($validator, $input);
     }
 
-    /**
-     * @test
-     * @dataProvider providerForInvalidInput
-     */
+    #[Test]
+    #[DataProvider('providerForInvalidInput')]
     public function shouldValidateInvalidInput(Validatable $validator, mixed $input): void
     {
         self::assertInvalidInput($validator, $input);

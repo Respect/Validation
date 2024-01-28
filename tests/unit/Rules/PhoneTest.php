@@ -9,13 +9,13 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Exceptions\PhoneException;
 use Respect\Validation\Test\RuleTestCase;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Phone
- */
+#[Group('rule')]
+#[CoversClass(Phone::class)]
 final class PhoneTest extends RuleTestCase
 {
     public function testThrowsExceptionWithCountryName(): void

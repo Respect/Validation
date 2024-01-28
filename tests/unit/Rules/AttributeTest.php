@@ -9,15 +9,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\WithProperties;
 use Respect\Validation\Test\Stubs\WithUninitialized;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\AbstractRelated
- * @covers \Respect\Validation\Rules\Attribute
- */
+#[Group('rule')]
+#[CoversClass(AbstractRelated::class)]
+#[CoversClass(Attribute::class)]
 final class AttributeTest extends RuleTestCase
 {
     /**

@@ -1,7 +1,7 @@
 .couscous/
 .iso-codes-cache/
 .phpcs.cache
-.phpunit.result.cache
+.phpunit.cache/
 composer.lock
 Makefile
 phpcs.xml

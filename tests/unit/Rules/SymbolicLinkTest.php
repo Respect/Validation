@@ -9,16 +9,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use SplFileObject;
 
 use function tmpfile;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\SymbolicLink
- */
+#[Group('rule')]
+#[CoversClass(SymbolicLink::class)]
 final class SymbolicLinkTest extends RuleTestCase
 {
     /**

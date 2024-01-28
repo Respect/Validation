@@ -11,6 +11,9 @@ namespace Respect\Validation\Rules;
 
 use ErrorException;
 use Exception;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\AlwaysInvalidException;
 use Respect\Validation\Exceptions\CallException;
 use Respect\Validation\Test\TestCase;
@@ -20,17 +23,13 @@ use function restore_error_handler;
 use function set_error_handler;
 use function trigger_error;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Call
- */
+#[Group('rule')]
+#[CoversClass(Call::class)]
 final class CallTest extends TestCase
 {
     private readonly ErrorException $errorException;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function assertShouldExecuteCallable(): void
     {
         $input = ' input ';
@@ -46,9 +45,7 @@ final class CallTest extends TestCase
         $sut->assert($input);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function assertShouldThrowCallExceptionWhenPhpTriggersAnError(): void
     {
         $input = [];
@@ -65,9 +62,7 @@ final class CallTest extends TestCase
         $sut->assert($input);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function assertShouldRestorePreviousPhpErrorHandler(): void
     {
         $callable = 'trim';
@@ -85,9 +80,7 @@ final class CallTest extends TestCase
         trigger_error('Forcing PHP to trigger an error');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function assertShouldThrowCallExceptionWhenCallableThrowsAnException(): void
     {
         $input = [];
@@ -106,9 +99,7 @@ final class CallTest extends TestCase
         $sut->assert($input);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function assertShouldThrowExceptionOfTheDefinedRule(): void
     {
         $input = 'something';
@@ -122,9 +113,7 @@ final class CallTest extends TestCase
         $sut->assert($input);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function checkShouldExecuteCallable(): void
     {
         $input = ' input ';
@@ -140,9 +129,7 @@ final class CallTest extends TestCase
         $sut->check($input);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function checkShouldThrowCallExceptionWhenPhpTriggersAnError(): void
     {
         $input = [];
@@ -159,9 +146,7 @@ final class CallTest extends TestCase
         $sut->assert($input);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function checkShouldRestorePreviousPhpErrorHandler(): void
     {
         $callable = 'trim';
@@ -179,9 +164,7 @@ final class CallTest extends TestCase
         trigger_error('Forcing PHP to trigger an error');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function checkShouldThrowCallExceptionWhenCallableThrowsAnException(): void
     {
         $input = [];
@@ -200,9 +183,7 @@ final class CallTest extends TestCase
         $sut->assert($input);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function checkShouldThrowExceptionOfTheDefinedRule(): void
     {
         $rule = new AlwaysInvalid();
@@ -213,9 +194,7 @@ final class CallTest extends TestCase
         $sut->check('something');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validateShouldExecuteCallable(): void
     {
         $input = ' input ';
@@ -232,9 +211,7 @@ final class CallTest extends TestCase
         self::assertTrue($sut->validate($input));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validateShouldReturnFalseWhenPhpTriggersAnError(): void
     {
         $input = [];
@@ -250,9 +227,7 @@ final class CallTest extends TestCase
         self::assertFalse($sut->validate($input));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validateShouldReturnFalseWhenDefinedRuleFails(): void
     {
         $sut = new Call('trim', new AlwaysInvalid());
@@ -260,9 +235,7 @@ final class CallTest extends TestCase
         self::assertFalse($sut->validate('something'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validateShouldRestorePreviousPhpErrorHandler(): void
     {
         $callable = 'trim';

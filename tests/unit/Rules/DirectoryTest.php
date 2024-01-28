@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use SplFileObject;
@@ -16,10 +18,8 @@ use stdClass;
 
 use function dir;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Directory
- */
+#[Group('rule')]
+#[CoversClass(Directory::class)]
 final class DirectoryTest extends RuleTestCase
 {
     /**

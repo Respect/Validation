@@ -10,19 +10,18 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use finfo;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use SplFileObject;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Image
- */
+#[Group('rule')]
+#[CoversClass(Image::class)]
 final class ImageTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldValidateWithDefinedInstanceOfFileInfo(): void
     {
         $input = self::fixture('valid-image.gif');
@@ -32,7 +31,7 @@ final class ImageTest extends RuleTestCase
             ->expects(self::once())
             ->method('file')
             ->with($input)
-            ->will(self::returnValue('image/gif'));
+            ->willReturn('image/gif');
 
         $rule = new Image($finfo);
 

@@ -9,6 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 
@@ -22,16 +25,12 @@ use const FILTER_VALIDATE_FLOAT;
 use const FILTER_VALIDATE_INT;
 use const FILTER_VALIDATE_URL;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\AbstractEnvelope
- * @covers \Respect\Validation\Rules\FilterVar
- */
+#[Group('rule')]
+#[CoversClass(AbstractEnvelope::class)]
+#[CoversClass(FilterVar::class)]
 final class FilterVarTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldThrowsExceptionWhenFilterIsNotValid(): void
     {
         $this->expectException(ComponentException::class);

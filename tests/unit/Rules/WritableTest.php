@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\StreamStub;
 use SplFileInfo;
@@ -17,10 +19,8 @@ use stdClass;
 
 use function chmod;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Writable
- */
+#[Group('rule')]
+#[CoversClass(Writable::class)]
 final class WritableTest extends RuleTestCase
 {
     /**

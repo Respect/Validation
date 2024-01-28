@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
 use function random_int;
@@ -16,10 +18,8 @@ use function tmpfile;
 
 use const PHP_INT_MAX;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\MacAddress
- */
+#[Group('rule')]
+#[CoversClass(MacAddress::class)]
 final class MacAddressTest extends RuleTestCase
 {
     /**

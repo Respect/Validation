@@ -11,21 +11,20 @@ namespace Respect\Validation\Rules;
 
 use org\bovigo\vfs\content\LargeFileContent;
 use org\bovigo\vfs\vfsStream;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\StreamStub;
 use Respect\Validation\Test\Stubs\UploadedFileStub;
 use SplFileInfo;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Size
- */
+#[Group('rule')]
+#[CoversClass(Size::class)]
 final class SizeTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldThrowsAnExceptionWhenSizeIsNotValid(): void
     {
         $this->expectException(ComponentException::class);

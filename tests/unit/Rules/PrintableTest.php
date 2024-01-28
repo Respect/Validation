@@ -9,15 +9,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
 use function chr;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\AbstractFilterRule
- * @covers \Respect\Validation\Rules\Printable
- */
+#[Group('rule')]
+#[CoversClass(AbstractFilterRule::class)]
+#[CoversClass(Printable::class)]
 final class PrintableTest extends RuleTestCase
 {
     /**

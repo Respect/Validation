@@ -9,20 +9,20 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
 use stdClass;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Optional
- */
+#[Group('rule')]
+#[CoversClass(Optional::class)]
 final class OptionalTest extends TestCase
 {
-    /**
-     * @dataProvider providerForOptional
-     * @test
-     */
+    #[Test]
+    #[DataProvider('providerForOptional')]
     public function shouldNotValidateRuleWhenInputIsOptional(mixed $input): void
     {
         $validatable = $this->createMock(Validatable::class);
@@ -35,10 +35,8 @@ final class OptionalTest extends TestCase
         self::assertTrue($rule->validate($input));
     }
 
-    /**
-     * @dataProvider providerForNotOptional
-     * @test
-     */
+    #[Test]
+    #[DataProvider('providerForNotOptional')]
     public function shouldValidateRuleWhenInputIsNotOptional(mixed $input): void
     {
         $validatable = $this->createMock(Validatable::class);
@@ -46,16 +44,14 @@ final class OptionalTest extends TestCase
             ->expects(self::once())
             ->method('validate')
             ->with($input)
-            ->will(self::returnValue(true));
+            ->willReturn(true);
 
         $rule = new Optional($validatable);
 
         self::assertTrue($rule->validate($input));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldNotAssertRuleWhenInputIsOptional(): void
     {
         $validatable = $this->createMock(Validatable::class);
@@ -68,9 +64,7 @@ final class OptionalTest extends TestCase
         $rule->assert('');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldAssertRuleWhenInputIsNotOptional(): void
     {
         $input = 'foo';
@@ -79,17 +73,14 @@ final class OptionalTest extends TestCase
         $validatable
             ->expects(self::once())
             ->method('assert')
-            ->with($input)
-            ->will(self::returnValue(true));
+            ->with($input);
 
         $rule = new Optional($validatable);
 
         $rule->assert($input);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldNotCheckRuleWhenInputIsOptional(): void
     {
         $validatable = $this->createMock(Validatable::class);
@@ -102,9 +93,7 @@ final class OptionalTest extends TestCase
         $rule->check('');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldCheckRuleWhenInputIsNotOptional(): void
     {
         $input = 'foo';
@@ -113,8 +102,7 @@ final class OptionalTest extends TestCase
         $validatable
             ->expects(self::once())
             ->method('check')
-            ->with($input)
-            ->will(self::returnValue(true));
+            ->with($input);
 
         $rule = new Optional($validatable);
 

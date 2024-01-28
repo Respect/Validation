@@ -10,6 +10,9 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use finfo;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use SplFileObject;
@@ -20,15 +23,11 @@ use function tmpfile;
 use const FILEINFO_MIME_TYPE;
 use const PHP_INT_MAX;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Mimetype
- */
+#[Group('rule')]
+#[CoversClass(Mimetype::class)]
 final class MimetypeTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldValidateWithDefinedFinfoInstance(): void
     {
         $mimetype = 'application/octet-stream';
@@ -43,7 +42,7 @@ final class MimetypeTest extends RuleTestCase
             ->expects(self::once())
             ->method('file')
             ->with($filename, FILEINFO_MIME_TYPE)
-            ->will(self::returnValue($mimetype));
+            ->willReturn($mimetype);
 
         $rule = new Mimetype($mimetype, $fileInfoMock);
 

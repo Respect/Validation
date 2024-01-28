@@ -9,7 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\SkippedTestError;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\SkippedWithMessageException;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\UploadedFileStub;
 use SplFileInfo;
@@ -18,10 +20,8 @@ use stdClass;
 use function extension_loaded;
 use function uopz_set_return;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Uploaded
- */
+#[Group('rule')]
+#[CoversClass(Uploaded::class)]
 final class UploadedTest extends RuleTestCase
 {
     public const UPLOADED_FILENAME = 'uploaded.ext';
@@ -59,7 +59,7 @@ final class UploadedTest extends RuleTestCase
     protected function setUp(): void
     {
         if (!extension_loaded('uopz')) {
-            throw new SkippedTestError('Extension "uopz" is required to test "Uploaded" rule');
+            throw new SkippedWithMessageException('Extension "uopz" is required to test "Uploaded" rule');
         }
 
         uopz_set_return(

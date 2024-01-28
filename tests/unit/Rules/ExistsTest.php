@@ -9,14 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use SplFileObject;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Exists
- */
+#[Group('rule')]
+#[CoversClass(Exists::class)]
 final class ExistsTest extends RuleTestCase
 {
     /**

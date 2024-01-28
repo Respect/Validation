@@ -9,19 +9,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-/**
- * @group rules
- * @covers \Respect\Validation\Rules\Sorted
- */
+#[Group('rules')]
+#[CoversClass(Sorted::class)]
 final class SortedTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldNotAcceptWrongSortingDirection(): void
     {
         $this->expectExceptionObject(new ComponentException('Direction should be either "ASC" or "DESC"'));

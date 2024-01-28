@@ -9,14 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
 use function implode;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Base64
- */
+#[Group('rule')]
+#[CoversClass(Base64::class)]
 final class Base64Test extends RuleTestCase
 {
     /**

@@ -10,6 +10,9 @@ declare(strict_types=1);
 namespace Respect\Validation\Exceptions;
 
 use DirectoryIterator;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use ReflectionClass;
 use Respect\Validation\Test\TestCase;
 
@@ -17,15 +20,11 @@ use function class_exists;
 use function mb_substr;
 use function sprintf;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 final class CheckExceptionsTest extends TestCase
 {
-    /**
-     * @dataProvider provideListOfRuleNames
-     * @test
-     */
+    #[Test]
+    #[DataProvider('provideListOfRuleNames')]
     public function ruleHasAnExceptionWhichHasValidApi(string $ruleName): void
     {
         $exceptionClass = 'Respect\\Validation\\Exceptions\\' . $ruleName . 'Exception';

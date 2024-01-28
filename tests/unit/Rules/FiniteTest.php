@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
@@ -17,10 +19,8 @@ use function acos;
 use const INF;
 use const PHP_INT_MAX;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Finite
- */
+#[Group('rule')]
+#[CoversClass(Finite::class)]
 final class FiniteTest extends RuleTestCase
 {
     /**

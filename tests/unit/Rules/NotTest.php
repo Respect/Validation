@@ -9,33 +9,33 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Exceptions\NotException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
 use Respect\Validation\Validator;
 
-/**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\NotException
- * @covers \Respect\Validation\Rules\Not
- */
+#[Group('rule')]
+#[CoversClass(NotException::class)]
+#[CoversClass(Not::class)]
 final class NotTest extends TestCase
 {
-    /**
-     * @doesNotPerformAssertions
-     * @dataProvider providerForValidNot
-     * @test
-     */
+    #[Test]
+    #[DataProvider('providerForValidNot')]
     public function not(Validatable $rule, mixed $input): void
     {
+        $this->expectNotToPerformAssertions();
+
         $not = new Not($rule);
         $not->assert($input);
     }
 
-    /**
-     * @dataProvider providerForInvalidNot
-     * @test
-     */
+    #[Test]
+    #[DataProvider('providerForInvalidNot')]
     public function notNotHaha(Validatable $rule, mixed $input): void
     {
         $not = new Not($rule);
@@ -45,10 +45,8 @@ final class NotTest extends TestCase
         $not->assert($input);
     }
 
-    /**
-     * @dataProvider providerForSetName
-     * @test
-     */
+    #[Test]
+    #[DataProvider('providerForSetName')]
     public function notSetName(Validatable $rule): void
     {
         $not = new Not($rule);
@@ -59,7 +57,7 @@ final class NotTest extends TestCase
     }
 
     /**
-     * @return mixed[][]
+     * @return array<array{Validatable, mixed}>
      */
     public static function providerForValidNot(): array
     {
@@ -76,7 +74,7 @@ final class NotTest extends TestCase
     }
 
     /**
-     * @return mixed[][]
+     * @return array<array{Validatable, mixed}>
      */
     public static function providerForInvalidNot(): array
     {
@@ -89,7 +87,7 @@ final class NotTest extends TestCase
     }
 
     /**
-     * @return Validatable[][]
+     * @return array<array{Validatable}>
      */
     public static function providerForSetName(): array
     {

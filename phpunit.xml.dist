@@ -1,15 +1,12 @@
 <?xml version="1.0"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          backupGlobals="false"
-         backupStaticAttributes="false"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false"
-         verbose="true">
+         cacheDirectory=".phpunit.cache"
+         backupStaticProperties="false">
   <testsuites>
     <testsuite name="unit">
       <directory suffix="Test.php">tests/unit/</directory>
@@ -18,9 +15,9 @@
       <directory suffix=".phpt">tests/integration/</directory>
     </testsuite>
   </testsuites>
-  <coverage processUncoveredFiles="true" ignoreDeprecatedCodeUnits="true">
+  <source>
     <include>
-        <directory suffix=".php">library/</directory>
+      <directory suffix=".php">library/</directory>
     </include>
-  </coverage>
+  </source>
 </phpunit>

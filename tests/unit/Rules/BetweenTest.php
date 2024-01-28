@@ -10,20 +10,19 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use DateTime;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\CountableStub;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\AbstractEnvelope
- * @covers \Respect\Validation\Rules\Between
- */
+#[Group('rule')]
+#[CoversClass(AbstractEnvelope::class)]
+#[CoversClass(Between::class)]
 final class BetweenTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function minimumValueShouldNotBeGreaterThanMaximumValue(): void
     {
         $this->expectExceptionObject(new ComponentException('Minimum cannot be less than or equals to maximum'));
@@ -31,9 +30,7 @@ final class BetweenTest extends RuleTestCase
         new Between(10, 5);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function minimumValueShouldNotBeEqualsToMaximumValue(): void
     {
         $this->expectExceptionObject(new ComponentException('Minimum cannot be less than or equals to maximum'));

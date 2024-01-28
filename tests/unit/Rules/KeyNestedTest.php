@@ -10,21 +10,21 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use ArrayObject;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\KeyNestedException;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
 use stdClass;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\AbstractRelated
- * @covers \Respect\Validation\Rules\KeyNested
- */
+#[Group('rule')]
+#[CoversClass(AbstractRelated::class)]
+#[CoversClass(KeyNested::class)]
 final class KeyNestedTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function arrayWithPresentKeysWillReturnTrueForFullPathValidator(): void
     {
         $array = [
@@ -43,9 +43,7 @@ final class KeyNestedTest extends TestCase
         self::assertTrue($rule->validate($array));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function arrayWithNumericKeysWillReturnTrueForFullPathValidator(): void
     {
         $array = [
@@ -62,9 +60,7 @@ final class KeyNestedTest extends TestCase
         $rule->check($array);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function arrayWithPresentKeysWillReturnTrueForHalfPathValidator(): void
     {
         $array = [
@@ -83,9 +79,7 @@ final class KeyNestedTest extends TestCase
         self::assertTrue($rule->validate($array));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function objectWithPresentPropertiesWillReturnTrueForDirtyPathValidator(): void
     {
         $object = (object) [
@@ -104,9 +98,7 @@ final class KeyNestedTest extends TestCase
         self::assertTrue($rule->validate($object));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function emptyInputMustReturnFalse(): void
     {
         $rule = new KeyNested('bar.foo.baz');
@@ -114,9 +106,7 @@ final class KeyNestedTest extends TestCase
         self::assertFalse($rule->validate(''));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function emptyInputMustNotAssert(): void
     {
         $rule = new KeyNested('bar.foo.baz');
@@ -124,9 +114,7 @@ final class KeyNestedTest extends TestCase
         $rule->assert('');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function emptyInputMustNotCheck(): void
     {
         $rule = new KeyNested('bar.foo.baz');
@@ -134,9 +122,7 @@ final class KeyNestedTest extends TestCase
         $rule->check('');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function arrayWithEmptyKeyShouldReturnTrue(): void
     {
         $rule = new KeyNested('emptyKey');
@@ -145,9 +131,7 @@ final class KeyNestedTest extends TestCase
         self::assertTrue($rule->validate($input));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function arrayWithAbsentKeyShouldThrowNestedKeyException(): void
     {
         $validator = new KeyNested('bar.bar');
@@ -160,9 +144,7 @@ final class KeyNestedTest extends TestCase
         $validator->assert($object);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function notArrayShouldThrowKeyException(): void
     {
         $validator = new KeyNested('baz.bar');
@@ -171,10 +153,8 @@ final class KeyNestedTest extends TestCase
         $validator->assert($object);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     * @test
-     */
+    #[Test]
+    #[DoesNotPerformAssertions]
     public function extraValidatorShouldValidateKey(): void
     {
         $subValidator = new Length(3, 7);
@@ -189,9 +169,7 @@ final class KeyNestedTest extends TestCase
         $validator->assert($object);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function notMandatoryExtraValidatorShouldPassWithAbsentKey(): void
     {
         $subValidator = new Length(1, 3);
@@ -200,9 +178,7 @@ final class KeyNestedTest extends TestCase
         self::assertTrue($validator->validate($object));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function arrayAccessWithPresentKeysWillReturnTrue(): void
     {
         $arrayAccess = new ArrayObject([

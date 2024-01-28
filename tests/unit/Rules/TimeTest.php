@@ -11,19 +11,19 @@ namespace Respect\Validation\Rules;
 
 use DateTime;
 use DateTimeImmutable;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Time
- */
+#[Group('rule')]
+#[CoversClass(Time::class)]
 final class TimeTest extends RuleTestCase
 {
-    /**
-     * @test
-     * @dataProvider invalidFormatsProvider
-     */
+    #[Test]
+    #[DataProvider('invalidFormatsProvider')]
     public function shouldThrowAnExceptionWhenFormatIsNotValid(string $format): void
     {
         $this->expectException(ComponentException::class);
@@ -31,9 +31,7 @@ final class TimeTest extends RuleTestCase
         new Time($format);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldPassFormatToParameterToException(): void
     {
         $format = 'g:i A';

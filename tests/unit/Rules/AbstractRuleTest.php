@@ -9,21 +9,20 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
 
 use function random_int;
 
-/**
- * @covers \Respect\Validation\Rules\AbstractRule
- */
+#[Group('core')]
+#[CoversClass(AbstractRule::class)]
 final class AbstractRuleTest extends TestCase
 {
-    /**
-     * @covers \Respect\Validation\Rules\AbstractRule::__invoke
-     * @test
-     */
+    #[Test]
     public function itShouldValidateSomeValidInputUsingTheInvokeMagicMethod(): void
     {
         $sut = new Stub(true);
@@ -31,10 +30,7 @@ final class AbstractRuleTest extends TestCase
         self::assertTrue($sut('something'));
     }
 
-    /**
-     * @covers \Respect\Validation\Rules\AbstractRule::__invoke
-     * @test
-     */
+    #[Test]
     public function itShouldValidateSomeInvalidInputUsingTheInvokeMagicMethod(): void
     {
         $sut = new Stub(false);
@@ -42,10 +38,7 @@ final class AbstractRuleTest extends TestCase
         self::assertFalse($sut('something'));
     }
 
-    /**
-     * @covers \Respect\Validation\Rules\AbstractRule::assert
-     * @test
-     */
+    #[Test]
     public function itShouldThrowAnExceptionOnAssertingSomeInvalidInput(): void
     {
         $input = 'something';
@@ -57,10 +50,7 @@ final class AbstractRuleTest extends TestCase
         $sut->assert($input);
     }
 
-    /**
-     * @covers \Respect\Validation\Rules\AbstractRule::assert
-     * @test
-     */
+    #[Test]
     public function itShouldNotThrowAnExceptionOnAssertingSomeValidInput(): void
     {
         $input = 'something';
@@ -72,10 +62,7 @@ final class AbstractRuleTest extends TestCase
         $sut->assert($input);
     }
 
-    /**
-     * @covers \Respect\Validation\Rules\AbstractRule::check
-     * @test
-     */
+    #[Test]
     public function itShouldThrowAnExceptionOnCheckingSomeInvalidInput(): void
     {
         $input = 'something';
@@ -87,10 +74,7 @@ final class AbstractRuleTest extends TestCase
         $sut->check($input);
     }
 
-    /**
-     * @covers \Respect\Validation\Rules\AbstractRule::check
-     * @test
-     */
+    #[Test]
     public function itShouldNotThrowAnExceptionOnCheckingSomeValidInput(): void
     {
         $input = 'something';
@@ -102,10 +86,7 @@ final class AbstractRuleTest extends TestCase
         $sut->check($input);
     }
 
-    /**
-     * @covers \Respect\Validation\Rules\AbstractRule::setTemplate
-     * @test
-     */
+    #[Test]
     public function itShouldReturnSelfWhenSettingSomeTemplate(): void
     {
         $sut = new Stub();
@@ -113,10 +94,7 @@ final class AbstractRuleTest extends TestCase
         self::assertSame($sut, $sut->setTemplate('whatever'));
     }
 
-    /**
-     * @covers \Respect\Validation\Rules\AbstractRule::setName
-     * @test
-     */
+    #[Test]
     public function itShouldReturnSelfWhenSettingSomeName(): void
     {
         $sut = new Stub();
@@ -124,10 +102,7 @@ final class AbstractRuleTest extends TestCase
         self::assertSame($sut, $sut->setName('whatever'));
     }
 
-    /**
-     * @covers \Respect\Validation\Rules\AbstractRule::getName
-     * @test
-     */
+    #[Test]
     public function itShouldBeAbleToRetrieveItsName(): void
     {
         $name = 'something';
@@ -138,10 +113,7 @@ final class AbstractRuleTest extends TestCase
         self::assertSame($name, $sut->getName());
     }
 
-    /**
-     * @covers \Respect\Validation\Rules\AbstractRule::getName
-     * @test
-     */
+    #[Test]
     public function itShouldReportErrorWithExtraParameters(): void
     {
         $extraParameterName = 'foo';

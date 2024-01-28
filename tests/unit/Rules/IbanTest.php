@@ -9,15 +9,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 use function extension_loaded;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\Iban
- */
+#[Group('rule')]
+#[CoversClass(Iban::class)]
 final class IbanTest extends RuleTestCase
 {
     /**

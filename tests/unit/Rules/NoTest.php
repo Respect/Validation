@@ -9,6 +9,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Exceptions\NoException;
 use Respect\Validation\Test\RuleTestCase;
 
 use function setlocale;
@@ -16,19 +21,15 @@ use function sprintf;
 
 use const LC_ALL;
 
-/**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\NoException
- * @covers \Respect\Validation\Rules\No
- */
+#[Group('rule')]
+#[CoversClass(NoException::class)]
+#[CoversClass(No::class)]
 final class NoTest extends RuleTestCase
 {
     private readonly string $locale;
 
-    /**
-     * @test
-     * @dataProvider providerForValidInputWithLocale
-     */
+    #[Test]
+    #[DataProvider('providerForValidInputWithLocale')]
     public function itShouldValidateInputAccordingToTheLocale(string $locale, string $input): void
     {
         setlocale(LC_ALL, $locale);
@@ -40,10 +41,8 @@ final class NoTest extends RuleTestCase
         self::assertValidInput(new No(true), $input);
     }
 
-    /**
-     * @test
-     * @dataProvider providerForInvalidInputWithLocale
-     */
+    #[Test]
+    #[DataProvider('providerForInvalidInputWithLocale')]
     public function itShouldInvalidateInputAccordingToTheLocale(string $locale, string $input): void
     {
         setlocale(LC_ALL, $locale);

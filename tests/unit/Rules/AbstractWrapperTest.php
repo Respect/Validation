@@ -9,20 +9,19 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\Rules\WrapperStub;
 use Respect\Validation\Test\TestCase;
 
-/**
- * @test core
- * @covers \Respect\Validation\Rules\AbstractWrapper
- */
+#[Group('core')]
+#[CoversClass(AbstractWrapper::class)]
 final class AbstractWrapperTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldUseWrappedToValidate(): void
     {
         $sut = new WrapperStub(new Stub(true));
@@ -30,9 +29,7 @@ final class AbstractWrapperTest extends TestCase
         self::assertTrue($sut->validate('Whatever'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldUseWrappedToAssert(): void
     {
         $sut = new WrapperStub(new Stub(false));
@@ -40,9 +37,7 @@ final class AbstractWrapperTest extends TestCase
         $sut->assert('Whatever');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldUseWrappedToCheck(): void
     {
         $sut = new WrapperStub(new Stub(false));
@@ -50,9 +45,7 @@ final class AbstractWrapperTest extends TestCase
         $sut->check('Whatever');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldPassNameOnToWrapped(): void
     {
         $name = 'Whatever';

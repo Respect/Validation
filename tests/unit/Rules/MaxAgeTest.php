@@ -11,17 +11,17 @@ namespace Respect\Validation\Rules;
 
 use DateTime;
 use DateTimeImmutable;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 use function date;
 use function strtotime;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\AbstractAge
- * @covers \Respect\Validation\Rules\MaxAge
- */
+#[Group('rule')]
+#[CoversClass(AbstractAge::class)]
+#[CoversClass(MaxAge::class)]
 final class MaxAgeTest extends RuleTestCase
 {
     /**

@@ -9,20 +9,19 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\AnyOfException;
 use Respect\Validation\Exceptions\XdigitException;
 use Respect\Validation\Test\TestCase;
 
-/**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\AnyOfException
- * @covers \Respect\Validation\Rules\AnyOf
- */
+#[Group('rule')]
+#[CoversClass(AnyOfException::class)]
+#[CoversClass(AnyOf::class)]
 final class AnyOfTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function valid(): void
     {
         $valid1 = new Callback(static function () {
@@ -40,9 +39,7 @@ final class AnyOfTest extends TestCase
         $o->check('any');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function invalid(): void
     {
         $valid1 = new Callback(static function () {
@@ -61,9 +58,7 @@ final class AnyOfTest extends TestCase
         $o->assert('any');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function invalidCheck(): void
     {
         $o = new AnyOf(new Xdigit(), new Alnum());

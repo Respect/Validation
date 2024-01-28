@@ -9,21 +9,20 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\CallbackException;
 use Respect\Validation\Exceptions\OneOfException;
 use Respect\Validation\Exceptions\XdigitException;
 use Respect\Validation\Test\TestCase;
 
-/**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\OneOfException
- * @covers \Respect\Validation\Rules\OneOf
- */
+#[Group('rule')]
+#[CoversClass(OneOfException::class)]
+#[CoversClass(OneOf::class)]
 final class OneOfTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function valid(): void
     {
         $valid1 = new Callback(static function () {
@@ -43,9 +42,7 @@ final class OneOfTest extends TestCase
         $rule->check('any');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function emptyChain(): void
     {
         $rule = new OneOf();
@@ -57,9 +54,7 @@ final class OneOfTest extends TestCase
         $rule->check('any');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function invalid(): void
     {
         $valid1 = new Callback(static function () {
@@ -78,9 +73,7 @@ final class OneOfTest extends TestCase
         $rule->assert('any');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function invalidMultipleAssert(): void
     {
         $valid1 = new Callback(static function () {
@@ -99,9 +92,7 @@ final class OneOfTest extends TestCase
         $rule->assert('any');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function invalidMultipleCheck(): void
     {
         $valid1 = new Callback(static function () {
@@ -121,9 +112,7 @@ final class OneOfTest extends TestCase
         $rule->check('any');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function invalidMultipleCheckAllValid(): void
     {
         $valid1 = new Callback(static function () {
@@ -143,9 +132,7 @@ final class OneOfTest extends TestCase
         $rule->check('any');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function invalidCheck(): void
     {
         $rule = new OneOf(new Xdigit(), new Alnum());

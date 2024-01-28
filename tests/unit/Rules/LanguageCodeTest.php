@@ -9,19 +9,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 
-/**
- * @group rule
- * @covers \Respect\Validation\Rules\AbstractEnvelope
- * @covers \Respect\Validation\Rules\LanguageCode
- */
+#[Group('rule')]
+#[CoversClass(AbstractEnvelope::class)]
+#[CoversClass(LanguageCode::class)]
 final class LanguageCodeTest extends RuleTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function itShouldThrowAnExceptionWhenSetIsInvalid(): void
     {
         $this->expectExceptionObject(new ComponentException('"foo" is not a valid language set for ISO 639'));

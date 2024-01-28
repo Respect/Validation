@@ -9,19 +9,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\NoneOfException;
 use Respect\Validation\Test\TestCase;
 
-/**
- * @group  rule
- * @covers \Respect\Validation\Exceptions\NoneOfException
- * @covers \Respect\Validation\Rules\NoneOf
- */
+#[Group('rule')]
+#[CoversClass(NoneOfException::class)]
+#[CoversClass(NoneOf::class)]
 final class NoneOfTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function valid(): void
     {
         $valid1 = new Callback(static function () {
@@ -39,9 +38,7 @@ final class NoneOfTest extends TestCase
         $o->check('any');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function invalid(): void
     {
         $valid1 = new Callback(static function () {
