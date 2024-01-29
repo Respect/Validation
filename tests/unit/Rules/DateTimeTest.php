@@ -74,8 +74,8 @@ final class DateTimeTest extends RuleTestCase
             ['d/m/Y', '23/05/1987', 'UTC'],
             ['r', 'Thu, 29 Dec 2005 01:02:03 +0000', 'Europe/Amsterdam'],
             ['r', 'Thu, 29 Dec 2005 01:02:03 +0000', 'UTC'],
-            ['Ym', '202302', 'Europe/Amsterdam'],
-            ['Ym', '202302', 'UTC'],
+            ['Ym', '202305', 'Europe/Amsterdam'],
+            ['Ym', '202305', 'UTC'],
         ];
     }
 
@@ -101,7 +101,7 @@ final class DateTimeTest extends RuleTestCase
             [new DateTime('r'), 'Thu, 29 Dec 2005 01:02:03 +0000'],
             [new DateTime('U'), 1464658596],
             [new DateTime('h'), 6],
-            [new DateTime('Ym'), 202302],
+            [new DateTime('Ym'), 202305],
         ];
     }
 
