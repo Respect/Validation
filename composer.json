@@ -20,7 +20,7 @@
     "require": {
         "php": "^8.1 || ^8.2",
         "respect/stringifier": "^2.0.0",
-        "symfony/polyfill-mbstring": "^1.28"
+        "symfony/polyfill-mbstring": "^1.27"
     },
     "require-dev": {
         "egulias/email-validator": "^4.0",
