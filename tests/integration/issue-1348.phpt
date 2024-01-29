@@ -1,5 +1,3 @@
---CREDITS--
-Alexandre Gomes Gaigalas <alganet@gmail.com>
 --FILE--
 <?php
 

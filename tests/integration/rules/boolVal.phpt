@@ -1,7 +1,3 @@
---CREDITS--
-Emmerson Siqueira <emmersonsiqueira@gmail.com>
-Henrique Moody <henriquemoody@gmail.com>
-William Espindola <oi@williamespindola.com.br>
 --FILE--
 <?php
 

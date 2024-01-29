@@ -1,5 +1,3 @@
---CREDITS--
-Henrique Moody <henriquemoody@gmail.com>
 --TEST--
 not() with recursion should update mode of its children
 --FILE--

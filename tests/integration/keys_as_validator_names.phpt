@@ -1,5 +1,3 @@
---CREDITS--
-Henrique Moody <henriquemoody@gmail.com>
 --TEST--
 keys as validator names
 --FILE--

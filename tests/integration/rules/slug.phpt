@@ -1,6 +1,3 @@
---CREDITS--
-Danilo Correa <danilosilva87@gmail.com>
-Marcel dos Santos <marcelgsantos@gmail.com>
 --FILE--
 <?php
 

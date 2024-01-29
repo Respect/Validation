@@ -1,5 +1,3 @@
---CREDITS--
-Singwai Chan <singwai.chan@live.com>
 --FILE--
 <?php
 

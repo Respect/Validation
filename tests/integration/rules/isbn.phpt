@@ -1,5 +1,3 @@
---CREDITS--
-Moritz Fromm <moritzgitfromm@gmail.com>
 --FILE--
 <?php
 

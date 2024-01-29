@@ -1,5 +1,3 @@
---CREDITS--
-Henrique Moody <henriquemoody@gmail.com>
 --TEST--
 setTemplate() with multiple validators should use template as full message
 --FILE--

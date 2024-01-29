@@ -1,8 +1,3 @@
---CREDITS--
-Danilo Correa <danilosilva87@gmail.com>
-Edson Lima <dddwebdeveloper@gmail.com>
-Henrique Moody <henriquemoody@gmail.com>
-Ian Nisbet <ian@glutenite.co.uk>
 --FILE--
 <?php
 

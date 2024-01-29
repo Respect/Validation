@@ -1,5 +1,3 @@
---CREDITS--
-Danilo Benevides <danilobenevides01@gmail.com>
 --FILE--
 <?php
 

@@ -1,5 +1,3 @@
---CREDITS--
-Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 

@@ -1,5 +1,3 @@
---CREDITS--
-Danilo Correa <danilosilva87@gmail.com>
 --FILE--
 <?php
 

@@ -1,5 +1,3 @@
---CREDITS--
-Emmerson Siqueira <emmersonsiqueira@gmail.com>
 --FILE--
 <?php
 

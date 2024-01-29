@@ -1,5 +1,3 @@
---CREDITS--
-Henrique Moody <henriquemoody@gmail.com>
 --TEST--
 setTemplate() with single validator should use template as main message
 --FILE--

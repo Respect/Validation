@@ -1,5 +1,3 @@
---CREDITS--
-Henrique Moody <henriquemoody@gmail.com>
 --TEST--
 Do not rely on nested validation exception interface for check
 --FILE--

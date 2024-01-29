@@ -1,5 +1,3 @@
---CREDITS--
-Henrique Moody <henriquemoody@gmail.com>
 --TEST--
 getFullMessage() should include all validation messages in a chain
 --FILE--

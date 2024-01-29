@@ -1,5 +1,3 @@
---CREDITS--
-Mazen Touati <mazen_touati@hotmail.com>
 --FILE--
 <?php
 

@@ -1,6 +1,3 @@
---CREDITS--
-Emmerson Siqueira <emmersonsiqueira@gmail.com>
-Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 

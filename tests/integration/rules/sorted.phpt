@@ -1,6 +1,3 @@
---CREDITS--
-Danilo Correa <danilosilva87@gmail.com>
-Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 

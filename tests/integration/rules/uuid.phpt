@@ -1,5 +1,3 @@
---CREDITS--
-Michael Weimann <mail@michael-weimann.eu>
 --FILE--
 <?php
 

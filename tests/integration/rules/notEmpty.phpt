@@ -1,6 +1,3 @@
---CREDITS--
-Bram Van der Sype <bram.vandersype@gmail.com>
-Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 

@@ -1,6 +1,3 @@
---CREDITS--
-Gus Antoniassi <gus.antoniassi@gmail.com>
-Henrique Moody <henriquemoody@gmail.com>
 --FILE--
 <?php
 

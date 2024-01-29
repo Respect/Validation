@@ -1,5 +1,3 @@
---CREDITS--
-Cameron Hall <me@chall.id.au>
 --FILE--
 <?php
 
