@@ -39,9 +39,6 @@ final class Type extends AbstractRule
         'string' => 'string',
     ];
 
-    /**
-     * @throws ComponentException When $type is not a valid one
-     */
     public function __construct(
         private readonly string $type
     ) {

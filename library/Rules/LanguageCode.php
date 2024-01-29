@@ -522,9 +522,6 @@ final class LanguageCode extends AbstractEnvelope
         // phpcs:enable Squiz.PHP.CommentedOutCode.Found
     ];
 
-    /**
-     * @throws ComponentException
-     */
     public function __construct(string $set = self::ALPHA2)
     {
         $index = array_search($set, self::AVAILABLE_SETS, true);

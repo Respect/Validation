@@ -27,9 +27,6 @@ final class Date extends AbstractRule
 {
     use CanValidateDateTime;
 
-    /**
-     * @throws ComponentException
-     */
     public function __construct(
         private readonly string $format = 'Y-m-d'
     ) {

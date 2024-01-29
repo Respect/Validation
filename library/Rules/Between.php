@@ -21,9 +21,6 @@ final class Between extends AbstractEnvelope
 {
     use CanCompareValues;
 
-    /**
-     * @throws ComponentException
-     */
     public function __construct(mixed $minValue, mixed $maxValue)
     {
         if ($this->toComparable($minValue) >= $this->toComparable($maxValue)) {

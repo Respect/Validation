@@ -49,9 +49,6 @@ final class Ip extends AbstractRule
 
     private ?string $mask = null;
 
-    /**
-     * @throws ComponentException In case the range is invalid
-     */
     public function __construct(string $range = '*', private ?int $options = null)
     {
         $this->parseRange($range);

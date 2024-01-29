@@ -60,9 +60,6 @@ final class CreditCard extends AbstractRule
         self::RUPAY => '/^6(?!011)(?:0[0-9]{14}|52[12][0-9]{12})$/',
     ];
 
-    /**
-     * @throws ComponentException
-     */
     public function __construct(
         private readonly string $brand = self::ANY
     ) {

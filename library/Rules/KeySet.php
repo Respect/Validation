@@ -124,9 +124,6 @@ final class KeySet extends AbstractWrapper implements NonNegatable
         ];
     }
 
-    /**
-     * @throws ComponentException
-     */
     private function getKeyRule(Validatable $validatable): Key
     {
         if ($validatable instanceof Key) {

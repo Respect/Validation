@@ -61,9 +61,6 @@ final class Length extends AbstractRule
     public const TEMPLATE_LOWER_INCLUSIVE = 'lower_inclusive';
     public const TEMPLATE_BOTH = 'both';
 
-    /**
-     * @throws ComponentException
-     */
     public function __construct(
         private readonly ?int $minValue = null,
         private readonly ?int $maxValue = null,

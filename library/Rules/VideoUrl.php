@@ -40,9 +40,6 @@ final class VideoUrl extends AbstractRule
         // phpcs:enable Generic.Files.LineLength.TooLong
     ];
 
-    /**
-     * @throws ComponentException when the given service is not supported
-     */
     public function __construct(
         private readonly ?string $service = null
     ) {

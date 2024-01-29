@@ -43,9 +43,6 @@ final class FilterVar extends AbstractEnvelope
         FILTER_VALIDATE_URL => 'is_string',
     ];
 
-    /**
-     * @throws ComponentException
-     */
     public function __construct(int $filter, mixed $options = null)
     {
         if (!array_key_exists($filter, self::ALLOWED_FILTERS)) {

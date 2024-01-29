@@ -86,8 +86,6 @@ final class Factory
 
     /**
      * @param mixed[] $arguments
-     *
-     * @throws ComponentException
      */
     public function rule(string $ruleName, array $arguments = []): Validatable
     {
@@ -111,8 +109,6 @@ final class Factory
 
     /**
      * @param mixed[] $extraParams
-     *
-     * @throws ComponentException
      */
     public function exception(Validatable $validatable, mixed $input, array $extraParams = []): ValidationException
     {
@@ -148,9 +144,6 @@ final class Factory
     /**
      * @param class-string $name
      * @param class-string $parentName
-     *
-     * @throws InvalidClassException
-     * @throws ReflectionException
      *
      * @return ReflectionClass<ValidationException|Validatable|object>
      */

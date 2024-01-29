@@ -11,7 +11,6 @@ namespace Respect\Validation;
 
 use Respect\Validation\Attributes\ExceptionClass;
 use Respect\Validation\Attributes\Template;
-use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Rules\AllOf;
@@ -57,8 +56,6 @@ final class Validator extends AllOf
 
     /**
      * @param mixed[] $arguments
-     *
-     * @throws ComponentException
      */
     public static function __callStatic(string $ruleName, array $arguments): self
     {
@@ -67,8 +64,6 @@ final class Validator extends AllOf
 
     /**
      * @param mixed[] $arguments
-     *
-     * @throws ComponentException
      */
     public function __call(string $ruleName, array $arguments): self
     {

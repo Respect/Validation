@@ -28,9 +28,6 @@ final class Charset extends AbstractRule
      */
     private readonly array $charset;
 
-    /**
-     * @throws ComponentException
-     */
     public function __construct(string ...$charset)
     {
         $available = mb_list_encodings();
