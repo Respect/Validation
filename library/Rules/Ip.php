@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function bccomp;
@@ -26,6 +27,16 @@ use function strtr;
 
 use const FILTER_VALIDATE_IP;
 
+#[Template(
+    '{{name}} must be an IP address',
+    '{{name}} must not be an IP address',
+    self::TEMPLATE_STANDARD,
+)]
+#[Template(
+    '{{name}} must be an IP address in the {{range}} range',
+    '{{name}} must not be an IP address in the {{range}} range',
+    self::TEMPLATE_NETWORK_RANGE,
+)]
 final class Ip extends AbstractRule
 {
     public const TEMPLATE_NETWORK_RANGE = 'network_range';

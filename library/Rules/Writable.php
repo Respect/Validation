@@ -10,11 +10,16 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Psr\Http\Message\StreamInterface;
+use Respect\Validation\Attributes\Template;
 use SplFileInfo;
 
 use function is_string;
 use function is_writable;
 
+#[Template(
+    '{{name}} must be writable',
+    '{{name}} must not be writable',
+)]
 final class Writable extends AbstractRule
 {
     public function validate(mixed $input): bool

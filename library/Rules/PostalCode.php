@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function sprintf;
@@ -16,6 +17,10 @@ use function sprintf;
 /**
  * @see http://download.geonames.org/export/dump/countryInfo.txt
  */
+#[Template(
+    '{{name}} must be a valid postal code on {{countryCode}}',
+    '{{name}} must not be a valid postal code on {{countryCode}}',
+)]
 final class PostalCode extends AbstractEnvelope
 {
     private const DEFAULT_PATTERN = '/^$/';

@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function bcmod;
 use function is_string;
 use function ord;
@@ -19,6 +21,10 @@ use function strlen;
 use function strval;
 use function substr;
 
+#[Template(
+    '{{name}} must be a valid IBAN',
+    '{{name}} must not be a valid IBAN',
+)]
 final class Iban extends AbstractRule
 {
     private const COUNTRIES_LENGTHS = [

@@ -9,8 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function is_numeric;
 
+#[Template(
+    '{{name}} must be negative',
+    '{{name}} must not be negative',
+)]
 final class Negative extends AbstractRule
 {
     public function validate(mixed $input): bool

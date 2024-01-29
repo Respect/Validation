@@ -9,10 +9,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function is_null;
 use function is_scalar;
 use function preg_match;
 
+#[Template(
+    '{{name}} must not contain whitespace',
+    '{{name}} must contain whitespace',
+)]
 final class NoWhitespace extends AbstractRule
 {
     public function validate(mixed $input): bool

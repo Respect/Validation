@@ -9,12 +9,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function end;
 use function is_array;
 use function mb_strlen;
 use function mb_strripos;
 use function mb_strrpos;
 
+#[Template(
+    '{{name}} must end with {{endValue}}',
+    '{{name}} must not end with {{endValue}}',
+)]
 final class EndsWith extends AbstractRule
 {
     public function __construct(

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function array_diff;
@@ -16,6 +17,10 @@ use function in_array;
 use function mb_detect_encoding;
 use function mb_list_encodings;
 
+#[Template(
+    '{{name}} must be in the {{charset}} charset',
+    '{{name}} must not be in the {{charset}} charset',
+)]
 final class Charset extends AbstractRule
 {
     /**

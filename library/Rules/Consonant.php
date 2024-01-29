@@ -9,8 +9,20 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function preg_match;
 
+#[Template(
+    '{{name}} must contain only consonants',
+    '{{name}} must not contain consonants',
+    self::TEMPLATE_STANDARD,
+)]
+#[Template(
+    '{{name}} must contain only consonants and {{additionalChars}}',
+    '{{name}} must not contain consonants or {{additionalChars}}',
+    self::TEMPLATE_EXTRA,
+)]
 final class Consonant extends AbstractFilterRule
 {
     protected function validateFilteredInput(string $input): bool

@@ -9,10 +9,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function is_string;
 use function mb_strlen;
 use function preg_match;
 
+#[Template(
+    '{{name}} must be Base64-encoded',
+    '{{name}} must not be Base64-encoded',
+)]
 final class Base64 extends AbstractRule
 {
     public function validate(mixed $input): bool

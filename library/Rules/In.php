@@ -9,11 +9,17 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function in_array;
 use function is_array;
 use function mb_stripos;
 use function mb_strpos;
 
+#[Template(
+    '{{name}} must be in {{haystack}}',
+    '{{name}} must not be in {{haystack}}',
+)]
 final class In extends AbstractRule
 {
     public function __construct(

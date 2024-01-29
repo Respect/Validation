@@ -9,10 +9,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function array_merge;
 use function call_user_func_array;
 use function count;
 
+#[Template(
+    '{{name}} must be valid',
+    '{{name}} must not be valid',
+)]
 final class Callback extends AbstractRule
 {
     /**

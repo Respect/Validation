@@ -9,11 +9,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use SplFileInfo;
 
 use function is_link;
 use function is_string;
 
+#[Template(
+    '{{name}} must be a symbolic link',
+    '{{name}} must not be a symbolic link',
+)]
 final class SymbolicLink extends AbstractRule
 {
     public function validate(mixed $input): bool

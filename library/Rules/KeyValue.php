@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Factory;
@@ -18,6 +19,16 @@ use function array_keys;
 use function in_array;
 use function Respect\Stringifier\stringify;
 
+#[Template(
+    'Key {{name}} must be present',
+    'Key {{name}} must not be present',
+    self::TEMPLATE_STANDARD,
+)]
+#[Template(
+    '{{baseKey}} must be valid to validate {{comparedKey}}',
+    '{{baseKey}} must not be valid to validate {{comparedKey}}',
+    self::TEMPLATE_COMPONENT,
+)]
 final class KeyValue extends AbstractRule
 {
     public const TEMPLATE_COMPONENT = 'component';

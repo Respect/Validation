@@ -9,10 +9,17 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\ExceptionClass;
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\NestedValidationException;
 
 use function count;
 
+#[ExceptionClass(NestedValidationException::class)]
+#[Template(
+    'None of these rules must pass for {{name}}',
+    'All of these rules must pass for {{name}}',
+)]
 final class NoneOf extends AbstractComposite
 {
     public function assert(mixed $input): void

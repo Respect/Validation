@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function ctype_digit;
 use function intval;
 use function is_scalar;
@@ -18,6 +20,10 @@ use function strval;
 /**
  * @see https://nl.wikipedia.org/wiki/Burgerservicenummer
  */
+#[Template(
+    '{{name}} must be a BSN',
+    '{{name}} must not be a BSN',
+)]
 final class Bsn extends AbstractRule
 {
     public function validate(mixed $input): bool

@@ -15,7 +15,6 @@ use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
 use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Test\Exceptions\StubException;
 use Respect\Validation\Test\Rules\AbstractClass;
 use Respect\Validation\Test\Rules\CustomRule;
 use Respect\Validation\Test\Rules\Invalid;
@@ -30,7 +29,6 @@ use function sprintf;
 final class FactoryTest extends TestCase
 {
     private const TEST_RULES_NAMESPACE = 'Respect\\Validation\\Test\\Rules';
-    private const TEST_EXCEPTIONS_NAMESPACE = 'Respect\\Validation\\Test\\Exceptions';
 
     #[Test]
     public function shouldCreateRuleByNameBasedOnNamespace(): void
@@ -97,30 +95,6 @@ final class FactoryTest extends TestCase
     }
 
     #[Test]
-    public function shouldCreateExceptionBasedOnRule(): void
-    {
-        $factory = (new Factory())->withExceptionNamespace(self::TEST_EXCEPTIONS_NAMESPACE);
-
-        $rule = new Stub();
-        $input = 2;
-
-        self::assertInstanceOf(StubException::class, $factory->exception($rule, $input));
-    }
-
-    #[Test]
-    public function shouldLookUpToAllNamespacesUntilExceptionIsCreated(): void
-    {
-        $factory = (new Factory())
-            ->withExceptionNamespace(__NAMESPACE__)
-            ->withExceptionNamespace(self::TEST_EXCEPTIONS_NAMESPACE);
-
-        $rule = new Stub();
-        $input = 2;
-
-        self::assertInstanceOf(StubException::class, $factory->exception($rule, $input));
-    }
-
-    #[Test]
     public function shouldCreateValidationExceptionWhenExceptionIsNotFound(): void
     {
         $factory = new Factory();
@@ -128,37 +102,6 @@ final class FactoryTest extends TestCase
         $rule = new Stub();
 
         self::assertInstanceOf(ValidationException::class, $factory->exception($rule, $input));
-    }
-
-    #[Test]
-    public function shouldSetInputAsParameterOfCreatedException(): void
-    {
-        $factory = (new Factory())->withExceptionNamespace(self::TEST_EXCEPTIONS_NAMESPACE);
-
-        $rule = new Stub();
-        $input = 2;
-
-        $exception = $factory->exception($rule, $input);
-
-        self::assertSame($input, $exception->getParam('input'));
-    }
-
-    #[Test]
-    public function shouldSetTemplateWhenTemplateKeyIsDefined(): void
-    {
-        $factory = (new Factory())->withExceptionNamespace(self::TEST_EXCEPTIONS_NAMESPACE);
-
-        $extraParams = [
-            'template' => 'This is my template',
-        ];
-
-        $validations = [true, false, true, true];
-        $rule = new Stub(...$validations);
-        $input = 2;
-
-        $exception = $factory->exception($rule, $input, $extraParams);
-
-        self::assertSame($extraParams['template'], $exception->getMessage());
     }
 
     #[Test]
@@ -184,7 +127,7 @@ final class FactoryTest extends TestCase
     #[Test]
     public function shouldAutoResolveExceptionIfNamespacePatternMatchesAndExceptionClassFound(): void
     {
-        $this->expectException(StubException::class);
+        $this->expectException(ValidationException::class);
 
         $rule = new Stub();
         $rule->assert('test');

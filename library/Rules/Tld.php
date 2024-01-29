@@ -9,10 +9,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function in_array;
 use function is_scalar;
 use function mb_strtoupper;
 
+#[Template(
+    '{{name}} must be a valid top-level domain name',
+    '{{name}} must not be a valid top-level domain name',
+)]
 final class Tld extends AbstractRule
 {
     // List extracted from https://data.iana.org/TLD/tlds-alpha-by-domain.txt

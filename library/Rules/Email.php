@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
+use Respect\Validation\Attributes\Template;
 
 use function class_exists;
 use function filter_var;
@@ -19,6 +20,10 @@ use function is_string;
 
 use const FILTER_VALIDATE_EMAIL;
 
+#[Template(
+    '{{name}} must be valid email',
+    '{{name}} must not be an email',
+)]
 final class Email extends AbstractRule
 {
     private readonly ?EmailValidator $validator;

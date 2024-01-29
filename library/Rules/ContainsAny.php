@@ -9,8 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function array_map;
 
+#[Template(
+    '{{name}} must contain at least one of the values {{needles}}',
+    '{{name}} must not contain any of the values {{needles}}',
+)]
 final class ContainsAny extends AbstractEnvelope
 {
     /**

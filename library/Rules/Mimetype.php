@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use finfo;
+use Respect\Validation\Attributes\Template;
 use SplFileInfo;
 
 use function is_file;
@@ -17,6 +18,10 @@ use function is_string;
 
 use const FILEINFO_MIME_TYPE;
 
+#[Template(
+    '{{name}} must have {{mimetype}} MIME type',
+    '{{name}} must not have {{mimetype}} MIME type',
+)]
 final class Mimetype extends AbstractRule
 {
     public function __construct(

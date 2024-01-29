@@ -9,8 +9,20 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function preg_match;
 
+#[Template(
+    '{{name}} must contain only vowels',
+    '{{name}} must not contain vowels',
+    self::TEMPLATE_STANDARD,
+)]
+#[Template(
+    '{{name}} must contain only vowels and {{additionalChars}}',
+    '{{name}} must not contain vowels or {{additionalChars}}',
+    self::TEMPLATE_EXTRA,
+)]
 final class Vowel extends AbstractFilterRule
 {
     protected function validateFilteredInput(string $input): bool

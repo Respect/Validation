@@ -9,9 +9,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function is_infinite;
 use function is_numeric;
 
+#[Template(
+    '{{name}} must be an infinite number',
+    '{{name}} must not be an infinite number',
+)]
 final class Infinite extends AbstractRule
 {
     public function validate(mixed $input): bool

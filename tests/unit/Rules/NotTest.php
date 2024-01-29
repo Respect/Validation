@@ -13,14 +13,12 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\NotException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
 use Respect\Validation\Validator;
 
 #[Group('rule')]
-#[CoversClass(NotException::class)]
 #[CoversClass(Not::class)]
 final class NotTest extends TestCase
 {

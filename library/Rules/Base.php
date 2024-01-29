@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function mb_strlen;
@@ -16,6 +17,10 @@ use function mb_substr;
 use function preg_match;
 use function sprintf;
 
+#[Template(
+    '{{name}} must be a number in the base {{base}}',
+    '{{name}} must not be a number in the base {{base}}',
+)]
 final class Base extends AbstractRule
 {
     public function __construct(

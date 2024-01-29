@@ -10,11 +10,16 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Psr\Http\Message\UploadedFileInterface;
+use Respect\Validation\Attributes\Template;
 use SplFileInfo;
 
 use function is_scalar;
 use function is_uploaded_file;
 
+#[Template(
+    '{{name}} must be an uploaded file',
+    '{{name}} must not be an uploaded file',
+)]
 final class Uploaded extends AbstractRule
 {
     public function validate(mixed $input): bool

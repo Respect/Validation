@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function function_exists;
 use function is_string;
 use function json_decode;
@@ -17,6 +19,10 @@ use function json_validate;
 
 use const JSON_ERROR_NONE;
 
+#[Template(
+    '{{name}} must be a valid JSON string',
+    '{{name}} must not be a valid JSON string',
+)]
 final class Json extends AbstractRule
 {
     public function validate(mixed $input): bool

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Helpers\CanValidateDateTime;
 
@@ -18,6 +19,10 @@ use function preg_match;
 use function sprintf;
 use function strtotime;
 
+#[Template(
+    '{{name}} must be a valid time in the format {{sample}}',
+    '{{name}} must not be a valid time in the format {{sample}}',
+)]
 final class Time extends AbstractRule
 {
     use CanValidateDateTime;

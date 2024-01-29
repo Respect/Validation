@@ -9,6 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
+#[Template(
+    '{{name}} must be a valid Roman numeral',
+    '{{name}} must not be a valid Roman numeral',
+)]
 final class Roman extends AbstractEnvelope
 {
     public function __construct()

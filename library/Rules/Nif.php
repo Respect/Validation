@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function array_pop;
 use function array_sum;
 use function is_numeric;
@@ -20,6 +22,10 @@ use function str_split;
 /**
  * @see https://es.wikipedia.org/wiki/N%C3%BAmero_de_identificaci%C3%B3n_fiscal
  */
+#[Template(
+    '{{name}} must be a NIF',
+    '{{name}} must not be a NIF',
+)]
 final class Nif extends AbstractRule
 {
     public function validate(mixed $input): bool

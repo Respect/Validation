@@ -9,9 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Helpers\CanCompareValues;
 
+#[Template(
+    '{{name}} must be between {{minValue}} and {{maxValue}}',
+    '{{name}} must not be between {{minValue}} and {{maxValue}}',
+)]
 final class Between extends AbstractEnvelope
 {
     use CanCompareValues;

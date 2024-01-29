@@ -13,7 +13,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\NoException;
 use Respect\Validation\Test\RuleTestCase;
 
 use function setlocale;
@@ -22,7 +21,6 @@ use function sprintf;
 use const LC_ALL;
 
 #[Group('rule')]
-#[CoversClass(NoException::class)]
 #[CoversClass(No::class)]
 final class NoTest extends RuleTestCase
 {

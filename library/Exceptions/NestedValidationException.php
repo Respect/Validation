@@ -231,6 +231,6 @@ class NestedValidationException extends ValidationException implements IteratorA
             return $childException->hasCustomTemplate();
         }
 
-        return !$childException instanceof NonOmissibleException;
+        return !$childException instanceof NonOmissibleValidationException;
     }
 }

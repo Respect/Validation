@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function array_column;
@@ -16,6 +17,10 @@ use function array_keys;
 use function implode;
 use function sprintf;
 
+#[Template(
+    '{{name}} must be a valid country',
+    '{{name}} must not be a valid country',
+)]
 final class CountryCode extends AbstractSearcher
 {
     public const ALPHA2 = 'alpha-2';

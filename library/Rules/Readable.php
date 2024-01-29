@@ -10,11 +10,16 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Psr\Http\Message\StreamInterface;
+use Respect\Validation\Attributes\Template;
 use SplFileInfo;
 
 use function is_readable;
 use function is_string;
 
+#[Template(
+    '{{name}} must be readable',
+    '{{name}} must not be readable',
+)]
 final class Readable extends AbstractRule
 {
     public function validate(mixed $input): bool

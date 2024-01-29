@@ -9,12 +9,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function is_numeric;
 use function is_string;
 use function number_format;
 use function preg_replace;
 use function var_export;
 
+#[Template(
+    '{{name}} must have {{decimals}} decimals',
+    '{{name}} must not have {{decimals}} decimals',
+)]
 final class Decimal extends AbstractRule
 {
     public function __construct(

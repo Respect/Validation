@@ -9,7 +9,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\ExceptionClass;
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\NonOmissibleValidationException;
 use Respect\Validation\NonNegatable;
 use Respect\Validation\Validatable;
 
@@ -19,6 +22,27 @@ use function count;
 use function current;
 use function is_array;
 
+#[ExceptionClass(NonOmissibleValidationException::class)]
+#[Template(
+    'All of the required rules must pass for {{name}}',
+    '',
+    self::TEMPLATE_NONE,
+)]
+#[Template(
+    'These rules must pass for {{name}}',
+    '',
+    self::TEMPLATE_SOME,
+)]
+#[Template(
+    'Must have keys {{keys}}',
+    '',
+    self::TEMPLATE_STRUCTURE,
+)]
+#[Template(
+    'Must not have keys {{extraKeys}}',
+    '',
+    self::TEMPLATE_STRUCTURE_EXTRA,
+)]
 final class KeySet extends AbstractWrapper implements NonNegatable
 {
     public const TEMPLATE_NONE = 'none';

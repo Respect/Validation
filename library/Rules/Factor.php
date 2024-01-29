@@ -9,10 +9,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function abs;
 use function is_integer;
 use function is_numeric;
 
+#[Template(
+    '{{name}} must be a factor of {{dividend}}',
+    '{{name}} must not be a factor of {{dividend}}',
+)]
 final class Factor extends AbstractRule
 {
     public function __construct(

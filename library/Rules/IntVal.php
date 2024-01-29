@@ -9,10 +9,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function is_int;
 use function is_string;
 use function preg_match;
 
+#[Template(
+    '{{name}} must be an integer number',
+    '{{name}} must not be an integer number',
+)]
 final class IntVal extends AbstractRule
 {
     public function validate(mixed $input): bool

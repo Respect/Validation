@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function array_keys;
 use function array_map;
 use function array_pop;
@@ -22,6 +24,10 @@ use function strlen;
 /**
  * @see https://pt.wikipedia.org/wiki/N%C3%BAmero_de_identifica%C3%A7%C3%A3o_fiscal
  */
+#[Template(
+    '{{name}} must be a Portuguese NIF',
+    '{{name}} must not be a Portuguese NIF',
+)]
 final class PortugueseNif extends AbstractRule
 {
     public function validate(mixed $input): bool

@@ -10,9 +10,14 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Countable as CountableInterface;
+use Respect\Validation\Attributes\Template;
 
 use function is_array;
 
+#[Template(
+    '{{name}} must be countable',
+    '{{name}} must not be countable',
+)]
 final class Countable extends AbstractRule
 {
     public function validate(mixed $input): bool

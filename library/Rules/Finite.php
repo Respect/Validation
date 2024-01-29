@@ -9,9 +9,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function is_finite;
 use function is_numeric;
 
+#[Template(
+    '{{name}} must be a finite number',
+    '{{name}} must not be a finite number',
+)]
 final class Finite extends AbstractRule
 {
     public function validate(mixed $input): bool

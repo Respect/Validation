@@ -10,11 +10,16 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Directory as NativeDirectory;
+use Respect\Validation\Attributes\Template;
 use SplFileInfo;
 
 use function is_dir;
 use function is_scalar;
 
+#[Template(
+    '{{name}} must be a directory',
+    '{{name}} must not be a directory',
+)]
 final class Directory extends AbstractRule
 {
     public function validate(mixed $input): bool

@@ -9,11 +9,17 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function filter_var;
 
 use const FILTER_NULL_ON_FAILURE;
 use const FILTER_VALIDATE_BOOLEAN;
 
+#[Template(
+    '{{name}} must evaluate to `false`',
+    '{{name}} must not evaluate to `false`',
+)]
 final class FalseVal extends AbstractRule
 {
     public function validate(mixed $input): bool

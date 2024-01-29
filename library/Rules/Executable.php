@@ -9,11 +9,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use SplFileInfo;
 
 use function is_executable;
 use function is_scalar;
 
+#[Template(
+    '{{name}} must be an executable file',
+    '{{name}} must not be an executable file',
+)]
 final class Executable extends AbstractRule
 {
     public function validate(mixed $input): bool

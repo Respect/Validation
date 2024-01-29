@@ -12,13 +12,11 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\CallbackException;
-use Respect\Validation\Exceptions\OneOfException;
-use Respect\Validation\Exceptions\XdigitException;
+use Respect\Validation\Exceptions\NestedValidationException;
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\TestCase;
 
 #[Group('rule')]
-#[CoversClass(OneOfException::class)]
 #[CoversClass(OneOf::class)]
 final class OneOfTest extends TestCase
 {
@@ -49,7 +47,7 @@ final class OneOfTest extends TestCase
 
         self::assertFalse($rule->validate('any'));
 
-        $this->expectException(OneOfException::class);
+        $this->expectException(NestedValidationException::class);
 
         $rule->check('any');
     }
@@ -69,7 +67,7 @@ final class OneOfTest extends TestCase
         $rule = new OneOf($valid1, $valid2, $valid3);
         self::assertFalse($rule->validate('any'));
 
-        $this->expectException(OneOfException::class);
+        $this->expectException(NestedValidationException::class);
         $rule->assert('any');
     }
 
@@ -88,7 +86,7 @@ final class OneOfTest extends TestCase
         $rule = new OneOf($valid1, $valid2, $valid3);
         self::assertFalse($rule->validate('any'));
 
-        $this->expectException(OneOfException::class);
+        $this->expectException(NestedValidationException::class);
         $rule->assert('any');
     }
 
@@ -108,7 +106,7 @@ final class OneOfTest extends TestCase
         $rule = new OneOf($valid1, $valid2, $valid3);
         self::assertFalse($rule->validate('any'));
 
-        $this->expectException(CallbackException::class);
+        $this->expectException(ValidationException::class);
         $rule->check('any');
     }
 
@@ -128,7 +126,7 @@ final class OneOfTest extends TestCase
         $rule = new OneOf($valid1, $valid2, $valid3);
         self::assertFalse($rule->validate('any'));
 
-        $this->expectException(OneOfException::class);
+        $this->expectException(NestedValidationException::class);
         $rule->check('any');
     }
 
@@ -138,7 +136,7 @@ final class OneOfTest extends TestCase
         $rule = new OneOf(new Xdigit(), new Alnum());
         self::assertFalse($rule->validate(-10));
 
-        $this->expectException(XdigitException::class);
+        $this->expectException(ValidationException::class);
         $rule->check(-10);
     }
 }

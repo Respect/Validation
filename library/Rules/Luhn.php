@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function array_map;
 use function count;
 use function str_split;
@@ -16,6 +18,10 @@ use function str_split;
 /**
  * @see https://en.wikipedia.org/wiki/Luhn_algorithm
  */
+#[Template(
+    '{{name}} must be a valid Luhn number',
+    '{{name}} must not be a valid Luhn number',
+)]
 final class Luhn extends AbstractRule
 {
     public function validate(mixed $input): bool

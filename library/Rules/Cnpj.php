@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function array_map;
 use function array_sum;
 use function count;
@@ -16,6 +18,10 @@ use function is_scalar;
 use function preg_replace;
 use function str_split;
 
+#[Template(
+    '{{name}} must be a valid CNPJ number',
+    '{{name}} must not be a valid CNPJ number',
+)]
 final class Cnpj extends AbstractRule
 {
     public function validate(mixed $input): bool

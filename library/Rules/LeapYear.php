@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use DateTimeInterface;
+use Respect\Validation\Attributes\Template;
 
 use function date;
 use function is_numeric;
@@ -17,6 +18,10 @@ use function is_scalar;
 use function sprintf;
 use function strtotime;
 
+#[Template(
+    '{{name}} must be a leap year',
+    '{{name}} must not be a leap year',
+)]
 final class LeapYear extends AbstractRule
 {
     public function validate(mixed $input): bool

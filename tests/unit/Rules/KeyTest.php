@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Exceptions\KeyException;
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\TestCase;
 use Throwable;
 
@@ -55,7 +55,7 @@ final class KeyTest extends TestCase
     {
         $validator = new Key('someEmptyKey');
 
-        $this->expectException(KeyException::class);
+        $this->expectException(ValidationException::class);
 
         $validator->assert('');
     }
@@ -65,7 +65,7 @@ final class KeyTest extends TestCase
     {
         $validator = new Key('someEmptyKey');
 
-        $this->expectException(KeyException::class);
+        $this->expectException(ValidationException::class);
 
         $validator->check('');
     }
@@ -102,24 +102,24 @@ final class KeyTest extends TestCase
     }
 
     #[Test]
-    public function arrayWithAbsentKeyShouldThrowKeyException(): void
+    public function arrayWithAbsentKeyShouldThrowValidationException(): void
     {
         $validator = new Key('bar');
         $someArray = [];
         $someArray['baraaaaaa'] = 'foo';
 
-        $this->expectException(KeyException::class);
+        $this->expectException(ValidationException::class);
 
         $validator->assert($someArray);
     }
 
     #[Test]
-    public function notArrayShouldThrowKeyException(): void
+    public function notArrayShouldThrowValidationException(): void
     {
         $validator = new Key('bar');
         $someArray = 123;
 
-        $this->expectException(KeyException::class);
+        $this->expectException(ValidationException::class);
 
         $validator->assert($someArray);
     }

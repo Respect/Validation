@@ -9,6 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
+#[Template(
+    '{{name}} must be a hex RGB color',
+    '{{name}} must not be a hex RGB color',
+)]
 final class HexRgbColor extends AbstractEnvelope
 {
     public function __construct()

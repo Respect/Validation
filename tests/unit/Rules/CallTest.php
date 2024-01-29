@@ -14,8 +14,7 @@ use Exception;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\AlwaysInvalidException;
-use Respect\Validation\Exceptions\CallException;
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
 
@@ -56,7 +55,7 @@ final class CallTest extends TestCase
             ->expects(self::never())
             ->method('assert');
 
-        $this->expectException(CallException::class);
+        $this->expectException(ValidationException::class);
 
         $sut = new Call($callable, $rule);
         $sut->assert($input);
@@ -81,7 +80,7 @@ final class CallTest extends TestCase
     }
 
     #[Test]
-    public function assertShouldThrowCallExceptionWhenCallableThrowsAnException(): void
+    public function assertShouldThrowValidationExceptionWhenCallableThrowsAnException(): void
     {
         $input = [];
         $callable = static function (): void {
@@ -93,7 +92,7 @@ final class CallTest extends TestCase
             ->expects(self::never())
             ->method('assert');
 
-        $this->expectException(CallException::class);
+        $this->expectException(ValidationException::class);
 
         $sut = new Call($callable, $rule);
         $sut->assert($input);
@@ -107,7 +106,7 @@ final class CallTest extends TestCase
 
         $rule = new AlwaysInvalid();
 
-        $this->expectException(AlwaysInvalidException::class);
+        $this->expectException(ValidationException::class);
 
         $sut = new Call($callable, $rule);
         $sut->assert($input);
@@ -130,7 +129,7 @@ final class CallTest extends TestCase
     }
 
     #[Test]
-    public function checkShouldThrowCallExceptionWhenPhpTriggersAnError(): void
+    public function checkShouldThrowValidationExceptionWhenPhpTriggersAnError(): void
     {
         $input = [];
         $callable = 'trim';
@@ -140,7 +139,7 @@ final class CallTest extends TestCase
             ->expects(self::never())
             ->method('check');
 
-        $this->expectException(CallException::class);
+        $this->expectException(ValidationException::class);
 
         $sut = new Call($callable, $rule);
         $sut->assert($input);
@@ -165,7 +164,7 @@ final class CallTest extends TestCase
     }
 
     #[Test]
-    public function checkShouldThrowCallExceptionWhenCallableThrowsAnException(): void
+    public function checkShouldThrowValidationExceptionWhenCallableThrowsAnException(): void
     {
         $input = [];
         $callable = static function (): void {
@@ -177,7 +176,7 @@ final class CallTest extends TestCase
             ->expects(self::never())
             ->method('check');
 
-        $this->expectException(CallException::class);
+        $this->expectException(ValidationException::class);
 
         $sut = new Call($callable, $rule);
         $sut->assert($input);
@@ -188,7 +187,7 @@ final class CallTest extends TestCase
     {
         $rule = new AlwaysInvalid();
 
-        $this->expectException(AlwaysInvalidException::class);
+        $this->expectException(ValidationException::class);
 
         $sut = new Call('trim', $rule);
         $sut->check('something');

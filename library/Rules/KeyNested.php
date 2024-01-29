@@ -10,7 +10,10 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use ArrayAccess;
+use Respect\Validation\Attributes\ExceptionClass;
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\NonOmissibleValidationException;
 
 use function array_key_exists;
 use function array_shift;
@@ -23,6 +26,17 @@ use function property_exists;
 use function rtrim;
 use function sprintf;
 
+#[ExceptionClass(NonOmissibleValidationException::class)]
+#[Template(
+    'No items were found for key chain {{name}}',
+    'Items for key chain {{name}} must not be present',
+    self::TEMPLATE_NOT_PRESENT,
+)]
+#[Template(
+    'Key chain {{name}} is not valid',
+    'Key chain {{name}} must not be valid',
+    self::TEMPLATE_INVALID,
+)]
 final class KeyNested extends AbstractRelated
 {
     public function hasReference(mixed $input): bool

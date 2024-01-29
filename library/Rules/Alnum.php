@@ -9,8 +9,20 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function ctype_alnum;
 
+#[Template(
+    '{{name}} must contain only letters (a-z) and digits (0-9)',
+    '{{name}} must not contain letters (a-z) or digits (0-9)',
+    self::TEMPLATE_STANDARD,
+)]
+#[Template(
+    '{{name}} must contain only letters (a-z), digits (0-9) and {{additionalChars}}',
+    '{{name}} must not contain letters (a-z), digits (0-9) or {{additionalChars}}',
+    self::TEMPLATE_EXTRA,
+)]
 final class Alnum extends AbstractFilterRule
 {
     protected function validateFilteredInput(string $input): bool

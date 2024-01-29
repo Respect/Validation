@@ -9,12 +9,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function is_string;
 use function preg_match;
 
 /**
  * @see http://semver.org/
  */
+#[Template(
+    '{{name}} must be a version',
+    '{{name}} must not be a version',
+)]
 final class Version extends AbstractRule
 {
     public function validate(mixed $input): bool

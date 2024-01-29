@@ -9,12 +9,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function in_array;
 use function is_array;
 use function is_scalar;
 use function mb_stripos;
 use function mb_strpos;
 
+#[Template(
+    '{{name}} must contain the value {{containsValue}}',
+    '{{name}} must not contain the value {{containsValue}}',
+)]
 final class Contains extends AbstractRule
 {
     public function __construct(

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function array_keys;
@@ -18,6 +19,16 @@ use function preg_match;
 use function preg_replace;
 use function sprintf;
 
+#[Template(
+    '{{name}} must be a valid Credit Card number',
+    '{{name}} must not be a valid Credit Card number',
+    self::TEMPLATE_STANDARD,
+)]
+#[Template(
+    '{{name}} must be a valid {{brand}} Credit Card number',
+    '{{name}} must not be a valid {{brand}} Credit Card number',
+    self::TEMPLATE_BRANDED,
+)]
 final class CreditCard extends AbstractRule
 {
     public const TEMPLATE_BRANDED = 'branded';

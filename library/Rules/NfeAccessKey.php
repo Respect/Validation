@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function array_map;
 use function floor;
 use function mb_strlen;
@@ -17,6 +19,10 @@ use function str_split;
 /**
  * @see (pt-br) Manual de Integração do Contribuinte v4.0.1 em http://www.nfe.fazenda.gov.br
  */
+#[Template(
+    '{{name}} must be a valid NFe access key',
+    '{{name}} must not be a valid NFe access key',
+)]
 final class NfeAccessKey extends AbstractRule
 {
     public function validate(mixed $input): bool

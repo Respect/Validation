@@ -11,9 +11,14 @@ namespace Respect\Validation\Rules;
 
 use DateTimeImmutable;
 use DateTimeInterface;
+use Respect\Validation\Attributes\Template;
 
 use function is_scalar;
 
+#[Template(
+    '{{name}} must be leap date',
+    '{{name}} must not be leap date',
+)]
 final class LeapDate extends AbstractRule
 {
     public function __construct(

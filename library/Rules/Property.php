@@ -10,11 +10,25 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use ReflectionProperty;
+use Respect\Validation\Attributes\ExceptionClass;
+use Respect\Validation\Attributes\Template;
+use Respect\Validation\Exceptions\NonOmissibleValidationException;
 use Respect\Validation\Validatable;
 
 use function is_object;
 use function property_exists;
 
+#[ExceptionClass(NonOmissibleValidationException::class)]
+#[Template(
+    'Property {{name}} must be present',
+    'Property {{name}} must not be present',
+    self::TEMPLATE_NOT_PRESENT,
+)]
+#[Template(
+    'Property {{name}} must be valid',
+    'Property {{name}} must not validate',
+    self::TEMPLATE_INVALID,
+)]
 final class Property extends AbstractRelated
 {
     public function __construct(string $name, ?Validatable $rule = null, bool $mandatory = true)

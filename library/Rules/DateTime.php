@@ -10,12 +10,23 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use DateTimeInterface;
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Helpers\CanValidateDateTime;
 
 use function date;
 use function is_scalar;
 use function strtotime;
 
+#[Template(
+    '{{name}} must be a valid date/time',
+    '{{name}} must not be a valid date/time',
+    self::TEMPLATE_STANDARD,
+)]
+#[Template(
+    '{{name}} must be a valid date/time in the format {{sample}}',
+    '{{name}} must not be a valid date/time in the format {{sample}}',
+    self::TEMPLATE_FORMAT,
+)]
 final class DateTime extends AbstractRule
 {
     use CanValidateDateTime;

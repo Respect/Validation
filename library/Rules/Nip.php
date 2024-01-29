@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function array_map;
 use function is_scalar;
 use function preg_match;
@@ -17,6 +19,10 @@ use function str_split;
 /**
  * @see https://en.wikipedia.org/wiki/VAT_identification_number
  */
+#[Template(
+    '{{name}} must be a valid Polish VAT identification number',
+    '{{name}} must not be a valid Polish VAT identification number',
+)]
 final class Nip extends AbstractRule
 {
     public function validate(mixed $input): bool

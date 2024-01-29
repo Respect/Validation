@@ -9,7 +9,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\ExceptionClass;
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\NonNegatable;
 use Respect\Validation\Validatable;
@@ -19,6 +22,17 @@ use function count;
 use function current;
 use function sprintf;
 
+#[ExceptionClass(NestedValidationException::class)]
+#[Template(
+    'All of the required rules must pass for {{name}}',
+    'None of there rules must pass for {{name}}',
+    Not::TEMPLATE_NONE,
+)]
+#[Template(
+    'These rules must pass for {{name}}',
+    'These rules must not pass for {{name}}',
+    Not::TEMPLATE_SOME,
+)]
 final class Not extends AbstractRule
 {
     public const TEMPLATE_NONE = 'none';

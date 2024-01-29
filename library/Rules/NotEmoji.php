@@ -9,10 +9,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function implode;
 use function is_string;
 use function preg_match;
 
+#[Template(
+    '{{name}} must not contain an Emoji',
+    '{{name}} must contain an Emoji',
+)]
 final class NotEmoji extends AbstractRule
 {
     private const RANGES = [

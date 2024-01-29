@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use SplFileInfo;
 
 use function is_string;
@@ -16,6 +17,10 @@ use function pathinfo;
 
 use const PATHINFO_EXTENSION;
 
+#[Template(
+    '{{name}} must have {{extension}} extension',
+    '{{name}} must not have {{extension}} extension',
+)]
 final class Extension extends AbstractRule
 {
     public function __construct(

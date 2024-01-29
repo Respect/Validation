@@ -9,7 +9,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
+use Respect\Validation\Attributes\ExceptionClass;
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Rules\AllOf;
 
@@ -18,8 +21,22 @@ use function count;
 /**
  * @mixin StaticValidator
  */
+#[ExceptionClass(NestedValidationException::class)]
+#[Template(
+    'All of the required rules must pass for {{name}}',
+    'None of these rules must pass for {{name}}',
+    self::TEMPLATE_NONE,
+)]
+#[Template(
+    'These rules must pass for {{name}}',
+    'These rules must not pass for {{name}}',
+    self::TEMPLATE_SOME,
+)]
 final class Validator extends AllOf
 {
+    public const TEMPLATE_NONE = 'none';
+    public const TEMPLATE_SOME = 'some';
+
     public static function create(): self
     {
         return new self();

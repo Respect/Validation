@@ -12,17 +12,18 @@ namespace Respect\Validation;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionObject;
+use Respect\Validation\Attributes\ExceptionClass;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\ParameterStringifier;
 use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
+use Respect\Validation\Message\TemplateCollector;
 
-use function array_merge;
+use function count;
 use function lcfirst;
 use function sprintf;
-use function str_replace;
 use function trim;
 use function ucfirst;
 
@@ -34,22 +35,20 @@ final class Factory
     private array $rulesNamespaces = ['Respect\\Validation\\Rules'];
 
     /**
-     * @var string[]
-     */
-    private array $exceptionsNamespaces = ['Respect\\Validation\\Exceptions'];
-
-    /**
      * @var callable
      */
     private $translator = 'strval';
 
     private ParameterStringifier $parameterStringifier;
 
+    private TemplateCollector $templateCollector;
+
     private static Factory $defaultInstance;
 
     public function __construct()
     {
         $this->parameterStringifier = new KeepOriginalStringName();
+        $this->templateCollector = new TemplateCollector();
     }
 
     public static function getDefaultInstance(): self
@@ -65,14 +64,6 @@ final class Factory
     {
         $clone = clone $this;
         $clone->rulesNamespaces[] = trim($rulesNamespace, '\\');
-
-        return $clone;
-    }
-
-    public function withExceptionNamespace(string $exceptionsNamespace): self
-    {
-        $clone = clone $this;
-        $clone->exceptionsNamespaces[] = trim($exceptionsNamespace, '\\');
 
         return $clone;
     }
@@ -125,33 +116,28 @@ final class Factory
      */
     public function exception(Validatable $validatable, mixed $input, array $extraParams = []): ValidationException
     {
-        $formatter = new Formatter($this->translator, $this->parameterStringifier);
         $reflection = new ReflectionObject($validatable);
-        $ruleName = $reflection->getShortName();
+
         $params = ['input' => $input] + $extraParams + $validatable->getParams();
-        $id = lcfirst($ruleName);
+        $id = lcfirst($reflection->getShortName());
         if ($validatable->getName() !== null) {
             $id = $params['name'] = $validatable->getName();
         }
-        $template = $params['template'] ?? $validatable->getTemplate($input);
-        $exceptionNamespace = str_replace('\\Rules', '\\Exceptions', $reflection->getNamespaceName());
-        foreach (array_merge([$exceptionNamespace], $this->exceptionsNamespaces) as $namespace) {
-            try {
-                /** @var class-string<ValidationException> $exceptionName */
-                $exceptionName = $namespace . '\\' . $ruleName . 'Exception';
+        $template = $validatable->getTemplate($input);
+        $templates = $this->templateCollector->extract($validatable);
+        $formatter = new Formatter($this->translator, $this->parameterStringifier);
 
-                /** @var ValidationException $exception */
-                $exception = $this
-                    ->createReflectionClass($exceptionName, ValidationException::class)
-                    ->newInstance($input, $id, $params, $template, $formatter);
-
-                return $exception;
-            } catch (ReflectionException) {
-                continue;
-            }
+        $attributes = $reflection->getAttributes(ExceptionClass::class);
+        if (count($attributes) === 0) {
+            return new ValidationException($input, $id, $params, $template, $templates, $formatter);
         }
 
-        return new ValidationException($input, $id, $params, $template, $formatter);
+        /** @var ValidationException $exception */
+        $exception = $this
+            ->createReflectionClass($attributes[0]->newInstance()->class, ValidationException::class)
+            ->newInstance($input, $id, $params, $template, $templates, $formatter);
+
+        return $exception;
     }
 
     public static function setDefaultInstance(self $defaultInstance): void

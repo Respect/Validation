@@ -9,9 +9,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function is_scalar;
 use function preg_match;
 
+#[Template(
+    '{{name}} must validate against {{regex}}',
+    '{{name}} must not validate against {{regex}}',
+)]
 final class Regex extends AbstractRule
 {
     public function __construct(

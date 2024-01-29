@@ -12,6 +12,7 @@ namespace Respect\Validation\Exceptions;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
 use Respect\Validation\Test\TestCase;
@@ -157,14 +158,16 @@ final class ValidationExceptionTest extends TestCase
 
     /**
      * @param array<string, mixed> $params
+     * @param array<Template> $templates
      */
     private function createValidationException(
         mixed $input = 'input',
         string $id = 'id',
         array $params = [],
         string $template = Validatable::TEMPLATE_STANDARD,
+        array $templates = [],
         Formatter $formatter = new Formatter('strval', new KeepOriginalStringName())
     ): ValidationException {
-        return new ValidationException($input, $id, $params, $template, $formatter);
+        return new ValidationException($input, $id, $params, $template, $templates, $formatter);
     }
 }

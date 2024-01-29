@@ -9,11 +9,17 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function array_unique;
 use function is_array;
 
 use const SORT_REGULAR;
 
+#[Template(
+    '{{name}} must not contain duplicates',
+    '{{name}} must contain duplicates',
+)]
 final class Unique extends AbstractRule
 {
     public function validate(mixed $input): bool

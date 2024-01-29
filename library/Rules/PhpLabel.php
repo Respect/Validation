@@ -9,9 +9,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function is_string;
 use function preg_match;
 
+#[Template(
+    '{{name}} must be a valid PHP label',
+    '{{name}} must not be a valid PHP label',
+)]
 final class PhpLabel extends AbstractRule
 {
     public function validate(mixed $input): bool

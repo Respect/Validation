@@ -9,9 +9,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function array_diff;
 use function is_array;
 
+#[Template(
+    '{{name}} must be subset of {{superset}}',
+    '{{name}} must not be subset of {{superset}}',
+)]
 final class Subset extends AbstractRule
 {
     /**

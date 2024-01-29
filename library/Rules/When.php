@@ -9,8 +9,13 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Validatable;
 
+#[Template(
+    '{{name}} must be valid',
+    '{{name}} must not be valid',
+)]
 final class When extends AbstractRule
 {
     private readonly Validatable $else;

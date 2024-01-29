@@ -9,6 +9,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-final class NotException extends GroupedValidationException
+final class NonOmissibleValidationException extends NestedValidationException
 {
 }

@@ -11,55 +11,23 @@ validate method will be executed. Here's how the class should look:
 namespace My\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
+use Respect\Validation\Attributes\Template;
 
+#[Template(
+    '{{name}} is something',
+    '{{name}} is not something',
+)]
 final class Something extends AbstractRule
 {
-    public function validate($input): bool
+    public function validate(mixed $input): bool
     {
         // Do something here with the $input and return a boolean value
     }
 }
 ```
 
-Each rule must have an Exception to go with it. Exceptions should be named
-with the name of the rule followed by the word Exception. The process of creating
-an Exception is similar to creating a rule but there are no methods in the
-Exception class. Instead, you create one static property that includes an
-array with the information below:
-
-```php
-namespace My\Validation\Exceptions;
-
-use Respect\Validation\Exceptions\ValidationException;
-
-final class SomethingException extends ValidationException
-{
-    /**
-     * @var array<string, array<string, string>>
-     */
-    protected array $defaultTemplates = [
-        self::MODE_DEFAULT => [
-            self::STANDARD => 'Validation message if Something fails validation.',
-        ],
-        self::MODE_NEGATIVE => [
-            self::STANDARD => 'Validation message if the negative of Something is called and fails validation.',
-        ],
-    ];
-}
-```
-
-So in the end, the folder structure for your Rules and Exceptions should look
-something like the structure below. Note that the folders (and namespaces) are
-plural but the actual Rules and Exceptions are singular.
-
-```
-My
- +-- Validation
-     +-- Exceptions
-         +-- SomethingException.php
-     +-- Rules
-         +-- Something.php
-```
+The `'{{name}} is not something` message would be used then you call the rule
+with the `not()`.
 
 All classes in Validation are created by the `Factory` class. If you want
 Validation to execute your rule (or rules) in the chain, you must overwrite the
@@ -69,7 +37,6 @@ default `Factory`.
 Factory::setDefaultInstance(
     (new Factory())
         ->withRuleNamespace('My\\Validation\\Rules')
-        ->withExceptionNamespace('My\\Validation\\Exceptions')
 );
 v::something(); // Try to load "My\Validation\Rules\Something" if any
 ```

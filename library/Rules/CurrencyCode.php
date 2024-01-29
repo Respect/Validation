@@ -9,6 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
+#[Template(
+    '{{name}} must be a valid currency',
+    '{{name}} must not be a valid currency',
+)]
 final class CurrencyCode extends AbstractSearcher
 {
     /**

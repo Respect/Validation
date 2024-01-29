@@ -9,12 +9,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function is_array;
 use function is_string;
 use function mb_stripos;
 use function mb_strpos;
 use function reset;
 
+#[Template(
+    '{{name}} must start with {{startValue}}',
+    '{{name}} must not start with {{startValue}}',
+)]
 final class StartsWith extends AbstractRule
 {
     public function __construct(

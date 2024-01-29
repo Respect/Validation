@@ -11,7 +11,7 @@ namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
-use Respect\Validation\Exceptions\PhoneException;
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\RuleTestCase;
 
 #[Group('rule')]
@@ -22,7 +22,7 @@ final class PhoneTest extends RuleTestCase
     {
         $phoneValidator = new Phone('BR');
 
-        $this->expectException(PhoneException::class);
+        $this->expectException(ValidationException::class);
         $this->expectExceptionMessage('"abc" must be a valid telephone number for country "Brazil"');
 
         $phoneValidator->assert('abc');
@@ -32,7 +32,7 @@ final class PhoneTest extends RuleTestCase
     {
         $phoneValidator = new Phone();
 
-        $this->expectException(PhoneException::class);
+        $this->expectException(ValidationException::class);
         $this->expectExceptionMessage('"abc" must be a valid telephone number');
 
         $phoneValidator->assert('abc');

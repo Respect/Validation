@@ -9,11 +9,17 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function implode;
 use function is_scalar;
 use function preg_match;
 use function sprintf;
 
+#[Template(
+    '{{name}} must be a ISBN',
+    '{{name}} must not be a ISBN',
+)]
 final class Isbn extends AbstractRule
 {
     /**

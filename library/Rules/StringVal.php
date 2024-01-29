@@ -9,10 +9,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function is_object;
 use function is_scalar;
 use function method_exists;
 
+#[Template(
+    '{{name}} must be a string',
+    '{{name}} must not be string',
+)]
 final class StringVal extends AbstractRule
 {
     public function validate(mixed $input): bool

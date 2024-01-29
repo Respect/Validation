@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function array_values;
@@ -18,6 +19,16 @@ use function is_string;
 use function sprintf;
 use function str_split;
 
+#[Template(
+    '{{name}} must be sorted in ascending order',
+    '{{name}} must not be sorted in ascending order',
+    self::TEMPLATE_ASCENDING,
+)]
+#[Template(
+    '{{name}} must be sorted in descending order',
+    '{{name}} must not be sorted in descending order',
+    self::TEMPLATE_DESCENDING,
+)]
 final class Sorted extends AbstractRule
 {
     public const TEMPLATE_ASCENDING = 'ascending';

@@ -9,11 +9,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\ExceptionClass;
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\EachException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Helpers\CanValidateIterable;
 use Respect\Validation\Validatable;
 
+#[ExceptionClass(EachException::class)]
+#[Template(
+    'Each item in {{name}} must be valid',
+    'Each item in {{name}} must not validate',
+)]
 final class Each extends AbstractRule
 {
     use CanValidateIterable;

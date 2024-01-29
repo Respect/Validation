@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function array_keys;
@@ -17,6 +18,10 @@ use function implode;
 use function is_callable;
 use function sprintf;
 
+#[Template(
+    '{{name}} must be {{type}}',
+    '{{name}} must not be {{type}}',
+)]
 final class Type extends AbstractRule
 {
     private const AVAILABLE_TYPES = [

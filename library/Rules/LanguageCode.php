@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function array_column;
@@ -16,6 +17,10 @@ use function array_filter;
 use function array_search;
 use function sprintf;
 
+#[Template(
+    '{{name}} must be a valid ISO 639 {{set}} language code',
+    '{{name}} must not be a valid ISO 639 {{set}} language code',
+)]
 final class LanguageCode extends AbstractEnvelope
 {
     public const ALPHA2 = 'alpha-2';

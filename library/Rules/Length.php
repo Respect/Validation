@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Countable as CountableInterface;
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function count;
@@ -21,6 +22,36 @@ use function is_string;
 use function mb_strlen;
 use function sprintf;
 
+#[Template(
+    '{{name}} must have a length between {{minValue}} and {{maxValue}}',
+    '{{name}} must not have a length between {{minValue}} and {{maxValue}}',
+    self::TEMPLATE_BOTH,
+)]
+#[Template(
+    '{{name}} must have a length greater than {{minValue}}',
+    '{{name}} must not have a length greater than {{minValue}}',
+    self::TEMPLATE_LOWER,
+)]
+#[Template(
+    '{{name}} must have a length greater than or equal to {{minValue}}',
+    '{{name}} must not have a length greater than or equal to {{minValue}}',
+    self::TEMPLATE_LOWER_INCLUSIVE,
+)]
+#[Template(
+    '{{name}} must have a length lower than {{maxValue}}',
+    '{{name}} must not have a length lower than {{maxValue}}',
+    self::TEMPLATE_GREATER,
+)]
+#[Template(
+    '{{name}} must have a length lower than or equal to {{maxValue}}',
+    '{{name}} must not have a length lower than or equal to {{maxValue}}',
+    self::TEMPLATE_GREATER_INCLUSIVE,
+)]
+#[Template(
+    '{{name}} must have a length of {{maxValue}}',
+    '{{name}} must not have a length of {{maxValue}}',
+    self::TEMPLATE_EXACT,
+)]
 final class Length extends AbstractRule
 {
     public const TEMPLATE_LOWER = 'lower';

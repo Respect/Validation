@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function is_scalar;
 use function ord;
 use function preg_match;
@@ -16,6 +18,10 @@ use function preg_match;
 /**
  * @see https://en.wikipedia.org/wiki/Polish_identity_card
  */
+#[Template(
+    '{{name}} must be a valid Polish Identity Card number',
+    '{{name}} must not be a valid Polish Identity Card number',
+)]
 final class PolishIdCard extends AbstractRule
 {
     private const ASCII_CODE_0 = 48;

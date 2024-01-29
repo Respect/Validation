@@ -9,6 +9,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
+#[Template(
+    'The value must be nullable',
+    'The value must not be null',
+    self::TEMPLATE_STANDARD,
+)]
+#[Template(
+    '{{name}} must be nullable',
+    '{{name}} must not be null',
+    self::TEMPLATE_NAMED,
+)]
 final class Nullable extends AbstractWrapper
 {
     public const TEMPLATE_NAMED = 'named';

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use stdClass;
 
 use function array_filter;
@@ -17,6 +18,16 @@ use function is_numeric;
 use function is_string;
 use function trim;
 
+#[Template(
+    'The value must not be blank',
+    'The value must be blank',
+    self::TEMPLATE_STANDARD,
+)]
+#[Template(
+    '{{name}} must not be blank',
+    '{{name}} must be blank',
+    self::TEMPLATE_NAMED,
+)]
 final class NotBlank extends AbstractRule
 {
     public const TEMPLATE_NAMED = 'named';

@@ -9,9 +9,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function is_string;
 use function mb_strtolower;
 
+#[Template(
+    '{{name}} must be lowercase',
+    '{{name}} must not be lowercase',
+)]
 final class Lowercase extends AbstractRule
 {
     public function validate(mixed $input): bool

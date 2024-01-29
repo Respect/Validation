@@ -10,40 +10,40 @@ declare(strict_types=1);
 namespace Respect\Validation\Exceptions;
 
 use InvalidArgumentException;
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Message\Formatter;
-use Respect\Validation\Validatable;
 
-use function key;
+use function count;
 
 class ValidationException extends InvalidArgumentException implements Exception
 {
     public const MODE_DEFAULT = 'default';
     public const MODE_NEGATIVE = 'negative';
 
-    /**
-     * @var array<string, array<string, string>>
-     */
-    protected array $defaultTemplates = [
-        self::MODE_DEFAULT => [
-            Validatable::TEMPLATE_STANDARD => '{{name}} must be valid',
-        ],
-        self::MODE_NEGATIVE => [
-            Validatable::TEMPLATE_STANDARD => '{{name}} must not be valid',
-        ],
-    ];
-
     private string $mode = self::MODE_DEFAULT;
 
     /**
-     * @param mixed[] $params
+     * @var array<Template>
+     */
+    private readonly array $templates;
+
+    /**
+     * @param array<string, mixed> $params
+     * @param array<Template> $templates
      */
     public function __construct(
         private readonly mixed $input,
         private readonly string $id,
         private array $params,
         private string $template,
+        array $templates,
         private readonly Formatter $formatter
     ) {
+        if (count($templates) === 0) {
+            $templates = [new Template('{{name}} must be valid', '{{name}} must not be valid')];
+        }
+        $this->templates = $templates;
+
         parent::__construct($this->createMessage());
     }
 
@@ -88,21 +88,23 @@ class ValidationException extends InvalidArgumentException implements Exception
 
     public function hasCustomTemplate(): bool
     {
-        return isset($this->defaultTemplates[$this->mode][$this->template]) === false;
+        return $this->getTemplateString() === $this->template;
     }
 
-    protected function getTemplate(): string
+    private function getTemplateString(): string
     {
-        return (string) key($this->defaultTemplates[$this->mode]);
+        foreach ($this->templates as $template) {
+            if ($template->id === $this->template) {
+                return $template->{$this->mode};
+            }
+        }
+
+        return $this->template;
     }
 
     private function createMessage(): string
     {
-        return $this->formatter->format(
-            $this->defaultTemplates[$this->mode][$this->template] ?? $this->template,
-            $this->input,
-            $this->params
-        );
+        return $this->formatter->format($this->getTemplateString(), $this->input, $this->params);
     }
 
     public function __toString(): string

@@ -9,8 +9,20 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function ctype_xdigit;
 
+#[Template(
+    '{{name}} contain only hexadecimal digits',
+    '{{name}} must not contain hexadecimal digits',
+    self::TEMPLATE_STANDARD,
+)]
+#[Template(
+    '{{name}} contain only hexadecimal digits and {{additionalChars}}',
+    '{{name}} must not contain hexadecimal digits or {{additionalChars}}',
+    self::TEMPLATE_EXTRA,
+)]
 final class Xdigit extends AbstractFilterRule
 {
     protected function validateFilteredInput(string $input): bool

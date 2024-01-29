@@ -32,6 +32,7 @@ final class CompositeSub extends AbstractComposite
             id: 'CompositeStub',
             params: $extraParameters,
             template: Validatable::TEMPLATE_STANDARD,
+            templates: [],
             formatter: new Formatter(static fn ($value) => $value, new KeepOriginalStringName())
         );
     }

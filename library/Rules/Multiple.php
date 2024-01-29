@@ -9,6 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
+#[Template(
+    '{{name}} must be multiple of {{multipleOf}}',
+    '{{name}} must not be multiple of {{multipleOf}}',
+)]
 final class Multiple extends AbstractRule
 {
     public function __construct(

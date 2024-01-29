@@ -9,11 +9,17 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function intval;
 use function mb_strlen;
 use function preg_match;
 use function preg_replace;
 
+#[Template(
+    '{{name}} must be a valid CPF number',
+    '{{name}} must not be a valid CPF number',
+)]
 final class Cpf extends AbstractRule
 {
     public function validate(mixed $input): bool

@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\ExceptionClass;
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
@@ -20,6 +22,11 @@ use function explode;
 use function iterator_to_array;
 use function mb_substr_count;
 
+#[ExceptionClass(NestedValidationException::class)]
+#[Template(
+    '{{name}} must be a valid domain',
+    '{{name}} must not be a valid domain',
+)]
 final class Domain extends AbstractRule
 {
     private readonly Validatable $genericRule;

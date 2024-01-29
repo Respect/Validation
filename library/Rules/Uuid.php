@@ -9,12 +9,23 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function is_string;
 use function preg_match;
 use function sprintf;
 
+#[Template(
+    '{{name}} must be a valid UUID',
+    '{{name}} must not be a valid UUID',
+    self::TEMPLATE_STANDARD,
+)]
+#[Template(
+    '{{name}} must be a valid UUID version {{version}}',
+    '{{name}} must not be a valid UUID version {{version}}',
+    self::TEMPLATE_VERSION,
+)]
 final class Uuid extends AbstractRule
 {
     public const TEMPLATE_VERSION = 'version';

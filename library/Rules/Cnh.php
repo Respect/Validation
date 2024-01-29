@@ -9,10 +9,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function is_scalar;
 use function mb_strlen;
 use function preg_replace;
 
+#[Template(
+    '{{name}} must be a valid CNH number',
+    '{{name}} must not be a valid CNH number',
+)]
 final class Cnh extends AbstractRule
 {
     public function validate(mixed $input): bool

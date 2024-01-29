@@ -29,7 +29,6 @@ Before writing anything, feature or bug fix:
 A common validator (rule) on Respect\Validation is composed of three classes:
 
   * `library/Rules/YourRuleName.php`: the rule itself
-  * `library/Exceptions/YourRuleNameException.php`: the exception thrown by the rule
   * `tests/unit/Rules/YourRuleNameTest.php`: tests for the rule
 
 The classes are pretty straightforward. In the sample below, we're going to
@@ -62,47 +61,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
+#[Template(
+    '{{name}} must be a Hello World',
+    '{{name}} must not be a Hello World',
+)]
 final class HelloWorld extends AbstractRule
 {
     public function validate(mixed $input): bool
     {
         return $input === 'Hello World';
     }
-}
-```
-
-### Creating the rule exception
-
-Just that and we're done with the rule code. The Exception requires you to
-declare messages used by `assert()` and `check()`. Messages are declared in
-affirmative and negative moods, so if anyone calls `v::not(v::helloWorld())` the
-library will show the appropriate message.
-
-```php
-<?php
-
-/*
- * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- * SPDX-License-Identifier: MIT
- */
-
-declare(strict_types=1);
-
-namespace Respect\Validation\Exceptions;
-
-final class HelloWorldException extends ValidationException
-{
-    /**
-     * @var array<string, array<string, string>>
-     */
-    protected array $defaultTemplates = [
-        self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a Hello World',
-        ],
-        self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a Hello World',
-        ]
-    ];
 }
 ```
 
@@ -173,7 +143,7 @@ for it other than what is covered by `RuleTestCase`.
 
 ### Helping us a little bit more
 
-You rule will be accepted only with these 3 files (rule, exception and unit test),
+You rule will be accepted only with these 3 files (rule and unit test),
 but if you really want to help us, you can follow the example of [ArrayType][] by:
 
 - Adding your new rule on the `Validator`'s class docblock;

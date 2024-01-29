@@ -9,8 +9,20 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function ctype_print;
 
+#[Template(
+    '{{name}} must contain only printable characters',
+    '{{name}} must not contain printable characters',
+    self::TEMPLATE_STANDARD,
+)]
+#[Template(
+    '{{name}} must contain only printable characters and "{{additionalChars}}"',
+    '{{name}} must not contain printable characters or "{{additionalChars}}"',
+    self::TEMPLATE_EXTRA,
+)]
 final class Printable extends AbstractFilterRule
 {
     protected function validateFilteredInput(string $input): bool

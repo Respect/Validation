@@ -9,10 +9,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function filter_var;
 
 use const FILTER_VALIDATE_INT;
 
+#[Template(
+    '{{name}} must be an even number',
+    '{{name}} must not be an even number',
+)]
 final class Even extends AbstractRule
 {
     public function validate(mixed $input): bool

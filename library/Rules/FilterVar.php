@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function array_key_exists;
@@ -25,6 +26,10 @@ use const FILTER_VALIDATE_IP;
 use const FILTER_VALIDATE_REGEXP;
 use const FILTER_VALIDATE_URL;
 
+#[Template(
+    '{{name}} must be valid',
+    '{{name}} must not be valid',
+)]
 final class FilterVar extends AbstractEnvelope
 {
     private const ALLOWED_FILTERS = [

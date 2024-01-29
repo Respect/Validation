@@ -9,10 +9,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function ceil;
 use function is_numeric;
 use function sqrt;
 
+#[Template(
+    '{{name}} must be a valid prime number',
+    '{{name}} must not be a valid prime number',
+)]
 final class PrimeNumber extends AbstractRule
 {
     public function validate(mixed $input): bool

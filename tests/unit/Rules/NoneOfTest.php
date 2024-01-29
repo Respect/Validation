@@ -12,11 +12,10 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\NoneOfException;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Test\TestCase;
 
 #[Group('rule')]
-#[CoversClass(NoneOfException::class)]
 #[CoversClass(NoneOf::class)]
 final class NoneOfTest extends TestCase
 {
@@ -53,7 +52,7 @@ final class NoneOfTest extends TestCase
         $o = new NoneOf($valid1, $valid2, $valid3);
         self::assertFalse($o->validate('any'));
 
-        $this->expectException(NoneOfException::class);
+        $this->expectException(NestedValidationException::class);
         $o->assert('any');
     }
 }

@@ -9,6 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
+#[Template(
+    '{{name}} must be an instance of {{instanceName}}',
+    '{{name}} must not be an instance of {{instanceName}}',
+)]
 final class Instance extends AbstractRule
 {
     public function __construct(

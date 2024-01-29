@@ -14,11 +14,10 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Exceptions\SubdivisionCodeException;
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\TestCase;
 
 #[Group('rule')]
-#[CoversClass(SubdivisionCodeException::class)]
 #[CoversClass(SubdivisionCode::class)]
 final class SubdivisionCodeTest extends TestCase
 {
@@ -59,11 +58,11 @@ final class SubdivisionCodeTest extends TestCase
     }
 
     #[Test]
-    public function shouldThrowsSubdivisionCodeException(): void
+    public function shouldThrowsValidationException(): void
     {
         $countrySubdivision = new SubdivisionCode('BR');
 
-        $this->expectException(SubdivisionCodeException::class);
+        $this->expectException(ValidationException::class);
         $this->expectExceptionMessage('"CA" must be a subdivision code of "Brazil"');
 
         $countrySubdivision->assert('CA');

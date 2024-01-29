@@ -9,22 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-use Respect\Validation\Validatable;
-
 final class EachException extends NestedValidationException
 {
-    /**
-     * @var array<string, array<string, string>>
-     */
-    protected array $defaultTemplates = [
-        self::MODE_DEFAULT => [
-            Validatable::TEMPLATE_STANDARD => 'Each item in {{name}} must be valid',
-        ],
-        self::MODE_NEGATIVE => [
-            Validatable::TEMPLATE_STANDARD => 'Each item in {{name}} must not validate',
-        ],
-    ];
-
     /**
      * @todo This method shares too much with the parent implementation
      *

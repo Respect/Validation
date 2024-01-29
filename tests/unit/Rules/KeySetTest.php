@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Exceptions\KeySetException;
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\TestCase;
 use stdClass;
 
@@ -131,7 +131,7 @@ final class KeySetTest extends TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        $this->expectException(KeySetException::class);
+        $this->expectException(ValidationException::class);
         $this->expectExceptionMessage(sprintf('Must have keys %s', stringify(['foo', 'bar'])));
 
         $keySet->check($input);
@@ -147,7 +147,7 @@ final class KeySetTest extends TestCase
 
         $keySet = new KeySet($key1, $key2);
 
-        $this->expectException(KeySetException::class);
+        $this->expectException(ValidationException::class);
         $this->expectExceptionMessage(sprintf('Must have keys %s', stringify(['foo', 'bar'])));
 
         $keySet->assert($input);
@@ -162,7 +162,7 @@ final class KeySetTest extends TestCase
 
         $keySet = new KeySet($key1);
 
-        $this->expectException(KeySetException::class);
+        $this->expectException(ValidationException::class);
         $this->expectExceptionMessage(sprintf('Must not have keys %s', stringify(['bar'])));
 
         $keySet->assert($input);
@@ -185,7 +185,7 @@ final class KeySetTest extends TestCase
     {
         $keySet = new KeySet(new Key('name'));
 
-        $this->expectException(KeySetException::class);
+        $this->expectException(ValidationException::class);
         $this->expectExceptionMessage(sprintf('Must have keys %s', stringify(['name'])));
 
         $keySet->assert($input);

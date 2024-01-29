@@ -9,10 +9,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function is_scalar;
 use function mb_strlen;
 use function preg_replace;
 
+#[Template(
+    '{{name}} must be a valid IMEI',
+    '{{name}} must not be a valid IMEI',
+)]
 final class Imei extends AbstractRule
 {
     private const IMEI_SIZE = 15;

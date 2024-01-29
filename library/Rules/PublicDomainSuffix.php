@@ -9,11 +9,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Helpers\DomainInfo;
 
 use function array_pop;
 use function explode;
 
+#[Template(
+    '{{name}} must be a public domain suffix',
+    '{{name}} must be a public domain suffix',
+)]
 final class PublicDomainSuffix extends AbstractSearcher
 {
     /**

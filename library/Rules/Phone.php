@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumberUtil;
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Helpers\CountryInfo;
 
@@ -19,6 +20,16 @@ use function is_null;
 use function is_scalar;
 use function sprintf;
 
+#[Template(
+    '{{name}} must be a valid telephone number',
+    '{{name}} must not be a valid telephone number',
+    self::TEMPLATE_INTERNATIONAL,
+)]
+#[Template(
+    '{{name}} must be a valid telephone number for country {{countryName}}',
+    '{{name}} must not be a valid telephone number for country {{countryName}}',
+    self::TEMPLATE_FOR_COUNTRY,
+)]
 final class Phone extends AbstractRule
 {
     public const TEMPLATE_FOR_COUNTRY = 'for_country';

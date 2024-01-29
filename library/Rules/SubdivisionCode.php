@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Helpers\CountryInfo;
 
 use function array_keys;
@@ -17,6 +18,10 @@ use function array_keys;
  * @see http://en.wikipedia.org/wiki/ISO_3166-2
  * @see http://www.geonames.org/countries/
  */
+#[Template(
+    '{{name}} must be a subdivision code of {{countryName}}',
+    '{{name}} must not be a subdivision code of {{countryName}}',
+)]
 final class SubdivisionCode extends AbstractSearcher
 {
     private readonly string $countryName;

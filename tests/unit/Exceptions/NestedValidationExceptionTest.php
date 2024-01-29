@@ -28,7 +28,7 @@ final class NestedValidationExceptionTest extends TestCase
         $node = $this->createValidationException();
         $composite->addChild($node);
         self::assertCount(1, $composite->getChildren());
-        self::assertContainsOnly(IntValException::class, $composite->getChildren());
+        self::assertContainsOnly(ValidationException::class, $composite->getChildren());
     }
 
     #[Test]
@@ -40,7 +40,7 @@ final class NestedValidationExceptionTest extends TestCase
         $composite->addChild($node);
         $composite->addChild($node);
         self::assertCount(1, $composite->getChildren());
-        self::assertContainsOnly(IntValException::class, $composite->getChildren());
+        self::assertContainsOnly(ValidationException::class, $composite->getChildren());
     }
 
     public function createNestedValidationException(): NestedValidationException
@@ -50,17 +50,19 @@ final class NestedValidationExceptionTest extends TestCase
             id: 'id',
             params: [],
             template: Validatable::TEMPLATE_STANDARD,
+            templates: [],
             formatter: new Formatter('strval', new KeepOriginalStringName())
         );
     }
 
-    public function createValidationException(): IntValException
+    public function createValidationException(): ValidationException
     {
-        return new IntValException(
+        return new ValidationException(
             input: 'input',
             id: 'id',
             params: [],
             template: Validatable::TEMPLATE_STANDARD,
+            templates: [],
             formatter: new Formatter('strval', new KeepOriginalStringName())
         );
     }

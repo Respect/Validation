@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use finfo;
+use Respect\Validation\Attributes\Template;
 use SplFileInfo;
 
 use function is_file;
@@ -18,6 +19,10 @@ use function mb_strpos;
 
 use const FILEINFO_MIME_TYPE;
 
+#[Template(
+    '{{name}} must be a valid image',
+    '{{name}} must not be a valid image',
+)]
 final class Image extends AbstractRule
 {
     private readonly finfo $fileInfo;

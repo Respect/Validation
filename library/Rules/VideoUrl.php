@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function array_keys;
@@ -17,6 +18,16 @@ use function mb_strtolower;
 use function preg_match;
 use function sprintf;
 
+#[Template(
+    '{{name}} must be a valid video URL',
+    '{{name}} must not be a valid video URL',
+    self::TEMPLATE_STANDARD,
+)]
+#[Template(
+    '{{name}} must be a valid {{service}} video URL',
+    '{{name}} must not be a valid {{service}} video URL',
+    self::TEMPLATE_SERVICE,
+)]
 final class VideoUrl extends AbstractRule
 {
     public const TEMPLATE_SERVICE = 'service';

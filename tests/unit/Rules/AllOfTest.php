@@ -13,14 +13,12 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\AllOfException;
-use Respect\Validation\Exceptions\CallbackException;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
 
 #[Group('rule')]
-#[CoversClass(AllOfException::class)]
 #[CoversClass(AllOf::class)]
 final class AllOfTest extends TestCase
 {
@@ -55,7 +53,7 @@ final class AllOfTest extends TestCase
         $o = new AllOf($rule1, $rule2, $rule3);
         self::assertFalse($o->__invoke('any'));
 
-        $this->expectException(AllOfException::class);
+        $this->expectException(NestedValidationException::class);
         $o->assert('any');
     }
 
@@ -69,7 +67,7 @@ final class AllOfTest extends TestCase
         $o = new AllOf($rule1, $rule2, $rule3);
         self::assertFalse($o->__invoke('any'));
 
-        $this->expectException(CallbackException::class);
+        $this->expectException(ValidationException::class);
         $o->check('any');
     }
 

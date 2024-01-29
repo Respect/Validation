@@ -9,11 +9,17 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function is_scalar;
 use function mb_strlen;
 use function preg_match;
 use function preg_replace;
 
+#[Template(
+    '{{name}} must be a valid PIS number',
+    '{{name}} must not be a valid PIS number',
+)]
 final class Pis extends AbstractRule
 {
     public function validate(mixed $input): bool

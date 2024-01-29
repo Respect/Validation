@@ -12,12 +12,11 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\AnyOfException;
-use Respect\Validation\Exceptions\XdigitException;
+use Respect\Validation\Exceptions\NestedValidationException;
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\TestCase;
 
 #[Group('rule')]
-#[CoversClass(AnyOfException::class)]
 #[CoversClass(AnyOf::class)]
 final class AnyOfTest extends TestCase
 {
@@ -54,7 +53,7 @@ final class AnyOfTest extends TestCase
         $o = new AnyOf($valid1, $valid2, $valid3);
         self::assertFalse($o->validate('any'));
 
-        $this->expectException(AnyOfException::class);
+        $this->expectException(NestedValidationException::class);
         $o->assert('any');
     }
 
@@ -64,7 +63,7 @@ final class AnyOfTest extends TestCase
         $o = new AnyOf(new Xdigit(), new Alnum());
         self::assertFalse($o->validate(-10));
 
-        $this->expectException(XdigitException::class);
+        $this->expectException(ValidationException::class);
         $o->check(-10);
     }
 }

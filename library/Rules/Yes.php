@@ -9,12 +9,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
+
 use function is_string;
 use function nl_langinfo;
 use function preg_match;
 
 use const YESEXPR;
 
+#[Template(
+    '{{name}} must be similar to "Yes"',
+    '{{name}} must not be similar to "Yes"',
+)]
 final class Yes extends AbstractRule
 {
     public function __construct(

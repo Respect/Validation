@@ -9,8 +9,19 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Helpers\CanValidateUndefined;
 
+#[Template(
+    'The value must be optional',
+    'The value must not be optional',
+    self::TEMPLATE_STANDARD,
+)]
+#[Template(
+    '{{name}} must be optional',
+    '{{name}} must not be optional',
+    self::TEMPLATE_NAMED,
+)]
 final class Optional extends AbstractWrapper
 {
     use CanValidateUndefined;

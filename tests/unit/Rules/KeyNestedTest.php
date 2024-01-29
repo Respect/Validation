@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\KeyNestedException;
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
 use stdClass;
@@ -110,7 +110,7 @@ final class KeyNestedTest extends TestCase
     public function emptyInputMustNotAssert(): void
     {
         $rule = new KeyNested('bar.foo.baz');
-        $this->expectException(KeyNestedException::class);
+        $this->expectException(ValidationException::class);
         $rule->assert('');
     }
 
@@ -118,7 +118,7 @@ final class KeyNestedTest extends TestCase
     public function emptyInputMustNotCheck(): void
     {
         $rule = new KeyNested('bar.foo.baz');
-        $this->expectException(KeyNestedException::class);
+        $this->expectException(ValidationException::class);
         $rule->check('');
     }
 
@@ -140,7 +140,7 @@ final class KeyNestedTest extends TestCase
                 'bar' => 'foo',
             ],
         ];
-        $this->expectException(KeyNestedException::class);
+        $this->expectException(ValidationException::class);
         $validator->assert($object);
     }
 
@@ -149,7 +149,7 @@ final class KeyNestedTest extends TestCase
     {
         $validator = new KeyNested('baz.bar');
         $object = 123;
-        $this->expectException(KeyNestedException::class);
+        $this->expectException(ValidationException::class);
         $validator->assert($object);
     }
 

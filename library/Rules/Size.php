@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
+use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 use SplFileInfo;
 
@@ -21,6 +22,21 @@ use function is_string;
 use function preg_match;
 use function sprintf;
 
+#[Template(
+    '{{name}} must be between {{minSize}} and {{maxSize}}',
+    '{{name}} must not be between {{minSize}} and {{maxSize}}',
+    self::TEMPLATE_BOTH,
+)]
+#[Template(
+    '{{name}} must be greater than {{minSize}}',
+    '{{name}} must not be greater than {{minSize}}',
+    self::TEMPLATE_LOWER,
+)]
+#[Template(
+    '{{name}} must be lower than {{maxSize}}',
+    '{{name}} must not be lower than {{maxSize}}',
+    self::TEMPLATE_GREATER,
+)]
 final class Size extends AbstractRule
 {
     public const TEMPLATE_LOWER = 'lower';
