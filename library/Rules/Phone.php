@@ -21,6 +21,9 @@ use function sprintf;
 
 final class Phone extends AbstractRule
 {
+    public const TEMPLATE_FOR_COUNTRY = 'for_country';
+    public const TEMPLATE_INTERNATIONAL = 'international';
+
     private readonly ?string $countryName;
 
     public function __construct(private readonly ?string $countryCode = null)
@@ -54,5 +57,10 @@ final class Phone extends AbstractRule
         } catch (NumberParseException $e) {
             return false;
         }
+    }
+
+    public function getTemplate(mixed $input): string
+    {
+        return $this->template ?? $this->countryName ? self::TEMPLATE_FOR_COUNTRY : self::TEMPLATE_INTERNATIONAL;
     }
 }

@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\NoneOfException;
+use Respect\Validation\Exceptions\NestedValidationException;
 
 use function count;
 
@@ -19,7 +19,7 @@ final class NoneOf extends AbstractComposite
     {
         try {
             parent::assert($input);
-        } catch (NoneOfException $exception) {
+        } catch (NestedValidationException $exception) {
             if (count($exception->getChildren()) !== count($this->getRules())) {
                 throw $exception;
             }

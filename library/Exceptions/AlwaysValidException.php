@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class AlwaysValidException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class AlwaysValidException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} is always valid',
+            Validatable::TEMPLATE_STANDARD => '{{name}} is always valid',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} is always invalid',
+            Validatable::TEMPLATE_STANDARD => '{{name}} is always invalid',
         ],
     ];
 }

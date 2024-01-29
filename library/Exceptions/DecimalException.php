@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class DecimalException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class DecimalException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must have {{decimals}} decimals',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must have {{decimals}} decimals',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not have {{decimals}} decimals',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not have {{decimals}} decimals',
         ],
     ];
 }

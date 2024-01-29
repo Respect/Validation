@@ -23,6 +23,10 @@ use function sprintf;
 
 final class Size extends AbstractRule
 {
+    public const TEMPLATE_LOWER = 'lower';
+    public const TEMPLATE_GREATER = 'greater';
+    public const TEMPLATE_BOTH = 'both';
+
     private readonly ?float $minValue;
 
     private readonly ?float $maxValue;
@@ -54,6 +58,23 @@ final class Size extends AbstractRule
         }
 
         return false;
+    }
+
+    public function getTemplate(mixed $input): string
+    {
+        if ($this->template !== null) {
+            return $this->template;
+        }
+
+        if (!$this->minValue) {
+            return self::TEMPLATE_GREATER;
+        }
+
+        if (!$this->maxValue) {
+            return self::TEMPLATE_LOWER;
+        }
+
+        return self::TEMPLATE_BOTH;
     }
 
     /**

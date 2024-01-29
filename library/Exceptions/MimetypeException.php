@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class MimetypeException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class MimetypeException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must have {{mimetype}} MIME type',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must have {{mimetype}} MIME type',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not have {{mimetype}} MIME type',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not have {{mimetype}} MIME type',
         ],
     ];
 }

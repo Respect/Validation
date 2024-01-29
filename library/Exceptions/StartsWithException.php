@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class StartsWithException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class StartsWithException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must start with {{startValue}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must start with {{startValue}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not start with {{startValue}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not start with {{startValue}}',
         ],
     ];
 }

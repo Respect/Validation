@@ -28,6 +28,8 @@ use const FILTER_VALIDATE_IP;
 
 final class Ip extends AbstractRule
 {
+    public const TEMPLATE_NETWORK_RANGE = 'network_range';
+
     private ?string $range = null;
 
     private ?string $startAddress = null;
@@ -64,6 +66,11 @@ final class Ip extends AbstractRule
         }
 
         return true;
+    }
+
+    public function getTemplate(mixed $input): string
+    {
+        return $this->template ?? ($this->range ? self::TEMPLATE_NETWORK_RANGE : self::TEMPLATE_STANDARD);
     }
 
     private function createRange(): ?string

@@ -133,25 +133,25 @@ final class Factory
         if ($validatable->getName() !== null) {
             $id = $params['name'] = $validatable->getName();
         }
+        $template = $params['template'] ?? $validatable->getTemplate($input);
         $exceptionNamespace = str_replace('\\Rules', '\\Exceptions', $reflection->getNamespaceName());
         foreach (array_merge([$exceptionNamespace], $this->exceptionsNamespaces) as $namespace) {
             try {
                 /** @var class-string<ValidationException> $exceptionName */
                 $exceptionName = $namespace . '\\' . $ruleName . 'Exception';
 
-                return $this->createValidationException(
-                    $exceptionName,
-                    $id,
-                    $input,
-                    $params,
-                    $formatter
-                );
-            } catch (ReflectionException $exception) {
+                /** @var ValidationException $exception */
+                $exception = $this
+                    ->createReflectionClass($exceptionName, ValidationException::class)
+                    ->newInstance($input, $id, $params, $template, $formatter);
+
+                return $exception;
+            } catch (ReflectionException) {
                 continue;
             }
         }
 
-        return new ValidationException($input, $id, $params, $formatter);
+        return new ValidationException($input, $id, $params, $template, $formatter);
     }
 
     public static function setDefaultInstance(self $defaultInstance): void
@@ -180,32 +180,6 @@ final class Factory
         }
 
         return $reflection;
-    }
-
-    /**
-     * @param class-string<ValidationException> $exceptionName
-     *
-     * @param mixed[] $params
-     *
-     * @throws InvalidClassException
-     * @throws ReflectionException
-     */
-    private function createValidationException(
-        string $exceptionName,
-        string $id,
-        mixed $input,
-        array $params,
-        Formatter $formatter
-    ): ValidationException {
-        /** @var ValidationException $exception */
-        $exception = $this
-            ->createReflectionClass($exceptionName, ValidationException::class)
-            ->newInstance($input, $id, $params, $formatter);
-        if (isset($params['template'])) {
-            $exception->updateTemplate($params['template']);
-        }
-
-        return $exception;
     }
 
     /**

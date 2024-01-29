@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class NoneOfException extends NestedValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class NoneOfException extends NestedValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => 'None of these rules must pass for {{name}}',
+            Validatable::TEMPLATE_STANDARD => 'None of these rules must pass for {{name}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => 'All of these rules must pass for {{name}}',
+            Validatable::TEMPLATE_STANDARD => 'All of these rules must pass for {{name}}',
         ],
     ];
 }

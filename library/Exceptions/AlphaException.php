@@ -9,6 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Rules\AbstractFilterRule;
+use Respect\Validation\Validatable;
+
 final class AlphaException extends FilteredValidationException
 {
     /**
@@ -16,12 +19,12 @@ final class AlphaException extends FilteredValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must contain only letters (a-z)',
-            self::EXTRA => '{{name}} must contain only letters (a-z) and {{additionalChars}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must contain only letters (a-z)',
+            AbstractFilterRule::TEMPLATE_EXTRA => '{{name}} must contain only letters (a-z) and {{additionalChars}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not contain letters (a-z)',
-            self::EXTRA => '{{name}} must not contain letters (a-z) or {{additionalChars}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not contain letters (a-z)',
+            AbstractFilterRule::TEMPLATE_EXTRA => '{{name}} must not contain letters (a-z) or {{additionalChars}}',
         ],
     ];
 }

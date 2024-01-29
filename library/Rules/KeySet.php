@@ -21,6 +21,11 @@ use function is_array;
 
 final class KeySet extends AbstractWrapper implements NonNegatable
 {
+    public const TEMPLATE_NONE = 'none';
+    public const TEMPLATE_SOME = 'some';
+    public const TEMPLATE_STRUCTURE = 'structure';
+    public const TEMPLATE_STRUCTURE_EXTRA = 'structure_extra';
+
     /**
      * @var mixed[]
      */
@@ -69,6 +74,19 @@ final class KeySet extends AbstractWrapper implements NonNegatable
         }
 
         return parent::validate($input);
+    }
+
+    public function getTemplate(mixed $input): string
+    {
+        if ($this->template !== null) {
+            return $this->template;
+        }
+
+        if (count($this->extraKeys)) {
+            return self::TEMPLATE_STRUCTURE_EXTRA;
+        }
+
+        return KeySet::TEMPLATE_STRUCTURE;
     }
 
     /**

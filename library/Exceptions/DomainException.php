@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class DomainException extends NestedValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class DomainException extends NestedValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a valid domain',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must be a valid domain',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a valid domain',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not be a valid domain',
         ],
     ];
 }

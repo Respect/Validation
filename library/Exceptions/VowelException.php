@@ -9,6 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Rules\AbstractFilterRule;
+use Respect\Validation\Validatable;
+
 final class VowelException extends FilteredValidationException
 {
     /**
@@ -16,12 +19,12 @@ final class VowelException extends FilteredValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must contain only vowels',
-            self::EXTRA => '{{name}} must contain only vowels and {{additionalChars}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must contain only vowels',
+            AbstractFilterRule::TEMPLATE_EXTRA => '{{name}} must contain only vowels and {{additionalChars}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not contain vowels',
-            self::EXTRA => '{{name}} must not contain vowels or {{additionalChars}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not contain vowels',
+            AbstractFilterRule::TEMPLATE_EXTRA => '{{name}} must not contain vowels or {{additionalChars}}',
         ],
     ];
 }

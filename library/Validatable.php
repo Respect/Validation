@@ -13,6 +13,8 @@ use Respect\Validation\Exceptions\ValidationException;
 
 interface Validatable
 {
+    public const TEMPLATE_STANDARD = 'standard';
+
     public function assert(mixed $input): void;
 
     public function check(mixed $input): void;
@@ -27,6 +29,8 @@ interface Validatable
     public function setName(string $name): Validatable;
 
     public function setTemplate(string $template): Validatable;
+
+    public function getTemplate(mixed $input): string;
 
     public function validate(mixed $input): bool;
 }

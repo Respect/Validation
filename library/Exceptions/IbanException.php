@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class IbanException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class IbanException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a valid IBAN',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must be a valid IBAN',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a valid IBAN',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not be a valid IBAN',
         ],
     ];
 }

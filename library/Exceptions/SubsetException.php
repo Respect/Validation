@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class SubsetException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class SubsetException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be subset of {{superset}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must be subset of {{superset}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be subset of {{superset}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not be subset of {{superset}}',
         ],
     ];
 }

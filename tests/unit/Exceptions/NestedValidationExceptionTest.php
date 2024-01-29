@@ -15,6 +15,7 @@ use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
 use Respect\Validation\Test\TestCase;
+use Respect\Validation\Validatable;
 
 #[Group('core')]
 #[CoversClass(NestedValidationException::class)]
@@ -23,8 +24,8 @@ final class NestedValidationExceptionTest extends TestCase
     #[Test]
     public function getChildrenShouldReturnExceptionAddedByAddRelated(): void
     {
-        $composite = new PropertyException('input', 'id', [], new Formatter('strval', new KeepOriginalStringName()));
-        $node = new IntValException('input', 'id', [], new Formatter('strval', new KeepOriginalStringName()));
+        $composite = $this->createNestedValidationException();
+        $node = $this->createValidationException();
         $composite->addChild($node);
         self::assertCount(1, $composite->getChildren());
         self::assertContainsOnly(IntValException::class, $composite->getChildren());
@@ -33,12 +34,34 @@ final class NestedValidationExceptionTest extends TestCase
     #[Test]
     public function addingTheSameInstanceShouldAddJustOneSingleReference(): void
     {
-        $composite = new PropertyException('input', 'id', [], new Formatter('strval', new KeepOriginalStringName()));
-        $node = new IntValException('input', 'id', [], new Formatter('strval', new KeepOriginalStringName()));
+        $composite = $this->createNestedValidationException();
+        $node = $this->createValidationException();
         $composite->addChild($node);
         $composite->addChild($node);
         $composite->addChild($node);
         self::assertCount(1, $composite->getChildren());
         self::assertContainsOnly(IntValException::class, $composite->getChildren());
+    }
+
+    public function createNestedValidationException(): NestedValidationException
+    {
+        return new NestedValidationException(
+            input: 'input',
+            id: 'id',
+            params: [],
+            template: Validatable::TEMPLATE_STANDARD,
+            formatter: new Formatter('strval', new KeepOriginalStringName())
+        );
+    }
+
+    public function createValidationException(): IntValException
+    {
+        return new IntValException(
+            input: 'input',
+            id: 'id',
+            params: [],
+            template: Validatable::TEMPLATE_STANDARD,
+            formatter: new Formatter('strval', new KeepOriginalStringName())
+        );
     }
 }

@@ -20,6 +20,8 @@ final class DateTime extends AbstractRule
 {
     use CanValidateDateTime;
 
+    public const TEMPLATE_FORMAT = 'format';
+
     private readonly string $sample;
 
     public function __construct(
@@ -43,5 +45,10 @@ final class DateTime extends AbstractRule
         }
 
         return $this->isDateTime($this->format, (string) $input);
+    }
+
+    public function getTemplate(mixed $input): string
+    {
+        return $this->template ?? ($this->format !== null ? self::TEMPLATE_FORMAT : self::TEMPLATE_STANDARD);
     }
 }

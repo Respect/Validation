@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class ExistsException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class ExistsException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must exist',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must exist',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not exist',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not exist',
         ],
     ];
 }

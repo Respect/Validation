@@ -16,6 +16,8 @@ use function str_split;
 
 abstract class AbstractFilterRule extends AbstractRule
 {
+    public const TEMPLATE_EXTRA = 'extra';
+
     private readonly string $additionalChars;
 
     abstract protected function validateFilteredInput(string $input): bool;
@@ -39,6 +41,11 @@ abstract class AbstractFilterRule extends AbstractRule
         $filteredInput = $this->filter($stringInput);
 
         return $filteredInput === '' || $this->validateFilteredInput($filteredInput);
+    }
+
+    public function getTemplate(mixed $input): string
+    {
+        return $this->template ?? ($this->additionalChars ? self::TEMPLATE_EXTRA : self::TEMPLATE_STANDARD);
     }
 
     private function filter(string $input): string

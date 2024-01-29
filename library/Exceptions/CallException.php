@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class CallException extends NestedValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class CallException extends NestedValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{input}} must be valid when executed with {{callable}}',
+            Validatable::TEMPLATE_STANDARD => '{{input}} must be valid when executed with {{callable}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{input}} must not be valid when executed with {{callable}}',
+            Validatable::TEMPLATE_STANDARD => '{{input}} must not be valid when executed with {{callable}}',
         ],
     ];
 }

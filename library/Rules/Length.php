@@ -23,6 +23,13 @@ use function sprintf;
 
 final class Length extends AbstractRule
 {
+    public const TEMPLATE_LOWER = 'lower';
+    public const TEMPLATE_GREATER = 'greater';
+    public const TEMPLATE_GREATER_INCLUSIVE = 'greater_inclusive';
+    public const TEMPLATE_EXACT = 'exact';
+    public const TEMPLATE_LOWER_INCLUSIVE = 'lower_inclusive';
+    public const TEMPLATE_BOTH = 'both';
+
     /**
      * @throws ComponentException
      */
@@ -45,6 +52,27 @@ final class Length extends AbstractRule
         }
 
         return $this->validateMin($length) && $this->validateMax($length);
+    }
+
+    public function getTemplate(mixed $input): string
+    {
+        if ($this->template !== null) {
+            return $this->template;
+        }
+
+        if (!$this->minValue) {
+            return $this->inclusive === true ? self::TEMPLATE_GREATER_INCLUSIVE : self::TEMPLATE_GREATER;
+        }
+
+        if (!$this->maxValue) {
+            return $this->inclusive === true ? self::TEMPLATE_LOWER_INCLUSIVE : self::TEMPLATE_LOWER;
+        }
+
+        if ($this->minValue == $this->maxValue) {
+            return self::TEMPLATE_EXACT;
+        }
+
+        return self::TEMPLATE_BOTH;
     }
 
     private function extractLength(mixed $input): ?int

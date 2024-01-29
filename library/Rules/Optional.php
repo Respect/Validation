@@ -15,6 +15,8 @@ final class Optional extends AbstractWrapper
 {
     use CanValidateUndefined;
 
+    public const TEMPLATE_NAMED = 'named';
+
     public function assert(mixed $input): void
     {
         if ($this->isUndefined($input)) {
@@ -40,5 +42,18 @@ final class Optional extends AbstractWrapper
         }
 
         return parent::validate($input);
+    }
+
+    public function getTemplate(mixed $input): string
+    {
+        if ($this->template !== null) {
+            return $this->template;
+        }
+
+        if ($this->getName()) {
+            return self::TEMPLATE_NAMED;
+        }
+
+        return self::TEMPLATE_STANDARD;
     }
 }

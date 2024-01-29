@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\AlwaysInvalidException;
 use Respect\Validation\Validatable;
 
 final class When extends AbstractRule
@@ -23,7 +22,7 @@ final class When extends AbstractRule
     ) {
         if ($else === null) {
             $else = new AlwaysInvalid();
-            $else->setTemplate(AlwaysInvalidException::SIMPLE);
+            $else->setTemplate(AlwaysInvalid::TEMPLATE_SIMPLE);
         }
 
         $this->else = $else;

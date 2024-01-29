@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class TrueValException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class TrueValException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must evaluate to `true`',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must evaluate to `true`',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not evaluate to `true`',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not evaluate to `true`',
         ],
     ];
 }

@@ -15,13 +15,16 @@ use function count;
 
 class AllOf extends AbstractComposite
 {
+    public const TEMPLATE_NONE = 'none';
+    public const TEMPLATE_SOME = 'some';
+
     public function assert(mixed $input): void
     {
         try {
             parent::assert($input);
         } catch (AllOfException $exception) {
             if (count($exception->getChildren()) === count($this->getRules()) && !$exception->hasCustomTemplate()) {
-                $exception->updateTemplate(AllOfException::NONE);
+                $exception->updateTemplate(self::TEMPLATE_NONE);
             }
 
             throw $exception;
@@ -44,5 +47,10 @@ class AllOf extends AbstractComposite
         }
 
         return true;
+    }
+
+    public function getTemplate(mixed $input): string
+    {
+        return $this->template ?? self::TEMPLATE_SOME;
     }
 }

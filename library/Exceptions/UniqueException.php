@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class UniqueException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class UniqueException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must not contain duplicates',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not contain duplicates',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must contain duplicates',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must contain duplicates',
         ],
     ];
 }

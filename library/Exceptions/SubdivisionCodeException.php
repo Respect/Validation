@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 class SubdivisionCodeException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ class SubdivisionCodeException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a subdivision code of {{countryName}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must be a subdivision code of {{countryName}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a subdivision code of {{countryName}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not be a subdivision code of {{countryName}}',
         ],
     ];
 }

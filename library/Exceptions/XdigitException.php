@@ -9,6 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Rules\AbstractFilterRule;
+use Respect\Validation\Validatable;
+
 final class XdigitException extends FilteredValidationException
 {
     /**
@@ -16,12 +19,12 @@ final class XdigitException extends FilteredValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} contain only hexadecimal digits',
-            self::EXTRA => '{{name}} contain only hexadecimal digits and {{additionalChars}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} contain only hexadecimal digits',
+            AbstractFilterRule::TEMPLATE_EXTRA => '{{name}} contain only hexadecimal digits and {{additionalChars}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not contain hexadecimal digits',
-            self::EXTRA => '{{name}} must not contain hexadecimal digits or {{additionalChars}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not contain hexadecimal digits',
+            AbstractFilterRule::TEMPLATE_EXTRA => '{{name}} must not contain hexadecimal digits or {{additionalChars}}',
         ],
     ];
 }

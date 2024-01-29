@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class EquivalentException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class EquivalentException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be equivalent to {{compareTo}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must be equivalent to {{compareTo}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be equivalent to {{compareTo}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not be equivalent to {{compareTo}}',
         ],
     ];
 }

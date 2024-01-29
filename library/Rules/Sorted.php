@@ -20,6 +20,9 @@ use function str_split;
 
 final class Sorted extends AbstractRule
 {
+    public const TEMPLATE_ASCENDING = 'ascending';
+    public const TEMPLATE_DESCENDING = 'descending';
+
     public const ASCENDING = 'ASC';
     public const DESCENDING = 'DESC';
 
@@ -48,6 +51,19 @@ final class Sorted extends AbstractRule
         }
 
         return true;
+    }
+
+    public function getTemplate(mixed $input): string
+    {
+        if ($this->template !== null) {
+            return $this->template;
+        }
+
+        if ($this->direction === Sorted::ASCENDING) {
+            return self::TEMPLATE_ASCENDING;
+        }
+
+        return self::TEMPLATE_DESCENDING;
     }
 
     private function isSorted(mixed $current, mixed $last): bool

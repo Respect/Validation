@@ -11,6 +11,8 @@ namespace Respect\Validation\Rules;
 
 final class Nullable extends AbstractWrapper
 {
+    public const TEMPLATE_NAMED = 'named';
+
     public function assert(mixed $input): void
     {
         if ($input === null) {
@@ -36,5 +38,18 @@ final class Nullable extends AbstractWrapper
         }
 
         return parent::validate($input);
+    }
+
+    public function getTemplate(mixed $input): string
+    {
+        if ($this->template !== null) {
+            return $this->template;
+        }
+
+        if ($input || $this->getName()) {
+            return self::TEMPLATE_NAMED;
+        }
+
+        return self::TEMPLATE_STANDARD;
     }
 }

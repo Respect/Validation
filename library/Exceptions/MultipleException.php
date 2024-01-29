@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class MultipleException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class MultipleException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be multiple of {{multipleOf}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must be multiple of {{multipleOf}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be multiple of {{multipleOf}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not be multiple of {{multipleOf}}',
         ],
     ];
 }

@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class MinAgeException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class MinAgeException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be {{age}} years or more',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must be {{age}} years or more',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be {{age}} years or more',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not be {{age}} years or more',
         ],
     ];
 }

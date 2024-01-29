@@ -13,6 +13,7 @@ use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
 use Respect\Validation\Rules\AbstractComposite;
 use Respect\Validation\Test\Exceptions\CompositeStubException;
+use Respect\Validation\Validatable;
 
 final class CompositeSub extends AbstractComposite
 {
@@ -30,6 +31,7 @@ final class CompositeSub extends AbstractComposite
             input: $input,
             id: 'CompositeStub',
             params: $extraParameters,
+            template: Validatable::TEMPLATE_STANDARD,
             formatter: new Formatter(static fn ($value) => $value, new KeepOriginalStringName())
         );
     }

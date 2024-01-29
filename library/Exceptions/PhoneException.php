@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Rules\Phone;
+
 final class PhoneException extends ValidationException
 {
     public const FOR_COUNTRY = 'for_country';
@@ -19,23 +21,12 @@ final class PhoneException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::INTERNATIONAL => '{{name}} must be a valid telephone number',
-            self::FOR_COUNTRY => '{{name}} must be a valid telephone number for country {{countryName}}',
+            Phone::TEMPLATE_INTERNATIONAL => '{{name}} must be a valid telephone number',
+            Phone::TEMPLATE_FOR_COUNTRY => '{{name}} must be a valid telephone number for country {{countryName}}',
         ],
         self::MODE_NEGATIVE => [
-            self::INTERNATIONAL => '{{name}} must not be a valid telephone number',
-            self::FOR_COUNTRY => '{{name}} must not be a valid telephone number for country {{countryName}}',
+            Phone::TEMPLATE_INTERNATIONAL => '{{name}} must not be a valid telephone number',
+            Phone::TEMPLATE_FOR_COUNTRY => '{{name}} must not be a valid telephone number for country {{countryName}}',
         ],
     ];
-
-    protected function chooseTemplate(): string
-    {
-        $countryCode = $this->getParam('countryCode');
-
-        if (!$countryCode) {
-            return self::INTERNATIONAL;
-        }
-
-        return self::FOR_COUNTRY;
-    }
 }

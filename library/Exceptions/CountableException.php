@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class CountableException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class CountableException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be countable',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must be countable',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be countable',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not be countable',
         ],
     ];
 }

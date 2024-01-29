@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class VersionException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class VersionException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a version',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must be a version',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a version',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not be a version',
         ],
     ];
 }

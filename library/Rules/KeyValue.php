@@ -16,9 +16,12 @@ use Respect\Validation\Validatable;
 
 use function array_keys;
 use function in_array;
+use function Respect\Stringifier\stringify;
 
 final class KeyValue extends AbstractRule
 {
+    public const TEMPLATE_COMPONENT = 'component';
+
     public function __construct(
         private readonly int|string $comparedKey,
         private readonly string $ruleName,
@@ -59,6 +62,25 @@ final class KeyValue extends AbstractRule
         return $rule->validate($input[$this->comparedKey]);
     }
 
+    public function getTemplate(mixed $input): string
+    {
+        if ($this->template !== null) {
+            return $this->template;
+        }
+
+        if (!isset($input[$this->comparedKey]) || !isset($input[$this->baseKey])) {
+            return self::TEMPLATE_STANDARD;
+        }
+
+        try {
+            $this->createRule($input[$this->baseKey]);
+        } catch (ComponentException) {
+            return self::TEMPLATE_COMPONENT;
+        }
+
+        return self::TEMPLATE_STANDARD;
+    }
+
     /**
      * @param mixed[] $extraParameters
      */
@@ -74,21 +96,18 @@ final class KeyValue extends AbstractRule
     private function getRule(mixed $input): Validatable
     {
         if (!isset($input[$this->comparedKey])) {
-            throw parent::reportError($this->comparedKey);
+            throw parent::reportError($input, ['name' => stringify($this->comparedKey)]);
         }
 
         if (!isset($input[$this->baseKey])) {
-            throw parent::reportError($this->baseKey);
+            throw parent::reportError($input, ['name' => stringify($this->baseKey)]);
         }
 
         try {
-            $rule = Factory::getDefaultInstance()->rule($this->ruleName, [$input[$this->baseKey]]);
-            $rule->setName((string) $this->comparedKey);
-        } catch (ComponentException $exception) {
-            throw parent::reportError($input, ['component' => true]);
+            return $this->createRule($input[$this->baseKey]);
+        } catch (ComponentException) {
+            throw parent::reportError($input);
         }
-
-        return $rule;
     }
 
     private function overwriteExceptionParams(ValidationException $exception): ValidationException
@@ -106,5 +125,13 @@ final class KeyValue extends AbstractRule
         $exception->updateParams($params);
 
         return $exception;
+    }
+
+    private function createRule(mixed $input): Validatable
+    {
+        $rule = Factory::getDefaultInstance()->rule($this->ruleName, [$input]);
+        $rule->setName((string)$this->comparedKey);
+
+        return $rule;
     }
 }

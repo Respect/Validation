@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class EndsWithException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class EndsWithException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must end with {{endValue}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must end with {{endValue}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not end with {{endValue}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not end with {{endValue}}',
         ],
     ];
 }

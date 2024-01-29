@@ -17,6 +17,8 @@ use function sprintf;
 
 final class Uuid extends AbstractRule
 {
+    public const TEMPLATE_VERSION = 'version';
+
     private const PATTERN_FORMAT = '/^[0-9a-f]{8}-[0-9a-f]{4}-%s[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i';
 
     /**
@@ -37,6 +39,11 @@ final class Uuid extends AbstractRule
         }
 
         return preg_match($this->getPattern(), $input) > 0;
+    }
+
+    public function getTemplate(mixed $input): string
+    {
+        return $this->template ?? ($this->version ? self::TEMPLATE_VERSION : self::TEMPLATE_STANDARD);
     }
 
     private function isSupportedVersion(int $version): bool

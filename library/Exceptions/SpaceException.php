@@ -9,6 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Rules\AbstractFilterRule;
+use Respect\Validation\Validatable;
+
 final class SpaceException extends FilteredValidationException
 {
     /**
@@ -16,12 +19,12 @@ final class SpaceException extends FilteredValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must contain only space characters',
-            self::EXTRA => '{{name}} must contain only space characters and {{additionalChars}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must contain only space characters',
+            AbstractFilterRule::TEMPLATE_EXTRA => '{{name}} must contain only space characters and {{additionalChars}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not contain space characters',
-            self::EXTRA => '{{name}} must not contain space characters or {{additionalChars}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not contain space characters',
+            AbstractFilterRule::TEMPLATE_EXTRA => '{{name}} must not contain space characters or {{additionalChars}}',
         ],
     ];
 }

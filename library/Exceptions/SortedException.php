@@ -13,25 +13,17 @@ use Respect\Validation\Rules\Sorted;
 
 final class SortedException extends ValidationException
 {
-    public const ASCENDING = 'ascending';
-    public const DESCENDING = 'descending';
-
     /**
      * @var array<string, array<string, string>>
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::ASCENDING => '{{name}} must be sorted in ascending order',
-            self::DESCENDING => '{{name}} must be sorted in descending order',
+            Sorted::TEMPLATE_ASCENDING => '{{name}} must be sorted in ascending order',
+            Sorted::TEMPLATE_DESCENDING => '{{name}} must be sorted in descending order',
         ],
         self::MODE_NEGATIVE => [
-            self::ASCENDING => '{{name}} must not be sorted in ascending order',
-            self::DESCENDING => '{{name}} must not be sorted in descending order',
+            Sorted::TEMPLATE_ASCENDING => '{{name}} must not be sorted in ascending order',
+            Sorted::TEMPLATE_DESCENDING => '{{name}} must not be sorted in descending order',
         ],
     ];
-
-    protected function chooseTemplate(): string
-    {
-        return $this->getParam('direction') === Sorted::ASCENDING ? self::ASCENDING : self::DESCENDING;
-    }
 }

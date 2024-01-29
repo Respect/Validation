@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class RegexException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class RegexException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must validate against {{regex}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must validate against {{regex}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not validate against {{regex}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not validate against {{regex}}',
         ],
     ];
 }

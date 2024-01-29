@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class CallableTypeException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class CallableTypeException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be callable',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must be callable',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be callable',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not be callable',
         ],
     ];
 }

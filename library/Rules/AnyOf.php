@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\AnyOfException;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 
 use function count;
@@ -20,7 +20,7 @@ final class AnyOf extends AbstractComposite
     {
         try {
             parent::assert($input);
-        } catch (AnyOfException $exception) {
+        } catch (NestedValidationException $exception) {
             if (count($exception->getChildren()) === count($this->getRules())) {
                 throw $exception;
             }

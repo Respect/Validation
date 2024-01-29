@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class PeselException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class PeselException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a valid PESEL',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must be a valid PESEL',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a valid PESEL',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not be a valid PESEL',
         ],
     ];
 }

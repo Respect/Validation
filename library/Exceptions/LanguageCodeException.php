@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class LanguageCodeException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class LanguageCodeException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a valid ISO 639 {{set}} language code',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must be a valid ISO 639 {{set}} language code',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a valid ISO 639 {{set}} language code',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not be a valid ISO 639 {{set}} language code',
         ],
     ];
 }

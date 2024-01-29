@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\DomainException;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
@@ -141,7 +140,7 @@ final class Domain extends AbstractRule
     private function throwExceptions(array $exceptions, mixed $input): void
     {
         if (count($exceptions)) {
-            /** @var DomainException $domainException */
+            /** @var NestedValidationException $domainException */
             $domainException = $this->reportError($input);
             $domainException->addChildren($exceptions);
 

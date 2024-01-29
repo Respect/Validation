@@ -11,6 +11,7 @@ namespace Respect\Validation\Exceptions;
 
 use InvalidArgumentException;
 use Respect\Validation\Message\Formatter;
+use Respect\Validation\Validatable;
 
 use function key;
 
@@ -18,23 +19,20 @@ class ValidationException extends InvalidArgumentException implements Exception
 {
     public const MODE_DEFAULT = 'default';
     public const MODE_NEGATIVE = 'negative';
-    public const STANDARD = 'standard';
 
     /**
      * @var array<string, array<string, string>>
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be valid',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must be valid',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be valid',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not be valid',
         ],
     ];
 
     private string $mode = self::MODE_DEFAULT;
-
-    private string $template;
 
     /**
      * @param mixed[] $params
@@ -43,10 +41,9 @@ class ValidationException extends InvalidArgumentException implements Exception
         private readonly mixed $input,
         private readonly string $id,
         private array $params,
+        private string $template,
         private readonly Formatter $formatter
     ) {
-        $this->template = $this->chooseTemplate();
-
         parent::__construct($this->createMessage());
     }
 
@@ -94,7 +91,7 @@ class ValidationException extends InvalidArgumentException implements Exception
         return isset($this->defaultTemplates[$this->mode][$this->template]) === false;
     }
 
-    protected function chooseTemplate(): string
+    protected function getTemplate(): string
     {
         return (string) key($this->defaultTemplates[$this->mode]);
     }

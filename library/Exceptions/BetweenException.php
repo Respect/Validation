@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class BetweenException extends NestedValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class BetweenException extends NestedValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be between {{minValue}} and {{maxValue}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must be between {{minValue}} and {{maxValue}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be between {{minValue}} and {{maxValue}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not be between {{minValue}} and {{maxValue}}',
         ],
     ];
 }

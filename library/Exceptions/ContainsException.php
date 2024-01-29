@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class ContainsException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class ContainsException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must contain the value {{containsValue}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must contain the value {{containsValue}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not contain the value {{containsValue}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not contain the value {{containsValue}}',
         ],
     ];
 }

@@ -9,6 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Rules\AbstractFilterRule as Filter;
+use Respect\Validation\Validatable;
+
 final class AlnumException extends FilteredValidationException
 {
     /**
@@ -16,12 +19,12 @@ final class AlnumException extends FilteredValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must contain only letters (a-z) and digits (0-9)',
-            self::EXTRA => '{{name}} must contain only letters (a-z), digits (0-9) and {{additionalChars}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must contain only letters (a-z) and digits (0-9)',
+            Filter::TEMPLATE_EXTRA => '{{name}} must contain only letters (a-z), digits (0-9) and {{additionalChars}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not contain letters (a-z) or digits (0-9)',
-            self::EXTRA => '{{name}} must not contain letters (a-z), digits (0-9) or {{additionalChars}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not contain letters (a-z) or digits (0-9)',
+            Filter::TEMPLATE_EXTRA => '{{name}} must not contain letters (a-z), digits (0-9) or {{additionalChars}}',
         ],
     ];
 }

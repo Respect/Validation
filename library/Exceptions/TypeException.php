@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class TypeException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class TypeException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be {{type}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must be {{type}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be {{type}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not be {{type}}',
         ],
     ];
 }

@@ -19,6 +19,8 @@ use function sprintf;
 
 final class VideoUrl extends AbstractRule
 {
+    public const TEMPLATE_SERVICE = 'service';
+
     private const SERVICES = [
         // phpcs:disable Generic.Files.LineLength.TooLong
         'youtube' => '@^https?://(www\.)?(?:youtube\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^\"&?/]{11})@i',
@@ -57,6 +59,11 @@ final class VideoUrl extends AbstractRule
         }
 
         return false;
+    }
+
+    public function getTemplate(mixed $input): string
+    {
+        return $this->template ?? ($this->service ? self::TEMPLATE_SERVICE : self::TEMPLATE_STANDARD);
     }
 
     private function isSupportedService(string $service): bool

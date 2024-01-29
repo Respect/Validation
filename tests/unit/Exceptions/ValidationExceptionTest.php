@@ -15,6 +15,7 @@ use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
 use Respect\Validation\Test\TestCase;
+use Respect\Validation\Validatable;
 
 use function trim;
 
@@ -25,7 +26,7 @@ final class ValidationExceptionTest extends TestCase
     #[Test]
     public function itShouldImplementException(): void
     {
-        $sut = new ValidationException('input', 'id', [], $this->createFormatter());
+        $sut = $this->createValidationException();
 
         self::assertInstanceOf(Exception::class, $sut);
     }
@@ -34,7 +35,7 @@ final class ValidationExceptionTest extends TestCase
     public function itShouldRetrieveId(): void
     {
         $id = 'my id';
-        $sut = new ValidationException('input', $id, [], $this->createFormatter());
+        $sut = $this->createValidationException(id: $id);
 
         self::assertSame($id, $sut->getId());
     }
@@ -44,7 +45,7 @@ final class ValidationExceptionTest extends TestCase
     {
         $params = ['foo' => true, 'bar' => 23];
 
-        $sut = new ValidationException('input', 'id', $params, $this->createFormatter());
+        $sut = $this->createValidationException(params: $params);
 
         self::assertSame($params, $sut->getParams());
     }
@@ -55,7 +56,7 @@ final class ValidationExceptionTest extends TestCase
         $name = 'any name';
         $value = 'any value';
 
-        $sut = new ValidationException('input', 'id', [$name => $value], $this->createFormatter());
+        $sut = $this->createValidationException(params: [$name => $value]);
 
         self::assertSame($value, $sut->getParam($name));
     }
@@ -63,23 +64,15 @@ final class ValidationExceptionTest extends TestCase
     #[Test]
     public function itShouldReturnNullWhenParameterCanNotBeFound(): void
     {
-        $sut = new ValidationException('input', 'id', [], $this->createFormatter());
+        $sut = $this->createValidationException();
 
         self::assertNull($sut->getParam('foo'));
     }
 
     #[Test]
-    public function itShouldHaveTemplateByDefault(): void
-    {
-        $sut = new ValidationException('input', 'id', [], $this->createFormatter());
-
-        self::assertSame('"input" must be valid', $sut->getMessage());
-    }
-
-    #[Test]
     public function itShouldUpdateMode(): void
     {
-        $sut = new ValidationException('input', 'id', [], $this->createFormatter());
+        $sut = $this->createValidationException();
         $sut->updateMode(ValidationException::MODE_NEGATIVE);
 
         self::assertSame('"input" must not be valid', $sut->getMessage());
@@ -90,7 +83,7 @@ final class ValidationExceptionTest extends TestCase
     {
         $template = 'This is my new template';
 
-        $sut = new ValidationException('input', 'id', [], $this->createFormatter());
+        $sut = $this->createValidationException();
         $sut->updateTemplate($template);
 
         self::assertEquals($template, $sut->getMessage());
@@ -99,7 +92,7 @@ final class ValidationExceptionTest extends TestCase
     #[Test]
     public function itShouldTellWhenHasAsCustomUpdateTemplate(): void
     {
-        $sut = new ValidationException('input', 'id', [], $this->createFormatter());
+        $sut = $this->createValidationException();
 
         self::assertFalse($sut->hasCustomTemplate());
 
@@ -114,7 +107,7 @@ final class ValidationExceptionTest extends TestCase
         $template = ' This is my new template ';
         $expected = trim($template);
 
-        $sut = new ValidationException('input', 'id', [], new Formatter('trim', new KeepOriginalStringName()));
+        $sut = $this->createValidationException(formatter: new Formatter('trim', new KeepOriginalStringName()));
         $sut->updateTemplate($template);
 
         self::assertEquals($expected, $sut->getMessage());
@@ -123,11 +116,11 @@ final class ValidationExceptionTest extends TestCase
     #[Test]
     public function itShouldReplacePlaceholders(): void
     {
-        $sut = new ValidationException('foo', 'id', ['bar' => 1, 'baz' => 2], $this->createFormatter());
+        $sut = $this->createValidationException(params: ['bar' => 1, 'baz' => 2]);
         $sut->updateTemplate('{{name}} {{bar}} {{baz}}');
 
         self::assertEquals(
-            '"foo" 1 2',
+            '"input" 1 2',
             $sut->getMessage()
         );
     }
@@ -135,11 +128,11 @@ final class ValidationExceptionTest extends TestCase
     #[Test]
     public function itShouldKeepPlaceholdersThatCanNotReplace(): void
     {
-        $sut = new ValidationException('foo', 'id', ['foo' => 1], $this->createFormatter());
+        $sut = $this->createValidationException(params: ['foo' => 1]);
         $sut->updateTemplate('{{name}} {{foo}} {{bar}}');
 
         self::assertEquals(
-            '"foo" 1 {{bar}}',
+            '"input" 1 {{bar}}',
             $sut->getMessage()
         );
     }
@@ -147,7 +140,7 @@ final class ValidationExceptionTest extends TestCase
     #[Test]
     public function itShouldUpdateParams(): void
     {
-        $sut = new ValidationException('input', 'id', ['foo' => 1], $this->createFormatter());
+        $sut = $this->createValidationException(params: ['foo' => 1]);
         $sut->updateTemplate('{{foo}}');
         $sut->updateParams(['foo' => 2]);
 
@@ -157,13 +150,21 @@ final class ValidationExceptionTest extends TestCase
     #[Test]
     public function itShouldConvertToString(): void
     {
-        $sut = new ValidationException('input', 'id', [], $this->createFormatter());
+        $sut = $this->createValidationException();
 
         self::assertSame('"input" must be valid', (string) $sut);
     }
 
-    private function createFormatter(): Formatter
-    {
-        return new Formatter('strval', new KeepOriginalStringName());
+    /**
+     * @param array<string, mixed> $params
+     */
+    private function createValidationException(
+        mixed $input = 'input',
+        string $id = 'id',
+        array $params = [],
+        string $template = Validatable::TEMPLATE_STANDARD,
+        Formatter $formatter = new Formatter('strval', new KeepOriginalStringName())
+    ): ValidationException {
+        return new ValidationException($input, $id, $params, $template, $formatter);
     }
 }

@@ -17,6 +17,9 @@ use function is_scalar;
 
 abstract class AbstractRelated extends AbstractRule
 {
+    public const TEMPLATE_NOT_PRESENT = 'not_present';
+    public const TEMPLATE_INVALID = 'invalid';
+
     abstract public function hasReference(mixed $input): bool;
 
     abstract public function getReferenceValue(mixed $input): mixed;
@@ -59,7 +62,7 @@ abstract class AbstractRelated extends AbstractRule
     {
         $hasReference = $this->hasReference($input);
         if ($this->mandatory && !$hasReference) {
-            throw $this->reportError($input, ['hasReference' => false]);
+            throw $this->reportError($input);
         }
 
         if ($this->rule === null || !$hasReference) {
@@ -70,7 +73,7 @@ abstract class AbstractRelated extends AbstractRule
             $this->rule->assert($this->getReferenceValue($input));
         } catch (ValidationException $validationException) {
             /** @var NestedValidationException $nestedValidationException */
-            $nestedValidationException = $this->reportError($this->reference, ['hasReference' => true]);
+            $nestedValidationException = $this->reportError($input, ['name' => $this->reference]);
             $nestedValidationException->addChild($validationException);
 
             throw $nestedValidationException;
@@ -81,7 +84,7 @@ abstract class AbstractRelated extends AbstractRule
     {
         $hasReference = $this->hasReference($input);
         if ($this->mandatory && !$hasReference) {
-            throw $this->reportError($input, ['hasReference' => false]);
+            throw $this->reportError($input);
         }
 
         if ($this->rule === null || !$hasReference) {
@@ -103,5 +106,18 @@ abstract class AbstractRelated extends AbstractRule
         }
 
         return $this->rule->validate($this->getReferenceValue($input));
+    }
+
+    public function getTemplate(mixed $input): string
+    {
+        if ($this->template !== null) {
+            return $this->template;
+        }
+
+        if ($this->rule === null) {
+            return self::TEMPLATE_NOT_PRESENT;
+        }
+
+        return $this->hasReference($input) ? self::TEMPLATE_INVALID : self::TEMPLATE_NOT_PRESENT;
     }
 }

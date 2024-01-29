@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class ContainsAnyException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class ContainsAnyException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must contain at least one of the values {{needles}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must contain at least one of the values {{needles}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not contain any of the values {{needles}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not contain any of the values {{needles}}',
         ],
     ];
 }

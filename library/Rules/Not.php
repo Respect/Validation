@@ -21,6 +21,9 @@ use function sprintf;
 
 final class Not extends AbstractRule
 {
+    public const TEMPLATE_NONE = 'none';
+    public const TEMPLATE_SOME = 'some';
+
     private readonly Validatable $rule;
 
     public function __construct(Validatable $rule)

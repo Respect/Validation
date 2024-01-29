@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\OneOfException;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 
 use function array_shift;
@@ -21,7 +21,7 @@ final class OneOf extends AbstractComposite
     {
         try {
             parent::assert($input);
-        } catch (OneOfException $exception) {
+        } catch (NestedValidationException $exception) {
             if (count($exception->getChildren()) !== count($this->getRules()) - 1) {
                 throw $exception;
             }

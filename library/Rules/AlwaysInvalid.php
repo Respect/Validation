@@ -11,6 +11,8 @@ namespace Respect\Validation\Rules;
 
 final class AlwaysInvalid extends AbstractRule
 {
+    public const TEMPLATE_SIMPLE = 'simple';
+
     public function validate(mixed $input): bool
     {
         return false;

@@ -11,10 +11,4 @@ namespace Respect\Validation\Exceptions;
 
 class FilteredValidationException extends ValidationException
 {
-    public const EXTRA = 'extra';
-
-    protected function chooseTemplate(): string
-    {
-        return $this->getParam('additionalChars') ? self::EXTRA : self::STANDARD;
-    }
 }

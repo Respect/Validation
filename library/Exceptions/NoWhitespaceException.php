@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Validatable;
+
 final class NoWhitespaceException extends ValidationException
 {
     /**
@@ -16,10 +18,10 @@ final class NoWhitespaceException extends ValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must not contain whitespace',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not contain whitespace',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must contain whitespace',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must contain whitespace',
         ],
     ];
 }

@@ -19,6 +19,8 @@ use function trim;
 
 final class NotBlank extends AbstractRule
 {
+    public const TEMPLATE_NAMED = 'named';
+
     public function validate(mixed $input): bool
     {
         if (is_numeric($input)) {
@@ -38,5 +40,18 @@ final class NotBlank extends AbstractRule
         }
 
         return !empty($input);
+    }
+
+    public function getTemplate(mixed $input): string
+    {
+        if ($this->template !== null) {
+            return $this->template;
+        }
+
+        if ($input || $this->getName()) {
+            return self::TEMPLATE_NAMED;
+        }
+
+        return self::TEMPLATE_STANDARD;
     }
 }

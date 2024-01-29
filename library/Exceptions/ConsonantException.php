@@ -9,6 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
+use Respect\Validation\Rules\AbstractFilterRule;
+use Respect\Validation\Validatable;
+
 final class ConsonantException extends FilteredValidationException
 {
     /**
@@ -16,12 +19,12 @@ final class ConsonantException extends FilteredValidationException
      */
     protected array $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must contain only consonants',
-            self::EXTRA => '{{name}} must contain only consonants and {{additionalChars}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must contain only consonants',
+            AbstractFilterRule::TEMPLATE_EXTRA => '{{name}} must contain only consonants and {{additionalChars}}',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not contain consonants',
-            self::EXTRA => '{{name}} must not contain consonants or {{additionalChars}}',
+            Validatable::TEMPLATE_STANDARD => '{{name}} must not contain consonants',
+            AbstractFilterRule::TEMPLATE_EXTRA => '{{name}} must not contain consonants or {{additionalChars}}',
         ],
     ];
 }

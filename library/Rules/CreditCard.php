@@ -20,6 +20,8 @@ use function sprintf;
 
 final class CreditCard extends AbstractRule
 {
+    public const TEMPLATE_BRANDED = 'branded';
+
     public const ANY = 'Any';
 
     public const AMERICAN_EXPRESS = 'American Express';
@@ -76,5 +78,18 @@ final class CreditCard extends AbstractRule
         }
 
         return preg_match(self::BRAND_REGEX_LIST[$this->brand], $input) > 0;
+    }
+
+    public function getTemplate(mixed $input): string
+    {
+        if ($this->template !== null) {
+            return $this->template;
+        }
+
+        if ($this->brand === CreditCard::ANY) {
+            return self::TEMPLATE_STANDARD;
+        }
+
+        return self::TEMPLATE_BRANDED;
     }
 }
