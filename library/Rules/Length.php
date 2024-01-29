@@ -75,6 +75,17 @@ final class Length extends AbstractRule
         return self::TEMPLATE_BOTH;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return [
+            'minValue' => $this->minValue,
+            'maxValue' => $this->maxValue,
+        ];
+    }
+
     private function extractLength(mixed $input): ?int
     {
         if (is_string($input)) {

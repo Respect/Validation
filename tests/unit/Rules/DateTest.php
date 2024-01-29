@@ -31,16 +31,6 @@ final class DateTest extends RuleTestCase
         new Date($format);
     }
 
-    #[Test]
-    public function shouldPassFormatToParameterToException(): void
-    {
-        $format = 'F jS, Y';
-        $equals = new Date($format);
-        $exception = $equals->reportError('input');
-
-        self::assertSame($format, $exception->getParam('format'));
-    }
-
     /**
      * @return string[][]
      */

@@ -34,4 +34,12 @@ final class Base extends AbstractRule
 
         return (bool) preg_match('@^[' . $valid . ']+$@', (string) $input);
     }
+
+    /**
+     * @return array<string, int>
+     */
+    public function getParams(): array
+    {
+        return ['base' => $this->base];
+    }
 }

@@ -31,16 +31,6 @@ final class TimeTest extends RuleTestCase
         new Time($format);
     }
 
-    #[Test]
-    public function shouldPassFormatToParameterToException(): void
-    {
-        $format = 'g:i A';
-        $equals = new Time($format);
-        $exception = $equals->reportError('input');
-
-        self::assertSame($format, $exception->getParam('format'));
-    }
-
     /**
      * @return mixed[][]
      */

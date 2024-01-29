@@ -90,6 +90,17 @@ final class KeySet extends AbstractWrapper implements NonNegatable
     }
 
     /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return [
+            'keys' => $this->keys,
+            'extraKeys' => $this->extraKeys,
+        ];
+    }
+
+    /**
      * @throws ComponentException
      */
     private function getKeyRule(Validatable $validatable): Key

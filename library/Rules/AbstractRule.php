@@ -65,6 +65,14 @@ abstract class AbstractRule implements Validatable
         return $this->template ?? self::TEMPLATE_STANDARD;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return [];
+    }
+
     public function __invoke(mixed $input): bool
     {
         return $this->validate($input);

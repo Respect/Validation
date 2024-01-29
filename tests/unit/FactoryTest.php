@@ -144,20 +144,6 @@ final class FactoryTest extends TestCase
     }
 
     #[Test]
-    public function shouldPassPropertiesToCreatedException(): void
-    {
-        $factory = (new Factory())->withExceptionNamespace(self::TEST_EXCEPTIONS_NAMESPACE);
-
-        $validations = [true, false, true, true];
-        $rule = new Stub(...$validations);
-        $input = 2;
-
-        $exception = $factory->exception($rule, $input);
-
-        self::assertSame($validations, $exception->getParam('validations'));
-    }
-
-    #[Test]
     public function shouldSetTemplateWhenTemplateKeyIsDefined(): void
     {
         $factory = (new Factory())->withExceptionNamespace(self::TEST_EXCEPTIONS_NAMESPACE);

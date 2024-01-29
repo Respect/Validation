@@ -35,6 +35,14 @@ final class SubdivisionCode extends AbstractSearcher
     }
 
     /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return ['countryName' => $this->countryName];
+    }
+
+    /**
      * @return array<int, string>
      */
     protected function getDataSource(mixed $input = null): array

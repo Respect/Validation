@@ -32,6 +32,14 @@ final class EndsWith extends AbstractRule
         return $this->validateEquals($input);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return ['endValue' => $this->endValue];
+    }
+
     private function validateEquals(mixed $input): bool
     {
         if (is_array($input)) {

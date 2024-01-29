@@ -46,6 +46,14 @@ final class Uuid extends AbstractRule
         return $this->template ?? ($this->version ? self::TEMPLATE_VERSION : self::TEMPLATE_STANDARD);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return ['version' => $this->version];
+    }
+
     private function isSupportedVersion(int $version): bool
     {
         return $version >= 1 && $version <= 5 && $version !== 2;

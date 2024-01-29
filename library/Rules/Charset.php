@@ -40,4 +40,12 @@ final class Charset extends AbstractRule
     {
         return in_array(mb_detect_encoding($input, $this->charset, true), $this->charset, true);
     }
+
+    /**
+     * @return array<string, array<string>>
+     */
+    public function getParams(): array
+    {
+        return ['charset' => $this->charset];
+    }
 }

@@ -92,4 +92,12 @@ final class CreditCard extends AbstractRule
 
         return self::TEMPLATE_BRANDED;
     }
+
+    /**
+     * @return array<string, string>
+     */
+    public function getParams(): array
+    {
+        return ['brand' => $this->brand];
+    }
 }

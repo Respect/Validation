@@ -32,5 +32,10 @@ interface Validatable
 
     public function getTemplate(mixed $input): string;
 
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array;
+
     public function validate(mixed $input): bool;
 }

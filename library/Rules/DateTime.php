@@ -22,12 +22,9 @@ final class DateTime extends AbstractRule
 
     public const TEMPLATE_FORMAT = 'format';
 
-    private readonly string $sample;
-
     public function __construct(
         private readonly ?string $format = null
     ) {
-        $this->sample = date($format ?: 'c', strtotime('2005-12-30 01:02:03'));
     }
 
     public function validate(mixed $input): bool
@@ -50,5 +47,13 @@ final class DateTime extends AbstractRule
     public function getTemplate(mixed $input): string
     {
         return $this->template ?? ($this->format !== null ? self::TEMPLATE_FORMAT : self::TEMPLATE_STANDARD);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return ['sample' => date($this->format ?: 'c', strtotime('2005-12-30 01:02:03'))];
     }
 }

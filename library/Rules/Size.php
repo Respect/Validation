@@ -32,8 +32,8 @@ final class Size extends AbstractRule
     private readonly ?float $maxValue;
 
     public function __construct(
-        private string|int|null $minSize = null,
-        private string|int|null $maxSize = null
+        private readonly string|int|null $minSize = null,
+        private readonly string|int|null $maxSize = null
     ) {
         $this->minValue = $minSize ? $this->toBytes((string) $minSize) : null;
         $this->maxValue = $maxSize ? $this->toBytes((string) $maxSize) : null;
@@ -75,6 +75,17 @@ final class Size extends AbstractRule
         }
 
         return self::TEMPLATE_BOTH;
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return [
+            'minSize' => $this->minSize,
+            'maxSize' => $this->maxSize,
+        ];
     }
 
     /**

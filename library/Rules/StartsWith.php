@@ -32,6 +32,14 @@ final class StartsWith extends AbstractRule
         return $this->validateEquals($input);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return ['startValue' => $this->startValue];
+    }
+
     protected function validateEquals(mixed $input): bool
     {
         if (is_array($input)) {

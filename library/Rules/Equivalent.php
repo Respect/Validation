@@ -28,6 +28,14 @@ final class Equivalent extends AbstractRule
         return $input == $this->compareTo;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return ['compareTo' => $this->compareTo];
+    }
+
     private function isStringEquivalent(string $input): bool
     {
         if (!is_scalar($this->compareTo)) {

@@ -48,6 +48,14 @@ abstract class AbstractFilterRule extends AbstractRule
         return $this->template ?? ($this->additionalChars ? self::TEMPLATE_EXTRA : self::TEMPLATE_STANDARD);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return ['additionalChars' => $this->additionalChars];
+    }
+
     private function filter(string $input): string
     {
         return str_replace(str_split($this->additionalChars), '', $input);

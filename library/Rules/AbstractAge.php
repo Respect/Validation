@@ -45,6 +45,14 @@ abstract class AbstractAge extends AbstractRule
         return $this->isValidWithFormat($this->format, (string) $input);
     }
 
+    /**
+     * @return array<string, int>
+     */
+    public function getParams(): array
+    {
+        return ['age' => $this->age];
+    }
+
     private function isValidWithoutFormat(string $dateTime): bool
     {
         $timestamp = strtotime($dateTime);

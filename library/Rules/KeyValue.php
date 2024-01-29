@@ -82,6 +82,17 @@ final class KeyValue extends AbstractRule
     }
 
     /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return [
+            'baseKey' => $this->baseKey,
+            'comparedKey' => $this->comparedKey,
+        ];
+    }
+
+    /**
      * @param mixed[] $extraParameters
      */
     public function reportError(mixed $input, array $extraParameters = []): ValidationException

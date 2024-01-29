@@ -30,4 +30,12 @@ final class Subset extends AbstractRule
 
         return array_diff($input, $this->superset) === [];
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return ['superset' => $this->superset];
+    }
 }

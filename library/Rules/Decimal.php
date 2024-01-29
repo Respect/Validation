@@ -31,6 +31,14 @@ final class Decimal extends AbstractRule
         return $this->toFormattedString($input) === $this->toRawString($input);
     }
 
+    /**
+     * @return array<string, int>
+     */
+    public function getParams(): array
+    {
+        return ['decimals' => $this->decimals];
+    }
+
     private function toRawString(mixed $input): string
     {
         if (is_string($input)) {

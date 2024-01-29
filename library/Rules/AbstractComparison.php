@@ -35,4 +35,12 @@ abstract class AbstractComparison extends AbstractRule
 
         return $this->compare($left, $right);
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return ['compareTo' => $this->compareTo];
+    }
 }

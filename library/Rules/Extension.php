@@ -35,4 +35,12 @@ final class Extension extends AbstractRule
 
         return $this->extension === pathinfo($input, PATHINFO_EXTENSION);
     }
+
+    /**
+     * @return array<string, string>
+     */
+    public function getParams(): array
+    {
+        return ['extension' => $this->extension];
+    }
 }

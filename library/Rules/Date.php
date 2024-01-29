@@ -22,8 +22,6 @@ final class Date extends AbstractRule
 {
     use CanValidateDateTime;
 
-    private readonly string $sample;
-
     /**
      * @throws ComponentException
      */
@@ -33,8 +31,6 @@ final class Date extends AbstractRule
         if (!preg_match('/^[djSFmMnYy\W]+$/', $format)) {
             throw new ComponentException(sprintf('"%s" is not a valid date format', $format));
         }
-
-        $this->sample = date($format, strtotime('2005-12-30'));
     }
 
     public function validate(mixed $input): bool
@@ -44,5 +40,13 @@ final class Date extends AbstractRule
         }
 
         return $this->isDateTime($this->format, (string) $input);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return ['sample' => date($this->format, strtotime('2005-12-30'))];
     }
 }

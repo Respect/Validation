@@ -9,15 +9,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-final class Identical extends AbstractRule
+final class Identical extends AbstractComparison
 {
-    public function __construct(
-        private readonly mixed $compareTo
-    ) {
-    }
-
-    public function validate(mixed $input): bool
+    protected function compare(mixed $left, mixed $right): bool
     {
-        return $input === $this->compareTo;
+        return $left === $right;
     }
 }

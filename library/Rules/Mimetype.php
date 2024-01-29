@@ -41,4 +41,12 @@ final class Mimetype extends AbstractRule
 
         return $this->mimetype === $this->fileInfo->file($input, FILEINFO_MIME_TYPE);
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return ['mimetype' => $this->mimetype];
+    }
 }

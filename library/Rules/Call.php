@@ -72,6 +72,14 @@ final class Call extends AbstractRule
         return true;
     }
 
+    /**
+     * @return array<string, callable>
+     */
+    public function getParams(): array
+    {
+        return ['callable' => $this->callable];
+    }
+
     private function setErrorHandler(mixed $input): void
     {
         set_error_handler(function () use ($input): void {

@@ -73,6 +73,14 @@ final class Ip extends AbstractRule
         return $this->template ?? ($this->range ? self::TEMPLATE_NETWORK_RANGE : self::TEMPLATE_STANDARD);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return ['range' => $this->range];
+    }
+
     private function createRange(): ?string
     {
         if ($this->startAddress && $this->endAddress) {

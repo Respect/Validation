@@ -59,4 +59,12 @@ final class Type extends AbstractRule
 
         return self::AVAILABLE_TYPES[$this->type] === gettype($input);
     }
+
+    /**
+     * @return array<string, string>
+     */
+    public function getParams(): array
+    {
+        return ['type' => $this->type];
+    }
 }

@@ -128,7 +128,7 @@ final class Factory
         $formatter = new Formatter($this->translator, $this->parameterStringifier);
         $reflection = new ReflectionObject($validatable);
         $ruleName = $reflection->getShortName();
-        $params = ['input' => $input] + $extraParams + $this->extractPropertiesValues($validatable, $reflection);
+        $params = ['input' => $input] + $extraParams + $validatable->getParams();
         $id = lcfirst($ruleName);
         if ($validatable->getName() !== null) {
             $id = $params['name'] = $validatable->getName();
@@ -180,33 +180,5 @@ final class Factory
         }
 
         return $reflection;
-    }
-
-    /**
-     * @param ReflectionObject|ReflectionClass<Validatable> $reflection
-     * @return mixed[]
-     */
-    private function extractPropertiesValues(Validatable $validatable, ReflectionClass $reflection): array
-    {
-        $values = [];
-        foreach ($reflection->getProperties() as $property) {
-            if (!$property->isInitialized($validatable)) {
-                continue;
-            }
-
-            $propertyValue = $property->getValue($validatable);
-            if ($propertyValue === null) {
-                continue;
-            }
-
-            $values[$property->getName()] = $propertyValue;
-        }
-
-        $parentReflection = $reflection->getParentClass();
-        if ($parentReflection !== false) {
-            return $values + $this->extractPropertiesValues($validatable, $parentReflection);
-        }
-
-        return $values;
     }
 }

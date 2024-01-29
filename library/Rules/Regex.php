@@ -27,4 +27,12 @@ final class Regex extends AbstractRule
 
         return preg_match($this->regex, (string) $input) > 0;
     }
+
+    /**
+     * @return array<string, string>
+     */
+    public function getParams(): array
+    {
+        return ['regex' => $this->regex];
+    }
 }

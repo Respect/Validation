@@ -63,4 +63,12 @@ final class Phone extends AbstractRule
     {
         return $this->template ?? $this->countryName ? self::TEMPLATE_FOR_COUNTRY : self::TEMPLATE_INTERNATIONAL;
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return ['countryName' => $this->countryName];
+    }
 }

@@ -31,6 +31,14 @@ final class In extends AbstractRule
         return $this->validateEquals($input);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return ['haystack' => $this->haystack];
+    }
+
     private function validateEquals(mixed $input): bool
     {
         if (is_array($this->haystack)) {

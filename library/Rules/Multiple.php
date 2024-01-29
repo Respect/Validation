@@ -24,4 +24,12 @@ final class Multiple extends AbstractRule
 
         return $input % $this->multipleOf == 0;
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return ['multipleOf' => $this->multipleOf];
+    }
 }

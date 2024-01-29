@@ -40,4 +40,12 @@ final class Factor extends AbstractRule
         // factor of the dividend.
         return is_integer($dividend / $input);
     }
+
+    /**
+     * @return array<string, int>
+     */
+    public function getParams(): array
+    {
+        return ['dividend' => $this->dividend];
+    }
 }

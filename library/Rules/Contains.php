@@ -36,6 +36,14 @@ final class Contains extends AbstractRule
         return $this->validateString((string) $input, (string) $this->containsValue);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return ['containsValue' => $this->containsValue];
+    }
+
     private function validateString(string $haystack, string $needle): bool
     {
         if ($needle === '') {

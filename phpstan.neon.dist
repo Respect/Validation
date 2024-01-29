@@ -8,10 +8,6 @@ parameters:
     - phpt
   ignoreErrors:
     -
-      # Why: Properties are read dynamically during message construction
-      message: '/Property Respect\\Validation\\Rules\\[a-zA-Z0-9\\_]+::\$[a-zA-Z0-9\\_]+ is never read, only written\./'
-
-    -
       # Why: SimpleXMLElement is weird and doesn't implement anything ArrayAccess-like
       message: '/Instanceof between mixed and SimpleXMLElement will always evaluate to false\./'
       path: library/Rules/ArrayVal.php

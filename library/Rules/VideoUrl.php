@@ -66,6 +66,14 @@ final class VideoUrl extends AbstractRule
         return $this->template ?? ($this->service ? self::TEMPLATE_SERVICE : self::TEMPLATE_STANDARD);
     }
 
+    /**
+     * @return array<string, string|null>
+     */
+    public function getParams(): array
+    {
+        return ['service' => $this->service];
+    }
+
     private function isSupportedService(string $service): bool
     {
         return isset(self::SERVICES[mb_strtolower($service)]);

@@ -25,16 +25,6 @@ use function date_default_timezone_set;
 final class DateTimeTest extends RuleTestCase
 {
     #[Test]
-    public function shouldPassFormatToParameterToException(): void
-    {
-        $format = 'F jS, Y';
-        $equals = new DateTime($format);
-        $exception = $equals->reportError('input');
-
-        self::assertSame($format, $exception->getParam('format'));
-    }
-
-    #[Test]
     #[DataProvider('providerForDateTimeWithTimezone')]
     public function shouldValidateNoMatterTimezone(string $format, string $input, string $timezone): void
     {

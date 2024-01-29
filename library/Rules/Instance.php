@@ -20,4 +20,12 @@ final class Instance extends AbstractRule
     {
         return $input instanceof $this->instanceName;
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
+    {
+        return ['instanceName' => $this->instanceName];
+    }
 }
