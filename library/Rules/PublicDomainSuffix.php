@@ -9,29 +9,34 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Helpers\CanValidateUndefined;
 use Respect\Validation\Helpers\DomainInfo;
 
 use function array_pop;
 use function explode;
+use function in_array;
+use function is_scalar;
+use function strtoupper;
 
-final class PublicDomainSuffix extends AbstractSearcher
+final class PublicDomainSuffix extends AbstractRule
 {
-    /**
-     * @var string[]
-     */
-    private $domainInfo;
+    use CanValidateUndefined;
 
-    /**
-     * {@inheritDoc}
-     */
-    protected function getDataSource($input = null): array
+    public function validate($input): bool
     {
-        $parts = explode('.', $input);
+        if (!is_scalar($input)) {
+            return false;
+        }
+
+        $parts = explode('.', (string) $input);
         $tld = array_pop($parts);
 
         $domainInfo = new DomainInfo($tld);
-        $this->domainInfo = $domainInfo->getPublicSuffixes();
+        $dataSource = $domainInfo->getPublicSuffixes();
+        if ($this->isUndefined($input) && empty($dataSource)) {
+            return true;
+        }
 
-        return $this->domainInfo;
+        return in_array(strtoupper((string) $input), $dataSource, true);
     }
 }
