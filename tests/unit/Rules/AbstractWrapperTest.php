@@ -24,7 +24,7 @@ final class AbstractWrapperTest extends TestCase
     #[Test]
     public function shouldUseWrappedToValidate(): void
     {
-        $sut = new WrapperStub(new Stub(true));
+        $sut = new WrapperStub(Stub::pass(1));
 
         self::assertTrue($sut->validate('Whatever'));
     }
@@ -32,7 +32,7 @@ final class AbstractWrapperTest extends TestCase
     #[Test]
     public function shouldUseWrappedToAssert(): void
     {
-        $sut = new WrapperStub(new Stub(false));
+        $sut = new WrapperStub(Stub::fail(1));
         $this->expectException(ValidationException::class);
         $sut->assert('Whatever');
     }
@@ -40,7 +40,7 @@ final class AbstractWrapperTest extends TestCase
     #[Test]
     public function shouldUseWrappedToCheck(): void
     {
-        $sut = new WrapperStub(new Stub(false));
+        $sut = new WrapperStub(Stub::fail(1));
         $this->expectException(ValidationException::class);
         $sut->check('Whatever');
     }
@@ -50,7 +50,7 @@ final class AbstractWrapperTest extends TestCase
     {
         $name = 'Whatever';
 
-        $rule = new Stub();
+        $rule = Stub::pass(1);
 
         $sut = new WrapperStub($rule);
         $sut->setName($name);

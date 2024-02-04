@@ -28,7 +28,7 @@ final class AbstractCompositeTest extends TestCase
     {
         $ruleName = 'something';
 
-        $child = new Stub();
+        $child = Stub::pass(1);
 
         $parent = new CompositeSub($child);
 
@@ -44,7 +44,7 @@ final class AbstractCompositeTest extends TestCase
     {
         $ruleName = 'something';
 
-        $rule = new Stub();
+        $rule = Stub::pass(1);
 
         $sut = new CompositeSub();
         $sut->setName($ruleName);
@@ -62,7 +62,7 @@ final class AbstractCompositeTest extends TestCase
         $ruleName1 = 'something';
         $ruleName2 = 'something else';
 
-        $rule = new Stub();
+        $rule = Stub::pass(1);
         $rule->setName($ruleName1);
 
         $sut = new CompositeSub($rule);
@@ -77,7 +77,7 @@ final class AbstractCompositeTest extends TestCase
         $ruleName1 = 'something';
         $ruleName2 = 'something else';
 
-        $rule = new Stub();
+        $rule = Stub::pass(1);
         $rule->setName($ruleName1);
 
         $sut = new CompositeSub();
@@ -90,9 +90,9 @@ final class AbstractCompositeTest extends TestCase
     #[Test]
     public function itShouldReturnItsChildren(): void
     {
-        $child1 = new Stub();
-        $child2 = new Stub();
-        $child3 = new Stub();
+        $child1 = Stub::pass(1);
+        $child2 = Stub::pass(1);
+        $child3 = Stub::pass(1);
 
         $sut = new CompositeSub($child1, $child2, $child3);
         $children = $sut->getRules();
@@ -108,9 +108,9 @@ final class AbstractCompositeTest extends TestCase
     {
         $input = 'something';
 
-        $child1 = new Stub(true);
-        $child2 = new Stub(true);
-        $child3 = new Stub(true);
+        $child1 = Stub::pass(1);
+        $child2 = Stub::pass(1);
+        $child3 = Stub::pass(1);
 
         $this->expectNotToPerformAssertions();
 
@@ -121,7 +121,7 @@ final class AbstractCompositeTest extends TestCase
     #[Test]
     public function itShouldAssertWithAllChildrenAndThrowAnExceptionWhenThereAreIssues(): void
     {
-        $sut = new CompositeSub(new Stub(false), new Stub(false), new Stub(false));
+        $sut = new CompositeSub(Stub::fail(1), Stub::fail(1), Stub::fail(1));
 
         try {
             $sut->assert('something');
@@ -136,9 +136,9 @@ final class AbstractCompositeTest extends TestCase
         $template = 'This is my template';
 
         $sut = new CompositeSub(
-            new Stub(false),
-            new Stub(false),
-            new Stub(false)
+            Stub::fail(1),
+            Stub::fail(1),
+            Stub::fail(1)
         );
         $sut->setTemplate($template);
 
@@ -157,9 +157,9 @@ final class AbstractCompositeTest extends TestCase
         $template = 'This is my template';
 
         $sut = new CompositeSub(
-            new Stub(false),
-            new Stub(false),
-            new CompositeSub(new Stub(false))
+            Stub::fail(1),
+            Stub::fail(1),
+            new CompositeSub(Stub::fail(1))
         );
         $sut->setTemplate($template);
 

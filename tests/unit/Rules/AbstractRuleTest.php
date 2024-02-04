@@ -25,7 +25,7 @@ final class AbstractRuleTest extends TestCase
     #[Test]
     public function itShouldValidateSomeValidInputUsingTheInvokeMagicMethod(): void
     {
-        $sut = new Stub(true);
+        $sut = Stub::pass(1);
 
         self::assertTrue($sut('something'));
     }
@@ -33,7 +33,7 @@ final class AbstractRuleTest extends TestCase
     #[Test]
     public function itShouldValidateSomeInvalidInputUsingTheInvokeMagicMethod(): void
     {
-        $sut = new Stub(false);
+        $sut = Stub::fail(1);
 
         self::assertFalse($sut('something'));
     }
@@ -43,7 +43,7 @@ final class AbstractRuleTest extends TestCase
     {
         $input = 'something';
 
-        $sut = new Stub(false);
+        $sut = Stub::fail(1);
 
         $this->expectException(ValidationException::class);
 
@@ -55,7 +55,7 @@ final class AbstractRuleTest extends TestCase
     {
         $input = 'something';
 
-        $sut = new Stub(true);
+        $sut = Stub::pass(1);
 
         $this->expectNotToPerformAssertions();
 
@@ -67,7 +67,7 @@ final class AbstractRuleTest extends TestCase
     {
         $input = 'something';
 
-        $sut = new Stub(false);
+        $sut = Stub::fail(1);
 
         $this->expectException(ValidationException::class);
 
@@ -79,7 +79,7 @@ final class AbstractRuleTest extends TestCase
     {
         $input = 'something';
 
-        $sut = new Stub(true);
+        $sut = Stub::pass(1);
 
         $this->expectNotToPerformAssertions();
 
@@ -89,7 +89,7 @@ final class AbstractRuleTest extends TestCase
     #[Test]
     public function itShouldReturnSelfWhenSettingSomeTemplate(): void
     {
-        $sut = new Stub();
+        $sut = Stub::pass(1);
 
         self::assertSame($sut, $sut->setTemplate('whatever'));
     }
@@ -97,7 +97,7 @@ final class AbstractRuleTest extends TestCase
     #[Test]
     public function itShouldReturnSelfWhenSettingSomeName(): void
     {
-        $sut = new Stub();
+        $sut = Stub::pass(1);
 
         self::assertSame($sut, $sut->setName('whatever'));
     }
@@ -107,7 +107,7 @@ final class AbstractRuleTest extends TestCase
     {
         $name = 'something';
 
-        $sut = new Stub();
+        $sut = Stub::pass(1);
         $sut->setName($name);
 
         self::assertSame($name, $sut->getName());
@@ -119,7 +119,7 @@ final class AbstractRuleTest extends TestCase
         $extraParameterName = 'foo';
         $extraParameterValue = random_int(1, 100);
 
-        $sut = new Stub();
+        $sut = Stub::pass(1);
 
         $exception = $sut->reportError('input', [$extraParameterName => $extraParameterValue]);
 
