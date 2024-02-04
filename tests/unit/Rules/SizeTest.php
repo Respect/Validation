@@ -33,10 +33,8 @@ final class SizeTest extends RuleTestCase
         new Size('42jb');
     }
 
-    /**
-     * @return array<array{Size, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Size, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $root = vfsStream::setup();
         $file2Kb = vfsStream::newFile('2kb.txt')
@@ -63,10 +61,8 @@ final class SizeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Size, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Size, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $root = vfsStream::setup();
         $file2Kb = vfsStream::newFile('2kb.txt')

@@ -19,10 +19,8 @@ use Respect\Validation\Test\Stubs\CountableStub;
 #[CoversClass(LessThan::class)]
 final class LessThanTest extends RuleTestCase
 {
-    /**
-     * @return array<array{LessThan, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{LessThan, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new LessThan(10), 9],
@@ -33,10 +31,8 @@ final class LessThanTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{LessThan, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{LessThan, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new LessThan(10), 10],

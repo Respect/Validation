@@ -18,10 +18,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(LeapDate::class)]
 final class LeapDateTest extends RuleTestCase
 {
-    /**
-     * @return array<array{LeapDate, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{LeapDate, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new LeapDate('Y-m-d'), '1988-02-29'],
@@ -31,10 +29,8 @@ final class LeapDateTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{LeapDate, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{LeapDate, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new LeapDate('Y-m-d'), '1989-02-29'],

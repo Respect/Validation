@@ -39,10 +39,8 @@ final class FilterVarTest extends RuleTestCase
         new FilterVar(FILTER_SANITIZE_EMAIL);
     }
 
-    /**
-     * @return array<array{FilterVar, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{FilterVar, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new FilterVar(FILTER_VALIDATE_INT), '12345'],
@@ -55,10 +53,8 @@ final class FilterVarTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{FilterVar, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{FilterVar, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new FilterVar(FILTER_VALIDATE_INT), 1.4],

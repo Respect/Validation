@@ -18,10 +18,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(When::class)]
 final class WhenTest extends RuleTestCase
 {
-    /**
-     * @return array<array{When, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{When, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             'all true' => [
@@ -47,10 +45,8 @@ final class WhenTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{When, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{When, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             'bool (when = true, then = false, else = false)' => [

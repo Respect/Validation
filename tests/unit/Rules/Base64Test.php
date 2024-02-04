@@ -19,10 +19,8 @@ use function implode;
 #[CoversClass(Base64::class)]
 final class Base64Test extends RuleTestCase
 {
-    /**
-     * @return array<array{Base64, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Base64, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Base64();
 
@@ -51,10 +49,8 @@ final class Base64Test extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Base64, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Base64, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Base64();
 

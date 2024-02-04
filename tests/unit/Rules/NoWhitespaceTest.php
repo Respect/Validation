@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(NoWhitespace::class)]
 final class NoWhitespaceTest extends RuleTestCase
 {
-    /**
-     * @return array<array{NoWhitespace, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{NoWhitespace, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new NoWhitespace();
 
@@ -33,10 +31,8 @@ final class NoWhitespaceTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{NoWhitespace, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{NoWhitespace, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new NoWhitespace();
 

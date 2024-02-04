@@ -18,10 +18,8 @@ use stdClass;
 #[CoversClass(Pis::class)]
 final class PisTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Pis, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Pis, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Pis();
 
@@ -40,10 +38,8 @@ final class PisTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Pis, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Pis, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Pis();
 

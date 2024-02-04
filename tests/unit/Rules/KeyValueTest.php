@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(KeyValue::class)]
 final class KeyValueTest extends RuleTestCase
 {
-    /**
-     * @return array<string, array{KeyValue, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<string, array{KeyValue, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             'Equal values' => [new KeyValue('foo', 'equals', 'bar'), ['foo' => 42, 'bar' => 42]],
@@ -35,10 +33,8 @@ final class KeyValueTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<string, array{KeyValue, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<string, array{KeyValue, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $keyValue = new KeyValue('foo', 'equals', 'bar');
 

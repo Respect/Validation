@@ -76,10 +76,8 @@ final class NoTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{No, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{No, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new No();
 
@@ -93,10 +91,8 @@ final class NoTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{No, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{No, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new No();
 

@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(Cnpj::class)]
 final class CnpjTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Cnpj, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Cnpj, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Cnpj();
 
@@ -39,10 +37,8 @@ final class CnpjTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Cnpj, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Cnpj, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Cnpj();
 

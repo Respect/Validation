@@ -31,10 +31,8 @@ final class CreditCardTest extends RuleTestCase
         new CreditCard('RespectCard');
     }
 
-    /**
-     * @return array<array{CreditCard, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{CreditCard, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $general = new CreditCard();
         $amex = new CreditCard(CreditCard::AMERICAN_EXPRESS);
@@ -68,10 +66,8 @@ final class CreditCardTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{CreditCard, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{CreditCard, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $general = new CreditCard();
         $amex = new CreditCard(CreditCard::AMERICAN_EXPRESS);

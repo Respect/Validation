@@ -19,10 +19,8 @@ use const INF;
 #[CoversClass(Even::class)]
 final class EvenTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Even, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Even, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Even(), 2],
@@ -32,10 +30,8 @@ final class EvenTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Even, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Even, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Even(), ''],

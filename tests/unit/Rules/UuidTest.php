@@ -61,10 +61,8 @@ final class UuidTest extends RuleTestCase
         new Uuid($version);
     }
 
-    /**
-     * @return array<array{Uuid, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Uuid, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new Uuid();
 
@@ -80,10 +78,8 @@ final class UuidTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Uuid, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Uuid, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new Uuid();
         $sutVersion1 = new Uuid(1);

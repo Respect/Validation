@@ -38,10 +38,8 @@ final class ImageTest extends RuleTestCase
         self::assertTrue($rule->validate($input));
     }
 
-    /**
-     * @return array<array{Image, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Image, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Image();
 
@@ -55,10 +53,8 @@ final class ImageTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Image, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Image, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Image();
 

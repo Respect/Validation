@@ -19,10 +19,8 @@ use stdClass;
 #[CoversClass(ObjectType::class)]
 final class ObjectTypeTest extends RuleTestCase
 {
-    /**
-     * @return array<array{ObjectType, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{ObjectType, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new ObjectType();
 
@@ -32,10 +30,8 @@ final class ObjectTypeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{ObjectType, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{ObjectType, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new ObjectType();
 

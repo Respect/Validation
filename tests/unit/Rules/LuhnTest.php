@@ -18,10 +18,8 @@ use stdClass;
 #[CoversClass(Luhn::class)]
 final class LuhnTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Luhn, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Luhn, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Luhn();
 
@@ -32,10 +30,8 @@ final class LuhnTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Luhn, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Luhn, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Luhn();
 

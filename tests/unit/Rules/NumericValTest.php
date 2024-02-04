@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(NumericVal::class)]
 final class NumericValTest extends RuleTestCase
 {
-    /**
-     * @return array<array{NumericVal, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{NumericVal, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $numericVal = new NumericVal();
 
@@ -34,10 +32,8 @@ final class NumericValTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{NumericVal, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{NumericVal, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $numericVal = new NumericVal();
 

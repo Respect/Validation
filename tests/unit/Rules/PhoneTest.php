@@ -38,10 +38,8 @@ final class PhoneTest extends RuleTestCase
         $phoneValidator->assert('abc');
     }
 
-    /**
-     * @return array<array{Phone, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Phone, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Phone(), '+1 650 253 00 00'],
@@ -55,10 +53,8 @@ final class PhoneTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Phone, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Phone, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Phone(), '+1-650-253-00-0'],

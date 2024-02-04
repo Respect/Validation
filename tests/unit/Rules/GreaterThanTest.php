@@ -19,10 +19,8 @@ use Respect\Validation\Test\Stubs\CountableStub;
 #[CoversClass(GreaterThan::class)]
 final class GreaterThanTest extends RuleTestCase
 {
-    /**
-     * @return array<array{GreaterThan, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{GreaterThan, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new GreaterThan(10), 11],
@@ -33,10 +31,8 @@ final class GreaterThanTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{GreaterThan, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{GreaterThan, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new GreaterThan(10), 9],

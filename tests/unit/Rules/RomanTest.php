@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(Roman::class)]
 final class RomanTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Roman, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Roman, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new Roman();
 
@@ -40,10 +38,8 @@ final class RomanTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Roman, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Roman, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new Roman();
 

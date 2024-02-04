@@ -28,10 +28,8 @@ final class SortedTest extends RuleTestCase
         new Sorted('something');
     }
 
-    /**
-     * @return array<array{Sorted, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Sorted, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             'empty' => [new Sorted('ASC'), []],
@@ -45,10 +43,8 @@ final class SortedTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Sorted, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Sorted, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             'duplicate' => [new Sorted('ASC'), [1, 1, 1]],

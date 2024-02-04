@@ -31,7 +31,7 @@ final class AlwaysInvalidTest extends TestCase
     /**
      * @return mixed[][]
      */
-    public static function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [0],

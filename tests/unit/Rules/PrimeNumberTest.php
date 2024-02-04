@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(PrimeNumber::class)]
 final class PrimeNumberTest extends RuleTestCase
 {
-    /**
-     * @return array<array{PrimeNumber, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{PrimeNumber, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new PrimeNumber();
 
@@ -34,10 +32,8 @@ final class PrimeNumberTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{PrimeNumber, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{PrimeNumber, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new PrimeNumber();
 

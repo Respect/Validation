@@ -18,10 +18,8 @@ use stdClass;
 #[CoversClass(Imei::class)]
 final class ImeiTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Imei, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Imei, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Imei();
 
@@ -37,10 +35,8 @@ final class ImeiTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Imei, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Imei, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Imei();
 

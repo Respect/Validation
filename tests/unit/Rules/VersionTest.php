@@ -19,10 +19,8 @@ use function uniqid;
 #[CoversClass(Version::class)]
 final class VersionTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Version, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Version, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new Version();
 
@@ -37,10 +35,8 @@ final class VersionTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Version, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Version, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new Version();
 

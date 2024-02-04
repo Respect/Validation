@@ -18,10 +18,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(Url::class)]
 final class UrlTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Url, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Url, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Url();
 
@@ -41,10 +39,8 @@ final class UrlTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Url, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Url, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Url();
 

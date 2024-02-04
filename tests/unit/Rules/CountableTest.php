@@ -22,10 +22,8 @@ use const PHP_INT_MAX;
 #[CoversClass(Countable::class)]
 final class CountableTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Countable, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Countable, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Countable();
 
@@ -36,10 +34,8 @@ final class CountableTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Countable, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Countable, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Countable();
 

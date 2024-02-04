@@ -18,10 +18,8 @@ use stdClass;
 #[CoversClass(Nip::class)]
 final class NipTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Nip, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Nip, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Nip();
 
@@ -32,10 +30,8 @@ final class NipTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Nip, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Nip, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Nip();
 

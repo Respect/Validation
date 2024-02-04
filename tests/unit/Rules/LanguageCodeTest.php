@@ -28,10 +28,8 @@ final class LanguageCodeTest extends RuleTestCase
         new LanguageCode('foo');
     }
 
-    /**
-     * @return array<array{LanguageCode, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{LanguageCode, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sutAlpha2 = new LanguageCode(LanguageCode::ALPHA2);
         $sutAlpha3 = new LanguageCode(LanguageCode::ALPHA3);
@@ -48,10 +46,8 @@ final class LanguageCodeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{LanguageCode, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{LanguageCode, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sutAlpha2 = new LanguageCode(LanguageCode::ALPHA2);
         $sutAlpha3 = new LanguageCode(LanguageCode::ALPHA3);

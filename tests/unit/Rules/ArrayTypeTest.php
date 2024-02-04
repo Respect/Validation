@@ -19,10 +19,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(ArrayType::class)]
 final class ArrayTypeTest extends RuleTestCase
 {
-    /**
-     * @return array<array{ArrayType, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{ArrayType, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new ArrayType();
 
@@ -32,10 +30,8 @@ final class ArrayTypeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{ArrayType, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{ArrayType, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new ArrayType();
 

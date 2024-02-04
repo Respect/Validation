@@ -16,10 +16,8 @@ use function stream_context_create;
 
 final class PortugueseNifTest extends RuleTestCase
 {
-    /**
-     * @return array<array{PortugueseNif, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{PortugueseNif, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new PortugueseNif();
 
@@ -46,10 +44,8 @@ final class PortugueseNifTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{PortugueseNif, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{PortugueseNif, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new PortugueseNif();
 

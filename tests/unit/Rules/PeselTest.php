@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(Pesel::class)]
 final class PeselTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Pesel, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Pesel, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Pesel();
 
@@ -36,10 +34,8 @@ final class PeselTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Pesel, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Pesel, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Pesel();
 

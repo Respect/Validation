@@ -32,10 +32,8 @@ final class LengthTest extends RuleTestCase
         new Length(10, 1);
     }
 
-    /**
-     * @return array<array{Length, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Length, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Length(1, 15), 'alganet'],
@@ -55,10 +53,8 @@ final class LengthTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Length, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Length, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Length(1, 15), ''],

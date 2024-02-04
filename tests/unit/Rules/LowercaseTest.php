@@ -18,10 +18,8 @@ use stdClass;
 #[CoversClass(Lowercase::class)]
 final class LowercaseTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Lowercase, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Lowercase, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Lowercase();
 
@@ -39,10 +37,8 @@ final class LowercaseTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Lowercase, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Lowercase, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Lowercase();
 

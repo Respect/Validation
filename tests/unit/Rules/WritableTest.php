@@ -23,10 +23,8 @@ use function chmod;
 #[CoversClass(Writable::class)]
 final class WritableTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Writable, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Writable, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new Writable();
         $filename = self::fixture('valid-image.png');
@@ -44,10 +42,8 @@ final class WritableTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Writable, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Writable, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Writable();
         $filename = self::fixture('non-writable');

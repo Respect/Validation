@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(TrueVal::class)]
 final class TrueValTest extends RuleTestCase
 {
-    /**
-     * @return array<array{TrueVal, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{TrueVal, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new TrueVal();
 
@@ -40,10 +38,8 @@ final class TrueValTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{TrueVal, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{TrueVal, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new TrueVal();
 

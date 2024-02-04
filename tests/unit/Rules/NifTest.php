@@ -20,10 +20,8 @@ use function stream_context_create;
 #[CoversClass(Nif::class)]
 final class NifTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Nif, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Nif, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Nif();
 
@@ -52,10 +50,8 @@ final class NifTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Nif, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Nif, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Nif();
 

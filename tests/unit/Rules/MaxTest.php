@@ -21,10 +21,8 @@ use Respect\Validation\Test\Stubs\CountableStub;
 #[CoversClass(Max::class)]
 final class MaxTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Max, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Max, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Max(10), 9],
@@ -37,10 +35,8 @@ final class MaxTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Max, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Max, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Max(10), 11],

@@ -18,10 +18,8 @@ use stdClass;
 #[CoversClass(Json::class)]
 final class JsonTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Json, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Json, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $json = new Json();
 
@@ -38,10 +36,8 @@ final class JsonTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Json, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Json, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $json = new Json();
 

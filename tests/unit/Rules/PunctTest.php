@@ -18,10 +18,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(Punct::class)]
 final class PunctTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Punct, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Punct, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new Punct();
 
@@ -35,10 +33,8 @@ final class PunctTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Punct, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Punct, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new Punct();
 

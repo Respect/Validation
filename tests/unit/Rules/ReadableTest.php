@@ -20,10 +20,8 @@ use stdClass;
 #[CoversClass(Readable::class)]
 final class ReadableTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Readable, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Readable, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $file = self::fixture('valid-image.gif');
         $rule = new Readable();
@@ -35,10 +33,8 @@ final class ReadableTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Readable, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Readable, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $file = self::fixture('invalid-image.gif');
         $rule = new Readable();

@@ -21,10 +21,8 @@ use function tmpfile;
 #[CoversClass(StringVal::class)]
 final class StringValTest extends RuleTestCase
 {
-    /**
-     * @return array<array{StringVal, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{StringVal, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new StringVal();
 
@@ -39,10 +37,8 @@ final class StringValTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{StringVal, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{StringVal, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new StringVal();
 

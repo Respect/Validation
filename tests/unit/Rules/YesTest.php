@@ -79,10 +79,8 @@ final class YesTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Yes, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Yes, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new Yes();
 
@@ -96,10 +94,8 @@ final class YesTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Yes, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Yes, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new Yes();
 

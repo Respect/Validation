@@ -70,10 +70,8 @@ final class EachTest extends RuleTestCase
         }
     }
 
-    /**
-     * @return array<array{Each, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Each, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Each(Stub::pass(0)), []],
@@ -83,10 +81,8 @@ final class EachTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Each, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Each, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Each(Stub::fail(0)), 123],

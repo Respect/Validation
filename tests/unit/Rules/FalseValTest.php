@@ -22,10 +22,8 @@ use const PHP_INT_MAX;
 #[CoversClass(FalseVal::class)]
 final class FalseValTest extends RuleTestCase
 {
-    /**
-     * @return array<array{FalseVal, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{FalseVal, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new FalseVal();
 
@@ -46,10 +44,8 @@ final class FalseValTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{FalseVal, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{FalseVal, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new FalseVal();
 

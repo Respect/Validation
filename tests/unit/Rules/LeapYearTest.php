@@ -18,10 +18,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(LeapYear::class)]
 final class LeapYearTest extends RuleTestCase
 {
-    /**
-     * @return array<array{LeapYear, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{LeapYear, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new LeapYear();
 
@@ -34,10 +32,8 @@ final class LeapYearTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{LeapYear, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{LeapYear, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new LeapYear();
 

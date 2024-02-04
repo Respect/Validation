@@ -23,10 +23,8 @@ use const NAN;
 #[CoversClass(Decimal::class)]
 final class DecimalTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Decimal, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Decimal, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Decimal(0), 1],
@@ -48,10 +46,8 @@ final class DecimalTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Decimal, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Decimal, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Decimal(1), '1.50'],

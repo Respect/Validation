@@ -22,10 +22,8 @@ use const PHP_INT_MAX;
 #[CoversClass(MacAddress::class)]
 final class MacAddressTest extends RuleTestCase
 {
-    /**
-     * @return array<array{MacAddress, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{MacAddress, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new MacAddress();
 
@@ -37,10 +35,8 @@ final class MacAddressTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{MacAddress, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{MacAddress, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new MacAddress();
 

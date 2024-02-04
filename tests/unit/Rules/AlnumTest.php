@@ -19,9 +19,7 @@ use stdClass;
 #[CoversClass(Alnum::class)]
 final class AlnumTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Alnum, mixed}>
-     */
+    /** @return iterable<array{Alnum, mixed}> */
     public static function providerForValidInput(): iterable
     {
         return [
@@ -42,9 +40,7 @@ final class AlnumTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Alnum, mixed}>
-     */
+    /** @return iterable<array{Alnum, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
         return [

@@ -42,10 +42,8 @@ final class DateTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Date, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Date, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Date(), '2017-12-31'],
@@ -56,10 +54,8 @@ final class DateTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Date, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Date, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Date(), 'not-a-date'],

@@ -57,10 +57,8 @@ final class DateTimeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{DateTime, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{DateTime, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new DateTime(), 'now'],
@@ -85,10 +83,8 @@ final class DateTimeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{DateTime, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{DateTime, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new DateTime(), 'not-a-date'],

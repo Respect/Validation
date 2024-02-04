@@ -30,10 +30,8 @@ final class CountryCodeTest extends RuleTestCase
         new CountryCode('whatever');
     }
 
-    /**
-     * @return array<array{CountryCode, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{CountryCode, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new CountryCode(CountryCode::ALPHA2),  'BR'],
@@ -48,10 +46,8 @@ final class CountryCodeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{CountryCode, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{CountryCode, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new CountryCode(),  'ca'],

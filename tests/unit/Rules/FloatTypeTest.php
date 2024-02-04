@@ -19,10 +19,8 @@ use const PHP_INT_MAX;
 #[CoversClass(FloatType::class)]
 final class FloatTypeTest extends RuleTestCase
 {
-    /**
-     * @return array<array{FloatType, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{FloatType, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new FloatType();
 
@@ -37,10 +35,8 @@ final class FloatTypeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{FloatType, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{FloatType, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new FloatType();
 

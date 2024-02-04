@@ -23,10 +23,8 @@ use Traversable;
 #[CoversClass(Instance::class)]
 final class InstanceTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Instance, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Instance, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Instance(DateTime::class), new DateTime()],
@@ -35,10 +33,8 @@ final class InstanceTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Instance, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Instance, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Instance(DateTime::class), ''],

@@ -22,10 +22,8 @@ use const PHP_INT_MAX;
 #[CoversClass(File::class)]
 final class FileTest extends RuleTestCase
 {
-    /**
-     * @return array<array{File, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{File, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new File();
 
@@ -36,10 +34,8 @@ final class FileTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{File, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{File, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new File();
 

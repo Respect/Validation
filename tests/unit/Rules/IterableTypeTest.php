@@ -19,10 +19,8 @@ use stdClass;
 #[CoversClass(IterableType::class)]
 final class IterableTypeTest extends RuleTestCase
 {
-    /**
-     * @return array<array{IterableType, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{IterableType, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new IterableType();
 
@@ -33,10 +31,8 @@ final class IterableTypeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{IterableType, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{IterableType, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new IterableType();
 

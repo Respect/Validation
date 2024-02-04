@@ -49,10 +49,8 @@ final class MimetypeTest extends RuleTestCase
         self::assertTrue($rule->validate($filename));
     }
 
-    /**
-     * @return array<array{Mimetype, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Mimetype, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             'image/png' => [new Mimetype('image/png'), 'tests/fixtures/valid-image.png'],
@@ -64,10 +62,8 @@ final class MimetypeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Mimetype, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Mimetype, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             'invalid file' => [new Mimetype('image/png'), 'tests/fixtures/invalid-image.png'],

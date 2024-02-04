@@ -18,10 +18,8 @@ use stdClass;
 #[CoversClass(Slug::class)]
 final class SlugTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Slug, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Slug, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new Slug();
 
@@ -33,10 +31,8 @@ final class SlugTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Slug, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Slug, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new Slug();
 

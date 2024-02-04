@@ -18,10 +18,8 @@ use stdClass;
 #[CoversClass(NotBlank::class)]
 final class NotBlankTest extends RuleTestCase
 {
-    /**
-     * @return array<array{NotBlank, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{NotBlank, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $object = new stdClass();
         $object->foo = true;
@@ -37,10 +35,8 @@ final class NotBlankTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{NotBlank, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{NotBlank, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new NotBlank();
 

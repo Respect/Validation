@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(PerfectSquare::class)]
 final class PerfectSquareTest extends RuleTestCase
 {
-    /**
-     * @return array<array{PerfectSquare, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{PerfectSquare, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new PerfectSquare();
 
@@ -38,10 +36,8 @@ final class PerfectSquareTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{PerfectSquare, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{PerfectSquare, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new PerfectSquare();
 

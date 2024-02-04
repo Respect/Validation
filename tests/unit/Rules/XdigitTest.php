@@ -18,10 +18,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(Xdigit::class)]
 final class XdigitTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Xdigit, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Xdigit, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Xdigit(), 'FFF'],
@@ -35,10 +33,8 @@ final class XdigitTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Xdigit, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Xdigit, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Xdigit(), ''],

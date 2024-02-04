@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(Cpf::class)]
 final class CpfTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Cpf, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Cpf, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Cpf();
 
@@ -38,10 +36,8 @@ final class CpfTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Cpf, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Cpf, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Cpf();
 

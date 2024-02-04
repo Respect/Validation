@@ -20,10 +20,8 @@ use function extension_loaded;
 #[CoversClass(Iban::class)]
 final class IbanTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Iban, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Iban, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new Iban();
 
@@ -42,10 +40,8 @@ final class IbanTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Iban, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Iban, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new Iban();
 

@@ -18,10 +18,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(Digit::class)]
 final class DigitTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Digit, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Digit, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             'positive integer' => [new Digit(), 165],
@@ -37,10 +35,8 @@ final class DigitTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Digit, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Digit, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             'empty' => [new Digit(), ''],

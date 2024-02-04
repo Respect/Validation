@@ -18,10 +18,8 @@ use stdClass;
 #[CoversClass(NotOptional::class)]
 final class NotOptionalTest extends RuleTestCase
 {
-    /**
-     * @return array<array{NotOptional, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{NotOptional, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new NotOptional();
 
@@ -43,10 +41,8 @@ final class NotOptionalTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{NotOptional, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{NotOptional, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new NotOptional();
 

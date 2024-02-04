@@ -26,10 +26,8 @@ final class UploadedTest extends RuleTestCase
 {
     public const UPLOADED_FILENAME = 'uploaded.ext';
 
-    /**
-     * @return array<array{Uploaded, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Uploaded, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Uploaded();
 
@@ -40,10 +38,8 @@ final class UploadedTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Uploaded, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Uploaded, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Uploaded();
 

@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(In::class)]
 final class InTest extends RuleTestCase
 {
-    /**
-     * @return array<array{In, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{In, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new In(''), ''],
@@ -36,10 +34,8 @@ final class InTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{In, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{In, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new In('0'), null],

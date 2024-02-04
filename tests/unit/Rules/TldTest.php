@@ -18,10 +18,8 @@ use stdClass;
 #[CoversClass(Tld::class)]
 final class TldTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Tld, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Tld, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Tld();
 
@@ -36,10 +34,8 @@ final class TldTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Tld, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Tld, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Tld();
 

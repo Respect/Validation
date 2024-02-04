@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(StartsWith::class)]
 final class StartsWithTest extends RuleTestCase
 {
-    /**
-     * @return array<array{StartsWith, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{StartsWith, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new StartsWith('foo'), ['foo', 'bar']],
@@ -32,10 +30,8 @@ final class StartsWithTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{StartsWith, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{StartsWith, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new StartsWith('foo'), ''],

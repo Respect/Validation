@@ -18,10 +18,8 @@ use stdClass;
 #[CoversClass(NotEmoji::class)]
 final class NotEmojiTest extends RuleTestCase
 {
-    /**
-     * @return array<array{NotEmoji, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{NotEmoji, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new NotEmoji();
 
@@ -36,10 +34,8 @@ final class NotEmojiTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{NotEmoji, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{NotEmoji, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new NotEmoji();
 

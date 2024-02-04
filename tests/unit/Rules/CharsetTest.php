@@ -30,10 +30,8 @@ final class CharsetTest extends RuleTestCase
         new Charset('UTF-8', 'UTF-9');
     }
 
-    /**
-     * @return array<array{Charset, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Charset, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Charset('UTF-8'), ''],
@@ -47,10 +45,8 @@ final class CharsetTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Charset, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Charset, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Charset('ASCII');
 

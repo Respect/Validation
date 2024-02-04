@@ -21,10 +21,8 @@ use Respect\Validation\Test\Stubs\CountableStub;
 #[CoversClass(Min::class)]
 final class MinTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Min, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Min, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             // From documentation
@@ -52,10 +50,8 @@ final class MinTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Min, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Min, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             // From documentation

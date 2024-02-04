@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(FloatVal::class)]
 final class FloatValTest extends RuleTestCase
 {
-    /**
-     * @return array<array{FloatVal, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{FloatVal, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new FloatVal();
 
@@ -37,10 +35,8 @@ final class FloatValTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{FloatVal, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{FloatVal, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new FloatVal();
 

@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(VideoUrl::class)]
 final class VideoUrlTest extends RuleTestCase
 {
-    /**
-     * @return array<array{VideoUrl, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{VideoUrl, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             'vimeo service with subdomain' => [new VideoUrl('vimeo'), 'https://player.vimeo.com/video/71787467'],
@@ -38,10 +36,8 @@ final class VideoUrlTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{VideoUrl, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{VideoUrl, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             'vimeo service with youtube url' => [new VideoUrl('vimeo'), 'https://www.youtube.com/watch?v=netHLn9TScY'],

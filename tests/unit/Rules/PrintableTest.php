@@ -20,10 +20,8 @@ use function chr;
 #[CoversClass(Printable::class)]
 final class PrintableTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Printable, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Printable, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Printable();
 
@@ -40,10 +38,8 @@ final class PrintableTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Printable, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Printable, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Printable();
 

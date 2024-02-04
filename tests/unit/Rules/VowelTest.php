@@ -18,10 +18,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(Vowel::class)]
 final class VowelTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Vowel, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Vowel, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new Vowel();
 
@@ -38,10 +36,8 @@ final class VowelTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Vowel, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Vowel, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new Vowel();
 

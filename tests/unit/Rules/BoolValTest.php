@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(BoolVal::class)]
 final class BoolValTest extends RuleTestCase
 {
-    /**
-     * @return array<array{BoolVal, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{BoolVal, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new BoolVal();
 
@@ -37,10 +35,8 @@ final class BoolValTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{BoolVal, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{BoolVal, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new BoolVal();
 

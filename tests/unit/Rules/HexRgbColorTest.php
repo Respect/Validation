@@ -18,10 +18,8 @@ use stdClass;
 #[CoversClass(HexRgbColor::class)]
 final class HexRgbColorTest extends RuleTestCase
 {
-    /**
-     * @return array<array{HexRgbColor, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{HexRgbColor, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new HexRgbColor();
 
@@ -40,10 +38,8 @@ final class HexRgbColorTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{HexRgbColor, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{HexRgbColor, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new HexRgbColor();
 

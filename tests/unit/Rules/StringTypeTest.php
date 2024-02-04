@@ -18,10 +18,8 @@ use stdClass;
 #[CoversClass(StringType::class)]
 final class StringTypeTest extends RuleTestCase
 {
-    /**
-     * @return array<array{StringType, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{StringType, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new StringType();
 
@@ -31,10 +29,8 @@ final class StringTypeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{StringType, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{StringType, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new StringType();
 

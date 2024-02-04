@@ -21,10 +21,8 @@ use const INF;
 #[CoversClass(CallableType::class)]
 final class CallableTypeTest extends RuleTestCase
 {
-    /**
-     * @return array<array{CallableType, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{CallableType, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new CallableType();
 
@@ -36,10 +34,8 @@ final class CallableTypeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{CallableType, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{CallableType, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new CallableType();
 

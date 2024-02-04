@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(PolishIdCard::class)]
 final class PolishIdCardTest extends RuleTestCase
 {
-    /**
-     * @return array<array{PolishIdCard, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{PolishIdCard, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new PolishIdCard();
 
@@ -31,10 +29,8 @@ final class PolishIdCardTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{PolishIdCard, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{PolishIdCard, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new PolishIdCard();
 

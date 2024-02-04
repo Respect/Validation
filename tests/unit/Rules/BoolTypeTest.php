@@ -18,10 +18,8 @@ use stdClass;
 #[CoversClass(BoolType::class)]
 final class BoolTypeTest extends RuleTestCase
 {
-    /**
-     * @return array<array{BoolType, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{BoolType, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new BoolType();
 
@@ -31,10 +29,8 @@ final class BoolTypeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{BoolType, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{BoolType, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new BoolType();
 

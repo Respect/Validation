@@ -24,10 +24,8 @@ use function strtotime;
 #[CoversClass(MaxAge::class)]
 final class MaxAgeTest extends RuleTestCase
 {
-    /**
-     * @return array<array{MaxAge, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{MaxAge, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new MaxAge(30, 'Y-m-d'), date('Y-m-d', strtotime('30 years ago'))],
@@ -37,10 +35,8 @@ final class MaxAgeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{MaxAge, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{MaxAge, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new MaxAge(30), new DateTime('30 years ago')],

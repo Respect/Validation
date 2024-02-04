@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(Multiple::class)]
 final class MultipleTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Multiple, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Multiple, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Multiple(5), 20],
@@ -35,10 +33,8 @@ final class MultipleTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Multiple, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Multiple, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Multiple(5), 11],

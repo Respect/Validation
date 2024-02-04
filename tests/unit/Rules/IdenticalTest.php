@@ -29,10 +29,8 @@ final class IdenticalTest extends RuleTestCase
         self::assertSame($compareTo, $exception->getParam('compareTo'));
     }
 
-    /**
-     * @return array<array{Identical, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Identical, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $object = new stdClass();
 
@@ -45,10 +43,8 @@ final class IdenticalTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Identical, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Identical, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Identical(42), '42'],

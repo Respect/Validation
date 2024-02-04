@@ -18,10 +18,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(Space::class)]
 final class SpaceTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Space, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Space, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new Space();
 
@@ -36,10 +34,8 @@ final class SpaceTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Space, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Space, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new Space();
 

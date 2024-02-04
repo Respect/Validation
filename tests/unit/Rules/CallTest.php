@@ -90,16 +90,16 @@ final class CallTest extends RuleTestCase
         trigger_error('Forcing PHP to trigger an error');
     }
 
-    /** @return array<string, array{Call, mixed}> */
-    public static function providerForValidInput(): array
+    /** @return iterable<string, array{Call, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             'valid rule and valid callable' => [new Call('trim', Stub::pass(1)), ' input '],
         ];
     }
 
-    /** @return array<string, array{Call, mixed}> */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<string, array{Call, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             'PHP error' => [new Call('trim', Stub::pass(1)), []],

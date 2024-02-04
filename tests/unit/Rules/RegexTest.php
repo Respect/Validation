@@ -18,10 +18,8 @@ use stdClass;
 #[CoversClass(Regex::class)]
 final class RegexTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Regex, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Regex, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Regex('/^[a-z]+$/'), 'wpoiur'],
@@ -30,10 +28,8 @@ final class RegexTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Regex, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Regex, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Regex('/^w+$/'), 'w poiur'],

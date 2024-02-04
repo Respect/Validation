@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(Subset::class)]
 final class SubsetTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Subset, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Subset, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Subset([]), []],
@@ -33,10 +31,8 @@ final class SubsetTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Subset, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Subset, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Subset([]), [1]],

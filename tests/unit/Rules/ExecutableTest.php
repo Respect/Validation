@@ -19,10 +19,8 @@ use SplFileObject;
 #[CoversClass(Executable::class)]
 final class ExecutableTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Executable, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Executable, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Executable();
 
@@ -33,10 +31,8 @@ final class ExecutableTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Executable, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Executable, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Executable();
 

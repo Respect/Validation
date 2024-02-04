@@ -18,10 +18,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(Equivalent::class)]
 final class EquivalentTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Equivalent, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Equivalent, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Equivalent(1), true],
@@ -32,10 +30,8 @@ final class EquivalentTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Equivalent, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Equivalent, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Equivalent(1), false],

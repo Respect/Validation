@@ -19,10 +19,8 @@ use SplFileObject;
 #[CoversClass(Exists::class)]
 final class ExistsTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Exists, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Exists, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Exists();
 
@@ -33,10 +31,8 @@ final class ExistsTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Exists, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Exists, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Exists();
 

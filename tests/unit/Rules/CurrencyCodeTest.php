@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(CurrencyCode::class)]
 final class CurrencyCodeTest extends RuleTestCase
 {
-    /**
-     * @return array<array{CurrencyCode, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{CurrencyCode, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new CurrencyCode();
 
@@ -33,10 +31,8 @@ final class CurrencyCodeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{CurrencyCode, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{CurrencyCode, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new CurrencyCode();
 

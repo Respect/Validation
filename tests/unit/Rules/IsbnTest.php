@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(Isbn::class)]
 final class IsbnTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Isbn, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Isbn, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new Isbn();
 
@@ -35,10 +33,8 @@ final class IsbnTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Isbn, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Isbn, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new Isbn();
 

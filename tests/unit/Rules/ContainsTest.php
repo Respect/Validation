@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(Contains::class)]
 final class ContainsTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Contains, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Contains, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Contains('foo', false), ['bar', 'foo']],
@@ -38,10 +36,8 @@ final class ContainsTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Contains, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Contains, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Contains('foo', false), ''],

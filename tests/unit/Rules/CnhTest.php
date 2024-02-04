@@ -18,10 +18,8 @@ use stdClass;
 #[CoversClass(Cnh::class)]
 final class CnhTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Cnh, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Cnh, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Cnh();
 
@@ -53,10 +51,8 @@ final class CnhTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Cnh, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Cnh, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Cnh();
 

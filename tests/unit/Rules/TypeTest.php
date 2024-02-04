@@ -31,10 +31,8 @@ final class TypeTest extends RuleTestCase
         new Type('whatever');
     }
 
-    /**
-     * @return array<array{Type, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Type, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Type('array'), []],
@@ -56,10 +54,8 @@ final class TypeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Type, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Type, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Type('int'), '1'],

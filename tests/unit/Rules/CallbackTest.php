@@ -19,10 +19,8 @@ use stdClass;
 #[CoversClass(Callback::class)]
 final class CallbackTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Callback, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Callback, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Callback('is_a', 'stdClass'), new stdClass()],
@@ -37,10 +35,8 @@ final class CallbackTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Callback, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Callback, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [

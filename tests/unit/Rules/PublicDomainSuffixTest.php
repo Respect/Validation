@@ -18,10 +18,8 @@ use stdClass;
 #[CoversClass(PublicDomainSuffix::class)]
 final class PublicDomainSuffixTest extends RuleTestCase
 {
-    /**
-     * @return array<array{PublicDomainSuffix, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{PublicDomainSuffix, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new PublicDomainSuffix();
 
@@ -32,10 +30,8 @@ final class PublicDomainSuffixTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{PublicDomainSuffix, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{PublicDomainSuffix, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new PublicDomainSuffix();
 

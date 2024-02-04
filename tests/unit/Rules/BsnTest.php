@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(Bsn::class)]
 final class BsnTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Bsn, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Bsn, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Bsn();
 
@@ -38,10 +36,8 @@ final class BsnTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Bsn, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Bsn, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Bsn();
 

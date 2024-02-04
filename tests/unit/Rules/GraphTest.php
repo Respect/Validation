@@ -18,10 +18,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(Graph::class)]
 final class GraphTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Graph, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Graph, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $graph = new Graph();
 
@@ -40,10 +38,8 @@ final class GraphTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Graph, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Graph, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $graph = new Graph();
 

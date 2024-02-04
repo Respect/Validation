@@ -18,10 +18,8 @@ use SplFileInfo;
 #[CoversClass(Extension::class)]
 final class ExtensionTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Extension, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Extension, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             'txt' => [new Extension('txt'), 'filename.txt'],
@@ -35,10 +33,8 @@ final class ExtensionTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Extension, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Extension, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             'jpg' => [new Extension('jpg'), 'filename.txt'],

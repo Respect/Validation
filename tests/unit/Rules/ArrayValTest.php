@@ -20,10 +20,8 @@ use stdClass;
 #[CoversClass(ArrayVal::class)]
 final class ArrayValTest extends RuleTestCase
 {
-    /**
-     * @return array<array{ArrayVal, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{ArrayVal, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new ArrayVal();
 
@@ -35,10 +33,8 @@ final class ArrayValTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{ArrayVal, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{ArrayVal, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new ArrayVal();
 

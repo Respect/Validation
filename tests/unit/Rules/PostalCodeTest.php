@@ -44,10 +44,8 @@ final class PostalCodeTest extends RuleTestCase
         new PostalCode('Whatever');
     }
 
-    /**
-     * @return array<array{PostalCode, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{PostalCode, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new PostalCode('BR'), '02179-000'],
@@ -84,10 +82,8 @@ final class PostalCodeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{PostalCode, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{PostalCode, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new PostalCode('BR'), '02179'],

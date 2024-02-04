@@ -25,10 +25,8 @@ use const PHP_INT_MAX;
 #[CoversClass(Factor::class)]
 final class FactorTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Factor, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Factor, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             '1 is factor 1' => [new Factor(1), 1],
@@ -60,10 +58,8 @@ final class FactorTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Factor, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Factor, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             '3 is not factor 2' => [new Factor(3), 2],

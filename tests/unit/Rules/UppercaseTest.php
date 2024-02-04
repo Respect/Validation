@@ -18,10 +18,8 @@ use stdClass;
 #[CoversClass(Uppercase::class)]
 final class UppercaseTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Uppercase, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Uppercase, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Uppercase();
 
@@ -40,10 +38,8 @@ final class UppercaseTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Uppercase, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Uppercase, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Uppercase();
 

@@ -20,10 +20,8 @@ use const PHP_INT_MAX;
 #[CoversClass(IntVal::class)]
 final class IntValTest extends RuleTestCase
 {
-    /**
-     * @return array<array{IntVal, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{IntVal, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new IntVal();
 
@@ -45,10 +43,8 @@ final class IntValTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{IntVal, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{IntVal, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new IntVal();
 

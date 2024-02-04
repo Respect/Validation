@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(NfeAccessKey::class)]
 final class NfeAccessKeyTest extends RuleTestCase
 {
-    /**
-     * @return array<array{NfeAccessKey, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{NfeAccessKey, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $nfe = new NfeAccessKey();
 
@@ -29,10 +27,8 @@ final class NfeAccessKeyTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{NfeAccessKey, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{NfeAccessKey, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $nfe = new NfeAccessKey();
 

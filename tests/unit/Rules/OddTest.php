@@ -20,10 +20,8 @@ use function tmpfile;
 #[CoversClass(Odd::class)]
 final class OddTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Odd, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Odd, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Odd();
 
@@ -35,10 +33,8 @@ final class OddTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Odd, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Odd, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Odd();
 

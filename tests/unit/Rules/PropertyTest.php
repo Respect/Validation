@@ -21,8 +21,8 @@ use Respect\Validation\Test\Stubs\WithUninitialized;
 #[CoversClass(Property::class)]
 final class PropertyTest extends RuleTestCase
 {
-    /** @return array<string, array{Property, mixed}> */
-    public static function providerForValidInput(): array
+    /** @return iterable<string, array{Property, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             'attribute is present without extra validator' => [new Property('public'), new WithProperties()],
@@ -53,8 +53,8 @@ final class PropertyTest extends RuleTestCase
         ];
     }
 
-    /** @return array<string, array{Property, mixed}> */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<string, array{Property, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             'attribute is absent without extra validator' => [new Property('barr'), new WithProperties()],

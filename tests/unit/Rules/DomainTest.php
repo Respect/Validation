@@ -19,10 +19,8 @@ use stdClass;
 #[CoversClass(Domain::class)]
 final class DomainTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Domain, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Domain, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Domain(false), '111111111111domain.local'],
@@ -37,10 +35,8 @@ final class DomainTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Domain, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Domain, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Domain(), null],

@@ -19,10 +19,8 @@ use stdClass;
 #[CoversClass(Alpha::class)]
 final class AlphaTest extends RuleTestCase
 {
-    /**
-     * @return array<string, array{Alpha, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<string, array{Alpha, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             'alphabetic' => [new Alpha(), 'alganet'],
@@ -33,10 +31,8 @@ final class AlphaTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<string, array{Alpha, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<string, array{Alpha, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             'empty string' => [new Alpha(), ''],

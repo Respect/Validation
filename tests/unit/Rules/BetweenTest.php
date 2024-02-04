@@ -38,10 +38,8 @@ final class BetweenTest extends RuleTestCase
         new Between(5, 5);
     }
 
-    /**
-     * @return array<array{Between, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Between, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Between(0, 1), 1],
@@ -56,10 +54,8 @@ final class BetweenTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Between, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Between, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Between(10, 20), ''],

@@ -42,10 +42,8 @@ final class EmailTest extends RuleTestCase
         self::assertTrue($sut->validate($input));
     }
 
-    /**
-     * @return array<array{Email, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Email, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new Email(null);
 
@@ -57,10 +55,8 @@ final class EmailTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Email, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Email, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new Email(null);
 

@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(NullType::class)]
 final class NullTypeTest extends RuleTestCase
 {
-    /**
-     * @return array<array{NullType, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{NullType, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new NullType();
 
@@ -29,10 +27,8 @@ final class NullTypeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{NullType, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{NullType, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new NullType();
 

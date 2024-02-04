@@ -19,10 +19,8 @@ use stdClass;
 #[CoversClass(Control::class)]
 final class ControlTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Control, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Control, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new Control();
 
@@ -36,10 +34,8 @@ final class ControlTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Control, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Control, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new Control();
 

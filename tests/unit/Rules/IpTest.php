@@ -50,10 +50,8 @@ final class IpTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Ip, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Ip, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Ip('127.*'), '127.0.0.1'],
@@ -78,10 +76,8 @@ final class IpTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Ip, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Ip, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Ip('127.*'), '192.0.1.0'],

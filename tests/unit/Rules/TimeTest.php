@@ -42,10 +42,8 @@ final class TimeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Time, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Time, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Time(), '00:00:00'],
@@ -58,10 +56,8 @@ final class TimeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Time, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Time, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Time(), '00:00:60'],

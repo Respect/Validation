@@ -23,10 +23,8 @@ use const PHP_INT_MAX;
 #[CoversClass(Finite::class)]
 final class FiniteTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Finite, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Finite, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new Finite();
 
@@ -41,10 +39,8 @@ final class FiniteTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Finite, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Finite, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new Finite();
 

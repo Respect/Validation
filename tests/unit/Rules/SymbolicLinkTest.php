@@ -21,10 +21,8 @@ use function tmpfile;
 #[CoversClass(SymbolicLink::class)]
 final class SymbolicLinkTest extends RuleTestCase
 {
-    /**
-     * @return array<array{SymbolicLink, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{SymbolicLink, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $sut = new SymbolicLink();
 
@@ -35,10 +33,8 @@ final class SymbolicLinkTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{SymbolicLink, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{SymbolicLink, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $sut = new SymbolicLink();
 

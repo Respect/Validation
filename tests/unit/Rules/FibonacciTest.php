@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(Fibonacci::class)]
 final class FibonacciTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Fibonacci, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Fibonacci, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Fibonacci();
 
@@ -41,10 +39,8 @@ final class FibonacciTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Fibonacci, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Fibonacci, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Fibonacci();
 

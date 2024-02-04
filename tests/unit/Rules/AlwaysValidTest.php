@@ -31,7 +31,7 @@ final class AlwaysValidTest extends TestCase
     /**
      * @return mixed[][]
      */
-    public static function providerForValidInput(): array
+    public static function providerForValidInput(): iterable
     {
         return [
             [0],

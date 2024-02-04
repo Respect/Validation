@@ -18,10 +18,8 @@ use stdClass;
 #[CoversClass(Negative::class)]
 final class NegativeTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Negative, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Negative, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Negative();
 
@@ -32,10 +30,8 @@ final class NegativeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Negative, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Negative, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Negative();
 

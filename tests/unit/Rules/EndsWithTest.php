@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(EndsWith::class)]
 final class EndsWithTest extends RuleTestCase
 {
-    /**
-     * @return array<array{EndsWith, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{EndsWith, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new EndsWith('foo'), ['bar', 'foo']],
@@ -33,10 +31,8 @@ final class EndsWithTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{EndsWith, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{EndsWith, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new EndsWith('foo'), ''],

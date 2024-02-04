@@ -24,10 +24,8 @@ use function uniqid;
 #[CoversClass(PhpLabel::class)]
 final class PhpLabelTest extends RuleTestCase
 {
-    /**
-     * @return array<array{PhpLabel, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{PhpLabel, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new PhpLabel();
 
@@ -42,10 +40,8 @@ final class PhpLabelTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{PhpLabel, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{PhpLabel, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new PhpLabel();
 

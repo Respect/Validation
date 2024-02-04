@@ -17,10 +17,8 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(Unique::class)]
 final class UniqueTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Unique, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Unique, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Unique();
 
@@ -35,10 +33,8 @@ final class UniqueTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Unique, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Unique, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Unique();
 

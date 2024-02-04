@@ -21,10 +21,8 @@ use function tmpfile;
 #[CoversClass(ResourceType::class)]
 final class ResourceTypeTest extends RuleTestCase
 {
-    /**
-     * @return array<array{ResourceType, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{ResourceType, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new ResourceType();
 
@@ -34,10 +32,8 @@ final class ResourceTypeTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{ResourceType, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{ResourceType, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new ResourceType();
 

@@ -21,10 +21,8 @@ use const PHP_INT_MAX;
 #[CoversClass(Infinite::class)]
 final class InfiniteTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Infinite, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Infinite, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Infinite();
 
@@ -34,10 +32,8 @@ final class InfiniteTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Infinite, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Infinite, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Infinite();
 

@@ -19,10 +19,8 @@ use stdClass;
 #[CoversClass(Consonant::class)]
 final class ConsonantTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Consonant, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Consonant, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $consonant = new Consonant();
 
@@ -44,10 +42,8 @@ final class ConsonantTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Consonant, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Consonant, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $consonant = new Consonant();
 

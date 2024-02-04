@@ -29,10 +29,8 @@ final class EqualsTest extends RuleTestCase
         self::assertSame($compareTo, $exception->getParam('compareTo'));
     }
 
-    /**
-     * @return array<array{Equals, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Equals, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Equals('foo'), 'foo'],
@@ -43,10 +41,8 @@ final class EqualsTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Equals, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Equals, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Equals('foo'), ''],

@@ -22,10 +22,8 @@ use function dir;
 #[CoversClass(Directory::class)]
 final class DirectoryTest extends RuleTestCase
 {
-    /**
-     * @return array<array{Directory, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return iterable<array{Directory, mixed}> */
+    public static function providerForValidInput(): iterable
     {
         $rule = new Directory();
 
@@ -36,10 +34,8 @@ final class DirectoryTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return array<array{Directory, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<array{Directory, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new Directory();
 
