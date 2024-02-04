@@ -1,4 +1,4 @@
-## Message placeholder conversion
+# Message placeholder conversion
 
 Messages in Validation usually have placeholders that are in between "{{" and
 "}}" characters. To replace those placeholders with the real parameters, we need

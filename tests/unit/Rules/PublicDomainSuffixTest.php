@@ -12,6 +12,7 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 #[Group('rule')]
 #[CoversClass(PublicDomainSuffix::class)]
@@ -39,6 +40,9 @@ final class PublicDomainSuffixTest extends RuleTestCase
         $rule = new PublicDomainSuffix();
 
         return [
+            [$rule, []],
+            [$rule, null],
+            [$rule, new stdClass()],
             [$rule, 'NONONONONONONONONON'],
             [$rule, 'NONONONONONONONONON.uk'],
             [$rule, 'invalid.com'],

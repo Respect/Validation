@@ -1,4 +1,4 @@
-# List of rules
+# List of rules by category
 
 ## Arrays
 

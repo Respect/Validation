@@ -54,6 +54,7 @@ final class CountryCodeTest extends RuleTestCase
     public static function providerForInvalidInput(): array
     {
         return [
+            [new CountryCode(),  'ca'],
             [new CountryCode(CountryCode::ALPHA2),  'USA'],
             [new CountryCode(CountryCode::ALPHA3),  'US'],
             [new CountryCode(CountryCode::NUMERIC), '000'],

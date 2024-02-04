@@ -10,25 +10,38 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Attributes\Template;
+use Respect\Validation\Helpers\CanValidateUndefined;
 use Respect\Validation\Helpers\DomainInfo;
 
 use function array_pop;
 use function explode;
+use function in_array;
+use function is_scalar;
+use function strtoupper;
 
 #[Template(
     '{{name}} must be a public domain suffix',
     '{{name}} must be a public domain suffix',
 )]
-final class PublicDomainSuffix extends AbstractSearcher
+final class PublicDomainSuffix extends AbstractRule
 {
-    /**
-     * @return string[]
-     */
-    protected function getDataSource(mixed $input = null): array
+    use CanValidateUndefined;
+
+    public function validate(mixed $input): bool
     {
-        $parts = explode('.', $input);
+        if (!is_scalar($input)) {
+            return false;
+        }
+
+        $parts = explode('.', (string) $input);
         $tld = array_pop($parts);
 
-        return (new DomainInfo($tld))->getPublicSuffixes();
+        $domainInfo = new DomainInfo($tld);
+        $dataSource = $domainInfo->getPublicSuffixes();
+        if ($this->isUndefined($input) && empty($dataSource)) {
+            return true;
+        }
+
+        return in_array(strtoupper((string) $input), $dataSource, true);
     }
 }
