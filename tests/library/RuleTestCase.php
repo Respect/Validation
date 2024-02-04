@@ -16,6 +16,8 @@ use function ltrim;
 use function realpath;
 use function Respect\Stringifier\stringify;
 use function sprintf;
+use function strrchr;
+use function substr;
 
 /**
  * Abstract class to create TestCases for Rules.
@@ -98,7 +100,11 @@ abstract class RuleTestCase extends TestCase
     {
         self::assertTrue(
             $rule->validate($input),
-            sprintf('Validation with input %s is expected to pass', stringify($input))
+            sprintf(
+                '%s should pass with %s',
+                substr((string) strrchr($rule::class, '\\'), 1),
+                stringify($rule->reportError($input)->getParams())
+            )
         );
     }
 
@@ -109,7 +115,11 @@ abstract class RuleTestCase extends TestCase
     {
         self::assertFalse(
             $rule->validate($input),
-            sprintf('Validation with input %s it not expected to pass', stringify($input))
+            sprintf(
+                '%s should not pass with %s',
+                substr((string) strrchr($rule::class, '\\'), 1),
+                stringify($rule->reportError($input)->getParams())
+            )
         );
     }
 }

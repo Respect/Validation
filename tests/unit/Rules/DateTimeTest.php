@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use DateTime as DateTimeMutable;
 use DateTimeImmutable;
+use DateTimeInterface;
 use Respect\Validation\Test\RuleTestCase;
 
 use function date_default_timezone_get;
@@ -102,6 +103,8 @@ final class DateTimeTest extends RuleTestCase
             [new DateTime('U'), 1464658596],
             [new DateTime('h'), 6],
             [new DateTime('Ym'), 202305],
+            [new DateTime(DateTimeInterface::RFC3339), '2018-02-23T12:00:00+00:00'],
+            [new DateTime(DateTimeInterface::RFC3339_EXTENDED), '2024-02-04T14:14:47.000+00:00'],
         ];
     }
 
@@ -123,6 +126,8 @@ final class DateTimeTest extends RuleTestCase
             [new DateTime('c'), new DateTimeMutable()],
             [new DateTime('c'), new DateTimeImmutable()],
             [new DateTime('Y-m-d H:i:s'), '21-3-123:12:01'],
+            [new DateTime(DateTimeInterface::RFC3339_EXTENDED), '2005-12-30T01:02:03Z'],
+            [new DateTime(DateTimeInterface::RFC3339_EXTENDED), '1937-01-01T12:00:27.87+00:20'],
         ];
     }
 }
