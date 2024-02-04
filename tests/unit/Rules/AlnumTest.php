@@ -22,7 +22,7 @@ final class AlnumTest extends RuleTestCase
     /**
      * @return array<array{Alnum, mixed}>
      */
-    public static function providerForValidInput(): array
+    public static function providerForValidInput(): iterable
     {
         return [
             [new Alnum(), 'alganet'],
@@ -45,7 +45,7 @@ final class AlnumTest extends RuleTestCase
     /**
      * @return array<array{Alnum, mixed}>
      */
-    public static function providerForInvalidInput(): array
+    public static function providerForInvalidInput(): iterable
     {
         return [
             [new Alnum(), ''],

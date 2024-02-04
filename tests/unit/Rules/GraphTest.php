@@ -19,7 +19,7 @@ use Respect\Validation\Test\RuleTestCase;
 final class GraphTest extends RuleTestCase
 {
     /**
-     * @inheritDoc
+     * @return array<array{Graph, mixed}>
      */
     public static function providerForValidInput(): array
     {

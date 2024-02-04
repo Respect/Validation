@@ -18,26 +18,22 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(NoneOf::class)]
 final class NoneOfTest extends RuleTestCase
 {
-    /** @return array<array{NoneOf, mixed}> */
-    public static function providerForValidInput(): array
+    /** @return iterable<string, array{NoneOf, mixed}> */
+    public static function providerForValidInput(): iterable
     {
-        return [
-            'fail' => [new NoneOf(Stub::fail(1)), []],
-            'fail, fail' => [new NoneOf(Stub::fail(1), Stub::fail(1)), []],
-            'fail, fail, fail' => [new NoneOf(Stub::fail(1), Stub::fail(1), Stub::fail(1)), []],
-        ];
+        yield 'fail' => [new NoneOf(Stub::fail(1)), []];
+        yield 'fail, fail' => [new NoneOf(Stub::fail(1), Stub::fail(1)), []];
+        yield 'fail, fail, fail' => [new NoneOf(Stub::fail(1), Stub::fail(1), Stub::fail(1)), []];
     }
 
-    /** @return array<array{NoneOf, mixed}> */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<string, array{NoneOf, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
-        return [
-            'pass' => [new NoneOf(Stub::pass(1)), []],
-            'pass, fail' => [new NoneOf(Stub::pass(1), Stub::fail(1)), []],
-            'fail, pass' => [new NoneOf(Stub::fail(1), Stub::pass(1)), []],
-            'pass, pass, fail' => [new NoneOf(Stub::pass(1), Stub::pass(1), Stub::fail(1)), []],
-            'pass, fail, pass' => [new NoneOf(Stub::pass(1), Stub::fail(1), Stub::pass(1)), []],
-            'fail, pass, pass' => [new NoneOf(Stub::fail(1), Stub::pass(1), Stub::pass(1)), []],
-        ];
+        yield 'pass' => [new NoneOf(Stub::pass(1)), []];
+        yield 'pass, fail' => [new NoneOf(Stub::pass(1), Stub::fail(1)), []];
+        yield 'fail, pass' => [new NoneOf(Stub::fail(1), Stub::pass(1)), []];
+        yield 'pass, pass, fail' => [new NoneOf(Stub::pass(1), Stub::pass(1), Stub::fail(1)), []];
+        yield 'pass, fail, pass' => [new NoneOf(Stub::pass(1), Stub::fail(1), Stub::pass(1)), []];
+        yield 'fail, pass, pass' => [new NoneOf(Stub::fail(1), Stub::pass(1), Stub::pass(1)), []];
     }
 }

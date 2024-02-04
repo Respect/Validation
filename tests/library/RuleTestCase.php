@@ -30,9 +30,9 @@ abstract class RuleTestCase extends TestCase
      * as the first element and an input in which the validation SHOULD pass.
      *
      * @api
-     * @return array<string|int, array{Validatable, mixed}>
+     * @return iterable<string|int, array{Validatable, mixed}>
      */
-    abstract public static function providerForValidInput(): array;
+    abstract public static function providerForValidInput(): iterable;
 
     /**
      * Data providers for invalid results.
@@ -41,9 +41,9 @@ abstract class RuleTestCase extends TestCase
      * as the first element and an input in which the validation SHOULD NOT pass.
      *
      * @api
-     * @return array<string|int, array{Validatable, mixed}>
+     * @return iterable<string|int, array{Validatable, mixed}>
      */
-    abstract public static function providerForInvalidInput(): array;
+    abstract public static function providerForInvalidInput(): iterable;
 
     #[Test]
     #[DataProvider('providerForValidInput')]

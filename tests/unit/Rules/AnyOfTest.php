@@ -18,24 +18,20 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(AnyOf::class)]
 final class AnyOfTest extends RuleTestCase
 {
-    /** @return array<array{AnyOf, mixed}> */
-    public static function providerForValidInput(): array
+    /** @return iterable<string, array{AnyOf, mixed}> */
+    public static function providerForValidInput(): iterable
     {
-        return [
-            'pass' => [new AnyOf(Stub::pass(1)), []],
-            'fail, pass' => [new AnyOf(Stub::fail(1), Stub::pass(1)), []],
-            'fail, fail, pass' => [new AnyOf(Stub::fail(1), Stub::fail(1), Stub::pass(1)), []],
-            'fail, pass, fail' => [new AnyOf(Stub::fail(1), Stub::pass(1), Stub::fail(1)), []],
-        ];
+        yield 'pass' => [new AnyOf(Stub::pass(1)), []];
+        yield 'fail, pass' => [new AnyOf(Stub::fail(1), Stub::pass(1)), []];
+        yield 'fail, fail, pass' => [new AnyOf(Stub::fail(1), Stub::fail(1), Stub::pass(1)), []];
+        yield 'fail, pass, fail' => [new AnyOf(Stub::fail(1), Stub::pass(1), Stub::fail(1)), []];
     }
 
-    /** @return array<array{AnyOf, mixed}> */
-    public static function providerForInvalidInput(): array
+    /** @return iterable<string, array{AnyOf, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
-        return [
-            'fail' => [new AnyOf(Stub::fail(1)), []],
-            'fail, fail' => [new AnyOf(Stub::fail(1), Stub::fail(1)), []],
-            'fail, fail, fail' => [new AnyOf(Stub::fail(1), Stub::fail(1), Stub::fail(1)), []],
-        ];
+        yield 'fail' => [new AnyOf(Stub::fail(1)), []];
+        yield 'fail, fail' => [new AnyOf(Stub::fail(1), Stub::fail(1)), []];
+        yield 'fail, fail, fail' => [new AnyOf(Stub::fail(1), Stub::fail(1), Stub::fail(1)), []];
     }
 }

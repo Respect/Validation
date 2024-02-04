@@ -110,30 +110,20 @@ use Respect\Validation\Test\RuleTestCase;
 #[CoversClass(HelloWorld::class)]
 final class HelloWorldTest extends RuleTestCase
 {
-    /**
-     * @return array<array{HelloWorld, mixed}>
-     */
-    public static function providerForValidInput(): array
+    /** @return array<array{HelloWorld, mixed}> */
+    public static function providerForValidInput(): iterable
     {
-        $rule = new HelloWorld();
-
-        return [
-            [$rule, 'Hello World'],
-        ];
+        yield [new HelloWorld(), 'Hello World'];
     }
 
-    /**
-     * @return array<array{HelloWorld, mixed}>
-     */
-    public static function providerForInvalidInput(): array
+    /** @return array<array{HelloWorld, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $rule = new HelloWorld();
 
-        return [
-            [$rule, 'Not a hello'],
-            [$rule, 'Hello darkness, my old friend'],
-            [$rule, 'Hello is it me you\'re looking for?'],
-        ];
+        yield [$rule, 'Not a hello'];
+        yield [$rule, 'Hello darkness, my old friend'];
+        yield [$rule, 'Hello is it me you\'re looking for?'];
     }
 }
 ```
