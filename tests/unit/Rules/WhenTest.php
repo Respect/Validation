@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
+use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\RuleTestCase;
 
 #[Group('rule')]
@@ -24,43 +25,23 @@ final class WhenTest extends RuleTestCase
     {
         return [
             'all true' => [
-                new When(
-                    new AlwaysValid(),
-                    new AlwaysValid(),
-                    new AlwaysValid()
-                ),
+                new When(Stub::pass(1), Stub::pass(1), Stub::pass(1)),
                 true,
             ],
             'bool (when = true, then = true, else = false)' => [
-                new When(
-                    new AlwaysValid(),
-                    new AlwaysValid(),
-                    new AlwaysInvalid()
-                ),
+                new When(Stub::pass(1), Stub::pass(1), Stub::fail(1)),
                 true,
             ],
             'bool (when = false, then = true, else = true)' => [
-                new When(
-                    new AlwaysInvalid(),
-                    new AlwaysValid(),
-                    new AlwaysValid()
-                ),
+                new When(Stub::fail(1), Stub::pass(1), Stub::pass(1)),
                 true,
             ],
             'bool (when = false, then = false, else = true)' => [
-                new When(
-                    new AlwaysInvalid(),
-                    new AlwaysInvalid(),
-                    new AlwaysValid()
-                ),
+                new When(Stub::fail(1), Stub::fail(1), Stub::pass(1)),
                 true,
             ],
             'bool (when = false, then = true, else = null)' => [
-                new When(
-                    new AlwaysValid(),
-                    new AlwaysValid(),
-                    null
-                ),
+                new When(Stub::pass(1), Stub::pass(1), null),
                 true,
             ],
         ];
@@ -73,35 +54,19 @@ final class WhenTest extends RuleTestCase
     {
         return [
             'bool (when = true, then = false, else = false)' => [
-                new When(
-                    new AlwaysValid(),
-                    new AlwaysInvalid(),
-                    new AlwaysInvalid()
-                ),
+                new When(Stub::pass(1), Stub::fail(1), Stub::fail(1)),
                 false,
             ],
             'bool (when = true, then = false, else = true)' => [
-                new When(
-                    new AlwaysValid(),
-                    new AlwaysInvalid(),
-                    new AlwaysValid()
-                ),
+                new When(Stub::pass(1), Stub::fail(1), Stub::pass(1)),
                 false,
             ],
             'bool (when = false, then = false, else = false)' => [
-                new When(
-                    new AlwaysInvalid(),
-                    new AlwaysInvalid(),
-                    new AlwaysInvalid()
-                ),
+                new When(Stub::fail(1), Stub::fail(1), Stub::fail(1)),
                 false,
             ],
             'bool (when = true, then = false, else = null)' => [
-                new When(
-                    new AlwaysValid(),
-                    new AlwaysInvalid(),
-                    null
-                ),
+                new When(Stub::pass(1), Stub::fail(1), null),
                 false,
             ],
         ];

@@ -15,6 +15,7 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
 use stdClass;
 
@@ -28,37 +29,31 @@ final class KeySetTest extends TestCase
     #[Test]
     public function shouldNotAcceptAllOfWithMoreThanOneKeyRule(): void
     {
-        $key1 = new Key('foo', new AlwaysValid(), false);
-        $key2 = new Key('bar', new AlwaysValid(), false);
-        $allOf = new AllOf($key1, $key2);
-
         $this->expectException(ComponentException::class);
         $this->expectExceptionMessage('KeySet rule accepts only Key rules');
 
-        new KeySet($allOf);
+        new KeySet(new AllOf(
+            new Key('foo', Stub::pass(0), false),
+            new Key('bar', Stub::pass(0), false),
+        ));
     }
 
     #[Test]
     public function shouldNotAcceptAllOfWithNonKeyRule(): void
     {
-        $alwaysValid = new AlwaysValid();
-        $allOf = new AllOf($alwaysValid);
-
         $this->expectException(ComponentException::class);
         $this->expectExceptionMessage('KeySet rule accepts only Key rules');
 
-        new KeySet($allOf);
+        new KeySet(new AllOf(Stub::pass(0)));
     }
 
     #[Test]
     public function shouldNotAcceptNonKeyRule(): void
     {
-        $alwaysValid = new AlwaysValid();
-
         $this->expectException(ComponentException::class);
         $this->expectExceptionMessage('KeySet rule accepts only Key rules');
 
-        new KeySet($alwaysValid);
+        new KeySet(Stub::pass(0));
     }
 
     #[Test]
@@ -68,12 +63,12 @@ final class KeySetTest extends TestCase
             'foo' => 42,
         ];
 
-        $key1 = new Key('foo', new AlwaysValid(), true);
-        $key2 = new Key('bar', new AlwaysValid(), true);
+        $sut = new KeySet(
+            new Key('foo', Stub::pass(1), true),
+            new Key('bar', Stub::pass(0), true),
+        );
 
-        $keySet = new KeySet($key1, $key2);
-
-        self::assertFalse($keySet->validate($input));
+        self::assertFalse($sut->validate($input));
     }
 
     #[Test]
@@ -83,12 +78,12 @@ final class KeySetTest extends TestCase
             'foo' => 42,
         ];
 
-        $key1 = new Key('foo', new AlwaysValid(), true);
-        $key2 = new Key('bar', new AlwaysValid(), false);
+        $sut = new KeySet(
+            new Key('foo', Stub::pass(1), true),
+            new Key('bar', Stub::pass(0), false),
+        );
 
-        $keySet = new KeySet($key1, $key2);
-
-        self::assertTrue($keySet->validate($input));
+        self::assertTrue($sut->validate($input));
     }
 
     #[Test]
@@ -100,57 +95,51 @@ final class KeySetTest extends TestCase
             'baz' => false,
         ];
 
-        $key1 = new Key('foo', new AlwaysValid(), false);
-        $key2 = new Key('bar', new AlwaysValid(), false);
+        $sut = new KeySet(
+            new Key('foo', Stub::pass(1), false),
+            new Key('bar', Stub::pass(1), false),
+        );
 
-        $keySet = new KeySet($key1, $key2);
-
-        self::assertFalse($keySet->validate($input));
+        self::assertFalse($sut->validate($input));
     }
 
     #[Test]
     public function shouldValidateKeysWhenEmpty(): void
     {
-        $input = [];
+        $sut = new KeySet(
+            new Key('foo', Stub::pass(0), true),
+            new Key('bar', Stub::pass(0), true),
+        );
 
-        $key1 = new Key('foo', new AlwaysValid(), true);
-        $key2 = new Key('bar', new AlwaysValid(), true);
-
-        $keySet = new KeySet($key1, $key2);
-
-        self::assertFalse($keySet->validate($input));
+        self::assertFalse($sut->validate([]));
     }
 
     #[Test]
     public function shouldCheckKeys(): void
     {
-        $input = [];
-
-        $key1 = new Key('foo', new AlwaysValid(), true);
-        $key2 = new Key('bar', new AlwaysValid(), true);
-
-        $keySet = new KeySet($key1, $key2);
+        $sut = new KeySet(
+            new Key('foo', Stub::pass(1), true),
+            new Key('bar', Stub::pass(1), true),
+        );
 
         $this->expectException(ValidationException::class);
         $this->expectExceptionMessage(sprintf('Must have keys %s', stringify(['foo', 'bar'])));
 
-        $keySet->check($input);
+        $sut->check([]);
     }
 
     #[Test]
     public function shouldAssertKeys(): void
     {
-        $input = [];
-
-        $key1 = new Key('foo', new AlwaysValid(), true);
-        $key2 = new Key('bar', new AlwaysValid(), true);
-
-        $keySet = new KeySet($key1, $key2);
+        $sut = new KeySet(
+            new Key('foo', Stub::pass(1), true),
+            new Key('bar', Stub::pass(1), true),
+        );
 
         $this->expectException(ValidationException::class);
         $this->expectExceptionMessage(sprintf('Must have keys %s', stringify(['foo', 'bar'])));
 
-        $keySet->assert($input);
+        $sut->assert([]);
     }
 
     #[Test]
@@ -158,20 +147,18 @@ final class KeySetTest extends TestCase
     {
         $input = ['foo' => 123, 'bar' => 456];
 
-        $key1 = new Key('foo', new AlwaysValid(), true);
-
-        $keySet = new KeySet($key1);
+        $sut = new KeySet(new Key('foo', Stub::pass(1), true));
 
         $this->expectException(ValidationException::class);
         $this->expectExceptionMessage(sprintf('Must not have keys %s', stringify(['bar'])));
 
-        $keySet->assert($input);
+        $sut->assert($input);
     }
 
     #[Test]
     public function cannotBeNegated(): void
     {
-        $key1 = new Key('foo', new AlwaysValid(), true);
+        $key1 = new Key('foo', Stub::pass(1), true);
 
         $this->expectException(ComponentException::class);
         $this->expectExceptionMessage('"Respect\Validation\Rules\KeySet" can not be wrapped in Not()');
@@ -183,12 +170,12 @@ final class KeySetTest extends TestCase
     #[DataProvider('providerForInvalidArguments')]
     public function shouldThrowExceptionInCaseArgumentIsAnythingOtherThanArray(mixed $input): void
     {
-        $keySet = new KeySet(new Key('name'));
+        $sut = new KeySet(new Key('name'));
 
         $this->expectException(ValidationException::class);
         $this->expectExceptionMessage(sprintf('Must have keys %s', stringify(['name'])));
 
-        $keySet->assert($input);
+        $sut->assert($input);
     }
 
     /**

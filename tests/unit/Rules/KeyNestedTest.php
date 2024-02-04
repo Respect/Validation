@@ -11,12 +11,11 @@ namespace Respect\Validation\Rules;
 
 use ArrayObject;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
-use Respect\Validation\Validatable;
 use stdClass;
 
 #[Group('rule')]
@@ -48,16 +47,15 @@ final class KeyNestedTest extends TestCase
     {
         $array = [
             0 => 'Zero, the hero!',
+            1 => 'One, the gun!',
         ];
 
-        $validatable = $this->createMock(Validatable::class);
-        $validatable
-            ->expects(self::once())
-            ->method('check')
-            ->with($array[0]);
+        $rule = Stub::pass(1);
 
-        $rule = new KeyNested(0, $validatable);
-        $rule->check($array);
+        $sut = new KeyNested(0, $rule);
+        $sut->check($array);
+
+        self::assertSame([$array[0]], $rule->inputs);
     }
 
     #[Test]
@@ -154,10 +152,9 @@ final class KeyNestedTest extends TestCase
     }
 
     #[Test]
-    #[DoesNotPerformAssertions]
     public function extraValidatorShouldValidateKey(): void
     {
-        $subValidator = new Length(3, 7);
+        $subValidator = Stub::pass(1);
         $validator = new KeyNested('bar.foo.baz', $subValidator);
         $object = [
             'bar' => [
@@ -167,12 +164,14 @@ final class KeyNestedTest extends TestCase
             ],
         ];
         $validator->assert($object);
+
+        self::assertSame([$object['bar']['foo']['baz']], $subValidator->inputs);
     }
 
     #[Test]
     public function notMandatoryExtraValidatorShouldPassWithAbsentKey(): void
     {
-        $subValidator = new Length(1, 3);
+        $subValidator = Stub::pass(1);
         $validator = new KeyNested('bar.rab', $subValidator, false);
         $object = new stdClass();
         self::assertTrue($validator->validate($object));

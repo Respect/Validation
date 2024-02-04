@@ -15,254 +15,95 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Test\TestCase;
-use Respect\Validation\Validatable;
+use Respect\Validation\Test\Exceptions\StubException;
+use Respect\Validation\Test\Rules\Stub;
+use Respect\Validation\Test\RuleTestCase;
 
-use function restore_error_handler;
+use function array_fill;
 use function set_error_handler;
 use function trigger_error;
 
 #[Group('rule')]
 #[CoversClass(Call::class)]
-final class CallTest extends TestCase
+final class CallTest extends RuleTestCase
 {
-    private readonly ErrorException $errorException;
-
     #[Test]
-    public function assertShouldExecuteCallable(): void
+    public function itShouldExecuteCallable(): void
     {
         $input = ' input ';
         $callable = 'trim';
 
-        $rule = $this->createMock(Validatable::class);
-        $rule
-            ->expects(self::once())
-            ->method('assert')
-            ->with($callable($input));
+        $rule = Stub::pass(3);
 
         $sut = new Call($callable, $rule);
         $sut->assert($input);
-    }
-
-    #[Test]
-    public function assertShouldThrowCallExceptionWhenPhpTriggersAnError(): void
-    {
-        $input = [];
-        $callable = 'trim';
-
-        $rule = $this->createMock(Validatable::class);
-        $rule
-            ->expects(self::never())
-            ->method('assert');
-
-        $this->expectException(ValidationException::class);
-
-        $sut = new Call($callable, $rule);
-        $sut->assert($input);
-    }
-
-    #[Test]
-    public function assertShouldRestorePreviousPhpErrorHandler(): void
-    {
-        $callable = 'trim';
-
-        $rule = $this->createMock(Validatable::class);
-        $rule
-            ->expects(self::once())
-            ->method('assert');
-
-        $sut = new Call($callable, $rule);
-        $sut->assert('');
-
-        self::expectExceptionObject($this->errorException);
-
-        trigger_error('Forcing PHP to trigger an error');
-    }
-
-    #[Test]
-    public function assertShouldThrowValidationExceptionWhenCallableThrowsAnException(): void
-    {
-        $input = [];
-        $callable = static function (): void {
-            throw new Exception();
-        };
-
-        $rule = $this->createMock(Validatable::class);
-        $rule
-            ->expects(self::never())
-            ->method('assert');
-
-        $this->expectException(ValidationException::class);
-
-        $sut = new Call($callable, $rule);
-        $sut->assert($input);
-    }
-
-    #[Test]
-    public function assertShouldThrowExceptionOfTheDefinedRule(): void
-    {
-        $input = 'something';
-        $callable = 'trim';
-
-        $rule = new AlwaysInvalid();
-
-        $this->expectException(ValidationException::class);
-
-        $sut = new Call($callable, $rule);
-        $sut->assert($input);
-    }
-
-    #[Test]
-    public function checkShouldExecuteCallable(): void
-    {
-        $input = ' input ';
-        $callable = 'trim';
-
-        $rule = $this->createMock(Validatable::class);
-        $rule
-            ->expects(self::once())
-            ->method('check')
-            ->with($callable($input));
-
-        $sut = new Call($callable, $rule);
         $sut->check($input);
+        $sut->validate($input);
+
+        self::assertSame(array_fill(0, 3, $callable($input)), $rule->inputs);
     }
 
     #[Test]
-    public function checkShouldThrowValidationExceptionWhenPhpTriggersAnError(): void
+    public function itShouldInvalidateWhenPhpTriggersAnError(): void
     {
         $input = [];
         $callable = 'trim';
 
-        $rule = $this->createMock(Validatable::class);
-        $rule
-            ->expects(self::never())
-            ->method('check');
-
-        $this->expectException(ValidationException::class);
-
-        $sut = new Call($callable, $rule);
-        $sut->assert($input);
-    }
-
-    #[Test]
-    public function checkShouldRestorePreviousPhpErrorHandler(): void
-    {
-        $callable = 'trim';
-
-        $rule = $this->createMock(Validatable::class);
-        $rule
-            ->expects(self::once())
-            ->method('check');
-
-        $sut = new Call($callable, $rule);
-        $sut->check('');
-
-        self::expectExceptionObject($this->errorException);
-
-        trigger_error('Forcing PHP to trigger an error');
-    }
-
-    #[Test]
-    public function checkShouldThrowValidationExceptionWhenCallableThrowsAnException(): void
-    {
-        $input = [];
-        $callable = static function (): void {
-            throw new Exception();
-        };
-
-        $rule = $this->createMock(Validatable::class);
-        $rule
-            ->expects(self::never())
-            ->method('check');
-
-        $this->expectException(ValidationException::class);
-
-        $sut = new Call($callable, $rule);
-        $sut->assert($input);
-    }
-
-    #[Test]
-    public function checkShouldThrowExceptionOfTheDefinedRule(): void
-    {
-        $rule = new AlwaysInvalid();
-
-        $this->expectException(ValidationException::class);
-
-        $sut = new Call('trim', $rule);
-        $sut->check('something');
-    }
-
-    #[Test]
-    public function validateShouldExecuteCallable(): void
-    {
-        $input = ' input ';
-        $callable = 'trim';
-
-        $rule = $this->createMock(Validatable::class);
-        $rule
-            ->expects(self::once())
-            ->method('check')
-            ->with($callable($input));
-
-        $sut = new Call($callable, $rule);
-
-        self::assertTrue($sut->validate($input));
-    }
-
-    #[Test]
-    public function validateShouldReturnFalseWhenPhpTriggersAnError(): void
-    {
-        $input = [];
-        $callable = 'trim';
-
-        $rule = $this->createMock(Validatable::class);
-        $rule
-            ->expects(self::never())
-            ->method('check');
+        $rule = Stub::fail(1);
 
         $sut = new Call($callable, $rule);
 
         self::assertFalse($sut->validate($input));
+        try {
+            $sut->check($input);
+            self::fail('An expected exception has not been raised');
+        } catch (ValidationException $exception) {
+            self::assertNotInstanceOf(StubException::class, $exception);
+        }
+
+        try {
+            $sut->assert($input);
+            self::fail('An expected exception has not been raised');
+        } catch (ValidationException $exception) {
+            self::assertNotInstanceOf(StubException::class, $exception);
+        }
     }
 
     #[Test]
-    public function validateShouldReturnFalseWhenDefinedRuleFails(): void
-    {
-        $sut = new Call('trim', new AlwaysInvalid());
-
-        self::assertFalse($sut->validate('something'));
-    }
-
-    #[Test]
-    public function validateShouldRestorePreviousPhpErrorHandler(): void
+    public function itShouldRestorePreviousPhpErrorHandler(): void
     {
         $callable = 'trim';
 
-        $rule = $this->createMock(Validatable::class);
-        $rule
-            ->expects(self::once())
-            ->method('check');
+        $rule = Stub::pass(3);
+
+        $errorException = new ErrorException('This is a PHP error');
+
+        set_error_handler(static fn () => throw $errorException);
 
         $sut = new Call($callable, $rule);
+        $sut->assert('');
+        $sut->check('');
         $sut->validate('');
 
-        self::expectExceptionObject($this->errorException);
+        self::expectExceptionObject($errorException);
 
         trigger_error('Forcing PHP to trigger an error');
     }
 
-    protected function setUp(): void
+    /** @return array<string, array{Call, mixed}> */
+    public static function providerForValidInput(): array
     {
-        $this->errorException = new ErrorException('This is a PHP error');
-
-        set_error_handler(function (): void {
-            throw $this->errorException;
-        });
+        return [
+            'valid rule and valid callable' => [new Call('trim', Stub::pass(1)), ' input '],
+        ];
     }
 
-    protected function tearDown(): void
+    /** @return array<string, array{Call, mixed}> */
+    public static function providerForInvalidInput(): array
     {
-        restore_error_handler();
+        return [
+            'PHP error' => [new Call('trim', Stub::pass(1)), []],
+            'exception' => [new Call(static fn() => throw new Exception(), Stub::pass(1)), []],
+        ];
     }
 }

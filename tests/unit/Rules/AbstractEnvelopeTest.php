@@ -13,6 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\Rules\Envelop;
+use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
 
 use function array_intersect_key;
@@ -24,7 +25,7 @@ final class AbstractEnvelopeTest extends TestCase
     #[Test]
     public function itShouldValidateUsingTheInnerRule(): void
     {
-        $rule = new Envelop(new AlwaysValid(), []);
+        $rule = new Envelop(Stub::pass(1), []);
 
         self::assertTrue($rule->validate('something'));
     }
@@ -32,7 +33,7 @@ final class AbstractEnvelopeTest extends TestCase
     #[Test]
     public function itShouldInvalidateUsingTheInnerRule(): void
     {
-        $rule = new Envelop(new AlwaysInvalid(), []);
+        $rule = new Envelop(Stub::fail(1), []);
 
         self::assertFalse($rule->validate('something'));
     }
@@ -43,7 +44,7 @@ final class AbstractEnvelopeTest extends TestCase
         $input = 'value';
         $parameters = ['foo' => true, 'bar' => false, 'baz' => 42];
 
-        $rule = new Envelop(new AlwaysInvalid(), $parameters);
+        $rule = new Envelop(Stub::fail(1), $parameters);
         $exception = $rule->reportError($input);
 
         self::assertEquals($parameters, array_intersect_key($parameters, $exception->getParams()));

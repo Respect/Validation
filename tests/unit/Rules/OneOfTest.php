@@ -11,132 +11,34 @@ namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
-use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\Rules\Stub;
+use Respect\Validation\Test\RuleTestCase;
 
 #[Group('rule')]
 #[CoversClass(OneOf::class)]
-final class OneOfTest extends TestCase
+final class OneOfTest extends RuleTestCase
 {
-    #[Test]
-    public function valid(): void
+    /** @return array<array{OneOf, mixed}> */
+    public static function providerForValidInput(): array
     {
-        $valid1 = new Callback(static function () {
-            return false;
-        });
-        $valid2 = new Callback(static function () {
-            return true;
-        });
-        $valid3 = new Callback(static function () {
-            return false;
-        });
-
-        $rule = new OneOf($valid1, $valid2, $valid3);
-
-        self::assertTrue($rule->validate('any'));
-        $rule->assert('any');
-        $rule->check('any');
+        return [
+            'pass' => [new OneOf(Stub::pass(1)), []],
+            'fail, pass' => [new OneOf(Stub::fail(1), Stub::pass(1)), []],
+            'pass, fail' => [new OneOf(Stub::pass(1), Stub::fail(1)), []],
+            'pass, fail, fail' => [new OneOf(Stub::pass(1), Stub::fail(1), Stub::fail(1)), []],
+            'fail, pass, fail' => [new OneOf(Stub::fail(1), Stub::pass(1), Stub::fail(1)), []],
+            'fail, fail, pass' => [new OneOf(Stub::fail(1), Stub::fail(1), Stub::pass(1)), []],
+        ];
     }
 
-    #[Test]
-    public function emptyChain(): void
+    /** @return array<array{OneOf, mixed}> */
+    public static function providerForInvalidInput(): array
     {
-        $rule = new OneOf();
-
-        self::assertFalse($rule->validate('any'));
-
-        $this->expectException(NestedValidationException::class);
-
-        $rule->check('any');
-    }
-
-    #[Test]
-    public function invalid(): void
-    {
-        $valid1 = new Callback(static function () {
-            return false;
-        });
-        $valid2 = new Callback(static function () {
-            return false;
-        });
-        $valid3 = new Callback(static function () {
-            return false;
-        });
-        $rule = new OneOf($valid1, $valid2, $valid3);
-        self::assertFalse($rule->validate('any'));
-
-        $this->expectException(NestedValidationException::class);
-        $rule->assert('any');
-    }
-
-    #[Test]
-    public function invalidMultipleAssert(): void
-    {
-        $valid1 = new Callback(static function () {
-            return true;
-        });
-        $valid2 = new Callback(static function () {
-            return true;
-        });
-        $valid3 = new Callback(static function () {
-            return false;
-        });
-        $rule = new OneOf($valid1, $valid2, $valid3);
-        self::assertFalse($rule->validate('any'));
-
-        $this->expectException(NestedValidationException::class);
-        $rule->assert('any');
-    }
-
-    #[Test]
-    public function invalidMultipleCheck(): void
-    {
-        $valid1 = new Callback(static function () {
-            return true;
-        });
-        $valid2 = new Callback(static function () {
-            return true;
-        });
-        $valid3 = new Callback(static function () {
-            return false;
-        });
-
-        $rule = new OneOf($valid1, $valid2, $valid3);
-        self::assertFalse($rule->validate('any'));
-
-        $this->expectException(ValidationException::class);
-        $rule->check('any');
-    }
-
-    #[Test]
-    public function invalidMultipleCheckAllValid(): void
-    {
-        $valid1 = new Callback(static function () {
-            return true;
-        });
-        $valid2 = new Callback(static function () {
-            return true;
-        });
-        $valid3 = new Callback(static function () {
-            return true;
-        });
-
-        $rule = new OneOf($valid1, $valid2, $valid3);
-        self::assertFalse($rule->validate('any'));
-
-        $this->expectException(NestedValidationException::class);
-        $rule->check('any');
-    }
-
-    #[Test]
-    public function invalidCheck(): void
-    {
-        $rule = new OneOf(new Xdigit(), new Alnum());
-        self::assertFalse($rule->validate(-10));
-
-        $this->expectException(ValidationException::class);
-        $rule->check(-10);
+        return [
+            'fail' => [new OneOf(Stub::fail(1)), []],
+            'fail, fail' => [new OneOf(Stub::fail(1), Stub::fail(1)), []],
+            'fail, fail, fail' => [new OneOf(Stub::fail(1), Stub::fail(1), Stub::fail(1)), []],
+            'fail, pass, pass' => [new OneOf(Stub::fail(1), Stub::pass(1), Stub::pass(1)), []],
+        ];
     }
 }

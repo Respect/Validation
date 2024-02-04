@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
+use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\WithProperties;
 use Respect\Validation\Test\Stubs\WithUninitialized;
@@ -20,9 +21,7 @@ use Respect\Validation\Test\Stubs\WithUninitialized;
 #[CoversClass(Property::class)]
 final class PropertyTest extends RuleTestCase
 {
-    /**
-     * @return array<string, array{Property, mixed}>
-     */
+    /** @return array<string, array{Property, mixed}> */
     public static function providerForValidInput(): array
     {
         return [
@@ -32,7 +31,7 @@ final class PropertyTest extends RuleTestCase
                 new WithProperties(),
             ],
             'attribute is present with extra validator' => [
-                new Property('public', new AlwaysValid()),
+                new Property('public', Stub::pass(1)),
                 new WithProperties(),
             ],
             'attribute is present but uninitialized' => [
@@ -44,30 +43,29 @@ final class PropertyTest extends RuleTestCase
                 new WithProperties(),
             ],
             'non mandatory attribute is not present with extra validator' => [
-                new Property('nonexistent', new AlwaysValid(), false),
+                new Property('nonexistent', Stub::pass(0), false),
                 new WithProperties(),
             ],
             'attribute is present but uninitialized with extra validator' => [
-                new Property('uninitialized', new AlwaysValid()),
+                new Property('uninitialized', Stub::pass(1)),
                 new WithUninitialized(),
             ],
         ];
     }
 
-    /**
-     * @return array<string, array{Property, mixed}>
-     */
+    /** @return array<string, array{Property, mixed}> */
     public static function providerForInvalidInput(): array
     {
         return [
             'attribute is absent without extra validator' => [new Property('barr'), new WithProperties()],
+            'attribute is absent with extra validator' => [new Property('barr', Stub::fail(0)), new WithProperties()],
             'private attribute is not valid based on extra validator' => [
-                new Property('private', new AlwaysInvalid()),
+                new Property('private', Stub::fail(1)),
                 new WithProperties(),
             ],
             'value provided is an empty string' => [new Property('barr'), ''],
             'validator related to attribute does not validate' => [
-                new Property('public', new AlwaysInvalid()),
+                new Property('public', Stub::fail(1)),
                 new WithProperties(),
             ],
         ];

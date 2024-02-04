@@ -11,10 +11,11 @@ namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
-use Respect\Validation\Validatable;
 use stdClass;
 
 #[Group('rule')]
@@ -24,12 +25,7 @@ final class NullableTest extends TestCase
     #[Test]
     public function shouldNotValidateRuleWhenInputIsNull(): void
     {
-        $validatable = $this->createMock(Validatable::class);
-        $validatable
-            ->expects(self::never())
-            ->method('validate');
-
-        $rule = new Nullable($validatable);
+        $rule = new Nullable(Stub::pass(1));
 
         self::assertTrue($rule->validate(null));
     }
@@ -38,53 +34,36 @@ final class NullableTest extends TestCase
     #[DataProvider('providerForNotNullable')]
     public function shouldValidateRuleWhenInputIsNotNullable(mixed $input): void
     {
-        $validatable = $this->createMock(Validatable::class);
-        $validatable
-            ->expects(self::once())
-            ->method('validate')
-            ->with($input)
-            ->willReturn(true);
-
-        $rule = new Nullable($validatable);
+        $rule = new Nullable(Stub::pass(1));
 
         self::assertTrue($rule->validate($input));
     }
 
     #[Test]
+    #[DoesNotPerformAssertions]
     public function shouldNotAssertRuleWhenInputIsNull(): void
     {
-        $validatable = $this->createMock(Validatable::class);
-        $validatable
-            ->expects(self::never())
-            ->method('assert');
-
-        $rule = new Nullable($validatable);
-        $rule->assert(null);
+        $sut = new Nullable(Stub::pass(0));
+        $sut->assert(null);
     }
 
     #[Test]
     #[DataProvider('providerForNotNullable')]
     public function shouldAssertRuleWhenInputIsNotNullable(mixed $input): void
     {
-        $validatable = $this->createMock(Validatable::class);
-        $validatable
-            ->expects(self::once())
-            ->method('assert')
-            ->with($input);
+        $rule = Stub::pass(1);
 
-        $rule = new Nullable($validatable);
-        $rule->assert($input);
+        $sut = new Nullable($rule);
+        $sut->assert($input);
+
+        self::assertSame([$input], $rule->inputs);
     }
 
     #[Test]
+    #[DoesNotPerformAssertions]
     public function shouldNotCheckRuleWhenInputIsNull(): void
     {
-        $validatable = $this->createMock(Validatable::class);
-        $validatable
-            ->expects(self::never())
-            ->method('check');
-
-        $rule = new Nullable($validatable);
+        $rule = new Nullable(Stub::pass(0));
         $rule->check(null);
     }
 
@@ -92,14 +71,12 @@ final class NullableTest extends TestCase
     #[DataProvider('providerForNotNullable')]
     public function shouldCheckRuleWhenInputIsNotNullable(mixed $input): void
     {
-        $validatable = $this->createMock(Validatable::class);
-        $validatable
-            ->expects(self::once())
-            ->method('check')
-            ->with($input);
+        $rule = Stub::pass(1);
 
-        $rule = new Nullable($validatable);
-        $rule->check($input);
+        $sut = new Nullable($rule);
+        $sut->check($input);
+
+        self::assertSame([$input], $rule->inputs);
     }
 
     /**

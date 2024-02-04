@@ -11,59 +11,31 @@ namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
-use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\Rules\Stub;
+use Respect\Validation\Test\RuleTestCase;
 
 #[Group('rule')]
 #[CoversClass(AnyOf::class)]
-final class AnyOfTest extends TestCase
+final class AnyOfTest extends RuleTestCase
 {
-    #[Test]
-    public function valid(): void
+    /** @return array<array{AnyOf, mixed}> */
+    public static function providerForValidInput(): array
     {
-        $valid1 = new Callback(static function () {
-            return false;
-        });
-        $valid2 = new Callback(static function () {
-            return true;
-        });
-        $valid3 = new Callback(static function () {
-            return false;
-        });
-        $o = new AnyOf($valid1, $valid2, $valid3);
-        self::assertTrue($o->validate('any'));
-        $o->assert('any');
-        $o->check('any');
+        return [
+            'pass' => [new AnyOf(Stub::pass(1)), []],
+            'fail, pass' => [new AnyOf(Stub::fail(1), Stub::pass(1)), []],
+            'fail, fail, pass' => [new AnyOf(Stub::fail(1), Stub::fail(1), Stub::pass(1)), []],
+            'fail, pass, fail' => [new AnyOf(Stub::fail(1), Stub::pass(1), Stub::fail(1)), []],
+        ];
     }
 
-    #[Test]
-    public function invalid(): void
+    /** @return array<array{AnyOf, mixed}> */
+    public static function providerForInvalidInput(): array
     {
-        $valid1 = new Callback(static function () {
-            return false;
-        });
-        $valid2 = new Callback(static function () {
-            return false;
-        });
-        $valid3 = new Callback(static function () {
-            return false;
-        });
-        $o = new AnyOf($valid1, $valid2, $valid3);
-        self::assertFalse($o->validate('any'));
-
-        $this->expectException(NestedValidationException::class);
-        $o->assert('any');
-    }
-
-    #[Test]
-    public function invalidCheck(): void
-    {
-        $o = new AnyOf(new Xdigit(), new Alnum());
-        self::assertFalse($o->validate(-10));
-
-        $this->expectException(ValidationException::class);
-        $o->check(-10);
+        return [
+            'fail' => [new AnyOf(Stub::fail(1)), []],
+            'fail, fail' => [new AnyOf(Stub::fail(1), Stub::fail(1)), []],
+            'fail, fail, fail' => [new AnyOf(Stub::fail(1), Stub::fail(1), Stub::fail(1)), []],
+        ];
     }
 }

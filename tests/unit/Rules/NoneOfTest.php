@@ -11,48 +11,33 @@ namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
-use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\Rules\Stub;
+use Respect\Validation\Test\RuleTestCase;
 
 #[Group('rule')]
 #[CoversClass(NoneOf::class)]
-final class NoneOfTest extends TestCase
+final class NoneOfTest extends RuleTestCase
 {
-    #[Test]
-    public function valid(): void
+    /** @return array<array{NoneOf, mixed}> */
+    public static function providerForValidInput(): array
     {
-        $valid1 = new Callback(static function () {
-            return false;
-        });
-        $valid2 = new Callback(static function () {
-            return false;
-        });
-        $valid3 = new Callback(static function () {
-            return false;
-        });
-        $o = new NoneOf($valid1, $valid2, $valid3);
-        self::assertTrue($o->validate('any'));
-        $o->assert('any');
-        $o->check('any');
+        return [
+            'fail' => [new NoneOf(Stub::fail(1)), []],
+            'fail, fail' => [new NoneOf(Stub::fail(1), Stub::fail(1)), []],
+            'fail, fail, fail' => [new NoneOf(Stub::fail(1), Stub::fail(1), Stub::fail(1)), []],
+        ];
     }
 
-    #[Test]
-    public function invalid(): void
+    /** @return array<array{NoneOf, mixed}> */
+    public static function providerForInvalidInput(): array
     {
-        $valid1 = new Callback(static function () {
-            return false;
-        });
-        $valid2 = new Callback(static function () {
-            return false;
-        });
-        $valid3 = new Callback(static function () {
-            return true;
-        });
-        $o = new NoneOf($valid1, $valid2, $valid3);
-        self::assertFalse($o->validate('any'));
-
-        $this->expectException(NestedValidationException::class);
-        $o->assert('any');
+        return [
+            'pass' => [new NoneOf(Stub::pass(1)), []],
+            'pass, fail' => [new NoneOf(Stub::pass(1), Stub::fail(1)), []],
+            'fail, pass' => [new NoneOf(Stub::fail(1), Stub::pass(1)), []],
+            'pass, pass, fail' => [new NoneOf(Stub::pass(1), Stub::pass(1), Stub::fail(1)), []],
+            'pass, fail, pass' => [new NoneOf(Stub::pass(1), Stub::fail(1), Stub::pass(1)), []],
+            'fail, pass, pass' => [new NoneOf(Stub::fail(1), Stub::pass(1), Stub::pass(1)), []],
+        ];
     }
 }

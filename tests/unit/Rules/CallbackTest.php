@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
+use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
@@ -25,7 +26,7 @@ final class CallbackTest extends RuleTestCase
     {
         return [
             [new Callback('is_a', 'stdClass'), new stdClass()],
-            [new Callback([new AlwaysValid(), 'validate']), 'test'],
+            [new Callback([Stub::pass(1), 'validate']), 'test'],
             [new Callback('is_string'), 'test'],
             [
                 new Callback(static function () {
