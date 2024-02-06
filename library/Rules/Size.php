@@ -11,8 +11,8 @@ namespace Respect\Validation\Rules;
 
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
-use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Message\Template;
 use SplFileInfo;
 
 use function filesize;

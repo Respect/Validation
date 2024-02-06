@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Attributes;
+namespace Respect\Validation\Message;
 
 use Attribute;
 use Respect\Validation\Validatable;

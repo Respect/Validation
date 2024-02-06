@@ -11,7 +11,7 @@ validate method will be executed. Here's how the class should look:
 namespace My\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Attributes\Template;
+use Respect\Validation\Message\Template;
 
 #[Template(
     '{{name}} is something',

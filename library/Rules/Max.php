@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Attributes\Template;
+use Respect\Validation\Message\Template;
 
 #[Template(
     '{{name}} must be less than or equal to {{compareTo}}',

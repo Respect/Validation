@@ -11,9 +11,9 @@ namespace Respect\Validation\Rules;
 
 use ArrayAccess;
 use Respect\Validation\Attributes\ExceptionClass;
-use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\NonOmissibleValidationException;
+use Respect\Validation\Message\Template;
 
 use function array_key_exists;
 use function array_shift;

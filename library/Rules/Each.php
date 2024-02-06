@@ -10,10 +10,10 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Attributes\ExceptionClass;
-use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\EachException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Helpers\CanValidateIterable;
+use Respect\Validation\Message\Template;
 use Respect\Validation\Validatable;
 
 #[ExceptionClass(EachException::class)]

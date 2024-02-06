@@ -11,9 +11,9 @@ namespace Respect\Validation\Rules;
 
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumberUtil;
-use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Helpers\CountryInfo;
+use Respect\Validation\Message\Template;
 
 use function class_exists;
 use function is_null;

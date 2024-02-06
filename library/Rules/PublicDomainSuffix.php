@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Attributes\Template;
 use Respect\Validation\Helpers\CanValidateUndefined;
 use Respect\Validation\Helpers\DomainInfo;
+use Respect\Validation\Message\Template;
 
 use function array_pop;
 use function explode;

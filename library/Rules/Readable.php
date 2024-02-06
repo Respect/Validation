@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Psr\Http\Message\StreamInterface;
-use Respect\Validation\Attributes\Template;
+use Respect\Validation\Message\Template;
 use SplFileInfo;
 
 use function is_readable;

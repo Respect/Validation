@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace Respect\Validation\Message;
 
 use ReflectionClass;
-use Respect\Validation\Attributes\Template;
 
 final class TemplateCollector
 {

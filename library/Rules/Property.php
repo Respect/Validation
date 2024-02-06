@@ -11,8 +11,8 @@ namespace Respect\Validation\Rules;
 
 use ReflectionProperty;
 use Respect\Validation\Attributes\ExceptionClass;
-use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\NonOmissibleValidationException;
+use Respect\Validation\Message\Template;
 use Respect\Validation\Validatable;
 
 use function is_object;

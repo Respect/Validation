@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Attributes\Template;
 use Respect\Validation\Helpers\CanValidateIterable;
+use Respect\Validation\Message\Template;
 
 #[Template(
     '{{name}} must be iterable',

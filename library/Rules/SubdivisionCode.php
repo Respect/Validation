@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Attributes\Template;
 use Respect\Validation\Helpers\CountryInfo;
+use Respect\Validation\Message\Template;
 
 use function array_keys;
 

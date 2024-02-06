@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use DateTimeInterface;
-use Respect\Validation\Attributes\Template;
+use Respect\Validation\Message\Template;
 
 use function date;
 use function is_numeric;

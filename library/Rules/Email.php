@@ -11,7 +11,7 @@ namespace Respect\Validation\Rules;
 
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
-use Respect\Validation\Attributes\Template;
+use Respect\Validation\Message\Template;
 
 use function class_exists;
 use function filter_var;

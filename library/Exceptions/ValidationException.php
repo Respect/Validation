@@ -10,8 +10,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Exceptions;
 
 use InvalidArgumentException;
-use Respect\Validation\Attributes\Template;
 use Respect\Validation\Message\Formatter;
+use Respect\Validation\Message\Template;
 
 use function count;
 

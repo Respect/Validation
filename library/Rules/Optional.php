@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Attributes\Template;
 use Respect\Validation\Helpers\CanValidateUndefined;
+use Respect\Validation\Message\Template;
 
 #[Template(
     'The value must be optional',

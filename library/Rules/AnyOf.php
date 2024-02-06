@@ -10,9 +10,9 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Attributes\ExceptionClass;
-use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Message\Template;
 
 use function count;
 

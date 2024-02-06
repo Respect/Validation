@@ -10,9 +10,9 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Attributes\ExceptionClass;
-use Respect\Validation\Attributes\Template;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\NonOmissibleValidationException;
+use Respect\Validation\Message\Template;
 use Respect\Validation\Validatable;
 
 use function array_key_exists;
