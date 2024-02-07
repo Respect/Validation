@@ -12,15 +12,17 @@ namespace Respect\Validation\Test\Rules;
 use PHPUnit\Framework\Assert;
 use ReflectionClass;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Test\Exceptions\StubException;
 
 use function array_fill;
 use function array_shift;
 
-/**
- * @since 2.0.0
- */
+#[Template(
+    '{{name}} must be a valid stub',
+    '{{name}} must not be a valid stub',
+)]
 final class Stub extends AbstractRule
 {
     /** @var array<bool> */

@@ -16,8 +16,8 @@ exceptionFullMessage(static fn() => v::call('array_shift', v::alwaysValid())->as
 ?>
 --EXPECT--
 "two words" must not contain whitespace
-" some\\thing " must not be valid when executed with `stripslashes(string $string): string`
+" something " must not be of type string
 `[]` must be valid when executed with `stripslashes(string $string): string`
 - "1234" must be of type integer
-- 1.2 must not be valid when executed with `is_float(?mixed $value): bool`
+- `true` must not be of type boolean
 - `INF` must be valid when executed with `array_shift(array &$array): ?mixed`

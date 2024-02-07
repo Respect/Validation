@@ -12,16 +12,20 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Factory;
+use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
 use Respect\Validation\Validatable;
+use Respect\Validation\Validator;
 
 use function array_keys;
+use function array_map;
 use function in_array;
 use function Respect\Stringifier\stringify;
 
 #[Template(
-    'Key {{name}} must be present',
-    'Key {{name}} must not be present',
+    'The value of',
+    'The value of',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
@@ -31,6 +35,8 @@ use function Respect\Stringifier\stringify;
 )]
 final class KeyValue extends AbstractRule
 {
+    use CanBindEvaluateRule;
+
     public const TEMPLATE_COMPONENT = '__component__';
 
     public function __construct(
@@ -38,6 +44,28 @@ final class KeyValue extends AbstractRule
         private readonly string $ruleName,
         private readonly int|string $baseKey
     ) {
+    }
+
+    public function evaluate(mixed $input): Result
+    {
+        $result = $this->bindEvaluate(new AllOf(new Key($this->comparedKey), new Key($this->baseKey)), $this, $input);
+        if (!$result->isValid) {
+            return $result;
+        }
+
+        try {
+            $rule = Validator::__callStatic($this->ruleName, [$input[$this->baseKey]]);
+            $nextSibling = $rule->evaluate($input[$this->comparedKey]);
+            $nextSiblingParameters = ['name' => $this->getName() ?? (string) $this->comparedKey];
+            $nextSiblingParameters += array_map(fn ($value) => $this->baseKey, $nextSibling->parameters);
+
+            return (new Result($nextSibling->isValid, $input, $this))
+                ->withNextSibling($nextSibling->withParameters($nextSiblingParameters))
+                ->withNameIfMissing((string) $this->comparedKey);
+        } catch (ComponentException) {
+            return Result::failed($input, $this, self::TEMPLATE_COMPONENT)
+                ->withParameters(['baseKey' => $this->baseKey, 'comparedKey' => $this->comparedKey]);
+        }
     }
 
     public function assert(mixed $input): void

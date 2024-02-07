@@ -336,4 +336,7 @@ interface ChainedValidator extends Validatable
     public function xdigit(string ...$additionalChars): ChainedValidator;
 
     public function yes(bool $useLocale = false): ChainedValidator;
+
+    /** @param array<string, mixed> $templates */
+    public function setTemplates(array $templates): ChainedValidator;
 }

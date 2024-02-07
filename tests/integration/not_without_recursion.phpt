@@ -17,4 +17,4 @@ exceptionMessage(static function (): void {
 });
 ?>
 --EXPECT--
-2 must not be positive
+2 must not be an integer number

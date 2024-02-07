@@ -12,7 +12,11 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Attributes\ExceptionClass;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
+use Respect\Validation\Rule;
 
+use function array_map;
+use function array_reduce;
 use function count;
 
 #[ExceptionClass(NestedValidationException::class)]
@@ -22,6 +26,14 @@ use function count;
 )]
 final class NoneOf extends AbstractComposite
 {
+    public function evaluate(mixed $input): Result
+    {
+        $children = array_map(static fn (Rule $rule) => $rule->evaluate($input)->withInvertedMode(), $this->getRules());
+        $valid = array_reduce($children, static fn (bool $carry, Result $result) => $carry && $result->isValid, true);
+
+        return (new Result($valid, $input, $this))->withChildren(...$children);
+    }
+
     public function assert(mixed $input): void
     {
         try {

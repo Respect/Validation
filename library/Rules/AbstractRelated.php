@@ -11,9 +11,8 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Result;
 use Respect\Validation\Validatable;
-
-use function is_scalar;
 
 abstract class AbstractRelated extends AbstractRule
 {
@@ -29,12 +28,26 @@ abstract class AbstractRelated extends AbstractRule
         private readonly ?Validatable $rule = null,
         private readonly bool $mandatory = true
     ) {
+        $this->setName($rule?->getName() ?? (string) $reference);
+    }
 
-        if ($rule && $rule->getName() !== null) {
-            $this->setName($rule->getName());
-        } elseif (is_scalar($reference)) {
-            $this->setName((string) $reference);
+    public function evaluate(mixed $input): Result
+    {
+        $name = $this->getName() ?? (string) $this->reference;
+        $hasReference = $this->hasReference($input);
+        if ($this->mandatory && !$hasReference) {
+            return Result::failed($input, $this, self::TEMPLATE_NOT_PRESENT)->withNameIfMissing($name);
         }
+
+        if ($this->rule === null || !$hasReference) {
+            return Result::passed($input, $this, self::TEMPLATE_NOT_PRESENT)->withNameIfMissing($name);
+        }
+
+        $result = $this->rule->evaluate($this->getReferenceValue($input));
+
+        return (new Result($result->isValid, $input, $this, self::TEMPLATE_INVALID))
+            ->withChildren($result)
+            ->withNameIfMissing($name);
     }
 
     public function getReference(): mixed
@@ -47,13 +60,10 @@ abstract class AbstractRelated extends AbstractRule
         return $this->mandatory;
     }
 
-    public function setName(string $name): Validatable
+    public function setName(string $name): static
     {
         parent::setName($name);
-
-        if ($this->rule instanceof Validatable) {
-            $this->rule->setName($name);
-        }
+        $this->rule?->setName($name);
 
         return $this;
     }

@@ -30,7 +30,27 @@ exceptionMessages(static function () use ($cars): void {
 --EXPECT--
 [
     'each' => [
-        'validator.0' => 'All of the required rules must pass for `["manufacturer": "Ford", "model": "not real"]`',
-        'validator.1' => 'All of the required rules must pass for `["manufacturer": "Honda", "model": "not valid"]`',
+        'oneOf.3' => [
+            'allOf.1' => [
+                'manufacturer' => 'manufacturer must equal "Honda"',
+                'model' => 'model must be in `["Accord", "Fit"]`',
+            ],
+            'allOf.2' => [
+                'manufacturer' => 'manufacturer must equal "Toyota"',
+                'model' => 'model must be in `["Rav4", "Camry"]`',
+            ],
+            'allOf.3' => 'model must be in `["F150", "Bronco"]`',
+        ],
+        'oneOf.4' => [
+            'allOf.1' => 'model must be in `["Accord", "Fit"]`',
+            'allOf.2' => [
+                'manufacturer' => 'manufacturer must equal "Toyota"',
+                'model' => 'model must be in `["Rav4", "Camry"]`',
+            ],
+            'allOf.3' => [
+                'manufacturer' => 'manufacturer must equal "Ford"',
+                'model' => 'model must be in `["F150", "Bronco"]`',
+            ],
+        ],
     ],
 ]

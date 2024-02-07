@@ -1,8 +1,3 @@
---DESCRIPTION--
-The previous output was:
-
-default must be of type string
-- default must be of type string
 --FILE--
 <?php
 
@@ -19,9 +14,9 @@ use Respect\Validation\Validator;
 
 require 'vendor/autoload.php';
 
-$validator = new Validator(
+$validator = Validator::create(
     new Each(
-        new Validator(
+        Validator::create(
             new Key(
                 'default',
                 new OneOf(

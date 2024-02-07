@@ -25,7 +25,7 @@ abstract class AbstractComposite extends AbstractRule
         $this->rules = $rules;
     }
 
-    public function setName(string $name): Validatable
+    public function setName(string $name): static
     {
         $parentName = $this->getName();
         foreach ($this->rules as $rule) {
@@ -104,11 +104,11 @@ abstract class AbstractComposite extends AbstractRule
 
     private function updateExceptionTemplate(ValidationException $exception): void
     {
-        if ($this->template === null || $exception->hasCustomTemplate()) {
+        if ($this->getTemplate() === null || $exception->hasCustomTemplate()) {
             return;
         }
 
-        $exception->updateTemplate($this->template);
+        $exception->updateTemplate($this->getTemplate());
 
         if (!$exception instanceof NestedValidationException) {
             return;

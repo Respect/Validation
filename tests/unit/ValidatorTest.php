@@ -33,7 +33,7 @@ final class ValidatorTest extends TestCase
     #[Test]
     public function shouldReturnValidatorInstanceWhenTheNotRuleIsCalledWithArguments(): void
     {
-        $validator = new Validator();
+        $validator = Validator::create();
 
         self::assertSame($validator, $validator->not($validator->notEmpty()));
     }

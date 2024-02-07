@@ -1,5 +1,3 @@
---TEST--
-setTemplate() with multiple validators should use template as full message
 --FILE--
 <?php
 

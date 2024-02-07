@@ -13,8 +13,11 @@ use Respect\Validation\Attributes\ExceptionClass;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
 use Respect\Validation\Validatable;
 
+use function array_filter;
+use function array_map;
 use function array_merge;
 use function array_pop;
 use function count;
@@ -29,11 +32,11 @@ use function mb_substr_count;
 )]
 final class Domain extends AbstractRule
 {
-    private readonly Validatable $genericRule;
+    private readonly AllOf $genericRule;
 
     private readonly Validatable $tldRule;
 
-    private readonly Validatable $partsRule;
+    private readonly AllOf $partsRule;
 
     public function __construct(bool $tldCheck = true)
     {
@@ -59,6 +62,41 @@ final class Domain extends AbstractRule
         }
 
         $this->throwExceptions($exceptions, $input);
+    }
+
+    public function evaluate(mixed $input): Result
+    {
+        $failedGenericResults = array_filter(array_map(
+            static fn (Validatable $rule) => $rule->evaluate($input),
+            $this->genericRule->getRules()
+        ), static fn (Result $result) => !$result->isValid);
+
+        if (count($failedGenericResults)) {
+            return (new Result(false, $input, $this))->withChildren(...$failedGenericResults);
+        }
+
+        $children = [];
+        $valid = true;
+        $parts = explode('.', (string) $input);
+        if (count($parts) >= 2) {
+            $tld = array_pop($parts);
+            foreach ($this->tldRule instanceof AllOf ? $this->tldRule->getRules() : [$this->tldRule] as $rule) {
+                $childResult = $rule->evaluate($tld);
+                $valid = $valid && $childResult->isValid;
+                $children[] = $childResult;
+            }
+        }
+
+        foreach ($parts as $part) {
+            foreach ($this->partsRule->getRules() as $rule) {
+                $childResult = $rule->evaluate($part);
+                $valid = $valid && $childResult->isValid;
+                $children[] = $childResult;
+            }
+        }
+
+        return (new Result($valid, $input, $this))
+            ->withChildren(...array_filter($children, static fn (Result $child) => !$child->isValid));
     }
 
     public function validate(mixed $input): bool
@@ -103,7 +141,7 @@ final class Domain extends AbstractRule
         }
     }
 
-    private function createGenericRule(): Validatable
+    private function createGenericRule(): AllOf
     {
         return new AllOf(
             new StringType(),
@@ -126,7 +164,7 @@ final class Domain extends AbstractRule
         );
     }
 
-    private function createPartsRule(): Validatable
+    private function createPartsRule(): AllOf
     {
         return new AllOf(
             new Alnum('-'),

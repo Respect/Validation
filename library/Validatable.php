@@ -11,26 +11,18 @@ namespace Respect\Validation;
 
 use Respect\Validation\Exceptions\ValidationException;
 
-interface Validatable
+interface Validatable extends Rule
 {
-    public const TEMPLATE_STANDARD = '__standard__';
-
     public function assert(mixed $input): void;
 
     public function check(mixed $input): void;
-
-    public function getName(): ?string;
 
     /**
      * @param mixed[] $extraParameters
      */
     public function reportError(mixed $input, array $extraParameters = []): ValidationException;
 
-    public function setName(string $name): Validatable;
-
-    public function setTemplate(string $template): Validatable;
-
-    public function getTemplate(mixed $input): string;
+    public function getTemplate(): ?string;
 
     /**
      * @return array<string, mixed>

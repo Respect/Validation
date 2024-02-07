@@ -30,6 +30,6 @@ exceptionMessage(static function () use ($input): void {
         ->assert($input);
 });
 ?>
---EXPECT--
-All of the required rules must pass for "http://www.google.com/search?q=respect.github.com"
-All of the required rules must pass for "http://www.google.com/search?q=respect.github.com"
+--EXPECTF--
+1 must be an array value
+scheme must start with "https"

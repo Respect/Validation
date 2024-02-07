@@ -7,8 +7,7 @@
 
 declare(strict_types=1);
 
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Exceptions\ValidatorException;
 use Respect\Validation\Validator;
 use Symfony\Component\VarExporter\VarExporter;
 
@@ -19,24 +18,18 @@ function exceptionMessage(callable $callable, string $fallbackMessage = 'No exce
     try {
         $callable();
         echo $fallbackMessage . PHP_EOL;
-    } catch (ValidationException $exception) {
+    } catch (ValidatorException $exception) {
         echo $exception->getMessage() . PHP_EOL;
     }
 }
 
-/**
- * @param array<string, array<string, string>> $templates
- */
-function exceptionMessages(
-    callable $callable,
-    array $templates = [],
-    string $fallbackMessage = 'No exception was thrown'
-): void {
+function exceptionMessages(callable $callable, string $fallbackMessage = 'No exception was thrown'): void
+{
     try {
         $callable();
         echo $fallbackMessage . PHP_EOL;
-    } catch (NestedValidationException $exception) {
-        echo VarExporter::export($exception->getMessages($templates)) . PHP_EOL;
+    } catch (ValidatorException $exception) {
+        echo VarExporter::export($exception->getMessages()) . PHP_EOL;
     }
 }
 
@@ -45,7 +38,7 @@ function exceptionFullMessage(callable $callable, string $fallbackMessage = 'No 
     try {
         $callable();
         echo $fallbackMessage . PHP_EOL;
-    } catch (NestedValidationException $exception) {
+    } catch (ValidatorException $exception) {
         echo $exception->getFullMessage() . PHP_EOL;
     }
 }
@@ -62,11 +55,15 @@ function run(array $scenarios): void
             $rule->setTemplate($template);
         }
 
+        if (is_array($template)) {
+            $rule->setTemplates($template);
+        }
+
         $fallbackMessage = 'No exception was thrown with: ' . stringify($input);
 
         exceptionMessage(static fn() => $rule->check($input), $fallbackMessage);
         exceptionFullMessage(static fn() => $rule->assert($input), $fallbackMessage);
-        exceptionMessages(static fn() => $rule->assert($input), is_array($template) ? $template : [], $fallbackMessage);
+        exceptionMessages(static fn() => $rule->assert($input), $fallbackMessage);
         echo PHP_EOL;
     }
 }

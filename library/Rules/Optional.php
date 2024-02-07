@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Helpers\CanValidateUndefined;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
 
 #[Template(
     'The value must be optional',
@@ -27,6 +28,15 @@ final class Optional extends AbstractWrapper
     use CanValidateUndefined;
 
     public const TEMPLATE_NAMED = '__named__';
+
+    public function evaluate(mixed $input): Result
+    {
+        if ($this->isUndefined($input)) {
+            return Result::passed($input, $this);
+        }
+
+        return parent::evaluate($input);
+    }
 
     public function assert(mixed $input): void
     {

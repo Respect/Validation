@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
 use Respect\Validation\Validatable;
 use Throwable;
 
@@ -34,6 +35,18 @@ final class Call extends AbstractRule
         private readonly Validatable $rule
     ) {
         $this->callable = $callable;
+    }
+
+    public function evaluate(mixed $input): Result
+    {
+        $this->setErrorHandler($input);
+        try {
+            return $this->rule->evaluate(call_user_func($this->callable, $input));
+        } catch (Throwable) {
+            restore_error_handler();
+
+            return Result::failed($input, $this)->withParameters(['callable' => $this->callable]);
+        }
     }
 
     public function assert(mixed $input): void

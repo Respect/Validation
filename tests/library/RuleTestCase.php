@@ -71,24 +71,30 @@ abstract class RuleTestCase extends TestCase
 
     public static function assertValidInput(Validatable $rule, mixed $input): void
     {
+        $result = $rule->evaluate($input);
+
         self::assertTrue(
-            $rule->validate($input),
+            $result->isValid,
             sprintf(
-                '%s should pass with %s',
+                '%s should pass with input %s and parameters %s',
                 substr((string) strrchr($rule::class, '\\'), 1),
-                stringify($rule->reportError($input)->getParams())
+                stringify($input),
+                stringify($result->parameters)
             )
         );
     }
 
     public static function assertInvalidInput(Validatable $rule, mixed $input): void
     {
+        $result = $rule->evaluate($input);
+
         self::assertFalse(
-            $rule->validate($input),
+            $result->isValid,
             sprintf(
-                '%s should not pass with %s',
+                '%s should fail with input %s and parameters %s',
                 substr((string) strrchr($rule::class, '\\'), 1),
-                stringify($rule->reportError($input)->getParams())
+                stringify($input),
+                stringify($result->parameters)
             )
         );
     }

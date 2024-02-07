@@ -19,13 +19,13 @@ exceptionFullMessage(static fn() => v::keyValue('foo', 'equals', 'bar')->assert(
 exceptionFullMessage(static fn() => v::not(v::keyValue('foo', 'equals', 'bar'))->assert(['foo' => 1, 'bar' => 1]));
 ?>
 --EXPECT--
-Key "foo" must be present
-Key "bar" must be present
+foo must be present
+bar must be present
 "bar" must be valid to validate "foo"
-foo must equal "bar"
-foo must not equal "bar"
-- Key "foo" must be present
-- Key "bar" must be present
+The value of foo must equal "bar"
+The value of foo must not equal "bar"
+- foo must be present
+- bar must be present
 - "bar" must be valid to validate "foo"
-- foo must equal "bar"
-- foo must not equal "bar"
+- The value of foo must equal "bar"
+- The value of foo must not equal "bar"

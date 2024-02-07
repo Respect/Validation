@@ -11,13 +11,14 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Factory;
+use Respect\Validation\Result;
 use Respect\Validation\Validatable;
 
 abstract class AbstractRule implements Validatable
 {
-    protected ?string $name = null;
-
     protected ?string $template = null;
+
+    private ?string $name = null;
 
     public function assert(mixed $input): void
     {
@@ -26,6 +27,12 @@ abstract class AbstractRule implements Validatable
         }
 
         throw $this->reportError($input);
+    }
+
+    public function evaluate(mixed $input): Result
+    {
+        return (new Result($this->validate($input), $input, $this, $this->getStandardTemplate($input)))
+            ->withParameters($this->getParams());
     }
 
     public function check(mixed $input): void
@@ -46,23 +53,23 @@ abstract class AbstractRule implements Validatable
         return Factory::getDefaultInstance()->exception($this, $input, $extraParameters);
     }
 
-    public function setName(string $name): Validatable
+    public function setName(string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function setTemplate(string $template): Validatable
+    public function setTemplate(string $template): static
     {
         $this->template = $template;
 
         return $this;
     }
 
-    public function getTemplate(mixed $input): string
+    public function getTemplate(): ?string
     {
-        return $this->template ?? $this->getStandardTemplate($input);
+        return $this->template;
     }
 
     /**

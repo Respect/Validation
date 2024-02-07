@@ -88,6 +88,16 @@ final class Factory
         return $clone;
     }
 
+    public function getTranslator(): callable
+    {
+        return $this->translator;
+    }
+
+    public function getParameterProcessor(): Processor
+    {
+        return $this->processor;
+    }
+
     /**
      * @param mixed[] $arguments
      */
@@ -123,7 +133,8 @@ final class Factory
         if ($validatable->getName() !== null) {
             $id = $params['name'] = $validatable->getName();
         }
-        $template = $validatable->getTemplate($input);
+        $standardTemplate = $reflection->getMethod('getStandardTemplate');
+        $template = $validatable->getTemplate() ?? $standardTemplate->invoke($validatable, $input);
         $templates = $this->templateCollector->extract($validatable);
         $formatter = new TemplateRenderer($this->translator, $this->processor);
 

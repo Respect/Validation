@@ -11,12 +11,12 @@ exceptionMessages(
     static fn() => v::alnum()
         ->noWhitespace()
         ->length(1, 15)
-        ->assert('really messed up screen#name'),
-    [
-        'alnum' => '{{name}} must contain only letters and digits',
-        'noWhitespace' => '{{name}} cannot contain spaces',
-        'length' => '{{name}} must not have more than 15 chars',
-    ]
+        ->setTemplates([
+            'alnum' => '{{name}} must contain only letters and digits',
+            'noWhitespace' => '{{name}} cannot contain spaces',
+            'length' => '{{name}} must not have more than 15 chars',
+        ])
+        ->assert('really messed up screen#name')
 );
 ?>
 --EXPECT--

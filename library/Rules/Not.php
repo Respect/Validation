@@ -15,6 +15,7 @@ use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\NonNegatable;
+use Respect\Validation\Result;
 use Respect\Validation\Validatable;
 
 use function array_shift;
@@ -50,11 +51,18 @@ final class Not extends AbstractRule
         return $this->rule;
     }
 
-    public function setName(string $name): Validatable
+    public function setName(string $name): static
     {
         $this->rule->setName($name);
 
         return parent::setName($name);
+    }
+
+    public function setTemplate(string $template): static
+    {
+        $this->rule->setTemplate($template);
+
+        return parent::setTemplate($template);
     }
 
     public function validate(mixed $input): bool
@@ -77,6 +85,11 @@ final class Not extends AbstractRule
         $exception->updateMode(ValidationException::MODE_NEGATIVE);
 
         throw $exception;
+    }
+
+    public function evaluate(mixed $input): Result
+    {
+        return $this->rule->evaluate($input)->withInvertedMode();
     }
 
     private function absorbAllOf(AllOf $rule, mixed $input): Validatable

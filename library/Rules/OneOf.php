@@ -13,7 +13,11 @@ use Respect\Validation\Attributes\ExceptionClass;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
+use Respect\Validation\Rule;
 
+use function array_map;
+use function array_reduce;
 use function array_shift;
 use function count;
 
@@ -24,6 +28,14 @@ use function count;
 )]
 final class OneOf extends AbstractComposite
 {
+    public function evaluate(mixed $input): Result
+    {
+        $children = array_map(static fn (Rule $rule) => $rule->evaluate($input), $this->getRules());
+        $count = array_reduce($children, static fn (int $carry, Result $result) => $carry + (int) $result->isValid, 0);
+
+        return (new Result($count === 1, $input, $this))->withChildren(...$children);
+    }
+
     public function assert(mixed $input): void
     {
         try {

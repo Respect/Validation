@@ -19,9 +19,9 @@ exceptionFullMessage(static fn() => v::not(v::optional(v::alpha()))->setName('Na
 --EXPECT--
 1234 must contain only letters (a-z)
 Name must contain only letters (a-z)
-The value must not be optional
-Name must not be optional
+"abcd" must not contain letters (a-z)
+Name must not contain letters (a-z)
 - 1234 must contain only letters (a-z)
 - Name must contain only letters (a-z)
-- The value must not be optional
-- Name must not be optional
+- "abcd" must not contain letters (a-z)
+- Name must not contain letters (a-z)

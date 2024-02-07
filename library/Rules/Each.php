@@ -14,6 +14,7 @@ use Respect\Validation\Exceptions\EachException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Helpers\CanValidateIterable;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
 use Respect\Validation\Validatable;
 
 #[ExceptionClass(EachException::class)]
@@ -28,6 +29,27 @@ final class Each extends AbstractRule
     public function __construct(
         private readonly Validatable $rule
     ) {
+    }
+
+    public function evaluate(mixed $input): Result
+    {
+        if (!$this->isIterable($input)) {
+            return Result::failed($input, $this);
+        }
+
+        $children = [];
+        $isValid = true;
+        foreach ($input as $inputItem) {
+            $childResult = $this->rule->evaluate($inputItem);
+            $isValid = $isValid && $childResult->isValid;
+            $children[] = $childResult;
+        }
+
+        if ($isValid) {
+            return Result::passed($input, $this)->withChildren(...$children);
+        }
+
+        return Result::failed($input, $this)->withChildren(...$children);
     }
 
     public function assert(mixed $input): void

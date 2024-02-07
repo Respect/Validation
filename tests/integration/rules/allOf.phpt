@@ -16,7 +16,11 @@ run([
     'With multiple templates' => [
         v::allOf(v::stringType(), v::uppercase()),
         5,
-        ['allOf' => 'Unfortunately, we cannot template this'],
+        [
+            '__self__' => 'Two things are wrong',
+            'stringType' => 'Template for "stringType"',
+            'uppercase' => 'Template for "uppercase"',
+        ],
     ],
 ]);
 ?>
@@ -26,7 +30,7 @@ Single rule
 1 must be of type string
 - 1 must be of type string
 [
-    'allOf' => '1 must be of type string',
+    'stringType' => '1 must be of type string',
 ]
 
 Two rules
@@ -36,15 +40,19 @@ Two rules
   - "2" must be of type integer
   - "2" must be negative
 [
-    'allOf' => '"2" must be negative',
+    'intType' => '"2" must be of type integer',
+    'negative' => '"2" must be negative',
 ]
 
 Wrapped by "not"
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 3 must not be of type integer
-- 3 must not be of type integer
+- These rules must not pass for 3
+  - 3 must not be of type integer
+  - 3 must not be positive
 [
     'intType' => '3 must not be of type integer',
+    'positive' => '3 must not be positive',
 ]
 
 Wrapping "not"
@@ -52,7 +60,7 @@ Wrapping "not"
 4 must not be of type integer
 - 4 must not be of type integer
 [
-    'allOf' => '4 must not be of type integer',
+    'intType' => '4 must not be of type integer',
 ]
 
 With a single template
@@ -65,10 +73,11 @@ This is a single template
 
 With multiple templates
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-5 must be of type string
-- All of the required rules must pass for 5
-  - 5 must be of type string
-  - 5 must be uppercase
+Template for "stringType"
+- Two things are wrong
+  - Template for "stringType"
+  - Template for "uppercase"
 [
-    'allOf' => '5 must be uppercase',
+    'stringType' => 'Template for "stringType"',
+    'uppercase' => 'Template for "uppercase"',
 ]

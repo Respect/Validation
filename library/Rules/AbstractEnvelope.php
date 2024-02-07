@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Result;
 use Respect\Validation\Validatable;
 
 abstract class AbstractEnvelope extends AbstractRule
@@ -26,6 +27,12 @@ abstract class AbstractEnvelope extends AbstractRule
     public function validate(mixed $input): bool
     {
         return $this->validatable->validate($input);
+    }
+
+    public function evaluate(mixed $input): Result
+    {
+        return (new Result($this->validatable->evaluate($input)->isValid, $input, $this))
+            ->withParameters($this->parameters);
     }
 
     /**

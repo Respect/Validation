@@ -62,9 +62,9 @@ final class EachTest extends RuleTestCase
             $this->assertEquals(
                 $e->getMessages(),
                 [
-                    'stub.0' => '1 must be valid',
-                    'stub.1' => '2 must be valid',
-                    'stub.2' => '3 must be valid',
+                    'stub.0' => '1 must be a valid stub',
+                    'stub.1' => '2 must be a valid stub',
+                    'stub.2' => '3 must be a valid stub',
                 ]
             );
         }

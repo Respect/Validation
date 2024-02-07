@@ -11,11 +11,17 @@ namespace Respect\Validation;
 
 use Respect\Validation\Attributes\ExceptionClass;
 use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Exceptions\ValidatorException;
+use Respect\Validation\Helpers\CanBindEvaluateRule;
+use Respect\Validation\Message\Formatter;
+use Respect\Validation\Message\StandardFormatter;
+use Respect\Validation\Message\StandardRenderer;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Rules\AllOf;
 
 use function count;
+use function current;
 
 /**
  * @mixin StaticValidator
@@ -31,27 +37,91 @@ use function count;
     'These rules must not pass for {{name}}',
     self::TEMPLATE_SOME,
 )]
-final class Validator extends AllOf
+final class Validator extends AbstractRule
 {
+    use CanBindEvaluateRule;
+
     public const TEMPLATE_NONE = '__none__';
     public const TEMPLATE_SOME = '__some__';
 
-    public static function create(): self
-    {
-        return new self();
+    /** @var array<Validatable> */
+    private array $rules = [];
+
+    /** @var array<string, mixed> */
+    private array $templates = [];
+
+    public function __construct(
+        private readonly Factory $factory,
+        private readonly Formatter $formatter,
+    ) {
     }
 
-    public function check(mixed $input): void
+    public static function create(Validatable ...$rules): self
     {
-        try {
-            parent::check($input);
-        } catch (ValidationException $exception) {
-            if (count($this->getRules()) == 1 && $this->template) {
-                $exception->updateTemplate($this->template);
-            }
+        $validator = new self(
+            Factory::getDefaultInstance(),
+            new StandardFormatter(
+                new StandardRenderer(
+                    Factory::getDefaultInstance()->getTranslator(),
+                    Factory::getDefaultInstance()->getParameterProcessor(),
+                )
+            )
+        );
+        $validator->rules = $rules;
 
-            throw $exception;
+        return $validator;
+    }
+
+    public function evaluate(mixed $input): Result
+    {
+        return $this->bindEvaluate($this->rule(), $this, $input);
+    }
+
+    public function validate(mixed $input): bool
+    {
+        return $this->evaluate($input)->isValid;
+    }
+
+    public function assert(mixed $input): void
+    {
+        $result = $this->evaluate($input);
+        if ($result->isValid) {
+            return;
         }
+
+        $templates = $this->templates;
+        if (count($templates) === 0 && $this->template != null) {
+            $templates = ['__self__' => $this->template];
+        }
+
+        throw new ValidatorException(
+            $this->formatter->main($result, $templates),
+            $this->formatter->full($result, $templates),
+            $this->formatter->array($result, $templates),
+        );
+    }
+
+    /** @param array<string, mixed> $templates */
+    public function setTemplates(array $templates): self
+    {
+        $this->templates = $templates;
+
+        return $this;
+    }
+
+    /** @return array<Validatable> */
+    public function getRules(): array
+    {
+        return $this->rules;
+    }
+
+    private function rule(): Validatable
+    {
+        if (count($this->rules) === 1) {
+            return current($this->rules);
+        }
+
+        return new AllOf(...$this->rules);
     }
 
     /**
@@ -67,7 +137,7 @@ final class Validator extends AllOf
      */
     public function __call(string $ruleName, array $arguments): self
     {
-        $this->addRule(Factory::getDefaultInstance()->rule($ruleName, $arguments));
+        $this->rules[] = $this->factory->rule($ruleName, $arguments);
 
         return $this;
     }
