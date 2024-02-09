@@ -64,12 +64,8 @@ final class Sorted extends AbstractRule
         return true;
     }
 
-    public function getTemplate(mixed $input): string
+    protected function getStandardTemplate(mixed $input): string
     {
-        if ($this->template !== null) {
-            return $this->template;
-        }
-
         if ($this->direction === Sorted::ASCENDING) {
             return self::TEMPLATE_ASCENDING;
         }

@@ -70,16 +70,16 @@ final class Phone extends AbstractRule
         }
     }
 
-    public function getTemplate(mixed $input): string
-    {
-        return $this->template ?? $this->countryName ? self::TEMPLATE_FOR_COUNTRY : self::TEMPLATE_INTERNATIONAL;
-    }
-
     /**
      * @return array<string, mixed>
      */
     public function getParams(): array
     {
         return ['countryName' => $this->countryName];
+    }
+
+    protected function getStandardTemplate(mixed $input): string
+    {
+        return $this->countryName ? self::TEMPLATE_FOR_COUNTRY : self::TEMPLATE_INTERNATIONAL;
     }
 }

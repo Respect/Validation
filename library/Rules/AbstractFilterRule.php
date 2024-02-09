@@ -43,17 +43,17 @@ abstract class AbstractFilterRule extends AbstractRule
         return $filteredInput === '' || $this->validateFilteredInput($filteredInput);
     }
 
-    public function getTemplate(mixed $input): string
-    {
-        return $this->template ?? ($this->additionalChars ? self::TEMPLATE_EXTRA : self::TEMPLATE_STANDARD);
-    }
-
     /**
      * @return array<string, mixed>
      */
     public function getParams(): array
     {
         return ['additionalChars' => $this->additionalChars];
+    }
+
+    protected function getStandardTemplate(mixed $input): string
+    {
+        return $this->additionalChars ? self::TEMPLATE_EXTRA : self::TEMPLATE_STANDARD;
     }
 
     private function filter(string $input): string

@@ -82,12 +82,19 @@ final class Length extends AbstractRule
         return $this->validateMin($length) && $this->validateMax($length);
     }
 
-    public function getTemplate(mixed $input): string
+    /**
+     * @return array<string, mixed>
+     */
+    public function getParams(): array
     {
-        if ($this->template !== null) {
-            return $this->template;
-        }
+        return [
+            'minValue' => $this->minValue,
+            'maxValue' => $this->maxValue,
+        ];
+    }
 
+    protected function getStandardTemplate(mixed $input): string
+    {
         if (!$this->minValue) {
             return $this->inclusive === true ? self::TEMPLATE_GREATER_INCLUSIVE : self::TEMPLATE_GREATER;
         }
@@ -101,17 +108,6 @@ final class Length extends AbstractRule
         }
 
         return self::TEMPLATE_BOTH;
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function getParams(): array
-    {
-        return [
-            'minValue' => $this->minValue,
-            'maxValue' => $this->maxValue,
-        ];
     }
 
     private function extractLength(mixed $input): ?int

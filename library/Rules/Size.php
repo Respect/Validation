@@ -76,23 +76,6 @@ final class Size extends AbstractRule
         return false;
     }
 
-    public function getTemplate(mixed $input): string
-    {
-        if ($this->template !== null) {
-            return $this->template;
-        }
-
-        if (!$this->minValue) {
-            return self::TEMPLATE_GREATER;
-        }
-
-        if (!$this->maxValue) {
-            return self::TEMPLATE_LOWER;
-        }
-
-        return self::TEMPLATE_BOTH;
-    }
-
     /**
      * @return array<string, mixed>
      */
@@ -102,6 +85,19 @@ final class Size extends AbstractRule
             'minSize' => $this->minSize,
             'maxSize' => $this->maxSize,
         ];
+    }
+
+    protected function getStandardTemplate(mixed $input): string
+    {
+        if (!$this->minValue) {
+            return self::TEMPLATE_GREATER;
+        }
+
+        if (!$this->maxValue) {
+            return self::TEMPLATE_LOWER;
+        }
+
+        return self::TEMPLATE_BOTH;
     }
 
     /**

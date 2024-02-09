@@ -33,12 +33,8 @@ final class NotOptional extends AbstractRule
         return $this->isUndefined($input) === false;
     }
 
-    public function getTemplate(mixed $input): string
+    protected function getStandardTemplate(mixed $input): string
     {
-        if ($this->template !== null) {
-            return $this->template;
-        }
-
         if ($input || $this->getName()) {
             return self::TEMPLATE_NAMED;
         }

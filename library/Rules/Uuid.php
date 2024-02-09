@@ -49,17 +49,17 @@ final class Uuid extends AbstractRule
         return preg_match($this->getPattern(), $input) > 0;
     }
 
-    public function getTemplate(mixed $input): string
-    {
-        return $this->template ?? ($this->version ? self::TEMPLATE_VERSION : self::TEMPLATE_STANDARD);
-    }
-
     /**
      * @return array<string, mixed>
      */
     public function getParams(): array
     {
         return ['version' => $this->version];
+    }
+
+    protected function getStandardTemplate(mixed $input): string
+    {
+        return $this->version ? self::TEMPLATE_VERSION : self::TEMPLATE_STANDARD;
     }
 
     private function isSupportedVersion(int $version): bool

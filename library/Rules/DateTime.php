@@ -55,16 +55,16 @@ final class DateTime extends AbstractRule
         return $this->isDateTime($this->format, (string) $input);
     }
 
-    public function getTemplate(mixed $input): string
-    {
-        return $this->template ?? ($this->format !== null ? self::TEMPLATE_FORMAT : self::TEMPLATE_STANDARD);
-    }
-
     /**
      * @return array<string, mixed>
      */
     public function getParams(): array
     {
         return ['sample' => date($this->format ?: 'c', strtotime('2005-12-30 01:02:03'))];
+    }
+
+    protected function getStandardTemplate(mixed $input): string
+    {
+        return $this->format !== null ? self::TEMPLATE_FORMAT : self::TEMPLATE_STANDARD;
     }
 }

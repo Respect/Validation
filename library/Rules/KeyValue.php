@@ -73,25 +73,6 @@ final class KeyValue extends AbstractRule
         return $rule->validate($input[$this->comparedKey]);
     }
 
-    public function getTemplate(mixed $input): string
-    {
-        if ($this->template !== null) {
-            return $this->template;
-        }
-
-        if (!isset($input[$this->comparedKey]) || !isset($input[$this->baseKey])) {
-            return self::TEMPLATE_STANDARD;
-        }
-
-        try {
-            $this->createRule($input[$this->baseKey]);
-        } catch (ComponentException) {
-            return self::TEMPLATE_COMPONENT;
-        }
-
-        return self::TEMPLATE_STANDARD;
-    }
-
     /**
      * @return array<string, mixed>
      */
@@ -113,6 +94,21 @@ final class KeyValue extends AbstractRule
         } catch (ValidationException $exception) {
             return $this->overwriteExceptionParams($exception);
         }
+    }
+
+    protected function getStandardTemplate(mixed $input): string
+    {
+        if (!isset($input[$this->comparedKey]) || !isset($input[$this->baseKey])) {
+            return self::TEMPLATE_STANDARD;
+        }
+
+        try {
+            $this->createRule($input[$this->baseKey]);
+        } catch (ComponentException) {
+            return self::TEMPLATE_COMPONENT;
+        }
+
+        return self::TEMPLATE_STANDARD;
     }
 
     private function getRule(mixed $input): Validatable

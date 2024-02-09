@@ -88,24 +88,20 @@ final class CreditCard extends AbstractRule
         return preg_match(self::BRAND_REGEX_LIST[$this->brand], $input) > 0;
     }
 
-    public function getTemplate(mixed $input): string
-    {
-        if ($this->template !== null) {
-            return $this->template;
-        }
-
-        if ($this->brand === CreditCard::ANY) {
-            return self::TEMPLATE_STANDARD;
-        }
-
-        return self::TEMPLATE_BRANDED;
-    }
-
     /**
      * @return array<string, string>
      */
     public function getParams(): array
     {
         return ['brand' => $this->brand];
+    }
+
+    protected function getStandardTemplate(mixed $input): string
+    {
+        if ($this->brand === CreditCard::ANY) {
+            return self::TEMPLATE_STANDARD;
+        }
+
+        return self::TEMPLATE_BRANDED;
     }
 }

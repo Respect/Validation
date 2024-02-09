@@ -44,11 +44,6 @@ class AllOf extends AbstractComposite
         }
     }
 
-    public function getTemplate(mixed $input): string
-    {
-        return $this->template ?? self::TEMPLATE_SOME;
-    }
-
     public function check(mixed $input): void
     {
         foreach ($this->getRules() as $rule) {
@@ -65,5 +60,10 @@ class AllOf extends AbstractComposite
         }
 
         return true;
+    }
+
+    protected function getStandardTemplate(mixed $input): string
+    {
+        return self::TEMPLATE_SOME;
     }
 }

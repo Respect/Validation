@@ -62,7 +62,7 @@ abstract class AbstractRule implements Validatable
 
     public function getTemplate(mixed $input): string
     {
-        return $this->template ?? self::TEMPLATE_STANDARD;
+        return $this->template ?? $this->getStandardTemplate($input);
     }
 
     /**
@@ -71,6 +71,11 @@ abstract class AbstractRule implements Validatable
     public function getParams(): array
     {
         return [];
+    }
+
+    protected function getStandardTemplate(mixed $input): string
+    {
+        return self::TEMPLATE_STANDARD;
     }
 
     public function __invoke(mixed $input): bool

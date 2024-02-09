@@ -108,12 +108,8 @@ abstract class AbstractRelated extends AbstractRule
         return $this->rule->validate($this->getReferenceValue($input));
     }
 
-    public function getTemplate(mixed $input): string
+    protected function getStandardTemplate(mixed $input): string
     {
-        if ($this->template !== null) {
-            return $this->template;
-        }
-
         if ($this->rule === null) {
             return self::TEMPLATE_NOT_PRESENT;
         }

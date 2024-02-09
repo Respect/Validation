@@ -100,19 +100,6 @@ final class KeySet extends AbstractWrapper implements NonNegatable
         return parent::validate($input);
     }
 
-    public function getTemplate(mixed $input): string
-    {
-        if ($this->template !== null) {
-            return $this->template;
-        }
-
-        if (count($this->extraKeys)) {
-            return self::TEMPLATE_STRUCTURE_EXTRA;
-        }
-
-        return KeySet::TEMPLATE_STRUCTURE;
-    }
-
     /**
      * @return array<string, mixed>
      */
@@ -122,6 +109,15 @@ final class KeySet extends AbstractWrapper implements NonNegatable
             'keys' => $this->keys,
             'extraKeys' => $this->extraKeys,
         ];
+    }
+
+    protected function getStandardTemplate(mixed $input): string
+    {
+        if (count($this->extraKeys)) {
+            return self::TEMPLATE_STRUCTURE_EXTRA;
+        }
+
+        return KeySet::TEMPLATE_STRUCTURE;
     }
 
     private function getKeyRule(Validatable $validatable): Key

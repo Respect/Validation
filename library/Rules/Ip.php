@@ -76,17 +76,17 @@ final class Ip extends AbstractRule
         return true;
     }
 
-    public function getTemplate(mixed $input): string
-    {
-        return $this->template ?? ($this->range ? self::TEMPLATE_NETWORK_RANGE : self::TEMPLATE_STANDARD);
-    }
-
     /**
      * @return array<string, mixed>
      */
     public function getParams(): array
     {
         return ['range' => $this->range];
+    }
+
+    protected function getStandardTemplate(mixed $input): string
+    {
+        return $this->range ? self::TEMPLATE_NETWORK_RANGE : self::TEMPLATE_STANDARD;
     }
 
     private function createRange(): ?string

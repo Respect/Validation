@@ -69,17 +69,17 @@ final class VideoUrl extends AbstractRule
         return false;
     }
 
-    public function getTemplate(mixed $input): string
-    {
-        return $this->template ?? ($this->service ? self::TEMPLATE_SERVICE : self::TEMPLATE_STANDARD);
-    }
-
     /**
      * @return array<string, string|null>
      */
     public function getParams(): array
     {
         return ['service' => $this->service];
+    }
+
+    protected function getStandardTemplate(mixed $input): string
+    {
+        return $this->service ? self::TEMPLATE_SERVICE : self::TEMPLATE_STANDARD;
     }
 
     private function isSupportedService(string $service): bool
