@@ -13,7 +13,7 @@ Factory::setDefaultInstance(
         ->withTranslator(static function (string $message): string {
             return [
                 '{{name}} must be of type string' => '{{name}} deve ser do tipo string',
-            ][$message];
+            ][$message] ?? $message;
         })
 );
 

@@ -5,11 +5,9 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Rules\Instance;
+use Respect\Validation\Validator as v;
 
-exceptionMessage(static function (): void {
-    (new Instance('stdClass'))->setTemplate('invalid object')->assert('test');
-});
+exceptionMessage(static fn() => v::instance(stdClass::class)->setTemplate('invalid object')->assert('test'));
 ?>
 --EXPECT--
 invalid object
