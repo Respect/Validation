@@ -23,7 +23,7 @@ use Respect\Validation\Result;
     '{{name}} must not be optional',
     self::TEMPLATE_NAMED,
 )]
-final class Optional extends AbstractWrapper
+final class Optional extends Wrapper
 {
     use CanValidateUndefined;
 
@@ -31,46 +31,14 @@ final class Optional extends AbstractWrapper
 
     public function evaluate(mixed $input): Result
     {
-        if ($this->isUndefined($input)) {
-            return Result::passed($input, $this);
+        if (!$this->isUndefined($input)) {
+            return parent::evaluate($input);
         }
 
-        return parent::evaluate($input);
-    }
-
-    public function assert(mixed $input): void
-    {
-        if ($this->isUndefined($input)) {
-            return;
-        }
-
-        parent::assert($input);
-    }
-
-    public function check(mixed $input): void
-    {
-        if ($this->isUndefined($input)) {
-            return;
-        }
-
-        parent::check($input);
-    }
-
-    public function validate(mixed $input): bool
-    {
-        if ($this->isUndefined($input)) {
-            return true;
-        }
-
-        return parent::validate($input);
-    }
-
-    protected function getStandardTemplate(mixed $input): string
-    {
         if ($this->getName()) {
-            return self::TEMPLATE_NAMED;
+            return Result::passed($input, $this, self::TEMPLATE_NAMED);
         }
 
-        return self::TEMPLATE_STANDARD;
+        return Result::passed($input, $this);
     }
 }

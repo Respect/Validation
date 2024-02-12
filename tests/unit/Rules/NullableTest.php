@@ -10,97 +10,75 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\Rules\Stub;
-use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 #[Group('rule')]
 #[CoversClass(Nullable::class)]
-final class NullableTest extends TestCase
+final class NullableTest extends RuleTestCase
 {
     #[Test]
-    public function shouldNotValidateRuleWhenInputIsNull(): void
+    public function itShouldUseStandardTemplateWhenItHasNameWhenInputIsOptional(): void
     {
         $rule = new Nullable(Stub::pass(1));
 
-        self::assertTrue($rule->validate(null));
+        $result = $rule->evaluate(null);
+
+        self::assertSame($rule, $result->rule);
+        self::assertSame(Nullable::TEMPLATE_STANDARD, $result->template);
     }
 
     #[Test]
-    #[DataProvider('providerForNotNullable')]
-    public function shouldValidateRuleWhenInputIsNotNullable(mixed $input): void
+    public function itShouldUseNamedTemplateWhenItHasNameWhenInputIsNullable(): void
     {
         $rule = new Nullable(Stub::pass(1));
+        $rule->setName('foo');
 
-        self::assertTrue($rule->validate($input));
+        $result = $rule->evaluate(null);
+
+        self::assertSame($rule, $result->rule);
+        self::assertSame(Nullable::TEMPLATE_NAMED, $result->template);
     }
 
     #[Test]
-    #[DoesNotPerformAssertions]
-    public function shouldNotAssertRuleWhenInputIsNull(): void
+    public function itShouldUseWrappedRuleToEvaluateWhenNotNullable(): void
     {
-        $sut = new Nullable(Stub::daze());
-        $sut->assert(null);
+        $input = new stdClass();
+
+        $wrapped = Stub::pass(2);
+        $rule = new Nullable($wrapped);
+
+        self::assertEquals($wrapped->evaluate($input), $rule->evaluate($input));
     }
 
-    #[Test]
-    #[DataProvider('providerForNotNullable')]
-    public function shouldAssertRuleWhenInputIsNotNullable(mixed $input): void
+    /** @return iterable<string, array{Nullable, mixed}> */
+    public static function providerForValidInput(): iterable
     {
-        $rule = Stub::pass(1);
-
-        $sut = new Nullable($rule);
-        $sut->assert($input);
-
-        self::assertSame([$input], $rule->inputs);
+        yield 'null' => [new Nullable(Stub::daze()), null];
+        yield 'not null with passing rule' => [new Nullable(Stub::pass(1)), 42];
     }
 
-    #[Test]
-    #[DoesNotPerformAssertions]
-    public function shouldNotCheckRuleWhenInputIsNull(): void
+    /** @return iterable<array{Nullable, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
-        $rule = new Nullable(Stub::daze());
-        $rule->check(null);
-    }
-
-    #[Test]
-    #[DataProvider('providerForNotNullable')]
-    public function shouldCheckRuleWhenInputIsNotNullable(mixed $input): void
-    {
-        $rule = Stub::pass(1);
-
-        $sut = new Nullable($rule);
-        $sut->check($input);
-
-        self::assertSame([$input], $rule->inputs);
-    }
-
-    /**
-     * @return mixed[][]
-     */
-    public static function providerForNotNullable(): array
-    {
-        return [
-            [''],
-            [1],
-            [[]],
-            [' '],
-            [0],
-            ['0'],
-            [0],
-            ['0.0'],
-            [false],
-            [['']],
-            [[' ']],
-            [[0]],
-            [['0']],
-            [[false]],
-            [[[''], [0]]],
-            [new stdClass()],
-        ];
+        yield [new Nullable(Stub::fail(1)), ''];
+        yield [new Nullable(Stub::fail(1)), 1];
+        yield [new Nullable(Stub::fail(1)), []];
+        yield [new Nullable(Stub::fail(1)), ' '];
+        yield [new Nullable(Stub::fail(1)), 0];
+        yield [new Nullable(Stub::fail(1)), '0'];
+        yield [new Nullable(Stub::fail(1)), 0];
+        yield [new Nullable(Stub::fail(1)), '0.0'];
+        yield [new Nullable(Stub::fail(1)), false];
+        yield [new Nullable(Stub::fail(1)), ['']];
+        yield [new Nullable(Stub::fail(1)), [' ']];
+        yield [new Nullable(Stub::fail(1)), [0]];
+        yield [new Nullable(Stub::fail(1)), ['0']];
+        yield [new Nullable(Stub::fail(1)), [false]];
+        yield [new Nullable(Stub::fail(1)), [[''], [0]]];
+        yield [new Nullable(Stub::fail(1)), new stdClass()];
     }
 }

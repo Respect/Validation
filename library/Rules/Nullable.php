@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
 
 #[Template(
     'The value must be nullable',
@@ -21,43 +22,20 @@ use Respect\Validation\Message\Template;
     '{{name}} must not be null',
     self::TEMPLATE_NAMED,
 )]
-final class Nullable extends AbstractWrapper
+final class Nullable extends Wrapper
 {
     public const TEMPLATE_NAMED = '__named__';
 
-    public function assert(mixed $input): void
+    public function evaluate(mixed $input): Result
     {
-        if ($input === null) {
-            return;
+        if ($input !== null) {
+            return parent::evaluate($input);
         }
 
-        parent::assert($input);
-    }
-
-    public function check(mixed $input): void
-    {
-        if ($input === null) {
-            return;
+        if ($this->getName()) {
+            return Result::passed($input, $this, self::TEMPLATE_NAMED);
         }
 
-        parent::check($input);
-    }
-
-    public function validate(mixed $input): bool
-    {
-        if ($input === null) {
-            return true;
-        }
-
-        return parent::validate($input);
-    }
-
-    protected function getStandardTemplate(mixed $input): string
-    {
-        if ($input || $this->getName()) {
-            return self::TEMPLATE_NAMED;
-        }
-
-        return self::TEMPLATE_STANDARD;
+        return Result::passed($input, $this);
     }
 }

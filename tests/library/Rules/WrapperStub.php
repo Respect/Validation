@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test\Rules;
 
-use Respect\Validation\Rules\AbstractWrapper;
+use Respect\Validation\Rules\Wrapper;
 
-final class WrapperStub extends AbstractWrapper
+final class WrapperStub extends Wrapper
 {
 }

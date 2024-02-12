@@ -9,153 +9,70 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Attributes\ExceptionClass;
-use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Exceptions\NonOmissibleValidationException;
+use Respect\Validation\Helpers\CanBindEvaluateRule;
+use Respect\Validation\Helpers\CanExtractRules;
 use Respect\Validation\Message\Template;
-use Respect\Validation\NonNegatable;
+use Respect\Validation\Result;
 use Respect\Validation\Validatable;
 
-use function array_key_exists;
+use function array_diff;
+use function array_keys;
 use function array_map;
+use function array_values;
 use function count;
-use function current;
-use function is_array;
 
-#[ExceptionClass(NonOmissibleValidationException::class)]
 #[Template(
-    'All of the required rules must pass for {{name}}',
-    '',
-    self::TEMPLATE_NONE,
+    'Must have keys {{missingKeys}} in {{name}}',
+    'Must not have keys {{missingKeys}} in {{name}}',
+    self::TEMPLATE_MISSING,
 )]
 #[Template(
-    'These rules must pass for {{name}}',
-    '',
-    self::TEMPLATE_SOME,
+    'Must not have keys {{extraKeys}} in {{name}}',
+    'Must have keys {{extraKeys}} in {{name}}',
+    self::TEMPLATE_EXTRA,
 )]
-#[Template(
-    'Must have keys {{keys}}',
-    '',
-    self::TEMPLATE_STRUCTURE,
-)]
-#[Template(
-    'Must not have keys {{extraKeys}}',
-    '',
-    self::TEMPLATE_STRUCTURE_EXTRA,
-)]
-final class KeySet extends AbstractWrapper implements NonNegatable
+final class KeySet extends Wrapper
 {
-    public const TEMPLATE_NONE = '__none__';
-    public const TEMPLATE_SOME = '__some__';
-    public const TEMPLATE_STRUCTURE = '__structure__';
-    public const TEMPLATE_STRUCTURE_EXTRA = '__structure_extra__';
+    use CanBindEvaluateRule;
+    use CanExtractRules;
 
-    /**
-     * @var mixed[]
-     */
+    public const TEMPLATE_MISSING = '__missing__';
+    public const TEMPLATE_EXTRA = '__extra__';
+
+    /** @var array<string|int> */
     private readonly array $keys;
 
-    /**
-     * @var mixed[]
-     */
-    private array $extraKeys = [];
-
-    /**
-     * @var Key[]
-     */
-    private readonly array $keyRules;
-
-    public function __construct(Validatable ...$validatables)
+    public function __construct(Validatable ...$rules)
     {
-        $this->keyRules = array_map([$this, 'getKeyRule'], $validatables);
-        $this->keys = array_map([$this, 'getKeyReference'], $this->keyRules);
+        /** @var array<Key> $keyRules */
+        $keyRules = $this->extractMany($rules, Key::class);
 
-        parent::__construct(new AllOf(...$this->keyRules));
+        $this->keys = array_map(static fn(Key $rule) => $rule->getReference(), $keyRules);
+
+        parent::__construct(new AllOf(...$keyRules));
     }
 
-    public function assert(mixed $input): void
+    public function evaluate(mixed $input): Result
     {
-        if (!$this->hasValidStructure($input)) {
-            throw $this->reportError($input);
+        $result = $this->bindEvaluate(new ArrayType(), $this, $input);
+        if (!$result->isValid) {
+            return $result;
         }
 
-        parent::assert($input);
-    }
+        $inputKeys = array_keys($input);
 
-    public function check(mixed $input): void
-    {
-        if (!$this->hasValidStructure($input)) {
-            throw $this->reportError($input);
+        $missingKeys = array_diff($this->keys, $inputKeys);
+        if (count($missingKeys) > 0) {
+            return Result::failed($input, $this, self::TEMPLATE_MISSING)
+                ->withParameters(['missingKeys' => array_values($missingKeys)]);
         }
 
-        parent::check($input);
-    }
-
-    public function validate(mixed $input): bool
-    {
-        if (!$this->hasValidStructure($input)) {
-            return false;
+        $extraKeys = array_diff($inputKeys, $this->keys);
+        if (count($extraKeys) > 0) {
+            return Result::failed($input, $this, self::TEMPLATE_EXTRA)
+                ->withParameters(['extraKeys' => array_values($extraKeys)]);
         }
 
-        return parent::validate($input);
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function getParams(): array
-    {
-        return [
-            'keys' => $this->keys,
-            'extraKeys' => $this->extraKeys,
-        ];
-    }
-
-    protected function getStandardTemplate(mixed $input): string
-    {
-        if (count($this->extraKeys)) {
-            return self::TEMPLATE_STRUCTURE_EXTRA;
-        }
-
-        return KeySet::TEMPLATE_STRUCTURE;
-    }
-
-    private function getKeyRule(Validatable $validatable): Key
-    {
-        if ($validatable instanceof Key) {
-            return $validatable;
-        }
-
-        if (!$validatable instanceof AllOf || count($validatable->getRules()) !== 1) {
-            throw new ComponentException('KeySet rule accepts only Key rules');
-        }
-
-        return $this->getKeyRule(current($validatable->getRules()));
-    }
-
-    private function getKeyReference(Key $rule): mixed
-    {
-        return $rule->getReference();
-    }
-
-    private function hasValidStructure(mixed $input): bool
-    {
-        if (!is_array($input)) {
-            return false;
-        }
-
-        foreach ($this->keyRules as $keyRule) {
-            if (!array_key_exists($keyRule->getReference(), $input) && $keyRule->isMandatory()) {
-                return false;
-            }
-
-            unset($input[$keyRule->getReference()]);
-        }
-
-        foreach ($input as $extraKey => &$ignoreValue) {
-            $this->extraKeys[] = $extraKey;
-        }
-
-        return count($input) == 0;
+        return parent::evaluate($input);
     }
 }

@@ -10,137 +10,75 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Test\TestCase;
-use Respect\Validation\Validatable;
+use Respect\Validation\Test\Rules\Stub;
+use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 #[Group('rule')]
 #[CoversClass(Optional::class)]
-final class OptionalTest extends TestCase
+final class OptionalTest extends RuleTestCase
 {
     #[Test]
-    #[DataProvider('providerForOptional')]
-    public function shouldNotValidateRuleWhenInputIsOptional(mixed $input): void
+    public function itShouldUseStandardTemplateWhenItHasNameWhenInputIsOptional(): void
     {
-        $validatable = $this->createMock(Validatable::class);
-        $validatable
-            ->expects(self::never())
-            ->method('validate');
+        $rule = new Optional(Stub::pass(1));
 
-        $rule = new Optional($validatable);
+        $result = $rule->evaluate('');
 
-        self::assertTrue($rule->validate($input));
+        self::assertSame($rule, $result->rule);
+        self::assertSame(Optional::TEMPLATE_STANDARD, $result->template);
     }
 
     #[Test]
-    #[DataProvider('providerForNotOptional')]
-    public function shouldValidateRuleWhenInputIsNotOptional(mixed $input): void
+    public function itShouldUseNamedTemplateWhenItHasNameWhenInputIsOptional(): void
     {
-        $validatable = $this->createMock(Validatable::class);
-        $validatable
-            ->expects(self::once())
-            ->method('validate')
-            ->with($input)
-            ->willReturn(true);
+        $rule = new Optional(Stub::pass(1));
+        $rule->setName('foo');
 
-        $rule = new Optional($validatable);
+        $result = $rule->evaluate('');
 
-        self::assertTrue($rule->validate($input));
+        self::assertSame($rule, $result->rule);
+        self::assertSame(Optional::TEMPLATE_NAMED, $result->template);
     }
 
     #[Test]
-    public function shouldNotAssertRuleWhenInputIsOptional(): void
+    public function itShouldUseWrappedRuleToEvaluateWhenNotOptional(): void
     {
-        $validatable = $this->createMock(Validatable::class);
-        $validatable
-            ->expects(self::never())
-            ->method('assert');
+        $input = new stdClass();
 
-        $rule = new Optional($validatable);
+        $wrapped = Stub::pass(2);
+        $rule = new Optional($wrapped);
 
-        $rule->assert('');
+        self::assertEquals($wrapped->evaluate($input), $rule->evaluate($input));
     }
 
-    #[Test]
-    public function shouldAssertRuleWhenInputIsNotOptional(): void
+    /** @return iterable<string, array{Optional, mixed}> */
+    public static function providerForValidInput(): iterable
     {
-        $input = 'foo';
-
-        $validatable = $this->createMock(Validatable::class);
-        $validatable
-            ->expects(self::once())
-            ->method('assert')
-            ->with($input);
-
-        $rule = new Optional($validatable);
-
-        $rule->assert($input);
+        yield 'null' => [new Optional(Stub::daze()), null];
+        yield 'empty string' => [new Optional(Stub::daze()), ''];
+        yield 'not optional' => [new Optional(Stub::pass(1)), 42];
     }
 
-    #[Test]
-    public function shouldNotCheckRuleWhenInputIsOptional(): void
+    /** @return iterable<array{Optional, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
-        $validatable = $this->createMock(Validatable::class);
-        $validatable
-            ->expects(self::never())
-            ->method('check');
-
-        $rule = new Optional($validatable);
-
-        $rule->check('');
-    }
-
-    #[Test]
-    public function shouldCheckRuleWhenInputIsNotOptional(): void
-    {
-        $input = 'foo';
-
-        $validatable = $this->createMock(Validatable::class);
-        $validatable
-            ->expects(self::once())
-            ->method('check')
-            ->with($input);
-
-        $rule = new Optional($validatable);
-
-        $rule->check($input);
-    }
-
-    /**
-     * @return mixed[][]
-     */
-    public static function providerForOptional(): array
-    {
-        return [
-            [null],
-            [''],
-        ];
-    }
-
-    /**
-     * @return mixed[][]
-     */
-    public static function providerForNotOptional(): array
-    {
-        return [
-            [1],
-            [[]],
-            [' '],
-            [0],
-            ['0'],
-            [0],
-            ['0.0'],
-            [false],
-            [['']],
-            [[' ']],
-            [[0]],
-            [['0']],
-            [[false]],
-            [[[''], [0]]],
-            [new stdClass()],
-        ];
+        yield [new Optional(Stub::fail(1)), 1];
+        yield [new Optional(Stub::fail(1)), []];
+        yield [new Optional(Stub::fail(1)), ' '];
+        yield [new Optional(Stub::fail(1)), 0];
+        yield [new Optional(Stub::fail(1)), '0'];
+        yield [new Optional(Stub::fail(1)), 0];
+        yield [new Optional(Stub::fail(1)), '0.0'];
+        yield [new Optional(Stub::fail(1)), false];
+        yield [new Optional(Stub::fail(1)), ['']];
+        yield [new Optional(Stub::fail(1)), [' ']];
+        yield [new Optional(Stub::fail(1)), [0]];
+        yield [new Optional(Stub::fail(1)), ['0']];
+        yield [new Optional(Stub::fail(1)), [false]];
+        yield [new Optional(Stub::fail(1)), [[''], [0]]];
+        yield [new Optional(Stub::fail(1)), new stdClass()];
     }
 }
