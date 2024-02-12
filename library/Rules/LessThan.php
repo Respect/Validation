@@ -15,7 +15,7 @@ use Respect\Validation\Message\Template;
     '{{name}} must be less than {{compareTo}}',
     '{{name}} must not be less than {{compareTo}}',
 )]
-final class LessThan extends AbstractComparison
+final class LessThan extends Comparison
 {
     protected function compare(mixed $left, mixed $right): bool
     {

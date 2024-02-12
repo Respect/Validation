@@ -10,8 +10,9 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Helpers\CanCompareValues;
+use Respect\Validation\Result;
 
-abstract class AbstractComparison extends AbstractRule
+abstract class Comparison extends Standard
 {
     use CanCompareValues;
 
@@ -24,23 +25,17 @@ abstract class AbstractComparison extends AbstractRule
         $this->compareTo = $maxValue;
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
         $left = $this->toComparable($input);
         $right = $this->toComparable($this->compareTo);
 
+        $parameters = ['compareTo' => $this->compareTo];
+
         if (!$this->isAbleToCompareValues($left, $right)) {
-            return false;
+            return Result::failed($input, $this)->withParameters($parameters);
         }
 
-        return $this->compare($left, $right);
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function getParams(): array
-    {
-        return ['compareTo' => $this->compareTo];
+        return (new Result($this->compare($left, $right), $input, $this))->withParameters($parameters);
     }
 }

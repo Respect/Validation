@@ -11,7 +11,6 @@ namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
-use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
@@ -19,16 +18,6 @@ use stdClass;
 #[CoversClass(Identical::class)]
 final class IdenticalTest extends RuleTestCase
 {
-    #[Test]
-    public function shouldPassCompareToParameterToException(): void
-    {
-        $compareTo = new stdClass();
-        $rule = new Identical($compareTo);
-        $exception = $rule->reportError('input');
-
-        self::assertSame($compareTo, $exception->getParam('compareTo'));
-    }
-
     /** @return iterable<array{Identical, mixed}> */
     public static function providerForValidInput(): iterable
     {

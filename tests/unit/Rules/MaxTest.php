@@ -17,7 +17,6 @@ use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\CountableStub;
 
 #[Group('rule')]
-#[CoversClass(AbstractComparison::class)]
 #[CoversClass(Max::class)]
 final class MaxTest extends RuleTestCase
 {

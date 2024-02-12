@@ -15,7 +15,7 @@ use Respect\Validation\Message\Template;
     '{{name}} must be identical as {{compareTo}}',
     '{{name}} must not be identical as {{compareTo}}',
 )]
-final class Identical extends AbstractComparison
+final class Identical extends Comparison
 {
     protected function compare(mixed $left, mixed $right): bool
     {

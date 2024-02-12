@@ -18,36 +18,14 @@ use function mb_strtoupper;
     '{{name}} must be equivalent to {{compareTo}}',
     '{{name}} must not be equivalent to {{compareTo}}',
 )]
-final class Equivalent extends AbstractRule
+final class Equivalent extends Comparison
 {
-    public function __construct(
-        private readonly mixed $compareTo
-    ) {
-    }
-
-    public function validate(mixed $input): bool
+    protected function compare(mixed $left, mixed $right): bool
     {
-        if (is_scalar($input)) {
-            return $this->isStringEquivalent((string) $input);
+        if (!is_scalar($left)) {
+            return $left == $right;
         }
 
-        return $input == $this->compareTo;
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function getParams(): array
-    {
-        return ['compareTo' => $this->compareTo];
-    }
-
-    private function isStringEquivalent(string $input): bool
-    {
-        if (!is_scalar($this->compareTo)) {
-            return false;
-        }
-
-        return mb_strtoupper((string) $input) === mb_strtoupper((string) $this->compareTo);
+        return mb_strtoupper((string) $left) === mb_strtoupper((string) $right);
     }
 }

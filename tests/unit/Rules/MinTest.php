@@ -17,7 +17,6 @@ use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\CountableStub;
 
 #[Group('rule')]
-#[CoversClass(AbstractComparison::class)]
 #[CoversClass(Min::class)]
 final class MinTest extends RuleTestCase
 {
