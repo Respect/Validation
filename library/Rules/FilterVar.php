@@ -30,7 +30,7 @@ use const FILTER_VALIDATE_URL;
     '{{name}} must be valid',
     '{{name}} must not be valid',
 )]
-final class FilterVar extends AbstractEnvelope
+final class FilterVar extends Envelope
 {
     private const ALLOWED_FILTERS = [
         FILTER_VALIDATE_BOOLEAN => 'is_bool',

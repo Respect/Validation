@@ -16,7 +16,6 @@ use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\RuleTestCase;
 
 #[Group('rule')]
-#[CoversClass(AbstractEnvelope::class)]
 #[CoversClass(LanguageCode::class)]
 final class LanguageCodeTest extends RuleTestCase
 {

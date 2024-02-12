@@ -17,7 +17,7 @@ use function array_map;
     '{{name}} must contain at least one of the values {{needles}}',
     '{{name}} must not contain any of the values {{needles}}',
 )]
-final class ContainsAny extends AbstractEnvelope
+final class ContainsAny extends Envelope
 {
     /**
      * @param mixed[] $needles At least one of the values provided must be found in input string or array

@@ -17,7 +17,7 @@ use Respect\Validation\Message\Template;
     '{{name}} must be between {{minValue}} and {{maxValue}}',
     '{{name}} must not be between {{minValue}} and {{maxValue}}',
 )]
-final class Between extends AbstractEnvelope
+final class Between extends Envelope
 {
     use CanCompareValues;
 

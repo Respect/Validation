@@ -15,7 +15,7 @@ use Respect\Validation\Message\Template;
     '{{name}} must be a hex RGB color',
     '{{name}} must not be a hex RGB color',
 )]
-final class HexRgbColor extends AbstractEnvelope
+final class HexRgbColor extends Envelope
 {
     public function __construct()
     {

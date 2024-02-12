@@ -26,7 +26,6 @@ use const FILTER_VALIDATE_INT;
 use const FILTER_VALIDATE_URL;
 
 #[Group('rule')]
-#[CoversClass(AbstractEnvelope::class)]
 #[CoversClass(FilterVar::class)]
 final class FilterVarTest extends RuleTestCase
 {

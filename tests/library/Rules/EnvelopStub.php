@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test\Rules;
 
-use Respect\Validation\Rules\AbstractEnvelope;
+use Respect\Validation\Rules\Envelope;
 
-final class Envelop extends AbstractEnvelope
+final class EnvelopStub extends Envelope
 {
 }

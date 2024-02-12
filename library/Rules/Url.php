@@ -17,7 +17,7 @@ use const FILTER_VALIDATE_URL;
     '{{name}} must be a URL',
     '{{name}} must not be a URL',
 )]
-final class Url extends AbstractEnvelope
+final class Url extends Envelope
 {
     public function __construct()
     {

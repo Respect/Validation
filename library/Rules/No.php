@@ -19,7 +19,7 @@ use const NOEXPR;
     '{{name}} must be similar to "No"',
     '{{name}} must not be similar to "No"',
 )]
-final class No extends AbstractEnvelope
+final class No extends Envelope
 {
     public function __construct(bool $useLocale = false)
     {

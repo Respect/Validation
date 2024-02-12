@@ -21,7 +21,7 @@ use function sprintf;
     '{{name}} must be a valid ISO 639 {{set|raw}} language code',
     '{{name}} must not be a valid ISO 639 {{set|raw}} language code',
 )]
-final class LanguageCode extends AbstractEnvelope
+final class LanguageCode extends Envelope
 {
     public const ALPHA2 = 'alpha-2';
     public const ALPHA3 = 'alpha-3';

@@ -14,7 +14,6 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
 #[Group('rule')]
-#[CoversClass(AbstractEnvelope::class)]
 #[CoversClass(Url::class)]
 final class UrlTest extends RuleTestCase
 {

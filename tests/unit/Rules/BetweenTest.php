@@ -18,7 +18,6 @@ use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\CountableStub;
 
 #[Group('rule')]
-#[CoversClass(AbstractEnvelope::class)]
 #[CoversClass(Between::class)]
 final class BetweenTest extends RuleTestCase
 {

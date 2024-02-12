@@ -21,7 +21,7 @@ use function sprintf;
     '{{name}} must be a valid postal code on {{countryCode}}',
     '{{name}} must not be a valid postal code on {{countryCode}}',
 )]
-final class PostalCode extends AbstractEnvelope
+final class PostalCode extends Envelope
 {
     private const DEFAULT_PATTERN = '/^$/';
 

@@ -15,7 +15,7 @@ use Respect\Validation\Message\Template;
     '{{name}} must be a valid Roman numeral',
     '{{name}} must not be a valid Roman numeral',
 )]
-final class Roman extends AbstractEnvelope
+final class Roman extends Envelope
 {
     public function __construct()
     {
