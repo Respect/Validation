@@ -16,7 +16,6 @@ use Respect\Validation\Test\RuleTestCase;
 use function chr;
 
 #[Group('rule')]
-#[CoversClass(AbstractFilterRule::class)]
 #[CoversClass(Printable::class)]
 final class PrintableTest extends RuleTestCase
 {

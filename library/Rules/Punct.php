@@ -23,9 +23,9 @@ use function ctype_punct;
     '{{name}} must not contain punctuation characters or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
-final class Punct extends AbstractFilterRule
+final class Punct extends Filter
 {
-    protected function validateFilteredInput(string $input): bool
+    protected function isValid(string $input): bool
     {
         return ctype_punct($input);
     }

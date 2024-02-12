@@ -23,9 +23,9 @@ use function ctype_graph;
     '{{name}} must not contain graphical characters or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
-final class Graph extends AbstractFilterRule
+final class Graph extends Filter
 {
-    protected function validateFilteredInput(string $input): bool
+    protected function isValid(string $input): bool
     {
         return ctype_graph($input);
     }

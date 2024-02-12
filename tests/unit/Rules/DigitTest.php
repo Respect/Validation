@@ -14,7 +14,6 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
 #[Group('rule')]
-#[CoversClass(AbstractFilterRule::class)]
 #[CoversClass(Digit::class)]
 final class DigitTest extends RuleTestCase
 {

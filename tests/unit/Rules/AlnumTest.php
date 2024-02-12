@@ -15,7 +15,6 @@ use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 #[Group('rule')]
-#[CoversClass(AbstractFilterRule::class)]
 #[CoversClass(Alnum::class)]
 final class AlnumTest extends RuleTestCase
 {

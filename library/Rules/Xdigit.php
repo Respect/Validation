@@ -23,9 +23,9 @@ use function ctype_xdigit;
     '{{name}} must not contain hexadecimal digits or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
-final class Xdigit extends AbstractFilterRule
+final class Xdigit extends Filter
 {
-    protected function validateFilteredInput(string $input): bool
+    protected function isValid(string $input): bool
     {
         return ctype_xdigit($input);
     }

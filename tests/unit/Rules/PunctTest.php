@@ -14,7 +14,6 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
 #[Group('rule')]
-#[CoversClass(AbstractFilterRule::class)]
 #[CoversClass(Punct::class)]
 final class PunctTest extends RuleTestCase
 {

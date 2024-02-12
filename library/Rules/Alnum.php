@@ -23,9 +23,9 @@ use function ctype_alnum;
     '{{name}} must not contain letters (a-z), digits (0-9) or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
-final class Alnum extends AbstractFilterRule
+final class Alnum extends Filter
 {
-    protected function validateFilteredInput(string $input): bool
+    protected function isValid(string $input): bool
     {
         return ctype_alnum($input);
     }

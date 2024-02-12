@@ -23,9 +23,9 @@ use function ctype_space;
     '{{name}} must not contain space characters or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
-final class Space extends AbstractFilterRule
+final class Space extends Filter
 {
-    protected function validateFilteredInput(string $input): bool
+    protected function isValid(string $input): bool
     {
         return ctype_space($input);
     }

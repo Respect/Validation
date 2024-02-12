@@ -15,7 +15,6 @@ use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 #[Group('rule')]
-#[CoversClass(AbstractFilterRule::class)]
 #[CoversClass(Consonant::class)]
 final class ConsonantTest extends RuleTestCase
 {

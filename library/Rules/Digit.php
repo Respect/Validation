@@ -23,9 +23,9 @@ use function ctype_digit;
     '{{name}} must not contain digits (0-9) and {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
-final class Digit extends AbstractFilterRule
+final class Digit extends Filter
 {
-    protected function validateFilteredInput(string $input): bool
+    protected function isValid(string $input): bool
     {
         return ctype_digit($input);
     }

@@ -23,9 +23,9 @@ use function ctype_cntrl;
     '{{name}} must not contain control characters or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
-final class Control extends AbstractFilterRule
+final class Control extends Filter
 {
-    protected function validateFilteredInput(string $input): bool
+    protected function isValid(string $input): bool
     {
         return ctype_cntrl($input);
     }

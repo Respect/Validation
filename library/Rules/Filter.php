@@ -9,51 +9,43 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Result;
+
 use function implode;
 use function is_scalar;
 use function str_replace;
 use function str_split;
 
-abstract class AbstractFilterRule extends AbstractRule
+abstract class Filter extends Standard
 {
     public const TEMPLATE_EXTRA = '__extra__';
 
     private readonly string $additionalChars;
 
-    abstract protected function validateFilteredInput(string $input): bool;
+    abstract protected function isValid(string $input): bool;
 
     public function __construct(string ...$additionalChars)
     {
         $this->additionalChars = implode($additionalChars);
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
+        $template = $this->additionalChars ? self::TEMPLATE_EXTRA : self::TEMPLATE_STANDARD;
+        $parameters = $this->additionalChars ? ['additionalChars' => $this->additionalChars] : [];
         if (!is_scalar($input)) {
-            return false;
+            return Result::failed($input, $this, $template)->withParameters($parameters);
         }
 
         $stringInput = (string) $input;
         if ($stringInput === '') {
-            return false;
+            return Result::failed($input, $this, $template)->withParameters($parameters);
         }
 
         $filteredInput = $this->filter($stringInput);
+        $isValid = $filteredInput === '' || $this->isValid($filteredInput);
 
-        return $filteredInput === '' || $this->validateFilteredInput($filteredInput);
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function getParams(): array
-    {
-        return ['additionalChars' => $this->additionalChars];
-    }
-
-    protected function getStandardTemplate(mixed $input): string
-    {
-        return $this->additionalChars ? self::TEMPLATE_EXTRA : self::TEMPLATE_STANDARD;
+        return new Result($isValid, $input, $this, $template, $parameters);
     }
 
     private function filter(string $input): string

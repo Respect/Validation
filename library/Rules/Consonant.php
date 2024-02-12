@@ -23,9 +23,9 @@ use function preg_match;
     '{{name}} must not contain consonants or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
-final class Consonant extends AbstractFilterRule
+final class Consonant extends Filter
 {
-    protected function validateFilteredInput(string $input): bool
+    protected function isValid(string $input): bool
     {
         return preg_match('/^(\s|[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z])*$/', $input) > 0;
     }

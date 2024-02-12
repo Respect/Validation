@@ -23,9 +23,9 @@ use function preg_match;
     '{{name}} must not contain vowels or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
-final class Vowel extends AbstractFilterRule
+final class Vowel extends Filter
 {
-    protected function validateFilteredInput(string $input): bool
+    protected function isValid(string $input): bool
     {
         return preg_match('/^[aeiouAEIOU]+$/', $input) > 0;
     }

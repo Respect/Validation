@@ -23,9 +23,9 @@ use function ctype_print;
     '{{name}} must not contain printable characters or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
-final class Printable extends AbstractFilterRule
+final class Printable extends Filter
 {
-    protected function validateFilteredInput(string $input): bool
+    protected function isValid(string $input): bool
     {
         return ctype_print($input);
     }

@@ -15,7 +15,6 @@ use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 #[Group('rule')]
-#[CoversClass(AbstractFilterRule::class)]
 #[CoversClass(Control::class)]
 final class ControlTest extends RuleTestCase
 {

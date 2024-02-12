@@ -23,9 +23,9 @@ use function ctype_alpha;
     '{{name}} must not contain letters (a-z) or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
-final class Alpha extends AbstractFilterRule
+final class Alpha extends Filter
 {
-    protected function validateFilteredInput(string $input): bool
+    protected function isValid(string $input): bool
     {
         return ctype_alpha($input);
     }
