@@ -19,7 +19,7 @@ use function mb_strtoupper;
     '{{name}} must be a valid top-level domain name',
     '{{name}} must not be a valid top-level domain name',
 )]
-final class Tld extends AbstractRule
+final class Tld extends Simple
 {
     // List extracted from https://data.iana.org/TLD/tlds-alpha-by-domain.txt
     private const TLD_LIST = [

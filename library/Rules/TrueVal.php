@@ -20,7 +20,7 @@ use const FILTER_VALIDATE_BOOLEAN;
     '{{name}} must evaluate to `true`',
     '{{name}} must not evaluate to `true`',
 )]
-final class TrueVal extends AbstractRule
+final class TrueVal extends Simple
 {
     public function validate(mixed $input): bool
     {

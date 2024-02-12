@@ -19,7 +19,7 @@ use function is_string;
     '{{name}} must be a symbolic link',
     '{{name}} must not be a symbolic link',
 )]
-final class SymbolicLink extends AbstractRule
+final class SymbolicLink extends Simple
 {
     public function validate(mixed $input): bool
     {

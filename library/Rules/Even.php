@@ -19,7 +19,7 @@ use const FILTER_VALIDATE_INT;
     '{{name}} must be an even number',
     '{{name}} must not be an even number',
 )]
-final class Even extends AbstractRule
+final class Even extends Simple
 {
     public function validate(mixed $input): bool
     {

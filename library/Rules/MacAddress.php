@@ -18,7 +18,7 @@ use function preg_match;
     '{{name}} must be a valid MAC address',
     '{{name}} must not be a valid MAC address',
 )]
-final class MacAddress extends AbstractRule
+final class MacAddress extends Simple
 {
     public function validate(mixed $input): bool
     {

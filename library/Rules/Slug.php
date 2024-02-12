@@ -19,7 +19,7 @@ use function preg_match;
     '{{name}} must be a valid slug',
     '{{name}} must not be a valid slug',
 )]
-final class Slug extends AbstractRule
+final class Slug extends Simple
 {
     public function validate(mixed $input): bool
     {

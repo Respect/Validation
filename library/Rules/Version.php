@@ -21,7 +21,7 @@ use function preg_match;
     '{{name}} must be a version',
     '{{name}} must not be a version',
 )]
-final class Version extends AbstractRule
+final class Version extends Simple
 {
     public function validate(mixed $input): bool
     {

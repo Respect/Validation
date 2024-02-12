@@ -26,7 +26,7 @@ use function str_split;
     '{{name}} must be a NIF',
     '{{name}} must not be a NIF',
 )]
-final class Nif extends AbstractRule
+final class Nif extends Simple
 {
     public function validate(mixed $input): bool
     {

@@ -18,7 +18,7 @@ use function mb_strtolower;
     '{{name}} must be lowercase',
     '{{name}} must not be lowercase',
 )]
-final class Lowercase extends AbstractRule
+final class Lowercase extends Simple
 {
     public function validate(mixed $input): bool
     {

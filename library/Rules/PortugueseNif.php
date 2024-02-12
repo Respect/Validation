@@ -28,7 +28,7 @@ use function strlen;
     '{{name}} must be a Portuguese NIF',
     '{{name}} must not be a Portuguese NIF',
 )]
-final class PortugueseNif extends AbstractRule
+final class PortugueseNif extends Simple
 {
     public function validate(mixed $input): bool
     {

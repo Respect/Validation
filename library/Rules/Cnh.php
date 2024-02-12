@@ -19,7 +19,7 @@ use function preg_replace;
     '{{name}} must be a valid CNH number',
     '{{name}} must not be a valid CNH number',
 )]
-final class Cnh extends AbstractRule
+final class Cnh extends Simple
 {
     public function validate(mixed $input): bool
     {

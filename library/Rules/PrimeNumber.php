@@ -19,7 +19,7 @@ use function sqrt;
     '{{name}} must be a valid prime number',
     '{{name}} must not be a valid prime number',
 )]
-final class PrimeNumber extends AbstractRule
+final class PrimeNumber extends Simple
 {
     public function validate(mixed $input): bool
     {

@@ -21,7 +21,7 @@ use const YESEXPR;
     '{{name}} must be similar to "Yes"',
     '{{name}} must not be similar to "Yes"',
 )]
-final class Yes extends AbstractRule
+final class Yes extends Simple
 {
     public function __construct(
         private readonly bool $useLocale = false

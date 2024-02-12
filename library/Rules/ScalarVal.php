@@ -17,7 +17,7 @@ use function is_scalar;
     '{{name}} must be a scalar value',
     '{{name}} must not be a scalar value',
 )]
-final class ScalarVal extends AbstractRule
+final class ScalarVal extends Simple
 {
     public function validate(mixed $input): bool
     {

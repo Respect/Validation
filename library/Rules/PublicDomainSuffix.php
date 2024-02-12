@@ -23,7 +23,7 @@ use function strtoupper;
     '{{name}} must be a public domain suffix',
     '{{name}} must be a public domain suffix',
 )]
-final class PublicDomainSuffix extends AbstractRule
+final class PublicDomainSuffix extends Simple
 {
     use CanValidateUndefined;
 

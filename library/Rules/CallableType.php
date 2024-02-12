@@ -17,7 +17,7 @@ use function is_callable;
     '{{name}} must be callable',
     '{{name}} must not be callable',
 )]
-final class CallableType extends AbstractRule
+final class CallableType extends Simple
 {
     public function validate(mixed $input): bool
     {

@@ -19,7 +19,7 @@ use function is_string;
     '{{name}} must exist',
     '{{name}} must not exist',
 )]
-final class Exists extends AbstractRule
+final class Exists extends Simple
 {
     public function validate(mixed $input): bool
     {

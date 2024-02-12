@@ -17,7 +17,7 @@ use function is_numeric;
     '{{name}} must be numeric',
     '{{name}} must not be numeric',
 )]
-final class NumericVal extends AbstractRule
+final class NumericVal extends Simple
 {
     public function validate(mixed $input): bool
     {

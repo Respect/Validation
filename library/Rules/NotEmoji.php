@@ -19,7 +19,7 @@ use function preg_match;
     '{{name}} must not contain an Emoji',
     '{{name}} must contain an Emoji',
 )]
-final class NotEmoji extends AbstractRule
+final class NotEmoji extends Simple
 {
     private const RANGES = [
         '\x{0023}\x{FE0F}\x{20E3}',

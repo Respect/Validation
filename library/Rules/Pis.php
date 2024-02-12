@@ -20,7 +20,7 @@ use function preg_replace;
     '{{name}} must be a valid PIS number',
     '{{name}} must not be a valid PIS number',
 )]
-final class Pis extends AbstractRule
+final class Pis extends Simple
 {
     public function validate(mixed $input): bool
     {

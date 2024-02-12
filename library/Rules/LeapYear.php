@@ -22,7 +22,7 @@ use function strtotime;
     '{{name}} must be a leap year',
     '{{name}} must not be a leap year',
 )]
-final class LeapYear extends AbstractRule
+final class LeapYear extends Simple
 {
     public function validate(mixed $input): bool
     {

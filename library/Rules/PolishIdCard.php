@@ -22,7 +22,7 @@ use function preg_match;
     '{{name}} must be a valid Polish Identity Card number',
     '{{name}} must not be a valid Polish Identity Card number',
 )]
-final class PolishIdCard extends AbstractRule
+final class PolishIdCard extends Simple
 {
     private const ASCII_CODE_0 = 48;
     private const ASCII_CODE_7 = 55;

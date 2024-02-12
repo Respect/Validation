@@ -13,7 +13,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
 use Respect\Validation\Validator;
@@ -26,10 +25,9 @@ final class NotTest extends TestCase
     #[DataProvider('providerForValidNot')]
     public function not(Validatable $rule, mixed $input): void
     {
-        $this->expectNotToPerformAssertions();
-
         $not = new Not($rule);
-        $not->assert($input);
+
+        self::assertTrue($not->evaluate($input)->isValid);
     }
 
     #[Test]
@@ -38,9 +36,7 @@ final class NotTest extends TestCase
     {
         $not = new Not($rule);
 
-        $this->expectException(ValidationException::class);
-
-        $not->assert($input);
+        self::assertFalse($not->evaluate($input)->isValid);
     }
 
     #[Test]

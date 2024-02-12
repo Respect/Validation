@@ -23,7 +23,7 @@ use function str_split;
     '{{name}} must be a valid Polish VAT identification number',
     '{{name}} must not be a valid Polish VAT identification number',
 )]
-final class Nip extends AbstractRule
+final class Nip extends Simple
 {
     public function validate(mixed $input): bool
     {

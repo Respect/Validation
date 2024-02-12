@@ -21,7 +21,7 @@ use const FILTER_VALIDATE_BOOLEAN;
     '{{name}} must be a boolean value',
     '{{name}} must not be a boolean value',
 )]
-final class BoolVal extends AbstractRule
+final class BoolVal extends Simple
 {
     public function validate(mixed $input): bool
     {

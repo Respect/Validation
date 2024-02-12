@@ -18,7 +18,7 @@ use function is_numeric;
     '{{name}} must be a finite number',
     '{{name}} must not be a finite number',
 )]
-final class Finite extends AbstractRule
+final class Finite extends Simple
 {
     public function validate(mixed $input): bool
     {

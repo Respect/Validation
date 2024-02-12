@@ -19,7 +19,7 @@ use function is_string;
     '{{name}} must be a file',
     '{{name}} must not be a file',
 )]
-final class File extends AbstractRule
+final class File extends Simple
 {
     public function validate(mixed $input): bool
     {

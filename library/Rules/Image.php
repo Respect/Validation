@@ -23,7 +23,7 @@ use const FILEINFO_MIME_TYPE;
     '{{name}} must be a valid image',
     '{{name}} must not be a valid image',
 )]
-final class Image extends AbstractRule
+final class Image extends Simple
 {
     private readonly finfo $fileInfo;
 

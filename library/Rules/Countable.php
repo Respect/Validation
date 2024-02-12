@@ -18,7 +18,7 @@ use function is_array;
     '{{name}} must be countable',
     '{{name}} must not be countable',
 )]
-final class Countable extends AbstractRule
+final class Countable extends Simple
 {
     public function validate(mixed $input): bool
     {

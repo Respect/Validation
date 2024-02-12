@@ -19,7 +19,7 @@ use function sqrt;
     '{{name}} must be a valid perfect square',
     '{{name}} must not be a valid perfect square',
 )]
-final class PerfectSquare extends AbstractRule
+final class PerfectSquare extends Simple
 {
     public function validate(mixed $input): bool
     {

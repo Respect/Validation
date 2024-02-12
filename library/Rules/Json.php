@@ -23,7 +23,7 @@ use const JSON_ERROR_NONE;
     '{{name}} must be a valid JSON string',
     '{{name}} must not be a valid JSON string',
 )]
-final class Json extends AbstractRule
+final class Json extends Simple
 {
     public function validate(mixed $input): bool
     {

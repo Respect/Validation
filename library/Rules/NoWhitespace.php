@@ -19,7 +19,7 @@ use function preg_match;
     '{{name}} must not contain whitespace',
     '{{name}} must contain whitespace',
 )]
-final class NoWhitespace extends AbstractRule
+final class NoWhitespace extends Simple
 {
     public function validate(mixed $input): bool
     {

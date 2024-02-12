@@ -22,7 +22,7 @@ use function str_split;
     '{{name}} must be a valid CNPJ number',
     '{{name}} must not be a valid CNPJ number',
 )]
-final class Cnpj extends AbstractRule
+final class Cnpj extends Simple
 {
     public function validate(mixed $input): bool
     {

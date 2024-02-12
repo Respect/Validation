@@ -17,7 +17,7 @@ use function is_bool;
     '{{name}} must be of type boolean',
     '{{name}} must not be of type boolean',
 )]
-final class BoolType extends AbstractRule
+final class BoolType extends Simple
 {
     public function validate(mixed $input): bool
     {

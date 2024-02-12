@@ -20,7 +20,7 @@ use function is_writable;
     '{{name}} must be writable',
     '{{name}} must not be writable',
 )]
-final class Writable extends AbstractRule
+final class Writable extends Simple
 {
     public function validate(mixed $input): bool
     {

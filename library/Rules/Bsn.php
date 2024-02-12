@@ -24,7 +24,7 @@ use function strval;
     '{{name}} must be a BSN',
     '{{name}} must not be a BSN',
 )]
-final class Bsn extends AbstractRule
+final class Bsn extends Simple
 {
     public function validate(mixed $input): bool
     {

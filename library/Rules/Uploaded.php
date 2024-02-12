@@ -20,7 +20,7 @@ use function is_uploaded_file;
     '{{name}} must be an uploaded file',
     '{{name}} must not be an uploaded file',
 )]
-final class Uploaded extends AbstractRule
+final class Uploaded extends Simple
 {
     public function validate(mixed $input): bool
     {

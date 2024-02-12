@@ -21,7 +21,7 @@ use Respect\Validation\Message\Template;
     '{{name}} is valid',
     self::TEMPLATE_SIMPLE,
 )]
-final class AlwaysInvalid extends AbstractRule
+final class AlwaysInvalid extends Simple
 {
     public const TEMPLATE_SIMPLE = '__simple__';
 

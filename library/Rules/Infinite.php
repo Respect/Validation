@@ -18,7 +18,7 @@ use function is_numeric;
     '{{name}} must be an infinite number',
     '{{name}} must not be an infinite number',
 )]
-final class Infinite extends AbstractRule
+final class Infinite extends Simple
 {
     public function validate(mixed $input): bool
     {

@@ -20,7 +20,7 @@ use const FILTER_VALIDATE_FLOAT;
     '{{name}} must be a float number',
     '{{name}} must not be a float number',
 )]
-final class FloatVal extends AbstractRule
+final class FloatVal extends Simple
 {
     public function validate(mixed $input): bool
     {

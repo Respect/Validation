@@ -17,7 +17,7 @@ use function is_float;
     '{{name}} must be of type float',
     '{{name}} must not be of type float',
 )]
-final class FloatType extends AbstractRule
+final class FloatType extends Simple
 {
     public function validate(mixed $input): bool
     {

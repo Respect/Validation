@@ -19,7 +19,7 @@ use function count;
     '{{name}} must be valid',
     '{{name}} must not be valid',
 )]
-final class Callback extends AbstractRule
+final class Callback extends Simple
 {
     /**
      * @var callable

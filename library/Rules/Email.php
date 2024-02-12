@@ -24,7 +24,7 @@ use const FILTER_VALIDATE_EMAIL;
     '{{name}} must be valid email',
     '{{name}} must not be an email',
 )]
-final class Email extends AbstractRule
+final class Email extends Simple
 {
     private readonly ?EmailValidator $validator;
 

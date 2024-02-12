@@ -16,7 +16,7 @@ use Respect\Validation\Message\Template;
     '{{name}} must be iterable',
     '{{name}} must not be iterable',
 )]
-final class IterableType extends AbstractRule
+final class IterableType extends Simple
 {
     use CanValidateIterable;
 

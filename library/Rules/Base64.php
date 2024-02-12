@@ -19,7 +19,7 @@ use function preg_match;
     '{{name}} must be Base64-encoded',
     '{{name}} must not be Base64-encoded',
 )]
-final class Base64 extends AbstractRule
+final class Base64 extends Simple
 {
     public function validate(mixed $input): bool
     {

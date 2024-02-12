@@ -19,7 +19,7 @@ use function is_scalar;
     '{{name}} must be an executable file',
     '{{name}} must not be an executable file',
 )]
-final class Executable extends AbstractRule
+final class Executable extends Simple
 {
     public function validate(mixed $input): bool
     {

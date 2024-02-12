@@ -19,7 +19,7 @@ use function preg_match;
     '{{name}} must be an integer number',
     '{{name}} must not be an integer number',
 )]
-final class IntVal extends AbstractRule
+final class IntVal extends Simple
 {
     public function validate(mixed $input): bool
     {

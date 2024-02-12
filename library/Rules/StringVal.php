@@ -19,7 +19,7 @@ use function method_exists;
     '{{name}} must be a string',
     '{{name}} must not be string',
 )]
-final class StringVal extends AbstractRule
+final class StringVal extends Simple
 {
     public function validate(mixed $input): bool
     {

@@ -20,7 +20,7 @@ use function is_string;
     '{{name}} must be readable',
     '{{name}} must not be readable',
 )]
-final class Readable extends AbstractRule
+final class Readable extends Simple
 {
     public function validate(mixed $input): bool
     {

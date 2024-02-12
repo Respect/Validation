@@ -7,15 +7,11 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Rules;
+namespace Respect\Validation\Test\Rules;
 
-use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Simple;
 
-#[Template(
-    '{{name}} is always valid',
-    '{{name}} is always invalid',
-)]
-final class AlwaysValid extends Simple
+final class ConcreteSimple extends Simple
 {
     public function validate(mixed $input): bool
     {

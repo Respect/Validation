@@ -17,7 +17,7 @@ use function is_resource;
     '{{name}} must be a resource',
     '{{name}} must not be a resource',
 )]
-final class ResourceType extends AbstractRule
+final class ResourceType extends Simple
 {
     public function validate(mixed $input): bool
     {

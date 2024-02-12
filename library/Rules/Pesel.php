@@ -18,7 +18,7 @@ use function preg_match;
     '{{name}} must be a valid PESEL',
     '{{name}} must not be a valid PESEL',
 )]
-final class Pesel extends AbstractRule
+final class Pesel extends Simple
 {
     public function validate(mixed $input): bool
     {

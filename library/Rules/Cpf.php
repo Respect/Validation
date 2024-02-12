@@ -20,7 +20,7 @@ use function preg_replace;
     '{{name}} must be a valid CPF number',
     '{{name}} must not be a valid CPF number',
 )]
-final class Cpf extends AbstractRule
+final class Cpf extends Simple
 {
     public function validate(mixed $input): bool
     {

@@ -17,7 +17,7 @@ use function is_string;
     '{{name}} must be of type string',
     '{{name}} must not be of type string',
 )]
-final class StringType extends AbstractRule
+final class StringType extends Simple
 {
     public function validate(mixed $input): bool
     {

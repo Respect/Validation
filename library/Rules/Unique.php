@@ -20,7 +20,7 @@ use const SORT_REGULAR;
     '{{name}} must not contain duplicates',
     '{{name}} must contain duplicates',
 )]
-final class Unique extends AbstractRule
+final class Unique extends Simple
 {
     public function validate(mixed $input): bool
     {

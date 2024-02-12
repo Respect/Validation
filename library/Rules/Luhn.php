@@ -22,7 +22,7 @@ use function str_split;
     '{{name}} must be a valid Luhn number',
     '{{name}} must not be a valid Luhn number',
 )]
-final class Luhn extends AbstractRule
+final class Luhn extends Simple
 {
     public function validate(mixed $input): bool
     {

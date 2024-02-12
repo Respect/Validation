@@ -19,7 +19,7 @@ use function is_scalar;
     '{{name}} must be leap date',
     '{{name}} must not be leap date',
 )]
-final class LeapDate extends AbstractRule
+final class LeapDate extends Simple
 {
     public function __construct(
         private readonly string $format

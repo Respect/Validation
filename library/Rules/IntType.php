@@ -17,7 +17,7 @@ use function is_int;
     '{{name}} must be of type integer',
     '{{name}} must not be of type integer',
 )]
-final class IntType extends AbstractRule
+final class IntType extends Simple
 {
     public function validate(mixed $input): bool
     {

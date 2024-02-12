@@ -19,7 +19,7 @@ use function is_array;
     '{{name}} must be an array value',
     '{{name}} must not be an array value',
 )]
-final class ArrayVal extends AbstractRule
+final class ArrayVal extends Simple
 {
     public function validate(mixed $input): bool
     {

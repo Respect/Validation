@@ -18,7 +18,7 @@ use function mb_strtoupper;
     '{{name}} must be uppercase',
     '{{name}} must not be uppercase',
 )]
-final class Uppercase extends AbstractRule
+final class Uppercase extends Simple
 {
     public function validate(mixed $input): bool
     {

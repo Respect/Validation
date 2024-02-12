@@ -18,7 +18,7 @@ use function preg_match;
     '{{name}} must be a valid PHP label',
     '{{name}} must not be a valid PHP label',
 )]
-final class PhpLabel extends AbstractRule
+final class PhpLabel extends Simple
 {
     public function validate(mixed $input): bool
     {

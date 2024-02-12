@@ -17,7 +17,7 @@ use function is_object;
     '{{name}} must be of type object',
     '{{name}} must not be of type object',
 )]
-final class ObjectType extends AbstractRule
+final class ObjectType extends Simple
 {
     public function validate(mixed $input): bool
     {

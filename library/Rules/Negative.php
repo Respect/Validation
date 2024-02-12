@@ -17,7 +17,7 @@ use function is_numeric;
     '{{name}} must be negative',
     '{{name}} must not be negative',
 )]
-final class Negative extends AbstractRule
+final class Negative extends Simple
 {
     public function validate(mixed $input): bool
     {

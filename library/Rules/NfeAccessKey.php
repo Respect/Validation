@@ -23,7 +23,7 @@ use function str_split;
     '{{name}} must be a valid NFe access key',
     '{{name}} must not be a valid NFe access key',
 )]
-final class NfeAccessKey extends AbstractRule
+final class NfeAccessKey extends Simple
 {
     public function validate(mixed $input): bool
     {

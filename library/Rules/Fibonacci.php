@@ -17,7 +17,7 @@ use function is_numeric;
     '{{name}} must be a valid Fibonacci number',
     '{{name}} must not be a valid Fibonacci number',
 )]
-final class Fibonacci extends AbstractRule
+final class Fibonacci extends Simple
 {
     public function validate(mixed $input): bool
     {

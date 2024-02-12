@@ -20,7 +20,7 @@ use const FILTER_VALIDATE_INT;
     '{{name}} must be an odd number',
     '{{name}} must not be an odd number',
 )]
-final class Odd extends AbstractRule
+final class Odd extends Simple
 {
     public function validate(mixed $input): bool
     {

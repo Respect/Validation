@@ -17,7 +17,7 @@ use function is_null;
     '{{name}} must be null',
     '{{name}} must not be null',
 )]
-final class NullType extends AbstractRule
+final class NullType extends Simple
 {
     public function validate(mixed $input): bool
     {

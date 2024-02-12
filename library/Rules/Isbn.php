@@ -20,7 +20,7 @@ use function sprintf;
     '{{name}} must be a ISBN',
     '{{name}} must not be a ISBN',
 )]
-final class Isbn extends AbstractRule
+final class Isbn extends Simple
 {
     /**
      * @see https://howtodoinjava.com/regex/java-regex-validate-international-standard-book-number-isbns

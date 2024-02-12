@@ -20,7 +20,7 @@ use function is_scalar;
     '{{name}} must be a directory',
     '{{name}} must not be a directory',
 )]
-final class Directory extends AbstractRule
+final class Directory extends Simple
 {
     public function validate(mixed $input): bool
     {

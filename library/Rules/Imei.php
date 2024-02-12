@@ -19,7 +19,7 @@ use function preg_replace;
     '{{name}} must be a valid IMEI',
     '{{name}} must not be a valid IMEI',
 )]
-final class Imei extends AbstractRule
+final class Imei extends Simple
 {
     private const IMEI_SIZE = 15;
 
