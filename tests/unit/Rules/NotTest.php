@@ -10,87 +10,39 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Test\TestCase;
-use Respect\Validation\Validatable;
-use Respect\Validation\Validator;
+use Respect\Validation\Test\Rules\Stub;
+use Respect\Validation\Test\RuleTestCase;
 
 #[Group('rule')]
 #[CoversClass(Not::class)]
-final class NotTest extends TestCase
+final class NotTest extends RuleTestCase
 {
     #[Test]
-    #[DataProvider('providerForValidNot')]
-    public function not(Validatable $rule, mixed $input): void
+    public function shouldInvertTheResultOfWrappedRule(): void
     {
-        $not = new Not($rule);
+        $wrapped = Stub::fail(2);
 
-        self::assertTrue($not->evaluate($input)->isValid);
+        $rule = new Not($wrapped);
+
+        self::assertEquals(
+            $rule->evaluate('input'),
+            $wrapped->evaluate('input')->withInvertedMode()
+        );
     }
 
-    #[Test]
-    #[DataProvider('providerForInvalidNot')]
-    public function notNotHaha(Validatable $rule, mixed $input): void
+    /** @return iterable<string, array{Not, mixed}> */
+    public static function providerForValidInput(): iterable
     {
-        $not = new Not($rule);
-
-        self::assertFalse($not->evaluate($input)->isValid);
+        yield 'invert fail' => [new Not(Stub::fail(1)), []];
+        yield 'invert success x2' => [new Not(new Not(Stub::pass(1))), []];
     }
 
-    #[Test]
-    #[DataProvider('providerForSetName')]
-    public function notSetName(Validatable $rule): void
+    /** @return iterable<string, array{Not, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
-        $not = new Not($rule);
-        $not->setName('Foo');
-
-        self::assertEquals('Foo', $not->getName());
-        self::assertEquals('Foo', $not->getNegatedRule()->getName());
-    }
-
-    /**
-     * @return array<array{Validatable, mixed}>
-     */
-    public static function providerForValidNot(): array
-    {
-        return [
-            [new IntVal(), ''],
-            [new IntVal(), 'aaa'],
-            [new AllOf(new NoWhitespace(), new Digit()), 'as df'],
-            [new AllOf(new NoWhitespace(), new Digit()), '12 34'],
-            [new AllOf(new AllOf(new NoWhitespace(), new Digit())), '12 34'],
-            [new AllOf(new NoneOf(new NumericVal(), new IntVal())), 13.37],
-            [new NoneOf(new NumericVal(), new IntVal()), 13.37],
-            [Validator::noneOf(Validator::numericVal(), Validator::intVal()), 13.37],
-        ];
-    }
-
-    /**
-     * @return array<array{Validatable, mixed}>
-     */
-    public static function providerForInvalidNot(): array
-    {
-        return [
-            [new IntVal(), 123],
-            [new AllOf(new AnyOf(new NumericVal(), new IntVal())), 13.37],
-            [new AnyOf(new NumericVal(), new IntVal()), 13.37],
-            [Validator::anyOf(Validator::numericVal(), Validator::intVal()), 13.37],
-        ];
-    }
-
-    /**
-     * @return array<array{Validatable}>
-     */
-    public static function providerForSetName(): array
-    {
-        return [
-            'non-allOf' => [new IntVal()],
-            'allOf' => [new AllOf(new NumericVal(), new IntVal())],
-            'not' => [new Not(new Not(new IntVal()))],
-            'allOf with name' => [Validator::intVal()->setName('Bar')],
-            'noneOf' => [Validator::noneOf(Validator::numericVal(), Validator::intVal())],
-        ];
+        yield 'invert pass' => [new Not(Stub::pass(1)), []];
+        yield 'invert fail x2' => [new Not(new Not(Stub::fail(1))), []];
     }
 }
