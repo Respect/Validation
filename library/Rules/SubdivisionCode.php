@@ -11,20 +11,22 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
+use Respect\Validation\Helpers\CanValidateUndefined;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
 use Sokil\IsoCodes\Database\Countries;
 use Sokil\IsoCodes\Database\Subdivisions;
 
-use function array_map;
 use function class_exists;
-use function str_replace;
 
 #[Template(
     '{{name}} must be a subdivision code of {{countryName|trans}}',
     '{{name}} must not be a subdivision code of {{countryName|trans}}',
 )]
-final class SubdivisionCode extends AbstractSearcher
+final class SubdivisionCode extends Standard
 {
+    use CanValidateUndefined;
+
     private readonly Countries\Country $country;
 
     private readonly Subdivisions $subdivisions;
@@ -49,26 +51,14 @@ final class SubdivisionCode extends AbstractSearcher
         $this->subdivisions = $subdivisions ?? new Subdivisions();
     }
 
-    /**
-     * @return array<string, mixed>
-     */
-    public function getParams(): array
+    public function evaluate(mixed $input): Result
     {
-        return ['countryName' => $this->country->getName()];
-    }
+        $parameters = ['countryName' => $this->country->getName()];
+        $subdivision = $this->subdivisions->getByCode($this->country->getAlpha2() . '-' . $input);
+        if ($this->isUndefined($input) && $subdivision === null) {
+            return Result::passed($input, $this)->withParameters($parameters);
+        }
 
-    /**
-     * @return array<int, string>
-     */
-    protected function getDataSource(mixed $input = null): array
-    {
-        return array_map(
-            fn (Subdivisions\Subdivision $subdivision): string => str_replace(
-                $this->country->getAlpha2() . '-',
-                '',
-                $subdivision->getCode(),
-            ),
-            $this->subdivisions->getAllByCountryCode($this->country->getAlpha2()),
-        );
+        return (new Result($subdivision !== null, $input, $this))->withParameters($parameters);
     }
 }
