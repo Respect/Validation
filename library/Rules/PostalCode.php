@@ -209,7 +209,7 @@ final class PostalCode extends Envelope
     public function __construct(string $countryCode, bool $formatted = false)
     {
         $countryCodeRule = new CountryCode();
-        if (!$countryCodeRule->validate($countryCode)) {
+        if (!$countryCodeRule->evaluate($countryCode)->isValid) {
             throw new ComponentException(sprintf('Cannot validate postal code from "%s" country', $countryCode));
         }
 

@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\RuleTestCase;
 
 #[Group('rule')]
@@ -22,11 +22,12 @@ final class CountryCodeTest extends RuleTestCase
     #[Test]
     public function itShouldThrowsExceptionWhenInvalidFormat(): void
     {
-        $this->expectException(ComponentException::class);
+        $this->expectException(InvalidRuleConstructorException::class);
         $this->expectExceptionMessage(
             '"whatever" is not a valid set for ISO 3166-1 (Available: alpha-2, alpha-3, numeric)'
         );
 
+        // @phpstan-ignore-next-line
         new CountryCode('whatever');
     }
 
@@ -34,15 +35,15 @@ final class CountryCodeTest extends RuleTestCase
     public static function providerForValidInput(): iterable
     {
         return [
-            [new CountryCode(CountryCode::ALPHA2),  'BR'],
-            [new CountryCode(CountryCode::ALPHA3),  'BRA'],
-            [new CountryCode(CountryCode::NUMERIC), '076'],
-            [new CountryCode(CountryCode::ALPHA2),  'DE'],
-            [new CountryCode(CountryCode::ALPHA3),  'DEU'],
-            [new CountryCode(CountryCode::NUMERIC), '276'],
-            [new CountryCode(CountryCode::ALPHA2),  'US'],
-            [new CountryCode(CountryCode::ALPHA3),  'USA'],
-            [new CountryCode(CountryCode::NUMERIC), '840'],
+            [new CountryCode('alpha-2'),  'BR'],
+            [new CountryCode('alpha-3'),  'BRA'],
+            [new CountryCode('numeric'), '076'],
+            [new CountryCode('alpha-2'),  'DE'],
+            [new CountryCode('alpha-3'),  'DEU'],
+            [new CountryCode('numeric'), '276'],
+            [new CountryCode('alpha-2'),  'US'],
+            [new CountryCode('alpha-3'),  'USA'],
+            [new CountryCode('numeric'), '840'],
         ];
     }
 
@@ -50,10 +51,11 @@ final class CountryCodeTest extends RuleTestCase
     public static function providerForInvalidInput(): iterable
     {
         return [
-            [new CountryCode(),  'ca'],
-            [new CountryCode(CountryCode::ALPHA2),  'USA'],
-            [new CountryCode(CountryCode::ALPHA3),  'US'],
-            [new CountryCode(CountryCode::NUMERIC), '000'],
+            [new CountryCode(), []],
+            [new CountryCode(), 'ca'],
+            [new CountryCode('alpha-2'),  'USA'],
+            [new CountryCode('alpha-3'),  'US'],
+            [new CountryCode('numeric'), '000'],
         ];
     }
 }

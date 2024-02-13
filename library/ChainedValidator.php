@@ -73,7 +73,8 @@ interface ChainedValidator extends Validatable
 
     public function countable(): ChainedValidator;
 
-    public function countryCode(?string $set = null): ChainedValidator;
+    /** @param "alpha-2"|"alpha-3"|"numeric" $set */
+    public function countryCode(string $set = 'alpha-2'): ChainedValidator;
 
     public function currencyCode(): ChainedValidator;
 
