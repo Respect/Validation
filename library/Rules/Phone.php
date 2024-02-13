@@ -12,11 +12,11 @@ namespace Respect\Validation\Rules;
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumberUtil;
 use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Helpers\CountryInfo;
+use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
+use Sokil\IsoCodes\Database\Countries;
 
 use function class_exists;
-use function is_null;
 use function is_scalar;
 use function sprintf;
 
@@ -35,24 +35,36 @@ final class Phone extends AbstractRule
     public const TEMPLATE_FOR_COUNTRY = 'for_country';
     public const TEMPLATE_INTERNATIONAL = 'international';
 
-    private readonly ?string $countryName;
+    private readonly ?Countries\Country $country;
 
-    public function __construct(private readonly ?string $countryCode = null)
+    public function __construct(?string $countryCode = null, ?Countries $countries = null)
     {
-        if (!is_null($countryCode) && !(new CountryCode())->validate($countryCode)) {
-            throw new ComponentException(
-                sprintf(
-                    'Invalid country code %s',
-                    $countryCode
-                )
+        if (!class_exists(PhoneNumberUtil::class)) {
+            throw new MissingComposerDependencyException(
+                'Phone rule libphonenumber for PHP',
+                'giggsey/libphonenumber-for-php'
             );
         }
 
-        if (!class_exists(PhoneNumberUtil::class)) {
-            throw new ComponentException('The phone validator requires giggsey/libphonenumber-for-php');
+        if ($countryCode == null) {
+            $this->country = null;
+
+            return;
         }
 
-        $this->countryName = $countryCode === null ? null : (new CountryInfo($countryCode))->getCountry();
+        if (!class_exists(Countries::class)) {
+            throw new MissingComposerDependencyException(
+                'Phone rule with country code requires PHP ISO Codes',
+                'sokil/php-isocodes',
+                'sokil/php-isocodes-db-only'
+            );
+        }
+
+        $countries ??= new Countries();
+        $this->country = $countries->getByAlpha2($countryCode);
+        if ($this->country === null) {
+            throw new ComponentException(sprintf('Invalid country code %s', $countryCode));
+        }
     }
 
     public function validate(mixed $input): bool
@@ -63,7 +75,7 @@ final class Phone extends AbstractRule
 
         try {
             return PhoneNumberUtil::getInstance()->isValidNumber(
-                PhoneNumberUtil::getInstance()->parse((string) $input, $this->countryCode)
+                PhoneNumberUtil::getInstance()->parse((string) $input, $this->country?->getAlpha2())
             );
         } catch (NumberParseException $e) {
             return false;
@@ -75,11 +87,11 @@ final class Phone extends AbstractRule
      */
     public function getParams(): array
     {
-        return ['countryName' => $this->countryName];
+        return ['countryName' => $this->country?->getName()];
     }
 
     protected function getStandardTemplate(mixed $input): string
     {
-        return $this->countryName ? self::TEMPLATE_FOR_COUNTRY : self::TEMPLATE_INTERNATIONAL;
+        return $this->country ? self::TEMPLATE_FOR_COUNTRY : self::TEMPLATE_INTERNATIONAL;
     }
 }

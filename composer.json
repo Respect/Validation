@@ -33,6 +33,8 @@
         "phpunit/phpunit": "^10.5",
         "psr/http-message": "^1.0",
         "respect/coding-standard": "^4.0",
+        "sokil/php-isocodes": "^4.2",
+        "sokil/php-isocodes-db-only": "^4.0",
         "squizlabs/php_codesniffer": "^3.8"
     },
     "suggest": {
@@ -40,7 +42,9 @@
         "ext-fileinfo": "File Information",
         "ext-mbstring": "Multibyte String Functions",
         "egulias/email-validator": "Improves the Email rule if available",
-        "giggsey/libphonenumber-for-php-lite": "Enables the phone rule if available"
+        "giggsey/libphonenumber-for-php-lite": "Enables the phone rule if available",
+        "sokil/php-isocodes": "Enable rules that validate ISO codes",
+        "sokil/php-isocodes-db-only": "Enable rules that validate ISO codes"
     },
     "autoload": {
         "psr-4": {

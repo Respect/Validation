@@ -9,34 +9,44 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Helpers\CountryInfo;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
+use Sokil\IsoCodes\Database\Countries;
+use Sokil\IsoCodes\Database\Subdivisions;
 
-use function array_keys;
+use function array_map;
+use function class_exists;
+use function str_replace;
 
-/**
- * @see http://en.wikipedia.org/wiki/ISO_3166-2
- * @see http://www.geonames.org/countries/
- */
 #[Template(
     '{{name}} must be a subdivision code of {{countryName}}',
     '{{name}} must not be a subdivision code of {{countryName}}',
 )]
 final class SubdivisionCode extends AbstractSearcher
 {
-    private readonly string $countryName;
+    private readonly Countries\Country $country;
 
-    /**
-     * @var string[]
-     */
-    private readonly array $countryInfo;
+    private readonly Subdivisions $subdivisions;
 
-    public function __construct(string $countryCode)
+    public function __construct(string $countryCode, ?Countries $countries = null, ?Subdivisions $subdivisions = null)
     {
-        $countryInfo = new CountryInfo($countryCode);
+        if (!class_exists(Countries::class) || !class_exists(Subdivisions::class)) {
+            throw new MissingComposerDependencyException(
+                'SubdivisionCode rule requires PHP ISO Codes',
+                'sokil/php-isocodes',
+                'sokil/php-isocodes-db-only'
+            );
+        }
 
-        $this->countryName = $countryInfo->getCountry();
-        $this->countryInfo = array_keys($countryInfo->getSubdivisions());
+        $countries ??= new Countries();
+        $country = $countries->getByAlpha2($countryCode);
+        if ($country === null) {
+            throw new InvalidRuleConstructorException('"%s" is not a supported country code', $countryCode);
+        }
+
+        $this->country = $country;
+        $this->subdivisions = $subdivisions ?? new Subdivisions();
     }
 
     /**
@@ -44,7 +54,7 @@ final class SubdivisionCode extends AbstractSearcher
      */
     public function getParams(): array
     {
-        return ['countryName' => $this->countryName];
+        return ['countryName' => $this->country->getName()];
     }
 
     /**
@@ -52,6 +62,13 @@ final class SubdivisionCode extends AbstractSearcher
      */
     protected function getDataSource(mixed $input = null): array
     {
-        return $this->countryInfo;
+        return array_map(
+            fn (Subdivisions\Subdivision $subdivision): string => str_replace(
+                $this->country->getAlpha2() . '-',
+                '',
+                $subdivision->getCode(),
+            ),
+            $this->subdivisions->getAllByCountryCode($this->country->getAlpha2()),
+        );
     }
 }
