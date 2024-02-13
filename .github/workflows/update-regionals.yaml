@@ -20,10 +20,7 @@ jobs:
         with:
           ref: ${{ secrets.LAST_MINOR_VERSION }}
 
-      - name: Update currency codes
-        run: bin/update-currency-codes
-
-      - name: Update language codes 
+      - name: Update language codes
         run: bin/update-language-codes
 
       - name: Update top level domains

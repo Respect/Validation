@@ -76,7 +76,8 @@ interface ChainedValidator extends Validatable
     /** @param "alpha-2"|"alpha-3"|"numeric" $set */
     public function countryCode(string $set = 'alpha-2'): ChainedValidator;
 
-    public function currencyCode(): ChainedValidator;
+    /** @param "alpha-3"|"numeric" $set */
+    public function currencyCode(string $set = 'alpha-3'): ChainedValidator;
 
     public function cpf(): ChainedValidator;
 

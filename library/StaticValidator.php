@@ -77,7 +77,8 @@ interface StaticValidator
     /** @param "alpha-2"|"alpha-3"|"numeric" $set */
     public static function countryCode(string $set = 'alpha-2'): ChainedValidator;
 
-    public static function currencyCode(): ChainedValidator;
+    /** @param "alpha-3"|"numeric" $set */
+    public static function currencyCode(string $set = 'alpha-3'): ChainedValidator;
 
     public static function cpf(): ChainedValidator;
 
