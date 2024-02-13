@@ -181,7 +181,8 @@ interface StaticValidator
 
     public static function keyValue(string $comparedKey, string $ruleName, string $baseKey): ChainedValidator;
 
-    public static function languageCode(?string $set = null): ChainedValidator;
+    /** @param "alpha-2"|"alpha-3" $set */
+    public static function languageCode(string $set = 'alpha-2'): ChainedValidator;
 
     public static function leapDate(string $format): ChainedValidator;
 

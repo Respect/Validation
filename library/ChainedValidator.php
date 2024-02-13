@@ -180,7 +180,8 @@ interface ChainedValidator extends Validatable
 
     public function keyValue(string $comparedKey, string $ruleName, string $baseKey): ChainedValidator;
 
-    public function languageCode(?string $set = null): ChainedValidator;
+    /** @param "alpha-2"|"alpha-3" $set */
+    public function languageCode(string $set = 'alpha-2'): ChainedValidator;
 
     public function leapDate(string $format): ChainedValidator;
 

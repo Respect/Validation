@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\RuleTestCase;
 
 #[Group('rule')]
@@ -22,16 +22,18 @@ final class LanguageCodeTest extends RuleTestCase
     #[Test]
     public function itShouldThrowAnExceptionWhenSetIsInvalid(): void
     {
-        $this->expectExceptionObject(new ComponentException('"foo" is not a valid language set for ISO 639'));
+        $this->expectException(InvalidRuleConstructorException::class);
+        $this->expectExceptionMessage('"foo" is not a valid set for ISO 639-3 (Available: alpha-2, alpha-3)');
 
+        // @phpstan-ignore-next-line
         new LanguageCode('foo');
     }
 
     /** @return iterable<array{LanguageCode, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $sutAlpha2 = new LanguageCode(LanguageCode::ALPHA2);
-        $sutAlpha3 = new LanguageCode(LanguageCode::ALPHA3);
+        $sutAlpha2 = new LanguageCode('alpha-2');
+        $sutAlpha3 = new LanguageCode('alpha-3');
 
         return [
             'alpha-2: en' => [$sutAlpha2, 'en'],
@@ -48,8 +50,8 @@ final class LanguageCodeTest extends RuleTestCase
     /** @return iterable<array{LanguageCode, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $sutAlpha2 = new LanguageCode(LanguageCode::ALPHA2);
-        $sutAlpha3 = new LanguageCode(LanguageCode::ALPHA3);
+        $sutAlpha2 = new LanguageCode('alpha-2');
+        $sutAlpha3 = new LanguageCode('alpha-3');
 
         return [
             'alpha-2: alpha-3 code' => [$sutAlpha2, 'por'],

@@ -1,9 +1,11 @@
 # LanguageCode
 
 - `LanguageCode()`
-- `LanguageCode(string $set)`
+- `LanguageCode("alpha-2"|"alpha-3" $set)`
 
-Validates whether the input is language code based on ISO 639.
+Validates whether the input is language code based on [ISO 639][].
+
+**This rule requires [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][] to be installed.**
 
 ```php
 v::languageCode()->validate('pt'); // true
@@ -13,7 +15,10 @@ v::languageCode('alpha-3')->validate('ita'); // true
 v::languageCode('alpha-3')->validate('eng'); // true
 ```
 
-You can choose between `alpha-2` and `alpha-3`; `alpha-2` is set by default set.
+This rule supports the two[ISO 639][] sets:
+
+- `alpha-2`
+- `alpha-3`
 
 ## Categorization
 
@@ -24,9 +29,14 @@ You can choose between `alpha-2` and `alpha-3`; `alpha-2` is set by default set.
 
 Version | Description
 --------|-------------
+  3.0.0 | Require [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][]
   1.1.0 | Created
 
 ***
 See also:
 
 - [CountryCode](CountryCode.md)
+
+[ISO 639]: https://en.wikipedia.org/wiki/ISO_639-3
+[sokil/php-isocodes]: https://github.com/sokil/php-isocodes
+[sokil/php-isocodes-db-only]: https://github.com/sokil/php-isocodes-db-only

@@ -20,9 +20,6 @@ jobs:
         with:
           ref: ${{ secrets.LAST_MINOR_VERSION }}
 
-      - name: Update language codes
-        run: bin/update-language-codes
-
       - name: Update top level domains
         run: bin/update-domain-toplevel
 
