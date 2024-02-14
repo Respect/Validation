@@ -10,8 +10,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Exceptions;
 
 use InvalidArgumentException;
-use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Message\TemplateRenderer;
 
 use function count;
 
@@ -37,7 +37,7 @@ class ValidationException extends InvalidArgumentException implements Exception
         private array $params,
         private string $template,
         array $templates,
-        private readonly Formatter $formatter
+        private readonly TemplateRenderer $formatter
     ) {
         if (count($templates) === 0) {
             $templates = [new Template('{{name}} must be valid', '{{name}} must not be valid')];
@@ -104,7 +104,7 @@ class ValidationException extends InvalidArgumentException implements Exception
 
     private function createMessage(): string
     {
-        return $this->formatter->format($this->getTemplateString(), $this->input, $this->params);
+        return $this->formatter->render($this->getTemplateString(), $this->input, $this->params);
     }
 
     public function __toString(): string

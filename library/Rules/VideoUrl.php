@@ -24,8 +24,8 @@ use function sprintf;
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must be a valid {{service}} video URL',
-    '{{name}} must not be a valid {{service}} video URL',
+    '{{name}} must be a valid {{service|raw}} video URL',
+    '{{name}} must not be a valid {{service|raw}} video URL',
     self::TEMPLATE_SERVICE,
 )]
 final class VideoUrl extends AbstractRule

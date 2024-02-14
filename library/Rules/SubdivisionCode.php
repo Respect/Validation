@@ -20,8 +20,8 @@ use function class_exists;
 use function str_replace;
 
 #[Template(
-    '{{name}} must be a subdivision code of {{countryName}}',
-    '{{name}} must not be a subdivision code of {{countryName}}',
+    '{{name}} must be a subdivision code of {{countryName|trans}}',
+    '{{name}} must not be a subdivision code of {{countryName|trans}}',
 )]
 final class SubdivisionCode extends AbstractSearcher
 {

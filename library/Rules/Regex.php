@@ -15,8 +15,8 @@ use function is_scalar;
 use function preg_match;
 
 #[Template(
-    '{{name}} must validate against {{regex}}',
-    '{{name}} must not validate against {{regex}}',
+    '{{name}} must validate against `{{regex|raw}}`',
+    '{{name}} must not validate against `{{regex|raw}}`',
 )]
 final class Regex extends AbstractRule
 {

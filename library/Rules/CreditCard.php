@@ -20,13 +20,13 @@ use function preg_replace;
 use function sprintf;
 
 #[Template(
-    '{{name}} must be a valid Credit Card number',
-    '{{name}} must not be a valid Credit Card number',
+    '{{name}} must be a valid credit card number',
+    '{{name}} must not be a valid credit card number',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must be a valid {{brand}} Credit Card number',
-    '{{name}} must not be a valid {{brand}} Credit Card number',
+    '{{name}} must be a valid {{brand|raw}} credit card number',
+    '{{name}} must not be a valid {{brand|raw}} credit card number',
     self::TEMPLATE_BRANDED,
 )]
 final class CreditCard extends AbstractRule

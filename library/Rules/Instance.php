@@ -12,8 +12,8 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Message\Template;
 
 #[Template(
-    '{{name}} must be an instance of {{instanceName}}',
-    '{{name}} must not be an instance of {{instanceName}}',
+    '{{name}} must be an instance of `{{instanceName|raw}}`',
+    '{{name}} must not be an instance of `{{instanceName|raw}}`',
 )]
 final class Instance extends AbstractRule
 {

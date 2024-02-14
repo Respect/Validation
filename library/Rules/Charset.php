@@ -18,8 +18,8 @@ use function mb_detect_encoding;
 use function mb_list_encodings;
 
 #[Template(
-    '{{name}} must be in the {{charset}} charset',
-    '{{name}} must not be in the {{charset}} charset',
+    '{{name}} must be in the {{charset|raw}} charset',
+    '{{name}} must not be in the {{charset|raw}} charset',
 )]
 final class Charset extends AbstractRule
 {

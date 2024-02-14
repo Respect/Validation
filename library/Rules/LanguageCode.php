@@ -18,8 +18,8 @@ use function array_search;
 use function sprintf;
 
 #[Template(
-    '{{name}} must be a valid ISO 639 {{set}} language code',
-    '{{name}} must not be a valid ISO 639 {{set}} language code',
+    '{{name}} must be a valid ISO 639 {{set|raw}} language code',
+    '{{name}} must not be a valid ISO 639 {{set|raw}} language code',
 )]
 final class LanguageCode extends AbstractEnvelope
 {

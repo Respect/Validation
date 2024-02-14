@@ -24,9 +24,9 @@ if (!extension_loaded('bcmath')) {
 --EXPECT--
 "257.0.0.1" must be an IP address
 "127.0.0.1" must not be an IP address
-"127.0.0.1" must be an IP address in the "127.0.1.0-127.0.1.255" range
-"127.0.1.1" must not be an IP address in the "127.0.1.0-127.0.1.255" range
+"127.0.0.1" must be an IP address in the 127.0.1.0-127.0.1.255 range
+"127.0.1.1" must not be an IP address in the 127.0.1.0-127.0.1.255 range
 - "257.0.0.1" must be an IP address
 - "127.0.0.1" must not be an IP address
-- "127.0.0.1" must be an IP address in the "127.0.1.0-127.0.1.255" range
-- "127.0.1.1" must not be an IP address in the "127.0.1.0-127.0.1.255" range
+- "127.0.0.1" must be an IP address in the 127.0.1.0-127.0.1.255 range
+- "127.0.1.1" must not be an IP address in the 127.0.1.0-127.0.1.255 range

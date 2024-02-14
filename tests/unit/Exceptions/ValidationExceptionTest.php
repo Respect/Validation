@@ -12,9 +12,9 @@ namespace Respect\Validation\Exceptions;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Message\TemplateRenderer;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
 
@@ -108,7 +108,7 @@ final class ValidationExceptionTest extends TestCase
         $template = ' This is my new template ';
         $expected = trim($template);
 
-        $sut = $this->createValidationException(formatter: new Formatter('trim', new KeepOriginalStringName()));
+        $sut = $this->createValidationException(formatter: new TemplateRenderer('trim', new KeepOriginalStringName()));
         $sut->updateTemplate($template);
 
         self::assertEquals($expected, $sut->getMessage());
@@ -166,7 +166,7 @@ final class ValidationExceptionTest extends TestCase
         array $params = [],
         string $template = Validatable::TEMPLATE_STANDARD,
         array $templates = [],
-        Formatter $formatter = new Formatter('strval', new KeepOriginalStringName())
+        TemplateRenderer $formatter = new TemplateRenderer('strval', new KeepOriginalStringName())
     ): ValidationException {
         return new ValidationException($input, $id, $params, $template, $templates, $formatter);
     }

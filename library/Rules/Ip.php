@@ -33,8 +33,8 @@ use const FILTER_VALIDATE_IP;
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must be an IP address in the {{range}} range',
-    '{{name}} must not be an IP address in the {{range}} range',
+    '{{name}} must be an IP address in the {{range|raw}} range',
+    '{{name}} must not be an IP address in the {{range|raw}} range',
     self::TEMPLATE_NETWORK_RANGE,
 )]
 final class Ip extends AbstractRule

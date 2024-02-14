@@ -18,10 +18,10 @@ exceptionFullMessage(static fn() => v::not(v::videoUrl('Vimeo'))->assert('https:
 ?>
 --EXPECT--
 "example.com" must be a valid video URL
-"example.com" must be a valid "YouTube" video URL
+"example.com" must be a valid YouTube video URL
 "https://player.vimeo.com/video/7178746722" must not be a valid video URL
-"https://www.youtube.com/embed/netHLn9TScY" must not be a valid "YouTube" video URL
+"https://www.youtube.com/embed/netHLn9TScY" must not be a valid YouTube video URL
 - "example.com" must be a valid video URL
-- "example.com" must be a valid "Vimeo" video URL
+- "example.com" must be a valid Vimeo video URL
 - "https://youtu.be/netHLn9TScY" must not be a valid video URL
-- "https://vimeo.com/71787467" must not be a valid "Vimeo" video URL
+- "https://vimeo.com/71787467" must not be a valid Vimeo video URL

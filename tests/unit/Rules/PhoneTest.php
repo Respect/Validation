@@ -23,7 +23,7 @@ final class PhoneTest extends RuleTestCase
         $phoneValidator = new Phone('BR');
 
         $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage('"abc" must be a valid telephone number for country "Brazil"');
+        $this->expectExceptionMessage('"abc" must be a valid telephone number for country Brazil');
 
         $phoneValidator->assert('abc');
     }

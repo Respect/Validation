@@ -16,10 +16,10 @@ use Respect\Validation\Attributes\ExceptionClass;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
 use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\ParameterStringifier;
 use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
 use Respect\Validation\Message\TemplateCollector;
+use Respect\Validation\Message\TemplateRenderer;
 
 use function count;
 use function lcfirst;
@@ -121,7 +121,7 @@ final class Factory
         }
         $template = $validatable->getTemplate($input);
         $templates = $this->templateCollector->extract($validatable);
-        $formatter = new Formatter($this->translator, $this->parameterStringifier);
+        $formatter = new TemplateRenderer($this->translator, $this->parameterStringifier);
 
         $attributes = $reflection->getAttributes(ExceptionClass::class);
         if (count($attributes) === 0) {

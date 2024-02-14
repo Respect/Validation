@@ -18,8 +18,8 @@ use function preg_match;
 use function sprintf;
 
 #[Template(
-    '{{name}} must be a number in the base {{base}}',
-    '{{name}} must not be a number in the base {{base}}',
+    '{{name}} must be a number in the base {{base|raw}}',
+    '{{name}} must not be a number in the base {{base|raw}}',
 )]
 final class Base extends AbstractRule
 {

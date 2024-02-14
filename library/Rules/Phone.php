@@ -26,8 +26,8 @@ use function sprintf;
     self::TEMPLATE_INTERNATIONAL,
 )]
 #[Template(
-    '{{name}} must be a valid telephone number for country {{countryName}}',
-    '{{name}} must not be a valid telephone number for country {{countryName}}',
+    '{{name}} must be a valid telephone number for country {{countryName|trans}}',
+    '{{name}} must not be a valid telephone number for country {{countryName|trans}}',
     self::TEMPLATE_FOR_COUNTRY,
 )]
 final class Phone extends AbstractRule

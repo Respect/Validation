@@ -63,7 +63,7 @@ final class SubdivisionCodeTest extends TestCase
         $countrySubdivision = new SubdivisionCode('BR');
 
         $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage('"CA" must be a subdivision code of "Brazil"');
+        $this->expectExceptionMessage('"CA" must be a subdivision code of Brazil');
 
         $countrySubdivision->assert('CA');
     }

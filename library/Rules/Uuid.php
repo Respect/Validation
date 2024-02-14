@@ -22,8 +22,8 @@ use function sprintf;
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must be a valid UUID version {{version}}',
-    '{{name}} must not be a valid UUID version {{version}}',
+    '{{name}} must be a valid UUID version {{version|raw}}',
+    '{{name}} must not be a valid UUID version {{version|raw}}',
     self::TEMPLATE_VERSION,
 )]
 final class Uuid extends AbstractRule

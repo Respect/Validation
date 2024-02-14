@@ -19,8 +19,8 @@ use function ctype_print;
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must contain only printable characters and "{{additionalChars}}"',
-    '{{name}} must not contain printable characters or "{{additionalChars}}"',
+    '{{name}} must contain only printable characters and {{additionalChars}}',
+    '{{name}} must not contain printable characters or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
 final class Printable extends AbstractFilterRule

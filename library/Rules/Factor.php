@@ -16,8 +16,8 @@ use function is_integer;
 use function is_numeric;
 
 #[Template(
-    '{{name}} must be a factor of {{dividend}}',
-    '{{name}} must not be a factor of {{dividend}}',
+    '{{name}} must be a factor of {{dividend|raw}}',
+    '{{name}} must not be a factor of {{dividend|raw}}',
 )]
 final class Factor extends AbstractRule
 {

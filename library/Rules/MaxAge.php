@@ -12,8 +12,8 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Message\Template;
 
 #[Template(
-    '{{name}} must be {{age}} years or less',
-    '{{name}} must not be {{age}} years or less',
+    '{{name}} must be {{age|raw}} years or less',
+    '{{name}} must not be {{age|raw}} years or less',
 )]
 final class MaxAge extends AbstractAge
 {
