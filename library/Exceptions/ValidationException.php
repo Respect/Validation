@@ -14,6 +14,7 @@ use Respect\Validation\Message\Template;
 use Respect\Validation\Message\TemplateRenderer;
 
 use function count;
+use function preg_match;
 
 class ValidationException extends InvalidArgumentException implements Exception
 {
@@ -88,7 +89,7 @@ class ValidationException extends InvalidArgumentException implements Exception
 
     public function hasCustomTemplate(): bool
     {
-        return $this->getTemplateString() === $this->template;
+        return preg_match('/__[a-z_]+_/', $this->template) === 0;
     }
 
     private function getTemplateString(): string

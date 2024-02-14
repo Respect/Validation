@@ -17,8 +17,8 @@ use function is_scalar;
 
 abstract class AbstractRelated extends AbstractRule
 {
-    public const TEMPLATE_NOT_PRESENT = 'not_present';
-    public const TEMPLATE_INVALID = 'invalid';
+    public const TEMPLATE_NOT_PRESENT = '__not_present__';
+    public const TEMPLATE_INVALID = '__invalid__';
 
     abstract public function hasReference(mixed $input): bool;
 

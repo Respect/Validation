@@ -45,10 +45,10 @@ use function is_array;
 )]
 final class KeySet extends AbstractWrapper implements NonNegatable
 {
-    public const TEMPLATE_NONE = 'none';
-    public const TEMPLATE_SOME = 'some';
-    public const TEMPLATE_STRUCTURE = 'structure';
-    public const TEMPLATE_STRUCTURE_EXTRA = 'structure_extra';
+    public const TEMPLATE_NONE = '__none__';
+    public const TEMPLATE_SOME = '__some__';
+    public const TEMPLATE_STRUCTURE = '__structure__';
+    public const TEMPLATE_STRUCTURE_EXTRA = '__structure_extra__';
 
     /**
      * @var mixed[]

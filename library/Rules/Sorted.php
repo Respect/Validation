@@ -31,8 +31,8 @@ use function str_split;
 )]
 final class Sorted extends AbstractRule
 {
-    public const TEMPLATE_ASCENDING = 'ascending';
-    public const TEMPLATE_DESCENDING = 'descending';
+    public const TEMPLATE_ASCENDING = '__ascending__';
+    public const TEMPLATE_DESCENDING = '__descending__';
 
     public const ASCENDING = 'ASC';
     public const DESCENDING = 'DESC';

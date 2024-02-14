@@ -30,7 +30,7 @@ use function sprintf;
 )]
 final class VideoUrl extends AbstractRule
 {
-    public const TEMPLATE_SERVICE = 'service';
+    public const TEMPLATE_SERVICE = '__service__';
 
     private const SERVICES = [
         // phpcs:disable Generic.Files.LineLength.TooLong

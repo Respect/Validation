@@ -32,8 +32,8 @@ use function sprintf;
 )]
 final class Phone extends AbstractRule
 {
-    public const TEMPLATE_FOR_COUNTRY = 'for_country';
-    public const TEMPLATE_INTERNATIONAL = 'international';
+    public const TEMPLATE_FOR_COUNTRY = '__for_country__';
+    public const TEMPLATE_INTERNATIONAL = '__international__';
 
     private readonly ?Countries\Country $country;
 

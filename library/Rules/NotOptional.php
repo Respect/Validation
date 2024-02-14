@@ -26,7 +26,7 @@ final class NotOptional extends AbstractRule
 {
     use CanValidateUndefined;
 
-    public const TEMPLATE_NAMED = 'named';
+    public const TEMPLATE_NAMED = '__named__';
 
     public function validate(mixed $input): bool
     {

@@ -16,7 +16,7 @@ use function str_split;
 
 abstract class AbstractFilterRule extends AbstractRule
 {
-    public const TEMPLATE_EXTRA = 'extra';
+    public const TEMPLATE_EXTRA = '__extra__';
 
     private readonly string $additionalChars;
 

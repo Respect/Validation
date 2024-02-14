@@ -13,7 +13,7 @@ use Respect\Validation\Exceptions\ValidationException;
 
 interface Validatable
 {
-    public const TEMPLATE_STANDARD = 'standard';
+    public const TEMPLATE_STANDARD = '__standard__';
 
     public function assert(mixed $input): void;
 

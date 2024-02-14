@@ -31,7 +31,7 @@ use function sprintf;
 )]
 final class CreditCard extends AbstractRule
 {
-    public const TEMPLATE_BRANDED = 'branded';
+    public const TEMPLATE_BRANDED = '__branded__';
 
     public const ANY = 'Any';
 

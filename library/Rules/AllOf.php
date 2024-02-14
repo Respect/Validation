@@ -28,8 +28,8 @@ use function count;
 )]
 class AllOf extends AbstractComposite
 {
-    public const TEMPLATE_NONE = 'none';
-    public const TEMPLATE_SOME = 'some';
+    public const TEMPLATE_NONE = '__none__';
+    public const TEMPLATE_SOME = '__some__';
 
     public function assert(mixed $input): void
     {

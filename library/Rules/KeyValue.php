@@ -31,7 +31,7 @@ use function Respect\Stringifier\stringify;
 )]
 final class KeyValue extends AbstractRule
 {
-    public const TEMPLATE_COMPONENT = 'component';
+    public const TEMPLATE_COMPONENT = '__component__';
 
     public function __construct(
         private readonly int|string $comparedKey,

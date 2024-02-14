@@ -26,7 +26,7 @@ final class Optional extends AbstractWrapper
 {
     use CanValidateUndefined;
 
-    public const TEMPLATE_NAMED = 'named';
+    public const TEMPLATE_NAMED = '__named__';
 
     public function assert(mixed $input): void
     {

@@ -35,8 +35,8 @@ use function sprintf;
 )]
 final class Not extends AbstractRule
 {
-    public const TEMPLATE_NONE = 'none';
-    public const TEMPLATE_SOME = 'some';
+    public const TEMPLATE_NONE = '__none__';
+    public const TEMPLATE_SOME = '__some__';
 
     private readonly Validatable $rule;
 

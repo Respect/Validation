@@ -39,9 +39,9 @@ use function sprintf;
 )]
 final class Size extends AbstractRule
 {
-    public const TEMPLATE_LOWER = 'lower';
-    public const TEMPLATE_GREATER = 'greater';
-    public const TEMPLATE_BOTH = 'both';
+    public const TEMPLATE_LOWER = '__lower__';
+    public const TEMPLATE_GREATER = '__greater__';
+    public const TEMPLATE_BOTH = '__both__';
 
     private readonly ?float $minValue;
 

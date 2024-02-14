@@ -23,7 +23,7 @@ use Respect\Validation\Message\Template;
 )]
 final class Nullable extends AbstractWrapper
 {
-    public const TEMPLATE_NAMED = 'named';
+    public const TEMPLATE_NAMED = '__named__';
 
     public function assert(mixed $input): void
     {

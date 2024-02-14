@@ -26,7 +26,7 @@ use function trim;
 )]
 final class NotEmpty extends AbstractRule
 {
-    public const TEMPLATE_NAMED = 'named';
+    public const TEMPLATE_NAMED = '__named__';
 
     public function validate(mixed $input): bool
     {

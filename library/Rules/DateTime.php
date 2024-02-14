@@ -31,7 +31,7 @@ final class DateTime extends AbstractRule
 {
     use CanValidateDateTime;
 
-    public const TEMPLATE_FORMAT = 'format';
+    public const TEMPLATE_FORMAT = '__format__';
 
     public function __construct(
         private readonly ?string $format = null

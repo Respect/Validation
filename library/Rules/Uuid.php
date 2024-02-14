@@ -28,7 +28,7 @@ use function sprintf;
 )]
 final class Uuid extends AbstractRule
 {
-    public const TEMPLATE_VERSION = 'version';
+    public const TEMPLATE_VERSION = '__version__';
 
     private const PATTERN_FORMAT = '/^[0-9a-f]{8}-[0-9a-f]{4}-%s[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i';
 

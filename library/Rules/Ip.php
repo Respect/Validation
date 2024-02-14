@@ -39,7 +39,7 @@ use const FILTER_VALIDATE_IP;
 )]
 final class Ip extends AbstractRule
 {
-    public const TEMPLATE_NETWORK_RANGE = 'network_range';
+    public const TEMPLATE_NETWORK_RANGE = '__network_range__';
 
     private ?string $range = null;
 

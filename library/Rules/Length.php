@@ -54,12 +54,12 @@ use function sprintf;
 )]
 final class Length extends AbstractRule
 {
-    public const TEMPLATE_LOWER = 'lower';
-    public const TEMPLATE_GREATER = 'greater';
-    public const TEMPLATE_GREATER_INCLUSIVE = 'greater_inclusive';
-    public const TEMPLATE_EXACT = 'exact';
-    public const TEMPLATE_LOWER_INCLUSIVE = 'lower_inclusive';
-    public const TEMPLATE_BOTH = 'both';
+    public const TEMPLATE_LOWER = '__lower__';
+    public const TEMPLATE_GREATER = '__greater__';
+    public const TEMPLATE_GREATER_INCLUSIVE = '__greater_inclusive__';
+    public const TEMPLATE_EXACT = '__exact__';
+    public const TEMPLATE_LOWER_INCLUSIVE = '__lower_inclusive__';
+    public const TEMPLATE_BOTH = '__both__';
 
     public function __construct(
         private readonly ?int $minValue = null,

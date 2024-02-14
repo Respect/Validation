@@ -33,8 +33,8 @@ use function count;
 )]
 final class Validator extends AllOf
 {
-    public const TEMPLATE_NONE = 'none';
-    public const TEMPLATE_SOME = 'some';
+    public const TEMPLATE_NONE = '__none__';
+    public const TEMPLATE_SOME = '__some__';
 
     public static function create(): self
     {

@@ -23,7 +23,7 @@ use Respect\Validation\Message\Template;
 )]
 final class AlwaysInvalid extends AbstractRule
 {
-    public const TEMPLATE_SIMPLE = 'simple';
+    public const TEMPLATE_SIMPLE = '__simple__';
 
     public function validate(mixed $input): bool
     {
