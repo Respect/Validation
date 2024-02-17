@@ -10,7 +10,6 @@ use Respect\Validation\Validator as v;
 exceptionMessages(static fn () => v::key('firstname', v::notBlank()->setName('First Name'))->assert([]));
 ?>
 --EXPECTF--
-Array
-(
-    [First Name] => First Name must be present
-)
+[
+    'First Name' => 'First Name must be present',
+]

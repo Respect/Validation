@@ -20,7 +20,6 @@ exceptionMessages(static function () use ($arr): void {
 });
 ?>
 --EXPECT--
-Array
-(
-    [name] => name must have a length between 2 and 32
-)
+[
+    'name' => 'name must have a length between 2 and 32',
+]

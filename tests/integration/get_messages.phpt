@@ -40,22 +40,17 @@ exceptionMessages(static function (): void {
 });
 ?>
 --EXPECT--
-Array
-(
-    [mysql] => Array
-        (
-            [host] => host must be of type string
-            [user] => user must be present
-            [password] => password must be present
-            [schema] => schema must be of type string
-        )
-
-    [postgresql] => Array
-        (
-            [host] => host must be present
-            [user] => user must be of type string
-            [password] => password must be of type string
-            [schema] => schema must be present
-        )
-
-)
+[
+    'mysql' => [
+        'host' => 'host must be of type string',
+        'user' => 'user must be present',
+        'password' => 'password must be present',
+        'schema' => 'schema must be of type string',
+    ],
+    'postgresql' => [
+        'host' => 'host must be present',
+        'user' => 'user must be of type string',
+        'password' => 'password must be of type string',
+        'schema' => 'schema must be present',
+    ],
+]

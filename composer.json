@@ -35,7 +35,8 @@
         "respect/coding-standard": "^4.0",
         "sokil/php-isocodes": "^4.2",
         "sokil/php-isocodes-db-only": "^4.0",
-        "squizlabs/php_codesniffer": "^3.8"
+        "squizlabs/php_codesniffer": "^3.8",
+        "symfony/var-exporter": "^6.4 || ^7.0"
     },
     "suggest": {
         "ext-bcmath": "Arbitrary Precision Mathematics",

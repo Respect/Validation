@@ -12,7 +12,6 @@ exceptionMessages(static function (): void {
 });
 ?>
 --EXPECT--
-Array
-(
-    [email] => WRONG EMAIL!!!!!!
-)
+[
+    'email' => 'WRONG EMAIL!!!!!!',
+]

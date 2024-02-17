@@ -27,10 +27,9 @@ exceptionMessages(static function (): void {
 });
 ?>
 --EXPECT--
-Array
-(
-    [username] => username must have a length between 2 and 32
-    [birthdate] => birthdate must be a valid date/time
-    [password] => password must not be empty
-    [email] => email must be present
-)
+[
+    'username' => 'username must have a length between 2 and 32',
+    'birthdate' => 'birthdate must be a valid date/time',
+    'password' => 'password must not be empty',
+    'email' => 'email must be present',
+]

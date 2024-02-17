@@ -51,22 +51,17 @@ exceptionMessages(
 );
 ?>
 --EXPECT--
-Array
-(
-    [mysql] => Array
-        (
-            [host] => 42 should be a MySQL host
-            [user] => Value should be a MySQL username
-            [password] => password must be present
-            [schema] => schema must be of type string
-        )
-
-    [postgresql] => Array
-        (
-            [host] => host must be present
-            [user] => user must be of type string
-            [password] => password must be of type string
-            [schema] => You must provide a valid PostgreSQL schema
-        )
-
-)
+[
+    'mysql' => [
+        'host' => '42 should be a MySQL host',
+        'user' => 'Value should be a MySQL username',
+        'password' => 'password must be present',
+        'schema' => 'schema must be of type string',
+    ],
+    'postgresql' => [
+        'host' => 'host must be present',
+        'user' => 'user must be of type string',
+        'password' => 'password must be of type string',
+        'schema' => 'You must provide a valid PostgreSQL schema',
+    ],
+]
