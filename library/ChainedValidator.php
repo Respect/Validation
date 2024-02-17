@@ -178,7 +178,7 @@ interface ChainedValidator extends Validatable
 
     public function keySet(Key ...$rule): ChainedValidator;
 
-    public function keyValue(string $comparedKey, string $ruleName, string $baseKey): ChainedValidator;
+    public function lazyConsecutive(callable $ruleCreator, callable ...$ruleCreators): ChainedValidator;
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function languageCode(string $set = 'alpha-2'): ChainedValidator;

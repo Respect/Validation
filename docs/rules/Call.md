@@ -56,4 +56,5 @@ See also:
 
 - [Callback](Callback.md)
 - [Each](Each.md)
+- [LazyConsecutive](LazyConsecutive.md)
 - [Sorted](Sorted.md)

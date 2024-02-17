@@ -179,7 +179,7 @@ interface StaticValidator
 
     public static function keySet(Validatable ...$rule): ChainedValidator;
 
-    public static function keyValue(string $comparedKey, string $ruleName, string $baseKey): ChainedValidator;
+    public static function lazyConsecutive(callable $ruleCreator, callable ...$ruleCreators): ChainedValidator;
 
     /** @param "alpha-2"|"alpha-3" $set */
     public static function languageCode(string $set = 'alpha-2'): ChainedValidator;

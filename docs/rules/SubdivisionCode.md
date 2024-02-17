@@ -30,7 +30,7 @@ See also:
 
 - [CountryCode](CountryCode.md)
 - [CurrencyCode](CurrencyCode.md)
-- [KeyValue](KeyValue.md)
+- [LazyConsecutive](LazyConsecutive.md)
 - [Nip](Nip.md)
 - [Pesel](Pesel.md)
 - [PolishIdCard](PolishIdCard.md)

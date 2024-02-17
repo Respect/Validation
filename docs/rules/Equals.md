@@ -27,5 +27,5 @@ See also:
 - [Contains](Contains.md)
 - [Equivalent](Equivalent.md)
 - [Identical](Identical.md)
-- [KeyValue](KeyValue.md)
+- [LazyConsecutive](LazyConsecutive.md)
 - [Version](Version.md)

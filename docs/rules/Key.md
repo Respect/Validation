@@ -47,5 +47,4 @@ See also:
 - [Each](Each.md)
 - [KeyNested](KeyNested.md)
 - [KeySet](KeySet.md)
-- [KeyValue](KeyValue.md)
 - [Property](Property.md)

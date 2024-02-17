@@ -29,6 +29,7 @@ See also:
 
 - [AllOf](AllOf.md)
 - [AnyOf](AnyOf.md)
+- [LazyConsecutive](LazyConsecutive.md)
 - [Not](Not.md)
 - [OneOf](OneOf.md)
 - [When](When.md)

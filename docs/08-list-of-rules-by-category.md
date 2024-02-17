@@ -12,7 +12,6 @@
 - [Key](rules/Key.md)
 - [KeyNested](rules/KeyNested.md)
 - [KeySet](rules/KeySet.md)
-- [KeyValue](rules/KeyValue.md)
 - [Sorted](rules/Sorted.md)
 - [StartsWith](rules/StartsWith.md)
 - [Subset](rules/Subset.md)
@@ -39,6 +38,7 @@
 - [Call](rules/Call.md)
 - [CallableType](rules/CallableType.md)
 - [Callback](rules/Callback.md)
+- [LazyConsecutive](rules/LazyConsecutive.md)
 
 ## Comparisons
 
@@ -56,6 +56,7 @@
 
 - [AllOf](rules/AllOf.md)
 - [AnyOf](rules/AnyOf.md)
+- [LazyConsecutive](rules/LazyConsecutive.md)
 - [NoneOf](rules/NoneOf.md)
 - [OneOf](rules/OneOf.md)
 
@@ -160,7 +161,7 @@
 - [Key](rules/Key.md)
 - [KeyNested](rules/KeyNested.md)
 - [KeySet](rules/KeySet.md)
-- [KeyValue](rules/KeyValue.md)
+- [LazyConsecutive](rules/LazyConsecutive.md)
 - [NoneOf](rules/NoneOf.md)
 - [Not](rules/Not.md)
 - [Nullable](rules/Nullable.md)
@@ -338,8 +339,8 @@
 - [Key](rules/Key.md)
 - [KeyNested](rules/KeyNested.md)
 - [KeySet](rules/KeySet.md)
-- [KeyValue](rules/KeyValue.md)
 - [LanguageCode](rules/LanguageCode.md)
+- [LazyConsecutive](rules/LazyConsecutive.md)
 - [LeapDate](rules/LeapDate.md)
 - [LeapYear](rules/LeapYear.md)
 - [Length](rules/Length.md)

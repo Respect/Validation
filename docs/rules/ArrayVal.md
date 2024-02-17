@@ -35,7 +35,6 @@ See also:
 - [IterableType](IterableType.md)
 - [Key](Key.md)
 - [KeySet](KeySet.md)
-- [KeyValue](KeyValue.md)
 - [ScalarVal](ScalarVal.md)
 - [Sorted](Sorted.md)
 - [Subset](Subset.md)
