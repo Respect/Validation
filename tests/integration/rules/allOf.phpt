@@ -7,17 +7,68 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator as v;
 
-exceptionMessage(static fn() => v::not(v::allOf(v::intType(), v::positive()))->check(42));
-exceptionMessage(static fn() => v::allOf(v::stringType(), v::consonant())->check('Luke i\'m your father'));
-exceptionFullMessage(static fn() => v::allOf(v::stringType(), v::consonant())->assert(42));
-exceptionFullMessage(static function (): void {
-    v::not(v::allOf(v::stringType(), v::length(10)))->assert('Frank Zappa is fantastic');
-});
+run([
+    'Single rule' => [v::allOf(v::stringType()), 1],
+    'Two rules' => [v::allOf(v::intType(), v::negative()), '2'],
+    'Wrapped by "not"' => [v::not(v::allOf(v::intType(), v::positive())), 3],
+    'Wrapping "not"' => [v::allOf(v::not(v::intType(), v::positive())), 4],
+    'With a single template' => [v::allOf(v::stringType()), 5, 'This is a single template'],
+    'With multiple templates' => [
+        v::allOf(v::stringType(), v::uppercase()),
+        5,
+        ['allOf' => 'Unfortunately, we cannot template this'],
+    ],
+]);
 ?>
 --EXPECT--
-42 must not be of type integer
-"Luke i'm your father" must contain only consonants
-- All of the required rules must pass for 42
-  - 42 must be of type string
-  - 42 must contain only consonants
-- "Frank Zappa is fantastic" must not be of type string
+Single rule
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+1 must be of type string
+- 1 must be of type string
+[
+    'allOf' => '1 must be of type string',
+]
+
+Two rules
+⎺⎺⎺⎺⎺⎺⎺⎺⎺
+"2" must be of type integer
+- All of the required rules must pass for "2"
+  - "2" must be of type integer
+  - "2" must be negative
+[
+    'allOf' => '"2" must be negative',
+]
+
+Wrapped by "not"
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+3 must not be of type integer
+- 3 must not be of type integer
+[
+    'intType' => '3 must not be of type integer',
+]
+
+Wrapping "not"
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+4 must not be of type integer
+- 4 must not be of type integer
+[
+    'allOf' => '4 must not be of type integer',
+]
+
+With a single template
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+This is a single template
+- This is a single template
+[
+    'allOf' => 'This is a single template',
+]
+
+With multiple templates
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+5 must be of type string
+- All of the required rules must pass for 5
+  - 5 must be of type string
+  - 5 must be uppercase
+[
+    'allOf' => '5 must be uppercase',
+]
