@@ -1,4 +1,3 @@
-
 # DateTime
 
 - `DateTime()`
@@ -72,6 +71,7 @@ v::dateTime(DateTime::RFC3339_EXTENDED)->validate($input); // false
 See also:
 
 - [Between](Between.md)
+- [Callback](Callback.md)
 - [Date](Date.md)
 - [LeapDate](LeapDate.md)
 - [LeapYear](LeapYear.md)

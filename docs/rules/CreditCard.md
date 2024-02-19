@@ -58,3 +58,12 @@ See also:
 - [Luhn](Luhn.md)
 - [NoWhitespace](NoWhitespace.md)
 - [Regex](Regex.md)
+***
+See also:
+
+- [Decimal](Decimal.md)
+- [Digit](Digit.md)
+- [Iban](Iban.md)
+- [Luhn](Luhn.md)
+- [NoWhitespace](NoWhitespace.md)
+- [Regex](Regex.md)

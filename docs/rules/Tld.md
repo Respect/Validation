@@ -28,5 +28,5 @@ See also:
 - [Domain](Domain.md)
 - [Ip](Ip.md)
 - [MacAddress](MacAddress.md)
-- [SubdivisionCode](SubdivisionCode.md)
 - [PublicDomainSuffix](PublicDomainSuffix.md)
+- [SubdivisionCode](SubdivisionCode.md)

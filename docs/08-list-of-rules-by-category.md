@@ -112,16 +112,14 @@
 - [Pesel](rules/Pesel.md)
 - [Pis](rules/Pis.md)
 - [PolishIdCard](rules/PolishIdCard.md)
-
-## Integrations
-
-- [Sf](rules/Sf.md)
+- [PortugueseNif](rules/PortugueseNif.md)
 
 ## Internet
 
 - [Domain](rules/Domain.md)
 - [Email](rules/Email.md)
 - [Ip](rules/Ip.md)
+- [PublicDomainSuffix](rules/PublicDomainSuffix.md)
 - [Tld](rules/Tld.md)
 - [Url](rules/Url.md)
 - [VideoUrl](rules/VideoUrl.md)
@@ -381,18 +379,19 @@
 - [PhpLabel](rules/PhpLabel.md)
 - [Pis](rules/Pis.md)
 - [PolishIdCard](rules/PolishIdCard.md)
+- [PortugueseNif](rules/PortugueseNif.md)
 - [Positive](rules/Positive.md)
 - [PostalCode](rules/PostalCode.md)
 - [PrimeNumber](rules/PrimeNumber.md)
 - [Printable](rules/Printable.md)
 - [Property](rules/Property.md)
+- [PublicDomainSuffix](rules/PublicDomainSuffix.md)
 - [Punct](rules/Punct.md)
 - [Readable](rules/Readable.md)
 - [Regex](rules/Regex.md)
 - [ResourceType](rules/ResourceType.md)
 - [Roman](rules/Roman.md)
 - [ScalarVal](rules/ScalarVal.md)
-- [Sf](rules/Sf.md)
 - [Size](rules/Size.md)
 - [Slug](rules/Slug.md)
 - [Sorted](rules/Sorted.md)

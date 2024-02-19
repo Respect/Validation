@@ -50,6 +50,7 @@ See also:
 
 - [Domain](Domain.md)
 - [MacAddress](MacAddress.md)
+- [PublicDomainSuffix](PublicDomainSuffix.md)
 - [Tld](Tld.md)
 
 [filter_var()]: https://php.net/filter_var
