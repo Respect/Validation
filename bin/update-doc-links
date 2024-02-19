@@ -36,7 +36,7 @@ create_rule_documentation()
   local rule=${1}
   local related_rules=${2}
   local filename="${DOCS_DIREECTORY}/rules/${rule}.md"
-  local links=$(egrep '^\[.+\]: .+' "${filename}")
+  local links=$(ggrep -E '^\[.+\]: .+' "${filename}")
   local related_links=$(
     tr ':' '\n' <<< ${related_rules} |
       sort -u |
@@ -46,10 +46,10 @@ create_rule_documentation()
   )
 
   # "Description" section
-  sed -nE '/^# /,/^## Changelog/p' "${filename}" | egrep -v '^## Changelog'
+  sed -nE '/^# /,/^## Changelog/p' "${filename}" | ggrep -E -v '^## Changelog'
 
   # "Changelog" section
-  sed -nE '/^## Changelog/,/^\*\*\*/p' "${filename}" | fgrep -v '***'
+  sed -nE '/^## Changelog/,/^\*\*\*/p' "${filename}" | ggrep -Fv '***'
 
   # "See also" section
   echo "***"
@@ -78,7 +78,7 @@ create_list_of_rules()
 
   echo "Creating list of rules"
   {
-    echo "# List of rules"
+    echo "# List of rules by category"
     echo
     for category in $(list_categories); do
       echo "## ${category}"
@@ -91,7 +91,7 @@ create_list_of_rules()
     echo "## Alphabetically"
     echo
     ls -1 "${DOCS_DIREECTORY}/rules/" | sort | sed -E 's,^(.+).md$,- [\1](rules/\1.md),'
-  } > "${DOCS_DIREECTORY}/list-of-rules.md"
+  } > "${DOCS_DIREECTORY}/08-list-of-rules-by-category.md"
 }
 
 link_related_rules()
@@ -101,7 +101,7 @@ link_related_rules()
   echo "Building list of related rules"
   for rule in $(list_rules); do
     declare filename="${DOCS_DIREECTORY}/rules/${rule}.md"
-    declare related_rules=$(egrep '\[.+\]\(.+\.md\)' "${filename}" |
+    declare related_rules=$(ggrep -E '\[.+\]\(.+\.md\)' "${filename}" |
                               sed -E 's,.*\[.+\]\((.+)\.md\).*,\1,' |
                               grep -v 'comparable-values')
 

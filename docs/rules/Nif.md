@@ -17,7 +17,7 @@ v::nif()->validate('P6437358A'); // false
 
 Version | Description
 --------|-------------
-  2.0.0 | Created
+  2.2.0 | Created
 
 ***
 See also:
@@ -26,3 +26,4 @@ See also:
 - [Cnh](Cnh.md)
 - [Cnpj](Cnpj.md)
 - [Cpf](Cpf.md)
+- [PortugueseNif](PortugueseNif.md)

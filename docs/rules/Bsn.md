@@ -26,3 +26,4 @@ See also:
 - [Cpf](Cpf.md)
 - [Imei](Imei.md)
 - [Nif](Nif.md)
+- [PortugueseNif](PortugueseNif.md)

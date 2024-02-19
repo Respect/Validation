@@ -10,7 +10,7 @@ v::greaterThan(10)->validate(9); // false
 ```
 
 Validation makes comparison easier, check out our supported
-[comparable values](../comparable-values.md).
+[comparable values](../07-comparable-values.md).
 
 Message template for this validator includes `{{compareTo}}`.
 

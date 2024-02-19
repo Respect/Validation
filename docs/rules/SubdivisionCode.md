@@ -33,6 +33,7 @@ See also:
 - [Nip](Nip.md)
 - [Pesel](Pesel.md)
 - [PolishIdCard](PolishIdCard.md)
+- [PublicDomainSuffix](PublicDomainSuffix.md)
 - [Tld](Tld.md)
 
 [iso-codes]: https://salsa.debian.org/iso-codes-team/iso-codes

@@ -1,4 +1,4 @@
-# Portuguese NIF
+# PortugueseNif
 
 - `PortugueseNif()`
 
@@ -13,7 +13,17 @@ v::portugueseNif()->validate('220005245'); // false
 
 - Identifications
 
+## Changelog
+
+| Version | Description |
+| ------: | ----------- |
+|   2.2.0 | Created     |
+
 ***
 See also:
 
+- [Bsn](Bsn.md)
+- [Cnh](Cnh.md)
+- [Cnpj](Cnpj.md)
+- [Cpf](Cpf.md)
 - [Nif](Nif.md)

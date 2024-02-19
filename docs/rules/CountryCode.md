@@ -41,6 +41,7 @@ See also:
 - [CurrencyCode](CurrencyCode.md)
 - [LanguageCode](LanguageCode.md)
 - [PostalCode](PostalCode.md)
+- [PublicDomainSuffix](PublicDomainSuffix.md)
 - [SubdivisionCode](SubdivisionCode.md)
 - [Tld](Tld.md)
 
