@@ -16,8 +16,10 @@ use Respect\Validation\Attributes\ExceptionClass;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
 use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Message\ParameterStringifier;
-use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
+use Respect\Validation\Message\Parameter\Processor;
+use Respect\Validation\Message\Parameter\Raw;
+use Respect\Validation\Message\Parameter\Stringify;
+use Respect\Validation\Message\Parameter\Trans;
 use Respect\Validation\Message\TemplateCollector;
 use Respect\Validation\Message\TemplateRenderer;
 
@@ -37,9 +39,9 @@ final class Factory
     /**
      * @var callable
      */
-    private $translator = 'strval';
+    private $translator;
 
-    private ParameterStringifier $parameterStringifier;
+    private Processor $processor;
 
     private TemplateCollector $templateCollector;
 
@@ -47,7 +49,8 @@ final class Factory
 
     public function __construct()
     {
-        $this->parameterStringifier = new KeepOriginalStringName();
+        $this->translator = static fn (string $message) => $message;
+        $this->processor = new Raw(new Trans($this->translator, new Stringify()));
         $this->templateCollector = new TemplateCollector();
     }
 
@@ -72,14 +75,15 @@ final class Factory
     {
         $clone = clone $this;
         $clone->translator = $translator;
+        $clone->processor = new Raw(new Trans($translator, new Stringify()));
 
         return $clone;
     }
 
-    public function withParameterStringifier(ParameterStringifier $parameterStringifier): self
+    public function withParameterProcessor(Processor $processor): self
     {
         $clone = clone $this;
-        $clone->parameterStringifier = $parameterStringifier;
+        $clone->processor = $processor;
 
         return $clone;
     }
@@ -121,7 +125,7 @@ final class Factory
         }
         $template = $validatable->getTemplate($input);
         $templates = $this->templateCollector->extract($validatable);
-        $formatter = new TemplateRenderer($this->translator, $this->parameterStringifier);
+        $formatter = new TemplateRenderer($this->translator, $this->processor);
 
         $attributes = $reflection->getAttributes(ExceptionClass::class);
         if (count($attributes) === 0) {

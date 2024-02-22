@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test\Stubs;
 
-use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
+use Respect\Validation\Message\Parameter\Stringify;
 use Respect\Validation\Message\TemplateRenderer;
 use Respect\Validation\Rules\AbstractComposite;
 use Respect\Validation\Test\Exceptions\CompositeStubException;
@@ -33,7 +33,7 @@ final class CompositeSub extends AbstractComposite
             params: $extraParameters,
             template: Validatable::TEMPLATE_STANDARD,
             templates: [],
-            formatter: new TemplateRenderer(static fn ($value) => $value, new KeepOriginalStringName())
+            formatter: new TemplateRenderer(static fn ($value) => $value, new Stringify())
         );
     }
 }

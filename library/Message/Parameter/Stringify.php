@@ -7,16 +7,14 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Message\Stringifier;
-
-use Respect\Validation\Message\ParameterStringifier;
+namespace Respect\Validation\Message\Parameter;
 
 use function is_string;
 use function Respect\Stringifier\stringify;
 
-final class KeepOriginalStringName implements ParameterStringifier
+final class Stringify implements Processor
 {
-    public function stringify(string $name, mixed $value): string
+    public function process(string $name, mixed $value, ?string $modifier = null): string
     {
         if ($name === 'name' && is_string($value)) {
             return $value;

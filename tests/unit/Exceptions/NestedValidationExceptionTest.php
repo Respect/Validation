@@ -12,7 +12,7 @@ namespace Respect\Validation\Exceptions;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
+use Respect\Validation\Message\Parameter\Stringify;
 use Respect\Validation\Message\TemplateRenderer;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Validatable;
@@ -51,7 +51,7 @@ final class NestedValidationExceptionTest extends TestCase
             params: [],
             template: Validatable::TEMPLATE_STANDARD,
             templates: [],
-            formatter: new TemplateRenderer('strval', new KeepOriginalStringName())
+            formatter: new TemplateRenderer('strval', new Stringify())
         );
     }
 
@@ -63,7 +63,7 @@ final class NestedValidationExceptionTest extends TestCase
             params: [],
             template: Validatable::TEMPLATE_STANDARD,
             templates: [],
-            formatter: new TemplateRenderer('strval', new KeepOriginalStringName())
+            formatter: new TemplateRenderer('strval', new Stringify())
         );
     }
 }

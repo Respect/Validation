@@ -13,9 +13,8 @@ use Exception;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Test\Message\TestingParameterStringifier;
+use Respect\Validation\Test\Message\Parameter\TestingProcessor;
 use Respect\Validation\Test\TestCase;
-use stdClass;
 
 use function sprintf;
 
@@ -25,7 +24,7 @@ final class TemplateRendererTest extends TestCase
     #[Test]
     public function itShouldRenderMessageWithItsTemplate(): void
     {
-        $renderer = new TemplateRenderer(static fn(string $value) => $value, new TestingParameterStringifier());
+        $renderer = new TemplateRenderer(static fn(string $value) => $value, new TestingProcessor());
 
         $template = 'This is my template';
 
@@ -35,14 +34,14 @@ final class TemplateRendererTest extends TestCase
     #[Test]
     public function itShouldReplaceParameters(): void
     {
-        $parameterStringifier = new TestingParameterStringifier();
+        $parameterStringifier = new TestingProcessor();
 
         $renderer = new TemplateRenderer(static fn(string $value) => $value, $parameterStringifier);
 
         $key = 'foo';
         $value = 42;
 
-        $expected = 'Will replace ' . $parameterStringifier->stringify($key, $value);
+        $expected = 'Will replace ' . $parameterStringifier->process($key, $value, null);
         $actual = $renderer->render('Will replace {{foo}}', 'input', [$key => $value]);
 
         self::assertSame($expected, $actual);
@@ -51,16 +50,17 @@ final class TemplateRendererTest extends TestCase
     #[Test]
     public function itShouldReplaceNameWithStringifiedInputWhenThereIsNoName(): void
     {
-        $parameterStringifier = new TestingParameterStringifier();
+        $parameterStringifier = new TestingProcessor();
 
         $renderer = new TemplateRenderer(static fn(string $value) => $value, $parameterStringifier);
 
         $message = 'Will replace {{name}}';
         $input = 'input';
 
-        $expected = 'Will replace ' . $parameterStringifier->stringify(
+        $expected = 'Will replace ' . $parameterStringifier->process(
             'name',
-            $parameterStringifier->stringify('input', $input),
+            $parameterStringifier->process('input', $input, null),
+            null,
         );
         $actual = $renderer->render($message, $input, []);
 
@@ -70,13 +70,13 @@ final class TemplateRendererTest extends TestCase
     #[Test]
     public function itShouldKeepNameWhenDefined(): void
     {
-        $parameterStringifier = new TestingParameterStringifier();
+        $parameterStringifier = new TestingProcessor();
 
         $renderer = new TemplateRenderer(static fn(string $value) => $value, $parameterStringifier);
 
         $name = 'real name';
 
-        $expected = 'Will replace ' . $parameterStringifier->stringify('name', $name);
+        $expected = 'Will replace ' . $parameterStringifier->process('name', $name, null);
         $actual = $renderer->render('Will replace {{name}}', 'input', ['name' => $name]);
 
         self::assertSame($expected, $actual);
@@ -85,7 +85,7 @@ final class TemplateRendererTest extends TestCase
     #[Test]
     public function itShouldKeepUnknownParameters(): void
     {
-        $renderer = new TemplateRenderer(static fn(string $value) => $value, new TestingParameterStringifier());
+        $renderer = new TemplateRenderer(static fn(string $value) => $value, new TestingProcessor());
 
         $expected = 'Will not replace {{unknown}}';
         $actual = $renderer->render($expected, 'input', []);
@@ -101,7 +101,7 @@ final class TemplateRendererTest extends TestCase
 
         $renderer = new TemplateRenderer(
             static fn(string $value) => $translations[$value],
-            new TestingParameterStringifier()
+            new TestingProcessor()
         );
 
         $expected = $translations[$template];
@@ -120,63 +120,8 @@ final class TemplateRendererTest extends TestCase
 
         $renderer = new TemplateRenderer(
             static fn(string $value) => throw new Exception(),
-            new TestingParameterStringifier()
+            new TestingProcessor()
         );
         $renderer->render($template, 'input', []);
-    }
-
-    #[Test]
-    public function itShouldRenderTranslateParameter(): void
-    {
-        $parameterOriginal = 'original';
-        $parameterTranslated = 'translated';
-
-        $template = 'This is my template with {{foo|trans}}';
-
-        $translations = [
-            $parameterOriginal => $parameterTranslated,
-            $template => 'This is my translated template with {{foo|trans}}',
-        ];
-
-        $renderer = new TemplateRenderer(
-            static fn(string $value) => $translations[$value],
-            new TestingParameterStringifier()
-        );
-
-        $parameters = ['foo' => $parameterOriginal];
-
-        $expected = 'This is my translated template with translated';
-        $actual = $renderer->render($template, 'input', $parameters);
-
-        self::assertSame($expected, $actual);
-    }
-
-    #[Test]
-    public function itShouldThrowAnExceptionWhenTranslateParameterIsNotScalar(): void
-    {
-        $parameterValue = new stdClass();
-
-        $template = 'This is my template with {{foo|trans}}';
-
-        $renderer = new TemplateRenderer(static fn(string $value) => $value, new TestingParameterStringifier());
-
-        $this->expectException(ComponentException::class);
-
-        $renderer->render($template, 'input', ['foo' => $parameterValue]);
-    }
-
-    #[Test]
-    public function itShouldRenderRawParameter(): void
-    {
-        $raw = 'raw';
-
-        $template = 'This is my template with {{foo|raw}}';
-
-        $renderer = new TemplateRenderer(static fn(string $value) => $value, new TestingParameterStringifier());
-
-        $expected = 'This is my template with raw';
-        $actual = $renderer->render($template, 'input', ['foo' => $raw]);
-
-        self::assertSame($expected, $actual);
     }
 }
