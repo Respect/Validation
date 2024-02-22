@@ -9,11 +9,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 use function stream_context_create;
 
+#[Group('rule')]
+#[CoversClass(PortugueseNif::class)]
 final class PortugueseNifTest extends RuleTestCase
 {
     /** @return iterable<array{PortugueseNif, mixed}> */
