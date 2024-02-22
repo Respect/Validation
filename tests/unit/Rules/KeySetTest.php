@@ -33,8 +33,8 @@ final class KeySetTest extends TestCase
         $this->expectExceptionMessage('KeySet rule accepts only Key rules');
 
         new KeySet(new AllOf(
-            new Key('foo', Stub::pass(0), false),
-            new Key('bar', Stub::pass(0), false),
+            new Key('foo', Stub::daze(), false),
+            new Key('bar', Stub::daze(), false),
         ));
     }
 
@@ -44,7 +44,7 @@ final class KeySetTest extends TestCase
         $this->expectException(ComponentException::class);
         $this->expectExceptionMessage('KeySet rule accepts only Key rules');
 
-        new KeySet(new AllOf(Stub::pass(0)));
+        new KeySet(new AllOf(Stub::daze()));
     }
 
     #[Test]
@@ -53,7 +53,7 @@ final class KeySetTest extends TestCase
         $this->expectException(ComponentException::class);
         $this->expectExceptionMessage('KeySet rule accepts only Key rules');
 
-        new KeySet(Stub::pass(0));
+        new KeySet(Stub::daze());
     }
 
     #[Test]
@@ -65,7 +65,7 @@ final class KeySetTest extends TestCase
 
         $sut = new KeySet(
             new Key('foo', Stub::pass(1), true),
-            new Key('bar', Stub::pass(0), true),
+            new Key('bar', Stub::daze(), true),
         );
 
         self::assertFalse($sut->validate($input));
@@ -80,7 +80,7 @@ final class KeySetTest extends TestCase
 
         $sut = new KeySet(
             new Key('foo', Stub::pass(1), true),
-            new Key('bar', Stub::pass(0), false),
+            new Key('bar', Stub::daze(), false),
         );
 
         self::assertTrue($sut->validate($input));
@@ -107,8 +107,8 @@ final class KeySetTest extends TestCase
     public function shouldValidateKeysWhenEmpty(): void
     {
         $sut = new KeySet(
-            new Key('foo', Stub::pass(0), true),
-            new Key('bar', Stub::pass(0), true),
+            new Key('foo', Stub::daze(), true),
+            new Key('bar', Stub::daze(), true),
         );
 
         self::assertFalse($sut->validate([]));

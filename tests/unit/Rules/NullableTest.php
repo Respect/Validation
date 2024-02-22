@@ -43,7 +43,7 @@ final class NullableTest extends TestCase
     #[DoesNotPerformAssertions]
     public function shouldNotAssertRuleWhenInputIsNull(): void
     {
-        $sut = new Nullable(Stub::pass(0));
+        $sut = new Nullable(Stub::daze());
         $sut->assert(null);
     }
 
@@ -63,7 +63,7 @@ final class NullableTest extends TestCase
     #[DoesNotPerformAssertions]
     public function shouldNotCheckRuleWhenInputIsNull(): void
     {
-        $rule = new Nullable(Stub::pass(0));
+        $rule = new Nullable(Stub::daze());
         $rule->check(null);
     }
 

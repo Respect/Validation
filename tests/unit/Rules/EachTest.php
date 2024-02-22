@@ -74,7 +74,7 @@ final class EachTest extends RuleTestCase
     public static function providerForValidInput(): iterable
     {
         return [
-            [new Each(Stub::pass(0)), []],
+            [new Each(Stub::daze()), []],
             [new Each(Stub::pass(5)), [1, 2, 3, 4, 5]],
             [new Each(Stub::pass(5)), self::createTraversableInput(1, 5)],
             [new Each(Stub::pass(5)), self::createStdClassInput(1, 5)],
@@ -85,10 +85,10 @@ final class EachTest extends RuleTestCase
     public static function providerForInvalidInput(): iterable
     {
         return [
-            [new Each(Stub::fail(0)), 123],
-            [new Each(Stub::fail(0)), ''],
-            [new Each(Stub::fail(0)), null],
-            [new Each(Stub::fail(0)), false],
+            [new Each(Stub::daze()), 123],
+            [new Each(Stub::daze()), ''],
+            [new Each(Stub::daze()), null],
+            [new Each(Stub::daze()), false],
             [new Each(Stub::fail(5)), ['', 2, 3, 4, 5]],
             [new Each(Stub::fail(5)), ['a', 2, 3, 4, 5]],
             [new Each(Stub::fail(5)), self::createTraversableInput(1, 5)],

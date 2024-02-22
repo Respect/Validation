@@ -43,7 +43,7 @@ final class PropertyTest extends RuleTestCase
                 new WithProperties(),
             ],
             'non mandatory attribute is not present with extra validator' => [
-                new Property('nonexistent', Stub::pass(0), false),
+                new Property('nonexistent', Stub::daze(), false),
                 new WithProperties(),
             ],
             'attribute is present but uninitialized with extra validator' => [
@@ -58,7 +58,7 @@ final class PropertyTest extends RuleTestCase
     {
         return [
             'attribute is absent without extra validator' => [new Property('barr'), new WithProperties()],
-            'attribute is absent with extra validator' => [new Property('barr', Stub::fail(0)), new WithProperties()],
+            'attribute is absent with extra validator' => [new Property('barr', Stub::daze()), new WithProperties()],
             'private attribute is not valid based on extra validator' => [
                 new Property('private', Stub::fail(1)),
                 new WithProperties(),

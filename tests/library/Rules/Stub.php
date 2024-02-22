@@ -34,6 +34,11 @@ final class Stub extends AbstractRule
         $this->validations = $validations;
     }
 
+    public static function daze(): self
+    {
+        return new self();
+    }
+
     public static function pass(int $expectedCount): self
     {
         return new self(...array_fill(0, $expectedCount, true));

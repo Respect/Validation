@@ -99,7 +99,7 @@ final class FactoryTest extends TestCase
     {
         $factory = new Factory();
         $input = 'input';
-        $rule = Stub::pass(0);
+        $rule = Stub::daze();
 
         self::assertInstanceOf(ValidationException::class, $factory->exception($rule, $input));
     }
