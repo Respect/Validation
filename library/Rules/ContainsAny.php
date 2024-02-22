@@ -9,9 +9,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 
 use function array_map;
+use function count;
 
 #[Template(
     '{{name}} must contain at least one of the values {{needles}}',
@@ -20,13 +22,19 @@ use function array_map;
 final class ContainsAny extends Envelope
 {
     /**
-     * @param mixed[] $needles At least one of the values provided must be found in input string or array
+     * @param non-empty-array<mixed> $needles At least one of the values provided must be found in input string or array
      * @param bool $identical Defines whether the value should be compared strictly, when validating array
      */
     public function __construct(array $needles, bool $identical = false)
     {
+        // @phpstan-ignore-next-line
+        if (empty($needles)) {
+            throw new InvalidRuleConstructorException('At least one value must be provided');
+        }
+
+        $rules = $this->getRules($needles, $identical);
         parent::__construct(
-            new AnyOf(...$this->getRules($needles, $identical)),
+            count($rules) === 1 ? $rules[0] : new AnyOf(...$rules),
             ['needles' => $needles]
         );
     }

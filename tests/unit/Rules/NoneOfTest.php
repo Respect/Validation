@@ -21,7 +21,6 @@ final class NoneOfTest extends RuleTestCase
     /** @return iterable<string, array{NoneOf, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        yield 'fail' => [new NoneOf(Stub::fail(1)), []];
         yield 'fail, fail' => [new NoneOf(Stub::fail(1), Stub::fail(1)), []];
         yield 'fail, fail, fail' => [new NoneOf(Stub::fail(1), Stub::fail(1), Stub::fail(1)), []];
     }
@@ -29,7 +28,6 @@ final class NoneOfTest extends RuleTestCase
     /** @return iterable<string, array{NoneOf, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        yield 'pass' => [new NoneOf(Stub::pass(1)), []];
         yield 'pass, fail' => [new NoneOf(Stub::pass(1), Stub::fail(1)), []];
         yield 'fail, pass' => [new NoneOf(Stub::fail(1), Stub::pass(1)), []];
         yield 'pass, pass, fail' => [new NoneOf(Stub::pass(1), Stub::pass(1), Stub::fail(1)), []];

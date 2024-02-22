@@ -1,6 +1,6 @@
 # KeySet
 
-- `KeySet(Key ...$rule)`
+- `KeySet(Key $rule, Key ...$rules)`
 
 Validates a keys in a defined structure.
 
@@ -57,6 +57,7 @@ The keys' order is not considered in the validation.
 
 Version | Description
 --------|-------------
+  3.0.0 | Require at one rule to be passed
   2.3.0 | KeySet is NonNegatable, fixed message with extra keys
   1.0.0 | Created
 

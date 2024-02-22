@@ -18,6 +18,7 @@ use Respect\Validation\Validatable;
 use function array_diff;
 use function array_keys;
 use function array_map;
+use function array_merge;
 use function array_values;
 use function count;
 
@@ -42,14 +43,14 @@ final class KeySet extends Wrapper
     /** @var array<string|int> */
     private readonly array $keys;
 
-    public function __construct(Validatable ...$rules)
+    public function __construct(Validatable $rule, Validatable ...$rules)
     {
         /** @var array<Key> $keyRules */
-        $keyRules = $this->extractMany($rules, Key::class);
+        $keyRules = $this->extractMany(array_merge([$rule], $rules), Key::class);
 
-        $this->keys = array_map(static fn(Key $rule) => $rule->getReference(), $keyRules);
+        $this->keys = array_map(static fn(Key $keyRule) => $keyRule->getReference(), $keyRules);
 
-        parent::__construct(new AllOf(...$keyRules));
+        parent::__construct(count($keyRules) === 1 ? $keyRules[0] : new AllOf(...$keyRules));
     }
 
     public function evaluate(mixed $input): Result

@@ -8,11 +8,10 @@ require 'vendor/autoload.php';
 use Respect\Validation\Validator as v;
 
 run([
-    'Single rule' => [v::allOf(v::stringType()), 1],
     'Two rules' => [v::allOf(v::intType(), v::negative()), '2'],
     'Wrapped by "not"' => [v::not(v::allOf(v::intType(), v::positive())), 3],
-    'Wrapping "not"' => [v::allOf(v::not(v::intType(), v::positive())), 4],
-    'With a single template' => [v::allOf(v::stringType()), 5, 'This is a single template'],
+    'Wrapping "not"' => [v::allOf(v::not(v::intType(), v::positive()), v::greaterThan(2)), 4],
+    'With a single template' => [v::allOf(v::stringType(), v::arrayType()), 5, 'This is a single template'],
     'With multiple templates' => [
         v::allOf(v::stringType(), v::uppercase()),
         5,
@@ -25,14 +24,6 @@ run([
 ]);
 ?>
 --EXPECT--
-Single rule
-⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-1 must be of type string
-- 1 must be of type string
-[
-    'stringType' => '1 must be of type string',
-]
-
 Two rules
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺
 "2" must be of type integer

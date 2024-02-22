@@ -11,12 +11,24 @@ namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\RuleTestCase;
 
 #[Group('rule')]
 #[CoversClass(ContainsAny::class)]
 final class ContainsAnyTest extends RuleTestCase
 {
+    #[Test]
+    public function itShouldThrowAnExceptionWhenThereAreNoNeedles(): void
+    {
+        $this->expectException(InvalidRuleConstructorException::class);
+        $this->expectExceptionMessage('At least one value must be provided');
+
+        // @phpstan-ignore-next-line
+        new ContainsAny([]);
+    }
+
     /** @return iterable<array{ContainsAny, mixed}> */
     public static function providerForValidInput(): iterable
     {

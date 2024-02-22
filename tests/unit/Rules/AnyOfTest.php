@@ -21,7 +21,6 @@ final class AnyOfTest extends RuleTestCase
     /** @return iterable<string, array{AnyOf, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        yield 'pass' => [new AnyOf(Stub::pass(1)), []];
         yield 'fail, pass' => [new AnyOf(Stub::fail(1), Stub::pass(1)), []];
         yield 'fail, fail, pass' => [new AnyOf(Stub::fail(1), Stub::fail(1), Stub::pass(1)), []];
         yield 'fail, pass, fail' => [new AnyOf(Stub::fail(1), Stub::pass(1), Stub::fail(1)), []];
@@ -30,7 +29,6 @@ final class AnyOfTest extends RuleTestCase
     /** @return iterable<string, array{AnyOf, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        yield 'fail' => [new AnyOf(Stub::fail(1)), []];
         yield 'fail, fail' => [new AnyOf(Stub::fail(1), Stub::fail(1)), []];
         yield 'fail, fail, fail' => [new AnyOf(Stub::fail(1), Stub::fail(1), Stub::fail(1)), []];
     }

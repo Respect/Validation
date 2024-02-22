@@ -10,11 +10,10 @@ declare(strict_types=1);
 namespace Respect\Validation;
 
 use finfo;
-use Respect\Validation\Rules\Key;
 
 interface ChainedValidator extends Validatable
 {
-    public function allOf(Validatable ...$rule): ChainedValidator;
+    public function allOf(Validatable $rule1, Validatable $rule2, Validatable ...$rule): ChainedValidator;
 
     public function alnum(string ...$additionalChars): ChainedValidator;
 
@@ -24,7 +23,7 @@ interface ChainedValidator extends Validatable
 
     public function alwaysValid(): ChainedValidator;
 
-    public function anyOf(Validatable ...$rule): ChainedValidator;
+    public function anyOf(Validatable $rule1, Validatable $rule2, Validatable ...$rule): ChainedValidator;
 
     public function arrayType(): ChainedValidator;
 
@@ -66,9 +65,7 @@ interface ChainedValidator extends Validatable
 
     public function contains(mixed $containsValue, bool $identical = false): ChainedValidator;
 
-    /**
-     * @param mixed[] $needles
-     */
+    /** @param non-empty-array<mixed> $needles */
     public function containsAny(array $needles, bool $strictCompareArray = false): ChainedValidator;
 
     public function countable(): ChainedValidator;
@@ -176,7 +173,7 @@ interface ChainedValidator extends Validatable
         bool $mandatory = true
     ): ChainedValidator;
 
-    public function keySet(Key ...$rule): ChainedValidator;
+    public function keySet(Validatable $rule, Validatable ...$rules): ChainedValidator;
 
     public function lazyConsecutive(callable $ruleCreator, callable ...$ruleCreators): ChainedValidator;
 
@@ -219,7 +216,7 @@ interface ChainedValidator extends Validatable
 
     public function no(bool $useLocale = false): ChainedValidator;
 
-    public function noneOf(Validatable ...$rule): ChainedValidator;
+    public function noneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rule): ChainedValidator;
 
     public function not(Validatable $rule): ChainedValidator;
 
@@ -245,7 +242,7 @@ interface ChainedValidator extends Validatable
 
     public function odd(): ChainedValidator;
 
-    public function oneOf(Validatable ...$rule): ChainedValidator;
+    public function oneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rule): ChainedValidator;
 
     public function optional(Validatable $rule): ChainedValidator;
 

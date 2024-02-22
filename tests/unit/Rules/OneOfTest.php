@@ -21,7 +21,6 @@ final class OneOfTest extends RuleTestCase
     /** @return iterable<string, array{OneOf, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        yield 'pass' => [new OneOf(Stub::pass(1)), []];
         yield 'fail, pass' => [new OneOf(Stub::fail(1), Stub::pass(1)), []];
         yield 'pass, fail' => [new OneOf(Stub::pass(1), Stub::fail(1)), []];
         yield 'pass, fail, fail' => [new OneOf(Stub::pass(1), Stub::fail(1), Stub::fail(1)), []];
@@ -32,7 +31,6 @@ final class OneOfTest extends RuleTestCase
     /** @return iterable<string, array{OneOf, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        yield 'fail' => [new OneOf(Stub::fail(1)), []];
         yield 'fail, fail' => [new OneOf(Stub::fail(1), Stub::fail(1)), []];
         yield 'fail, fail, fail' => [new OneOf(Stub::fail(1), Stub::fail(1), Stub::fail(1)), []];
         yield 'fail, pass, pass' => [new OneOf(Stub::fail(1), Stub::pass(1), Stub::pass(1)), []];

@@ -1,6 +1,6 @@
 # NoneOf
 
-- `NoneOf(Validatable ...$rule)`
+- `NoneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rule)`
 
 Validates if NONE of the given validators validate:
 
@@ -22,6 +22,7 @@ In the sample above, 'foo' isn't a integer nor a float, so noneOf returns true.
 
 Version | Description
 --------|-------------
+  3.0.0 | Require at least two rules to be passed
   0.3.9 | Created
 
 ***

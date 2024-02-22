@@ -13,7 +13,7 @@ use finfo;
 
 interface StaticValidator
 {
-    public static function allOf(Validatable ...$rule): ChainedValidator;
+    public static function allOf(Validatable $rule1, Validatable $rule2, Validatable ...$rule): ChainedValidator;
 
     public static function alnum(string ...$additionalChars): ChainedValidator;
 
@@ -23,7 +23,7 @@ interface StaticValidator
 
     public static function alwaysValid(): ChainedValidator;
 
-    public static function anyOf(Validatable ...$rule): ChainedValidator;
+    public static function anyOf(Validatable $rule1, Validatable $rule2, Validatable ...$rule): ChainedValidator;
 
     public static function arrayType(): ChainedValidator;
 
@@ -67,9 +67,7 @@ interface StaticValidator
 
     public static function contains(mixed $containsValue, bool $identical = false): ChainedValidator;
 
-    /**
-     * @param mixed[] $needles
-     */
+    /** @param non-empty-array<mixed> $needles */
     public static function containsAny(array $needles, bool $strictCompareArray = false): ChainedValidator;
 
     public static function countable(): ChainedValidator;
@@ -177,7 +175,7 @@ interface StaticValidator
         bool $mandatory = true
     ): ChainedValidator;
 
-    public static function keySet(Validatable ...$rule): ChainedValidator;
+    public static function keySet(Validatable $rule, Validatable ...$rules): ChainedValidator;
 
     public static function lazyConsecutive(callable $ruleCreator, callable ...$ruleCreators): ChainedValidator;
 
@@ -220,7 +218,7 @@ interface StaticValidator
 
     public static function no(bool $useLocale = false): ChainedValidator;
 
-    public static function noneOf(Validatable ...$rule): ChainedValidator;
+    public static function noneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rule): ChainedValidator;
 
     public static function not(Validatable $rule): ChainedValidator;
 
@@ -246,7 +244,7 @@ interface StaticValidator
 
     public static function odd(): ChainedValidator;
 
-    public static function oneOf(Validatable ...$rule): ChainedValidator;
+    public static function oneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rule): ChainedValidator;
 
     public static function optional(Validatable $rule): ChainedValidator;
 

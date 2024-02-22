@@ -1,6 +1,6 @@
 # AllOf
 
-- `AllOf(Validatable ...$rule)`
+- `AllOf(Validatable $rule1, Validatable $rule2, Validatable ...$rule)`
 
 Will validate if all inner validators validates.
 
@@ -17,6 +17,7 @@ v::allOf(v::intVal(), v::positive())->validate(15); // true
 
 Version | Description
 --------|-------------
+  3.0.0 | Require at least two rules to be passed
   0.3.9 | Created
 
 ***
