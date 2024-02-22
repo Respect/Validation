@@ -49,7 +49,7 @@ final class KeySet extends Wrapper
         /** @var array<Key> $keyRules */
         $keyRules = $this->extractMany(array_merge([$rule], $rules), Key::class);
 
-        $this->keys = array_map(static fn(Key $keyRule) => $keyRule->getReference(), $keyRules);
+        $this->keys = array_map(static fn(Key $keyRule) => $keyRule->getKey(), $keyRules);
 
         parent::__construct(count($keyRules) === 1 ? $keyRules[0] : new AllOf(...$keyRules));
     }

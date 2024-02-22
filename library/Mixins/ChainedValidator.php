@@ -164,11 +164,11 @@ interface ChainedValidator extends Validatable
 
     public function json(): ChainedValidator;
 
-    public function key(
-        string $reference,
-        ?Validatable $referenceValidator = null,
-        bool $mandatory = true
-    ): ChainedValidator;
+    public function key(int|string $key, Validatable $rule): ChainedValidator;
+
+    public function keyExists(int|string $key): ChainedValidator;
+
+    public function keyOptional(int|string $key, Validatable $rule): ChainedValidator;
 
     public function keyNested(
         string $reference,

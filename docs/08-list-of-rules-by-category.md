@@ -10,7 +10,9 @@
 - [EndsWith](rules/EndsWith.md)
 - [In](rules/In.md)
 - [Key](rules/Key.md)
+- [KeyExists](rules/KeyExists.md)
 - [KeyNested](rules/KeyNested.md)
+- [KeyOptional](rules/KeyOptional.md)
 - [KeySet](rules/KeySet.md)
 - [Sorted](rules/Sorted.md)
 - [StartsWith](rules/StartsWith.md)
@@ -242,7 +244,9 @@
 ## Structures
 
 - [Key](rules/Key.md)
+- [KeyExists](rules/KeyExists.md)
 - [KeyNested](rules/KeyNested.md)
+- [KeyOptional](rules/KeyOptional.md)
 - [KeySet](rules/KeySet.md)
 - [Property](rules/Property.md)
 
@@ -349,7 +353,9 @@
 - [IterableVal](rules/IterableVal.md)
 - [Json](rules/Json.md)
 - [Key](rules/Key.md)
+- [KeyExists](rules/KeyExists.md)
 - [KeyNested](rules/KeyNested.md)
+- [KeyOptional](rules/KeyOptional.md)
 - [KeySet](rules/KeySet.md)
 - [LanguageCode](rules/LanguageCode.md)
 - [LazyConsecutive](rules/LazyConsecutive.md)

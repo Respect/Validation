@@ -47,6 +47,8 @@ See also:
 - [IterableType](IterableType.md)
 - [IterableVal](IterableVal.md)
 - [Key](Key.md)
+- [KeyExists](KeyExists.md)
+- [KeyOptional](KeyOptional.md)
 - [Min](Min.md)
 - [NotEmpty](NotEmpty.md)
 - [Unique](Unique.md)

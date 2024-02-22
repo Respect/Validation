@@ -166,11 +166,11 @@ interface StaticValidator
 
     public static function json(): ChainedValidator;
 
-    public static function key(
-        string $reference,
-        ?Validatable $referenceValidator = null,
-        bool $mandatory = true
-    ): ChainedValidator;
+    public static function key(int|string $key, Validatable $rule): ChainedValidator;
+
+    public static function keyExists(int|string $key): ChainedValidator;
+
+    public static function keyOptional(int|string $key, Validatable $rule): ChainedValidator;
 
     public static function keyNested(
         string $reference,

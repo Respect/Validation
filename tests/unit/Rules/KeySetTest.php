@@ -21,16 +21,15 @@ final class KeySetTest extends RuleTestCase
     /** @return iterable<string, array{KeySet, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        yield 'correct keys, without rule' => [new KeySet(new Key('foo')), ['foo' => 'bar']];
         yield 'correct keys, with passing rule' => [new KeySet(new Key('foo', Stub::pass(1))), ['foo' => 'bar']];
     }
 
     /** @return iterable<string, array{KeySet, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        yield 'not array' => [new KeySet(new Key('foo')), null];
-        yield 'missing keys' => [new KeySet(new Key('foo')), []];
-        yield 'extra keys' => [new KeySet(new Key('foo')), ['foo' => 'bar', 'baz' => 'qux']];
+        yield 'not array' => [new KeySet(new Key('foo', Stub::daze())), null];
+        yield 'missing keys' => [new KeySet(new Key('foo', Stub::daze())), []];
+        yield 'extra keys' => [new KeySet(new Key('foo', Stub::daze())), ['foo' => 'bar', 'baz' => 'qux']];
         yield 'correct keys, with failing rule' => [new KeySet(new Key('foo', Stub::fail(1))), ['foo' => 'bar']];
     }
 }

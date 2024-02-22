@@ -218,4 +218,45 @@ abstract class TestCase extends PHPUnitTestCase
             'positive float' => [32.890],
         ];
     }
+
+    /** @return array<array{mixed}> */
+    public static function providerForNonArrayValues(): array
+    {
+        $scalarValues = self::providerForNonScalarValues();
+        unset($scalarValues['array']);
+
+        return array_merge(
+            self::providerForIntegerValues(),
+            self::providerForBooleanValues(),
+            self::providerForFloatValues(),
+            self::providerForStringValues(),
+            $scalarValues,
+        );
+    }
+
+    /** @return array<string, array{string|int, array<mixed>}> */
+    public static function providerForArrayWithMissingKeys(): array
+    {
+        return [
+            'integer key, non-empty input' => [0, [1 => true, 2 => true]],
+            'string key, non-empty input' => ['foo', ['bar' => true, 'baz' => true]],
+            'integer key, empty input' => [0, []],
+            'string key, empty input' => ['foo', []],
+        ];
+    }
+
+    /** @return array<string, array{string|int, array<mixed>}> */
+    public static function providerForArrayWithExistingKeys(): array
+    {
+        return [
+            'integer key with a single value array' => [1, [1 => true]],
+            'integer key with a multiple value array' => [2, [1 => true, 2 => true]],
+            'string key with a single value array' => ['foo', ['foo' => true, 'bar' => true]],
+            'string key with a multiple value array' => ['bar', ['foo' => true, 'bar' => true]],
+            'integer key with null for a value' => [0, [null]],
+            'string key with null for a value' => ['foo', ['foo' => null]],
+            'integer key with false for a value' => [0, [false]],
+            'string key with false for a value' => ['foo', ['foo' => false]],
+        ];
+    }
 }

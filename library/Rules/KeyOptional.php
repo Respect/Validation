@@ -14,7 +14,7 @@ use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\Wrapper;
 use Respect\Validation\Validatable;
 
-final class Key extends Wrapper
+final class KeyOptional extends Wrapper
 {
     use CanBindEvaluateRule;
 
@@ -26,16 +26,11 @@ final class Key extends Wrapper
         parent::__construct($rule);
     }
 
-    public function getKey(): int|string
-    {
-        return $this->key;
-    }
-
     public function evaluate(mixed $input): Result
     {
         $keyExistsResult = $this->bindEvaluate(new KeyExists($this->key), $this, $input);
         if (!$keyExistsResult->isValid) {
-            return $keyExistsResult;
+            return $keyExistsResult->withInvertedMode();
         }
 
         $child = $this->rule->evaluate($input[$this->key]);

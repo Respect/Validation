@@ -12,20 +12,18 @@ exceptionMessages(static function (): void {
         ->key(
             'mysql',
             v::create()
-                ->key('host', v::stringType(), true)
-                ->key('user', v::stringType(), true)
-                ->key('password', v::stringType(), true)
-                ->key('schema', v::stringType(), true),
-            true
+                ->key('host', v::stringType())
+                ->key('user', v::stringType())
+                ->key('password', v::stringType())
+                ->key('schema', v::stringType())
         )
         ->key(
             'postgresql',
             v::create()
-                ->key('host', v::stringType(), true)
-                ->key('user', v::stringType(), true)
-                ->key('password', v::stringType(), true)
-                ->key('schema', v::stringType(), true),
-            true
+                ->key('host', v::stringType())
+                ->key('user', v::stringType())
+                ->key('password', v::stringType())
+                ->key('schema', v::stringType())
         )
         ->assert([
             'mysql' => [

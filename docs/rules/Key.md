@@ -1,32 +1,31 @@
 # Key
 
-- `Key(mixed $key)`
-- `Key(mixed $key, Validatable $rule)`
-- `Key(mixed $key, Validatable $rule, bool $mandatory)`
+- `Key(int|string $key, Validatable $rule)`
 
-Validates an array key.
+Validates the value of an array against a given rule.
 
 ```php
-$dict = [
-    'foo' => 'bar'
-];
+v::key('name', v::stringType())->validate(['name' => 'The Respect Panda']); // true
 
-v::key('foo')->validate($dict); // true
-```
+v::key('email', v::email())->validate(['email' => 'therespectpanda@gmail.com']); // true
 
-You can also validate the key value itself:
-
-```php
-v::key('foo', v::equals('bar'))->validate($dict); // true
-```
-
-Third parameter makes the key presence optional:
-
-```php
-v::key('lorem', v::stringType(), false)->validate($dict); // true
+v::key('age', v::intVal())->validate([]); // false
 ```
 
 The name of this validator is automatically set to the key name.
+
+```php
+v::key('email', v::email())->assert([]);
+// message: email must be present
+
+v::key('email', v::email())->assert(['email' => 'not email']);
+// message: email must be valid email
+```
+
+## Note
+
+* To validate if a key exists, use [KeyExists](KeyExists.md) instead.
+* To validate an array against a given rule if the key exists, use [KeyOptional](KeyOptional.md) instead.
 
 ## Categorization
 
@@ -36,15 +35,18 @@ The name of this validator is automatically set to the key name.
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.3.9 | Created
+| Version | Description                                                          |
+|--------:|----------------------------------------------------------------------|
+|   3.0.0 | Split by [KeyExists](KeyExists.md) and [KeyOptional](KeyOptional.md) |
+|   0.3.9 | Created                                                              |
 
 ***
 See also:
 
 - [ArrayVal](ArrayVal.md)
 - [Each](Each.md)
+- [KeyExists](KeyExists.md)
 - [KeyNested](KeyNested.md)
+- [KeyOptional](KeyOptional.md)
 - [KeySet](KeySet.md)
 - [Property](Property.md)

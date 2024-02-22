@@ -17,26 +17,26 @@ use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
 
 #[Group('rule')]
-#[CoversClass(Key::class)]
-final class KeyTest extends TestCase
+#[CoversClass(KeyOptional::class)]
+final class KeyOptionalTest extends TestCase
 {
     #[Test]
     #[DataProvider('providerForNonArrayValues')]
-    public function itShouldAlwaysInvalidateNonArrayValues(mixed $input): void
+    public function itShouldAlwaysValidateNonArrayValues(mixed $input): void
     {
-        $rule = new Key(0, Stub::daze());
+        $rule = new KeyOptional(0, Stub::daze());
 
-        self::assertInvalidInput($rule, $input);
+        self::assertValidInput($rule, $input);
     }
 
     /** @param array<mixed> $input  */
     #[Test]
     #[DataProvider('providerForArrayWithMissingKeys')]
-    public function itShouldInvalidateMissingKeys(int|string $key, array $input): void
+    public function itShouldAlwaysValidateMissingKeys(int|string $key, array $input): void
     {
-        $rule = new Key($key, Stub::daze());
+        $rule = new KeyOptional($key, Stub::daze());
 
-        self::assertInvalidInput($rule, $input);
+        self::assertValidInput($rule, $input);
     }
 
     /** @param array<mixed> $input  */
@@ -46,19 +46,10 @@ final class KeyTest extends TestCase
     {
         $wrapped = Stub::pass(1);
 
-        $rule = new Key($key, $wrapped);
+        $rule = new KeyOptional($key, $wrapped);
         $rule->evaluate($input);
 
         self::assertEquals($wrapped->inputs, [$input[$key]]);
-    }
-
-    #[Test]
-    public function itShouldReturnDefinedKey(): void
-    {
-        $key = 'toodaloo';
-        $rule = new Key($key, Stub::daze());
-
-        self::assertSame($key, $rule->getKey());
     }
 
     #[Test]
@@ -68,7 +59,7 @@ final class KeyTest extends TestCase
 
         $wrapped = Stub::daze();
 
-        new Key($key, $wrapped);
+        new KeyOptional($key, $wrapped);
 
         self::assertEquals($key, $wrapped->getName());
     }
@@ -80,7 +71,7 @@ final class KeyTest extends TestCase
 
         $wrapped = Stub::daze();
 
-        new Key($key, $wrapped);
+        new KeyOptional($key, $wrapped);
 
         self::assertEquals($key, $wrapped->getName());
     }

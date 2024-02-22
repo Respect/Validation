@@ -32,6 +32,8 @@ See also:
 - [IntType](IntType.md)
 - [IterableType](IterableType.md)
 - [IterableVal](IterableVal.md)
+- [KeyExists](KeyExists.md)
+- [KeyOptional](KeyOptional.md)
 - [NullType](NullType.md)
 - [ObjectType](ObjectType.md)
 - [ResourceType](ResourceType.md)
