@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
 
 use function array_diff;
 use function is_array;
@@ -18,7 +19,7 @@ use function is_array;
     '{{name}} must be subset of {{superset}}',
     '{{name}} must not be subset of {{superset}}',
 )]
-final class Subset extends AbstractRule
+final class Subset extends Standard
 {
     /**
      * @param mixed[] $superset
@@ -28,20 +29,13 @@ final class Subset extends AbstractRule
     ) {
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
+        $parameters = ['superset' => $this->superset];
         if (!is_array($input)) {
-            return false;
+            return Result::failed($input, $this)->withParameters($parameters);
         }
 
-        return array_diff($input, $this->superset) === [];
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function getParams(): array
-    {
-        return ['superset' => $this->superset];
+        return new Result(array_diff($input, $this->superset) === [], $input, $this, parameters: $parameters);
     }
 }
