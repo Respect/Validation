@@ -93,7 +93,6 @@ return [
     'K12.CO.US',
     'K12.CT.US',
     'K12.DC.US',
-    'K12.DE.US',
     'K12.FL.US',
     'K12.GA.US',
     'K12.GU.US',
