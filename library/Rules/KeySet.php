@@ -64,14 +64,12 @@ final class KeySet extends Wrapper
 
         $missingKeys = array_diff($this->keys, $inputKeys);
         if (count($missingKeys) > 0) {
-            return Result::failed($input, $this, self::TEMPLATE_MISSING)
-                ->withParameters(['missingKeys' => array_values($missingKeys)]);
+            return Result::failed($input, $this, ['missingKeys' => array_values($missingKeys)], self::TEMPLATE_MISSING);
         }
 
         $extraKeys = array_diff($inputKeys, $this->keys);
         if (count($extraKeys) > 0) {
-            return Result::failed($input, $this, self::TEMPLATE_EXTRA)
-                ->withParameters(['extraKeys' => array_values($extraKeys)]);
+            return Result::failed($input, $this, ['extraKeys' => array_values($extraKeys)], self::TEMPLATE_EXTRA);
         }
 
         return parent::evaluate($input);

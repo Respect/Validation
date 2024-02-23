@@ -15,6 +15,6 @@ abstract class Simple extends Standard
 {
     public function evaluate(mixed $input): Result
     {
-        return new Result($this->validate($input), $input, $this, self::TEMPLATE_STANDARD);
+        return new Result($this->validate($input), $input, $this);
     }
 }

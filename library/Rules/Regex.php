@@ -30,9 +30,9 @@ final class Regex extends Standard
     {
         $parameters = ['regex' => $this->regex];
         if (!is_scalar($input)) {
-            return Result::failed($input, $this)->withParameters($parameters);
+            return Result::failed($input, $this, $parameters);
         }
 
-        return new Result(preg_match($this->regex, (string) $input) === 1, $input, $this, parameters: $parameters);
+        return new Result(preg_match($this->regex, (string) $input) === 1, $input, $this, $parameters);
     }
 }

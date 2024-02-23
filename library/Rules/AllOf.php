@@ -43,6 +43,6 @@ final class AllOf extends Composite
             $template = self::TEMPLATE_NONE;
         }
 
-        return (new Result($valid, $input, $this, $template))->withChildren(...$children);
+        return (new Result($valid, $input, $this, [], $template))->withChildren(...$children);
     }
 }

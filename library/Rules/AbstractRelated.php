@@ -36,16 +36,16 @@ abstract class AbstractRelated extends AbstractRule
         $name = $this->getName() ?? (string) $this->reference;
         $hasReference = $this->hasReference($input);
         if ($this->mandatory && !$hasReference) {
-            return Result::failed($input, $this, self::TEMPLATE_NOT_PRESENT)->withNameIfMissing($name);
+            return Result::failed($input, $this, [], self::TEMPLATE_NOT_PRESENT)->withNameIfMissing($name);
         }
 
         if ($this->rule === null || !$hasReference) {
-            return Result::passed($input, $this, self::TEMPLATE_NOT_PRESENT)->withNameIfMissing($name);
+            return Result::passed($input, $this, [], self::TEMPLATE_NOT_PRESENT)->withNameIfMissing($name);
         }
 
         $result = $this->rule->evaluate($this->getReferenceValue($input));
 
-        return (new Result($result->isValid, $input, $this, self::TEMPLATE_INVALID))
+        return (new Result($result->isValid, $input, $this, [], self::TEMPLATE_INVALID))
             ->withChildren($result)
             ->withNameIfMissing($name);
     }

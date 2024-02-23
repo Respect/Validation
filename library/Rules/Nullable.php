@@ -33,7 +33,7 @@ final class Nullable extends Wrapper
         }
 
         if ($this->getName()) {
-            return Result::passed($input, $this, self::TEMPLATE_NAMED);
+            return Result::passed($input, $this, [], self::TEMPLATE_NAMED);
         }
 
         return Result::passed($input, $this);

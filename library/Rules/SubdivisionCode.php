@@ -56,9 +56,9 @@ final class SubdivisionCode extends Standard
         $parameters = ['countryName' => $this->country->getName()];
         $subdivision = $this->subdivisions->getByCode($this->country->getAlpha2() . '-' . $input);
         if ($this->isUndefined($input) && $subdivision === null) {
-            return Result::passed($input, $this)->withParameters($parameters);
+            return Result::passed($input, $this, $parameters);
         }
 
-        return (new Result($subdivision !== null, $input, $this))->withParameters($parameters);
+        return new Result($subdivision !== null, $input, $this, $parameters);
     }
 }

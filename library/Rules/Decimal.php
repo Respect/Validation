@@ -33,10 +33,10 @@ final class Decimal extends Standard
     {
         $parameters = ['decimals' => $this->decimals];
         if (!is_numeric($input)) {
-            return Result::failed($input, $this)->withParameters($parameters);
+            return Result::failed($input, $this, $parameters);
         }
 
-        return new Result($this->isValidDecimal($input), $input, $this, parameters: $parameters);
+        return new Result($this->isValidDecimal($input), $input, $this, $parameters);
     }
 
     private function isValidDecimal(mixed $input): bool

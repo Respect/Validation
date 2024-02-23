@@ -33,9 +33,9 @@ final class Subset extends Standard
     {
         $parameters = ['superset' => $this->superset];
         if (!is_array($input)) {
-            return Result::failed($input, $this)->withParameters($parameters);
+            return Result::failed($input, $this, $parameters);
         }
 
-        return new Result(array_diff($input, $this->superset) === [], $input, $this, parameters: $parameters);
+        return new Result(array_diff($input, $this->superset) === [], $input, $this, $parameters);
     }
 }

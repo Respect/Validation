@@ -45,7 +45,7 @@ final class Call extends AbstractRule
         } catch (Throwable) {
             restore_error_handler();
 
-            return Result::failed($input, $this)->withParameters(['callable' => $this->callable]);
+            return Result::failed($input, $this, ['callable' => $this->callable]);
         }
     }
 

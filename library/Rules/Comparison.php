@@ -33,9 +33,9 @@ abstract class Comparison extends Standard
         $parameters = ['compareTo' => $this->compareTo];
 
         if (!$this->isAbleToCompareValues($left, $right)) {
-            return Result::failed($input, $this)->withParameters($parameters);
+            return Result::failed($input, $this, $parameters);
         }
 
-        return (new Result($this->compare($left, $right), $input, $this))->withParameters($parameters);
+        return new Result($this->compare($left, $right), $input, $this, $parameters);
     }
 }

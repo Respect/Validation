@@ -33,15 +33,13 @@ final class Extension extends Standard
     {
         $parameters = ['extension' => $this->extension];
         if ($input instanceof SplFileInfo) {
-            return (new Result($this->extension === $input->getExtension(), $input, $this))
-                ->withParameters($parameters);
+            return new Result($this->extension === $input->getExtension(), $input, $this, $parameters);
         }
 
         if (!is_string($input)) {
-            return Result::failed($input, $this)->withParameters($parameters);
+            return Result::failed($input, $this, $parameters);
         }
 
-        return (new Result($this->extension === pathinfo($input, PATHINFO_EXTENSION), $input, $this))
-            ->withParameters($parameters);
+        return new Result($this->extension === pathinfo($input, PATHINFO_EXTENSION), $input, $this, $parameters);
     }
 }

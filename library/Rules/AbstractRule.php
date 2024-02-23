@@ -31,8 +31,13 @@ abstract class AbstractRule implements Validatable
 
     public function evaluate(mixed $input): Result
     {
-        return (new Result($this->validate($input), $input, $this, $this->getStandardTemplate($input)))
-            ->withParameters($this->getParams());
+        return new Result(
+            $this->validate($input),
+            $input,
+            $this,
+            $this->getParams(),
+            $this->getStandardTemplate($input)
+        );
     }
 
     public function check(mixed $input): void

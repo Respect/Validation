@@ -33,8 +33,8 @@ final class Result
         public readonly bool $isValid,
         public readonly mixed $input,
         public readonly Rule $rule,
-        string $template = Rule::TEMPLATE_STANDARD,
         public readonly array $parameters = [],
+        string $template = Rule::TEMPLATE_STANDARD,
         public readonly Mode $mode = Mode::DEFAULT,
         ?string $name = null,
         ?string $id = null,
@@ -47,14 +47,24 @@ final class Result
         $this->children = $children;
     }
 
-    public static function failed(mixed $input, Rule $rule, string $template = Rule::TEMPLATE_STANDARD): self
-    {
-        return new self(false, $input, $rule, $template);
+    /** @param array<string, mixed> $parameters */
+    public static function failed(
+        mixed $input,
+        Rule $rule,
+        array $parameters = [],
+        string $template = Rule::TEMPLATE_STANDARD
+    ): self {
+        return new self(false, $input, $rule, $parameters, $template);
     }
 
-    public static function passed(mixed $input, Rule $rule, string $template = Rule::TEMPLATE_STANDARD): self
-    {
-        return new self(true, $input, $rule, $template);
+    /** @param array<string, mixed> $parameters */
+    public static function passed(
+        mixed $input,
+        Rule $rule,
+        array $parameters = [],
+        string $template = Rule::TEMPLATE_STANDARD
+    ): self {
+        return new self(true, $input, $rule, $parameters, $template);
     }
 
     public function withTemplate(string $template): self
@@ -70,12 +80,6 @@ final class Result
     public function withChildren(Result ...$children): self
     {
         return $this->clone(children: $children);
-    }
-
-    /** @param array<string, mixed> $parameters */
-    public function withParameters(array $parameters): self
-    {
-        return $this->clone(parameters: $parameters);
     }
 
     public function withNameIfMissing(string $name): self
@@ -127,13 +131,11 @@ final class Result
     }
 
     /**
-     * @param array<string, mixed>|null $parameters
      * @param array<Result>|null $children
      */
     private function clone(
         ?bool $isValid = null,
         ?string $template = null,
-        ?array $parameters = null,
         ?Mode $mode = null,
         ?string $name = null,
         ?string $id = null,
@@ -144,8 +146,8 @@ final class Result
             $isValid ?? $this->isValid,
             $this->input,
             $this->rule,
+            $this->parameters,
             $template ?? $this->template,
-            $parameters ?? $this->parameters,
             $mode ?? $this->mode,
             $name ?? $this->name,
             $id ?? $this->id,

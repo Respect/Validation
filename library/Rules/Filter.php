@@ -34,18 +34,18 @@ abstract class Filter extends Standard
         $template = $this->additionalChars ? self::TEMPLATE_EXTRA : self::TEMPLATE_STANDARD;
         $parameters = $this->additionalChars ? ['additionalChars' => $this->additionalChars] : [];
         if (!is_scalar($input)) {
-            return Result::failed($input, $this, $template)->withParameters($parameters);
+            return Result::failed($input, $this, $parameters, $template);
         }
 
         $stringInput = (string) $input;
         if ($stringInput === '') {
-            return Result::failed($input, $this, $template)->withParameters($parameters);
+            return Result::failed($input, $this, $parameters, $template);
         }
 
         $filteredInput = $this->filter($stringInput);
         $isValid = $filteredInput === '' || $this->isValid($filteredInput);
 
-        return new Result($isValid, $input, $this, $template, $parameters);
+        return new Result($isValid, $input, $this, $parameters, $template);
     }
 
     private function filter(string $input): string
