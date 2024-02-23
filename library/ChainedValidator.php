@@ -53,7 +53,7 @@ interface ChainedValidator extends Validatable
 
     public function callback(callable $callback): ChainedValidator;
 
-    public function charset(string ...$charset): ChainedValidator;
+    public function charset(string $charset, string ...$charsets): ChainedValidator;
 
     public function cnh(): ChainedValidator;
 

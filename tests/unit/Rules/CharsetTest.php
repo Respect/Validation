@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\RuleTestCase;
 
 use function mb_convert_encoding;
@@ -24,8 +24,8 @@ final class CharsetTest extends RuleTestCase
     #[Test]
     public function itShouldThrowsExceptionWhenCharsetIsNotValid(): void
     {
-        $this->expectException(ComponentException::class);
-        $this->expectExceptionMessage('Invalid charset');
+        $this->expectException(InvalidRuleConstructorException::class);
+        $this->expectExceptionMessage('Invalid charset provided: `["UTF-9"]`');
 
         new Charset('UTF-8', 'UTF-9');
     }

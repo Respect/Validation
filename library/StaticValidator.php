@@ -55,7 +55,7 @@ interface StaticValidator
 
     public static function callback(callable $callback): ChainedValidator;
 
-    public static function charset(string ...$charset): ChainedValidator;
+    public static function charset(string $charset, string ...$charsets): ChainedValidator;
 
     public static function cnh(): ChainedValidator;
 
