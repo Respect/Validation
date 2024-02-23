@@ -50,7 +50,7 @@
 - [Identical](rules/Identical.md)
 - [In](rules/In.md)
 - [LessThan](rules/LessThan.md)
-- [Max](rules/Max.md)
+- [LessThanOrEqual](rules/LessThanOrEqual.md)
 
 ## Composite
 
@@ -346,10 +346,10 @@
 - [LeapYear](rules/LeapYear.md)
 - [Length](rules/Length.md)
 - [LessThan](rules/LessThan.md)
+- [LessThanOrEqual](rules/LessThanOrEqual.md)
 - [Lowercase](rules/Lowercase.md)
 - [Luhn](rules/Luhn.md)
 - [MacAddress](rules/MacAddress.md)
-- [Max](rules/Max.md)
 - [MaxAge](rules/MaxAge.md)
 - [Mimetype](rules/Mimetype.md)
 - [MinAge](rules/MinAge.md)

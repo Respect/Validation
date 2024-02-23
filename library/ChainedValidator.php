@@ -194,7 +194,7 @@ interface ChainedValidator extends Validatable
 
     public function macAddress(): ChainedValidator;
 
-    public function max(mixed $compareTo): ChainedValidator;
+    public function lessThanOrEqual(mixed $compareTo): ChainedValidator;
 
     public function maxAge(int $age, ?string $format = null): ChainedValidator;
 

@@ -22,7 +22,7 @@ v::dateTime()
     ->between(new DateTime('yesterday'), new DateTime('tomorrow'))
     ->validate(new DateTime('now')); // true
 
-v::numericVal()->max(10)->validate(5); // true
+v::numericVal()->lessThanOrEqual(10)->validate(5); // true
 
 v::stringVal()->between('a', 'f')->validate('d'); // true
 

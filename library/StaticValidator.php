@@ -196,7 +196,7 @@ interface StaticValidator
 
     public static function macAddress(): ChainedValidator;
 
-    public static function max(mixed $compareTo): ChainedValidator;
+    public static function lessThanOrEqual(mixed $compareTo): ChainedValidator;
 
     public static function maxAge(int $age, ?string $format = null): ChainedValidator;
 

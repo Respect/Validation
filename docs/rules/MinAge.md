@@ -34,7 +34,7 @@ See also:
 - [Date](Date.md)
 - [DateTime](DateTime.md)
 - [GreaterThanOrEqual](GreaterThanOrEqual.md)
-- [Max](Max.md)
+- [LessThanOrEqual](LessThanOrEqual.md)
 - [MaxAge](MaxAge.md)
 
 [date()]: http://php.net/date
