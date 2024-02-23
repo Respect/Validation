@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
 use SplFileInfo;
 
 use function is_string;
@@ -21,31 +22,26 @@ use const PATHINFO_EXTENSION;
     '{{name}} must have {{extension}} extension',
     '{{name}} must not have {{extension}} extension',
 )]
-final class Extension extends AbstractRule
+final class Extension extends Standard
 {
     public function __construct(
         private readonly string $extension
     ) {
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
+        $parameters = ['extension' => $this->extension];
         if ($input instanceof SplFileInfo) {
-            return $this->extension === $input->getExtension();
+            return (new Result($this->extension === $input->getExtension(), $input, $this))
+                ->withParameters($parameters);
         }
 
         if (!is_string($input)) {
-            return false;
+            return Result::failed($input, $this)->withParameters($parameters);
         }
 
-        return $this->extension === pathinfo($input, PATHINFO_EXTENSION);
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public function getParams(): array
-    {
-        return ['extension' => $this->extension];
+        return (new Result($this->extension === pathinfo($input, PATHINFO_EXTENSION), $input, $this))
+            ->withParameters($parameters);
     }
 }
