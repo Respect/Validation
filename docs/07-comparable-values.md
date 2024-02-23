@@ -16,7 +16,7 @@ that can be parsed by PHP
 Below you can see some examples:
 
 ```php
-v::min(100)->validate($collection); // true if it has at least 100 items
+v::greaterThanOrEqual(100)->validate($collection); // true if it has at least 100 items
 
 v::dateTime()
     ->between(new DateTime('yesterday'), new DateTime('tomorrow'))

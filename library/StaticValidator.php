@@ -202,7 +202,7 @@ interface StaticValidator
 
     public static function mimetype(string $mimetype): ChainedValidator;
 
-    public static function min(mixed $compareTo): ChainedValidator;
+    public static function greaterThanOrEqual(mixed $compareTo): ChainedValidator;
 
     public static function minAge(int $age, ?string $format = null): ChainedValidator;
 

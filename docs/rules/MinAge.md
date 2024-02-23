@@ -33,9 +33,9 @@ See also:
 
 - [Date](Date.md)
 - [DateTime](DateTime.md)
+- [GreaterThanOrEqual](GreaterThanOrEqual.md)
 - [Max](Max.md)
 - [MaxAge](MaxAge.md)
-- [Min](Min.md)
 
 [date()]: http://php.net/date
 [DateTimeInterface]: http://php.net/DateTimeInterface

@@ -46,11 +46,11 @@
 - [Equals](rules/Equals.md)
 - [Equivalent](rules/Equivalent.md)
 - [GreaterThan](rules/GreaterThan.md)
+- [GreaterThanOrEqual](rules/GreaterThanOrEqual.md)
 - [Identical](rules/Identical.md)
 - [In](rules/In.md)
 - [LessThan](rules/LessThan.md)
 - [Max](rules/Max.md)
-- [Min](rules/Min.md)
 
 ## Composite
 
@@ -322,6 +322,7 @@
 - [FloatVal](rules/FloatVal.md)
 - [Graph](rules/Graph.md)
 - [GreaterThan](rules/GreaterThan.md)
+- [GreaterThanOrEqual](rules/GreaterThanOrEqual.md)
 - [HexRgbColor](rules/HexRgbColor.md)
 - [Iban](rules/Iban.md)
 - [Identical](rules/Identical.md)
@@ -351,7 +352,6 @@
 - [Max](rules/Max.md)
 - [MaxAge](rules/MaxAge.md)
 - [Mimetype](rules/Mimetype.md)
-- [Min](rules/Min.md)
 - [MinAge](rules/MinAge.md)
 - [Multiple](rules/Multiple.md)
 - [Negative](rules/Negative.md)

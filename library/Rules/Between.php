@@ -29,7 +29,7 @@ final class Between extends Envelope
 
         parent::__construct(
             new AllOf(
-                new Min($minValue),
+                new GreaterThanOrEqual($minValue),
                 new Max($maxValue)
             ),
             [

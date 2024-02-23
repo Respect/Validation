@@ -200,7 +200,7 @@ interface ChainedValidator extends Validatable
 
     public function mimetype(string $mimetype): ChainedValidator;
 
-    public function min(mixed $compareTo): ChainedValidator;
+    public function greaterThanOrEqual(mixed $compareTo): ChainedValidator;
 
     public function minAge(int $age, ?string $format = null): ChainedValidator;
 
