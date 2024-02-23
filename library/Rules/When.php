@@ -19,7 +19,7 @@ use Respect\Validation\Validatable;
     'after asserting that',
     'after failing to assert that',
 )]
-final class When extends AbstractRule
+final class When extends Standard
 {
     use CanBindEvaluateRule;
 
@@ -52,36 +52,5 @@ final class When extends AbstractRule
         $thisResult = (new Result($elseResult->isValid, $input, $this))->withMode(Mode::NEGATIVE);
 
         return $elseResult->withNextSibling($thisResult->withNextSibling($whenResult));
-    }
-
-    public function validate(mixed $input): bool
-    {
-        if ($this->when->validate($input)) {
-            return $this->then->validate($input);
-        }
-
-        return $this->else->validate($input);
-    }
-
-    public function assert(mixed $input): void
-    {
-        if ($this->when->validate($input)) {
-            $this->then->assert($input);
-
-            return;
-        }
-
-        $this->else->assert($input);
-    }
-
-    public function check(mixed $input): void
-    {
-        if ($this->when->validate($input)) {
-            $this->then->check($input);
-
-            return;
-        }
-
-        $this->else->check($input);
     }
 }
