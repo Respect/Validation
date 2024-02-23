@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
 
 use function is_numeric;
 use function is_string;
@@ -21,28 +22,26 @@ use function var_export;
     '{{name}} must have {{decimals}} decimals',
     '{{name}} must not have {{decimals}} decimals',
 )]
-final class Decimal extends AbstractRule
+final class Decimal extends Standard
 {
     public function __construct(
         private readonly int $decimals
     ) {
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
+        $parameters = ['decimals' => $this->decimals];
         if (!is_numeric($input)) {
-            return false;
+            return Result::failed($input, $this)->withParameters($parameters);
         }
 
-        return $this->toFormattedString($input) === $this->toRawString($input);
+        return new Result($this->isValidDecimal($input), $input, $this, parameters: $parameters);
     }
 
-    /**
-     * @return array<string, int>
-     */
-    public function getParams(): array
+    private function isValidDecimal(mixed $input): bool
     {
-        return ['decimals' => $this->decimals];
+        return $this->toFormattedString($input) === $this->toRawString($input);
     }
 
     private function toRawString(mixed $input): string
