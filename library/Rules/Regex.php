@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
 
 use function is_scalar;
 use function preg_match;
@@ -18,27 +19,20 @@ use function preg_match;
     '{{name}} must validate against `{{regex|raw}}`',
     '{{name}} must not validate against `{{regex|raw}}`',
 )]
-final class Regex extends AbstractRule
+final class Regex extends Standard
 {
     public function __construct(
         private readonly string $regex
     ) {
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
+        $parameters = ['regex' => $this->regex];
         if (!is_scalar($input)) {
-            return false;
+            return Result::failed($input, $this)->withParameters($parameters);
         }
 
-        return preg_match($this->regex, (string) $input) > 0;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public function getParams(): array
-    {
-        return ['regex' => $this->regex];
+        return new Result(preg_match($this->regex, (string) $input) === 1, $input, $this, parameters: $parameters);
     }
 }
