@@ -1,5 +1,9 @@
 # List of rules by category
 
+## Aggregations
+
+- [Min](rules/Min.md)
+
 ## Arrays
 
 - [ArrayType](rules/ArrayType.md)
@@ -51,6 +55,7 @@
 - [In](rules/In.md)
 - [LessThan](rules/LessThan.md)
 - [LessThanOrEqual](rules/LessThanOrEqual.md)
+- [Min](rules/Min.md)
 
 ## Composite
 
@@ -352,6 +357,7 @@
 - [MacAddress](rules/MacAddress.md)
 - [MaxAge](rules/MaxAge.md)
 - [Mimetype](rules/Mimetype.md)
+- [Min](rules/Min.md)
 - [MinAge](rules/MinAge.md)
 - [Multiple](rules/Multiple.md)
 - [Negative](rules/Negative.md)

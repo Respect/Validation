@@ -18,7 +18,7 @@ abstract class Wrapper implements Validatable
     use DeprecatedValidatableMethods;
 
     public function __construct(
-        private readonly Validatable $rule
+        protected readonly Validatable $rule
     ) {
     }
 

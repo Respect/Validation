@@ -36,3 +36,4 @@ See also:
 - [Length](Length.md)
 - [LessThan](LessThan.md)
 - [LessThanOrEqual](LessThanOrEqual.md)
+- [Min](Min.md)

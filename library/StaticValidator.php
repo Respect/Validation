@@ -200,6 +200,8 @@ interface StaticValidator
 
     public static function maxAge(int $age, ?string $format = null): ChainedValidator;
 
+    public static function min(Validatable $rule): ChainedValidator;
+
     public static function mimetype(string $mimetype): ChainedValidator;
 
     public static function greaterThanOrEqual(mixed $compareTo): ChainedValidator;

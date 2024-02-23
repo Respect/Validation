@@ -13,14 +13,6 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Validatable;
 
-use function implode;
-use function ltrim;
-use function realpath;
-use function Respect\Stringifier\stringify;
-use function sprintf;
-use function strrchr;
-use function substr;
-
 abstract class RuleTestCase extends TestCase
 {
     /**
@@ -57,45 +49,5 @@ abstract class RuleTestCase extends TestCase
     public function shouldValidateInvalidInput(Validatable $validator, mixed $input): void
     {
         self::assertInvalidInput($validator, $input);
-    }
-
-    public static function fixture(?string $filename = null): string
-    {
-        $parts = [(string) realpath(__DIR__ . '/../fixtures')];
-        if ($filename !== null) {
-            $parts[] = ltrim($filename, '/');
-        }
-
-        return implode('/', $parts);
-    }
-
-    public static function assertValidInput(Validatable $rule, mixed $input): void
-    {
-        $result = $rule->evaluate($input);
-
-        self::assertTrue(
-            $result->isValid,
-            sprintf(
-                '%s should pass with input %s and parameters %s',
-                substr((string) strrchr($rule::class, '\\'), 1),
-                stringify($input),
-                stringify($result->parameters)
-            )
-        );
-    }
-
-    public static function assertInvalidInput(Validatable $rule, mixed $input): void
-    {
-        $result = $rule->evaluate($input);
-
-        self::assertFalse(
-            $result->isValid,
-            sprintf(
-                '%s should fail with input %s and parameters %s',
-                substr((string) strrchr($rule::class, '\\'), 1),
-                stringify($input),
-                stringify($result->parameters)
-            )
-        );
     }
 }

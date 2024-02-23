@@ -9,10 +9,19 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test;
 
+use ArrayObject;
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
+use Respect\Validation\Validatable;
 use stdClass;
 
 use function array_merge;
+use function implode;
+use function ltrim;
+use function realpath;
+use function Respect\Stringifier\stringify;
+use function sprintf;
+use function strrchr;
+use function substr;
 use function tmpfile;
 
 use const PHP_INT_MAX;
@@ -20,12 +29,55 @@ use const PHP_INT_MIN;
 
 abstract class TestCase extends PHPUnitTestCase
 {
+    public static function fixture(?string $filename = null): string
+    {
+        $parts = [(string) realpath(__DIR__ . '/../fixtures')];
+        if ($filename !== null) {
+            $parts[] = ltrim($filename, '/');
+        }
+
+        return implode('/', $parts);
+    }
+
+    public static function assertValidInput(Validatable $rule, mixed $input): void
+    {
+        $result = $rule->evaluate($input);
+
+        self::assertTrue(
+            $result->isValid,
+            sprintf(
+                '%s should pass with input %s and parameters %s',
+                substr((string) strrchr($rule::class, '\\'), 1),
+                stringify($input),
+                stringify($result->parameters)
+            )
+        );
+    }
+
+    public static function assertInvalidInput(Validatable $rule, mixed $input): void
+    {
+        $result = $rule->evaluate($input);
+
+        self::assertFalse(
+            $result->isValid,
+            sprintf(
+                '%s should fail with input %s and parameters %s',
+                substr((string) strrchr($rule::class, '\\'), 1),
+                stringify($input),
+                stringify($result->parameters)
+            )
+        );
+    }
+
     /** @return array<array{mixed}> */
     public static function providerForAnyValues(): array
     {
         return array_merge(
             self::providerForStringValues(),
             self::providerForNonScalarValues(),
+            self::providerForEmptyIterableValues(),
+            self::providerForNonEmptyIterableValues(),
+            self::providerForNonIterableValues(),
             self::providerForIntegerValues(),
             self::providerForBooleanValues(),
             self::providerForFloatValues(),
@@ -46,12 +98,45 @@ abstract class TestCase extends PHPUnitTestCase
     /** @return array<array{mixed}> */
     public static function providerForNonScalarValues(): array
     {
-        return [
+        return self::providerForNonEmptyIterableValues() + self::providerForNonEmptyIterableValues() + [
             'closure' => [static fn() => 'foo'],
-            'array' => [[]],
-            'object' => [new stdClass()],
+            'stdClass' => [new stdClass()],
             'null' => [null],
             'resource' => [tmpfile()],
+        ];
+    }
+
+    /** @return array<array{mixed}> */
+    public static function providerForNonIterableValues(): array
+    {
+        return array_merge(
+            self::providerForScalarValues(),
+            [
+                'closure' => [static fn() => 'foo'],
+                'stdClass' => [new stdClass()],
+                'null' => [null],
+                'resource' => [tmpfile()],
+            ]
+        );
+    }
+
+    /** @return array<array{mixed}> */
+    public static function providerForNonEmptyIterableValues(): array
+    {
+        return [
+            'ArrayObject' => [new ArrayObject([1, 2, 3])],
+            'array' => [[4, 5, 6]],
+            'generator' => [(static fn() => yield 7)()], // phpcs:ignore
+        ];
+    }
+
+    /** @return array<array{mixed}> */
+    public static function providerForEmptyIterableValues(): array
+    {
+        return [
+            'empty ArrayObject' => [new ArrayObject([])],
+            'empty array' => [[]],
+            'empty generator' => [(static fn() => yield from [])()],
         ];
     }
 
