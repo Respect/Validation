@@ -16,7 +16,6 @@ use Respect\Validation\Result;
 use Sokil\IsoCodes\Database\Countries;
 
 use function class_exists;
-use function implode;
 use function in_array;
 use function is_string;
 
@@ -44,9 +43,9 @@ final class CountryCode extends Standard
         $availableOptions = ['alpha-2', 'alpha-3', 'numeric'];
         if (!in_array($set, $availableOptions, true)) {
             throw new InvalidRuleConstructorException(
-                '"%s" is not a valid set for ISO 3166-1 (Available: %s)',
+                '%s is not a valid set for ISO 3166-1 (Available: %s)',
                 $set,
-                implode(', ', $availableOptions)
+                $availableOptions
             );
         }
 

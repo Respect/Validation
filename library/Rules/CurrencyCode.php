@@ -16,7 +16,6 @@ use Respect\Validation\Result;
 use Sokil\IsoCodes\Database\Currencies;
 
 use function class_exists;
-use function implode;
 use function in_array;
 
 #[Template(
@@ -43,9 +42,9 @@ final class CurrencyCode extends Standard
         $availableSets = ['alpha-3', 'numeric'];
         if (!in_array($set, $availableSets, true)) {
             throw new InvalidRuleConstructorException(
-                '"%s" is not a valid set for ISO 4217 (Available: %s)',
+                '%s is not a valid set for ISO 4217 (Available: %s)',
                 $set,
-                implode(', ', $availableSets)
+                $availableSets
             );
         }
         $this->currencies = $currencies ?? new Currencies();

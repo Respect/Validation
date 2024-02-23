@@ -20,7 +20,6 @@ use function count;
 use function in_array;
 use function mb_detect_encoding;
 use function mb_list_encodings;
-use function Respect\Stringifier\stringify;
 
 #[Template(
     '{{name}} must be in the {{charset|raw}} charset',
@@ -37,7 +36,7 @@ final class Charset extends Standard
         $charsets = array_merge([$charset], $charsets);
         $diff = array_diff($charsets, $available);
         if (count($diff) > 0) {
-            throw new InvalidRuleConstructorException('Invalid charset provided: %s', stringify(array_values($diff)));
+            throw new InvalidRuleConstructorException('Invalid charset provided: %s', array_values($diff));
         }
 
         $this->charset = $charsets;

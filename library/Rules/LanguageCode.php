@@ -17,7 +17,6 @@ use Sokil\IsoCodes\Database\Countries;
 use Sokil\IsoCodes\Database\Languages;
 
 use function class_exists;
-use function implode;
 use function in_array;
 use function is_string;
 
@@ -45,9 +44,9 @@ final class LanguageCode extends Standard
         $availableSets = ['alpha-2', 'alpha-3'];
         if (!in_array($set, $availableSets, true)) {
             throw new InvalidRuleConstructorException(
-                '"%s" is not a valid set for ISO 639-3 (Available: %s)',
+                '%s is not a valid set for ISO 639-3 (Available: %s)',
                 $set,
-                implode(', ', $availableSets)
+                $availableSets
             );
         }
 

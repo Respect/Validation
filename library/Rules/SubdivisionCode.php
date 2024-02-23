@@ -44,7 +44,7 @@ final class SubdivisionCode extends Standard
         $countries ??= new Countries();
         $country = $countries->getByAlpha2($countryCode);
         if ($country === null) {
-            throw new InvalidRuleConstructorException('"%s" is not a supported country code', $countryCode);
+            throw new InvalidRuleConstructorException('%s is not a supported country code', $countryCode);
         }
 
         $this->country = $country;
