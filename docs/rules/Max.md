@@ -1,18 +1,18 @@
-# Min
+# Max
 
-- `Min(Validatable $rule)`
+- `Max(Validatable $rule)`
 
-Validates the minimum value of the input against a given rule.
+Validates the maximum value of the input against a given rule.
 
 ```php
-v::min(v::equals(10))->validate([10, 20, 30]); // true
+v::max(v::equals(30))->validate([10, 20, 30]); // true
 
-v::min(v::between('a', 'c'))->validate(['b', 'd', 'f']); // true
+v::max(v::between('e', 'g'))->validate(['b', 'd', 'f']); // true
 
-v::min(v::greaterThan(new DateTime('yesterday')))
-        ->validate([new DateTime('today'), new DateTime('tomorrow')]); // true
+v::max(v::greaterThan(new DateTime('today')))
+        ->validate([new DateTime('yesterday'), new DateTime('tomorrow')]); // true
 
-v::min(v::lessThan(3))->validate([4, 8, 12]); // false
+v::max(v::greaterThan(15))->validate([4, 8, 12]); // false
 ```
 
 ## Note
@@ -38,10 +38,10 @@ empty, the validation will fail.
 See also:
 
 - [Between](Between.md)
-- [Each](Each.md)
 - [GreaterThan](GreaterThan.md)
 - [GreaterThanOrEqual](GreaterThanOrEqual.md)
+- [IterableType](IterableType.md)
 - [LessThan](LessThan.md)
 - [LessThanOrEqual](LessThanOrEqual.md)
-- [Max](Max.md)
+- [Min](Min.md)
 - [NotEmpty](NotEmpty.md)

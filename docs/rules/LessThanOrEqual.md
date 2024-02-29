@@ -35,6 +35,7 @@ See also:
 - [GreaterThan](GreaterThan.md)
 - [GreaterThanOrEqual](GreaterThanOrEqual.md)
 - [LessThan](LessThan.md)
+- [Max](Max.md)
 - [MaxAge](MaxAge.md)
 - [Min](Min.md)
 - [MinAge](MinAge.md)

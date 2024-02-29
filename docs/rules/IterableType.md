@@ -33,3 +33,4 @@ See also:
 - [Each](Each.md)
 - [Instance](Instance.md)
 - [IterableVal](IterableVal.md)
+- [Max](Max.md)

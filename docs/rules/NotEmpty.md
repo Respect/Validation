@@ -49,6 +49,7 @@ Version | Description
 See also:
 
 - [Each](Each.md)
+- [Max](Max.md)
 - [Min](Min.md)
 - [NoWhitespace](NoWhitespace.md)
 - [NotBlank](NotBlank.md)

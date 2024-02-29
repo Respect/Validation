@@ -51,6 +51,7 @@
 - [In](rules/In.md)
 - [LessThan](rules/LessThan.md)
 - [LessThanOrEqual](rules/LessThanOrEqual.md)
+- [Max](rules/Max.md)
 - [Min](rules/Min.md)
 
 ## Composite
@@ -249,6 +250,7 @@
 
 - [Call](rules/Call.md)
 - [Each](rules/Each.md)
+- [Max](rules/Max.md)
 - [Min](rules/Min.md)
 
 ## Types
@@ -359,6 +361,7 @@
 - [Lowercase](rules/Lowercase.md)
 - [Luhn](rules/Luhn.md)
 - [MacAddress](rules/MacAddress.md)
+- [Max](rules/Max.md)
 - [MaxAge](rules/MaxAge.md)
 - [Mimetype](rules/Mimetype.md)
 - [Min](rules/Min.md)

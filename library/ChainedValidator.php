@@ -198,6 +198,8 @@ interface ChainedValidator extends Validatable
 
     public function lessThanOrEqual(mixed $compareTo): ChainedValidator;
 
+    public function max(Validatable $rule): ChainedValidator;
+
     public function maxAge(int $age, ?string $format = null): ChainedValidator;
 
     public function min(Validatable $rule): ChainedValidator;

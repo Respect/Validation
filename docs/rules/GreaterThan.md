@@ -30,4 +30,5 @@ See also:
 - [Between](Between.md)
 - [GreaterThanOrEqual](GreaterThanOrEqual.md)
 - [LessThanOrEqual](LessThanOrEqual.md)
+- [Max](Max.md)
 - [Min](Min.md)
