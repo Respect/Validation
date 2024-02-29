@@ -27,4 +27,4 @@ See also:
 - [ArrayType](ArrayType.md)
 - [ArrayVal](ArrayVal.md)
 - [Instance](Instance.md)
-- [IterableType](IterableType.md)
+- [IterableVal](IterableVal.md)

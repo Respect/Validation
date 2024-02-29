@@ -16,13 +16,13 @@ use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 #[Group('rule')]
-#[CoversClass(IterableType::class)]
-final class IterableTypeTest extends RuleTestCase
+#[CoversClass(IterableVal::class)]
+final class IterableValTest extends RuleTestCase
 {
-    /** @return iterable<array{IterableType, mixed}> */
+    /** @return iterable<array{IterableVal, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new IterableType();
+        $rule = new IterableVal();
 
         return [
             [$rule, [1, 2, 3]],
@@ -31,10 +31,10 @@ final class IterableTypeTest extends RuleTestCase
         ];
     }
 
-    /** @return iterable<array{IterableType, mixed}> */
+    /** @return iterable<array{IterableVal, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new IterableType();
+        $rule = new IterableVal();
 
         return [
             [$rule, 3],

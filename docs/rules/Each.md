@@ -21,7 +21,7 @@ v::call('array_keys', v::each(v::stringType()))->validate($releaseDates); // tru
 ```
 
 This rule will not validate values that are not iterable, to have a more detailed
-error message, add [IterableType](IterableType.md) to your chain, for example.
+error message, add [IterableVal](IterableVal.md) to your chain, for example.
 
 If the input is empty this rule will consider the value as valid, you use
 [NotEmpty](NotEmpty.md) if convenient:
@@ -49,7 +49,7 @@ See also:
 
 - [ArrayVal](ArrayVal.md)
 - [Call](Call.md)
-- [IterableType](IterableType.md)
+- [IterableVal](IterableVal.md)
 - [Key](Key.md)
 - [NotEmpty](NotEmpty.md)
 - [Unique](Unique.md)
