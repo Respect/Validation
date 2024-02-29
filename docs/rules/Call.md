@@ -44,6 +44,7 @@ v::call(
 
 - Callables
 - Nesting
+- Transformations
 
 ## Changelog
 

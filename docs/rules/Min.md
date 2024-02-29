@@ -25,14 +25,14 @@ This rule uses PHP's [min][] function to compare the input against the given rul
 
 ## Categorization
 
-- Aggregations
 - Comparisons
+- Transformations
 
 ## Changelog
 
 | Version | Description                 |
 |--------:|-----------------------------|
-|   3.0.0 | Became an aggregation       |
+|   3.0.0 | Became a transformation     |
 |   2.0.0 | Became always inclusive     |
 |   1.0.0 | Became inclusive by default |
 |   0.3.9 | Created                     |

@@ -35,6 +35,7 @@ v::notEmpty()->each(v::dateTime())->validate([]); // false
 
 - Arrays
 - Nesting
+- Transformations
 
 ## Changelog
 

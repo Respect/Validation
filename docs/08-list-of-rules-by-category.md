@@ -1,9 +1,5 @@
 # List of rules by category
 
-## Aggregations
-
-- [Min](rules/Min.md)
-
 ## Arrays
 
 - [ArrayType](rules/ArrayType.md)
@@ -248,6 +244,12 @@
 - [KeyNested](rules/KeyNested.md)
 - [KeySet](rules/KeySet.md)
 - [Property](rules/Property.md)
+
+## Transformations
+
+- [Call](rules/Call.md)
+- [Each](rules/Each.md)
+- [Min](rules/Min.md)
 
 ## Types
 
