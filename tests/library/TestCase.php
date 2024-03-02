@@ -120,7 +120,16 @@ abstract class TestCase extends PHPUnitTestCase
         );
     }
 
-    /** @return array<array{mixed}> */
+    /** @return array<array{iterable<mixed>}> */
+    public static function providerForIterableValues(): array
+    {
+        return array_merge(
+            self::providerForNonEmptyIterableValues(),
+            self::providerForEmptyIterableValues(),
+        );
+    }
+
+    /** @return array<array{iterable<mixed>}> */
     public static function providerForNonEmptyIterableValues(): array
     {
         return [
@@ -130,7 +139,7 @@ abstract class TestCase extends PHPUnitTestCase
         ];
     }
 
-    /** @return array<array{mixed}> */
+    /** @return array<array{iterable<mixed>}> */
     public static function providerForEmptyIterableValues(): array
     {
         return [

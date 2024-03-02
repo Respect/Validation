@@ -49,6 +49,7 @@ See also:
 
 - [ArrayVal](ArrayVal.md)
 - [Call](Call.md)
+- [IterableType](IterableType.md)
 - [IterableVal](IterableVal.md)
 - [Key](Key.md)
 - [NotEmpty](NotEmpty.md)

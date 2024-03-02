@@ -159,6 +159,8 @@ interface StaticValidator
 
     public static function isbn(): ChainedValidator;
 
+    public static function iterableType(): ChainedValidator;
+
     public static function iterableVal(): ChainedValidator;
 
     public static function json(): ChainedValidator;

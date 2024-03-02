@@ -157,6 +157,8 @@ interface ChainedValidator extends Validatable
 
     public function isbn(): ChainedValidator;
 
+    public function iterableType(): ChainedValidator;
+
     public function iterableVal(): ChainedValidator;
 
     public function json(): ChainedValidator;

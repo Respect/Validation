@@ -35,6 +35,7 @@ See also:
 - [Countable](Countable.md)
 - [Each](Each.md)
 - [Instance](Instance.md)
+- [IterableType](IterableType.md)
 
 [is_iterable()]: https://www.php.net/is_iterable
 [foreach]: http://php.net/foreach

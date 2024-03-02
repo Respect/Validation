@@ -30,6 +30,7 @@ See also:
 - [Countable](Countable.md)
 - [FloatType](FloatType.md)
 - [IntType](IntType.md)
+- [IterableType](IterableType.md)
 - [IterableVal](IterableVal.md)
 - [NullType](NullType.md)
 - [ObjectType](ObjectType.md)

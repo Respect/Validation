@@ -25,6 +25,7 @@ Version | Description
 See also:
 
 - [Countable](Countable.md)
+- [IterableType](IterableType.md)
 - [IterableVal](IterableVal.md)
 - [ObjectType](ObjectType.md)
 - [Type](Type.md)

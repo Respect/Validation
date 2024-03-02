@@ -32,6 +32,7 @@ See also:
 - [ArrayType](ArrayType.md)
 - [Countable](Countable.md)
 - [Each](Each.md)
+- [IterableType](IterableType.md)
 - [IterableVal](IterableVal.md)
 - [Key](Key.md)
 - [KeySet](KeySet.md)
