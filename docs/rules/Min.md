@@ -17,11 +17,8 @@ v::min(v::lessThan(3))->validate([4, 8, 12]); // false
 
 ## Note
 
-This rule uses PHP's [min][] function to compare the input against the given rule. The PHP manual states that:
-
-> Values of different types will be compared using the [standard comparison rules][]. For instance, a non-numeric
-> `string` will be compared to an `int` as though it were `0`, but multiple non-numeric `string` values will be compared
-> alphanumerically. The actual value returned will be of the original type with no conversion applied.
+This rule uses [IterableType](IterableType.md) and [NotEmpty](NotEmpty.md) internally. If an input is non-iterable or
+empty, the validation will fail.
 
 ## Categorization
 
@@ -41,10 +38,9 @@ This rule uses PHP's [min][] function to compare the input against the given rul
 See also:
 
 - [Between](Between.md)
+- [Each](Each.md)
 - [GreaterThan](GreaterThan.md)
 - [GreaterThanOrEqual](GreaterThanOrEqual.md)
 - [LessThan](LessThan.md)
 - [LessThanOrEqual](LessThanOrEqual.md)
-
-[min]: https://www.php.net/min
-[standard comparison rules]: https://www.php.net/operators.comparison
+- [NotEmpty](NotEmpty.md)

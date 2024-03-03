@@ -20,16 +20,10 @@ You can also validate array keys combining this rule with [Call](Call.md):
 v::call('array_keys', v::each(v::stringType()))->validate($releaseDates); // true
 ```
 
-This rule will not validate values that are not iterable, to have a more detailed
-error message, add [IterableVal](IterableVal.md) to your chain, for example.
+## Note
 
-If the input is empty this rule will consider the value as valid, you use
-[NotEmpty](NotEmpty.md) if convenient:
-
-```php
-v::each(v::dateTime())->validate([]); // true
-v::notEmpty()->each(v::dateTime())->validate([]); // false
-```
+This rule uses [IterableType](IterableType.md) and [NotEmpty](NotEmpty.md) internally. If an input is non-iterable or
+empty, the validation will fail.
 
 ## Categorization
 
@@ -39,10 +33,11 @@ v::notEmpty()->each(v::dateTime())->validate([]); // false
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.0.0 | Remove support for key validation
-  0.3.9 | Created
+| Version | Description                                                 |
+|--------:|-------------------------------------------------------------|
+|   3.0.0 | Rejected `stdClass`, non-iterable. or empty iterable values |
+|   2.0.0 | Remove support for key validation                           |
+|   0.3.9 | Created                                                     |
 
 ***
 See also:
@@ -52,5 +47,6 @@ See also:
 - [IterableType](IterableType.md)
 - [IterableVal](IterableVal.md)
 - [Key](Key.md)
+- [Min](Min.md)
 - [NotEmpty](NotEmpty.md)
 - [Unique](Unique.md)
