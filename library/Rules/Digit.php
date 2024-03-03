@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Core\FilteredString;
 
 use function ctype_digit;
 
@@ -23,7 +24,7 @@ use function ctype_digit;
     '{{name}} must not contain digits (0-9) and {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
-final class Digit extends Filter
+final class Digit extends FilteredString
 {
     protected function isValid(string $input): bool
     {

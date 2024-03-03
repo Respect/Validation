@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Wrapper;
 
 final class Not extends Wrapper
 {

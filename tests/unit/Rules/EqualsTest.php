@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use ArrayObject;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
@@ -34,6 +35,7 @@ final class EqualsTest extends RuleTestCase
     public static function providerForInvalidInput(): iterable
     {
         return [
+            [new Equals(2), new ArrayObject([1, 2])],
             [new Equals('foo'), ''],
             [new Equals('foo'), 'bar'],
         ];

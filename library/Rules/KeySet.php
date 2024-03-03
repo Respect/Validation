@@ -13,6 +13,7 @@ use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Helpers\CanExtractRules;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Wrapper;
 use Respect\Validation\Validatable;
 
 use function array_diff;

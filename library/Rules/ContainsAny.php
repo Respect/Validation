@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Core\Envelope;
 
 use function array_map;
 use function count;

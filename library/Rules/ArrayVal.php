@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use ArrayAccess;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Core\Simple;
 use SimpleXMLElement;
 
 use function is_array;

@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Core\FilteredString;
 
 use function ctype_graph;
 
@@ -23,7 +24,7 @@ use function ctype_graph;
     '{{name}} must not contain graphical characters or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
-final class Graph extends Filter
+final class Graph extends FilteredString
 {
     protected function isValid(string $input): bool
     {

@@ -13,7 +13,6 @@ use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\IterableType;
 use Respect\Validation\Rules\NotEmpty;
-use Respect\Validation\Rules\Wrapper;
 
 use function is_array;
 use function iterator_to_array;

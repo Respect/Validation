@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Core\FilteredString;
 
 use function ctype_xdigit;
 
@@ -23,7 +24,7 @@ use function ctype_xdigit;
     '{{name}} must not contain hexadecimal digits or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
-final class Xdigit extends Filter
+final class Xdigit extends FilteredString
 {
     protected function isValid(string $input): bool
     {

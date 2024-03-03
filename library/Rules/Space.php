@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Core\FilteredString;
 
 use function ctype_space;
 
@@ -23,7 +24,7 @@ use function ctype_space;
     '{{name}} must not contain space characters or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
-final class Space extends Filter
+final class Space extends FilteredString
 {
     protected function isValid(string $input): bool
     {

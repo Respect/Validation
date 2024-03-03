@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Rules;
+namespace Respect\Validation\Rules\Core;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Test\Rules\ConcreteStandard;
+use Respect\Validation\Test\Rules\Core\ConcreteStandard;
 use Respect\Validation\Test\TestCase;
 
 #[Group('core')]

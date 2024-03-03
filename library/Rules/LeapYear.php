@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use DateTimeInterface;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Core\Simple;
 
 use function date;
 use function is_numeric;

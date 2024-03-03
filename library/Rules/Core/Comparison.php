@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Rules;
+namespace Respect\Validation\Rules\Core;
 
 use Respect\Validation\Helpers\CanCompareValues;
 use Respect\Validation\Result;
@@ -16,13 +16,11 @@ abstract class Comparison extends Standard
 {
     use CanCompareValues;
 
-    private readonly mixed $compareTo;
-
     abstract protected function compare(mixed $left, mixed $right): bool;
 
-    public function __construct(mixed $maxValue)
-    {
-        $this->compareTo = $maxValue;
+    public function __construct(
+        private readonly mixed $compareTo
+    ) {
     }
 
     public function evaluate(mixed $input): Result

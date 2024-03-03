@@ -12,6 +12,7 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 
 use function array_diff;
 use function array_merge;

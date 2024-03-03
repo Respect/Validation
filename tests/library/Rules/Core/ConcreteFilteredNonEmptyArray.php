@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Test\Rules;
+namespace Respect\Validation\Test\Rules\Core;
 
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\FilteredNonEmptyArray;

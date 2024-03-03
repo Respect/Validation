@@ -7,13 +7,13 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Rules;
+namespace Respect\Validation\Rules\Core;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Test\Rules\Core\ConcreteWrapper;
 use Respect\Validation\Test\Rules\Stub;
-use Respect\Validation\Test\Rules\WrapperStub;
 use Respect\Validation\Test\TestCase;
 
 #[Group('core')]
@@ -25,7 +25,7 @@ final class WrapperTest extends TestCase
     {
         $wrapped = Stub::pass(2);
 
-        $wrapper = new WrapperStub($wrapped);
+        $wrapper = new ConcreteWrapper($wrapped);
 
         $input = 'Whatever';
 
@@ -39,7 +39,7 @@ final class WrapperTest extends TestCase
 
         $rule = Stub::pass(1);
 
-        $sut = new WrapperStub($rule);
+        $sut = new ConcreteWrapper($rule);
         $sut->setName($name);
 
         self::assertSame($name, $rule->getName());
@@ -53,7 +53,7 @@ final class WrapperTest extends TestCase
 
         $rule = Stub::pass(1);
 
-        $sut = new WrapperStub($rule);
+        $sut = new ConcreteWrapper($rule);
         $sut->setTemplate($template);
 
         self::assertSame($template, $rule->getTemplate());

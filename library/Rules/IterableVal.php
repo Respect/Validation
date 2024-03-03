@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Helpers\CanValidateIterable;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Core\Simple;
 
 #[Template(
     '{{name}} must be iterable',

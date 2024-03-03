@@ -95,6 +95,15 @@ abstract class TestCase extends PHPUnitTestCase
         );
     }
 
+    /** @return array<array{scalar}> */
+    public static function providerForEmptyScalarValues(): array
+    {
+        return [
+            'empty string' => [''],
+            'false' => [false],
+        ];
+    }
+
     /** @return array<array{mixed}> */
     public static function providerForNonScalarValues(): array
     {
@@ -159,6 +168,15 @@ abstract class TestCase extends PHPUnitTestCase
             'float string' => ['56.8'],
             'zero string' => ['0'],
         ];
+    }
+
+    /** @return array<array{string}> */
+    public static function providerForNonEmptyStringValues(): array
+    {
+        $dataProvider = self::providerForStringValues();
+        unset($dataProvider['empty string']);
+
+        return $dataProvider;
     }
 
     /** @return array<array{mixed}> */

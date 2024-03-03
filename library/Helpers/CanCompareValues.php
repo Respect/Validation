@@ -37,7 +37,7 @@ trait CanCompareValues
 
         try {
             return new DateTimeImmutable($value);
-        } catch (Throwable $e) {
+        } catch (Throwable) {
             return $value;
         }
     }

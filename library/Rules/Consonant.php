@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Core\FilteredString;
 
 use function preg_match;
 
@@ -23,7 +24,7 @@ use function preg_match;
     '{{name}} must not contain consonants or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
-final class Consonant extends Filter
+final class Consonant extends FilteredString
 {
     protected function isValid(string $input): bool
     {

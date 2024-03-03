@@ -12,6 +12,7 @@ namespace Respect\Validation\Rules;
 use DateTimeImmutable;
 use DateTimeInterface;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Core\Simple;
 
 use function is_scalar;
 

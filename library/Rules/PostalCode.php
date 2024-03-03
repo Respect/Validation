@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Core\Envelope;
 
 use function sprintf;
 

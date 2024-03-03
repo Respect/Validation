@@ -14,6 +14,7 @@ use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Helpers\CanValidateUndefined;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 use Sokil\IsoCodes\Database\Countries;
 use Sokil\IsoCodes\Database\Subdivisions;
 

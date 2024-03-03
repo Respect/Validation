@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Core\FilteredString;
 
 use function ctype_cntrl;
 
@@ -23,7 +24,7 @@ use function ctype_cntrl;
     '{{name}} must not contain control characters or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
-final class Control extends Filter
+final class Control extends FilteredString
 {
     protected function isValid(string $input): bool
     {

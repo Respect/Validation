@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Test\Rules;
+namespace Respect\Validation\Test\Rules\Core;
 
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Composite;
+use Respect\Validation\Rules\Core\Standard;
 
-final class ConcreteComposite extends Composite
+final class ConcreteStandard extends Standard
 {
     public function evaluate(mixed $input): Result
     {

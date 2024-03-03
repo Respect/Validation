@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Rules;
+namespace Respect\Validation\Rules\Core;
 
 use Respect\Validation\Result;
 use Respect\Validation\Validatable;

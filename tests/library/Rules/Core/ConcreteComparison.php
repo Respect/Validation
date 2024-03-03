@@ -7,19 +7,14 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Rules;
+namespace Respect\Validation\Test\Rules\Core;
 
-use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Comparison;
 
-#[Template(
-    '{{name}} must be less than {{compareTo}}',
-    '{{name}} must not be less than {{compareTo}}',
-)]
-final class LessThan extends Comparison
+final class ConcreteComparison extends Comparison
 {
     protected function compare(mixed $left, mixed $right): bool
     {
-        return $left < $right;
+        return true;
     }
 }

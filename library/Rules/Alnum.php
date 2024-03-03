@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Core\FilteredString;
 
 use function ctype_alnum;
 
@@ -23,7 +24,7 @@ use function ctype_alnum;
     '{{name}} must not contain letters (a-z), digits (0-9) or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
-final class Alnum extends Filter
+final class Alnum extends FilteredString
 {
     protected function isValid(string $input): bool
     {

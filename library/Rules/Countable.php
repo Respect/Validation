@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use Countable as CountableInterface;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Core\Simple;
 
 use function is_array;
 

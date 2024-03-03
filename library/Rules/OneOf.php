@@ -12,6 +12,7 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
+use Respect\Validation\Rules\Core\Composite;
 
 use function array_map;
 use function array_reduce;

@@ -7,39 +7,46 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Rules;
+namespace Respect\Validation\Rules\Core;
 
 use Respect\Validation\Helpers\DeprecatedValidatableMethods;
+use Respect\Validation\Result;
 use Respect\Validation\Validatable;
 
-abstract class Standard implements Validatable
+abstract class Wrapper implements Validatable
 {
     use DeprecatedValidatableMethods;
 
-    private ?string $name = null;
+    public function __construct(
+        protected readonly Validatable $rule
+    ) {
+    }
 
-    private ?string $template = null;
+    public function evaluate(mixed $input): Result
+    {
+        return $this->rule->evaluate($input);
+    }
 
     public function getName(): ?string
     {
-        return $this->name;
+        return $this->rule->getName();
     }
 
     public function setName(string $name): static
     {
-        $this->name = $name;
+        $this->rule->setName($name);
 
         return $this;
     }
 
     public function getTemplate(): ?string
     {
-        return $this->template;
+        return $this->rule->getTemplate();
     }
 
     public function setTemplate(string $template): static
     {
-        $this->template = $template;
+        $this->rule->setTemplate($template);
 
         return $this;
     }

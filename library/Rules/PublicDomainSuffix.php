@@ -12,6 +12,7 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Helpers\CanValidateUndefined;
 use Respect\Validation\Helpers\DomainInfo;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Core\Simple;
 
 use function array_pop;
 use function explode;

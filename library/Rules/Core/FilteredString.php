@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Rules;
+namespace Respect\Validation\Rules\Core;
 
 use Respect\Validation\Result;
 
@@ -16,7 +16,7 @@ use function is_scalar;
 use function str_replace;
 use function str_split;
 
-abstract class Filter extends Standard
+abstract class FilteredString extends Standard
 {
     public const TEMPLATE_EXTRA = '__extra__';
 

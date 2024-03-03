@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Test\Rules;
+namespace Respect\Validation\Test\Rules\Core;
 
-use Respect\Validation\Rules\Simple;
+use Respect\Validation\Rules\Core\Simple;
 
 final class ConcreteSimple extends Simple
 {

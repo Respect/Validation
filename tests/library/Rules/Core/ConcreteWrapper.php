@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Test\Rules;
+namespace Respect\Validation\Test\Rules\Core;
 
-use Respect\Validation\Rules\Envelope;
+use Respect\Validation\Rules\Core\Wrapper;
 
-final class EnvelopStub extends Envelope
+final class ConcreteWrapper extends Wrapper
 {
 }

@@ -12,6 +12,7 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 use Respect\Validation\Validatable;
 
 use function array_merge;

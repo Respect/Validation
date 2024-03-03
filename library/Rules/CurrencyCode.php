@@ -13,6 +13,7 @@ use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 use Sokil\IsoCodes\Database\Currencies;
 
 use function class_exists;

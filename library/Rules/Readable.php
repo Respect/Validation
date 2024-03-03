@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use Psr\Http\Message\StreamInterface;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Core\Simple;
 use SplFileInfo;
 
 use function is_readable;

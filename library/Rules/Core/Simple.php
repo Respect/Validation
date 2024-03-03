@@ -7,15 +7,14 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Test\Rules;
+namespace Respect\Validation\Rules\Core;
 
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Standard;
 
-final class ConcreteStandard extends Standard
+abstract class Simple extends Standard
 {
     public function evaluate(mixed $input): Result
     {
-        return Result::passed($input, $this);
+        return new Result($this->validate($input), $input, $this);
     }
 }

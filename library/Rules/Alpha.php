@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Core\FilteredString;
 
 use function ctype_alpha;
 
@@ -23,7 +24,7 @@ use function ctype_alpha;
     '{{name}} must not contain letters (a-z) or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
-final class Alpha extends Filter
+final class Alpha extends FilteredString
 {
     protected function isValid(string $input): bool
     {
