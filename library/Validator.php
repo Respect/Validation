@@ -17,6 +17,8 @@ use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\StandardFormatter;
 use Respect\Validation\Message\StandardRenderer;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Mixins\ChainedValidator;
+use Respect\Validation\Mixins\StaticValidator;
 use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Rules\AllOf;
 
@@ -25,6 +27,7 @@ use function current;
 
 /**
  * @mixin StaticValidator
+ * @mixin ChainedValidator
  */
 #[ExceptionClass(NestedValidationException::class)]
 #[Template(

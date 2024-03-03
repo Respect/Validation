@@ -27,6 +27,8 @@ final class ValidatorTest extends TestCase
     public function invalidRuleClassShouldThrowComponentException(): void
     {
         $this->expectException(ComponentException::class);
+
+        // @phpstan-ignore-next-line
         Validator::iDoNotExistSoIShouldThrowException();
     }
 
@@ -35,6 +37,7 @@ final class ValidatorTest extends TestCase
     {
         $validator = Validator::create();
 
+        // @phpstan-ignore-next-line
         self::assertSame($validator, $validator->not($validator->notEmpty()));
     }
 }

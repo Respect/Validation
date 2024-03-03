@@ -7,9 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation;
+namespace Respect\Validation\Mixins;
 
 use finfo;
+use Respect\Validation\Validatable;
 
 interface StaticValidator
 {
