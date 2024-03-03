@@ -1,31 +1,37 @@
 # Property
 
-- `Property(string $name)`
-- `Property(string $name, Validatable $rule)`
-- `Property(string $name, Validatable $rule, bool $mandatory)`
+- `Property(string $propertyName, Validatable $rule)`
 
-Validates an object property, even private ones.
+Validates an object property against a given rule.
 
 ```php
-$obj = new stdClass;
-$obj->foo = 'bar';
+$object = new stdClass;
+$object->name = 'The Respect Panda';
+$object->email = 'therespectpanda@gmail.com';
 
-v::property('foo')->validate($obj); // true
-```
+v::property('name', v::equals('The Respect Panda'))->validate($object); // true
 
-You can also validate the property itself:
+v::property('email', v::email())->validate($object); // true
 
-```php
-v::property('foo', v::equals('bar'))->validate($obj); // true
-```
-
-Third parameter makes the property presence optional:
-
-```php
-v::property('lorem', v::stringType(), false)->validate($obj); // true
+v::property('email', v::email()->endsWith('@example.com'))->assert($object); // false
 ```
 
 The name of this validator is automatically set to the property name.
+
+```php
+v::property('website', v::url())->assert($object);
+// message: website must be present
+
+v::property('name', v::uppercase())->assert($object);
+// message: name must be uppercase
+```
+
+## Note
+
+This rule will validate public, private, protected, uninitialised, and static properties.
+
+* To only validate if a property exists, use [PropertyExists](PropertyExists.md) instead.
+* To validate a property against a given rule only if the property exists, use [PropertyOptional](PropertyOptional.md) instead.
 
 ## Categorization
 
@@ -35,10 +41,10 @@ The name of this validator is automatically set to the property name.
 
 ## Changelog
 
-Version | Description
---------|-------------
-  3.0.0 | Renamed from `Attribute` to `Property`
-  0.3.9 | Created
+| Version | Description                                                                                                                          |
+| ------: |--------------------------------------------------------------------------------------------------------------------------------------|
+|   3.0.0 | Renamed from `Attribute` to `Property`, and split by [PropertyExists](PropertyExists.md) and [PropertyOptional](PropertyOptional.md) |
+|   0.3.9 | Created                                                                                                                              |
 
 ***
 See also:
@@ -48,3 +54,5 @@ See also:
 - [KeyNested](KeyNested.md)
 - [KeyOptional](KeyOptional.md)
 - [ObjectType](ObjectType.md)
+- [PropertyExists](PropertyExists.md)
+- [PropertyOptional](PropertyOptional.md)

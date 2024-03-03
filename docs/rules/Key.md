@@ -50,3 +50,5 @@ See also:
 - [KeyOptional](KeyOptional.md)
 - [KeySet](KeySet.md)
 - [Property](Property.md)
+- [PropertyExists](PropertyExists.md)
+- [PropertyOptional](PropertyOptional.md)

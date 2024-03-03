@@ -11,6 +11,9 @@ namespace Respect\Validation\Test;
 
 use ArrayObject;
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
+use Respect\Validation\Test\Stubs\WithProperties;
+use Respect\Validation\Test\Stubs\WithStaticProperties;
+use Respect\Validation\Test\Stubs\WithUninitialized;
 use Respect\Validation\Validatable;
 use stdClass;
 
@@ -257,6 +260,29 @@ abstract class TestCase extends PHPUnitTestCase
             'string key with null for a value' => ['foo', ['foo' => null]],
             'integer key with false for a value' => [0, [false]],
             'string key with false for a value' => ['foo', ['foo' => false]],
+        ];
+    }
+
+    /** @return array<array{string, object}> */
+    public static function providerForObjectsWithMissingProperties(): array
+    {
+        return [
+            'object with no properties' => ['something', new stdClass()],
+            'object with missing property' => ['nonExisting', new WithProperties()],
+        ];
+    }
+
+    /** @return array<array{string, object}> */
+    public static function providerForObjectsWithExistingProperties(): array
+    {
+        return [
+            'public' => ['public', new WithProperties()],
+            'protected' => ['protected', new WithProperties()],
+            'private' => ['private', new WithProperties()],
+            'uninitialized' => ['uninitialized', new WithUninitialized()],
+            'static public' => ['public', new WithStaticProperties()],
+            'static protected' => ['protected', new WithStaticProperties()],
+            'static private' => ['private', new WithStaticProperties()],
         ];
     }
 }

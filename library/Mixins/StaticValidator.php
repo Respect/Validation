@@ -30,11 +30,11 @@ interface StaticValidator
 
     public static function arrayVal(): ChainedValidator;
 
-    public static function property(
-        string $reference,
-        ?Validatable $validator = null,
-        bool $mandatory = true
-    ): ChainedValidator;
+    public static function property(string $propertyName, Validatable $validator): ChainedValidator;
+
+    public static function propertyExists(string $propertyName): ChainedValidator;
+
+    public static function propertyOptional(string $propertyName, Validatable $validator): ChainedValidator;
 
     public static function base(int $base, ?string $chars = null): ChainedValidator;
 

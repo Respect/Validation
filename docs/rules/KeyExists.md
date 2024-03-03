@@ -40,4 +40,5 @@ See also:
 - [Key](Key.md)
 - [KeyOptional](KeyOptional.md)
 - [Property](Property.md)
-
+- [PropertyExists](PropertyExists.md)
+- [PropertyOptional](PropertyOptional.md)

@@ -18,9 +18,9 @@ exceptionFullMessage(static function (): void {
 ?>
 --EXPECT--
 - All of the required rules must pass for `stdClass { +$author="foo" }`
-  - Property title must be present
-  - Property description must be present
+  - title must be present
+  - description must be present
   - All of the required rules must pass for author
     - author must be of type integer
     - author must have a length between 1 and 2
-  - Property user must be present
+  - user must be present

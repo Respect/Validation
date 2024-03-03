@@ -33,6 +33,8 @@ See also:
 - [NullType](NullType.md)
 - [Number](Number.md)
 - [Property](Property.md)
+- [PropertyExists](PropertyExists.md)
+- [PropertyOptional](PropertyOptional.md)
 - [ResourceType](ResourceType.md)
 - [StringType](StringType.md)
 - [StringVal](StringVal.md)

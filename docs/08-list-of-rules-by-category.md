@@ -172,6 +172,7 @@
 - [OneOf](rules/OneOf.md)
 - [Optional](rules/Optional.md)
 - [Property](rules/Property.md)
+- [PropertyOptional](rules/PropertyOptional.md)
 - [When](rules/When.md)
 
 ## Numbers
@@ -203,6 +204,8 @@
 - [Instance](rules/Instance.md)
 - [ObjectType](rules/ObjectType.md)
 - [Property](rules/Property.md)
+- [PropertyExists](rules/PropertyExists.md)
+- [PropertyOptional](rules/PropertyOptional.md)
 
 ## Strings
 
@@ -249,6 +252,8 @@
 - [KeyOptional](rules/KeyOptional.md)
 - [KeySet](rules/KeySet.md)
 - [Property](rules/Property.md)
+- [PropertyExists](rules/PropertyExists.md)
+- [PropertyOptional](rules/PropertyOptional.md)
 
 ## Transformations
 
@@ -405,6 +410,8 @@
 - [PrimeNumber](rules/PrimeNumber.md)
 - [Printable](rules/Printable.md)
 - [Property](rules/Property.md)
+- [PropertyExists](rules/PropertyExists.md)
+- [PropertyOptional](rules/PropertyOptional.md)
 - [PublicDomainSuffix](rules/PublicDomainSuffix.md)
 - [Punct](rules/Punct.md)
 - [Readable](rules/Readable.md)

@@ -27,20 +27,18 @@ exceptionFullMessage(static function (): void {
         ->property(
             'mysql',
             v::create()
-                ->property('host', v::stringType(), true)
-                ->property('user', v::stringType(), true)
-                ->property('password', v::stringType(), true)
-                ->property('schema', v::stringType(), true),
-            true
+                ->property('host', v::stringType())
+                ->property('user', v::stringType())
+                ->property('password', v::stringType())
+                ->property('schema', v::stringType())
         )
         ->property(
             'postgresql',
             v::create()
-                ->property('host', v::stringType(), true)
-                ->property('user', v::stringType(), true)
-                ->property('password', v::stringType(), true)
-                ->property('schema', v::stringType(), true),
-            true
+                ->property('host', v::stringType())
+                ->property('user', v::stringType())
+                ->property('password', v::stringType())
+                ->property('schema', v::stringType())
         )
         ->setName('the given data')
         ->assert($object);

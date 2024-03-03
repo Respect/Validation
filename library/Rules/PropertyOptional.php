@@ -15,7 +15,7 @@ use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\Wrapper;
 use Respect\Validation\Validatable;
 
-final class Property extends Wrapper
+final class PropertyOptional extends Wrapper
 {
     use CanBindEvaluateRule;
     use CanExtractPropertyValue;
@@ -32,7 +32,7 @@ final class Property extends Wrapper
     {
         $propertyExistsResult = $this->bindEvaluate(new PropertyExists($this->propertyName), $this, $input);
         if (!$propertyExistsResult->isValid) {
-            return $propertyExistsResult;
+            return $propertyExistsResult->withInvertedMode();
         }
 
         $childResult = $this->rule->evaluate($this->extractPropertyValue($input, $this->propertyName));

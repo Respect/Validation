@@ -55,6 +55,8 @@ See also:
 - [Key](Key.md)
 - [KeyExists](KeyExists.md)
 - [Property](Property.md)
+- [PropertyExists](PropertyExists.md)
+- [PropertyOptional](PropertyOptional.md)
 
 [array]: https://www.php.net/array
 [ArrayAccess]: https://www.php.net/arrayaccess

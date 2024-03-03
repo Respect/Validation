@@ -9,15 +9,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test\Stubs;
 
-final class WithProperties
+final class WithStaticProperties
 {
     public const PUBLIC_VALUE = 'public';
     public const PROTECTED_VALUE = 'protected';
     public const PRIVATE_VALUE = 'private';
 
-    public string $public = self::PUBLIC_VALUE;
+    public static string $public = self::PUBLIC_VALUE;
 
-    protected string $protected = self::PROTECTED_VALUE;
+    protected static string $protected = self::PROTECTED_VALUE;
 
-    private string $private = self::PRIVATE_VALUE; // @phpstan-ignore-line
+    private static string $private = self::PRIVATE_VALUE; // @phpstan-ignore-line
 }
