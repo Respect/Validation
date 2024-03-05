@@ -172,12 +172,6 @@ interface StaticValidator
 
     public static function keyOptional(int|string $key, Validatable $rule): ChainedValidator;
 
-    public static function keyNested(
-        string $reference,
-        ?Validatable $referenceValidator = null,
-        bool $mandatory = true
-    ): ChainedValidator;
-
     public static function keySet(Validatable $rule, Validatable ...$rules): ChainedValidator;
 
     public static function lazyConsecutive(callable $ruleCreator, callable ...$ruleCreators): ChainedValidator;

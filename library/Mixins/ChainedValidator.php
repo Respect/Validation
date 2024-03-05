@@ -170,12 +170,6 @@ interface ChainedValidator extends Validatable
 
     public function keyOptional(int|string $key, Validatable $rule): ChainedValidator;
 
-    public function keyNested(
-        string $reference,
-        ?Validatable $referenceValidator = null,
-        bool $mandatory = true
-    ): ChainedValidator;
-
     public function keySet(Validatable $rule, Validatable ...$rules): ChainedValidator;
 
     public function lazyConsecutive(callable $ruleCreator, callable ...$ruleCreators): ChainedValidator;

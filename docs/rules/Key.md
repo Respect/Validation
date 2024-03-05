@@ -12,6 +12,19 @@ v::key('email', v::email())->validate(['email' => 'therespectpanda@gmail.com']);
 v::key('age', v::intVal())->validate([]); // false
 ```
 
+You can also use `Key` to validate nested arrays:
+
+```php
+v::key(
+    'payment_details',
+    v::key('credit_card', v::creditCard())
+)->validate([
+    'payment_details' => [
+        'credit_card' => '5376 7473 9720 8720',
+    ],
+]); // true
+```
+
 The name of this validator is automatically set to the key name.
 
 ```php
@@ -46,7 +59,6 @@ See also:
 - [ArrayVal](ArrayVal.md)
 - [Each](Each.md)
 - [KeyExists](KeyExists.md)
-- [KeyNested](KeyNested.md)
 - [KeyOptional](KeyOptional.md)
 - [KeySet](KeySet.md)
 - [Property](Property.md)

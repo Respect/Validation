@@ -16,6 +16,18 @@ v::property('email', v::email())->validate($object); // true
 v::property('email', v::email()->endsWith('@example.com'))->assert($object); // false
 ```
 
+You can also use `Property` to validate nested objects:
+
+```php
+$object->address = new stdClass();
+$object->address->postalCode = '1017 BS';
+
+v::property(
+    'address',
+    v::property('postalCode', v::postalCode('NL'))
+)->validate($object); // true
+```
+
 The name of this validator is automatically set to the property name.
 
 ```php
@@ -51,7 +63,6 @@ See also:
 
 - [Key](Key.md)
 - [KeyExists](KeyExists.md)
-- [KeyNested](KeyNested.md)
 - [KeyOptional](KeyOptional.md)
 - [ObjectType](ObjectType.md)
 - [PropertyExists](PropertyExists.md)

@@ -56,7 +56,6 @@ See also:
 
 - [Key](Key.md)
 - [KeyExists](KeyExists.md)
-- [KeyNested](KeyNested.md)
 - [KeyOptional](KeyOptional.md)
 - [ObjectType](ObjectType.md)
 - [Property](Property.md)
