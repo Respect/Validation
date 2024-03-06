@@ -12,7 +12,6 @@ namespace Respect\Validation;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionObject;
-use Respect\Validation\Attributes\ExceptionClass;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
 use Respect\Validation\Exceptions\ValidationException;
@@ -23,7 +22,6 @@ use Respect\Validation\Message\Parameter\Trans;
 use Respect\Validation\Message\TemplateCollector;
 use Respect\Validation\Message\TemplateRenderer;
 
-use function count;
 use function lcfirst;
 use function sprintf;
 use function trim;
@@ -138,17 +136,7 @@ final class Factory
         $templates = $this->templateCollector->extract($validatable);
         $formatter = new TemplateRenderer($this->translator, $this->processor);
 
-        $attributes = $reflection->getAttributes(ExceptionClass::class);
-        if (count($attributes) === 0) {
-            return new ValidationException($input, $id, $params, $template, $templates, $formatter);
-        }
-
-        /** @var ValidationException $exception */
-        $exception = $this
-            ->createReflectionClass($attributes[0]->newInstance()->class, ValidationException::class)
-            ->newInstance($input, $id, $params, $template, $templates, $formatter);
-
-        return $exception;
+        return new ValidationException($input, $id, $params, $template, $templates, $formatter);
     }
 
     public static function setDefaultInstance(self $defaultInstance): void

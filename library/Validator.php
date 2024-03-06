@@ -9,14 +9,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
-use Respect\Validation\Attributes\ExceptionClass;
-use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidatorException;
 use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\StandardFormatter;
 use Respect\Validation\Message\StandardRenderer;
-use Respect\Validation\Message\Template;
 use Respect\Validation\Mixins\ChainedValidator;
 use Respect\Validation\Mixins\StaticValidator;
 use Respect\Validation\Rules\AbstractRule;
@@ -29,23 +26,9 @@ use function current;
  * @mixin StaticValidator
  * @mixin ChainedValidator
  */
-#[ExceptionClass(NestedValidationException::class)]
-#[Template(
-    'All of the required rules must pass for {{name}}',
-    'None of these rules must pass for {{name}}',
-    self::TEMPLATE_NONE,
-)]
-#[Template(
-    'These rules must pass for {{name}}',
-    'These rules must not pass for {{name}}',
-    self::TEMPLATE_SOME,
-)]
 final class Validator extends AbstractRule
 {
     use CanBindEvaluateRule;
-
-    public const TEMPLATE_NONE = '__none__';
-    public const TEMPLATE_SOME = '__some__';
 
     /** @var array<Validatable> */
     private array $rules = [];
