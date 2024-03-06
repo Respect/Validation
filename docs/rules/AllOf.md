@@ -24,7 +24,7 @@ Version | Description
 See also:
 
 - [AnyOf](AnyOf.md)
-- [LazyConsecutive](LazyConsecutive.md)
+- [Consecutive](Consecutive.md)
 - [NoneOf](NoneOf.md)
 - [OneOf](OneOf.md)
 - [When](When.md)

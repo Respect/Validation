@@ -17,7 +17,6 @@ use Respect\Validation\Result;
 use Respect\Validation\Validatable;
 
 use function array_filter;
-use function array_map;
 use function array_merge;
 use function array_pop;
 use function count;
@@ -32,7 +31,7 @@ use function mb_substr_count;
 )]
 final class Domain extends AbstractRule
 {
-    private readonly AllOf $genericRule;
+    private readonly Consecutive $genericRule;
 
     private readonly Validatable $tldRule;
 
@@ -66,13 +65,9 @@ final class Domain extends AbstractRule
 
     public function evaluate(mixed $input): Result
     {
-        $failedGenericResults = array_filter(array_map(
-            static fn (Validatable $rule) => $rule->evaluate($input),
-            $this->genericRule->getRules()
-        ), static fn (Result $result) => !$result->isValid);
-
-        if (count($failedGenericResults)) {
-            return (new Result(false, $input, $this))->withChildren(...$failedGenericResults);
+        $genericResult = $this->genericRule->evaluate($input);
+        if (!$genericResult->isValid) {
+            return (new Result(false, $input, $this))->withChildren($genericResult);
         }
 
         $children = [];
@@ -80,19 +75,15 @@ final class Domain extends AbstractRule
         $parts = explode('.', (string) $input);
         if (count($parts) >= 2) {
             $tld = array_pop($parts);
-            foreach ($this->tldRule instanceof AllOf ? $this->tldRule->getRules() : [$this->tldRule] as $rule) {
-                $childResult = $rule->evaluate($tld);
-                $valid = $valid && $childResult->isValid;
-                $children[] = $childResult;
-            }
+            $childResult = $this->tldRule->evaluate($tld);
+            $valid = $childResult->isValid;
+            $children[] = $childResult;
         }
 
         foreach ($parts as $part) {
-            foreach ($this->partsRule->getRules() as $rule) {
-                $childResult = $rule->evaluate($part);
-                $valid = $valid && $childResult->isValid;
-                $children[] = $childResult;
-            }
+            $partsResult = $this->partsRule->evaluate($part);
+            $valid = $valid && $partsResult->isValid;
+            $children = array_merge($children, $partsResult->children);
         }
 
         return (new Result($valid, $input, $this))
@@ -141,9 +132,9 @@ final class Domain extends AbstractRule
         }
     }
 
-    private function createGenericRule(): AllOf
+    private function createGenericRule(): Consecutive
     {
-        return new AllOf(
+        return new Consecutive(
             new StringType(),
             new NoWhitespace(),
             new Contains('.'),
@@ -157,7 +148,7 @@ final class Domain extends AbstractRule
             return new Tld();
         }
 
-        return new AllOf(
+        return new Consecutive(
             new Not(new StartsWith('-')),
             new NoWhitespace(),
             new Length(2)

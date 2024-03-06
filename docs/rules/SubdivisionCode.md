@@ -28,9 +28,9 @@ Version | Description
 ***
 See also:
 
+- [Consecutive](Consecutive.md)
 - [CountryCode](CountryCode.md)
 - [CurrencyCode](CurrencyCode.md)
-- [LazyConsecutive](LazyConsecutive.md)
 - [Nip](Nip.md)
 - [Pesel](Pesel.md)
 - [PolishIdCard](PolishIdCard.md)

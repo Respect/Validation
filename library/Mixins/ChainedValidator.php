@@ -60,6 +60,8 @@ interface ChainedValidator extends Validatable
 
     public function cnpj(): ChainedValidator;
 
+    public function consecutive(Validatable $rule1, Validatable $rule2, Validatable ...$rule): ChainedValidator;
+
     public function control(string ...$additionalChars): ChainedValidator;
 
     public function consonant(string ...$additionalChars): ChainedValidator;
@@ -174,8 +176,6 @@ interface ChainedValidator extends Validatable
 
     /** @param callable(mixed): Validatable $ruleCreator */
     public function lazy(callable $ruleCreator): ChainedValidator;
-
-    public function lazyConsecutive(callable $ruleCreator, callable ...$ruleCreators): ChainedValidator;
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function languageCode(string $set = 'alpha-2'): ChainedValidator;

@@ -40,7 +40,6 @@
 - [CallableType](rules/CallableType.md)
 - [Callback](rules/Callback.md)
 - [Lazy](rules/Lazy.md)
-- [LazyConsecutive](rules/LazyConsecutive.md)
 
 ## Comparisons
 
@@ -60,12 +59,13 @@
 
 - [AllOf](rules/AllOf.md)
 - [AnyOf](rules/AnyOf.md)
-- [LazyConsecutive](rules/LazyConsecutive.md)
+- [Consecutive](rules/Consecutive.md)
 - [NoneOf](rules/NoneOf.md)
 - [OneOf](rules/OneOf.md)
 
 ## Conditions
 
+- [Consecutive](rules/Consecutive.md)
 - [Not](rules/Not.md)
 - [When](rules/When.md)
 
@@ -161,11 +161,11 @@
 - [AllOf](rules/AllOf.md)
 - [AnyOf](rules/AnyOf.md)
 - [Call](rules/Call.md)
+- [Consecutive](rules/Consecutive.md)
 - [Each](rules/Each.md)
 - [Key](rules/Key.md)
 - [KeySet](rules/KeySet.md)
 - [Lazy](rules/Lazy.md)
-- [LazyConsecutive](rules/LazyConsecutive.md)
 - [NoneOf](rules/NoneOf.md)
 - [Not](rules/Not.md)
 - [Nullable](rules/Nullable.md)
@@ -306,6 +306,7 @@
 - [Charset](rules/Charset.md)
 - [Cnh](rules/Cnh.md)
 - [Cnpj](rules/Cnpj.md)
+- [Consecutive](rules/Consecutive.md)
 - [Consonant](rules/Consonant.md)
 - [Contains](rules/Contains.md)
 - [ContainsAny](rules/ContainsAny.md)
@@ -362,7 +363,6 @@
 - [KeySet](rules/KeySet.md)
 - [LanguageCode](rules/LanguageCode.md)
 - [Lazy](rules/Lazy.md)
-- [LazyConsecutive](rules/LazyConsecutive.md)
 - [LeapDate](rules/LeapDate.md)
 - [LeapYear](rules/LeapYear.md)
 - [Length](rules/Length.md)

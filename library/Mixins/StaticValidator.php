@@ -62,6 +62,8 @@ interface StaticValidator
 
     public static function cnpj(): ChainedValidator;
 
+    public static function consecutive(Validatable $rule1, Validatable $rule2, Validatable ...$rule): ChainedValidator;
+
     public static function control(string ...$additionalChars): ChainedValidator;
 
     public static function consonant(string ...$additionalChars): ChainedValidator;
@@ -176,8 +178,6 @@ interface StaticValidator
 
     /** @param callable(mixed): Validatable $ruleCreator */
     public static function lazy(callable $ruleCreator): ChainedValidator;
-
-    public static function lazyConsecutive(callable $ruleCreator, callable ...$ruleCreators): ChainedValidator;
 
     /** @param "alpha-2"|"alpha-3" $set */
     public static function languageCode(string $set = 'alpha-2'): ChainedValidator;
