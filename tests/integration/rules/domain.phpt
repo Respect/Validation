@@ -13,10 +13,7 @@ exceptionFullMessage(static fn() => v::domain()->assert('p-éz-.kk'));
 exceptionFullMessage(static fn() => v::not(v::domain())->assert('github.com'));
 ?>
 --EXPECT--
-"batman" must contain the value "."
+"batman" must be a valid domain
 "r--w.com" must not be a valid domain
 - "p-éz-.kk" must be a valid domain
-  - "kk" must be a valid top-level domain name
-  - "p-éz-" must contain only letters (a-z), digits (0-9) and "-"
-  - "p-éz-" must not end with "-"
 - "github.com" must not be a valid domain

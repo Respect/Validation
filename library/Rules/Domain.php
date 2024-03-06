@@ -9,33 +9,27 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Attributes\ExceptionClass;
-use Respect\Validation\Exceptions\NestedValidationException;
-use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 use Respect\Validation\Validatable;
 
-use function array_filter;
-use function array_merge;
 use function array_pop;
 use function count;
 use function explode;
-use function iterator_to_array;
 use function mb_substr_count;
 
-#[ExceptionClass(NestedValidationException::class)]
 #[Template(
     '{{name}} must be a valid domain',
     '{{name}} must not be a valid domain',
 )]
-final class Domain extends AbstractRule
+final class Domain extends Standard
 {
-    private readonly Consecutive $genericRule;
+    private readonly Validatable $genericRule;
 
     private readonly Validatable $tldRule;
 
-    private readonly AllOf $partsRule;
+    private readonly Validatable $partsRule;
 
     public function __construct(bool $tldCheck = true)
     {
@@ -44,102 +38,27 @@ final class Domain extends AbstractRule
         $this->partsRule = $this->createPartsRule();
     }
 
-    public function assert(mixed $input): void
-    {
-        $exceptions = [];
-
-        $this->collectAssertException($exceptions, $this->genericRule, $input);
-        $this->throwExceptions($exceptions, $input);
-
-        $parts = explode('.', (string) $input);
-        if (count($parts) >= 2) {
-            $this->collectAssertException($exceptions, $this->tldRule, array_pop($parts));
-        }
-
-        foreach ($parts as $part) {
-            $this->collectAssertException($exceptions, $this->partsRule, $part);
-        }
-
-        $this->throwExceptions($exceptions, $input);
-    }
-
     public function evaluate(mixed $input): Result
     {
         $genericResult = $this->genericRule->evaluate($input);
         if (!$genericResult->isValid) {
-            return (new Result(false, $input, $this))->withChildren($genericResult);
+            return Result::failed($input, $this);
         }
 
-        $children = [];
-        $valid = true;
         $parts = explode('.', (string) $input);
         if (count($parts) >= 2) {
-            $tld = array_pop($parts);
-            $childResult = $this->tldRule->evaluate($tld);
-            $valid = $childResult->isValid;
-            $children[] = $childResult;
-        }
-
-        foreach ($parts as $part) {
-            $partsResult = $this->partsRule->evaluate($part);
-            $valid = $valid && $partsResult->isValid;
-            $children = array_merge($children, $partsResult->children);
-        }
-
-        return (new Result($valid, $input, $this))
-            ->withChildren(...array_filter($children, static fn (Result $child) => !$child->isValid));
-    }
-
-    public function validate(mixed $input): bool
-    {
-        try {
-            $this->assert($input);
-        } catch (ValidationException $exception) {
-            return false;
-        }
-
-        return true;
-    }
-
-    public function check(mixed $input): void
-    {
-        try {
-            $this->assert($input);
-        } catch (NestedValidationException $exception) {
-            /** @var ValidationException $childException */
-            foreach ($exception as $childException) {
-                throw $childException;
+            $childResult = $this->tldRule->evaluate(array_pop($parts));
+            if (!$childResult->isValid) {
+                return Result::failed($input, $this);
             }
-
-            throw $exception;
         }
-    }
 
-    /**
-     * @param ValidationException[] $exceptions
-     */
-    private function collectAssertException(array &$exceptions, Validatable $validator, mixed $input): void
-    {
-        try {
-            $validator->assert($input);
-        } catch (NestedValidationException $nestedValidationException) {
-            $exceptions = array_merge(
-                $exceptions,
-                iterator_to_array($nestedValidationException)
-            );
-        } catch (ValidationException $validationException) {
-            $exceptions[] = $validationException;
-        }
+        return new Result($this->partsRule->evaluate($parts)->isValid, $input, $this);
     }
 
     private function createGenericRule(): Consecutive
     {
-        return new Consecutive(
-            new StringType(),
-            new NoWhitespace(),
-            new Contains('.'),
-            new Length(3)
-        );
+        return new Consecutive(new StringType(), new NoWhitespace(), new Contains('.'), new Length(3));
     }
 
     private function createTldRule(bool $realTldCheck): Validatable
@@ -148,39 +67,23 @@ final class Domain extends AbstractRule
             return new Tld();
         }
 
-        return new Consecutive(
-            new Not(new StartsWith('-')),
-            new NoWhitespace(),
-            new Length(2)
-        );
+        return new Consecutive(new Not(new StartsWith('-')), new Length(2));
     }
 
-    private function createPartsRule(): AllOf
+    private function createPartsRule(): Validatable
     {
-        return new AllOf(
-            new Alnum('-'),
-            new Not(new StartsWith('-')),
-            new AnyOf(
-                new Not(new Contains('--')),
-                new Callback(static function ($str) {
-                    return mb_substr_count($str, '--') == 1;
-                })
-            ),
-            new Not(new EndsWith('-'))
+        return new Each(
+            new Consecutive(
+                new Alnum('-'),
+                new Not(new StartsWith('-')),
+                new AnyOf(
+                    new Not(new Contains('--')),
+                    new Callback(static function ($str) {
+                        return mb_substr_count($str, '--') == 1;
+                    })
+                ),
+                new Not(new EndsWith('-'))
+            )
         );
-    }
-
-    /**
-     * @param ValidationException[] $exceptions
-     */
-    private function throwExceptions(array $exceptions, mixed $input): void
-    {
-        if (count($exceptions)) {
-            /** @var NestedValidationException $domainException */
-            $domainException = $this->reportError($input);
-            $domainException->addChildren($exceptions);
-
-            throw $domainException;
-        }
     }
 }

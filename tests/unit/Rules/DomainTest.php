@@ -10,48 +10,79 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
-use Respect\Validation\Test\RuleTestCase;
-use Respect\Validation\Test\Stubs\ToStringStub;
-use stdClass;
+use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Test\TestCase;
 
 #[Group('rule')]
 #[CoversClass(Domain::class)]
-final class DomainTest extends RuleTestCase
+final class DomainTest extends TestCase
 {
-    /** @return iterable<array{Domain, mixed}> */
-    public static function providerForValidInput(): iterable
+    #[Test]
+    #[DataProvider('providerForDomainWithoutRealTopLevelDomain')]
+    public function itShouldValidateDomainsWithoutRealTopLevelDomain(string $input): void
+    {
+        self::assertValidInput(new Domain(false), $input);
+    }
+
+    #[Test]
+    #[DataProvider('providerForDomainWithRealTopLevelDomain')]
+    public function itShouldValidateDomainsWithRealTopLevelDomain(string $input): void
+    {
+        self::assertValidInput(new Domain(), $input);
+    }
+
+    #[Test]
+    #[DataProvider('providerForNonStringValues')]
+    public function itShouldInvalidWhenInputIsNotString(mixed $input): void
+    {
+        self::assertInvalidInput(new Domain(), $input);
+    }
+
+    #[Test]
+    #[DataProvider('providerForInvalidDomains')]
+    public function itShouldInvalidInvalidDomains(mixed $input): void
+    {
+        self::assertInvalidInput(new Domain(), $input);
+    }
+
+    /** @return array<array{string}> */
+    public static function providerForDomainWithoutRealTopLevelDomain(): array
     {
         return [
-            [new Domain(false), '111111111111domain.local'],
-            [new Domain(false), '111111111111.domain.local'],
-            [new Domain(), 'example.com'],
-            [new Domain(), 'xn--bcher-kva.ch'],
-            [new Domain(), 'mail.xn--bcher-kva.ch'],
-            [new Domain(), 'example-hyphen.com'],
-            [new Domain(), 'example--valid.com'],
-            [new Domain(), 'std--a.com'],
-            [new Domain(), 'r--w.com'],
+            ['111111111111domain.local'],
+            ['111111111111.domain.local'],
         ];
     }
 
-    /** @return iterable<array{Domain, mixed}> */
-    public static function providerForInvalidInput(): iterable
+    /** @return array<array{string}> */
+    public static function providerForDomainWithRealTopLevelDomain(): array
     {
         return [
-            [new Domain(), null],
-            [new Domain(), new stdClass()],
-            [new Domain(), []],
-            [new Domain(), new ToStringStub('google.com')],
-            [new Domain(), ''],
-            [new Domain(), 'no dots'],
-            [new Domain(), '2222222domain.local'],
-            [new Domain(), '-example-invalid.com'],
-            [new Domain(), 'example.invalid.-com'],
-            [new Domain(), 'xn--bcher--kva.ch'],
-            [new Domain(), 'example.invalid-.com'],
-            [new Domain(), '1.2.3.256'],
-            [new Domain(), '1.2.3.4'],
+            ['example.com'],
+            ['xn--bcher-kva.ch'],
+            ['mail.xn--bcher-kva.ch'],
+            ['example-hyphen.com'],
+            ['example--valid.com'],
+            ['std--a.com'],
+            ['r--w.com'],
+        ];
+    }
+
+    /** @return array<array{string}> */
+    public static function providerForInvalidDomains(): array
+    {
+        return [
+            [''],
+            ['no dots'],
+            ['2222222domain.local'],
+            ['-example-invalid.com'],
+            ['example.invalid.-com'],
+            ['xn--bcher--kva.ch'],
+            ['example.invalid-.com'],
+            ['1.2.3.256'],
+            ['1.2.3.4'],
         ];
     }
 }
