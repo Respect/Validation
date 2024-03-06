@@ -25,9 +25,9 @@ final class OneOf extends Composite
 {
     public function evaluate(mixed $input): Result
     {
-        $children = array_map(static fn (Rule $rule) => $rule->evaluate($input), $this->getRules());
-        $count = array_reduce($children, static fn (int $carry, Result $result) => $carry + (int) $result->isValid, 0);
+        $children = array_map(static fn (Rule $rule) => $rule->evaluate($input), $this->rules);
+        $valid = array_reduce($children, static fn (bool $carry, Result $result) => $carry xor $result->isValid, false);
 
-        return (new Result($count === 1, $input, $this))->withChildren(...$children);
+        return (new Result($valid, $input, $this))->withChildren(...$children);
     }
 }

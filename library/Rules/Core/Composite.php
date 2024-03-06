@@ -19,7 +19,7 @@ abstract class Composite implements Validatable
     use DeprecatedValidatableMethods;
 
     /** @var non-empty-array<Validatable> */
-    private readonly array $rules;
+    protected readonly array $rules;
 
     private ?string $name = null;
 
@@ -38,7 +38,7 @@ abstract class Composite implements Validatable
 
     public function setName(string $name): static
     {
-        foreach ($this->getRules() as $rule) {
+        foreach ($this->rules as $rule) {
             if ($rule->getName() && $this->name !== $rule->getName()) {
                 continue;
             }

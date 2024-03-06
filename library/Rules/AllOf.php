@@ -36,7 +36,7 @@ final class AllOf extends Composite
 
     public function evaluate(mixed $input): Result
     {
-        $children = array_map(static fn (Rule $rule) => $rule->evaluate($input), $this->getRules());
+        $children = array_map(static fn (Rule $rule) => $rule->evaluate($input), $this->rules);
         $valid = array_reduce($children, static fn (bool $carry, Result $result) => $carry && $result->isValid, true);
         $failed = array_filter($children, static fn (Result $result): bool => !$result->isValid);
         $template = self::TEMPLATE_SOME;
