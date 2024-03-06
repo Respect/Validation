@@ -30,6 +30,7 @@ See also:
 - [Callback](Callback.md)
 - [FloatType](FloatType.md)
 - [IntType](IntType.md)
+- [Lazy](Lazy.md)
 - [NullType](NullType.md)
 - [Number](Number.md)
 - [ObjectType](ObjectType.md)

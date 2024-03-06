@@ -172,6 +172,9 @@ interface ChainedValidator extends Validatable
 
     public function keySet(Validatable $rule, Validatable ...$rules): ChainedValidator;
 
+    /** @param callable(mixed): Validatable $ruleCreator */
+    public function lazy(callable $ruleCreator): ChainedValidator;
+
     public function lazyConsecutive(callable $ruleCreator, callable ...$ruleCreators): ChainedValidator;
 
     /** @param "alpha-2"|"alpha-3" $set */

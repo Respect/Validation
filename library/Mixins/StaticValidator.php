@@ -174,6 +174,9 @@ interface StaticValidator
 
     public static function keySet(Validatable $rule, Validatable ...$rules): ChainedValidator;
 
+    /** @param callable(mixed): Validatable $ruleCreator */
+    public static function lazy(callable $ruleCreator): ChainedValidator;
+
     public static function lazyConsecutive(callable $ruleCreator, callable ...$ruleCreators): ChainedValidator;
 
     /** @param "alpha-2"|"alpha-3" $set */

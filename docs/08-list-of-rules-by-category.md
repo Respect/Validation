@@ -39,6 +39,7 @@
 - [Call](rules/Call.md)
 - [CallableType](rules/CallableType.md)
 - [Callback](rules/Callback.md)
+- [Lazy](rules/Lazy.md)
 - [LazyConsecutive](rules/LazyConsecutive.md)
 
 ## Comparisons
@@ -163,6 +164,7 @@
 - [Each](rules/Each.md)
 - [Key](rules/Key.md)
 - [KeySet](rules/KeySet.md)
+- [Lazy](rules/Lazy.md)
 - [LazyConsecutive](rules/LazyConsecutive.md)
 - [NoneOf](rules/NoneOf.md)
 - [Not](rules/Not.md)
@@ -359,6 +361,7 @@
 - [KeyOptional](rules/KeyOptional.md)
 - [KeySet](rules/KeySet.md)
 - [LanguageCode](rules/LanguageCode.md)
+- [Lazy](rules/Lazy.md)
 - [LazyConsecutive](rules/LazyConsecutive.md)
 - [LeapDate](rules/LeapDate.md)
 - [LeapYear](rules/LeapYear.md)
