@@ -10,6 +10,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 
 use function is_array;
 use function is_string;
@@ -21,7 +23,7 @@ use function reset;
     '{{name}} must start with {{startValue}}',
     '{{name}} must not start with {{startValue}}',
 )]
-final class StartsWith extends AbstractRule
+final class StartsWith extends Standard
 {
     public function __construct(
         private readonly mixed $startValue,
@@ -29,21 +31,14 @@ final class StartsWith extends AbstractRule
     ) {
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
+        $parameters = ['startValue' => $this->startValue];
         if ($this->identical) {
-            return $this->validateIdentical($input);
+            return new Result($this->validateIdentical($input), $input, $this, $parameters);
         }
 
-        return $this->validateEquals($input);
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function getParams(): array
-    {
-        return ['startValue' => $this->startValue];
+        return new Result($this->validateEquals($input), $input, $this, $parameters);
     }
 
     protected function validateEquals(mixed $input): bool

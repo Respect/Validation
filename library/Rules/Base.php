@@ -11,6 +11,8 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 
 use function mb_strlen;
 use function mb_substr;
@@ -21,7 +23,7 @@ use function sprintf;
     '{{name}} must be a number in the base {{base|raw}}',
     '{{name}} must not be a number in the base {{base|raw}}',
 )]
-final class Base extends AbstractRule
+final class Base extends Standard
 {
     public function __construct(
         private readonly int $base,
@@ -33,18 +35,13 @@ final class Base extends AbstractRule
         }
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
-        $valid = mb_substr($this->chars, 0, $this->base);
-
-        return (bool) preg_match('@^[' . $valid . ']+$@', (string) $input);
-    }
-
-    /**
-     * @return array<string, int>
-     */
-    public function getParams(): array
-    {
-        return ['base' => $this->base];
+        return new Result(
+            (bool) preg_match('@^[' . mb_substr($this->chars, 0, $this->base) . ']+$@', (string) $input),
+            $input,
+            $this,
+            ['base' => $this->base]
+        );
     }
 }

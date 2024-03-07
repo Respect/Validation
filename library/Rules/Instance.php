@@ -10,28 +10,23 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 
 #[Template(
-    '{{name}} must be an instance of `{{instanceName|raw}}`',
-    '{{name}} must not be an instance of `{{instanceName|raw}}`',
+    '{{name}} must be an instance of `{{class|raw}}`',
+    '{{name}} must not be an instance of `{{class|raw}}`',
 )]
-final class Instance extends AbstractRule
+final class Instance extends Standard
 {
+    /** @param class-string $class */
     public function __construct(
-        private readonly string $instanceName
+        private readonly string $class
     ) {
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
-        return $input instanceof $this->instanceName;
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function getParams(): array
-    {
-        return ['instanceName' => $this->instanceName];
+        return new Result($input instanceof $this->class, $input, $this, ['class' => $this->class]);
     }
 }

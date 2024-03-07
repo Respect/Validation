@@ -10,6 +10,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 
 use function in_array;
 use function is_array;
@@ -20,7 +22,7 @@ use function mb_strpos;
     '{{name}} must be in {{haystack}}',
     '{{name}} must not be in {{haystack}}',
 )]
-final class In extends AbstractRule
+final class In extends Standard
 {
     public function __construct(
         private readonly mixed $haystack,
@@ -28,21 +30,14 @@ final class In extends AbstractRule
     ) {
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
+        $parameters = ['haystack' => $this->haystack];
         if ($this->compareIdentical) {
-            return $this->validateIdentical($input);
+            return new Result($this->validateIdentical($input), $input, $this, $parameters);
         }
 
-        return $this->validateEquals($input);
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function getParams(): array
-    {
-        return ['haystack' => $this->haystack];
+        return new Result($this->validateEquals($input), $input, $this, $parameters);
     }
 
     private function validateEquals(mixed $input): bool

@@ -46,7 +46,7 @@ final class MimetypeTest extends RuleTestCase
 
         $rule = new Mimetype($mimetype, $fileInfoMock);
 
-        self::assertTrue($rule->validate($filename));
+        self::assertValidInput($rule, $filename);
     }
 
     /** @return iterable<array{Mimetype, mixed}> */

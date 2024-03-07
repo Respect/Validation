@@ -10,6 +10,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 
 use function in_array;
 use function is_array;
@@ -21,7 +23,7 @@ use function mb_strpos;
     '{{name}} must contain the value {{containsValue}}',
     '{{name}} must not contain the value {{containsValue}}',
 )]
-final class Contains extends AbstractRule
+final class Contains extends Standard
 {
     public function __construct(
         private readonly mixed $containsValue,
@@ -29,25 +31,23 @@ final class Contains extends AbstractRule
     ) {
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
+        $parameters = ['containsValue' => $this->containsValue];
         if (is_array($input)) {
-            return in_array($this->containsValue, $input, $this->identical);
+            return new Result(in_array($this->containsValue, $input, $this->identical), $input, $this, $parameters);
         }
 
         if (!is_scalar($input) || !is_scalar($this->containsValue)) {
-            return false;
+            return Result::failed($input, $this, $parameters);
         }
 
-        return $this->validateString((string) $input, (string) $this->containsValue);
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function getParams(): array
-    {
-        return ['containsValue' => $this->containsValue];
+        return new Result(
+            $this->validateString((string) $input, (string) $this->containsValue),
+            $input,
+            $this,
+            $parameters,
+        );
     }
 
     private function validateString(string $haystack, string $needle): bool

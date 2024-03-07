@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Core\Simple;
 
 use function bcmod;
 use function is_string;
@@ -25,7 +26,7 @@ use function substr;
     '{{name}} must be a valid IBAN',
     '{{name}} must not be a valid IBAN',
 )]
-final class Iban extends AbstractRule
+final class Iban extends Simple
 {
     private const COUNTRIES_LENGTHS = [
         'AL' => 28,

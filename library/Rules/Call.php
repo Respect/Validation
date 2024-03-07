@@ -9,9 +9,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ValidationException;
+use ErrorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 use Respect\Validation\Validatable;
 use Throwable;
 
@@ -23,7 +24,7 @@ use function set_error_handler;
     '{{input}} must be valid when executed with {{callable}}',
     '{{input}} must not be valid when executed with {{callable}}',
 )]
-final class Call extends AbstractRule
+final class Call extends Standard
 {
     /**
      * @var callable
@@ -39,7 +40,10 @@ final class Call extends AbstractRule
 
     public function evaluate(mixed $input): Result
     {
-        $this->setErrorHandler($input);
+        set_error_handler(static function (int $severity, string $message, ?string $filename, int $line): void {
+            throw new ErrorException($message, 0, $severity, $filename, $line);
+        });
+
         try {
             return $this->rule->evaluate(call_user_func($this->callable, $input));
         } catch (Throwable) {
@@ -47,61 +51,5 @@ final class Call extends AbstractRule
 
             return Result::failed($input, $this, ['callable' => $this->callable]);
         }
-    }
-
-    public function assert(mixed $input): void
-    {
-        $this->setErrorHandler($input);
-
-        try {
-            $this->rule->assert(call_user_func($this->callable, $input));
-        } catch (ValidationException $exception) {
-            throw $exception;
-        } catch (Throwable $throwable) {
-            throw $this->reportError($input);
-        } finally {
-            restore_error_handler();
-        }
-    }
-
-    public function check(mixed $input): void
-    {
-        $this->setErrorHandler($input);
-
-        try {
-            $this->rule->check(call_user_func($this->callable, $input));
-        } catch (ValidationException $exception) {
-            throw $exception;
-        } catch (Throwable $throwable) {
-            throw $this->reportError($input);
-        } finally {
-            restore_error_handler();
-        }
-    }
-
-    public function validate(mixed $input): bool
-    {
-        try {
-            $this->check($input);
-        } catch (ValidationException $exception) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * @return array<string, callable>
-     */
-    public function getParams(): array
-    {
-        return ['callable' => $this->callable];
-    }
-
-    private function setErrorHandler(mixed $input): void
-    {
-        set_error_handler(function () use ($input): void {
-            throw $this->reportError($input);
-        });
     }
 }

@@ -12,6 +12,8 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 
 use function date;
 use function is_scalar;
@@ -23,7 +25,7 @@ use function strtotime;
     '{{name}} must be a valid time in the format {{sample}}',
     '{{name}} must not be a valid time in the format {{sample}}',
 )]
-final class Time extends AbstractRule
+final class Time extends Standard
 {
     use CanValidateDateTime;
 
@@ -35,20 +37,13 @@ final class Time extends AbstractRule
         }
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
+        $parameters = ['sample' => date($this->format, strtotime('23:59:59'))];
         if (!is_scalar($input)) {
-            return false;
+            return Result::failed($input, $this, $parameters);
         }
 
-        return $this->isDateTime($this->format, (string) $input);
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public function getParams(): array
-    {
-        return ['sample' => date($this->format, strtotime('23:59:59'))];
+        return new Result($this->isDateTime($this->format, (string) $input), $input, $this, $parameters);
     }
 }

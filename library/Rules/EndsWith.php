@@ -10,6 +10,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 
 use function end;
 use function is_array;
@@ -21,7 +23,7 @@ use function mb_strrpos;
     '{{name}} must end with {{endValue}}',
     '{{name}} must not end with {{endValue}}',
 )]
-final class EndsWith extends AbstractRule
+final class EndsWith extends Standard
 {
     public function __construct(
         private readonly mixed $endValue,
@@ -29,21 +31,14 @@ final class EndsWith extends AbstractRule
     ) {
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
+        $parameters = ['endValue' => $this->endValue];
         if ($this->identical) {
-            return $this->validateIdentical($input);
+            return new Result($this->validateIdentical($input), $input, $this, $parameters);
         }
 
-        return $this->validateEquals($input);
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function getParams(): array
-    {
-        return ['endValue' => $this->endValue];
+        return new Result($this->validateEquals($input), $input, $this, $parameters);
     }
 
     private function validateEquals(mixed $input): bool
