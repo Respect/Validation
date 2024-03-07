@@ -1,6 +1,6 @@
 # Respect\Validation
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/Respect/Validation/continuous-integration.yml?branch=master&style=flat-square)](https://github.com/Respect/Validation/actions/workflows/continuous-integration.yml)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/Respect/Validation/continuous-integration.yml?branch=main&style=flat-square)](https://github.com/Respect/Validation/actions/workflows/continuous-integration.yml)
 [![Code Coverage](https://img.shields.io/codecov/c/github/Respect/Validation?style=flat-square)](https://codecov.io/gh/Respect/Validation)
 [![Latest Stable Version](https://img.shields.io/packagist/v/respect/validation.svg?style=flat-square)](https://packagist.org/packages/respect/validation)
 [![Total Downloads](https://img.shields.io/packagist/dt/respect/validation.svg?style=flat-square)](https://packagist.org/packages/respect/validation)
