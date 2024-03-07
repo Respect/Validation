@@ -76,14 +76,14 @@ abstract class TestCase extends PHPUnitTestCase
     public static function providerForAnyValues(): array
     {
         return array_merge(
-            self::providerForStringValues(),
+            self::providerForStringTypes(),
             self::providerForNonScalarValues(),
             self::providerForEmptyIterableValues(),
             self::providerForNonEmptyIterableValues(),
-            self::providerForNonIterableValues(),
-            self::providerForIntegerValues(),
-            self::providerForBooleanValues(),
-            self::providerForFloatValues(),
+            self::providerForNonIterableTypes(),
+            self::providerForIntegerTypes(),
+            self::providerForBooleanTypes(),
+            self::providerForFloatTypes(),
         );
     }
 
@@ -91,10 +91,10 @@ abstract class TestCase extends PHPUnitTestCase
     public static function providerForScalarValues(): array
     {
         return array_merge(
-            self::providerForStringValues(),
-            self::providerForIntegerValues(),
-            self::providerForBooleanValues(),
-            self::providerForFloatValues(),
+            self::providerForStringTypes(),
+            self::providerForIntegerTypes(),
+            self::providerForBooleanTypes(),
+            self::providerForFloatTypes(),
         );
     }
 
@@ -119,7 +119,7 @@ abstract class TestCase extends PHPUnitTestCase
     }
 
     /** @return array<array{mixed}> */
-    public static function providerForNonIterableValues(): array
+    public static function providerForNonIterableTypes(): array
     {
         return array_merge(
             self::providerForScalarValues(),
@@ -133,7 +133,7 @@ abstract class TestCase extends PHPUnitTestCase
     }
 
     /** @return array<array{iterable<mixed>}> */
-    public static function providerForIterableValues(): array
+    public static function providerForIterableTypes(): array
     {
         return array_merge(
             self::providerForNonEmptyIterableValues(),
@@ -162,7 +162,7 @@ abstract class TestCase extends PHPUnitTestCase
     }
 
     /** @return array<array{string}> */
-    public static function providerForStringValues(): array
+    public static function providerForStringTypes(): array
     {
         return [
             'string' => ['string'],
@@ -174,27 +174,27 @@ abstract class TestCase extends PHPUnitTestCase
     }
 
     /** @return array<array{string}> */
-    public static function providerForNonEmptyStringValues(): array
+    public static function providerForNonEmptyStringTypes(): array
     {
-        $dataProvider = self::providerForStringValues();
+        $dataProvider = self::providerForStringTypes();
         unset($dataProvider['empty string']);
 
         return $dataProvider;
     }
 
     /** @return array<array{mixed}> */
-    public static function providerForNonStringValues(): array
+    public static function providerForNonStringTypes(): array
     {
         return array_merge(
             self::providerForNonScalarValues(),
-            self::providerForIntegerValues(),
-            self::providerForBooleanValues(),
-            self::providerForFloatValues(),
+            self::providerForIntegerTypes(),
+            self::providerForBooleanTypes(),
+            self::providerForFloatTypes(),
         );
     }
 
     /** @return array<array{int}> */
-    public static function providerForIntegerValues(): array
+    public static function providerForIntegerTypes(): array
     {
         return [
             'zero integer' => [0],
@@ -204,7 +204,7 @@ abstract class TestCase extends PHPUnitTestCase
     }
 
     /** @return array<array{bool}> */
-    public static function providerForBooleanValues(): array
+    public static function providerForBooleanTypes(): array
     {
         return [
             'true' => [true],
@@ -213,7 +213,7 @@ abstract class TestCase extends PHPUnitTestCase
     }
 
     /** @return array<array{float}> */
-    public static function providerForFloatValues(): array
+    public static function providerForFloatTypes(): array
     {
         return [
             'zero float' => [0.0],
@@ -223,18 +223,27 @@ abstract class TestCase extends PHPUnitTestCase
     }
 
     /** @return array<array{mixed}> */
-    public static function providerForNonArrayValues(): array
+    public static function providerForNonArrayTypes(): array
     {
         $scalarValues = self::providerForNonScalarValues();
         unset($scalarValues['array']);
 
         return array_merge(
-            self::providerForIntegerValues(),
-            self::providerForBooleanValues(),
-            self::providerForFloatValues(),
-            self::providerForStringValues(),
+            self::providerForIntegerTypes(),
+            self::providerForBooleanTypes(),
+            self::providerForFloatTypes(),
+            self::providerForStringTypes(),
             $scalarValues,
         );
+    }
+
+    /** @return array<array{mixed}> */
+    public static function providerForNonArrayValues(): array
+    {
+        $arrayTypes = self::providerForNonArrayTypes();
+        unset($arrayTypes['ArrayObject']);
+
+        return $arrayTypes;
     }
 
     /** @return array<string, array{string|int, array<mixed>}> */

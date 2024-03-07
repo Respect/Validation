@@ -21,7 +21,7 @@ final class IterableTypeTest extends TestCase
 {
     /** @param iterable<mixed> $input */
     #[Test]
-    #[DataProvider('providerForIterableValues')]
+    #[DataProvider('providerForIterableTypes')]
     public function itShouldValidateIterableTypes(iterable $input): void
     {
         $rule = new IterableType();
@@ -30,7 +30,7 @@ final class IterableTypeTest extends TestCase
     }
 
     #[Test]
-    #[DataProvider('providerForNonIterableValues')]
+    #[DataProvider('providerForNonIterableTypes')]
     public function itShouldInvalidateNonIterableTypes(mixed $input): void
     {
         $rule = new IterableType();

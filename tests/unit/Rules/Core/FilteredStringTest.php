@@ -87,7 +87,7 @@ final class FilteredStringTest extends TestCase
     }
 
     #[Test]
-    #[DataProvider('providerForNonEmptyStringValues')]
+    #[DataProvider('providerForNonEmptyStringTypes')]
     public function itShouldFilterNothingWhenHasNoAdditionalCharacters(string $input): void
     {
         $rule = new ConcreteFilteredString();

@@ -34,7 +34,7 @@ final class DomainTest extends TestCase
     }
 
     #[Test]
-    #[DataProvider('providerForNonStringValues')]
+    #[DataProvider('providerForNonStringTypes')]
     public function itShouldInvalidWhenInputIsNotString(mixed $input): void
     {
         self::assertInvalidInput(new Domain(), $input);

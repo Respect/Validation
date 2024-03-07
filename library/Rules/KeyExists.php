@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use ArrayAccess;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\Standard;
@@ -34,6 +35,14 @@ final class KeyExists extends Standard
 
     private function hasKey(mixed $input): bool
     {
-        return is_array($input) && array_key_exists($this->key, $input);
+        if (is_array($input)) {
+            return array_key_exists($this->key, $input);
+        }
+
+        if ($input instanceof ArrayAccess) {
+            return $input->offsetExists($this->key);
+        }
+
+        return false;
     }
 }

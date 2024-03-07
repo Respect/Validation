@@ -21,7 +21,7 @@ final class TransTest extends TestCase
     public const DEFAULT_NAME = 'foo';
 
     #[Test]
-    #[DataProvider('providerForStringValues')]
+    #[DataProvider('providerForStringTypes')]
     public function itShouldReturnTranslatedValueWhenModifierIsTransAndInputIsString(string $value): void
     {
         $translation = 'translated';
@@ -33,7 +33,7 @@ final class TransTest extends TestCase
     }
 
     #[Test]
-    #[DataProvider('providerForNonStringValues')]
+    #[DataProvider('providerForNonStringTypes')]
     public function itShouldUseNextProcessorWhenModifierIsTransButInputIsNotString(mixed $value): void
     {
         $next = new TestingProcessor();

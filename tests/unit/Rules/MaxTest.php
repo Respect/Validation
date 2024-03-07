@@ -22,7 +22,7 @@ use Respect\Validation\Test\TestCase;
 final class MaxTest extends TestCase
 {
     #[Test]
-    #[DataProvider('providerForNonIterableValues')]
+    #[DataProvider('providerForNonIterableTypes')]
     public function itShouldInvalidateNonIterableValues(mixed $input): void
     {
         $rule = new Max(Stub::daze());

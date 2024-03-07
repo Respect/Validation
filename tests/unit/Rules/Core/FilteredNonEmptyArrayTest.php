@@ -22,7 +22,7 @@ use Respect\Validation\Test\TestCase;
 final class FilteredNonEmptyArrayTest extends TestCase
 {
     #[Test]
-    #[DataProvider('providerForNonIterableValues')]
+    #[DataProvider('providerForNonIterableTypes')]
     public function itShouldInvalidateNonIterableValues(mixed $input): void
     {
         $sut = new ConcreteFilteredNonEmptyArray(Stub::daze());

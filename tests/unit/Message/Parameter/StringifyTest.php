@@ -22,7 +22,7 @@ final class StringifyTest extends TestCase
     public const DEFAULT_NAME = 'not_name';
 
     #[Test]
-    #[DataProvider('providerForStringValues')]
+    #[DataProvider('providerForStringTypes')]
     public function itShouldNotStringifyValueWhenNameIsNameAndValueIsString(string $value): void
     {
         $stringify = new Stringify();
