@@ -8,7 +8,7 @@
 declare(strict_types=1);
 
 use Respect\Validation\Exceptions\ValidatorException;
-use Respect\Validation\Validator;
+use Respect\Validation\Validatable;
 use Symfony\Component\VarExporter\VarExporter;
 
 use function Respect\Stringifier\stringify;
@@ -43,7 +43,7 @@ function exceptionFullMessage(callable $callable, string $fallbackMessage = 'No 
     }
 }
 
-/** @param array<string, array{Validator, mixed, null|string|array<string, mixed>}> $scenarios */
+/** @param array<string, array{0: Validatable, 1: mixed, 2?:string|array<string, mixed>}> $scenarios */
 function run(array $scenarios): void
 {
     foreach ($scenarios as $description => $data) {

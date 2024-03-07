@@ -6,7 +6,7 @@ declare(strict_types=1);
 use Respect\Validation\Rules\ArrayType;
 use Respect\Validation\Rules\BoolType;
 use Respect\Validation\Rules\Each;
-use Respect\Validation\Rules\Key;
+use Respect\Validation\Rules\KeyOptional;
 use Respect\Validation\Rules\OneOf;
 use Respect\Validation\Rules\StringType;
 use Respect\Validation\Rules\StringVal;
@@ -17,23 +17,20 @@ require 'vendor/autoload.php';
 $validator = Validator::create(
     new Each(
         Validator::create(
-            new Key(
+            new KeyOptional(
                 'default',
                 new OneOf(
                     new StringType(),
                     new BoolType()
-                ),
-                false
+                )
             ),
-            new Key(
+            new KeyOptional(
                 'description',
                 new StringVal(),
-                false
             ),
-            new Key(
+            new KeyOptional(
                 'children',
                 new ArrayType(),
-                false
             )
         )
     )

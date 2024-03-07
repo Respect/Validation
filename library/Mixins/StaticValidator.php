@@ -256,7 +256,7 @@ interface StaticValidator
 
     public static function pesel(): ChainedValidator;
 
-    public static function phone(): ChainedValidator;
+    public static function phone(?string $countryCode = null): ChainedValidator;
 
     public static function phpLabel(): ChainedValidator;
 

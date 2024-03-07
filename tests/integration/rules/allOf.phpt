@@ -10,7 +10,7 @@ use Respect\Validation\Validator as v;
 run([
     'Two rules' => [v::allOf(v::intType(), v::negative()), '2'],
     'Wrapped by "not"' => [v::not(v::allOf(v::intType(), v::positive())), 3],
-    'Wrapping "not"' => [v::allOf(v::not(v::intType(), v::positive()), v::greaterThan(2)), 4],
+    'Wrapping "not"' => [v::allOf(v::not(v::intType()), v::greaterThan(2)), 4],
     'With a single template' => [v::allOf(v::stringType(), v::arrayType()), 5, 'This is a single template'],
     'With multiple templates' => [
         v::allOf(v::stringType(), v::uppercase()),

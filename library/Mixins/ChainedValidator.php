@@ -254,7 +254,7 @@ interface ChainedValidator extends Validatable
 
     public function pesel(): ChainedValidator;
 
-    public function phone(): ChainedValidator;
+    public function phone(?string $countryCode = null): ChainedValidator;
 
     public function phpLabel(): ChainedValidator;
 
