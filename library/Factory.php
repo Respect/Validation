@@ -21,6 +21,14 @@ use Respect\Validation\Message\Parameter\Stringify;
 use Respect\Validation\Message\Parameter\Trans;
 use Respect\Validation\Message\TemplateCollector;
 use Respect\Validation\Message\TemplateRenderer;
+use Respect\Validation\Transformers\DeprecatedAttribute;
+use Respect\Validation\Transformers\DeprecatedKey;
+use Respect\Validation\Transformers\DeprecatedKeyNested;
+use Respect\Validation\Transformers\DeprecatedKeyValue;
+use Respect\Validation\Transformers\DeprecatedMinAndMax;
+use Respect\Validation\Transformers\DeprecatedType;
+use Respect\Validation\Transformers\RuleSpec;
+use Respect\Validation\Transformers\Transformer;
 
 use function lcfirst;
 use function sprintf;
@@ -43,6 +51,8 @@ final class Factory
 
     private TemplateCollector $templateCollector;
 
+    private Transformer $transformer;
+
     private static Factory $defaultInstance;
 
     public function __construct()
@@ -50,6 +60,15 @@ final class Factory
         $this->translator = static fn (string $message) => $message;
         $this->processor = new Raw(new Trans($this->translator, new Stringify()));
         $this->templateCollector = new TemplateCollector();
+        $this->transformer = new DeprecatedAttribute(
+            new DeprecatedKey(
+                new DeprecatedKeyValue(
+                    new DeprecatedMinAndMax(
+                        new DeprecatedKeyNested(new DeprecatedType())
+                    )
+                )
+            )
+        );
     }
 
     public static function getDefaultInstance(): self
@@ -101,17 +120,18 @@ final class Factory
      */
     public function rule(string $ruleName, array $arguments = []): Validatable
     {
+        $ruleSpec = $this->transformer->transform(new RuleSpec($ruleName, $arguments));
         foreach ($this->rulesNamespaces as $namespace) {
             try {
                 /** @var class-string<Validatable> $name */
-                $name = $namespace . '\\' . ucfirst($ruleName);
+                $name = $namespace . '\\' . ucfirst($ruleSpec->name);
                 /** @var Validatable $rule */
                 $rule = $this
                     ->createReflectionClass($name, Validatable::class)
-                    ->newInstanceArgs($arguments);
+                    ->newInstanceArgs($ruleSpec->arguments);
 
                 return $rule;
-            } catch (ReflectionException $exception) {
+            } catch (ReflectionException) {
                 continue;
             }
         }
