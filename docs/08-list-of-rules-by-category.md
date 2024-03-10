@@ -44,6 +44,7 @@
 ## Comparisons
 
 - [Between](rules/Between.md)
+- [BetweenExclusive](rules/BetweenExclusive.md)
 - [Equals](rules/Equals.md)
 - [Equivalent](rules/Equivalent.md)
 - [GreaterThan](rules/GreaterThan.md)
@@ -297,6 +298,7 @@
 - [Base](rules/Base.md)
 - [Base64](rules/Base64.md)
 - [Between](rules/Between.md)
+- [BetweenExclusive](rules/BetweenExclusive.md)
 - [BoolType](rules/BoolType.md)
 - [BoolVal](rules/BoolVal.md)
 - [Bsn](rules/Bsn.md)

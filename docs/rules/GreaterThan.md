@@ -28,6 +28,7 @@ Version | Description
 See also:
 
 - [Between](Between.md)
+- [BetweenExclusive](BetweenExclusive.md)
 - [GreaterThanOrEqual](GreaterThanOrEqual.md)
 - [LessThanOrEqual](LessThanOrEqual.md)
 - [Max](Max.md)

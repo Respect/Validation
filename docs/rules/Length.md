@@ -50,4 +50,5 @@ Version | Description
 See also:
 
 - [Between](Between.md)
+- [BetweenExclusive](BetweenExclusive.md)
 - [GreaterThanOrEqual](GreaterThanOrEqual.md)

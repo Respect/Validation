@@ -42,6 +42,8 @@ interface ChainedValidator extends Validatable
 
     public function between(mixed $minimum, mixed $maximum): ChainedValidator;
 
+    public function betweenExclusive(mixed $minimum, mixed $maximum): ChainedValidator;
+
     public function boolType(): ChainedValidator;
 
     public function boolVal(): ChainedValidator;
