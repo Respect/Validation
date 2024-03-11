@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 /**
- * Validates weather the input is a hex RGB color or not.
+ * Validates whether the input is a hex RGB color or not.
  *
  * @author Davide Pastore <pasdavide@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>

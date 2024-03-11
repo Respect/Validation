@@ -2,7 +2,7 @@
 
 - `HexRgbColor()`
 
-Validates weather the input is a hex RGB color or not.
+Validates whether the input is a hex RGB color or not.
 
 ```php
 v::hexRgbColor()->validate('#FFFAAA'); // true
