@@ -11,7 +11,6 @@ namespace Respect\Validation\Message;
 
 use function call_user_func;
 use function preg_replace_callback;
-use function Respect\Stringifier\stringify;
 
 final class Formatter
 {
@@ -37,7 +36,7 @@ final class Formatter
      */
     public function format(string $template, $input, array $parameters): string
     {
-        $parameters['name'] = $parameters['name'] ?? stringify($input);
+        $parameters['name'] = $parameters['name'] ?? $this->parameterStringifier->stringify('input', $input);
 
         return preg_replace_callback(
             '/{{(\w+)}}/',
