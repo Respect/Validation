@@ -1,10 +1,9 @@
 # Phone
 
 - `Phone()`
+- `Phone(string $countyCode)`
 
-Validates whether the input is a valid phone number. This rule requires
-the `giggsey/libphonenumber-for-php-lite` package.
-
+Validates whether the input is a valid phone number.
 
 ```php
 v::phone()->validate('+1 650 253 00 00'); // true
@@ -12,16 +11,20 @@ v::phone('BR')->validate('+55 11 91111 1111'); // true
 v::phone('BR')->validate('11 91111 1111'); // false
 ```
 
+## Note
+
+When validating with `$countryCode`, this rule will require the `giggsey/libphonenumber-for-php-lite` package.
+
 ## Categorization
 
 - Strings
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.3.0 | Updated to use external validator
-  0.5.0 | Created
+| Version | Description                         |
+|--------:|-------------------------------------|
+|   2.3.0 | Introduced a validation per country |
+|   0.5.0 | Created                             |
 
 ***
 See also:

@@ -14,8 +14,8 @@ use libphonenumber\PhoneNumberUtil;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function class_exists;
-use function is_null;
 use function is_scalar;
+use function preg_match;
 use function sprintf;
 
 /**
@@ -24,6 +24,9 @@ use function sprintf;
  * Validates an international or country-specific telephone number
  *
  * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Graham Campbell <graham@mineuk.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
  */
 final class Phone extends AbstractRule
 {
@@ -32,20 +35,15 @@ final class Phone extends AbstractRule
      */
     private $countryCode;
 
-    /**
-     * {@inheritDoc}
-     */
     public function __construct(?string $countryCode = null)
     {
         $this->countryCode = $countryCode;
+        if ($countryCode === null) {
+            return;
+        }
 
-        if (!is_null($countryCode) && !(new CountryCode())->validate($countryCode)) {
-            throw new ComponentException(
-                sprintf(
-                    'Invalid country code %s',
-                    $countryCode
-                )
-            );
+        if (!(new CountryCode())->validate($countryCode)) {
+            throw new ComponentException(sprintf('Invalid country code %s', $countryCode));
         }
 
         if (!class_exists(PhoneNumberUtil::class)) {
@@ -53,21 +51,32 @@ final class Phone extends AbstractRule
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function validate($input): bool
     {
         if (!is_scalar($input)) {
             return false;
         }
 
+        if ($this->countryCode === null) {
+            return preg_match($this->getPregFormat(), (string) $input) > 0;
+        }
+
         try {
             return PhoneNumberUtil::getInstance()->isValidNumber(
                 PhoneNumberUtil::getInstance()->parse((string) $input, $this->countryCode)
             );
-        } catch (NumberParseException $e) {
+        } catch (NumberParseException) {
             return false;
         }
+    }
+
+    private function getPregFormat(): string
+    {
+        return sprintf(
+            '/^\+?(%1$s)? ?(?(?=\()(\(%2$s\) ?%3$s)|([. -]?(%2$s[. -]*)?%3$s))$/',
+            '\d{0,3}',
+            '\d{1,3}',
+            '((\d{3,5})[. -]?(\d{2}[. -]?\d{2})|(\d{2}[. -]?){4})'
+        );
     }
 }
