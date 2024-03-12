@@ -138,6 +138,8 @@ interface ChainedValidator extends Validatable
 
     public function greaterThan(mixed $compareTo): ChainedValidator;
 
+    public function hetu(): ChainedValidator;
+
     public function hexRgbColor(): ChainedValidator;
 
     public function iban(): ChainedValidator;

@@ -37,6 +37,7 @@ See also:
 - [Bsn](Bsn.md)
 - [Cnh](Cnh.md)
 - [Cnpj](Cnpj.md)
+- [Hetu](Hetu.md)
 - [Imei](Imei.md)
 - [NfeAccessKey](NfeAccessKey.md)
 - [Nif](Nif.md)

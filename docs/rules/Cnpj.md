@@ -21,6 +21,7 @@ See also:
 - [Bsn](Bsn.md)
 - [Cnh](Cnh.md)
 - [Cpf](Cpf.md)
+- [Hetu](Hetu.md)
 - [Imei](Imei.md)
 - [NfeAccessKey](NfeAccessKey.md)
 - [Nif](Nif.md)

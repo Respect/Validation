@@ -26,6 +26,7 @@ See also:
 - [Cnh](Cnh.md)
 - [Cnpj](Cnpj.md)
 - [Cpf](Cpf.md)
+- [Hetu](Hetu.md)
 - [Isbn](Isbn.md)
 - [Luhn](Luhn.md)
 
