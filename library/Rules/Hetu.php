@@ -41,12 +41,7 @@ final class Hetu extends Simple
             '+' => '18',
             '-','U','V','W','X','Y' => '19',
             'A','B','C','D','E','F' => '20',
-            default => null,
         };
-
-        if ($century === null) {
-            return false;
-        }
 
         $dateRule = new Date();
         if (!$dateRule->evaluate($century . $m[3] . '-' . $m[2] . '-' . $m[1])->isValid) {
