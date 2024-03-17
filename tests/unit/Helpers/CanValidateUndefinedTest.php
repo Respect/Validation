@@ -13,7 +13,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Test\DataProvider\UndefinedProvider;
 use Respect\Validation\Test\TestCase;
 
 #[Group('helper')]
@@ -21,7 +20,6 @@ use Respect\Validation\Test\TestCase;
 final class CanValidateUndefinedTest extends TestCase
 {
     use CanValidateUndefined;
-    use UndefinedProvider;
 
     #[Test]
     #[DataProvider('providerForUndefined')]

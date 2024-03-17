@@ -10,44 +10,26 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
-use Respect\Validation\Test\RuleTestCase;
-use stdClass;
-
-use function stream_context_create;
-use function tmpfile;
+use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Test\TestCase;
 
 #[Group('rule')]
 #[CoversClass(ResourceType::class)]
-final class ResourceTypeTest extends RuleTestCase
+final class ResourceTypeTest extends TestCase
 {
-    /** @return iterable<array{ResourceType, mixed}> */
-    public static function providerForValidInput(): iterable
+    #[Test]
+    #[DataProvider('providerForResourceType')]
+    public function shouldValidateValidInput(mixed $input): void
     {
-        $rule = new ResourceType();
-
-        return [
-            [$rule, stream_context_create()],
-            [$rule, tmpfile()],
-        ];
+        self::assertValidInput(new ResourceType(), $input);
     }
 
-    /** @return iterable<array{ResourceType, mixed}> */
-    public static function providerForInvalidInput(): iterable
+    #[Test]
+    #[DataProvider('providerForNonResourceType')]
+    public function shouldValidateInvalidInput(mixed $input): void
     {
-        $rule = new ResourceType();
-
-        return [
-            [$rule, 'String'],
-            [$rule, 123],
-            [$rule, []],
-            [
-                $rule,
-                static function (): void {
-                },
-            ],
-            [$rule, new stdClass()],
-            [$rule, null],
-        ];
+        self::assertInvalidInput(new ResourceType(), $input);
     }
 }
