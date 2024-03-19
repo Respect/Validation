@@ -188,7 +188,7 @@ interface ChainedValidator extends Validatable
 
     public function leapYear(): ChainedValidator;
 
-    public function length(?int $min = null, ?int $max = null, bool $inclusive = true): ChainedValidator;
+    public function length(Validatable $rule): ChainedValidator;
 
     public function lowercase(): ChainedValidator;
 

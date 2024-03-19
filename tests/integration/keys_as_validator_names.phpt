@@ -1,5 +1,3 @@
---TEST--
-keys as validator names
 --FILE--
 <?php
 
@@ -13,7 +11,7 @@ use Respect\Validation\Validator;
 
 exceptionFullMessage(static function (): void {
     Validator::create()
-        ->key('username', Validator::length(2, 32))
+        ->key('username', Validator::length(Validator::between(2, 32)))
         ->key('birthdate', Validator::dateTime())
         ->setName('User Subscription Form')
         ->assert(['username' => '0', 'birthdate' => 'Whatever']);
@@ -21,5 +19,5 @@ exceptionFullMessage(static function (): void {
 ?>
 --EXPECT--
 - All of the required rules must pass for User Subscription Form
-  - username must have a length between 2 and 32
+  - The length of username must be between 2 and 32
   - birthdate must be a valid date/time

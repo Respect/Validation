@@ -10,7 +10,7 @@ use Respect\Validation\Validator as v;
 exceptionMessages(
     static fn() => v::alnum()
         ->noWhitespace()
-        ->length(1, 15)
+        ->length(v::between(1, 15))
         ->setTemplates([
             'alnum' => '{{name}} must contain only letters and digits',
             'noWhitespace' => '{{name}} cannot contain spaces',

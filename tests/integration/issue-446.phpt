@@ -13,13 +13,10 @@ $arr = [
 ];
 
 exceptionMessages(static function () use ($arr): void {
-    v::create()
-        ->key('name', v::length(2, 32))
-        ->key('email', v::email())
-        ->assert($arr);
+    v::create()->key('name', v::length(v::between(2, 32)))->key('email', v::email())->assert($arr);
 });
 ?>
 --EXPECT--
 [
-    'name' => 'name must have a length between 2 and 32',
+    'name' => 'The length of name must be between 2 and 32',
 ]

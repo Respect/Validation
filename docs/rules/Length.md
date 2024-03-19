@@ -1,54 +1,45 @@
 # Length
 
-- `Length(int $min, int $max)`
-- `Length(int $min, null)`
-- `Length(null, int $max)`
-- `Length(int $min, int $max, bool $inclusive)`
+- `Length(Validatable $rule)`
 
-Validates the length of the given input.
-
-Most simple example:
+Validates the length of the given input against a given rule.
 
 ```php
-v::stringType()->length(1, 5)->validate('abc'); // true
+v::length(v::between(1, 5))->validate('abc'); // true
+
+v::length(v::greaterThan(5))->validate('abcdef'); // true
+
+v::length(v::lessThan(5))->validate('abc'); // true
 ```
 
-You can also validate only minimum length:
+This rule can be used to validate the length of strings, arrays, and objects that implement the `Countable` interface.
 
 ```php
-v::stringType()->length(5, null)->validate('abcdef'); // true
+v::length(v::greaterThanOrEqual(3))->validate([1, 2, 3]); // true
+
+v::length(v::equals(0))->validate(new SplPriorityQueue()); // true
 ```
 
-Only maximum length:
+## Categorization
 
-```php
-v::stringType()->length(null, 5)->validate('abc'); // true
-```
-
-The type as the first validator in a chain is a good practice,
-since length accepts many types:
-
-```php
-v::arrayVal()->length(1, 5)->validate(['foo', 'bar']); // true
-```
-
-A third parameter may be passed to validate the passed values inclusive:
-
-```php
-v::stringType()->length(1, 5, true)->validate('a'); // true
-```
-
-Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.
+- Comparisons
+- Transformations
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.3.9 | Created
+| Version | Description             |
+|--------:|-------------------------|
+|   3.0.0 | Became a transformation |
+|   0.3.9 | Created                 |
 
 ***
 See also:
 
 - [Between](Between.md)
 - [BetweenExclusive](BetweenExclusive.md)
+- [GreaterThan](GreaterThan.md)
 - [GreaterThanOrEqual](GreaterThanOrEqual.md)
+- [LessThan](LessThan.md)
+- [LessThanOrEqual](LessThanOrEqual.md)
+- [Max](Max.md)
+- [Min](Min.md)

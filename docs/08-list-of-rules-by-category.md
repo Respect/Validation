@@ -51,6 +51,7 @@
 - [GreaterThanOrEqual](rules/GreaterThanOrEqual.md)
 - [Identical](rules/Identical.md)
 - [In](rules/In.md)
+- [Length](rules/Length.md)
 - [LessThan](rules/LessThan.md)
 - [LessThanOrEqual](rules/LessThanOrEqual.md)
 - [Max](rules/Max.md)
@@ -260,6 +261,7 @@
 
 - [Call](rules/Call.md)
 - [Each](rules/Each.md)
+- [Length](rules/Length.md)
 - [Max](rules/Max.md)
 - [Min](rules/Min.md)
 

@@ -190,7 +190,7 @@ interface StaticValidator
 
     public static function leapYear(): ChainedValidator;
 
-    public static function length(?int $min = null, ?int $max = null, bool $inclusive = true): ChainedValidator;
+    public static function length(Validatable $rule): ChainedValidator;
 
     public static function lowercase(): ChainedValidator;
 

@@ -10,64 +10,51 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Test\RuleTestCase;
-use Respect\Validation\Test\Stubs\CountableStub;
+use Respect\Validation\Test\DataProvider as RespectDataProvider;
+use Respect\Validation\Test\Rules\Stub;
+use Respect\Validation\Test\TestCase;
 
-use function range;
-use function tmpfile;
+use function count;
+use function mb_strlen;
 
 #[Group('rule')]
 #[CoversClass(Length::class)]
-final class LengthTest extends RuleTestCase
+final class LengthTest extends TestCase
 {
     #[Test]
-    public function isShouldNotNotAcceptInvalidLengths(): void
+    #[DataProvider('providerForNonStringsNorCountable')]
+    public function itShouldAlwaysInvalidateNonStringsNorCountable(mixed $input): void
     {
-        $this->expectException(ComponentException::class);
-        $this->expectExceptionMessage('10 cannot be less than 1 for validation');
-
-        new Length(10, 1);
+        self::assertInvalidInput(new Length(Stub::any(1)), $input);
     }
 
-    /** @return iterable<array{Length, mixed}> */
-    public static function providerForValidInput(): iterable
+    #[Test]
+    #[DataProvider('providerForStringTypes')]
+    public function itShouldValidateStringTypes(string $input): void
     {
-        return [
-            [new Length(1, 15), 'alganet'],
-            [new Length(4, 6), 'ççççç'],
-            [new Length(1, 30), range(1, 20)],
-            [new Length(0, 2), (object) ['foo' => 'bar', 'bar' => 'baz']],
-            [new Length(1, null), 'alganet'], //null is a valid max length, means "no maximum",
-            [new Length(null, 15), 'alganet'], //null is a valid min length, means "no minimum"
-            [new Length(1, 15, false), 'alganet'],
-            [new Length(4, 6, false), 'ççççç'],
-            [new Length(1, 30, false), range(1, 20)],
-            [new Length(1, 3, false), (object) ['foo' => 'bar', 'bar' => 'baz']],
-            [new Length(1, null, false), 'alganet'], //null is a valid max length, means "no maximum",
-            [new Length(null, 15, false), 'alganet'], //null is a valid min length, means "no minimum"
-            [new Length(1, 15), new CountableStub(5)],
-            [new Length(1, 15), 12345],
-        ];
+        $wrapped = Stub::pass(1);
+        $rule = new Length($wrapped);
+
+        self::assertValidInput($rule, $input);
+        self::assertEquals(mb_strlen($input), $wrapped->inputs[0]);
     }
 
-    /** @return iterable<array{Length, mixed}> */
-    public static function providerForInvalidInput(): iterable
+    #[Test]
+    #[DataProvider('providerForCountable')]
+    public function itShouldValidateCountable(mixed $input): void
     {
-        return [
-            [new Length(1, 15), ''],
-            [new Length(1, 6), 'alganet'],
-            [new Length(1, 19), range(1, 20)],
-            [new Length(8, null), 'alganet'], //null is a valid max length, means "no maximum",
-            [new Length(null, 6), 'alganet'], //null is a valid min length, means "no minimum"
-            [new Length(1, 7, false), 'alganet'],
-            [new Length(3, 5, false), (object) ['foo' => 'bar', 'bar' => 'baz']],
-            [new Length(1, 30, false), range(1, 50)],
-            [new Length(0), tmpfile()],
-            [new Length(1, 4), new CountableStub(5)],
-            [new Length(1, 4), 12345],
-        ];
+        $wrapped = Stub::pass(1);
+        $rule = new Length($wrapped);
+
+        self::assertValidInput($rule, $input);
+        self::assertEquals(count($input), $wrapped->inputs[0]);
+    }
+
+    public static function providerForNonStringsNorCountable(): RespectDataProvider
+    {
+        return self::providerForAnyValues()->without('stringType', 'countable');
     }
 }

@@ -17,7 +17,9 @@ use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Test\Exceptions\StubException;
 
 use function array_fill;
+use function array_map;
 use function array_shift;
+use function rand;
 
 #[Template(
     '{{name}} must be a valid stub',
@@ -44,6 +46,11 @@ final class Stub extends AbstractRule
     public static function pass(int $expectedCount): self
     {
         return new self(...array_fill(0, $expectedCount, true));
+    }
+
+    public static function any(int $expectedCount): self
+    {
+        return new self(...array_map(static fn () => rand(0, 1) == 1, array_fill(0, $expectedCount, null)));
     }
 
     public static function fail(int $expectedCount): self

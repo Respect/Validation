@@ -1,5 +1,3 @@
---TEST--
-getMessages() should include all validation messages in a chain
 --FILE--
 <?php
 
@@ -19,7 +17,7 @@ exceptionMessages(static function (): void {
     ];
 
     Validator::create()
-        ->key('username', Validator::length(2, 32))
+        ->key('username', Validator::length(Validator::between(2, 32)))
         ->key('birthdate', Validator::dateTime())
         ->key('password', Validator::notEmpty())
         ->key('email', Validator::email())
@@ -28,7 +26,7 @@ exceptionMessages(static function (): void {
 ?>
 --EXPECT--
 [
-    'username' => 'username must have a length between 2 and 32',
+    'username' => 'The length of username must be between 2 and 32',
     'birthdate' => 'birthdate must be a valid date/time',
     'password' => 'password must not be empty',
     'email' => 'email must be present',

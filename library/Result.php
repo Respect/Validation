@@ -90,6 +90,19 @@ final class Result
         );
     }
 
+    public function withInput(mixed $input): self
+    {
+        $currentInput = $this->input;
+
+        return $this->clone(
+            input: $input,
+            children: array_map(
+                static fn (Result $child) => $child->input === $currentInput ? $input : $child->input,
+                $this->children
+            ),
+        );
+    }
+
     public function withNextSibling(Result $nextSibling): self
     {
         return $this->clone(nextSibling: $nextSibling);
@@ -135,6 +148,7 @@ final class Result
      */
     private function clone(
         ?bool $isValid = null,
+        mixed $input = null,
         ?string $template = null,
         ?Mode $mode = null,
         ?string $name = null,
@@ -144,7 +158,7 @@ final class Result
     ): self {
         return new self(
             $isValid ?? $this->isValid,
-            $this->input,
+            $input ?? $this->input,
             $this->rule,
             $this->parameters,
             $template ?? $this->template,

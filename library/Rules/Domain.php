@@ -58,7 +58,12 @@ final class Domain extends Standard
 
     private function createGenericRule(): Consecutive
     {
-        return new Consecutive(new StringType(), new NoWhitespace(), new Contains('.'), new Length(3));
+        return new Consecutive(
+            new StringType(),
+            new NoWhitespace(),
+            new Contains('.'),
+            new Length(new GreaterThanOrEqual(3))
+        );
     }
 
     private function createTldRule(bool $realTldCheck): Validatable
@@ -67,7 +72,7 @@ final class Domain extends Standard
             return new Tld();
         }
 
-        return new Consecutive(new Not(new StartsWith('-')), new Length(2));
+        return new Consecutive(new Not(new StartsWith('-')), new Length(new GreaterThanOrEqual(2)));
     }
 
     private function createPartsRule(): Validatable
