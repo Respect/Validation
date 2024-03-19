@@ -28,9 +28,11 @@ use Respect\Validation\Transformers\DeprecatedKeyValue;
 use Respect\Validation\Transformers\DeprecatedLength;
 use Respect\Validation\Transformers\DeprecatedMinAndMax;
 use Respect\Validation\Transformers\DeprecatedType;
+use Respect\Validation\Transformers\Prefix;
 use Respect\Validation\Transformers\RuleSpec;
 use Respect\Validation\Transformers\Transformer;
 
+use function array_merge;
 use function lcfirst;
 use function sprintf;
 use function trim;
@@ -65,7 +67,7 @@ final class Factory
             new DeprecatedKey(
                 new DeprecatedKeyValue(
                     new DeprecatedMinAndMax(
-                        new DeprecatedKeyNested(new DeprecatedLength(new DeprecatedType()))
+                        new DeprecatedKeyNested(new DeprecatedLength(new DeprecatedType(new Prefix())))
                     )
                 )
             )
@@ -121,23 +123,7 @@ final class Factory
      */
     public function rule(string $ruleName, array $arguments = []): Validatable
     {
-        $ruleSpec = $this->transformer->transform(new RuleSpec($ruleName, $arguments));
-        foreach ($this->rulesNamespaces as $namespace) {
-            try {
-                /** @var class-string<Validatable> $name */
-                $name = $namespace . '\\' . ucfirst($ruleSpec->name);
-                /** @var Validatable $rule */
-                $rule = $this
-                    ->createReflectionClass($name, Validatable::class)
-                    ->newInstanceArgs($ruleSpec->arguments);
-
-                return $rule;
-            } catch (ReflectionException) {
-                continue;
-            }
-        }
-
-        throw new ComponentException(sprintf('"%s" is not a valid rule name', $ruleName));
+        return $this->createRuleSpec($this->transformer->transform(new RuleSpec($ruleName, $arguments)));
     }
 
     /**
@@ -163,6 +149,39 @@ final class Factory
     public static function setDefaultInstance(self $defaultInstance): void
     {
         self::$defaultInstance = $defaultInstance;
+    }
+
+    private function createRuleSpec(RuleSpec $ruleSpec): Validatable
+    {
+        $rule = $this->createRule($ruleSpec->name, $ruleSpec->arguments);
+        if ($ruleSpec->wrapper !== null) {
+            return $this->createRule($ruleSpec->wrapper->name, array_merge($ruleSpec->wrapper->arguments, [$rule]));
+        }
+
+        return $rule;
+    }
+
+    /**
+     * @param mixed[] $arguments
+     */
+    private function createRule(string $ruleName, array $arguments = []): Validatable
+    {
+        foreach ($this->rulesNamespaces as $namespace) {
+            try {
+                /** @var class-string<Validatable> $name */
+                $name = $namespace . '\\' . ucfirst($ruleName);
+                /** @var Validatable $rule */
+                $rule = $this
+                    ->createReflectionClass($name, Validatable::class)
+                    ->newInstanceArgs($arguments);
+
+                return $rule;
+            } catch (ReflectionException) {
+                continue;
+            }
+        }
+
+        throw new ComponentException(sprintf('"%s" is not a valid rule name', $ruleName));
     }
 
     /**

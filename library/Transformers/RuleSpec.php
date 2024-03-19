@@ -14,7 +14,8 @@ final class RuleSpec
     /** @param array<mixed> $arguments */
     public function __construct(
         public readonly string $name,
-        public readonly array $arguments = []
+        public readonly array $arguments = [],
+        public readonly ?RuleSpec $wrapper = null,
     ) {
     }
 }

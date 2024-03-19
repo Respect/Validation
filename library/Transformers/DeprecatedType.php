@@ -32,10 +32,15 @@ final class DeprecatedType implements Transformer
         'string' => 'stringType',
     ];
 
+    public function __construct(
+        private readonly Transformer $next
+    ) {
+    }
+
     public function transform(RuleSpec $ruleSpec): RuleSpec
     {
         if ($ruleSpec->name !== 'type') {
-            return $ruleSpec;
+            return $this->next->transform($ruleSpec);
         }
 
         $type = current($ruleSpec->arguments);

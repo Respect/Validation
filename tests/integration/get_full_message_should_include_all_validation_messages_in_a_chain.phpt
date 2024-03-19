@@ -7,9 +7,7 @@ require 'vendor/autoload.php';
 
 use Respect\Validation\Validator;
 
-exceptionFullMessage(
-    static fn() => Validator::stringType()->length(Validator::between(2, 15))->assert(0)
-);
+exceptionFullMessage(static fn() => Validator::stringType()->lengthBetween(2, 15)->assert(0));
 ?>
 --EXPECT--
 - All of the required rules must pass for 0

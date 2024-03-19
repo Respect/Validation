@@ -17,7 +17,7 @@ exceptionMessages(static function (): void {
     ];
 
     Validator::create()
-        ->key('username', Validator::length(Validator::between(2, 32)))
+        ->key('username', Validator::lengthBetween(2, 32))
         ->key('birthdate', Validator::dateTime())
         ->key('password', Validator::notEmpty())
         ->key('email', Validator::email())

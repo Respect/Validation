@@ -13,7 +13,10 @@ $arr = [
 ];
 
 exceptionMessages(static function () use ($arr): void {
-    v::create()->key('name', v::length(v::between(2, 32)))->key('email', v::email())->assert($arr);
+    v::create()
+        ->key('name', v::lengthBetween(2, 32))
+        ->key('email', v::email())
+        ->assert($arr);
 });
 ?>
 --EXPECT--

@@ -22,10 +22,7 @@ use function count;
 )]
 final class ContainsAny extends Envelope
 {
-    /**
-     * @param non-empty-array<mixed> $needles At least one of the values provided must be found in input string or array
-     * @param bool $identical Defines whether the value should be compared strictly, when validating array
-     */
+    /** @param non-empty-array<mixed> $needles */
     public function __construct(array $needles, bool $identical = false)
     {
         // @phpstan-ignore-next-line

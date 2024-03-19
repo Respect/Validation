@@ -29,7 +29,7 @@ Factory::setDefaultInstance(
         })
 );
 
-exceptionFullMessage(static fn() => Validator::stringType()->length(Validator::between(2, 15))->phone('US')->assert(0));
+exceptionFullMessage(static fn() => Validator::stringType()->lengthBetween(2, 15)->phone('US')->assert(0));
 ?>
 --EXPECT--
 - Todas as regras requeridas devem passar para 0

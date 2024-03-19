@@ -17,7 +17,7 @@ Factory::setDefaultInstance(
         })
 );
 
-exceptionMessage(static fn() => Validator::stringType()->length(Validator::between(2, 15))->check(0));
+exceptionMessage(static fn() => Validator::stringType()->lengthBetween(2, 15)->check(0));
 ?>
 --EXPECT--
 0 deve ser do tipo string

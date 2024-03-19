@@ -24,9 +24,7 @@ final class Lazy extends Standard
     /** @var callable(mixed): Validatable */
     private $ruleCreator;
 
-    /**
-     * @param callable(mixed): Validatable $ruleCreator
-     */
+    /** @param callable(mixed): Validatable $ruleCreator */
     public function __construct(callable $ruleCreator)
     {
         $this->ruleCreator = $ruleCreator;

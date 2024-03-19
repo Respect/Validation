@@ -1,0 +1,226 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use Nette\PhpGenerator\InterfaceType;
+use Nette\PhpGenerator\PhpNamespace;
+use Nette\PhpGenerator\Printer;
+use Respect\Validation\Mixins\ChainedKey;
+use Respect\Validation\Mixins\ChainedLength;
+use Respect\Validation\Mixins\ChainedMax;
+use Respect\Validation\Mixins\ChainedMin;
+use Respect\Validation\Mixins\ChainedNot;
+use Respect\Validation\Mixins\ChainedNullOr;
+use Respect\Validation\Mixins\ChainedProperty;
+use Respect\Validation\Mixins\ChainedUndefOr;
+use Respect\Validation\Mixins\ChainedValidator;
+use Respect\Validation\Mixins\StaticKey;
+use Respect\Validation\Mixins\StaticLength;
+use Respect\Validation\Mixins\StaticMax;
+use Respect\Validation\Mixins\StaticMin;
+use Respect\Validation\Mixins\StaticNot;
+use Respect\Validation\Mixins\StaticNullOr;
+use Respect\Validation\Mixins\StaticProperty;
+use Respect\Validation\Mixins\StaticUndefOr;
+use Respect\Validation\Validatable;
+
+function addMethodToInterface(
+    InterfaceType $interfaceType,
+    ReflectionClass $reflection,
+    ?string $prefix,
+    array $allowList,
+    array $denyList,
+): void {
+    if ($allowList !== [] && !in_array($reflection->getShortName(), $allowList, true)) {
+        return;
+    }
+
+    if ($denyList !== [] && in_array($reflection->getShortName(), $denyList, true)) {
+        return;
+    }
+
+    $name = $prefix ? $prefix . ucfirst($reflection->getShortName()) : lcfirst($reflection->getShortName());
+    $method = $interfaceType->addMethod($name)->setPublic()->setReturnType(ChainedValidator::class);
+    if (str_starts_with($interfaceType->getName(), 'Static')) {
+        $method->setStatic();
+    }
+
+    if ($prefix === 'key') {
+        $method->addParameter('key')->setType('int|string');
+    }
+
+    if ($prefix === 'property') {
+        $method->addParameter('propertyName')->setType('string');
+    }
+
+    $reflrectionConstructor = $reflection->getConstructor();
+    if ($reflrectionConstructor === null) {
+        return;
+    }
+    $commend = $reflrectionConstructor->getDocComment();
+    if ($commend) {
+        $method->addComment(preg_replace('@(/\*\* *| +\* +| +\*/)@', '', $commend));
+    }
+
+    foreach ($reflrectionConstructor->getParameters() as $reflectionParameter) {
+        if ($reflectionParameter->isVariadic()) {
+            $method->setVariadic();
+        }
+
+        $type = $reflectionParameter->getType();
+        $types = [];
+        if ($type instanceof ReflectionUnionType) {
+            foreach ($type->getTypes() as $type) {
+                $types[] = $type->getName();
+            }
+        } elseif ($type instanceof ReflectionNamedType) {
+            $types[] = $type->getName();
+            if (            str_starts_with($type->getName(), 'Sokil')
+                || str_starts_with($type->getName(), 'Egulias')
+                || $type->getName() === 'finfo'
+            ) {
+                continue;
+            }
+        }
+        $parameter = $method->addParameter($reflectionParameter->getName());
+        $parameter->setType(implode('|', $types));
+
+        if (!$reflectionParameter->isDefaultValueAvailable()) {
+            $parameter->setNullable($reflectionParameter->isOptional());
+        }
+
+        if (count($types) > 1 || $reflectionParameter->isVariadic()) {
+            $parameter->setNullable(false);
+        }
+
+        if (!$reflectionParameter->isDefaultValueAvailable()) {
+            continue;
+        }
+
+        $defaultValue = $reflectionParameter->getDefaultValue();
+        if (is_object($defaultValue)) {
+            continue;
+        }
+
+        $parameter->setDefaultValue($reflectionParameter->getDefaultValue());
+        $parameter->setNullable(false);
+    }
+}
+
+function overwriteFile(string $content, string $basename): void
+{
+    file_put_contents(sprintf('%s/../library/Mixins/%s.php', __DIR__, $basename), implode(PHP_EOL . PHP_EOL, [
+        '<?php',
+        file_get_contents(__DIR__.'/../.docheader'),
+        'declare(strict_types=1);',
+        preg_replace('/extends (.+, )+/', 'extends' . PHP_EOL . '\1', $content),
+    ]));
+}
+
+(static function (): void {
+    $numberRelatedRules = [
+        'Between',
+        'BetweenExclusive',
+        'Equals',
+        'Equivalent',
+        'Even',
+        'Factor',
+        'Fibonacci',
+        'Finite',
+        'GreaterThan',
+        'Identical',
+        'In',
+        'Infinite',
+        'LessThan',
+        'LessThanOrEqual',
+        'GreaterThanOrEqual',
+        'Multiple',
+        'Odd',
+        'PerfectSquare',
+        'Positive',
+        'PrimeNumber',
+    ];
+
+    $structureRelatedRules = [
+        'Exists',
+        'Key',
+        'KeyExists',
+        'KeyOptional',
+        'KeySet',
+        'Property',
+        'PropertyExists',
+        'PropertyOptional',
+    ];
+
+    $mixins = [
+        ['Key', 'key', [], $structureRelatedRules],
+        ['Length', 'length', $numberRelatedRules, []],
+        ['Max', 'max', $numberRelatedRules, []],
+        ['Min', 'min', $numberRelatedRules, []],
+        ['Not', 'not', [], ['Not', 'NotEmpty', 'NotBlank', 'NotEmoji', 'NotOptional', 'Optional']],
+        ['NullOr', 'nullOf', [], ['Nullable', 'Optional']],
+        ['Property', 'property', [], $structureRelatedRules],
+        ['UndefOr', 'undefOf', [], ['Nullable', 'Optional']],
+        ['Validator', null, [], []],
+    ];
+
+    $names = [];
+    foreach (new DirectoryIterator(__DIR__ . '/../library/Rules') as $file) {
+        if (!$file->isFile()) {
+            continue;
+        }
+
+        $className = 'Respect\\Validation\\Rules\\' . $file->getBasename('.php');
+        $reflection = new ReflectionClass($className);
+        if ($reflection->isAbstract()) {
+            continue;
+        }
+        $names[$reflection->getShortName()] = $reflection;
+    }
+    ksort($names);
+
+    foreach ($mixins as [$name, $prefix, $allowList, $denyList]) {
+        $chainedNamespace = new PhpNamespace('Respect\\Validation\\Mixins');
+        $chainedNamespace->addUse(Validatable::class);
+        $chainedInterface = $chainedNamespace->addInterface('Chained' . $name);
+
+        $staticNamespace = new PhpNamespace('Respect\\Validation\\Mixins');
+        $staticNamespace->addUse(Validatable::class);
+        $staticInterface = $staticNamespace->addInterface('Static' . $name);
+
+        if ($name === 'Validator') {
+            $chainedInterface->addExtend(Validatable::class);
+            $chainedInterface->addExtend(ChainedKey::class);
+            $chainedInterface->addExtend(ChainedLength::class);
+            $chainedInterface->addExtend(ChainedMax::class);
+            $chainedInterface->addExtend(ChainedMin::class);
+            $chainedInterface->addExtend(ChainedNot::class);
+            $chainedInterface->addExtend(ChainedNullOr::class);
+            $chainedInterface->addExtend(ChainedProperty::class);
+            $chainedInterface->addExtend(ChainedUndefOr::class);
+
+            $staticInterface->addExtend(StaticKey::class);
+            $staticInterface->addExtend(StaticLength::class);
+            $staticInterface->addExtend(StaticMax::class);
+            $staticInterface->addExtend(StaticMin::class);
+            $staticInterface->addExtend(StaticNot::class);
+            $staticInterface->addExtend(StaticNullOr::class);
+            $staticInterface->addExtend(StaticProperty::class);
+            $staticInterface->addExtend(StaticUndefOr::class);
+        }
+
+        foreach ($names as $reflection) {
+            addMethodToInterface($staticInterface, $reflection, $prefix, $allowList, $denyList);
+            addMethodToInterface($chainedInterface, $reflection, $prefix, $allowList, $denyList);
+        }
+
+        $printer = new Printer();
+        $printer->wrapLength = 117;
+
+        overwriteFile($printer->printNamespace($staticNamespace), $staticInterface->getName());
+        overwriteFile($printer->printNamespace($chainedNamespace), $chainedInterface->getName());
+    }
+})();

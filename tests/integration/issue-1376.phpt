@@ -8,10 +8,10 @@ require 'vendor/autoload.php';
 use Respect\Validation\Validator as v;
 
 exceptionFullMessage(static function (): void {
-    v::property('title', v::length(v::between(2, 3))->stringType())
+    v::property('title', v::lengthBetween(2, 3)->stringType())
             ->property('description', v::stringType())
-            ->property('author', v::intType()->length(v::between(1, 2)))
-            ->property('user', v::intVal()->length(v::between(1, 2)))
+            ->property('author', v::intType()->lengthBetween(1, 2))
+            ->property('user', v::intVal()->lengthBetween(1, 2))
             ->assert((object) ['author' => 'foo']);
 });
 

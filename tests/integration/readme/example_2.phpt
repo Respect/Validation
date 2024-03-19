@@ -8,7 +8,7 @@ require 'vendor/autoload.php';
 use Respect\Validation\Validator as v;
 
 exceptionFullMessage(
-    static fn() => v::alnum()->noWhitespace()->length(v::between(1, 15))->assert('really messed up screen#name')
+    static fn() => v::alnum()->noWhitespace()->lengthBetween(1, 15)->assert('really messed up screen#name')
 );
 ?>
 --EXPECT--

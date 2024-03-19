@@ -89,9 +89,9 @@ final class FactoryTest extends TestCase
         $factory = (new Factory())->withRuleNamespace(self::TEST_RULES_NAMESPACE);
 
         $this->expectException(ComponentException::class);
-        $this->expectExceptionMessage('"notFoundRule" is not a valid rule name');
+        $this->expectExceptionMessage('"nonExistingRule" is not a valid rule name');
 
-        $factory->rule('notFoundRule');
+        $factory->rule('nonExistingRule');
     }
 
     #[Test]

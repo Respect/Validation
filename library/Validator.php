@@ -14,7 +14,6 @@ use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\StandardFormatter;
 use Respect\Validation\Message\StandardRenderer;
-use Respect\Validation\Mixins\ChainedValidator;
 use Respect\Validation\Mixins\StaticValidator;
 use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Rules\AllOf;
@@ -24,7 +23,6 @@ use function current;
 
 /**
  * @mixin StaticValidator
- * @mixin ChainedValidator
  */
 final class Validator extends AbstractRule
 {

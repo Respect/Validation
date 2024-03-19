@@ -27,6 +27,7 @@
         "giggsey/libphonenumber-for-php-lite": "^8.13",
         "malukenho/docheader": "^1.0",
         "mikey179/vfsstream": "^1.6",
+        "nette/php-generator": "^4.1",
         "phpstan/phpstan": "^1.10",
         "phpstan/phpstan-deprecation-rules": "^1.1",
         "phpstan/phpstan-phpunit": "^1.3",

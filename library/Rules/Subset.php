@@ -22,9 +22,7 @@ use function is_array;
 )]
 final class Subset extends Standard
 {
-    /**
-     * @param mixed[] $superset
-     */
+    /** @param mixed[] $superset */
     public function __construct(
         private readonly array $superset
     ) {

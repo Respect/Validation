@@ -9,13 +9,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Transformers;
 
-use Respect\Validation\Rules\Between;
-use Respect\Validation\Rules\BetweenExclusive;
-use Respect\Validation\Rules\Equals;
-use Respect\Validation\Rules\GreaterThan;
-use Respect\Validation\Rules\GreaterThanOrEqual;
-use Respect\Validation\Rules\LessThan;
-use Respect\Validation\Rules\LessThanOrEqual;
 use Respect\Validation\Validatable;
 
 use function Respect\Stringifier\stringify;
@@ -49,59 +42,40 @@ final class DeprecatedLength implements Transformer
             'and will not be allowed in the next major version. ';
 
         if (!$minValue) {
+            $name = $inclusive ? 'LessThanOrEqual' : 'LessThan';
             trigger_error(
-                sprintf(
-                    $message . 'Use length(%s(%s)) instead.',
-                    $inclusive ? 'lessThanOrEqual' : 'lessThan',
-                    stringify($maxValue),
-                ),
+                sprintf($message . 'Use length%s(%s) instead.', $name, stringify($maxValue)),
                 E_USER_DEPRECATED
             );
 
-            return new RuleSpec(
-                'length',
-                [$inclusive ? new LessThanOrEqual($maxValue) : new LessThan($maxValue)]
-            );
+            return new RuleSpec($name, [$maxValue], new RuleSpec('length'));
         }
 
         if (!$maxValue) {
+            $name = $inclusive ? 'GreaterThanOrEqual' : 'GreaterThan';
             trigger_error(
-                sprintf(
-                    $message . 'Use length(%s(%s)) instead.',
-                    $inclusive ? 'greaterThanOrEqual' : 'greaterThan',
-                    stringify($minValue),
-                ),
+                sprintf($message . 'Use length%s(%s) instead.', $name, stringify($minValue)),
                 E_USER_DEPRECATED
             );
 
-            return new RuleSpec(
-                'length',
-                [$inclusive ? new GreaterThanOrEqual($minValue) : new GreaterThan($minValue)]
-            );
+            return new RuleSpec($name, [$minValue], new RuleSpec('length'));
         }
 
         if ($minValue === $maxValue) {
             trigger_error(
-                sprintf($message . 'Use length(equals(%s)) instead.', stringify($minValue)),
+                sprintf($message . 'Use lengthEquals(%s) instead.', stringify($minValue)),
                 E_USER_DEPRECATED
             );
 
-            return new RuleSpec('length', [new Equals($minValue)]);
+            return new RuleSpec('equals', [$minValue], new RuleSpec('length'));
         }
 
+        $name = $inclusive ? 'Between' : 'BetweenExclusive';
         trigger_error(
-            sprintf(
-                $message . 'Use length(%s(%s, %s)) instead.',
-                $inclusive ? 'between' : 'betweenExclusive',
-                stringify($minValue),
-                stringify($maxValue),
-            ),
+            sprintf($message . 'Use length%s(%s, %s) instead.', $name, stringify($minValue), stringify($maxValue)),
             E_USER_DEPRECATED
         );
 
-        return new RuleSpec(
-            'length',
-            [$inclusive ? new Between($minValue, $maxValue) : new BetweenExclusive($minValue, $maxValue)]
-        );
+        return new RuleSpec($name, [$minValue, $maxValue], new RuleSpec('length'));
     }
 }
