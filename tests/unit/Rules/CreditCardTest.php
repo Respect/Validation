@@ -80,6 +80,7 @@ final class CreditCardTest extends RuleTestCase
         return [
             [$general, ''],
             [$general, null],
+            [$general, []],
             [$general, 'it isnt my credit card number'],
             [$general, '&stR@ng3|) (|-|@r$'],
             [$general, '1234 1234 1234 1234'],

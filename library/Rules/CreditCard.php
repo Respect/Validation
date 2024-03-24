@@ -9,15 +9,16 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 
 use function array_keys;
 use function implode;
 use function is_scalar;
 use function preg_match;
 use function preg_replace;
-use function sprintf;
 
 #[Template(
     '{{name}} must be a valid credit card number',
@@ -29,24 +30,16 @@ use function sprintf;
     '{{name}} must not be a valid {{brand|raw}} credit card number',
     self::TEMPLATE_BRANDED,
 )]
-final class CreditCard extends AbstractRule
+final class CreditCard extends Standard
 {
     public const TEMPLATE_BRANDED = '__branded__';
-
     public const ANY = 'Any';
-
     public const AMERICAN_EXPRESS = 'American Express';
-
     public const DINERS_CLUB = 'Diners Club';
-
     public const DISCOVER = 'Discover';
-
     public const JCB = 'JCB';
-
     public const MASTERCARD = 'MasterCard';
-
     public const VISA = 'Visa';
-
     public const RUPAY = 'RuPay';
 
     private const BRAND_REGEX_LIST = [
@@ -64,44 +57,33 @@ final class CreditCard extends AbstractRule
         private readonly string $brand = self::ANY
     ) {
         if (!isset(self::BRAND_REGEX_LIST[$brand])) {
-            throw new ComponentException(
-                sprintf(
-                    '"%s" is not a valid credit card brand (Available: %s)',
-                    $brand,
-                    implode(', ', array_keys(self::BRAND_REGEX_LIST))
-                )
+            throw new InvalidRuleConstructorException(
+                '"%s" is not a valid credit card brand (Available: %s)',
+                $brand,
+                implode(', ', array_keys(self::BRAND_REGEX_LIST))
             );
         }
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
+        $parameters = ['brand' => $this->brand];
+        $template = $this->brand === self::ANY ? self::TEMPLATE_STANDARD : self::TEMPLATE_BRANDED;
         if (!is_scalar($input)) {
-            return false;
+            return Result::failed($input, $this, $parameters, $template);
         }
 
-        $input = (string) preg_replace('/[ .-]/', '', (string) $input);
-        if (!(new Luhn())->validate($input)) {
-            return false;
+        $filteredInput = (string) preg_replace('/[ .-]/', '', (string) $input);
+        if (!(new Luhn())->evaluate($filteredInput)->isValid) {
+            return Result::failed($input, $this, $parameters, $template);
         }
 
-        return preg_match(self::BRAND_REGEX_LIST[$this->brand], $input) > 0;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public function getParams(): array
-    {
-        return ['brand' => $this->brand];
-    }
-
-    protected function getStandardTemplate(mixed $input): string
-    {
-        if ($this->brand === CreditCard::ANY) {
-            return self::TEMPLATE_STANDARD;
-        }
-
-        return self::TEMPLATE_BRANDED;
+        return new Result(
+            preg_match(self::BRAND_REGEX_LIST[$this->brand], $filteredInput) > 0,
+            $input,
+            $this,
+            $parameters,
+            $template
+        );
     }
 }
