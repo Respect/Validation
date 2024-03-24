@@ -10,6 +10,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 use stdClass;
 
 use function array_filter;
@@ -28,11 +30,18 @@ use function trim;
     '{{name}} must be blank',
     self::TEMPLATE_NAMED,
 )]
-final class NotBlank extends AbstractRule
+final class NotBlank extends Standard
 {
     public const TEMPLATE_NAMED = '__named__';
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
+    {
+        $template = $input || $this->getName() ? self::TEMPLATE_NAMED : self::TEMPLATE_STANDARD;
+
+        return new Result($this->isBlank($input), $input, $this, [], $template);
+    }
+
+    private function isBlank(mixed $input): bool
     {
         if (is_numeric($input)) {
             return $input != 0;
@@ -51,14 +60,5 @@ final class NotBlank extends AbstractRule
         }
 
         return !empty($input);
-    }
-
-    protected function getStandardTemplate(mixed $input): string
-    {
-        if ($input || $this->getName()) {
-            return self::TEMPLATE_NAMED;
-        }
-
-        return self::TEMPLATE_STANDARD;
     }
 }
