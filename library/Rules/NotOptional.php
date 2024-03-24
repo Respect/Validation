@@ -11,6 +11,8 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Helpers\CanValidateUndefined;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 
 #[Template(
     'The value must not be optional',
@@ -22,23 +24,20 @@ use Respect\Validation\Message\Template;
     '{{name}} must be optional',
     self::TEMPLATE_NAMED,
 )]
-final class NotOptional extends AbstractRule
+final class NotOptional extends Standard
 {
     use CanValidateUndefined;
 
     public const TEMPLATE_NAMED = '__named__';
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
-        return $this->isUndefined($input) === false;
-    }
-
-    protected function getStandardTemplate(mixed $input): string
-    {
-        if ($input || $this->getName()) {
-            return self::TEMPLATE_NAMED;
-        }
-
-        return self::TEMPLATE_STANDARD;
+        return new Result(
+            $this->isUndefined($input) === false,
+            $input,
+            $this,
+            [],
+            ($input || $this->getName() ? self::TEMPLATE_NAMED : self::TEMPLATE_STANDARD)
+        );
     }
 }
