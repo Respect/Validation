@@ -11,6 +11,8 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 
 use function array_values;
 use function count;
@@ -29,7 +31,7 @@ use function str_split;
     '{{name}} must not be sorted in descending order',
     self::TEMPLATE_DESCENDING,
 )]
-final class Sorted extends AbstractRule
+final class Sorted extends Standard
 {
     public const TEMPLATE_ASCENDING = '__ascending__';
     public const TEMPLATE_DESCENDING = '__descending__';
@@ -47,30 +49,22 @@ final class Sorted extends AbstractRule
         }
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
+        $template = $this->direction === self::ASCENDING ? self::TEMPLATE_ASCENDING : self::TEMPLATE_DESCENDING;
         if (!is_array($input) && !is_string($input)) {
-            return false;
+            return Result::failed($input, $this, [], $template);
         }
 
         $values = $this->getValues($input);
         $count = count($values);
         for ($position = 1; $position < $count; ++$position) {
             if (!$this->isSorted($values[$position], $values[$position - 1])) {
-                return false;
+                return Result::failed($input, $this, [], $template);
             }
         }
 
-        return true;
-    }
-
-    protected function getStandardTemplate(mixed $input): string
-    {
-        if ($this->direction === Sorted::ASCENDING) {
-            return self::TEMPLATE_ASCENDING;
-        }
-
-        return self::TEMPLATE_DESCENDING;
+        return Result::passed($input, $this, [], $template);
     }
 
     private function isSorted(mixed $current, mixed $last): bool
