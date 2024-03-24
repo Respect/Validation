@@ -61,13 +61,20 @@ final class Phone extends AbstractRule
             return preg_match($this->getPregFormat(), (string) $input) > 0;
         }
 
+        return $this->isValidRegionalPhoneNumber((string) $input, $this->countryCode);
+    }
+
+    private function isValidRegionalPhoneNumber(string $input, string $countryCode): bool
+    {
         try {
-            return PhoneNumberUtil::getInstance()->isValidNumber(
-                PhoneNumberUtil::getInstance()->parse((string) $input, $this->countryCode)
-            );
+            $phoneNumberUtil = PhoneNumberUtil::getInstance();
+            $phoneNumberObject = $phoneNumberUtil->parse($input, $countryCode);
+
+            return $phoneNumberUtil->getRegionCodeForNumber($phoneNumberObject) === $countryCode;
         } catch (NumberParseException) {
-            return false;
         }
+
+        return false;
     }
 
     private function getPregFormat(): string

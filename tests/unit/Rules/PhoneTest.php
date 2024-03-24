@@ -145,6 +145,7 @@ final class PhoneTest extends RuleTestCase
             [new Phone(), []],
             [new Phone(), '+1-650-253-00-0'],
             [new Phone('BR'), '+1 11 91111 1111'], // invalid + code for BR
+            [new Phone('BR'), '+1 650 253 00 00'], // invalid + code for BR
         ];
     }
 }
