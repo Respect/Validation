@@ -43,7 +43,7 @@ final class CurrencyCode extends Standard
         $availableSets = ['alpha-3', 'numeric'];
         if (!in_array($set, $availableSets, true)) {
             throw new InvalidRuleConstructorException(
-                '%s is not a valid set for ISO 4217 (Available: %s)',
+                '"%s" is not a valid set for ISO 4217 (Available: %s)',
                 $set,
                 $availableSets
             );

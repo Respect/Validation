@@ -20,21 +20,12 @@ use Respect\Validation\Test\RuleTestCase;
 final class SubdivisionCodeTest extends RuleTestCase
 {
     #[Test]
-    public function shouldThrowsExceptionWhenInvalidFormat(): void
+    public function shouldNotAcceptWrongNamesOnConstructor(): void
     {
         $this->expectException(ComponentException::class);
         $this->expectExceptionMessage('"whatever" is not a supported country code');
 
         new SubdivisionCode('whatever');
-    }
-
-    #[Test]
-    public function shouldNotAcceptWrongNamesOnConstructor(): void
-    {
-        $this->expectException(ComponentException::class);
-        $this->expectExceptionMessage('"JK" is not a supported country code');
-
-        new SubdivisionCode('JK');
     }
 
     /** @return iterable<array{SubdivisionCode, mixed}> */

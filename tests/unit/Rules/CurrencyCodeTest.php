@@ -24,7 +24,7 @@ final class CurrencyCodeTest extends RuleTestCase
     {
         $this->expectException(InvalidRuleConstructorException::class);
         $this->expectExceptionMessage(
-            '"whatever" is not a valid set for ISO 4217 (Available: `["alpha-3", "numeric"]`)'
+            '"whatever" is not a valid set for ISO 4217 (Available: "alpha-3" and "numeric")'
         );
 
         // @phpstan-ignore-next-line

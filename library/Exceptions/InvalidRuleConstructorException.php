@@ -10,13 +10,37 @@ declare(strict_types=1);
 namespace Respect\Validation\Exceptions;
 
 use function array_map;
-use function Respect\Stringifier\stringify;
+use function array_pop;
+use function count;
+use function current;
+use function implode;
+use function is_scalar;
 use function sprintf;
 
 final class InvalidRuleConstructorException extends ComponentException implements Exception
 {
-    public function __construct(string $message, mixed ...$arguments)
+    /** @param string|array<string> ...$arguments */
+    public function __construct(string $message, string|array ...$arguments)
     {
-        parent::__construct(sprintf($message, ...array_map(static fn($argument) => stringify($argument), $arguments)));
+        parent::__construct(sprintf(
+            $message,
+            ...array_map(
+                static function (array|string $value) {
+                    if (is_scalar($value)) {
+                        return $value;
+                    }
+
+                    if (count($value) === 1) {
+                        return '"' . current($value) . '"';
+                    }
+
+                    $items = array_map(static fn($item) => '"' . $item . '"', $value);
+                    $items[] = 'and ' . array_pop($items);
+
+                    return implode(count($items) > 2 ? ', ' : ' ', $items);
+                },
+                $arguments,
+            )
+        ));
     }
 }

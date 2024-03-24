@@ -25,7 +25,7 @@ final class CharsetTest extends RuleTestCase
     public function itShouldThrowsExceptionWhenCharsetIsNotValid(): void
     {
         $this->expectException(InvalidRuleConstructorException::class);
-        $this->expectExceptionMessage('Invalid charset provided: `["UTF-9"]`');
+        $this->expectExceptionMessage('Invalid charset provided: "UTF-9"');
 
         new Charset('UTF-8', 'UTF-9');
     }

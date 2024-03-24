@@ -44,7 +44,7 @@ final class CountryCode extends Standard
         $availableOptions = ['alpha-2', 'alpha-3', 'numeric'];
         if (!in_array($set, $availableOptions, true)) {
             throw new InvalidRuleConstructorException(
-                '%s is not a valid set for ISO 3166-1 (Available: %s)',
+                '"%s" is not a valid set for ISO 3166-1 (Available: %s)',
                 $set,
                 $availableOptions
             );

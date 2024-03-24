@@ -45,7 +45,7 @@ final class LanguageCode extends Standard
         $availableSets = ['alpha-2', 'alpha-3'];
         if (!in_array($set, $availableSets, true)) {
             throw new InvalidRuleConstructorException(
-                '%s is not a valid set for ISO 639-3 (Available: %s)',
+                '"%s" is not a valid set for ISO 639-3 (Available: %s)',
                 $set,
                 $availableSets
             );

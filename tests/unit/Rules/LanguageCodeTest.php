@@ -23,10 +23,12 @@ final class LanguageCodeTest extends RuleTestCase
     public function itShouldThrowAnExceptionWhenSetIsInvalid(): void
     {
         $this->expectException(InvalidRuleConstructorException::class);
-        $this->expectExceptionMessage('"foo" is not a valid set for ISO 639-3 (Available: `["alpha-2", "alpha-3"]`)');
+        $this->expectExceptionMessage(
+            '"whatever" is not a valid set for ISO 639-3 (Available: "alpha-2" and "alpha-3")'
+        );
 
         // @phpstan-ignore-next-line
-        new LanguageCode('foo');
+        new LanguageCode('whatever');
     }
 
     /** @return iterable<array{LanguageCode, mixed}> */

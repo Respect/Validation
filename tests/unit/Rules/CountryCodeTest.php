@@ -24,7 +24,7 @@ final class CountryCodeTest extends RuleTestCase
     {
         $this->expectException(InvalidRuleConstructorException::class);
         $this->expectExceptionMessage(
-            '"whatever" is not a valid set for ISO 3166-1 (Available: `["alpha-2", "alpha-3", "numeric"]`)'
+            '"whatever" is not a valid set for ISO 3166-1 (Available: "alpha-2", "alpha-3", and "numeric")'
         );
 
         // @phpstan-ignore-next-line
