@@ -10,55 +10,131 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
-use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Test\RuleTestCase;
+use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Test\TestCase;
 
 #[Group('rule')]
 #[CoversClass(Phone::class)]
-final class PhoneTest extends RuleTestCase
+final class PhoneTest extends TestCase
 {
-    public function testThrowsExceptionWithCountryName(): void
+    #[Test]
+    #[DataProvider('providerForValidInputWithoutCountryCode')]
+    public function shouldValidateValidInputWithoutCountryCode(mixed $input): void
     {
-        $phoneValidator = new Phone('BR');
-
-        $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage('"abc" must be a valid telephone number for country Brazil');
-
-        $phoneValidator->assert('abc');
+        self::assertValidInput(new Phone(), $input);
     }
 
-    public function testThrowsExceptionForInternationalNumbers(): void
+    #[Test]
+    #[DataProvider('providerForInvalidInputWithoutCountryCode')]
+    public function shouldValidateInvalidInputWithoutCountryCode(mixed $input): void
     {
-        $phoneValidator = new Phone();
-
-        $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage('"abc" must be a valid telephone number');
-
-        $phoneValidator->assert('abc');
+        self::assertInvalidInput(new Phone(), $input);
     }
 
-    /** @return iterable<array{Phone, mixed}> */
-    public static function providerForValidInput(): iterable
+    #[Test]
+    #[DataProvider('providerForValidInputWithCountryCode')]
+    public function shouldValidateValidInputWithCountryCode(string $countryCode, mixed $input): void
+    {
+        self::assertValidInput(new Phone($countryCode), $input);
+    }
+
+    #[Test]
+    #[DataProvider('providerForInvalidInputWithCountryCode')]
+    public function shouldValidateInvalidInputWithCountryCode(string $countryCode, mixed $input): void
+    {
+        self::assertInvalidInput(new Phone($countryCode), $input);
+    }
+
+    /** @return array<array{mixed}> */
+    public static function providerForValidInputWithoutCountryCode(): array
     {
         return [
-            [new Phone(), '+1 650 253 00 00'],
-            [new Phone(), '+7 (999) 999-99-99'],
-            [new Phone(), '+7(999)999-99-99'],
-            [new Phone(), '+7(999)999-9999'],
-            [new Phone('BR'), '+55 11 91111 1111'],
-            [new Phone('BR'), '11 91111 1111'], // no international prefix
-            [new Phone('BR'), '+5511911111111'], // no whitespace
-            [new Phone('BR'), '11911111111'], // no prefix, no whitespace
+            ['+1 650 253 00 00'],
+            ['+7 (999) 999-99-99'],
+            ['+7(999)999-99-99'],
+            ['+7(999)999-9999'],
+            ['+33(1)22 22 22 22'],
+            ['+1 650 253 00 00'],
+            ['+7 (999) 999-99-99'],
+            ['+7(999)999-99-99'],
+            ['+7(999)999-9999'],
         ];
     }
 
-    /** @return iterable<array{Phone, mixed}> */
-    public static function providerForInvalidInput(): iterable
+    /** @return array<array{mixed}> */
+    public static function providerForInvalidInputWithoutCountryCode(): array
     {
         return [
-            [new Phone(), '+1-650-253-00-0'],
-            [new Phone('BR'), '+1 11 91111 1111'], // invalid + code for BR
+            ['+1-650-253-00-0'],
+            ['33(020) 7777 7777'],
+            ['33(020)7777 7777'],
+            ['+33(020) 7777 7777'],
+            ['+33(020)7777 7777'],
+            ['03-6106666'],
+            ['036106666'],
+            ['+33(11) 97777 7777'],
+            ['+3311977777777'],
+            ['11977777777'],
+            ['11 97777 7777'],
+            ['(11) 97777 7777'],
+            ['(11) 97777-7777'],
+            ['555-5555'],
+            ['5555555'],
+            ['555.5555'],
+            ['555 5555'],
+            ['+1 (555) 555 5555'],
+            ['33(1)2222222'],
+            ['33(1)22222222'],
+            ['33(1)22 22 22 22'],
+            ['(020) 7476 4026'],
+            ['+5-555-555-5555'],
+            ['+5 555 555 5555'],
+            ['+5.555.555.5555'],
+            ['5-555-555-5555'],
+            ['5.555.555.5555'],
+            ['5 555 555 5555'],
+            ['555.555.5555'],
+            ['555 555 5555'],
+            ['555-555-5555'],
+            ['555-5555555'],
+            ['5(555)555.5555'],
+            ['+5(555)555.5555'],
+            ['+5(555)555 5555'],
+            ['+5(555)555-5555'],
+            ['+5(555)5555555'],
+            ['(555)5555555'],
+            ['(555)555.5555'],
+            ['(555)555-5555'],
+            ['(555) 555 5555'],
+            ['55555555555'],
+            ['5555555555'],
+            ['+33(1)2222222'],
+            ['+33(1)222 2222'],
+            ['+33(1)222.2222'],
+        ];
+    }
+
+    /** @return array<array{string, mixed}> */
+    public static function providerForValidInputWithCountryCode(): array
+    {
+        return [
+            ['BR', '+55 11 91111 1111'],
+            ['BR', '11 91111 1111'],
+            ['BR', '+5511911111111'],
+            ['BR', '11911111111'],
+            ['NL', '+31 10 408 1775'],
+        ];
+    }
+
+    /** @return array<array{string, mixed}> */
+    public static function providerForInvalidInputWithCountryCode(): array
+    {
+        return [
+            ['BR', '+1 11 91111 1111'],
+            ['BR', '+1 650 253 00 00'],
+            ['US', '+31 10 408 1775'],
         ];
     }
 }

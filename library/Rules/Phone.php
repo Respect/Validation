@@ -11,14 +11,15 @@ namespace Respect\Validation\Rules;
 
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumberUtil;
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 use Sokil\IsoCodes\Database\Countries;
 
 use function class_exists;
 use function is_scalar;
-use function sprintf;
 
 #[Template(
     '{{name}} must be a valid telephone number',
@@ -30,7 +31,7 @@ use function sprintf;
     '{{name}} must not be a valid telephone number for country {{countryName|trans}}',
     self::TEMPLATE_FOR_COUNTRY,
 )]
-final class Phone extends AbstractRule
+final class Phone extends Standard
 {
     public const TEMPLATE_FOR_COUNTRY = '__for_country__';
     public const TEMPLATE_INTERNATIONAL = '__international__';
@@ -63,35 +64,34 @@ final class Phone extends AbstractRule
         $countries ??= new Countries();
         $this->country = $countries->getByAlpha2($countryCode);
         if ($this->country === null) {
-            throw new ComponentException(sprintf('Invalid country code %s', $countryCode));
+            throw new InvalidRuleConstructorException('Invalid country code %s', $countryCode);
         }
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
+        $parameters = ['countryName' => $this->country?->getName()];
+        $template = $this->country === null ? self::TEMPLATE_INTERNATIONAL : self::TEMPLATE_FOR_COUNTRY;
         if (!is_scalar($input)) {
-            return false;
+            return Result::failed($input, $this, $parameters, $template);
         }
 
+        return new Result($this->isValidPhone((string) $input), $input, $this, $parameters, $template);
+    }
+
+    private function isValidPhone(string $input): bool
+    {
         try {
-            return PhoneNumberUtil::getInstance()->isValidNumber(
-                PhoneNumberUtil::getInstance()->parse((string) $input, $this->country?->getAlpha2())
-            );
-        } catch (NumberParseException $e) {
-            return false;
+            $phoneNumberUtil = PhoneNumberUtil::getInstance();
+            $phoneNumberObject = $phoneNumberUtil->parse($input, $this->country?->getAlpha2());
+            if ($this->country === null) {
+                return $phoneNumberUtil->isValidNumber($phoneNumberObject);
+            }
+
+            return $phoneNumberUtil->getRegionCodeForNumber($phoneNumberObject) === $this->country->getAlpha2();
+        } catch (NumberParseException) {
         }
-    }
 
-    /**
-     * @return array<string, mixed>
-     */
-    public function getParams(): array
-    {
-        return ['countryName' => $this->country?->getName()];
-    }
-
-    protected function getStandardTemplate(mixed $input): string
-    {
-        return $this->country ? self::TEMPLATE_FOR_COUNTRY : self::TEMPLATE_INTERNATIONAL;
+        return false;
     }
 }
