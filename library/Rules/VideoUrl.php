@@ -9,14 +9,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 
 use function array_keys;
 use function is_string;
 use function mb_strtolower;
 use function preg_match;
-use function sprintf;
 
 #[Template(
     '{{name}} must be a valid video URL',
@@ -28,7 +29,7 @@ use function sprintf;
     '{{name}} must not be a valid {{service|raw}} video URL',
     self::TEMPLATE_SERVICE,
 )]
-final class VideoUrl extends AbstractRule
+final class VideoUrl extends Standard
 {
     public const TEMPLATE_SERVICE = '__service__';
 
@@ -44,18 +45,20 @@ final class VideoUrl extends AbstractRule
         private readonly ?string $service = null
     ) {
         if ($service !== null && !$this->isSupportedService($service)) {
-            throw new ComponentException(sprintf('"%s" is not a recognized video service.', $service));
+            throw new InvalidRuleConstructorException('"%s" is not a recognized video service.', $service);
         }
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
+        $parameters = ['service' => $this->service];
+        $template = $this->service !== null ? self::TEMPLATE_SERVICE : self::TEMPLATE_STANDARD;
         if (!is_string($input)) {
-            return false;
+            return Result::failed($input, $this, $parameters, $template);
         }
 
         if ($this->service !== null) {
-            return $this->isValid($this->service, $input);
+            return new Result($this->isValid($this->service, $input), $input, $this, $parameters, $template);
         }
 
         foreach (array_keys(self::SERVICES) as $service) {
@@ -63,23 +66,10 @@ final class VideoUrl extends AbstractRule
                 continue;
             }
 
-            return true;
+            return Result::passed($input, $this, $parameters, $template);
         }
 
-        return false;
-    }
-
-    /**
-     * @return array<string, string|null>
-     */
-    public function getParams(): array
-    {
-        return ['service' => $this->service];
-    }
-
-    protected function getStandardTemplate(mixed $input): string
-    {
-        return $this->service ? self::TEMPLATE_SERVICE : self::TEMPLATE_STANDARD;
+        return Result::failed($input, $this, $parameters, $template);
     }
 
     private function isSupportedService(string $service): bool
