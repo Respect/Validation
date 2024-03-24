@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
@@ -33,7 +33,7 @@ final class UuidTest extends RuleTestCase
     #[Test]
     public function itShouldThrowExceptionWhenVersionIsTwo(): void
     {
-        self::expectException(ComponentException::class);
+        self::expectException(InvalidRuleConstructorException::class);
         self::expectExceptionMessage('Only versions 1, 3, 4, and 5 are supported: 2 given');
 
         new Uuid(2);
@@ -44,7 +44,7 @@ final class UuidTest extends RuleTestCase
     {
         $version = random_int(6, PHP_INT_MAX);
 
-        self::expectException(ComponentException::class);
+        self::expectException(InvalidRuleConstructorException::class);
         self::expectExceptionMessage('Only versions 1, 3, 4, and 5 are supported: ' . $version . ' given');
 
         new Uuid($version);
@@ -55,7 +55,7 @@ final class UuidTest extends RuleTestCase
     {
         $version = random_int(PHP_INT_MIN, 0);
 
-        self::expectException(ComponentException::class);
+        self::expectException(InvalidRuleConstructorException::class);
         self::expectExceptionMessage('Only versions 1, 3, 4, and 5 are supported: ' . $version . ' given');
 
         new Uuid($version);

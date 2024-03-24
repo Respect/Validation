@@ -9,8 +9,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 
 use function is_string;
 use function preg_match;
@@ -26,7 +28,7 @@ use function sprintf;
     '{{name}} must not be a valid UUID version {{version|raw}}',
     self::TEMPLATE_VERSION,
 )]
-final class Uuid extends AbstractRule
+final class Uuid extends Standard
 {
     public const TEMPLATE_VERSION = '__version__';
 
@@ -36,30 +38,22 @@ final class Uuid extends AbstractRule
         private readonly ?int $version = null
     ) {
         if ($version !== null && !$this->isSupportedVersion($version)) {
-            throw new ComponentException(sprintf('Only versions 1, 3, 4, and 5 are supported: %d given', $version));
+            throw new InvalidRuleConstructorException(
+                'Only versions 1, 3, 4, and 5 are supported: %d given',
+                (string) $version
+            );
         }
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
+        $template = $this->version ? self::TEMPLATE_VERSION : self::TEMPLATE_STANDARD;
+        $parameters = ['version' => $this->version];
         if (!is_string($input)) {
-            return false;
+            return Result::failed($input, $this, $parameters, $template);
         }
 
-        return preg_match($this->getPattern(), $input) > 0;
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function getParams(): array
-    {
-        return ['version' => $this->version];
-    }
-
-    protected function getStandardTemplate(mixed $input): string
-    {
-        return $this->version ? self::TEMPLATE_VERSION : self::TEMPLATE_STANDARD;
+        return new Result(preg_match($this->getPattern(), $input) > 0, $input, $this, $parameters, $template);
     }
 
     private function isSupportedVersion(int $version): bool
