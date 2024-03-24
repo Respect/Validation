@@ -11,6 +11,8 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 
 use function bccomp;
 use function explode;
@@ -37,7 +39,7 @@ use const FILTER_VALIDATE_IP;
     '{{name}} must not be an IP address in the {{range|raw}} range',
     self::TEMPLATE_NETWORK_RANGE,
 )]
-final class Ip extends AbstractRule
+final class Ip extends Standard
 {
     public const TEMPLATE_NETWORK_RANGE = '__network_range__';
 
@@ -55,38 +57,27 @@ final class Ip extends AbstractRule
         $this->range = $this->createRange();
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
+        $parameters = ['range' => $this->range];
+        $template = $this->range ? self::TEMPLATE_NETWORK_RANGE : self::TEMPLATE_STANDARD;
         if (!is_string($input)) {
-            return false;
+            return Result::failed($input, $this, $parameters, $template);
         }
 
         if (!$this->verifyAddress($input)) {
-            return false;
+            return Result::failed($input, $this, $parameters, $template);
         }
 
         if ($this->mask) {
-            return $this->belongsToSubnet($input);
+            return new Result($this->belongsToSubnet($input), $input, $this, $parameters, $template);
         }
 
         if ($this->startAddress && $this->endAddress) {
-            return $this->verifyNetwork($input);
+            return new Result($this->verifyNetwork($input), $input, $this, $parameters, $template);
         }
 
-        return true;
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function getParams(): array
-    {
-        return ['range' => $this->range];
-    }
-
-    protected function getStandardTemplate(mixed $input): string
-    {
-        return $this->range ? self::TEMPLATE_NETWORK_RANGE : self::TEMPLATE_STANDARD;
+        return Result::passed($input, $this, $parameters, $template);
     }
 
     private function createRange(): ?string
