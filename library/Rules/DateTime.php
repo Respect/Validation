@@ -12,6 +12,8 @@ namespace Respect\Validation\Rules;
 use DateTimeInterface;
 use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 
 use function date;
 use function is_scalar;
@@ -27,7 +29,7 @@ use function strtotime;
     '{{name}} must not be a valid date/time in the format {{sample}}',
     self::TEMPLATE_FORMAT,
 )]
-final class DateTime extends AbstractRule
+final class DateTime extends Standard
 {
     use CanValidateDateTime;
 
@@ -38,33 +40,22 @@ final class DateTime extends AbstractRule
     ) {
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
+        $template = $this->format !== null ? self::TEMPLATE_FORMAT : self::TEMPLATE_STANDARD;
+        $parameters = ['sample' => date($this->format ?: 'c', strtotime('2005-12-30 01:02:03'))];
         if ($input instanceof DateTimeInterface) {
-            return $this->format === null;
+            return new Result($this->format === null, $input, $this, $parameters, $template);
         }
 
         if (!is_scalar($input)) {
-            return false;
+            return Result::failed($input, $this, $parameters, $template);
         }
 
         if ($this->format === null) {
-            return strtotime((string) $input) !== false;
+            return new Result(strtotime((string) $input) !== false, $input, $this, $parameters, $template);
         }
 
-        return $this->isDateTime($this->format, (string) $input);
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function getParams(): array
-    {
-        return ['sample' => date($this->format ?: 'c', strtotime('2005-12-30 01:02:03'))];
-    }
-
-    protected function getStandardTemplate(mixed $input): string
-    {
-        return $this->format !== null ? self::TEMPLATE_FORMAT : self::TEMPLATE_STANDARD;
+        return new Result($this->isDateTime($this->format, (string) $input), $input, $this, $parameters, $template);
     }
 }

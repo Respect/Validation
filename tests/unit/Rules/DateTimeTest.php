@@ -35,7 +35,7 @@ final class DateTimeTest extends RuleTestCase
 
         $rule = new DateTime($format);
 
-        self::assertTrue($rule->validate($input));
+        self::assertValidInput($rule, $input);
 
         date_default_timezone_set($currentTimezone);
     }
