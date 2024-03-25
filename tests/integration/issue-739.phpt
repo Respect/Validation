@@ -10,4 +10,4 @@ use Respect\Validation\Validator as v;
 exceptionMessage(static fn() => v::when(v::alwaysInvalid(), v::alwaysValid())->check('foo'));
 ?>
 --EXPECT--
-"foo" is not valid after failing to assert that "foo" is always invalid
+"foo" is not valid

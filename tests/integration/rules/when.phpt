@@ -41,18 +41,18 @@ run([
 --EXPECT--
 When valid use "then"
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
--1 must be positive after asserting that -1 must be an integer number
-- -1 must be positive after asserting that -1 must be an integer number
+-1 must be positive
+- -1 must be positive
 [
-    'positive' => '-1 must be positive after asserting that -1 must be an integer number',
+    'positive' => '-1 must be positive',
 ]
 
 When invalid use "else"
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-The value must not be empty after failing to assert that "" must be an integer number
-- The value must not be empty after failing to assert that "" must be an integer number
+The value must not be empty
+- The value must not be empty
 [
-    'notEmpty' => 'The value must not be empty after failing to assert that "" must be an integer number',
+    'notEmpty' => 'The value must not be empty',
 ]
 
 When valid use "then" using single template

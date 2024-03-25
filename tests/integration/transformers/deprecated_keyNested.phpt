@@ -21,12 +21,11 @@ exceptionMessage(static fn() => v::keyNested('foo.bar')->assert($input));
 exceptionMessage(static fn() => v::keyNested('foo.bar', v::stringType())->assert($input));
 exceptionMessage(static fn() => v::keyNested('foo.bar.baz', v::notEmpty(), false)->assert($input));
 exceptionMessage(static fn() => v::keyNested('foo.bar', v::floatType(), false)->assert($input));
-// phpcs:disable Generic.Files.LineLength.TooLong
 ?>
 --EXPECTF--
 
 Deprecated: The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead. in %s
-foo must be present after asserting that `["foo.bar.baz": false]` must be an array value
+foo must be present
 
 Deprecated: The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead. in %s
 No exception was thrown
