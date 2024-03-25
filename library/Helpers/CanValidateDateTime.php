@@ -21,10 +21,7 @@ trait CanValidateDateTime
 {
     private function isDateTime(string $format, string $value): bool
     {
-        $exceptionalFormats = [
-            'c' => 'Y-m-d\TH:i:sP',
-            'r' => 'D, d M Y H:i:s O',
-        ];
+        $exceptionalFormats = $this->getExceptionalFormats();
 
         $format = $exceptionalFormats[$format] ?? $format;
 
@@ -74,5 +71,14 @@ trait CanValidateDateTime
         }
 
         return checkdate($info['month'] ?: 1, 1, $info['year'] ?: 1);
+    }
+
+    /** @return array<string, string> */
+    private function getExceptionalFormats(): array
+    {
+        return [
+            'c' => 'Y-m-d\TH:i:sP',
+            'r' => 'D, d M Y H:i:s O',
+        ];
     }
 }

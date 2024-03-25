@@ -45,6 +45,7 @@ Version | Description
 See also:
 
 - [DateTime](DateTime.md)
+- [DateTimeDiff](DateTimeDiff.md)
 - [LeapDate](LeapDate.md)
 - [LeapYear](LeapYear.md)
 - [MaxAge](MaxAge.md)

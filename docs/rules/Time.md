@@ -49,5 +49,6 @@ See also:
 
 - [Date](Date.md)
 - [DateTime](DateTime.md)
+- [DateTimeDiff](DateTimeDiff.md)
 - [LeapDate](LeapDate.md)
 - [LeapYear](LeapYear.md)

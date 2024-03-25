@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Mixins;
 
+use DateTimeImmutable;
 use Respect\Validation\Validatable;
 
 interface ChainedProperty
@@ -114,6 +115,17 @@ interface ChainedProperty
     public function propertyDate(string $propertyName, string $format = 'Y-m-d'): ChainedValidator;
 
     public function propertyDateTime(string $propertyName, ?string $format = null): ChainedValidator;
+
+    /**
+     * @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type
+     */
+    public function propertyDateTimeDiff(
+        string $propertyName,
+        string $type,
+        Validatable $rule,
+        ?string $format = null,
+        ?DateTimeImmutable $now = null,
+    ): ChainedValidator;
 
     public function propertyDecimal(string $propertyName, int $decimals): ChainedValidator;
 

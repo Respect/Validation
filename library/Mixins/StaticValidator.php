@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Mixins;
 
+use DateTimeImmutable;
 use Respect\Validation\Validatable;
 
 interface StaticValidator extends
@@ -102,6 +103,16 @@ interface StaticValidator extends
     public static function date(string $format = 'Y-m-d'): ChainedValidator;
 
     public static function dateTime(?string $format = null): ChainedValidator;
+
+    /**
+     * @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type
+     */
+    public static function dateTimeDiff(
+        string $type,
+        Validatable $rule,
+        ?string $format = null,
+        ?DateTimeImmutable $now = null,
+    ): ChainedValidator;
 
     public static function decimal(int $decimals): ChainedValidator;
 

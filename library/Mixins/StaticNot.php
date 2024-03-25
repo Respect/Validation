@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Mixins;
 
+use DateTimeImmutable;
 use Respect\Validation\Validatable;
 
 interface StaticNot
@@ -94,6 +95,16 @@ interface StaticNot
     public static function notDate(string $format = 'Y-m-d'): ChainedValidator;
 
     public static function notDateTime(?string $format = null): ChainedValidator;
+
+    /**
+     * @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type
+     */
+    public static function notDateTimeDiff(
+        string $type,
+        Validatable $rule,
+        ?string $format = null,
+        ?DateTimeImmutable $now = null,
+    ): ChainedValidator;
 
     public static function notDecimal(int $decimals): ChainedValidator;
 

@@ -75,6 +75,7 @@
 
 - [Date](rules/Date.md)
 - [DateTime](rules/DateTime.md)
+- [DateTimeDiff](rules/DateTimeDiff.md)
 - [LeapDate](rules/LeapDate.md)
 - [LeapYear](rules/LeapYear.md)
 - [MaxAge](rules/MaxAge.md)
@@ -323,6 +324,7 @@
 - [CurrencyCode](rules/CurrencyCode.md)
 - [Date](rules/Date.md)
 - [DateTime](rules/DateTime.md)
+- [DateTimeDiff](rules/DateTimeDiff.md)
 - [Decimal](rules/Decimal.md)
 - [Digit](rules/Digit.md)
 - [Directory](rules/Directory.md)

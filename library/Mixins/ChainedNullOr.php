@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Mixins;
 
+use DateTimeImmutable;
 use Respect\Validation\Validatable;
 
 interface ChainedNullOr
@@ -90,6 +91,16 @@ interface ChainedNullOr
     public function nullOrDate(string $format = 'Y-m-d'): ChainedValidator;
 
     public function nullOrDateTime(?string $format = null): ChainedValidator;
+
+    /**
+     * @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type
+     */
+    public function nullOrDateTimeDiff(
+        string $type,
+        Validatable $rule,
+        ?string $format = null,
+        ?DateTimeImmutable $now = null,
+    ): ChainedValidator;
 
     public function nullOrDecimal(int $decimals): ChainedValidator;
 
