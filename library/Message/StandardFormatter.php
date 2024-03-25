@@ -100,6 +100,12 @@ final class StandardFormatter implements Formatter
             $messages[$child->id] = current($messages[$child->id]);
         }
 
+        if (count($messages) > 1) {
+            $self = ['__root__' => $this->renderer->render($this->getTemplated($result, $selectedTemplates))];
+
+            return $self + $messages;
+        }
+
         return $messages;
     }
 
@@ -110,8 +116,8 @@ final class StandardFormatter implements Formatter
             return $result;
         }
 
-        if (!isset($templates[$result->id]) && isset($templates['__self__'])) {
-            return $result->withTemplate($templates['__self__']);
+        if (!isset($templates[$result->id]) && isset($templates['__root__'])) {
+            return $result->withTemplate($templates['__root__']);
         }
 
         if (!isset($templates[$result->id])) {
@@ -141,7 +147,7 @@ final class StandardFormatter implements Formatter
             return false;
         }
 
-        return isset($templates['__self__']) || isset($templates[$result->id]);
+        return isset($templates['__root__']) || isset($templates[$result->id]);
     }
 
     /**

@@ -48,7 +48,7 @@ trait FullProvider
                 MESSAGE,
                 [
                     'parent' => [
-                        '__self__' => 'Parent custom',
+                        '__root__' => 'Parent custom',
                         '1st' => '1st custom',
                         '2nd' => '2nd custom',
                         '3rd' => '3rd custom',
@@ -96,7 +96,7 @@ trait FullProvider
                 MESSAGE,
                 [
                     'parent' => [
-                        '__self__' => 'Parent custom',
+                        '__root__' => 'Parent custom',
                         '1st' => '1st custom',
                         '2nd' => [
                             '2nd_1st' => '2nd > 1st custom',
@@ -115,7 +115,7 @@ trait FullProvider
                 MESSAGE,
                 [
                     'parent' => [
-                        '__self__' => 'Parent custom',
+                        '__root__' => 'Parent custom',
                         '1st' => '1st custom',
                         '2nd' => [
                             '2nd_2nd' => '2nd > 2nd not shown',
@@ -134,7 +134,7 @@ trait FullProvider
                 MESSAGE,
                 [
                     'parent' => [
-                        '__self__' => 'Parent custom',
+                        '__root__' => 'Parent custom',
                         '1st' => '1st custom',
                         '2nd' => '2nd custom',
                         '3rd' => '3rd custom',
@@ -164,10 +164,10 @@ trait FullProvider
                 MESSAGE,
                 [
                     'parent' => [
-                        '__self__' => 'Parent custom',
+                        '__root__' => 'Parent custom',
                         '1st' => '1st custom',
                         '2nd' => [
-                            '__self__' => '2nd custom',
+                            '__root__' => '2nd custom',
                             '2nd_1st' => '2nd > 1st custom',
                             '2nd_2nd' => '2nd > 2nd custom',
                         ],
@@ -187,7 +187,7 @@ trait FullProvider
                 MESSAGE,
                 [
                     'parent' => [
-                        '__self__' => 'Parent custom',
+                        '__root__' => 'Parent custom',
                         '1st' => '1st custom',
                         '2nd' => [
                             '2nd_2nd' => '2nd > 2nd custom',
@@ -206,7 +206,7 @@ trait FullProvider
                 MESSAGE,
                 [
                     'parent' => [
-                        '__self__' => 'Parent custom',
+                        '__root__' => 'Parent custom',
                         '1st' => '1st custom',
                         '2nd' => '2nd custom',
                         '3rd' => '3rd custom',
@@ -232,7 +232,7 @@ trait FullProvider
                 MESSAGE,
                 [
                     'parent' => [
-                        '__self__' => 'Parent custom',
+                        '__root__' => 'Parent custom',
                         'child.1' => '1st custom',
                         'child.2' => '2nd custom',
                         'child.3' => '3rd custom',

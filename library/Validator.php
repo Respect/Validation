@@ -75,7 +75,7 @@ final class Validator extends Standard
 
         $templates = $this->templates;
         if (count($templates) === 0 && $this->getTemplate() != null) {
-            $templates = ['__self__' => $this->getTemplate()];
+            $templates = ['__root__' => $this->getTemplate()];
         }
 
         throw new ValidationException(

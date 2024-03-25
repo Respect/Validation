@@ -21,6 +21,7 @@ exceptionMessages(
 ?>
 --EXPECT--
 [
+    '__root__' => 'All of the required rules must pass for "really messed up screen#name"',
     'alnum' => '"really messed up screen#name" must contain only letters and digits',
     'noWhitespace' => '"really messed up screen#name" cannot contain spaces',
     'length' => '"really messed up screen#name" must not have more than 15 chars',

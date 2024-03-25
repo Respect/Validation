@@ -26,6 +26,7 @@ exceptionMessages(static function (): void {
 ?>
 --EXPECT--
 [
+    '__root__' => 'All of the required rules must pass for `["username": "u", "birthdate": "Not a date", "password": ""]`',
     'username' => 'The length of username must be between 2 and 32',
     'birthdate' => 'birthdate must be a valid date/time',
     'password' => 'password must not be empty',

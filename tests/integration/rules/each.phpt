@@ -48,7 +48,7 @@ run([
         v::each(v::intType()),
         $default, [
             'each' => [
-                '__self__' => 'Here a sequence of items that did not pass the validation',
+                '__root__' => 'Here a sequence of items that did not pass the validation',
                 'intType.1' => 'First item should have been an integer',
                 'intType.2' => 'Second item should have been an integer',
                 'intType.3' => 'Third item should have been an integer',
@@ -59,7 +59,7 @@ run([
         v::each(v::intType()->setName('Wrapped'))->setName('Wrapper'),
         $default, [
             'Wrapped' => [
-                '__self__' => 'Here a sequence of items that did not pass the validation',
+                '__root__' => 'Here a sequence of items that did not pass the validation',
                 'Wrapped.1' => 'First item should have been an integer',
                 'Wrapped.2' => 'Second item should have been an integer',
                 'Wrapped.3' => 'Third item should have been an integer',
@@ -93,6 +93,7 @@ Default
   - "b" must be of type integer
   - "c" must be of type integer
 [
+    '__root__' => 'Each item in `["a", "b", "c"]` must be valid',
     'intType.1' => '"a" must be of type integer',
     'intType.2' => '"b" must be of type integer',
     'intType.3' => '"c" must be of type integer',
@@ -106,6 +107,7 @@ Negative
   - 2 must not be of type integer
   - 3 must not be of type integer
 [
+    '__root__' => 'Each item in `[1, 2, 3]` must not validate',
     'intType.1' => '1 must not be of type integer',
     'intType.2' => '2 must not be of type integer',
     'intType.3' => '3 must not be of type integer',
@@ -135,6 +137,7 @@ Wrapped must be of type integer
   - Wrapped must be of type integer
   - Wrapped must be of type integer
 [
+    '__root__' => 'Each item in Wrapped must be valid',
     'Wrapped.1' => 'Wrapped must be of type integer',
     'Wrapped.2' => 'Wrapped must be of type integer',
     'Wrapped.3' => 'Wrapped must be of type integer',
@@ -148,6 +151,7 @@ Wrapped must not be of type integer
   - Wrapped must not be of type integer
   - Wrapped must not be of type integer
 [
+    '__root__' => 'Each item in Wrapped must not validate',
     'Wrapped.1' => 'Wrapped must not be of type integer',
     'Wrapped.2' => 'Wrapped must not be of type integer',
     'Wrapped.3' => 'Wrapped must not be of type integer',
@@ -161,6 +165,7 @@ Wrapper must be of type integer
   - Wrapper must be of type integer
   - Wrapper must be of type integer
 [
+    '__root__' => 'Each item in Wrapper must be valid',
     'Wrapper.1' => 'Wrapper must be of type integer',
     'Wrapper.2' => 'Wrapper must be of type integer',
     'Wrapper.3' => 'Wrapper must be of type integer',
@@ -174,6 +179,7 @@ Wrapper must not be of type integer
   - Wrapper must not be of type integer
   - Wrapper must not be of type integer
 [
+    '__root__' => 'Each item in Wrapper must not validate',
     'Wrapper.1' => 'Wrapper must not be of type integer',
     'Wrapper.2' => 'Wrapper must not be of type integer',
     'Wrapper.3' => 'Wrapper must not be of type integer',
@@ -187,6 +193,7 @@ Not must not be of type integer
   - Not must not be of type integer
   - Not must not be of type integer
 [
+    '__root__' => 'Each item in Not must not validate',
     'Not.1' => 'Not must not be of type integer',
     'Not.2' => 'Not must not be of type integer',
     'Not.3' => 'Not must not be of type integer',
@@ -232,6 +239,7 @@ First item should have been an integer
   - Second item should have been an integer
   - Third item should have been an integer
 [
+    '__root__' => 'Here a sequence of items that did not pass the validation',
     'intType.1' => 'First item should have been an integer',
     'intType.2' => 'Second item should have been an integer',
     'intType.3' => 'Third item should have been an integer',
@@ -245,7 +253,9 @@ First item should have been an integer
   - Second item should have been an integer
   - Third item should have been an integer
 [
+    '__root__' => 'Here a sequence of items that did not pass the validation',
     'Wrapped.1' => 'First item should have been an integer',
     'Wrapped.2' => 'Second item should have been an integer',
     'Wrapped.3' => 'Third item should have been an integer',
 ]
+

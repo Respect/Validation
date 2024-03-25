@@ -16,7 +16,7 @@ run([
         v::allOf(v::stringType(), v::uppercase()),
         5,
         [
-            '__self__' => 'Two things are wrong',
+            '__root__' => 'Two things are wrong',
             'stringType' => 'Template for "stringType"',
             'uppercase' => 'Template for "uppercase"',
         ],
@@ -31,6 +31,7 @@ Two rules
   - "2" must be of type integer
   - "2" must be negative
 [
+    '__root__' => 'All of the required rules must pass for "2"',
     'intType' => '"2" must be of type integer',
     'negative' => '"2" must be negative',
 ]
@@ -42,6 +43,7 @@ Wrapped by "not"
   - 3 must not be of type integer
   - 3 must not be positive
 [
+    '__root__' => 'These rules must not pass for 3',
     'intType' => '3 must not be of type integer',
     'positive' => '3 must not be positive',
 ]
@@ -69,6 +71,8 @@ Template for "stringType"
   - Template for "stringType"
   - Template for "uppercase"
 [
+    '__root__' => 'Two things are wrong',
     'stringType' => 'Template for "stringType"',
     'uppercase' => 'Template for "uppercase"',
 ]
+
