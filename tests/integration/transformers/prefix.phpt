@@ -81,5 +81,5 @@ undefOr
 "string" must be a URL
 - "string" must be a URL
 [
-    'url' => '"string" must be a URL',
+    'undefOrUrl' => '"string" must be a URL',
 ]

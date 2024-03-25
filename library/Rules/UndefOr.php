@@ -15,16 +15,16 @@ use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\Wrapper;
 
 #[Template(
-    'The value must be optional',
-    'The value must not be optional',
+    'The value must be undefined',
+    'The value must not be undefined',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must be optional',
-    '{{name}} must not be optional',
+    '{{name}} must be undefined',
+    '{{name}} must not be undefined',
     self::TEMPLATE_NAMED,
 )]
-final class Optional extends Wrapper
+final class UndefOr extends Wrapper
 {
     use CanValidateUndefined;
 
@@ -33,7 +33,7 @@ final class Optional extends Wrapper
     public function evaluate(mixed $input): Result
     {
         if (!$this->isUndefined($input)) {
-            return parent::evaluate($input);
+            return $this->rule->evaluate($input)->withPrefixedId('undefOr');
         }
 
         if ($this->getName()) {

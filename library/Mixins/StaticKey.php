@@ -278,8 +278,6 @@ interface StaticKey
         Validatable ...$rules,
     ): ChainedValidator;
 
-    public static function keyOptional(int|string $key, Validatable $rule): ChainedValidator;
-
     public static function keyPerfectSquare(int|string $key): ChainedValidator;
 
     public static function keyPesel(int|string $key): ChainedValidator;

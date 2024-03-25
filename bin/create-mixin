@@ -25,9 +25,11 @@ use Respect\Validation\Mixins\StaticNot;
 use Respect\Validation\Mixins\StaticNullOr;
 use Respect\Validation\Mixins\StaticProperty;
 use Respect\Validation\Mixins\StaticUndefOr;
+use Respect\Validation\Rules\UndefOr;
 use Respect\Validation\Validatable;
 
 function addMethodToInterface(
+    string $originalName,
     InterfaceType $interfaceType,
     ReflectionClass $reflection,
     ?string $prefix,
@@ -42,7 +44,7 @@ function addMethodToInterface(
         return;
     }
 
-    $name = $prefix ? $prefix . ucfirst($reflection->getShortName()) : lcfirst($reflection->getShortName());
+    $name = $prefix ? $prefix . ucfirst($originalName) : lcfirst($originalName);
     $method = $interfaceType->addMethod($name)->setPublic()->setReturnType(ChainedValidator::class);
     if (str_starts_with($interfaceType->getName(), 'Static')) {
         $method->setStatic();
@@ -63,6 +65,10 @@ function addMethodToInterface(
     $commend = $reflrectionConstructor->getDocComment();
     if ($commend) {
         $method->addComment(preg_replace('@(/\*\* *| +\* +| +\*/)@', '', $commend));
+    }
+
+    if ($originalName === 'Optional') {
+        $method->addComment('@deprecated Use {@see undefOr()} instead.');
     }
 
     foreach ($reflrectionConstructor->getParameters() as $reflectionParameter) {
@@ -150,6 +156,8 @@ function overwriteFile(string $content, string $basename): void
         'KeyExists',
         'KeyOptional',
         'KeySet',
+        'Optional',
+        'UndefOr',
         'Property',
         'PropertyExists',
         'PropertyOptional',
@@ -160,10 +168,10 @@ function overwriteFile(string $content, string $basename): void
         ['Length', 'length', $numberRelatedRules, []],
         ['Max', 'max', $numberRelatedRules, []],
         ['Min', 'min', $numberRelatedRules, []],
-        ['Not', 'not', [], ['Not', 'NotEmpty', 'NotBlank', 'NotEmoji', 'NotOptional', 'Optional']],
-        ['NullOr', 'nullOf', [], ['Nullable', 'Optional']],
+        ['Not', 'not', [], ['Not', 'NotEmpty', 'NotBlank', 'NotEmoji', 'NotOptional', 'UndefOr', 'Optional']],
+        ['NullOr', 'nullOf', [], ['Nullable', 'Optional', 'UndefOr']],
         ['Property', 'property', [], $structureRelatedRules],
-        ['UndefOr', 'undefOf', [], ['Nullable', 'Optional']],
+        ['UndefOr', 'undefOr', [], ['Nullable', 'Optional', 'UndefOr']],
         ['Validator', null, [], []],
     ];
 
@@ -179,6 +187,9 @@ function overwriteFile(string $content, string $basename): void
             continue;
         }
         $names[$reflection->getShortName()] = $reflection;
+        if ($className === UndefOr::class) {
+            $names['Optional'] = $reflection;
+        }
     }
     ksort($names);
 
@@ -212,9 +223,9 @@ function overwriteFile(string $content, string $basename): void
             $staticInterface->addExtend(StaticUndefOr::class);
         }
 
-        foreach ($names as $reflection) {
-            addMethodToInterface($staticInterface, $reflection, $prefix, $allowList, $denyList);
-            addMethodToInterface($chainedInterface, $reflection, $prefix, $allowList, $denyList);
+        foreach ($names as $originalName => $reflection) {
+            addMethodToInterface($originalName, $staticInterface, $reflection, $prefix, $allowList, $denyList);
+            addMethodToInterface($originalName, $chainedInterface, $reflection, $prefix, $allowList, $denyList);
         }
 
         $printer = new Printer();

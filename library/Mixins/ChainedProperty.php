@@ -286,8 +286,6 @@ interface ChainedProperty
         Validatable ...$rules,
     ): ChainedValidator;
 
-    public function propertyOptional(string $propertyName, Validatable $rule): ChainedValidator;
-
     public function propertyPerfectSquare(string $propertyName): ChainedValidator;
 
     public function propertyPesel(string $propertyName): ChainedValidator;

@@ -270,6 +270,9 @@ interface StaticValidator extends
 
     public static function oneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
 
+    /**
+     * @deprecated Use {@see undefOr()} instead.
+     */
     public static function optional(Validatable $rule): ChainedValidator;
 
     public static function perfectSquare(): ChainedValidator;
@@ -342,6 +345,8 @@ interface StaticValidator extends
     public static function tld(): ChainedValidator;
 
     public static function trueVal(): ChainedValidator;
+
+    public static function undefOr(Validatable $rule): ChainedValidator;
 
     public static function unique(): ChainedValidator;
 

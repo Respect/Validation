@@ -73,7 +73,7 @@ final class PrefixTest extends TestCase
             ],
             'undefOr' => [
                 new RuleSpec('undefOrNextRule', [1, 10]),
-                new RuleSpec('NextRule', [1, 10], new RuleSpec('optional')),
+                new RuleSpec('NextRule', [1, 10], new RuleSpec('undefOr')),
             ],
         ];
     }

@@ -310,8 +310,6 @@ interface StaticProperty
         Validatable ...$rules,
     ): ChainedValidator;
 
-    public static function propertyOptional(string $propertyName, Validatable $rule): ChainedValidator;
-
     public static function propertyPerfectSquare(string $propertyName): ChainedValidator;
 
     public static function propertyPesel(string $propertyName): ChainedValidator;

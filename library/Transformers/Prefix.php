@@ -34,6 +34,7 @@ final class Prefix implements Transformer
         'property',
         'propertyExists',
         'propertyOptional',
+        'undefOr',
     ];
 
     public function transform(RuleSpec $ruleSpec): RuleSpec
@@ -79,7 +80,7 @@ final class Prefix implements Transformer
         }
 
         if (str_starts_with($ruleSpec->name, 'undefOr')) {
-            return new RuleSpec(substr($ruleSpec->name, 7), $ruleSpec->arguments, new RuleSpec('optional'));
+            return new RuleSpec(substr($ruleSpec->name, 7), $ruleSpec->arguments, new RuleSpec('undefOr'));
         }
 
         return $ruleSpec;

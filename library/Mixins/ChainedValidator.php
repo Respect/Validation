@@ -267,6 +267,9 @@ interface ChainedValidator extends
 
     public function oneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
 
+    /**
+     * @deprecated Use {@see undefOr()} instead.
+     */
     public function optional(Validatable $rule): ChainedValidator;
 
     public function perfectSquare(): ChainedValidator;
@@ -339,6 +342,8 @@ interface ChainedValidator extends
     public function tld(): ChainedValidator;
 
     public function trueVal(): ChainedValidator;
+
+    public function undefOr(Validatable $rule): ChainedValidator;
 
     public function unique(): ChainedValidator;
 

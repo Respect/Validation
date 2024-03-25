@@ -274,8 +274,6 @@ interface ChainedKey
         Validatable ...$rules,
     ): ChainedValidator;
 
-    public function keyOptional(int|string $key, Validatable $rule): ChainedValidator;
-
     public function keyPerfectSquare(int|string $key): ChainedValidator;
 
     public function keyPesel(int|string $key): ChainedValidator;
