@@ -30,7 +30,7 @@ final class KeyExists extends Standard
 
     public function evaluate(mixed $input): Result
     {
-        return new Result($this->hasKey($input), $input, $this, name: (string) $this->key);
+        return new Result($this->hasKey($input), $input, $this, name: (string) $this->key, id: (string) $this->key);
     }
 
     private function hasKey(mixed $input): bool

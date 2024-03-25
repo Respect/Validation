@@ -83,7 +83,7 @@ With wrapped name, default
 Wrapped must evaluate to `true`
 - Wrapped must evaluate to `true`
 [
-    'Wrapped' => 'Wrapped must evaluate to `true`',
+    'trueVal' => 'Wrapped must evaluate to `true`',
 ]
 
 With wrapper name, default
@@ -91,7 +91,7 @@ With wrapper name, default
 Wrapper must evaluate to `true`
 - Wrapper must evaluate to `true`
 [
-    'Wrapper' => 'Wrapper must evaluate to `true`',
+    'trueVal' => 'Wrapper must evaluate to `true`',
 ]
 
 With the name set in the wrapped rule of an inverted failing rule
@@ -99,7 +99,7 @@ With the name set in the wrapped rule of an inverted failing rule
 Wrapped must not evaluate to `true`
 - Wrapped must not evaluate to `true`
 [
-    'Wrapped' => 'Wrapped must not evaluate to `true`',
+    'trueVal' => 'Wrapped must not evaluate to `true`',
 ]
 
 With the name set in an inverted failing rule
@@ -107,7 +107,7 @@ With the name set in an inverted failing rule
 Not must not evaluate to `true`
 - Not must not evaluate to `true`
 [
-    'Not' => 'Not must not evaluate to `true`',
+    'trueVal' => 'Not must not evaluate to `true`',
 ]
 
 With the name set in the "consecutive" that has an inverted failing rule
@@ -115,7 +115,7 @@ With the name set in the "consecutive" that has an inverted failing rule
 Wrapper must not evaluate to `true`
 - Wrapper must not evaluate to `true`
 [
-    'Wrapper' => 'Wrapper must not evaluate to `true`',
+    'trueVal' => 'Wrapper must not evaluate to `true`',
 ]
 
 With template
@@ -141,3 +141,4 @@ subdivisionCode must be a subdivision code of Brazil
 [
     'subdivisionCode' => 'subdivisionCode must be a subdivision code of Brazil',
 ]
+

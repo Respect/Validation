@@ -43,7 +43,7 @@ final class Result
     ) {
         $this->name = $rule->getName() ?? $name;
         $this->template = $rule->getTemplate() ?? $template;
-        $this->id = $id ?? $this->name ?? lcfirst(substr((string) strrchr($rule::class, '\\'), 1));
+        $this->id = $id ?? lcfirst(substr((string) strrchr($rule::class, '\\'), 1));
         $this->children = $children;
     }
 

@@ -33,10 +33,13 @@ final class KeyOptional extends Wrapper
             return $keyExistsResult->withInvertedMode();
         }
 
-        $child = $this->rule->evaluate($input[$this->key]);
+        $child = $this->rule
+            ->evaluate($input[$this->key])
+            ->withId((string) $this->key);
 
         return (new Result($child->isValid, $input, $this))
             ->withChildren($child)
+            ->withId((string) $this->key)
             ->withNameIfMissing($this->rule->getName() ?? (string) $this->key);
     }
 }

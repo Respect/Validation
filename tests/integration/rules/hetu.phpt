@@ -44,6 +44,5 @@ With name
 Hetu must be a valid Finnish personal identity code
 - Hetu must be a valid Finnish personal identity code
 [
-    'Hetu' => 'Hetu must be a valid Finnish personal identity code',
+    'hetu' => 'Hetu must be a valid Finnish personal identity code',
 ]
-

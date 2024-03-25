@@ -30,11 +30,17 @@ final class PropertyExists extends Standard
     public function evaluate(mixed $input): Result
     {
         if (!is_object($input)) {
-            return Result::failed($input, $this)->withNameIfMissing($this->propertyName);
+            return Result::failed($input, $this)->withNameIfMissing($this->propertyName)->withId($this->propertyName);
         }
 
         $reflection = new ReflectionObject($input);
 
-        return new Result($reflection->hasProperty($this->propertyName), $input, $this, name: $this->propertyName);
+        return new Result(
+            $reflection->hasProperty($this->propertyName),
+            $input,
+            $this,
+            name: $this->propertyName,
+            id: $this->propertyName
+        );
     }
 }

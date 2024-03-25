@@ -44,6 +44,6 @@ With name
 Range must be greater than 1 and less than 10
 - Range must be greater than 1 and less than 10
 [
-    'Range' => 'Range must be greater than 1 and less than 10',
+    'betweenExclusive' => 'Range must be greater than 1 and less than 10',
 ]
 

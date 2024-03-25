@@ -98,7 +98,7 @@ With wrapped name, missing property
 Wrapped must be present
 - Wrapped must be present
 [
-    'Wrapped' => 'Wrapped must be present',
+    'foo' => 'Wrapped must be present',
 ]
 
 With wrapped name, default
@@ -106,7 +106,7 @@ With wrapped name, default
 Wrapped must be of type integer
 - Wrapped must be of type integer
 [
-    'Wrapped' => 'Wrapped must be of type integer',
+    'foo' => 'Wrapped must be of type integer',
 ]
 
 With wrapped name, negative
@@ -114,7 +114,7 @@ With wrapped name, negative
 Wrapped must not be of type integer
 - Wrapped must not be of type integer
 [
-    'Wrapped' => 'Wrapped must not be of type integer',
+    'foo' => 'Wrapped must not be of type integer',
 ]
 
 With wrapper name, default
@@ -164,4 +164,3 @@ Not a prompt prospect of a particularly primitive property
 [
     'foo' => 'Not a prompt prospect of a particularly primitive property',
 ]
-

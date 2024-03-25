@@ -53,5 +53,5 @@ With wrapper name
 The length of Cactus must equal 3
 - The length of Cactus must equal 3
 [
-    'Cactus' => 'The length of Cactus must equal 3',
+    'length' => 'The length of Cactus must equal 3',
 ]

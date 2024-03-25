@@ -45,7 +45,7 @@ Default with name
 Phone must be a valid telephone number
 - Phone must be a valid telephone number
 [
-    'Phone' => 'Phone must be a valid telephone number',
+    'phone' => 'Phone must be a valid telephone number',
 ]
 
 Country-specific with name
@@ -53,5 +53,5 @@ Country-specific with name
 Phone must be a valid telephone number for country United States
 - Phone must be a valid telephone number for country United States
 [
-    'Phone' => 'Phone must be a valid telephone number for country United States',
+    'phone' => 'Phone must be a valid telephone number for country United States',
 ]

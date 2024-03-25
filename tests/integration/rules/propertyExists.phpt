@@ -36,7 +36,7 @@ Custom name
 Custom name must be present
 - Custom name must be present
 [
-    'Custom name' => 'Custom name must be present',
+    'foo' => 'Custom name must be present',
 ]
 
 Custom template
@@ -46,4 +46,3 @@ Custom template for `foo`
 [
     'foo' => 'Custom template for `foo`',
 ]
-

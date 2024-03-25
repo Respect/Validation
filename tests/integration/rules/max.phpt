@@ -64,7 +64,7 @@ With wrapped name, default
 The maximum of Wrapped must be negative
 - The maximum of Wrapped must be negative
 [
-    'Wrapped' => 'The maximum of Wrapped must be negative',
+    'max' => 'The maximum of Wrapped must be negative',
 ]
 
 With wrapper name, default
@@ -72,7 +72,7 @@ With wrapper name, default
 The maximum of Wrapper must be negative
 - The maximum of Wrapper must be negative
 [
-    'Wrapper' => 'The maximum of Wrapper must be negative',
+    'max' => 'The maximum of Wrapper must be negative',
 ]
 
 With wrapped name, negative
@@ -80,7 +80,7 @@ With wrapped name, negative
 The maximum of Wrapped must not be negative
 - The maximum of Wrapped must not be negative
 [
-    'Wrapped' => 'The maximum of Wrapped must not be negative',
+    'max' => 'The maximum of Wrapped must not be negative',
 ]
 
 With wrapper name, negative
@@ -88,7 +88,7 @@ With wrapper name, negative
 The maximum of Wrapper must not be negative
 - The maximum of Wrapper must not be negative
 [
-    'Wrapper' => 'The maximum of Wrapper must not be negative',
+    'max' => 'The maximum of Wrapper must not be negative',
 ]
 
 With template, default

@@ -81,7 +81,7 @@ With wrapped name, default
 Wrapped must be of type integer
 - Wrapped must be of type integer
 [
-    'Wrapped' => 'Wrapped must be of type integer',
+    'foo' => 'Wrapped must be of type integer',
 ]
 
 With wrapped name, negative
@@ -89,7 +89,7 @@ With wrapped name, negative
 Wrapped must not be of type integer
 - Wrapped must not be of type integer
 [
-    'Wrapped' => 'Wrapped must not be of type integer',
+    'foo' => 'Wrapped must not be of type integer',
 ]
 
 With wrapper name, default
@@ -131,4 +131,3 @@ Not proving prudent property planning promotes prosperity
 [
     'foo' => 'Not proving prudent property planning promotes prosperity',
 ]
-

@@ -44,6 +44,5 @@ With name
 The minimum from Options must equal 1
 - The minimum from Options must equal 1
 [
-    'Options' => 'The minimum from Options must equal 1',
+    'min' => 'The minimum from Options must equal 1',
 ]
-

@@ -59,7 +59,7 @@ With created name, default
 Created must be of type integer
 - Created must be of type integer
 [
-    'Created' => 'Created must be of type integer',
+    'intType' => 'Created must be of type integer',
 ]
 
 With wrapper name, default
@@ -67,7 +67,7 @@ With wrapper name, default
 Wrapper must be of type integer
 - Wrapper must be of type integer
 [
-    'Wrapper' => 'Wrapper must be of type integer',
+    'intType' => 'Wrapper must be of type integer',
 ]
 
 With created name, negative
@@ -75,7 +75,7 @@ With created name, negative
 Created must not be of type integer
 - Created must not be of type integer
 [
-    'Created' => 'Created must not be of type integer',
+    'intType' => 'Created must not be of type integer',
 ]
 
 With wrapper name, negative
@@ -83,7 +83,7 @@ With wrapper name, negative
 Wrapped must not be of type integer
 - Wrapped must not be of type integer
 [
-    'Wrapped' => 'Wrapped must not be of type integer',
+    'intType' => 'Wrapped must not be of type integer',
 ]
 
 With not name, negative
@@ -91,7 +91,7 @@ With not name, negative
 Not must not be of type integer
 - Not must not be of type integer
 [
-    'Not' => 'Not must not be of type integer',
+    'intType' => 'Not must not be of type integer',
 ]
 
 With template, default
@@ -101,4 +101,3 @@ Lazy lizards lounging like lords in the local lagoon
 [
     'intType' => 'Lazy lizards lounging like lords in the local lagoon',
 ]
-
