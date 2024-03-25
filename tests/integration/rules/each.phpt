@@ -228,7 +228,7 @@ with template, negative
 All items should not have been integers
 - All items should not have been integers
 [
-    'each' => 'All items should not have been integers',
+    'notEach' => 'All items should not have been integers',
 ]
 
 With array template, default

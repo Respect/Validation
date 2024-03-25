@@ -20,7 +20,7 @@ Default
 As the minimum from `[2, 3]`, 2 must equal 1
 - As the minimum from `[2, 3]`, 2 must equal 1
 [
-    'min' => 'As the minimum from `[2, 3]`, 2 must equal 1',
+    'minEquals' => 'As the minimum from `[2, 3]`, 2 must equal 1',
 ]
 
 Negative
@@ -28,7 +28,7 @@ Negative
 As the minimum from `[1, 2, 3]`, 1 must not equal 1
 - As the minimum from `[1, 2, 3]`, 1 must not equal 1
 [
-    'min' => 'As the minimum from `[1, 2, 3]`, 1 must not equal 1',
+    'notMinEquals' => 'As the minimum from `[1, 2, 3]`, 1 must not equal 1',
 ]
 
 With template
@@ -36,7 +36,7 @@ With template
 That did not go as planned
 - That did not go as planned
 [
-    'min' => 'That did not go as planned',
+    'minEquals' => 'That did not go as planned',
 ]
 
 With name
@@ -44,5 +44,5 @@ With name
 The minimum from Options must equal 1
 - The minimum from Options must equal 1
 [
-    'min' => 'The minimum from Options must equal 1',
+    'minEquals' => 'The minimum from Options must equal 1',
 ]

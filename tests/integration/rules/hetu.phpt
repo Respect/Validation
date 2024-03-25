@@ -28,7 +28,7 @@ Negative
 "010106A9012" must not be a valid Finnish personal identity code
 - "010106A9012" must not be a valid Finnish personal identity code
 [
-    'hetu' => '"010106A9012" must not be a valid Finnish personal identity code',
+    'notHetu' => '"010106A9012" must not be a valid Finnish personal identity code',
 ]
 
 With template

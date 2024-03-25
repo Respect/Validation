@@ -21,7 +21,7 @@ Default
 The length of "tulip" must equal 3
 - The length of "tulip" must equal 3
 [
-    'length' => 'The length of "tulip" must equal 3',
+    'lengthEquals' => 'The length of "tulip" must equal 3',
 ]
 
 Negative wrapped
@@ -29,7 +29,7 @@ Negative wrapped
 The length of "rose" must not equal 4
 - The length of "rose" must not equal 4
 [
-    'length' => 'The length of "rose" must not equal 4',
+    'lengthNotEquals' => 'The length of "rose" must not equal 4',
 ]
 
 Negative wrapper
@@ -37,7 +37,7 @@ Negative wrapper
 The length of "fern" must not equal 4
 - The length of "fern" must not equal 4
 [
-    'length' => 'The length of "fern" must not equal 4',
+    'notLengthEquals' => 'The length of "fern" must not equal 4',
 ]
 
 With template
@@ -45,7 +45,7 @@ With template
 This is a template
 - This is a template
 [
-    'length' => 'This is a template',
+    'lengthEquals' => 'This is a template',
 ]
 
 With wrapper name
@@ -53,5 +53,5 @@ With wrapper name
 The length of Cactus must equal 3
 - The length of Cactus must equal 3
 [
-    'length' => 'The length of Cactus must equal 3',
+    'lengthEquals' => 'The length of Cactus must equal 3',
 ]

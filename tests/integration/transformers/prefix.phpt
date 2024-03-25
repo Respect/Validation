@@ -33,7 +33,7 @@ length
 The length of "foo" must be greater than 3
 - The length of "foo" must be greater than 3
 [
-    'length' => 'The length of "foo" must be greater than 3',
+    'lengthGreaterThan' => 'The length of "foo" must be greater than 3',
 ]
 
 max
@@ -41,7 +41,7 @@ max
 As the maximum of `[1, 2, 3, 4]`, 4 must be an odd number
 - As the maximum of `[1, 2, 3, 4]`, 4 must be an odd number
 [
-    'max' => 'As the maximum of `[1, 2, 3, 4]`, 4 must be an odd number',
+    'maxOdd' => 'As the maximum of `[1, 2, 3, 4]`, 4 must be an odd number',
 ]
 
 min
@@ -49,7 +49,7 @@ min
 As the minimum from `[1, 2, 3]`, 1 must be an even number
 - As the minimum from `[1, 2, 3]`, 1 must be an even number
 [
-    'min' => 'As the minimum from `[1, 2, 3]`, 1 must be an even number',
+    'minEven' => 'As the minimum from `[1, 2, 3]`, 1 must be an even number',
 ]
 
 not
@@ -57,7 +57,7 @@ not
 2 must not be between 1 and 3
 - 2 must not be between 1 and 3
 [
-    'between' => '2 must not be between 1 and 3',
+    'notBetween' => '2 must not be between 1 and 3',
 ]
 
 nullOr

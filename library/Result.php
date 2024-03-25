@@ -16,6 +16,7 @@ use function lcfirst;
 use function preg_match;
 use function strrchr;
 use function substr;
+use function ucfirst;
 
 final class Result
 {
@@ -75,6 +76,15 @@ final class Result
     public function withId(string $id): self
     {
         return $this->clone(id: $id);
+    }
+
+    public function withPrefixedId(string $prefix): self
+    {
+        if ($this->id === $this->name) {
+            return $this;
+        }
+
+        return $this->clone(id: $prefix . ucfirst($this->id));
     }
 
     public function withChildren(Result ...$children): self

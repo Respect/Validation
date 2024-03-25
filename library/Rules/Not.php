@@ -16,6 +16,6 @@ final class Not extends Wrapper
 {
     public function evaluate(mixed $input): Result
     {
-        return parent::evaluate($input)->withInvertedMode();
+        return $this->rule->evaluate($input)->withInvertedMode()->withPrefixedId('not');
     }
 }

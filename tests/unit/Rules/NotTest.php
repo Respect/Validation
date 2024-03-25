@@ -28,7 +28,7 @@ final class NotTest extends RuleTestCase
 
         self::assertEquals(
             $rule->evaluate('input'),
-            $wrapped->evaluate('input')->withInvertedMode()
+            $wrapped->evaluate('input')->withPrefixedId('not')->withInvertedMode()
         );
     }
 

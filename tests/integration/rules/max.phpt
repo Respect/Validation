@@ -48,7 +48,7 @@ Default
 As the maximum of `[1, 2, 3]`, 3 must be negative
 - As the maximum of `[1, 2, 3]`, 3 must be negative
 [
-    'max' => 'As the maximum of `[1, 2, 3]`, 3 must be negative',
+    'maxNegative' => 'As the maximum of `[1, 2, 3]`, 3 must be negative',
 ]
 
 Negative
@@ -56,7 +56,7 @@ Negative
 As the maximum of `[-3, -2, -1]`, -1 must not be negative
 - As the maximum of `[-3, -2, -1]`, -1 must not be negative
 [
-    'max' => 'As the maximum of `[-3, -2, -1]`, -1 must not be negative',
+    'notMaxNegative' => 'As the maximum of `[-3, -2, -1]`, -1 must not be negative',
 ]
 
 With wrapped name, default
@@ -64,7 +64,7 @@ With wrapped name, default
 The maximum of Wrapped must be negative
 - The maximum of Wrapped must be negative
 [
-    'max' => 'The maximum of Wrapped must be negative',
+    'maxNegative' => 'The maximum of Wrapped must be negative',
 ]
 
 With wrapper name, default
@@ -72,7 +72,7 @@ With wrapper name, default
 The maximum of Wrapper must be negative
 - The maximum of Wrapper must be negative
 [
-    'max' => 'The maximum of Wrapper must be negative',
+    'maxNegative' => 'The maximum of Wrapper must be negative',
 ]
 
 With wrapped name, negative
@@ -80,7 +80,7 @@ With wrapped name, negative
 The maximum of Wrapped must not be negative
 - The maximum of Wrapped must not be negative
 [
-    'max' => 'The maximum of Wrapped must not be negative',
+    'notMaxNegative' => 'The maximum of Wrapped must not be negative',
 ]
 
 With wrapper name, negative
@@ -88,7 +88,7 @@ With wrapper name, negative
 The maximum of Wrapper must not be negative
 - The maximum of Wrapper must not be negative
 [
-    'max' => 'The maximum of Wrapper must not be negative',
+    'notMaxNegative' => 'The maximum of Wrapper must not be negative',
 ]
 
 With template, default
@@ -96,5 +96,5 @@ With template, default
 The maximum of the value is not what we expect
 - The maximum of the value is not what we expect
 [
-    'max' => 'The maximum of the value is not what we expect',
+    'maxNegative' => 'The maximum of the value is not what we expect',
 ]

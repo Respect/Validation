@@ -51,7 +51,7 @@ Negative
 2 must not be of type integer
 - 2 must not be of type integer
 [
-    'intType' => '2 must not be of type integer',
+    'notIntType' => '2 must not be of type integer',
 ]
 
 With created name, default
@@ -75,7 +75,7 @@ With created name, negative
 Created must not be of type integer
 - Created must not be of type integer
 [
-    'intType' => 'Created must not be of type integer',
+    'notIntType' => 'Created must not be of type integer',
 ]
 
 With wrapper name, negative
@@ -83,7 +83,7 @@ With wrapper name, negative
 Wrapped must not be of type integer
 - Wrapped must not be of type integer
 [
-    'intType' => 'Wrapped must not be of type integer',
+    'notIntType' => 'Wrapped must not be of type integer',
 ]
 
 With not name, negative
@@ -91,7 +91,7 @@ With not name, negative
 Not must not be of type integer
 - Not must not be of type integer
 [
-    'intType' => 'Not must not be of type integer',
+    'notIntType' => 'Not must not be of type integer',
 ]
 
 With template, default

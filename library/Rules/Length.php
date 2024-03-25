@@ -18,6 +18,7 @@ use Respect\Validation\Rules\Core\Wrapper;
 use function count;
 use function is_string;
 use function mb_strlen;
+use function ucfirst;
 
 #[Template('The length of', 'The length of')]
 final class Length extends Wrapper
@@ -28,12 +29,14 @@ final class Length extends Wrapper
     {
         $typeResult = $this->bindEvaluate(new OneOf(new StringType(), new Countable()), $this, $input);
         if (!$typeResult->isValid) {
-            return Result::failed($input, $this)->withNextSibling($this->rule->evaluate($input));
+            $result = $this->rule->evaluate($input);
+
+            return Result::failed($input, $this)->withNextSibling($result)->withId('length' . ucfirst($result->id));
         }
 
-        $result = $this->rule->evaluate($this->extractLength($input))->withInput($input);
+        $result = $this->rule->evaluate($this->extractLength($input))->withInput($input)->withPrefixedId('length');
 
-        return (new Result($result->isValid, $input, $this))->withNextSibling($result);
+        return (new Result($result->isValid, $input, $this, id: $result->id))->withNextSibling($result);
     }
 
     /** @param array<mixed>|PhpCountable|string $input */

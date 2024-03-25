@@ -37,7 +37,7 @@ Negative
 "+55 11 91111 1111" must not be a valid telephone number
 - "+55 11 91111 1111" must not be a valid telephone number
 [
-    'phone' => '"+55 11 91111 1111" must not be a valid telephone number',
+    'notPhone' => '"+55 11 91111 1111" must not be a valid telephone number',
 ]
 
 Default with name

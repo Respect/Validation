@@ -53,7 +53,7 @@ Wrapping "not"
 4 must not be of type integer
 - 4 must not be of type integer
 [
-    'intType' => '4 must not be of type integer',
+    'notIntType' => '4 must not be of type integer',
 ]
 
 With a single template
@@ -75,4 +75,3 @@ Template for "stringType"
     'stringType' => 'Template for "stringType"',
     'uppercase' => 'Template for "uppercase"',
 ]
-

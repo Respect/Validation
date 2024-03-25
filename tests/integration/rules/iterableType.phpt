@@ -28,7 +28,7 @@ Negative
 `[1, 2, 3]` must not of type iterable
 - `[1, 2, 3]` must not of type iterable
 [
-    'iterableType' => '`[1, 2, 3]` must not of type iterable',
+    'notIterableType' => '`[1, 2, 3]` must not of type iterable',
 ]
 
 With template
