@@ -50,4 +50,9 @@ abstract class Wrapper implements Validatable
 
         return $this;
     }
+
+    public function getRule(): Validatable
+    {
+        return $this->rule;
+    }
 }
