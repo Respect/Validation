@@ -10,6 +10,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Helpers\CanValidateDateTime;
+use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 
 use function date;
 use function date_parse_from_format;
@@ -17,7 +19,7 @@ use function is_scalar;
 use function strtotime;
 use function vsprintf;
 
-abstract class AbstractAge extends AbstractRule
+abstract class AbstractAge extends Standard
 {
     use CanValidateDateTime;
 
@@ -32,25 +34,18 @@ abstract class AbstractAge extends AbstractRule
         $this->baseDate = (int) date('Ymd') - $this->age * 10000;
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
+        $parameters = ['age' => $this->age];
         if (!is_scalar($input)) {
-            return false;
+            return Result::failed($input, $this, $parameters);
         }
 
         if ($this->format === null) {
-            return $this->isValidWithoutFormat((string) $input);
+            return new Result($this->isValidWithoutFormat((string) $input), $input, $this, $parameters);
         }
 
-        return $this->isValidWithFormat($this->format, (string) $input);
-    }
-
-    /**
-     * @return array<string, int>
-     */
-    public function getParams(): array
-    {
-        return ['age' => $this->age];
+        return new Result($this->isValidWithFormat($this->format, (string) $input), $input, $this, $parameters);
     }
 
     private function isValidWithoutFormat(string $dateTime): bool
