@@ -14,7 +14,7 @@ use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\StreamStub;
 use Respect\Validation\Test\Stubs\UploadedFileStub;
@@ -27,7 +27,7 @@ final class SizeTest extends RuleTestCase
     #[Test]
     public function shouldThrowsAnExceptionWhenSizeIsNotValid(): void
     {
-        $this->expectException(ComponentException::class);
+        $this->expectException(InvalidRuleConstructorException::class);
         $this->expectExceptionMessage('"42jb" is not a recognized file size');
 
         new Size('42jb');

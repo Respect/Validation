@@ -9,11 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Envelope;
-
-use function sprintf;
 
 /**
  * @see http://download.geonames.org/export/dump/countryInfo.txt
@@ -211,7 +209,7 @@ final class PostalCode extends Envelope
     {
         $countryCodeRule = new CountryCode();
         if (!$countryCodeRule->evaluate($countryCode)->isValid) {
-            throw new ComponentException(sprintf('Cannot validate postal code from "%s" country', $countryCode));
+            throw new InvalidRuleConstructorException('Cannot validate postal code from "%s" country', $countryCode);
         }
 
         parent::__construct(

@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\Standard;
@@ -103,11 +103,11 @@ final class Ip extends Standard
             [$this->startAddress, $this->endAddress] = explode('-', $input);
 
             if ($this->startAddress !== null && !$this->verifyAddress($this->startAddress)) {
-                throw new ComponentException('Invalid network range');
+                throw new InvalidRuleConstructorException('Invalid network range');
             }
 
             if ($this->endAddress !== null && !$this->verifyAddress($this->endAddress)) {
-                throw new ComponentException('Invalid network range');
+                throw new InvalidRuleConstructorException('Invalid network range');
             }
 
             return;
@@ -125,7 +125,7 @@ final class Ip extends Standard
             return;
         }
 
-        throw new ComponentException('Invalid network range');
+        throw new InvalidRuleConstructorException('Invalid network range');
     }
 
     private function fillAddress(string $address, string $fill = '*'): string
@@ -155,7 +155,7 @@ final class Ip extends Standard
         }
 
         if ($isAddressMask || $parts[1] < 8 || $parts[1] > 30) {
-            throw new ComponentException('Invalid network mask');
+            throw new InvalidRuleConstructorException('Invalid network mask');
         }
 
         $this->mask = sprintf('%032b', ip2long((string) long2ip(~(2 ** (32 - (int) $parts[1]) - 1))));

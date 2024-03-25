@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\Standard;
@@ -18,7 +18,6 @@ use function array_values;
 use function count;
 use function is_array;
 use function is_string;
-use function sprintf;
 use function str_split;
 
 #[Template(
@@ -43,8 +42,10 @@ final class Sorted extends Standard
         private readonly string $direction
     ) {
         if ($direction !== self::ASCENDING && $direction !== self::DESCENDING) {
-            throw new ComponentException(
-                sprintf('Direction should be either "%s" or "%s"', self::ASCENDING, self::DESCENDING)
+            throw new InvalidRuleConstructorException(
+                'Direction should be either "%s" or "%s"',
+                self::ASCENDING,
+                self::DESCENDING
             );
         }
     }

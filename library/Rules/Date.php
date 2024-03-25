@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -18,7 +18,6 @@ use Respect\Validation\Rules\Core\Standard;
 use function date;
 use function is_scalar;
 use function preg_match;
-use function sprintf;
 use function strtotime;
 
 #[Template(
@@ -33,7 +32,7 @@ final class Date extends Standard
         private readonly string $format = 'Y-m-d'
     ) {
         if (!preg_match('/^[djSFmMnYy\W]+$/', $format)) {
-            throw new ComponentException(sprintf('"%s" is not a valid date format', $format));
+            throw new InvalidRuleConstructorException('"%s" is not a valid date format', $format);
         }
     }
 

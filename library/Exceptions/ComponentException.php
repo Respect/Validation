@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-use Exception;
+use LogicException;
 use Throwable;
 
-class ComponentException extends Exception implements Throwable
+class ComponentException extends LogicException implements Throwable
 {
 }

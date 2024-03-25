@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
@@ -23,7 +23,8 @@ final class SortedTest extends RuleTestCase
     #[Test]
     public function itShouldNotAcceptWrongSortingDirection(): void
     {
-        $this->expectExceptionObject(new ComponentException('Direction should be either "ASC" or "DESC"'));
+        $this->expectException(InvalidRuleConstructorException::class);
+        $this->expectExceptionMessage('Direction should be either "ASC" or "DESC"');
 
         new Sorted('something');
     }

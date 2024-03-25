@@ -11,7 +11,7 @@ namespace Respect\Validation\Rules;
 
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\Standard;
@@ -22,7 +22,6 @@ use function floatval;
 use function is_numeric;
 use function is_string;
 use function preg_match;
-use function sprintf;
 
 #[Template(
     '{{name}} must be between {{minSize}} and {{maxSize}}',
@@ -118,7 +117,7 @@ final class Size extends Standard
         }
 
         if (!is_numeric($value)) {
-            throw new ComponentException(sprintf('"%s" is not a recognized file size.', $size));
+            throw new InvalidRuleConstructorException('"%s" is not a recognized file size.', $size);
         }
 
         return (float) $value;

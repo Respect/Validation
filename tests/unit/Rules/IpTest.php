@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\RuleTestCase;
 
 use function extension_loaded;
@@ -29,7 +29,7 @@ final class IpTest extends RuleTestCase
     #[DataProvider('providerForInvalidRanges')]
     public function invalidRangeShouldRaiseException(string $range): void
     {
-        $this->expectException(ComponentException::class);
+        $this->expectException(InvalidRuleConstructorException::class);
 
         new Ip($range);
     }

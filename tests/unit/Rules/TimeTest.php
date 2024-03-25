@@ -15,7 +15,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\RuleTestCase;
 
 #[Group('rule')]
@@ -26,7 +26,7 @@ final class TimeTest extends RuleTestCase
     #[DataProvider('invalidFormatsProvider')]
     public function shouldThrowAnExceptionWhenFormatIsNotValid(string $format): void
     {
-        $this->expectException(ComponentException::class);
+        $this->expectException(InvalidRuleConstructorException::class);
 
         new Time($format);
     }

@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\RuleTestCase;
 
 #[Group('rule')]
@@ -22,7 +22,7 @@ final class SubdivisionCodeTest extends RuleTestCase
     #[Test]
     public function shouldNotAcceptWrongNamesOnConstructor(): void
     {
-        $this->expectException(ComponentException::class);
+        $this->expectException(InvalidRuleConstructorException::class);
         $this->expectExceptionMessage('"whatever" is not a supported country code');
 
         new SubdivisionCode('whatever');

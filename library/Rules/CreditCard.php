@@ -15,7 +15,6 @@ use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\Standard;
 
 use function array_keys;
-use function implode;
 use function is_scalar;
 use function preg_match;
 use function preg_replace;
@@ -60,7 +59,7 @@ final class CreditCard extends Standard
             throw new InvalidRuleConstructorException(
                 '"%s" is not a valid credit card brand (Available: %s)',
                 $brand,
-                implode(', ', array_keys(self::BRAND_REGEX_LIST))
+                array_keys(self::BRAND_REGEX_LIST)
             );
         }
     }

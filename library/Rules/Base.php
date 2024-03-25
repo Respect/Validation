@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\Standard;
@@ -17,7 +17,6 @@ use Respect\Validation\Rules\Core\Standard;
 use function mb_strlen;
 use function mb_substr;
 use function preg_match;
-use function sprintf;
 
 #[Template(
     '{{name}} must be a number in the base {{base|raw}}',
@@ -31,7 +30,7 @@ final class Base extends Standard
     ) {
         $max = mb_strlen($this->chars);
         if ($base > $max) {
-            throw new ComponentException(sprintf('a base between 1 and %s is required', $max));
+            throw new InvalidRuleConstructorException('a base between 1 and %s is required', (string) $max);
         }
     }
 

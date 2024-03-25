@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\RuleTestCase;
 
 #[Group('rule')]
@@ -22,11 +22,8 @@ final class CreditCardTest extends RuleTestCase
     #[Test]
     public function itShouldThrowExceptionWhenCreditCardBrandIsNotValid(): void
     {
-        $message = '"RespectCard" is not a valid credit card brand';
-        $message .= ' (Available: Any, American Express, Diners Club, Discover, JCB, MasterCard, Visa, RuPay)';
-
-        $this->expectException(ComponentException::class);
-        $this->expectExceptionMessage($message);
+        $this->expectException(InvalidRuleConstructorException::class);
+        $this->expectExceptionMessageMatches('/"RespectCard" is not a valid credit card brand \(Available: .+\)/');
 
         new CreditCard('RespectCard');
     }

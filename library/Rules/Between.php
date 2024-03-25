@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Helpers\CanCompareValues;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Envelope;
@@ -25,7 +25,7 @@ final class Between extends Envelope
     public function __construct(mixed $minValue, mixed $maxValue)
     {
         if ($this->toComparable($minValue) >= $this->toComparable($maxValue)) {
-            throw new ComponentException('Minimum cannot be less than or equals to maximum');
+            throw new InvalidRuleConstructorException('Minimum cannot be less than or equals to maximum');
         }
 
         parent::__construct(

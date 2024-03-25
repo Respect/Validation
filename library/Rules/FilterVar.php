@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Envelope;
 
@@ -47,7 +47,7 @@ final class FilterVar extends Envelope
     public function __construct(int $filter, mixed $options = null)
     {
         if (!array_key_exists($filter, self::ALLOWED_FILTERS)) {
-            throw new ComponentException('Cannot accept the given filter');
+            throw new InvalidRuleConstructorException('Cannot accept the given filter');
         }
 
         $arguments = [$filter];

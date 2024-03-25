@@ -13,7 +13,7 @@ use DateTime;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\CountableStub;
 
@@ -24,7 +24,8 @@ final class BetweenTest extends RuleTestCase
     #[Test]
     public function minimumValueShouldNotBeGreaterThanMaximumValue(): void
     {
-        $this->expectExceptionObject(new ComponentException('Minimum cannot be less than or equals to maximum'));
+        $this->expectException(InvalidRuleConstructorException::class);
+        $this->expectExceptionMessage('Minimum cannot be less than or equals to maximum');
 
         new Between(10, 5);
     }
@@ -32,7 +33,8 @@ final class BetweenTest extends RuleTestCase
     #[Test]
     public function minimumValueShouldNotBeEqualsToMaximumValue(): void
     {
-        $this->expectExceptionObject(new ComponentException('Minimum cannot be less than or equals to maximum'));
+        $this->expectException(InvalidRuleConstructorException::class);
+        $this->expectExceptionMessage('Minimum cannot be less than or equals to maximum');
 
         new Between(5, 5);
     }

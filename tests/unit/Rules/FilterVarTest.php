@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\RuleTestCase;
 
 use const FILTER_FLAG_HOSTNAME;
@@ -32,7 +32,7 @@ final class FilterVarTest extends RuleTestCase
     #[Test]
     public function itShouldThrowsExceptionWhenFilterIsNotValid(): void
     {
-        $this->expectException(ComponentException::class);
+        $this->expectException(InvalidRuleConstructorException::class);
         $this->expectExceptionMessage('Cannot accept the given filter');
 
         new FilterVar(FILTER_SANITIZE_EMAIL);
