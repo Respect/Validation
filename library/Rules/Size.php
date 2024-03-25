@@ -13,6 +13,8 @@ use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Standard;
 use SplFileInfo;
 
 use function filesize;
@@ -37,7 +39,7 @@ use function sprintf;
     '{{name}} must not be lower than {{maxSize}}',
     self::TEMPLATE_GREATER,
 )]
-final class Size extends AbstractRule
+final class Size extends Standard
 {
     public const TEMPLATE_LOWER = '__lower__';
     public const TEMPLATE_GREATER = '__greater__';
@@ -55,7 +57,18 @@ final class Size extends AbstractRule
         $this->maxValue = $maxSize ? $this->toBytes((string) $maxSize) : null;
     }
 
-    public function validate(mixed $input): bool
+    public function evaluate(mixed $input): Result
+    {
+        return new Result(
+            $this->isValid($input),
+            $input,
+            $this,
+            ['minSize' => $this->minSize, 'maxSize' => $this->maxSize],
+            $this->getStandardTemplate()
+        );
+    }
+
+    private function isValid(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
             return $this->isValidSize((float) $input->getSize());
@@ -76,18 +89,7 @@ final class Size extends AbstractRule
         return false;
     }
 
-    /**
-     * @return array<string, mixed>
-     */
-    public function getParams(): array
-    {
-        return [
-            'minSize' => $this->minSize,
-            'maxSize' => $this->maxSize,
-        ];
-    }
-
-    protected function getStandardTemplate(mixed $input): string
+    private function getStandardTemplate(): string
     {
         if (!$this->minValue) {
             return self::TEMPLATE_GREATER;
