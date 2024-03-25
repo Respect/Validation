@@ -28,7 +28,7 @@ final class PublicDomainSuffix extends Simple
 {
     use CanValidateUndefined;
 
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

@@ -20,7 +20,7 @@ use function is_numeric;
 )]
 final class Negative extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if (!is_numeric($input)) {
             return false;

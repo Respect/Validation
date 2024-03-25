@@ -11,16 +11,12 @@ namespace Respect\Validation;
 
 use ReflectionClass;
 use ReflectionException;
-use ReflectionObject;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
-use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\Parameter\Processor;
 use Respect\Validation\Message\Parameter\Raw;
 use Respect\Validation\Message\Parameter\Stringify;
 use Respect\Validation\Message\Parameter\Trans;
-use Respect\Validation\Message\TemplateCollector;
-use Respect\Validation\Message\TemplateRenderer;
 use Respect\Validation\Transformers\DeprecatedAttribute;
 use Respect\Validation\Transformers\DeprecatedKey;
 use Respect\Validation\Transformers\DeprecatedKeyNested;
@@ -33,7 +29,6 @@ use Respect\Validation\Transformers\RuleSpec;
 use Respect\Validation\Transformers\Transformer;
 
 use function array_merge;
-use function lcfirst;
 use function sprintf;
 use function trim;
 use function ucfirst;
@@ -52,8 +47,6 @@ final class Factory
 
     private Processor $processor;
 
-    private TemplateCollector $templateCollector;
-
     private Transformer $transformer;
 
     private static Factory $defaultInstance;
@@ -62,7 +55,6 @@ final class Factory
     {
         $this->translator = static fn (string $message) => $message;
         $this->processor = new Raw(new Trans($this->translator, new Stringify()));
-        $this->templateCollector = new TemplateCollector();
         $this->transformer = new DeprecatedAttribute(
             new DeprecatedKey(
                 new DeprecatedKeyValue(
@@ -126,26 +118,6 @@ final class Factory
         return $this->createRuleSpec($this->transformer->transform(new RuleSpec($ruleName, $arguments)));
     }
 
-    /**
-     * @param mixed[] $extraParams
-     */
-    public function exception(Validatable $validatable, mixed $input, array $extraParams = []): ValidationException
-    {
-        $reflection = new ReflectionObject($validatable);
-
-        $params = ['input' => $input] + $extraParams + $validatable->getParams();
-        $id = lcfirst($reflection->getShortName());
-        if ($validatable->getName() !== null) {
-            $id = $params['name'] = $validatable->getName();
-        }
-        $standardTemplate = $reflection->getMethod('getStandardTemplate');
-        $template = $validatable->getTemplate() ?? $standardTemplate->invoke($validatable, $input);
-        $templates = $this->templateCollector->extract($validatable);
-        $formatter = new TemplateRenderer($this->translator, $this->processor);
-
-        return new ValidationException($input, $id, $params, $template, $templates, $formatter);
-    }
-
     public static function setDefaultInstance(self $defaultInstance): void
     {
         self::$defaultInstance = $defaultInstance;
@@ -170,37 +142,23 @@ final class Factory
             try {
                 /** @var class-string<Validatable> $name */
                 $name = $namespace . '\\' . ucfirst($ruleName);
-                /** @var Validatable $rule */
-                $rule = $this
-                    ->createReflectionClass($name, Validatable::class)
-                    ->newInstanceArgs($arguments);
+                $reflection = new ReflectionClass($name);
+                if (!$reflection->isSubclassOf(Validatable::class)) {
+                    throw new InvalidClassException(
+                        sprintf('"%s" must be an instance of "%s"', $name, Validatable::class)
+                    );
+                }
 
-                return $rule;
+                if (!$reflection->isInstantiable()) {
+                    throw new InvalidClassException(sprintf('"%s" must be instantiable', $name));
+                }
+
+                return $reflection->newInstanceArgs($arguments);
             } catch (ReflectionException) {
                 continue;
             }
         }
 
         throw new ComponentException(sprintf('"%s" is not a valid rule name', $ruleName));
-    }
-
-    /**
-     * @param class-string $name
-     * @param class-string $parentName
-     *
-     * @return ReflectionClass<ValidationException|Validatable|object>
-     */
-    private function createReflectionClass(string $name, string $parentName): ReflectionClass
-    {
-        $reflection = new ReflectionClass($name);
-        if (!$reflection->isSubclassOf($parentName) && $parentName !== $name) {
-            throw new InvalidClassException(sprintf('"%s" must be an instance of "%s"', $name, $parentName));
-        }
-
-        if (!$reflection->isInstantiable()) {
-            throw new InvalidClassException(sprintf('"%s" must be instantiable', $name));
-        }
-
-        return $reflection;
     }
 }

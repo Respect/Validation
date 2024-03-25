@@ -24,10 +24,7 @@ final class Imei extends Simple
 {
     private const IMEI_SIZE = 15;
 
-    /**
-     * @see https://en.wikipedia.org/wiki/International_Mobile_Station_Equipment_Identity
-     */
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;
@@ -38,6 +35,6 @@ final class Imei extends Simple
             return false;
         }
 
-        return (new Luhn())->validate($numbers);
+        return (new Luhn())->isValid($numbers);
     }
 }

@@ -23,10 +23,10 @@ use function is_uploaded_file;
 )]
 final class Uploaded extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
-            return $this->validate($input->getPathname());
+            return $this->isValid($input->getPathname());
         }
 
         if ($input instanceof UploadedFileInterface) {

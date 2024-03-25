@@ -21,7 +21,7 @@ use function is_numeric;
 )]
 final class Finite extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         return is_numeric($input) && is_finite((float) $input);
     }

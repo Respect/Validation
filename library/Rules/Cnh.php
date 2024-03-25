@@ -22,7 +22,7 @@ use function preg_replace;
 )]
 final class Cnh extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

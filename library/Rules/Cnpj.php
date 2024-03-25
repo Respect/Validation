@@ -25,7 +25,7 @@ use function str_split;
 )]
 final class Cnpj extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

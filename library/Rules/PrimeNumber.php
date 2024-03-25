@@ -22,7 +22,7 @@ use function sqrt;
 )]
 final class PrimeNumber extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if (!is_numeric($input) || $input <= 1) {
             return false;

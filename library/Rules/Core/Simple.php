@@ -13,8 +13,10 @@ use Respect\Validation\Result;
 
 abstract class Simple extends Standard
 {
+    abstract protected function isValid(mixed $input): bool;
+
     public function evaluate(mixed $input): Result
     {
-        return new Result($this->validate($input), $input, $this);
+        return new Result($this->isValid($input), $input, $this);
     }
 }

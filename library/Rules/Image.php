@@ -33,10 +33,10 @@ final class Image extends Simple
         $this->fileInfo = $fileInfo ?: new finfo(FILEINFO_MIME_TYPE);
     }
 
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
-            return $this->validate($input->getPathname());
+            return $this->isValid($input->getPathname());
         }
 
         if (!is_string($input)) {

@@ -22,7 +22,7 @@ use function preg_match;
 )]
 final class NoWhitespace extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if (is_null($input)) {
             return true;

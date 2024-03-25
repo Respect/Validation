@@ -25,19 +25,14 @@ use function str_split;
 )]
 final class Luhn extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if (!(new Digit())->evaluate($input)->isValid) {
             return false;
         }
 
-        return $this->isValid((string) $input);
-    }
-
-    private function isValid(string $input): bool
-    {
         $sum = 0;
-        $digits = array_map('intval', str_split($input));
+        $digits = array_map('intval', str_split((string) $input));
         $numDigits = count($digits);
         $parity = $numDigits % 2;
         for ($i = 0; $i < $numDigits; ++$i) {

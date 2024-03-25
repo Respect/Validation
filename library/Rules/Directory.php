@@ -23,7 +23,7 @@ use function is_scalar;
 )]
 final class Directory extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
             return $input->isDir();

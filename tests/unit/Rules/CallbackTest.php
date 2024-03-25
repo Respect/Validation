@@ -24,7 +24,7 @@ final class CallbackTest extends RuleTestCase
     {
         return [
             [new Callback('is_a', 'stdClass'), new stdClass()],
-            [new Callback([Stub::pass(1), 'validate']), 'test'],
+            [new Callback([Stub::pass(1), 'isValid']), 'test'],
             [new Callback('is_string'), 'test'],
             [
                 new Callback(static function () {

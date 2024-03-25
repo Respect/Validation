@@ -31,7 +31,7 @@ use function strlen;
 )]
 final class PortugueseNif extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         // Validate format and length
         if (!is_string($input)) {

@@ -26,7 +26,7 @@ final class AlwaysInvalid extends Simple
 {
     public const TEMPLATE_SIMPLE = '__simple__';
 
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         return false;
     }

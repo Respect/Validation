@@ -26,7 +26,7 @@ use const JSON_ERROR_NONE;
 )]
 final class Json extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if (!is_string($input) || $input === '') {
             return false;

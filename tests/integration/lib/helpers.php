@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-use Respect\Validation\Exceptions\ValidatorException;
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
 use Symfony\Component\VarExporter\VarExporter;
 
@@ -18,7 +18,7 @@ function exceptionMessage(callable $callable, string $fallbackMessage = 'No exce
     try {
         $callable();
         echo $fallbackMessage . PHP_EOL;
-    } catch (ValidatorException $exception) {
+    } catch (ValidationException $exception) {
         echo $exception->getMessage() . PHP_EOL;
     }
 }
@@ -28,7 +28,7 @@ function exceptionMessages(callable $callable, string $fallbackMessage = 'No exc
     try {
         $callable();
         echo $fallbackMessage . PHP_EOL;
-    } catch (ValidatorException $exception) {
+    } catch (ValidationException $exception) {
         echo VarExporter::export($exception->getMessages()) . PHP_EOL;
     }
 }
@@ -38,7 +38,7 @@ function exceptionFullMessage(callable $callable, string $fallbackMessage = 'No 
     try {
         $callable();
         echo $fallbackMessage . PHP_EOL;
-    } catch (ValidatorException $exception) {
+    } catch (ValidationException $exception) {
         echo $exception->getFullMessage() . PHP_EOL;
     }
 }

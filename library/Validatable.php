@@ -9,25 +9,17 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
-use Respect\Validation\Exceptions\ValidationException;
-
-interface Validatable extends Rule
+interface Validatable
 {
-    public function assert(mixed $input): void;
+    public const TEMPLATE_STANDARD = '__standard__';
 
-    public function check(mixed $input): void;
+    public function evaluate(mixed $input): Result;
 
-    /**
-     * @param mixed[] $extraParameters
-     */
-    public function reportError(mixed $input, array $extraParameters = []): ValidationException;
+    public function getName(): ?string;
+
+    public function setName(string $name): static;
 
     public function getTemplate(): ?string;
 
-    /**
-     * @return array<string, mixed>
-     */
-    public function getParams(): array;
-
-    public function validate(mixed $input): bool;
+    public function setTemplate(string $template): static;
 }

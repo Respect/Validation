@@ -20,7 +20,7 @@ use function is_float;
 )]
 final class FloatType extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         return is_float($input);
     }

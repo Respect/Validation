@@ -30,7 +30,7 @@ final class PolishIdCard extends Simple
     private const ASCII_CODE_9 = 57;
     private const ASCII_CODE_A = 65;
 
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

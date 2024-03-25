@@ -194,7 +194,7 @@ final class NotEmoji extends Simple
         '\x{3299}',
     ];
 
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if (!is_string($input)) {
             return false;

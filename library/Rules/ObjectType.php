@@ -20,7 +20,7 @@ use function is_object;
 )]
 final class ObjectType extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         return is_object($input);
     }

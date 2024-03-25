@@ -12,6 +12,7 @@ namespace Respect\Validation;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
 
 #[CoversClass(Validator::class)]
@@ -39,5 +40,13 @@ final class ValidatorTest extends TestCase
 
         // @phpstan-ignore-next-line
         self::assertSame($validator, $validator->not($validator->notEmpty()));
+    }
+
+    #[Test]
+    public function itShouldProxyResultWithTheIsValidMethod(): void
+    {
+        $validator = Validator::create(Stub::fail(1));
+
+        self::assertFalse($validator->isValid('whatever'));
     }
 }

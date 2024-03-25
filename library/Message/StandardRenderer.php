@@ -14,7 +14,7 @@ use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Message\Parameter\Processor;
 use Respect\Validation\Mode;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validatable;
 use Throwable;
 
 use function call_user_func;
@@ -71,7 +71,7 @@ final class StandardRenderer implements Renderer
     }
 
     /** @return array<Template> */
-    private function extractTemplates(Rule $rule): array
+    private function extractTemplates(Validatable $rule): array
     {
         if (!isset($this->templates[$rule::class])) {
             $reflection = new ReflectionClass($rule);

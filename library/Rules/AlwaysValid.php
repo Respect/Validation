@@ -18,7 +18,7 @@ use Respect\Validation\Rules\Core\Simple;
 )]
 final class AlwaysValid extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         return true;
     }

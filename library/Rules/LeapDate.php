@@ -27,14 +27,14 @@ final class LeapDate extends Simple
     ) {
     }
 
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if ($input instanceof DateTimeInterface) {
             return $input->format('m-d') === '02-29';
         }
 
         if (is_scalar($input)) {
-            return $this->validate(DateTimeImmutable::createFromFormat($this->format, (string) $input));
+            return $this->isValid(DateTimeImmutable::createFromFormat($this->format, (string) $input));
         }
 
         return false;

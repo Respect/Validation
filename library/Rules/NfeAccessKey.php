@@ -26,7 +26,7 @@ use function str_split;
 )]
 final class NfeAccessKey extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if (mb_strlen($input) !== 44) {
             return false;

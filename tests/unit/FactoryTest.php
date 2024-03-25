@@ -14,9 +14,7 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
-use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\Rules\AbstractClass;
-use Respect\Validation\Test\Rules\CustomRule;
 use Respect\Validation\Test\Rules\Invalid;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\Rules\Valid;
@@ -95,16 +93,6 @@ final class FactoryTest extends TestCase
     }
 
     #[Test]
-    public function shouldCreateValidationExceptionWhenExceptionIsNotFound(): void
-    {
-        $factory = new Factory();
-        $input = 'input';
-        $rule = Stub::daze();
-
-        self::assertInstanceOf(ValidationException::class, $factory->exception($rule, $input));
-    }
-
-    #[Test]
     public function shouldAlwaysReturnTheSameDefaultInstance(): void
     {
         self::assertSame(Factory::getDefaultInstance(), Factory::getDefaultInstance());
@@ -122,23 +110,5 @@ final class FactoryTest extends TestCase
         self::assertSame($factory, Factory::getDefaultInstance());
 
         Factory::setDefaultInstance($defaultInstance);
-    }
-
-    #[Test]
-    public function shouldAutoResolveExceptionIfNamespacePatternMatchesAndExceptionClassFound(): void
-    {
-        $this->expectException(ValidationException::class);
-
-        $rule = Stub::fail(1);
-        $rule->assert('test');
-    }
-
-    #[Test]
-    public function shouldUseDefaultExceptionIfCustomExceptionNotFound(): void
-    {
-        $this->expectException(ValidationException::class);
-
-        $rule = new CustomRule();
-        $rule->assert('test');
     }
 }

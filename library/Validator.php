@@ -9,14 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
-use Respect\Validation\Exceptions\ValidatorException;
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\StandardFormatter;
 use Respect\Validation\Message\StandardRenderer;
 use Respect\Validation\Mixins\StaticValidator;
-use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Rules\AllOf;
+use Respect\Validation\Rules\Core\Standard;
 
 use function count;
 use function current;
@@ -24,7 +24,7 @@ use function current;
 /**
  * @mixin StaticValidator
  */
-final class Validator extends AbstractRule
+final class Validator extends Standard
 {
     use CanBindEvaluateRule;
 
@@ -61,7 +61,7 @@ final class Validator extends AbstractRule
         return $this->bindEvaluate($this->rule(), $this, $input);
     }
 
-    public function validate(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         return $this->evaluate($input)->isValid;
     }
@@ -74,11 +74,11 @@ final class Validator extends AbstractRule
         }
 
         $templates = $this->templates;
-        if (count($templates) === 0 && $this->template != null) {
-            $templates = ['__self__' => $this->template];
+        if (count($templates) === 0 && $this->getTemplate() != null) {
+            $templates = ['__self__' => $this->getTemplate()];
         }
 
-        throw new ValidatorException(
+        throw new ValidationException(
             $this->formatter->main($result, $templates),
             $this->formatter->full($result, $templates),
             $this->formatter->array($result, $templates),
@@ -97,6 +97,22 @@ final class Validator extends AbstractRule
     public function getRules(): array
     {
         return $this->rules;
+    }
+
+    /**
+     * @deprecated Use {@see isValid()} instead.
+     */
+    public function validate(mixed $input): bool
+    {
+        return $this->evaluate($input)->isValid;
+    }
+
+    /**
+     * @deprecated Use {@see assert()} instead.
+     */
+    public function check(mixed $input): void
+    {
+        $this->assert($input);
     }
 
     private function rule(): Validatable

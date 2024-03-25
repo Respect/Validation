@@ -24,7 +24,7 @@ use function preg_match;
 )]
 final class Version extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if (!is_string($input)) {
             return false;

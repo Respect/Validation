@@ -11,8 +11,8 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Composite;
+use Respect\Validation\Validatable;
 
 use function array_map;
 use function array_reduce;
@@ -25,7 +25,7 @@ final class OneOf extends Composite
 {
     public function evaluate(mixed $input): Result
     {
-        $children = array_map(static fn (Rule $rule) => $rule->evaluate($input), $this->rules);
+        $children = array_map(static fn (Validatable $rule) => $rule->evaluate($input), $this->rules);
         $valid = array_reduce($children, static fn (bool $carry, Result $result) => $carry xor $result->isValid, false);
 
         return (new Result($valid, $input, $this))->withChildren(...$children);

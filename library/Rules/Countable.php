@@ -21,7 +21,7 @@ use function is_array;
 )]
 final class Countable extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         return is_array($input) || $input instanceof CountableInterface;
     }

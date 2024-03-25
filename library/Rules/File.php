@@ -22,7 +22,7 @@ use function is_string;
 )]
 final class File extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
             return $input->isFile();

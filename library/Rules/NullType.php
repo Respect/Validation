@@ -20,7 +20,7 @@ use function is_null;
 )]
 final class NullType extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         return is_null($input);
     }

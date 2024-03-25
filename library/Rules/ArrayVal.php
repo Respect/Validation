@@ -22,7 +22,7 @@ use function is_array;
 )]
 final class ArrayVal extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         return is_array($input) || $input instanceof ArrayAccess || $input instanceof SimpleXMLElement;
     }

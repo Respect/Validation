@@ -22,7 +22,7 @@ use function method_exists;
 )]
 final class StringVal extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         return is_scalar($input) || (is_object($input) && method_exists($input, '__toString'));
     }

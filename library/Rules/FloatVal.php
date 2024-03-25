@@ -23,7 +23,7 @@ use const FILTER_VALIDATE_FLOAT;
 )]
 final class FloatVal extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         return is_float(filter_var($input, FILTER_VALIDATE_FLOAT));
     }

@@ -22,7 +22,7 @@ use function preg_match;
 )]
 final class Slug extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if (!is_string($input) || mb_strstr($input, '--')) {
             return false;

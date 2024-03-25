@@ -35,7 +35,7 @@ final class ImageTest extends RuleTestCase
 
         $rule = new Image($finfo);
 
-        self::assertTrue($rule->validate($input));
+        self::assertValidInput($rule, $input);
     }
 
     /** @return iterable<array{Image, mixed}> */

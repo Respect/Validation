@@ -10,11 +10,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Test\Rules;
 
 use PHPUnit\Framework\Assert;
-use ReflectionClass;
-use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\Template;
-use Respect\Validation\Rules\AbstractRule;
-use Respect\Validation\Test\Exceptions\StubException;
+use Respect\Validation\Rules\Core\Simple;
 
 use function array_fill;
 use function array_map;
@@ -25,7 +22,7 @@ use function rand;
     '{{name}} must be a valid stub',
     '{{name}} must not be a valid stub',
 )]
-final class Stub extends AbstractRule
+final class Stub extends Simple
 {
     /** @var array<bool> */
     public array $validations;
@@ -58,7 +55,7 @@ final class Stub extends AbstractRule
         return new self(...array_fill(0, $expectedCount, false));
     }
 
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         $this->inputs[] = $input;
 
@@ -67,22 +64,5 @@ final class Stub extends AbstractRule
         }
 
         return (bool) array_shift($this->validations);
-    }
-
-    /** @param array<string, mixed> $extraParameters */
-    public function reportError(mixed $input, array $extraParameters = []): ValidationException
-    {
-        $exception = parent::reportError($input, $extraParameters);
-
-        $reflection = new ReflectionClass($exception);
-
-        return new StubException(
-            input: $reflection->getProperty('input')->getValue($exception),
-            id:  $exception->getId(),
-            params: $exception->getParams(),
-            template: $reflection->getProperty('template')->getValue($exception),
-            templates: $reflection->getProperty('templates')->getValue($exception),
-            formatter: $reflection->getProperty('formatter')->getValue($exception),
-        );
     }
 }

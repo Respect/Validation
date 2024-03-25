@@ -22,7 +22,7 @@ use function sqrt;
 )]
 final class PerfectSquare extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         return is_numeric($input) && floor(sqrt((float) $input)) == sqrt((float) $input);
     }

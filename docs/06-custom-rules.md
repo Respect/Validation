@@ -3,23 +3,24 @@
 You can also create and use your own rules. To do this, you will need to create
 a rule and an exception to go with the rule.
 
-To create a rule, you need to create a class that extends the AbstractRule class
-and is within the Rules `namespace`. When the rule is called the logic inside the
-validate method will be executed. Here's how the class should look:
+To create a rule, you need to create a class that implements the `Validatable` interface
+and is within the Rules `namespace`. It is  convenient to just extend the `Simple` or
+`Standard` class. When the rule is called the logic inside the validate method will be
+executed. Here's how the class should look:
 
 ```php
 namespace My\Validation\Rules;
 
-use Respect\Validation\Rules\AbstractRule;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Rules\Core\Simple;
 
 #[Template(
     '{{name}} is something',
     '{{name}} is not something',
 )]
-final class Something extends AbstractRule
+final class Something extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         // Do something here with the $input and return a boolean value
     }

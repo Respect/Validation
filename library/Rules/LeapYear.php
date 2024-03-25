@@ -25,7 +25,7 @@ use function strtotime;
 )]
 final class LeapYear extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if (is_numeric($input)) {
             $date = strtotime(sprintf('%d-02-29', (int) $input));
@@ -34,11 +34,11 @@ final class LeapYear extends Simple
         }
 
         if (is_scalar($input)) {
-            return $this->validate((int) date('Y', (int) strtotime((string) $input)));
+            return $this->isValid((int) date('Y', (int) strtotime((string) $input)));
         }
 
         if ($input instanceof DateTimeInterface) {
-            return $this->validate($input->format('Y'));
+            return $this->isValid($input->format('Y'));
         }
 
         return false;

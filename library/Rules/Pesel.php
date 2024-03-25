@@ -21,7 +21,7 @@ use function preg_match;
 )]
 final class Pesel extends Simple
 {
-    public function validate(mixed $input): bool
+    protected function isValid(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;
