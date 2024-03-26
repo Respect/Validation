@@ -236,8 +236,6 @@ interface ChainedNot
 
     public function notNullType(): ChainedValidator;
 
-    public function notNullable(Validatable $rule): ChainedValidator;
-
     public function notNumber(): ChainedValidator;
 
     public function notNumericVal(): ChainedValidator;

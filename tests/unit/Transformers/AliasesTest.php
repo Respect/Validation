@@ -30,4 +30,17 @@ final class AliasesTest extends TestCase
 
         self::assertEquals($expected, $actual);
     }
+
+    #[Test]
+    public function itShouldConvertNullableIntoNullOr(): void
+    {
+        $transformer = new Aliases(new StubTransformer());
+
+        $ruleSpec = new RuleSpec('nullable', [Stub::daze()]);
+
+        $actual = $transformer->transform($ruleSpec);
+        $expected = new RuleSpec('nullOr', $ruleSpec->arguments);
+
+        self::assertEquals($expected, $actual);
+    }
 }

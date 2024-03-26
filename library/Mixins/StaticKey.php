@@ -261,8 +261,6 @@ interface StaticKey
 
     public static function keyNullType(int|string $key): ChainedValidator;
 
-    public static function keyNullable(int|string $key, Validatable $rule): ChainedValidator;
-
     public static function keyNumber(int|string $key): ChainedValidator;
 
     public static function keyNumericVal(int|string $key): ChainedValidator;

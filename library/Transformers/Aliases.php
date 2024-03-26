@@ -15,6 +15,7 @@ use function in_array;
 final class Aliases implements Transformer
 {
     private const ALIASES = [
+        'nullable' => 'nullOr',
         'optional' => 'undefOr',
     ];
 

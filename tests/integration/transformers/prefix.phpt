@@ -65,7 +65,7 @@ nullOr
 "string" must be of type boolean
 - "string" must be of type boolean
 [
-    'boolType' => '"string" must be of type boolean',
+    'nullOrBoolType' => '"string" must be of type boolean',
 ]
 
 property

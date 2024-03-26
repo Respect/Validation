@@ -65,7 +65,7 @@ final class PrefixTest extends TestCase
             ],
             'nullOr' => [
                 new RuleSpec('nullOrNextRule', [1, 10]),
-                new RuleSpec('NextRule', [1, 10], new RuleSpec('nullable')),
+                new RuleSpec('NextRule', [1, 10], new RuleSpec('nullOr')),
             ],
             'property' => [
                 new RuleSpec('propertyNextRule', ['propertyName', 567]),

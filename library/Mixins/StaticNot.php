@@ -240,8 +240,6 @@ interface StaticNot
 
     public static function notNullType(): ChainedValidator;
 
-    public static function notNullable(Validatable $rule): ChainedValidator;
-
     public static function notNumber(): ChainedValidator;
 
     public static function notNumericVal(): ChainedValidator;

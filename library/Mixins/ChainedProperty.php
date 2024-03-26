@@ -269,8 +269,6 @@ interface ChainedProperty
 
     public function propertyNullType(string $propertyName): ChainedValidator;
 
-    public function propertyNullable(string $propertyName, Validatable $rule): ChainedValidator;
-
     public function propertyNumber(string $propertyName): ChainedValidator;
 
     public function propertyNumericVal(string $propertyName): ChainedValidator;

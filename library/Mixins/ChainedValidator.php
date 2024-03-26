@@ -253,8 +253,13 @@ interface ChainedValidator extends
 
     public function notOptional(): ChainedValidator;
 
+    public function nullOr(Validatable $rule): ChainedValidator;
+
     public function nullType(): ChainedValidator;
 
+    /**
+     * @deprecated Use {@see nullOr()} instead.
+     */
     public function nullable(Validatable $rule): ChainedValidator;
 
     public function number(): ChainedValidator;

@@ -257,8 +257,6 @@ interface ChainedKey
 
     public function keyNullType(int|string $key): ChainedValidator;
 
-    public function keyNullable(int|string $key, Validatable $rule): ChainedValidator;
-
     public function keyNumber(int|string $key): ChainedValidator;
 
     public function keyNumericVal(int|string $key): ChainedValidator;

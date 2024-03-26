@@ -256,8 +256,13 @@ interface StaticValidator extends
 
     public static function notOptional(): ChainedValidator;
 
+    public static function nullOr(Validatable $rule): ChainedValidator;
+
     public static function nullType(): ChainedValidator;
 
+    /**
+     * @deprecated Use {@see nullOr()} instead.
+     */
     public static function nullable(Validatable $rule): ChainedValidator;
 
     public static function number(): ChainedValidator;

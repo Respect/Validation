@@ -25,6 +25,7 @@ use Respect\Validation\Mixins\StaticNot;
 use Respect\Validation\Mixins\StaticNullOr;
 use Respect\Validation\Mixins\StaticProperty;
 use Respect\Validation\Mixins\StaticUndefOr;
+use Respect\Validation\Rules\NullOr;
 use Respect\Validation\Rules\UndefOr;
 use Respect\Validation\Validatable;
 
@@ -69,6 +70,10 @@ function addMethodToInterface(
 
     if ($originalName === 'Optional') {
         $method->addComment('@deprecated Use {@see undefOr()} instead.');
+    }
+
+    if ($originalName === 'Nullable') {
+        $method->addComment('@deprecated Use {@see nullOr()} instead.');
     }
 
     foreach ($reflrectionConstructor->getParameters() as $reflectionParameter) {
@@ -157,6 +162,8 @@ function overwriteFile(string $content, string $basename): void
         'KeyOptional',
         'KeySet',
         'Optional',
+        'NullOr',
+        'Nullable',
         'UndefOr',
         'Property',
         'PropertyExists',
@@ -168,10 +175,10 @@ function overwriteFile(string $content, string $basename): void
         ['Length', 'length', $numberRelatedRules, []],
         ['Max', 'max', $numberRelatedRules, []],
         ['Min', 'min', $numberRelatedRules, []],
-        ['Not', 'not', [], ['Not', 'NotEmpty', 'NotBlank', 'NotEmoji', 'NotOptional', 'UndefOr', 'Optional']],
-        ['NullOr', 'nullOf', [], ['Nullable', 'Optional', 'UndefOr']],
+        ['Not', 'not', [], ['Not', 'NotEmpty', 'NotBlank', 'NotEmoji', 'NotOptional', 'NullOr', 'UndefOr', 'Optional']],
+        ['NullOr', 'nullOr', [], ['Nullable', 'NullOr', 'Optional', 'UndefOr']],
         ['Property', 'property', [], $structureRelatedRules],
-        ['UndefOr', 'undefOr', [], ['Nullable', 'Optional', 'UndefOr']],
+        ['UndefOr', 'undefOr', [], ['Nullable', 'NullOr', 'Optional', 'UndefOr']],
         ['Validator', null, [], []],
     ];
 
@@ -189,6 +196,9 @@ function overwriteFile(string $content, string $basename): void
         $names[$reflection->getShortName()] = $reflection;
         if ($className === UndefOr::class) {
             $names['Optional'] = $reflection;
+        }
+        if ($className === NullOr::class) {
+            $names['Nullable'] = $reflection;
         }
     }
     ksort($names);

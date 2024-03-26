@@ -293,8 +293,6 @@ interface StaticProperty
 
     public static function propertyNullType(string $propertyName): ChainedValidator;
 
-    public static function propertyNullable(string $propertyName, Validatable $rule): ChainedValidator;
-
     public static function propertyNumber(string $propertyName): ChainedValidator;
 
     public static function propertyNumericVal(string $propertyName): ChainedValidator;

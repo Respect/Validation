@@ -13,341 +13,341 @@ use Respect\Validation\Validatable;
 
 interface ChainedNullOr
 {
-    public function nullOfAllOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function nullOrAllOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
 
-    public function nullOfAlnum(string ...$additionalChars): ChainedValidator;
+    public function nullOrAlnum(string ...$additionalChars): ChainedValidator;
 
-    public function nullOfAlpha(string ...$additionalChars): ChainedValidator;
+    public function nullOrAlpha(string ...$additionalChars): ChainedValidator;
 
-    public function nullOfAlwaysInvalid(): ChainedValidator;
+    public function nullOrAlwaysInvalid(): ChainedValidator;
 
-    public function nullOfAlwaysValid(): ChainedValidator;
+    public function nullOrAlwaysValid(): ChainedValidator;
 
-    public function nullOfAnyOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function nullOrAnyOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
 
-    public function nullOfArrayType(): ChainedValidator;
+    public function nullOrArrayType(): ChainedValidator;
 
-    public function nullOfArrayVal(): ChainedValidator;
+    public function nullOrArrayVal(): ChainedValidator;
 
-    public function nullOfBase(
+    public function nullOrBase(
         int $base,
         string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
     ): ChainedValidator;
 
-    public function nullOfBase64(): ChainedValidator;
+    public function nullOrBase64(): ChainedValidator;
 
-    public function nullOfBetween(mixed $minValue, mixed $maxValue): ChainedValidator;
+    public function nullOrBetween(mixed $minValue, mixed $maxValue): ChainedValidator;
 
-    public function nullOfBetweenExclusive(mixed $minimum, mixed $maximum): ChainedValidator;
+    public function nullOrBetweenExclusive(mixed $minimum, mixed $maximum): ChainedValidator;
 
-    public function nullOfBoolType(): ChainedValidator;
+    public function nullOrBoolType(): ChainedValidator;
 
-    public function nullOfBoolVal(): ChainedValidator;
+    public function nullOrBoolVal(): ChainedValidator;
 
-    public function nullOfBsn(): ChainedValidator;
+    public function nullOrBsn(): ChainedValidator;
 
-    public function nullOfCall(callable $callable, Validatable $rule): ChainedValidator;
+    public function nullOrCall(callable $callable, Validatable $rule): ChainedValidator;
 
-    public function nullOfCallableType(): ChainedValidator;
+    public function nullOrCallableType(): ChainedValidator;
 
-    public function nullOfCallback(callable $callback, mixed ...$arguments): ChainedValidator;
+    public function nullOrCallback(callable $callback, mixed ...$arguments): ChainedValidator;
 
-    public function nullOfCharset(string $charset, string ...$charsets): ChainedValidator;
+    public function nullOrCharset(string $charset, string ...$charsets): ChainedValidator;
 
-    public function nullOfCnh(): ChainedValidator;
+    public function nullOrCnh(): ChainedValidator;
 
-    public function nullOfCnpj(): ChainedValidator;
+    public function nullOrCnpj(): ChainedValidator;
 
-    public function nullOfConsecutive(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function nullOrConsecutive(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
 
-    public function nullOfConsonant(string ...$additionalChars): ChainedValidator;
+    public function nullOrConsonant(string ...$additionalChars): ChainedValidator;
 
-    public function nullOfContains(mixed $containsValue, bool $identical = false): ChainedValidator;
+    public function nullOrContains(mixed $containsValue, bool $identical = false): ChainedValidator;
 
     /**
      * @param non-empty-array<mixed> $needles
      */
-    public function nullOfContainsAny(array $needles, bool $identical = false): ChainedValidator;
+    public function nullOrContainsAny(array $needles, bool $identical = false): ChainedValidator;
 
-    public function nullOfControl(string ...$additionalChars): ChainedValidator;
+    public function nullOrControl(string ...$additionalChars): ChainedValidator;
 
-    public function nullOfCountable(): ChainedValidator;
+    public function nullOrCountable(): ChainedValidator;
 
     /**
      * @param "alpha-2"|"alpha-3"|"numeric" $set
      */
-    public function nullOfCountryCode(string $set = 'alpha-2'): ChainedValidator;
+    public function nullOrCountryCode(string $set = 'alpha-2'): ChainedValidator;
 
-    public function nullOfCpf(): ChainedValidator;
+    public function nullOrCpf(): ChainedValidator;
 
-    public function nullOfCreditCard(string $brand = 'Any'): ChainedValidator;
+    public function nullOrCreditCard(string $brand = 'Any'): ChainedValidator;
 
     /**
      * @param "alpha-3"|"numeric" $set
      */
-    public function nullOfCurrencyCode(string $set = 'alpha-3'): ChainedValidator;
+    public function nullOrCurrencyCode(string $set = 'alpha-3'): ChainedValidator;
 
-    public function nullOfDate(string $format = 'Y-m-d'): ChainedValidator;
+    public function nullOrDate(string $format = 'Y-m-d'): ChainedValidator;
 
-    public function nullOfDateTime(?string $format = null): ChainedValidator;
+    public function nullOrDateTime(?string $format = null): ChainedValidator;
 
-    public function nullOfDecimal(int $decimals): ChainedValidator;
+    public function nullOrDecimal(int $decimals): ChainedValidator;
 
-    public function nullOfDigit(string ...$additionalChars): ChainedValidator;
+    public function nullOrDigit(string ...$additionalChars): ChainedValidator;
 
-    public function nullOfDirectory(): ChainedValidator;
+    public function nullOrDirectory(): ChainedValidator;
 
-    public function nullOfDomain(bool $tldCheck = true): ChainedValidator;
+    public function nullOrDomain(bool $tldCheck = true): ChainedValidator;
 
-    public function nullOfEach(Validatable $rule): ChainedValidator;
+    public function nullOrEach(Validatable $rule): ChainedValidator;
 
-    public function nullOfEmail(): ChainedValidator;
+    public function nullOrEmail(): ChainedValidator;
 
-    public function nullOfEndsWith(mixed $endValue, bool $identical = false): ChainedValidator;
+    public function nullOrEndsWith(mixed $endValue, bool $identical = false): ChainedValidator;
 
-    public function nullOfEquals(mixed $compareTo): ChainedValidator;
+    public function nullOrEquals(mixed $compareTo): ChainedValidator;
 
-    public function nullOfEquivalent(mixed $compareTo): ChainedValidator;
+    public function nullOrEquivalent(mixed $compareTo): ChainedValidator;
 
-    public function nullOfEven(): ChainedValidator;
+    public function nullOrEven(): ChainedValidator;
 
-    public function nullOfExecutable(): ChainedValidator;
+    public function nullOrExecutable(): ChainedValidator;
 
-    public function nullOfExists(): ChainedValidator;
+    public function nullOrExists(): ChainedValidator;
 
-    public function nullOfExtension(string $extension): ChainedValidator;
+    public function nullOrExtension(string $extension): ChainedValidator;
 
-    public function nullOfFactor(int $dividend): ChainedValidator;
+    public function nullOrFactor(int $dividend): ChainedValidator;
 
-    public function nullOfFalseVal(): ChainedValidator;
+    public function nullOrFalseVal(): ChainedValidator;
 
-    public function nullOfFibonacci(): ChainedValidator;
+    public function nullOrFibonacci(): ChainedValidator;
 
-    public function nullOfFile(): ChainedValidator;
+    public function nullOrFile(): ChainedValidator;
 
-    public function nullOfFilterVar(int $filter, mixed $options = null): ChainedValidator;
+    public function nullOrFilterVar(int $filter, mixed $options = null): ChainedValidator;
 
-    public function nullOfFinite(): ChainedValidator;
+    public function nullOrFinite(): ChainedValidator;
 
-    public function nullOfFloatType(): ChainedValidator;
+    public function nullOrFloatType(): ChainedValidator;
 
-    public function nullOfFloatVal(): ChainedValidator;
+    public function nullOrFloatVal(): ChainedValidator;
 
-    public function nullOfGraph(string ...$additionalChars): ChainedValidator;
+    public function nullOrGraph(string ...$additionalChars): ChainedValidator;
 
-    public function nullOfGreaterThan(mixed $compareTo): ChainedValidator;
+    public function nullOrGreaterThan(mixed $compareTo): ChainedValidator;
 
-    public function nullOfGreaterThanOrEqual(mixed $compareTo): ChainedValidator;
+    public function nullOrGreaterThanOrEqual(mixed $compareTo): ChainedValidator;
 
-    public function nullOfHetu(): ChainedValidator;
+    public function nullOrHetu(): ChainedValidator;
 
-    public function nullOfHexRgbColor(): ChainedValidator;
+    public function nullOrHexRgbColor(): ChainedValidator;
 
-    public function nullOfIban(): ChainedValidator;
+    public function nullOrIban(): ChainedValidator;
 
-    public function nullOfIdentical(mixed $compareTo): ChainedValidator;
+    public function nullOrIdentical(mixed $compareTo): ChainedValidator;
 
-    public function nullOfImage(): ChainedValidator;
+    public function nullOrImage(): ChainedValidator;
 
-    public function nullOfImei(): ChainedValidator;
+    public function nullOrImei(): ChainedValidator;
 
-    public function nullOfIn(mixed $haystack, bool $compareIdentical = false): ChainedValidator;
+    public function nullOrIn(mixed $haystack, bool $compareIdentical = false): ChainedValidator;
 
-    public function nullOfInfinite(): ChainedValidator;
+    public function nullOrInfinite(): ChainedValidator;
 
     /**
      * @param class-string $class
      */
-    public function nullOfInstance(string $class): ChainedValidator;
+    public function nullOrInstance(string $class): ChainedValidator;
 
-    public function nullOfIntType(): ChainedValidator;
+    public function nullOrIntType(): ChainedValidator;
 
-    public function nullOfIntVal(): ChainedValidator;
+    public function nullOrIntVal(): ChainedValidator;
 
-    public function nullOfIp(string $range = '*', ?int $options = null): ChainedValidator;
+    public function nullOrIp(string $range = '*', ?int $options = null): ChainedValidator;
 
-    public function nullOfIsbn(): ChainedValidator;
+    public function nullOrIsbn(): ChainedValidator;
 
-    public function nullOfIterableType(): ChainedValidator;
+    public function nullOrIterableType(): ChainedValidator;
 
-    public function nullOfIterableVal(): ChainedValidator;
+    public function nullOrIterableVal(): ChainedValidator;
 
-    public function nullOfJson(): ChainedValidator;
+    public function nullOrJson(): ChainedValidator;
 
-    public function nullOfKey(string|int $key, Validatable $rule): ChainedValidator;
+    public function nullOrKey(string|int $key, Validatable $rule): ChainedValidator;
 
-    public function nullOfKeyExists(string|int $key): ChainedValidator;
+    public function nullOrKeyExists(string|int $key): ChainedValidator;
 
-    public function nullOfKeyOptional(string|int $key, Validatable $rule): ChainedValidator;
+    public function nullOrKeyOptional(string|int $key, Validatable $rule): ChainedValidator;
 
-    public function nullOfKeySet(Validatable $rule, Validatable ...$rules): ChainedValidator;
+    public function nullOrKeySet(Validatable $rule, Validatable ...$rules): ChainedValidator;
 
     /**
      * @param "alpha-2"|"alpha-3" $set
      */
-    public function nullOfLanguageCode(string $set = 'alpha-2'): ChainedValidator;
+    public function nullOrLanguageCode(string $set = 'alpha-2'): ChainedValidator;
 
     /**
      * @param callable(mixed): Validatable $ruleCreator
      */
-    public function nullOfLazy(callable $ruleCreator): ChainedValidator;
+    public function nullOrLazy(callable $ruleCreator): ChainedValidator;
 
-    public function nullOfLeapDate(string $format): ChainedValidator;
+    public function nullOrLeapDate(string $format): ChainedValidator;
 
-    public function nullOfLeapYear(): ChainedValidator;
+    public function nullOrLeapYear(): ChainedValidator;
 
-    public function nullOfLength(Validatable $rule): ChainedValidator;
+    public function nullOrLength(Validatable $rule): ChainedValidator;
 
-    public function nullOfLessThan(mixed $compareTo): ChainedValidator;
+    public function nullOrLessThan(mixed $compareTo): ChainedValidator;
 
-    public function nullOfLessThanOrEqual(mixed $compareTo): ChainedValidator;
+    public function nullOrLessThanOrEqual(mixed $compareTo): ChainedValidator;
 
-    public function nullOfLowercase(): ChainedValidator;
+    public function nullOrLowercase(): ChainedValidator;
 
-    public function nullOfLuhn(): ChainedValidator;
+    public function nullOrLuhn(): ChainedValidator;
 
-    public function nullOfMacAddress(): ChainedValidator;
+    public function nullOrMacAddress(): ChainedValidator;
 
-    public function nullOfMax(Validatable $rule): ChainedValidator;
+    public function nullOrMax(Validatable $rule): ChainedValidator;
 
-    public function nullOfMaxAge(int $age, ?string $format = null): ChainedValidator;
+    public function nullOrMaxAge(int $age, ?string $format = null): ChainedValidator;
 
-    public function nullOfMimetype(string $mimetype): ChainedValidator;
+    public function nullOrMimetype(string $mimetype): ChainedValidator;
 
-    public function nullOfMin(Validatable $rule): ChainedValidator;
+    public function nullOrMin(Validatable $rule): ChainedValidator;
 
-    public function nullOfMinAge(int $age, ?string $format = null): ChainedValidator;
+    public function nullOrMinAge(int $age, ?string $format = null): ChainedValidator;
 
-    public function nullOfMultiple(int $multipleOf): ChainedValidator;
+    public function nullOrMultiple(int $multipleOf): ChainedValidator;
 
-    public function nullOfNegative(): ChainedValidator;
+    public function nullOrNegative(): ChainedValidator;
 
-    public function nullOfNfeAccessKey(): ChainedValidator;
+    public function nullOrNfeAccessKey(): ChainedValidator;
 
-    public function nullOfNif(): ChainedValidator;
+    public function nullOrNif(): ChainedValidator;
 
-    public function nullOfNip(): ChainedValidator;
+    public function nullOrNip(): ChainedValidator;
 
-    public function nullOfNo(bool $useLocale = false): ChainedValidator;
+    public function nullOrNo(bool $useLocale = false): ChainedValidator;
 
-    public function nullOfNoWhitespace(): ChainedValidator;
+    public function nullOrNoWhitespace(): ChainedValidator;
 
-    public function nullOfNoneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function nullOrNoneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
 
-    public function nullOfNot(Validatable $rule): ChainedValidator;
+    public function nullOrNot(Validatable $rule): ChainedValidator;
 
-    public function nullOfNotBlank(): ChainedValidator;
+    public function nullOrNotBlank(): ChainedValidator;
 
-    public function nullOfNotEmoji(): ChainedValidator;
+    public function nullOrNotEmoji(): ChainedValidator;
 
-    public function nullOfNotEmpty(): ChainedValidator;
+    public function nullOrNotEmpty(): ChainedValidator;
 
-    public function nullOfNotOptional(): ChainedValidator;
+    public function nullOrNotOptional(): ChainedValidator;
 
-    public function nullOfNullType(): ChainedValidator;
+    public function nullOrNullType(): ChainedValidator;
 
-    public function nullOfNumber(): ChainedValidator;
+    public function nullOrNumber(): ChainedValidator;
 
-    public function nullOfNumericVal(): ChainedValidator;
+    public function nullOrNumericVal(): ChainedValidator;
 
-    public function nullOfObjectType(): ChainedValidator;
+    public function nullOrObjectType(): ChainedValidator;
 
-    public function nullOfOdd(): ChainedValidator;
+    public function nullOrOdd(): ChainedValidator;
 
-    public function nullOfOneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function nullOrOneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
 
-    public function nullOfPerfectSquare(): ChainedValidator;
+    public function nullOrPerfectSquare(): ChainedValidator;
 
-    public function nullOfPesel(): ChainedValidator;
+    public function nullOrPesel(): ChainedValidator;
 
-    public function nullOfPhone(?string $countryCode = null): ChainedValidator;
+    public function nullOrPhone(?string $countryCode = null): ChainedValidator;
 
-    public function nullOfPhpLabel(): ChainedValidator;
+    public function nullOrPhpLabel(): ChainedValidator;
 
-    public function nullOfPis(): ChainedValidator;
+    public function nullOrPis(): ChainedValidator;
 
-    public function nullOfPolishIdCard(): ChainedValidator;
+    public function nullOrPolishIdCard(): ChainedValidator;
 
-    public function nullOfPortugueseNif(): ChainedValidator;
+    public function nullOrPortugueseNif(): ChainedValidator;
 
-    public function nullOfPositive(): ChainedValidator;
+    public function nullOrPositive(): ChainedValidator;
 
-    public function nullOfPostalCode(string $countryCode, bool $formatted = false): ChainedValidator;
+    public function nullOrPostalCode(string $countryCode, bool $formatted = false): ChainedValidator;
 
-    public function nullOfPrimeNumber(): ChainedValidator;
+    public function nullOrPrimeNumber(): ChainedValidator;
 
-    public function nullOfPrintable(string ...$additionalChars): ChainedValidator;
+    public function nullOrPrintable(string ...$additionalChars): ChainedValidator;
 
-    public function nullOfProperty(string $propertyName, Validatable $rule): ChainedValidator;
+    public function nullOrProperty(string $propertyName, Validatable $rule): ChainedValidator;
 
-    public function nullOfPropertyExists(string $propertyName): ChainedValidator;
+    public function nullOrPropertyExists(string $propertyName): ChainedValidator;
 
-    public function nullOfPropertyOptional(string $propertyName, Validatable $rule): ChainedValidator;
+    public function nullOrPropertyOptional(string $propertyName, Validatable $rule): ChainedValidator;
 
-    public function nullOfPublicDomainSuffix(): ChainedValidator;
+    public function nullOrPublicDomainSuffix(): ChainedValidator;
 
-    public function nullOfPunct(string ...$additionalChars): ChainedValidator;
+    public function nullOrPunct(string ...$additionalChars): ChainedValidator;
 
-    public function nullOfReadable(): ChainedValidator;
+    public function nullOrReadable(): ChainedValidator;
 
-    public function nullOfRegex(string $regex): ChainedValidator;
+    public function nullOrRegex(string $regex): ChainedValidator;
 
-    public function nullOfResourceType(): ChainedValidator;
+    public function nullOrResourceType(): ChainedValidator;
 
-    public function nullOfRoman(): ChainedValidator;
+    public function nullOrRoman(): ChainedValidator;
 
-    public function nullOfScalarVal(): ChainedValidator;
+    public function nullOrScalarVal(): ChainedValidator;
 
-    public function nullOfSize(string|int|null $minSize = null, string|int|null $maxSize = null): ChainedValidator;
+    public function nullOrSize(string|int|null $minSize = null, string|int|null $maxSize = null): ChainedValidator;
 
-    public function nullOfSlug(): ChainedValidator;
+    public function nullOrSlug(): ChainedValidator;
 
-    public function nullOfSorted(string $direction): ChainedValidator;
+    public function nullOrSorted(string $direction): ChainedValidator;
 
-    public function nullOfSpace(string ...$additionalChars): ChainedValidator;
+    public function nullOrSpace(string ...$additionalChars): ChainedValidator;
 
-    public function nullOfStartsWith(mixed $startValue, bool $identical = false): ChainedValidator;
+    public function nullOrStartsWith(mixed $startValue, bool $identical = false): ChainedValidator;
 
-    public function nullOfStringType(): ChainedValidator;
+    public function nullOrStringType(): ChainedValidator;
 
-    public function nullOfStringVal(): ChainedValidator;
+    public function nullOrStringVal(): ChainedValidator;
 
-    public function nullOfSubdivisionCode(string $countryCode): ChainedValidator;
+    public function nullOrSubdivisionCode(string $countryCode): ChainedValidator;
 
     /**
      * @param mixed[] $superset
      */
-    public function nullOfSubset(array $superset): ChainedValidator;
+    public function nullOrSubset(array $superset): ChainedValidator;
 
-    public function nullOfSymbolicLink(): ChainedValidator;
+    public function nullOrSymbolicLink(): ChainedValidator;
 
-    public function nullOfTime(string $format = 'H:i:s'): ChainedValidator;
+    public function nullOrTime(string $format = 'H:i:s'): ChainedValidator;
 
-    public function nullOfTld(): ChainedValidator;
+    public function nullOrTld(): ChainedValidator;
 
-    public function nullOfTrueVal(): ChainedValidator;
+    public function nullOrTrueVal(): ChainedValidator;
 
-    public function nullOfUnique(): ChainedValidator;
+    public function nullOrUnique(): ChainedValidator;
 
-    public function nullOfUploaded(): ChainedValidator;
+    public function nullOrUploaded(): ChainedValidator;
 
-    public function nullOfUppercase(): ChainedValidator;
+    public function nullOrUppercase(): ChainedValidator;
 
-    public function nullOfUrl(): ChainedValidator;
+    public function nullOrUrl(): ChainedValidator;
 
-    public function nullOfUuid(?int $version = null): ChainedValidator;
+    public function nullOrUuid(?int $version = null): ChainedValidator;
 
-    public function nullOfVersion(): ChainedValidator;
+    public function nullOrVersion(): ChainedValidator;
 
-    public function nullOfVideoUrl(?string $service = null): ChainedValidator;
+    public function nullOrVideoUrl(?string $service = null): ChainedValidator;
 
-    public function nullOfVowel(string ...$additionalChars): ChainedValidator;
+    public function nullOrVowel(string ...$additionalChars): ChainedValidator;
 
-    public function nullOfWhen(Validatable $when, Validatable $then, ?Validatable $else = null): ChainedValidator;
+    public function nullOrWhen(Validatable $when, Validatable $then, ?Validatable $else = null): ChainedValidator;
 
-    public function nullOfWritable(): ChainedValidator;
+    public function nullOrWritable(): ChainedValidator;
 
-    public function nullOfXdigit(string ...$additionalChars): ChainedValidator;
+    public function nullOrXdigit(string ...$additionalChars): ChainedValidator;
 
-    public function nullOfYes(bool $useLocale = false): ChainedValidator;
+    public function nullOrYes(bool $useLocale = false): ChainedValidator;
 }

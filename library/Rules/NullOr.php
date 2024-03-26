@@ -14,23 +14,23 @@ use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\Wrapper;
 
 #[Template(
-    'The value must be nullable',
+    'The value must be null',
     'The value must not be null',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must be nullable',
+    '{{name}} must be null',
     '{{name}} must not be null',
     self::TEMPLATE_NAMED,
 )]
-final class Nullable extends Wrapper
+final class NullOr extends Wrapper
 {
     public const TEMPLATE_NAMED = '__named__';
 
     public function evaluate(mixed $input): Result
     {
         if ($input !== null) {
-            return parent::evaluate($input);
+            return $this->rule->evaluate($input)->withPrefixedId('nullOr');
         }
 
         if ($this->getName()) {

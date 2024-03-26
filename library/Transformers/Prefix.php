@@ -31,6 +31,7 @@ final class Prefix implements Transformer
         'notEmoji',
         'notEmpty',
         'notOptional',
+        'nullOr',
         'property',
         'propertyExists',
         'propertyOptional',
@@ -68,7 +69,7 @@ final class Prefix implements Transformer
         }
 
         if (str_starts_with($ruleSpec->name, 'nullOr')) {
-            return new RuleSpec(substr($ruleSpec->name, 6), $ruleSpec->arguments, new RuleSpec('nullable'));
+            return new RuleSpec(substr($ruleSpec->name, 6), $ruleSpec->arguments, new RuleSpec('nullOr'));
         }
 
         if (str_starts_with($ruleSpec->name, 'property')) {
