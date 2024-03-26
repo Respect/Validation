@@ -26,25 +26,27 @@ exceptionMessages(
                     ->key('password', v::stringType())
                     ->key('schema', v::stringType())
             )
-            ->setTemplates([
-                'mysql' => [
-                    'user' => 'Value should be a MySQL username',
-                    'host' => '`{{name}}` should be a MySQL host',
+            ->assert(
+                [
+                    'mysql' => [
+                        'host' => 42,
+                        'schema' => 42,
+                    ],
+                    'postgresql' => [
+                        'user' => 42,
+                        'password' => 42,
+                    ],
                 ],
-                'postgresql' => [
-                    'schema' => 'You must provide a valid PostgreSQL schema',
-                ],
-            ])
-            ->assert([
-                'mysql' => [
-                    'host' => 42,
-                    'schema' => 42,
-                ],
-                'postgresql' => [
-                    'user' => 42,
-                    'password' => 42,
-                ],
-            ]);
+                [
+                    'mysql' => [
+                        'user' => 'Value should be a MySQL username',
+                        'host' => '`{{name}}` should be a MySQL host',
+                    ],
+                    'postgresql' => [
+                        'schema' => 'You must provide a valid PostgreSQL schema',
+                    ],
+                ]
+            );
     }
 );
 ?>

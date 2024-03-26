@@ -199,15 +199,13 @@ method as well by passing the templates as an argument:
 
 ```php
 try {
-    $usernameValidator->assert('really messed up screen#name');
+    $usernameValidator->assert('really messed up screen#name', [
+        'alnum' => '{{name}} must contain only letters and digits',
+        'noWhitespace' => '{{name}} cannot contain spaces',
+        'length' => '{{name}} must not have more than 15 chars',
+    ]);
 } catch(NestedValidationException $exception) {
-    print_r(
-        $exception->getMessages([
-            'alnum' => '{{name}} must contain only letters and digits',
-            'noWhitespace' => '{{name}} cannot contain spaces',
-            'length' => '{{name}} must not have more than 15 chars',
-        ])
-    );
+    print_r($exception->getMessages());
 }
 ```
 

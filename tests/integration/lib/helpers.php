@@ -51,19 +51,11 @@ function run(array $scenarios): void
         echo $description . PHP_EOL;
         echo str_repeat('⎺', strlen($description)) . PHP_EOL;
 
-        if (is_string($template)) {
-            $rule->setTemplate($template);
-        }
-
-        if (is_array($template)) {
-            $rule->setTemplates($template);
-        }
-
         $fallbackMessage = 'No exception was thrown with: ' . stringify($input);
 
-        exceptionMessage(static fn() => $rule->check($input), $fallbackMessage);
-        exceptionFullMessage(static fn() => $rule->assert($input), $fallbackMessage);
-        exceptionMessages(static fn() => $rule->assert($input), $fallbackMessage);
+        exceptionMessage(static fn() => $rule->assert($input, $template), $fallbackMessage);
+        exceptionFullMessage(static fn() => $rule->assert($input, $template), $fallbackMessage);
+        exceptionMessages(static fn() => $rule->assert($input, $template), $fallbackMessage);
         echo PHP_EOL;
     }
 }

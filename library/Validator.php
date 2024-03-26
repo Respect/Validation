@@ -16,15 +16,17 @@ use Respect\Validation\Message\StandardFormatter;
 use Respect\Validation\Message\StandardRenderer;
 use Respect\Validation\Mixins\StaticValidator;
 use Respect\Validation\Rules\AllOf;
-use Respect\Validation\Rules\Core\Standard;
+use Throwable;
 
 use function count;
 use function current;
+use function is_array;
+use function is_string;
 
 /**
  * @mixin StaticValidator
  */
-final class Validator extends Standard
+final class Validator implements Validatable
 {
     use CanBindEvaluateRule;
 
@@ -33,6 +35,10 @@ final class Validator extends Standard
 
     /** @var array<string, mixed> */
     private array $templates = [];
+
+    private ?string $name = null;
+
+    private ?string $template = null;
 
     public function __construct(
         private readonly Factory $factory,
@@ -66,15 +72,24 @@ final class Validator extends Standard
         return $this->evaluate($input)->isValid;
     }
 
-    public function assert(mixed $input): void
+    /** @param array<string, mixed>|string|Throwable|null $template */
+    public function assert(mixed $input, array|string|Throwable|null $template = null): void
     {
         $result = $this->evaluate($input);
         if ($result->isValid) {
             return;
         }
 
+        if ($template instanceof Throwable) {
+            throw $template;
+        }
+
         $templates = $this->templates;
-        if (count($templates) === 0 && $this->getTemplate() != null) {
+        if (is_array($template)) {
+            $templates = $template;
+        } elseif (is_string($template)) {
+            $templates = ['__root__' => $template];
+        } elseif ($this->getTemplate() != null) {
             $templates = ['__root__' => $this->getTemplate()];
         }
 
@@ -113,6 +128,30 @@ final class Validator extends Standard
     public function check(mixed $input): void
     {
         $this->assert($input);
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): static
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getTemplate(): ?string
+    {
+        return $this->template;
+    }
+
+    public function setTemplate(string $template): static
+    {
+        $this->template = $template;
+
+        return $this;
     }
 
     private function rule(): Validatable
