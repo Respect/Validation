@@ -24,6 +24,7 @@ final class PublicDomainSuffixTest extends RuleTestCase
         $rule = new PublicDomainSuffix();
 
         return [
+            [$rule, ''],
             [$rule, 'co.uk'],
             [$rule, 'nom.br'],
             [$rule, 'WWW.CK'],

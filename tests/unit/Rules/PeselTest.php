@@ -12,6 +12,7 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 #[Group('rule')]
 #[CoversClass(Pesel::class)]
@@ -40,6 +41,9 @@ final class PeselTest extends RuleTestCase
         $rule = new Pesel();
 
         return [
+            [$rule, null],
+            [$rule, []],
+            [$rule, new stdClass()],
             [$rule, '1'],
             [$rule, '22'],
             [$rule, 'PESEL'],

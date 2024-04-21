@@ -35,6 +35,7 @@ final class SubsetTest extends RuleTestCase
     public static function providerForInvalidInput(): iterable
     {
         return [
+            [new Subset([]), '1'],
             [new Subset([]), [1]],
             [new Subset([1]), [2]],
             [new Subset([1, 2]), [1, 2, 3]],

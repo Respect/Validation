@@ -55,6 +55,11 @@ final class Base64Test extends RuleTestCase
         $rule = new Base64();
 
         return [
+            [$rule, []],
+            [$rule, 1.2],
+            [$rule, false],
+            [$rule, 123],
+            [$rule, null],
             [$rule, ''],
             [$rule, 'hello!'],
             [$rule, '=c3VyZS4'],

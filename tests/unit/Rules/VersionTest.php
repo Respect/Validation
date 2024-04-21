@@ -41,6 +41,8 @@ final class VersionTest extends RuleTestCase
         $sut = new Version();
 
         return [
+            'int' => [$sut, 1],
+            'float' => [$sut, 1.2],
             'empty' => [$sut, ''],
             '1.3.7--' => [$sut, '1.3.7--'],
             '1.3.7++' => [$sut, '1.3.7++'],
