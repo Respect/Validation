@@ -12,6 +12,7 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 #[Group('rule')]
 #[CoversClass(Bsn::class)]
@@ -42,6 +43,9 @@ final class BsnTest extends RuleTestCase
         $rule = new Bsn();
 
         return [
+            [$rule, []],
+            [$rule, new stdClass()],
+            [$rule, null],
             [$rule, '1234567890'],
             [$rule, '0987654321'],
             [$rule, '13579024'],

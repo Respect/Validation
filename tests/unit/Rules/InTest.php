@@ -38,6 +38,7 @@ final class InTest extends RuleTestCase
     public static function providerForInvalidInput(): iterable
     {
         return [
+            [new In('0', true), 'abc'],
             [new In('0'), null],
             [new In(0, true), null],
             [new In('', true), null],

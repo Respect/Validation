@@ -11,12 +11,23 @@ namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\RuleTestCase;
 
 #[Group('rule')]
 #[CoversClass(VideoUrl::class)]
 final class VideoUrlTest extends RuleTestCase
 {
+    #[Test]
+    public function itShouldThrowsExceptionWhenVideoUrlIsNotValid(): void
+    {
+        $this->expectException(InvalidRuleConstructorException::class);
+        $this->expectExceptionMessage('"tiktok" is not a recognized video service.');
+
+        (new VideoUrl('tiktok'))->evaluate('https://tiktok.com/video/71787467');
+    }
+
     /** @return iterable<array{VideoUrl, mixed}> */
     public static function providerForValidInput(): iterable
     {
@@ -40,6 +51,7 @@ final class VideoUrlTest extends RuleTestCase
     public static function providerForInvalidInput(): iterable
     {
         return [
+            'vimeo service with invalid URL' => [new VideoUrl('vimeo'), 1],
             'vimeo service with youtube url' => [new VideoUrl('vimeo'), 'https://www.youtube.com/watch?v=netHLn9TScY'],
             'youtube service with vimeo url' => [new VideoUrl('youtube'), 'https://vimeo.com/71787467'],
             'no service with example.com url' => [new VideoUrl(), 'example.com'],

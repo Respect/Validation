@@ -13,7 +13,9 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\TestCase;
+use stdClass;
 
 #[Group('rule')]
 #[CoversClass(Phone::class)]
@@ -47,6 +49,15 @@ final class PhoneTest extends TestCase
         self::assertInvalidInput(new Phone($countryCode), $input);
     }
 
+    #[Test]
+    public function itShouldThrowsExceptionWhenCountryCodeIsNotValid(): void
+    {
+        $this->expectException(InvalidRuleConstructorException::class);
+        $this->expectExceptionMessage('Invalid country code BRR');
+
+        (new Phone('BRR'))->evaluate('+1 11 91111 1111');
+    }
+
     /** @return array<array{mixed}> */
     public static function providerForValidInputWithoutCountryCode(): array
     {
@@ -67,6 +78,8 @@ final class PhoneTest extends TestCase
     public static function providerForInvalidInputWithoutCountryCode(): array
     {
         return [
+            [null],
+            [new stdClass()],
             ['+1-650-253-00-0'],
             ['33(020) 7777 7777'],
             ['33(020)7777 7777'],

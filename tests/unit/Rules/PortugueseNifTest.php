@@ -55,6 +55,9 @@ final class PortugueseNifTest extends RuleTestCase
 
         return [
             // Check digit is wrong
+            [$rule, '429468882'],
+            [$rule, '739468882'],
+            [$rule, '939468882'],
             [$rule, '129468882'],
             [$rule, '220005245'],
             [$rule, '389684008'],

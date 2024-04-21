@@ -14,6 +14,7 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use SplFileObject;
+use stdClass;
 
 #[Group('rule')]
 #[CoversClass(Executable::class)]
@@ -37,6 +38,9 @@ final class ExecutableTest extends RuleTestCase
         $rule = new Executable();
 
         return [
+            [$rule, []],
+            [$rule, new stdClass()],
+            [$rule, null],
             [$rule, 'tests/fixtures/valid-image.gif'],
             [$rule, new SplFileInfo('tests/fixtures/valid-image.jpg')],
             [$rule, new SplFileObject('tests/fixtures/valid-image.png')],

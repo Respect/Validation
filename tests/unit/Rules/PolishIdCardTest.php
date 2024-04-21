@@ -12,6 +12,7 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 #[Group('rule')]
 #[CoversClass(PolishIdCard::class)]
@@ -35,6 +36,10 @@ final class PolishIdCardTest extends RuleTestCase
         $rule = new PolishIdCard();
 
         return [
+            [$rule, null],
+            [$rule, new stdClass()],
+            [$rule, []],
+            [$rule, '999205411'],
             [$rule, 'AAAAAAAAA'],
             [$rule, 'APH 505567'],
             [$rule, 'AYE205411'],

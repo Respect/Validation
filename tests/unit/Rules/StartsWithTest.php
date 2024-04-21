@@ -34,6 +34,8 @@ final class StartsWithTest extends RuleTestCase
     public static function providerForInvalidInput(): iterable
     {
         return [
+            [new StartsWith(123), 123],
+            [new StartsWith(123, true), 123],
             [new StartsWith('foo'), ''],
             [new StartsWith('bat'), ['foo', 'bar']],
             [new StartsWith('foo'), 'barfaabaz'],

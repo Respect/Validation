@@ -11,12 +11,23 @@ namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\RuleTestCase;
 
 #[Group('rule')]
 #[CoversClass(Base::class)]
 final class BaseTest extends RuleTestCase
 {
+    #[Test]
+    public function itShouldThrowsExceptionWhenBaseIsNotValid(): void
+    {
+        $this->expectException(InvalidRuleConstructorException::class);
+        $this->expectExceptionMessage('a base between 1 and 62 is required');
+
+        (new Base(63))->evaluate('011010001');
+    }
+
     /** @return iterable<array{Base, mixed}> */
     public static function providerForValidInput(): iterable
     {

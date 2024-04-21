@@ -12,6 +12,7 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 #[Group('rule')]
 #[CoversClass(Isbn::class)]
@@ -39,6 +40,9 @@ final class IsbnTest extends RuleTestCase
         $sut = new Isbn();
 
         return [
+            [$sut, []],
+            [$sut, null],
+            [$sut, new stdClass()],
             [$sut, 'ISBN 11978-0-596-52068-7'],
             [$sut, 'ISBN-12: 978-0-596-52068-7'],
             [$sut, '978 10 596 52068 7'],

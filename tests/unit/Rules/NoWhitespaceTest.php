@@ -12,6 +12,7 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 #[Group('rule')]
 #[CoversClass(NoWhitespace::class)]
@@ -37,6 +38,8 @@ final class NoWhitespaceTest extends RuleTestCase
         $rule = new NoWhitespace();
 
         return [
+            [$rule, []],
+            [$rule, new stdClass()],
             [$rule, ' '],
             [$rule, 'w poiur'],
             [$rule, '      '],
