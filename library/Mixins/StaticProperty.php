@@ -291,6 +291,8 @@ interface StaticProperty
 
     public static function propertyNotOptional(string $propertyName): ChainedValidator;
 
+    public static function propertyNotUndef(string $propertyName): ChainedValidator;
+
     public static function propertyNullType(string $propertyName): ChainedValidator;
 
     public static function propertyNumber(string $propertyName): ChainedValidator;

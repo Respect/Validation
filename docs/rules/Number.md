@@ -32,7 +32,7 @@ See also:
 - [IntType](IntType.md)
 - [NotBlank](NotBlank.md)
 - [NotEmpty](NotEmpty.md)
-- [NotOptional](NotOptional.md)
+- [NotUndef](NotUndef.md)
 - [NullType](NullType.md)
 - [NumericVal](NumericVal.md)
 - [ObjectType](ObjectType.md)

@@ -256,6 +256,8 @@ interface StaticValidator extends
 
     public static function notOptional(): ChainedValidator;
 
+    public static function notUndef(): ChainedValidator;
+
     public static function nullOr(Validatable $rule): ChainedValidator;
 
     public static function nullType(): ChainedValidator;

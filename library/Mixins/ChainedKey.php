@@ -255,6 +255,8 @@ interface ChainedKey
 
     public function keyNotOptional(int|string $key): ChainedValidator;
 
+    public function keyNotUndef(int|string $key): ChainedValidator;
+
     public function keyNullType(int|string $key): ChainedValidator;
 
     public function keyNumber(int|string $key): ChainedValidator;

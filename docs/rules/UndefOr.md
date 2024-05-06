@@ -40,6 +40,6 @@ See also:
 - [NoWhitespace](NoWhitespace.md)
 - [NotBlank](NotBlank.md)
 - [NotEmpty](NotEmpty.md)
-- [NotOptional](NotOptional.md)
+- [NotUndef](NotUndef.md)
 - [NullType](NullType.md)
 - [Nullable](Nullable.md)

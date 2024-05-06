@@ -19,6 +19,19 @@ use Respect\Validation\Test\Transformers\StubTransformer;
 final class AliasesTest extends TestCase
 {
     #[Test]
+    public function itShouldConvertNotOptionalIntoNotUndef(): void
+    {
+        $transformer = new Aliases(new StubTransformer());
+
+        $ruleSpec = new RuleSpec('notOptional', [Stub::daze()]);
+
+        $actual = $transformer->transform($ruleSpec);
+        $expected = new RuleSpec('notUndef', $ruleSpec->arguments);
+
+        self::assertEquals($expected, $actual);
+    }
+
+    #[Test]
     public function itShouldConvertOptionalIntoUndefOr(): void
     {
         $transformer = new Aliases(new StubTransformer());

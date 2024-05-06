@@ -44,7 +44,7 @@ final class UndefOrTest extends RuleTestCase
     }
 
     #[Test]
-    public function itShouldUseWrappedRuleToEvaluateWhenNotOptional(): void
+    public function itShouldUseWrappedRuleToEvaluateWhenNotUndef(): void
     {
         $input = new stdClass();
 

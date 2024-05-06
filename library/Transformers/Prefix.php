@@ -30,7 +30,7 @@ final class Prefix implements Transformer
         'notBlank',
         'notEmoji',
         'notEmpty',
-        'notOptional',
+        'notUndef',
         'nullOr',
         'property',
         'propertyExists',

@@ -242,8 +242,6 @@ interface ChainedNullOr
 
     public function nullOrNotEmpty(): ChainedValidator;
 
-    public function nullOrNotOptional(): ChainedValidator;
-
     public function nullOrNullType(): ChainedValidator;
 
     public function nullOrNumber(): ChainedValidator;

@@ -24,7 +24,7 @@ use Respect\Validation\Rules\Core\Standard;
     '{{name}} must be optional',
     self::TEMPLATE_NAMED,
 )]
-final class NotOptional extends Standard
+final class NotUndef extends Standard
 {
     use CanValidateUndefined;
 

@@ -258,8 +258,6 @@ interface StaticNullOr
 
     public static function nullOrNotEmpty(): ChainedValidator;
 
-    public static function nullOrNotOptional(): ChainedValidator;
-
     public static function nullOrNullType(): ChainedValidator;
 
     public static function nullOrNumber(): ChainedValidator;

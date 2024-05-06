@@ -157,7 +157,7 @@
 - [FilterVar](rules/FilterVar.md)
 - [NotBlank](rules/NotBlank.md)
 - [NotEmpty](rules/NotEmpty.md)
-- [NotOptional](rules/NotOptional.md)
+- [NotUndef](rules/NotUndef.md)
 
 ## Nesting
 
@@ -173,9 +173,9 @@
 - [Not](rules/Not.md)
 - [Nullable](rules/Nullable.md)
 - [OneOf](rules/OneOf.md)
-- [Optional](rules/Optional.md)
 - [Property](rules/Property.md)
 - [PropertyOptional](rules/PropertyOptional.md)
+- [UndefOr](rules/UndefOr.md)
 - [When](rules/When.md)
 
 ## Numbers
@@ -394,7 +394,7 @@
 - [NotBlank](rules/NotBlank.md)
 - [NotEmoji](rules/NotEmoji.md)
 - [NotEmpty](rules/NotEmpty.md)
-- [NotOptional](rules/NotOptional.md)
+- [NotUndef](rules/NotUndef.md)
 - [NullType](rules/NullType.md)
 - [Nullable](rules/Nullable.md)
 - [Number](rules/Number.md)
@@ -402,7 +402,6 @@
 - [ObjectType](rules/ObjectType.md)
 - [Odd](rules/Odd.md)
 - [OneOf](rules/OneOf.md)
-- [Optional](rules/Optional.md)
 - [PerfectSquare](rules/PerfectSquare.md)
 - [Pesel](rules/Pesel.md)
 - [Phone](rules/Phone.md)
@@ -438,6 +437,7 @@
 - [Tld](rules/Tld.md)
 - [TrueVal](rules/TrueVal.md)
 - [Type](rules/Type.md)
+- [UndefOr](rules/UndefOr.md)
 - [Unique](rules/Unique.md)
 - [Uploaded](rules/Uploaded.md)
 - [Uppercase](rules/Uppercase.md)

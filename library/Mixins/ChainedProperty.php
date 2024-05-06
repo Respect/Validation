@@ -267,6 +267,8 @@ interface ChainedProperty
 
     public function propertyNotOptional(string $propertyName): ChainedValidator;
 
+    public function propertyNotUndef(string $propertyName): ChainedValidator;
+
     public function propertyNullType(string $propertyName): ChainedValidator;
 
     public function propertyNumber(string $propertyName): ChainedValidator;

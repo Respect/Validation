@@ -246,8 +246,6 @@ interface ChainedUndefOr
 
     public function undefOrNotEmpty(): ChainedValidator;
 
-    public function undefOrNotOptional(): ChainedValidator;
-
     public function undefOrNullType(): ChainedValidator;
 
     public function undefOrNumber(): ChainedValidator;

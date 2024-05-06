@@ -102,7 +102,7 @@ v::optional(v::alpha())->validate(null); // true
 
 By _optional_ we consider `null` or an empty string (`''`).
 
-See more on [Optional](rules/Optional.md).
+See more on [Optional](rules/UndefOr.md).
 
 ## Negating rules
 

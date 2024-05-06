@@ -29,5 +29,5 @@ See also:
 - [CreditCard](CreditCard.md)
 - [NotBlank](NotBlank.md)
 - [NotEmpty](NotEmpty.md)
-- [NotOptional](NotOptional.md)
-- [Optional](Optional.md)
+- [NotUndef](NotUndef.md)
+- [UndefOr](UndefOr.md)

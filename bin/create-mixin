@@ -25,6 +25,7 @@ use Respect\Validation\Mixins\StaticNot;
 use Respect\Validation\Mixins\StaticNullOr;
 use Respect\Validation\Mixins\StaticProperty;
 use Respect\Validation\Mixins\StaticUndefOr;
+use Respect\Validation\Rules\NotUndef;
 use Respect\Validation\Rules\NullOr;
 use Respect\Validation\Rules\UndefOr;
 use Respect\Validation\Validatable;
@@ -175,10 +176,10 @@ function overwriteFile(string $content, string $basename): void
         ['Length', 'length', $numberRelatedRules, []],
         ['Max', 'max', $numberRelatedRules, []],
         ['Min', 'min', $numberRelatedRules, []],
-        ['Not', 'not', [], ['Not', 'NotEmpty', 'NotBlank', 'NotEmoji', 'NotOptional', 'NullOr', 'UndefOr', 'Optional']],
-        ['NullOr', 'nullOr', [], ['Nullable', 'NullOr', 'Optional', 'UndefOr']],
+        ['Not', 'not', [], ['Not', 'NotEmpty', 'NotBlank', 'NotEmoji', 'NotUndef', 'NotOptional', 'NullOr', 'UndefOr', 'Optional']],
+        ['NullOr', 'nullOr', [], ['Nullable', 'NullOr', 'Optional', 'NotOptional', 'NotUndef', 'UndefOr']],
         ['Property', 'property', [], $structureRelatedRules],
-        ['UndefOr', 'undefOr', [], ['Nullable', 'NullOr', 'Optional', 'UndefOr']],
+        ['UndefOr', 'undefOr', [], ['Nullable', 'NullOr', 'NotOptional', 'NotUndef', 'Optional', 'UndefOr']],
         ['Validator', null, [], []],
     ];
 
@@ -199,6 +200,9 @@ function overwriteFile(string $content, string $basename): void
         }
         if ($className === NullOr::class) {
             $names['Nullable'] = $reflection;
+        }
+        if ($className === NotUndef::class) {
+            $names['NotOptional'] = $reflection;
         }
     }
     ksort($names);

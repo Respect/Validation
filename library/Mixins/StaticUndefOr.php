@@ -258,8 +258,6 @@ interface StaticUndefOr
 
     public static function undefOrNotEmpty(): ChainedValidator;
 
-    public static function undefOrNotOptional(): ChainedValidator;
-
     public static function undefOrNullType(): ChainedValidator;
 
     public static function undefOrNumber(): ChainedValidator;

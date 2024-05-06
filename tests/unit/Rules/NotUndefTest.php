@@ -15,13 +15,13 @@ use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 #[Group('rule')]
-#[CoversClass(NotOptional::class)]
-final class NotOptionalTest extends RuleTestCase
+#[CoversClass(NotUndef::class)]
+final class NotUndefTest extends RuleTestCase
 {
-    /** @return iterable<array{NotOptional, mixed}> */
+    /** @return iterable<array{NotUndef, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new NotOptional();
+        $rule = new NotUndef();
 
         return [
             [$rule, []],
@@ -41,10 +41,10 @@ final class NotOptionalTest extends RuleTestCase
         ];
     }
 
-    /** @return iterable<array{NotOptional, mixed}> */
+    /** @return iterable<array{NotUndef, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new NotOptional();
+        $rule = new NotUndef();
 
         return [
             [$rule, null],

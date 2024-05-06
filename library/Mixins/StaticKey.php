@@ -259,6 +259,8 @@ interface StaticKey
 
     public static function keyNotOptional(int|string $key): ChainedValidator;
 
+    public static function keyNotUndef(int|string $key): ChainedValidator;
+
     public static function keyNullType(int|string $key): ChainedValidator;
 
     public static function keyNumber(int|string $key): ChainedValidator;
