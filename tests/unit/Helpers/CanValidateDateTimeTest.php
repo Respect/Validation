@@ -64,6 +64,10 @@ final class CanValidateDateTimeTest extends TestCase
             ['Y-m-d', '0000-00-31'],
             ['Y-m-d', '0000-12-00'],
             ['Y-m-d H:i:s', '1987-12-31'],
+            ['c', '2018-01-30T19:04:35-00:00'],
+            ['Y-m-d\TH:i:sP', '2018-01-30T19:04:35-00:00'],
+            ['r', 'Tue, 30 Jan 2018 19:06:01 -0000'],
+            ['D, d M Y H:i:s O', 'Tue, 30 Jan 2018 19:06:01 -0000'],
         ];
     }
 }
