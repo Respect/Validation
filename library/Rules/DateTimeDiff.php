@@ -35,7 +35,7 @@ final class DateTimeDiff extends Standard
 
     private readonly Validatable $rule;
 
-    /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
+    /** @param string $type "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" */
     public function __construct(
         Validatable $rule,
         private readonly string $type = 'years',
@@ -58,24 +58,24 @@ final class DateTimeDiff extends Standard
 
     public function evaluate(mixed $input): Result
     {
-        $dateTime = $this->createDateTimeObject($input);
-        if ($dateTime === null) {
+        $compareTo = $this->createDateTimeObject($input);
+        if ($compareTo === null) {
             return Result::failed($input, $this);
         }
 
-        $dateTimeResult = $this->bindEvaluate(new DateTime($this->format), $this, $input);
+        $dateTimeResult = $this->bindEvaluate(
+            binded: new DateTime($this->format), 
+            binder: $this, 
+            input: $input
+        );
         if (!$dateTimeResult->isValid) {
             return $dateTimeResult;
         }
 
         $now = $this->now ?? new DateTimeImmutable();
-        $dateTime = $this->createDateTimeObject($input);
-        if ($dateTime === null) {
-            return Result::failed($input, $this);
-        }
 
         $nextSibling = $this->rule
-            ->evaluate($this->comparisonValue($now, $dateTime))
+            ->evaluate($this->comparisonValue($now, $compareTo))
             ->withNameIfMissing($input instanceof DateTimeInterface ? $input->format('c') : $input);
 
         $parameters = ['type' => $this->type, 'now' => $this->nowParameter($now)];
@@ -83,12 +83,12 @@ final class DateTimeDiff extends Standard
         return (new Result($nextSibling->isValid, $input, $this, $parameters))->withNextSibling($nextSibling);
     }
 
-    private function comparisonValue(DateTimeInterface $now, DateTimeInterface $compareTo): int|float
+    private function comparisonValue(DateTimeInterface $now, DateTimeInterface $compareTo)
     {
         return match ($this->type) {
             'years' => $compareTo->diff($now)->y,
             'months' => $compareTo->diff($now)->m,
-            'days' => $compareTo->diff($now)->d,
+            'days' => $compareTo->diff($now)->days,
             'hours' => $compareTo->diff($now)->h,
             'minutes' => $compareTo->diff($now)->i,
             'seconds' => $compareTo->diff($now)->s,
