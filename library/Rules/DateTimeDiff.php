@@ -35,7 +35,11 @@ final class DateTimeDiff extends Standard
 
     private readonly Validatable $rule;
 
-    /** @param string $type "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" */
+    /** 
+     * @param string $type "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" 
+     * @param string|null $format Example: "Y-m-d H:i:s.u"
+     * @param DateTimeImmutable|null $now The value that will be compared to the input
+    */
     public function __construct(
         Validatable $rule,
         private readonly string $type = 'years',

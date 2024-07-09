@@ -92,7 +92,7 @@ Wrapped by "not"
 The number of years between now and 7 year ago must not be less than 8
 - The number of years between now and 7 year ago must not be less than 8
 [
-    'dateTimeDiff' => 'The number of years between now and 7 year ago must not be less than 8',
+    'notDateTimeDiff' => 'The number of years between now and 7 year ago must not be less than 8',
 ]
 
 Wrapping "not"
