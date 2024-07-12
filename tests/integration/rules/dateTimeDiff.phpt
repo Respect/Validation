@@ -13,6 +13,7 @@ run([
     'Without customizations' => [v::dateTimeDiff(v::equals(2)), '1 year ago'],
     'With $type = "months"' => [v::dateTimeDiff(v::equals(3), 'months'), '2 months ago'],
     'With $type = "days"' => [v::dateTimeDiff(v::equals(4), 'days'), '3 days ago'],
+    'With $type = "days" and difference of months' => [v::dateTimeDiff(v::not(v::lessThan(95)), 'days'), '3 months ago'],
     'With $type = "hours"' => [v::dateTimeDiff(v::equals(5), 'hours'), '4 hours ago'],
     'With $type = "minutes"' => [v::dateTimeDiff(v::equals(6), 'minutes'), '5 minutes ago'],
     'With $type = "microseconds"' => [v::dateTimeDiff(v::equals(7), 'microseconds'), '6 microseconds ago'],
@@ -45,6 +46,14 @@ The number of days between now and 3 days ago must equal 4
 - The number of days between now and 3 days ago must equal 4
 [
     'dateTimeDiff' => 'The number of days between now and 3 days ago must equal 4',
+]
+
+With $type = "days" and difference of months
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+The number of days between now and 3 months ago must not be less than 95
+- The number of days between now and 3 months ago must not be less than 95
+[
+    'dateTimeDiff' => 'The number of days between now and 3 months ago must not be less than 95',
 ]
 
 With $type = "hours"
