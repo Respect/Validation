@@ -82,12 +82,13 @@ final class DateTimeDiffTest extends RuleTestCase
     {
         return [
             'years' => [new DateTimeDiff(Stub::pass(1)), new DateTimeImmutable()],
-            'months' => [new DateTimeDiff(Stub::pass(1), 'months'), new DateTimeImmutable()],
-            'days' => [new DateTimeDiff(Stub::pass(1), 'days'), new DateTimeImmutable()],
-            'hours' => [new DateTimeDiff(Stub::pass(1), 'hours'), new DateTimeImmutable()],
-            'minutes' => [new DateTimeDiff(Stub::pass(1), 'minutes'), new DateTimeImmutable()],
-            'seconds' => [new DateTimeDiff(Stub::pass(1), 'seconds'), new DateTimeImmutable()],
-            'microseconds' => [new DateTimeDiff(Stub::pass(1), 'microseconds'), new DateTimeImmutable()],
+            'months' => [new DateTimeDiff(Stub::pass(1), 'm'), new DateTimeImmutable()],
+            'total number of full days' => [new DateTimeDiff(Stub::pass(1), 'days'), new DateTimeImmutable()],
+            'number of days' => [new DateTimeDiff(Stub::pass(1), 'd'), new DateTimeImmutable()],
+            'hours' => [new DateTimeDiff(Stub::pass(1), 'h'), new DateTimeImmutable()],
+            'minutes' => [new DateTimeDiff(Stub::pass(1), 'i'), new DateTimeImmutable()],
+            'seconds' => [new DateTimeDiff(Stub::pass(1), 's'), new DateTimeImmutable()],
+            'microseconds' => [new DateTimeDiff(Stub::pass(1), 'f'), new DateTimeImmutable()],
         ];
     }
 
@@ -96,7 +97,7 @@ final class DateTimeDiffTest extends RuleTestCase
     {
         return [
             'valid date, with failing rule' => [
-                new DateTimeDiff(Stub::fail(1), 'years'),
+                new DateTimeDiff(Stub::fail(1), 'y'),
                 new DateTimeImmutable(),
             ],
         ] + array_map(

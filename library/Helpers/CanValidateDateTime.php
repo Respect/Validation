@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Helpers;
 
+use DateInterval;
 use DateTime;
 use DateTimeZone;
 
@@ -16,6 +17,10 @@ use function checkdate;
 use function date_default_timezone_get;
 use function date_parse_from_format;
 use function preg_match;
+use function array_keys;
+use function in_array;
+use function get_object_vars;
+
 
 trait CanValidateDateTime
 {
@@ -54,6 +59,17 @@ trait CanValidateDateTime
     private function isDateTimeParsable(array $info): bool
     {
         return $info['error_count'] === 0 && $info['warning_count'] === 0;
+    }
+
+    /**
+     * Validates if the given string is a valid DateInterval type.
+     * 
+     * @param string $age
+     * @return bool
+     */
+    private function isDateIntervalType(string $age): bool
+    {
+        return in_array($age, array_keys(get_object_vars((new DateInterval('P1Y')))));
     }
 
     private function isDateFormat(string $format): bool

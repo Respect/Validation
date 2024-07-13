@@ -20,7 +20,6 @@ use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\Standard;
 use Respect\Validation\Validatable;
 
-use function in_array;
 use function is_scalar;
 
 #[Template(
@@ -36,22 +35,20 @@ final class DateTimeDiff extends Standard
     private readonly Validatable $rule;
 
     /** 
-     * @param string $type "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" 
-     * @param string|null $format Example: "Y-m-d H:i:s.u"
+     * @param string $type DateInterval format examples: (y, m, d, days, h, i, s, f)
      * @param DateTimeImmutable|null $now The value that will be compared to the input
     */
     public function __construct(
         Validatable $rule,
-        private readonly string $type = 'years',
+        private readonly string $type = 'y',
         private readonly ?string $format = null,
         private readonly ?DateTimeImmutable $now = null,
     ) {
-        $availableTypes = ['years', 'months', 'days', 'hours', 'minutes', 'seconds', 'microseconds'];
-        if (!in_array($this->type, $availableTypes, true)) {
+        if (!$this->isDateIntervalType($this->type)) {
             throw new InvalidRuleConstructorException(
                 '"%s" is not a valid type of age (Available: %s)',
                 $this->type,
-                $availableTypes
+                ['y', 'm', 'd', 'days', 'h', 'i', 's', 'f']
             );
         }
         $this->rule = $this->extractSiblingSuitableRule(
@@ -82,22 +79,17 @@ final class DateTimeDiff extends Standard
             ->evaluate($this->comparisonValue($now, $compareTo))
             ->withNameIfMissing($input instanceof DateTimeInterface ? $input->format('c') : $input);
 
-        $parameters = ['type' => $this->type, 'now' => $this->nowParameter($now)];
+        $parameters = [
+            'type' => $this->getTranslatedType($this->type), 
+            'now' => $this->nowParameter($now)
+        ];
 
         return (new Result($nextSibling->isValid, $input, $this, $parameters))->withNextSibling($nextSibling);
     }
 
     private function comparisonValue(DateTimeInterface $now, DateTimeInterface $compareTo)
     {
-        return match ($this->type) {
-            'years' => $compareTo->diff($now)->y,
-            'months' => $compareTo->diff($now)->m,
-            'days' => $compareTo->diff($now)->days,
-            'hours' => $compareTo->diff($now)->h,
-            'minutes' => $compareTo->diff($now)->i,
-            'seconds' => $compareTo->diff($now)->s,
-            'microseconds' => $compareTo->diff($now)->f,
-        };
+        return $compareTo->diff($now)->{$this->type};
     }
 
     private function nowParameter(DateTimeInterface $now): string
@@ -134,5 +126,19 @@ final class DateTimeDiff extends Standard
         }
 
         return $dateTime;
+    }
+
+    private function getTranslatedType(string $type): string
+    {
+        return match ($type) {
+            'y' => 'years',
+            'm' => 'months',
+            'd' => 'days',
+            'days' => 'full days',
+            'h' => 'hours',
+            'i' => 'minutes',
+            's' => 'seconds',
+            'f' => 'microseconds',
+        };
     }
 }
