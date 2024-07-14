@@ -35,7 +35,15 @@ final class DateTimeDiff extends Standard
     private readonly Validatable $rule;
 
     /** 
-     * @param string $type DateInterval format examples: (y, m, d, days, h, i, s, f)
+     * @param string $type DateInterval format examples:
+     *  - 'y': years
+     *  - 'm': months
+     *  - 'd': days (within the same month or year)
+     *  - 'days': full days (total difference in days)
+     *  - 'h': hours
+     *  - 'i': minutes
+     *  - 's': seconds
+     *  - 'f': microseconds
      * @param DateTimeImmutable|null $now The value that will be compared to the input
     */
     public function __construct(
