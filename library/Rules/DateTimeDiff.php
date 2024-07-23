@@ -95,7 +95,7 @@ final class DateTimeDiff extends Standard
         return (new Result($nextSibling->isValid, $input, $this, $parameters))->withNextSibling($nextSibling);
     }
 
-    private function comparisonValue(DateTimeInterface $now, DateTimeInterface $compareTo)
+    private function comparisonValue(DateTimeInterface $now, DateTimeInterface $compareTo): int|float
     {
         return $compareTo->diff($now)->{$this->type};
     }
