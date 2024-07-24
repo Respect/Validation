@@ -34,7 +34,7 @@ final class DateTimeDiff extends Standard
 
     private readonly Validatable $rule;
 
-    /** 
+    /**
      * @param string $type DateInterval format examples:
      *  - 'y': years
      *  - 'm': months
@@ -73,8 +73,8 @@ final class DateTimeDiff extends Standard
         }
 
         $dateTimeResult = $this->bindEvaluate(
-            binded: new DateTime($this->format), 
-            binder: $this, 
+            binded: new DateTime($this->format),
+            binder: $this,
             input: $input
         );
         if (!$dateTimeResult->isValid) {
@@ -88,8 +88,8 @@ final class DateTimeDiff extends Standard
             ->withNameIfMissing($input instanceof DateTimeInterface ? $input->format('c') : $input);
 
         $parameters = [
-            'type' => $this->getTranslatedType($this->type), 
-            'now' => $this->nowParameter($now)
+            'type' => $this->getTranslatedType($this->type),
+            'now' => $this->nowParameter($now),
         ];
 
         return (new Result($nextSibling->isValid, $input, $this, $parameters))->withNextSibling($nextSibling);

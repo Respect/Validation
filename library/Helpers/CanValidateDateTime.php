@@ -13,14 +13,13 @@ use DateInterval;
 use DateTime;
 use DateTimeZone;
 
+use function array_keys;
 use function checkdate;
 use function date_default_timezone_get;
 use function date_parse_from_format;
-use function preg_match;
-use function array_keys;
-use function in_array;
 use function get_object_vars;
-
+use function in_array;
+use function preg_match;
 
 trait CanValidateDateTime
 {
@@ -63,9 +62,6 @@ trait CanValidateDateTime
 
     /**
      * Validates if the given string is a valid DateInterval type.
-     * 
-     * @param string $age
-     * @return bool
      */
     private function isDateIntervalType(string $age): bool
     {

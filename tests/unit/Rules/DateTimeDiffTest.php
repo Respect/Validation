@@ -101,11 +101,11 @@ final class DateTimeDiffTest extends RuleTestCase
                 new DateTimeImmutable(),
             ],
             'invalid date, with passing rule' => [
-                new DateTimeDiff(Stub::pass(1), 'y', "Y-m-d"),
+                new DateTimeDiff(Stub::pass(1), 'y', 'Y-m-d'),
                 'invalid date',
             ],
             'invalid date, with failing rule' => [
-                new DateTimeDiff(Stub::fail(1), 'y', "Y-m-d"),
+                new DateTimeDiff(Stub::fail(1), 'y', 'Y-m-d'),
                 new DateTimeImmutable(),
             ],
         ] + array_map(
