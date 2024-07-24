@@ -33,7 +33,6 @@ final class DateTimeDiffTest extends RuleTestCase
         $this->expectException(InvalidRuleConstructorException::class);
         $this->expectExceptionMessageMatches('/"invalid" is not a valid type of age \(Available: .+\)/');
 
-        // @phpstan-ignore-next-line
         new DateTimeDiff(Stub::daze(), 'invalid');
     }
 

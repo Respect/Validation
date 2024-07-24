@@ -147,6 +147,7 @@ final class DateTimeDiff extends Standard
             'i' => 'minutes',
             's' => 'seconds',
             'f' => 'microseconds',
+            default => 'unknown type',
         };
     }
 }
