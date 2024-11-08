@@ -57,10 +57,10 @@ not
 
 nullOr
 ⎺⎺⎺⎺⎺⎺
-"string" must be of type boolean
-- "string" must be of type boolean
+"string" must be of type boolean or must be null
+- "string" must be of type boolean or must be null
 [
-    'nullOrBoolType' => '"string" must be of type boolean',
+    'nullOrBoolType' => '"string" must be of type boolean or must be null',
 ]
 
 property

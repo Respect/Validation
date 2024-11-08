@@ -31,7 +31,7 @@ See also:
 - [NotBlank](NotBlank.md)
 - [NotEmpty](NotEmpty.md)
 - [NotUndef](NotUndef.md)
-- [Nullable](Nullable.md)
+- [NullOr](NullOr.md)
 - [Number](Number.md)
 - [ObjectType](ObjectType.md)
 - [ResourceType](ResourceType.md)

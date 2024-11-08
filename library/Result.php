@@ -118,6 +118,15 @@ final class Result
         return $this->clone(nextSibling: $nextSibling);
     }
 
+    public function withInvertedValidation(): self
+    {
+        return $this->clone(
+            isValid: !$this->isValid,
+            nextSibling: $this->nextSibling?->withInvertedValidation(),
+            children: array_map(static fn (Result $child) => $child->withInvertedValidation(), $this->children),
+        );
+    }
+
     public function withInvertedMode(): self
     {
         return $this->clone(
@@ -151,6 +160,20 @@ final class Result
         $childrenAlwaysVisible = array_filter($this->children, static fn (Result $child) => $child->isAlwaysVisible());
 
         return count($childrenAlwaysVisible) !== 1;
+    }
+
+    public function isSiblingCompatible(): bool
+    {
+        if ($this->children === [] && !$this->hasCustomTemplate()) {
+            return true;
+        }
+
+        $siblingCompatibleChildren = array_filter(
+            $this->children,
+            static fn (Result $child) => $child->isSiblingCompatible()
+        );
+
+        return count($siblingCompatibleChildren) === 1;
     }
 
     /**
