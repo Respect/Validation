@@ -14,32 +14,38 @@ use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\Wrapper;
 
+use function array_map;
+
 #[Template(
-    'The value must be undefined',
-    'The value must not be undefined',
-    self::TEMPLATE_STANDARD,
-)]
-#[Template(
-    '{{name}} must be undefined',
-    '{{name}} must not be undefined',
-    self::TEMPLATE_NAMED,
+    'or must be undefined',
+    'and must not be undefined',
 )]
 final class UndefOr extends Wrapper
 {
     use CanValidateUndefined;
 
-    public const TEMPLATE_NAMED = '__named__';
-
     public function evaluate(mixed $input): Result
     {
+        $result = $this->rule->evaluate($input);
         if (!$this->isUndefined($input)) {
-            return $this->rule->evaluate($input)->withPrefixedId('undefOr');
+            return $this->enrichResult($result);
         }
 
-        if ($this->getName()) {
-            return Result::passed($input, $this, [], self::TEMPLATE_NAMED);
+        if (!$result->isValid) {
+            return $this->enrichResult($result->withInvertedValidation());
         }
 
-        return Result::passed($input, $this);
+        return $this->enrichResult($result);
+    }
+
+    private function enrichResult(Result $result): Result
+    {
+        if ($result->isSiblingCompatible()) {
+            return $result
+                ->withPrefixedId('undefOr')
+                ->withNextSibling(new Result($result->isValid, $result->input, $this));
+        }
+
+        return $result->withChildren(...array_map(fn(Result $child) => $this->enrichResult($child), $result->children));
     }
 }

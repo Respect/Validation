@@ -11,7 +11,6 @@ namespace Respect\Validation\Rules;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
-use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
@@ -20,45 +19,13 @@ use stdClass;
 #[CoversClass(UndefOr::class)]
 final class UndefOrTest extends RuleTestCase
 {
-    #[Test]
-    public function itShouldUseStandardTemplateWhenItHasNameWhenInputIsOptional(): void
-    {
-        $rule = new UndefOr(Stub::pass(1));
-
-        $result = $rule->evaluate('');
-
-        self::assertSame($rule, $result->rule);
-        self::assertSame(UndefOr::TEMPLATE_STANDARD, $result->template);
-    }
-
-    #[Test]
-    public function itShouldUseNamedTemplateWhenItHasNameWhenInputIsOptional(): void
-    {
-        $rule = new UndefOr(Stub::pass(1));
-        $rule->setName('foo');
-
-        $result = $rule->evaluate('');
-
-        self::assertSame($rule, $result->rule);
-        self::assertSame(UndefOr::TEMPLATE_NAMED, $result->template);
-    }
-
-    #[Test]
-    public function itShouldUseWrappedRuleToEvaluateWhenNotUndef(): void
-    {
-        $input = new stdClass();
-
-        $wrapped = Stub::pass(2);
-        $rule = new UndefOr($wrapped);
-
-        self::assertEquals($wrapped->evaluate($input)->withPrefixedId('undefOr'), $rule->evaluate($input));
-    }
-
     /** @return iterable<string, array{UndefOr, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        yield 'null' => [new UndefOr(Stub::daze()), null];
-        yield 'empty string' => [new UndefOr(Stub::daze()), ''];
+        yield 'null' => [new UndefOr(Stub::pass(1)), null];
+        yield 'empty string' => [new UndefOr(Stub::pass(1)), ''];
+        yield 'null with failing rule' => [new UndefOr(Stub::fail(1)), null];
+        yield 'empty string with failing rule' => [new UndefOr(Stub::fail(1)), ''];
         yield 'not optional' => [new UndefOr(Stub::pass(1)), 42];
     }
 
