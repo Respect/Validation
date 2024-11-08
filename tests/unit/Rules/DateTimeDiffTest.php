@@ -11,14 +11,11 @@ namespace Respect\Validation\Rules;
 
 use DateTimeImmutable;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
-use Respect\Validation\Rule;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\RuleTestCase;
-use Respect\Validation\Validator;
 
 use function array_map;
 use function iterator_to_array;
@@ -35,46 +32,6 @@ final class DateTimeDiffTest extends RuleTestCase
 
         // @phpstan-ignore-next-line
         new DateTimeDiff('invalid', Stub::daze());
-    }
-
-    #[Test]
-    #[DataProvider('providerForSiblingSuitableRules')]
-    public function isShouldAcceptRulesThatCanBeAddedAsNextSibling(Rule $rule): void
-    {
-        $this->expectNotToPerformAssertions();
-
-        new DateTimeDiff('years', $rule);
-    }
-
-    #[Test]
-    #[DataProvider('providerForSiblingUnsuitableRules')]
-    public function isShouldNotAcceptRulesThatCanBeAddedAsNextSibling(Rule $rule): void
-    {
-        $this->expectException(InvalidRuleConstructorException::class);
-        $this->expectExceptionMessage('DateTimeDiff must contain exactly one rule');
-
-        new DateTimeDiff('years', $rule);
-    }
-
-    /** @return array<array{Rule}> */
-    public static function providerForSiblingSuitableRules(): array
-    {
-        return [
-            'single' => [Stub::daze()],
-            'single in validator' => [Validator::create(Stub::daze())],
-            'single wrapped by "Not"' => [new Not(Stub::daze())],
-            'validator wrapping not, wrapping single' => [Validator::create(new Not(Stub::daze()))],
-            'not wrapping validator, wrapping single' => [new Not(Validator::create(Stub::daze()))],
-        ];
-    }
-
-    /** @return array<array{Rule}> */
-    public static function providerForSiblingUnsuitableRules(): array
-    {
-        return [
-            'double wrapped by validator' => [Validator::create(Stub::daze(), Stub::daze())],
-            'double wrapped by validator, wrapped by "Not"' => [new Not(Validator::create(Stub::daze(), Stub::daze()))],
-        ];
     }
 
     /** @return array<string|int, array{DateTimeDiff, mixed}> */

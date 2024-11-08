@@ -12,30 +12,42 @@ namespace Respect\Validation\Rules;
 use DateTimeImmutable;
 use DateTimeInterface;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
-use Respect\Validation\Helpers\CanExtractRules;
 use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Standard;
 
+use function array_map;
 use function in_array;
+use function ucfirst;
 
 #[Template(
-    'The number of {{type|raw}} between {{now|raw}} and',
-    'The number of {{type|raw}} between {{now|raw}} and',
+    'The number of {{type|trans}} between now and',
+    'The number of {{type|trans}} between now and',
+    self::TEMPLATE_STANDARD
+)]
+#[Template(
+    'The number of {{type|trans}} between {{now|raw}} and',
+    'The number of {{type|trans}} between {{now|raw}} and',
+    self::TEMPLATE_CUSTOMIZED
+)]
+#[Template(
+    'For comparison with {{now|raw}}, {{name}} must be a valid datetime in the format {{sample|raw}}',
+    'For comparison with {{now|raw}}, {{name}} must not be a valid datetime in the format {{sample|raw}}',
+    self::TEMPLATE_WRONG_FORMAT
 )]
 final class DateTimeDiff extends Standard
 {
     use CanValidateDateTime;
-    use CanExtractRules;
 
-    private readonly Rule $rule;
+    public const TEMPLATE_CUSTOMIZED = '__customized__';
+    public const TEMPLATE_WRONG_FORMAT = '__wrong_format__';
 
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public function __construct(
         private readonly string $type,
-        Rule $rule,
+        private readonly Rule $rule,
         private readonly ?string $format = null,
         private readonly ?DateTimeImmutable $now = null,
     ) {
@@ -47,27 +59,44 @@ final class DateTimeDiff extends Standard
                 $availableTypes
             );
         }
-        $this->rule = $this->extractSiblingSuitableRule(
-            $rule,
-            new InvalidRuleConstructorException('DateTimeDiff must contain exactly one rule')
-        );
     }
 
     public function evaluate(mixed $input): Result
     {
+        $now = $this->now ?? new DateTimeImmutable();
         $compareTo = $this->createDateTimeObject($input);
         if ($compareTo === null) {
-            return Result::failed($input, $this);
+            $parameters = ['sample' => $now->format($this->format ?? 'c'), 'now' => $this->nowParameter($now)];
+
+            return Result::failed($input, $this, $parameters, self::TEMPLATE_WRONG_FORMAT)
+                ->withId('dateTimeDiff' . ucfirst($this->rule->evaluate($input)->id));
         }
 
-        $now = $this->now ?? new DateTimeImmutable();
-        $nextSibling = $this->rule
-            ->evaluate($this->comparisonValue($now, $compareTo))
-            ->withNameIfMissing($input instanceof DateTimeInterface ? $input->format('c') : $input);
+        return $this->enrichResult(
+            $this->nowParameter($now),
+            $input,
+            $this->rule->evaluate($this->comparisonValue($now, $compareTo))
+        );
+    }
 
-        $parameters = ['type' => $this->type, 'now' => $this->nowParameter($now)];
+    private function enrichResult(string $now, mixed $input, Result $result): Result
+    {
+        $name = $input instanceof DateTimeInterface ? $input->format('c') : $input;
 
-        return (new Result($nextSibling->isValid, $input, $this, $parameters))->withNextSibling($nextSibling);
+        if (!$result->isSiblingCompatible()) {
+            return $result
+                ->withNameIfMissing($name)
+                ->withChildren(
+                    ...array_map(fn(Result $child) => $this->enrichResult($now, $input, $child), $result->children)
+                );
+        }
+
+        $parameters = ['type' => $this->type, 'now' => $now];
+        $template = $now === 'now' ? self::TEMPLATE_STANDARD : self::TEMPLATE_CUSTOMIZED;
+
+        return (new Result($result->isValid, $input, $this, $parameters, $template, id: $result->id))
+            ->withPrefixedId('dateTimeDiff')
+            ->withNextSibling($result->withNameIfMissing($name));
     }
 
     private function comparisonValue(DateTimeInterface $now, DateTimeInterface $compareTo): int|float

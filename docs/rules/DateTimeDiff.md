@@ -2,6 +2,7 @@
 
 - `DateTimeDiff(string $type, Rule $rule)`
 - `DateTimeDiff(string $type, Rule $rule, string $format)`
+- `DateTimeDiff(string $type, Rule $rule, string $format, DateTimeImmutable $now)`
 
 Validates the difference of date/time against a specific rule.
 
@@ -30,20 +31,62 @@ The supported types are:
 
 ## Templates
 
-`DateTimeDiff::TEMPLATE_STANDARD`
+The first two templates serve as message suffixes:
 
-| Mode       | Template                                                     |
-|------------|--------------------------------------------------------------|
-| `default`  | The number of {{type&#124;raw}} between {{now&#124;raw}} and |
-| `inverted` | The number of {{type&#124;raw}} between {{now&#124;raw}} and |
+```php
+v::dateTimeDiff('years', v::equals(2))->assert('1 year ago')
+// The number of years between now and 1 year ago must be equal to 2
+
+v::not(v::dateTimeDiff('years', v::lessThan(8)))->assert('7 year ago')
+// The number of years between now and 7 year ago must not be less than 8
+```
+
+### `DateTimeDiff::TEMPLATE_STANDARD`
+
+Used when `$format` and `$now` are not defined.
+
+| Mode       | Template                                          |
+|------------|---------------------------------------------------|
+| `default`  | The number of {{type&#124;trans}} between now and |
+| `inverted` | The number of {{type&#124;trans}} between now and |
+
+### `DateTimeDiff::TEMPLATE_CUSTOMIZED`
+
+Used when `$format` or `$now` are defined.
+
+| Mode       | Template                                                       |
+|------------|----------------------------------------------------------------|
+| `default`  | The number of {{type&#124;trans}} between {{now&#124;raw}} and |
+| `inverted` | The number of {{type&#124;trans}} between {{now&#124;raw}} and |
+
+### `DateTimeDiff::TEMPLATE_WRONG_FORMAT`
+
+Used when the input cannot be parsed with the given format.
+
+| Mode       | Template                                                                                                      |
+|------------|---------------------------------------------------------------------------------------------------------------|
+| `default`  | For comparison with {{now&#124;raw}}, {{name}} must be a valid datetime in the format {{sample&#124;raw}}     |
+| `inverted` | For comparison with {{now&#124;raw}}, {{name}} must not be a valid datetime in the format {{sample&#124;raw}} |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
 |-------------|------------------------------------------------------------------|
 | `name`      | The validated input or the custom validator name (if specified). |
-| `now`       |                                                                  |
-| `type`      |                                                                  |
+| `now`       | The date and time that is considered as now.                     |
+| `sample`    | A sample of the datetime.                                        |
+| `type`      | The type of interval (years, months, etc.).                      |
+
+## Caveats
+
+When using custom templates, the key must be `dateTimeDiff` + name of the rule you passed, for example:
+
+```php
+v::dateTimeDiff('years', v::equals(2))->assert('1 year ago', [
+    'dateTimeDiffEquals' => 'Please enter a date that is 2 years ago'
+]);
+// Please enter a date that is 2 years ago.
+```
 
 ## Categorization
 
