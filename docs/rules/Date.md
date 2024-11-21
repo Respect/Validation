@@ -22,6 +22,8 @@ Format  | Description                                                           
 When a `$format` is not given its default value is `Y-m-d`.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::date()->validate('2017-12-31'); // true
 v::date()->validate('2020-02-29'); // true
 v::date()->validate('2019-02-29'); // false

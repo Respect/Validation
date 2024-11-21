@@ -6,6 +6,8 @@
 Validates a credit card number.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::creditCard()->validate('5376 7473 9720 8720'); // true
 v::creditCard()->validate('5376-7473-9720-8720'); // true
 v::creditCard()->validate('5376.7473.9720.8720'); // true
@@ -33,6 +35,8 @@ It ignores any non-numeric characters, use [Digit](Digit.md),
 [NoWhitespace](NoWhitespace.md), or [Regex](Regex.md) when appropriate.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::digit()->creditCard()->validate('5376747397208720'); // true
 ```
 

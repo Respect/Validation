@@ -8,6 +8,8 @@ Validates whether the input is language code based on [ISO 639][].
 **This rule requires [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][] to be installed.**
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::languageCode()->validate('pt'); // true
 v::languageCode()->validate('en'); // true
 v::languageCode()->validate('it'); // true

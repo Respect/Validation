@@ -9,6 +9,8 @@ Validates whether the input is a valid IP address.
 This validator uses the native [filter_var()][] PHP function.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::ip()->validate('127.0.0.1'); // true
 v::ip('220.78.168.0/21')->validate('220.78.173.2'); // true
 v::ip('220.78.168.0/21')->validate('220.78.176.2'); // false
@@ -17,6 +19,8 @@ v::ip('220.78.168.0/21')->validate('220.78.176.2'); // false
 Validating ranges:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::ip('127.0.0.1-127.0.0.5')->validate('127.0.0.2'); // true
 v::ip('127.0.0.1-127.0.0.5')->validate('127.0.0.10'); // false
 ```
@@ -24,12 +28,16 @@ v::ip('127.0.0.1-127.0.0.5')->validate('127.0.0.10'); // false
 You can pass a parameter with [filter_var()][] flags for IP.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::ip('*', FILTER_FLAG_NO_PRIV_RANGE)->validate('192.168.0.1'); // false
 ```
 
 If you want to validate IPv6 you can do as follow:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::ip('*', FILTER_FLAG_IPV6)->validate('2001:0db8:85a3:08d3:1319:8a2e:0370:7334'); // true
 ```
 

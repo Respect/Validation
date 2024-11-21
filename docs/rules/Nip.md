@@ -5,6 +5,8 @@
 Validates whether the input is a Polish VAT identification number (NIP).
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::nip()->validate('1645865777'); // true
 v::nip()->validate('1645865778'); // false
 v::nip()->validate('1234567890'); // false

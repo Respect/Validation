@@ -5,6 +5,8 @@
 Validates the value of an array against a given rule.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::key('name', v::stringType())->validate(['name' => 'The Respect Panda']); // true
 
 v::key('email', v::email())->validate(['email' => 'therespectpanda@gmail.com']); // true
@@ -15,6 +17,8 @@ v::key('age', v::intVal())->validate([]); // false
 You can also use `Key` to validate nested arrays:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::key(
     'payment_details',
     v::key('credit_card', v::creditCard())
@@ -28,6 +32,8 @@ v::key(
 The name of this validator is automatically set to the key name.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::key('email', v::email())->assert([]);
 // message: email must be present
 

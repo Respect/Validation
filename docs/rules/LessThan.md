@@ -5,6 +5,8 @@
 Validates whether the input is less than a value.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::lessThan(10)->validate(9); // true
 v::lessThan(10)->validate(10); // false
 ```

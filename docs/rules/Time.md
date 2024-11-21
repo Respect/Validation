@@ -23,6 +23,8 @@ Format  | Description                                        | Values
 When a `$format` is not given its default value is `H:i:s`.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::time()->validate('00:00:00'); // true
 v::time()->validate('23:20:59'); // true
 v::time('H:i')->validate('23:59'); // true

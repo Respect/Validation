@@ -5,6 +5,8 @@
 Validates whether the input is sorted in a certain order or not.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::sorted('ASC')->validate([1, 2, 3]); // true
 v::sorted('ASC')->validate('ABC'); // true
 v::sorted('DESC')->validate([3, 2, 1]); // true
@@ -15,6 +17,8 @@ v::sorted('ASC')->validate([1]); // true
 You can also combine [Call](Call.md) to create custom validations:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::call(
         static function (array $input): array {
             return array_column($input, 'key');

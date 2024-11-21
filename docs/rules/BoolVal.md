@@ -5,6 +5,8 @@
 Validates if the input results in a boolean value:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::boolVal()->validate('on'); // true
 v::boolVal()->validate('off'); // true
 v::boolVal()->validate('yes'); // true

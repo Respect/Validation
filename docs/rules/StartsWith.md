@@ -11,12 +11,16 @@ if the value is at the beginning of the input.
 For strings:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::startsWith('lorem')->validate('lorem ipsum'); // true
 ```
 
 For arrays:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::startsWith('lorem')->validate(['lorem', 'ipsum']); // true
 ```
 

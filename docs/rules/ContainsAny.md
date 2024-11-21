@@ -8,12 +8,16 @@ Validates if the input contains at least one of defined values
 For strings (comparing is case insensitive):
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::containsAny(['lorem', 'dolor'])->validate('lorem ipsum'); // true
 ```
 
 For arrays (comparing is case sensitive to respect "contains" behavior):
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::containsAny(['lorem', 'dolor'])->validate(['ipsum', 'lorem']); // true
 ```
 

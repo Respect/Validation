@@ -6,6 +6,8 @@
 Validates the input with the PHP's [filter_var()](http://php.net/filter_var) function.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::filterVar(FILTER_VALIDATE_EMAIL)->validate('bob@example.com'); // true
 v::filterVar(FILTER_VALIDATE_URL)->validate('http://example.com'); // true
 v::filterVar(FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)->validate('http://example.com'); // false

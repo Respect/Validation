@@ -7,30 +7,40 @@ into account, use `noWhitespace()` if no spaces or linebreaks and other
 whitespace anywhere in the input is desired.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::stringType()->notEmpty()->validate(''); // false
 ```
 
 Null values are empty:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::notEmpty()->validate(null); // false
 ```
 
 Numbers:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::intVal()->notEmpty()->validate(0); // false
 ```
 
 Empty arrays:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::arrayVal()->notEmpty()->validate([]); // false
 ```
 
 Whitespace:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::stringType()->notEmpty()->validate('        ');  //false
 v::stringType()->notEmpty()->validate("\t \n \r");  //false
 ```

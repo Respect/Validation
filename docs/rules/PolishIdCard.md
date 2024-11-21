@@ -5,6 +5,8 @@
 Validates whether the input is a Polish identity card (Dowód Osobisty).
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::polishIdCard()->validate('AYW036733'); // true
 v::polishIdCard()->validate('APH505567'); // true
 v::polishIdCard()->validate('APH 505567'); // false

@@ -5,6 +5,8 @@
 Will validate if exactly one inner validator passes.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::oneOf(v::digit(), v::alpha())->validate('AB'); // true
 v::oneOf(v::digit(), v::alpha())->validate('12'); // true
 v::oneOf(v::digit(), v::alpha())->validate('AB12'); // false

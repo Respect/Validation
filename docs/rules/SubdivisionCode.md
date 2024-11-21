@@ -9,6 +9,8 @@ The `$countryCode` must be a country in [ISO 3166-1 alpha-2][] format.
 **This rule requires [sokil/php-isocodes][] and [php-isocodes-db-only][] to be installed.**
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::subdivisionCode('BR')->validate('SP'); // true
 v::subdivisionCode('US')->validate('CA'); // true
 ```

@@ -6,6 +6,8 @@
 Validates if the input considered as "Yes".
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::yes()->validate('Y'); // true
 v::yes()->validate('Yea'); // true
 v::yes()->validate('Yeah'); // true
@@ -26,6 +28,8 @@ v::yes(true)->validate('Sim'); // true
 Be careful when using `$locale` as `TRUE` because the it's very permissive:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::yes(true)->validate('Yydoesnotmatter'); // true
 ```
 

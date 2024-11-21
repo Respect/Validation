@@ -6,6 +6,8 @@
 Validates if value is considered as "No".
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::no()->validate('N'); // true
 v::no()->validate('Nay'); // true
 v::no()->validate('Nix'); // true
@@ -27,6 +29,8 @@ v::no(true)->validate('нет'); // true
 Be careful when using `$locale` as `TRUE` because the it's very permissive:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::no(true)->validate('Never gonna give you up 🎵'); // true
 ```
 

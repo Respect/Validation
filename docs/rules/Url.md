@@ -5,6 +5,8 @@
 Validates whether the input is a URL.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::url()->validate('http://example.com'); // true
 v::url()->validate('https://www.youtube.com/watch?v=6FOUqQt3Kg0'); // true
 v::url()->validate('ldap://[::1]'); // true

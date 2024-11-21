@@ -5,6 +5,8 @@
 Validates if NONE of the given validators validate:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::noneOf(
     v::intVal(),
     v::floatVal()

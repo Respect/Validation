@@ -5,6 +5,8 @@
 Validates the type of input.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::type('bool')->validate(true); // true
 v::type('callable')->validate(function (){}); // true
 v::type('object')->validate(new stdClass()); // true

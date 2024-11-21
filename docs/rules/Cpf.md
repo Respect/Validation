@@ -5,12 +5,16 @@
 Validates a Brazillian CPF number.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::cpf()->validate('11598647644'); // true
 ```
 
 It ignores any non-digit char:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::cpf()->validate('693.319.118-40'); // true
 ```
 
@@ -18,6 +22,8 @@ If you need to validate digits only, add `->digit()` to
 the chain:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::digit()->cpf()->validate('11598647644'); // true
 ```
 

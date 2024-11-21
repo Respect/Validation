@@ -5,6 +5,8 @@
 Validates whether the input is a valid slug.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::slug()->validate('my-wordpress-title'); // true
 v::slug()->validate('my-wordpress--title'); // false
 v::slug()->validate('my-wordpress-title-'); // false

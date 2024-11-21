@@ -5,6 +5,8 @@
 Validates the value of an array against a given rule when the key exists.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::keyOptional('name', v::stringType())->validate([]); // true
 v::keyOptional('name', v::stringType())->validate(['name' => 'The Respect Panda']); // true
 
@@ -17,6 +19,8 @@ v::keyOptional('age', v::intVal())->validate(['age' => 'Twenty-Five']); // false
 The name of this validator is automatically set to the key name.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::keyOptional('age', v::intVal())->assert(['age' => 'Twenty-Five']);
 // message: age must be an integer number
 ```
@@ -27,6 +31,8 @@ This rule will pass for anything that is not an array because it will always pas
 want to ensure the input is an array, use [ArrayType](ArrayType.md) with it.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::arrayType()->keyOptional('phone', v::phone())->assert('This is not an array');
 // message: "This is not an array" must be of type array
 ```

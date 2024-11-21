@@ -9,6 +9,8 @@ When the `$if` validates, returns validation for `$then`.
 When the `$if` doesn't validate, returns validation for `$else`, if defined.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::when(v::intVal(), v::positive(), v::notEmpty())->validate(1); // true
 v::when(v::intVal(), v::positive(), v::notEmpty())->validate('not empty'); // true
 

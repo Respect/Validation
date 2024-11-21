@@ -6,6 +6,8 @@ Validates whether the input is a valid [IBAN][] (International Bank Account
 Number) or not.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::iban()->validate('SE35 5000 0000 0549 1000 0003'); // true
 v::iban()->validate('ch9300762011623852957'); // true
 

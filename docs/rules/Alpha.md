@@ -7,6 +7,8 @@ Validates whether the input contains only alphabetic characters. This is similar
 to [Alnum](Alnum.md), but it does not allow numbers.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::alpha()->validate('some name'); // false
 v::alpha(' ')->validate('some name'); // true
 v::alpha()->validate('Cedric-Fabian'); // false
@@ -18,6 +20,8 @@ You can restrict case using the [Lowercase](Lowercase.md) and
 [Uppercase](Uppercase.md) rules.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::alpha()->uppercase()->validate('example'); // false
 ```
 

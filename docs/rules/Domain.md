@@ -6,6 +6,8 @@
 Validates whether the input is a valid domain name or not.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::domain()->validate('google.com');
 ```
 
@@ -13,6 +15,8 @@ You can skip *top level domain* (TLD) checks to validate internal
 domain names:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::domain(false)->validate('dev.machine.local');
 ```
 

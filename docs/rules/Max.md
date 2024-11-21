@@ -5,6 +5,8 @@
 Validates the maximum value of the input against a given rule.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::max(v::equals(30))->validate([10, 20, 30]); // true
 
 v::max(v::between('e', 'g'))->validate(['b', 'd', 'f']); // true

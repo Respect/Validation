@@ -5,6 +5,8 @@
 Validates the minimum value of the input against a given rule.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::min(v::equals(10))->validate([10, 20, 30]); // true
 
 v::min(v::between('a', 'c'))->validate(['b', 'd', 'f']); // true

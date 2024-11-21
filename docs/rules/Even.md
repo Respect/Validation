@@ -5,6 +5,8 @@
 Validates whether the input is an even number or not.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::intVal()->even()->validate(2); // true
 ```
 

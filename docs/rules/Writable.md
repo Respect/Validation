@@ -5,6 +5,8 @@
 Validates if the given input is writable file.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::writable()->validate('file.txt'); // true
 ```
 

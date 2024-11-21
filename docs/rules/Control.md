@@ -7,6 +7,8 @@ Validates if all of the characters in the provided string, are control
 characters.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::control()->validate("\n\r\t"); // true
 ```
 

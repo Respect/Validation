@@ -5,6 +5,8 @@
 Validates whether the input is a valid [ISBN][] or not.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::isbn()->validate('ISBN-13: 978-0-596-52068-7'); // true
 v::isbn()->validate('978 0 596 52068 7'); // true
 v::isbn()->validate('ISBN-12: 978-0-596-52068-7'); // false

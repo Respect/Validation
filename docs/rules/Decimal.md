@@ -5,6 +5,8 @@
 Validates whether the input matches the expected number of decimals.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::decimals(2)->validate('27990.50'); // true
 v::decimals(1)->validate('27990.50'); // false
 v::decimal(1)->validate(1.5); // true
@@ -17,6 +19,8 @@ When validating float types, it is not possible to determine the amount of
 ending zeros and because of that, validations like the ones below will pass.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::decimal(1)->validate(1.50); // true
 ```
 

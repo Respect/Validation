@@ -5,6 +5,8 @@
 Validates if a file is an executable.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::executable()->validate('script.sh'); // true
 ```
 

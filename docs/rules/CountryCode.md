@@ -8,6 +8,8 @@ Validates whether the input is a country code in [ISO 3166-1][] standard.
 **This rule requires [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][] to be installed.**
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::countryCode()->validate('BR'); // true
 
 v::countryCode('alpha-2')->validate('NL'); // true

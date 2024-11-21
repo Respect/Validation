@@ -5,6 +5,8 @@
 Validates files or directories.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::exists()->validate(__FILE__); // true
 v::exists()->validate(__DIR__); // true
 ```
@@ -12,6 +14,8 @@ v::exists()->validate(__DIR__); // true
 This validator will consider SplFileInfo instances, so you can do something like:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::exists()->validate(new SplFileInfo('file.txt'));
 ```
 

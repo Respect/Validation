@@ -5,6 +5,8 @@
 Validates a Finnish personal identity code ([HETU][]).
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::hetu()->validate('010106A9012'); // true
 v::hetu()->validate('290199-907A'); // true
 v::hetu()->validate('280291+923X'); // true

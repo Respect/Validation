@@ -5,6 +5,8 @@
 Validates whether the characters in the input are lowercase.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::stringType()->lowercase()->validate('xkcd'); // true
 ```
 

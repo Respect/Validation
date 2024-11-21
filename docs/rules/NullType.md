@@ -5,6 +5,8 @@
 Validates whether the input is [null](http://php.net/types.null).
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::nullType()->validate(null); // true
 ```
 

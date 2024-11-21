@@ -5,6 +5,8 @@
 Validates an email address.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::email()->validate('alganet@gmail.com'); // true
 ```
 

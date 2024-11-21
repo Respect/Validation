@@ -21,6 +21,8 @@ This function returns an array containing `scheme`, `host`, `path` and `query`.
 We can validate them this way:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::arrayVal()
     ->key('scheme', v::startsWith('http'))
     ->key('host', v::domain())
@@ -31,6 +33,8 @@ v::arrayVal()
 Using `v::call()` you can do this in a single chain:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::call(
     'parse_url',
      v::arrayVal()

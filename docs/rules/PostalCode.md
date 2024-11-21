@@ -5,6 +5,8 @@
 Validates whether the input is a valid postal code or not.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::postalCode('BR')->validate('02179000'); // true
 v::postalCode('BR')->validate('02179-000'); // true
 v::postalCode('US')->validate('02179-000'); // false
@@ -16,6 +18,8 @@ By default, `PostalCode` won't validate the format (puncts, spaces), unless you 
 
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::postalCode('BR', true)->validate('02179000'); // false
 v::postalCode('BR', true)->validate('02179-000'); // true
 ```

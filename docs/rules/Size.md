@@ -7,6 +7,8 @@
 Validates whether the input is a file that is of a certain size or not.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::size('1KB')->validate($filename); // Must have at least 1KB size
 v::size('1MB', '2MB')->validate($filename); // Must have the size between 1MB and 2MB
 v::size(null, '1GB')->validate($filename); // Must not be greater than 1GB
@@ -27,6 +29,8 @@ Sizes are not case-sensitive and the accepted values are:
 This validator will consider `SplFileInfo` instances, like:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::size('1.5mb')->validate(new SplFileInfo($filename)); // Will return true or false
 ```
 

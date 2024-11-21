@@ -6,12 +6,16 @@
 Validates whether the input is an hexadecimal number or not.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::xdigit()->validate('abc123'); // true
 ```
 
 Notice, however, that it doesn't accept strings starting with 0x:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::xdigit()->validate('0x1f'); // false
 ```
 

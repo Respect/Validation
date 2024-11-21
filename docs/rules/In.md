@@ -8,12 +8,16 @@ Validates if the input is contained in a specific haystack.
 For strings:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::in('lorem ipsum')->validate('ipsum'); // true
 ```
 
 For arrays:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::in(['lorem', 'ipsum'])->validate('lorem'); // true
 ```
 

@@ -5,6 +5,8 @@
 Validates if a value is considered as `true`.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::trueVal()->validate(true); // true
 v::trueVal()->validate(1); // true
 v::trueVal()->validate('1'); // true

@@ -5,6 +5,8 @@
 Validates if a string contains no whitespace (spaces, tabs and line breaks);
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::noWhitespace()->validate('foo bar');  //false
 v::noWhitespace()->validate("foo\nbar"); // false
 ```

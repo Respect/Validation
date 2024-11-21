@@ -10,18 +10,24 @@ The `$format` argument should be in accordance to [DateTime::format()][]. See mo
 When a `$format` is not given its default value is `Y-m-d H:i:s`.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::dateTime()->validate('2009-01-01'); // true
 ```
 
 Also accepts [strtotime()](http://php.net/strtotime) values:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::dateTime()->validate('now'); // true
 ```
 
 And `DateTimeInterface` instances:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::dateTime()->validate(new DateTime()); // true
 v::dateTime()->validate(new DateTimeImmutable()); // true
 ```
@@ -29,6 +35,8 @@ v::dateTime()->validate(new DateTimeImmutable()); // true
 You can pass a format when validating strings:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::dateTime('Y-m-d')->validate('01-01-2009'); // false
 ```
 

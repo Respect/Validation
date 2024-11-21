@@ -5,6 +5,8 @@
 Validates a Brazilian driver's license.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::cnh()->validate('02650306461'); // true
 ```
 

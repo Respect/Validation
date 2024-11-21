@@ -5,6 +5,8 @@
 Validates whether the type of an input is string or not.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::stringType()->validate('hi'); // true
 ```
 

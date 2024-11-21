@@ -5,6 +5,8 @@
 Validate whether a given input is a [Luhn][] number.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::luhn()->validate('2222400041240011'); // true
 v::luhn()->validate('respect!'); // false
 ```

@@ -5,6 +5,8 @@
 Validates if a year is leap.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::leapYear()->validate('1988'); // true
 ```
 

@@ -5,6 +5,8 @@
 Validates whether the input array contains only unique values.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::unique()->validate([]); // true
 v::unique()->validate([1, 2, 3]); // true
 v::unique()->validate([1, 2, 2, 3]); // false
