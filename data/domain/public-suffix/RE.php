@@ -4,5 +4,4 @@
 return [
     'ASSO.RE',
     'COM.RE',
-    'NOM.RE',
 ];

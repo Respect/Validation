@@ -7,5 +7,4 @@ return [
     'GOV.SG',
     'NET.SG',
     'ORG.SG',
-    'PER.SG',
 ];

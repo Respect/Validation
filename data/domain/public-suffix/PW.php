@@ -6,6 +6,5 @@ return [
     'CO.PW',
     'ED.PW',
     'GO.PW',
-    'NE.PW',
     'OR.PW',
 ];

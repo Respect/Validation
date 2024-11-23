@@ -11,7 +11,6 @@ return [
     'EDU.AU',
     'GOV.AU',
     'ID.AU',
-    'INFO.AU',
     'NET.AU',
     'NSW.AU',
     'NSW.EDU.AU',

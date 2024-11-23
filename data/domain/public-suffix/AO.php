@@ -4,8 +4,11 @@
 return [
     'CO.AO',
     'ED.AO',
+    'EDU.AO',
+    'GOV.AO',
     'GV.AO',
     'IT.AO',
     'OG.AO',
+    'ORG.AO',
     'PB.AO',
 ];

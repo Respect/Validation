@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'BIZ.SS',
+    'CO.SS',
     'COM.SS',
     'EDU.SS',
     'GOV.SS',
