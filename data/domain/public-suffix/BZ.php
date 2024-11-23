@@ -2,6 +2,7 @@
 // Copyright (c) https://publicsuffix.org
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
+    'CO.BZ',
     'COM.BZ',
     'EDU.BZ',
     'GOV.BZ',

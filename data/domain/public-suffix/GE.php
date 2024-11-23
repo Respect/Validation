@@ -5,8 +5,8 @@ return [
     'COM.GE',
     'EDU.GE',
     'GOV.GE',
-    'MIL.GE',
     'NET.GE',
     'ORG.GE',
     'PVT.GE',
+    'SCHOOL.GE',
 ];

@@ -11,10 +11,8 @@ return [
     'GO.CI',
     'GOUV.CI',
     'INT.CI',
-    'MD.CI',
     'NET.CI',
     'OR.CI',
     'ORG.CI',
-    'PRESSE.CI',
     'XN--AROPORT-BYA.CI',
 ];

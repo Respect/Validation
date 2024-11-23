@@ -10,5 +10,4 @@ return [
     'NOM.MG',
     'ORG.MG',
     'PRD.MG',
-    'TM.MG',
 ];
