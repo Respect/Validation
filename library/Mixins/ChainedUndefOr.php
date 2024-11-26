@@ -225,13 +225,9 @@ interface ChainedUndefOr
 
     public function undefOrMax(Validatable $rule): ChainedValidator;
 
-    public function undefOrMaxAge(int $age, ?string $format = null): ChainedValidator;
-
     public function undefOrMimetype(string $mimetype): ChainedValidator;
 
     public function undefOrMin(Validatable $rule): ChainedValidator;
-
-    public function undefOrMinAge(int $age, ?string $format = null): ChainedValidator;
 
     public function undefOrMultiple(int $multipleOf): ChainedValidator;
 

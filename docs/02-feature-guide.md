@@ -42,7 +42,7 @@ Is possible to validate its properties in a single chain:
 
 ```php
 $userValidator = v::property('name', v::stringType()->length(1, 32))
-                  ->property('birthdate', v::date()->minAge(18));
+                  ->property('birthdate', v::dateTimeDiff(v::greaterThanOrEqual(18), 'years'));
 
 $userValidator->validate($user); // true
 ```

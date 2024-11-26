@@ -221,13 +221,9 @@ interface ChainedNullOr
 
     public function nullOrMax(Validatable $rule): ChainedValidator;
 
-    public function nullOrMaxAge(int $age, ?string $format = null): ChainedValidator;
-
     public function nullOrMimetype(string $mimetype): ChainedValidator;
 
     public function nullOrMin(Validatable $rule): ChainedValidator;
-
-    public function nullOrMinAge(int $age, ?string $format = null): ChainedValidator;
 
     public function nullOrMultiple(int $multipleOf): ChainedValidator;
 

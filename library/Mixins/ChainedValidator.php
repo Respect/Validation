@@ -230,13 +230,9 @@ interface ChainedValidator extends
 
     public function max(Validatable $rule): ChainedValidator;
 
-    public function maxAge(int $age, ?string $format = null): ChainedValidator;
-
     public function mimetype(string $mimetype): ChainedValidator;
 
     public function min(Validatable $rule): ChainedValidator;
-
-    public function minAge(int $age, ?string $format = null): ChainedValidator;
 
     public function multiple(int $multipleOf): ChainedValidator;
 

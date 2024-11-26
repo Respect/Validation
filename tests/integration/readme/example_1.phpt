@@ -14,7 +14,7 @@ $user->name = 'Alexandre';
 $user->birthdate = '1987-07-01';
 
 $userValidator = v::property('name', v::stringType()->length(v::between(1, 32)))
-                  ->property('birthdate', v::dateTime()->minAge(18));
+                  ->property('birthdate', v::dateTimeDiff('years', v::greaterThanOrEqual(18)));
 
 $userValidator->assert($user);
 

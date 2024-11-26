@@ -264,13 +264,9 @@ interface StaticProperty
 
     public static function propertyMax(string $propertyName, Validatable $rule): ChainedValidator;
 
-    public static function propertyMaxAge(string $propertyName, int $age, ?string $format = null): ChainedValidator;
-
     public static function propertyMimetype(string $propertyName, string $mimetype): ChainedValidator;
 
     public static function propertyMin(string $propertyName, Validatable $rule): ChainedValidator;
-
-    public static function propertyMinAge(string $propertyName, int $age, ?string $format = null): ChainedValidator;
 
     public static function propertyMultiple(string $propertyName, int $multipleOf): ChainedValidator;
 

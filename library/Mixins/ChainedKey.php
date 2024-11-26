@@ -228,13 +228,9 @@ interface ChainedKey
 
     public function keyMax(int|string $key, Validatable $rule): ChainedValidator;
 
-    public function keyMaxAge(int|string $key, int $age, ?string $format = null): ChainedValidator;
-
     public function keyMimetype(int|string $key, string $mimetype): ChainedValidator;
 
     public function keyMin(int|string $key, Validatable $rule): ChainedValidator;
-
-    public function keyMinAge(int|string $key, int $age, ?string $format = null): ChainedValidator;
 
     public function keyMultiple(int|string $key, int $multipleOf): ChainedValidator;
 

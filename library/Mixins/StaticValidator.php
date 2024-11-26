@@ -233,13 +233,9 @@ interface StaticValidator extends
 
     public static function max(Validatable $rule): ChainedValidator;
 
-    public static function maxAge(int $age, ?string $format = null): ChainedValidator;
-
     public static function mimetype(string $mimetype): ChainedValidator;
 
     public static function min(Validatable $rule): ChainedValidator;
-
-    public static function minAge(int $age, ?string $format = null): ChainedValidator;
 
     public static function multiple(int $multipleOf): ChainedValidator;
 

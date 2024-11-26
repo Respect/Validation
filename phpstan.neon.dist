@@ -11,11 +11,6 @@ parameters:
       # Why: SimpleXMLElement is weird and doesn't implement anything ArrayAccess-like
       message: '/Instanceof between mixed and SimpleXMLElement will always evaluate to false\./'
       path: library/Rules/ArrayVal.php
-
-    -
-        # Why: I don't want to make changes to the code just to make phpstan happy
-        message: '/Parameter #2 \$values of function vsprintf expects array<bool\|float\|int\|string\|null>, array<string, array<bool\|int\|string>\|bool\|float\|int\|string> given./'
-        path: library/Rules/AbstractAge.php
   level: 8
   paths:
     - library/

@@ -48,6 +48,4 @@ See also:
 - [DateTimeDiff](DateTimeDiff.md)
 - [LeapDate](LeapDate.md)
 - [LeapYear](LeapYear.md)
-- [MaxAge](MaxAge.md)
-- [MinAge](MinAge.md)
 - [Time](Time.md)

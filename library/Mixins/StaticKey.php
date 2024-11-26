@@ -232,13 +232,9 @@ interface StaticKey
 
     public static function keyMax(int|string $key, Validatable $rule): ChainedValidator;
 
-    public static function keyMaxAge(int|string $key, int $age, ?string $format = null): ChainedValidator;
-
     public static function keyMimetype(int|string $key, string $mimetype): ChainedValidator;
 
     public static function keyMin(int|string $key, Validatable $rule): ChainedValidator;
-
-    public static function keyMinAge(int|string $key, int $age, ?string $format = null): ChainedValidator;
 
     public static function keyMultiple(int|string $key, int $multipleOf): ChainedValidator;
 

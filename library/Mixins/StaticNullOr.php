@@ -233,13 +233,9 @@ interface StaticNullOr
 
     public static function nullOrMax(Validatable $rule): ChainedValidator;
 
-    public static function nullOrMaxAge(int $age, ?string $format = null): ChainedValidator;
-
     public static function nullOrMimetype(string $mimetype): ChainedValidator;
 
     public static function nullOrMin(Validatable $rule): ChainedValidator;
-
-    public static function nullOrMinAge(int $age, ?string $format = null): ChainedValidator;
 
     public static function nullOrMultiple(int $multipleOf): ChainedValidator;
 

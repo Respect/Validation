@@ -18,6 +18,7 @@ use Respect\Validation\Message\Parameter\Raw;
 use Respect\Validation\Message\Parameter\Stringify;
 use Respect\Validation\Message\Parameter\Trans;
 use Respect\Validation\Transformers\Aliases;
+use Respect\Validation\Transformers\DeprecatedAge;
 use Respect\Validation\Transformers\DeprecatedAttribute;
 use Respect\Validation\Transformers\DeprecatedKey;
 use Respect\Validation\Transformers\DeprecatedKeyNested;
@@ -60,7 +61,9 @@ final class Factory
             new DeprecatedKey(
                 new DeprecatedKeyValue(
                     new DeprecatedMinAndMax(
-                        new DeprecatedKeyNested(new DeprecatedLength(new DeprecatedType(new Aliases(new Prefix()))))
+                        new DeprecatedAge(
+                            new DeprecatedKeyNested(new DeprecatedLength(new DeprecatedType(new Aliases(new Prefix()))))
+                        )
                     )
                 )
             )

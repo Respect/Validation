@@ -77,7 +77,6 @@ See also:
 - [DateTimeDiff](DateTimeDiff.md)
 - [LeapDate](LeapDate.md)
 - [LeapYear](LeapYear.md)
-- [MinAge](MinAge.md)
 - [Time](Time.md)
 
 [DateTimeImmutable::createFromFormat()]: https://www.php.net/datetimeimmutable.createfromformat

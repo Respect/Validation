@@ -78,8 +78,6 @@
 - [DateTimeDiff](rules/DateTimeDiff.md)
 - [LeapDate](rules/LeapDate.md)
 - [LeapYear](rules/LeapYear.md)
-- [MaxAge](rules/MaxAge.md)
-- [MinAge](rules/MinAge.md)
 - [Time](rules/Time.md)
 
 ## File system
@@ -380,10 +378,8 @@
 - [Luhn](rules/Luhn.md)
 - [MacAddress](rules/MacAddress.md)
 - [Max](rules/Max.md)
-- [MaxAge](rules/MaxAge.md)
 - [Mimetype](rules/Mimetype.md)
 - [Min](rules/Min.md)
-- [MinAge](rules/MinAge.md)
 - [Multiple](rules/Multiple.md)
 - [Negative](rules/Negative.md)
 - [NfeAccessKey](rules/NfeAccessKey.md)

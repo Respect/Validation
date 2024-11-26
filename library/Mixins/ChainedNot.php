@@ -221,13 +221,9 @@ interface ChainedNot
 
     public function notMax(Validatable $rule): ChainedValidator;
 
-    public function notMaxAge(int $age, ?string $format = null): ChainedValidator;
-
     public function notMimetype(string $mimetype): ChainedValidator;
 
     public function notMin(Validatable $rule): ChainedValidator;
-
-    public function notMinAge(int $age, ?string $format = null): ChainedValidator;
 
     public function notMultiple(int $multipleOf): ChainedValidator;
 

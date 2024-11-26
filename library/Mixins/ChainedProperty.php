@@ -240,13 +240,9 @@ interface ChainedProperty
 
     public function propertyMax(string $propertyName, Validatable $rule): ChainedValidator;
 
-    public function propertyMaxAge(string $propertyName, int $age, ?string $format = null): ChainedValidator;
-
     public function propertyMimetype(string $propertyName, string $mimetype): ChainedValidator;
 
     public function propertyMin(string $propertyName, Validatable $rule): ChainedValidator;
-
-    public function propertyMinAge(string $propertyName, int $age, ?string $format = null): ChainedValidator;
 
     public function propertyMultiple(string $propertyName, int $multipleOf): ChainedValidator;
 

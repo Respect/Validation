@@ -233,13 +233,9 @@ interface StaticUndefOr
 
     public static function undefOrMax(Validatable $rule): ChainedValidator;
 
-    public static function undefOrMaxAge(int $age, ?string $format = null): ChainedValidator;
-
     public static function undefOrMimetype(string $mimetype): ChainedValidator;
 
     public static function undefOrMin(Validatable $rule): ChainedValidator;
-
-    public static function undefOrMinAge(int $age, ?string $format = null): ChainedValidator;
 
     public static function undefOrMultiple(int $multipleOf): ChainedValidator;
 

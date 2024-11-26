@@ -225,13 +225,9 @@ interface StaticNot
 
     public static function notMax(Validatable $rule): ChainedValidator;
 
-    public static function notMaxAge(int $age, ?string $format = null): ChainedValidator;
-
     public static function notMimetype(string $mimetype): ChainedValidator;
 
     public static function notMin(Validatable $rule): ChainedValidator;
-
-    public static function notMinAge(int $age, ?string $format = null): ChainedValidator;
 
     public static function notMultiple(int $multipleOf): ChainedValidator;
 
