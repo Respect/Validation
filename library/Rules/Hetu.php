@@ -50,7 +50,7 @@ final class Hetu extends Simple
             return false;
         }
 
-        $id = $day . $month . $year . $individualNumber;
+        $id = (int) ($day . $month . $year . $individualNumber);
         $validationKeys = str_split('0123456789ABCDEFHJKLMNPRSTUVWXY');
 
         return $validationKeys[$id % 31] === $controlCharacter;

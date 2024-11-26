@@ -34,7 +34,6 @@ final class DeprecatedMinAndMax implements Transformer
             return $this->next->transform($ruleSpec);
         }
 
-        // @phpstan-ignore-next-line
         $name = match ($ruleSpec->name) {
             'min' => 'greaterThanOrEqual',
             'max' => 'lessThanOrEqual',
