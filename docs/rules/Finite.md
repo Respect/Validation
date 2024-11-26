@@ -5,6 +5,8 @@
 Validates if the input is a finite number.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::finite()->validate('10'); // true
 v::finite()->validate(10); // true
 ```

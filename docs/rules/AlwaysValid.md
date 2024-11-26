@@ -5,6 +5,8 @@
 Validates any input as valid.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::alwaysValid()->validate('whatever'); // true
 ```
 

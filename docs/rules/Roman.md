@@ -5,6 +5,8 @@
 Validates if the input is a Roman numeral.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::roman()->validate('IV'); // true
 ```
 

@@ -5,6 +5,8 @@
 Validates the input using the return of a given callable.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::callback(
     function (int $input): bool {
         return $input + ($input / 2) == 15;

@@ -5,6 +5,8 @@
 Validates if the given path is a directory.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::directory()->validate(__DIR__); // true
 v::directory()->validate(__FILE__); // false
 ```
@@ -12,6 +14,8 @@ v::directory()->validate(__FILE__); // false
 This validator will consider SplFileInfo instances, so you can do something like:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::directory()->validate(new SplFileInfo('library/'));
 v::directory()->validate(dir('/'));
 ```

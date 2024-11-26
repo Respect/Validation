@@ -5,6 +5,8 @@
 Validates whether the input is a public ICANN domain suffix.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::publicDomainSuffix->validate('co.uk'); // true
 v::publicDomainSuffix->validate('CO.UK'); // true
 v::publicDomainSuffix->validate('nom.br'); // true
@@ -15,6 +17,8 @@ This rule will not match top level domains such as `tk`.
 If you want to match either, use a combination with `Tld`:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::oneOf(v::tld(), v::publicDomainSuffix())->validate('tk'); // true
 ```
 

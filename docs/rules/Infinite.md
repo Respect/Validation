@@ -5,6 +5,8 @@
 Validates if the input is an infinite number.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::infinite()->validate(INF); // true
 ```
 

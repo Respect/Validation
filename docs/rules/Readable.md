@@ -5,6 +5,8 @@
 Validates if the given data is a file exists and is readable.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::readable()->validate('file.txt'); // true
 ```
 

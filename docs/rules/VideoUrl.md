@@ -6,6 +6,8 @@
 Validates if the input is a video URL value.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::videoUrl()->validate('https://player.vimeo.com/video/71787467'); // true
 v::videoUrl()->validate('https://vimeo.com/71787467'); // true
 v::videoUrl()->validate('https://www.youtube.com/embed/netHLn9TScY'); // true

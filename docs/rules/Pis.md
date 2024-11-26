@@ -5,6 +5,8 @@
 Validates a Brazilian PIS/NIS number ignoring any non-digit char.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::pis()->validate('120.0340.678-8'); // true
 v::pis()->validate('120.03406788'); // true
 v::pis()->validate('120.0340.6788'); // true

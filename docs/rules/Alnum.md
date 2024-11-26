@@ -9,6 +9,8 @@ Alphanumeric is a combination of alphabetic (a-z and A-Z) and numeric (0-9)
 characters.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::alnum()->validate('foo 123'); // false
 v::alnum(' ')->validate('foo 123'); // true
 v::alnum()->validate('100%'); // false
@@ -20,6 +22,8 @@ You can restrict case using the [Lowercase](Lowercase.md) and
 [Uppercase](Uppercase.md) rules.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::alnum()->uppercase()->validate('example'); // false
 ```
 

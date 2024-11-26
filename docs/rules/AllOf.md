@@ -5,6 +5,8 @@
 Will validate if all inner validators validates.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::allOf(v::intVal(), v::positive())->validate(15); // true
 ```
 

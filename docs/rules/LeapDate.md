@@ -5,6 +5,8 @@
 Validates if a date is leap.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::leapDate('Y-m-d')->validate('1988-02-29'); // true
 ```
 

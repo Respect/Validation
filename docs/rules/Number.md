@@ -5,6 +5,8 @@
 Validates if the input is a number.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::number()->validate(42); // true
 v::number()->validate(acos(8)); // false
 ```

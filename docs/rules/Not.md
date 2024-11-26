@@ -5,6 +5,8 @@
 Negates any rule.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::not(v::ip())->validate('foo'); // true
 ```
 
@@ -13,6 +15,8 @@ In the sample above, validator returns true because 'foo' isn't an IP Address.
 You can negate complex, grouped or chained validators as well:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::not(v::intVal()->positive())->validate(-1.5); // true
 ```
 

@@ -6,6 +6,8 @@ Validates if the input is countable, in other words, if you're allowed to use
 [count()](http://php.net/count) function on it.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::countable()->validate([]); // true
 v::countable()->validate(new ArrayObject()); // true
 v::countable()->validate('string'); // false

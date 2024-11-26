@@ -5,6 +5,8 @@
 Validates if the given input is a symbolic link.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::symbolicLink()->validate('/path/of/valid/symbolic/link'); // true
 v::symbolicLink()->validate(new SplFileInfo('/path/of/valid/symbolic/link)); // true
 v::symbolicLink()->validate(new SplFileObject('/path/of/valid/symbolic/link')); // true

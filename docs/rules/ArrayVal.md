@@ -6,6 +6,8 @@ Validates if the input is an array or if the input can be used as an array
 (instance of `ArrayAccess` or `SimpleXMLElement`).
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::arrayVal()->validate([]); // true
 v::arrayVal()->validate(new ArrayObject); // true
 v::arrayVal()->validate(new SimpleXMLElement('<xml></xml>')); // true

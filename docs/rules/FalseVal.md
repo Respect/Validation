@@ -5,6 +5,8 @@
 Validates if a value is considered as `false`.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::falseVal()->validate(false); // true
 v::falseVal()->validate(0); // true
 v::falseVal()->validate('0'); // true

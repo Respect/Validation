@@ -5,6 +5,8 @@
 Validates if the input is equal to some value.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::equals('alganet')->validate('alganet'); // true
 ```
 

@@ -8,6 +8,8 @@ This rule is particularly useful when creating rules that rely on the input. A g
 `confirmation` field matches the `password` field when processing data from a form.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::key('confirmation', v::equals($_POST['password'] ?? null))->validate($_POST);
 ```
 
@@ -17,6 +19,8 @@ you can create a chain of rules and use it everywhere.
 The `lazy()` rule makes this job much simpler and more elegantly:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::lazy(static fn($input) => v::key('confirmation', v::equals($input['password'] ?? null)))->validate($_POST);
 ```
 

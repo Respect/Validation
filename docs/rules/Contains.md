@@ -8,12 +8,16 @@ Validates if the input contains some value.
 For strings:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::contains('ipsum')->validate('lorem ipsum'); // true
 ```
 
 For arrays:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::contains('ipsum')->validate(['ipsum', 'lorem']); // true
 ```
 

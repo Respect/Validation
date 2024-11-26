@@ -5,6 +5,8 @@
 Validates if the input does not contain an emoji.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::notEmoji()->validate('Hello World, without emoji'); // true
 v::notEmoji()->validate('🍕'); // false
 v::notEmoji()->validate('🎈'); // false

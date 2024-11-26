@@ -6,6 +6,8 @@
 Similar to `Graph` but accepts whitespace.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::printable()->validate('LMKA0$% _123'); // true
 ```
 

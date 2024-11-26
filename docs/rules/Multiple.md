@@ -5,6 +5,8 @@
 Validates if the input is a multiple of the given parameter
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::intVal()->multiple(3)->validate(9); // true
 ```
 

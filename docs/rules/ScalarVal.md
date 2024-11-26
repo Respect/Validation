@@ -5,6 +5,8 @@
 Validates whether the input is a scalar value or not.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::scalarVal()->validate([]); // false
 v::scalarVal()->validate(135.0); // true
 ```

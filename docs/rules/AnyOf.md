@@ -5,6 +5,8 @@
 This is a group validator that acts as an OR operator.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::anyOf(v::intVal(), v::floatVal())->validate(15.5); // true
 ```
 

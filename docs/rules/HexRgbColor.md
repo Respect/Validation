@@ -5,6 +5,8 @@
 Validates weather the input is a hex RGB color or not.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::hexRgbColor()->validate('#FFFAAA'); // true
 v::hexRgbColor()->validate('#ff6600'); // true
 v::hexRgbColor()->validate('123123'); // true

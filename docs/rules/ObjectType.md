@@ -5,6 +5,8 @@
 Validates whether the input is an [object](http://php.net/types.object).
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::objectType()->validate(new stdClass); // true
 ```
 

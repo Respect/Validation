@@ -6,6 +6,8 @@ Validates if the given input is not optional. By _optional_ we consider `null`
 or an empty string (`''`).
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::notUndef()->validate(''); // false
 v::notUndef()->validate(null); // false
 ```
@@ -13,6 +15,8 @@ v::notUndef()->validate(null); // false
 Other values:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::notUndef()->validate([]); // true
 v::notUndef()->validate(' '); // true
 v::notUndef()->validate(0); // true

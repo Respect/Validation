@@ -5,6 +5,8 @@
 Validates whether the input is an odd number or not.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::odd()->validate(0); // false
 v::odd()->validate(3); // true
 ```

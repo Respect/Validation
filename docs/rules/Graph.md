@@ -7,6 +7,8 @@ Validates if all characters in the input are printable and actually creates
 visible output (no white space).
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::graph()->validate('LKM@#$%4;'); // true
 ```
 

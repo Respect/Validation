@@ -5,6 +5,8 @@
 Validates whether the input is a [resource](http://php.net/types.resource).
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::resourceType()->validate(fopen('/path/to/file.txt', 'w')); // true
 ```
 

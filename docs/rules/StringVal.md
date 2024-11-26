@@ -5,6 +5,8 @@
 Validates whether the input can be used as a string.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::stringVal()->validate('6'); // true
 v::stringVal()->validate('String'); // true
 v::stringVal()->validate(1.0); // true

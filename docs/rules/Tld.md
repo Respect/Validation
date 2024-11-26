@@ -5,6 +5,8 @@
 Validates whether the input is a top-level domain.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::tld()->validate('com'); // true
 v::tld()->validate('ly'); // true
 v::tld()->validate('org'); // true

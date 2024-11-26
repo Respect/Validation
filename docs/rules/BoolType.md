@@ -5,6 +5,8 @@
 Validates whether the type of the input is [boolean](http://php.net/types.boolean).
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::boolType()->validate(true); // true
 v::boolType()->validate(false); // true
 ```

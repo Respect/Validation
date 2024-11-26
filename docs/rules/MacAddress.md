@@ -5,6 +5,8 @@
 Validates whether the input is a valid MAC address.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::macAddress()->validate('00:11:22:33:44:55'); // true
 v::macAddress()->validate('af-AA-22-33-44-55'); // true
 ```

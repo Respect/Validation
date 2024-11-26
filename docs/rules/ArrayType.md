@@ -5,6 +5,8 @@
 Validates whether the type of an input is array.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::arrayType()->validate([]); // true
 v::arrayType()->validate([1, 2, 3]); // true
 v::arrayType()->validate(new ArrayObject()); // false

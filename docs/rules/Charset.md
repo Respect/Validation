@@ -5,6 +5,8 @@
 Validates if a string is in a specific charset.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::charset('ASCII')->validate('açúcar'); // false
 v::charset('ASCII')->validate('sugar');  //true
 v::charset('ISO-8859-1', 'EUC-JP')->validate('日本国'); // true

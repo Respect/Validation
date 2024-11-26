@@ -5,6 +5,8 @@
 Validates whether the input matches a defined regular expression.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::regex('/[a-z]/')->validate('a'); // true
 ```
 

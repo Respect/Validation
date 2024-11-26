@@ -8,6 +8,8 @@ accordance to PHP's [date()][] function. When `$format` is not  given this rule
 accepts [Supported Date and Time Formats][] by PHP (see [strtotime()][]).
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::minAge(18)->validate('18 years ago'); // true
 v::minAge(18, 'Y-m-d')->validate('1987-01-01'); // true
 

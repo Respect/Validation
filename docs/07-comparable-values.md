@@ -16,6 +16,8 @@ that can be parsed by PHP
 Below you can see some examples:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::greaterThanOrEqual(100)->validate($collection); // true if it has at least 100 items
 
 v::dateTime()

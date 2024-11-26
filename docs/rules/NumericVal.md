@@ -5,6 +5,8 @@
 Validates whether the input is numeric.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::numericVal()->validate(-12); // true
 v::numericVal()->validate('135.0'); // true
 ```

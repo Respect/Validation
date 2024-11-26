@@ -5,6 +5,8 @@
 Validates if the input is a file and if its MIME type matches the expected one.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::mimetype('image/png')->validate('image.png'); // true
 v::mimetype('image/jpeg')->validate('image.jpg'); // true
 ```

@@ -5,6 +5,8 @@
 Validates version numbers using Semantic Versioning.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::version()->validate('1.0.0');
 ```
 

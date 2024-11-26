@@ -5,6 +5,8 @@
 Validates whether the type of the input is [integer](http://php.net/types.integer).
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::intType()->validate(42); // true
 v::intType()->validate('10'); // false
 ```

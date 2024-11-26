@@ -5,6 +5,8 @@
 Validates if the input is an instance of the given class or interface.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::instance('DateTime')->validate(new DateTime); // true
 v::instance('Traversable')->validate(new ArrayObject); // true
 ```

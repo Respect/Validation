@@ -5,6 +5,8 @@
 Validates a prime number
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::primeNumber()->validate(7); // true
 ```
 

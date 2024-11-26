@@ -5,6 +5,8 @@
 Validates whether the input is an iterable value, in other words,  if you can iterate over it with the [foreach][] language construct.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::iterableVal()->validate([]); // true
 v::iterableVal()->validate(new ArrayObject()); // true
 v::iterableVal()->validate(new stdClass()); // true

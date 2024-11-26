@@ -5,6 +5,8 @@
 Validate numbers in any base, even with non regular bases.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::base(2)->validate('011010001'); // true
 v::base(3)->validate('0120122001'); // true
 v::base(8)->validate('01234567520'); // true

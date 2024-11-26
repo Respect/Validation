@@ -5,6 +5,8 @@
 Validates whether the input is between two other values.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::intVal()->between(10, 20)->validate(10); // true
 v::intVal()->between(10, 20)->validate(15); // true
 v::intVal()->between(10, 20)->validate(20); // true

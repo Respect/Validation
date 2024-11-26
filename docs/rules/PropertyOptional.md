@@ -21,6 +21,8 @@ v::propertyOptional('name', v::lowercase())->validate($object); // false
 The name of this validator is automatically set to the property name.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::propertyOptional('email', v::endsWith('@example.com'))->assert($object);
 // message: email must end with "@example.com"
 ```
@@ -32,6 +34,8 @@ anything that is not an object because it will always pass when it doesn't find 
 ensure the input is an object, use [ObjectType](ObjectType.md) with it.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::propertyOptional('name', v::notEmpty())->validate('Not an object'); // true
 v::objectType()->propertyOptional('name', v::notEmpty())->validate('Not an object'); // false
 ```

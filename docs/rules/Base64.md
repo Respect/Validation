@@ -5,6 +5,8 @@
 Validate if a string is Base64-encoded.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::base64()->validate('cmVzcGVjdCE='); // true
 v::base64()->validate('respect!'); // false
 ```

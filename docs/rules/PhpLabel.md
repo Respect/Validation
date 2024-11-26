@@ -9,6 +9,8 @@ Reference:
 http://php.net/manual/en/language.variables.basics.php
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::phpLabel()->validate('person'); //true
 v::phpLabel()->validate('foo'); //true
 v::phpLabel()->validate('4ccess'); //false

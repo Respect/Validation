@@ -9,12 +9,16 @@ only if the value is at the end of the input.
 For strings:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::endsWith('ipsum')->validate('lorem ipsum'); // true
 ```
 
 For arrays:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::endsWith('ipsum')->validate(['lorem', 'ipsum']); // true
 ```
 

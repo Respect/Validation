@@ -31,6 +31,8 @@ v::property(
 The name of this validator is automatically set to the property name.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::property('website', v::url())->assert($object);
 // message: website must be present
 

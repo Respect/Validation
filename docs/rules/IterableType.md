@@ -5,6 +5,8 @@
 Validates whether the input is iterable, meaning that it matches the built-in compile time type alias `iterable`.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::iterableType()->validate([]); // true
 v::iterableType()->validate(new ArrayObject()); // true
 

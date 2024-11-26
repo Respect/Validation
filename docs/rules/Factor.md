@@ -5,6 +5,8 @@
 Validates if the input is a factor of the defined dividend.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::factor(0)->validate(5); // true
 v::factor(4)->validate(2); // true
 v::factor(4)->validate(3); // false

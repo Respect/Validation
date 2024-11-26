@@ -6,6 +6,8 @@ Validates if the given input is not a blank value (`null`, zeros, empty strings
 or empty arrays, recursively).
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::notBlank()->validate(null); // false
 v::notBlank()->validate(''); // false
 v::notBlank()->validate([]); // false

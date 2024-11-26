@@ -10,6 +10,8 @@ This rule can be helpful in combinations with [Lazy](Lazy.md). An excellent exam
 country code and a subdivision code.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::consecutive(
     v::key('countryCode', v::countryCode()),
     v::lazy(static fn($input) => v::key('subdivisionCode', v::subdivisionCode($input['countryCode']))),

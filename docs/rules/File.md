@@ -5,6 +5,8 @@
 Validates whether file input is as a regular filename.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::file()->validate(__FILE__); // true
 v::file()->validate(__DIR__); // false
 ```
@@ -12,6 +14,8 @@ v::file()->validate(__DIR__); // false
 This validator will consider SplFileInfo instances, so you can do something like:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::file()->validate(new SplFileInfo('file.txt'));
 ```
 

@@ -5,6 +5,8 @@
 Validates whether the input is between two other values, exclusively.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::betweenExclusive(10, 20)->validate(10); // true
 v::betweenExclusive('a', 'e')->validate('c'); // true
 v::betweenExclusive(new DateTime('yesterday'), new DateTime('tomorrow'))->validate(new DateTime('today')); // true

@@ -6,6 +6,8 @@
 Validates if the input contains only consonants.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::consonant()->validate('xkcd'); // true
 ```
 

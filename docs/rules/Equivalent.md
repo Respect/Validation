@@ -5,6 +5,8 @@
 Validates if the input is equivalent to some value.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::equivalent(1)->validate(true); // true
 v::equivalent('Something')->validate('someThing'); // true
 v::equivalent(new ArrayObject([1, 2, 3, 4, 5]))->validate(new ArrayObject([1, 2, 3, 4, 5])); // true

@@ -17,6 +17,8 @@ v::each(v::dateTime())->validate($releaseDates); // true
 You can also validate array keys combining this rule with [Call](Call.md):
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::call('array_keys', v::each(v::stringType()))->validate($releaseDates); // true
 ```
 

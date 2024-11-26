@@ -5,6 +5,8 @@
 Validate whether the input value is float.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::floatVal()->validate(1.5); // true
 v::floatVal()->validate('1e5'); // true
 ```

@@ -6,6 +6,8 @@
 Validates if the file is a valid image by checking its MIME type.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::image()->validate('image.gif'); // true
 v::image()->validate('image.jpg'); // true
 v::image()->validate('image.png'); // true

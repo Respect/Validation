@@ -5,6 +5,8 @@
 Validates if the file extension matches the expected one:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::extension('png')->validate('image.png'); // true
 ```
 

@@ -5,6 +5,8 @@
 Validates if the given key exists in an array.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::keyExists('name')->validate(['name' => 'The Respect Panda']); // true
 v::keyExists('name')->validate(['email' => 'therespectpanda@gmail.com']); // false
 

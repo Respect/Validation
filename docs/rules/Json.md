@@ -5,6 +5,8 @@
 Validates if the given input is a valid JSON.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::json()->validate('{"foo":"bar"}'); // true
 ```
 

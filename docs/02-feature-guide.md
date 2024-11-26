@@ -72,6 +72,8 @@ $data = [
 Using the next combination of rules, we can validate child keys.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::key(
     'parentKey',
     v::key('field1', v::stringType())
@@ -93,6 +95,8 @@ For that reason all rules are mandatory now but if you want to treat a value as
 optional you can use `v::optional()` rule:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::alpha()->validate(''); // false input required
 v::alpha()->validate(null); // false input required
 
@@ -109,6 +113,8 @@ See more on [Optional](rules/UndefOr.md).
 You can use the `v::not()` to negate any rule:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::not(v::intVal())->validate(10); // false, input must not be integer
 ```
 
@@ -232,6 +238,8 @@ On `v::property()` and `v::key()`, `{{name}}` is the property/key name. For othe
 is the same as the input. You can customize a validator name using:
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::dateTime('Y-m-d')->between('1980-02-02', 'now')->setName('Member Since');
 ```
 

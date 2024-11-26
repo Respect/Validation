@@ -5,6 +5,8 @@
 Validates if the input is an integer, allowing leading zeros and other number bases.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::intVal()->validate('10'); // true
 v::intVal()->validate('089'); // true
 v::intVal()->validate(10); // true
@@ -17,6 +19,8 @@ but that does not contain non-integer values. That way, one can safely use the
 value this rule validates, without having surprises.
 
 ```php
+use Respect\Validation\Validator as v;
+
 v::intVal()->validate(true); // false
 v::intVal()->validate('89a'); // false
 ```
