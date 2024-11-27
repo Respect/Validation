@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::unique()->check([1, 2, 2, 3]));
-exceptionMessage(static fn() => v::not(v::unique())->check([1, 2, 3, 4]));
+exceptionMessage(static fn() => v::unique()->assert([1, 2, 2, 3]));
+exceptionMessage(static fn() => v::not(v::unique())->assert([1, 2, 3, 4]));
 exceptionFullMessage(static fn() => v::unique()->assert('test'));
 exceptionFullMessage(static fn() => v::not(v::unique())->assert(['a', 'b', 'c']));
 ?>

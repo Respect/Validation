@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::notEmoji()->check('🍕'));
-exceptionMessage(static fn() => v::not(v::notEmoji())->check('AB'));
+exceptionMessage(static fn() => v::notEmoji()->assert('🍕'));
+exceptionMessage(static fn() => v::not(v::notEmoji())->assert('AB'));
 exceptionFullMessage(static fn() => v::notEmoji()->assert('🏄'));
 exceptionFullMessage(static fn() => v::not(v::notEmoji())->assert('YZ'));
 ?>

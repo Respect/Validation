@@ -1,16 +1,14 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::size('1kb', '2kb')->check('tests/fixtures/valid-image.gif'));
-exceptionMessage(static fn() => v::size('700kb', null)->check('tests/fixtures/valid-image.gif'));
-exceptionMessage(static fn() => v::size(null, '1kb')->check('tests/fixtures/valid-image.gif'));
-exceptionMessage(static fn() => v::not(v::size('500kb', '600kb'))->check('tests/fixtures/valid-image.gif'));
-exceptionMessage(static fn() => v::not(v::size('500kb', null))->check('tests/fixtures/valid-image.gif'));
-exceptionMessage(static fn() => v::not(v::size(null, '600kb'))->check('tests/fixtures/valid-image.gif'));
+exceptionMessage(static fn() => v::size('1kb', '2kb')->assert('tests/fixtures/valid-image.gif'));
+exceptionMessage(static fn() => v::size('700kb', null)->assert('tests/fixtures/valid-image.gif'));
+exceptionMessage(static fn() => v::size(null, '1kb')->assert('tests/fixtures/valid-image.gif'));
+exceptionMessage(static fn() => v::not(v::size('500kb', '600kb'))->assert('tests/fixtures/valid-image.gif'));
+exceptionMessage(static fn() => v::not(v::size('500kb', null))->assert('tests/fixtures/valid-image.gif'));
+exceptionMessage(static fn() => v::not(v::size(null, '600kb'))->assert('tests/fixtures/valid-image.gif'));
 exceptionFullMessage(static fn() => v::size('1kb', '2kb')->assert('tests/fixtures/valid-image.gif'));
 exceptionFullMessage(static fn() => v::size('700kb', null)->assert('tests/fixtures/valid-image.gif'));
 exceptionFullMessage(static fn() => v::size(null, '1kb')->assert('tests/fixtures/valid-image.gif'));

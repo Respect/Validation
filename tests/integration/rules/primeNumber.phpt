@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::primeNumber()->check(10));
-exceptionMessage(static fn() => v::not(v::primeNumber())->check(3));
+exceptionMessage(static fn() => v::primeNumber()->assert(10));
+exceptionMessage(static fn() => v::not(v::primeNumber())->assert(3));
 exceptionFullMessage(static fn() => v::primeNumber()->assert('Foo'));
 exceptionFullMessage(static fn() => v::not(v::primeNumber())->assert('+7'));
 ?>

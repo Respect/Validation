@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::url()->check('example.com'));
-exceptionMessage(static fn() => v::not(v::url())->check('http://example.com'));
+exceptionMessage(static fn() => v::url()->assert('example.com'));
+exceptionMessage(static fn() => v::not(v::url())->assert('http://example.com'));
 exceptionFullMessage(static fn() => v::url()->assert('example.com'));
 exceptionFullMessage(static fn() => v::not(v::url())->assert('http://example.com'));
 ?>

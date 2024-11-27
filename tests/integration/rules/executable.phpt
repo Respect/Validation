@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::executable()->check('bar'));
-exceptionMessage(static fn() => v::not(v::executable())->check('tests/fixtures/executable'));
+exceptionMessage(static fn() => v::executable()->assert('bar'));
+exceptionMessage(static fn() => v::not(v::executable())->assert('tests/fixtures/executable'));
 exceptionFullMessage(static fn() => v::executable()->assert('bar'));
 exceptionFullMessage(static fn() => v::not(v::executable())->assert('tests/fixtures/executable'));
 ?>

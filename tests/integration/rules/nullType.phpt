@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::nullType()->check(''));
-exceptionMessage(static fn() => v::not(v::nullType())->check(null));
+exceptionMessage(static fn() => v::nullType()->assert(''));
+exceptionMessage(static fn() => v::not(v::nullType())->assert(null));
 exceptionFullMessage(static fn() => v::nullType()->assert(false));
 exceptionFullMessage(static fn() => v::not(v::nullType())->assert(null));
 ?>

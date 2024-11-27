@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::base64()->check('=c3VyZS4'));
-exceptionMessage(static fn() => v::not(v::base64())->check('c3VyZS4='));
+exceptionMessage(static fn() => v::base64()->assert('=c3VyZS4'));
+exceptionMessage(static fn() => v::not(v::base64())->assert('c3VyZS4='));
 exceptionFullMessage(static fn() => v::base64()->assert('=c3VyZS4'));
 exceptionFullMessage(static fn() => v::not(v::base64())->assert('c3VyZS4='));
 ?>

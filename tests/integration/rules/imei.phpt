@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::imei()->check('490154203237512'));
-exceptionMessage(static fn() => v::not(v::imei())->check('350077523237513'));
+exceptionMessage(static fn() => v::imei()->assert('490154203237512'));
+exceptionMessage(static fn() => v::not(v::imei())->assert('350077523237513'));
 exceptionFullMessage(static fn() => v::imei()->assert(null));
 exceptionFullMessage(static fn() => v::not(v::imei())->assert('356938035643809'));
 ?>

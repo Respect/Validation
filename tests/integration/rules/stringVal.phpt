@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::stringVal()->check([]));
-exceptionMessage(static fn() => v::not(v::stringVal())->check(true));
+exceptionMessage(static fn() => v::stringVal()->assert([]));
+exceptionMessage(static fn() => v::not(v::stringVal())->assert(true));
 exceptionFullMessage(static fn() => v::stringVal()->assert(new stdClass()));
 exceptionFullMessage(static fn() => v::not(v::stringVal())->assert(42));
 ?>

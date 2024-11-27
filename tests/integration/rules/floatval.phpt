@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::floatVal()->check('a'));
-exceptionMessage(static fn() => v::not(v::floatVal())->check(165.0));
+exceptionMessage(static fn() => v::floatVal()->assert('a'));
+exceptionMessage(static fn() => v::not(v::floatVal())->assert(165.0));
 exceptionFullMessage(static fn() => v::floatVal()->assert('a'));
 exceptionFullMessage(static fn() => v::not(v::floatVal())->assert('165.7'));
 ?>

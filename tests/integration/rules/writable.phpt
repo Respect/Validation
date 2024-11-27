@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::writable()->check('/path/of/a/valid/writable/file.txt'));
-exceptionMessage(static fn() => v::not(v::writable())->check('tests/fixtures/valid-image.png'));
+exceptionMessage(static fn() => v::writable()->assert('/path/of/a/valid/writable/file.txt'));
+exceptionMessage(static fn() => v::not(v::writable())->assert('tests/fixtures/valid-image.png'));
 exceptionFullMessage(static fn() => v::writable()->assert([]));
 exceptionFullMessage(static fn() => v::not(v::writable())->assert('tests/fixtures/invalid-image.png'));
 ?>

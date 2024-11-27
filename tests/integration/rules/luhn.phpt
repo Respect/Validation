@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::luhn()->check('2222400041240021'));
-exceptionMessage(static fn() => v::not(v::luhn())->check('2223000048400011'));
+exceptionMessage(static fn() => v::luhn()->assert('2222400041240021'));
+exceptionMessage(static fn() => v::not(v::luhn())->assert('2223000048400011'));
 exceptionFullMessage(static fn() => v::luhn()->assert('340316193809334'));
 exceptionFullMessage(static fn() => v::not(v::luhn())->assert('6011000990139424'));
 ?>

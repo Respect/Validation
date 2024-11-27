@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::email()->check('batman'));
-exceptionMessage(static fn() => v::not(v::email())->check('bruce.wayne@gothancity.com'));
+exceptionMessage(static fn() => v::email()->assert('batman'));
+exceptionMessage(static fn() => v::not(v::email())->assert('bruce.wayne@gothancity.com'));
 exceptionFullMessage(static fn() => v::email()->assert('bruce wayne'));
 exceptionFullMessage(static fn() => v::not(v::email())->assert('iambatman@gothancity.com'));
 ?>

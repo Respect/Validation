@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::extension('png')->check('filename.txt'));
-exceptionMessage(static fn() => v::not(v::extension('gif'))->check('filename.gif'));
+exceptionMessage(static fn() => v::extension('png')->assert('filename.txt'));
+exceptionMessage(static fn() => v::not(v::extension('gif'))->assert('filename.gif'));
 exceptionFullMessage(static fn() => v::extension('mp3')->assert('filename.wav'));
 exceptionFullMessage(static fn() => v::not(v::extension('png'))->assert('tests/fixtures/invalid-image.png'));
 ?>

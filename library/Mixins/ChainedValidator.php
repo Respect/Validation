@@ -11,6 +11,7 @@ namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
 use Respect\Validation\Validatable;
+use Throwable;
 
 interface ChainedValidator extends
     Validatable,
@@ -23,6 +24,23 @@ interface ChainedValidator extends
     ChainedProperty,
     ChainedUndefOr
 {
+    public function isValid(mixed $input): bool;
+
+    /**
+     * @param array<string, mixed>|string|Throwable|null $template
+     */
+    public function assert(mixed $input, array|string|Throwable|null $template = null): void;
+
+    /**
+     * @param array<string, mixed> $templates
+     */
+    public function setTemplates(array $templates): ChainedValidator;
+
+    /**
+     * @return array<Validatable>
+     */
+    public function getRules(): array;
+
     public function allOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
 
     public function alnum(string ...$additionalChars): ChainedValidator;

@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::macAddress()->check('00-11222:33:44:55'));
-exceptionMessage(static fn() => v::not(v::macAddress())->check('00:11:22:33:44:55'));
+exceptionMessage(static fn() => v::macAddress()->assert('00-11222:33:44:55'));
+exceptionMessage(static fn() => v::not(v::macAddress())->assert('00:11:22:33:44:55'));
 exceptionFullMessage(static fn() => v::macAddress()->assert('90-bc-nk:1a-dd-cc'));
 exceptionFullMessage(static fn() => v::not(v::macAddress())->assert('AF:0F:bd:12:44:ba'));
 ?>

@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::arrayVal()->check('Bla %123'));
-exceptionMessage(static fn() => v::not(v::arrayVal())->check([42]));
+exceptionMessage(static fn() => v::arrayVal()->assert('Bla %123'));
+exceptionMessage(static fn() => v::not(v::arrayVal())->assert([42]));
 exceptionFullMessage(static fn() => v::arrayVal()->assert(new stdClass()));
 exceptionFullMessage(static fn() => v::not(v::arrayVal())->assert(new ArrayObject([2, 3])));
 ?>

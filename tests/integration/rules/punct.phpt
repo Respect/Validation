@@ -1,14 +1,12 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::punct()->check('a'));
-exceptionMessage(static fn() => v::punct('c')->check('b'));
-exceptionMessage(static fn() => v::not(v::punct())->check('.'));
-exceptionMessage(static fn() => v::not(v::punct('d'))->check('?'));
+exceptionMessage(static fn() => v::punct()->assert('a'));
+exceptionMessage(static fn() => v::punct('c')->assert('b'));
+exceptionMessage(static fn() => v::not(v::punct())->assert('.'));
+exceptionMessage(static fn() => v::not(v::punct('d'))->assert('?'));
 exceptionFullMessage(static fn() => v::punct()->assert('e'));
 exceptionFullMessage(static fn() => v::punct('f')->assert('g'));
 exceptionFullMessage(static fn() => v::not(v::punct())->assert('!'));

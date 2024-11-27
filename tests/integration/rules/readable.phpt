@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::readable()->check('tests/fixtures/invalid-image.jpg'));
-exceptionMessage(static fn() => v::not(v::readable())->check('tests/fixtures/valid-image.png'));
+exceptionMessage(static fn() => v::readable()->assert('tests/fixtures/invalid-image.jpg'));
+exceptionMessage(static fn() => v::not(v::readable())->assert('tests/fixtures/valid-image.png'));
 exceptionFullMessage(static fn() => v::readable()->assert(new stdClass()));
 exceptionFullMessage(static fn() => v::not(v::readable())->assert('tests/fixtures/valid-image.png'));
 ?>

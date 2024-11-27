@@ -3,12 +3,10 @@ PhpLabel rule exception should not be thrown for valid inputs
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::phpLabel()->check('f o o'));
-exceptionMessage(static fn() => v::not(v::phpLabel())->check('correctOne'));
+exceptionMessage(static fn() => v::phpLabel()->assert('f o o'));
+exceptionMessage(static fn() => v::not(v::phpLabel())->assert('correctOne'));
 exceptionFullMessage(static fn() => v::phpLabel()->assert('0wner'));
 exceptionFullMessage(static fn() => v::not(v::phpLabel())->assert('Respect'));
 ?>

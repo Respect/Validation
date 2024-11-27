@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::nif()->check('06357771Q'));
-exceptionMessage(static fn() => v::not(v::nif())->check('71110316C'));
+exceptionMessage(static fn() => v::nif()->assert('06357771Q'));
+exceptionMessage(static fn() => v::not(v::nif())->assert('71110316C'));
 exceptionFullMessage(static fn() => v::nif()->assert('06357771Q'));
 exceptionFullMessage(static fn() => v::not(v::nif())->assert('R1332622H'));
 ?>

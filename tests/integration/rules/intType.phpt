@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::intType()->check(new stdClass()));
-exceptionMessage(static fn() => v::not(v::intType())->check(42));
+exceptionMessage(static fn() => v::intType()->assert(new stdClass()));
+exceptionMessage(static fn() => v::not(v::intType())->assert(42));
 exceptionFullMessage(static fn() => v::intType()->assert(INF));
 exceptionFullMessage(static fn() => v::not(v::intType())->assert(1234567890));
 ?>

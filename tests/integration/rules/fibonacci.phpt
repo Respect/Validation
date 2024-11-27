@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::fibonacci()->check(4));
-exceptionMessage(static fn() => v::not(v::fibonacci())->check(5));
+exceptionMessage(static fn() => v::fibonacci()->assert(4));
+exceptionMessage(static fn() => v::not(v::fibonacci())->assert(5));
 exceptionFullMessage(static fn() => v::fibonacci()->assert(16));
 exceptionFullMessage(static fn() => v::not(v::fibonacci())->assert(21));
 ?>

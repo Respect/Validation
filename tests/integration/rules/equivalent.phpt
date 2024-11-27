@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::equivalent(true)->check(false));
-exceptionMessage(static fn() => v::not(v::equivalent('Something'))->check('someThing'));
+exceptionMessage(static fn() => v::equivalent(true)->assert(false));
+exceptionMessage(static fn() => v::not(v::equivalent('Something'))->assert('someThing'));
 exceptionFullMessage(static fn() => v::equivalent(123)->assert('true'));
 exceptionFullMessage(static fn() => v::not(v::equivalent(true))->assert(1));
 ?>

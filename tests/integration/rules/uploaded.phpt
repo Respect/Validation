@@ -1,14 +1,12 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
 uopz_set_return('is_uploaded_file', false);
-exceptionMessage(static fn() => v::uploaded()->check('filename'));
+exceptionMessage(static fn() => v::uploaded()->assert('filename'));
 uopz_set_return('is_uploaded_file', true);
-exceptionMessage(static fn() => v::not(v::uploaded())->check('filename'));
+exceptionMessage(static fn() => v::not(v::uploaded())->assert('filename'));
 uopz_set_return('is_uploaded_file', false);
 exceptionFullMessage(static fn() => v::uploaded()->assert('filename'));
 uopz_set_return('is_uploaded_file', true);

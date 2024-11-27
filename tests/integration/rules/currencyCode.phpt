@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::currencyCode()->check('batman'));
-exceptionMessage(static fn() => v::not(v::currencyCode())->check('BRL'));
+exceptionMessage(static fn() => v::currencyCode()->assert('batman'));
+exceptionMessage(static fn() => v::not(v::currencyCode())->assert('BRL'));
 exceptionFullMessage(static fn() => v::currencyCode()->assert('ppz'));
 exceptionFullMessage(static fn() => v::not(v::currencyCode())->assert('GBP'));
 ?>

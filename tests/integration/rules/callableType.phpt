@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::callableType()->check([]));
-exceptionMessage(static fn() => v::not(v::callableType())->check('trim'));
+exceptionMessage(static fn() => v::callableType()->assert([]));
+exceptionMessage(static fn() => v::not(v::callableType())->assert('trim'));
 exceptionFullMessage(static fn() => v::callableType()->assert(true));
 exceptionFullMessage(static fn() => v::not(v::callableType())->assert(static function (): void {
     // Do nothing

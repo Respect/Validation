@@ -1,14 +1,12 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::videoUrl()->check('example.com'));
-exceptionMessage(static fn() => v::videoUrl('YouTube')->check('example.com'));
-exceptionMessage(static fn() => v::not(v::videoUrl())->check('https://player.vimeo.com/video/7178746722'));
-exceptionMessage(static fn() => v::not(v::videoUrl('YouTube'))->check('https://www.youtube.com/embed/netHLn9TScY'));
+exceptionMessage(static fn() => v::videoUrl()->assert('example.com'));
+exceptionMessage(static fn() => v::videoUrl('YouTube')->assert('example.com'));
+exceptionMessage(static fn() => v::not(v::videoUrl())->assert('https://player.vimeo.com/video/7178746722'));
+exceptionMessage(static fn() => v::not(v::videoUrl('YouTube'))->assert('https://www.youtube.com/embed/netHLn9TScY'));
 exceptionFullMessage(static fn() => v::videoUrl()->assert('example.com'));
 exceptionFullMessage(static fn() => v::videoUrl('Vimeo')->assert('example.com'));
 exceptionFullMessage(static fn() => v::not(v::videoUrl())->assert('https://youtu.be/netHLn9TScY'));

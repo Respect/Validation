@@ -1,8 +1,6 @@
 --FILE--
 <?php
 
- declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
 $validator = v::not(
@@ -17,7 +15,7 @@ $validator = v::not(
     )
 );
 
-exceptionMessage(static fn() => $validator->check(2));
+exceptionMessage(static fn() => $validator->assert(2));
 exceptionFullMessage(static fn() => $validator->assert(2));
 ?>
 --EXPECT--

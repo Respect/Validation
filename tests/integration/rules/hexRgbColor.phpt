@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::hexRgbColor()->check('invalid'));
-exceptionMessage(static fn() => v::not(v::hexRgbColor())->check('#808080'));
+exceptionMessage(static fn() => v::hexRgbColor()->assert('invalid'));
+exceptionMessage(static fn() => v::not(v::hexRgbColor())->assert('#808080'));
 exceptionFullMessage(static fn() => v::hexRgbColor()->assert('invalid'));
 exceptionFullMessage(static fn() => v::not(v::hexRgbColor())->assert('#808080'));
 ?>

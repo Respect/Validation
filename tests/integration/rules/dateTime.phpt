@@ -1,18 +1,16 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
 date_default_timezone_set('UTC');
 
-exceptionMessage(static fn() => v::dateTime()->check('FooBarBazz'));
-exceptionMessage(static fn() => v::dateTime('c')->check('06-12-1995'));
+exceptionMessage(static fn() => v::dateTime()->assert('FooBarBazz'));
+exceptionMessage(static fn() => v::dateTime('c')->assert('06-12-1995'));
 exceptionFullMessage(static fn() => v::dateTime()->assert('QuxQuuxx'));
 exceptionFullMessage(static fn() => v::dateTime('r')->assert(2018013030));
-exceptionMessage(static fn() => v::not(v::dateTime())->check('4 days ago'));
-exceptionMessage(static fn() => v::not(v::dateTime('Y-m-d'))->check('1988-09-09'));
+exceptionMessage(static fn() => v::not(v::dateTime())->assert('4 days ago'));
+exceptionMessage(static fn() => v::not(v::dateTime('Y-m-d'))->assert('1988-09-09'));
 exceptionFullMessage(static fn() => v::not(v::dateTime())->assert('+3 weeks'));
 exceptionFullMessage(static fn() => v::not(v::dateTime('d/m/y'))->assert('23/07/99'));
 ?>

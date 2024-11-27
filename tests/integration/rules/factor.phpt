@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::factor(3)->check(2));
-exceptionMessage(static fn() => v::not(v::factor(0))->check(300));
+exceptionMessage(static fn() => v::factor(3)->assert(2));
+exceptionMessage(static fn() => v::not(v::factor(0))->assert(300));
 exceptionFullMessage(static fn() => v::factor(5)->assert(3));
 exceptionFullMessage(static fn() => v::not(v::factor(6))->assert(1));
 ?>

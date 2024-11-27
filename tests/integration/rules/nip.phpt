@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require_once 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::nip()->check('1645865778'));
-exceptionMessage(static fn() => v::not(v::nip())->check('1645865777'));
+exceptionMessage(static fn() => v::nip()->assert('1645865778'));
+exceptionMessage(static fn() => v::not(v::nip())->assert('1645865777'));
 exceptionFullMessage(static fn() => v::nip()->assert('1645865778'));
 exceptionFullMessage(static fn() => v::not(v::nip())->assert('1645865777'));
 ?>

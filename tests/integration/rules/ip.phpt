@@ -1,14 +1,12 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::ip()->check('257.0.0.1'));
-exceptionMessage(static fn() => v::not(v::ip())->check('127.0.0.1'));
-exceptionMessage(static fn() => v::ip('127.0.1.*')->check('127.0.0.1'));
-exceptionMessage(static fn() => v::not(v::ip('127.0.1.*'))->check('127.0.1.1'));
+exceptionMessage(static fn() => v::ip()->assert('257.0.0.1'));
+exceptionMessage(static fn() => v::not(v::ip())->assert('127.0.0.1'));
+exceptionMessage(static fn() => v::ip('127.0.1.*')->assert('127.0.0.1'));
+exceptionMessage(static fn() => v::not(v::ip('127.0.1.*'))->assert('127.0.1.1'));
 exceptionFullMessage(static fn() => v::ip()->assert('257.0.0.1'));
 exceptionFullMessage(static fn() => v::not(v::ip())->assert('127.0.0.1'));
 exceptionFullMessage(static fn() => v::ip('127.0.1.*')->assert('127.0.0.1'));

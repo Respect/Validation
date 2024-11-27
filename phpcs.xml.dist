@@ -18,4 +18,7 @@
     <rule ref="Generic.Files.LineLength.TooLong">
         <exclude-pattern>tests/integration/</exclude-pattern>
     </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes.DeclareStrictTypesMissing">
+        <exclude-pattern>tests/integration/</exclude-pattern>
+    </rule>
 </ruleset>

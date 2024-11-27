@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::odd()->check(2));
-exceptionMessage(static fn() => v::not(v::odd())->check(7));
+exceptionMessage(static fn() => v::odd()->assert(2));
+exceptionMessage(static fn() => v::not(v::odd())->assert(7));
 exceptionFullMessage(static fn() => v::odd()->assert(2));
 exceptionFullMessage(static fn() => v::not(v::odd())->assert(9));
 ?>

@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::noneOf(v::intType(), v::positive())->check(42));
-exceptionMessage(static fn() => v::not(v::noneOf(v::intType(), v::positive()))->check('-1'));
+exceptionMessage(static fn() => v::noneOf(v::intType(), v::positive())->assert(42));
+exceptionMessage(static fn() => v::not(v::noneOf(v::intType(), v::positive()))->assert('-1'));
 exceptionFullMessage(static fn() => v::noneOf(v::intType(), v::positive())->assert(42));
 exceptionFullMessage(static fn() => v::not(v::noneOf(v::intType(), v::positive()))->assert('-1'));
 ?>

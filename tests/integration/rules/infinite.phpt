@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::infinite()->check(-9));
-exceptionMessage(static fn() => v::not(v::infinite())->check(INF));
+exceptionMessage(static fn() => v::infinite()->assert(-9));
+exceptionMessage(static fn() => v::not(v::infinite())->assert(INF));
 exceptionFullMessage(static fn() => v::infinite()->assert(new stdClass()));
 exceptionFullMessage(static fn() => v::not(v::infinite())->assert(INF * -1));
 ?>

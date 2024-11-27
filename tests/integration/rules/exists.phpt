@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::exists()->check('/path/of/a/non-existent/file'));
-exceptionMessage(static fn() => v::not(v::exists())->check('tests/fixtures/valid-image.gif'));
+exceptionMessage(static fn() => v::exists()->assert('/path/of/a/non-existent/file'));
+exceptionMessage(static fn() => v::not(v::exists())->assert('tests/fixtures/valid-image.gif'));
 exceptionFullMessage(static fn() => v::exists()->assert('/path/of/a/non-existent/file'));
 exceptionFullMessage(static fn() => v::not(v::exists())->assert('tests/fixtures/valid-image.png'));
 ?>

@@ -1,14 +1,12 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::alnum()->check('abc%1'));
-exceptionMessage(static fn() => v::alnum(' ')->check('abc%2'));
-exceptionMessage(static fn() => v::not(v::alnum())->check('abcd3'));
-exceptionMessage(static fn() => v::not(v::alnum('% '))->check('abc%4'));
+exceptionMessage(static fn() => v::alnum()->assert('abc%1'));
+exceptionMessage(static fn() => v::alnum(' ')->assert('abc%2'));
+exceptionMessage(static fn() => v::not(v::alnum())->assert('abcd3'));
+exceptionMessage(static fn() => v::not(v::alnum('% '))->assert('abc%4'));
 exceptionFullMessage(static fn() => v::alnum()->assert('abc^1'));
 exceptionFullMessage(static fn() => v::not(v::alnum())->assert('abcd2'));
 exceptionFullMessage(static fn() => v::alnum('* &%')->assert('abc^3'));

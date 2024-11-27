@@ -1,15 +1,12 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::max(10)->check(11));
-exceptionMessage(static fn() => v::not(v::max(10))->check(5));
+exceptionMessage(static fn() => v::max(10)->assert(11));
+exceptionMessage(static fn() => v::not(v::max(10))->assert(5));
 exceptionFullMessage(static fn() => v::max('today')->assert('tomorrow'));
 exceptionFullMessage(static fn() => v::not(v::max('b'))->assert('a'));
-// phpcs:disable Generic.Files.LineLength.TooLong
 ?>
 --EXPECTF--
 

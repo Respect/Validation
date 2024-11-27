@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::version()->check('1.3.7--'));
-exceptionMessage(static fn() => v::not(v::version())->check('1.0.0-alpha'));
+exceptionMessage(static fn() => v::version()->assert('1.3.7--'));
+exceptionMessage(static fn() => v::not(v::version())->assert('1.0.0-alpha'));
 exceptionFullMessage(static fn() => v::version()->assert('1.2.3.4-beta'));
 exceptionFullMessage(static fn() => v::not(v::version())->assert('1.3.7-rc.1'));
 ?>

@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::pis()->check('this thing'));
-exceptionMessage(static fn() => v::not(v::pis())->check('120.6671.406-4'));
+exceptionMessage(static fn() => v::pis()->assert('this thing'));
+exceptionMessage(static fn() => v::not(v::pis())->assert('120.6671.406-4'));
 exceptionFullMessage(static fn() => v::pis()->assert('your mother'));
 exceptionFullMessage(static fn() => v::not(v::pis())->assert('120.9378.174-5'));
 ?>

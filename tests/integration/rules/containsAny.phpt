@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::containsAny(['foo', 'bar'])->check('baz'));
-exceptionMessage(static fn() => v::not(v::containsAny(['foo', 'bar']))->check('fool'));
+exceptionMessage(static fn() => v::containsAny(['foo', 'bar'])->assert('baz'));
+exceptionMessage(static fn() => v::not(v::containsAny(['foo', 'bar']))->assert('fool'));
 exceptionFullMessage(static fn() => v::containsAny(['foo', 'bar'])->assert(['baz']));
 exceptionFullMessage(static fn() => v::not(v::containsAny(['foo', 'bar'], true))->assert(['bar', 'foo']));
 ?>

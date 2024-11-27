@@ -1,14 +1,12 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::alpha()->check('aaa%a'));
-exceptionMessage(static fn() => v::alpha(' ')->check('bbb%b'));
-exceptionMessage(static fn() => v::not(v::alpha())->check('ccccc'));
-exceptionMessage(static fn() => v::not(v::alpha('% '))->check('ddd%d'));
+exceptionMessage(static fn() => v::alpha()->assert('aaa%a'));
+exceptionMessage(static fn() => v::alpha(' ')->assert('bbb%b'));
+exceptionMessage(static fn() => v::not(v::alpha())->assert('ccccc'));
+exceptionMessage(static fn() => v::not(v::alpha('% '))->assert('ddd%d'));
 exceptionFullMessage(static fn() => v::alpha()->assert('eee^e'));
 exceptionFullMessage(static fn() => v::not(v::alpha())->assert('fffff'));
 exceptionFullMessage(static fn() => v::alpha('* &%')->assert('ggg^g'));

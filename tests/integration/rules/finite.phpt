@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::finite()->check(''));
-exceptionMessage(static fn() => v::not(v::finite())->check(10));
+exceptionMessage(static fn() => v::finite()->assert(''));
+exceptionMessage(static fn() => v::not(v::finite())->assert(10));
 exceptionFullMessage(static fn() => v::finite()->assert([12]));
 exceptionFullMessage(static fn() => v::not(v::finite())->assert('123456'));
 ?>

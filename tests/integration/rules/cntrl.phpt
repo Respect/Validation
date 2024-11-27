@@ -1,14 +1,12 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require_once 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::control()->check('16-50'));
-exceptionMessage(static fn() => v::control('16')->check('16-50'));
-exceptionMessage(static fn() => v::not(v::control())->check("\n"));
-exceptionMessage(static fn() => v::not(v::control('16'))->check("16\n"));
+exceptionMessage(static fn() => v::control()->assert('16-50'));
+exceptionMessage(static fn() => v::control('16')->assert('16-50'));
+exceptionMessage(static fn() => v::not(v::control())->assert("\n"));
+exceptionMessage(static fn() => v::not(v::control('16'))->assert("16\n"));
 exceptionFullMessage(static fn() => v::control()->assert('Foo'));
 exceptionFullMessage(static fn() => v::control('Bar')->assert('Foo'));
 exceptionFullMessage(static fn() => v::not(v::control())->assert("\n"));

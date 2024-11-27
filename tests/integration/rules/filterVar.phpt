@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::filterVar(FILTER_VALIDATE_IP)->check(42));
-exceptionMessage(static fn() => v::not(v::filterVar(FILTER_VALIDATE_BOOLEAN))->check('On'));
+exceptionMessage(static fn() => v::filterVar(FILTER_VALIDATE_IP)->assert(42));
+exceptionMessage(static fn() => v::not(v::filterVar(FILTER_VALIDATE_BOOLEAN))->assert('On'));
 exceptionFullMessage(static fn() => v::filterVar(FILTER_VALIDATE_EMAIL)->assert(1.5));
 exceptionFullMessage(static fn() => v::not(v::filterVar(FILTER_VALIDATE_FLOAT))->assert(1.0));
 ?>

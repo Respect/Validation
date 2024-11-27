@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::lowercase()->check('UPPERCASE'));
-exceptionMessage(static fn() => v::not(v::lowercase())->check('lowercase'));
+exceptionMessage(static fn() => v::lowercase()->assert('UPPERCASE'));
+exceptionMessage(static fn() => v::not(v::lowercase())->assert('lowercase'));
 exceptionFullMessage(static fn() => v::lowercase()->assert('UPPERCASE'));
 exceptionFullMessage(static fn() => v::not(v::lowercase())->assert('lowercase'));
 ?>

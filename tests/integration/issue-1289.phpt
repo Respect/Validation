@@ -1,8 +1,6 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 use Respect\Validation\Rules\ArrayType;
 use Respect\Validation\Rules\BoolType;
 use Respect\Validation\Rules\Each;
@@ -43,7 +41,7 @@ $input = [
         'children' => ['nope'],
     ],
 ];
-exceptionMessage(static fn() => $validator->check($input));
+exceptionMessage(static fn() => $validator->assert($input));
 exceptionFullMessage(static fn() => $validator->assert($input));
 ?>
 --EXPECT--

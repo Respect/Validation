@@ -1,8 +1,6 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
 $object = new stdClass();
@@ -17,7 +15,6 @@ exceptionMessage(static fn() => v::attribute('foo', v::falseVal(), true)->assert
 exceptionMessage(static fn() => v::not(v::attribute('foo', v::trueVal(), true))->assert($object));
 exceptionMessage(static fn() => v::attribute('foo', v::falseVal(), false)->assert($object));
 exceptionMessage(static fn() => v::not(v::attribute('foo', v::trueVal(), false))->assert($object));
-// phpcs:disable Generic.Files.LineLength.TooLong
 ?>
 --EXPECTF--
 

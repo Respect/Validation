@@ -1,14 +1,12 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::vowel()->check('b'));
-exceptionMessage(static fn() => v::vowel('c')->check('d'));
-exceptionMessage(static fn() => v::not(v::vowel())->check('a'));
-exceptionMessage(static fn() => v::not(v::vowel('f'))->check('e'));
+exceptionMessage(static fn() => v::vowel()->assert('b'));
+exceptionMessage(static fn() => v::vowel('c')->assert('d'));
+exceptionMessage(static fn() => v::not(v::vowel())->assert('a'));
+exceptionMessage(static fn() => v::not(v::vowel('f'))->assert('e'));
 exceptionFullMessage(static fn() => v::vowel()->assert('g'));
 exceptionFullMessage(static fn() => v::vowel('h')->assert('j'));
 exceptionFullMessage(static fn() => v::not(v::vowel())->assert('i'));

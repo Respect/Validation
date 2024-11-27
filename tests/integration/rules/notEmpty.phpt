@@ -1,13 +1,11 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::notEmpty()->check(null));
-exceptionMessage(static fn() => v::notEmpty()->setName('Field')->check(null));
-exceptionMessage(static fn() => v::not(v::notEmpty())->check(1));
+exceptionMessage(static fn() => v::notEmpty()->assert(null));
+exceptionMessage(static fn() => v::notEmpty()->setName('Field')->assert(null));
+exceptionMessage(static fn() => v::not(v::notEmpty())->assert(1));
 exceptionFullMessage(static fn() => v::notEmpty()->assert(''));
 exceptionFullMessage(static fn() => v::notEmpty()->setName('Field')->assert(''));
 exceptionFullMessage(static fn() => v::not(v::notEmpty())->assert([1]));

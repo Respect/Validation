@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::tld()->check('42'));
-exceptionMessage(static fn() => v::not(v::tld())->check('com'));
+exceptionMessage(static fn() => v::tld()->assert('42'));
+exceptionMessage(static fn() => v::not(v::tld())->assert('com'));
 exceptionFullMessage(static fn() => v::tld()->assert('1984'));
 exceptionFullMessage(static fn() => v::not(v::tld())->assert('com'));
 ?>

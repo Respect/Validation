@@ -3,8 +3,6 @@ setTemplate() with multiple validators should use template as main message
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
 use Respect\Validation\Validator;

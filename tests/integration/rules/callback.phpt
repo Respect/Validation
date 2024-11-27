@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::callback('is_string')->check([]));
-exceptionMessage(static fn() => v::not(v::callback('is_string'))->check('foo'));
+exceptionMessage(static fn() => v::callback('is_string')->assert([]));
+exceptionMessage(static fn() => v::not(v::callback('is_string'))->assert('foo'));
 exceptionFullMessage(static fn() => v::callback('is_string')->assert(true));
 exceptionFullMessage(static fn() => v::not(v::callback('is_string'))->assert('foo'));
 ?>

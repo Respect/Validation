@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::regex('/^w+$/')->check('w poiur'));
-exceptionMessage(static fn() => v::not(v::regex('/^[a-z]+$/'))->check('wpoiur'));
+exceptionMessage(static fn() => v::regex('/^w+$/')->assert('w poiur'));
+exceptionMessage(static fn() => v::not(v::regex('/^[a-z]+$/'))->assert('wpoiur'));
 exceptionFullMessage(static fn() => v::regex('/^w+$/')->assert(new stdClass()));
 exceptionFullMessage(static fn() => v::not(v::regex('/^[a-z]+$/i'))->assert('wPoiur'));
 ?>

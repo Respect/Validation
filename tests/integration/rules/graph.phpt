@@ -1,14 +1,12 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::graph()->check("foo\nbar"));
-exceptionMessage(static fn() => v::graph('foo')->check("foo\nbar"));
-exceptionMessage(static fn() => v::not(v::graph())->check('foobar'));
-exceptionMessage(static fn() => v::not(v::graph("\n"))->check("foo\nbar"));
+exceptionMessage(static fn() => v::graph()->assert("foo\nbar"));
+exceptionMessage(static fn() => v::graph('foo')->assert("foo\nbar"));
+exceptionMessage(static fn() => v::not(v::graph())->assert('foobar'));
+exceptionMessage(static fn() => v::not(v::graph("\n"))->assert("foo\nbar"));
 exceptionFullMessage(static fn() => v::graph()->assert("foo\nbar"));
 exceptionFullMessage(static fn() => v::graph('foo')->assert("foo\nbar"));
 exceptionFullMessage(static fn() => v::not(v::graph())->assert('foobar'));

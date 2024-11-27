@@ -1,11 +1,9 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::alwaysInvalid()->check('whatever'));
+exceptionMessage(static fn() => v::alwaysInvalid()->assert('whatever'));
 exceptionFullMessage(static fn() => v::alwaysInvalid()->assert(''));
 ?>
 --EXPECT--

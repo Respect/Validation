@@ -1,8 +1,6 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
 run([
@@ -11,7 +9,7 @@ run([
     'Negative wrapped' => [v::undefOr(v::not(v::alpha())), 'alpha'],
     'Negative undefined' => [v::not(v::undefOr(v::alpha())), null],
     'Negative undefined, wrapped name' => [v::not(v::undefOr(v::alpha()->setName('Wrapped'))), null],
-    'Negative undefined, wrapped name' => [v::not(v::undefOr(v::alpha())->setName('Wrapper')), null],
+    'Negative undefined, wrapper name' => [v::not(v::undefOr(v::alpha())->setName('Wrapper')), null],
     'Negative undefined, not name' => [v::not(v::undefOr(v::alpha()))->setName('Not'), null],
     'With template' => [v::undefOr(v::alpha()), 123, 'Underneath the undulating umbrella'],
     'With array template' => [v::undefOr(v::alpha()), 123, ['undefOrAlpha' => 'Undefined number of unique unicorns']],
@@ -51,6 +49,14 @@ The value must not be undefined
 ]
 
 Negative undefined, wrapped name
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+Wrapped must not be undefined
+- Wrapped must not be undefined
+[
+    'notUndefOr' => 'Wrapped must not be undefined',
+]
+
+Negative undefined, wrapper name
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 Wrapper must not be undefined
 - Wrapper must not be undefined

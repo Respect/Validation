@@ -1,8 +1,6 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
 run([
@@ -15,7 +13,6 @@ run([
     'property' => [v::propertyBetween('foo', 1, 3), (object) ['foo' => 5]],
     'undefOr' => [v::undefOrUrl(), 'string'],
 ]);
-// phpcs:disable Generic.Files.LineLength.TooLong
 ?>
 --EXPECT--
 key

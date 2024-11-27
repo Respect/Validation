@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::subset([1, 2])->check([1, 2, 3]));
-exceptionMessage(static fn() => v::not(v::subset([1, 2, 3]))->check([1, 2]));
+exceptionMessage(static fn() => v::subset([1, 2])->assert([1, 2, 3]));
+exceptionMessage(static fn() => v::not(v::subset([1, 2, 3]))->assert([1, 2]));
 exceptionFullMessage(static fn() => v::subset(['A', 'B'])->assert(['B', 'C']));
 exceptionFullMessage(static fn() => v::not(v::subset(['A']))->assert(['A']));
 ?>

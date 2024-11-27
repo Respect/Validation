@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::instance(DateTime::class)->check(''));
-exceptionMessage(static fn() => v::not(v::instance(Traversable::class))->check(new ArrayObject()));
+exceptionMessage(static fn() => v::instance(DateTime::class)->assert(''));
+exceptionMessage(static fn() => v::not(v::instance(Traversable::class))->assert(new ArrayObject()));
 exceptionFullMessage(static fn() => v::instance(ArrayIterator::class)->assert(new stdClass()));
 exceptionFullMessage(static fn() => v::not(v::instance(stdClass::class))->assert(new stdClass()));
 ?>

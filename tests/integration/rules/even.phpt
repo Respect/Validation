@@ -1,13 +1,11 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::even()->check(-1));
+exceptionMessage(static fn() => v::even()->assert(-1));
 exceptionFullMessage(static fn() => v::even()->assert(5));
-exceptionMessage(static fn() => v::not(v::even())->check(6));
+exceptionMessage(static fn() => v::not(v::even())->assert(6));
 exceptionFullMessage(static fn() => v::not(v::even())->assert(8));
 ?>
 --EXPECT--

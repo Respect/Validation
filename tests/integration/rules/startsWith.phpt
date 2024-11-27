@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::startsWith('b')->check(['a', 'b']));
-exceptionMessage(static fn() => v::not(v::startsWith(1.1))->check([1.1, 2.2]));
+exceptionMessage(static fn() => v::startsWith('b')->assert(['a', 'b']));
+exceptionMessage(static fn() => v::not(v::startsWith(1.1))->assert([1.1, 2.2]));
 exceptionFullMessage(static fn() => v::startsWith('3.3', true)->assert([3.3, 4.4]));
 exceptionFullMessage(static fn() => v::not(v::startsWith('c'))->assert(['c', 'd']));
 ?>

@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::cpf()->check('this thing'));
-exceptionMessage(static fn() => v::not(v::cpf())->check('276.865.775-11'));
+exceptionMessage(static fn() => v::cpf()->assert('this thing'));
+exceptionMessage(static fn() => v::not(v::cpf())->assert('276.865.775-11'));
 exceptionFullMessage(static fn() => v::cpf()->assert('your mother'));
 exceptionFullMessage(static fn() => v::not(v::cpf())->assert('61836182848'));
 ?>

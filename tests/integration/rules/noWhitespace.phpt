@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::noWhitespace()->check('w poiur'));
-exceptionMessage(static fn() => v::not(v::noWhitespace())->check('wpoiur'));
+exceptionMessage(static fn() => v::noWhitespace()->assert('w poiur'));
+exceptionMessage(static fn() => v::not(v::noWhitespace())->assert('wpoiur'));
 exceptionFullMessage(static fn() => v::noWhitespace()->assert('w poiur'));
 exceptionFullMessage(static fn() => v::not(v::noWhitespace())->assert('wpoiur'));
 ?>

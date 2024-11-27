@@ -11,9 +11,29 @@ parameters:
       # Why: SimpleXMLElement is weird and doesn't implement anything ArrayAccess-like
       message: '/Instanceof between mixed and SimpleXMLElement will always evaluate to false\./'
       path: library/Rules/ArrayVal.php
+    - message: '/Call to deprecated method optional\(\).+/'
+      path: tests/integration/transformers/aliases.phpt
+    - message: '/Call to an undefined static method Respect\\Validation\\Validator::(min|max)Age\(\)./'
+      path: tests/integration/transformers/deprecated_age.phpt
+    - message: '/Call to an undefined static method Respect\\Validation\\Validator::attribute\(\)./'
+      path: tests/integration/transformers/deprecated_attribute.phpt
+    - message: '/Static method Respect\\Validation\\Mixins\\StaticValidator::key\(\) invoked with \d parameters?, 2 required/'
+      path: tests/integration/transformers/deprecated_key.phpt
+    - message: '/Call to an undefined static method Respect\\Validation\\Validator::keyNested\(\)./'
+      path: tests/integration/transformers/deprecated_keyNested.phpt
+    - message: '/Call to an undefined static method Respect\\Validation\\Validator::keyValue\(\)./'
+      path: tests/integration/transformers/deprecated_keyValue.phpt
+    - message: '/Parameter #1 \$rule of static method Respect\\Validation\\Mixins\\StaticValidator::length\(\) expects Respect\\Validation\\Validatable.+/'
+      path: tests/integration/transformers/deprecated_length.phpt
+    - message: '/Static method Respect\\Validation\\Mixins\\StaticValidator::length\(\) invoked with \d parameters, 1 required/'
+      path: tests/integration/transformers/deprecated_length.phpt
+    - message: '/Parameter #1 \$rule of static method Respect\\Validation\\Mixins\\StaticValidator::max\(\) expects Respect\\Validation\\Validatable.+/'
+      path: tests/integration/transformers/deprecated_max.phpt
+    - message: '/Parameter #1 \$rule of static method Respect\\Validation\\Mixins\\StaticValidator::min\(\) expects Respect\\Validation\\Validatable.+/'
+      path: tests/integration/transformers/deprecated_min.phpt
+    - message: '/Call to an undefined static method Respect\\Validation\\Validator::type\(\)./'
+      path: tests/integration/transformers/deprecated_type.phpt
   level: 8
   paths:
     - library/
     - tests/
-  excludePaths:
-    - tests/integration/

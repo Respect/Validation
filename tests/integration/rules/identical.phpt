@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::identical(123)->check(321));
-exceptionMessage(static fn() => v::not(v::identical(321))->check(321));
+exceptionMessage(static fn() => v::identical(123)->assert(321));
+exceptionMessage(static fn() => v::not(v::identical(321))->assert(321));
 exceptionFullMessage(static fn() => v::identical(123)->assert(321));
 exceptionFullMessage(static fn() => v::not(v::identical(321))->assert(321));
 ?>

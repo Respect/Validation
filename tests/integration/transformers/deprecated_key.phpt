@@ -1,8 +1,6 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
 $array = ['foo' => true, 'bar' => 42];
@@ -13,7 +11,6 @@ exceptionMessage(static fn() => v::key('foo', v::falseVal(), true)->assert($arra
 exceptionMessage(static fn() => v::not(v::key('foo', v::trueVal(), true))->assert($array));
 exceptionMessage(static fn() => v::key('foo', v::falseVal(), false)->assert($array));
 exceptionMessage(static fn() => v::not(v::key('foo', v::trueVal(), false))->assert($array));
-// phpcs:disable Generic.Files.LineLength.TooLong
 ?>
 --EXPECTF--
 

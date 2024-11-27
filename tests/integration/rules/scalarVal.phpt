@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::scalarVal()->check([]));
-exceptionMessage(static fn() => v::not(v::scalarVal())->check(true));
+exceptionMessage(static fn() => v::scalarVal()->assert([]));
+exceptionMessage(static fn() => v::not(v::scalarVal())->assert(true));
 exceptionFullMessage(static fn() => v::scalarVal()->assert(new stdClass()));
 exceptionFullMessage(static fn() => v::not(v::scalarVal())->assert(42));
 ?>

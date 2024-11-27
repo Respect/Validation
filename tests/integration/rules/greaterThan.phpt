@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::greaterThan(21)->check(12));
-exceptionMessage(static fn() => v::not(v::greaterThan('yesterday'))->check('today'));
+exceptionMessage(static fn() => v::greaterThan(21)->assert(12));
+exceptionMessage(static fn() => v::not(v::greaterThan('yesterday'))->assert('today'));
 exceptionFullMessage(static fn() => v::greaterThan('2018-09-09')->assert('1988-09-09'));
 exceptionFullMessage(static fn() => v::not(v::greaterThan('a'))->assert('ba'));
 ?>

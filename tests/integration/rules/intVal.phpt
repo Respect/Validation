@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::intVal()->check('42.33'));
-exceptionMessage(static fn() => v::not(v::intVal())->check(2));
+exceptionMessage(static fn() => v::intVal()->assert('42.33'));
+exceptionMessage(static fn() => v::not(v::intVal())->assert(2));
 exceptionFullMessage(static fn() => v::intVal()->assert('Foo'));
 exceptionFullMessage(static fn() => v::not(v::intVal())->assert(3));
 exceptionFullMessage(static fn() => v::not(v::intVal())->assert(-42));

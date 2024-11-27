@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::cnh()->check('batman'));
-exceptionMessage(static fn() => v::not(v::cnh())->check('02650306461'));
+exceptionMessage(static fn() => v::cnh()->assert('batman'));
+exceptionMessage(static fn() => v::not(v::cnh())->assert('02650306461'));
 exceptionFullMessage(static fn() => v::cnh()->assert('bruce wayne'));
 exceptionFullMessage(static fn() => v::not(v::cnh())->assert('02650306461'));
 ?>

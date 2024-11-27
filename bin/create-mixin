@@ -227,6 +227,21 @@ function overwriteFile(string $content, string $basename): void
             $chainedInterface->addExtend(ChainedProperty::class);
             $chainedInterface->addExtend(ChainedUndefOr::class);
 
+            $isValid = $chainedInterface->addMethod('isValid')->setPublic()->setReturnType('bool');
+            $isValid->addParameter('input')->setType('mixed');
+
+            $assert = $chainedInterface->addMethod('assert')->setPublic()->setReturnType('void');
+            $assert->addParameter('input')->setType('mixed');
+            $assert->addParameter('template')->setType('array|string|\Throwable|null')->setDefaultValue(null);
+            $assert->addComment('@param array<string, mixed>|string|\Throwable|null $template');
+
+            $setTemplates = $chainedInterface->addMethod('setTemplates')->setPublic()->setReturnType(ChainedValidator::class);
+            $setTemplates->addParameter('templates')->setType('array');
+            $setTemplates->addComment('@param array<string, mixed> $templates');
+
+            $getRules = $chainedInterface->addMethod('getRules')->setPublic()->setReturnType('array');
+            $getRules->addComment('@return array<Validatable>');
+
             $staticInterface->addExtend(StaticKey::class);
             $staticInterface->addExtend(StaticLength::class);
             $staticInterface->addExtend(StaticMax::class);

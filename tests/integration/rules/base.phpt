@@ -1,13 +1,11 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::base(61)->check('Z01xSsg5675hic20dj'));
+exceptionMessage(static fn() => v::base(61)->assert('Z01xSsg5675hic20dj'));
 exceptionFullMessage(static fn() => v::base(2)->assert(''));
-exceptionMessage(static fn() => v::not(v::base(2))->check('011010001'));
+exceptionMessage(static fn() => v::not(v::base(2))->assert('011010001'));
 exceptionFullMessage(static fn() => v::not(v::base(2))->assert('011010001'));
 ?>
 --EXPECT--

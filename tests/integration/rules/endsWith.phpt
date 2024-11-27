@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::endsWith('foo')->check('bar'));
-exceptionMessage(static fn() => v::not(v::endsWith('foo'))->check(['bar', 'foo']));
+exceptionMessage(static fn() => v::endsWith('foo')->assert('bar'));
+exceptionMessage(static fn() => v::not(v::endsWith('foo'))->assert(['bar', 'foo']));
 exceptionFullMessage(static fn() => v::endsWith('foo')->assert(''));
 exceptionFullMessage(static fn() => v::not(v::endsWith('foo'))->assert(['bar', 'foo']));
 ?>

@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::countryCode()->check('1'));
-exceptionMessage(static fn() => v::not(v::countryCode())->check('BR'));
+exceptionMessage(static fn() => v::countryCode()->assert('1'));
+exceptionMessage(static fn() => v::not(v::countryCode())->assert('BR'));
 exceptionFullMessage(static fn() => v::countryCode()->assert('1'));
 exceptionFullMessage(static fn() => v::not(v::countryCode())->assert('BR'));
 ?>

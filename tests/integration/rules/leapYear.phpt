@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::leapYear()->check('2009'));
-exceptionMessage(static fn() => v::not(v::leapYear())->check('2008'));
+exceptionMessage(static fn() => v::leapYear()->assert('2009'));
+exceptionMessage(static fn() => v::not(v::leapYear())->assert('2008'));
 exceptionFullMessage(static fn() => v::leapYear()->assert('2009-02-29'));
 exceptionFullMessage(static fn() => v::not(v::leapYear())->assert('2008'));
 ?>

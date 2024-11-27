@@ -1,20 +1,18 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require_once 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::length(0, 5, false)->check('forest'));
-exceptionMessage(static fn() => v::length(10, 20)->check('river'));
-exceptionMessage(static fn() => v::length(15, null, false)->check('mountain'));
-exceptionMessage(static fn() => v::length(20)->check('ocean'));
-exceptionMessage(static fn() => v::length(2, 5)->check('desert'));
-exceptionMessage(static fn() => v::not(v::length(0, 15))->check('rainforest'));
-exceptionMessage(static fn() => v::not(v::length(0, 20, false))->check('glacier'));
-exceptionMessage(static fn() => v::not(v::length(3, null))->check('meadow'));
-exceptionMessage(static fn() => v::not(v::length(5, null, false))->check('volcano'));
-exceptionMessage(static fn() => v::not(v::length(5, 20))->check('canyon'));
+exceptionMessage(static fn() => v::length(0, 5, false)->assert('forest'));
+exceptionMessage(static fn() => v::length(10, 20)->assert('river'));
+exceptionMessage(static fn() => v::length(15, null, false)->assert('mountain'));
+exceptionMessage(static fn() => v::length(20)->assert('ocean'));
+exceptionMessage(static fn() => v::length(2, 5)->assert('desert'));
+exceptionMessage(static fn() => v::not(v::length(0, 15))->assert('rainforest'));
+exceptionMessage(static fn() => v::not(v::length(0, 20, false))->assert('glacier'));
+exceptionMessage(static fn() => v::not(v::length(3, null))->assert('meadow'));
+exceptionMessage(static fn() => v::not(v::length(5, null, false))->assert('volcano'));
+exceptionMessage(static fn() => v::not(v::length(5, 20))->assert('canyon'));
 exceptionFullMessage(static fn() => v::length(0, 5, false)->assert('prairie'));
 exceptionFullMessage(static fn() => v::length(0, 5)->assert('wetland'));
 exceptionFullMessage(static fn() => v::length(15, null, false)->assert('tundra'));
@@ -29,7 +27,6 @@ exceptionFullMessage(static fn() => v::not(v::length(5, 20))->assert('delta'));
 exceptionFullMessage(static fn() => v::not(v::length(5, 11, false))->assert('waterfall'));
 exceptionFullMessage(static fn() => v::length(8, 8)->assert('estuary'));
 exceptionFullMessage(static fn() => v::not(v::length(5, 5))->assert('grove'));
-// phpcs:disable Generic.Files.LineLength.TooLong
 ?>
 --EXPECTF--
 

@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::directory()->check('batman'));
-exceptionMessage(static fn() => v::not(v::directory())->check(dirname('/etc/')));
+exceptionMessage(static fn() => v::directory()->assert('batman'));
+exceptionMessage(static fn() => v::not(v::directory())->assert(dirname('/etc/')));
 exceptionFullMessage(static fn() => v::directory()->assert('ppz'));
 exceptionFullMessage(static fn() => v::not(v::directory())->assert(dirname('/etc/')));
 ?>

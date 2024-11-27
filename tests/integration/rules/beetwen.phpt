@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::between(1, 2)->check(0));
-exceptionMessage(static fn() => v::not(v::between('yesterday', 'tomorrow'))->check('today'));
+exceptionMessage(static fn() => v::between(1, 2)->assert(0));
+exceptionMessage(static fn() => v::not(v::between('yesterday', 'tomorrow'))->assert('today'));
 exceptionFullMessage(static fn() => v::between('a', 'c')->assert('d'));
 exceptionFullMessage(static fn() => v::not(v::between(-INF, INF))->assert(0));
 exceptionFullMessage(static fn() => v::not(v::between('a', 'b'))->assert('a'));

@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::roman()->check(1234));
-exceptionMessage(static fn() => v::not(v::roman())->check('XL'));
+exceptionMessage(static fn() => v::roman()->assert(1234));
+exceptionMessage(static fn() => v::not(v::roman())->assert('XL'));
 exceptionFullMessage(static fn() => v::roman()->assert('e2'));
 exceptionFullMessage(static fn() => v::not(v::roman())->assert('IV'));
 ?>

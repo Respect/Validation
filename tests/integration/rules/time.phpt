@@ -1,14 +1,12 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
 date_default_timezone_set('UTC');
 
-exceptionMessage(static fn() => v::time()->check('2018-01-30'));
-exceptionMessage(static fn() => v::not(v::time())->check('09:25:46'));
+exceptionMessage(static fn() => v::time()->assert('2018-01-30'));
+exceptionMessage(static fn() => v::not(v::time())->assert('09:25:46'));
 exceptionFullMessage(static fn() => v::time()->assert('2018-01-30'));
 exceptionFullMessage(static fn() => v::not(v::time('g:i A'))->assert('8:13 AM'));
 ?>

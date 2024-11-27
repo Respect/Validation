@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::arrayType()->check('teste'));
-exceptionMessage(static fn() => v::not(v::arrayType())->check([]));
+exceptionMessage(static fn() => v::arrayType()->assert('teste'));
+exceptionMessage(static fn() => v::not(v::arrayType())->assert([]));
 exceptionFullMessage(static fn() => v::arrayType()->assert(new ArrayObject()));
 exceptionFullMessage(static fn() => v::not(v::arrayType())->assert([1, 2, 3]));
 ?>

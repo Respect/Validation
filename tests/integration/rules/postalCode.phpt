@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::postalCode('BR')->check('1057BV'));
-exceptionMessage(static fn() => v::not(v::postalCode('NL'))->check('1057BV'));
+exceptionMessage(static fn() => v::postalCode('BR')->assert('1057BV'));
+exceptionMessage(static fn() => v::not(v::postalCode('NL'))->assert('1057BV'));
 exceptionFullMessage(static fn() => v::postalCode('BR')->assert('1057BV'));
 exceptionFullMessage(static fn() => v::not(v::postalCode('NL'))->assert('1057BV'));
 ?>

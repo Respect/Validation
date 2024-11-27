@@ -1,14 +1,12 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::space()->check('ab'));
-exceptionMessage(static fn() => v::space('c')->check('cd'));
-exceptionMessage(static fn() => v::not(v::space())->check("\t"));
-exceptionMessage(static fn() => v::not(v::space('def'))->check("\r"));
+exceptionMessage(static fn() => v::space()->assert('ab'));
+exceptionMessage(static fn() => v::space('c')->assert('cd'));
+exceptionMessage(static fn() => v::not(v::space())->assert("\t"));
+exceptionMessage(static fn() => v::not(v::space('def'))->assert("\r"));
 exceptionFullMessage(static fn() => v::space()->assert('ef'));
 exceptionFullMessage(static fn() => v::space('e')->assert('gh'));
 exceptionFullMessage(static fn() => v::not(v::space())->assert("\n"));

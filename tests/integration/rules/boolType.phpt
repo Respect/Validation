@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::boolType()->check('teste'));
-exceptionMessage(static fn() => v::not(v::boolType())->check(true));
+exceptionMessage(static fn() => v::boolType()->assert('teste'));
+exceptionMessage(static fn() => v::not(v::boolType())->assert(true));
 exceptionFullMessage(static fn() => v::boolType()->assert([]));
 exceptionFullMessage(static fn() => v::not(v::boolType())->assert(false));
 ?>

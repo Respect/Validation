@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::bsn()->check('acb'));
-exceptionMessage(static fn() => v::not(v::bsn())->check('612890053'));
+exceptionMessage(static fn() => v::bsn()->assert('acb'));
+exceptionMessage(static fn() => v::not(v::bsn())->assert('612890053'));
 exceptionFullMessage(static fn() => v::bsn()->assert('abc'));
 exceptionFullMessage(static fn() => v::not(v::bsn())->assert('612890053'));
 ?>

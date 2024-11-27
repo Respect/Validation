@@ -1,14 +1,12 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::consonant()->check('aeiou'));
-exceptionMessage(static fn() => v::consonant('d')->check('daeiou'));
-exceptionMessage(static fn() => v::not(v::consonant())->check('bcd'));
-exceptionMessage(static fn() => v::not(v::consonant('a'))->check('abcd'));
+exceptionMessage(static fn() => v::consonant()->assert('aeiou'));
+exceptionMessage(static fn() => v::consonant('d')->assert('daeiou'));
+exceptionMessage(static fn() => v::not(v::consonant())->assert('bcd'));
+exceptionMessage(static fn() => v::not(v::consonant('a'))->assert('abcd'));
 exceptionFullMessage(static fn() => v::consonant()->assert('aeiou'));
 exceptionFullMessage(static fn() => v::consonant('d')->assert('daeiou'));
 exceptionFullMessage(static fn() => v::not(v::consonant())->assert('bcd'));

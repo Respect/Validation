@@ -1,8 +1,6 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
 use Respect\Validation\Factory;
@@ -18,8 +16,6 @@ Factory::setDefaultInstance(
                     => 'O comprimento de',
                 '{{name}} must be of type string'
                     => '{{name}} deve ser do tipo string',
-                '{{name}} must be between {{minValue}} and {{maxValue}}'
-                    => '{{name}} deve possuir de {{minValue}} a {{maxValue}} caracteres',
                 '{{name}} must be between {{minValue}} and {{maxValue}}'
                     => '{{name}} deve possuir de {{minValue}} a {{maxValue}} caracteres',
                 '{{name}} must be a valid telephone number for country {{countryName|trans}}'

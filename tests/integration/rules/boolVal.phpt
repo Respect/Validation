@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::boolVal()->check('ok'));
-exceptionMessage(static fn() => v::not(v::boolVal())->check('yes'));
+exceptionMessage(static fn() => v::boolVal()->assert('ok'));
+exceptionMessage(static fn() => v::not(v::boolVal())->assert('yes'));
 exceptionFullMessage(static fn() => v::boolVal()->assert('yep'));
 exceptionFullMessage(static fn() => v::not(v::boolVal())->assert('on'));
 ?>

@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require_once 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::polishIdCard()->check('AYE205411'));
-exceptionMessage(static fn() => v::not(v::polishIdCard())->check('AYE205410'));
+exceptionMessage(static fn() => v::polishIdCard()->assert('AYE205411'));
+exceptionMessage(static fn() => v::not(v::polishIdCard())->assert('AYE205410'));
 exceptionFullMessage(static fn() => v::polishIdCard()->assert('AYE205411'));
 exceptionFullMessage(static fn() => v::not(v::polishIdCard())->assert('AYE205410'));
 ?>

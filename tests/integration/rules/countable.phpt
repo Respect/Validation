@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::countable()->check(1.0));
-exceptionMessage(static fn() => v::not(v::countable())->check([]));
+exceptionMessage(static fn() => v::countable()->assert(1.0));
+exceptionMessage(static fn() => v::not(v::countable())->assert([]));
 exceptionFullMessage(static fn() => v::countable()->assert('Not countable!'));
 exceptionFullMessage(static fn() => v::not(v::countable())->assert(new ArrayObject()));
 ?>

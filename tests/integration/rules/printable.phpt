@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::printable()->check(''));
-exceptionMessage(static fn() => v::not(v::printable())->check('abc'));
+exceptionMessage(static fn() => v::printable()->assert(''));
+exceptionMessage(static fn() => v::not(v::printable())->assert('abc'));
 exceptionFullMessage(static fn() => v::printable()->assert('foo' . chr(10) . 'bar'));
 exceptionFullMessage(static fn() => v::not(v::printable())->assert('$%asd'));
 ?>

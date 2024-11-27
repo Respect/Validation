@@ -3,14 +3,12 @@ Do not rely on nested validation exception interface for check
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
 use Respect\Validation\Validator;
 
 exceptionMessage(
-    static fn () => Validator::alnum('__')->lengthBetween(1, 15)->noWhitespace()->check('really messed up screen#name')
+    static fn () => Validator::alnum('__')->lengthBetween(1, 15)->noWhitespace()->assert('really messed up screen#name')
 );
 ?>
 --EXPECT--

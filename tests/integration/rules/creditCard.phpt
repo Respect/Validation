@@ -1,12 +1,10 @@
 --FILE--
 <?php
 
-declare(strict_types=1);
-
 require 'vendor/autoload.php';
 
-exceptionMessage(static fn() => v::creditCard('Discover')->check(3566002020360505));
-exceptionMessage(static fn() => v::not(v::creditCard('Visa'))->check(4024007153361885));
+exceptionMessage(static fn() => v::creditCard('Discover')->assert(3566002020360505));
+exceptionMessage(static fn() => v::not(v::creditCard('Visa'))->assert(4024007153361885));
 exceptionFullMessage(static fn() => v::creditCard('MasterCard')->assert(3566002020360505));
 exceptionFullMessage(static fn() => v::not(v::creditCard())->assert(5555444433331111));
 ?>
