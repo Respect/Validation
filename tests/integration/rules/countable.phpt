@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::countable()->check(1.0));
 exceptionMessage(static fn() => v::not(v::countable())->check([]));
 exceptionFullMessage(static fn() => v::countable()->assert('Not countable!'));

@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require_once 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::cnpj()->check('não cnpj'));
 exceptionMessage(static fn() => v::not(v::cnpj())->check('65.150.175/0001-20'));
 exceptionFullMessage(static fn() => v::cnpj()->assert('test'));

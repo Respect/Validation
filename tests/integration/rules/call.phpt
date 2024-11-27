@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::call('trim', v::noWhitespace())->check(' two words '));
 exceptionMessage(static fn() => v::not(v::call('stripslashes', v::stringType()))->check(' some\\thing '));
 exceptionMessage(static fn() => v::call('stripslashes', v::alwaysValid())->check([]));

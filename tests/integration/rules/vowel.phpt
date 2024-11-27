@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::vowel()->check('b'));
 exceptionMessage(static fn() => v::vowel('c')->check('d'));
 exceptionMessage(static fn() => v::not(v::vowel())->check('a'));

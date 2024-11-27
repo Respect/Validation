@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::version()->check('1.3.7--'));
 exceptionMessage(static fn() => v::not(v::version())->check('1.0.0-alpha'));
 exceptionFullMessage(static fn() => v::version()->assert('1.2.3.4-beta'));

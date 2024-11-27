@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::type('array')->assert(1));
 exceptionMessage(static fn() => v::type('bool')->assert(1));
 exceptionMessage(static fn() => v::type('boolean')->assert(1));

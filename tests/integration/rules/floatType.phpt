@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::floatType()->check('42.33'));
 exceptionMessage(static fn() => v::not(v::floatType())->check(INF));
 exceptionFullMessage(static fn() => v::floatType()->assert(true));

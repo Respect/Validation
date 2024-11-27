@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::directory()->check('batman'));
 exceptionMessage(static fn() => v::not(v::directory())->check(dirname('/etc/')));
 exceptionFullMessage(static fn() => v::directory()->assert('ppz'));

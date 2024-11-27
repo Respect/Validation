@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::unique()->check([1, 2, 2, 3]));
 exceptionMessage(static fn() => v::not(v::unique())->check([1, 2, 3, 4]));
 exceptionFullMessage(static fn() => v::unique()->assert('test'));

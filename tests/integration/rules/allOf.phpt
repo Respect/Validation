@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 run([
     'Two rules' => [v::allOf(v::intType(), v::negative()), '2'],
     'Wrapped by "not"' => [v::not(v::allOf(v::intType(), v::positive())), 3],

@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::luhn()->check('2222400041240021'));
 exceptionMessage(static fn() => v::not(v::luhn())->check('2223000048400011'));
 exceptionFullMessage(static fn() => v::luhn()->assert('340316193809334'));

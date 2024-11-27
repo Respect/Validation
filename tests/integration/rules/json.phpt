@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::json()->check(false));
 exceptionMessage(static fn() => v::not(v::json())->check('{"foo": "bar", "number":1}'));
 exceptionFullMessage(static fn() => v::json()->assert(new stdClass()));

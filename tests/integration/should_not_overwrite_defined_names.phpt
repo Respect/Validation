@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 $input = ['email' => 'not an email'];
 
 exceptionMessage(static fn() => v::key('email', v::email()->setName('Email'))->setName('Foo')->check($input));

@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 $array = ['foo' => true, 'bar' => 42];
 
 exceptionMessage(static fn() => v::key('baz')->assert($array));

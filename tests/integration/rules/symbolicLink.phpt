@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::symbolicLink()->check('tests/fixtures/fake-filename'));
 exceptionMessage(static fn() => v::not(v::symbolicLink())->check('tests/fixtures/symbolic-link'));
 exceptionFullMessage(static fn() => v::symbolicLink()->assert('tests/fixtures/fake-filename'));

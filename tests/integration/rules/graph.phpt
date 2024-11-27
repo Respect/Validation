@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::graph()->check("foo\nbar"));
 exceptionMessage(static fn() => v::graph('foo')->check("foo\nbar"));
 exceptionMessage(static fn() => v::not(v::graph())->check('foobar'));

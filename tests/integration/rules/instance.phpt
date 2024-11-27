@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::instance(DateTime::class)->check(''));
 exceptionMessage(static fn() => v::not(v::instance(Traversable::class))->check(new ArrayObject()));
 exceptionFullMessage(static fn() => v::instance(ArrayIterator::class)->assert(new stdClass()));

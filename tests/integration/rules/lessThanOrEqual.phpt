@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::lessThanOrEqual(10)->check(11));
 exceptionMessage(static fn() => v::not(v::lessThanOrEqual(10))->check(5));
 exceptionFullMessage(static fn() => v::lessThanOrEqual('today')->assert('tomorrow'));

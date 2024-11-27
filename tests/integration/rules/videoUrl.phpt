@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::videoUrl()->check('example.com'));
 exceptionMessage(static fn() => v::videoUrl('YouTube')->check('example.com'));
 exceptionMessage(static fn() => v::not(v::videoUrl())->check('https://player.vimeo.com/video/7178746722'));

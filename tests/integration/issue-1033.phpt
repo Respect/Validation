@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionFullMessage(static fn() => v::each(v::equals(1))->assert(['A', 'B', 'B']));
 ?>
 --EXPECT--

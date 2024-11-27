@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::noneOf(v::intType(), v::positive())->check(42));
 exceptionMessage(static fn() => v::not(v::noneOf(v::intType(), v::positive()))->check('-1'));
 exceptionFullMessage(static fn() => v::noneOf(v::intType(), v::positive())->assert(42));

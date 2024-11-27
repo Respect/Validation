@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::file()->check('tests/fixtures/non-existent.sh'));
 exceptionMessage(static fn() => v::not(v::file())->check('tests/fixtures/valid-image.png'));
 exceptionFullMessage(static fn() => v::file()->assert('tests/fixtures/non-existent.sh'));

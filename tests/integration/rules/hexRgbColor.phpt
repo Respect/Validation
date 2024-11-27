@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::hexRgbColor()->check('invalid'));
 exceptionMessage(static fn() => v::not(v::hexRgbColor())->check('#808080'));
 exceptionFullMessage(static fn() => v::hexRgbColor()->assert('invalid'));

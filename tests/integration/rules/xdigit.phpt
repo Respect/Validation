@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::xdigit()->check('aaa%a'));
 exceptionMessage(static fn() => v::xdigit(' ')->check('bbb%b'));
 exceptionMessage(static fn() => v::not(v::xdigit())->check('ccccc'));

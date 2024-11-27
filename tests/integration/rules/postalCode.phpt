@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::postalCode('BR')->check('1057BV'));
 exceptionMessage(static fn() => v::not(v::postalCode('NL'))->check('1057BV'));
 exceptionFullMessage(static fn() => v::postalCode('BR')->assert('1057BV'));

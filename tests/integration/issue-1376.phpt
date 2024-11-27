@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionFullMessage(static function (): void {
     v::property('title', v::lengthBetween(2, 3)->stringType())
             ->property('description', v::stringType())

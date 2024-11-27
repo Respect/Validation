@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require_once 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::nip()->check('1645865778'));
 exceptionMessage(static fn() => v::not(v::nip())->check('1645865777'));
 exceptionFullMessage(static fn() => v::nip()->assert('1645865778'));

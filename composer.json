@@ -59,6 +59,7 @@
             "Respect\\Validation\\Test\\": "tests/library/"
         },
         "files": [
+            "tests/integration/lib/aliases.php",
             "tests/integration/lib/helpers.php"
         ]
     },

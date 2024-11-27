@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionFullMessage(
     static fn() => v::alnum()->noWhitespace()->lengthBetween(1, 15)->assert('really messed up screen#name')
 );

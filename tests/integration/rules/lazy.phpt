@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 run([
     'Default' => [v::lazy(static fn() => v::intType()), true],
     'Negative' => [v::not(v::lazy(static fn() => v::intType())), 2],

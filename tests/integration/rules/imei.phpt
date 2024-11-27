@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::imei()->check('490154203237512'));
 exceptionMessage(static fn() => v::not(v::imei())->check('350077523237513'));
 exceptionFullMessage(static fn() => v::imei()->assert(null));

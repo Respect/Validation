@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::leapYear()->check('2009'));
 exceptionMessage(static fn() => v::not(v::leapYear())->check('2008'));
 exceptionFullMessage(static fn() => v::leapYear()->assert('2009-02-29'));

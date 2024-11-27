@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::cnh()->check('batman'));
 exceptionMessage(static fn() => v::not(v::cnh())->check('02650306461'));
 exceptionFullMessage(static fn() => v::cnh()->assert('bruce wayne'));

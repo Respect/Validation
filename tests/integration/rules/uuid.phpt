@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::uuid()->check('g71a18f4-3a13-11e7-a919-92ebcb67fe33'));
 exceptionMessage(static fn() => v::uuid(1)->check('e0b5ffb9-9caf-2a34-9673-8fc91db78be6'));
 exceptionMessage(static fn() => v::not(v::uuid())->check('fb3a7909-8034-59f5-8f38-21adbc168db7'));

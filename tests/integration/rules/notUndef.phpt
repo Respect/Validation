@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::notUndef()->check(null));
 exceptionMessage(static fn() => v::not(v::notUndef())->check(0));
 exceptionMessage(static fn() => v::notUndef()->setName('Field')->check(null));

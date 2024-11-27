@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 run([
     'Default' => [v::hetu(), '010106A901O'],
     'Negative' => [v::not(v::hetu()), '010106A9012'],

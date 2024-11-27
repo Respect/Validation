@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::keyValue('foo', 'equals', 'bar')->check(['bar' => 42]));
 exceptionMessage(static fn() => v::keyValue('foo', 'equals', 'bar')->check(['foo' => 42]));
 exceptionMessage(static fn() => v::keyValue('foo', 'json', 'bar')->check(['foo' => 42, 'bar' => 43]));

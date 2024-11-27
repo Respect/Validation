@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require_once 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::polishIdCard()->check('AYE205411'));
 exceptionMessage(static fn() => v::not(v::polishIdCard())->check('AYE205410'));
 exceptionFullMessage(static fn() => v::polishIdCard()->assert('AYE205411'));

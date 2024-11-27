@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::space()->check('ab'));
 exceptionMessage(static fn() => v::space('c')->check('cd'));
 exceptionMessage(static fn() => v::not(v::space())->check("\t"));

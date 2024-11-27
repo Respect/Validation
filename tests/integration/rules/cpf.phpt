@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::cpf()->check('this thing'));
 exceptionMessage(static fn() => v::not(v::cpf())->check('276.865.775-11'));
 exceptionFullMessage(static fn() => v::cpf()->assert('your mother'));

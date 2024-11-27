@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require_once 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::control()->check('16-50'));
 exceptionMessage(static fn() => v::control('16')->check('16-50'));
 exceptionMessage(static fn() => v::not(v::control())->check("\n"));

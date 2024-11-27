@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::alnum()->check('abc%1'));
 exceptionMessage(static fn() => v::alnum(' ')->check('abc%2'));
 exceptionMessage(static fn() => v::not(v::alnum())->check('abcd3'));

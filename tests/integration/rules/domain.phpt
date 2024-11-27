@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::domain()->check('batman'));
 exceptionMessage(static fn() => v::not(v::domain())->check('r--w.com'));
 exceptionFullMessage(static fn() => v::domain()->assert('p-éz-.kk'));

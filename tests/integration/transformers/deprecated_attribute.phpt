@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 $object = new stdClass();
 $object->foo = true;
 $object->bar = 42;

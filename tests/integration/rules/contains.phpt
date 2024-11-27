@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::contains('foo')->check('bar'));
 exceptionMessage(static fn() => v::not(v::contains('foo'))->check('fool'));
 exceptionFullMessage(static fn() => v::contains('foo')->assert(['bar']));

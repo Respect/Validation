@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::greaterThan(21)->check(12));
 exceptionMessage(static fn() => v::not(v::greaterThan('yesterday'))->check('today'));
 exceptionFullMessage(static fn() => v::greaterThan('2018-09-09')->assert('1988-09-09'));

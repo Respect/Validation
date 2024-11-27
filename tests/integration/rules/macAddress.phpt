@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::macAddress()->check('00-11222:33:44:55'));
 exceptionMessage(static fn() => v::not(v::macAddress())->check('00:11:22:33:44:55'));
 exceptionFullMessage(static fn() => v::macAddress()->assert('90-bc-nk:1a-dd-cc'));

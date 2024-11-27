@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 run([
     'Default' => [v::consecutive(v::alwaysValid(), v::trueVal()), false],
     'Negative' => [v::not(v::consecutive(v::alwaysValid(), v::trueVal())), true],

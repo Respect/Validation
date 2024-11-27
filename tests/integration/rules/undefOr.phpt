@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 run([
     'Default' => [v::undefOr(v::alpha()), 1234],
     'Negative wrapper' => [v::not(v::undefOr(v::alpha())), 'alpha'],

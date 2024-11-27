@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::fibonacci()->check(4));
 exceptionMessage(static fn() => v::not(v::fibonacci())->check(5));
 exceptionFullMessage(static fn() => v::fibonacci()->assert(16));

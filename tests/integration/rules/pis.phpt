@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::pis()->check('this thing'));
 exceptionMessage(static fn() => v::not(v::pis())->check('120.6671.406-4'));
 exceptionFullMessage(static fn() => v::pis()->assert('your mother'));

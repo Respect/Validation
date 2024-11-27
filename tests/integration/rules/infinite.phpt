@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::infinite()->check(-9));
 exceptionMessage(static fn() => v::not(v::infinite())->check(INF));
 exceptionFullMessage(static fn() => v::infinite()->assert(new stdClass()));

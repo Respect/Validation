@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::subset([1, 2])->check([1, 2, 3]));
 exceptionMessage(static fn() => v::not(v::subset([1, 2, 3]))->check([1, 2]));
 exceptionFullMessage(static fn() => v::subset(['A', 'B'])->assert(['B', 'C']));

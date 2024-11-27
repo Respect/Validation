@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::callback('is_string')->check([]));
 exceptionMessage(static fn() => v::not(v::callback('is_string'))->check('foo'));
 exceptionFullMessage(static fn() => v::callback('is_string')->assert(true));

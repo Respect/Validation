@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require_once 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::length(0, 5, false)->check('forest'));
 exceptionMessage(static fn() => v::length(10, 20)->check('river'));
 exceptionMessage(static fn() => v::length(15, null, false)->check('mountain'));

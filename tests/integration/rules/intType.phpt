@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::intType()->check(new stdClass()));
 exceptionMessage(static fn() => v::not(v::intType())->check(42));
 exceptionFullMessage(static fn() => v::intType()->assert(INF));

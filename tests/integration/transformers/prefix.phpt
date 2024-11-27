@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 run([
     'key' => [v::keyEquals('foo', 12), ['foo' => 10]],
     'length' => [v::lengthGreaterThan(3), 'foo'],

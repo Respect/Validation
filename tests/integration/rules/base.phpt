@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::base(61)->check('Z01xSsg5675hic20dj'));
 exceptionFullMessage(static fn() => v::base(2)->assert(''));
 exceptionMessage(static fn() => v::not(v::base(2))->check('011010001'));

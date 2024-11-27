@@ -7,8 +7,6 @@ require 'vendor/autoload.php';
 
 date_default_timezone_set('UTC');
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::minAge(18)->check('17 years ago'));
 exceptionMessage(static fn() => v::not(v::minAge(18))->check('-30 years'));
 exceptionFullMessage(static fn() => v::minAge(18)->assert('yesterday'));

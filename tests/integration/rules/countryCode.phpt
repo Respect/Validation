@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::countryCode()->check('1'));
 exceptionMessage(static fn() => v::not(v::countryCode())->check('BR'));
 exceptionFullMessage(static fn() => v::countryCode()->assert('1'));

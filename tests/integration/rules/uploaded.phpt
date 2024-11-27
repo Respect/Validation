@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 uopz_set_return('is_uploaded_file', false);
 exceptionMessage(static fn() => v::uploaded()->check('filename'));
 uopz_set_return('is_uploaded_file', true);

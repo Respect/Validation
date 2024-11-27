@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::bsn()->check('acb'));
 exceptionMessage(static fn() => v::not(v::bsn())->check('612890053'));
 exceptionFullMessage(static fn() => v::bsn()->assert('abc'));

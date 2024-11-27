@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::url()->check('example.com'));
 exceptionMessage(static fn() => v::not(v::url())->check('http://example.com'));
 exceptionFullMessage(static fn() => v::url()->assert('example.com'));

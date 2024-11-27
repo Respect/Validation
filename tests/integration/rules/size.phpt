@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::size('1kb', '2kb')->check('tests/fixtures/valid-image.gif'));
 exceptionMessage(static fn() => v::size('700kb', null)->check('tests/fixtures/valid-image.gif'));
 exceptionMessage(static fn() => v::size(null, '1kb')->check('tests/fixtures/valid-image.gif'));

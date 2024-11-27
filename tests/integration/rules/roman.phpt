@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::roman()->check(1234));
 exceptionMessage(static fn() => v::not(v::roman())->check('XL'));
 exceptionFullMessage(static fn() => v::roman()->assert('e2'));

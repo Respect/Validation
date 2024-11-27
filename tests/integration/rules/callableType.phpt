@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::callableType()->check([]));
 exceptionMessage(static fn() => v::not(v::callableType())->check('trim'));
 exceptionFullMessage(static fn() => v::callableType()->assert(true));

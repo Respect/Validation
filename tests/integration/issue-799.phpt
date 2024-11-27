@@ -6,7 +6,6 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Respect\Validation\Test\Stubs\CountableStub;
-use Respect\Validation\Validator as v;
 
 $input = 'http://www.google.com/search?q=respect.github.com';
 

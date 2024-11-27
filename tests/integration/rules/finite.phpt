@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::finite()->check(''));
 exceptionMessage(static fn() => v::not(v::finite())->check(10));
 exceptionFullMessage(static fn() => v::finite()->assert([12]));

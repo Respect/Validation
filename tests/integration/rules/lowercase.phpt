@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::lowercase()->check('UPPERCASE'));
 exceptionMessage(static fn() => v::not(v::lowercase())->check('lowercase'));
 exceptionFullMessage(static fn() => v::lowercase()->assert('UPPERCASE'));

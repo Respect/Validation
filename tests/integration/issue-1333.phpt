@@ -3,8 +3,6 @@
 
 declare(strict_types=1);
 
-use Respect\Validation\Validator as v;
-
 require 'vendor/autoload.php';
 
 exceptionMessages(static fn() => v::noWhitespace()->email()->setName('User Email')->assert('not email'));

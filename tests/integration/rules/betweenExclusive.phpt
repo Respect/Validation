@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 run([
     'Default' => [v::betweenExclusive(1, 10), 12],
     'Negative' => [v::not(v::betweenExclusive(1, 10)), 5],

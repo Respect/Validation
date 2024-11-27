@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::consonant()->check('aeiou'));
 exceptionMessage(static fn() => v::consonant('d')->check('daeiou'));
 exceptionMessage(static fn() => v::not(v::consonant())->check('bcd'));

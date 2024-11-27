@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 exceptionMessage(static fn() => v::email()->check('batman'));
 exceptionMessage(static fn() => v::not(v::email())->check('bruce.wayne@gothancity.com'));
 exceptionFullMessage(static fn() => v::email()->assert('bruce wayne'));

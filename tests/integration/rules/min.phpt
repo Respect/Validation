@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Respect\Validation\Validator as v;
-
 run([
     'Default' => [v::min(v::equals(1)), [2, 3]],
     'Negative' => [v::not(v::min(v::equals(1))), [1, 2, 3]],
