@@ -102,11 +102,11 @@ final class Ip extends Standard
         if (mb_strpos($input, '-') !== false) {
             [$this->startAddress, $this->endAddress] = explode('-', $input);
 
-            if ($this->startAddress !== null && !$this->verifyAddress($this->startAddress)) {
+            if (is_string($this->startAddress) && !$this->verifyAddress($this->startAddress)) {
                 throw new InvalidRuleConstructorException('Invalid network range');
             }
 
-            if ($this->endAddress !== null && !$this->verifyAddress($this->endAddress)) {
+            if (is_string($this->endAddress) && !$this->verifyAddress($this->endAddress)) {
                 throw new InvalidRuleConstructorException('Invalid network range');
             }
 

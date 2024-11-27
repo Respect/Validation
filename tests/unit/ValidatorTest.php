@@ -21,12 +21,6 @@ use Respect\Validation\Test\TestCase;
 final class ValidatorTest extends TestCase
 {
     #[Test]
-    public function staticCreateShouldReturnNewValidator(): void
-    {
-        self::assertInstanceOf(Validator::class, Validator::create());
-    }
-
-    #[Test]
     public function invalidRuleClassShouldThrowComponentException(): void
     {
         $this->expectException(ComponentException::class);

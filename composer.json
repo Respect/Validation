@@ -14,7 +14,8 @@
     "config": {
         "sort-packages": true,
         "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true
         }
     },
     "require": {
@@ -28,9 +29,10 @@
         "malukenho/docheader": "^1.0",
         "mikey179/vfsstream": "^1.6",
         "nette/php-generator": "^4.1",
-        "phpstan/phpstan": "^1.10",
-        "phpstan/phpstan-deprecation-rules": "^1.1",
-        "phpstan/phpstan-phpunit": "^1.3",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^2.0",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
         "phpunit/phpunit": "^10.5",
         "psr/http-message": "^1.0 || ^2.0",
         "respect/coding-standard": "^4.0",

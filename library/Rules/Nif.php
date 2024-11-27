@@ -72,8 +72,8 @@ final class Nif extends Simple
     {
         $code = 0;
         $position = 1;
-        /** @var int $digit */
         foreach (str_split($number) as $digit) {
+            $digit = (int) $digit;
             $increaser = $digit;
             if ($position % 2 !== 0) {
                 $increaser = array_sum(str_split((string) ($digit * 2)));

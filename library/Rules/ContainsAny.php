@@ -25,7 +25,6 @@ final class ContainsAny extends Envelope
     /** @param non-empty-array<mixed> $needles */
     public function __construct(array $needles, bool $identical = false)
     {
-        // @phpstan-ignore-next-line
         if (empty($needles)) {
             throw new InvalidRuleConstructorException('At least one value must be provided');
         }

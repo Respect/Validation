@@ -56,7 +56,7 @@ final class NotBlank extends Standard
         }
 
         if (is_array($input)) {
-            $input = array_filter($input, __METHOD__);
+            $input = array_filter($input, fn($value) => $this->isBlank($value));
         }
 
         return !empty($input);

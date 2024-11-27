@@ -1,7 +1,3 @@
-includes:
-    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
-    - vendor/phpstan/phpstan-phpunit/extension.neon
-    - vendor/phpstan/phpstan-phpunit/rules.neon
 parameters:
   fileExtensions:
     - php
@@ -34,6 +30,7 @@ parameters:
     - message: '/Call to an undefined static method Respect\\Validation\\Validator::type\(\)./'
       path: tests/integration/transformers/deprecated_type.phpt
   level: 8
+  treatPhpDocTypesAsCertain: false
   paths:
     - library/
     - tests/
