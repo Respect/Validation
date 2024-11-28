@@ -12,7 +12,4 @@ return [
     'MIL.TW',
     'NET.TW',
     'ORG.TW',
-    'XN--CZRW28B.TW',
-    'XN--UC0ATV.TW',
-    'XN--ZF0AO64A.TW',
 ];

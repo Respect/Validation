@@ -4,7 +4,10 @@
 return [
     'COM.CV',
     'EDU.CV',
+    'ID.CV',
     'INT.CV',
+    'NET.CV',
     'NOME.CV',
     'ORG.CV',
+    'PUBL.CV',
 ];
