@@ -25,6 +25,7 @@ return [
     "21" => "Žabljak",
     "22" => "Gusinje",
     "23" => "Petnjica",
-    "24" => "Tuzi"
+    "24" => "Tuzi",
+    "25" => "Zeta"
   ]
 ];

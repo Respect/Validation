@@ -2,8 +2,8 @@
 return [
   "country" => "Comoros",
   "subdivisions" => [
-    "A" => "Andjouân",
-    "G" => "Andjazîdja",
+    "A" => "Anjouan",
+    "G" => "Grande Comore",
     "M" => "Mohéli"
   ]
 ];

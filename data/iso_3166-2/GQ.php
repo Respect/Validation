@@ -5,12 +5,12 @@ return [
     "AN" => "Annobon",
     "BN" => "Bioko Nord",
     "BS" => "Bioko Sud",
-    "C" => "Região Continental",
+    "C" => "Région Continentale",
     "CS" => "Centro Sud",
     "DJ" => "Djibloho",
-    "I" => "Região Insular",
+    "I" => "Région Insulaire",
     "KN" => "Kié-Ntem",
-    "LI" => "Litoral",
+    "LI" => "Littoral",
     "WN" => "Wele-Nzas"
   ]
 ];

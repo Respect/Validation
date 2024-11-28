@@ -10,7 +10,7 @@ return [
     "30" => "Daejeon-gwangyeoksi",
     "31" => "Ulsan-gwangyeoksi",
     "41" => "Gyeonggi-do",
-    "42" => "Gangwon-do",
+    "42" => "Gangwon-teukbyeoljachido",
     "43" => "Chungcheongbuk-do",
     "44" => "Chungcheongnam-do",
     "45" => "Jeollabuk-do",

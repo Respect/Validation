@@ -8,7 +8,7 @@ return [
     "BK" => "Bács-Kiskun",
     "BU" => "Budapest",
     "BZ" => "Borsod-Abaúj-Zemplén",
-    "CS" => "Csongrád",
+    "CS" => "Csongrád-Csanád",
     "DE" => "Debrecen",
     "DU" => "Dunaújváros",
     "EG" => "Eger",

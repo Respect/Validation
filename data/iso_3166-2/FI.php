@@ -2,7 +2,7 @@
 return [
   "country" => "Finland",
   "subdivisions" => [
-    "01" => "Åland",
+    "01" => "Landskapet Åland",
     "02" => "Etelä-Karjala",
     "03" => "Etelä-Pohjanmaa",
     "04" => "Etelä-Savo",

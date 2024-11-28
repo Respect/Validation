@@ -3,16 +3,16 @@ return [
   "country" => "Luxembourg",
   "subdivisions" => [
     "CA" => "Capellen",
-    "CL" => "Clerf",
+    "CL" => "Clervaux",
     "DI" => "Diekirch",
     "EC" => "Echternach",
-    "ES" => "Esch an der Alzette",
+    "ES" => "Esch-sur-Alzette",
     "GR" => "Grevenmacher",
     "LU" => "Luxembourg",
     "ME" => "Mersch",
     "RD" => "Redange",
     "RM" => "Remich",
-    "VD" => "Veianen",
+    "VD" => "Vianden",
     "WI" => "Wiltz"
   ]
 ];

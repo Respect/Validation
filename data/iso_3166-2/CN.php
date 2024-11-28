@@ -23,7 +23,7 @@ return [
     "LN" => "Liaoning Sheng",
     "MO" => "Macao SAR",
     "NM" => "Nei Mongol Zizhiqu",
-    "NX" => "Ningxia Huizi Zizhiqu",
+    "NX" => "Ningxia Huizu Zizhiqu",
     "QH" => "Qinghai Sheng",
     "SC" => "Sichuan Sheng",
     "SD" => "Shandong Sheng",

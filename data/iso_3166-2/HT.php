@@ -4,13 +4,13 @@ return [
   "subdivisions" => [
     "AR" => "Artibonite",
     "CE" => "Centre",
-    "GA" => "Grandans",
+    "GA" => "Grande’Anse",
     "ND" => "Nord",
     "NE" => "Nord-Est",
-    "NI" => "Nip",
+    "NI" => "Nippes",
     "NO" => "Nord-Ouest",
-    "OU" => "Lwès",
-    "SD" => "Sid",
-    "SE" => "Sidès"
+    "OU" => "Ouest",
+    "SD" => "Sud",
+    "SE" => "Sud-Est"
   ]
 ];

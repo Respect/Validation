@@ -9,14 +9,14 @@ return [
     "GIS" => "Gisborne",
     "HKB" => "Hawke's Bay",
     "MBH" => "Marlborough",
-    "MWT" => "Manawatu-Wanganui",
+    "MWT" => "Manawatū-Whanganui",
     "NSN" => "Nelson",
     "NTL" => "Northland",
     "OTA" => "Otago",
     "STL" => "Southland",
     "TAS" => "Tasman",
     "TKI" => "Taranaki",
-    "WGN" => "Wellington",
+    "WGN" => "Greater Wellington",
     "WKO" => "Waikato",
     "WTC" => "West Coast"
   ]

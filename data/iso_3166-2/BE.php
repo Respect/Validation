@@ -2,7 +2,7 @@
 return [
   "country" => "Belgium",
   "subdivisions" => [
-    "BRU" => "Brussels Hoofdstedelijk Gewest",
+    "BRU" => "Bruxelles-Capitale, Région de",
     "VAN" => "Antwerpen",
     "VBR" => "Vlaams-Brabant",
     "VLG" => "Vlaams Gewest",

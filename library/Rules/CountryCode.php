@@ -332,7 +332,7 @@ final class CountryCode extends AbstractSearcher
         ['YD', 'YMD', '720'], // Yemen, Democratic, People's Democratic Republic of
         ['YE', 'YEM', '887'], // Yemen
         ['YT', 'MYT', '175'], // Mayotte
-        ['YU', 'YUG', '891'], // Yugoslavia, Socialist Federal Republic of
+        ['YU', 'YUG', '891'], // Yugoslavia, (Socialist) Federal Republic of
         ['ZA', 'ZAF', '710'], // South Africa
         ['ZM', 'ZMB', '894'], // Zambia
         ['ZR', 'ZAR', '180'], // Zaire, Republic of

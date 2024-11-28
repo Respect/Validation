@@ -3,7 +3,7 @@ return [
   "country" => "Poland",
   "subdivisions" => [
     "02" => "Dolnośląskie",
-    "04" => "Kujawsko-pomorskie",
+    "04" => "Kujawsko-Pomorskie",
     "06" => "Lubelskie",
     "08" => "Lubuskie",
     "10" => "Łódzkie",
@@ -15,7 +15,7 @@ return [
     "22" => "Pomorskie",
     "24" => "Śląskie",
     "26" => "Świętokrzyskie",
-    "28" => "Warmińsko-mazurskie",
+    "28" => "Warmińsko-Mazurskie",
     "30" => "Wielkopolskie",
     "32" => "Zachodniopomorskie"
   ]

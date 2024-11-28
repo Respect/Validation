@@ -14,6 +14,7 @@ return [
     "9" => "Veraguas",
     "EM" => "Emberá",
     "KY" => "Guna Yala",
-    "NB" => "Ngöbe-Buglé"
+    "NB" => "Ngäbe-Buglé",
+    "NT" => "Naso Tjër Di"
   ]
 ];

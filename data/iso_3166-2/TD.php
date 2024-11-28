@@ -2,7 +2,7 @@
 return [
   "country" => "Chad",
   "subdivisions" => [
-    "BA" => "Al Baţḩā’",
+    "BA" => "Batha",
     "BG" => "Bahr el Ghazal",
     "BO" => "Borkou",
     "CB" => "Chari-Baguirmi",
@@ -11,19 +11,19 @@ return [
     "GR" => "Guéra",
     "HL" => "Hadjer Lamis",
     "KA" => "Kanem",
-    "LC" => "Al Buḩayrah",
+    "LC" => "Lac",
     "LO" => "Logone-Occidental",
     "LR" => "Logone-Oriental",
     "MA" => "Mandoul",
     "MC" => "Moyen-Chari",
     "ME" => "Mayo-Kebbi-Est",
     "MO" => "Mayo-Kebbi-Ouest",
-    "ND" => "Madīnat Injamīnā",
+    "ND" => "Ville de Ndjamena",
     "OD" => "Ouaddaï",
     "SA" => "Salamat",
     "SI" => "Sila",
     "TA" => "Tandjilé",
-    "TI" => "Tibastī",
+    "TI" => "Tibesti",
     "WF" => "Wadi Fira"
   ]
 ];

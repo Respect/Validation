@@ -49,6 +49,16 @@ return [
     "45" => "Naama",
     "46" => "Aïn Témouchent",
     "47" => "Ghardaïa",
-    "48" => "Relizane"
+    "48" => "Relizane",
+    "49" => "Timimoun",
+    "50" => "Bordj Badji Mokhtar",
+    "51" => "Ouled Djellal",
+    "52" => "Béni Abbès",
+    "53" => "In Salah",
+    "54" => "In Guezzam",
+    "55" => "Touggourt",
+    "56" => "Djanet",
+    "57" => "El Meghaier",
+    "58" => "El Meniaa"
   ]
 ];

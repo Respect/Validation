@@ -13,6 +13,7 @@ return [
     "09" => "Hamgyǒng-bukto",
     "10" => "Ryanggang-do",
     "13" => "Raseon",
-    "14" => "Nampho"
+    "14" => "Nampho",
+    "15" => "Kaeseong"
   ]
 ];

@@ -6,7 +6,7 @@ return [
     "AS" => "Ali Sabieh",
     "DI" => "Dikhil",
     "DJ" => "Djibouti",
-    "OB" => "Awbūk",
+    "OB" => "Obock",
     "TA" => "Tadjourah"
   ]
 ];

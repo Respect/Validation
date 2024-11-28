@@ -12,6 +12,7 @@ return [
     "DQ" => "Dhī Qār",
     "KA" => "Karbalā’",
     "KI" => "Kirkūk",
+    "KR" => "Herêm-î Kurdistan",
     "MA" => "Maysān",
     "MU" => "Al Muthanná",
     "NA" => "An Najaf",

@@ -10,7 +10,7 @@ return [
     "HM" => "Haut-Mbomou",
     "HS" => "Haute-Sangha / Mambéré-Kadéï",
     "KB" => "Gribingui",
-    "KG" => "Kemö-Gïrïbïngï",
+    "KG" => "Kémo-Gribingui",
     "LB" => "Lobaye",
     "MB" => "Mbomou",
     "MP" => "Ombella-Mpoko",
