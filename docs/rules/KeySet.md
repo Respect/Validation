@@ -1,46 +1,60 @@
 # KeySet
 
-- `KeySet(Key $rule, Key ...$rules)`
+- `KeySet(KeyRelated $rule, KeyRelated ...$rules)`
 
 Validates a keys in a defined structure.
 
 ```php
-$dict = ['foo' => 42];
+v::keySet(
+    v::keyExists('foo'),
+    v::keyExists('bar')
+)->validate(['foo' => 'whatever', 'bar' => 'something']); // true
+```
+
+It will validate the keys in the array with the rules passed in the constructor.
+```php
+v::keySet(
+    v::key('foo', v::intVal())
+)->validate(['foo' => 42]); // true
 
 v::keySet(
     v::key('foo', v::intVal())
-)->validate($dict); // true
+)->validate(['foo' => 'string']); // false
 ```
 
 Extra keys are not allowed:
 ```php
-$dict = ['foo' => 42, 'bar' => 'String'];
-
 v::keySet(
     v::key('foo', v::intVal())
-)->validate($dict); // false
+)->validate(['foo' => 42, 'bar' => 'String']); // false
 ```
 
 Missing required keys are not allowed:
 ```php
-$dict = ['foo' => 42, 'bar' => 'String'];
-
 v::keySet(
     v::key('foo', v::intVal()),
     v::key('bar', v::stringType()),
     v::key('baz', v::boolType())
-)->validate($dict); // false
+)->validate(['foo' => 42, 'bar' => 'String']); // false
 ```
 
 Missing non-required keys are allowed:
 ```php
-$dict = ['foo' => 42, 'bar' => 'String'];
-
 v::keySet(
     v::key('foo', v::intVal()),
     v::key('bar', v::stringType()),
-    v::key('baz', v::boolType(), false)
-)->validate($dict); // true
+    v::keyOptional('baz', v::boolType())
+)->validate(['foo' => 42, 'bar' => 'String']); // true
+```
+
+Alternatively, you can pass a chain of key-related rules to `keySet()`:
+```php
+v::keySet(
+    v::create()
+        ->key('foo', v::intVal())
+        ->key('bar', v::stringType())
+        ->keyOptional('baz', v::boolType())
+)->validate(['foo' => 42, 'bar' => 'String']); // true
 ```
 
 It is not possible to negate `keySet()` rules with `not()`.
@@ -55,11 +69,11 @@ The keys' order is not considered in the validation.
 
 ## Changelog
 
-Version | Description
---------|-------------
-  3.0.0 | Require at one rule to be passed
-  2.3.0 | KeySet is NonNegatable, fixed message with extra keys
-  1.0.0 | Created
+| Version | Description                                           |
+|--------:|-------------------------------------------------------|
+|   3.0.0 | Requires at least one key-related rule                |
+|   2.3.0 | KeySet is NonNegatable, fixed message with extra keys |
+|   1.0.0 | Created                                               |
 
 ***
 See also:

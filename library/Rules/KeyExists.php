@@ -12,6 +12,7 @@ namespace Respect\Validation\Rules;
 use ArrayAccess;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\KeyRelated;
 use Respect\Validation\Rules\Core\Standard;
 
 use function array_key_exists;
@@ -21,11 +22,16 @@ use function is_array;
     '{{name}} must be present',
     '{{name}} must not be present',
 )]
-final class KeyExists extends Standard
+final class KeyExists extends Standard implements KeyRelated
 {
     public function __construct(
         private readonly int|string $key
     ) {
+    }
+
+    public function getKey(): int|string
+    {
+        return $this->key;
     }
 
     public function evaluate(mixed $input): Result

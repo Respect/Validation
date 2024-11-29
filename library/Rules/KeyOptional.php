@@ -11,10 +11,11 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\KeyRelated;
 use Respect\Validation\Rules\Core\Wrapper;
 use Respect\Validation\Validatable;
 
-final class KeyOptional extends Wrapper
+final class KeyOptional extends Wrapper implements KeyRelated
 {
     use CanBindEvaluateRule;
 
@@ -24,6 +25,11 @@ final class KeyOptional extends Wrapper
     ) {
         $rule->setName($rule->getName() ?? (string) $key);
         parent::__construct($rule);
+    }
+
+    public function getKey(): int|string
+    {
+        return $this->key;
     }
 
     public function evaluate(mixed $input): Result

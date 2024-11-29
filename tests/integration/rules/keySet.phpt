@@ -4,130 +4,223 @@
 require 'vendor/autoload.php';
 
 run([
-    'one key() / missing key' => [v::keySet(v::key('foo', v::intType())), []],
-    'one key() / single extra key' => [v::keySet(v::key('foo', v::intType())), ['foo' => 42, 'bar' => 'string']],
-    'one key() / multiple extra keys' => [v::keySet(v::key('foo', v::intType())), ['foo' => 42, 'bar' => 'string', 'baz' => true]],
-    'one key() / failed validation' => [v::keySet(v::key('foo', v::intType())), ['foo' => 'string']],
-    'multiple key() / all missing keys' => [
-        v::keySet(v::key('foo', v::intType()), v::key('bar', v::intType())),
-        []
+    'one rule / one failed' => [v::keySet(v::key('foo', v::intType())), ['foo' => 'string']],
+    'one rule / one missing key' => [v::keySet(v::keyExists('foo')), []],
+    'one rule / one extra key' => [v::keySet(v::keyExists('foo')), ['foo' => 42, 'bar' => 'string']],
+    'one rule / one extra key / one missing key' => [v::keySet(v::keyExists('foo')), ['bar' => true]],
+    'one rule / two extra keys' => [v::keySet(v::keyExists('foo')), ['foo' => 42, 'bar' => 'string', 'baz' => true]],
+    'one rule / more than ten extra keys' => [
+        v::keySet(v::keyExists('foo')),
+        [
+            'foo' => 42,
+            'bar' => 'string',
+            'baz' => true,
+            'qux' => false,
+            'quux' => 42,
+            'corge' => 'string',
+            'grault' => true,
+            'garply' => false,
+            'waldo' => 42,
+            'fred' => 'string',
+            'plugh' => true,
+            'xyzzy' => false,
+            'thud' => 42,
+        ],
     ],
-    'multiple key() / single missing key' => [
-        v::keySet(v::key('foo', v::intType()), v::key('bar', v::intType())),
-        ['foo' => 42]
+    'multiple rules / one failed' => [
+        v::keySet(v::keyExists('foo'), v::keyExists('bar')),
+        ['foo' => 42],
     ],
-    'multiple key() / single extra key' => [
-        v::keySet(v::key('foo', v::intType()), v::key('bar', v::intType())),
-        ['foo' => 42, 'bar' => 'string', 'baz' => true]
+    'multiple rules / all failed' => [
+        v::keySet(v::keyExists('foo'), v::keyExists('bar')),
+        [],
     ],
-    'multiple key() / multiple extra keys' => [
-        v::keySet(v::key('foo', v::intType()), v::key('bar', v::intType())),
-        ['foo' => 42, 'bar' => 'string', 'baz' => true, 'qux' => false]
+    'multiple rules / one extra key' => [
+        v::keySet(v::keyExists('foo'), v::keyExists('bar')),
+        ['foo' => 42, 'bar' => 'string', 'baz' => true],
     ],
-    'multiple key() / single failed validation' => [
-        v::keySet(v::key('foo', v::intType()), v::key('bar', v::intType()), v::key('baz', v::intType())),
-        ['foo' => 42, 'bar' => 'string', 'baz' => 42]
+    'multiple rules / one extra key / one missing' => [
+        v::keySet(
+            v::keyExists('foo'),
+            v::keyExists('bar')
+        ),
+        ['bar' => 'string', 'baz' => true],
     ],
-    'multiple key() / all failed validation' => [
-        v::keySet(v::key('foo', v::intType()), v::key('bar', v::intType()), v::key('baz', v::intType())),
-        ['foo' => 42, 'bar' => 'string', 'baz' => true]
+    'multiple rules / two extra keys' => [
+        v::keySet(
+            v::keyExists('foo'),
+            v::keyExists('bar'),
+            v::keyOptional('qux', v::intType())
+        ),
+        ['foo' => 42, 'bar' => 'string', 'baz' => true, 'qux' => false],
     ],
-    'multiple key() / single missing key / single failed validation' => [
-        v::keySet(v::key('foo', v::intType()), v::key('bar', v::intType()), v::key('baz', v::intType())),
-        ['foo' => 42, 'bar' => 'string']
+    'multiple rules / all failed validation' => [
+        v::keySet(
+            v::key('foo', v::intType()),
+            v::key('bar', v::intType()),
+            v::key('baz', v::intType())
+        ),
+        ['foo' => 42, 'bar' => 'string', 'baz' => true],
+    ],
+    'multiple rules / single missing key / single failed validation' => [
+        v::keySet(
+            v::create()
+                ->key('foo', v::intType())
+                ->key('bar', v::intType())
+                ->key('baz', v::intType())
+        ),
+        ['foo' => 42, 'bar' => 'string'],
     ],
 ]);
 ?>
 --EXPECT--
-one key() / missing key
-⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Must have keys `["foo"]` in foo
-- Must have keys `["foo"]` in foo
-[
-    'keySet' => 'Must have keys `["foo"]` in foo',
-]
-
-one key() / single extra key
-⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Must not have keys `["bar"]` in foo
-- Must not have keys `["bar"]` in foo
-[
-    'keySet' => 'Must not have keys `["bar"]` in foo',
-]
-
-one key() / multiple extra keys
-⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Must not have keys `["bar", "baz"]` in foo
-- Must not have keys `["bar", "baz"]` in foo
-[
-    'keySet' => 'Must not have keys `["bar", "baz"]` in foo',
-]
-
-one key() / failed validation
-⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+one rule / one failed
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 foo must be of type integer
-- foo must be of type integer
+- `["foo": "string"]` validation failed
+  - foo must be of type integer
 [
     'foo' => 'foo must be of type integer',
 ]
 
-multiple key() / all missing keys
-⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Must have keys `["foo", "bar"]` in `[]`
-- Must have keys `["foo", "bar"]` in `[]`
+one rule / one missing key
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+foo must be present
+- foo must be present
 [
-    'keySet' => 'Must have keys `["foo", "bar"]` in `[]`',
+    'foo' => 'foo must be present',
 ]
 
-multiple key() / single missing key
+one rule / one extra key
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+bar must not be present
+- bar must not be present
+[
+    'bar' => 'bar must not be present',
+]
+
+one rule / one extra key / one missing key
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+foo must be present
+- `["bar": true]` contains both missing and extra keys
+  - foo must be present
+  - bar must not be present
+[
+    '__root__' => '`["bar": true]` contains both missing and extra keys',
+    'foo' => 'foo must be present',
+    'bar' => 'bar must not be present',
+]
+
+one rule / two extra keys
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+bar must not be present
+- `["foo": 42, "bar": "string", "baz": true]` contains extra keys
+  - bar must not be present
+  - baz must not be present
+[
+    '__root__' => '`["foo": 42, "bar": "string", "baz": true]` contains extra keys',
+    'bar' => 'bar must not be present',
+    'baz' => 'baz must not be present',
+]
+
+one rule / more than ten extra keys
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Must have keys `["bar"]` in `["foo": 42]`
-- Must have keys `["bar"]` in `["foo": 42]`
+bar must not be present
+- `["foo": 42, "bar": "string", "baz": true, "qux": false, "quux": 42, ...]` contains extra keys
+  - bar must not be present
+  - baz must not be present
+  - qux must not be present
+  - quux must not be present
+  - corge must not be present
+  - grault must not be present
+  - garply must not be present
+  - waldo must not be present
+  - fred must not be present
+  - plugh must not be present
 [
-    'keySet' => 'Must have keys `["bar"]` in `["foo": 42]`',
+    '__root__' => '`["foo": 42, "bar": "string", "baz": true, "qux": false, "quux": 42, ...]` contains extra keys',
+    'bar' => 'bar must not be present',
+    'baz' => 'baz must not be present',
+    'qux' => 'qux must not be present',
+    'quux' => 'quux must not be present',
+    'corge' => 'corge must not be present',
+    'grault' => 'grault must not be present',
+    'garply' => 'garply must not be present',
+    'waldo' => 'waldo must not be present',
+    'fred' => 'fred must not be present',
+    'plugh' => 'plugh must not be present',
 ]
 
-multiple key() / single extra key
-⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Must not have keys `["baz"]` in `["foo": 42, "bar": "string", "baz": true]`
-- Must not have keys `["baz"]` in `["foo": 42, "bar": "string", "baz": true]`
+multiple rules / one failed
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+bar must be present
+- bar must be present
 [
-    'keySet' => 'Must not have keys `["baz"]` in `["foo": 42, "bar": "string", "baz": true]`',
+    'bar' => 'bar must be present',
 ]
 
-multiple key() / multiple extra keys
-⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Must not have keys `["baz", "qux"]` in `["foo": 42, "bar": "string", "baz": true, "qux": false]`
-- Must not have keys `["baz", "qux"]` in `["foo": 42, "bar": "string", "baz": true, "qux": false]`
+multiple rules / all failed
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+foo must be present
+- `[]` contains missing keys
+  - foo must be present
+  - bar must be present
 [
-    'keySet' => 'Must not have keys `["baz", "qux"]` in `["foo": 42, "bar": "string", "baz": true, "qux": false]`',
+    '__root__' => '`[]` contains missing keys',
+    'foo' => 'foo must be present',
+    'bar' => 'bar must be present',
 ]
 
-multiple key() / single failed validation
-⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-bar must be of type integer
-- These rules must pass for `["foo": 42, "bar": "string", "baz": 42]`
-  - bar must be of type integer
+multiple rules / one extra key
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+baz must not be present
+- baz must not be present
 [
-    'bar' => 'bar must be of type integer',
+    'baz' => 'baz must not be present',
 ]
 
-multiple key() / all failed validation
+multiple rules / one extra key / one missing
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+foo must be present
+- `["bar": "string", "baz": true]` contains both missing and extra keys
+  - foo must be present
+  - baz must not be present
+[
+    '__root__' => '`["bar": "string", "baz": true]` contains both missing and extra keys',
+    'foo' => 'foo must be present',
+    'baz' => 'baz must not be present',
+]
+
+multiple rules / two extra keys
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+qux must be of type integer
+- qux must be of type integer
+- baz must not be present
+[
+    '__root__' => '`["foo": 42, "bar": "string", "baz": true, "qux": false]` contains extra keys',
+    'qux' => 'qux must be of type integer',
+    'baz' => 'baz must not be present',
+]
+
+multiple rules / all failed validation
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 bar must be of type integer
-- These rules must pass for `["foo": 42, "bar": "string", "baz": true]`
+- `["foo": 42, "bar": "string", "baz": true]` validation failed
   - bar must be of type integer
   - baz must be of type integer
 [
-    '__root__' => 'These rules must pass for `["foo": 42, "bar": "string", "baz": true]`',
+    '__root__' => '`["foo": 42, "bar": "string", "baz": true]` validation failed',
     'bar' => 'bar must be of type integer',
     'baz' => 'baz must be of type integer',
 ]
 
-multiple key() / single missing key / single failed validation
+multiple rules / single missing key / single failed validation
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Must have keys `["baz"]` in `["foo": 42, "bar": "string"]`
-- Must have keys `["baz"]` in `["foo": 42, "bar": "string"]`
+bar must be of type integer
+- bar must be of type integer
+- baz must be present
 [
-    'keySet' => 'Must have keys `["baz"]` in `["foo": 42, "bar": "string"]`',
+    '__root__' => '`["foo": 42, "bar": "string"]` contains missing keys',
+    'bar' => 'bar must be of type integer',
+    'baz' => 'baz must be present',
 ]
