@@ -17,7 +17,7 @@ final class Template
 {
     public function __construct(
         public readonly string $default,
-        public readonly string $negative,
+        public readonly string $inverted,
         public readonly string $id = Validatable::TEMPLATE_STANDARD,
     ) {
     }

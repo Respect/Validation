@@ -14,11 +14,11 @@ run([
     'Non-iterable' => [v::max(v::negative()), $nonIterable],
     'Empty' => [v::max(v::negative()), $empty],
     'Default' => [v::max(v::negative()), $default],
-    'Negative' => [v::not(v::max(v::negative())), $negative],
+    'Inverted' => [v::not(v::max(v::negative())), $negative],
     'With wrapped name, default' => [v::max(v::negative()->setName('Wrapped'))->setName('Wrapper'), $default],
     'With wrapper name, default' => [v::max(v::negative())->setName('Wrapper'), $default],
-    'With wrapped name, negative' => [v::not(v::max(v::negative()->setName('Wrapped')))->setName('Wrapper'), $negative],
-    'With wrapper name, negative' => [v::not(v::max(v::negative()))->setName('Wrapper'), $negative],
+    'With wrapped name, inverted' => [v::not(v::max(v::negative()->setName('Wrapped')))->setName('Wrapper'), $negative],
+    'With wrapper name, inverted' => [v::not(v::max(v::negative()))->setName('Wrapper'), $negative],
     'With template, default' => [v::max(v::negative()), $default, 'The maximum of the value is not what we expect'],
 ]);
 ?>
@@ -47,7 +47,7 @@ As the maximum of `[1, 2, 3]`, 3 must be negative
     'maxNegative' => 'As the maximum of `[1, 2, 3]`, 3 must be negative',
 ]
 
-Negative
+Inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺
 As the maximum of `[-3, -2, -1]`, -1 must not be negative
 - As the maximum of `[-3, -2, -1]`, -1 must not be negative
@@ -71,7 +71,7 @@ The maximum of Wrapper must be negative
     'maxNegative' => 'The maximum of Wrapper must be negative',
 ]
 
-With wrapped name, negative
+With wrapped name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 The maximum of Wrapped must not be negative
 - The maximum of Wrapped must not be negative
@@ -79,7 +79,7 @@ The maximum of Wrapped must not be negative
     'notMaxNegative' => 'The maximum of Wrapped must not be negative',
 ]
 
-With wrapper name, negative
+With wrapper name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 The maximum of Wrapper must not be negative
 - The maximum of Wrapper must not be negative

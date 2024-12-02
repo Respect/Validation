@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 
 run([
     'Default' => [v::hetu(), '010106A901O'],
-    'Negative' => [v::not(v::hetu()), '010106A9012'],
+    'Inverted' => [v::not(v::hetu()), '010106A9012'],
     'With template' => [v::hetu(), '010106A901O', 'That is not a HETU'],
     'With name' => [v::hetu()->setName('Hetu'), '010106A901O'],
 ]);
@@ -19,7 +19,7 @@ Default
     'hetu' => '"010106A901O" must be a valid Finnish personal identity code',
 ]
 
-Negative
+Inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺
 "010106A9012" must not be a valid Finnish personal identity code
 - "010106A9012" must not be a valid Finnish personal identity code

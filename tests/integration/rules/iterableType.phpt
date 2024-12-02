@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 
 run([
     'Default' => [v::iterableType(), null],
-    'Negative' => [v::not(v::iterableType()), [1, 2, 3]],
+    'Inverted' => [v::not(v::iterableType()), [1, 2, 3]],
     'With template' => [v::iterableType(), null, 'Not an iterable at all'],
     'With name' => [v::iterableType()->setName('Options'), null],
 ]);
@@ -19,7 +19,7 @@ Default
     'iterableType' => '`null` must be of type iterable',
 ]
 
-Negative
+Inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺
 `[1, 2, 3]` must not of type iterable
 - `[1, 2, 3]` must not of type iterable

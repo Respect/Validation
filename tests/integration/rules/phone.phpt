@@ -6,7 +6,7 @@ require 'vendor/autoload.php';
 run([
     'Default' => [v::phone(), '123'],
     'Country-specific' => [v::phone('BR'), '+1 650 253 00 00'],
-    'Negative' => [v::not(v::phone()), '+55 11 91111 1111'],
+    'Inverted' => [v::not(v::phone()), '+55 11 91111 1111'],
     'Default with name' => [v::phone()->setName('Phone'), '123'],
     'Country-specific with name' => [v::phone('US')->setName('Phone'), '123'],
 ]);
@@ -28,7 +28,7 @@ Country-specific
     'phone' => '"+1 650 253 00 00" must be a valid telephone number for country Brazil',
 ]
 
-Negative
+Inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺
 "+55 11 91111 1111" must not be a valid telephone number
 - "+55 11 91111 1111" must not be a valid telephone number

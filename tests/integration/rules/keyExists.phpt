@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 
 run([
     'Default mode' => [v::keyExists('foo'), ['bar' => 'baz']],
-    'Negative mode' => [v::not(v::keyExists('foo')), ['foo' => 'baz']],
+    'Inverted mode' => [v::not(v::keyExists('foo')), ['foo' => 'baz']],
     'Custom name' => [v::keyExists('foo')->setName('Custom name'), ['bar' => 'baz']],
     'Custom template' => [v::keyExists('foo'), ['bar' => 'baz'], 'Custom template for `{{name}}`'],
 ]);
@@ -19,7 +19,7 @@ foo must be present
     'foo' => 'foo must be present',
 ]
 
-Negative mode
+Inverted mode
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 foo must not be present
 - foo must not be present

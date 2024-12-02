@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 
 run([
     'Default' => [v::lazy(static fn() => v::intType()), true],
-    'Negative' => [v::not(v::lazy(static fn() => v::intType())), 2],
+    'Inverted' => [v::not(v::lazy(static fn() => v::intType())), 2],
     'With created name, default' => [
         v::lazy(static fn() => v::intType()->setName('Created'))->setName('Wrapper'),
         true,
@@ -14,15 +14,15 @@ run([
         v::lazy(static fn() => v::intType())->setName('Wrapper'),
         true,
     ],
-    'With created name, negative' => [
+    'With created name, inverted' => [
         v::not(v::lazy(static fn() => v::intType()->setName('Created'))->setName('Wrapped'))->setName('Not'),
         2,
     ],
-    'With wrapper name, negative' => [
+    'With wrapper name, inverted' => [
         v::not(v::lazy(static fn() => v::intType())->setName('Wrapped'))->setName('Not'),
         2,
     ],
-    'With not name, negative' => [
+    'With not name, inverted' => [
         v::not(v::lazy(static fn() => v::intType()))->setName('Not'),
         2,
     ],
@@ -42,7 +42,7 @@ Default
     'intType' => '`true` must be of type integer',
 ]
 
-Negative
+Inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺
 2 must not be of type integer
 - 2 must not be of type integer
@@ -66,7 +66,7 @@ Wrapper must be of type integer
     'intType' => 'Wrapper must be of type integer',
 ]
 
-With created name, negative
+With created name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 Created must not be of type integer
 - Created must not be of type integer
@@ -74,7 +74,7 @@ Created must not be of type integer
     'notIntType' => 'Created must not be of type integer',
 ]
 
-With wrapper name, negative
+With wrapper name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 Wrapped must not be of type integer
 - Wrapped must not be of type integer
@@ -82,7 +82,7 @@ Wrapped must not be of type integer
     'notIntType' => 'Wrapped must not be of type integer',
 ]
 
-With not name, negative
+With not name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 Not must not be of type integer
 - Not must not be of type integer

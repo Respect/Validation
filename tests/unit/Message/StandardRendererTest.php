@@ -227,12 +227,12 @@ final class StandardRendererTest extends TestCase
     }
 
     #[Test]
-    public function itShouldRenderResultWithTemplateAttachedToRuleWithNegativeMode(): void
+    public function itShouldRenderResultWithTemplateAttachedToRuleWithInvertedMode(): void
     {
         $processor = new TestingProcessor();
         $renderer = new StandardRenderer(static fn(string $value) => $value, $processor);
 
-        $result = (new ResultBuilder())->mode(Mode::NEGATIVE)->build();
+        $result = (new ResultBuilder())->mode(Mode::INVERTED)->build();
 
         self::assertSame(
             sprintf(
@@ -249,7 +249,7 @@ final class StandardRendererTest extends TestCase
         $processor = new TestingProcessor();
         $renderer = new StandardRenderer(static fn(string $value) => $value, $processor);
 
-        $result = (new ResultBuilder())->template('__not_standard__')->mode(Mode::NEGATIVE)->build();
+        $result = (new ResultBuilder())->template('__not_standard__')->mode(Mode::INVERTED)->build();
 
         self::assertSame(
             $result->template,

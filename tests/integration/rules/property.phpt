@@ -7,8 +7,8 @@ run([
     // Simple
     'Missing property' => [v::property('foo', v::intType()), new stdClass()],
     'Default' => [v::property('foo', v::intType()), (object) ['foo' => 'string']],
-    'Negative' => [v::not(v::property('foo', v::intType())), (object) ['foo' => 12]],
-    'Double-negative with missing property' => [
+    'Inverted' => [v::not(v::property('foo', v::intType())), (object) ['foo' => 12]],
+    'Double-inverted with missing property' => [
         v::not(v::not(v::property('foo', v::intType()))),
         new stdClass(),
     ],
@@ -22,7 +22,7 @@ run([
         v::property('foo', v::intType()->setName('Wrapped'))->setName('Wrapper'),
         (object) ['foo' => 'string'],
     ],
-    'With wrapped name, negative' => [
+    'With wrapped name, inverted' => [
         v::not(v::property('foo', v::intType()->setName('Wrapped'))->setName('Wrapper'))->setName('Not'),
         (object) ['foo' => 12],
     ],
@@ -34,11 +34,11 @@ run([
         v::property('foo', v::intType())->setName('Wrapper'),
         new stdClass(),
     ],
-    'With wrapper name, negative' => [
+    'With wrapper name, inverted' => [
         v::not(v::property('foo', v::intType())->setName('Wrapper'))->setName('Not'),
         (object) ['foo' => 12],
     ],
-    'With "Not" name, negative' => [
+    'With "Not" name, inverted' => [
         v::not(v::property('foo', v::intType()))->setName('Not'),
         (object) ['foo' => 12],
     ],
@@ -49,7 +49,7 @@ run([
         (object) ['foo' => 'string'],
         'Particularly precautions perplexing property',
     ],
-    'With template, negative' => [
+    'With template, inverted' => [
         v::not(v::property('foo', v::intType())),
         (object) ['foo' => 12],
         'Not a prompt prospect of a particularly primitive property',
@@ -73,7 +73,7 @@ foo must be of type integer
     'foo' => 'foo must be of type integer',
 ]
 
-Negative
+Inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺
 foo must not be of type integer
 - foo must not be of type integer
@@ -81,7 +81,7 @@ foo must not be of type integer
     'foo' => 'foo must not be of type integer',
 ]
 
-Double-negative with missing property
+Double-inverted with missing property
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 foo must be present
 - foo must be present
@@ -105,7 +105,7 @@ Wrapped must be of type integer
     'foo' => 'Wrapped must be of type integer',
 ]
 
-With wrapped name, negative
+With wrapped name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 Wrapped must not be of type integer
 - Wrapped must not be of type integer
@@ -129,7 +129,7 @@ foo must be present
     'foo' => 'foo must be present',
 ]
 
-With wrapper name, negative
+With wrapper name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 foo must not be of type integer
 - foo must not be of type integer
@@ -137,7 +137,7 @@ foo must not be of type integer
     'foo' => 'foo must not be of type integer',
 ]
 
-With "Not" name, negative
+With "Not" name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 foo must not be of type integer
 - foo must not be of type integer
@@ -153,7 +153,7 @@ Particularly precautions perplexing property
     'foo' => 'Particularly precautions perplexing property',
 ]
 
-With template, negative
+With template, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 Not a prompt prospect of a particularly primitive property
 - Not a prompt prospect of a particularly primitive property

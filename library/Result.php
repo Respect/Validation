@@ -122,7 +122,7 @@ final class Result
     {
         return $this->clone(
             isValid: !$this->isValid,
-            mode: $this->mode == Mode::DEFAULT ? Mode::NEGATIVE : Mode::DEFAULT,
+            mode: $this->mode == Mode::DEFAULT ? Mode::INVERTED : Mode::DEFAULT,
             nextSibling: $this->nextSibling?->withInvertedMode(),
             children: array_map(static fn (Result $child) => $child->withInvertedMode(), $this->children),
         );

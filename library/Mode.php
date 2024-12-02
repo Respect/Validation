@@ -12,5 +12,5 @@ namespace Respect\Validation;
 enum Mode
 {
     case DEFAULT;
-    case NEGATIVE;
+    case INVERTED;
 }

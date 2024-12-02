@@ -94,8 +94,8 @@ final class StandardRenderer implements Renderer
                 continue;
             }
 
-            if ($result->mode == Mode::NEGATIVE) {
-                return $template->negative;
+            if ($result->mode == Mode::INVERTED) {
+                return $template->inverted;
             }
 
             return $template->default;

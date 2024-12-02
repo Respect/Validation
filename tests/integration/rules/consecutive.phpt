@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 
 run([
     'Default' => [v::consecutive(v::alwaysValid(), v::trueVal()), false],
-    'Negative' => [v::not(v::consecutive(v::alwaysValid(), v::trueVal())), true],
+    'Inverted' => [v::not(v::consecutive(v::alwaysValid(), v::trueVal())), true],
     'Default with inverted failing rule' => [v::consecutive(v::alwaysValid(), v::not(v::trueVal())), true],
     'With wrapped name, default' => [
         v::consecutive(v::alwaysValid(), v::trueVal()->setName('Wrapped'))->setName('Wrapper'),
@@ -58,7 +58,7 @@ Default
     'trueVal' => '`false` must evaluate to `true`',
 ]
 
-Negative
+Inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺
 `true` must not evaluate to `true`
 - `true` must not evaluate to `true`

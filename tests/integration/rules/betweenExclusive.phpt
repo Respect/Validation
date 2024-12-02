@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 
 run([
     'Default' => [v::betweenExclusive(1, 10), 12],
-    'Negative' => [v::not(v::betweenExclusive(1, 10)), 5],
+    'Inverted' => [v::not(v::betweenExclusive(1, 10)), 5],
     'With template' => [v::betweenExclusive(1, 10), 12, 'Bewildered bees buzzed between blooming begonias'],
     'With name' => [v::betweenExclusive(1, 10)->setName('Range'), 10],
 ]);
@@ -19,7 +19,7 @@ Default
     'betweenExclusive' => '12 must be greater than 1 and less than 10',
 ]
 
-Negative
+Inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺
 5 must not be greater than 1 and less than 10
 - 5 must not be greater than 1 and less than 10

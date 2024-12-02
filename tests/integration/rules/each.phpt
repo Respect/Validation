@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 
 $empty = [];
 $nonIterable = null;
-$negative = [1, 2, 3];
+$inverted = [1, 2, 3];
 $default = ['a', 'b', 'c'];
 
 run([
@@ -13,31 +13,31 @@ run([
     'Non-iterable' => [v::each(v::intType()), $nonIterable],
     'Empty' => [v::each(v::intType()), $empty],
     'Default' => [v::each(v::intType()), $default],
-    'Negative' => [v::not(v::each(v::intType())), $negative],
+    'Inverted' => [v::not(v::each(v::intType())), $inverted],
 
     // With name
     'With name, non-iterable' => [v::each(v::intType()->setName('Wrapped'))->setName('Wrapper'), $nonIterable],
     'With name, empty' => [v::each(v::intType()->setName('Wrapped'))->setName('Wrapper'), $empty],
     'With name, default' => [v::each(v::intType()->setName('Wrapped'))->setName('Wrapper'), $default],
-    'With name, negative' => [
+    'With name, inverted' => [
         v::not(v::each(v::intType()->setName('Wrapped'))->setName('Wrapper'))->setName('Not'),
-        $negative,
+        $inverted,
     ],
     'With wrapper name, default' => [v::each(v::intType())->setName('Wrapper'), $default],
-    'With wrapper name, negative' => [
+    'With wrapper name, inverted' => [
         v::not(v::each(v::intType())->setName('Wrapper'))->setName('Not'),
-        $negative,
+        $inverted,
     ],
-    'With Not name, negative' => [
+    'With Not name, inverted' => [
         v::not(v::each(v::intType()))->setName('Not'),
-        $negative,
+        $inverted,
     ],
 
     // With template
     'With template, non-iterable' => [v::each(v::intType()), $nonIterable, 'You should have passed an iterable'],
     'With template, empty' => [v::each(v::intType()), $empty, 'You should have passed an non-empty'],
     'With template, default' => [v::each(v::intType()), $default, 'All items should have been integers'],
-    'with template, negative' => [v::not(v::each(v::intType())), $negative, 'All items should not have been integers'],
+    'with template, inverted' => [v::not(v::each(v::intType())), $inverted, 'All items should not have been integers'],
 
     // With array template
     'With array template, default' => [
@@ -95,7 +95,7 @@ Default
     'intType.3' => '"c" must be of type integer',
 ]
 
-Negative
+Inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺
 1 must not be of type integer
 - Each item in `[1, 2, 3]` must not validate
@@ -139,7 +139,7 @@ Wrapped must be of type integer
     'intType.3' => 'Wrapped must be of type integer',
 ]
 
-With name, negative
+With name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 Wrapped must not be of type integer
 - Each item in Wrapped must not validate
@@ -167,7 +167,7 @@ Wrapper must be of type integer
     'intType.3' => 'Wrapper must be of type integer',
 ]
 
-With wrapper name, negative
+With wrapper name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 Wrapper must not be of type integer
 - Each item in Wrapper must not validate
@@ -181,7 +181,7 @@ Wrapper must not be of type integer
     'intType.3' => 'Wrapper must not be of type integer',
 ]
 
-With Not name, negative
+With Not name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 Not must not be of type integer
 - Each item in Not must not validate
@@ -219,7 +219,7 @@ All items should have been integers
     'each' => 'All items should have been integers',
 ]
 
-with template, negative
+with template, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 All items should not have been integers
 - All items should not have been integers

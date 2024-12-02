@@ -5,12 +5,12 @@ require 'vendor/autoload.php';
 
 run([
     'Default' => [v::undefOr(v::alpha()), 1234],
-    'Negative wrapper' => [v::not(v::undefOr(v::alpha())), 'alpha'],
-    'Negative wrapped' => [v::undefOr(v::not(v::alpha())), 'alpha'],
-    'Negative undefined' => [v::not(v::undefOr(v::alpha())), null],
-    'Negative undefined, wrapped name' => [v::not(v::undefOr(v::alpha()->setName('Wrapped'))), null],
-    'Negative undefined, wrapper name' => [v::not(v::undefOr(v::alpha())->setName('Wrapper')), null],
-    'Negative undefined, not name' => [v::not(v::undefOr(v::alpha()))->setName('Not'), null],
+    'Inverted wrapper' => [v::not(v::undefOr(v::alpha())), 'alpha'],
+    'Inverted wrapped' => [v::undefOr(v::not(v::alpha())), 'alpha'],
+    'Inverted undefined' => [v::not(v::undefOr(v::alpha())), null],
+    'Inverted undefined, wrapped name' => [v::not(v::undefOr(v::alpha()->setName('Wrapped'))), null],
+    'Inverted undefined, wrapper name' => [v::not(v::undefOr(v::alpha())->setName('Wrapper')), null],
+    'Inverted undefined, not name' => [v::not(v::undefOr(v::alpha()))->setName('Not'), null],
     'With template' => [v::undefOr(v::alpha()), 123, 'Underneath the undulating umbrella'],
     'With array template' => [v::undefOr(v::alpha()), 123, ['undefOrAlpha' => 'Undefined number of unique unicorns']],
 ]);
@@ -24,7 +24,7 @@ Default
     'undefOrAlpha' => '1234 must contain only letters (a-z)',
 ]
 
-Negative wrapper
+Inverted wrapper
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 "alpha" must not contain letters (a-z)
 - "alpha" must not contain letters (a-z)
@@ -32,7 +32,7 @@ Negative wrapper
     'notUndefOrAlpha' => '"alpha" must not contain letters (a-z)',
 ]
 
-Negative wrapped
+Inverted wrapped
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 "alpha" must not contain letters (a-z)
 - "alpha" must not contain letters (a-z)
@@ -40,7 +40,7 @@ Negative wrapped
     'undefOrNotAlpha' => '"alpha" must not contain letters (a-z)',
 ]
 
-Negative undefined
+Inverted undefined
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 The value must not be undefined
 - The value must not be undefined
@@ -48,7 +48,7 @@ The value must not be undefined
     'notUndefOr' => 'The value must not be undefined',
 ]
 
-Negative undefined, wrapped name
+Inverted undefined, wrapped name
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 Wrapped must not be undefined
 - Wrapped must not be undefined
@@ -56,7 +56,7 @@ Wrapped must not be undefined
     'notUndefOr' => 'Wrapped must not be undefined',
 ]
 
-Negative undefined, wrapper name
+Inverted undefined, wrapper name
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 Wrapper must not be undefined
 - Wrapper must not be undefined
@@ -64,7 +64,7 @@ Wrapper must not be undefined
     'notUndefOr' => 'Wrapper must not be undefined',
 ]
 
-Negative undefined, not name
+Inverted undefined, not name
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 Not must not be undefined
 - Not must not be undefined

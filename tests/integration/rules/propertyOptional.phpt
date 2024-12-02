@@ -6,8 +6,8 @@ require 'vendor/autoload.php';
 run([
     // Simple
     'Default' => [v::propertyOptional('foo', v::intType()), (object) ['foo' => 'string']],
-    'Negative' => [v::not(v::propertyOptional('foo', v::intType())), (object) ['foo' => 12]],
-    'Negative with missing property' => [
+    'Inverted' => [v::not(v::propertyOptional('foo', v::intType())), (object) ['foo' => 12]],
+    'Inverted with missing property' => [
         v::not(v::propertyOptional('foo', v::intType())),
         new stdClass(),
     ],
@@ -17,7 +17,7 @@ run([
         v::propertyOptional('foo', v::intType()->setName('Wrapped'))->setName('Wrapper'),
         (object) ['foo' => 'string'],
     ],
-    'With wrapped name, negative' => [
+    'With wrapped name, inverted' => [
         v::not(v::propertyOptional('foo', v::intType()->setName('Wrapped'))->setName('Wrapper'))->setName('Not'),
         (object) ['foo' => 12],
     ],
@@ -25,11 +25,11 @@ run([
         v::propertyOptional('foo', v::intType())->setName('Wrapper'),
         (object) ['foo' => 'string'],
     ],
-    'With wrapper name, negative' => [
+    'With wrapper name, inverted' => [
         v::not(v::propertyOptional('foo', v::intType())->setName('Wrapper'))->setName('Not'),
         (object) ['foo' => 12],
     ],
-    'With "Not" name, negative' => [
+    'With "Not" name, inverted' => [
         v::not(v::propertyOptional('foo', v::intType()))->setName('Not'),
         (object) ['foo' => 12],
     ],
@@ -40,7 +40,7 @@ run([
         (object) ['foo' => 'string'],
         'Proper property planners plan precise property plots',
     ],
-    'With template, negative' => [
+    'With template, inverted' => [
         v::not(v::propertyOptional('foo', v::intType())),
         (object) ['foo' => 12],
         'Not proving prudent property planning promotes prosperity',
@@ -56,7 +56,7 @@ foo must be of type integer
     'foo' => 'foo must be of type integer',
 ]
 
-Negative
+Inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺
 foo must not be of type integer
 - foo must not be of type integer
@@ -64,7 +64,7 @@ foo must not be of type integer
     'foo' => 'foo must not be of type integer',
 ]
 
-Negative with missing property
+Inverted with missing property
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 foo must be present
 - foo must be present
@@ -80,7 +80,7 @@ Wrapped must be of type integer
     'foo' => 'Wrapped must be of type integer',
 ]
 
-With wrapped name, negative
+With wrapped name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 Wrapped must not be of type integer
 - Wrapped must not be of type integer
@@ -96,7 +96,7 @@ foo must be of type integer
     'foo' => 'foo must be of type integer',
 ]
 
-With wrapper name, negative
+With wrapper name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 foo must not be of type integer
 - foo must not be of type integer
@@ -104,7 +104,7 @@ foo must not be of type integer
     'foo' => 'foo must not be of type integer',
 ]
 
-With "Not" name, negative
+With "Not" name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 foo must not be of type integer
 - foo must not be of type integer
@@ -120,7 +120,7 @@ Proper property planners plan precise property plots
     'foo' => 'Proper property planners plan precise property plots',
 ]
 
-With template, negative
+With template, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 Not proving prudent property planning promotes prosperity
 - Not proving prudent property planning promotes prosperity
