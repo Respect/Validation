@@ -6,10 +6,10 @@
 Validates whether the input contains only digits.
 
 ```php
-v::digit()->validate('020 612 1851'); // false
-v::digit(' ')->validate('020 612 1851'); // true
-v::digit()->validate('172.655.537-21'); // false
-v::digit('.', '-')->validate('172.655.537-21'); // true
+v::digit()->isValid('020 612 1851'); // false
+v::digit(' ')->isValid('020 612 1851'); // true
+v::digit()->isValid('172.655.537-21'); // false
+v::digit('.', '-')->isValid('172.655.537-21'); // true
 ```
 
 ## Categorization

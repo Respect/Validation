@@ -5,11 +5,11 @@
 Validates the value of an array against a given rule.
 
 ```php
-v::key('name', v::stringType())->validate(['name' => 'The Respect Panda']); // true
+v::key('name', v::stringType())->isValid(['name' => 'The Respect Panda']); // true
 
-v::key('email', v::email())->validate(['email' => 'therespectpanda@gmail.com']); // true
+v::key('email', v::email())->isValid(['email' => 'therespectpanda@gmail.com']); // true
 
-v::key('age', v::intVal())->validate([]); // false
+v::key('age', v::intVal())->isValid([]); // false
 ```
 
 You can also use `Key` to validate nested arrays:
@@ -18,7 +18,7 @@ You can also use `Key` to validate nested arrays:
 v::key(
     'payment_details',
     v::key('credit_card', v::creditCard())
-)->validate([
+)->isValid([
     'payment_details' => [
         'credit_card' => '5376 7473 9720 8720',
     ],

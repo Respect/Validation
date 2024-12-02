@@ -7,9 +7,9 @@ the `giggsey/libphonenumber-for-php-lite` package.
 
 
 ```php
-v::phone()->validate('+1 650 253 00 00'); // true
-v::phone('BR')->validate('+55 11 91111 1111'); // true
-v::phone('BR')->validate('11 91111 1111'); // false
+v::phone()->isValid('+1 650 253 00 00'); // true
+v::phone('BR')->isValid('+55 11 91111 1111'); // true
+v::phone('BR')->isValid('11 91111 1111'); // false
 ```
 
 ## Categorization

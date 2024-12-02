@@ -5,14 +5,14 @@
 Validates if the given key exists in an array.
 
 ```php
-v::keyExists('name')->validate(['name' => 'The Respect Panda']); // true
-v::keyExists('name')->validate(['email' => 'therespectpanda@gmail.com']); // false
+v::keyExists('name')->isValid(['name' => 'The Respect Panda']); // true
+v::keyExists('name')->isValid(['email' => 'therespectpanda@gmail.com']); // false
 
-v::keyExists(0)->validate(['a', 'b', 'c']); // true
-v::keyExists(4)->validate(['a', 'b', 'c']); // false
+v::keyExists(0)->isValid(['a', 'b', 'c']); // true
+v::keyExists(4)->isValid(['a', 'b', 'c']); // false
 
-v::keyExists('username')->validate(new ArrayObject(['username' => 'therespectpanda'])); // true
-v::keyExists(5)->validate(new ArrayObject(['a', 'b', 'c'])); // false
+v::keyExists('username')->isValid(new ArrayObject(['username' => 'therespectpanda'])); // true
+v::keyExists(5)->isValid(new ArrayObject(['a', 'b', 'c'])); // false
 ```
 
 ## Notes

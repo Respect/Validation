@@ -5,13 +5,13 @@
 Validates whether the input can be used as a string.
 
 ```php
-v::stringVal()->validate('6'); // true
-v::stringVal()->validate('String'); // true
-v::stringVal()->validate(1.0); // true
-v::stringVal()->validate(42); // true
-v::stringVal()->validate(false); // true
-v::stringVal()->validate(true); // true
-v::stringVal()->validate(new ClassWithToString()); // true if ClassWithToString implements `__toString`
+v::stringVal()->isValid('6'); // true
+v::stringVal()->isValid('String'); // true
+v::stringVal()->isValid(1.0); // true
+v::stringVal()->isValid(42); // true
+v::stringVal()->isValid(false); // true
+v::stringVal()->isValid(true); // true
+v::stringVal()->isValid(new ClassWithToString()); // true if ClassWithToString implements `__toString`
 ```
 
 ## Categorization

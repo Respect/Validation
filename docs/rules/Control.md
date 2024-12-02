@@ -7,7 +7,7 @@ Validates if all of the characters in the provided string, are control
 characters.
 
 ```php
-v::control()->validate("\n\r\t"); // true
+v::control()->isValid("\n\r\t"); // true
 ```
 
 ## Categorization

@@ -5,8 +5,8 @@
 Validate whether the input value is float.
 
 ```php
-v::floatVal()->validate(1.5); // true
-v::floatVal()->validate('1e5'); // true
+v::floatVal()->isValid(1.5); // true
+v::floatVal()->isValid('1e5'); // true
 ```
 
 ## Categorization

@@ -22,12 +22,12 @@ Format  | Description                                                           
 When a `$format` is not given its default value is `Y-m-d`.
 
 ```php
-v::date()->validate('2017-12-31'); // true
-v::date()->validate('2020-02-29'); // true
-v::date()->validate('2019-02-29'); // false
-v::date('m/d/y')->validate('12/31/17'); // true
-v::date('F jS, Y')->validate('May 1st, 2017'); // true
-v::date('Ydm')->validate(20173112); // true
+v::date()->isValid('2017-12-31'); // true
+v::date()->isValid('2020-02-29'); // true
+v::date()->isValid('2019-02-29'); // false
+v::date('m/d/y')->isValid('12/31/17'); // true
+v::date('F jS, Y')->isValid('May 1st, 2017'); // true
+v::date('Ydm')->isValid(20173112); // true
 ```
 
 ## Categorization

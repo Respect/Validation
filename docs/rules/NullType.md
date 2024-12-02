@@ -5,7 +5,7 @@
 Validates whether the input is [null](http://php.net/types.null).
 
 ```php
-v::nullType()->validate(null); // true
+v::nullType()->isValid(null); // true
 ```
 
 ## Categorization

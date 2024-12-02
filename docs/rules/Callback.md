@@ -9,7 +9,7 @@ v::callback(
     function (int $input): bool {
         return $input + ($input / 2) == 15;
     }
-)->validate(10); // true
+)->isValid(10); // true
 ```
 
 ## Categorization

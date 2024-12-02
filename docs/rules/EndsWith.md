@@ -9,13 +9,13 @@ only if the value is at the end of the input.
 For strings:
 
 ```php
-v::endsWith('ipsum')->validate('lorem ipsum'); // true
+v::endsWith('ipsum')->isValid('lorem ipsum'); // true
 ```
 
 For arrays:
 
 ```php
-v::endsWith('ipsum')->validate(['lorem', 'ipsum']); // true
+v::endsWith('ipsum')->isValid(['lorem', 'ipsum']); // true
 ```
 
 A second parameter may be passed for identical comparison instead

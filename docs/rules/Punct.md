@@ -6,7 +6,7 @@
 Validates whether the input composed by only punctuation characters.
 
 ```php
-v::punct()->validate('&,.;[]'); // true
+v::punct()->isValid('&,.;[]'); // true
 ```
 
 ## Categorization

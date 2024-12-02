@@ -5,9 +5,9 @@
 Validates if the input is equivalent to some value.
 
 ```php
-v::equivalent(1)->validate(true); // true
-v::equivalent('Something')->validate('someThing'); // true
-v::equivalent(new ArrayObject([1, 2, 3, 4, 5]))->validate(new ArrayObject([1, 2, 3, 4, 5])); // true
+v::equivalent(1)->isValid(true); // true
+v::equivalent('Something')->isValid('someThing'); // true
+v::equivalent(new ArrayObject([1, 2, 3, 4, 5]))->isValid(new ArrayObject([1, 2, 3, 4, 5])); // true
 ```
 
 This rule is very similar to [Equals](Equals.md) but it does not make case-sensitive

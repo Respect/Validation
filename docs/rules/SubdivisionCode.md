@@ -9,8 +9,8 @@ The `$countryCode` must be a country in [ISO 3166-1 alpha-2][] format.
 **This rule requires [sokil/php-isocodes][] and [php-isocodes-db-only][] to be installed.**
 
 ```php
-v::subdivisionCode('BR')->validate('SP'); // true
-v::subdivisionCode('US')->validate('CA'); // true
+v::subdivisionCode('BR')->isValid('SP'); // true
+v::subdivisionCode('US')->isValid('CA'); // true
 ```
 
 ## Categorization

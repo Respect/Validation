@@ -9,13 +9,13 @@ $object = new stdClass;
 $object->name = 'The Respect Panda';
 $object->email = 'therespectpanda@gmail.com';
 
-v::propertyOptional('name', v::notEmpty())->validate($object); // true
-v::propertyOptional('email', v::email())->validate($object); // true
+v::propertyOptional('name', v::notEmpty())->isValid($object); // true
+v::propertyOptional('email', v::email())->isValid($object); // true
 
-v::propertyOptional('age', v::intVal())->validate($object); // true
-v::propertyOptional('website', v::url())->validate($object); // true
+v::propertyOptional('age', v::intVal())->isValid($object); // true
+v::propertyOptional('website', v::url())->isValid($object); // true
 
-v::propertyOptional('name', v::lowercase())->validate($object); // false
+v::propertyOptional('name', v::lowercase())->isValid($object); // false
 ```
 
 The name of this validator is automatically set to the property name.
@@ -32,8 +32,8 @@ anything that is not an object because it will always pass when it doesn't find 
 ensure the input is an object, use [ObjectType](ObjectType.md) with it.
 
 ```php
-v::propertyOptional('name', v::notEmpty())->validate('Not an object'); // true
-v::objectType()->propertyOptional('name', v::notEmpty())->validate('Not an object'); // false
+v::propertyOptional('name', v::notEmpty())->isValid('Not an object'); // true
+v::objectType()->propertyOptional('name', v::notEmpty())->isValid('Not an object'); // false
 ```
 
 * To only validate if a property exists, use [PropertyExists](PropertyExists.md) instead.

@@ -9,9 +9,9 @@ $object = new stdClass;
 $object->name = 'The Respect Panda';
 $object->email = 'therespectpanda@gmail.com';
 
-v::propertyExists('name')->validate($object); // true
-v::propertyExists('email')->validate($object); // true
-v::propertyExists('website')->validate($object); // false
+v::propertyExists('name')->isValid($object); // true
+v::propertyExists('email')->isValid($object); // true
+v::propertyExists('website')->isValid($object); // false
 ```
 
 ## Notes

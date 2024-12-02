@@ -5,7 +5,7 @@
 Validates if the input is an infinite number.
 
 ```php
-v::infinite()->validate(INF); // true
+v::infinite()->isValid(INF); // true
 ```
 
 ## Categorization

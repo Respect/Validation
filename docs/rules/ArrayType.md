@@ -5,9 +5,9 @@
 Validates whether the type of an input is array.
 
 ```php
-v::arrayType()->validate([]); // true
-v::arrayType()->validate([1, 2, 3]); // true
-v::arrayType()->validate(new ArrayObject()); // false
+v::arrayType()->isValid([]); // true
+v::arrayType()->isValid([1, 2, 3]); // true
+v::arrayType()->isValid(new ArrayObject()); // false
 ```
 
 ## Categorization

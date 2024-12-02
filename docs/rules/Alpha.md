@@ -7,18 +7,18 @@ Validates whether the input contains only alphabetic characters. This is similar
 to [Alnum](Alnum.md), but it does not allow numbers.
 
 ```php
-v::alpha()->validate('some name'); // false
-v::alpha(' ')->validate('some name'); // true
-v::alpha()->validate('Cedric-Fabian'); // false
-v::alpha('-')->validate('Cedric-Fabian'); // true
-v::alpha('-', '\'')->validate('\'s-Gravenhage'); // true
+v::alpha()->isValid('some name'); // false
+v::alpha(' ')->isValid('some name'); // true
+v::alpha()->isValid('Cedric-Fabian'); // false
+v::alpha('-')->isValid('Cedric-Fabian'); // true
+v::alpha('-', '\'')->isValid('\'s-Gravenhage'); // true
 ```
 
 You can restrict case using the [Lowercase](Lowercase.md) and
 [Uppercase](Uppercase.md) rules.
 
 ```php
-v::alpha()->uppercase()->validate('example'); // false
+v::alpha()->uppercase()->isValid('example'); // false
 ```
 
 ## Categorization

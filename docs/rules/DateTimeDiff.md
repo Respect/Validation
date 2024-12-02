@@ -9,13 +9,13 @@ The `$format` argument should follow PHP's [date()][] function. When the `$forma
 [Supported Date and Time Formats][] by PHP (see [strtotime()][]).
 
 ```php
-v::dateTimeDiff('years', v::equals(7))->validate('7 years ago'); // true
-v::dateTimeDiff('years', v::equals(7))->validate('7 years ago + 1 minute'); // false
+v::dateTimeDiff('years', v::equals(7))->isValid('7 years ago'); // true
+v::dateTimeDiff('years', v::equals(7))->isValid('7 years ago + 1 minute'); // false
 
-v::dateTimeDiff('years', v::greaterThan(18), 'd/m/Y')->validate('09/12/1990'); // true
-v::dateTimeDiff('years', v::greaterThan(18), 'd/m/Y')->validate('09/12/2023'); // false
+v::dateTimeDiff('years', v::greaterThan(18), 'd/m/Y')->isValid('09/12/1990'); // true
+v::dateTimeDiff('years', v::greaterThan(18), 'd/m/Y')->isValid('09/12/2023'); // false
 
-v::dateTimeDiff('months', v::between(1, 18))->validate('5 months ago'); // true
+v::dateTimeDiff('months', v::between(1, 18))->isValid('5 months ago'); // true
 ```
 
 The supported types are:

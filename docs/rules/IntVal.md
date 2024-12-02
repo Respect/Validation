@@ -5,11 +5,11 @@
 Validates if the input is an integer, allowing leading zeros and other number bases.
 
 ```php
-v::intVal()->validate('10'); // true
-v::intVal()->validate('089'); // true
-v::intVal()->validate(10); // true
-v::intVal()->validate(0b101010); // true
-v::intVal()->validate(0x2a); // true
+v::intVal()->isValid('10'); // true
+v::intVal()->isValid('089'); // true
+v::intVal()->isValid(10); // true
+v::intVal()->isValid(0b101010); // true
+v::intVal()->isValid(0x2a); // true
 ```
 
 This rule will consider as valid any input that PHP can convert to an integer,
@@ -17,8 +17,8 @@ but that does not contain non-integer values. That way, one can safely use the
 value this rule validates, without having surprises.
 
 ```php
-v::intVal()->validate(true); // false
-v::intVal()->validate('89a'); // false
+v::intVal()->isValid(true); // false
+v::intVal()->isValid('89a'); // false
 ```
 
 Even though PHP can cast the values above as integers, this rule will not

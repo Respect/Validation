@@ -9,9 +9,9 @@ $object = new stdClass;
 $object->name = 'The Respect Panda';
 $object->email = 'therespectpanda@gmail.com';
 
-v::property('name', v::equals('The Respect Panda'))->validate($object); // true
+v::property('name', v::equals('The Respect Panda'))->isValid($object); // true
 
-v::property('email', v::email())->validate($object); // true
+v::property('email', v::email())->isValid($object); // true
 
 v::property('email', v::email()->endsWith('@example.com'))->assert($object); // false
 ```
@@ -25,7 +25,7 @@ $object->address->postalCode = '1017 BS';
 v::property(
     'address',
     v::property('postalCode', v::postalCode('NL'))
-)->validate($object); // true
+)->isValid($object); // true
 ```
 
 The name of this validator is automatically set to the property name.

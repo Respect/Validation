@@ -5,9 +5,9 @@
 Validates whether the type of the input is [float](http://php.net/types.float).
 
 ```php
-v::floatType()->validate(1.5); // true
-v::floatType()->validate('1.5'); // false
-v::floatType()->validate(0e5); // true
+v::floatType()->isValid(1.5); // true
+v::floatType()->isValid('1.5'); // false
+v::floatType()->isValid(0e5); // true
 ```
 
 ## Categorization

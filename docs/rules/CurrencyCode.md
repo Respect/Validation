@@ -8,7 +8,7 @@ Validates an [ISO 4217][] currency code.
 **This rule requires [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][] to be installed.**
 
 ```php
-v::currencyCode()->validate('GBP'); // true
+v::currencyCode()->isValid('GBP'); // true
 ```
 
 This rule supports the two [ISO 4217][] sets:

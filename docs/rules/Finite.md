@@ -5,8 +5,8 @@
 Validates if the input is a finite number.
 
 ```php
-v::finite()->validate('10'); // true
-v::finite()->validate(10); // true
+v::finite()->isValid('10'); // true
+v::finite()->isValid(10); // true
 ```
 
 ## Categorization

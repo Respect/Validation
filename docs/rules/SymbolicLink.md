@@ -5,9 +5,9 @@
 Validates if the given input is a symbolic link.
 
 ```php
-v::symbolicLink()->validate('/path/of/valid/symbolic/link'); // true
-v::symbolicLink()->validate(new SplFileInfo('/path/of/valid/symbolic/link)); // true
-v::symbolicLink()->validate(new SplFileObject('/path/of/valid/symbolic/link')); // true
+v::symbolicLink()->isValid('/path/of/valid/symbolic/link'); // true
+v::symbolicLink()->isValid(new SplFileInfo('/path/of/valid/symbolic/link)); // true
+v::symbolicLink()->isValid(new SplFileObject('/path/of/valid/symbolic/link')); // true
 ```
 
 ## Categorization

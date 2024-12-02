@@ -13,7 +13,7 @@ country code and a subdivision code.
 v::consecutive(
     v::key('countryCode', v::countryCode()),
     v::lazy(static fn($input) => v::key('subdivisionCode', v::subdivisionCode($input['countryCode']))),
-)->validate($_POST);
+)->isValid($_POST);
 ```
 
 You need a valid country code to create a [SubdivisionCode](SubdivisionCode.md), so it makes sense only to validate the

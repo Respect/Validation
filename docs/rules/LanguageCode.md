@@ -8,11 +8,11 @@ Validates whether the input is language code based on [ISO 639][].
 **This rule requires [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][] to be installed.**
 
 ```php
-v::languageCode()->validate('pt'); // true
-v::languageCode()->validate('en'); // true
-v::languageCode()->validate('it'); // true
-v::languageCode('alpha-3')->validate('ita'); // true
-v::languageCode('alpha-3')->validate('eng'); // true
+v::languageCode()->isValid('pt'); // true
+v::languageCode()->isValid('en'); // true
+v::languageCode()->isValid('it'); // true
+v::languageCode('alpha-3')->isValid('ita'); // true
+v::languageCode('alpha-3')->isValid('eng'); // true
 ```
 
 This rule supports the two[ISO 639][] sets:

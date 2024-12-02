@@ -5,7 +5,7 @@
 Validates version numbers using Semantic Versioning.
 
 ```php
-v::version()->validate('1.0.0');
+v::version()->isValid('1.0.0');
 ```
 
 ## Categorization

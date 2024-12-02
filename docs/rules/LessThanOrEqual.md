@@ -5,9 +5,9 @@
 Validates whether the input is less than or equal to a value.
 
 ```php
-v::lessThanOrEqual(10)->validate(9); // true
-v::lessThanOrEqual(10)->validate(10); // true
-v::lessThanOrEqual(10)->validate(11); // false
+v::lessThanOrEqual(10)->isValid(9); // true
+v::lessThanOrEqual(10)->isValid(10); // true
+v::lessThanOrEqual(10)->isValid(11); // false
 ```
 
 Validation makes comparison easier, check out our supported

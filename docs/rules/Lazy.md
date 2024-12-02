@@ -8,7 +8,7 @@ This rule is particularly useful when creating rules that rely on the input. A g
 `confirmation` field matches the `password` field when processing data from a form.
 
 ```php
-v::key('confirmation', v::equals($_POST['password'] ?? null))->validate($_POST);
+v::key('confirmation', v::equals($_POST['password'] ?? null))->isValid($_POST);
 ```
 
 The issue with the code is that it’s hard to reuse because you’re relying upon the input itself (`$_POST`). That means
@@ -17,7 +17,7 @@ you can create a chain of rules and use it everywhere.
 The `lazy()` rule makes this job much simpler and more elegantly:
 
 ```php
-v::lazy(static fn($input) => v::key('confirmation', v::equals($input['password'] ?? null)))->validate($_POST);
+v::lazy(static fn($input) => v::key('confirmation', v::equals($input['password'] ?? null)))->isValid($_POST);
 ```
 
 The code above is similar to the first example, but the biggest difference is that the creation of the rule doesn't rely

@@ -11,13 +11,13 @@ $releaseDates = [
     'relational' => '2011-02-05',
 ];
 
-v::each(v::dateTime())->validate($releaseDates); // true
+v::each(v::dateTime())->isValid($releaseDates); // true
 ```
 
 You can also validate array keys combining this rule with [Call](Call.md):
 
 ```php
-v::call('array_keys', v::each(v::stringType()))->validate($releaseDates); // true
+v::call('array_keys', v::each(v::stringType()))->isValid($releaseDates); // true
 ```
 
 ## Note

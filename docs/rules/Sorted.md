@@ -5,11 +5,11 @@
 Validates whether the input is sorted in a certain order or not.
 
 ```php
-v::sorted('ASC')->validate([1, 2, 3]); // true
-v::sorted('ASC')->validate('ABC'); // true
-v::sorted('DESC')->validate([3, 2, 1]); // true
-v::sorted('ASC')->validate([]); // true
-v::sorted('ASC')->validate([1]); // true
+v::sorted('ASC')->isValid([1, 2, 3]); // true
+v::sorted('ASC')->isValid('ABC'); // true
+v::sorted('DESC')->isValid([3, 2, 1]); // true
+v::sorted('ASC')->isValid([]); // true
+v::sorted('ASC')->isValid([1]); // true
 ```
 
 You can also combine [Call](Call.md) to create custom validations:
@@ -20,15 +20,15 @@ v::call(
             return array_column($input, 'key');
         },
         v::sorted('ASC')
-    )->validate([
+    )->isValid([
         ['key' => 1],
         ['key' => 5],
         ['key' => 9],
     ]); // true
 
-v::call('strval', v::sorted('DESC'))->validate(4321); // true
+v::call('strval', v::sorted('DESC'))->isValid(4321); // true
 
-v::call('iterator_to_array', v::sorted())->validate(new ArrayIterator([1, 7, 4])); // false
+v::call('iterator_to_array', v::sorted())->isValid(new ArrayIterator([1, 7, 4])); // false
 ```
 
 ## Categorization

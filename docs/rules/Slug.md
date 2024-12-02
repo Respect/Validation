@@ -5,9 +5,9 @@
 Validates whether the input is a valid slug.
 
 ```php
-v::slug()->validate('my-wordpress-title'); // true
-v::slug()->validate('my-wordpress--title'); // false
-v::slug()->validate('my-wordpress-title-'); // false
+v::slug()->isValid('my-wordpress-title'); // true
+v::slug()->isValid('my-wordpress--title'); // false
+v::slug()->isValid('my-wordpress-title-'); // false
 ```
 
 ## Categorization

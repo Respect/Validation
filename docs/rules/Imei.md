@@ -5,8 +5,8 @@
 Validates is the input is a valid [IMEI][].
 
 ```php
-v::imei()->validate('35-209900-176148-1'); // true
-v::imei()->validate('490154203237518'); // true
+v::imei()->isValid('35-209900-176148-1'); // true
+v::imei()->isValid('490154203237518'); // true
 ```
 
 ## Categorization

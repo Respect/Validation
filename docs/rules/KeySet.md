@@ -8,25 +8,25 @@ Validates a keys in a defined structure.
 v::keySet(
     v::keyExists('foo'),
     v::keyExists('bar')
-)->validate(['foo' => 'whatever', 'bar' => 'something']); // true
+)->isValid(['foo' => 'whatever', 'bar' => 'something']); // true
 ```
 
 It will validate the keys in the array with the rules passed in the constructor.
 ```php
 v::keySet(
     v::key('foo', v::intVal())
-)->validate(['foo' => 42]); // true
+)->isValid(['foo' => 42]); // true
 
 v::keySet(
     v::key('foo', v::intVal())
-)->validate(['foo' => 'string']); // false
+)->isValid(['foo' => 'string']); // false
 ```
 
 Extra keys are not allowed:
 ```php
 v::keySet(
     v::key('foo', v::intVal())
-)->validate(['foo' => 42, 'bar' => 'String']); // false
+)->isValid(['foo' => 42, 'bar' => 'String']); // false
 ```
 
 Missing required keys are not allowed:
@@ -35,7 +35,7 @@ v::keySet(
     v::key('foo', v::intVal()),
     v::key('bar', v::stringType()),
     v::key('baz', v::boolType())
-)->validate(['foo' => 42, 'bar' => 'String']); // false
+)->isValid(['foo' => 42, 'bar' => 'String']); // false
 ```
 
 Missing non-required keys are allowed:
@@ -44,7 +44,7 @@ v::keySet(
     v::key('foo', v::intVal()),
     v::key('bar', v::stringType()),
     v::keyOptional('baz', v::boolType())
-)->validate(['foo' => 42, 'bar' => 'String']); // true
+)->isValid(['foo' => 42, 'bar' => 'String']); // true
 ```
 
 Alternatively, you can pass a chain of key-related rules to `keySet()`:
@@ -54,7 +54,7 @@ v::keySet(
         ->key('foo', v::intVal())
         ->key('bar', v::stringType())
         ->keyOptional('baz', v::boolType())
-)->validate(['foo' => 42, 'bar' => 'String']); // true
+)->isValid(['foo' => 42, 'bar' => 'String']); // true
 ```
 
 It is not possible to negate `keySet()` rules with `not()`.

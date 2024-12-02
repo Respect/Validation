@@ -5,14 +5,14 @@
 Validates the minimum value of the input against a given rule.
 
 ```php
-v::min(v::equals(10))->validate([10, 20, 30]); // true
+v::min(v::equals(10))->isValid([10, 20, 30]); // true
 
-v::min(v::between('a', 'c'))->validate(['b', 'd', 'f']); // true
+v::min(v::between('a', 'c'))->isValid(['b', 'd', 'f']); // true
 
 v::min(v::greaterThan(new DateTime('yesterday')))
-        ->validate([new DateTime('today'), new DateTime('tomorrow')]); // true
+        ->isValid([new DateTime('today'), new DateTime('tomorrow')]); // true
 
-v::min(v::lessThan(3))->validate([4, 8, 12]); // false
+v::min(v::lessThan(3))->isValid([4, 8, 12]); // false
 ```
 
 ## Note

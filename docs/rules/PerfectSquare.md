@@ -5,8 +5,8 @@
 Validates whether the input is a perfect square.
 
 ```php
-v::perfectSquare()->validate(25); // true (5*5)
-v::perfectSquare()->validate(9); // true (3*3)
+v::perfectSquare()->isValid(25); // true (5*5)
+v::perfectSquare()->isValid(9); // true (3*3)
 ```
 
 ## Categorization

@@ -9,18 +9,18 @@ Alphanumeric is a combination of alphabetic (a-z and A-Z) and numeric (0-9)
 characters.
 
 ```php
-v::alnum()->validate('foo 123'); // false
-v::alnum(' ')->validate('foo 123'); // true
-v::alnum()->validate('100%'); // false
-v::alnum('%')->validate('100%'); // true
-v::alnum('%', ',')->validate('10,5%'); // true
+v::alnum()->isValid('foo 123'); // false
+v::alnum(' ')->isValid('foo 123'); // true
+v::alnum()->isValid('100%'); // false
+v::alnum('%')->isValid('100%'); // true
+v::alnum('%', ',')->isValid('10,5%'); // true
 ```
 
 You can restrict case using the [Lowercase](Lowercase.md) and
 [Uppercase](Uppercase.md) rules.
 
 ```php
-v::alnum()->uppercase()->validate('example'); // false
+v::alnum()->uppercase()->isValid('example'); // false
 ```
 
 Message template for this validator includes `{{additionalChars}}` as the string

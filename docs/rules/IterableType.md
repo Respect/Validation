@@ -5,11 +5,11 @@
 Validates whether the input is iterable, meaning that it matches the built-in compile time type alias `iterable`.
 
 ```php
-v::iterableType()->validate([]); // true
-v::iterableType()->validate(new ArrayObject()); // true
+v::iterableType()->isValid([]); // true
+v::iterableType()->isValid(new ArrayObject()); // true
 
-v::iterableType()->validate(new stdClass()); // false
-v::iterableType()->validate('string'); // false
+v::iterableType()->isValid(new stdClass()); // false
+v::iterableType()->isValid('string'); // false
 ```
 
 ## Categorization

@@ -5,17 +5,17 @@
 Validates whether the input is a public ICANN domain suffix.
 
 ```php
-v::publicDomainSuffix->validate('co.uk'); // true
-v::publicDomainSuffix->validate('CO.UK'); // true
-v::publicDomainSuffix->validate('nom.br'); // true
-v::publicDomainSuffix->validate('invalid.com'); // false
+v::publicDomainSuffix->isValid('co.uk'); // true
+v::publicDomainSuffix->isValid('CO.UK'); // true
+v::publicDomainSuffix->isValid('nom.br'); // true
+v::publicDomainSuffix->isValid('invalid.com'); // false
 ```
 
 This rule will not match top level domains such as `tk`. 
 If you want to match either, use a combination with `Tld`:
 
 ```php
-v::oneOf(v::tld(), v::publicDomainSuffix())->validate('tk'); // true
+v::oneOf(v::tld(), v::publicDomainSuffix())->isValid('tk'); // true
 ```
 
 ## Categorization

@@ -5,13 +5,13 @@
 Validates the value of an array against a given rule when the key exists.
 
 ```php
-v::keyOptional('name', v::stringType())->validate([]); // true
-v::keyOptional('name', v::stringType())->validate(['name' => 'The Respect Panda']); // true
+v::keyOptional('name', v::stringType())->isValid([]); // true
+v::keyOptional('name', v::stringType())->isValid(['name' => 'The Respect Panda']); // true
 
-v::keyOptional('email', v::email())->validate([]); // true
-v::keyOptional('email', v::email())->validate(['email' => 'therespectpanda@gmail.com']); // true
+v::keyOptional('email', v::email())->isValid([]); // true
+v::keyOptional('email', v::email())->isValid(['email' => 'therespectpanda@gmail.com']); // true
 
-v::keyOptional('age', v::intVal())->validate(['age' => 'Twenty-Five']); // false
+v::keyOptional('age', v::intVal())->isValid(['age' => 'Twenty-Five']); // false
 ```
 
 The name of this validator is automatically set to the key name.

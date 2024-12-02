@@ -6,7 +6,7 @@
 Validates if the input contains only consonants.
 
 ```php
-v::consonant()->validate('xkcd'); // true
+v::consonant()->isValid('xkcd'); // true
 ```
 
 ## Categorization

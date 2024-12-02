@@ -5,19 +5,19 @@
 Validates the length of the given input against a given rule.
 
 ```php
-v::length(v::between(1, 5))->validate('abc'); // true
+v::length(v::between(1, 5))->isValid('abc'); // true
 
-v::length(v::greaterThan(5))->validate('abcdef'); // true
+v::length(v::greaterThan(5))->isValid('abcdef'); // true
 
-v::length(v::lessThan(5))->validate('abc'); // true
+v::length(v::lessThan(5))->isValid('abc'); // true
 ```
 
 This rule can be used to validate the length of strings, arrays, and objects that implement the `Countable` interface.
 
 ```php
-v::length(v::greaterThanOrEqual(3))->validate([1, 2, 3]); // true
+v::length(v::greaterThanOrEqual(3))->isValid([1, 2, 3]); // true
 
-v::length(v::equals(0))->validate(new SplPriorityQueue()); // true
+v::length(v::equals(0))->isValid(new SplPriorityQueue()); // true
 ```
 
 ## Categorization

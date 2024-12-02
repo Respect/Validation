@@ -5,9 +5,9 @@
 Validates whether the input is a positive number.
 
 ```php
-v::positive()->validate(1); // true
-v::positive()->validate(0); // false
-v::positive()->validate(-15); // false
+v::positive()->isValid(1); // true
+v::positive()->isValid(0); // false
+v::positive()->isValid(-15); // false
 ```
 
 ## Categorization

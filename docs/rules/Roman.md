@@ -5,7 +5,7 @@
 Validates if the input is a Roman numeral.
 
 ```php
-v::roman()->validate('IV'); // true
+v::roman()->isValid('IV'); // true
 ```
 
 ## Categorization

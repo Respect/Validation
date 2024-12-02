@@ -6,17 +6,17 @@
 Validates a credit card number.
 
 ```php
-v::creditCard()->validate('5376 7473 9720 8720'); // true
-v::creditCard()->validate('5376-7473-9720-8720'); // true
-v::creditCard()->validate('5376.7473.9720.8720'); // true
+v::creditCard()->isValid('5376 7473 9720 8720'); // true
+v::creditCard()->isValid('5376-7473-9720-8720'); // true
+v::creditCard()->isValid('5376.7473.9720.8720'); // true
 
-v::creditCard('American_Express')->validate('340316193809364'); // true
-v::creditCard('Diners_Club')->validate('30351042633884'); // true
-v::creditCard('Discover')->validate('6011000990139424'); // true
-v::creditCard('JCB')->validate('3566002020360505'); // true
-v::creditCard('Mastercard')->validate('5376747397208720'); // true
-v::creditCard('Visa')->validate('4024007153361885'); // true
-v::creaditCard('RuPay')->validate('6062973831636410') // true
+v::creditCard('American_Express')->isValid('340316193809364'); // true
+v::creditCard('Diners_Club')->isValid('30351042633884'); // true
+v::creditCard('Discover')->isValid('6011000990139424'); // true
+v::creditCard('JCB')->isValid('3566002020360505'); // true
+v::creditCard('Mastercard')->isValid('5376747397208720'); // true
+v::creditCard('Visa')->isValid('4024007153361885'); // true
+v::creaditCard('RuPay')->isValid('6062973831636410') // true
 ```
 
 The current supported brands are:
@@ -33,7 +33,7 @@ It ignores any non-numeric characters, use [Digit](Digit.md),
 [NoWhitespace](NoWhitespace.md), or [Regex](Regex.md) when appropriate.
 
 ```php
-v::digit()->creditCard()->validate('5376747397208720'); // true
+v::digit()->creditCard()->isValid('5376747397208720'); // true
 ```
 
 ## Categorization
