@@ -22,6 +22,22 @@ of equal comparison.
 
 Message template for this validator includes `{{haystack}}`.
 
+## Templates
+
+`In::TEMPLATE_STANDARD`
+
+| Mode       | Template                             |
+|------------|--------------------------------------|
+| `default`  | {{name}} must be in {{haystack}}     |
+| `inverted` | {{name}} must not be in {{haystack}} |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `haystack`  |                                                                  |
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Arrays
@@ -30,9 +46,9 @@ Message template for this validator includes `{{haystack}}`.
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.3.9 | Created
+| Version | Description |
+|--------:|-------------|
+|   0.3.9 | Created     |
 
 ***
 See also:

@@ -37,15 +37,30 @@ setlocale(LC_ALL, 'ru_RU');
 v::yes(true)->isValid('Yes'); // true
 ```
 
+## Templates
+
+`Yes::TEMPLATE_STANDARD`
+
+| Mode       | Template                              |
+|------------|---------------------------------------|
+| `default`  | {{name}} must be similar to "Yes"     |
+| `inverted` | {{name}} must not be similar to "Yes" |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Booleans
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.7.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   0.7.0 | Created     |
 
 ***
 See also:

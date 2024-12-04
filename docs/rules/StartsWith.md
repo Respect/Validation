@@ -25,6 +25,22 @@ instead of equal.
 
 Message template for this validator includes `{{startValue}}`.
 
+## Templates
+
+`StartsWith::TEMPLATE_STANDARD`
+
+| Mode       | Template                                    |
+|------------|---------------------------------------------|
+| `default`  | {{name}} must start with {{startValue}}     |
+| `inverted` | {{name}} must not start with {{startValue}} |
+
+## Template placeholders
+
+| Placeholder  | Description                                                      |
+|--------------|------------------------------------------------------------------|
+| `name`       | The validated input or the custom validator name (if specified). |
+| `startValue` |                                                                  |
+
 ## Categorization
 
 - Arrays
@@ -32,9 +48,9 @@ Message template for this validator includes `{{startValue}}`.
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.3.9 | Created
+| Version | Description |
+|--------:|-------------|
+|   0.3.9 | Created     |
 
 ***
 See also:

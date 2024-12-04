@@ -24,6 +24,22 @@ Message template for this validator includes `{{countryCode}}`.
 
 Extracted from [GeoNames](http://www.geonames.org/).
 
+## Templates
+
+`PostalCode::TEMPLATE_STANDARD`
+
+| Mode       | Template                                                    |
+|------------|-------------------------------------------------------------|
+| `default`  | {{name}} must be a valid postal code on {{countryCode}}     |
+| `inverted` | {{name}} must not be a valid postal code on {{countryCode}} |
+
+## Template placeholders
+
+| Placeholder   | Description                                                      |
+|---------------|------------------------------------------------------------------|
+| `countryCode` |                                                                  |
+| `name`        | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Localization
@@ -31,11 +47,11 @@ Extracted from [GeoNames](http://www.geonames.org/).
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.3.0 | Add option to validate formatting
-  2.2.4 | Cambodian postal codes now support 5 and 6 digits
-  0.7.0 | Created
+| Version | Description                                       |
+|--------:|---------------------------------------------------|
+|   2.3.0 | Add option to validate formatting                 |
+|   2.2.4 | Cambodian postal codes now support 5 and 6 digits |
+|   0.7.0 | Created                                           |
 
 ***
 See also:

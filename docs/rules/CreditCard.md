@@ -36,6 +36,29 @@ It ignores any non-numeric characters, use [Digit](Digit.md),
 v::digit()->creditCard()->isValid('5376747397208720'); // true
 ```
 
+## Templates
+
+`CreditCard::TEMPLATE_STANDARD`
+
+| Mode       | Template                                        |
+|------------|-------------------------------------------------|
+| `default`  | {{name}} must be a valid credit card number     |
+| `inverted` | {{name}} must not be a valid credit card number |
+
+`CreditCard::TEMPLATE_BRANDED`
+
+| Mode       | Template                                                           |
+|------------|--------------------------------------------------------------------|
+| `default`  | {{name}} must be a valid {{brand&#124;raw}} credit card number     |
+| `inverted` | {{name}} must not be a valid {{brand&#124;raw}} credit card number |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `brand`     |                                                                  |
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Banking
@@ -43,21 +66,11 @@ v::digit()->creditCard()->isValid('5376747397208720'); // true
 ## Changelog
 
 | Version | Description                        |
-| ------- | ---------------------------------- |
-| 2.2.4   | RuPay is now supported as a brand  |
-| 1.1.0   | Allow the define credit card brand |
-| 0.3.9   | Created                            |
+|--------:|------------------------------------|
+|   2.2.4 | RuPay is now supported as a brand  |
+|   1.1.0 | Allow the define credit card brand |
+|   0.3.9 | Created                            |
 
----
-
-See also:
-
-- [Decimal](Decimal.md)
-- [Digit](Digit.md)
-- [Iban](Iban.md)
-- [Luhn](Luhn.md)
-- [NoWhitespace](NoWhitespace.md)
-- [Regex](Regex.md)
 ***
 See also:
 

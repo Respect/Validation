@@ -34,15 +34,31 @@ v::time()->isValid(new DateTime()); // false
 v::time()->isValid(new DateTimeImmutable()); // false
 ```
 
+## Templates
+
+`Time::TEMPLATE_STANDARD`
+
+| Mode       | Template                                                   |
+|------------|------------------------------------------------------------|
+| `default`  | {{name}} must be a valid time in the format {{sample}}     |
+| `inverted` | {{name}} must not be a valid time in the format {{sample}} |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+| `sample`    |                                                                  |
+
 ## Categorization
 
 - Date and Time
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   2.0.0 | Created     |
 
 ***
 See also:

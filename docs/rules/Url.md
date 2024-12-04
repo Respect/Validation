@@ -12,15 +12,30 @@ v::url()->isValid('mailto:john.doe@example.com'); // true
 v::url()->isValid('news:new.example.com'); // true
 ```
 
+## Templates
+
+`Url::TEMPLATE_STANDARD`
+
+| Mode       | Template                   |
+|------------|----------------------------|
+| `default`  | {{name}} must be a URL     |
+| `inverted` | {{name}} must not be a URL |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Internet
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.8.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   0.8.0 | Created     |
 
 ***
 See also:

@@ -10,6 +10,21 @@ v::fibonacci()->isValid('34'); // true
 v::fibonacci()->isValid(6); // false
 ```
 
+## Templates
+
+`Fibonacci::TEMPLATE_STANDARD`
+
+| Mode       | Template                                      |
+|------------|-----------------------------------------------|
+| `default`  | {{name}} must be a valid Fibonacci number     |
+| `inverted` | {{name}} must not be a valid Fibonacci number |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Math
@@ -17,9 +32,9 @@ v::fibonacci()->isValid(6); // false
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.1.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   1.1.0 | Created     |
 
 ***
 See also:

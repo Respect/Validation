@@ -10,6 +10,21 @@ v::callableType()->isValid('trim'); // true
 v::callableType()->isValid([new DateTime(), 'format']); // true
 ```
 
+## Templates
+
+`CallableType::TEMPLATE_STANDARD`
+
+| Mode       | Template                        |
+|------------|---------------------------------|
+| `default`  | {{name}} must be a callable     |
+| `inverted` | {{name}} must not be a callable |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Callables
@@ -17,9 +32,9 @@ v::callableType()->isValid([new DateTime(), 'format']); // true
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   1.0.0 | Created     |
 
 ***
 See also:

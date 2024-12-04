@@ -20,6 +20,21 @@ This rule supports the two[ISO 639][] sets:
 - `alpha-2`
 - `alpha-3`
 
+## Templates
+
+`LanguageCode::TEMPLATE_STANDARD`
+
+| Mode       | Template                                   |
+|------------|--------------------------------------------|
+| `default`  | {{name}} must be a valid language code     |
+| `inverted` | {{name}} must not be a valid language code |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - ISO codes
@@ -27,10 +42,10 @@ This rule supports the two[ISO 639][] sets:
 
 ## Changelog
 
-Version | Description
---------|-------------
-  3.0.0 | Require [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][]
-  1.1.0 | Created
+| Version | Description                                                       |
+|--------:|-------------------------------------------------------------------|
+|   3.0.0 | Require [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][] |
+|   1.1.0 | Created                                                           |
 
 ***
 See also:

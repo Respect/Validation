@@ -8,16 +8,31 @@ Validates whether the input is [null](http://php.net/types.null).
 v::nullType()->isValid(null); // true
 ```
 
+## Templates
+
+`NullType::TEMPLATE_STANDARD`
+
+| Mode       | Template                  |
+|------------|---------------------------|
+| `default`  | {{name}} must be null     |
+| `inverted` | {{name}} must not be null |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Types
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.0.0 | Renamed from `NullValue` to `NullType`
-  0.3.9 | Created as `NullValue`
+| Version | Description                            |
+|--------:|----------------------------------------|
+|   1.0.0 | Renamed from `NullValue` to `NullType` |
+|   0.3.9 | Created as `NullValue`                 |
 
 ***
 See also:

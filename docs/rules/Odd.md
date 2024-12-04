@@ -11,16 +11,31 @@ v::odd()->isValid(3); // true
 
 Using `intVal()` before `odd()` is a best practice.
 
+## Templates
+
+`Odd::TEMPLATE_STANDARD`
+
+| Mode       | Template                        |
+|------------|---------------------------------|
+| `default`  | {{name}} must be an odd number  |
+| `inverted` | {{name}} must be an even number |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Numbers
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.0.0 | Only validates integers
-  0.3.9 | Created
+| Version | Description             |
+|--------:|-------------------------|
+|   2.0.0 | Only validates integers |
+|   0.3.9 | Created                 |
 
 ***
 See also:

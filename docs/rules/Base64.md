@@ -9,15 +9,30 @@ v::base64()->isValid('cmVzcGVjdCE='); // true
 v::base64()->isValid('respect!'); // false
 ```
 
+## Templates
+
+`Base64::TEMPLATE_STANDARD`
+
+| Mode       | Template                                     |
+|------------|----------------------------------------------|
+| `default`  | {{name}} must be a base64 encoded string     |
+| `inverted` | {{name}} must not be a base64 encoded string |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Strings
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   2.0.0 | Created     |
 
 ***
 See also:

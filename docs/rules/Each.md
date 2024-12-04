@@ -25,6 +25,21 @@ v::call('array_keys', v::each(v::stringType()))->isValid($releaseDates); // true
 This rule uses [IterableType](IterableType.md) and [NotEmpty](NotEmpty.md) internally. If an input is non-iterable or
 empty, the validation will fail.
 
+## Templates
+
+`Each::TEMPLATE_STANDARD`
+
+| Mode       | Template                              |
+|------------|---------------------------------------|
+| `default`  | Each item in {{name}} must be valid   |
+| `inverted` | Each item in {{name}} must be invalid |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Arrays

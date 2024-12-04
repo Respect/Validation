@@ -21,6 +21,21 @@ This rule will validate public, private, protected, uninitialised, and static pr
 * To validate a property against a given rule requiring the property to exist, use [Property](Property.md) instead.
 * To validate a property against a given rule only if the property exists, use [PropertyOptional](PropertyOptional.md) instead.
 
+## Templates
+
+`PropertyExists::TEMPLATE_STANDARD`
+
+| Mode       | Template                     |
+|------------|------------------------------|
+| `default`  | {{name}} must be present     |
+| `inverted` | {{name}} must not be present |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Objects
@@ -29,7 +44,7 @@ This rule will validate public, private, protected, uninitialised, and static pr
 ## Changelog
 
 | Version | Description                          |
-| ------: |--------------------------------------|
+|--------:|--------------------------------------|
 |   3.0.0 | Created from [Property](Property.md) |
 
 ***

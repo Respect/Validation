@@ -10,6 +10,22 @@ v::factor(4)->isValid(2); // true
 v::factor(4)->isValid(3); // false
 ```
 
+## Templates
+
+`Factor::TEMPLATE_STANDARD`
+
+| Mode       | Template                                               |
+|------------|--------------------------------------------------------|
+| `default`  | {{name}} must be a factor of {{dividend&#124;raw}}     |
+| `inverted` | {{name}} must not be a factor of {{dividend&#124;raw}} |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `dividend`  |                                                                  |
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Math
@@ -17,9 +33,9 @@ v::factor(4)->isValid(3); // false
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   1.0.0 | Created     |
 
 ***
 See also:

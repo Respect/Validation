@@ -9,15 +9,30 @@ v::imei()->isValid('35-209900-176148-1'); // true
 v::imei()->isValid('490154203237518'); // true
 ```
 
+## Templates
+
+`Imei::TEMPLATE_STANDARD`
+
+| Mode       | Template                                 |
+|------------|------------------------------------------|
+| `default`  | {{name}} must be a valid IMEI number     |
+| `inverted` | {{name}} must not be a valid IMEI number |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Identifications
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   1.0.0 | Created     |
 
 ***
 See also:

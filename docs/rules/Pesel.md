@@ -11,15 +11,30 @@ v::pesel()->isValid('97072704801'); // false
 v::pesel()->isValid('PESEL123456'); // false
 ```
 
+## Templates
+
+`Pesel::TEMPLATE_STANDARD`
+
+| Mode       | Template                           |
+|------------|------------------------------------|
+| `default`  | {{name}} must be a valid PESEL     |
+| `inverted` | {{name}} must not be a valid PESEL |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Identifications
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.1.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   1.1.0 | Created     |
 
 ***
 See also:

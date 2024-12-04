@@ -21,12 +21,14 @@ v::nullOrEmail()->isValid('not an email'); // false
 v::nullOrBetween(1, 3)->isValid(2); // true
 v::nullOrBetween(1, 3)->isValid(null); // true
 ```
-
 ## Templates
 
-| Id                          | Default         | Inverted             |
-|-----------------------------|-----------------|----------------------|
-| `NullOr::TEMPLATE_STANDARD` | or must be null | and must not be null |
+`NullOr::TEMPLATE_STANDARD`
+
+| Mode       | Template             |
+|------------|----------------------|
+| `default`  | or must be null      |
+| `inverted` | and must not be null |
 
 The templates from this rule serve as message suffixes:
 

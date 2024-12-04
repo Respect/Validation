@@ -20,6 +20,14 @@ In the sample above, if `$input` is an integer, then it must be positive.
 If `$input` is not an integer, then it must not be empty.
 When `$else` is not defined use [AlwaysInvalid](AlwaysInvalid.md)
 
+## Templates
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Conditions
@@ -27,10 +35,10 @@ When `$else` is not defined use [AlwaysInvalid](AlwaysInvalid.md)
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.8.0 | Allow to use rule without else
-  0.3.9 | Created
+| Version | Description                    |
+|--------:|--------------------------------|
+|   0.8.0 | Allow to use rule without else |
+|   0.3.9 | Created                        |
 
 ***
 See also:

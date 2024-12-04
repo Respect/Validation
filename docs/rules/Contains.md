@@ -22,6 +22,22 @@ of equal comparison.
 
 Message template for this validator includes `{{containsValue}}`.
 
+## Templates
+
+`Contains::TEMPLATE_STANDARD`
+
+| Mode       | Template                                    |
+|------------|---------------------------------------------|
+| `default`  | {{name}} must contain {{containsValue}}     |
+| `inverted` | {{name}} must not contain {{containsValue}} |
+
+## Template placeholders
+
+| Placeholder     | Description                                                      |
+|-----------------|------------------------------------------------------------------|
+| `containsValue` |                                                                  |
+| `name`          | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Arrays
@@ -29,9 +45,9 @@ Message template for this validator includes `{{containsValue}}`.
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.3.9 | Created
+| Version | Description |
+|--------:|-------------|
+|   0.3.9 | Created     |
 
 ***
 See also:

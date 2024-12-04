@@ -11,15 +11,30 @@ v::noWhitespace()->isValid("foo\nbar"); // false
 
 This is most useful when chaining with other validators such as `Alnum()`
 
+## Templates
+
+`NoWhitespace::TEMPLATE_STANDARD`
+
+| Mode       | Template                                      |
+|------------|-----------------------------------------------|
+| `default`  | {{name}} must not contain whitespaces         |
+| `inverted` | {{name}} must contain at least one whitespace |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Strings
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.3.9 | Created
+| Version | Description |
+|--------:|-------------|
+|   0.3.9 | Created     |
 
 ***
 See also:

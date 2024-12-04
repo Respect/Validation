@@ -15,15 +15,32 @@ v::betweenExclusive('a', 'z')->isValid('a'); // false
 
 Validation makes comparison easier, check out our supported [comparable values](../08-comparable-values.md).
 
+## Templates
+
+`BetweenExclusive::TEMPLATE_STANDARD`
+
+| Mode       | Template                                                                 |
+|------------|--------------------------------------------------------------------------|
+| `default`  | {{name}} must be greater than {{minValue}} and less than {{maxValue}}    |
+| `inverted` | {{name}} must not be greater than {{minValue}} or less than {{maxValue}} |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+| ----------- | ---------------------------------------------------------------- |
+| `maxValue`  | The minimum value passed to the rule.                            |
+| `minValue`  | The maximum value passed to the rule.                            |
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Comparisons
 
 ## Changelog
 
-| Version | Description                 |
-|--------:|-----------------------------|
-|   3.0.0 | Created                     |
+| Version | Description |
+|--------:|-------------|
+|   3.0.0 | Created     |
 
 ***
 See also:

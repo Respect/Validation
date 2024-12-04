@@ -8,15 +8,30 @@ Validates if the given input is a valid JSON.
 v::json()->isValid('{"foo":"bar"}'); // true
 ```
 
+## Templates
+
+`Json::TEMPLATE_STANDARD`
+
+| Mode       | Template                                 |
+|------------|------------------------------------------|
+| `default`  | {{name}} must be a valid JSON string     |
+| `inverted` | {{name}} must not be a valid JSON string |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Strings
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.3.9 | Created
+| Version | Description |
+|--------:|-------------|
+|   0.3.9 | Created     |
 
 ***
 See also:

@@ -12,15 +12,30 @@ v::callback(
 )->isValid(10); // true
 ```
 
+## Templates
+
+`Callback::TEMPLATE_STANDARD`
+
+| Mode       | Template                 |
+|------------|--------------------------|
+| `default`  | {{name}} must be valid   |
+| `inverted` | {{name}} must be invalid |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Callables
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.3.9 | Created
+| Version | Description |
+|--------:|-------------|
+|   0.3.9 | Created     |
 
 ***
 See also:

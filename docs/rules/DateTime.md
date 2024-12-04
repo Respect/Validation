@@ -55,6 +55,29 @@ v::callback(fn($input) => is_string($input) && DateTime::createFromFormat(DateTi
 v::dateTime(DateTime::RFC3339_EXTENDED)->isValid($input); // false
 ```
 
+## Templates
+
+`DateTime::TEMPLATE_STANDARD`
+
+| Mode       | Template                               |
+|------------|----------------------------------------|
+| `default`  | {{name}} must be a valid date/time     |
+| `inverted` | {{name}} must not be a valid date/time |
+
+`DateTime::TEMPLATE_FORMAT`
+
+| Mode       | Template                                                        |
+|------------|-----------------------------------------------------------------|
+| `default`  | {{name}} must be a valid date/time in the format {{sample}}     |
+| `inverted` | {{name}} must not be a valid date/time in the format {{sample}} |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+| `sample`    |                                                                  |
+
 ## Categorization
 
 - Date and Time
@@ -62,10 +85,10 @@ v::dateTime(DateTime::RFC3339_EXTENDED)->isValid($input); // false
 ## Changelog
 
 | Version | Description                                |
-|---------|--------------------------------------------|
-| 2.3.0   | Validation became a lot stricter           |
-| 2.2.4   | `v::dateTime('z')` is no longer supported. |
-| 2.0.0   | Created                                    |
+|--------:|--------------------------------------------|
+|   2.3.0 | Validation became a lot stricter           |
+|   2.2.4 | `v::dateTime('z')` is no longer supported. |
+|   2.0.0 | Created                                    |
 
 ***
 See also:

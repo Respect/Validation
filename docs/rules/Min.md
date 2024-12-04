@@ -20,6 +20,28 @@ v::min(v::lessThan(3))->isValid([4, 8, 12]); // false
 This rule uses [IterableType](IterableType.md) and [NotEmpty](NotEmpty.md) internally. If an input is non-iterable or
 empty, the validation will fail.
 
+## Templates
+
+`Min::TEMPLATE_STANDARD`
+
+| Mode       | Template                      |
+|------------|-------------------------------|
+| `default`  | As the minimum from {{name}}, |
+| `inverted` | As the minimum from {{name}}, |
+
+`Min::TEMPLATE_NAMED`
+
+| Mode       | Template         |
+|------------|------------------|
+| `default`  | The minimum from |
+| `inverted` | The minimum from |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Comparisons

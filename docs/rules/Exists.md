@@ -15,15 +15,30 @@ This validator will consider SplFileInfo instances, so you can do something like
 v::exists()->isValid(new SplFileInfo('file.txt'));
 ```
 
+## Templates
+
+`Exists::TEMPLATE_STANDARD`
+
+| Mode       | Template                              |
+|------------|---------------------------------------|
+| `default`  | {{name}} must be an existing file     |
+| `inverted` | {{name}} must not be an existing file |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - File system
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.5.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   0.5.0 | Created     |
 
 ***
 See also:

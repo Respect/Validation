@@ -12,17 +12,32 @@ v::iterableType()->isValid(new stdClass()); // false
 v::iterableType()->isValid('string'); // false
 ```
 
+## Templates
+
+`IterableType::TEMPLATE_STANDARD`
+
+| Mode       | Template                   |
+|------------|----------------------------|
+| `default`  | {{name}} must be iterable  |
+| `inverted` | {{name}} must not iterable |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Types
 
 ## Changelog
 
-|  Version | Description                               |
-|---------:|-------------------------------------------|
-|    3.0.0 | Rejected `stdClass` as iterable           |
-|    1.0.8 | Renamed from `Iterable` to `IterableType` |
-|    1.0.0 | Created as `Iterable`                     |
+| Version | Description                               |
+|--------:|-------------------------------------------|
+|   3.0.0 | Rejected `stdClass` as iterable           |
+|   1.0.8 | Renamed from `Iterable` to `IterableType` |
+|   1.0.0 | Created as `Iterable`                     |
 
 ***
 See also:

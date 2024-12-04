@@ -9,6 +9,21 @@ v::intType()->isValid(42); // true
 v::intType()->isValid('10'); // false
 ```
 
+## Templates
+
+`IntType::TEMPLATE_STANDARD`
+
+| Mode       | Template                        |
+|------------|---------------------------------|
+| `default`  | {{name}} must be an integer     |
+| `inverted` | {{name}} must not be an integer |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Numbers
@@ -16,9 +31,9 @@ v::intType()->isValid('10'); // false
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   1.0.0 | Created     |
 
 ***
 See also:

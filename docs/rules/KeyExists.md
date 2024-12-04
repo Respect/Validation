@@ -20,6 +20,21 @@ v::keyExists(5)->isValid(new ArrayObject(['a', 'b', 'c'])); // false
 * To validate an array against a given rule if the key exists, use [KeyOptional](KeyOptional.md) instead.
 * To validate an array against a given rule requiring the key to exist, use [Key](Key.md) instead.
 
+## Templates
+
+`KeyExists::TEMPLATE_STANDARD`
+
+| Mode       | Template                     |
+|------------|------------------------------|
+| `default`  | {{name}} must be present     |
+| `inverted` | {{name}} must not be present |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Arrays
@@ -28,7 +43,7 @@ v::keyExists(5)->isValid(new ArrayObject(['a', 'b', 'c'])); // false
 ## Changelog
 
 | Version | Description                |
-| ------: |----------------------------|
+|--------:|----------------------------|
 |   3.0.0 | Created from [Key](Key.md) |
 
 ***

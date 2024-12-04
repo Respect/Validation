@@ -8,6 +8,21 @@ Validates if the input is an infinite number.
 v::infinite()->isValid(INF); // true
 ```
 
+## Templates
+
+`Infinite::TEMPLATE_STANDARD`
+
+| Mode       | Template                                |
+|------------|-----------------------------------------|
+| `default`  | {{name}} must be an infinite number     |
+| `inverted` | {{name}} must not be an infinite number |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Math
@@ -15,9 +30,9 @@ v::infinite()->isValid(INF); // true
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   1.0.0 | Created     |
 
 ***
 See also:

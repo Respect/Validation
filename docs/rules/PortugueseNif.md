@@ -9,6 +9,21 @@ v::portugueseNif()->isValid('124885446'); // true
 v::portugueseNif()->isValid('220005245'); // false
 ```
 
+## Templates
+
+`PortugueseNif::TEMPLATE_STANDARD`
+
+| Mode       | Template                              |
+|------------|---------------------------------------|
+| `default`  | {{name}} must be a Portuguese NIF     |
+| `inverted` | {{name}} must not be a Portuguese NIF |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Identifications
@@ -16,7 +31,7 @@ v::portugueseNif()->isValid('220005245'); // false
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+|--------:|-------------|
 |   2.2.0 | Created     |
 
 ***

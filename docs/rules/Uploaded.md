@@ -8,16 +8,31 @@ Validates if the given data is a file that was uploaded via HTTP POST.
 v::uploaded()->isValid('/path/of/an/uploaded/file'); // true
 ```
 
+## Templates
+
+`Uploaded::TEMPLATE_STANDARD`
+
+| Mode       | Template                              |
+|------------|---------------------------------------|
+| `default`  | {{name}} must be an uploaded file     |
+| `inverted` | {{name}} must not be an uploaded file |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - File system
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.1.0 | Add PSR-7 support
-  0.5.0 | Created
+| Version | Description       |
+|--------:|-------------------|
+|   2.1.0 | Add PSR-7 support |
+|   0.5.0 | Created           |
 
 ***
 See also:

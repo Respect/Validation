@@ -13,15 +13,30 @@ v::number()->isValid(acos(8)); // false
 > representing an undefined or unrepresentable value, especially in
 > floating-point calculations." [Wikipedia](https://en.wikipedia.org/wiki/NaN)
 
+## Templates
+
+`Number::TEMPLATE_STANDARD`
+
+| Mode       | Template                        |
+|------------|---------------------------------|
+| `default`  | {{name}} must be a valid number |
+| `inverted` | {{name}} must not be a number   |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Numbers
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   2.0.0 | Created     |
 
 ***
 See also:

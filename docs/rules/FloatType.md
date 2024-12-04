@@ -10,6 +10,21 @@ v::floatType()->isValid('1.5'); // false
 v::floatType()->isValid(0e5); // true
 ```
 
+## Templates
+
+`FloatType::TEMPLATE_STANDARD`
+
+| Mode       | Template                   |
+|------------|----------------------------|
+| `default`  | {{name}} must be float     |
+| `inverted` | {{name}} must not be float |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Numbers
@@ -17,9 +32,9 @@ v::floatType()->isValid(0e5); // true
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   1.0.0 | Created     |
 
 ***
 See also:

@@ -61,6 +61,42 @@ It is not possible to negate `keySet()` rules with `not()`.
 
 The keys' order is not considered in the validation.
 
+## Templates
+
+`KeySet::TEMPLATE_STANDARD`
+
+| Mode       | Template                   |
+|------------|----------------------------|
+| `default`  | {{name}} validation failed |
+| `inverted` | {{name}} validation passed |
+
+`KeySet::TEMPLATE_BOTH`
+
+| Mode       | Template                                      |
+|------------|-----------------------------------------------|
+| `default`  | {{name}} contains both missing and extra keys |
+| `inverted` | {{name}} contains no missing or extra keys.   |
+
+`KeySet::TEMPLATE_EXTRA_KEYS`
+
+| Mode       | Template                        |
+|------------|---------------------------------|
+| `default`  | {{name}} contains extra keys    |
+| `inverted` | {{name}} contains no extra keys |
+
+`KeySet::TEMPLATE_MISSING_KEYS`
+
+| Mode       | Template                          |
+|------------|-----------------------------------|
+| `default`  | {{name}} contains missing keys    |
+| `inverted` | {{name}} contains no missing keys |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Arrays

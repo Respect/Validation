@@ -11,15 +11,30 @@ v::tld()->isValid('org'); // true
 v::tld()->isValid('COM'); // true
 ```
 
+## Templates
+
+`Tld::TEMPLATE_STANDARD`
+
+| Mode       | Template                                           |
+|------------|----------------------------------------------------|
+| `default`  | {{name}} must be a valid top-level domain name     |
+| `inverted` | {{name}} must not be a valid top-level domain name |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Internet
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.3.9 | Created
+| Version | Description |
+|--------:|-------------|
+|   0.3.9 | Created     |
 
 ***
 See also:

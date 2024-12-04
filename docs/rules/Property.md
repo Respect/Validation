@@ -45,6 +45,14 @@ This rule will validate public, private, protected, uninitialised, and static pr
 * To only validate if a property exists, use [PropertyExists](PropertyExists.md) instead.
 * To validate a property against a given rule only if the property exists, use [PropertyOptional](PropertyOptional.md) instead.
 
+## Templates
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Nesting
@@ -54,7 +62,7 @@ This rule will validate public, private, protected, uninitialised, and static pr
 ## Changelog
 
 | Version | Description                                                                                                                          |
-| ------: |--------------------------------------------------------------------------------------------------------------------------------------|
+|--------:|--------------------------------------------------------------------------------------------------------------------------------------|
 |   3.0.0 | Renamed from `Attribute` to `Property`, and split by [PropertyExists](PropertyExists.md) and [PropertyOptional](PropertyOptional.md) |
 |   0.3.9 | Created                                                                                                                              |
 

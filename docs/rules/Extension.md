@@ -10,15 +10,31 @@ v::extension('png')->isValid('image.png'); // true
 
 This rule is case-sensitive.
 
+## Templates
+
+`Extension::TEMPLATE_STANDARD`
+
+| Mode       | Template                                       |
+|------------|------------------------------------------------|
+| `default`  | {{name}} must have {{extension}} extension     |
+| `inverted` | {{name}} must not have {{extension}} extension |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `extension` |                                                                  |
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - File system
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   1.0.0 | Created     |
 
 ***
 See also:

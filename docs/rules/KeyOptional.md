@@ -36,6 +36,14 @@ Below are some other rules that are tightly related to `KeyOptional`:
 * To validate if a key exists, use [KeyExists](KeyExists.md) instead.
 * To validate an array against a given rule requiring the key to exist, use [Key](Key.md) instead.
 
+## Templates
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Arrays
@@ -44,8 +52,9 @@ Below are some other rules that are tightly related to `KeyOptional`:
 ## Changelog
 
 | Version | Description                |
-| ------: |----------------------------|
+|--------:|----------------------------|
 |   3.0.0 | Created from [Key](Key.md) |
+
 ***
 See also:
 

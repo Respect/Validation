@@ -1,4 +1,4 @@
-# Date
+[]()# Date
 
 - `Date()`
 - `Date(string $format)`
@@ -30,16 +30,32 @@ v::date('F jS, Y')->isValid('May 1st, 2017'); // true
 v::date('Ydm')->isValid(20173112); // true
 ```
 
+## Templates
+
+`Date::TEMPLATE_STANDARD`
+
+| Mode       | Template                                                   |
+|------------|------------------------------------------------------------|
+| `default`  | {{name}} must be a valid date in the format {{sample}}     |
+| `inverted` | {{name}} must not be a valid date in the format {{sample}} |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+| `sample`    |                                                                  |
+
 ## Categorization
 
 - Date and Time
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.0.0 | Changed to only validate dates
-  0.3.9 | Created as `Date`
+| Version | Description                    |
+|--------:|--------------------------------|
+|   2.0.0 | Changed to only validate dates |
+|   0.3.9 | Created as `Date`              |
 
 ***
 See also:

@@ -35,15 +35,37 @@ v::stringType()->notEmpty()->isValid('        ');  //false
 v::stringType()->notEmpty()->isValid("\t \n \r");  //false
 ```
 
+## Templates
+
+`NotEmpty::TEMPLATE_STANDARD`
+
+| Mode       | Template                    |
+|------------|-----------------------------|
+| `default`  | The value must not be empty |
+| `inverted` | The value must be empty     |
+
+`NotEmpty::TEMPLATE_NAMED`
+
+| Mode       | Template                   |
+|------------|----------------------------|
+| `default`  | {{name}} must not be empty |
+| `inverted` | {{name}} must be empty     |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Miscellaneous
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.3.9 | Created
+| Version | Description |
+|--------:|-------------|
+|   0.3.9 | Created     |
 
 ***
 See also:

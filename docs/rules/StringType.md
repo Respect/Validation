@@ -8,6 +8,21 @@ Validates whether the type of an input is string or not.
 v::stringType()->isValid('hi'); // true
 ```
 
+## Templates
+
+`StringType::TEMPLATE_STANDARD`
+
+| Mode       | Template                      |
+|------------|-------------------------------|
+| `default`  | {{name}} must be a string     |
+| `inverted` | {{name}} must not be a string |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Strings
@@ -15,10 +30,10 @@ v::stringType()->isValid('hi'); // true
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.0.0 | Renamed from `String` to `StringType`
-  0.3.9 | Created as `String`
+| Version | Description                           |
+|--------:|---------------------------------------|
+|   1.0.0 | Renamed from `String` to `StringType` |
+|   0.3.9 | Created as `String`                   |
 
 ***
 See also:

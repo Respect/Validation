@@ -18,6 +18,14 @@ v::not(v::intVal()->positive())->isValid(-1.5); // true
 
 Each other validation has custom messages for negated rules.
 
+## Templates
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Conditions
@@ -25,9 +33,9 @@ Each other validation has custom messages for negated rules.
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.3.9 | Created
+| Version | Description |
+|--------:|-------------|
+|   0.3.9 | Created     |
 
 ***
 See also:

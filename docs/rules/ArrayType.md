@@ -10,6 +10,21 @@ v::arrayType()->isValid([1, 2, 3]); // true
 v::arrayType()->isValid(new ArrayObject()); // false
 ```
 
+## Templates
+
+`ArrayType::TEMPLATE_STANDARD`
+
+| Mode       | Template                      |
+|------------|-------------------------------|
+| `default`  | {{name}} must be an array     |
+| `inverted` | {{name}} must not be an array |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Arrays
@@ -17,9 +32,9 @@ v::arrayType()->isValid(new ArrayObject()); // false
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   1.0.0 | Created     |
 
 ***
 See also:

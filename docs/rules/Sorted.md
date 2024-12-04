@@ -31,6 +31,28 @@ v::call('strval', v::sorted('DESC'))->isValid(4321); // true
 v::call('iterator_to_array', v::sorted())->isValid(new ArrayIterator([1, 7, 4])); // false
 ```
 
+## Templates
+
+`Sorted::TEMPLATE_ASCENDING`
+
+| Mode       | Template                                       |
+|------------|------------------------------------------------|
+| `default`  | {{name}} must be sorted in ascending order     |
+| `inverted` | {{name}} must not be sorted in ascending order |
+
+`Sorted::TEMPLATE_DESCENDING`
+
+| Mode       | Template                                        |
+|------------|-------------------------------------------------|
+| `default`  | {{name}} must be sorted in descending order     |
+| `inverted` | {{name}} must not be sorted in descending order |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Arrays
@@ -38,13 +60,13 @@ v::call('iterator_to_array', v::sorted())->isValid(new ArrayIterator([1, 7, 4]))
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.0.0 | Add support for strings
-  2.0.0 | Do not use array keys to sort
-  2.0.0 | Use sorting direction instead of boolean value
-  2.0.0 | Do not accept callback in the constructor
-  1.1.1 | Created
+| Version | Description                                    |
+|--------:|------------------------------------------------|
+|   2.0.0 | Add support for strings                        |
+|   2.0.0 | Do not use array keys to sort                  |
+|   2.0.0 | Use sorting direction instead of boolean value |
+|   2.0.0 | Do not accept callback in the constructor      |
+|   1.1.1 | Created                                        |
 
 ***
 See also:

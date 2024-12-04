@@ -23,6 +23,14 @@ v::lazy(static fn($input) => v::key('confirmation', v::equals($input['password']
 The code above is similar to the first example, but the biggest difference is that the creation of the rule doesn't rely
 on the input itself (`$_POST`), but it will use any input that’s given to the rule
 
+## Templates
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Callables

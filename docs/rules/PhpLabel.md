@@ -14,15 +14,30 @@ v::phpLabel()->isValid('foo'); //true
 v::phpLabel()->isValid('4ccess'); //false
 ```
 
+## Templates
+
+`PhpLabel::TEMPLATE_STANDARD`
+
+| Mode       | Template                               |
+|------------|----------------------------------------|
+| `default`  | {{name}} must be a valid PHP label     |
+| `inverted` | {{name}} must not be a valid PHP label |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Strings
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.1.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   1.1.0 | Created     |
 
 ***
 See also:

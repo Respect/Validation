@@ -16,15 +16,30 @@ or of the MIME doesn't match with the file extension.
 
 This rule relies on [fileinfo](http://php.net/fileinfo) PHP extension.
 
+## Templates
+
+`Image::TEMPLATE_STANDARD`
+
+| Mode       | Template                                |
+|------------|-----------------------------------------|
+| `default`  | {{name}} must be a valid image file     |
+| `inverted` | {{name}} must not be a valid image file |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - File system
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.1.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   1.1.0 | Created     |
 
 ***
 See also:

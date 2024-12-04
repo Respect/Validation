@@ -8,6 +8,21 @@ Validates whether the input is an [object](http://php.net/types.object).
 v::objectType()->isValid(new stdClass); // true
 ```
 
+## Templates
+
+`ObjectType::TEMPLATE_STANDARD`
+
+| Mode       | Template                       |
+|------------|--------------------------------|
+| `default`  | {{name}} must be an object     |
+| `inverted` | {{name}} must not be an object |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Objects
@@ -15,10 +30,10 @@ v::objectType()->isValid(new stdClass); // true
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.0.0 | Renamed from `Object` to `ObjectType`
-  0.3.9 | Created as `Object`
+| Version | Description                           |
+|--------:|---------------------------------------|
+|   1.0.0 | Renamed from `Object` to `ObjectType` |
+|   0.3.9 | Created as `Object`                   |
 
 ***
 See also:

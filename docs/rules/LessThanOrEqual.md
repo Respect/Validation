@@ -15,6 +15,22 @@ Validation makes comparison easier, check out our supported
 
 Message template for this validator includes `{{compareTo}}`.
 
+## Templates
+
+`LessThanOrEqual::TEMPLATE_STANDARD`
+
+| Mode       | Template                                             |
+|------------|------------------------------------------------------|
+| `default`  | {{name}} must be less than or equal to {{compareTo}} |
+| `inverted` | {{name}} must be greater than {{compareTo}}          |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `compareTo` | Value to be compared against the input.                          |
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Comparisons

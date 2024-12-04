@@ -8,6 +8,28 @@ Will validate if all inner validators validates.
 v::allOf(v::intVal(), v::positive())->isValid(15); // true
 ```
 
+## Templates
+
+`AllOf::TEMPLATE_SOME`
+
+| Mode       | Template                               |
+|------------|----------------------------------------|
+| `default`  | These rules must pass for {{name}}     |
+| `inverted` | These rules must not pass for {{name}} |
+
+`AllOf::TEMPLATE_NONE`
+
+| Mode       | Template                                         |
+|------------|--------------------------------------------------|
+| `default`  | All of the required rules must pass for {{name}} |
+| `inverted` | None of these rules must pass for {{name}}       |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Composite
@@ -15,10 +37,10 @@ v::allOf(v::intVal(), v::positive())->isValid(15); // true
 
 ## Changelog
 
-Version | Description
---------|-------------
-  3.0.0 | Require at least two rules to be passed
-  0.3.9 | Created
+| Version | Description                             |
+|--------:|-----------------------------------------|
+|   3.0.0 | Require at least two rules to be passed |
+|   0.3.9 | Created                                 |
 
 ***
 See also:

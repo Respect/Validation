@@ -28,6 +28,23 @@ The supported types are:
 * `seconds`
 * `microseconds`
 
+## Templates
+
+`DateTimeDiff::TEMPLATE_STANDARD`
+
+| Mode       | Template                                                     |
+|------------|--------------------------------------------------------------|
+| `default`  | The number of {{type&#124;raw}} between {{now&#124;raw}} and |
+| `inverted` | The number of {{type&#124;raw}} between {{now&#124;raw}} and |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+| `now`       |                                                                  |
+| `type`      |                                                                  |
+
 ## Categorization
 
 - Date and Time
@@ -35,7 +52,7 @@ The supported types are:
 ## Changelog
 
 | Version | Description                                |
-| ------: |--------------------------------------------|
+|--------:|--------------------------------------------|
 |   3.0.0 | Created from `Age`, `MinAge`, and `MaxAge` |
 
 ***

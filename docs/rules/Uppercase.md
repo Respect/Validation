@@ -18,15 +18,30 @@ v::alnum()->uppercase()->isValid('#$%!'); // false
 v::not(v::numericVal())->alnum()->uppercase()->isValid('W3C'); // true
 ```
 
+## Templates
+
+`Uppercase::TEMPLATE_STANDARD`
+
+| Mode       | Template                                         |
+|------------|--------------------------------------------------|
+| `default`  | {{name}} must contain only uppercase letters     |
+| `inverted` | {{name}} must not contain only uppercase letters |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Strings
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.3.9 | Created
+| Version | Description |
+|--------:|-------------|
+|   0.3.9 | Created     |
 
 ***
 See also:

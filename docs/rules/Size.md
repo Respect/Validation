@@ -32,16 +32,47 @@ v::size('1.5mb')->isValid(new SplFileInfo($filename)); // Will return true or fa
 
 Message template for this validator includes `{{minSize}}` and `{{maxSize}}`.
 
+## Templates
+
+`Size::TEMPLATE_BOTH`
+
+| Mode       | Template                                                 |
+|------------|----------------------------------------------------------|
+| `default`  | {{name}} must be between {{minSize}} and {{maxSize}}     |
+| `inverted` | {{name}} must not be between {{minSize}} and {{maxSize}} |
+
+`Size::TEMPLATE_LOWER`
+
+| Mode       | Template                                      |
+|------------|-----------------------------------------------|
+| `default`  | {{name}} must be greater than {{minSize}}     |
+| `inverted` | {{name}} must not be greater than {{minSize}} |
+
+`Size::TEMPLATE_GREATER`
+
+| Mode       | Template                                    |
+|------------|---------------------------------------------|
+| `default`  | {{name}} must be lower than {{maxSize}}     |
+| `inverted` | {{name}} must not be lower than {{maxSize}} |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `maxSize`   |                                                                  |
+| `minSize`   |                                                                  |
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - File system
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.1.0 | Add PSR-7 support
-  1.0.0 | Created
+| Version | Description       |
+|--------:|-------------------|
+|   2.1.0 | Add PSR-7 support |
+|   1.0.0 | Created           |
 
 ***
 See also:

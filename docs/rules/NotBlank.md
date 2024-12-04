@@ -26,15 +26,37 @@ v::notBlank()->isValid(new stdClass()); // false
 
 It's similar to [NotEmpty](NotEmpty.md) but it's way more strict.
 
+## Templates
+
+`NotBlank::TEMPLATE_STANDARD`
+
+| Mode       | Template                    |
+|------------|-----------------------------|
+| `default`  | The value must not be blank |
+| `inverted` | The value must be blank     |
+
+`NotBlank::TEMPLATE_NAMED`
+
+| Mode       | Template                   |
+|------------|----------------------------|
+| `default`  | {{name}} must not be blank |
+| `inverted` | {{name}} must be blank     |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Miscellaneous
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   1.0.0 | Created     |
 
 ***
 See also:

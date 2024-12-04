@@ -11,15 +11,30 @@ v::isbn()->isValid('ISBN-12: 978-0-596-52068-7'); // false
 v::isbn()->isValid('978 10 596 52068 7'); // false
 ```
 
+## Templates
+
+`Isbn::TEMPLATE_STANDARD`
+
+| Mode       | Template                          |
+|------------|-----------------------------------|
+| `default`  | {{name}} must be a valid ISBN     |
+| `inverted` | {{name}} must not be a valid ISBN |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Identifications
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   2.0.0 | Created     |
 
 ***
 See also:

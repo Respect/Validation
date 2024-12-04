@@ -27,9 +27,12 @@ v::undefOrBetween(1, 3)->isValid(2); // true
 
 ## Templates
 
-| Id                          | Default              | Inverted                  |
-|-----------------------------|----------------------|---------------------------|
-| `NullOr::TEMPLATE_STANDARD` | or must be undefined | and must not be undefined |
+`UndefOr::TEMPLATE_STANDARD`
+
+| Mode       | Template                  |
+|------------|---------------------------|
+| `default`  | or must be undefined      |
+| `inverted` | and must not be undefined |
 
 The templates from this rule serve as message suffixes:
 

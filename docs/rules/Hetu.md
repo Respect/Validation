@@ -14,6 +14,21 @@ v::hetu()->isValid('010106_9012'); // false
 
 The validation is case-sensitive.
 
+## Templates
+
+`Hetu::TEMPLATE_STANDARD`
+
+| Mode       | Template                                                    |
+|------------|-------------------------------------------------------------|
+| `default`  | {{name}} must be a valid Finnish personal identity code     |
+| `inverted` | {{name}} must not be a valid Finnish personal identity code |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Identifications

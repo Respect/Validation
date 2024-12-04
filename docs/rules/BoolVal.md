@@ -13,6 +13,21 @@ v::boolVal()->isValid(1); // true
 v::boolVal()->isValid(0); // true
 ```
 
+## Templates
+
+`BoolVal::TEMPLATE_STANDARD`
+
+| Mode       | Template                             |
+|------------|--------------------------------------|
+| `default`  | {{name}} must be a boolean value     |
+| `inverted` | {{name}} must not be a boolean value |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Booleans
@@ -20,9 +35,9 @@ v::boolVal()->isValid(0); // true
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   1.0.0 | Created     |
 
 ***
 See also:

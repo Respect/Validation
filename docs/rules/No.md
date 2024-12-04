@@ -38,15 +38,30 @@ setlocale(LC_ALL, 'es_ES');
 v::no(true)->isValid('Yes'); // true
 ```
 
+## Templates
+
+`No::TEMPLATE_STANDARD`
+
+| Mode       | Template                             |
+|------------|--------------------------------------|
+| `default`  | {{name}} must be similar to "No"     |
+| `inverted` | {{name}} must not be similar to "No" |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Booleans
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.7.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   0.7.0 | Created     |
 
 ***
 See also:

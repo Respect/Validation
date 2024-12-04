@@ -13,6 +13,21 @@ so `AnyOf()` returns true.
 
 `AnyOf()` returns true if at least one inner validator passes.
 
+## Templates
+
+`AnyOf::TEMPLATE_STANDARD`
+
+| Mode       | Template                                               |
+|------------|--------------------------------------------------------|
+| `default`  | At least one of these rules must pass for {{name}}     |
+| `inverted` | At least one of these rules must not pass for {{name}} |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Composite
@@ -20,10 +35,10 @@ so `AnyOf()` returns true.
 
 ## Changelog
 
-Version | Description
---------|-------------
-  3.0.0 | Require at least two rules to be passed
-  2.0.0 | Created
+| Version | Description                             |
+|--------:|-----------------------------------------|
+|   3.0.0 | Require at least two rules to be passed |
+|   2.0.0 | Created                                 |
 
 ***
 See also:

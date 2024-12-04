@@ -8,15 +8,30 @@ Validates whether the input is a [resource](http://php.net/types.resource).
 v::resourceType()->isValid(fopen('/path/to/file.txt', 'w')); // true
 ```
 
+## Templates
+
+`ResourceType::TEMPLATE_STANDARD`
+
+| Mode       | Template                        |
+|------------|---------------------------------|
+| `default`  | {{name}} must be a resource     |
+| `inverted` | {{name}} must not be a resource |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Types
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   1.0.0 | Created     |
 
 ***
 See also:

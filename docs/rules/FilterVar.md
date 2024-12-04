@@ -14,17 +14,32 @@ v::filterVar(FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)->isValid('webserver.l
 v::filterVar(FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)->isValid('@local'); // false
 ```
 
+## Templates
+
+`FilterVar::TEMPLATE_STANDARD`
+
+| Mode       | Template                   |
+|------------|----------------------------|
+| `default`  | {{name}} must be valid     |
+| `inverted` | {{name}} must not be valid |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Miscellaneous
 
 ## Changelog
 
-Version  | Description
----------|-------------
-  2.3.0  | `v::filterVar(FILTER_VALIDATE_INT)->isValid(0)` is no longer false
-  2.0.15 | Allow validating domains
-   0.8.0 | Created
+| Version | Description                                                        |
+|--------:|--------------------------------------------------------------------|
+|   2.3.0 | `v::filterVar(FILTER_VALIDATE_INT)->isValid(0)` is no longer false |
+|  2.0.15 | Allow validating domains                                           |
+|   0.8.0 | Created                                                            |
 
 ***
 See also:

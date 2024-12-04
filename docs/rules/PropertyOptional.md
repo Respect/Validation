@@ -39,6 +39,14 @@ v::objectType()->propertyOptional('name', v::notEmpty())->isValid('Not an object
 * To only validate if a property exists, use [PropertyExists](PropertyExists.md) instead.
 * To validate a property against a given rule requiring the property to exist, use [Property](Property.md) instead.
 
+## Templates
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Nesting
@@ -48,7 +56,7 @@ v::objectType()->propertyOptional('name', v::notEmpty())->isValid('Not an object
 ## Changelog
 
 | Version | Description                          |
-| ------: |--------------------------------------|
+|--------:|--------------------------------------|
 |   3.0.0 | Created from [Property](Property.md) |
 
 ***

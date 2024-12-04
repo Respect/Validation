@@ -24,6 +24,21 @@ v::intVal()->isValid('89a'); // false
 Even though PHP can cast the values above as integers, this rule will not
 consider them as valid.
 
+## Templates
+
+`IntVal::TEMPLATE_STANDARD`
+
+| Mode       | Template                              |
+|------------|---------------------------------------|
+| `default`  | {{name}} must be an integer value     |
+| `inverted` | {{name}} must not be an integer value |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Numbers
@@ -31,12 +46,12 @@ consider them as valid.
 
 ## Changelog
 
-Version  | Description
----------|-------------
-  2.2.4  | Improved support for negative values with trailing zeroes
-  2.0.14 | Allow leading zeros
-  1.0.0  | Renamed from `Int` to `IntVal`
-  0.3.9  | Created as `Int`
+| Version | Description                                               |
+|--------:|-----------------------------------------------------------|
+|   2.2.4 | Improved support for negative values with trailing zeroes |
+|  2.0.14 | Allow leading zeros                                       |
+|   1.0.0 | Renamed from `Int` to `IntVal`                            |
+|   0.3.9 | Created as `Int`                                          |
 
 ***
 See also:

@@ -14,6 +14,21 @@ v::stringVal()->isValid(true); // true
 v::stringVal()->isValid(new ClassWithToString()); // true if ClassWithToString implements `__toString`
 ```
 
+## Templates
+
+`StringVal::TEMPLATE_STANDARD`
+
+| Mode       | Template                            |
+|------------|-------------------------------------|
+| `default`  | {{name}} must be a string value     |
+| `inverted` | {{name}} must not be a string value |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Strings
@@ -21,9 +36,9 @@ v::stringVal()->isValid(new ClassWithToString()); // true if ClassWithToString i
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   2.0.0 | Created     |
 
 ***
 See also:

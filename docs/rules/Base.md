@@ -12,15 +12,31 @@ v::base(16)->isValid('012a34f5675c20d'); // true
 v::base(2)->isValid('0120122001'); // false
 ```
 
+## Templates
+
+`Base::TEMPLATE_STANDARD`
+
+| Mode       | Template                                                |
+|------------|---------------------------------------------------------|
+| `default`  | {{name}} must be a number in base {{base&#124;raw}}     |
+| `inverted` | {{name}} must not be a number in base {{base&#124;raw}} |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `base`      | The base passed to the constructor of the rule.                  |
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Numbers
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.5.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   0.5.0 | Created     |
 
 ***
 See also:

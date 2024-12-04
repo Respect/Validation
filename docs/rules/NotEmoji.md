@@ -22,15 +22,30 @@ first emoji or until it checks the whole text.
 Unicode V11 check the following link for more details
 [Unicode v11](https://unicode.org/emoji/charts/full-emoji-list.html)*
 
+## Templates
+
+`NotEmoji::TEMPLATE_STANDARD`
+
+| Mode       | Template                           |
+|------------|------------------------------------|
+| `default`  | {{name}} must not contain an emoji |
+| `inverted` | {{name}} must contain an emoji     |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Strings
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   2.0.0 | Created     |
 
 ***
 See also:

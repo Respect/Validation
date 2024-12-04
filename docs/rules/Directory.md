@@ -16,16 +16,31 @@ v::directory()->isValid(new SplFileInfo('library/'));
 v::directory()->isValid(dir('/'));
 ```
 
+## Templates
+
+`Directory::TEMPLATE_STANDARD`
+
+| Mode       | Template                         |
+|------------|----------------------------------|
+| `default`  | {{name}} must be a directory     |
+| `inverted` | {{name}} must not be a directory |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - File system
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.0.0 | Validates PHP's `Directory` class
-  0.4.4 | Created
+| Version | Description                       |
+|--------:|-----------------------------------|
+|   2.0.0 | Validates PHP's `Directory` class |
+|   0.4.4 | Created                           |
 
 ***
 See also:

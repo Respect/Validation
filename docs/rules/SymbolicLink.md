@@ -10,15 +10,30 @@ v::symbolicLink()->isValid(new SplFileInfo('/path/of/valid/symbolic/link)); // t
 v::symbolicLink()->isValid(new SplFileObject('/path/of/valid/symbolic/link')); // true
 ```
 
+## Templates
+
+`SymbolicLink::TEMPLATE_STANDARD`
+
+| Mode       | Template                             |
+|------------|--------------------------------------|
+| `default`  | {{name}} must be a symbolic link     |
+| `inverted` | {{name}} must not be a symbolic link |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - File system
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.5.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   0.5.0 | Created     |
 
 ***
 See also:

@@ -8,6 +8,21 @@ Validates a prime number
 v::primeNumber()->isValid(7); // true
 ```
 
+## Templates
+
+`PrimeNumber::TEMPLATE_STANDARD`
+
+| Mode       | Template                            |
+|------------|-------------------------------------|
+| `default`  | {{name}} must be a prime number     |
+| `inverted` | {{name}} must not be a prime number |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Math
@@ -15,9 +30,9 @@ v::primeNumber()->isValid(7); // true
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.3.9 | Created
+| Version | Description |
+|--------:|-------------|
+|   0.3.9 | Created     |
 
 ***
 See also:

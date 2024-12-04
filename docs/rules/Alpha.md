@@ -21,16 +21,39 @@ You can restrict case using the [Lowercase](Lowercase.md) and
 v::alpha()->uppercase()->isValid('example'); // false
 ```
 
+## Templates
+
+`Alpha::TEMPLATE_STANDARD`
+
+| Mode       | Template                                 |
+|------------|------------------------------------------|
+| `default`  | {{name}} must contain only letters (a-z) |
+| `inverted` | {{name}} must not contain letters (a-z)  |
+
+`Alpha::TEMPLATE_EXTRA`
+
+| Mode       | Template                                                         |
+|------------|------------------------------------------------------------------|
+| `default`  | {{name}} must contain only letters (a-z) and {{additionalChars}} |
+| `inverted` | {{name}} must not contain letters (a-z) or {{additionalChars}}   |
+
+## Template placeholders
+
+| Placeholder       | Description                                                      |
+|-------------------|------------------------------------------------------------------|
+| `additionalChars` | Additional characters that are considered valid.                 |
+| `name`            | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Strings
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.0.0 | Removed support to whitespaces by default
-  0.3.9 | Created
+| Version | Description                               |
+|--------:|-------------------------------------------|
+|   2.0.0 | Removed support to whitespaces by default |
+|   0.3.9 | Created                                   |
 
 ***
 See also:

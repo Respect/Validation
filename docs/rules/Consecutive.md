@@ -20,6 +20,14 @@ You need a valid country code to create a [SubdivisionCode](SubdivisionCode.md),
 subdivision code only if the country code is valid. In this case, you could also have used [When](When.md), but you
 would then have to write `v::key('countryCode', v::countryCode())` twice in your chain.
 
+## Templates
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Composite

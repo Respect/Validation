@@ -8,15 +8,30 @@ Validates if a file is an executable.
 v::executable()->isValid('script.sh'); // true
 ```
 
+## Templates
+
+`Executable::TEMPLATE_STANDARD`
+
+| Mode       | Template                                |
+|------------|-----------------------------------------|
+| `default`  | {{name}} must be an executable file     |
+| `inverted` | {{name}} must not be an executable file |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - File system
 
 ## Changelog
 
-Version | Description
---------|-------------
-  0.7.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   0.7.0 | Created     |
 
 ***
 See also:

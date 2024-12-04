@@ -12,6 +12,29 @@ v::digit()->isValid('172.655.537-21'); // false
 v::digit('.', '-')->isValid('172.655.537-21'); // true
 ```
 
+## Templates
+
+`Digit::TEMPLATE_STANDARD`
+
+| Mode       | Template                                |
+|------------|-----------------------------------------|
+| `default`  | {{name}} must contain only digits (0-9) |
+| `inverted` | {{name}} must not contain digits (0-9)  |
+
+`Digit::TEMPLATE_EXTRA`
+
+| Mode       | Template                                                        |
+|------------|-----------------------------------------------------------------|
+| `default`  | {{name}} must contain only digits (0-9) and {{additionalChars}} |
+| `inverted` | {{name}} must not contain digits (0-9) and {{additionalChars}}  |
+
+## Template placeholders
+
+| Placeholder       | Description                                                      |
+|-------------------|------------------------------------------------------------------|
+| `additionalChars` | Additional characters that are considered valid.                 |
+| `name`            | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Numbers
@@ -19,11 +42,11 @@ v::digit('.', '-')->isValid('172.655.537-21'); // true
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.0.0 | Removed support to whitespaces by default
-  0.5.0 | Renamed from `Digits` to `Digit`
-  0.3.9 | Created as `Digits`
+| Version | Description                               |
+|--------:|-------------------------------------------|
+|   2.0.0 | Removed support to whitespaces by default |
+|   0.5.0 | Renamed from `Digits` to `Digit`          |
+|   0.3.9 | Created as `Digits`                       |
 
 ***
 See also:

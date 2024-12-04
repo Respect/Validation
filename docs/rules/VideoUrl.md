@@ -35,15 +35,38 @@ The `$service` value is not case-sensitive.
 
 Message template for this validator includes `{{service}}`.
 
+## Templates
+
+`VideoUrl::TEMPLATE_STANDARD`
+
+| Mode       | Template                               |
+|------------|----------------------------------------|
+| `default`  | {{name}} must be a valid video URL     |
+| `inverted` | {{name}} must not be a valid video URL |
+
+`VideoUrl::TEMPLATE_SERVICE`
+
+| Mode       | Template                                                    |
+|------------|-------------------------------------------------------------|
+| `default`  | {{name}} must be a valid {{service&#124;raw}} video URL     |
+| `inverted` | {{name}} must not be a valid {{service&#124;raw}} video URL |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+| `service`   |                                                                  |
+
 ## Categorization
 
 - Internet
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   1.0.0 | Created     |
 
 ***
 See also:

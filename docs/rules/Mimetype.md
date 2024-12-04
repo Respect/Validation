@@ -11,15 +11,31 @@ v::mimetype('image/jpeg')->isValid('image.jpg'); // true
 
 This rule is case-sensitive and requires [fileinfo](http://php.net/fileinfo) PHP extension.
 
+## Templates
+
+`Mimetype::TEMPLATE_STANDARD`
+
+| Mode       | Template                                          |
+|------------|---------------------------------------------------|
+| `default`  | {{name}} must have the {{mimetype}} MIME type     |
+| `inverted` | {{name}} must not have the {{mimetype}} MIME type |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `mimetype`  |                                                                  |
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - File system
 
 ## Changelog
 
-Version | Description
---------|-------------
-  1.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   1.0.0 | Created     |
 
 ***
 See also:

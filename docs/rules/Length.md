@@ -20,6 +20,21 @@ v::length(v::greaterThanOrEqual(3))->isValid([1, 2, 3]); // true
 v::length(v::equals(0))->isValid(new SplPriorityQueue()); // true
 ```
 
+## Templates
+
+`Length::TEMPLATE_STANDARD`
+
+| Mode       | Template      |
+|------------|---------------|
+| `default`  | The length of |
+| `inverted` | The length of |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Comparisons

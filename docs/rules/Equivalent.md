@@ -15,15 +15,31 @@ comparisons.
 
 Message template for this validator includes `{{compareTo}}`.
 
+## Templates
+
+`Equivalent::TEMPLATE_STANDARD`
+
+| Mode       | Template                                         |
+|------------|--------------------------------------------------|
+| `default`  | {{name}} must be equivalent to {{compareTo}}     |
+| `inverted` | {{name}} must not be equivalent to {{compareTo}} |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `compareTo` | Value to be compared against the input.                          |
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Comparisons
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   2.0.0 | Created     |
 
 ***
 See also:

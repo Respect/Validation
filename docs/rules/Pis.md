@@ -12,15 +12,30 @@ v::pis()->isValid('1.2.0.0.3.4.0.6.7.8.8'); // true
 v::pis()->isValid('12003406788'); // true
 ```
 
+## Templates
+
+`Pis::TEMPLATE_STANDARD`
+
+| Mode       | Template                                |
+|------------|-----------------------------------------|
+| `default`  | {{name}} must be a valid PIS number     |
+| `inverted` | {{name}} must not be a valid PIS number |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Identifications
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.0.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   2.0.0 | Created     |
 
 ***
 See also:

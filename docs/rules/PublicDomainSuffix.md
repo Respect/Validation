@@ -18,15 +18,30 @@ If you want to match either, use a combination with `Tld`:
 v::oneOf(v::tld(), v::publicDomainSuffix())->isValid('tk'); // true
 ```
 
+## Templates
+
+`PublicDomainSuffix::TEMPLATE_STANDARD`
+
+| Mode       | Template                                    |
+|------------|---------------------------------------------|
+| `default`  | {{name}} must be a public domain suffix     |
+| `inverted` | {{name}} must not be a public domain suffix |
+
+## Template placeholders
+
+| Placeholder | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| `name`      | The validated input or the custom validator name (if specified). |
+
 ## Categorization
 
 - Internet
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.3.0 | Created
+| Version | Description |
+|--------:|-------------|
+|   2.3.0 | Created     |
 
 ***
 See also:
