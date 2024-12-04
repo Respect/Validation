@@ -11,7 +11,7 @@ v::intVal()->greaterThanOrEqual(10)->isValid(11); // true
 ```
 
 Validation makes comparison easier, check out our supported
-[comparable values](../07-comparable-values.md).
+[comparable values](../08-comparable-values.md).
 
 Message template for this validator includes `{{compareTo}}`.
 

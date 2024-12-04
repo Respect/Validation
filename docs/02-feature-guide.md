@@ -1,258 +1,102 @@
 # Feature Guide
 
-## Namespace import
-
-Respect\Validation is namespaced, but you can make your life easier by importing
-a single class into your context:
+We'll use `v` as an alias for `Respect\Validation\Validator` to keep things simple:
 
 ```php
 use Respect\Validation\Validator as v;
 ```
 
-## Simple validation
+## Validating using booleans
 
-The Hello World validator is something like this:
-
-```php
-$number = 123;
-v::numericVal()->isValid($number); // true
-```
-
-## Chained validation
-
-It is possible to use validators in a chain. Sample below validates a string
-containing numbers and letters, no whitespace and length between 1 and 15.
+With the `isValid()` method, determine if your input meets a specific validation rule.
 
 ```php
-$usernameValidator = v::alnum()->noWhitespace()->length(1, 15);
-$usernameValidator->isValid('alganet'); // true
-```
-
-## Validating object properties
-
-Given this simple object:
-
-```php
-$user = new stdClass;
-$user->name = 'Alexandre';
-$user->birthdate = '1987-07-01';
-```
-
-Is possible to validate its properties in a single chain:
-
-```php
-$userValidator = v::property('name', v::stringType()->length(1, 32))
-                  ->property('birthdate', v::dateTimeDiff(v::greaterThanOrEqual(18), 'years'));
-
-$userValidator->isValid($user); // true
-```
-
-Validating array keys is also possible using `v::key()`
-
-Note that we used `v::stringType()` and `v::dateTime()` in the beginning of the validator.
-Although is not mandatory, it is a good practice to use the type of the
-validated object as the first node in the chain.
-
-## Validating array keys and values
-
-Validating array keys into another array is also possible using [Key](rules/Key.md).
-
-If we got the array below:
-
-```php
-$data = [
-    'parentKey' => [
-        'field1' => 'value1',
-        'field2' => 'value2'
-        'field3' => true,
-    ]
-];
-```
-
-Using the next combination of rules, we can validate child keys.
-
-```php
-v::key(
-    'parentKey',
-    v::key('field1', v::stringType())
-        ->key('field2', v::stringType())
-        ->key('field3', v::boolType())
-    )
-    ->assert($data); // You can also use check() or validate()
-```
-
-## Input optional
-
-On oldest versions of Respect\Validation all validators treat input as optional
-and accept an empty string input as valid. Even though a useful feature that
-caused a lot of troubles for our team and neither was an obvious behavior. Also
-there was some people who likes to accept `null` as optional value, not only an
-empty string.
-
-For that reason all rules are mandatory now but if you want to treat a value as
-optional you can use `v::optional()` rule:
-
-```php
-v::alpha()->isValid(''); // false input required
-v::alpha()->isValid(null); // false input required
-
-v::optional(v::alpha())->isValid(''); // true
-v::optional(v::alpha())->isValid(null); // true
-```
-
-By _optional_ we consider `null` or an empty string (`''`).
-
-See more on [Optional](rules/UndefOr.md).
-
-## Negating rules
-
-You can use the `v::not()` to negate any rule:
-
-```php
-v::not(v::intVal())->isValid(10); // false, input must not be integer
-```
-
-## Validator reuse
-
-Once created, you can reuse your validator anywhere. Remember `$usernameValidator`?
-
-```php
-$usernameValidator->isValid('respect');            //true
-$usernameValidator->isValid('alexandre gaigalas'); // false
-$usernameValidator->isValid('#$%');                //false
-```
-
-## Exception types
-
-- `Respect\Validation\Exceptions\Exception`:
-  - All exceptions implement this interface;
-- `Respect\Validation\Exceptions\ValidationException`:
-  - Implements the `Respect\Validation\Exceptions\Exception` interface
-  - Thrown when the `check()` fails
-  - All validation exceptions extend this class
-  - Available methods:
-    - `getMessage()`;
-    - `updateMode($mode)`;
-    - `updateTemplate($template)`;
-- `Respect\Validation\Exceptions\NestedValidationException`:
-  - Extends the `Respect\Validation\Exceptions\ValidationException` class
-  - Usually thrown when the `assert()` fails
-  - Available methods:
-    - `getFullMessage()`;
-    - `getMessages()`;
-
-## Informative exceptions
-
-When something goes wrong, Validation can tell you exactly what's going on. For this,
-we use the `assert()` method instead of `validate()`:
-
-```php
-use Respect\Validation\Exceptions\NestedValidationException;
-
-try {
-    $usernameValidator->assert('really messed up screen#name');
-} catch(NestedValidationException $exception) {
-   echo $exception->getFullMessage();
+if (v::intType()->positive()->isValid($input)) {
+    echo 'The input you gave me is a positive integer';
+} else {
+    echo 'The input you gave me is not a positive integer';
 }
 ```
 
-The printed message is exactly this, as a nested Markdown list:
+Note that you can combine multiple rules for a complex validation.
+## Validating using exceptions
 
-```no-highlight
-- All of the required rules must pass for "really messed up screen#name"
-  - "really messed up screen#name" must contain only letters (a-z) and digits (0-9)
-  - "really messed up screen#name" must not contain whitespace
-  - "really messed up screen#name" must have a length between 1 and 15
-```
+The `assert()` method throws an exception when validation fails. You can handle those exceptions with `try/catch` for more robust error handling.
 
-## Getting all messages as an array
-
-If you want to get all the messages as an array you can use `getMessages()` for
-that. The `getMessages()` method returns an array with all the messages.
+### Basic example
 
 ```php
-try {
-    $usernameValidator->assert('really messed up screen#name');
-} catch(NestedValidationException $exception) {
-    print_r($exception->getMessages());
-}
+v::intType()->positive()->assert($input);
 ```
 
-The `getMessages()` returns an array in which the keys are the name of the
-validators, or its reference in case you are using [Key](rules/Key.md) or
-[Property](rules/Property.md) rule:
+### Custom templates
 
-```no-highlight
-Array
-(
-    [alnum] => "really messed up screen#name" must contain only letters (a-z) and digits (0-9)
-    [noWhitespace] => "really messed up screen#name" must not contain whitespace
-    [length] => "really messed up screen#name" must have a length between 1 and 15
-)
-```
-
-## Custom messages
-
-Getting messages as an array is fine, but sometimes you need to customize them
-in order to present them to the user. This is possible using the `getMessages()`
-method as well by passing the templates as an argument:
+Define your own error message when the validation fails:
 
 ```php
-try {
-    $usernameValidator->assert('really messed up screen#name', [
-        'alnum' => '{{name}} must contain only letters and digits',
-        'noWhitespace' => '{{name}} cannot contain spaces',
-        'length' => '{{name}} must not have more than 15 chars',
-    ]);
-} catch(NestedValidationException $exception) {
-    print_r($exception->getMessages());
-}
+v::between(1, 256)->assert($input, '{{name}} is not what I was expecting');
 ```
 
-For all messages, the `{{name}}` variable is available for templates. If you do
-not define a name it uses the input to replace this placeholder.
+### Custom templates per rule
 
-The result of the code above will be:
-
-```no-highlight
-Array
-(
-    [alnum] => "really messed up screen#name" must contain only letters and digits
-    [noWhitespace] => "really messed up screen#name" cannot contain spaces
-    [length] => "really messed up screen#name" must not have more than 15 chars
-)
-```
-
-Note that `getMessage()` will only return a message when the specific validation
-in the chain fails.
-
-## Validator name
-
-On `v::property()` and `v::key()`, `{{name}}` is the property/key name. For others,
-is the same as the input. You can customize a validator name using:
+Provide unique messages for each rule in a chain:
 
 ```php
-v::dateTime('Y-m-d')->between('1980-02-02', 'now')->setName('Member Since');
+v::alnum()->lowercase()->assert($input, [
+    'alnum' => 'Your username must contain only letters and digits',
+    'lowercase' => 'Your username must be lowercase',
+]);
 ```
 
-## Validation methods
+### Custom exception objects
 
-We've seen `validate()` that returns true or false and `assert()` that throws a complete
-validation report. There is also a `check()` method that returns an Exception
-only with the first error found:
+Integrate your own exception objects when the validation fails:
+```php
+v::alnum()->assert($input, new DomainException('Not a valid username'));
+```
+
+## Inverting validation rules
+
+Use the `not` prefix to invert a  validation rule.
 
 ```php
-use Respect\Validation\Exceptions\ValidationException;
-
-try {
-    $usernameValidator->check('really messed up screen#name');
-} catch(ValidationException $exception) {
-    echo $exception->getMessage();
-}
+v::notEquals('main')->assert($input);
 ```
 
-Message:
+For more details, check the [Not](rules/Not.md) rule documentation.
 
-```no-highlight
-"really messed up screen#name" must contain only letters (a-z) and digits (0-9)
+## Reusing validators
+
+Validators can be created once and reused across multiple inputs.
+
+```php
+$validator = v::alnum()->lowercase();
+
+$validator->assert('respect');
+$validator->assert('validation');
+$validator->assert('alexandre gaigalas');
 ```
+
+## Customising validator names
+
+Template messages include the placeholder `{{name}}`, which defaults to the input. Use `setName()` to replace it with a more descriptive label.
+
+```php
+v::dateTime('Y-m-d')
+    ->between('1980-02-02', 'now')
+    ->setName('Age')
+    ->assert($input);
+```
+
+## Smart input handling
+
+Respect\Validation offers over 150 rules, many of which are designed to address common input handling scenarios. Here’s a quick guide to some specific use cases and the rules that make validation straightforward.
+
+* Validating arrays: [Key](rules/Key.md), [KeyOptional](rules/KeyOptional.md), and [KeyExists](rules/KeyExists.md).
+* Validating array structures: [KeySet](rules/KeySet.md).
+* Validating object properties: [Property](rules/Property.md), [PropertyOptional](rules/PropertyOptional.md), and [PropertyExists](rules/PropertyExists.md).
+* Validating only when input is not `null`:  [NullOr](rules/NullOr.md).
+* Validating only when input is not `null` or an empty string: [UndefOr](rules/UndefOr.md).
+* Validating the length of the input: [Length](rules/Length.md).
+* Validating the maximum value of the input: [Max](rules/Max.md).
+* Validating the minimum value of the input: [Min](rules/Min.md).

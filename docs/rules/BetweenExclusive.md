@@ -13,7 +13,7 @@ v::betweenExclusive(0, 100)->isValid(100); // false
 v::betweenExclusive('a', 'z')->isValid('a'); // false
 ```
 
-Validation makes comparison easier, check out our supported [comparable values](../07-comparable-values.md).
+Validation makes comparison easier, check out our supported [comparable values](../08-comparable-values.md).
 
 ## Categorization
 

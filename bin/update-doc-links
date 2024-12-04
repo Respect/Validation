@@ -91,7 +91,7 @@ create_list_of_rules()
     echo "## Alphabetically"
     echo
     ls -1 "${DOCS_DIREECTORY}/rules/" | sort | sed -E 's,^(.+).md$,- [\1](rules/\1.md),'
-  } > "${DOCS_DIREECTORY}/08-list-of-rules-by-category.md"
+  } > "${DOCS_DIREECTORY}/09-list-of-rules-by-category.md"
 }
 
 link_related_rules()
