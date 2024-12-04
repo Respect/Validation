@@ -17,8 +17,8 @@ use function is_string;
 use function preg_match;
 
 #[Template(
-    '{{name}} must be an integer number',
-    '{{name}} must not be an integer number',
+    '{{name}} must be an integer value',
+    '{{name}} must not be an integer value',
 )]
 final class IntVal extends Simple
 {

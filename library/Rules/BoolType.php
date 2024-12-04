@@ -15,8 +15,8 @@ use Respect\Validation\Rules\Core\Simple;
 use function is_bool;
 
 #[Template(
-    '{{name}} must be of type boolean',
-    '{{name}} must not be of type boolean',
+    '{{name}} must be a boolean',
+    '{{name}} must not be a boolean',
 )]
 final class BoolType extends Simple
 {

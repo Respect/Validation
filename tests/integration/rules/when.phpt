@@ -37,10 +37,10 @@ run([
 --EXPECT--
 When valid use "then"
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
--1 must be positive
-- -1 must be positive
+-1 must be a positive number
+- -1 must be a positive number
 [
-    'positive' => '-1 must be positive',
+    'positive' => '-1 must be a positive number',
 ]
 
 When invalid use "else"

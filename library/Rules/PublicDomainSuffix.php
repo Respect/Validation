@@ -22,7 +22,7 @@ use function strtoupper;
 
 #[Template(
     '{{name}} must be a public domain suffix',
-    '{{name}} must be a public domain suffix',
+    '{{name}} must not be a public domain suffix',
 )]
 final class PublicDomainSuffix extends Simple
 {

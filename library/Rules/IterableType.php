@@ -15,8 +15,8 @@ use Respect\Validation\Rules\Core\Simple;
 use function is_iterable;
 
 #[Template(
-    '{{name}} must be of type iterable',
-    '{{name}} must not of type iterable',
+    '{{name}} must be iterable',
+    '{{name}} must not iterable',
 )]
 final class IterableType extends Simple
 {

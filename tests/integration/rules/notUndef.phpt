@@ -13,11 +13,11 @@ exceptionFullMessage(static fn() => v::notUndef()->setName('Field')->assert(''))
 exceptionFullMessage(static fn() => v::not(v::notUndef()->setName('Field'))->assert([]));
 ?>
 --EXPECT--
-The value must not be optional
-The value must be optional
-Field must not be optional
-Field must be optional
-- The value must not be optional
-- The value must be optional
-- Field must not be optional
-- Field must be optional
+The value must be defined
+The value must be undefined
+Field must be defined
+Field must be undefined
+- The value must be defined
+- The value must be undefined
+- Field must be defined
+- Field must be undefined

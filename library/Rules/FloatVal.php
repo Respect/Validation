@@ -18,8 +18,8 @@ use function is_float;
 use const FILTER_VALIDATE_FLOAT;
 
 #[Template(
-    '{{name}} must be a float number',
-    '{{name}} must not be a float number',
+    '{{name}} must be a float value',
+    '{{name}} must not be a float value',
 )]
 final class FloatVal extends Simple
 {

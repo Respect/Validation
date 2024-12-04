@@ -20,8 +20,8 @@ use function class_exists;
 use function in_array;
 
 #[Template(
-    '{{name}} must be a valid currency',
-    '{{name}} must not be a valid currency',
+    '{{name}} must be a valid currency code',
+    '{{name}} must not be a valid currency code',
 )]
 final class CurrencyCode extends Standard
 {

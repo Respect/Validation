@@ -9,7 +9,7 @@ exceptionFullMessage(static fn() => v::notEmoji()->assert('🏄'));
 exceptionFullMessage(static fn() => v::not(v::notEmoji())->assert('YZ'));
 ?>
 --EXPECT--
-"🍕" must not contain an Emoji
-"AB" must contain an Emoji
-- "🏄" must not contain an Emoji
-- "YZ" must contain an Emoji
+"🍕" must not contain an emoji
+"AB" must contain an emoji
+- "🏄" must not contain an emoji
+- "YZ" must contain an emoji

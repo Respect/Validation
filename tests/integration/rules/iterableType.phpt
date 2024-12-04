@@ -13,18 +13,18 @@ run([
 --EXPECT--
 Default
 ⎺⎺⎺⎺⎺⎺⎺
-`null` must be of type iterable
-- `null` must be of type iterable
+`null` must be iterable
+- `null` must be iterable
 [
-    'iterableType' => '`null` must be of type iterable',
+    'iterableType' => '`null` must be iterable',
 ]
 
 Inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺
-`[1, 2, 3]` must not of type iterable
-- `[1, 2, 3]` must not of type iterable
+`[1, 2, 3]` must not iterable
+- `[1, 2, 3]` must not iterable
 [
-    'notIterableType' => '`[1, 2, 3]` must not of type iterable',
+    'notIterableType' => '`[1, 2, 3]` must not iterable',
 ]
 
 With template
@@ -37,8 +37,8 @@ Not an iterable at all
 
 With name
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Options must be of type iterable
-- Options must be of type iterable
+Options must be iterable
+- Options must be iterable
 [
-    'iterableType' => 'Options must be of type iterable',
+    'iterableType' => 'Options must be iterable',
 ]

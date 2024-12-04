@@ -21,7 +21,7 @@ The code above generates the following output:
 ```no-highlight
 - All of the required rules must pass for "The Respect Panda"
   - "The Respect Panda" must contain only letters (a-z) and digits (0-9)
-  - "The Respect Panda" must be lowercase
+  - "The Respect Panda" must contain only lowercase letters
 ```
 
 ## Getting all messages as an array
@@ -46,7 +46,7 @@ Array
 (
     [__root__] => All of the required rules must pass for "The Respect Panda"
     [alnum] => "The Respect Panda" must contain only letters (a-z) and digits (0-9)
-    [lowercase] => "The Respect Panda" must be lowercase
+    [lowercase] => "The Respect Panda" must contain only lowercase letters
 )
 ```
 
@@ -60,7 +60,6 @@ You can tailor the messages to better suit your needs.
 Pass custom templates directly to the `assert()` method for one-off use cases.
 
 ```php
-
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validator as v;
 
@@ -78,7 +77,6 @@ try {
 } catch(ValidationException $exception) {
     print_r($exception->getMessages());
 }
-
 ```
 
 The code above will generate the following output.

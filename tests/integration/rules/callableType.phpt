@@ -11,7 +11,7 @@ exceptionFullMessage(static fn() => v::not(v::callableType())->assert(static fun
 }));
 ?>
 --EXPECT--
-`[]` must be callable
-`trim(string $string, string $characters = " \n\r\t\u000b\u0000"): string` must not be callable
-- `true` must be callable
-- `function (): void` must not be callable
+`[]` must be a callable
+`trim(string $string, string $characters = " \n\r\t\u000b\u0000"): string` must not be a callable
+- `true` must be a callable
+- `function (): void` must not be a callable

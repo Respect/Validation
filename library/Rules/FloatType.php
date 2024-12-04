@@ -15,8 +15,8 @@ use Respect\Validation\Rules\Core\Simple;
 use function is_float;
 
 #[Template(
-    '{{name}} must be of type float',
-    '{{name}} must not be of type float',
+    '{{name}} must be float',
+    '{{name}} must not be float',
 )]
 final class FloatType extends Simple
 {

@@ -19,8 +19,8 @@ use function mb_substr;
 use function preg_match;
 
 #[Template(
-    '{{name}} must be a number in the base {{base|raw}}',
-    '{{name}} must not be a number in the base {{base|raw}}',
+    '{{name}} must be a number in base {{base|raw}}',
+    '{{name}} must not be a number in base {{base|raw}}',
 )]
 final class Base extends Standard
 {

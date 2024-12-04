@@ -18,7 +18,7 @@ use const FILTER_VALIDATE_INT;
 
 #[Template(
     '{{name}} must be an even number',
-    '{{name}} must not be an even number',
+    '{{name}} must be an odd number',
 )]
 final class Even extends Simple
 {

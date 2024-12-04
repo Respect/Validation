@@ -59,18 +59,18 @@ foo must be present
 
 Default
 ⎺⎺⎺⎺⎺⎺⎺
-foo must be of type integer
-- foo must be of type integer
+foo must be an integer
+- foo must be an integer
 [
-    'foo' => 'foo must be of type integer',
+    'foo' => 'foo must be an integer',
 ]
 
 Inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺
-foo must not be of type integer
-- foo must not be of type integer
+foo must not be an integer
+- foo must not be an integer
 [
-    'foo' => 'foo must not be of type integer',
+    'foo' => 'foo must not be an integer',
 ]
 
 Double-inverted with missing key
@@ -91,26 +91,26 @@ Wrapped must be present
 
 With wrapped name, default
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Wrapped must be of type integer
-- Wrapped must be of type integer
+Wrapped must be an integer
+- Wrapped must be an integer
 [
-    'foo' => 'Wrapped must be of type integer',
+    'foo' => 'Wrapped must be an integer',
 ]
 
 With wrapped name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Wrapped must not be of type integer
-- Wrapped must not be of type integer
+Wrapped must not be an integer
+- Wrapped must not be an integer
 [
-    'foo' => 'Wrapped must not be of type integer',
+    'foo' => 'Wrapped must not be an integer',
 ]
 
 With wrapper name, default
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-foo must be of type integer
-- foo must be of type integer
+foo must be an integer
+- foo must be an integer
 [
-    'foo' => 'foo must be of type integer',
+    'foo' => 'foo must be an integer',
 ]
 
 With wrapper name, missing key
@@ -123,18 +123,18 @@ foo must be present
 
 With wrapper name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-foo must not be of type integer
-- foo must not be of type integer
+foo must not be an integer
+- foo must not be an integer
 [
-    'foo' => 'foo must not be of type integer',
+    'foo' => 'foo must not be an integer',
 ]
 
 With "Not" name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-foo must not be of type integer
-- foo must not be of type integer
+foo must not be an integer
+- foo must not be an integer
 [
-    'foo' => 'foo must not be of type integer',
+    'foo' => 'foo must not be an integer',
 ]
 
 With template, default

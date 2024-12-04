@@ -15,8 +15,8 @@ use Respect\Validation\Rules\Core\Simple;
 use function is_object;
 
 #[Template(
-    '{{name}} must be of type object',
-    '{{name}} must not be of type object',
+    '{{name}} must be an object',
+    '{{name}} must not be an object',
 )]
 final class ObjectType extends Simple
 {

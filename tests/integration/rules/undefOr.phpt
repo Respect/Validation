@@ -118,11 +118,11 @@ Not a sibling compatible rule
 1234 must contain only letters (a-z) or must be undefined
 - All of the required rules must pass for 1234
   - 1234 must contain only letters (a-z) or must be undefined
-  - 1234 must be of type string or must be undefined
+  - 1234 must be a string or must be undefined
 [
     '__root__' => 'All of the required rules must pass for 1234',
     'undefOrAlpha' => '1234 must contain only letters (a-z) or must be undefined',
-    'undefOrStringType' => '1234 must be of type string or must be undefined',
+    'undefOrStringType' => '1234 must be a string or must be undefined',
 ]
 
 Not a sibling compatible rule with templates

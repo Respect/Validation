@@ -13,8 +13,8 @@ use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Simple;
 
 #[Template(
-    '{{name}} is always valid',
-    '{{name}} is always invalid',
+    '{{name}} must be valid',
+    '{{name}} must be invalid',
 )]
 final class AlwaysValid extends Simple
 {

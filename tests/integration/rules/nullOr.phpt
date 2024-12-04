@@ -118,11 +118,11 @@ Not a sibling compatible rule
 1234 must contain only letters (a-z) or must be null
 - All of the required rules must pass for 1234
   - 1234 must contain only letters (a-z) or must be null
-  - 1234 must be of type string or must be null
+  - 1234 must be a string or must be null
 [
     '__root__' => 'All of the required rules must pass for 1234',
     'nullOrAlpha' => '1234 must contain only letters (a-z) or must be null',
-    'nullOrStringType' => '1234 must be of type string or must be null',
+    'nullOrStringType' => '1234 must be a string or must be null',
 ]
 
 Not a sibling compatible rule with templates

@@ -16,7 +16,7 @@ use function is_nan;
 use function is_numeric;
 
 #[Template(
-    '{{name}} must be a number',
+    '{{name}} must be a valid number',
     '{{name}} must not be a number',
 )]
 final class Number extends Simple

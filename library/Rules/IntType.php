@@ -15,8 +15,8 @@ use Respect\Validation\Rules\Core\Simple;
 use function is_int;
 
 #[Template(
-    '{{name}} must be of type integer',
-    '{{name}} must not be of type integer',
+    '{{name}} must be an integer',
+    '{{name}} must not be an integer',
 )]
 final class IntType extends Simple
 {

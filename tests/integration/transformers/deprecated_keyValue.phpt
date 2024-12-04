@@ -16,32 +16,32 @@ exceptionFullMessage(static fn() => v::not(v::keyValue('foo', 'equals', 'bar'))-
 ?>
 --EXPECTF--
 
-Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. in %s
+Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. %s
 foo must be present
 
-Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. in %s
+Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. %s
 bar must be present
 
-Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. in %s
+Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. %s
 bar must be valid to validate foo
 
-Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. in %s
-foo must equal 2
+Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. %s
+foo must be equal to 2
 
-Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. in %s
-foo must not equal 1
+Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. %s
+foo must not be equal to 1
 
-Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. in %s
+Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. %s
 - foo must be present
 
-Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. in %s
+Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. %s
 - bar must be present
 
-Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. in %s
+Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. %s
 - bar must be valid to validate foo
 
-Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. in %s
-- foo must equal 2
+Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. %s
+- foo must be equal to 2
 
-Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. in %s
-- foo must not equal 1
+Deprecated: The keyValue() rule has been deprecated and will be removed in the next major version. Use nested lazy() instead. %s
+- foo must not be equal to 1

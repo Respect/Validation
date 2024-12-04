@@ -9,7 +9,7 @@ exceptionFullMessage(static fn() => v::boolType()->assert([]));
 exceptionFullMessage(static fn() => v::not(v::boolType())->assert(false));
 ?>
 --EXPECT--
-"teste" must be of type boolean
-`true` must not be of type boolean
-- `[]` must be of type boolean
-- `false` must not be of type boolean
+"teste" must be a boolean
+`true` must not be a boolean
+- `[]` must be a boolean
+- `false` must not be a boolean

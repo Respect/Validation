@@ -22,8 +22,8 @@ use function is_string;
 use const FILTER_VALIDATE_EMAIL;
 
 #[Template(
-    '{{name}} must be valid email',
-    '{{name}} must not be an email',
+    '{{name}} must be a valid email address',
+    '{{name}} must not be an email address',
 )]
 final class Email extends Simple
 {

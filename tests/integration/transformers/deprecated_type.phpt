@@ -18,38 +18,38 @@ exceptionMessage(static fn() => v::type('string')->assert(1));
 ?>
 --EXPECTF--
 
-Deprecated: The type() rule is deprecated and will be removed in the next major version. Use arrayType() instead. in %s
-1 must be of type array
+Deprecated: The type() rule is deprecated and will be removed in the next major version. Use arrayType() instead. %s
+1 must be an array
 
-Deprecated: The type() rule is deprecated and will be removed in the next major version. Use boolType() instead. in %s
-1 must be of type boolean
+Deprecated: The type() rule is deprecated and will be removed in the next major version. Use boolType() instead. %s
+1 must be a boolean
 
-Deprecated: The type() rule is deprecated and will be removed in the next major version. Use boolType() instead. in %s
-1 must be of type boolean
+Deprecated: The type() rule is deprecated and will be removed in the next major version. Use boolType() instead. %s
+1 must be a boolean
 
-Deprecated: The type() rule is deprecated and will be removed in the next major version. Use callableType() instead. in %s
-1 must be callable
+Deprecated: The type() rule is deprecated and will be removed in the next major version. Use callableType() instead. %s
+1 must be a callable
 
-Deprecated: The type() rule is deprecated and will be removed in the next major version. Use floatType() instead. in %s
-1 must be of type float
+Deprecated: The type() rule is deprecated and will be removed in the next major version. Use floatType() instead. %s
+1 must be float
 
-Deprecated: The type() rule is deprecated and will be removed in the next major version. Use floatType() instead. in %s
-1 must be of type float
+Deprecated: The type() rule is deprecated and will be removed in the next major version. Use floatType() instead. %s
+1 must be float
 
-Deprecated: The type() rule is deprecated and will be removed in the next major version. Use intType() instead. in %s
-"1" must be of type integer
+Deprecated: The type() rule is deprecated and will be removed in the next major version. Use intType() instead. %s
+"1" must be an integer
 
-Deprecated: The type() rule is deprecated and will be removed in the next major version. Use intType() instead. in %s
-"1" must be of type integer
+Deprecated: The type() rule is deprecated and will be removed in the next major version. Use intType() instead. %s
+"1" must be an integer
 
-Deprecated: The type() rule is deprecated and will be removed in the next major version. Use nullType() instead. in %s
+Deprecated: The type() rule is deprecated and will be removed in the next major version. Use nullType() instead. %s
 1 must be null
 
-Deprecated: The type() rule is deprecated and will be removed in the next major version. Use objectType() instead. in %s
-1 must be of type object
+Deprecated: The type() rule is deprecated and will be removed in the next major version. Use objectType() instead. %s
+1 must be an object
 
-Deprecated: The type() rule is deprecated and will be removed in the next major version. Use resourceType() instead. in %s
+Deprecated: The type() rule is deprecated and will be removed in the next major version. Use resourceType() instead. %s
 1 must be a resource
 
-Deprecated: The type() rule is deprecated and will be removed in the next major version. Use stringType() instead. in %s
-1 must be of type string
+Deprecated: The type() rule is deprecated and will be removed in the next major version. Use stringType() instead. %s
+1 must be a string

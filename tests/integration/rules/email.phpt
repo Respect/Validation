@@ -9,7 +9,7 @@ exceptionFullMessage(static fn() => v::email()->assert('bruce wayne'));
 exceptionFullMessage(static fn() => v::not(v::email())->assert('iambatman@gothancity.com'));
 ?>
 --EXPECT--
-"batman" must be valid email
-"bruce.wayne@gothancity.com" must not be an email
-- "bruce wayne" must be valid email
-- "iambatman@gothancity.com" must not be an email
+"batman" must be a valid email address
+"bruce.wayne@gothancity.com" must not be an email address
+- "bruce wayne" must be a valid email address
+- "iambatman@gothancity.com" must not be an email address

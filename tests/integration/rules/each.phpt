@@ -67,10 +67,10 @@ run([
 --EXPECT--
 Non-iterable
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-`null` must be of type iterable
-- `null` must be of type iterable
+`null` must be iterable
+- `null` must be iterable
 [
-    'each' => '`null` must be of type iterable',
+    'each' => '`null` must be iterable',
 ]
 
 Empty
@@ -83,38 +83,38 @@ The value must not be empty
 
 Default
 ⎺⎺⎺⎺⎺⎺⎺
-"a" must be of type integer
+"a" must be an integer
 - Each item in `["a", "b", "c"]` must be valid
-  - "a" must be of type integer
-  - "b" must be of type integer
-  - "c" must be of type integer
+  - "a" must be an integer
+  - "b" must be an integer
+  - "c" must be an integer
 [
     '__root__' => 'Each item in `["a", "b", "c"]` must be valid',
-    'intType.1' => '"a" must be of type integer',
-    'intType.2' => '"b" must be of type integer',
-    'intType.3' => '"c" must be of type integer',
+    'intType.1' => '"a" must be an integer',
+    'intType.2' => '"b" must be an integer',
+    'intType.3' => '"c" must be an integer',
 ]
 
 Inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺
-1 must not be of type integer
-- Each item in `[1, 2, 3]` must not validate
-  - 1 must not be of type integer
-  - 2 must not be of type integer
-  - 3 must not be of type integer
+1 must not be an integer
+- Each item in `[1, 2, 3]` must be invalid
+  - 1 must not be an integer
+  - 2 must not be an integer
+  - 3 must not be an integer
 [
-    '__root__' => 'Each item in `[1, 2, 3]` must not validate',
-    'intType.1' => '1 must not be of type integer',
-    'intType.2' => '2 must not be of type integer',
-    'intType.3' => '3 must not be of type integer',
+    '__root__' => 'Each item in `[1, 2, 3]` must be invalid',
+    'intType.1' => '1 must not be an integer',
+    'intType.2' => '2 must not be an integer',
+    'intType.3' => '3 must not be an integer',
 ]
 
 With name, non-iterable
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Wrapped must be of type iterable
-- Wrapped must be of type iterable
+Wrapped must be iterable
+- Wrapped must be iterable
 [
-    'Wrapped' => 'Wrapped must be of type iterable',
+    'Wrapped' => 'Wrapped must be iterable',
 ]
 
 With name, empty
@@ -127,72 +127,72 @@ Wrapped must not be empty
 
 With name, default
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Wrapped must be of type integer
+Wrapped must be an integer
 - Each item in Wrapped must be valid
-  - Wrapped must be of type integer
-  - Wrapped must be of type integer
-  - Wrapped must be of type integer
+  - Wrapped must be an integer
+  - Wrapped must be an integer
+  - Wrapped must be an integer
 [
     '__root__' => 'Each item in Wrapped must be valid',
-    'intType.1' => 'Wrapped must be of type integer',
-    'intType.2' => 'Wrapped must be of type integer',
-    'intType.3' => 'Wrapped must be of type integer',
+    'intType.1' => 'Wrapped must be an integer',
+    'intType.2' => 'Wrapped must be an integer',
+    'intType.3' => 'Wrapped must be an integer',
 ]
 
 With name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Wrapped must not be of type integer
-- Each item in Wrapped must not validate
-  - Wrapped must not be of type integer
-  - Wrapped must not be of type integer
-  - Wrapped must not be of type integer
+Wrapped must not be an integer
+- Each item in Wrapped must be invalid
+  - Wrapped must not be an integer
+  - Wrapped must not be an integer
+  - Wrapped must not be an integer
 [
-    '__root__' => 'Each item in Wrapped must not validate',
-    'intType.1' => 'Wrapped must not be of type integer',
-    'intType.2' => 'Wrapped must not be of type integer',
-    'intType.3' => 'Wrapped must not be of type integer',
+    '__root__' => 'Each item in Wrapped must be invalid',
+    'intType.1' => 'Wrapped must not be an integer',
+    'intType.2' => 'Wrapped must not be an integer',
+    'intType.3' => 'Wrapped must not be an integer',
 ]
 
 With wrapper name, default
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Wrapper must be of type integer
+Wrapper must be an integer
 - Each item in Wrapper must be valid
-  - Wrapper must be of type integer
-  - Wrapper must be of type integer
-  - Wrapper must be of type integer
+  - Wrapper must be an integer
+  - Wrapper must be an integer
+  - Wrapper must be an integer
 [
     '__root__' => 'Each item in Wrapper must be valid',
-    'intType.1' => 'Wrapper must be of type integer',
-    'intType.2' => 'Wrapper must be of type integer',
-    'intType.3' => 'Wrapper must be of type integer',
+    'intType.1' => 'Wrapper must be an integer',
+    'intType.2' => 'Wrapper must be an integer',
+    'intType.3' => 'Wrapper must be an integer',
 ]
 
 With wrapper name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Wrapper must not be of type integer
-- Each item in Wrapper must not validate
-  - Wrapper must not be of type integer
-  - Wrapper must not be of type integer
-  - Wrapper must not be of type integer
+Wrapper must not be an integer
+- Each item in Wrapper must be invalid
+  - Wrapper must not be an integer
+  - Wrapper must not be an integer
+  - Wrapper must not be an integer
 [
-    '__root__' => 'Each item in Wrapper must not validate',
-    'intType.1' => 'Wrapper must not be of type integer',
-    'intType.2' => 'Wrapper must not be of type integer',
-    'intType.3' => 'Wrapper must not be of type integer',
+    '__root__' => 'Each item in Wrapper must be invalid',
+    'intType.1' => 'Wrapper must not be an integer',
+    'intType.2' => 'Wrapper must not be an integer',
+    'intType.3' => 'Wrapper must not be an integer',
 ]
 
 With Not name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Not must not be of type integer
-- Each item in Not must not validate
-  - Not must not be of type integer
-  - Not must not be of type integer
-  - Not must not be of type integer
+Not must not be an integer
+- Each item in Not must be invalid
+  - Not must not be an integer
+  - Not must not be an integer
+  - Not must not be an integer
 [
-    '__root__' => 'Each item in Not must not validate',
-    'intType.1' => 'Not must not be of type integer',
-    'intType.2' => 'Not must not be of type integer',
-    'intType.3' => 'Not must not be of type integer',
+    '__root__' => 'Each item in Not must be invalid',
+    'intType.1' => 'Not must not be an integer',
+    'intType.2' => 'Not must not be an integer',
+    'intType.3' => 'Not must not be an integer',
 ]
 
 With template, non-iterable
@@ -243,14 +243,14 @@ First item should have been an integer
 
 With array template and name, default
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Wrapped must be of type integer
+Wrapped must be an integer
 - Each item in Wrapped must be valid
-  - Wrapped must be of type integer
-  - Wrapped must be of type integer
-  - Wrapped must be of type integer
+  - Wrapped must be an integer
+  - Wrapped must be an integer
+  - Wrapped must be an integer
 [
     '__root__' => 'Each item in Wrapped must be valid',
-    'intType.1' => 'Wrapped must be of type integer',
-    'intType.2' => 'Wrapped must be of type integer',
-    'intType.3' => 'Wrapped must be of type integer',
+    'intType.1' => 'Wrapped must be an integer',
+    'intType.2' => 'Wrapped must be an integer',
+    'intType.3' => 'Wrapped must be an integer',
 ]

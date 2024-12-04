@@ -22,8 +22,8 @@ use function strval;
  * @see https://nl.wikipedia.org/wiki/Burgerservicenummer
  */
 #[Template(
-    '{{name}} must be a BSN',
-    '{{name}} must not be a BSN',
+    '{{name}} must be a valid BSN',
+    '{{name}} must not be a valid BSN',
 )]
 final class Bsn extends Simple
 {

@@ -21,50 +21,50 @@ run([
 --EXPECTF--
 With $type = "years"
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-The number of years between now and 1 year ago must equal 2
-- The number of years between now and 1 year ago must equal 2
+The number of years between now and 1 year ago must be equal to 2
+- The number of years between now and 1 year ago must be equal to 2
 [
-    'dateTimeDiff' => 'The number of years between now and 1 year ago must equal 2',
+    'dateTimeDiff' => 'The number of years between now and 1 year ago must be equal to 2',
 ]
 
 With $type = "months"
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-The number of months between now and 2 months ago must equal 3
-- The number of months between now and 2 months ago must equal 3
+The number of months between now and 2 months ago must be equal to 3
+- The number of months between now and 2 months ago must be equal to 3
 [
-    'dateTimeDiff' => 'The number of months between now and 2 months ago must equal 3',
+    'dateTimeDiff' => 'The number of months between now and 2 months ago must be equal to 3',
 ]
 
 With $type = "days"
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-The number of days between now and 3 days ago must equal 4
-- The number of days between now and 3 days ago must equal 4
+The number of days between now and 3 days ago must be equal to 4
+- The number of days between now and 3 days ago must be equal to 4
 [
-    'dateTimeDiff' => 'The number of days between now and 3 days ago must equal 4',
+    'dateTimeDiff' => 'The number of days between now and 3 days ago must be equal to 4',
 ]
 
 With $type = "hours"
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-The number of hours between now and 4 hours ago must equal 5
-- The number of hours between now and 4 hours ago must equal 5
+The number of hours between now and 4 hours ago must be equal to 5
+- The number of hours between now and 4 hours ago must be equal to 5
 [
-    'dateTimeDiff' => 'The number of hours between now and 4 hours ago must equal 5',
+    'dateTimeDiff' => 'The number of hours between now and 4 hours ago must be equal to 5',
 ]
 
 With $type = "minutes"
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-The number of minutes between now and 5 minutes ago must equal 6
-- The number of minutes between now and 5 minutes ago must equal 6
+The number of minutes between now and 5 minutes ago must be equal to 6
+- The number of minutes between now and 5 minutes ago must be equal to 6
 [
-    'dateTimeDiff' => 'The number of minutes between now and 5 minutes ago must equal 6',
+    'dateTimeDiff' => 'The number of minutes between now and 5 minutes ago must be equal to 6',
 ]
 
 With $type = "microseconds"
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-The number of microseconds between now and 6 microseconds ago must equal 7
-- The number of microseconds between now and 6 microseconds ago must equal 7
+The number of microseconds between now and 6 microseconds ago must be equal to 7
+- The number of microseconds between now and 6 microseconds ago must be equal to 7
 [
-    'dateTimeDiff' => 'The number of microseconds between now and 6 microseconds ago must equal 7',
+    'dateTimeDiff' => 'The number of microseconds between now and 6 microseconds ago must be equal to 7',
 ]
 
 With custom $format

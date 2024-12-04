@@ -24,8 +24,8 @@ use function str_split;
  * @see https://es.wikipedia.org/wiki/N%C3%BAmero_de_identificaci%C3%B3n_fiscal
  */
 #[Template(
-    '{{name}} must be a NIF',
-    '{{name}} must not be a NIF',
+    '{{name}} must be a valid NIF',
+    '{{name}} must not be a valid NIF',
 )]
 final class Nif extends Simple
 {

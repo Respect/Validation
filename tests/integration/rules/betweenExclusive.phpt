@@ -21,10 +21,10 @@ Default
 
 Inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺
-5 must not be greater than 1 and less than 10
-- 5 must not be greater than 1 and less than 10
+5 must not be greater than 1 or less than 10
+- 5 must not be greater than 1 or less than 10
 [
-    'notBetweenExclusive' => '5 must not be greater than 1 and less than 10',
+    'notBetweenExclusive' => '5 must not be greater than 1 or less than 10',
 ]
 
 With template

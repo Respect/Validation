@@ -19,7 +19,7 @@ use const FILTER_VALIDATE_INT;
 
 #[Template(
     '{{name}} must be an odd number',
-    '{{name}} must not be an odd number',
+    '{{name}} must be an even number',
 )]
 final class Odd extends Simple
 {

@@ -76,11 +76,11 @@ run([
 --EXPECT--
 one rule / one failed
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-foo must be of type integer
+foo must be an integer
 - `["foo": "string"]` validation failed
-  - foo must be of type integer
+  - foo must be an integer
 [
-    'foo' => 'foo must be of type integer',
+    'foo' => 'foo must be an integer',
 ]
 
 one rule / one missing key
@@ -193,34 +193,34 @@ foo must be present
 
 multiple rules / two extra keys
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-qux must be of type integer
-- qux must be of type integer
+qux must be an integer
+- qux must be an integer
 - baz must not be present
 [
     '__root__' => '`["foo": 42, "bar": "string", "baz": true, "qux": false]` contains extra keys',
-    'qux' => 'qux must be of type integer',
+    'qux' => 'qux must be an integer',
     'baz' => 'baz must not be present',
 ]
 
 multiple rules / all failed validation
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-bar must be of type integer
+bar must be an integer
 - `["foo": 42, "bar": "string", "baz": true]` validation failed
-  - bar must be of type integer
-  - baz must be of type integer
+  - bar must be an integer
+  - baz must be an integer
 [
     '__root__' => '`["foo": 42, "bar": "string", "baz": true]` validation failed',
-    'bar' => 'bar must be of type integer',
-    'baz' => 'baz must be of type integer',
+    'bar' => 'bar must be an integer',
+    'baz' => 'baz must be an integer',
 ]
 
 multiple rules / single missing key / single failed validation
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-bar must be of type integer
-- bar must be of type integer
+bar must be an integer
+- bar must be an integer
 - baz must be present
 [
     '__root__' => '`["foo": 42, "bar": "string"]` contains missing keys',
-    'bar' => 'bar must be of type integer',
+    'bar' => 'bar must be an integer',
     'baz' => 'baz must be present',
 ]

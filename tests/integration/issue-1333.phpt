@@ -8,6 +8,6 @@ exceptionMessages(static fn() => v::noWhitespace()->email()->setName('User Email
 --EXPECT--
 [
     '__root__' => 'All of the required rules must pass for User Email',
-    'noWhitespace' => 'User Email must not contain whitespace',
-    'email' => 'User Email must be valid email',
+    'noWhitespace' => 'User Email must not contain whitespaces',
+    'email' => 'User Email must be a valid email address',
 ]

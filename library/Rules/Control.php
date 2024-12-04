@@ -15,12 +15,12 @@ use Respect\Validation\Rules\Core\FilteredString;
 use function ctype_cntrl;
 
 #[Template(
-    '{{name}} must contain only control characters',
+    '{{name}} must only contain control characters',
     '{{name}} must not contain control characters',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must contain only control characters and {{additionalChars}}',
+    '{{name}} must only contain control characters and {{additionalChars}}',
     '{{name}} must not contain control characters or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]

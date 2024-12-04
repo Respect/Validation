@@ -10,14 +10,14 @@ exceptionFullMessage(static fn() => v::not(v::max('b'))->assert('a'));
 ?>
 --EXPECTF--
 
-Deprecated: Calling max() with a scalar value has been deprecated, and will be not allows in the next major version. Use lessThanOrEqual() instead. in %s
+Deprecated: Calling max() with a scalar value has been deprecated, and will be not allows in the next major version. Use lessThanOrEqual() instead. %s
 11 must be less than or equal to 10
 
-Deprecated: Calling max() with a scalar value has been deprecated, and will be not allows in the next major version. Use lessThanOrEqual() instead. in %s
-5 must not be less than or equal to 10
+Deprecated: Calling max() with a scalar value has been deprecated, and will be not allows in the next major version. Use lessThanOrEqual() instead. %s
+5 must be greater than 10
 
-Deprecated: Calling max() with a scalar value has been deprecated, and will be not allows in the next major version. Use lessThanOrEqual() instead. in %s
+Deprecated: Calling max() with a scalar value has been deprecated, and will be not allows in the next major version. Use lessThanOrEqual() instead. %s
 - "tomorrow" must be less than or equal to "today"
 
-Deprecated: Calling max() with a scalar value has been deprecated, and will be not allows in the next major version. Use lessThanOrEqual() instead. in %s
-- "a" must not be less than or equal to "b"
+Deprecated: Calling max() with a scalar value has been deprecated, and will be not allows in the next major version. Use lessThanOrEqual() instead. %s
+- "a" must be greater than "b"

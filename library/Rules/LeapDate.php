@@ -17,8 +17,8 @@ use Respect\Validation\Rules\Core\Simple;
 use function is_scalar;
 
 #[Template(
-    '{{name}} must be leap date',
-    '{{name}} must not be leap date',
+    '{{name}} must be a valid leap date',
+    '{{name}} must not be a leap date',
 )]
 final class LeapDate extends Simple
 {

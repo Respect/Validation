@@ -21,8 +21,8 @@ use function mb_strpos;
 use const FILEINFO_MIME_TYPE;
 
 #[Template(
-    '{{name}} must be a valid image',
-    '{{name}} must not be a valid image',
+    '{{name}} must be a valid image file',
+    '{{name}} must not be a valid image file',
 )]
 final class Image extends Simple
 {

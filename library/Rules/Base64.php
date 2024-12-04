@@ -17,8 +17,8 @@ use function mb_strlen;
 use function preg_match;
 
 #[Template(
-    '{{name}} must be Base64-encoded',
-    '{{name}} must not be Base64-encoded',
+    '{{name}} must be a base64 encoded string',
+    '{{name}} must not be a base64 encoded string',
 )]
 final class Base64 extends Simple
 {

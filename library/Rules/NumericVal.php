@@ -15,8 +15,8 @@ use Respect\Validation\Rules\Core\Simple;
 use function is_numeric;
 
 #[Template(
-    '{{name}} must be numeric',
-    '{{name}} must not be numeric',
+    '{{name}} must be a numeric value',
+    '{{name}} must not be a numeric value',
 )]
 final class NumericVal extends Simple
 {

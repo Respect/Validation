@@ -16,8 +16,8 @@ use Respect\Validation\Rules\Core\Standard;
 use function is_scalar;
 
 #[Template(
-    '{{name}} must equal {{compareTo}}',
-    '{{name}} must not equal {{compareTo}}',
+    '{{name}} must be equal to {{compareTo}}',
+    '{{name}} must not be equal to {{compareTo}}',
 )]
 final class Equals extends Standard
 {

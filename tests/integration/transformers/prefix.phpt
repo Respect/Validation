@@ -17,10 +17,10 @@ run([
 --EXPECT--
 key
 ⎺⎺⎺
-foo must equal 12
-- foo must equal 12
+foo must be equal to 12
+- foo must be equal to 12
 [
-    'foo' => 'foo must equal 12',
+    'foo' => 'foo must be equal to 12',
 ]
 
 length
@@ -57,10 +57,10 @@ not
 
 nullOr
 ⎺⎺⎺⎺⎺⎺
-"string" must be of type boolean or must be null
-- "string" must be of type boolean or must be null
+"string" must be a boolean or must be null
+- "string" must be a boolean or must be null
 [
-    'nullOrBoolType' => '"string" must be of type boolean or must be null',
+    'nullOrBoolType' => '"string" must be a boolean or must be null',
 ]
 
 property

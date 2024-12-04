@@ -18,7 +18,7 @@ use function array_reduce;
 
 #[Template(
     'Each item in {{name}} must be valid',
-    'Each item in {{name}} must not validate',
+    'Each item in {{name}} must be invalid',
 )]
 final class Each extends FilteredNonEmptyArray
 {

@@ -9,7 +9,7 @@ exceptionFullMessage(static fn() => v::currencyCode()->assert('ppz'));
 exceptionFullMessage(static fn() => v::not(v::currencyCode())->assert('GBP'));
 ?>
 --EXPECT--
-"batman" must be a valid currency
-"BRL" must not be a valid currency
-- "ppz" must be a valid currency
-- "GBP" must not be a valid currency
+"batman" must be a valid currency code
+"BRL" must not be a valid currency code
+- "ppz" must be a valid currency code
+- "GBP" must not be a valid currency code

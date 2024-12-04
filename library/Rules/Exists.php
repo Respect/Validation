@@ -17,8 +17,8 @@ use function file_exists;
 use function is_string;
 
 #[Template(
-    '{{name}} must exist',
-    '{{name}} must not exist',
+    '{{name}} must be an existing file',
+    '{{name}} must not be an existing file',
 )]
 final class Exists extends Simple
 {

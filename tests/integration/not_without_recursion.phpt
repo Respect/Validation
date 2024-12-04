@@ -1,5 +1,3 @@
---TEST--
-not() with recursion should update mode of its children
 --FILE--
 <?php
 
@@ -15,4 +13,4 @@ exceptionMessage(static function (): void {
 });
 ?>
 --EXPECT--
-2 must not be an integer number
+2 must not be an integer value

@@ -21,8 +21,8 @@ use function is_string;
 use const FILEINFO_MIME_TYPE;
 
 #[Template(
-    '{{name}} must have {{mimetype}} MIME type',
-    '{{name}} must not have {{mimetype}} MIME type',
+    '{{name}} must have the {{mimetype}} MIME type',
+    '{{name}} must not have the {{mimetype}} MIME type',
 )]
 final class Mimetype extends Standard
 {

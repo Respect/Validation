@@ -13,12 +13,12 @@ use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Simple;
 
 #[Template(
-    '{{name}} is always invalid',
-    '{{name}} is always valid',
+    '{{name}} must be valid',
+    '{{name}} must be invalid',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} is not valid',
+    '{{name}} is invalid',
     '{{name}} is valid',
     self::TEMPLATE_SIMPLE,
 )]

@@ -9,7 +9,7 @@ exceptionFullMessage(static fn() => v::file()->assert('tests/fixtures/non-existe
 exceptionFullMessage(static fn() => v::not(v::file())->assert('tests/fixtures/valid-image.png'));
 ?>
 --EXPECT--
-"tests/fixtures/non-existent.sh" must be a file
-"tests/fixtures/valid-image.png" must not be a file
-- "tests/fixtures/non-existent.sh" must be a file
-- "tests/fixtures/valid-image.png" must not be a file
+"tests/fixtures/non-existent.sh" must be a valid file
+"tests/fixtures/valid-image.png" must be an invalid file
+- "tests/fixtures/non-existent.sh" must be a valid file
+- "tests/fixtures/valid-image.png" must be an invalid file

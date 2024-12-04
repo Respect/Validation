@@ -21,8 +21,8 @@ use function restore_error_handler;
 use function set_error_handler;
 
 #[Template(
-    '{{input}} must be valid when executed with {{callable}}',
-    '{{input}} must not be valid when executed with {{callable}}',
+    '{{input}} must be a suitable argument for {{callable}}',
+    '{{input}} must not be a suitable argument for {{callable}}',
 )]
 final class Call extends Standard
 {

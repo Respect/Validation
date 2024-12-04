@@ -1,5 +1,3 @@
---TEST--
-Do not rely on nested validation exception interface for check
 --FILE--
 <?php
 
@@ -12,4 +10,4 @@ exceptionMessage(
 );
 ?>
 --EXPECT--
-"really messed up screen#name" must contain only letters (a-z), digits (0-9) and "__"
+"really messed up screen#name" must contain only letters (a-z), digits (0-9), and "__"

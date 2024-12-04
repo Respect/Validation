@@ -20,7 +20,7 @@ use function sprintf;
 use function strtotime;
 
 #[Template(
-    '{{name}} must be a leap year',
+    '{{name}} must be a valid leap year',
     '{{name}} must not be a leap year',
 )]
 final class LeapYear extends Simple

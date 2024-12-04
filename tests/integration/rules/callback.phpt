@@ -10,6 +10,6 @@ exceptionFullMessage(static fn() => v::not(v::callback('is_string'))->assert('fo
 ?>
 --EXPECT--
 `[]` must be valid
-"foo" must not be valid
+"foo" must be invalid
 - `true` must be valid
-- "foo" must not be valid
+- "foo" must be invalid

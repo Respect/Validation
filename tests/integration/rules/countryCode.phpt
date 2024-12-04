@@ -9,7 +9,7 @@ exceptionFullMessage(static fn() => v::countryCode()->assert('1'));
 exceptionFullMessage(static fn() => v::not(v::countryCode())->assert('BR'));
 ?>
 --EXPECT--
-"1" must be a valid country
-"BR" must not be a valid country
-- "1" must be a valid country
-- "BR" must not be a valid country
+"1" must be a valid country code
+"BR" must not be a valid country code
+- "1" must be a valid country code
+- "BR" must not be a valid country code

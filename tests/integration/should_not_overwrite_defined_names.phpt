@@ -14,6 +14,6 @@ exceptionMessage(static fn() => v::key('email', v::email())->setName('Email')->a
 exceptionMessage(static fn() => v::key('email', v::email())->assert($input));
 ?>
 --EXPECT--
-Email must be valid email
-email must be valid email
-email must be valid email
+Email must be a valid email address
+email must be a valid email address
+email must be a valid email address

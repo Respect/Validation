@@ -14,10 +14,10 @@ exceptionFullMessage(static fn() => v::not(v::alnum('^'))->assert('abc^4'));
 ?>
 --EXPECT--
 "abc%1" must contain only letters (a-z) and digits (0-9)
-"abc%2" must contain only letters (a-z), digits (0-9) and " "
+"abc%2" must contain only letters (a-z), digits (0-9), and " "
 "abcd3" must not contain letters (a-z) or digits (0-9)
-"abc%4" must not contain letters (a-z), digits (0-9) or "% "
+"abc%4" must not contain letters (a-z), digits (0-9), or "% "
 - "abc^1" must contain only letters (a-z) and digits (0-9)
 - "abcd2" must not contain letters (a-z) or digits (0-9)
-- "abc^3" must contain only letters (a-z), digits (0-9) and "* &%"
-- "abc^4" must not contain letters (a-z), digits (0-9) or "^"
+- "abc^3" must contain only letters (a-z), digits (0-9), and "* &%"
+- "abc^4" must not contain letters (a-z), digits (0-9), or "^"

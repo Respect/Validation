@@ -15,8 +15,8 @@ use Respect\Validation\Rules\Core\Simple;
 use function is_string;
 
 #[Template(
-    '{{name}} must be of type string',
-    '{{name}} must not be of type string',
+    '{{name}} must be a string',
+    '{{name}} must not be a string',
 )]
 final class StringType extends Simple
 {

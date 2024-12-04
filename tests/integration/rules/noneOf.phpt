@@ -9,11 +9,11 @@ exceptionFullMessage(static fn() => v::noneOf(v::intType(), v::positive())->asse
 exceptionFullMessage(static fn() => v::not(v::noneOf(v::intType(), v::positive()))->assert('-1'));
 ?>
 --EXPECT--
-42 must not be of type integer
-"-1" must be of type integer
+42 must not be an integer
+"-1" must be an integer
 - None of these rules must pass for 42
-  - 42 must not be of type integer
-  - 42 must not be positive
+  - 42 must not be an integer
+  - 42 must not be a positive number
 - All of these rules must pass for "-1"
-  - "-1" must be of type integer
-  - "-1" must be positive
+  - "-1" must be an integer
+  - "-1" must be a positive number

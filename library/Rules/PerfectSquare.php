@@ -17,8 +17,8 @@ use function is_numeric;
 use function sqrt;
 
 #[Template(
-    '{{name}} must be a valid perfect square',
-    '{{name}} must not be a valid perfect square',
+    '{{name}} must be a perfect square number',
+    '{{name}} must not be a perfect square number',
 )]
 final class PerfectSquare extends Simple
 {

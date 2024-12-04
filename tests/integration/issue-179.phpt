@@ -19,5 +19,5 @@ $validator->key('schema', v::stringType());
 exceptionFullMessage(static fn() => $validator->assert($config));
 ?>
 --EXPECT--
-- host must be of type string
+- host must be a string
 - user must be present

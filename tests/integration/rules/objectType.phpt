@@ -9,7 +9,7 @@ exceptionFullMessage(static fn() => v::objectType()->assert('test'));
 exceptionFullMessage(static fn() => v::not(v::objectType())->assert(new ArrayObject()));
 ?>
 --EXPECT--
-`[]` must be of type object
-`stdClass {}` must not be of type object
-- "test" must be of type object
-- `ArrayObject { getArrayCopy() => [] }` must not be of type object
+`[]` must be an object
+`stdClass {}` must not be an object
+- "test" must be an object
+- `ArrayObject { getArrayCopy() => [] }` must not be an object

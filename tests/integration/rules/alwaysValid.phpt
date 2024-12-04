@@ -7,5 +7,5 @@ exceptionMessage(static fn() => v::not(v::alwaysValid())->assert(true));
 exceptionFullMessage(static fn() => v::not(v::alwaysValid())->assert(true));
 ?>
 --EXPECT--
-`true` is always invalid
-- `true` is always invalid
+`true` must be invalid
+- `true` must be invalid

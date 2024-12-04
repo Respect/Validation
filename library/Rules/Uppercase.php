@@ -16,8 +16,8 @@ use function is_string;
 use function mb_strtoupper;
 
 #[Template(
-    '{{name}} must be uppercase',
-    '{{name}} must not be uppercase',
+    '{{name}} must contain only uppercase letters',
+    '{{name}} must not contain only uppercase letters',
 )]
 final class Uppercase extends Simple
 {

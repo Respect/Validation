@@ -9,7 +9,7 @@ exceptionMessage(static fn() => v::not(v::uppercase())->assert('UPPERCASE'));
 exceptionFullMessage(static fn() => v::not(v::uppercase())->assert('UPPERCASE'));
 ?>
 --EXPECT--
-"lowercase" must be uppercase
-- "lowercase" must be uppercase
-"UPPERCASE" must not be uppercase
-- "UPPERCASE" must not be uppercase
+"lowercase" must contain only uppercase letters
+- "lowercase" must contain only uppercase letters
+"UPPERCASE" must not contain only uppercase letters
+- "UPPERCASE" must not contain only uppercase letters

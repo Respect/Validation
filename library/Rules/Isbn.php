@@ -18,8 +18,8 @@ use function preg_match;
 use function sprintf;
 
 #[Template(
-    '{{name}} must be a ISBN',
-    '{{name}} must not be a ISBN',
+    '{{name}} must be a valid ISBN',
+    '{{name}} must not be a valid ISBN',
 )]
 final class Isbn extends Simple
 {

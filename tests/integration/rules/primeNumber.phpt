@@ -9,7 +9,7 @@ exceptionFullMessage(static fn() => v::primeNumber()->assert('Foo'));
 exceptionFullMessage(static fn() => v::not(v::primeNumber())->assert('+7'));
 ?>
 --EXPECT--
-10 must be a valid prime number
-3 must not be a valid prime number
-- "Foo" must be a valid prime number
-- "+7" must not be a valid prime number
+10 must be a prime number
+3 must not be a prime number
+- "Foo" must be a prime number
+- "+7" must not be a prime number

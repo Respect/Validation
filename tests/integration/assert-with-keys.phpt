@@ -37,12 +37,12 @@ exceptionFullMessage(static function (): void {
 --EXPECT--
 - All of the required rules must pass for the given data
   - All of the required rules must pass for mysql
-    - host must be of type string
+    - host must be a string
     - user must be present
     - password must be present
-    - schema must be of type string
+    - schema must be a string
   - All of the required rules must pass for postgresql
     - host must be present
-    - user must be of type string
-    - password must be of type string
+    - user must be a string
+    - password must be a string
     - schema must be present

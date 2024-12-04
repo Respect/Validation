@@ -16,8 +16,8 @@ use function is_string;
 use function mb_strtolower;
 
 #[Template(
-    '{{name}} must be lowercase',
-    '{{name}} must not be lowercase',
+    '{{name}} must contain only lowercase letters',
+    '{{name}} must not contain only lowercase letters',
 )]
 final class Lowercase extends Simple
 {

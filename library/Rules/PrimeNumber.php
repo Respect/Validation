@@ -17,8 +17,8 @@ use function is_numeric;
 use function sqrt;
 
 #[Template(
-    '{{name}} must be a valid prime number',
-    '{{name}} must not be a valid prime number',
+    '{{name}} must be a prime number',
+    '{{name}} must not be a prime number',
 )]
 final class PrimeNumber extends Simple
 {

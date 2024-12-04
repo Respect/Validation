@@ -11,9 +11,9 @@ exceptionFullMessage(static fn() => v::not(v::call('is_float', v::boolType()))->
 exceptionFullMessage(static fn() => v::call('array_shift', v::alwaysValid())->assert(INF));
 ?>
 --EXPECT--
-"two words" must not contain whitespace
-" something " must not be of type string
-`[]` must be valid when executed with `stripslashes(string $string): string`
-- "1234" must be of type integer
-- `true` must not be of type boolean
-- `INF` must be valid when executed with `array_shift(array &$array): ?mixed`
+"two words" must not contain whitespaces
+" something " must not be a string
+`[]` must be a suitable argument for `stripslashes(string $string): string`
+- "1234" must be an integer
+- `true` must not be a boolean
+- `INF` must be a suitable argument for `array_shift(array &$array): ?mixed`

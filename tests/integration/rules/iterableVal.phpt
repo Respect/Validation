@@ -9,7 +9,7 @@ exceptionFullMessage(static fn() => v::iterableVal()->assert('String'));
 exceptionFullMessage(static fn() => v::not(v::iterableVal())->assert(new stdClass()));
 ?>
 --EXPECT--
-3 must be iterable
-`[2, 3]` must not be iterable
-- "String" must be iterable
-- `stdClass {}` must not be iterable
+3 must be an iterable value
+`[2, 3]` must not be an iterable value
+- "String" must be an iterable value
+- `stdClass {}` must not be an iterable value

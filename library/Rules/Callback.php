@@ -18,7 +18,7 @@ use function count;
 
 #[Template(
     '{{name}} must be valid',
-    '{{name}} must not be valid',
+    '{{name}} must be invalid',
 )]
 final class Callback extends Simple
 {

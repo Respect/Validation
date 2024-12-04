@@ -25,10 +25,10 @@ run([
 --EXPECT--
 Non-iterable
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-`null` must be of type iterable
-- `null` must be of type iterable
+`null` must be iterable
+- `null` must be iterable
 [
-    'max' => '`null` must be of type iterable',
+    'max' => '`null` must be iterable',
 ]
 
 Empty
@@ -41,50 +41,50 @@ The value must not be empty
 
 Default
 ⎺⎺⎺⎺⎺⎺⎺
-As the maximum of `[1, 2, 3]`, 3 must be negative
-- As the maximum of `[1, 2, 3]`, 3 must be negative
+As the maximum of `[1, 2, 3]`, 3 must be a negative number
+- As the maximum of `[1, 2, 3]`, 3 must be a negative number
 [
-    'maxNegative' => 'As the maximum of `[1, 2, 3]`, 3 must be negative',
+    'maxNegative' => 'As the maximum of `[1, 2, 3]`, 3 must be a negative number',
 ]
 
 Inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺
-As the maximum of `[-3, -2, -1]`, -1 must not be negative
-- As the maximum of `[-3, -2, -1]`, -1 must not be negative
+As the maximum of `[-3, -2, -1]`, -1 must not be a negative number
+- As the maximum of `[-3, -2, -1]`, -1 must not be a negative number
 [
-    'notMaxNegative' => 'As the maximum of `[-3, -2, -1]`, -1 must not be negative',
+    'notMaxNegative' => 'As the maximum of `[-3, -2, -1]`, -1 must not be a negative number',
 ]
 
 With wrapped name, default
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-The maximum of Wrapped must be negative
-- The maximum of Wrapped must be negative
+The maximum of Wrapped must be a negative number
+- The maximum of Wrapped must be a negative number
 [
-    'maxNegative' => 'The maximum of Wrapped must be negative',
+    'maxNegative' => 'The maximum of Wrapped must be a negative number',
 ]
 
 With wrapper name, default
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-The maximum of Wrapper must be negative
-- The maximum of Wrapper must be negative
+The maximum of Wrapper must be a negative number
+- The maximum of Wrapper must be a negative number
 [
-    'maxNegative' => 'The maximum of Wrapper must be negative',
+    'maxNegative' => 'The maximum of Wrapper must be a negative number',
 ]
 
 With wrapped name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-The maximum of Wrapped must not be negative
-- The maximum of Wrapped must not be negative
+The maximum of Wrapped must not be a negative number
+- The maximum of Wrapped must not be a negative number
 [
-    'notMaxNegative' => 'The maximum of Wrapped must not be negative',
+    'notMaxNegative' => 'The maximum of Wrapped must not be a negative number',
 ]
 
 With wrapper name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-The maximum of Wrapper must not be negative
-- The maximum of Wrapper must not be negative
+The maximum of Wrapper must not be a negative number
+- The maximum of Wrapper must not be a negative number
 [
-    'notMaxNegative' => 'The maximum of Wrapper must not be negative',
+    'notMaxNegative' => 'The maximum of Wrapper must not be a negative number',
 ]
 
 With template, default

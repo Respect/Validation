@@ -17,6 +17,6 @@ exceptionFullMessage(static function (): void {
   - title must be present
   - description must be present
   - All of the required rules must pass for author
-    - author must be of type integer
+    - author must be an integer
     - The length of author must be between 1 and 2
   - user must be present

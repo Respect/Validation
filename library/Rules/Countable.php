@@ -16,8 +16,8 @@ use Respect\Validation\Rules\Core\Simple;
 use function is_array;
 
 #[Template(
-    '{{name}} must be countable',
-    '{{name}} must not be countable',
+    '{{name}} must be a countable value',
+    '{{name}} must not be a countable value',
 )]
 final class Countable extends Simple
 {

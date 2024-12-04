@@ -14,7 +14,7 @@ use Respect\Validation\Rules\Core\Comparison;
 
 #[Template(
     '{{name}} must be less than or equal to {{compareTo}}',
-    '{{name}} must not be less than or equal to {{compareTo}}',
+    '{{name}} must be greater than {{compareTo}}',
 )]
 final class LessThanOrEqual extends Comparison
 {

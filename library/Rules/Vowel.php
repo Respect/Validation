@@ -15,13 +15,13 @@ use Respect\Validation\Rules\Core\FilteredString;
 use function preg_match;
 
 #[Template(
-    '{{name}} must contain only vowels',
-    '{{name}} must not contain vowels',
+    '{{name}} must consist of vowels only',
+    '{{name}} must not consist of vowels only',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must contain only vowels and {{additionalChars}}',
-    '{{name}} must not contain vowels or {{additionalChars}}',
+    '{{name}} must consist of vowels and {{additionalChars}}',
+    '{{name}} must not consist of vowels or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
 final class Vowel extends FilteredString

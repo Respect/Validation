@@ -13,11 +13,11 @@ exceptionFullMessage(static fn() => v::not(v::control())->assert("\n"));
 exceptionFullMessage(static fn() => v::not(v::control('Bar'))->assert("Bar\n"));
 ?>
 --EXPECT--
-"16-50" must contain only control characters
-"16-50" must contain only control characters and "16"
+"16-50" must only contain control characters
+"16-50" must only contain control characters and "16"
 "\n" must not contain control characters
 "16\n" must not contain control characters or "16"
-- "Foo" must contain only control characters
-- "Foo" must contain only control characters and "Bar"
+- "Foo" must only contain control characters
+- "Foo" must only contain control characters and "Bar"
 - "\n" must not contain control characters
 - "Bar\n" must not contain control characters or "Bar"

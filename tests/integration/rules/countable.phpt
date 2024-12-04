@@ -9,7 +9,7 @@ exceptionFullMessage(static fn() => v::countable()->assert('Not countable!'));
 exceptionFullMessage(static fn() => v::not(v::countable())->assert(new ArrayObject()));
 ?>
 --EXPECT--
-1.0 must be countable
-`[]` must not be countable
-- "Not countable!" must be countable
-- `ArrayObject { getArrayCopy() => [] }` must not be countable
+1.0 must be a countable value
+`[]` must not be a countable value
+- "Not countable!" must be a countable value
+- `ArrayObject { getArrayCopy() => [] }` must not be a countable value

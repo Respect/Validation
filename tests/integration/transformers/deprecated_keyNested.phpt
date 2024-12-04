@@ -20,26 +20,26 @@ exceptionMessage(static fn() => v::keyNested('foo.bar', v::floatType(), false)->
 ?>
 --EXPECTF--
 
-Deprecated: The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead. in %s
+Deprecated: The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead. %s
 foo must be present
 
-Deprecated: The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead. in %s
+Deprecated: The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead. %s
 No exception was thrown
 
-Deprecated: The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead. in %s
+Deprecated: The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead. %s
 No exception was thrown
 
-Deprecated: The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead. in %s
-bar must be negative
+Deprecated: The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead. %s
+bar must be a negative number
 
-Deprecated: The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead. in %s
+Deprecated: The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead. %s
 No exception was thrown
 
-Deprecated: The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead. in %s
-bar must be of type string
+Deprecated: The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead. %s
+bar must be a string
 
-Deprecated: The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead. in %s
+Deprecated: The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead. %s
 No exception was thrown
 
-Deprecated: The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead. in %s
-bar must be of type float
+Deprecated: The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead. %s
+bar must be float

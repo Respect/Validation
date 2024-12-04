@@ -14,8 +14,8 @@ use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\Standard;
 
 #[Template(
-    '{{name}} must be multiple of {{multipleOf}}',
-    '{{name}} must not be multiple of {{multipleOf}}',
+    '{{name}} must be a multiple of {{multipleOf}}',
+    '{{name}} must not be a multiple of {{multipleOf}}',
 )]
 final class Multiple extends Standard
 {

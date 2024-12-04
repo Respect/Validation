@@ -17,8 +17,8 @@ use function is_file;
 use function is_string;
 
 #[Template(
-    '{{name}} must be a file',
-    '{{name}} must not be a file',
+    '{{name}} must be a valid file',
+    '{{name}} must be an invalid file',
 )]
 final class File extends Simple
 {

@@ -10,6 +10,6 @@ exceptionFullMessage(static fn() => v::not(v::greaterThanOrEqual('a'))->assert('
 ?>
 --EXPECT--
 10 must be greater than or equal to `INF`
-`INF` must not be greater than or equal to 5
+`INF` must be less than 5
 - "yesterday" must be greater than or equal to "today"
-- "z" must not be greater than or equal to "a"
+- "z" must be less than "a"

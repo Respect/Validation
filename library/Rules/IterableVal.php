@@ -14,8 +14,8 @@ use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Simple;
 
 #[Template(
-    '{{name}} must be iterable',
-    '{{name}} must not be iterable',
+    '{{name}} must be an iterable value',
+    '{{name}} must not be an iterable value',
 )]
 final class IterableVal extends Simple
 {

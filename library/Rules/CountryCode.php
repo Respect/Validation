@@ -21,8 +21,8 @@ use function in_array;
 use function is_string;
 
 #[Template(
-    '{{name}} must be a valid country',
-    '{{name}} must not be a valid country',
+    '{{name}} must be a valid country code',
+    '{{name}} must not be a valid country code',
 )]
 final class CountryCode extends Standard
 {

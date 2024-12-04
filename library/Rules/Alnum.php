@@ -20,8 +20,8 @@ use function ctype_alnum;
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must contain only letters (a-z), digits (0-9) and {{additionalChars}}',
-    '{{name}} must not contain letters (a-z), digits (0-9) or {{additionalChars}}',
+    '{{name}} must contain only letters (a-z), digits (0-9), and {{additionalChars}}',
+    '{{name}} must not contain letters (a-z), digits (0-9), or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
 final class Alnum extends FilteredString

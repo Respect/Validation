@@ -23,8 +23,8 @@ use function mb_detect_encoding;
 use function mb_list_encodings;
 
 #[Template(
-    '{{name}} must be in the {{charset|raw}} charset',
-    '{{name}} must not be in the {{charset|raw}} charset',
+    '{{name}} must only contain characters from the {{charset|raw}} charset',
+    '{{name}} must not contain any characters from the {{charset|raw}} charset',
 )]
 final class Charset extends Standard
 {

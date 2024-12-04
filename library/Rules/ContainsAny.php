@@ -17,8 +17,8 @@ use function array_map;
 use function count;
 
 #[Template(
-    '{{name}} must contain at least one of the values {{needles}}',
-    '{{name}} must not contain any of the values {{needles}}',
+    '{{name}} must contain at least one value from {{needles}}',
+    '{{name}} must not contain any value from {{needles}}',
 )]
 final class ContainsAny extends Envelope
 {

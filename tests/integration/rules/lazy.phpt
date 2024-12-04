@@ -36,58 +36,58 @@ run([
 --EXPECT--
 Default
 ⎺⎺⎺⎺⎺⎺⎺
-`true` must be of type integer
-- `true` must be of type integer
+`true` must be an integer
+- `true` must be an integer
 [
-    'intType' => '`true` must be of type integer',
+    'intType' => '`true` must be an integer',
 ]
 
 Inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺
-2 must not be of type integer
-- 2 must not be of type integer
+2 must not be an integer
+- 2 must not be an integer
 [
-    'notIntType' => '2 must not be of type integer',
+    'notIntType' => '2 must not be an integer',
 ]
 
 With created name, default
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Created must be of type integer
-- Created must be of type integer
+Created must be an integer
+- Created must be an integer
 [
-    'intType' => 'Created must be of type integer',
+    'intType' => 'Created must be an integer',
 ]
 
 With wrapper name, default
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Wrapper must be of type integer
-- Wrapper must be of type integer
+Wrapper must be an integer
+- Wrapper must be an integer
 [
-    'intType' => 'Wrapper must be of type integer',
+    'intType' => 'Wrapper must be an integer',
 ]
 
 With created name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Created must not be of type integer
-- Created must not be of type integer
+Created must not be an integer
+- Created must not be an integer
 [
-    'notIntType' => 'Created must not be of type integer',
+    'notIntType' => 'Created must not be an integer',
 ]
 
 With wrapper name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Wrapped must not be of type integer
-- Wrapped must not be of type integer
+Wrapped must not be an integer
+- Wrapped must not be an integer
 [
-    'notIntType' => 'Wrapped must not be of type integer',
+    'notIntType' => 'Wrapped must not be an integer',
 ]
 
 With not name, inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-Not must not be of type integer
-- Not must not be of type integer
+Not must not be an integer
+- Not must not be an integer
 [
-    'notIntType' => 'Not must not be of type integer',
+    'notIntType' => 'Not must not be an integer',
 ]
 
 With template, default

@@ -20,8 +20,8 @@ use function mb_stripos;
 use function mb_strpos;
 
 #[Template(
-    '{{name}} must contain the value {{containsValue}}',
-    '{{name}} must not contain the value {{containsValue}}',
+    '{{name}} must contain {{containsValue}}',
+    '{{name}} must not contain {{containsValue}}',
 )]
 final class Contains extends Standard
 {

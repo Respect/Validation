@@ -17,8 +17,8 @@ use function mb_strlen;
 use function preg_replace;
 
 #[Template(
-    '{{name}} must be a valid IMEI',
-    '{{name}} must not be a valid IMEI',
+    '{{name}} must be a valid IMEI number',
+    '{{name}} must not be a valid IMEI number',
 )]
 final class Imei extends Simple
 {

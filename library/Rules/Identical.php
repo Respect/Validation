@@ -14,8 +14,8 @@ use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\Standard;
 
 #[Template(
-    '{{name}} must be identical as {{compareTo}}',
-    '{{name}} must not be identical as {{compareTo}}',
+    '{{name}} must be identical to {{compareTo}}',
+    '{{name}} must not be identical to {{compareTo}}',
 )]
 final class Identical extends Standard
 {

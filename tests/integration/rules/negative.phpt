@@ -9,7 +9,7 @@ exceptionFullMessage(static fn() => v::negative()->assert('a'));
 exceptionFullMessage(static fn() => v::not(v::negative())->assert('-144'));
 ?>
 --EXPECT--
-16 must be negative
--10 must not be negative
-- "a" must be negative
-- "-144" must not be negative
+16 must be a negative number
+-10 must not be a negative number
+- "a" must be a negative number
+- "-144" must not be a negative number

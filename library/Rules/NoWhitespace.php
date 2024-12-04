@@ -17,8 +17,8 @@ use function is_scalar;
 use function preg_match;
 
 #[Template(
-    '{{name}} must not contain whitespace',
-    '{{name}} must contain whitespace',
+    '{{name}} must not contain whitespaces',
+    '{{name}} must contain at least one whitespace',
 )]
 final class NoWhitespace extends Simple
 {

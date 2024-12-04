@@ -15,12 +15,12 @@ use Respect\Validation\Rules\Core\FilteredString;
 use function ctype_xdigit;
 
 #[Template(
-    '{{name}} contain only hexadecimal digits',
-    '{{name}} must not contain hexadecimal digits',
+    '{{name}} must only contain hexadecimal digits',
+    '{{name}} must not only contain hexadecimal digits',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} contain only hexadecimal digits and {{additionalChars}}',
+    '{{name}} must contain hexadecimal digits and {{additionalChars}}',
     '{{name}} must not contain hexadecimal digits or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]

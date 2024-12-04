@@ -21,6 +21,6 @@ exceptionFullMessage(static fn() => Validator::stringType()->lengthBetween(2, 15
 ?>
 --EXPECT--
 - Todas as regras requeridas devem passar para 0
-  - 0 deve ser do tipo string
+  - 0 must be a string
   - O comprimento de 0 deve possuir de 2 a 15 caracteres
   - 0 deve ser um número de telefone válido para o país Estados Unidos

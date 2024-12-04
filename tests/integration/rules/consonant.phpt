@@ -13,11 +13,11 @@ exceptionFullMessage(static fn() => v::not(v::consonant())->assert('bcd'));
 exceptionFullMessage(static fn() => v::not(v::consonant('a'))->assert('abcd'));
 ?>
 --EXPECT--
-"aeiou" must contain only consonants
-"daeiou" must contain only consonants and "d"
+"aeiou" must only contain consonants
+"daeiou" must only contain consonants and "d"
 "bcd" must not contain consonants
 "abcd" must not contain consonants or "a"
-- "aeiou" must contain only consonants
-- "daeiou" must contain only consonants and "d"
+- "aeiou" must only contain consonants
+- "daeiou" must only contain consonants and "d"
 - "bcd" must not contain consonants
 - "abcd" must not contain consonants or "a"

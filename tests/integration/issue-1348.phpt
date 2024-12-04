@@ -33,12 +33,12 @@ exceptionMessages(static function () use ($cars): void {
             '__root__' => 'Only one of these rules must pass for `["manufacturer": "Ford", "model": "not real"]`',
             'allOf.1' => [
                 '__root__' => 'All of the required rules must pass for `["manufacturer": "Ford", "model": "not real"]`',
-                'manufacturer' => 'manufacturer must equal "Honda"',
+                'manufacturer' => 'manufacturer must be equal to "Honda"',
                 'model' => 'model must be in `["Accord", "Fit"]`',
             ],
             'allOf.2' => [
                 '__root__' => 'All of the required rules must pass for `["manufacturer": "Ford", "model": "not real"]`',
-                'manufacturer' => 'manufacturer must equal "Toyota"',
+                'manufacturer' => 'manufacturer must be equal to "Toyota"',
                 'model' => 'model must be in `["Rav4", "Camry"]`',
             ],
             'allOf.3' => 'model must be in `["F150", "Bronco"]`',
@@ -48,12 +48,12 @@ exceptionMessages(static function () use ($cars): void {
             'allOf.1' => 'model must be in `["Accord", "Fit"]`',
             'allOf.2' => [
                 '__root__' => 'All of the required rules must pass for `["manufacturer": "Honda", "model": "not valid"]`',
-                'manufacturer' => 'manufacturer must equal "Toyota"',
+                'manufacturer' => 'manufacturer must be equal to "Toyota"',
                 'model' => 'model must be in `["Rav4", "Camry"]`',
             ],
             'allOf.3' => [
                 '__root__' => 'All of the required rules must pass for `["manufacturer": "Honda", "model": "not valid"]`',
-                'manufacturer' => 'manufacturer must equal "Ford"',
+                'manufacturer' => 'manufacturer must be equal to "Ford"',
                 'model' => 'model must be in `["F150", "Bronco"]`',
             ],
         ],

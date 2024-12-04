@@ -9,7 +9,7 @@ exceptionFullMessage(static fn() => v::regex('/^w+$/')->assert(new stdClass()));
 exceptionFullMessage(static fn() => v::not(v::regex('/^[a-z]+$/i'))->assert('wPoiur'));
 ?>
 --EXPECT--
-"w poiur" must validate against `/^w+$/`
-"wpoiur" must not validate against `/^[a-z]+$/`
-- `stdClass {}` must validate against `/^w+$/`
-- "wPoiur" must not validate against `/^[a-z]+$/i`
+"w poiur" must match the pattern `/^w+$/`
+"wpoiur" must not match the pattern `/^[a-z]+$/`
+- `stdClass {}` must match the pattern `/^w+$/`
+- "wPoiur" must not match the pattern `/^[a-z]+$/i`

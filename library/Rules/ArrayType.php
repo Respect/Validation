@@ -15,8 +15,8 @@ use Respect\Validation\Rules\Core\Simple;
 use function is_array;
 
 #[Template(
-    '{{name}} must be of type array',
-    '{{name}} must not be of type array',
+    '{{name}} must be an array',
+    '{{name}} must not be an array',
 )]
 final class ArrayType extends Simple
 {

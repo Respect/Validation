@@ -17,8 +17,8 @@ use function is_scalar;
 use function method_exists;
 
 #[Template(
-    '{{name}} must be a string',
-    '{{name}} must not be string',
+    '{{name}} must be a string value',
+    '{{name}} must not be a string value',
 )]
 final class StringVal extends Simple
 {

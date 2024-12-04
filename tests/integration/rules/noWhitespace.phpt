@@ -9,7 +9,7 @@ exceptionFullMessage(static fn() => v::noWhitespace()->assert('w poiur'));
 exceptionFullMessage(static fn() => v::not(v::noWhitespace())->assert('wpoiur'));
 ?>
 --EXPECT--
-"w poiur" must not contain whitespace
-"wpoiur" must contain whitespace
-- "w poiur" must not contain whitespace
-- "wpoiur" must contain whitespace
+"w poiur" must not contain whitespaces
+"wpoiur" must contain at least one whitespace
+- "w poiur" must not contain whitespaces
+- "wpoiur" must contain at least one whitespace

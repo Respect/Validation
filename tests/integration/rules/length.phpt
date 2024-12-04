@@ -14,26 +14,26 @@ run([
 --EXPECT--
 Default
 ⎺⎺⎺⎺⎺⎺⎺
-The length of "tulip" must equal 3
-- The length of "tulip" must equal 3
+The length of "tulip" must be equal to 3
+- The length of "tulip" must be equal to 3
 [
-    'lengthEquals' => 'The length of "tulip" must equal 3',
+    'lengthEquals' => 'The length of "tulip" must be equal to 3',
 ]
 
 Inverted wrapped
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-The length of "rose" must not equal 4
-- The length of "rose" must not equal 4
+The length of "rose" must not be equal to 4
+- The length of "rose" must not be equal to 4
 [
-    'lengthNotEquals' => 'The length of "rose" must not equal 4',
+    'lengthNotEquals' => 'The length of "rose" must not be equal to 4',
 ]
 
 Inverted wrapper
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-The length of "fern" must not equal 4
-- The length of "fern" must not equal 4
+The length of "fern" must not be equal to 4
+- The length of "fern" must not be equal to 4
 [
-    'notLengthEquals' => 'The length of "fern" must not equal 4',
+    'notLengthEquals' => 'The length of "fern" must not be equal to 4',
 ]
 
 With template
@@ -46,8 +46,8 @@ This is a template
 
 With wrapper name
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-The length of Cactus must equal 3
-- The length of Cactus must equal 3
+The length of Cactus must be equal to 3
+- The length of Cactus must be equal to 3
 [
-    'lengthEquals' => 'The length of Cactus must equal 3',
+    'lengthEquals' => 'The length of Cactus must be equal to 3',
 ]

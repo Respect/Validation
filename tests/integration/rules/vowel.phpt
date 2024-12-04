@@ -13,11 +13,11 @@ exceptionFullMessage(static fn() => v::not(v::vowel())->assert('i'));
 exceptionFullMessage(static fn() => v::not(v::vowel('k'))->assert('o'));
 ?>
 --EXPECT--
-"b" must contain only vowels
-"d" must contain only vowels and "c"
-"a" must not contain vowels
-"e" must not contain vowels or "f"
-- "g" must contain only vowels
-- "j" must contain only vowels and "h"
-- "i" must not contain vowels
-- "o" must not contain vowels or "k"
+"b" must consist of vowels only
+"d" must consist of vowels and "c"
+"a" must not consist of vowels only
+"e" must not consist of vowels or "f"
+- "g" must consist of vowels only
+- "j" must consist of vowels and "h"
+- "i" must not consist of vowels only
+- "o" must not consist of vowels or "k"

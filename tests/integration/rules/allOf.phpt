@@ -22,34 +22,34 @@ run([
 --EXPECT--
 Two rules
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺
-"2" must be of type integer
+"2" must be an integer
 - All of the required rules must pass for "2"
-  - "2" must be of type integer
-  - "2" must be negative
+  - "2" must be an integer
+  - "2" must be a negative number
 [
     '__root__' => 'All of the required rules must pass for "2"',
-    'intType' => '"2" must be of type integer',
-    'negative' => '"2" must be negative',
+    'intType' => '"2" must be an integer',
+    'negative' => '"2" must be a negative number',
 ]
 
 Wrapped by "not"
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-3 must not be of type integer
+3 must not be an integer
 - These rules must not pass for 3
-  - 3 must not be of type integer
-  - 3 must not be positive
+  - 3 must not be an integer
+  - 3 must not be a positive number
 [
     '__root__' => 'These rules must not pass for 3',
-    'intType' => '3 must not be of type integer',
-    'positive' => '3 must not be positive',
+    'intType' => '3 must not be an integer',
+    'positive' => '3 must not be a positive number',
 ]
 
 Wrapping "not"
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-4 must not be of type integer
-- 4 must not be of type integer
+4 must not be an integer
+- 4 must not be an integer
 [
-    'notIntType' => '4 must not be of type integer',
+    'notIntType' => '4 must not be an integer',
 ]
 
 With a single template

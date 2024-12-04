@@ -13,18 +13,18 @@ run([
 --EXPECT--
 Default
 ⎺⎺⎺⎺⎺⎺⎺
-As the minimum from `[2, 3]`, 2 must equal 1
-- As the minimum from `[2, 3]`, 2 must equal 1
+As the minimum from `[2, 3]`, 2 must be equal to 1
+- As the minimum from `[2, 3]`, 2 must be equal to 1
 [
-    'minEquals' => 'As the minimum from `[2, 3]`, 2 must equal 1',
+    'minEquals' => 'As the minimum from `[2, 3]`, 2 must be equal to 1',
 ]
 
 Inverted
 ⎺⎺⎺⎺⎺⎺⎺⎺
-As the minimum from `[1, 2, 3]`, 1 must not equal 1
-- As the minimum from `[1, 2, 3]`, 1 must not equal 1
+As the minimum from `[1, 2, 3]`, 1 must not be equal to 1
+- As the minimum from `[1, 2, 3]`, 1 must not be equal to 1
 [
-    'notMinEquals' => 'As the minimum from `[1, 2, 3]`, 1 must not equal 1',
+    'notMinEquals' => 'As the minimum from `[1, 2, 3]`, 1 must not be equal to 1',
 ]
 
 With template
@@ -37,8 +37,8 @@ That did not go as planned
 
 With name
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺
-The minimum from Options must equal 1
-- The minimum from Options must equal 1
+The minimum from Options must be equal to 1
+- The minimum from Options must be equal to 1
 [
-    'minEquals' => 'The minimum from Options must equal 1',
+    'minEquals' => 'The minimum from Options must be equal to 1',
 ]

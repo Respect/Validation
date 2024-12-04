@@ -54,13 +54,13 @@ exceptionMessages(
         'host' => '`host` should be a MySQL host',
         'user' => 'Value should be a MySQL username',
         'password' => 'password must be present',
-        'schema' => 'schema must be of type string',
+        'schema' => 'schema must be a string',
     ],
     'postgresql' => [
         '__root__' => 'All of the required rules must pass for postgresql',
         'host' => 'host must be present',
-        'user' => 'user must be of type string',
-        'password' => 'password must be of type string',
+        'user' => 'user must be a string',
+        'password' => 'password must be a string',
         'schema' => 'You must provide a valid PostgreSQL schema',
     ],
 ]

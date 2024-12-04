@@ -15,12 +15,12 @@ use Respect\Validation\Rules\Core\FilteredString;
 use function preg_match;
 
 #[Template(
-    '{{name}} must contain only consonants',
+    '{{name}} must only contain consonants',
     '{{name}} must not contain consonants',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must contain only consonants and {{additionalChars}}',
+    '{{name}} must only contain consonants and {{additionalChars}}',
     '{{name}} must not contain consonants or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]

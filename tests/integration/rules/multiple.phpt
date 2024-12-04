@@ -9,7 +9,7 @@ exceptionFullMessage(static fn() => v::multiple(2)->assert(5));
 exceptionFullMessage(static fn() => v::not(v::multiple(5))->assert(25));
 ?>
 --EXPECT--
-22 must be multiple of 3
-9 must not be multiple of 3
-- 5 must be multiple of 2
-- 25 must not be multiple of 5
+22 must be a multiple of 3
+9 must not be a multiple of 3
+- 5 must be a multiple of 2
+- 25 must not be a multiple of 5

@@ -15,8 +15,8 @@ use Respect\Validation\Rules\Core\Simple;
 use function is_numeric;
 
 #[Template(
-    '{{name}} must be negative',
-    '{{name}} must not be negative',
+    '{{name}} must be a negative number',
+    '{{name}} must not be a negative number',
 )]
 final class Negative extends Simple
 {

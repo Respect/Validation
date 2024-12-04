@@ -16,7 +16,7 @@ use Respect\Validation\Rules\Core\Envelope;
 
 #[Template(
     '{{name}} must be greater than {{minValue}} and less than {{maxValue}}',
-    '{{name}} must not be greater than {{minValue}} and less than {{maxValue}}',
+    '{{name}} must not be greater than {{minValue}} or less than {{maxValue}}',
 )]
 final class BetweenExclusive extends Envelope
 {

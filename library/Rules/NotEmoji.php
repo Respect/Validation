@@ -17,8 +17,8 @@ use function is_string;
 use function preg_match;
 
 #[Template(
-    '{{name}} must not contain an Emoji',
-    '{{name}} must contain an Emoji',
+    '{{name}} must not contain an emoji',
+    '{{name}} must contain an emoji',
 )]
 final class NotEmoji extends Simple
 {
