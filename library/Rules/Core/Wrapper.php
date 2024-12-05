@@ -11,14 +11,14 @@ namespace Respect\Validation\Rules\Core;
 
 use Respect\Validation\Helpers\DeprecatedValidatableMethods;
 use Respect\Validation\Result;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
-abstract class Wrapper implements Validatable
+abstract class Wrapper implements Rule
 {
     use DeprecatedValidatableMethods;
 
     public function __construct(
-        protected readonly Validatable $rule
+        protected readonly Rule $rule
     ) {
     }
 
@@ -51,7 +51,7 @@ abstract class Wrapper implements Validatable
         return $this;
     }
 
-    public function getRule(): Validatable
+    public function getRule(): Rule
     {
         return $this->rule;
     }

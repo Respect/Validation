@@ -11,8 +11,8 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
+use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Standard;
-use Respect\Validation\Validatable;
 
 use function array_pop;
 use function count;
@@ -25,11 +25,11 @@ use function mb_substr_count;
 )]
 final class Domain extends Standard
 {
-    private readonly Validatable $genericRule;
+    private readonly Rule $genericRule;
 
-    private readonly Validatable $tldRule;
+    private readonly Rule $tldRule;
 
-    private readonly Validatable $partsRule;
+    private readonly Rule $partsRule;
 
     public function __construct(bool $tldCheck = true)
     {
@@ -66,7 +66,7 @@ final class Domain extends Standard
         );
     }
 
-    private function createTldRule(bool $realTldCheck): Validatable
+    private function createTldRule(bool $realTldCheck): Rule
     {
         if ($realTldCheck) {
             return new Tld();
@@ -75,7 +75,7 @@ final class Domain extends Standard
         return new Consecutive(new Not(new StartsWith('-')), new Length(new GreaterThanOrEqual(2)));
     }
 
-    private function createPartsRule(): Validatable
+    private function createPartsRule(): Rule
     {
         return new Each(
             new Consecutive(

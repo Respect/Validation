@@ -33,9 +33,9 @@ final class Result
     public function __construct(
         public readonly bool $isValid,
         public readonly mixed $input,
-        public readonly Validatable $rule,
+        public readonly Rule $rule,
         public readonly array $parameters = [],
-        string $template = Validatable::TEMPLATE_STANDARD,
+        string $template = Rule::TEMPLATE_STANDARD,
         public readonly Mode $mode = Mode::DEFAULT,
         ?string $name = null,
         ?string $id = null,
@@ -51,9 +51,9 @@ final class Result
     /** @param array<string, mixed> $parameters */
     public static function failed(
         mixed $input,
-        Validatable $rule,
+        Rule $rule,
         array $parameters = [],
-        string $template = Validatable::TEMPLATE_STANDARD
+        string $template = Rule::TEMPLATE_STANDARD
     ): self {
         return new self(false, $input, $rule, $parameters, $template);
     }
@@ -61,9 +61,9 @@ final class Result
     /** @param array<string, mixed> $parameters */
     public static function passed(
         mixed $input,
-        Validatable $rule,
+        Rule $rule,
         array $parameters = [],
-        string $template = Validatable::TEMPLATE_STANDARD
+        string $template = Rule::TEMPLATE_STANDARD
     ): self {
         return new self(true, $input, $rule, $parameters, $template);
     }

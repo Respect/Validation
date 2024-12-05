@@ -64,12 +64,12 @@ final class Factory
     /**
      * @param mixed[] $arguments
      */
-    public function rule(string $ruleName, array $arguments = []): Validatable
+    public function rule(string $ruleName, array $arguments = []): Rule
     {
         return $this->createRuleSpec($this->transformer->transform(new RuleSpec($ruleName, $arguments)));
     }
 
-    private function createRuleSpec(RuleSpec $ruleSpec): Validatable
+    private function createRuleSpec(RuleSpec $ruleSpec): Rule
     {
         $rule = $this->createRule($ruleSpec->name, $ruleSpec->arguments);
         if ($ruleSpec->wrapper !== null) {
@@ -82,16 +82,16 @@ final class Factory
     /**
      * @param mixed[] $arguments
      */
-    private function createRule(string $ruleName, array $arguments = []): Validatable
+    private function createRule(string $ruleName, array $arguments = []): Rule
     {
         foreach ($this->rulesNamespaces as $namespace) {
             try {
-                /** @var class-string<Validatable> $name */
+                /** @var class-string<Rule> $name */
                 $name = $namespace . '\\' . ucfirst($ruleName);
                 $reflection = new ReflectionClass($name);
-                if (!$reflection->isSubclassOf(Validatable::class)) {
+                if (!$reflection->isSubclassOf(Rule::class)) {
                     throw new InvalidClassException(
-                        sprintf('"%s" must be an instance of "%s"', $name, Validatable::class)
+                        sprintf('"%s" must be an instance of "%s"', $name, Rule::class)
                     );
                 }
 

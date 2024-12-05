@@ -1,6 +1,6 @@
 # KeyOptional
 
-- `KeyOptional(int|string $key, Validatable $rule)`
+- `KeyOptional(int|string $key, Rule $rule)`
 
 Validates the value of an array against a given rule when the key exists.
 

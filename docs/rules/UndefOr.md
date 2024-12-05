@@ -1,6 +1,6 @@
 # UndefOr
 
-- `UndefOr(Validatable $rule)`
+- `UndefOr(Rule $rule)`
 
 Validates the input using a defined rule when the input is not `null` or an empty string (`''`).
 

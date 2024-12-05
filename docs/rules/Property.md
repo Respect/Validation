@@ -1,6 +1,6 @@
 # Property
 
-- `Property(string $propertyName, Validatable $rule)`
+- `Property(string $propertyName, Rule $rule)`
 
 Validates an object property against a given rule.
 

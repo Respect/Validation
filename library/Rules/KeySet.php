@@ -13,9 +13,9 @@ use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
+use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\KeyRelated;
 use Respect\Validation\Rules\Core\Standard;
-use Respect\Validation\Validatable;
 use Respect\Validation\Validator;
 
 use function array_diff;
@@ -64,7 +64,7 @@ final class KeySet extends Standard
     /** @var array<int|string> */
     private readonly array $mandatoryKeys;
 
-    public function __construct(Validatable $rule, Validatable ...$rules)
+    public function __construct(Rule $rule, Rule ...$rules)
     {
         $this->rules = $this->extractKeyRelatedRules(array_merge([$rule], $rules));
         $this->allKeys = array_map(static fn(KeyRelated $rule) => $rule->getKey(), $this->rules);
@@ -83,7 +83,7 @@ final class KeySet extends Standard
 
         $keys = array_keys($input);
         $children = array_map(
-            static fn (Validatable $rule) => $rule->evaluate($input),
+            static fn (Rule $rule) => $rule->evaluate($input),
             array_merge($this->rules, array_map(
                 static fn(string|int $key) => new Not(new KeyExists($key)),
                 array_slice(array_diff($keys, $this->allKeys), 0, self::MAX_DIFF_KEYS)
@@ -97,7 +97,7 @@ final class KeySet extends Standard
     }
 
     /**
-     * @param array<Validatable> $rules
+     * @param array<Rule> $rules
      *
      * @return array<KeyRelated>
      */

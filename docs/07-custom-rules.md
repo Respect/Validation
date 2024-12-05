@@ -3,7 +3,7 @@
 You can also create and use your own rules. To do this, you will need to create
 a rule and an exception to go with the rule.
 
-To create a rule, you need to create a class that implements the `Validatable` interface
+To create a rule, you need to create a class that implements the `Rule` interface
 and is within the Rules `namespace`. It is  convenient to just extend the `Simple` or
 `Standard` class. When the rule is called the logic inside the validate method will be
 executed. Here's how the class should look:

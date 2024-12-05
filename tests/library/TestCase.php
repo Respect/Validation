@@ -10,10 +10,10 @@ declare(strict_types=1);
 namespace Respect\Validation\Test;
 
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
+use Respect\Validation\Rule;
 use Respect\Validation\Test\Stubs\WithProperties;
 use Respect\Validation\Test\Stubs\WithStaticProperties;
 use Respect\Validation\Test\Stubs\WithUninitialized;
-use Respect\Validation\Validatable;
 use stdClass;
 
 use function implode;
@@ -36,7 +36,7 @@ abstract class TestCase extends PHPUnitTestCase
         return implode('/', $parts);
     }
 
-    public static function assertValidInput(Validatable $rule, mixed $input): void
+    public static function assertValidInput(Rule $rule, mixed $input): void
     {
         $result = $rule->evaluate($input);
 
@@ -51,7 +51,7 @@ abstract class TestCase extends PHPUnitTestCase
         );
     }
 
-    public static function assertInvalidInput(Validatable $rule, mixed $input): void
+    public static function assertInvalidInput(Rule $rule, mixed $input): void
     {
         $result = $rule->evaluate($input);
 

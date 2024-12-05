@@ -11,8 +11,8 @@ namespace Respect\Validation\Test\Builders;
 
 use Respect\Validation\Mode;
 use Respect\Validation\Result;
+use Respect\Validation\Rule;
 use Respect\Validation\Test\Rules\Stub;
-use Respect\Validation\Validatable;
 
 final class ResultBuilder
 {
@@ -22,7 +22,7 @@ final class ResultBuilder
 
     private Mode $mode = Mode::DEFAULT;
 
-    private string $template = Validatable::TEMPLATE_STANDARD;
+    private string $template = Rule::TEMPLATE_STANDARD;
 
     /** @var array<string, mixed> */
     private array $parameters = [];
@@ -31,7 +31,7 @@ final class ResultBuilder
 
     private ?string $id = null;
 
-    private Validatable $rule;
+    private Rule $rule;
 
     private ?Result $nextSibling = null;
 

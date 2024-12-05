@@ -1,6 +1,6 @@
 # Max
 
-- `Max(Validatable $rule)`
+- `Max(Rule $rule)`
 
 Validates the maximum value of the input against a given rule.
 

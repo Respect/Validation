@@ -10,15 +10,15 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
 interface StaticProperty
 {
     public static function propertyAllOf(
         string $propertyName,
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
+        Rule $rule1,
+        Rule $rule2,
+        Rule ...$rules,
     ): ChainedValidator;
 
     public static function propertyAlnum(string $propertyName, string ...$additionalChars): ChainedValidator;
@@ -31,9 +31,9 @@ interface StaticProperty
 
     public static function propertyAnyOf(
         string $propertyName,
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
+        Rule $rule1,
+        Rule $rule2,
+        Rule ...$rules,
     ): ChainedValidator;
 
     public static function propertyArrayType(string $propertyName): ChainedValidator;
@@ -62,7 +62,7 @@ interface StaticProperty
 
     public static function propertyBsn(string $propertyName): ChainedValidator;
 
-    public static function propertyCall(string $propertyName, callable $callable, Validatable $rule): ChainedValidator;
+    public static function propertyCall(string $propertyName, callable $callable, Rule $rule): ChainedValidator;
 
     public static function propertyCallableType(string $propertyName): ChainedValidator;
 
@@ -84,9 +84,9 @@ interface StaticProperty
 
     public static function propertyConsecutive(
         string $propertyName,
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
+        Rule $rule1,
+        Rule $rule2,
+        Rule ...$rules,
     ): ChainedValidator;
 
     public static function propertyConsonant(string $propertyName, string ...$additionalChars): ChainedValidator;
@@ -134,7 +134,7 @@ interface StaticProperty
     public static function propertyDateTimeDiff(
         string $propertyName,
         string $type,
-        Validatable $rule,
+        Rule $rule,
         ?string $format = null,
         ?DateTimeImmutable $now = null,
     ): ChainedValidator;
@@ -147,7 +147,7 @@ interface StaticProperty
 
     public static function propertyDomain(string $propertyName, bool $tldCheck = true): ChainedValidator;
 
-    public static function propertyEach(string $propertyName, Validatable $rule): ChainedValidator;
+    public static function propertyEach(string $propertyName, Rule $rule): ChainedValidator;
 
     public static function propertyEmail(string $propertyName): ChainedValidator;
 
@@ -242,7 +242,7 @@ interface StaticProperty
     public static function propertyLanguageCode(string $propertyName, string $set = 'alpha-2'): ChainedValidator;
 
     /**
-     * @param callable(mixed): Validatable $ruleCreator
+     * @param callable(mixed): Rule $ruleCreator
      */
     public static function propertyLazy(string $propertyName, callable $ruleCreator): ChainedValidator;
 
@@ -250,7 +250,7 @@ interface StaticProperty
 
     public static function propertyLeapYear(string $propertyName): ChainedValidator;
 
-    public static function propertyLength(string $propertyName, Validatable $rule): ChainedValidator;
+    public static function propertyLength(string $propertyName, Rule $rule): ChainedValidator;
 
     public static function propertyLessThan(string $propertyName, mixed $compareTo): ChainedValidator;
 
@@ -262,11 +262,11 @@ interface StaticProperty
 
     public static function propertyMacAddress(string $propertyName): ChainedValidator;
 
-    public static function propertyMax(string $propertyName, Validatable $rule): ChainedValidator;
+    public static function propertyMax(string $propertyName, Rule $rule): ChainedValidator;
 
     public static function propertyMimetype(string $propertyName, string $mimetype): ChainedValidator;
 
-    public static function propertyMin(string $propertyName, Validatable $rule): ChainedValidator;
+    public static function propertyMin(string $propertyName, Rule $rule): ChainedValidator;
 
     public static function propertyMultiple(string $propertyName, int $multipleOf): ChainedValidator;
 
@@ -284,12 +284,12 @@ interface StaticProperty
 
     public static function propertyNoneOf(
         string $propertyName,
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
+        Rule $rule1,
+        Rule $rule2,
+        Rule ...$rules,
     ): ChainedValidator;
 
-    public static function propertyNot(string $propertyName, Validatable $rule): ChainedValidator;
+    public static function propertyNot(string $propertyName, Rule $rule): ChainedValidator;
 
     public static function propertyNotBlank(string $propertyName): ChainedValidator;
 
@@ -313,9 +313,9 @@ interface StaticProperty
 
     public static function propertyOneOf(
         string $propertyName,
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
+        Rule $rule1,
+        Rule $rule2,
+        Rule ...$rules,
     ): ChainedValidator;
 
     public static function propertyPerfectSquare(string $propertyName): ChainedValidator;
@@ -413,9 +413,9 @@ interface StaticProperty
 
     public static function propertyWhen(
         string $propertyName,
-        Validatable $when,
-        Validatable $then,
-        ?Validatable $else = null,
+        Rule $when,
+        Rule $then,
+        ?Rule $else = null,
     ): ChainedValidator;
 
     public static function propertyWritable(string $propertyName): ChainedValidator;

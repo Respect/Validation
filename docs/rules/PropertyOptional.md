@@ -1,6 +1,6 @@
 # PropertyOptional
 
-- `PropertyOptional(string $propertyName, Validatable $rule)`
+- `PropertyOptional(string $propertyName, Rule $rule)`
 
 Validates an object property against a given rule only if the property exists.
 

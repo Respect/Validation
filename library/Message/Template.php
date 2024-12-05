@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Message;
 
 use Attribute;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
 #[Attribute(Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
 final class Template
@@ -18,7 +18,7 @@ final class Template
     public function __construct(
         public readonly string $default,
         public readonly string $inverted,
-        public readonly string $id = Validatable::TEMPLATE_STANDARD,
+        public readonly string $id = Rule::TEMPLATE_STANDARD,
     ) {
     }
 }

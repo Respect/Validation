@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Transformers;
 
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
 use function in_array;
 use function sprintf;
@@ -30,7 +30,7 @@ final class DeprecatedMinAndMax implements Transformer
             return $this->next->transform($ruleSpec);
         }
 
-        if (isset($ruleSpec->arguments[0]) && $ruleSpec->arguments[0] instanceof Validatable) {
+        if (isset($ruleSpec->arguments[0]) && $ruleSpec->arguments[0] instanceof Rule) {
             return $this->next->transform($ruleSpec);
         }
 

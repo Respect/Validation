@@ -1,6 +1,6 @@
 # Each
 
-- `Each(Validatable $rule)`
+- `Each(Rule $rule)`
 
 Validates whether each value in the input is valid according to another rule.
 

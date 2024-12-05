@@ -10,8 +10,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Message\StandardFormatter;
 
 use Respect\Validation\Result;
+use Respect\Validation\Rule;
 use Respect\Validation\Test\Builders\ResultBuilder;
-use Respect\Validation\Validatable;
 
 trait MainProvider
 {
@@ -23,7 +23,7 @@ trait MainProvider
         return [
             'without children, without templates' => [
                 (new ResultBuilder())->build(),
-                Validatable::TEMPLATE_STANDARD,
+                Rule::TEMPLATE_STANDARD,
             ],
             'without children, with templates' => [
                 (new ResultBuilder())->build(),

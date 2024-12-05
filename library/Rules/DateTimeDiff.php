@@ -16,8 +16,8 @@ use Respect\Validation\Helpers\CanExtractRules;
 use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
+use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Standard;
-use Respect\Validation\Validatable;
 
 use function in_array;
 
@@ -30,12 +30,12 @@ final class DateTimeDiff extends Standard
     use CanValidateDateTime;
     use CanExtractRules;
 
-    private readonly Validatable $rule;
+    private readonly Rule $rule;
 
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public function __construct(
         private readonly string $type,
-        Validatable $rule,
+        Rule $rule,
         private readonly ?string $format = null,
         private readonly ?DateTimeImmutable $now = null,
     ) {

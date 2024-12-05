@@ -10,15 +10,11 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
 interface StaticNullOr
 {
-    public static function nullOrAllOf(
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public static function nullOrAllOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public static function nullOrAlnum(string ...$additionalChars): ChainedValidator;
 
@@ -28,11 +24,7 @@ interface StaticNullOr
 
     public static function nullOrAlwaysValid(): ChainedValidator;
 
-    public static function nullOrAnyOf(
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public static function nullOrAnyOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public static function nullOrArrayType(): ChainedValidator;
 
@@ -55,7 +47,7 @@ interface StaticNullOr
 
     public static function nullOrBsn(): ChainedValidator;
 
-    public static function nullOrCall(callable $callable, Validatable $rule): ChainedValidator;
+    public static function nullOrCall(callable $callable, Rule $rule): ChainedValidator;
 
     public static function nullOrCallableType(): ChainedValidator;
 
@@ -67,11 +59,7 @@ interface StaticNullOr
 
     public static function nullOrCnpj(): ChainedValidator;
 
-    public static function nullOrConsecutive(
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public static function nullOrConsecutive(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public static function nullOrConsonant(string ...$additionalChars): ChainedValidator;
 
@@ -109,7 +97,7 @@ interface StaticNullOr
      */
     public static function nullOrDateTimeDiff(
         string $type,
-        Validatable $rule,
+        Rule $rule,
         ?string $format = null,
         ?DateTimeImmutable $now = null,
     ): ChainedValidator;
@@ -122,7 +110,7 @@ interface StaticNullOr
 
     public static function nullOrDomain(bool $tldCheck = true): ChainedValidator;
 
-    public static function nullOrEach(Validatable $rule): ChainedValidator;
+    public static function nullOrEach(Rule $rule): ChainedValidator;
 
     public static function nullOrEmail(): ChainedValidator;
 
@@ -197,13 +185,13 @@ interface StaticNullOr
 
     public static function nullOrJson(): ChainedValidator;
 
-    public static function nullOrKey(string|int $key, Validatable $rule): ChainedValidator;
+    public static function nullOrKey(string|int $key, Rule $rule): ChainedValidator;
 
     public static function nullOrKeyExists(string|int $key): ChainedValidator;
 
-    public static function nullOrKeyOptional(string|int $key, Validatable $rule): ChainedValidator;
+    public static function nullOrKeyOptional(string|int $key, Rule $rule): ChainedValidator;
 
-    public static function nullOrKeySet(Validatable $rule, Validatable ...$rules): ChainedValidator;
+    public static function nullOrKeySet(Rule $rule, Rule ...$rules): ChainedValidator;
 
     /**
      * @param "alpha-2"|"alpha-3" $set
@@ -211,7 +199,7 @@ interface StaticNullOr
     public static function nullOrLanguageCode(string $set = 'alpha-2'): ChainedValidator;
 
     /**
-     * @param callable(mixed): Validatable $ruleCreator
+     * @param callable(mixed): Rule $ruleCreator
      */
     public static function nullOrLazy(callable $ruleCreator): ChainedValidator;
 
@@ -219,7 +207,7 @@ interface StaticNullOr
 
     public static function nullOrLeapYear(): ChainedValidator;
 
-    public static function nullOrLength(Validatable $rule): ChainedValidator;
+    public static function nullOrLength(Rule $rule): ChainedValidator;
 
     public static function nullOrLessThan(mixed $compareTo): ChainedValidator;
 
@@ -231,11 +219,11 @@ interface StaticNullOr
 
     public static function nullOrMacAddress(): ChainedValidator;
 
-    public static function nullOrMax(Validatable $rule): ChainedValidator;
+    public static function nullOrMax(Rule $rule): ChainedValidator;
 
     public static function nullOrMimetype(string $mimetype): ChainedValidator;
 
-    public static function nullOrMin(Validatable $rule): ChainedValidator;
+    public static function nullOrMin(Rule $rule): ChainedValidator;
 
     public static function nullOrMultiple(int $multipleOf): ChainedValidator;
 
@@ -251,13 +239,9 @@ interface StaticNullOr
 
     public static function nullOrNoWhitespace(): ChainedValidator;
 
-    public static function nullOrNoneOf(
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public static function nullOrNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
-    public static function nullOrNot(Validatable $rule): ChainedValidator;
+    public static function nullOrNot(Rule $rule): ChainedValidator;
 
     public static function nullOrNotBlank(): ChainedValidator;
 
@@ -275,11 +259,7 @@ interface StaticNullOr
 
     public static function nullOrOdd(): ChainedValidator;
 
-    public static function nullOrOneOf(
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public static function nullOrOneOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public static function nullOrPerfectSquare(): ChainedValidator;
 
@@ -303,11 +283,11 @@ interface StaticNullOr
 
     public static function nullOrPrintable(string ...$additionalChars): ChainedValidator;
 
-    public static function nullOrProperty(string $propertyName, Validatable $rule): ChainedValidator;
+    public static function nullOrProperty(string $propertyName, Rule $rule): ChainedValidator;
 
     public static function nullOrPropertyExists(string $propertyName): ChainedValidator;
 
-    public static function nullOrPropertyOptional(string $propertyName, Validatable $rule): ChainedValidator;
+    public static function nullOrPropertyOptional(string $propertyName, Rule $rule): ChainedValidator;
 
     public static function nullOrPublicDomainSuffix(): ChainedValidator;
 
@@ -371,11 +351,7 @@ interface StaticNullOr
 
     public static function nullOrVowel(string ...$additionalChars): ChainedValidator;
 
-    public static function nullOrWhen(
-        Validatable $when,
-        Validatable $then,
-        ?Validatable $else = null,
-    ): ChainedValidator;
+    public static function nullOrWhen(Rule $when, Rule $then, ?Rule $else = null): ChainedValidator;
 
     public static function nullOrWritable(): ChainedValidator;
 

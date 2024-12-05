@@ -41,7 +41,7 @@ create a validator that validates if a string is equal to "Hello World".
 
 ### Creating the rule
 
-The rule itself needs to implement the `Validatable` interface but, it is
+The rule itself needs to implement the `Rule` interface but, it is
 convenient to just extend the `Simple` or `Standard` class.
 Doing that, you'll only need to declare one method: `validate($input)`.
 This method must return `true` or `false`.

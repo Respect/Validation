@@ -11,9 +11,9 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Result;
+use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\KeyRelated;
 use Respect\Validation\Rules\Core\Wrapper;
-use Respect\Validation\Validatable;
 
 final class Key extends Wrapper implements KeyRelated
 {
@@ -21,7 +21,7 @@ final class Key extends Wrapper implements KeyRelated
 
     public function __construct(
         private readonly int|string $key,
-        Validatable $rule,
+        Rule $rule,
     ) {
         $rule->setName($rule->getName() ?? (string) $key);
         parent::__construct($rule);

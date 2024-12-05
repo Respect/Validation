@@ -11,42 +11,42 @@ namespace Respect\Validation\Test;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
 abstract class RuleTestCase extends TestCase
 {
     /**
      * Data providers for valid results.
      *
-     * It returns an array of arrays. Each array contains an instance of Validatable
+     * It returns an array of arrays. Each array contains an instance of Rule
      * as the first element and an input in which the validation SHOULD pass.
      *
-     * @api
-     * @return iterable<string|int, array{Validatable, mixed}>
+     * @return iterable<string|int, array{Rule, mixed}>
+     *@api
      */
     abstract public static function providerForValidInput(): iterable;
 
     /**
      * Data providers for invalid results.
      *
-     * It returns an array of arrays. Each array contains an instance of Validatable
+     * It returns an array of arrays. Each array contains an instance of Rule
      * as the first element and an input in which the validation SHOULD NOT pass.
      *
-     * @api
-     * @return iterable<string|int, array{Validatable, mixed}>
+     * @return iterable<string|int, array{Rule, mixed}>
+     *@api
      */
     abstract public static function providerForInvalidInput(): iterable;
 
     #[Test]
     #[DataProvider('providerForValidInput')]
-    public function shouldValidateValidInput(Validatable $validator, mixed $input): void
+    public function shouldValidateValidInput(Rule $validator, mixed $input): void
     {
         self::assertValidInput($validator, $input);
     }
 
     #[Test]
     #[DataProvider('providerForInvalidInput')]
-    public function shouldValidateInvalidInput(Validatable $validator, mixed $input): void
+    public function shouldValidateInvalidInput(Rule $validator, mixed $input): void
     {
         self::assertInvalidInput($validator, $input);
     }

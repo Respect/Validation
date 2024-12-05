@@ -14,7 +14,7 @@ use Respect\Stringifier\Stringifier;
 use Respect\Stringifier\Stringifiers\CompositeStringifier;
 use Respect\Validation\Mode;
 use Respect\Validation\Result;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
 use function is_bool;
 use function is_scalar;
@@ -60,7 +60,7 @@ final class StandardRenderer implements Renderer
     }
 
     /** @return array<Template> */
-    private function extractTemplates(Validatable $rule): array
+    private function extractTemplates(Rule $rule): array
     {
         if (!isset($this->templates[$rule::class])) {
             $reflection = new ReflectionClass($rule);

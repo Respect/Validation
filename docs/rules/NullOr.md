@@ -1,6 +1,6 @@
 # NullOr
 
-- `NullOr(Validatable $rule)`
+- `NullOr(Rule $rule)`
 
 Validates the input using a defined rule when the input is not `null`.
 

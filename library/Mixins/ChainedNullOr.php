@@ -10,11 +10,11 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
 interface ChainedNullOr
 {
-    public function nullOrAllOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function nullOrAllOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function nullOrAlnum(string ...$additionalChars): ChainedValidator;
 
@@ -24,7 +24,7 @@ interface ChainedNullOr
 
     public function nullOrAlwaysValid(): ChainedValidator;
 
-    public function nullOrAnyOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function nullOrAnyOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function nullOrArrayType(): ChainedValidator;
 
@@ -47,7 +47,7 @@ interface ChainedNullOr
 
     public function nullOrBsn(): ChainedValidator;
 
-    public function nullOrCall(callable $callable, Validatable $rule): ChainedValidator;
+    public function nullOrCall(callable $callable, Rule $rule): ChainedValidator;
 
     public function nullOrCallableType(): ChainedValidator;
 
@@ -59,7 +59,7 @@ interface ChainedNullOr
 
     public function nullOrCnpj(): ChainedValidator;
 
-    public function nullOrConsecutive(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function nullOrConsecutive(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function nullOrConsonant(string ...$additionalChars): ChainedValidator;
 
@@ -97,7 +97,7 @@ interface ChainedNullOr
      */
     public function nullOrDateTimeDiff(
         string $type,
-        Validatable $rule,
+        Rule $rule,
         ?string $format = null,
         ?DateTimeImmutable $now = null,
     ): ChainedValidator;
@@ -110,7 +110,7 @@ interface ChainedNullOr
 
     public function nullOrDomain(bool $tldCheck = true): ChainedValidator;
 
-    public function nullOrEach(Validatable $rule): ChainedValidator;
+    public function nullOrEach(Rule $rule): ChainedValidator;
 
     public function nullOrEmail(): ChainedValidator;
 
@@ -185,13 +185,13 @@ interface ChainedNullOr
 
     public function nullOrJson(): ChainedValidator;
 
-    public function nullOrKey(string|int $key, Validatable $rule): ChainedValidator;
+    public function nullOrKey(string|int $key, Rule $rule): ChainedValidator;
 
     public function nullOrKeyExists(string|int $key): ChainedValidator;
 
-    public function nullOrKeyOptional(string|int $key, Validatable $rule): ChainedValidator;
+    public function nullOrKeyOptional(string|int $key, Rule $rule): ChainedValidator;
 
-    public function nullOrKeySet(Validatable $rule, Validatable ...$rules): ChainedValidator;
+    public function nullOrKeySet(Rule $rule, Rule ...$rules): ChainedValidator;
 
     /**
      * @param "alpha-2"|"alpha-3" $set
@@ -199,7 +199,7 @@ interface ChainedNullOr
     public function nullOrLanguageCode(string $set = 'alpha-2'): ChainedValidator;
 
     /**
-     * @param callable(mixed): Validatable $ruleCreator
+     * @param callable(mixed): Rule $ruleCreator
      */
     public function nullOrLazy(callable $ruleCreator): ChainedValidator;
 
@@ -207,7 +207,7 @@ interface ChainedNullOr
 
     public function nullOrLeapYear(): ChainedValidator;
 
-    public function nullOrLength(Validatable $rule): ChainedValidator;
+    public function nullOrLength(Rule $rule): ChainedValidator;
 
     public function nullOrLessThan(mixed $compareTo): ChainedValidator;
 
@@ -219,11 +219,11 @@ interface ChainedNullOr
 
     public function nullOrMacAddress(): ChainedValidator;
 
-    public function nullOrMax(Validatable $rule): ChainedValidator;
+    public function nullOrMax(Rule $rule): ChainedValidator;
 
     public function nullOrMimetype(string $mimetype): ChainedValidator;
 
-    public function nullOrMin(Validatable $rule): ChainedValidator;
+    public function nullOrMin(Rule $rule): ChainedValidator;
 
     public function nullOrMultiple(int $multipleOf): ChainedValidator;
 
@@ -239,9 +239,9 @@ interface ChainedNullOr
 
     public function nullOrNoWhitespace(): ChainedValidator;
 
-    public function nullOrNoneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function nullOrNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
-    public function nullOrNot(Validatable $rule): ChainedValidator;
+    public function nullOrNot(Rule $rule): ChainedValidator;
 
     public function nullOrNotBlank(): ChainedValidator;
 
@@ -259,7 +259,7 @@ interface ChainedNullOr
 
     public function nullOrOdd(): ChainedValidator;
 
-    public function nullOrOneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function nullOrOneOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function nullOrPerfectSquare(): ChainedValidator;
 
@@ -283,11 +283,11 @@ interface ChainedNullOr
 
     public function nullOrPrintable(string ...$additionalChars): ChainedValidator;
 
-    public function nullOrProperty(string $propertyName, Validatable $rule): ChainedValidator;
+    public function nullOrProperty(string $propertyName, Rule $rule): ChainedValidator;
 
     public function nullOrPropertyExists(string $propertyName): ChainedValidator;
 
-    public function nullOrPropertyOptional(string $propertyName, Validatable $rule): ChainedValidator;
+    public function nullOrPropertyOptional(string $propertyName, Rule $rule): ChainedValidator;
 
     public function nullOrPublicDomainSuffix(): ChainedValidator;
 
@@ -348,7 +348,7 @@ interface ChainedNullOr
 
     public function nullOrVowel(string ...$additionalChars): ChainedValidator;
 
-    public function nullOrWhen(Validatable $when, Validatable $then, ?Validatable $else = null): ChainedValidator;
+    public function nullOrWhen(Rule $when, Rule $then, ?Rule $else = null): ChainedValidator;
 
     public function nullOrWritable(): ChainedValidator;
 

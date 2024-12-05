@@ -1,6 +1,6 @@
 # Consecutive
 
-- `Consecutive(Validatable $rule1, Validatable $rule2, Validatable ...$rule)`
+- `Consecutive(Rule $rule1, Rule $rule2, Rule ...$rule)`
 
 Validates the input against a series of rules until one fails.
 

@@ -25,11 +25,11 @@ use function is_string;
 /**
  * @mixin StaticValidator
  */
-final class Validator implements Validatable
+final class Validator implements Rule
 {
     use CanBindEvaluateRule;
 
-    /** @var array<Validatable> */
+    /** @var array<Rule> */
     private array $rules = [];
 
     /** @var array<string, mixed> */
@@ -46,7 +46,7 @@ final class Validator implements Validatable
     ) {
     }
 
-    public static function create(Validatable ...$rules): self
+    public static function create(Rule ...$rules): self
     {
         $validator = new self(
             ValidatorDefaults::getFactory(),
@@ -104,7 +104,7 @@ final class Validator implements Validatable
         return $this;
     }
 
-    /** @return array<Validatable> */
+    /** @return array<Rule> */
     public function getRules(): array
     {
         return $this->rules;
@@ -150,7 +150,7 @@ final class Validator implements Validatable
         return $this;
     }
 
-    private function rule(): Validatable
+    private function rule(): Rule
     {
         if (count($this->rules) === 1) {
             return current($this->rules);

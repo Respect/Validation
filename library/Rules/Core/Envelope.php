@@ -10,13 +10,13 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules\Core;
 
 use Respect\Validation\Result;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
 abstract class Envelope extends Standard
 {
     /** @param array<string, mixed> $parameters */
     public function __construct(
-        private readonly Validatable $rule,
+        private readonly Rule $rule,
         private readonly array $parameters = []
     ) {
     }

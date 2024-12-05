@@ -1,6 +1,6 @@
 # Length
 
-- `Length(Validatable $rule)`
+- `Length(Rule $rule)`
 
 Validates the length of the given input against a given rule.
 

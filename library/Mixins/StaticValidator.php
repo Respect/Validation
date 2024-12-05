@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
 interface StaticValidator extends
     StaticKey,
@@ -22,7 +22,7 @@ interface StaticValidator extends
     StaticProperty,
     StaticUndefOr
 {
-    public static function allOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public static function allOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public static function alnum(string ...$additionalChars): ChainedValidator;
 
@@ -32,7 +32,7 @@ interface StaticValidator extends
 
     public static function alwaysValid(): ChainedValidator;
 
-    public static function anyOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public static function anyOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public static function arrayType(): ChainedValidator;
 
@@ -55,7 +55,7 @@ interface StaticValidator extends
 
     public static function bsn(): ChainedValidator;
 
-    public static function call(callable $callable, Validatable $rule): ChainedValidator;
+    public static function call(callable $callable, Rule $rule): ChainedValidator;
 
     public static function callableType(): ChainedValidator;
 
@@ -67,11 +67,7 @@ interface StaticValidator extends
 
     public static function cnpj(): ChainedValidator;
 
-    public static function consecutive(
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public static function consecutive(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public static function consonant(string ...$additionalChars): ChainedValidator;
 
@@ -109,7 +105,7 @@ interface StaticValidator extends
      */
     public static function dateTimeDiff(
         string $type,
-        Validatable $rule,
+        Rule $rule,
         ?string $format = null,
         ?DateTimeImmutable $now = null,
     ): ChainedValidator;
@@ -122,7 +118,7 @@ interface StaticValidator extends
 
     public static function domain(bool $tldCheck = true): ChainedValidator;
 
-    public static function each(Validatable $rule): ChainedValidator;
+    public static function each(Rule $rule): ChainedValidator;
 
     public static function email(): ChainedValidator;
 
@@ -197,13 +193,13 @@ interface StaticValidator extends
 
     public static function json(): ChainedValidator;
 
-    public static function key(string|int $key, Validatable $rule): ChainedValidator;
+    public static function key(string|int $key, Rule $rule): ChainedValidator;
 
     public static function keyExists(string|int $key): ChainedValidator;
 
-    public static function keyOptional(string|int $key, Validatable $rule): ChainedValidator;
+    public static function keyOptional(string|int $key, Rule $rule): ChainedValidator;
 
-    public static function keySet(Validatable $rule, Validatable ...$rules): ChainedValidator;
+    public static function keySet(Rule $rule, Rule ...$rules): ChainedValidator;
 
     /**
      * @param "alpha-2"|"alpha-3" $set
@@ -211,7 +207,7 @@ interface StaticValidator extends
     public static function languageCode(string $set = 'alpha-2'): ChainedValidator;
 
     /**
-     * @param callable(mixed): Validatable $ruleCreator
+     * @param callable(mixed): Rule $ruleCreator
      */
     public static function lazy(callable $ruleCreator): ChainedValidator;
 
@@ -219,7 +215,7 @@ interface StaticValidator extends
 
     public static function leapYear(): ChainedValidator;
 
-    public static function length(Validatable $rule): ChainedValidator;
+    public static function length(Rule $rule): ChainedValidator;
 
     public static function lessThan(mixed $compareTo): ChainedValidator;
 
@@ -231,11 +227,11 @@ interface StaticValidator extends
 
     public static function macAddress(): ChainedValidator;
 
-    public static function max(Validatable $rule): ChainedValidator;
+    public static function max(Rule $rule): ChainedValidator;
 
     public static function mimetype(string $mimetype): ChainedValidator;
 
-    public static function min(Validatable $rule): ChainedValidator;
+    public static function min(Rule $rule): ChainedValidator;
 
     public static function multiple(int $multipleOf): ChainedValidator;
 
@@ -251,9 +247,9 @@ interface StaticValidator extends
 
     public static function noWhitespace(): ChainedValidator;
 
-    public static function noneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public static function noneOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
-    public static function not(Validatable $rule): ChainedValidator;
+    public static function not(Rule $rule): ChainedValidator;
 
     public static function notBlank(): ChainedValidator;
 
@@ -265,14 +261,14 @@ interface StaticValidator extends
 
     public static function notUndef(): ChainedValidator;
 
-    public static function nullOr(Validatable $rule): ChainedValidator;
+    public static function nullOr(Rule $rule): ChainedValidator;
 
     public static function nullType(): ChainedValidator;
 
     /**
      * @deprecated Use {@see nullOr()} instead.
      */
-    public static function nullable(Validatable $rule): ChainedValidator;
+    public static function nullable(Rule $rule): ChainedValidator;
 
     public static function number(): ChainedValidator;
 
@@ -282,12 +278,12 @@ interface StaticValidator extends
 
     public static function odd(): ChainedValidator;
 
-    public static function oneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public static function oneOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     /**
      * @deprecated Use {@see undefOr()} instead.
      */
-    public static function optional(Validatable $rule): ChainedValidator;
+    public static function optional(Rule $rule): ChainedValidator;
 
     public static function perfectSquare(): ChainedValidator;
 
@@ -311,11 +307,11 @@ interface StaticValidator extends
 
     public static function printable(string ...$additionalChars): ChainedValidator;
 
-    public static function property(string $propertyName, Validatable $rule): ChainedValidator;
+    public static function property(string $propertyName, Rule $rule): ChainedValidator;
 
     public static function propertyExists(string $propertyName): ChainedValidator;
 
-    public static function propertyOptional(string $propertyName, Validatable $rule): ChainedValidator;
+    public static function propertyOptional(string $propertyName, Rule $rule): ChainedValidator;
 
     public static function publicDomainSuffix(): ChainedValidator;
 
@@ -360,7 +356,7 @@ interface StaticValidator extends
 
     public static function trueVal(): ChainedValidator;
 
-    public static function undefOr(Validatable $rule): ChainedValidator;
+    public static function undefOr(Rule $rule): ChainedValidator;
 
     public static function unique(): ChainedValidator;
 
@@ -378,7 +374,7 @@ interface StaticValidator extends
 
     public static function vowel(string ...$additionalChars): ChainedValidator;
 
-    public static function when(Validatable $when, Validatable $then, ?Validatable $else = null): ChainedValidator;
+    public static function when(Rule $when, Rule $then, ?Rule $else = null): ChainedValidator;
 
     public static function writable(): ChainedValidator;
 

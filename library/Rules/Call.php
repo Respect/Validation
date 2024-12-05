@@ -12,8 +12,8 @@ namespace Respect\Validation\Rules;
 use ErrorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
+use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Standard;
-use Respect\Validation\Validatable;
 use Throwable;
 
 use function call_user_func;
@@ -33,7 +33,7 @@ final class Call extends Standard
 
     public function __construct(
         callable $callable,
-        private readonly Validatable $rule
+        private readonly Rule $rule
     ) {
         $this->callable = $callable;
     }

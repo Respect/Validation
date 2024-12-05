@@ -10,15 +10,11 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
 interface StaticUndefOr
 {
-    public static function undefOrAllOf(
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public static function undefOrAllOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public static function undefOrAlnum(string ...$additionalChars): ChainedValidator;
 
@@ -28,11 +24,7 @@ interface StaticUndefOr
 
     public static function undefOrAlwaysValid(): ChainedValidator;
 
-    public static function undefOrAnyOf(
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public static function undefOrAnyOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public static function undefOrArrayType(): ChainedValidator;
 
@@ -55,7 +47,7 @@ interface StaticUndefOr
 
     public static function undefOrBsn(): ChainedValidator;
 
-    public static function undefOrCall(callable $callable, Validatable $rule): ChainedValidator;
+    public static function undefOrCall(callable $callable, Rule $rule): ChainedValidator;
 
     public static function undefOrCallableType(): ChainedValidator;
 
@@ -67,11 +59,7 @@ interface StaticUndefOr
 
     public static function undefOrCnpj(): ChainedValidator;
 
-    public static function undefOrConsecutive(
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public static function undefOrConsecutive(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public static function undefOrConsonant(string ...$additionalChars): ChainedValidator;
 
@@ -109,7 +97,7 @@ interface StaticUndefOr
      */
     public static function undefOrDateTimeDiff(
         string $type,
-        Validatable $rule,
+        Rule $rule,
         ?string $format = null,
         ?DateTimeImmutable $now = null,
     ): ChainedValidator;
@@ -122,7 +110,7 @@ interface StaticUndefOr
 
     public static function undefOrDomain(bool $tldCheck = true): ChainedValidator;
 
-    public static function undefOrEach(Validatable $rule): ChainedValidator;
+    public static function undefOrEach(Rule $rule): ChainedValidator;
 
     public static function undefOrEmail(): ChainedValidator;
 
@@ -197,13 +185,13 @@ interface StaticUndefOr
 
     public static function undefOrJson(): ChainedValidator;
 
-    public static function undefOrKey(string|int $key, Validatable $rule): ChainedValidator;
+    public static function undefOrKey(string|int $key, Rule $rule): ChainedValidator;
 
     public static function undefOrKeyExists(string|int $key): ChainedValidator;
 
-    public static function undefOrKeyOptional(string|int $key, Validatable $rule): ChainedValidator;
+    public static function undefOrKeyOptional(string|int $key, Rule $rule): ChainedValidator;
 
-    public static function undefOrKeySet(Validatable $rule, Validatable ...$rules): ChainedValidator;
+    public static function undefOrKeySet(Rule $rule, Rule ...$rules): ChainedValidator;
 
     /**
      * @param "alpha-2"|"alpha-3" $set
@@ -211,7 +199,7 @@ interface StaticUndefOr
     public static function undefOrLanguageCode(string $set = 'alpha-2'): ChainedValidator;
 
     /**
-     * @param callable(mixed): Validatable $ruleCreator
+     * @param callable(mixed): Rule $ruleCreator
      */
     public static function undefOrLazy(callable $ruleCreator): ChainedValidator;
 
@@ -219,7 +207,7 @@ interface StaticUndefOr
 
     public static function undefOrLeapYear(): ChainedValidator;
 
-    public static function undefOrLength(Validatable $rule): ChainedValidator;
+    public static function undefOrLength(Rule $rule): ChainedValidator;
 
     public static function undefOrLessThan(mixed $compareTo): ChainedValidator;
 
@@ -231,11 +219,11 @@ interface StaticUndefOr
 
     public static function undefOrMacAddress(): ChainedValidator;
 
-    public static function undefOrMax(Validatable $rule): ChainedValidator;
+    public static function undefOrMax(Rule $rule): ChainedValidator;
 
     public static function undefOrMimetype(string $mimetype): ChainedValidator;
 
-    public static function undefOrMin(Validatable $rule): ChainedValidator;
+    public static function undefOrMin(Rule $rule): ChainedValidator;
 
     public static function undefOrMultiple(int $multipleOf): ChainedValidator;
 
@@ -251,13 +239,9 @@ interface StaticUndefOr
 
     public static function undefOrNoWhitespace(): ChainedValidator;
 
-    public static function undefOrNoneOf(
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public static function undefOrNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
-    public static function undefOrNot(Validatable $rule): ChainedValidator;
+    public static function undefOrNot(Rule $rule): ChainedValidator;
 
     public static function undefOrNotBlank(): ChainedValidator;
 
@@ -275,11 +259,7 @@ interface StaticUndefOr
 
     public static function undefOrOdd(): ChainedValidator;
 
-    public static function undefOrOneOf(
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public static function undefOrOneOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public static function undefOrPerfectSquare(): ChainedValidator;
 
@@ -303,11 +283,11 @@ interface StaticUndefOr
 
     public static function undefOrPrintable(string ...$additionalChars): ChainedValidator;
 
-    public static function undefOrProperty(string $propertyName, Validatable $rule): ChainedValidator;
+    public static function undefOrProperty(string $propertyName, Rule $rule): ChainedValidator;
 
     public static function undefOrPropertyExists(string $propertyName): ChainedValidator;
 
-    public static function undefOrPropertyOptional(string $propertyName, Validatable $rule): ChainedValidator;
+    public static function undefOrPropertyOptional(string $propertyName, Rule $rule): ChainedValidator;
 
     public static function undefOrPublicDomainSuffix(): ChainedValidator;
 
@@ -371,11 +351,7 @@ interface StaticUndefOr
 
     public static function undefOrVowel(string ...$additionalChars): ChainedValidator;
 
-    public static function undefOrWhen(
-        Validatable $when,
-        Validatable $then,
-        ?Validatable $else = null,
-    ): ChainedValidator;
+    public static function undefOrWhen(Rule $when, Rule $then, ?Rule $else = null): ChainedValidator;
 
     public static function undefOrWritable(): ChainedValidator;
 

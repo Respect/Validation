@@ -22,7 +22,7 @@ use Respect\Validation\Test\TestCase;
 final class LazyTest extends TestCase
 {
     #[Test]
-    public function itShouldThrowAnExceptionWhenRuleCreatorDoesNotReturnValidatable(): void
+    public function itShouldThrowAnExceptionWhenRuleCreatorDoesNotReturnRule(): void
     {
         // @phpstan-ignore-next-line
         $rule = new Lazy(static fn () => null);

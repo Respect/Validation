@@ -10,11 +10,11 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
 interface ChainedUndefOr
 {
-    public function undefOrAllOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function undefOrAllOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function undefOrAlnum(string ...$additionalChars): ChainedValidator;
 
@@ -24,7 +24,7 @@ interface ChainedUndefOr
 
     public function undefOrAlwaysValid(): ChainedValidator;
 
-    public function undefOrAnyOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function undefOrAnyOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function undefOrArrayType(): ChainedValidator;
 
@@ -47,7 +47,7 @@ interface ChainedUndefOr
 
     public function undefOrBsn(): ChainedValidator;
 
-    public function undefOrCall(callable $callable, Validatable $rule): ChainedValidator;
+    public function undefOrCall(callable $callable, Rule $rule): ChainedValidator;
 
     public function undefOrCallableType(): ChainedValidator;
 
@@ -59,11 +59,7 @@ interface ChainedUndefOr
 
     public function undefOrCnpj(): ChainedValidator;
 
-    public function undefOrConsecutive(
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public function undefOrConsecutive(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function undefOrConsonant(string ...$additionalChars): ChainedValidator;
 
@@ -101,7 +97,7 @@ interface ChainedUndefOr
      */
     public function undefOrDateTimeDiff(
         string $type,
-        Validatable $rule,
+        Rule $rule,
         ?string $format = null,
         ?DateTimeImmutable $now = null,
     ): ChainedValidator;
@@ -114,7 +110,7 @@ interface ChainedUndefOr
 
     public function undefOrDomain(bool $tldCheck = true): ChainedValidator;
 
-    public function undefOrEach(Validatable $rule): ChainedValidator;
+    public function undefOrEach(Rule $rule): ChainedValidator;
 
     public function undefOrEmail(): ChainedValidator;
 
@@ -189,13 +185,13 @@ interface ChainedUndefOr
 
     public function undefOrJson(): ChainedValidator;
 
-    public function undefOrKey(string|int $key, Validatable $rule): ChainedValidator;
+    public function undefOrKey(string|int $key, Rule $rule): ChainedValidator;
 
     public function undefOrKeyExists(string|int $key): ChainedValidator;
 
-    public function undefOrKeyOptional(string|int $key, Validatable $rule): ChainedValidator;
+    public function undefOrKeyOptional(string|int $key, Rule $rule): ChainedValidator;
 
-    public function undefOrKeySet(Validatable $rule, Validatable ...$rules): ChainedValidator;
+    public function undefOrKeySet(Rule $rule, Rule ...$rules): ChainedValidator;
 
     /**
      * @param "alpha-2"|"alpha-3" $set
@@ -203,7 +199,7 @@ interface ChainedUndefOr
     public function undefOrLanguageCode(string $set = 'alpha-2'): ChainedValidator;
 
     /**
-     * @param callable(mixed): Validatable $ruleCreator
+     * @param callable(mixed): Rule $ruleCreator
      */
     public function undefOrLazy(callable $ruleCreator): ChainedValidator;
 
@@ -211,7 +207,7 @@ interface ChainedUndefOr
 
     public function undefOrLeapYear(): ChainedValidator;
 
-    public function undefOrLength(Validatable $rule): ChainedValidator;
+    public function undefOrLength(Rule $rule): ChainedValidator;
 
     public function undefOrLessThan(mixed $compareTo): ChainedValidator;
 
@@ -223,11 +219,11 @@ interface ChainedUndefOr
 
     public function undefOrMacAddress(): ChainedValidator;
 
-    public function undefOrMax(Validatable $rule): ChainedValidator;
+    public function undefOrMax(Rule $rule): ChainedValidator;
 
     public function undefOrMimetype(string $mimetype): ChainedValidator;
 
-    public function undefOrMin(Validatable $rule): ChainedValidator;
+    public function undefOrMin(Rule $rule): ChainedValidator;
 
     public function undefOrMultiple(int $multipleOf): ChainedValidator;
 
@@ -243,9 +239,9 @@ interface ChainedUndefOr
 
     public function undefOrNoWhitespace(): ChainedValidator;
 
-    public function undefOrNoneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function undefOrNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
-    public function undefOrNot(Validatable $rule): ChainedValidator;
+    public function undefOrNot(Rule $rule): ChainedValidator;
 
     public function undefOrNotBlank(): ChainedValidator;
 
@@ -263,7 +259,7 @@ interface ChainedUndefOr
 
     public function undefOrOdd(): ChainedValidator;
 
-    public function undefOrOneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function undefOrOneOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function undefOrPerfectSquare(): ChainedValidator;
 
@@ -287,11 +283,11 @@ interface ChainedUndefOr
 
     public function undefOrPrintable(string ...$additionalChars): ChainedValidator;
 
-    public function undefOrProperty(string $propertyName, Validatable $rule): ChainedValidator;
+    public function undefOrProperty(string $propertyName, Rule $rule): ChainedValidator;
 
     public function undefOrPropertyExists(string $propertyName): ChainedValidator;
 
-    public function undefOrPropertyOptional(string $propertyName, Validatable $rule): ChainedValidator;
+    public function undefOrPropertyOptional(string $propertyName, Rule $rule): ChainedValidator;
 
     public function undefOrPublicDomainSuffix(): ChainedValidator;
 
@@ -352,7 +348,7 @@ interface ChainedUndefOr
 
     public function undefOrVowel(string ...$additionalChars): ChainedValidator;
 
-    public function undefOrWhen(Validatable $when, Validatable $then, ?Validatable $else = null): ChainedValidator;
+    public function undefOrWhen(Rule $when, Rule $then, ?Rule $else = null): ChainedValidator;
 
     public function undefOrWritable(): ChainedValidator;
 

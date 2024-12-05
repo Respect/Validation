@@ -11,19 +11,19 @@ namespace Respect\Validation\Rules;
 
 use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Result;
+use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Standard;
-use Respect\Validation\Validatable;
 
 final class When extends Standard
 {
     use CanBindEvaluateRule;
 
-    private readonly Validatable $else;
+    private readonly Rule $else;
 
     public function __construct(
-        private readonly Validatable $when,
-        private readonly Validatable $then,
-        ?Validatable $else = null
+        private readonly Rule $when,
+        private readonly Rule $then,
+        ?Rule $else = null
     ) {
         if ($else === null) {
             $else = new AlwaysInvalid();

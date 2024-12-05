@@ -65,7 +65,7 @@ final class FactoryTest extends TestCase
         $factory = (new Factory())->withRuleNamespace(self::TEST_RULES_NAMESPACE);
 
         $this->expectException(InvalidClassException::class);
-        $this->expectExceptionMessage(sprintf('"%s" must be an instance of "%s"', Invalid::class, Validatable::class));
+        $this->expectExceptionMessage(sprintf('"%s" must be an instance of "%s"', Invalid::class, Rule::class));
 
         $factory->rule('invalid');
     }

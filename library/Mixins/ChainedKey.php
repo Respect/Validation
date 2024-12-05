@@ -10,16 +10,11 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
 interface ChainedKey
 {
-    public function keyAllOf(
-        int|string $key,
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public function keyAllOf(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function keyAlnum(int|string $key, string ...$additionalChars): ChainedValidator;
 
@@ -29,12 +24,7 @@ interface ChainedKey
 
     public function keyAlwaysValid(int|string $key): ChainedValidator;
 
-    public function keyAnyOf(
-        int|string $key,
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public function keyAnyOf(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function keyArrayType(int|string $key): ChainedValidator;
 
@@ -58,7 +48,7 @@ interface ChainedKey
 
     public function keyBsn(int|string $key): ChainedValidator;
 
-    public function keyCall(int|string $key, callable $callable, Validatable $rule): ChainedValidator;
+    public function keyCall(int|string $key, callable $callable, Rule $rule): ChainedValidator;
 
     public function keyCallableType(int|string $key): ChainedValidator;
 
@@ -70,12 +60,7 @@ interface ChainedKey
 
     public function keyCnpj(int|string $key): ChainedValidator;
 
-    public function keyConsecutive(
-        int|string $key,
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public function keyConsecutive(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function keyConsonant(int|string $key, string ...$additionalChars): ChainedValidator;
 
@@ -114,7 +99,7 @@ interface ChainedKey
     public function keyDateTimeDiff(
         int|string $key,
         string $type,
-        Validatable $rule,
+        Rule $rule,
         ?string $format = null,
         ?DateTimeImmutable $now = null,
     ): ChainedValidator;
@@ -127,7 +112,7 @@ interface ChainedKey
 
     public function keyDomain(int|string $key, bool $tldCheck = true): ChainedValidator;
 
-    public function keyEach(int|string $key, Validatable $rule): ChainedValidator;
+    public function keyEach(int|string $key, Rule $rule): ChainedValidator;
 
     public function keyEmail(int|string $key): ChainedValidator;
 
@@ -206,7 +191,7 @@ interface ChainedKey
     public function keyLanguageCode(int|string $key, string $set = 'alpha-2'): ChainedValidator;
 
     /**
-     * @param callable(mixed): Validatable $ruleCreator
+     * @param callable(mixed): Rule $ruleCreator
      */
     public function keyLazy(int|string $key, callable $ruleCreator): ChainedValidator;
 
@@ -214,7 +199,7 @@ interface ChainedKey
 
     public function keyLeapYear(int|string $key): ChainedValidator;
 
-    public function keyLength(int|string $key, Validatable $rule): ChainedValidator;
+    public function keyLength(int|string $key, Rule $rule): ChainedValidator;
 
     public function keyLessThan(int|string $key, mixed $compareTo): ChainedValidator;
 
@@ -226,11 +211,11 @@ interface ChainedKey
 
     public function keyMacAddress(int|string $key): ChainedValidator;
 
-    public function keyMax(int|string $key, Validatable $rule): ChainedValidator;
+    public function keyMax(int|string $key, Rule $rule): ChainedValidator;
 
     public function keyMimetype(int|string $key, string $mimetype): ChainedValidator;
 
-    public function keyMin(int|string $key, Validatable $rule): ChainedValidator;
+    public function keyMin(int|string $key, Rule $rule): ChainedValidator;
 
     public function keyMultiple(int|string $key, int $multipleOf): ChainedValidator;
 
@@ -246,14 +231,9 @@ interface ChainedKey
 
     public function keyNoWhitespace(int|string $key): ChainedValidator;
 
-    public function keyNoneOf(
-        int|string $key,
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public function keyNoneOf(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
-    public function keyNot(int|string $key, Validatable $rule): ChainedValidator;
+    public function keyNot(int|string $key, Rule $rule): ChainedValidator;
 
     public function keyNotBlank(int|string $key): ChainedValidator;
 
@@ -275,12 +255,7 @@ interface ChainedKey
 
     public function keyOdd(int|string $key): ChainedValidator;
 
-    public function keyOneOf(
-        int|string $key,
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public function keyOneOf(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function keyPerfectSquare(int|string $key): ChainedValidator;
 
@@ -367,12 +342,7 @@ interface ChainedKey
 
     public function keyVowel(int|string $key, string ...$additionalChars): ChainedValidator;
 
-    public function keyWhen(
-        int|string $key,
-        Validatable $when,
-        Validatable $then,
-        ?Validatable $else = null,
-    ): ChainedValidator;
+    public function keyWhen(int|string $key, Rule $when, Rule $then, ?Rule $else = null): ChainedValidator;
 
     public function keyWritable(int|string $key): ChainedValidator;
 

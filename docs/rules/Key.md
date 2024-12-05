@@ -1,6 +1,6 @@
 # Key
 
-- `Key(int|string $key, Validatable $rule)`
+- `Key(int|string $key, Rule $rule)`
 
 Validates the value of an array against a given rule.
 

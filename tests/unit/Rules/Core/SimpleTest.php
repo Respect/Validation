@@ -12,9 +12,9 @@ namespace Respect\Validation\Rules\Core;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Rule;
 use Respect\Validation\Test\Rules\Core\ConcreteSimple;
 use Respect\Validation\Test\TestCase;
-use Respect\Validation\Validatable;
 
 #[Group('core')]
 #[CoversClass(Simple::class)]
@@ -41,6 +41,6 @@ final class SimpleTest extends TestCase
     {
         $rule = new ConcreteSimple();
 
-        self::assertSame(Validatable::TEMPLATE_STANDARD, $rule->evaluate('any')->template);
+        self::assertSame(Rule::TEMPLATE_STANDARD, $rule->evaluate('any')->template);
     }
 }

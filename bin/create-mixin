@@ -28,7 +28,7 @@ use Respect\Validation\Mixins\StaticUndefOr;
 use Respect\Validation\Rules\NotUndef;
 use Respect\Validation\Rules\NullOr;
 use Respect\Validation\Rules\UndefOr;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
 function addMethodToInterface(
     string $originalName,
@@ -209,15 +209,15 @@ function overwriteFile(string $content, string $basename): void
 
     foreach ($mixins as [$name, $prefix, $allowList, $denyList]) {
         $chainedNamespace = new PhpNamespace('Respect\\Validation\\Mixins');
-        $chainedNamespace->addUse(Validatable::class);
+        $chainedNamespace->addUse(Rule::class);
         $chainedInterface = $chainedNamespace->addInterface('Chained' . $name);
 
         $staticNamespace = new PhpNamespace('Respect\\Validation\\Mixins');
-        $staticNamespace->addUse(Validatable::class);
+        $staticNamespace->addUse(Rule::class);
         $staticInterface = $staticNamespace->addInterface('Static' . $name);
 
         if ($name === 'Validator') {
-            $chainedInterface->addExtend(Validatable::class);
+            $chainedInterface->addExtend(Rule::class);
             $chainedInterface->addExtend(ChainedKey::class);
             $chainedInterface->addExtend(ChainedLength::class);
             $chainedInterface->addExtend(ChainedMax::class);
@@ -240,7 +240,7 @@ function overwriteFile(string $content, string $basename): void
             $setTemplates->addComment('@param array<string, mixed> $templates');
 
             $getRules = $chainedInterface->addMethod('getRules')->setPublic()->setReturnType('array');
-            $getRules->addComment('@return array<Validatable>');
+            $getRules->addComment('@return array<Rule>');
 
             $staticInterface->addExtend(StaticKey::class);
             $staticInterface->addExtend(StaticLength::class);

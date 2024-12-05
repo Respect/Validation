@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Transformers;
 
+use Respect\Validation\Rule;
 use Respect\Validation\Rules\ArrayVal;
 use Respect\Validation\Rules\Key;
 use Respect\Validation\Rules\KeyExists;
@@ -17,7 +18,6 @@ use Respect\Validation\Rules\Property;
 use Respect\Validation\Rules\PropertyExists;
 use Respect\Validation\Rules\PropertyOptional;
 use Respect\Validation\Rules\When;
-use Respect\Validation\Validatable;
 
 use function array_pop;
 use function array_reduce;
@@ -55,7 +55,7 @@ final class DeprecatedKeyNested implements Transformer
         $arrayVal = new ArrayVal();
         $firstRule = array_reduce(
             $pieces,
-            fn (?Validatable $rule, string $piece) => new When(
+            fn (?Rule $rule, string $piece) => new When(
                 $arrayVal,
                 $this->createKeyRule($piece, $mandatory, $rule),
                 $this->createPropertyRule($piece, $mandatory, $rule),
@@ -73,7 +73,7 @@ final class DeprecatedKeyNested implements Transformer
         );
     }
 
-    private function createPropertyRule(string $name, bool $mandatory, ?Validatable $rule): Validatable
+    private function createPropertyRule(string $name, bool $mandatory, ?Rule $rule): Rule
     {
         if ($rule === null) {
             return new PropertyExists($name);
@@ -86,7 +86,7 @@ final class DeprecatedKeyNested implements Transformer
         return new PropertyOptional($name, $rule);
     }
 
-    private function createKeyRule(string $key, bool $mandatory, ?Validatable $rule): Validatable
+    private function createKeyRule(string $key, bool $mandatory, ?Rule $rule): Rule
     {
         if ($rule === null) {
             return new KeyExists($key);

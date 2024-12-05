@@ -1,6 +1,6 @@
 # AnyOf
 
-- `AnyOf(Validatable $rule1, Validatable $rule2, Validatable ...$rule)`
+- `AnyOf(Rule $rule1, Rule $rule2, Rule ...$rule)`
 
 This is a group validator that acts as an OR operator.
 

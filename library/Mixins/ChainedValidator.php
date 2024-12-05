@@ -10,11 +10,11 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 use Throwable;
 
 interface ChainedValidator extends
-    Validatable,
+    Rule,
     ChainedKey,
     ChainedLength,
     ChainedMax,
@@ -37,11 +37,11 @@ interface ChainedValidator extends
     public function setTemplates(array $templates): ChainedValidator;
 
     /**
-     * @return array<Validatable>
+     * @return array<Rule>
      */
     public function getRules(): array;
 
-    public function allOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function allOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function alnum(string ...$additionalChars): ChainedValidator;
 
@@ -51,7 +51,7 @@ interface ChainedValidator extends
 
     public function alwaysValid(): ChainedValidator;
 
-    public function anyOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function anyOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function arrayType(): ChainedValidator;
 
@@ -74,7 +74,7 @@ interface ChainedValidator extends
 
     public function bsn(): ChainedValidator;
 
-    public function call(callable $callable, Validatable $rule): ChainedValidator;
+    public function call(callable $callable, Rule $rule): ChainedValidator;
 
     public function callableType(): ChainedValidator;
 
@@ -86,7 +86,7 @@ interface ChainedValidator extends
 
     public function cnpj(): ChainedValidator;
 
-    public function consecutive(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function consecutive(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function consonant(string ...$additionalChars): ChainedValidator;
 
@@ -124,7 +124,7 @@ interface ChainedValidator extends
      */
     public function dateTimeDiff(
         string $type,
-        Validatable $rule,
+        Rule $rule,
         ?string $format = null,
         ?DateTimeImmutable $now = null,
     ): ChainedValidator;
@@ -137,7 +137,7 @@ interface ChainedValidator extends
 
     public function domain(bool $tldCheck = true): ChainedValidator;
 
-    public function each(Validatable $rule): ChainedValidator;
+    public function each(Rule $rule): ChainedValidator;
 
     public function email(): ChainedValidator;
 
@@ -212,13 +212,13 @@ interface ChainedValidator extends
 
     public function json(): ChainedValidator;
 
-    public function key(string|int $key, Validatable $rule): ChainedValidator;
+    public function key(string|int $key, Rule $rule): ChainedValidator;
 
     public function keyExists(string|int $key): ChainedValidator;
 
-    public function keyOptional(string|int $key, Validatable $rule): ChainedValidator;
+    public function keyOptional(string|int $key, Rule $rule): ChainedValidator;
 
-    public function keySet(Validatable $rule, Validatable ...$rules): ChainedValidator;
+    public function keySet(Rule $rule, Rule ...$rules): ChainedValidator;
 
     /**
      * @param "alpha-2"|"alpha-3" $set
@@ -226,7 +226,7 @@ interface ChainedValidator extends
     public function languageCode(string $set = 'alpha-2'): ChainedValidator;
 
     /**
-     * @param callable(mixed): Validatable $ruleCreator
+     * @param callable(mixed): Rule $ruleCreator
      */
     public function lazy(callable $ruleCreator): ChainedValidator;
 
@@ -234,7 +234,7 @@ interface ChainedValidator extends
 
     public function leapYear(): ChainedValidator;
 
-    public function length(Validatable $rule): ChainedValidator;
+    public function length(Rule $rule): ChainedValidator;
 
     public function lessThan(mixed $compareTo): ChainedValidator;
 
@@ -246,11 +246,11 @@ interface ChainedValidator extends
 
     public function macAddress(): ChainedValidator;
 
-    public function max(Validatable $rule): ChainedValidator;
+    public function max(Rule $rule): ChainedValidator;
 
     public function mimetype(string $mimetype): ChainedValidator;
 
-    public function min(Validatable $rule): ChainedValidator;
+    public function min(Rule $rule): ChainedValidator;
 
     public function multiple(int $multipleOf): ChainedValidator;
 
@@ -266,9 +266,9 @@ interface ChainedValidator extends
 
     public function noWhitespace(): ChainedValidator;
 
-    public function noneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function noneOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
-    public function not(Validatable $rule): ChainedValidator;
+    public function not(Rule $rule): ChainedValidator;
 
     public function notBlank(): ChainedValidator;
 
@@ -280,14 +280,14 @@ interface ChainedValidator extends
 
     public function notUndef(): ChainedValidator;
 
-    public function nullOr(Validatable $rule): ChainedValidator;
+    public function nullOr(Rule $rule): ChainedValidator;
 
     public function nullType(): ChainedValidator;
 
     /**
      * @deprecated Use {@see nullOr()} instead.
      */
-    public function nullable(Validatable $rule): ChainedValidator;
+    public function nullable(Rule $rule): ChainedValidator;
 
     public function number(): ChainedValidator;
 
@@ -297,12 +297,12 @@ interface ChainedValidator extends
 
     public function odd(): ChainedValidator;
 
-    public function oneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function oneOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     /**
      * @deprecated Use {@see undefOr()} instead.
      */
-    public function optional(Validatable $rule): ChainedValidator;
+    public function optional(Rule $rule): ChainedValidator;
 
     public function perfectSquare(): ChainedValidator;
 
@@ -326,11 +326,11 @@ interface ChainedValidator extends
 
     public function printable(string ...$additionalChars): ChainedValidator;
 
-    public function property(string $propertyName, Validatable $rule): ChainedValidator;
+    public function property(string $propertyName, Rule $rule): ChainedValidator;
 
     public function propertyExists(string $propertyName): ChainedValidator;
 
-    public function propertyOptional(string $propertyName, Validatable $rule): ChainedValidator;
+    public function propertyOptional(string $propertyName, Rule $rule): ChainedValidator;
 
     public function publicDomainSuffix(): ChainedValidator;
 
@@ -375,7 +375,7 @@ interface ChainedValidator extends
 
     public function trueVal(): ChainedValidator;
 
-    public function undefOr(Validatable $rule): ChainedValidator;
+    public function undefOr(Rule $rule): ChainedValidator;
 
     public function unique(): ChainedValidator;
 
@@ -393,7 +393,7 @@ interface ChainedValidator extends
 
     public function vowel(string ...$additionalChars): ChainedValidator;
 
-    public function when(Validatable $when, Validatable $then, ?Validatable $else = null): ChainedValidator;
+    public function when(Rule $when, Rule $then, ?Rule $else = null): ChainedValidator;
 
     public function writable(): ChainedValidator;
 

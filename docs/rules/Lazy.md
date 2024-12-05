@@ -1,6 +1,6 @@
 # Lazy
 
-- `Lazy(callable(mixed $input): Validatable $ruleCreator)`
+- `Lazy(callable(mixed $input): Rule $ruleCreator)`
 
 Validates the input using a rule that is created from a callback.
 

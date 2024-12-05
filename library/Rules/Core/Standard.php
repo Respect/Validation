@@ -10,9 +10,9 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules\Core;
 
 use Respect\Validation\Helpers\DeprecatedValidatableMethods;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
-abstract class Standard implements Validatable
+abstract class Standard implements Rule
 {
     use DeprecatedValidatableMethods;
 

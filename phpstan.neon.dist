@@ -19,13 +19,13 @@ parameters:
       path: tests/integration/transformers/deprecated_keyNested.phpt
     - message: '/Call to an undefined static method Respect\\Validation\\Validator::keyValue\(\)./'
       path: tests/integration/transformers/deprecated_keyValue.phpt
-    - message: '/Parameter #1 \$rule of static method Respect\\Validation\\Mixins\\StaticValidator::length\(\) expects Respect\\Validation\\Validatable.+/'
+    - message: '/Parameter #1 \$rule of static method Respect\\Validation\\Mixins\\StaticValidator::length\(\) expects Respect\\Validation\\Rule.+/'
       path: tests/integration/transformers/deprecated_length.phpt
     - message: '/Static method Respect\\Validation\\Mixins\\StaticValidator::length\(\) invoked with \d parameters, 1 required/'
       path: tests/integration/transformers/deprecated_length.phpt
-    - message: '/Parameter #1 \$rule of static method Respect\\Validation\\Mixins\\StaticValidator::max\(\) expects Respect\\Validation\\Validatable.+/'
+    - message: '/Parameter #1 \$rule of static method Respect\\Validation\\Mixins\\StaticValidator::max\(\) expects Respect\\Validation\\Rule.+/'
       path: tests/integration/transformers/deprecated_max.phpt
-    - message: '/Parameter #1 \$rule of static method Respect\\Validation\\Mixins\\StaticValidator::min\(\) expects Respect\\Validation\\Validatable.+/'
+    - message: '/Parameter #1 \$rule of static method Respect\\Validation\\Mixins\\StaticValidator::min\(\) expects Respect\\Validation\\Rule.+/'
       path: tests/integration/transformers/deprecated_min.phpt
     - message: '/Call to an undefined static method Respect\\Validation\\Validator::type\(\)./'
       path: tests/integration/transformers/deprecated_type.phpt

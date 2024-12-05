@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Helpers;
 
+use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Composite;
 use Respect\Validation\Rules\Not;
-use Respect\Validation\Validatable;
 use Respect\Validation\Validator;
 use Throwable;
 
@@ -19,7 +19,7 @@ use function count;
 
 trait CanExtractRules
 {
-    private function extractSiblingSuitableRule(Validatable $rule, Throwable $throwable): Validatable
+    private function extractSiblingSuitableRule(Rule $rule, Throwable $throwable): Rule
     {
         $this->assertSingleRule($rule, $throwable);
 
@@ -30,7 +30,7 @@ trait CanExtractRules
         return $rule;
     }
 
-    private function assertSingleRule(Validatable $rule, Throwable $throwable): void
+    private function assertSingleRule(Rule $rule, Throwable $throwable): void
     {
         if ($rule instanceof Not) {
             $this->assertSingleRule($rule->getRule(), $throwable);

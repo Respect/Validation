@@ -10,11 +10,11 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
 interface StaticNot
 {
-    public static function notAllOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public static function notAllOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public static function notAlnum(string ...$additionalChars): ChainedValidator;
 
@@ -24,7 +24,7 @@ interface StaticNot
 
     public static function notAlwaysValid(): ChainedValidator;
 
-    public static function notAnyOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public static function notAnyOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public static function notArrayType(): ChainedValidator;
 
@@ -47,7 +47,7 @@ interface StaticNot
 
     public static function notBsn(): ChainedValidator;
 
-    public static function notCall(callable $callable, Validatable $rule): ChainedValidator;
+    public static function notCall(callable $callable, Rule $rule): ChainedValidator;
 
     public static function notCallableType(): ChainedValidator;
 
@@ -59,11 +59,7 @@ interface StaticNot
 
     public static function notCnpj(): ChainedValidator;
 
-    public static function notConsecutive(
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public static function notConsecutive(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public static function notConsonant(string ...$additionalChars): ChainedValidator;
 
@@ -101,7 +97,7 @@ interface StaticNot
      */
     public static function notDateTimeDiff(
         string $type,
-        Validatable $rule,
+        Rule $rule,
         ?string $format = null,
         ?DateTimeImmutable $now = null,
     ): ChainedValidator;
@@ -114,7 +110,7 @@ interface StaticNot
 
     public static function notDomain(bool $tldCheck = true): ChainedValidator;
 
-    public static function notEach(Validatable $rule): ChainedValidator;
+    public static function notEach(Rule $rule): ChainedValidator;
 
     public static function notEmail(): ChainedValidator;
 
@@ -189,13 +185,13 @@ interface StaticNot
 
     public static function notJson(): ChainedValidator;
 
-    public static function notKey(string|int $key, Validatable $rule): ChainedValidator;
+    public static function notKey(string|int $key, Rule $rule): ChainedValidator;
 
     public static function notKeyExists(string|int $key): ChainedValidator;
 
-    public static function notKeyOptional(string|int $key, Validatable $rule): ChainedValidator;
+    public static function notKeyOptional(string|int $key, Rule $rule): ChainedValidator;
 
-    public static function notKeySet(Validatable $rule, Validatable ...$rules): ChainedValidator;
+    public static function notKeySet(Rule $rule, Rule ...$rules): ChainedValidator;
 
     /**
      * @param "alpha-2"|"alpha-3" $set
@@ -203,7 +199,7 @@ interface StaticNot
     public static function notLanguageCode(string $set = 'alpha-2'): ChainedValidator;
 
     /**
-     * @param callable(mixed): Validatable $ruleCreator
+     * @param callable(mixed): Rule $ruleCreator
      */
     public static function notLazy(callable $ruleCreator): ChainedValidator;
 
@@ -211,7 +207,7 @@ interface StaticNot
 
     public static function notLeapYear(): ChainedValidator;
 
-    public static function notLength(Validatable $rule): ChainedValidator;
+    public static function notLength(Rule $rule): ChainedValidator;
 
     public static function notLessThan(mixed $compareTo): ChainedValidator;
 
@@ -223,11 +219,11 @@ interface StaticNot
 
     public static function notMacAddress(): ChainedValidator;
 
-    public static function notMax(Validatable $rule): ChainedValidator;
+    public static function notMax(Rule $rule): ChainedValidator;
 
     public static function notMimetype(string $mimetype): ChainedValidator;
 
-    public static function notMin(Validatable $rule): ChainedValidator;
+    public static function notMin(Rule $rule): ChainedValidator;
 
     public static function notMultiple(int $multipleOf): ChainedValidator;
 
@@ -243,7 +239,7 @@ interface StaticNot
 
     public static function notNoWhitespace(): ChainedValidator;
 
-    public static function notNoneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public static function notNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public static function notNullType(): ChainedValidator;
 
@@ -255,7 +251,7 @@ interface StaticNot
 
     public static function notOdd(): ChainedValidator;
 
-    public static function notOneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public static function notOneOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public static function notPerfectSquare(): ChainedValidator;
 
@@ -279,11 +275,11 @@ interface StaticNot
 
     public static function notPrintable(string ...$additionalChars): ChainedValidator;
 
-    public static function notProperty(string $propertyName, Validatable $rule): ChainedValidator;
+    public static function notProperty(string $propertyName, Rule $rule): ChainedValidator;
 
     public static function notPropertyExists(string $propertyName): ChainedValidator;
 
-    public static function notPropertyOptional(string $propertyName, Validatable $rule): ChainedValidator;
+    public static function notPropertyOptional(string $propertyName, Rule $rule): ChainedValidator;
 
     public static function notPublicDomainSuffix(): ChainedValidator;
 
@@ -344,7 +340,7 @@ interface StaticNot
 
     public static function notVowel(string ...$additionalChars): ChainedValidator;
 
-    public static function notWhen(Validatable $when, Validatable $then, ?Validatable $else = null): ChainedValidator;
+    public static function notWhen(Rule $when, Rule $then, ?Rule $else = null): ChainedValidator;
 
     public static function notWritable(): ChainedValidator;
 

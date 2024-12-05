@@ -10,11 +10,11 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
 interface ChainedNot
 {
-    public function notAllOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function notAllOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function notAlnum(string ...$additionalChars): ChainedValidator;
 
@@ -24,7 +24,7 @@ interface ChainedNot
 
     public function notAlwaysValid(): ChainedValidator;
 
-    public function notAnyOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function notAnyOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function notArrayType(): ChainedValidator;
 
@@ -47,7 +47,7 @@ interface ChainedNot
 
     public function notBsn(): ChainedValidator;
 
-    public function notCall(callable $callable, Validatable $rule): ChainedValidator;
+    public function notCall(callable $callable, Rule $rule): ChainedValidator;
 
     public function notCallableType(): ChainedValidator;
 
@@ -59,7 +59,7 @@ interface ChainedNot
 
     public function notCnpj(): ChainedValidator;
 
-    public function notConsecutive(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function notConsecutive(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function notConsonant(string ...$additionalChars): ChainedValidator;
 
@@ -97,7 +97,7 @@ interface ChainedNot
      */
     public function notDateTimeDiff(
         string $type,
-        Validatable $rule,
+        Rule $rule,
         ?string $format = null,
         ?DateTimeImmutable $now = null,
     ): ChainedValidator;
@@ -110,7 +110,7 @@ interface ChainedNot
 
     public function notDomain(bool $tldCheck = true): ChainedValidator;
 
-    public function notEach(Validatable $rule): ChainedValidator;
+    public function notEach(Rule $rule): ChainedValidator;
 
     public function notEmail(): ChainedValidator;
 
@@ -185,13 +185,13 @@ interface ChainedNot
 
     public function notJson(): ChainedValidator;
 
-    public function notKey(string|int $key, Validatable $rule): ChainedValidator;
+    public function notKey(string|int $key, Rule $rule): ChainedValidator;
 
     public function notKeyExists(string|int $key): ChainedValidator;
 
-    public function notKeyOptional(string|int $key, Validatable $rule): ChainedValidator;
+    public function notKeyOptional(string|int $key, Rule $rule): ChainedValidator;
 
-    public function notKeySet(Validatable $rule, Validatable ...$rules): ChainedValidator;
+    public function notKeySet(Rule $rule, Rule ...$rules): ChainedValidator;
 
     /**
      * @param "alpha-2"|"alpha-3" $set
@@ -199,7 +199,7 @@ interface ChainedNot
     public function notLanguageCode(string $set = 'alpha-2'): ChainedValidator;
 
     /**
-     * @param callable(mixed): Validatable $ruleCreator
+     * @param callable(mixed): Rule $ruleCreator
      */
     public function notLazy(callable $ruleCreator): ChainedValidator;
 
@@ -207,7 +207,7 @@ interface ChainedNot
 
     public function notLeapYear(): ChainedValidator;
 
-    public function notLength(Validatable $rule): ChainedValidator;
+    public function notLength(Rule $rule): ChainedValidator;
 
     public function notLessThan(mixed $compareTo): ChainedValidator;
 
@@ -219,11 +219,11 @@ interface ChainedNot
 
     public function notMacAddress(): ChainedValidator;
 
-    public function notMax(Validatable $rule): ChainedValidator;
+    public function notMax(Rule $rule): ChainedValidator;
 
     public function notMimetype(string $mimetype): ChainedValidator;
 
-    public function notMin(Validatable $rule): ChainedValidator;
+    public function notMin(Rule $rule): ChainedValidator;
 
     public function notMultiple(int $multipleOf): ChainedValidator;
 
@@ -239,7 +239,7 @@ interface ChainedNot
 
     public function notNoWhitespace(): ChainedValidator;
 
-    public function notNoneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function notNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function notNullType(): ChainedValidator;
 
@@ -251,7 +251,7 @@ interface ChainedNot
 
     public function notOdd(): ChainedValidator;
 
-    public function notOneOf(Validatable $rule1, Validatable $rule2, Validatable ...$rules): ChainedValidator;
+    public function notOneOf(Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function notPerfectSquare(): ChainedValidator;
 
@@ -275,11 +275,11 @@ interface ChainedNot
 
     public function notPrintable(string ...$additionalChars): ChainedValidator;
 
-    public function notProperty(string $propertyName, Validatable $rule): ChainedValidator;
+    public function notProperty(string $propertyName, Rule $rule): ChainedValidator;
 
     public function notPropertyExists(string $propertyName): ChainedValidator;
 
-    public function notPropertyOptional(string $propertyName, Validatable $rule): ChainedValidator;
+    public function notPropertyOptional(string $propertyName, Rule $rule): ChainedValidator;
 
     public function notPublicDomainSuffix(): ChainedValidator;
 
@@ -340,7 +340,7 @@ interface ChainedNot
 
     public function notVowel(string ...$additionalChars): ChainedValidator;
 
-    public function notWhen(Validatable $when, Validatable $then, ?Validatable $else = null): ChainedValidator;
+    public function notWhen(Rule $when, Rule $then, ?Rule $else = null): ChainedValidator;
 
     public function notWritable(): ChainedValidator;
 

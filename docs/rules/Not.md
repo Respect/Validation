@@ -1,6 +1,6 @@
 # Not
 
-- `Not(Validatable $rule)`
+- `Not(Rule $rule)`
 
 Negates any rule.
 

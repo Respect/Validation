@@ -1,6 +1,6 @@
 # Min
 
-- `Min(Validatable $rule)`
+- `Min(Rule $rule)`
 
 Validates the minimum value of the input against a given rule.
 

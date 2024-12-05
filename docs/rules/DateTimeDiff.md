@@ -1,7 +1,7 @@
 # DateTimeDiff
 
-- `DateTimeDiff(string $type, Validatable $rule)`
-- `DateTimeDiff(string $type, Validatable $rule, string $format)`
+- `DateTimeDiff(string $type, Rule $rule)`
+- `DateTimeDiff(string $type, Rule $rule, string $format)`
 
 Validates the difference of date/time against a specific rule.
 

@@ -10,11 +10,11 @@ declare(strict_types=1);
 namespace Respect\Validation\Helpers;
 
 use Respect\Validation\Result;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
 trait CanBindEvaluateRule
 {
-    private function bindEvaluate(Validatable $binded, Validatable $binder, mixed $input): Result
+    private function bindEvaluate(Rule $binded, Rule $binder, mixed $input): Result
     {
         if ($binder->getName() !== null && $binded->getName() === null) {
             $binded->setName($binder->getName());

@@ -10,27 +10,27 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules\Core;
 
 use Respect\Validation\Helpers\DeprecatedValidatableMethods;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
 use function array_merge;
 
-abstract class Composite implements Validatable
+abstract class Composite implements Rule
 {
     use DeprecatedValidatableMethods;
 
-    /** @var non-empty-array<Validatable> */
+    /** @var non-empty-array<Rule> */
     protected readonly array $rules;
 
     private ?string $name = null;
 
     private ?string $template = null;
 
-    public function __construct(Validatable $rule1, Validatable $rule2, Validatable ...$rules)
+    public function __construct(Rule $rule1, Rule $rule2, Rule ...$rules)
     {
         $this->rules = array_merge([$rule1, $rule2], $rules);
     }
 
-    /** @return non-empty-array<Validatable> */
+    /** @return non-empty-array<Rule> */
     public function getRules(): array
     {
         return $this->rules;

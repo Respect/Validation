@@ -15,9 +15,9 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Rule;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\RuleTestCase;
-use Respect\Validation\Validatable;
 use Respect\Validation\Validator;
 
 use function array_map;
@@ -39,7 +39,7 @@ final class DateTimeDiffTest extends RuleTestCase
 
     #[Test]
     #[DataProvider('providerForSiblingSuitableRules')]
-    public function isShouldAcceptRulesThatCanBeAddedAsNextSibling(Validatable $rule): void
+    public function isShouldAcceptRulesThatCanBeAddedAsNextSibling(Rule $rule): void
     {
         $this->expectNotToPerformAssertions();
 
@@ -48,7 +48,7 @@ final class DateTimeDiffTest extends RuleTestCase
 
     #[Test]
     #[DataProvider('providerForSiblingUnsuitableRules')]
-    public function isShouldNotAcceptRulesThatCanBeAddedAsNextSibling(Validatable $rule): void
+    public function isShouldNotAcceptRulesThatCanBeAddedAsNextSibling(Rule $rule): void
     {
         $this->expectException(InvalidRuleConstructorException::class);
         $this->expectExceptionMessage('DateTimeDiff must contain exactly one rule');
@@ -56,7 +56,7 @@ final class DateTimeDiffTest extends RuleTestCase
         new DateTimeDiff('years', $rule);
     }
 
-    /** @return array<array{Validatable}> */
+    /** @return array<array{Rule}> */
     public static function providerForSiblingSuitableRules(): array
     {
         return [
@@ -68,7 +68,7 @@ final class DateTimeDiffTest extends RuleTestCase
         ];
     }
 
-    /** @return array<array{Validatable}> */
+    /** @return array<array{Rule}> */
     public static function providerForSiblingUnsuitableRules(): array
     {
         return [

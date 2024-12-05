@@ -12,8 +12,8 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Helpers\CanExtractPropertyValue;
 use Respect\Validation\Result;
+use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Wrapper;
-use Respect\Validation\Validatable;
 
 final class PropertyOptional extends Wrapper
 {
@@ -22,7 +22,7 @@ final class PropertyOptional extends Wrapper
 
     public function __construct(
         private readonly string $propertyName,
-        Validatable $rule,
+        Rule $rule,
     ) {
         $rule->setName($rule->getName() ?? $propertyName);
         parent::__construct($rule);

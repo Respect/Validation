@@ -10,16 +10,11 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Validatable;
+use Respect\Validation\Rule;
 
 interface ChainedProperty
 {
-    public function propertyAllOf(
-        string $propertyName,
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public function propertyAllOf(string $propertyName, Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function propertyAlnum(string $propertyName, string ...$additionalChars): ChainedValidator;
 
@@ -29,12 +24,7 @@ interface ChainedProperty
 
     public function propertyAlwaysValid(string $propertyName): ChainedValidator;
 
-    public function propertyAnyOf(
-        string $propertyName,
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public function propertyAnyOf(string $propertyName, Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function propertyArrayType(string $propertyName): ChainedValidator;
 
@@ -58,7 +48,7 @@ interface ChainedProperty
 
     public function propertyBsn(string $propertyName): ChainedValidator;
 
-    public function propertyCall(string $propertyName, callable $callable, Validatable $rule): ChainedValidator;
+    public function propertyCall(string $propertyName, callable $callable, Rule $rule): ChainedValidator;
 
     public function propertyCallableType(string $propertyName): ChainedValidator;
 
@@ -72,9 +62,9 @@ interface ChainedProperty
 
     public function propertyConsecutive(
         string $propertyName,
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
+        Rule $rule1,
+        Rule $rule2,
+        Rule ...$rules,
     ): ChainedValidator;
 
     public function propertyConsonant(string $propertyName, string ...$additionalChars): ChainedValidator;
@@ -122,7 +112,7 @@ interface ChainedProperty
     public function propertyDateTimeDiff(
         string $propertyName,
         string $type,
-        Validatable $rule,
+        Rule $rule,
         ?string $format = null,
         ?DateTimeImmutable $now = null,
     ): ChainedValidator;
@@ -135,7 +125,7 @@ interface ChainedProperty
 
     public function propertyDomain(string $propertyName, bool $tldCheck = true): ChainedValidator;
 
-    public function propertyEach(string $propertyName, Validatable $rule): ChainedValidator;
+    public function propertyEach(string $propertyName, Rule $rule): ChainedValidator;
 
     public function propertyEmail(string $propertyName): ChainedValidator;
 
@@ -218,7 +208,7 @@ interface ChainedProperty
     public function propertyLanguageCode(string $propertyName, string $set = 'alpha-2'): ChainedValidator;
 
     /**
-     * @param callable(mixed): Validatable $ruleCreator
+     * @param callable(mixed): Rule $ruleCreator
      */
     public function propertyLazy(string $propertyName, callable $ruleCreator): ChainedValidator;
 
@@ -226,7 +216,7 @@ interface ChainedProperty
 
     public function propertyLeapYear(string $propertyName): ChainedValidator;
 
-    public function propertyLength(string $propertyName, Validatable $rule): ChainedValidator;
+    public function propertyLength(string $propertyName, Rule $rule): ChainedValidator;
 
     public function propertyLessThan(string $propertyName, mixed $compareTo): ChainedValidator;
 
@@ -238,11 +228,11 @@ interface ChainedProperty
 
     public function propertyMacAddress(string $propertyName): ChainedValidator;
 
-    public function propertyMax(string $propertyName, Validatable $rule): ChainedValidator;
+    public function propertyMax(string $propertyName, Rule $rule): ChainedValidator;
 
     public function propertyMimetype(string $propertyName, string $mimetype): ChainedValidator;
 
-    public function propertyMin(string $propertyName, Validatable $rule): ChainedValidator;
+    public function propertyMin(string $propertyName, Rule $rule): ChainedValidator;
 
     public function propertyMultiple(string $propertyName, int $multipleOf): ChainedValidator;
 
@@ -258,14 +248,9 @@ interface ChainedProperty
 
     public function propertyNoWhitespace(string $propertyName): ChainedValidator;
 
-    public function propertyNoneOf(
-        string $propertyName,
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public function propertyNoneOf(string $propertyName, Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
-    public function propertyNot(string $propertyName, Validatable $rule): ChainedValidator;
+    public function propertyNot(string $propertyName, Rule $rule): ChainedValidator;
 
     public function propertyNotBlank(string $propertyName): ChainedValidator;
 
@@ -287,12 +272,7 @@ interface ChainedProperty
 
     public function propertyOdd(string $propertyName): ChainedValidator;
 
-    public function propertyOneOf(
-        string $propertyName,
-        Validatable $rule1,
-        Validatable $rule2,
-        Validatable ...$rules,
-    ): ChainedValidator;
+    public function propertyOneOf(string $propertyName, Rule $rule1, Rule $rule2, Rule ...$rules): ChainedValidator;
 
     public function propertyPerfectSquare(string $propertyName): ChainedValidator;
 
@@ -387,12 +367,7 @@ interface ChainedProperty
 
     public function propertyVowel(string $propertyName, string ...$additionalChars): ChainedValidator;
 
-    public function propertyWhen(
-        string $propertyName,
-        Validatable $when,
-        Validatable $then,
-        ?Validatable $else = null,
-    ): ChainedValidator;
+    public function propertyWhen(string $propertyName, Rule $when, Rule $then, ?Rule $else = null): ChainedValidator;
 
     public function propertyWritable(string $propertyName): ChainedValidator;
 
