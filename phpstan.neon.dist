@@ -36,5 +36,6 @@ parameters:
   level: 8
   treatPhpDocTypesAsCertain: false
   paths:
+    - deprecated/
     - library/
     - tests/
