@@ -29,29 +29,29 @@ use const PHP_EOL;
 final class StandardFormatter implements Formatter
 {
     public function __construct(
-        private readonly Renderer $renderer,
+        private readonly Renderer $renderer = new StandardRenderer(),
     ) {
     }
 
     /**
      * @param array<string, mixed> $templates
      */
-    public function main(Result $result, array $templates): string
+    public function main(Result $result, array $templates, Translator $translator): string
     {
         $selectedTemplates = $this->selectTemplates($result, $templates);
         if (!$this->isFinalTemplate($result, $selectedTemplates)) {
             foreach ($this->extractDeduplicatedChildren($result) as $child) {
-                return $this->main($child, $selectedTemplates);
+                return $this->main($child, $selectedTemplates, $translator);
             }
         }
 
-        return $this->renderer->render($this->getTemplated($result, $selectedTemplates));
+        return $this->renderer->render($this->getTemplated($result, $selectedTemplates), $translator);
     }
 
     /**
      * @param array<string, mixed> $templates
      */
-    public function full(Result $result, array $templates, int $depth = 0): string
+    public function full(Result $result, array $templates, Translator $translator, int $depth = 0): string
     {
         $selectedTemplates = $this->selectTemplates($result, $templates);
         $isFinalTemplate = $this->isFinalTemplate($result, $selectedTemplates);
@@ -62,14 +62,14 @@ final class StandardFormatter implements Formatter
             $rendered .= sprintf(
                 '%s- %s' . PHP_EOL,
                 $indentation,
-                $this->renderer->render($this->getTemplated($result, $selectedTemplates)),
+                $this->renderer->render($this->getTemplated($result, $selectedTemplates), $translator),
             );
             $depth++;
         }
 
         if (!$isFinalTemplate) {
             foreach ($this->extractDeduplicatedChildren($result) as $child) {
-                $rendered .= $this->full($child, $selectedTemplates, $depth);
+                $rendered .= $this->full($child, $selectedTemplates, $translator, $depth);
                 $rendered .= PHP_EOL;
             }
         }
@@ -82,17 +82,23 @@ final class StandardFormatter implements Formatter
      *
      * @return array<string, mixed>
      */
-    public function array(Result $result, array $templates): array
+    public function array(Result $result, array $templates, Translator $translator): array
     {
         $selectedTemplates = $this->selectTemplates($result, $templates);
         $deduplicatedChildren = $this->extractDeduplicatedChildren($result);
         if (count($deduplicatedChildren) === 0 || $this->isFinalTemplate($result, $selectedTemplates)) {
-            return [$result->id => $this->renderer->render($this->getTemplated($result, $selectedTemplates))];
+            return [
+                $result->id => $this->renderer->render($this->getTemplated($result, $selectedTemplates), $translator),
+            ];
         }
 
         $messages = [];
         foreach ($deduplicatedChildren as $child) {
-            $messages[$child->id] = $this->array($child, $this->selectTemplates($child, $selectedTemplates));
+            $messages[$child->id] = $this->array(
+                $child,
+                $this->selectTemplates($child, $selectedTemplates),
+                $translator
+            );
             if (count($messages[$child->id]) !== 1) {
                 continue;
             }
@@ -101,7 +107,9 @@ final class StandardFormatter implements Formatter
         }
 
         if (count($messages) > 1) {
-            $self = ['__root__' => $this->renderer->render($this->getTemplated($result, $selectedTemplates))];
+            $self = [
+                '__root__' => $this->renderer->render($this->getTemplated($result, $selectedTemplates), $translator),
+            ];
 
             return $self + $messages;
         }

@@ -16,6 +16,7 @@ use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Message\StandardFormatter\ArrayProvider;
 use Respect\Validation\Message\StandardFormatter\FullProvider;
 use Respect\Validation\Message\StandardFormatter\MainProvider;
+use Respect\Validation\Message\Translator\DummyTranslator;
 use Respect\Validation\Result;
 use Respect\Validation\Test\Builders\ResultBuilder;
 use Respect\Validation\Test\Message\TestingMessageRenderer;
@@ -39,7 +40,7 @@ final class StandardFormatterTest extends TestCase
     {
         $renderer = new StandardFormatter(new TestingMessageRenderer());
 
-        self::assertSame($expected, $renderer->main($result, $templates));
+        self::assertSame($expected, $renderer->main($result, $templates, new DummyTranslator()));
     }
 
     #[Test]
@@ -53,7 +54,7 @@ final class StandardFormatterTest extends TestCase
         $this->expectException(ComponentException::class);
         $this->expectExceptionMessage(sprintf('Template for "foo" must be a string, %s given', stringify($template)));
 
-        $renderer->main($result, ['foo' => $template]);
+        $renderer->main($result, ['foo' => $template], new DummyTranslator());
     }
 
     /** @param array<string, mixed> $templates */
@@ -63,7 +64,7 @@ final class StandardFormatterTest extends TestCase
     {
         $renderer = new StandardFormatter(new TestingMessageRenderer());
 
-        self::assertSame($expected, $renderer->full($result, $templates));
+        self::assertSame($expected, $renderer->full($result, $templates, new DummyTranslator()));
     }
 
     #[Test]
@@ -77,7 +78,7 @@ final class StandardFormatterTest extends TestCase
         $this->expectException(ComponentException::class);
         $this->expectExceptionMessage(sprintf('Template for "foo" must be a string, %s given', stringify($template)));
 
-        $renderer->full($result, ['foo' => $template]);
+        $renderer->full($result, ['foo' => $template], new DummyTranslator());
     }
 
     /**
@@ -90,7 +91,7 @@ final class StandardFormatterTest extends TestCase
     {
         $renderer = new StandardFormatter(new TestingMessageRenderer());
 
-        self::assertSame($expected, $renderer->array($result, $templates));
+        self::assertSame($expected, $renderer->array($result, $templates, new DummyTranslator()));
     }
 
     #[Test]
@@ -104,6 +105,6 @@ final class StandardFormatterTest extends TestCase
         $this->expectException(ComponentException::class);
         $this->expectExceptionMessage(sprintf('Template for "foo" must be a string, %s given', stringify($template)));
 
-        $renderer->array($result, ['foo' => $template]);
+        $renderer->array($result, ['foo' => $template], new DummyTranslator());
     }
 }

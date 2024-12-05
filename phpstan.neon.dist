@@ -29,6 +29,10 @@ parameters:
       path: tests/integration/transformers/deprecated_min.phpt
     - message: '/Call to an undefined static method Respect\\Validation\\Validator::type\(\)./'
       path: tests/integration/transformers/deprecated_type.phpt
+    - message: '/Method .+\\TestingStringifier::stringify\(\) never returns null so it can be removed from the return type./'
+      path: tests/library/Message/TestingStringifier.php
+    - message: '/Parameter #1 \$messages of class .+\\ArrayTranslator constructor expects array<string, string>, array<string, int> given./'
+      path: tests/unit/Message/Translator/ArrayTranslatorTest.php
   level: 8
   treatPhpDocTypesAsCertain: false
   paths:

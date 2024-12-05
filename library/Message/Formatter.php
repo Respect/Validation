@@ -16,17 +16,17 @@ interface Formatter
     /**
      * @param array<string, mixed> $templates
      */
-    public function main(Result $result, array $templates): string;
+    public function main(Result $result, array $templates, Translator $translator): string;
 
     /**
      * @param array<string, mixed> $templates
      */
-    public function full(Result $result, array $templates, int $depth = 0): string;
+    public function full(Result $result, array $templates, Translator $translator, int $depth = 0): string;
 
     /**
      * @param array<string, mixed> $templates
      *
      * @return array<string, mixed>
      */
-    public function array(Result $result, array $templates): array;
+    public function array(Result $result, array $templates, Translator $translator): array;
 }

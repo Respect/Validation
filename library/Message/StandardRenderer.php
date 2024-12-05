@@ -10,64 +10,53 @@ declare(strict_types=1);
 namespace Respect\Validation\Message;
 
 use ReflectionClass;
-use Respect\Validation\Exceptions\ComponentException;
-use Respect\Validation\Message\Parameter\Processor;
+use Respect\Stringifier\Stringifier;
+use Respect\Stringifier\Stringifiers\CompositeStringifier;
 use Respect\Validation\Mode;
 use Respect\Validation\Result;
 use Respect\Validation\Validatable;
-use Throwable;
 
-use function call_user_func;
+use function is_bool;
+use function is_scalar;
+use function is_string;
 use function preg_replace_callback;
-use function sprintf;
+use function print_r;
 
 final class StandardRenderer implements Renderer
 {
     /** @var array<string, array<Template>> */
     private array $templates = [];
 
-    /** @var callable */
-    private $translator;
+    private readonly Stringifier $stringifier;
 
-    public function __construct(
-        callable $translator,
-        private readonly Processor $processor
-    ) {
-        $this->translator = $translator;
+    public function __construct(?Stringifier $stringifier = null)
+    {
+        $this->stringifier = $stringifier ?? CompositeStringifier::createDefault();
     }
 
-    public function render(Result $result, ?string $template = null): string
+    public function render(Result $result, Translator $translator, ?string $template = null): string
     {
         $parameters = $result->parameters;
-        $parameters['name'] ??= $result->name ?? $this->processor->process('input', $result->input);
+        $parameters['name'] ??= $result->name ?? $this->placeholder('input', $result->input, $translator);
         $parameters['input'] = $result->input;
 
         $rendered = (string) preg_replace_callback(
             '/{{(\w+)(\|([^}]+))?}}/',
-            function (array $matches) use ($parameters) {
+            function (array $matches) use ($parameters, $translator) {
                 if (!isset($parameters[$matches[1]])) {
                     return $matches[0];
                 }
 
-                return $this->processor->process($matches[1], $parameters[$matches[1]], $matches[3] ?? null);
+                return $this->placeholder($matches[1], $parameters[$matches[1]], $translator, $matches[3] ?? null);
             },
-            $this->translate($template ?? $this->getTemplateMessage($result))
+            $translator->translate($template ?? $this->getTemplateMessage($result))
         );
 
         if (!$result->hasCustomTemplate() && $result->nextSibling !== null) {
-            $rendered .= ' ' . $this->render($result->nextSibling);
+            $rendered .= ' ' . $this->render($result->nextSibling, $translator);
         }
 
         return $rendered;
-    }
-
-    private function translate(string $message): string
-    {
-        try {
-            return call_user_func($this->translator, $message);
-        } catch (Throwable $throwable) {
-            throw new ComponentException(sprintf('Failed to translate "%s"', $message), 0, $throwable);
-        }
     }
 
     /** @return array<Template> */
@@ -81,6 +70,23 @@ final class StandardRenderer implements Renderer
         }
 
         return $this->templates[$rule::class] ?? [];
+    }
+
+    private function placeholder(string $name, mixed $value, Translator $translator, ?string $modifier = null): string
+    {
+        if ($modifier === 'raw' && is_scalar($value)) {
+            return is_bool($value) ? (string) (int) $value : (string) $value;
+        }
+
+        if ($modifier === 'trans' && is_string($value)) {
+            return $translator->translate($value);
+        }
+
+        if ($name === 'name' && is_string($value)) {
+            return $value;
+        }
+
+        return $this->stringifier->stringify($value, 0) ?? print_r($value, true);
     }
 
     private function getTemplateMessage(Result $result): string

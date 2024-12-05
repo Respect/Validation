@@ -9,13 +9,13 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Message;
 
-use Exception;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Message\Translator\ArrayTranslator;
+use Respect\Validation\Message\Translator\DummyTranslator;
 use Respect\Validation\Mode;
 use Respect\Validation\Test\Builders\ResultBuilder;
-use Respect\Validation\Test\Message\Parameter\TestingProcessor;
+use Respect\Validation\Test\Message\TestingStringifier;
 use Respect\Validation\Test\TestCase;
 
 use function sprintf;
@@ -26,100 +26,205 @@ final class StandardRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultWithCustomTemplate(): void
     {
-        $renderer = new StandardRenderer(static fn(string $value) => $value, new TestingProcessor());
+        $renderer = new StandardRenderer(new TestingStringifier());
 
         $result = (new ResultBuilder())->template('This is my template')->build();
 
-        self::assertSame($result->template, $renderer->render($result));
+        self::assertSame($result->template, $renderer->render($result, new DummyTranslator()));
     }
 
     #[Test]
     public function itShouldRenderResultOverwritingCustomTemplateWhenTemplateIsPassedAsAnArgument(): void
     {
-        $renderer = new StandardRenderer(static fn(string $value) => $value, new TestingProcessor());
+        $renderer = new StandardRenderer(new TestingStringifier());
 
         $template = 'This is my brand new template';
 
         $result = (new ResultBuilder())->template('This is my template')->build();
 
-        self::assertSame($template, $renderer->render($result, $template));
+        self::assertSame($template, $renderer->render($result, new DummyTranslator(), $template));
     }
 
     #[Test]
     public function itShouldRenderResultProcessingParametersInTheTemplate(): void
     {
-        $processor = new TestingProcessor();
+        $stringifier = new TestingStringifier();
 
-        $renderer = new StandardRenderer(static fn(string $value) => $value, $processor);
+        $renderer = new StandardRenderer($stringifier);
 
         $key = 'foo';
-        $value = 42;
+        $value = true;
 
         $result = (new ResultBuilder())
-            ->template('Will replace {{foo}}')
+            ->template(sprintf('Will replace {{%s}}', $key))
             ->parameters([$key => $value])
             ->build();
 
         self::assertSame(
-            'Will replace ' . $processor->process($key, $value),
-            $renderer->render($result)
+            'Will replace ' . $stringifier->stringify($value, 0),
+            $renderer->render($result, new DummyTranslator())
+        );
+    }
+
+    #[Test]
+    public function itShouldRenderResultProcessingRawParametersInTheTemplate(): void
+    {
+        $stringifier = new TestingStringifier();
+
+        $renderer = new StandardRenderer($stringifier);
+
+        $key = 'foo';
+        $value = 0.1;
+
+        $result = (new ResultBuilder())
+            ->template(sprintf('Will replace {{%1$s}} and {{%1$s|raw}}', $key))
+            ->parameters([$key => $value])
+            ->build();
+
+        self::assertSame(
+            sprintf('Will replace %s and 0.1', $stringifier->stringify($value, 0)),
+            $renderer->render($result, new DummyTranslator())
+        );
+    }
+
+    #[Test]
+    public function itShouldRenderResultProcessingRawBooleanParametersInTheTemplate(): void
+    {
+        $stringifier = new TestingStringifier();
+
+        $renderer = new StandardRenderer($stringifier);
+
+        $key = 'foo';
+        $value = false;
+
+        $result = (new ResultBuilder())
+            ->template(sprintf('Will replace {{%1$s}} and {{%1$s|raw}}', $key))
+            ->parameters([$key => $value])
+            ->build();
+
+        self::assertSame(
+            sprintf('Will replace %s and 0', $stringifier->stringify($value, 0)),
+            $renderer->render($result, new DummyTranslator())
+        );
+    }
+
+    #[Test]
+    public function itShouldRenderResultProcessingTranslatableParametersInTheTemplate(): void
+    {
+        $stringifier = new TestingStringifier();
+
+        $renderer = new StandardRenderer($stringifier);
+
+        $key = 'foo';
+        $value = 'original';
+        $translation = 'translated';
+
+        $result = (new ResultBuilder())
+            ->template(sprintf('Will replace {{%1$s}} and {{%1$s|trans}}', $key))
+            ->parameters([$key => $value])
+            ->build();
+
+        self::assertSame(
+            sprintf('Will replace %s and %s', $stringifier->stringify($value, 0), $translation),
+            $renderer->render($result, new ArrayTranslator([$value => $translation]))
+        );
+    }
+
+    #[Test]
+    public function itShouldRenderResultProcessingNameParameterWhenItIsInTheTemplateAndItIsString(): void
+    {
+        $stringifier = new TestingStringifier();
+
+        $renderer = new StandardRenderer($stringifier);
+
+        $value = 'original';
+
+        $result = (new ResultBuilder())
+            ->template('Will replace {{name}}')
+            ->parameters(['name' => $value])
+            ->build();
+
+        self::assertSame(
+            sprintf('Will replace %s', $value),
+            $renderer->render($result, new DummyTranslator())
+        );
+    }
+
+    #[Test]
+    public function itShouldRenderResultProcessingNameParameterWhenItIsInTheTemplateAndItIsNotString(): void
+    {
+        $stringifier = new TestingStringifier();
+
+        $renderer = new StandardRenderer($stringifier);
+
+        $value = true;
+
+        $result = (new ResultBuilder())
+            ->template('Will replace {{name}}')
+            ->parameters(['name' => $value])
+            ->build();
+
+        self::assertSame(
+            sprintf('Will replace %s', $stringifier->stringify($value, 0)),
+            $renderer->render($result, new DummyTranslator())
         );
     }
 
     #[Test]
     public function itShouldRenderResultProcessingNameAsSomeParameterInTheTemplate(): void
     {
-        $processor = new TestingProcessor();
+        $renderer = new StandardRenderer(new TestingStringifier());
 
-        $renderer = new StandardRenderer(static fn(string $value) => $value, $processor);
+        $name = 'my name';
 
         $result = (new ResultBuilder())
             ->template('Will replace {{name}}')
-            ->name('my name')
+            ->name($name)
             ->build();
 
         self::assertSame(
-            'Will replace ' . $processor->process('name', $result->name),
-            $renderer->render($result)
+            'Will replace ' . $name,
+            $renderer->render($result, new DummyTranslator())
         );
     }
 
     #[Test]
     public function itShouldRenderResultProcessingInputAsNameWhenResultHasNoName(): void
     {
-        $processor = new TestingProcessor();
+        $stringifier = new TestingStringifier();
 
-        $renderer = new StandardRenderer(static fn(string $value) => $value, $processor);
+        $renderer = new StandardRenderer($stringifier);
+
+        $input = 42;
 
         $result = (new ResultBuilder())
             ->template('Will replace {{name}}')
-            ->input(42)
+            ->input($input)
             ->build();
 
         self::assertSame(
-            sprintf(
-                'Will replace %s',
-                $processor->process('name', $processor->process('input', $result->input))
-            ),
-            $renderer->render($result)
+            sprintf('Will replace %s', $stringifier->stringify($input, 0)),
+            $renderer->render($result, new DummyTranslator())
         );
     }
 
     #[Test]
     public function itShouldRenderResultProcessingInputAsSomeParameterInTheTemplate(): void
     {
-        $processor = new TestingProcessor();
+        $stringifier = new TestingStringifier();
 
-        $renderer = new StandardRenderer(static fn(string $value) => $value, $processor);
+        $renderer = new StandardRenderer($stringifier);
+
+        $input = 42;
 
         $result = (new ResultBuilder())
             ->template('Will replace {{input}}')
-            ->input(42)
+            ->input($input)
             ->build();
 
         self::assertSame(
-            'Will replace ' . $processor->process('input', $result->input),
-            $renderer->render($result)
+            sprintf('Will replace %s', $stringifier->stringify($input, 0)),
+            $renderer->render($result, new DummyTranslator())
         );
     }
 
@@ -128,9 +233,9 @@ final class StandardRendererTest extends TestCase
     {
         $parameterNameValue = 'fake name';
 
-        $processor = new TestingProcessor();
+        $stringifier = new TestingStringifier();
 
-        $renderer = new StandardRenderer(static fn(string $value) => $value, $processor);
+        $renderer = new StandardRenderer($stringifier);
 
         $result = (new ResultBuilder())
             ->template('Will replace {{name}}')
@@ -139,40 +244,42 @@ final class StandardRendererTest extends TestCase
             ->build();
 
         self::assertSame(
-            'Will replace ' . $processor->process('name', $parameterNameValue),
-            $renderer->render($result)
+            sprintf('Will replace %s', $parameterNameValue),
+            $renderer->render($result, new DummyTranslator())
         );
     }
 
     #[Test]
     public function itShouldRenderResultNotOverwritingInputParameterWithRealInput(): void
     {
-        $processor = new TestingProcessor();
+        $stringifier = new TestingStringifier();
 
-        $renderer = new StandardRenderer(static fn(string $value) => $value, $processor);
+        $renderer = new StandardRenderer($stringifier);
+
+        $input = 'real input';
 
         $result = (new ResultBuilder())
             ->template('Will replace {{input}}')
-            ->input('real input')
+            ->input($input)
             ->parameters(['input' => 'fake input'])
             ->build();
 
         self::assertSame(
-            'Will replace ' . $processor->process('input', 'real input'),
-            $renderer->render($result)
+            sprintf('Will replace %s', $stringifier->stringify($input, 0)),
+            $renderer->render($result, new DummyTranslator())
         );
     }
 
     #[Test]
     public function itShouldRenderResultProcessingNonExistingParameters(): void
     {
-        $renderer = new StandardRenderer(static fn(string $value) => $value, new TestingProcessor());
+        $renderer = new StandardRenderer(new TestingStringifier());
 
         $result = (new ResultBuilder())
             ->template('Will not replace {{unknown}}')
             ->build();
 
-        self::assertSame('Will not replace {{unknown}}', $renderer->render($result));
+        self::assertSame('Will not replace {{unknown}}', $renderer->render($result, new DummyTranslator()));
     }
 
     #[Test]
@@ -181,86 +288,61 @@ final class StandardRendererTest extends TestCase
         $template = 'This is my template with {{foo}}';
         $translations = [$template => 'This is my translated template with {{foo}}'];
 
-        $renderer = new StandardRenderer(
-            static fn(string $value) => $translations[$value],
-            new TestingProcessor()
-        );
+        $renderer = new StandardRenderer(new TestingStringifier());
+        $translator = new ArrayTranslator($translations);
 
         $result = (new ResultBuilder())
             ->template($template)
             ->build();
 
-        self::assertSame($translations[$template], $renderer->render($result));
+        self::assertSame($translations[$template], $renderer->render($result, $translator));
     }
 
     #[Test]
-    public function itShouldThrowAnExceptionWhenTranslatorDoesNotWork(): void
+    public function itShouldRenderResultWithNonCustomTemplate(): void
     {
-        $renderer = new StandardRenderer(
-            static fn(string $value) => throw new Exception(),
-            new TestingProcessor()
-        );
-
-        $result = (new ResultBuilder())->template('Template')->build();
-
-        $this->expectException(ComponentException::class);
-        $this->expectExceptionMessage(sprintf('Failed to translate "%s"', $result->template));
-
-        $renderer->render($result);
-    }
-
-    #[Test]
-    public function itShouldRenderResultWithTemplateAttachedToRule(): void
-    {
-        $processor = new TestingProcessor();
-        $renderer = new StandardRenderer(static fn(string $value) => $value, $processor);
+        $stringifier = new TestingStringifier();
+        $renderer = new StandardRenderer($stringifier);
 
         $result = (new ResultBuilder())->build();
 
         self::assertSame(
-            sprintf(
-                '%s must be a valid stub',
-                $processor->process('name', $processor->process('input', $result->input))
-            ),
-            $renderer->render($result)
+            sprintf('%s must be a valid stub', $stringifier->stringify($result->input, 0)),
+            $renderer->render($result, new DummyTranslator())
         );
     }
 
     #[Test]
-    public function itShouldRenderResultWithTemplateAttachedToRuleWithInvertedMode(): void
+    public function itShouldRenderResultWithNonCustomTemplateAndInvertedMode(): void
     {
-        $processor = new TestingProcessor();
-        $renderer = new StandardRenderer(static fn(string $value) => $value, $processor);
+        $stringifier = new TestingStringifier();
+        $renderer = new StandardRenderer($stringifier);
 
         $result = (new ResultBuilder())->mode(Mode::INVERTED)->build();
 
         self::assertSame(
-            sprintf(
-                '%s must not be a valid stub',
-                $processor->process('name', $processor->process('input', $result->input))
-            ),
-            $renderer->render($result)
+            sprintf('%s must not be a valid stub', $stringifier->stringify($result->input, 0)),
+            $renderer->render($result, new DummyTranslator())
         );
     }
 
     #[Test]
     public function itShouldRenderResultWithNonCustomTemplateWhenCannotFindAttachedTemplate(): void
     {
-        $processor = new TestingProcessor();
-        $renderer = new StandardRenderer(static fn(string $value) => $value, $processor);
+        $renderer = new StandardRenderer(new TestingStringifier());
 
         $result = (new ResultBuilder())->template('__not_standard__')->mode(Mode::INVERTED)->build();
 
         self::assertSame(
             $result->template,
-            $renderer->render($result)
+            $renderer->render($result, new DummyTranslator())
         );
     }
 
     #[Test]
     public function itShouldRenderResultWithItsSiblingsWhenItHasNoCustomTemplate(): void
     {
-        $renderer = new StandardRenderer(static fn(string $value) => $value, new TestingProcessor());
+        $renderer = new StandardRenderer(new TestingStringifier());
 
         $result = (new ResultBuilder())->template('__1st__')
             ->nextSibling(
@@ -274,7 +356,7 @@ final class StandardRendererTest extends TestCase
 
         $expect = '__1st__ __2nd__ __3rd__';
 
-        self::assertSame($expect, $renderer->render($result));
+        self::assertSame($expect, $renderer->render($result, new DummyTranslator()));
     }
 
     #[Test]
@@ -286,8 +368,8 @@ final class StandardRendererTest extends TestCase
             ->nextSibling((new ResultBuilder())->template('and this is a sibling')->build())
             ->build();
 
-        $renderer = new StandardRenderer(static fn(string $value) => $value, new TestingProcessor());
+        $renderer = new StandardRenderer(new TestingStringifier());
 
-        self::assertSame($template, $renderer->render($result));
+        self::assertSame($template, $renderer->render($result, new DummyTranslator()));
     }
 }

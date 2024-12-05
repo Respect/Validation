@@ -9,9 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Message;
 
-use Respect\Validation\Result;
-
-interface Renderer
+interface Translator
 {
-    public function render(Result $result, Translator $translator, ?string $template = null): string;
+    public function translate(string $message): string;
 }

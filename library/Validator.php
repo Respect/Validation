@@ -12,8 +12,7 @@ namespace Respect\Validation;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Message\Formatter;
-use Respect\Validation\Message\StandardFormatter;
-use Respect\Validation\Message\StandardRenderer;
+use Respect\Validation\Message\Translator;
 use Respect\Validation\Mixins\StaticValidator;
 use Respect\Validation\Rules\AllOf;
 use Throwable;
@@ -43,19 +42,16 @@ final class Validator implements Validatable
     public function __construct(
         private readonly Factory $factory,
         private readonly Formatter $formatter,
+        private readonly Translator $translator,
     ) {
     }
 
     public static function create(Validatable ...$rules): self
     {
         $validator = new self(
-            Factory::getDefaultInstance(),
-            new StandardFormatter(
-                new StandardRenderer(
-                    Factory::getDefaultInstance()->getTranslator(),
-                    Factory::getDefaultInstance()->getParameterProcessor(),
-                )
-            )
+            ValidatorDefaults::getFactory(),
+            ValidatorDefaults::getFormatter(),
+            ValidatorDefaults::getTranslator()
         );
         $validator->rules = $rules;
 
@@ -94,9 +90,9 @@ final class Validator implements Validatable
         }
 
         throw new ValidationException(
-            $this->formatter->main($result, $templates),
-            $this->formatter->full($result, $templates),
-            $this->formatter->array($result, $templates),
+            $this->formatter->main($result, $templates, $this->translator),
+            $this->formatter->full($result, $templates, $this->translator),
+            $this->formatter->array($result, $templates, $this->translator),
         );
     }
 

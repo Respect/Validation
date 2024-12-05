@@ -13,10 +13,6 @@ use ReflectionClass;
 use ReflectionException;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
-use Respect\Validation\Message\Parameter\Processor;
-use Respect\Validation\Message\Parameter\Raw;
-use Respect\Validation\Message\Parameter\Stringify;
-use Respect\Validation\Message\Parameter\Trans;
 use Respect\Validation\Transformers\Aliases;
 use Respect\Validation\Transformers\DeprecatedAge;
 use Respect\Validation\Transformers\DeprecatedAttribute;
@@ -42,22 +38,8 @@ final class Factory
      */
     private array $rulesNamespaces = ['Respect\\Validation\\Rules'];
 
-    /**
-     * @var callable
-     */
-    private $translator;
-
-    private Processor $processor;
-
-    private Transformer $transformer;
-
-    private static Factory $defaultInstance;
-
-    public function __construct()
-    {
-        $this->translator = static fn (string $message) => $message;
-        $this->processor = new Raw(new Trans($this->translator, new Stringify()));
-        $this->transformer = new DeprecatedAttribute(
+    public function __construct(
+        private readonly Transformer $transformer = new DeprecatedAttribute(
             new DeprecatedKey(
                 new DeprecatedKeyValue(
                     new DeprecatedMinAndMax(
@@ -67,16 +49,8 @@ final class Factory
                     )
                 )
             )
-        );
-    }
-
-    public static function getDefaultInstance(): self
-    {
-        if (!isset(self::$defaultInstance)) {
-            self::$defaultInstance = new self();
-        }
-
-        return self::$defaultInstance;
+        )
+    ) {
     }
 
     public function withRuleNamespace(string $rulesNamespace): self
@@ -87,44 +61,12 @@ final class Factory
         return $clone;
     }
 
-    public function withTranslator(callable $translator): self
-    {
-        $clone = clone $this;
-        $clone->translator = $translator;
-        $clone->processor = new Raw(new Trans($translator, new Stringify()));
-
-        return $clone;
-    }
-
-    public function withParameterProcessor(Processor $processor): self
-    {
-        $clone = clone $this;
-        $clone->processor = $processor;
-
-        return $clone;
-    }
-
-    public function getTranslator(): callable
-    {
-        return $this->translator;
-    }
-
-    public function getParameterProcessor(): Processor
-    {
-        return $this->processor;
-    }
-
     /**
      * @param mixed[] $arguments
      */
     public function rule(string $ruleName, array $arguments = []): Validatable
     {
         return $this->createRuleSpec($this->transformer->transform(new RuleSpec($ruleName, $arguments)));
-    }
-
-    public static function setDefaultInstance(self $defaultInstance): void
-    {
-        self::$defaultInstance = $defaultInstance;
     }
 
     private function createRuleSpec(RuleSpec $ruleSpec): Validatable
