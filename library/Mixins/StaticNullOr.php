@@ -305,10 +305,10 @@ interface StaticNullOr
 
     public static function nullOrScalarVal(): ChainedValidator;
 
-    public static function nullOrSize(
-        string|int|null $minSize = null,
-        string|int|null $maxSize = null,
-    ): ChainedValidator;
+    /**
+     * @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit
+     */
+    public static function nullOrSize(string $unit, Rule $rule): ChainedValidator;
 
     public static function nullOrSlug(): ChainedValidator;
 

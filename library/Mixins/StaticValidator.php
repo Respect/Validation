@@ -329,7 +329,10 @@ interface StaticValidator extends
 
     public static function scalarVal(): ChainedValidator;
 
-    public static function size(string|int|null $minSize = null, string|int|null $maxSize = null): ChainedValidator;
+    /**
+     * @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit
+     */
+    public static function size(string $unit, Rule $rule): ChainedValidator;
 
     public static function slug(): ChainedValidator;
 

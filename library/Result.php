@@ -117,7 +117,7 @@ final class Result
         return $this->clone(
             input: $input,
             children: array_map(
-                static fn (Result $child) => $child->input === $currentInput ? $input : $child->input,
+                static fn (Result $child) => $child->input === $currentInput ? $child->withInput($input) : $child,
                 $this->children
             ),
         );

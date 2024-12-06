@@ -7,9 +7,15 @@ parameters:
       # Why: SimpleXMLElement is weird and doesn't implement anything ArrayAccess-like
       message: '/Instanceof between mixed and SimpleXMLElement will always evaluate to false\./'
       path: library/Rules/ArrayVal.php
-    - message: '/Call to an undefined method .+::skip\(\)/'
+    - message: '/Call to an undefined method .+::(skip|throws)\(\)/'
       path: tests/feature
     - message: '/Call to an undefined method .+::expectException\(\)/'
+      path: tests/Pest.php
+    - message: '/Undefined variable: \$this/'
+      path: tests/feature
+    - message: '/Variable \$this might not be defined./'
+      path: tests/feature
+    - message: '/Undefined variable: \$this/'
       path: tests/Pest.php
     - message: '/Call to deprecated method optional\(\).+/'
       path: tests/feature/Transformers/AliasesTest.php
@@ -31,6 +37,8 @@ parameters:
       path: tests/feature/Transformers/DeprecatedMaxTest.php
     - message: '/Parameter #1 \$rule of static method Respect\\Validation\\Mixins\\StaticValidator::min\(\) expects Respect\\Validation\\Rule.+/'
       path: tests/feature/Transformers/DeprecatedMinTest.php
+    - message: '/Parameter #(1|2) \$(unit|rule) of static method Respect\\Validation\\Mixins\\StaticValidator::size\(\) expects .+/'
+      path: tests/feature/Transformers/DeprecatedSizeTest.php
     - message: '/Call to an undefined static method Respect\\Validation\\Validator::type\(\)./'
       path: tests/feature/Transformers/DeprecatedTypeTest.php
     - message: '/Method .+\\TestingStringifier::stringify\(\) never returns null so it can be removed from the return type./'

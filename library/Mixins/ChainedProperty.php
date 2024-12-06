@@ -314,11 +314,10 @@ interface ChainedProperty
 
     public function propertyScalarVal(string $propertyName): ChainedValidator;
 
-    public function propertySize(
-        string $propertyName,
-        string|int|null $minSize = null,
-        string|int|null $maxSize = null,
-    ): ChainedValidator;
+    /**
+     * @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit
+     */
+    public function propertySize(string $propertyName, string $unit, Rule $rule): ChainedValidator;
 
     public function propertySlug(string $propertyName): ChainedValidator;
 

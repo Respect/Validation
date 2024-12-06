@@ -11,79 +11,91 @@ namespace Respect\Validation\Rules;
 
 use org\bovigo\vfs\content\LargeFileContent;
 use org\bovigo\vfs\vfsStream;
+use org\bovigo\vfs\vfsStreamDirectory;
+use PHPUnit\Framework\Attributes\Before;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
-use Respect\Validation\Test\RuleTestCase;
+use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\Stubs\StreamStub;
 use Respect\Validation\Test\Stubs\UploadedFileStub;
+use Respect\Validation\Test\TestCase;
 use SplFileInfo;
+
+use function uniqid;
 
 #[Group('rule')]
 #[CoversClass(Size::class)]
-final class SizeTest extends RuleTestCase
+final class SizeTest extends TestCase
 {
+    private vfsStreamDirectory $root;
+
+    #[Before]
+    public function setUpVfsStream(): void
+    {
+        $this->root = vfsStream::setup();
+    }
+
     #[Test]
     public function shouldThrowsAnExceptionWhenSizeIsNotValid(): void
     {
         $this->expectException(InvalidRuleConstructorException::class);
-        $this->expectExceptionMessage('"42jb" is not a recognized file size');
+        $this->expectExceptionMessage('"whatever" is not a recognized data storage unit');
 
-        new Size('42jb');
+        // @phpstan-ignore-next-line
+        new Size('whatever', Stub::daze());
     }
 
-    /** @return iterable<array{Size, mixed}> */
-    public static function providerForValidInput(): iterable
+    #[Test]
+    public function shouldGetTheSizeOfFilePassedAsString(): void
     {
-        $root = vfsStream::setup();
-        $file2Kb = vfsStream::newFile('2kb.txt')
+        $file = vfsStream::newFile(uniqid())
             ->withContent(LargeFileContent::withKilobytes(2))
-            ->at($root);
-        $file2Mb = vfsStream::newFile('2mb.txt')
-            ->withContent(LargeFileContent::withMegabytes(2))
-            ->at($root);
+            ->at($this->root);
 
-        return [
-            'file with at least 1kb' => [new Size('1kb', null), $file2Kb->url()],
-            'file with at least 2k' => [new Size('2kb', null), $file2Kb->url()],
-            'file with up to 2kb' => [new Size(null, '2kb'), $file2Kb->url()],
-            'file with up to 3kb' => [new Size(null, '3kb'), $file2Kb->url()],
-            'file between 1kb and 3kb' => [new Size('1kb', '3kb'), $file2Kb->url()],
-            'file with at least 1mb' => [new Size('1mb', null), $file2Mb->url()],
-            'file with at least 2mb' => [new Size('2mb', null), $file2Mb->url()],
-            'file with up to 2mb' => [new Size(null, '2mb'), $file2Mb->url()],
-            'file with up to 3mb' => [new Size(null, '3mb'), $file2Mb->url()],
-            'file between 1mb and 3mb' => [new Size('1mb', '3mb'), $file2Mb->url()],
-            'SplFileInfo instance' => [new Size('1mb', '3mb'), new SplFileInfo($file2Mb->url())],
-            'PSR-7 stream' => [new Size('1kb', '2kb'), StreamStub::createWithSize(1024)],
-            'PSR-7 UploadedFile' => [new Size('1kb', '2kb'), UploadedFileStub::createWithSize(1024)],
-        ];
+        $wrapped = Stub::pass(1);
+        $rule = new Size('KB', $wrapped);
+        $rule->evaluate($file->url());
+
+        self::assertSame([2], $wrapped->inputs);
     }
 
-    /** @return iterable<array{Size, mixed}> */
-    public static function providerForInvalidInput(): iterable
+    #[Test]
+    public function shouldGetTheSizeOfFilePassedAsSplFileInfo(): void
     {
-        $root = vfsStream::setup();
-        $file2Kb = vfsStream::newFile('2kb.txt')
-            ->withContent(LargeFileContent::withKilobytes(2))
-            ->at($root);
-        $file2Mb = vfsStream::newFile('2mb.txt')
-            ->withContent(LargeFileContent::withMegabytes(2))
-            ->at($root);
+        $file = vfsStream::newFile(uniqid())
+            ->withContent(LargeFileContent::withGigabytes(1))
+            ->at($this->root);
 
-        return [
-            'file with at least 3kb' => [new Size('3kb', null), $file2Kb->url()],
-            'file with up to 1kb' => [new Size(null, '1kb'), $file2Kb->url()],
-            'file between 1kb and 1.5kb' => [new Size('1kb', '1.5kb'), $file2Kb->url()],
-            'file with at least 2.5mb' => [new Size('2.5mb', null), $file2Mb->url()],
-            'file with at least 3gb' => [new Size('3gb', null), $file2Mb->url()],
-            'file with up to 1b' => [new Size(null, '1b'), $file2Mb->url()],
-            'file between 1pb and 3pb' => [new Size('1pb', '3pb'), $file2Mb->url()],
-            'SplFileInfo instancia' => [new Size('1pb', '3pb'), new SplFileInfo($file2Mb->url())],
-            'parameter invalid' => [new Size('1pb', '3pb'), []],
-            'PSR-7 stream' => [new Size('1MB', '1.1MB'), StreamStub::createWithSize(1024)],
-            'PSR-7 UploadedFile' => [new Size('1MB', '1.1MB'), UploadedFileStub::createWithSize(1024)],
-        ];
+        $wrapped = Stub::pass(1);
+        $rule = new Size('GB', $wrapped);
+        $rule->evaluate(new SplFileInfo($file->url()));
+
+        self::assertSame([1], $wrapped->inputs);
+    }
+
+    #[Test]
+    public function shouldGetTheSizeOfFilePassedAsUploadedFileInterface(): void
+    {
+        $file = UploadedFileStub::createWithSize(1024);
+
+        $wrapped = Stub::pass(1);
+        $rule = new Size('KB', $wrapped);
+        $rule->evaluate($file);
+
+        self::assertSame([1], $wrapped->inputs);
+    }
+
+    #[Test]
+    public function shouldGetTheSizeOfFilePassedAsStreamInterface(): void
+    {
+        $file = StreamStub::createWithSize(2 * 1024 ** 2);
+
+        $wrapped = Stub::pass(1);
+        $rule = new Size('MB', $wrapped);
+        $rule->evaluate($file);
+
+        self::assertSame([2], $wrapped->inputs);
     }
 }

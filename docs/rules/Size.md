@@ -1,78 +1,71 @@
 # Size
 
-- `Size(string $minSize)`
-- `Size(string $minSize, string $maxSize)`
-- `Size(null, string $maxSize)`
+- `Size(string $unit, Rule $rule)`
 
 Validates whether the input is a file that is of a certain size or not.
 
 ```php
-v::size('1KB')->isValid($filename); // Must have at least 1KB size
-v::size('1MB', '2MB')->isValid($filename); // Must have the size between 1MB and 2MB
-v::size(null, '1GB')->isValid($filename); // Must not be greater than 1GB
+v::size('KB', v::greaterThan(1))->isValid($filename);
+v::size('MB', v::between(1, 2))->isValid($filename);
+v::size('GB', v::lessThan(1))->isValid($filename);
 ```
 
-Sizes are not case-sensitive and the accepted values are:
+Accepted data storage units are `B`, `KB`, `MB`, `GB`, `TB`, `PB`, `EB`, `ZB`, and `YB`.
 
-- B
-- KB
-- MB
-- GB
-- TB
-- PB
-- EB
-- ZB
-- YB
+This validator will accept:
 
-This validator will consider `SplFileInfo` instances, like:
-
-```php
-v::size('1.5mb')->isValid(new SplFileInfo($filename)); // Will return true or false
-```
-
-Message template for this validator includes `{{minSize}}` and `{{maxSize}}`.
+* `string` file paths
+* `SplFileInfo` objects (see [SplFileInfo][])
+* `Psr\Http\Message\UploadedFileInterface` objects (see [PSR-7][])
+* `Psr\Http\Message\StreamInterface` objects (see [PSR-7][])
 
 ## Templates
 
-### `Size::TEMPLATE_BOTH`
+### `Size::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                 |
-|------------|----------------------------------------------------------|
-| `default`  | {{name}} must be between {{minSize}} and {{maxSize}}     |
-| `inverted` | {{name}} must not be between {{minSize}} and {{maxSize}} |
+| Mode       | Template                           |
+|------------|------------------------------------|
+| `default`  | The size in {{unit&#124;trans}} of |
+| `inverted` | The size in {{unit&#124;trans}} of |
 
-### `Size::TEMPLATE_LOWER`
+This template serve as message prefix:
 
-| Mode       | Template                                      |
-|------------|-----------------------------------------------|
-| `default`  | {{name}} must be greater than {{minSize}}     |
-| `inverted` | {{name}} must not be greater than {{minSize}} |
+```php
+v::size('MB', v::equals(2))->assert('filename.txt')
+// Message: The size in megabytes of "filename.txt" must be equal to 2
 
-### `Size::TEMPLATE_GREATER`
+v::size('KB', v::not(v::equals(56)))->assert('filename.txt')
+// Message: The size in kilobytes of "filename.txt" must not be equal to 56
+```
 
-| Mode       | Template                                    |
-|------------|---------------------------------------------|
-| `default`  | {{name}} must be lower than {{maxSize}}     |
-| `inverted` | {{name}} must not be lower than {{maxSize}} |
+### `Size::TEMPLATE_WRONG_TYPE`
+
+Used when the input is not a valid file path, a `SplFileInfo` object, or a PSR-7 interface.
+
+| Mode       | Template                                                                           |
+|------------|------------------------------------------------------------------------------------|
+| `default`  | {{name}} must be a filename or an instance of SplFileInfo or a PSR-7 interface     |
+| `inverted` | {{name}} must not be a filename or an instance of SplFileInfo or a PSR-7 interface |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
 |-------------|------------------------------------------------------------------|
-| `maxSize`   |                                                                  |
-| `minSize`   |                                                                  |
 | `name`      | The validated input or the custom validator name (if specified). |
+| `unit`      | The name of the storage unit (bytes, kilobytes, etc.)            |
 
 ## Categorization
 
 - File system
+- Transformations
 
 ## Changelog
 
-| Version | Description       |
-|--------:|-------------------|
-|   2.1.0 | Add PSR-7 support |
-|   1.0.0 | Created           |
+| Version | Description             |
+|--------:|-------------------------|
+|   3.0.0 | Became a transformation |
+|   2.1.0 | Add [PSR-7][] support   |
+|   1.0.0 | Created                 |
 
 ***
 See also:
@@ -88,3 +81,6 @@ See also:
 - [SymbolicLink](SymbolicLink.md)
 - [Uploaded](Uploaded.md)
 - [Writable](Writable.md)
+
+[PSR-7]: https://www.php-fig.org/psr/psr-7/
+[SplFileInfo]: https://www.php.net/SplFileInfo

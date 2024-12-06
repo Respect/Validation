@@ -15,126 +15,102 @@ use Psr\Http\Message\UploadedFileInterface;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
+use Respect\Validation\Rules\Core\Wrapper;
 use SplFileInfo;
 
+use function array_map;
 use function filesize;
-use function floatval;
-use function is_numeric;
 use function is_string;
-use function preg_match;
+use function ucfirst;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be between {{minSize}} and {{maxSize}}',
-    '{{name}} must not be between {{minSize}} and {{maxSize}}',
-    self::TEMPLATE_BOTH,
+    'The size in {{unit|trans}} of',
+    'The size in {{unit|trans}} of',
+    Size::TEMPLATE_STANDARD
 )]
 #[Template(
-    '{{name}} must be greater than {{minSize}}',
-    '{{name}} must not be greater than {{minSize}}',
-    self::TEMPLATE_LOWER,
+    '{{name}} must be a filename or an instance of SplFileInfo or a PSR-7 interface',
+    '{{name}} must not be a filename or an instance of SplFileInfo or a PSR-7 interface',
+    self::TEMPLATE_WRONG_TYPE
 )]
-#[Template(
-    '{{name}} must be lower than {{maxSize}}',
-    '{{name}} must not be lower than {{maxSize}}',
-    self::TEMPLATE_GREATER,
-)]
-final class Size extends Standard
+final class Size extends Wrapper
 {
-    public const TEMPLATE_LOWER = '__lower__';
-    public const TEMPLATE_GREATER = '__greater__';
-    public const TEMPLATE_BOTH = '__both__';
+    public const TEMPLATE_WRONG_TYPE = '__wrong_type__';
 
-    private readonly ?float $minValue;
+    private const DATA_STORAGE_UNITS = [
+        'B' => ['name' => 'bytes', 'bytes' => 1],
+        'KB' => ['name' => 'kilobytes', 'bytes' => 1024],
+        'MB' => ['name' => 'megabytes', 'bytes' => 1024 ** 2],
+        'GB' => ['name' => 'gigabytes', 'bytes' => 1024 ** 3],
+        'TB' => ['name' => 'terabytes', 'bytes' => 1024 ** 4],
+        'PB' => ['name' => 'petabytes', 'bytes' => 1024 ** 5],
+        'EB' => ['name' => 'exabytes', 'bytes' => 1024 ** 6],
+        'ZB' => ['name' => 'zettabytes', 'bytes' => 1024 ** 7],
+        'YB' => ['name' => 'yottabytes', 'bytes' => 1024 ** 8],
+    ];
 
-    private readonly ?float $maxValue;
-
+    /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public function __construct(
-        private readonly string|int|null $minSize = null,
-        private readonly string|int|null $maxSize = null
+        private readonly string $unit,
+        Rule $rule
     ) {
-        $this->minValue = $minSize ? $this->toBytes((string) $minSize) : null;
-        $this->maxValue = $maxSize ? $this->toBytes((string) $maxSize) : null;
+        if (!isset(self::DATA_STORAGE_UNITS[$unit])) {
+            throw new InvalidRuleConstructorException('"%s" is not a recognized data storage unit.', $unit);
+        }
+
+        parent::__construct($rule);
     }
 
     public function evaluate(mixed $input): Result
     {
-        return new Result(
-            $this->isValid($input),
-            $input,
-            $this,
-            ['minSize' => $this->minSize, 'maxSize' => $this->maxSize],
-            $this->getStandardTemplate()
-        );
+        $size = $this->getSize($input);
+        if ($size === null) {
+            return Result::failed($input, $this, [], self::TEMPLATE_WRONG_TYPE)
+                ->withId('size' . ucfirst($this->rule->evaluate($input)->id));
+        }
+
+        $result = $this->rule->evaluate($this->getSize($input) / self::DATA_STORAGE_UNITS[$this->unit]['bytes']);
+
+        return $this->enrichResult($input, $result);
     }
 
-    private function isValid(mixed $input): bool
+    private function getSize(mixed $input): ?int
     {
+        if (is_string($input)) {
+            return (int) filesize($input);
+        }
+
         if ($input instanceof SplFileInfo) {
-            return $this->isValidSize((float) $input->getSize());
+            return $input->getSize();
         }
 
         if ($input instanceof UploadedFileInterface) {
-            return $this->isValidSize((float) $input->getSize());
+            return $input->getSize();
         }
 
         if ($input instanceof StreamInterface) {
-            return $this->isValidSize((float) $input->getSize());
+            return $input->getSize();
         }
 
-        if (is_string($input)) {
-            return $this->isValidSize((float) filesize($input));
-        }
-
-        return false;
+        return null;
     }
 
-    private function getStandardTemplate(): string
+    private function enrichResult(mixed $input, Result $result): Result
     {
-        if (!$this->minValue) {
-            return self::TEMPLATE_GREATER;
+        if (!$result->allowsSubsequent()) {
+            return $result
+                ->withInput($input)
+                ->withChildren(
+                    ...array_map(fn(Result $child) => $this->enrichResult($input, $child), $result->children)
+                );
         }
 
-        if (!$this->maxValue) {
-            return self::TEMPLATE_LOWER;
-        }
+        $parameters = ['unit' => self::DATA_STORAGE_UNITS[$this->unit]['name']];
 
-        return self::TEMPLATE_BOTH;
-    }
-
-    /**
-     * @todo Move it to a trait
-     */
-    private function toBytes(string $size): float
-    {
-        $value = $size;
-        $units = ['b', 'kb', 'mb', 'gb', 'tb', 'pb', 'eb', 'zb', 'yb'];
-        foreach ($units as $exponent => $unit) {
-            if (!preg_match('/^(\d+(.\d+)?)' . $unit . '$/i', $size, $matches)) {
-                continue;
-            }
-            $value = floatval($matches[1]) * 1024 ** $exponent;
-            break;
-        }
-
-        if (!is_numeric($value)) {
-            throw new InvalidRuleConstructorException('"%s" is not a recognized file size.', $size);
-        }
-
-        return (float) $value;
-    }
-
-    private function isValidSize(float $size): bool
-    {
-        if ($this->minValue !== null && $this->maxValue !== null) {
-            return $size >= $this->minValue && $size <= $this->maxValue;
-        }
-
-        if ($this->minValue !== null) {
-            return $size >= $this->minValue;
-        }
-
-        return $size <= $this->maxValue;
+        return (new Result($result->isValid, $input, $this, $parameters, id: $result->id))
+            ->withPrefixedId('size')
+            ->withSubsequent($result->withInput($input));
     }
 }

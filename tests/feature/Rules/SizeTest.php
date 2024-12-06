@@ -7,62 +7,67 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
-    fn() => v::size('1kb', '2kb')->assert('tests/fixtures/valid-image.gif'),
-    '"tests/fixtures/valid-image.gif" must be between "1kb" and "2kb"',
+use org\bovigo\vfs\content\LargeFileContent;
+use org\bovigo\vfs\vfsStream;
+
+beforeEach(function (): void {
+    $this->root = vfsStream::setup();
+
+    $this->file2Kb = vfsStream::newFile('2kb.txt')
+        ->withContent(LargeFileContent::withKilobytes(2))
+        ->at($this->root);
+
+    $this->file2Mb = vfsStream::newFile('3mb.txt')
+        ->withContent(LargeFileContent::withMegabytes(3))
+        ->at($this->root);
+});
+
+test('Default', expectAll(
+    fn() => v::size('KB', v::lessThan(2))->assert($this->file2Kb->url()),
+    'The size in kilobytes of "vfs://root/2kb.txt" must be less than 2',
+    '- The size in kilobytes of "vfs://root/2kb.txt" must be less than 2',
+    ['sizeLessThan' => 'The size in kilobytes of "vfs://root/2kb.txt" must be less than 2']
 ));
 
-test('Scenario #2', expectMessage(
-    fn() => v::size('700kb', null)->assert('tests/fixtures/valid-image.gif'),
-    '"tests/fixtures/valid-image.gif" must be greater than "700kb"',
+test('Wrong type', expectAll(
+    fn() => v::size('KB', v::lessThan(2))->assert(new stdClass()),
+    '`stdClass {}` must be a filename or an instance of SplFileInfo or a PSR-7 interface',
+    '- `stdClass {}` must be a filename or an instance of SplFileInfo or a PSR-7 interface',
+    ['sizeLessThan' => '`stdClass {}` must be a filename or an instance of SplFileInfo or a PSR-7 interface']
 ));
 
-test('Scenario #3', expectMessage(
-    fn() => v::size(null, '1kb')->assert('tests/fixtures/valid-image.gif'),
-    '"tests/fixtures/valid-image.gif" must be lower than "1kb"',
+test('Inverted', expectAll(
+    fn() => v::size('MB', v::not(v::equals(3)))->assert($this->file2Mb->url()),
+    'The size in megabytes of "vfs://root/3mb.txt" must not be equal to 3',
+    '- The size in megabytes of "vfs://root/3mb.txt" must not be equal to 3',
+    ['sizeNotEquals' => 'The size in megabytes of "vfs://root/3mb.txt" must not be equal to 3']
 ));
 
-test('Scenario #4', expectMessage(
-    fn() => v::not(v::size('500kb', '600kb'))->assert('tests/fixtures/valid-image.gif'),
-    '"tests/fixtures/valid-image.gif" must not be between "500kb" and "600kb"',
+test('Wrapped with name', expectAll(
+    fn() => v::size('KB', v::lessThan(2)->setName('Wrapped'))->assert($this->file2Kb->url()),
+    'The size in kilobytes of Wrapped must be less than 2',
+    '- The size in kilobytes of Wrapped must be less than 2',
+    ['sizeLessThan' => 'The size in kilobytes of Wrapped must be less than 2']
 ));
 
-test('Scenario #5', expectMessage(
-    fn() => v::not(v::size('500kb', null))->assert('tests/fixtures/valid-image.gif'),
-    '"tests/fixtures/valid-image.gif" must not be greater than "500kb"',
+test('Wrapper with name', expectAll(
+    fn() => v::size('KB', v::lessThan(2))->setName('Wrapper')->assert($this->file2Kb->url()),
+    'The size in kilobytes of Wrapper must be less than 2',
+    '- The size in kilobytes of Wrapper must be less than 2',
+    ['sizeLessThan' => 'The size in kilobytes of Wrapper must be less than 2']
 ));
 
-test('Scenario #6', expectMessage(
-    fn() => v::not(v::size(null, '600kb'))->assert('tests/fixtures/valid-image.gif'),
-    '"tests/fixtures/valid-image.gif" must not be lower than "600kb"',
-));
-
-test('Scenario #7', expectFullMessage(
-    fn() => v::size('1kb', '2kb')->assert('tests/fixtures/valid-image.gif'),
-    '- "tests/fixtures/valid-image.gif" must be between "1kb" and "2kb"',
-));
-
-test('Scenario #8', expectFullMessage(
-    fn() => v::size('700kb', null)->assert('tests/fixtures/valid-image.gif'),
-    '- "tests/fixtures/valid-image.gif" must be greater than "700kb"',
-));
-
-test('Scenario #9', expectFullMessage(
-    fn() => v::size(null, '1kb')->assert('tests/fixtures/valid-image.gif'),
-    '- "tests/fixtures/valid-image.gif" must be lower than "1kb"',
-));
-
-test('Scenario #10', expectFullMessage(
-    fn() => v::not(v::size('500kb', '600kb'))->assert('tests/fixtures/valid-image.gif'),
-    '- "tests/fixtures/valid-image.gif" must not be between "500kb" and "600kb"',
-));
-
-test('Scenario #11', expectFullMessage(
-    fn() => v::not(v::size('500kb', null))->assert('tests/fixtures/valid-image.gif'),
-    '- "tests/fixtures/valid-image.gif" must not be greater than "500kb"',
-));
-
-test('Scenario #12', expectFullMessage(
-    fn() => v::not(v::size(null, '600kb'))->assert('tests/fixtures/valid-image.gif'),
-    '- "tests/fixtures/valid-image.gif" must not be lower than "600kb"',
+test('Chained wrapped rule', expectAll(
+    fn() => v::size('KB', v::between(5, 7)->odd())->assert($this->file2Kb->url()),
+    'The size in kilobytes of "vfs://root/2kb.txt" must be between 5 and 7',
+    <<<'FULL_MESSAGE'
+    - All of the required rules must pass for "vfs://root/2kb.txt"
+      - The size in kilobytes of "vfs://root/2kb.txt" must be between 5 and 7
+      - The size in kilobytes of "vfs://root/2kb.txt" must be an odd number
+    FULL_MESSAGE,
+    [
+        '__root__' => 'All of the required rules must pass for "vfs://root/2kb.txt"',
+        'sizeBetween' => 'The size in kilobytes of "vfs://root/2kb.txt" must be between 5 and 7',
+        'sizeOdd' => 'The size in kilobytes of "vfs://root/2kb.txt" must be an odd number',
+    ]
 ));

@@ -265,6 +265,7 @@
 - [Length](rules/Length.md)
 - [Max](rules/Max.md)
 - [Min](rules/Min.md)
+- [Size](rules/Size.md)
 
 ## Types
 

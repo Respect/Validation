@@ -349,7 +349,10 @@ interface ChainedValidator extends
 
     public function scalarVal(): ChainedValidator;
 
-    public function size(string|int|null $minSize = null, string|int|null $maxSize = null): ChainedValidator;
+    /**
+     * @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit
+     */
+    public function size(string $unit, Rule $rule): ChainedValidator;
 
     public function slug(): ChainedValidator;
 

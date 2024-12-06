@@ -21,6 +21,7 @@ use Respect\Validation\Transformers\DeprecatedKeyNested;
 use Respect\Validation\Transformers\DeprecatedKeyValue;
 use Respect\Validation\Transformers\DeprecatedLength;
 use Respect\Validation\Transformers\DeprecatedMinAndMax;
+use Respect\Validation\Transformers\DeprecatedSize;
 use Respect\Validation\Transformers\DeprecatedType;
 use Respect\Validation\Transformers\Prefix;
 use Respect\Validation\Transformers\RuleSpec;
@@ -44,7 +45,9 @@ final class Factory
                 new DeprecatedKeyValue(
                     new DeprecatedMinAndMax(
                         new DeprecatedAge(
-                            new DeprecatedKeyNested(new DeprecatedLength(new DeprecatedType(new Aliases(new Prefix()))))
+                            new DeprecatedKeyNested(new DeprecatedLength(new DeprecatedType(new DeprecatedSize(
+                                new Aliases(new Prefix())
+                            ))))
                         )
                     )
                 )

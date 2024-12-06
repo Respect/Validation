@@ -295,7 +295,10 @@ interface StaticNot
 
     public static function notScalarVal(): ChainedValidator;
 
-    public static function notSize(string|int|null $minSize = null, string|int|null $maxSize = null): ChainedValidator;
+    /**
+     * @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit
+     */
+    public static function notSize(string $unit, Rule $rule): ChainedValidator;
 
     public static function notSlug(): ChainedValidator;
 

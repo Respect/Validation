@@ -13,11 +13,11 @@ use Symfony\Component\VarExporter\VarExporter;
 use function PHPUnit\Framework\assertStringMatchesFormat;
 
 /** @param array<string, mixed> $messages */
-function expectAll(callable $callback, string $message, string $fullMessage, array $messages): Closure
+function expectAll(Closure $callback, string $message, string $fullMessage, array $messages): Closure
 {
     return function () use ($callback, $message, $fullMessage, $messages): void {
         try {
-            $callback();
+            $callback->call($this);
             test()->expectException(ValidationException::class);
         } catch (ValidationException $e) {
             expect($e->getMessage())->toBe($message)
@@ -28,7 +28,7 @@ function expectAll(callable $callback, string $message, string $fullMessage, arr
 }
 
 /** @param array<string, mixed> $messages */
-function expectAllToMatch(callable $callback, string $message, string $fullMessage, array $messages): Closure
+function expectAllToMatch(Closure $callback, string $message, string $fullMessage, array $messages): Closure
 {
     return function () use ($callback, $message, $fullMessage, $messages): void {
         try {
@@ -46,7 +46,7 @@ function expectAllToMatch(callable $callback, string $message, string $fullMessa
     };
 }
 
-function expectMessage(callable $callback, string $message): Closure
+function expectMessage(Closure $callback, string $message): Closure
 {
     return function () use ($callback, $message): void {
         try {
@@ -58,7 +58,7 @@ function expectMessage(callable $callback, string $message): Closure
     };
 }
 
-function expectFullMessage(callable $callback, string $fullMessage): Closure
+function expectFullMessage(Closure $callback, string $fullMessage): Closure
 {
     return function () use ($callback, $fullMessage): void {
         try {
@@ -71,7 +71,7 @@ function expectFullMessage(callable $callback, string $fullMessage): Closure
 }
 
 /** @param array<string, mixed> $messages */
-function expectMessages(callable $callback, array $messages): Closure
+function expectMessages(Closure $callback, array $messages): Closure
 {
     return function () use ($callback, $messages): void {
         try {
@@ -79,6 +79,29 @@ function expectMessages(callable $callback, array $messages): Closure
             test()->expectException(ValidationException::class);
         } catch (ValidationException $exception) {
             expect($exception->getMessages())->toBe($messages, 'Validation messages do not match');
+        }
+    };
+}
+
+function expectDeprecation(Closure $callback, string $error): Closure
+{
+    return function () use ($callback, $error): void {
+        $lastError = null;
+        set_error_handler(static function (int $errno, string $errstr) use (&$lastError): bool {
+            if ($errno !== E_USER_DEPRECATED) {
+                return false;
+            }
+            $lastError = $errstr;
+
+            return true;
+        });
+
+        try {
+            $callback->call($this);
+        } catch (Throwable $e) {
+            restore_error_handler();
+            expect($lastError)->toBe($error);
+            throw $e;
         }
     };
 }
@@ -93,7 +116,7 @@ function expectMessageAndError(Closure $callback, string $message, string $error
             return true;
         });
         try {
-            $callback();
+            $callback->call($this);
             test()->expectException(ValidationException::class);
         } catch (ValidationException $e) {
             expect($e->getMessage())->toBe($message, 'Validation message does not match');
