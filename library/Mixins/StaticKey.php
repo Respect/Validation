@@ -301,11 +301,10 @@ interface StaticKey
 
     public static function keyScalarVal(int|string $key): ChainedValidator;
 
-    public static function keySize(
-        int|string $key,
-        string|int|null $minSize = null,
-        string|int|null $maxSize = null,
-    ): ChainedValidator;
+    /**
+     * @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit
+     */
+    public static function keySize(int|string $key, string $unit, Rule $rule): ChainedValidator;
 
     public static function keySlug(int|string $key): ChainedValidator;
 

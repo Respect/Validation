@@ -303,7 +303,10 @@ interface ChainedUndefOr
 
     public function undefOrScalarVal(): ChainedValidator;
 
-    public function undefOrSize(string|int|null $minSize = null, string|int|null $maxSize = null): ChainedValidator;
+    /**
+     * @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit
+     */
+    public function undefOrSize(string $unit, Rule $rule): ChainedValidator;
 
     public function undefOrSlug(): ChainedValidator;
 
