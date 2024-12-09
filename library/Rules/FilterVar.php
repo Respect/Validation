@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Envelope;
@@ -27,6 +28,7 @@ use const FILTER_VALIDATE_IP;
 use const FILTER_VALIDATE_REGEXP;
 use const FILTER_VALIDATE_URL;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be valid',
     '{{name}} must not be valid',

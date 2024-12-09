@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Helpers\CanValidateUndefined;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -16,6 +17,7 @@ use Respect\Validation\Rules\Core\Wrapper;
 
 use function array_map;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     'or must be undefined',
     'and must not be undefined',

@@ -69,6 +69,7 @@ This rule will validate public, private, protected, uninitialised, and static pr
 ***
 See also:
 
+- [Attributes](Attributes.md)
 - [Key](Key.md)
 - [KeyExists](KeyExists.md)
 - [KeyOptional](KeyOptional.md)

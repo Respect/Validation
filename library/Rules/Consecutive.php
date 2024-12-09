@@ -9,10 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\Composite;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 final class Consecutive extends Composite
 {
     use CanBindEvaluateRule;

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
 use Respect\Validation\Message\Template;
@@ -21,6 +22,7 @@ use function is_string;
 
 use const FILTER_VALIDATE_EMAIL;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a valid email address',
     '{{name}} must not be an email address',

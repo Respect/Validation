@@ -170,6 +170,7 @@ function overwriteFile(string $content, string $basename): void
         'Property',
         'PropertyExists',
         'PropertyOptional',
+        'Attributes',
     ];
 
     $mixins = [
@@ -177,10 +178,10 @@ function overwriteFile(string $content, string $basename): void
         ['Length', 'length', $numberRelatedRules, []],
         ['Max', 'max', $numberRelatedRules, []],
         ['Min', 'min', $numberRelatedRules, []],
-        ['Not', 'not', [], ['Not', 'NotEmpty', 'NotBlank', 'NotEmoji', 'NotUndef', 'NotOptional', 'NullOr', 'UndefOr', 'Optional']],
+        ['Not', 'not', [], ['Not', 'NotEmpty', 'NotBlank', 'NotEmoji', 'NotUndef', 'NotOptional', 'NullOr', 'UndefOr', 'Optional', 'Attributes']],
         ['NullOr', 'nullOr', [], ['Nullable', 'NullOr', 'Optional', 'NotOptional', 'NotUndef', 'UndefOr']],
         ['Property', 'property', [], $structureRelatedRules],
-        ['UndefOr', 'undefOr', [], ['Nullable', 'NullOr', 'NotOptional', 'NotUndef', 'Optional', 'UndefOr']],
+        ['UndefOr', 'undefOr', [], ['Nullable', 'NullOr', 'NotOptional', 'NotUndef', 'Optional', 'UndefOr', 'Attributes']],
         ['Validator', null, [], []],
     ];
 

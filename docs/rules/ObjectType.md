@@ -39,6 +39,7 @@ v::objectType()->isValid(new stdClass); // true
 See also:
 
 - [ArrayType](ArrayType.md)
+- [Attributes](Attributes.md)
 - [BoolType](BoolType.md)
 - [BoolVal](BoolVal.md)
 - [CallableType](CallableType.md)

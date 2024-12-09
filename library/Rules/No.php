@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Envelope;
 
@@ -16,6 +17,7 @@ use function nl_langinfo;
 
 use const NOEXPR;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be similar to "No"',
     '{{name}} must not be similar to "No"',

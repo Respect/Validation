@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Envelope;
@@ -16,6 +17,7 @@ use Respect\Validation\Rules\Core\Envelope;
 use function array_map;
 use function count;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must contain at least one value from {{needles}}',
     '{{name}} must not contain any value from {{needles}}',

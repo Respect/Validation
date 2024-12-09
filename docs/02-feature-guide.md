@@ -29,6 +29,22 @@ The `assert()` method throws an exception when validation fails. You can handle 
 v::intType()->positive()->assert($input);
 ```
 
+## Smart validation
+
+Respect\Validation offers over 150 rules, many of which are designed to address common scenarios. Here’s a quick guide to some specific use cases and the rules that make validation straightforward.
+
+* Using rules as **PHP Attributes**: [Attributes](rules/Attributes.md).
+* Validating **Arrays**: [Key](rules/Key.md), [KeyOptional](rules/KeyOptional.md), [KeyExists](rules/KeyExists.md).
+* Validating **Array structures**: [KeySet](rules/KeySet.md).
+* Validating **Object properties**: [Property](rules/Property.md), [PropertyOptional](rules/PropertyOptional.md), [PropertyExists](rules/PropertyExists.md).
+* Using **Conditional validation**: [NullOr](rules/NullOr.md), [UndefOr](rules/UndefOr.md), [When](rules/When.md).
+* Using **Grouped validation**: [AllOf](rules/AllOf.md), [AnyOf](rules/AnyOf.md), [NoneOf](rules/NoneOf.md), [OneOf](rules/OneOf.md)
+* Validating **Each** value in the input: [Each](rules/Each.md).
+* Validating the **Length** of the input: [Length](rules/Length.md).
+* Validating the **Maximum** value in the input: [Max](rules/Max.md).
+* Validating the **Minimum** value in the input: [Min](rules/Min.md).
+* Handling **Special cases**: [Lazy](rules/Lazy.md), [Consecutive](rules/Consecutive.md), [Call](rules/Call.md).
+
 ### Custom templates
 
 Define your own error message when the validation fails:
@@ -101,16 +117,3 @@ v::dateTime('Y-m-d')
     ->setName('Age')
     ->assert($input);
 ```
-
-## Smart input handling
-
-Respect\Validation offers over 150 rules, many of which are designed to address common input handling scenarios. Here’s a quick guide to some specific use cases and the rules that make validation straightforward.
-
-* Validating arrays: [Key](rules/Key.md), [KeyOptional](rules/KeyOptional.md), and [KeyExists](rules/KeyExists.md).
-* Validating array structures: [KeySet](rules/KeySet.md).
-* Validating object properties: [Property](rules/Property.md), [PropertyOptional](rules/PropertyOptional.md), and [PropertyExists](rules/PropertyExists.md).
-* Validating only when input is not `null`:  [NullOr](rules/NullOr.md).
-* Validating only when input is not `null` or an empty string: [UndefOr](rules/UndefOr.md).
-* Validating the length of the input: [Length](rules/Length.md).
-* Validating the maximum value of the input: [Max](rules/Max.md).
-* Validating the minimum value of the input: [Min](rules/Min.md).
