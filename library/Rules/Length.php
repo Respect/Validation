@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Countable as PhpCountable;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -20,6 +21,7 @@ use function is_string;
 use function mb_strlen;
 use function ucfirst;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template('The length of', 'The length of')]
 final class Length extends Wrapper
 {

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\FilteredNonEmptyArray;
@@ -16,6 +17,7 @@ use Respect\Validation\Rules\Core\FilteredNonEmptyArray;
 use function array_map;
 use function array_reduce;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     'Each item in {{name}} must be valid',
     'Each item in {{name}} must be invalid',

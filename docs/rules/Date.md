@@ -1,4 +1,4 @@
-[]()# Date
+# Date
 
 - `Date()`
 - `Date(string $format)`

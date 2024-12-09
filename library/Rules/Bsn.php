@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Simple;
 
@@ -21,6 +22,7 @@ use function strval;
 /**
  * @see https://nl.wikipedia.org/wiki/Burgerservicenummer
  */
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a valid BSN',
     '{{name}} must not be a valid BSN',

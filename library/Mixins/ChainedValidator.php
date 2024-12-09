@@ -58,6 +58,8 @@ interface ChainedValidator extends
 
     public function arrayVal(): ChainedValidator;
 
+    public function attributes(): ChainedValidator;
+
     public function base(
         int $base,
         string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',

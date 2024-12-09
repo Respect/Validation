@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Helpers\CanValidateUndefined;
@@ -20,6 +21,7 @@ use Sokil\IsoCodes\Database\Subdivisions;
 
 use function class_exists;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a subdivision code of {{countryName|trans}}',
     '{{name}} must not be a subdivision code of {{countryName|trans}}',

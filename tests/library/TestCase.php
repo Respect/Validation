@@ -146,6 +146,16 @@ abstract class TestCase extends PHPUnitTestCase
         return self::providerForAnyValues()->without('arrayType');
     }
 
+    public static function providerForNonObjectTypes(): DataProvider
+    {
+        return self::providerForAnyValues()->without('objectType');
+    }
+
+    public static function providerForObjectTypesWithoutAttributes(): DataProvider
+    {
+        return self::providerForAnyValues()->with('objectType')->without('withAttributes');
+    }
+
     public static function providerForNonArrayValues(): DataProvider
     {
         return self::providerForAnyValues()->without('arrayType', 'ArrayObject');

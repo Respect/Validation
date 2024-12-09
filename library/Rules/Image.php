@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use finfo;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Simple;
@@ -20,6 +21,7 @@ use function mb_strpos;
 
 use const FILEINFO_MIME_TYPE;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a valid image file',
     '{{name}} must not be a valid image file',

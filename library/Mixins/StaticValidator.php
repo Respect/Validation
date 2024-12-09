@@ -38,6 +38,8 @@ interface StaticValidator extends
 
     public static function arrayVal(): ChainedValidator;
 
+    public static function attributes(): ChainedValidator;
+
     public static function base(
         int $base,
         string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',

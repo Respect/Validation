@@ -203,6 +203,7 @@
 
 ## Objects
 
+- [Attributes](rules/Attributes.md)
 - [Instance](rules/Instance.md)
 - [ObjectType](rules/ObjectType.md)
 - [Property](rules/Property.md)
@@ -248,6 +249,7 @@
 
 ## Structures
 
+- [Attributes](rules/Attributes.md)
 - [Key](rules/Key.md)
 - [KeyExists](rules/KeyExists.md)
 - [KeyOptional](rules/KeyOptional.md)
@@ -297,6 +299,7 @@
 - [AnyOf](rules/AnyOf.md)
 - [ArrayType](rules/ArrayType.md)
 - [ArrayVal](rules/ArrayVal.md)
+- [Attributes](rules/Attributes.md)
 - [Base](rules/Base.md)
 - [Base64](rules/Base64.md)
 - [Between](rules/Between.md)

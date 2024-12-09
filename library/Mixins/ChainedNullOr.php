@@ -30,6 +30,8 @@ interface ChainedNullOr
 
     public function nullOrArrayVal(): ChainedValidator;
 
+    public function nullOrAttributes(): ChainedValidator;
+
     public function nullOrBase(
         int $base,
         string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',

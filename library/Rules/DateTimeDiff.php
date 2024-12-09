@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use DateTimeImmutable;
 use DateTimeInterface;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
@@ -23,6 +24,7 @@ use function array_map;
 use function in_array;
 use function ucfirst;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     'The number of {{type|trans}} between now and',
     'The number of {{type|trans}} between now and',

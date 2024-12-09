@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
@@ -23,6 +24,7 @@ use function is_numeric;
 use function is_string;
 use function preg_match;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be between {{minSize}} and {{maxSize}}',
     '{{name}} must not be between {{minSize}} and {{maxSize}}',

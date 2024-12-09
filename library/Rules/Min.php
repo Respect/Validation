@@ -9,12 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\FilteredNonEmptyArray;
 
 use function min;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template('As the minimum from {{name}},', 'As the minimum from {{name}},')]
 #[Template('The minimum from', 'The minimum from', self::TEMPLATE_NAMED)]
 final class Min extends FilteredNonEmptyArray

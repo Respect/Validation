@@ -30,6 +30,8 @@ interface StaticNullOr
 
     public static function nullOrArrayVal(): ChainedValidator;
 
+    public static function nullOrAttributes(): ChainedValidator;
+
     public static function nullOrBase(
         int $base,
         string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Simple;
 use SplFileInfo;
@@ -16,6 +17,7 @@ use SplFileInfo;
 use function file_exists;
 use function is_string;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be an existing file',
     '{{name}} must not be an existing file',

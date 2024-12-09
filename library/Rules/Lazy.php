@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
@@ -17,6 +18,7 @@ use Respect\Validation\Rules\Core\Standard;
 
 use function call_user_func;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 final class Lazy extends Standard
 {
     /** @var callable(mixed): Rule */

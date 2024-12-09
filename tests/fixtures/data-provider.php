@@ -7,6 +7,7 @@
 
 declare(strict_types=1);
 
+use Respect\Validation\Test\Stubs\WithAttributes;
 use Respect\Validation\Test\Stubs\WithProperties;
 use Respect\Validation\Test\Stubs\WithStaticProperties;
 use Respect\Validation\Test\Stubs\WithUninitialized;
@@ -98,45 +99,55 @@ return [
     // Array values
     'ArrayObject' => [
         'value' => [new ArrayObject([1, 2, 3])],
-        'tags' => ['objectType', 'iterableType', 'ArrayObject', 'countable'],
+        'tags' => ['objectType', 'iterableType', 'ArrayObject', 'countable', 'withoutAttributes'],
     ],
     'empty ArrayObject' => [
         'value' => [new ArrayObject([])],
-        'tags' => ['objectType', 'iterableType', 'ArrayObject', 'countable', 'empty'],
+        'tags' => ['objectType', 'iterableType', 'ArrayObject', 'countable', 'empty', 'withoutAttributes'],
     ],
 
     // Iterable types
     'generator' => [
         'value' => [(static fn() => yield 7)()], // phpcs:ignore
-        'tags' => ['objectType', 'iterableType', 'generator'],
+        'tags' => ['objectType', 'iterableType', 'generator', 'withoutAttributes'],
     ],
     'empty generator' => [
         'value' => [(static fn() => yield from [])()],
-        'tags' => ['objectType', 'iterableType', 'generator', 'empty'],
+        'tags' => ['objectType', 'iterableType', 'generator', 'empty', 'withoutAttributes'],
     ],
 
     // Callable types
     'closure' => [
         'value' => [static fn() => 'foo'],
-        'tags' => ['objectType', 'callable'],
+        'tags' => ['objectType', 'callable', 'withoutAttributes'],
     ],
 
     // Object types
     'object' => [
         'value' => [new stdClass()],
-        'tags' => ['objectType'],
+        'tags' => ['objectType', 'withoutAttributes'],
     ],
     'object with properties' => [
         'value' => [new WithProperties()],
-        'tags' => ['objectType'],
+        'tags' => ['objectType', 'withoutAttributes'],
     ],
     'object with uninitialized properties' => [
         'value' => [new WithUninitialized()],
-        'tags' => ['objectType'],
+        'tags' => ['objectType', 'withoutAttributes'],
     ],
     'object with static properties' => [
         'value' => [new WithStaticProperties()],
-        'tags' => ['objectType'],
+        'tags' => ['objectType', 'withoutAttributes'],
+    ],
+    'object with Rule attributes' => [
+        'value' => [new WithAttributes('John Doe', 'john.doe@gmail.com', '1912-06-23')],
+        'tags' => ['objectType', 'withAttributes'],
+    ],
+    'anonymous class' => [
+        'value' => [new class {
+        },
+        ],
+        'tags' => ['objectType', 'withoutAttributes'],
     ],
 
     // Resource types

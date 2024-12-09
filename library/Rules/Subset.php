@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\Standard;
@@ -16,6 +17,7 @@ use Respect\Validation\Rules\Core\Standard;
 use function array_diff;
 use function is_array;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be subset of {{superset}}',
     '{{name}} must not be subset of {{superset}}',

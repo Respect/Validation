@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use finfo;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -20,6 +21,7 @@ use function is_string;
 
 use const FILEINFO_MIME_TYPE;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must have the {{mimetype}} MIME type',
     '{{name}} must not have the {{mimetype}} MIME type',
