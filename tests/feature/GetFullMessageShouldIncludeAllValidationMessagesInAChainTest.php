@@ -14,6 +14,6 @@ test('Scenario #1', expectFullMessage(
     <<<'FULL_MESSAGE'
     - All of the required rules must pass for 0
       - 0 must be a string
-      - The length of 0 must be between 2 and 15
+      - 0 must be a countable value or a string
     FULL_MESSAGE,
 ));

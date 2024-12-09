@@ -16,20 +16,20 @@ test('Scenario #1', expectFullMessage(
         ValidatorDefaults::setTranslator(new ArrayTranslator([
             'All of the required rules must pass for {{name}}' => 'Todas as regras requeridas devem passar para {{name}}',
             'The length of' => 'O comprimento de',
-            '{{name}} must be of type string' => '{{name}} deve ser do tipo string',
+            '{{name}} must be a string' => '{{name}} deve ser uma string',
             '{{name}} must be between {{minValue}} and {{maxValue}}' => '{{name}} deve possuir de {{minValue}} a {{maxValue}} caracteres',
             '{{name}} must be a valid telephone number for country {{countryName|trans}}'
             => '{{name}} deve ser um número de telefone válido para o país {{countryName|trans}}',
             'United States' => 'Estados Unidos',
         ]));
 
-        Validator::stringType()->lengthBetween(2, 15)->phone('US')->assert(0);
+        Validator::stringType()->lengthBetween(2, 15)->phone('US')->assert([]);
     },
     <<<'FULL_MESSAGE'
-    - Todas as regras requeridas devem passar para 0
-      - 0 must be a string
-      - O comprimento de 0 deve possuir de 2 a 15 caracteres
-      - 0 deve ser um número de telefone válido para o país Estados Unidos
+    - Todas as regras requeridas devem passar para `[]`
+      - `[]` deve ser uma string
+      - O comprimento de `[]` deve possuir de 2 a 15 caracteres
+      - `[]` deve ser um número de telefone válido para o país Estados Unidos
     FULL_MESSAGE,
 ));
 

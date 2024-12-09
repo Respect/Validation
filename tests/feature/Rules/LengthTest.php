@@ -41,3 +41,18 @@ test('With wrapper name', expectAll(
     '- The length of Cactus must be equal to 3',
     ['lengthEquals' => 'The length of Cactus must be equal to 3']
 ));
+
+test('Chained wrapped rule', expectAll(
+    fn() => v::length(v::between(5, 7)->odd())->assert([]),
+    'The length of `[]` must be between 5 and 7',
+    <<<'FULL_MESSAGE'
+    - All of the required rules must pass for `[]`
+      - The length of `[]` must be between 5 and 7
+      - The length of `[]` must be an odd number
+    FULL_MESSAGE,
+    [
+        '__root__' => 'All of the required rules must pass for `[]`',
+        'lengthBetween' => 'The length of `[]` must be between 5 and 7',
+        'lengthOdd' => 'The length of `[]` must be an odd number',
+    ]
+));
