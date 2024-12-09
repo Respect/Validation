@@ -36,7 +36,7 @@ v::time()->isValid(new DateTimeImmutable()); // false
 
 ## Templates
 
-`Time::TEMPLATE_STANDARD`
+### `Time::TEMPLATE_STANDARD`
 
 | Mode       | Template                                                   |
 |------------|------------------------------------------------------------|

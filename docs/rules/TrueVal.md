@@ -17,7 +17,7 @@ v::trueVal()->isValid('2'); // false
 
 ## Templates
 
-`TrueVal::TEMPLATE_STANDARD`
+### `TrueVal::TEMPLATE_STANDARD`
 
 | Mode       | Template                             |
 |------------|--------------------------------------|

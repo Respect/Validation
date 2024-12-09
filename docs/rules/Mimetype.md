@@ -13,7 +13,7 @@ This rule is case-sensitive and requires [fileinfo](http://php.net/fileinfo) PHP
 
 ## Templates
 
-`Mimetype::TEMPLATE_STANDARD`
+### `Mimetype::TEMPLATE_STANDARD`
 
 | Mode       | Template                                          |
 |------------|---------------------------------------------------|

@@ -25,7 +25,7 @@ Message template for this validator includes `{{endValue}}`.
 
 ## Templates
 
-`EndsWith::TEMPLATE_STANDARD`
+### `EndsWith::TEMPLATE_STANDARD`
 
 | Mode       | Template                                |
 |------------|-----------------------------------------|

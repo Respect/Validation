@@ -17,7 +17,7 @@ Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.
 
 ## Templates
 
-`Between::TEMPLATE_STANDARD`
+### `Between::TEMPLATE_STANDARD`
 
 | Mode       | Template                                                   |
 |------------|------------------------------------------------------------|

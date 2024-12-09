@@ -10,7 +10,7 @@ v::stringType()->isValid('hi'); // true
 
 ## Templates
 
-`StringType::TEMPLATE_STANDARD`
+### `StringType::TEMPLATE_STANDARD`
 
 | Mode       | Template                      |
 |------------|-------------------------------|

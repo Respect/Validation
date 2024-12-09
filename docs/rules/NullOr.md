@@ -23,7 +23,7 @@ v::nullOrBetween(1, 3)->isValid(null); // true
 ```
 ## Templates
 
-`NullOr::TEMPLATE_STANDARD`
+### `NullOr::TEMPLATE_STANDARD`
 
 | Mode       | Template             |
 |------------|----------------------|

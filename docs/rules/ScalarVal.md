@@ -11,7 +11,7 @@ v::scalarVal()->isValid(135.0); // true
 
 ## Templates
 
-`ScalarVal::TEMPLATE_STANDARD`
+### `ScalarVal::TEMPLATE_STANDARD`
 
 | Mode       | Template                            |
 |------------|-------------------------------------|

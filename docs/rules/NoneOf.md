@@ -15,7 +15,7 @@ In the sample above, 'foo' isn't a integer nor a float, so noneOf returns true.
 
 ## Templates
 
-`NoneOf::TEMPLATE_STANDARD`
+### `NoneOf::TEMPLATE_STANDARD`
 
 | Mode       | Template                                   |
 |------------|--------------------------------------------|

@@ -22,7 +22,7 @@ v::keyExists(5)->isValid(new ArrayObject(['a', 'b', 'c'])); // false
 
 ## Templates
 
-`KeyExists::TEMPLATE_STANDARD`
+### `KeyExists::TEMPLATE_STANDARD`
 
 | Mode       | Template                     |
 |------------|------------------------------|

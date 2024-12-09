@@ -11,14 +11,14 @@ v::vowel()->isValid('aei'); // true
 
 ## Templates
 
-`Vowel::TEMPLATE_STANDARD`
+### `Vowel::TEMPLATE_STANDARD`
 
 | Mode       | Template                                 |
 |------------|------------------------------------------|
 | `default`  | {{name}} must consist of vowels only     |
 | `inverted` | {{name}} must not consist of vowels only |
 
-`Vowel::TEMPLATE_EXTRA`
+### `Vowel::TEMPLATE_EXTRA`
 
 | Mode       | Template                                                   |
 |------------|------------------------------------------------------------|

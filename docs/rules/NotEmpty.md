@@ -37,14 +37,14 @@ v::stringType()->notEmpty()->isValid("\t \n \r");  //false
 
 ## Templates
 
-`NotEmpty::TEMPLATE_STANDARD`
+### `NotEmpty::TEMPLATE_STANDARD`
 
 | Mode       | Template                    |
 |------------|-----------------------------|
 | `default`  | The value must not be empty |
 | `inverted` | The value must be empty     |
 
-`NotEmpty::TEMPLATE_NAMED`
+### `NotEmpty::TEMPLATE_NAMED`
 
 | Mode       | Template                   |
 |------------|----------------------------|

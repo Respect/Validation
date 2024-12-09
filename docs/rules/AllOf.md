@@ -10,14 +10,14 @@ v::allOf(v::intVal(), v::positive())->isValid(15); // true
 
 ## Templates
 
-`AllOf::TEMPLATE_SOME`
+### `AllOf::TEMPLATE_SOME`
 
 | Mode       | Template                               |
 |------------|----------------------------------------|
 | `default`  | These rules must pass for {{name}}     |
 | `inverted` | These rules must not pass for {{name}} |
 
-`AllOf::TEMPLATE_NONE`
+### `AllOf::TEMPLATE_NONE`
 
 | Mode       | Template                                         |
 |------------|--------------------------------------------------|

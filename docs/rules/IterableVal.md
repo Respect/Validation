@@ -17,7 +17,7 @@ This rule doesn't behave as PHP's [is_iterable() function because it considers t
 
 ## Templates
 
-`IterableVal::TEMPLATE_STANDARD`
+### `IterableVal::TEMPLATE_STANDARD`
 
 | Mode       | Template                               |
 |------------|----------------------------------------|

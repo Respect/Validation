@@ -22,14 +22,14 @@ empty, the validation will fail.
 
 ## Templates
 
-`Max::TEMPLATE_STANDARD`
+### `Max::TEMPLATE_STANDARD`
 
 | Mode       | Template                    |
 |------------|-----------------------------|
 | `default`  | As the maximum of {{name}}, |
 | `inverted` | As the maximum of {{name}}, |
 
-`Max::TEMPLATE_NAMED`
+### `Max::TEMPLATE_NAMED`
 
 | Mode       | Template       |
 |------------|----------------|

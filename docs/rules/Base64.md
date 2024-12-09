@@ -11,7 +11,7 @@ v::base64()->isValid('respect!'); // false
 
 ## Templates
 
-`Base64::TEMPLATE_STANDARD`
+### `Base64::TEMPLATE_STANDARD`
 
 | Mode       | Template                                     |
 |------------|----------------------------------------------|

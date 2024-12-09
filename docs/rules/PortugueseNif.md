@@ -11,7 +11,7 @@ v::portugueseNif()->isValid('220005245'); // false
 
 ## Templates
 
-`PortugueseNif::TEMPLATE_STANDARD`
+### `PortugueseNif::TEMPLATE_STANDARD`
 
 | Mode       | Template                              |
 |------------|---------------------------------------|

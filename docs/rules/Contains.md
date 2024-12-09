@@ -24,7 +24,7 @@ Message template for this validator includes `{{containsValue}}`.
 
 ## Templates
 
-`Contains::TEMPLATE_STANDARD`
+### `Contains::TEMPLATE_STANDARD`
 
 | Mode       | Template                                    |
 |------------|---------------------------------------------|

@@ -28,14 +28,14 @@ of extra chars passed as the parameter.
 
 ## Templates
 
-`Alnum::TEMPLATE_STANDARD`
+### `Alnum::TEMPLATE_STANDARD`
 
 | Mode       | Template                                                  |
 |------------|-----------------------------------------------------------|
 | `default`  | {{name}} must contain only letters (a-z) and digits (0-9) |
 | `inverted` | {{name}} must not contain letters (a-z) or digits (0-9)   |
 
-`Alnum::TEMPLATE_EXTRA`
+### `Alnum::TEMPLATE_EXTRA`
 
 | Mode       | Template                                                                        |
 |------------|---------------------------------------------------------------------------------|

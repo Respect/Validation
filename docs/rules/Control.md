@@ -12,14 +12,14 @@ v::control()->isValid("\n\r\t"); // true
 
 ## Templates
 
-`Control::TEMPLATE_STANDARD`
+### `Control::TEMPLATE_STANDARD`
 
 | Mode       | Template                                      |
 |------------|-----------------------------------------------|
 | `default`  | {{name}} must only contain control characters |
 | `inverted` | {{name}} must not contain control characters  |
 
-`Control::TEMPLATE_EXTRA`
+### `Control::TEMPLATE_EXTRA`
 
 | Mode       | Template                                                              |
 |------------|-----------------------------------------------------------------------|

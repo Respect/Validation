@@ -17,7 +17,7 @@ Validation makes comparison easier, check out our supported [comparable values](
 
 ## Templates
 
-`BetweenExclusive::TEMPLATE_STANDARD`
+### `BetweenExclusive::TEMPLATE_STANDARD`
 
 | Mode       | Template                                                                 |
 |------------|--------------------------------------------------------------------------|

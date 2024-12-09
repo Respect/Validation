@@ -34,21 +34,21 @@ Message template for this validator includes `{{minSize}}` and `{{maxSize}}`.
 
 ## Templates
 
-`Size::TEMPLATE_BOTH`
+### `Size::TEMPLATE_BOTH`
 
 | Mode       | Template                                                 |
 |------------|----------------------------------------------------------|
 | `default`  | {{name}} must be between {{minSize}} and {{maxSize}}     |
 | `inverted` | {{name}} must not be between {{minSize}} and {{maxSize}} |
 
-`Size::TEMPLATE_LOWER`
+### `Size::TEMPLATE_LOWER`
 
 | Mode       | Template                                      |
 |------------|-----------------------------------------------|
 | `default`  | {{name}} must be greater than {{minSize}}     |
 | `inverted` | {{name}} must not be greater than {{minSize}} |
 
-`Size::TEMPLATE_GREATER`
+### `Size::TEMPLATE_GREATER`
 
 | Mode       | Template                                    |
 |------------|---------------------------------------------|

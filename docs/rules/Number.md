@@ -15,7 +15,7 @@ v::number()->isValid(acos(8)); // false
 
 ## Templates
 
-`Number::TEMPLATE_STANDARD`
+### `Number::TEMPLATE_STANDARD`
 
 | Mode       | Template                        |
 |------------|---------------------------------|

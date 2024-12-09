@@ -12,7 +12,7 @@ Using `int()` before `even()` is a best practice.
 
 ## Templates
 
-`Even::TEMPLATE_STANDARD`
+### `Even::TEMPLATE_STANDARD`
 
 | Mode       | Template                        |
 |------------|---------------------------------|

@@ -14,7 +14,7 @@ v::pis()->isValid('12003406788'); // true
 
 ## Templates
 
-`Pis::TEMPLATE_STANDARD`
+### `Pis::TEMPLATE_STANDARD`
 
 | Mode       | Template                                |
 |------------|-----------------------------------------|

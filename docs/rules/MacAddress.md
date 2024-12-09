@@ -11,7 +11,7 @@ v::macAddress()->isValid('af-AA-22-33-44-55'); // true
 
 ## Templates
 
-`MacAddress::TEMPLATE_STANDARD`
+### `MacAddress::TEMPLATE_STANDARD`
 
 | Mode       | Template                                 |
 |------------|------------------------------------------|

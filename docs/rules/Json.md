@@ -10,7 +10,7 @@ v::json()->isValid('{"foo":"bar"}'); // true
 
 ## Templates
 
-`Json::TEMPLATE_STANDARD`
+### `Json::TEMPLATE_STANDARD`
 
 | Mode       | Template                                 |
 |------------|------------------------------------------|

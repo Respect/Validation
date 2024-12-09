@@ -10,7 +10,7 @@ v::alwaysValid()->isValid('whatever'); // true
 
 ## Templates
 
-`AlwaysValid::TEMPLATE_STANDARD`
+### `AlwaysValid::TEMPLATE_STANDARD`
 
 | Mode       | Template                 |
 |------------|--------------------------|

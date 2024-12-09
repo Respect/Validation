@@ -43,7 +43,7 @@ v::call(
 
 ## Templates
 
-`Call::TEMPLATE_STANDARD`
+### `Call::TEMPLATE_STANDARD`
 
 | Mode       | Template                                                   |
 |------------|------------------------------------------------------------|

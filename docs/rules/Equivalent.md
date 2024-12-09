@@ -17,7 +17,7 @@ Message template for this validator includes `{{compareTo}}`.
 
 ## Templates
 
-`Equivalent::TEMPLATE_STANDARD`
+### `Equivalent::TEMPLATE_STANDARD`
 
 | Mode       | Template                                         |
 |------------|--------------------------------------------------|

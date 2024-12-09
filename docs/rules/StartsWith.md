@@ -27,7 +27,7 @@ Message template for this validator includes `{{startValue}}`.
 
 ## Templates
 
-`StartsWith::TEMPLATE_STANDARD`
+### `StartsWith::TEMPLATE_STANDARD`
 
 | Mode       | Template                                    |
 |------------|---------------------------------------------|

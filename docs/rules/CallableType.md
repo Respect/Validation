@@ -12,7 +12,7 @@ v::callableType()->isValid([new DateTime(), 'format']); // true
 
 ## Templates
 
-`CallableType::TEMPLATE_STANDARD`
+### `CallableType::TEMPLATE_STANDARD`
 
 | Mode       | Template                        |
 |------------|---------------------------------|

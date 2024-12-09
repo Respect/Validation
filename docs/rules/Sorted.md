@@ -33,14 +33,14 @@ v::call('iterator_to_array', v::sorted())->isValid(new ArrayIterator([1, 7, 4]))
 
 ## Templates
 
-`Sorted::TEMPLATE_ASCENDING`
+### `Sorted::TEMPLATE_ASCENDING`
 
 | Mode       | Template                                       |
 |------------|------------------------------------------------|
 | `default`  | {{name}} must be sorted in ascending order     |
 | `inverted` | {{name}} must not be sorted in ascending order |
 
-`Sorted::TEMPLATE_DESCENDING`
+### `Sorted::TEMPLATE_DESCENDING`
 
 | Mode       | Template                                        |
 |------------|-------------------------------------------------|

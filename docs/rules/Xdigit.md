@@ -17,14 +17,14 @@ v::xdigit()->isValid('0x1f'); // false
 
 ## Templates
 
-`Xdigit::TEMPLATE_STANDARD`
+### `Xdigit::TEMPLATE_STANDARD`
 
 | Mode       | Template                                          |
 |------------|---------------------------------------------------|
 | `default`  | {{name}} must only contain hexadecimal digits     |
 | `inverted` | {{name}} must not only contain hexadecimal digits |
 
-`Xdigit::TEMPLATE_EXTRA`
+### `Xdigit::TEMPLATE_EXTRA`
 
 | Mode       | Template                                                            |
 |------------|---------------------------------------------------------------------|

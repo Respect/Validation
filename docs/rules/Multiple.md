@@ -10,7 +10,7 @@ v::intVal()->multiple(3)->isValid(9); // true
 
 ## Templates
 
-`Multiple::TEMPLATE_STANDARD`
+### `Multiple::TEMPLATE_STANDARD`
 
 | Mode       | Template                                          |
 |------------|---------------------------------------------------|

@@ -11,14 +11,14 @@ v::punct()->isValid('&,.;[]'); // true
 
 ## Templates
 
-`Punct::TEMPLATE_STANDARD`
+### `Punct::TEMPLATE_STANDARD`
 
 | Mode       | Template                                          |
 |------------|---------------------------------------------------|
 | `default`  | {{name}} must contain only punctuation characters |
 | `inverted` | {{name}} must not contain punctuation characters  |
 
-`Punct::TEMPLATE_EXTRA`
+### `Punct::TEMPLATE_EXTRA`
 
 | Mode       | Template                                                                  |
 |------------|---------------------------------------------------------------------------|

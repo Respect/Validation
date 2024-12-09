@@ -12,7 +12,7 @@ Message template for this validator includes `{{regex}}`.
 
 ## Templates
 
-`Regex::TEMPLATE_STANDARD`
+### `Regex::TEMPLATE_STANDARD`
 
 | Mode       | Template                                                 |
 |------------|----------------------------------------------------------|

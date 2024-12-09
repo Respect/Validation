@@ -22,7 +22,7 @@ v::length(v::equals(0))->isValid(new SplPriorityQueue()); // true
 
 ## Templates
 
-`Length::TEMPLATE_STANDARD`
+### `Length::TEMPLATE_STANDARD`
 
 | Mode       | Template      |
 |------------|---------------|

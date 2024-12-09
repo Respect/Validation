@@ -10,7 +10,7 @@ v::bsn()->isValid('612890053'); // true
 
 ## Templates
 
-`Bsn::TEMPLATE_STANDARD`
+### `Bsn::TEMPLATE_STANDARD`
 
 | Mode       | Template                         |
 |------------|----------------------------------|

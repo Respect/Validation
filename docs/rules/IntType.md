@@ -11,7 +11,7 @@ v::intType()->isValid('10'); // false
 
 ## Templates
 
-`IntType::TEMPLATE_STANDARD`
+### `IntType::TEMPLATE_STANDARD`
 
 | Mode       | Template                        |
 |------------|---------------------------------|

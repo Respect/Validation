@@ -25,7 +25,7 @@ When no set is defined, the rule uses `'alpha-2'` (`CountryCode::ALPHA2`).
 
 ## Templates
 
-`CountryCode::TEMPLATE_STANDARD`
+### `CountryCode::TEMPLATE_STANDARD`
 
 | Mode       | Template                                  |
 |------------|-------------------------------------------|

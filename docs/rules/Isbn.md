@@ -13,7 +13,7 @@ v::isbn()->isValid('978 10 596 52068 7'); // false
 
 ## Templates
 
-`Isbn::TEMPLATE_STANDARD`
+### `Isbn::TEMPLATE_STANDARD`
 
 | Mode       | Template                          |
 |------------|-----------------------------------|

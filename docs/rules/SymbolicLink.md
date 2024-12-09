@@ -12,7 +12,7 @@ v::symbolicLink()->isValid(new SplFileObject('/path/of/valid/symbolic/link')); /
 
 ## Templates
 
-`SymbolicLink::TEMPLATE_STANDARD`
+### `SymbolicLink::TEMPLATE_STANDARD`
 
 | Mode       | Template                             |
 |------------|--------------------------------------|

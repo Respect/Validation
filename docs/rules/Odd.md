@@ -13,7 +13,7 @@ Using `intVal()` before `odd()` is a best practice.
 
 ## Templates
 
-`Odd::TEMPLATE_STANDARD`
+### `Odd::TEMPLATE_STANDARD`
 
 | Mode       | Template                        |
 |------------|---------------------------------|

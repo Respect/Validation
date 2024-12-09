@@ -11,7 +11,7 @@ v::perfectSquare()->isValid(9); // true (3*3)
 
 ## Templates
 
-`PerfectSquare::TEMPLATE_STANDARD`
+### `PerfectSquare::TEMPLATE_STANDARD`
 
 | Mode       | Template                                     |
 |------------|----------------------------------------------|

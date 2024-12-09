@@ -12,7 +12,7 @@ This rule is case-sensitive.
 
 ## Templates
 
-`Extension::TEMPLATE_STANDARD`
+### `Extension::TEMPLATE_STANDARD`
 
 | Mode       | Template                                       |
 |------------|------------------------------------------------|

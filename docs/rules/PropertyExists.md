@@ -23,7 +23,7 @@ This rule will validate public, private, protected, uninitialised, and static pr
 
 ## Templates
 
-`PropertyExists::TEMPLATE_STANDARD`
+### `PropertyExists::TEMPLATE_STANDARD`
 
 | Mode       | Template                     |
 |------------|------------------------------|

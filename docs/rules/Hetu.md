@@ -16,7 +16,7 @@ The validation is case-sensitive.
 
 ## Templates
 
-`Hetu::TEMPLATE_STANDARD`
+### `Hetu::TEMPLATE_STANDARD`
 
 | Mode       | Template                                                    |
 |------------|-------------------------------------------------------------|

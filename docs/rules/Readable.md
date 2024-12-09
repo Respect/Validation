@@ -10,7 +10,7 @@ v::readable()->isValid('file.txt'); // true
 
 ## Templates
 
-`Readable::TEMPLATE_STANDARD`
+### `Readable::TEMPLATE_STANDARD`
 
 | Mode       | Template                      |
 |------------|-------------------------------|

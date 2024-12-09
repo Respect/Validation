@@ -12,14 +12,14 @@ v::graph()->isValid('LKM@#$%4;'); // true
 
 ## Templates
 
-`Graph::TEMPLATE_STANDARD`
+### `Graph::TEMPLATE_STANDARD`
 
 | Mode       | Template                                        |
 |------------|-------------------------------------------------|
 | `default`  | {{name}} must contain only graphical characters |
 | `inverted` | {{name}} must not contain graphical characters  |
 
-`Graph::TEMPLATE_EXTRA`
+### `Graph::TEMPLATE_EXTRA`
 
 | Mode       | Template                                                                |
 |------------|-------------------------------------------------------------------------|

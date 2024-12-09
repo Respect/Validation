@@ -14,7 +14,7 @@ v::url()->isValid('news:new.example.com'); // true
 
 ## Templates
 
-`Url::TEMPLATE_STANDARD`
+### `Url::TEMPLATE_STANDARD`
 
 | Mode       | Template                   |
 |------------|----------------------------|

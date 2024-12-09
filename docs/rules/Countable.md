@@ -13,7 +13,7 @@ v::countable()->isValid('string'); // false
 
 ## Templates
 
-`Countable::TEMPLATE_STANDARD`
+### `Countable::TEMPLATE_STANDARD`
 
 | Mode       | Template                               |
 |------------|----------------------------------------|

@@ -10,7 +10,7 @@ v::roman()->isValid('IV'); // true
 
 ## Templates
 
-`Roman::TEMPLATE_STANDARD`
+### `Roman::TEMPLATE_STANDARD`
 
 | Mode       | Template                                   |
 |------------|--------------------------------------------|

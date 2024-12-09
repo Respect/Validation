@@ -16,7 +16,7 @@ v::stringVal()->isValid(new ClassWithToString()); // true if ClassWithToString i
 
 ## Templates
 
-`StringVal::TEMPLATE_STANDARD`
+### `StringVal::TEMPLATE_STANDARD`
 
 | Mode       | Template                            |
 |------------|-------------------------------------|

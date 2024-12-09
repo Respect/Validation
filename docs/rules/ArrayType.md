@@ -12,7 +12,7 @@ v::arrayType()->isValid(new ArrayObject()); // false
 
 ## Templates
 
-`ArrayType::TEMPLATE_STANDARD`
+### `ArrayType::TEMPLATE_STANDARD`
 
 | Mode       | Template                      |
 |------------|-------------------------------|

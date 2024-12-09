@@ -13,7 +13,7 @@ v::arrayVal()->isValid(new SimpleXMLElement('<xml></xml>')); // true
 
 ## Templates
 
-`ArrayVal::TEMPLATE_STANDARD`
+### `ArrayVal::TEMPLATE_STANDARD`
 
 | Mode       | Template                            |
 |------------|-------------------------------------|

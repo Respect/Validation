@@ -11,7 +11,7 @@ v::imei()->isValid('490154203237518'); // true
 
 ## Templates
 
-`Imei::TEMPLATE_STANDARD`
+### `Imei::TEMPLATE_STANDARD`
 
 | Mode       | Template                                 |
 |------------|------------------------------------------|

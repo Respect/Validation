@@ -31,7 +31,7 @@ Messages for this validator will reflect rules above.
 
 ## Templates
 
-`Domain::TEMPLATE_STANDARD`
+### `Domain::TEMPLATE_STANDARD`
 
 | Mode       | Template                            |
 |------------|-------------------------------------|

@@ -26,7 +26,7 @@ Extracted from [GeoNames](http://www.geonames.org/).
 
 ## Templates
 
-`PostalCode::TEMPLATE_STANDARD`
+### `PostalCode::TEMPLATE_STANDARD`
 
 | Mode       | Template                                                    |
 |------------|-------------------------------------------------------------|

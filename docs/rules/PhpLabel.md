@@ -16,7 +16,7 @@ v::phpLabel()->isValid('4ccess'); //false
 
 ## Templates
 
-`PhpLabel::TEMPLATE_STANDARD`
+### `PhpLabel::TEMPLATE_STANDARD`
 
 | Mode       | Template                               |
 |------------|----------------------------------------|

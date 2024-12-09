@@ -10,7 +10,7 @@ v::writable()->isValid('file.txt'); // true
 
 ## Templates
 
-`Writable::TEMPLATE_STANDARD`
+### `Writable::TEMPLATE_STANDARD`
 
 | Mode       | Template                      |
 |------------|-------------------------------|

@@ -13,7 +13,7 @@ Message template for this validator includes `{{instanceName}}`.
 
 ## Templates
 
-`Instance::TEMPLATE_STANDARD`
+### `Instance::TEMPLATE_STANDARD`
 
 | Mode       | Template                                                 |
 |------------|----------------------------------------------------------|

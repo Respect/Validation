@@ -20,7 +20,7 @@ v::not(v::numericVal())->alnum()->uppercase()->isValid('W3C'); // true
 
 ## Templates
 
-`Uppercase::TEMPLATE_STANDARD`
+### `Uppercase::TEMPLATE_STANDARD`
 
 | Mode       | Template                                         |
 |------------|--------------------------------------------------|

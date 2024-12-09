@@ -12,7 +12,7 @@ v::slug()->isValid('my-wordpress-title-'); // false
 
 ## Templates
 
-`Slug::TEMPLATE_STANDARD`
+### `Slug::TEMPLATE_STANDARD`
 
 | Mode       | Template                          |
 |------------|-----------------------------------|

@@ -10,14 +10,14 @@ v::alwaysInvalid()->isValid('whatever'); // false
 
 ## Templates
 
-`AlwaysInvalid::TEMPLATE_STANDARD`
+### `AlwaysInvalid::TEMPLATE_STANDARD`
 
 | Mode       | Template                 |
 |------------|--------------------------|
 | `default`  | {{name}} must be valid   |
 | `inverted` | {{name}} must be invalid |
 
-`AlwaysInvalid::TEMPLATE_SIMPLE`
+### `AlwaysInvalid::TEMPLATE_SIMPLE`
 
 | Mode       | Template            |
 |------------|---------------------|

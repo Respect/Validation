@@ -16,7 +16,7 @@ v::filterVar(FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)->isValid('@local'); /
 
 ## Templates
 
-`FilterVar::TEMPLATE_STANDARD`
+### `FilterVar::TEMPLATE_STANDARD`
 
 | Mode       | Template                   |
 |------------|----------------------------|

@@ -10,7 +10,7 @@ v::nullType()->isValid(null); // true
 
 ## Templates
 
-`NullType::TEMPLATE_STANDARD`
+### `NullType::TEMPLATE_STANDARD`
 
 | Mode       | Template                  |
 |------------|---------------------------|

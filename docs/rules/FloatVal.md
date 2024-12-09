@@ -11,7 +11,7 @@ v::floatVal()->isValid('1e5'); // true
 
 ## Templates
 
-`FloatVal::TEMPLATE_STANDARD`
+### `FloatVal::TEMPLATE_STANDARD`
 
 | Mode       | Template                           |
 |------------|------------------------------------|

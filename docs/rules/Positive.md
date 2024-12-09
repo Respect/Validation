@@ -12,7 +12,7 @@ v::positive()->isValid(-15); // false
 
 ## Templates
 
-`Positive::TEMPLATE_STANDARD`
+### `Positive::TEMPLATE_STANDARD`
 
 | Mode       | Template                               |
 |------------|----------------------------------------|

@@ -14,7 +14,7 @@ purpose use the [Number](Number.md) rule.
 
 ## Templates
 
-`NumericVal::TEMPLATE_STANDARD`
+### `NumericVal::TEMPLATE_STANDARD`
 
 | Mode       | Template                             |
 |------------|--------------------------------------|

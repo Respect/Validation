@@ -17,7 +17,7 @@ v::exists()->isValid(new SplFileInfo('file.txt'));
 
 ## Templates
 
-`Exists::TEMPLATE_STANDARD`
+### `Exists::TEMPLATE_STANDARD`
 
 | Mode       | Template                              |
 |------------|---------------------------------------|

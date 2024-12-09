@@ -20,7 +20,7 @@ v::oneOf(v::tld(), v::publicDomainSuffix())->isValid('tk'); // true
 
 ## Templates
 
-`PublicDomainSuffix::TEMPLATE_STANDARD`
+### `PublicDomainSuffix::TEMPLATE_STANDARD`
 
 | Mode       | Template                                    |
 |------------|---------------------------------------------|

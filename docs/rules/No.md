@@ -40,7 +40,7 @@ v::no(true)->isValid('Yes'); // true
 
 ## Templates
 
-`No::TEMPLATE_STANDARD`
+### `No::TEMPLATE_STANDARD`
 
 | Mode       | Template                             |
 |------------|--------------------------------------|

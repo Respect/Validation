@@ -13,7 +13,7 @@ v::hexRgbColor()->isValid('FCD'); // true
 
 ## Templates
 
-`HexRgbColor::TEMPLATE_STANDARD`
+### `HexRgbColor::TEMPLATE_STANDARD`
 
 | Mode       | Template                             |
 |------------|--------------------------------------|

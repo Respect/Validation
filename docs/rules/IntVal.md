@@ -26,7 +26,7 @@ consider them as valid.
 
 ## Templates
 
-`IntVal::TEMPLATE_STANDARD`
+### `IntVal::TEMPLATE_STANDARD`
 
 | Mode       | Template                              |
 |------------|---------------------------------------|

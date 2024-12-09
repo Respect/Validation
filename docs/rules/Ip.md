@@ -35,14 +35,14 @@ v::ip('*', FILTER_FLAG_IPV6)->isValid('2001:0db8:85a3:08d3:1319:8a2e:0370:7334')
 
 ## Templates
 
-`Ip::TEMPLATE_STANDARD`
+### `Ip::TEMPLATE_STANDARD`
 
 | Mode       | Template                           |
 |------------|------------------------------------|
 | `default`  | {{name}} must be an IP address     |
 | `inverted` | {{name}} must not be an IP address |
 
-`Ip::TEMPLATE_NETWORK_RANGE`
+### `Ip::TEMPLATE_NETWORK_RANGE`
 
 | Mode       | Template                                                           |
 |------------|--------------------------------------------------------------------|

@@ -22,7 +22,7 @@ This rule supports the two[ISO 639][] sets:
 
 ## Templates
 
-`LanguageCode::TEMPLATE_STANDARD`
+### `LanguageCode::TEMPLATE_STANDARD`
 
 | Mode       | Template                                   |
 |------------|--------------------------------------------|

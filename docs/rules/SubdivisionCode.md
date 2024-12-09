@@ -15,7 +15,7 @@ v::subdivisionCode('US')->isValid('CA'); // true
 
 ## Templates
 
-`SubdivisionCode::TEMPLATE_STANDARD`
+### `SubdivisionCode::TEMPLATE_STANDARD`
 
 | Mode       | Template                                                              |
 |------------|-----------------------------------------------------------------------|

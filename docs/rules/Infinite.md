@@ -10,7 +10,7 @@ v::infinite()->isValid(INF); // true
 
 ## Templates
 
-`Infinite::TEMPLATE_STANDARD`
+### `Infinite::TEMPLATE_STANDARD`
 
 | Mode       | Template                                |
 |------------|-----------------------------------------|

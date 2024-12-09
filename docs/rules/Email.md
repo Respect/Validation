@@ -12,7 +12,7 @@ v::email()->isValid('alganet@gmail.com'); // true
 
 ## Templates
 
-`Email::TEMPLATE_STANDARD`
+### `Email::TEMPLATE_STANDARD`
 
 | Mode       | Template                               |
 |------------|----------------------------------------|

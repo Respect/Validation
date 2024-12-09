@@ -14,7 +14,7 @@ The array format is a logic OR, not AND.
 
 ## Templates
 
-`Charset::TEMPLATE_STANDARD`
+### `Charset::TEMPLATE_STANDARD`
 
 | Mode       | Template                                                                       |
 |------------|--------------------------------------------------------------------------------|

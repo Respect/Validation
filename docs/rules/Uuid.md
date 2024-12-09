@@ -15,14 +15,14 @@ v::uuid(4)->isValid('eb3115e5-bd16-4939-ab12-2b95745a30f3'); // true
 
 ## Templates
 
-`Uuid::TEMPLATE_STANDARD`
+### `Uuid::TEMPLATE_STANDARD`
 
 | Mode       | Template                          |
 |------------|-----------------------------------|
 | `default`  | {{name}} must be a valid UUID     |
 | `inverted` | {{name}} must not be a valid UUID |
 
-`Uuid::TEMPLATE_VERSION`
+### `Uuid::TEMPLATE_VERSION`
 
 | Mode       | Template                                                       |
 |------------|----------------------------------------------------------------|

@@ -11,7 +11,7 @@ v::boolType()->isValid(false); // true
 
 ## Templates
 
-`BoolType::TEMPLATE_STANDARD`
+### `BoolType::TEMPLATE_STANDARD`
 
 | Mode       | Template                       |
 |------------|--------------------------------|

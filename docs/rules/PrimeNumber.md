@@ -10,7 +10,7 @@ v::primeNumber()->isValid(7); // true
 
 ## Templates
 
-`PrimeNumber::TEMPLATE_STANDARD`
+### `PrimeNumber::TEMPLATE_STANDARD`
 
 | Mode       | Template                            |
 |------------|-------------------------------------|

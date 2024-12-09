@@ -12,7 +12,7 @@ v::floatType()->isValid(0e5); // true
 
 ## Templates
 
-`FloatType::TEMPLATE_STANDARD`
+### `FloatType::TEMPLATE_STANDARD`
 
 | Mode       | Template                   |
 |------------|----------------------------|

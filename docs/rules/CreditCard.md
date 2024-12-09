@@ -38,14 +38,14 @@ v::digit()->creditCard()->isValid('5376747397208720'); // true
 
 ## Templates
 
-`CreditCard::TEMPLATE_STANDARD`
+### `CreditCard::TEMPLATE_STANDARD`
 
 | Mode       | Template                                        |
 |------------|-------------------------------------------------|
 | `default`  | {{name}} must be a valid credit card number     |
 | `inverted` | {{name}} must not be a valid credit card number |
 
-`CreditCard::TEMPLATE_BRANDED`
+### `CreditCard::TEMPLATE_BRANDED`
 
 | Mode       | Template                                                           |
 |------------|--------------------------------------------------------------------|

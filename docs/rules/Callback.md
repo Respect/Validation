@@ -14,7 +14,7 @@ v::callback(
 
 ## Templates
 
-`Callback::TEMPLATE_STANDARD`
+### `Callback::TEMPLATE_STANDARD`
 
 | Mode       | Template                 |
 |------------|--------------------------|

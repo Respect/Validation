@@ -39,7 +39,7 @@ v::yes(true)->isValid('Yes'); // true
 
 ## Templates
 
-`Yes::TEMPLATE_STANDARD`
+### `Yes::TEMPLATE_STANDARD`
 
 | Mode       | Template                              |
 |------------|---------------------------------------|

@@ -11,7 +11,7 @@ v::nif()->isValid('P6437358A'); // false
 
 ## Templates
 
-`Nif::TEMPLATE_STANDARD`
+### `Nif::TEMPLATE_STANDARD`
 
 | Mode       | Template                         |
 |------------|----------------------------------|

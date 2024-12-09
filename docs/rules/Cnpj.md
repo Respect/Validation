@@ -7,7 +7,7 @@ Ignores non-digit chars, so use `->digit()` if needed.
 
 ## Templates
 
-`Cnpj::TEMPLATE_STANDARD`
+### `Cnpj::TEMPLATE_STANDARD`
 
 | Mode       | Template                                 |
 |------------|------------------------------------------|

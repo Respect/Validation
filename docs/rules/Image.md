@@ -18,7 +18,7 @@ This rule relies on [fileinfo](http://php.net/fileinfo) PHP extension.
 
 ## Templates
 
-`Image::TEMPLATE_STANDARD`
+### `Image::TEMPLATE_STANDARD`
 
 | Mode       | Template                                |
 |------------|-----------------------------------------|

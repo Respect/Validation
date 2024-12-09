@@ -14,14 +14,14 @@ v::digit('.', '-')->isValid('172.655.537-21'); // true
 
 ## Templates
 
-`Digit::TEMPLATE_STANDARD`
+### `Digit::TEMPLATE_STANDARD`
 
 | Mode       | Template                                |
 |------------|-----------------------------------------|
 | `default`  | {{name}} must contain only digits (0-9) |
 | `inverted` | {{name}} must not contain digits (0-9)  |
 
-`Digit::TEMPLATE_EXTRA`
+### `Digit::TEMPLATE_EXTRA`
 
 | Mode       | Template                                                        |
 |------------|-----------------------------------------------------------------|

@@ -24,7 +24,7 @@ Message template for this validator includes `{{haystack}}`.
 
 ## Templates
 
-`In::TEMPLATE_STANDARD`
+### `In::TEMPLATE_STANDARD`
 
 | Mode       | Template                             |
 |------------|--------------------------------------|

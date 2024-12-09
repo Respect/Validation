@@ -12,7 +12,7 @@ This validator accepts DateTime instances as well.
 
 ## Templates
 
-`LeapYear::TEMPLATE_STANDARD`
+### `LeapYear::TEMPLATE_STANDARD`
 
 | Mode       | Template                           |
 |------------|------------------------------------|

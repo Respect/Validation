@@ -18,7 +18,7 @@ v::directory()->isValid(dir('/'));
 
 ## Templates
 
-`Directory::TEMPLATE_STANDARD`
+### `Directory::TEMPLATE_STANDARD`
 
 | Mode       | Template                         |
 |------------|----------------------------------|

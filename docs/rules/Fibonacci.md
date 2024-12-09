@@ -12,7 +12,7 @@ v::fibonacci()->isValid(6); // false
 
 ## Templates
 
-`Fibonacci::TEMPLATE_STANDARD`
+### `Fibonacci::TEMPLATE_STANDARD`
 
 | Mode       | Template                                      |
 |------------|-----------------------------------------------|

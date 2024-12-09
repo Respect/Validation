@@ -13,7 +13,7 @@ v::unique()->isValid([1, 2, 3, 1]); // false
 
 ## Templates
 
-`Unique::TEMPLATE_STANDARD`
+### `Unique::TEMPLATE_STANDARD`
 
 | Mode       | Template                             |
 |------------|--------------------------------------|

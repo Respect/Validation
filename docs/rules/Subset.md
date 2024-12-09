@@ -11,7 +11,7 @@ v::subset([1, 2])->isValid([1, 2, 3]); // false
 
 ## Templates
 
-`Subset::TEMPLATE_STANDARD`
+### `Subset::TEMPLATE_STANDARD`
 
 | Mode       | Template                                    |
 |------------|---------------------------------------------|

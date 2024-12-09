@@ -15,7 +15,7 @@ so `AnyOf()` returns true.
 
 ## Templates
 
-`AnyOf::TEMPLATE_STANDARD`
+### `AnyOf::TEMPLATE_STANDARD`
 
 | Mode       | Template                                               |
 |------------|--------------------------------------------------------|

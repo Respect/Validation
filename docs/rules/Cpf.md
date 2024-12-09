@@ -23,7 +23,7 @@ v::digit()->cpf()->isValid('11598647644'); // true
 
 ## Templates
 
-`Cpf::TEMPLATE_STANDARD`
+### `Cpf::TEMPLATE_STANDARD`
 
 | Mode       | Template                                |
 |------------|-----------------------------------------|

@@ -16,7 +16,7 @@ character, one or the other, but not neither nor both.
 
 ## Templates
 
-`OneOf::TEMPLATE_STANDARD`
+### `OneOf::TEMPLATE_STANDARD`
 
 | Mode       | Template                                           |
 |------------|----------------------------------------------------|

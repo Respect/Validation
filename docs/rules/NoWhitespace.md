@@ -13,7 +13,7 @@ This is most useful when chaining with other validators such as `Alnum()`
 
 ## Templates
 
-`NoWhitespace::TEMPLATE_STANDARD`
+### `NoWhitespace::TEMPLATE_STANDARD`
 
 | Mode       | Template                                      |
 |------------|-----------------------------------------------|

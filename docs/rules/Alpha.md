@@ -23,14 +23,14 @@ v::alpha()->uppercase()->isValid('example'); // false
 
 ## Templates
 
-`Alpha::TEMPLATE_STANDARD`
+### `Alpha::TEMPLATE_STANDARD`
 
 | Mode       | Template                                 |
 |------------|------------------------------------------|
 | `default`  | {{name}} must contain only letters (a-z) |
 | `inverted` | {{name}} must not contain letters (a-z)  |
 
-`Alpha::TEMPLATE_EXTRA`
+### `Alpha::TEMPLATE_EXTRA`
 
 | Mode       | Template                                                         |
 |------------|------------------------------------------------------------------|

@@ -10,7 +10,7 @@ v::version()->isValid('1.0.0');
 
 ## Templates
 
-`Version::TEMPLATE_STANDARD`
+### `Version::TEMPLATE_STANDARD`
 
 | Mode       | Template                       |
 |------------|--------------------------------|

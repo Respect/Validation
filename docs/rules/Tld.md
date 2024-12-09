@@ -13,7 +13,7 @@ v::tld()->isValid('COM'); // true
 
 ## Templates
 
-`Tld::TEMPLATE_STANDARD`
+### `Tld::TEMPLATE_STANDARD`
 
 | Mode       | Template                                           |
 |------------|----------------------------------------------------|

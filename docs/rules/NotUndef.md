@@ -31,14 +31,14 @@ v::notUndef()->isValid(new stdClass()); // true
 
 ## Templates
 
-`NotUndef::TEMPLATE_STANDARD`
+### `NotUndef::TEMPLATE_STANDARD`
 
 | Mode       | Template                    |
 |------------|-----------------------------|
 | `default`  | The value must be defined   |
 | `inverted` | The value must be undefined |
 
-`NotUndef::TEMPLATE_NAMED`
+### `NotUndef::TEMPLATE_NAMED`
 
 | Mode       | Template                   |
 |------------|----------------------------|

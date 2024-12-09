@@ -14,7 +14,7 @@ v::iterableType()->isValid('string'); // false
 
 ## Templates
 
-`IterableType::TEMPLATE_STANDARD`
+### `IterableType::TEMPLATE_STANDARD`
 
 | Mode       | Template                   |
 |------------|----------------------------|

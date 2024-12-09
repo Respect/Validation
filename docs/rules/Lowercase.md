@@ -10,7 +10,7 @@ v::stringType()->lowercase()->isValid('xkcd'); // true
 
 ## Templates
 
-`Lowercase::TEMPLATE_STANDARD`
+### `Lowercase::TEMPLATE_STANDARD`
 
 | Mode       | Template                                         |
 |------------|--------------------------------------------------|

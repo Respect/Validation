@@ -32,7 +32,7 @@ v::date('Ydm')->isValid(20173112); // true
 
 ## Templates
 
-`Date::TEMPLATE_STANDARD`
+### `Date::TEMPLATE_STANDARD`
 
 | Mode       | Template                                                   |
 |------------|------------------------------------------------------------|

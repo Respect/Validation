@@ -11,14 +11,14 @@ v::printable()->isValid('LMKA0$% _123'); // true
 
 ## Templates
 
-`Printable::TEMPLATE_STANDARD`
+### `Printable::TEMPLATE_STANDARD`
 
 | Mode       | Template                                        |
 |------------|-------------------------------------------------|
 | `default`  | {{name}} must contain only printable characters |
 | `inverted` | {{name}} must not contain printable characters  |
 
-`Printable::TEMPLATE_EXTRA`
+### `Printable::TEMPLATE_EXTRA`
 
 | Mode       | Template                                                                |
 |------------|-------------------------------------------------------------------------|

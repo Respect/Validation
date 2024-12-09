@@ -10,7 +10,7 @@ v::resourceType()->isValid(fopen('/path/to/file.txt', 'w')); // true
 
 ## Templates
 
-`ResourceType::TEMPLATE_STANDARD`
+### `ResourceType::TEMPLATE_STANDARD`
 
 | Mode       | Template                        |
 |------------|---------------------------------|

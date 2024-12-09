@@ -12,7 +12,7 @@ v::factor(4)->isValid(3); // false
 
 ## Templates
 
-`Factor::TEMPLATE_STANDARD`
+### `Factor::TEMPLATE_STANDARD`
 
 | Mode       | Template                                               |
 |------------|--------------------------------------------------------|

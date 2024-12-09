@@ -16,7 +16,7 @@ Message template for this validator includes `{{compareTo}}`.
 
 ## Templates
 
-`GreaterThan::TEMPLATE_STANDARD`
+### `GreaterThan::TEMPLATE_STANDARD`
 
 | Mode       | Template                                        |
 |------------|-------------------------------------------------|

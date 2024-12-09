@@ -10,7 +10,7 @@ v::objectType()->isValid(new stdClass); // true
 
 ## Templates
 
-`ObjectType::TEMPLATE_STANDARD`
+### `ObjectType::TEMPLATE_STANDARD`
 
 | Mode       | Template                       |
 |------------|--------------------------------|

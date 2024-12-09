@@ -14,14 +14,14 @@ v::phone('BR')->isValid('11 91111 1111'); // false
 
 ## Templates
 
-`Phone::TEMPLATE_INTERNATIONAL`
+### `Phone::TEMPLATE_INTERNATIONAL`
 
 | Mode       | Template                                      |
 |------------|-----------------------------------------------|
 | `default`  | {{name}} must be a valid telephone number     |
 | `inverted` | {{name}} must not be a valid telephone number |
 
-`Phone::TEMPLATE_FOR_COUNTRY`
+### `Phone::TEMPLATE_FOR_COUNTRY`
 
 | Mode       | Template                                                                             |
 |------------|--------------------------------------------------------------------------------------|

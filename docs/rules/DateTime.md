@@ -57,14 +57,14 @@ v::dateTime(DateTime::RFC3339_EXTENDED)->isValid($input); // false
 
 ## Templates
 
-`DateTime::TEMPLATE_STANDARD`
+### `DateTime::TEMPLATE_STANDARD`
 
 | Mode       | Template                               |
 |------------|----------------------------------------|
 | `default`  | {{name}} must be a valid date/time     |
 | `inverted` | {{name}} must not be a valid date/time |
 
-`DateTime::TEMPLATE_FORMAT`
+### `DateTime::TEMPLATE_FORMAT`
 
 | Mode       | Template                                                        |
 |------------|-----------------------------------------------------------------|

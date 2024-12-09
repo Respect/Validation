@@ -24,7 +24,7 @@ Message template for this validator includes `{{needles}}`.
 
 ## Templates
 
-`ContainsAny::TEMPLATE_STANDARD`
+### `ContainsAny::TEMPLATE_STANDARD`
 
 | Mode       | Template                                                  |
 |------------|-----------------------------------------------------------|

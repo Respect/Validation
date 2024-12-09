@@ -63,28 +63,28 @@ The keys' order is not considered in the validation.
 
 ## Templates
 
-`KeySet::TEMPLATE_STANDARD`
+### `KeySet::TEMPLATE_STANDARD`
 
 | Mode       | Template                   |
 |------------|----------------------------|
 | `default`  | {{name}} validation failed |
 | `inverted` | {{name}} validation passed |
 
-`KeySet::TEMPLATE_BOTH`
+### `KeySet::TEMPLATE_BOTH`
 
 | Mode       | Template                                      |
 |------------|-----------------------------------------------|
 | `default`  | {{name}} contains both missing and extra keys |
 | `inverted` | {{name}} contains no missing or extra keys.   |
 
-`KeySet::TEMPLATE_EXTRA_KEYS`
+### `KeySet::TEMPLATE_EXTRA_KEYS`
 
 | Mode       | Template                        |
 |------------|---------------------------------|
 | `default`  | {{name}} contains extra keys    |
 | `inverted` | {{name}} contains no extra keys |
 
-`KeySet::TEMPLATE_MISSING_KEYS`
+### `KeySet::TEMPLATE_MISSING_KEYS`
 
 | Mode       | Template                          |
 |------------|-----------------------------------|

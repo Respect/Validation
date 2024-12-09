@@ -17,7 +17,7 @@ v::file()->isValid(new SplFileInfo('file.txt'));
 
 ## Templates
 
-`File::TEMPLATE_STANDARD`
+### `File::TEMPLATE_STANDARD`
 
 | Mode       | Template                         |
 |------------|----------------------------------|

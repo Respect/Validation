@@ -10,7 +10,7 @@ v::numericVal()->negative()->isValid(-15); // true
 
 ## Templates
 
-`Negative::TEMPLATE_STANDARD`
+### `Negative::TEMPLATE_STANDARD`
 
 | Mode       | Template                               |
 |------------|----------------------------------------|

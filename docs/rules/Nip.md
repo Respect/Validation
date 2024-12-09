@@ -14,7 +14,7 @@ v::nip()->isValid('164-58-65-777'); // false
 
 ## Templates
 
-`Nip::TEMPLATE_STANDARD`
+### `Nip::TEMPLATE_STANDARD`
 
 | Mode       | Template                                                      |
 |------------|---------------------------------------------------------------|

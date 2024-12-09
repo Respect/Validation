@@ -10,7 +10,7 @@ v::executable()->isValid('script.sh'); // true
 
 ## Templates
 
-`Executable::TEMPLATE_STANDARD`
+### `Executable::TEMPLATE_STANDARD`
 
 | Mode       | Template                                |
 |------------|-----------------------------------------|

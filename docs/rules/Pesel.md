@@ -13,7 +13,7 @@ v::pesel()->isValid('PESEL123456'); // false
 
 ## Templates
 
-`Pesel::TEMPLATE_STANDARD`
+### `Pesel::TEMPLATE_STANDARD`
 
 | Mode       | Template                           |
 |------------|------------------------------------|

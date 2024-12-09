@@ -10,7 +10,7 @@ v::uploaded()->isValid('/path/of/an/uploaded/file'); // true
 
 ## Templates
 
-`Uploaded::TEMPLATE_STANDARD`
+### `Uploaded::TEMPLATE_STANDARD`
 
 | Mode       | Template                              |
 |------------|---------------------------------------|

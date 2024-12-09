@@ -10,7 +10,7 @@ v::cnh()->isValid('02650306461'); // true
 
 ## Templates
 
-`Cnh::TEMPLATE_STANDARD`
+### `Cnh::TEMPLATE_STANDARD`
 
 | Mode       | Template                                |
 |------------|-----------------------------------------|

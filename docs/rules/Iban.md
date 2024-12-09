@@ -16,7 +16,7 @@ v::iban()->isValid(''); // false
 
 ## Templates
 
-`Iban::TEMPLATE_STANDARD`
+### `Iban::TEMPLATE_STANDARD`
 
 | Mode       | Template                          |
 |------------|-----------------------------------|

@@ -37,14 +37,14 @@ Message template for this validator includes `{{service}}`.
 
 ## Templates
 
-`VideoUrl::TEMPLATE_STANDARD`
+### `VideoUrl::TEMPLATE_STANDARD`
 
 | Mode       | Template                               |
 |------------|----------------------------------------|
 | `default`  | {{name}} must be a valid video URL     |
 | `inverted` | {{name}} must not be a valid video URL |
 
-`VideoUrl::TEMPLATE_SERVICE`
+### `VideoUrl::TEMPLATE_SERVICE`
 
 | Mode       | Template                                                    |
 |------------|-------------------------------------------------------------|

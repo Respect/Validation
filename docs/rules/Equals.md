@@ -12,7 +12,7 @@ Message template for this validator includes `{{compareTo}}`.
 
 ## Templates
 
-`Equals::TEMPLATE_STANDARD`
+### `Equals::TEMPLATE_STANDARD`
 
 | Mode       | Template                                    |
 |------------|---------------------------------------------|

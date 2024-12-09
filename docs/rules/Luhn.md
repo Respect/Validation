@@ -11,7 +11,7 @@ v::luhn()->isValid('respect!'); // false
 
 ## Templates
 
-`Luhn::TEMPLATE_STANDARD`
+### `Luhn::TEMPLATE_STANDARD`
 
 | Mode       | Template                                 |
 |------------|------------------------------------------|

@@ -11,14 +11,14 @@ v::consonant()->isValid('xkcd'); // true
 
 ## Templates
 
-`Consonant::TEMPLATE_STANDARD`
+### `Consonant::TEMPLATE_STANDARD`
 
 | Mode       | Template                              |
 |------------|---------------------------------------|
 | `default`  | {{name}} must only contain consonants |
 | `inverted` | {{name}} must not contain consonants  |
 
-`Consonant::TEMPLATE_EXTRA`
+### `Consonant::TEMPLATE_EXTRA`
 
 | Mode       | Template                                                      |
 |------------|---------------------------------------------------------------|

@@ -14,7 +14,7 @@ v::base(2)->isValid('0120122001'); // false
 
 ## Templates
 
-`Base::TEMPLATE_STANDARD`
+### `Base::TEMPLATE_STANDARD`
 
 | Mode       | Template                                                |
 |------------|---------------------------------------------------------|

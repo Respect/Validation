@@ -11,7 +11,7 @@ v::finite()->isValid(10); // true
 
 ## Templates
 
-`Finite::TEMPLATE_STANDARD`
+### `Finite::TEMPLATE_STANDARD`
 
 | Mode       | Template                             |
 |------------|--------------------------------------|

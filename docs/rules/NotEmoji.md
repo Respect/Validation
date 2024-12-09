@@ -24,7 +24,7 @@ Unicode V11 check the following link for more details
 
 ## Templates
 
-`NotEmoji::TEMPLATE_STANDARD`
+### `NotEmoji::TEMPLATE_STANDARD`
 
 | Mode       | Template                           |
 |------------|------------------------------------|

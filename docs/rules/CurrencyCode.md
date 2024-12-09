@@ -18,7 +18,7 @@ This rule supports the two [ISO 4217][] sets:
 
 ## Templates
 
-`CurrencyCode::TEMPLATE_STANDARD`
+### `CurrencyCode::TEMPLATE_STANDARD`
 
 | Mode       | Template                                   |
 |------------|--------------------------------------------|

@@ -27,7 +27,7 @@ v::undefOrBetween(1, 3)->isValid(2); // true
 
 ## Templates
 
-`UndefOr::TEMPLATE_STANDARD`
+### `UndefOr::TEMPLATE_STANDARD`
 
 | Mode       | Template                  |
 |------------|---------------------------|

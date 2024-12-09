@@ -27,7 +27,7 @@ empty, the validation will fail.
 
 ## Templates
 
-`Each::TEMPLATE_STANDARD`
+### `Each::TEMPLATE_STANDARD`
 
 | Mode       | Template                              |
 |------------|---------------------------------------|

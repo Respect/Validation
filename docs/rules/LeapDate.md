@@ -13,7 +13,7 @@ parameter is mandatory.
 
 ## Templates
 
-`LeapDate::TEMPLATE_STANDARD`
+### `LeapDate::TEMPLATE_STANDARD`
 
 | Mode       | Template                           |
 |------------|------------------------------------|

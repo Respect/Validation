@@ -22,7 +22,7 @@ v::decimal(1)->isValid(1.50); // true
 
 ## Templates
 
-`Decimal::TEMPLATE_STANDARD`
+### `Decimal::TEMPLATE_STANDARD`
 
 | Mode       | Template                                     |
 |------------|----------------------------------------------|

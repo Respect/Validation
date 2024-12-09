@@ -13,7 +13,7 @@ v::polishIdCard()->isValid('AYW036731'); // false
 
 ## Templates
 
-`PolishIdCard::TEMPLATE_STANDARD`
+### `PolishIdCard::TEMPLATE_STANDARD`
 
 | Mode       | Template                                                 |
 |------------|----------------------------------------------------------|

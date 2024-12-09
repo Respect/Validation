@@ -11,14 +11,14 @@ v::space()->isValid('    '); // true
 
 ## Templates
 
-`Space::TEMPLATE_STANDARD`
+### `Space::TEMPLATE_STANDARD`
 
 | Mode       | Template                                    |
 |------------|---------------------------------------------|
 | `default`  | {{name}} must contain only space characters |
 | `inverted` | {{name}} must not contain space characters  |
 
-`Space::TEMPLATE_EXTRA`
+### `Space::TEMPLATE_EXTRA`
 
 | Mode       | Template                                                            |
 |------------|---------------------------------------------------------------------|
