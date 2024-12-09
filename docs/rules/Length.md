@@ -24,10 +24,31 @@ v::length(v::equals(0))->isValid(new SplPriorityQueue()); // true
 
 ### `Length::TEMPLATE_STANDARD`
 
+Used when it's possible to get the length of the input.
+
 | Mode       | Template      |
 |------------|---------------|
 | `default`  | The length of |
 | `inverted` | The length of |
+
+This template serve as message prefixes.:
+
+```php
+v::length(v::equals(3))->assert('tulip');
+// Message: The length of "tulip" must be equal to 3
+
+v::not(v::length(v::equals(4)))->assert('rose');
+// Message: The length of "rose" must not be equal to 4
+```
+
+### `Length::TEMPLATE_WRONG_TYPE`
+
+Used when it's impossible to get the length of the input.
+
+| Mode       | Template                                           |
+|------------|----------------------------------------------------|
+| `default`  | {{name}} must be a countable value or a string     |
+| `inverted` | {{name}} must not be a countable value or a string |
 
 ## Template placeholders
 

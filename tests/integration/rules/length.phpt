@@ -9,6 +9,8 @@ run([
     'Inverted wrapper' => [v::not(v::length(v::equals(4))), 'fern'],
     'With template' => [v::length(v::equals(3)), 'azalea', 'This is a template'],
     'With wrapper name' => [v::length(v::equals(3))->setName('Cactus'), 'peyote'],
+    'Multiple rules' => [v::length(v::between(6, 8)->even()), 'tulip'],
+    'Wrong type' => [v::length(v::between(6, 8)), new stdClass()],
 ]);
 ?>
 --EXPECT--
@@ -50,4 +52,24 @@ The length of Cactus must be equal to 3
 - The length of Cactus must be equal to 3
 [
     'lengthEquals' => 'The length of Cactus must be equal to 3',
+]
+
+Multiple rules
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+The length of "tulip" must be between 6 and 8
+- All of the required rules must pass for "tulip"
+  - The length of "tulip" must be between 6 and 8
+  - The length of "tulip" must be an even number
+[
+    '__root__' => 'All of the required rules must pass for "tulip"',
+    'lengthBetween' => 'The length of "tulip" must be between 6 and 8',
+    'lengthEven' => 'The length of "tulip" must be an even number',
+]
+
+Wrong type
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+`stdClass {}` must be a countable value or a string
+- `stdClass {}` must be a countable value or a string
+[
+    'lengthBetween' => '`stdClass {}` must be a countable value or a string',
 ]
