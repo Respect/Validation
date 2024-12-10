@@ -12,10 +12,13 @@ namespace Respect\Validation;
 use Exception;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
+use Throwable;
 
 #[CoversClass(Validator::class)]
 final class ValidatorTest extends TestCase
@@ -44,6 +47,61 @@ final class ValidatorTest extends TestCase
         $validator = Validator::create(Stub::fail(1));
 
         self::assertFalse($validator->isValid('whatever'));
+    }
+
+    #[Test]
+    #[DoesNotPerformAssertions]
+    public function itShouldAssertAndNotThrowAnExceptionWhenValidatorPasses(): void
+    {
+        $validator = Validator::create(Stub::pass(1));
+        $validator->assert('whatever');
+    }
+
+    #[Test]
+    public function itShouldAssertAndThrowAnExceptionWhenValidatorFails(): void
+    {
+        $this->expectException(ValidationException::class);
+
+        $validator = Validator::create(Stub::fail(1));
+        $validator->assert('whatever');
+    }
+
+    #[Test]
+    public function itShouldAssertUsingThePreDefinedTemplatesInTheChain(): void
+    {
+        $templates = ['stub' => 'This is my pre-defined template'];
+
+        $this->expectExceptionMessage($templates['stub']);
+
+        $validator = Validator::create(Stub::fail(1));
+        $validator->setTemplates($templates);
+        $validator->assert('whatever');
+    }
+
+    #[Test]
+    public function itShouldAssertUsingThePreDefinedTemplateInTheChain(): void
+    {
+        $template = 'This is my pre-defined template';
+
+        $this->expectExceptionMessage($template);
+
+        $validator = Validator::create(Stub::fail(1));
+        $validator->setTemplate($template);
+        $validator->assert('whatever');
+    }
+
+    #[Test]
+    public function itShouldAssertUsingTheGivingCallableEvenWhenRuleAlreadyHasTemplate(): void
+    {
+        $predefinedTemplate = 'Current template';
+
+        $template = static fn(Throwable $exception) => new Exception('My exception: ' . $exception->getMessage());
+
+        $this->expectExceptionMessage('My exception: ' . $predefinedTemplate);
+
+        $validator = Validator::create(Stub::fail(1));
+        $validator->setTemplate($predefinedTemplate);
+        $validator->assert('whatever', $template);
     }
 
     #[Test]

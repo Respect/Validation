@@ -20,6 +20,7 @@ use Throwable;
 use function count;
 use function current;
 use function is_array;
+use function is_callable;
 use function is_string;
 
 /**
@@ -68,8 +69,8 @@ final class Validator implements Rule
         return $this->evaluate($input)->isValid;
     }
 
-    /** @param array<string, mixed>|string|Throwable|null $template */
-    public function assert(mixed $input, array|string|Throwable|null $template = null): void
+    /** @param array<string, mixed>|callable(ValidationException): Throwable|string|Throwable|null $template */
+    public function assert(mixed $input, array|string|Throwable|callable|null $template = null): void
     {
         $result = $this->evaluate($input);
         if ($result->isValid) {
@@ -89,11 +90,17 @@ final class Validator implements Rule
             $templates = ['__root__' => $this->getTemplate()];
         }
 
-        throw new ValidationException(
+        $exception = new ValidationException(
             $this->formatter->main($result, $templates, $this->translator),
             $this->formatter->full($result, $templates, $this->translator),
-            $this->formatter->array($result, $templates, $this->translator),
+            $this->formatter->array($result, $templates, $this->translator)
         );
+
+        if (!is_callable($template)) {
+            throw $exception;
+        }
+
+        throw $template($exception);
     }
 
     /** @param array<string, mixed> $templates */

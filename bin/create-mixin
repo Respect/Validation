@@ -8,6 +8,7 @@ require __DIR__ . '/../vendor/autoload.php';
 use Nette\PhpGenerator\InterfaceType;
 use Nette\PhpGenerator\PhpNamespace;
 use Nette\PhpGenerator\Printer;
+use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Mixins\ChainedKey;
 use Respect\Validation\Mixins\ChainedLength;
 use Respect\Validation\Mixins\ChainedMax;
@@ -232,8 +233,11 @@ function overwriteFile(string $content, string $basename): void
 
             $assert = $chainedInterface->addMethod('assert')->setPublic()->setReturnType('void');
             $assert->addParameter('input')->setType('mixed');
-            $assert->addParameter('template')->setType('array|string|\Throwable|null')->setDefaultValue(null);
-            $assert->addComment('@param array<string, mixed>|string|\Throwable|null $template');
+            $assert->addParameter('template')->setType('array|callable|string|\Throwable|null')->setDefaultValue(null);
+            $assert->addComment(sprintf(
+                '@param array<string, mixed>|callable(\%s): \Throwable|string|\Throwable|null $template',
+                ValidationException::class
+            ));
 
             $setTemplates = $chainedInterface->addMethod('setTemplates')->setPublic()->setReturnType(ChainedValidator::class);
             $setTemplates->addParameter('templates')->setType('array');
@@ -263,4 +267,6 @@ function overwriteFile(string $content, string $basename): void
         overwriteFile($printer->printNamespace($staticNamespace), $staticInterface->getName());
         overwriteFile($printer->printNamespace($chainedNamespace), $chainedInterface->getName());
     }
+
+    shell_exec(__DIR__.'/../vendor/bin/phpcbf');
 })();

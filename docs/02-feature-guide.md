@@ -55,6 +55,20 @@ Integrate your own exception objects when the validation fails:
 v::alnum()->assert($input, new DomainException('Not a valid username'));
 ```
 
+### Custom exception objects via callable
+
+Provide a callable that creates an exception object to be used when the validation fails:
+
+```php
+use Respect\Validation\Validator as v;
+use Respect\Validation\Exceptions\ValidationException;
+
+v::alnum()->lowercase()->assert(
+    $input,
+    fn(ValidationException $exception) => new DomainException('Username: '. $exception->getMessage()
+);
+```
+
 ## Inverting validation rules
 
 Use the `not` prefix to invert a  validation rule.
