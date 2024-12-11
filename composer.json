@@ -52,7 +52,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Respect\\Validation\\": "library/"
+            "Respect\\Validation\\": ["library/", "deprecated/src/"]
         }
     },
     "autoload-dev": {
@@ -66,7 +66,7 @@
         ]
     },
     "scripts": {
-        "docheader": "vendor/bin/docheader check library/ tests/",
+        "docheader": "vendor/bin/docheader check library/ tests/ deprecated/",
         "phpcs": "vendor/bin/phpcs",
         "phpstan": "vendor/bin/phpstan analyze",
         "phpunit": "vendor/bin/phpunit",
