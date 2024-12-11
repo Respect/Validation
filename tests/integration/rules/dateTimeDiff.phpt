@@ -93,26 +93,26 @@ The number of microseconds between now and 6 microseconds ago must be equal to 7
 
 With custom $format
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-The number of years between %d/%d/%d and 09/12/1988 must be less than 8
-- The number of years between %d/%d/%d and 09/12/1988 must be less than 8
+The number of years between %d/%d/%d and %d/%d/%d must be less than 8
+- The number of years between %d/%d/%d and %d/%d/%d must be less than 8
 [
-    'dateTimeDiffLessThan' => 'The number of years between %d/%d/%d and 09/12/1988 must be less than 8',
+    'dateTimeDiffLessThan' => 'The number of years between %d/%d/%d and %d/%d/%d must be less than 8',
 ]
 
 With input in incorrect $format
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-For comparison with %d-%d-%d, "1 year ago" must be a valid datetime in the format 2024-12-09
-- For comparison with %d-%d-%d, "1 year ago" must be a valid datetime in the format 2024-12-09
+For comparison with %d-%d-%d, "1 year ago" must be a valid datetime in the format %d-%d-%d
+- For comparison with %d-%d-%d, "1 year ago" must be a valid datetime in the format %d-%d-%d
 [
-    'dateTimeDiffEquals' => 'For comparison with %d-%d-%d, "1 year ago" must be a valid datetime in the format 2024-12-09',
+    'dateTimeDiffEquals' => 'For comparison with %d-%d-%d, "1 year ago" must be a valid datetime in the format %d-%d-%d',
 ]
 
 With custom $now
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
-The number of years between %d-%d-%d %d:%d:%d.%d and 09/12/1988 must be less than 9
-- The number of years between %d-%d-%d %d:%d:%d.%d and 09/12/1988 must be less than 9
+The number of years between %d-%d-%d %d:%d:%d.%d and %d/%d/%d must be less than 9
+- The number of years between %d-%d-%d %d:%d:%d.%d and %d/%d/%d must be less than 9
 [
-    'dateTimeDiffLessThan' => 'The number of years between %d-%d-%d %d:%d:%d.%d and 09/12/1988 must be less than 9',
+    'dateTimeDiffLessThan' => 'The number of years between %d-%d-%d %d:%d:%d.%d and %d/%d/%d must be less than 9',
 ]
 
 With custom template

@@ -27,6 +27,6 @@ exceptionMessage(static function () use ($input): void {
         ->assert($input);
 });
 ?>
---EXPECTF--
+--EXPECT--
 1 must be an array value
 scheme must start with "https"

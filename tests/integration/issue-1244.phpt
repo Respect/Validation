@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 
 exceptionMessages(static fn () => v::key('firstname', v::notBlank()->setName('First Name'))->assert([]));
 ?>
---EXPECTF--
+--EXPECT--
 [
     'firstname' => 'First Name must be present',
 ]
