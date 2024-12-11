@@ -9,87 +9,51 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Attribute;
+use Pdp\Domain as PdpDomain;
+use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
+use Throwable;
 
-use function array_pop;
+use function class_exists;
 use function count;
-use function explode;
-use function mb_substr_count;
+use function is_string;
 
-#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a valid domain',
     '{{name}} must not be a valid domain',
 )]
 final class Domain implements Rule
 {
-    private readonly Rule $genericRule;
-
-    private readonly Rule $tldRule;
-
-    private readonly Rule $partsRule;
-
-    public function __construct(bool $tldCheck = true)
-    {
-        $this->genericRule = $this->createGenericRule();
-        $this->tldRule = $this->createTldRule($tldCheck);
-        $this->partsRule = $this->createPartsRule();
+    public function __construct(
+        private readonly bool $requireTld = true,
+    ) {
+        if (!class_exists(PdpDomain::class)) {
+            throw new MissingComposerDependencyException(
+                'Domain rule requires PHP Domain Parser',
+                'jeremykendall/php-domain-parser',
+            );
+        }
     }
 
     public function evaluate(mixed $input): Result
     {
-        $genericResult = $this->genericRule->evaluate($input);
-        if (!$genericResult->hasPassed) {
+        if (!is_string($input)) {
             return Result::failed($input, $this);
         }
 
-        $parts = explode('.', (string) $input);
-        if (count($parts) >= 2) {
-            $childResult = $this->tldRule->evaluate(array_pop($parts));
-            if (!$childResult->hasPassed) {
+        try {
+            $domain = PdpDomain::fromIDNA2008($input);
+            if (count($domain->labels()) === 1) {
                 return Result::failed($input, $this);
             }
+
+            $domain->label(0);
+        } catch (Throwable) {
+            return Result::failed($input, $this);
         }
 
-        return new Result($this->partsRule->evaluate($parts)->hasPassed, $input, $this);
-    }
-
-    private function createGenericRule(): Circuit
-    {
-        return new Circuit(
-            new StringType(),
-            new NoWhitespace(),
-            new Contains('.'),
-            new Length(new GreaterThanOrEqual(3)),
-        );
-    }
-
-    private function createTldRule(bool $realTldCheck): Rule
-    {
-        if ($realTldCheck) {
-            return new Tld();
-        }
-
-        return new Circuit(new Not(new StartsWith('-')), new Length(new GreaterThanOrEqual(2)));
-    }
-
-    private function createPartsRule(): Rule
-    {
-        return new Each(
-            new Circuit(
-                new Alnum('-'),
-                new Not(new StartsWith('-')),
-                new AnyOf(
-                    new Not(new Contains('--')),
-                    new Callback(static function ($str) {
-                        return mb_substr_count($str, '--') == 1;
-                    }),
-                ),
-                new Not(new EndsWith('-')),
-            ),
-        );
+        return Result::passed($input, $this);
     }
 }

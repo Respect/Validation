@@ -29,6 +29,7 @@
     "require-dev": {
         "egulias/email-validator": "^4.0",
         "giggsey/libphonenumber-for-php-lite": "^8.13",
+        "jeremykendall/php-domain-parser": "^6.4",
         "malukenho/docheader": "^1.0",
         "mikey179/vfsstream": "^1.6",
         "nette/php-generator": "^4.1",
@@ -51,6 +52,7 @@
         "ext-fileinfo": "File Information",
         "ext-mbstring": "Multibyte String Functions",
         "egulias/email-validator": "Improves the Email rule if available",
+        "jeremykendall/php-domain-parser": "Allows validating domains",
         "giggsey/libphonenumber-for-php-lite": "Enables the phone rule if available",
         "ramsey/uuid": "Enables the UUID rule if available",
         "sokil/php-isocodes": "Enable rules that validate ISO codes",
