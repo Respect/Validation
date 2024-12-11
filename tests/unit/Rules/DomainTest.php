@@ -65,6 +65,7 @@ final class DomainTest extends TestCase
             ['mail.xn--bcher-kva.ch'],
             ['example-hyphen.com'],
             ['example--valid.com'],
+            ['xn--bcher--kva.ch'],
             ['std--a.com'],
             ['r--w.com'],
         ];
@@ -79,7 +80,6 @@ final class DomainTest extends TestCase
             ['2222222domain.local'],
             ['-example-invalid.com'],
             ['example.invalid.-com'],
-            ['xn--bcher--kva.ch'],
             ['example.invalid-.com'],
             ['1.2.3.256'],
             ['1.2.3.4'],
