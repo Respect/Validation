@@ -13,7 +13,6 @@ https://github.com/Respect/Validation/issues/805
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 WRONG EMAIL!!!!!!
 - WRONG EMAIL!!!!!!
-  - WRONG EMAIL!!!!!!
 [
     'email' => 'WRONG EMAIL!!!!!!',
 ]

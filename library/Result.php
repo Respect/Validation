@@ -40,6 +40,7 @@ final class Result
         ?string $name = null,
         ?string $id = null,
         public readonly ?Result $subsequent = null,
+        public readonly bool $unchangeableId = false,
         Result ...$children,
     ) {
         $this->name = $rule->getName() ?? $name;
@@ -75,12 +76,21 @@ final class Result
 
     public function withId(string $id): self
     {
+        if ($this->unchangeableId) {
+            return $this;
+        }
+
         return $this->clone(id: $id);
+    }
+
+    public function withUnchangeableId(string $id): self
+    {
+        return $this->clone(id: $id, unchangeableId: true);
     }
 
     public function withPrefixedId(string $prefix): self
     {
-        if ($this->id === $this->name) {
+        if ($this->id === $this->name || $this->unchangeableId) {
             return $this;
         }
 
@@ -142,21 +152,6 @@ final class Result
         return preg_match('/__[0-9a-z_]+_/', $this->template) === 0;
     }
 
-    public function isAlwaysVisible(): bool
-    {
-        if ($this->isValid) {
-            return false;
-        }
-
-        if ($this->hasCustomTemplate()) {
-            return true;
-        }
-
-        $childrenAlwaysVisible = array_filter($this->children, static fn (Result $child) => $child->isAlwaysVisible());
-
-        return count($childrenAlwaysVisible) !== 1;
-    }
-
     public function allowsSubsequent(): bool
     {
         if ($this->children === [] && !$this->hasCustomTemplate()) {
@@ -182,6 +177,7 @@ final class Result
         ?string $name = null,
         ?string $id = null,
         ?Result $subsequent = null,
+        ?bool $unchangeableId = null,
         ?array $children = null
     ): self {
         return new self(
@@ -194,6 +190,7 @@ final class Result
             $name ?? $this->name,
             $id ?? $this->id,
             $subsequent ?? $this->subsequent,
+            $unchangeableId ?? $this->unchangeableId,
             ...($children ?? $this->children)
         );
     }

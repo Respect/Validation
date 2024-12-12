@@ -82,7 +82,8 @@ trait FullProvider
                 <<<MESSAGE
                 - __parent_original__
                   - __1st_original__
-                  - __2nd_1st_original__
+                  - __2nd_original__
+                    - __2nd_1st_original__
                   - __3rd_original__
                 MESSAGE,
             ],
@@ -91,7 +92,8 @@ trait FullProvider
                 <<<MESSAGE
                 - Parent custom
                   - 1st custom
-                  - 2nd > 1st custom
+                  - 2nd custom
+                    - 2nd > 1st custom
                   - 3rd custom
                 MESSAGE,
                 [
@@ -99,6 +101,7 @@ trait FullProvider
                         '__root__' => 'Parent custom',
                         '1st' => '1st custom',
                         '2nd' => [
+                            '__root__' => '2nd custom',
                             '2nd_1st' => '2nd > 1st custom',
                         ],
                         '3rd' => '3rd custom',
@@ -110,7 +113,8 @@ trait FullProvider
                 <<<MESSAGE
                 - Parent custom
                   - 1st custom
-                  - __2nd_1st_original__
+                  - __2nd_original__
+                    - __2nd_1st_original__
                   - 3rd custom
                 MESSAGE,
                 [
@@ -253,6 +257,47 @@ trait FullProvider
                         'child.2' => '2nd custom',
                     ],
                 ],
+            ],
+            'with siblings that dot not have only one child' => [
+                self::multiLevelChildrenWithSiblingsThatHaveOnlyOneChild(),
+                <<<MESSAGE
+                - __parent_original__
+                  - __1st_original__
+                    - __1st_1st_original__
+                  - __2nd_original__
+                    - __2nd_1st_original__
+                MESSAGE,
+            ],
+            'with siblings that dot not have only one child, with partial templates' => [
+                self::multiLevelChildrenWithSiblingsThatHaveOnlyOneChild(),
+                <<<MESSAGE
+                - __parent_original__
+                  - 1st custom
+                  - 2nd custom
+                    - 2nd > 1st custom
+                MESSAGE,
+                [
+                    'parent' => [
+                        '1st' => '1st custom',
+                        '2nd' => [
+                            '__root__' => '2nd custom',
+                            '2nd_1st' => '2nd > 1st custom',
+                        ],
+                    ],
+                ],
+            ],
+            'with siblings that dot not have more than one child' => [
+                self::multiLevelChildrenWithSiblingsThatHaveMoreThanOneChild(),
+                <<<MESSAGE
+                - __parent_original__
+                  - __1st_original__
+                    - __1st_1st_original__
+                    - __1st_2nd_original__
+                  - __2nd_original__
+                    - __2nd_1st_original__
+                    - __2nd_2nd_original__
+                  - __3rd_original__
+                MESSAGE,
             ],
         ];
     }

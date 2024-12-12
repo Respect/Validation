@@ -19,8 +19,7 @@ exceptionAll('https://github.com/Respect/Validation/issues/446', static function
 https://github.com/Respect/Validation/issues/446
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 The length of name must be between 2 and 32
-- These rules must pass for `["name": "w", "email": "hello@hello.com"]`
-  - The length of name must be between 2 and 32
+- The length of name must be between 2 and 32
 [
     'name' => 'The length of name must be between 2 and 32',
 ]

@@ -193,8 +193,9 @@ foo must be present
 multiple rules / two extra keys
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 qux must be an integer
-- qux must be an integer
-- baz must not be present
+- `["foo": 42, "bar": "string", "baz": true, "qux": false]` contains extra keys
+  - qux must be an integer
+  - baz must not be present
 [
     '__root__' => '`["foo": 42, "bar": "string", "baz": true, "qux": false]` contains extra keys',
     'qux' => 'qux must be an integer',
@@ -216,8 +217,9 @@ bar must be an integer
 multiple rules / single missing key / single failed validation
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 bar must be an integer
-- bar must be an integer
-- baz must be present
+- `["foo": 42, "bar": "string"]` contains missing keys
+  - bar must be an integer
+  - baz must be present
 [
     '__root__' => '`["foo": 42, "bar": "string"]` contains missing keys',
     'bar' => 'bar must be an integer',

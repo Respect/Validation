@@ -64,7 +64,54 @@ trait ResultCreator
             ->children(
                 (new ResultBuilder())->id('child')->template('__1st_original__')->build(),
                 (new ResultBuilder())->id('child')->template('__2nd_original__')->build(),
-                (new ResultBuilder())->id('child')->template('__3rd_original__')->build()
+                (new ResultBuilder())->id('child')->template('__3rd_original__')->build(),
+                (new ResultBuilder())->id('child')->template('__4th_original__')->isValid(true)->build(),
+            )
+            ->build();
+    }
+
+    private static function multiLevelChildrenWithSiblingsThatHaveOnlyOneChild(): Result
+    {
+        return (new ResultBuilder())->id('parent')->template('__parent_original__')
+            ->children(
+                (new ResultBuilder())->id('1st')
+                    ->template('__1st_original__')
+                    ->children(
+                        (new ResultBuilder())->id('1st_1st')->template('__1st_1st_original__')->build(),
+                        (new ResultBuilder())->id('1st_2nd')->template('__1st_2nd_original__')->isValid(true)->build()
+                    )
+                    ->build(),
+                (new ResultBuilder())
+                    ->id('2nd')
+                    ->template('__2nd_original__')
+                    ->children(
+                        (new ResultBuilder())->id('2nd_1st')->template('__2nd_1st_original__')->build()
+                    )
+                    ->build(),
+            )
+            ->build();
+    }
+
+    private static function multiLevelChildrenWithSiblingsThatHaveMoreThanOneChild(): Result
+    {
+        return (new ResultBuilder())->id('parent')->template('__parent_original__')
+            ->children(
+                (new ResultBuilder())->id('1st')
+                    ->template('__1st_original__')
+                    ->children(
+                        (new ResultBuilder())->id('1st_1st')->template('__1st_1st_original__')->build(),
+                        (new ResultBuilder())->id('1st_2nd')->template('__1st_2nd_original__')->build()
+                    )
+                    ->build(),
+                (new ResultBuilder())
+                    ->id('2nd')
+                    ->template('__2nd_original__')
+                    ->children(
+                        (new ResultBuilder())->id('2nd_1st')->template('__2nd_1st_original__')->build(),
+                        (new ResultBuilder())->id('2nd_2nd')->template('__2nd_2nd_original__')->build()
+                    )
+                    ->build(),
+                (new ResultBuilder())->id('3nd')->template('__3rd_original__')->build(),
             )
             ->build();
     }

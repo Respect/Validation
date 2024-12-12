@@ -21,7 +21,13 @@ interface Formatter
     /**
      * @param array<string, mixed> $templates
      */
-    public function full(Result $result, array $templates, Translator $translator, int $depth = 0): string;
+    public function full(
+        Result $result,
+        array $templates,
+        Translator $translator,
+        int $depth = 0,
+        Result ...$siblings
+    ): string;
 
     /**
      * @param array<string, mixed> $templates

@@ -22,8 +22,9 @@ exceptionAll('https://github.com/Respect/Validation/issues/179', static fn() => 
 https://github.com/Respect/Validation/issues/179
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 host must be a string
-- host must be a string
-- user must be present
+- These rules must pass for Settings
+  - host must be a string
+  - user must be present
 [
     '__root__' => 'These rules must pass for Settings',
     'host' => 'host must be a string',

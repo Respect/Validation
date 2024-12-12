@@ -34,13 +34,9 @@ final class PropertyOptional extends Wrapper
             return $propertyExistsResult->withInvertedMode();
         }
 
-        $childResult = $this->rule
+        return $this->rule
             ->evaluate($this->extractPropertyValue($input, $this->propertyName))
-            ->withId($this->propertyName);
-
-        return (new Result($childResult->isValid, $input, $this))
-            ->withChildren($childResult)
-            ->withId($this->propertyName)
+            ->withUnchangeableId($this->propertyName)
             ->withNameIfMissing($this->rule->getName() ?? $this->propertyName);
     }
 }

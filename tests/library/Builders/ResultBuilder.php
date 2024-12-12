@@ -35,6 +35,8 @@ final class ResultBuilder
 
     private ?Result $subsequent = null;
 
+    private bool $unchangeableId = false;
+
     /** @var array<Result> */
     private array $children = [];
 
@@ -55,22 +57,14 @@ final class ResultBuilder
             $this->name,
             $this->id,
             $this->subsequent,
+            $this->unchangeableId,
             ...$this->children
         );
     }
 
-    public function isAlwaysVisible(): self
+    public function isValid(bool $isValid): self
     {
-        return $this->withCustomTemplate();
-    }
-
-    public function isNotAlwaysVisible(): self
-    {
-        $this->template = 'Custom template';
-        $this->children = [
-            (new self())->withCustomTemplate()->build(),
-            (new self())->children((new self())->withCustomTemplate()->build())->build(),
-        ];
+        $this->isValid = $isValid;
 
         return $this;
     }

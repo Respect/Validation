@@ -14,6 +14,7 @@ use Respect\Validation\Result;
 
 use function array_filter;
 use function array_key_exists;
+use function array_reduce;
 use function array_values;
 use function count;
 use function current;
@@ -51,13 +52,18 @@ final class StandardFormatter implements Formatter
     /**
      * @param array<string, mixed> $templates
      */
-    public function full(Result $result, array $templates, Translator $translator, int $depth = 0): string
-    {
+    public function full(
+        Result $result,
+        array $templates,
+        Translator $translator,
+        int $depth = 0,
+        Result ...$siblings
+    ): string {
         $selectedTemplates = $this->selectTemplates($result, $templates);
         $isFinalTemplate = $this->isFinalTemplate($result, $selectedTemplates);
 
         $rendered = '';
-        if ($result->isAlwaysVisible() || $isFinalTemplate) {
+        if ($this->isAlwaysVisible($result, ...$siblings) || $isFinalTemplate) {
             $indentation = str_repeat(' ', $depth * 2);
             $rendered .= sprintf(
                 '%s- %s' . PHP_EOL,
@@ -68,8 +74,15 @@ final class StandardFormatter implements Formatter
         }
 
         if (!$isFinalTemplate) {
-            foreach ($this->extractDeduplicatedChildren($result) as $child) {
-                $rendered .= $this->full($child, $selectedTemplates, $translator, $depth);
+            $results = $this->extractDeduplicatedChildren($result);
+            foreach ($results as $child) {
+                $rendered .= $this->full(
+                    $child,
+                    $selectedTemplates,
+                    $translator,
+                    $depth,
+                    ...array_filter($results, static fn (Result $sibling) => $sibling !== $child)
+                );
                 $rendered .= PHP_EOL;
             }
         }
@@ -115,6 +128,41 @@ final class StandardFormatter implements Formatter
         }
 
         return $messages;
+    }
+
+    private function isAlwaysVisible(Result $result, Result ...$siblings): bool
+    {
+        if ($result->isValid) {
+            return false;
+        }
+
+        if ($result->hasCustomTemplate()) {
+            return true;
+        }
+
+        $childrenAlwaysVisible = array_filter(
+            $result->children,
+            fn (Result $child) => $this->isAlwaysVisible($child, ...array_filter(
+                $result->children,
+                static fn (Result $sibling) => $sibling !== $child
+            ))
+        );
+        if (count($childrenAlwaysVisible) !== 1) {
+            return true;
+        }
+
+        if (count($siblings) === 0) {
+            return false;
+        }
+
+        return array_reduce(
+            $siblings,
+            fn (bool $carry, Result $currentSibling) => $carry || $this->isAlwaysVisible(
+                $currentSibling,
+                ...array_filter($siblings, static fn (Result $sibling) => $sibling !== $currentSibling)
+            ),
+            true
+        );
     }
 
     /** @param array<string, mixed> $templates */

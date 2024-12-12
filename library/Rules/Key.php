@@ -37,13 +37,9 @@ final class Key extends Wrapper implements KeyRelated
             return $keyExistsResult;
         }
 
-        $child = $this->rule
+        return $this->rule
             ->evaluate($input[$this->key])
-            ->withId((string) $this->key);
-
-        return (new Result($child->isValid, $input, $this))
-            ->withChildren($child)
-            ->withId((string) $this->key)
+            ->withUnchangeableId((string) $this->key)
             ->withNameIfMissing($this->rule->getName() ?? (string) $this->key);
     }
 }
