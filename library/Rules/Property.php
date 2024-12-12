@@ -9,15 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Helpers\CanExtractPropertyValue;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
+use Respect\Validation\Rules\Core\Binder;
 use Respect\Validation\Rules\Core\Wrapper;
 
 final class Property extends Wrapper
 {
-    use CanBindEvaluateRule;
     use CanExtractPropertyValue;
 
     public function __construct(
@@ -30,7 +29,7 @@ final class Property extends Wrapper
 
     public function evaluate(mixed $input): Result
     {
-        $propertyExistsResult = $this->bindEvaluate(new PropertyExists($this->propertyName), $this, $input);
+        $propertyExistsResult = (new Binder($this, new PropertyExists($this->propertyName)))->evaluate($input);
         if (!$propertyExistsResult->isValid) {
             return $propertyExistsResult;
         }

@@ -9,16 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
+use Respect\Validation\Rules\Core\Binder;
 use Respect\Validation\Rules\Core\KeyRelated;
 use Respect\Validation\Rules\Core\Wrapper;
 
 final class KeyOptional extends Wrapper implements KeyRelated
 {
-    use CanBindEvaluateRule;
-
     public function __construct(
         private readonly int|string $key,
         Rule $rule,
@@ -34,7 +32,7 @@ final class KeyOptional extends Wrapper implements KeyRelated
 
     public function evaluate(mixed $input): Result
     {
-        $keyExistsResult = $this->bindEvaluate(new KeyExists($this->key), $this, $input);
+        $keyExistsResult = (new Binder($this, new KeyExists($this->key)))->evaluate($input);
         if (!$keyExistsResult->isValid) {
             return $keyExistsResult->withInvertedMode();
         }

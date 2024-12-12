@@ -10,10 +10,10 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
-use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
+use Respect\Validation\Rules\Core\Binder;
 use Respect\Validation\Rules\Core\KeyRelated;
 use Respect\Validation\Rules\Core\Standard;
 use Respect\Validation\Validator;
@@ -47,8 +47,6 @@ use function array_slice;
 )]
 final class KeySet extends Standard
 {
-    use CanBindEvaluateRule;
-
     public const TEMPLATE_BOTH = '__both__';
     public const TEMPLATE_EXTRA_KEYS = '__extra_keys__';
     public const TEMPLATE_MISSING_KEYS = '__missing_keys__';
@@ -76,7 +74,7 @@ final class KeySet extends Standard
 
     public function evaluate(mixed $input): Result
     {
-        $result = $this->bindEvaluate(new ArrayType(), $this, $input);
+        $result = (new Binder($this, new ArrayType()))->evaluate($input);
         if (!$result->isValid) {
             return $result;
         }

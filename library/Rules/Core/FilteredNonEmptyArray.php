@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules\Core;
 
-use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\IterableType;
 use Respect\Validation\Rules\NotEmpty;
@@ -22,21 +21,19 @@ use function substr;
 
 abstract class FilteredNonEmptyArray extends Wrapper
 {
-    use CanBindEvaluateRule;
-
     /** @param non-empty-array<mixed> $input */
     abstract protected function evaluateNonEmptyArray(array $input): Result;
 
     public function evaluate(mixed $input): Result
     {
         $id = $this->rule->getName() ?? $this->getName() ?? lcfirst(substr((string) strrchr(static::class, '\\'), 1));
-        $iterableResult = $this->bindEvaluate(new IterableType(), $this, $input);
+        $iterableResult = (new Binder($this, new IterableType()))->evaluate($input);
         if (!$iterableResult->isValid) {
             return $iterableResult->withId($id);
         }
 
         $array = $this->toArray($input);
-        $notEmptyResult = $this->bindEvaluate(new NotEmpty(), $this, $array);
+        $notEmptyResult = (new Binder($this, new NotEmpty()))->evaluate($array);
         if (!$notEmptyResult->isValid) {
             return $notEmptyResult->withId($id);
         }

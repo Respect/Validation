@@ -10,11 +10,11 @@ declare(strict_types=1);
 namespace Respect\Validation;
 
 use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\Translator;
 use Respect\Validation\Mixins\StaticValidator;
 use Respect\Validation\Rules\AllOf;
+use Respect\Validation\Rules\Core\Binder;
 use Throwable;
 
 use function count;
@@ -28,8 +28,6 @@ use function is_string;
  */
 final class Validator implements Rule
 {
-    use CanBindEvaluateRule;
-
     /** @var array<Rule> */
     private array $rules = [];
 
@@ -61,7 +59,7 @@ final class Validator implements Rule
 
     public function evaluate(mixed $input): Result
     {
-        return $this->bindEvaluate($this->rule(), $this, $input);
+        return (new Binder($this, $this->rule()))->evaluate($input);
     }
 
     public function isValid(mixed $input): bool

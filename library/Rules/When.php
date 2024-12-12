@@ -9,15 +9,13 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
+use Respect\Validation\Rules\Core\Binder;
 use Respect\Validation\Rules\Core\Standard;
 
 final class When extends Standard
 {
-    use CanBindEvaluateRule;
-
     private readonly Rule $else;
 
     public function __construct(
@@ -35,11 +33,11 @@ final class When extends Standard
 
     public function evaluate(mixed $input): Result
     {
-        $whenResult = $this->bindEvaluate($this->when, $this, $input);
+        $whenResult = (new Binder($this, $this->when))->evaluate($input);
         if ($whenResult->isValid) {
-            return $this->bindEvaluate($this->then, $this, $input);
+            return (new Binder($this, $this->then))->evaluate($input);
         }
 
-        return $this->bindEvaluate($this->else, $this, $input);
+        return (new Binder($this, $this->else))->evaluate($input);
     }
 }
