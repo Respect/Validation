@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Simple;
 
@@ -19,6 +20,7 @@ use function is_scalar;
 use function preg_replace;
 use function str_split;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a valid CNPJ number',
     '{{name}} must not be a valid CNPJ number',

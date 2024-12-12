@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -22,6 +23,7 @@ use function in_array;
 use function mb_detect_encoding;
 use function mb_list_encodings;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must only contain characters from the {{charset|raw}} charset',
     '{{name}} must not contain any characters from the {{charset|raw}} charset',

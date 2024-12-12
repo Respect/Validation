@@ -9,12 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\FilteredNonEmptyArray;
 
 use function max;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template('As the maximum of {{name}},', 'As the maximum of {{name}},')]
 #[Template('The maximum of', 'The maximum of', self::TEMPLATE_NAMED)]
 final class Max extends FilteredNonEmptyArray

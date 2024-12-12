@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use ArrayAccess;
+use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\KeyRelated;
@@ -18,6 +19,7 @@ use Respect\Validation\Rules\Core\Standard;
 use function array_key_exists;
 use function is_array;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be present',
     '{{name}} must not be present',

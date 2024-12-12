@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
@@ -20,6 +21,7 @@ use function is_scalar;
 use function preg_match;
 use function strtotime;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a valid date in the format {{sample}}',
     '{{name}} must not be a valid date in the format {{sample}}',

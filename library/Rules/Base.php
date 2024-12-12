@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -18,6 +19,7 @@ use function mb_strlen;
 use function mb_substr;
 use function preg_match;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a number in base {{base|raw}}',
     '{{name}} must not be a number in base {{base|raw}}',

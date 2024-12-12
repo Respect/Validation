@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Envelope;
@@ -16,6 +17,7 @@ use Respect\Validation\Rules\Core\Envelope;
 /**
  * @see http://download.geonames.org/export/dump/countryInfo.txt
  */
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a valid postal code on {{countryCode}}',
     '{{name}} must not be a valid postal code on {{countryCode}}',

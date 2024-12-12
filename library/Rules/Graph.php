@@ -9,11 +9,13 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\FilteredString;
 
 use function ctype_graph;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must contain only graphical characters',
     '{{name}} must not contain graphical characters',

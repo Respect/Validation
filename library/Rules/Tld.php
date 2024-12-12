@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Simple;
 
@@ -16,6 +17,7 @@ use function in_array;
 use function is_scalar;
 use function mb_strtoupper;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a valid top-level domain name',
     '{{name}} must not be a valid top-level domain name',

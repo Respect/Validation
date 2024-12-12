@@ -9,11 +9,13 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Helpers\CanCompareValues;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Envelope;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be between {{minValue}} and {{maxValue}}',
     '{{name}} must not be between {{minValue}} and {{maxValue}}',

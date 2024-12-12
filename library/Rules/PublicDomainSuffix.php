@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Helpers\CanValidateUndefined;
 use Respect\Validation\Helpers\DomainInfo;
 use Respect\Validation\Message\Template;
@@ -20,6 +21,7 @@ use function in_array;
 use function is_scalar;
 use function strtoupper;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a public domain suffix',
     '{{name}} must not be a public domain suffix',

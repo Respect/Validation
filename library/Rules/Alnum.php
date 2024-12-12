@@ -9,11 +9,13 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\FilteredString;
 
 use function ctype_alnum;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must contain only letters (a-z) and digits (0-9)',
     '{{name}} must not contain letters (a-z) or digits (0-9)',

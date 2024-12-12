@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use ErrorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -20,6 +21,7 @@ use function call_user_func;
 use function restore_error_handler;
 use function set_error_handler;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{input}} must be a suitable argument for {{callable}}',
     '{{input}} must not be a suitable argument for {{callable}}',

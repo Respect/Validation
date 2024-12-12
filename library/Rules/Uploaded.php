@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Psr\Http\Message\UploadedFileInterface;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Simple;
@@ -17,6 +18,7 @@ use SplFileInfo;
 use function is_scalar;
 use function is_uploaded_file;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be an uploaded file',
     '{{name}} must not be an uploaded file',

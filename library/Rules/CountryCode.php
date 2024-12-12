@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
@@ -20,6 +21,7 @@ use function class_exists;
 use function in_array;
 use function is_string;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a valid country code',
     '{{name}} must not be a valid country code',

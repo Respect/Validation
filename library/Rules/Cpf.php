@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Simple;
 
@@ -17,6 +18,7 @@ use function mb_strlen;
 use function preg_match;
 use function preg_replace;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a valid CPF number',
     '{{name}} must not be a valid CPF number',

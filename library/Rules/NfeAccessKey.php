@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Simple;
 
@@ -20,6 +21,7 @@ use function str_split;
 /**
  * @see (pt-br) Manual de Integração do Contribuinte v4.0.1 em http://www.nfe.fazenda.gov.br
  */
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a valid NFe access key',
     '{{name}} must not be a valid NFe access key',

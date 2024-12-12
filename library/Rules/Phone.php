@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumberUtil;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
@@ -21,6 +22,7 @@ use Sokil\IsoCodes\Database\Countries;
 use function class_exists;
 use function is_scalar;
 
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a valid telephone number',
     '{{name}} must not be a valid telephone number',
