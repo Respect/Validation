@@ -13,6 +13,7 @@ run([
     'With $type = "minutes"' => [v::dateTimeDiff('minutes', v::equals(6)), '5 minutes ago'],
     'With $type = "microseconds"' => [v::dateTimeDiff('microseconds', v::equals(7)), '6 microseconds ago'],
     'With custom $format' => [v::dateTimeDiff('years', v::lessThan(8), 'd/m/Y'), '09/12/1988'],
+    'With input in non-parseable date' => [v::dateTimeDiff('years', v::equals(2)), 'not a date'],
     'With input in incorrect $format' => [v::dateTimeDiff('years', v::equals(2), 'Y-m-d'), '1 year ago'],
     'With custom $now' => [v::dateTimeDiff('years', v::lessThan(9), null, new DateTimeImmutable()), '09/12/1988'],
     'With custom template' => [v::dateTimeDiff('years', v::equals(2)->setTemplate('Custom template')), '1 year ago'],
@@ -97,6 +98,14 @@ The number of years between %d/%d/%d and %d/%d/%d must be less than 8
 - The number of years between %d/%d/%d and %d/%d/%d must be less than 8
 [
     'dateTimeDiffLessThan' => 'The number of years between %d/%d/%d and %d/%d/%d must be less than 8',
+]
+
+With input in non-parseable date
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+For comparison with now, "not a date" must be a valid datetime
+- For comparison with now, "not a date" must be a valid datetime
+[
+    'dateTimeDiffEquals' => 'For comparison with now, "not a date" must be a valid datetime',
 ]
 
 With input in incorrect $format

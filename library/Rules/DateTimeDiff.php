@@ -17,6 +17,7 @@ use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Standard;
+use Throwable;
 
 use function array_map;
 use function in_array;
@@ -33,6 +34,11 @@ use function ucfirst;
     self::TEMPLATE_CUSTOMIZED
 )]
 #[Template(
+    'For comparison with {{now|raw}}, {{name}} must be a valid datetime',
+    'For comparison with {{now|raw}}, {{name}} must not be a valid datetime',
+    self::TEMPLATE_NOT_A_DATE
+)]
+#[Template(
     'For comparison with {{now|raw}}, {{name}} must be a valid datetime in the format {{sample|raw}}',
     'For comparison with {{now|raw}}, {{name}} must not be a valid datetime in the format {{sample|raw}}',
     self::TEMPLATE_WRONG_FORMAT
@@ -42,6 +48,7 @@ final class DateTimeDiff extends Standard
     use CanValidateDateTime;
 
     public const TEMPLATE_CUSTOMIZED = '__customized__';
+    public const TEMPLATE_NOT_A_DATE = '__not_a_date__';
     public const TEMPLATE_WRONG_FORMAT = '__wrong_format__';
 
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
@@ -66,9 +73,10 @@ final class DateTimeDiff extends Standard
         $now = $this->now ?? new DateTimeImmutable();
         $compareTo = $this->createDateTimeObject($input);
         if ($compareTo === null) {
+            $template = $this->format === null ? self::TEMPLATE_NOT_A_DATE : self::TEMPLATE_WRONG_FORMAT;
             $parameters = ['sample' => $now->format($this->format ?? 'c'), 'now' => $this->nowParameter($now)];
 
-            return Result::failed($input, $this, $parameters, self::TEMPLATE_WRONG_FORMAT)
+            return Result::failed($input, $this, $parameters, $template)
                 ->withId('dateTimeDiff' . ucfirst($this->rule->evaluate($input)->id));
         }
 
@@ -132,7 +140,11 @@ final class DateTimeDiff extends Standard
         }
 
         if ($this->format === null) {
-            return new DateTimeImmutable((string) $input);
+            try {
+                return new DateTimeImmutable((string) $input);
+            } catch (Throwable) {
+                return null;
+            }
         }
 
         $format = $this->getExceptionalFormats()[$this->format] ?? $this->format;
