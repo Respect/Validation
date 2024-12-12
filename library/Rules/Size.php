@@ -12,127 +12,83 @@ namespace Respect\Validation\Rules;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Helpers\CanBindEvaluateRule;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
+use Respect\Validation\Rules\Core\Wrapper;
 use SplFileInfo;
 
 use function filesize;
-use function floatval;
-use function is_numeric;
 use function is_string;
-use function preg_match;
+use function ucfirst;
 
-#[Template(
-    '{{name}} must be between {{minSize}} and {{maxSize}}',
-    '{{name}} must not be between {{minSize}} and {{maxSize}}',
-    self::TEMPLATE_BOTH,
-)]
-#[Template(
-    '{{name}} must be greater than {{minSize}}',
-    '{{name}} must not be greater than {{minSize}}',
-    self::TEMPLATE_LOWER,
-)]
-#[Template(
-    '{{name}} must be lower than {{maxSize}}',
-    '{{name}} must not be lower than {{maxSize}}',
-    self::TEMPLATE_GREATER,
-)]
-final class Size extends Standard
+#[Template('The size in {{unit|trans}} of', 'The size in {{unit|trans}} of')]
+final class Size extends Wrapper
 {
-    public const TEMPLATE_LOWER = '__lower__';
-    public const TEMPLATE_GREATER = '__greater__';
-    public const TEMPLATE_BOTH = '__both__';
+    use CanBindEvaluateRule;
 
-    private readonly ?float $minValue;
+    private const DATA_STORAGE_UNITS = [
+        'B' => ['name' => 'bytes', 'bytes' => 1],
+        'KB' => ['name' => 'kilobytes', 'bytes' => 1024],
+        'MB' => ['name' => 'megabytes', 'bytes' => 1024 ** 2],
+        'GB' => ['name' => 'gigabytes', 'bytes' => 1024 ** 3],
+        'TB' => ['name' => 'terabytes', 'bytes' => 1024 ** 4],
+        'PB' => ['name' => 'petabytes', 'bytes' => 1024 ** 5],
+        'EB' => ['name' => 'exabytes', 'bytes' => 1024 ** 6],
+        'ZB' => ['name' => 'zettabytes', 'bytes' => 1024 ** 7],
+        'YB' => ['name' => 'yottabytes', 'bytes' => 1024 ** 8],
+    ];
 
-    private readonly ?float $maxValue;
-
+    /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public function __construct(
-        private readonly string|int|null $minSize = null,
-        private readonly string|int|null $maxSize = null
+        private readonly string $unit,
+        Rule $rule
     ) {
-        $this->minValue = $minSize ? $this->toBytes((string) $minSize) : null;
-        $this->maxValue = $maxSize ? $this->toBytes((string) $maxSize) : null;
+        if (!isset(self::DATA_STORAGE_UNITS[$unit])) {
+            throw new InvalidRuleConstructorException('"%s" is not a recognized data storage unit.', $unit);
+        }
+
+        parent::__construct($rule);
     }
 
     public function evaluate(mixed $input): Result
     {
-        return new Result(
-            $this->isValid($input),
-            $input,
-            $this,
-            ['minSize' => $this->minSize, 'maxSize' => $this->maxSize],
-            $this->getStandardTemplate()
-        );
+        $typeResult = $this->bindEvaluate(new OneOf(new StringType(), new Countable()), $this, $input);
+        if (!$typeResult->isValid) {
+            $result = $this->rule->evaluate($input);
+
+            return Result::failed($input, $this)->withNextSibling($result)->withId('size' . ucfirst($result->id));
+        }
+
+        $result = $this->rule->evaluate($this->getSize($input) / self::DATA_STORAGE_UNITS[$this->unit]['bytes'])
+            ->withInput($input)
+            ->withPrefixedId('size');
+
+        $parameters = ['unit' => self::DATA_STORAGE_UNITS[$this->unit]['name']];
+
+        return (new Result($result->isValid, $input, $this, $parameters, id: $result->id))
+            ->withNextSibling($result);
     }
 
-    private function isValid(mixed $input): bool
+    private function getSize(mixed $input): ?int
     {
         if ($input instanceof SplFileInfo) {
-            return $this->isValidSize((float) $input->getSize());
+            return $input->getSize();
         }
 
         if ($input instanceof UploadedFileInterface) {
-            return $this->isValidSize((float) $input->getSize());
+            return $input->getSize();
         }
 
         if ($input instanceof StreamInterface) {
-            return $this->isValidSize((float) $input->getSize());
+            return $input->getSize();
         }
 
         if (is_string($input)) {
-            return $this->isValidSize((float) filesize($input));
+            return filesize($input);
         }
 
-        return false;
-    }
-
-    private function getStandardTemplate(): string
-    {
-        if (!$this->minValue) {
-            return self::TEMPLATE_GREATER;
-        }
-
-        if (!$this->maxValue) {
-            return self::TEMPLATE_LOWER;
-        }
-
-        return self::TEMPLATE_BOTH;
-    }
-
-    /**
-     * @todo Move it to a trait
-     */
-    private function toBytes(string $size): float
-    {
-        $value = $size;
-        $units = ['b', 'kb', 'mb', 'gb', 'tb', 'pb', 'eb', 'zb', 'yb'];
-        foreach ($units as $exponent => $unit) {
-            if (!preg_match('/^(\d+(.\d+)?)' . $unit . '$/i', $size, $matches)) {
-                continue;
-            }
-            $value = floatval($matches[1]) * 1024 ** $exponent;
-            break;
-        }
-
-        if (!is_numeric($value)) {
-            throw new InvalidRuleConstructorException('"%s" is not a recognized file size.', $size);
-        }
-
-        return (float) $value;
-    }
-
-    private function isValidSize(float $size): bool
-    {
-        if ($this->minValue !== null && $this->maxValue !== null) {
-            return $size >= $this->minValue && $size <= $this->maxValue;
-        }
-
-        if ($this->minValue !== null) {
-            return $size >= $this->minValue;
-        }
-
-        return $size <= $this->maxValue;
+        return null;
     }
 }
