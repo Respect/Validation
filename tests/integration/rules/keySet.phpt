@@ -77,8 +77,7 @@ run([
 one rule / one failed
 ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 foo must be an integer
-- `["foo": "string"]` validation failed
-  - foo must be an integer
+- foo must be an integer
 [
     'foo' => 'foo must be an integer',
 ]

@@ -13,12 +13,10 @@ use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\Translator;
 use Respect\Validation\Mixins\StaticValidator;
-use Respect\Validation\Rules\AllOf;
 use Respect\Validation\Rules\Core\Binder;
+use Respect\Validation\Rules\Core\Reducer;
 use Throwable;
 
-use function count;
-use function current;
 use function is_array;
 use function is_callable;
 use function is_string;
@@ -59,7 +57,7 @@ final class Validator implements Rule
 
     public function evaluate(mixed $input): Result
     {
-        return (new Binder($this, $this->rule()))->evaluate($input);
+        return (new Binder($this, new Reducer(...$this->rules)))->evaluate($input);
     }
 
     public function isValid(mixed $input): bool
@@ -153,15 +151,6 @@ final class Validator implements Rule
         $this->template = $template;
 
         return $this;
-    }
-
-    private function rule(): Rule
-    {
-        if (count($this->rules) === 1) {
-            return current($this->rules);
-        }
-
-        return new AllOf(...$this->rules);
     }
 
     /**

@@ -15,6 +15,7 @@ use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Binder;
 use Respect\Validation\Rules\Core\KeyRelated;
+use Respect\Validation\Rules\Core\Reducer;
 use Respect\Validation\Rules\Core\Standard;
 use Respect\Validation\Validator;
 
@@ -23,7 +24,6 @@ use function array_filter;
 use function array_keys;
 use function array_map;
 use function array_merge;
-use function array_reduce;
 use function array_slice;
 
 #[Template(
@@ -74,24 +74,19 @@ final class KeySet extends Standard
 
     public function evaluate(mixed $input): Result
     {
-        $result = (new Binder($this, new ArrayType()))->evaluate($input);
-        if (!$result->isValid) {
-            return $result;
+        $arrayResult = (new Binder($this, new ArrayType()))->evaluate($input);
+        if (!$arrayResult->isValid) {
+            return $arrayResult;
         }
 
-        $keys = array_keys($input);
-        $children = array_map(
-            static fn (Rule $rule) => $rule->evaluate($input),
-            array_merge($this->rules, array_map(
-                static fn(string|int $key) => new Not(new KeyExists($key)),
-                array_slice(array_diff($keys, $this->allKeys), 0, self::MAX_DIFF_KEYS)
-            ))
-        );
+        $keys = new Reducer(...array_merge($this->rules, array_map(
+            static fn(string|int $key) => new Not(new KeyExists($key)),
+            array_slice(array_diff(array_keys($input), $this->allKeys), 0, self::MAX_DIFF_KEYS)
+        )));
+        $keysResult = $keys->evaluate($input);
 
-        $isValid = array_reduce($children, static fn (bool $carry, Result $result) => $carry && $result->isValid, true);
-        $template = $this->getTemplateFromKeys($keys);
-
-        return (new Result($isValid, $input, $this, [], $template))->withChildren(...$children);
+        return (new Result($keysResult->isValid, $input, $this, [], $this->getTemplateFromKeys(array_keys($input))))
+            ->withChildren(...($keysResult->children === [] ? [$keysResult] : $keysResult->children));
     }
 
     /**
@@ -118,7 +113,7 @@ final class KeySet extends Standard
         return $keyRelatedRules;
     }
 
-    /** @param array<mixed> $keys */
+    /** @param array<int|string> $keys */
     private function getTemplateFromKeys(array $keys): string
     {
         $extraKeys = array_diff($keys, $this->allKeys);
