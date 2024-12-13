@@ -41,13 +41,25 @@ $input = [
         'children' => ['nope'],
     ],
 ];
-exceptionMessage(static fn() => $validator->assert($input));
-exceptionFullMessage(static fn() => $validator->assert($input));
+exceptionAll('https://github.com/Respect/Validation/issues/1289', static fn() => $validator->assert($input));
 ?>
 --EXPECT--
+https://github.com/Respect/Validation/issues/1289
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 default must be a string
 - These rules must pass for `["default": 2, "description": [], "children": ["nope"]]`
   - Only one of these rules must pass for default
     - default must be a string
     - default must be a boolean
   - description must be a string value
+[
+    'allOf' => [
+        '__root__' => 'These rules must pass for `["default": 2, "description": [], "children": ["nope"]]`',
+        'default' => [
+            '__root__' => 'Only one of these rules must pass for default',
+            'stringType' => 'default must be a string',
+            'boolType' => 'default must be a boolean',
+        ],
+        'description' => 'description must be a string value',
+    ],
+]

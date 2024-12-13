@@ -12,8 +12,9 @@ $cars = [
     ['manufacturer' => 'Honda', 'model' => 'not valid'],
 ];
 
-exceptionMessages(static function () use ($cars): void {
-    Validator::arrayType()->each(
+exceptionAll(
+    'https://github.com/Respect/Validation/issues/1289',
+    static fn () => Validator::arrayType()->each(
         Validator::oneOf(
             Validator::key('manufacturer', Validator::equals('Honda'))
                 ->key('model', Validator::in(['Accord', 'Fit'])),
@@ -22,10 +23,32 @@ exceptionMessages(static function () use ($cars): void {
             Validator::key('manufacturer', Validator::equals('Ford'))
                 ->key('model', Validator::in(['F150', 'Bronco']))
         )
-    )->assert($cars);
-});
+    )->assert($cars)
+);
 ?>
 --EXPECT--
+https://github.com/Respect/Validation/issues/1289
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+manufacturer must be equal to "Honda"
+- Each item in `[["manufacturer": "Honda", "model": "Accord"], ["manufacturer": "Toyota", "model": "Rav4"], ["manufacturer": "Fo ... ]` must be valid
+  - Only one of these rules must pass for `["manufacturer": "Ford", "model": "not real"]`
+    - All of the required rules must pass for `["manufacturer": "Ford", "model": "not real"]`
+      - manufacturer must be equal to "Honda"
+      - model must be in `["Accord", "Fit"]`
+    - All of the required rules must pass for `["manufacturer": "Ford", "model": "not real"]`
+      - manufacturer must be equal to "Toyota"
+      - model must be in `["Rav4", "Camry"]`
+    - These rules must pass for `["manufacturer": "Ford", "model": "not real"]`
+      - model must be in `["F150", "Bronco"]`
+  - Only one of these rules must pass for `["manufacturer": "Honda", "model": "not valid"]`
+    - These rules must pass for `["manufacturer": "Honda", "model": "not valid"]`
+      - model must be in `["Accord", "Fit"]`
+    - All of the required rules must pass for `["manufacturer": "Honda", "model": "not valid"]`
+      - manufacturer must be equal to "Toyota"
+      - model must be in `["Rav4", "Camry"]`
+    - All of the required rules must pass for `["manufacturer": "Honda", "model": "not valid"]`
+      - manufacturer must be equal to "Ford"
+      - model must be in `["F150", "Bronco"]`
 [
     'each' => [
         '__root__' => 'Each item in `[["manufacturer": "Honda", "model": "Accord"], ["manufacturer": "Toyota", "model": "Rav4"], ["manufacturer": "Fo ... ]` must be valid',

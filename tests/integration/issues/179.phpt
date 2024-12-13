@@ -16,8 +16,16 @@ $validator->key('user', v::stringType());
 $validator->key('password', v::stringType());
 $validator->key('schema', v::stringType());
 
-exceptionFullMessage(static fn() => $validator->assert($config));
+exceptionAll('https://github.com/Respect/Validation/issues/179', static fn() => $validator->assert($config));
 ?>
 --EXPECT--
+https://github.com/Respect/Validation/issues/179
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+host must be a string
 - host must be a string
 - user must be present
+[
+    '__root__' => 'These rules must pass for Settings',
+    'host' => 'host must be a string',
+    'user' => 'user must be present',
+]
